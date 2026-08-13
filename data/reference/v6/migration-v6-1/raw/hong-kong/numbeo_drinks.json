@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Hong Kong",
+  "country": "Hong Kong",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Hong Kong. May 2026. Prices in Hong Kong",
+      "evidenceText": "Cappuccino (Regular Size)  | HK$39.16  | 25.00-50.00",
+      "query": "site:numbeo.com/cost-of-living/in/Hong-Kong \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Hong Kong. May 2026. Prices in Hong Kong",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | HK$50.58  | 30.00-88.00",
+      "query": "site:numbeo.com/cost-of-living/in/Hong-Kong \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Hong Kong result is explicitly dated May 2026, stale relative to the frozen reference date 2026-09-17; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

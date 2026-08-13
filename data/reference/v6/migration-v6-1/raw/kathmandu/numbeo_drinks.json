@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Kathmandu",
+  "country": "Nepal",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 268.33,
+      "currency": "NPR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Kathmandu",
+      "sourceTitle": "Cost of Living in Kathmandu. Jun 2026. Prices in Kathmandu",
+      "evidenceText": "Cappuccino (Regular Size)  | N₨268.33  | 160.00-550.00",
+      "query": "site:numbeo.com/cost-of-living/in/Kathmandu \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 600,
+      "currency": "NPR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Kathmandu",
+      "sourceTitle": "Cost of Living in Kathmandu. Jun 2026. Prices in Kathmandu",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | N₨600.00  | 300.00-1,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Kathmandu \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

@@ -31,9 +31,9 @@ live CSV remains on v1 while Phase 7 repairs those defects, runs a delegated ope
 through the complete staged preview and owner-reviewed cutover.
 
 **13 August 2026 current v6.1 state:** Experiment 014 passed the delegated operational canary, Phase 8 migration
-tooling is complete, and Phase 9 has staged 70/121 cities in batches 001–005. Batch 005 remained below the artifact
-stop rule (Aomori was the only all-prior candidate, 10%); 51 cities remain. The exact next action is fixed delegated
-batch 006, followed by the complete verification baseline. The live CSV, holdouts and Phase 11 remain untouched.
+tooling is complete, and Phase 9 has staged 80/121 cities in batches 001–006. Batch 006 remained below the artifact
+stop rule (Hong Kong was the only all-prior candidate, 10%); 41 cities remain. The exact next action is fixed delegated
+batch 007, followed by the complete verification baseline. The live CSV, holdouts and Phase 11 remain untouched.
 
 ---
 
@@ -570,6 +570,16 @@ was the only all-prior artifact candidate (10%), below the 30% batch stop rule. 
 cities, BudgetYourTrip in 6/10 and Numbeo drinks in 4/10; all remaining source gaps stayed explicit and used the
 shipped prior cascade. The staged migration now has 70/121 complete cities; 51 remain. The next exact action is fixed
 batch 006; the live CSV, holdouts and Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 006 - 13 August 2026
+
+The sixth fixed migration batch is complete and staged: Beijing, Shanghai, Hong Kong, Goa, Kathmandu, Amman,
+Tel Aviv, Marrakech, Nairobi and Zanzibar. It added 30 delegated source calls and 100 searches, with zero retries and
+zero direct page reads. Direct/fallback category counts were accommodation 5/5, food 8/2, drinks 2/8 and activities
+8/2. Hong Kong was the only all-prior artifact candidate (10%), below the 30% batch stop rule. Expedia was directly
+observed in 5/10 cities, BudgetYourTrip in 8/10 and Numbeo drinks in 2/10; all remaining source gaps stayed explicit
+and used the shipped prior cascade. The staged migration now has 80/121 complete cities; 41 remain. The next exact
+action is fixed batch 007; the live CSV, holdouts and Phase 11 remain untouched.
 
 ## Traps retained from earlier work
 

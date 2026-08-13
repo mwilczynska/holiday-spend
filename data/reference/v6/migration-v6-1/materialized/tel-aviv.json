@@ -1,0 +1,2281 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "region": "Middle East",
+    "band": null,
+    "cityId": "tel-aviv"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "region": "Middle East",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 50.63,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 23.29,
+          "upperAud": 77.96,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 50.7,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 27.89,
+          "upperAud": 73.52,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 57.08,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 31.39,
+          "upperAud": 82.76,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 64.25,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 35.33,
+          "upperAud": 93.16,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 85.66,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 47.11,
+          "upperAud": 124.21,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 114.54,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 63,
+          "upperAud": 166.09,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "amountAud": 41.17,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 22.64,
+          "upperAud": 59.69,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 77.22,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 50.19,
+          "upperAud": 104.25,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 177.3,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 115.25,
+          "upperAud": 239.36,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 354.6,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 230.49,
+          "upperAud": 478.71,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.55,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.5,
+          "upperAud": 6.6,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 9.11,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.01,
+          "upperAud": 13.21,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 17.55,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 9.65,
+          "upperAud": 25.45,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 48.9,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 26.9,
+          "upperAud": 70.91,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 79.59,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 43.77,
+          "upperAud": 115.41,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 34.32,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 22.31,
+          "upperAud": 46.33,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 82.94,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 208.76,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 135.69,
+          "upperAud": 281.83,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 85.66,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 88.65,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 177.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 104.38,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "missingness": {
+      "hotel_3star_room_2p": "not_found",
+      "cappuccino_1": "stale",
+      "domestic_draft_beer_1": "stale"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 50.63,
+      "accomPrivateRoom": 50.7,
+      "accom1star": 57.08,
+      "accom2star": 64.25,
+      "accom3star": 85.66,
+      "accom4star": 114.54,
+      "foodStreet": 41.17,
+      "foodBudget": 77.22,
+      "foodMid": 177.3,
+      "foodHigh": 354.6,
+      "drinkCoffee": 4.55,
+      "drinkLocalBeer": 4.23,
+      "drinkCocktail": 11.44,
+      "drinksNone": 9.11,
+      "drinksLight": 17.55,
+      "drinksModerate": 48.9,
+      "drinksHeavy": 79.59,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 82.94,
+      "activitiesHigh": 208.76
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 50.63,
+      "accomPrivateRoom": 50.7,
+      "accom1star": 57.08,
+      "accom2star": 64.25,
+      "accom3star": 85.66,
+      "accom4star": 114.54,
+      "foodStreet": 41.17,
+      "foodBudget": 77.22,
+      "foodMid": 177.3,
+      "foodHigh": 354.6,
+      "drinkCoffee": 4.55,
+      "drinkLocalBeer": 4.23,
+      "drinkCocktail": 11.44,
+      "drinksNone": 9.11,
+      "drinksLight": 17.55,
+      "drinksModerate": 48.9,
+      "drinksHeavy": 79.59,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 82.94,
+      "activitiesHigh": 208.76
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 27,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 62,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 124,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 12,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 73,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Tel Aviv-Yafo. May 2026. Prices in Tel Aviv-Yafo",
+        "evidenceText": "Cappuccino (Regular Size)  | ₪16.88  | 12.00-25.00",
+        "query": "site:numbeo.com/cost-of-living/in/Tel-Aviv-Yafo \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Tel Aviv-Yafo. May 2026. Prices in Tel Aviv-Yafo",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₪33.00  | 25.00-40.00",
+        "query": "site:numbeo.com/cost-of-living/in/Tel-Aviv-Yafo \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Middle East",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 23.29,
+          "upperAud": 77.96,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 27.89,
+          "upperAud": 73.52,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 31.39,
+          "upperAud": 82.76,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 35.33,
+          "upperAud": 93.16,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 47.11,
+          "upperAud": 124.21,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 63,
+          "upperAud": 166.09,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 22.64,
+          "upperAud": 59.69,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 50.19,
+          "upperAud": 104.25,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 115.25,
+          "upperAud": 239.36,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 230.49,
+          "upperAud": 478.71,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.5,
+          "upperAud": 6.6,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.01,
+          "upperAud": 13.21,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 9.65,
+          "upperAud": 25.45,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 26.9,
+          "upperAud": 70.91,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 43.77,
+          "upperAud": 115.41,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 22.31,
+          "upperAud": 46.33,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 135.69,
+          "upperAud": 281.83,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 47.113,
+          "upperAud": 124.207,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 25.0965,
+          "upperAud": 52.1235,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 57.6225,
+          "upperAud": 119.67750000000001,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 115.245,
+          "upperAud": 239.35500000000002,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 11.154,
+          "upperAud": 23.166,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 26.9555,
+          "upperAud": 55.984500000000004,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 67.847,
+          "upperAud": 140.913,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 85.66,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 88.65,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 177.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 104.38,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 23.29,
+          "upperAud": 77.96,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 27.89,
+          "upperAud": 73.52,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 31.39,
+          "upperAud": 82.76,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 35.33,
+          "upperAud": 93.16,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 47.11,
+          "upperAud": 124.21,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 63,
+          "upperAud": 166.09,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 22.64,
+          "upperAud": 59.69,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 50.19,
+          "upperAud": 104.25,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 115.25,
+          "upperAud": 239.36,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 230.49,
+          "upperAud": 478.71,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.5,
+          "upperAud": 6.6,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.01,
+          "upperAud": 13.21,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 9.65,
+          "upperAud": 25.45,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 26.9,
+          "upperAud": 70.91,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 43.77,
+          "upperAud": 115.41,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 22.31,
+          "upperAud": 46.33,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 135.69,
+          "upperAud": 281.83,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 27,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+          "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+          "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 62,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+          "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+          "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 124,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+          "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+          "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 12,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+          "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+          "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 29,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+          "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+          "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 73,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+          "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+          "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Tel Aviv-Yafo. May 2026. Prices in Tel Aviv-Yafo",
+          "evidenceText": "Cappuccino (Regular Size)  | ₪16.88  | 12.00-25.00",
+          "query": "site:numbeo.com/cost-of-living/in/Tel-Aviv-Yafo \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Tel Aviv-Yafo. May 2026. Prices in Tel Aviv-Yafo",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₪33.00  | 25.00-40.00",
+          "query": "site:numbeo.com/cost-of-living/in/Tel-Aviv-Yafo \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 85.66,
+          "status": "imputed",
+          "evidenceGrade": "D",
+          "intervalPct": 45,
+          "sourceIds": [
+            "v6.1-tier-prior:Middle East:all:accom_3_star"
+          ],
+          "modelVersions": [
+            "city-cost-v6-1-tier-prior-v1"
+          ],
+          "imputedMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 38.61,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 88.65,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 177.3,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 17.16,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 41.47,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 104.38,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "tel-aviv",
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "region": "Middle East",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "4ecd7c2fc584ff2c94c7ebba1a679757da1b75b4913a08a84b4b72f18a530e15",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 50.63,
+      "accomPrivateRoom": 50.7,
+      "accom1star": 57.08,
+      "accom2star": 64.25,
+      "accom3star": 85.66,
+      "accom4star": 114.54,
+      "foodStreet": 41.17,
+      "foodBudget": 77.22,
+      "foodMid": 177.3,
+      "foodHigh": 354.6,
+      "drinkCoffee": 4.55,
+      "drinkLocalBeer": 4.23,
+      "drinkCocktail": 11.44,
+      "drinksNone": 9.11,
+      "drinksLight": 17.55,
+      "drinksModerate": 48.9,
+      "drinksHeavy": 79.59,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 82.94,
+      "activitiesHigh": 208.76
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 27,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 62,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 124,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 12,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 73,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Tel Aviv-Yafo. May 2026. Prices in Tel Aviv-Yafo",
+        "evidenceText": "Cappuccino (Regular Size)  | ₪16.88  | 12.00-25.00",
+        "query": "site:numbeo.com/cost-of-living/in/Tel-Aviv-Yafo \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Tel Aviv-Yafo. May 2026. Prices in Tel Aviv-Yafo",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₪33.00  | 25.00-40.00",
+        "query": "site:numbeo.com/cost-of-living/in/Tel-Aviv-Yafo \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Middle East",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 23.29,
+          "upperAud": 77.96,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 27.89,
+          "upperAud": 73.52,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 31.39,
+          "upperAud": 82.76,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 35.33,
+          "upperAud": 93.16,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 47.11,
+          "upperAud": 124.21,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 63,
+          "upperAud": 166.09,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 22.64,
+          "upperAud": 59.69,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 50.19,
+          "upperAud": 104.25,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 115.25,
+          "upperAud": 239.36,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 230.49,
+          "upperAud": 478.71,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.5,
+          "upperAud": 6.6,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.01,
+          "upperAud": 13.21,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 9.65,
+          "upperAud": 25.45,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 26.9,
+          "upperAud": 70.91,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 43.77,
+          "upperAud": 115.41,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 22.31,
+          "upperAud": 46.33,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 135.69,
+          "upperAud": 281.83,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 47.113,
+          "upperAud": 124.207,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 25.0965,
+          "upperAud": 52.1235,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 57.6225,
+          "upperAud": 119.67750000000001,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 115.245,
+          "upperAud": 239.35500000000002,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 11.154,
+          "upperAud": 23.166,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 26.9555,
+          "upperAud": 55.984500000000004,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 67.847,
+          "upperAud": 140.913,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:50:00.000Z",
+          "completedAt": "2026-08-13T16:57:20.115Z",
+          "durationMs": 440000,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 85.66,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 88.65,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 177.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 104.38,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      }
+    ],
+    "materializationHash": "f5a01102616e6a388371fb78973eae9b1e2344e0fc5c6c9f6979ea9bea364519",
+    "calls": [
+      {
+        "city": "Tel Aviv",
+        "country": "Israel",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-006-07-tel-aviv",
+        "agentId": "delegated-phase9-batch-006-07-tel-aviv",
+        "rawSha256": "258dcb37544ea978032931c2feb100614bdb612728b495af147d45d2d646f1cd",
+        "telemetrySha256": "11f72531b12446474977579ea1f87ba080643be8fa688eedbe21496a73219ce5"
+      },
+      {
+        "city": "Tel Aviv",
+        "country": "Israel",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-006-07-tel-aviv",
+        "agentId": "delegated-phase9-batch-006-07-tel-aviv",
+        "rawSha256": "10dde33fd04449848d84d1e0c7c0b6bbf105964d0a40931338e8bf29e9413a38",
+        "telemetrySha256": "85b1fc403799bf631a599c98500b6607f529721766d472ff429d6b6446472b19"
+      },
+      {
+        "city": "Tel Aviv",
+        "country": "Israel",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-006-07-tel-aviv",
+        "agentId": "delegated-phase9-batch-006-07-tel-aviv",
+        "rawSha256": "7879bc2677f4d69816ca60e86832d1cdf3ffaf4cb59e2700ea8e34dcfc04dd45",
+        "telemetrySha256": "74aac77403af5b446489c0908156012f36d0ca7bed1a6aa8d5d8062e44341f66"
+      }
+    ]
+  }
+}

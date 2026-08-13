@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Marrakech",
+    "country": "Morocco",
+    "region": "Africa",
+    "band": null,
+    "cityId": "marrakech"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.12,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.ca/3Star-Marrakech-Hotels.s30-0-d6084756.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 94.37,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 35.75,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 118,
+        "currency": "CAD",
+        "sourceUrl": "https://www.expedia.ca/3Star-Marrakech-Hotels.s30-0-d6084756.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "Top 10 3 Star Hotels in Marrakech CA $43: Find a Three Star Hotel in Marrakech | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Marrakech\n\nMonth | Price\n--- | ---\nSeptember | CA $118\n\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Marrakech.",
+        "query": "site:expedia.com/Hotel-Search Marrakech Morocco 3 star hotels September 17 2026 September 18 2026 2 adults 1 room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 12,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997",
+        "sourceTitle": "How much does a trip to Marrakech Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $12  | $29  | $66",
+        "query": "site:budgetyourtrip.com/morocco/marrakech \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997",
+        "sourceTitle": "How much does a trip to Marrakech Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $12  | $29  | $66",
+        "query": "site:budgetyourtrip.com/morocco/marrakech \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 66,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997",
+        "sourceTitle": "How much does a trip to Marrakech Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $12  | $29  | $66",
+        "query": "site:budgetyourtrip.com/morocco/marrakech \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 4,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997",
+        "sourceTitle": "How much does a trip to Marrakech Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $4  | $11  | $25",
+        "query": "site:budgetyourtrip.com/morocco/marrakech \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997",
+        "sourceTitle": "How much does a trip to Marrakech Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $4  | $11  | $25",
+        "query": "site:budgetyourtrip.com/morocco/marrakech \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 25,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/morocco/marrakech/trip-cost-2542997",
+        "sourceTitle": "How much does a trip to Marrakech Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $4  | $11  | $25",
+        "query": "site:budgetyourtrip.com/morocco/marrakech \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Marrakech. May 2026. Prices in Marrakech",
+        "evidenceText": "Cappuccino (Regular Size)  | 21.10 MAD  | 12.00-45.00",
+        "query": "site:numbeo.com/cost-of-living/in/Marrakech \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Marrakech. May 2026. Prices in Marrakech",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 60.31 MAD  | 27.81-70.00",
+        "query": "site:numbeo.com/cost-of-living/in/Marrakech \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:07:40.7216521Z",
+        "completedAt": "2026-08-13T17:07:40.7216521Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:07:40.7216521Z",
+        "completedAt": "2026-08-13T17:07:40.7216521Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:07:40.7216521Z",
+        "completedAt": "2026-08-13T17:07:40.7216521Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Marrakech",
+      "country": "Morocco",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-08-marrakech",
+      "agentId": "delegated-phase9-batch-006-08-marrakech",
+      "rawSha256": "95c765c4b59c2a74853daa407c722c8a0074c72421d4dfc5976593c87f46ca15",
+      "telemetrySha256": "32dcc96db6157e184f7cea3ca70b9a08cfcb7f147497ed81dbd112cb114b529f"
+    },
+    {
+      "city": "Marrakech",
+      "country": "Morocco",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-08-marrakech",
+      "agentId": "delegated-phase9-batch-006-08-marrakech",
+      "rawSha256": "3b89d6daa782e13c97cba4368b967b4a3682cbadfbfe3c574352c5cdcd12c6d0",
+      "telemetrySha256": "1688da983d46a071c762022c32447afbe959091208487ad1b1b8a05b5b64f78d"
+    },
+    {
+      "city": "Marrakech",
+      "country": "Morocco",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-08-marrakech",
+      "agentId": "delegated-phase9-batch-006-08-marrakech",
+      "rawSha256": "34c51fb4f8e5da5a6e02ffa743060cbcb3e53c47ff7eb423a3b986d57c4922b8",
+      "telemetrySha256": "41527bc404140646f8c328a9395327b94f1a9f6e919645805da7735ebfcc31b8"
+    }
+  ]
+}

@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "region": "Middle East",
+    "band": null,
+    "cityId": "tel-aviv"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 88.65,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 177.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 104.38,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 27,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 62,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 124,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 12,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 73,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+        "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+        "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Tel Aviv-Yafo. May 2026. Prices in Tel Aviv-Yafo",
+        "evidenceText": "Cappuccino (Regular Size)  | ₪16.88  | 12.00-25.00",
+        "query": "site:numbeo.com/cost-of-living/in/Tel-Aviv-Yafo \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Tel Aviv-Yafo. May 2026. Prices in Tel Aviv-Yafo",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₪33.00  | 25.00-40.00",
+        "query": "site:numbeo.com/cost-of-living/in/Tel-Aviv-Yafo \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:50:00.000Z",
+        "completedAt": "2026-08-13T16:57:20.115Z",
+        "durationMs": 440000,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Tel Aviv",
+      "country": "Israel",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-07-tel-aviv",
+      "agentId": "delegated-phase9-batch-006-07-tel-aviv",
+      "rawSha256": "258dcb37544ea978032931c2feb100614bdb612728b495af147d45d2d646f1cd",
+      "telemetrySha256": "11f72531b12446474977579ea1f87ba080643be8fa688eedbe21496a73219ce5"
+    },
+    {
+      "city": "Tel Aviv",
+      "country": "Israel",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-07-tel-aviv",
+      "agentId": "delegated-phase9-batch-006-07-tel-aviv",
+      "rawSha256": "10dde33fd04449848d84d1e0c7c0b6bbf105964d0a40931338e8bf29e9413a38",
+      "telemetrySha256": "85b1fc403799bf631a599c98500b6607f529721766d472ff429d6b6446472b19"
+    },
+    {
+      "city": "Tel Aviv",
+      "country": "Israel",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-07-tel-aviv",
+      "agentId": "delegated-phase9-batch-006-07-tel-aviv",
+      "rawSha256": "7879bc2677f4d69816ca60e86832d1cdf3ffaf4cb59e2700ea8e34dcfc04dd45",
+      "telemetrySha256": "74aac77403af5b446489c0908156012f36d0ca7bed1a6aa8d5d8062e44341f66"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-batch-report-v1",
+  "batchId": "phase9-batch-006",
+  "generatedAt": "deterministic",
+  "protocolSha256": "fbd9ff5ac97eb0bc1a5bc1941751a25f267a5fa8192732109c08f3325d8a0c2e",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "cities": [
+    "Beijing",
+    "Shanghai",
+    "Hong Kong",
+    "Goa",
+    "Kathmandu",
+    "Amman",
+    "Tel Aviv",
+    "Marrakech",
+    "Nairobi",
+    "Zanzibar"
+  ],
+  "cityCount": 10,
+  "completeMaterializations": 10,
+  "calls": 30,
+  "searches": 100,
+  "retries": 0,
+  "directPageReads": 0,
+  "collectionModes": {
+    "delegated_codex_subagent": 30
+  },
+  "observedMeasures": {
+    "hotel_3star_room_2p": 5,
+    "byt_food_budget_per_person_day": 8,
+    "byt_food_mid_per_person_day": 8,
+    "byt_food_high_per_person_day": 8,
+    "byt_activities_budget_per_person_day": 8,
+    "byt_activities_mid_per_person_day": 8,
+    "byt_activities_high_per_person_day": 8,
+    "cappuccino_1": 3,
+    "domestic_draft_beer_1": 3
+  },
+  "sourceStatuses": {
+    "expedia_3star:complete": 5,
+    "budgetyourtrip_daily_tiers:complete": 48,
+    "numbeo_drinks:complete": 10,
+    "expedia_3star:not_found": 5,
+    "budgetyourtrip_daily_tiers:partial": 6,
+    "numbeo_drinks:partial": 10,
+    "budgetyourtrip_daily_tiers:not_found": 6
+  },
+  "categoryCounts": {
+    "accommodation": {
+      "direct": 5,
+      "fallback": 5
+    },
+    "food": {
+      "direct": 8,
+      "fallback": 2
+    },
+    "drinks": {
+      "direct": 2,
+      "fallback": 8
+    },
+    "activities": {
+      "direct": 8,
+      "fallback": 2
+    }
+  },
+  "gradeDistribution": {
+    "C": 29,
+    "B": 53,
+    "D": 92,
+    "definitional": 10,
+    "A": 6
+  },
+  "allPriorCities": 1,
+  "artifactCandidates": 1,
+  "artifactFraction": 0.1,
+  "artifactRows": [
+    {
+      "city": "Beijing",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Shanghai",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Hong Kong",
+      "artifactCandidate": true,
+      "reason": "all non-definitional tiers are fallback/imputed or grade D"
+    },
+    {
+      "city": "Goa",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Kathmandu",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Amman",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Tel Aviv",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Marrakech",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Nairobi",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Zanzibar",
+      "artifactCandidate": false,
+      "reason": null
+    }
+  ]
+}

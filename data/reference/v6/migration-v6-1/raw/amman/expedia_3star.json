@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Amman",
+  "country": "Jordan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 60,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Amman-Hotels.s30-0-d375.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "Hoteles de 3 estrellas en Ammán, Gobernación de Amán | Expedia",
+      "evidenceText": "Tendencias de precios de propiedades 3 estrellas en Ammán\n\nMes  | Precio\n--- | ---\nSeptiembre  | $60\n\nLos datos de tendencias de precios no incluyen impuestos ni cargos, y están basados en el promedio de las tarifas base por noche para 2 adultos encontradas en los últimos 7 días en nuestro sitio para las propiedades 3 estrellas comúnmente vistos en Ammán.",
+      "query": "site:expedia.com/Hotel-Search Amman Jordan 3 star hotels 2026-09-17 2026-09-18 2 adults 1 room",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": ""
+}

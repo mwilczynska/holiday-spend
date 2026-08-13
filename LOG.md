@@ -3118,3 +3118,14 @@ drinks 4/6 and activities 6/4. Aomori was the only all-prior artifact candidate 
 rule. Expedia was directly observed in 3/10 cities, BudgetYourTrip in 6/10 and Numbeo drinks in 4/10; all other
 source gaps stayed explicit and used the shipped prior cascade. No source failure was converted into a fabricated
 value. The next action is fixed batch 006; the live CSV, holdouts and Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 006 complete - 13 August 2026
+
+The sixth fixed migration batch staged Beijing, Shanghai, Hong Kong, Goa, Kathmandu, Amman, Tel Aviv, Marrakech,
+Nairobi and Zanzibar. Delegated Stage A produced 30 valid raw/telemetry call pairs under the frozen three-call
+contract, with 100 searches, zero retries and zero direct page reads. The shipped Stage B path materialized all ten
+cities and expanded the staged frame to 80/121 cities. Direct/fallback category counts were accommodation 5/5,
+food 8/2, drinks 2/8 and activities 8/2. Hong Kong was the only all-prior artifact candidate (10%), below the 30%
+batch stop rule. Expedia was directly observed in 5/10 cities, BudgetYourTrip in 8/10 and Numbeo drinks in 2/10;
+all remaining source gaps stayed explicit and used the shipped prior cascade. The next action is fixed batch 007; the
+live CSV, holdouts and Phase 11 remain untouched.

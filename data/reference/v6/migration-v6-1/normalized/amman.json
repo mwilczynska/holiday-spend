@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Amman",
+    "country": "Jordan",
+    "region": "Middle East",
+    "band": null,
+    "cityId": "amman"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 80.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Amman-Hotels.s30-0-d375.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 82.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 197.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 20.02,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 45.76,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 92.94,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 60,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Amman-Hotels.s30-0-d375.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "Hoteles de 3 estrellas en Ammán, Gobernación de Amán | Expedia",
+        "evidenceText": "Tendencias de precios de propiedades 3 estrellas en Ammán\n\nMes  | Precio\n--- | ---\nSeptiembre  | $60\n\nLos datos de tendencias de precios no incluyen impuestos ni cargos, y están basados en el promedio de las tarifas base por noche para 2 adultos encontradas en los últimos 7 días en nuestro sitio para las propiedades 3 estrellas comúnmente vistos en Ammán.",
+        "query": "site:expedia.com/Hotel-Search Amman Jordan 3 star hotels 2026-09-17 2026-09-18 2 adults 1 room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441",
+        "sourceTitle": "How much does a trip to Amman Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $24  | $58  | $138",
+        "query": "site:budgetyourtrip.com/jordan/amman \"Food\" \"per person\" \"daily\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 58,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441",
+        "sourceTitle": "How much does a trip to Amman Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $24  | $58  | $138",
+        "query": "site:budgetyourtrip.com/jordan/amman \"Food\" \"per person\" \"daily\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 138,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441",
+        "sourceTitle": "How much does a trip to Amman Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $24  | $58  | $138",
+        "query": "site:budgetyourtrip.com/jordan/amman \"Food\" \"per person\" \"daily\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 14,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441",
+        "sourceTitle": "How much does a trip to Amman Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $14  | $32  | $65",
+        "query": "site:budgetyourtrip.com/jordan/amman \"Entertainment\" \"per person\" \"daily\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 32,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441",
+        "sourceTitle": "How much does a trip to Amman Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $14  | $32  | $65",
+        "query": "site:budgetyourtrip.com/jordan/amman \"Entertainment\" \"per person\" \"daily\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 65,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/jordan/amman/trip-cost-250441",
+        "sourceTitle": "How much does a trip to Amman Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $14  | $32  | $65",
+        "query": "site:budgetyourtrip.com/jordan/amman \"Entertainment\" \"per person\" \"daily\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Amman. Jun 2026. Prices in Amman",
+        "evidenceText": "Cappuccino (Regular Size)  | JD3.17  | 1.25-4.00",
+        "query": "site:numbeo.com/cost-of-living/in/Amman \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Amman. Jun 2026. Prices in Amman",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | JD6.00  | 4.00-6.00",
+        "query": "site:numbeo.com/cost-of-living/in/Amman \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:57:24.7505600Z",
+        "completedAt": "2026-08-13T16:57:24.7505600Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:57:24.7505600Z",
+        "completedAt": "2026-08-13T16:57:24.7505600Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:57:24.7505600Z",
+        "completedAt": "2026-08-13T16:57:24.7505600Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Amman",
+      "country": "Jordan",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-06-amman",
+      "agentId": "delegated-phase9-batch-006-06-amman",
+      "rawSha256": "ce26644bba666e1783fab20fd2c1526dbae5e6261e4de4a46f0046b0615cb9a4",
+      "telemetrySha256": "bc38f24dd6a708758ff97c10990d0cbde65c499ed0659bc34d21f4019b59827c"
+    },
+    {
+      "city": "Amman",
+      "country": "Jordan",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-06-amman",
+      "agentId": "delegated-phase9-batch-006-06-amman",
+      "rawSha256": "15c9e728bac58a0347eb437b6a8caf9debc5c3776970c9c4d0e0bfa9f84457ef",
+      "telemetrySha256": "352208830a857723f9982355ae798418b7e95386d00996002922c77959044f93"
+    },
+    {
+      "city": "Amman",
+      "country": "Jordan",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-06-amman",
+      "agentId": "delegated-phase9-batch-006-06-amman",
+      "rawSha256": "61d9338d74bf931ade388ad63d0048cce3029df171f701b5b06d27d99b26b7fa",
+      "telemetrySha256": "975e7caac30913fbdc50522431839f25542b410d1eee975f70dd6266e0e71f13"
+    }
+  ]
+}

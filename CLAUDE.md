@@ -161,11 +161,11 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 13 August 2026 status: experiment 014 passed 20/20, Phase 8 migration tooling is complete, and Phase 9 is
 active. The frozen protocol and dry run are under `data/reference/v6/migration-v6-1/`; migration batches 001 and
-002, 003, 004 and 005 added 50 cities, so 70/121 are staged and 51 remain. Batches 001 and 002 each had one all-prior
-candidate at 10%; batch 003 had two (Santa Fe (Bantayan) and Siargao, 20%); batch 004 had none; batch 005 had one
-(Aomori, 10%). All remain below the batch stop rule. Batch 004 had 0/10 direct drink categories, which is carried as
-an operational Phase 10 finding; batch 005 had 4/10 direct drink categories. The next exact action is fixed delegated
-batch 006. The live CSV and
+002, 003, 004, 005 and 006 added 60 cities, so 80/121 are staged and 41 remain. Batches 001 and 002 each had one
+all-prior candidate at 10%; batch 003 had two (Santa Fe (Bantayan) and Siargao, 20%); batch 004 had none; batch 005
+had one (Aomori, 10%); batch 006 had one (Hong Kong, 10%). All remain below the batch stop rule. Batch 004 had 0/10
+direct drink categories, which is carried as an operational Phase 10 finding; batch 005 had 4/10 and batch 006 had
+2/10 direct drink categories. The next exact action is fixed delegated batch 007. The live CSV and
 holdouts remain untouched.
 
 Phase 7F lifecycle repair is complete. Experiment 013 is now immutable failed evidence: 32 validated experiment-012
@@ -174,7 +174,7 @@ complete cities. A duplicate Prague assignment invalidated two calls; the result
 numeric 19/20 and 30% thresholds were met. Phase 7H is complete: new experiments use write-once city/source slot
 claims and the evaluator separates tolerated per-city diagnostics from batch-fatal failures. Experiment 014 then passed
 the fresh immutable canary at 20/20 complete cities, zero artifact candidates, 60/60 terminal/reusable calls and full
-persistence/API provenance equality. Phase 8 is complete and Phase 9 is active at 70/121 staged; batch 006 is next.
+persistence/API provenance equality. Phase 8 is complete and Phase 9 is active at 80/121 staged; batch 007 is next.
 The live CSV and holdouts remain untouched.
 
 The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
@@ -187,7 +187,7 @@ first provider canary attempt made zero calls and is retained as a credential pr
 and repaired search, date, identity, missingness and partial-file lifecycle defects. Experiment 013 reached a full
 frame but exposed an unguarded duplicate assignment and an aggregate evaluator predicate that is stricter than the
 registered one-city tolerance. Phase 7H repair and its full baseline are complete. The active manifest now points to
-the hashed experiment-014 pass. The exact next action is fixed delegated migration batch 006 through the completed
+the hashed experiment-014 pass. The exact next action is fixed delegated migration batch 007 through the completed
 Phase 8 protocol; no holdout or live CSV access is authorized.
 A small user-key provider smoke remains required before cutover; ≥95% runtime coverage is monitored as an operational
 SLO.

@@ -1,0 +1,2384 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Goa",
+    "country": "India",
+    "region": "South Asia",
+    "band": null,
+    "cityId": "goa"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Goa",
+    "country": "India",
+    "region": "South Asia",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 38.22,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 17.58,
+          "upperAud": 58.86,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 38.28,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 21.05,
+          "upperAud": 55.5,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 43.09,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 23.7,
+          "upperAud": 62.48,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 48.5,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 26.68,
+          "upperAud": 70.33,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 64.67,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 35.57,
+          "upperAud": 93.77,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 86.48,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 47.56,
+          "upperAud": 125.39,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "amountAud": 18.3,
+        "formula": "v6.1 food_street_food tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:mid:food_street_food"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 10.07,
+          "upperAud": 26.54,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 34.32,
+        "formula": "v6.1 food_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:mid:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 108.67,
+        "formula": "v6.1 food_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:mid:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 59.77,
+          "upperAud": 157.57,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "amountAud": 386.07,
+        "formula": "v6.1 food_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:mid:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 212.34,
+          "upperAud": 559.8,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 2.04,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 1.84,
+          "upperAud": 2.24,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 4.08,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 3.67,
+          "upperAud": 4.49,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 7.2,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 6.48,
+          "upperAud": 7.92,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 20.46,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 7.37,
+          "upperAud": 33.55,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 33.72,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 12.14,
+          "upperAud": 55.3,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 2.86,
+        "formula": "v6.1 activities_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:mid:activities_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 1.57,
+          "upperAud": 4.15,
+          "widthPct": 45
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 5.72,
+        "formula": "v6.1 activities_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:mid:activities_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 3.15,
+          "upperAud": 8.29,
+          "widthPct": 45
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 17.16,
+        "formula": "v6.1 activities_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:mid:activities_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 9.44,
+          "upperAud": 24.88,
+          "widthPct": 45
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 64.67,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": 2.04,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.56,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 5.07,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {
+      "hotel_3star_room_2p": "not_found",
+      "byt_food_budget_per_person_day": "not_found",
+      "byt_food_mid_per_person_day": "not_found",
+      "byt_food_high_per_person_day": "not_found",
+      "byt_activities_budget_per_person_day": "not_found",
+      "byt_activities_mid_per_person_day": "not_found",
+      "byt_activities_high_per_person_day": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 38.22,
+      "accomPrivateRoom": 38.28,
+      "accom1star": 43.09,
+      "accom2star": 48.5,
+      "accom3star": 64.67,
+      "accom4star": 86.48,
+      "foodStreet": 18.3,
+      "foodBudget": 34.32,
+      "foodMid": 108.67,
+      "foodHigh": 386.07,
+      "drinkCoffee": 2.04,
+      "drinkLocalBeer": 1.56,
+      "drinkCocktail": 5.07,
+      "drinksNone": 4.08,
+      "drinksLight": 7.2,
+      "drinksModerate": 20.46,
+      "drinksHeavy": 33.72,
+      "activitiesFree": 0,
+      "activitiesBudget": 2.86,
+      "activitiesMid": 5.72,
+      "activitiesHigh": 17.16
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 38.22,
+      "accomPrivateRoom": 38.28,
+      "accom1star": 43.09,
+      "accom2star": 48.5,
+      "accom3star": 64.67,
+      "accom4star": 86.48,
+      "foodStreet": 18.3,
+      "foodBudget": 34.32,
+      "foodMid": 108.67,
+      "foodHigh": 386.07,
+      "drinkCoffee": 2.04,
+      "drinkLocalBeer": 1.56,
+      "drinkCocktail": 5.07,
+      "drinksNone": 4.08,
+      "drinksLight": 7.2,
+      "drinksModerate": 20.46,
+      "drinksHeavy": 33.72,
+      "activitiesFree": 0,
+      "activitiesBudget": 2.86,
+      "activitiesMid": 5.72,
+      "activitiesHigh": 17.16
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 137.5,
+        "currency": "INR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+        "sourceTitle": "Cost of Living in Goa",
+        "evidenceText": "Cappuccino (Regular Size)  | 137.50 ₹  | 40.00-250.00",
+        "query": "site:numbeo.com/cost-of-living/in/Goa \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 105.62,
+        "currency": "INR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+        "sourceTitle": "Cost of Living in Goa",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 105.62 ₹  | 70.00-150.00",
+        "query": "site:numbeo.com/cost-of-living/in/Goa \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "South Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 17.58,
+          "upperAud": 58.86,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 21.05,
+          "upperAud": 55.5,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 23.7,
+          "upperAud": 62.48,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 26.68,
+          "upperAud": 70.33,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 35.57,
+          "upperAud": 93.77,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 47.56,
+          "upperAud": 125.39,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 10.07,
+          "upperAud": 26.54,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 59.77,
+          "upperAud": 157.57,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 212.34,
+          "upperAud": 559.8,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 1.84,
+          "upperAud": 2.24,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 3.67,
+          "upperAud": 4.49,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.48,
+          "upperAud": 7.92,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 7.37,
+          "upperAud": 33.55,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 12.14,
+          "upperAud": 55.3,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 1.57,
+          "upperAud": 4.15,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 3.15,
+          "upperAud": 8.29,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 9.44,
+          "upperAud": 24.88,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "D",
+        "byt_food_mid_per_person_day": "D",
+        "byt_food_high_per_person_day": "D",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 35.56850000000001,
+          "upperAud": 93.7715,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": null,
+        "byt_food_mid_per_person_day": null,
+        "byt_food_high_per_person_day": null,
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": {
+          "lowerAud": 1.836,
+          "upperAud": 2.244,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 1.4040000000000001,
+          "upperAud": 1.7160000000000002,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 1.8252,
+          "upperAud": 8.314800000000002,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 64.67,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": 2.04,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.56,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 5.07,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:37:00.000Z",
+        "completedAt": "2026-08-13T16:39:44.000Z",
+        "durationMs": 164000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:37:00.000Z",
+        "completedAt": "2026-08-13T16:39:44.000Z",
+        "durationMs": 164000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:37:00.000Z",
+        "completedAt": "2026-08-13T16:39:44.000Z",
+        "durationMs": 164000,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 17.58,
+          "upperAud": 58.86,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 21.05,
+          "upperAud": 55.5,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 23.7,
+          "upperAud": 62.48,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 26.68,
+          "upperAud": 70.33,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 35.57,
+          "upperAud": 93.77,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 47.56,
+          "upperAud": 125.39,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 10.07,
+          "upperAud": 26.54,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 59.77,
+          "upperAud": 157.57,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 212.34,
+          "upperAud": 559.8,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 1.84,
+          "upperAud": 2.24,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 3.67,
+          "upperAud": 4.49,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.48,
+          "upperAud": 7.92,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 7.37,
+          "upperAud": 33.55,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 12.14,
+          "upperAud": 55.3,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 1.57,
+          "upperAud": 4.15,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 3.15,
+          "upperAud": 8.29,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 9.44,
+          "upperAud": 24.88,
+          "widthPct": 45
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 137.5,
+          "currency": "INR",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+          "sourceTitle": "Cost of Living in Goa",
+          "evidenceText": "Cappuccino (Regular Size)  | 137.50 ₹  | 40.00-250.00",
+          "query": "site:numbeo.com/cost-of-living/in/Goa \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 105.62,
+          "currency": "INR",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+          "sourceTitle": "Cost of Living in Goa",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 105.62 ₹  | 70.00-150.00",
+          "query": "site:numbeo.com/cost-of-living/in/Goa \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 64.67,
+          "status": "imputed",
+          "evidenceGrade": "D",
+          "intervalPct": 45,
+          "sourceIds": [
+            "v6.1-tier-prior:South Asia:all:accom_3_star"
+          ],
+          "modelVersions": [
+            "city-cost-v6-1-tier-prior-v1"
+          ],
+          "imputedMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "cappuccino_1": {
+          "valueAud": 2.04,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 1.56,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 5.07,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "goa",
+    "city": "Goa",
+    "country": "India",
+    "region": "South Asia",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "55611024e8428ea9f8c7089a05f0dad468ae10aa08003fd43d441c7f9efc92ef",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 38.22,
+      "accomPrivateRoom": 38.28,
+      "accom1star": 43.09,
+      "accom2star": 48.5,
+      "accom3star": 64.67,
+      "accom4star": 86.48,
+      "foodStreet": 18.3,
+      "foodBudget": 34.32,
+      "foodMid": 108.67,
+      "foodHigh": 386.07,
+      "drinkCoffee": 2.04,
+      "drinkLocalBeer": 1.56,
+      "drinkCocktail": 5.07,
+      "drinksNone": 4.08,
+      "drinksLight": 7.2,
+      "drinksModerate": 20.46,
+      "drinksHeavy": 33.72,
+      "activitiesFree": 0,
+      "activitiesBudget": 2.86,
+      "activitiesMid": 5.72,
+      "activitiesHigh": 17.16
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 137.5,
+        "currency": "INR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+        "sourceTitle": "Cost of Living in Goa",
+        "evidenceText": "Cappuccino (Regular Size)  | 137.50 ₹  | 40.00-250.00",
+        "query": "site:numbeo.com/cost-of-living/in/Goa \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 105.62,
+        "currency": "INR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+        "sourceTitle": "Cost of Living in Goa",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 105.62 ₹  | 70.00-150.00",
+        "query": "site:numbeo.com/cost-of-living/in/Goa \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "South Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 17.58,
+          "upperAud": 58.86,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 21.05,
+          "upperAud": 55.5,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 23.7,
+          "upperAud": 62.48,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 26.68,
+          "upperAud": 70.33,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 35.57,
+          "upperAud": 93.77,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 47.56,
+          "upperAud": 125.39,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 10.07,
+          "upperAud": 26.54,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 59.77,
+          "upperAud": 157.57,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 212.34,
+          "upperAud": 559.8,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 1.84,
+          "upperAud": 2.24,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 3.67,
+          "upperAud": 4.49,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.48,
+          "upperAud": 7.92,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 7.37,
+          "upperAud": 33.55,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 12.14,
+          "upperAud": 55.3,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 1.57,
+          "upperAud": 4.15,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 3.15,
+          "upperAud": 8.29,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 9.44,
+          "upperAud": 24.88,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "D",
+        "byt_food_mid_per_person_day": "D",
+        "byt_food_high_per_person_day": "D",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 35.56850000000001,
+          "upperAud": 93.7715,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": null,
+        "byt_food_mid_per_person_day": null,
+        "byt_food_high_per_person_day": null,
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": {
+          "lowerAud": 1.836,
+          "upperAud": 2.244,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 1.4040000000000001,
+          "upperAud": 1.7160000000000002,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 1.8252,
+          "upperAud": 8.314800000000002,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:37:00.000Z",
+          "completedAt": "2026-08-13T16:39:44.000Z",
+          "durationMs": 164000,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 64.67,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:South Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": 2.04,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.56,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 5.07,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Goa",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:37:00.000Z",
+        "completedAt": "2026-08-13T16:39:44.000Z",
+        "durationMs": 164000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:37:00.000Z",
+        "completedAt": "2026-08-13T16:39:44.000Z",
+        "durationMs": 164000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:37:00.000Z",
+        "completedAt": "2026-08-13T16:39:44.000Z",
+        "durationMs": 164000,
+        "error": null
+      }
+    ],
+    "materializationHash": "696b76a05c006c6834e6cc0cf554aa61e0fe9e240dc260e192f5e540ff3f690c",
+    "calls": [
+      {
+        "city": "Goa",
+        "country": "India",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-006-04-goa",
+        "agentId": "delegated-phase9-batch-006-04-goa",
+        "rawSha256": "d7ee0f92e3129f0b0f3a08b8ff17ee6418fbad3199d0fe9ac8f151f4cecc7952",
+        "telemetrySha256": "bcd83a1b7519034cdde6081fbb8759e30be79e2cf6069af6477aa3d2fae7700c"
+      },
+      {
+        "city": "Goa",
+        "country": "India",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-006-04-goa",
+        "agentId": "delegated-phase9-batch-006-04-goa",
+        "rawSha256": "e8b4486c711edf78b3eeffe103a5fba3b069b922f0c8061c49ba714a0d556ebb",
+        "telemetrySha256": "eb51a90a72ea57d8bd10341e0639123784e53f449acd21f01fe2078ae4b29af3"
+      },
+      {
+        "city": "Goa",
+        "country": "India",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-006-04-goa",
+        "agentId": "delegated-phase9-batch-006-04-goa",
+        "rawSha256": "2dd8cbef559565fa44df6209a149e7776bc1ad36d13cba424899e8e71402d5ce",
+        "telemetrySha256": "aba149a14e57fdede6215bd21ac75c0e71cc58a8a5a6e7c385cb2c0e287f8140"
+      }
+    ]
+  }
+}

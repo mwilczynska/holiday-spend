@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "region": "East Asia",
+    "band": null,
+    "cityId": "hong-kong"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Hong Kong Travel Cost - Average Price of a Vacation to Hong Kong: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nFood^{2}  | $22 (HK$173)  | $54 (HK$422)  | $125 (HK$982)\n\nTravel Costs Last Updated: May 19, 2026",
+        "query": "site:budgetyourtrip.com/china/hong-kong \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Hong Kong Travel Cost - Average Price of a Vacation to Hong Kong: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nFood^{2}  | $22 (HK$173)  | $54 (HK$422)  | $125 (HK$982)\n\nTravel Costs Last Updated: May 19, 2026",
+        "query": "site:budgetyourtrip.com/china/hong-kong \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Hong Kong Travel Cost - Average Price of a Vacation to Hong Kong: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nFood^{2}  | $22 (HK$173)  | $54 (HK$422)  | $125 (HK$982)\n\nTravel Costs Last Updated: May 19, 2026",
+        "query": "site:budgetyourtrip.com/china/hong-kong \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Hong Kong Travel Cost - Average Price of a Vacation to Hong Kong: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nEntertainment^{1}  | $35 (HK$271)  | $95 (HK$742)  | $281 (HK$2,203)\n\nTravel Costs Last Updated: May 19, 2026",
+        "query": "site:budgetyourtrip.com/china/hong-kong \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Hong Kong Travel Cost - Average Price of a Vacation to Hong Kong: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nEntertainment^{1}  | $35 (HK$271)  | $95 (HK$742)  | $281 (HK$2,203)\n\nTravel Costs Last Updated: May 19, 2026",
+        "query": "site:budgetyourtrip.com/china/hong-kong \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Hong Kong Travel Cost - Average Price of a Vacation to Hong Kong: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nEntertainment^{1}  | $35 (HK$271)  | $95 (HK$742)  | $281 (HK$2,203)\n\nTravel Costs Last Updated: May 19, 2026",
+        "query": "site:budgetyourtrip.com/china/hong-kong \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Hong Kong. May 2026. Prices in Hong Kong",
+        "evidenceText": "Cappuccino (Regular Size)  | HK$39.16  | 25.00-50.00",
+        "query": "site:numbeo.com/cost-of-living/in/Hong-Kong \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Hong Kong. May 2026. Prices in Hong Kong",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | HK$50.58  | 30.00-88.00",
+        "query": "site:numbeo.com/cost-of-living/in/Hong-Kong \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:40:54.684Z",
+        "completedAt": "2026-08-13T16:40:57.184Z",
+        "durationMs": 2500,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:40:57.184Z",
+        "completedAt": "2026-08-13T16:41:00.684Z",
+        "durationMs": 3500,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:41:00.684Z",
+        "completedAt": "2026-08-13T16:41:02.784Z",
+        "durationMs": 2100,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Hong Kong",
+      "country": "Hong Kong",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-03-hong-kong",
+      "agentId": "delegated-phase9-batch-006-03-hong-kong",
+      "rawSha256": "a37e2ce617d77f52203c9fe89f6afe8e68a586ca7745df48db7e7c3c5141035d",
+      "telemetrySha256": "450c5c2125578af655761e2c2be522623cfb51fa791638dca4c786bef87d30b2"
+    },
+    {
+      "city": "Hong Kong",
+      "country": "Hong Kong",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-03-hong-kong",
+      "agentId": "delegated-phase9-batch-006-03-hong-kong",
+      "rawSha256": "f439e8706f47c07ada4416163825b3941678c2f59c83ded230b64810c7f7c604",
+      "telemetrySha256": "998627c322d79531d22b6d9f08a09ed82a29d294ebc7de9604803048fcb24ebc"
+    },
+    {
+      "city": "Hong Kong",
+      "country": "Hong Kong",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-03-hong-kong",
+      "agentId": "delegated-phase9-batch-006-03-hong-kong",
+      "rawSha256": "46abd24a6ecf793c6eabf2719497cab56282be25a3ccec640895296103ff8a3e",
+      "telemetrySha256": "6fa11364fb87fec9d8eddb3d13784bd7d880dffce5e0b806e7fc480e0217bb95"
+    }
+  ]
+}

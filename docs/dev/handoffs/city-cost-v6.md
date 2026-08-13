@@ -7,7 +7,7 @@
 > **13 August 2026 supersession:** Phase 8 is complete. The frozen protocol, checkpoint, call-level reuse ledger,
 > normalized/materialized artifacts, staged CSV, provenance sidecar, import plan and non-live import path were
 > generated and checked; experiment 014 supplied 60/60 validated calls for a 20-city dry run. Phase 9 is active at
-> 70/121 staged, with 51 cities remaining after batches 001–005. The next exact action is fixed delegated batch 006:
+> 80/121 staged, with 41 cities remaining after batches 001–006. The next exact action is fixed delegated batch 007:
 > collect three bounded source calls per city, run inventory before materialization, materialize through
 > `materializeCityCostV61`, run the full baseline, and commit/push that batch. Do not read a holdout or write the live
 > CSV. This dated entry supersedes older handoff paragraphs that describe Phase 8 as blocked, pending or at an earlier
@@ -21,6 +21,15 @@
 > 6/10 and Numbeo drinks in 4/10; all remaining gaps stayed explicit and used the shipped prior cascade. The staged
 > frame is now 70/121; 51 cities remain. The next exact action is fixed batch 006; do not recollect completed cities,
 > read a holdout or write the live CSV.
+
+> **13 August 2026 Phase 9 batch 006:** Batch 006 is complete and staged. Beijing, Shanghai, Hong Kong, Goa,
+> Kathmandu, Amman, Tel Aviv, Marrakech, Nairobi and Zanzibar supplied 30 valid delegated source calls; all ten
+> cities materialized through the shipped v6.1 path. The batch recorded 100 searches, zero retries and zero direct
+> page reads. Direct/fallback counts were accommodation 5/5, food 8/2, drinks 2/8 and activities 8/2. Hong Kong was
+> the only all-prior artifact candidate (10%), below the 30% batch stop rule. Expedia was directly observed in 5/10
+> cities, BudgetYourTrip in 8/10 and Numbeo drinks in 2/10; all other gaps stayed explicit and used the shipped prior
+> cascade. The staged frame is now 80/121; 41 cities remain. The next exact action is fixed batch 007; do not
+> recollect completed cities, read a holdout or write the live CSV.
 
 > **13 August 2026 Phase 9 batch 004:** Batch 004 is complete and staged. Chiang Rai, Bali (Kuta), Bali (Ubud),
 > Bali (Canggu), Jakarta, Yogyakarta, Lombok, Kuala Lumpur, Penang and Langkawi supplied 30 valid delegated source
@@ -73,7 +82,7 @@ reports assignment attempts as unrecorded while still separating telemetry recor
 Experiment 013 then completed its 60-slot frame but remains an immutable failure at 19/20 because a duplicate Prague
 assignment invalidated two call records. Phase 7H repaired the lifecycle/evaluator boundary, and experiment 014 then
 passed the fresh canary at 20/20 with zero artifact candidates and full provenance equality. Phase 8 is complete and
-Phase 9 is active at 70/121 staged; batch 006 is next. This paragraph is retained as historical orientation; the dated
+Phase 9 is active at 80/121 staged; batch 007 is next. This paragraph is retained as historical orientation; the dated
 batch-005 supersession above is authoritative.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
@@ -281,7 +290,7 @@ sidecar only.
    the new-city default as one rollback unit.
 
 **Sequence correction:** Phases 7B, 7E and 7G are immutable failed canary history. Phase 7H is complete and experiment
-014 passed the fresh canary, so Phase 8 is complete. Phase 9 is active at 70/121 staged and batch 006 is next. The
+014 passed the fresh canary, so Phase 8 is complete. Phase 9 is active at 80/121 staged and batch 007 is next. The
 user-key smoke remains Phase 7C's external pre-cutover check; it is not required for staging and does not authorize
 cutover by itself.
 

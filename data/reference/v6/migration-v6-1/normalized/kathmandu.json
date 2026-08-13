@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Kathmandu",
+    "country": "Nepal",
+    "region": "South Asia",
+    "band": null,
+    "cityId": "kathmandu"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 37.48,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Kathmandu-Hotels.s30-0-d1938.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 7.15,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/nepal/kathmandu"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 20.02,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/nepal/kathmandu"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 47.19,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/nepal/kathmandu"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/nepal/kathmandu"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/nepal/kathmandu"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 30.03,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/nepal/kathmandu"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Kathmandu"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Kathmandu"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Kathmandu-Hotels.s30-0-d1938.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Kathmandu from $7 | Expedia",
+        "evidenceText": "September  | $28. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Kathmandu.",
+        "query": "site:expedia.com Kathmandu 3-star hotels September 17 2026 September 18 2026 price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 5,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/nepal/kathmandu",
+        "sourceTitle": "Kathmandu Travel Cost - Average Price of a Vacation to Kathmandu: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nFood^{2}  | $5 (NP₨818)  | $14 (NP₨2,038)  | $33 (NP₨4,968)",
+        "query": "site:budgetyourtrip.com Nepal Kathmandu food meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 14,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/nepal/kathmandu",
+        "sourceTitle": "Kathmandu Travel Cost - Average Price of a Vacation to Kathmandu: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nFood^{2}  | $5 (NP₨818)  | $14 (NP₨2,038)  | $33 (NP₨4,968)",
+        "query": "site:budgetyourtrip.com Nepal Kathmandu food meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 33,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/nepal/kathmandu",
+        "sourceTitle": "Kathmandu Travel Cost - Average Price of a Vacation to Kathmandu: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nFood^{2}  | $5 (NP₨818)  | $14 (NP₨2,038)  | $33 (NP₨4,968)",
+        "query": "site:budgetyourtrip.com Nepal Kathmandu food meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/nepal/kathmandu",
+        "sourceTitle": "Kathmandu Travel Cost - Average Price of a Vacation to Kathmandu: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nEntertainment^{1}  | $3 (NP₨392)  | $7 (NP₨1,070)  | $21 (NP₨3,155)",
+        "query": "site:budgetyourtrip.com Kathmandu entertainment activities budget mid-range high-end per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/nepal/kathmandu",
+        "sourceTitle": "Kathmandu Travel Cost - Average Price of a Vacation to Kathmandu: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nEntertainment^{1}  | $3 (NP₨392)  | $7 (NP₨1,070)  | $21 (NP₨3,155)",
+        "query": "site:budgetyourtrip.com Kathmandu entertainment activities budget mid-range high-end per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 21,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/nepal/kathmandu",
+        "sourceTitle": "Kathmandu Travel Cost - Average Price of a Vacation to Kathmandu: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nEntertainment^{1}  | $3 (NP₨392)  | $7 (NP₨1,070)  | $21 (NP₨3,155)",
+        "query": "site:budgetyourtrip.com Kathmandu entertainment activities budget mid-range high-end per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 268.33,
+        "currency": "NPR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Kathmandu",
+        "sourceTitle": "Cost of Living in Kathmandu. Jun 2026. Prices in Kathmandu",
+        "evidenceText": "Cappuccino (Regular Size)  | N₨268.33  | 160.00-550.00",
+        "query": "site:numbeo.com/cost-of-living/in/Kathmandu \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 600,
+        "currency": "NPR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Kathmandu",
+        "sourceTitle": "Cost of Living in Kathmandu. Jun 2026. Prices in Kathmandu",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | N₨600.00  | 300.00-1,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Kathmandu \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:39:57.193Z",
+        "completedAt": "2026-08-13T16:39:57.193Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:39:57.193Z",
+        "completedAt": "2026-08-13T16:39:57.193Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:39:57.193Z",
+        "completedAt": "2026-08-13T16:39:57.193Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Kathmandu",
+      "country": "Nepal",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-05-kathmandu",
+      "agentId": "delegated-phase9-batch-006-05-kathmandu",
+      "rawSha256": "71423771581702925e90fc9a15286505f10f056bf3178da3b84b9aabddec82ac",
+      "telemetrySha256": "b3b3bba3f590b29b0098e61c269231adc9e6ec8676a424327f3e6fa4f94e666a"
+    },
+    {
+      "city": "Kathmandu",
+      "country": "Nepal",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-05-kathmandu",
+      "agentId": "delegated-phase9-batch-006-05-kathmandu",
+      "rawSha256": "bc5d756b6223e7b315c99a1528057ac1885e5507ac2eacd4a8c91426f3dd4392",
+      "telemetrySha256": "1b35717efe6c4a5adea6212677c138290a5d9b32e555d8bbe8e388e7163b1003"
+    },
+    {
+      "city": "Kathmandu",
+      "country": "Nepal",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-05-kathmandu",
+      "agentId": "delegated-phase9-batch-006-05-kathmandu",
+      "rawSha256": "539b0125a0f24dbcb758f4e9ec1e40db578cb306bf0ebc06ec0107b0d3080a29",
+      "telemetrySha256": "85b4b541f14552de924e776d984512a59f79f109b61aabb8218dabb55a3330c6"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Tel Aviv",
+  "country": "Israel",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 27,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+      "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+      "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 62,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+      "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+      "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 124,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+      "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $27  | $62  | $124",
+      "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 12,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+      "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+      "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 29,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+      "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+      "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 73,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv/trip-cost-293394",
+      "sourceTitle": "How much does a trip to Tel Aviv Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12  | $29  | $73",
+      "query": "site:budgetyourtrip.com/israel/tel-aviv/trip-cost-293394 \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "These are BudgetYourTrip traveller-spend source proxies, preserved as displayed and not reinterpreted as menu or ticket prices."
+}

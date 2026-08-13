@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {"status":"stale","value":null,"currency":null,"sourceUrl":null,"sourceTitle":"Cost of Living in Nairobi. May 2026. Prices in Nairobi","evidenceText":"Cappuccino (Regular Size) | KSh320.00 | 120.00-600.00","query":"site:numbeo.com/cost-of-living/in/Nairobi \"Cappuccino (Regular Size)\"","taxStatus":"unknown"},
+    "domestic_draft_beer_1": {"status":"stale","value":null,"currency":null,"sourceUrl":null,"sourceTitle":"Cost of Living in Nairobi. May 2026. Prices in Nairobi","evidenceText":"Domestic Draft Beer (0.5 Liter) | KSh300.00 | 200.00-500.00","query":"site:numbeo.com/cost-of-living/in/Nairobi \"Domestic Draft Beer (0.5 Liter)\"","taxStatus":"unknown"}
+  },
+  "notes": "The canonical Numbeo Nairobi result is explicitly dated May 2026, stale relative to the frozen 2026-09-17 reference date; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

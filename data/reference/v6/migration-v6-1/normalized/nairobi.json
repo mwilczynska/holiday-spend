@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Nairobi",
+    "country": "Kenya",
+    "region": "Africa",
+    "band": null,
+    "cityId": "nairobi"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 66.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Nairobi-Hotels.s30-0-d178290.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 65.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 184.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 50,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Nairobi-Hotels.s30-0-d178290.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Nairobi from $16 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Nairobi\n\nSeptember | $50\n\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Nairobi.",
+        "query": "site:expedia.com \"3Star-Nairobi-Hotels\" Expedia",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+        "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $11 | $13 | $17\nEntertainment^{1} | $18 | $46 | $129",
+        "query": "site:budgetyourtrip.com/kenya/nairobi/trip-cost-nairobi.html Nairobi \"Food & Meals\" \"budget\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+        "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $11 | $13 | $17\nEntertainment^{1} | $18 | $46 | $129",
+        "query": "site:budgetyourtrip.com/kenya/nairobi/trip-cost-nairobi.html Nairobi \"Food & Meals\" \"budget\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 17,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+        "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $11 | $13 | $17\nEntertainment^{1} | $18 | $46 | $129",
+        "query": "site:budgetyourtrip.com/kenya/nairobi/trip-cost-nairobi.html Nairobi \"Food & Meals\" \"budget\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+        "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $11 | $13 | $17\nEntertainment^{1} | $18 | $46 | $129",
+        "query": "site:budgetyourtrip.com/kenya/nairobi/trip-cost-nairobi.html Nairobi \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 46,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+        "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $11 | $13 | $17\nEntertainment^{1} | $18 | $46 | $129",
+        "query": "site:budgetyourtrip.com/kenya/nairobi/trip-cost-nairobi.html Nairobi \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 129,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+        "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $11 | $13 | $17\nEntertainment^{1} | $18 | $46 | $129",
+        "query": "site:budgetyourtrip.com/kenya/nairobi/trip-cost-nairobi.html Nairobi \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Nairobi. May 2026. Prices in Nairobi",
+        "evidenceText": "Cappuccino (Regular Size) | KSh320.00 | 120.00-600.00",
+        "query": "site:numbeo.com/cost-of-living/in/Nairobi \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Nairobi. May 2026. Prices in Nairobi",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | KSh300.00 | 200.00-500.00",
+        "query": "site:numbeo.com/cost-of-living/in/Nairobi \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:00:00.000Z",
+        "completedAt": "2026-08-13T17:00:03.000Z",
+        "durationMs": 3000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:00:04.000Z",
+        "completedAt": "2026-08-13T17:00:07.000Z",
+        "durationMs": 3000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:00:08.000Z",
+        "completedAt": "2026-08-13T17:00:11.000Z",
+        "durationMs": 3000,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-09-nairobi",
+      "agentId": "delegated-phase9-batch-006-09-nairobi",
+      "rawSha256": "63b004c77209da8eb07b1e7a8a6087e723779f18409a8ff714adddb060bc5d7a",
+      "telemetrySha256": "9da291e68afe2a581f89544714a5d1ff7d1eca24bcfdfc4549ebc2338f327e39"
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-09-nairobi",
+      "agentId": "delegated-phase9-batch-006-09-nairobi",
+      "rawSha256": "1d0cb331090fd9d08b3ec0469fca86eedadc321a720fb3fda29de0ca33820534",
+      "telemetrySha256": "442ff1ba43d32d6dc00191b586e8c5fbef01ad5052bcede54219b64ddac365b2"
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-006-09-nairobi",
+      "agentId": "delegated-phase9-batch-006-09-nairobi",
+      "rawSha256": "0dd4e4afa6438399c84926b1cd167682b2d796776990945ffd14971965790b53",
+      "telemetrySha256": "66b5e1b083bcbae239a2fd59e9e355d440085088557d67c97a4d2503274d11b7"
+    }
+  ]
+}

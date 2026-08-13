@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Shanghai",
+  "country": "China",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Shanghai. May 2026. Prices in Shanghai",
+      "evidenceText": "Cappuccino (Regular Size)  | ¥21.64  | 10.00-30.00",
+      "query": "site:numbeo.com/cost-of-living/in/Shanghai \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Shanghai. May 2026. Prices in Shanghai",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ¥8.00  | 5.00-15.00",
+      "query": "site:numbeo.com/cost-of-living/in/Shanghai \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}
