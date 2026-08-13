@@ -19,8 +19,12 @@ node scripts/migrate-city-cost-v6-1.mjs assign --city <city> --assignment-id <id
 node scripts/migrate-city-cost-v6-1.mjs materialize [--cities ...]
 node scripts/migrate-city-cost-v6-1.mjs check
 node scripts/import-city-cost-v6-1-provenance.mjs --check
+node scripts/rehearse-city-cost-v6-1-cutover.mjs --check
 ```
 
 `materialize` refuses a city with a pending source slot. `check` and assignment `--check` are read-only. The
 provenance importer refuses partial sidecars and the live database; a non-live database path is required for a
-test import. No Phase 11 cutover is implied by any artifact in this directory.
+test import. It resolves frozen city IDs with canonical country aliases, rejects ambiguous identity matches and
+duplicate migration keys, and reuses matching estimates on replay. The rehearsal copies the local database to a
+temporary path, proves insert/replay/rollback and API provenance round-trip, and checks that the live CSV is unchanged.
+No Phase 11 cutover is implied by any artifact in this directory.

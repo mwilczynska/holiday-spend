@@ -9,6 +9,15 @@ Cairns. Phase 10 generated `data/reference/v6/migration-v6-1/impact-report.{json
 not validation. The exact next action is owner review before Phase 11. Do not read a holdout, write the live CSV or
 change the default flag.
 
+**13 August 2026 Phase 10.5 release-hardening status:** The non-live provenance import boundary is being hardened
+before owner review. The importer must resolve canonical country aliases, prefer the frozen city ID, reject ambiguous
+identity matches and duplicate migration keys, and be idempotent. The temporary-database rehearsal covers 121 inserts,
+121 reuses on replay, API-visible v6.1 provenance, rollback and live-CSV immutability. `food_high_end` is explicitly
+the high/luxury BudgetYourTrip daily food tier x2, not the historical mid-range multiplier; its staged shift is an
+operational semantics finding, not a tuning target. Run the full baseline, commit/push, then obtain the external
+3-5-city user-key smoke and owner approval. Do not execute Phase 11, read a holdout, write the live CSV or change the
+default flag.
+
 Phase 8 is complete as of 13 August 2026: the frozen protocol and resumable tooling were dry-run on all 20
 experiment-014 canary cities, producing deterministic staged/provenance/import-plan artifacts with live writes
 forbidden. Phase 9 is active for the remaining 11 cities. The next action is fixed delegated migration batch 010;
@@ -289,6 +298,7 @@ Phase 8 migration checks are now:
 ```text
 node scripts/migrate-city-cost-v6-1.mjs check
 node scripts/import-city-cost-v6-1-provenance.mjs --check
+node scripts/rehearse-city-cost-v6-1-cutover.mjs --check
 npx vitest run src/lib/city-cost-v6-1-migration.test.ts
 ```
 

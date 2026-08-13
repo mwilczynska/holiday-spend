@@ -7,6 +7,15 @@ live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 **Last reviewed:** 12 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 
+**13 August 2026 Phase 10.5 release hardening:** The 121-city staged artifact and impact report are complete but
+remain non-live. The current pass hardens the provenance import path: canonical country aliases are accepted, frozen
+city IDs are preferred, ambiguous matches and duplicate migration imports fail closed, and replay is idempotent. A
+temporary-database rehearsal covers 121 inserts, 121 reuses, API-visible v6.1 provenance and rollback without changing
+the live CSV. The active `food_high_end` definition is `2 x` the BYT high/luxury daily food tier; its +126.0% staged
+shift versus v1 is a semantics finding, not a tuning target. Exact next action is the full baseline and commit/push,
+then the external 3-5-city user-key provider/database/API smoke and owner approval before Phase 11. Live CSV,
+holdouts and global/default flag remain untouched.
+
 **13 August 2026 Phase 9/10 completion:** Batch 011 completed Cairns and the frozen frame is now 121/121 staged and
 materialized. Phase 10 generated the complete operational impact report at
 `data/reference/v6/migration-v6-1/impact-report.md` and `.json`. It reports representative basket changes of +26.0%

@@ -24,13 +24,40 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
     paragraphs: [
       'v6.1 is the active feature-flagged path for new-city generation. It makes exactly three bounded search-snippet calls per city: Expedia supplies the 3-star accommodation level, BudgetYourTrip supplies per-person daily food and activity tiers, and Numbeo supplies cappuccino and domestic draft beer. Server-side deterministic code converts currencies and derives all 19 product fields; the language model never performs the arithmetic.',
       'Food and activities are BudgetYourTrip source-backed daily-spend estimates, drinks are explicit consumption presets, and street food plus cocktails are modelled with disclosed grades and intervals. Every value carries evidence basis, grade, interval, source identifiers, and imputed measures. Missing category data uses one direct-to-regional-to-global tier-vector fallback. The six accommodation tiers retain genuine 25-city development accuracy evidence; other categories are not claimed as independently validated.',
-      'v6.1 is currently enabled only behind CITY_COST_METHODOLOGY_V6=true while the runtime canary and staged 121-city migration are completed. The migration is approved in principle, but the live CSV remains unchanged until the staged artifact passes review; unsetting the flag retains the v1 path, and all v6.0 holdouts remain closed. The reachable release replay covers 25 development cities × 19 tiers; its v1 comparison is informational rather than ground-truth validation.',
+      'The v6.1 runtime canary and staged 121-city migration are complete. CITY_COST_METHODOLOGY_V6=true enables v6.1 for new-city generation, while the live 121-city CSV remains v1 until the staged artifact receives explicit cutover approval. Unsetting the flag retains the v1 path, and all v6.0 holdouts remain closed. The v1 comparison is an operational impact report, not ground-truth validation.',
     ],
     bullets: [
       'Three source calls and at most ten searches per city; zero direct page reads',
       'All values are AUD for two travellers per day or night, then scaled at runtime',
       'Grades: A observed, B source proxy, C ladder/modelled, D fallback or compatibility estimate',
       'No new holdout or coefficient refit is part of v6.1; existing-city migration is staged and requires an explicit cutover review',
+    ],
+  },
+  {
+    title: 'v6.1 Source-Native Derivations',
+    summary: 'The active implementation keeps all 19 planner tiers while deriving each from a bounded source spine or an explicit model.',
+    codeBlocks: [
+      [
+        'accom_3_star = Expedia 3-star room in AUD',
+        'accom_4_star / 2_star / 1_star / private / dorm = fitted ladder x accom_3_star',
+        'food_budget / mid_range / high_end = 2 x matching BYT daily food tier',
+        'food_street_food = disclosed compatibility model from the food budget tier',
+        'drinks_none = 2 x cappuccino',
+        'drinks_light = 2 x cappuccino + 2 x domestic beer',
+        'drinks_moderate = 2 x cappuccino + 4 x domestic beer + 2 x cocktail',
+        'drinks_heavy = 2 x cappuccino + 6 x domestic beer + 4 x cocktail + 2 x wine glass',
+        'activities_free = 0; activities_budget / mid / high = 2 x matching BYT daily activity tier',
+      ].join('\\n'),
+    ],
+    paragraphs: [
+      'The active food_high_end field is the high/luxury daily food-and-meals spend published by BudgetYourTrip, doubled for two travellers. It is not the historical food_mid_range x 1.50 formula. The large staged difference from v1 is therefore a product-semantics difference, not a calibration target.',
+      'Every materialized field retains its evidence grade, interval, source facts, missingness and prior basis. Direct source gaps use the documented regional/global category fallback and remain visible as D-grade or imputed output. The staged migration is review-only until the owner authorizes the coordinated CSV, provenance import and new-city-default cutover.',
+    ],
+    bullets: [
+      'Exactly three bounded source calls per city; at most ten searches and zero direct page reads',
+      'All monetary values are AUD for two travellers per day or night',
+      'Food high-end is BYT high/luxury daily spend, not a legacy multiplier',
+      'The staged 121-city artifact is not live and has not been imported into the production database',
     ],
   },
   {

@@ -4,6 +4,17 @@
 
 **Branch:** `feat/city-cost-methodology-v6`
 
+> **13 August 2026 Phase 10.5 hardening:** Phase 10 remains complete and the 121-city staged migration is still
+> review-only. The current pass fixes the non-live provenance import boundary: country aliases are resolved through
+> canonical metadata, exact frozen city IDs win over ambiguous name matches, duplicate migration imports are rejected,
+> and repeated imports reuse the existing estimate instead of inserting a second row. The temporary-database rehearsal
+> verifies 121 inserts, 121 reuses on replay, 121 v6.1 provenance round-trips through the API parser, rollback fidelity
+> and an unchanged live CSV. The active `food_high_end` meaning is BYT high/luxury daily food spend x2, not the old
+> mid-range multiplier; its large staged shift is an operational semantics finding, not a tuning target.
+> Exact next action: run the full baseline, commit and push the hardening pass; then obtain the external 3-5-city
+> user-key provider/database/API smoke and owner approval. Do not execute Phase 11, write the live CSV, access a
+> holdout or change the global/default flag.
+
 > **13 August 2026 Phase 9/10 completion:** Batch 011 staged Cairns and completed the frozen 121-city frame:
 > 121/121 cities materialized, with three terminal source records for Cairns, 10 searches, zero retries and zero
 > direct page reads. Cairns had direct accommodation and food, stale Numbeo drinks, and explicit activity missingness

@@ -159,6 +159,15 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
+**13 August 2026 Phase 10.5 release hardening:** Phase 10 has completed the 121-city staged migration and impact
+report; the artifact remains review-only. The non-live provenance importer now canonicalizes country aliases, prefers
+the frozen city ID, rejects ambiguous identities and duplicate migration imports, and reuses matching rows on replay.
+Its temporary-database rehearsal verifies 121 inserts, 121 idempotent reuses, API-visible v6.1 provenance, rollback
+fidelity and an unchanged live CSV. `food_high_end` means `2 x` BudgetYourTrip's high/luxury daily food tier; its
+large staged difference from v1 is a semantic impact finding, not a tuning target. The exact next action is the full
+verification baseline, then the external 3-5-city user-key provider/database/API smoke and owner approval before
+Phase 11. Holdouts, the live CSV and the global/default flag remain untouched.
+
 **13 August 2026 Phase 9/10 completion:** The final Cairns batch completed the frozen migration frame at 121/121
 cities. Phase 10 generated `data/reference/v6/migration-v6-1/impact-report.{json,md}`; it is an operational v1 versus
 v6.1 comparison, not ground-truth validation. Budget, mid-range and high-end representative baskets are +26.0%,
@@ -314,6 +323,7 @@ node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
 node scripts/generate-v6-1-migration-impact-report.mjs --check (only after all 121 staged rows exist)
+node scripts/rehearse-city-cost-v6-1-cutover.mjs --check # non-live temporary database only
 node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
 node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check

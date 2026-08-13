@@ -373,3 +373,15 @@ fresh delegated 20-city operational canary must establish at least 19/20 complet
 source coverage separately from all-prior availability. A later 3–5-city user-key smoke tests provider
 authentication/search and the real database/API boundary before cutover. Runtime ≥95% is a post-release SLO,
 not a statistical claim inferred from 19/20.
+
+### 13 August 2026 - clarify the v6.1 high-end food estimand and harden staged import
+
+The active `food_high_end` field is `2 x` BudgetYourTrip's high/luxury **daily food-and-meals spend per
+person**, not the historical `food_mid_range x 1.50` compatibility formula. The +126.0% median staged
+difference versus v1 is therefore an operational semantics finding, not evidence that v6.1 should be tuned
+toward v1. The staged import path must preserve this source-native meaning and its grade/interval provenance.
+
+The non-live provenance importer now resolves frozen city IDs with canonical country aliases, rejects ambiguous
+identity matches and duplicate migration keys, and reuses matching estimates on replay. These safeguards were
+verified on a temporary database; they do not authorize a live CSV/database cutover. Phase 11 still requires the
+external 3-5-city user-key provider/database/API smoke and owner approval.

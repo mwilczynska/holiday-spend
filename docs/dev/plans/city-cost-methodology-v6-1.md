@@ -5,6 +5,18 @@
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
 
+> **13 August 2026 Phase 10.5 release hardening:** Phases 7-10 are complete and the staged 121-city artifact is ready
+> for review. This hardening pass confirms the product meaning of `food_high_end`: it is the high/luxury
+> BudgetYourTrip daily food-and-meals tier doubled for two travellers, not the historical `food_mid_range x 1.50`
+> formula. The resulting +126.0% median staged difference versus v1 is an operational semantics finding, not a
+> tuning target. The non-live provenance importer now resolves canonical country aliases, prefers the frozen city ID,
+> rejects ambiguous identity matches and duplicate migration imports, and is idempotent. A temporary-database rehearsal
+> proves 121 inserts, a second run with 121 reuses, 121 API-visible provenance round-trips, rollback fidelity and an
+> unchanged live CSV. No live database, CSV, holdout or feature-flag cutover was performed.
+> Exact next action: run the complete baseline, commit and push this hardening pass, then obtain the external 3-5-city
+> user-key provider/database/API smoke and owner approval before Phase 11. Do not enable the global flag or replace the
+> live CSV in this phase.
+
 > **13 August 2026 Phase 9/10 completion:** Batch 011 staged Cairns and completed the 121/121 frozen frame. Its three
 > source records used 10 searches, zero retries and zero direct page reads; accommodation and food were observed, drinks
 > were stale, and activity evidence was explicit missingness because BYT's result was per-item rather than daily. Two
@@ -113,6 +125,7 @@
 - [x] Generate deterministic staged CSV, provenance sidecar and import plan; add idempotence and safe-output checks.
 - [x] Collect and materialize the remaining 1 city in fixed, committed batches.
 - [x] Generate the complete Phase 10 operational-impact report; owner review remains outstanding.
+- [x] Rehearse the non-live provenance import, API round-trip, idempotent replay and rollback on a temporary database.
 - [ ] Obtain the external user-key transport/database/API smoke before any Phase 11 cutover.
 
 This is the active implementation plan. It supersedes the unreachable all-19 independent-validation
@@ -537,6 +550,7 @@ node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
 node scripts/generate-v6-1-migration-impact-report.mjs --check (only after all 121 staged rows exist)
+node scripts/rehearse-city-cost-v6-1-cutover.mjs --check
 node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
 node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check

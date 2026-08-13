@@ -21,6 +21,20 @@ Read
 The preflight record is `experiments/010-v6-1-runtime-canary/`; it is not runtime coverage evidence and must
 not be rerun or mutated.
 
+## Current release-hardening status - 13 August 2026
+
+Phase 10 is complete and the staged 121-city artifact is awaiting owner review. Phase 10.5 is a non-live
+integration hardening pass: the provenance importer canonicalizes country aliases, resolves the frozen city ID before
+falling back to a unique name/country match, rejects ambiguous identities and duplicate migration keys, and reuses
+matching estimates on replay. The temporary-database rehearsal verifies 121 inserts, 121 idempotent reuses, 121
+methodology/grade/interval/anchor/telemetry/input-snapshot/prior-basis round-trips through the API parser, rollback
+fidelity and an unchanged live CSV. The importer never targets `data/travel.db` or the live CSV.
+
+The current product decision is that `food_high_end` means `2 x` BudgetYourTrip's high/luxury daily food-and-meals
+tier. Its large operational difference from v1 is a semantic difference between methods, not a reason to tune v6.1
+toward v1. The next action is the complete baseline, followed by the external 3-5-city user-key smoke and owner
+approval before Phase 11. Holdouts and the global/default flag remain untouched.
+
 ## Active v6.1 simplification
 
 The v6.1 source spine is Expedia 3-star, BudgetYourTrip's three daily food plus three daily activity tiers,

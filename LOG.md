@@ -3209,3 +3209,25 @@ permission to tune v6.1 toward v1. Staged CSV SHA-256 is
 
 Phase 9 and Phase 10 are complete. The exact next action is owner review of the impact report before Phase 11.
 The live CSV, holdouts, coefficients and default feature flag remain untouched.
+
+### v6.1 Phase 10.5 release hardening - 13 August 2026
+
+The non-live provenance import rehearsal exposed and fixed three integration defects before any production write.
+First, the staged sidecar records Dubai as `UAE` while the database stores `United Arab Emirates`; the importer now
+uses canonical country metadata and accepts that alias. Second, the importer originally resolved cities only by name
+and country, which selected the wrong duplicate Lombok row despite the frozen city ID; it now prefers an exact city-ID
+match, validates its name/country, and falls back only to a unique canonical name/country match. Third, repeated
+imports previously had no migration-key reuse path; the importer now persists the protocol/import key, rejects
+duplicates or protocol/source mismatches, and reactivates the existing estimate on replay. The rehearsal also fixed
+the database column mapping for the underscore-named accommodation fields.
+
+The temporary-database rehearsal passed: the first import inserted 121 estimates (42 to 163), the second inserted
+zero and reused all 121, all 121 v6.1 city links round-tripped methodology version, 19 grades, 19 intervals, anchors,
+three collection telemetry records, input snapshots and prior basis through the API provenance parser, rollback
+fidelity was verified, and the live CSV hash was unchanged. This is persistence/integration evidence, not a cutover.
+
+The Phase 10 `food_high_end` signal is recorded as a product-semantics decision: the active field is twice
+BudgetYourTrip's high/luxury daily food tier, not the historical mid-range x1.50 formula. Its +126.0% median staged
+difference versus v1 is therefore an operational impact finding, not a tuning target. The next action is the full
+verification baseline, then the external 3-5-city user-key provider/database/API smoke and owner approval. No
+holdout, live CSV, coefficient or global/default flag was changed.
