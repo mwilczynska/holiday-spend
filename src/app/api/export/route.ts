@@ -4,6 +4,8 @@ import { and, asc, eq, inArray, ne } from 'drizzle-orm';
 import { requireCurrentUserId } from '@/lib/auth';
 import { handleError } from '@/lib/api-helpers';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
   try {
     const userId = await requireCurrentUserId();

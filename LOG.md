@@ -3304,3 +3304,21 @@ operational comparison, not validation; its high-end food and extreme-difference
 not tuning toward v1. The exact next action is the keyed smoke, staged-impact review and city-ID alias reconciliation,
 followed by an explicit Phase 11 cutover decision. No holdout, live CSV, global/default flag or production database
 was changed in this review.
+
+### v6.1 planner call-boundary correction and keyed diagnostic — 14 August 2026
+
+The first post-transport-fix Matsuyama smoke exposed a production-boundary defect: `resolveOrCreatePlannerCity` still
+made a legacy Chat Completions metadata call before entering the v6.1 generator. That fourth call rejected
+`reasoning_effort=max`, so the request never reached the v6.1 source spine. v6.1 now resolves the requested city and
+canonical country deterministically, preserving exactly three source calls; the v1 metadata call remains unchanged and
+regression tests cover both branches.
+
+After that repair, one owner-authorized browser-key Matsuyama run persisted correctly as `llm_city_generation_v6_1`,
+methodology `v6.1`, model `gpt-5.6-luna`, and `reasoningEffort=max`. It retained three source telemetry records with
+one search per source, zero direct page reads and no retries, but Expedia, BudgetYourTrip and Numbeo all returned
+explicit `not_found`; all 18 non-definitional tiers therefore used grade-D priors. This is a successful persistence/
+three-call boundary diagnostic, not passing provider source coverage. The official OpenAI model contract supports Luna
+`reasoning.effort=max`; no mapping to `xhigh` is made. The key was not accessed, copied, logged or stored by Codex.
+Exact next action: complete the baseline, commit/push the boundary fix, then run the remaining bounded keyed smoke
+cities and decide whether repeated explicit not-found results are a provider/source-coverage issue. Holdouts, the live
+CSV, global/default flag and production cutover remain untouched.

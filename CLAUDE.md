@@ -159,13 +159,23 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
-**14 August 2026 current checkpoint:** Phase 10 is complete and pushed at `b5dba09`. The all-19-tier v6.1
-materializer, persistence/API provenance boundary, experiment-014 delegated canary, 121-city staged migration and
-non-live import/rollback rehearsal are complete. The live CSV, canonical existing-city rows and current plans remain
-v1; planner calculations read `cities` numeric fields, and saved plans do not freeze prices. The remaining pre-cutover
-work is one bounded 3–5-city user-key provider/database/API smoke and owner review of the staged operational impact.
-Runtime >=95% is a post-release SLO and remains unmeasured. Do not access holdouts, replace the live CSV, import the
-sidecar into the live database or enable the global/default flag before explicit Phase 11 approval.
+**14 August 2026 current checkpoint:** Phase 10 is complete and pushed. The all-19-tier v6.1 materializer,
+persistence/API provenance boundary, experiment-014 delegated canary, 121-city staged migration and non-live
+import/rollback rehearsal are complete. The v6.1 planner boundary now resolves requested identity deterministically,
+so v6.1 new-city generation spends exactly three source calls rather than a fourth legacy metadata call; v1 retains
+its legacy behavior. A first post-fix keyed Matsuyama row persisted as v6.1 with `max` reasoning, three source records,
+one search each and zero direct reads, but all measures were explicit `not_found` and the row is all-prior diagnostic,
+not passing provider coverage. The live CSV, canonical existing-city rows and current plans remain v1; planner
+calculations read `cities` numeric fields, and saved plans do not freeze prices. Complete the baseline, commit/push the
+boundary fix, run the remaining bounded keyed smoke cities and review the staged impact before explicit Phase 11
+approval. Runtime >=95% remains an unmeasured post-release SLO. Do not access holdouts, replace the live CSV, import
+the sidecar into the live database or enable the global/default flag before approval.
+
+**14 August 2026 planner call-boundary correction:** The v6.1 UI smoke initially failed with the legacy OpenAI
+Chat Completions `reasoning_effort` error because planner metadata resolution ran before generation even when the v6.1
+flag was enabled. That path now uses the requested city/canonical country identity for v6.1 and has regression coverage;
+the legacy metadata provider call remains for v1 rollback. The browser-supplied key was never read, copied or stored by
+Codex.
 
 **13 August 2026 provider-model UI correction:** The older smoke note below said that `gpt-5.6-luna`,
 `gpt-5.6-sol` and `gpt-5.6-terra` were Codex/delegated runtime names rather than confirmed application models. That

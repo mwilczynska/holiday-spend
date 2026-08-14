@@ -9,11 +9,16 @@ live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 
 **14 August 2026 current checkpoint:** Phase 10 is complete and the v6.1 121-city artifact is staged but not live.
 The deterministic 19-tier implementation, persistence/API provenance boundary, experiment-014 delegated canary and
-non-live import/rollback rehearsal are complete. The canonical existing city rows and current plans still use v1
-because the planner reads `cities` numeric fields; plan snapshots store tier selections, not frozen prices. The
-external 3–5-city user-key provider/database/API smoke and owner review of the staged impact report remain before
-Phase 11. Exact next action: run that bounded smoke, review the staged impact and reconcile any city-ID aliases.
-Do not touch holdouts, the live CSV or the global/default flag before explicit cutover approval.
+non-live import/rollback rehearsal are complete. A production-boundary defect has now been fixed: v6.1 new-city
+creation no longer spends a fourth legacy metadata LLM call before its three source calls. It uses the requested city
+identity plus canonical country metadata, while v1 retains the metadata call. The first post-fix keyed Matsuyama smoke
+persisted as `v6.1` with `reasoningEffort=max`, three source telemetry records, one search per source and zero direct
+reads, but all three sources returned explicit `not_found`, so it is diagnostic/all-prior and not a passing provider
+coverage smoke. The canonical existing city rows and current plans still use v1 because the planner reads `cities`
+numeric fields; plan snapshots store tier selections, not frozen prices. Exact next action: complete the baseline and
+commit/push this call-boundary fix, then run the remaining bounded keyed smoke cities, review the staged impact and
+reconcile city-ID aliases. Do not touch holdouts, the live CSV or the global/default flag before explicit cutover
+approval.
 
 **14 August 2026 keyed-smoke correction (historical; superseded by the current checkpoint above):** An owner-authorized Matsuyama smoke selected live `gpt-5.6-luna` with
 `Maximum` reasoning but did not persist a city, so it remains diagnostic and does not satisfy the provider/search

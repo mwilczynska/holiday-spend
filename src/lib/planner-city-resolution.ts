@@ -10,6 +10,7 @@ import {
   resolveCountryCreationDefaults,
   slugifyId,
 } from '@/lib/country-metadata';
+import { isCityCostV6Enabled } from '@/lib/city-generation';
 import type { GenerateAndPersistCityEstimateInput } from '@/lib/city-generation-service';
 
 const plannerCityMetadataSchema = z.object({
@@ -158,6 +159,25 @@ Rules:
   }
 }
 
+/**
+ * v6.1 has exactly three source calls per new city. Metadata is resolved from
+ * the user's requested city/country and the canonical country table instead
+ * of spending a fourth legacy LLM call before the v6.1 spine runs.
+ */
+export function buildV61PlannerMetadata(input: Pick<ResolveOrCreatePlannerCityInput, 'cityName' | 'countryName'>) {
+  return {
+    city: normalizeFreeText(input.cityName),
+    country: normalizeFreeText(input.countryName),
+    confidence_notes: 'v6.1 uses the user-requested city and canonical country metadata; no estimator call is used for identity resolution.',
+  };
+}
+
+export async function resolvePlannerCityMetadataForGeneration(input: ResolveOrCreatePlannerCityInput) {
+  return isCityCostV6Enabled()
+    ? buildV61PlannerMetadata(input)
+    : resolvePlannerCityMetadata(input);
+}
+
 export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCityInput): Promise<ResolveOrCreatePlannerCityResult> {
   const requestedCityName = normalizeFreeText(input.cityName);
   const requestedCountryName = normalizeFreeText(input.countryName);
@@ -190,7 +210,7 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
     };
   }
 
-  const metadata = await resolvePlannerCityMetadata(input);
+  const metadata = await resolvePlannerCityMetadataForGeneration(input);
   const canonicalCityName = normalizeFreeText(metadata.city) || requestedCityName;
   const canonicalCountryName = normalizeFreeText(metadata.country) || requestedCountryName;
 

@@ -5,15 +5,17 @@
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
 
-> **14 August 2026 current checkpoint — Phase 10 complete; Phase 11 pending owner review:** HEAD `b5dba09` is
-> pushed and the verification baseline is green. The 121-city v6.1 migration is complete as a non-live staged CSV,
-> provenance sidecar and import plan; experiment 014 is the passed delegated canary. The v6.1 materializer, persistence
-> adapter, API provenance and dataset display are implemented for all 19 tiers. The external 3–5-city user-key smoke
-> remains outstanding, runtime >=95% is still an unmeasured post-release SLO, and no live CSV, holdout or global/default
-> flag has been changed. Existing planner totals still come from the `cities` database rows, which remain v1 for the
-> canonical 121 cities; saved plans store tier choices rather than frozen prices, so cutover will change their totals.
-> Exact next action: run the bounded user-key provider/database/API smoke, review the staged operational impact report,
-> and obtain explicit owner approval before Phase 11. Do not execute the cutover in this phase.
+> **14 August 2026 current checkpoint — Phase 10 complete; Phase 11 pending owner review:** The 121-city v6.1 migration
+> is complete as a non-live staged CSV, provenance sidecar and import plan; experiment 014 is the passed delegated
+> canary. A live-boundary defect is fixed in the current work: v6.1 new-city creation now resolves identity from the
+> requested city/canonical country and does not spend a fourth legacy metadata call before the exact three source
+> calls. v1 retains its legacy metadata behavior. The first post-fix keyed Matsuyama smoke persisted v6.1 provenance
+> and `reasoningEffort=max`, with three source records, one search each and zero direct reads, but all source measures
+> were explicit `not_found`, producing an all-prior diagnostic rather than a passing provider-coverage result. Runtime
+> >=95% remains an unmeasured post-release SLO; the live CSV, holdouts and global/default flag remain untouched.
+> Existing planner totals still come from v1 `cities` rows, and saved plans store tier choices rather than prices.
+> Exact next action: complete the baseline, commit/push the boundary fix, run the remaining bounded keyed smoke cities,
+> then review the staged impact and obtain explicit owner approval before Phase 11.
 
 > **13 August 2026 Phase 10.5 release hardening:** Phases 7-10 are complete and the staged 121-city artifact is ready
 > for review. This hardening pass confirms the product meaning of `food_high_end`: it is the high/luxury
