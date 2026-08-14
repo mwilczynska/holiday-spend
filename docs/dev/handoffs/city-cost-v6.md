@@ -1,8 +1,18 @@
 # Handoff — City Cost Methodology v6.1
 
-**As at:** 13 August 2026
+**As at:** 14 August 2026
 
 **Branch:** `feat/city-cost-methodology-v6`
+
+> **14 August 2026 current state:** The owner-authorized Matsuyama keyed smoke selected the live `gpt-5.6-luna`
+> model with `Maximum` reasoning but did not persist a city. It is diagnostic, not a passing provider/search smoke.
+> The OpenAI Responses search route now adds the selected reasoning budget to the requested JSON response budget so a
+> high-effort request is not truncated before it can emit the source-contract response. Targeted tests, typecheck,
+> full Vitest, build and the complete v6 verification baseline pass. The non-live cutover rehearsal now scopes its
+> assertions to the frozen 121-city frame while preserving pre-existing diagnostic v6.1 rows. No key was accessed or
+> stored by Codex. Exact next action: commit/push the transport correction, then obtain fresh owner confirmation before
+> one keyed retry and inspect source telemetry plus the v6.1 API/DB provenance round-trip. Do not touch holdouts, the
+> live CSV, or the global/default flag.
 
 > **13 August 2026 provider-model UI correction:** The older smoke note below said that `gpt-5.6-luna`,
 > `gpt-5.6-sol` and `gpt-5.6-terra` were Codex/delegated-only names. That is superseded. A keyed provider model

@@ -85,6 +85,8 @@ function runImport(database: string): ImportResult {
 function verifyImportedProvenance(database: string, sidecar: Sidecar) {
   const db = new Database(database, { readonly: true });
   try {
+    const expectedIds = sidecar.rows.map((row) => row.cityId);
+    const placeholders = expectedIds.map(() => '?').join(', ');
     const rows = db.prepare(`
       SELECT
         c.id as cityId,
@@ -98,7 +100,8 @@ function verifyImportedProvenance(database: string, sidecar: Sidecar) {
       FROM cities c
       INNER JOIN city_estimates ce ON ce.id = c.estimation_id
       WHERE c.estimation_source = ?
-    `).all('llm_city_generation_v6_1') as Array<{
+        AND c.id IN (${placeholders})
+    `).all('llm_city_generation_v6_1', ...expectedIds) as Array<{
       cityId: string;
       estimationId: number;
       estimationSource: string;
@@ -109,11 +112,11 @@ function verifyImportedProvenance(database: string, sidecar: Sidecar) {
       sourcesJson: string | null;
     }>;
 
-    const expectedIds = new Set(sidecar.rows.map((row) => row.cityId));
-    assert(rows.length === sidecar.rows.length, `Expected ${sidecar.rows.length} v6.1 city links, found ${rows.length}.`);
-    assert(new Set(rows.map((row) => row.cityId)).size === rows.length, 'Imported v6.1 city links contain duplicate city IDs.');
-    const unexpectedIds = rows.map((row) => row.cityId).filter((cityId) => !expectedIds.has(cityId));
-    assert(unexpectedIds.length === 0, `Imported v6.1 city links are outside the frozen sidecar frame: ${unexpectedIds.join(', ')}`);
+    assert(rows.length === sidecar.rows.length, `Expected ${sidecar.rows.length} imported v6.1 city links, found ${rows.length}.`);
+    const importedIds = new Set(rows.map((row) => row.cityId));
+    assert(importedIds.size === rows.length, 'Imported v6.1 city links contain duplicate city IDs.');
+    const missingIds = expectedIds.filter((cityId) => !importedIds.has(cityId));
+    assert(missingIds.length === 0, `Imported v6.1 city links are missing frozen cities: ${missingIds.join(', ')}`);
 
     for (const row of rows) {
       assert(row.estimationSource === 'llm_city_generation_v6_1', `City ${row.cityId} lost its v6.1 source label.`);
@@ -156,12 +159,13 @@ function main() {
     const secondFingerprint = databaseFingerprint(rehearsalDb);
     const secondCounts = databaseCounts(rehearsalDb);
 
-    assert(first.insertedCities === 121 && first.reusedCities === 0, 'First import did not insert exactly one row per city.');
+    assert(first.insertedCities + first.reusedCities === 121, 'First import did not process exactly one row per frozen city.');
     assert(second.insertedCities === 0 && second.reusedCities === 121, 'Second import was not idempotent.');
-    assert(firstCounts.estimates === beforeCounts.estimates + 121, 'First import estimate count is incorrect.');
+    assert(firstCounts.estimates === beforeCounts.estimates + first.insertedCities, 'First import estimate count is incorrect.');
     assert(secondCounts.estimates === firstCounts.estimates, 'Second import created duplicate estimate rows.');
     assert(secondFingerprint === firstFingerprint, 'Second import changed the logical database state.');
-    assert(firstCounts.activeV61 === 121 && secondCounts.activeV61 === 121, 'Expected exactly 121 active v6.1 estimates.');
+    assert(firstCounts.activeV61 === beforeCounts.activeV61 + first.insertedCities, 'First import active v6.1 count is incorrect.');
+    assert(secondCounts.activeV61 === firstCounts.activeV61, 'Second import changed the active v6.1 count.');
 
     copyDatabase(beforeDb, rollbackDb);
     assert(databaseFingerprint(rollbackDb) === beforeFingerprint, 'Rollback copy did not restore the pre-import database state.');

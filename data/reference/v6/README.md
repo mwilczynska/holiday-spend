@@ -29,6 +29,12 @@ or search smoke. The search transport fix must be verified with three new cities
 `gpt-5.6-terra` are not present in the returned application provider catalog; they are not assumed to be public API
 model IDs. The live CSV, holdouts and default flag remain untouched.
 
+**14 August 2026 keyed-smoke correction:** An owner-authorized Matsuyama attempt selected a provider-listed
+`gpt-5.6-luna` with maximum reasoning but did not persist a city. The OpenAI Responses search transport now reserves
+the selected hidden-reasoning budget in addition to the source response budget; this is tested but awaits one fresh
+confirmed keyed retry before it can count as a passing provider/search smoke. No key was accessed or stored by Codex.
+The live CSV, holdouts and default flag remain untouched.
+
 ## Current release-hardening status - 13 August 2026
 
 **Provider-model UI correction — 13 August 2026:** The earlier smoke note that treated `gpt-5.6-luna`,

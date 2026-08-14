@@ -3270,3 +3270,22 @@ not treated as public OpenAI API model IDs. The search transport was corrected t
 field while retaining prompt-level JSON and deterministic schema validation. The next action is to generate three
 new cities after that fix and verify actual provider search telemetry plus the DB/API provenance round-trip. No key
 was copied, logged or stored; the live CSV, holdouts and production default remain untouched.
+
+### v6.1 user-key smoke: maximum-effort response budget correction - 14 August 2026
+
+One owner-authorized keyed smoke was attempted after the search transport correction. The UI selected the live
+`gpt-5.6-luna` model with `Maximum` reasoning for Matsuyama, Japan, but the generation did not persist a city. This
+attempt is not a passing provider/search smoke and no further provider call is authorized by this entry.
+
+The search-enabled OpenAI Responses route was using the v6.1 source-call output limit as the entire
+`max_output_tokens` budget. Because selected reasoning consumes output budget before the required JSON can be emitted,
+the route now reserves the configured reasoning budget in addition to the response budget. The behavior is covered by
+transport tests and remains a guarded hypothesis until one fresh, explicitly confirmed keyed retry succeeds. No API key
+was accessed, copied, logged or stored by Codex; the live CSV, holdouts and production default remain untouched.
+Exact next action: complete the baseline, commit/push this transport fix, then obtain fresh owner confirmation for one
+retry and inspect actual source telemetry plus the v6.1 database/API provenance round-trip.
+
+The non-live cutover rehearsal also initially assumed a pristine database. It now verifies the frozen 121-city sidecar
+frame and import delta while allowing retained diagnostic v6.1 rows outside that frame; it passes with 3 pre-existing
+active v6.1 rows and 124 after import, with 121 provenance round-trips, idempotent reuse, rollback and an unchanged
+live CSV.

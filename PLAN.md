@@ -4,8 +4,16 @@ The working document for the current workstream. Confirmed historical results an
 live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 
 **Active workstream:** city cost methodology **v6.1 — coherent 121-city migration**
-**Last reviewed:** 13 August 2026
+**Last reviewed:** 14 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
+
+**14 August 2026 keyed-smoke correction:** An owner-authorized Matsuyama smoke selected live `gpt-5.6-luna` with
+`Maximum` reasoning but did not persist a city, so it remains diagnostic and does not satisfy the provider/search
+smoke. The search-enabled OpenAI Responses transport now reserves the selected reasoning budget in addition to the
+v6.1 JSON response budget; the complete verification baseline now passes, including the non-live cutover rehearsal.
+This is a guarded transport fix, not yet a verified provider result. Exact next action: commit/push, then obtain
+fresh confirmation for one keyed retry and verify observed search telemetry and the database/API provenance round-trip.
+Do not touch holdouts, the live CSV or the global/default flag.
 
 **13 August 2026 provider-model UI correction:** The older smoke note below said that `gpt-5.6-luna`,
 `gpt-5.6-sol` and `gpt-5.6-terra` were Codex-only names. That conclusion is superseded: the provider refresh now

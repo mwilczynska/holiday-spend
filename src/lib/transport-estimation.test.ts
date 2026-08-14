@@ -45,4 +45,40 @@ describe('search-enabled provider transport', () => {
     expect(requestBody?.reasoning).toEqual({ effort: 'high' });
     expect(requestBody).not.toHaveProperty('text');
   });
+
+  it('reserves the selected reasoning budget before the JSON response', async () => {
+    let requestBody: Record<string, unknown> | undefined;
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (_input: string | URL | Request, init?: RequestInit) => {
+        requestBody = JSON.parse(String(init?.body)) as Record<string, unknown>;
+        return new Response(
+          JSON.stringify({
+            model: 'gpt-5.6-luna',
+            output: [
+              { type: 'web_search_call', queries: ['test query'] },
+              {
+                type: 'message',
+                content: [{ type: 'output_text', text: '{"ok":true}' }],
+              },
+            ],
+          }),
+          { status: 200, headers: { 'Content-Type': 'application/json' } },
+        );
+      }),
+    );
+
+    await runJsonPromptWithWebSearch({
+      provider: 'openai',
+      apiKey: 'test-key',
+      model: 'gpt-5.6-luna',
+      reasoningEffort: 'max',
+      maxTokens: 2600,
+      systemPrompt: 'Return JSON only.',
+      userPrompt: 'Search for the source and return JSON.',
+    });
+
+    expect(requestBody?.max_output_tokens).toBe(35368);
+    expect(requestBody?.reasoning).toEqual({ effort: 'max' });
+  });
 });

@@ -107,6 +107,23 @@ function providerSupportsReasoning(
 }
 
 const BROWSE_TRANSPORT_MAX_TOKENS = 900;
+
+function getOpenAiSearchOutputTokenBudget(
+  maxTokens: number | undefined,
+  reasoningEffort: CityGenerationReasoningEffort | undefined,
+) {
+  const responseBudget = maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS;
+  const reasoningBudget =
+    reasoningEffort && reasoningEffort !== 'none'
+      ? getCityGenerationThinkingBudget(reasoningEffort) ?? 0
+      : 0;
+
+  // Responses API max_output_tokens includes hidden reasoning tokens. Reserve
+  // the selected effort's budget so a high/max request is not truncated before
+  // it can emit the JSON response required by the source contract.
+  return responseBudget + reasoningBudget;
+}
+
 const FALLBACK_TRANSPORT_MAX_TOKENS = 650;
 
 function sleep(ms: number) {
@@ -417,7 +434,7 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
       model,
       instructions: params.systemPrompt,
       input: params.userPrompt,
-      max_output_tokens: params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS,
+      max_output_tokens: getOpenAiSearchOutputTokenBudget(params.maxTokens, params.reasoningEffort),
       store: false,
       // OpenAI rejects JSON mode when web_search_preview is enabled. The
       // caller still extracts and validates the JSON object against its own

@@ -177,6 +177,15 @@ smoke. The search transport fix must be verified with three new cities. `gpt-5.6
 `gpt-5.6-terra` are Codex/delegated runtime names not confirmed as public application API model IDs, so they are not
 added to the app catalog. Holdouts, the live CSV and the global/default flag remain untouched.
 
+**14 August 2026 keyed-smoke correction:** One owner-authorized smoke selected the provider-listed `gpt-5.6-luna`
+model with maximum reasoning for Matsuyama, but the generation did not persist a city. It is diagnostic, not a passing
+provider/search smoke. The OpenAI Responses search route now reserves the selected reasoning budget in addition to the
+JSON response budget because hidden reasoning can consume the shared output limit; targeted transport tests, typecheck,
+full tests and build pass. The fix remains unverified against a live provider until one fresh owner-confirmed retry.
+No key was accessed, copied, logged or stored by Codex. The exact next action is the remaining v6 baseline, commit/push,
+then one confirmed retry and a DB/API provenance plus source-telemetry check. Holdouts, the live CSV and the
+global/default flag remain untouched.
+
 **13 August 2026 Phase 10.5 release hardening:** Phase 10 has completed the 121-city staged migration and impact
 report; the artifact remains review-only. The non-live provenance importer now canonicalizes country aliases, prefers
 the frozen city ID, rejects ambiguous identities and duplicate migration imports, and reuses matching rows on replay.
