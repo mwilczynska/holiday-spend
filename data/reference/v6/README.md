@@ -21,6 +21,13 @@ Read
 The preflight record is `experiments/010-v6-1-runtime-canary/`; it is not runtime coverage evidence and must
 not be rerun or mutated.
 
+**14 August 2026 current checkpoint:** Phase 10 is complete and HEAD `b5dba09` is pushed. v6.1 is implemented and
+the 121-city artifact is staged, but the live CSV and existing city rows remain v1. The planner reads `cities` rows,
+not the staged artifact, so existing plans will not use v6.1 until the coordinated Phase 11 cutover; because plan
+snapshots store tier choices rather than prices, that cutover will change existing plan totals. The next action is
+the external 3–5-city user-key provider/database/API smoke followed by owner review of the operational impact report.
+Do not cut over, access a holdout or enable the global/default flag before approval.
+
 **13 August 2026 user-key smoke correction:** Three fresh UI generations used the browser-supplied OpenAI key and
 the default `gpt-5.4-mini`, and their persisted records have the v6.1 provenance shape. All three search-enabled
 source calls nevertheless failed with OpenAI's incompatibility error for `web_search_preview` plus JSON mode, so the
@@ -55,8 +62,8 @@ fidelity and an unchanged live CSV. The importer never targets `data/travel.db` 
 
 The current product decision is that `food_high_end` means `2 x` BudgetYourTrip's high/luxury daily food-and-meals
 tier. Its large operational difference from v1 is a semantic difference between methods, not a reason to tune v6.1
-toward v1. The next action is the complete baseline, followed by the external 3-5-city user-key smoke and owner
-approval before Phase 11. Holdouts and the global/default flag remain untouched.
+toward v1. The next action is the external 3-5-city user-key smoke, followed by owner review of the staged impact
+report and approval before Phase 11. Holdouts and the global/default flag remain untouched.
 
 ## Active v6.1 simplification
 

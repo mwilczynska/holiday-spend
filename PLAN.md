@@ -7,7 +7,15 @@ live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 **Last reviewed:** 14 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 
-**14 August 2026 keyed-smoke correction:** An owner-authorized Matsuyama smoke selected live `gpt-5.6-luna` with
+**14 August 2026 current checkpoint:** Phase 10 is complete and the v6.1 121-city artifact is staged but not live.
+The deterministic 19-tier implementation, persistence/API provenance boundary, experiment-014 delegated canary and
+non-live import/rollback rehearsal are complete. The canonical existing city rows and current plans still use v1
+because the planner reads `cities` numeric fields; plan snapshots store tier selections, not frozen prices. The
+external 3–5-city user-key provider/database/API smoke and owner review of the staged impact report remain before
+Phase 11. Exact next action: run that bounded smoke, review the staged impact and reconcile any city-ID aliases.
+Do not touch holdouts, the live CSV or the global/default flag before explicit cutover approval.
+
+**14 August 2026 keyed-smoke correction (historical; superseded by the current checkpoint above):** An owner-authorized Matsuyama smoke selected live `gpt-5.6-luna` with
 `Maximum` reasoning but did not persist a city, so it remains diagnostic and does not satisfy the provider/search
 smoke. The search-enabled OpenAI Responses transport now reserves the selected reasoning budget in addition to the
 v6.1 JSON response budget; the complete verification baseline now passes, including the non-live cutover rehearsal.

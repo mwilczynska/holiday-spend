@@ -5,6 +5,16 @@
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
 
+> **14 August 2026 current checkpoint — Phase 10 complete; Phase 11 pending owner review:** HEAD `b5dba09` is
+> pushed and the verification baseline is green. The 121-city v6.1 migration is complete as a non-live staged CSV,
+> provenance sidecar and import plan; experiment 014 is the passed delegated canary. The v6.1 materializer, persistence
+> adapter, API provenance and dataset display are implemented for all 19 tiers. The external 3–5-city user-key smoke
+> remains outstanding, runtime >=95% is still an unmeasured post-release SLO, and no live CSV, holdout or global/default
+> flag has been changed. Existing planner totals still come from the `cities` database rows, which remain v1 for the
+> canonical 121 cities; saved plans store tier choices rather than frozen prices, so cutover will change their totals.
+> Exact next action: run the bounded user-key provider/database/API smoke, review the staged operational impact report,
+> and obtain explicit owner approval before Phase 11. Do not execute the cutover in this phase.
+
 > **13 August 2026 Phase 10.5 release hardening:** Phases 7-10 are complete and the staged 121-city artifact is ready
 > for review. This hardening pass confirms the product meaning of `food_high_end`: it is the high/luxury
 > BudgetYourTrip daily food-and-meals tier doubled for two travellers, not the historical `food_mid_range x 1.50`
@@ -479,6 +489,12 @@ before replacing `data/reference/city_costs_app_aud.csv` or changing the default
 
 ### Phase 11 — atomic cutover and rollback — requires owner approval after Phase 10
 
+The cutover is also a planned-price migration. The planner, dashboard and comparison paths read the current numeric
+values in `cities`; they do not read the staged CSV or provenance sidecar directly, and saved plan snapshots do not
+freeze city prices. Before approval, review representative plan totals before/after migration and decide whether the
+automatic repricing of existing plans is acceptable. Reconcile any local or production city aliases outside the frozen
+121-city frame explicitly rather than silently duplicating them.
+
 After explicit approval:
 
 1. replace the live CSV from the generated staged artifact—never by hand;
@@ -561,7 +577,7 @@ node scripts/test-v6-1-canary-assignment.mjs
 Add migration-specific `--check` commands when Phase 8 creates them. If the full test suite fails, rerun
 it once before investigating because this OneDrive checkout has a known transient temp-file failure.
 
-## 10. Current stopping point — Phase 8 active after experiment 014 pass
+## 10. Historical stopping point — Phase 8 active after experiment 014 pass (superseded)
 
 Experiment 013 is finalized and immutable failed history. Experiment 014 is the authorized fresh canary: all 60 slots
 are terminal/reusable, 20/20 cities completed, zero artifact candidates were found, 167 searches were recorded, and

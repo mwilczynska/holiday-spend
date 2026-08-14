@@ -3289,3 +3289,18 @@ The non-live cutover rehearsal also initially assumed a pristine database. It no
 frame and import delta while allowing retained diagnostic v6.1 rows outside that frame; it passes with 3 pre-existing
 active v6.1 rows and 124 after import, with 121 provenance round-trips, idempotent reuse, rollback and an unchanged
 live CSV.
+
+### v6.1 Phase 10/11 readiness review — 14 August 2026
+
+The workstream is implementation-complete but not rollout-complete. The deterministic v6.1 materializer covers all
+19 tiers; persistence, API provenance, dataset display, experiment 014 and the frozen 121-city staged migration are
+complete. The live CSV and existing city rows remain v1, so current planner/dashboard/comparison totals remain v1;
+the calculator reads `cities` numeric fields and saved plans retain tier choices rather than frozen prices. A future
+cutover will therefore reprice existing plans, which must be reviewed before approval.
+
+The remaining release evidence is a bounded 3–5-city user-key provider/database/API smoke. The delegated canary is
+not evidence of the provider-population runtime SLO, which remains unmeasured. The staged impact report is an
+operational comparison, not validation; its high-end food and extreme-difference findings require owner acceptance,
+not tuning toward v1. The exact next action is the keyed smoke, staged-impact review and city-ID alias reconciliation,
+followed by an explicit Phase 11 cutover decision. No holdout, live CSV, global/default flag or production database
+was changed in this review.

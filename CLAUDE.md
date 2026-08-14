@@ -159,6 +159,14 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
+**14 August 2026 current checkpoint:** Phase 10 is complete and pushed at `b5dba09`. The all-19-tier v6.1
+materializer, persistence/API provenance boundary, experiment-014 delegated canary, 121-city staged migration and
+non-live import/rollback rehearsal are complete. The live CSV, canonical existing-city rows and current plans remain
+v1; planner calculations read `cities` numeric fields, and saved plans do not freeze prices. The remaining pre-cutover
+work is one bounded 3–5-city user-key provider/database/API smoke and owner review of the staged operational impact.
+Runtime >=95% is a post-release SLO and remains unmeasured. Do not access holdouts, replace the live CSV, import the
+sidecar into the live database or enable the global/default flag before explicit Phase 11 approval.
+
 **13 August 2026 provider-model UI correction:** The older smoke note below said that `gpt-5.6-luna`,
 `gpt-5.6-sol` and `gpt-5.6-terra` were Codex/delegated runtime names rather than confirmed application models. That
 conclusion is superseded. A keyed provider refresh now treats the provider's live `/models` response as authoritative;

@@ -4,7 +4,19 @@
 
 **Branch:** `feat/city-cost-methodology-v6`
 
-> **14 August 2026 current state:** The owner-authorized Matsuyama keyed smoke selected the live `gpt-5.6-luna`
+> **14 August 2026 current checkpoint — Phase 10 complete; Phase 11 is owner-gated:** HEAD `b5dba09` is clean and
+> pushed. The v6.1 implementation covers all 19 tiers, the delegated experiment-014 canary passed 20/20, and the
+> frozen 121-city migration produced a complete staged CSV, materializations and provenance sidecar. The non-live
+> import/replay/rollback rehearsal passed; the live CSV, holdouts and global/default flag remain untouched. The
+> remaining evidence gap is one bounded 3–5-city user-key provider/database/API smoke. Runtime >=95% remains a
+> post-release SLO, not a completed claim. Existing canonical city rows and therefore existing plans still use v1:
+> the planner reads `cities` numeric fields, while saved plans retain tier choices rather than price snapshots. A
+> cutover will therefore reprice existing plans and must be reviewed explicitly. Exact next action: run the bounded
+> keyed smoke, review `data/reference/v6/migration-v6-1/impact-report.md`, reconcile any city-ID aliases, and obtain
+> owner approval before Phase 11. Do not write the live CSV, import the sidecar into the live database, access a
+> holdout or enable the default flag.
+
+> **14 August 2026 historical checkpoint — superseded by the current checkpoint above:** The owner-authorized Matsuyama keyed smoke selected the live `gpt-5.6-luna`
 > model with `Maximum` reasoning but did not persist a city. It is diagnostic, not a passing provider/search smoke.
 > The OpenAI Responses search route now adds the selected reasoning budget to the requested JSON response budget so a
 > high-effort request is not truncated before it can emit the source-contract response. Targeted tests, typecheck,
