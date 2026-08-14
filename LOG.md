@@ -3322,3 +3322,20 @@ three-call boundary diagnostic, not passing provider source coverage. The offici
 Exact next action: complete the baseline, commit/push the boundary fix, then run the remaining bounded keyed smoke
 cities and decide whether repeated explicit not-found results are a provider/source-coverage issue. Holdouts, the live
 CSV, global/default flag and production cutover remain untouched.
+
+### v6.1 three-city keyed smoke and boundary result — 14 August 2026
+
+The planner call-boundary fix was committed and pushed as `66926e0`. Three owner-authorized browser-key smoke cities
+(Matsuyama, Takamatsu and Toyama) now persist through the v6.1 path with `llm_city_generation_v6_1`, provider `openai`,
+model `gpt-5.6-luna`, `reasoningEffort=max`, exactly three source telemetry records per city and zero direct page reads.
+Matsuyama and Takamatsu returned explicit `not_found` for all nine source measures. Toyama returned Expedia and
+BudgetYourTrip `not_found`, while the Numbeo call returned a schema `error` because non-observed measures carried
+values; the application preserved that as `error`/`blocked` rather than manufacturing an observation. All three rows
+are therefore persistence and three-call boundary diagnostics, not a passing provider/search coverage smoke. The
+browser key was not read, copied, logged or stored by Codex.
+
+The v6.1 boundary is now operationally verified for model/effort persistence, exact-call economics, explicit
+missingness and failure preservation. The remaining decision is source-route/provider coverage, not a missing fourth
+call. Exact next action: review the staged 121-city impact report, reconcile city-ID aliases, and decide whether to
+repair the provider/source contract before Phase 11. Holdouts, the live CSV, global/default flag and production
+cutover remain untouched.

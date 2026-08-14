@@ -23,12 +23,14 @@ not be rerun or mutated.
 
 **14 August 2026 current checkpoint:** Phase 10 is complete and v6.1 is implemented; the 121-city artifact is staged,
 but the live CSV and existing city rows remain v1. The v6.1 planner boundary now skips the legacy metadata call so a
-new city uses exactly the three frozen source calls. The first post-fix keyed Matsuyama row persisted as v6.1 with
-`max` reasoning, three source telemetry records, one search per source and zero direct reads; all sources explicitly
-returned `not_found`, so it is diagnostic/all-prior rather than passing coverage evidence. The planner reads `cities`
-rows, not the staged artifact, and existing plans will change totals only at coordinated Phase 11 cutover. Next:
-complete the baseline, commit/push the boundary fix, run the remaining bounded keyed smoke cities and review the
-operational impact report. Do not cut over, access a holdout or enable the global/default flag before approval.
+new city uses exactly the three frozen source calls. Three post-fix keyed rows (Matsuyama, Takamatsu and Toyama)
+persisted as v6.1 with `gpt-5.6-luna`, `max` reasoning, three source telemetry records each and zero direct reads.
+Matsuyama and Takamatsu returned explicit `not_found` for all source measures; Toyama returned two `not_found` calls
+and one explicit Numbeo schema `error`. They prove the persistence/three-call boundary but are diagnostic, not passing
+provider coverage. The planner reads `cities` rows, not the staged artifact, and existing plans will change totals only
+at coordinated Phase 11 cutover. Next: review the operational impact report, reconcile city-ID aliases, and decide
+whether the provider/source contract needs a separate repair. Do not cut over, access a holdout or enable the
+global/default flag before approval.
 
 **13 August 2026 user-key smoke correction:** Three fresh UI generations used the browser-supplied OpenAI key and
 the default `gpt-5.4-mini`, and their persisted records have the v6.1 provenance shape. All three search-enabled

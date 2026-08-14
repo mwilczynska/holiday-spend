@@ -11,14 +11,15 @@ live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 The deterministic 19-tier implementation, persistence/API provenance boundary, experiment-014 delegated canary and
 non-live import/rollback rehearsal are complete. A production-boundary defect has now been fixed: v6.1 new-city
 creation no longer spends a fourth legacy metadata LLM call before its three source calls. It uses the requested city
-identity plus canonical country metadata, while v1 retains the metadata call. The first post-fix keyed Matsuyama smoke
-persisted as `v6.1` with `reasoningEffort=max`, three source telemetry records, one search per source and zero direct
-reads, but all three sources returned explicit `not_found`, so it is diagnostic/all-prior and not a passing provider
-coverage smoke. The canonical existing city rows and current plans still use v1 because the planner reads `cities`
-numeric fields; plan snapshots store tier selections, not frozen prices. Exact next action: complete the baseline and
-commit/push this call-boundary fix, then run the remaining bounded keyed smoke cities, review the staged impact and
-reconcile city-ID aliases. Do not touch holdouts, the live CSV or the global/default flag before explicit cutover
-approval.
+identity plus canonical country metadata, while v1 retains the metadata call. Three owner-authorized keyed smoke rows
+(Matsuyama, Takamatsu and Toyama) persisted as `v6.1` with `gpt-5.6-luna`, `reasoningEffort=max`, three source records
+each and zero direct page reads. Matsuyama and Takamatsu returned explicit `not_found` for all nine source measures;
+Toyama returned two source `not_found` calls and one explicit Numbeo schema `error`, so all three are persistence/
+boundary diagnostics rather than passing provider-coverage evidence. The canonical existing city rows and current
+plans still use v1 because the planner reads `cities` numeric fields; plan snapshots store tier selections, not frozen
+prices. Exact next action: review the staged impact, reconcile city-ID aliases, and decide whether the provider/source
+contract needs a separate repair before Phase 11. Do not touch holdouts, the live CSV or the global/default flag before
+explicit cutover approval.
 
 **14 August 2026 keyed-smoke correction (historical; superseded by the current checkpoint above):** An owner-authorized Matsuyama smoke selected live `gpt-5.6-luna` with
 `Maximum` reasoning but did not persist a city, so it remains diagnostic and does not satisfy the provider/search

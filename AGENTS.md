@@ -163,13 +163,15 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 persistence/API provenance boundary, experiment-014 delegated canary, 121-city staged migration and non-live
 import/rollback rehearsal are complete. The v6.1 planner boundary now resolves requested identity deterministically,
 so v6.1 new-city generation spends exactly three source calls rather than a fourth legacy metadata call; v1 retains
-its legacy behavior. A first post-fix keyed Matsuyama row persisted as v6.1 with `max` reasoning, three source records,
-one search each and zero direct reads, but all measures were explicit `not_found` and the row is all-prior diagnostic,
-not passing provider coverage. The live CSV, canonical existing-city rows and current plans remain v1; planner
-calculations read `cities` numeric fields, and saved plans do not freeze prices. Complete the baseline, commit/push the
-boundary fix, run the remaining bounded keyed smoke cities and review the staged impact before explicit Phase 11
-approval. Runtime >=95% remains an unmeasured post-release SLO. Do not access holdouts, replace the live CSV, import
-the sidecar into the live database or enable the global/default flag before approval.
+its legacy behavior. Three post-fix keyed rows (Matsuyama, Takamatsu and Toyama) persisted as v6.1 with
+`gpt-5.6-luna`, `max` reasoning, three source records each and zero direct reads. Matsuyama and Takamatsu returned
+explicit `not_found` for all source measures; Toyama returned two `not_found` calls and one explicit Numbeo schema
+`error`. These prove the persistence/three-call boundary but are diagnostic, not passing provider coverage. The live
+CSV, canonical existing-city rows and current plans remain v1; planner calculations read `cities` numeric fields,
+and saved plans do not freeze prices. The exact next action is to review the staged impact, reconcile city-ID aliases,
+and decide whether the provider/source contract needs a separate repair before explicit Phase 11 approval. Runtime
+>=95% remains an unmeasured post-release SLO. Do not access holdouts, replace the live CSV, import the sidecar into
+the live database or enable the global/default flag before approval.
 
 **14 August 2026 planner call-boundary correction:** The v6.1 UI smoke initially failed with the legacy OpenAI
 Chat Completions `reasoning_effort` error because planner metadata resolution ran before generation even when the v6.1

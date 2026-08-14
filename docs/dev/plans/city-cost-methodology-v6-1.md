@@ -9,13 +9,14 @@
 > is complete as a non-live staged CSV, provenance sidecar and import plan; experiment 014 is the passed delegated
 > canary. A live-boundary defect is fixed in the current work: v6.1 new-city creation now resolves identity from the
 > requested city/canonical country and does not spend a fourth legacy metadata call before the exact three source
-> calls. v1 retains its legacy metadata behavior. The first post-fix keyed Matsuyama smoke persisted v6.1 provenance
-> and `reasoningEffort=max`, with three source records, one search each and zero direct reads, but all source measures
-> were explicit `not_found`, producing an all-prior diagnostic rather than a passing provider-coverage result. Runtime
-> >=95% remains an unmeasured post-release SLO; the live CSV, holdouts and global/default flag remain untouched.
-> Existing planner totals still come from v1 `cities` rows, and saved plans store tier choices rather than prices.
-> Exact next action: complete the baseline, commit/push the boundary fix, run the remaining bounded keyed smoke cities,
-> then review the staged impact and obtain explicit owner approval before Phase 11.
+> calls. v1 retains its legacy metadata behavior. Three owner-authorized keyed smoke rows (Matsuyama, Takamatsu and
+> Toyama) persisted v6.1 provenance with `gpt-5.6-luna`, `reasoningEffort=max`, three source records each and zero
+> direct page reads. Matsuyama and Takamatsu returned explicit `not_found` for all source measures; Toyama returned two
+> `not_found` calls and one explicit Numbeo schema `error`, so these are persistence/boundary diagnostics rather than
+> passing provider-coverage evidence. Runtime >=95% remains an unmeasured post-release SLO; the live CSV, holdouts and
+> global/default flag remain untouched. Existing planner totals still come from v1 `cities` rows, and saved plans store
+> tier choices rather than prices. Exact next action: review the staged impact, reconcile city-ID aliases, and decide
+> whether the provider/source contract needs a separate repair before Phase 11.
 
 > **13 August 2026 Phase 10.5 release hardening:** Phases 7-10 are complete and the staged 121-city artifact is ready
 > for review. This hardening pass confirms the product meaning of `food_high_end`: it is the high/luxury

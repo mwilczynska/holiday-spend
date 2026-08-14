@@ -8,13 +8,15 @@
 > all 19 tiers, experiment 014 passed 20/20, the frozen 121-city migration is staged, and non-live import/replay/
 > rollback passed. A production boundary defect is fixed in the current change: v6.1 new-city creation resolves the
 > requested city and canonical country without the old fourth metadata LLM call, preserving exactly three source calls;
-> v1 retains the old metadata path. The first post-fix keyed Matsuyama row persisted as v6.1 with `max` reasoning,
-> three source records, one search each and zero direct reads, but all source measures were explicit `not_found`, so
-> it is diagnostic/all-prior rather than a passing provider/search smoke. Existing canonical rows and plans still use
-> v1 because the planner reads `cities` numeric fields; a cutover will reprice plans whose snapshots store tier choices.
-> Exact next action: run the complete baseline, commit/push this boundary fix, then run the remaining bounded keyed
-> smoke cities and review `data/reference/v6/migration-v6-1/impact-report.md`. Do not write the live CSV, import the
-> sidecar into the live database, access a holdout or enable the default flag.
+> v1 retains the old metadata path. Three post-fix keyed rows (Matsuyama, Takamatsu and Toyama) persisted as v6.1 with
+> `gpt-5.6-luna`, `max` reasoning, three source records each and zero direct reads. Matsuyama and Takamatsu returned
+> explicit `not_found` for all source measures; Toyama returned two `not_found` calls and one explicit Numbeo schema
+> `error`. These are successful persistence/three-call diagnostics, not passing provider/search coverage evidence.
+> Existing canonical rows and plans still use v1 because the planner reads `cities` numeric fields; a cutover will
+> reprice plans whose snapshots store tier choices. Exact next action: run the complete baseline, review
+> `data/reference/v6/migration-v6-1/impact-report.md`, reconcile city-ID aliases, and decide whether the provider/source
+> contract needs a separate repair before Phase 11. Do not write the live CSV, import the sidecar into the live database,
+> access a holdout or enable the default flag.
 
 > **14 August 2026 historical checkpoint — superseded by the current checkpoint above:** The owner-authorized Matsuyama keyed smoke selected the live `gpt-5.6-luna`
 > model with `Maximum` reasoning but did not persist a city. It is diagnostic, not a passing provider/search smoke.
