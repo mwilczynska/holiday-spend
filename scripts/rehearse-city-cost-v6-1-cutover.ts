@@ -56,13 +56,18 @@ function databaseFingerprint(file: string) {
   }
 }
 
-function databaseCounts(file: string) {
+function databaseCounts(file: string, frozenCityIds: string[]) {
   const db = new Database(file, { readonly: true });
   try {
+    const placeholders = frozenCityIds.map(() => '?').join(', ');
     return {
       cities: (db.prepare('SELECT COUNT(*) as count FROM cities').get() as { count: number }).count,
       estimates: (db.prepare('SELECT COUNT(*) as count FROM city_estimates').get() as { count: number }).count,
-      activeV61: (db.prepare('SELECT COUNT(*) as count FROM city_estimates WHERE source = ? AND is_active = 1').get('llm_city_generation_v6_1') as { count: number }).count,
+      activeV61: (db.prepare(`
+        SELECT COUNT(*) as count
+        FROM city_estimates
+        WHERE source = ? AND is_active = 1 AND city_id IN (${placeholders})
+      `).get('llm_city_generation_v6_1', ...frozenCityIds) as { count: number }).count,
     };
   } finally {
     db.close();
@@ -147,24 +152,29 @@ function main() {
   const rollbackDb = path.join(tempRoot, 'rollback.db');
 
   try {
+    const frozenCityIds = sidecar.rows.map((row) => row.cityId);
     copyDatabase(LIVE_DB, beforeDb);
     copyDatabase(LIVE_DB, rehearsalDb);
     const beforeFingerprint = databaseFingerprint(beforeDb);
-    const beforeCounts = databaseCounts(rehearsalDb);
+    const beforeCounts = databaseCounts(rehearsalDb, frozenCityIds);
     const first = runImport(rehearsalDb);
     const firstFingerprint = databaseFingerprint(rehearsalDb);
-    const firstCounts = databaseCounts(rehearsalDb);
+    const firstCounts = databaseCounts(rehearsalDb, frozenCityIds);
     const roundTrippedCities = verifyImportedProvenance(rehearsalDb, sidecar);
     const second = runImport(rehearsalDb);
     const secondFingerprint = databaseFingerprint(rehearsalDb);
-    const secondCounts = databaseCounts(rehearsalDb);
+    const secondCounts = databaseCounts(rehearsalDb, frozenCityIds);
 
     assert(first.insertedCities + first.reusedCities === 121, 'First import did not process exactly one row per frozen city.');
     assert(second.insertedCities === 0 && second.reusedCities === 121, 'Second import was not idempotent.');
     assert(firstCounts.estimates === beforeCounts.estimates + first.insertedCities, 'First import estimate count is incorrect.');
     assert(secondCounts.estimates === firstCounts.estimates, 'Second import created duplicate estimate rows.');
     assert(secondFingerprint === firstFingerprint, 'Second import changed the logical database state.');
-    assert(firstCounts.activeV61 === beforeCounts.activeV61 + first.insertedCities, 'First import active v6.1 count is incorrect.');
+    // The import deactivates any pre-existing estimate for each frozen city,
+    // including diagnostic v6.1 smoke rows, before activating the staged row.
+    // Therefore the scoped active count is the frozen frame size, not a global
+    // delta from the pre-import database.
+    assert(firstCounts.activeV61 === sidecar.rows.length, 'First import active v6.1 count is incorrect.');
     assert(secondCounts.activeV61 === firstCounts.activeV61, 'Second import changed the active v6.1 count.');
 
     copyDatabase(beforeDb, rollbackDb);

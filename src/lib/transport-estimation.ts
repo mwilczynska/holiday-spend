@@ -461,7 +461,11 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
     model?: string;
     output?: Array<{
       type?: string;
-      action?: string;
+      action?: {
+        type?: string;
+        query?: unknown;
+        queries?: unknown;
+      };
       queries?: unknown;
       content?: Array<{
         type?: string;
@@ -490,8 +494,11 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
   const searchQueries = dedupeStrings(
     outputItems.flatMap((item) => {
       if (item?.type !== 'web_search_call') return [];
-      if (!Array.isArray(item.queries)) return [];
-      return item.queries.filter((query): query is string => typeof query === 'string');
+      const legacyQueries = Array.isArray(item.queries) ? item.queries : [];
+      const responseQueries = Array.isArray(item.action?.queries) ? item.action.queries : [];
+      const singularQuery = typeof item.action?.query === 'string' ? [item.action.query] : [];
+      return [...legacyQueries, ...responseQueries, ...singularQuery]
+        .filter((query): query is string => typeof query === 'string');
     })
   );
 

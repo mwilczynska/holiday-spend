@@ -3339,3 +3339,39 @@ missingness and failure preservation. The remaining decision is source-route/pro
 call. Exact next action: review the staged 121-city impact report, reconcile city-ID aliases, and decide whether to
 repair the provider/source contract before Phase 11. Holdouts, the live CSV, global/default flag and production
 cutover remain untouched.
+
+### v6.1 provider/search coverage audit: Tottori — 14 August 2026
+
+The three-city smoke's repeated `not_found` statuses were investigated with one owner-authorized, browser-key Tottori
+run using the normal planner path, OpenAI `gpt-5.6-luna`, `reasoningEffort=max`, the three versioned v6.1 prompts,
+reference date 2026-08-14 and Expedia window 2026-08-14 to 2026-08-15. Exactly three source calls completed, with zero
+direct page reads and zero retries. Expedia, BudgetYourTrip and Numbeo returned explicit `not_found`; the persisted
+row retained v6.1 provenance, nine source missingness fields and 18 grade-D tiers rather than inventing values.
+
+The opt-in local audit captured the raw OpenAI Responses envelopes and showed provider-observed query lists of 4
+Expedia, 4 BudgetYourTrip and 2 Numbeo searches. The transport parser had been undercounting these as 1/2/1 because
+current Responses API queries are nested under `web_search_call.action.queries`; the parser and regression test now
+handle both current and legacy shapes. The raw audit contained no API key.
+
+The result is not one generic coverage failure. Independent checks show: Expedia has Tottori hotel pages and 3-star
+properties, but the search snippets did not expose the exact date/occupancy/class/price tuple required by the strict
+snippet contract; the owner's BudgetYourTrip Tottori hotel page exists but is an accommodation/Kayak page, not the
+city's daily Food/Entertainment tier surface; BudgetYourTrip's Japan page is national and cannot be substituted; and
+Numbeo exposed Japan-level values but no accepted canonical Tottori cost-of-living item page. Thus the causes are
+source/estimand coverage gaps and search-snippet insufficiency, not proof that Tottori itself is absent. Earlier Cali,
+La Ceiba and Tomo rows remain pre-search JSON-mode errors; Toyama's Numbeo row remains a schema error; Medellin's
+complete BudgetYourTrip result proves the provider path is not universally blind.
+
+Durable evidence is recorded in `data/reference/v6/provider-search-coverage-audit-2026-08-14.md`. No holdout, live CSV,
+coefficient or migration artifact was changed. Exact next action: aggregate these source-level statuses and actual
+provider query lists over the existing smoke/migration evidence, then decide whether only the Expedia snippet contract
+needs repair or whether the documented fallback rates are acceptable. Do not substitute hotel pages or country-level
+values for the requested daily measures.
+
+### v6.1 provider audit baseline follow-up — 14 August 2026
+
+The focused transport/collection tests, typecheck, full Vitest suite (42 files, 201 tests), build, memory check and v6
+verification checks pass. The non-live cutover rehearsal initially exposed an assertion that counted pre-existing
+keyed diagnostic v6.1 rows as if they were part of the staged import delta. The rehearsal now scopes active v6.1
+counts to the frozen 121-city frame; it verifies 121 first imports, 121 idempotent reuses, 121 provenance round-trips,
+rollback fidelity and an unchanged live CSV. This is a harness correction, not a live-data change.

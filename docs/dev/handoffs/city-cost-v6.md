@@ -4,6 +4,22 @@
 
 **Branch:** `feat/city-cost-methodology-v6`
 
+> **14 August 2026 provider/search coverage audit — current checkpoint:** The owner-authorized Tottori run is now
+> documented in `data/reference/v6/provider-search-coverage-audit-2026-08-14.md`. It used the browser-supplied
+> OpenAI `gpt-5.6-luna` model at `max` reasoning, exactly three source calls, Expedia 2026-08-14 to 2026-08-15,
+> zero direct reads and zero retries. All three sources completed searches but returned explicit `not_found` under
+> the strict contracts. The evidence separates pre-search transport failures, source/estimand coverage gaps and
+> search-snippet insufficiency; it does not show that Tottori is absent. The supplied BudgetYourTrip Tottori URL is
+> a hotel/Kayak analytics page, not the required daily Food/Entertainment surface, so it must not be substituted.
+> The OpenAI Responses parser now records current nested `web_search_call.action.queries` as well as legacy query
+> shapes; the Tottori raw trace is 4 Expedia / 4 BudgetYourTrip / 2 Numbeo searches, correcting the prior 1/2/1
+> telemetry undercount. The complete baseline now passes, including a corrected non-live rehearsal that scopes active
+> v6.1 counts to the frozen frame while preserving diagnostic rows; it verified 121 imports, 121 idempotent reuses,
+> 121 provenance round-trips, rollback and an unchanged live CSV. Exact next action: aggregate existing smoke and
+> migration source statuses/query evidence before deciding whether to repair only the Expedia snippet contract or
+> retain explicit fallback behavior. Do not make another broad keyed run, access a holdout, write the live CSV,
+> import the staged sidecar into the live database, or enable the default flag.
+
 > **14 August 2026 current checkpoint — Phase 10 complete; Phase 11 is owner-gated:** The v6.1 implementation covers
 > all 19 tiers, experiment 014 passed 20/20, the frozen 121-city migration is staged, and non-live import/replay/
 > rollback passed. A production boundary defect is fixed in the current change: v6.1 new-city creation resolves the

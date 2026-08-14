@@ -1,4 +1,5 @@
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { z } from 'zod';
 import type {
@@ -204,6 +205,7 @@ export interface V61CollectionCallTelemetry {
   retries: number;
   status: 'complete' | 'partial' | 'not_found' | 'blocked' | 'error';
   searchesUsed: number;
+  searchQueries?: string[];
   directPageReads: number;
   startedAt: string;
   completedAt: string;
@@ -245,6 +247,61 @@ function repoFile(relativePath: string) {
   const found = candidates.find((candidate) => fs.existsSync(candidate));
   if (!found) throw new V61CollectionError(`Expected v6.1 prompt file was not found: ${candidates.join(', ')}`, 500);
   return found;
+}
+
+/**
+ * Opt-in local evidence capture for diagnosing provider/source-contract failures.
+ *
+ * This is deliberately restricted to .local or the OS temporary directory so
+ * an audit can retain the exact prompt and provider envelope without becoming
+ * a tracked production artifact.
+ * The API key is never part of this record.
+ */
+function writeV61DebugAudit(record: {
+  cityName: string;
+  countryName: string;
+  source: V61SpineSource;
+  promptVersion: string;
+  referenceDate: string;
+  arrivalDate: string;
+  departureDate: string;
+  provider: string;
+  model: string;
+  reasoningEffort: CityGenerationReasoningEffort;
+  systemPrompt: string;
+  userPrompt: string;
+  providerResponse: ProviderSearchResponse | null;
+  parsedCandidate: unknown;
+  normalizedResponse: unknown;
+  error: string | null;
+}): void {
+  const configuredDirectory = process.env.CITY_COST_V61_AUDIT_DIR?.trim();
+  if (!configuredDirectory) return;
+
+  const localRoot = path.resolve(process.cwd(), '.local');
+  const tempRoot = path.resolve(os.tmpdir());
+  const auditDirectory = path.resolve(process.cwd(), configuredDirectory);
+  const isLocalAudit = auditDirectory === localRoot || auditDirectory.startsWith(`${localRoot}${path.sep}`);
+  const isTempAudit = auditDirectory === tempRoot || auditDirectory.startsWith(`${tempRoot}${path.sep}`);
+  if (!isLocalAudit && !isTempAudit) {
+    throw new Error('CITY_COST_V61_AUDIT_DIR must stay inside .local or the OS temp directory');
+  }
+
+  try {
+    fs.mkdirSync(auditDirectory, { recursive: true });
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const city = slugifyId(record.cityName);
+    const source = slugifyId(record.source);
+    const filePath = path.join(auditDirectory, `${timestamp}-${city}-${source}.json`);
+    fs.writeFileSync(filePath, `${JSON.stringify(record, null, 2)}\n`, {
+      encoding: 'utf8',
+      flag: 'wx',
+    });
+  } catch (error) {
+    // Debug capture must never change the source result or make production
+    // generation fail. The caller still retains normalized telemetry.
+    console.warn('[v6.1 audit] unable to write local audit record', error instanceof Error ? error.message : String(error));
+  }
 }
 
 export interface V61CollectionDates {
@@ -530,6 +587,10 @@ function blockedResult(input: {
   attempts?: number;
   retries?: number;
   status?: 'blocked' | 'error';
+  searchesUsed?: number;
+  directPageReads?: number;
+  searchQueries?: string[];
+  providerRawResponse?: unknown;
   reasoningEffort?: CityGenerationReasoningEffort;
 }) {
   const {
@@ -549,8 +610,8 @@ function blockedResult(input: {
     city,
     country,
     retrievalStatus: 'blocked',
-    searchesUsed: 0,
-    directPageReads: 0,
+    searchesUsed: input.searchesUsed ?? 0,
+    directPageReads: input.directPageReads ?? 0,
     notes: error,
     measures: Object.fromEntries(V61_SOURCE_CONFIG[source].measures.map((measure) => [measure, {
       status: 'blocked' as const,
@@ -571,15 +632,22 @@ function blockedResult(input: {
     attempts: input.attempts ?? 1,
     retries: input.retries ?? 0,
     status: input.status ?? 'blocked',
-    searchesUsed: 0,
-    directPageReads: 0,
+    searchesUsed: input.searchesUsed ?? 0,
+    searchQueries: input.searchQueries ?? [],
+    directPageReads: input.directPageReads ?? 0,
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Date.now() - startTime,
     error,
     reasoningEffort: input.reasoningEffort ?? 'none',
   };
-  return { response, rawResponse: response, providerRawResponse: null, telemetry, ...factsAndAnchors(source, response, telemetry) };
+  return {
+    response,
+    rawResponse: response,
+    providerRawResponse: input.providerRawResponse ?? null,
+    telemetry,
+    ...factsAndAnchors(source, response, telemetry),
+  };
 }
 
 async function collectV61SpineCall(input: {
@@ -600,6 +668,11 @@ async function collectV61SpineCall(input: {
     process.env.ANTHROPIC_API_KEY ? 'anthropic' : process.env.OPENAI_API_KEY ? 'openai' : process.env.GEMINI_API_KEY ? 'gemini' : 'unresolved'
   );
   const model = input.model ?? 'unresolved';
+  const systemPrompt = 'You are a careful source extractor. Return valid JSON only; never estimate or calculate.';
+  const userPrompt = renderV61Prompt(input.source, input.city, input.country, input.dates);
+  let providerResponse: ProviderSearchResponse | null = null;
+  let parsedCandidate: unknown = null;
+  let normalizedResponse: unknown = null;
 
   try {
     if (provider === 'unresolved') {
@@ -617,16 +690,16 @@ async function collectV61SpineCall(input: {
       });
     }
 
-    const response: ProviderSearchResponse | null = await runJsonPromptWithWebSearch({
+    providerResponse = await runJsonPromptWithWebSearch({
       provider,
-      systemPrompt: 'You are a careful source extractor. Return valid JSON only; never estimate or calculate.',
-      userPrompt: renderV61Prompt(input.source, input.city, input.country, input.dates),
+      systemPrompt,
+      userPrompt,
       apiKey: input.apiKey,
       model: input.model,
       reasoningEffort: input.reasoningEffort,
       maxTokens: 2600,
     });
-    if (!response) {
+    if (!providerResponse) {
       return blockedResult({
         source: input.source,
         city: input.city,
@@ -640,30 +713,31 @@ async function collectV61SpineCall(input: {
         error: `No ${provider} API key is configured for the v6.1 search-enabled source call.`,
       });
     }
-    const candidate = extractJsonObject(response.text);
-    if (!candidate || typeof candidate !== 'object') {
+    parsedCandidate = extractJsonObject(providerResponse.text);
+    if (!parsedCandidate || typeof parsedCandidate !== 'object') {
       throw new V61CollectionError('The v6.1 spine response was not an object.', 502);
     }
     // Provider/tool telemetry is authoritative for search usage. The JSON
     // field remains in the schema for audit readability but is normalized here
     // before validation so model-written counts cannot bypass the ceiling.
-    const normalizedCandidate = {
-      ...(candidate as Record<string, unknown>),
-      searchesUsed: response.searchesUsed,
+    normalizedResponse = {
+      ...(parsedCandidate as Record<string, unknown>),
+      searchesUsed: providerResponse.searchesUsed,
     };
-    const parsed = parseV61SpineResponse(input.source, normalizedCandidate);
+    const parsed = parseV61SpineResponse(input.source, normalizedResponse);
     if (!sourceIdentityMatches({ city: parsed.city, country: parsed.country }, input)) {
       throw new V61CollectionError(`The ${input.source} response changed the requested city or country.`, 502);
     }
     const telemetry: V61CollectionCallTelemetry = {
       source: input.source,
       promptVersion,
-      provider: response.provider,
-      model: response.model,
-      attempts: response.attempts,
-      retries: response.retries,
+      provider: providerResponse.provider,
+      model: providerResponse.model,
+      attempts: providerResponse.attempts,
+      retries: providerResponse.retries,
       status: parsed.retrievalStatus,
       searchesUsed: parsed.searchesUsed,
+      searchQueries: providerResponse.searchQueries,
       directPageReads: parsed.directPageReads,
       startedAt,
       completedAt: new Date().toISOString(),
@@ -671,14 +745,50 @@ async function collectV61SpineCall(input: {
       error: null,
       reasoningEffort: input.reasoningEffort ?? 'none',
     };
+    writeV61DebugAudit({
+      cityName: input.city,
+      countryName: input.country,
+      source: input.source,
+      promptVersion,
+      referenceDate: input.dates.referenceDate,
+      arrivalDate: input.dates.arrivalDate,
+      departureDate: input.dates.departureDate,
+      provider,
+      model: providerResponse.model,
+      reasoningEffort: input.reasoningEffort ?? 'none',
+      systemPrompt,
+      userPrompt,
+      providerResponse,
+      parsedCandidate,
+      normalizedResponse,
+      error: null,
+    });
     return {
       ...factsAndAnchors(input.source, parsed, telemetry),
       rawResponse: parsed,
-      providerRawResponse: response.rawResponse ?? response.text,
+      providerRawResponse: providerResponse.rawResponse ?? providerResponse.text,
       telemetry,
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
+    writeV61DebugAudit({
+      cityName: input.city,
+      countryName: input.country,
+      source: input.source,
+      promptVersion,
+      referenceDate: input.dates.referenceDate,
+      arrivalDate: input.dates.arrivalDate,
+      departureDate: input.dates.departureDate,
+      provider,
+      model: providerResponse?.model ?? model,
+      reasoningEffort: input.reasoningEffort ?? 'none',
+      systemPrompt,
+      userPrompt,
+      providerResponse,
+      parsedCandidate,
+      normalizedResponse,
+      error: message,
+    });
     return blockedResult({
       source: input.source,
       city: input.city,
@@ -689,6 +799,10 @@ async function collectV61SpineCall(input: {
       startedAt,
       startTime,
       status: 'error',
+      searchesUsed: providerResponse?.searchesUsed ?? 0,
+      searchQueries: providerResponse?.searchQueries ?? [],
+      providerRawResponse: providerResponse?.rawResponse ?? providerResponse?.text ?? null,
+      reasoningEffort: input.reasoningEffort,
       error: message,
     });
   }

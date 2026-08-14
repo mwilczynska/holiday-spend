@@ -81,4 +81,42 @@ describe('search-enabled provider transport', () => {
     expect(requestBody?.max_output_tokens).toBe(35368);
     expect(requestBody?.reasoning).toEqual({ effort: 'max' });
   });
+
+  it('counts current Responses API action queries rather than only search-call records', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => new Response(
+        JSON.stringify({
+          model: 'gpt-5.6-luna',
+          output: [
+            {
+              type: 'web_search_call',
+              status: 'completed',
+              action: {
+                type: 'search',
+                query: 'first query',
+                queries: ['first query', 'second query'],
+              },
+            },
+            {
+              type: 'message',
+              content: [{ type: 'output_text', text: '{"ok":true}' }],
+            },
+          ],
+        }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } },
+      )),
+    );
+
+    const result = await runJsonPromptWithWebSearch({
+      provider: 'openai',
+      apiKey: 'test-key',
+      model: 'gpt-5.6-luna',
+      systemPrompt: 'Return JSON only.',
+      userPrompt: 'Search for the source and return JSON.',
+    });
+
+    expect(result?.searchQueries).toEqual(['first query', 'second query']);
+    expect(result?.searchesUsed).toBe(2);
+  });
 });
