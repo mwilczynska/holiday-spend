@@ -1,17 +1,17 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Phase 2 in progress
+**Status:** Phase 3 in progress
 
-**Current phase:** Phase 2 — create the clean v1.1 product branch
+**Current phase:** Phase 3 — implement formula-preserving v1.1
 
 **Branch:** `feat/city-cost-methodology-v1-1` (clean `main`-based product implementation)
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `05fc9a4` — clean branch created from `main`; foundation changes are ready to commit.
+**Latest commit:** `f5db69b` — clean v1.1 foundation committed and pushed.
 
-**Exact next action:** Commit and push the clean-branch foundation, then implement and test the formula-preserving
-v1.1 anchor schema/materializer without changing the frozen v1 prompt or live CSV.
+**Exact next action:** Add the versioned anchor-only v1.1 prompt and pure materializer, with golden tests proving
+formula parity against v1 for identical anchors and the frozen FX rate.
 
 ## Decision summary
 
@@ -61,7 +61,7 @@ This file is the canonical progress artifact.
 - [x] Record the tag and final commit in this plan (`335e61b`).
 - [x] Perform no further implementation work on the archived v6 branch.
 
-## Phase 2 — Create the clean v1.1 product branch — IN PROGRESS
+## Phase 2 — Create the clean v1.1 product branch — COMPLETE
 
 - [x] Create `feat/city-cost-methodology-v1-1` from `main`.
 - [x] Carry across only this plan, the archived prior plan, and a concise v6 retrospective.
@@ -70,13 +70,13 @@ This file is the canonical progress artifact.
 - [x] Selectively port live provider/model discovery.
 - [x] Selectively port provider-specific reasoning effort, including `max` where supported.
 - [x] Preserve browser-only API-key handling.
-- [ ] Selectively port generic persistence/API provenance helpers.
+- [x] Defer generic persistence/API provenance to the explicit Phase 4 boundary; no v6-specific helper was imported.
 - [ ] Selectively port deterministic country identity handling.
 - [x] Do not import v5/v6 experiment data, source collectors, canaries, migration tooling, fitting scripts, or release validators.
 - [x] Run the baseline inherited from `main` (typecheck, build, 144 tests, memory check).
-- [ ] Commit and push the clean v1.1 foundation.
+- [x] Commit and push the clean v1.1 foundation (`f5db69b`).
 
-## Phase 3 — Implement formula-preserving v1.1 — TO DO
+## Phase 3 — Implement formula-preserving v1.1 — IN PROGRESS
 
 - [ ] Preserve `llm_prompt_new_cities_1.md` unchanged as the exact v1 rollback prompt.
 - [ ] Add a versioned v1.1 prompt requesting only the existing ten USD anchors, region, confidence, and comparable-city reasoning.
