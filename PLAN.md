@@ -10,8 +10,9 @@
 
 **Latest commit:** `8800a46` — final v1.1 provenance checkpoint metadata; pushed after verification.
 
-**Exact next action:** Repair the Chrome browser bridge, then run the owner-key functional smoke for Tottori, Toowoomba,
-and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
+**Exact next action:** Start the local app with `npm run dev` (the predev guard repairs a OneDrive reparse-point
+`.next` cache), open the connected Chrome user tab at `/dataset`, and run the owner-key functional smoke for Tottori,
+Toowoomba, and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
 
 ## Decision summary
 
@@ -134,6 +135,8 @@ This file is the canonical progress artifact.
 - [x] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
 - [x] Publish the current v1.1 handoff and loop with the owner-smoke procedure.
 - [x] Make the full 19-field planner boundary explicit, including direct `drink_coffee` cent precision.
+- [x] Add an automatic `npm run dev` guard for OneDrive reparse-point `.next` caches so a bad generated cache cannot
+  make the local server appear hung.
 - [ ] Commit and push the v1.1 activation.
 
 ## Phase 6 — Final archival and bloat removal — TO DO

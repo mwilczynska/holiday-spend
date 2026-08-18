@@ -152,8 +152,24 @@ The v6-specific checks and experiments remain runnable only from the archived v6
 ## OneDrive gotcha
 
 The repository lives inside OneDrive. Files-On-Demand can make `.next` entries appear as reparse points and cause
-Next cleanup failures. If that occurs, remove `.next` and pin the affected workspace files locally with the project’s
-documented OneDrive attribute workaround. This is a filesystem issue, not application behavior.
+Next cleanup failures or an apparently hung first compilation. `npm run dev` runs
+`scripts/prepare-next-dev.mjs` first; it detects and removes a reparse-point `.next` cache before Next starts, while
+leaving an ordinary cache intact. It also pins the gitignored SQLite files (`data/travel.db`, `-shm`, and `-wal`) if
+OneDrive has dehydrated them into cloud reparse points. The guard never removes the database or touches tracked data.
+
+If the dev server is already running against a bad cache, stop that exact local Next process, then run
+`Remove-Item -LiteralPath '.next' -Recurse -Force` from the repository root and retry `npm run dev`. If the problem
+recurs, pin the project directories locally with OneDrive’s attributes command, excluding `.git` so Git metadata is not
+rewritten:
+
+```powershell
+Get-ChildItem -Force -Directory |
+  Where-Object Name -ne '.git' |
+  ForEach-Object { attrib +P -U /s /d $_.FullName }
+```
+
+This is a filesystem issue, not application behavior. Do not diagnose a browser, authentication, or methodology
+failure until the local server responds to `http://localhost:3000/` after this recovery.
 
 ## Key files
 

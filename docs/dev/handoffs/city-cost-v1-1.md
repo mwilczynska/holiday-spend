@@ -21,6 +21,8 @@ that must remain visible during implementation.
   source-map shape is unchanged.
 - The live `data/reference/city_costs_app_aud.csv` is unchanged. Existing cities are not migrated. The default remains
   v1 until the functional smoke passes.
+- `npm run dev` now runs `scripts/prepare-next-dev.mjs`, which removes a OneDrive reparse-point `.next` cache before
+  Next starts; it leaves an ordinary cache alone. This prevents the known high-CPU/hung-first-compilation failure.
 
 ## Exact next action
 
@@ -28,9 +30,9 @@ Run the owner-key functional smoke for **Tottori**, **Toowoomba**, and **Brno** 
 `CITY_COST_METHODOLOGY_VERSION=v1.1`. The owner enters the provider key in the browser; it must never be read,
 copied, logged, committed, or stored by the agent.
 
-The current external blocker is the Chrome bridge: the extension is installed/enabled and the manifest exists, but the
-required Windows native-messaging registry entry is still missing. Repair the Browser plugin from the ChatGPT/Codex
-desktop app's **Settings → Computer use** before attempting the smoke; do not hand-edit the registry.
+The Chrome bridge is now connected from the resumed CLI session. The connected user tab is available for the local app;
+do not reinstall the plugin or edit the native-messaging registry. If the local page hangs, stop the exact dev-server
+process and rerun `npm run dev`, allowing the predev `.next` guard to run.
 
 For each city, verify through the UI and `/api/estimates` that:
 

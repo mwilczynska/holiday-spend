@@ -664,3 +664,12 @@ The final local boundary audit found that v1.1's direct drink inputs were visibl
 the persisted source map. The v1.1 adapter now records the same source for local beer, imported beer, wine, cocktail,
 and coffee while preserving the historical v1 map. Targeted generation/persistence tests, typecheck, and the
 deterministic check pass; the keyed smoke remains the only unrun release step.
+
+## OneDrive dev-server recovery guard — 18 August 2026
+
+The resumed Chrome smoke exposed a local-environment failure rather than a product failure: `.next` had become a
+OneDrive `ReparsePoint`, and a fresh Next dev process consumed roughly 1.2 GB of memory and hundreds of CPU seconds
+without completing a request. The exact dev-server process was stopped and the generated `.next` directory was removed.
+`scripts/prepare-next-dev.mjs` is now run by npm's `predev` lifecycle; it detects and removes only a reparse-point
+`.next` cache before Next starts. The canonical instructions document the targeted recovery and a `.git`-excluding
+OneDrive pinning command. No source, database, live CSV, browser storage, or provider key was changed.
