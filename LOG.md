@@ -649,3 +649,7 @@ The current v1.1 handoff and loop are now `docs/dev/handoffs/city-cost-v1-1.md` 
 handoff and source-access collection plan are explicitly superseded. The owner-key smoke remains pending. On 18 August
 2026 Chrome was found with the Codex extension installed and enabled but without the required native-host registry
 entry, so browser control could not reach the local app. No provider key was accessed and no smoke result was claimed.
+
+The v1.1 contract audit also made the 19 persisted planner fields explicit: the 18 daily/accommodation derivations plus
+the direct `drink_coffee` field, retained at cent precision. The materializer, deterministic check, and `/api/estimates`
+now expose that field alongside the supporting direct drink anchors. This changes no v1 formula or live dataset value.

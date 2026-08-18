@@ -109,6 +109,9 @@ function buildTiersUsd(anchors: CityCostV11AnchorsUsd) {
     food_budget: (streetFoodMeal * 2 + anchors.inexp_meal_1p) * 2,
     food_mid_range: (streetFoodMeal + anchors.inexp_meal_1p + anchors.midrange_meal_2p / 2) * 2,
     food_high_end: (streetFoodMeal + anchors.inexp_meal_1p + anchors.midrange_meal_2p / 2) * 2 * 1.5,
+    // This direct drink input is the nineteenth persisted planner field. It is rounded to cents below,
+    // unlike daily/accommodation values, because the CSV and database store the unit coffee price.
+    drink_coffee: anchors.coffee,
     drinks_none: 2 * anchors.coffee,
     drinks_light: 2 * anchors.coffee + 2 * anchors.beer,
     drinks_moderate: 2 * anchors.coffee + 4 * anchors.beer + 2 * anchors.cocktail,
@@ -120,7 +123,7 @@ function buildTiersUsd(anchors: CityCostV11AnchorsUsd) {
   };
 }
 
-function convertTierMap(tiersUsd: Record<string, number>) {
+function convertTierMap(tiersUsd: Record<string, number>): Record<string, number> {
   return Object.fromEntries(Object.entries(tiersUsd).map(([key, value]) => [key, roundAud(value * CITY_COST_V11_FX.audPerUsd)]));
 }
 
@@ -129,9 +132,12 @@ export function materializeCityCostV11(input: unknown): CityCostV11Materializati
   const anchors = parsed.anchors_usd;
   Object.entries(anchors).forEach(([key, value]) => ensureFinitePositive(value, `anchor ${key}`));
 
-  const tiersUsd = buildTiersUsd(anchors);
-  const tiersAud = convertTierMap(tiersUsd);
   const anchorsAud = convertAnchorMap(anchors);
+  const tiersUsd = buildTiersUsd(anchors);
+  const tiersAud: Record<string, number> = {
+    ...convertTierMap(tiersUsd),
+    drink_coffee: anchorsAud.coffee,
+  };
 
   return {
     methodologyVersion: CITY_COST_V11_METHODOLOGY_VERSION,
@@ -155,7 +161,7 @@ export function materializeCityCostV11(input: unknown): CityCostV11Materializati
       drinkLocalBeer: anchorsAud.beer,
       drinkWineGlass: anchorsAud.wine_glass,
       drinkCocktail: anchorsAud.cocktail,
-      drinkCoffee: anchorsAud.coffee,
+      drinkCoffee: tiersAud.drink_coffee,
       drinksNone: tiersAud.drinks_none,
       drinksLight: tiersAud.drinks_light,
       drinksModerate: tiersAud.drinks_moderate,

@@ -38,7 +38,8 @@ const first = materializeCityCostV11(fixture);
 const second = materializeCityCostV11(fixture);
 if (JSON.stringify(first) !== JSON.stringify(second)) throw new Error('v1.1 materialization is not deterministic.');
 if (first.fx.audPerUsd !== CITY_COST_V11_FX.audPerUsd) throw new Error('v1.1 FX provenance is unstable.');
-if (Object.keys(first.tiersAud).length !== 18) throw new Error('Expected all 18 derived v1 tier values.');
+if (Object.keys(first.tiersAud).length !== 19) throw new Error('Expected all 19 persisted v1 planner fields.');
+if (first.tiersAud.drink_coffee !== first.anchorsAud.coffee) throw new Error('Direct coffee field lost cent precision.');
 if (Object.keys(first.mappedEstimate).length !== 22) throw new Error('Expected the complete mapped planner output.');
 if (first.tiersAud.accom_4_star !== Math.round(100 * 1.8 * CITY_COST_V11_FX.audPerUsd)) {
   throw new Error('The preserved v1 four-star formula changed.');
@@ -49,7 +50,8 @@ console.log(JSON.stringify({
   methodologyVersion: first.methodologyVersion,
   formulaVersion: first.formulaVersion,
   fxSnapshotId: first.fx.snapshotId,
-  derivedTierCount: Object.keys(first.tiersAud).length,
+  plannerFieldCount: Object.keys(first.tiersAud).length,
+  derivedDailyTierCount: Object.keys(first.tiersAud).length - 1,
   mappedFieldCount: Object.keys(first.mappedEstimate).length,
   liveCsvSha256,
 }));

@@ -132,6 +132,7 @@ This file is the canonical progress artifact.
 - [x] Regenerate no existing city automatically.
 - [x] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
 - [x] Publish the current v1.1 handoff and loop with the owner-smoke procedure.
+- [x] Make the full 19-field planner boundary explicit, including direct `drink_coffee` cent precision.
 - [ ] Commit and push the v1.1 activation.
 
 ## Phase 6 — Final archival and bloat removal — TO DO

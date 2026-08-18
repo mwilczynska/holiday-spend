@@ -42,6 +42,7 @@ describe('city-cost-methodology-v1-1', () => {
     expect(materialized.formulaVersion).toBe(CITY_COST_V11_FORMULA_VERSION);
     expect(materialized.fx.snapshotId).toBe('aud-reference-2026-07-22-v1');
     expect(materialized.fx.audPerUsd).toBe(CITY_COST_V11_FX.audPerUsd);
+    expect(Object.keys(materialized.tiersAud)).toHaveLength(19);
     expect(materialized.tiersAud).toMatchObject({
       accom_shared_hostel_dorm: 34,
       accom_hostel_private_room: 43,
@@ -53,6 +54,7 @@ describe('city-cost-methodology-v1-1', () => {
       food_budget: 63,
       food_mid_range: 103,
       food_high_end: 154,
+      drink_coffee: 4.29,
       drinks_none: 9,
       drinks_light: 14,
       drinks_moderate: 43,
