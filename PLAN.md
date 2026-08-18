@@ -8,7 +8,7 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `aa3aeb5` — active v1.1 documentation reconciled and historical v4/v5 collection language marked retained; pending push.
+**Latest commit:** `dd7ea3e` — v1.1 plan checkpoint recorded after documentation reconciliation; pushed.
 
 **Exact next action:** Repair the Chrome browser bridge, then run the owner-key functional smoke for Tottori, Toowoomba,
 and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
