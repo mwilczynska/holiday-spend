@@ -91,6 +91,26 @@ function findMatchingCity(cityRows: CityRow[], countryRows: CountryRow[], cityNa
   );
 }
 
+export function buildV11PlannerIdentity(
+  countryRows: ReadonlyArray<{ id: string; name: string }>,
+  requestedCityName: string,
+  requestedCountryName: string
+) {
+  const canonicalCountry = findExistingCountryForCanonical(countryRows, { name: requestedCountryName });
+  if (!canonicalCountry) {
+    throw new PlannerCityResolutionError(
+      `"${requestedCountryName}" is not in the canonical country dataset. Add it to the country metadata before using v1.1 generation.`,
+      400
+    );
+  }
+
+  return {
+    city: requestedCityName,
+    country: canonicalCountry.canonical.name,
+    confidence_notes: 'v1.1 uses the requested city identity; country is resolved by canonical server metadata.',
+  };
+}
+
 function allocateUniqueId(baseId: string, existingIds: Set<string>, fallbackSuffix?: string) {
   if (!existingIds.has(baseId)) return baseId;
 
@@ -199,20 +219,7 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
   }
 
   const metadata = methodologyVersion === 'v1.1'
-    ? (() => {
-        const canonicalCountry = findExistingCountryForCanonical(countryRows, { name: requestedCountryName });
-        if (!canonicalCountry) {
-          throw new PlannerCityResolutionError(
-            `"${requestedCountryName}" is not in the canonical country dataset. Add it to the country metadata before using v1.1 generation.`,
-            400
-          );
-        }
-        return {
-          city: requestedCityName,
-          country: canonicalCountry.canonical.name,
-          confidence_notes: 'v1.1 uses the requested city identity; country is resolved by canonical server metadata.',
-        };
-      })()
+    ? buildV11PlannerIdentity(countryRows, requestedCityName, requestedCountryName)
     : await resolvePlannerCityMetadata(input);
   const canonicalCityName = normalizeFreeText(metadata.city) || requestedCityName;
   const canonicalCountryName = normalizeFreeText(metadata.country) || requestedCountryName;

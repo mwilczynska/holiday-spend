@@ -85,5 +85,12 @@ describe('city-generation-persistence', () => {
     expect(persisted.metadata.evidenceGrades).toBeNull();
     expect(persisted.metadata.intervals).toBeNull();
   });
-});
 
+  it('refuses a v1.1 result that has not passed deterministic materialization', () => {
+    const result = v11Result();
+    delete result.v11Materialization;
+    expect(() =>
+      buildCityEstimatePersistence(result, { cityName: 'Toyama', countryName: 'Japan' })
+    ).toThrow(/missing its deterministic materialization/);
+  });
+});

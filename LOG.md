@@ -637,3 +637,10 @@ v1.1 rows use `llm_city_generation_v1_1` and retain the ten USD anchors, convert
 request snapshot, model and reasoning effort. `/api/estimates` exposes a generic provenance object, `/dataset` shows
 the methodology and anchor/FX details, and planner v1.1 creation uses the requested city plus canonical country data
 without a separate metadata LLM call. The default remains v1 pending Phase 5 smoke and activation review.
+
+The deterministic Phase 5 checkpoint is now complete on `feat/city-cost-methodology-v1-1`: formula and rounding
+parity, one-call generation, no-partial-persistence behavior, explicit v1 rollback, historical v6 provenance parsing,
+and the unchanged live CSV are covered by tests or `scripts/check-city-cost-v1-1.ts`. TypeScript, build, the full
+Vitest suite (36 files / 160 tests), memory checks, and the v1.1 deterministic check pass. The three-city keyed
+functional smoke (Tottori, Toowoomba, Brno) remains an owner-run operational check; v1 remains the default until it
+passes. No existing city is automatically regenerated.

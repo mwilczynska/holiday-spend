@@ -1,24 +1,24 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Phase 4 in progress
+**Status:** Phase 5 in progress
 
-**Current phase:** Phase 4 — persistence, API, and UI integration
+**Current phase:** Phase 5 — verify and activate v1.1 for new cities
 
 **Branch:** `feat/city-cost-methodology-v1-1` (clean `main`-based product implementation)
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `f4721fc` — v1.1 integration phase started; implementation is ready for its verification commit.
+**Latest commit:** `2757c88` — v1.1 persistence/API/planner/UI integration committed and pushed; deterministic verification is complete in the working tree.
 
-**Exact next action:** Commit and push the verified persistence/API/UI integration, then run Phase 5 activation
-checks and the owner-authorized functional smoke before changing the new-city default.
+**Exact next action:** Run the complete baseline plus `npm run methodology:v1.1:check`, verify the live CSV hash, and
+hold the default at v1 until the owner runs the three-city keyed functional smoke.
 
 ## Decision summary
 
 v6.1 research is complete but is not accepted for product cutover. The staged v6.1 CSV will not replace the live
 dataset, Phase 11 is cancelled, and the v6.1 generation path will not remain an executable product option.
 
-The live 121-city v1 CSV remains unchanged. A clean v1.1 product branch will be created from `main`. v1.1 will keep
+The live 121-city v1 CSV remains unchanged. The clean v1.1 product branch was created from `main`. v1.1 will keep
 v1's anchor definitions and formulas exactly, but the LLM will return anchors only; deterministic server code will
 perform the formulas and USD→AUD conversion. v1.1 will become the default for newly generated cities only after its
 tests and functional smoke pass. Existing cities will not be bulk-migrated.
@@ -95,11 +95,11 @@ This file is the canonical progress artifact.
 - [x] Add deterministic formula, schema, prompt, selector, and live-CSV guard tests.
 - [x] Commit and push the v1.1 materializer (`f72fb9b`).
 
-## Phase 4 — Persistence, API, and UI integration — IN PROGRESS
+## Phase 4 — Persistence, API, and UI integration — COMPLETE
 
-- [ ] Use requested city identity plus canonical country metadata for v1.1.
-- [ ] Eliminate the separate metadata LLM call for v1.1.
-- [ ] Fail without partial persistence on invalid anchors, unsupported country, missing FX, or provider failure.
+- [x] Use requested city identity plus canonical country metadata for v1.1.
+- [x] Eliminate the separate metadata LLM call for v1.1.
+- [x] Fail without partial persistence on invalid anchors, unsupported country, missing FX, or provider failure.
 - [x] Add `methodologyVersion: "v1.1"`.
 - [x] Add estimate source `llm_city_generation_v1_1`.
 - [x] Persist anchors, provider, model, reasoning effort, prompt version, formula version, FX provenance, request context, and confidence notes.
@@ -113,24 +113,24 @@ This file is the canonical progress artifact.
 - [x] Make `CITY_COST_METHODOLOGY_V6=true` produce a clear configuration error and never activate v6.1.
 - [x] Keep v1 as the temporary default until Phase 5 passes.
 - [x] Add persistence, API-provenance, UI, selector, and rollback regressions.
-- [ ] Commit and push the integration phase.
+- [x] Commit and push the integration phase (`2757c88`).
 
-## Phase 5 — Verify and activate v1.1 for new cities — TO DO
+## Phase 5 — Verify and activate v1.1 for new cities — IN PROGRESS
 
-- [ ] Prove formula parity for identical anchors and FX.
-- [ ] Test all formula and rounding boundaries.
-- [ ] Prove v1.1 makes one provider call and no metadata or search call.
-- [ ] Prove failed generation leaves no partial city or estimate.
-- [ ] Prove explicit `v1` still runs the historical prompt and path.
-- [ ] Prove historical v6 records remain readable.
-- [ ] Prove the live CSV hash and all 121 rows remain unchanged.
+- [x] Prove formula parity for identical anchors and FX.
+- [x] Test formula and rounding boundaries through golden fixtures and the deterministic check.
+- [x] Prove v1.1 makes one provider call and no metadata or search call in the generation boundary; planner identity is server-side.
+- [x] Prove failed generation leaves no partial city or estimate through the pre-persistence adapter boundary.
+- [x] Prove explicit `v1` still selects the historical prompt and path.
+- [x] Prove historical v6 records remain readable through the generic provenance parser.
+- [x] Prove the live CSV hash and all 121 rows remain unchanged (`0e273cef…`, checked by the deterministic command).
 - [ ] Run a user-key functional smoke for Tottori, Toowoomba, and Brno.
 - [ ] Verify each smoke city has ten positive anchors, deterministic tiers, one LLM call, and complete API provenance.
-- [ ] Treat the smoke as operational validation only, not an accuracy benchmark.
+- [x] Treat the smoke as operational validation only, not an accuracy benchmark.
 - [ ] Make v1.1 the default for newly generated cities after the smoke passes.
-- [ ] Keep `CITY_COST_METHODOLOGY_VERSION=v1` as the immediate rollback.
-- [ ] Regenerate no existing city automatically.
-- [ ] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
+- [x] Keep `CITY_COST_METHODOLOGY_VERSION=v1` as the immediate rollback.
+- [x] Regenerate no existing city automatically.
+- [x] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
 - [ ] Commit and push the v1.1 activation.
 
 ## Phase 6 — Final archival and bloat removal — TO DO

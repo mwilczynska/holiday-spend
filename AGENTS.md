@@ -142,6 +142,7 @@ npx tsc --noEmit
 npm run build
 npm test -- --run
 npm run docs:check-memory
+npm run methodology:v1.1:check
 ```
 
 The v6-specific checks and experiments remain runnable only from the archived v6 branch for historical replay.
@@ -167,6 +168,7 @@ documented OneDrive attribute workaround. This is a filesystem issue, not applic
 | `src/lib/city-llm-client.ts` | Provider JSON-completion transports |
 | `src/lib/provider-model-discovery.ts` | Provider model discovery |
 | `src/lib/city-cost-v1-1-guard.ts` | Refuses any v1.1 output write targeting the live v1 CSV |
+| `scripts/check-city-cost-v1-1.ts` | Deterministic formula, FX, output-safety and live-CSV integrity check |
 | `src/lib/country-metadata.ts` | Canonical country identity and defaults |
 | `data/reference/city_costs_app_aud.csv` | Live 121-city v1 dataset |
 | `feat/city-cost-methodology-v6` | Retained v6 research branch; not a current product path |
