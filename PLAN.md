@@ -8,7 +8,7 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `8800a46` — final v1.1 provenance checkpoint metadata; pushed after verification.
+**Latest commit:** `9d43405` — OneDrive-safe dev-server recovery guard; pushed after verification.
 
 **Exact next action:** Start the local app with `npm run dev` (the predev guard repairs a OneDrive reparse-point
 `.next` cache), open the connected Chrome user tab at `/dataset`, and run the owner-key functional smoke for Tottori,
