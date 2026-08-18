@@ -8,10 +8,10 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `5327246` — deterministic v1.1 verification and current-plan checkpoint committed; pending push.
+**Latest commit:** `53d043a` — deterministic v1.1 verification checkpoint pushed; current handoff and loop are staged.
 
-**Exact next action:** Push the checkpoint, then run the owner-key functional smoke for Tottori, Toowoomba, and Brno;
-keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
+**Exact next action:** Repair the Chrome browser bridge, then run the owner-key functional smoke for Tottori, Toowoomba,
+and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
 
 ## Decision summary
 
@@ -43,8 +43,8 @@ This file is the canonical progress artifact.
 - [x] Copy the previous root `PLAN.md` to `docs/dev/archive/plans/PLAN-city-cost-v6-1-final-2026-08-18.md`.
 - [x] Add a `SUPERSEDED — not current` banner to the archived plan.
 - [x] Replace root `PLAN.md` with this tracked v1.1 checklist.
-- [x] Record the v6.1 retirement decision in `LOG.md` and `docs/dev/handoffs/city-cost-v6.md`.
-- [x] Mark the active v6.1 plan, handoff, loop prompt, and release recommendation as superseded or abandoned.
+- [x] Record the v6.1 retirement decision in `LOG.md` and the archived v6 research pointer.
+- [x] Keep the retired v6.1 plan, handoff, loop prompt, and release recommendation out of the clean product branch.
 - [x] Run `npm run docs:sync-memory` and `npm run docs:check-memory`.
 - [x] Verify the archived plan is complete and unchanged apart from its banner.
 - [x] Commit and push the planning transition (`2d74c0b`).
@@ -131,16 +131,17 @@ This file is the canonical progress artifact.
 - [x] Keep `CITY_COST_METHODOLOGY_VERSION=v1` as the immediate rollback.
 - [x] Regenerate no existing city automatically.
 - [x] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
+- [x] Publish the current v1.1 handoff and loop with the owner-smoke procedure.
 - [ ] Commit and push the v1.1 activation.
 
 ## Phase 6 — Final archival and bloat removal — TO DO
 
-- [ ] Make the v1.1 plan, handoff, and loop the only active city-cost workstream documents.
-- [ ] Confirm no v5/v6 experiment corpus or migration artifact entered the clean product branch.
-- [ ] Retain only a concise summary of useful v6 findings and links to the archived branch/tag.
-- [ ] Preserve generic model discovery, reasoning controls, country identity, and persistence improvements.
+- [x] Make the v1.1 plan, handoff, and loop the only active city-cost workstream documents.
+- [x] Confirm no v5/v6 experiment corpus or migration artifact entered the clean product branch.
+- [x] Retain only a concise summary of useful v6 findings and links to the archived branch/tag.
+- [x] Preserve generic model discovery, reasoning controls, country identity, and persistence improvements.
 - [ ] Remove active references to v6 activation, Phase 11, staged migration, and pending holdouts.
-- [ ] Reduce the active verification baseline to shipping product checks and deterministic v1.1 checks.
+- [x] Reduce the active verification baseline to shipping product checks and deterministic v1.1 checks.
 - [ ] Preserve the archived v6 branch and tag indefinitely.
 - [ ] Run the complete final baseline.
 - [ ] Confirm the branch is clean and pushed.

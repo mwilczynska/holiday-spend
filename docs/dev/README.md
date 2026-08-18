@@ -2,16 +2,14 @@
 
 This folder holds developer-facing planning and historical context that is useful for implementation work but is not part of the app's public product or operations documentation.
 
-**Almost everything in this folder is historical.** For current work, read `/PLAN.md`. For what was
-tried and what it produced, read `/LOG.md`. For the active methodology, read
-`docs/product/methodology-v4.md`.
+**Almost everything in this folder is historical.** For current work, read `/PLAN.md`, then
+`docs/dev/handoffs/city-cost-v1-1.md` and `/LOOP-PROMPT-V1-1.md`. For what was tried and what it produced, read
+`/LOG.md`. The v4 documents are retained methodology evidence, not the active product implementation.
 
 Structure:
 
-- `plans/` - implementation plans for major workstreams. All are complete or abandoned; see `/LOG.md`
-  for which is which
-- `handoffs/` - branch handoff notes. `city-cost-v4.md` is the most recent and most useful, though its
-  "nothing is committed" line is stale — that work landed in commits `7db267f`..`63d873a`
+- `plans/` - historical implementation plans plus the active checklist at `/PLAN.md`
+- `handoffs/` - current `city-cost-v1-1.md`; older handoffs are superseded historical notes
 - `PLAN-initial-spec.md` - the original historical project spec retained for context
 - `PLAN-new-methodology.md` - an early v4 draft, **superseded by** `docs/product/methodology-v4.md`
 

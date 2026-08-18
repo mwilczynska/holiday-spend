@@ -1,5 +1,8 @@
 # Free-Only City Cost Collection And Batch Zero
 
+> **SUPERSEDED — 18 August 2026.** This is retained source-access and v3/v4 collection history. It is not part of the
+> active v1.1 new-city path; read `PLAN.md` and `LOOP-PROMPT-V1-1.md` for current work.
+
 <!-- status-banner -->
 > **PARTLY ACTIVE.** The source-access decisions are current and binding — in particular the
 > 27 July 2026 reversal that made Booking.com and Trip.com the primary accommodation channels, and the

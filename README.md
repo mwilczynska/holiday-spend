@@ -115,7 +115,8 @@ The short version is:
 | [CLAUDE.md](./CLAUDE.md) / [AGENTS.md](./AGENTS.md) | Project memory — what the app is and how it currently works |
 | [PLAN.md](./PLAN.md) | Current plan, milestone status, open decisions |
 | [LOG.md](./LOG.md) | History — shipped features, methodologies tried and their results, dataset inventory |
-| [PLAN.md](./PLAN.md) | The active city cost v1.1 simplification workstream |
+| [docs/dev/handoffs/city-cost-v1-1.md](./docs/dev/handoffs/city-cost-v1-1.md) | Current city-cost handoff and exact next action |
+| [LOOP-PROMPT-V1-1.md](./LOOP-PROMPT-V1-1.md) | Current city-cost loop and stopping rules |
 | [docs/README.md](./docs/README.md) | Guide to everything else under `docs/` |
 
 ## Current Gaps

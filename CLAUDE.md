@@ -10,6 +10,8 @@ This file describes what the project is and currently does. It is deliberately f
 | What is planned next, milestone status, open decisions | **[PLAN.md](PLAN.md)** |
 | What was built, what was tried, and what the evidence showed | **[LOG.md](LOG.md)** |
 | Active city-cost implementation plan | **[PLAN.md](PLAN.md)** |
+| Cold-start handoff and exact next action | `docs/dev/handoffs/city-cost-v1-1.md` |
+| Active city-cost loop | `LOOP-PROMPT-V1-1.md` |
 | Retired v6.1 research history | archived `feat/city-cost-methodology-v6` branch and tag `city-cost-v6.1-research-final-2026-08-18` |
 | Prior methodology evidence | `docs/product/methodology-v4.md`, `data/reference/v5/` |
 

@@ -1,5 +1,9 @@
 # Handover — City Cost Methodology v4
 
+> **SUPERSEDED — 18 August 2026.** The current city-cost workstream is v1.1. Read
+> [`PLAN.md`](../../../PLAN.md) and [`city-cost-v1-1.md`](./city-cost-v1-1.md). This file is retained only as v4
+> historical context.
+
 **As at 27 July 2026.** Read `docs/product/methodology-v4.md` first; this note covers what is done, what is blocked, and what to do next.
 
 ## Where things stand

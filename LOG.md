@@ -644,3 +644,8 @@ and the unchanged live CSV are covered by tests or `scripts/check-city-cost-v1-1
 Vitest suite (36 files / 160 tests), memory checks, and the v1.1 deterministic check pass. The three-city keyed
 functional smoke (Tottori, Toowoomba, Brno) remains an owner-run operational check; v1 remains the default until it
 passes. No existing city is automatically regenerated.
+
+The current v1.1 handoff and loop are now `docs/dev/handoffs/city-cost-v1-1.md` and `LOOP-PROMPT-V1-1.md`; the old v4
+handoff and source-access collection plan are explicitly superseded. The owner-key smoke remains pending. On 18 August
+2026 Chrome was found with the Codex extension installed and enabled but without the required native-host registry
+entry, so browser control could not reach the local app. No provider key was accessed and no smoke result was claimed.
