@@ -82,6 +82,13 @@ describe('city-generation-persistence', () => {
     expect(persisted.anchors).toMatchObject({ currency: 'USD', convertedCurrency: 'AUD' });
     expect(persisted.inputSnapshot).toMatchObject({ cityName: 'Toyama', countryName: 'Japan' });
     expect(persisted.apiSummary.fx).toMatchObject({ snapshotId: 'aud-reference-2026-07-22-v1' });
+    expect(persisted.sources).toMatchObject({
+      drinkLocalBeer: 'llm_city_generation_v1_1',
+      drinkImportBeer: 'llm_city_generation_v1_1',
+      drinkWineGlass: 'llm_city_generation_v1_1',
+      drinkCocktail: 'llm_city_generation_v1_1',
+      drinkCoffee: 'llm_city_generation_v1_1',
+    });
     expect(persisted.metadata.evidenceGrades).toBeNull();
     expect(persisted.metadata.intervals).toBeNull();
   });

@@ -47,8 +47,8 @@ export interface CityGenerationPersistence {
   };
 }
 
-function buildSourceMap(source: string) {
-  return {
+function buildSourceMap(source: string, includeDirectDrinkInputs = false) {
+  const sources = {
     accomHostel: source,
     accomPrivateRoom: source,
     accom1star: source,
@@ -68,6 +68,19 @@ function buildSourceMap(source: string) {
     activitiesMid: source,
     activitiesHigh: source,
   };
+
+  if (includeDirectDrinkInputs) {
+    return {
+      ...sources,
+      drinkLocalBeer: source,
+      drinkImportBeer: source,
+      drinkWineGlass: source,
+      drinkCocktail: source,
+      drinkCoffee: source,
+    };
+  }
+
+  return sources;
 }
 
 export function buildCityEstimatePersistence(
@@ -130,7 +143,7 @@ export function buildCityEstimatePersistence(
   }
 
   const source = 'llm_city_generation_v1_1';
-  const sources = buildSourceMap(source);
+  const sources = buildSourceMap(source, true);
   const metadata: CityEstimatePersistenceMetadata = {
     region: payload.region,
     confidenceNotes: payload.confidence_notes,

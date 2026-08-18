@@ -106,6 +106,7 @@ This file is the canonical progress artifact.
 - [x] Persist `evidenceBasis: "holistic_model_estimate"`.
 - [x] Do not fabricate source observations, evidence grades, or statistical intervals.
 - [x] Add generic methodology provenance to `/api/estimates`.
+- [x] Include direct drink input fields in the v1.1 source map so all persisted planner inputs have API-visible provenance.
 - [x] Display v1.1 methodology, anchors, model, reasoning, and FX provenance on `/dataset`.
 - [x] Preserve historical v1, v6.0, and v6.1 record readability without retaining an executable v6 generator.
 - [x] Add `CITY_COST_METHODOLOGY_VERSION=v1|v1.1`.

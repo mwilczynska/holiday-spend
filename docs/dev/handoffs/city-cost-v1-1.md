@@ -17,6 +17,8 @@ that must remain visible during implementation.
   and `npm run methodology:v1.1:check` pass.
 - The complete 19-field boundary is explicit: 18 daily/accommodation derivations plus direct `drink_coffee` at cent
   precision; the materializer, API query, tests, and deterministic check cover it.
+- v1.1 source maps now include the five direct drink inputs as well as the 18 derived planner fields; v1's historical
+  source-map shape is unchanged.
 - The live `data/reference/city_costs_app_aud.csv` is unchanged. Existing cities are not migrated. The default remains
   v1 until the functional smoke passes.
 

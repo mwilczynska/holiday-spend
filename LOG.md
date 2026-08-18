@@ -659,3 +659,8 @@ source-access and accommodation documents now open as historical evidence, and `
 separates historical inventory labels from the active v1.1 product plan. The Chrome bridge was retried after the owner
 reinstalled the plugin, but the extension still has no Windows native-messaging registry entry, so the keyed smoke is
 not yet run. No provider key was accessed, and the new-city default remains v1 pending that operational check.
+
+The final local boundary audit found that v1.1's direct drink inputs were visible in the city/API data but absent from
+the persisted source map. The v1.1 adapter now records the same source for local beer, imported beer, wine, cocktail,
+and coffee while preserving the historical v1 map. Targeted generation/persistence tests, typecheck, and the
+deterministic check pass; the keyed smoke remains the only unrun release step.
