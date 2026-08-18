@@ -1,6 +1,8 @@
 import {
   CITY_GENERATION_DEFAULT_MODELS,
+  getCityGenerationThinkingBudget,
   type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
 
 function normalizeApiKey(apiKey?: string) {
@@ -69,6 +71,7 @@ async function runOpenAiJsonPrompt(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
@@ -93,6 +96,10 @@ async function runOpenAiJsonPrompt(params: {
     requestBody.max_completion_tokens = params.maxTokens ?? 3000;
   } else {
     requestBody.max_tokens = params.maxTokens ?? 3000;
+  }
+
+  if (params.reasoningEffort && params.reasoningEffort !== 'none') {
+    requestBody.reasoning_effort = params.reasoningEffort;
   }
 
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -120,6 +127,7 @@ async function runAnthropicJsonPrompt(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
@@ -129,6 +137,19 @@ async function runAnthropicJsonPrompt(params: {
   let data: { content?: Array<{ text?: string }> } | null = null;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
+    const thinkingBudget = params.reasoningEffort && params.reasoningEffort !== 'none'
+      ? getCityGenerationThinkingBudget(params.reasoningEffort)
+      : 0;
+    const requestBody: Record<string, unknown> = {
+      model,
+      max_tokens: Math.max(params.maxTokens ?? 3000, (thinkingBudget ?? 0) + 1500),
+      system: params.systemPrompt,
+      messages: [{ role: 'user', content: params.userPrompt }],
+    };
+    if (thinkingBudget > 0) {
+      requestBody.thinking = { type: 'enabled', budget_tokens: thinkingBudget };
+    }
+
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -136,12 +157,7 @@ async function runAnthropicJsonPrompt(params: {
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify({
-        model,
-        max_tokens: params.maxTokens ?? 3000,
-        system: params.systemPrompt,
-        messages: [{ role: 'user', content: params.userPrompt }],
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (response.ok) {
@@ -173,6 +189,7 @@ async function runGeminiJsonPrompt(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
@@ -204,7 +221,7 @@ async function runGeminiJsonPrompt(params: {
             responseMimeType: 'application/json',
             maxOutputTokens: params.maxTokens ?? 3000,
             thinkingConfig: {
-              thinkingBudget: 0,
+              thinkingBudget: getCityGenerationThinkingBudget(params.reasoningEffort),
             },
           },
         }),
@@ -249,6 +266,7 @@ export async function runJsonPromptWithProvider(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }) {
   const providerOrder: CityGenerationProvider[] = params.provider
     ? [params.provider]
@@ -262,6 +280,7 @@ export async function runJsonPromptWithProvider(params: {
       apiKey?: string;
       model?: string;
       maxTokens?: number;
+      reasoningEffort?: CityGenerationReasoningEffort;
     }) => Promise<{ provider: string; model: string; text: string } | null>
   > = {
     anthropic: runAnthropicJsonPrompt,
@@ -275,6 +294,7 @@ export async function runJsonPromptWithProvider(params: {
       userPrompt: params.userPrompt,
       apiKey: params.apiKey,
       model: params.model,
+      reasoningEffort: params.reasoningEffort,
       maxTokens: params.maxTokens,
     });
 

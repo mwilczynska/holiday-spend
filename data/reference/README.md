@@ -40,6 +40,29 @@ abandoned v3 programme, still referenced by tests or kept for provenance.
 | `dry-run/stage1/bangkok-firstpage.json` | **LIVE** | Kept for the **class-inversion anomaly** — 4-star headline below 3-star | provenance |
 | `dry-run/stage1/lisbon-firstpage.json` | **LIVE** | First-page capture | provenance |
 
+## RETIRED — v6 methodology research
+
+v6/v6.1 are retained historical evidence on the archived `feat/city-cost-methodology-v6` branch and immutable tag
+`city-cost-v6.1-research-final-2026-08-18`. This clean product branch deliberately does not carry the v6 experiment
+tree. Do not resume collection, reopen holdouts, import staged rows or run the cancelled Phase 11. The active product
+workstream is the simpler v1.1 plan in `/PLAN.md`; the live v1 CSV remains unchanged.
+
+## SUPERSEDED — v5 methodology evidence
+
+> **The v5 acceptance rule is superseded; the v5 evidence is not.** All 95 experiment directories are
+> retained and every verdict remains an accurate statement about what a source could supply. v6 reuses
+> the Numbeo, Expedia, BudgetYourTrip, Expatistan and Price of Travel routes directly, and fits its
+> accommodation ladder from the pooled Expedia rows collected here. See
+> `docs/dev/plans/city-cost-methodology-v6.md` §1.
+
+| Path | Status | What it is | Read by |
+| --- | --- | --- | --- |
+| `v5/data-dictionary-v5.md` | **CURRENT** | Frozen v5 estimands, units, source bases, and missingness semantics | v5 experiments |
+| `v5/validation-manifest-v5.json` | **CURRENT** | City-level validation split and acceptance gates | v5 experiments |
+| `v5/experiments/000-baseline-reassessment/` | **IN PROGRESS** | Deterministic audit of retained v3/v4 evidence | `methodology:v5:baseline` |
+| `v5/experiments/001-one-call-harness/` | **IN PROGRESS** | Target-model extractor prompt, schema fixture, and one-call telemetry outputs | `run-city-cost-v5-one-call.mjs` |
+| `v5/experiments/002-accommodation-ladder/` | **COMPLETE — candidate rejected** | Independent audit of the retained accommodation ladder and hostel identifiability | `methodology:v5:accommodation` |
+
 ## LIVE — v3 evidence that v4 runs on
 
 Collected under the abandoned programme, but **still active input**. Do not treat as stale.

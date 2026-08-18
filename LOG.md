@@ -610,3 +610,19 @@ Superseded material sits under `archive/` folders and carries a `> **SUPERSEDED*
 | `docs/product/archive/estimates-page-v3-draft.md` | An `/estimates` draft that was never wired up |
 | `docs/dev/archive/plans/`, `docs/dev/archive/handoffs/` | Completed app workstreams and their handoffs |
 | `docs/dev/archive/PLAN-initial-spec.md` | The original project spec |
+
+---
+
+## v6.1 retirement and v1.1 restart — 18 August 2026
+
+The v6.1 research line was rejected for product cutover after its staged 121-city output and provider-heavy
+collection process proved too large and operationally fragile for the original simple-refresh objective. The live
+`data/reference/city_costs_app_aud.csv` and existing-city behavior remain v1; no holdout, staged CSV, bulk migration or
+Phase 11 action is authorized. The complete v6.1 history is preserved on `feat/city-cost-methodology-v6` at
+`city-cost-v6.1-research-final-2026-08-18`.
+
+The replacement v1.1 workstream starts from `main`. It keeps all 19 planner tiers and the exact v1 formulas initially,
+but asks the model for only the ten existing USD anchors in one schema-constrained call. Server-side code performs all
+arithmetic and USD→AUD conversion from the checked-in FX snapshot, persists provenance, and supports an explicit v1
+rollback. v1.1 applies to newly generated cities only; no benchmark, new collection panel, coefficient fitting or
+existing-city migration is part of this restart. Progress is tracked in the root `PLAN.md`.

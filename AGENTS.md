@@ -3,256 +3,165 @@
 Canonical project memory. `AGENTS.md` must stay a byte-for-byte mirror — after editing this file run
 `npm run docs:sync-memory`, and verify with `npm run docs:check-memory`.
 
-**This file describes what the project is and how it currently works.** It is deliberately free of
-change history.
+This file describes what the project is and currently does. It is deliberately free of change history.
 
 | For | Read |
 | --- | --- |
 | What is planned next, milestone status, open decisions | **[PLAN.md](PLAN.md)** |
-| What was built, what methodologies were tried and what they produced, dataset inventory | **[LOG.md](LOG.md)** |
-| The active city cost methodology in full | `docs/product/methodology-v4.md` |
+| What was built, what was tried, and what the evidence showed | **[LOG.md](LOG.md)** |
+| Active city-cost implementation plan | **[PLAN.md](PLAN.md)** |
+| Retired v6.1 research history | archived `feat/city-cost-methodology-v6` branch and tag `city-cost-v6.1-research-final-2026-08-18` |
+| Prior methodology evidence | `docs/product/methodology-v4.md`, `data/reference/v5/` |
 
 ---
 
 ## What the app is
 
-A **private travel budget and spend-tracking app for long multi-city trips**, built for two travellers.
+A private travel budget and spend-tracking app for long multi-city trips. It combines itinerary planning,
+budget modelling across accommodation / food / drinks / activities, manual and imported expense tracking,
+planned-vs-actual dashboards, and a city-cost library that can generate new cities with an LLM.
 
-It combines itinerary planning by city and date, budget modelling across accommodation / food / drinks /
-activities, manual and imported expense tracking, planned-vs-actual dashboards, and a city cost library
-that can be edited by hand or generated for new cities with an LLM.
+City base costs are stored in AUD for two people and scaled at runtime for traveller count and selected tiers.
 
-City base costs are stored **in AUD for 2 people** and scaled at runtime for the traveller group size and
-the selected budget tiers.
-
-### Routes
+## Routes
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Planned vs actual across the trip and by country |
-| `/plan` | Build the trip city-by-city — dates, tiers, overrides, intercity transport |
-| `/plan/compare` | Compare saved plan snapshots side by side |
-| `/track` | Record actual spend manually or by importing Wise CSV exports |
-| `/dataset` | The city cost library — editor, planner-facing dataset, generation history |
-| `/estimates` | Methodology documentation (currently describes v2.1/v3 — see PLAN.md) |
-| `/settings`, `/settings/account` | Traveller count, display name, password, sign-in method |
-
----
+| `/` | Planned versus actual spending across the trip and by country |
+| `/plan` | Build the trip city by city, including tiers, overrides and intercity transport |
+| `/plan/compare` | Compare saved plan snapshots |
+| `/track` | Record expenses manually or import Wise CSV exports |
+| `/dataset` | City-cost library, editor, generation history and provenance |
+| `/estimates` | Methodology documentation |
+| `/settings`, `/settings/account` | Traveller and account settings |
 
 ## Aims and constraints
 
-The city cost system exists to answer: *what will two people spend per day in this city?* Three
-constraints shape every design decision:
+The city-cost system answers: *what will two people spend per day in this city?* Accuracy should be reasonable
+and useful for trip decisions, refreshes must remain cheap, and users must be able to add a new city on demand.
+There are no paid data APIs. Provider API keys entered in the UI remain in browser storage and are never written
+to the repository or database.
 
-1. **Accuracy needs to be reasonable, not exact.** Someone choosing between Lisbon and Copenhagen needs
-   the right order of magnitude and the right ranking, not a quote.
-2. **Refresh must be cheap.** Prices drift, and a method costing thousands of lookups per refresh will
-   never be re-run. A stale dataset is worse than an approximate one.
-3. **Users add cities on demand.** The 122nd city must cost roughly what each of the first 121 cost, not
-   require a research programme.
+## Tech stack and layout
 
-Constraints 2 and 3 rule out approaches that are accurate but unrepeatable. **This is a cost-per-refresh
-problem as much as an accuracy problem.**
-
-**No paid data APIs.** Everything is a page fetch or a provider web search.
-
----
-
-## Tech stack
-
-Next.js 14 App Router · TypeScript · Tailwind · shadcn/Radix UI · Drizzle ORM + better-sqlite3 · Zod v4 ·
-Recharts · NextAuth · Vitest + Playwright
-
----
-
-## Project layout
+Next.js 14 App Router · TypeScript · Tailwind · Radix/shadcn UI · Drizzle ORM + better-sqlite3 · Zod · Recharts ·
+NextAuth · Vitest + Playwright.
 
 | Path | Contents |
 | --- | --- |
-| repo root | App code |
-| `docs/product/methodology-v4.md` | **The active methodology** |
-| `docs/dev/plans/`, `docs/dev/handoffs/` | **Only current** workstream documents |
-| `docs/prompts/` | Versioned LLM prompt contracts — see its `README.md` for status |
-| `docs/ops/` | Deployment runbooks |
-| `data/reference/` | Canonical datasets and methodology evidence — see its `README.md` for the inventory |
-| `scripts/` | Tooling — see its `README.md`; about two thirds is v3 tooling kept for reproducibility |
-| `*/archive/` | Superseded material, banner-marked. Nothing here describes current behaviour |
-| `data/travel.db` | SQLite (gitignored) |
-| `sample-data/`, `.local/` | Local imports, scratch files (gitignored) |
+| `PLAN.md` | Active v1.1 city-cost plan and checklist |
+| `LOG.md` | Append-mostly project and methodology history |
+| `docs/prompts/` | Versioned LLM prompt contracts; status is recorded in its README |
+| `data/reference/` | Canonical datasets and retained methodology evidence |
+| `scripts/` | Build, validation, and reproducibility tooling |
+| `src/lib/` | Production methodology, provider, persistence and planning code |
+| `data/travel.db` | Local SQLite database; gitignored |
 
-**Status convention.** Every archived document opens with a `> **SUPERSEDED**` / `**ABANDONED**` /
-`**COMPLETE**` banner naming what replaced it. **A document with no banner is current.** Prompt files are
-the exception — several are read verbatim and sent to a model, so their status lives in
-`docs/prompts/README.md` rather than inside the files.
+Archived documents open with a `SUPERSEDED`, `ABANDONED`, or `COMPLETE` banner. Do not move or rename files under
+`data/reference/` without updating their readers.
 
-> **Do not move or rename anything under `data/reference/`** without updating its readers. Scripts and six
-> Vitest test files reference those paths as string literals.
+## City-cost system
 
-### Environment
+The live dataset is `data/reference/city_costs_app_aud.csv`: 121 cities, 58 countries, AUD for two people,
+tagged `base_csv_apr_2026`. `src/db/seed.ts` imports it. Existing cities remain on v1 and are not bulk-migrated.
 
-- `AUTH_DEV_PIN` — optional local dev auth fallback
-- `ENABLE_EMAIL_PASSWORD` — enables public email/password flows in dev without mail delivery
-- `APP_URL` — builds absolute verification/reset links
-- `RESEND_API_KEY`, `MAIL_FROM` — required for production email; without the key, dev logs links to console
+### v1 rollback path
 
----
+The historical v1 prompt, `docs/prompts/llm_prompt_new_cities_1.md`, asks one model for ten intuitive USD anchors
+and returns all derived tiers. Its formulas include the asserted accommodation, food, drink and activity rules,
+including `accom_4_star = hotel_3star × 1.80`. That formula is known to be imperfect but remains unchanged for
+the first v1.1 simplification so the lived product behavior is not silently altered.
 
-## City cost system
+### v1.1 active implementation target
 
-### What ships today
+The active plan in `PLAN.md` replaces the v6.1 source-heavy approach with a small v1.1 path for newly generated
+cities only:
 
-The canonical dataset is **`data/reference/city_costs_app_aud.csv`** — 121 cities, 58 countries, AUD for
-2 people, tagged `base_csv_apr_2026`. `src/db/seed.ts` imports it.
+- one ordinary schema-constrained LLM call returns the same ten USD anchors;
+- the LLM returns no derived tiers and no currency conversion;
+- deterministic server code applies the exact v1 formulas and converts with the checked-in FX snapshot;
+- anchors, provider/model, reasoning effort, prompt/formula versions, confidence and FX provenance are persisted;
+- no grades or intervals are fabricated for holistic model estimates;
+- v1 remains an explicit rollback through `CITY_COST_METHODOLOGY_VERSION=v1`;
+- `CITY_COST_METHODOLOGY_V6=true` must never activate v6.1.
 
-New cities are generated by the **v1 path**: `docs/prompts/llm_prompt_new_cities_1.md` asks a model for
-ten anchor prices and asserted multipliers derive 19 tiers.
+v1.1 does not rewrite the 121-city CSV, access a holdout, collect a methodology panel, fit coefficients, or
+bulk-migrate existing cities. It becomes the default for new cities only after the checklist and functional smoke
+pass.
 
-> **Known defect, deliberately still shipping.** v1 anchors come from model memory rather than a live
-> source, and its multipliers were never calibrated. `accom_4_star = hotel_3star × 1.80` has been
-> measured and refuted — it overpredicts 14 of 16 tested cities with a median absolute error of 38.8%.
-> The replacement is designed but not integrated. See PLAN.md.
+### v6 and v6.1 research history
 
-### The active design (v4)
+v6/v6.1 are rejected product approaches retained for audit and reproducibility on the archived
+`feat/city-cost-methodology-v6` branch and immutable tag `city-cost-v6.1-research-final-2026-08-18`. This clean product
+branch intentionally does not carry their implementation or experiment tree. Do not resume their collection, open
+holdouts, import staged rows, run Phase 11, or enable their old three-call/search contract.
 
-Documented in full in `docs/product/methodology-v4.md`. Its governing principle:
+## Transport
 
-> **Measure what is cheap to measure. Model only the gaps. Never assert a constant.**
+Transport is outside city-cost methodology. The planner supports manual `transportOverride` and repeatable
+`intercityTransports`, plus a separate LLM-backed intercity transport feature with its own prompt and provider
+adapters. City-cost generation and methodology pages treat transport as manual-only.
 
-Three properties behave differently and must be treated differently — **level** drifts slowly and is
-measured cheaply; **structure** (ratios between tiers) is very stable and is modelled from data; **drift**
-is handled by re-measuring level and leaving structure alone.
+## LLM generation and model discovery
 
-The second architectural rule: **the LLM is a structured extractor, never an estimator.** It searches,
-reads, and reports numbers with their sources and an explicit basis. It does no arithmetic, no currency
-conversion, and never emits a tier. All derivation is a pure server-side function.
+The app supports OpenAI, Anthropic and Google Gemini. Defaults are centralized in
+`src/lib/city-generation-config.ts`, but model names are editable so a stale default does not block generation.
 
-**Determinism is achieved at three layers**, confining non-determinism to a single moment:
+Model discovery runs through live provider APIs when a browser/server key is available, then no-key aggregators,
+then the generated curated snapshot at `src/lib/data/curated-models.generated.json`.
 
-| Layer | Deterministic? | How |
-| --- | --- | --- |
-| Collection | No — bounded instead | Fixed versioned prompt, rigid schema, hard validation gates, multi-sample median |
-| Derivation | **Fully** | Pure function from anchors to 19 tiers, server-side |
-| The dataset | **By persistence** | Anchors stored with provenance; a city never changes until a deliberate refresh |
+Provider/model-specific reasoning effort is selectable, persisted through generation, and passed to supported
+provider transports. `max` is available when the selected provider/model advertises it. Application provider keys
+are never accessed, copied, logged or stored by Codex.
 
-**`docs/prompts/llm_prompt_city_anchors_v4.md` is generated from methodology-v4.md §9.1.** Never edit it
-directly — edit the methodology and regenerate, or the two will drift.
+## Product behavior
 
-### Transport is out of scope
+Accommodation tiers are hostel dorm, private room, and 1–4 star. Drinks are none, light, moderate and heavy.
+Traveller count persists per user, while city base costs remain stored for two people. Saved plans store tier
+choices rather than frozen city prices.
 
-Transport estimation was removed from the city cost methodology. The planner supports a manual
-`transportOverride` and repeatable per-leg `intercityTransports`, plus a **separate** LLM-backed intercity
-transport feature with its own prompt and provider adapters. City cost generation and methodology pages
-must continue to treat transport as manual-only.
+`/plan/compare` uses one canonical server-side allocation engine for summary totals, cumulative series and country
+and category groupings. Manual transport remains separate.
 
----
+Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
+spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
 
-## LLM generation
+## Conventions and verification
 
-Three providers: **OpenAI**, **Anthropic**, **Google Gemini**. Defaults are centralized in
-`src/lib/city-generation-config.ts` (currently `gpt-5.4-mini`, `claude-sonnet-4-6`, `gemini-2.5-flash`).
+- Commit and push after each sizeable chunk and milestone.
+- Update `PLAN.md` at task start/end and before every commit or push.
+- Record superseded decisions as dated history; do not erase reasoning.
+- Fail closed. Unsupported values remain missing rather than becoming plausible substitutes.
+- A modelled value must not be presented as an observed source price.
+- Do not put provider API keys in the repository, logs or database.
 
-**API keys entered in the UI are stored only in browser `localStorage`** — never in the repo or database.
-Model names are editable so a stale default cannot hard-block the UI.
-
-**Model discovery runs three tiers:** live provider API (browser key, else server env key) → no-key
-aggregator (OpenRouter, then models.dev) → generated curated snapshot at
-`src/lib/data/curated-models.generated.json`, refreshed by `npm run models:refresh`.
-
-Provider quirks already handled — OpenAI switches between `max_tokens` and `max_completion_tokens` by
-model family; Gemini sets `thinkingBudget: 0` to reduce truncated JSON and surfaces a clearer truncation
-error; aggregator fetches parse defensively so gateway HTML becomes a friendly warning rather than a raw
-parse error.
-
----
-
-## Product behaviour worth knowing
-
-### Planner
-Accommodation tiers run hostel dorm, private room, and 1–4 star; drinks tiers are none / light / moderate
-/ heavy. Legs can be reordered and edited inline with date validation. Traveller count persists per user
-in `user_preferences.planner_group_size`; **city base costs stay stored for 2 and are scaled at runtime**.
-Saved plan snapshots live in the user-owned `saved_plans` table.
-
-### Comparison
-`/plan/compare` computes planned costs server-side from snapshot tier selections plus current city base
-rates. **One canonical allocation engine backs summary totals, cumulative series, and country/category
-groupings**, so all four reconcile by construction — this is a load-bearing invariant with test coverage,
-not an incidental detail.
-
-### Tracking
-Expense CRUD, tagging, exclusion, reassignment, bulk operations. Wise CSV import handles both
-transaction-history and balance-statement exports, repeated IDs, multiple date formats, and leg assignment
-by date. **When an expense is manually assigned to a leg**, tracking UI keeps the original transaction date
-visible but timeline calculations clamp the reporting date into the leg window.
-
-### Dashboard
-11 summary cards with info popovers explaining each calculation. Spend views are constrained to the trip
-window rather than all historical account activity, and missing AUD conversions are excluded rather than
-being treated as zero.
-
----
-
-## Conventions
-
-- **Commit and push after each sizeable chunk of work and after each milestone.**
-- Record superseded decisions as superseded — mark and date them rather than deleting, so the reasoning
-  that replaced them stays legible.
-- Fail closed. An unsupported value stays missing rather than being filled with a plausible substitute.
-- A modelled value must never be presentable as observed evidence. `MaterializedCityCostTier` carries
-  `evidenceBasis` and `imputedMeasures` to enforce this.
-
-### Verification baseline
+The active baseline is:
 
 ```
-npx tsc --noEmit          # expected to pass
-npm run build             # expected to pass
-npm test -- --run         # 142 tests
-npm run docs:check-memory # AGENTS.md mirrors CLAUDE.md
+npx tsc --noEmit
+npm run build
+npm test -- --run
+npm run docs:check-memory
 ```
 
-`/api/export` is dynamic because it reads request headers — this build note is expected.
+The v6-specific checks and experiments remain runnable only from the archived v6 branch for historical replay.
 
----
+## OneDrive gotcha
 
-## Gotchas
-
-**The repo lives inside OneDrive.** Files On-Demand dehydrates idle files into cloud placeholders that
-carry a reparse-point attribute. Node reports those as symlinks, so Next's `recursiveDelete` calls
-`readlink()` on them and dies:
-
-```
-Error: EINVAL: invalid argument, readlink '...\.next\server\app\estimates'
-```
-
-`next dev` then exits 0 and looks like an app crash with no application code involved. Fix: delete
-`.next`, then `attrib +P -U /s /d` at the repo root to pin everything local. The pin is a filesystem
-attribute, not a repo setting, so a fresh clone or a OneDrive reset brings it back.
-
-**UI component baseline.** Actively used components were rewritten onto Radix-style primitives rather than
-relying on incompatible newer shadcn/base-ui output. Some unused shadcn v4-style files still exist and
-should only be touched if those components are actually introduced.
-
-**Database bootstrap.** `src/db/index.ts` performs runtime bootstrap/backfill for schema changes on older
-local DBs, including derived itinerary leg dates and `itinerary_leg_transports`.
-
-**Account linking.** Google and email/password accounts are **not** auto-linked on matching email. The
-login page shows provider-specific guidance instead.
-
----
+The repository lives inside OneDrive. Files-On-Demand can make `.next` entries appear as reparse points and cause
+Next cleanup failures. If that occurs, remove `.next` and pin the affected workspace files locally with the project’s
+documented OneDrive attribute workaround. This is a filesystem issue, not application behavior.
 
 ## Key files
 
 | Path | Purpose |
 | --- | --- |
-| `docs/product/methodology-v4.md` | The active methodology; §9.1 is the prompt's source of truth |
-| `data/reference/city_costs_app_aud.csv` | The live 121-city dataset |
-| `src/lib/city-generation-config.ts` | Provider/model defaults, migrations, validation |
-| `src/lib/city-generation.ts`, `city-llm-client.ts` | Current generation path |
-| `src/lib/provider-model-discovery.ts` | Three-tier model discovery |
-| `src/lib/country-metadata.ts` | Canonical country resolution |
-| `src/lib/plan-comparison.ts` | The canonical planned-allocation engine |
-| `src/lib/city-cost-methodology-v3.ts` | `evidenceBasis`, FX, `money`/`quantile` helpers — reused by v4 |
-| `src/lib/transport-estimation.ts` | Web-search wiring, prompt versioning, JSON parse fallbacks, retry |
-| `src/lib/wise-csv-parser.ts`, `wise-import.ts` | Wise import |
-| `scripts/fit-city-cost-ratios.mjs` | Deterministic ratio fitting — reproduces methodology-v4.md §6–§7 |
-| `src/db/seed.ts`, `src/db/index.ts` | Seeding and runtime bootstrap |
+| `PLAN.md` | Active v1.1 implementation and rollout checklist |
+| `docs/prompts/llm_prompt_new_cities_1.md` | Frozen v1 rollback prompt |
+| `src/lib/city-generation.ts` | v1/v1.1 generation dispatch and schema validation |
+| `src/lib/city-generation-service.ts` | Estimate persistence and city updates |
+| `src/lib/city-llm-client.ts` | Provider JSON-completion transports |
+| `src/lib/provider-model-discovery.ts` | Provider model discovery |
+| `src/lib/country-metadata.ts` | Canonical country identity and defaults |
+| `data/reference/city_costs_app_aud.csv` | Live 121-city v1 dataset |
+| `feat/city-cost-methodology-v6` | Retained v6 research branch; not a current product path |

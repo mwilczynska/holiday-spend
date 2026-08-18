@@ -115,14 +115,14 @@ The short version is:
 | [CLAUDE.md](./CLAUDE.md) / [AGENTS.md](./AGENTS.md) | Project memory — what the app is and how it currently works |
 | [PLAN.md](./PLAN.md) | Current plan, milestone status, open decisions |
 | [LOG.md](./LOG.md) | History — shipped features, methodologies tried and their results, dataset inventory |
-| [docs/product/methodology-v4.md](./docs/product/methodology-v4.md) | The active city cost methodology |
+| [PLAN.md](./PLAN.md) | The active city cost v1.1 simplification workstream |
 | [docs/README.md](./docs/README.md) | Guide to everything else under `docs/` |
 
 ## Current Gaps
 
-The active backlog lives in [PLAN.md](./PLAN.md). The open workstream is **city cost methodology v4**:
-the collection contract is tested end to end, but app integration has not started, so city costs still
-come from the older v1 path.
+The active backlog lives in [PLAN.md](./PLAN.md). The open workstream is **city cost methodology v1.1**:
+one anchor-only LLM call with deterministic server-side formulas and FX for newly generated cities. v6.1 is
+retained as rejected historical research; the existing 121-city dataset and default path remain on v1.
 
 ## Notes
 

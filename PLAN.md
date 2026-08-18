@@ -1,181 +1,160 @@
-# Holiday Spend — Plan
+# City Cost v1.1 — Restore the Simple, Effective Method
 
-The working document. Current plan, milestone status, and open decisions.
+**Status:** Phase 2 in progress
 
-Completed history and methodology results live in [LOG.md](LOG.md). Project overview is in
-[CLAUDE.md](CLAUDE.md).
+**Current phase:** Phase 2 — create the clean v1.1 product branch
 
-**Last reviewed:** 31 July 2026
+**Branch:** `feat/city-cost-methodology-v1-1` (clean `main`-based product implementation)
 
----
+**Last updated:** 18 August 2026
 
-## Where things stand
+**Latest commit:** `05fc9a4` — clean branch created from `main`; foundation changes are ready to commit.
 
-The app is feature-complete for its purpose and stable: planning, tracking, dashboard, saved plans and
-comparison all work. `npm run build` passes, 142 Vitest tests pass, Playwright covers planner and
-compare regressions.
+**Exact next action:** Commit and push the clean-branch foundation, then implement and test the formula-preserving
+v1.1 anchor schema/materializer without changing the frozen v1 prompt or live CSV.
 
-**The open workstream is city cost methodology v4.** It has two halves at very different maturity:
+## Decision summary
 
-| Half | Status |
-| --- | --- |
-| Collection contract (`docs/prompts/llm_prompt_city_anchors_v4.md`) | **Tested end to end**, 20+ runs across five cities with a small fast model |
-| App integration | **Not started.** No v4 calculator, no anchor schema, no ingestion route |
+v6.1 research is complete but is not accepted for product cutover. The staged v6.1 CSV will not replace the live
+dataset, Phase 11 is cancelled, and the v6.1 generation path will not remain an executable product option.
 
-Meanwhile **v1 still ships** — including the `× 1.80` four-star multiplier that v4 measured and refuted.
-Every user-facing city cost today comes from the old path.
+The live 121-city v1 CSV remains unchanged. A clean v1.1 product branch will be created from `main`. v1.1 will keep
+v1's anchor definitions and formulas exactly, but the LLM will return anchors only; deterministic server code will
+perform the formulas and USD→AUD conversion. v1.1 will become the default for newly generated cities only after its
+tests and functional smoke pass. Existing cities will not be bulk-migrated.
 
----
+The lived-spending benchmark previously proposed as recommendation 4 is explicitly out of scope. No new collection,
+holdout, coefficient fitting, accommodation refit, or existing-city migration is authorized by this plan.
 
-## Open decisions
+## Plan maintenance rule
 
-These block or shape the work below. Each needs an explicit answer, not a default.
+This file is the canonical progress artifact.
 
-### D1 — Which accommodation figure do we read? *(blocking)*
+- Update `PLAN.md` whenever a task starts or finishes, and before every commit and push.
+- Mark pending tasks `[ ]` and verified completed tasks `[x]`.
+- Label every phase `TO DO`, `IN PROGRESS`, or `COMPLETE`.
+- Keep at most one phase `IN PROGRESS`.
+- Update the current phase, exact next action, date, branch, and latest commit at every checkpoint.
+- Never mark a task complete before its required verification passes.
+- Preserve superseded decisions as dated history rather than deleting them.
 
-Two committed documents give opposite instructions, both dated 27 July 2026:
+## Phase 0 — Preserve history and initialize the new plan — COMPLETE
 
-- `docs/product/methodology-v4.md` §9.4.4 — **"Headline averages are adopted, on stability."**
-- `docs/dev/plans/accommodation-collection-v4.md` — **"Never read the headline average."**
+- [x] Copy the previous root `PLAN.md` to `docs/dev/archive/plans/PLAN-city-cost-v6-1-final-2026-08-18.md`.
+- [x] Add a `SUPERSEDED — not current` banner to the archived plan.
+- [x] Replace root `PLAN.md` with this tracked v1.1 checklist.
+- [x] Record the v6.1 retirement decision in `LOG.md` and `docs/dev/handoffs/city-cost-v6.md`.
+- [x] Mark the active v6.1 plan, handoff, loop prompt, and release recommendation as superseded or abandoned.
+- [x] Run `npm run docs:sync-memory` and `npm run docs:check-memory`.
+- [x] Verify the archived plan is complete and unchanged apart from its banner.
+- [x] Commit and push the planning transition (`2d74c0b`).
 
-The second commit is later and its evidence is stronger (a full 108-property inventory read versus two
-Copenhagen runs), so it should win — but this has never been stated, and both files currently read as
-active guidance. **Nothing downstream can be built until this is settled**, because it determines what the
-collection contract asks for.
+## Phase 1 — Close v6.1 without erasing it — COMPLETE
 
-A third option is on the table and untested: the **geometric mean** of headline and property median, which
-landed +3.9% and +14.2% against Copenhagen where the individual bases were +54% and −15/−30%. It costs
-nothing extra to compute and can be tested retrospectively against any city where quotes are later
-obtained. It is deliberately *not* adopted on one city's evidence.
+- [x] Mark v6.1 research complete but rejected for product cutover.
+- [x] Cancel Phase 11 permanently.
+- [x] Record that the staged v6.1 CSV must never replace the live CSV.
+- [x] Preserve all v5/v6 experiments, holdouts, staged artifacts, and historical conclusions unchanged.
+- [x] Confirm the live CSV and default v1 path remain untouched.
+- [x] Commit and push the final v6 documentation state.
+- [x] Create and push the annotated tag `city-cost-v6.1-research-final-2026-08-18`.
+- [x] Record the tag and final commit in this plan (`335e61b`).
+- [x] Perform no further implementation work on the archived v6 branch.
 
-### D2 — What accuracy gate do we publish?
+## Phase 2 — Create the clean v1.1 product branch — IN PROGRESS
 
-The design targeted ≤15% median APE for food and drinks. Nothing reaches it; selected models land at
-18.2%, 21.3% and 22.0%. The sample frame is closed, so no further collection can change this.
+- [x] Create `feat/city-cost-methodology-v1-1` from `main`.
+- [x] Carry across only this plan, the archived prior plan, and a concise v6 retrospective.
+- [x] Record the live 121-city CSV hash as an invariant: `63b13a8774c66999c5f99aade671ca357f65b949`.
+- [x] Add a guard proving v1.1 tooling cannot write or regenerate the live CSV.
+- [x] Selectively port live provider/model discovery.
+- [x] Selectively port provider-specific reasoning effort, including `max` where supported.
+- [x] Preserve browser-only API-key handling.
+- [ ] Selectively port generic persistence/API provenance helpers.
+- [ ] Selectively port deterministic country identity handling.
+- [x] Do not import v5/v6 experiment data, source collectors, canaries, migration tooling, fitting scripts, or release validators.
+- [x] Run the baseline inherited from `main` (typecheck, build, 144 tests, memory check).
+- [ ] Commit and push the clean v1.1 foundation.
 
-Recommendation from the methodology: **publish ≤25% and state achieved figures alongside.** The
-alternative — adding a second predictor — is a design change, not a data problem, and should be evaluated
-on its own rather than used to keep an unmet target alive.
+## Phase 3 — Implement formula-preserving v1.1 — TO DO
 
-### D3 — Do we reverse the Hostelworld exclusion?
+- [ ] Preserve `llm_prompt_new_cities_1.md` unchanged as the exact v1 rollback prompt.
+- [ ] Add a versioned v1.1 prompt requesting only the existing ten USD anchors, region, confidence, and comparable-city reasoning.
+- [ ] State honestly that values are holistic model estimates; do not claim live page inspection.
+- [ ] Exclude derived tiers and currency conversion from the model response.
+- [ ] Add a strict `CityCostV11AnchorResponse` schema requiring all ten anchors to be finite and positive.
+- [ ] Implement pure `materializeCityCostV11`.
+- [ ] Copy every current v1 formula exactly, including `accom_4_star = hotel_3star_2p × 1.80`.
+- [ ] Preserve every current planner field and direct drink input.
+- [ ] Perform arithmetic before currency conversion.
+- [ ] Round final daily/accommodation values to whole AUD and direct drink inputs to cents.
+- [ ] Load USD→AUD from the checked-in, source-attributed FX snapshot.
+- [ ] Persist FX snapshot ID, hash, rate, and as-of date.
+- [ ] Ensure the LLM never supplies or infers FX.
+- [ ] Use requested city identity plus canonical country metadata for v1.1.
+- [ ] Eliminate the separate metadata LLM call for v1.1.
+- [ ] Prove a genuinely new v1.1 city uses exactly one LLM call.
+- [ ] Fail without partial persistence on invalid anchors, unsupported country, missing FX, or provider failure.
+- [ ] Add deterministic formula and schema tests.
+- [ ] Commit and push the v1.1 materializer.
 
-Booking.com and Trip.com were brought in scope by owner decision. **Hostelworld was not.** It is the only
-identified channel that labels hostel units, and without it `accom_shared_hostel_dorm` and
-`accom_hostel_private_room` cannot be separated — the Booking.com hostels page yields one blended measure.
-The alternative is occupancy-controlled search, which needs a browser.
+## Phase 4 — Persistence, API, and UI integration — TO DO
 
-### D4 — Is browser automation in scope?
+- [ ] Add `methodologyVersion: "v1.1"`.
+- [ ] Add estimate source `llm_city_generation_v1_1`.
+- [ ] Persist anchors, provider, model, reasoning effort, prompt version, formula version, FX provenance, request context, and confidence notes.
+- [ ] Persist `evidenceBasis: "holistic_model_estimate"`.
+- [ ] Do not fabricate source observations, evidence grades, or statistical intervals.
+- [ ] Add generic methodology provenance to `/api/estimates`.
+- [ ] Display v1.1 methodology, anchors, model, reasoning, and FX provenance on `/dataset`.
+- [ ] Preserve historical v1, v6.0, and v6.1 record readability without retaining an executable v6 generator.
+- [ ] Add `CITY_COST_METHODOLOGY_VERSION=v1|v1.1`.
+- [ ] Preserve exact legacy v1 generation when explicitly set to `v1`.
+- [ ] Make `CITY_COST_METHODOLOGY_V6=true` produce a clear configuration error and never activate v6.1.
+- [ ] Keep v1 as the temporary default until Phase 5 passes.
+- [ ] Add persistence, API, UI, selector, and rollback regressions.
+- [ ] Commit and push the integration phase.
 
-Three separate blockers resolve to this one question: accommodation ground truth beyond Copenhagen,
-date-controlled level reads, and the dorm/private split. A plain page fetch cannot clear any of them.
-The project has so far held a "no browser automation" line for the small-model requirement.
+## Phase 5 — Verify and activate v1.1 for new cities — TO DO
 
----
+- [ ] Prove formula parity for identical anchors and FX.
+- [ ] Test all formula and rounding boundaries.
+- [ ] Prove v1.1 makes one provider call and no metadata or search call.
+- [ ] Prove failed generation leaves no partial city or estimate.
+- [ ] Prove explicit `v1` still runs the historical prompt and path.
+- [ ] Prove historical v6 records remain readable.
+- [ ] Prove the live CSV hash and all 121 rows remain unchanged.
+- [ ] Run a user-key functional smoke for Tottori, Toowoomba, and Brno.
+- [ ] Verify each smoke city has ten positive anchors, deterministic tiers, one LLM call, and complete API provenance.
+- [ ] Treat the smoke as operational validation only, not an accuracy benchmark.
+- [ ] Make v1.1 the default for newly generated cities after the smoke passes.
+- [ ] Keep `CITY_COST_METHODOLOGY_VERSION=v1` as the immediate rollback.
+- [ ] Regenerate no existing city automatically.
+- [ ] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
+- [ ] Commit and push the v1.1 activation.
 
-## Milestones
+## Phase 6 — Final archival and bloat removal — TO DO
 
-### Completed
+- [ ] Make the v1.1 plan, handoff, and loop the only active city-cost workstream documents.
+- [ ] Confirm no v5/v6 experiment corpus or migration artifact entered the clean product branch.
+- [ ] Retain only a concise summary of useful v6 findings and links to the archived branch/tag.
+- [ ] Preserve generic model discovery, reasoning controls, country identity, and persistence improvements.
+- [ ] Remove active references to v6 activation, Phase 11, staged migration, and pending holdouts.
+- [ ] Reduce the active verification baseline to shipping product checks and deterministic v1.1 checks.
+- [ ] Preserve the archived v6 branch and tag indefinitely.
+- [ ] Run the complete final baseline.
+- [ ] Confirm the branch is clean and pushed.
+- [ ] Mark this plan complete.
 
-| Milestone | Outcome |
-| --- | --- |
-| Phases 1–5 — app foundations through city cost migration | Shipped. See LOG.md Part 4 |
-| Native accounts alongside Google OAuth | Shipped |
-| Saved plans and multi-plan comparison | Shipped |
-| Dashboard simplification | Shipped |
-| Canonical country dataset | Shipped |
-| Live LLM model discovery | Shipped |
-| Legacy code cleanup | Shipped |
-| **Phase 6 / methodology v3** | **Abandoned** at 22.8% coverage, zero complete cities |
-| v4 evidence gathering | Closed 99-city frame; all 121 production cities attempted |
-| v4 ratio model selection | Four relationships settled; forms stable under strict-sample re-fit |
-| v4 collection contract | Tested end to end; 0.0% error on 29/29 measures when direct lookup succeeds |
-| v4 accommodation class ladder | 1.297 / 0.734 / 0.592 fitted; incumbent 1.800 refuted |
-| Documentation restructure | CLAUDE.md 868 → 260 lines; LOG.md and PLAN.md created; superseded docs archived with status banners; inventories added for `data/reference/`, `scripts/` and `docs/prompts/` |
-| Dashboard as-of date | Dashboard figures now anchor on the last transaction date rather than today |
+## Definition of Done
 
-### In progress
-
-Nothing. `main` is clean and green as of 31 July 2026 — the next methodology starts here.
-
-### To do — v4, in dependency order
-
-**1. Settle D1.** Reconcile the two accommodation documents and mark one superseded. No collection work
-should start before this. *Cheap — a decision and an edit.*
-
-**2. Collect accommodation ground truth in three or four cities.** The highest-value work outstanding.
-It unblocks the ~50% bias figure, the D1 decision's evidence base, and the geometric-mean test
-simultaneously. **Needs browser automation or manual collection** (see D4) — 11 plain-fetch attempts in
-Lisbon returned zero usable quotes, and the failure modes are structural.
-
-**3. Calibrate the four shipped ratios.** The fitted relationships are *proxies*: they settle whether each
-model needs cost bands, not the coefficient values. Requires ~160 paired observations across 20 cities
-spanning all nine regions and the full cost range, 25% held out per relationship. One-off — it does not
-recur, because refresh re-measures level and leaves structure alone.
-
-| Requirement | Size | Fits |
-| --- | --- | --- |
-| Paired `street_food` + `mcmeal` | 20 cities across three bands | M1 |
-| Paired `premium` + `midrange` | 20 cities | M2 |
-| Paired `cocktail`, `wine_glass` + `beer` | 20 cities | M3, M4 |
-| Direct `half_day`, `full_day` | ongoing | No model exists — collect or publish missing |
-
-**4. Build the ingestion path.** Nothing here exists yet:
-
-- `src/lib/city-cost-anchor-schema.ts` — Zod schema plus the validation gates of §9.2
-- `src/lib/city-cost-anchor-extraction.ts` — search-backed extraction, 3-sample median, dispersion
-- `src/lib/city-cost-v4-calculator.ts` — the deterministic 19-tier derivation of §7.1
-- `src/lib/data/city-cost-ratios.generated.json` — fitted ratios with CIs and model form
-- `scripts/calibrate-city-cost-ratios.ts`, `scripts/validate-city-cost-v4.ts`
-- Persistence, then a paced 121-city batch collector (10–15 cities/day, checkpointed)
-
-**5. Migrate the dataset**, retaining the prior CSV and a tested rollback path.
-
-**6. Publish the v4 methodology to users.** The `/estimates` page still describes v2.1/v3 — its content is
-hardcoded in `src/app/estimates/page.tsx`, not read from any doc. Rewrite it from
-`docs/product/methodology-v4.md` at ship time, not before validation: publishing achieved rather than
-aspirational figures is the point. The superseded text is kept at
-`docs/product/archive/methodology-v2-v3.md`.
-
-### To do — app backlog
-
-Lower priority than the methodology work.
-
-- [ ] Add tests around city generation parsing and Wise import format handling
-- [ ] Expand Playwright from planner regressions into full add-leg / generation success-path tests
-- [ ] Add provider/model capability validation for planner transport estimation, especially
-      browse-enabled model compatibility
-- [ ] Add automated coverage around bulk transport estimation, provider fallback, and planner apply flows
-- [ ] Consider transport-estimation caching — explicitly deprioritised
-
-### Housekeeping
-
-- [x] Add npm aliases for the six v4 scripts — now `npm run methodology:v4:*`
-- [x] Mark stale methodologies and data explicitly — `archive/` folders with status banners, plus
-      inventories at `data/reference/README.md`, `scripts/README.md`, `docs/prompts/README.md`
-- [ ] Decide whether the 1.9 MB v3 accommodation panel artifacts stay in the repo. They are superseded but
-      are the provenance model v4 quote records follow, and six test files read them. Deleting means
-      deleting the tests too — a deliberate choice, not a tidy-up
-- [ ] Delete `.local/data-0ace327c-…-batch-0000.zip` once confirmed unwanted — a Claude conversation
-      export, not project material
-- [ ] Commit the dashboard as-of work separately from the documentation restructure
-- [ ] Give the two accommodation fitting scripts a `--check` mode. They embed `generatedAt`, so their
-      artifacts cannot be diff-verified the way `:fit-ratios` can
-
----
-
-## Traps worth re-reading before touching the methodology
-
-Each of these cost real time to discover. Full detail in LOG.md Part 1.
-
-1. **A model's stated reason for a failure is a hypothesis, not evidence.** Verify independently — it is
-   usually one command.
-2. **Most "model unreliability" was contract defects.** The model obeyed correctly; the instruction was
-   wrong.
-3. **Do not ask a model to grade its own work.** Self-assessed confidence was wrong in every run, always
-   flatteringly.
-4. **A contract that fights the shape of its sources will lose**, however firmly worded.
-5. **Check the underlying record, not your own summary.**
-6. **On a rate-limited response, defer the city — never fall through to search.** That difference is exact
-   values versus 10–19% error.
-7. **Do not adopt a promising result on one city's evidence.** That specific error has already been made
-   and corrected once.
+- [ ] The existing 121-city v1 CSV is unchanged.
+- [ ] v6.1 cannot be activated in the product.
+- [ ] v6.1 history remains available through its branch and immutable tag.
+- [ ] New cities default to one-call v1.1 generation.
+- [ ] v1.1 uses the exact v1 formulas with deterministic server-side arithmetic and FX.
+- [ ] Explicit v1 rollback remains operational.
+- [ ] All current planner fields remain supported.
+- [ ] Provider, model, reasoning, anchors, formula, and FX provenance survive persistence and API/UI display.
+- [ ] No holdout, new methodology collection, lived-spending benchmark, coefficient change, or existing-city migration occurred.
+- [ ] The active product branch contains none of the v5/v6 experiment bloat.

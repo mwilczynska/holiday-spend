@@ -167,6 +167,21 @@ export function mergeProviderModelSuggestions(
   );
 }
 
+function buildEffectiveModels(
+  provider: CityGenerationProvider,
+  source: ProviderModelDiscoverySource,
+  liveModels: string[],
+) {
+  // A keyed provider response is authoritative for the account. Do not mix
+  // stale curated IDs into it: that makes the refresh control look accurate
+  // while suggesting models the account may not be able to call.
+  if (source === 'live' && liveModels.length > 0) {
+    return sortProviderModelIds(provider, liveModels);
+  }
+
+  return mergeProviderModelSuggestions(provider, liveModels);
+}
+
 function isLikelyOpenAiGenerationModel(modelId: string) {
   const normalized = modelId.toLowerCase();
   const allowedPrefix =
@@ -517,7 +532,7 @@ async function buildAggregatedDiscoveryResult(params: {
     defaultModel: CITY_GENERATION_DEFAULT_MODELS[params.provider],
     curatedModels: CITY_GENERATION_KNOWN_MODELS[params.provider],
     liveModels,
-    effectiveModels: mergeProviderModelSuggestions(params.provider, liveModels),
+    effectiveModels: buildEffectiveModels(params.provider, 'aggregated', liveModels),
     fetchedAt: new Date().toISOString(),
     warning: null,
   };
@@ -581,7 +596,7 @@ export async function discoverProviderModels(params: {
       defaultModel: CITY_GENERATION_DEFAULT_MODELS[params.provider],
       curatedModels: CITY_GENERATION_KNOWN_MODELS[params.provider],
       liveModels,
-      effectiveModels: mergeProviderModelSuggestions(params.provider, liveModels),
+      effectiveModels: buildEffectiveModels(params.provider, 'live', liveModels),
       fetchedAt: new Date().toISOString(),
       warning: liveModels.length === 0
         ? 'The provider returned no usable generation models. Showing curated snapshot suggestions first.'
