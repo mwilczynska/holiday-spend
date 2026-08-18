@@ -8,7 +8,7 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `53d043a` — deterministic v1.1 verification checkpoint pushed; current handoff and loop are staged.
+**Latest commit:** `b15c716` — current v1.1 handoff, loop, and documentation cleanup committed; pending push.
 
 **Exact next action:** Repair the Chrome browser bridge, then run the owner-key functional smoke for Tottori, Toowoomba,
 and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
