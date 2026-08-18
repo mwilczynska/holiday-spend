@@ -8,10 +8,10 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `f72fb9b` — formula-preserving v1.1 materializer committed and pushed.
+**Latest commit:** `f4721fc` — v1.1 integration phase started; implementation is ready for its verification commit.
 
-**Exact next action:** Build the v1/v1.1 persistence adapter and provenance parser, then route planner new-city
-creation through one v1.1 call while retaining the exact v1 rollback path.
+**Exact next action:** Commit and push the verified persistence/API/UI integration, then run Phase 5 activation
+checks and the owner-authorized functional smoke before changing the new-city default.
 
 ## Decision summary
 
@@ -71,7 +71,7 @@ This file is the canonical progress artifact.
 - [x] Selectively port provider-specific reasoning effort, including `max` where supported.
 - [x] Preserve browser-only API-key handling.
 - [x] Defer generic persistence/API provenance to the explicit Phase 4 boundary; no v6-specific helper was imported.
-- [ ] Selectively port deterministic country identity handling.
+- [x] Selectively port deterministic country identity handling into the v1.1 planner boundary.
 - [x] Do not import v5/v6 experiment data, source collectors, canaries, migration tooling, fitting scripts, or release validators.
 - [x] Run the baseline inherited from `main` (typecheck, build, 144 tests, memory check).
 - [x] Commit and push the clean v1.1 foundation (`f5db69b`).
@@ -100,19 +100,19 @@ This file is the canonical progress artifact.
 - [ ] Use requested city identity plus canonical country metadata for v1.1.
 - [ ] Eliminate the separate metadata LLM call for v1.1.
 - [ ] Fail without partial persistence on invalid anchors, unsupported country, missing FX, or provider failure.
-- [ ] Add `methodologyVersion: "v1.1"`.
-- [ ] Add estimate source `llm_city_generation_v1_1`.
-- [ ] Persist anchors, provider, model, reasoning effort, prompt version, formula version, FX provenance, request context, and confidence notes.
-- [ ] Persist `evidenceBasis: "holistic_model_estimate"`.
-- [ ] Do not fabricate source observations, evidence grades, or statistical intervals.
-- [ ] Add generic methodology provenance to `/api/estimates`.
-- [ ] Display v1.1 methodology, anchors, model, reasoning, and FX provenance on `/dataset`.
-- [ ] Preserve historical v1, v6.0, and v6.1 record readability without retaining an executable v6 generator.
-- [ ] Add `CITY_COST_METHODOLOGY_VERSION=v1|v1.1`.
-- [ ] Preserve exact legacy v1 generation when explicitly set to `v1`.
-- [ ] Make `CITY_COST_METHODOLOGY_V6=true` produce a clear configuration error and never activate v6.1.
-- [ ] Keep v1 as the temporary default until Phase 5 passes.
-- [ ] Add persistence, API, UI, selector, and rollback regressions.
+- [x] Add `methodologyVersion: "v1.1"`.
+- [x] Add estimate source `llm_city_generation_v1_1`.
+- [x] Persist anchors, provider, model, reasoning effort, prompt version, formula version, FX provenance, request context, and confidence notes.
+- [x] Persist `evidenceBasis: "holistic_model_estimate"`.
+- [x] Do not fabricate source observations, evidence grades, or statistical intervals.
+- [x] Add generic methodology provenance to `/api/estimates`.
+- [x] Display v1.1 methodology, anchors, model, reasoning, and FX provenance on `/dataset`.
+- [x] Preserve historical v1, v6.0, and v6.1 record readability without retaining an executable v6 generator.
+- [x] Add `CITY_COST_METHODOLOGY_VERSION=v1|v1.1`.
+- [x] Preserve exact legacy v1 generation when explicitly set to `v1`.
+- [x] Make `CITY_COST_METHODOLOGY_V6=true` produce a clear configuration error and never activate v6.1.
+- [x] Keep v1 as the temporary default until Phase 5 passes.
+- [x] Add persistence, API-provenance, UI, selector, and rollback regressions.
 - [ ] Commit and push the integration phase.
 
 ## Phase 5 — Verify and activate v1.1 for new cities — TO DO

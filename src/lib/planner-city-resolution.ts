@@ -4,6 +4,7 @@ import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
 import { generateAndPersistCityEstimate } from '@/lib/city-generation-service';
+import { getCityCostMethodologyVersion } from '@/lib/city-generation';
 import {
   CountryMetadataResolutionError,
   findExistingCountryForCanonical,
@@ -23,7 +24,7 @@ type CityRow = typeof cities.$inferSelect;
 
 export interface ResolveOrCreatePlannerCityInput extends Pick<
   GenerateAndPersistCityEstimateInput,
-  'provider' | 'apiKey' | 'model' | 'referenceDate' | 'extraContext'
+  'provider' | 'apiKey' | 'model' | 'reasoningEffort' | 'referenceDate' | 'extraContext'
 > {
   cityName: string;
   countryName: string;
@@ -189,7 +190,30 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
     };
   }
 
-  const metadata = await resolvePlannerCityMetadata(input);
+  let methodologyVersion: 'v1' | 'v1.1';
+  try {
+    methodologyVersion = getCityCostMethodologyVersion();
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Invalid city-cost methodology configuration.';
+    throw new PlannerCityResolutionError(message, 500);
+  }
+
+  const metadata = methodologyVersion === 'v1.1'
+    ? (() => {
+        const canonicalCountry = findExistingCountryForCanonical(countryRows, { name: requestedCountryName });
+        if (!canonicalCountry) {
+          throw new PlannerCityResolutionError(
+            `"${requestedCountryName}" is not in the canonical country dataset. Add it to the country metadata before using v1.1 generation.`,
+            400
+          );
+        }
+        return {
+          city: requestedCityName,
+          country: canonicalCountry.canonical.name,
+          confidence_notes: 'v1.1 uses the requested city identity; country is resolved by canonical server metadata.',
+        };
+      })()
+    : await resolvePlannerCityMetadata(input);
   const canonicalCityName = normalizeFreeText(metadata.city) || requestedCityName;
   const canonicalCountryName = normalizeFreeText(metadata.country) || requestedCountryName;
 
@@ -285,6 +309,7 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
       provider: input.provider,
       apiKey: input.apiKey,
       model: input.model,
+      reasoningEffort: input.reasoningEffort,
       referenceDate: input.referenceDate,
       extraContext: input.extraContext,
     });

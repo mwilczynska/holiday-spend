@@ -2,6 +2,7 @@ import { db } from '@/db';
 import { cities, cityEstimates, countries } from '@/db/schema';
 import { desc, eq } from 'drizzle-orm';
 import { handleError, success } from '@/lib/api-helpers';
+import { readCityEstimateProvenance } from '@/lib/city-estimate-provenance';
 
 export const dynamic = 'force-dynamic';
 
@@ -50,9 +51,15 @@ export async function GET() {
         currentEstimateId: cityEstimates.id,
         currentEstimateSource: cityEstimates.source,
         currentEstimateProvider: cityEstimates.llmProvider,
+        currentEstimateModel: cityEstimates.llmModel,
+        currentEstimatePromptVersion: cityEstimates.promptVersion,
         currentEstimateConfidence: cityEstimates.confidence,
         currentEstimateReasoning: cityEstimates.reasoning,
         currentEstimateAt: cityEstimates.estimatedAt,
+        currentEstimateMetadataJson: cityEstimates.metadataJson,
+        currentEstimateAnchorsJson: cityEstimates.anchorsJson,
+        currentEstimateInputSnapshotJson: cityEstimates.inputSnapshotJson,
+        currentEstimateSourcesJson: cityEstimates.sourcesJson,
       })
       .from(cities)
       .leftJoin(countries, eq(cities.countryId, countries.id))
@@ -67,9 +74,14 @@ export async function GET() {
         estimatedAt: cityEstimates.estimatedAt,
         source: cityEstimates.source,
         llmProvider: cityEstimates.llmProvider,
+        llmModel: cityEstimates.llmModel,
+        promptVersion: cityEstimates.promptVersion,
         confidence: cityEstimates.confidence,
         reasoning: cityEstimates.reasoning,
         metadataJson: cityEstimates.metadataJson,
+        anchorsJson: cityEstimates.anchorsJson,
+        inputSnapshotJson: cityEstimates.inputSnapshotJson,
+        sourcesJson: cityEstimates.sourcesJson,
         isActive: cityEstimates.isActive,
       })
       .from(cityEstimates)
@@ -77,9 +89,20 @@ export async function GET() {
       .innerJoin(countries, eq(cities.countryId, countries.id))
       .orderBy(desc(cityEstimates.estimatedAt));
 
-    const history = historyRows.map(({ metadataJson, ...row }) => ({
+    const history = historyRows.map(({ metadataJson, anchorsJson, inputSnapshotJson, sourcesJson, ...row }) => ({
       ...row,
       inferredAudPerUsd: readInferredAudPerUsd(metadataJson),
+      provenance: readCityEstimateProvenance({
+        source: row.source,
+        provider: row.llmProvider,
+        model: row.llmModel,
+        promptVersion: row.promptVersion,
+        confidence: row.confidence,
+        metadataJson,
+        anchorsJson,
+        inputSnapshotJson,
+        sourcesJson,
+      }),
     }));
 
     const historyByCity = new Map<string, typeof history>();
@@ -90,20 +113,43 @@ export async function GET() {
     }
 
     const rows = cityRows
-      .map((row) => ({
-        ...row,
-        currentEstimate: row.currentEstimateId
-          ? {
-              id: row.currentEstimateId,
-              source: row.currentEstimateSource,
-              llmProvider: row.currentEstimateProvider,
-              confidence: row.currentEstimateConfidence,
-              reasoning: row.currentEstimateReasoning,
-              estimatedAt: row.currentEstimateAt,
-            }
-          : null,
-        estimateHistory: historyByCity.get(row.cityId) ?? [],
-      }))
+      .map((row) => {
+        const {
+          currentEstimateMetadataJson,
+          currentEstimateAnchorsJson,
+          currentEstimateInputSnapshotJson,
+          currentEstimateSourcesJson,
+          ...cityRow
+        } = row;
+
+        return {
+          ...cityRow,
+          currentEstimateProvenance: readCityEstimateProvenance({
+            source: row.currentEstimateSource,
+            provider: row.currentEstimateProvider,
+            model: row.currentEstimateModel,
+            promptVersion: row.currentEstimatePromptVersion,
+            confidence: row.currentEstimateConfidence,
+            metadataJson: currentEstimateMetadataJson,
+            anchorsJson: currentEstimateAnchorsJson,
+            inputSnapshotJson: currentEstimateInputSnapshotJson,
+            sourcesJson: currentEstimateSourcesJson,
+          }),
+          currentEstimate: row.currentEstimateId
+            ? {
+                id: row.currentEstimateId,
+                source: row.currentEstimateSource,
+                llmProvider: row.currentEstimateProvider,
+                llmModel: row.currentEstimateModel,
+                promptVersion: row.currentEstimatePromptVersion,
+                confidence: row.currentEstimateConfidence,
+                reasoning: row.currentEstimateReasoning,
+                estimatedAt: row.currentEstimateAt,
+              }
+            : null,
+          estimateHistory: historyByCity.get(row.cityId) ?? [],
+        };
+      })
       .sort((a, b) => `${a.countryName || ''}-${a.cityName}`.localeCompare(`${b.countryName || ''}-${b.cityName}`));
 
     const sourceBreakdownMap = new Map<string, number>();

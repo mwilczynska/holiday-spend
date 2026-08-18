@@ -162,6 +162,8 @@ documented OneDrive attribute workaround. This is a filesystem issue, not applic
 | `src/lib/city-cost-methodology-v1-1.ts` | Pure v1.1 schema, frozen FX provenance and formula-preserving materializer |
 | `src/lib/city-generation.ts` | v1/v1.1 generation dispatch and schema validation |
 | `src/lib/city-generation-service.ts` | Estimate persistence and city updates |
+| `src/lib/city-generation-persistence.ts` | Explicit v1/v1.1 database persistence adapter |
+| `src/lib/city-estimate-provenance.ts` | Generic API provenance parser, including historical v6 records |
 | `src/lib/city-llm-client.ts` | Provider JSON-completion transports |
 | `src/lib/provider-model-discovery.ts` | Provider model discovery |
 | `src/lib/city-cost-v1-1-guard.ts` | Refuses any v1.1 output write targeting the live v1 CSV |

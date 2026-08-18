@@ -11,6 +11,7 @@ import { SearchableSelect } from '@/components/ui/searchable-select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
 import { resolveCityDrinkInputs } from '@/lib/city-drink-inputs';
+import type { CityEstimateProvenance } from '@/lib/city-estimate-provenance';
 import {
   PlannerNewCityDialog,
   type NewCityCreatedPayload,
@@ -24,6 +25,7 @@ interface City {
   estimationSource: string | null;
   estimatedAt?: string | null;
   notes?: string | null;
+  currentEstimateProvenance?: CityEstimateProvenance | null;
   [key: string]: unknown;
 }
 
@@ -43,10 +45,13 @@ interface EstimateHistoryItem {
   estimatedAt: string;
   source: string | null;
   llmProvider: string | null;
+  llmModel: string | null;
+  promptVersion: string | null;
   confidence: string | null;
   reasoning: string | null;
   inferredAudPerUsd: number | null;
   isActive: number | null;
+  provenance?: CityEstimateProvenance | null;
 }
 
 type DatasetCity = City & {
@@ -102,6 +107,13 @@ function fmtMoney(value: unknown) {
   return typeof value === 'number' ? value.toFixed(2) : '-';
 }
 
+function readAnchorValues(provenance: CityEstimateProvenance | null | undefined) {
+  if (!provenance?.anchors || typeof provenance.anchors !== 'object') return {};
+  const anchors = provenance.anchors as { values?: unknown; valuesAud?: unknown };
+  const values = anchors.valuesAud ?? anchors.values;
+  return values && typeof values === 'object' && !Array.isArray(values) ? (values as Record<string, unknown>) : {};
+}
+
 function matchesCity(row: DatasetCity, query: string) {
   const haystack = [row.name, row.countryName, row.region, row.estimationSource, row.notes]
     .filter(Boolean)
@@ -147,7 +159,22 @@ export default function DatasetPage() {
 
       const countriesData = await countriesResponse.json();
       const estimatesData = await estimatesResponse.json();
-      const nextCountries = (countriesData.data || []).sort((a: Country, b: Country) => a.name.localeCompare(b.name));
+      const estimateRows = (estimatesData.data?.rows || []) as Array<{
+        cityId: string;
+        currentEstimateProvenance?: CityEstimateProvenance | null;
+      }>;
+      const provenanceByCityId = new Map(
+        estimateRows.map((row) => [row.cityId, row.currentEstimateProvenance ?? null])
+      );
+      const nextCountries = (countriesData.data || [])
+        .map((country: Country) => ({
+          ...country,
+          cities: country.cities.map((city) => ({
+            ...city,
+            currentEstimateProvenance: provenanceByCityId.get(city.id) ?? null,
+          })),
+        }))
+        .sort((a: Country, b: Country) => a.name.localeCompare(b.name));
 
       setCountries(nextCountries);
       setHistory(estimatesData.data?.history || []);
@@ -468,7 +495,7 @@ export default function DatasetPage() {
                     </div>
                     <div>
                       <div className="text-xs uppercase tracking-wide text-muted-foreground">Active Provider</div>
-                      <div className="text-sm">{selectedCityActiveHistory?.llmProvider || '-'}</div>
+                    <div className="text-sm">{selectedCityActiveHistory?.llmProvider || '-'}</div>
                     </div>
                     <div>
                       <div className="text-xs uppercase tracking-wide text-muted-foreground">Confidence</div>
@@ -488,6 +515,57 @@ export default function DatasetPage() {
                     </div>
                   </div>
 
+                  {selectedCity.currentEstimateProvenance ? (
+                    <div className="space-y-3 rounded-md border bg-muted/20 p-3">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <Badge variant="outline">
+                          Methodology {selectedCity.currentEstimateProvenance.methodologyVersion}
+                        </Badge>
+                        {selectedCity.currentEstimateProvenance.evidenceBasis ? (
+                          <Badge variant="outline">{selectedCity.currentEstimateProvenance.evidenceBasis}</Badge>
+                        ) : null}
+                        {selectedCity.currentEstimateProvenance.reasoningEffort ? (
+                          <Badge variant="outline">Thinking {selectedCity.currentEstimateProvenance.reasoningEffort}</Badge>
+                        ) : null}
+                      </div>
+                      <div className="grid gap-3 text-sm md:grid-cols-4">
+                        <div>
+                          <div className="text-xs uppercase tracking-wide text-muted-foreground">Model</div>
+                          <div>{selectedCityActiveHistory?.llmProvider || '-'} / {selectedCityActiveHistory?.llmModel || '-'}</div>
+                        </div>
+                        <div>
+                          <div className="text-xs uppercase tracking-wide text-muted-foreground">Prompt</div>
+                          <div>{selectedCityActiveHistory?.promptVersion || '-'}</div>
+                        </div>
+                        <div>
+                          <div className="text-xs uppercase tracking-wide text-muted-foreground">Formula</div>
+                          <div>{selectedCity.currentEstimateProvenance.formulaVersion || 'Legacy v1'}</div>
+                        </div>
+                        <div>
+                          <div className="text-xs uppercase tracking-wide text-muted-foreground">FX snapshot</div>
+                          <div>
+                            {selectedCity.currentEstimateProvenance.fx && typeof selectedCity.currentEstimateProvenance.fx === 'object'
+                              ? String((selectedCity.currentEstimateProvenance.fx as { snapshotId?: unknown }).snapshotId || '-')
+                              : selectedCityActiveHistory?.inferredAudPerUsd
+                                ? `1 USD = ${selectedCityActiveHistory.inferredAudPerUsd.toFixed(2)} AUD`
+                                : '-'}
+                          </div>
+                        </div>
+                      </div>
+                      <details>
+                        <summary className="cursor-pointer text-sm font-medium">Stored anchor values</summary>
+                        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+                          {Object.entries(readAnchorValues(selectedCity.currentEstimateProvenance)).map(([key, value]) => (
+                            <div key={key} className="rounded border bg-background px-2 py-1">
+                              <div className="text-xs text-muted-foreground">{key}</div>
+                              <div className="text-sm">{fmtMoney(value)}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </details>
+                    </div>
+                  ) : null}
+
                   {selectedCityHistory.length > 0 ? (
                     <div className="space-y-3 rounded-md border p-3">
                       {selectedCityHistory.slice(0, 4).map((entry) => (
@@ -499,6 +577,12 @@ export default function DatasetPage() {
                             <Badge variant="outline">{fmtDate(entry.estimatedAt)}</Badge>
                             {entry.source ? <Badge variant="outline">{entry.source}</Badge> : null}
                             {entry.llmProvider ? <Badge variant="outline">{entry.llmProvider}</Badge> : null}
+                            {entry.provenance?.methodologyVersion ? (
+                              <Badge variant="outline">{entry.provenance.methodologyVersion}</Badge>
+                            ) : null}
+                            {entry.provenance?.reasoningEffort ? (
+                              <Badge variant="outline">Thinking {entry.provenance.reasoningEffort}</Badge>
+                            ) : null}
                             {entry.confidence ? <Badge variant="outline">{entry.confidence}</Badge> : null}
                             {typeof entry.inferredAudPerUsd === 'number' ? (
                               <Badge variant="outline">1 USD = {entry.inferredAudPerUsd.toFixed(2)} AUD</Badge>

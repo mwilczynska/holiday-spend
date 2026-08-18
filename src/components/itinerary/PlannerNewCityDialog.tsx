@@ -10,10 +10,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import {
   CITY_GENERATION_PROVIDER_OPTIONS,
+  CITY_GENERATION_REASONING_EFFORT_LABELS,
+  getSupportedCityGenerationReasoningEfforts,
   getDefaultCityGenerationModels,
   migrateStoredCityGenerationModels,
   validateCityGenerationModel,
   type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 
@@ -66,6 +69,7 @@ export function PlannerNewCityDialog({
     gemini: '',
   });
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());
+  const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>('none');
   const [referenceDate, setReferenceDate] = useState('');
   const [extraContext, setExtraContext] = useState('');
   const [showApiKey, setShowApiKey] = useState(false);
@@ -78,6 +82,7 @@ export function PlannerNewCityDialog({
     const storedProvider = window.localStorage.getItem(`${STORAGE_PREFIX}.provider`) as ProviderOption | null;
     const storedKeys = window.localStorage.getItem(`${STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${STORAGE_PREFIX}.models`);
+    const storedReasoningEffort = window.localStorage.getItem(`${STORAGE_PREFIX}.reasoningEffort`);
 
     if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setProvider(storedProvider);
@@ -107,6 +112,10 @@ export function PlannerNewCityDialog({
         // Ignore malformed browser storage and keep defaults.
       }
     }
+
+    if (storedReasoningEffort && CITY_GENERATION_REASONING_EFFORT_LABELS[storedReasoningEffort as CityGenerationReasoningEffort]) {
+      setReasoningEffort(storedReasoningEffort as CityGenerationReasoningEffort);
+    }
   }, []);
 
   const selectedProvider =
@@ -114,13 +123,15 @@ export function PlannerNewCityDialog({
   const activeApiKey = apiKeys[provider] || '';
   const hasAnySavedApiKey = Object.values(apiKeys).some((value) => value.trim().length > 0);
   const activeModel = models[provider] || selectedProvider.defaultModel;
-  const modelValidation = validateCityGenerationModel(provider, activeModel);
   const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
   const modelDiscovery = useProviderModelDiscovery({
     provider,
     apiKey: activeApiKey,
     enabled: open,
   });
+  const modelValidation = validateCityGenerationModel(provider, activeModel, modelDiscovery.result.effectiveModels);
+  const supportedReasoningEfforts = getSupportedCityGenerationReasoningEfforts(provider, activeModel);
+  const effectiveReasoningEffort = supportedReasoningEfforts.includes(reasoningEffort) ? reasoningEffort : 'none';
 
   function resetForm() {
     setCityName('');
@@ -178,6 +189,11 @@ export function PlannerNewCityDialog({
     window.localStorage.setItem(`${STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
   }
 
+  function updateReasoningEffort(value: CityGenerationReasoningEffort) {
+    setReasoningEffort(value);
+    window.localStorage.setItem(`${STORAGE_PREFIX}.reasoningEffort`, value);
+  }
+
   async function handleSubmit() {
     const parsedNights = Number.parseInt(nights, 10);
     if (!isDatasetMode && (!Number.isInteger(parsedNights) || parsedNights < 1)) {
@@ -210,6 +226,7 @@ export function PlannerNewCityDialog({
         provider,
         apiKey: activeApiKey || undefined,
         model: modelValidation.effectiveModel || undefined,
+        reasoningEffort: effectiveReasoningEffort,
         referenceDate: referenceDate || undefined,
         extraContext: extraContext || undefined,
       };
@@ -378,7 +395,7 @@ export function PlannerNewCityDialog({
                     </p>
                   ) : null}
                   <div className="flex flex-wrap gap-2">
-                    {selectedProvider.knownModels.map((model) => (
+                    {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
                       <Button
                         key={model}
                         type="button"
@@ -401,6 +418,31 @@ export function PlannerNewCityDialog({
                   ) : null}
                   <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
                     {modelValidation.message}
+                  </p>
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-xs">Thinking / reasoning effort</Label>
+                  <Select
+                    value={effectiveReasoningEffort}
+                    onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
+                    disabled={supportedReasoningEfforts.length <= 1}
+                  >
+                    <SelectTrigger className="h-9 text-sm">
+                      <SelectValue placeholder="Select effort" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {supportedReasoningEfforts.map((effort) => (
+                        <SelectItem key={effort} value={effort}>
+                          {CITY_GENERATION_REASONING_EFFORT_LABELS[effort]}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">
+                    {supportedReasoningEfforts.length > 1
+                      ? 'Passed to the selected provider when supported. Higher effort can increase latency and cost.'
+                      : 'The selected model does not expose a configurable thinking setting through this adapter.'}
                   </p>
                 </div>
 

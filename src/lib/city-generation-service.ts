@@ -6,34 +6,11 @@ import {
   generateCityCostEstimate,
   type CityGenerationRequest,
 } from '@/lib/city-generation';
-
-function buildSourceMap() {
-  const source = 'llm_city_generation';
-  return {
-    accomHostel: source,
-    accomPrivateRoom: source,
-    accom1star: source,
-    accom2star: source,
-    accom3star: source,
-    accom4star: source,
-    foodStreet: source,
-    foodBudget: source,
-    foodMid: source,
-    foodHigh: source,
-    drinksNone: source,
-    drinksLight: source,
-    drinksModerate: source,
-    drinksHeavy: source,
-    activitiesFree: source,
-    activitiesBudget: source,
-    activitiesMid: source,
-    activitiesHigh: source,
-  };
-}
+import { buildCityEstimatePersistence } from '@/lib/city-generation-persistence';
 
 export interface GenerateAndPersistCityEstimateInput extends Pick<
   CityGenerationRequest,
-  'referenceDate' | 'extraContext' | 'provider' | 'apiKey' | 'model'
+  'referenceDate' | 'extraContext' | 'provider' | 'apiKey' | 'model' | 'reasoningEffort'
 > {
   cityId: string;
 }
@@ -45,6 +22,7 @@ export async function generateAndPersistCityEstimate({
   provider,
   apiKey,
   model,
+  reasoningEffort,
 }: GenerateAndPersistCityEstimateInput) {
   const city = await db.select().from(cities).where(eq(cities.id, cityId)).get();
   if (!city) throw new CityGenerationError('City not found', 404);
@@ -60,6 +38,13 @@ export async function generateAndPersistCityEstimate({
     provider,
     apiKey,
     model,
+    reasoningEffort,
+  });
+  const persisted = buildCityEstimatePersistence(generated, {
+    cityName: city.name,
+    countryName: country.name,
+    referenceDate,
+    extraContext,
   });
 
   await db
@@ -71,41 +56,45 @@ export async function generateAndPersistCityEstimate({
   const estimate = await db.insert(cityEstimates).values({
     cityId: city.id,
     estimatedAt,
-    source: 'llm_city_generation',
+    source: persisted.estimateSource,
     llmProvider: generated.provider,
     llmModel: generated.model,
     promptVersion: generated.promptVersion,
-    dataJson: JSON.stringify(generated.mappedEstimate),
-    anchorsJson: JSON.stringify(generated.payload.anchors_usd),
-    metadataJson: JSON.stringify({
-      region: generated.payload.region,
-      confidenceNotes: generated.payload.confidence_notes,
-      inferredAudPerUsd: generated.inferredAudPerUsd,
-      referenceDate: referenceDate || null,
-      extraContext: extraContext || null,
-    }),
-    reasoning: generated.payload.confidence_notes,
-    confidence: generated.payload.confidence,
-    sourcesJson: JSON.stringify(buildSourceMap()),
-    inputSnapshotJson: JSON.stringify(generated.payload.anchors_usd),
-    fallbackLogJson: JSON.stringify([]),
+    dataJson: JSON.stringify(persisted.data),
+    anchorsJson: JSON.stringify(persisted.anchors),
+    metadataJson: JSON.stringify(persisted.metadata),
+    reasoning: persisted.reasoning,
+    confidence: persisted.confidence,
+    sourcesJson: JSON.stringify(persisted.sources),
+    inputSnapshotJson: JSON.stringify(persisted.inputSnapshot),
+    fallbackLogJson: JSON.stringify(persisted.fallbackLog),
     isActive: 1,
   }).returning();
 
   await db.update(cities).set({
-    ...generated.mappedEstimate,
-    estimationSource: 'llm_city_generation',
+    ...persisted.data,
+    estimationSource: persisted.estimateSource,
     estimatedAt,
     estimationId: estimate[0]?.id,
-    notes: generated.payload.confidence_notes,
+    notes: persisted.reasoning,
   }).where(eq(cities.id, city.id));
 
   return {
     provider: generated.provider,
     model: generated.model,
     promptVersion: generated.promptVersion,
+    methodologyVersion: generated.methodologyVersion,
+    reasoningEffort: generated.reasoningEffort,
     inferredAudPerUsd: generated.inferredAudPerUsd,
     payload: generated.payload,
-    estimate: generated.mappedEstimate,
+    estimate: persisted.data,
+    anchors: persisted.apiSummary.anchors,
+    inputSnapshot: persisted.apiSummary.inputSnapshot,
+    sources: persisted.apiSummary.sources,
+    evidenceBasis: persisted.apiSummary.evidenceBasis,
+    formulaVersion: persisted.apiSummary.formulaVersion,
+    fx: persisted.apiSummary.fx,
+    anchorsAud: generated.v11Materialization?.anchorsAud,
+    tiersAud: generated.v11Materialization?.tiersAud,
   };
 }

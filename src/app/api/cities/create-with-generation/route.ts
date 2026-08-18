@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { requireCurrentUserId } from '@/lib/auth';
-import { CITY_GENERATION_PROVIDERS } from '@/lib/city-generation-config';
+import { CITY_GENERATION_PROVIDERS, CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
 import { error, handleError, success } from '@/lib/api-helpers';
 import {
   PlannerCityResolutionError,
@@ -15,6 +15,7 @@ const createSchema = z.object({
   provider: z.enum(CITY_GENERATION_PROVIDERS).optional(),
   apiKey: z.string().optional(),
   model: z.string().optional(),
+  reasoningEffort: z.enum(CITY_GENERATION_REASONING_EFFORTS).optional(),
   referenceDate: z.string().optional(),
   extraContext: z.string().optional(),
 });

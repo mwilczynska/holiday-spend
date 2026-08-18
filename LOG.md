@@ -631,3 +631,9 @@ The clean branch foundation is pushed. The v1.1 anchor-only prompt, strict posit
 materializer, checked-in FX provenance and live-CSV write guard are implemented with golden tests. The generation
 selector defaults to v1 until the persistence/API/UI integration and functional smoke pass; the retired v6 flag now
 fails explicitly rather than activating v6.1.
+
+The v1.1 integration phase is implemented and verified locally. v1 and v1.1 now use an explicit persistence adapter;
+v1.1 rows use `llm_city_generation_v1_1` and retain the ten USD anchors, converted anchor values, formula/FX metadata,
+request snapshot, model and reasoning effort. `/api/estimates` exposes a generic provenance object, `/dataset` shows
+the methodology and anchor/FX details, and planner v1.1 creation uses the requested city plus canonical country data
+without a separate metadata LLM call. The default remains v1 pending Phase 5 smoke and activation review.

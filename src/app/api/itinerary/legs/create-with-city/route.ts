@@ -5,6 +5,7 @@ import { requireCurrentUserId } from '@/lib/auth';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { resolveOrCreatePlannerCity, PlannerCityResolutionError } from '@/lib/planner-city-resolution';
+import { CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
 import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
@@ -16,6 +17,7 @@ const createSchema = z.object({
   provider: z.enum(['anthropic', 'openai', 'gemini']).optional(),
   apiKey: z.string().optional(),
   model: z.string().optional(),
+  reasoningEffort: z.enum(CITY_GENERATION_REASONING_EFFORTS).optional(),
   referenceDate: z.string().optional(),
   extraContext: z.string().optional(),
 });
@@ -32,6 +34,7 @@ export async function POST(request: Request) {
       provider: data.provider,
       apiKey: data.apiKey,
       model: data.model,
+      reasoningEffort: data.reasoningEffort,
       referenceDate: data.referenceDate,
       extraContext: data.extraContext,
     });
