@@ -8,11 +8,12 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `9d43405` — OneDrive-safe dev-server recovery guard; pushed after verification.
+**Latest commit:** `bfafd38` — plan checkpoint after the OneDrive-safe dev-server recovery guard; pushed after verification.
 
-**Exact next action:** Start the local app with `npm run dev` (the predev guard repairs a OneDrive reparse-point
-`.next` cache), open the connected Chrome user tab at `/dataset`, and run the owner-key functional smoke for Tottori,
-Toowoomba, and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
+**Exact next action:** Repair the Chrome native-host bridge through ChatGPT/Codex **Settings → Computer use** (the
+extension is installed and enabled, but its Windows registry host entry is missing), then start the local app with
+`CITY_COST_METHODOLOGY_VERSION=v1.1` and run the owner-key functional smoke for Tottori, Toowoomba, and Brno in the
+connected `/dataset` tab; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
 
 ## Decision summary
 
