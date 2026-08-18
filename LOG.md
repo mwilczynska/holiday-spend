@@ -653,3 +653,9 @@ entry, so browser control could not reach the local app. No provider key was acc
 The v1.1 contract audit also made the 19 persisted planner fields explicit: the 18 daily/accommodation derivations plus
 the direct `drink_coffee` field, retained at cent precision. The materializer, deterministic check, and `/api/estimates`
 now expose that field alongside the supporting direct drink anchors. This changes no v1 formula or live dataset value.
+
+The documentation cleanup checkpoint also superseded the remaining v4/v5 collection-language ambiguity: retained
+source-access and accommodation documents now open as historical evidence, and `data/reference/README.md` explicitly
+separates historical inventory labels from the active v1.1 product plan. The Chrome bridge was retried after the owner
+reinstalled the plugin, but the extension still has no Windows native-messaging registry entry, so the keyed smoke is
+not yet run. No provider key was accessed, and the new-city default remains v1 pending that operational check.

@@ -15,6 +15,8 @@ that must remain visible during implementation.
   intervals are intentionally absent because these are holistic model estimates, not source observations.
 - The deterministic verification checkpoint is complete: typecheck, build, 36 Vitest files / 160 tests, memory checks,
   and `npm run methodology:v1.1:check` pass.
+- The complete 19-field boundary is explicit: 18 daily/accommodation derivations plus direct `drink_coffee` at cent
+  precision; the materializer, API query, tests, and deterministic check cover it.
 - The live `data/reference/city_costs_app_aud.csv` is unchanged. Existing cities are not migrated. The default remains
   v1 until the functional smoke passes.
 
@@ -23,6 +25,10 @@ that must remain visible during implementation.
 Run the owner-key functional smoke for **Tottori**, **Toowoomba**, and **Brno** with the app configured temporarily as
 `CITY_COST_METHODOLOGY_VERSION=v1.1`. The owner enters the provider key in the browser; it must never be read,
 copied, logged, committed, or stored by the agent.
+
+The current external blocker is the Chrome bridge: the extension is installed/enabled and the manifest exists, but the
+required Windows native-messaging registry entry is still missing. Repair the Browser plugin from the ChatGPT/Codex
+desktop app's **Settings → Computer use** before attempting the smoke; do not hand-edit the registry.
 
 For each city, verify through the UI and `/api/estimates` that:
 

@@ -1,7 +1,12 @@
 # Accommodation Collection And Class Ladder — v4
 
+> **SUPERSEDED — 18 August 2026.** This is retained v4 research evidence, not an active collection
+> plan. The current product workstream is v1.1; read [`PLAN.md`](../../../PLAN.md) and
+> [`LOOP-PROMPT-V1-1.md`](../../../LOOP-PROMPT-V1-1.md). Do not start the v4 collection or resolve its
+> historical open decisions as current implementation work.
+
 <!-- status-banner -->
-> **ACTIVE — but conflicts with `docs/product/methodology-v4.md` §9.4.4.**
+> **RETAINED RESEARCH — historical conflict; not a current implementation decision.**
 >
 > This document says **never read the headline average**. §9.4.4 of the methodology says headline
 > averages **are adopted**. Both were committed on 27 July 2026; this one is the later commit

@@ -8,7 +8,7 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `b15c716` — current v1.1 handoff, loop, and documentation cleanup committed; pending push.
+**Latest commit:** `46edc88` — complete 19-field planner boundary exposed in the materializer, API, tests, and deterministic check; pending push.
 
 **Exact next action:** Repair the Chrome browser bridge, then run the owner-key functional smoke for Tottori, Toowoomba,
 and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
@@ -141,7 +141,7 @@ This file is the canonical progress artifact.
 - [x] Confirm no v5/v6 experiment corpus or migration artifact entered the clean product branch.
 - [x] Retain only a concise summary of useful v6 findings and links to the archived branch/tag.
 - [x] Preserve generic model discovery, reasoning controls, country identity, and persistence improvements.
-- [ ] Remove active references to v6 activation, Phase 11, staged migration, and pending holdouts.
+- [x] Remove active references to v6 activation, Phase 11, staged migration, and pending holdouts; remaining mentions are explicit historical pointers or rollback guardrails.
 - [x] Reduce the active verification baseline to shipping product checks and deterministic v1.1 checks.
 - [ ] Preserve the archived v6 branch and tag indefinitely.
 - [ ] Run the complete final baseline.

@@ -4,13 +4,10 @@
 > active v1.1 new-city path; read `PLAN.md` and `LOOP-PROMPT-V1-1.md` for current work.
 
 <!-- status-banner -->
-> **PARTLY ACTIVE.** The source-access decisions are current and binding — in particular the
-> 27 July 2026 reversal that made Booking.com and Trip.com the primary accommodation channels, and the
-> constraints that survive it (signed out, no member rates, no bypassing blocks, browsing pace).
-> Hostelworld's exclusion has **not** been reversed.
->
-> The surrounding v3 collection programme it was written for is **abandoned**. Read this for the source
-> rules only, not for the collection plan. See `/LOG.md` Part 1 and `/PLAN.md` decisions D3 and D4.
+> **RETAINED HISTORICAL.** The source-access decisions and the surrounding v3/v4 collection programme are
+> historical evidence only. They are not requirements for the active v1.1 path, which makes no new
+> methodology collection calls. Preserve this document for audit; do not resume its collection plan or
+> treat its open decisions as current product work.
 
 ## Constraint
 

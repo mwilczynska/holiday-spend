@@ -2,6 +2,11 @@
 
 Every committed dataset, what it is, and **whether it is still live**.
 
+> **Current product note — 18 August 2026.** The LIVE/HISTORICAL labels in the retained v3/v4/v5
+> inventory describe historical readers and provenance, not the active city-cost implementation. The
+> active product plan is `/PLAN.md`; the live application dataset remains v1 and the new-city replacement
+> under verification is v1.1. The v6/v6.1 research tree is preserved only on its archived branch/tag.
+
 > **Do not move or rename anything here without updating its readers.** Scripts and six Vitest test files
 > reference these paths as string literals. The "Read by" column is the dependency list.
 
@@ -49,18 +54,17 @@ workstream is the simpler v1.1 plan in `/PLAN.md`; the live v1 CSV remains uncha
 
 ## SUPERSEDED — v5 methodology evidence
 
-> **The v5 acceptance rule is superseded; the v5 evidence is not.** All 95 experiment directories are
-> retained and every verdict remains an accurate statement about what a source could supply. v6 reuses
-> the Numbeo, Expedia, BudgetYourTrip, Expatistan and Price of Travel routes directly, and fits its
-> accommodation ladder from the pooled Expedia rows collected here. See
-> `docs/dev/plans/city-cost-methodology-v6.md` §1.
+> **The v5 acceptance rule is superseded; the v5 evidence is historical, not active product input.**
+> Its experiment records remain available on the archived v6 research line for audit and reproducibility.
+> Do not resume v5/v6 collection or treat the retained experiment status labels as current release gates.
+> The current product replacement is the anchor-only v1.1 plan in `/PLAN.md`.
 
 | Path | Status | What it is | Read by |
 | --- | --- | --- | --- |
-| `v5/data-dictionary-v5.md` | **CURRENT** | Frozen v5 estimands, units, source bases, and missingness semantics | v5 experiments |
-| `v5/validation-manifest-v5.json` | **CURRENT** | City-level validation split and acceptance gates | v5 experiments |
-| `v5/experiments/000-baseline-reassessment/` | **IN PROGRESS** | Deterministic audit of retained v3/v4 evidence | `methodology:v5:baseline` |
-| `v5/experiments/001-one-call-harness/` | **IN PROGRESS** | Target-model extractor prompt, schema fixture, and one-call telemetry outputs | `run-city-cost-v5-one-call.mjs` |
+| `v5/data-dictionary-v5.md` | **HISTORICAL** | Frozen v5 estimands, units, source bases, and missingness semantics | retained v5 experiments |
+| `v5/validation-manifest-v5.json` | **HISTORICAL** | City-level validation split and acceptance gates | retained v5 experiments |
+| `v5/experiments/000-baseline-reassessment/` | **HISTORICAL** | Deterministic audit of retained v3/v4 evidence | historical replay only |
+| `v5/experiments/001-one-call-harness/` | **HISTORICAL** | Target-model extractor prompt, schema fixture, and one-call telemetry outputs | historical replay only |
 | `v5/experiments/002-accommodation-ladder/` | **COMPLETE — candidate rejected** | Independent audit of the retained accommodation ladder and hostel identifiability | `methodology:v5:accommodation` |
 
 ## LIVE — v3 evidence that v4 runs on

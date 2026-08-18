@@ -22,7 +22,9 @@ anchors, request context, and confidence provenance without inventing source gra
 
 ## Completion sequence
 
-1. Finish deterministic tests and the three-city owner-key smoke.
+1. Finish deterministic tests and the three-city owner-key smoke. If Chrome control is unavailable, repair the Browser
+   plugin through the desktop app's **Settings → Computer use**; never substitute a synthetic provider result or read
+   the owner's key.
 2. If smoke passes, make v1.1 the new-city default and retain explicit v1 rollback; run the full baseline.
 3. Remove stale active references to retired v6 work from current developer docs while retaining the archived branch,
    tag, and historical log entries.
