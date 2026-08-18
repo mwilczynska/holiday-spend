@@ -1,15 +1,17 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Phase 0 in progress
+**Status:** Phase 1 in progress
 
-**Current phase:** Phase 0 — preserve history and initialize the new plan
+**Current phase:** Phase 1 — close v6.1 without erasing it
 
 **Branch:** `feat/city-cost-methodology-v6` (retirement documentation; no further v6 implementation)
 
 **Last updated:** 18 August 2026
 
-**Exact next action:** Review the delegated `CLAUDE.md` cleanup, synchronize `AGENTS.md`, run memory checks, verify the
-archived plan, commit and push, then create the clean main-based v1.1 branch.
+**Latest commit:** `2d74c0b` — documentation transition pushed to `feat/city-cost-methodology-v6`.
+
+**Exact next action:** Create and push the annotated v6 research tag, record it here, then create the clean
+`main`-based v1.1 branch without importing v6 implementation or experiment data.
 
 ## Decision summary
 
@@ -36,7 +38,7 @@ This file is the canonical progress artifact.
 - Never mark a task complete before its required verification passes.
 - Preserve superseded decisions as dated history rather than deleting them.
 
-## Phase 0 — Preserve history and initialize the new plan — IN PROGRESS
+## Phase 0 — Preserve history and initialize the new plan — COMPLETE
 
 - [x] Copy the previous root `PLAN.md` to `docs/dev/archive/plans/PLAN-city-cost-v6-1-final-2026-08-18.md`.
 - [x] Add a `SUPERSEDED — not current` banner to the archived plan.
@@ -45,16 +47,16 @@ This file is the canonical progress artifact.
 - [x] Mark the active v6.1 plan, handoff, loop prompt, and release recommendation as superseded or abandoned.
 - [x] Run `npm run docs:sync-memory` and `npm run docs:check-memory`.
 - [x] Verify the archived plan is complete and unchanged apart from its banner.
-- [ ] Commit and push the planning transition.
+- [x] Commit and push the planning transition (`2d74c0b`).
 
-## Phase 1 — Close v6.1 without erasing it — TO DO
+## Phase 1 — Close v6.1 without erasing it — IN PROGRESS
 
-- [ ] Mark v6.1 research complete but rejected for product cutover.
-- [ ] Cancel Phase 11 permanently.
-- [ ] Record that the staged v6.1 CSV must never replace the live CSV.
-- [ ] Preserve all v5/v6 experiments, holdouts, staged artifacts, and historical conclusions unchanged.
-- [ ] Confirm the live CSV and default v1 path remain untouched.
-- [ ] Commit and push the final v6 documentation state.
+- [x] Mark v6.1 research complete but rejected for product cutover.
+- [x] Cancel Phase 11 permanently.
+- [x] Record that the staged v6.1 CSV must never replace the live CSV.
+- [x] Preserve all v5/v6 experiments, holdouts, staged artifacts, and historical conclusions unchanged.
+- [x] Confirm the live CSV and default v1 path remain untouched.
+- [x] Commit and push the final v6 documentation state.
 - [ ] Create and push the annotated tag `city-cost-v6.1-research-final-2026-08-18`.
 - [ ] Record the tag and final commit in this plan.
 - [ ] Perform no further implementation work on the archived v6 branch.
