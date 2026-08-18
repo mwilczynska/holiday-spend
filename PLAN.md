@@ -10,8 +10,8 @@
 
 **Latest commit:** `f5db69b` — clean v1.1 foundation committed and pushed.
 
-**Exact next action:** Add the versioned anchor-only v1.1 prompt and pure materializer, with golden tests proving
-formula parity against v1 for identical anchors and the frozen FX rate.
+**Exact next action:** Commit and push the tested v1.1 prompt/materializer/dispatch, then implement the persistence
+adapter and planner/API boundary without activating v1.1 by default.
 
 ## Decision summary
 
@@ -78,24 +78,24 @@ This file is the canonical progress artifact.
 
 ## Phase 3 — Implement formula-preserving v1.1 — IN PROGRESS
 
-- [ ] Preserve `llm_prompt_new_cities_1.md` unchanged as the exact v1 rollback prompt.
-- [ ] Add a versioned v1.1 prompt requesting only the existing ten USD anchors, region, confidence, and comparable-city reasoning.
-- [ ] State honestly that values are holistic model estimates; do not claim live page inspection.
-- [ ] Exclude derived tiers and currency conversion from the model response.
-- [ ] Add a strict `CityCostV11AnchorResponse` schema requiring all ten anchors to be finite and positive.
-- [ ] Implement pure `materializeCityCostV11`.
-- [ ] Copy every current v1 formula exactly, including `accom_4_star = hotel_3star_2p × 1.80`.
-- [ ] Preserve every current planner field and direct drink input.
-- [ ] Perform arithmetic before currency conversion.
-- [ ] Round final daily/accommodation values to whole AUD and direct drink inputs to cents.
-- [ ] Load USD→AUD from the checked-in, source-attributed FX snapshot.
-- [ ] Persist FX snapshot ID, hash, rate, and as-of date.
-- [ ] Ensure the LLM never supplies or infers FX.
+- [x] Preserve `llm_prompt_new_cities_1.md` unchanged as the exact v1 rollback prompt.
+- [x] Add a versioned v1.1 prompt requesting only the existing ten USD anchors, region, confidence, and comparable-city reasoning.
+- [x] State honestly that values are holistic model estimates; do not claim live page inspection.
+- [x] Exclude derived tiers and currency conversion from the model response.
+- [x] Add a strict `CityCostV11AnchorResponse` schema requiring all ten anchors to be finite and positive.
+- [x] Implement pure `materializeCityCostV11`.
+- [x] Copy every current v1 formula exactly, including `accom_4_star = hotel_3star_2p × 1.80`.
+- [x] Preserve every current planner field and direct drink input.
+- [x] Perform arithmetic before currency conversion.
+- [x] Round final daily/accommodation values to whole AUD and direct drink inputs to cents.
+- [x] Load USD→AUD from the checked-in, source-attributed FX snapshot.
+- [x] Persist FX snapshot ID, hash, rate, and as-of date in the materialization result for the Phase 4 adapter.
+- [x] Ensure the LLM never supplies or infers FX.
 - [ ] Use requested city identity plus canonical country metadata for v1.1.
 - [ ] Eliminate the separate metadata LLM call for v1.1.
 - [ ] Prove a genuinely new v1.1 city uses exactly one LLM call.
 - [ ] Fail without partial persistence on invalid anchors, unsupported country, missing FX, or provider failure.
-- [ ] Add deterministic formula and schema tests.
+- [x] Add deterministic formula, schema, prompt, selector, and live-CSV guard tests.
 - [ ] Commit and push the v1.1 materializer.
 
 ## Phase 4 — Persistence, API, and UI integration — TO DO

@@ -158,10 +158,13 @@ documented OneDrive attribute workaround. This is a filesystem issue, not applic
 | --- | --- |
 | `PLAN.md` | Active v1.1 implementation and rollout checklist |
 | `docs/prompts/llm_prompt_new_cities_1.md` | Frozen v1 rollback prompt |
+| `docs/prompts/llm_prompt_new_cities_v1_1.md` | Anchor-only v1.1 prompt; derived tiers and FX stay server-side |
+| `src/lib/city-cost-methodology-v1-1.ts` | Pure v1.1 schema, frozen FX provenance and formula-preserving materializer |
 | `src/lib/city-generation.ts` | v1/v1.1 generation dispatch and schema validation |
 | `src/lib/city-generation-service.ts` | Estimate persistence and city updates |
 | `src/lib/city-llm-client.ts` | Provider JSON-completion transports |
 | `src/lib/provider-model-discovery.ts` | Provider model discovery |
+| `src/lib/city-cost-v1-1-guard.ts` | Refuses any v1.1 output write targeting the live v1 CSV |
 | `src/lib/country-metadata.ts` | Canonical country identity and defaults |
 | `data/reference/city_costs_app_aud.csv` | Live 121-city v1 dataset |
 | `feat/city-cost-methodology-v6` | Retained v6 research branch; not a current product path |

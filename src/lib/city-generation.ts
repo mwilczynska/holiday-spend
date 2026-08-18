@@ -3,7 +3,18 @@ import path from 'path';
 import { z } from 'zod';
 import type { CityEstimateData } from '@/types';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
-import { type CityGenerationProvider } from '@/lib/city-generation-config';
+import {
+  type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
+} from '@/lib/city-generation-config';
+import {
+  CITY_COST_V11_METHODOLOGY_VERSION,
+  CITY_COST_V11_PROMPT_VERSION,
+  cityCostV11AnchorResponseSchema,
+  materializeCityCostV11,
+  type CityCostV11AnchorResponse,
+  type CityCostV11Materialization,
+} from '@/lib/city-cost-methodology-v1-1';
 
 const generatedCitySchema = z.object({
   city: z.string().min(1),
@@ -55,15 +66,22 @@ export interface CityGenerationRequest {
   provider?: CityGenerationProvider;
   apiKey?: string;
   model?: string;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }
 
+export type CityGenerationMethodologyVersion = 'v1' | 'v1.1';
+export type CityGenerationPayload = GeneratedCityPayload | CityCostV11AnchorResponse;
+
 export interface CityGenerationResult {
+  methodologyVersion: CityGenerationMethodologyVersion;
   provider: string;
   model: string;
   promptVersion: string;
-  payload: GeneratedCityPayload;
+  reasoningEffort?: CityGenerationReasoningEffort;
+  payload: CityGenerationPayload;
   mappedEstimate: Partial<CityEstimateData>;
-  inferredAudPerUsd: number;
+  inferredAudPerUsd: number | null;
+  v11Materialization?: CityCostV11Materialization;
 }
 
 export class CityGenerationError extends Error {
@@ -108,6 +126,14 @@ function loadPromptTemplate(): string {
   return fs.readFileSync(promptPath, 'utf8');
 }
 
+function loadV11PromptTemplate() {
+  const promptPath = findRepoFile([
+    path.join('docs', 'prompts', CITY_COST_V11_PROMPT_VERSION),
+    CITY_COST_V11_PROMPT_VERSION,
+  ]);
+  return fs.readFileSync(promptPath, 'utf8');
+}
+
 export function buildCityGenerationPrompt(request: CityGenerationRequest): { prompt: string; promptVersion: string } {
   const promptVersion = 'llm_prompt_new_cities_1.md';
   const basePrompt = loadPromptTemplate();
@@ -132,6 +158,34 @@ Additional output requirements:
 - Return valid JSON only. No markdown fences or extra commentary.`;
 
   return { prompt, promptVersion };
+}
+
+export function buildCityGenerationV11Prompt(request: CityGenerationRequest): { prompt: string; promptVersion: string } {
+  const basePrompt = loadV11PromptTemplate();
+  const prompt = basePrompt
+    .replace('{{CITY}}', request.cityName)
+    .replace('{{COUNTRY}}', request.countryName)
+    .replace('{{REFERENCE_DATE}}', request.referenceDate?.trim() || 'current best available estimate')
+    .replace('{{EXTRA_CONTEXT}}', request.extraContext?.trim() || 'none');
+
+  return { prompt, promptVersion: CITY_COST_V11_PROMPT_VERSION };
+}
+
+export function getCityCostMethodologyVersion(): CityGenerationMethodologyVersion {
+  if (process.env.CITY_COST_METHODOLOGY_V6 === 'true') {
+    throw new CityGenerationError(
+      'CITY_COST_METHODOLOGY_V6 is retired. Use CITY_COST_METHODOLOGY_VERSION=v1 or v1.1; v6.1 cannot be activated.',
+      500
+    );
+  }
+
+  const configured = process.env.CITY_COST_METHODOLOGY_VERSION?.trim() || 'v1';
+  if (configured === 'v1' || configured === 'v1.1') return configured;
+
+  throw new CityGenerationError(
+    `Unsupported CITY_COST_METHODOLOGY_VERSION "${configured}". Use "v1" or "v1.1".`,
+    500
+  );
 }
 
 function getMissingKeyMessage(provider: CityGenerationProvider) {
@@ -212,6 +266,14 @@ function inferAudPerUsd(payload: GeneratedCityPayload) {
 }
 
 export async function generateCityCostEstimate(request: CityGenerationRequest): Promise<CityGenerationResult> {
+  if (getCityCostMethodologyVersion() === CITY_COST_V11_METHODOLOGY_VERSION) {
+    return generateCityCostEstimateV11(request);
+  }
+
+  return generateCityCostEstimateV1(request);
+}
+
+async function generateCityCostEstimateV1(request: CityGenerationRequest): Promise<CityGenerationResult> {
   const { prompt, promptVersion } = buildCityGenerationPrompt(request);
   let providerResponse: { provider: string; model: string; text: string } | null = null;
   try {
@@ -221,6 +283,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
       provider: request.provider,
       apiKey: request.apiKey,
       model: request.model,
+      reasoningEffort: request.reasoningEffort,
       maxTokens: 3000,
     });
   } catch (err) {
@@ -253,11 +316,68 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
   const inferredAudPerUsd = inferAudPerUsd(parsedPayload);
 
   return {
+    methodologyVersion: 'v1',
     provider: providerResponse.provider,
     model: providerResponse.model,
     promptVersion,
+    reasoningEffort: request.reasoningEffort,
     inferredAudPerUsd,
     mappedEstimate: mapTiersToEstimateData(parsedPayload),
     payload: parsedPayload,
+  };
+}
+
+async function generateCityCostEstimateV11(request: CityGenerationRequest): Promise<CityGenerationResult> {
+  const { prompt, promptVersion } = buildCityGenerationV11Prompt(request);
+  let providerResponse: { provider: string; model: string; text: string } | null = null;
+
+  try {
+    providerResponse = await runJsonPromptWithProvider({
+      systemPrompt: 'You are a careful travel cost estimation assistant. Return valid JSON only.',
+      userPrompt: prompt,
+      provider: request.provider,
+      apiKey: request.apiKey,
+      model: request.model,
+      reasoningEffort: request.reasoningEffort,
+      maxTokens: 2500,
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'LLM request failed.';
+    throw new CityGenerationError(message, 502);
+  }
+
+  if (!providerResponse) {
+    if (request.provider) {
+      throw new CityGenerationError(getMissingKeyMessage(request.provider), 400);
+    }
+
+    throw new CityGenerationError(
+      'No supported LLM provider is configured. Add an API key in the UI or configure ANTHROPIC_API_KEY, OPENAI_API_KEY, or GEMINI_API_KEY on the server.',
+      400
+    );
+  }
+
+  let parsedPayload: CityCostV11AnchorResponse;
+  try {
+    parsedPayload = cityCostV11AnchorResponseSchema.parse(extractJsonObject(providerResponse.text));
+  } catch {
+    throw new CityGenerationError(
+      `The ${providerResponse.provider} response did not match the required v1.1 anchor-only JSON schema.`,
+      502
+    );
+  }
+
+  const v11Materialization = materializeCityCostV11(parsedPayload);
+
+  return {
+    methodologyVersion: CITY_COST_V11_METHODOLOGY_VERSION,
+    provider: providerResponse.provider,
+    model: providerResponse.model,
+    promptVersion,
+    reasoningEffort: request.reasoningEffort,
+    inferredAudPerUsd: v11Materialization.fx.audPerUsd,
+    mappedEstimate: v11Materialization.mappedEstimate,
+    payload: parsedPayload,
+    v11Materialization,
   };
 }

@@ -626,3 +626,8 @@ but asks the model for only the ten existing USD anchors in one schema-constrain
 arithmetic and USD→AUD conversion from the checked-in FX snapshot, persists provenance, and supports an explicit v1
 rollback. v1.1 applies to newly generated cities only; no benchmark, new collection panel, coefficient fitting or
 existing-city migration is part of this restart. Progress is tracked in the root `PLAN.md`.
+
+The clean branch foundation is pushed. The v1.1 anchor-only prompt, strict positive-anchor schema, deterministic
+materializer, checked-in FX provenance and live-CSV write guard are implemented with golden tests. The generation
+selector defaults to v1 until the persistence/API/UI integration and functional smoke pass; the retired v6 flag now
+fails explicitly rather than activating v6.1.
