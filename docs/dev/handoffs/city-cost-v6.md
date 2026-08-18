@@ -1,3 +1,5 @@
+> **SUPERSEDED — not current.** The v6.1 methodology and 121-city staged migration were rejected for product cutover on 18 August 2026. Do not resume Phase 11, access a holdout, write the live CSV, or run another v6 collection. The v6 branch is being preserved as research history. The active workstream is the clean main-based v1.1 plan in `/PLAN.md`; its exact next action is to finish this retirement record, commit/push it, tag the v6 research branch, and create `feat/city-cost-methodology-v1-1` from `main`.
+
 # Handoff — City Cost Methodology v6.1
 
 **As at:** 14 August 2026

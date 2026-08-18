@@ -19,7 +19,8 @@ four food, five drinks, four activities. All for two travellers, per night for a
 otherwise, in AUD.
 
 Six methodology versions have been attempted. **v1 is what still ships.** v3 and v5 were abandoned. v4 is
-researched but not integrated. **v6 is the active workstream** — see [PLAN.md](PLAN.md).
+researched but not integrated. **v6 is retained as rejected research history.** The active simplification plan is
+the v1.1 checklist in [PLAN.md](PLAN.md).
 
 | Version | Approach | Status | Verdict |
 | --- | --- | --- | --- |
@@ -28,7 +29,7 @@ researched but not integrated. **v6 is the active workstream** — see [PLAN.md]
 | v3 | Observed-first: direct source-attributed observation of every measure | **Abandoned** 25–27 Jul 2026 | Stalled at 22.8% coverage, zero complete cities |
 | v4 | Measure price *level* cheaply, model tier *structure* | **Research complete, unintegrated** | 18–22% median APE; accommodation level unresolved |
 | v5 | Definition-matched one-call collection with per-relationship sample gates | **Closed** 9 Aug 2026 | 95 experiments, zero product mappings; acceptance rule unsatisfiable from public sources |
-| v6 | v4's principle, executed: measure one level per category, ladder the rest, grade every value | **Active** | M0 complete; ladder fitted at 11.4% / 13.0% LOO |
+| v6 | v4's principle, executed: measure one level per category, ladder the rest, grade every value | **Rejected for product cutover 18 Aug 2026** | Research, canary, staged migration and impact artifacts retained; live product remains v1 |
 
 ---
 
@@ -3375,3 +3376,18 @@ verification checks pass. The non-live cutover rehearsal initially exposed an as
 keyed diagnostic v6.1 rows as if they were part of the staged import delta. The rehearsal now scopes active v6.1
 counts to the frozen 121-city frame; it verifies 121 first imports, 121 idempotent reuses, 121 provenance round-trips,
 rollback fidelity and an unchanged live CSV. This is a harness correction, not a live-data change.
+### v6.1 retirement decision and v1.1 simplification — 18 August 2026
+
+The owner rejected v6.1 for product cutover after reviewing the lived product result and the methodology overhead.
+The v6.1 staged CSV, Phase 11 cutover, holdout work, new source collection and bulk migration are cancelled. The
+live 121-city CSV and the default existing-city library remain v1. The complete v6.1 branch and evidence corpus are
+preserved as research history and will be tagged before implementation moves to a clean main-based branch.
+
+The replacement plan is v1.1: preserve the v1 anchor definitions and formulas, request anchors only from one
+holistic LLM call, and perform all tier arithmetic and USD→AUD conversion deterministically on the server. v1.1 will
+apply only to newly generated cities after formula, persistence and functional smoke checks; existing cities will not
+be migrated. The previously proposed lived-spending benchmark is explicitly out of scope. The v1 4-star multiplier
+remains unchanged in this first simplification pass and is documented as a later decision, not silently corrected.
+
+The former root plan is retained at `docs/dev/archive/plans/PLAN-city-cost-v6-1-final-2026-08-18.md`. The tracked
+progress artifact is now `/PLAN.md`, which must be updated at every task checkpoint and before each commit/push.

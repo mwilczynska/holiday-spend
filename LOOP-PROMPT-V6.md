@@ -1,3 +1,5 @@
+> **SUPERSEDED — DO NOT RUN.** The v6.1 workstream was closed for product cutover on 18 August 2026. Its branch, experiments and staged artifacts are historical evidence only. Follow `/PLAN.md` for the v1.1 simplification.
+
 # LOOP-PROMPT-V6 — v6.1 coherent-library migration
 
 This is the active autonomous implementation prompt for city cost methodology v6.1. Phases 1–7H and the fresh

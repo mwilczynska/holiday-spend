@@ -1,3 +1,5 @@
+> **SUPERSEDED — not current.** v6.1 research is retained for audit history but rejected for product cutover on 18 August 2026. Phase 11 is cancelled. Do not replace the live CSV, enable the default flag, access a holdout, or resume collection. The replacement is the clean main-based v1.1 plan in `/PLAN.md`.
+
 # City Cost Methodology v6.1 — Coherent Library Migration
 
 **Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phases 8–10 are complete and Phase 11 awaits owner review

@@ -1,13 +1,16 @@
+> **SUPERSEDED — historical evidence only.** v6.1 was rejected for product cutover on 18 August 2026. Do not resume
+> collection, access a holdout, run Phase 11, import the staged CSV, or enable the v6 flag. The active plan is the
+> clean main-based v1.1 simplification in `/PLAN.md`; this directory remains retained for audit and reproducibility.
+
 # City Cost v6 — Evidence Inventory
 
 **This directory is the v6 contract and evidence root.** If you are an agent picking up this workstream
 cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact next action. This file
 tells you what lives here and what each file is for.
 
-**Status:** the v6.1 new-city implementation is banked and M4 migration of the existing 121-city library
-was approved on 12 August 2026. The live CSV is still unchanged. Phases 6–10 are complete; Phase 11 remains
-owner-gated. Phase 6 release reconciliation and Phase 7F
-collection-lifecycle repair are complete. Experiment 010 is a credential preflight, 011 is failed boundary history,
+**Status:** the v6.1 new-city implementation and staged migration are retained as rejected research history. The live
+CSV remains unchanged, the default product path remains v1, and Phase 11 is cancelled. Experiment 010 is a credential
+preflight, 011 is failed boundary history,
 012 is immutable incomplete-frame evidence, 013 is immutable failed canary history, and 014 is the active immutable
 passed canary: 60/60 terminal/reusable slots, 20/20 complete cities and zero artifact candidates. Phase 7H lifecycle/
 evaluator repair and the fresh canary baseline are complete; Phase 8 migration tooling, Phase 9 staging and the Phase

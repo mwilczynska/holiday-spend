@@ -1,3 +1,6 @@
+> **SUPERSEDED — not a product release.** This generated v6.1 report is retained as historical research evidence.
+> v6.1 was rejected for product cutover on 18 August 2026; the staged CSV remains non-live and Phase 11 is cancelled.
+
 # v6.1 development release report
 
 **Status:** scored_development_runtime_unmeasured

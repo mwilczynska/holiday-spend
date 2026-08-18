@@ -42,16 +42,15 @@ abandoned v3 programme, still referenced by tests or kept for provenance.
 
 ## CURRENT — v6 methodology contracts
 
-**v6.1 is the active workstream.** Its contracts live under `data/reference/v6/` — start at
-`v6/README.md`. The reachable finish line keeps all 19 tiers. The live v1 CSV is unchanged now; staged
-migration of all 121 cities is authorized, but cutover remains gated by collection-boundary repair, a
-delegated operational canary, the complete staged artifact, a small user-key smoke and owner review.
+**v6.1 is retained historical evidence, not an active workstream.** Its contracts live under `data/reference/v6/`.
+Do not resume collection, reopen holdouts, import the staged CSV or run Phase 11. The active product simplification
+is tracked in `/PLAN.md`; the live v1 CSV and default path remain unchanged.
 
 | Path | Status | What it is | Read by |
 | --- | --- | --- | --- |
-| `v6/README.md` | **CURRENT** | Evidence inventory and orientation for the v6 workstream | humans and agents |
-| `v6/data-dictionary-v6.md` | **CURRENT** | Product estimands, A/B/C/D evidence grades and dated v6.1 source decisions | v6 derivation and experiments |
-| `v6/validation-manifest-v6-1.json` | **ACTIVE** | Reachable three-call v6.1 source contract and release gates | v6.1 implementation and reporting |
+| `v6/README.md` | **HISTORICAL** | Evidence inventory and orientation for the archived v6 workstream | research replay only |
+| `v6/data-dictionary-v6.md` | **HISTORICAL** | Product estimands, A/B/C/D evidence grades and dated v6.1 source decisions | v6 research replay only |
+| `v6/validation-manifest-v6-1.json` | **HISTORICAL** | Retained three-call v6.1 source contract and release evidence | v6 research replay only |
 | `v6/validation-manifest-v6.json` | **HISTORICAL** | v6.0 acceptance gates and spent 40-city ground-truth panel | retained scoring history |
 | `v6/coefficients-v6.json` | **GENERATED** | The all-19 fitted derivation report with provenance, leave-one-out scores and per-coefficient caveats. **Never hand-edit** | `fit-city-cost-ladder-v6.mjs`, v6 derivation |
 | `v6/ground-truth/` | **RETAINED — CLOSED** | Development ledger and spent holdout records; no holdout may be reopened for v6.1 | historical validation |
