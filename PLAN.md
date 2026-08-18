@@ -8,10 +8,10 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `2757c88` — v1.1 persistence/API/planner/UI integration committed and pushed; deterministic verification is complete in the working tree.
+**Latest commit:** `5327246` — deterministic v1.1 verification and current-plan checkpoint committed; pending push.
 
-**Exact next action:** Run the complete baseline plus `npm run methodology:v1.1:check`, verify the live CSV hash, and
-hold the default at v1 until the owner runs the three-city keyed functional smoke.
+**Exact next action:** Push the checkpoint, then run the owner-key functional smoke for Tottori, Toowoomba, and Brno;
+keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
 
 ## Decision summary
 
