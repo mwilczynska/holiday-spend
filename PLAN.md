@@ -8,7 +8,7 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `a993e2f` — v1.1 provenance checkpoint recorded after direct-drink source-map verification; pending push.
+**Latest commit:** `8800a46` — final v1.1 provenance checkpoint metadata; pushed after verification.
 
 **Exact next action:** Repair the Chrome browser bridge, then run the owner-key functional smoke for Tottori, Toowoomba,
 and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
