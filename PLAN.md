@@ -8,7 +8,7 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `bfafd38` — plan checkpoint after the OneDrive-safe dev-server recovery guard; pushed after verification.
+**Latest commit:** `94453d9` — owner-smoke bridge blocker recorded in the plan and handoff; pushed after verification.
 
 **Exact next action:** Repair the Chrome native-host bridge through ChatGPT/Codex **Settings → Computer use** (the
 extension is installed and enabled, but its Windows registry host entry is missing), then start the local app with
