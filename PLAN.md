@@ -1,14 +1,14 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Phase 1 in progress
+**Status:** Phase 2 in progress
 
-**Current phase:** Phase 1 — close v6.1 without erasing it
+**Current phase:** Phase 2 — create the clean v1.1 product branch
 
 **Branch:** `feat/city-cost-methodology-v6` (retirement documentation; no further v6 implementation)
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `2d74c0b` — documentation transition pushed to `feat/city-cost-methodology-v6`.
+**Latest commit:** `335e61b` — v6.1 retirement state and research tag pushed.
 
 **Exact next action:** Create and push the annotated v6 research tag, record it here, then create the clean
 `main`-based v1.1 branch without importing v6 implementation or experiment data.
@@ -49,7 +49,7 @@ This file is the canonical progress artifact.
 - [x] Verify the archived plan is complete and unchanged apart from its banner.
 - [x] Commit and push the planning transition (`2d74c0b`).
 
-## Phase 1 — Close v6.1 without erasing it — IN PROGRESS
+## Phase 1 — Close v6.1 without erasing it — COMPLETE
 
 - [x] Mark v6.1 research complete but rejected for product cutover.
 - [x] Cancel Phase 11 permanently.
@@ -57,11 +57,11 @@ This file is the canonical progress artifact.
 - [x] Preserve all v5/v6 experiments, holdouts, staged artifacts, and historical conclusions unchanged.
 - [x] Confirm the live CSV and default v1 path remain untouched.
 - [x] Commit and push the final v6 documentation state.
-- [ ] Create and push the annotated tag `city-cost-v6.1-research-final-2026-08-18`.
-- [ ] Record the tag and final commit in this plan.
-- [ ] Perform no further implementation work on the archived v6 branch.
+- [x] Create and push the annotated tag `city-cost-v6.1-research-final-2026-08-18`.
+- [x] Record the tag and final commit in this plan (`335e61b`).
+- [x] Perform no further implementation work on the archived v6 branch.
 
-## Phase 2 — Create the clean v1.1 product branch — TO DO
+## Phase 2 — Create the clean v1.1 product branch — IN PROGRESS
 
 - [ ] Create `feat/city-cost-methodology-v1-1` from `main`.
 - [ ] Carry across only this plan, the archived prior plan, and a concise v6 retrospective.
