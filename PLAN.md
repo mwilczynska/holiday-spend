@@ -8,7 +8,7 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `46edc88` — complete 19-field planner boundary exposed in the materializer, API, tests, and deterministic check; pending push.
+**Latest commit:** `aa3aeb5` — active v1.1 documentation reconciled and historical v4/v5 collection language marked retained; pending push.
 
 **Exact next action:** Repair the Chrome browser bridge, then run the owner-key functional smoke for Tottori, Toowoomba,
 and Brno; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
