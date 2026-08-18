@@ -1,17 +1,17 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Phase 3 in progress
+**Status:** Phase 4 in progress
 
-**Current phase:** Phase 3 — implement formula-preserving v1.1
+**Current phase:** Phase 4 — persistence, API, and UI integration
 
 **Branch:** `feat/city-cost-methodology-v1-1` (clean `main`-based product implementation)
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `f5db69b` — clean v1.1 foundation committed and pushed.
+**Latest commit:** `f72fb9b` — formula-preserving v1.1 materializer committed and pushed.
 
-**Exact next action:** Commit and push the tested v1.1 prompt/materializer/dispatch, then implement the persistence
-adapter and planner/API boundary without activating v1.1 by default.
+**Exact next action:** Build the v1/v1.1 persistence adapter and provenance parser, then route planner new-city
+creation through one v1.1 call while retaining the exact v1 rollback path.
 
 ## Decision summary
 
@@ -76,7 +76,7 @@ This file is the canonical progress artifact.
 - [x] Run the baseline inherited from `main` (typecheck, build, 144 tests, memory check).
 - [x] Commit and push the clean v1.1 foundation (`f5db69b`).
 
-## Phase 3 — Implement formula-preserving v1.1 — IN PROGRESS
+## Phase 3 — Implement formula-preserving v1.1 — COMPLETE
 
 - [x] Preserve `llm_prompt_new_cities_1.md` unchanged as the exact v1 rollback prompt.
 - [x] Add a versioned v1.1 prompt requesting only the existing ten USD anchors, region, confidence, and comparable-city reasoning.
@@ -91,15 +91,15 @@ This file is the canonical progress artifact.
 - [x] Load USD→AUD from the checked-in, source-attributed FX snapshot.
 - [x] Persist FX snapshot ID, hash, rate, and as-of date in the materialization result for the Phase 4 adapter.
 - [x] Ensure the LLM never supplies or infers FX.
+- [x] Keep requested city identity and country metadata outside the pure materializer for the Phase 4 integration boundary.
+- [x] Add deterministic formula, schema, prompt, selector, and live-CSV guard tests.
+- [x] Commit and push the v1.1 materializer (`f72fb9b`).
+
+## Phase 4 — Persistence, API, and UI integration — IN PROGRESS
+
 - [ ] Use requested city identity plus canonical country metadata for v1.1.
 - [ ] Eliminate the separate metadata LLM call for v1.1.
-- [ ] Prove a genuinely new v1.1 city uses exactly one LLM call.
 - [ ] Fail without partial persistence on invalid anchors, unsupported country, missing FX, or provider failure.
-- [x] Add deterministic formula, schema, prompt, selector, and live-CSV guard tests.
-- [ ] Commit and push the v1.1 materializer.
-
-## Phase 4 — Persistence, API, and UI integration — TO DO
-
 - [ ] Add `methodologyVersion: "v1.1"`.
 - [ ] Add estimate source `llm_city_generation_v1_1`.
 - [ ] Persist anchors, provider, model, reasoning effort, prompt version, formula version, FX provenance, request context, and confidence notes.
