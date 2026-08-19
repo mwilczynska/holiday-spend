@@ -4,15 +4,15 @@
 
 **Current phase:** Phase 7 — functional webapp validation (to do)
 
-**Branch:** `main` (local fast-forward complete; post-merge baseline passed; push pending)
+**Branch:** `main` (merged and synchronized with origin; protected v6 archive retained)
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `c919e63` — functional webapp validation plan and browser-access memory.
+**Latest commit:** `aa06ff9` — verified main merge baseline checkpoint; final cleanup pointer follows.
 
-**Exact next action:** Commit this pre-push checkpoint, push `main`, and delete only fully merged obsolete branches;
-preserve the archived v6 branch and immutable v6.1 tag. Then begin the authenticated functional pass with a
-persisted planner leg and one new v1.1 city.
+**Exact next action:** Begin the authenticated Phase 7 functional pass with a persisted planner leg and one new v1.1
+city. Record the browser surface and evidence for each item; leave the three-city owner-key smoke open until it is
+actually executed.
 
 **Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
 keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
@@ -169,8 +169,11 @@ This is a post-rollout product smoke, separate from the completed methodology ba
 session and record the browser surface used. A route returning HTTP 200, a build passing, or a manually visible page
 does not by itself prove the interaction works. Do not inspect, copy, log, or persist the owner's provider key.
 
-- [x] Fast-forward the complete v1.1 history into local `main` and pass the post-merge baseline: typecheck, production
-  build, 36 Vitest files / 161 tests, memory mirror check, and deterministic v1.1 check.
+- [x] Fast-forward the complete v1.1 history into `main`, push it to origin, and pass the post-merge baseline:
+  typecheck, production build, 36 Vitest files / 161 tests, memory mirror check, and deterministic v1.1 check.
+- [x] Remove obsolete v1.1, v4, and v5 branch pointers only after proving their tips remain reachable from `main` or
+  the protected v6 archive; preserve `feat/city-cost-methodology-v6` and
+  `city-cost-v6.1-research-final-2026-08-18` locally and on origin.
 - [ ] Confirm `/`, `/plan`, `/plan/compare`, `/track`, `/dataset`, `/estimates`, and `/settings` render without
   unexpected console-visible or user-visible errors.
 - [ ] Add a new trip leg in `/plan`, select its city, dates, accommodation, food, drink, and activity tiers, and save.
