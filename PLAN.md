@@ -8,11 +8,12 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `9e0d53b` — stale browser-smoke diagnosis corrected after verification.
+**Latest commit:** `f9dfe07` — independent pre-activation verification recorded after the owner deferred the smoke.
 
-**Exact next action:** Commit and push the completed independent verification checkpoint while keeping v1 as the
-new-city default. Then wait for secure desktop access, restart the isolated v1.1 app, and resume the Tottori,
-Toowoomba, and Brno smoke before making any activation change.
+**Exact next action:** When secure desktop access is available, restart the isolated app with
+`CITY_COST_METHODOLOGY_VERSION=v1.1` and run the Tottori, Toowoomba, and Brno owner-key smoke. Keep v1 as the
+new-city default until all three pass; only then activate v1.1, run the final post-activation baseline, and complete
+the plan.
 
 **Temporary owner decision (18 August 2026):** Skip the keyed smoke for now and continue independent checklist work.
 This defers the smoke; it does not waive it or authorize v1.1 activation without its evidence.
