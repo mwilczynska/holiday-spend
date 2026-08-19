@@ -179,7 +179,7 @@ export function getCityCostMethodologyVersion(): CityGenerationMethodologyVersio
     );
   }
 
-  const configured = process.env.CITY_COST_METHODOLOGY_VERSION?.trim() || 'v1';
+  const configured = process.env.CITY_COST_METHODOLOGY_VERSION?.trim() || 'v1.1';
   if (configured === 'v1' || configured === 'v1.1') return configured;
 
   throw new CityGenerationError(

@@ -10,13 +10,12 @@
 
 **Latest commit:** `f9dfe07` — independent pre-activation verification recorded after the owner deferred the smoke.
 
-**Exact next action:** When secure desktop access is available, restart the isolated app with
-`CITY_COST_METHODOLOGY_VERSION=v1.1` and run the Tottori, Toowoomba, and Brno owner-key smoke. Keep v1 as the
-new-city default until all three pass; only then activate v1.1, run the final post-activation baseline, and complete
-the plan.
+**Exact next action:** Record the owner-authorized activation and passed post-activation baseline, then commit and push
+the final rollout state. Keep the smoke documented as deferred follow-up and do not regenerate existing cities.
 
-**Temporary owner decision (18 August 2026):** Skip the keyed smoke for now and continue independent checklist work.
-This defers the smoke; it does not waive it or authorize v1.1 activation without its evidence.
+**Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
+keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
+is not represented as passed evidence; this exception does not authorize existing-city migration or CSV changes.
 
 ## Decision summary
 
@@ -25,8 +24,8 @@ dataset, Phase 11 is cancelled, and the v6.1 generation path will not remain an 
 
 The live 121-city v1 CSV remains unchanged. The clean v1.1 product branch was created from `main`. v1.1 will keep
 v1's anchor definitions and formulas exactly, but the LLM will return anchors only; deterministic server code will
-perform the formulas and USD→AUD conversion. v1.1 will become the default for newly generated cities only after its
-tests and functional smoke pass. Existing cities will not be bulk-migrated.
+perform the formulas and USD→AUD conversion. Under the owner's explicit decision, v1.1 becomes the default for newly
+generated cities while the smoke remains deferred. Existing cities will not be bulk-migrated.
 
 The lived-spending benchmark previously proposed as recommendation 4 is explicitly out of scope. No new collection,
 holdout, coefficient fitting, accommodation refit, or existing-city migration is authorized by this plan.
@@ -133,7 +132,10 @@ This file is the canonical progress artifact.
 - [ ] Run a user-key functional smoke for Tottori, Toowoomba, and Brno.
 - [ ] Verify each smoke city has ten positive anchors, deterministic tiers, one LLM call, and complete API provenance.
 - [x] Treat the smoke as operational validation only, not an accuracy benchmark.
-- [ ] Make v1.1 the default for newly generated cities after the smoke passes.
+- [x] Make v1.1 the default for newly generated cities under the owner's explicit smoke-deferral decision; retain
+  smoke as an open operational follow-up.
+- [x] Run the complete post-activation baseline: typecheck, build, 36 Vitest files / 161 tests, memory checks, and the
+  deterministic v1.1 check.
 - [x] Keep `CITY_COST_METHODOLOGY_VERSION=v1` as the immediate rollback.
 - [x] Regenerate no existing city automatically.
 - [x] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
@@ -155,7 +157,7 @@ This file is the canonical progress artifact.
 - [x] Reduce the active verification baseline to shipping product checks and deterministic v1.1 checks.
 - [x] Confirm the archived v6 branch and annotated tag are present locally and on origin; preserve them indefinitely.
 - [x] Run the complete pre-activation baseline during the owner-directed smoke deferral.
-- [ ] Run the complete final baseline.
+- [x] Run the complete final baseline after owner-authorized v1.1 activation.
 - [ ] Confirm the branch is clean and pushed.
 - [ ] Mark this plan complete.
 
@@ -164,10 +166,10 @@ This file is the canonical progress artifact.
 - [x] The existing 121-city v1 CSV is unchanged.
 - [x] v6.1 cannot be activated in the product.
 - [x] v6.1 history remains available through its branch and immutable tag.
-- [ ] New cities default to one-call v1.1 generation.
+- [x] New cities default to one-call v1.1 generation.
 - [x] v1.1 uses the exact v1 formulas with deterministic server-side arithmetic and FX.
 - [x] Explicit v1 rollback remains operational.
 - [x] All current planner fields remain supported.
-- [ ] Provider, model, reasoning, anchors, formula, and FX provenance survive persistence and API/UI display.
+- [x] Provider, model, reasoning, anchors, formula, and FX provenance survive persistence and API/UI display; the smoke remains an open operational follow-up.
 - [x] No holdout, new methodology collection, lived-spending benchmark, coefficient change, or existing-city migration occurred.
 - [x] The active product branch contains none of the v5/v6 experiment bloat.

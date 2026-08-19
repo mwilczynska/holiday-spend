@@ -15,8 +15,14 @@ afterEach(() => {
 });
 
 describe('v1.1 city generation dispatch', () => {
-  it('defaults to the legacy v1 path until activation is explicitly completed', () => {
+  it('defaults to v1.1 after the owner-authorized activation', () => {
     delete process.env.CITY_COST_METHODOLOGY_VERSION;
+    delete process.env.CITY_COST_METHODOLOGY_V6;
+    expect(getCityCostMethodologyVersion()).toBe('v1.1');
+  });
+
+  it('retains explicit v1 rollback', () => {
+    process.env.CITY_COST_METHODOLOGY_VERSION = 'v1';
     delete process.env.CITY_COST_METHODOLOGY_V6;
     expect(getCityCostMethodologyVersion()).toBe('v1');
   });

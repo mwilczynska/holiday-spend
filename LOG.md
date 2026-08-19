@@ -701,3 +701,17 @@ object `cfe5694dd02147ce4cceadce690ed429a318d1fd` remains local and remote and p
 `335e61be7341bc791e1e7e5aa4be1645412e92d0`. The archived branch tip is not an ancestor of the product branch. The
 only suspect v6 path in the product tree is the explicitly archived plan; executable references are limited to the
 historical provenance parser and the retirement guard/tests. No provider key, city record, or live dataset changed.
+## Owner-authorized v1.1 activation without smoke — 18 August 2026
+
+The owner explicitly authorized the v1.1 new-city default while deferring the Tottori, Toowoomba, and Brno keyed
+operational smoke because secure remote-desktop access is unavailable. This is a documented exception, not a smoke
+result or accuracy claim. No provider key was accessed, no smoke city was generated, and no existing city was migrated.
+
+The selector fallback is now v1.1. Explicit `CITY_COST_METHODOLOGY_VERSION=v1` remains operational and is covered by a
+new regression; `CITY_COST_METHODOLOGY_V6=true` remains fail-closed. The v1.1 anchor-only contract, deterministic
+formulas, 19 planner fields, checked-in FX, persistence/API/UI provenance, and live-CSV write guard are unchanged.
+
+The complete post-activation baseline passed: TypeScript, production build, 36 Vitest files / 161 tests,
+documentation-memory check, and `npm run methodology:v1.1:check`. The build emitted the existing handled
+`/api/export` dynamic-route diagnostic and exited successfully. The deterministic check reported the unchanged
+19-field boundary and live CSV SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
