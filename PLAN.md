@@ -4,15 +4,15 @@
 
 **Current phase:** Phase 7 — functional webapp validation (to do)
 
-**Branch:** `feat/city-cost-methodology-v1-1` (merge-ready; target `main`)
+**Branch:** `main` (local fast-forward complete; post-merge baseline passed; push pending)
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `6c7c2ee` — v1.1 rollout completion checkpoint.
+**Latest commit:** `c919e63` — functional webapp validation plan and browser-access memory.
 
-**Exact next action:** Commit the browser-access memory and Phase 7 checklist, fast-forward `main`, run the complete
-baseline, and push `main`. Then begin the authenticated functional pass with a persisted planner leg and one new
-v1.1 city; do not treat route liveness or deterministic tests as functional UI evidence.
+**Exact next action:** Commit this pre-push checkpoint, push `main`, and delete only fully merged obsolete branches;
+preserve the archived v6 branch and immutable v6.1 tag. Then begin the authenticated functional pass with a
+persisted planner leg and one new v1.1 city.
 
 **Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
 keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
@@ -169,6 +169,8 @@ This is a post-rollout product smoke, separate from the completed methodology ba
 session and record the browser surface used. A route returning HTTP 200, a build passing, or a manually visible page
 does not by itself prove the interaction works. Do not inspect, copy, log, or persist the owner's provider key.
 
+- [x] Fast-forward the complete v1.1 history into local `main` and pass the post-merge baseline: typecheck, production
+  build, 36 Vitest files / 161 tests, memory mirror check, and deterministic v1.1 check.
 - [ ] Confirm `/`, `/plan`, `/plan/compare`, `/track`, `/dataset`, `/estimates`, and `/settings` render without
   unexpected console-visible or user-visible errors.
 - [ ] Add a new trip leg in `/plan`, select its city, dates, accommodation, food, drink, and activity tiers, and save.
