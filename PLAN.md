@@ -1,17 +1,18 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** COMPLETE
+**Status:** METHODOLOGY COMPLETE — FUNCTIONAL WEBAPP VALIDATION OPEN
 
-**Current phase:** Phase 6 — final archival and bloat removal (complete)
+**Current phase:** Phase 7 — functional webapp validation (to do)
 
-**Branch:** `feat/city-cost-methodology-v1-1` (clean `main`-based product implementation)
+**Branch:** `feat/city-cost-methodology-v1-1` (merge-ready; target `main`)
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `14452b5` — owner-authorized v1.1 new-city default activation.
+**Latest commit:** `6c7c2ee` — v1.1 rollout completion checkpoint.
 
-**Exact next action:** Commit and push the final completion pointer, confirm the branch is clean and synchronized, and
-leave the deferred smoke recorded as a follow-up with no pass claim.
+**Exact next action:** Commit the browser-access memory and Phase 7 checklist, fast-forward `main`, run the complete
+baseline, and push `main`. Then begin the authenticated functional pass with a persisted planner leg and one new
+v1.1 city; do not treat route liveness or deterministic tests as functional UI evidence.
 
 **Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
 keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
@@ -161,6 +162,45 @@ This file is the canonical progress artifact.
 - [x] Run the complete final baseline after owner-authorized v1.1 activation.
 - [x] Confirm the branch is clean and pushed at the final completion checkpoint.
 - [x] Mark this plan complete; the smoke remains a deferred operational follow-up with no pass claim.
+
+## Phase 7 — Functional webapp validation — TO DO
+
+This is a post-rollout product smoke, separate from the completed methodology baseline. Use an authenticated local
+session and record the browser surface used. A route returning HTTP 200, a build passing, or a manually visible page
+does not by itself prove the interaction works. Do not inspect, copy, log, or persist the owner's provider key.
+
+- [ ] Confirm `/`, `/plan`, `/plan/compare`, `/track`, `/dataset`, `/estimates`, and `/settings` render without
+  unexpected console-visible or user-visible errors.
+- [ ] Add a new trip leg in `/plan`, select its city, dates, accommodation, food, drink, and activity tiers, and save.
+- [ ] Reload `/plan` and verify the new leg, selected tiers, traveller scaling, overrides, and calculated totals
+  persist correctly.
+- [ ] Add, edit, and remove an intercity transport item; verify transport stays separate from city-cost methodology
+  and survives save/reload.
+- [ ] Create or update a saved plan snapshot and verify `/plan/compare` shows consistent summary totals, cumulative
+  series, country allocation, and category allocation.
+- [ ] Add one new city with a user-entered OpenAI key and verify the default path is methodology `v1.1`, source
+  `llm_city_generation_v1_1`, and exactly one generation call with no metadata or search call.
+- [ ] For the generated city, verify ten finite positive anchors and all 19 deterministic planner fields, including
+  direct drink inputs, are available and usable when adding a planner leg.
+- [ ] Verify generated-city persistence survives reload and does not modify
+  `data/reference/city_costs_app_aud.csv`.
+- [ ] In `/dataset`, verify the city library/database table loads, existing and generated rows are distinguishable,
+  labels and filters are understandable, and edit controls target the intended row.
+- [ ] Verify `/dataset` generation-history labelling shows methodology, source type, provider/model, reasoning effort,
+  prompt and formula versions, FX snapshot/rate/as-of date, anchors, request context, confidence notes, and evidence
+  basis without presenting modelled values as observed prices.
+- [ ] Cross-check the generated row and its labels through `/api/estimates`; confirm persisted database values and
+  API provenance agree with `/dataset`.
+- [ ] Exercise representative `/track` behavior: add, edit, tag, exclude/reinclude, reassign, and delete a manual
+  expense, and verify planned-versus-actual views respond correctly.
+- [ ] Verify settings changes that affect traveller count persist and rescale planner totals without rewriting city
+  base costs.
+- [ ] Exercise relevant empty, validation, provider-failure, and retry states; verify failures leave no partial city,
+  estimate, leg, or expense records.
+- [ ] Complete the separately deferred Tottori, Toowoomba, and Brno owner-key smoke and provenance checks from
+  Phase 5, or leave them explicitly open with no pass claim.
+- [ ] Record defects with route, action, expected result, actual result, browser surface, and reproducible evidence;
+  fix and rerun affected checks before marking this phase complete.
 
 ## Definition of Done
 

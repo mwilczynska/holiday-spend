@@ -149,6 +149,47 @@ npm run methodology:v1.1:check
 
 The v6-specific checks and experiments remain runnable only from the archived v6 branch for historical replay.
 
+## Browser access by Codex surface
+
+This repository is worked on from both the ChatGPT/Codex desktop app and Codex CLI. Browser control is
+surface-specific; do not treat the two paths as interchangeable.
+
+### ChatGPT/Codex desktop app
+
+- Prefer the bundled in-app Browser (`iab`) for local web-app testing. Open its panel from the app toolbar or with
+  `Ctrl+Shift+B`, then use the Browser plugin through the Node REPL. It has its own profile and is not the user's
+  normal Chrome session.
+- Use the Chrome plugin only when the task needs the user's existing Chrome tabs, profile, login state, or
+  extensions. That path depends on the Codex/ChatGPT Chrome extension and its native-host bridge.
+- A page loading and remaining visible in the in-app Browser proves that the browser surface and webapp are
+  working; it does not prove that Codex automation can attach to the tab. In-app and Chrome automation both pass
+  through the same Browser RPC bootstrap in the desktop app.
+- An error saying `Trusted RPC dependency must resolve within a configured trusted code path` occurs before tab
+  discovery. It is a Codex launch-time automation configuration failure, not an application, website,
+  authentication, CDP-setting, Chrome-extension, or native-host failure. Do not keep retrying either browser,
+  alter Chrome, or claim that a manually visible page was not tested.
+- If a full app restart reproduces the same error in both in-app Browser and Chrome, stop local repair attempts and
+  treat it as a desktop-app/plugin-build defect. Manual edits to generated `config.toml` trust paths are overwritten
+  at startup and recycling the Node REPL or background app-server can close the task or crash the desktop app.
+  Update Codex when a newer build is available; otherwise report the exact error and app/plugin versions to OpenAI
+  Support. Manual browser inspection and HTTP checks may be recorded separately, but must not be presented as
+  automated control.
+
+### Codex CLI
+
+- The CLI has no in-app Browser panel. For an interactive browser test, use the Chrome plugin with the
+  Codex/ChatGPT Chrome extension and follow the active `control-chrome` skill exactly.
+- Launch the CLI with `NODE_REPL_TRUSTED_CODE_PATHS` containing the exact active Browser/Chrome plugin `scripts`
+  path and the active bundled CUA Node `node_modules` path. Use the versions currently installed under
+  `~/.codex/plugins/cache/` and the Codex runtime; do not copy a stale version number from project documentation.
+- If the same trusted-RPC error occurs, the current CLI process did not receive the effective launch override.
+  Exit it and start a fresh CLI process with the corrected paths. Do not repair the Chrome extension, registry, or
+  native host unless the plugin's own native-host diagnostic explicitly reports a failure.
+
+For either surface, first confirm the local server responds at its expected `localhost` URL. Never inspect browser
+storage, cookies, saved passwords, or provider API keys, and do not substitute a shell-opened page or HTTP-only
+check for a requested interactive browser test.
+
 ## OneDrive gotcha
 
 The repository lives inside OneDrive. Files-On-Demand can make `.next` entries appear as reparse points and cause
