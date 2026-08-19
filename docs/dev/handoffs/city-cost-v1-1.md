@@ -11,6 +11,8 @@ that must remain visible during implementation.
   `feat/city-cost-methodology-v6` branch at tag `city-cost-v6.1-research-final-2026-08-18`.
 - v1.1 keeps all 19 planner tiers and the exact v1 formulas. One schema-constrained call returns the existing ten
   USD anchors; server code performs arithmetic and USD→AUD conversion from the checked-in FX snapshot.
+- The owner-authorized default activation is committed in `14452b5`; explicit `CITY_COST_METHODOLOGY_VERSION=v1`
+  remains the rollback. The smoke was deferred and has no pass result.
 - The owner explicitly authorized v1.1 activation on 18 August 2026 while deferring the keyed smoke because secure
   remote-desktop access is unavailable. The smoke remains an open operational follow-up and is not represented as passed.
 - The independent pre-activation and post-activation baselines passed. The archived v6 branch and annotated tag remain

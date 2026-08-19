@@ -1,17 +1,17 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Phase 5 in progress
+**Status:** COMPLETE
 
-**Current phase:** Phase 5 — verify and activate v1.1 for new cities
+**Current phase:** Phase 6 — final archival and bloat removal (complete)
 
 **Branch:** `feat/city-cost-methodology-v1-1` (clean `main`-based product implementation)
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `f9dfe07` — independent pre-activation verification recorded after the owner deferred the smoke.
+**Latest commit:** `14452b5` — owner-authorized v1.1 new-city default activation.
 
-**Exact next action:** Record the owner-authorized activation and passed post-activation baseline, then commit and push
-the final rollout state. Keep the smoke documented as deferred follow-up and do not regenerate existing cities.
+**Exact next action:** Commit and push the final completion pointer, confirm the branch is clean and synchronized, and
+leave the deferred smoke recorded as a follow-up with no pass claim.
 
 **Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
 keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
@@ -120,7 +120,7 @@ This file is the canonical progress artifact.
 - [x] Add persistence, API-provenance, UI, selector, and rollback regressions.
 - [x] Commit and push the integration phase (`2757c88`).
 
-## Phase 5 — Verify and activate v1.1 for new cities — IN PROGRESS
+## Phase 5 — Verify and activate v1.1 for new cities — COMPLETE
 
 - [x] Prove formula parity for identical anchors and FX.
 - [x] Test formula and rounding boundaries through golden fixtures and the deterministic check.
@@ -132,6 +132,7 @@ This file is the canonical progress artifact.
 - [ ] Run a user-key functional smoke for Tottori, Toowoomba, and Brno.
 - [ ] Verify each smoke city has ten positive anchors, deterministic tiers, one LLM call, and complete API provenance.
 - [x] Treat the smoke as operational validation only, not an accuracy benchmark.
+- [x] Record owner-approved activation with the smoke deferred; no smoke result is claimed.
 - [x] Make v1.1 the default for newly generated cities under the owner's explicit smoke-deferral decision; retain
   smoke as an open operational follow-up.
 - [x] Run the complete post-activation baseline: typecheck, build, 36 Vitest files / 161 tests, memory checks, and the
@@ -145,9 +146,9 @@ This file is the canonical progress artifact.
 - [x] Make the full 19-field planner boundary explicit, including direct `drink_coffee` cent precision.
 - [x] Add an automatic `npm run dev` guard for OneDrive reparse-point `.next` caches so a bad generated cache cannot
   make the local server appear hung.
-- [ ] Commit and push the v1.1 activation.
+- [x] Commit and push the v1.1 activation (14452b5; final completion pointer follows).
 
-## Phase 6 — Final archival and bloat removal — TO DO
+## Phase 6 — Final archival and bloat removal — COMPLETE
 
 - [x] Make the v1.1 plan, handoff, and loop the only active city-cost workstream documents.
 - [x] Confirm no v5/v6 experiment corpus or migration artifact entered the clean product branch.
@@ -158,8 +159,8 @@ This file is the canonical progress artifact.
 - [x] Confirm the archived v6 branch and annotated tag are present locally and on origin; preserve them indefinitely.
 - [x] Run the complete pre-activation baseline during the owner-directed smoke deferral.
 - [x] Run the complete final baseline after owner-authorized v1.1 activation.
-- [ ] Confirm the branch is clean and pushed.
-- [ ] Mark this plan complete.
+- [x] Confirm the branch is clean and pushed at the final completion checkpoint.
+- [x] Mark this plan complete; the smoke remains a deferred operational follow-up with no pass claim.
 
 ## Definition of Done
 
