@@ -8,7 +8,7 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `46ecbf6` — v1.1 checkpoint pointer updated; pushed after verification.
+**Latest commit:** `9e0d53b` — stale browser-smoke diagnosis corrected after verification.
 
 **Exact next action:** Restore the Codex in-app Browser connection, which currently fails its trusted RPC bootstrap
 before tab discovery, then use the already-running `CITY_COST_METHODOLOGY_VERSION=v1.1` app on port 3001 for the
