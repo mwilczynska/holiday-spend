@@ -30,11 +30,13 @@ Run the owner-key functional smoke for **Tottori**, **Toowoomba**, and **Brno** 
 `CITY_COST_METHODOLOGY_VERSION=v1.1`. The owner enters the provider key in the browser; it must never be read,
 copied, logged, committed, or stored by the agent.
 
-The Chrome extension is installed and enabled, but the bridge preflight currently reports that the Windows native-host
-registry entry is missing. Repair/reinstall the Browser plugin through ChatGPT/Codex **Settings → Computer use** before
-attempting the smoke; do not hand-edit the registry. After repair, start the app temporarily with
-`CITY_COST_METHODOLOGY_VERSION=v1.1` and use the connected user tab. If the local page hangs, stop the exact dev-server
-process and rerun `npm run dev`, allowing the predev `.next` guard to run.
+The prior native-host-missing diagnosis is stale. Chrome subsequently connected successfully with plugin build
+`26.814.41407`, so do not repair the extension, edit the registry, restart Chrome, or reinstall the plugin for that
+superseded issue. The current Codex in-app Browser retry instead fails its trusted RPC bootstrap before tab discovery;
+this is a separate desktop integration failure and no app action has run through it. The local app is already running
+temporarily with `CITY_COST_METHODOLOGY_VERSION=v1.1` on port 3001, and `/dataset` responds successfully. Restore the
+in-app Browser connection, then use that app for the owner-key smoke. If the local page later hangs, stop the exact
+dev-server process and rerun `npm run dev`, allowing the predev `.next` guard to run.
 
 For each city, verify through the UI and `/api/estimates` that:
 

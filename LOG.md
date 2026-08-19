@@ -673,3 +673,12 @@ without completing a request. The exact dev-server process was stopped and the g
 `scripts/prepare-next-dev.mjs` is now run by npm's `predev` lifecycle; it detects and removes only a reparse-point
 `.next` cache before Next starts. The canonical instructions document the targeted recovery and a `.git`-excluding
 OneDrive pinning command. No source, database, live CSV, browser storage, or provider key was changed.
+
+## Browser-control diagnosis correction — 18 August 2026
+
+The earlier native-host-missing observations above are retained as historical troubleshooting notes but are not the
+current diagnosis. Chrome later connected successfully with plugin build `26.814.41407`, proving that extension or
+registry repair is not the next action. A subsequent Codex in-app Browser retry failed earlier in its own trusted RPC
+bootstrap, before browser or tab discovery; this is separate from the application and from the superseded Chrome
+native-host diagnosis. The isolated v1.1 dev server on port 3001 still returned HTTP 200 for `/dataset`. No provider
+key was accessed, no city generation was attempted, and the three-city smoke and v1.1 default activation remain open.

@@ -8,12 +8,13 @@
 
 **Last updated:** 18 August 2026
 
-**Latest commit:** `94453d9` — owner-smoke bridge blocker recorded in the plan and handoff; pushed after verification.
+**Latest commit:** `46ecbf6` — v1.1 checkpoint pointer updated; pushed after verification.
 
-**Exact next action:** Repair the Chrome native-host bridge through ChatGPT/Codex **Settings → Computer use** (the
-extension is installed and enabled, but its Windows registry host entry is missing), then start the local app with
-`CITY_COST_METHODOLOGY_VERSION=v1.1` and run the owner-key functional smoke for Tottori, Toowoomba, and Brno in the
-connected `/dataset` tab; keep the new-city default at v1 until all three records pass the v1.1 provenance checks.
+**Exact next action:** Restore the Codex in-app Browser connection, which currently fails its trusted RPC bootstrap
+before tab discovery, then use the already-running `CITY_COST_METHODOLOGY_VERSION=v1.1` app on port 3001 for the
+owner-key functional smoke for Tottori, Toowoomba, and Brno. The prior native-host-missing diagnosis is stale: Chrome
+connected successfully with plugin build `26.814.41407`. Keep the new-city default at v1 until all three records pass
+the v1.1 provenance checks.
 
 ## Decision summary
 
