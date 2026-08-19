@@ -682,3 +682,22 @@ registry repair is not the next action. A subsequent Codex in-app Browser retry 
 bootstrap, before browser or tab discovery; this is separate from the application and from the superseded Chrome
 native-host diagnosis. The isolated v1.1 dev server on port 3001 still returned HTTP 200 for `/dataset`. No provider
 key was accessed, no city generation was attempted, and the three-city smoke and v1.1 default activation remain open.
+
+## Independent pre-activation verification during smoke deferral — 18 August 2026
+
+The owner temporarily deferred the Tottori, Toowoomba, and Brno keyed smoke because secure remote-desktop access is
+unavailable. This is a scheduling deferral, not a waiver: v1 remains the new-city default, no activation change was
+made, and the smoke plus final post-activation baseline remain required.
+
+Every independent release check was rerun from the canonical OneDrive repository path. `npx tsc --noEmit`, the
+production build, 36 Vitest files / 160 tests, the documentation-memory check, and
+`npm run methodology:v1.1:check` passed. The build emitted the existing handled `/api/export` dynamic-route
+diagnostic and exited successfully. The deterministic check again reported 19 planner fields and live CSV SHA-256
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`; the CSV still has 121 rows and Git blob
+`63b13a8774c66999c5f99aade671ca357f65b949`.
+
+The archived branch remains at `93d73d3845f3ccea17acafd069c14db2479f40a4` locally and on origin. The annotated tag
+object `cfe5694dd02147ce4cceadce690ed429a318d1fd` remains local and remote and peels to
+`335e61be7341bc791e1e7e5aa4be1645412e92d0`. The archived branch tip is not an ancestor of the product branch. The
+only suspect v6 path in the product tree is the explicitly archived plan; executable references are limited to the
+historical provenance parser and the retirement guard/tests. No provider key, city record, or live dataset changed.

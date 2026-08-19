@@ -11,6 +11,10 @@ that must remain visible during implementation.
   `feat/city-cost-methodology-v6` branch at tag `city-cost-v6.1-research-final-2026-08-18`.
 - v1.1 keeps all 19 planner tiers and the exact v1 formulas. One schema-constrained call returns the existing ten
   USD anchors; server code performs arithmetic and USD→AUD conversion from the checked-in FX snapshot.
+- The owner temporarily deferred the keyed smoke on 18 August 2026 because secure remote-desktop access is unavailable.
+  This does not waive the smoke or authorize activation; the default remains v1.
+- The independent pre-activation baseline was rerun after that decision and passed. The archived v6 branch and annotated
+  tag remain present locally and on origin, and the clean product tree contains no retired experiment corpus.
 - v1.1 persistence/API/UI provenance is implemented. v1.1 rows use `llm_city_generation_v1_1`; grades and statistical
   intervals are intentionally absent because these are holistic model estimates, not source observations.
 - The deterministic verification checkpoint is complete: typecheck, build, 36 Vitest files / 160 tests, memory checks,
@@ -26,17 +30,19 @@ that must remain visible during implementation.
 
 ## Exact next action
 
-Run the owner-key functional smoke for **Tottori**, **Toowoomba**, and **Brno** with the app configured temporarily as
-`CITY_COST_METHODOLOGY_VERSION=v1.1`. The owner enters the provider key in the browser; it must never be read,
-copied, logged, committed, or stored by the agent.
+When secure desktop access is available, run the owner-key functional smoke for **Tottori**, **Toowoomba**, and
+**Brno** with the app configured temporarily as `CITY_COST_METHODOLOGY_VERSION=v1.1`. The owner enters the provider
+key in the browser; it must never be read, copied, logged, committed, or stored by the agent. Until then, leave the
+smoke, activation, and final post-activation baseline pending.
 
 The prior native-host-missing diagnosis is stale. Chrome subsequently connected successfully with plugin build
 `26.814.41407`, so do not repair the extension, edit the registry, restart Chrome, or reinstall the plugin for that
 superseded issue. The current Codex in-app Browser retry instead fails its trusted RPC bootstrap before tab discovery;
-this is a separate desktop integration failure and no app action has run through it. The local app is already running
-temporarily with `CITY_COST_METHODOLOGY_VERSION=v1.1` on port 3001, and `/dataset` responds successfully. Restore the
-in-app Browser connection, then use that app for the owner-key smoke. If the local page later hangs, stop the exact
-dev-server process and rerun `npm run dev`, allowing the predev `.next` guard to run.
+this is a separate desktop integration failure and no app action has run through it. The isolated port-3001 app
+previously returned HTTP 200 for `/dataset` and was intentionally stopped before the independent production build.
+When the smoke resumes, restore the in-app Browser connection and restart the app with
+`CITY_COST_METHODOLOGY_VERSION=v1.1`. If the local page hangs, stop the exact dev-server process, then restart it
+with `npm run dev` so the predev `.next` guard runs.
 
 For each city, verify through the UI and `/api/estimates` that:
 

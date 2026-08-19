@@ -10,11 +10,12 @@
 
 **Latest commit:** `9e0d53b` — stale browser-smoke diagnosis corrected after verification.
 
-**Exact next action:** Restore the Codex in-app Browser connection, which currently fails its trusted RPC bootstrap
-before tab discovery, then use the already-running `CITY_COST_METHODOLOGY_VERSION=v1.1` app on port 3001 for the
-owner-key functional smoke for Tottori, Toowoomba, and Brno. The prior native-host-missing diagnosis is stale: Chrome
-connected successfully with plugin build `26.814.41407`. Keep the new-city default at v1 until all three records pass
-the v1.1 provenance checks.
+**Exact next action:** Commit and push the completed independent verification checkpoint while keeping v1 as the
+new-city default. Then wait for secure desktop access, restart the isolated v1.1 app, and resume the Tottori,
+Toowoomba, and Brno smoke before making any activation change.
+
+**Temporary owner decision (18 August 2026):** Skip the keyed smoke for now and continue independent checklist work.
+This defers the smoke; it does not waive it or authorize v1.1 activation without its evidence.
 
 ## Decision summary
 
@@ -135,6 +136,8 @@ This file is the canonical progress artifact.
 - [x] Keep `CITY_COST_METHODOLOGY_VERSION=v1` as the immediate rollback.
 - [x] Regenerate no existing city automatically.
 - [x] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
+- [x] During the owner-directed smoke deferral, rerun the full baseline and verify the live CSV, archived refs, and
+  clean product tree without activating v1.1.
 - [x] Publish the current v1.1 handoff and loop with the owner-smoke procedure.
 - [x] Make the full 19-field planner boundary explicit, including direct `drink_coffee` cent precision.
 - [x] Add an automatic `npm run dev` guard for OneDrive reparse-point `.next` caches so a bad generated cache cannot
@@ -149,20 +152,21 @@ This file is the canonical progress artifact.
 - [x] Preserve generic model discovery, reasoning controls, country identity, and persistence improvements.
 - [x] Remove active references to v6 activation, Phase 11, staged migration, and pending holdouts; remaining mentions are explicit historical pointers or rollback guardrails.
 - [x] Reduce the active verification baseline to shipping product checks and deterministic v1.1 checks.
-- [ ] Preserve the archived v6 branch and tag indefinitely.
+- [x] Confirm the archived v6 branch and annotated tag are present locally and on origin; preserve them indefinitely.
+- [x] Run the complete pre-activation baseline during the owner-directed smoke deferral.
 - [ ] Run the complete final baseline.
 - [ ] Confirm the branch is clean and pushed.
 - [ ] Mark this plan complete.
 
 ## Definition of Done
 
-- [ ] The existing 121-city v1 CSV is unchanged.
-- [ ] v6.1 cannot be activated in the product.
-- [ ] v6.1 history remains available through its branch and immutable tag.
+- [x] The existing 121-city v1 CSV is unchanged.
+- [x] v6.1 cannot be activated in the product.
+- [x] v6.1 history remains available through its branch and immutable tag.
 - [ ] New cities default to one-call v1.1 generation.
-- [ ] v1.1 uses the exact v1 formulas with deterministic server-side arithmetic and FX.
-- [ ] Explicit v1 rollback remains operational.
-- [ ] All current planner fields remain supported.
+- [x] v1.1 uses the exact v1 formulas with deterministic server-side arithmetic and FX.
+- [x] Explicit v1 rollback remains operational.
+- [x] All current planner fields remain supported.
 - [ ] Provider, model, reasoning, anchors, formula, and FX provenance survive persistence and API/UI display.
-- [ ] No holdout, new methodology collection, lived-spending benchmark, coefficient change, or existing-city migration occurred.
-- [ ] The active product branch contains none of the v5/v6 experiment bloat.
+- [x] No holdout, new methodology collection, lived-spending benchmark, coefficient change, or existing-city migration occurred.
+- [x] The active product branch contains none of the v5/v6 experiment bloat.
