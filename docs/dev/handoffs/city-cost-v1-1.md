@@ -1,12 +1,12 @@
 # City Cost v1.1 — current handoff
 
-**As at 18 August 2026.** This is the current cold-start note for the v1.1 simplification workstream. The
+**As at 21 August 2026.** This is the current cold-start note for the v1.1 simplification workstream. The
 authoritative checklist is [`PLAN.md`](../../../PLAN.md); this note names the exact next action and the constraints
 that must remain visible during implementation.
 
 ## Current state
 
-- Branch: `feat/city-cost-methodology-v1-1`.
+- Branch: `main` (v1.1 history merged and synchronized with origin).
 - v6/v6.1 research is rejected for product cutover and preserved on the archived
   `feat/city-cost-methodology-v6` branch at tag `city-cost-v6.1-research-final-2026-08-18`.
 - v1.1 keeps all 19 planner tiers and the exact v1 formulas. One schema-constrained call returns the existing ten
@@ -19,8 +19,10 @@ that must remain visible during implementation.
   present locally and on origin, and the clean product tree contains no retired experiment corpus.
 - v1.1 persistence/API/UI provenance is implemented. v1.1 rows use `llm_city_generation_v1_1`; grades and statistical
   intervals are intentionally absent because these are holistic model estimates, not source observations.
-- The deterministic verification checkpoint is complete: typecheck, build, 36 Vitest files / 160 tests, memory checks,
-  and `npm run methodology:v1.1:check` pass; the post-activation run reports 36 files / 161 tests.
+- The historical deterministic verification checkpoint is complete: typecheck, build, 36 Vitest files / 160 tests,
+  memory checks, and `npm run methodology:v1.1:check` pass; the post-activation run reported 36 files / 161 tests.
+- The current post-hardening baseline passes: typecheck, production build, 37 Vitest files / 171 tests, the memory
+  mirror check, and `npm run methodology:v1.1:check`.
 - The complete 19-field boundary is explicit: 18 daily/accommodation derivations plus direct `drink_coffee` at cent
   precision; the materializer, API query, tests, and deterministic check cover it.
 - v1.1 source maps now include the five direct drink inputs as well as the 18 derived planner fields; v1's historical
@@ -29,22 +31,34 @@ that must remain visible during implementation.
   default to v1.1; explicit `CITY_COST_METHODOLOGY_VERSION=v1` remains the rollback.
 - `npm run dev` now runs `scripts/prepare-next-dev.mjs`, which removes a OneDrive reparse-point `.next` cache before
   Next starts; it leaves an ordinary cache alone. This prevents the known high-CPU/hung-first-compilation failure.
+- The first authenticated Phase 7 browser pass exposed a performance blocker: `/dataset` remained on its loading state
+  during a 10-second navigation attempt, and the port-owning local Next process reached approximately 1.65 GB while
+  core routes were exercised. `/settings` eventually rendered and `/estimates` rendered, so this is a bounded runtime/
+  payload problem rather than a universal route failure. Do not run keyed generation until Phase 7A is complete.
+- The Phase 7A checkpoint added planner/dataset API views, bounded planner and dataset/history rendering, deterministic
+  standalone startup checks, explicit production performance budgets, and regression coverage. The final production
+  verification passed after loading `.env.local`, tracing the Windows `argon2` prebuild, and lazy-loading argon2.
+- On the final run, PID `43316` owned port 3000, cold `/` was 2.714s, all seven core routes returned HTTP 200, the
+  route-shell check passed, and steady RSS was 87.6 MiB. The exact server PID was stopped immediately after testing.
 
 ## Exact next action
 
-The owner-authorized activation and post-activation baseline are complete without the keyed smoke. The smoke for
-**Tottori**, **Toowoomba**, and **Brno** remains a deferred operational follow-up. If it is later run, configure the
-app temporarily as `CITY_COST_METHODOLOGY_VERSION=v1.1`; the owner enters the provider key in the browser, and it must
-never be read, copied, logged, committed, or stored by the agent.
+Restore an authenticated local session and complete the read-only Chrome route/console pass plus the initial render-bound
+checks before resuming the deferred Tottori, Toowoomba, and Brno owner-key smoke. The current Chrome session reached
+`/login` without an authenticated session, and the temporary Playwright development auth setup did not establish a
+session, so no authenticated UI pass is claimed. Do not inspect browser storage or provider keys.
 
-The prior native-host-missing diagnosis is stale. Chrome subsequently connected successfully with plugin build
-`26.814.41407`, so do not repair the extension, edit the registry, restart Chrome, or reinstall the plugin for that
-superseded issue. The current Codex in-app Browser retry instead fails its trusted RPC bootstrap before tab discovery;
-this is a separate desktop integration failure and no app action has run through it. The isolated port-3001 app
-previously returned HTTP 200 for `/dataset` and was intentionally stopped before the independent production build.
-If the smoke is later resumed, restore the in-app Browser connection and restart the app with
-`CITY_COST_METHODOLOGY_VERSION=v1.1`. If the local page hangs, stop the exact dev-server process, then restart it
-with `npm run dev` so the predev `.next` guard runs.
+The earlier browser/dev incident remains important evidence: the port-owning dev process reached approximately 1.65 GB
+while `/dataset` was loading. A clean production process baseline was approximately 74 MB. The owner-reported app-off
+control had port 3000 closed, no app-owned Node server, CPU around 6–8%, disk near idle, and roughly 16.7 GB RAM free.
+The exceptionally long resumed Codex/Windows Terminal session separately showed intermittent rendering bursts while the
+app was off; restarting Chrome helped substantially but did not remove all lag. Keep that interactive-session observation
+separate from application performance attribution.
+
+For development use `npm run dev`, which runs the OneDrive `.next` recovery guard. For a stable smoke use `npm run build`
+followed by `npm start`; do not run keyed generation while the local runtime is unstable. Once Phase 7A passes, restore
+`CITY_COST_METHODOLOGY_VERSION=v1.1`; the owner enters the provider key in the browser, and it must never be read,
+copied, logged, committed, or stored by the agent.
 
 For each city, verify through the UI and `/api/estimates` that:
 
@@ -76,4 +90,5 @@ npm run build
 npm test -- --run
 npm run docs:check-memory
 npm run methodology:v1.1:check
+npm run performance:check
 ```

@@ -1,0 +1,165 @@
+import { fileURLToPath } from 'node:url';
+import { createServer } from 'node:http';
+import { spawn, spawnSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { afterEach, describe, expect, it } from 'vitest';
+import {
+  DATASET_PAGE_SIZE,
+  getPageCount,
+  getPageItems,
+  getVisibleItems,
+  HISTORY_PAGE_SIZE,
+  INITIAL_VISIBLE_LEGS,
+  VISIBLE_LEGS_INCREMENT,
+} from '@/lib/performance-bounds';
+
+const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
+const startScript = path.join(projectRoot, 'scripts', 'start-next-production.mjs');
+const performanceScript = path.join(projectRoot, 'scripts', 'check-webapp-performance.mjs');
+const temporaryDirectories: string[] = [];
+
+function makeTempDir() {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'holiday-spend-performance-'));
+  temporaryDirectories.push(directory);
+  return directory;
+}
+
+function runNodeScript(script: string, cwd: string, env: Partial<NodeJS.ProcessEnv> = {}) {
+  return spawnSync(process.execPath, [script], {
+    cwd,
+    env: { ...process.env, ...env },
+    encoding: 'utf8',
+    windowsHide: true,
+  });
+}
+
+function runNodeScriptAsync(script: string, cwd: string, env: Partial<NodeJS.ProcessEnv> = {}) {
+  return new Promise<{ status: number | null; stdout: string; stderr: string }>((resolve, reject) => {
+    const child = spawn(process.execPath, [script], {
+      cwd,
+      env: { ...process.env, ...env },
+      windowsHide: true,
+    });
+    let stdout = '';
+    let stderr = '';
+    child.stdout.on('data', (chunk) => { stdout += String(chunk); });
+    child.stderr.on('data', (chunk) => { stderr += String(chunk); });
+    child.on('error', reject);
+    child.on('close', (status) => resolve({ status, stdout, stderr }));
+  });
+}
+
+afterEach(() => {
+  while (temporaryDirectories.length > 0) {
+    const directory = temporaryDirectories.pop();
+    if (directory) fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+describe('v1.1 performance bounds', () => {
+  it('keeps the initial planner and table render windows bounded', () => {
+    const legs = Array.from({ length: 67 }, (_, index) => index);
+    const cities = Array.from({ length: 195 }, (_, index) => index);
+    const history = Array.from({ length: 195 }, (_, index) => index);
+
+    expect(getVisibleItems(legs, INITIAL_VISIBLE_LEGS)).toHaveLength(12);
+    expect(getVisibleItems(legs, INITIAL_VISIBLE_LEGS + VISIBLE_LEGS_INCREMENT)).toHaveLength(24);
+    expect(getPageItems(cities, 0, DATASET_PAGE_SIZE)).toHaveLength(25);
+    expect(getPageItems(history, 0, HISTORY_PAGE_SIZE)).toHaveLength(20);
+    expect(getPageCount(67, INITIAL_VISIBLE_LEGS)).toBe(6);
+    expect(getPageCount(195, DATASET_PAGE_SIZE)).toBe(8);
+    expect(getPageCount(195, HISTORY_PAGE_SIZE)).toBe(10);
+  });
+
+  it('rejects invalid pagination inputs instead of silently widening a render', () => {
+    expect(() => getPageCount(-1, DATASET_PAGE_SIZE)).toThrow();
+    expect(() => getPageItems([], -1, HISTORY_PAGE_SIZE)).toThrow();
+    expect(() => getVisibleItems([], 1.5)).toThrow();
+  });
+
+  it('fails production startup with an actionable message when the build is absent', () => {
+    const directory = makeTempDir();
+    const result = runNodeScript(startScript, directory);
+    const output = `${result.stdout}\n${result.stderr}`;
+
+    expect(result.status).toBe(1);
+    expect(output).toContain('No complete production build was found');
+    expect(output).toContain('npm run build');
+  });
+
+  it('fails the performance check before probing routes when the build is absent', () => {
+    const directory = makeTempDir();
+    const result = runNodeScript(performanceScript, directory, {
+      WEBAPP_ROUTE_BUDGET_MS: '50',
+    });
+    const output = `${result.stdout}\n${result.stderr}`;
+
+    expect(result.status).toBe(1);
+    expect(output).toContain('No complete production build found');
+    expect(output).not.toContain('was not reachable');
+  });
+
+  it('enforces route readiness and shell response budgets', async () => {
+    const directory = makeTempDir();
+    fs.mkdirSync(path.join(directory, '.next', 'standalone'), { recursive: true });
+    fs.writeFileSync(path.join(directory, '.next', 'BUILD_ID'), 'test-build');
+    fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
+
+    const server = createServer((_request, response) => {
+      response.writeHead(200, { 'content-type': 'text/html' });
+      response.end('<html><body>ready</body></html>');
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') {
+      server.close();
+      throw new Error('Test server did not expose a TCP port.');
+    }
+
+    try {
+      const result = await runNodeScriptAsync(performanceScript, directory, {
+        WEBAPP_BASE_URL: `http://127.0.0.1:${address.port}`,
+        WEBAPP_ROUTE_BUDGET_MS: '1000',
+        WEBAPP_RESPONSE_BUDGET_BYTES: '1024',
+      });
+
+      expect(result.status).toBe(0);
+      expect(result.stdout).toContain('Route-shell check passed');
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
+  });
+
+  it('fails when a route exceeds the configured shell budget', async () => {
+    const directory = makeTempDir();
+    fs.mkdirSync(path.join(directory, '.next', 'standalone'), { recursive: true });
+    fs.writeFileSync(path.join(directory, '.next', 'BUILD_ID'), 'test-build');
+    fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
+
+    const server = createServer((_request, response) => {
+      response.writeHead(200, { 'content-type': 'text/html' });
+      response.end('x'.repeat(2048));
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') {
+      server.close();
+      throw new Error('Test server did not expose a TCP port.');
+    }
+
+    try {
+      const result = await runNodeScriptAsync(performanceScript, directory, {
+        WEBAPP_BASE_URL: `http://127.0.0.1:${address.port}`,
+        WEBAPP_ROUTE_BUDGET_MS: '1000',
+        WEBAPP_RESPONSE_BUDGET_BYTES: '1024',
+      });
+
+      expect(result.status).toBe(1);
+      expect(result.stdout + result.stderr).toContain('above the 1024-byte shell budget');
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
+  });
+});

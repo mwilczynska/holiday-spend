@@ -1,18 +1,23 @@
-import argon2 from 'argon2';
+let argon2ModulePromise: Promise<typeof import('argon2')> | null = null;
 
-const ARGON2_OPTIONS: argon2.Options = {
-  type: argon2.argon2id,
-  timeCost: 3,
-  memoryCost: 65536,
-  parallelism: 1,
-};
+function loadArgon2() {
+  argon2ModulePromise ??= import('argon2');
+  return argon2ModulePromise;
+}
 
 export async function hashPassword(plaintext: string): Promise<string> {
-  return argon2.hash(plaintext, ARGON2_OPTIONS);
+  const argon2 = await loadArgon2();
+  return argon2.hash(plaintext, {
+    type: argon2.argon2id,
+    timeCost: 3,
+    memoryCost: 65536,
+    parallelism: 1,
+  });
 }
 
 export async function verifyPassword(hash: string, plaintext: string): Promise<boolean> {
   try {
+    const argon2 = await loadArgon2();
     return await argon2.verify(hash, plaintext);
   } catch {
     return false;

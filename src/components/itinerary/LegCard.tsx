@@ -319,7 +319,7 @@ export function LegCard({
   };
 
   return (
-    <Card className="relative">
+    <Card data-testid="planner-leg-card" className="relative">
       <CardContent className="p-4">
         <div className="flex items-start gap-2">
           <div className="flex flex-col gap-0.5">

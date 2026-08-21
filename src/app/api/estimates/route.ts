@@ -17,8 +17,9 @@ function readInferredAudPerUsd(metadataJson: string | null) {
   }
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const datasetView = new URL(request.url).searchParams.get('view') === 'dataset';
     const cityRows = await db
       .select({
         cityId: cities.id,
@@ -174,7 +175,15 @@ export async function GET() {
 
     return success({
       summary,
-      rows,
+      // The dataset screen already receives the canonical city rows from
+      // /api/countries. Avoid sending those same 195 rows a second time just
+      // to attach current-estimate provenance.
+      rows: datasetView
+        ? rows.map((row) => ({
+            cityId: row.cityId,
+            currentEstimateProvenance: row.currentEstimateProvenance,
+          }))
+        : rows,
       history,
     });
   } catch (err) {

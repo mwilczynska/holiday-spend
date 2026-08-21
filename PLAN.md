@@ -1,18 +1,18 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** METHODOLOGY COMPLETE — FUNCTIONAL WEBAPP VALIDATION OPEN
+**Status:** METHODOLOGY COMPLETE — PHASE 7A CHECKPOINT VERIFIED; AUTHENTICATED UI PASS OPEN
 
-**Current phase:** Phase 7 — functional webapp validation (to do)
+**Current phase:** Phase 7A — performance and runtime hardening (in progress)
 
 **Branch:** `main` (merged and synchronized with origin; protected v6 archive retained)
 
-**Last updated:** 18 August 2026
+**Last updated:** 21 August 2026
 
 **Latest commit:** `aa06ff9` — verified main merge baseline checkpoint; final cleanup pointer follows.
 
-**Exact next action:** Begin the authenticated Phase 7 functional pass with a persisted planner leg and one new v1.1
-city. Record the browser surface and evidence for each item; leave the three-city owner-key smoke open until it is
-actually executed.
+**Exact next action:** Restore an authenticated local session and rerun the read-only Chrome route/console pass plus the
+initial `/plan` and `/dataset` render-bound checks. Keep the owner-key city-generation smoke deferred until that pass
+is complete; do not inspect browser storage or provider keys.
 
 **Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
 keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
@@ -162,6 +162,52 @@ This file is the canonical progress artifact.
 - [x] Run the complete final baseline after owner-authorized v1.1 activation.
 - [x] Confirm the branch is clean and pushed at the final completion checkpoint.
 - [x] Mark this plan complete; the smoke remains a deferred operational follow-up with no pass claim.
+
+## Phase 7A — Performance and runtime hardening — IN PROGRESS
+
+The first authenticated browser pass found a product/runtime defect, not a methodology defect. `/settings` recovered
+after a delay and `/estimates` rendered, but `/dataset` remained on its loading state during a 10-second navigation
+window. The port-owning local Next process reached approximately 1.65 GB while navigating the core routes. Treat that
+incident as the reason for this hardening phase; do not run keyed generation while the local runtime is unstable.
+
+### 21 August 2026 checkpoint evidence
+
+- The final `npm run build` passed and produced a deterministic standalone artifact. The existing handled `/api/export`
+  dynamic-route diagnostic still appears during static-page generation.
+- `npm start` owned port 3000 through PID `43316`. The process was stopped immediately after testing. Initial RSS was
+  `59.6 MiB`; post-route steady RSS was `87.6 MiB`, below the documented `512 MiB` budget.
+- Cold route readiness was `/` `2.714s`, `/plan` `27.5ms`, `/plan/compare` `52.3ms`, `/track` `32.7ms`, `/dataset`
+  `56.7ms`, `/estimates` `54.2ms`, and `/settings` `44.5ms`. Warm readiness ranged from `55.8ms` to `325.1ms`;
+  every route returned HTTP 200.
+- `npm run performance:check` passed all seven route-shell checks: `27–106ms` and `26,826–26,852` bytes per shell.
+- The complete post-hardening baseline passed: TypeScript, production build, 37 Vitest files / 171 tests, the memory
+  mirror check, and `npm run methodology:v1.1:check`.
+- The first corrected standalone attempt exposed and then fixed two startup defects: `.env.local` was not loaded by the
+  direct standalone child, and Next standalone tracing omitted the Windows `argon2` native prebuild. Startup now loads
+  Next environment configuration, traces the native prebuild, and lazy-loads argon2 so the first route stays within the
+  5-second budget.
+- The prior clean production process baseline was approximately `74 MB`; the app-off control had port 3000 closed, no
+  app-owned Node server, total CPU around `6–8%`, disk near idle, and approximately `16.7 GB` RAM available.
+- The exceptionally long resumed Codex/Windows Terminal session showed separate intermittent rendering bursts while the
+  app was off; restarting Chrome helped substantially but did not eliminate all lag. This is recorded as an observed
+  interactive-session source, not attributed to Next.js or the browser application.
+
+- [x] Capture the reproducible cold/warm route-shell baseline for `/`, `/plan`, `/plan/compare`, `/track`, `/dataset`,
+  `/estimates`, and `/settings`, including shell bytes and server RSS.
+- [x] Make startup deterministic: distinguish the `npm run dev` recovery path from the standalone production path,
+  fail with a clear actionable message when `.next` is absent, load the project environment, and document the smoke
+  command as `npm run build` followed by `npm start`.
+- [x] Bound initial planner and dataset/history DOM work: `/plan` renders at most 12 leg cards initially, `/dataset`
+  renders at most 25 city rows and 20 history rows, while full in-memory data remains available for search, editing,
+  generation history, and planner totals. Planner and dataset API views omit fields they do not need.
+- [x] Add deterministic regression/performance coverage for lightweight API views, pagination/bounds, startup failure,
+  route readiness, shell response budgets, and the 5-second / 512 MiB local budgets.
+- [ ] Capture authenticated API request durations/bytes and complete the read-only route/console pass in Chrome on the
+  stable runtime. The current Chrome session reached `/login` without an authenticated session, and the temporary local
+  Playwright auth setup did not establish its development session; no UI bound test result is claimed.
+- [ ] Repeat the remaining verification from a fresh Codex CLI session. The exceptionally long resumed session showed
+  intermittent Windows Terminal rendering pressure even with port 3000 closed; do not mistake terminal/TUI lag for
+  Next.js or browser application load.
 
 ## Phase 7 — Functional webapp validation — TO DO
 

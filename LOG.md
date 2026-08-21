@@ -715,3 +715,44 @@ The complete post-activation baseline passed: TypeScript, production build, 36 V
 documentation-memory check, and `npm run methodology:v1.1:check`. The build emitted the existing handled
 `/api/export` dynamic-route diagnostic and exited successfully. The deterministic check reported the unchanged
 19-field boundary and live CSV SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+## Phase 7A performance-hardening checkpoint — 21 August 2026
+
+The first authenticated browser pass exposed a runtime/payload failure rather than a methodology failure: `/dataset`
+stayed on its loading state during a 10-second navigation window, and the port-owning dev process reached approximately
+1.65 GB while the core routes were exercised. This was the release-blocking observation that started Phase 7A; it was
+not treated as evidence against the v1.1 cost method.
+
+The checkpoint bounded the planner and dataset/history initial DOM work. `/plan` now renders at most 12 leg cards before
+an explicit reveal, while totals still use the complete plan. `/dataset` renders at most 25 city rows and 20 history rows
+per page while retaining client-side search, editing, history, and provenance behavior. Planner and dataset-facing API
+views omit fields not needed by their consumers. Regression coverage now exercises the country/city/estimate view shapes,
+the page bounds, startup failure messaging, route readiness, and shell response budgets.
+
+The first standalone production attempt opened port 3000 but returned HTTP 500 for every route. Its logs showed that a
+direct standalone child did not load `.env.local`, causing the NextAuth secret warning, and that standalone tracing had
+omitted the Windows `argon2` native prebuild. The startup wrapper now loads Next environment configuration; the build
+explicitly traces argon2 prebuilds; and password code lazy-loads argon2 so unauthenticated cold routes do not pay the
+native-module load cost. The focused auth/API/performance tests passed, and the final production build passed with the
+existing handled `/api/export` dynamic-route diagnostic.
+
+The final controlled production run used `npm start` with PID `43316` owning port 3000. Cold route readiness was `/`
+2.714s, `/plan` 27.5ms, `/plan/compare` 52.3ms, `/track` 32.7ms, `/dataset` 56.7ms, `/estimates` 54.2ms, and
+`/settings` 44.5ms. Warm readiness ranged from 55.8ms to 325.1ms; every route returned HTTP 200. The route-shell
+performance check passed with 27–106ms responses and 26,826–26,852 bytes per shell. RSS was 59.6 MiB initially and
+87.6 MiB after the route/performance pass, below the 512 MiB local budget. PID `43316` was stopped immediately after
+testing; no app server remains running.
+
+The complete post-hardening baseline then passed: TypeScript, the production build, 37 Vitest files / 171 tests, the
+documentation memory check, and `npm run methodology:v1.1:check`.
+
+The clean production baseline observed earlier was approximately 74 MB. The app-off system control closed port 3000 and
+left no app-owned Node server; total CPU stayed around 6–8%, disk was near idle, and roughly 16.7 GB RAM remained
+available. Separately, this exceptionally long resumed Codex/Windows Terminal session showed intermittent rendering
+bursts while the app was off; restarting Chrome helped substantially but did not remove all lag. That is recorded as an
+interactive-session observation, not attributed to Next.js or the browser application.
+
+The current Chrome session reached the local app's login screen without an authenticated session. A temporary Playwright
+development auth setup also failed to establish its local session, so the authenticated API timing and Chrome console/UI
+render-bound pass remain open. No browser storage, provider key, owner-key city generation, live CSV, holdout, or v6/v6.1
+path was accessed.

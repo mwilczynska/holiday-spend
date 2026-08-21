@@ -12,8 +12,19 @@ import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const includeCities = new URL(request.url).searchParams.get('includeCities') !== 'false';
+
+    if (!includeCities) {
+      return success(await db.select({
+        id: countries.id,
+        name: countries.name,
+        currencyCode: countries.currencyCode,
+        region: countries.region,
+      }).from(countries));
+    }
+
     const allCountries = await db.select().from(countries);
     const allCities = await db.select().from(cities);
 

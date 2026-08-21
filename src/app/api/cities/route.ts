@@ -40,10 +40,41 @@ const createSchema = z.object({
   notes: z.string().optional(),
 });
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const allCities = await db.select().from(cities);
-    return success(allCities);
+    const view = new URL(request.url).searchParams.get('view');
+
+    if (view === 'planner') {
+      const plannerCities = await db.select({
+        id: cities.id,
+        countryId: cities.countryId,
+        name: cities.name,
+        accomHostel: cities.accomHostel,
+        accomPrivateRoom: cities.accomPrivateRoom,
+        accom1star: cities.accom1star,
+        accom2star: cities.accom2star,
+        accom3star: cities.accom3star,
+        accom4star: cities.accom4star,
+        foodStreet: cities.foodStreet,
+        foodBudget: cities.foodBudget,
+        foodMid: cities.foodMid,
+        foodHigh: cities.foodHigh,
+        drinkCoffee: cities.drinkCoffee,
+        drinksNone: cities.drinksNone,
+        drinksLight: cities.drinksLight,
+        drinksModerate: cities.drinksModerate,
+        drinksHeavy: cities.drinksHeavy,
+        activitiesFree: cities.activitiesFree,
+        activitiesBudget: cities.activitiesBudget,
+        activitiesMid: cities.activitiesMid,
+        activitiesHigh: cities.activitiesHigh,
+        transportLocal: cities.transportLocal,
+      }).from(cities);
+
+      return success(plannerCities);
+    }
+
+    return success(await db.select().from(cities));
   } catch (err) {
     return handleError(err);
   }

@@ -17,6 +17,12 @@ import {
   type NewCityCreatedPayload,
 } from '@/components/itinerary/PlannerNewCityDialog';
 import { Plus } from 'lucide-react';
+import {
+  DATASET_PAGE_SIZE,
+  getPageCount,
+  getPageItems,
+  HISTORY_PAGE_SIZE,
+} from '@/lib/performance-bounds';
 
 interface City {
   id: string;
@@ -132,6 +138,8 @@ export default function DatasetPage() {
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [historyQuery, setHistoryQuery] = useState('');
+  const [datasetPage, setDatasetPage] = useState(0);
+  const [historyPage, setHistoryPage] = useState(0);
   const [isDirty, setIsDirty] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -154,7 +162,7 @@ export default function DatasetPage() {
     try {
       const [countriesResponse, estimatesResponse] = await Promise.all([
         fetch('/api/countries', { cache: 'no-store' }),
-        fetch('/api/estimates', { cache: 'no-store' }),
+        fetch('/api/estimates?view=dataset', { cache: 'no-store' }),
       ]);
 
       const countriesData = await countriesResponse.json();
@@ -234,6 +242,19 @@ export default function DatasetPage() {
         .includes(normalized)
     );
   }, [history, historyQuery]);
+
+  const datasetPageCount = getPageCount(filteredCities.length, DATASET_PAGE_SIZE);
+  const historyPageCount = getPageCount(filteredHistory.length, HISTORY_PAGE_SIZE);
+  const visibleCities = getPageItems(filteredCities, datasetPage, DATASET_PAGE_SIZE);
+  const visibleHistory = getPageItems(filteredHistory, historyPage, HISTORY_PAGE_SIZE);
+
+  useEffect(() => {
+    setDatasetPage((page) => Math.min(page, datasetPageCount - 1));
+  }, [datasetPageCount]);
+
+  useEffect(() => {
+    setHistoryPage((page) => Math.min(page, historyPageCount - 1));
+  }, [historyPageCount]);
 
   const selectedCityHistory = useMemo(() => {
     if (!selectedCity) return [];
@@ -675,7 +696,10 @@ export default function DatasetPage() {
               id="dataset-query"
               placeholder="Search city, country, region, source, or notes"
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => {
+                setQuery(event.target.value);
+                setDatasetPage(0);
+              }}
             />
           </div>
 
@@ -690,7 +714,7 @@ export default function DatasetPage() {
           {deleteError ? <p className="text-sm text-destructive">{deleteError}</p> : null}
 
           <div className="w-full overflow-x-auto rounded-md border">
-            <table className="min-w-[1800px] text-sm">
+            <table data-testid="dataset-city-table" className="min-w-[1800px] text-sm">
               <thead className="bg-muted/50">
                 <tr className="border-b">
                   <th className="sticky left-0 z-30 min-w-[180px] bg-muted px-3 py-2 text-left font-medium shadow-[1px_0_0_0_hsl(var(--border))]">
@@ -711,7 +735,7 @@ export default function DatasetPage() {
                 </tr>
               </thead>
               <tbody>
-                {filteredCities.map((city) => (
+                {visibleCities.map((city) => (
                   <tr key={city.id} className="border-b align-top last:border-0">
                     <td className="sticky left-0 z-20 min-w-[180px] bg-background px-3 py-2 font-medium shadow-[1px_0_0_0_hsl(var(--border))]">
                       {city.name}
@@ -763,6 +787,36 @@ export default function DatasetPage() {
               </tbody>
             </table>
           </div>
+          {filteredCities.length > 0 ? (
+            <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+              <span className="text-muted-foreground">
+                Showing {datasetPage * DATASET_PAGE_SIZE + 1}–{Math.min((datasetPage + 1) * DATASET_PAGE_SIZE, filteredCities.length)} of {filteredCities.length} cities
+              </span>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  disabled={datasetPage === 0}
+                  onClick={() => setDatasetPage((page) => Math.max(0, page - 1))}
+                >
+                  Previous
+                </Button>
+                <span className="self-center text-xs text-muted-foreground">
+                  Page {datasetPage + 1} of {datasetPageCount}
+                </span>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  disabled={datasetPage >= datasetPageCount - 1}
+                  onClick={() => setDatasetPage((page) => Math.min(datasetPageCount - 1, page + 1))}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+          ) : null}
         </CardContent>
       </Card>
 
@@ -782,12 +836,15 @@ export default function DatasetPage() {
               id="dataset-history-query"
               placeholder="Search city, country, source, provider, or reasoning"
               value={historyQuery}
-              onChange={(event) => setHistoryQuery(event.target.value)}
+              onChange={(event) => {
+                setHistoryQuery(event.target.value);
+                setHistoryPage(0);
+              }}
             />
           </div>
 
           <div className="w-full overflow-x-auto rounded-md border">
-            <table className="min-w-[900px] text-sm">
+            <table data-testid="dataset-history-table" className="min-w-[900px] text-sm">
               <thead className="bg-muted/50">
                 <tr className="border-b">
                   <th className="px-3 py-2 text-left font-medium">Date</th>
@@ -801,7 +858,7 @@ export default function DatasetPage() {
                 </tr>
               </thead>
               <tbody>
-                {filteredHistory.map((entry) => (
+                {visibleHistory.map((entry) => (
                   <tr key={entry.id} className="border-b align-top last:border-0">
                     <td className="px-3 py-2">{fmtDate(entry.estimatedAt)}</td>
                     <td className="px-3 py-2 font-medium">
@@ -828,6 +885,36 @@ export default function DatasetPage() {
               </tbody>
             </table>
           </div>
+          {filteredHistory.length > 0 ? (
+            <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+              <span className="text-muted-foreground">
+                Showing {historyPage * HISTORY_PAGE_SIZE + 1}–{Math.min((historyPage + 1) * HISTORY_PAGE_SIZE, filteredHistory.length)} of {filteredHistory.length} history records
+              </span>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  disabled={historyPage === 0}
+                  onClick={() => setHistoryPage((page) => Math.max(0, page - 1))}
+                >
+                  Previous
+                </Button>
+                <span className="self-center text-xs text-muted-foreground">
+                  Page {historyPage + 1} of {historyPageCount}
+                </span>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  disabled={historyPage >= historyPageCount - 1}
+                  onClick={() => setHistoryPage((page) => Math.min(historyPageCount - 1, page + 1))}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+          ) : null}
         </CardContent>
       </Card>
     </div>

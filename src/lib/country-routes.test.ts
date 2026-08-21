@@ -3,15 +3,17 @@ import os from 'os';
 import path from 'path';
 import { eq } from 'drizzle-orm';
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
-import { cities, countries } from '@/db/schema';
+import { cities, cityEstimates, countries } from '@/db/schema';
 
 type DbModule = typeof import('@/db');
 type CountriesRouteModule = typeof import('@/app/api/countries/route');
 type CitiesRouteModule = typeof import('@/app/api/cities/route');
+type EstimatesRouteModule = typeof import('@/app/api/estimates/route');
 
 let dbModule: DbModule;
 let countriesRouteModule: CountriesRouteModule;
 let citiesRouteModule: CitiesRouteModule;
+let estimatesRouteModule: EstimatesRouteModule;
 let tempDir: string;
 const originalCwd = process.cwd();
 
@@ -83,9 +85,31 @@ describe.sequential('country metadata routes', () => {
         notes TEXT
       );
     `);
+    dbModule.sqlite.exec(`
+      CREATE TABLE IF NOT EXISTS city_estimates (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        city_id TEXT NOT NULL REFERENCES cities(id),
+        estimated_at TEXT NOT NULL,
+        source TEXT NOT NULL,
+        llm_provider TEXT,
+        llm_model TEXT,
+        prompt_version TEXT,
+        data_json TEXT NOT NULL,
+        anchors_json TEXT,
+        metadata_json TEXT,
+        reasoning TEXT,
+        confidence TEXT,
+        numbeo_items TEXT,
+        sources_json TEXT,
+        input_snapshot_json TEXT,
+        fallback_log_json TEXT,
+        is_active INTEGER DEFAULT 1
+      );
+    `);
     countriesRouteModule = await import('@/app/api/countries/route');
     citiesRouteModule = await import('@/app/api/cities/route');
-  });
+    estimatesRouteModule = await import('@/app/api/estimates/route');
+  }, 60000);
 
   afterAll(() => {
     dbModule?.sqlite.close();
@@ -94,8 +118,138 @@ describe.sequential('country metadata routes', () => {
   });
 
   beforeEach(async () => {
+    await dbModule.db.delete(cityEstimates);
     await dbModule.db.delete(cities);
     await dbModule.db.delete(countries);
+  });
+
+  it('GET /api/countries keeps nested city rows by default', async () => {
+    await dbModule.db.insert(countries).values({
+      id: 'japan',
+      name: 'Japan',
+      currencyCode: 'JPY',
+      region: 'east_asia',
+    });
+    await dbModule.db.insert(cities).values({
+      id: 'tokyo',
+      name: 'Tokyo',
+      countryId: 'japan',
+    });
+
+    const response = await countriesRouteModule.GET(new Request('http://localhost/api/countries'));
+    const json = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(json.data[0].cities).toEqual([
+      expect.objectContaining({ id: 'tokyo', name: 'Tokyo', countryId: 'japan' }),
+    ]);
+  });
+
+  it('GET /api/countries can omit nested city rows for planner startup', async () => {
+    await dbModule.db.insert(countries).values({
+      id: 'japan',
+      name: 'Japan',
+      currencyCode: 'JPY',
+      region: 'east_asia',
+    });
+    await dbModule.db.insert(cities).values({
+      id: 'tokyo',
+      name: 'Tokyo',
+      countryId: 'japan',
+      notes: 'Large row that the planner does not need.',
+    });
+
+    const response = await countriesRouteModule.GET(
+      new Request('http://localhost/api/countries?includeCities=false')
+    );
+    const json = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(json.data).toEqual([{
+      id: 'japan',
+      name: 'Japan',
+      currencyCode: 'JPY',
+      region: 'east_asia',
+    }]);
+  });
+
+  it('GET /api/cities planner view keeps cost inputs and omits editor metadata', async () => {
+    await dbModule.db.insert(countries).values({
+      id: 'japan',
+      name: 'Japan',
+      currencyCode: 'JPY',
+      region: 'east_asia',
+    });
+    await dbModule.db.insert(cities).values({
+      id: 'tokyo',
+      name: 'Tokyo',
+      countryId: 'japan',
+      accom2star: 100,
+      foodMid: 50,
+      drinksModerate: 25,
+      activitiesMid: 40,
+      estimationSource: 'test-source',
+      notes: 'Editor-only metadata.',
+    });
+
+    const response = await citiesRouteModule.GET(
+      new Request('http://localhost/api/cities?view=planner')
+    );
+    const json = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(json.data).toHaveLength(1);
+    expect(json.data[0]).toMatchObject({
+      id: 'tokyo',
+      countryId: 'japan',
+      name: 'Tokyo',
+      accom2star: 100,
+      foodMid: 50,
+      drinksModerate: 25,
+      activitiesMid: 40,
+    });
+    expect(json.data[0]).not.toHaveProperty('notes');
+    expect(json.data[0]).not.toHaveProperty('estimationSource');
+  });
+
+  it('GET /api/estimates dataset view returns lightweight current rows', async () => {
+    await dbModule.db.insert(countries).values({
+      id: 'japan',
+      name: 'Japan',
+      currencyCode: 'JPY',
+      region: 'east_asia',
+    });
+    await dbModule.db.insert(cities).values({
+      id: 'tokyo',
+      name: 'Tokyo',
+      countryId: 'japan',
+      accom2star: 100,
+      estimationSource: 'seed',
+      estimatedAt: '2026-08-21T00:00:00.000Z',
+    });
+    const estimate = await dbModule.db.insert(cityEstimates).values({
+      cityId: 'tokyo',
+      estimatedAt: '2026-08-21T00:00:00.000Z',
+      source: 'seed',
+      dataJson: '{}',
+      reasoning: 'Test history row.',
+      isActive: 1,
+    }).returning({ id: cityEstimates.id }).get();
+    await dbModule.db.update(cities).set({ estimationId: estimate.id }).where(eq(cities.id, 'tokyo'));
+
+    const response = await estimatesRouteModule.GET(
+      new Request('http://localhost/api/estimates?view=dataset')
+    );
+    const json = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(json.data.rows).toHaveLength(1);
+    expect(json.data.rows[0]).toHaveProperty('cityId', 'tokyo');
+    expect(json.data.rows[0]).toHaveProperty('currentEstimateProvenance');
+    expect(json.data.rows[0]).not.toHaveProperty('cityName');
+    expect(json.data.rows[0]).not.toHaveProperty('estimateHistory');
+    expect(json.data.history).toHaveLength(1);
+    expect(json.data.summary.historyCount).toBe(1);
   });
 
   it('POST /api/countries infers canonical metadata for a known country alias', async () => {

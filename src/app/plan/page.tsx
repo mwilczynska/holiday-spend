@@ -30,6 +30,11 @@ import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import { KNOWN_COUNTRIES, findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
+import {
+  getVisibleItems,
+  INITIAL_VISIBLE_LEGS,
+  VISIBLE_LEGS_INCREMENT,
+} from '@/lib/performance-bounds';
 
 const CITY_GENERATION_STORAGE_PREFIX = 'holiday-spend.city-generation';
 type ProviderOption = CityGenerationProvider;
@@ -233,6 +238,7 @@ export default function PlanPage() {
   const [importReferenceDate, setImportReferenceDate] = useState('');
   const [importExtraContext, setImportExtraContext] = useState('');
   const [pageLoading, setPageLoading] = useState(true);
+  const [visibleLegCount, setVisibleLegCount] = useState(INITIAL_VISIBLE_LEGS);
   const importInputRef = useRef<HTMLInputElement>(null);
   const plannerHeaderRef = useRef<HTMLDivElement>(null);
   const [plannerHeaderHeight, setPlannerHeaderHeight] = useState(0);
@@ -267,8 +273,8 @@ export default function PlanPage() {
     try {
       const [legsRes, citiesRes, countriesRes, fixedRes] = await Promise.all([
         fetch('/api/itinerary', { cache: 'no-store' }),
-        fetch('/api/cities', { cache: 'no-store' }),
-        fetch('/api/countries', { cache: 'no-store' }),
+        fetch('/api/cities?view=planner', { cache: 'no-store' }),
+        fetch('/api/countries?includeCities=false', { cache: 'no-store' }),
         fetch('/api/fixed-costs', { cache: 'no-store' }),
       ]);
       const legsData = await legsRes.json();
@@ -488,6 +494,8 @@ export default function PlanPage() {
     totalBudget: legs.reduce((sum, leg) => sum + leg.legTotal, 0) + fixedCostsTotal,
     fixedCostCount: fixedCosts.length,
   };
+  const visibleLegs = getVisibleItems(legs, visibleLegCount);
+  const hasMoreLegs = visibleLegCount < legs.length;
 
   const fetchCurrentSnapshot = useCallback(async () => {
     const response = await fetch('/api/itinerary/snapshot', { cache: 'no-store' });
@@ -1448,7 +1456,45 @@ export default function PlanPage() {
                   No legs yet. Add your first destination to start planning.
                 </p>
               )}
-              {legs.map((leg, i) => (
+              {legs.length > INITIAL_VISIBLE_LEGS ? (
+                <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border bg-muted/20 px-3 py-2 text-sm">
+                  <span className="text-muted-foreground">
+                    Showing {visibleLegs.length} of {legs.length} legs. Totals above include the full plan.
+                  </span>
+                  <div className="flex gap-2">
+                    {hasMoreLegs ? (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setVisibleLegCount((count) => Math.min(count + VISIBLE_LEGS_INCREMENT, legs.length))}
+                      >
+                        Show next {Math.min(VISIBLE_LEGS_INCREMENT, legs.length - visibleLegs.length)}
+                      </Button>
+                    ) : null}
+                    {hasMoreLegs ? (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setVisibleLegCount(legs.length)}
+                      >
+                        Show all
+                      </Button>
+                    ) : (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setVisibleLegCount(INITIAL_VISIBLE_LEGS)}
+                      >
+                        Collapse list
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              ) : null}
+              {visibleLegs.map((leg, i) => (
                 <LegCard
                   key={leg.id}
                   leg={leg}
