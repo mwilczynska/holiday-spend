@@ -8,7 +8,7 @@
 
 **Last updated:** 21 August 2026
 
-**Latest commit:** `aa06ff9` — verified main merge baseline checkpoint; final cleanup pointer follows.
+**Latest commit:** `ac007cc` — verified Phase 7A performance-hardening checkpoint; authenticated UI follow-up remains open.
 
 **Exact next action:** Restore an authenticated local session and rerun the read-only Chrome route/console pass plus the
 initial `/plan` and `/dataset` render-bound checks. Keep the owner-key city-generation smoke deferred until that pass
