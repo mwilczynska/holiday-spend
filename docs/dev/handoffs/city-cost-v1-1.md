@@ -1,12 +1,13 @@
 # City Cost v1.1 — current handoff
 
-**As at 21 August 2026.** This is the current cold-start note for the v1.1 simplification workstream. The
+**As at 25 August 2026.** This is the current cold-start note for the v1.1 simplification workstream. The
 authoritative checklist is [`PLAN.md`](../../../PLAN.md); this note names the exact next action and the constraints
 that must remain visible during implementation.
 
 ## Current state
 
-- Branch: `main` (v1.1 history merged and synchronized with origin).
+- The cleanup began from `main` at `40f3c65`, synchronized with `origin/main`; v1.1 history remains merged and
+  synchronized with origin.
 - v6/v6.1 research is rejected for product cutover and preserved on the archived
   `feat/city-cost-methodology-v6` branch at tag `city-cost-v6.1-research-final-2026-08-18`.
 - v1.1 keeps all 19 planner tiers and the exact v1 formulas. One schema-constrained call returns the existing ten
@@ -16,7 +17,8 @@ that must remain visible during implementation.
 - The owner explicitly authorized v1.1 activation on 18 August 2026 while deferring the keyed smoke because secure
   remote-desktop access is unavailable. The smoke remains an open operational follow-up and is not represented as passed.
 - The independent pre-activation and post-activation baselines passed. The archived v6 branch and annotated tag remain
-  present locally and on origin, and the clean product tree contains no retired experiment corpus.
+  present locally and on origin, and the tracked product branch contains no retired experiment corpus. The three
+  verified local v5 copies were moved to a named quarantine outside the repository; no v5 files remain untracked here.
 - v1.1 persistence/API/UI provenance is implemented. v1.1 rows use `llm_city_generation_v1_1`; grades and statistical
   intervals are intentionally absent because these are holistic model estimates, not source observations.
 - The historical deterministic verification checkpoint is complete: typecheck, build, 36 Vitest files / 160 tests,
@@ -40,11 +42,19 @@ that must remain visible during implementation.
   verification passed after loading `.env.local`, tracing the Windows `argon2` prebuild, and lazy-loading argon2.
 - On the final run, PID `43316` owned port 3000, cold `/` was 2.714s, all seven core routes returned HTTP 200, the
   route-shell check passed, and steady RSS was 87.6 MiB. The exact server PID was stopped immediately after testing.
+- On 25 August 2026, the current baseline was rerun successfully: TypeScript, production build, 37 Vitest files / 171
+  tests, the memory mirror check, and `npm run methodology:v1.1:check`. The build emitted the existing handled
+  `/api/export` dynamic-route diagnostic and exited successfully.
+- The deterministic check again confirmed 19 planner fields, 121 live CSV rows across 58 countries, and live CSV
+  SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`. `npm run performance:check` also passed
+  against a temporary `npm start`; all seven route shells returned HTTP 200. The temporary server was stopped and
+  port 3000 is closed. No authenticated Chrome pass or owner-key smoke was run.
 
 ## Exact next action
 
 Restore an authenticated local session and complete the read-only Chrome route/console pass plus the initial render-bound
-checks before resuming the deferred Tottori, Toowoomba, and Brno owner-key smoke. The current Chrome session reached
+checks before resuming the deferred Tottori, Toowoomba, and Brno owner-key smoke. The current
+Chrome session reached
 `/login` without an authenticated session, and the temporary Playwright development auth setup did not establish a
 session, so no authenticated UI pass is claimed. Do not inspect browser storage or provider keys.
 
@@ -56,9 +66,10 @@ app was off; restarting Chrome helped substantially but did not remove all lag. 
 separate from application performance attribution.
 
 For development use `npm run dev`, which runs the OneDrive `.next` recovery guard. For a stable smoke use `npm run build`
-followed by `npm start`; do not run keyed generation while the local runtime is unstable. Once Phase 7A passes, restore
-`CITY_COST_METHODOLOGY_VERSION=v1.1`; the owner enters the provider key in the browser, and it must never be read,
-copied, logged, committed, or stored by the agent.
+followed by `npm start`; do not run keyed generation while the local runtime is unstable. The selector defaults new-city
+generation to v1.1; use explicit `CITY_COST_METHODOLOGY_VERSION=v1.1` for the owner-key smoke if a local override is
+present. The owner enters the provider key in the browser, and it must never be read, copied, logged, committed, or
+stored by the agent.
 
 For each city, verify through the UI and `/api/estimates` that:
 
@@ -83,6 +94,9 @@ live CSV.
 - Update `PLAN.md` at task start/end and before every commit/push. Commit and push each sizeable checkpoint.
 
 ## Verification
+
+Run `npm run performance:check` only after the built app is running with `npm start`; without a local server, its fetch
+failures only mean the check had no target and do not indicate an application regression.
 
 ```text
 npx tsc --noEmit

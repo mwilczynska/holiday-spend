@@ -756,3 +756,20 @@ The current Chrome session reached the local app's login screen without an authe
 development auth setup also failed to establish its local session, so the authenticated API timing and Chrome console/UI
 render-bound pass remain open. No browser storage, provider key, owner-key city generation, live CSV, holdout, or v6/v6.1
 path was accessed.
+
+## Documentation and state verification checkpoint - 25 August 2026
+
+A read-only state review found `main` and `origin/main` synchronized at `40f3c65`. The v1.1 baseline was rerun from
+the current working tree: TypeScript, the production build, 37 Vitest files / 171 tests, the documentation memory
+check, and `npm run methodology:v1.1:check` all passed. The build emitted the existing handled `/api/export`
+dynamic-route diagnostic and exited successfully. The deterministic check confirmed 19 planner fields, 121 live CSV
+rows across 58 countries, and live CSV SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+`npm run performance:check` passed when run against a temporary `npm start`; all seven route shells returned HTTP 200.
+The temporary server was stopped afterward and port 3000 is closed. No authenticated Chrome route/console pass or
+owner-key generation smoke was run, so those remain open.
+
+The tracked product branch remains free of the retired v5/v6 experiment corpus. The three exact duplicate files under
+`data/reference/v5/experiments/045-trip-activity-definitions/` were verified against the archived tag and moved to a
+named quarantine outside the repository; no v5 files remain untracked in the working tree. No source, dataset, database,
+browser-storage, or provider-key data was changed by this verification or cleanup.

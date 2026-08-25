@@ -11,6 +11,17 @@ model returns only the existing ten USD anchors in one schema-constrained call; 
 exact v1 formulas and the checked-in FX snapshot. Persist methodology, provider/model, reasoning, prompt/formula, FX,
 anchors, request context, and confidence provenance without inventing source grades or intervals.
 
+## Current checkpoint - 25 August 2026
+
+- The cleanup began with `main` and `origin/main` at `40f3c65`; v1.1 is already the default for newly generated cities,
+  with explicit v1 rollback and fail-closed v6 retirement still in place.
+- The current TypeScript, production build, 37-file / 171-test, memory-mirror, deterministic v1.1, and route-shell
+  performance checks pass. No authenticated Chrome pass or owner-key generation smoke has been claimed.
+- The tracked product branch contains no v5/v6 experiment corpus. The three verified local v5 copies were moved to a
+  named quarantine outside the repository; no v5 files remain untracked in the working tree.
+- Continue with the authenticated route/console and render-bound pass described in `PLAN.md` and
+  `docs/dev/handoffs/city-cost-v1-1.md`.
+
 ## Stop rules
 
 - Do not access, score, freeze, replace, or collect a holdout.
@@ -22,10 +33,11 @@ anchors, request context, and confidence provenance without inventing source gra
 
 ## Completion sequence
 
-1. Finish deterministic tests and the three-city owner-key smoke. If Chrome control is unavailable, repair the Browser
-   plugin through the desktop app's **Settings → Computer use**; never substitute a synthetic provider result or read
-   the owner's key.
-2. If smoke passes, make v1.1 the new-city default and retain explicit v1 rollback; run the full baseline.
-3. Remove stale active references to retired v6 work from current developer docs while retaining the archived branch,
-   tag, and historical log entries.
-4. Stop after the activation checkpoint for owner review; do not migrate the existing CSV without a separate decision.
+1. Complete the authenticated read-only route/console and initial `/plan` and `/dataset` render-bound pass. Do not
+   inspect browser storage or provider keys.
+2. Keep v1.1 as the new-city default and retain explicit v1 rollback; rerun the full baseline after implementation
+   changes.
+3. Run the Tottori, Toowoomba, and Brno owner-key smoke only after the authenticated runtime/UI pass. Treat it as
+   operational validation, not an accuracy benchmark, and do not claim a pass until it is actually run.
+4. Preserve the archived v6 branch, tag, and historical log entries; do not migrate the existing CSV without a separate
+   decision.

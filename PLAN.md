@@ -4,19 +4,30 @@
 
 **Current phase:** Phase 7A — performance and runtime hardening (in progress)
 
-**Branch:** `main` (merged and synchronized with origin; protected v6 archive retained)
+**Branch:** `main` (v1.1 history merged and synchronized with `origin/main`; protected v6 archive retained)
 
-**Last updated:** 21 August 2026
+**Last updated:** 25 August 2026
 
-**Latest commit:** `ac007cc` — verified Phase 7A performance-hardening checkpoint; authenticated UI follow-up remains open.
+**Latest implementation checkpoint:** `ac007cc` - verified Phase 7A performance hardening; the later `40f3c65` commit
+only corrected this plan's checkpoint pointer.
 
-**Exact next action:** Restore an authenticated local session and rerun the read-only Chrome route/console pass plus the
-initial `/plan` and `/dataset` render-bound checks. Keep the owner-key city-generation smoke deferred until that pass
-is complete; do not inspect browser storage or provider keys.
+**Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
+no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
+its verification results.
+
+**Phase 7A next action:** Restore an authenticated local session and rerun the read-only Chrome route/console pass plus
+the initial `/plan` and `/dataset` render-bound checks. Keep the owner-key city-generation smoke deferred until that
+pass is complete; do not inspect browser storage or provider keys.
 
 **Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
 keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
 is not represented as passed evidence; this exception does not authorize existing-city migration or CSV changes.
+
+## Current repository state - 25 August 2026
+
+The documentation cleanup began with `main` and `origin/main` both at `40f3c65`; it changed no tracked implementation
+files. The three verified historical v5 files were moved outside the repository to a named quarantine, so no v5 files
+remain untracked in the working tree and none are part of the tracked v1.1 product branch.
 
 ## Decision summary
 
@@ -142,7 +153,7 @@ This file is the canonical progress artifact.
 - [x] Regenerate no existing city automatically.
 - [x] Run TypeScript, build, tests, documentation checks, and the deterministic v1.1 check.
 - [x] During the owner-directed smoke deferral, rerun the full baseline and verify the live CSV, archived refs, and
-  clean product tree without activating v1.1.
+  tracked product branch without activating v1.1; the later local v5 copies were quarantined outside the repository.
 - [x] Publish the current v1.1 handoff and loop with the owner-smoke procedure.
 - [x] Make the full 19-field planner boundary explicit, including direct `drink_coffee` cent precision.
 - [x] Add an automatic `npm run dev` guard for OneDrive reparse-point `.next` caches so a bad generated cache cannot
@@ -152,7 +163,8 @@ This file is the canonical progress artifact.
 ## Phase 6 — Final archival and bloat removal — COMPLETE
 
 - [x] Make the v1.1 plan, handoff, and loop the only active city-cost workstream documents.
-- [x] Confirm no v5/v6 experiment corpus or migration artifact entered the clean product branch.
+- [x] Confirm no v5/v6 experiment corpus or migration artifact entered the tracked clean product branch; the later local
+  v5 working-tree copies were verified against the archive and quarantined outside the repository.
 - [x] Retain only a concise summary of useful v6 findings and links to the archived branch/tag.
 - [x] Preserve generic model discovery, reasoning controls, country identity, and persistence improvements.
 - [x] Remove active references to v6 activation, Phase 11, staged migration, and pending holdouts; remaining mentions are explicit historical pointers or rollback guardrails.
@@ -209,6 +221,21 @@ incident as the reason for this hardening phase; do not run keyed generation whi
   intermittent Windows Terminal rendering pressure even with port 3000 closed; do not mistake terminal/TUI lag for
   Next.js or browser application load.
 
+### 25 August 2026 verification rerun
+
+- The current `main` and `origin/main` tips are both `40f3c65`; the archived v6 branch and annotated tag remain present
+  locally and on `origin`.
+- The current baseline passed: TypeScript, production build, 37 Vitest files / 171 tests, the memory mirror check, and
+  `npm run methodology:v1.1:check`. The build emitted the existing handled `/api/export` dynamic-route diagnostic and
+  exited successfully.
+- The deterministic check again confirmed 19 planner fields, 121 live CSV rows across 58 countries, and live CSV
+  SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+- `npm run performance:check` passed against a temporary `npm start`: all seven route shells returned HTTP 200, with
+  the slowest cold shell at 2.892 seconds and shell sizes from 26,826 to 26,852 bytes. The temporary server was
+  stopped afterward and port 3000 is closed. The check requires a running server; a standalone invocation without one
+  is not an application result.
+- No authenticated Chrome route/console pass or owner-key generation smoke was run; those remain open.
+
 ## Phase 7 — Functional webapp validation — TO DO
 
 This is a post-rollout product smoke, separate from the completed methodology baseline. Use an authenticated local
@@ -264,4 +291,5 @@ does not by itself prove the interaction works. Do not inspect, copy, log, or pe
 - [x] All current planner fields remain supported.
 - [x] Provider, model, reasoning, anchors, formula, and FX provenance survive persistence and API/UI display; the smoke remains an open operational follow-up.
 - [x] No holdout, new methodology collection, lived-spending benchmark, coefficient change, or existing-city migration occurred.
-- [x] The active product branch contains none of the v5/v6 experiment bloat.
+- [x] The tracked active product branch contains none of the v5/v6 experiment bloat; verified local copies are
+  quarantined outside the repository and are not part of the branch.
