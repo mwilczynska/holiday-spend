@@ -8,8 +8,8 @@
 
 **Last updated:** 25 August 2026
 
-**Latest implementation checkpoint:** `ac007cc` - verified Phase 7A performance hardening; the later `40f3c65` commit
-only corrected this plan's checkpoint pointer.
+**Latest implementation checkpoint:** `1a79d68` - authenticated standalone assets, dashboard request indexing, bounded
+expense rendering, Chrome verification, and the 38-file / 175-test baseline.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
