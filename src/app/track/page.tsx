@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
+import { EXPENSE_PAGE_SIZE, getPageCount, getPageItems } from '@/lib/performance-bounds';
 import { EXPENSE_CATEGORIES } from '@/types';
 import { ChevronDown, ChevronUp, Edit, Eye, EyeOff, Tags, Trash2, Upload, XCircle } from 'lucide-react';
 
@@ -86,6 +87,7 @@ export default function TrackPage() {
   const [editExpense, setEditExpense] = useState<Expense | null>(null);
   const [editForm, setEditForm] = useState<ExpenseEditForm | null>(null);
   const [loading, setLoading] = useState(true);
+  const [expensePage, setExpensePage] = useState(0);
 
   const fetchData = useCallback(async () => {
     const params = new URLSearchParams();
@@ -122,6 +124,10 @@ export default function TrackPage() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  useEffect(() => {
+    setExpensePage(0);
+  }, [filterCat, filterSource, filterFrom, filterTo]);
 
   const handleToggleExclude = async (id: number) => {
     await fetch(`/api/expenses/${id}/exclude`, { method: 'PATCH' });
@@ -218,6 +224,15 @@ export default function TrackPage() {
 
   const activeExpenses = expenses.filter((expense) => !expense.isExcluded);
   const totalAud = activeExpenses.reduce((sum, expense) => sum + getExpenseAudAmount(expense), 0);
+  const expensePageCount = getPageCount(expenses.length, EXPENSE_PAGE_SIZE);
+  const boundedExpensePage = Math.min(expensePage, expensePageCount - 1);
+  const visibleExpenses = getPageItems(expenses, boundedExpensePage, EXPENSE_PAGE_SIZE);
+  const visibleExpenseStart = expenses.length === 0 ? 0 : boundedExpensePage * EXPENSE_PAGE_SIZE + 1;
+  const visibleExpenseEnd = Math.min((boundedExpensePage + 1) * EXPENSE_PAGE_SIZE, expenses.length);
+
+  useEffect(() => {
+    setExpensePage((page) => Math.min(page, expensePageCount - 1));
+  }, [expensePageCount]);
 
   const categoryLabel = (value: string) => EXPENSE_CATEGORIES.find((category) => category.value === value)?.label ?? value;
 
@@ -296,7 +311,7 @@ export default function TrackPage() {
         {expenses.length === 0 && (
           <p className="py-12 text-center text-muted-foreground">No expenses yet.</p>
         )}
-        {expenses.map((expense) => (
+        {visibleExpenses.map((expense) => (
           <Card key={expense.id} className={expense.isExcluded ? 'opacity-60' : ''}>
             <CardContent className="space-y-3 p-3">
               <div className="flex items-start gap-3">
@@ -359,7 +374,7 @@ export default function TrackPage() {
       </div>
 
       <div className="hidden rounded-lg border bg-background lg:block">
-        <table className="w-full table-fixed text-sm">
+        <table className="w-full table-fixed text-sm" data-testid="expense-table">
           <thead className="bg-muted/50 text-left">
             <tr className="border-b">
               <th className="w-10 px-3 py-2">
@@ -382,7 +397,7 @@ export default function TrackPage() {
                 </td>
               </tr>
             )}
-            {expenses.map((expense) => {
+            {visibleExpenses.map((expense) => {
               const isExpanded = expandedIds.has(expense.id);
 
               return (
@@ -494,6 +509,37 @@ export default function TrackPage() {
           </tbody>
         </table>
       </div>
+
+      {expenses.length > EXPENSE_PAGE_SIZE && (
+        <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
+          <span className="text-muted-foreground">
+            Showing {visibleExpenseStart}-{visibleExpenseEnd} of {expenses.length} expenses
+          </span>
+          <div className="flex items-center gap-2">
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              disabled={boundedExpensePage === 0}
+              onClick={() => setExpensePage((page) => Math.max(0, page - 1))}
+            >
+              Previous
+            </Button>
+            <span className="text-muted-foreground">
+              Page {boundedExpensePage + 1} of {expensePageCount}
+            </span>
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              disabled={boundedExpensePage >= expensePageCount - 1}
+              onClick={() => setExpensePage((page) => Math.min(expensePageCount - 1, page + 1))}
+            >
+              Next
+            </Button>
+          </div>
+        </div>
+      )}
 
       <Dialog open={!!editExpense} onOpenChange={(open) => {
         if (!open) {

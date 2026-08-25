@@ -773,3 +773,39 @@ The tracked product branch remains free of the retired v5/v6 experiment corpus. 
 `data/reference/v5/experiments/045-trip-activity-definitions/` were verified against the archived tag and moved to a
 named quarantine outside the repository; no v5 files remain untracked in the working tree. No source, dataset, database,
 browser-storage, or provider-key data was changed by this verification or cleanup.
+
+## Authenticated performance continuation - 25 August 2026
+
+The fresh CLI inherited the required Chrome trusted-code paths, but the Windows sandbox helper still failed because the
+repository tree was owned by `Administrators`. After explicit owner approval, the repository root and descendants were
+changed to the current Windows user. Normal sandboxed commands and Chrome control then started successfully. No file
+content changed as part of that permission repair, and browser storage, cookie values, passwords, and provider keys were
+not inspected.
+
+The authenticated Chrome pass exposed a concrete standalone defect: route HTML returned HTTP 200 while required Next.js
+client chunks returned HTTP 404, leaving `/plan` on its loading shell. The local production launcher now stages
+`.next/static` and `public` beside the standalone server and records the staged build ID so unchanged assets are not
+copied again. The route-shell performance checker now fetches every referenced static asset and fails on a missing or
+non-200 asset. Focused regressions cover staging and the missing-asset failure.
+
+The same pass found repeated expense-to-leg resolution across all three dashboard endpoints. A request-scoped resolver
+now derives the itinerary once, indexes explicit leg IDs, and caches date matches. Fully warm authenticated dashboard API
+durations fell to `1.12–1.65s`; the earlier warm range was approximately `6–21s`. Fresh-server dashboard requests still
+took `6.42–7.12s`, so cold initialization remains explicit follow-up work rather than being reported as solved.
+
+`/track` previously mounted all 973 expense rows. It now pages at 50 expenses while full filtered data continues to drive
+the displayed count, AUD total, delete-all target set, and bulk-selection behavior. The final authenticated bounds were
+12 of 67 planner legs, 25 city rows, 20 history rows, and 50 of 973 expenses. Dataset APIs completed in `1.47s` and
+`2.21s`; settings requests in `88–131ms`; the saved-plan list in `74ms`. Fresh-server track APIs still took about `10.4s`
+and remain part of the cold-readiness follow-up.
+
+The final route-shell/static check passed all seven routes at `97–3697ms`, `26,826–26,852` bytes, and 12 referenced
+static assets. Steady server RSS was `103.8 MiB`, below the `512 MiB` budget, and the exact test server was stopped.
+Chrome rendered all seven routes without an application request failure. Intermittent Chrome-extension message-channel
+errors appeared during some navigations without a corresponding app exception and are recorded separately as extension
+noise.
+
+The complete checkpoint baseline passed: `npx tsc --noEmit`, `npm run build`, 38 Vitest files / 175 tests,
+`npm run docs:check-memory`, and `npm run methodology:v1.1:check`. The build emitted the existing handled `/api/export`
+dynamic-route diagnostic and exited successfully. The deterministic methodology check again reported 19 planner fields
+and live CSV SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.

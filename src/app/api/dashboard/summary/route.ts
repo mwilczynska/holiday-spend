@@ -4,9 +4,8 @@ import { and, asc, eq, inArray, ne } from 'drizzle-orm';
 import { getDailyCost, getLegTotalFromTransports } from '@/lib/cost-calculator';
 import { calcBurnRate, projectTotal } from '@/lib/burn-rate';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
-import { getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
+import { createExpenseLegResolver } from '@/lib/expense-leg-assignment';
 import { groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
-import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { resolveDashboardAsOfDate, wholeCalendarDaysBetween } from '@/lib/dashboard-as-of';
@@ -39,7 +38,8 @@ export async function GET() {
     const allFixed = await db.select().from(fixedCosts).where(eq(fixedCosts.userId, userId));
     const groupSize = await getPlannerGroupSize(userId);
 
-    const allLegs = deriveLegDates(rawLegs);
+    const expenseLegResolver = createExpenseLegResolver(rawLegs);
+    const allLegs = expenseLegResolver.legs;
     const cityMap = new Map(allCities.map(c => [c.id, c]));
     const transportMap = groupIntercityTransportsByLegId(allTransports);
     const { tripStart, tripEnd } = getTripWindow(allLegs);
@@ -68,14 +68,14 @@ export async function GET() {
     // Calculate actual spend (non-excluded)
     const activeExpenses = allExpenses.filter((expense) => {
       if (expense.isExcluded) return false;
-      const matchedLeg = resolveExpenseLeg(expense, allLegs);
-      return Boolean(matchedLeg) || isWithinTripWindow(getExpenseReportingDate(expense, allLegs), tripStart, tripEnd);
+      const matchedLeg = expenseLegResolver.resolve(expense);
+      return Boolean(matchedLeg) || isWithinTripWindow(expenseLegResolver.reportingDate(expense), tripStart, tripEnd);
     });
     const totalSpent = activeExpenses.reduce((s, e) => s + getExpenseAudAmount(e), 0);
 
     const today = new Date().toISOString().split('T')[0];
     const expenseData = activeExpenses.map((expense) => ({
-      date: getExpenseReportingDate(expense, allLegs),
+      date: expenseLegResolver.reportingDate(expense),
       amountAud: getExpenseAudAmount(expense),
     }));
     const { date: asOfDate, source: asOfSource } = resolveDashboardAsOfDate(

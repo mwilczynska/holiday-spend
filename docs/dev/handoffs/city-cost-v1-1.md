@@ -23,7 +23,7 @@ that must remain visible during implementation.
   intervals are intentionally absent because these are holistic model estimates, not source observations.
 - The historical deterministic verification checkpoint is complete: typecheck, build, 36 Vitest files / 160 tests,
   memory checks, and `npm run methodology:v1.1:check` pass; the post-activation run reported 36 files / 161 tests.
-- The current post-hardening baseline passes: typecheck, production build, 37 Vitest files / 171 tests, the memory
+- The current post-hardening baseline passes: typecheck, production build, 38 Vitest files / 175 tests, the memory
   mirror check, and `npm run methodology:v1.1:check`.
 - The complete 19-field boundary is explicit: 18 daily/accommodation derivations plus direct `drink_coffee` at cent
   precision; the materializer, API query, tests, and deterministic check cover it.
@@ -37,9 +37,10 @@ that must remain visible during implementation.
   during a 10-second navigation attempt, and the port-owning local Next process reached approximately 1.65 GB while
   core routes were exercised. `/settings` eventually rendered and `/estimates` rendered, so this is a bounded runtime/
   payload problem rather than a universal route failure. Do not run keyed generation until Phase 7A is complete.
-- The Phase 7A checkpoint added planner/dataset API views, bounded planner and dataset/history rendering, deterministic
-  standalone startup checks, explicit production performance budgets, and regression coverage. The final production
-  verification passed after loading `.env.local`, tracing the Windows `argon2` prebuild, and lazy-loading argon2.
+- The Phase 7A checkpoints added planner/dataset API views, bounded planner, dataset/history, and expense rendering,
+  deterministic standalone startup/static-asset checks, explicit production performance budgets, a reusable dashboard
+  expense-leg resolver, and regression coverage. The local launcher now stages required standalone static/public assets
+  and skips unchanged staging by build ID.
 - On the final run, PID `43316` owned port 3000, cold `/` was 2.714s, all seven core routes returned HTTP 200, the
   route-shell check passed, and steady RSS was 87.6 MiB. The exact server PID was stopped immediately after testing.
 - On 25 August 2026, the current baseline was rerun successfully: TypeScript, production build, 37 Vitest files / 171
@@ -48,15 +49,16 @@ that must remain visible during implementation.
 - The deterministic check again confirmed 19 planner fields, 121 live CSV rows across 58 countries, and live CSV
   SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`. `npm run performance:check` also passed
   against a temporary `npm start`; all seven route shells returned HTTP 200. The temporary server was stopped and
-  port 3000 is closed. No authenticated Chrome pass or owner-key smoke was run.
+  port 3000 is closed. The later authenticated Chrome pass rendered all seven core routes and verified initial bounds of
+  12 planner legs, 25/20 dataset rows, and 50 expense rows. No owner-key smoke was run.
 
 ## Exact next action
 
-Restore an authenticated local session and complete the read-only Chrome route/console pass plus the initial render-bound
-checks before resuming the deferred Tottori, Toowoomba, and Brno owner-key smoke. The current
-Chrome session reached
-`/login` without an authenticated session, and the temporary Playwright development auth setup did not establish a
-session, so no authenticated UI pass is claimed. Do not inspect browser storage or provider keys.
+Profile and reduce fresh-server authenticated data readiness for `/` and `/track` before resuming the deferred Tottori,
+Toowoomba, and Brno owner-key smoke. Current cold Chrome timings are `6.42–7.12s` for the three dashboard APIs and
+`10.36–10.40s` for expenses/itinerary; fully warm dashboard APIs are `1.12–1.65s`. Preserve complete-data totals and
+record cold and warm evidence separately. Chrome control is working in the fresh CLI; do not inspect browser storage,
+cookies, passwords, or provider keys.
 
 The earlier browser/dev incident remains important evidence: the port-owning dev process reached approximately 1.65 GB
 while `/dataset` was loading. A clean production process baseline was approximately 74 MB. The owner-reported app-off

@@ -15,9 +15,10 @@ only corrected this plan's checkpoint pointer.
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Phase 7A next action:** Restore an authenticated local session and rerun the read-only Chrome route/console pass plus
-the initial `/plan` and `/dataset` render-bound checks. Keep the owner-key city-generation smoke deferred until that
-pass is complete; do not inspect browser storage or provider keys.
+**Phase 7A next action:** Profile and reduce fresh-server authenticated data readiness for `/` and `/track` without
+weakening auth or changing complete-data totals. The current cold API ranges are `6.42–7.12s` for the dashboard and
+`10.36–10.40s` for expenses/itinerary; fully warm dashboard APIs are `1.12–1.65s`. Keep the owner-key city-generation
+smoke deferred; do not inspect browser storage or provider keys.
 
 **Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
 keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
@@ -214,12 +215,39 @@ incident as the reason for this hardening phase; do not run keyed generation whi
   generation history, and planner totals. Planner and dataset API views omit fields they do not need.
 - [x] Add deterministic regression/performance coverage for lightweight API views, pagination/bounds, startup failure,
   route readiness, shell response budgets, and the 5-second / 512 MiB local budgets.
-- [ ] Capture authenticated API request durations/bytes and complete the read-only route/console pass in Chrome on the
-  stable runtime. The current Chrome session reached `/login` without an authenticated session, and the temporary local
-  Playwright auth setup did not establish its development session; no UI bound test result is claimed.
-- [ ] Repeat the remaining verification from a fresh Codex CLI session. The exceptionally long resumed session showed
-  intermittent Windows Terminal rendering pressure even with port 3000 closed; do not mistake terminal/TUI lag for
-  Next.js or browser application load.
+- [x] Stage `.next/static` and `public` beside the local standalone server, skip unchanged staging by build ID, and make
+  the performance check fail when a rendered shell references a missing static asset.
+- [x] Reuse one derived-leg/date index per dashboard request instead of re-deriving and sorting the itinerary for every
+  expense and chart date. Fully warm dashboard API requests fell to `1.12–1.65s` from the earlier `6–21s` range.
+- [x] Bound `/track` to 50 expenses per page while full filtered data continues to drive totals and bulk actions.
+- [x] Capture authenticated API request durations/bytes and complete the read-only route/console pass in Chrome on the
+  stable runtime. `/plan`, `/dataset`, and `/track` rendered 12, 25/20, and 50 initial rows/cards respectively; all app
+  requests returned HTTP 200. Chrome-extension message-channel warnings were observed separately from application logs.
+- [x] Repeat the remaining verification from a fresh Codex CLI session. Chrome control was restored after the owner
+  approved a repository ownership repair; no browser storage, cookies, passwords, or provider keys were inspected.
+- [x] Run the complete post-change baseline and update the handoff/log for this authenticated hardening checkpoint.
+- [ ] Bring fresh-server authenticated data readiness for `/` and `/track` within the 5-second local budget. Preserve
+  complete-data calculations and record cold and warm evidence separately rather than hiding cold initialization cost.
+
+### 25 August 2026 authenticated continuation evidence
+
+- Chrome control was restored in the fresh CLI after the owner approved changing repository ownership from
+  `Administrators` to the current Windows user. No browser storage, cookie value, password, or provider key was read.
+- The authenticated `/plan` failure was traced to standalone client chunks returning HTTP 404. The local launcher now
+  stages `.next/static` and `public` beside `server.js`, marks the staged build ID, and skips unchanged staging.
+  `npm run performance:check` now validates every static asset referenced by the route shells.
+- The final shell/static check passed all seven routes at `97–3697ms`, `26,826–26,852` bytes, and 12 referenced static
+  assets. Final steady RSS was `103.8 MiB`, below the `512 MiB` budget; the test server was stopped afterward.
+- Authenticated bounds passed in Chrome: `/plan` rendered 12 of 67 legs, `/dataset` rendered 25 city and 20 history
+  rows, and `/track` rendered 50 of 973 expenses with pagination. `/plan/compare`, `/estimates`, and `/settings` also
+  rendered; all observed application requests returned HTTP 200.
+- Reusing one derived-leg/date resolver per dashboard request reduced fully warm API durations to `1.12–1.65s`.
+  Dataset API durations were `1.47s` and `2.21s`; settings requests were `88–131ms`; the plan-comparison request was
+  `74ms`. The first-server dashboard and track requests remain above the 5-second target and are the next work item.
+- Chrome emitted intermittent extension message-channel errors during navigation. They were not accompanied by failed
+  application requests or application exceptions and are recorded as browser-extension noise, not an app pass claim.
+- The complete checkpoint baseline passed: TypeScript, production build, 38 Vitest files / 175 tests, documentation
+  memory check, and `npm run methodology:v1.1:check`. The build emitted the existing handled `/api/export` diagnostic.
 
 ### 25 August 2026 verification rerun
 

@@ -16,6 +16,7 @@ function readPositiveInteger(name, fallback) {
 const routeBudgetMs = readPositiveInteger('WEBAPP_ROUTE_BUDGET_MS', 5000);
 const responseBudgetBytes = readPositiveInteger('WEBAPP_RESPONSE_BUDGET_BYTES', 512 * 1024);
 const routes = ['/', '/plan', '/plan/compare', '/track', '/dataset', '/estimates', '/settings'];
+const staticAssets = new Set();
 
 if (!existsSync(resolve('.next', 'BUILD_ID')) || !existsSync(resolve('.next', 'standalone', 'server.js'))) {
   console.error('[performance] No complete production build found. Run `npm run build` before the performance check.');
@@ -44,9 +45,31 @@ for (const route of routes) {
     if (bytes > responseBudgetBytes) {
       fail(`${route} returned ${bytes} bytes, above the ${responseBudgetBytes}-byte shell budget.`);
     }
+
+    const html = new TextDecoder().decode(body);
+    for (const match of html.matchAll(/(?:src|href)=["'](\/_next\/static\/[^"']+)["']/g)) {
+      staticAssets.add(match[1]);
+    }
   } catch (error) {
     fail(`${route} was not reachable within ${routeBudgetMs}ms: ${error instanceof Error ? error.message : String(error)}`);
   }
+}
+
+for (const asset of staticAssets) {
+  try {
+    const response = await fetch(`${baseUrl}${asset}`, {
+      redirect: 'follow',
+      signal: AbortSignal.timeout(routeBudgetMs),
+    });
+    await response.arrayBuffer();
+    if (!response.ok) fail(`${asset} returned HTTP ${response.status}.`);
+  } catch (error) {
+    fail(`${asset} was not reachable within ${routeBudgetMs}ms: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
+if (staticAssets.size > 0 && !process.exitCode) {
+  console.log(`[performance] Static asset check passed (${staticAssets.size} assets).`);
 }
 
 if (process.exitCode) {

@@ -16,4 +16,11 @@ test.describe('performance render bounds', () => {
     expect(await page.getByTestId('dataset-city-table').locator('tbody tr').count()).toBeLessThanOrEqual(25);
     expect(await page.getByTestId('dataset-history-table').locator('tbody tr').count()).toBeLessThanOrEqual(20);
   });
+
+  test('expense tracker initially renders at most fifty table rows', async ({ page }) => {
+    await page.goto('/track');
+    await expect(page.getByRole('heading', { name: 'Expenses' })).toBeVisible({ timeout: 15_000 });
+
+    expect(await page.getByTestId('expense-table').locator('tbody tr').count()).toBeLessThanOrEqual(50);
+  });
 });

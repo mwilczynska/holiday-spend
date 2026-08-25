@@ -7,6 +7,7 @@ import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import {
   DATASET_PAGE_SIZE,
+  EXPENSE_PAGE_SIZE,
   getPageCount,
   getPageItems,
   getVisibleItems,
@@ -68,6 +69,7 @@ describe('v1.1 performance bounds', () => {
     expect(getVisibleItems(legs, INITIAL_VISIBLE_LEGS + VISIBLE_LEGS_INCREMENT)).toHaveLength(24);
     expect(getPageItems(cities, 0, DATASET_PAGE_SIZE)).toHaveLength(25);
     expect(getPageItems(history, 0, HISTORY_PAGE_SIZE)).toHaveLength(20);
+    expect(getPageItems(Array.from({ length: 973 }, (_, index) => index), 0, EXPENSE_PAGE_SIZE)).toHaveLength(50);
     expect(getPageCount(67, INITIAL_VISIBLE_LEGS)).toBe(6);
     expect(getPageCount(195, DATASET_PAGE_SIZE)).toBe(8);
     expect(getPageCount(195, HISTORY_PAGE_SIZE)).toBe(10);
@@ -87,6 +89,29 @@ describe('v1.1 performance bounds', () => {
     expect(result.status).toBe(1);
     expect(output).toContain('No complete production build was found');
     expect(output).toContain('npm run build');
+  });
+
+  it('stages static and public assets beside the standalone server before startup', () => {
+    const directory = makeTempDir();
+    fs.mkdirSync(path.join(directory, '.next', 'standalone'), { recursive: true });
+    fs.mkdirSync(path.join(directory, '.next', 'static', 'chunks'), { recursive: true });
+    fs.mkdirSync(path.join(directory, 'public'), { recursive: true });
+    fs.writeFileSync(path.join(directory, '.next', 'BUILD_ID'), 'test-build');
+    fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
+    fs.writeFileSync(path.join(directory, '.next', 'static', 'chunks', 'app.js'), 'client');
+    fs.writeFileSync(path.join(directory, 'public', 'icon.svg'), '<svg />');
+
+    const result = runNodeScript(startScript, directory);
+
+    expect(result.status).toBe(0);
+    expect(fs.readFileSync(
+      path.join(directory, '.next', 'standalone', '.next', 'static', 'chunks', 'app.js'),
+      'utf8',
+    )).toBe('client');
+    expect(fs.readFileSync(path.join(directory, '.next', 'standalone', 'public', 'icon.svg'), 'utf8'))
+      .toBe('<svg />');
+    expect(fs.readFileSync(path.join(directory, '.next', 'standalone', '.holiday-spend-build-id'), 'utf8'))
+      .toBe('test-build\n');
   });
 
   it('fails the performance check before probing routes when the build is absent', () => {
@@ -158,6 +183,42 @@ describe('v1.1 performance bounds', () => {
 
       expect(result.status).toBe(1);
       expect(result.stdout + result.stderr).toContain('above the 1024-byte shell budget');
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
+  });
+
+  it('fails when a route shell references a missing static asset', async () => {
+    const directory = makeTempDir();
+    fs.mkdirSync(path.join(directory, '.next', 'standalone'), { recursive: true });
+    fs.writeFileSync(path.join(directory, '.next', 'BUILD_ID'), 'test-build');
+    fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
+
+    const server = createServer((request, response) => {
+      if (request.url?.startsWith('/_next/static/')) {
+        response.writeHead(404, { 'content-type': 'text/plain' });
+        response.end('missing');
+        return;
+      }
+      response.writeHead(200, { 'content-type': 'text/html' });
+      response.end('<html><script src="/_next/static/chunks/missing.js"></script></html>');
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') {
+      server.close();
+      throw new Error('Test server did not expose a TCP port.');
+    }
+
+    try {
+      const result = await runNodeScriptAsync(performanceScript, directory, {
+        WEBAPP_BASE_URL: `http://127.0.0.1:${address.port}`,
+        WEBAPP_ROUTE_BUDGET_MS: '1000',
+        WEBAPP_RESPONSE_BUDGET_BYTES: '1024',
+      });
+
+      expect(result.status).toBe(1);
+      expect(result.stdout + result.stderr).toContain('/_next/static/chunks/missing.js returned HTTP 404');
     } finally {
       await new Promise<void>((resolve) => server.close(() => resolve()));
     }

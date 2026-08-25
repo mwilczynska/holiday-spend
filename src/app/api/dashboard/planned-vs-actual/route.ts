@@ -3,7 +3,7 @@ import { itineraryLegs, itineraryLegTransports, cities, countries, expenses } fr
 import { and, asc, eq, inArray, ne } from 'drizzle-orm';
 import { getLegTotalFromTransports, getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
-import { getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
+import { createExpenseLegResolver } from '@/lib/expense-leg-assignment';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
@@ -38,16 +38,18 @@ export async function GET() {
     const allExpenses = await db.select().from(expenses).where(and(eq(expenses.userId, userId), ne(expenses.isDeleted, 1)));
     const groupSize = await getPlannerGroupSize(userId);
 
+    const expenseLegResolver = createExpenseLegResolver(allLegs);
+    const resolvedLegs = expenseLegResolver.legs;
     const cityMap = new Map(allCities.map(c => [c.id, c]));
     const countryMap = new Map(allCountries.map(c => [c.id, c]));
     const transportMap = groupIntercityTransportsByLegId(allTransports);
-    const { tripStart, tripEnd } = getTripWindow(allLegs);
+    const { tripStart, tripEnd } = getTripWindow(resolvedLegs);
     const statusByCountry = new Map<string, LegStatus>();
 
     // Build planned totals per country
     const plannedByCountry = new Map<string, { name: string; planned: number; days: number; categories: Record<string, number> }>();
 
-    for (const leg of allLegs) {
+    for (const leg of resolvedLegs) {
       const city = cityMap.get(leg.cityId);
       if (!city) continue;
       const country = countryMap.get(city.countryId);
@@ -86,8 +88,8 @@ export async function GET() {
     // Build actual totals per country (join expense → leg → city → country)
     const reportableExpenses = allExpenses.filter((expense) => {
       if (expense.isExcluded) return false;
-      const matchedLeg = resolveExpenseLeg(expense, allLegs);
-      return Boolean(matchedLeg) || isWithinTripWindow(getExpenseReportingDate(expense, allLegs), tripStart, tripEnd);
+      const matchedLeg = expenseLegResolver.resolve(expense);
+      return Boolean(matchedLeg) || isWithinTripWindow(expenseLegResolver.reportingDate(expense), tripStart, tripEnd);
     });
 
     const actualByCountry = new Map<string, { name: string; actual: number; categories: Record<string, number> }>();
@@ -96,7 +98,7 @@ export async function GET() {
       let countryId = 'unassigned';
       let countryName = 'Unassigned';
 
-      const matchedLeg = resolveExpenseLeg(exp, allLegs);
+      const matchedLeg = expenseLegResolver.resolve(exp);
 
       if (matchedLeg) {
         const city = cityMap.get(matchedLeg.cityId);

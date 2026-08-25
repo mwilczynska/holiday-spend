@@ -4,9 +4,8 @@ import { and, asc, eq, inArray, ne } from 'drizzle-orm';
 import { buildBurnRateSeries, buildCountryBands, enumerateDates } from '@/lib/burn-rate';
 import { getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
-import { findLegForExpenseDate, getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
+import { createExpenseLegResolver } from '@/lib/expense-leg-assignment';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
-import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { requireCurrentUserId } from '@/lib/auth';
@@ -47,7 +46,8 @@ export async function GET() {
     const allCountries = await db.select().from(countries);
     const groupSize = await getPlannerGroupSize(userId);
 
-    const allLegs = deriveLegDates(rawLegs);
+    const expenseLegResolver = createExpenseLegResolver(rawLegs);
+    const allLegs = expenseLegResolver.legs;
     const legMap = new Map(allLegs.map((leg) => [leg.id, leg]));
     const cityMap = new Map(allCities.map((city) => [city.id, city]));
     const countryMap = new Map(allCountries.map((country) => [country.id, country]));
@@ -56,11 +56,11 @@ export async function GET() {
 
     const activeExpenses = allExpenses.filter((expense) => {
       if (expense.isExcluded) return false;
-      const matchedLeg = resolveExpenseLeg(expense, allLegs);
-      return Boolean(matchedLeg) || isWithinTripWindow(getExpenseReportingDate(expense, allLegs), tripStart, tripEnd);
+      const matchedLeg = expenseLegResolver.resolve(expense);
+      return Boolean(matchedLeg) || isWithinTripWindow(expenseLegResolver.reportingDate(expense), tripStart, tripEnd);
     });
 
-    const expenseDates = activeExpenses.map((expense) => getExpenseReportingDate(expense, allLegs)).filter(Boolean).sort();
+    const expenseDates = activeExpenses.map((expense) => expenseLegResolver.reportingDate(expense)).filter(Boolean).sort();
     const seriesStart = minDate(tripStart, expenseDates[0]);
     const seriesEnd = maxDate(tripEnd, expenseDates[expenseDates.length - 1]);
 
@@ -76,7 +76,7 @@ export async function GET() {
 
     const actualByDate = new Map<string, number>();
     for (const expense of activeExpenses) {
-      const reportingDate = getExpenseReportingDate(expense, allLegs);
+      const reportingDate = expenseLegResolver.reportingDate(expense);
       actualByDate.set(
         reportingDate,
         (actualByDate.get(reportingDate) || 0) + getExpenseAudAmount(expense)
@@ -115,7 +115,7 @@ export async function GET() {
 
     const metadataByDate = new Map<string, { countryName: string | null; cityName: string | null; legStatus: string | null }>();
     for (const date of enumerateDates(seriesStart, seriesEnd)) {
-      const matchedLegRef = findLegForExpenseDate(date, allLegs);
+      const matchedLegRef = expenseLegResolver.findForDate(date);
       const matchedLeg = matchedLegRef ? legMap.get(matchedLegRef.id) ?? null : null;
 
       if (!matchedLeg) {

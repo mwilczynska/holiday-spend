@@ -2,6 +2,7 @@ export const INITIAL_VISIBLE_LEGS = 12;
 export const VISIBLE_LEGS_INCREMENT = 12;
 export const DATASET_PAGE_SIZE = 25;
 export const HISTORY_PAGE_SIZE = 20;
+export const EXPENSE_PAGE_SIZE = 50;
 
 export function getPageCount(itemCount: number, pageSize: number) {
   if (!Number.isInteger(itemCount) || itemCount < 0) {
