@@ -8,16 +8,16 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** pending commit — Luna/max defaults, Responses API/web search, standalone prompt
+**Latest implementation checkpoint:** `bdec883` — Luna/max defaults, Responses API/web search, standalone prompt
 staging, generation-time RBA FX validation, and the completed three-city owner-key smoke.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Next action:** Run the complete verification baseline for the Luna/max, standalone-prompt, and generation-time FX
-checkpoint, then commit and push it. The owner-key city-generation subset of Phase 7 passed; the unrelated planner,
-tracking, settings, and saved-plan interaction checks remain open.
+**Next action:** Continue the remaining Phase 7 planner, saved-plan, tracking, settings, and failure-state interaction
+checks. The Luna/max, standalone-prompt, generation-time FX, and owner-key city-generation checkpoint is committed and
+ready to push.
 
 **Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
 that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
