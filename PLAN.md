@@ -8,6 +8,9 @@
 
 **Last updated:** 26 August 2026
 
+**Current task checkpoint:** pending commit - four-column intercity transport model pickers using discovered models and
+Refresh Models default reset.
+
 **Latest implementation checkpoint:** `996c8ce` — four-column provider model pickers and explicit cumulative chart
 line definitions.
 
@@ -318,6 +321,8 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
   model suggestions into four desktop columns, and verify Anthropic/Google Gemini selection and Refresh Models behavior.
 - [x] Define cumulative dashboard chart lines in the rendered legend and tooltip: actual spend, actual spend on legs
   still marked planned, planned estimate, and total trip budget; distinguish dashed estimates/budget from solid spend.
+- [x] Align single-leg and bulk intercity transport model pickers with city generation: discovered model lists,
+  four-column desktop layout, and Refresh Models resetting the selected provider default; verify Anthropic and Google.
 - [x] Remove obsolete v1.1, v4, and v5 branch pointers only after proving their tips remain reachable from `main` or
   the protected v6 archive; preserve `feat/city-cost-methodology-v6` and
   `city-cost-v6.1-research-final-2026-08-18` locally and on origin.

@@ -177,13 +177,13 @@ export function BulkTransportEstimateDialog({
   const activeApiKey = apiKeys[provider] || '';
   const hasAnySavedApiKey = Object.values(apiKeys).some((value) => value.trim().length > 0);
   const activeModel = models[provider] || selectedProvider.defaultModel;
-  const modelValidation = validateCityGenerationModel(provider, activeModel);
   const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
   const modelDiscovery = useProviderModelDiscovery({
     provider,
     apiKey: activeApiKey,
     enabled: open,
   });
+  const modelValidation = validateCityGenerationModel(provider, activeModel, modelDiscovery.result.effectiveModels);
   const estimatableTransportLegs = useMemo(() => buildEstimatableTransportLegs(legs), [legs]);
   const defaultSelectedLegIds = useMemo(
     () => estimatableTransportLegs
@@ -263,6 +263,11 @@ export function BulkTransportEstimateDialog({
     };
     setModels(nextModels);
     window.localStorage.setItem(`${STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
+  }
+
+  async function refreshModelsAndResetDefault() {
+    await modelDiscovery.refresh();
+    updateModel(selectedProvider.defaultModel);
   }
 
   function toggleMode(mode: TransportEstimateMode) {
@@ -593,19 +598,20 @@ export function BulkTransportEstimateDialog({
                       Example models: {modelDiscovery.exampleSummary}
                     </p>
                   ) : null}
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProvider.knownModels.map((model) => (
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                    {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
                       <Button
                         key={model}
                         type="button"
                         variant={modelValidation.effectiveModel === model ? 'secondary' : 'outline'}
                         size="sm"
+                        className="h-auto min-h-9 whitespace-normal break-words px-2 py-1.5 text-xs"
                         onClick={() => updateModel(model)}
                       >
                         {model === selectedProvider.defaultModel ? `${model} (default)` : model}
                       </Button>
                     ))}
-                    <Button type="button" variant="ghost" size="sm" onClick={() => void modelDiscovery.refresh()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || estimating || applying}>
+                    <Button type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || estimating || applying}>
                       <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
                     </Button>
                   </div>

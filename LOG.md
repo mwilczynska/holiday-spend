@@ -889,3 +889,14 @@ Focused Playwright coverage passed the four-column Anthropic/Google Gemini model
 dashboard render that checks the legend labels and dashed swatches. TypeScript, the production build, and the full
 Vitest suite (41 files / 185 tests) also passed; the build retained the known handled `/api/export` dynamic-route
 diagnostic. No provider key was read or used.
+
+## Intercity transport model picker alignment - 26 August 2026
+
+Single-leg and bulk intercity transport estimation now use the discovered provider model list (up to 16 suggestions)
+instead of only the static known-model list. Both pickers show four models per desktop row with a two-column narrow
+fallback, wrap long model IDs, and make Refresh Models reset the selected model to the provider default. Validation
+now uses the discovered effective model set, so live provider-account models can be selected without a false warning.
+
+The transport browser regression passed for both single-leg and bulk dialogs with Anthropic and Google Gemini fixtures,
+including four-column geometry and default reset after refresh. TypeScript, the production build, and the full Vitest
+suite (41 files / 186 tests) passed; the build retained the known handled /api/export dynamic-route diagnostic.

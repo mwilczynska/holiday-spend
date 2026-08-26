@@ -61,4 +61,20 @@ describe('planner city picker UI', () => {
     expect(source).toContain("{ label: 'Planned estimate', color: '#0f766e', dashed: true }");
     expect(source).toContain("{ label: 'Total trip budget', color: '#7c3aed', dashed: true }");
   });
+
+  it('keeps both intercity transport model pickers aligned with the city picker', () => {
+    for (const filename of ['TransportEstimateDialog.tsx', 'BulkTransportEstimateDialog.tsx']) {
+      const source = fs.readFileSync(
+        path.join(projectRoot, 'src', 'components', 'itinerary', filename),
+        'utf8'
+      );
+
+      expect(source).toContain('validateCityGenerationModel(provider, activeModel, modelDiscovery.result.effectiveModels)');
+      expect(source).toContain('async function refreshModelsAndResetDefault()');
+      expect(source).toContain('modelDiscovery.result.effectiveModels.slice(0, 16)');
+      expect(source).toContain('grid grid-cols-2 gap-2 sm:grid-cols-4');
+      expect(source).toContain('className="col-span-2 sm:col-span-4"');
+      expect(source).toContain('onClick={() => void refreshModelsAndResetDefault()}');
+    }
+  });
 });

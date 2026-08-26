@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Locator } from '@playwright/test';
 
 test.describe('planner regressions', () => {
 test('trip summary sits close to the header and stays pinned while scrolling', async ({ page }) => {
@@ -140,6 +140,100 @@ test('trip summary sits close to the header and stays pinned while scrolling', a
       await cityDialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
       await expect(modelInput).toHaveValue(scenario.defaultModel);
     }
+
+    expect(refreshRequests).toEqual(['anthropic', 'gemini']);
+  });
+
+  test('single and bulk intercity transport pickers use discovered four-column models', async ({ page }) => {
+    const refreshRequests: string[] = [];
+    const providerModels = {
+      openai: ['gpt-5.6-luna', 'gpt-5.4-mini', 'gpt-5.4', 'gpt-5.3-codex'],
+      anthropic: ['claude-sonnet-4-6', 'claude-haiku-4-5', 'claude-opus-4-6', 'claude-3-7-sonnet-latest'],
+      gemini: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash', 'gemini-1.5-pro'],
+    } as const;
+
+    await page.route('**/api/llm/models?**', async (route) => {
+      const url = new URL(route.request().url());
+      const provider = (url.searchParams.get('provider') || 'openai') as keyof typeof providerModels;
+      if (url.searchParams.get('refresh') === '1') refreshRequests.push(provider);
+      const models = providerModels[provider];
+
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          data: {
+            provider,
+            source: 'live',
+            credentialSource: 'browser',
+            aggregatorSource: null,
+            defaultModel: models[0],
+            curatedModels: models,
+            liveModels: models,
+            effectiveModels: models,
+            fetchedAt: new Date().toISOString(),
+            cacheHit: false,
+            warning: null,
+          },
+        }),
+      });
+    });
+
+    const assertFourColumnGrid = async (dialog: Locator, models: readonly string[]) => {
+      const buttons = models.map((model, index) => dialog.getByRole('button', {
+        name: index === 0 ? `${model} (default)` : model,
+        exact: true,
+      }));
+      for (const button of buttons) await expect(button).toBeVisible();
+      const boxes = await Promise.all(buttons.map((button) => button.boundingBox()));
+      boxes.forEach((box) => expect(box).not.toBeNull());
+      boxes.slice(1).forEach((box) => expect(Math.abs(box!.y - boxes[0]!.y)).toBeLessThan(2));
+      boxes.slice(1).forEach((box, index) => expect(box!.x).toBeGreaterThan(boxes[index]!.x));
+    };
+
+    await page.goto('/plan');
+    await expect(page.getByRole('button', { name: 'Add Leg', exact: true }).first()).toBeVisible({ timeout: 60_000 });
+    const singleEstimateButtons = page.getByRole('button', { name: 'Estimate transport', exact: true });
+    let singleEstimateButton: Locator | null = null;
+    for (let index = 0; index < await singleEstimateButtons.count(); index += 1) {
+      const candidate = singleEstimateButtons.nth(index);
+      if (await candidate.isEnabled()) {
+        singleEstimateButton = candidate;
+        break;
+      }
+    }
+    expect(singleEstimateButton).not.toBeNull();
+    await singleEstimateButton!.click();
+
+    const singleDialog = page.getByRole('dialog', { name: 'Estimate Intercity Transport' }).last();
+    await singleDialog.getByText('Advanced estimation settings', { exact: true }).click();
+    const singleProviderSelect = singleDialog.getByRole('combobox').first();
+    const singleModelInput = singleDialog.locator('input[list]').first();
+    await singleProviderSelect.click();
+    await page.getByRole('option', { name: 'Anthropic', exact: true }).click();
+    await expect(singleModelInput).toHaveValue(providerModels.anthropic[0]);
+    await assertFourColumnGrid(singleDialog, providerModels.anthropic);
+    await singleModelInput.fill(providerModels.anthropic[1]);
+    await singleDialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
+    await expect(singleModelInput).toHaveValue(providerModels.anthropic[0]);
+    await page.keyboard.press('Escape');
+    await expect(singleDialog).toBeHidden();
+
+    const bulkButton = page.getByRole('button', { name: /^Estimate Intercity Transport/ });
+    await expect(bulkButton).toBeEnabled();
+    await bulkButton.click();
+
+    const bulkDialog = page.getByRole('dialog', { name: 'Estimate Intercity Transport' }).last();
+    await bulkDialog.getByText('Advanced estimation settings', { exact: true }).click();
+    const bulkProviderSelect = bulkDialog.getByRole('combobox').first();
+    const bulkModelInput = bulkDialog.locator('input[list]').first();
+    await bulkProviderSelect.click();
+    await page.getByRole('option', { name: 'Google Gemini', exact: true }).click();
+    await expect(bulkModelInput).toHaveValue(providerModels.gemini[0]);
+    await assertFourColumnGrid(bulkDialog, providerModels.gemini);
+    await bulkModelInput.fill(providerModels.gemini[1]);
+    await bulkDialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
+    await expect(bulkModelInput).toHaveValue(providerModels.gemini[0]);
 
     expect(refreshRequests).toEqual(['anthropic', 'gemini']);
   });
