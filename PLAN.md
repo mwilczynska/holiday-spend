@@ -1,27 +1,32 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** METHODOLOGY COMPLETE — PHASE 7A COMPLETE; DEFERRED OWNER-KEY SMOKE OPEN
+**Status:** METHODOLOGY COMPLETE — PHASE 7A COMPLETE; OWNER-KEY CITY SMOKE PASSED
 
-**Current phase:** Phase 7 — functional webapp validation (to do; owner-key smoke deferred)
+**Current phase:** Phase 7 — functional webapp validation (in progress; remaining route workflows open)
 
 **Branch:** `main` (v1.1 history merged and synchronized with `origin/main`; protected v6 archive retained)
 
-**Last updated:** 25 August 2026
+**Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `cf0bc3b` - server-paged expense data, lightweight track itinerary
-view, authenticated cold-readiness verification, and the 39-file / 177-test baseline.
+**Latest implementation checkpoint:** pending commit — Luna/max defaults, Responses API/web search, standalone prompt
+staging, generation-time RBA FX validation, and the completed three-city owner-key smoke.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Next action:** Resume the explicitly deferred Tottori, Toowoomba, and Brno owner-key smoke only when the owner chooses
-to provide the browser-only key workflow. Phase 7A is complete: process-cold authenticated data readiness is `1.96s`
-for `/` and `4.03s` for `/track`, within the 5-second local budget. Do not inspect browser storage or provider keys.
+**Next action:** Run the complete verification baseline for the Luna/max, standalone-prompt, and generation-time FX
+checkpoint, then commit and push it. The owner-key city-generation subset of Phase 7 passed; the unrelated planner,
+tracking, settings, and saved-plan interaction checks remain open.
 
-**Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
-keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
-is not represented as passed evidence; this exception does not authorize existing-city migration or CSV changes.
+**Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
+that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
+runtime fallback. The returned observation must include an as-of date and source provenance and pass server freshness
+and validity checks before any estimate is persisted.
+
+**Owner activation decision (18 August 2026):** The owner explicitly authorized v1.1 activation while deferring the
+keyed smoke because secure remote-desktop access was unavailable. That exception did not authorize existing-city
+migration or CSV changes; the deferred smoke was subsequently completed on 26 August 2026.
 
 ## Current repository state - 25 August 2026
 
@@ -34,10 +39,11 @@ remain untracked in the working tree and none are part of the tracked v1.1 produ
 v6.1 research is complete but is not accepted for product cutover. The staged v6.1 CSV will not replace the live
 dataset, Phase 11 is cancelled, and the v6.1 generation path will not remain an executable product option.
 
-The live 121-city v1 CSV remains unchanged. The clean v1.1 product branch was created from `main`. v1.1 will keep
+The live 121-city v1 CSV remains unchanged. The clean v1.1 product branch was created from `main`. v1.1 keeps
 v1's anchor definitions and formulas exactly, but the LLM will return anchors only; deterministic server code will
 perform the formulas and USD→AUD conversion. Under the owner's explicit decision, v1.1 becomes the default for newly
-generated cities while the smoke remains deferred. Existing cities will not be bulk-migrated.
+generated cities; the originally deferred owner-key smoke passed on 26 August 2026. Existing cities are not
+bulk-migrated.
 
 The lived-spending benchmark previously proposed as recommendation 4 is explicitly out of scope. No new collection,
 holdout, coefficient fitting, accommodation refit, or existing-city migration is authorized by this plan.
@@ -104,9 +110,11 @@ This file is the canonical progress artifact.
 - [x] Preserve every current planner field and direct drink input.
 - [x] Perform arithmetic before currency conversion.
 - [x] Round final daily/accommodation values to whole AUD and direct drink inputs to cents.
-- [x] Load USD→AUD from the checked-in, source-attributed FX snapshot.
-- [x] Persist FX snapshot ID, hash, rate, and as-of date in the materialization result for the Phase 4 adapter.
-- [x] Ensure the LLM never supplies or infers FX.
+- [x] Initially load USD→AUD from the checked-in, source-attributed FX snapshot; superseded by the owner's 26 August
+  decision to return a fresh RBA observation from the same generation call.
+- [x] Persist FX ID, hash, rate, source, and as-of date in the materialization result for the Phase 4 adapter.
+- [x] Keep conversion arithmetic server-side. As of 26 August, the LLM supplies only the dated source observation;
+  the server validates, inverts when necessary, and fails closed without a valid recent RBA value.
 - [x] Keep requested city identity and country metadata outside the pure materializer for the Phase 4 integration boundary.
 - [x] Add deterministic formula, schema, prompt, selector, and live-CSV guard tests.
 - [x] Commit and push the v1.1 materializer (`f72fb9b`).
@@ -136,13 +144,15 @@ This file is the canonical progress artifact.
 
 - [x] Prove formula parity for identical anchors and FX.
 - [x] Test formula and rounding boundaries through golden fixtures and the deterministic check.
-- [x] Prove v1.1 makes one provider call and no metadata or search call in the generation boundary; planner identity is server-side.
+- [x] Prove v1.1 makes one provider call and no separate metadata call; after the 26 August FX decision, that same
+  call must perform one web search for current RBA FX while planner identity remains server-side.
 - [x] Prove failed generation leaves no partial city or estimate through the pre-persistence adapter boundary.
 - [x] Prove explicit `v1` still selects the historical prompt and path.
 - [x] Prove historical v6 records remain readable through the generic provenance parser.
 - [x] Prove the live CSV hash and all 121 rows remain unchanged (`0e273cef…`, checked by the deterministic command).
-- [ ] Run a user-key functional smoke for Tottori, Toowoomba, and Brno.
-- [ ] Verify each smoke city has ten positive anchors, deterministic tiers, one LLM call, and complete API provenance.
+- [x] Run a user-key functional smoke for Tottori, Toowoomba, and Brno through Chrome on 26 August 2026.
+- [x] Verify each smoke city has ten positive anchors, deterministic tiers, one LLM call, and complete persisted/UI
+  provenance. Tottori retained its historical v6.1 row; Toowoomba and Brno were added as v1.1 rows.
 - [x] Treat the smoke as operational validation only, not an accuracy benchmark.
 - [x] Record owner-approved activation with the smoke deferred; no smoke result is claimed.
 - [x] Make v1.1 the default for newly generated cities under the owner's explicit smoke-deferral decision; retain
@@ -280,11 +290,18 @@ incident as the reason for this hardening phase; do not run keyed generation whi
   is not an application result.
 - No authenticated Chrome route/console pass or owner-key generation smoke was run; those remain open.
 
-## Phase 7 — Functional webapp validation — TO DO
+## Phase 7 — Functional webapp validation — IN PROGRESS
 
 This is a post-rollout product smoke, separate from the completed methodology baseline. Use an authenticated local
 session and record the browser surface used. A route returning HTTP 200, a build passing, or a manually visible page
 does not by itself prove the interaction works. Do not inspect, copy, log, or persist the owner's provider key.
+
+**Owner-key generation evidence (26 August 2026):** Chrome generated Tottori, Toowoomba, and Brno with one OpenAI
+Responses call each, `gpt-5.6-luna`, reasoning `max`, and one required web search for current RBA FX. Authenticated
+`/api/estimates` cross-checks showed 10 positive anchors, 19 planner fields, complete v1.1 provenance, and RBA
+25 August FX at `1.398601` AUD/USD for every active row. The final baseline passed: TypeScript, production build,
+40 Vitest files / 180 tests, memory mirror, deterministic formula/FX checks, and unchanged live CSV hash
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
 
 - [x] Fast-forward the complete v1.1 history into `main`, push it to origin, and pass the post-merge baseline:
   typecheck, production build, 36 Vitest files / 161 tests, memory mirror check, and deterministic v1.1 check.
@@ -300,18 +317,18 @@ does not by itself prove the interaction works. Do not inspect, copy, log, or pe
   and survives save/reload.
 - [ ] Create or update a saved plan snapshot and verify `/plan/compare` shows consistent summary totals, cumulative
   series, country allocation, and category allocation.
-- [ ] Add one new city with a user-entered OpenAI key and verify the default path is methodology `v1.1`, source
-  `llm_city_generation_v1_1`, and exactly one generation call with no metadata or search call.
-- [ ] For the generated city, verify ten finite positive anchors and all 19 deterministic planner fields, including
+- [x] Add new cities with a user-entered OpenAI key and verify the default path is methodology `v1.1`, source
+  `llm_city_generation_v1_1`, and exactly one generation call containing the required current-FX web search.
+- [x] For the generated cities, verify ten finite positive anchors and all 19 deterministic planner fields, including
   direct drink inputs, are available and usable when adding a planner leg.
-- [ ] Verify generated-city persistence survives reload and does not modify
+- [x] Verify generated-city persistence survives reload and does not modify
   `data/reference/city_costs_app_aud.csv`.
 - [ ] In `/dataset`, verify the city library/database table loads, existing and generated rows are distinguishable,
   labels and filters are understandable, and edit controls target the intended row.
-- [ ] Verify `/dataset` generation-history labelling shows methodology, source type, provider/model, reasoning effort,
+- [x] Verify `/dataset` generation-history labelling shows methodology, source type, provider/model, reasoning effort,
   prompt and formula versions, FX snapshot/rate/as-of date, anchors, request context, confidence notes, and evidence
   basis without presenting modelled values as observed prices.
-- [ ] Cross-check the generated row and its labels through `/api/estimates`; confirm persisted database values and
+- [x] Cross-check the generated rows and labels through `/api/estimates`; confirm persisted database values and
   API provenance agree with `/dataset`.
 - [ ] Exercise representative `/track` behavior: add, edit, tag, exclude/reinclude, reassign, and delete a manual
   expense, and verify planned-versus-actual views respond correctly.
@@ -319,8 +336,8 @@ does not by itself prove the interaction works. Do not inspect, copy, log, or pe
   base costs.
 - [ ] Exercise relevant empty, validation, provider-failure, and retry states; verify failures leave no partial city,
   estimate, leg, or expense records.
-- [ ] Complete the separately deferred Tottori, Toowoomba, and Brno owner-key smoke and provenance checks from
-  Phase 5, or leave them explicitly open with no pass claim.
+- [x] Complete the separately deferred Tottori, Toowoomba, and Brno owner-key smoke and provenance checks from
+  Phase 5.
 - [ ] Record defects with route, action, expected result, actual result, browser surface, and reproducible evidence;
   fix and rerun affected checks before marking this phase complete.
 
@@ -333,7 +350,8 @@ does not by itself prove the interaction works. Do not inspect, copy, log, or pe
 - [x] v1.1 uses the exact v1 formulas with deterministic server-side arithmetic and FX.
 - [x] Explicit v1 rollback remains operational.
 - [x] All current planner fields remain supported.
-- [x] Provider, model, reasoning, anchors, formula, and FX provenance survive persistence and API/UI display; the smoke remains an open operational follow-up.
+- [x] Provider, model, reasoning, anchors, formula, and FX provenance survive persistence and UI display; focused API
+  persistence regressions pass and the owner-key smoke is complete.
 - [x] No holdout, new methodology collection, lived-spending benchmark, coefficient change, or existing-city migration occurred.
 - [x] The tracked active product branch contains none of the v5/v6 experiment bloat; verified local copies are
   quarantined outside the repository and are not part of the branch.

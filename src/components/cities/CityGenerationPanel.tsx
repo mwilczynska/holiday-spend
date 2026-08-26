@@ -11,6 +11,7 @@ import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import {
   CITY_GENERATION_PROVIDER_OPTIONS,
+  CITY_GENERATION_DEFAULT_REASONING_EFFORT,
   CITY_GENERATION_REASONING_EFFORT_LABELS,
   getSupportedCityGenerationReasoningEfforts,
   getDefaultCityGenerationModels,
@@ -67,7 +68,9 @@ export function CityGenerationPanel({
     gemini: '',
   });
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultCityGenerationModels());
-  const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>('none');
+  const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>(
+    CITY_GENERATION_DEFAULT_REASONING_EFFORT
+  );
   const [showApiKey, setShowApiKey] = useState(false);
   const [referenceDate, setReferenceDate] = useState('');
   const [extraContext, setExtraContext] = useState('');
@@ -128,7 +131,11 @@ export function CityGenerationPanel({
   });
   const modelValidation = validateCityGenerationModel(provider, activeModel, modelDiscovery.result.effectiveModels);
   const supportedReasoningEfforts = getSupportedCityGenerationReasoningEfforts(provider, activeModel);
-  const effectiveReasoningEffort = supportedReasoningEfforts.includes(reasoningEffort) ? reasoningEffort : 'none';
+  const effectiveReasoningEffort = supportedReasoningEfforts.includes(reasoningEffort)
+    ? reasoningEffort
+    : supportedReasoningEfforts.includes(CITY_GENERATION_DEFAULT_REASONING_EFFORT)
+      ? CITY_GENERATION_DEFAULT_REASONING_EFFORT
+      : 'none';
 
   function updateProvider(nextProvider: ProviderOption) {
     setProvider(nextProvider);
@@ -175,6 +182,12 @@ export function CityGenerationPanel({
   function updateReasoningEffort(value: CityGenerationReasoningEffort) {
     setReasoningEffort(value);
     window.localStorage.setItem(`${STORAGE_PREFIX}.reasoningEffort`, value);
+  }
+
+  async function refreshModelsAndResetDefault() {
+    await modelDiscovery.refresh();
+    updateModel(selectedProvider.defaultModel);
+    updateReasoningEffort(CITY_GENERATION_DEFAULT_REASONING_EFFORT);
   }
 
   async function handleGenerate() {
@@ -302,7 +315,7 @@ export function CityGenerationPanel({
                 {model === selectedProvider.defaultModel ? `${model} (default)` : model}
               </Button>
             ))}
-            <Button type="button" variant="ghost" size="sm" onClick={() => void modelDiscovery.refresh()} disabled={modelDiscovery.loading || modelDiscovery.refreshing}>
+            <Button type="button" variant="ghost" size="sm" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing}>
               <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
             </Button>
           </div>

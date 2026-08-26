@@ -19,7 +19,7 @@ describe('provider-model-discovery', () => {
     const merged = mergeProviderModelSuggestions('openai', ['gpt-5.4', 'gpt-5.4-mini', 'gpt-4.1', 'gpt-4.1-mini']);
 
     // default model always first; remaining non-snapshot ids fall back to alphabetical sort
-    expect(merged[0]).toBe('gpt-5.4-mini');
+    expect(merged[0]).toBe('gpt-5.6-luna');
     expect(merged).toContain('gpt-5.4');
     expect(merged).toContain('gpt-4.1');
     expect(merged).toContain('gpt-4.1-mini');

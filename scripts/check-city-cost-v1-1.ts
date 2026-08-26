@@ -1,10 +1,7 @@
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import {
-  CITY_COST_V11_FX,
-  materializeCityCostV11,
-} from '@/lib/city-cost-methodology-v1-1';
+import { materializeCityCostV11 } from '@/lib/city-cost-methodology-v1-1';
 import { assertV11OutputPathSafe, LIVE_CITY_COST_CSV_RELATIVE_PATH } from '@/lib/city-cost-v1-1-guard';
 
 const liveCsvPath = path.resolve(process.cwd(), LIVE_CITY_COST_CSV_RELATIVE_PATH);
@@ -20,6 +17,13 @@ const fixture = {
   confidence: 'medium' as const,
   confidence_notes: 'Deterministic check fixture.',
   comparable_city_reasoning: 'Deterministic check fixture.',
+  fx: {
+    as_of_date: '2026-08-25',
+    source_name: 'Reserve Bank of Australia',
+    source_url: 'https://www.rba.gov.au/statistics/frequency/exchange-rates.html',
+    source_rate: 0.7,
+    source_rate_basis: 'USD_PER_AUD' as const,
+  },
   anchors_usd: {
     beer: 2,
     coffee: 3,
@@ -34,14 +38,15 @@ const fixture = {
   },
 };
 
-const first = materializeCityCostV11(fixture);
-const second = materializeCityCostV11(fixture);
+const checkDate = new Date('2026-08-26T12:00:00Z');
+const first = materializeCityCostV11(fixture, checkDate);
+const second = materializeCityCostV11(fixture, checkDate);
 if (JSON.stringify(first) !== JSON.stringify(second)) throw new Error('v1.1 materialization is not deterministic.');
-if (first.fx.audPerUsd !== CITY_COST_V11_FX.audPerUsd) throw new Error('v1.1 FX provenance is unstable.');
+if (first.fx.audPerUsd !== 1.428571) throw new Error('v1.1 FX inversion is unstable.');
 if (Object.keys(first.tiersAud).length !== 19) throw new Error('Expected all 19 persisted v1 planner fields.');
 if (first.tiersAud.drink_coffee !== first.anchorsAud.coffee) throw new Error('Direct coffee field lost cent precision.');
 if (Object.keys(first.mappedEstimate).length !== 22) throw new Error('Expected the complete mapped planner output.');
-if (first.tiersAud.accom_4_star !== Math.round(100 * 1.8 * CITY_COST_V11_FX.audPerUsd)) {
+if (first.tiersAud.accom_4_star !== Math.round(100 * 1.8 * first.fx.audPerUsd)) {
   throw new Error('The preserved v1 four-star formula changed.');
 }
 

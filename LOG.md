@@ -829,3 +829,32 @@ exactly 0 expenses and AUD 0. Focused tests cover full-set totals/IDs across pag
 TypeScript, production build, 39 Vitest files / 177 tests, memory mirror check, and deterministic v1.1 verification. The
 build retained the known handled `/api/export` dynamic-route diagnostic. The production server was stopped afterward;
 no browser storage, cookies, passwords, or provider keys were inspected.
+## Luna/max and generation-time FX owner-key smoke — 26 August 2026
+
+The OpenAI default was updated to `gpt-5.6-luna` with `max` reasoning, and model refresh now resets both the discovered
+model list and the configured model/reasoning defaults. The OpenAI transport moved to the Responses API because Luna
+accepts `reasoning.effort: "max"` there; a regression covers the nested request shape and one-call boundary.
+
+The first production attempt also exposed that the standalone bundle omitted the v1.1 prompt. The production launcher
+and output trace now stage both active city-generation prompts, including when the build ID is unchanged, with a
+regression for the missing-file case.
+
+The owner rejected the stale 22 July runtime FX snapshot. v1.1 now uses the same city-generation call to perform one
+web search and return the latest dated RBA USD/AUD observation alongside the ten holistic USD anchors. The server
+accepts only a recent official `rba.gov.au` observation, derives AUD-per-USD (including quote inversion), applies every
+tier formula deterministically, and fails before persistence for missing, stale, invalid, or non-RBA FX. The checked-in
+snapshot remains historical reproducibility evidence, not a runtime fallback. OpenAI rejected Web Search combined with
+legacy JSON mode, so web-enabled calls rely on the prompt plus strict server Zod validation; non-search JSON calls keep
+JSON mode.
+
+The Chrome owner-key smoke passed for Tottori, Toowoomba, and Brno. All three active rows are
+`llm_city_generation_v1_1`, OpenAI `gpt-5.6-luna`, reasoning `max`, formula `v1-formulas-preserved-v1.1`, and use RBA FX
+dated 25 August 2026 at approximately 1 USD = 1.40 AUD. Tottori's prior v6.1 estimate remained as history; Toowoomba and
+Brno were added through the new-city flow. Failed preflight/provider attempts wrote no row. The provider key remained
+browser-only and was not inspected, logged, copied, or persisted by Codex.
+
+The authenticated `/api/estimates` cross-check reported 10 anchors and all 19 planner fields for each city, with exact
+agreement on provider/model, reasoning, prompt, formula, methodology, source, FX rate/date/source, and history count.
+The final baseline passed TypeScript, the production build, 40 Vitest files / 180 tests, the memory mirror, and the
+deterministic v1.1 check. The live CSV hash remained
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.

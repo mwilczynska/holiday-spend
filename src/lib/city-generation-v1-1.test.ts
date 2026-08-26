@@ -50,7 +50,8 @@ describe('v1.1 city generation dispatch', () => {
     expect(prompt).toContain('- City: Toyama');
     expect(prompt).toContain('- Country: Japan');
     expect(prompt).toContain('A compact regional city.');
-    expect(prompt).toContain('Return USD anchors only. Do not return AUD values');
+    expect(prompt).toContain('Return USD anchors plus only the source FX observation');
+    expect(prompt).toContain('latest published Reserve Bank of Australia USD/AUD');
     expect(prompt).toContain('Do not return city or country fields');
     expect(prompt).not.toContain('"tiers_aud"');
   });

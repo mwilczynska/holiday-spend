@@ -60,11 +60,6 @@ function getRetryDelayMsFromHeaders(headers: Headers) {
   return null;
 }
 
-function isOpenAiMaxCompletionModel(model: string) {
-  const normalized = model.toLowerCase();
-  return normalized.startsWith('gpt-5') || normalized.startsWith('o1') || normalized.startsWith('o3') || normalized.startsWith('o4');
-}
-
 async function runOpenAiJsonPrompt(params: {
   systemPrompt: string;
   userPrompt: string;
@@ -72,37 +67,35 @@ async function runOpenAiJsonPrompt(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requireWebSearch?: boolean;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
 
   const model = normalizeModel(params.model) ?? (process.env.OPENAI_MODEL || CITY_GENERATION_DEFAULT_MODELS.openai);
+  const maxOutputTokens = params.reasoningEffort === 'max'
+    ? Math.max(params.maxTokens ?? 3000, 12000)
+    : params.maxTokens ?? 3000;
   const requestBody: Record<string, unknown> = {
     model,
-    response_format: { type: 'json_object' },
-    messages: [
-      {
-        role: 'system',
-        content: params.systemPrompt,
-      },
-      {
-        role: 'user',
-        content: params.userPrompt,
-      },
-    ],
+    instructions: params.systemPrompt,
+    input: params.userPrompt,
+    max_output_tokens: maxOutputTokens,
   };
 
-  if (isOpenAiMaxCompletionModel(model)) {
-    requestBody.max_completion_tokens = params.maxTokens ?? 3000;
-  } else {
-    requestBody.max_tokens = params.maxTokens ?? 3000;
+  if (!params.requireWebSearch) {
+    requestBody.text = { format: { type: 'json_object' } };
   }
 
   if (params.reasoningEffort && params.reasoningEffort !== 'none') {
-    requestBody.reasoning_effort = params.reasoningEffort;
+    requestBody.reasoning = { effort: params.reasoningEffort };
+  }
+  if (params.requireWebSearch) {
+    requestBody.tools = [{ type: 'web_search' }];
+    requestBody.tool_choice = 'required';
   }
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -117,8 +110,12 @@ async function runOpenAiJsonPrompt(params: {
   }
 
   const data = await response.json();
-  const text = data.choices?.[0]?.message?.content || '';
-  return { provider: 'openai', model, text };
+  const webSearchUsed = Array.isArray(data.output) && data.output.some((item: { type?: string }) => item.type === 'web_search_call');
+  const text = data.output_text || data.output
+    ?.flatMap((item: { content?: Array<{ text?: string }> }) => item.content || [])
+    .map((item: { text?: string }) => item.text || '')
+    .join('') || '';
+  return { provider: 'openai', model, text, webSearchUsed };
 }
 
 async function runAnthropicJsonPrompt(params: {
@@ -128,13 +125,14 @@ async function runAnthropicJsonPrompt(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requireWebSearch?: boolean;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
 
   const model =
     normalizeModel(params.model) ?? (process.env.ANTHROPIC_MODEL || CITY_GENERATION_DEFAULT_MODELS.anthropic);
-  let data: { content?: Array<{ text?: string }> } | null = null;
+  let data: { content?: Array<{ type?: string; text?: string }> } | null = null;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
     const thinkingBudget = params.reasoningEffort && params.reasoningEffort !== 'none'
@@ -148,6 +146,9 @@ async function runAnthropicJsonPrompt(params: {
     };
     if (thinkingBudget > 0) {
       requestBody.thinking = { type: 'enabled', budget_tokens: thinkingBudget };
+    }
+    if (params.requireWebSearch) {
+      requestBody.tools = [{ type: 'web_search_20250305', name: 'web_search', max_uses: 1 }];
     }
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -180,7 +181,8 @@ async function runAnthropicJsonPrompt(params: {
   }
 
   const text = data.content?.map((item: { text?: string }) => item.text || '').join('\n') || '';
-  return { provider: 'anthropic', model, text };
+  const webSearchUsed = Boolean(data.content?.some((item) => item.type === 'server_tool_use' || item.type === 'web_search_tool_result'));
+  return { provider: 'anthropic', model, text, webSearchUsed };
 }
 
 async function runGeminiJsonPrompt(params: {
@@ -190,13 +192,18 @@ async function runGeminiJsonPrompt(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requireWebSearch?: boolean;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
 
   const model = normalizeModel(params.model) ?? (process.env.GEMINI_MODEL || CITY_GENERATION_DEFAULT_MODELS.gemini);
   let data: {
-    candidates?: Array<{ finishReason?: string; content?: { parts?: Array<{ text?: string }> } }>;
+    candidates?: Array<{
+      finishReason?: string;
+      content?: { parts?: Array<{ text?: string }> };
+      groundingMetadata?: { webSearchQueries?: string[]; groundingChunks?: unknown[] };
+    }>;
   } | null = null;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
@@ -224,6 +231,7 @@ async function runGeminiJsonPrompt(params: {
               thinkingBudget: getCityGenerationThinkingBudget(params.reasoningEffort),
             },
           },
+          ...(params.requireWebSearch ? { tools: [{ googleSearch: {} }] } : {}),
         }),
       }
     );
@@ -256,7 +264,9 @@ async function runGeminiJsonPrompt(params: {
   const text =
     data.candidates?.[0]?.content?.parts?.map((item: { text?: string }) => item.text || '').join('\n') || '';
 
-  return { provider: 'gemini', model, text };
+  const grounding = data.candidates?.[0]?.groundingMetadata;
+  const webSearchUsed = Boolean(grounding?.webSearchQueries?.length || grounding?.groundingChunks?.length);
+  return { provider: 'gemini', model, text, webSearchUsed };
 }
 
 export async function runJsonPromptWithProvider(params: {
@@ -267,6 +277,7 @@ export async function runJsonPromptWithProvider(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requireWebSearch?: boolean;
 }) {
   const providerOrder: CityGenerationProvider[] = params.provider
     ? [params.provider]
@@ -281,7 +292,8 @@ export async function runJsonPromptWithProvider(params: {
       model?: string;
       maxTokens?: number;
       reasoningEffort?: CityGenerationReasoningEffort;
-    }) => Promise<{ provider: string; model: string; text: string } | null>
+      requireWebSearch?: boolean;
+    }) => Promise<{ provider: string; model: string; text: string; webSearchUsed: boolean } | null>
   > = {
     anthropic: runAnthropicJsonPrompt,
     openai: runOpenAiJsonPrompt,
@@ -296,6 +308,7 @@ export async function runJsonPromptWithProvider(params: {
       model: params.model,
       reasoningEffort: params.reasoningEffort,
       maxTokens: params.maxTokens,
+      requireWebSearch: params.requireWebSearch,
     });
 
     if (result) {

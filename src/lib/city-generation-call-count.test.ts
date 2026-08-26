@@ -16,6 +16,13 @@ const validResponse = JSON.stringify({
   confidence: 'medium',
   confidence_notes: 'Fixture estimate.',
   comparable_city_reasoning: 'Comparable regional city.',
+  fx: {
+    as_of_date: new Date().toISOString().slice(0, 10),
+    source_name: 'Reserve Bank of Australia',
+    source_url: 'https://www.rba.gov.au/statistics/frequency/exchange-rates.html',
+    source_rate: 0.715,
+    source_rate_basis: 'USD_PER_AUD',
+  },
   anchors_usd: {
     beer: 2,
     coffee: 3,
@@ -34,7 +41,12 @@ beforeEach(() => {
   process.env.CITY_COST_METHODOLOGY_VERSION = 'v1.1';
   delete process.env.CITY_COST_METHODOLOGY_V6;
   runJsonPromptWithProvider.mockReset();
-  runJsonPromptWithProvider.mockResolvedValue({ provider: 'openai', model: 'gpt-5.6-luna', text: validResponse });
+  runJsonPromptWithProvider.mockResolvedValue({
+    provider: 'openai',
+    model: 'gpt-5.6-luna',
+    text: validResponse,
+    webSearchUsed: true,
+  });
 });
 
 afterEach(() => {
@@ -61,6 +73,7 @@ describe('v1.1 generation call boundary', () => {
         provider: 'openai',
         model: 'gpt-5.6-luna',
         reasoningEffort: 'max',
+        requireWebSearch: true,
       })
     );
     expect(result.methodologyVersion).toBe('v1.1');

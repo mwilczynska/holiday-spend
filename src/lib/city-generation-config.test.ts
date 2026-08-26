@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
+  getSupportedCityGenerationReasoningEfforts,
   migrateStoredCityGenerationModels,
   validateCityGenerationModel,
 } from '@/lib/city-generation-config';
@@ -31,10 +32,10 @@ describe('city-generation-config', () => {
   });
 
   it('canonicalizes known models case-insensitively', () => {
-    const validation = validateCityGenerationModel('openai', 'GPT-5.4-MINI');
+    const validation = validateCityGenerationModel('openai', 'GPT-5.6-LUNA', ['gpt-5.6-luna']);
 
     expect(validation.isKnownModel).toBe(true);
-    expect(validation.effectiveModel).toBe('gpt-5.4-mini');
+    expect(validation.effectiveModel).toBe('gpt-5.6-luna');
     expect(validation.usesDefaultModel).toBe(true);
     expect(validation.tone).toBe('default');
   });
@@ -45,5 +46,17 @@ describe('city-generation-config', () => {
     expect(validation.isKnownModel).toBe(false);
     expect(validation.effectiveModel).toBe('gemini-experimental-foo');
     expect(validation.tone).toBe('warning');
+  });
+
+  it('offers only reasoning efforts accepted by the selected OpenAI model family', () => {
+    expect(getSupportedCityGenerationReasoningEfforts('openai', 'gpt-5.6-luna')).toEqual([
+      'none',
+      'low',
+      'medium',
+      'high',
+      'xhigh',
+      'max',
+    ]);
+    expect(getSupportedCityGenerationReasoningEfforts('openai', 'gpt-5.6-sol')).toContain('max');
   });
 });

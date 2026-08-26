@@ -96,10 +96,13 @@ describe('v1.1 performance bounds', () => {
     fs.mkdirSync(path.join(directory, '.next', 'standalone'), { recursive: true });
     fs.mkdirSync(path.join(directory, '.next', 'static', 'chunks'), { recursive: true });
     fs.mkdirSync(path.join(directory, 'public'), { recursive: true });
+    fs.mkdirSync(path.join(directory, 'docs', 'prompts'), { recursive: true });
     fs.writeFileSync(path.join(directory, '.next', 'BUILD_ID'), 'test-build');
     fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
     fs.writeFileSync(path.join(directory, '.next', 'static', 'chunks', 'app.js'), 'client');
     fs.writeFileSync(path.join(directory, 'public', 'icon.svg'), '<svg />');
+    fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_new_cities_1.md'), 'v1 prompt');
+    fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_new_cities_v1_1.md'), 'v1.1 prompt');
 
     const result = runNodeScript(startScript, directory);
 
@@ -110,6 +113,10 @@ describe('v1.1 performance bounds', () => {
     )).toBe('client');
     expect(fs.readFileSync(path.join(directory, '.next', 'standalone', 'public', 'icon.svg'), 'utf8'))
       .toBe('<svg />');
+    expect(fs.readFileSync(
+      path.join(directory, '.next', 'standalone', 'docs', 'prompts', 'llm_prompt_new_cities_v1_1.md'),
+      'utf8',
+    )).toBe('v1.1 prompt');
     expect(fs.readFileSync(path.join(directory, '.next', 'standalone', '.holiday-spend-build-id'), 'utf8'))
       .toBe('test-build\n');
   });

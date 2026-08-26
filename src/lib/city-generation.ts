@@ -275,7 +275,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
 
 async function generateCityCostEstimateV1(request: CityGenerationRequest): Promise<CityGenerationResult> {
   const { prompt, promptVersion } = buildCityGenerationPrompt(request);
-  let providerResponse: { provider: string; model: string; text: string } | null = null;
+  let providerResponse: { provider: string; model: string; text: string; webSearchUsed: boolean } | null = null;
   try {
     providerResponse = await runJsonPromptWithProvider({
       systemPrompt: 'You are a careful travel cost estimation assistant. Return valid JSON only.',
@@ -329,7 +329,7 @@ async function generateCityCostEstimateV1(request: CityGenerationRequest): Promi
 
 async function generateCityCostEstimateV11(request: CityGenerationRequest): Promise<CityGenerationResult> {
   const { prompt, promptVersion } = buildCityGenerationV11Prompt(request);
-  let providerResponse: { provider: string; model: string; text: string } | null = null;
+  let providerResponse: { provider: string; model: string; text: string; webSearchUsed: boolean } | null = null;
 
   try {
     providerResponse = await runJsonPromptWithProvider({
@@ -340,6 +340,7 @@ async function generateCityCostEstimateV11(request: CityGenerationRequest): Prom
       model: request.model,
       reasoningEffort: request.reasoningEffort,
       maxTokens: 2500,
+      requireWebSearch: true,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'LLM request failed.';
@@ -357,12 +358,19 @@ async function generateCityCostEstimateV11(request: CityGenerationRequest): Prom
     );
   }
 
+  if (!providerResponse.webSearchUsed) {
+    throw new CityGenerationError(
+      `${providerResponse.provider} did not perform the required live FX lookup; no estimate was saved.`,
+      502
+    );
+  }
+
   let parsedPayload: CityCostV11AnchorResponse;
   try {
     parsedPayload = cityCostV11AnchorResponseSchema.parse(extractJsonObject(providerResponse.text));
   } catch {
     throw new CityGenerationError(
-      `The ${providerResponse.provider} response did not match the required v1.1 anchor-only JSON schema.`,
+      `The ${providerResponse.provider} response did not match the required v1.1 anchor-and-current-FX JSON schema.`,
       502
     );
   }

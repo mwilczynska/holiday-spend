@@ -7,20 +7,21 @@ keep one phase in progress and name one exact next action.
 ## Target
 
 Ship the simple v1.1 path for newly generated cities while preserving v1 rollback. Keep all 19 planner tiers. The
-model returns only the existing ten USD anchors in one schema-constrained call; deterministic server code applies the
-exact v1 formulas and the checked-in FX snapshot. Persist methodology, provider/model, reasoning, prompt/formula, FX,
+model returns the existing ten USD anchors plus a recent official RBA FX observation in one web-enabled call;
+deterministic server code validates/inverts FX and applies the exact v1 formulas. Persist methodology, provider/model,
+reasoning, prompt/formula, FX,
 anchors, request context, and confidence provenance without inventing source grades or intervals.
 
-## Current checkpoint - 25 August 2026
+## Current checkpoint - 26 August 2026
 
 - The cleanup began with `main` and `origin/main` at `40f3c65`; v1.1 is already the default for newly generated cities,
   with explicit v1 rollback and fail-closed v6 retirement still in place.
-- The current TypeScript, production build, 37-file / 171-test, memory-mirror, deterministic v1.1, and route-shell
-  performance checks pass. No authenticated Chrome pass or owner-key generation smoke has been claimed.
+- The authenticated Chrome owner-key smoke passed for Tottori, Toowoomba, and Brno with OpenAI `gpt-5.6-luna`,
+  reasoning `max`, one web-enabled generation call per city, deterministic v1 formulas, and RBA FX dated 25 August.
 - The tracked product branch contains no v5/v6 experiment corpus. The three verified local v5 copies were moved to a
   named quarantine outside the repository; no v5 files remain untracked in the working tree.
-- Continue with the authenticated route/console and render-bound pass described in `PLAN.md` and
-  `docs/dev/handoffs/city-cost-v1-1.md`.
+- Continue with the remaining planner, saved-plan, tracking, settings, and failure-state workflows described in
+  `PLAN.md` after committing the verified generation checkpoint.
 
 ## Stop rules
 
@@ -37,7 +38,7 @@ anchors, request context, and confidence provenance without inventing source gra
    inspect browser storage or provider keys.
 2. Keep v1.1 as the new-city default and retain explicit v1 rollback; rerun the full baseline after implementation
    changes.
-3. Run the Tottori, Toowoomba, and Brno owner-key smoke only after the authenticated runtime/UI pass. Treat it as
-   operational validation, not an accuracy benchmark, and do not claim a pass until it is actually run.
+3. Preserve the completed Tottori, Toowoomba, and Brno owner-key smoke as operational validation, not an accuracy
+   benchmark; rerun it only when a relevant generation boundary changes.
 4. Preserve the archived v6 branch, tag, and historical log entries; do not migrate the existing CSV without a separate
    decision.

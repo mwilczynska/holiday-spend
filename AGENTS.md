@@ -79,17 +79,18 @@ the first v1.1 simplification so the lived product behavior is not silently alte
 The active plan in `PLAN.md` replaces the v6.1 source-heavy approach with a small v1.1 path for newly generated
 cities only:
 
-- one ordinary schema-constrained LLM call returns the same ten USD anchors;
-- the LLM returns no derived tiers and no currency conversion;
-- deterministic server code applies the exact v1 formulas and converts with the checked-in FX snapshot;
+- one web-enabled LLM call returns the same ten USD anchors plus the latest dated RBA USD/AUD observation;
+- the LLM returns no derived tiers, AUD values, or conversion arithmetic;
+- deterministic server code validates and, when necessary, inverts the recent RBA observation, then applies the exact
+  v1 formulas and USD→AUD conversion;
 - anchors, provider/model, reasoning effort, prompt/formula versions, confidence and FX provenance are persisted;
 - no grades or intervals are fabricated for holistic model estimates;
 - v1 remains an explicit rollback through `CITY_COST_METHODOLOGY_VERSION=v1`;
 - `CITY_COST_METHODOLOGY_V6=true` must never activate v6.1.
 
 v1.1 does not rewrite the 121-city CSV, access a holdout, collect a methodology panel, fit coefficients, or
-bulk-migrate existing cities. It becomes the default for new cities only after the checklist and functional smoke
-pass.
+bulk-migrate existing cities. It is the default for new cities. The Tottori, Toowoomba, and Brno owner-key smoke
+passed on 26 August 2026 with OpenAI `gpt-5.6-luna`, reasoning `max`, and dated RBA FX provenance.
 
 ### v6 and v6.1 research history
 
@@ -218,8 +219,8 @@ failure until the local server responds to `http://localhost:3000/` after this r
 | --- | --- |
 | `PLAN.md` | Active v1.1 implementation and rollout checklist |
 | `docs/prompts/llm_prompt_new_cities_1.md` | Frozen v1 rollback prompt |
-| `docs/prompts/llm_prompt_new_cities_v1_1.md` | Anchor-only v1.1 prompt; derived tiers and FX stay server-side |
-| `src/lib/city-cost-methodology-v1-1.ts` | Pure v1.1 schema, frozen FX provenance and formula-preserving materializer |
+| `docs/prompts/llm_prompt_new_cities_v1_1.md` | v1.1 prompt for holistic anchors plus a current RBA FX observation; tiers and conversion stay server-side |
+| `src/lib/city-cost-methodology-v1-1.ts` | v1.1 schema, fresh-FX validation/inversion and formula-preserving materializer |
 | `src/lib/city-generation.ts` | v1/v1.1 generation dispatch and schema validation |
 | `src/lib/city-generation-service.ts` | Estimate persistence and city updates |
 | `src/lib/city-generation-persistence.ts` | Explicit v1/v1.1 database persistence adapter |

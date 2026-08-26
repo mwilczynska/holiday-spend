@@ -1,5 +1,4 @@
 import { createHash } from 'node:crypto';
-import fxSnapshot from '../../data/reference/fx/city_cost_fx_aud_2026-07-22.json';
 import type { CityEstimateData } from '@/types';
 import { z } from 'zod';
 
@@ -8,6 +7,24 @@ export const CITY_COST_V11_PROMPT_VERSION = 'llm_prompt_new_cities_v1_1.md';
 export const CITY_COST_V11_FORMULA_VERSION = 'v1-formulas-preserved-v1.1';
 
 const positiveNumber = z.number().finite().positive();
+const isoDate = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, 'Expected an ISO date (YYYY-MM-DD).')
+  .refine((value) => {
+    const parsed = new Date(`${value}T00:00:00Z`);
+    return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
+  }, 'Expected a real calendar date.');
+const plausibleFxRate = positiveNumber.gte(0.1).lte(10);
+
+export const cityCostV11FxObservationSchema = z
+  .object({
+    as_of_date: isoDate,
+    source_name: z.literal('Reserve Bank of Australia'),
+    source_url: z.string().url(),
+    source_rate: plausibleFxRate,
+    source_rate_basis: z.enum(['USD_PER_AUD', 'AUD_PER_USD']),
+  })
+  .strict();
 
 export const cityCostV11AnchorSchema = z
   .object({
@@ -40,32 +57,34 @@ export const cityCostV11AnchorResponseSchema = z
     confidence: z.enum(['low', 'medium', 'high']),
     confidence_notes: z.string().trim().min(1),
     comparable_city_reasoning: z.string().trim().min(1),
+    fx: cityCostV11FxObservationSchema,
     anchors_usd: cityCostV11AnchorSchema,
   })
   .strict();
 
 export type CityCostV11AnchorResponse = z.infer<typeof cityCostV11AnchorResponseSchema>;
 export type CityCostV11AnchorsUsd = z.infer<typeof cityCostV11AnchorSchema>;
+export type CityCostV11FxObservation = z.infer<typeof cityCostV11FxObservationSchema>;
 
-export const CITY_COST_V11_FX = {
-  snapshotId: fxSnapshot.snapshotId,
-  asOfDate: fxSnapshot.asOfDate,
-  baseCurrency: fxSnapshot.baseCurrency,
-  currency: fxSnapshot.rates.USD.currency,
-  audPerUsd: fxSnapshot.rates.USD.audPerUnit,
-  sourceName: fxSnapshot.rates.USD.sourceName,
-  sourceUrl: fxSnapshot.rates.USD.sourceUrl,
-  sourceDate: fxSnapshot.rates.USD.sourceDate,
-  sourceQuote: fxSnapshot.rates.USD.sourceQuote,
-  derivation: fxSnapshot.rates.USD.derivation,
-  derivationFormula: fxSnapshot.rates.USD.derivationFormula,
-  contentHash: createHash('sha256').update(JSON.stringify(fxSnapshot)).digest('hex'),
-} as const;
+export interface CityCostV11FxProvenance {
+  snapshotId: string;
+  asOfDate: string;
+  baseCurrency: 'USD';
+  currency: 'AUD';
+  audPerUsd: number;
+  sourceName: string;
+  sourceUrl: string;
+  sourceDate: string;
+  sourceQuote: string;
+  derivation: string;
+  derivationFormula: string;
+  contentHash: string;
+}
 
 export interface CityCostV11Materialization {
   methodologyVersion: typeof CITY_COST_V11_METHODOLOGY_VERSION;
   formulaVersion: typeof CITY_COST_V11_FORMULA_VERSION;
-  fx: typeof CITY_COST_V11_FX;
+  fx: CityCostV11FxProvenance;
   anchorsUsd: CityCostV11AnchorsUsd;
   anchorsAud: Record<keyof CityCostV11AnchorsUsd, number>;
   tiersUsd: Record<string, number>;
@@ -87,9 +106,9 @@ function ensureFinitePositive(value: number, label: string) {
   }
 }
 
-function convertAnchorMap(anchors: CityCostV11AnchorsUsd) {
+function convertAnchorMap(anchors: CityCostV11AnchorsUsd, audPerUsd: number) {
   return Object.fromEntries(
-    Object.entries(anchors).map(([key, value]) => [key, roundCents(value * CITY_COST_V11_FX.audPerUsd)])
+    Object.entries(anchors).map(([key, value]) => [key, roundCents(value * audPerUsd)])
   ) as Record<keyof CityCostV11AnchorsUsd, number>;
 }
 
@@ -123,26 +142,68 @@ function buildTiersUsd(anchors: CityCostV11AnchorsUsd) {
   };
 }
 
-function convertTierMap(tiersUsd: Record<string, number>): Record<string, number> {
-  return Object.fromEntries(Object.entries(tiersUsd).map(([key, value]) => [key, roundAud(value * CITY_COST_V11_FX.audPerUsd)]));
+function convertTierMap(tiersUsd: Record<string, number>, audPerUsd: number): Record<string, number> {
+  return Object.fromEntries(Object.entries(tiersUsd).map(([key, value]) => [key, roundAud(value * audPerUsd)]));
 }
 
-export function materializeCityCostV11(input: unknown): CityCostV11Materialization {
+function materializeFx(observation: CityCostV11FxObservation, now: Date): CityCostV11FxProvenance {
+  const sourceUrl = new URL(observation.source_url);
+  const sourceHost = sourceUrl.hostname.toLowerCase();
+  if (sourceUrl.protocol !== 'https:' || (sourceHost !== 'rba.gov.au' && !sourceHost.endsWith('.rba.gov.au'))) {
+    throw new Error('v1.1 FX source must be an official Reserve Bank of Australia URL.');
+  }
+
+  const asOfMs = Date.parse(`${observation.as_of_date}T00:00:00Z`);
+  const todayMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const ageDays = (todayMs - asOfMs) / 86_400_000;
+  if (!Number.isFinite(asOfMs) || ageDays < -1 || ageDays > 7) {
+    throw new Error('v1.1 FX observation must be dated within the last seven days.');
+  }
+
+  const audPerUsd = observation.source_rate_basis === 'AUD_PER_USD'
+    ? observation.source_rate
+    : 1 / observation.source_rate;
+  ensureFinitePositive(audPerUsd, 'USD to AUD rate');
+  const roundedRate = Math.round(audPerUsd * 1_000_000) / 1_000_000;
+  const derivationFormula = observation.source_rate_basis === 'AUD_PER_USD'
+    ? 'AUD per USD = published source rate'
+    : 'AUD per USD = 1 / published USD per AUD rate';
+  const sourceQuote = `1 ${observation.source_rate_basis === 'AUD_PER_USD' ? 'USD' : 'AUD'} = ${observation.source_rate} ${observation.source_rate_basis === 'AUD_PER_USD' ? 'AUD' : 'USD'}`;
+  const hashInput = JSON.stringify({ ...observation, audPerUsd: roundedRate, derivationFormula });
+
+  return {
+    snapshotId: `llm-rba-fx-${observation.as_of_date}`,
+    asOfDate: observation.as_of_date,
+    baseCurrency: 'USD',
+    currency: 'AUD',
+    audPerUsd: roundedRate,
+    sourceName: observation.source_name,
+    sourceUrl: observation.source_url,
+    sourceDate: observation.as_of_date,
+    sourceQuote,
+    derivation: 'Fresh RBA observation returned by the generation call; conversion applied deterministically by the server.',
+    derivationFormula,
+    contentHash: createHash('sha256').update(hashInput).digest('hex'),
+  };
+}
+
+export function materializeCityCostV11(input: unknown, now = new Date()): CityCostV11Materialization {
   const parsed = cityCostV11AnchorResponseSchema.parse(input);
   const anchors = parsed.anchors_usd;
   Object.entries(anchors).forEach(([key, value]) => ensureFinitePositive(value, `anchor ${key}`));
+  const fx = materializeFx(parsed.fx, now);
 
-  const anchorsAud = convertAnchorMap(anchors);
+  const anchorsAud = convertAnchorMap(anchors, fx.audPerUsd);
   const tiersUsd = buildTiersUsd(anchors);
   const tiersAud: Record<string, number> = {
-    ...convertTierMap(tiersUsd),
+    ...convertTierMap(tiersUsd, fx.audPerUsd),
     drink_coffee: anchorsAud.coffee,
   };
 
   return {
     methodologyVersion: CITY_COST_V11_METHODOLOGY_VERSION,
     formulaVersion: CITY_COST_V11_FORMULA_VERSION,
-    fx: CITY_COST_V11_FX,
+    fx,
     anchorsUsd: anchors,
     anchorsAud,
     tiersUsd,

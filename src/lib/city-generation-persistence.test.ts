@@ -22,6 +22,13 @@ function v11Result(): CityGenerationResult {
     confidence: 'medium' as const,
     confidence_notes: 'Holistic fixture.',
     comparable_city_reasoning: 'Comparable fixture.',
+    fx: {
+      as_of_date: new Date().toISOString().slice(0, 10),
+      source_name: 'Reserve Bank of Australia' as const,
+      source_url: 'https://www.rba.gov.au/statistics/frequency/exchange-rates.html',
+      source_rate: 0.715,
+      source_rate_basis: 'USD_PER_AUD' as const,
+    },
     anchors_usd: anchorValues,
   };
   return {
@@ -81,7 +88,10 @@ describe('city-generation-persistence', () => {
     });
     expect(persisted.anchors).toMatchObject({ currency: 'USD', convertedCurrency: 'AUD' });
     expect(persisted.inputSnapshot).toMatchObject({ cityName: 'Toyama', countryName: 'Japan' });
-    expect(persisted.apiSummary.fx).toMatchObject({ snapshotId: 'aud-reference-2026-07-22-v1' });
+    expect(persisted.apiSummary.fx).toMatchObject({
+      snapshotId: `llm-rba-fx-${new Date().toISOString().slice(0, 10)}`,
+      sourceName: 'Reserve Bank of Australia',
+    });
     expect(persisted.sources).toMatchObject({
       drinkLocalBeer: 'llm_city_generation_v1_1',
       drinkImportBeer: 'llm_city_generation_v1_1',
