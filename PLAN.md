@@ -8,10 +8,10 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `38b622f` — opt-in browser key saving, aligned model/effort controls,
-chronological dashboard country blocks, and a directional transport-accuracy report harness.
+**Latest implementation checkpoint:** `d9673f0` — opt-in browser key saving, aligned model/effort controls,
+chronological dashboard country blocks, and a four-route mocked transport-accuracy smoke pipeline.
 
-**Latest plan checkpoint:** `38b622f` — recorded the accuracy harness while keeping live same-day quote capture open.
+**Latest plan checkpoint:** `d9673f0` — recorded the mocked smoke while keeping live same-day quote capture open.
 
 **Next action:** Run the directional transport-estimation accuracy smoke using fixed route and quote fixtures, then
 record the evidence and any initial tolerance decision.
