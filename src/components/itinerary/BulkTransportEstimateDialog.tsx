@@ -20,6 +20,7 @@ import {
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
+import { BULK_TRANSPORT_CONCURRENCY, runWithConcurrency } from '@/lib/bulk-transport-estimation';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import type { IntercityTransportItem, TransportEstimateMode, TransportEstimateResult } from '@/types';
 
@@ -69,16 +70,6 @@ interface EstimatedLegResult {
   status: 'success' | 'error';
   estimate?: TransportEstimateResult;
   error?: string;
-}
-
-const BULK_ESTIMATE_DELAY_MS: Record<ProviderOption, number> = {
-  anthropic: 3500,
-  openai: 750,
-  gemini: 2000,
-};
-
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function getDefaultModels() {
@@ -331,57 +322,62 @@ export function BulkTransportEstimateDialog({
     setError(null);
     setResults([]);
 
-    const nextResults: EstimatedLegResult[] = [];
+    const selectedLegsSnapshot = [...selectedTransportLegs];
+    const selectedLegOrder = new Map(selectedLegsSnapshot.map((leg, index) => [leg.legId, index]));
 
-    for (let index = 0; index < selectedTransportLegs.length; index += 1) {
-      const leg = selectedTransportLegs[index];
-      try {
-        const response = await fetch(`/api/itinerary/legs/${leg.legId}/estimate-transport`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            provider,
-            apiKey: activeApiKey || undefined,
-            model: modelValidation.effectiveModel || undefined,
-            reasoningEffort: effectiveReasoningEffort,
-            allowedModes,
-            referenceDate: referenceDate || undefined,
-            extraContext: extraContext || undefined,
-          }),
-        });
+    try {
+      await runWithConcurrency(
+        selectedLegsSnapshot,
+        BULK_TRANSPORT_CONCURRENCY[provider],
+        async (leg): Promise<EstimatedLegResult> => {
+          try {
+            const response = await fetch(`/api/itinerary/legs/${leg.legId}/estimate-transport`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                provider,
+                apiKey: activeApiKey || undefined,
+                model: modelValidation.effectiveModel || undefined,
+                reasoningEffort: effectiveReasoningEffort,
+                allowedModes,
+                referenceDate: referenceDate || undefined,
+                extraContext: extraContext || undefined,
+              }),
+            });
 
-        const data = await response.json();
-        if (!response.ok) {
-          throw new Error(data.error || `Failed to estimate ${leg.destination}.`);
-        }
+            const data = await response.json();
+            if (!response.ok) {
+              throw new Error(data.error || `Failed to estimate ${leg.destination}.`);
+            }
 
-        nextResults.push({
-          legId: leg.legId,
-          origin: leg.origin,
-          destination: leg.destination,
-          travelDate: leg.travelDate,
-          status: 'success',
-          estimate: data.data as TransportEstimateResult,
-        });
-      } catch (err) {
-        nextResults.push({
-          legId: leg.legId,
-          origin: leg.origin,
-          destination: leg.destination,
-          travelDate: leg.travelDate,
-          status: 'error',
-          error: err instanceof Error ? err.message : 'Failed to estimate transport for this leg.',
-        });
-      }
-
-      setResults([...nextResults]);
-
-      if (index < selectedTransportLegs.length - 1) {
-        await sleep(BULK_ESTIMATE_DELAY_MS[provider]);
-      }
+            return {
+              legId: leg.legId,
+              origin: leg.origin,
+              destination: leg.destination,
+              travelDate: leg.travelDate,
+              status: 'success',
+              estimate: data.data as TransportEstimateResult,
+            };
+          } catch (err) {
+            return {
+              legId: leg.legId,
+              origin: leg.origin,
+              destination: leg.destination,
+              travelDate: leg.travelDate,
+              status: 'error',
+              error: err instanceof Error ? err.message : 'Failed to estimate transport for this leg.',
+            };
+          }
+        },
+        (result) => {
+          setResults((current) => [...current.filter((entry) => entry.legId !== result.legId), result].sort(
+            (left, right) => (selectedLegOrder.get(left.legId) ?? 0) - (selectedLegOrder.get(right.legId) ?? 0)
+          ));
+        },
+      );
+    } finally {
+      setEstimating(false);
     }
-
-    setEstimating(false);
   }
 
   async function handleApplyAll() {
@@ -702,7 +698,7 @@ export function BulkTransportEstimateDialog({
           {estimating ? (
             <InlineLoadingState
               title="Estimating selected transport legs"
-              detail="The planner is working through the checked route legs sequentially so each estimate uses the same provider settings."
+              detail="The planner is estimating checked route legs concurrently with a provider-aware request limit."
             />
           ) : null}
 

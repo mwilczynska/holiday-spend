@@ -14,8 +14,8 @@ full-width provider model grids.
 **Latest plan checkpoint:** `e0ccb45` — reorganized Phase 7 into completed checks, remaining checks, and next-session
 implementation TODOs, with consistent checkbox status.
 
-**Next action:** Implement the first item in the in-progress Phase 7 next-session TODO: bounded concurrent transport
-estimates for multiple legs, then verify each completed item with focused tests before marking it `[x]`.
+**Next action:** Continue with the remaining Phase 7 next-session TODOs, beginning with the transport-estimate accuracy
+smoke and then the API-key, layout, and country-block items. Mark each pending item complete only after its evidence is recorded.
 
 ## Current scope and decisions
 
@@ -373,7 +373,7 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
 
 ### Next-session implementation TODO — IN PROGRESS
 
-- [ ] Call transport LLMs concurrently for multiple legs.
+- [x] Call transport LLMs concurrently for multiple legs.
   - When more than one destination leg is selected in the bulk transport dialog, dispatch one estimate request per
     city/leg concurrently instead of awaiting the current sequential loop.
   - Preserve each leg's route, dates, traveller count, provider, model, reasoning effort, allowed modes, and context;
@@ -382,6 +382,8 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
     apply step unchanged.
   - Acceptance: requests overlap for N selected legs, every response is matched to its city, partial failures remain
     visible, and no transport row is duplicated or applied to the wrong leg.
+  - Verified by focused Vitest coverage (12 tests across the scheduler, transport adapter, and planner UI regression);
+    the single-leg path and apply loop remain unchanged.
 
 - [ ] Document and roughly test how transport costs are estimated.
   - Current pipeline, to verify against the implementation before testing:

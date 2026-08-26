@@ -81,4 +81,16 @@ describe('planner city picker UI', () => {
       expect(source).toContain('md:col-span-2');
     }
   });
+
+  it('routes bulk transport estimation through the bounded concurrent scheduler', () => {
+    const source = fs.readFileSync(
+      path.join(projectRoot, 'src', 'components', 'itinerary', 'BulkTransportEstimateDialog.tsx'),
+      'utf8'
+    );
+
+    expect(source).toContain('runWithConcurrency(');
+    expect(source).toContain('BULK_TRANSPORT_CONCURRENCY[provider]');
+    expect(source).toContain('concurrently with a provider-aware request limit');
+    expect(source).not.toContain('BULK_ESTIMATE_DELAY_MS');
+  });
 });

@@ -917,3 +917,12 @@ new-city generation. The selected effort is persisted per transport dialog, rese
 transport route, and passed through OpenAI reasoning, Anthropic thinking, and Gemini thinking-budget request fields.
 The model chooser occupies the full dialog width in both transport dialogs and in both new-city surfaces, so four
 suggestions use the available row instead of half the panel.
+
+## Concurrent bulk transport estimates - 26 August 2026
+
+Bulk intercity transport estimation now fans out selected destination legs through a provider-aware concurrency limit
+(OpenAI 4; Anthropic and Gemini 2) instead of awaiting each request with a fixed delay. Results are still ordered by
+the selected itinerary legs while each successful or failed response remains attached to its own city. The existing
+single-leg estimate and bulk apply paths are unchanged.
+
+Focused Vitest coverage passed for the scheduler limits, completion-order updates, and bulk-dialog integration.
