@@ -11,7 +11,8 @@
 **Latest implementation checkpoint:** `3b9afe4` — multi-file transaction import, transport reasoning controls, and
 full-width provider model grids.
 
-**Latest plan checkpoint:** `d57949f` — expanded Phase 7 with the five pending next-session product TODOs.
+**Latest plan checkpoint:** `e0ccb45` — reorganized Phase 7 into completed checks, remaining checks, and next-session
+implementation TODOs, with consistent checkbox status.
 
 **Next action:** In the next session, complete the product TODO in Phase 7, starting with transport concurrency and
 accuracy work. Mark each pending item complete only after its implementation evidence is recorded.
