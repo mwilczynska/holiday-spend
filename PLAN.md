@@ -1,112 +1,55 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** METHODOLOGY COMPLETE — PHASE 7A COMPLETE; OWNER-KEY CITY SMOKE PASSED
+**Status:** Methodology complete; Phase 7A complete; Phase 7 in progress.
 
-**Current phase:** Phase 7 — functional webapp validation (in progress; remaining route workflows open)
+**Current phase:** Phase 7 — Functional webapp validation (in progress; remaining route workflows open).
 
 **Branch:** `main` (v1.1 history merged and synchronized with `origin/main`; protected v6 archive retained)
 
 **Last updated:** 26 August 2026
 
-**Current task checkpoint:** `3b9afe4` - multi-file transaction import, safe import-response handling, and provider-aware
-intercity transport reasoning controls/full-width model grids.
-
 **Latest implementation checkpoint:** `3b9afe4` — multi-file transaction import, transport reasoning controls, and
 full-width provider model grids.
 
-**Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
-no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
-its verification results.
+**Latest plan checkpoint:** `d57949f` — expanded Phase 7 with the five pending next-session product TODOs.
 
-**Next action:** In the next session, complete the product TODO below, starting with the transport concurrency and
-accuracy work. Do not mark these items complete until their implementation evidence is recorded.
+**Next action:** In the next session, complete the product TODO in Phase 7, starting with transport concurrency and
+accuracy work. Mark each pending item complete only after its implementation evidence is recorded.
 
-## Next-session TODO - intercity transport (26 August 2026)
+## Current scope and decisions
 
-1. **Call transport LLMs concurrently for multiple legs.**
-   - When more than one destination leg is selected in the bulk transport dialog, dispatch one estimate request per
-     city/leg concurrently instead of awaiting the current sequential loop.
-   - Preserve each leg's route, dates, traveller count, provider, model, reasoning effort, allowed modes, and context;
-     keep success/error state attached to the correct leg so one failed request does not hide the others.
-   - Use bounded, provider-aware concurrency and confirm rate-limit behavior. Keep the single-leg path and the later
-     apply step unchanged.
-   - Acceptance: requests overlap for N selected legs, every response is matched to its city, partial failures remain
-     visible, and no transport row is duplicated or applied to the wrong leg.
+### Owner decisions
 
-2. **Document and roughly test how transport costs are estimated.**
-   - Current pipeline, to verify against the implementation before testing:
-     1. The authenticated route loads the origin and destination legs, travel date, city/country metadata, traveller
-        count, allowed modes, reference date/booking context, and route facts such as same/different country or region.
-     2. It sends those inputs through the frozen `llm_prompt_intercity_transport_1.md` contract, which asks for
-        one-way, standard-adult costs for the supplied travellers, with explicit assumptions and source basis.
-     3. The selected OpenAI, Anthropic, or Gemini adapter tries web-grounded estimation first (web search or Google
-        Search where supported), passing the selected provider-native reasoning effort. The prompt asks for live
-        pricing when available and conservative model knowledge when it is not; it does not call a paid fare API or
-        apply a deterministic fare formula.
-     4. If the browse call fails, the adapter makes a strict JSON, non-search fallback call and records the fallback
-        reason. A missing key or provider failure fails the request rather than inventing a value.
-     5. The server extracts and schema-validates JSON, keeps at most four genuinely plausible modes, removes duplicate
-        modes, cleans labels/notes, and rounds each `total_aud` to whole AUD. The row draft cost must equal that total.
-     6. The UI shows assumptions, confidence, source basis, notes, and any citations for review; the user chooses an
-        option (or the bulk flow applies the selected top option), and only then is the transport row saved.
-   - Accuracy smoke test for the next session: select a small fixed fixture of short/long, domestic/international
-     routes with different plausible modes; record date, traveller count, search/fallback path, provider, model, and
-     all returned options/assumptions/citations; compare one-way totals with same-assumption operator or aggregator
-     quotes captured on the same day; report absolute and relative error, median/range, and notable outliers by route.
-     Keep the check explicitly directional rather than a scientific benchmark, use mocked responses or saved quote
-     fixtures for repeatability, and decide an initial tolerance plus whether more routes are needed.
-
-3. **Add an opt-in API-key save checkbox everywhere an LLM key is entered.**
-   - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and
-     single/bulk transport dialogs. Persist a key only in the browser when the user opts in; clearing the checkbox or
-     removing the key must clear the stored value. Never send keys to logs, the repository, or the database.
-   - Acceptance: the choice and key behavior are consistent across all provider inputs, and a fresh unchecked input
-     does not silently restore a previously saved key.
-
-4. **Place reasoning effort beside the model picker.**
-   - In both transport-estimate dialogs and both city-cost estimate dialogs, put the reasoning-effort control next to
-     the model picker at desktop widths, with a sensible stacked layout on narrow screens. Preserve the four-column
-     full-width model grid and provider-specific supported-effort behavior.
-   - Acceptance: the two controls remain visually associated for every provider, are usable at narrow widths, and the
-     selected effort still reaches the correct provider request.
-
-5. **Keep repeated dashboard country visits as separate chronological rows.**
-   - Change Country Comparison grouping to coalesce only uninterrupted consecutive itinerary legs with the same
-     country. If the itinerary leaves a country and later returns, emit a second row at the later position instead of
-     merging totals across the trip; retain the existing totals and category calculations within each block.
-   - Acceptance: `A, A, B, A` renders as `A, B, A` in itinerary order, while `A, A, B, B` remains `A, B`, with
-     regression coverage for totals and repeated-country labels.
+**Owner activation decision (18 August 2026):** The owner explicitly authorized v1.1 activation while deferring the
+keyed smoke because secure remote-desktop access was unavailable. That exception did not authorize existing-city
+migration or CSV changes; the deferred smoke was subsequently completed on 26 August 2026.
 
 **Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
 that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
 runtime fallback. The returned observation must include an as-of date and source provenance and pass server freshness
 and validity checks before any estimate is persisted.
 
-**Owner activation decision (18 August 2026):** The owner explicitly authorized v1.1 activation while deferring the
-keyed smoke because secure remote-desktop access was unavailable. That exception did not authorize existing-city
-migration or CSV changes; the deferred smoke was subsequently completed on 26 August 2026.
-
-## Current repository state - 25 August 2026
+### Repository state (25 August 2026 checkpoint)
 
 The documentation cleanup began with `main` and `origin/main` both at `40f3c65`; it changed no tracked implementation
 files. The three verified historical v5 files were moved outside the repository to a named quarantine, so no v5 files
 remain untracked in the working tree and none are part of the tracked v1.1 product branch.
 
-## Decision summary
+### Methodology and product scope
 
 v6.1 research is complete but is not accepted for product cutover. The staged v6.1 CSV will not replace the live
 dataset, Phase 11 is cancelled, and the v6.1 generation path will not remain an executable product option.
 
 The live 121-city v1 CSV remains unchanged. The clean v1.1 product branch was created from `main`. v1.1 keeps
-v1's anchor definitions and formulas exactly, but the LLM will return anchors only; deterministic server code will
-perform the formulas and USD→AUD conversion. Under the owner's explicit decision, v1.1 becomes the default for newly
-generated cities; the originally deferred owner-key smoke passed on 26 August 2026. Existing cities are not
-bulk-migrated.
+v1's anchor definitions and formulas exactly, but the LLM returns ten anchors plus a dated RBA USD/AUD observation;
+deterministic server code validates that observation, performs the formulas, and converts USD→AUD. Under the owner's
+explicit decision, v1.1 becomes the default for newly generated cities; the originally deferred owner-key smoke passed
+on 26 August 2026. Existing cities are not bulk-migrated.
 
 The lived-spending benchmark previously proposed as recommendation 4 is explicitly out of scope. No new collection,
 holdout, coefficient fitting, accommodation refit, or existing-city migration is authorized by this plan.
 
-## Plan maintenance rule
+## Plan maintenance
 
 This file is the canonical progress artifact.
 
@@ -212,9 +155,10 @@ This file is the canonical progress artifact.
 - [x] Verify each smoke city has ten positive anchors, deterministic tiers, one LLM call, and complete persisted/UI
   provenance. Tottori retained its historical v6.1 row; Toowoomba and Brno were added as v1.1 rows.
 - [x] Treat the smoke as operational validation only, not an accuracy benchmark.
-- [x] Record owner-approved activation with the smoke deferred; no smoke result is claimed.
-- [x] Make v1.1 the default for newly generated cities under the owner's explicit smoke-deferral decision; retain
-  smoke as an open operational follow-up.
+- [x] Record the owner-approved activation under the 18 August smoke-deferral decision; the later 26 August smoke pass
+  is recorded in Phase 7.
+- [x] Make v1.1 the default for newly generated cities under the owner's explicit smoke-deferral decision; the deferred
+  owner-key smoke was subsequently completed and no longer remains open.
 - [x] Run the complete post-activation baseline: typecheck, build, 36 Vitest files / 161 tests, memory checks, and the
   deterministic v1.1 check.
 - [x] Keep `CITY_COST_METHODOLOGY_VERSION=v1` as the immediate rollback.
@@ -241,7 +185,7 @@ This file is the canonical progress artifact.
 - [x] Run the complete pre-activation baseline during the owner-directed smoke deferral.
 - [x] Run the complete final baseline after owner-authorized v1.1 activation.
 - [x] Confirm the branch is clean and pushed at the final completion checkpoint.
-- [x] Mark this plan complete; the smoke remains a deferred operational follow-up with no pass claim.
+- [x] Mark the methodology plan complete; subsequent authenticated product validation is tracked separately in Phase 7.
 
 ## Phase 7A — Performance and runtime hardening — COMPLETE
 
@@ -371,6 +315,8 @@ The browser suite now pins one hostname, development PIN, and NextAuth environme
 response, preventing unrelated local secrets or a hostname split from invalidating authentication. The checkpoint
 baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memory mirror, and deterministic v1.1 checks.
 
+### Completed checks — COMPLETE
+
 - [x] Fast-forward the complete v1.1 history into `main`, push it to origin, and pass the post-merge baseline:
   typecheck, production build, 36 Vitest files / 161 tests, memory mirror check, and deterministic v1.1 check.
 - [x] Improve Add Itinerary Leg selection contrast and actions, reveal all legs after either city-add path, compact
@@ -388,6 +334,22 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
 - [x] Remove obsolete v1.1, v4, and v5 branch pointers only after proving their tips remain reachable from `main` or
   the protected v6 archive; preserve `feat/city-cost-methodology-v6` and
   `city-cost-v6.1-research-final-2026-08-18` locally and on origin.
+- [x] Add new cities with a user-entered OpenAI key and verify the default path is methodology `v1.1`, source
+  `llm_city_generation_v1_1`, and exactly one generation call containing the required current-FX web search.
+- [x] For the generated cities, verify ten finite positive anchors and all 19 deterministic planner fields, including
+  direct drink inputs, are available and usable when adding a planner leg.
+- [x] Verify generated-city persistence survives reload and does not modify
+  `data/reference/city_costs_app_aud.csv`.
+- [x] Verify `/dataset` generation-history labelling shows methodology, source type, provider/model, reasoning effort,
+  prompt and formula versions, FX snapshot/rate/as-of date, anchors, request context, confidence notes, and evidence
+  basis without presenting modelled values as observed prices.
+- [x] Cross-check the generated rows and labels through `/api/estimates`; confirm persisted database values and
+  API provenance agree with `/dataset`.
+- [x] Complete the separately deferred Tottori, Toowoomba, and Brno owner-key smoke and provenance checks from
+  Phase 5.
+
+### Remaining authenticated checks — TO DO
+
 - [ ] Confirm `/`, `/plan`, `/plan/compare`, `/track`, `/dataset`, `/estimates`, and `/settings` render without
   unexpected console-visible or user-visible errors.
 - [ ] Add a new trip leg in `/plan`, select its city, dates, accommodation, food, drink, and activity tiers, and save.
@@ -397,31 +359,74 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
   and survives save/reload.
 - [ ] Create or update a saved plan snapshot and verify `/plan/compare` shows consistent summary totals, cumulative
   series, country allocation, and category allocation.
-- [x] Add new cities with a user-entered OpenAI key and verify the default path is methodology `v1.1`, source
-  `llm_city_generation_v1_1`, and exactly one generation call containing the required current-FX web search.
-- [x] For the generated cities, verify ten finite positive anchors and all 19 deterministic planner fields, including
-  direct drink inputs, are available and usable when adding a planner leg.
-- [x] Verify generated-city persistence survives reload and does not modify
-  `data/reference/city_costs_app_aud.csv`.
 - [ ] In `/dataset`, verify the city library/database table loads, existing and generated rows are distinguishable,
   labels and filters are understandable, and edit controls target the intended row.
-- [x] Verify `/dataset` generation-history labelling shows methodology, source type, provider/model, reasoning effort,
-  prompt and formula versions, FX snapshot/rate/as-of date, anchors, request context, confidence notes, and evidence
-  basis without presenting modelled values as observed prices.
-- [x] Cross-check the generated rows and labels through `/api/estimates`; confirm persisted database values and
-  API provenance agree with `/dataset`.
 - [ ] Exercise representative `/track` behavior: add, edit, tag, exclude/reinclude, reassign, and delete a manual
   expense, and verify planned-versus-actual views respond correctly.
 - [ ] Verify settings changes that affect traveller count persist and rescale planner totals without rewriting city
   base costs.
 - [ ] Exercise relevant empty, validation, provider-failure, and retry states; verify failures leave no partial city,
   estimate, leg, or expense records.
-- [x] Complete the separately deferred Tottori, Toowoomba, and Brno owner-key smoke and provenance checks from
-  Phase 5.
 - [ ] Record defects with route, action, expected result, actual result, browser surface, and reproducible evidence;
   fix and rerun affected checks before marking this phase complete.
 
-## Definition of Done
+### Next-session implementation TODO — TO DO
+
+- [ ] Call transport LLMs concurrently for multiple legs.
+  - When more than one destination leg is selected in the bulk transport dialog, dispatch one estimate request per
+    city/leg concurrently instead of awaiting the current sequential loop.
+  - Preserve each leg's route, dates, traveller count, provider, model, reasoning effort, allowed modes, and context;
+    keep success/error state attached to the correct leg so one failed request does not hide the others.
+  - Use bounded, provider-aware concurrency and confirm rate-limit behavior. Keep the single-leg path and the later
+    apply step unchanged.
+  - Acceptance: requests overlap for N selected legs, every response is matched to its city, partial failures remain
+    visible, and no transport row is duplicated or applied to the wrong leg.
+
+- [ ] Document and roughly test how transport costs are estimated.
+  - Current pipeline, to verify against the implementation before testing:
+    1. The authenticated route loads the origin and destination legs, travel date, city/country metadata, traveller
+       count, allowed modes, reference date/booking context, and route facts such as same/different country or region.
+    2. It sends those inputs through the frozen `llm_prompt_intercity_transport_1.md` contract, which asks for
+       one-way, standard-adult costs for the supplied travellers, with explicit assumptions and source basis.
+    3. The selected OpenAI, Anthropic, or Gemini adapter tries web-grounded estimation first (web search or Google
+       Search where supported), passing the selected provider-native reasoning effort. The prompt asks for live
+       pricing when available and conservative model knowledge when it is not; it does not call a paid fare API or
+       apply a deterministic fare formula.
+    4. If the browse call fails, the adapter makes a strict JSON, non-search fallback call and records the fallback
+       reason. A missing key or provider failure fails the request rather than inventing a value.
+    5. The server extracts and schema-validates JSON, keeps at most four genuinely plausible modes, removes duplicate
+       modes, cleans labels/notes, and rounds each `total_aud` to whole AUD. The row draft cost must equal that total.
+    6. The UI shows assumptions, confidence, source basis, notes, and any citations for review; the user chooses an
+       option (or the bulk flow applies the selected top option), and only then is the transport row saved.
+  - Accuracy smoke test for the next session: select a small fixed fixture of short/long, domestic/international
+    routes with different plausible modes; record date, traveller count, search/fallback path, provider, model, and
+    all returned options/assumptions/citations; compare one-way totals with same-assumption operator or aggregator
+    quotes captured on the same day; report absolute and relative error, median/range, and notable outliers by route.
+    Keep the check explicitly directional rather than a scientific benchmark, use mocked responses or saved quote
+    fixtures for repeatability, and decide an initial tolerance plus whether more routes are needed.
+
+- [ ] Add an opt-in API-key save checkbox everywhere an LLM key is entered.
+  - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and
+    single/bulk transport dialogs. Persist a key only in the browser when the user opts in; clearing the checkbox or
+    removing the key must clear the stored value. Never send keys to logs, the repository, or the database.
+  - Acceptance: the choice and key behavior are consistent across all provider inputs, and a fresh unchecked input
+    does not silently restore a previously saved key.
+
+- [ ] Place reasoning effort beside the model picker.
+  - In both transport-estimate dialogs and both city-cost estimate dialogs, put the reasoning-effort control next to
+    the model picker at desktop widths, with a sensible stacked layout on narrow screens. Preserve the four-column
+    full-width model grid and provider-specific supported-effort behavior.
+  - Acceptance: the two controls remain visually associated for every provider, are usable at narrow widths, and the
+    selected effort still reaches the correct provider request.
+
+- [ ] Keep repeated dashboard country visits as separate chronological rows.
+  - Change Country Comparison grouping to coalesce only uninterrupted consecutive itinerary legs with the same
+    country. If the itinerary leaves a country and later returns, emit a second row at the later position instead of
+    merging totals across the trip; retain the existing totals and category calculations within each block.
+  - Acceptance: `A, A, B, A` renders as `A, B, A` in itinerary order, while `A, A, B, B` remains `A, B`, with
+    regression coverage for totals and repeated-country labels.
+
+## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.
 - [x] v6.1 cannot be activated in the product.
