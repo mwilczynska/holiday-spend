@@ -959,3 +959,11 @@ adapter and carries every returned option, assumption, search query, and citatio
 
 The live smoke remains intentionally open until same-day operator or aggregator quotes are captured; the repository
 does not invent observed fares or present the deterministic fixtures as accuracy evidence.
+
+## Transport estimation documentation - 26 August 2026
+
+Added `docs/product/transport-estimation.md` as the durable explanation of the intercity estimator: route context,
+frozen prompt, OpenAI/Anthropic/Gemini grounding and strict fallback paths, schema validation and normalization,
+review/apply behavior, and the one-time destination-leg allocation rule. The focused verification run passed 7 tests.
+The four-route inputs remain synthetic contract fixtures; same-day independent quote capture is still required before
+making an accuracy or tolerance claim.

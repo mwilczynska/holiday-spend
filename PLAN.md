@@ -13,8 +13,8 @@ chronological dashboard country blocks, and a four-route mocked transport-accura
 
 **Latest plan checkpoint:** `d9673f0` — recorded the mocked smoke while keeping live same-day quote capture open.
 
-**Next action:** Run the directional transport-estimation accuracy smoke using fixed route and quote fixtures, then
-record the evidence and any initial tolerance decision.
+**Next action:** Capture same-day operator or aggregator reference quotes for the fixed route fixture, then run the
+directional report and record the evidence and any initial tolerance decision.
 
 ## Current scope and decisions
 
@@ -406,10 +406,14 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
     quotes captured on the same day; report absolute and relative error, median/range, and notable outliers by route.
     Keep the check explicitly directional rather than a scientific benchmark, use mocked responses or saved quote
     fixtures for repeatability, and decide an initial tolerance plus whether more routes are needed.
-  - Added `buildTransportAccuracyReport` with a four-route mocked adapter smoke and deterministic coverage for
+  - [x] Documented the runtime pipeline, estimation boundary, provider grounding/fallback behavior, JSON validation,
+    review/apply flow, and known limitations in `docs/product/transport-estimation.md`.
+  - [x] Added `buildTransportAccuracyReport` with a four-route mocked adapter smoke and deterministic coverage for
     matched/missing modes, absolute and relative error, median/range summaries, provenance retention, and outlier
-    flagging. Live same-day operator/aggregator quote capture is still pending; no observed fares are fabricated by the
-    harness.
+    flagging. The focused run passed 7 tests on 26 August 2026.
+  - [ ] Capture same-day operator/aggregator quotes under the same route, date, traveller-count, mode, and fare
+    assumptions; run the directional report and decide whether the initial tolerance or route set needs adjustment.
+    Synthetic fixtures remain explicitly excluded from accuracy claims.
 
 - [x] Add an opt-in API-key save checkbox everywhere an LLM key is entered.
   - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and
