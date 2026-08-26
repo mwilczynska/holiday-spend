@@ -8,10 +8,11 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `d9673f0` — opt-in browser key saving, aligned model/effort controls,
-chronological dashboard country blocks, and a four-route mocked transport-accuracy smoke pipeline.
+**Latest implementation checkpoint:** `354ef3e` — durable transport-estimation documentation and a seven-test,
+four-route mocked transport-accuracy smoke pipeline.
 
-**Latest plan checkpoint:** `d9673f0` — recorded the mocked smoke while keeping live same-day quote capture open.
+**Latest plan checkpoint:** `354ef3e` — recorded the transport documentation and mocked smoke while keeping live
+same-day quote capture open.
 
 **Next action:** Capture same-day operator or aggregator reference quotes for the fixed route fixture, then run the
 directional report and record the evidence and any initial tolerance decision.
