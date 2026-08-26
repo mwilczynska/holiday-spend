@@ -18,7 +18,7 @@ full-width provider model grids.
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Next action:** Push `3b9afe4`, then continue the remaining Phase 7 authenticated route workflows.
+**Next action:** Continue the remaining Phase 7 authenticated route workflows.
 
 **Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
 that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
