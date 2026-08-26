@@ -8,11 +8,11 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `0eadb19` — bounded, provider-aware concurrent bulk transport estimates with
-per-leg result ordering and failure isolation.
+**Latest implementation checkpoint:** `fafc93f` — opt-in browser key saving, aligned model/effort controls, and
+chronological dashboard country blocks, layered on the bounded transport concurrency work.
 
-**Latest plan checkpoint:** `0eadb19` — marked the concurrent bulk transport TODO complete after focused tests and
-TypeScript validation.
+**Latest plan checkpoint:** `fafc93f` — marked the API-key, reasoning-layout, and country-block TODOs complete after
+focused tests and TypeScript validation.
 
 **Next action:** Run the directional transport-estimation accuracy smoke using fixed route and quote fixtures, then
 record the evidence and any initial tolerance decision.
