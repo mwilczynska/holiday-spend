@@ -8,11 +8,11 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `3b9afe4` — multi-file transaction import, transport reasoning controls, and
-full-width provider model grids.
+**Latest implementation checkpoint:** `0eadb19` — bounded, provider-aware concurrent bulk transport estimates with
+per-leg result ordering and failure isolation.
 
-**Latest plan checkpoint:** `e0ccb45` — reorganized Phase 7 into completed checks, remaining checks, and next-session
-implementation TODOs, with consistent checkbox status.
+**Latest plan checkpoint:** `0eadb19` — marked the concurrent bulk transport TODO complete after focused tests and
+TypeScript validation.
 
 **Next action:** Continue with the remaining Phase 7 next-session TODOs, beginning with the transport-estimate accuracy
 smoke and then the API-key, layout, and country-block items. Mark each pending item complete only after its evidence is recorded.
