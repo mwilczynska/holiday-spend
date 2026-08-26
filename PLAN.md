@@ -14,8 +14,8 @@ full-width provider model grids.
 **Latest plan checkpoint:** `e0ccb45` — reorganized Phase 7 into completed checks, remaining checks, and next-session
 implementation TODOs, with consistent checkbox status.
 
-**Next action:** In the next session, complete the product TODO in Phase 7, starting with transport concurrency and
-accuracy work. Mark each pending item complete only after its implementation evidence is recorded.
+**Next action:** Implement the first item in the in-progress Phase 7 next-session TODO: bounded concurrent transport
+estimates for multiple legs, then verify each completed item with focused tests before marking it `[x]`.
 
 ## Current scope and decisions
 
@@ -371,7 +371,7 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
 - [ ] Record defects with route, action, expected result, actual result, browser surface, and reproducible evidence;
   fix and rerun affected checks before marking this phase complete.
 
-### Next-session implementation TODO — TO DO
+### Next-session implementation TODO — IN PROGRESS
 
 - [ ] Call transport LLMs concurrently for multiple legs.
   - When more than one destination leg is selected in the bulk transport dialog, dispatch one estimate request per
