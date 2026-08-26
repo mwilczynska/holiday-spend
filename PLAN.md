@@ -18,8 +18,8 @@ full-width provider model grids.
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Next action:** In the next session, complete the intercity transport TODO below: bounded concurrent estimates for
-multiple legs, followed by a rough accuracy smoke test. Do not mark those items complete until their evidence is recorded.
+**Next action:** In the next session, complete the product TODO below, starting with the transport concurrency and
+accuracy work. Do not mark these items complete until their implementation evidence is recorded.
 
 ## Next-session TODO - intercity transport (26 August 2026)
 
@@ -55,6 +55,27 @@ multiple legs, followed by a rough accuracy smoke test. Do not mark those items 
      quotes captured on the same day; report absolute and relative error, median/range, and notable outliers by route.
      Keep the check explicitly directional rather than a scientific benchmark, use mocked responses or saved quote
      fixtures for repeatability, and decide an initial tolerance plus whether more routes are needed.
+
+3. **Add an opt-in API-key save checkbox everywhere an LLM key is entered.**
+   - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and
+     single/bulk transport dialogs. Persist a key only in the browser when the user opts in; clearing the checkbox or
+     removing the key must clear the stored value. Never send keys to logs, the repository, or the database.
+   - Acceptance: the choice and key behavior are consistent across all provider inputs, and a fresh unchecked input
+     does not silently restore a previously saved key.
+
+4. **Place reasoning effort beside the model picker.**
+   - In both transport-estimate dialogs and both city-cost estimate dialogs, put the reasoning-effort control next to
+     the model picker at desktop widths, with a sensible stacked layout on narrow screens. Preserve the four-column
+     full-width model grid and provider-specific supported-effort behavior.
+   - Acceptance: the two controls remain visually associated for every provider, are usable at narrow widths, and the
+     selected effort still reaches the correct provider request.
+
+5. **Keep repeated dashboard country visits as separate chronological rows.**
+   - Change Country Comparison grouping to coalesce only uninterrupted consecutive itinerary legs with the same
+     country. If the itinerary leaves a country and later returns, emit a second row at the later position instead of
+     merging totals across the trip; retain the existing totals and category calculations within each block.
+   - Acceptance: `A, A, B, A` renders as `A, B, A` in itinerary order, while `A, A, B, B` remains `A, B`, with
+     regression coverage for totals and repeated-country labels.
 
 **Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
 that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
