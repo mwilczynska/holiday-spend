@@ -967,3 +967,17 @@ frozen prompt, OpenAI/Anthropic/Gemini grounding and strict fallback paths, sche
 review/apply behavior, and the one-time destination-leg allocation rule. The focused verification run passed 7 tests.
 The four-route inputs remain synthetic contract fixtures; same-day independent quote capture is still required before
 making an accuracy or tolerance claim.
+
+## Live transport smoke and OpenAI web-search fix - 26 August 2026
+
+The first authenticated Ho Chi Minh City → Can Tho planner smoke exposed an OpenAI Responses API incompatibility:
+`text.format.type=json_object` cannot be combined with the web-search tool. The request correctly fell back, but did
+not use web grounding. The browse request now relies on the prompt plus the existing parser/Zod validation and leaves
+JSON mode to the strict fallback path; a regression assertion protects that request shape.
+
+The rerun with OpenAI `gpt-5.6-luna` at Maximum effort used web search and returned two review-only options for two
+travellers: standard coach A$24 and self-drive A$30. The UI showed Vexere and VietnamPlus citations, and neither option
+was applied. A directional redBus comparison (Phuong Trang 185,000 VND per adult; 370,000 VND for two; A$19.76 at
+18,722.73 VND/AUD) puts the coach option at A$4.24 absolute / 21.4% relative error, within a provisional 25%
+tolerance. This is one route only, with a historical itinerary date, so the four-route same-day calibration remains
+open.

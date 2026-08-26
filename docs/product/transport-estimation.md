@@ -30,7 +30,9 @@ methodology. The result is a budgeting aid, not a guaranteed fare or a booking q
    - Gemini `generateContent` with Google Search grounding when available.
 4. If a browse/grounding request fails, the same provider is retried through the strict JSON fallback transport. The
    response records the fallback reason and no longer claims web grounding. If no usable key/provider response is
-   available, the request fails closed; it does not invent a value.
+   available, the request fails closed; it does not invent a value. OpenAI's web-search request intentionally omits
+   JSON mode because that API rejects JSON mode together with web search; the prompt, parser, and Zod schema still
+   enforce the JSON contract, while the strict fallback may use provider JSON mode.
 5. The server extracts a JSON object (including a fenced/object substring recovery for provider wrappers) and validates
    it with Zod. It then removes duplicate modes, keeps at most four options, trims explanatory fields, rounds each
    `total_aud` to a whole AUD amount, and forces `transport_row_draft.cost` to equal that rounded total.
@@ -75,10 +77,24 @@ The fixtures run through the actual OpenAI adapter response parsing, option norm
 report helper. The focused run on 26 August 2026 passed **7 tests** (four pipeline/report cases plus the existing
 provider transport checks). The fixture totals are deliberately synthetic and are not observed fares.
 
-The live calibration step remains open: capture same-day operator or aggregator quotes for the same route, date,
-traveller count, direction, mode, and fare assumptions, then feed those references into the report. Only after that
-comparison should an initial tolerance or need for more routes be chosen. No synthetic value in the repository is
-presented as an independent accuracy observation.
+### Live UI smoke
+
+On 26 August 2026 the authenticated planner was exercised for Ho Chi Minh City → Can Tho (two travellers, the
+existing leg date `2026-02-11`) with OpenAI `gpt-5.6-luna` and Maximum effort. The corrected request used web search
+and returned two review-only options: standard coach at A$24 and self-drive at A$30, with visible Vexere and
+VietnamPlus citations. Neither option was applied to the itinerary.
+
+As a one-route directional sanity check, an independent [redBus route page](https://www.redbus.vn/ve-xe-khach/tuyen-duong/ho-chi-minh-di-can-tho)
+listed Phuong Trang at 185,000 VND per adult one way. Two seats are 370,000 VND; using the 26 August 2026
+[AUD/VND reference](https://www.forbes.com/advisor/money-transfer/currency-converter/aud-vnd/) of 18,722.73 gives A$19.76.
+Compared with the model's A$24 coach option, the absolute error is A$4.24 and the relative error is 21.4%, inside a
+provisional 25% tolerance. This is not a calibrated benchmark: the route date is historical, the public fare is
+dynamic, and only one mode/route has an independent quote.
+
+The full live calibration step remains open: capture same-day operator or aggregator quotes for all fixed route
+classes with the same route, date, traveller count, direction, mode, and fare assumptions, then feed those references
+into the report. Only after that comparison should an initial tolerance or need for more routes be chosen. No
+synthetic value in the repository is presented as an independent accuracy observation.
 
 ## Implementation references
 

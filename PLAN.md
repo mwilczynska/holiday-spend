@@ -412,6 +412,11 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
   - [x] Added `buildTransportAccuracyReport` with a four-route mocked adapter smoke and deterministic coverage for
     matched/missing modes, absolute and relative error, median/range summaries, provenance retention, and outlier
     flagging. The focused run passed 7 tests on 26 August 2026.
+  - [x] Exercised one authenticated planner route end to end with OpenAI `gpt-5.6-luna` at Maximum effort; the
+    corrected web-search path returned two review-only options with visible citations and no itinerary mutation.
+  - [x] Performed one directional aggregator sanity check: the A$24 standard-coach option versus an independent
+    two-seat redBus reference of A$19.76 produced A$4.24 absolute / 21.4% relative error, inside a provisional 25%
+    tolerance. This is not a calibrated benchmark because the route date is historical and the sample is one route.
   - [ ] Capture same-day operator/aggregator quotes under the same route, date, traveller-count, mode, and fare
     assumptions; run the directional report and decide whether the initial tolerance or route set needs adjustment.
     Synthetic fixtures remain explicitly excluded from accuracy claims.

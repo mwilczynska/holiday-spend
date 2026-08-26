@@ -407,11 +407,9 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
       ...(params.reasoningEffort && params.reasoningEffort !== 'none'
         ? { reasoning: { effort: params.reasoningEffort } }
         : {}),
-      text: {
-        format: {
-          type: 'json_object',
-        },
-      },
+      // OpenAI rejects JSON mode when web search is enabled. The prompt still
+      // requests one JSON object, and the response is parsed and schema-checked
+      // below; strict JSON mode remains available for the fallback call.
       tools: [
         {
           type: 'web_search_preview',

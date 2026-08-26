@@ -60,6 +60,12 @@ describe('transport reasoning effort', () => {
       reasoning: { effort: 'max' },
       max_output_tokens: 12000,
     });
+    const sentBody = requestBody as unknown as Record<string, unknown>;
+    expect(sentBody.text).toBeUndefined();
+    expect(sentBody.tools).toEqual([{
+      type: 'web_search_preview',
+      search_context_size: 'medium',
+    }]);
   });
 
   it('maps Anthropic effort to the same thinking budget used by city generation', async () => {
