@@ -10,8 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { getExpenseAudAmount } from '@/lib/expense-aud';
-import { EXPENSE_PAGE_SIZE, getPageCount, getPageItems } from '@/lib/performance-bounds';
+import { EXPENSE_PAGE_SIZE, getPageCount } from '@/lib/performance-bounds';
 import { EXPENSE_CATEGORIES } from '@/types';
 import { ChevronDown, ChevronUp, Edit, Eye, EyeOff, Tags, Trash2, Upload, XCircle } from 'lucide-react';
 
@@ -56,6 +55,15 @@ interface ExpenseEditForm {
   legId: string;
 }
 
+interface TrackExpensePage {
+  items: Expense[];
+  totalCount: number;
+  totalAud: number;
+  expenseIds: number[];
+  page: number;
+  pageSize: number;
+}
+
 const UNASSIGNED_LEG_VALUE = 'unassigned';
 
 function formatLegRange(startDate: string | null, endDate: string | null) {
@@ -88,6 +96,9 @@ export default function TrackPage() {
   const [editForm, setEditForm] = useState<ExpenseEditForm | null>(null);
   const [loading, setLoading] = useState(true);
   const [expensePage, setExpensePage] = useState(0);
+  const [expenseTotalCount, setExpenseTotalCount] = useState(0);
+  const [expenseTotalAud, setExpenseTotalAud] = useState(0);
+  const [filteredExpenseIds, setFilteredExpenseIds] = useState<number[]>([]);
 
   const fetchData = useCallback(async () => {
     const params = new URLSearchParams();
@@ -95,18 +106,25 @@ export default function TrackPage() {
     if (filterSource !== 'all') params.set('source', filterSource);
     if (filterFrom) params.set('from', filterFrom);
     if (filterTo) params.set('to', filterTo);
+    params.set('view', 'track');
+    params.set('page', String(expensePage));
+    params.set('pageSize', String(EXPENSE_PAGE_SIZE));
 
     setLoading(true);
     try {
       const [expensesRes, itineraryRes] = await Promise.all([
         fetch(`/api/expenses?${params}`),
-        fetch('/api/itinerary'),
+        fetch('/api/itinerary?view=track'),
       ]);
 
       const expensesData = await expensesRes.json();
       const itineraryData = await itineraryRes.json();
 
-      setExpenses(expensesData.data || []);
+      const expenseData = expensesData.data as TrackExpensePage | undefined;
+      setExpenses(expenseData?.items || []);
+      setExpenseTotalCount(expenseData?.totalCount || 0);
+      setExpenseTotalAud(expenseData?.totalAud || 0);
+      setFilteredExpenseIds(expenseData?.expenseIds || []);
       setLegs(
         (itineraryData.data || []).map((leg: LegOption) => ({
           id: leg.id,
@@ -119,7 +137,7 @@ export default function TrackPage() {
     } finally {
       setLoading(false);
     }
-  }, [filterCat, filterSource, filterFrom, filterTo]);
+  }, [expensePage, filterCat, filterSource, filterFrom, filterTo]);
 
   useEffect(() => {
     fetchData();
@@ -213,22 +231,20 @@ export default function TrackPage() {
   };
 
   const handleDeleteAll = async () => {
-    if (!confirm(`Delete ALL ${expenses.length} expenses? This cannot be undone.`)) return;
+    if (!confirm(`Delete ALL ${expenseTotalCount} expenses? This cannot be undone.`)) return;
     await fetch('/api/expenses/bulk', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ids: expenses.map((expense) => expense.id), action: 'delete' }),
+      body: JSON.stringify({ ids: filteredExpenseIds, action: 'delete' }),
     });
     fetchData();
   };
 
-  const activeExpenses = expenses.filter((expense) => !expense.isExcluded);
-  const totalAud = activeExpenses.reduce((sum, expense) => sum + getExpenseAudAmount(expense), 0);
-  const expensePageCount = getPageCount(expenses.length, EXPENSE_PAGE_SIZE);
+  const expensePageCount = getPageCount(expenseTotalCount, EXPENSE_PAGE_SIZE);
   const boundedExpensePage = Math.min(expensePage, expensePageCount - 1);
-  const visibleExpenses = getPageItems(expenses, boundedExpensePage, EXPENSE_PAGE_SIZE);
-  const visibleExpenseStart = expenses.length === 0 ? 0 : boundedExpensePage * EXPENSE_PAGE_SIZE + 1;
-  const visibleExpenseEnd = Math.min((boundedExpensePage + 1) * EXPENSE_PAGE_SIZE, expenses.length);
+  const visibleExpenses = expenses;
+  const visibleExpenseStart = expenseTotalCount === 0 ? 0 : boundedExpensePage * EXPENSE_PAGE_SIZE + 1;
+  const visibleExpenseEnd = Math.min((boundedExpensePage + 1) * EXPENSE_PAGE_SIZE, expenseTotalCount);
 
   useEffect(() => {
     setExpensePage((page) => Math.min(page, expensePageCount - 1));
@@ -255,7 +271,7 @@ export default function TrackPage() {
           <Link href="/track/add"><Button size="sm">Add</Button></Link>
           <Link href="/track/import"><Button size="sm" variant="outline"><Upload className="mr-1 h-4 w-4" />Import</Button></Link>
           <Link href="/track/tags"><Button size="sm" variant="outline"><Tags className="mr-1 h-4 w-4" />Tags</Button></Link>
-          {expenses.length > 0 && (
+          {expenseTotalCount > 0 && (
             <Button size="sm" variant="destructive" onClick={handleDeleteAll}>
               <XCircle className="mr-1 h-4 w-4" />Delete All
             </Button>
@@ -289,8 +305,8 @@ export default function TrackPage() {
 
       <div className="space-y-1 text-sm">
         <div className="flex gap-4">
-          <span>{expenses.length} expenses</span>
-          <span className="font-medium">${totalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD</span>
+          <span>{expenseTotalCount} expenses</span>
+          <span className="font-medium">${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD</span>
         </div>
         <p className="text-xs text-muted-foreground">
           City and country come from the assigned itinerary leg. Use edit to move flights, tickets, or pre-paid costs into the destination where you want them counted.
@@ -510,10 +526,10 @@ export default function TrackPage() {
         </table>
       </div>
 
-      {expenses.length > EXPENSE_PAGE_SIZE && (
+      {expenseTotalCount > EXPENSE_PAGE_SIZE && (
         <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
           <span className="text-muted-foreground">
-            Showing {visibleExpenseStart}-{visibleExpenseEnd} of {expenses.length} expenses
+            Showing {visibleExpenseStart}-{visibleExpenseEnd} of {expenseTotalCount} expenses
           </span>
           <div className="flex items-center gap-2">
             <Button

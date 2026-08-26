@@ -11,9 +11,38 @@ import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const userId = await requireCurrentUserId();
+    const view = new URL(request.url).searchParams.get('view');
+
+    if (view === 'track') {
+      const trackLegs = await db
+        .select({
+          id: itineraryLegs.id,
+          cityId: itineraryLegs.cityId,
+          cityName: cities.name,
+          countryName: countries.name,
+          startDate: itineraryLegs.startDate,
+          endDate: itineraryLegs.endDate,
+          nights: itineraryLegs.nights,
+          sortOrder: itineraryLegs.sortOrder,
+        })
+        .from(itineraryLegs)
+        .leftJoin(cities, eq(itineraryLegs.cityId, cities.id))
+        .leftJoin(countries, eq(cities.countryId, countries.id))
+        .where(eq(itineraryLegs.userId, userId))
+        .orderBy(asc(itineraryLegs.sortOrder));
+
+      return success(deriveLegDates(trackLegs).map((leg) => ({
+        id: leg.id,
+        cityName: leg.cityName ?? 'Unknown',
+        countryName: leg.countryName ?? 'Unknown',
+        startDate: leg.startDate,
+        endDate: leg.endDate,
+      })));
+    }
+
     const legs = await db
       .select()
       .from(itineraryLegs)

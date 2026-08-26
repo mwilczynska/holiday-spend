@@ -809,3 +809,23 @@ The complete checkpoint baseline passed: `npx tsc --noEmit`, `npm run build`, 38
 `npm run docs:check-memory`, and `npm run methodology:v1.1:check`. The build emitted the existing handled `/api/export`
 dynamic-route diagnostic and exited successfully. The deterministic methodology check again reported 19 planner fields
 and live CSV SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+## Phase 7A cold-readiness completion - 25 August 2026
+
+A repeat after the repository ownership and OneDrive pinning repair showed that the prior 6–10 second authenticated
+cold timings were not the stable final runtime. Fresh standalone restarts followed by authenticated Chrome navigation
+put complete dashboard data readiness at 1.96 seconds and track data readiness at 4.03 seconds. Both are within the
+documented 5-second local budget; the earlier measurements remain retained as pre-repair evidence.
+
+The remaining concrete payload issue was `/track`: it transferred a 456,140-byte full joined array of 973 expenses to
+render 50 rows, plus a 45,078-byte full planner itinerary. The expense endpoint now exposes an explicit track view that
+returns one 50-row joined page together with the exact full-filter count, included AUD total, and complete expense-ID set
+for delete-all. A lightweight itinerary track view returns only assignment labels and derived dates. The process-cold
+responses transferred 29,391 bytes and 7,350 bytes respectively, reductions of 93.6% and 83.7% without weakening auth
+or changing complete-data totals.
+
+Chrome verified page 2 as rows 51–100 of 973, filter changes resetting to page 1, and the empty Manual filter reporting
+exactly 0 expenses and AUD 0. Focused tests cover full-set totals/IDs across page slicing. The complete baseline passed:
+TypeScript, production build, 39 Vitest files / 177 tests, memory mirror check, and deterministic v1.1 verification. The
+build retained the known handled `/api/export` dynamic-route diagnostic. The production server was stopped afterward;
+no browser storage, cookies, passwords, or provider keys were inspected.

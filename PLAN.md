@@ -1,24 +1,23 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** METHODOLOGY COMPLETE — PHASE 7A CHECKPOINT VERIFIED; AUTHENTICATED UI PASS OPEN
+**Status:** METHODOLOGY COMPLETE — PHASE 7A COMPLETE; DEFERRED OWNER-KEY SMOKE OPEN
 
-**Current phase:** Phase 7A — performance and runtime hardening (in progress)
+**Current phase:** Phase 7 — functional webapp validation (to do; owner-key smoke deferred)
 
 **Branch:** `main` (v1.1 history merged and synchronized with `origin/main`; protected v6 archive retained)
 
 **Last updated:** 25 August 2026
 
-**Latest implementation checkpoint:** `1a79d68` - authenticated standalone assets, dashboard request indexing, bounded
-expense rendering, Chrome verification, and the 38-file / 175-test baseline.
+**Latest implementation checkpoint:** current pending commit - server-paged expense data, lightweight track itinerary
+view, authenticated cold-readiness verification, and the 39-file / 177-test baseline.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Phase 7A next action:** Profile and reduce fresh-server authenticated data readiness for `/` and `/track` without
-weakening auth or changing complete-data totals. The current cold API ranges are `6.42–7.12s` for the dashboard and
-`10.36–10.40s` for expenses/itinerary; fully warm dashboard APIs are `1.12–1.65s`. Keep the owner-key city-generation
-smoke deferred; do not inspect browser storage or provider keys.
+**Next action:** Resume the explicitly deferred Tottori, Toowoomba, and Brno owner-key smoke only when the owner chooses
+to provide the browser-only key workflow. Phase 7A is complete: process-cold authenticated data readiness is `1.96s`
+for `/` and `4.03s` for `/track`, within the 5-second local budget. Do not inspect browser storage or provider keys.
 
 **Owner activation decision (18 August 2026):** The owner explicitly authorizes v1.1 activation while deferring the
 keyed smoke because secure remote-desktop access is unavailable. The smoke remains an open operational follow-up and
@@ -176,7 +175,7 @@ This file is the canonical progress artifact.
 - [x] Confirm the branch is clean and pushed at the final completion checkpoint.
 - [x] Mark this plan complete; the smoke remains a deferred operational follow-up with no pass claim.
 
-## Phase 7A — Performance and runtime hardening — IN PROGRESS
+## Phase 7A — Performance and runtime hardening — COMPLETE
 
 The first authenticated browser pass found a product/runtime defect, not a methodology defect. `/settings` recovered
 after a delay and `/estimates` rendered, but `/dataset` remained on its loading state during a 10-second navigation
@@ -226,8 +225,25 @@ incident as the reason for this hardening phase; do not run keyed generation whi
 - [x] Repeat the remaining verification from a fresh Codex CLI session. Chrome control was restored after the owner
   approved a repository ownership repair; no browser storage, cookies, passwords, or provider keys were inspected.
 - [x] Run the complete post-change baseline and update the handoff/log for this authenticated hardening checkpoint.
-- [ ] Bring fresh-server authenticated data readiness for `/` and `/track` within the 5-second local budget. Preserve
+- [x] Bring fresh-server authenticated data readiness for `/` and `/track` within the 5-second local budget. Preserve
   complete-data calculations and record cold and warm evidence separately rather than hiding cold initialization cost.
+
+### 25 August 2026 cold-readiness completion evidence
+
+- Fresh standalone restarts and authenticated Chrome navigation put dashboard data readiness at `1.96s` and track data
+  readiness at `4.03s`, both below the 5-second local budget. The earlier slower measurements remain recorded as the
+  pre-repair/pre-pinning baseline rather than being overwritten.
+- `/track` now requests a server-paged 50-row joined view while its response separately carries the exact full-filter
+  expense count, included AUD total, and complete ID set used by delete-all. Focused regression coverage proves page
+  slicing does not narrow those full-set values.
+- The track-specific itinerary view returns only assignment labels and derived leg dates; it does not calculate or
+  transfer planner costs and intercity transports that the expense screen never consumes.
+- The process-cold expense response fell from `456,140` to `29,391` transferred bytes (`-93.6%`), and the itinerary
+  response fell from `45,078` to `7,350` bytes (`-83.7%`). Chrome verified page 2 as rows 51–100 of 973, filter reset
+  to page 1, and the empty Manual filter as exactly 0 expenses / AUD 0.
+- The complete baseline passed: TypeScript, production build, 39 Vitest files / 177 tests, documentation memory check,
+  and the deterministic v1.1 check. The known handled `/api/export` build diagnostic remains unchanged. The local
+  production server was stopped after measurement.
 
 ### 25 August 2026 authenticated continuation evidence
 

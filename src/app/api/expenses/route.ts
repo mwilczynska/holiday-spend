@@ -1,10 +1,17 @@
 import { db } from '@/db';
 import { expenses, expenseTags, itineraryLegs, cities, countries } from '@/db/schema';
-import { eq, and, gte, lte, desc, ne } from 'drizzle-orm';
+import { eq, and, gte, lte, desc, inArray, ne } from 'drizzle-orm';
 import { success, handleError } from '@/lib/api-helpers';
 import { error } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
+import { buildExpenseTrackPageMetadata } from '@/lib/expense-track-page';
+import { EXPENSE_PAGE_SIZE } from '@/lib/performance-bounds';
 import { z } from 'zod';
+
+const trackViewSchema = z.object({
+  page: z.coerce.number().int().min(0).default(0),
+  pageSize: z.coerce.number().int().min(1).max(EXPENSE_PAGE_SIZE).default(EXPENSE_PAGE_SIZE),
+});
 
 export async function GET(request: Request) {
   try {
@@ -16,6 +23,7 @@ export async function GET(request: Request) {
     const from = url.searchParams.get('from');
     const to = url.searchParams.get('to');
     const source = url.searchParams.get('source');
+    const isTrackView = url.searchParams.get('view') === 'track';
 
     const conditions = [eq(expenses.userId, userId), ne(expenses.isDeleted, 1)];
     if (leg) conditions.push(eq(expenses.legId, parseInt(leg)));
@@ -24,7 +32,17 @@ export async function GET(request: Request) {
     if (to) conditions.push(lte(expenses.date, to));
     if (source) conditions.push(eq(expenses.source, source));
 
-    let query = db
+    let taggedExpenseIds: Set<number> | null = null;
+    if (tag) {
+      const tagId = parseInt(tag);
+      const taggedExpenses = await db
+        .select({ expenseId: expenseTags.expenseId })
+        .from(expenseTags)
+        .where(eq(expenseTags.tagId, tagId));
+      taggedExpenseIds = new Set(taggedExpenses.map((entry) => entry.expenseId));
+    }
+
+    const buildExpenseQuery = () => db
       .select({
         id: expenses.id,
         date: expenses.date,
@@ -49,23 +67,56 @@ export async function GET(request: Request) {
       .from(expenses)
       .leftJoin(itineraryLegs, eq(expenses.legId, itineraryLegs.id))
       .leftJoin(cities, eq(itineraryLegs.cityId, cities.id))
-      .leftJoin(countries, eq(cities.countryId, countries.id))
-      .orderBy(desc(expenses.date), desc(expenses.id));
+      .leftJoin(countries, eq(cities.countryId, countries.id));
+
+    if (isTrackView) {
+      const { page, pageSize } = trackViewSchema.parse({
+        page: url.searchParams.get('page') ?? undefined,
+        pageSize: url.searchParams.get('pageSize') ?? undefined,
+      });
+      const metadata = await db
+        .select({
+          id: expenses.id,
+          date: expenses.date,
+          amount: expenses.amount,
+          amountAud: expenses.amountAud,
+          currency: expenses.currency,
+          isExcluded: expenses.isExcluded,
+        })
+        .from(expenses)
+        .where(and(...conditions))
+        .orderBy(desc(expenses.date), desc(expenses.id));
+      const filteredMetadata = taggedExpenseIds
+        ? metadata.filter((expense) => taggedExpenseIds.has(expense.id))
+        : metadata;
+      const pageMetadata = buildExpenseTrackPageMetadata(filteredMetadata, page, pageSize);
+      const { pageIds } = pageMetadata;
+      const items = pageIds.length > 0
+        ? await buildExpenseQuery()
+            .where(and(...conditions, inArray(expenses.id, pageIds)))
+            .orderBy(desc(expenses.date), desc(expenses.id))
+        : [];
+
+      return success({
+        items,
+        totalCount: pageMetadata.totalCount,
+        totalAud: pageMetadata.totalAud,
+        expenseIds: pageMetadata.expenseIds,
+        page,
+        pageSize,
+      });
+    }
+
+    let query = buildExpenseQuery().orderBy(desc(expenses.date), desc(expenses.id));
     if (conditions.length > 0) {
       query = query.where(and(...conditions)) as typeof query;
     }
 
     const allExpenses = await query;
 
-    // If filtering by tag, do a post-filter
-    if (tag) {
-      const tagId = parseInt(tag);
-      const taggedExpenseIds = await db
-        .select({ expenseId: expenseTags.expenseId })
-        .from(expenseTags)
-        .where(eq(expenseTags.tagId, tagId));
-      const idSet = new Set(taggedExpenseIds.map(t => t.expenseId));
-      const filtered = allExpenses.filter(e => idSet.has(e.id));
+    // Preserve the legacy full-array contract for existing callers.
+    if (taggedExpenseIds) {
+      const filtered = allExpenses.filter((expense) => taggedExpenseIds.has(expense.id));
       return success(filtered);
     }
 
