@@ -8,7 +8,7 @@
 
 **Last updated:** 25 August 2026
 
-**Latest implementation checkpoint:** current pending commit - server-paged expense data, lightweight track itinerary
+**Latest implementation checkpoint:** `cf0bc3b` - server-paged expense data, lightweight track itinerary
 view, authenticated cold-readiness verification, and the 39-file / 177-test baseline.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
