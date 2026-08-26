@@ -8,11 +8,11 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `354ef3e` — durable transport-estimation documentation and a seven-test,
-four-route mocked transport-accuracy smoke pipeline.
+**Latest implementation checkpoint:** `e4eeb94` — durable transport-estimation documentation, a grounded OpenAI
+transport smoke, and the seven-test four-route mocked accuracy pipeline.
 
-**Latest plan checkpoint:** `354ef3e` — recorded the transport documentation and mocked smoke while keeping live
-same-day quote capture open.
+**Latest plan checkpoint:** `e4eeb94` — recorded the grounded one-route smoke while keeping four-route same-day quote
+capture open.
 
 **Next action:** Capture same-day operator or aggregator reference quotes for the fixed route fixture, then run the
 directional report and record the evidence and any initial tolerance decision.
