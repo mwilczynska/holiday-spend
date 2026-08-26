@@ -18,7 +18,43 @@ full-width provider model grids.
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Next action:** Continue the remaining Phase 7 authenticated route workflows.
+**Next action:** In the next session, complete the intercity transport TODO below: bounded concurrent estimates for
+multiple legs, followed by a rough accuracy smoke test. Do not mark those items complete until their evidence is recorded.
+
+## Next-session TODO - intercity transport (26 August 2026)
+
+1. **Call transport LLMs concurrently for multiple legs.**
+   - When more than one destination leg is selected in the bulk transport dialog, dispatch one estimate request per
+     city/leg concurrently instead of awaiting the current sequential loop.
+   - Preserve each leg's route, dates, traveller count, provider, model, reasoning effort, allowed modes, and context;
+     keep success/error state attached to the correct leg so one failed request does not hide the others.
+   - Use bounded, provider-aware concurrency and confirm rate-limit behavior. Keep the single-leg path and the later
+     apply step unchanged.
+   - Acceptance: requests overlap for N selected legs, every response is matched to its city, partial failures remain
+     visible, and no transport row is duplicated or applied to the wrong leg.
+
+2. **Document and roughly test how transport costs are estimated.**
+   - Current pipeline, to verify against the implementation before testing:
+     1. The authenticated route loads the origin and destination legs, travel date, city/country metadata, traveller
+        count, allowed modes, reference date/booking context, and route facts such as same/different country or region.
+     2. It sends those inputs through the frozen `llm_prompt_intercity_transport_1.md` contract, which asks for
+        one-way, standard-adult costs for the supplied travellers, with explicit assumptions and source basis.
+     3. The selected OpenAI, Anthropic, or Gemini adapter tries web-grounded estimation first (web search or Google
+        Search where supported), passing the selected provider-native reasoning effort. The prompt asks for live
+        pricing when available and conservative model knowledge when it is not; it does not call a paid fare API or
+        apply a deterministic fare formula.
+     4. If the browse call fails, the adapter makes a strict JSON, non-search fallback call and records the fallback
+        reason. A missing key or provider failure fails the request rather than inventing a value.
+     5. The server extracts and schema-validates JSON, keeps at most four genuinely plausible modes, removes duplicate
+        modes, cleans labels/notes, and rounds each `total_aud` to whole AUD. The row draft cost must equal that total.
+     6. The UI shows assumptions, confidence, source basis, notes, and any citations for review; the user chooses an
+        option (or the bulk flow applies the selected top option), and only then is the transport row saved.
+   - Accuracy smoke test for the next session: select a small fixed fixture of short/long, domestic/international
+     routes with different plausible modes; record date, traveller count, search/fallback path, provider, model, and
+     all returned options/assumptions/citations; compare one-way totals with same-assumption operator or aggregator
+     quotes captured on the same day; report absolute and relative error, median/range, and notable outliers by route.
+     Keep the check explicitly directional rather than a scientific benchmark, use mocked responses or saved quote
+     fixtures for repeatability, and decide an initial tolerance plus whether more routes are needed.
 
 **Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
 that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
