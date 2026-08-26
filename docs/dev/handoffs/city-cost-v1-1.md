@@ -82,7 +82,7 @@ For each city, verify through the UI and `/api/estimates` that:
 
 1. all ten returned anchors are finite and positive;
 2. deterministic tiers are present for all 19 planner fields;
-3. exactly one city-generation provider call occurred, containing one required web search for current RBA FX and no
+3. exactly one city-generation provider call occurred, containing a required web-search call for current RBA FX and no
    separate metadata call;
 4. the persisted source is `llm_city_generation_v1_1` and methodology is `v1.1`;
 5. model, reasoning effort, prompt/formula versions, FX snapshot, anchors, request context, and confidence notes

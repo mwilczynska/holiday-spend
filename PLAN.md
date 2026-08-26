@@ -145,7 +145,7 @@ This file is the canonical progress artifact.
 - [x] Prove formula parity for identical anchors and FX.
 - [x] Test formula and rounding boundaries through golden fixtures and the deterministic check.
 - [x] Prove v1.1 makes one provider call and no separate metadata call; after the 26 August FX decision, that same
-  call must perform one web search for current RBA FX while planner identity remains server-side.
+  call must use web search for current RBA FX while planner identity remains server-side.
 - [x] Prove failed generation leaves no partial city or estimate through the pre-persistence adapter boundary.
 - [x] Prove explicit `v1` still selects the historical prompt and path.
 - [x] Prove historical v6 records remain readable through the generic provenance parser.
@@ -297,7 +297,7 @@ session and record the browser surface used. A route returning HTTP 200, a build
 does not by itself prove the interaction works. Do not inspect, copy, log, or persist the owner's provider key.
 
 **Owner-key generation evidence (26 August 2026):** Chrome generated Tottori, Toowoomba, and Brno with one OpenAI
-Responses call each, `gpt-5.6-luna`, reasoning `max`, and one required web search for current RBA FX. Authenticated
+Responses call each, `gpt-5.6-luna`, reasoning `max`, and a required web-search call for current RBA FX. Authenticated
 `/api/estimates` cross-checks showed 10 positive anchors, 19 planner fields, complete v1.1 provenance, and RBA
 25 August FX at `1.398601` AUD/USD for every active row. The final baseline passed: TypeScript, production build,
 40 Vitest files / 180 tests, memory mirror, deterministic formula/FX checks, and unchanged live CSV hash
