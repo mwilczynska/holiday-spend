@@ -8,7 +8,7 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** pending commit — planner city-picker/actions, reveal-all behavior, compact model
+**Latest implementation checkpoint:** `cea23d2` — planner city-picker/actions, reveal-all behavior, compact model
 suggestions, provider-refresh browser coverage, and Playwright authentication isolation.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
