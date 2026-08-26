@@ -947,3 +947,13 @@ country/unassigned rows. A stable block index makes repeated country labels safe
 The city-generation and single/bulk transport dialogs now place model and provider-specific reasoning effort controls
 side by side at desktop widths, stack them on narrow screens, and keep the four-column suggestion grid full width.
 Focused block, UI-layout, provider request, and TypeScript checks passed.
+
+## Transport accuracy smoke harness - 26 August 2026
+
+Added `buildTransportAccuracyReport`, a repeatable directional comparison helper for fixed transport observations and
+same-assumption reference quotes. It retains route/provider/model/search/fallback/citation provenance, computes per-
+route absolute and relative error, median and range summaries, and flags missing modes or routes outside the chosen
+tolerance. Deterministic tests cover domestic/international-style error cases and fallback provenance.
+
+The live smoke remains intentionally open until same-day operator or aggregator quotes are captured; the repository
+does not invent observed fares or present the deterministic fixtures as accuracy evidence.
