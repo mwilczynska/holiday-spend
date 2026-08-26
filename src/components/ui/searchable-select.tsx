@@ -68,30 +68,46 @@ export function SearchableSelect({
         <CommandList>
           <CommandEmpty>{emptyText}</CommandEmpty>
           <CommandGroup>
-            {sortedOptions.map((option) => (
-              <CommandItem
-                key={option.value}
-                value={`${option.label} ${option.description || ''} ${option.keywords || ''}`}
-                onSelect={() => {
-                  onValueChange(option.value);
-                  setOpen(false);
-                }}
-                className="flex items-start gap-2"
-              >
-                <Check
+            {sortedOptions.map((option) => {
+              const isSelected = option.value === value;
+
+              return (
+                <CommandItem
+                  key={option.value}
+                  value={`${option.label} ${option.description || ''} ${option.keywords || ''}`}
+                  onSelect={() => {
+                    onValueChange(option.value);
+                    setOpen(false);
+                  }}
                   className={cn(
-                    'mt-0.5 h-4 w-4 shrink-0',
-                    option.value === value ? 'opacity-100' : 'opacity-0'
+                    'group flex items-start gap-2 aria-selected:text-white',
+                    isSelected
+                      ? 'bg-slate-900 text-white aria-selected:bg-slate-900'
+                      : 'aria-selected:bg-slate-800'
                   )}
-                />
-                <div className="space-y-0.5">
-                  <div>{option.label}</div>
-                  {option.description && (
-                    <div className="text-xs text-muted-foreground">{option.description}</div>
-                  )}
-                </div>
-              </CommandItem>
-            ))}
+                >
+                  <Check
+                    className={cn(
+                      'mt-0.5 h-4 w-4 shrink-0',
+                      isSelected ? 'opacity-100' : 'opacity-0'
+                    )}
+                  />
+                  <div className="space-y-0.5">
+                    <div>{option.label}</div>
+                    {option.description && (
+                      <div
+                        className={cn(
+                          'text-xs text-muted-foreground group-aria-selected:text-slate-300',
+                          isSelected && 'text-slate-300'
+                        )}
+                      >
+                        {option.description}
+                      </div>
+                    )}
+                  </div>
+                </CommandItem>
+              );
+            })}
           </CommandGroup>
         </CommandList>
       </CommandDialog>

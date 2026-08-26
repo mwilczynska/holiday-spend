@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { InlineLoadingState, LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { LegCard } from '@/components/itinerary/LegCard';
@@ -386,10 +386,18 @@ export default function PlanPage() {
     setAddDialogOpen(false);
     setNewLegCity('');
     setNewLegNights('7');
-    fetchData();
+    setVisibleLegCount(Number.MAX_SAFE_INTEGER);
+    await fetchData();
+  };
+
+  const handleCancelAddLeg = () => {
+    setAddDialogOpen(false);
+    setNewLegCity('');
+    setNewLegNights('7');
   };
 
   const handlePlannerNewCityCreated = useCallback(async (payload: NewCityCreatedPayload) => {
+    setVisibleLegCount(Number.MAX_SAFE_INTEGER);
     await fetchData();
     setAddDialogOpen(false);
     setNewLegCity('');
@@ -1377,24 +1385,9 @@ export default function PlanPage() {
                             keywords: `${city.name} ${city.countryName}`,
                           }))}
                         />
-                        <div className="mt-2 flex items-center justify-between gap-2">
-                          <p className="text-xs text-muted-foreground">
-                            Can&apos;t find the city? Create it here and add the leg in one flow.
-                          </p>
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => {
-                              setAddDialogOpen(false);
-                              setPlannerNewCityOpen(true);
-                              setSnapshotStatus(null);
-                              setSnapshotError(null);
-                            }}
-                          >
-                            New City
-                          </Button>
-                        </div>
+                        <p className="mt-2 text-xs text-muted-foreground">
+                          Can&apos;t find the city? Add it to the library and create the leg in one flow.
+                        </p>
                       </div>
                       <div>
                         <Label>Nights</Label>
@@ -1407,14 +1400,34 @@ export default function PlanPage() {
                           onChange={(e) => setNewLegNights(e.target.value)}
                         />
                       </div>
+                    </div>
+                    <DialogFooter className="gap-2 sm:justify-end">
+                      <Button type="button" variant="ghost" onClick={handleCancelAddLeg}>
+                        Cancel
+                      </Button>
                       <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => {
+                          setAddDialogOpen(false);
+                          setNewLegCity('');
+                          setNewLegNights('7');
+                          setPlannerNewCityOpen(true);
+                          setSnapshotStatus(null);
+                          setSnapshotError(null);
+                        }}
+                      >
+                        <Plus className="mr-2 h-4 w-4" />
+                        Add City
+                      </Button>
+                      <Button
+                        type="button"
                         onClick={handleAddLeg}
                         disabled={!newLegCity || !Number.isInteger(Number.parseInt(newLegNights, 10)) || Number.parseInt(newLegNights, 10) < 1}
-                        className="w-full"
                       >
                         Add Leg
                       </Button>
-                    </div>
+                    </DialogFooter>
                   </DialogContent>
                 </Dialog>
               </div>

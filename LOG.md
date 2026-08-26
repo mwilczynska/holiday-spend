@@ -858,3 +858,21 @@ agreement on provider/model, reasoning, prompt, formula, methodology, source, FX
 The final baseline passed TypeScript, the production build, 40 Vitest files / 180 tests, the memory mirror, and the
 deterministic v1.1 check. The live CSV hash remained
 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+## Planner and model-picker usability — 26 August 2026
+
+The Add Itinerary Leg flow now uses a dark high-contrast treatment for keyboard-highlighted and selected cities. Its
+footer groups explicit Cancel, Add City, and Add Leg actions, and successful existing-city or generated-city leg
+creation expands the planner to show every leg immediately. Model suggestions in both the planner and dataset city
+generation surfaces now use a two-column grid, reducing dialog height while retaining readable wrapped model names.
+
+Focused Playwright coverage verified the dialog actions and exact selected-city background. Provider-specific mocked
+model discovery verified Anthropic and Google Gemini model selection, two models sharing each row, and Refresh Models
+resetting the chosen model to each provider's returned default. No provider key was read and no provider request was
+made by these tests. The Playwright harness was also corrected to isolate its numeric development PIN from
+`APP_SECRET`, keep NextAuth and the browser on one hostname, explicitly pass the authentication environment to its
+dev server, and wait for the credentials response before navigating.
+
+The checkpoint baseline passed: TypeScript, production build, 41 Vitest files / 184 tests, documentation memory
+check, and deterministic v1.1 verification. The build retained the known handled `/api/export` dynamic-route
+diagnostic. The focused browser runs passed the city-picker regression and the Anthropic/Google refresh regression.

@@ -8,16 +8,15 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `bdec883` — Luna/max defaults, Responses API/web search, standalone prompt
-staging, generation-time RBA FX validation, and the completed three-city owner-key smoke.
+**Latest implementation checkpoint:** pending commit — planner city-picker/actions, reveal-all behavior, compact model
+suggestions, provider-refresh browser coverage, and Playwright authentication isolation.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Next action:** Continue the remaining Phase 7 planner, saved-plan, tracking, settings, and failure-state interaction
-checks. The Luna/max, standalone-prompt, generation-time FX, and owner-key city-generation checkpoint is committed and
-ready to push.
+**Next action:** Continue the remaining Phase 7 route workflows, beginning with add/save/reload verification for a
+complete planner leg and its selected tiers, overrides, totals, and transport separation.
 
 **Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
 that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
@@ -303,8 +302,19 @@ Responses call each, `gpt-5.6-luna`, reasoning `max`, and a required web-search 
 40 Vitest files / 180 tests, memory mirror, deterministic formula/FX checks, and unchanged live CSV hash
 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
 
+**Planner/model-picker evidence (26 August 2026):** The Add Itinerary Leg dialog now keeps Cancel, Add City, and Add
+Leg together, gives the active and selected city options dark high-contrast treatments, and reveals all legs after
+either existing-city or generated-city leg creation. Both city-generation surfaces show model suggestions in a
+two-column grid. Playwright verified the dialog actions and exact selected-city color, and provider-specific mocked
+discovery verified Anthropic and Google Gemini model selection plus Refresh Models resetting each provider default.
+The browser suite now pins one hostname, development PIN, and NextAuth environment and waits for the credential
+response, preventing unrelated local secrets or a hostname split from invalidating authentication. The checkpoint
+baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memory mirror, and deterministic v1.1 checks.
+
 - [x] Fast-forward the complete v1.1 history into `main`, push it to origin, and pass the post-merge baseline:
   typecheck, production build, 36 Vitest files / 161 tests, memory mirror check, and deterministic v1.1 check.
+- [x] Improve Add Itinerary Leg selection contrast and actions, reveal all legs after either city-add path, compact
+  model suggestions into two columns, and verify Anthropic/Google Gemini selection and Refresh Models behavior.
 - [x] Remove obsolete v1.1, v4, and v5 branch pointers only after proving their tips remain reachable from `main` or
   the protected v6 archive; preserve `feat/city-cost-methodology-v6` and
   `city-cost-v6.1-research-final-2026-08-18` locally and on origin.
