@@ -406,9 +406,10 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
     quotes captured on the same day; report absolute and relative error, median/range, and notable outliers by route.
     Keep the check explicitly directional rather than a scientific benchmark, use mocked responses or saved quote
     fixtures for repeatability, and decide an initial tolerance plus whether more routes are needed.
-  - Added `buildTransportAccuracyReport` with deterministic coverage for matched/missing modes, absolute and relative
-    error, median/range summaries, provenance retention, and outlier flagging. Live same-day operator/aggregator quote
-    capture is still pending; no observed fares are fabricated by the harness.
+  - Added `buildTransportAccuracyReport` with a four-route mocked adapter smoke and deterministic coverage for
+    matched/missing modes, absolute and relative error, median/range summaries, provenance retention, and outlier
+    flagging. Live same-day operator/aggregator quote capture is still pending; no observed fares are fabricated by the
+    harness.
 
 - [x] Add an opt-in API-key save checkbox everywhere an LLM key is entered.
   - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and

@@ -954,6 +954,8 @@ Added `buildTransportAccuracyReport`, a repeatable directional comparison helper
 same-assumption reference quotes. It retains route/provider/model/search/fallback/citation provenance, computes per-
 route absolute and relative error, median and range summaries, and flags missing modes or routes outside the chosen
 tolerance. Deterministic tests cover domestic/international-style error cases and fallback provenance.
+The mocked pipeline smoke exercises four route classes (short/long and domestic/international) through the OpenAI
+adapter and carries every returned option, assumption, search query, and citation into the report.
 
 The live smoke remains intentionally open until same-day operator or aggregator quotes are captured; the repository
 does not invent observed fares or present the deterministic fixtures as accuracy evidence.
