@@ -50,6 +50,7 @@ describe('planner city picker UI', () => {
       expect(modelButtonsStart).toBeGreaterThan(-1);
       expect(modelGrid).toContain('grid grid-cols-2 gap-2 sm:grid-cols-4');
       expect(modelGrid).toContain('className="col-span-2 sm:col-span-4"');
+      expect(source).toMatch(/<div className="space-y-1 md:col-span-2">\s*<Label className="text-xs">Model/);
     }
   });
 
@@ -75,6 +76,9 @@ describe('planner city picker UI', () => {
       expect(source).toContain('grid grid-cols-2 gap-2 sm:grid-cols-4');
       expect(source).toContain('className="col-span-2 sm:col-span-4"');
       expect(source).toContain('onClick={() => void refreshModelsAndResetDefault()}');
+      expect(source).toContain('Thinking / reasoning effort');
+      expect(source).toContain('reasoningEffort: effectiveReasoningEffort');
+      expect(source).toContain('md:col-span-2');
     }
   });
 });

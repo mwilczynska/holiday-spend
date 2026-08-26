@@ -6,6 +6,7 @@ import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
+import { CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
 import {
   TransportEstimationError,
   estimateIntercityTransport,
@@ -19,6 +20,7 @@ const requestSchema = z.object({
   provider: z.enum(['anthropic', 'openai', 'gemini']).optional(),
   apiKey: z.string().optional(),
   model: z.string().optional(),
+  reasoningEffort: z.enum(CITY_GENERATION_REASONING_EFFORTS).optional(),
   allowedModes: z.array(z.enum(['flight', 'train', 'bus', 'ferry', 'drive', 'rental_car'])).optional(),
   referenceDate: z.string().optional(),
   extraContext: z.string().optional(),
@@ -132,6 +134,7 @@ export async function POST(
       provider: body.provider,
       apiKey: body.apiKey,
       model: body.model,
+      reasoningEffort: body.reasoningEffort,
       routeFacts,
     });
 

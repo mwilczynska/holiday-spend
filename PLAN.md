@@ -8,8 +8,8 @@
 
 **Last updated:** 26 August 2026
 
-**Current task checkpoint:** `fa85b35` - four-column intercity transport model pickers using discovered models and
-Refresh Models default reset.
+**Current task checkpoint:** pending - multi-file transaction import, safe import-response handling, and provider-aware
+intercity transport reasoning controls/full-width model grids.
 
 **Latest implementation checkpoint:** `996c8ce` — four-column provider model pickers and explicit cumulative chart
 line definitions.
@@ -18,8 +18,8 @@ line definitions.
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Next action:** Continue the remaining Phase 7 route workflows, beginning with add/save/reload verification for a
-complete planner leg and its selected tiers, overrides, totals, and transport separation.
+**Next action:** IN PROGRESS - run the complete baseline after the multi-file importer and transport effort/layout
+changes, then commit and push the verified feature checkpoint.
 
 **Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
 that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
@@ -323,6 +323,12 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
   still marked planned, planned estimate, and total trip budget; distinguish dashed estimates/budget from solid spend.
 - [x] Align single-leg and bulk intercity transport model pickers with city generation: discovered model lists,
   four-column desktop layout, and Refresh Models resetting the selected provider default; verify Anthropic and Google.
+- [x] Extend intercity transport estimation with the city-generation reasoning-effort selector, provider-native
+  effort parameters, and full-width model grids across both transport and new-city surfaces; verify the OpenAI,
+  Anthropic, and Gemini request mappings plus the focused browser geometry.
+- [x] Support selecting multiple Wise CSV exports, parse each file independently into the existing import pipeline,
+  and show a safe in-page error when the import endpoint returns non-JSON; verify preview and confirmation submission
+  with two files.
 - [x] Remove obsolete v1.1, v4, and v5 branch pointers only after proving their tips remain reachable from `main` or
   the protected v6 archive; preserve `feat/city-cost-methodology-v6` and
   `city-cost-v6.1-research-final-2026-08-18` locally and on origin.

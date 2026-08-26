@@ -4,7 +4,9 @@ import { z } from 'zod';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
+  getCityGenerationThinkingBudget,
   type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
 import type {
   TransportEstimateCitation,
@@ -48,6 +50,7 @@ export interface TransportEstimationRequest {
   provider?: CityGenerationProvider;
   apiKey?: string;
   model?: string;
+  reasoningEffort?: CityGenerationReasoningEffort;
   routeFacts?: string[];
 }
 
@@ -380,11 +383,15 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
 
   const model = normalizeModel(params.model) ?? (process.env.OPENAI_MODEL || CITY_GENERATION_DEFAULT_MODELS.openai);
+  const maxOutputTokens = params.reasoningEffort === 'max'
+    ? Math.max(params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS, 12000)
+    : params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS;
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     headers: {
@@ -395,8 +402,11 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
       model,
       instructions: params.systemPrompt,
       input: params.userPrompt,
-      max_output_tokens: params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS,
+      max_output_tokens: maxOutputTokens,
       store: false,
+      ...(params.reasoningEffort && params.reasoningEffort !== 'none'
+        ? { reasoning: { effort: params.reasoningEffort } }
+        : {}),
       text: {
         format: {
           type: 'json_object',
@@ -478,6 +488,7 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
@@ -503,6 +514,25 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
   } | null = null;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
+    const thinkingBudget = params.reasoningEffort && params.reasoningEffort !== 'none'
+      ? getCityGenerationThinkingBudget(params.reasoningEffort)
+      : 0;
+    const requestBody: Record<string, unknown> = {
+      model,
+      max_tokens: Math.max(params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS, (thinkingBudget ?? 0) + 1500),
+      system: params.systemPrompt,
+      tools: [
+        {
+          type: 'web_search_20250305',
+          name: 'web_search',
+          max_uses: 2,
+        },
+      ],
+      messages: [{ role: 'user', content: params.userPrompt }],
+    };
+    if (thinkingBudget > 0) {
+      requestBody.thinking = { type: 'enabled', budget_tokens: thinkingBudget };
+    }
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -510,19 +540,7 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify({
-        model,
-        max_tokens: params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS,
-        system: params.systemPrompt,
-        tools: [
-          {
-            type: 'web_search_20250305',
-            name: 'web_search',
-            max_uses: 2,
-          },
-        ],
-        messages: [{ role: 'user', content: params.userPrompt }],
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (response.ok) {
@@ -618,6 +636,7 @@ async function runGeminiTransportPromptWithSearch(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
@@ -665,7 +684,7 @@ async function runGeminiTransportPromptWithSearch(params: {
             responseMimeType: 'application/json',
             maxOutputTokens: params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS,
             thinkingConfig: {
-              thinkingBudget: 0,
+              thinkingBudget: getCityGenerationThinkingBudget(params.reasoningEffort),
             },
           },
         }),
@@ -741,6 +760,7 @@ async function runProviderFallbackPrompt(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderTransportResponse | null> {
   const fallbackResponse = await runJsonPromptWithProvider({
     systemPrompt: `${params.systemPrompt} Output only a single JSON object with no markdown or commentary.`,
@@ -749,6 +769,7 @@ async function runProviderFallbackPrompt(params: {
     apiKey: params.apiKey,
     model: params.model,
     maxTokens: params.maxTokens ?? FALLBACK_TRANSPORT_MAX_TOKENS,
+    reasoningEffort: params.reasoningEffort,
   });
 
   if (!fallbackResponse) return null;
@@ -771,6 +792,7 @@ async function runTransportPromptForProvider(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderTransportResponse | null> {
   const browseRunnerByProvider: Record<
     CityGenerationProvider,
@@ -780,6 +802,7 @@ async function runTransportPromptForProvider(params: {
       apiKey?: string;
       model?: string;
       maxTokens?: number;
+      reasoningEffort?: CityGenerationReasoningEffort;
     }) => Promise<ProviderTransportResponse | null>
   > = {
     openai: runOpenAiTransportPromptWithWebSearch,
@@ -822,6 +845,7 @@ export async function estimateIntercityTransport(request: TransportEstimationReq
         apiKey: request.apiKey,
         model: request.model,
         maxTokens: BROWSE_TRANSPORT_MAX_TOKENS,
+        reasoningEffort: request.reasoningEffort,
       });
 
       if (result) {
@@ -856,6 +880,7 @@ export async function estimateIntercityTransport(request: TransportEstimationReq
       apiKey: request.apiKey,
       model: request.model,
       maxTokens: FALLBACK_TRANSPORT_MAX_TOKENS,
+      reasoningEffort: request.reasoningEffort,
     });
 
     if (!strictFallback) {

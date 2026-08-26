@@ -321,3 +321,16 @@ export function parseWiseCsv(csvText: string): ParsedExpense[] {
     return parseTransactionHistoryRow(row);
   });
 }
+
+/**
+ * Parse several Wise exports as one logical import.
+ *
+ * Each file is parsed independently so every header row is handled by Papa
+ * and a header from one export can never become a transaction row in another.
+ * The returned rows intentionally retain the parser's existing semantics;
+ * preparation and database-level transaction deduplication happen once for
+ * the combined set in the import route.
+ */
+export function parseWiseCsvFiles(csvTexts: readonly string[]): ParsedExpense[] {
+  return csvTexts.flatMap((csvText) => parseWiseCsv(csvText));
+}

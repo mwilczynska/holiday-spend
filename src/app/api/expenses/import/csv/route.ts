@@ -1,7 +1,7 @@
 import { db } from '@/db';
 import { expenses, itineraryLegs } from '@/db/schema';
 import { and, asc, eq } from 'drizzle-orm';
-import { parseWiseCsv } from '@/lib/wise-csv-parser';
+import { parseWiseCsvFiles } from '@/lib/wise-csv-parser';
 import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
 import { prepareWiseExpenses } from '@/lib/wise-import';
 import { success, error, handleError } from '@/lib/api-helpers';
@@ -11,13 +11,15 @@ export async function POST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const formData = await request.formData();
-    const file = formData.get('file') as File | null;
+    const files = formData.getAll('file').filter(isUploadedFile);
     const confirmImport = formData.get('confirm') === 'true';
 
-    if (!file) return error('No file provided');
+    if (files.length === 0) return error('No file provided');
 
-    const csvText = await file.text();
-    const parsedRows = parseWiseCsv(csvText);
+    // Parse each export independently. Concatenating raw CSV strings would
+    // leave the second (and later) header rows in the transaction data.
+    const csvTexts = await Promise.all(files.map((file) => file.text()));
+    const parsedRows = parseWiseCsvFiles(csvTexts);
     const parsed = await prepareWiseExpenses(parsedRows);
 
     const legs = await db
@@ -91,4 +93,8 @@ export async function POST(request: Request) {
   } catch (err) {
     return handleError(err);
   }
+}
+
+function isUploadedFile(value: FormDataEntryValue): value is File {
+  return typeof value !== 'string' && typeof value.text === 'function';
 }

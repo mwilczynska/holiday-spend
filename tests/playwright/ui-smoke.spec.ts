@@ -89,6 +89,63 @@ test.describe('app UI smoke', () => {
     await expect(budgetSwatch).toHaveCSS('border-top-style', 'dashed');
   });
 
+  test('transaction import submits multiple CSV files and handles the confirmation response', async ({ page }) => {
+    const requestBodies: string[] = [];
+    let requestCount = 0;
+    const previewExpense = {
+      date: '2026-08-01',
+      amount: 14,
+      currency: 'AUD',
+      amountAud: 14,
+      category: 'food',
+      subcategory: 'Food & Drink',
+      description: 'trip',
+      merchant: 'First Cafe',
+      wiseTxnId: 'txn-smoke',
+      skip: false,
+    };
+
+    await page.route('**/api/expenses/import/csv', async (route) => {
+      requestBodies.push(route.request().postData() || '');
+      requestCount += 1;
+      const body = requestCount === 1
+        ? {
+            preview: true,
+            toImport: [previewExpense],
+            skipped: [],
+            duplicates: [],
+            total: 1,
+          }
+        : { imported: 1, skipped: 0, duplicates: 0, total: 1 };
+
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ data: body }),
+      });
+    });
+
+    await page.goto('/track/import');
+    const fileInput = page.getByLabel('Wise CSV files');
+    await fileInput.setInputFiles([
+      { name: 'july.csv', mimeType: 'text/csv', buffer: Buffer.from('ID,Status\ntxn-july,COMPLETED') },
+      { name: 'august.csv', mimeType: 'text/csv', buffer: Buffer.from('ID,Status\ntxn-august,COMPLETED') },
+    ]);
+
+    await expect(page.getByText('2 files selected.', { exact: true })).toBeVisible();
+    await page.getByRole('button', { name: 'Parse CSVs', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Import 1 Transactions', exact: true })).toBeVisible();
+    await page.getByRole('button', { name: 'Import 1 Transactions', exact: true }).click();
+    await expect(page.getByText('Import complete!', { exact: true })).toBeVisible();
+
+    expect(requestBodies).toHaveLength(2);
+    for (const body of requestBodies) {
+      expect(body).toContain('july.csv');
+      expect(body).toContain('august.csv');
+      expect((body.match(/name="file"/g) || []).length).toBe(2);
+    }
+  });
+
   test('planner renders', async ({ page }, testInfo) => {
     await page.goto('/plan');
     await expect(page).toHaveURL(/\/plan$/);

@@ -385,7 +385,7 @@ export function PlannerNewCityDialog({
                   </p>
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1 md:col-span-2">
                   <Label className="text-xs">Model</Label>
                   <Input
                     className="h-9 text-sm"

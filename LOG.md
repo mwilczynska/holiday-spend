@@ -900,3 +900,20 @@ now uses the discovered effective model set, so live provider-account models can
 The transport browser regression passed for both single-leg and bulk dialogs with Anthropic and Google Gemini fixtures,
 including four-column geometry and default reset after refresh. TypeScript, the production build, and the full Vitest
 suite (41 files / 186 tests) passed; the build retained the known handled /api/export dynamic-route diagnostic.
+
+## Multi-file transaction import and transport effort controls - 26 August 2026
+
+The Wise transaction importer now accepts one or more selected CSV files. The browser posts each file as a repeated
+multipart `file` field, and the server parses each export independently before flattening the rows into the existing
+normalization, AUD conversion, preview, and database-deduplication path. Independent parsing avoids treating later
+CSV headers as transaction rows while retaining the existing single-file behavior.
+
+The import screen now reports the selected file count and handles malformed or HTML API responses as an in-page error,
+so a failed confirmation cannot surface the raw `JSON.parse` runtime exception. Focused parser, response, UI, and
+Playwright coverage verifies two-file preview/confirmation submission and safe handling of invalid responses.
+
+Single-leg and bulk intercity transport dialogs now expose the same provider/model-specific thinking-effort selector as
+new-city generation. The selected effort is persisted per transport dialog, reset with Refresh Models, validated by the
+transport route, and passed through OpenAI reasoning, Anthropic thinking, and Gemini thinking-budget request fields.
+The model chooser occupies the full dialog width in both transport dialogs and in both new-city surfaces, so four
+suggestions use the available row instead of half the panel.

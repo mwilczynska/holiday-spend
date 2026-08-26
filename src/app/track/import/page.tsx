@@ -8,6 +8,7 @@ import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { EXPENSE_CATEGORIES } from '@/types';
 import { Upload, Check, Trash2 } from 'lucide-react';
+import { getImportErrorMessage, readImportApiResponse } from '@/lib/transaction-import-response';
 
 interface ParsedExpense {
   date: string;
@@ -39,28 +40,35 @@ export default function ImportPage() {
   const [result, setResult] = useState<{ imported: number; skipped: number; duplicates: number } | null>(null);
   const [clearing, setClearing] = useState(false);
   const [clearResult, setClearResult] = useState<number | null>(null);
+  const [selectedFileCount, setSelectedFileCount] = useState(0);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleUpload = async () => {
-    const file = fileRef.current?.files?.[0];
-    if (!file) return;
+    const files = Array.from(fileRef.current?.files ?? []);
+    if (files.length === 0) {
+      setErrorMessage('Select at least one Wise CSV file.');
+      return;
+    }
 
     setUploading(true);
     setPreview(null);
     setResult(null);
+    setErrorMessage(null);
 
     const formData = new FormData();
-    formData.append('file', file);
+    for (const file of files) formData.append('file', file);
 
     try {
       const res = await fetch('/api/expenses/import/csv', {
         method: 'POST',
         body: formData,
       });
-      const data = await res.json();
-      if (data.data?.preview) {
-        setPreview(data.data);
-        setEditableImports([...data.data.toImport]);
-      }
+      const data = await readImportApiResponse<PreviewData & { preview: boolean }>(res);
+      if (!data.data?.preview) throw new Error(data.error || 'Import preview was not returned by the server.');
+      setPreview(data.data);
+      setEditableImports([...data.data.toImport]);
+    } catch (error) {
+      setErrorMessage(getImportErrorMessage(error));
     } finally {
       setUploading(false);
     }
@@ -73,12 +81,16 @@ export default function ImportPage() {
   };
 
   const handleConfirmImport = async () => {
-    const file = fileRef.current?.files?.[0];
-    if (!file) return;
+    const files = Array.from(fileRef.current?.files ?? []);
+    if (files.length === 0) {
+      setErrorMessage('Select at least one Wise CSV file.');
+      return;
+    }
 
     setImporting(true);
+    setErrorMessage(null);
     const formData = new FormData();
-    formData.append('file', file);
+    for (const file of files) formData.append('file', file);
     formData.append('confirm', 'true');
 
     try {
@@ -86,9 +98,12 @@ export default function ImportPage() {
         method: 'POST',
         body: formData,
       });
-      const data = await res.json();
+      const data = await readImportApiResponse<{ imported: number; skipped: number; duplicates: number }>(res);
+      if (!data.data) throw new Error(data.error || 'Import result was not returned by the server.');
       setResult(data.data);
       setPreview(null);
+    } catch (error) {
+      setErrorMessage(getImportErrorMessage(error));
     } finally {
       setImporting(false);
     }
@@ -98,10 +113,13 @@ export default function ImportPage() {
     if (!confirm('Delete ALL imported Wise CSV transactions? This cannot be undone.')) return;
     setClearing(true);
     setClearResult(null);
+    setErrorMessage(null);
     try {
       const res = await fetch('/api/expenses/import/clear', { method: 'DELETE' });
-      const data = await res.json();
+      const data = await readImportApiResponse<{ deleted?: number }>(res);
       setClearResult(data.data?.deleted ?? 0);
+    } catch (error) {
+      setErrorMessage(getImportErrorMessage(error));
     } finally {
       setClearing(false);
     }
@@ -121,15 +139,32 @@ export default function ImportPage() {
       <Card>
         <CardContent className="p-4">
           <div className="flex items-center gap-4">
-            <input ref={fileRef} type="file" accept=".csv" className="text-sm" />
+            <input
+              ref={fileRef}
+              type="file"
+              accept=".csv"
+              multiple
+              aria-label="Wise CSV files"
+              className="text-sm"
+              onChange={(event) => setSelectedFileCount(event.target.files?.length ?? 0)}
+            />
             <Button onClick={handleUpload} disabled={uploading}>
               <Upload className="h-4 w-4 mr-2" />
-              <LoadingButtonLabel idle="Parse CSV" loading="Parsing..." isLoading={uploading} />
+              <LoadingButtonLabel
+                idle={selectedFileCount > 1 ? 'Parse CSVs' : 'Parse CSV'}
+                loading="Parsing..."
+                isLoading={uploading}
+              />
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-2">
-            Upload a Wise CSV export. Transactions will be parsed, categorised, and deduplicated.
+            Upload one or more Wise CSV exports. Transactions will be parsed, categorised, and deduplicated together.
           </p>
+          {selectedFileCount > 0 ? (
+            <p className="text-xs text-muted-foreground mt-1">
+              {selectedFileCount} file{selectedFileCount === 1 ? '' : 's'} selected.
+            </p>
+          ) : null}
           {uploading ? (
             <div className="mt-3">
               <InlineLoadingState
@@ -147,6 +182,14 @@ export default function ImportPage() {
         <Card>
           <CardContent className="p-4">
             <p className="text-sm text-destructive">Deleted {clearResult} imported transactions.</p>
+          </CardContent>
+        </Card>
+      )}
+
+      {errorMessage && (
+        <Card>
+          <CardContent className="p-4">
+            <p role="alert" className="text-sm text-destructive">{errorMessage}</p>
           </CardContent>
         </Card>
       )}

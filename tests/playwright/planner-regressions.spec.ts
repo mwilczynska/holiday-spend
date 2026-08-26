@@ -136,6 +136,10 @@ test('trip summary sits close to the header and stays pinned while scrolling', a
       boxes.forEach((box) => expect(box).not.toBeNull());
       boxes.slice(1).forEach((box) => expect(Math.abs(box!.y - boxes[0]!.y)).toBeLessThan(2));
       boxes.slice(1).forEach((box, index) => expect(box!.x).toBeGreaterThan(boxes[index]!.x));
+      const cityDialogBox = await cityDialog.boundingBox();
+      expect(cityDialogBox).not.toBeNull();
+      expect(boxes[3]!.x + boxes[3]!.width).toBeGreaterThan(cityDialogBox!.x + cityDialogBox!.width * 0.7);
+      await expect(cityDialog.getByText('Thinking / reasoning effort', { exact: true })).toBeVisible();
 
       await cityDialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
       await expect(modelInput).toHaveValue(scenario.defaultModel);
@@ -189,6 +193,9 @@ test('trip summary sits close to the header and stays pinned while scrolling', a
       boxes.forEach((box) => expect(box).not.toBeNull());
       boxes.slice(1).forEach((box) => expect(Math.abs(box!.y - boxes[0]!.y)).toBeLessThan(2));
       boxes.slice(1).forEach((box, index) => expect(box!.x).toBeGreaterThan(boxes[index]!.x));
+      const dialogBox = await dialog.boundingBox();
+      expect(dialogBox).not.toBeNull();
+      expect(boxes[3]!.x + boxes[3]!.width).toBeGreaterThan(dialogBox!.x + dialogBox!.width * 0.7);
     };
 
     await page.goto('/plan');
@@ -207,6 +214,7 @@ test('trip summary sits close to the header and stays pinned while scrolling', a
 
     const singleDialog = page.getByRole('dialog', { name: 'Estimate Intercity Transport' }).last();
     await singleDialog.getByText('Advanced estimation settings', { exact: true }).click();
+    await expect(singleDialog.getByText('Thinking / reasoning effort', { exact: true })).toBeVisible();
     const singleProviderSelect = singleDialog.getByRole('combobox').first();
     const singleModelInput = singleDialog.locator('input[list]').first();
     await singleProviderSelect.click();
@@ -225,6 +233,7 @@ test('trip summary sits close to the header and stays pinned while scrolling', a
 
     const bulkDialog = page.getByRole('dialog', { name: 'Estimate Intercity Transport' }).last();
     await bulkDialog.getByText('Advanced estimation settings', { exact: true }).click();
+    await expect(bulkDialog.getByText('Thinking / reasoning effort', { exact: true })).toBeVisible();
     const bulkProviderSelect = bulkDialog.getByRole('combobox').first();
     const bulkModelInput = bulkDialog.locator('input[list]').first();
     await bulkProviderSelect.click();

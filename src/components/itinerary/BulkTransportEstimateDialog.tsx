@@ -11,10 +11,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import {
   CITY_GENERATION_PROVIDER_OPTIONS,
+  CITY_GENERATION_DEFAULT_REASONING_EFFORT,
+  CITY_GENERATION_REASONING_EFFORT_LABELS,
+  getSupportedCityGenerationReasoningEfforts,
   getDefaultCityGenerationModels,
   migrateStoredCityGenerationModels,
   validateCityGenerationModel,
   type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import type { IntercityTransportItem, TransportEstimateMode, TransportEstimateResult } from '@/types';
@@ -118,6 +122,9 @@ export function BulkTransportEstimateDialog({
     gemini: '',
   });
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());
+  const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>(
+    CITY_GENERATION_DEFAULT_REASONING_EFFORT
+  );
   const [allowedModes, setAllowedModes] = useState<TransportEstimateMode[]>([
     'flight',
     'train',
@@ -139,6 +146,7 @@ export function BulkTransportEstimateDialog({
     const storedProvider = window.localStorage.getItem(`${STORAGE_PREFIX}.provider`) as ProviderOption | null;
     const storedKeys = window.localStorage.getItem(`${STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${STORAGE_PREFIX}.models`);
+    const storedReasoningEffort = window.localStorage.getItem(`${STORAGE_PREFIX}.reasoningEffort`);
 
     if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setProvider(storedProvider);
@@ -168,6 +176,10 @@ export function BulkTransportEstimateDialog({
         // Ignore malformed browser storage.
       }
     }
+
+    if (storedReasoningEffort && CITY_GENERATION_REASONING_EFFORT_LABELS[storedReasoningEffort as CityGenerationReasoningEffort]) {
+      setReasoningEffort(storedReasoningEffort as CityGenerationReasoningEffort);
+    }
   }, []);
 
   const selectedProvider = useMemo(
@@ -184,6 +196,12 @@ export function BulkTransportEstimateDialog({
     enabled: open,
   });
   const modelValidation = validateCityGenerationModel(provider, activeModel, modelDiscovery.result.effectiveModels);
+  const supportedReasoningEfforts = getSupportedCityGenerationReasoningEfforts(provider, activeModel);
+  const effectiveReasoningEffort = supportedReasoningEfforts.includes(reasoningEffort)
+    ? reasoningEffort
+    : supportedReasoningEfforts.includes(CITY_GENERATION_DEFAULT_REASONING_EFFORT)
+      ? CITY_GENERATION_DEFAULT_REASONING_EFFORT
+      : 'none';
   const estimatableTransportLegs = useMemo(() => buildEstimatableTransportLegs(legs), [legs]);
   const defaultSelectedLegIds = useMemo(
     () => estimatableTransportLegs
@@ -265,9 +283,15 @@ export function BulkTransportEstimateDialog({
     window.localStorage.setItem(`${STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
   }
 
+  function updateReasoningEffort(value: CityGenerationReasoningEffort) {
+    setReasoningEffort(value);
+    window.localStorage.setItem(`${STORAGE_PREFIX}.reasoningEffort`, value);
+  }
+
   async function refreshModelsAndResetDefault() {
     await modelDiscovery.refresh();
     updateModel(selectedProvider.defaultModel);
+    updateReasoningEffort(CITY_GENERATION_DEFAULT_REASONING_EFFORT);
   }
 
   function toggleMode(mode: TransportEstimateMode) {
@@ -319,6 +343,7 @@ export function BulkTransportEstimateDialog({
             provider,
             apiKey: activeApiKey || undefined,
             model: modelValidation.effectiveModel || undefined,
+            reasoningEffort: effectiveReasoningEffort,
             allowedModes,
             referenceDate: referenceDate || undefined,
             extraContext: extraContext || undefined,
@@ -576,7 +601,7 @@ export function BulkTransportEstimateDialog({
                   </p>
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1 md:col-span-2">
                   <Label className="text-xs">Model</Label>
                   <Input
                     className="h-9 text-sm"
@@ -623,6 +648,31 @@ export function BulkTransportEstimateDialog({
                   ) : null}
                   <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
                     {modelValidation.message}
+                  </p>
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-xs">Thinking / reasoning effort</Label>
+                  <Select
+                    value={effectiveReasoningEffort}
+                    onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
+                    disabled={supportedReasoningEfforts.length <= 1}
+                  >
+                    <SelectTrigger className="h-9 text-sm">
+                      <SelectValue placeholder="Select effort" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {supportedReasoningEfforts.map((effort) => (
+                        <SelectItem key={effort} value={effort}>
+                          {CITY_GENERATION_REASONING_EFFORT_LABELS[effort]}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">
+                    {supportedReasoningEfforts.length > 1
+                      ? 'Passed to the selected provider when supported. Higher effort can increase latency and cost.'
+                      : 'The selected model does not expose a configurable thinking setting through this adapter.'}
                   </p>
                 </div>
 
