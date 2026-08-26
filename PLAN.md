@@ -8,7 +8,7 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** pending commit — four-column provider model pickers and explicit cumulative chart
+**Latest implementation checkpoint:** `996c8ce` — four-column provider model pickers and explicit cumulative chart
 line definitions.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
