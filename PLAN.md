@@ -8,18 +8,17 @@
 
 **Last updated:** 26 August 2026
 
-**Current task checkpoint:** pending - multi-file transaction import, safe import-response handling, and provider-aware
+**Current task checkpoint:** `3b9afe4` - multi-file transaction import, safe import-response handling, and provider-aware
 intercity transport reasoning controls/full-width model grids.
 
-**Latest implementation checkpoint:** `996c8ce` — four-column provider model pickers and explicit cumulative chart
-line definitions.
+**Latest implementation checkpoint:** `3b9afe4` — multi-file transaction import, transport reasoning controls, and
+full-width provider model grids.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
 its verification results.
 
-**Next action:** IN PROGRESS - run the complete baseline after the multi-file importer and transport effort/layout
-changes, then commit and push the verified feature checkpoint.
+**Next action:** Push `3b9afe4`, then continue the remaining Phase 7 authenticated route workflows.
 
 **Owner FX decision (26 August 2026):** Each user-triggered v1.1 generation must obtain the latest USD/AUD FX data in
 that same LLM call. The checked-in 22 July snapshot remains reproducibility evidence only and must not be a silent
