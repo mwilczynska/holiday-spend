@@ -926,3 +926,24 @@ the selected itinerary legs while each successful or failed response remains att
 single-leg estimate and bulk apply paths are unchanged.
 
 Focused Vitest coverage passed for the scheduler limits, completion-order updates, and bulk-dialog integration.
+
+## Opt-in browser API-key saving - 26 August 2026
+
+All OpenAI, Anthropic, and Gemini API-key inputs now share an opt-in browser-storage hook. Keys remain in memory for
+the current session by default; checking “Save API key in this browser” persists them per provider and unchecking it
+removes the persisted values. Legacy non-empty key storage is surfaced as an already-enabled preference so an existing
+user choice is not silently lost, while an explicit opt-out never restores a stored key. No key is written to the
+repository, server database, or logs.
+
+Focused storage, UI-source, transport, and city-generation tests passed, together with TypeScript validation.
+
+## Country-block comparison and effort layout - 26 August 2026
+
+The dashboard Country Comparison response now follows the itinerary's uninterrupted country blocks. Consecutive legs
+in one country share a row, while a later return receives a new row at its chronological position. Planned category
+totals and resolved actual expenses stay attached to the same block; unmatched actual expenses remain in appended
+country/unassigned rows. A stable block index makes repeated country labels safe in the table.
+
+The city-generation and single/bulk transport dialogs now place model and provider-specific reasoning effort controls
+side by side at desktop widths, stack them on narrow screens, and keep the four-column suggestion grid full width.
+Focused block, UI-layout, provider request, and TypeScript checks passed.

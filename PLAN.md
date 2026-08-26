@@ -14,8 +14,8 @@ per-leg result ordering and failure isolation.
 **Latest plan checkpoint:** `0eadb19` — marked the concurrent bulk transport TODO complete after focused tests and
 TypeScript validation.
 
-**Next action:** Continue with the remaining Phase 7 next-session TODOs, beginning with the transport-estimate accuracy
-smoke and then the API-key, layout, and country-block items. Mark each pending item complete only after its evidence is recorded.
+**Next action:** Run the directional transport-estimation accuracy smoke using fixed route and quote fixtures, then
+record the evidence and any initial tolerance decision.
 
 ## Current scope and decisions
 
@@ -408,26 +408,33 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
     Keep the check explicitly directional rather than a scientific benchmark, use mocked responses or saved quote
     fixtures for repeatability, and decide an initial tolerance plus whether more routes are needed.
 
-- [ ] Add an opt-in API-key save checkbox everywhere an LLM key is entered.
+- [x] Add an opt-in API-key save checkbox everywhere an LLM key is entered.
   - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and
     single/bulk transport dialogs. Persist a key only in the browser when the user opts in; clearing the checkbox or
     removing the key must clear the stored value. Never send keys to logs, the repository, or the database.
   - Acceptance: the choice and key behavior are consistent across all provider inputs, and a fresh unchecked input
     does not silently restore a previously saved key.
+  - Verified across city generation, planner import, and single/bulk transport inputs with shared storage utility tests,
+    focused UI-source coverage, and TypeScript validation.
 
-- [ ] Place reasoning effort beside the model picker.
+- [x] Place reasoning effort beside the model picker.
   - In both transport-estimate dialogs and both city-cost estimate dialogs, put the reasoning-effort control next to
     the model picker at desktop widths, with a sensible stacked layout on narrow screens. Preserve the four-column
     full-width model grid and provider-specific supported-effort behavior.
   - Acceptance: the two controls remain visually associated for every provider, are usable at narrow widths, and the
     selected effort still reaches the correct provider request.
+  - Verified by focused UI-source coverage for all four city/transport dialogs, provider request mapping tests for
+    OpenAI, Anthropic, and Gemini, and TypeScript validation.
 
-- [ ] Keep repeated dashboard country visits as separate chronological rows.
+- [x] Keep repeated dashboard country visits as separate chronological rows.
   - Change Country Comparison grouping to coalesce only uninterrupted consecutive itinerary legs with the same
     country. If the itinerary leaves a country and later returns, emit a second row at the later position instead of
     merging totals across the trip; retain the existing totals and category calculations within each block.
   - Acceptance: `A, A, B, A` renders as `A, B, A` in itinerary order, while `A, A, B, B` remains `A, B`, with
     regression coverage for totals and repeated-country labels.
+  - Implemented with itinerary-ordered country-block IDs; actual expenses follow their resolved leg block, and
+    unmatched actuals remain appended as country/unassigned rows. Focused country-block totals/order tests and
+    TypeScript validation pass.
 
 ## Definition of done
 

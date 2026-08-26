@@ -50,6 +50,7 @@ interface Summary {
 interface CountryComparison {
   countryId: string;
   countryName: string;
+  blockIndex: number | null;
   planned: number;
   actual: number;
   plannedDays: number;
@@ -1246,11 +1247,11 @@ export default function DashboardPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparison.filter((c) => c.planned > 0 || c.actual > 0).map((c) => {
+                  {comparison.filter((c) => c.planned > 0 || c.actual > 0).map((c, index) => {
                     const diff = c.actual - c.planned;
                     const isOver = diff > 0;
                     return (
-                      <tr key={c.countryId} className="border-b last:border-0">
+                      <tr key={`${c.countryId}:${c.blockIndex ?? 'actual'}:${index}`} className="border-b last:border-0">
                         <td className="p-2">
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{c.countryName}</span>

@@ -27,6 +27,7 @@ import {
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
+import { useProviderApiKeys } from '@/lib/use-provider-api-keys';
 import { KNOWN_COUNTRIES, findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
@@ -228,11 +229,6 @@ export default function PlanPage() {
   const [missingCityStrategy, setMissingCityStrategy] = useState<'placeholder' | 'generate'>('placeholder');
   const [importingSnapshot, setImportingSnapshot] = useState(false);
   const [importProvider, setImportProvider] = useState<ProviderOption>('openai');
-  const [importApiKeys, setImportApiKeys] = useState<Record<ProviderOption, string>>({
-    openai: '',
-    anthropic: '',
-    gemini: '',
-  });
   const [importModels, setImportModels] = useState<Record<ProviderOption, string>>(getDefaultCityGenerationModels());
   const [showImportApiKey, setShowImportApiKey] = useState(false);
   const [importReferenceDate, setImportReferenceDate] = useState('');
@@ -242,6 +238,15 @@ export default function PlanPage() {
   const importInputRef = useRef<HTMLInputElement>(null);
   const plannerHeaderRef = useRef<HTMLDivElement>(null);
   const [plannerHeaderHeight, setPlannerHeaderHeight] = useState(0);
+  const {
+    apiKeys: importApiKeys,
+    saveApiKeys: saveImportApiKeys,
+    setSaveApiKeys: setSaveImportApiKeys,
+    updateApiKey: updateStoredImportApiKey,
+    clearCurrentProviderApiKey: clearStoredCurrentImportApiKey,
+    clearAllSavedApiKeys: clearStoredAllImportApiKeys,
+    hasAnySavedApiKey: hasAnySavedImportApiKey,
+  } = useProviderApiKeys(CITY_GENERATION_STORAGE_PREFIX);
   const plannerContentTopPadding = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight - 56, 128) : 144;
   const plannerSidebarTopOffset = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight + 10, 120) : 200;
 
@@ -338,24 +343,10 @@ export default function PlanPage() {
     if (typeof window === 'undefined') return;
 
     const storedProvider = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.provider`) as ProviderOption | null;
-    const storedKeys = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.models`);
 
     if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setImportProvider(storedProvider);
-    }
-
-    if (storedKeys) {
-      try {
-        const parsed = JSON.parse(storedKeys) as Partial<Record<ProviderOption, string>>;
-        setImportApiKeys({
-          openai: parsed.openai || '',
-          anthropic: parsed.anthropic || '',
-          gemini: parsed.gemini || '',
-        });
-      } catch {
-        // Ignore malformed browser storage and keep defaults.
-      }
     }
 
     if (storedModels) {
@@ -532,32 +523,17 @@ export default function PlanPage() {
   };
 
   const updateImportApiKey = (value: string) => {
-    const nextKeys = {
-      ...importApiKeys,
-      [importProvider]: value,
-    };
-    setImportApiKeys(nextKeys);
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(`${CITY_GENERATION_STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
-    }
+    updateStoredImportApiKey(importProvider, value);
   };
 
   const clearCurrentImportApiKey = () => {
-    updateImportApiKey('');
+    clearStoredCurrentImportApiKey(importProvider);
     setShowImportApiKey(false);
   };
 
   const clearAllImportApiKeys = () => {
-    const nextKeys = {
-      openai: '',
-      anthropic: '',
-      gemini: '',
-    };
-    setImportApiKeys(nextKeys);
+    clearStoredAllImportApiKeys();
     setShowImportApiKey(false);
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(`${CITY_GENERATION_STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
-    }
   };
 
   const updateImportModel = (value: string) => {
@@ -878,7 +854,6 @@ export default function PlanPage() {
   const selectedImportProvider =
     CITY_GENERATION_PROVIDER_OPTIONS.find((option) => option.value === importProvider) ?? CITY_GENERATION_PROVIDER_OPTIONS[0];
   const activeImportApiKey = importApiKeys[importProvider] || '';
-  const hasAnySavedImportApiKey = Object.values(importApiKeys).some((value) => value.trim().length > 0);
   const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
   const importModelValidation = validateCityGenerationModel(importProvider, activeImportModel);
   const importModelListId = `${CITY_GENERATION_STORAGE_PREFIX}.${importProvider}.models`;
@@ -1087,7 +1062,7 @@ export default function PlanPage() {
                   <p className="text-sm font-medium">Generation Settings For This Import</p>
                   <p className="text-xs text-muted-foreground">
                     These settings apply to every missing city in this file. If you leave the API key blank, the server will
-                    try its configured key for the chosen provider.
+                    try its configured key for the chosen provider; saving a browser key is opt-in.
                   </p>
                 </div>
 
@@ -1128,6 +1103,14 @@ export default function PlanPage() {
                         onChange={(event) => setShowImportApiKey(event.target.checked)}
                       />
                       Show API key
+                    </label>
+                    <label className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <input
+                        type="checkbox"
+                        checked={saveImportApiKeys}
+                        onChange={(event) => setSaveImportApiKeys(event.target.checked)}
+                      />
+                      Save API key in this browser
                     </label>
                     <div className="flex flex-wrap gap-2">
                       <Button

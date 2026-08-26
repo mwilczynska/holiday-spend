@@ -20,6 +20,7 @@ import {
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
+import { useProviderApiKeys } from '@/lib/use-provider-api-keys';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import type {
   IntercityTransportItem,
@@ -102,11 +103,6 @@ export function TransportEstimateDialog({
   onApplyTransports,
 }: TransportEstimateDialogProps) {
   const [provider, setProvider] = useState<ProviderOption>('openai');
-  const [apiKeys, setApiKeys] = useState<Record<ProviderOption, string>>({
-    openai: '',
-    anthropic: '',
-    gemini: '',
-  });
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());
   const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>(
     CITY_GENERATION_DEFAULT_REASONING_EFFORT
@@ -125,30 +121,25 @@ export function TransportEstimateDialog({
   const [applyingMode, setApplyingMode] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<TransportEstimateResult | null>(null);
+  const {
+    apiKeys,
+    saveApiKeys,
+    setSaveApiKeys,
+    updateApiKey: updateStoredApiKey,
+    clearCurrentProviderApiKey: clearStoredCurrentApiKey,
+    clearAllSavedApiKeys: clearStoredAllApiKeys,
+    hasAnySavedApiKey,
+  } = useProviderApiKeys(STORAGE_PREFIX);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const storedProvider = window.localStorage.getItem(`${STORAGE_PREFIX}.provider`) as ProviderOption | null;
-    const storedKeys = window.localStorage.getItem(`${STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${STORAGE_PREFIX}.models`);
     const storedReasoningEffort = window.localStorage.getItem(`${STORAGE_PREFIX}.reasoningEffort`);
 
     if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setProvider(storedProvider);
-    }
-
-    if (storedKeys) {
-      try {
-        const parsed = JSON.parse(storedKeys) as Partial<Record<ProviderOption, string>>;
-        setApiKeys({
-          openai: parsed.openai || '',
-          anthropic: parsed.anthropic || '',
-          gemini: parsed.gemini || '',
-        });
-      } catch {
-        // Ignore malformed browser storage.
-      }
     }
 
     if (storedModels) {
@@ -173,7 +164,6 @@ export function TransportEstimateDialog({
     [provider]
   );
   const activeApiKey = apiKeys[provider] || '';
-  const hasAnySavedApiKey = Object.values(apiKeys).some((value) => value.trim().length > 0);
   const activeModel = models[provider] || selectedProvider.defaultModel;
   const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
   const modelDiscovery = useProviderModelDiscovery({
@@ -205,28 +195,16 @@ export function TransportEstimateDialog({
   }
 
   function updateApiKey(value: string) {
-    const nextKeys = {
-      ...apiKeys,
-      [provider]: value,
-    };
-    setApiKeys(nextKeys);
-    window.localStorage.setItem(`${STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+    updateStoredApiKey(provider, value);
   }
 
   function clearCurrentProviderApiKey() {
-    updateApiKey('');
+    clearStoredCurrentApiKey(provider);
     setShowApiKey(false);
   }
 
   function clearAllSavedApiKeys() {
-    const nextKeys = {
-      openai: '',
-      anthropic: '',
-      gemini: '',
-    };
-
-    setApiKeys(nextKeys);
-    window.localStorage.setItem(`${STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+    clearStoredAllApiKeys();
     setShowApiKey(false);
   }
 
@@ -334,7 +312,8 @@ export function TransportEstimateDialog({
             </div>
             <div className="mt-1 text-xs text-muted-foreground">
               The selected provider will use live search or grounding when its API supports it, and will fall back to
-              conservative estimation if not. Review the option details before applying them to the plan.
+              conservative estimation if not. API-key saving is optional and controlled below. Review the option details
+              before applying them to the plan.
             </div>
           </div>
 
@@ -400,6 +379,14 @@ export function TransportEstimateDialog({
                     />
                     Show API key
                   </label>
+                  <label className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <input
+                      type="checkbox"
+                      checked={saveApiKeys}
+                      onChange={(event) => setSaveApiKeys(event.target.checked)}
+                    />
+                    Save API key in this browser
+                  </label>
                   <div className="flex flex-wrap gap-2">
                     <Button type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
                       Clear This Key
@@ -413,28 +400,58 @@ export function TransportEstimateDialog({
                   </p>
                 </div>
 
-                <div className="space-y-1 md:col-span-2">
-                  <Label className="text-xs">Model</Label>
-                  <Input
-                    className="h-9 text-sm"
-                    list={modelListId}
-                    placeholder={selectedProvider.defaultModel}
-                    value={activeModel}
-                    onChange={(event) => updateModel(event.target.value)}
-                    autoComplete="off"
-                    spellCheck={false}
-                  />
-                  <datalist id={modelListId}>
-                    {modelDiscovery.result.effectiveModels.map((model) => (
-                      <option key={model} value={model} />
-                    ))}
-                  </datalist>
-                  <p className="text-xs text-muted-foreground">{modelDiscovery.statusMessage}</p>
-                  {modelDiscovery.exampleSummary ? (
-                    <p className="text-xs text-muted-foreground">
-                      Example models: {modelDiscovery.exampleSummary}
-                    </p>
-                  ) : null}
+                <div className="space-y-3 md:col-span-2">
+                  <div className="grid gap-3 md:grid-cols-3">
+                    <div className="space-y-1 md:col-span-2">
+                      <Label className="text-xs">Model</Label>
+                      <Input
+                        className="h-9 text-sm"
+                        list={modelListId}
+                        placeholder={selectedProvider.defaultModel}
+                        value={activeModel}
+                        onChange={(event) => updateModel(event.target.value)}
+                        autoComplete="off"
+                        spellCheck={false}
+                      />
+                      <datalist id={modelListId}>
+                        {modelDiscovery.result.effectiveModels.map((model) => (
+                          <option key={model} value={model} />
+                        ))}
+                      </datalist>
+                      <p className="text-xs text-muted-foreground">{modelDiscovery.statusMessage}</p>
+                      {modelDiscovery.exampleSummary ? (
+                        <p className="text-xs text-muted-foreground">
+                          Example models: {modelDiscovery.exampleSummary}
+                        </p>
+                      ) : null}
+                    </div>
+
+                    <div className="space-y-1">
+                      <Label className="text-xs">Thinking / reasoning effort</Label>
+                      <Select
+                        value={effectiveReasoningEffort}
+                        onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
+                        disabled={supportedReasoningEfforts.length <= 1}
+                      >
+                        <SelectTrigger className="h-9 text-sm">
+                          <SelectValue placeholder="Select effort" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {supportedReasoningEfforts.map((effort) => (
+                            <SelectItem key={effort} value={effort}>
+                              {CITY_GENERATION_REASONING_EFFORT_LABELS[effort]}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <p className="text-xs text-muted-foreground">
+                        {supportedReasoningEfforts.length > 1
+                          ? 'Passed to the selected provider when supported. Higher effort can increase latency and cost.'
+                          : 'The selected model does not expose a configurable thinking setting through this adapter.'}
+                      </p>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                     {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
                       <Button
@@ -460,31 +477,6 @@ export function TransportEstimateDialog({
                   ) : null}
                   <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
                     {modelValidation.message}
-                  </p>
-                </div>
-
-                <div className="space-y-1">
-                  <Label className="text-xs">Thinking / reasoning effort</Label>
-                  <Select
-                    value={effectiveReasoningEffort}
-                    onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
-                    disabled={supportedReasoningEfforts.length <= 1}
-                  >
-                    <SelectTrigger className="h-9 text-sm">
-                      <SelectValue placeholder="Select effort" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {supportedReasoningEfforts.map((effort) => (
-                        <SelectItem key={effort} value={effort}>
-                          {CITY_GENERATION_REASONING_EFFORT_LABELS[effort]}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <p className="text-xs text-muted-foreground">
-                    {supportedReasoningEfforts.length > 1
-                      ? 'Passed to the selected provider when supported. Higher effort can increase latency and cost.'
-                      : 'The selected model does not expose a configurable thinking setting through this adapter.'}
                   </p>
                 </div>
 

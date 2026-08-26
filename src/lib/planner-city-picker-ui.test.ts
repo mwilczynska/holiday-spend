@@ -79,7 +79,38 @@ describe('planner city picker UI', () => {
       expect(source).toContain('Thinking / reasoning effort');
       expect(source).toContain('reasoningEffort: effectiveReasoningEffort');
       expect(source).toContain('md:col-span-2');
+      expect(source).toContain('className="space-y-3 md:col-span-2"');
+      expect(source).toContain('className="grid gap-3 md:grid-cols-3"');
     }
+  });
+
+  it('keeps reasoning effort beside the model picker on every LLM surface', () => {
+    const filenames = [
+      'src/components/cities/CityGenerationPanel.tsx',
+      'src/components/itinerary/PlannerNewCityDialog.tsx',
+      'src/components/itinerary/TransportEstimateDialog.tsx',
+      'src/components/itinerary/BulkTransportEstimateDialog.tsx',
+    ];
+
+    for (const filename of filenames) {
+      const source = fs.readFileSync(path.join(projectRoot, filename), 'utf8');
+      expect(source).toContain('className="space-y-3 md:col-span-2"');
+      expect(source).toContain('className="grid gap-3 md:grid-cols-3"');
+      expect(source).toContain('<Label className="text-xs">Thinking / reasoning effort</Label>');
+      expect(source).toContain('grid grid-cols-2 gap-2 sm:grid-cols-4');
+    }
+  });
+
+  it('uses uninterrupted country blocks for dashboard comparison rows', () => {
+    const source = fs.readFileSync(
+      path.join(projectRoot, 'src', 'app', 'api', 'dashboard', 'planned-vs-actual', 'route.ts'),
+      'utf8'
+    );
+
+    expect(source).toContain('createCountryBlockRefs');
+    expect(source).toContain('plannedByBlock');
+    expect(source).toContain('actualByBlock');
+    expect(source).toContain('blockIndex');
   });
 
   it('routes bulk transport estimation through the bounded concurrent scheduler', () => {
@@ -92,5 +123,21 @@ describe('planner city picker UI', () => {
     expect(source).toContain('BULK_TRANSPORT_CONCURRENCY[provider]');
     expect(source).toContain('concurrently with a provider-aware request limit');
     expect(source).not.toContain('BULK_ESTIMATE_DELAY_MS');
+  });
+
+  it('shows the opt-in browser-save checkbox on every LLM API-key surface', () => {
+    const filenames = [
+      path.join(projectRoot, 'src', 'components', 'cities', 'CityGenerationPanel.tsx'),
+      path.join(projectRoot, 'src', 'components', 'itinerary', 'PlannerNewCityDialog.tsx'),
+      path.join(projectRoot, 'src', 'components', 'itinerary', 'TransportEstimateDialog.tsx'),
+      path.join(projectRoot, 'src', 'components', 'itinerary', 'BulkTransportEstimateDialog.tsx'),
+      path.join(projectRoot, 'src', 'app', 'plan', 'page.tsx'),
+    ];
+
+    for (const filename of filenames) {
+      const source = fs.readFileSync(filename, 'utf8');
+      expect(source).toContain('Save API key in this browser');
+      expect(source).toContain('setSave');
+    }
   });
 });
