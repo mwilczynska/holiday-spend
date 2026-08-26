@@ -876,3 +876,16 @@ dev server, and wait for the credentials response before navigating.
 The checkpoint baseline passed: TypeScript, production build, 41 Vitest files / 184 tests, documentation memory
 check, and deterministic v1.1 verification. The build retained the known handled `/api/export` dynamic-route
 diagnostic. The focused browser runs passed the city-picker regression and the Anthropic/Google refresh regression.
+
+## Model-grid density and dashboard chart key — 26 August 2026
+
+Provider model suggestions now use four columns on desktop (with a two-column narrow-screen fallback) in both the
+dataset and planner city-generation surfaces. The Refresh Models action spans the full grid row. The dashboard's
+cumulative-spend legend and tooltip now define every data series: solid green actual spend, solid grey actual spend
+recorded against a leg still marked planned, dashed green planned estimate, and dashed purple total trip budget. The
+grey dashed background strokes remain Cartesian grid guides rather than a spend series.
+
+Focused Playwright coverage passed the four-column Anthropic/Google Gemini model-refresh flow and a deterministic
+dashboard render that checks the legend labels and dashed swatches. TypeScript, the production build, and the full
+Vitest suite (41 files / 185 tests) also passed; the build retained the known handled `/api/export` dynamic-route
+diagnostic. No provider key was read or used.

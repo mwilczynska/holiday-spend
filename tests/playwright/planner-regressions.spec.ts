@@ -70,12 +70,12 @@ test('trip summary sits close to the header and stays pinned while scrolling', a
     await expect(addLegDialog).toBeHidden();
   });
 
-  test('Anthropic and Google model refresh reset defaults in the compact model grid', async ({ page }) => {
+  test('Anthropic and Google model refresh reset defaults in the four-column model grid', async ({ page }) => {
     const refreshRequests: string[] = [];
     const providerModels = {
-      openai: ['gpt-5.6-luna', 'gpt-5.4-mini'],
-      anthropic: ['claude-sonnet-4-6', 'claude-haiku-4-5'],
-      gemini: ['gemini-2.5-flash', 'gemini-2.5-pro'],
+      openai: ['gpt-5.6-luna', 'gpt-5.4-mini', 'gpt-5.4', 'gpt-5.3-codex'],
+      anthropic: ['claude-sonnet-4-6', 'claude-haiku-4-5', 'claude-opus-4-6', 'claude-3-7-sonnet-latest'],
+      gemini: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash', 'gemini-1.5-pro'],
     } as const;
 
     await page.route('**/api/llm/models?**', async (route) => {
@@ -125,15 +125,17 @@ test('trip summary sits close to the header and stays pinned while scrolling', a
       await expect(modelInput).toHaveValue(scenario.defaultModel);
       await modelInput.fill(scenario.alternate);
 
-      const firstModel = cityDialog.getByRole('button', { name: `${scenario.defaultModel} (default)`, exact: true });
-      const secondModel = cityDialog.getByRole('button', { name: scenario.alternate, exact: true });
-      await expect(firstModel).toBeVisible();
-      await expect(secondModel).toBeVisible();
-      const [firstBox, secondBox] = await Promise.all([firstModel.boundingBox(), secondModel.boundingBox()]);
-      expect(firstBox).not.toBeNull();
-      expect(secondBox).not.toBeNull();
-      expect(Math.abs(firstBox!.y - secondBox!.y)).toBeLessThan(2);
-      expect(secondBox!.x).toBeGreaterThan(firstBox!.x);
+      const modelButtons = providerModels[scenario.provider].map((model, index) =>
+        cityDialog.getByRole('button', {
+          name: index === 0 ? `${model} (default)` : model,
+          exact: true,
+        })
+      );
+      for (const button of modelButtons) await expect(button).toBeVisible();
+      const boxes = await Promise.all(modelButtons.map((button) => button.boundingBox()));
+      boxes.forEach((box) => expect(box).not.toBeNull());
+      boxes.slice(1).forEach((box) => expect(Math.abs(box!.y - boxes[0]!.y)).toBeLessThan(2));
+      boxes.slice(1).forEach((box, index) => expect(box!.x).toBeGreaterThan(boxes[index]!.x));
 
       await cityDialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
       await expect(modelInput).toHaveValue(scenario.defaultModel);

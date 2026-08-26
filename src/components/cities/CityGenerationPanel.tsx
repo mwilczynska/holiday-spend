@@ -303,7 +303,7 @@ export function CityGenerationPanel({
               Example models: {modelDiscovery.exampleSummary}
             </p>
           ) : null}
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
             {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
               <Button
                 key={model}
@@ -316,7 +316,7 @@ export function CityGenerationPanel({
                 {model === selectedProvider.defaultModel ? `${model} (default)` : model}
               </Button>
             ))}
-            <Button type="button" variant="ghost" size="sm" className="col-span-2" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing}>
+            <Button type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing}>
               <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
             </Button>
           </div>

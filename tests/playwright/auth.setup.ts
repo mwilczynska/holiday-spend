@@ -4,6 +4,8 @@ import { test as setup, expect } from '@playwright/test';
 
 const authFile = path.join(process.cwd(), '.playwright', '.auth', 'user.json');
 
+setup.setTimeout(60_000);
+
 setup('authenticate dev user', async ({ page }) => {
   const appPin = process.env.PLAYWRIGHT_AUTH_DEV_PIN || '1234';
 

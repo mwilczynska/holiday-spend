@@ -348,8 +348,12 @@ function BurnRateTooltip({
       </div>
       <div className="mt-2 space-y-1">
         {[
-          { label: 'Spent', color: point.legStatus === 'planned' ? '#9ca3af' : '#16a34a', value: point.cumulative },
-          { label: 'Estimated', color: '#0f766e', value: point.plannedCumulative },
+          {
+            label: point.legStatus === 'planned' ? 'Actual spend · leg still planned' : 'Actual spend',
+            color: point.legStatus === 'planned' ? '#9ca3af' : '#16a34a',
+            value: point.cumulative,
+          },
+          { label: 'Planned estimate', color: '#0f766e', value: point.plannedCumulative },
         ].map((entry) => (
           <div key={entry.label} className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">
@@ -367,6 +371,15 @@ function BurnRateTooltip({
   );
 }
 
+function getBurnRateLegendItems(includeBudget: boolean) {
+  return [
+    { label: 'Actual spend', color: '#16a34a' },
+    { label: 'Actual spend · leg still planned', color: '#9ca3af' },
+    { label: 'Planned estimate', color: '#0f766e', dashed: true },
+    ...(includeBudget ? [{ label: 'Total trip budget', color: '#7c3aed', dashed: true }] : []),
+  ];
+}
+
 function BurnRateLegend({
   includeBudget,
   mode,
@@ -375,11 +388,7 @@ function BurnRateLegend({
   mode: ChartRenderMode;
 }) {
   const metrics = getBurnChartMetrics(mode);
-  const items = [
-    { label: 'Spent', color: '#16a34a' },
-    { label: 'Estimated', color: '#0f766e' },
-    ...(includeBudget ? [{ label: 'Budget', color: '#7c3aed' }] : []),
-  ];
+  const items = getBurnRateLegendItems(includeBudget);
 
   return (
     <div
@@ -395,7 +404,12 @@ function BurnRateLegend({
           <span
             aria-hidden="true"
             className="inline-block h-0.5"
-            style={{ width: metrics.legendSwatchWidth, backgroundColor: item.color }}
+            style={{
+              width: metrics.legendSwatchWidth,
+              backgroundColor: item.dashed ? undefined : item.color,
+              borderTop: item.dashed ? `2px dashed ${item.color}` : undefined,
+              height: item.dashed ? 0 : undefined,
+            }}
           />
           <span className="font-medium">{item.label}</span>
         </div>
@@ -735,11 +749,7 @@ export default function DashboardPage() {
     60,
     Math.max(34, Math.floor(((expandedCategoryChartHeight - 52) / Math.max(categoryChartData.length, 1)) * 0.68))
   );
-  const burnLegendItems = [
-    { label: 'Spent', color: '#16a34a' },
-    { label: 'Estimated', color: '#0f766e', dashed: true },
-    ...(budgetCeiling > 0 ? [{ label: 'Budget', color: '#7c3aed', dashed: true }] : []),
-  ];
+  const burnLegendItems = getBurnRateLegendItems(budgetCeiling > 0);
   const expandedChartControls = expandedChart === 'country' ? (
     <div className="flex flex-wrap items-center gap-2">
       <Tabs
@@ -987,9 +997,9 @@ export default function DashboardPage() {
               ifOverflow="extendDomain"
             />
           ))}
-          <Line type="monotone" dataKey="spentActual" name="Spent" stroke="#16a34a" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
-          <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} legendType="none" />
-          <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" strokeDasharray={isExpanded ? '7 5' : '6 4'} activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
+          <Line type="monotone" dataKey="spentActual" name="Actual spend" stroke="#16a34a" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
+          <Line type="monotone" dataKey="spentPlannedTail" name="Actual spend · leg still planned" stroke="#9ca3af" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} legendType="none" />
+          <Line type="monotone" dataKey="plannedCumulative" name="Planned estimate" stroke="#0f766e" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" strokeDasharray={isExpanded ? '7 5' : '6 4'} activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
           {budgetCeiling > 0 && (
             <ReferenceLine
               y={budgetCeiling}

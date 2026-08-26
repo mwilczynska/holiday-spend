@@ -8,8 +8,8 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `cea23d2` — planner city-picker/actions, reveal-all behavior, compact model
-suggestions, provider-refresh browser coverage, and Playwright authentication isolation.
+**Latest implementation checkpoint:** pending commit — four-column provider model pickers and explicit cumulative chart
+line definitions.
 
 **Repository cleanup result:** The verified historical v5 files were moved to a named quarantine outside the repository;
 no v5 files remain untracked in the working tree. This was repository hygiene and did not change the v1.1 methodology or
@@ -305,7 +305,8 @@ Responses call each, `gpt-5.6-luna`, reasoning `max`, and a required web-search 
 **Planner/model-picker evidence (26 August 2026):** The Add Itinerary Leg dialog now keeps Cancel, Add City, and Add
 Leg together, gives the active and selected city options dark high-contrast treatments, and reveals all legs after
 either existing-city or generated-city leg creation. Both city-generation surfaces show model suggestions in a
-two-column grid. Playwright verified the dialog actions and exact selected-city color, and provider-specific mocked
+four-column desktop grid with a two-column narrow-screen fallback. Playwright verified the dialog actions and exact
+selected-city color, and provider-specific mocked
 discovery verified Anthropic and Google Gemini model selection plus Refresh Models resetting each provider default.
 The browser suite now pins one hostname, development PIN, and NextAuth environment and waits for the credential
 response, preventing unrelated local secrets or a hostname split from invalidating authentication. The checkpoint
@@ -314,7 +315,9 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
 - [x] Fast-forward the complete v1.1 history into `main`, push it to origin, and pass the post-merge baseline:
   typecheck, production build, 36 Vitest files / 161 tests, memory mirror check, and deterministic v1.1 check.
 - [x] Improve Add Itinerary Leg selection contrast and actions, reveal all legs after either city-add path, compact
-  model suggestions into two columns, and verify Anthropic/Google Gemini selection and Refresh Models behavior.
+  model suggestions into four desktop columns, and verify Anthropic/Google Gemini selection and Refresh Models behavior.
+- [x] Define cumulative dashboard chart lines in the rendered legend and tooltip: actual spend, actual spend on legs
+  still marked planned, planned estimate, and total trip budget; distinguish dashed estimates/budget from solid spend.
 - [x] Remove obsolete v1.1, v4, and v5 branch pointers only after proving their tips remain reachable from `main` or
   the protected v6 archive; preserve `feat/city-cost-methodology-v6` and
   `city-cost-v6.1-research-final-2026-08-18` locally and on origin.

@@ -33,7 +33,7 @@ describe('planner city picker UI', () => {
     expect(source.match(/setVisibleLegCount\(Number\.MAX_SAFE_INTEGER\)/g)).toHaveLength(2);
   });
 
-  it('shows model suggestions in two columns on both generation surfaces', () => {
+  it('shows model suggestions in four columns on both generation surfaces', () => {
     const datasetPanel = fs.readFileSync(
       path.join(projectRoot, 'src', 'components', 'cities', 'CityGenerationPanel.tsx'),
       'utf8'
@@ -48,8 +48,17 @@ describe('planner city picker UI', () => {
       const modelGrid = source.slice(Math.max(0, modelButtonsStart - 100), modelButtonsStart + 1200);
 
       expect(modelButtonsStart).toBeGreaterThan(-1);
-      expect(modelGrid).toContain('grid grid-cols-2 gap-2');
-      expect(modelGrid).toContain('className="col-span-2"');
+      expect(modelGrid).toContain('grid grid-cols-2 gap-2 sm:grid-cols-4');
+      expect(modelGrid).toContain('className="col-span-2 sm:col-span-4"');
     }
+  });
+
+  it('defines every cumulative-spend data line and its visual style', () => {
+    const source = fs.readFileSync(path.join(projectRoot, 'src', 'app', 'page.tsx'), 'utf8');
+
+    expect(source).toContain("{ label: 'Actual spend', color: '#16a34a' }");
+    expect(source).toContain("{ label: 'Actual spend · leg still planned', color: '#9ca3af' }");
+    expect(source).toContain("{ label: 'Planned estimate', color: '#0f766e', dashed: true }");
+    expect(source).toContain("{ label: 'Total trip budget', color: '#7c3aed', dashed: true }");
   });
 });

@@ -14,6 +14,81 @@ test.describe('app UI smoke', () => {
     await captureFullPage(page, testInfo, 'dashboard.png');
   });
 
+  test('dashboard cumulative chart defines each line style', async ({ page }) => {
+    await page.route('**/api/dashboard/summary', (route) => route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        data: {
+          totalBudget: 5000,
+          plannedLegsTotal: 4500,
+          fixedTotal: 500,
+          groupSize: 2,
+          totalSpent: 150,
+          plannedToDate: 160,
+          varianceToDate: -10,
+          projectedTotal: 4300,
+          forecastVariance: -200,
+          remainingLegBudget: 4350,
+          remaining: 4850,
+          asOfDate: '2026-08-26',
+          asOfSource: 'today',
+          daysElapsed: 2,
+          daysRemaining: 28,
+          totalNights: 30,
+          destinations: 2,
+          expenseCount: 2,
+          burnRate: {
+            tripAvg: 75,
+            plannedAvgSoFar: 80,
+            sevenDayAvg: 75,
+            thirtyDayAvg: 75,
+            requiredDailyPace: 155,
+          },
+          budgetHealth: 'on_track',
+        },
+      }),
+    }));
+    await page.route('**/api/dashboard/planned-vs-actual', (route) => route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        data: { comparison: [], actualCategoryTotals: {}, plannedCategoryTotals: {} },
+      }),
+    }));
+    await page.route('**/api/dashboard/burn-rate', (route) => route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        data: {
+          cumulative: [
+            { date: '2026-08-25', cumulative: 100, daily: 100, plannedCumulative: 80, plannedDaily: 80, countryName: 'Japan', cityName: 'Tottori', legStatus: 'completed' },
+            { date: '2026-08-26', cumulative: 150, daily: 50, plannedCumulative: 160, plannedDaily: 80, countryName: 'Japan', cityName: 'Tottori', legStatus: 'planned' },
+          ],
+          countryBands: [{ countryName: 'Japan', startDate: '2026-08-25', endDate: '2026-08-26', pointCount: 2 }],
+        },
+      }),
+    }));
+
+    await page.goto('/');
+    const chartTitle = page.getByText('Cumulative Spend Over Time', { exact: true });
+    await expect(chartTitle).toBeVisible();
+
+    for (const label of [
+      'Actual spend',
+      'Actual spend · leg still planned',
+      'Planned estimate',
+      'Total trip budget',
+    ]) {
+      await expect(page.getByText(label, { exact: true }).first()).toBeVisible();
+    }
+
+    const plannedEstimateSwatch = page.getByText('Planned estimate', { exact: true }).first().locator('..').locator('span').first();
+    const budgetSwatch = page.getByText('Total trip budget', { exact: true }).first().locator('..').locator('span').first();
+    await expect(plannedEstimateSwatch).toHaveCSS('border-top-style', 'dashed');
+    await expect(budgetSwatch).toHaveCSS('border-top-style', 'dashed');
+  });
+
   test('planner renders', async ({ page }, testInfo) => {
     await page.goto('/plan');
     await expect(page).toHaveURL(/\/plan$/);
