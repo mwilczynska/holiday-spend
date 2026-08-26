@@ -8,7 +8,7 @@
 
 **Last updated:** 26 August 2026
 
-**Current task checkpoint:** pending commit - four-column intercity transport model pickers using discovered models and
+**Current task checkpoint:** `fa85b35` - four-column intercity transport model pickers using discovered models and
 Refresh Models default reset.
 
 **Latest implementation checkpoint:** `996c8ce` — four-column provider model pickers and explicit cumulative chart
