@@ -8,11 +8,10 @@
 
 **Last updated:** 26 August 2026
 
-**Latest implementation checkpoint:** `fafc93f` — opt-in browser key saving, aligned model/effort controls, and
-chronological dashboard country blocks, layered on the bounded transport concurrency work.
+**Latest implementation checkpoint:** `38b622f` — opt-in browser key saving, aligned model/effort controls,
+chronological dashboard country blocks, and a directional transport-accuracy report harness.
 
-**Latest plan checkpoint:** `fafc93f` — marked the API-key, reasoning-layout, and country-block TODOs complete after
-focused tests and TypeScript validation.
+**Latest plan checkpoint:** `38b622f` — recorded the accuracy harness while keeping live same-day quote capture open.
 
 **Next action:** Run the directional transport-estimation accuracy smoke using fixed route and quote fixtures, then
 record the evidence and any initial tolerance decision.
