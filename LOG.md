@@ -981,3 +981,7 @@ was applied. A directional redBus comparison (Phuong Trang 185,000 VND per adult
 18,722.73 VND/AUD) puts the coach option at A$4.24 absolute / 21.4% relative error, within a provisional 25%
 tolerance. This is one route only, with a historical itinerary date, so the four-route same-day calibration remains
 open.
+
+Focused provider and accuracy tests passed 7/7; the full Vitest suite then passed 49 files / 214 tests. `npx tsc
+--noEmit --incremental false` passed and `npm run build` completed successfully; the build emitted only the existing
+handled dynamic-server diagnostic for `/api/export`.

@@ -411,7 +411,8 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
     review/apply flow, and known limitations in `docs/product/transport-estimation.md`.
   - [x] Added `buildTransportAccuracyReport` with a four-route mocked adapter smoke and deterministic coverage for
     matched/missing modes, absolute and relative error, median/range summaries, provenance retention, and outlier
-    flagging. The focused run passed 7 tests on 26 August 2026.
+    flagging. The focused run passed 7 tests on 26 August 2026; the full suite passed 49 files / 214 tests, TypeScript
+    passed, and the production build completed (with the existing handled `/api/export` dynamic-server diagnostic).
   - [x] Exercised one authenticated planner route end to end with OpenAI `gpt-5.6-luna` at Maximum effort; the
     corrected web-search path returned two review-only options with visible citations and no itinerary mutation.
   - [x] Performed one directional aggregator sanity check: the A$24 standard-coach option versus an independent
