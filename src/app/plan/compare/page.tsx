@@ -1,16 +1,39 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowLeftRight } from 'lucide-react';
 import { PageLoadingState } from '@/components/ui/loading-state';
-import { ComparisonChart } from '@/components/itinerary/ComparisonChart';
-import { ComparisonCategoryChart } from '@/components/itinerary/ComparisonCategoryChart';
-import { ComparisonCountryChart } from '@/components/itinerary/ComparisonCountryChart';
+
 import { ComparisonSummaryCards } from '@/components/itinerary/ComparisonSummaryCards';
 import type { SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
+
+function ChartPlaceholder({ height }: { height: number }) {
+  return (
+    <div
+      className="w-full animate-pulse rounded-md bg-muted/40"
+      style={{ height }}
+      aria-hidden="true"
+    />
+  );
+}
+
+const ComparisonChart = dynamic(
+  () => import('@/components/itinerary/ComparisonChart').then((m) => m.ComparisonChart),
+  { ssr: false, loading: () => <ChartPlaceholder height={400} /> }
+);
+const ComparisonCountryChart = dynamic(
+  () => import('@/components/itinerary/ComparisonCountryChart').then((m) => m.ComparisonCountryChart),
+  { ssr: false, loading: () => <ChartPlaceholder height={360} /> }
+);
+const ComparisonCategoryChart = dynamic(
+  () => import('@/components/itinerary/ComparisonCategoryChart').then((m) => m.ComparisonCategoryChart),
+  { ssr: false, loading: () => <ChartPlaceholder height={360} /> }
+);
+
 
 const COMPARE_IDS_STORAGE_KEY = 'holiday-spend.compare-ids';
 

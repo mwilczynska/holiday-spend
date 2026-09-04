@@ -1264,3 +1264,30 @@ that `npm run performance:check` measures timings properly. The tests themselves
 Counts are unchanged at 49 Vitest files / 220 tests. Verified with TypeScript, `next lint`, a clean production build
 from an emptied `.next`, the memory mirror, and the deterministic v1.1 check with the live CSV hash unchanged at
 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+## Comparison charts split out of the plan-compare bundle - 3 September 2026
+
+The corrected performance harness identified `/plan/compare` as the second-heaviest route at 1,015,023 bytes of
+decompressed JavaScript, which no earlier analysis had noticed. The cause is three Recharts components that render
+only once a comparison has been loaded but shipped in the route's first-load bundle regardless.
+
+`ComparisonChart`, `ComparisonCountryChart` and `ComparisonCategoryChart` now load through `next/dynamic` behind
+fixed-height placeholders that reserve 400 px, 360 px and 360 px respectively, matching their `ResponsiveContainer`
+heights so the layout does not shift while the chunk loads. The route's decompressed JavaScript fell to
+**538,967 bytes**, a 47% reduction, and its first-load figure from 236 kB to 104 kB.
+
+One interaction is worth recording because it looks like a regression and is not. Recharts previously sat in a chunk
+shared between `/` and `/plan/compare`. With compare no longer importing it, `/` carries it alone: that route's own
+chunk grew from 26.4 kB to 147 kB while its first-load total moved only from 263 kB to 266 kB. Total bytes across the
+app fell; they simply stopped being shared.
+
+The equivalent split on `/` is deferred. Recharts is imported directly into `src/app/page.tsx` rather than through
+extracted components, so splitting it means first extracting roughly 200 lines of chart JSX that closes over a dozen
+values - the same refactor as the outstanding `React.memo` item, and the riskiest remaining change on a page whose
+rendering was only just verified in a browser. The argument for doing it is that the dashboard charts cannot render
+until three API calls return, so the bundle could load in parallel with those fetches; the argument against is that
+they are core above-the-fold content, so the split trades bundle size for a visible loading placeholder. Recorded
+rather than decided silently.
+
+Verification: TypeScript, `next lint` clean, 49 Vitest files / 220 tests, production build, memory mirror, and an
+authenticated `npm run performance:check` run against the production build.
