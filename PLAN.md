@@ -561,14 +561,45 @@ probe against `/login`, which imports auth and the database and so warmed what w
 
 Committed as `2c13f48`.
 
-### Step 2 — Fix the measurement harness — TO DO
+### Step 2 — Fix the measurement harness — COMPLETE
 
-- [ ] Authenticate in `scripts/check-webapp-performance.mjs` and fail loudly when `response.redirected` is true or the
-  final URL is `/login`.
-- [ ] Record total JS bytes per route, authenticated API latency and payload bytes, and cold versus warm, at n≥3.
-- [ ] Parameterise for both dev and production, reusing the pinned NextAuth environment in `playwright.config.ts:8-10`
-  and the `storageState` mechanism in `tests/playwright/auth.setup.ts`.
-- [ ] Record the corrected baseline in `LOG.md`; retain the Phase 7A numbers as dated history.
+- [x] `scripts/check-webapp-performance.mjs` signs in over the NextAuth credentials endpoint, using
+  `WEBAPP_AUTH_PIN` against a dev server or `WEBAPP_AUTH_EMAIL` and `WEBAPP_AUTH_PASSWORD` against a production
+  build, with a small cookie jar because Node's `fetch` does not persist cookies.
+- [x] `assertNotRedirectedToLogin` fails whenever a response was redirected or lands on `/login`. It runs whether or
+  not credentials are configured, because it is the assertion that makes every other number trustworthy.
+- [x] Records decompressed JavaScript bytes per route, plus authenticated API latency and payload bytes.
+- [x] Every route and endpoint is sampled `WEBAPP_SAMPLES` times (default 3) and reported as a median instead of a
+  single reading.
+- [x] `WEBAPP_REQUIRE_BUILD=false` allows the same harness to measure `npm run dev`.
+- [x] Three regression tests added: routes redirecting to `/login` fail the check, the development mode runs without a
+  production build, and repeated samples report a median. The suite is 49 files / 220 tests.
+
+**Verified against the running app.** With credentials the check passes and reports the corrected baseline below. With
+credentials removed — the exact configuration that produced the invalid Phase 7A numbers — all seven routes now report
+`redirected to /login … would describe the login page, not the route` and the run exits 1.
+
+### Corrected baseline (3 September 2026, authenticated production build)
+
+| Route | Shell | JavaScript, decompressed | Files |
+| --- | --- | --- | --- |
+| `/` | 27,289 B | **1,068,839 B** | 15 |
+| `/plan/compare` | 28,397 B | **1,015,023 B** | 14 |
+| `/plan` | 27,943 B | 763,642 B | 17 |
+| `/settings` | 27,594 B | 658,654 B | 16 |
+| `/track` | 27,921 B | 653,380 B | 14 |
+| `/dataset` | 27,734 B | 615,956 B | 15 |
+| `/estimates` | 167,151 B | 518,309 B | 10 |
+
+Route shells respond in 4-12 ms. Authenticated API medians: `/api/countries?includeCities=false` 3 ms / 5,508 B;
+`/api/itinerary` 7 ms / 42,901 B; `/api/expenses?view=track` 10 ms / 29,947 B; `/api/dashboard/summary` 13 ms / 757 B;
+`/api/dashboard/burn-rate` 15 ms / 79,776 B; `/api/estimates?view=dataset` 9 ms / 132,011 B.
+
+Assets are gzipped but chunked with no `content-length`, so the figure recorded is the decompressed size — roughly
+four times the transferred bytes, and the amount the engine actually parses. The budget is 1.25 MiB per route.
+
+**New finding:** `/plan/compare` is the second-heaviest route at 1,015,023 B and had not appeared in any earlier
+analysis. It carries the comparison charts. Worth including when the Recharts dynamic-import item in Step 4 is done.
 
 ### Step 3 — Payload and navigation — COMPLETE
 
