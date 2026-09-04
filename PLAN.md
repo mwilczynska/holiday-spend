@@ -1,10 +1,9 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Methodology complete; Phase 8 (performance remediation) is the active phase, at Step 4; Phase 7 route
-workflows remain open but are not the active workstream; Phase 9 (public README) is queued.
+**Status:** Methodology complete. Phases 7, 9 and 10 complete; Phase 8 complete apart from one deferred item.
 
-**Current phase:** Phase 8 — Webapp performance remediation. Steps 0, 1, 3 and 5 are complete, Step 4 (render hot
-paths) is in progress, and Steps 2, 6, 7 and 8 are open.
+**Current phase:** None active. Phase 8 Steps 0, 1, 2, 3, 5, 6, 7 and 8 are complete; Step 4 is complete apart from
+the deferred dashboard chart extraction.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -21,9 +20,10 @@ sidebar prefetching.
 **Latest plan checkpoint:** `3c791ca` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
 target that was not met and the reason it is not reachable by payload trimming.
 
-**Next action:** Phase 8 is complete apart from one deferred item, recorded with its dependency analysis in Step 4:
-extracting the dashboard chart renderers and splitting the Recharts bundle off `/`. The remaining open workstream is
-Phase 7's authenticated route workflows.
+**Next action:** No workstream is open. Phase 7 is complete and Phase 8 is complete apart from one deliberately
+deferred item, recorded with its dependency analysis in Step 4: extracting the dashboard chart renderers and
+splitting the Recharts bundle off `/`. Two smaller items remain recorded but unstarted — the Radix `DialogContent`
+accessibility warning, and the transport-accuracy same-day quote capture deferred from the earlier workstream.
 
 **Working tree:** `src/app/plan/page.tsx`, `src/components/itinerary/LegCard.tsx` and `src/app/dataset/page.tsx`
 carry uncommitted Step 4 work. Items stay `[ ]` until their verification runs.
@@ -307,9 +307,9 @@ incident as the reason for this hardening phase; do not run keyed generation whi
   is not an application result.
 - No authenticated Chrome route/console pass or owner-key generation smoke was run; those remain open.
 
-## Phase 7 — Functional webapp validation — TO DO
+## Phase 7 — Functional webapp validation — COMPLETE
 
-**Paused on 3 September 2026** while Phase 8 is the active workstream, so that only one phase is in progress. The
+**Was paused on 3 September 2026** while Phase 8 is the active workstream, so that only one phase is in progress. The
 completed checks below remain accurate and stay marked `[x]`; the remaining authenticated route workflows are open.
 
 This is a post-rollout product smoke, separate from the completed methodology baseline. Use an authenticated local
@@ -366,7 +366,7 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
 - [x] Complete the separately deferred Tottori, Toowoomba, and Brno owner-key smoke and provenance checks from
   Phase 5.
 
-### Remaining authenticated checks — IN PROGRESS
+### Remaining authenticated checks — COMPLETE
 
 **Workflow pass, 3 September 2026 (Chrome, authenticated production build, demo data).** Mutating checks were run
 against a seeded fictional trip, not the real dataset; the real database was backed up twice, verified, restored
@@ -386,7 +386,28 @@ afterwards and confirmed byte-identical across all 21 tables.
   real widths and two line curves with 1,513 and 1,688 characters of path data.
 - [x] `/track`: exclude and re-include round-tripped exactly ($4,101 to $4,037 to $4,101); delete removed one row
   (83 to 82 expenses).
-- [ ] Remaining: tagging, reassignment between legs, Wise CSV import, provider-failure and retry states.
+- [x] Tagging: create, attach, filter and detach all work. A tag owned by another user is refused —
+  `{ tagIds: [99] }` returned `added: 0` and wrote no `expense_tags` row.
+- [x] Leg reassignment: moving a $103.81 expense from Bangkok to Kyoto moved Thailand's actual from 2014 to 1910 and
+  gave Japan 104, exactly the expense amount. A non-existent leg returns 404 and changes nothing.
+- [x] Wise CSV import: preview parsed 408 rows (326 importable, 77 skipped) and **wrote nothing** — the count stayed
+  at 83. Confirming imported 326, giving 409. Re-importing the same file imported 0 and reported 326 duplicates, the
+  count stayed 409, and the database holds zero duplicate `wise_txn_id` values.
+- [x] Failure and validation states leave **no partial records**. Across an invalid expense, malformed JSON, a
+  non-existent leg reference, and city generation with no provider key, the expense, city, leg and estimate counts
+  were identical before and after (409 / 203 / 6 / 59).
+
+### Defect 4 — malformed JSON reported as a server error
+
+`await request.json()` throws a `SyntaxError` on a malformed body, and 32 route handlers call it. `handleError`
+matched only `ZodError` and `AuthRequiredError`, so a bad request body fell through to `Internal server error` with
+HTTP 500 — blaming the server for a client mistake and hiding the cause from the caller.
+
+Fixed once in `src/lib/api-helpers.ts`, covering all 32 routes: a `SyntaxError` whose message names JSON now returns
+`400 Request body is not valid JSON.` The match is deliberately narrow — an unrelated `SyntaxError` still returns
+500, so a genuine server fault is not silently reclassified as a client error. Five tests added in
+`src/lib/api-helpers.test.ts`. Verified end to end: malformed JSON returns 400 while a valid request still creates
+the expense.
 
 ### Defects found and fixed
 
@@ -513,7 +534,10 @@ bundled into a performance change.
     unmatched actuals remain appended as country/unassigned rows. Focused country-block totals/order tests and
     TypeScript validation pass.
 
-## Phase 8 — Webapp performance remediation — IN PROGRESS
+## Phase 8 — Webapp performance remediation — COMPLETE
+
+One item is deliberately deferred with its dependency analysis recorded in Step 4: extracting the dashboard chart
+renderers and splitting the Recharts bundle off `/`. Every other step is done and verified.
 
 The owner reported the app as extremely slow. Investigation on 3 September 2026 found the Phase 7A evidence invalid
 and produced a corrected authenticated baseline.
