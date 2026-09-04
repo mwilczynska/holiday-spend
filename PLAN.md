@@ -18,8 +18,9 @@ transport smoke, and the seven-test four-route mocked accuracy pipeline.
 **Latest plan checkpoint:** `e4eeb94` — recorded the grounded one-route smoke while keeping four-route same-day quote
 capture open.
 
-**Next action:** Phase 8 Step 1 — remove the ~7-second cold stall caused by the module-scope migration block in
-`src/db/index.ts` and the eager argon2 load behind `src/lib/auth.ts`.
+**Next action:** Phase 8 Step 5 — resolve `dev-local-user` data ownership so the app can be run from a production
+build. Measurement in Step 1 showed the ~7-second cold stall is inherent to development mode, so running production
+is the fix; no application change recovers it.
 
 **Deferred:** capture same-day operator or aggregator reference quotes for the fixed transport route fixture, then run
 the directional report and record the evidence and any initial tolerance decision.
@@ -499,15 +500,50 @@ Measured authenticated as `dev-local-user`, the owner of all 1,300 expenses, 62 
   the dev server is live preserves both trees and the dev server keeps serving. Authenticated walk of `/`, `/plan`,
   `/plan/compare`, `/track`, `/dataset`, `/estimates`, `/settings` returned HTTP 200 for all seven.
 
-### Step 1 — Remove the ~7-second cold stall — TO DO
+### Step 1 — Attribute the ~7-second cold stall — COMPLETE, AND THE ORIGINAL PREMISE WAS WRONG
 
-- [ ] Gate the `src/db/index.ts` migration block behind a `PRAGMA user_version` check; wrap repair loops in
-  `sqlite.transaction()`; hoist the `prepare()` inside the loop at `src/db/index.ts:360`.
-- [ ] Make the argon2 import lazy so it loads on password verification rather than for every route importing
-  `@/lib/auth`.
-- [ ] Add `PRAGMA mmap_size` and `temp_store = MEMORY`; run `wal_checkpoint(TRUNCATE)` at startup to clear the pinned
-  4 MB WAL (`travel.db-wal` currently exceeds the 3.2 MB database).
-- [ ] Target: dashboard cold request 7,005 ms to under 500 ms, measured before and after.
+The stall was reproduced exactly and then attributed by direct in-process instrumentation. The planned remedy —
+gating the `src/db/index.ts` migration block — would have recovered about five milliseconds and is therefore not
+worth doing for performance.
+
+Reproduction: a cold dev server whose readiness was polled over TCP only, so no HTTP request could warm a module,
+served its first `/api/dashboard/summary` in **7,225 ms**, matching the owner's reported 7,005 ms. The second request
+took 72 ms.
+
+Temporary instrumentation inside `src/db/index.ts` and `src/lib/auth.ts` measured:
+
+```
+[perf] new Database():         5.5 ms
+[perf] db migration block:     4.8 ms
+✓ Compiled /api/dashboard/summary in 880 ms (925 modules)
+GET /api/dashboard/summary 200 in 7225 ms
+```
+
+Independent probing confirmed SQLite is not involved: opening the database costs 3.9 ms, both pragmas 1.6 ms, the
+first real query 0.1 ms, and counting all 1,300 expenses 0.1 ms. The migration block is idempotent and effectively
+free.
+
+With webpack compilation at 880 ms and database work at roughly 10 ms, the remaining ~6.3 seconds is Node
+instantiating the route's 925-module graph, where development serves every module as a separate file read.
+
+The dev-versus-production A/B on the identical cold request confirms it. `/login` is `force-dynamic` and calls
+`getServerSession`, so it exercises the same auth and database module graph without needing a session:
+
+| Cold first request to `/login` | Warm |
+| --- | --- |
+| `npm run dev` — **7.404 s** | 0.036 s |
+| `npm start` — **2.659 s** | 0.305 s |
+
+- [x] Reproduced the stall deterministically and attributed it by measurement rather than inference.
+- [x] Established that the `src/db/index.ts` migration block costs 4.8 ms and is not a performance problem.
+- [x] Ran `wal_checkpoint(TRUNCATE)`, reclaiming the 4.1 MB WAL to 0 bytes. Retain as a startup pragma in Step 6 for
+  hygiene, not as a speedup.
+- [ ] Superseded: the cold stall is inherent to development mode and is fixed by running production, not by changing
+  application code. This makes Step 5 the critical path rather than deferred work.
+
+Two earlier figures in this investigation were measurement artifacts and are recorded here so they are not reused: a
+1,734 ms "module load" was `tsx` compiling TypeScript, and an 830 ms "cold" dashboard reading came from a readiness
+probe against `/login`, which imports auth and the database and so warmed what was being measured.
 
 ### Step 2 — Fix the measurement harness — TO DO
 
@@ -536,7 +572,11 @@ Measured authenticated as `dev-local-user`, the owner of all 1,300 expenses, 62 
   `CityGenerationPanel` and the Recharts bundle.
 - [ ] Memoize the dashboard derivation chain and convert the inline chart render functions into components.
 
-### Step 5 — Production as the normal run mode — BLOCKED
+### Step 5 — Production as the normal run mode — BLOCKED, AND NOW THE CRITICAL PATH
+
+Step 1 established that the cold stall is a development-mode cost. Production serves the same cold request in 2.659 s
+against 7.404 s, and ships 263 kB of first-load JavaScript for `/` against 14.04 MB. Running production is therefore
+the single largest available improvement, and this ownership question is the only thing preventing it.
 
 All itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password and is reachable only
 through the development PIN. `src/lib/auth.ts:20` disables that PIN under `NODE_ENV=production`, and
@@ -553,7 +593,28 @@ therefore show an empty app. Awaiting an owner decision on account ownership.
 - [ ] Server-render initial data for `/`, `/track`, `/dataset`, `/settings`, and consolidate the three dashboard
   endpoints behind one shared resolver — only if the Step 2 harness still shows a real gap.
 
-### Step 7 — Documentation — IN PROGRESS
+### Step 7 — Test suite audit — TO DO
+
+The suite is 49 files / 214 tests running in 17.4 seconds. Judge each test on whether it earns its place and remove
+those that do not; a test that cannot fail, or that guards a code path the product no longer has, is maintenance cost
+without benefit.
+
+- [ ] Review the retired-research suites in `src/lib/` covering v3/v4/v5 methodology paths the product abandoned:
+  `accommodation-property-panel`, `accommodation-quote-attempt`, `accommodation-reference-window`,
+  `accommodation-website-verification`, `city-cost-methodology-v3`, `city-cost-observation`,
+  `city-cost-collection-batch`, `city-cost-pilot-enrichment`, `city-cost-pilot-profile`,
+  `city-cost-research-response`, `da-nang-accommodation-geocoding`. Where the matching `scripts/` entry point is also
+  dead, remove the script and its test together.
+- [ ] Remove tests that assert framework behavior rather than this project's logic, and tests that restate the
+  implementation line for line.
+- [ ] Decide whether `tests/playwright/performance-bounds.spec.ts` gains real timing assertions in Step 2 or is
+  renamed to reflect that it asserts row bounds, not performance.
+
+Rules: every removal needs a reason recorded in `LOG.md` — dead code path, cannot fail, or duplicated elsewhere. Do
+not remove a test for being slow or for currently passing. Never remove coverage of the v1.1 methodology boundary, the
+live-CSV guard, FX validation, or auth. Re-run the full suite after each batch and record before/after counts.
+
+### Step 8 — Documentation — IN PROGRESS
 
 - [x] Add the requested line verbatim to `CLAUDE.md` and mirror it into `AGENTS.md`.
 - [ ] Replace the obsolete OneDrive section of `CLAUDE.md`; note the orphaned OneDrive copy; retire or shrink
