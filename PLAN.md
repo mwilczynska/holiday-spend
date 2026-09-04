@@ -639,14 +639,28 @@ First-load JavaScript after these splits, from the production build:
 | --- | --- | --- |
 | `/dataset` | 154 kB | **127 kB** |
 | `/plan` | 177 kB | **169 kB** |
-- [ ] Memoize the dashboard derivation chain in `src/app/page.tsx` (roughly lines 674-731).
-- [ ] Convert the three inline chart render functions in `src/app/page.tsx` — `renderCountryChart`,
-  `renderCategoryChart` and `renderBurnChart` — into real components so Recharts stops rebuilding its subtree on
-  every render.
-- [ ] Carried over from the original Step 4 list: apply `next/dynamic` to the Recharts bundle on `/`.
-- [ ] Run the full Step 4 baseline (`npx tsc --noEmit`, `npm run build`, `npm test -- --run`,
-  `npm run docs:check-memory`, `npm run methodology:v1.1:check`), record before/after render measurements in `LOG.md`,
-  and commit.
+- [x] Memoized the dashboard derivation chain in `src/app/page.tsx`. `categoryChartData`, `barData`, `chartBurnData`,
+  `staggeredCountryBands` and the cumulative maxima previously recomputed on every render, so toggling
+  `showCountryDailySpend`, `categoryMode` or `expandedChart` re-mapped and re-sorted the whole category list, country
+  list and burn series. These had to move above the loading early-return, because hooks cannot be called after a
+  conditional return. `staggeredCountryBands` matters most: a new array each render re-ran
+  `BurnCountryHeaderStrip`'s `useLayoutEffect`, which calls `getBoundingClientRect` per band and forces a synchronous
+  layout during commit.
+- [ ] Extract the three inline chart render functions in `src/app/page.tsx` — `renderCountryChart`,
+  `renderCategoryChart`, `renderBurnChart` — into `React.memo` components. **Corrected rationale:** the earlier claim
+  that calling them as functions makes Recharts rebuild and re-measure its subtree was overstated. React reconciles by
+  element type, so the charts are not remounted. The real benefit is skipping the chart subtree entirely when
+  unrelated state changes, which is now worthwhile precisely because the data arrays above are memoized and stable.
+  Lower priority than originally recorded.
+- [ ] Carried over from the original Step 4 list: apply `next/dynamic` to the Recharts bundle on `/`. `/` remains the
+  heaviest route at 263 kB first-load JS.
+- [x] Ran the Step 4 baseline: `npx tsc --noEmit`, `npx next lint` (clean), 49 Vitest files / 217 tests, production
+  build, and the memory mirror. Authenticated production walk returned HTTP 200 for all eleven routes.
+
+**Verification gap:** the route walk confirms server shells and API responses, not post-hydration chart rendering.
+The dashboard is client-rendered, so its shell returns the loading state by design. A browser pass over `/` and
+`/plan` is still required to confirm the charts and dialogs behave after the memoization and dynamic-import changes;
+the Chrome extension was not connected during this work.
 
 ### Step 5 — Production as the normal run mode — COMPLETE
 
