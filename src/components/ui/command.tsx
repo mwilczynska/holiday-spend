@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Command as CommandPrimitive } from "cmdk"
 import { cn } from "@/lib/utils"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog"
 import { Search } from "lucide-react"
 
 const Command = React.forwardRef<
@@ -21,10 +21,30 @@ const Command = React.forwardRef<
 ))
 Command.displayName = CommandPrimitive.displayName
 
-function CommandDialog({ children, ...props }: React.ComponentProps<typeof Dialog>) {
+interface CommandDialogProps extends React.ComponentProps<typeof Dialog> {
+  /** Names the dialog for assistive technology. Rendered visually hidden. */
+  title?: string
+  /** Explains the dialog for assistive technology. Rendered visually hidden. */
+  description?: string
+}
+
+/**
+ * Radix requires every dialog to have an accessible name and either a description or an
+ * explicit opt-out. This one had neither, so screen readers announced an unnamed dialog and
+ * Radix logged a warning on every open. The title and description are visually hidden with
+ * `sr-only` so the palette looks unchanged.
+ */
+function CommandDialog({
+  children,
+  title = "Search",
+  description = "Type to filter the list, then choose an option.",
+  ...props
+}: CommandDialogProps) {
   return (
     <Dialog {...props}>
       <DialogContent className="overflow-hidden p-0 shadow-lg">
+        <DialogTitle className="sr-only">{title}</DialogTitle>
+        <DialogDescription className="sr-only">{description}</DialogDescription>
         <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
           {children}
         </Command>

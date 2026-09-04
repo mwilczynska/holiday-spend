@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { InlineLoadingState, PageLoadingState } from '@/components/ui/loading-state';
 import { Plus, Trash2, Edit } from 'lucide-react';
@@ -119,7 +119,10 @@ export default function TagsPage() {
             <Button size="sm"><Plus className="h-4 w-4 mr-1" />New Tag</Button>
           </DialogTrigger>
           <DialogContent>
-            <DialogHeader><DialogTitle>Create Tag</DialogTitle></DialogHeader>
+            <DialogHeader><DialogTitle>Create Tag</DialogTitle>
+              <DialogDescription className="sr-only">
+                Create a tag you can apply to expenses and filter by.
+              </DialogDescription></DialogHeader>
             <div className="space-y-4">
               <div><Label>Name</Label><Input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="e.g. flights, splurge-meals" /></div>
               <div><Label>Color</Label><Input type="color" value={newColor} onChange={(e) => setNewColor(e.target.value)} className="h-10 w-20" /></div>
@@ -200,7 +203,10 @@ export default function TagsPage() {
       {/* Edit tag dialog */}
       <Dialog open={!!editTag} onOpenChange={(open) => !open && setEditTag(null)}>
         <DialogContent>
-          <DialogHeader><DialogTitle>Edit Tag</DialogTitle></DialogHeader>
+          <DialogHeader><DialogTitle>Edit Tag</DialogTitle>
+            <DialogDescription className="sr-only">
+              Rename this tag or change its colour.
+            </DialogDescription></DialogHeader>
           {editTag && (
             <div className="space-y-4">
               <div><Label>Name</Label><Input value={editTag.name} onChange={(e) => setEditTag({ ...editTag, name: e.target.value })} /></div>

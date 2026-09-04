@@ -63,7 +63,8 @@ export function SearchableSelect({
         <span className="truncate">{selectedOption?.label || placeholder}</span>
         <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      {/* `placeholder` already names the field, so it doubles as the dialog's accessible name. */}
+      <CommandDialog open={open} onOpenChange={setOpen} title={placeholder} description={searchPlaceholder}>
         <CommandInput placeholder={searchPlaceholder} />
         <CommandList>
           <CommandEmpty>{emptyText}</CommandEmpty>

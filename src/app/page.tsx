@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { InfoPopover } from '@/components/itinerary/InfoPopover';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -1248,6 +1248,9 @@ export default function DashboardPage() {
             ) : (
               <DialogTitle>{expandedChartTitle}</DialogTitle>
             )}
+            <DialogDescription className="sr-only">
+              A full-screen view of this dashboard chart.
+            </DialogDescription>
           </DialogHeader>
           <div className="min-h-0 overflow-hidden px-5 pt-1 pb-3">
             {expandedChart === 'country' ? renderCountryChart(expandedCountryChartHeight, 'expanded') : null}

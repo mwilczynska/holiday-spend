@@ -1499,3 +1499,31 @@ findings: the tag attach endpoint takes `{ tagIds: [...] }` rather than `{ tagId
 its rows under `items`. Both initially looked like failures until the route and response were read.
 
 Phase 7 is now complete. Suite is 51 files / 233 tests.
+
+## Dialog accessibility fixed - 3 September 2026
+
+The Radix warning recorded during the Phase 7 pass turned out to cover two distinct problems, both now fixed.
+
+The command palette behind every `SearchableSelect` - the city pickers on `/plan` and `/dataset` - rendered a
+`DialogContent` with no accessible name at all. Screen readers announced an unnamed dialog, and Radix logged
+"`DialogContent` requires a `DialogTitle`" on every open. `CommandDialog` now accepts `title` and `description`
+props rendered with `sr-only`, and `SearchableSelect` passes its own placeholder through, so the city picker
+announces "Select a city" and describes itself as "Search cities...". The palette looks unchanged.
+
+The second problem was wider and easy to dismiss as noise. No dialog in the app defined a `DialogDescription`, but
+Radix still sets `aria-describedby` to an id it expects a description to own. All thirteen dialogs therefore pointed
+assistive technology at an element that did not exist. A dangling reference is worse than no reference, so this was
+worth fixing rather than silencing with `aria-describedby={undefined}`. Every `DialogContent` now has a matching
+description: the expanded dashboard and comparison charts, the Add Itinerary Leg and Resolve Missing Cities dialogs,
+Add Fixed Cost, Edit Expense, Create and Edit Tag, Save Plan Snapshot, Add New City With LLM, and both transport
+estimate dialogs.
+
+Verified in Chrome against a production build. The bulk transport dialog, the Add Itinerary Leg dialog and the city
+picker all resolve both `aria-labelledby` and `aria-describedby` to real text, and the console is silent where it
+previously logged a warning on every open.
+
+One lint failure during the work is worth noting only because it shows the check earning its place: a description
+containing "this expense's" tripped `react/no-unescaped-entities`. It was rephrased rather than escaped.
+
+Verification: TypeScript, `next lint` clean, 51 Vitest files / 233 tests, production build, and the browser pass
+above. No data was written; the database is unchanged at 1,300 expenses, 62 legs and 63 saved plans.
