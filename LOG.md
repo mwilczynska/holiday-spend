@@ -985,3 +985,56 @@ open.
 Focused provider and accuracy tests passed 7/7; the full Vitest suite then passed 49 files / 214 tests. `npx tsc
 --noEmit --incremental false` passed and `npm run build` completed successfully; the build emitted only the existing
 handled dynamic-server diagnostic for `/api/export`.
+
+## Webapp performance attribution and build-directory separation - 3 September 2026
+
+The owner reported the app as extremely slow. The recorded Phase 7A evidence turned out to be invalid:
+`scripts/check-webapp-performance.mjs:34` fetches every route with `redirect: 'follow'` and no session cookie, and
+`src/middleware.ts` wraps all of them in `withAuth`, so each route 307s to `/login?callbackUrl=...` and the script
+measured the login page seven times. The 26-byte spread across seven supposedly distinct page sizes is the length
+delta of the `callbackUrl` value. Those numbers are retained as dated history and superseded, not deleted.
+
+An authenticated baseline as `dev-local-user`, who owns all 1,300 expenses, 62 legs and 62 saved plans, measured
+14.04 MB of JavaScript for `/` in development against 263 kB of production first-load JavaScript, a 53x difference,
+with `/plan`, `/dataset` and `/track` at 57x, 62x and 63x. Route documents are ~28-30 KB empty shells; `/estimates`,
+the only server-rendered page, ships 174 KB of real content. Warm API latency is 13-82 ms, so server compute is not a
+bottleneck at current data volumes. `/api/countries` returns 166,194 bytes where `?includeCities=false` returns 5,508,
+and `/settings` requests the larger form to populate one dropdown.
+
+The reported ~7-second dashboard stall was reproduced deterministically by polling readiness over TCP so that no HTTP
+request could warm a module: the first `/api/dashboard/summary` took 7,225 ms and the second 72 ms. Temporary
+instrumentation attributed it precisely. `new Database()` costs 5.5 ms and the entire module-scope migration block in
+`src/db/index.ts` costs 4.8 ms. Independent probing confirmed SQLite is not involved: opening the database 3.9 ms,
+pragmas 1.6 ms, first query 0.1 ms, counting 1,300 expenses 0.1 ms. Webpack compilation accounted for 880 ms, leaving
+roughly 6.3 seconds of Node instantiating the route's 925-module graph.
+
+The planned remedy of gating that migration block behind `PRAGMA user_version` was therefore abandoned: it would
+recover about five milliseconds. The dev-versus-production A/B on an identical cold request to `/login`, which is
+`force-dynamic` and exercises the same auth and database graph without a session, gave 7.404 s in development against
+2.659 s in production. The stall is inherent to development mode and is resolved by running a production build, not by
+changing application code.
+
+Two intermediate figures were measurement artifacts and are recorded so they are not reused: a 1,734 ms "module load"
+was `tsx` compiling TypeScript rather than runtime cost, and an 830 ms "cold" dashboard reading came from a readiness
+probe against `/login`, which imports auth and the database and so warmed the very thing being measured. Both are the
+same error class as the original Phase 7A defect.
+
+Development and production now build into separate directories. They previously shared `.next`, so each wiped the
+other and forced a full cold recompile; a production build run against a live dev server surfaced in the browser as
+`ChunkLoadError: Loading chunk app/layout failed (timeout)`, which presents as a broken app rather than a slow one
+because a failed chunk load takes down the whole React tree. Development now uses `.next-dev` and production keeps
+`.next`, with `scripts/prepare-next-dev.mjs`, `.gitignore` and the Next-managed `tsconfig.json` include paths
+following. Verified that a cold dev start leaves `.next` untouched, that a production build run against a live dev
+server preserves both trees, and that an authenticated walk of all seven core routes returns HTTP 200.
+
+`NEXTAUTH_URL` was missing from `.env.local`, which explains the repeated `[next-auth][warn][NEXTAUTH_URL]`. A
+`wal_checkpoint(TRUNCATE)` reclaimed `data/travel.db-wal` from 4.1 MB to 0 bytes; this is hygiene, not a speedup.
+The repository is at `C:\Dev\holiday-spend` and is not inside OneDrive, so that section of the memory documents is
+obsolete; an orphaned pre-move copy remains at `C:\Users\chawi\OneDrive\projects\holiday-spend`.
+
+Duplicate requests visible in the development log are React StrictMode's intentional dev-only double-invoke.
+`src/app/page.tsx:630` is a single `useEffect` with `[]` dependencies wrapping one `Promise.all`; this is not a defect
+and must not be "fixed".
+
+Baseline: TypeScript, production build, 49 Vitest files / 214 tests, memory mirror and the deterministic v1.1 check
+all pass, with the live CSV hash unchanged.
