@@ -1144,3 +1144,30 @@ memory mirror, and an authenticated production walk returning HTTP 200 for all e
 shells and API responses, not post-hydration chart rendering; the dashboard is client-rendered and its shell returns
 the loading state by design. A browser pass over `/` and `/plan` remains outstanding, as the Chrome extension was not
 connected during this work.
+
+## Browser verification of the render and payload work - 3 September 2026
+
+The verification gap recorded against Phase 8 Step 4 is closed. Checked in Chrome against an authenticated production
+build.
+
+`/` renders after hydration with no console messages. Both bar charts and the cumulative line chart draw: 60
+`.recharts-rectangle` nodes with non-zero widths across three `.recharts-bar` layers, plus three `.recharts-line`
+series. An earlier screenshot appeared to show empty charts and was briefly treated as a possible regression; that was
+an artifact of downscaling a 1709 px viewport into a 1400 px JPEG, which renders the 4 px-tall bars as almost nothing.
+The owner pointed out the bars were visible, and inspecting the DOM confirmed it. The lesson is to check the DOM rather
+than trust a compressed screenshot when the question is whether small elements rendered.
+
+`/plan` renders 62 legs with the 12-leg initial bound intact and no console errors.
+`BulkTransportEstimateDialog` loads from its `next/dynamic` chunk on first click and reports 61 estimatable legs with
+3 selected by default, confirming both the mount-on-first-open latch and the memoized legs prop. The Add Leg dialog
+opens and its city picker lists all 203 options in correct alphabetical order, confirming the shared `cityOptions`
+array and that `SearchableSelect` still sorts.
+
+`/dataset` renders with the provenance card populated, including the anchor grid and FX snapshot, which come only from
+the on-demand fetch. The network trace shows exactly the intended two calls: `/api/estimates?view=dataset` for the
+slim list, then `/api/estimates?cityId=medellin` on selection. This confirms the Step 3 design end to end in a browser
+rather than only at the API level.
+
+One pre-existing accessibility warning surfaced and is not caused by this work:
+`Missing 'Description' or 'aria-describedby={undefined}' for {DialogContent}`, a Radix warning about the dialog
+component itself. It is recorded for separate follow-up.

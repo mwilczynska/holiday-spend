@@ -657,10 +657,27 @@ First-load JavaScript after these splits, from the production build:
 - [x] Ran the Step 4 baseline: `npx tsc --noEmit`, `npx next lint` (clean), 49 Vitest files / 217 tests, production
   build, and the memory mirror. Authenticated production walk returned HTTP 200 for all eleven routes.
 
-**Verification gap:** the route walk confirms server shells and API responses, not post-hydration chart rendering.
-The dashboard is client-rendered, so its shell returns the loading state by design. A browser pass over `/` and
-`/plan` is still required to confirm the charts and dialogs behave after the memoization and dynamic-import changes;
-the Chrome extension was not connected during this work.
+**Browser verification (3 September 2026, Chrome, authenticated production build).** The gap recorded above is now
+closed.
+
+- `/` renders after hydration with no console messages at all. Both bar charts and the cumulative line chart draw:
+  60 `.recharts-rectangle` nodes with non-zero widths across three `.recharts-bar` layers, plus three
+  `.recharts-line` series. An earlier screenshot appeared to show empty charts; that was an artifact of downscaling a
+  1709 px viewport to a 1400 px JPEG, which renders the 4 px-tall bars as almost nothing. The DOM was checked
+  directly rather than trusting the image.
+- `/plan` renders 62 legs with the 12-leg initial bound intact and no console errors.
+- `BulkTransportEstimateDialog` opens correctly from its `next/dynamic` chunk on first click, reporting 61
+  estimatable legs with 3 selected by default, which also confirms the memoized `bulkTransportLegs` prop.
+- The Add Leg dialog opens and its city picker lists all **203** options in correct alphabetical order, confirming
+  the shared `cityOptions` array and that `SearchableSelect` still sorts.
+- `/dataset` renders with the provenance card populated, including the anchor grid and FX snapshot. The network trace
+  shows exactly the intended two calls: `/api/estimates?view=dataset` for the slim list, then
+  `/api/estimates?cityId=medellin` when a city is selected. This confirms the Step 3 on-demand provenance design end
+  to end in the browser.
+
+One pre-existing accessibility warning surfaced and is **not** caused by this work: `Missing 'Description' or
+'aria-describedby={undefined}' for {DialogContent}`, a Radix warning about the dialog component itself. Worth fixing
+separately.
 
 ### Step 5 — Production as the normal run mode — COMPLETE
 
