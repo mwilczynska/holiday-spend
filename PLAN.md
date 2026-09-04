@@ -683,8 +683,19 @@ First-load JavaScript after these splits, from the production build:
   element type, so the charts are not remounted. The real benefit is skipping the chart subtree entirely when
   unrelated state changes, which is now worthwhile precisely because the data arrays above are memoized and stable.
   Lower priority than originally recorded.
-- [ ] Carried over from the original Step 4 list: apply `next/dynamic` to the Recharts bundle on `/`. `/` remains the
-  heaviest route at 263 kB first-load JS.
+- [x] Applied `next/dynamic` to the three Recharts components on `/plan/compare`, behind fixed-height placeholders
+  that reserve the same space so the layout does not shift. That route's decompressed JavaScript fell from
+  **1,015,023 to 538,967 bytes**, a 47% reduction, and its first-load figure from 236 kB to **104 kB**.
+- [ ] Deferred: the same split on `/`. Recharts is imported directly into `src/app/page.tsx` rather than through
+  extracted components, so splitting it requires first extracting roughly 200 lines of chart JSX that closes over a
+  dozen values — the same refactor as the `React.memo` item below, and the riskiest remaining change on a page whose
+  correct rendering was only just verified in a browser.
+
+  Note the interaction: splitting `/plan/compare` moved Recharts out of the shared chunk, so `/` now carries it alone
+  and its route chunk grew from 26.4 kB to 147 kB while its first-load total barely moved (263 kB to 266 kB). The
+  case for splitting `/` is that its charts cannot render until three API calls return, so the chart bundle could
+  load in parallel with those fetches rather than before them. The case against is that they are core
+  above-the-fold content, so the split trades a smaller initial bundle for a visible loading placeholder.
 - [x] Ran the Step 4 baseline: `npx tsc --noEmit`, `npx next lint` (clean), 49 Vitest files / 217 tests, production
   build, and the memory mirror. Authenticated production walk returned HTTP 200 for all eleven routes.
 
