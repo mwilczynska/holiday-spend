@@ -1038,3 +1038,28 @@ and must not be "fixed".
 
 Baseline: TypeScript, production build, 49 Vitest files / 214 tests, memory mirror and the deterministic v1.1 check
 all pass, with the live CSV hash unchanged.
+
+## Production run mode enabled and verified - 3 September 2026
+
+The app can now be run from a production build with the existing data. Under explicit owner authorization, a short
+local development credential was set directly for `dev-local-user` and the address was marked verified. This
+deliberately bypassed `validatePasswordStrength`, which requires at least ten characters and rejects all-digit values,
+and used a throwaway script deleted immediately afterwards. The credential exists only in the gitignored, untracked
+`data/travel.db`; no value was written to any tracked file. The committed `npm run auth:set-local-password` keeps the
+strict policy and interactive prompt for normal use.
+
+Signed in against `npm start`, all seven core routes returned HTTP 200: `/` 1.603 s at 27,311 bytes (first request,
+including warm-up), `/plan` 0.569 s, `/plan/compare` 0.274 s, `/track` 0.265 s, `/dataset` 0.265 s, `/estimates`
+0.271 s at 167,096 bytes, and `/settings` 0.239 s. Authenticated API latency was 0.218-0.263 s across the three
+dashboard endpoints, `/api/itinerary` and the paginated `/api/expenses`. Against development this replaces a
+7.4-second cold start and 14.04 MB of JavaScript for `/` with a 1.6-second first request and 263 kB.
+
+Two diagnostic notes worth keeping. Earlier production sign-in attempts returned `CredentialsSignin` and created no
+rate-limit row; a clean rebuild resolved it, so the cause was a stale standalone bundle rather than the credential,
+which verified correctly against the stored hash throughout. Separately, `emailPasswordEnabled` was wrongly suspected
+first. The login page renders `hasEmailPassword` from that same flag and was already rendering email and password
+fields in production, which disproved the hypothesis before instrumentation confirmed the flag was true. Checking what
+the page already showed would have been faster than reasoning about which branch returned null.
+
+All instrumentation was reverted and the reported numbers come from a clean, uninstrumented build. Baseline:
+TypeScript, production build, 49 Vitest files / 214 tests, and the memory mirror all pass.
