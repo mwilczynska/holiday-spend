@@ -2,7 +2,8 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, lstatSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const nextDirectory = resolve(process.cwd(), '.next');
+// Must match the development `distDir` in next.config.mjs.
+const nextDirectory = resolve(process.cwd(), '.next-dev');
 const databaseFiles = ['data/travel.db', 'data/travel.db-shm', 'data/travel.db-wal'].map((path) =>
   resolve(process.cwd(), path),
 );
@@ -39,7 +40,7 @@ function main() {
       } catch (error) {
         throw new Error(
           `Cannot remove the OneDrive reparse-point .next directory at ${nextDirectory}. ` +
-            'Stop other Next processes and remove .next manually before retrying npm run dev.',
+            'Stop other Next processes and remove that directory manually before retrying npm run dev.',
           { cause: error },
         );
       }
