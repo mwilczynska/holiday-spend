@@ -1328,3 +1328,26 @@ the launcher replaced it.
 Verified after the fix: the launcher reports removing the bundled copy, and production reports 63 saved plans
 including the recovered one, matching the database on disk exactly. TypeScript, `next lint`, 49 Vitest files / 220
 tests, the memory mirror and the deterministic v1.1 check all pass with the live CSV hash unchanged.
+
+## Public-facing README with demo screenshots - 3 September 2026
+
+`README.md` was rewritten for a reader arriving at the repository cold. It now opens with the problem the app
+solves in plain terms, follows with what it does and screenshots of each main surface, explains the city-cost
+methodology, and only then covers developer setup. Previously setup sat in the middle, above the product content,
+and there were no images.
+
+The repository is public, so screenshots could not use real data: the dashboard alone shows a full trip budget,
+actual spending to date, and 1,300 expense records, and git history is permanent. A fictional six-leg Southeast
+Asia and Japan trip was seeded instead, with 83 generated expenses totalling A$4,101 against an A$8,779 plan. The
+real database was backed up twice and verified before seeding, then restored and confirmed byte-identical across
+all 21 tables afterwards.
+
+Two details were corrected during capture. The demo seed initially used `3-star` and `private_room` as tier keys
+where the app expects `3star` and `privateRoom`, which left the accommodation dropdown blank in the first planner
+screenshot. And screenshots taken immediately after navigation caught the charts mid-animation and appeared to show
+empty plots; captures now wait for the bars to settle, and the DOM is checked rather than the image trusted.
+
+The README also states that it is a personal project rather than a product seeking users, and that the screenshots
+use fictional data. Every link and image path in it was verified to resolve, and the environment variables it names
+were checked against `.env.example` — an initial draft told readers to set `APP_SECRET`, which that file does not
+define; it names `NEXTAUTH_SECRET` and `AUTH_DEV_PIN`.

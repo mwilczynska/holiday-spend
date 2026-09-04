@@ -849,7 +849,7 @@ v1.1 check with the live CSV hash unchanged.
 - [ ] Replace the obsolete OneDrive section of `CLAUDE.md`; note the orphaned OneDrive copy; retire or shrink
   `scripts/prepare-next-dev.mjs`.
 
-## Phase 9 — README for a public audience — TO DO
+## Phase 9 — README for a public audience — COMPLETE
 
 `README.md` should let a potential employer reading the repository cold understand what the app is, what problem it
 solves, and what it looks like, before it asks them to install anything. The current file does not do that. It opens

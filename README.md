@@ -1,132 +1,153 @@
 # Holiday Spend
 
-Holiday Spend is a private travel budget and spend-tracking app for long multi-city trips.
+A travel budget planner and spend tracker built for long multi-city trips — the kind where you are away for
+months, crossing a dozen countries, and "what will this actually cost?" is genuinely hard to answer.
 
-It combines itinerary planning, city-by-city budget modelling, actual expense tracking, planned-vs-actual reporting, and LLM-assisted city cost generation for places that are not yet in the library.
+![Dashboard showing planned versus actual spend](docs/images/dashboard.jpg)
 
-## What It Does
+## The problem
 
-- Build trips leg by leg in `/plan`
-- Track real spend manually or by importing Wise CSV exports in `/track`
-- Compare planned vs actual spend across the whole trip and by country on `/`
-- Manage the city cost library, dataset, and generation history in `/dataset`
-- Review the city-cost methodology in `/estimates`
+Most budgeting tools assume you are at home with a fixed income and recurring bills. Trip planners assume a
+two-week holiday to one place. Neither helps when you are planning eleven months across four continents and need
+to know whether staying an extra week in Japan means cutting one in Peru.
 
-## Current Product Model
+Two things make that hard:
 
-- Base city costs are stored in AUD for 2 travellers
-- Planner and dashboard totals scale those stored values to the selected traveller count at runtime
-- Intercity transport is manual by default, with optional LLM-backed estimation in the planner
-- City cost generation and transport estimation are separate flows
+1. **Costs vary enormously by city and by how you travel.** A night in Tokyo is not a night in Hanoi, and a
+   3-star hotel is not a hostel dorm. You need per-city, per-tier numbers, not a single daily average.
+2. **Plans change constantly while you travel.** You need to see how actual spending is tracking against the
+   plan, per country and per category, and re-forecast as you go.
 
-## Stack
+Holiday Spend answers both: model the trip city by city before you leave, then track what you actually spend
+against it while you are away.
 
-- Next.js 14 App Router
-- TypeScript
-- Tailwind CSS
-- Radix-style UI primitives / shadcn components
-- SQLite via `better-sqlite3`
-- Drizzle ORM
-- Zod
-- Recharts
+## What it does
 
-## Local Development
+### Plan a trip leg by leg
 
-1. Copy `.env.example` to `.env.local`.
-2. Set `NEXTAUTH_SECRET`.
-3. For local development, either:
-   - set `AUTH_DEV_PIN` for the built-in dev-only credentials login, or
-   - set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` for Google OAuth.
-4. To test native email/password auth locally:
-   - set `ENABLE_EMAIL_PASSWORD=true`
-   - optionally set `APP_URL=http://localhost:3000`
-   - add `RESEND_API_KEY` and `MAIL_FROM` for real email delivery, or leave them unset to log verification/reset links to the server console in development
-5. Install dependencies:
+Each leg picks a city, dates, and a tier for accommodation, food, drinks and activities. Costs are stored per
+city for two travellers and scaled at runtime for your traveller count, so changing party size re-costs the whole
+trip without rewriting any data.
+
+![Itinerary planner with per-leg tier selection](docs/images/planner.jpg)
+
+Intercity transport is tracked separately, with optional LLM-backed estimation that returns reviewable options
+with sources — nothing is applied to your plan until you choose it.
+
+### Track what you actually spend
+
+Log expenses manually or import Wise CSV exports. Each expense is assigned to an itinerary leg, so spending is
+attributed to the right city and country even when you paid for it weeks earlier.
+
+![Expense tracking with per-leg assignment](docs/images/expenses.jpg)
+
+### Compare planned against actual
+
+The dashboard shows variance to date, burn rate per day, and planned-versus-actual broken down by country and
+category. Saved plan snapshots can be compared side by side to see how a change to the itinerary moves the total.
+
+### Maintain the city cost library
+
+121 cities ship with the app. Any city not in the library can be generated on demand, and every generated row
+records where its numbers came from.
+
+![City cost dataset with provenance](docs/images/dataset.jpg)
+
+## How the city costs work
+
+This is the part with the most design behind it, so it is worth explaining.
+
+Generating a city's costs uses **one** web-enabled LLM call that returns ten intuitive price anchors in USD — a
+hostel bed, a 3-star hotel, a street meal, a beer, and so on — plus the latest dated RBA USD/AUD observation.
+
+The model does no arithmetic. Deterministic server code validates the FX observation, applies fixed formulas to
+derive all 19 planner fields from the ten anchors, and converts to AUD. The same inputs always produce the same
+output, and the derivation can be re-run and checked.
+
+Every generated row stores its provenance: the anchors, the provider and model, the reasoning effort, the prompt
+and formula versions, the FX snapshot with its as-of date, and the model's own confidence notes. The
+`/estimates` page documents the methodology in the app itself.
+
+Two principles run through it:
+
+- **Fail closed.** An unsupported value stays missing rather than becoming a plausible substitute.
+- **Never present a model estimate as an observed price.** Generated values are labelled as what they are.
+
+## Built with
+
+Next.js 14 (App Router) · TypeScript · Tailwind · Radix/shadcn · SQLite via Drizzle ORM and `better-sqlite3` ·
+Zod · Recharts · NextAuth · Vitest and Playwright.
+
+The app is a single Next.js deployment with SQLite on disk — deliberately simple to run and back up for something
+one household uses. Provider API keys for LLM generation are entered in the browser and never reach the
+repository, server database, or logs.
+
+## Running it locally
 
 ```bash
 npm ci
+cp .env.example .env.local     # then set NEXTAUTH_SECRET and AUTH_DEV_PIN
+npm run db:seed                # loads the 121-city cost dataset
 ```
 
-6. Seed the local SQLite database:
+Then either:
 
 ```bash
-npm run db:seed
+npm run dev                    # for editing code
+npm run build && npm start     # for actually using the app
 ```
 
-7. Start the dev server:
+Use the production build when you want to use the app. Development mode serves unminified bundles — roughly
+14 MB of JavaScript for the dashboard against 263 kB built — so it is not representative of how the app performs.
+The two write to separate build directories (`.next-dev` and `.next`) so they do not invalidate each other.
+
+Sign in with `AUTH_DEV_PIN` in development. Production disables that PIN by design, so it needs an
+email/password account — `npm run auth:set-local-password` sets one for the local user.
+
+### Verification
 
 ```bash
-npm run dev
-```
-
-Open `http://localhost:3000`.
-
-## Useful Commands
-
-```bash
-npm run dev
-npm run build
 npx tsc --noEmit
-npm test
-npm run country-metadata:generate
-npm run methodology:audit
-npm run methodology:pilot -- --write
-npm run methodology:batches:validate
-npm run methodology:observations:validate -- data/reference/observations
-npm run test:e2e
-npm run db:seed
+npm run build
+npm test -- --run
+npm run docs:check-memory          # CLAUDE.md and AGENTS.md must stay identical
+npm run methodology:v1.1:check     # deterministic formula, FX and dataset-integrity check
+npm run performance:check          # authenticated route, payload and JS-size budgets
 ```
 
-## Canonical Country Metadata
+`performance:check` needs credentials (`WEBAPP_AUTH_EMAIL` and `WEBAPP_AUTH_PASSWORD`, or `WEBAPP_AUTH_PIN` with
+`WEBAPP_REQUIRE_BUILD=false` against a dev server). It fails rather than measuring an unauthenticated redirect,
+which is a mistake an earlier version of it made for a month.
 
-Country currency/region metadata is repo-owned and generated, not inferred from LLM output or typed manually in the UI.
+## Project structure
 
-- generated dataset: `src/lib/data/country-metadata.generated.json`
-- app-specific overrides: `src/lib/data/country-metadata.overrides.json`
-- generation command: `npm run country-metadata:generate`
-
-Country rows are now auto-created from this canonical dataset during dataset city creation, planner new-city creation, and snapshot-import missing-city resolution.
-
-## Project Structure
-
-- `src/app` - routes and API handlers
-- `src/components` - planner, dashboard, city library, and UI components
-- `src/lib` - calculators, import logic, LLM clients, planner helpers
-- `src/db` - schema, runtime bootstrap, and seed script
-- `docs/` - public-facing product, ops, and developer documentation
-- `data/reference/` - committed canonical datasets such as the city cost CSV
-- `data/travel.db` - local SQLite database
-- `sample-data/` - local CSV samples for import testing
-
-## Deployment
-
-Deployment instructions live in [docs/ops/deployment.md](./docs/ops/deployment.md).
-
-The short version is:
-- run the app in Docker
-- persist `./data`
-- keep the app bound to localhost on the VPS
-- terminate real TLS with a proper reverse proxy in front
+| Path | Contents |
+| --- | --- |
+| `src/app` | Routes and API handlers |
+| `src/components` | Planner, dashboard, city library and UI components |
+| `src/lib` | Cost calculators, import logic, LLM clients, methodology code |
+| `src/db` | Schema, runtime bootstrap and seed script |
+| `data/reference/` | Canonical datasets and retained methodology evidence |
+| `docs/prompts/` | Versioned LLM prompt contracts |
+| `scripts/` | Build, validation and reproducibility tooling |
 
 ## Documentation
 
 | File | Purpose |
 | --- | --- |
-| [CLAUDE.md](./CLAUDE.md) / [AGENTS.md](./AGENTS.md) | Project memory — what the app is and how it currently works |
-| [PLAN.md](./PLAN.md) | Current plan, milestone status, open decisions |
-| [LOG.md](./LOG.md) | History — shipped features, methodologies tried and their results, dataset inventory |
-| [docs/dev/handoffs/city-cost-v1-1.md](./docs/dev/handoffs/city-cost-v1-1.md) | Current city-cost handoff and exact next action |
-| [LOOP-PROMPT-V1-1.md](./LOOP-PROMPT-V1-1.md) | Current city-cost loop and stopping rules |
+| [CLAUDE.md](./CLAUDE.md) / [AGENTS.md](./AGENTS.md) | Project memory — what the app is and how it works today |
+| [PLAN.md](./PLAN.md) | Active plan, milestone status, open decisions |
+| [LOG.md](./LOG.md) | History — what was built, what was tried, and what the evidence showed |
+| [docs/product/transport-estimation.md](./docs/product/transport-estimation.md) | How intercity transport estimation works |
+| [docs/ops/deployment.md](./docs/ops/deployment.md) | Deployment |
 | [docs/README.md](./docs/README.md) | Guide to everything else under `docs/` |
 
-## Current Gaps
+`LOG.md` is worth a look if you are interested in how decisions were reached. It records approaches that were
+tried and rejected alongside the ones that shipped, including a city-cost methodology that took six iterations
+before being abandoned in favour of the simpler one now in use.
 
-The active backlog lives in [PLAN.md](./PLAN.md). The open workstream is **city cost methodology v1.1**:
-one anchor-only LLM call with deterministic server-side formulas and FX for newly generated cities. v6.1 is
-retained as rejected historical research; the existing 121-city dataset and default path remain on v1.
+## A note on scope
 
-## Notes
-
-- The app now uses real session auth with Google OAuth support and a dev-only local PIN fallback
-- Native email/password auth now supports signup, verification, forgot-password, and reset flows
-- User-owned trip data is now scoped per authenticated user, and saved plans are now database-backed
+This is a personal project built for one household's travel, not a product with sign-ups. The screenshots use
+fictional demo data. It is public because the engineering may be of interest, not because it is looking for
+users.
