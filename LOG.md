@@ -1606,3 +1606,45 @@ fixture now mirrors the real table.
 Verification: TypeScript, `next lint` clean, 52 Vitest files / 239 tests, production build, memory mirror. The
 verification made real writes, so the database was restored from backup and confirmed byte-identical across all 21
 tables, with `lisbon` back to 139.5.
+
+## Wise CSV import rate waterfall - 3 September 2026
+
+Importing a Wise CSV resolved exchange rates one at a time. Each cache miss awaited its own HTTPS request to
+Frankfurter inside a sequential `for` loop, so a cold import cost one round trip per distinct currency and date in
+the file, serialised. The rates are knowable before any conversion happens, so they are now collected up front and
+fetched concurrently.
+
+Measured on the 408-row sample with `exchange_rates` emptied before each run so all three were identical: the
+sequential baseline took **81.08 seconds** for 150 rate requests; the fix takes **6.96 seconds** for the same 150
+requests, an 11.6x improvement.
+
+An intermediate version is worth recording because it was slower and wasteful. Prefetching both the source and target
+currency for every row issued 208 requests - 39% more than the sequential version had needed - for rates most rows
+never used, and took 13.53 seconds. The resolver converts from the source currency when a row has one and only falls
+back to the target currency if that fails, so narrowing the prefetch to mirror that first choice brought the count
+back to exactly 150 and roughly halved the time again. Fetching more data in parallel is not automatically better
+than fetching the right data.
+
+Concurrency is bounded at eight using `runWithConcurrency`, the helper already written for bulk transport estimation,
+rather than adding a second one. Frankfurter is a small free service, so the limit is deliberate rather than
+incidental.
+
+Behaviour is unchanged, verified rather than assumed: all 326 importable rows produce identical AUD amounts against
+output captured from the original implementation, with the same 408 total, 326 to import, 77 skipped and 0
+duplicates. Failure still fails closed - an unresolvable rate leaves `amountAud` null rather than substituting a
+plausible value, which the dashboard already excludes rather than treating as zero.
+
+Four regression tests cover fetching each currency and date once across many rows, issuing the requests concurrently
+rather than serially, skipping lookups for rows already in AUD, and leaving a row unresolved when the lookup fails.
+
+`getExchangeRate` still writes each rate to `exchange_rates`, so a second import over overlapping dates stays cheap.
+The improvement is to the first cold import, which is the one a user actually waits on.
+
+Two things were deliberately not changed and are recorded so they are not rediscovered as new: the import route still
+runs one `SELECT` per parsed row for the duplicate check, and inserts rows one at a time without a surrounding
+transaction. Both are cheap relative to the network waterfall that dominated, and neither registered once the rate
+fetches ran in parallel.
+
+Verification: TypeScript, `next lint` clean, 54 Vitest files / 243 tests, production build, memory mirror. The
+measurements required real imports, so the database was restored from backup and confirmed byte-identical across all
+21 tables.

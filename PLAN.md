@@ -1059,6 +1059,42 @@ rewriting, empty updates, cross-user reassignment, and the legitimate paths. Sui
 Verification generated real writes, so the database was restored from backup afterwards and confirmed byte-identical
 across all 21 tables.
 
+## Phase 12 — Wise CSV import rate waterfall — COMPLETE
+
+Importing a Wise CSV resolved exchange rates one at a time. Each cache miss awaited its own HTTPS request to
+Frankfurter inside a sequential `for` loop, so a cold import cost one round trip per distinct currency and date in
+the file, serialised.
+
+Measured on the 408-row sample with `exchange_rates` emptied before each run, so all three runs were identical:
+
+| Implementation | Cold preview | Rate requests |
+| --- | --- | --- |
+| Sequential (baseline) | **81.08 s** | 150 |
+| Prefetch, both currencies per row | 13.53 s | 208 |
+| Prefetch, resolver's primary currency | **6.96 s** | **150** |
+
+- [x] Rates are collected up front and fetched with `runWithConcurrency` at eight in flight, reusing the helper
+  already written for bulk transport estimation rather than adding another one. Frankfurter is a small free service,
+  so the limit is deliberate.
+- [x] The prefetch mirrors the resolver's first choice — the source currency when a row has one, the target currency
+  otherwise — rather than fetching both for every row. The first attempt fetched both and issued 208 requests, 39%
+  more than the sequential version needed, for rates most rows never used. Narrowing it brought the count back to
+  exactly 150 and was also faster.
+- [x] Behaviour is unchanged. All **326 importable rows produce identical AUD amounts** against output captured from
+  the original implementation, with the same 408 total, 326 to import, 77 skipped and 0 duplicates.
+- [x] Failure still fails closed: an unresolvable rate leaves `amountAud` null rather than substituting a plausible
+  value, which the dashboard already excludes rather than treating as zero.
+- [x] Four regression tests in `src/lib/wise-import.test.ts` cover fetching each currency and date once across many
+  rows, issuing requests concurrently rather than serially, skipping lookups for rows already in AUD, and leaving a
+  row unresolved when the lookup fails.
+
+`getExchangeRate` still writes each rate to `exchange_rates`, so a second import over overlapping dates remains
+cheap; the improvement is to the first, cold import, which is the one a user actually waits on.
+
+Not changed, and worth recording as known: the route still runs one `SELECT` per parsed row for the duplicate check
+and inserts rows one at a time without a surrounding transaction. Both are cheap relative to the network waterfall
+that dominated, and neither showed up as a problem once the rates were parallel.
+
 ## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.
