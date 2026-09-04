@@ -8,7 +8,20 @@ import { findLegForExpenseDate } from '../lib/expense-leg-assignment';
 import { getIntercityTransportTotal } from '../lib/intercity-transport';
 import { deriveLegDates } from '../lib/itinerary-leg-dates';
 
-const dbPath = path.join(process.cwd(), 'data', 'travel.db');
+/**
+ * The standalone production server calls `process.chdir(__dirname)` (see
+ * `.next/standalone/server.js`), so `process.cwd()` is the bundle directory, not the project
+ * root. Resolving the database from cwd alone meant production read and wrote
+ * `.next/standalone/data/travel.db` — a copy that `next build` had traced into the bundle —
+ * so every production write was discarded by the next build. One saved plan was recovered
+ * from that copy when this was found.
+ *
+ * `HOLIDAY_SPEND_DB_PATH` is set by `scripts/start-next-production.mjs`, which knows the real
+ * project root. The cwd fallback keeps `npm run dev`, tests and scripts working unchanged.
+ */
+const dbPath = process.env.HOLIDAY_SPEND_DB_PATH
+  ? path.resolve(process.env.HOLIDAY_SPEND_DB_PATH)
+  : path.join(process.cwd(), 'data', 'travel.db');
 
 // Ensure data directory exists
 const dataDir = path.dirname(dbPath);

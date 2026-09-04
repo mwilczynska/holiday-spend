@@ -1,4 +1,4 @@
-import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { spawn } from 'node:child_process';
 import nextEnv from '@next/env';
@@ -57,12 +57,30 @@ if (requiredPromptFiles.some((fileName) => !existsSync(resolve(promptDestination
   }
 }
 
+// `next build` traces `data/travel.db` into the standalone bundle, and
+// `outputFileTracingExcludes` did not prevent it. The copy is private data and, before the
+// HOLIDAY_SPEND_DB_PATH fix below, was what production actually read and wrote — so writes
+// were silently discarded on the next build. Remove it explicitly; nothing should read it.
+const bundledDataPath = resolve(standaloneRoot, 'data');
+if (existsSync(bundledDataPath)) {
+  rmSync(bundledDataPath, { recursive: true, force: true });
+  console.log('[start] Removed the database copy traced into the standalone bundle.');
+}
+
+if (!existsSync(resolve(projectRoot, 'data', 'travel.db'))) {
+  console.warn('[start] No database at data/travel.db; the app will create an empty one.');
+}
+
 const child = spawn(process.execPath, [standaloneServerPath], {
   cwd: projectRoot,
   env: {
     ...process.env,
     HOSTNAME: process.env.HOSTNAME || '0.0.0.0',
     PORT: process.env.PORT || '3000',
+    // The standalone server chdir()s into its own directory, so the app cannot find the real
+    // database from process.cwd(). Pass the project-root path explicitly.
+    HOLIDAY_SPEND_DB_PATH:
+      process.env.HOLIDAY_SPEND_DB_PATH || resolve(projectRoot, 'data', 'travel.db'),
   },
   stdio: 'inherit',
 });
