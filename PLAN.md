@@ -882,6 +882,22 @@ project, so the sign-in flow reads as an invitation.
 - [ ] Verify every relative link and image path in `README.md` resolves in the repository before marking this phase
   complete.
 
+## Phase 10 — Expense CSV export — COMPLETE
+
+- [x] Added an Export button to `/track`, alongside the existing Import. `/api/export?format=csv` already existed but
+  was reachable only from Settings and always returned every expense.
+- [x] `/api/export` now accepts the same filters as `/api/expenses` — `cat`, `source`, `from`, `to`, `leg`, `tag` — so
+  a download matches the list on screen rather than silently returning everything. Settings passes no filters, so its
+  full-trip export is unchanged.
+- [x] The CSV resolves `city` and `country` from the expense's itinerary leg. Previously it emitted a bare `leg_id`,
+  which meant the file could not be read in a spreadsheet without joining a second export.
+- [x] URL building lives in `buildExpenseExportHref` (`src/lib/expense-track-page.ts`) rather than inline in the
+  component, matching the module's existing pure-helper pattern, with four tests covering no filters, all filters,
+  `'all'` treated as unset, and one-sided date ranges.
+
+Verified against the production build with real data: an unfiltered export parsed to exactly 1,300 rows with zero
+parse errors and a resolved city on every row, `cat=food` returned 88, and a ten-day range returned 61.
+
 ## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.

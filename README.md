@@ -44,7 +44,12 @@ attributed to the right city and country even when you paid for it weeks earlier
 ### Compare planned against actual
 
 The dashboard shows variance to date, burn rate per day, and planned-versus-actual broken down by country and
-category. Saved plan snapshots can be compared side by side to see how a change to the itinerary moves the total.
+category. The cumulative view plots actual spend against the planned estimate and the total trip budget, shaded by
+which country you were in, so overspend shows up as a widening gap rather than a number you have to interpret.
+
+![Cumulative spend against plan and budget, banded by country](docs/images/cumulative-spend.jpg)
+
+Saved plan snapshots can be compared side by side to see how a change to the itinerary moves the total.
 
 ### Maintain the city cost library
 
