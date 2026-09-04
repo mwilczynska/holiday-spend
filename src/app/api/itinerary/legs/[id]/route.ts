@@ -7,6 +7,38 @@ import { requireCurrentUserId } from '@/lib/auth';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { z } from 'zod';
 
+/**
+ * The planner edits these fields and no others. The handler previously spread the raw request
+ * body into the update, so any authenticated request could set `userId` and move a leg to
+ * another account, or overwrite `intercityTransportCost` and `intercityTransportNote`, which the
+ * server derives from the transport rows rather than accepting from the client.
+ *
+ * `.strict()` so an unexpected field is refused rather than silently dropped.
+ */
+const updateLegSchema = z
+  .object({
+    cityId: z.string().min(1),
+    startDate: z.string().nullable(),
+    endDate: z.string().nullable(),
+    nights: z.number().int().min(0),
+    accomTier: z.string(),
+    foodTier: z.string(),
+    drinksTier: z.string(),
+    activitiesTier: z.string(),
+    accomOverride: z.number().nullable(),
+    foodOverride: z.number().nullable(),
+    drinksOverride: z.number().nullable(),
+    activitiesOverride: z.number().nullable(),
+    transportOverride: z.number().nullable(),
+    splitPct: z.number().nullable(),
+    sortOrder: z.number().int(),
+    notes: z.string().nullable(),
+    status: z.enum(['planned', 'active', 'completed']),
+    intercityTransports: z.array(z.unknown()),
+  })
+  .partial()
+  .strict();
+
 const intercityTransportSchema = z.object({
   id: z.number().int().optional(),
   mode: z.string().nullable().optional(),
@@ -21,7 +53,7 @@ export async function PUT(
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const body = await request.json();
+    const body = updateLegSchema.parse(await request.json());
     const id = parseInt(params.id);
 
     const existing = await db.select().from(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).get();
