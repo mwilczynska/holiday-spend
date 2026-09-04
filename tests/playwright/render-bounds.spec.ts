@@ -1,6 +1,9 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('performance render bounds', () => {
+// These assert the initial DOM bounds from src/lib/performance-bounds.ts, not timings.
+// Durations and payload sizes are measured by `npm run performance:check`; naming this
+// "performance" previously implied a timing guarantee it never made.
+test.describe('initial render bounds', () => {
   test('planner initially renders at most twelve full leg cards', async ({ page }) => {
     await page.goto('/plan');
     await expect(page.getByText('Trip Summary')).toBeVisible({ timeout: 15_000 });

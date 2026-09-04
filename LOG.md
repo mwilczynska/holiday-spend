@@ -1221,3 +1221,46 @@ deleted.
 
 Verification: TypeScript, `next lint` clean, 49 Vitest files / 220 tests including three new harness regression tests,
 and the memory mirror.
+
+## Test suite audit - 3 September 2026
+
+The audit ran and removed no tests. The conclusion contradicts the plan that set it up, so the reasoning is recorded
+here rather than the outcome alone.
+
+Module reachability was computed transitively from the real entry points (`src/app`, `src/components`,
+`src/middleware.ts`) instead of judging by file name. Sixteen of seventy `src/lib` modules are unreachable from the
+running app, carrying roughly 2,400 lines of tests, and they matched the retired v3/v4/v5 research the plan targeted
+for deletion.
+
+They are not dead code. Each is a reader of retained methodology evidence. `data/reference/` still holds
+`accommodation_property_panels_2026_2027.json` at 1.9 MB, `accommodation_reference_windows_2026_2027.json`,
+`city_cost_collection_batches.json`, `city_cost_pilot_enrichment.json`,
+`hanoi_accommodation_classification_reconciliation_2026.json`, and 42 files under `observations/`. Every unreachable
+module parses or validates part of that corpus and its `npm run methodology:*` entry point still works;
+`methodology:batches:validate` and `methodology:accommodation-windows:validate` were run and pass.
+`CLAUDE.md` states that files under `data/reference/` must not be moved or renamed without updating their readers.
+
+"Unreachable from the app" was therefore the wrong test for "useless". These modules are unreachable by design: they
+are offline validators for evidence the project deliberately retains for audit and reproducibility. Deleting them
+would have read as decisive cleanup while orphaning 2.2 MB of retained evidence and breaking the audit path that
+several conventions exist to protect. Two further exclusions: `city-cost-v1-1-guard` is the live-CSV guard behind
+`npm run methodology:v1.1:check`, and `transport-estimation-accuracy` is the harness for the still-deferred transport
+accuracy task.
+
+The suite also contains no tautological assertions and no tests that merely restate the implementation, so the
+quality concern the audit was meant to address does not exist here.
+
+The real dead weight was outside the tests. Four dependencies are declared but imported nowhere in the repository and
+were removed: `swr`, `date-fns`, `shadcn` (a scaffolding CLI listed as a runtime dependency) and `tw-animate-css`
+(absent from every stylesheet). Each was checked with `git grep` across the tree and against the lockfile, which
+showed them as direct dependencies with no dependents. `src/app/fonts/GeistMonoVF.woff` (67,864 bytes) was removed as
+well; only `GeistVF.woff` is loaded by `src/app/layout.tsx`.
+
+`tests/playwright/performance-bounds.spec.ts` was renamed to `render-bounds.spec.ts`, with its describe block changed
+to `initial render bounds`. Its three tests assert row counts and never a duration, so calling them "performance"
+implied a timing guarantee they never made. That mattered little while no real timing check existed; it matters now
+that `npm run performance:check` measures timings properly. The tests themselves are sound and were kept.
+
+Counts are unchanged at 49 Vitest files / 220 tests. Verified with TypeScript, `next lint`, a clean production build
+from an emptied `.next`, the memory mirror, and the deterministic v1.1 check with the live CSV hash unchanged at
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.

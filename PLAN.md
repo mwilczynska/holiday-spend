@@ -788,26 +788,49 @@ Committed as `deb299c` (the interactive password tool) and `6227449` (the verifi
 - [ ] Server-render initial data for `/`, `/track`, `/dataset`, `/settings`, and consolidate the three dashboard
   endpoints behind one shared resolver — only if the Step 2 harness still shows a real gap.
 
-### Step 7 — Test suite audit — TO DO
+### Step 7 — Test suite audit — COMPLETE (no tests removed; the premise was wrong)
 
-The suite is 49 files / 214 tests running in 17.4 seconds. Judge each test on whether it earns its place and remove
-those that do not; a test that cannot fail, or that guards a code path the product no longer has, is maintenance cost
-without benefit.
+The audit ran and removed **no tests**. Recording why, because the conclusion contradicts the plan that set it up.
 
-- [ ] Review the retired-research suites in `src/lib/` covering v3/v4/v5 methodology paths the product abandoned:
-  `accommodation-property-panel`, `accommodation-quote-attempt`, `accommodation-reference-window`,
-  `accommodation-website-verification`, `city-cost-methodology-v3`, `city-cost-observation`,
-  `city-cost-collection-batch`, `city-cost-pilot-enrichment`, `city-cost-pilot-profile`,
-  `city-cost-research-response`, `da-nang-accommodation-geocoding`. Where the matching `scripts/` entry point is also
-  dead, remove the script and its test together.
-- [ ] Remove tests that assert framework behavior rather than this project's logic, and tests that restate the
-  implementation line for line.
-- [ ] Decide whether `tests/playwright/performance-bounds.spec.ts` gains real timing assertions in Step 2 or is
-  renamed to reflect that it asserts row bounds, not performance.
+**Method.** Rather than judging by name, module reachability was computed transitively from the real entry points
+(`src/app`, `src/components`, `src/middleware.ts`). Sixteen of seventy `src/lib` modules are unreachable from the
+running app, carrying roughly 2,400 lines of tests — apparently the retired v3/v4/v5 research the plan targeted.
 
-Rules: every removal needs a reason recorded in `LOG.md` — dead code path, cannot fail, or duplicated elsewhere. Do
-not remove a test for being slow or for currently passing. Never remove coverage of the v1.1 methodology boundary, the
-live-CSV guard, FX validation, or auth. Re-run the full suite after each batch and record before/after counts.
+**Why they stay.** Those modules are the readers of retained methodology evidence, not dead code. `data/reference/`
+still holds `accommodation_property_panels_2026_2027.json` (1.9 MB), `accommodation_reference_windows_2026_2027.json`,
+`city_cost_collection_batches.json`, `city_cost_pilot_enrichment.json`,
+`hanoi_accommodation_classification_reconciliation_2026.json`, and 42 files under `observations/`. Each unreachable
+module parses or validates part of that corpus, and its `npm run methodology:*` entry point still works —
+`methodology:batches:validate` and `methodology:accommodation-windows:validate` were run and pass.
+`CLAUDE.md` states directly: *"Do not move or rename files under `data/reference/` without updating their readers."*
+
+So "unreachable from the app" was the wrong test for "useless". These modules are unreachable **by design**: they are
+offline validators for evidence the project deliberately retains for audit and reproducibility. Deleting them would
+have looked like decisive cleanup while orphaning 2.2 MB of retained evidence and breaking its audit path.
+
+Two further exclusions: `city-cost-v1-1-guard` is the live-CSV guard behind `npm run methodology:v1.1:check`, which
+the plan's own rules protect; and `transport-estimation-accuracy` is the harness for the still-deferred transport
+accuracy task, so removing it would delete in-progress work.
+
+**Quality check.** The suite contains no tautological assertions — no `expect(true).toBe(true)` or equivalent — and no
+tests that merely restate the implementation. It is better written than the audit assumed.
+
+- [x] Computed module reachability transitively rather than trusting file names.
+- [x] Established that the retired-research tests guard retained evidence and must stay; validators re-run and pass.
+- [x] Confirmed no tautological or framework-only tests exist.
+- [x] Removed four dependencies that are declared but imported nowhere in the repository: `swr`, `date-fns`,
+  `shadcn` (a scaffolding CLI listed as a runtime dependency) and `tw-animate-css` (absent from every stylesheet).
+  Verified against `git grep` across the tree and against the lockfile, which showed each as a direct dependency with
+  no dependents.
+- [x] Removed `src/app/fonts/GeistMonoVF.woff` (67,864 bytes), referenced nowhere; only `GeistVF.woff` is loaded.
+- [x] Renamed `tests/playwright/performance-bounds.spec.ts` to `render-bounds.spec.ts` and its describe block to
+  `initial render bounds`. Its three tests assert row counts and never a duration; calling them "performance" implied
+  a timing guarantee they never made, which matters more now that `npm run performance:check` measures timings for
+  real. The tests themselves are sound and are kept.
+
+Counts unchanged at 49 Vitest files / 220 tests, because nothing was removed from the suite. Verified with
+TypeScript, `next lint`, a clean production build from an emptied `.next`, the memory mirror, and the deterministic
+v1.1 check with the live CSV hash unchanged.
 
 ### Step 8 — Documentation — TO DO
 
