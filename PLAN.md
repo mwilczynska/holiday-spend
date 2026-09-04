@@ -578,10 +578,38 @@ Step 1 established that the cold stall is a development-mode cost. Production se
 against 7.404 s, and ships 263 kB of first-load JavaScript for `/` against 14.04 MB. Running production is therefore
 the single largest available improvement, and this ownership question is the only thing preventing it.
 
-All itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password and is reachable only
-through the development PIN. `src/lib/auth.ts:20` disables that PIN under `NODE_ENV=production`, and
-`claimLegacyDataForUser` (`src/lib/user-data.ts:53-58`) adopts only `userId IS NULL` rows. A production session would
-therefore show an empty app. Awaiting an owner decision on account ownership.
+All itinerary, expense and saved-plan rows belong to `dev-local-user`, and `claimLegacyDataForUser`
+(`src/lib/user-data.ts:53-58`) adopts only `userId IS NULL` rows, so no other account inherits them.
+
+The owner configured a development password of `1234`. Testing confirmed it authenticates in development and resolves
+to `dev-local-user`, but it cannot reach production:
+
+| | `npm run dev` | `npm start` |
+| --- | --- | --- |
+| `pin=1234` | HTTP 200, session `dev-local-user` | **HTTP 401, anonymous** |
+| `/` | renders | 307 to `/login` |
+| Development PIN field | rendered | not rendered |
+
+Three conditions must hold before `dev-local-user` can sign in to a production build, and none currently do:
+
+1. `src/lib/auth.ts:20` sets `devPin` to `undefined` when `NODE_ENV === 'production'`, so the PIN path does not exist
+   there at all.
+2. `user_passwords` has no row for `dev-local-user`, and `verifyEmailPasswordCredentials` returns `invalid` without
+   one.
+3. `dev-local-user.emailVerified` is `null`, and `src/lib/native-auth.ts` returns `unverified` in that case, so a
+   password alone is still refused.
+
+`1234` also cannot be the production password: `validatePasswordStrength` (`src/lib/password.ts`) requires at least
+ten characters and rejects all-digit values.
+
+- [x] Added `npm run auth:set-local-password` (`scripts/set-local-password.ts`). It prompts for a password with echo
+  suppressed, never accepts one as an argument or environment variable so it cannot reach shell history or logs,
+  reuses `hashPassword` and `validatePasswordStrength` from `src/lib/password.ts` rather than inventing a policy, and
+  offers to mark the local address verified. It refuses to run under `NODE_ENV=production`, and refuses cleanly with
+  no database write when no interactive terminal is present.
+- [ ] Owner action: run `npm run auth:set-local-password` in a real terminal, then confirm production sign-in.
+
+Until this is done, development remains the working mode and Steps 3, 4 and 7 still deliver value in both modes.
 
 ### Step 6 — Deferred cleanup — TO DO
 

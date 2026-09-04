@@ -140,8 +140,10 @@ code, not while judging speed.
 full cold recompile, which surfaced as `ChunkLoadError: Loading chunk app/layout failed`.
 
 `npm start` sets `NODE_ENV=production`, which disables the development PIN in `src/lib/auth.ts`. All existing
-itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password, so a production session
-needs that ownership resolved first.
+itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password row and an unverified email,
+so email/password sign-in is refused for it until both are set. Run `npm run auth:set-local-password` in a real
+terminal to fix that; it prompts for the password rather than accepting it as an argument, so the value never reaches
+shell history or logs, and it applies the same strength rules as signup — at least ten characters, and not all digits.
 
 ## Conventions and verification
 
