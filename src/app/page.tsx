@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -660,6 +660,86 @@ export default function DashboardPage() {
     load();
   }, []);
 
+  // These derivations previously ran unmemoized on every render, so toggling
+  // showCountryDailySpend, categoryMode or expandedChart re-mapped and re-sorted the whole
+  // category list, country list and burn series. They sit above the loading early-return
+  // because hooks cannot be called after a conditional return.
+  const selectedCategoryTotals = categoryMode === 'planned' ? plannedCategoryTotals : actualCategoryTotals;
+  const totalCategorySpend = useMemo(
+    () => Object.values(selectedCategoryTotals).reduce((sum, value) => sum + value, 0),
+    [selectedCategoryTotals]
+  );
+
+  const categoryChartData = useMemo(
+    () =>
+      Object.entries(selectedCategoryTotals)
+        .filter(([, v]) => v > 0)
+        .map(([key, value]) => ({
+          name: getCategoryLabel(key),
+          value: Math.round(value),
+          fill: CHART_COLORS[0],
+          percent: totalCategorySpend > 0 ? (value / totalCategorySpend) * 100 : 0,
+        }))
+        .sort((a, b) => b.value - a.value)
+        .map((entry, index) => ({
+          ...entry,
+          fill: CHART_COLORS[index % CHART_COLORS.length],
+          percentLabel: `${entry.percent.toFixed(0)}%`,
+        })),
+    [selectedCategoryTotals, totalCategorySpend]
+  );
+
+  const barData = useMemo(
+    () =>
+      comparison
+        .filter((c) => c.planned > 0 || c.actual > 0)
+        .map((c) => ({
+          name: c.countryName,
+          Planned: Math.round(showCountryDailySpend ? (c.plannedPerDay ?? 0) : c.planned),
+          Actual: Math.round(showCountryDailySpend ? (c.actualPerDay ?? 0) : c.actual),
+        })),
+    [comparison, showCountryDailySpend]
+  );
+
+  const chartBurnData = useMemo(() => {
+    const firstPlannedIndex = burnData.findIndex((point) => point.legStatus === 'planned');
+    const lastActualIndex = burnData.reduce(
+      (lastIndex, point, index) => (point.daily > 0 ? index : lastIndex),
+      -1
+    );
+
+    return burnData.map((point, index) => ({
+      ...point,
+      spentActual:
+        lastActualIndex !== -1 && (firstPlannedIndex === -1 || index < firstPlannedIndex) && index <= lastActualIndex
+          ? point.cumulative
+          : null,
+      spentPlannedTail:
+        firstPlannedIndex !== -1 && lastActualIndex >= firstPlannedIndex && index >= firstPlannedIndex && index <= lastActualIndex
+          ? point.cumulative
+          : null,
+    }));
+  }, [burnData]);
+
+  // A new array here re-ran BurnCountryHeaderStrip's useLayoutEffect on every render, which
+  // calls getBoundingClientRect per band and forces a synchronous layout during commit.
+  const staggeredCountryBands = useMemo(
+    () => buildStaggeredCountryBands(countryBands, chartBurnData.length),
+    [countryBands, chartBurnData.length]
+  );
+
+  const cumulativeSeriesMax = useMemo(() => {
+    const maxEstimatedTotal = chartBurnData.reduce(
+      (maxValue, point) => Math.max(maxValue, point.plannedCumulative),
+      0
+    );
+    const maxSpentTotal = chartBurnData.reduce(
+      (maxValue, point) => Math.max(maxValue, point.cumulative),
+      0
+    );
+    return Math.max(maxEstimatedTotal, maxSpentTotal);
+  }, [chartBurnData]);
+
   if (loading && !summary) {
     return (
       <PageLoadingState
@@ -671,60 +751,9 @@ export default function DashboardPage() {
     );
   }
 
-  const selectedCategoryTotals = categoryMode === 'planned' ? plannedCategoryTotals : actualCategoryTotals;
   const asOfLabel = summary
     ? `${summary.asOfSource === 'last_transaction' ? 'Last transaction' : 'Today'} · ${formatDashboardDate(summary.asOfDate)}`
     : '';
-  const totalCategorySpend = Object.values(selectedCategoryTotals).reduce((sum, value) => sum + value, 0);
-
-  const categoryChartData = Object.entries(selectedCategoryTotals)
-    .filter(([, v]) => v > 0)
-    .map(([key, value]) => ({
-      name: getCategoryLabel(key),
-      value: Math.round(value),
-      fill: CHART_COLORS[0],
-      percent: totalCategorySpend > 0 ? (value / totalCategorySpend) * 100 : 0,
-    }))
-    .sort((a, b) => b.value - a.value)
-    .map((entry, index) => ({
-      ...entry,
-      fill: CHART_COLORS[index % CHART_COLORS.length],
-      percentLabel: `${entry.percent.toFixed(0)}%`,
-    }));
-
-  const barData = comparison
-    .filter((c) => c.planned > 0 || c.actual > 0)
-    .map((c) => ({
-      name: c.countryName,
-      Planned: Math.round(showCountryDailySpend ? (c.plannedPerDay ?? 0) : c.planned),
-      Actual: Math.round(showCountryDailySpend ? (c.actualPerDay ?? 0) : c.actual),
-    }));
-
-  const firstPlannedIndex = burnData.findIndex((point) => point.legStatus === 'planned');
-  const lastActualIndex = burnData.reduce((lastIndex, point, index) => (
-    point.daily > 0 ? index : lastIndex
-  ), -1);
-  const chartBurnData = burnData.map((point, index) => ({
-    ...point,
-    spentActual:
-      lastActualIndex !== -1 && (firstPlannedIndex === -1 || index < firstPlannedIndex) && index <= lastActualIndex
-        ? point.cumulative
-        : null,
-    spentPlannedTail:
-      firstPlannedIndex !== -1 && lastActualIndex >= firstPlannedIndex && index >= firstPlannedIndex && index <= lastActualIndex
-        ? point.cumulative
-        : null,
-  }));
-  const staggeredCountryBands = buildStaggeredCountryBands(countryBands, chartBurnData.length);
-  const maxEstimatedTotal = chartBurnData.reduce(
-    (maxValue, point) => Math.max(maxValue, point.plannedCumulative),
-    0
-  );
-  const maxSpentTotal = chartBurnData.reduce(
-    (maxValue, point) => Math.max(maxValue, point.cumulative),
-    0
-  );
-  const cumulativeSeriesMax = Math.max(maxEstimatedTotal, maxSpentTotal);
   const chartYAxisMax = Math.max(
     cumulativeSeriesMax,
     budgetCeiling,

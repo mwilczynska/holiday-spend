@@ -1102,3 +1102,45 @@ meant to summarise; this is the same error class as the Phase 7A harness measuri
 Verification: 49 Vitest files / 217 tests pass, including three new route tests for the slim list shape, the
 `?cityId=` full-provenance mode, and an unknown city. TypeScript, the production build, the memory mirror and the
 deterministic v1.1 check all pass, and all seven core routes returned HTTP 200 authenticated.
+
+## Planner and dashboard render hot paths - 3 September 2026
+
+`canonicalCountryOptions` in `src/app/plan/page.tsx` was rebuilt on every render of the planner, including every
+keystroke in any input on the page. `getSelectedCountryPreview` re-scanned every saved country for each of the 245
+`KNOWN_COUNTRIES`, and `findKnownCountryMetadata` runs `slugifyId` - an NFKD normalise plus four regex replaces - on
+every call. Measured at **5.037 ms per render**. Each saved country is now resolved once into a `Set` of canonical
+ids and the result is memoized on `countries`, measured at **0.045 ms**, a **112x** improvement. Outputs were verified
+byte-identical between the old and new implementations before the change was kept. The earlier "~28,400 operations"
+figure in the plan was an estimate and is superseded by this measurement.
+
+One shared `cityOptions` array is now built with `useMemo` and passed to every `LegCard` and the Add Leg dialog. Each
+of up to twelve cards previously built its own ~200-object array inline during render, which also handed
+`SearchableSelect` a new `options` identity every time and so permanently defeated the `useMemo` at
+`src/components/ui/searchable-select.tsx:44`, re-sorting ~200 options with `localeCompare` per card per render. The
+legs array passed to `BulkTransportEstimateDialog` is memoized for the same reason.
+
+`TransportEstimateDialog` (675 lines) was mounted unconditionally inside every leg card - roughly a dozen instances -
+for dialogs the user had not opened, each with its own hooks and a `localStorage` read. It,
+`BulkTransportEstimateDialog` (785), `PlannerNewCityDialog` (516) and `CityGenerationPanel` (455) now load through
+`next/dynamic` and mount on first open, latched so in-dialog state survives close and reopen. `CityGenerationPanel`
+already rendered only for a selected city, so it needed the bundle split rather than a mount gate. First-load
+JavaScript fell from 154 kB to **127 kB** on `/dataset` and from 177 kB to **169 kB** on `/plan`.
+
+The dashboard derivation chain in `src/app/page.tsx` is memoized. `categoryChartData`, `barData`, `chartBurnData`,
+`staggeredCountryBands` and the cumulative maxima recomputed on every render, so toggling `showCountryDailySpend`,
+`categoryMode` or `expandedChart` re-mapped and re-sorted the whole category list, country list and burn series. These
+had to move above the loading early-return, because hooks cannot be called after a conditional return.
+`staggeredCountryBands` mattered most: a new array each render re-ran `BurnCountryHeaderStrip`'s `useLayoutEffect`,
+which calls `getBoundingClientRect` per band and forces a synchronous layout during commit.
+
+One earlier claim is corrected rather than left standing. Extracting the three inline chart render functions was
+justified on the grounds that calling them as functions makes Recharts rebuild and re-measure its subtree. That is
+overstated: React reconciles by element type, so the charts are not remounted. The real benefit is skipping the chart
+subtree when unrelated state changes, which is worthwhile now that the data arrays are stable, but it is lower
+priority than first recorded. That item and the `next/dynamic` split of the Recharts bundle on `/` remain open.
+
+Verification: TypeScript, `next lint` with no warnings or errors, 49 Vitest files / 217 tests, a production build, the
+memory mirror, and an authenticated production walk returning HTTP 200 for all eleven routes. The walk confirms server
+shells and API responses, not post-hydration chart rendering; the dashboard is client-rendered and its shell returns
+the loading state by design. A browser pass over `/` and `/plan` remains outstanding, as the Chrome extension was not
+connected during this work.
