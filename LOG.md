@@ -1171,3 +1171,53 @@ rather than only at the API level.
 One pre-existing accessibility warning surfaced and is not caused by this work:
 `Missing 'Description' or 'aria-describedby={undefined}' for {DialogContent}`, a Radix warning about the dialog
 component itself. It is recorded for separate follow-up.
+
+## Measurement harness corrected and a real baseline recorded - 3 September 2026
+
+`scripts/check-webapp-performance.mjs` now authenticates and refuses to report numbers for a redirected route. The
+defect it replaces: the script fetched every route with `redirect: 'follow'` and no session cookie, `src/middleware.ts`
+wraps all of them in `withAuth`, so each route 307'd to `/login` and the script measured the login page seven times.
+That is why a 5-second route budget and a 512 KiB shell budget never fired while the app was slow to use.
+
+`assertNotRedirectedToLogin` fails whenever a response was redirected or lands on `/login`, and it runs whether or not
+credentials are configured, because it is the assertion that makes every other number trustworthy. Sign-in goes through
+the NextAuth credentials endpoint using `WEBAPP_AUTH_PIN` for a dev server or `WEBAPP_AUTH_EMAIL` and
+`WEBAPP_AUTH_PASSWORD` for a production build, with a small cookie jar because Node's `fetch` does not persist cookies.
+The harness also records decompressed JavaScript bytes per route and authenticated API latency and payload bytes,
+samples each target three times by default and reports medians rather than a single reading, and accepts
+`WEBAPP_REQUIRE_BUILD=false` so the same script can measure `npm run dev`.
+
+Verified both ways against the running app. With credentials the check passes. With credentials removed - the exact
+configuration that produced the invalid Phase 7A numbers - all seven routes report
+`redirected to /login ... would describe the login page, not the route` and the run exits 1.
+
+Corrected baseline, authenticated against a production build. Route shells respond in 4-12 ms.
+
+| Route | Shell | JavaScript, decompressed | Files |
+| --- | --- | --- | --- |
+| `/` | 27,289 B | 1,068,839 B | 15 |
+| `/plan/compare` | 28,397 B | 1,015,023 B | 14 |
+| `/plan` | 27,943 B | 763,642 B | 17 |
+| `/settings` | 27,594 B | 658,654 B | 16 |
+| `/track` | 27,921 B | 653,380 B | 14 |
+| `/dataset` | 27,734 B | 615,956 B | 15 |
+| `/estimates` | 167,151 B | 518,309 B | 10 |
+
+Authenticated API medians: `/api/countries?includeCities=false` 3 ms / 5,508 B; `/api/itinerary` 7 ms / 42,901 B;
+`/api/expenses?view=track` 10 ms / 29,947 B; `/api/dashboard/summary` 13 ms / 757 B; `/api/dashboard/burn-rate`
+15 ms / 79,776 B; `/api/estimates?view=dataset` 9 ms / 132,011 B.
+
+Assets are gzipped but chunked with no `content-length`, so the recorded figure is the decompressed size, roughly four
+times the transferred bytes and the amount the engine parses. An initial run used a 1 MiB budget and failed `/` at
+1,068,839 B; the budget was raised to 1.25 MiB and the metric relabelled, because reporting decompressed bytes as
+though they were transfer bytes would have been the same category of error the harness was being fixed to prevent.
+
+New finding from the first honest run: `/plan/compare` is the second-heaviest route at 1,015,023 B and had not
+appeared in any earlier analysis. It carries the comparison charts and should be included when the Recharts
+dynamic-import item in Step 4 is addressed.
+
+The Phase 7A numbers are retained in this log and in `PLAN.md` as dated history, marked superseded rather than
+deleted.
+
+Verification: TypeScript, `next lint` clean, 49 Vitest files / 220 tests including three new harness regression tests,
+and the memory mirror.

@@ -139,6 +139,11 @@ code, not while judging speed.
 `.next-dev`. Keeping the two directories separate matters: while they shared one, each wiped the other and forced a
 full cold recompile, which surfaced as `ChunkLoadError: Loading chunk app/layout failed`.
 
+`npm run performance:check` measures the running app and requires credentials: set `WEBAPP_AUTH_EMAIL` and
+`WEBAPP_AUTH_PASSWORD` against a production build, or `WEBAPP_AUTH_PIN` against a dev server with
+`WEBAPP_REQUIRE_BUILD=false`. Without them it now fails rather than silently measuring the login page, which is what
+invalidated the earlier Phase 7A numbers.
+
 `npm start` sets `NODE_ENV=production`, which disables the development PIN in `src/lib/auth.ts`. All existing
 itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password row and an unverified email,
 so email/password sign-in is refused for it until both are set. Run `npm run auth:set-local-password` in a real

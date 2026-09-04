@@ -230,4 +230,115 @@ describe('v1.1 performance bounds', () => {
       await new Promise<void>((resolve) => server.close(() => resolve()));
     }
   });
+
+  it('fails when routes redirect to the login page instead of rendering', async () => {
+    // The original defect: `redirect: 'follow'` with no session cookie meant every route
+    // 307'd to /login and the script happily measured the login page seven times. This test
+    // exists so that regression cannot return silently.
+    const directory = makeTempDir();
+    fs.mkdirSync(path.join(directory, '.next', 'standalone'), { recursive: true });
+    fs.writeFileSync(path.join(directory, '.next', 'BUILD_ID'), 'test-build');
+    fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
+
+    const server = createServer((request, response) => {
+      if (request.url?.startsWith('/login')) {
+        response.writeHead(200, { 'content-type': 'text/html' });
+        response.end('<html><body>sign in</body></html>');
+        return;
+      }
+      response.writeHead(307, { location: '/login?callbackUrl=%2F' });
+      response.end();
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') {
+      server.close();
+      throw new Error('Test server did not expose a TCP port.');
+    }
+
+    try {
+      const result = await runNodeScriptAsync(performanceScript, directory, {
+        WEBAPP_BASE_URL: `http://127.0.0.1:${address.port}`,
+        WEBAPP_ROUTE_BUDGET_MS: '1000',
+        WEBAPP_RESPONSE_BUDGET_BYTES: '1024',
+        WEBAPP_SAMPLES: '1',
+        WEBAPP_JS_BUDGET_BYTES: '0',
+      });
+
+      expect(result.status).toBe(1);
+      const output = result.stdout + result.stderr;
+      expect(output).toContain('redirected to /login');
+      expect(output).toContain('would describe the login');
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
+  });
+
+  it('can measure a development server when the build requirement is waived', async () => {
+    const directory = makeTempDir();
+
+    const server = createServer((_request, response) => {
+      response.writeHead(200, { 'content-type': 'text/html' });
+      response.end('<html><body>dev</body></html>');
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') {
+      server.close();
+      throw new Error('Test server did not expose a TCP port.');
+    }
+
+    try {
+      const result = await runNodeScriptAsync(performanceScript, directory, {
+        WEBAPP_BASE_URL: `http://127.0.0.1:${address.port}`,
+        WEBAPP_ROUTE_BUDGET_MS: '1000',
+        WEBAPP_RESPONSE_BUDGET_BYTES: '1024',
+        WEBAPP_REQUIRE_BUILD: 'false',
+        WEBAPP_SAMPLES: '1',
+      });
+
+      expect(result.status).toBe(0);
+      expect(result.stdout).toContain('Route-shell check passed');
+      expect(result.stdout).toContain('No session was configured');
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
+  });
+
+  it('reports the median of repeated route samples', async () => {
+    const directory = makeTempDir();
+    fs.mkdirSync(path.join(directory, '.next', 'standalone'), { recursive: true });
+    fs.writeFileSync(path.join(directory, '.next', 'BUILD_ID'), 'test-build');
+    fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
+
+    let requestCount = 0;
+    const server = createServer((_request, response) => {
+      requestCount += 1;
+      response.writeHead(200, { 'content-type': 'text/html' });
+      response.end('<html><body>ready</body></html>');
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') {
+      server.close();
+      throw new Error('Test server did not expose a TCP port.');
+    }
+
+    try {
+      const result = await runNodeScriptAsync(performanceScript, directory, {
+        WEBAPP_BASE_URL: `http://127.0.0.1:${address.port}`,
+        WEBAPP_ROUTE_BUDGET_MS: '1000',
+        WEBAPP_RESPONSE_BUDGET_BYTES: '1024',
+        WEBAPP_SAMPLES: '3',
+        WEBAPP_JS_BUDGET_BYTES: '0',
+      });
+
+      expect(result.status).toBe(0);
+      expect(result.stdout).toContain('median of 3');
+      // Seven routes at three samples each.
+      expect(requestCount).toBe(21);
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
+  });
 });
