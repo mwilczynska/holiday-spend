@@ -1291,3 +1291,40 @@ rather than decided silently.
 
 Verification: TypeScript, `next lint` clean, 49 Vitest files / 220 tests, production build, memory mirror, and an
 authenticated `npm run performance:check` run against the production build.
+
+## Production was reading a throwaway copy of the database - 3 September 2026
+
+Found while preparing demo data for README screenshots: the production server did not read
+`data/travel.db`. It read `.next/standalone/data/travel.db`, a full copy that `next build` traced into the bundle.
+
+The mechanism is two innocuous pieces meeting. `.next/standalone/server.js` line 6 calls
+`process.chdir(__dirname)`, which is standard Next behaviour for the standalone output. `src/db/index.ts` resolved the
+database as `path.join(process.cwd(), 'data', 'travel.db')`. Under `npm run dev` those agree; under `npm start` the
+working directory is the bundle, so the path resolved inside `.next/standalone`.
+
+The consequences were real. Every write made through `npm start` went to a copy that the next `npm run build`
+overwrote, so production changes were silently discarded. Comparing the copy against a backup of the real database
+found one such loss: saved plan `61a46a0a-1c24-4104-8ed8-355f69a57908`, "Plan 2026-09-04", created at 16:26 that day
+with a 37,994-byte snapshot, existed only in the bundled copy. It was extracted and merged back into the real
+database, which now holds 63 saved plans against the 62 it had before. Expenses, legs and estimates had not diverged.
+
+This also explains an earlier incident recorded as "a stale standalone bundle". Production sign-in returned
+`CredentialsSignin` immediately after a password was written to the real database, then worked after a rebuild. The
+cause was not stale code: the bundled database copy predated the password row, and the rebuild refreshed the copy.
+
+Separately, the copy meant `next build` duplicated 3.4 MB of private financial data into build output. The repository
+is public, and while `.next` is gitignored, build output should not carry a database at all.
+
+The fix has two parts. `src/db/index.ts` now prefers `HOLIDAY_SPEND_DB_PATH`, which
+`scripts/start-next-production.mjs` sets to the project-root path it already knows, falling back to the previous
+cwd-based path so development, tests and scripts are unchanged. The launcher also deletes
+`.next/standalone/data` before starting, since nothing should read it.
+
+`experimental.outputFileTracingExcludes` was tried first and did not prevent the copy under either `'/*'` or `'**/*'`
+keys. The second, broader pattern also stripped files the standalone server needs, producing `MODULE_NOT_FOUND` on
+startup. That configuration was removed rather than left in place looking effective, and the deterministic removal in
+the launcher replaced it.
+
+Verified after the fix: the launcher reports removing the bundled copy, and production reports 63 saved plans
+including the recovered one, matching the database on disk exactly. TypeScript, `next lint`, 49 Vitest files / 220
+tests, the memory mirror and the deterministic v1.1 check all pass with the live CSV hash unchanged.
