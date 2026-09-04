@@ -18,9 +18,8 @@ transport smoke, and the seven-test four-route mocked accuracy pipeline.
 **Latest plan checkpoint:** `e4eeb94` — recorded the grounded one-route smoke while keeping four-route same-day quote
 capture open.
 
-**Next action:** Phase 8 Step 5 — resolve `dev-local-user` data ownership so the app can be run from a production
-build. Measurement in Step 1 showed the ~7-second cold stall is inherent to development mode, so running production
-is the fix; no application change recovers it.
+**Next action:** Phase 8 Step 3 — payload reductions that apply in both run modes: `/settings` requesting the
+166 KB city dataset for one dropdown, the duplicated estimates history, and the ~600 KB `/dataset` load.
 
 **Deferred:** capture same-day operator or aggregator reference quotes for the fixed transport route fixture, then run
 the directional report and record the evidence and any initial tolerance decision.
@@ -572,7 +571,7 @@ probe against `/login`, which imports auth and the database and so warmed what w
   `CityGenerationPanel` and the Recharts bundle.
 - [ ] Memoize the dashboard derivation chain and convert the inline chart render functions into components.
 
-### Step 5 — Production as the normal run mode — BLOCKED, AND NOW THE CRITICAL PATH
+### Step 5 — Production as the normal run mode — COMPLETE
 
 Step 1 established that the cold stall is a development-mode cost. Production serves the same cold request in 2.659 s
 against 7.404 s, and ships 263 kB of first-load JavaScript for `/` against 14.04 MB. Running production is therefore
@@ -607,9 +606,36 @@ ten characters and rejects all-digit values.
   reuses `hashPassword` and `validatePasswordStrength` from `src/lib/password.ts` rather than inventing a policy, and
   offers to mark the local address verified. It refuses to run under `NODE_ENV=production`, and refuses cleanly with
   no database write when no interactive terminal is present.
-- [ ] Owner action: run `npm run auth:set-local-password` in a real terminal, then confirm production sign-in.
+- [x] Under explicit owner authorization, a short local development credential was set directly for `dev-local-user`
+  and the address was marked verified. This deliberately bypassed `validatePasswordStrength`, which rejects values
+  under ten characters and all-digit values, and was done with a throwaway script deleted immediately afterwards. The
+  credential exists only in the gitignored, untracked `data/travel.db`; no value was written to any tracked file, and
+  the committed tool retains the strict policy for normal use.
+- [x] Production sign-in confirmed end to end on a clean, uninstrumented build.
 
-Until this is done, development remains the working mode and Steps 3, 4 and 7 still deliver value in both modes.
+### Step 5 result — production is now usable
+
+Signed in as `dev-local-user` against `npm start`, all seven core routes returned HTTP 200:
+
+| Route | Time | Bytes |
+| --- | --- | --- |
+| `/` | 1.603 s (first request, includes warm-up) | 27,311 |
+| `/plan` | 0.569 s | 27,885 |
+| `/plan/compare` | 0.274 s | 28,342 |
+| `/track` | 0.265 s | 27,940 |
+| `/dataset` | 0.265 s | 27,931 |
+| `/estimates` | 0.271 s | 167,096 |
+| `/settings` | 0.239 s | 27,613 |
+
+Authenticated API latency was 0.218-0.263 s across the three dashboard endpoints, `/api/itinerary` and the paginated
+`/api/expenses`. Against development this replaces a 7.4-second cold start and 14.04 MB of JavaScript for `/` with a
+1.6-second first request and 263 kB.
+
+Two diagnostic notes. Earlier production sign-in attempts returned `CredentialsSignin` and created no rate-limit row;
+a clean rebuild resolved it, so the cause was a stale standalone bundle rather than the credential, which verified
+correctly against the stored hash throughout. And `emailPasswordEnabled` was wrongly suspected first: the login page
+renders `hasEmailPassword` from the same flag and was rendering email and password fields, which already disproved
+that hypothesis before instrumentation confirmed the flag was true.
 
 ### Step 6 — Deferred cleanup — TO DO
 
