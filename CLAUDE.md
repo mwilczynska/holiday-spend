@@ -129,7 +129,23 @@ and category groupings. Manual transport remains separate.
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
 
+## Running the app locally
+
+`npm run dev` is for editing code. It serves unminified development bundles — roughly 14 MB of JavaScript for `/`
+against 263 kB in a production build — so it is not representative of how the app performs. Use it while changing
+code, not while judging speed.
+
+`npm run build` followed by `npm start` is for using the app. Build output goes to `.next`; the dev server writes to
+`.next-dev`. Keeping the two directories separate matters: while they shared one, each wiped the other and forced a
+full cold recompile, which surfaced as `ChunkLoadError: Loading chunk app/layout failed`.
+
+`npm start` sets `NODE_ENV=production`, which disables the development PIN in `src/lib/auth.ts`. All existing
+itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password, so a production session
+needs that ownership resolved first.
+
 ## Conventions and verification
+
+Please remove all mannered prose.
 
 - Commit and push after each sizeable chunk and milestone.
 - Update `PLAN.md` at task start/end and before every commit or push.

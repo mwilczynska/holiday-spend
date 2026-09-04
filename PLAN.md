@@ -1,12 +1,16 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Methodology complete; Phase 7A complete; Phase 7 in progress.
+**Status:** Methodology complete; Phase 7 in progress; Phase 8 (performance remediation) in progress.
 
-**Current phase:** Phase 7 — Functional webapp validation (in progress; remaining route workflows open).
+**Current phase:** Phase 8 — Webapp performance remediation (in progress). Phase 7 route workflows remain open.
+
+**Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
+with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
+page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` (v1.1 history merged and synchronized with `origin/main`; protected v6 archive retained)
 
-**Last updated:** 26 August 2026
+**Last updated:** 3 September 2026
 
 **Latest implementation checkpoint:** `e4eeb94` — durable transport-estimation documentation, a grounded OpenAI
 transport smoke, and the seven-test four-route mocked accuracy pipeline.
@@ -14,8 +18,11 @@ transport smoke, and the seven-test four-route mocked accuracy pipeline.
 **Latest plan checkpoint:** `e4eeb94` — recorded the grounded one-route smoke while keeping four-route same-day quote
 capture open.
 
-**Next action:** Capture same-day operator or aggregator reference quotes for the fixed route fixture, then run the
-directional report and record the evidence and any initial tolerance decision.
+**Next action:** Phase 8 Step 1 — remove the ~7-second cold stall caused by the module-scope migration block in
+`src/db/index.ts` and the eager argon2 load behind `src/lib/auth.ts`.
+
+**Deferred:** capture same-day operator or aggregator reference quotes for the fixed transport route fixture, then run
+the directional report and record the evidence and any initial tolerance decision.
 
 ## Current scope and decisions
 
@@ -449,6 +456,108 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
   - Implemented with itinerary-ordered country-block IDs; actual expenses follow their resolved leg block, and
     unmatched actuals remain appended as country/unassigned rows. Focused country-block totals/order tests and
     TypeScript validation pass.
+
+## Phase 8 — Webapp performance remediation — IN PROGRESS
+
+The owner reported the app as extremely slow. Investigation on 3 September 2026 found the Phase 7A evidence invalid
+and produced a corrected authenticated baseline.
+
+### Corrected evidence (3 September 2026)
+
+Measured authenticated as `dev-local-user`, the owner of all 1,300 expenses, 62 legs and 62 saved plans.
+
+- `scripts/check-webapp-performance.mjs:34` fetches with `redirect: 'follow'` and no session cookie. Every route 307s
+  to `/login?callbackUrl=…` and the script never inspects `response.redirected`, so all seven recorded route numbers
+  describe the login page. The 26-byte spread across seven "different" page sizes at `PLAN.md:207` is the length delta
+  of the `callbackUrl` value.
+- Development serves **14.04 MB** of JavaScript for `/` (10.14 / 9.48 / 9.18 MB for `/plan`, `/dataset`, `/track`).
+  The equivalent production first-load JS is **263 kB / 177 kB / 154 kB / 146 kB** — a 53–63× difference.
+- Route documents are ~28–30 KB empty shells with no server-rendered data. `/estimates`, the only server-rendered
+  page, ships 174 KB of real content.
+- Warm API latency is **13–82 ms**, so server compute is not the bottleneck at current data volumes.
+- Observed in the owner's own session: six dashboard requests all completed within 46 ms of each other after
+  **~7,005 ms**. They did not each perform 7 s of work; they blocked on one shared resource and released together.
+  This is the synchronous module-scope migration block in `src/db/index.ts` (≈465 lines before `export const db` on
+  line 486) plus the argon2 native module loaded transitively through `src/lib/auth.ts`.
+- Payload waste: `/api/countries` returns 166,194 bytes where `?includeCities=false` returns 5,508;
+  `/api/estimates?view=dataset` returns 434,234 bytes largely discarded by the client; unpaginated `/api/expenses`
+  returns 613,933 bytes.
+- Duplicate requests in the dev log are React StrictMode's dev-only double-invoke, not a defect.
+  `src/app/page.tsx:630` is a single `useEffect` with `[]` deps. This must not be "fixed".
+- The repository is at `C:\Dev\holiday-spend` and is **not** inside OneDrive. The OneDrive section of `CLAUDE.md` is
+  obsolete. An orphaned pre-move copy remains at `C:\Users\chawi\OneDrive\projects\holiday-spend`.
+
+### Step 0 — Get the webapp running and keep it running — COMPLETE
+
+- [x] Separate development and production build directories (`.next-dev` vs `.next`) in `next.config.mjs`. They
+  previously shared one directory and wiped each other, forcing full cold recompiles and surfacing as
+  `ChunkLoadError: Loading chunk app/layout failed`. `scripts/prepare-next-dev.mjs` and `.gitignore` follow.
+- [x] Set `NEXTAUTH_URL` in `.env.local`, clearing the repeated `[next-auth][warn][NEXTAUTH_URL]`.
+- [x] Document the development-versus-production startup path in `CLAUDE.md`, including that `npm start` disables the
+  development PIN and that all data belongs to `dev-local-user`.
+- [x] Verified: a cold dev start writes only `.next-dev` and leaves `.next` untouched; a production build run while
+  the dev server is live preserves both trees and the dev server keeps serving. Authenticated walk of `/`, `/plan`,
+  `/plan/compare`, `/track`, `/dataset`, `/estimates`, `/settings` returned HTTP 200 for all seven.
+
+### Step 1 — Remove the ~7-second cold stall — TO DO
+
+- [ ] Gate the `src/db/index.ts` migration block behind a `PRAGMA user_version` check; wrap repair loops in
+  `sqlite.transaction()`; hoist the `prepare()` inside the loop at `src/db/index.ts:360`.
+- [ ] Make the argon2 import lazy so it loads on password verification rather than for every route importing
+  `@/lib/auth`.
+- [ ] Add `PRAGMA mmap_size` and `temp_store = MEMORY`; run `wal_checkpoint(TRUNCATE)` at startup to clear the pinned
+  4 MB WAL (`travel.db-wal` currently exceeds the 3.2 MB database).
+- [ ] Target: dashboard cold request 7,005 ms to under 500 ms, measured before and after.
+
+### Step 2 — Fix the measurement harness — TO DO
+
+- [ ] Authenticate in `scripts/check-webapp-performance.mjs` and fail loudly when `response.redirected` is true or the
+  final URL is `/login`.
+- [ ] Record total JS bytes per route, authenticated API latency and payload bytes, and cold versus warm, at n≥3.
+- [ ] Parameterise for both dev and production, reusing the pinned NextAuth environment in `playwright.config.ts:8-10`
+  and the `storageState` mechanism in `tests/playwright/auth.setup.ts`.
+- [ ] Record the corrected baseline in `LOG.md`; retain the Phase 7A numbers as dated history.
+
+### Step 3 — Payload and navigation — TO DO
+
+- [ ] `src/app/settings/page.tsx:57` to `?includeCities=false` (166 KB to 5.5 KB).
+- [ ] `src/app/api/estimates/route.ts`: drop the duplicated top-level `history` (`:187`), skip the per-row build when
+  `view=dataset`, and apply the unused `HISTORY_PAGE_SIZE` from `src/lib/performance-bounds.ts:4`.
+- [ ] `src/app/api/countries/route.ts:31`: replace the O(71×203) filter with a `Map` group-by over needed columns.
+- [ ] Restore prefetch by replacing `router.push` navigation in `DesktopSidebar`/`MobileNav` with `next/link`.
+
+### Step 4 — Render hot paths — TO DO
+
+- [ ] Memoize `canonicalCountryOptions` (`src/app/plan/page.tsx:865`), which runs ~28,400 NFKD-normalise plus
+  four-regex operations on every render, including every keystroke.
+- [ ] Hoist the city-option array out of `LegCard` render (`src/components/itinerary/LegCard.tsx:389`) so the
+  `useMemo` at `src/components/ui/searchable-select.tsx:44` stops being defeated by a fresh array identity.
+- [ ] Apply `next/dynamic` to `BulkTransportEstimateDialog`, `TransportEstimateDialog`, `PlannerNewCityDialog`,
+  `CityGenerationPanel` and the Recharts bundle.
+- [ ] Memoize the dashboard derivation chain and convert the inline chart render functions into components.
+
+### Step 5 — Production as the normal run mode — BLOCKED
+
+All itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password and is reachable only
+through the development PIN. `src/lib/auth.ts:20` disables that PIN under `NODE_ENV=production`, and
+`claimLegacyDataForUser` (`src/lib/user-data.ts:53-58`) adopts only `userId IS NULL` rows. A production session would
+therefore show an empty app. Awaiting an owner decision on account ownership.
+
+### Step 6 — Deferred cleanup — TO DO
+
+- [ ] Indexes on `expenses(user_id, date)`, `expenses(leg_id)`, `itinerary_legs(user_id, sort_order)`,
+  `itinerary_leg_transports(leg_id)`, `saved_plans(user_id)`, `cities(country_id)`, `city_estimates(city_id)`. The
+  schema currently declares none, and with `foreign_keys=ON` every delete scans referencing tables. Record this as
+  correctness and headroom, not as a speedup.
+- [ ] Cache `tokenVersion` with a short TTL in `src/lib/auth.ts:228`.
+- [ ] Server-render initial data for `/`, `/track`, `/dataset`, `/settings`, and consolidate the three dashboard
+  endpoints behind one shared resolver — only if the Step 2 harness still shows a real gap.
+
+### Step 7 — Documentation — IN PROGRESS
+
+- [x] Add the requested line verbatim to `CLAUDE.md` and mirror it into `AGENTS.md`.
+- [ ] Replace the obsolete OneDrive section of `CLAUDE.md`; note the orphaned OneDrive copy; retire or shrink
+  `scripts/prepare-next-dev.mjs`.
 
 ## Definition of done
 
