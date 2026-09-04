@@ -58,7 +58,8 @@
     "test:e2e:report": "playwright show-report",
     "test:e2e:install": "playwright install chromium",
     "db:seed": "npx tsx src/db/seed.ts",
-    "db:push": "npx drizzle-kit push"
+    "db:push": "npx drizzle-kit push",
+    "auth:set-local-password": "tsx scripts/set-local-password.ts"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.11.2",
