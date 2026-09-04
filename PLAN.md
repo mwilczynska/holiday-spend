@@ -757,7 +757,8 @@ First-load JavaScript after these splits, from the production build:
   conditional return. `staggeredCountryBands` matters most: a new array each render re-ran
   `BurnCountryHeaderStrip`'s `useLayoutEffect`, which calls `getBoundingClientRect` per band and forces a synchronous
   layout during commit.
-- [ ] **Deferred with the analysis recorded.** Extract the three inline chart render functions in `src/app/page.tsx`
+- [x] **Done on 4 September 2026.** The deferral analysis below is kept as dated history; the outcome follows it.
+  Extract the three inline chart render functions in `src/app/page.tsx`
   — `renderCountryChart`, `renderCategoryChart`, `renderBurnChart` — into `React.memo` components, and split the
   Recharts bundle off `/`.
 
@@ -793,10 +794,34 @@ First-load JavaScript after these splits, from the production build:
 - [x] Applied `next/dynamic` to the three Recharts components on `/plan/compare`, behind fixed-height placeholders
   that reserve the same space so the layout does not shift. That route's decompressed JavaScript fell from
   **1,015,023 to 538,967 bytes**, a 47% reduction, and its first-load figure from 236 kB to **104 kB**.
-- [ ] Deferred: the same split on `/`. Recharts is imported directly into `src/app/page.tsx` rather than through
-  extracted components, so splitting it requires first extracting roughly 200 lines of chart JSX that closes over a
-  dozen values — the same refactor as the `React.memo` item below, and the riskiest remaining change on a page whose
-  correct rendering was only just verified in a browser.
+- [x] **Done on 4 September 2026.** The same split on `/`, together with the `React.memo` item above — they were one
+  refactor, as the deferral note predicted. The original note is kept below as dated history.
+
+  *Original note:* Recharts is imported directly into `src/app/page.tsx` rather than through extracted components, so
+  splitting it requires first extracting roughly 200 lines of chart JSX that closes over a dozen values — the same
+  refactor as the `React.memo` item below, and the riskiest remaining change on a page whose correct rendering was only
+  just verified in a browser.
+
+  *Outcome.* The estimate of a three-file, ~600-line reorganisation was close in shape and wrong about the obstacle.
+  The helper-use table measured the wrong thing: what a bundle split requires is that nothing statically imported by
+  `page.tsx` imports Recharts, and every Recharts reference already sat inside the three renderer bodies. No helper had
+  to be rewritten — the shared ones moved verbatim into `src/components/dashboard/dashboard-chart-parts.tsx`, which is
+  deliberately Recharts-free.
+
+  | Measure | Before | After | Change |
+  | --- | --- | --- | --- |
+  | `/` first-load JS | 266 kB | **144 kB** | −46% |
+  | `/` route size | 147 kB | **24.8 kB** | −83% |
+  | `/` decompressed JS (harness) | 1,068,839 B | **636,953 B** | −431,886 B, −40% |
+  | `src/app/page.tsx` | 1,352 lines | 707 lines | −645 |
+
+  `/` was the heaviest route in the app and is no longer; `/plan` now is, at 764,620 bytes. Verified in an
+  authenticated production browser session across all six render paths — inline and expanded, for each of the three
+  charts — by counting plotted elements in the DOM rather than reading a downscaled screenshot: 32 country bars,
+  7 category bars with percentage labels, 3 burn lines with 21 country reference areas and the budget ceiling line, the
+  staggered three-row country header strip, and live tooltips on both the country and burn charts. No React, hydration
+  or chunk errors; the only console output was a Chrome-extension message-channel artefact present on other routes and
+  predating the change.
 
   Note the interaction: splitting `/plan/compare` moved Recharts out of the shared chunk, so `/` now carries it alone
   and its route chunk grew from 26.4 kB to 147 kB while its first-load total barely moved (263 kB to 266 kB). The

@@ -55,7 +55,12 @@ describe('planner city picker UI', () => {
   });
 
   it('defines every cumulative-spend data line and its visual style', () => {
-    const source = fs.readFileSync(path.join(projectRoot, 'src', 'app', 'page.tsx'), 'utf8');
+    // The legend moved out of `src/app/page.tsx` when the dashboard charts were split into
+    // dynamically imported components; the guarantee it encodes is unchanged.
+    const source = fs.readFileSync(
+      path.join(projectRoot, 'src', 'components', 'dashboard', 'dashboard-chart-parts.tsx'),
+      'utf8'
+    );
 
     expect(source).toContain("{ label: 'Actual spend', color: '#16a34a' }");
     expect(source).toContain("{ label: 'Actual spend · leg still planned', color: '#9ca3af' }");
