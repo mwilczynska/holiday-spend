@@ -256,6 +256,36 @@ export default function DatasetPage() {
     setHistoryPage((page) => Math.min(page, historyPageCount - 1));
   }, [historyPageCount]);
 
+  // The list responses carry only scalar provenance badges. Anchors, FX and the input
+  // snapshot are fetched for one city at a time, which keeps ~396 KB of blobs out of the
+  // initial /dataset load.
+  const [selectedProvenance, setSelectedProvenance] = useState<CityEstimateProvenance | null>(null);
+
+  useEffect(() => {
+    const cityId = selectedCity?.id;
+    if (!cityId) {
+      setSelectedProvenance(null);
+      return;
+    }
+
+    let cancelled = false;
+    setSelectedProvenance(null);
+
+    fetch(`/api/estimates?cityId=${encodeURIComponent(cityId)}`, { cache: 'no-store' })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((payload) => {
+        if (cancelled) return;
+        setSelectedProvenance(payload?.data?.currentEstimateProvenance ?? null);
+      })
+      .catch(() => {
+        if (!cancelled) setSelectedProvenance(null);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedCity?.id]);
+
   const selectedCityHistory = useMemo(() => {
     if (!selectedCity) return [];
     return history.filter((row) => row.cityId === selectedCity.id);
@@ -536,17 +566,17 @@ export default function DatasetPage() {
                     </div>
                   </div>
 
-                  {selectedCity.currentEstimateProvenance ? (
+                  {selectedProvenance ? (
                     <div className="space-y-3 rounded-md border bg-muted/20 p-3">
                       <div className="flex flex-wrap items-center gap-2">
                         <Badge variant="outline">
-                          Methodology {selectedCity.currentEstimateProvenance.methodologyVersion}
+                          Methodology {selectedProvenance.methodologyVersion}
                         </Badge>
-                        {selectedCity.currentEstimateProvenance.evidenceBasis ? (
-                          <Badge variant="outline">{selectedCity.currentEstimateProvenance.evidenceBasis}</Badge>
+                        {selectedProvenance.evidenceBasis ? (
+                          <Badge variant="outline">{selectedProvenance.evidenceBasis}</Badge>
                         ) : null}
-                        {selectedCity.currentEstimateProvenance.reasoningEffort ? (
-                          <Badge variant="outline">Thinking {selectedCity.currentEstimateProvenance.reasoningEffort}</Badge>
+                        {selectedProvenance.reasoningEffort ? (
+                          <Badge variant="outline">Thinking {selectedProvenance.reasoningEffort}</Badge>
                         ) : null}
                       </div>
                       <div className="grid gap-3 text-sm md:grid-cols-4">
@@ -560,13 +590,13 @@ export default function DatasetPage() {
                         </div>
                         <div>
                           <div className="text-xs uppercase tracking-wide text-muted-foreground">Formula</div>
-                          <div>{selectedCity.currentEstimateProvenance.formulaVersion || 'Legacy v1'}</div>
+                          <div>{selectedProvenance.formulaVersion || 'Legacy v1'}</div>
                         </div>
                         <div>
                           <div className="text-xs uppercase tracking-wide text-muted-foreground">FX snapshot</div>
                           <div>
-                            {selectedCity.currentEstimateProvenance.fx && typeof selectedCity.currentEstimateProvenance.fx === 'object'
-                              ? String((selectedCity.currentEstimateProvenance.fx as { snapshotId?: unknown }).snapshotId || '-')
+                            {selectedProvenance.fx && typeof selectedProvenance.fx === 'object'
+                              ? String((selectedProvenance.fx as { snapshotId?: unknown }).snapshotId || '-')
                               : selectedCityActiveHistory?.inferredAudPerUsd
                                 ? `1 USD = ${selectedCityActiveHistory.inferredAudPerUsd.toFixed(2)} AUD`
                                 : '-'}
@@ -576,7 +606,7 @@ export default function DatasetPage() {
                       <details>
                         <summary className="cursor-pointer text-sm font-medium">Stored anchor values</summary>
                         <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
-                          {Object.entries(readAnchorValues(selectedCity.currentEstimateProvenance)).map(([key, value]) => (
+                          {Object.entries(readAnchorValues(selectedProvenance)).map(([key, value]) => (
                             <div key={key} className="rounded border bg-background px-2 py-1">
                               <div className="text-xs text-muted-foreground">{key}</div>
                               <div className="text-sm">{fmtMoney(value)}</div>

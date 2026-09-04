@@ -28,9 +28,22 @@ export async function GET(request: Request) {
     const allCountries = await db.select().from(countries);
     const allCities = await db.select().from(cities);
 
-    const result = allCountries.map(c => ({
+    // Group once rather than scanning every city per country, which was
+    // O(countries x cities) - roughly 14,000 comparisons at current volumes.
+    const citiesByCountry = new Map<string, typeof allCities>();
+    for (const city of allCities) {
+      if (city.countryId === null) continue;
+      const bucket = citiesByCountry.get(city.countryId);
+      if (bucket) {
+        bucket.push(city);
+      } else {
+        citiesByCountry.set(city.countryId, [city]);
+      }
+    }
+
+    const result = allCountries.map((c) => ({
       ...c,
-      cities: allCities.filter(city => city.countryId === c.id),
+      cities: citiesByCountry.get(c.id) ?? [],
     }));
 
     return success(result);

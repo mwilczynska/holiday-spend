@@ -46,7 +46,9 @@ export default function QuickAddPage() {
       try {
         const [legsRes, countriesRes] = await Promise.all([
           fetch('/api/itinerary'),
-          fetch('/api/countries'),
+          // Only currencyCode is read from the matched country, so skip the nested
+          // city rows: the full payload is ~166 KB against ~5.5 KB here.
+          fetch('/api/countries?includeCities=false'),
         ]);
         const legsData = await legsRes.json();
         const countriesData = await countriesRes.json();

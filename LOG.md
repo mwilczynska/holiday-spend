@@ -1063,3 +1063,42 @@ the page already showed would have been faster than reasoning about which branch
 
 All instrumentation was reverted and the reported numbers come from a clean, uninstrumented build. Baseline:
 TypeScript, production build, 49 Vitest files / 214 tests, and the memory mirror all pass.
+
+## Dataset and settings payload reductions - 3 September 2026
+
+`/settings` and `/track/add` were requesting the full nested country payload to read scalar fields: `/settings` needs
+only country id and name for a dropdown, and `/track/add` only a currency code. Both now pass `?includeCities=false`,
+which `/plan` already used, cutting each from **166,194 to 5,508 bytes**.
+
+`/api/estimates?view=dataset` was assembling 203 full city rows, attaching the entire history array to each, sorting
+them, and then discarding all of it to return two fields per row. The lightweight shape is now built directly, and the
+summary derives from the query rows so both views agree.
+
+The larger finding was that heavy provenance blobs accounted for **91%** of that response: 201,528 bytes across 203
+`rows` plus 194,137 bytes across 59 `history` rows, against only 38,211 bytes of actual history fields. The dataset
+page renders those blobs for one selected city at a time - the table never touches them, and history rows use just
+`methodologyVersion` and `reasoningEffort`. Anchors, input snapshots, sources, FX, evidence grades, intervals,
+collection telemetry and missingness are therefore omitted from list responses and served by a new `?cityId=` mode,
+which the page fetches when a city is selected (about 25 KB). `toListProvenance` names the retained scalar fields
+explicitly rather than deleting the heavy ones, so a future blob field cannot silently start shipping in the list.
+
+`/api/countries` now groups cities with a `Map` instead of filtering all cities once per country. Navigation in
+`DesktopSidebar` and `MobileNav` moved from `router.push` to `next/link`, restoring the viewport prefetching that
+`router.push` disabled for every nav item; the pending-state spinner is preserved.
+
+Measured on a production build, authenticated: `/api/estimates?view=dataset` fell from 434,234 to **132,011 bytes**,
+and the `/dataset` initial JSON total from 600,428 to **298,205 bytes**, a 50.3% reduction.
+
+The plan's sub-100 KB target for `/dataset` was not met and is not reachable this way. The remaining 166,194 bytes are
+`/api/countries`, which supplies the dataset table itself; the page filters and sorts every row client-side, so further
+reduction needs server-side search rather than a payload change. This is recorded rather than quietly dropped.
+
+One process note. An intermediate build was reported as passing because the command piped `npm run build` through a
+`grep` filter that matched "Compiled successfully" while hiding a subsequent ESLint failure, and the next `npm start`
+then correctly refused to run with no complete build. The lint rule rejected the destructure-to-discard idiom, which
+was replaced with an explicit field list - a better result anyway. Filtering build output can hide the failure it is
+meant to summarise; this is the same error class as the Phase 7A harness measuring redirects.
+
+Verification: 49 Vitest files / 217 tests pass, including three new route tests for the slim list shape, the
+`?cityId=` full-provenance mode, and an unknown city. TypeScript, the production build, the memory mirror and the
+deterministic v1.1 check all pass, and all seven core routes returned HTTP 200 authenticated.
