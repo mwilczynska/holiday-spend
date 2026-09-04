@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo, Fragment } from 'react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -10,9 +10,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { buildExpenseExportHref } from '@/lib/expense-track-page';
 import { EXPENSE_PAGE_SIZE, getPageCount } from '@/lib/performance-bounds';
 import { EXPENSE_CATEGORIES } from '@/types';
-import { ChevronDown, ChevronUp, Edit, Eye, EyeOff, Tags, Trash2, Upload, XCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, Download, Edit, Eye, EyeOff, Tags, Trash2, Upload, XCircle } from 'lucide-react';
 
 interface Expense {
   id: number;
@@ -99,6 +100,19 @@ export default function TrackPage() {
   const [expenseTotalCount, setExpenseTotalCount] = useState(0);
   const [expenseTotalAud, setExpenseTotalAud] = useState(0);
   const [filteredExpenseIds, setFilteredExpenseIds] = useState<number[]>([]);
+
+  // Mirrors the filters applied to the list, so the download matches what is on screen
+  // rather than silently exporting every expense.
+  const exportHref = useMemo(
+    () =>
+      buildExpenseExportHref({
+        category: filterCat,
+        source: filterSource,
+        from: filterFrom,
+        to: filterTo,
+      }),
+    [filterCat, filterSource, filterFrom, filterTo]
+  );
 
   const fetchData = useCallback(async () => {
     const params = new URLSearchParams();
@@ -270,6 +284,11 @@ export default function TrackPage() {
         <div className="flex flex-wrap gap-2">
           <Link href="/track/add"><Button size="sm">Add</Button></Link>
           <Link href="/track/import"><Button size="sm" variant="outline"><Upload className="mr-1 h-4 w-4" />Import</Button></Link>
+          <Button size="sm" variant="outline" asChild disabled={expenseTotalCount === 0}>
+            <a href={exportHref} download>
+              <Download className="mr-1 h-4 w-4" />Export
+            </a>
+          </Button>
           <Link href="/track/tags"><Button size="sm" variant="outline"><Tags className="mr-1 h-4 w-4" />Tags</Button></Link>
           {expenseTotalCount > 0 && (
             <Button size="sm" variant="destructive" onClick={handleDeleteAll}>

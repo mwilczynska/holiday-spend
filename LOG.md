@@ -1351,3 +1351,32 @@ The README also states that it is a personal project rather than a product seeki
 use fictional data. Every link and image path in it was verified to resolve, and the environment variables it names
 were checked against `.env.example` — an initial draft told readers to set `APP_SECRET`, which that file does not
 define; it names `NEXTAUTH_SECRET` and `AUTH_DEV_PIN`.
+
+## Expense CSV export - 3 September 2026
+
+The expenses screen had an Import button and no Export. A CSV endpoint already existed at
+`/api/export?format=csv`, but it was reachable only from Settings and always returned every expense regardless of
+what the user was looking at.
+
+`/api/export` now accepts the same filters as `/api/expenses` - `cat`, `source`, `from`, `to`, `leg` and `tag` - and
+`/track` has an Export button that passes whatever filters are currently applied, so the download matches the list on
+screen. Settings passes no filters, so its full-trip export behaves exactly as before.
+
+The CSV also now resolves `city` and `country` from each expense's itinerary leg. It previously emitted a bare
+`leg_id`, which made the file unreadable in a spreadsheet without joining a second export.
+
+URL building went into `buildExpenseExportHref` in `src/lib/expense-track-page.ts` rather than inline in the
+component, matching that module's existing pure-helper pattern and making it testable. Four tests cover no filters,
+all filters together, `'all'` treated as unset rather than a category literally named "all", and one-sided date
+ranges.
+
+Verified against the production build with the real 1,300-expense dataset: an unfiltered export parsed to exactly
+1,300 rows with zero parse errors and a resolved city on every row; `cat=food` returned 88 rows all in that category;
+a ten-day range returned 61. Checking with a CSV parser rather than counting newlines mattered here, because quoted
+descriptions contain line breaks and `wc -l` under-counted by one.
+
+The README also gained the dashboard's cumulative spend chart, captured from the same fictional demo trip. The real
+database was restored afterwards and verified byte-identical across all 21 tables.
+
+Verification: TypeScript, `next lint` clean, 49 Vitest files / 224 tests, production build, memory mirror, and the
+deterministic v1.1 check with the live CSV hash unchanged.
