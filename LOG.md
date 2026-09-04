@@ -1380,3 +1380,44 @@ database was restored afterwards and verified byte-identical across all 21 table
 
 Verification: TypeScript, `next lint` clean, 49 Vitest files / 224 tests, production build, memory mirror, and the
 deterministic v1.1 check with the live CSV hash unchanged.
+
+## Indexes, a rejected cache, and corrected location documentation - 3 September 2026
+
+The database declared no indexes beyond two on `auth_tokens`. Twelve were added in the runtime bootstrap:
+`expenses(user_id, date)`, `expenses(leg_id)`, `itinerary_legs(user_id, sort_order)`, `itinerary_legs(city_id)`,
+`itinerary_leg_transports(leg_id)`, `saved_plans(user_id)`, `cities(country_id)`,
+`city_estimates(city_id, estimated_at)`, `city_price_inputs(city_id)`, `expense_tags(tag_id)`,
+`fixed_costs(user_id)` and `tags(user_id)`. Each statement is wrapped so a missing table in a partially built test
+database is never fatal.
+
+Usage was verified with `EXPLAIN QUERY PLAN` rather than assumed. All seven representative queries now report
+`SEARCH ... USING INDEX` where they previously reported a full table scan: expenses by user and date, expenses by
+leg, legs by user and sort order, transports by leg, saved plans by user, cities by country, and estimates by city.
+
+The motivation is correctness and headroom, not measured latency. Foreign keys are enforced but SQLite does not index
+child FK columns automatically, so every delete on `user`, `cities` or `itinerary_legs` previously scanned each
+referencing table in full. Warm API responses were already 3-15 ms at current volumes and remain so; this should not
+be reported as a speedup.
+
+The plan's proposed `tokenVersion` cache was rejected on measurement. The lookup takes **4.4 microseconds** - 0.013 ms
+across a three-call dashboard load, or 0.145% of a single warm API response - because it is a primary-key lookup. A
+TTL cache would trade delayed session revocation, a real security property, for a saving that does not register
+against a 3 ms response. Recorded as rejected rather than left open as a future task.
+
+Separately, `CLAUDE.md` stated "The repository lives inside OneDrive". That is false and had been for some time: the
+working tree is `C:\Dev\holiday-spend` while OneDrive is `C:\Users\chawi\OneDrive`, and `.next`, `.next-dev`, `data/`
+and `data/travel.db` carry no reparse points. The section was replaced with the verified current state and mirrored
+into `AGENTS.md`.
+
+An orphaned pre-move copy still exists at `C:\Users\chawi\OneDrive\projects\holiday-spend`, with no `.git` directory
+and a dehydrated `scripts` reparse point. It is now documented as a trap not to open, since running it would reproduce
+the historical Files-On-Demand failures.
+
+`scripts/prepare-next-dev.mjs` was retained rather than deleted, with the reason stated in the memory documents: it
+finds nothing to do on the current path, but is cheap, harmless, and would matter again if the repository moved back
+under a synced root. The historical failure it guards against - a dehydrated `.next` causing a dev process to consume
+roughly 1.2 GB without completing a request - is preserved as dated context rather than erased.
+
+Verification: TypeScript, `next lint` clean, 49 Vitest files / 224 tests, production build, memory mirror, and the
+deterministic v1.1 check with the live CSV hash unchanged. Fourteen indexes present; data intact at 1,300 expenses,
+62 legs and 63 saved plans.

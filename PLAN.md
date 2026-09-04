@@ -21,10 +21,9 @@ sidebar prefetching.
 **Latest plan checkpoint:** `3c791ca` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
 target that was not met and the reason it is not reachable by payload trimming.
 
-**Next action:** Phase 8 Step 4 — finish the remaining render hot paths. Apply `next/dynamic` plus
-mount-on-first-open to `BulkTransportEstimateDialog`, `PlannerNewCityDialog` and `CityGenerationPanel`; memoize the
-`legs.map(...)` array passed to `BulkTransportEstimateDialog`; memoize the `/` dashboard derivation chain; convert the
-three inline chart render functions in `src/app/page.tsx` into components. Then run the full Step 4 baseline.
+**Next action:** Phase 8 is complete apart from one deferred item, recorded with its dependency analysis in Step 4:
+extracting the dashboard chart renderers and splitting the Recharts bundle off `/`. The remaining open workstream is
+Phase 7's authenticated route workflows.
 
 **Working tree:** `src/app/plan/page.tsx`, `src/components/itinerary/LegCard.tsx` and `src/app/dataset/page.tsx`
 carry uncommitted Step 4 work. Items stay `[ ]` until their verification runs.
@@ -677,12 +676,39 @@ First-load JavaScript after these splits, from the production build:
   conditional return. `staggeredCountryBands` matters most: a new array each render re-ran
   `BurnCountryHeaderStrip`'s `useLayoutEffect`, which calls `getBoundingClientRect` per band and forces a synchronous
   layout during commit.
-- [ ] Extract the three inline chart render functions in `src/app/page.tsx` — `renderCountryChart`,
-  `renderCategoryChart`, `renderBurnChart` — into `React.memo` components. **Corrected rationale:** the earlier claim
-  that calling them as functions makes Recharts rebuild and re-measure its subtree was overstated. React reconciles by
-  element type, so the charts are not remounted. The real benefit is skipping the chart subtree entirely when
-  unrelated state changes, which is now worthwhile precisely because the data arrays above are memoized and stable.
-  Lower priority than originally recorded.
+- [ ] **Deferred with the analysis recorded.** Extract the three inline chart render functions in `src/app/page.tsx`
+  — `renderCountryChart`, `renderCategoryChart`, `renderBurnChart` — into `React.memo` components, and split the
+  Recharts bundle off `/`.
+
+  *Corrected rationale:* the earlier claim that calling them as functions makes Recharts rebuild and re-measure its
+  subtree was overstated. React reconciles by element type, so the charts are not remounted. The real benefit is
+  skipping the chart subtree when unrelated state changes — toggling `expandedChart` or `categoryMode` currently
+  re-renders all three.
+
+  *What the refactor actually requires,* measured rather than assumed. The three renderers close over only a few
+  values (`barData`, `showCountryDailySpend`, `categoryChartData`, `chartBurnData`, `staggeredCountryBands`,
+  `budgetCeiling`, `chartYAxisMax`), all already memoized. The obstacle is the helper web in the same 1,349-line
+  file, counted by use outside the chart bodies:
+
+  | Helper | Uses inside charts | Uses elsewhere |
+  | --- | --- | --- |
+  | `fmtAud` | 2 | 13 |
+  | `SummaryStatCard` | 0 | 9 |
+  | `getCountryBandKey` | 1 | 3 |
+  | `getBurnChartMetrics` | 1 | 2 |
+  | `BurnCountryHeaderStrip` | 2 | 1 |
+  | `ExpandedChartLegend` | 1 | 1 |
+  | `WrappedCategoryTick`, `BurnRateTooltip`, `BurnRateLegend` | 1 each | 0 |
+
+  Only three helpers are chart-exclusive. The rest need a shared module, making this a three-file, roughly 600-line
+  reorganisation of the most-used page in the app. There is a further constraint: the renderers are defined after the
+  loading early-return, so memoizing them in place is not possible without moving them above it, as the derivation
+  chain already had to be.
+
+  *Why it is deferred:* the `React.memo` half is interaction polish, and the bundle-split half loads in parallel with
+  the three dashboard API calls, so it improves time-to-interactive for the stat cards rather than chart speed.
+  Neither justifies that reorganisation ahead of the lower-risk work in Steps 6 and 8. The corrected harness now
+  measures `/` at 1,068,839 bytes, so the effect of doing it can be verified precisely whenever it is picked up.
 - [x] Applied `next/dynamic` to the three Recharts components on `/plan/compare`, behind fixed-height placeholders
   that reserve the same space so the layout does not shift. That route's decompressed JavaScript fell from
   **1,015,023 to 538,967 bytes**, a 47% reduction, and its first-load figure from 236 kB to **104 kB**.
@@ -789,15 +815,29 @@ that hypothesis before instrumentation confirmed the flag was true.
 
 Committed as `deb299c` (the interactive password tool) and `6227449` (the verified production run mode).
 
-### Step 6 — Deferred cleanup — TO DO
+### Step 6 — Indexes and per-request lookups — COMPLETE
 
-- [ ] Indexes on `expenses(user_id, date)`, `expenses(leg_id)`, `itinerary_legs(user_id, sort_order)`,
-  `itinerary_leg_transports(leg_id)`, `saved_plans(user_id)`, `cities(country_id)`, `city_estimates(city_id)`. The
-  schema currently declares none, and with `foreign_keys=ON` every delete scans referencing tables. Record this as
-  correctness and headroom, not as a speedup.
-- [ ] Cache `tokenVersion` with a short TTL in `src/lib/auth.ts:228`.
-- [ ] Server-render initial data for `/`, `/track`, `/dataset`, `/settings`, and consolidate the three dashboard
-  endpoints behind one shared resolver — only if the Step 2 harness still shows a real gap.
+- [x] Added twelve indexes in the runtime bootstrap, alongside the two that already existed for `auth_tokens`:
+  `expenses(user_id, date)`, `expenses(leg_id)`, `itinerary_legs(user_id, sort_order)`, `itinerary_legs(city_id)`,
+  `itinerary_leg_transports(leg_id)`, `saved_plans(user_id)`, `cities(country_id)`,
+  `city_estimates(city_id, estimated_at)`, `city_price_inputs(city_id)`, `expense_tags(tag_id)`,
+  `fixed_costs(user_id)` and `tags(user_id)`. Each statement is wrapped so a missing table in a partially built
+  test database is never fatal.
+- [x] Verified with `EXPLAIN QUERY PLAN` rather than assumed. All seven representative queries now report
+  `SEARCH ... USING INDEX` where they previously reported a full scan: expenses by user and date, expenses by leg,
+  legs by user and sort order, transports by leg, saved plans by user, cities by country, and estimates by city.
+
+The motivation is correctness and headroom, not measured latency. Foreign keys are enforced but SQLite does not
+index child FK columns automatically, so every delete on `user`, `cities` or `itinerary_legs` previously scanned each
+referencing table in full. Warm API responses were already 3-15 ms at current volumes, and remain so.
+
+- [x] **Decided against caching `tokenVersion`,** which the plan originally proposed. Measured, the lookup takes
+  **4.4 microseconds** — 0.013 ms across a three-call dashboard load, or 0.145% of a single warm API response. It is
+  a primary-key lookup. A TTL cache would trade delayed session revocation, a real security property, for a saving
+  that does not register against a 3 ms response. Recorded as rejected rather than left open.
+- [ ] Carried forward: server-render initial data for `/`, `/track`, `/dataset` and `/settings`, and consolidate the
+  three dashboard endpoints behind one shared resolver. Still gated on the Step 2 harness showing a real gap; it
+  currently does not.
 
 ### Step 7 — Test suite audit — COMPLETE (no tests removed; the premise was wrong)
 
@@ -843,11 +883,17 @@ Counts unchanged at 49 Vitest files / 220 tests, because nothing was removed fro
 TypeScript, `next lint`, a clean production build from an emptied `.next`, the memory mirror, and the deterministic
 v1.1 check with the live CSV hash unchanged.
 
-### Step 8 — Documentation — TO DO
+### Step 8 — Documentation — COMPLETE
 
 - [x] Add the requested line verbatim to `CLAUDE.md` and mirror it into `AGENTS.md`.
-- [ ] Replace the obsolete OneDrive section of `CLAUDE.md`; note the orphaned OneDrive copy; retire or shrink
-  `scripts/prepare-next-dev.mjs`.
+- [x] Replaced the obsolete OneDrive section of `CLAUDE.md`, mirrored into `AGENTS.md`. The file stated "The
+  repository lives inside OneDrive", which is false: the working tree is `C:\Dev\holiday-spend` and OneDrive is
+  `C:\Users\chawi\OneDrive`. Verified that `.next`, `.next-dev`, `data/` and `data/travel.db` carry no reparse points.
+- [x] Recorded the orphaned pre-move copy at `C:\Users\chawi\OneDrive\projects\holiday-spend`, which has no `.git`
+  directory and a dehydrated `scripts` reparse point, as a trap not to open.
+- [x] Retained `scripts/prepare-next-dev.mjs` rather than deleting it, with the reason stated: it finds nothing to do
+  on the current path, but is cheap, harmless, and would matter again if the repository moved back under a synced
+  root. The historical failure it guards against is preserved as dated context rather than erased.
 
 ## Phase 9 — README for a public audience — COMPLETE
 
