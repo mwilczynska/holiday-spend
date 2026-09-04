@@ -1563,3 +1563,46 @@ End plus Backspace rather than select-all.
 Verification: TypeScript, `next lint` clean, 51 Vitest files / 233 tests, production build, memory mirror. The real
 database was restored and verified byte-identical across all 21 tables at 1,300 expenses, 62 legs and 63 saved plans,
 with `chiang-mai` back to its original 38.75.
+
+## Write-route input validation audit - 3 September 2026
+
+The two defects fixed in `PUT /api/expenses/[id]` were a pattern rather than one-offs, so every route that parses a
+request body and writes was scanned. Four more had the same shape; one flagged route turned out to be fine.
+
+`PUT /api/cities/[id]` was the serious one. It ran `db.update(cities).set(body)` with the raw request body, no
+validation, and - because cities are shared reference data rather than per-user rows - no user scoping. Any
+authenticated request could write any column on the dataset the entire app derives from. Two fields matter most:
+`estimationSource` and `estimationId`, which would let a value falsely claim a provenance it does not have, and `id`,
+which would orphan every reference to the row. The project's protections against exactly that outcome - the live-CSV
+guard, the deterministic methodology check, and the rule that a modelled value must not be presented as an observed
+source price - all sit on the generation path. This endpoint walked past all of them. It is now restricted to the 23
+cost fields the dataset editor actually sends, which was confirmed safe because city generation writes directly
+through `src/lib/city-generation-service.ts` rather than this route.
+
+`PUT /api/itinerary/legs/[id]` spread the raw body, so a request could set `userId` and move a leg to another
+account, or overwrite `intercityTransportCost` and `intercityTransportNote`, which the server derives from the
+transport rows rather than accepting from the client. `PUT /api/fixed-costs/[id]` and `PUT /api/tags/[id]` also wrote
+the raw body; their `WHERE` clauses scope the row to the caller so another user's row is unreachable, but a body
+containing `userId` would still move the caller's own row to someone else.
+
+`POST /api/itinerary/snapshot` was a false positive. It validates through `parseSnapshotImportRequest`, which applies
+zod schemas in `src/lib/snapshot-import.ts`; the scan missed it because the schema lives in a lib module rather than
+the route file. No change was made, and it is recorded here so the route is not re-flagged later.
+
+Every schema uses `.strict()` rather than zod's default strip, so an unexpected field is refused with a message
+naming it instead of being silently discarded. That makes adding a new editable field a deliberate act, matching the
+project's fail-closed convention, and it means a client sending a stale field learns about it rather than having the
+value quietly dropped.
+
+Verified against a production build. Each route refuses a hostile body by name - for cities,
+`Unrecognized keys: "estimationSource", "estimationId", "id", "name"` - while legitimate edits still succeed and
+leave sibling fields untouched. Six regression tests cover provenance forgery, identity rewriting, empty updates,
+cross-user reassignment, and the legitimate paths.
+
+One note on the test fixture: the first run failed only on the success-path assertions, because the route selects
+every column while the fixture table declared a handful. The four rejection assertions passed from the start. The
+fixture now mirrors the real table.
+
+Verification: TypeScript, `next lint` clean, 52 Vitest files / 239 tests, production build, memory mirror. The
+verification made real writes, so the database was restored from backup and confirmed byte-identical across all 21
+tables, with `lisbon` back to 139.5.

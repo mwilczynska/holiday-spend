@@ -3,6 +3,25 @@ import { fixedCosts } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
+import { z } from 'zod';
+
+/**
+ * The handler previously wrote the raw request body. The row is scoped to the caller by the
+ * WHERE clause, but a body containing `userId` would still move it to another account, and
+ * `id` could be rewritten. Only the fields the settings screen edits are accepted.
+ */
+const updateFixedCostSchema = z
+  .object({
+    description: z.string().min(1),
+    amountAud: z.number(),
+    category: z.string().nullable(),
+    countryId: z.string().nullable(),
+    date: z.string().nullable(),
+    notes: z.string().nullable(),
+    isPaid: z.number().int().min(0).max(1),
+  })
+  .partial()
+  .strict();
 
 export async function PUT(
   request: Request,
@@ -10,7 +29,7 @@ export async function PUT(
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const body = await request.json();
+    const body = updateFixedCostSchema.parse(await request.json());
     const id = parseInt(params.id);
 
     const existing = await db.select().from(fixedCosts).where(and(eq(fixedCosts.id, id), eq(fixedCosts.userId, userId))).get();

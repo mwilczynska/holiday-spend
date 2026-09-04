@@ -1025,6 +1025,40 @@ project, so the sign-in flow reads as an invitation.
 Verified against the production build with real data: an unfiltered export parsed to exactly 1,300 rows with zero
 parse errors and a resolved city on every row, `cat=food` returned 88, and a ten-day range returned 61.
 
+## Phase 11 — Write-route input validation audit — COMPLETE
+
+The two defects fixed in `PUT /api/expenses/[id]` during Phase 7 were a pattern, not one-offs. A scan of every route
+that parses a request body and writes found four more with the same shape, and one false positive.
+
+- [x] `PUT /api/cities/[id]` — the most serious. It ran `db.update(cities).set(body)` with the raw request body, no
+  validation and, because cities are shared reference data, no user scoping. Any authenticated request could write
+  any column on the dataset the whole app derives from — including `estimationSource` and `estimationId`, which would
+  let a value falsely claim a provenance it does not have, and `id`, which would orphan every reference to the row.
+  The project's guards against exactly that failure (the live-CSV guard, the deterministic methodology check, the
+  rule that a modelled value must not be presented as an observed source price) all sit on the generation path; this
+  endpoint walked past them. Now restricted to the 23 cost fields the dataset editor sends.
+- [x] `PUT /api/itinerary/legs/[id]` — spread the raw body, so a request could set `userId` and move a leg to another
+  account, or overwrite `intercityTransportCost` and `intercityTransportNote`, which the server derives from the
+  transport rows rather than accepting from the client.
+- [x] `PUT /api/fixed-costs/[id]` and `PUT /api/tags/[id]` — both wrote the raw body. The `WHERE` clause scopes the
+  row to the caller, so another user's row is unreachable, but a body containing `userId` would still move the
+  caller's own row to another account.
+- [x] `POST /api/itinerary/snapshot` — **false positive.** It validates through `parseSnapshotImportRequest`, which
+  applies zod schemas in `src/lib/snapshot-import.ts`. The scan missed it because the schema lives in a lib module.
+  No change made.
+
+Every schema uses `.strict()` rather than the default strip, so an unexpected field is refused with a message naming
+it instead of being silently discarded. Adding a new editable field is then a deliberate act, which is the
+fail-closed behaviour this project asks for.
+
+Verified against a production build. Each route refuses a hostile body by name — `Unrecognized keys:
+"estimationSource", "estimationId", "id", "name"` — while legitimate edits still succeed and leave sibling fields
+untouched. Six regression tests in `src/lib/write-route-validation.test.ts` cover provenance forgery, identity
+rewriting, empty updates, cross-user reassignment, and the legitimate paths. Suite is 52 files / 239 tests.
+
+Verification generated real writes, so the database was restored from backup afterwards and confirmed byte-identical
+across all 21 tables.
+
 ## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.

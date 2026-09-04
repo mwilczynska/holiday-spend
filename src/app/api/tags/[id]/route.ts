@@ -3,6 +3,19 @@ import { tags } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
+import { z } from 'zod';
+
+/**
+ * As with fixed costs, the row is scoped to the caller by the WHERE clause, but writing the raw
+ * body would still let `userId` or `id` be set from the request.
+ */
+const updateTagSchema = z
+  .object({
+    name: z.string().min(1),
+    color: z.string().nullable(),
+  })
+  .partial()
+  .strict();
 
 export async function PUT(
   request: Request,
@@ -10,7 +23,7 @@ export async function PUT(
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const body = await request.json();
+    const body = updateTagSchema.parse(await request.json());
     const id = parseInt(params.id);
 
     const existing = await db.select().from(tags).where(and(eq(tags.id, id), eq(tags.userId, userId))).get();
