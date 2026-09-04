@@ -1527,3 +1527,39 @@ containing "this expense's" tripped `react/no-unescaped-entities`. It was rephra
 
 Verification: TypeScript, `next lint` clean, 51 Vitest files / 233 tests, production build, and the browser pass
 above. No data was written; the database is unchanged at 1,300 expenses, 62 legs and 63 saved plans.
+
+## Closing three prematurely-marked Phase 7 and Phase 9 gaps - 3 September 2026
+
+Reviewing the plan's unchecked items showed 23 open boxes sitting under phases already marked COMPLETE. Most were
+stale bookkeeping - work done during this session but never ticked - but three were real gaps, and the phases had been
+marked complete without them. That is the same failure the Phase 7A numbers demonstrated: a progress document that
+claims more than was verified.
+
+Intercity transport add, edit and remove is now verified. Adding a row to the Chiang Mai leg created a transport row
+and correctly left the total unchanged at $8,779, because a new row starts at zero cost. Setting mode "Train", note
+"Overnight sleeper" and cost 120 moved the total to $8,899, exactly $120, and all three fields survived a reload.
+Removing the row returned the total to $8,779 and left the original Bangkok-to-Chiang-Mai row and all six legs
+intact. Chiang Mai's stored base costs were byte-identical throughout, confirming transport is held on the leg and
+stays outside city-cost methodology.
+
+`/dataset` is verified for row provenance and edit targeting. The table renders source badges separating
+`base_csv_apr_2026`, `llm_city_generation` and `manual` rows, and the editor labels read as plain English rather than
+column names. Saving an edit for `chiang-mai` changed exactly 1 of 203 cities, the correct one, and left `food_mid`
+untouched, so a partial update does not clobber sibling fields.
+
+The `/plan/compare` screenshot the README was missing has been captured and added, showing the same demo trip costed
+for two travellers against three so the two cumulative lines visibly diverge. All six README images resolve.
+
+The plan's checkboxes were then reconciled against reality: 19 items that were genuinely done are now ticked, leaving
+four unchecked, all of them deliberately deferred with their reasoning recorded - the dashboard chart extraction and
+Recharts split, server-rendering initial data (gated on the harness showing a gap it currently does not show), and
+the transport-accuracy same-day quote capture.
+
+Two automation notes, recorded because they cost time and are not app defects. Synthetic `input` events with a reset
+`_valueTracker` do not reach this app's controlled inputs; real keystrokes through the browser tool do, which is how
+the transport cost edit was confirmed. And number inputs do not support `setSelectionRange`, so clearing them needs
+End plus Backspace rather than select-all.
+
+Verification: TypeScript, `next lint` clean, 51 Vitest files / 233 tests, production build, memory mirror. The real
+database was restored and verified byte-identical across all 21 tables at 1,300 expenses, 62 legs and 63 saved plans,
+with `chiang-mai` back to its original 38.75.

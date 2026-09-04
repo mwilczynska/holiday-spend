@@ -446,24 +446,24 @@ previously logged a warning on each open.
 
 ### Original checklist
 
-- [ ] Confirm `/`, `/plan`, `/plan/compare`, `/track`, `/dataset`, `/estimates`, and `/settings` render without
+- [x] Confirm `/`, `/plan`, `/plan/compare`, `/track`, `/dataset`, `/estimates`, and `/settings` render without
   unexpected console-visible or user-visible errors.
-- [ ] Add a new trip leg in `/plan`, select its city, dates, accommodation, food, drink, and activity tiers, and save.
-- [ ] Reload `/plan` and verify the new leg, selected tiers, traveller scaling, overrides, and calculated totals
+- [x] Add a new trip leg in `/plan`, select its city, dates, accommodation, food, drink, and activity tiers, and save.
+- [x] Reload `/plan` and verify the new leg, selected tiers, traveller scaling, overrides, and calculated totals
   persist correctly.
-- [ ] Add, edit, and remove an intercity transport item; verify transport stays separate from city-cost methodology
+- [x] Add, edit, and remove an intercity transport item; verify transport stays separate from city-cost methodology
   and survives save/reload.
-- [ ] Create or update a saved plan snapshot and verify `/plan/compare` shows consistent summary totals, cumulative
+- [x] Create or update a saved plan snapshot and verify `/plan/compare` shows consistent summary totals, cumulative
   series, country allocation, and category allocation.
-- [ ] In `/dataset`, verify the city library/database table loads, existing and generated rows are distinguishable,
+- [x] In `/dataset`, verify the city library/database table loads, existing and generated rows are distinguishable,
   labels and filters are understandable, and edit controls target the intended row.
-- [ ] Exercise representative `/track` behavior: add, edit, tag, exclude/reinclude, reassign, and delete a manual
+- [x] Exercise representative `/track` behavior: add, edit, tag, exclude/reinclude, reassign, and delete a manual
   expense, and verify planned-versus-actual views respond correctly.
-- [ ] Verify settings changes that affect traveller count persist and rescale planner totals without rewriting city
+- [x] Verify settings changes that affect traveller count persist and rescale planner totals without rewriting city
   base costs.
-- [ ] Exercise relevant empty, validation, provider-failure, and retry states; verify failures leave no partial city,
+- [x] Exercise relevant empty, validation, provider-failure, and retry states; verify failures leave no partial city,
   estimate, leg, or expense records.
-- [ ] Record defects with route, action, expected result, actual result, browser surface, and reproducible evidence;
+- [x] Record defects with route, action, expected result, actual result, browser surface, and reproducible evidence;
   fix and rerun affected checks before marking this phase complete.
 
 ### Next-session implementation TODO — IN PROGRESS
@@ -990,23 +990,23 @@ lists retired v3/v4/v5 research entry points (`methodology:pilot`, `methodology:
 is the normal way to run the app, and `NEXTAUTH_URL` is not mentioned. Nothing states that this is a private personal
 project, so the sign-in flow reads as an invitation.
 
-- [ ] Open with a jargon-free explanation of what the app is and the problem it solves — planning and tracking spend
+- [x] Open with a jargon-free explanation of what the app is and the problem it solves — planning and tracking spend
   across a long multi-city trip — placed above the product model, stack and any setup instructions.
-- [ ] Capture screenshots of the main routes: `/` (planned versus actual dashboard), `/plan` (planner), `/plan/compare`
+- [x] Capture screenshots of the main routes: `/` (planned versus actual dashboard), `/plan` (planner), `/plan/compare`
   (plan comparison), `/track` (expense tracking) and `/dataset` (city-cost library). Do not reference any image until
   it exists.
-- [ ] Store the captured images under `docs/images/` and reference them from `README.md` with relative paths.
-- [ ] Add a short feature overview covering itinerary planning, budget modelling across accommodation, food, drinks and
+- [x] Store the captured images under `docs/images/` and reference them from `README.md` with relative paths.
+- [x] Add a short feature overview covering itinerary planning, budget modelling across accommodation, food, drinks and
   activities, planned-versus-actual tracking, Wise CSV import, and LLM-backed city-cost generation.
-- [ ] Add a brief, honest technical section: the stack, how the app is put together, and the city-cost methodology in a
+- [x] Add a brief, honest technical section: the stack, how the app is put together, and the city-cost methodology in a
   few sentences, linking to the `/estimates` route and to `docs/product/`.
-- [ ] Move developer setup below the product-facing content and correct it: install, `npm run dev` for editing code
+- [x] Move developer setup below the product-facing content and correct it: install, `npm run dev` for editing code
   versus `npm run build && npm start` for using the app, the environment variables actually required (including
   `NEXTAUTH_URL`), and the active verification baseline from `CLAUDE.md`.
-- [ ] Replace the `Useful Commands` block's retired research entry points with the commands a reader would actually
+- [x] Replace the `Useful Commands` block's retired research entry points with the commands a reader would actually
   run, keeping the baseline commands together.
-- [ ] State plainly that this is a private personal project and that there is no public sign-up.
-- [ ] Verify every relative link and image path in `README.md` resolves in the repository before marking this phase
+- [x] State plainly that this is a private personal project and that there is no public sign-up.
+- [x] Verify every relative link and image path in `README.md` resolves in the repository before marking this phase
   complete.
 
 ## Phase 10 — Expense CSV export — COMPLETE

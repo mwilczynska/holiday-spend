@@ -49,7 +49,10 @@ which country you were in, so overspend shows up as a widening gap rather than a
 
 ![Cumulative spend against plan and budget, banded by country](docs/images/cumulative-spend.jpg)
 
-Saved plan snapshots can be compared side by side to see how a change to the itinerary moves the total.
+Saved plan snapshots can be compared side by side to see how a change to the itinerary moves the total — here the
+same trip costed for two travellers against three.
+
+![Two saved plans compared, cumulative spend diverging](docs/images/compare-plans.jpg)
 
 ### Maintain the city cost library
 
