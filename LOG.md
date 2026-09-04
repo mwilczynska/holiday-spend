@@ -1464,3 +1464,38 @@ follow-up rather than bundled into unrelated work.
 
 Verification: TypeScript, `next lint` clean, 50 Vitest files / 228 tests including four new regression tests, the
 memory mirror, and the deterministic v1.1 check with the live CSV hash unchanged.
+
+## Phase 7 completed: tagging, reassignment, CSV import, failure states - 3 September 2026
+
+The remaining Phase 7 checks were run against seeded demo data; the real database was backed up, restored afterwards
+and verified byte-identical across all 21 tables.
+
+Tagging works end to end: create, attach, filter and detach. A tag belonging to another user is refused - posting
+`{ tagIds: [99] }` returned `added: 0` and wrote no `expense_tags` row, because the route resolves tag ownership
+before inserting.
+
+Leg reassignment attributes correctly. Moving a $103.81 expense from Bangkok to Kyoto moved Thailand's actual from
+2014 to 1910 and gave Japan 104, exactly the expense amount, confirming that country totals follow the assigned leg
+rather than the transaction date. A non-existent leg returns 404 and changes nothing.
+
+Wise CSV import behaves correctly on the 408-row sample. Preview parsed 326 importable rows and 77 skipped, and wrote
+nothing - the expense count stayed at 83. Confirming imported 326, giving 409. Re-importing the same file imported 0
+and reported 326 duplicates, the count stayed at 409, and the database holds zero duplicate `wise_txn_id` values.
+
+Failure and validation states leave no partial records. Across an invalid expense, a malformed JSON body, a reference
+to a non-existent leg, and city generation with no provider key, the expense, city, leg and estimate counts were
+identical before and after at 409, 203, 6 and 59.
+
+One further defect surfaced and was fixed. `await request.json()` throws a `SyntaxError` on a malformed body, and 32
+route handlers call it. `handleError` matched only `ZodError` and `AuthRequiredError`, so a bad request body fell
+through to `Internal server error` with HTTP 500 - blaming the server for a client mistake and telling the caller
+nothing useful. It is fixed once in `src/lib/api-helpers.ts`, covering all 32 routes: a `SyntaxError` whose message
+names JSON now returns `400 Request body is not valid JSON.` The match is deliberately narrow so an unrelated
+`SyntaxError` still returns 500 and a genuine server fault is not silently reclassified as a client error. Five tests
+were added, and the behaviour was verified end to end against the production build.
+
+Two request-shape errors during this pass were mine, not the app's, and are recorded so they are not mistaken for
+findings: the tag attach endpoint takes `{ tagIds: [...] }` rather than `{ tagId }`, and the expenses list returns
+its rows under `items`. Both initially looked like failures until the route and response were read.
+
+Phase 7 is now complete. Suite is 51 files / 233 tests.
