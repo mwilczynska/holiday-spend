@@ -496,5 +496,38 @@ if (hasExpensesTable && hasItineraryLegsTable) {
   }
 }
 
+/**
+ * Foreign keys are enforced (`foreign_keys = ON` above), but SQLite does not index child FK
+ * columns automatically. Without these, every delete on `user`, `cities` or `itinerary_legs`
+ * scans each referencing table in full to check the constraint, and the common filters and
+ * sorts below fall back to table scans too.
+ *
+ * This is correctness and headroom rather than a fix for a measured problem: at current volumes
+ * (1,300 expenses, 203 cities) warm API responses already run in 3-15 ms. Created imperatively
+ * to match the existing `auth_tokens` indexes and because the runtime bootstrap, not a
+ * migration, owns this schema.
+ */
+for (const statement of [
+  'CREATE INDEX IF NOT EXISTS idx_expenses_user_date ON expenses (user_id, date)',
+  'CREATE INDEX IF NOT EXISTS idx_expenses_leg ON expenses (leg_id)',
+  'CREATE INDEX IF NOT EXISTS idx_itinerary_legs_user_sort ON itinerary_legs (user_id, sort_order)',
+  'CREATE INDEX IF NOT EXISTS idx_itinerary_legs_city ON itinerary_legs (city_id)',
+  'CREATE INDEX IF NOT EXISTS idx_itinerary_leg_transports_leg ON itinerary_leg_transports (leg_id)',
+  'CREATE INDEX IF NOT EXISTS idx_saved_plans_user ON saved_plans (user_id)',
+  'CREATE INDEX IF NOT EXISTS idx_cities_country ON cities (country_id)',
+  'CREATE INDEX IF NOT EXISTS idx_city_estimates_city ON city_estimates (city_id, estimated_at)',
+  'CREATE INDEX IF NOT EXISTS idx_city_price_inputs_city ON city_price_inputs (city_id)',
+  'CREATE INDEX IF NOT EXISTS idx_expense_tags_tag ON expense_tags (tag_id)',
+  'CREATE INDEX IF NOT EXISTS idx_fixed_costs_user ON fixed_costs (user_id)',
+  'CREATE INDEX IF NOT EXISTS idx_tags_user ON tags (user_id)',
+]) {
+  try {
+    sqlite.exec(statement);
+  } catch {
+    // A table this index targets may not exist in a partially built database (the test
+    // harnesses create only the tables they need). Missing indexes are never fatal.
+  }
+}
+
 export const db = drizzle(sqlite, { schema });
 export { schema, sqlite };

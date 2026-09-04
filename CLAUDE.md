@@ -214,27 +214,24 @@ For either surface, first confirm the local server responds at its expected `loc
 storage, cookies, saved passwords, or provider API keys, and do not substitute a shell-opened page or HTTP-only
 check for a requested interactive browser test.
 
-## OneDrive gotcha
+## Repository location and the retired OneDrive guard
 
-The repository lives inside OneDrive. Files-On-Demand can make `.next` entries appear as reparse points and cause
-Next cleanup failures or an apparently hung first compilation. `npm run dev` runs
-`scripts/prepare-next-dev.mjs` first; it detects and removes a reparse-point `.next` cache before Next starts, while
-leaving an ordinary cache intact. It also pins the gitignored SQLite files (`data/travel.db`, `-shm`, and `-wal`) if
-OneDrive has dehydrated them into cloud reparse points. The guard never removes the database or touches tracked data.
+The working repository is `C:\Dev\holiday-spend`, which is **not** inside OneDrive (`C:\Users\chawi\OneDrive`).
+Verified on 3 September 2026: `.next`, `.next-dev`, `data/` and `data/travel.db` are ordinary entries with no reparse
+points. Earlier guidance in this file described the repository as living inside OneDrive and is superseded.
 
-If the dev server is already running against a bad cache, stop that exact local Next process, then run
-`Remove-Item -LiteralPath '.next' -Recurse -Force` from the repository root and retry `npm run dev`. If the problem
-recurs, pin the project directories locally with OneDrive’s attributes command, excluding `.git` so Git metadata is not
-rewritten:
+An orphaned pre-move copy still exists at `C:\Users\chawi\OneDrive\projects\holiday-spend`. It has no `.git`
+directory and its `scripts` directory is a dehydrated cloud reparse point. Do not open or run it; it is not the
+working tree and would reproduce the historical Files-On-Demand failures.
 
-```powershell
-Get-ChildItem -Force -Directory |
-  Where-Object Name -ne '.git' |
-  ForEach-Object { attrib +P -U /s /d $_.FullName }
-```
+`npm run dev` still runs `scripts/prepare-next-dev.mjs`, which removes a reparse-point `.next-dev` cache and pins the
+gitignored SQLite files if they are ever dehydrated. On the current path it finds nothing to do. It is retained
+because it is cheap and harmless, and because it would matter again if the repository moved back under a synced root.
 
-This is a filesystem issue, not application behavior. Do not diagnose a browser, authentication, or methodology
-failure until the local server responds to `http://localhost:3000/` after this recovery.
+The historical failure it guards against was real: a dehydrated `.next` caused Next cleanup failures and an
+apparently hung first compilation, with a dev process consuming roughly 1.2 GB without completing a request. If
+anything resembling that recurs, confirm whether the path is under a synced root before diagnosing the browser,
+authentication, or methodology.
 
 ## Key files
 
