@@ -1,14 +1,14 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { SearchableSelect } from '@/components/ui/searchable-select';
+import { SearchableSelect, type SearchableSelectOption } from '@/components/ui/searchable-select';
 import { TierSelector } from './TierSelector';
-import { TransportEstimateDialog } from './TransportEstimateDialog';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
 import type { IntercityTransportItem } from '@/types';
 import {
@@ -19,6 +19,15 @@ import {
 } from '@/lib/cost-calculator';
 import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
 import { ChevronDown, ChevronUp, GripVertical, Plus, Trash2 } from 'lucide-react';
+
+// Loaded on first open rather than with the planner. This 675-line dialog was mounted
+// unconditionally inside every leg card - roughly a dozen times - for dialogs the user had
+// not opened, each pulling in its own hooks and a localStorage read.
+const TransportEstimateDialog = dynamic(
+  () => import('./TransportEstimateDialog').then((m) => m.TransportEstimateDialog),
+  { ssr: false }
+);
+
 
 interface LegCardProps {
   leg: {
@@ -46,6 +55,12 @@ interface LegCardProps {
     dailyCost: number;
     legTotal: number;
   };
+  /**
+   * Built once by the planner and shared across every card. Passing a stable array keeps
+   * SearchableSelect's internal useMemo effective; building it inline per card gave it a
+   * new identity on every render and re-sorted ~200 options for each card each time.
+   */
+  cityOptions: SearchableSelectOption[];
   cities: Array<{
     id: string;
     name: string;
@@ -137,6 +152,7 @@ function nightsBetween(startDate: string, endDate: string): number {
 export function LegCard({
   leg,
   cities,
+  cityOptions,
   groupSize,
   onUpdate,
   onDelete,
@@ -148,6 +164,13 @@ export function LegCard({
 }: LegCardProps) {
   const [showOverrides, setShowOverrides] = useState(false);
   const [transportEstimateOpen, setTransportEstimateOpen] = useState(false);
+  // Latches on first open so the dialog is not mounted for cards the user never touches,
+  // while still surviving a close/reopen without losing in-dialog state.
+  const [hasOpenedTransportEstimate, setHasOpenedTransportEstimate] = useState(false);
+
+  useEffect(() => {
+    if (transportEstimateOpen) setHasOpenedTransportEstimate(true);
+  }, [transportEstimateOpen]);
   const draftKeyCounterRef = useRef(0);
   const editingTransportKeyRef = useRef<string | null>(null);
 
@@ -386,12 +409,7 @@ export function LegCard({
               placeholder="Select a city"
               searchPlaceholder="Search cities..."
               className="h-8 text-xs"
-              options={cities.map((city) => ({
-                value: city.id,
-                label: `${city.name}, ${city.countryName}`,
-                description: city.countryName,
-                keywords: `${city.name} ${city.countryName}`,
-              }))}
+              options={cityOptions}
             />
           </div>
           <div>
@@ -607,6 +625,7 @@ export function LegCard({
           ))}
         </div>
 
+        {hasOpenedTransportEstimate ? (
         <TransportEstimateDialog
           open={transportEstimateOpen}
           onOpenChange={setTransportEstimateOpen}
@@ -622,6 +641,7 @@ export function LegCard({
             onUpdate(leg.id, { intercityTransports: transports });
           }}
         />
+        ) : null}
       </CardContent>
     </Card>
   );

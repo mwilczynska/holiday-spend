@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,11 +12,8 @@ import { SearchableSelect } from '@/components/ui/searchable-select';
 import { InlineLoadingState, LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { LegCard } from '@/components/itinerary/LegCard';
 import { CostSummary } from '@/components/itinerary/CostSummary';
-import {
-  PlannerNewCityDialog,
-  type NewCityCreatedPayload,
-} from '@/components/itinerary/PlannerNewCityDialog';
-import { BulkTransportEstimateDialog } from '@/components/itinerary/BulkTransportEstimateDialog';
+import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
+
 import { ArrowUpDown, Download, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem } from '@/types';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
@@ -36,6 +34,21 @@ import {
   INITIAL_VISIBLE_LEGS,
   VISIBLE_LEGS_INCREMENT,
 } from '@/lib/performance-bounds';
+
+// Both were mounted unconditionally and shipped in this route's first-load JS despite being
+// closed on arrival. They now load on first open. The type import above stays static.
+const PlannerNewCityDialog = dynamic(
+  () => import('@/components/itinerary/PlannerNewCityDialog').then((m) => m.PlannerNewCityDialog),
+  { ssr: false }
+);
+const BulkTransportEstimateDialog = dynamic(
+  () =>
+    import('@/components/itinerary/BulkTransportEstimateDialog').then(
+      (m) => m.BulkTransportEstimateDialog
+    ),
+  { ssr: false }
+);
+
 
 const CITY_GENERATION_STORAGE_PREFIX = 'holiday-spend.city-generation';
 type ProviderOption = CityGenerationProvider;
@@ -213,8 +226,10 @@ export default function PlanPage() {
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [savePlanDialogOpen, setSavePlanDialogOpen] = useState(false);
   const [bulkTransportEstimateOpen, setBulkTransportEstimateOpen] = useState(false);
+  const [hasOpenedBulkTransport, setHasOpenedBulkTransport] = useState(false);
   const [importResolutionOpen, setImportResolutionOpen] = useState(false);
   const [plannerNewCityOpen, setPlannerNewCityOpen] = useState(false);
+  const [hasOpenedPlannerNewCity, setHasOpenedPlannerNewCity] = useState(false);
   const [newLegCity, setNewLegCity] = useState('');
   const [newLegNights, setNewLegNights] = useState('7');
   const [savedPlans, setSavedPlans] = useState<SavedPlanSummary[]>([]);
@@ -862,14 +877,60 @@ export default function PlanPage() {
     apiKey: activeImportApiKey,
     enabled: importResolutionOpen && missingCityStrategy === 'generate',
   });
-  const canonicalCountryOptions = KNOWN_COUNTRIES.map((country) => {
-    const preview = getSelectedCountryPreview(country.id, countries);
-    return {
+  // Built once and shared by every leg card and the Add Leg dialog. Previously each card
+  // built its own ~200-object array inline during render, which also gave SearchableSelect
+  // a new `options` identity every time and so permanently defeated its internal useMemo,
+  // re-sorting the list with localeCompare on each card on every render.
+  useEffect(() => {
+    if (bulkTransportEstimateOpen) setHasOpenedBulkTransport(true);
+  }, [bulkTransportEstimateOpen]);
+
+  useEffect(() => {
+    if (plannerNewCityOpen) setHasOpenedPlannerNewCity(true);
+  }, [plannerNewCityOpen]);
+
+  // A fresh array each render defeated the dialog's own useMemo over these legs.
+  const bulkTransportLegs = useMemo(
+    () =>
+      legs.map((leg) => ({
+        id: leg.id,
+        cityName: leg.cityName,
+        countryName: leg.countryName,
+        startDate: leg.startDate,
+        intercityTransports: leg.intercityTransports,
+      })),
+    [legs]
+  );
+
+  const cityOptions = useMemo(
+    () =>
+      cities.map((city) => ({
+        value: city.id,
+        label: `${city.name}, ${city.countryName}`,
+        description: city.countryName,
+        keywords: `${city.name} ${city.countryName}`,
+      })),
+    [cities]
+  );
+
+  // Resolve each saved country once into its canonical id, rather than re-scanning the
+  // whole list for all 245 known countries. `findKnownCountryMetadata` runs an NFKD
+  // normalise plus four regex replaces per call, so the original shape cost ~4.5 ms and
+  // ran on every render of this page - including every keystroke in any input on it.
+  const canonicalCountryOptions = useMemo(() => {
+    const existingCanonicalIds = new Set<string>();
+    for (const country of countries) {
+      const resolved =
+        findKnownCountryMetadata(country.id) ?? findKnownCountryMetadata(country.name);
+      if (resolved) existingCanonicalIds.add(resolved.id);
+    }
+
+    return KNOWN_COUNTRIES.map((country) => ({
       value: country.id,
       label: country.name,
-      description: `${country.currencyCode} • ${getRegionLabel(country.region)}${preview?.existingCountry ? ' • already in library' : ' • creates row on import'}`,
-    };
-  });
+      description: `${country.currencyCode} • ${getRegionLabel(country.region)}${existingCanonicalIds.has(country.id) ? ' • already in library' : ' • creates row on import'}`,
+    }));
+  }, [countries]);
 
   if (pageLoading && legs.length === 0 && cities.length === 0 && countries.length === 0) {
     return (
@@ -1302,16 +1363,11 @@ export default function PlanPage() {
                   <Upload className="mr-2 h-4 w-4" />
                   Import
                 </Button>
+                {hasOpenedBulkTransport ? (
                 <BulkTransportEstimateDialog
                   open={bulkTransportEstimateOpen}
                   onOpenChange={setBulkTransportEstimateOpen}
-                  legs={legs.map((leg) => ({
-                    id: leg.id,
-                    cityName: leg.cityName,
-                    countryName: leg.countryName,
-                    startDate: leg.startDate,
-                    intercityTransports: leg.intercityTransports,
-                  }))}
+                  legs={bulkTransportLegs}
                   onApplied={async (appliedCount) => {
                     await fetchData();
                     setSnapshotStatus(
@@ -1320,6 +1376,7 @@ export default function PlanPage() {
                     setSnapshotError(null);
                   }}
                 />
+                ) : null}
                 <Button
                   type="button"
                   variant="outline"
@@ -1337,11 +1394,13 @@ export default function PlanPage() {
                       : ` (${estimatableTransportLegCount} eligible)`
                     : ''}
                 </Button>
-                <PlannerNewCityDialog
-                  open={plannerNewCityOpen}
-                  onOpenChange={setPlannerNewCityOpen}
-                  onCreated={handlePlannerNewCityCreated}
-                />
+                {hasOpenedPlannerNewCity ? (
+                  <PlannerNewCityDialog
+                    open={plannerNewCityOpen}
+                    onOpenChange={setPlannerNewCityOpen}
+                    onCreated={handlePlannerNewCityCreated}
+                  />
+                ) : null}
                 <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
                   <DialogTrigger asChild>
                     <Button>
@@ -1361,12 +1420,7 @@ export default function PlanPage() {
                           onValueChange={setNewLegCity}
                           placeholder="Select a city"
                           searchPlaceholder="Search cities..."
-                          options={cities.map((city) => ({
-                            value: city.id,
-                            label: `${city.name}, ${city.countryName}`,
-                            description: city.countryName,
-                            keywords: `${city.name} ${city.countryName}`,
-                          }))}
+                          options={cityOptions}
                         />
                         <p className="mt-2 text-xs text-muted-foreground">
                           Can&apos;t find the city? Add it to the library and create the leg in one flow.
@@ -1495,6 +1549,7 @@ export default function PlanPage() {
                   key={leg.id}
                   leg={leg}
                   cities={cities}
+                  cityOptions={cityOptions}
                   groupSize={groupSize}
                   onUpdate={handleUpdateLeg}
                   onDelete={handleDeleteLeg}
