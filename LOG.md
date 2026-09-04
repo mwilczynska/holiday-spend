@@ -1648,3 +1648,57 @@ fetches ran in parallel.
 Verification: TypeScript, `next lint` clean, 54 Vitest files / 243 tests, production build, memory mirror. The
 measurements required real imports, so the database was restored from backup and confirmed byte-identical across all
 21 tables.
+
+## Dashboard chart extraction and Recharts split - 4 September 2026
+
+`/` was the heaviest route in the app. Recharts was imported directly into `src/app/page.tsx`, so the whole charting
+library loaded before anything on the dashboard could paint, including the four summary stat cards that need no charts
+at all. The three charts were inline render functions in a 1,352-line file, which also meant all three re-rendered
+whenever unrelated dashboard state changed.
+
+This was deferred twice, with the analysis recorded, on the grounds that it was a three-file, roughly 600-line
+reorganisation and the riskiest remaining change. The size estimate was about right. The obstacle was not.
+
+The earlier analysis counted how many helpers were used both inside and outside the chart bodies and concluded that
+most of them would need a shared module. That is the constraint for memoizing the charts, but it is not the constraint
+for splitting the bundle. What a bundle split requires is narrower: nothing statically imported by `page.tsx` may
+import Recharts. Every Recharts reference already sat inside the three renderer bodies, and no top-level helper touched
+the library. So the shared helpers moved verbatim rather than being rewritten, and TypeScript passed on the first
+attempt.
+
+The result is `src/components/dashboard/dashboard-chart-parts.tsx`, which holds the shared types, constants, tick,
+tooltip, legend and country-header-strip components and is deliberately Recharts-free - a Recharts import there would
+silently undo the split, so the file says so - plus three `React.memo` components loaded with `next/dynamic` behind
+fixed-height placeholders that reserve the same space, matching what `/plan/compare` already did.
+
+| Measure | Before | After | Change |
+| --- | --- | --- | --- |
+| `/` first-load JS | 266 kB | **144 kB** | −46% |
+| `/` route size | 147 kB | **24.8 kB** | −83% |
+| `/` decompressed JS | 1,068,839 B | **636,953 B** | −431,886 B, −40% |
+| `src/app/page.tsx` | 1,352 lines | 707 lines | −645 |
+
+`/plan` is now the heaviest route at 764,620 bytes.
+
+Verification was in an authenticated production browser session, and the method matters because a downscaled
+screenshot previously hid bars that were four pixels tall and led to a wrong claim that charts were missing. Plotted
+elements were counted in the DOM instead: 32 country bars, 7 category bars with their percentage labels, 3 burn lines
+with 21 country reference areas and the budget ceiling reference line, the staggered three-row country header strip,
+and live tooltips reading correct values on both the country chart and the burn chart. All six render paths were
+exercised - inline and expanded for each of the three charts - because expanded passes a different set of props.
+
+Two measurement mistakes are worth recording, both the same mistake. Reading `.recharts-wrapper svg` and then
+`svg.recharts-surface` each returned a 14x14 legend icon rather than the plot, because the country chart is the only
+one with a top-aligned legend and its icon precedes the plot in the DOM. That produced a false regression report of a
+chart with zero bars. Selecting the first match from a container that holds several is not a safe default; the correct
+count was 32.
+
+One test moved with the code. `src/lib/planner-city-picker-ui.test.ts` reads the cumulative-spend legend definitions
+out of a file by path and asserts each line's label and colour. The guarantee is unchanged - every plotted series has a
+legend entry with a matching colour - so the test was repointed at the new file rather than deleted.
+
+No console errors. The only console output was a Chrome-extension message-channel artefact that also appears on
+`/plan`, `/dataset` and `/plan/compare` and predates the change by two hours.
+
+Verification: TypeScript, `next lint` clean, 53 files / 243 tests, production build, memory mirror,
+`methodology:v1.1:check` with the live CSV hash unchanged, and the authenticated performance harness.

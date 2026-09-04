@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,12 +11,36 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EXPENSE_CATEGORIES } from '@/types';
 import Link from 'next/link';
 import { Map, Maximize2, Receipt, TrendingUp } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
-  Cell, LabelList, Label, CartesianGrid,
-  LineChart, Line, ReferenceArea, ReferenceLine,
-} from 'recharts';
-import { cn } from '@/lib/utils';
+  DashboardChartPlaceholder,
+  buildStaggeredCountryBands,
+  fmtAud,
+  getBurnRateLegendItems,
+  ExpandedChartLegend,
+  type BurnRatePoint,
+  type CategoryMode,
+  type CountryBand,
+} from '@/components/dashboard/dashboard-chart-parts';
+
+/**
+ * Recharts reaches the dashboard only through these three, so it is code-split away from the
+ * initial load. `ssr: false` matches `/plan/compare`: the charts need measured DOM width, and the
+ * fixed-height placeholder reserves the same space so nothing shifts when they arrive.
+ */
+const DashboardCountryChart = dynamic(
+  () => import('@/components/dashboard/DashboardCountryChart').then((m) => m.DashboardCountryChart),
+  { ssr: false, loading: () => <DashboardChartPlaceholder height={360} /> }
+);
+const DashboardCategoryChart = dynamic(
+  () => import('@/components/dashboard/DashboardCategoryChart').then((m) => m.DashboardCategoryChart),
+  { ssr: false, loading: () => <DashboardChartPlaceholder height={360} /> }
+);
+const DashboardBurnChart = dynamic(
+  () => import('@/components/dashboard/DashboardBurnChart').then((m) => m.DashboardBurnChart),
+  { ssr: false, loading: () => <DashboardChartPlaceholder height={400} /> }
+);
+
 
 interface Summary {
   totalBudget: number;
@@ -59,34 +83,6 @@ interface CountryComparison {
   status: 'planned' | 'active' | 'completed' | null;
 }
 
-type CategoryMode = 'actual' | 'planned';
-type ChartRenderMode = 'inline' | 'expanded';
-type ResponsiveChartHeight = number | '100%';
-
-interface BurnRatePoint {
-  date: string;
-  cumulative: number;
-  daily: number;
-  plannedCumulative: number;
-  plannedDaily: number;
-  countryName: string | null;
-  cityName: string | null;
-  legStatus: string | null;
-}
-
-interface CountryBand {
-  countryName: string;
-  startDate: string;
-  endDate: string;
-  pointCount: number;
-}
-
-interface StaggeredCountryBand extends CountryBand {
-  labelLevel: number;
-  segmentStartRatio: number;
-  segmentEndRatio: number;
-}
-
 type ExpandedChart = 'country' | 'category' | 'burn' | null;
 
 interface StatHelp {
@@ -97,28 +93,13 @@ interface StatHelp {
   }>;
 }
 
-interface WrappedCategoryTickProps {
-  x?: number | string;
-  y?: number | string;
-  payload?: {
-    value?: string;
-  };
-  maxWidth?: number;
-  fontSize?: number;
-  lineHeight?: number;
-}
-
 const CHART_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1'];
-const COUNTRY_BAND_COLORS = ['#dbeafe', '#dcfce7', '#fef3c7', '#fce7f3', '#e0e7ff', '#cffafe'];
 const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> = {
   planned: 'bg-blue-100 text-blue-800',
   active: 'bg-green-100 text-green-800',
   completed: 'bg-gray-100 text-gray-800',
 };
-const BURN_COUNTRY_LABEL_TOP_OFFSET = 4;
-const BURN_COUNTRY_LABEL_ROW_GAP = 4;
 
-const fmtAud = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.abs(n).toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 
 function formatDashboardDate(value: string) {
@@ -132,105 +113,9 @@ function formatDashboardDate(value: string) {
   });
 }
 
-function getBurnChartMetrics(mode: ChartRenderMode) {
-  return mode === 'expanded'
-    ? {
-        margin: { top: 2, right: 28, left: 16, bottom: 22 },
-        yAxisWidth: 92,
-        countryLabelFontSize: 13,
-        countryLabelLineHeight: 1.3,
-        countryStripPaddingBottom: 2,
-        legendGap: 2,
-        legendSwatchWidth: 30,
-        legendFontSize: 13,
-      }
-    : {
-        margin: { top: 12, right: 16, left: 8, bottom: 16 },
-        yAxisWidth: 76,
-        countryLabelFontSize: 11,
-        countryLabelLineHeight: 1.15,
-        countryStripPaddingBottom: 8,
-        legendGap: 4,
-        legendSwatchWidth: 24,
-        legendFontSize: 12,
-      };
-}
-
 function getCategoryLabel(categoryKey: string) {
   if (categoryKey === 'transport') return 'Transport';
   return EXPENSE_CATEGORIES.find((category) => category.value === categoryKey)?.label ?? categoryKey;
-}
-
-function wrapTickLabel(value: string, maxCharsPerLine: number, maxLines: number) {
-  const words = value.split(/\s+/).filter(Boolean);
-  if (words.length === 0) return [''];
-
-  const lines: string[] = [];
-  let currentLine = '';
-
-  for (const word of words) {
-    const candidate = currentLine ? `${currentLine} ${word}` : word;
-    if (candidate.length <= maxCharsPerLine || currentLine.length === 0) {
-      currentLine = candidate;
-      continue;
-    }
-
-    lines.push(currentLine);
-    currentLine = word;
-
-    if (lines.length === maxLines - 1) {
-      break;
-    }
-  }
-
-  if (currentLine) {
-    lines.push(currentLine);
-  }
-
-  if (lines.length > maxLines) {
-    return lines.slice(0, maxLines);
-  }
-
-  const lastIndex = maxLines - 1;
-  if (lines.length === maxLines && words.join(' ').length > lines.join(' ').length) {
-    const truncated = lines[lastIndex];
-    lines[lastIndex] = truncated.length > maxCharsPerLine - 1
-      ? `${truncated.slice(0, Math.max(maxCharsPerLine - 1, 1)).trimEnd()}…`
-      : `${truncated}…`;
-  }
-
-  return lines;
-}
-
-function WrappedCategoryTick({
-  x = 0,
-  y = 0,
-  payload,
-  maxWidth = 116,
-  fontSize = 10,
-  lineHeight = 12,
-}: WrappedCategoryTickProps) {
-  const rawValue = payload?.value ?? '';
-  const lines = wrapTickLabel(rawValue, Math.max(8, Math.floor(maxWidth / 6.6)), 2);
-  const resolvedX = typeof x === 'number' ? x : Number(x ?? 0);
-  const resolvedY = typeof y === 'number' ? y : Number(y ?? 0);
-  const startY = resolvedY - ((lines.length - 1) * lineHeight) / 2;
-
-  return (
-    <text
-      x={resolvedX}
-      y={startY}
-      textAnchor="end"
-      fill="#475569"
-      fontSize={fontSize}
-    >
-      {lines.map((line, index) => (
-        <tspan key={`${rawValue}-${index}`} x={resolvedX} dy={index === 0 ? 0 : lineHeight}>
-          {line}
-        </tspan>
-      ))}
-    </text>
-  );
 }
 
 const SUMMARY_HELP: Record<string, StatHelp> = {
@@ -322,295 +207,6 @@ function SummaryStatCard({
         {subtext ? <p className="text-xs text-muted-foreground">{subtext}</p> : null}
       </CardContent>
     </Card>
-  );
-}
-
-function BurnRateTooltip({
-  active,
-  payload,
-  label,
-}: {
-  active?: boolean;
-  payload?: Array<{ payload?: BurnRatePoint }>;
-  label?: string;
-}) {
-  if (!active || !payload || payload.length === 0) return null;
-
-  const point = payload[0]?.payload;
-  if (!point) return null;
-
-  return (
-    <div className="rounded-md border bg-background p-3 text-sm shadow-md">
-      <div className="font-medium">{label}</div>
-      <div className="text-xs text-muted-foreground">
-        {point.cityName && point.countryName
-          ? `${point.cityName}, ${point.countryName}`
-          : point.countryName || 'Outside planned legs'}
-      </div>
-      <div className="mt-2 space-y-1">
-        {[
-          {
-            label: point.legStatus === 'planned' ? 'Actual spend · leg still planned' : 'Actual spend',
-            color: point.legStatus === 'planned' ? '#9ca3af' : '#16a34a',
-            value: point.cumulative,
-          },
-          { label: 'Planned estimate', color: '#0f766e', value: point.plannedCumulative },
-        ].map((entry) => (
-          <div key={entry.label} className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <span
-                className="h-2.5 w-2.5 rounded-full"
-                style={{ backgroundColor: entry.color }}
-              />
-              <span>{entry.label}</span>
-            </div>
-            <span className="font-medium">{fmtAud(entry.value)}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function getBurnRateLegendItems(includeBudget: boolean) {
-  return [
-    { label: 'Actual spend', color: '#16a34a' },
-    { label: 'Actual spend · leg still planned', color: '#9ca3af' },
-    { label: 'Planned estimate', color: '#0f766e', dashed: true },
-    ...(includeBudget ? [{ label: 'Total trip budget', color: '#7c3aed', dashed: true }] : []),
-  ];
-}
-
-function BurnRateLegend({
-  includeBudget,
-  mode,
-}: {
-  includeBudget: boolean;
-  mode: ChartRenderMode;
-}) {
-  const metrics = getBurnChartMetrics(mode);
-  const items = getBurnRateLegendItems(includeBudget);
-
-  return (
-    <div
-      className="flex flex-wrap items-center justify-center text-muted-foreground"
-      style={{
-        gap: mode === 'expanded' ? 20 : 16,
-        paddingBottom: metrics.legendGap,
-        fontSize: metrics.legendFontSize,
-      }}
-    >
-      {items.map((item) => (
-        <div key={item.label} className="flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="inline-block h-0.5"
-            style={{
-              width: metrics.legendSwatchWidth,
-              backgroundColor: item.dashed ? undefined : item.color,
-              borderTop: item.dashed ? `2px dashed ${item.color}` : undefined,
-              height: item.dashed ? 0 : undefined,
-            }}
-          />
-          <span className="font-medium">{item.label}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ExpandedChartLegend({
-  items,
-  mode = 'expanded',
-  className,
-}: {
-  items: Array<{ label: string; color: string; dashed?: boolean }>;
-  mode?: ChartRenderMode;
-  className?: string;
-}) {
-  const fontSize = mode === 'expanded' ? 13 : 11;
-  const swatchWidth = mode === 'expanded' ? 26 : 20;
-
-  return (
-    <div
-      className={cn('flex flex-wrap items-center gap-x-5 gap-y-1.5 text-muted-foreground', className)}
-      style={{ fontSize }}
-    >
-      {items.map((item) => (
-        <div key={item.label} className="flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="inline-block h-0.5"
-            style={{
-              width: swatchWidth,
-              backgroundColor: item.color,
-              borderTop: item.dashed ? `2px dashed ${item.color}` : undefined,
-              height: item.dashed ? 0 : undefined,
-            }}
-          />
-          <span className="font-medium">{item.label}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function buildStaggeredCountryBands(bands: CountryBand[], totalPointCount: number): StaggeredCountryBand[] {
-  if (bands.length === 0 || totalPointCount <= 0) return [];
-
-  const estimatedPlotWidthPx = 760;
-  const pointsPerPixel = totalPointCount > 1 ? (totalPointCount - 1) / estimatedPlotWidthPx : 1;
-  const levelEndByIndex: number[] = [];
-  let pointCursor = 0;
-
-  return bands.map((band) => {
-    const bandStart = pointCursor;
-    const bandEnd = pointCursor + Math.max(band.pointCount - 1, 0);
-    const segmentStartRatio = bandStart / totalPointCount;
-    const segmentEndRatio = (bandStart + Math.max(band.pointCount, 1)) / totalPointCount;
-    pointCursor += band.pointCount;
-
-    const estimatedLabelWidthInPoints = Math.max(
-      band.pointCount,
-      Math.max(band.countryName.length * 7 * pointsPerPixel, 3)
-    );
-    const labelMidpoint = (bandStart + bandEnd) / 2;
-    const labelStart = labelMidpoint - estimatedLabelWidthInPoints / 2;
-    const labelEnd = labelMidpoint + estimatedLabelWidthInPoints / 2;
-
-    let labelLevel = 0;
-    while (levelEndByIndex[labelLevel] != null && labelStart <= levelEndByIndex[labelLevel]) {
-      labelLevel += 1;
-    }
-    levelEndByIndex[labelLevel] = labelEnd;
-
-    return {
-      ...band,
-      labelLevel,
-      segmentStartRatio,
-      segmentEndRatio,
-    };
-  });
-}
-
-function getCountryBandKey(band: Pick<CountryBand, 'countryName' | 'startDate' | 'endDate'>) {
-  return `${band.countryName}-${band.startDate}-${band.endDate}`;
-}
-
-function BurnCountryHeaderStrip({
-  bands,
-  mode,
-}: {
-  bands: StaggeredCountryBand[];
-  mode: ChartRenderMode;
-}) {
-  const labelRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const stripInnerRef = useRef<HTMLDivElement>(null);
-  const metrics = getBurnChartMetrics(mode);
-  const [layout, setLayout] = useState(() => ({
-    rowOffsets: [] as number[],
-    stripHeight: 24,
-  }));
-
-  useLayoutEffect(() => {
-    if (bands.length === 0) return;
-
-    const measure = () => {
-      const maxLabelLevel = bands.reduce((maxLevel, band) => Math.max(maxLevel, band.labelLevel), 0);
-      const rowHeights = Array.from({ length: maxLabelLevel + 1 }, () => 14);
-
-      for (const band of bands) {
-        const labelNode = labelRefs.current[getCountryBandKey(band)];
-        if (!labelNode) continue;
-        const labelHeight = labelNode.getBoundingClientRect().height;
-        rowHeights[band.labelLevel] = Math.max(rowHeights[band.labelLevel] ?? 14, Math.ceil(labelHeight));
-      }
-
-      const rowOffsets: number[] = [];
-      let cursor = BURN_COUNTRY_LABEL_TOP_OFFSET;
-
-      for (let index = 0; index < rowHeights.length; index += 1) {
-        rowOffsets[index] = cursor;
-        cursor += rowHeights[index] + BURN_COUNTRY_LABEL_ROW_GAP;
-      }
-
-      const stripHeight = cursor;
-
-      setLayout((currentLayout) => {
-        const sameHeight = currentLayout.stripHeight === stripHeight;
-        const sameOffsets =
-          currentLayout.rowOffsets.length === rowOffsets.length &&
-          currentLayout.rowOffsets.every((offset, index) => offset === rowOffsets[index]);
-
-        if (sameHeight && sameOffsets) {
-          return currentLayout;
-        }
-
-        return {
-          rowOffsets,
-          stripHeight,
-        };
-      });
-    };
-
-    measure();
-
-    if (!stripInnerRef.current) return;
-
-    const resizeObserver = new ResizeObserver(() => {
-      window.requestAnimationFrame(measure);
-    });
-
-    resizeObserver.observe(stripInnerRef.current);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [bands, mode]);
-
-  if (bands.length === 0) return null;
-
-  return (
-    <div
-      className="pointer-events-none"
-      style={{
-        paddingLeft: metrics.margin.left + metrics.yAxisWidth,
-        paddingRight: metrics.margin.right,
-        paddingBottom: metrics.countryStripPaddingBottom,
-      }}
-    >
-      <div ref={stripInnerRef} className="relative" style={{ height: layout.stripHeight }}>
-        {bands.map((band) => {
-          const left = `${band.segmentStartRatio * 100}%`;
-          const width = `${Math.max((band.segmentEndRatio - band.segmentStartRatio) * 100, 2)}%`;
-
-          return (
-            <div
-              key={getCountryBandKey(band)}
-              className="absolute"
-              style={{
-                left,
-                width,
-                top: layout.rowOffsets[band.labelLevel] ?? BURN_COUNTRY_LABEL_TOP_OFFSET,
-              }}
-            >
-              <div
-                ref={(node) => {
-                  labelRefs.current[getCountryBandKey(band)] = node;
-                }}
-                className="px-1 text-center font-bold text-slate-600"
-                style={{
-                  fontSize: metrics.countryLabelFontSize,
-                  lineHeight: metrics.countryLabelLineHeight,
-                }}
-              >
-                {band.countryName}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
   );
 }
 
@@ -816,249 +412,6 @@ export default function DashboardPage() {
     <ExpandedChartLegend items={burnLegendItems} className="justify-end" />
   ) : null;
 
-  const renderCountryChart = (height: number, mode: ChartRenderMode = 'inline') => {
-    const isExpanded = mode === 'expanded';
-    const inlineCountryTickWidth = 126;
-    const chartNode = (
-      <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
-        <BarChart
-          data={barData}
-          layout="vertical"
-          barCategoryGap={isExpanded ? '10%' : '8%'}
-          barGap={isExpanded ? 4 : 2}
-          margin={isExpanded ? { top: 8, right: 24, left: 18, bottom: 24 } : { top: 12, right: 10, left: 6, bottom: 18 }}
-        >
-          <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" horizontal={false} />
-          <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 10 }} tickFormatter={(value) => `$${value}`}>
-            <Label
-              value={showCountryDailySpend ? 'Spend per Day (AUD)' : 'Spend (AUD)'}
-              position="insideBottom"
-              offset={isExpanded ? -2 : -6}
-              style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}
-            />
-          </XAxis>
-          <YAxis
-            type="category"
-            dataKey="name"
-            width={isExpanded ? 180 : inlineCountryTickWidth}
-            interval={0}
-            padding={{ top: 0, bottom: 0 }}
-            tick={isExpanded
-              ? { fontSize: 13 }
-              : (props: WrappedCategoryTickProps) => (
-                <WrappedCategoryTick
-                  {...props}
-                  maxWidth={inlineCountryTickWidth - 10}
-                  fontSize={10}
-                  lineHeight={11}
-                />
-              )}
-          >
-            {isExpanded ? (
-              <Label
-                value="Country"
-                angle={-90}
-                position="insideLeft"
-                style={{ fill: '#64748b', fontSize: 13, textAnchor: 'middle' }}
-              />
-            ) : null}
-          </YAxis>
-          <Tooltip
-            cursor={{ fill: 'rgba(148, 163, 184, 0.12)' }}
-            contentStyle={{
-              fontSize: isExpanded ? 13 : 11,
-              padding: isExpanded ? '10px 12px' : '8px 10px',
-              borderRadius: '10px',
-              borderColor: '#cbd5e1',
-            }}
-            formatter={(value) => showCountryDailySpend ? `${fmtAud(Number(value))}/day` : fmtAud(Number(value))}
-          />
-          {!isExpanded ? (
-            <Legend
-              verticalAlign="top"
-              align="right"
-              wrapperStyle={{
-                paddingBottom: 6,
-                fontSize: 11,
-              }}
-            />
-          ) : null}
-          <Bar
-            dataKey="Planned"
-            fill="#94a3b8"
-            radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
-            barSize={isExpanded ? expandedCountryBarSize : undefined}
-          />
-          <Bar
-            dataKey="Actual"
-            fill="#2563eb"
-            radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
-            barSize={isExpanded ? expandedCountryBarSize : undefined}
-          />
-        </BarChart>
-      </ResponsiveContainer>
-    );
-
-    if (!isExpanded) {
-      return chartNode;
-    }
-
-    return (
-      <div className="flex h-full min-h-0 flex-col gap-2">
-        <ExpandedChartLegend
-          items={[
-            { label: 'Actual', color: '#2563eb' },
-            { label: 'Planned', color: '#94a3b8' },
-          ]}
-        />
-        <div className={expandedPlotShellClassName}>{chartNode}</div>
-      </div>
-    );
-  };
-
-  const renderCategoryChart = (height: number, mode: ChartRenderMode = 'inline') => {
-    const isExpanded = mode === 'expanded';
-    const chartNode = (
-      <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
-        <BarChart
-          data={categoryChartData}
-          layout="vertical"
-          barCategoryGap={isExpanded ? '2%' : '20%'}
-          margin={isExpanded ? { top: 8, right: 88, left: 22, bottom: 24 } : { top: 12, right: 56, left: 12, bottom: 18 }}
-        >
-          <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" horizontal={false} />
-          <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 10 }} tickFormatter={(value) => `$${value}`}>
-            <Label
-              value="Spend (AUD)"
-              position="insideBottom"
-              offset={isExpanded ? -2 : -6}
-              style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}
-            />
-          </XAxis>
-          <YAxis
-            type="category"
-            dataKey="name"
-            width={isExpanded ? 180 : 110}
-            padding={{ top: 0, bottom: 0 }}
-            tick={{ fontSize: isExpanded ? 13 : 10 }}
-          >
-            <Label
-              value="Category"
-              angle={-90}
-              position="insideLeft"
-              style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10, textAnchor: 'middle' }}
-            />
-          </YAxis>
-          <Tooltip
-            contentStyle={{
-              fontSize: isExpanded ? 13 : 11,
-              padding: isExpanded ? '10px 12px' : '8px 10px',
-              borderRadius: '10px',
-              borderColor: '#cbd5e1',
-            }}
-            formatter={(value, _name, item) => {
-              const percent = typeof item?.payload?.percent === 'number'
-                ? ` (${item.payload.percent.toFixed(0)}%)`
-                : '';
-              return `${fmtAud(Number(value))}${percent}`;
-            }}
-            labelFormatter={(label) =>
-              `${categoryMode === 'planned' ? 'Planned' : 'Actual'}: ${label}`
-            }
-          />
-          <Bar dataKey="value" radius={isExpanded ? [0, 7, 7, 0] : [0, 5, 5, 0]} barSize={isExpanded ? expandedCategoryBarSize : 20}>
-            {categoryChartData.map((entry) => (
-              <Cell key={entry.name} fill={entry.fill} />
-            ))}
-            <LabelList dataKey="percentLabel" position="right" fill="#64748b" fontSize={isExpanded ? 13 : 10} offset={isExpanded ? 12 : 8} />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-    );
-
-    if (!isExpanded) {
-      return chartNode;
-    }
-
-    return (
-      <div className="flex h-full min-h-0 flex-col">
-        <div className={expandedPlotShellClassName}>{chartNode}</div>
-      </div>
-    );
-  };
-
-  const renderBurnChart = (height: number, mode: ChartRenderMode = 'inline') => {
-    const isExpanded = mode === 'expanded';
-    const burnMetrics = getBurnChartMetrics(mode);
-    const chartNode = (
-      <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
-        <LineChart data={chartBurnData} margin={burnMetrics.margin}>
-          <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" />
-          <XAxis dataKey="date" tick={{ fontSize: isExpanded ? 12 : 10 }} minTickGap={isExpanded ? 18 : 24}>
-            <Label
-              value="Date"
-              position="insideBottom"
-              offset={isExpanded ? 2 : -4}
-              style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11 }}
-            />
-          </XAxis>
-          <YAxis
-            width={burnMetrics.yAxisWidth}
-            tick={{ fontSize: isExpanded ? 13 : 11 }}
-            tickFormatter={(v) => `$${v}`}
-            domain={[0, Math.max(0, Math.ceil(chartYAxisMax))]}
-          >
-            <Label
-              value="Cumulative Spend (AUD)"
-              angle={-90}
-              position="insideLeft"
-              style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11, textAnchor: 'middle' }}
-            />
-          </YAxis>
-          <Tooltip content={<BurnRateTooltip />} cursor={{ stroke: '#94a3b8', strokeOpacity: 0.4 }} />
-          {!isExpanded ? <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} mode={mode} />} /> : null}
-          {staggeredCountryBands.map((band, index) => (
-            <ReferenceArea
-              key={getCountryBandKey(band)}
-              x1={band.startDate}
-              x2={band.endDate}
-              fill={COUNTRY_BAND_COLORS[index % COUNTRY_BAND_COLORS.length]}
-              fillOpacity={0.18}
-              ifOverflow="extendDomain"
-            />
-          ))}
-          <Line type="monotone" dataKey="spentActual" name="Actual spend" stroke="#16a34a" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
-          <Line type="monotone" dataKey="spentPlannedTail" name="Actual spend · leg still planned" stroke="#9ca3af" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} legendType="none" />
-          <Line type="monotone" dataKey="plannedCumulative" name="Planned estimate" stroke="#0f766e" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" strokeDasharray={isExpanded ? '7 5' : '6 4'} activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
-          {budgetCeiling > 0 && (
-            <ReferenceLine
-              y={budgetCeiling}
-              stroke="#7c3aed"
-              strokeWidth={isExpanded ? 2.5 : 2}
-              strokeDasharray="5 5"
-            />
-          )}
-        </LineChart>
-      </ResponsiveContainer>
-    );
-
-    if (!isExpanded) {
-      return (
-        <div className="space-y-1">
-          <BurnCountryHeaderStrip bands={staggeredCountryBands} mode={mode} />
-          {chartNode}
-        </div>
-      );
-    }
-
-    return (
-      <div className="flex h-full min-h-0 flex-col gap-2">
-        <BurnCountryHeaderStrip bands={staggeredCountryBands} mode={mode} />
-        <div className={expandedPlotShellClassName}>{chartNode}</div>
-      </div>
-    );
-  };
-
   const expandedChartTitle =
     expandedChart === 'country'
       ? countryChartTitle
@@ -1182,7 +535,15 @@ export default function DashboardPage() {
                 </div>
               </div>
             </CardHeader>
-            <CardContent>{renderCountryChart(inlineCountryChartHeight, 'inline')}</CardContent>
+            <CardContent>
+              <DashboardCountryChart
+                data={barData}
+                showCountryDailySpend={showCountryDailySpend}
+                height={inlineCountryChartHeight}
+                expandedBarSize={expandedCountryBarSize}
+                plotShellClassName={expandedPlotShellClassName}
+              />
+            </CardContent>
           </Card>
         )}
 
@@ -1215,7 +576,15 @@ export default function DashboardPage() {
                 </div>
               </div>
             </CardHeader>
-            <CardContent>{renderCategoryChart(inlineCategoryChartHeight, 'inline')}</CardContent>
+            <CardContent>
+              <DashboardCategoryChart
+                data={categoryChartData}
+                categoryMode={categoryMode}
+                height={inlineCategoryChartHeight}
+                expandedBarSize={expandedCategoryBarSize}
+                plotShellClassName={expandedPlotShellClassName}
+              />
+            </CardContent>
           </Card>
         )}
       </div>
@@ -1231,7 +600,16 @@ export default function DashboardPage() {
               </Button>
             </div>
           </CardHeader>
-          <CardContent>{renderBurnChart(400, 'inline')}</CardContent>
+          <CardContent>
+            <DashboardBurnChart
+              data={chartBurnData}
+              countryBands={staggeredCountryBands}
+              height={400}
+              yAxisMax={chartYAxisMax}
+              budgetCeiling={budgetCeiling}
+              plotShellClassName={expandedPlotShellClassName}
+            />
+          </CardContent>
         </Card>
       )}
 
@@ -1253,9 +631,37 @@ export default function DashboardPage() {
             </DialogDescription>
           </DialogHeader>
           <div className="min-h-0 overflow-hidden px-5 pt-1 pb-3">
-            {expandedChart === 'country' ? renderCountryChart(expandedCountryChartHeight, 'expanded') : null}
-            {expandedChart === 'category' ? renderCategoryChart(expandedCategoryChartHeight, 'expanded') : null}
-            {expandedChart === 'burn' ? renderBurnChart(expandedBurnChartHeight, 'expanded') : null}
+            {expandedChart === 'country' ? (
+              <DashboardCountryChart
+                data={barData}
+                showCountryDailySpend={showCountryDailySpend}
+                height={expandedCountryChartHeight}
+                mode="expanded"
+                expandedBarSize={expandedCountryBarSize}
+                plotShellClassName={expandedPlotShellClassName}
+              />
+            ) : null}
+            {expandedChart === 'category' ? (
+              <DashboardCategoryChart
+                data={categoryChartData}
+                categoryMode={categoryMode}
+                height={expandedCategoryChartHeight}
+                mode="expanded"
+                expandedBarSize={expandedCategoryBarSize}
+                plotShellClassName={expandedPlotShellClassName}
+              />
+            ) : null}
+            {expandedChart === 'burn' ? (
+              <DashboardBurnChart
+                data={chartBurnData}
+                countryBands={staggeredCountryBands}
+                height={expandedBurnChartHeight}
+                mode="expanded"
+                yAxisMax={chartYAxisMax}
+                budgetCeiling={budgetCeiling}
+                plotShellClassName={expandedPlotShellClassName}
+              />
+            ) : null}
           </div>
         </DialogContent>
       </Dialog>
