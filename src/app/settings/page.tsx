@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { PageLoadingState } from '@/components/ui/loading-state';
@@ -205,7 +205,10 @@ export default function SettingsPage() {
               <Button size="sm"><Plus className="h-4 w-4 mr-2" />Add</Button>
             </DialogTrigger>
             <DialogContent>
-              <DialogHeader><DialogTitle>Add Fixed Cost</DialogTitle></DialogHeader>
+              <DialogHeader><DialogTitle>Add Fixed Cost</DialogTitle>
+                <DialogDescription className="sr-only">
+                  Record a one-off cost that is not tied to a single itinerary leg.
+                </DialogDescription></DialogHeader>
               <div className="space-y-4">
                 <div>
                   <Label>Description</Label>

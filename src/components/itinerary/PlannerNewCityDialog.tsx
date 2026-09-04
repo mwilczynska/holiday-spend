@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-state';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -260,6 +260,9 @@ export function PlannerNewCityDialog({
       <DialogContent className="max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add New City With LLM</DialogTitle>
+          <DialogDescription className="sr-only">
+            Generate cost estimates for a city that is not yet in the library.
+          </DialogDescription>
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-1 text-sm text-muted-foreground">

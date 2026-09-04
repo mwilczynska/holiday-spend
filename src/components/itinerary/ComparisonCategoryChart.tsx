@@ -13,7 +13,7 @@ import {
 } from 'recharts';
 import { Maximize2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { PLAN_COLORS } from '@/lib/comparison-colors';
 import type { PlanComparisonCategoryTotal, PlanComparisonResult } from '@/lib/plan-comparison';
@@ -291,6 +291,9 @@ export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult
         <DialogContent className="grid h-[85vh] max-h-[85vh] w-[96vw] max-w-[96vw] grid-rows-[auto_minmax(0,1fr)] gap-0 overflow-hidden p-0 sm:max-w-[92vw] xl:max-w-[1400px]">
           <DialogHeader className="gap-0 border-b px-5 pt-3 pb-2">
             <DialogTitle>Planned Spend by Category</DialogTitle>
+            <DialogDescription className="sr-only">
+              A full-screen view of planned spend per category for the selected plans.
+            </DialogDescription>
           </DialogHeader>
           <div className="min-h-0 overflow-hidden px-5 pt-1 pb-3">
             <div className="flex h-full min-h-0 flex-col gap-2">

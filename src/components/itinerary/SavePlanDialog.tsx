@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Save } from 'lucide-react';
 
 interface SavePlanDialogProps {
@@ -29,6 +29,9 @@ export function SavePlanDialog({ open, onOpenChange, onSave, isSaving }: SavePla
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Save Plan Snapshot</DialogTitle>
+          <DialogDescription className="sr-only">
+            Save the current itinerary as a named snapshot you can compare against later.
+          </DialogDescription>
         </DialogHeader>
         <div className="space-y-3">
           <div>

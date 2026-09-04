@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-state';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -404,6 +404,10 @@ export function BulkTransportEstimateDialog({
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-4xl">
         <DialogHeader>
           <DialogTitle>Estimate Intercity Transport</DialogTitle>
+          <DialogDescription className="sr-only">
+            Estimate transport costs for the selected itinerary legs. Results are shown for review and are not
+            applied until you choose them.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">

@@ -429,9 +429,20 @@ Four regression tests added in `src/lib/expense-update-route.test.ts` covering r
 alone for non-monetary edits, ignoring unexposed fields, and refusing another user's expense. Suite is now 50 files /
 228 tests.
 
-**3. Accessibility, not fixed.** `DialogContent` is missing a `DialogTitle` and `aria-describedby`, which Radix warns
-about at runtime. It affects screen-reader users on the planner dialogs. Recorded for separate follow-up rather than
-bundled into a performance change.
+**3. Accessibility — fixed 3 September 2026.** Two distinct problems sat behind the one Radix warning.
+
+The command palette used by every `SearchableSelect` — the city pickers on `/plan` and `/dataset` — rendered a
+`DialogContent` with **no accessible name at all**, so screen readers announced an unnamed dialog. `CommandDialog`
+now takes `title` and `description` props rendered `sr-only`, and `SearchableSelect` passes its own placeholder, so
+the city picker announces "Select a city".
+
+Separately, no dialog in the app had a `DialogDescription`. Radix still sets `aria-describedby` to an id it expects a
+description to own, so all thirteen dialogs pointed assistive technology at an element that did not exist — a
+dangling reference is worse than none. Every `DialogContent` now has a matching description.
+
+Verified in Chrome against a production build: the bulk transport dialog, the Add Itinerary Leg dialog and the city
+picker all resolve both `aria-labelledby` and `aria-describedby` to real text, and the console is silent where it
+previously logged a warning on each open.
 
 ### Original checklist
 

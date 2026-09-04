@@ -13,7 +13,7 @@ import {
 } from 'recharts';
 import { Maximize2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { PLAN_COLORS } from '@/lib/comparison-colors';
 import {
@@ -302,6 +302,9 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
           <DialogHeader className="gap-0 border-b px-5 pt-3 pb-2">
             <div className="flex flex-wrap items-center justify-between gap-3 pr-8">
               <DialogTitle>Planned Spend by Country</DialogTitle>
+              <DialogDescription className="sr-only">
+                A full-screen view of planned spend per country for the selected plans.
+              </DialogDescription>
               <CountryChartModePicker mode={mode} onChange={setMode} size="expanded" />
             </div>
           </DialogHeader>

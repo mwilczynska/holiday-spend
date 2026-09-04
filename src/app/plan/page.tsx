@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { InlineLoadingState, LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { LegCard } from '@/components/itinerary/LegCard';
@@ -964,6 +964,9 @@ export default function PlanPage() {
         <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-3xl">
           <DialogHeader>
             <DialogTitle>Resolve Missing Cities Before Import</DialogTitle>
+            <DialogDescription className="sr-only">
+              Choose how to handle cities in the imported plan that are not in the library yet.
+            </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-1 text-sm text-muted-foreground">
@@ -1411,6 +1414,9 @@ export default function PlanPage() {
                   <DialogContent>
                     <DialogHeader>
                       <DialogTitle>Add Itinerary Leg</DialogTitle>
+                      <DialogDescription className="sr-only">
+                        Add a city to the trip and set how many nights you will stay.
+                      </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4">
                       <div>
