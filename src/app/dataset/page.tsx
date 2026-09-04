@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,13 +10,10 @@ import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
-import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
 import { resolveCityDrinkInputs } from '@/lib/city-drink-inputs';
 import type { CityEstimateProvenance } from '@/lib/city-estimate-provenance';
-import {
-  PlannerNewCityDialog,
-  type NewCityCreatedPayload,
-} from '@/components/itinerary/PlannerNewCityDialog';
+import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
+
 import { Plus } from 'lucide-react';
 import {
   DATASET_PAGE_SIZE,
@@ -23,6 +21,18 @@ import {
   getPageItems,
   HISTORY_PAGE_SIZE,
 } from '@/lib/performance-bounds';
+
+// Kept out of this route's first-load JS. The panel renders only for a selected city and
+// the dialog only once opened, so neither needs to ship on arrival.
+const CityGenerationPanel = dynamic(
+  () => import('@/components/cities/CityGenerationPanel').then((m) => m.CityGenerationPanel),
+  { ssr: false }
+);
+const PlannerNewCityDialog = dynamic(
+  () => import('@/components/itinerary/PlannerNewCityDialog').then((m) => m.PlannerNewCityDialog),
+  { ssr: false }
+);
+
 
 interface City {
   id: string;
@@ -136,6 +146,7 @@ export default function DatasetPage() {
   const [history, setHistory] = useState<EstimateHistoryItem[]>([]);
   const [historyCount, setHistoryCount] = useState(0);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
+  const [hasOpenedAddDialog, setHasOpenedAddDialog] = useState(false);
   const [query, setQuery] = useState('');
   const [historyQuery, setHistoryQuery] = useState('');
   const [datasetPage, setDatasetPage] = useState(0);
@@ -197,6 +208,10 @@ export default function DatasetPage() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  useEffect(() => {
+    if (addDialogOpen) setHasOpenedAddDialog(true);
+  }, [addDialogOpen]);
 
   const allCities = useMemo(
     () =>
@@ -462,15 +477,17 @@ export default function DatasetPage() {
             <Plus className="mr-2 h-4 w-4" />
             Add City
           </Button>
-          <PlannerNewCityDialog
-            mode="dataset"
-            open={addDialogOpen}
-            onOpenChange={(open) => {
-              setAddDialogOpen(open);
-              if (!open) setSaveError(null);
-            }}
-            onCreated={handleDatasetNewCityCreated}
-          />
+          {hasOpenedAddDialog ? (
+            <PlannerNewCityDialog
+              mode="dataset"
+              open={addDialogOpen}
+              onOpenChange={(open) => {
+                setAddDialogOpen(open);
+                if (!open) setSaveError(null);
+              }}
+              onCreated={handleDatasetNewCityCreated}
+            />
+          ) : null}
         </div>
       </div>
 

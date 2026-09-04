@@ -1,8 +1,10 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Methodology complete; Phase 7 in progress; Phase 8 (performance remediation) in progress.
+**Status:** Methodology complete; Phase 8 (performance remediation) is the active phase, at Step 4; Phase 7 route
+workflows remain open but are not the active workstream; Phase 9 (public README) is queued.
 
-**Current phase:** Phase 8 — Webapp performance remediation (in progress). Phase 7 route workflows remain open.
+**Current phase:** Phase 8 — Webapp performance remediation. Steps 0, 1, 3 and 5 are complete, Step 4 (render hot
+paths) is in progress, and Steps 2, 6, 7 and 8 are open.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -12,15 +14,20 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 3 September 2026
 
-**Latest implementation checkpoint:** `e4eeb94` — durable transport-estimation documentation, a grounded OpenAI
-transport smoke, and the seven-test four-route mocked accuracy pipeline.
+**Latest implementation checkpoint:** `3c791ca` — dataset and settings payload reductions, the slim
+`/api/estimates?view=dataset` list shape with an on-demand `?cityId=` provenance mode, and restored `next/link`
+sidebar prefetching.
 
-**Latest plan checkpoint:** `e4eeb94` — recorded the grounded one-route smoke while keeping four-route same-day quote
-capture open.
+**Latest plan checkpoint:** `3c791ca` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
+target that was not met and the reason it is not reachable by payload trimming.
 
-**Next action:** Phase 8 Step 4 — render hot paths that cause in-page lag in both run modes: the ~28,400
-NFKD/regex operations per `/plan` render, the `useMemo` defeated by array identity in `searchable-select.tsx`, and
-`next/dynamic` for the four always-mounted heavy dialogs.
+**Next action:** Phase 8 Step 4 — finish the remaining render hot paths. Apply `next/dynamic` plus
+mount-on-first-open to `BulkTransportEstimateDialog`, `PlannerNewCityDialog` and `CityGenerationPanel`; memoize the
+`legs.map(...)` array passed to `BulkTransportEstimateDialog`; memoize the `/` dashboard derivation chain; convert the
+three inline chart render functions in `src/app/page.tsx` into components. Then run the full Step 4 baseline.
+
+**Working tree:** `src/app/plan/page.tsx`, `src/components/itinerary/LegCard.tsx` and `src/app/dataset/page.tsx`
+carry uncommitted Step 4 work. Items stay `[ ]` until their verification runs.
 
 **Deferred:** capture same-day operator or aggregator reference quotes for the fixed transport route fixture, then run
 the directional report and record the evidence and any initial tolerance decision.
@@ -301,7 +308,10 @@ incident as the reason for this hardening phase; do not run keyed generation whi
   is not an application result.
 - No authenticated Chrome route/console pass or owner-key generation smoke was run; those remain open.
 
-## Phase 7 — Functional webapp validation — IN PROGRESS
+## Phase 7 — Functional webapp validation — TO DO
+
+**Paused on 3 September 2026** while Phase 8 is the active workstream, so that only one phase is in progress. The
+completed checks below remain accurate and stay marked `[x]`; the remaining authenticated route workflows are open.
 
 This is a post-rollout product smoke, separate from the completed methodology baseline. Use an authenticated local
 session and record the browser surface used. A route returning HTTP 200, a build passing, or a manually visible page
@@ -500,7 +510,9 @@ Measured authenticated as `dev-local-user`, the owner of all 1,300 expenses, 62 
   the dev server is live preserves both trees and the dev server keeps serving. Authenticated walk of `/`, `/plan`,
   `/plan/compare`, `/track`, `/dataset`, `/estimates`, `/settings` returned HTTP 200 for all seven.
 
-### Step 1 — Attribute the ~7-second cold stall — COMPLETE, AND THE ORIGINAL PREMISE WAS WRONG
+Committed as `06f0120`.
+
+### Step 1 — Attribute the ~7-second cold stall — COMPLETE (original premise disproved)
 
 The stall was reproduced exactly and then attributed by direct in-process instrumentation. The planned remedy —
 gating the `src/db/index.ts` migration block — would have recovered about five milliseconds and is therefore not
@@ -538,12 +550,16 @@ The dev-versus-production A/B on the identical cold request confirms it. `/login
 - [x] Established that the `src/db/index.ts` migration block costs 4.8 ms and is not a performance problem.
 - [x] Ran `wal_checkpoint(TRUNCATE)`, reclaiming the 4.1 MB WAL to 0 bytes. Retain as a startup pragma in Step 6 for
   hygiene, not as a speedup.
-- [ ] Superseded: the cold stall is inherent to development mode and is fixed by running production, not by changing
-  application code. This makes Step 5 the critical path rather than deferred work.
+
+**Superseded (3 September 2026):** the planned remedy of gating the `src/db/index.ts` migration block is dropped. The
+cold stall is inherent to development mode and is fixed by running production, not by changing application code. This
+made Step 5 the critical path rather than deferred work.
 
 Two earlier figures in this investigation were measurement artifacts and are recorded here so they are not reused: a
 1,734 ms "module load" was `tsx` compiling TypeScript, and an 830 ms "cold" dashboard reading came from a readiness
 probe against `/login`, which imports auth and the database and so warmed what was being measured.
+
+Committed as `2c13f48`.
 
 ### Step 2 — Fix the measurement harness — TO DO
 
@@ -587,15 +603,50 @@ Verification: 49 Vitest files / 217 tests pass, including three new route tests 
 `?cityId=` full-provenance mode, and an unknown city. TypeScript, the production build, the memory mirror and the
 deterministic v1.1 check all pass; all seven core routes returned HTTP 200 authenticated.
 
-### Step 4 — Render hot paths — TO DO
+Committed as `3c791ca`.
 
-- [ ] Memoize `canonicalCountryOptions` (`src/app/plan/page.tsx:865`), which runs ~28,400 NFKD-normalise plus
-  four-regex operations on every render, including every keystroke.
-- [ ] Hoist the city-option array out of `LegCard` render (`src/components/itinerary/LegCard.tsx:389`) so the
-  `useMemo` at `src/components/ui/searchable-select.tsx:44` stops being defeated by a fresh array identity.
-- [ ] Apply `next/dynamic` to `BulkTransportEstimateDialog`, `TransportEstimateDialog`, `PlannerNewCityDialog`,
-  `CityGenerationPanel` and the Recharts bundle.
-- [ ] Memoize the dashboard derivation chain and convert the inline chart render functions into components.
+### Step 4 — Render hot paths — IN PROGRESS
+
+Verified by `npx tsc --noEmit`, `npx next lint` (no warnings or errors), 49 Vitest files / 217 tests, and a
+production build. The dashboard items below remain open, so the step is not complete.
+
+The original entry estimated the `/plan` country-option cost as "~28,400 NFKD-normalise plus four-regex operations per
+render". That estimate is superseded by direct measurement: 5.037 ms per render, recorded below.
+
+- [x] Memoized `canonicalCountryOptions` in `src/app/plan/page.tsx`. It was rebuilt on every render, including every
+  keystroke, at a measured **5.037 ms**, because `getSelectedCountryPreview` re-scanned every saved country for each
+  of the 245 `KNOWN_COUNTRIES` and `findKnownCountryMetadata` runs `slugifyId` — an NFKD normalise plus four regex
+  replaces — on every call. Each saved country is now resolved once into a `Set` of canonical ids, and the result is
+  wrapped in `useMemo` keyed on `countries`. Measured **0.045 ms**, a **112x** improvement. Outputs were verified
+  byte-identical between the old and new implementations before the change was kept.
+- [x] Built one shared `cityOptions` array with `useMemo` in `src/app/plan/page.tsx` and passed it to every `LegCard`
+  and the Add Leg dialog. Each of up to 12 leg cards previously built its own ~200-object array inline during render,
+  which also handed `SearchableSelect` a new `options` identity every time and so permanently defeated the `useMemo`
+  at `src/components/ui/searchable-select.tsx:44`, re-sorting ~200 options with `localeCompare` per card per render.
+- [x] Loaded `TransportEstimateDialog` (675 lines) through `next/dynamic` and mounted it only after first open,
+  latched so its state survives close and reopen. It was previously mounted unconditionally inside every leg card —
+  roughly a dozen instances — for dialogs the user had not opened, each with its own hooks and a `localStorage` read.
+- [x] Applied the same dynamic-import and mount-on-first-open treatment to `BulkTransportEstimateDialog` (785 lines)
+  and `PlannerNewCityDialog` (516 lines) in `src/app/plan/page.tsx`, and to `CityGenerationPanel` (455 lines) and the
+  dataset `PlannerNewCityDialog` in `src/app/dataset/page.tsx`. `CityGenerationPanel` already rendered only for a
+  selected city, so it needed the bundle split rather than a mount gate.
+- [x] Memoized the `legs.map(...)` array passed to `BulkTransportEstimateDialog`, which defeated that component's
+  internal `useMemo` by identity in the same way `cityOptions` did.
+
+First-load JavaScript after these splits, from the production build:
+
+| Route | Before | After |
+| --- | --- | --- |
+| `/dataset` | 154 kB | **127 kB** |
+| `/plan` | 177 kB | **169 kB** |
+- [ ] Memoize the dashboard derivation chain in `src/app/page.tsx` (roughly lines 674-731).
+- [ ] Convert the three inline chart render functions in `src/app/page.tsx` — `renderCountryChart`,
+  `renderCategoryChart` and `renderBurnChart` — into real components so Recharts stops rebuilding its subtree on
+  every render.
+- [ ] Carried over from the original Step 4 list: apply `next/dynamic` to the Recharts bundle on `/`.
+- [ ] Run the full Step 4 baseline (`npx tsc --noEmit`, `npm run build`, `npm test -- --run`,
+  `npm run docs:check-memory`, `npm run methodology:v1.1:check`), record before/after render measurements in `LOG.md`,
+  and commit.
 
 ### Step 5 — Production as the normal run mode — COMPLETE
 
@@ -663,6 +714,8 @@ correctly against the stored hash throughout. And `emailPasswordEnabled` was wro
 renders `hasEmailPassword` from the same flag and was rendering email and password fields, which already disproved
 that hypothesis before instrumentation confirmed the flag was true.
 
+Committed as `deb299c` (the interactive password tool) and `6227449` (the verified production run mode).
+
 ### Step 6 — Deferred cleanup — TO DO
 
 - [ ] Indexes on `expenses(user_id, date)`, `expenses(leg_id)`, `itinerary_legs(user_id, sort_order)`,
@@ -694,11 +747,44 @@ Rules: every removal needs a reason recorded in `LOG.md` — dead code path, can
 not remove a test for being slow or for currently passing. Never remove coverage of the v1.1 methodology boundary, the
 live-CSV guard, FX validation, or auth. Re-run the full suite after each batch and record before/after counts.
 
-### Step 8 — Documentation — IN PROGRESS
+### Step 8 — Documentation — TO DO
 
 - [x] Add the requested line verbatim to `CLAUDE.md` and mirror it into `AGENTS.md`.
 - [ ] Replace the obsolete OneDrive section of `CLAUDE.md`; note the orphaned OneDrive copy; retire or shrink
   `scripts/prepare-next-dev.mjs`.
+
+## Phase 9 — README for a public audience — TO DO
+
+`README.md` should let a potential employer reading the repository cold understand what the app is, what problem it
+solves, and what it looks like, before it asks them to install anything. The current file does not do that. It opens
+with two sentences of description, then moves through the product model and stack into `.env` setup, `npm ci`,
+`npm run db:seed` and `npm run dev` — developer setup occupies the middle of the document, above anything
+product-facing. There are no screenshots and no `docs/images/` directory. There is no architecture summary and no
+description of how city costs are actually derived, only a pointer to `/estimates` as a route name. `Useful Commands`
+lists retired v3/v4/v5 research entry points (`methodology:pilot`, `methodology:batches:validate`,
+`methodology:observations:validate`) and omits the active verification baseline, `npm run docs:check-memory` and
+`npm run methodology:v1.1:check`. `npm run build && npm start` is listed as a bare command with no indication that it
+is the normal way to run the app, and `NEXTAUTH_URL` is not mentioned. Nothing states that this is a private personal
+project, so the sign-in flow reads as an invitation.
+
+- [ ] Open with a jargon-free explanation of what the app is and the problem it solves — planning and tracking spend
+  across a long multi-city trip — placed above the product model, stack and any setup instructions.
+- [ ] Capture screenshots of the main routes: `/` (planned versus actual dashboard), `/plan` (planner), `/plan/compare`
+  (plan comparison), `/track` (expense tracking) and `/dataset` (city-cost library). Do not reference any image until
+  it exists.
+- [ ] Store the captured images under `docs/images/` and reference them from `README.md` with relative paths.
+- [ ] Add a short feature overview covering itinerary planning, budget modelling across accommodation, food, drinks and
+  activities, planned-versus-actual tracking, Wise CSV import, and LLM-backed city-cost generation.
+- [ ] Add a brief, honest technical section: the stack, how the app is put together, and the city-cost methodology in a
+  few sentences, linking to the `/estimates` route and to `docs/product/`.
+- [ ] Move developer setup below the product-facing content and correct it: install, `npm run dev` for editing code
+  versus `npm run build && npm start` for using the app, the environment variables actually required (including
+  `NEXTAUTH_URL`), and the active verification baseline from `CLAUDE.md`.
+- [ ] Replace the `Useful Commands` block's retired research entry points with the commands a reader would actually
+  run, keeping the baseline commands together.
+- [ ] State plainly that this is a private personal project and that there is no public sign-up.
+- [ ] Verify every relative link and image path in `README.md` resolves in the repository before marking this phase
+  complete.
 
 ## Definition of done
 
