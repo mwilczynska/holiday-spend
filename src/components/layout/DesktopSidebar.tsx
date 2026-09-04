@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState, useTransition } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { BarChart3, BookOpenText, Database, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags, UserCircle } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
@@ -21,21 +22,11 @@ const navItems = [
 
 export function DesktopSidebar() {
   const pathname = usePathname();
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
   const [pendingHref, setPendingHref] = useState<string | null>(null);
 
   useEffect(() => {
     setPendingHref(null);
   }, [pathname]);
-
-  const handleNavigate = (href: string) => {
-    if (href === pathname) return;
-    setPendingHref(href);
-    startTransition(() => {
-      router.push(href);
-    });
-  };
 
   return (
     <aside className="hidden lg:flex flex-col w-64 border-r bg-card h-screen sticky top-0">
@@ -48,12 +39,17 @@ export function DesktopSidebar() {
           const isActive = (pathname === item.href ||
             (item.href !== '/' && pathname.startsWith(item.href))) &&
             !('excludePrefix' in item && item.excludePrefix && pathname.startsWith(item.excludePrefix));
-          const isNavigating = isPending && pendingHref === item.href;
+          const isNavigating = pendingHref === item.href;
           return (
-            <button
+            // `next/link` rather than router.push, so Next prefetches each route
+            // as it enters the viewport. router.push disabled prefetching entirely,
+            // making every navigation a cold request.
+            <Link
               key={item.href}
-              type="button"
-              onClick={() => handleNavigate(item.href)}
+              href={item.href}
+              onClick={() => {
+                if (item.href !== pathname) setPendingHref(item.href);
+              }}
               className={cn(
                 'flex w-full items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                 isActive
@@ -64,7 +60,7 @@ export function DesktopSidebar() {
             >
               {isNavigating ? <Loader2 className="h-4 w-4 animate-spin" /> : <item.icon className="h-4 w-4" />}
               {item.label}
-            </button>
+            </Link>
           );
         })}
       </nav>

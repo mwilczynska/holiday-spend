@@ -252,6 +252,95 @@ describe.sequential('country metadata routes', () => {
     expect(json.data.summary.historyCount).toBe(1);
   });
 
+  it('GET /api/estimates dataset view omits heavy provenance blobs', async () => {
+    await dbModule.db.insert(countries).values({
+      id: 'japan',
+      name: 'Japan',
+      currencyCode: 'JPY',
+      region: 'east_asia',
+    });
+    await dbModule.db.insert(cities).values({
+      id: 'tokyo',
+      name: 'Tokyo',
+      countryId: 'japan',
+      estimationSource: 'llm_city_generation_v1_1',
+      estimatedAt: '2026-08-21T00:00:00.000Z',
+    });
+    const estimate = await dbModule.db.insert(cityEstimates).values({
+      cityId: 'tokyo',
+      estimatedAt: '2026-08-21T00:00:00.000Z',
+      source: 'llm_city_generation_v1_1',
+      dataJson: '{}',
+      anchorsJson: JSON.stringify({ values: { hotel_3star_2p: 200 } }),
+      reasoning: 'Test history row.',
+      isActive: 1,
+    }).returning({ id: cityEstimates.id }).get();
+    await dbModule.db.update(cities).set({ estimationId: estimate.id }).where(eq(cities.id, 'tokyo'));
+
+    const response = await estimatesRouteModule.GET(
+      new Request('http://localhost/api/estimates?view=dataset')
+    );
+    const json = await response.json();
+
+    const rowProvenance = json.data.rows[0].currentEstimateProvenance;
+    expect(rowProvenance).toHaveProperty('methodologyVersion');
+    expect(rowProvenance).not.toHaveProperty('anchors');
+    expect(rowProvenance).not.toHaveProperty('inputSnapshot');
+    expect(rowProvenance).not.toHaveProperty('sources');
+    expect(rowProvenance).not.toHaveProperty('fx');
+    expect(json.data.history[0].provenance).not.toHaveProperty('anchors');
+    expect(json.data.history[0].provenance).toHaveProperty('methodologyVersion');
+  });
+
+  it('GET /api/estimates returns full provenance for a single requested city', async () => {
+    await dbModule.db.insert(countries).values({
+      id: 'japan',
+      name: 'Japan',
+      currencyCode: 'JPY',
+      region: 'east_asia',
+    });
+    await dbModule.db.insert(cities).values({
+      id: 'tokyo',
+      name: 'Tokyo',
+      countryId: 'japan',
+      accom2star: 100,
+      estimationSource: 'llm_city_generation_v1_1',
+      estimatedAt: '2026-08-21T00:00:00.000Z',
+    });
+    const estimate = await dbModule.db.insert(cityEstimates).values({
+      cityId: 'tokyo',
+      estimatedAt: '2026-08-21T00:00:00.000Z',
+      source: 'llm_city_generation_v1_1',
+      dataJson: '{}',
+      anchorsJson: JSON.stringify({ values: { hotel_3star_2p: 200 } }),
+      reasoning: 'Test history row.',
+      isActive: 1,
+    }).returning({ id: cityEstimates.id }).get();
+    await dbModule.db.update(cities).set({ estimationId: estimate.id }).where(eq(cities.id, 'tokyo'));
+
+    const response = await estimatesRouteModule.GET(
+      new Request('http://localhost/api/estimates?cityId=tokyo')
+    );
+    const json = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(json.data.cityId).toBe('tokyo');
+    expect(json.data.currentEstimateProvenance).toHaveProperty('anchors');
+    expect(json.data.history).toHaveLength(1);
+    expect(json.data.history[0].provenance).toHaveProperty('anchors');
+  });
+
+  it('GET /api/estimates returns empty provenance for an unknown city', async () => {
+    const response = await estimatesRouteModule.GET(
+      new Request('http://localhost/api/estimates?cityId=nowhere')
+    );
+    const json = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(json.data.currentEstimateProvenance).toBeNull();
+    expect(json.data.history).toEqual([]);
+  });
+
   it('POST /api/countries infers canonical metadata for a known country alias', async () => {
     const { response, json } = await postJson(countriesRouteModule.POST, {
       name: 'UK',

@@ -54,7 +54,9 @@ export default function SettingsPage() {
     try {
       const [costsRes, countriesRes, plannerSettingsRes] = await Promise.all([
         fetch('/api/fixed-costs'),
-        fetch('/api/countries'),
+        // Only id and name are used below, so skip the nested city rows: the full
+        // payload is ~166 KB against ~5.5 KB here.
+        fetch('/api/countries?includeCities=false'),
         fetch('/api/planner/settings', { cache: 'no-store' }),
       ]);
       const costsData = await costsRes.json();

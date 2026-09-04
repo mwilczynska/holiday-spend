@@ -18,8 +18,9 @@ transport smoke, and the seven-test four-route mocked accuracy pipeline.
 **Latest plan checkpoint:** `e4eeb94` — recorded the grounded one-route smoke while keeping four-route same-day quote
 capture open.
 
-**Next action:** Phase 8 Step 3 — payload reductions that apply in both run modes: `/settings` requesting the
-166 KB city dataset for one dropdown, the duplicated estimates history, and the ~600 KB `/dataset` load.
+**Next action:** Phase 8 Step 4 — render hot paths that cause in-page lag in both run modes: the ~28,400
+NFKD/regex operations per `/plan` render, the `useMemo` defeated by array identity in `searchable-select.tsx`, and
+`next/dynamic` for the four always-mounted heavy dialogs.
 
 **Deferred:** capture same-day operator or aggregator reference quotes for the fixed transport route fixture, then run
 the directional report and record the evidence and any initial tolerance decision.
@@ -553,13 +554,38 @@ probe against `/login`, which imports auth and the database and so warmed what w
   and the `storageState` mechanism in `tests/playwright/auth.setup.ts`.
 - [ ] Record the corrected baseline in `LOG.md`; retain the Phase 7A numbers as dated history.
 
-### Step 3 — Payload and navigation — TO DO
+### Step 3 — Payload and navigation — COMPLETE
 
-- [ ] `src/app/settings/page.tsx:57` to `?includeCities=false` (166 KB to 5.5 KB).
-- [ ] `src/app/api/estimates/route.ts`: drop the duplicated top-level `history` (`:187`), skip the per-row build when
-  `view=dataset`, and apply the unused `HISTORY_PAGE_SIZE` from `src/lib/performance-bounds.ts:4`.
-- [ ] `src/app/api/countries/route.ts:31`: replace the O(71×203) filter with a `Map` group-by over needed columns.
-- [ ] Restore prefetch by replacing `router.push` navigation in `DesktopSidebar`/`MobileNav` with `next/link`.
+- [x] `/settings` and `/track/add` now request `?includeCities=false`. Both read only scalar country fields, so the
+  payload falls from **166,194 to 5,508 bytes** on each, a 96.7% reduction. `/plan` already used this variant.
+- [x] `/api/estimates?view=dataset` no longer assembles 203 full rows, attaches history to each, and sorts them only
+  to discard the result; the lightweight shape is built directly and the summary derives from the query rows so both
+  views agree.
+- [x] Heavy provenance blobs (`anchors`, `inputSnapshot`, `sources`, `fx`, `evidenceGrades`, `intervals`,
+  `collectionTelemetry`, `missingness`) are no longer sent for every city and every history row. They accounted for
+  **91%** of that response — 201,528 bytes across 203 rows plus 194,137 across 59 history rows — while the page renders
+  them for one selected city at a time. A new `?cityId=` mode serves the full record on demand (about 25 KB), and
+  `/dataset` fetches it when a city is selected. `toListProvenance` names the retained scalar fields explicitly so a
+  new blob field cannot silently start shipping in the list payload.
+- [x] `/api/countries` groups cities with a `Map` instead of an O(71x203) filter per country.
+- [x] Prefetch restored: `DesktopSidebar` and `MobileNav` use `next/link` instead of `router.push`, which had disabled
+  Next's viewport prefetching for all nav items. The pending-state spinner is preserved.
+
+Measured on a production build, authenticated:
+
+| Payload | Before | After |
+| --- | --- | --- |
+| `/settings` and `/track/add` country fetch | 166,194 B | **5,508 B** |
+| `/api/estimates?view=dataset` | 434,234 B | **132,011 B** |
+| `/dataset` initial JSON total | 600,428 B | **298,205 B** |
+
+The plan's sub-100 KB target for `/dataset` was **not** met and is not reachable this way: the remaining 166,194 bytes
+are `/api/countries`, which supplies the dataset table itself. The page filters and sorts all rows client-side, so
+trimming it further requires server-side search rather than a payload change. Recorded rather than quietly dropped.
+
+Verification: 49 Vitest files / 217 tests pass, including three new route tests covering the slim list shape, the
+`?cityId=` full-provenance mode, and an unknown city. TypeScript, the production build, the memory mirror and the
+deterministic v1.1 check all pass; all seven core routes returned HTTP 200 authenticated.
 
 ### Step 4 — Render hot paths — TO DO
 
