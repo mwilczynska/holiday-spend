@@ -1421,3 +1421,46 @@ roughly 1.2 GB without completing a request - is preserved as dated context rath
 Verification: TypeScript, `next lint` clean, 49 Vitest files / 224 tests, production build, memory mirror, and the
 deterministic v1.1 check with the live CSV hash unchanged. Fourteen indexes present; data intact at 1,300 expenses,
 62 legs and 63 saved plans.
+
+## Phase 7 workflow pass and two expense-update defects - 3 September 2026
+
+The remaining Phase 7 checks are mutating, so they were run against a seeded fictional trip rather than the real
+dataset. The real database was backed up twice and verified before seeding, restored afterwards, and confirmed
+byte-identical across all 21 tables.
+
+All seven routes render with zero console errors, navigated client-side through the `next/link` sidebar.
+`/plan/compare` shows a graceful empty state when no snapshots exist. Adding a leg through the Add Leg dialog moved
+the plan from 6 legs / 33 nights / $8,779 to 7 / 37 / $10,303 with dates auto-derived, and it survived a reload with
+its tiers and $1,525 total intact; deleting it returned the totals exactly. Changing traveller count from 2 to 3
+rescaled the trip from $10,303 to $15,474 - a factor of 1.502 rather than a flat 1.5, because accommodation does not
+scale linearly - while the `cities` table was verified byte-identical before and after, confirming the "stored for
+two people, scaled at runtime" invariant. Two snapshots compared correctly, with all three dynamically imported
+charts rendering 19 bars and two line curves. On `/track`, exclude and re-include round-tripped exactly and delete
+removed one row.
+
+Two real defects surfaced in `PUT /api/expenses/[id]`, both now fixed.
+
+The first is the more serious. The handler wrote the new `amount` but never recomputed `amountAud`. Every total in
+the app sums `amountAud`, never `amount`, so an edited amount appeared in the expenses list and was silently absent
+from the dashboard, country and category totals. It was reproduced directly: expense 2307 held `amount = 250`
+alongside `amount_aud = 9.26`. The handler now recomputes the conversion whenever amount, currency or date changes,
+and fails closed by storing `null` when a rate cannot be resolved, which the dashboard already excludes rather than
+treating as zero.
+
+The second is that the same handler used `set({ ...body })`, writing the entire request body to the row. A caller
+could set any column, including reassigning the expense to another `userId`, flipping `isDeleted`, or changing `id`
+and `source`. It is now validated against an explicit Zod schema of the nine fields the edit form exposes. A request
+carrying `userId: "attacker"`, `isDeleted: 1` and `id: 99999` was verified to change only the amount.
+
+Worth recording how the first defect was nearly missed. The edit appeared not to save at all - the totals did not
+move and the dialog stayed open - and the obvious conclusion was a broken save or a failed synthetic input. The
+network log showed `PUT /api/expenses/2307` returning 200, which ruled out both. Only then did checking the row
+itself reveal that `amount` had changed while `amount_aud` had not. A test that had asserted "the save request
+succeeds" would have passed throughout.
+
+A third finding is recorded but not fixed: `DialogContent` is missing a `DialogTitle` and `aria-describedby`, which
+Radix warns about at runtime and which affects screen-reader users on the planner dialogs. It is left for separate
+follow-up rather than bundled into unrelated work.
+
+Verification: TypeScript, `next lint` clean, 50 Vitest files / 228 tests including four new regression tests, the
+memory mirror, and the deterministic v1.1 check with the live CSV hash unchanged.

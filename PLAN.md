@@ -366,7 +366,53 @@ baseline passed TypeScript, production build, 41 Vitest files / 184 tests, memor
 - [x] Complete the separately deferred Tottori, Toowoomba, and Brno owner-key smoke and provenance checks from
   Phase 5.
 
-### Remaining authenticated checks — TO DO
+### Remaining authenticated checks — IN PROGRESS
+
+**Workflow pass, 3 September 2026 (Chrome, authenticated production build, demo data).** Mutating checks were run
+against a seeded fictional trip, not the real dataset; the real database was backed up twice, verified, restored
+afterwards and confirmed byte-identical across all 21 tables.
+
+- [x] All seven routes render with **zero console errors**, navigated client-side through the new `next/link` sidebar.
+- [x] `/plan/compare` empty state is graceful: "No saved plans yet" with a link to the planner.
+- [x] Added a leg (Lisbon, 4 nights) through the Add Leg dialog: plan moved from 6 legs / 33 nights / $8,779 to
+  7 / 37 / $10,303, dates auto-derived as 2026-04-04 to 2026-04-08.
+- [x] Reloaded `/plan`: the leg, its tiers, dates and $1,525 total all persisted.
+- [x] Deleted the leg; totals returned exactly to 6 legs / 33 nights / $8,779.
+- [x] Traveller count 2 to 3 rescaled the trip $10,303 to $15,474 — a factor of 1.502, not a flat 1.5, because
+  accommodation does not scale linearly. Verified the `cities` table was **not** rewritten: Lisbon's base costs are
+  byte-identical before and after, confirming the "stored for two people, scaled at runtime" invariant.
+- [x] Saved two plan snapshots and compared them. `/api/saved-plans/compare` returned both with correctly differing
+  data (4 countries / 33 points versus 5 / 37), and all three dynamically imported charts rendered: 19 bars with
+  real widths and two line curves with 1,513 and 1,688 characters of path data.
+- [x] `/track`: exclude and re-include round-tripped exactly ($4,101 to $4,037 to $4,101); delete removed one row
+  (83 to 82 expenses).
+- [ ] Remaining: tagging, reassignment between legs, Wise CSV import, provider-failure and retry states.
+
+### Defects found and fixed
+
+**1. Editing an expense left `amountAud` stale — silent, and it corrupted every total.**
+`PUT /api/expenses/[id]` wrote the new `amount` but never recomputed `amountAud`. Every total in the app sums
+`amountAud`, never `amount`, so an edited amount appeared in the expenses list and was silently absent from the
+dashboard, country and category totals. Reproduced directly: expense 2307 held `amount = 250` alongside
+`amount_aud = 9.26`. The handler now recomputes the conversion whenever amount, currency or date changes, and fails
+closed by storing `null` if a rate cannot be resolved, which the dashboard already excludes rather than treating as
+zero. Verified end to end: 9.26 became 500 for a 500 AUD edit.
+
+**2. The same handler wrote the entire request body to the row.**
+It used `set({ ...body })`, so a caller could write any column, including reassigning the expense to another
+`userId`, flipping `isDeleted`, or changing `id` and `source` — none of which the edit form exposes. Now validated
+against an explicit Zod schema of the nine editable fields. Verified: a request carrying
+`userId: "attacker"`, `isDeleted: 1` and `id: 99999` changed only the amount.
+
+Four regression tests added in `src/lib/expense-update-route.test.ts` covering recalculation, leaving `amountAud`
+alone for non-monetary edits, ignoring unexposed fields, and refusing another user's expense. Suite is now 50 files /
+228 tests.
+
+**3. Accessibility, not fixed.** `DialogContent` is missing a `DialogTitle` and `aria-describedby`, which Radix warns
+about at runtime. It affects screen-reader users on the planner dialogs. Recorded for separate follow-up rather than
+bundled into a performance change.
+
+### Original checklist
 
 - [ ] Confirm `/`, `/plan`, `/plan/compare`, `/track`, `/dataset`, `/estimates`, and `/settings` render without
   unexpected console-visible or user-visible errors.
