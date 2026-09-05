@@ -1,0 +1,71 @@
+{
+  "runAt": "2026-09-05T02:30:00Z",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "max",
+  "promptVersion": "llm_prompt_intercity_transport_1",
+  "groupSize": 2,
+  "references": "data/reference/transport_accuracy_references_2026-09-05.json",
+  "note": "Estimates were generated in the running planner and reviewed only. No option was applied to the itinerary.",
+  "observations": [
+    {
+      "routeId": "koh-lanta-bangkok-2026-12-20",
+      "usedWebSearch": false,
+      "fallbackReason": "OpenAI Responses API returned no text output for the transport estimate.",
+      "options": [
+        { "label": "Flight via Krabi", "mode": "flight", "confidence": "medium", "totalAud": 320 },
+        { "label": "Bus and minivan", "mode": "bus", "confidence": "medium", "totalAud": 160 },
+        { "label": "Train via Trang", "mode": "train", "confidence": "low", "totalAud": 200 },
+        { "label": "Drive in own car", "mode": "drive", "confidence": "medium", "totalAud": 135 }
+      ]
+    },
+    {
+      "routeId": "bangkok-phuket-2026-12-26",
+      "usedWebSearch": true,
+      "fallbackReason": null,
+      "options": [
+        { "label": "Direct flight", "mode": "flight", "confidence": "medium", "totalAud": 280 },
+        { "label": "Direct bus", "mode": "bus", "confidence": "medium", "totalAud": 120 },
+        { "label": "Train plus bus", "mode": "train", "confidence": "medium", "totalAud": 150 },
+        { "label": "Drive", "mode": "drive", "confidence": "medium", "totalAud": 125 }
+      ]
+    },
+    {
+      "routeId": "colombo-chennai-2027-01-17",
+      "usedWebSearch": true,
+      "fallbackReason": null,
+      "options": [
+        { "label": "Direct economy flight", "mode": "flight", "confidence": "medium", "totalAud": 450 }
+      ]
+    }
+  ],
+  "report": {
+    "tolerance": 0.25,
+    "againstCheapestListedFare": {
+      "rows": [
+        { "routeId": "bangkok-phuket-2026-12-26", "mode": "bus", "referenceAud": 88, "estimatedAud": 120, "absoluteErrorAud": 32, "relativeError": 0.364 },
+        { "routeId": "koh-lanta-bangkok-2026-12-20", "mode": "bus", "referenceAud": 90, "estimatedAud": 160, "absoluteErrorAud": 70, "relativeError": 0.778, "usedFallback": true },
+        { "routeId": "colombo-chennai-2027-01-17", "mode": "flight", "referenceAud": 402, "estimatedAud": 450, "absoluteErrorAud": 48, "relativeError": 0.119 }
+      ],
+      "medianAbsoluteErrorAud": 48,
+      "medianRelativeError": 0.364,
+      "outliers": ["bangkok-phuket-2026-12-26", "koh-lanta-bangkok-2026-12-20"]
+    },
+    "againstRepresentativeListedFare": {
+      "rows": [
+        { "routeId": "bangkok-phuket-2026-12-26", "mode": "bus", "referenceAud": 96, "estimatedAud": 120, "absoluteErrorAud": 24, "relativeError": 0.25 },
+        { "routeId": "koh-lanta-bangkok-2026-12-20", "mode": "bus", "referenceAud": 118, "estimatedAud": 160, "absoluteErrorAud": 42, "relativeError": 0.356, "usedFallback": true },
+        { "routeId": "colombo-chennai-2027-01-17", "mode": "flight", "referenceAud": 400, "estimatedAud": 450, "absoluteErrorAud": 50, "relativeError": 0.125 }
+      ],
+      "medianAbsoluteErrorAud": 42,
+      "medianRelativeError": 0.25,
+      "outliers": ["koh-lanta-bangkok-2026-12-20"]
+    }
+  },
+  "findings": [
+    "Every estimate is high. There is no route where the model came in under the listed fare, so the error is a consistent bias rather than scatter.",
+    "The choice of reference basis moves the median relative error from 36.4% to 25.0%. A tolerance chosen without stating which basis it applies to would be meaningless.",
+    "The one route that fell back to the non-search path is the worst on both bases. That is one observation, not evidence, but it points the same way as the design assumption that the grounded path should be better.",
+    "Three routes, one provider, one model, one day. Directional. Not a calibration."
+  ]
+}

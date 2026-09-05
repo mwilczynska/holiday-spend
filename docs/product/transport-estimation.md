@@ -124,6 +124,32 @@ a different source. Mixing sources without matching their fare bases is what wou
 Fares three or more months out move, so this is a snapshot, not a stable benchmark. A comparison run later must
 recapture.
 
+### Directional accuracy run, 5 September 2026
+
+Estimates were generated in the running planner for the three reference routes, with OpenAI
+`gpt-5.6-luna` at Maximum reasoning effort, two travellers, review only - no option was applied to the
+itinerary. Results in `data/reference/transport_accuracy_run_2026-09-05.json`.
+
+| Route | Mode | Reference (cheapest) | Estimate | Relative error |
+| --- | --- | --- | --- | --- |
+| Bangkok to Phuket | bus | A$88 | A$120 | 36.4% |
+| Koh Lanta to Bangkok | bus | A$90 | A$160 | 77.8% (fell back) |
+| Colombo to Chennai | flight | A$402 | A$450 | 11.9% |
+
+Median relative error 36.4% against the cheapest listed fare, and **25.0% against the representative
+fare**, where the same three estimates give 25.0%, 35.6% and 12.5%. That the median moves by eleven
+points purely on the choice of reference basis is the most important number here: a tolerance quoted
+without saying which basis it applies to would mean nothing.
+
+Every estimate is high. Not one route came in under the listed fare, so this is a consistent upward
+bias rather than scatter, which is a more tractable thing to correct than noise would be.
+
+The one route that fell back to the non-search path is the worst on both bases. One observation is not
+evidence, but it points the same way as the design assumption that the grounded path should be better.
+
+Three routes, one provider, one model, one day. Directional. Not a calibration, and not a basis for
+setting a tolerance yet.
+
 ### Completing the accuracy check
 
 The model side needs a provider API key. Keys are entered in the app UI, stay in browser storage, and are never

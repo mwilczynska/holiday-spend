@@ -1950,3 +1950,53 @@ than a stable benchmark, and a comparison run on a later date has to recapture.
 
 Three routes is enough to be directional and is not enough to calibrate a tolerance. That remains true after this
 work; what changed is that the independent side of the comparison now exists and is reproducible.
+
+## Transport accuracy run and an OpenAI output-budget bug - 5 September 2026
+
+The three reference routes captured earlier were run through the live planner with OpenAI
+`gpt-5.6-luna` at Maximum reasoning effort, two travellers, review only - no option was applied to the
+itinerary. Results are in `data/reference/transport_accuracy_run_2026-09-05.json`.
+
+| Route | Mode | Reference (cheapest) | Estimate | Relative error |
+| --- | --- | --- | --- | --- |
+| Bangkok to Phuket | bus | A$88 | A$120 | 36.4% |
+| Koh Lanta to Bangkok | bus | A$90 | A$160 | 77.8%, fell back |
+| Colombo to Chennai | flight | A$402 | A$450 | 11.9% |
+
+Median relative error is 36.4% against the cheapest listed fare and 25.0% against the representative
+fare. The median moves eleven points purely on the choice of reference basis, which is the strongest
+argument for having recorded both: a tolerance quoted without naming its basis would mean nothing.
+
+Every estimate is high. No route came in under the listed fare, so this is a consistent upward bias
+rather than scatter - a more tractable thing to correct.
+
+### Why one route fell back
+
+One route reported `OpenAI Responses API returned no text output for the transport estimate` and
+silently used the non-search fallback, which produced the least accurate answer of the three.
+
+Reasoning tokens are billed against `max_output_tokens` in the Responses API. At maximum effort the
+code raised that budget to 12,000 and sent `reasoning: { effort: 'max' }` alongside a web-search tool.
+On a messy multi-modal route - island transfer plus mainland bus, with search results to reason over -
+the model spent the entire budget thinking and never emitted a `message` item. The response comes back
+`status: "incomplete"` with `incomplete_details.reason: "max_output_tokens"`, carrying only reasoning
+items. The extraction filters for `type === 'message'`, finds nothing, and reports "no text output".
+
+That message describes the symptom and hides the cause, and the cause matters: the user pays for a
+maximum-effort reasoning run, gets nothing back, and is silently served the weaker estimate. It also
+explains why it was intermittent - only the hardest of the three routes exhausted the budget.
+
+Two changes. The failure now reads the response `status`, `incomplete_details.reason` and
+`usage.output_tokens_details.reasoning_tokens`, and says when the budget was spent on reasoning and how
+many tokens went to it. And the maximum-effort budget rose from 12,000 to 32,000, because it has to
+cover the reasoning and the answer together.
+
+The three regression tests were checked against the pre-fix code and fail there with exactly the right
+complaints, including `expected 12000 to be greater than or equal to 32000`. An existing test that
+pinned `max_output_tokens: 12000` was updated rather than deleted, with the reason recorded inline.
+
+Raising the cap increases the worst-case cost of a maximum-effort call. That is the intended trade: the
+previous behaviour paid for the reasoning anyway and then threw the result away.
+
+Verification: TypeScript, `next lint` clean, 56 files / 256 tests, production build,
+`methodology:v1.1:check` with the live CSV hash unchanged, memory mirror.

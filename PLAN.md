@@ -520,10 +520,17 @@ previously logged a warning on each open.
     cheapest listed fare and a representative mid-tier option are recorded, because the tolerance decision depends on
     which one the estimate is meant to predict. South American and long-haul legs were left out rather than filled in
     from a source with a different fare basis.
-  - [ ] **Owner action.** Run estimates for those three routes and produce the report. This needs a provider API key,
-    which is entered in the app UI and never handled by an assistant, so it cannot be done here. Steps are in
-    `docs/product/transport-estimation.md`, section "Completing the accuracy check". Three routes is directional, not
-    a calibration. Fares this far out move, so a run on a later date must recapture.
+  - [x] Ran estimates for the three routes on 5 September 2026 with OpenAI `gpt-5.6-luna` at Maximum effort, review
+    only. Median relative error 36.4% against the cheapest listed fare and 25.0% against the representative fare;
+    every estimate high; the one route that fell back was the worst on both bases. Recorded in
+    `data/reference/transport_accuracy_run_2026-09-05.json`. Directional, not a calibration - three routes, one
+    provider, one day - so no tolerance is set yet.
+  - [x] Diagnosed and fixed the fallback that run exposed: at maximum effort, reasoning tokens exhausted the 12,000
+    `max_output_tokens` budget, so the response carried no message and the generic "returned no text output" hid the
+    cause. The error now names the truncation and the reasoning-token count, and the budget rose to 32,000.
+  - [ ] Still open: widen the route set and rerun before choosing a tolerance. Fares this far out move, so a later run
+    must recapture the references first. The steps are in `docs/product/transport-estimation.md`, section "Completing
+    the accuracy check"; the provider key is entered in the app UI and is never handled by an assistant.
 
 - [x] Add an opt-in API-key save checkbox everywhere an LLM key is entered.
   - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and
