@@ -117,6 +117,22 @@ Provider/model-specific reasoning effort is selectable, persisted through genera
 provider transports. `max` is available when the selected provider/model advertises it. Application provider keys
 are never accessed, copied, logged or stored by Codex.
 
+## Provider request limits
+
+Two limits bound every provider call, configurable per user under **Settings → Provider Request Limits**, and
+overridable by `LLM_MAX_OUTPUT_TOKENS` and `LLM_REQUEST_TIMEOUT_MS`. Precedence is the user setting, then the
+environment, then the defaults in `src/lib/llm-runtime-settings.ts` (64,000 output tokens, 300-second timeout). A null
+column means "follow the default", so raising a default reaches everyone who has not deliberately overridden it.
+
+Neither limit is a budget. Providers bill reasoning tokens against `max_output_tokens` as they are generated, so a
+high cap costs nothing until a request needs it, while a cap that binds part-way through is paid for in full and the
+answer discarded. Both defaults therefore sit far above the observed working range, and the caps exist to stop a
+request that has gone wrong.
+
+When an OpenAI call is truncated mid-reasoning, the grounded call is retried one rung down the effort ladder
+(`max`, `xhigh`, `high`) before web search is abandoned: running out of room to answer is a reason to think less, not
+to stop searching. Every call logs its token usage, so the defaults can be revisited from evidence.
+
 ## Product behavior
 
 Accommodation tiers are hostel dorm, private room, and 1–4 star. Drinks are none, light, moderate and heavy.

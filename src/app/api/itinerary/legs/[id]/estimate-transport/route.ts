@@ -4,6 +4,7 @@ import { db } from '@/db';
 import { cities, countries, itineraryLegs } from '@/db/schema';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
+import { getLlmRuntimeSettings } from '@/lib/llm-runtime-settings';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
@@ -135,6 +136,8 @@ export async function POST(
       apiKey: body.apiKey,
       model: body.model,
       reasoningEffort: body.reasoningEffort,
+      // Configured in Settings; falls back to the environment and then the defaults.
+      ...(await getLlmRuntimeSettings(userId)),
       routeFacts,
     });
 

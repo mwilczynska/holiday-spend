@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { estimateIntercityTransport } from '@/lib/transport-estimation';
+import { LLM_MAX_OUTPUT_TOKENS_DEFAULT } from '@/lib/llm-runtime-settings';
 
 /**
  * Observed live on 5 September 2026: a maximum-effort estimate for Koh Lanta to Bangkok returned
@@ -111,7 +112,24 @@ describe('OpenAI transport estimate output budget', () => {
     await estimateIntercityTransport({ ...baseRequest, reasoningEffort: 'max' } as never).catch(() => undefined);
 
     const body = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body));
-    expect(body.max_output_tokens).toBeGreaterThanOrEqual(32000);
+    expect(body.max_output_tokens).toBe(LLM_MAX_OUTPUT_TOKENS_DEFAULT);
     expect(body.reasoning).toEqual({ effort: 'max' });
+  });
+
+  it('uses the caller-supplied ceiling and timeout instead of the defaults', async () => {
+    const fetchMock = respondInOrder(VALID_ANSWER);
+    vi.stubGlobal('fetch', fetchMock);
+
+    await estimateIntercityTransport({
+      ...baseRequest,
+      reasoningEffort: 'max',
+      maxOutputTokens: 111000,
+      requestTimeoutMs: 45000,
+    } as never);
+
+    const [, init] = fetchMock.mock.calls[0];
+    expect(JSON.parse(String(init?.body)).max_output_tokens).toBe(111000);
+    // A timeout is the honest stop for a runaway request; nothing bounded one before.
+    expect(init?.signal).toBeInstanceOf(AbortSignal);
   });
 });

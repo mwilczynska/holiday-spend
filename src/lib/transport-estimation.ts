@@ -9,6 +9,10 @@ import {
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
+import {
+  LLM_MAX_OUTPUT_TOKENS_DEFAULT,
+  LLM_REQUEST_TIMEOUT_MS_DEFAULT,
+} from '@/lib/llm-runtime-settings';
 import type {
   TransportEstimateCitation,
   TransportEstimateMode,
@@ -52,6 +56,9 @@ export interface TransportEstimationRequest {
   apiKey?: string;
   model?: string;
   reasoningEffort?: CityGenerationReasoningEffort;
+  /** Resolved runtime limits; see `src/lib/llm-runtime-settings.ts`. */
+  requestTimeoutMs?: number;
+  maxOutputTokens?: number;
   routeFacts?: string[];
 }
 
@@ -91,8 +98,13 @@ interface ProviderTransportResponse {
 
 const BROWSE_TRANSPORT_MAX_TOKENS = 900;
 const FALLBACK_TRANSPORT_MAX_TOKENS = 650;
-// Maximum reasoning effort must leave room for an answer after the reasoning tokens are spent.
-const MAX_EFFORT_TRANSPORT_MAX_TOKENS = 32000;
+/**
+ * The cap has to leave room for an answer after the reasoning tokens are spent, so it is not a
+ * budget — it is a stop for a run that has gone wrong. The effective value comes from the caller
+ * (a per-user setting, then the environment, then the default in `llm-runtime-settings.ts`); this
+ * constant is only the floor used when a caller supplies nothing.
+ */
+const MAX_EFFORT_TRANSPORT_MAX_TOKENS = LLM_MAX_OUTPUT_TOKENS_DEFAULT;
 // How many rungs the effort ladder may descend before giving up on the grounded path.
 const MAX_REASONING_BUDGET_RETRIES = 2;
 
@@ -416,6 +428,8 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requestTimeoutMs?: number;
+  maxOutputTokensCeiling?: number;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
@@ -428,11 +442,19 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
      * Koh Lanta to Bangkok, 5 September 2026, where the fallback answer was the least accurate of
      * three routes checked that day.
      */
-  const maxOutputTokens = params.reasoningEffort === 'max'
-    ? Math.max(params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS, MAX_EFFORT_TRANSPORT_MAX_TOKENS)
+  const reasoningCeiling = params.maxOutputTokensCeiling ?? MAX_EFFORT_TRANSPORT_MAX_TOKENS;
+  const maxOutputTokens = params.reasoningEffort && params.reasoningEffort !== 'none'
+    ? Math.max(params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS, reasoningCeiling)
     : params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS;
+  /**
+   * Nothing bounded how long a provider call could run: no abort signal, no route duration limit.
+   * The token cap was doing that job by accident, and doing it badly — it stops a request only
+   * after paying for every token it produced. A timeout is the honest stop, and it fails cleanly
+   * with a reason instead of an empty response.
+   */
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
+    signal: AbortSignal.timeout(params.requestTimeoutMs ?? LLM_REQUEST_TIMEOUT_MS_DEFAULT),
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${apiKey}`,
@@ -569,6 +591,8 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requestTimeoutMs?: number;
+  maxOutputTokensCeiling?: number;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
@@ -717,6 +741,8 @@ async function runGeminiTransportPromptWithSearch(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requestTimeoutMs?: number;
+  maxOutputTokensCeiling?: number;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
@@ -841,6 +867,8 @@ async function runProviderFallbackPrompt(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requestTimeoutMs?: number;
+  maxOutputTokensCeiling?: number;
 }): Promise<ProviderTransportResponse | null> {
   const fallbackResponse = await runJsonPromptWithProvider({
     systemPrompt: `${params.systemPrompt} Output only a single JSON object with no markdown or commentary.`,
@@ -873,6 +901,8 @@ async function runTransportPromptForProvider(params: {
   model?: string;
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
+  requestTimeoutMs?: number;
+  maxOutputTokensCeiling?: number;
 }): Promise<ProviderTransportResponse | null> {
   const browseRunnerByProvider: Record<
     CityGenerationProvider,
@@ -883,6 +913,8 @@ async function runTransportPromptForProvider(params: {
       model?: string;
       maxTokens?: number;
       reasoningEffort?: CityGenerationReasoningEffort;
+      requestTimeoutMs?: number;
+      maxOutputTokensCeiling?: number;
     }) => Promise<ProviderTransportResponse | null>
   > = {
     openai: runOpenAiTransportPromptWithWebSearch,
@@ -953,6 +985,8 @@ export async function estimateIntercityTransport(request: TransportEstimationReq
         model: request.model,
         maxTokens: BROWSE_TRANSPORT_MAX_TOKENS,
         reasoningEffort: request.reasoningEffort,
+        requestTimeoutMs: request.requestTimeoutMs,
+        maxOutputTokensCeiling: request.maxOutputTokens,
       });
 
       if (result) {
