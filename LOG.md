@@ -2214,3 +2214,36 @@ picked up later as unfinished.
 Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build,
 `methodology:v1.1:check` with the live CSV hash unchanged, memory mirror, and `npm run serve` run
 from PowerShell.
+
+## Methodology testing closed by owner decision - 5 September 2026
+
+No tolerance will be set for transport accuracy, and the route set will not be widened. The methodology is accepted as
+reasonably accurate and not fully methodologically tested, and that trade is deliberate.
+
+The limitations are recorded as accepted rather than pending: three routes, one run each, one provider and model; two
+of four route classes uncovered and both `domestic_long` samples Thai buses; one of the three v1 comparisons
+confounded by a fallback; Bangkok to Phuket still 16.7% low; no repeat runs, so no known noise floor.
+
+The reasoning. The `tolerance` argument to `buildTransportAccuracyReport` feeds only its `outliers` list and reaches
+no user-facing surface, so setting it would change nothing anyone sees. Its value would be as a regression gate for
+future prompt or model work, which is not planned. Earning one honestly would need same-day reference fares across two
+or three aggregators with their fare bases normalised, plus repeat runs for a noise floor - and the per-adult versus
+per-booking difference already caught once would otherwise have read as a factor-of-two model error.
+
+The decisive argument is the project's own history. `docs/prompts/README.md` records v5 experiments 085 to 094 as
+rejected outcomes, and v6 and v6.1 are archived as rejected approaches retained only for audit. A great deal of
+careful work there ended in "no mapping". Proposing another measurement round, as this session did before the owner
+declined it, was not reading that pattern.
+
+The distinction worth keeping is between a specification defect and a calibration gap. Prompt v1.1 was worth making
+because the contract genuinely never said which fare to return; stating it moved the median relative error from 25.0%
+to 2.5%. Chasing a tolerance on top of that is the activity with the poor track record.
+
+Documentation was changed so this does not resurface as unfinished work. `PLAN.md` has no open checkboxes left - both
+remaining items are closed as recorded decisions rather than deleted. `docs/product/transport-estimation.md` replaces
+its "Completing the accuracy check" instructions with an accuracy status and a shorter "If the prompt, provider or
+model changes" procedure, framed around comparison with the previous run rather than clearing an absolute bar.
+`CLAUDE.md` carries the decision, so it loads into every future session.
+
+An open checkbox reading "widen the route set and rerun before choosing a tolerance" is an instruction to a future
+reader. Leaving it there while having decided the opposite is how a closed question reopens itself.
