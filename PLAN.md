@@ -1120,6 +1120,44 @@ Not changed, and worth recording as known: the route still runs one `SELECT` per
 and inserts rows one at a time without a surrounding transaction. Both are cheap relative to the network waterfall
 that dominated, and neither showed up as a problem once the rates were parallel.
 
+## Phase 13 — Atomic snapshot import — COMPLETE
+
+Importing a plan snapshot replaces the itinerary. It detaches every expense from its leg, deletes all itinerary legs
+and all fixed costs, then rebuilds from the snapshot. Those writes ran as separate statements, and on better-sqlite3
+each one commits immediately, so a failure anywhere in the rebuild was unrecoverable.
+
+- [x] Wrapped the whole replacement in one `db.transaction((tx) => ...)`, matching the idiom already used by
+  `src/app/api/itinerary/legs/[id]/route.ts`. The callback is synchronous because the better-sqlite3 driver requires
+  it; `.run()` and `.all()` replace `await`.
+- [x] Moved the traveller-count write below the transaction so a rejected import cannot leave the group size changed.
+- [x] Left `resolveMissingCities` outside and before the transaction on purpose. Countries and cities it creates are
+  additive dataset rows rather than user itinerary state, and keeping them on a failed import avoids paying for the
+  same LLM generation twice.
+- [x] Added `src/lib/snapshot-import-atomicity.test.ts` — four tests driving the real route against a temporary
+  database, injecting a failure partway through the rebuild via `getIntercityTransportTotal`.
+
+The tests were confirmed to fail against the pre-fix route rather than merely passing against the new one. Reverting
+the route produced exactly the data loss the change prevents:
+
+| Assertion | Old behaviour | Fixed |
+| --- | --- | --- |
+| Itinerary survives a failed import | `expected [ 905 ] to deeply equal [ 901, 902 ]` — both legs destroyed, one half-inserted orphan left | passes |
+| Expenses stay attached to their legs | `expected null to be 901` — every expense orphaned | passes |
+| Traveller count unchanged on rejection | `expected 3 to be 2` | passes |
+| Successful import still replaces everything | passes | passes |
+
+The fourth row matters as much as the others: the happy path passed both before and after, so the change is a
+rollback guarantee rather than an alteration of import behaviour.
+
+- [x] Documented a build-blocking operational trap found during verification. `scripts/start-next-production.mjs`
+  forwards its child's exit to the parent but not the reverse, so stopping only the `npm start` wrapper orphans
+  `.next/standalone/server.js`. It keeps holding `.next/standalone`, and the next `npm run build` blocks while
+  cleaning that directory, emitting no output rather than an error. Recorded in `CLAUDE.md`. The launcher itself is
+  unchanged; forwarding signals to the child would fix it at the source.
+
+Verification: TypeScript, 54 files / 247 tests, production build, `methodology:v1.1:check` with the live CSV hash
+unchanged, and the memory mirror.
+
 ## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.
