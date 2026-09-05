@@ -1,10 +1,10 @@
 import { db } from '@/db';
 import { expenses, expenseTags, itineraryLegs, cities, countries } from '@/db/schema';
-import { eq, and, gte, lte, desc, inArray, ne } from 'drizzle-orm';
+import { eq, and, gte, lte, desc, ne } from 'drizzle-orm';
 import { success, handleError } from '@/lib/api-helpers';
 import { error } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
-import { buildExpenseTrackPageMetadata } from '@/lib/expense-track-page';
+import { loadTrackExpensePage } from '@/lib/track-data';
 import { EXPENSE_PAGE_SIZE } from '@/lib/performance-bounds';
 import { z } from 'zod';
 
@@ -70,41 +70,13 @@ export async function GET(request: Request) {
       .leftJoin(countries, eq(cities.countryId, countries.id));
 
     if (isTrackView) {
+      // Shared with the server-rendered /track page so both produce the same first screen.
       const { page, pageSize } = trackViewSchema.parse({
         page: url.searchParams.get('page') ?? undefined,
         pageSize: url.searchParams.get('pageSize') ?? undefined,
       });
-      const metadata = await db
-        .select({
-          id: expenses.id,
-          date: expenses.date,
-          amount: expenses.amount,
-          amountAud: expenses.amountAud,
-          currency: expenses.currency,
-          isExcluded: expenses.isExcluded,
-        })
-        .from(expenses)
-        .where(and(...conditions))
-        .orderBy(desc(expenses.date), desc(expenses.id));
-      const filteredMetadata = taggedExpenseIds
-        ? metadata.filter((expense) => taggedExpenseIds.has(expense.id))
-        : metadata;
-      const pageMetadata = buildExpenseTrackPageMetadata(filteredMetadata, page, pageSize);
-      const { pageIds } = pageMetadata;
-      const items = pageIds.length > 0
-        ? await buildExpenseQuery()
-            .where(and(...conditions, inArray(expenses.id, pageIds)))
-            .orderBy(desc(expenses.date), desc(expenses.id))
-        : [];
 
-      return success({
-        items,
-        totalCount: pageMetadata.totalCount,
-        totalAud: pageMetadata.totalAud,
-        expenseIds: pageMetadata.expenseIds,
-        page,
-        pageSize,
-      });
+      return success(await loadTrackExpensePage(userId, { leg, cat, tag, from, to, source, page, pageSize }));
     }
 
     let query = buildExpenseQuery().orderBy(desc(expenses.date), desc(expenses.id));
