@@ -973,7 +973,8 @@ referencing table in full. Warm API responses were already 3-15 ms at current vo
   **4.4 microseconds** — 0.013 ms across a three-call dashboard load, or 0.145% of a single warm API response. It is
   a primary-key lookup. A TTL cache would trade delayed session revocation, a real security property, for a saving
   that does not register against a 3 ms response. Recorded as rejected rather than left open.
-- [ ] Carried forward: server-render initial data for `/`, `/track`, `/dataset` and `/settings`, and consolidate the
+- [ ] Carried forward: `/` and `/track` are server-rendered and the dashboard endpoints are consolidated; `/dataset`
+  and `/settings` remain. Original item: server-render initial data for `/`, `/track`, `/dataset` and `/settings`, and consolidate the
   three dashboard endpoints behind one shared resolver. Still gated on the Step 2 harness showing a real gap; it
   currently does not.
 

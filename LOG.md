@@ -2137,3 +2137,42 @@ immediately by failing when the required-files list grew, which is the behaviour
 
 Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build, three live runs
 against the running production build with nothing applied to the itinerary.
+
+## Server-rendered /track - 5 September 2026
+
+The same treatment as the dashboard, on the page used to actually log expenses. Measured before, on a
+production build: the HTML arrived at 11 ms carrying no rows, and the two API requests did not start
+until 188 ms, finishing at 231 ms. They were not slow. They were queued behind the bundle
+downloading, parsing and mounting.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Data available to render | 231 ms | **93 ms** |
+| API requests on a full page load | 2, blocking | **0** |
+| HTML on the wire | 28 kB decoded, no rows | 21 kB gzipped, complete |
+
+`src/lib/track-data.ts` now holds the queries, shared by `/api/expenses?view=track`,
+`/api/itinerary?view=track` and the server component. Only the unfiltered first page is seeded. Every
+filter and page change still goes through the API, which is the right split: the initial view is what
+every visit pays for, the rest are deliberate interactions.
+
+The fetch gate is the same module-scope flag used on the dashboard, with one addition. It skips the
+first fetch only when the client is still showing what the server rendered - page zero, no category,
+source or date filters. Without that condition a filtered client-side navigation would seed itself
+with unfiltered rows and then decline to correct them.
+
+Verified by comparison rather than by reading, since the extraction moved query logic between files.
+Six endpoint responses were captured from the running production build before the change and after -
+first page, third page, category-and-source filtered, date-ranged, the track legs, and the separate
+unfiltered list path - and all six are byte-identical.
+
+Behaviour was then checked in the browser: zero API requests on a full load with 1,300 expenses and a
+$51,900 total matching the dashboard, and clicking through to the next page issued the requests and
+changed the rows, confirming the gate skips the redundant first fetch without blocking interaction.
+
+The decoded HTML is large at about 500 kB, because the rows appear both as markup and in the RSC
+payload, but it compresses to 21 kB on the wire and replaces roughly 36 kB of JSON that used to be
+fetched separately.
+
+Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build, six identical
+endpoint payloads, and a browser pass over load and pagination.
