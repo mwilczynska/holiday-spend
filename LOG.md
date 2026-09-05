@@ -2094,3 +2094,46 @@ back. Element references worked first time. Coordinates are not a reliable way t
 
 Verification: TypeScript, `next lint` clean, 57 files / 263 tests, production build,
 `methodology:v1.1:check` with the live CSV hash unchanged, memory mirror.
+
+## Transport prompt v1.1: stating the estimand - 5 September 2026
+
+The accuracy run left a consistent upward bias and no way to judge it, because the prompt never said
+which fare it should return. Cheapest available, typical, or a padded budgeting figure are three
+different questions, and the median relative error moved from 36.4% to 25.0% purely on which
+reference it was compared against. That is not an error measurement; it is a disagreement about the
+question.
+
+`llm_prompt_intercity_transport_v1_1.md` states the estimand: the typical fare a traveller would
+actually book, explicitly not the cheapest on the market and explicitly not premium or flexible, with
+connecting transfers included only where the route cannot be travelled without one. Prompts are
+versioned rather than edited here, so v1 stays frozen and reachable through
+`TRANSPORT_PROMPT_VERSION=v1`, matching how the city-cost prompts keep their rollback. The two files
+are byte-identical from `Output rules:` onward, which a test asserts - so any change in output is
+attributable to the estimand rather than to incidental rewording.
+
+Re-running the same three routes against the representative fare that v1.1 now targets:
+
+| Route | Reference | v1 | v1.1 | v1 error | v1.1 error |
+| --- | --- | --- | --- | --- | --- |
+| Koh Lanta to Bangkok | A$118 | A$160 | A$115 | 35.6% | **2.5%** |
+| Bangkok to Phuket | A$96 | A$120 | A$80 | 25.0% | **16.7%** |
+| Colombo to Chennai | A$400 | A$450 | A$400 | 12.5% | **0.0%** |
+
+Median 25.0% to 2.5%, and the direction changed: v1 overshot on all three routes, v1.1 undershoots
+slightly on two and is exact on the third. The systematic bias is gone rather than merely smaller.
+
+Three things stop this being as good as it reads. The first route's v1 run had fallen back to the
+non-search path, so its improvement conflates the estimand change with regained grounding; only the
+other two are clean comparisons. Bangkok to Phuket is still 16.7% low, and it is the route where the
+aggregator showed the widest spread between cheapest and representative, so it is the most sensitive
+to the wording. And three routes with one run each is directional, not a calibration.
+
+One packaging detail worth recording. The launcher stages prompt files into the standalone bundle
+from an explicit list, and Next's own file tracing only follows paths that appear as string literals.
+v1.1 is selected through a lookup table, so tracing would not have found it and the file would have
+been missing in production while working perfectly in development. Both transport prompts are now on
+the explicit list, and the launcher test asserts they reach the bundle. The existing test caught this
+immediately by failing when the required-files list grew, which is the behaviour that list is for.
+
+Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build, three live runs
+against the running production build with nothing applied to the itinerary.
