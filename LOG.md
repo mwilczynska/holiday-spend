@@ -1874,3 +1874,47 @@ It is a reasonable way to pin behaviour that has no other seam, but it does coup
 cost is worth noting rather than paying silently each time.
 
 Verification: TypeScript, 55 files / 253 tests, production build, authenticated performance harness.
+
+## Server-rendered dashboard - 4 September 2026
+
+This was deferred twice on the grounds that the performance harness showed no gap. The harness was measuring the wrong
+thing. It times the route shell and the API separately - 10 ms and 18 ms - and never sees the serial wait between
+them.
+
+Measured in the browser against a production build, before any change: the HTML arrived in about 7 ms carrying no
+data, DOMContentLoaded at 388 ms, load at 551 ms, and the dashboard request did not start until 569 ms, finishing at
+603 ms. The request itself took 34 ms. It could not have started earlier - it lives in a `useEffect`, so it waits for
+the bundle to download, parse and mount. Nothing was slow. Everything was queued behind everything else.
+
+Two isolated measurements that each look healthy can hide a serial dependency between them. That is the second time
+this project has been misled by a harness number: the original Phase 7A figures described the login page, and this one
+described components of a page load that never overlapped.
+
+`src/app/page.tsx` is now a server component that loads through `loadDashboardInputs` - which the endpoint
+consolidation had already extracted - and passes the result to `src/app/DashboardClient.tsx`.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Data available to render | 603 ms | **60 ms** |
+| Dashboard fetches on a full page load | 1, blocking | **0** |
+| Dashboard fetches when returning by client-side navigation | 1 | 1 |
+| HTML | 27 kB decoded, no data | 21.5 kB gzipped / 172 kB decoded, complete |
+
+The refresh deserves explaining, because the obvious version of this change is wrong in one direction or the other.
+Keeping an unconditional mount-time fetch means sending the same 89 kB twice on every page load. Removing it means
+trusting the props, and Next's client router can serve a cached payload for a dynamic route, so navigating back to the
+dashboard could show a stale figure after logging an expense.
+
+The fix is a module-scope flag. On a full document load the module is freshly evaluated, so the flag is false and the
+server-rendered data is known to be current - no fetch. On a later client-side navigation the module is already
+loaded, so the flag is true and the refresh runs. No clocks, no cross-machine timestamp comparison, and it is correct
+in both directions. Verified as such in the browser: zero dashboard requests on a full load, exactly one after
+navigating away and back, with identical rendering either way.
+
+`/` is now marked dynamic rather than static in the build output. That is correct - the response is per-user and must
+not be cached across sessions - and route JavaScript is unchanged at 144 kB.
+
+Left undone: the same treatment for `/track`, `/dataset` and `/settings`.
+
+Verification: TypeScript, `next lint` clean with no warnings, 55 files / 253 tests, production build, authenticated
+performance harness, and a browser pass over both navigation paths.
