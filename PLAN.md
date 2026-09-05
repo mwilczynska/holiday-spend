@@ -1198,6 +1198,21 @@ chunk boundaries included.
 Verification: TypeScript, 55 files / 253 tests, production build, `methodology:v1.1:check` with the live CSV hash
 unchanged, and the memory mirror.
 
+## Phase 15 — Build guard for a surviving production server — COMPLETE
+
+- [x] Added `process.on('exit')` and signal handling to `scripts/start-next-production.mjs` so the launcher stops its
+  child. Correct, and **not** the fix — measured against the failing scenario it changes nothing, because stopping a
+  background task kills the shell rather than the process tree, so the launcher is never signalled.
+- [x] Added the `prebuild` guard `scripts/prepare-next-build.mjs`, which probes `.next/standalone` with the same
+  rename the build is about to attempt and fails immediately when it is held.
+
+| Condition | Before | After |
+| --- | --- | --- |
+| Server still running | build hangs 10+ minutes, empty log | exits 1 in under a second, names the cause and how to find the process |
+| No server running | build runs | probe is a silent no-op, build runs |
+
+Verification: 55 files / 253 tests, production build, memory mirror.
+
 ## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.

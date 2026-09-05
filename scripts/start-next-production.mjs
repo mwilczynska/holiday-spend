@@ -90,6 +90,35 @@ child.on('error', (error) => {
   process.exit(1);
 });
 
+/**
+ * The child's exit is forwarded to this process below, but nothing went the other way, so killing
+ * this wrapper left the standalone server running. It keeps holding `.next/standalone`, and the
+ * next `next build` then blocks while cleaning that directory, producing an empty log rather than
+ * an error — which is a slow thing to diagnose.
+ *
+ * Windows has no process groups to signal, so the child is killed explicitly. `exit` covers the
+ * ordinary paths; the signal handlers cover Ctrl+C and a terminating `kill`, and they re-raise so
+ * this process still reports the signal it was given.
+ */
+let stoppingChild = false;
+function stopChild() {
+  if (stoppingChild || child.exitCode !== null || child.signalCode !== null) return;
+  stoppingChild = true;
+  child.kill();
+}
+
+process.on('exit', stopChild);
+
+for (const signal of ['SIGINT', 'SIGTERM', 'SIGHUP', 'SIGBREAK']) {
+  const handler = () => {
+    stopChild();
+    // Remove this exact listener before re-raising, or the re-raise re-enters it.
+    process.off(signal, handler);
+    process.kill(process.pid, signal);
+  };
+  process.on(signal, handler);
+}
+
 child.on('exit', (code, signal) => {
   if (signal) {
     process.kill(process.pid, signal);

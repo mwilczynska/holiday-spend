@@ -5,6 +5,7 @@
   "scripts": {
     "predev": "node scripts/prepare-next-dev.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/prepare-next-build.mjs",
     "build": "next build",
     "start": "node scripts/start-next-production.mjs",
     "lint": "next lint",
