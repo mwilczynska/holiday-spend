@@ -90,6 +90,8 @@ interface ProviderTransportResponse {
 
 const BROWSE_TRANSPORT_MAX_TOKENS = 900;
 const FALLBACK_TRANSPORT_MAX_TOKENS = 650;
+// Maximum reasoning effort must leave room for an answer after the reasoning tokens are spent.
+const MAX_EFFORT_TRANSPORT_MAX_TOKENS = 32000;
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -389,8 +391,15 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
   if (!apiKey) return null;
 
   const model = normalizeModel(params.model) ?? (process.env.OPENAI_MODEL || CITY_GENERATION_DEFAULT_MODELS.openai);
+  /**
+     * The budget has to cover reasoning *and* the answer. At maximum effort on a multi-leg route
+     * 12,000 was not enough: the run was truncated mid-reasoning, produced nothing, and fell back
+     * to the weaker non-search estimate — after paying for the reasoning. Measured on
+     * Koh Lanta to Bangkok, 5 September 2026, where the fallback answer was the least accurate of
+     * three routes checked that day.
+     */
   const maxOutputTokens = params.reasoningEffort === 'max'
-    ? Math.max(params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS, 12000)
+    ? Math.max(params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS, MAX_EFFORT_TRANSPORT_MAX_TOKENS)
     : params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS;
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
@@ -426,6 +435,13 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
 
   const data = await response.json() as {
     model?: string;
+    status?: string;
+    incomplete_details?: { reason?: string };
+    usage?: {
+      input_tokens?: number;
+      output_tokens?: number;
+      output_tokens_details?: { reasoning_tokens?: number };
+    };
     output?: Array<{
       type?: string;
       action?: string;
@@ -451,7 +467,30 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
     .trim();
 
   if (!text) {
-    throw new Error('OpenAI Responses API returned no text output for the transport estimate.');
+    /**
+     * Reasoning tokens are billed against `max_output_tokens`, so a high-effort run can spend the
+     * whole budget thinking and return only reasoning items with no `message` to read. That came
+     * back as a bare "returned no text output", which describes the symptom and hides the cause —
+     * and it matters, because the caller then silently falls back to the non-search estimate,
+     * which is the weaker answer. Name the actual reason so the next occurrence is diagnosable.
+     */
+    const incompleteReason = data.incomplete_details?.reason;
+    const reasoningTokens = data.usage?.output_tokens_details?.reasoning_tokens;
+
+    if (data.status === 'incomplete' && incompleteReason === 'max_output_tokens') {
+      throw new Error(
+        `OpenAI Responses API spent its entire ${maxOutputTokens}-token output budget on reasoning `
+        + `(${reasoningTokens ?? 'unknown'} reasoning tokens) and returned no answer. `
+        + 'Lower the reasoning effort or raise the output budget for this provider.'
+      );
+    }
+
+    const detail = [data.status && `status ${data.status}`, incompleteReason]
+      .filter(Boolean)
+      .join(', ');
+    throw new Error(
+      `OpenAI Responses API returned no text output for the transport estimate${detail ? ` (${detail})` : ''}.`
+    );
   }
 
   const searchQueries = dedupeStrings(

@@ -55,10 +55,12 @@ describe('transport reasoning effort', () => {
       reasoningEffort: 'max',
     });
 
+    // Raised from 12,000 on 5 September 2026. Reasoning tokens are billed against this budget, and
+    // at maximum effort a live multi-leg route consumed all of it and returned no answer at all.
     expect(requestBody).toMatchObject({
       model: 'gpt-5.6-luna',
       reasoning: { effort: 'max' },
-      max_output_tokens: 12000,
+      max_output_tokens: 32000,
     });
     const sentBody = requestBody as unknown as Record<string, unknown>;
     expect(sentBody.text).toBeUndefined();
