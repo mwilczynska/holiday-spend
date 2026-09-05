@@ -1702,3 +1702,58 @@ No console errors. The only console output was a Chrome-extension message-channe
 
 Verification: TypeScript, `next lint` clean, 53 files / 243 tests, production build, memory mirror,
 `methodology:v1.1:check` with the live CSV hash unchanged, and the authenticated performance harness.
+
+## Atomic snapshot import - 4 September 2026
+
+Importing a plan snapshot replaces the itinerary. The route detached every expense from its leg, deleted all itinerary
+legs, deleted all fixed costs, and then rebuilt everything from the snapshot. Each of those ran as a separate
+statement, and on better-sqlite3 every statement commits immediately - in WAL mode there is no implicit outer
+transaction to fall back on. So the deletes were durable the instant they ran, before a single replacement row
+existed, and any failure during the rebuild left the user with no itinerary, no fixed costs, and every expense
+orphaned from the leg it belonged to. That last one is the linkage the planned-versus-actual dashboard depends on.
+
+The whole replacement now runs inside one `db.transaction((tx) => ...)`, the idiom already used for leg deletion in
+`src/app/api/itinerary/legs/[id]/route.ts`. The callback is synchronous because the better-sqlite3 driver requires it,
+so `.run()` and `.all()` replace `await` throughout.
+
+Two boundary decisions are deliberate. The traveller-count write moved below the transaction, so a rejected import
+cannot leave the group size changed - previously it was applied first and survived a failed import. `resolveMissingCities`
+stays outside and before the transaction: the countries and cities it creates are additive dataset rows rather than
+user itinerary state, and keeping them when an import fails avoids paying for the same LLM generation twice.
+
+The tests were checked against the pre-fix route rather than only against the new one, because a test that cannot fail
+is worth nothing. Reverting the route and rerunning produced exactly the data loss the change prevents:
+
+| Assertion | Against the old route | Fixed |
+| --- | --- | --- |
+| Itinerary survives a failed import | `expected [ 905 ] to deeply equal [ 901, 902 ]` | passes |
+| Expenses stay attached to their legs | `expected null to be 901` | passes |
+| Traveller count unchanged on rejection | `expected 3 to be 2` | passes |
+| Successful import still replaces everything | passes | passes |
+
+The first row is the whole problem in one line: two saved legs were gone and a single half-inserted leg stood in their
+place. The fourth row matters as much as the rest - the happy path passed before and after, so this is a rollback
+guarantee, not a change to what a successful import does.
+
+The failure is injected through `getIntercityTransportTotal`, which is called once per leg inside the transaction.
+That makes it the natural seam: failing on the first call lands after the deletes and before any insert, and failing
+on the second lands after one leg has already been written.
+
+One incidental note on the test setup. Mocking `@/lib/auth` wholesale broke every error path, because `handleError`
+does an `instanceof AuthRequiredError` check and the mock had removed the class. The mock is partial now. It is worth
+remembering that mocking a module also removes the types it exports, not just the functions being replaced.
+
+### An unrelated trap found while verifying
+
+Two production builds hung for over ten minutes each and wrote no output at all - not an error, an empty log.
+`scripts/start-next-production.mjs` spawns `.next/standalone/server.js` and forwards the child's exit to the parent,
+but nothing goes the other way, so stopping the `npm start` wrapper left the standalone server running and holding
+`.next/standalone`. `next build` then blocked cleaning that directory. Killing the orphan made the build complete
+normally on the next attempt.
+
+This is recorded in `CLAUDE.md` next to the `ChunkLoadError` note because it presents the same way: a build or dev
+problem that is really a leftover process. The launcher is unchanged for now; forwarding SIGINT and SIGTERM to the
+child would fix it at the source.
+
+Verification: TypeScript, 54 files / 247 tests, production build, `methodology:v1.1:check` with the live CSV hash
+unchanged, and the memory mirror.
