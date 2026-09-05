@@ -1757,3 +1757,54 @@ child would fix it at the source.
 
 Verification: TypeScript, 54 files / 247 tests, production build, `methodology:v1.1:check` with the live CSV hash
 unchanged, and the memory mirror.
+
+## Atomic Wise CSV import - 4 September 2026
+
+Phase 12 left two things in the import route recorded as known but not dominant: one `SELECT` per parsed row for the
+duplicate check, and inserts issued one at a time with no surrounding transaction. Both are now fixed, but the reason
+is not the one that was expected.
+
+The duplicate check became a chunked `inArray` lookup - `wise_txn_id` carries a UNIQUE index, so the whole upload can
+be checked in a handful of statements. The inserts run inside one transaction. Measured on a temporary database with
+1,300 existing expenses and 326 rows to import:
+
+| Path | Duplicate lookup | Insert | Total |
+| --- | --- | --- | --- |
+| Per-row | 15-30 ms | 52 ms | **68-83 ms** |
+| Batched plus one transaction | 1 ms | 12 ms | **13-15 ms** |
+
+About five times faster, and it does not matter. That is 68 ms against a real import of roughly seven seconds - under
+one percent. The performance case for this change is weak and is recorded as weak.
+
+The reason 326 individual inserts cost only 52 ms is that the database runs `synchronous = NORMAL` under WAL, so
+commits do not fsync one at a time; they are flushed at checkpoints. The assumption that unbatched inserts would be
+expensive was wrong, and measuring before changing is what caught it. Worth remembering the next time a per-row write
+loop looks obviously slow.
+
+The justification is atomicity. Rows were inserted one at a time, each committing on its own, so a failure partway
+through returned an error to the caller while leaving an unreported number of rows written. The user is told the
+import failed and has no way to see how much of it landed.
+
+Two premises about how that failure is reached turned out to be wrong, and both were caught by writing the tests
+rather than by reasoning about the code:
+
+- Repeats within a single upload do not trip the UNIQUE index. `prepareWiseExpenses` groups by transaction id and sums
+  the amounts, because Wise splits some transactions across several lines. A file listing a transaction twice produces
+  one merged row. The first draft of the code comment and two of the tests asserted the opposite. There is now a test
+  pinning the collapsing behaviour instead, which is worth having on its own.
+- A malformed date does not trip `NOT NULL` either. `normalizeDate` returns an empty string for anything it cannot
+  parse, and SQLite accepts an empty string in a `NOT NULL` column.
+
+What is actually reachable is the check-then-act race. The duplicate check is a read followed by a write, so an
+overlapping import can commit between the two, and the UNIQUE index then rejects a row somewhere in the middle of this
+one. Disk and I/O failures do the same. The test simulates the race deterministically by injecting a conflicting row
+during the leg lookup, which runs after the check and before the insert.
+
+Against the pre-fix route that test reports `expected [ 'e-1', 'e-2', 'e-3', 'kept-1' ] to deeply equal
+[ 'e-3', 'kept-1' ]`: two rows committed, then an error returned. The other five tests pass against both the old and
+new routes, and that is the point of them - it is what establishes that the batched lookup returns exactly what the
+per-row lookup returned, including across chunk boundaries, which is tested with a 950-row upload carrying duplicates
+on both sides of each boundary.
+
+Verification: TypeScript, 55 files / 253 tests, production build, `methodology:v1.1:check` with the live CSV hash
+unchanged, and the memory mirror.

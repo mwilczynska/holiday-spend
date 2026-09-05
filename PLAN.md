@@ -1158,6 +1158,46 @@ rollback guarantee rather than an alteration of import behaviour.
 Verification: TypeScript, 54 files / 247 tests, production build, `methodology:v1.1:check` with the live CSV hash
 unchanged, and the memory mirror.
 
+## Phase 14 — Atomic Wise CSV import — COMPLETE
+
+Carried over from Phase 12, where the per-row duplicate `SELECT` and the unbatched inserts were recorded as known but
+not dominant. Measured, that judgement was right and the performance case for changing them is weak. The change was
+made for atomicity instead.
+
+- [x] Replaced one `SELECT` per parsed row with a chunked `inArray` lookup. `wise_txn_id` carries a UNIQUE index, so
+  the whole upload is checked in a handful of statements. Chunked at 400 because the bind-parameter cap is 999 on
+  older SQLite builds and an upload has no fixed size.
+- [x] Wrapped the inserts in one `db.transaction`, in chunks of 50.
+- [x] Added `src/lib/csv-import-route.test.ts` — six tests driving the real route against a temporary database.
+
+### Measured, on a temporary database with 1,300 existing expenses and 326 rows to import
+
+| Path | Duplicate lookup | Insert | Total |
+| --- | --- | --- | --- |
+| Per-row | 15–30 ms | 52 ms | **68–83 ms** |
+| Batched plus one transaction | 1 ms | 12 ms | **13–15 ms** |
+
+Roughly five times faster, and immaterial: about 68 ms against a real import of some seven seconds, under 1%. The
+reason 326 separate inserts cost only 52 ms is that the database runs `synchronous = NORMAL` under WAL, so commits do
+not fsync individually. The expectation that unbatched inserts would be slow was wrong, and the benchmark caught it.
+
+### Two premises corrected while writing the tests
+
+- Repeats *within* one upload do not violate the UNIQUE index. `prepareWiseExpenses` groups by transaction id and sums
+  the amounts, because Wise splits some transactions across several lines. The first draft of both the code comment
+  and the tests claimed otherwise. There is now a test pinning the collapsing behaviour instead.
+- A malformed date does not violate `NOT NULL` either: `normalizeDate` returns an empty string, which SQLite accepts.
+
+The reachable trigger is the check-then-act race. The duplicate check is a read followed by a write, so an overlapping
+import can commit between the two and the UNIQUE index then rejects a row partway through this one. Against the
+pre-fix route the test reports `expected [ 'e-1', 'e-2', 'e-3', 'kept-1' ] to deeply equal [ 'e-3', 'kept-1' ]` — two
+rows committed, then an error returned, with no way for the caller to know how much landed. The other five tests pass
+against both routes, which is what establishes that the batched lookup returns exactly what per-row returned,
+chunk boundaries included.
+
+Verification: TypeScript, 55 files / 253 tests, production build, `methodology:v1.1:check` with the live CSV hash
+unchanged, and the memory mirror.
+
 ## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.
