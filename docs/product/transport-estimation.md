@@ -96,6 +96,51 @@ classes with the same route, date, traveller count, direction, mode, and fare as
 into the report. Only after that comparison should an initial tolerance or need for more routes be chosen. No
 synthetic value in the repository is presented as an independent accuracy observation.
 
+## Same-day reference fares captured 5 September 2026
+
+Three upcoming routes from the live itinerary now have independently captured fares, in
+`data/reference/transport_accuracy_references_2026-09-05.json`:
+
+| Route | Date | Class | Reference mode | Reference total for two |
+| --- | --- | --- | --- | --- |
+| Bangkok to Phuket | 2026-12-26 | domestic_long | bus | A$88 |
+| Koh Lanta to Bangkok | 2026-12-20 | domestic_long | bus | A$90 |
+| Colombo to Chennai | 2027-01-17 | international_short | flight | A$402 |
+
+Three details in that file matter more than the numbers.
+
+The aggregator quotes **per adult**; the app stores costs for two people. The doubling is applied in the reference
+file rather than left for the comparison to infer, because a silent factor of two would not look like an error, it
+would look like a badly calibrated model.
+
+Each route records both the cheapest listed fare for the mode and a representative mid-tier option. Those are
+different numbers — A$44 against A$48 per adult for the Bangkok bus — and the tolerance decision depends on which one
+the estimate is supposed to predict. That question is deliberately left open rather than answered by picking whichever
+makes the error smaller.
+
+The South American and long-haul legs are not covered by that aggregator and were left out rather than filled in from
+a different source. Mixing sources without matching their fare bases is what would make the error figures meaningless.
+
+Fares three or more months out move, so this is a snapshot, not a stable benchmark. A comparison run later must
+recapture.
+
+### Completing the accuracy check
+
+The model side needs a provider API key. Keys are entered in the app UI, stay in browser storage, and are never
+handled by an assistant, written to the repository, or stored in the database — so this step is the owner's to run.
+
+1. Start the app with `npm run build && npm start` and open `/plan`.
+2. For each of the three routes above, run an intercity transport estimate at the recorded travel date with the
+   traveller count set to 2, and record the provider, model, reasoning effort, whether the web-search path or the
+   fallback was used, and the returned options, assumptions and citations.
+3. Pair each result with the matching entry in the reference file to form a `TransportAccuracyObservation`, and pass
+   the set to `buildTransportAccuracyReport` (`src/lib/transport-estimation-accuracy.ts`).
+4. Read the median and range of absolute and relative error, then decide the initial tolerance and whether more routes
+   or route classes are needed. Three routes is enough to be directional and is not enough to calibrate.
+
+No synthetic value in the repository is presented as an independent accuracy observation, and the references above are
+the only independent quotes currently recorded.
+
 ## Implementation references
 
 - Prompt contract: `docs/prompts/llm_prompt_intercity_transport_1.md`

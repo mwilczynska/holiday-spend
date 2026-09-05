@@ -1918,3 +1918,35 @@ Left undone: the same treatment for `/track`, `/dataset` and `/settings`.
 
 Verification: TypeScript, `next lint` clean with no warnings, 55 files / 253 tests, production build, authenticated
 performance harness, and a browser pass over both navigation paths.
+
+## Same-day transport reference fares - 5 September 2026
+
+The transport accuracy check had one step left open: capture same-day operator or aggregator quotes under matching
+assumptions, then compare. That step splits in two, and only one half can be done here. The reference side needs a
+browser; the model side needs a provider API key, which is entered in the app UI, stays in browser storage, and is
+never handled by an assistant. So the references were captured and the comparison is left as an owner action, with
+the steps written down.
+
+Three upcoming routes from the live itinerary now have independently captured fares in
+`data/reference/transport_accuracy_references_2026-09-05.json`: Bangkok to Phuket on 2026-12-26 (bus, A$88 for two),
+Koh Lanta to Bangkok on 2026-12-20 (bus, A$90), and Colombo to Chennai on 2027-01-17 (flight, A$402).
+
+Three things found while capturing them matter more than the numbers.
+
+The aggregator quotes **per adult**. The app stores costs for two people. That factor of two is applied in the
+reference file rather than left for the comparison to infer, because a silent doubling would not look like a mistake -
+it would look like a badly calibrated model, and it would have been attributed to the estimator.
+
+Cheapest-listed and representative are different numbers. The Bangkok bus is A$44 per adult at the bottom of the list
+and A$48 for the standard option a traveller would actually pick. Both are recorded, and the question of which one the
+estimate is supposed to predict is left open rather than resolved by picking whichever makes the error smaller.
+
+The South American and long-haul legs are not covered by that aggregator. They were left out rather than filled in
+from another source, because mixing sources without matching their fare bases is what would make the error figures
+meaningless. Four of the sixteen upcoming movements are recorded as not captured, with the reason.
+
+A further limitation, stated in the file itself: fares three or more months out move, so this is a snapshot rather
+than a stable benchmark, and a comparison run on a later date has to recapture.
+
+Three routes is enough to be directional and is not enough to calibrate a tolerance. That remains true after this
+work; what changed is that the independent side of the comparison now exists and is reproducible.

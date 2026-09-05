@@ -513,9 +513,17 @@ previously logged a warning on each open.
   - [x] Performed one directional aggregator sanity check: the A$24 standard-coach option versus an independent
     two-seat redBus reference of A$19.76 produced A$4.24 absolute / 21.4% relative error, inside a provisional 25%
     tolerance. This is not a calibrated benchmark because the route date is historical and the sample is one route.
-  - [ ] Capture same-day operator/aggregator quotes under the same route, date, traveller-count, mode, and fare
-    assumptions; run the directional report and decide whether the initial tolerance or route set needs adjustment.
-    Synthetic fixtures remain explicitly excluded from accuracy claims.
+  - [x] Captured same-day aggregator fares for three upcoming itinerary routes on 5 September 2026, in
+    `data/reference/transport_accuracy_references_2026-09-05.json`: Bangkok to Phuket (bus, A$88 for two), Koh Lanta to
+    Bangkok (bus, A$90), Colombo to Chennai (flight, A$402). The source quotes per adult while the app stores costs for
+    two, so the doubling is applied in the reference file rather than left for the comparison to infer. Both the
+    cheapest listed fare and a representative mid-tier option are recorded, because the tolerance decision depends on
+    which one the estimate is meant to predict. South American and long-haul legs were left out rather than filled in
+    from a source with a different fare basis.
+  - [ ] **Owner action.** Run estimates for those three routes and produce the report. This needs a provider API key,
+    which is entered in the app UI and never handled by an assistant, so it cannot be done here. Steps are in
+    `docs/product/transport-estimation.md`, section "Completing the accuracy check". Three routes is directional, not
+    a calibration. Fares this far out move, so a run on a later date must recapture.
 
 - [x] Add an opt-in API-key save checkbox everywhere an LLM key is entered.
   - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and
