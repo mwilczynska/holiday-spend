@@ -217,11 +217,30 @@ function findRepoFile(relativePaths: string[]) {
   throw new Error(`Expected file was not found. Tried: ${candidates.join(', ')}`);
 }
 
+/**
+ * v1.1 is the default. It is v1 plus a statement of what the price should represent and what it
+ * must include — the contract never said whether to quote the cheapest fare, a typical one, or a
+ * padded budgeting figure, so "how far off is the estimate" had no defined answer. Measured on
+ * 5 September 2026 the median relative error moved from 36.4% to 25.0% purely on which reference
+ * fare it was compared against, which is a disagreement about the question rather than an error.
+ *
+ * v1 stays frozen and reachable through `TRANSPORT_PROMPT_VERSION=v1`, matching how the city-cost
+ * prompts keep their rollback.
+ */
+const TRANSPORT_PROMPT_FILES = {
+  v1: 'llm_prompt_intercity_transport_1.md',
+  'v1.1': 'llm_prompt_intercity_transport_v1_1.md',
+} as const;
+
+export function resolveTransportPromptFile(): string {
+  return process.env.TRANSPORT_PROMPT_VERSION === 'v1'
+    ? TRANSPORT_PROMPT_FILES.v1
+    : TRANSPORT_PROMPT_FILES['v1.1'];
+}
+
 function loadPromptTemplate(): string {
-  const promptPath = findRepoFile([
-    path.join('docs', 'prompts', 'llm_prompt_intercity_transport_1.md'),
-    'llm_prompt_intercity_transport_1.md',
-  ]);
+  const fileName = resolveTransportPromptFile();
+  const promptPath = findRepoFile([path.join('docs', 'prompts', fileName), fileName]);
   return fs.readFileSync(promptPath, 'utf8');
 }
 
@@ -387,7 +406,7 @@ export function buildTransportEstimationPrompt(request: TransportEstimationReque
   prompt: string;
   promptVersion: string;
 } {
-  const promptVersion = 'llm_prompt_intercity_transport_1.md';
+  const promptVersion = resolveTransportPromptFile();
   const basePrompt = loadPromptTemplate();
   const referenceDateLine = request.referenceDate?.trim()
     ? `Reference date or booking context: ${request.referenceDate.trim()}`

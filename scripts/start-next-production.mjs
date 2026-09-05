@@ -11,9 +11,16 @@ const standaloneRoot = resolve(projectRoot, '.next', 'standalone');
 const standaloneServerPath = resolve(projectRoot, '.next', 'standalone', 'server.js');
 const staticSourcePath = resolve(projectRoot, '.next', 'static');
 const promptSourcePath = resolve(projectRoot, 'docs', 'prompts');
+/**
+ * Staged explicitly rather than left to Next's file tracing. Tracing picks up a prompt only when
+ * the path appears as a string literal, so a prompt selected through a lookup table can be missing
+ * from the bundle while working perfectly in development.
+ */
 const requiredPromptFiles = [
   'llm_prompt_new_cities_1.md',
   'llm_prompt_new_cities_v1_1.md',
+  'llm_prompt_intercity_transport_1.md',
+  'llm_prompt_intercity_transport_v1_1.md',
 ];
 
 if (

@@ -150,6 +150,35 @@ evidence, but it points the same way as the design assumption that the grounded 
 Three routes, one provider, one model, one day. Directional. Not a calibration, and not a basis for
 setting a tolerance yet.
 
+### Prompt v1.1: stating the estimand, 5 September 2026
+
+v1 never said which fare to quote. That is why the median relative error moved from 36.4% to 25.0%
+purely on which reference it was compared against - a disagreement about the question, not an error
+measurement. `llm_prompt_intercity_transport_v1_1.md` states it: the typical fare a traveller would
+actually book, not the cheapest on the market and not a premium or flexible ticket, with connecting
+transfers included only where the route cannot be travelled without one.
+
+The two prompts are identical from `Output rules:` onward, so any difference in output is
+attributable to the estimand. v1 stays frozen and reachable with `TRANSPORT_PROMPT_VERSION=v1`.
+
+Re-running the same three routes, against the representative fare that v1.1 now targets:
+
+| Route | Reference | v1 | v1.1 | v1 error | v1.1 error |
+| --- | --- | --- | --- | --- | --- |
+| Koh Lanta to Bangkok | A$118 | A$160 | A$115 | 35.6% | **2.5%** |
+| Bangkok to Phuket | A$96 | A$120 | A$80 | 25.0% | **16.7%** |
+| Colombo to Chennai | A$400 | A$450 | A$400 | 12.5% | **0.0%** |
+
+Median relative error 25.0% to **2.5%**, and the consistent upward bias is gone: v1 overshot on all
+three routes, while v1.1 undershoots slightly on two and is exact on the third.
+
+Three caveats, because the headline is flattering. The first route's v1 run had fallen back to the
+non-search path, so its improvement conflates the estimand with regained grounding; the other two are
+clean comparisons. Bangkok to Phuket remains 16.7% low, and it is the route where the aggregator
+listed the widest spread between cheapest and representative, so it is the most sensitive to how the
+estimand is worded. And this is still three routes, one run each, one model - directional, not a
+calibration, and not yet grounds for setting a tolerance.
+
 ### Completing the accuracy check
 
 The model side needs a provider API key. Keys are entered in the app UI, stay in browser storage, and are never

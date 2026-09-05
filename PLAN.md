@@ -538,7 +538,14 @@ previously logged a warning on each open.
     `LLM_REQUEST_TIMEOUT_MS` overrides and generous defaults (64,000 tokens, 300 seconds against a measured working
     range of ~12,300 tokens and two minutes). Added the request timeout, which did not exist before - nothing bounded
     a provider call, so the token cap had been doing that job by accident.
-  - [ ] Still open: widen the route set and rerun before choosing a tolerance. Fares this far out move, so a later run
+  - [x] Stated the estimand in prompt v1.1 (`llm_prompt_intercity_transport_v1_1.md`): the typical fare a traveller
+    would actually book, not the cheapest and not premium, with connecting transfers only where unavoidable. v1 stays
+    frozen behind `TRANSPORT_PROMPT_VERSION=v1`, and the files are identical from `Output rules:` onward so any output
+    difference is attributable to the estimand. Re-running the three routes moved the median relative error from
+    25.0% to **2.5%**, and removed the upward bias: v1 overshot on all three, v1.1 undershoots slightly on two and is
+    exact on the third. Recorded in `data/reference/transport_accuracy_run_v1_1_2026-09-05.json`.
+  - [ ] Still open: widen the route set and rerun before choosing a tolerance. One of the three v1 comparisons is
+    confounded by a fallback, and Bangkok to Phuket is still 16.7% low. Fares this far out move, so a later run
     must recapture the references first. The steps are in `docs/product/transport-estimation.md`, section "Completing
     the accuracy check"; the provider key is entered in the app UI and is never handled by an assistant.
 

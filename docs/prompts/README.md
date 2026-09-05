@@ -18,7 +18,8 @@
 | `llm_prompt_city_cost_v5_experiment_094_trip_class_proxy_calibration.md` | **COMPLETE — reject proxy calibration** | one city per delegated GPT-5.6 Luna-class invocation | 36/36 proxy rows; high error and insufficient same-currency pairs |
 | `llm_prompt_new_cities_1.md` | **ACTIVE — shipping** | `src/lib/city-generation.ts` at runtime | The v1 city generation path. Every user-facing city cost comes from this |
 | `llm_prompt_new_cities_v1_1.md` | **IMPLEMENTATION — not default** | `src/lib/city-generation.ts` after `CITY_COST_METHODOLOGY_VERSION=v1.1` | One anchor-only call; deterministic formulas and FX run on the server |
-| `llm_prompt_intercity_transport_1.md` | **ACTIVE — shipping** | `src/lib/transport-estimation.ts` | Planner intercity transport estimation. Unrelated to city costs |
+| `llm_prompt_intercity_transport_1.md` | **ROLLBACK — not default** | `src/lib/transport-estimation.ts` after `TRANSPORT_PROMPT_VERSION=v1` | The original transport contract. Frozen; it never stated which fare to quote |
+| `llm_prompt_intercity_transport_v1_1.md` | **ACTIVE — shipping** | `src/lib/transport-estimation.ts` | v1 plus a stated estimand: the typical fare a traveller would book, not the cheapest and not premium, with connecting transfers included only when unavoidable |
 | `llm_prompt_city_anchors_v4.md` | **RETAINED RESEARCH — not active** | nothing | The v4 collection contract. Retained for historical evidence; v1.1 is the active implementation |
 | `llm_prompt_city_cost_v5_experiment_001.md` | **EXPERIMENT — unvalidated** | `scripts/run-city-cost-v5-one-call.mjs` | Candidate 18-measure extractor; target-class prompt testing uses delegated Luna, provider telemetry remains pending |
 | `llm_prompt_city_cost_v5_experiment_006.md` | **EXPERIMENT — unvalidated** | delegated GPT-5.6 Luna-class sub-agent | Explicit source cascade and hard-category query budget; retest after Experiment 005 coverage failure |

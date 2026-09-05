@@ -103,10 +103,19 @@ describe('v1.1 performance bounds', () => {
     fs.writeFileSync(path.join(directory, 'public', 'icon.svg'), '<svg />');
     fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_new_cities_1.md'), 'v1 prompt');
     fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_new_cities_v1_1.md'), 'v1.1 prompt');
+    // Staged explicitly rather than left to Next's tracing, which only follows string literals.
+    fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_intercity_transport_1.md'), 'transport v1');
+    fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_intercity_transport_v1_1.md'), 'transport v1.1');
 
     const result = runNodeScript(startScript, directory);
 
     expect(result.status).toBe(0);
+    for (const promptFile of [
+      'llm_prompt_intercity_transport_1.md',
+      'llm_prompt_intercity_transport_v1_1.md',
+    ]) {
+      expect(fs.existsSync(path.join(directory, '.next', 'standalone', 'docs', 'prompts', promptFile))).toBe(true);
+    }
     expect(fs.readFileSync(
       path.join(directory, '.next', 'standalone', '.next', 'static', 'chunks', 'app.js'),
       'utf8',
