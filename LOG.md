@@ -2176,3 +2176,41 @@ fetched separately.
 
 Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build, six identical
 endpoint payloads, and a browser pass over load and pagination.
+
+## A serve script, and where server-rendering stops - 5 September 2026
+
+`npm run serve` builds and then starts. The documented sequence was `npm run build && npm start`,
+which is a parser error in Windows PowerShell 5.1 - the shell this project is developed in - so the
+one command the docs told you to run did not run. npm executes its own scripts through a shell that
+accepts `&&`, so a script is the portable fix. Verified by running it from PowerShell: build through
+to a serving app in about twenty seconds. `README.md`, `CLAUDE.md` and the transport doc now say
+`npm run serve`.
+
+### Why /dataset and /settings were not server-rendered
+
+Both were measured on a warm production build rather than assumed, and both were left alone.
+
+| Page | HTML arrives | Data available | Gap |
+| --- | --- | --- | --- |
+| `/` before its fix | ~7 ms | 603 ms | 543 ms |
+| `/track` before its fix | 11 ms | 231 ms | 220 ms |
+| `/dataset` | 11 ms | 154 ms | 143 ms |
+| `/settings` | 11 ms | 123 ms | 112 ms |
+
+`/settings` is the least-visited page in the app, its four requests carry 5.7 kB between them, and
+seeding it means splitting a 411-line component that is mostly interactive state. 112 ms does not pay
+for that.
+
+`/dataset` is a worse trade than it looks. Its two requests carry about 300 kB of JSON, and server
+rendering puts that in the document twice - once as markup, once in the RSC payload - so the parse
+cost lands on the client to save a 143 ms round trip. It also needs two more route extractions. The
+payoff is half of `/track`'s and the cost is higher.
+
+The pattern is worth applying where the waterfall is long and the payload is small. Both of these are
+the opposite, and the returns have flattened: 543 ms, then 220 ms, then 143 ms and 112 ms for
+progressively more work. Recorded as a decision rather than left as an open checkbox, so it is not
+picked up later as unfinished.
+
+Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build,
+`methodology:v1.1:check` with the live CSV hash unchanged, memory mirror, and `npm run serve` run
+from PowerShell.

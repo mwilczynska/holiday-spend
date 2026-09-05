@@ -151,7 +151,9 @@ spending is constrained to the trip window and missing AUD conversions are exclu
 against 263 kB in a production build — so it is not representative of how the app performs. Use it while changing
 code, not while judging speed.
 
-`npm run build` followed by `npm start` is for using the app. Build output goes to `.next`; the dev server writes to
+`npm run serve` is for using the app: it builds and then starts. One command rather than two because `&&` is a
+parser error in Windows PowerShell 5.1, which is the shell this project is developed in, and npm runs its own
+scripts through a shell that accepts it. `npm run build` then `npm start` separately does the same thing. Build output goes to `.next`; the dev server writes to
 `.next-dev`. Keeping the two directories separate matters: while they shared one, each wiped the other and forced a
 full cold recompile, which surfaced as `ChunkLoadError: Loading chunk app/layout failed`.
 

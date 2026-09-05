@@ -184,7 +184,7 @@ calibration, and not yet grounds for setting a tolerance.
 The model side needs a provider API key. Keys are entered in the app UI, stay in browser storage, and are never
 handled by an assistant, written to the repository, or stored in the database — so this step is the owner's to run.
 
-1. Start the app with `npm run build && npm start` and open `/plan`.
+1. Start the app with `npm run serve` and open `/plan`.
 2. For each of the three routes above, run an intercity transport estimate at the recorded travel date with the
    traveller count set to 2, and record the provider, model, reasoning effort, whether the web-search path or the
    fallback was used, and the returned options, assumptions and citations.
