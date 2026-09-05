@@ -179,26 +179,50 @@ listed the widest spread between cheapest and representative, so it is the most 
 estimand is worded. And this is still three routes, one run each, one model - directional, not a
 calibration, and not yet grounds for setting a tolerance.
 
-### Completing the accuracy check
+### Accuracy status: accepted as directional, not calibrated
+
+**Owner decision, 5 September 2026. No tolerance is set, and the route set will not be widened.** The methodology is
+accepted as reasonably accurate and not fully methodologically tested. That is a deliberate trade, not an omission,
+and it should not be reopened as unfinished work.
+
+The limits are known rather than pending. Three routes, one run each, one provider and one model. Two of the four
+route classes have no coverage, and both `domestic_long` samples are Thai buses. One of the three v1 comparisons is
+confounded by a fallback. Bangkok to Phuket remains 16.7% low. There are no repeat runs, so the noise floor is
+unknown.
+
+The reasoning for stopping: the `tolerance` argument to `buildTransportAccuracyReport` feeds only its `outliers` list
+and reaches no user-facing surface, so setting it changes nothing anyone sees. Its value would be as a regression gate
+for future prompt or model work, which is not planned. Earning one honestly would need same-day reference fares from
+two or three aggregators with their fare bases normalised — the per-adult versus per-booking difference alone would
+read as a factor-of-two model error — plus repeat runs for a noise floor. This project has spent that kind of effort
+before: `docs/prompts/README.md` records v5 experiments 085 to 094 as rejected, and v6 and v6.1 are archived as
+rejected approaches retained only for audit.
+
+No synthetic value in the repository is presented as an independent accuracy observation, and the references above are
+the only independent quotes currently recorded.
+
+### If the prompt, provider or model changes
+
+Re-measure then, rather than on a schedule. References must be captured the same day as the estimates, because fares
+months out drift and a stale reference measures drift rather than model error.
 
 The model side needs a provider API key. Keys are entered in the app UI, stay in browser storage, and are never
 handled by an assistant, written to the repository, or stored in the database — so this step is the owner's to run.
 
 1. Start the app with `npm run serve` and open `/plan`.
-2. For each of the three routes above, run an intercity transport estimate at the recorded travel date with the
-   traveller count set to 2, and record the provider, model, reasoning effort, whether the web-search path or the
-   fallback was used, and the returned options, assumptions and citations.
-3. Pair each result with the matching entry in the reference file to form a `TransportAccuracyObservation`, and pass
-   the set to `buildTransportAccuracyReport` (`src/lib/transport-estimation-accuracy.ts`).
-4. Read the median and range of absolute and relative error, then decide the initial tolerance and whether more routes
-   or route classes are needed. Three routes is enough to be directional and is not enough to calibrate.
+2. Recapture reference fares for the routes being compared, on the same day, recording the fare basis for each source.
+3. For each route, run an intercity transport estimate at the recorded travel date with the traveller count set to 2,
+   and record the provider, model, reasoning effort, whether the web-search path or the fallback was used, and the
+   returned options, assumptions and citations.
+4. Pair each result with its reference to form a `TransportAccuracyObservation` and pass the set to
+   `buildTransportAccuracyReport` (`src/lib/transport-estimation-accuracy.ts`).
 
-No synthetic value in the repository is presented as an independent accuracy observation, and the references above are
-the only independent quotes currently recorded.
+Compare against the previous run recorded in `data/reference/transport_accuracy_run_v1_1_2026-09-05.json`. The
+question is whether the change moved the numbers, not whether they clear an absolute bar.
 
 ## Implementation references
 
-- Prompt contract: `docs/prompts/llm_prompt_intercity_transport_1.md`
+- Prompt contract: `docs/prompts/llm_prompt_intercity_transport_v1_1.md` (v1 is the frozen rollback)
 - Provider and schema pipeline: `src/lib/transport-estimation.ts`
 - Bulk bounded concurrency: `src/lib/bulk-transport-estimation.ts`
 - Accuracy report: `src/lib/transport-estimation-accuracy.ts`

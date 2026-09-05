@@ -480,7 +480,8 @@ previously logged a warning on each open.
   - Verified by focused Vitest coverage (12 tests across the scheduler, transport adapter, and planner UI regression);
     the single-leg path and apply loop remain unchanged.
 
-- [ ] Document and roughly test how transport costs are estimated.
+- [x] Document and roughly test how transport costs are estimated. Documented and directionally tested; calibration
+  deliberately not pursued — see the owner decision recorded under the accuracy sub-item below.
   - Current pipeline, to verify against the implementation before testing:
     1. The authenticated route loads the origin and destination legs, travel date, city/country metadata, traveller
        count, allowed modes, reference date/booking context, and route facts such as same/different country or region.
@@ -544,10 +545,29 @@ previously logged a warning on each open.
     difference is attributable to the estimand. Re-running the three routes moved the median relative error from
     25.0% to **2.5%**, and removed the upward bias: v1 overshot on all three, v1.1 undershoots slightly on two and is
     exact on the third. Recorded in `data/reference/transport_accuracy_run_v1_1_2026-09-05.json`.
-  - [ ] Still open: widen the route set and rerun before choosing a tolerance. One of the three v1 comparisons is
-    confounded by a fallback, and Bangkok to Phuket is still 16.7% low. Fares this far out move, so a later run
-    must recapture the references first. The steps are in `docs/product/transport-estimation.md`, section "Completing
-    the accuracy check"; the provider key is entered in the app UI and is never handled by an assistant.
+  - [x] **Owner decision, 5 September 2026: no tolerance will be set, and the route set will not be widened.** The
+    methodology is accepted as reasonably accurate and not fully methodologically tested, and that trade is deliberate.
+
+    The limits are known and recorded rather than pending: three routes, one run each, one provider and model; two of
+    the four route classes have no coverage and the two `domestic_long` samples are both Thai buses; one of the three
+    v1 comparisons is confounded by a fallback; Bangkok to Phuket is still 16.7% low; and there is no repeat-run
+    measurement, so the noise floor is unknown.
+
+    Widening was declined on cost-of-evidence grounds, not oversight. The `tolerance` argument to
+    `buildTransportAccuracyReport` feeds only its `outliers` list and reaches no user-facing surface, so setting it
+    would change nothing anyone sees; its value would be as a regression gate for future prompt or model work, which
+    is not planned. Against that, a defensible tolerance needs same-day reference fares across two or three
+    aggregators with their fare bases normalised — the per-adult versus per-booking difference alone would otherwise
+    read as a factor-of-two model error — plus repeat runs to establish a noise floor.
+
+    This project has been here before. `docs/prompts/README.md` records v5 experiments 085 to 094 as rejected, and v6
+    and v6.1 are archived as rejected approaches retained only for audit. Further calibration work has a poor track
+    record here relative to its cost.
+
+    **Do not reopen this as unfinished work.** The prompt v1.1 estimand change was worth making because the contract
+    genuinely failed to state what it should return; that is a specification defect, and a different thing from
+    chasing a calibrated tolerance. If a future change alters the prompt, provider or model, re-measure then — the
+    procedure is in `docs/product/transport-estimation.md` and the references are reproducible.
 
 - [x] Add an opt-in API-key save checkbox everywhere an LLM key is entered.
   - Add the same clearly labelled checkbox to every OpenAI, Anthropic, and Gemini key input, including city-cost and

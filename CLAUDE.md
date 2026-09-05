@@ -175,6 +175,23 @@ so email/password sign-in is refused for it until both are set. Run `npm run aut
 terminal to fix that; it prompts for the password rather than accepting it as an argument, so the value never reaches
 shell history or logs, and it applies the same strength rules as signup — at least ten characters, and not all digits.
 
+## Methodology testing is closed
+
+City-cost and transport accuracy are accepted as reasonably accurate and not fully methodologically tested. That is a
+deliberate trade. Do not open new calibration, holdout, panel-collection or tolerance-setting work, and do not treat
+the recorded limitations as a backlog.
+
+The record supports this. `docs/prompts/README.md` lists v5 experiments 085 to 094 as rejected, v6 and v6.1 are
+archived as rejected approaches retained only for audit, and the 5 September 2026 transport accuracy check is
+explicitly directional at three routes. Calibration work has a poor return here relative to its cost.
+
+The distinction that matters: fixing a **specification** defect is in scope, and fixing a **calibration** gap is not.
+Prompt v1.1 was worth making because the contract genuinely failed to say which fare to return, and stating it moved
+the median relative error from 25.0% to 2.5%. Chasing a tolerance on top of that is the activity to avoid.
+
+Re-measure when the prompt, provider or model changes, not on a schedule, and follow
+`docs/product/transport-estimation.md`.
+
 ## Conventions and verification
 
 Please remove all mannered prose.
