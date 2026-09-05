@@ -227,27 +227,27 @@ export default function DashboardPage() {
     async function load() {
       setLoading(true);
       try {
-        const [summaryRes, compRes, burnRes] = await Promise.all([
-          fetch('/api/dashboard/summary', { cache: 'no-store' }),
-          fetch('/api/dashboard/planned-vs-actual', { cache: 'no-store' }),
-          fetch('/api/dashboard/burn-rate', { cache: 'no-store' }),
-        ]);
-        const summaryData = await summaryRes.json();
-        const compData = await compRes.json();
-        const burnRateData = await burnRes.json();
+        // One request rather than three. The three endpoints still exist and are unchanged, but
+        // each re-read the same legs, cities, countries and 1,300 expense rows, so rendering this
+        // page loaded them three times over.
+        const response = await fetch('/api/dashboard', { cache: 'no-store' });
+        const { data } = await response.json();
+        if (!data) return;
 
-        if (summaryData.data) setSummary(summaryData.data);
-        if (compData.data) {
-          setComparison(compData.data.comparison || []);
-          setActualCategoryTotals(compData.data.actualCategoryTotals || {});
-          setPlannedCategoryTotals(compData.data.plannedCategoryTotals || {});
+        const { summary: summaryData, plannedVsActual, burnRate } = data;
+
+        if (summaryData) {
+          setSummary(summaryData);
+          setBudgetCeiling(summaryData.totalBudget);
         }
-        if (burnRateData.data) {
-          setBurnData(burnRateData.data.cumulative || []);
-          setCountryBands(burnRateData.data.countryBands || []);
+        if (plannedVsActual) {
+          setComparison(plannedVsActual.comparison || []);
+          setActualCategoryTotals(plannedVsActual.actualCategoryTotals || {});
+          setPlannedCategoryTotals(plannedVsActual.plannedCategoryTotals || {});
         }
-        if (summaryData.data) {
-          setBudgetCeiling(summaryData.data.totalBudget);
+        if (burnRate) {
+          setBurnData(burnRate.cumulative || []);
+          setCountryBands(burnRate.countryBands || []);
         }
       } finally {
         setLoading(false);

@@ -1840,3 +1840,37 @@ A ten-minute silent hang became a one-second error message. The guard does not p
 say so.
 
 Verification: 55 files / 253 tests, production build, memory mirror.
+
+## One dashboard read - 4 September 2026
+
+The three dashboard endpoints each read the same rows: the user's legs and leg transports, every city, every country,
+and every one of the user's expenses. Rendering the dashboard ran all three, so the same 1,300 expense rows were
+loaded three times to draw one page.
+
+The shared read and the three calculations now live in `src/lib/dashboard-data.ts`, and a new `GET /api/dashboard`
+loads once and returns all three payloads. The page makes one request instead of three. The original endpoints remain
+and are unchanged in shape - they are public surface, and keeping them meant the change could be verified by
+comparison rather than by reading.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Dashboard data load | 34.5 ms (three in parallel, median of 9) | **18.4 ms** (one request) |
+| Reads of the expense table per page load | 3 | **1** |
+
+The verification is the part worth recording. Extracting 560 lines of calculation by hand is exactly the kind of
+change that looks right and quietly is not, so the three payloads were captured from the running production build
+before the change and compared afterwards. All three individual endpoints came back byte-identical, and each section
+of the combined response was byte-identical to the endpoint it replaces - six comparisons, all equal. The dashboard
+was then reopened in an authenticated browser session and gave the same 32 country bars, 7 category bars, 3 burn lines
+with 21 country reference areas, the same staggered country strip, and the same stat values.
+
+The builders are deliberately self-contained: each redoes its own in-memory derivations from the shared rows rather
+than sharing those too. They are map constructions over a few thousand objects, and keeping them separate is what
+allowed the three bodies to move across verbatim, which is what made the byte-identical comparison meaningful.
+
+A source-text test moved with the code again - `planner-city-picker-ui.test.ts` asserts the country-block calculation
+by reading a file path. That is now the second time this session that this suite needed repointing after a refactor.
+It is a reasonable way to pin behaviour that has no other seam, but it does couple the tests to file layout, and that
+cost is worth noting rather than paying silently each time.
+
+Verification: TypeScript, 55 files / 253 tests, production build, authenticated performance harness.

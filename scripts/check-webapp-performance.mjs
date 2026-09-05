@@ -60,6 +60,9 @@ const routes = ['/', '/plan', '/plan/compare', '/track', '/dataset', '/estimates
 // Measured only when a session is established. An anonymous run cannot reach these at all,
 // which is precisely the blind spot that hid the real payload sizes.
 const apiEndpoints = [
+  // What the dashboard actually calls. The three per-section endpoints remain and are still
+  // measured, because they are public API surface even though the page no longer uses them.
+  '/api/dashboard',
   '/api/dashboard/summary',
   '/api/dashboard/planned-vs-actual',
   '/api/dashboard/burn-rate',
