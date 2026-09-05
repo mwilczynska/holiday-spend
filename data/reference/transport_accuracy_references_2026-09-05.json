@@ -1,0 +1,101 @@
+{
+  "capturedAt": "2026-09-05T01:53:00Z",
+  "capturedBy": "manual browser capture against the public aggregator listing",
+  "source": "12go.asia",
+  "currencyShownBySource": "AUD",
+  "assumptions": {
+    "quotedPer": "adult",
+    "groupSizeApplied": 2,
+    "conversionToReference": "referenceTotalAud = quoted per-adult fare x 2",
+    "fareBasis": "cheapest standard adult fare listed for the mode, one way, taxes included",
+    "notes": [
+      "The aggregator quotes per adult while the app stores costs for two people. The doubling is applied here, in the reference, rather than being left for the comparison to guess.",
+      "referenceTotalAud uses the cheapest listed fare for the mode. A representative mid-tier option is recorded alongside it, because 'cheapest listed' and 'what a traveller would actually book' are not the same number and the tolerance decision depends on which one the estimate is meant to predict.",
+      "Fares for dates three or more months out move. These are a snapshot on the capture date and are not a stable benchmark; a comparison run on a later date must recapture."
+    ]
+  },
+  "pendingEstimates": {
+    "status": "references only",
+    "reason": "The model side of this comparison needs a provider API key, which is entered in the app UI by the owner and is never handled here.",
+    "howToComplete": "docs/product/transport-estimation.md, section 'Completing the accuracy check'"
+  },
+  "references": [
+    {
+      "routeId": "bangkok-phuket-2026-12-26",
+      "routeClass": "domestic_long",
+      "originCity": "Bangkok",
+      "originCountry": "Thailand",
+      "destinationCity": "Phuket",
+      "destinationCountry": "Thailand",
+      "travelDate": "2026-12-26",
+      "capturedAt": "2026-09-05T01:53:00Z",
+      "groupSize": 2,
+      "referenceMode": "bus",
+      "referenceTotalAud": 88,
+      "referenceSource": "12go.asia listing, cheapest bus A$44 per adult",
+      "modeMinimumsPerAdultAud": { "bus": 44, "van": 44, "flight": 82, "taxi": 379 },
+      "representativeOption": {
+        "mode": "bus",
+        "operator": "Raja Ferry",
+        "duration": "17h",
+        "perAdultAud": 48,
+        "totalAud": 96
+      }
+    },
+    {
+      "routeId": "koh-lanta-bangkok-2026-12-20",
+      "routeClass": "domestic_long",
+      "originCity": "Koh Lanta",
+      "originCountry": "Thailand",
+      "destinationCity": "Bangkok",
+      "destinationCountry": "Thailand",
+      "travelDate": "2026-12-20",
+      "capturedAt": "2026-09-05T01:53:00Z",
+      "groupSize": 2,
+      "referenceMode": "bus",
+      "referenceTotalAud": 90,
+      "referenceSource": "12go.asia listing, cheapest bus A$45 per adult",
+      "modeMinimumsPerAdultAud": { "bus": 45, "ferry": 51, "van": 51, "flight": 116, "taxi": 517 },
+      "representativeOption": {
+        "mode": "bus",
+        "operator": "listed van/bus combination",
+        "duration": "18h 30m",
+        "perAdultAud": 59,
+        "totalAud": 118
+      }
+    },
+    {
+      "routeId": "colombo-chennai-2027-01-17",
+      "routeClass": "international_short",
+      "originCity": "Colombo",
+      "originCountry": "Sri Lanka",
+      "destinationCity": "Chennai",
+      "destinationCountry": "India",
+      "travelDate": "2027-01-17",
+      "capturedAt": "2026-09-05T01:53:00Z",
+      "groupSize": 2,
+      "referenceMode": "flight",
+      "referenceTotalAud": 402,
+      "referenceSource": "12go.asia listing, cheapest flight A$201 per adult",
+      "modeMinimumsPerAdultAud": { "flight": 201, "taxi": 864 },
+      "representativeOption": {
+        "mode": "flight",
+        "operator": "listed scheduled carrier",
+        "duration": "1h 20m",
+        "perAdultAud": 200,
+        "totalAud": 400
+      }
+    }
+  ],
+  "notCaptured": [
+    {
+      "routes": [
+        "Sacred Valley, Peru -> Arica, Chile (2026-10-05)",
+        "San Pedro de Atacama, Chile -> La Paz, Bolivia (2026-10-19)",
+        "La Paz, Bolivia -> Buenos Aires, Argentina (2026-11-02)",
+        "Buenos Aires, Argentina -> Mexico City, Mexico (2026-11-23)"
+      ],
+      "reason": "The South American and long-haul legs are not covered by the aggregator used here, so capturing them under the same fare assumptions needs a different source. Mixing sources without matching their fare bases is what would make the error figures meaningless, so they are left out rather than filled in from somewhere else."
+    }
+  ]
+}
