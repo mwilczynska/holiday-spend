@@ -1,0 +1,54 @@
+{
+  "measuredAt": "2026-09-05T03:10:00Z",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "reasoningEffort": "max",
+  "budgetInEffect": 32000,
+  "previousBudget": 12000,
+  "why": "The 32,000 budget was chosen without evidence. These are the first real measurements, taken after the response usage began to be logged on every call rather than only on failures.",
+  "runs": [
+    {
+      "route": "Koh Lanta -> Bangkok",
+      "date": "2026-12-20",
+      "reasoningTokens": 10787,
+      "outputTokens": 12259,
+      "answered": true,
+      "wouldFailAtPreviousBudget": true
+    },
+    {
+      "route": "Koh Lanta -> Bangkok (repeat)",
+      "date": "2026-12-20",
+      "reasoningTokens": 8965,
+      "outputTokens": 10153,
+      "answered": true,
+      "wouldFailAtPreviousBudget": false
+    },
+    {
+      "route": "Bangkok -> Phuket",
+      "date": "2026-12-26",
+      "reasoningTokens": 10208,
+      "outputTokens": 11463,
+      "answered": true,
+      "wouldFailAtPreviousBudget": false
+    },
+    {
+      "route": "Colombo -> Chennai",
+      "date": "2027-01-17",
+      "reasoningTokens": 8349,
+      "outputTokens": 8830,
+      "answered": true,
+      "wouldFailAtPreviousBudget": false
+    }
+  ],
+  "conclusion": {
+    "observedRangeOutputTokens": [
+      8830,
+      12259
+    ],
+    "observedMax": 12259,
+    "budgetHeadroom": "12,259 of 32,000, or 38% of the budget",
+    "verdict": "32,000 is sufficient for these three legs, with roughly 2.6x margin over the worst observed run.",
+    "whyItFailedBefore": "The previous 12,000 cap sat inside the observed range, so the same route exceeded it on one run and not on another. A cap set within the natural variance of what it caps fails intermittently and looks mysterious each time.",
+    "caveat": "Four runs, one provider, one model, three routes. Enough to justify 32,000 and to explain the old failure; not enough to characterise the tail. Keep the logging on."
+  }
+}
