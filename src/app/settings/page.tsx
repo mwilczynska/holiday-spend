@@ -30,6 +30,16 @@ interface Country {
   name: string;
 }
 
+interface LlmSettings {
+  maxOutputTokens: number;
+  requestTimeoutMs: number;
+  defaults: { maxOutputTokens: number; requestTimeoutMs: number };
+  limits: {
+    maxOutputTokens: { min: number; max: number };
+    requestTimeoutMs: { min: number; max: number };
+  };
+}
+
 const CATEGORIES = ['visa', 'insurance', 'flights', 'gear', 'other'];
 
 export default function SettingsPage() {
@@ -40,6 +50,10 @@ export default function SettingsPage() {
   const [groupSizeError, setGroupSizeError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [addOpen, setAddOpen] = useState(false);
+  const [llm, setLlm] = useState<LlmSettings | null>(null);
+  const [llmDraft, setLlmDraft] = useState({ maxOutputTokens: '', requestTimeoutSeconds: '' });
+  const [llmStatus, setLlmStatus] = useState<string | null>(null);
+  const [llmError, setLlmError] = useState<string | null>(null);
   const [newCost, setNewCost] = useState({
     description: '',
     amountAud: 0,
@@ -52,12 +66,13 @@ export default function SettingsPage() {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const [costsRes, countriesRes, plannerSettingsRes] = await Promise.all([
+      const [costsRes, countriesRes, plannerSettingsRes, llmRes] = await Promise.all([
         fetch('/api/fixed-costs'),
         // Only id and name are used below, so skip the nested city rows: the full
         // payload is ~166 KB against ~5.5 KB here.
         fetch('/api/countries?includeCities=false'),
         fetch('/api/planner/settings', { cache: 'no-store' }),
+        fetch('/api/settings/llm', { cache: 'no-store' }),
       ]);
       const costsData = await costsRes.json();
       const countriesData = await countriesRes.json();
@@ -70,6 +85,14 @@ export default function SettingsPage() {
       );
       if (plannerSettingsRes.ok && plannerSettingsData.data?.groupSize) {
         setGroupSize(plannerSettingsData.data.groupSize);
+      }
+      if (llmRes.ok) {
+        const llmData = (await llmRes.json()).data as LlmSettings;
+        setLlm(llmData);
+        setLlmDraft({
+          maxOutputTokens: String(llmData.maxOutputTokens),
+          requestTimeoutSeconds: String(Math.round(llmData.requestTimeoutMs / 1000)),
+        });
       }
     } finally {
       setLoading(false);
@@ -128,6 +151,33 @@ export default function SettingsPage() {
       setGroupSizeStatus(null);
       setGroupSizeError(err instanceof Error ? err.message : 'Failed to update traveller count.');
       fetchData();
+    }
+  };
+
+  const saveLlmSettings = async (next: { maxOutputTokens: number | null; requestTimeoutMs: number | null }) => {
+    try {
+      const response = await fetch('/api/settings/llm', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(next),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Failed to update provider limits.');
+
+      setLlm((current) => (current ? { ...current, ...data.data } : current));
+      setLlmDraft({
+        maxOutputTokens: String(data.data.maxOutputTokens),
+        requestTimeoutSeconds: String(Math.round(data.data.requestTimeoutMs / 1000)),
+      });
+      setLlmError(null);
+      setLlmStatus(
+        next.maxOutputTokens === null && next.requestTimeoutMs === null
+          ? 'Provider limits reset to the defaults.'
+          : 'Provider limits saved.'
+      );
+    } catch (err) {
+      setLlmStatus(null);
+      setLlmError(err instanceof Error ? err.message : 'Failed to update provider limits.');
     }
   };
 
@@ -194,6 +244,70 @@ export default function SettingsPage() {
           </p>
           {groupSizeStatus ? <p className="text-sm text-muted-foreground">{groupSizeStatus}</p> : null}
           {groupSizeError ? <p className="text-sm text-destructive">{groupSizeError}</p> : null}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Provider Request Limits</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <p className="text-sm text-muted-foreground">
+            Applies to city-cost and intercity-transport generation. These are stops for a request that has gone
+            wrong, not budgets. Providers bill tokens as they are produced, so a high cap costs nothing until a
+            request actually needs it &mdash; and a cap that is hit part-way through is paid for and then discarded.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 max-w-xl">
+            <div>
+              <Label htmlFor="llm-max-tokens">Maximum output tokens</Label>
+              <Input
+                id="llm-max-tokens"
+                type="number"
+                value={llmDraft.maxOutputTokens}
+                onChange={(e) => setLlmDraft((p) => ({ ...p, maxOutputTokens: e.target.value }))}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Covers reasoning and the answer together. Default {llm ? llm.defaults.maxOutputTokens.toLocaleString('en-AU') : '—'}.
+              </p>
+            </div>
+            <div>
+              <Label htmlFor="llm-timeout">Request timeout (seconds)</Label>
+              <Input
+                id="llm-timeout"
+                type="number"
+                value={llmDraft.requestTimeoutSeconds}
+                onChange={(e) => setLlmDraft((p) => ({ ...p, requestTimeoutSeconds: e.target.value }))}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Default {llm ? Math.round(llm.defaults.requestTimeoutMs / 1000) : '—'}s. High reasoning effort can run
+                for a couple of minutes.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button
+              size="sm"
+              disabled={!llm}
+              onClick={() => saveLlmSettings({
+                maxOutputTokens: Number(llmDraft.maxOutputTokens) || null,
+                requestTimeoutMs: Number(llmDraft.requestTimeoutSeconds)
+                  ? Number(llmDraft.requestTimeoutSeconds) * 1000
+                  : null,
+              })}
+            >
+              Save limits
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              disabled={!llm}
+              onClick={() => saveLlmSettings({ maxOutputTokens: null, requestTimeoutMs: null })}
+            >
+              Reset to defaults
+            </Button>
+          </div>
+          {llmStatus ? <p className="text-sm text-muted-foreground">{llmStatus}</p> : null}
+          {llmError ? <p className="text-sm text-destructive">{llmError}</p> : null}
         </CardContent>
       </Card>
 

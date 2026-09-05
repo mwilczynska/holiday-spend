@@ -2057,3 +2057,40 @@ about 12,000 reasoning tokens and discarded every one of them.
 Verification: TypeScript, `next lint` clean, 56 files / 257 tests, production build,
 `methodology:v1.1:check` with the live CSV hash unchanged, memory mirror, and four live runs against
 the running production build.
+
+## Configurable provider request limits - 5 September 2026
+
+The token cap raised the right question: a hardcoded number that a future model outgrows breaks quietly. Two limits
+are now configurable under Settings, and one of them did not exist at all before.
+
+`user_preferences` gains `llm_max_output_tokens` and `llm_request_timeout_ms`, both nullable. Null means "follow the
+default", so raising a default later reaches everyone who has not deliberately chosen their own value - which is the
+whole point, given the reason for the change was future-proofing. Precedence is the user setting, then
+`LLM_MAX_OUTPUT_TOKENS` / `LLM_REQUEST_TIMEOUT_MS`, then the defaults in `src/lib/llm-runtime-settings.ts`.
+
+Defaults are 64,000 output tokens and a 300-second timeout, against a measured working range of about 12,300 tokens
+and two minutes. Roughly five times headroom, deliberately.
+
+The framing matters more than the numbers. Neither limit is a budget. Providers bill reasoning tokens against
+`max_output_tokens` as they are generated, so a high cap costs nothing until a request genuinely needs it, while a cap
+that binds part-way through is paid for in full and the answer thrown away. A cap that is reached during normal
+operation is therefore worse than no cap at all, and these exist only to stop a request that has gone wrong.
+
+The timeout is new. Nothing bounded a provider call before - no abort signal, no route duration limit - so the token
+cap had been doing that job by accident, and doing it in the most wasteful way available. `AbortSignal.timeout` is the
+honest stop: it bounds the thing actually worth bounding, and it fails with a reason rather than an empty response.
+
+Per-effort scaling of the cap was considered and dropped. One generous ceiling applied whenever reasoning is enabled
+is simpler, and since the cap is not a budget there is little value in tuning it per effort level.
+
+Verified end to end against the running production build rather than by inspection: the Settings card loads showing
+the defaults, saving 96,000 persists to the database, a live transport estimate then logs `budget=96000`, and Reset to
+defaults clears both columns back to null and returns the field to 64,000. Six tests cover precedence, an unparseable
+environment value, clamping, and that the defaults clear the observed working range.
+
+One repeat of an earlier lesson. Two attempts to type into the settings field by screen coordinate silently missed,
+because the viewport had rescaled between screenshots; both looked like a broken save until the field value was read
+back. Element references worked first time. Coordinates are not a reliable way to drive this UI.
+
+Verification: TypeScript, `next lint` clean, 57 files / 263 tests, production build,
+`methodology:v1.1:check` with the live CSV hash unchanged, memory mirror.

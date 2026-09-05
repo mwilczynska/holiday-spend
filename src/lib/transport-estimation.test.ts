@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { LLM_MAX_OUTPUT_TOKENS_DEFAULT } from '@/lib/llm-runtime-settings';
 import { estimateIntercityTransport } from '@/lib/transport-estimation';
 
 const transportPayload = {
@@ -55,12 +56,13 @@ describe('transport reasoning effort', () => {
       reasoningEffort: 'max',
     });
 
-    // Raised from 12,000 on 5 September 2026. Reasoning tokens are billed against this budget, and
-    // at maximum effort a live multi-leg route consumed all of it and returned no answer at all.
+    // 12,000 -> 32,000 -> the configured default. Reasoning tokens are billed against this budget,
+    // and a live multi-leg route consumed all of 12,000 and returned no answer. The value is now a
+    // setting rather than a constant, so the test asserts the default rather than a literal.
     expect(requestBody).toMatchObject({
       model: 'gpt-5.6-luna',
       reasoning: { effort: 'max' },
-      max_output_tokens: 32000,
+      max_output_tokens: LLM_MAX_OUTPUT_TOKENS_DEFAULT,
     });
     const sentBody = requestBody as unknown as Record<string, unknown>;
     expect(sentBody.text).toBeUndefined();

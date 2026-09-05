@@ -194,6 +194,19 @@ if (!hasUserPreferencesTable) {
   `);
 }
 
+// Nullable on purpose: null means "use the configured default", so raising the default later
+// applies to everyone who has not deliberately overridden it.
+const preferenceColumns = sqlite
+  .prepare('PRAGMA table_info(user_preferences)')
+  .all() as Array<{ name: string }>;
+
+if (!preferenceColumns.some((column) => column.name === 'llm_max_output_tokens')) {
+  sqlite.exec('ALTER TABLE user_preferences ADD COLUMN llm_max_output_tokens INTEGER');
+}
+if (!preferenceColumns.some((column) => column.name === 'llm_request_timeout_ms')) {
+  sqlite.exec('ALTER TABLE user_preferences ADD COLUMN llm_request_timeout_ms INTEGER');
+}
+
 if (!hasUserPasswordsTable) {
   sqlite.exec(`
     CREATE TABLE IF NOT EXISTS user_passwords (

@@ -50,6 +50,9 @@ export const countries = sqliteTable('countries', {
 export const userPreferences = sqliteTable('user_preferences', {
   userId: text('user_id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
   plannerGroupSize: integer('planner_group_size').notNull().default(2),
+  // Null means "use the configured default"; see src/lib/llm-runtime-settings.ts.
+  llmMaxOutputTokens: integer('llm_max_output_tokens'),
+  llmRequestTimeoutMs: integer('llm_request_timeout_ms'),
   createdAt: text('created_at').default(sql`(datetime('now'))`),
   updatedAt: text('updated_at').default(sql`(datetime('now'))`),
 });
