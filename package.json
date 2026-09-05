@@ -8,6 +8,7 @@
     "prebuild": "node scripts/prepare-next-build.mjs",
     "build": "next build",
     "start": "node scripts/start-next-production.mjs",
+    "serve": "npm run build && npm start",
     "lint": "next lint",
     "country-metadata:generate": "node scripts/generate-country-metadata.mjs",
     "docs:sync-memory": "node scripts/sync-memory-docs.mjs",

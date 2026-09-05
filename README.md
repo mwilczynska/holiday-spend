@@ -102,7 +102,7 @@ Then either:
 
 ```bash
 npm run dev                    # for editing code
-npm run build && npm start     # for actually using the app
+npm run serve                  # for actually using the app (build, then start)
 ```
 
 Use the production build when you want to use the app. Development mode serves unminified bundles — roughly
