@@ -1213,6 +1213,33 @@ unchanged, and the memory mirror.
 
 Verification: 55 files / 253 tests, production build, memory mirror.
 
+## Phase 16 — One dashboard read — COMPLETE
+
+`/api/dashboard/summary`, `/api/dashboard/planned-vs-actual` and `/api/dashboard/burn-rate` each read the same rows —
+the user's legs and leg transports, every city, every country, the user's expenses. Rendering the dashboard therefore
+loaded the same 1,300 expense rows three times.
+
+- [x] Extracted the shared read and the three calculations into `src/lib/dashboard-data.ts`.
+- [x] Added `GET /api/dashboard`, which loads once and returns all three payloads.
+- [x] Pointed `src/app/page.tsx` at it: one request instead of three.
+- [x] The three endpoints remain, unchanged in shape, as thin wrappers over the same builders.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Dashboard data load | 34.5 ms (three in parallel) | **18.4 ms** (one request) |
+| Reads of the expense table per page load | 3 | **1** |
+
+Correctness was checked by capturing all three payloads from the running production build before the change and
+comparing after: the three individual endpoints are byte-identical, and each section of the combined response is
+byte-identical to the endpoint it replaces. Six comparisons, all equal. The dashboard was then re-verified in an
+authenticated browser session — 32 country bars, 7 category bars, 3 burn lines with 21 country reference areas, the
+staggered country strip, and unchanged stat values.
+
+One source-text test moved with the code, for the same reason as the chart split: `planner-city-picker-ui.test.ts`
+asserts the country-block calculation by reading a file, and that calculation now lives in the shared module.
+
+Verification: TypeScript, 55 files / 253 tests, production build, authenticated performance harness.
+
 ## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.

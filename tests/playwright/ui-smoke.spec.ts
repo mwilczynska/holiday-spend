@@ -15,57 +15,49 @@ test.describe('app UI smoke', () => {
   });
 
   test('dashboard cumulative chart defines each line style', async ({ page }) => {
-    await page.route('**/api/dashboard/summary', (route) => route.fulfill({
+    // The dashboard fetches one combined endpoint; the three per-section endpoints still exist
+    // but the page no longer calls them.
+    await page.route('**/api/dashboard', (route) => route.fulfill({
       status: 200,
       contentType: 'application/json',
       body: JSON.stringify({
         data: {
-          totalBudget: 5000,
-          plannedLegsTotal: 4500,
-          fixedTotal: 500,
-          groupSize: 2,
-          totalSpent: 150,
-          plannedToDate: 160,
-          varianceToDate: -10,
-          projectedTotal: 4300,
-          forecastVariance: -200,
-          remainingLegBudget: 4350,
-          remaining: 4850,
-          asOfDate: '2026-08-26',
-          asOfSource: 'today',
-          daysElapsed: 2,
-          daysRemaining: 28,
-          totalNights: 30,
-          destinations: 2,
-          expenseCount: 2,
-          burnRate: {
-            tripAvg: 75,
-            plannedAvgSoFar: 80,
-            sevenDayAvg: 75,
-            thirtyDayAvg: 75,
-            requiredDailyPace: 155,
+          summary: {
+            totalBudget: 5000,
+            plannedLegsTotal: 4500,
+            fixedTotal: 500,
+            groupSize: 2,
+            totalSpent: 150,
+            plannedToDate: 160,
+            varianceToDate: -10,
+            projectedTotal: 4300,
+            forecastVariance: -200,
+            remainingLegBudget: 4350,
+            remaining: 4850,
+            asOfDate: '2026-08-26',
+            asOfSource: 'today',
+            daysElapsed: 2,
+            daysRemaining: 28,
+            totalNights: 30,
+            destinations: 2,
+            expenseCount: 2,
+            burnRate: {
+              tripAvg: 75,
+              plannedAvgSoFar: 80,
+              sevenDayAvg: 75,
+              thirtyDayAvg: 75,
+              requiredDailyPace: 155,
+            },
+            budgetHealth: 'on_track',
           },
-          budgetHealth: 'on_track',
-        },
-      }),
-    }));
-    await page.route('**/api/dashboard/planned-vs-actual', (route) => route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify({
-        data: { comparison: [], actualCategoryTotals: {}, plannedCategoryTotals: {} },
-      }),
-    }));
-    await page.route('**/api/dashboard/burn-rate', (route) => route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify({
-        data: {
-          cumulative: [
-            { date: '2026-08-25', cumulative: 100, daily: 100, plannedCumulative: 80, plannedDaily: 80, countryName: 'Japan', cityName: 'Tottori', legStatus: 'completed' },
-            { date: '2026-08-26', cumulative: 150, daily: 50, plannedCumulative: 160, plannedDaily: 80, countryName: 'Japan', cityName: 'Tottori', legStatus: 'planned' },
-          ],
-          countryBands: [{ countryName: 'Japan', startDate: '2026-08-25', endDate: '2026-08-26', pointCount: 2 }],
+          plannedVsActual: { comparison: [], actualCategoryTotals: {}, plannedCategoryTotals: {} },
+          burnRate: {
+            cumulative: [
+              { date: '2026-08-25', cumulative: 100, daily: 100, plannedCumulative: 80, plannedDaily: 80, countryName: 'Japan', cityName: 'Tottori', legStatus: 'completed' },
+              { date: '2026-08-26', cumulative: 150, daily: 50, plannedCumulative: 160, plannedDaily: 80, countryName: 'Japan', cityName: 'Tottori', legStatus: 'planned' },
+            ],
+            countryBands: [{ countryName: 'Japan', startDate: '2026-08-25', endDate: '2026-08-26', pointCount: 2 }],
+          },
         },
       }),
     }));

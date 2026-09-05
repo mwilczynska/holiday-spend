@@ -107,8 +107,10 @@ describe('planner city picker UI', () => {
   });
 
   it('uses uninterrupted country blocks for dashboard comparison rows', () => {
+    // The calculation moved into the shared dashboard module when the three endpoints were
+    // consolidated behind one read; the guarantee it encodes is unchanged.
     const source = fs.readFileSync(
-      path.join(projectRoot, 'src', 'app', 'api', 'dashboard', 'planned-vs-actual', 'route.ts'),
+      path.join(projectRoot, 'src', 'lib', 'dashboard-data.ts'),
       'utf8'
     );
 
