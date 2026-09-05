@@ -139,11 +139,12 @@ code, not while judging speed.
 `.next-dev`. Keeping the two directories separate matters: while they shared one, each wiped the other and forced a
 full cold recompile, which surfaced as `ChunkLoadError: Loading chunk app/layout failed`.
 
-Stop `npm start` from the terminal that owns it. `scripts/start-next-production.mjs` spawns `.next/standalone/server.js`
-as a child and forwards the child's exit to the parent, but not the reverse, so killing only the wrapper leaves the
-standalone server running and holding `.next/standalone`. The next `npm run build` then blocks while cleaning that
-directory, producing no output at all rather than an error. If a build hangs with an empty log, check for a stray
-`node .next/standalone/server.js` before suspecting the build.
+Stop `npm start` from the terminal that owns it. `.next/standalone/server.js` `chdir()`s into its own directory, and
+Windows locks a directory that is any process's working directory, so a surviving server blocks `next build` while it
+cleans `.next`. `scripts/start-next-production.mjs` now stops its child when it exits, but that only helps when the
+launcher gets to run: force-killing it, or killing the shell rather than the process tree, still leaves the server up.
+The `prebuild` guard in `scripts/prepare-next-build.mjs` therefore probes the directory and fails immediately with an
+explanation instead of letting the build hang with an empty log.
 
 `npm run performance:check` measures the running app and requires credentials: set `WEBAPP_AUTH_EMAIL` and
 `WEBAPP_AUTH_PASSWORD` against a production build, or `WEBAPP_AUTH_PIN` against a dev server with

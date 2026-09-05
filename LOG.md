@@ -1808,3 +1808,35 @@ on both sides of each boundary.
 
 Verification: TypeScript, 55 files / 253 tests, production build, `methodology:v1.1:check` with the live CSV hash
 unchanged, and the memory mirror.
+
+## Build guard for a surviving production server - 4 September 2026
+
+The previous entry recorded two builds lost to a stalled `next build` that produced no output at all, caused by an
+orphaned `.next/standalone/server.js`. The intended fix was to forward SIGINT and SIGTERM from the launcher to its
+child. That was implemented, and then measured, and it does not fix the case that caused the problem.
+
+The A/B was run against the exact failing scenario - `npm start` as a background task, stopped the same way it was
+stopped when the stalls happened. Old launcher: all three processes survive and port 3000 is still listening. New
+launcher: identical. The reason is that stopping the task kills the shell, not the process tree, so the launcher is
+never signalled and no handler it installs can run. A fix that depends on receiving a signal cannot help when nothing
+is delivered.
+
+The signal handling was kept, because it is correct for the cases it does cover - notably `process.on('exit')`, which
+now stops the child whenever the launcher exits for any ordinary reason - but it is not the fix, and recording it as
+one would have been wrong.
+
+The fix is a `prebuild` guard, `scripts/prepare-next-build.mjs`. The standalone server `chdir()`s into its own
+directory, and Windows locks a directory that is any process's working directory, which is why the build blocks
+cleaning `.next`. The guard renames `.next/standalone` to a suffixed name and straight back. That is deliberately the
+same operation the build is about to attempt, so the probe cannot disagree with the build about whether the directory
+is free, and it is a no-op when nothing holds it.
+
+Verified in both directions. With a server running the probe reports `EBUSY` and `npm run build` exits 1 in under a
+second with an explanation and the commands to find the stray process. With no server running the probe succeeds
+silently, leaves the directory intact, and the build completes normally. It also exits 0 on any other error code
+rather than blocking a build for a condition it does not understand.
+
+A ten-minute silent hang became a one-second error message. The guard does not prevent the orphan; it makes the orphan
+say so.
+
+Verification: 55 files / 253 tests, production build, memory mirror.
