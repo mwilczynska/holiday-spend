@@ -1240,6 +1240,50 @@ asserts the country-block calculation by reading a file, and that calculation no
 
 Verification: TypeScript, 55 files / 253 tests, production build, authenticated performance harness.
 
+## Phase 17 - Server-rendered dashboard - COMPLETE
+
+The carried-forward item was gated on "the Step 2 harness showing a real gap; it currently does not." That gate was
+measuring the wrong thing. The harness times the route shell and the API separately - 10 ms and 18 ms - and never sees
+the serial wait between them.
+
+Measured in the browser on a production build, before the change:
+
+| Event | Time |
+| --- | --- |
+| HTML received (27,192 bytes, carrying no data) | ~7 ms |
+| DOMContentLoaded | 388 ms |
+| load | 551 ms |
+| **dashboard request starts** | **569 ms** |
+| data available | 603 ms |
+
+The request could not start earlier: it lives in a `useEffect`, so it waits for the bundle to download, parse and
+mount. The query was never the cost.
+
+- [x] `src/app/page.tsx` is now a server component that loads through `loadDashboardInputs` and passes the result to
+  `src/app/DashboardClient.tsx`.
+- [x] The mount-time refresh is kept but gated on a module-scope flag, so a full page load does not refetch data the
+  server just rendered, while a client-side navigation back to the dashboard still does - Next's client router can
+  serve a cached payload for a dynamic route, so that path must not trust its props.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Data available to render | 603 ms | **60 ms** |
+| Dashboard fetches on a full page load | 1 (blocking) | **0** |
+| Dashboard fetches returning by client-side nav | 1 | 1 (freshness preserved) |
+| HTML on the wire | ~27 kB decoded, no data | 21.5 kB gzipped, 172 kB decoded, complete |
+
+Verified in an authenticated browser session across both paths - full load and client-side return - with identical
+rendering each time: 32 country bars, 7 category bars, 3 burn lines with 21 country reference areas, the staggered
+country strip, and unchanged stat values.
+
+`/` is now marked dynamic rather than static in the build output, which is correct: the response is per-user and must
+not be cached across sessions. Route JavaScript is unchanged at 144 kB.
+
+Not done: the same treatment for `/track`, `/dataset` and `/settings`.
+
+Verification: TypeScript, `next lint` clean, 55 files / 253 tests, production build, authenticated performance
+harness.
+
 ## Definition of done
 
 - [x] The existing 121-city v1 CSV is unchanged.
