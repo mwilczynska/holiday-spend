@@ -528,6 +528,12 @@ previously logged a warning on each open.
   - [x] Diagnosed and fixed the fallback that run exposed: at maximum effort, reasoning tokens exhausted the 12,000
     `max_output_tokens` budget, so the response carried no message and the generic "returned no text output" hid the
     cause. The error now names the truncation and the reasoning-token count, and the budget rose to 32,000.
+  - [x] Measured the output-token budget rather than guessing it. Usage is logged on every OpenAI transport call;
+    the three routes used 8,830 to 12,259 total output tokens, so 32,000 carries about 2.6x margin. The old 12,000 cap
+    sat inside that range, which is why the same route failed on one run and not another. Recorded in
+    `data/reference/transport_token_usage_2026-09-05.json`.
+  - [x] Added the effort ladder: on budget exhaustion the grounded call is retried one rung down (`max`, `xhigh`,
+    `high`) before web search is abandoned, since truncation is a reason to think less rather than to stop searching.
   - [ ] Still open: widen the route set and rerun before choosing a tolerance. Fares this far out move, so a later run
     must recapture the references first. The steps are in `docs/product/transport-estimation.md`, section "Completing
     the accuracy check"; the provider key is entered in the app UI and is never handled by an assistant.

@@ -55,23 +55,40 @@ afterEach(() => {
 });
 
 describe('OpenAI transport estimate output budget', () => {
-  it('records a reasoning-truncated browse call as such in the fallback reason', async () => {
-    vi.stubGlobal('fetch', respondInOrder(
-      {
-        model: 'gpt-5.6-luna',
-        status: 'incomplete',
-        incomplete_details: { reason: 'max_output_tokens' },
-        usage: { input_tokens: 1200, output_tokens: 32000, output_tokens_details: { reasoning_tokens: 32000 } },
-        output: [{ type: 'reasoning' }],
-      },
-      VALID_ANSWER,
-    ));
+  const TRUNCATED = {
+    model: 'gpt-5.6-luna',
+    status: 'incomplete',
+    incomplete_details: { reason: 'max_output_tokens' },
+    usage: { input_tokens: 1200, output_tokens: 32000, output_tokens_details: { reasoning_tokens: 32000 } },
+    output: [{ type: 'reasoning' }],
+  };
+
+  const effortsOf = (mock: { mock: { calls: Array<[unknown, RequestInit?]> } }) =>
+    mock.mock.calls.map((call) => JSON.parse(String(call[1]?.body)).reasoning?.effort ?? null);
+
+  it('retries the grounded call at a lower effort instead of abandoning web search', async () => {
+    // Budget exhaustion means the model reasoned until it had no room to answer. That is a reason
+    // to think less, not to stop searching.
+    const fetchMock = respondInOrder(TRUNCATED, VALID_ANSWER);
+    vi.stubGlobal('fetch', fetchMock);
 
     const result = await estimateIntercityTransport({ ...baseRequest, reasoningEffort: 'max' } as never);
 
+    expect(effortsOf(fetchMock)).toEqual(['max', 'xhigh']);
+    // The retry answered, so no fallback reason is recorded.
+    expect(result.providerResult.fallbackReason).toBeNull();
+  });
+
+  it('gives up the grounding only after the ladder is exhausted', async () => {
+    const fetchMock = respondInOrder(TRUNCATED, TRUNCATED, TRUNCATED, VALID_ANSWER);
+    vi.stubGlobal('fetch', fetchMock);
+
+    const result = await estimateIntercityTransport({ ...baseRequest, reasoningEffort: 'max' } as never);
+
+    expect(effortsOf(fetchMock).slice(0, 3)).toEqual(['max', 'xhigh', 'high']);
     expect(result.providerResult.usedWebSearch).toBe(false);
-    expect(result.providerResult.fallbackReason)
-      .toMatch(/entire \d+-token output budget on reasoning \(32000 reasoning tokens\)/);
+    expect(result.providerResult.fallbackReason).toMatch(/Retried at lower effort without success/);
+    expect(result.providerResult.fallbackReason).toMatch(/32000 reasoning tokens/);
   });
 
   it('still reports an empty response without a truncation reason plainly', async () => {

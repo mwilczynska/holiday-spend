@@ -2000,3 +2000,60 @@ previous behaviour paid for the reasoning anyway and then threw the result away.
 
 Verification: TypeScript, `next lint` clean, 56 files / 256 tests, production build,
 `methodology:v1.1:check` with the live CSV hash unchanged, memory mirror.
+
+## Token budget evidence and the effort ladder - 5 September 2026
+
+Two follow-ups to the output-budget bug: measure whether 32,000 is actually enough, and stop treating
+budget exhaustion as a reason to abandon web search.
+
+### The measurement
+
+The 32,000 figure was a guess - there was nothing to pick it from, because the old code read
+`reasoning_tokens` only when it was about to throw. Usage is now logged on every OpenAI transport
+call, and the three reference routes were re-run.
+
+| Route | Reasoning tokens | Total output tokens | Against the old 12,000 cap |
+| --- | --- | --- | --- |
+| Koh Lanta to Bangkok | 10,787 | **12,259** | over - this is the failure |
+| Koh Lanta to Bangkok, repeat | 8,965 | 10,153 | under |
+| Bangkok to Phuket | 10,208 | 11,463 | under, by 537 |
+| Colombo to Chennai | 8,349 | 8,830 | under |
+
+32,000 is enough for these legs: the worst run used 12,259, or 38% of the budget, leaving about 2.6x
+margin. Recorded in `data/reference/transport_token_usage_2026-09-05.json`.
+
+The more useful result is the second row. It is the same route as the first, run twice, and it came in
+2,106 tokens lower. The old 12,000 cap sat inside the observed range of 8,830 to 12,259, so the same
+request exceeded it on one run and not on another. That is the intermittency, measured rather than
+hypothesised: a cap set within the natural variance of the thing it caps fails some of the time and
+looks mysterious every time. It failed by 259 tokens.
+
+The repeat run was an accident - a dialog had not closed before the next click, so the same route was
+estimated twice. It produced the most informative datapoint of the four.
+
+### The ladder
+
+Budget exhaustion previously fell straight through to the non-search fallback, which discards the web
+grounding. That is the wrong recovery: running out of room to answer is a reason to think less, not a
+reason to stop searching. On the one route where it fired, the ungrounded answer was the least accurate
+of the three. Maximum effort is the default, so this was the default path.
+
+`ReasoningBudgetExhaustedError` is now a distinct type, so the recovery is chosen by what actually
+happened rather than by matching an error string. On truncation the same grounded call is retried one
+rung down the existing effort ladder - `max`, `xhigh`, `high` - for at most two retries, and only then
+is the grounding given up, with the reason recording that lower effort was tried.
+
+The ladder did not fire in these four runs, because nothing truncated at 32,000. That is the expected
+outcome and the reason it is covered by unit tests instead: four tests, checked against the pre-fix
+code, covering the retry sequence, that a successful retry records no fallback reason, that the
+grounding is surrendered only after the rungs are exhausted, and that the budget request is large
+enough to leave room for an answer.
+
+One correction to the previous entry. `max_output_tokens` is a cap, not an allocation - tokens are
+billed as generated, so raising it costs nothing until a run genuinely needs more. The earlier framing
+of a straightforward cost increase was wrong. The old behaviour was the expensive one: it paid for
+about 12,000 reasoning tokens and discarded every one of them.
+
+Verification: TypeScript, `next lint` clean, 56 files / 257 tests, production build,
+`methodology:v1.1:check` with the live CSV hash unchanged, memory mirror, and four live runs against
+the running production build.

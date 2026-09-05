@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
+  CITY_GENERATION_REASONING_EFFORTS,
   getCityGenerationThinkingBudget,
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
@@ -92,6 +93,35 @@ const BROWSE_TRANSPORT_MAX_TOKENS = 900;
 const FALLBACK_TRANSPORT_MAX_TOKENS = 650;
 // Maximum reasoning effort must leave room for an answer after the reasoning tokens are spent.
 const MAX_EFFORT_TRANSPORT_MAX_TOKENS = 32000;
+// How many rungs the effort ladder may descend before giving up on the grounded path.
+const MAX_REASONING_BUDGET_RETRIES = 2;
+
+/**
+ * Raised when a provider spent its whole output budget on reasoning and returned no answer.
+ *
+ * Typed rather than a plain Error because the recovery differs: truncation is a budget problem, so
+ * the right response is to retry the same grounded call with less reasoning. Dropping to the
+ * non-search fallback would discard the web grounding, which is the part that improves accuracy.
+ */
+export class ReasoningBudgetExhaustedError extends Error {
+  readonly budget: number;
+  readonly reasoningTokens: number | null;
+
+  constructor(message: string, budget: number, reasoningTokens: number | null) {
+    super(message);
+    this.name = 'ReasoningBudgetExhaustedError';
+    this.budget = budget;
+    this.reasoningTokens = reasoningTokens;
+  }
+}
+
+function lowerReasoningEffort(
+  effort: CityGenerationReasoningEffort | undefined
+): CityGenerationReasoningEffort | null {
+  if (!effort) return null;
+  const index = CITY_GENERATION_REASONING_EFFORTS.indexOf(effort);
+  return index > 0 ? CITY_GENERATION_REASONING_EFFORTS[index - 1] : null;
+}
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -457,6 +487,17 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
 
   const outputItems = Array.isArray(data.output) ? data.output : [];
   const messageItems = outputItems.filter((item) => item?.type === 'message');
+
+  // Logged on every call, not only failures: the budget above was picked without evidence, and the
+  // only way to set it from data is to see what real routes actually consume.
+  console.info(
+    '[transport] openai usage '
+    + `model=${data.model ?? model} effort=${params.reasoningEffort ?? 'default'} `
+    + `budget=${maxOutputTokens} status=${data.status ?? 'unknown'} `
+    + `reasoning_tokens=${data.usage?.output_tokens_details?.reasoning_tokens ?? 'unknown'} `
+    + `output_tokens=${data.usage?.output_tokens ?? 'unknown'} `
+    + `answered=${messageItems.length > 0}`
+  );
   const textParts = messageItems.flatMap((item) =>
     Array.isArray(item.content) ? item.content.filter((part) => part?.type === 'output_text') : []
   );
@@ -475,13 +516,15 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
      * which is the weaker answer. Name the actual reason so the next occurrence is diagnosable.
      */
     const incompleteReason = data.incomplete_details?.reason;
-    const reasoningTokens = data.usage?.output_tokens_details?.reasoning_tokens;
+    const reasoningTokens = data.usage?.output_tokens_details?.reasoning_tokens ?? null;
 
     if (data.status === 'incomplete' && incompleteReason === 'max_output_tokens') {
-      throw new Error(
+      throw new ReasoningBudgetExhaustedError(
         `OpenAI Responses API spent its entire ${maxOutputTokens}-token output budget on reasoning `
         + `(${reasoningTokens ?? 'unknown'} reasoning tokens) and returned no answer. `
-        + 'Lower the reasoning effort or raise the output budget for this provider.'
+        + 'Lower the reasoning effort or raise the output budget for this provider.',
+        maxOutputTokens,
+        reasoningTokens
       );
     }
 
@@ -847,22 +890,49 @@ async function runTransportPromptForProvider(params: {
     gemini: runGeminiTransportPromptWithSearch,
   };
 
-  try {
-    return await browseRunnerByProvider[params.provider](params);
-  } catch (browseError) {
-    const fallbackReason =
-      browseError instanceof Error ? browseError.message : `${params.provider} web search was unavailable.`;
-    const fallback = await runProviderFallbackPrompt(params);
+  /**
+   * Descend the effort ladder before abandoning web search.
+   *
+   * A budget-exhausted response means the model reasoned until it had no room left to answer. That
+   * is a reason to think less, not a reason to stop searching — and the previous behaviour dropped
+   * straight to the ungrounded fallback, which on the one route where this fired in practice gave
+   * the least accurate answer of three. Maximum effort is the default, so this was the default path.
+   */
+  let effort = params.reasoningEffort;
+  let lastBudgetError: ReasoningBudgetExhaustedError | null = null;
 
-    if (!fallback) {
-      throw browseError;
+  for (let attempt = 0; attempt <= MAX_REASONING_BUDGET_RETRIES; attempt += 1) {
+    try {
+      return await browseRunnerByProvider[params.provider]({ ...params, reasoningEffort: effort });
+    } catch (browseError) {
+      if (!(browseError instanceof ReasoningBudgetExhaustedError)) {
+        const fallbackReason =
+          browseError instanceof Error ? browseError.message : `${params.provider} web search was unavailable.`;
+        const fallback = await runProviderFallbackPrompt({ ...params, reasoningEffort: effort });
+        if (!fallback) throw browseError;
+        return { ...fallback, fallbackReason };
+      }
+
+      lastBudgetError = browseError;
+      const next = lowerReasoningEffort(effort);
+      if (!next || attempt === MAX_REASONING_BUDGET_RETRIES) break;
+
+      console.info(
+        `[transport] ${params.provider} exhausted its ${browseError.budget}-token budget on reasoning `
+        + `at effort=${effort}; retrying the grounded call at effort=${next}.`
+      );
+      effort = next;
     }
-
-    return {
-      ...fallback,
-      fallbackReason,
-    };
   }
+
+  // Every rung tried and still no answer: only now give up the grounding.
+  const fallbackReason = lastBudgetError
+    ? `${lastBudgetError.message} Retried at lower effort without success.`
+    : `${params.provider} web search was unavailable.`;
+  const fallback = await runProviderFallbackPrompt({ ...params, reasoningEffort: effort });
+  if (!fallback) throw lastBudgetError ?? new Error(fallbackReason);
+
+  return { ...fallback, fallbackReason };
 }
 
 export async function estimateIntercityTransport(request: TransportEstimationRequest): Promise<TransportEstimationResult> {
