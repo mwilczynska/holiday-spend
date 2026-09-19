@@ -11,13 +11,15 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` (v1.1 history merged and synchronized with `origin/main`; protected v6 archive retained)
 
-**Last updated:** 3 September 2026
+**Last updated:** 19 September 2026
 
-**Latest implementation checkpoint:** `3c791ca` — dataset and settings payload reductions, the slim
+**History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
+
+**Latest implementation checkpoint:** `63cd370` — dataset and settings payload reductions, the slim
 `/api/estimates?view=dataset` list shape with an on-demand `?cityId=` provenance mode, and restored `next/link`
 sidebar prefetching.
 
-**Latest plan checkpoint:** `3c791ca` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
+**Latest plan checkpoint:** `63cd370` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
 target that was not met and the reason it is not reachable by payload trimming.
 
 **Next action:** No workstream is open. Phase 7 is complete and Phase 8 is complete apart from one deliberately
@@ -642,7 +644,7 @@ Measured authenticated as `dev-local-user`, the owner of all 1,300 expenses, 62 
   the dev server is live preserves both trees and the dev server keeps serving. Authenticated walk of `/`, `/plan`,
   `/plan/compare`, `/track`, `/dataset`, `/estimates`, `/settings` returned HTTP 200 for all seven.
 
-Committed as `06f0120`.
+Committed as `7e3509f`.
 
 ### Step 1 — Attribute the ~7-second cold stall — COMPLETE (original premise disproved)
 
@@ -691,7 +693,7 @@ Two earlier figures in this investigation were measurement artifacts and are rec
 1,734 ms "module load" was `tsx` compiling TypeScript, and an 830 ms "cold" dashboard reading came from a readiness
 probe against `/login`, which imports auth and the database and so warmed what was being measured.
 
-Committed as `2c13f48`.
+Committed as `b966748`.
 
 ### Step 2 — Fix the measurement harness — COMPLETE
 
@@ -766,7 +768,7 @@ Verification: 49 Vitest files / 217 tests pass, including three new route tests 
 `?cityId=` full-provenance mode, and an unknown city. TypeScript, the production build, the memory mirror and the
 deterministic v1.1 check all pass; all seven core routes returned HTTP 200 authenticated.
 
-Committed as `3c791ca`.
+Committed as `63cd370`.
 
 ### Step 4 — Render hot paths — IN PROGRESS
 
@@ -971,7 +973,7 @@ correctly against the stored hash throughout. And `emailPasswordEnabled` was wro
 renders `hasEmailPassword` from the same flag and was rendering email and password fields, which already disproved
 that hypothesis before instrumentation confirmed the flag was true.
 
-Committed as `deb299c` (the interactive password tool) and `6227449` (the verified production run mode).
+Committed as `3b3b541` (the interactive password tool) and `f7ea031` (the verified production run mode).
 
 ### Step 6 — Indexes and per-request lookups — COMPLETE
 

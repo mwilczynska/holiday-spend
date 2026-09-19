@@ -2247,3 +2247,40 @@ model changes" procedure, framed around comparison with the previous run rather 
 
 An open checkbox reading "widen the route set and rerun before choosing a tolerance" is an instruction to a future
 reader. Leaving it there while having decided the opposite is how a closed question reopens itself.
+
+---
+
+## 19 September 2026 — `Claude-Session` trailers removed from history
+
+Nineteen commits between 3 and 4 September 2026 carried a `Claude-Session: https://claude.ai/code/session_...`
+trailer. Nothing in the repository added it: there is no `prepare-commit-msg` hook and no `commit.template`. It came
+from Claude Code's `attribution.sessionUrl` setting, which defaults to true and appends the link on commits made from
+web or Remote Control sessions. The existing `includeCoAuthoredBy: false` did not suppress it, because that key is
+deprecated and only ever governed the `Co-Authored-By` line.
+
+That web-or-remote condition explains why the trailer is absent from the sixteen commits of 4 September between
+`cdad08d` and `e6d3feb`: those were made from a local CLI session, while the blocks either side were one web session
+and its resumption, which is also why all nineteen share a single session id.
+
+The trailers were stripped with `git filter-branch --msg-filter`, rewriting the 35 commits from the first affected
+commit to the tip. Trees are unchanged - the root tree hash is identical before and after, at
+`d8d51e13c934aef2763de55ebbf3d526371ad077` - and author and committer dates, authors and message bodies are otherwise
+byte-identical. The commit count stays at 333. `main` was then force-pushed with a lease.
+
+Every SHA from 3 September onward therefore changed. Five references in `PLAN.md` were updated to match:
+
+| Old | New |
+| --- | --- |
+| `06f0120` | `7e3509f` |
+| `2c13f48` | `b966748` |
+| `deb299c` | `3b3b541` |
+| `6227449` | `f7ea031` |
+| `3c791ca` | `63cd370` |
+
+Hashes recorded in this file and in `PLAN.md` from before 3 September are unaffected. A local backup of the
+pre-rewrite history is held at branch and tag `backup-pre-session-trailer-strip`; it was never pushed and can be
+deleted once the rewrite is trusted.
+
+`attribution` is now set explicitly in the user-level Claude Code settings, with `commit` and `pr` empty and
+`sessionUrl` false. All three are set rather than `sessionUrl` alone because each `attribution` field falls back to
+the standard attribution when unset, so introducing the block partially would have reinstated the co-author line.
