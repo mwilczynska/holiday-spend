@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { fetchCityClimate, parseArchiveClimate, resolveClimateLocation } from './climate-provider';
+import { fetchCityClimate, getClimateModel, parseArchiveClimate, resolveClimateLocation } from './climate-provider';
 
 const numericFields = [
   'temperature_2m_mean',
@@ -306,6 +306,13 @@ describe('climate geocoding', () => {
 });
 
 describe('fetchCityClimate provider requests', () => {
+  it('selects IFS only for Salento, Colombia; an identical name in another country keeps the default', () => {
+    expect(getClimateModel('Salento', 'CO')).toBe('ecmwf_ifs');
+    expect(getClimateModel('SALENTO', 'co')).toBe('ecmwf_ifs');
+    expect(getClimateModel('Salento', 'ES')).toBe('era5_seamless');
+    expect(getClimateModel('Salento del Sur', 'CO')).toBe('era5_seamless');
+    expect(getClimateModel('Bogota', 'CO')).toBe('era5_seamless');
+  });
   it('requests exact geocoding and the complete ERA5 Archive period with required variables and units', async () => {
     const fetchMock = vi.fn<typeof fetch>()
       .mockResolvedValueOnce(jsonResponse(bogotaSearchResponse()))
@@ -315,6 +322,7 @@ describe('fetchCityClimate provider requests', () => {
     const climate = await fetchCityClimate('bogota-id', 'Bogotá', 'CO');
 
     expect(climate.cityId).toBe('bogota-id');
+    expect(climate.sourceModel).toBe('era5_seamless');
     expect(fetchMock).toHaveBeenCalledTimes(2);
     const geocodingUrl = new URL(fetchMock.mock.calls[0][0] as string);
     expect(geocodingUrl.origin + geocodingUrl.pathname)
@@ -338,6 +346,39 @@ describe('fetchCityClimate provider requests', () => {
       start_date: '2021-01-01',
       end_date: '2025-12-31',
     });
+  });
+
+  it('uses IFS for Salento, preserves the common five-year period, and keeps parsed values unscaled', async () => {
+    const archive = dailyPayload();
+    archive.latitude = 4.6045694;
+    archive.longitude = -75.60297;
+    archive.elevation = 1979;
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ results: [
+        place('Salento', 'CO', 7_000, { admin1: 'Quindio', latitude: 4.6375, longitude: -75.57028 }),
+      ] }))
+      .mockResolvedValueOnce(jsonResponse(archive));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const climate = await fetchCityClimate('salento-id', 'Salento', 'CO');
+
+    expect(climate.sourceModel).toBe('ecmwf_ifs');
+    expect(climate.period).toBe('2021–2025');
+    expect(climate.months[0]).toEqual({ month: 1, temperatureC: 1, highC: 11, lowC: -4, rainfallMm: 46.5 });
+    expect(climate.grid).toEqual({ latitude: 4.6045694, longitude: -75.60297, elevation: 1979, timezone: 'America/Bogota' });
+    const archiveUrl = new URL(fetchMock.mock.calls[1][0] as string);
+    expect(Object.fromEntries(archiveUrl.searchParams)).toMatchObject({
+      models: 'ecmwf_ifs',
+      daily: 'temperature_2m_mean,temperature_2m_max,temperature_2m_min,precipitation_sum',
+      timezone: 'auto',
+      temperature_unit: 'celsius',
+      precipitation_unit: 'mm',
+      latitude: '4.6375',
+      longitude: '-75.57028',
+      start_date: '2021-01-01',
+      end_date: '2025-12-31',
+    });
+    expect(climate.sourceUrl).toBe(archiveUrl.toString());
   });
 
   it('uses the Bali qualifier when requesting Canggu coordinates and keeps the requested country', async () => {

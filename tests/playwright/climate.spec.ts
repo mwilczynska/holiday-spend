@@ -93,6 +93,7 @@ function climateForCity(cityId: string, name: string) {
     location: { name, countryCode: 'TL', latitude: 1.25, longitude: 2.5 },
     period: '2021-2025',
     sourceUrl: 'https://open-meteo.com/',
+    sourceModel: cityId === 'city-14' ? 'ecmwf_ifs' : 'era5_seamless',
     grid: { latitude: 1.25, longitude: 2.5, elevation: 12, timezone: 'UTC' },
     months: Array.from({ length: 12 }, (_, index) => {
       const month = index + 1;
@@ -155,12 +156,15 @@ async function installPlannerMocks(page: Page) {
 }
 
 test('planner climate covers the full itinerary, shares temperature units, and retries missing data', async ({ page }) => {
+  // Development recompilation can delay route hydration; data-loading behavior
+  // itself is checked with the collection gate and exact request counts below.
+  test.setTimeout(60_000);
   const { requestedClimateCities, climateAttempts, releaseCollection, getBulkReads } = await installPlannerMocks(page);
 
   await page.goto('/plan');
 
   const tripClimate = page.locator('section[aria-label="Trip historical climate"]');
-  await expect(page.getByTestId('planner-leg-card')).toHaveCount(14);
+  await expect(page.getByTestId('planner-leg-card')).toHaveCount(14, { timeout: 15_000 });
   await expect(page.getByRole('button', { name: 'Show all', exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: /Show next/ })).toHaveCount(0);
   await expect(tripClimate.getByText(/Loading trip climate…/)).toBeVisible();
@@ -227,6 +231,12 @@ test('planner climate covers the full itinerary, shares temperature units, and r
   await expect(missingClimate.getByText('Mar 2027', { exact: true })).toBeVisible();
   await expect.poll(() => climateAttempts.get('city-04')).toBe(1);
 
+  const decemberClimate = page.locator('section[aria-label="December City historical climate"]');
+  await decemberClimate.getByRole('button', { name: 'View year' }).click();
+  await expect(annualDialog.getByRole('link', { name: 'Open-Meteo / ECMWF IFS data' })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(annualDialog).toHaveCount(0);
+
   await page.setViewportSize({ width: 390, height: 844 });
   const tripClimateBox = await tripClimate.boundingBox();
   expect(tripClimateBox).not.toBeNull();
@@ -240,10 +250,10 @@ test('planner climate covers the full itinerary, shares temperature units, and r
 
   // A later visit reads every saved result in one request and performs no collection.
   const readsBeforeReload = getBulkReads();
-  const attemptsBeforeReload = [...climateAttempts.entries()];
+  const attemptsBeforeReload = Array.from(climateAttempts.entries());
   await page.reload();
-  await expect(page.getByTestId('planner-leg-card')).toHaveCount(14);
+  await expect(page.getByTestId('planner-leg-card')).toHaveCount(14, { timeout: 15_000 });
   await expect(tripClimate.getByRole('img', { name: /degrees C/ })).toBeVisible();
   expect(getBulkReads() - readsBeforeReload).toBe(1);
-  expect([...climateAttempts.entries()]).toEqual(attemptsBeforeReload);
+  expect(Array.from(climateAttempts.entries())).toEqual(attemptsBeforeReload);
 });

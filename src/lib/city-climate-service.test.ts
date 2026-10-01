@@ -32,20 +32,25 @@ vi.mock('@/db', async () => {
   return { db: drizzle(sqlite, { schema }), sqlite, schema };
 });
 
-vi.mock('./climate-provider', () => ({ fetchCityClimate: vi.fn() }));
+vi.mock('./climate-provider', () => ({
+  fetchCityClimate: vi.fn(),
+  getClimateModel: vi.fn((name: string, countryCode: string) => name === 'Salento' && countryCode === 'CO' ? 'ecmwf_ifs' : 'era5_seamless'),
+}));
 
 import { sqlite } from '@/db';
 import type { CityClimate } from './climate';
-import { fetchCityClimate } from './climate-provider';
+import { fetchCityClimate, getClimateModel } from './climate-provider';
 import {
   CITY_CLIMATE_DATA_VERSION,
   ensureCityClimate,
+  getCityClimateDataVersion,
   getStoredCityClimates,
 } from './city-climate-service';
 
 const fetchClimateMock = vi.mocked(fetchCityClimate);
+const climateModelMock = vi.mocked(getClimateModel);
 
-function makeClimate(cityId: string, temperatureC = 20): CityClimate {
+function makeClimate(cityId: string, temperatureC = 20, sourceModel?: CityClimate['sourceModel']): CityClimate {
   return {
     cityId,
     location: {
@@ -53,7 +58,8 @@ function makeClimate(cityId: string, temperatureC = 20): CityClimate {
       queryName: 'Bogota', sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Bogota&countryCode=CO',
     },
     period: '2021–2025',
-    sourceUrl: 'https://archive-api.open-meteo.com/v1/archive?models=era5_seamless',
+    sourceUrl: `https://archive-api.open-meteo.com/v1/archive?models=${sourceModel ?? 'era5_seamless'}`,
+    ...(sourceModel ? { sourceModel } : {}),
     grid: { latitude: 4.7, longitude: -74.1, elevation: 2600, timezone: 'America/Bogota' },
     months: Array.from({ length: 12 }, (_, index) => ({
       month: index + 1,
@@ -87,6 +93,8 @@ beforeEach(() => {
   sqlite.prepare('INSERT INTO countries (id, name, currency_code, region) VALUES (?, ?, ?, ?)')
     .run('colombia', 'Colombia', 'COP', 'latin_america');
   fetchClimateMock.mockReset();
+  climateModelMock.mockClear();
+  climateModelMock.mockImplementation((name, countryCode) => name === 'Salento' && countryCode === 'CO' ? 'ecmwf_ifs' : 'era5_seamless');
 });
 
 afterEach(() => {
@@ -188,6 +196,63 @@ describe('city climate persistence', () => {
     expect(refreshedIdentity?.months[0].temperatureC).toBe(22);
     expect(storedRow('bogota')?.city_name).toBe('Bogotá');
     expect(fetchClimateMock).toHaveBeenCalledTimes(3);
+  });
+
+  it('invalidates only Salento when its selected source changes to ECMWF and durably reuses its new model', async () => {
+    addCity('bogota', 'Bogota');
+    addCity('salento', 'Salento');
+    fetchClimateMock.mockResolvedValueOnce(makeClimate('bogota'));
+    const bogotaClimate = await ensureCityClimate('bogota', 'Bogota', 'CO');
+
+    const oldSalentoClimate = makeClimate('salento', 19, 'era5_seamless');
+    sqlite.prepare(`
+      INSERT INTO city_climate (city_id, city_name, country_code, data_json, collected_at, last_attempt_at, last_error, version)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `).run('salento', 'Salento', 'CO', JSON.stringify(oldSalentoClimate), '2026-09-01T00:00:00.000Z', '2026-09-01T00:00:00.000Z', null, CITY_CLIMATE_DATA_VERSION);
+
+    const beforeRefresh = await getStoredCityClimates(['bogota', 'salento']);
+    expect(beforeRefresh.bogota).toMatchObject({ cityId: 'bogota', months: bogotaClimate?.months });
+    expect(beforeRefresh.salento).toBeUndefined();
+    expect(fetchClimateMock).toHaveBeenCalledTimes(1);
+    expect(getCityClimateDataVersion('Bogota', 'CO')).toBe(CITY_CLIMATE_DATA_VERSION);
+    expect(getCityClimateDataVersion('Salento', 'CO')).toBe('ecmwf_ifs_2021_2025_v1');
+
+    fetchClimateMock.mockResolvedValueOnce(makeClimate('salento', 18, 'ecmwf_ifs'));
+    const newSalentoClimate = await ensureCityClimate('salento', 'Salento', 'CO');
+    expect(newSalentoClimate).toMatchObject({ cityId: 'salento', sourceModel: 'ecmwf_ifs' });
+    expect(newSalentoClimate?.months[0]).toMatchObject({ month: 1, temperatureC: 18 });
+    expect(storedRow('salento')).toMatchObject({
+      version: 'ecmwf_ifs_2021_2025_v1',
+      last_error: null,
+    });
+
+    const afterRefresh = await getStoredCityClimates(['bogota', 'salento']);
+    expect(afterRefresh.salento).toMatchObject({ sourceModel: 'ecmwf_ifs', collectedAt: newSalentoClimate?.collectedAt });
+    await expect(ensureCityClimate('salento', 'Salento', 'CO')).resolves.toMatchObject({ sourceModel: 'ecmwf_ifs' });
+    expect(fetchClimateMock).toHaveBeenCalledTimes(2);
+    expect(climateModelMock).toHaveBeenCalledWith('Salento', 'CO');
+  });
+
+  it('rejects contradictory model provenance from both storage and collection', async () => {
+    addCity('salento', 'Salento');
+    const oldModelPayload = makeClimate('salento', 19, 'era5_seamless');
+    sqlite.prepare(`
+      INSERT INTO city_climate (city_id, city_name, country_code, data_json, collected_at, last_attempt_at, last_error, version)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `).run('salento', 'Salento', 'CO', JSON.stringify(oldModelPayload), '2026-09-01T00:00:00.000Z', '2026-09-01T00:00:00.000Z', null, getCityClimateDataVersion('Salento', 'CO'));
+
+    expect(await getStoredCityClimates(['salento'])).toEqual({});
+    fetchClimateMock.mockResolvedValueOnce(oldModelPayload);
+    await expect(ensureCityClimate('salento', 'Salento', 'CO')).resolves.toBeNull();
+    expect(storedRow('salento')).toMatchObject({
+      data_json: null,
+      last_error: expect.stringContaining('different city, model'),
+      version: 'ecmwf_ifs_2021_2025_v1',
+    });
+
+    fetchClimateMock.mockResolvedValueOnce(makeClimate('salento', 18, 'ecmwf_ifs'));
+    await expect(ensureCityClimate('salento', 'Salento', 'CO', { refresh: true })).resolves.toMatchObject({ sourceModel: 'ecmwf_ifs' });
+    expect(fetchClimateMock).toHaveBeenCalledTimes(2);
   });
 
   it('coalesces simultaneous requests per city and limits provider work to three cities', async () => {

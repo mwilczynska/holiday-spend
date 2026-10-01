@@ -16,7 +16,7 @@ averages, not a standard 30-year climate normal, a forecast, or a prediction for
 ## Sources and provenance
 
 - [Open-Meteo Historical Weather API](https://open-meteo.com/en/docs/historical-weather-api), using the archive
-  endpoint with `models=era5_seamless`.
+  endpoint with `models=era5_seamless` by default and the explicit Salento exception below.
 - [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api), whose location records are based on
   [GeoNames](https://www.geonames.org/).
 - The underlying [ECMWF/Copernicus ERA5-Land dataset](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land)
@@ -24,8 +24,8 @@ averages, not a standard 30-year climate normal, a forecast, or a prediction for
   supplies precipitation. ERA5 and ERA5-Land are reanalysis datasets, which combine model output with observations
   to make a spatially complete historical record.
 
-Attribute the displayed data to Open-Meteo and ECMWF/Copernicus ERA5 and ERA5-Land; location search is based on
-Open-Meteo / GeoNames.
+Attribute the displayed data to Open-Meteo and ECMWF/Copernicus ERA5 and ERA5-Land, or ECMWF IFS for Salento;
+location search is based on Open-Meteo / GeoNames. The annual view identifies the source model.
 
 The archive request covers 2021-01-01 through 2025-12-31 and requests these daily variables: mean, maximum and
 minimum 2 m temperature, and precipitation sum. It sets `timezone=auto`, `temperature_unit=celsius`, and
@@ -44,6 +44,30 @@ ERA5-Seamless combines ERA5-Land temperature data at about 0.1° (roughly 11 km)
 0.25° (roughly 25 km), according to the [Open-Meteo model and variable documentation](https://open-meteo.com/en/docs/historical-weather-api).
 Open-Meteo's default land-cell selection uses a 90 m elevation model to find a suitable grid cell. The temperature
 and precipitation values can therefore represent different grid scales for the same city coordinate.
+
+### Salento source exception
+
+Salento, Colombia uses `models=ecmwf_ifs` for its complete 2021–2025 temperature and precipitation record. The
+ERA5 result at the verified city coordinate (4.6375, -75.57028) gave about 14,243 mm/year, with August averaging
+1,552 mm and July the wettest month. Direct ERA5 requests reproduced the values, so the anomaly is upstream
+of the application's monthly calculation. The exact upstream cause is unconfirmed.
+
+The [Quindío government report](https://www.quindio.gov.co/home/docs/items/item_100/PDD_2020_2023_TU_Y_YO_SOMOS_QUINDIO/Componente_Diagnostico/12._AMBIENTE.pdf)
+lists Salento station 26120160 for 1975–2014 with 2,549.5 mm/year, July/August means of 64.8/74.7 mm and
+October/November peaks. An independent [Cortolima report](https://cortolima.gov.co/images/planes_y_programas/recurso_hidrico/pomca/COELLO/2004/II_FASE_DIAGNOSTICO/J-%202.9%20ECOSISTEMAS%20ESTRATEGICOS.pdf)
+also places low rainfall in July/August and peaks in October/November. These older station periods provide a
+location check; their values are not substituted into the recent five-year record.
+
+The 9 km ECMWF IFS archive returned all 1,826 days and all four required variables without gaps, averaging
+3,126.6 mm/year and 225.8 mm in August. Its July minimum and March/April and October/November wet periods
+are more consistent with the station evidence. Select this model explicitly for this country/name pair, retain
+the request URL/model/grid and invalidate only Salento's old ERA5 record. There is no clipping, scaling or
+automatic model fallback. Other cities retain their saved ERA5-Seamless records.
+
+[Open-Meteo documents IFS coverage from 2017](https://open-meteo.com/en/docs/historical-weather-api) and warns
+that changing model versions affect long-term consistency. This exception is a fixed five-year snapshot, not a
+multi-decade climate trend. Both sources are gridded estimates, and the older station check does not establish
+the accuracy of every recent monthly value.
 
 ## Monthly calculations
 

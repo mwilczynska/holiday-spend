@@ -8,6 +8,7 @@ export interface CityClimate {
   location: { name: string; countryCode: string; latitude: number; longitude: number; queryName?: string; sourceUrl?: string };
   period: string;
   sourceUrl: string;
+  sourceModel?: 'era5_seamless' | 'ecmwf_ifs';
   collectedAt?: string;
   refreshFailedAt?: string;
   grid: { latitude: number; longitude: number; elevation: number; timezone: string };

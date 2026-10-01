@@ -106,8 +106,10 @@ graph with separate temperature/rainfall axes. Celsius is the default; shared C/
 Average daily highs and lows are also collected and saved but are not currently displayed. Monthly precipitation is
 the average of the five monthly totals, including snow water equivalent; it is not a forecast or a stay total.
 
-Weather uses the no-key Open-Meteo historical archive with ERA5-Seamless and country-checked coordinates. Saved
-monthly weather and provenance live in SQLite. City collection/generation and refresh also collect weather; routine
+Weather uses the no-key Open-Meteo historical archive with ERA5-Seamless and country-checked coordinates. Salento,
+Colombia explicitly uses ECMWF IFS because its ERA5 rainfall disagrees sharply with official station evidence;
+the source model is saved and only that city's prior record is invalidated. Saved monthly weather and provenance
+live in SQLite. City collection/generation and refresh also collect weather; routine
 planner loads read saved records in one request. Existing cities collect once when needed. Provider failures remain
 missing, or retain an explicitly labelled prior successful record after a failed refresh. All itinerary cards render;
 the former twelve-card limit and load-more controls are removed. The trip chart waits for its initial data load to

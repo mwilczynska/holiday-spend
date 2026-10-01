@@ -131,6 +131,12 @@ export function parseArchiveClimate(payload: unknown): Pick<CityClimate, 'period
   return { period: `${CLIMATE_START_YEAR}–${CLIMATE_END_YEAR}`, months,
     grid: { latitude: data.latitude, longitude: data.longitude, elevation: data.elevation, timezone: data.timezone } };
 }
+export type ClimateModel = 'era5_seamless' | 'ecmwf_ifs';
+
+export function getClimateModel(name: string, countryCode: string): ClimateModel {
+  return countryCode.toUpperCase() === 'CO' && normalize(name) === 'salento' ? 'ecmwf_ifs' : 'era5_seamless';
+}
+
 async function fetchJson(url: string) {
   for (let attempt = 0; attempt < 3; attempt++) {
     let response: Response;
@@ -154,7 +160,8 @@ async function fetchJson(url: string) {
 export async function fetchCityClimate(cityId: string, name: string, countryCode: string): Promise<CityClimate> {
   const override = coordinateOverride(name, countryCode);
   const location = override ?? resolveClimateLocation(await fetchJson(geocodingUrl(name, countryCode).toString()), name, countryCode);
+  const sourceModel = getClimateModel(name, countryCode);
   const archive = new URL('https://archive-api.open-meteo.com/v1/archive');
-  archive.search = new URLSearchParams({ daily: 'temperature_2m_mean,temperature_2m_max,temperature_2m_min,precipitation_sum', models: 'era5_seamless', timezone: 'auto', temperature_unit: 'celsius', precipitation_unit: 'mm', latitude: String(location.latitude), longitude: String(location.longitude), start_date: `${CLIMATE_START_YEAR}-01-01`, end_date: `${CLIMATE_END_YEAR}-12-31` }).toString();
-  return { cityId, location, sourceUrl: archive.toString(), ...parseArchiveClimate(await fetchJson(archive.toString())) };
+  archive.search = new URLSearchParams({ daily: 'temperature_2m_mean,temperature_2m_max,temperature_2m_min,precipitation_sum', models: sourceModel, timezone: 'auto', temperature_unit: 'celsius', precipitation_unit: 'mm', latitude: String(location.latitude), longitude: String(location.longitude), start_date: `${CLIMATE_START_YEAR}-01-01`, end_date: `${CLIMATE_END_YEAR}-12-31` }).toString();
+  return { cityId, location, sourceModel, sourceUrl: archive.toString(), ...parseArchiveClimate(await fetchJson(archive.toString())) };
 }

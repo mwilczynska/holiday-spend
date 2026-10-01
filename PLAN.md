@@ -2,7 +2,7 @@
 
 **Status:** Methodology complete. Phases 7, 9 and 10 complete; Phase 8 complete apart from one deferred item.
 
-**Current phase:** Trip climate — IN PROGRESS. Previous methodology and performance phases remain closed.
+**Current phase:** Trip climate — COMPLETE. Previous methodology and performance phases remain closed.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -21,12 +21,11 @@ sidebar prefetching.
 **Latest plan checkpoint:** `63cd370` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
 target that was not met and the reason it is not reachable by payload trimming.
 
-**Next action:** Investigate the Salento rainfall outlier, finish production-build verification, then publish
-the final checkpoint and make PR #9 ready for review.
+**Next action:** Review [PR #9](https://github.com/mwilczynska/holiday-spend/pull/9).
 
 **Working tree:** Clean at task start. Trip-climate changes are tracked below.
 
-## Trip climate — IN PROGRESS
+## Trip climate — COMPLETE
 
 Visual thesis: compact weather information within the existing planner, with temperature and rainfall distinguished by color.
 Content plan: monthly values on cards, a twelve-month dialog with table and chart, and one trip timeline above the cards.
@@ -40,18 +39,24 @@ Interaction thesis: shared C/F switching, on-demand annual dialog, chart tooltip
 - [x] Plot the complete dated itinerary with separate temperature/rainfall axes, loading once after data is ready.
 - [x] Remove the twelve-leg rendering limit and all Show all / Show next / Collapse controls.
 - [x] Resolve missing destination temperatures with verified location data and transient-provider recovery.
-- [ ] Investigate the owner-reported Salento rainfall outlier and address its verified cause.
-- [ ] Verify missing data, date boundaries, conversion, provider responses, UI and baseline checks.
-- [ ] Commit and push the feature branch and open a new PR.
+- [x] Investigate the owner-reported Salento rainfall outlier and address the unreliable source series.
+- [x] Verify missing data, date boundaries, conversion, provider responses, UI and baseline checks.
+- [x] Commit and push the feature branch and open a new PR.
 
 **Current checkpoint:** All 59 distinct itinerary destinations have twelve months saved in SQLite; authenticated
 Chrome inspection shows all 64 cards and the complete graph. The UI regression covers stable initial loading,
 all fourteen fixture cards, annual data, shared C/F conversion, missing-data retry, mobile width and one bulk read
-with no collection after reload. TypeScript and lint pass; 62 Vitest files / 326 tests pass using the baseline command.
-The owner flagged Salento's 1,552 mm August rainfall as an outlier; source investigation remains open.
+with no collection after reload. TypeScript, lint, production build, memory sync and the v1.1 guard pass;
+62 Vitest files / 330 tests pass using the baseline command, and Playwright setup plus the climate regression pass.
+Salento's ERA5 rainfall was reproduced directly upstream and conflicts with official station magnitudes and
+seasonality. Its complete 2021–2025 record now explicitly uses the 9 km ECMWF IFS source (August 225.78 mm),
+with source metadata and a separate record version; other saved destinations remain valid. The exact upstream
+cause is unconfirmed. Authenticated Chrome verifies the corrected Salento card (August 226 mm), annual IFS
+attribution, shared C/F conversion and the complete 64-card trip graph. All 708 saved month records have valid
+mean/high/low temperatures and precipitation; 58 destinations use ERA5-Seamless and Salento uses IFS.
 
 **Published checkpoints:** `cb329f1` — verified climate calculation/provider foundation; `fb4f8e8` — persisted
-weather and collection with city generation/refresh; draft
+weather and collection with city generation/refresh; `ce0b259` — full-itinerary UI and missing-city fixes;
 [PR #9](https://github.com/mwilczynska/holiday-spend/pull/9) opened. Database persistence and city-refresh integration
 now pass focused tests, including durable reads without provider calls, retry/failure handling, refresh preservation,
 identity validation and concurrent request handling. TypeScript passes. The new bulk-read/all-card UI regression passes.
