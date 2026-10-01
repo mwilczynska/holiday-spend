@@ -1,34 +1,38 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Methodology, prior product phases and performance follow-up complete; requested merges in progress.
+**Status:** Methodology, prior product phases and performance follow-up complete; trip climate and performance merged into `main`.
 
-**Current phase:** Merge trip climate and performance into `main` — IN PROGRESS.
+**Current phase:** Merge trip climate and performance into `main` — COMPLETE.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `feat/app-performance` — follow-up from the completed trip-climate branch.
+**Branch:** `main` — merge completion uses an isolated checkout; the original checkout remains available to the other agent.
 
 **Last updated:** 1 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
 **Latest implementation checkpoint:** `ded9af3` — verified server rendering, shared readers, climate deduplication,
-card memoization and performance/browser regression checks; pushed to `origin/feat/app-performance`.
+card memoization and performance/browser regression checks; merged into `main` through PR #10 (`1dcaba5`).
 
-**Latest plan checkpoint:** `ebe079d` — performance publication complete. Prior performance checkpoints remain recorded below.
+**Latest plan checkpoint:** `8288d38` — requested merges started; this completion record follows both successful merges.
+Prior performance checkpoints remain recorded below.
 
-**Next action:** Publish and merge the verified performance PR into `main`; weather PR #9 is merged.
+**Next action:** The requested merges are complete. New PR work continues separately.
 
-**Working tree:** Verified implementation is committed and pushed; merge tracking uses an isolated checkout while another
-agent works on a separate PR in the original working tree.
+**Working tree:** Local `main` is synchronized in the isolated checkout; this merge completion record is tracked there.
+The other agent's original checkout and new PR branch were left in place.
 
-## Requested merges — IN PROGRESS
+## Requested merges — COMPLETE
 
 - [x] Merge trip climate PR #9 into `main` at its verified head `92f1606` (merge `a1d08aa`).
-- [ ] Publish the performance PR and merge it into `main` after trip climate.
-- [ ] Verify both merged PRs, synchronize local `main` in the isolated checkout, and record the completed merge checkpoint.
+- [x] Publish performance PR #10 and merge it into `main` after trip climate (merge `1dcaba5`, head `8288d38`).
+- [x] Verify both merged PRs, synchronize local `main` in the isolated checkout, and record the completed merge checkpoint.
+
+Both merges preserve the original commits. The resulting `main` tree is identical to the verified performance branch
+before this documentation update, so the existing production baseline and browser checks still apply.
 
 ## Performance follow-up — COMPLETE
 

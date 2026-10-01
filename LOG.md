@@ -2411,3 +2411,16 @@ credentials stayed in the database copy. No provider owner keys, live cost CSV c
 
 Implementation checkpoint `ded9af3` is pushed to `origin/feat/app-performance`, based on `feat/trip-climate`.
 The final checkpoint closes the performance follow-up and retains the local production measurement limits above.
+
+## 1 October 2026 — Requested weather and performance merges
+
+Merged trip climate PR #9 into `main` first, preserving verified head `92f1606` through merge commit `a1d08aa`.
+Created performance PR #10 from `feat/app-performance` and merged it next, preserving implementation `ded9af3`
+and plan checkpoint `8288d38` through merge commit `1dcaba5`. GitHub reports both PRs merged into `main`.
+Neither PR had merge conflicts or configured GitHub status checks. The resulting tree is identical to the verified
+performance branch before this completion documentation, so the recorded production baseline and browser results apply.
+The memory mirror and whitespace check also pass for the merge documentation.
+
+Another agent started `fix/city-generation-model-discovery` in the shared working tree while these merges were in
+progress. Moved the merge work to `.local/merge-request`, removed only this task's temporary plan edits from the
+original checkout, and synchronized local `main` in the isolated checkout. The new PR branch was not merged or changed.
