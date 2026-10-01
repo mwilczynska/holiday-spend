@@ -42,6 +42,7 @@ const hasItineraryLegsTable = tableNames.some((table) => table.name === 'itinera
 const hasItineraryLegTransportsTable = tableNames.some((table) => table.name === 'itinerary_leg_transports');
 const hasCityEstimatesTable = tableNames.some((table) => table.name === 'city_estimates');
 const hasCityPriceInputsTable = tableNames.some((table) => table.name === 'city_price_inputs');
+const hasCityClimateTable = tableNames.some((table) => table.name === 'city_climate');
 const hasSavedPlansTable = tableNames.some((table) => table.name === 'saved_plans');
 const hasUserPreferencesTable = tableNames.some((table) => table.name === 'user_preferences');
 const hasUserPasswordsTable = tableNames.some((table) => table.name === 'user_passwords');
@@ -140,6 +141,21 @@ sqlite.exec(`
 const cityColumns = sqlite.prepare("PRAGMA table_info(cities)").all() as Array<{ name: string }>;
 const hasPrivateRoomColumn = cityColumns.some((column) => column.name === 'accom_private_room');
 const hasDrinksNoneColumn = cityColumns.some((column) => column.name === 'drinks_none');
+
+if (hasCitiesTable && !hasCityClimateTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS city_climate (
+      city_id TEXT PRIMARY KEY REFERENCES cities(id) ON DELETE CASCADE,
+      city_name TEXT NOT NULL,
+      country_code TEXT NOT NULL,
+      data_json TEXT,
+      collected_at TEXT,
+      last_attempt_at TEXT NOT NULL,
+      last_error TEXT,
+      version TEXT NOT NULL
+    )
+  `);
+}
 
 if (hasCitiesTable && !hasPrivateRoomColumn) {
   sqlite.exec('ALTER TABLE cities ADD COLUMN accom_private_room REAL');

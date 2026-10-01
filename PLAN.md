@@ -2,16 +2,15 @@
 
 **Status:** Methodology complete. Phases 7, 9 and 10 complete; Phase 8 complete apart from one deferred item.
 
-**Current phase:** None active. Phase 8 Steps 0, 1, 2, 3, 5, 6, 7 and 8 are complete; Step 4 is complete apart from
-the deferred dashboard chart extraction.
+**Current phase:** Trip climate — COMPLETE. Previous methodology and performance phases remain closed.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `main` (v1.1 history merged and synchronized with `origin/main`; protected v6 archive retained)
+**Branch:** `feat/trip-climate` — new PR for historical temperature and rainfall.
 
-**Last updated:** 19 September 2026
+**Last updated:** 1 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
@@ -22,13 +21,63 @@ sidebar prefetching.
 **Latest plan checkpoint:** `63cd370` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
 target that was not met and the reason it is not reachable by payload trimming.
 
-**Next action:** No workstream is open. Phase 7 is complete and Phase 8 is complete apart from one deliberately
-deferred item, recorded with its dependency analysis in Step 4: extracting the dashboard chart renderers and
-splitting the Recharts bundle off `/`. Two smaller items remain recorded but unstarted — the Radix `DialogContent`
-accessibility warning, and the transport-accuracy same-day quote capture deferred from the earlier workstream.
+**Next action:** Review [PR #9](https://github.com/mwilczynska/holiday-spend/pull/9).
 
-**Working tree:** `src/app/plan/page.tsx`, `src/components/itinerary/LegCard.tsx` and `src/app/dataset/page.tsx`
-carry uncommitted Step 4 work. Items stay `[ ]` until their verification runs.
+**Working tree:** Clean at task start. Trip-climate changes are tracked below.
+
+## Trip climate — COMPLETE
+
+Visual thesis: compact weather information within the existing planner, with temperature and rainfall distinguished by color.
+Content plan: monthly values on cards, a twelve-month dialog with table and chart, and one trip timeline above the cards.
+Interaction thesis: shared C/F switching, on-demand annual dialog, chart tooltips identifying city and month.
+
+- [x] Implement and unit-test Open-Meteo Historical Weather API 2021–2025 daily mean, maximum and minimum temperature
+      and precipitation using country-checked city coordinates; pin model `era5_seamless`.
+- [x] Persist weather in SQLite; collect with city generation/refresh and read saved records in one planner request.
+- [x] Show each occupied month's historical mean temperature and monthly precipitation on travel cards.
+- [x] Add annual month-by-month chart/table and shared temperature conversion with Celsius default.
+- [x] Plot the complete dated itinerary with separate temperature/rainfall axes, loading once after data is ready.
+- [x] Remove the twelve-leg rendering limit and all Show all / Show next / Collapse controls.
+- [x] Resolve missing destination temperatures with verified location data and transient-provider recovery.
+- [x] Investigate the owner-reported Salento rainfall outlier and address the unreliable source series.
+- [x] Verify missing data, date boundaries, conversion, provider responses, UI and baseline checks.
+- [x] Commit and push the feature branch and open a new PR.
+
+**Current checkpoint:** All 59 distinct itinerary destinations have twelve months saved in SQLite; authenticated
+Chrome inspection shows all 64 cards and the complete graph. The UI regression covers stable initial loading,
+all fourteen fixture cards, annual data, shared C/F conversion, missing-data retry, mobile width and one bulk read
+with no collection after reload. TypeScript, lint, production build, memory sync and the v1.1 guard pass;
+62 Vitest files / 330 tests pass using the baseline command, and Playwright setup plus the climate regression pass.
+Salento's ERA5 rainfall was reproduced directly upstream and conflicts with official station magnitudes and
+seasonality. Its complete 2021–2025 record now explicitly uses the 9 km ECMWF IFS source (August 225.78 mm),
+with source metadata and a separate record version; other saved destinations remain valid. The exact upstream
+cause is unconfirmed. Authenticated Chrome verifies the corrected Salento card (August 226 mm), annual IFS
+attribution, shared C/F conversion and the complete 64-card trip graph. All 708 saved month records have valid
+mean/high/low temperatures and precipitation; 58 destinations use ERA5-Seamless and Salento uses IFS.
+
+**Published checkpoints:** `cb329f1` — verified climate calculation/provider foundation; `fb4f8e8` — persisted
+weather and collection with city generation/refresh; `ce0b259` — full-itinerary UI and missing-city fixes;
+[PR #9](https://github.com/mwilczynska/holiday-spend/pull/9) opened. Database persistence and city-refresh integration
+now pass focused tests, including durable reads without provider calls, retry/failure handling, refresh preservation,
+identity validation and concurrent request handling. TypeScript passes. The new bulk-read/all-card UI regression passes.
+
+**Owner decisions (1 October 2026):** Use the last five complete years; collect average daily high/low as well as mean,
+but show mean only for now. Store weather in the database and refresh it with city-data generation/refresh. Remove
+the twelve-card cap and loading controls. The graph must avoid piecemeal initial rendering. Commit work regularly.
+
+The pinned period is the five most recent complete calendar years as of 1 October 2026. Pinning 2021–2025 keeps
+results reproducible and avoids silently shifting the period during routine refreshes; select a later five-year period
+only as an explicit methodology and cache-version change. This shorter recent window is intended to be more relevant
+to trip planning than 2001–2020, but it is not a standard 30-year climate normal and is more sensitive to recent
+year-to-year variability.
+
+For each calendar month, daily mean, maximum and minimum temperature are averaged across that month's daily values
+over all five years; the mean, average daily high and average daily low are retained. High and low are hidden in the
+current UI. Daily precipitation sums are totalled within each year-month and those five monthly totals are averaged,
+including snow water equivalent; this is not a predicted stay total. These are gridded historical estimates, not
+station observations or forecasts. Undated legs have annual views but no seasonal values. The departure date is
+exclusive, matching the planner's nights convention. Climate work does not change cost methodology. See
+[`docs/product/trip-climate.md`](docs/product/trip-climate.md) for sources, calculation details, caching and limitations.
 
 **Deferred:** capture same-day operator or aggregator reference quotes for the fixed transport route fixture, then run
 the directional report and record the evidence and any initial tolerance decision.

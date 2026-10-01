@@ -2284,3 +2284,97 @@ deleted once the rewrite is trusted.
 `attribution` is now set explicitly in the user-level Claude Code settings, with `commit` and `pr` empty and
 `sessionUrl` false. All three are set rather than `sessionUrl` alone because each `attribution` field falls back to
 the standard attribution when unset, so introducing the block partially would have reinstated the co-author line.
+
+## 1 October 2026 — Trip climate foundation
+
+Started `feat/trip-climate` for monthly weather on itinerary cards, an annual view, shared Celsius/Fahrenheit conversion
+and a dual-axis whole-trip graph. The owner chose the five latest complete years (2021–2025) and requested retained
+average daily high/low data while displaying mean only. Daily values are aggregated server-side; monthly precipitation
+is the average of five monthly totals, including snow water equivalent. Missing days and invalid units fail closed.
+
+NASA POWER was initially tested, then superseded by Open-Meteo ERA5-Seamless after its coarse grid returned a
+January mean of 18.95°C for Bogotá; the elevation-aware archive returned 13.77°C. This was a source-selection smoke,
+not calibration work. Live archive checks returned complete five-year records for Tokyo, Brno and Bogotá. The first
+UI regression passed. Calculation/date/provider verification passed 32 focused tests at this checkpoint.
+
+Follow-up scope is active: save records in SQLite, collect with city generation/refresh, remove the twelve-card limit,
+avoid piecemeal graph rendering, and fix missing destination lookups. The first complete baseline passed 294 tests
+with a 30-second setup-hook limit; the default 10-second limit timed out in existing database suites under concurrent
+checks. Production build and lint passed before this follow-up integration. Final verification remains pending.
+
+## 1 October 2026 — Persist weather and collect it with city data
+
+Added versioned `city_climate` SQLite records with twelve monthly mean/high/low/rainfall values and location/source
+provenance. Batch reads do not call providers. Existing cities collect once on demand; matching failed attempts are
+stored to avoid repeated calls on page loads. Explicit city generation/refresh collects weather, and manual city
+creation collects it initially. A failed weather refresh retains labelled prior valid data without discarding a
+valid cost estimate. Responses expose ready/stale/unavailable status.
+
+The service coalesces simultaneous collections and caps concurrency at three. It validates country identity and
+rechecks the city inside a transaction before writing after network work, so rename/delete races cannot persist a
+wrong-city result. Focused persistence and integration checks pass; TypeScript passes. An initial local-trip collection
+saved 51 of 59 unique destinations before the final location fixes; the remaining records are being retried.
+UI delivery and final baseline remain active on draft PR #9.
+
+### 1 October 2026 - Trip climate UI and destination coverage checkpoint
+
+Monthly mean/rainfall rows, annual table/chart and shared Celsius/Fahrenheit switching now appear on every planner
+card. Removed the twelve-card limit and all load-more controls. The trip chart preloads its code alongside one
+bulk SQLite read and holds a fixed-height placeholder during initial collection, then draws complete settled data
+without line animation. Explicit retries handle saved failures; ordinary visits do not recollect saved weather.
+
+Strict aliases and sourced reserve/island coordinates resolve Pu Luong, Santa Fe (Bantayan) and Koh Lanta. Retrying
+only missing records saved all twelve months for all 59 distinct destinations in the actual 64-leg itinerary.
+Authenticated Chrome inspection confirms 64 cards and a complete chart. The owner noticed Salento's August rainfall
+of 1,552 mm; investigation of coordinates, raw provider values and precipitation handling remains open.
+
+Verification: next lint clean; TypeScript passed; 62 Vitest files / 326 tests passed with the baseline command.
+The obsolete source-text assertion for expanding capped cards was removed; the browser regression now checks all
+cards directly. Playwright setup plus the climate regression passed, including a repeat visit with one bulk weather
+read and no collection. A prior cold dev compile caused a UI wait timeout during concurrent checks; the warm rerun
+passed. Production rebuild and Salento investigation remain final gates.
+
+### 1 October 2026 - Salento rainfall source correction
+
+The owner flagged Salento's August point (1,552.4 mm). Verified GeoNames coordinates are correct, and a direct
+ERA5 request reproduces the stored values: about 14,243 mm/year with a July/August peak. Monthly arithmetic
+sums daily precipitation over five years and divides by five correctly. No unit-conversion or app aggregation
+defect was found; the exact upstream cause is unconfirmed.
+
+Official Quindio station 26120160 (1975-2014) has about 2,549.5 mm/year and July/August minima; Cortolima's
+independent 1979-1998 report agrees on the seasonal pattern. Those older periods were used for a location sanity
+check and were not substituted for recent data. Links and details are in docs/product/trip-climate.md.
+
+A bounded comparison with Open-Meteo ECMWF IFS returned the complete 1,826-day 2021-2025 period, all four
+required variables, 3,126.56 mm/year and August 225.78 mm. Its July minimum and spring/autumn wet periods are
+more consistent with the station evidence. Salento CO now selects IFS explicitly for the entire weather record,
+with model/grid/URL provenance and its own persistence version. Other destinations retain ERA5-Seamless and their
+saved records. No clipping, scaling or automatic fallback was added. The live Salento record was replaced from
+the validated retained public IFS response, avoiding another provider request. IFS model upgrades limit long-term
+consistency, so this remains a pinned five-year gridded estimate, not a station normal or climate trend.
+
+Focused provider/persistence tests and TypeScript pass. Final rendered source verification and baseline rerun are
+pending at this checkpoint. A new persistence assertion initially matched a one-item array against twelve months;
+it now checks the first month independently. The browser test allows route hydration time during development
+compilation while retaining exact request counts and the controlled initial-collection gate.
+
+### 1 October 2026 - Trip climate final verification
+
+Final baseline passed: npx tsc --noEmit, npm run build, npm test -- --run (62 files / 330 tests),
+npm run docs:check-memory and npm run methodology:v1.1:check. Next lint is clean. The two Playwright checks
+(auth setup and climate regression) pass, covering the initial collection gate, full cards, date boundaries,
+annual data, shared conversion, explicit retry, source-model attribution, mobile sizing, and warm reload with
+one bulk weather read and no collection. The final suite uses the baseline hook timeout; the earlier extended
+hook run was only needed during concurrent development/build checks.
+
+Authenticated Chrome inspection verifies 64 actual itinerary cards, Salento August 226 mm, annual IFS source
+attribution, and conversion to Fahrenheit propagated from the annual view to the trip chart. Restored Celsius
+after inspection. An input dispatch acknowledgement timed out although the subsequent DOM/screenshot confirmed
+the conversion succeeded; no repeated click was needed. The complete graph has no unavailable-city warning.
+Read-only database verification finds 59 destinations and 708 valid months with mean/high/low/rainfall: 58
+ERA5-Seamless records and one ECMWF IFS record. The v1 CSV hash is unchanged. Production /plan first-load JS
+is 172 kB; browser checks used the development server and are not production speed measurements.
+
+Implementation is complete in PR #9. The working SQLite weather is local, gitignored data; source adapters and
+schema are in the PR. Existing saved records survive restarts/builds, while missing legacy cities collect on
+first use. No provider owner keys or cost-methodology calibration were used.

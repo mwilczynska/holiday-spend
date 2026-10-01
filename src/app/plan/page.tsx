@@ -11,6 +11,9 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { InlineLoadingState, LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { LegCard } from '@/components/itinerary/LegCard';
+import { TripClimate } from '@/components/itinerary/TripClimate';
+import { useTripClimate } from '@/lib/use-trip-climate';
+import type { TemperatureUnit } from '@/lib/climate';
 import { CostSummary } from '@/components/itinerary/CostSummary';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
 
@@ -29,11 +32,6 @@ import { useProviderApiKeys } from '@/lib/use-provider-api-keys';
 import { KNOWN_COUNTRIES, findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
-import {
-  getVisibleItems,
-  INITIAL_VISIBLE_LEGS,
-  VISIBLE_LEGS_INCREMENT,
-} from '@/lib/performance-bounds';
 
 // Both were mounted unconditionally and shipped in this route's first-load JS despite being
 // closed on arrival. They now load on first open. The type import above stays static.
@@ -220,6 +218,9 @@ function countEstimatableTransportLegs(legs: Leg[]) {
 
 export default function PlanPage() {
   const [legs, setLegs] = useState<Leg[]>([]);
+  const [temperatureUnit, setTemperatureUnit] = useState<TemperatureUnit>('C');
+  const { climate, retry: retryClimate } = useTripClimate(legs.map(leg => leg.cityId));
+  const toggleTemperature = useCallback(() => setTemperatureUnit(unit => unit === 'C' ? 'F' : 'C'), []);
   const [cities, setCities] = useState<City[]>([]);
   const [countries, setCountries] = useState<Country[]>([]);
   const [fixedCosts, setFixedCosts] = useState<FixedCost[]>([]);
@@ -249,7 +250,6 @@ export default function PlanPage() {
   const [importReferenceDate, setImportReferenceDate] = useState('');
   const [importExtraContext, setImportExtraContext] = useState('');
   const [pageLoading, setPageLoading] = useState(true);
-  const [visibleLegCount, setVisibleLegCount] = useState(INITIAL_VISIBLE_LEGS);
   const importInputRef = useRef<HTMLInputElement>(null);
   const plannerHeaderRef = useRef<HTMLDivElement>(null);
   const [plannerHeaderHeight, setPlannerHeaderHeight] = useState(0);
@@ -392,7 +392,6 @@ export default function PlanPage() {
     setAddDialogOpen(false);
     setNewLegCity('');
     setNewLegNights('7');
-    setVisibleLegCount(Number.MAX_SAFE_INTEGER);
     await fetchData();
   };
 
@@ -403,7 +402,6 @@ export default function PlanPage() {
   };
 
   const handlePlannerNewCityCreated = useCallback(async (payload: NewCityCreatedPayload) => {
-    setVisibleLegCount(Number.MAX_SAFE_INTEGER);
     await fetchData();
     setAddDialogOpen(false);
     setNewLegCity('');
@@ -508,8 +506,6 @@ export default function PlanPage() {
     totalBudget: legs.reduce((sum, leg) => sum + leg.legTotal, 0) + fixedCostsTotal,
     fixedCostCount: fixedCosts.length,
   };
-  const visibleLegs = getVisibleItems(legs, visibleLegCount);
-  const hasMoreLegs = visibleLegCount < legs.length;
 
   const fetchCurrentSnapshot = useCallback(async () => {
     const response = await fetch('/api/itinerary/snapshot', { cache: 'no-store' });
@@ -1504,6 +1500,8 @@ export default function PlanPage() {
             </div>
           )}
 
+          <TripClimate legs={legs} climate={climate} unit={temperatureUnit} onToggle={toggleTemperature} onRetry={retryClimate} />
+
           <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
         {/* Legs list */}
             <div className="space-y-3">
@@ -1512,48 +1510,14 @@ export default function PlanPage() {
                   No legs yet. Add your first destination to start planning.
                 </p>
               )}
-              {legs.length > INITIAL_VISIBLE_LEGS ? (
-                <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border bg-muted/20 px-3 py-2 text-sm">
-                  <span className="text-muted-foreground">
-                    Showing {visibleLegs.length} of {legs.length} legs. Totals above include the full plan.
-                  </span>
-                  <div className="flex gap-2">
-                    {hasMoreLegs ? (
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setVisibleLegCount((count) => Math.min(count + VISIBLE_LEGS_INCREMENT, legs.length))}
-                      >
-                        Show next {Math.min(VISIBLE_LEGS_INCREMENT, legs.length - visibleLegs.length)}
-                      </Button>
-                    ) : null}
-                    {hasMoreLegs ? (
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => setVisibleLegCount(legs.length)}
-                      >
-                        Show all
-                      </Button>
-                    ) : (
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => setVisibleLegCount(INITIAL_VISIBLE_LEGS)}
-                      >
-                        Collapse list
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              ) : null}
-              {visibleLegs.map((leg, i) => (
+              {legs.map((leg, i) => (
                 <LegCard
                   key={leg.id}
                   leg={leg}
+                  climate={climate[leg.cityId]}
+                  temperatureUnit={temperatureUnit}
+                  onToggleTemperature={toggleTemperature}
+                  onRetryClimate={retryClimate}
                   cities={cities}
                   cityOptions={cityOptions}
                   groupSize={groupSize}
