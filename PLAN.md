@@ -21,8 +21,8 @@ sidebar prefetching.
 **Latest plan checkpoint:** `63cd370` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
 target that was not met and the reason it is not reachable by payload trimming.
 
-**Next action:** Verify the persisted weather and complete-card UI, retry the remaining missing source records,
-then finish checks and publish the remaining checkpoints to draft PR #9.
+**Next action:** Investigate the Salento rainfall outlier, finish production-build verification, then publish
+the final checkpoint and make PR #9 ready for review.
 
 **Working tree:** Clean at task start. Trip-climate changes are tracked below.
 
@@ -35,19 +35,23 @@ Interaction thesis: shared C/F switching, on-demand annual dialog, chart tooltip
 - [x] Implement and unit-test Open-Meteo Historical Weather API 2021–2025 daily mean, maximum and minimum temperature
       and precipitation using country-checked city coordinates; pin model `era5_seamless`.
 - [x] Persist weather in SQLite; collect with city generation/refresh and read saved records in one planner request.
-- [ ] Show each occupied month's historical mean temperature and monthly precipitation on travel cards.
-- [ ] Add annual month-by-month chart/table and shared temperature conversion with Celsius default.
-- [ ] Plot the complete dated itinerary with separate temperature/rainfall axes, loading once after data is ready.
-- [ ] Remove the twelve-leg rendering limit and all Show all / Show next / Collapse controls.
-- [ ] Resolve missing destination temperatures with verified location data and transient-provider recovery.
+- [x] Show each occupied month's historical mean temperature and monthly precipitation on travel cards.
+- [x] Add annual month-by-month chart/table and shared temperature conversion with Celsius default.
+- [x] Plot the complete dated itinerary with separate temperature/rainfall axes, loading once after data is ready.
+- [x] Remove the twelve-leg rendering limit and all Show all / Show next / Collapse controls.
+- [x] Resolve missing destination temperatures with verified location data and transient-provider recovery.
+- [ ] Investigate the owner-reported Salento rainfall outlier and address its verified cause.
 - [ ] Verify missing data, date boundaries, conversion, provider responses, UI and baseline checks.
 - [ ] Commit and push the feature branch and open a new PR.
 
-**Current checkpoint:** Calculation, date and provider tests pass; live source checks return all twelve months for
-Tokyo, Brno and Bogotá. The initial UI browser regression passed. SQLite persistence, complete-card rendering,
-stable graph loading and expanded location coverage are now being integrated under the owner's follow-up requests.
+**Current checkpoint:** All 59 distinct itinerary destinations have twelve months saved in SQLite; authenticated
+Chrome inspection shows all 64 cards and the complete graph. The UI regression covers stable initial loading,
+all fourteen fixture cards, annual data, shared C/F conversion, missing-data retry, mobile width and one bulk read
+with no collection after reload. TypeScript and lint pass; 62 Vitest files / 326 tests pass using the baseline command.
+The owner flagged Salento's 1,552 mm August rainfall as an outlier; source investigation remains open.
 
-**Published checkpoint:** `cb329f1` — verified climate calculation/provider foundation; draft
+**Published checkpoints:** `cb329f1` — verified climate calculation/provider foundation; `fb4f8e8` — persisted
+weather and collection with city generation/refresh; draft
 [PR #9](https://github.com/mwilczynska/holiday-spend/pull/9) opened. Database persistence and city-refresh integration
 now pass focused tests, including durable reads without provider calls, retry/failure handling, refresh preservation,
 identity validation and concurrent request handling. TypeScript passes. The new bulk-read/all-card UI regression passes.

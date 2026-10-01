@@ -7,7 +7,6 @@ const numericFields = [
   'temperature_2m_min',
   'precipitation_sum',
 ] as const;
-type NumericField = typeof numericFields[number];
 
 type ArchivePayload = {
   latitude: number;
@@ -65,7 +64,19 @@ function dailyPayload(): ArchivePayload {
   return payload;
 }
 
-function place(name: string, country_code: string, population = 100_000) {
+type GeocodingPlace = {
+  name: string;
+  country_code: string;
+  feature_code: string;
+  population?: number;
+  admin1?: string;
+  admin2?: string;
+  admin3?: string;
+  latitude: number;
+  longitude: number;
+};
+
+function place(name: string, country_code: string, population = 100_000, details: Partial<GeocodingPlace> = {}): GeocodingPlace {
   return {
     name,
     country_code,
@@ -73,6 +84,7 @@ function place(name: string, country_code: string, population = 100_000) {
     population,
     latitude: 12.5,
     longitude: -45.25,
+    ...details,
   };
 }
 
@@ -179,11 +191,116 @@ describe('climate geocoding', () => {
   });
 
   it('uses an exact normalized name match in the requested country', () => {
-    expect(resolveClimateLocation({ results: [
+    const location = resolveClimateLocation({ results: [
       place('San Jose', 'US', 1_000_000),
       place('San José', 'CR', 340_000),
-    ] }, 'San Jose', 'CR')).toEqual({
-      name: 'San José', countryCode: 'CR', latitude: 12.5, longitude: -45.25,
+    ] }, 'San Jose', 'CR');
+
+    expect(location).toMatchObject({
+      name: 'San José', countryCode: 'CR', latitude: 12.5, longitude: -45.25, queryName: 'San Jose',
+    });
+    const source = new URL(location.sourceUrl);
+    expect(source.origin + source.pathname).toBe('https://geocoding-api.open-meteo.com/v1/search');
+    expect(Object.fromEntries(source.searchParams)).toMatchObject({ name: 'San Jose', countryCode: 'CR' });
+  });
+
+  it.each([
+    { city: 'Hanoi', code: 'VN', result: place('Hanoi', 'VN', 8_053_663, { feature_code: 'PPLC', admin1: 'Hanoi', latitude: 21.0245, longitude: 105.84117 }) },
+    { city: 'Ho Chi Minh City', code: 'VN', result: place('Ho Chi Minh City', 'VN', 14_002_598, { feature_code: 'PPL', admin1: 'Ho Chi Minh City (HCMC)', latitude: 10.82302, longitude: 106.62965 }) },
+    { city: 'Mui Ne', code: 'VN', result: place('Mui Ne', 'VN', 50_166, { feature_code: 'PPL', admin1: 'Lam Dong', latitude: 10.93314, longitude: 108.28327 }) },
+    { city: 'Hue', code: 'VN', result: place('Huế', 'VN', 1_380_000, { feature_code: 'PPLA', admin1: 'Thừa Thiên Huế Province', latitude: 16.4619, longitude: 107.59546 }) },
+  ])('resolves the saved city identity exactly for $city', ({ city, code, result }) => {
+    const location = resolveClimateLocation({ results: [result] }, city, code);
+
+    expect(location.name).toBe(result.name);
+    expect(location.countryCode).toBe(code);
+    expect(location.queryName).toBe(city);
+    expect(location.latitude).toBe(result.latitude);
+    expect(location.longitude).toBe(result.longitude);
+    expect(Object.fromEntries(new URL(location.sourceUrl).searchParams)).toMatchObject({ name: city, countryCode: code });
+  });
+
+  it('constrains Bali (Canggu) to the Bali administrative area', () => {
+    const location = resolveClimateLocation({ results: [
+      place('Canggu', 'ID', 100_000, { admin1: 'East Java', latitude: -7.7478, longitude: 112.2203 }),
+      place('Canggu', 'ID', 50_000, { admin1: 'Bali', latitude: -8.64009, longitude: 115.14011 }),
+      place('Canggu', 'ID', 25_000, { admin1: 'Lampung', latitude: -5.72556, longitude: 105.60772 }),
+    ] }, 'Bali (Canggu)', 'ID');
+
+    expect(location).toMatchObject({
+      name: 'Canggu', countryCode: 'ID', latitude: -8.64009, longitude: 115.14011, queryName: 'Canggu',
+    });
+    expect(new URL(location.sourceUrl).searchParams.get('name')).toBe('Canggu');
+  });
+
+  it('allows the exact Don Det island result in Laos', () => {
+    const location = resolveClimateLocation({ results: [
+      place('Don Dét', 'LA', 1, { feature_code: 'ISL', admin1: 'Champasak Province', latitude: 13.97447, longitude: 105.92185 }),
+    ] }, 'Don Det', 'LA');
+
+    expect(location).toMatchObject({
+      name: 'Don Dét', countryCode: 'LA', queryName: 'Don Det', latitude: 13.97447, longitude: 105.92185,
+    });
+  });
+
+  it('resolves the legacy Bali (Ubud/Canggu) label to the exact Bali island feature', () => {
+    const location = resolveClimateLocation({ results: [
+      place('Bali', 'ID', 4_225_384, { feature_code: 'ISL', admin1: 'Bali', latitude: -8.33333, longitude: 115 }),
+      place('Bali', 'ID', 10_000_000, { feature_code: 'PPL', admin1: 'North Sumatra', latitude: -0.13946, longitude: 98.186 }),
+    ] }, 'Bali (Ubud/Canggu)', 'ID');
+
+    expect(location).toMatchObject({ name: 'Bali', countryCode: 'ID', queryName: 'Bali', latitude: -8.33333, longitude: 115 });
+  });
+
+  it.each([
+    {
+      city: 'Bantayan (Bantayan)', countryCode: 'PH', queryName: 'Bantayan',
+      target: place('Bantayan', 'PH', 87_394, { feature_code: 'PPLA3', admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Bantayan', latitude: 11.1683, longitude: 123.7223 }),
+      decoy: place('Bantayan', 'PH', 1_000_000, { feature_code: 'PPLA3', admin1: 'Eastern Visayas', admin2: 'Northern Samar', admin3: 'San Roque', latitude: 12.5237, longitude: 124.8283 }),
+    },
+    {
+      city: 'Palawan (El Nido)', countryCode: 'PH', queryName: 'El Nido',
+      target: place('El Nido', 'PH', 51_367, { feature_code: 'PPLA3', admin1: 'Mimaropa', admin2: 'Province of Palawan', admin3: 'El Nido', latitude: 11.18583, longitude: 119.39556 }),
+      decoy: place('El Nido', 'PH', 1_000_000, { feature_code: 'PPLA3', admin1: 'Other region', admin2: 'Other province', admin3: 'El Nido', latitude: 15, longitude: 120 }),
+    },
+    {
+      city: 'Santa Fe (Bantayan)', countryCode: 'PH', queryName: 'Santa Fe',
+      target: place('Santa Fe', 'PH', 2_405, { feature_code: 'PPLA3', admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Municipality of Santa Fe', latitude: 11.1544, longitude: 123.8058 }),
+      decoy: place('Santa Fe', 'PH', 3_010, { feature_code: 'PPLA3', admin1: 'Eastern Visayas', admin2: 'Province of Leyte', admin3: 'Municipality of Santa Fe', latitude: 11.18556, longitude: 124.91611 }),
+    },
+    {
+      city: 'Koh Lanta', countryCode: 'TH', queryName: 'Ko Lanta Yai',
+      target: place('Ko Lanta Yai', 'TH', 0, { feature_code: 'ISL', admin1: 'Krabi', latitude: 7.56593, longitude: 99.05654 }),
+      decoy: place('Ko Lanta Yai', 'TH', 6_090, { feature_code: 'PPL', admin1: 'Krabi', latitude: 7.53362, longitude: 99.08647 }),
+      expectedSourceUrl: 'https://www.geonames.org/1152414/ko-lanta-yai.html',
+    },
+  ])('applies the saved qualifier for $city', ({ city, countryCode, queryName, target, decoy, expectedSourceUrl }) => {
+    const location = resolveClimateLocation({ results: [decoy, target] }, city, countryCode);
+
+    expect(location.name).toBe(queryName);
+    expect(location.countryCode).toBe(countryCode);
+    expect(location.queryName).toBe(queryName);
+    expect(location.latitude).toBe(target.latitude);
+    expect(location.longitude).toBe(target.longitude);
+    if (expectedSourceUrl) {
+      expect(location.sourceUrl).toBe(expectedSourceUrl);
+    } else {
+      expect(Object.fromEntries(new URL(location.sourceUrl).searchParams)).toMatchObject({ name: queryName, countryCode });
+    }
+  });
+
+  it('uses a verified Pu Luong Nature Reserve coordinate override with source provenance', () => {
+    const location = resolveClimateLocation({ results: [
+      place('Phu Lương', 'VN', 0, { feature_code: 'MT', admin1: 'Lao Cai', latitude: 21.58333, longitude: 104.31667 }),
+    ] }, 'Pu Luong', 'VN');
+
+    expect(location).toEqual({
+      name: 'Pu Luong Nature Reserve',
+      countryCode: 'VN',
+      latitude: 20.46653,
+      longitude: 105.17268,
+      queryName: 'Pu Luong',
+      sourceUrl: 'https://www.openstreetmap.org/node/5191527721',
     });
   });
 });
@@ -205,6 +322,8 @@ describe('fetchCityClimate provider requests', () => {
     expect(Object.fromEntries(geocodingUrl.searchParams)).toMatchObject({
       name: 'Bogotá', countryCode: 'CO', count: '100', language: 'en', format: 'json',
     });
+    expect(climate.location.queryName).toBe('Bogotá');
+    expect(climate.location.sourceUrl).toBe(geocodingUrl.toString());
 
     const archiveUrl = new URL(fetchMock.mock.calls[1][0] as string);
     expect(archiveUrl.origin + archiveUrl.pathname).toBe('https://archive-api.open-meteo.com/v1/archive');
@@ -219,6 +338,48 @@ describe('fetchCityClimate provider requests', () => {
       start_date: '2021-01-01',
       end_date: '2025-12-31',
     });
+  });
+
+  it('uses the Bali qualifier when requesting Canggu coordinates and keeps the requested country', async () => {
+    const archive = dailyPayload();
+    archive.latitude = -8.64009;
+    archive.longitude = 115.14011;
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ results: [
+        place('Canggu', 'ID', 100_000, { admin1: 'East Java', latitude: -7.7478, longitude: 112.2203 }),
+        place('Canggu', 'ID', 50_000, { admin1: 'Bali', latitude: -8.64009, longitude: 115.14011 }),
+      ] }))
+      .mockResolvedValueOnce(jsonResponse(archive));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const climate = await fetchCityClimate('bali-canggu', 'Bali (Canggu)', 'ID');
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const geocodingUrl = new URL(fetchMock.mock.calls[0][0] as string);
+    expect(Object.fromEntries(geocodingUrl.searchParams)).toMatchObject({ name: 'Canggu', countryCode: 'ID' });
+    expect(climate.location).toMatchObject({ name: 'Canggu', countryCode: 'ID', queryName: 'Canggu', latitude: -8.64009, longitude: 115.14011 });
+    expect(climate.location.sourceUrl).toBe(geocodingUrl.toString());
+    const archiveUrl = new URL(fetchMock.mock.calls[1][0] as string);
+    expect(Object.fromEntries(archiveUrl.searchParams)).toMatchObject({ latitude: '-8.64009', longitude: '115.14011' });
+  });
+
+  it('uses the cited Pu Luong reserve coordinate without querying a namesake mountain', async () => {
+    const archive = dailyPayload();
+    archive.latitude = 20.46653;
+    archive.longitude = 105.17268;
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValueOnce(jsonResponse(archive));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const climate = await fetchCityClimate('pu-luong', 'Pu Luong', 'VN');
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(new URL(fetchMock.mock.calls[0][0] as string).origin).toBe('https://archive-api.open-meteo.com');
+    expect(climate.location).toEqual({
+      name: 'Pu Luong Nature Reserve', countryCode: 'VN', latitude: 20.46653, longitude: 105.17268,
+      queryName: 'Pu Luong', sourceUrl: 'https://www.openstreetmap.org/node/5191527721',
+    });
+    expect(Object.fromEntries(new URL(fetchMock.mock.calls[0][0] as string).searchParams))
+      .toMatchObject({ latitude: '20.46653', longitude: '105.17268' });
   });
 
   it('retries a transient network failure and recovers', async () => {

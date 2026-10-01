@@ -2315,3 +2315,21 @@ rechecks the city inside a transaction before writing after network work, so ren
 wrong-city result. Focused persistence and integration checks pass; TypeScript passes. An initial local-trip collection
 saved 51 of 59 unique destinations before the final location fixes; the remaining records are being retried.
 UI delivery and final baseline remain active on draft PR #9.
+
+### 1 October 2026 - Trip climate UI and destination coverage checkpoint
+
+Monthly mean/rainfall rows, annual table/chart and shared Celsius/Fahrenheit switching now appear on every planner
+card. Removed the twelve-card limit and all load-more controls. The trip chart preloads its code alongside one
+bulk SQLite read and holds a fixed-height placeholder during initial collection, then draws complete settled data
+without line animation. Explicit retries handle saved failures; ordinary visits do not recollect saved weather.
+
+Strict aliases and sourced reserve/island coordinates resolve Pu Luong, Santa Fe (Bantayan) and Koh Lanta. Retrying
+only missing records saved all twelve months for all 59 distinct destinations in the actual 64-leg itinerary.
+Authenticated Chrome inspection confirms 64 cards and a complete chart. The owner noticed Salento's August rainfall
+of 1,552 mm; investigation of coordinates, raw provider values and precipitation handling remains open.
+
+Verification: next lint clean; TypeScript passed; 62 Vitest files / 326 tests passed with the baseline command.
+The obsolete source-text assertion for expanding capped cards was removed; the browser regression now checks all
+cards directly. Playwright setup plus the climate regression passed, including a repeat visit with one bulk weather
+read and no collection. A prior cold dev compile caused a UI wait timeout during concurrent checks; the warm rerun
+passed. Production rebuild and Salento investigation remain final gates.

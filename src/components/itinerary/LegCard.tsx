@@ -9,6 +9,8 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { SearchableSelect, type SearchableSelectOption } from '@/components/ui/searchable-select';
 import { TierSelector } from './TierSelector';
+import { LegClimate } from './LegClimate';
+import type { CityClimate, TemperatureUnit } from '@/lib/climate';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
 import type { IntercityTransportItem } from '@/types';
 import {
@@ -30,6 +32,10 @@ const TransportEstimateDialog = dynamic(
 
 
 interface LegCardProps {
+  climate?: CityClimate | null;
+  temperatureUnit: TemperatureUnit;
+  onToggleTemperature: () => void;
+  onRetryClimate: () => void;
   leg: {
     id: number;
     cityId: string;
@@ -161,6 +167,10 @@ export function LegCard({
   isFirst,
   isLast,
   previousLeg,
+  climate,
+  temperatureUnit,
+  onToggleTemperature,
+  onRetryClimate,
 }: LegCardProps) {
   const [showOverrides, setShowOverrides] = useState(false);
   const [transportEstimateOpen, setTransportEstimateOpen] = useState(false);
@@ -399,6 +409,8 @@ export function LegCard({
             <Trash2 className="h-4 w-4" />
           </Button>
         </div>
+
+        <LegClimate leg={leg} climate={climate} unit={temperatureUnit} onToggle={onToggleTemperature} onRetry={onRetryClimate} />
 
         <div className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
           <div className="col-span-2 lg:col-span-1">

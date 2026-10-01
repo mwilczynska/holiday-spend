@@ -195,7 +195,7 @@ describe('city climate persistence', () => {
     let active = 0;
     let maximumActive = 0;
     const releases: Array<(climate: CityClimate) => void> = [];
-    fetchClimateMock.mockImplementation((cityId) => new Promise((resolve) => {
+    fetchClimateMock.mockImplementation(() => new Promise((resolve) => {
       active += 1;
       maximumActive = Math.max(maximumActive, active);
       releases.push((climate) => { active -= 1; resolve(climate); });

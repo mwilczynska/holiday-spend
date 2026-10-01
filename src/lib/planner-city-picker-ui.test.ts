@@ -27,12 +27,6 @@ describe('planner city picker UI', () => {
     expect(footer).toContain('Add Leg');
   });
 
-  it('reveals all legs after either existing-city or generated-city leg creation', () => {
-    const source = fs.readFileSync(path.join(projectRoot, 'src', 'app', 'plan', 'page.tsx'), 'utf8');
-
-    expect(source.match(/setVisibleLegCount\(Number\.MAX_SAFE_INTEGER\)/g)).toHaveLength(2);
-  });
-
   it('shows model suggestions in four columns on both generation surfaces', () => {
     const datasetPanel = fs.readFileSync(
       path.join(projectRoot, 'src', 'components', 'cities', 'CityGenerationPanel.tsx'),

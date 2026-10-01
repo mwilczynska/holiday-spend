@@ -99,6 +99,20 @@ v6/v6.1 are rejected product approaches retained for audit and reproducibility o
 branch intentionally does not carry their implementation or experiment tree. Do not resume their collection, open
 holdouts, import staged rows, run Phase 11, or enable their old three-call/search contract.
 
+## Trip climate
+
+The planner displays 2021–2025 monthly historical mean temperature and precipitation, an annual view, and a whole-trip
+graph with separate temperature/rainfall axes. Celsius is the default; shared C/F controls update all weather views.
+Average daily highs and lows are also collected and saved but are not currently displayed. Monthly precipitation is
+the average of the five monthly totals, including snow water equivalent; it is not a forecast or a stay total.
+
+Weather uses the no-key Open-Meteo historical archive with ERA5-Seamless and country-checked coordinates. Saved
+monthly weather and provenance live in SQLite. City collection/generation and refresh also collect weather; routine
+planner loads read saved records in one request. Existing cities collect once when needed. Provider failures remain
+missing, or retain an explicitly labelled prior successful record after a failed refresh. All itinerary cards render;
+the former twelve-card limit and load-more controls are removed. The trip chart waits for its initial data load to
+settle rather than drawing incomplete lines repeatedly. See `docs/product/trip-climate.md` for the data contract.
+
 ## Transport
 
 Transport is outside city-cost methodology. The planner supports manual `transportOverride` and repeatable

@@ -4,7 +4,7 @@ import { CLIMATE_START_YEAR, CLIMATE_END_YEAR, MONTH_NAMES, type CityClimate } f
 const coordinate = { latitude: z.number().min(-90).max(90), longitude: z.number().min(-180).max(180) };
 const geocodingSchema = z.object({ results: z.array(z.object({
   name: z.string(), country_code: z.string(), feature_code: z.string(),
-  population: z.number().optional(), admin1: z.string().optional(), ...coordinate,
+  population: z.number().optional(), admin1: z.string().optional(), admin2: z.string().optional(), admin3: z.string().optional(), ...coordinate,
 })).optional() });
 const archiveSchema = z.object({
   elevation: z.number(), timezone: z.string(), ...coordinate,
@@ -12,13 +12,78 @@ const archiveSchema = z.object({
   daily: z.object({ time: z.array(z.string()), temperature_2m_mean: z.array(z.number()), temperature_2m_max: z.array(z.number()), temperature_2m_min: z.array(z.number()), precipitation_sum: z.array(z.number()) }),
 });
 function normalize(value: string) { return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+
+type ClimateLocation = {
+  name: string;
+  countryCode: string;
+  latitude: number;
+  longitude: number;
+  queryName: string;
+  sourceUrl: string;
+};
+
+type LocationQuery = {
+  queryName: string;
+  admin1?: string;
+  admin2?: string;
+  admin3?: string;
+  featureCode?: string;
+  sourceUrl?: string;
+};
+
+// Explicit saved-library aliases: preserve the stored city/country identity while
+// constraining same-name results to the intended island, province, or municipality.
+const locationQueries: Record<string, LocationQuery> = {
+  'ID|Bali (Kuta)': { queryName: 'Kuta', admin1: 'Bali' },
+  'ID|Bali (Ubud)': { queryName: 'Ubud', admin1: 'Bali' },
+  'ID|Bali (Canggu)': { queryName: 'Canggu', admin1: 'Bali' },
+  'ID|Bali (Ubud/Canggu)': { queryName: 'Bali', admin1: 'Bali', featureCode: 'ISL' },
+  'PH|Bantayan (Bantayan)': { queryName: 'Bantayan', admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Bantayan' },
+  'PH|Palawan (El Nido)': { queryName: 'El Nido', admin2: 'Province of Palawan', admin3: 'El Nido' },
+  'PH|Santa Fe (Bantayan)': { queryName: 'Santa Fe', admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Municipality of Santa Fe' },
+  'TH|Koh Lanta': { queryName: 'Ko Lanta Yai', admin1: 'Krabi', featureCode: 'ISL', sourceUrl: 'https://www.geonames.org/1152414/ko-lanta-yai.html' },
+};
+
+const coordinateOverrides: Record<string, ClimateLocation> = {
+  // Open-Meteo returns a mountain named Phu Lương elsewhere in Vietnam for this
+  // saved reserve. Use the named reserve point in OpenStreetMap, never a nearby city.
+  'VN|Pu Luong': {
+    name: 'Pu Luong Nature Reserve',
+    countryCode: 'VN',
+    latitude: 20.46653,
+    longitude: 105.17268,
+    queryName: 'Pu Luong',
+    sourceUrl: 'https://www.openstreetmap.org/node/5191527721',
+  },
+};
+
+function locationQuery(name: string, countryCode: string): LocationQuery {
+  return locationQueries[`${countryCode}|${name}`] ?? { queryName: name };
+}
+
+function geocodingUrl(name: string, countryCode: string) {
+  const query = locationQuery(name, countryCode);
+  const url = new URL('https://geocoding-api.open-meteo.com/v1/search');
+  url.search = new URLSearchParams({ name: query.queryName, countryCode, count: '100', language: 'en', format: 'json' }).toString();
+  return url;
+}
+
+function coordinateOverride(name: string, countryCode: string) {
+  return coordinateOverrides[`${countryCode}|${name}`];
+}
+
 export function resolveClimateLocation(payload: unknown, name: string, countryCode: string) {
-  // The library names Bali neighborhoods as "Bali (Canggu)" etc. Preserve the
-  // province qualifier so a namesake on another Indonesian island cannot match.
-  const bali = countryCode === 'ID' ? /^Bali \((Kuta|Ubud|Canggu)\)$/.exec(name) : null;
-  const searchName = bali?.[1] ?? name;
+  const override = coordinateOverride(name, countryCode);
+  if (override) return override;
+
+  const query = locationQuery(name, countryCode);
   const candidates = (geocodingSchema.parse(payload).results ?? [])
-    .filter(row => row.country_code === countryCode && (row.feature_code.startsWith('PPL') || row.feature_code === 'ISL') && normalize(row.name) === normalize(searchName) && (!bali || row.admin1 === 'Bali'))
+    .filter(row => row.country_code === countryCode &&
+      (query.featureCode ? row.feature_code === query.featureCode : row.feature_code.startsWith('PPL') || row.feature_code === 'ISL') &&
+      normalize(row.name) === normalize(query.queryName) &&
+      (!query.admin1 || row.admin1 === query.admin1) &&
+      (!query.admin2 || row.admin2 === query.admin2) &&
+      (!query.admin3 || row.admin3 === query.admin3))
     .sort((a, b) => (b.population ?? 0) - (a.population ?? 0));
   if (!candidates.length) throw new Error('No matching city coordinates found.');
   // Multiple populated places with the same name require disambiguation, unless there is
@@ -27,7 +92,14 @@ export function resolveClimateLocation(payload: unknown, name: string, countryCo
     throw new Error('City coordinates are ambiguous.');
   }
   const row = candidates[0];
-  return { name: row.name, countryCode: row.country_code, latitude: row.latitude, longitude: row.longitude };
+  return {
+    name: row.name,
+    countryCode,
+    latitude: row.latitude,
+    longitude: row.longitude,
+    queryName: query.queryName,
+    sourceUrl: query.sourceUrl ?? geocodingUrl(name, countryCode).toString(),
+  } satisfies ClimateLocation;
 }
 export function parseArchiveClimate(payload: unknown): Pick<CityClimate, 'period' | 'months' | 'grid'> {
   const data = archiveSchema.parse(payload);
@@ -80,10 +152,8 @@ async function fetchJson(url: string) {
   throw new Error('Climate provider unavailable.');
 }
 export async function fetchCityClimate(cityId: string, name: string, countryCode: string): Promise<CityClimate> {
-  const geocoding = new URL('https://geocoding-api.open-meteo.com/v1/search');
-  const searchName = countryCode === 'ID' ? /^Bali \((Kuta|Ubud|Canggu)\)$/.exec(name)?.[1] ?? name : name;
-  geocoding.search = new URLSearchParams({ name: searchName, countryCode, count: '100', language: 'en', format: 'json' }).toString();
-  const location = resolveClimateLocation(await fetchJson(geocoding.toString()), name, countryCode);
+  const override = coordinateOverride(name, countryCode);
+  const location = override ?? resolveClimateLocation(await fetchJson(geocodingUrl(name, countryCode).toString()), name, countryCode);
   const archive = new URL('https://archive-api.open-meteo.com/v1/archive');
   archive.search = new URLSearchParams({ daily: 'temperature_2m_mean,temperature_2m_max,temperature_2m_min,precipitation_sum', models: 'era5_seamless', timezone: 'auto', temperature_unit: 'celsius', precipitation_unit: 'mm', latitude: String(location.latitude), longitude: String(location.longitude), start_date: `${CLIMATE_START_YEAR}-01-01`, end_date: `${CLIMATE_END_YEAR}-12-31` }).toString();
   return { cityId, location, sourceUrl: archive.toString(), ...parseArchiveClimate(await fetchJson(archive.toString())) };
