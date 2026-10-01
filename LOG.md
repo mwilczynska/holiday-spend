@@ -2457,3 +2457,8 @@ Updated the owner-invoked Chrome Recovery skill with these observations and reta
 ignored local backup. The installed skill passes Skill Creator validation and matches the validated staged files.
 The skill documents current CUA discovery, bounded reconnect checks, unknown action outcomes, sandbox registry
 false failures and the separate sidebar error; it does not claim a permanent integration repair.
+
+Published implementation `1581388` and verification checkpoint `b00f643` on
+`origin/fix/city-generation-model-discovery`. Opened PR #11 against `main`:
+https://github.com/mwilczynska/holiday-spend/pull/11. The final documentation checkpoint closes this task;
+the PR remains open for review.

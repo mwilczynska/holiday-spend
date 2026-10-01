@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** City generation and model discovery fixes in progress. Prior product phases complete.
+**Status:** City generation and model discovery fixes complete and published for review. Prior product phases complete.
 
-**Current phase:** City generation and model discovery — IN PROGRESS.
+**Current phase:** City generation and model discovery — COMPLETE.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -17,13 +17,13 @@ page seven times. See Phase 8 for the corrected evidence.
 **Latest implementation checkpoint:** `1581388` — city-generation request limits, incomplete-response handling,
 current discovery fallbacks and GPT-6 Luna max default; rebased onto merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** This publication checkpoint records completed live verification after implementation `1581388`.
+**Latest plan checkpoint:** `b00f643` records completed live verification; this checkpoint closes publication.
 
-**Next action:** Publish the verified fix branch and open a new PR against `main`.
+**Next action:** Review [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11).
 
-**Working tree:** Implementation committed; baseline, isolated production browser checks and live Chrome verification pass.
+**Working tree:** Implementation and verification committed and pushed; final publication documentation is recorded here.
 
-## City generation and model discovery — IN PROGRESS
+## City generation and model discovery — COMPLETE
 
 Started 1 October 2026 at the owner's request. Preserve v1.1 formulas, current RBA validation and browser-only
 provider credentials. Accuracy calibration remains closed.
@@ -32,7 +32,7 @@ provider credentials. Accuracy calibration remains closed.
 - [x] Replace the undersized city-generation cap, reject incomplete output, and recover model discovery through current no-key sources.
 - [x] Set OpenAI's default to `gpt-6-luna` with `max` reasoning and migrate the prior stored default.
 - [x] Verify the UI and required baseline; update project memory and log.
-- [ ] Commit, push and open a new PR containing the fixes.
+- [x] Commit, push and open [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11) containing the fixes.
 
 The prior performance review next action is superseded by this owner-requested fix; its completed evidence is
 retained below. Official OpenAI documentation confirms `gpt-6-luna` and `max` reasoning.
