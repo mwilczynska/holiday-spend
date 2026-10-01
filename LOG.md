@@ -2425,13 +2425,13 @@ Another agent started `fix/city-generation-model-discovery` in the shared workin
 progress. Moved the merge work to `.local/merge-request`, removed only this task's temporary plan edits from the
 original checkout, and synchronized local `main` in the isolated checkout. The new PR branch was not merged or changed.
 
-## 1 October 2026 ? City generation limits and current model discovery
+## 1 October 2026 — City generation limits and current model discovery
 
-The owner reported failed Quer?taro, Mexico generation and model refresh and requested GPT-6 Luna max as OpenAI's
+The owner reported failed Querétaro, Mexico generation and model refresh and requested GPT-6 Luna max as OpenAI's
 default. City generation still imposed 2,500 tokens (raised to only 12,000 at max) and never read the user request
 limits. OpenAI incomplete responses were treated as ordinary text, so exhausted reasoning surfaced as a JSON-schema
 failure. New-city, planner add-city and existing-city refresh now pass the configured limits and timeout; truncated
-OpenAI output is rejected and retried through max ? xhigh ? high without dropping required web search. The
+OpenAI output is rejected and retried through max → xhigh → high without dropping required web search. The
 successful effort is persisted, and usage logs contain only model/status/token metadata.
 
 Keyed model-list failures previously skipped the no-key aggregators and returned the April snapshot. They now try
@@ -2442,5 +2442,18 @@ Official model documentation: https://developers.openai.com/api/docs/models/gpt-
 TypeScript, lint, production build, 63 Vitest files / 344 tests, memory mirror and v1.1 guard pass. Isolated production
 auth setup plus three browser regressions pass, and the authenticated no-key refresh returns 60 current OpenRouter
 models. The browser tests use a disposable SQLite copy and generated test credentials; no owner-key values are
-accessed. Live Chrome shows GPT-6 Luna / Maximum and 78 models returned by the provider API. Quer?taro generation
-verification is in progress. No live CSV edits, formula changes, calibration work or bulk migrations are performed.
+accessed. Live Chrome verifies an explicit refresh returning 78 OpenAI account models without warnings. Querétaro,
+Mexico generates successfully once, with one history row, `openai/gpt-6-luna`, thinking `max`, v1.1 and dated RBA FX
+snapshot `llm-rba-fx-2026-10-01` (UI rate 1 USD = 1.44 AUD). The original failure was not captured before the fixes;
+the former cap and incomplete-response defects are reproduced by deterministic transport tests. No live CSV edits,
+formula changes, calibration work or bulk migrations are performed. Temporary production QA processes are stopped.
+
+Chrome control initially failed during request-header policy initialization and then reported unavailable browser
+bindings. A user-requested Astra xhigh subagent recovered control after reconnecting and verified page interaction,
+model refresh and generation through the UI. No integration files/settings were changed. The sidebar's separate
+missing-`nodePath` error was not verified repaired; successful Chrome automation is the observed recovery.
+
+Updated the owner-invoked Chrome Recovery skill with these observations and retained its original files in an
+ignored local backup. The installed skill passes Skill Creator validation and matches the validated staged files.
+The skill documents current CUA discovery, bounded reconnect checks, unknown action outcomes, sandbox registry
+false failures and the separate sidebar error; it does not claim a permanent integration repair.

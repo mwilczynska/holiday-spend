@@ -14,29 +14,47 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `ded9af3` — verified server rendering, shared readers, climate deduplication,
-card memoization and performance/browser regression checks; merged into `main` through PR #10 (`1dcaba5`).
+**Latest implementation checkpoint:** `1581388` — city-generation request limits, incomplete-response handling,
+current discovery fallbacks and GPT-6 Luna max default; rebased onto merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** `ded9af3` — measured performance and verification recorded; this documentation checkpoint
-closes publication. Prior performance checkpoints remain recorded below.
+**Latest plan checkpoint:** This publication checkpoint records completed live verification after implementation `1581388`.
 
-**Next action:** Reproduce Querétaro generation and model refresh in Chrome, fix the evidenced failures, and verify GPT-6 Luna max as the OpenAI default.
+**Next action:** Publish the verified fix branch and open a new PR against `main`.
 
-**Working tree:** Verified implementation ready for its first commit. Baseline and isolated production UI checks pass; live owner-key verification is in progress.
+**Working tree:** Implementation committed; baseline, isolated production browser checks and live Chrome verification pass.
 
 ## City generation and model discovery — IN PROGRESS
 
 Started 1 October 2026 at the owner's request. Preserve v1.1 formulas, current RBA validation and browser-only
 provider credentials. Accuracy calibration remains closed.
 
-- [ ] Reproduce the Querétaro, Mexico generation failure and model-refresh failure.
+- [x] Investigate the reported failures and verify Querétaro generation and model refresh in Chrome after the fixes.
 - [x] Replace the undersized city-generation cap, reject incomplete output, and recover model discovery through current no-key sources.
 - [x] Set OpenAI's default to `gpt-6-luna` with `max` reasoning and migrate the prior stored default.
-- [ ] Verify the UI and required baseline; update project memory and log.
+- [x] Verify the UI and required baseline; update project memory and log.
 - [ ] Commit, push and open a new PR containing the fixes.
 
 The prior performance review next action is superseded by this owner-requested fix; its completed evidence is
 retained below. Official OpenAI documentation confirms `gpt-6-luna` and `max` reasoning.
+
+TypeScript, lint, production build, 63 Vitest files / 344 tests, memory mirror and v1.1 guard pass. Isolated production
+auth setup plus three browser regressions pass. The authenticated no-key refresh returns 60 current OpenRouter
+suggestions. Live Chrome refresh returns 78 OpenAI account models without warnings; Querétaro generates once and
+saves one v1.1 history record with GPT-6 Luna max and RBA FX dated 1 October 2026. Provider keys stay within the
+app's normal UI/request handling and are not read by Codex. The original failure was not captured before the fixes.
+
+The requested Chrome Recovery skill update is installed and validated. It records reconnect verification, the
+sandbox registry diagnostic limitation and the distinction between working browser control and the unverified
+sidebar `nodePath` error. Original skill files are backed up locally.
+
+## Requested merges — COMPLETE
+
+- [x] Merge trip climate PR #9 into `main` at its verified head `92f1606` (merge `a1d08aa`).
+- [x] Publish performance PR #10 and merge it into `main` after trip climate (merge `1dcaba5`, head `8288d38`).
+- [x] Verify both merged PRs and synchronize local `main` in the isolated checkout.
+
+Both merges preserve the original commits. The resulting `main` tree was identical to the verified performance
+branch before the merge documentation checkpoint. This fix branch starts from that merged baseline.
 
 ## Performance follow-up — COMPLETE
 
