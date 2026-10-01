@@ -1,12 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
+  CITY_GENERATION_DEFAULT_REASONING_EFFORT,
   getSupportedCityGenerationReasoningEfforts,
   migrateStoredCityGenerationModels,
   validateCityGenerationModel,
 } from '@/lib/city-generation-config';
 
 describe('city-generation-config', () => {
+  it('defaults OpenAI to GPT-6 Luna max and migrates the previous default', () => {
+    expect(CITY_GENERATION_DEFAULT_MODELS.openai).toBe('gpt-6-luna');
+    expect(CITY_GENERATION_DEFAULT_REASONING_EFFORT).toBe('max');
+    expect(migrateStoredCityGenerationModels({ openai: 'gpt-5.6-luna' }).openai).toBe('gpt-6-luna');
+    expect(getSupportedCityGenerationReasoningEfforts('openai', 'gpt-6-luna')).toContain('max');
+  });
   it('migrates legacy stored defaults back to current defaults', () => {
     expect(
       migrateStoredCityGenerationModels({
@@ -32,10 +39,10 @@ describe('city-generation-config', () => {
   });
 
   it('canonicalizes known models case-insensitively', () => {
-    const validation = validateCityGenerationModel('openai', 'GPT-5.6-LUNA', ['gpt-5.6-luna']);
+    const validation = validateCityGenerationModel('openai', 'GPT-6-LUNA', ['gpt-6-luna']);
 
     expect(validation.isKnownModel).toBe(true);
-    expect(validation.effectiveModel).toBe('gpt-5.6-luna');
+    expect(validation.effectiveModel).toBe('gpt-6-luna');
     expect(validation.usesDefaultModel).toBe(true);
     expect(validation.tone).toBe('default');
   });

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { requireCurrentUserId } from '@/lib/auth';
+import { getLlmRuntimeSettings } from '@/lib/llm-runtime-settings';
 import { CITY_GENERATION_PROVIDERS, CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
 import { error, handleError, success } from '@/lib/api-helpers';
 import {
@@ -22,9 +23,9 @@ const createSchema = z.object({
 
 export async function POST(request: Request) {
   try {
-    await requireCurrentUserId();
+    const userId = await requireCurrentUserId();
     const data = createSchema.parse(await request.json());
-    const city = await resolveOrCreatePlannerCity(data);
+    const city = await resolveOrCreatePlannerCity({ ...data, runtimeSettings: await getLlmRuntimeSettings(userId) });
 
     return success({ city }, city.createdCity ? 201 : 200);
   } catch (err) {

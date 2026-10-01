@@ -133,6 +133,11 @@ Provider/model-specific reasoning effort is selectable, persisted through genera
 provider transports. `max` is available when the selected provider/model advertises it. Application provider keys
 are never accessed, copied, logged or stored by Codex.
 
+OpenAI defaults to `gpt-6-luna` with `max` reasoning. Stored selections of the previous `gpt-5.6-luna` default migrate
+to it; other custom model choices are retained. A failed or empty keyed model-list response tries the no-key
+aggregators before the saved snapshot, with account availability explicitly unverified. Discovery requests have
+15-second timeouts, and failed keyed reads are not cached.
+
 ## Provider request limits
 
 Two limits bound every provider call, configurable per user under **Settings → Provider Request Limits**, and
@@ -148,6 +153,10 @@ request that has gone wrong.
 When an OpenAI call is truncated mid-reasoning, the grounded call is retried one rung down the effort ladder
 (`max`, `xhigh`, `high`) before web search is abandoned: running out of room to answer is a reason to think less, not
 to stop searching. Every call logs its token usage, so the defaults can be revisited from evidence.
+
+City generation uses these limits for both new and existing cities. Incomplete OpenAI responses are rejected even
+when their text parses as JSON; retries retain required web search and share the original timeout. Successful
+estimates record the effort that produced the answer. v1.1 never drops its required current-FX search.
 
 ## Product behavior
 

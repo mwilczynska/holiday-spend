@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   CITY_GENERATION_CURATED_SNAPSHOT,
   CITY_GENERATION_PROVIDERS,
@@ -14,12 +14,51 @@ import {
   normalizeOpenRouterModelIds,
 } from '@/lib/provider-model-discovery';
 
+afterEach(() => vi.unstubAllGlobals());
+
 describe('provider-model-discovery', () => {
+  it('uses current no-key suggestions when a generation key cannot list models', async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(Response.json({ error: { message: 'Model list permission denied' } }, { status: 403 }))
+      .mockResolvedValueOnce(Response.json({ data: [{ id: 'openai/gpt-6-luna' }, { id: 'openai/gpt-6.1-sol' }] }));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await discoverProviderModels({ provider: 'openai', browserApiKey: 'restricted-fixture-key', forceRefresh: true });
+    expect(result).toMatchObject({ source: 'aggregated', credentialSource: 'browser', aggregatorSource: 'openrouter', cacheHit: false });
+    expect(result.liveModels).toContain('gpt-6-luna');
+    expect(result.warning).toMatch(/permission denied.*unverified/);
+    expect(fetchMock.mock.calls[0][1].headers.Authorization).toBe('Bearer restricted-fixture-key');
+    expect(fetchMock.mock.calls[1][1]).not.toHaveProperty('headers');
+    expect(fetchMock.mock.calls.every(([, init]) => init.signal instanceof AbortSignal)).toBe(true);
+  });
+
+  it('tries aggregators when the keyed endpoint returns no generation models', async () => {
+    vi.stubGlobal('fetch', vi.fn()
+      .mockResolvedValueOnce(Response.json({ data: [{ id: 'text-embedding-3-large' }] }))
+      .mockResolvedValueOnce(Response.json({ data: [{ id: 'openai/gpt-6-luna' }] })));
+    const result = await discoverProviderModels({ provider: 'openai', browserApiKey: 'empty-fixture-key', forceRefresh: true });
+    expect(result.source).toBe('aggregated');
+    expect(result.warning).toMatch(/no usable generation models/);
+  });
+
+  it('does not cache a failed keyed lookup and redacts credentials from its warning', async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(Response.json({ error: { message: 'Invalid retry-fixture-key' } }, { status: 401 }))
+      .mockResolvedValueOnce(Response.json({ data: [{ id: 'openai/gpt-6-luna' }] }))
+      .mockResolvedValueOnce(Response.json({ data: [{ id: 'gpt-6-luna' }] }));
+    vi.stubGlobal('fetch', fetchMock);
+    const first = await discoverProviderModels({ provider: 'openai', browserApiKey: 'retry-fixture-key' });
+    const second = await discoverProviderModels({ provider: 'openai', browserApiKey: 'retry-fixture-key' });
+    expect(first.warning).not.toContain('retry-fixture-key');
+    expect(second.source).toBe('live');
+    expect(second.effectiveModels).toEqual(['gpt-6-luna']);
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+  });
+
   it('keeps the provider default first and ranks curated snapshot entries above alphabetical', () => {
     const merged = mergeProviderModelSuggestions('openai', ['gpt-5.4', 'gpt-5.4-mini', 'gpt-4.1', 'gpt-4.1-mini']);
 
     // default model always first; remaining non-snapshot ids fall back to alphabetical sort
-    expect(merged[0]).toBe('gpt-5.6-luna');
+    expect(merged[0]).toBe('gpt-6-luna');
     expect(merged).toContain('gpt-5.4');
     expect(merged).toContain('gpt-4.1');
     expect(merged).toContain('gpt-4.1-mini');
@@ -341,7 +380,7 @@ describe('provider-model-discovery', () => {
       expect(second.cacheHit).toBe(true);
       expect(refreshed.cacheHit).toBe(false);
       expect(fetchCount).toBe(2);
-      expect(second.effectiveModels[0]).toBe('gpt-5.4-mini');
+      expect(second.effectiveModels).toEqual(second.liveModels);
       expect(second.liveModels).toContain('gpt-5.4-mini');
       expect(second.liveModels).toContain('gpt-5.4');
     } finally {

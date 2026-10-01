@@ -29,6 +29,7 @@ interface DiscoveryCacheEntry {
 }
 
 const MODEL_DISCOVERY_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
+const MODEL_DISCOVERY_REQUEST_TIMEOUT_MS = 15000;
 const modelDiscoveryCache = new Map<string, DiscoveryCacheEntry>();
 
 function normalizeApiKey(apiKey?: string) {
@@ -252,6 +253,7 @@ export function normalizeGeminiModelIds(payload: unknown) {
 
 async function fetchOpenAiModelIds(apiKey: string) {
   const response = await fetch('https://api.openai.com/v1/models', {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
     headers: {
       Authorization: `Bearer ${apiKey}`,
     },
@@ -267,6 +269,7 @@ async function fetchOpenAiModelIds(apiKey: string) {
 
 async function fetchAnthropicModelIds(apiKey: string) {
   const response = await fetch('https://api.anthropic.com/v1/models', {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
     headers: {
       'x-api-key': apiKey,
       'anthropic-version': '2023-06-01',
@@ -295,6 +298,7 @@ async function fetchGeminiModelIds(apiKey: string) {
     }
 
     const response = await fetch(url.toString(), {
+      signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
       cache: 'no-store',
     });
 
@@ -438,6 +442,7 @@ async function readAggregatorJson(params: {
 
 async function fetchOpenRouterProviderModelIds(provider: CityGenerationProvider) {
   const response = await fetch('https://openrouter.ai/api/v1/models', {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
     cache: 'no-store',
   });
 
@@ -451,6 +456,7 @@ async function fetchOpenRouterProviderModelIds(provider: CityGenerationProvider)
 
 async function fetchModelsDevProviderModelIds(provider: CityGenerationProvider) {
   const response = await fetch('https://models.dev/api.json', {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
     cache: 'no-store',
   });
 
@@ -588,6 +594,9 @@ export async function discoverProviderModels(params: {
       params.provider,
       await fetchProviderLiveModelIds(params.provider, credential.apiKey)
     );
+    if (liveModels.length === 0) {
+      throw new Error('The provider returned no usable generation models.');
+    }
     const value: Omit<ProviderModelDiscoveryResult, 'cacheHit'> = {
       provider: params.provider,
       source: 'live',
@@ -598,9 +607,7 @@ export async function discoverProviderModels(params: {
       liveModels,
       effectiveModels: buildEffectiveModels(params.provider, 'live', liveModels),
       fetchedAt: new Date().toISOString(),
-      warning: liveModels.length === 0
-        ? 'The provider returned no usable generation models. Showing curated snapshot suggestions first.'
-        : null,
+      warning: null,
     };
 
     modelDiscoveryCache.set(cacheKey, {
@@ -613,12 +620,26 @@ export async function discoverProviderModels(params: {
       cacheHit: false,
     };
   } catch (err) {
+    const providerError = err instanceof Error
+      ? err.message.replaceAll(credential.apiKey, '[redacted]')
+      : 'Live model discovery failed.';
+    // A key may permit generation without allowing the model-list endpoint.
+    // Continue through the no-key sources before using the stored snapshot.
+    try {
+      const aggregated = await buildAggregatedDiscoveryResult({ provider: params.provider });
+      return {
+        ...aggregated,
+        credentialSource: credential.credentialSource,
+        cacheHit: false,
+        warning: `${providerError} Showing current aggregated suggestions; availability for this account is unverified.`,
+      };
+    } catch {
+      // The snapshot is the final fallback; do not cache failed provider reads.
+    }
     return buildFallbackDiscoveryResult({
       provider: params.provider,
       credentialSource: credential.credentialSource,
-      warning: err instanceof Error
-        ? `${err.message} Showing curated snapshot suggestions.`
-        : 'Live model discovery failed. Showing curated snapshot suggestions.',
+      warning: `${providerError} Aggregated sources are also unavailable. Showing curated snapshot suggestions.`,
     });
   }
 }

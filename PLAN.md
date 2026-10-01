@@ -1,14 +1,14 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Methodology, prior product phases and performance follow-up complete; trip climate and performance merged into `main`.
+**Status:** City generation and model discovery fixes in progress. Prior product phases complete.
 
-**Current phase:** Merge trip climate and performance into `main` — COMPLETE.
+**Current phase:** City generation and model discovery — IN PROGRESS.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `main` — merge completion uses an isolated checkout; the original checkout remains available to the other agent.
+**Branch:** `fix/city-generation-model-discovery` — follow-up from the completed performance branch.
 
 **Last updated:** 1 October 2026
 
@@ -17,22 +17,26 @@ page seven times. See Phase 8 for the corrected evidence.
 **Latest implementation checkpoint:** `ded9af3` — verified server rendering, shared readers, climate deduplication,
 card memoization and performance/browser regression checks; merged into `main` through PR #10 (`1dcaba5`).
 
-**Latest plan checkpoint:** `8288d38` — requested merges started; this completion record follows both successful merges.
-Prior performance checkpoints remain recorded below.
+**Latest plan checkpoint:** `ded9af3` — measured performance and verification recorded; this documentation checkpoint
+closes publication. Prior performance checkpoints remain recorded below.
 
-**Next action:** The requested merges are complete. New PR work continues separately.
+**Next action:** Reproduce Querétaro generation and model refresh in Chrome, fix the evidenced failures, and verify GPT-6 Luna max as the OpenAI default.
 
-**Working tree:** Local `main` is synchronized in the isolated checkout; this merge completion record is tracked there.
-The other agent's original checkout and new PR branch were left in place.
+**Working tree:** Verified implementation ready for its first commit. Baseline and isolated production UI checks pass; live owner-key verification is in progress.
 
-## Requested merges — COMPLETE
+## City generation and model discovery — IN PROGRESS
 
-- [x] Merge trip climate PR #9 into `main` at its verified head `92f1606` (merge `a1d08aa`).
-- [x] Publish performance PR #10 and merge it into `main` after trip climate (merge `1dcaba5`, head `8288d38`).
-- [x] Verify both merged PRs, synchronize local `main` in the isolated checkout, and record the completed merge checkpoint.
+Started 1 October 2026 at the owner's request. Preserve v1.1 formulas, current RBA validation and browser-only
+provider credentials. Accuracy calibration remains closed.
 
-Both merges preserve the original commits. The resulting `main` tree is identical to the verified performance branch
-before this documentation update, so the existing production baseline and browser checks still apply.
+- [ ] Reproduce the Querétaro, Mexico generation failure and model-refresh failure.
+- [x] Replace the undersized city-generation cap, reject incomplete output, and recover model discovery through current no-key sources.
+- [x] Set OpenAI's default to `gpt-6-luna` with `max` reasoning and migrate the prior stored default.
+- [ ] Verify the UI and required baseline; update project memory and log.
+- [ ] Commit, push and open a new PR containing the fixes.
+
+The prior performance review next action is superseded by this owner-requested fix; its completed evidence is
+retained below. Official OpenAI documentation confirms `gpt-6-luna` and `max` reasoning.
 
 ## Performance follow-up — COMPLETE
 
@@ -1460,4 +1464,7 @@ harness.
   persistence regressions pass and the owner-key smoke is complete.
 - [x] No holdout, new methodology collection, lived-spending benchmark, coefficient change, or existing-city migration occurred.
 - [x] The tracked active product branch contains none of the v5/v6 experiment bloat; verified local copies are
-  quarantined outside the repository and are not part of the branch.
+  quarantined outside the repository and are not part of the branch.Verification checkpoint: TypeScript, lint, production build, 63 Vitest files / 344 tests, memory mirror and v1.1
+guard pass. Isolated production auth setup and three browser regressions pass. An authenticated production
+model-refresh request returns 60 current OpenRouter suggestions including GPT-6 Luna. Live Chrome confirms the
+OpenAI GPT-6 Luna / Maximum default and 78 models from the keyed provider API; generation is still being checked.

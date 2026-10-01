@@ -27,7 +27,7 @@ type CityRow = typeof cities.$inferSelect;
 
 export interface ResolveOrCreatePlannerCityInput extends Pick<
   GenerateAndPersistCityEstimateInput,
-  'provider' | 'apiKey' | 'model' | 'reasoningEffort' | 'referenceDate' | 'extraContext'
+  'provider' | 'apiKey' | 'model' | 'reasoningEffort' | 'referenceDate' | 'extraContext' | 'runtimeSettings'
 > {
   cityName: string;
   countryName: string;
@@ -162,6 +162,7 @@ Rules:
       apiKey: input.apiKey,
       model: input.model,
       maxTokens: 600,
+      requestTimeoutMs: input.runtimeSettings?.requestTimeoutMs,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Failed to resolve city metadata.';
@@ -323,6 +324,7 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
       reasoningEffort: input.reasoningEffort,
       referenceDate: input.referenceDate,
       extraContext: input.extraContext,
+      runtimeSettings: input.runtimeSettings,
     });
 
     return {

@@ -1,6 +1,34 @@
 import { expect, test, type Locator } from '@playwright/test';
 
 test.describe('planner regressions', () => {
+  test('OpenAI migrates the previous default to GPT-6 Luna max and refreshes current suggestions', async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('holiday-spend.city-generation.models', JSON.stringify({ openai: 'gpt-5.6-luna' }));
+    });
+    let refreshCount = 0;
+    await page.route('**/api/llm/models?**', async route => {
+      const refreshing = new URL(route.request().url()).searchParams.get('refresh') === '1';
+      if (refreshing) refreshCount += 1;
+      const models = refreshing ? ['gpt-6-luna', 'gpt-6.1-sol'] : ['gpt-6-luna'];
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ data: {
+        provider: 'openai', source: 'live', credentialSource: 'browser', aggregatorSource: null,
+        defaultModel: 'gpt-6-luna', curatedModels: [], liveModels: models, effectiveModels: models,
+        fetchedAt: new Date().toISOString(), cacheHit: false, warning: null,
+      } }) });
+    });
+    await page.goto('/plan');
+    await page.getByRole('button', { name: 'Add Leg', exact: true }).first().click();
+    await page.getByRole('dialog', { name: 'Add Itinerary Leg' }).getByRole('button', { name: 'Add City', exact: true }).click();
+    const dialog = page.getByRole('dialog', { name: 'Add New City With LLM' });
+    await dialog.getByText('Advanced generation settings', { exact: true }).click();
+    await expect(dialog.locator('input[list]')).toHaveValue('gpt-6-luna');
+    await expect(dialog.getByRole('combobox').last()).toHaveText('Maximum');
+    await dialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
+    await expect(dialog.getByRole('button', { name: 'gpt-6.1-sol', exact: true })).toBeVisible();
+    await expect(dialog.getByText(/2 models available to this provider account/)).toBeVisible();
+    expect(refreshCount).toBe(1);
+  });
+
   test('trip summary aligns with the legs below climate and stays pinned while scrolling', async ({ page }) => {
     await page.goto('/plan');
 
@@ -79,7 +107,7 @@ test.describe('planner regressions', () => {
   test('Anthropic and Google model refresh reset defaults in the four-column model grid', async ({ page }) => {
     const refreshRequests: string[] = [];
     const providerModels = {
-      openai: ['gpt-5.6-luna', 'gpt-5.4-mini', 'gpt-5.4', 'gpt-5.3-codex'],
+      openai: ['gpt-6-luna', 'gpt-5.4-mini', 'gpt-5.4', 'gpt-5.3-codex'],
       anthropic: ['claude-sonnet-4-6', 'claude-haiku-4-5', 'claude-opus-4-6', 'claude-3-7-sonnet-latest'],
       gemini: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash', 'gemini-1.5-pro'],
     } as const;
@@ -157,7 +185,7 @@ test.describe('planner regressions', () => {
   test('single and bulk intercity transport pickers use discovered four-column models', async ({ page }) => {
     const refreshRequests: string[] = [];
     const providerModels = {
-      openai: ['gpt-5.6-luna', 'gpt-5.4-mini', 'gpt-5.4', 'gpt-5.3-codex'],
+      openai: ['gpt-6-luna', 'gpt-5.4-mini', 'gpt-5.4', 'gpt-5.3-codex'],
       anthropic: ['claude-sonnet-4-6', 'claude-haiku-4-5', 'claude-opus-4-6', 'claude-3-7-sonnet-latest'],
       gemini: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash', 'gemini-1.5-pro'],
     } as const;

@@ -63,10 +63,13 @@ export function formatProviderModelDiscoveryStatus(params: {
   if (result.source === 'aggregated') {
     const aggregatorLabel = formatAggregatorLabel(result.aggregatorSource);
     const discoveredCount = result.liveModels.length;
-    return `Showing aggregated suggestions from ${aggregatorLabel}${cachedSuffix}. ${pluralizeModels(discoveredCount)} listed. Add a provider API key for live models straight from the provider.`;
+    const credentialHint = result.credentialSource === 'none'
+      ? 'Add a provider API key for models available to your account.'
+      : 'Availability for this provider account is unverified.';
+    return `Showing aggregated suggestions from ${aggregatorLabel}${cachedSuffix}. ${pluralizeModels(discoveredCount)} listed. ${credentialHint}`;
   }
 
-  return 'Showing curated snapshot suggestions. Run `npm run models:refresh` to update them.';
+  return 'Showing saved model suggestions. Refresh models to try the provider again, or enter a model ID.';
 }
 
 export function summarizeProviderModelExamples(modelIds: string[], limit = 4) {

@@ -1,9 +1,19 @@
 import {
   CITY_GENERATION_DEFAULT_MODELS,
+  CITY_GENERATION_DEFAULT_REASONING_EFFORT,
   getCityGenerationThinkingBudget,
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
+import { resolveLlmRuntimeDefaults } from '@/lib/llm-request-limits';
+
+export interface JsonPromptResult {
+  provider: string;
+  model: string;
+  text: string;
+  webSearchUsed: boolean;
+  reasoningEffort?: CityGenerationReasoningEffort;
+}
 
 function normalizeApiKey(apiKey?: string) {
   const trimmed = apiKey?.trim();
@@ -68,54 +78,78 @@ async function runOpenAiJsonPrompt(params: {
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
-}) {
+  requestTimeoutMs?: number;
+}): Promise<JsonPromptResult | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
 
   const model = normalizeModel(params.model) ?? (process.env.OPENAI_MODEL || CITY_GENERATION_DEFAULT_MODELS.openai);
-  const maxOutputTokens = params.reasoningEffort === 'max'
-    ? Math.max(params.maxTokens ?? 3000, 12000)
-    : params.maxTokens ?? 3000;
-  const requestBody: Record<string, unknown> = {
-    model,
-    instructions: params.systemPrompt,
-    input: params.userPrompt,
-    max_output_tokens: maxOutputTokens,
-  };
+  const defaults = resolveLlmRuntimeDefaults();
+  const maxOutputTokens = params.maxTokens ?? defaults.maxOutputTokens;
+  const deadline = Date.now() + (params.requestTimeoutMs ?? defaults.requestTimeoutMs);
+  let effort = params.reasoningEffort ?? (model === CITY_GENERATION_DEFAULT_MODELS.openai
+    ? CITY_GENERATION_DEFAULT_REASONING_EFFORT
+    : undefined);
+  while (true) {
+    const requestBody: Record<string, unknown> = {
+      model,
+      instructions: params.systemPrompt,
+      input: params.userPrompt,
+      max_output_tokens: maxOutputTokens,
+      store: false,
+    };
 
-  if (!params.requireWebSearch) {
-    requestBody.text = { format: { type: 'json_object' } };
+    if (!params.requireWebSearch) {
+      requestBody.text = { format: { type: 'json_object' } };
+    }
+
+    if (effort) {
+      requestBody.reasoning = { effort };
+    }
+    if (params.requireWebSearch) {
+      requestBody.tools = [{ type: 'web_search' }];
+      requestBody.tool_choice = 'required';
+    }
+
+    const response = await fetch('https://api.openai.com/v1/responses', {
+      method: 'POST',
+      signal: AbortSignal.timeout(Math.max(1, deadline - Date.now())),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(requestBody),
+    });
+
+    if (!response.ok) {
+      const errText = summarizeProviderError(await response.text());
+      throw new Error(`OpenAI API error ${response.status}: ${errText}`);
+    }
+
+    const data = await response.json();
+    console.info(`[city-generation] openai model=${model} effort=${effort ?? 'default'} status=${data.status ?? 'unknown'} output_tokens=${data.usage?.output_tokens ?? 'unknown'} reasoning_tokens=${data.usage?.output_tokens_details?.reasoning_tokens ?? 'unknown'}`);
+    if (data.status === 'incomplete') {
+      if (data.incomplete_details?.reason === 'max_output_tokens') {
+        const lowerEffort = effort === 'max' ? 'xhigh' : effort === 'xhigh' ? 'high' : undefined;
+        if (lowerEffort && Date.now() < deadline) {
+          effort = lowerEffort;
+          continue;
+        }
+        throw new Error(`OpenAI reached the ${maxOutputTokens}-token output limit before completing its answer. Lower reasoning effort or raise the output limit in Settings → Provider Request Limits. No estimate was saved.`);
+      }
+      throw new Error(`OpenAI did not complete its answer (${data.incomplete_details?.reason ?? 'unknown reason'}). No estimate was saved.`);
+    }
+    if (data.status === 'failed' || data.error) {
+      throw new Error('OpenAI failed to complete the generation request. No estimate was saved.');
+    }
+    const webSearchUsed = Array.isArray(data.output) && data.output.some((item: { type?: string; status?: string }) => item.type === 'web_search_call' && (!item.status || item.status === 'completed'));
+    const text = data.output_text || data.output
+      ?.flatMap((item: { content?: Array<{ text?: string }> }) => item.content || [])
+      .map((item: { text?: string }) => item.text || '')
+      .join('') || '';
+    if (!text.trim()) throw new Error('OpenAI returned no answer. No estimate was saved.');
+    return { provider: 'openai', model, text, webSearchUsed, reasoningEffort: effort };
   }
-
-  if (params.reasoningEffort && params.reasoningEffort !== 'none') {
-    requestBody.reasoning = { effort: params.reasoningEffort };
-  }
-  if (params.requireWebSearch) {
-    requestBody.tools = [{ type: 'web_search' }];
-    requestBody.tool_choice = 'required';
-  }
-
-  const response = await fetch('https://api.openai.com/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify(requestBody),
-  });
-
-  if (!response.ok) {
-    const errText = summarizeProviderError(await response.text());
-    throw new Error(`OpenAI API error ${response.status}: ${errText}`);
-  }
-
-  const data = await response.json();
-  const webSearchUsed = Array.isArray(data.output) && data.output.some((item: { type?: string }) => item.type === 'web_search_call');
-  const text = data.output_text || data.output
-    ?.flatMap((item: { content?: Array<{ text?: string }> }) => item.content || [])
-    .map((item: { text?: string }) => item.text || '')
-    .join('') || '';
-  return { provider: 'openai', model, text, webSearchUsed };
 }
 
 async function runAnthropicJsonPrompt(params: {
@@ -126,6 +160,7 @@ async function runAnthropicJsonPrompt(params: {
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
+  requestTimeoutMs?: number;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
@@ -193,6 +228,7 @@ async function runGeminiJsonPrompt(params: {
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
+  requestTimeoutMs?: number;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
@@ -278,6 +314,7 @@ export async function runJsonPromptWithProvider(params: {
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
+  requestTimeoutMs?: number;
 }) {
   const providerOrder: CityGenerationProvider[] = params.provider
     ? [params.provider]
@@ -293,7 +330,8 @@ export async function runJsonPromptWithProvider(params: {
       maxTokens?: number;
       reasoningEffort?: CityGenerationReasoningEffort;
       requireWebSearch?: boolean;
-    }) => Promise<{ provider: string; model: string; text: string; webSearchUsed: boolean } | null>
+      requestTimeoutMs?: number;
+    }) => Promise<JsonPromptResult | null>
   > = {
     anthropic: runAnthropicJsonPrompt,
     openai: runOpenAiJsonPrompt,
@@ -309,6 +347,7 @@ export async function runJsonPromptWithProvider(params: {
       reasoningEffort: params.reasoningEffort,
       maxTokens: params.maxTokens,
       requireWebSearch: params.requireWebSearch,
+      requestTimeoutMs: params.requestTimeoutMs,
     });
 
     if (result) {

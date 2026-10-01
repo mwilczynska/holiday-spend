@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
 import type { CityEstimateData } from '@/types';
-import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
+import { runJsonPromptWithProvider, type JsonPromptResult } from '@/lib/city-llm-client';
+import { resolveLlmRuntimeDefaults, type LlmRuntimeSettings } from '@/lib/llm-request-limits';
 import {
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
@@ -67,6 +68,7 @@ export interface CityGenerationRequest {
   apiKey?: string;
   model?: string;
   reasoningEffort?: CityGenerationReasoningEffort;
+  runtimeSettings?: LlmRuntimeSettings;
 }
 
 export type CityGenerationMethodologyVersion = 'v1' | 'v1.1';
@@ -275,7 +277,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
 
 async function generateCityCostEstimateV1(request: CityGenerationRequest): Promise<CityGenerationResult> {
   const { prompt, promptVersion } = buildCityGenerationPrompt(request);
-  let providerResponse: { provider: string; model: string; text: string; webSearchUsed: boolean } | null = null;
+  let providerResponse: JsonPromptResult | null = null;
   try {
     providerResponse = await runJsonPromptWithProvider({
       systemPrompt: 'You are a careful travel cost estimation assistant. Return valid JSON only.',
@@ -284,7 +286,8 @@ async function generateCityCostEstimateV1(request: CityGenerationRequest): Promi
       apiKey: request.apiKey,
       model: request.model,
       reasoningEffort: request.reasoningEffort,
-      maxTokens: 3000,
+      maxTokens: (request.runtimeSettings ?? resolveLlmRuntimeDefaults()).maxOutputTokens,
+      requestTimeoutMs: (request.runtimeSettings ?? resolveLlmRuntimeDefaults()).requestTimeoutMs,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'LLM request failed.';
@@ -320,7 +323,7 @@ async function generateCityCostEstimateV1(request: CityGenerationRequest): Promi
     provider: providerResponse.provider,
     model: providerResponse.model,
     promptVersion,
-    reasoningEffort: request.reasoningEffort,
+    reasoningEffort: providerResponse.reasoningEffort ?? request.reasoningEffort,
     inferredAudPerUsd,
     mappedEstimate: mapTiersToEstimateData(parsedPayload),
     payload: parsedPayload,
@@ -329,7 +332,7 @@ async function generateCityCostEstimateV1(request: CityGenerationRequest): Promi
 
 async function generateCityCostEstimateV11(request: CityGenerationRequest): Promise<CityGenerationResult> {
   const { prompt, promptVersion } = buildCityGenerationV11Prompt(request);
-  let providerResponse: { provider: string; model: string; text: string; webSearchUsed: boolean } | null = null;
+  let providerResponse: JsonPromptResult | null = null;
 
   try {
     providerResponse = await runJsonPromptWithProvider({
@@ -339,7 +342,8 @@ async function generateCityCostEstimateV11(request: CityGenerationRequest): Prom
       apiKey: request.apiKey,
       model: request.model,
       reasoningEffort: request.reasoningEffort,
-      maxTokens: 2500,
+      maxTokens: (request.runtimeSettings ?? resolveLlmRuntimeDefaults()).maxOutputTokens,
+      requestTimeoutMs: (request.runtimeSettings ?? resolveLlmRuntimeDefaults()).requestTimeoutMs,
       requireWebSearch: true,
     });
   } catch (err) {
@@ -382,7 +386,7 @@ async function generateCityCostEstimateV11(request: CityGenerationRequest): Prom
     provider: providerResponse.provider,
     model: providerResponse.model,
     promptVersion,
-    reasoningEffort: request.reasoningEffort,
+    reasoningEffort: providerResponse.reasoningEffort ?? request.reasoningEffort,
     inferredAudPerUsd: v11Materialization.fx.audPerUsd,
     mappedEstimate: v11Materialization.mappedEstimate,
     payload: parsedPayload,

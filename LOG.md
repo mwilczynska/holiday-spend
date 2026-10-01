@@ -2424,3 +2424,23 @@ The memory mirror and whitespace check also pass for the merge documentation.
 Another agent started `fix/city-generation-model-discovery` in the shared working tree while these merges were in
 progress. Moved the merge work to `.local/merge-request`, removed only this task's temporary plan edits from the
 original checkout, and synchronized local `main` in the isolated checkout. The new PR branch was not merged or changed.
+
+## 1 October 2026 ? City generation limits and current model discovery
+
+The owner reported failed Quer?taro, Mexico generation and model refresh and requested GPT-6 Luna max as OpenAI's
+default. City generation still imposed 2,500 tokens (raised to only 12,000 at max) and never read the user request
+limits. OpenAI incomplete responses were treated as ordinary text, so exhausted reasoning surfaced as a JSON-schema
+failure. New-city, planner add-city and existing-city refresh now pass the configured limits and timeout; truncated
+OpenAI output is rejected and retried through max ? xhigh ? high without dropping required web search. The
+successful effort is persisted, and usage logs contain only model/status/token metadata.
+
+Keyed model-list failures previously skipped the no-key aggregators and returned the April snapshot. They now try
+current aggregators, label account availability as unverified and are not cached. Discovery calls time out after
+15 seconds. The snapshot is refreshed from upstream; the previous stored OpenAI default migrates to gpt-6-luna.
+Official model documentation: https://developers.openai.com/api/docs/models/gpt-6-luna. Other custom selections remain.
+
+TypeScript, lint, production build, 63 Vitest files / 344 tests, memory mirror and v1.1 guard pass. Isolated production
+auth setup plus three browser regressions pass, and the authenticated no-key refresh returns 60 current OpenRouter
+models. The browser tests use a disposable SQLite copy and generated test credentials; no owner-key values are
+accessed. Live Chrome shows GPT-6 Luna / Maximum and 78 models returned by the provider API. Quer?taro generation
+verification is in progress. No live CSV edits, formula changes, calibration work or bulk migrations are performed.

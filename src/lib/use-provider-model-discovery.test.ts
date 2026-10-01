@@ -69,12 +69,13 @@ describe('formatProviderModelDiscoveryStatus', () => {
     expect(status).toContain('1 model');
   });
 
-  it('directs users to npm run models:refresh when the curated snapshot is shown', () => {
+  it('offers model refresh or manual entry when the saved snapshot is shown', () => {
     const status = formatProviderModelDiscoveryStatus({
       result: buildResult({ source: 'fallback' }),
       loading: false,
     });
-    expect(status).toContain('curated snapshot');
-    expect(status).toContain('models:refresh');
+    expect(status).toContain('saved model suggestions');
+    expect(status).toContain('Refresh models');
+    expect(status).toContain('enter a model ID');
   });
 });

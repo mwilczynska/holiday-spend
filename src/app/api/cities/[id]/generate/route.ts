@@ -1,6 +1,8 @@
 import { db } from '@/db';
 import { cities } from '@/db/schema';
 import { CityGenerationError } from '@/lib/city-generation';
+import { requireCurrentUserId } from '@/lib/auth';
+import { getLlmRuntimeSettings } from '@/lib/llm-runtime-settings';
 import {
   CITY_GENERATION_PROVIDERS,
   CITY_GENERATION_REASONING_EFFORTS,
@@ -24,6 +26,7 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   try {
+    const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = requestSchema.parse(body);
 
@@ -31,6 +34,7 @@ export async function POST(
     if (!city) return error('City not found', 404);
     const generated = await generateAndPersistCityEstimate({
       cityId: city.id,
+      runtimeSettings: await getLlmRuntimeSettings(userId),
       referenceDate: data.referenceDate,
       extraContext: data.extraContext,
       provider: data.provider,
