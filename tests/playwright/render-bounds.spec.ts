@@ -4,12 +4,13 @@ import { expect, test } from '@playwright/test';
 // Durations and payload sizes are measured by `npm run performance:check`; naming this
 // "performance" previously implied a timing guarantee it never made.
 test.describe('initial render bounds', () => {
-  test('planner initially renders at most twelve full leg cards', async ({ page }) => {
+  test('planner renders every itinerary leg', async ({ page, request }) => {
+    const legs = (await (await request.get('/api/itinerary')).json()).data;
     await page.goto('/plan');
-    await expect(page.getByText('Trip Summary')).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText('Trip Summary').filter({ visible: true }).first()).toBeVisible({ timeout: 15_000 });
 
     const legCards = page.getByTestId('planner-leg-card');
-    expect(await legCards.count()).toBeLessThanOrEqual(12);
+    await expect(legCards).toHaveCount(legs.length);
   });
 
   test('dataset initially renders at most twenty-five city rows and twenty history rows', async ({ page }) => {

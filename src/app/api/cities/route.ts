@@ -1,3 +1,4 @@
+import { loadPlannerCities } from '@/lib/city-library-data';
 import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
@@ -47,31 +48,7 @@ export async function GET(request: Request) {
     const view = new URL(request.url).searchParams.get('view');
 
     if (view === 'planner') {
-      const plannerCities = await db.select({
-        id: cities.id,
-        countryId: cities.countryId,
-        name: cities.name,
-        accomHostel: cities.accomHostel,
-        accomPrivateRoom: cities.accomPrivateRoom,
-        accom1star: cities.accom1star,
-        accom2star: cities.accom2star,
-        accom3star: cities.accom3star,
-        accom4star: cities.accom4star,
-        foodStreet: cities.foodStreet,
-        foodBudget: cities.foodBudget,
-        foodMid: cities.foodMid,
-        foodHigh: cities.foodHigh,
-        drinkCoffee: cities.drinkCoffee,
-        drinksNone: cities.drinksNone,
-        drinksLight: cities.drinksLight,
-        drinksModerate: cities.drinksModerate,
-        drinksHeavy: cities.drinksHeavy,
-        activitiesFree: cities.activitiesFree,
-        activitiesBudget: cities.activitiesBudget,
-        activitiesMid: cities.activitiesMid,
-        activitiesHigh: cities.activitiesHigh,
-        transportLocal: cities.transportLocal,
-      }).from(cities);
+      const plannerCities = await loadPlannerCities();
 
       return success(plannerCities);
     }

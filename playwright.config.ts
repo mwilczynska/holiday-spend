@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 const port = Number(process.env.PLAYWRIGHT_PORT || 3000);
 const baseURL = process.env.PLAYWRIGHT_BASE_URL || `http://localhost:${port}`;
 const playwrightPin = process.env.PLAYWRIGHT_AUTH_DEV_PIN || '1234';
+const production = process.env.PLAYWRIGHT_PRODUCTION === 'true';
 const nextAuthSecret = process.env.APP_SECRET || 'playwright-dev-secret';
 
 process.env.NEXTAUTH_URL = baseURL;
@@ -43,12 +44,14 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `cmd /c npm run dev -- --hostname 127.0.0.1 --port ${port}`,
+    command: production ? 'node scripts/start-next-production.mjs' : `cmd /c npm run dev -- --hostname 127.0.0.1 --port ${port}`,
     url: baseURL,
     env: {
       NEXTAUTH_URL: baseURL,
       NEXTAUTH_SECRET: nextAuthSecret,
       AUTH_DEV_PIN: playwrightPin,
+      PORT: String(port),
+      HOSTNAME: '127.0.0.1',
     },
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

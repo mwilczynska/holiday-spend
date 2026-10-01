@@ -15,6 +15,7 @@
  *   WEBAPP_BASE_URL              default http://localhost:3000
  *   WEBAPP_ROUTE_BUDGET_MS       default 5000
  *   WEBAPP_RESPONSE_BUDGET_BYTES default 512 KiB (the HTML shell, not the JS it references)
+ *   WEBAPP_PLANNER_LEG_BUDGET_BYTES default 24 KiB per fully rendered itinerary card, added to the base HTML budget
  *   WEBAPP_JS_BUDGET_BYTES       default 1.25 MiB of decompressed JavaScript per route; 0 disables
  *   WEBAPP_SAMPLES               default 3; routes are timed this many times and the median kept
  *   WEBAPP_REQUIRE_BUILD         default true; set false to measure `npm run dev`
@@ -48,6 +49,7 @@ function readNonNegativeInteger(name, fallback) {
 
 const routeBudgetMs = readPositiveInteger('WEBAPP_ROUTE_BUDGET_MS', 5000);
 const responseBudgetBytes = readPositiveInteger('WEBAPP_RESPONSE_BUDGET_BYTES', 512 * 1024);
+const plannerLegBudgetBytes = readPositiveInteger('WEBAPP_PLANNER_LEG_BUDGET_BYTES', 24 * 1024);
 // Assets are served gzipped but chunked, with no content-length, so what is measured is the
 // decompressed size: roughly four times the transferred bytes for JavaScript. That is the
 // figure the engine parses and executes, and on localhost it dominates transfer time.
@@ -223,8 +225,12 @@ for (const route of routes) {
   const elapsedMs = median(timings);
   console.log(`[performance] ${route} ${elapsedMs}ms (median of ${timings.length}) ${shellBytes} bytes`);
   if (elapsedMs > routeBudgetMs) fail(`${route} exceeded the ${routeBudgetMs}ms route budget.`);
-  if (shellBytes > responseBudgetBytes) {
-    fail(`${route} returned ${shellBytes} bytes, above the ${responseBudgetBytes}-byte shell budget.`);
+  // /plan now carries all cards, not a loading shell. Keep the base bound and add a
+  // per-card allowance rather than increasing every route's budget or truncating the itinerary.
+  const plannerCardCount = route === '/plan' ? [...lastHtml.matchAll(/data-testid="planner-leg-card"/g)].length : 0;
+  const htmlBudget = responseBudgetBytes + plannerCardCount * plannerLegBudgetBytes;
+  if (shellBytes > htmlBudget) {
+    fail(`${route} returned ${shellBytes} bytes, above the ${htmlBudget}-byte HTML budget.`);
   }
 
   const routeAssets = new Set();

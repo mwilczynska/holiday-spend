@@ -1,4 +1,5 @@
 import { expect, test, type Page, type Route } from '@playwright/test';
+import { gotoClientPage } from './client-navigation';
 
 const stopSpecs = [
   { name: 'New Year City', startDate: '2026-12-30', endDate: '2027-01-02' },
@@ -131,8 +132,12 @@ async function installPlannerMocks(page: Page) {
   await page.route('**/api/climate?*', async route => {
     const query = new URL(route.request().url()).searchParams;
     if (route.request().method() === 'GET') {
-      bulkReads += 1;
       const ids = JSON.parse(query.get('cityIds') || '[]') as string[];
+      if (!ids.every(id => id.startsWith('city-'))) {
+        await fulfillData(route, Object.fromEntries(ids.map(id => [id, null])));
+        return;
+      }
+      bulkReads += 1;
       await fulfillData(route, Object.fromEntries(ids.filter(id => id in saved).map(id => [id, saved[id]])));
       return;
     }
@@ -161,7 +166,7 @@ test('planner climate covers the full itinerary, shares temperature units, and r
   test.setTimeout(60_000);
   const { requestedClimateCities, climateAttempts, releaseCollection, getBulkReads } = await installPlannerMocks(page);
 
-  await page.goto('/plan');
+  await gotoClientPage(page, '/plan');
 
   const tripClimate = page.locator('section[aria-label="Trip historical climate"]');
   await expect(page.getByTestId('planner-leg-card')).toHaveCount(14, { timeout: 15_000 });
@@ -251,7 +256,8 @@ test('planner climate covers the full itinerary, shares temperature units, and r
   // A later visit reads every saved result in one request and performs no collection.
   const readsBeforeReload = getBulkReads();
   const attemptsBeforeReload = Array.from(climateAttempts.entries());
-  await page.reload();
+  await page.setViewportSize({ width: 1440, height: 960 });
+  await gotoClientPage(page, '/plan');
   await expect(page.getByTestId('planner-leg-card')).toHaveCount(14, { timeout: 15_000 });
   await expect(tripClimate.getByRole('img', { name: /degrees C/ })).toBeVisible();
   expect(getBulkReads() - readsBeforeReload).toBe(1);

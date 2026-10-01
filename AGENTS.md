@@ -155,6 +155,11 @@ Accommodation tiers are hostel dorm, private room, and 1–4 star. Drinks are no
 Traveller count persists per user, while city base costs remain stored for two people. Saved plans store tier
 choices rather than frozen city prices.
 
+Dashboard, planner, expense tracker, dataset and settings include initial database data in their server-rendered
+responses. Planner, dataset and settings skip duplicate initial browser reads and refresh on client navigation and
+after edits. The planner includes saved climate in its initial read, collects only missing records, and renders every
+leg. Its cards are memoized so unrelated dialog and header updates do not rerender the full itinerary.
+
 `/plan/compare` uses one canonical server-side allocation engine for summary totals, cumulative series and country
 and category groupings. Manual transport remains separate.
 
@@ -184,6 +189,11 @@ explanation instead of letting the build hang with an empty log.
 `WEBAPP_AUTH_PASSWORD` against a production build, or `WEBAPP_AUTH_PIN` against a dev server with
 `WEBAPP_REQUIRE_BUILD=false`. Without them it now fails rather than silently measuring the login page, which is what
 invalidated the earlier Phase 7A numbers.
+
+`npm run performance:browser` measures authenticated production content readiness and planner dialog response with
+Playwright using the same email/password variables. It records compressed and decoded HTML sizes and browser API
+request timing. Use an isolated database copy and a test account for repeatable comparisons. The HTTP check keeps a
+512 KiB base HTML limit and adds 24 KiB per fully rendered planner card; all cards are present in the response.
 
 `npm start` sets `NODE_ENV=production`, which disables the development PIN in `src/lib/auth.ts`. All existing
 itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password row and an unverified email,

@@ -2378,3 +2378,33 @@ is 172 kB; browser checks used the development server and are not production spe
 Implementation is complete in PR #9. The working SQLite weather is local, gitignored data; source adapters and
 schema are in the PR. Existing saved records survive restarts/builds, while missing legacy cities collect on
 first use. No provider owner keys or cost-methodology calibration were used.
+
+## 1 October 2026 — Initial page performance
+
+Planner, dataset and settings now receive their initial data from shared server-side database readers. The same readers
+serve their existing HTTP endpoints; ten authenticated API payloads are byte-identical to the original build. Initial
+loads do not refetch that data. Client navigation refreshes cached route props, including first-time client visits.
+The planner includes saved climate immediately, retains missing-city collection and explicit retry, and renders all
+64 cards. Memoized cards and stable update/delete/reorder callbacks skip unrelated dialog and header updates.
+
+Production Chromium measurements use a disposable copy of the local dataset and a test-account password in that copy.
+Five visits per route: planner content fell from 549–686 ms across baseline runs to 212 ms, dataset from 132 to 70 ms,
+settings from 141 to 55 ms. Initial browser data requests fell from 7/2/4 to zero with saved weather. The first Add Leg
+dialog remains about 1.4 seconds from navigation, down from 1.78 seconds before card memoization and weather deduplication.
+The planner sends all cards: about 1.73 MB decoded HTML and 76–77 KB compressed. The HTTP guard now adds 24 KiB per
+planner card to its 512 KiB base limit; other route limits are unchanged. Server working set after checks was 147–166 MiB.
+
+Added `npm run performance:browser` for content, dialog, transferred/decoded HTML and API timing, with a 5-second
+readiness budget and optional JSON report. Production Playwright auth uses test-account email/password; development
+keeps the PIN. Browser fixture tests enter through client navigation because their API mocks cannot replace server
+database reads. Removed obsolete twelve-card constants and updated old assertions for sidebar links and the summary
+below the climate graph. The summary comparison now reads both positions in one browser frame, avoiding a hydration
+layout change between separate measurements.
+
+Final baseline: TypeScript, lint, production build, 63 Vitest files / 334 tests, memory mirror and v1.1/live-CSV guard
+pass. All 31 Chromium regressions plus auth setup pass across focused production runs. Coverage includes pre-JavaScript
+data, no duplicate reads, navigation freshness, full climate cards and retry, C/F conversion, dialogs and provider/model
+pickers, sticky summary, saved plans, two/five-plan comparison and UI smoke. An early concurrent test run timed out in
+the existing ten-second snapshot setup hook; the baseline rerun passed without increasing that limit. Two older browser
+assertions described superseded navigation/layout behavior and now check the current UI. Workflow writes and test
+credentials stayed in the database copy. No provider owner keys, live cost CSV changes or methodology work were involved.
