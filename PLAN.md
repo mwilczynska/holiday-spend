@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Methodology, prior product phases and performance follow-up complete.
+**Status:** Methodology, prior product phases and performance follow-up complete; requested merges in progress.
 
-**Current phase:** Performance follow-up — COMPLETE. Trip climate and prior product phases remain complete.
+**Current phase:** Merge trip climate and performance into `main` — IN PROGRESS.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -17,12 +17,18 @@ page seven times. See Phase 8 for the corrected evidence.
 **Latest implementation checkpoint:** `ded9af3` — verified server rendering, shared readers, climate deduplication,
 card memoization and performance/browser regression checks; pushed to `origin/feat/app-performance`.
 
-**Latest plan checkpoint:** `ded9af3` — measured performance and verification recorded; this documentation checkpoint
-closes publication. Prior performance checkpoints remain recorded below.
+**Latest plan checkpoint:** `ebe079d` — performance publication complete. Prior performance checkpoints remain recorded below.
 
-**Next action:** Review the published `feat/app-performance` branch against `feat/trip-climate`.
+**Next action:** Publish and merge the verified performance PR into `main`; weather PR #9 is merged.
 
-**Working tree:** Implementation committed and pushed; the final documentation checkpoint is tracked below.
+**Working tree:** Verified implementation is committed and pushed; merge tracking uses an isolated checkout while another
+agent works on a separate PR in the original working tree.
+
+## Requested merges — IN PROGRESS
+
+- [x] Merge trip climate PR #9 into `main` at its verified head `92f1606` (merge `a1d08aa`).
+- [ ] Publish the performance PR and merge it into `main` after trip climate.
+- [ ] Verify both merged PRs, synchronize local `main` in the isolated checkout, and record the completed merge checkpoint.
 
 ## Performance follow-up — COMPLETE
 
