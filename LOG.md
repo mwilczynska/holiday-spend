@@ -2284,3 +2284,20 @@ deleted once the rewrite is trusted.
 `attribution` is now set explicitly in the user-level Claude Code settings, with `commit` and `pr` empty and
 `sessionUrl` false. All three are set rather than `sessionUrl` alone because each `attribution` field falls back to
 the standard attribution when unset, so introducing the block partially would have reinstated the co-author line.
+
+## 1 October 2026 — Trip climate foundation
+
+Started `feat/trip-climate` for monthly weather on itinerary cards, an annual view, shared Celsius/Fahrenheit conversion
+and a dual-axis whole-trip graph. The owner chose the five latest complete years (2021–2025) and requested retained
+average daily high/low data while displaying mean only. Daily values are aggregated server-side; monthly precipitation
+is the average of five monthly totals, including snow water equivalent. Missing days and invalid units fail closed.
+
+NASA POWER was initially tested, then superseded by Open-Meteo ERA5-Seamless after its coarse grid returned a
+January mean of 18.95°C for Bogotá; the elevation-aware archive returned 13.77°C. This was a source-selection smoke,
+not calibration work. Live archive checks returned complete five-year records for Tokyo, Brno and Bogotá. The first
+UI regression passed. Calculation/date/provider verification passed 32 focused tests at this checkpoint.
+
+Follow-up scope is active: save records in SQLite, collect with city generation/refresh, remove the twelve-card limit,
+avoid piecemeal graph rendering, and fix missing destination lookups. The first complete baseline passed 294 tests
+with a 30-second setup-hook limit; the default 10-second limit timed out in existing database suites under concurrent
+checks. Production build and lint passed before this follow-up integration. Final verification remains pending.
