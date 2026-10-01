@@ -2408,3 +2408,6 @@ pickers, sticky summary, saved plans, two/five-plan comparison and UI smoke. An 
 the existing ten-second snapshot setup hook; the baseline rerun passed without increasing that limit. Two older browser
 assertions described superseded navigation/layout behavior and now check the current UI. Workflow writes and test
 credentials stayed in the database copy. No provider owner keys, live cost CSV changes or methodology work were involved.
+
+Implementation checkpoint `ded9af3` is pushed to `origin/feat/app-performance`, based on `feat/trip-climate`.
+The final checkpoint closes the performance follow-up and retains the local production measurement limits above.

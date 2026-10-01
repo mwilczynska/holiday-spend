@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Methodology and prior product phases complete. Performance follow-up verified; publication pending.
+**Status:** Methodology, prior product phases and performance follow-up complete.
 
-**Current phase:** Performance follow-up — IN PROGRESS. Trip climate is complete; prior performance evidence is retained below.
+**Current phase:** Performance follow-up — COMPLETE. Trip climate and prior product phases remain complete.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -14,16 +14,17 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `92f1606` — trip climate complete; the verified performance follow-up is ready
-to commit below.
+**Latest implementation checkpoint:** `ded9af3` — verified server rendering, shared readers, climate deduplication,
+card memoization and performance/browser regression checks; pushed to `origin/feat/app-performance`.
 
-**Latest plan checkpoint:** `92f1606` — trip climate complete. Prior performance checkpoints remain recorded below.
+**Latest plan checkpoint:** `ded9af3` — measured performance and verification recorded; this documentation checkpoint
+closes publication. Prior performance checkpoints remain recorded below.
 
-**Next action:** Commit and push the verified performance follow-up, then record the published checkpoint.
+**Next action:** Review the published `feat/app-performance` branch against `feat/trip-climate`.
 
-**Working tree:** Clean at task start; performance changes and verification are tracked below.
+**Working tree:** Implementation committed and pushed; the final documentation checkpoint is tracked below.
 
-## Performance follow-up — IN PROGRESS
+## Performance follow-up — COMPLETE
 
 Started 1 October 2026 under the continuing app-performance objective. The current tree already includes the prior
 dashboard and track server rendering, bundle splits, payload reductions and import improvements. Recheck the current
@@ -33,7 +34,7 @@ production build rather than relying on old route-shell measurements. Preserve f
 - [x] Remove evidenced initial-data waterfalls and avoid redundant full-load requests.
 - [x] Verify fresh data after navigation and edits, user scoping, climate loading, and representative page interactions.
 - [x] Run the baseline and document measured results and remaining limits.
-- [ ] Commit and push the verified implementation and final checkpoint.
+- [x] Commit and push the verified implementation; record the final checkpoint for publication with this update.
 
 Planner, dataset and settings now use shared database readers on the server. Their HTTP API shapes are preserved;
 ten original authenticated responses have byte-identical SHA-256 hashes in the final build. Full page loads avoid
@@ -62,6 +63,9 @@ climate/retry/C/F behavior, model and transport dialogs, sticky summary, saved p
 UI smoke. Server working set was 147–166 MiB after the checks, below 512 MiB. Test-account changes and workflow
 writes were confined to the disposable database copy. Measurements describe this local production workload; they
 do not measure development compilation or a throttled remote connection.
+
+**Published implementation:** `ded9af3`, pushed to `origin/feat/app-performance`. The temporary production server
+is stopped after verification; the normal app database was not used for test-account changes or workflow writes.
 
 
 ## Trip climate — COMPLETE
