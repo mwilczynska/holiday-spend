@@ -2301,3 +2301,17 @@ Follow-up scope is active: save records in SQLite, collect with city generation/
 avoid piecemeal graph rendering, and fix missing destination lookups. The first complete baseline passed 294 tests
 with a 30-second setup-hook limit; the default 10-second limit timed out in existing database suites under concurrent
 checks. Production build and lint passed before this follow-up integration. Final verification remains pending.
+
+## 1 October 2026 — Persist weather and collect it with city data
+
+Added versioned `city_climate` SQLite records with twelve monthly mean/high/low/rainfall values and location/source
+provenance. Batch reads do not call providers. Existing cities collect once on demand; matching failed attempts are
+stored to avoid repeated calls on page loads. Explicit city generation/refresh collects weather, and manual city
+creation collects it initially. A failed weather refresh retains labelled prior valid data without discarding a
+valid cost estimate. Responses expose ready/stale/unavailable status.
+
+The service coalesces simultaneous collections and caps concurrency at three. It validates country identity and
+rechecks the city inside a transaction before writing after network work, so rename/delete races cannot persist a
+wrong-city result. Focused persistence and integration checks pass; TypeScript passes. An initial local-trip collection
+saved 51 of 59 unique destinations before the final location fixes; the remaining records are being retried.
+UI delivery and final baseline remain active on draft PR #9.

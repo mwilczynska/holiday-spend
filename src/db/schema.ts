@@ -145,6 +145,17 @@ export const cities = sqliteTable('cities', {
   notes: text('notes'),
 });
 
+export const cityClimate = sqliteTable('city_climate', {
+  cityId: text('city_id').primaryKey().references(() => cities.id, { onDelete: 'cascade' }),
+  cityName: text('city_name').notNull(),
+  countryCode: text('country_code').notNull(),
+  dataJson: text('data_json'),
+  collectedAt: text('collected_at'),
+  lastAttemptAt: text('last_attempt_at').notNull(),
+  lastError: text('last_error'),
+  version: text('version').notNull(),
+});
+
 export const itineraryLegs = sqliteTable('itinerary_legs', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),

@@ -21,8 +21,8 @@ sidebar prefetching.
 **Latest plan checkpoint:** `63cd370` — recorded Phase 8 Step 3 as complete, including the `/dataset` sub-100 KB
 target that was not met and the reason it is not reachable by payload trimming.
 
-**Next action:** Implement climate retrieval, monthly card values, annual view, shared C/F control and full-trip chart;
-verify data boundaries and browser behavior, then commit, push and open a new PR.
+**Next action:** Verify the persisted weather and complete-card UI, retry the remaining missing source records,
+then finish checks and publish the remaining checkpoints to draft PR #9.
 
 **Working tree:** Clean at task start. Trip-climate changes are tracked below.
 
@@ -34,7 +34,7 @@ Interaction thesis: shared C/F switching, on-demand annual dialog, chart tooltip
 
 - [x] Implement and unit-test Open-Meteo Historical Weather API 2021–2025 daily mean, maximum and minimum temperature
       and precipitation using country-checked city coordinates; pin model `era5_seamless`.
-- [ ] Persist weather in SQLite; collect with city generation/refresh and read saved records in one planner request.
+- [x] Persist weather in SQLite; collect with city generation/refresh and read saved records in one planner request.
 - [ ] Show each occupied month's historical mean temperature and monthly precipitation on travel cards.
 - [ ] Add annual month-by-month chart/table and shared temperature conversion with Celsius default.
 - [ ] Plot the complete dated itinerary with separate temperature/rainfall axes, loading once after data is ready.
@@ -46,6 +46,11 @@ Interaction thesis: shared C/F switching, on-demand annual dialog, chart tooltip
 **Current checkpoint:** Calculation, date and provider tests pass; live source checks return all twelve months for
 Tokyo, Brno and Bogotá. The initial UI browser regression passed. SQLite persistence, complete-card rendering,
 stable graph loading and expanded location coverage are now being integrated under the owner's follow-up requests.
+
+**Published checkpoint:** `cb329f1` — verified climate calculation/provider foundation; draft
+[PR #9](https://github.com/mwilczynska/holiday-spend/pull/9) opened. Database persistence and city-refresh integration
+now pass focused tests, including durable reads without provider calls, retry/failure handling, refresh preservation,
+identity validation and concurrent request handling. TypeScript passes. The new bulk-read/all-card UI regression passes.
 
 **Owner decisions (1 October 2026):** Use the last five complete years; collect average daily high/low as well as mean,
 but show mean only for now. Store weather in the database and refresh it with city-data generation/refresh. Remove

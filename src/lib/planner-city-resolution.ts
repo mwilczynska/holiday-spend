@@ -11,7 +11,10 @@ import {
   resolveCountryCreationDefaults,
   slugifyId,
 } from '@/lib/country-metadata';
-import type { GenerateAndPersistCityEstimateInput } from '@/lib/city-generation-service';
+import type {
+  CityClimateStatus,
+  GenerateAndPersistCityEstimateInput,
+} from '@/lib/city-generation-service';
 
 const plannerCityMetadataSchema = z.object({
   city: z.string().min(1),
@@ -39,6 +42,7 @@ export interface ResolveOrCreatePlannerCityResult {
   createdCity: boolean;
   generatedCity: boolean;
   reusedExistingCity: boolean;
+  climateStatus?: CityClimateStatus;
 }
 
 export class PlannerCityResolutionError extends Error {
@@ -311,7 +315,7 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
 
     createdCityId = cityId;
 
-    await generateAndPersistCityEstimate({
+    const generatedEstimate = await generateAndPersistCityEstimate({
       cityId,
       provider: input.provider,
       apiKey: input.apiKey,
@@ -330,6 +334,7 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
       createdCity: true,
       generatedCity: true,
       reusedExistingCity: false,
+      climateStatus: generatedEstimate.climateStatus,
     };
   } catch (err) {
     if (createdCityId) {

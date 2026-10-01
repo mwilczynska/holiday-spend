@@ -2,11 +2,13 @@ import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { eq } from 'drizzle-orm';
+import { ensureCityClimate } from '@/lib/city-climate-service';
 import {
   CountryMetadataResolutionError,
   findExistingCountryForCanonical,
   slugifyId,
 } from '@/lib/country-metadata';
+import type { CityClimateStatus } from '@/lib/city-generation-service';
 import { z } from 'zod';
 
 const createSchema = z.object({
@@ -136,12 +138,34 @@ export async function POST(request: Request) {
       estimatedAt: new Date().toISOString(),
     });
 
+    let climateStatus: CityClimateStatus = 'unavailable';
+    try {
+      const climate = await ensureCityClimate(
+        id,
+        name,
+        resolvedCountry.canonical.iso2,
+        { refresh: false }
+      );
+      climateStatus = climate
+        ? climate.refreshFailedAt ? 'stale' : 'ready'
+        : 'unavailable';
+      if (!climate) {
+        console.warn('[city-climate] Initial climate collection returned no data for ' + id + '.');
+      } else if (climate.refreshFailedAt) {
+        console.warn('[city-climate] Previous climate refresh failed for ' + id + '; keeping the saved result.');
+      }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unknown climate error.';
+      console.warn('[city-climate] Initial climate collection failed for ' + id + ': ' + message);
+    }
+
     return success(
       {
         ...data,
         id,
         countryId,
         name,
+        climateStatus,
       },
       201
     );

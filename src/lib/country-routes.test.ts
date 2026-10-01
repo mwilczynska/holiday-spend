@@ -106,6 +106,9 @@ describe.sequential('country metadata routes', () => {
         is_active INTEGER DEFAULT 1
       );
     `);
+    vi.doMock('@/lib/city-climate-service', () => ({
+      ensureCityClimate: vi.fn().mockResolvedValue({ cityId: 'fixture-city' }),
+    }));
     countriesRouteModule = await import('@/app/api/countries/route');
     citiesRouteModule = await import('@/app/api/cities/route');
     estimatesRouteModule = await import('@/app/api/estimates/route');

@@ -56,6 +56,7 @@ export async function POST(
       fx: generated.fx,
       anchorsAud: generated.anchorsAud,
       tiersAud: generated.tiersAud,
+      climateStatus: generated.climateStatus,
     });
   } catch (err) {
     if (err instanceof CityGenerationError) {
