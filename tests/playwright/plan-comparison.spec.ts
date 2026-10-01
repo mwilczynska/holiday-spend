@@ -89,7 +89,7 @@ test.describe.serial('plan comparison', () => {
     await page.waitForLoadState('networkidle');
 
     // Click Compare in sidebar
-    const compareNav = page.locator('aside').getByRole('button', { name: 'Compare' });
+    const compareNav = page.locator('aside').getByRole('link', { name: 'Compare Plans', exact: true });
     await expect(compareNav).toBeVisible();
     await compareNav.click();
     await expect(page).toHaveURL(/\/plan\/compare/, { timeout: 15000 });

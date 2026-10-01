@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -22,9 +22,7 @@ import {
 import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
 import { ChevronDown, ChevronUp, GripVertical, Plus, Trash2 } from 'lucide-react';
 
-// Loaded on first open rather than with the planner. This 675-line dialog was mounted
-// unconditionally inside every leg card - roughly a dozen times - for dialogs the user had
-// not opened, each pulling in its own hooks and a localStorage read.
+// Load transport estimation only when its dialog is opened.
 const TransportEstimateDialog = dynamic(
   () => import('./TransportEstimateDialog').then((m) => m.TransportEstimateDialog),
   { ssr: false }
@@ -96,8 +94,7 @@ interface LegCardProps {
   groupSize: number;
   onUpdate: (id: number, data: Record<string, unknown>) => void;
   onDelete: (id: number) => void;
-  onMoveUp: () => void;
-  onMoveDown: () => void;
+  onMove: (id: number, direction: -1 | 1) => void;
   isFirst: boolean;
   isLast: boolean;
   previousLeg: {
@@ -155,15 +152,14 @@ function nightsBetween(startDate: string, endDate: string): number {
   return Math.round((end.getTime() - start.getTime()) / 86400000);
 }
 
-export function LegCard({
+export const LegCard = memo(function LegCard({
   leg,
   cities,
   cityOptions,
   groupSize,
   onUpdate,
   onDelete,
-  onMoveUp,
-  onMoveDown,
+  onMove,
   isFirst,
   isLast,
   previousLeg,
@@ -360,7 +356,7 @@ export function LegCard({
               variant="ghost"
               size="icon"
               className="h-6 w-6"
-              onClick={onMoveUp}
+              onClick={() => onMove(leg.id, -1)}
               disabled={isFirst}
             >
               <ChevronUp className="h-3 w-3" />
@@ -369,7 +365,7 @@ export function LegCard({
               variant="ghost"
               size="icon"
               className="h-6 w-6"
-              onClick={onMoveDown}
+              onClick={() => onMove(leg.id, 1)}
               disabled={isLast}
             >
               <ChevronDown className="h-3 w-3" />
@@ -657,4 +653,4 @@ export function LegCard({
       </CardContent>
     </Card>
   );
-}
+});

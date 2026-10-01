@@ -1,93 +1,13 @@
-import { db } from '@/db';
-import { itineraryLegs, itineraryLegTransports, cities, countries } from '@/db/schema';
-import { asc, eq, inArray } from 'drizzle-orm';
-import { getDailyCost, getLegTotalFromTransports } from '@/lib/cost-calculator';
-import { getIntercityTransportTotal, groupIntercityTransportsByLegId, normalizeIntercityTransports } from '@/lib/intercity-transport';
-import { deriveLegDates } from '@/lib/itinerary-leg-dates';
-import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { requireCurrentUserId } from '@/lib/auth';
 import { success, handleError } from '@/lib/api-helpers';
 import { loadTrackLegs } from '@/lib/track-data';
-import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
-
+import { loadItinerary } from '@/lib/itinerary-data';
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
   try {
     const userId = await requireCurrentUserId();
-    const view = new URL(request.url).searchParams.get('view');
-
-    if (view === 'track') {
-      // Shared with the server-rendered /track page.
-      return success(await loadTrackLegs(userId));
-    }
-
-    const legs = await db
-      .select()
-      .from(itineraryLegs)
-      .where(eq(itineraryLegs.userId, userId))
-      .orderBy(asc(itineraryLegs.sortOrder));
-    const transportRows = legs.length > 0
-      ? await db
-          .select()
-          .from(itineraryLegTransports)
-          .where(inArray(itineraryLegTransports.legId, legs.map((leg) => leg.id)))
-          .orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id))
-      : [];
-
-    const allCities = await db.select().from(cities);
-    const allCountries = await db.select().from(countries);
-    const groupSize = await getPlannerGroupSize(userId);
-
-    const cityMap = new Map(allCities.map(c => [c.id, c]));
-    const countryMap = new Map(allCountries.map(c => [c.id, c]));
-    const transportMap = groupIntercityTransportsByLegId(transportRows);
-
-    const legsWithCosts = deriveLegDates(legs).map(leg => {
-      const city = cityMap.get(leg.cityId);
-      const country = city ? countryMap.get(city.countryId) : null;
-      const intercityTransports = normalizeIntercityTransports(transportMap.get(leg.id));
-
-      const dailyCost = city
-        ? getDailyCost(
-            city,
-            (leg.accomTier || '2star') as AccomTier,
-            (leg.foodTier || 'mid') as FoodTier,
-            (leg.drinksTier || 'moderate') as DrinksTier,
-            (leg.activitiesTier || 'mid') as ActivitiesTier,
-            {
-              accomOverride: leg.accomOverride,
-              foodOverride: leg.foodOverride,
-              drinksOverride: leg.drinksOverride,
-              activitiesOverride: leg.activitiesOverride,
-              transportOverride: leg.transportOverride,
-            },
-            groupSize
-          )
-        : 0;
-
-      const legTotal = getLegTotalFromTransports(
-        dailyCost,
-        leg.nights,
-        intercityTransports
-      );
-
-      return {
-        ...leg,
-        cityName: city?.name ?? 'Unknown',
-        countryName: country?.name ?? 'Unknown',
-        countryId: city?.countryId ?? '',
-        intercityTransports,
-        intercityTransportCost: getIntercityTransportTotal(intercityTransports),
-        intercityTransportNote: intercityTransports.find((transport) => transport.note)?.note ?? null,
-        groupSize,
-        dailyCost,
-        legTotal,
-      };
-    });
-
-    return success(legsWithCosts);
-  } catch (err) {
-    return handleError(err);
-  }
+    return success(new URL(request.url).searchParams.get('view') === 'track'
+      ? await loadTrackLegs(userId) : await loadItinerary(userId));
+  } catch (err) { return handleError(err); }
 }

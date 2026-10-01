@@ -1,30 +1,16 @@
+import { loadSavedPlanSummaries } from '@/lib/saved-plan-data';
 import { db } from '@/db';
 import { savedPlans } from '@/db/schema';
 import { requireCurrentUserId } from '@/lib/auth';
 import { error, handleError, success } from '@/lib/api-helpers';
 import { planSnapshotSchema } from '@/lib/plan-snapshot';
-import { desc, eq } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
     const userId = await requireCurrentUserId();
-    const rows = await db
-      .select({
-        id: savedPlans.id,
-        name: savedPlans.name,
-        groupSize: savedPlans.groupSize,
-        legCount: savedPlans.legCount,
-        totalNights: savedPlans.totalNights,
-        totalBudget: savedPlans.totalBudget,
-        fixedCostCount: savedPlans.fixedCostCount,
-        createdAt: savedPlans.createdAt,
-        updatedAt: savedPlans.updatedAt,
-      })
-      .from(savedPlans)
-      .where(eq(savedPlans.userId, userId))
-      .orderBy(desc(savedPlans.createdAt));
+    const rows = await loadSavedPlanSummaries(userId);
 
     return success(rows);
   } catch (err) {

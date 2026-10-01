@@ -1,7 +1,7 @@
 import { expect, test, type Locator } from '@playwright/test';
 
 test.describe('planner regressions', () => {
-test('trip summary sits close to the header and stays pinned while scrolling', async ({ page }) => {
+  test('trip summary aligns with the legs below climate and stays pinned while scrolling', async ({ page }) => {
     await page.goto('/plan');
 
     const header = page.locator('div.fixed.inset-x-0.top-0.z-30').first();
@@ -12,19 +12,25 @@ test('trip summary sits close to the header and stays pinned while scrolling', a
 
     const headerBox = await header.boundingBox();
     const summaryBoxBefore = await tripSummaryCard.boundingBox();
+    const firstLegBox = await page.getByTestId('planner-leg-card').first().boundingBox();
 
     expect(headerBox).not.toBeNull();
     expect(summaryBoxBefore).not.toBeNull();
+    expect(firstLegBox).not.toBeNull();
 
-    const initialGap = summaryBoxBefore!.y - (headerBox!.y + headerBox!.height);
-    expect(initialGap).toBeLessThan(40);
+    await expect.poll(() => tripSummaryCard.evaluate(card => {
+      const firstLeg = document.querySelector('[data-testid="planner-leg-card"]')!;
+      return Math.abs(card.getBoundingClientRect().y - firstLeg.getBoundingClientRect().y);
+    })).toBeLessThan(12);
+    expect(summaryBoxBefore!.y).toBeGreaterThan(headerBox!.y + headerBox!.height);
 
-    await page.mouse.wheel(0, 420);
-    await page.waitForTimeout(150);
+    await page.mouse.wheel(0, 800);
+    await expect.poll(async () => (await tripSummaryCard.boundingBox())?.y ?? Infinity).toBeLessThan(headerBox!.height + 30);
 
     const summaryBoxAfter = await tripSummaryCard.boundingBox();
     expect(summaryBoxAfter).not.toBeNull();
-    expect(Math.abs(summaryBoxAfter!.y - summaryBoxBefore!.y)).toBeLessThan(12);
+    await page.mouse.wheel(0, 420);
+    await expect.poll(async () => Math.abs((await tripSummaryCard.boundingBox())!.y - summaryBoxAfter!.y)).toBeLessThan(12);
   });
 
   test('new city dialog fields accept typing without blocking the UI', async ({ page }) => {

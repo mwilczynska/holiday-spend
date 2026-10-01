@@ -1,5 +1,6 @@
+import { loadCountries } from '@/lib/city-library-data';
 import { db } from '@/db';
-import { countries, cities } from '@/db/schema';
+import { countries } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
 import {
   APP_REGION_VALUES,
@@ -25,28 +26,7 @@ export async function GET(request: Request) {
       }).from(countries));
     }
 
-    const allCountries = await db.select().from(countries);
-    const allCities = await db.select().from(cities);
-
-    // Group once rather than scanning every city per country, which was
-    // O(countries x cities) - roughly 14,000 comparisons at current volumes.
-    const citiesByCountry = new Map<string, typeof allCities>();
-    for (const city of allCities) {
-      if (city.countryId === null) continue;
-      const bucket = citiesByCountry.get(city.countryId);
-      if (bucket) {
-        bucket.push(city);
-      } else {
-        citiesByCountry.set(city.countryId, [city]);
-      }
-    }
-
-    const result = allCountries.map((c) => ({
-      ...c,
-      cities: citiesByCountry.get(c.id) ?? [],
-    }));
-
-    return success(result);
+    return success(await loadCountries(includeCities));
   } catch (err) {
     return handleError(err);
   }

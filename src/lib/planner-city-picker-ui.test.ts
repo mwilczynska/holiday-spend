@@ -16,7 +16,7 @@ describe('planner city picker UI', () => {
   });
 
   it('keeps cancel, add-city, and add-leg actions together in the leg dialog footer', () => {
-    const source = fs.readFileSync(path.join(projectRoot, 'src', 'app', 'plan', 'page.tsx'), 'utf8');
+    const source = fs.readFileSync(path.join(projectRoot, 'src', 'app', 'plan', 'PlanClient.tsx'), 'utf8');
     const footerStart = source.indexOf('<DialogFooter className="gap-2 sm:justify-end">');
     const footerEnd = source.indexOf('</DialogFooter>', footerStart);
     const footer = source.slice(footerStart, footerEnd);
@@ -132,7 +132,7 @@ describe('planner city picker UI', () => {
       path.join(projectRoot, 'src', 'components', 'itinerary', 'PlannerNewCityDialog.tsx'),
       path.join(projectRoot, 'src', 'components', 'itinerary', 'TransportEstimateDialog.tsx'),
       path.join(projectRoot, 'src', 'components', 'itinerary', 'BulkTransportEstimateDialog.tsx'),
-      path.join(projectRoot, 'src', 'app', 'plan', 'page.tsx'),
+      path.join(projectRoot, 'src', 'app', 'plan', 'PlanClient.tsx'),
     ];
 
     for (const filename of filenames) {

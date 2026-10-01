@@ -10,10 +10,7 @@ import {
   EXPENSE_PAGE_SIZE,
   getPageCount,
   getPageItems,
-  getVisibleItems,
   HISTORY_PAGE_SIZE,
-  INITIAL_VISIBLE_LEGS,
-  VISIBLE_LEGS_INCREMENT,
 } from '@/lib/performance-bounds';
 
 const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
@@ -60,17 +57,13 @@ afterEach(() => {
 });
 
 describe('v1.1 performance bounds', () => {
-  it('keeps the initial planner and table render windows bounded', () => {
-    const legs = Array.from({ length: 67 }, (_, index) => index);
+  it('keeps the initial table render windows bounded', () => {
     const cities = Array.from({ length: 195 }, (_, index) => index);
     const history = Array.from({ length: 195 }, (_, index) => index);
 
-    expect(getVisibleItems(legs, INITIAL_VISIBLE_LEGS)).toHaveLength(12);
-    expect(getVisibleItems(legs, INITIAL_VISIBLE_LEGS + VISIBLE_LEGS_INCREMENT)).toHaveLength(24);
     expect(getPageItems(cities, 0, DATASET_PAGE_SIZE)).toHaveLength(25);
     expect(getPageItems(history, 0, HISTORY_PAGE_SIZE)).toHaveLength(20);
     expect(getPageItems(Array.from({ length: 973 }, (_, index) => index), 0, EXPENSE_PAGE_SIZE)).toHaveLength(50);
-    expect(getPageCount(67, INITIAL_VISIBLE_LEGS)).toBe(6);
     expect(getPageCount(195, DATASET_PAGE_SIZE)).toBe(8);
     expect(getPageCount(195, HISTORY_PAGE_SIZE)).toBe(10);
   });
@@ -78,7 +71,6 @@ describe('v1.1 performance bounds', () => {
   it('rejects invalid pagination inputs instead of silently widening a render', () => {
     expect(() => getPageCount(-1, DATASET_PAGE_SIZE)).toThrow();
     expect(() => getPageItems([], -1, HISTORY_PAGE_SIZE)).toThrow();
-    expect(() => getVisibleItems([], 1.5)).toThrow();
   });
 
   it('fails production startup with an actionable message when the build is absent', () => {
@@ -198,7 +190,7 @@ describe('v1.1 performance bounds', () => {
       });
 
       expect(result.status).toBe(1);
-      expect(result.stdout + result.stderr).toContain('above the 1024-byte shell budget');
+      expect(result.stdout + result.stderr).toContain('above the 1024-byte HTML budget');
     } finally {
       await new Promise<void>((resolve) => server.close(() => resolve()));
     }

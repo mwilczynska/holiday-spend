@@ -1,0 +1,416 @@
+'use client';
+
+import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
+import { useState, useCallback } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { SearchableSelect } from '@/components/ui/searchable-select';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
+import { Switch } from '@/components/ui/switch';
+import { PageLoadingState } from '@/components/ui/loading-state';
+import { Plus, Trash2, Download } from 'lucide-react';
+import Link from 'next/link';
+
+interface FixedCost {
+  id: number;
+  description: string;
+  amountAud: number;
+  category: string | null;
+  countryId: string | null;
+  date: string | null;
+  isPaid: number | null;
+  notes: string | null;
+}
+
+interface Country {
+  id: string;
+  name: string;
+}
+
+interface LlmSettings {
+  maxOutputTokens: number;
+  requestTimeoutMs: number;
+  defaults: { maxOutputTokens: number; requestTimeoutMs: number };
+  limits: {
+    maxOutputTokens: { min: number; max: number };
+    requestTimeoutMs: { min: number; max: number };
+  };
+}
+
+const CATEGORIES = ['visa', 'insurance', 'flights', 'gear', 'other'];
+
+export interface SettingsInitialData {
+  costs: FixedCost[]; countries: Country[]; groupSize: number; llm: LlmSettings;
+}
+
+export function SettingsClient({ initialData }: { initialData: SettingsInitialData }) {
+  const [costs, setCosts] = useState<FixedCost[]>(initialData.costs);
+  const [countries, setCountries] = useState<Country[]>(initialData.countries);
+  const [groupSize, setGroupSize] = useState(initialData.groupSize);
+  const [groupSizeStatus, setGroupSizeStatus] = useState<string | null>(null);
+  const [groupSizeError, setGroupSizeError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [addOpen, setAddOpen] = useState(false);
+  const [llm, setLlm] = useState<LlmSettings | null>(initialData.llm);
+  const [llmDraft, setLlmDraft] = useState({ maxOutputTokens: String(initialData.llm.maxOutputTokens), requestTimeoutSeconds: String(Math.round(initialData.llm.requestTimeoutMs / 1000)) });
+  const [llmStatus, setLlmStatus] = useState<string | null>(null);
+  const [llmError, setLlmError] = useState<string | null>(null);
+  const [newCost, setNewCost] = useState({
+    description: '',
+    amountAud: 0,
+    category: 'other',
+    countryId: '',
+    date: '',
+    notes: '',
+  });
+
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    try {
+      const [costsRes, countriesRes, plannerSettingsRes, llmRes] = await Promise.all([
+        fetch('/api/fixed-costs'),
+        // Only id and name are used below, so skip the nested city rows: the full
+        // payload is ~166 KB against ~5.5 KB here.
+        fetch('/api/countries?includeCities=false'),
+        fetch('/api/planner/settings', { cache: 'no-store' }),
+        fetch('/api/settings/llm', { cache: 'no-store' }),
+      ]);
+      const costsData = await costsRes.json();
+      const countriesData = await countriesRes.json();
+      const plannerSettingsData = await plannerSettingsRes.json();
+      setCosts(costsData.data || []);
+      setCountries(
+        (countriesData.data || [])
+          .map((c: Country & { cities?: unknown[] }) => ({ id: c.id, name: c.name }))
+          .sort((a: Country, b: Country) => a.name.localeCompare(b.name))
+      );
+      if (plannerSettingsRes.ok && plannerSettingsData.data?.groupSize) {
+        setGroupSize(plannerSettingsData.data.groupSize);
+      }
+      if (llmRes.ok) {
+        const llmData = (await llmRes.json()).data as LlmSettings;
+        setLlm(llmData);
+        setLlmDraft({
+          maxOutputTokens: String(llmData.maxOutputTokens),
+          requestTimeoutSeconds: String(Math.round(llmData.requestTimeoutMs / 1000)),
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useInitialPageRefresh('/settings', fetchData, true);
+
+  const handleAdd = async () => {
+    await fetch('/api/fixed-costs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...newCost,
+        countryId: newCost.countryId || null,
+        date: newCost.date || null,
+        notes: newCost.notes || null,
+      }),
+    });
+    setAddOpen(false);
+    setNewCost({ description: '', amountAud: 0, category: 'other', countryId: '', date: '', notes: '' });
+    fetchData();
+  };
+
+  const handleTogglePaid = async (cost: FixedCost) => {
+    await fetch(`/api/fixed-costs/${cost.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ isPaid: cost.isPaid ? 0 : 1 }),
+    });
+    fetchData();
+  };
+
+  const handleDelete = async (id: number) => {
+    await fetch(`/api/fixed-costs/${id}`, { method: 'DELETE' });
+    fetchData();
+  };
+
+  const handleGroupSizeChange = async (value: string) => {
+    const nextGroupSize = Number.parseInt(value, 10);
+    setGroupSize(nextGroupSize);
+    try {
+      const response = await fetch('/api/planner/settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ groupSize: nextGroupSize }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to update traveller count.');
+      }
+      setGroupSize(data.data.groupSize);
+      setGroupSizeError(null);
+      setGroupSizeStatus(`Traveller count set to ${data.data.groupSize}.`);
+    } catch (err) {
+      setGroupSizeStatus(null);
+      setGroupSizeError(err instanceof Error ? err.message : 'Failed to update traveller count.');
+      fetchData();
+    }
+  };
+
+  const saveLlmSettings = async (next: { maxOutputTokens: number | null; requestTimeoutMs: number | null }) => {
+    try {
+      const response = await fetch('/api/settings/llm', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(next),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Failed to update provider limits.');
+
+      setLlm((current) => (current ? { ...current, ...data.data } : current));
+      setLlmDraft({
+        maxOutputTokens: String(data.data.maxOutputTokens),
+        requestTimeoutSeconds: String(Math.round(data.data.requestTimeoutMs / 1000)),
+      });
+      setLlmError(null);
+      setLlmStatus(
+        next.maxOutputTokens === null && next.requestTimeoutMs === null
+          ? 'Provider limits reset to the defaults.'
+          : 'Provider limits saved.'
+      );
+    } catch (err) {
+      setLlmStatus(null);
+      setLlmError(err instanceof Error ? err.message : 'Failed to update provider limits.');
+    }
+  };
+
+  const totalPaid = costs.filter(c => c.isPaid).reduce((s, c) => s + c.amountAud, 0);
+  const totalUnpaid = costs.filter(c => !c.isPaid).reduce((s, c) => s + c.amountAud, 0);
+  const total = totalPaid + totalUnpaid;
+
+  if (loading && costs.length === 0 && countries.length === 0) {
+    return (
+      <PageLoadingState
+        title="Loading settings"
+        description="Preparing trip settings, fixed costs, and country options."
+        cardCount={3}
+        rowCount={4}
+      />
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold">Settings</h1>
+        <div className="flex flex-wrap gap-2 mt-4">
+          <Link href="/settings/account">
+            <Button variant="outline">Account</Button>
+          </Link>
+          <Link href="/dataset">
+            <Button variant="outline">Dataset</Button>
+          </Link>
+          <Link href="/estimates">
+            <Button variant="outline">Methodology</Button>
+          </Link>
+          <a href="/api/export?format=json" download>
+            <Button variant="outline" size="sm"><Download className="h-4 w-4 mr-1" />Export JSON</Button>
+          </a>
+          <a href="/api/export?format=csv" download>
+            <Button variant="outline" size="sm"><Download className="h-4 w-4 mr-1" />Export CSV</Button>
+          </a>
+        </div>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Trip Settings</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="max-w-xs">
+            <Label>Travellers</Label>
+            <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {[1, 2, 3, 4, 5].map((count) => (
+                  <SelectItem key={count} value={String(count)}>
+                    {count} {count === 1 ? 'traveller' : 'travellers'}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            City costs are stored for 2 travellers and scaled across the planner and dashboard using this setting.
+          </p>
+          {groupSizeStatus ? <p className="text-sm text-muted-foreground">{groupSizeStatus}</p> : null}
+          {groupSizeError ? <p className="text-sm text-destructive">{groupSizeError}</p> : null}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Provider Request Limits</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <p className="text-sm text-muted-foreground">
+            Applies to city-cost and intercity-transport generation. These are stops for a request that has gone
+            wrong, not budgets. Providers bill tokens as they are produced, so a high cap costs nothing until a
+            request actually needs it &mdash; and a cap that is hit part-way through is paid for and then discarded.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 max-w-xl">
+            <div>
+              <Label htmlFor="llm-max-tokens">Maximum output tokens</Label>
+              <Input
+                id="llm-max-tokens"
+                type="number"
+                value={llmDraft.maxOutputTokens}
+                onChange={(e) => setLlmDraft((p) => ({ ...p, maxOutputTokens: e.target.value }))}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Covers reasoning and the answer together. Default {llm ? llm.defaults.maxOutputTokens.toLocaleString('en-AU') : '—'}.
+              </p>
+            </div>
+            <div>
+              <Label htmlFor="llm-timeout">Request timeout (seconds)</Label>
+              <Input
+                id="llm-timeout"
+                type="number"
+                value={llmDraft.requestTimeoutSeconds}
+                onChange={(e) => setLlmDraft((p) => ({ ...p, requestTimeoutSeconds: e.target.value }))}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Default {llm ? Math.round(llm.defaults.requestTimeoutMs / 1000) : '—'}s. High reasoning effort can run
+                for a couple of minutes.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button
+              size="sm"
+              disabled={!llm}
+              onClick={() => saveLlmSettings({
+                maxOutputTokens: Number(llmDraft.maxOutputTokens) || null,
+                requestTimeoutMs: Number(llmDraft.requestTimeoutSeconds)
+                  ? Number(llmDraft.requestTimeoutSeconds) * 1000
+                  : null,
+              })}
+            >
+              Save limits
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              disabled={!llm}
+              onClick={() => saveLlmSettings({ maxOutputTokens: null, requestTimeoutMs: null })}
+            >
+              Reset to defaults
+            </Button>
+          </div>
+          {llmStatus ? <p className="text-sm text-muted-foreground">{llmStatus}</p> : null}
+          {llmError ? <p className="text-sm text-destructive">{llmError}</p> : null}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between">
+          <CardTitle>Fixed Costs</CardTitle>
+          <Dialog open={addOpen} onOpenChange={setAddOpen}>
+            <DialogTrigger asChild>
+              <Button size="sm"><Plus className="h-4 w-4 mr-2" />Add</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader><DialogTitle>Add Fixed Cost</DialogTitle>
+                <DialogDescription className="sr-only">
+                  Record a one-off cost that is not tied to a single itinerary leg.
+                </DialogDescription></DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <Label>Description</Label>
+                  <Input value={newCost.description} onChange={(e) => setNewCost(p => ({ ...p, description: e.target.value }))} />
+                </div>
+                <div>
+                  <Label>Amount (AUD)</Label>
+                  <Input type="number" value={newCost.amountAud || ''} onChange={(e) => setNewCost(p => ({ ...p, amountAud: parseFloat(e.target.value) || 0 }))} />
+                </div>
+                <div>
+                  <Label>Category</Label>
+                  <Select value={newCost.category} onValueChange={(v) => setNewCost(p => ({ ...p, category: v }))}>
+                    <SelectTrigger><SelectValue /></SelectTrigger>
+                    <SelectContent>
+                      {CATEGORIES.map(c => <SelectItem key={c} value={c} className="capitalize">{c}</SelectItem>)}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label>Country (optional)</Label>
+                  <SearchableSelect
+                    value={newCost.countryId}
+                    onValueChange={(value) => setNewCost(p => ({ ...p, countryId: value }))}
+                    placeholder="General"
+                    searchPlaceholder="Search countries..."
+                    options={[
+                      { value: '', label: 'General', description: 'Not tied to a specific country.' },
+                      ...countries.map((country) => ({
+                        value: country.id,
+                        label: country.name,
+                      })),
+                    ]}
+                  />
+                </div>
+                <div>
+                  <Label>Date (optional)</Label>
+                  <Input type="date" value={newCost.date} onChange={(e) => setNewCost(p => ({ ...p, date: e.target.value }))} />
+                </div>
+                <Button onClick={handleAdd} className="w-full" disabled={!newCost.description || !newCost.amountAud}>
+                  Add Fixed Cost
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </CardHeader>
+        <CardContent>
+          <div className="flex gap-4 mb-4 text-sm">
+            <span>Total: <strong>${total.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</strong></span>
+            <span className="text-green-600">Paid: ${totalPaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
+            <span className="text-orange-600">Unpaid: ${totalUnpaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
+          </div>
+
+          {costs.length === 0 ? (
+            <p className="text-muted-foreground text-center py-8">No fixed costs yet.</p>
+          ) : (
+            <div className="space-y-2">
+              {costs.map((cost) => (
+                <div key={cost.id} className="flex items-center gap-3 p-2 rounded border">
+                  <Switch
+                    checked={!!cost.isPaid}
+                    onCheckedChange={() => handleTogglePaid(cost)}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className={cost.isPaid ? 'line-through text-muted-foreground' : 'font-medium'}>
+                        {cost.description}
+                      </span>
+                      {cost.category && (
+                        <Badge variant="outline" className="text-xs capitalize">{cost.category}</Badge>
+                      )}
+                    </div>
+                    {cost.date && <p className="text-xs text-muted-foreground">{cost.date}</p>}
+                  </div>
+                  <span className="font-medium">${cost.amountAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
+                  <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
