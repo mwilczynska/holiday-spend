@@ -14,14 +14,16 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
+**Latest implementation checkpoint:** `caf6933` — shared saved keys, clickable city choices, configured transport limits, Stop and failed-leg retry.
+
+**Previous implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
 follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
 
 **Latest plan checkpoint:** `28886be` records the requested merge; this checkpoint closes publication on main.
 
-**Next action:** Commit and push the verified fixes, then open the new PR for review.
+**Next action:** Push the verified implementation and publication checkpoint, then open the new PR for review.
 
-**Working tree:** Verified implementation and documentation ready to commit on the new fix branch.
+**Working tree:** Implementation committed at `caf6933`; publication checkpoint ready to commit and push.
 
 ## Shared API keys, city picker and transport requests — VERIFIED
 

@@ -2537,3 +2537,5 @@ auth setup plus four interaction regressions pass against a disposable database 
 a duplicate Close locator and timed out during picker interaction; the locator is corrected and the final run passes.
 The initial full-suite run overlapped a build and hit a database setup timeout; both later full-suite runs pass.
 The live city CSV hash remains `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+Committed the verified implementation as `caf6933` on `fix/shared-keys-city-picker`. Publication follows this checkpoint.
