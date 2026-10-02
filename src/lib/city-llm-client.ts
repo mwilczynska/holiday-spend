@@ -5,6 +5,7 @@ import {
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
+import { createLlmRequestSignal, waitForLlmRetry } from '@/lib/llm-request-signal';
 import { resolveLlmRuntimeDefaults } from '@/lib/llm-request-limits';
 import { describeLlmRequestFailure, formatProviderHttpError, summarizeProviderError } from '@/lib/llm-error-messages';
 
@@ -27,15 +28,13 @@ function normalizeModel(model?: string) {
 }
 
 async function fetchProvider(url: string, init: RequestInit, provider: string, deadline: number, timeoutMs: number, apiKey: string) {
+  init.signal?.throwIfAborted();
   try {
-    return await fetch(url, { ...init, signal: AbortSignal.timeout(Math.max(1, deadline - Date.now())) });
+    return await fetch(url, { ...init, signal: createLlmRequestSignal(deadline - Date.now(), init.signal ?? undefined) });
   } catch (err) {
+    init.signal?.throwIfAborted();
     throw new Error(describeLlmRequestFailure(err, provider, timeoutMs, apiKey));
   }
-}
-
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function getRetryDelayMsFromHeaders(headers: Headers) {
@@ -72,6 +71,7 @@ async function runOpenAiJsonPrompt(params: {
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
   requestTimeoutMs?: number;
+  signal?: AbortSignal;
 }): Promise<JsonPromptResult | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
@@ -107,6 +107,7 @@ async function runOpenAiJsonPrompt(params: {
 
     const response = await fetchProvider('https://api.openai.com/v1/responses', {
       method: 'POST',
+      signal: params.signal,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
@@ -154,6 +155,7 @@ async function runAnthropicJsonPrompt(params: {
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
   requestTimeoutMs?: number;
+  signal?: AbortSignal;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
@@ -165,12 +167,14 @@ async function runAnthropicJsonPrompt(params: {
   let data: { content?: Array<{ type?: string; text?: string }> } | null = null;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
-    const thinkingBudget = params.reasoningEffort && params.reasoningEffort !== 'none'
+    const outputLimit = params.maxTokens ?? resolveLlmRuntimeDefaults().maxOutputTokens;
+    const requestedThinkingBudget = params.reasoningEffort && params.reasoningEffort !== 'none'
       ? getCityGenerationThinkingBudget(params.reasoningEffort)
       : 0;
+    const thinkingBudget = outputLimit >= 2524 ? Math.min(requestedThinkingBudget, outputLimit - 1500) : 0;
     const requestBody: Record<string, unknown> = {
       model,
-      max_tokens: Math.max(params.maxTokens ?? 3000, (thinkingBudget ?? 0) + 1500),
+      max_tokens: outputLimit,
       system: params.systemPrompt,
       messages: [{ role: 'user', content: params.userPrompt }],
     };
@@ -183,6 +187,7 @@ async function runAnthropicJsonPrompt(params: {
 
     const response = await fetchProvider('https://api.anthropic.com/v1/messages', {
       method: 'POST',
+      signal: params.signal,
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': apiKey,
@@ -199,7 +204,7 @@ async function runAnthropicJsonPrompt(params: {
     const errText = await response.text();
     if (response.status === 429 && attempt < 1) {
       const retryDelayMs = getRetryDelayMsFromHeaders(response.headers) ?? 5000;
-      await sleep(Math.min(Math.max(retryDelayMs, 3000), 15000, Math.max(0, deadline - Date.now())));
+      await waitForLlmRetry(Math.min(Math.max(retryDelayMs, 3000), 15000, Math.max(0, deadline - Date.now())), params.signal);
       continue;
     }
 
@@ -224,6 +229,7 @@ async function runGeminiJsonPrompt(params: {
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
   requestTimeoutMs?: number;
+      signal?: AbortSignal;
 }) {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
@@ -244,6 +250,7 @@ async function runGeminiJsonPrompt(params: {
       `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
       {
         method: 'POST',
+        signal: params.signal,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -276,7 +283,7 @@ async function runGeminiJsonPrompt(params: {
 
     const errText = await response.text();
     if ((response.status === 429 || response.status === 503) && attempt < 1) {
-      await sleep(Math.min(4000 * (attempt + 1), Math.max(0, deadline - Date.now())));
+      await waitForLlmRetry(Math.min(4000 * (attempt + 1), Math.max(0, deadline - Date.now())), params.signal);
       continue;
     }
 
@@ -312,6 +319,7 @@ export async function runJsonPromptWithProvider(params: {
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
   requestTimeoutMs?: number;
+  signal?: AbortSignal;
 }) {
   const providerOrder: CityGenerationProvider[] = params.provider
     ? [params.provider]
@@ -328,6 +336,7 @@ export async function runJsonPromptWithProvider(params: {
       reasoningEffort?: CityGenerationReasoningEffort;
       requireWebSearch?: boolean;
       requestTimeoutMs?: number;
+      signal?: AbortSignal;
     }) => Promise<JsonPromptResult | null>
   > = {
     anthropic: runAnthropicJsonPrompt,
@@ -345,6 +354,7 @@ export async function runJsonPromptWithProvider(params: {
       maxTokens: params.maxTokens,
       requireWebSearch: params.requireWebSearch,
       requestTimeoutMs: params.requestTimeoutMs,
+      signal: params.signal,
     });
 
     if (result) {

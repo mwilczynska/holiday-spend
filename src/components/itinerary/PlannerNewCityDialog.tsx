@@ -83,7 +83,7 @@ export function PlannerNewCityDialog({
     clearCurrentProviderApiKey: clearStoredCurrentApiKey,
     clearAllSavedApiKeys: clearStoredAllApiKeys,
     hasAnySavedApiKey,
-  } = useProviderApiKeys(STORAGE_PREFIX);
+  } = useProviderApiKeys();
 
   useEffect(() => {
     if (typeof window === 'undefined') return;

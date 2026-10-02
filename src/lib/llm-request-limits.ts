@@ -3,21 +3,21 @@
  * it may run before being abandoned.
  *
  * Both defaults are deliberately generous. `max_output_tokens` is a cap, not an allocation — tokens
- * are billed as they are generated, so a high cap costs nothing until a run genuinely needs it. A
- * cap that binds during normal operation is worse than no cap at all: the tokens are paid for and
- * the answer is discarded, which is exactly what a 12,000 cap did here on 5 September 2026 when a
- * route needed 12,259.
+ * are billed as they are generated, so a high cap costs nothing until a run needs it. A
+ * cap that binds during normal operation discards tokens already paid for, which is what
+ * a 12,000 cap did here on 5 September 2026 when a route needed 12,259.
  *
  * So these are not budgets. They are stops for a request that has gone wrong, set far above the
- * observed working range (about 12,300 output tokens and two minutes) with room for models that
- * reason harder than today's.
+ * September sample (about 12,300 output tokens and two minutes). GPT-6 Luna at max reached the
+ * old five-minute timeout on 1 October 2026, so the default now allows ten minutes. Stop remains
+ * available for an active transport batch.
  *
  * Precedence: an explicit per-user setting, then the environment, then these defaults. Null in the
  * database means "follow the default", so raising the default later reaches everyone who has not
  * deliberately chosen their own value.
  */
 export const LLM_MAX_OUTPUT_TOKENS_DEFAULT = 64000;
-export const LLM_REQUEST_TIMEOUT_MS_DEFAULT = 300000;
+export const LLM_REQUEST_TIMEOUT_MS_DEFAULT = 600000;
 
 export const LLM_MAX_OUTPUT_TOKENS_MIN = 1000;
 export const LLM_MAX_OUTPUT_TOKENS_MAX = 400000;

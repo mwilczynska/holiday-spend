@@ -123,6 +123,7 @@ test.describe('planner regressions', () => {
   });
 
   test('add-leg city picker has strong selection contrast and explicit footer actions', async ({ page }) => {
+    test.setTimeout(60000);
     await page.goto('/plan');
     await page.getByRole('button', { name: 'Add Leg', exact: true }).first().click();
 
@@ -133,6 +134,17 @@ test.describe('planner regressions', () => {
 
     await addLegDialog.getByRole('button', { name: 'Select a city' }).click();
     const search = page.getByPlaceholder('Search cities...');
+    await search.fill('Agra');
+    const agra = page.locator('[cmdk-item]').filter({ hasText: 'Agra, India' });
+    await expect(agra).toHaveCSS('pointer-events', 'auto');
+    await expect(agra).toHaveCSS('opacity', '1');
+    await agra.click();
+    await expect(addLegDialog.getByRole('button', { name: 'Agra, India' })).toBeVisible();
+    await addLegDialog.getByRole('button', { name: 'Agra, India' }).click();
+    await search.fill('Lima');
+    await search.press('Enter');
+    await expect(addLegDialog.getByRole('button', { name: 'Lima, Peru' })).toBeVisible();
+    await addLegDialog.getByRole('button', { name: 'Lima, Peru' }).click();
     await search.fill('Agra');
     await search.press('Enter');
 

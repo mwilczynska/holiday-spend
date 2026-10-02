@@ -268,7 +268,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     clearCurrentProviderApiKey: clearStoredCurrentImportApiKey,
     clearAllSavedApiKeys: clearStoredAllImportApiKeys,
     hasAnySavedApiKey: hasAnySavedImportApiKey,
-  } = useProviderApiKeys(CITY_GENERATION_STORAGE_PREFIX);
+  } = useProviderApiKeys();
   const plannerContentTopPadding = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight - 56, 128) : 144;
   const plannerSidebarTopOffset = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight + 10, 120) : 200;
 

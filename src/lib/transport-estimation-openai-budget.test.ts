@@ -56,6 +56,51 @@ afterEach(() => {
 });
 
 describe('OpenAI transport estimate output budget', () => {
+  it.each([undefined, 'none', 'max'] as const)('uses the full default on grounding and fallback at effort %s', async (reasoningEffort) => {
+    const fetchMock = respondInOrder({ model: baseRequest.model, status: 'completed', output: [] }, VALID_ANSWER);
+    vi.stubGlobal('fetch', fetchMock);
+    await estimateIntercityTransport({ ...baseRequest, reasoningEffort } as never);
+    expect(fetchMock.mock.calls).toHaveLength(2);
+    for (const [, init] of fetchMock.mock.calls) expect(JSON.parse(String(init?.body)).max_output_tokens).toBe(LLM_MAX_OUTPUT_TOKENS_DEFAULT);
+  });
+
+  it('preserves explicit limits in the strict schema retry', async () => {
+    const invalid = { ...VALID_ANSWER, output: [{ type: 'message', content: [{ type: 'output_text', text: '{"options":"invalid"}' }] }] };
+    const fetchMock = respondInOrder(invalid, VALID_ANSWER);
+    vi.stubGlobal('fetch', fetchMock);
+    await estimateIntercityTransport({ ...baseRequest, reasoningEffort: 'none', maxOutputTokens: 24000, requestTimeoutMs: 10000 } as never);
+    expect(fetchMock.mock.calls).toHaveLength(2);
+    for (const [, init] of fetchMock.mock.calls) {
+      expect(JSON.parse(String(init?.body)).max_output_tokens).toBe(24000);
+      expect(init?.signal).toBeInstanceOf(AbortSignal);
+    }
+  });
+
+  it('aborts the active provider request without retrying or starting a fallback', async () => {
+    const controller = new AbortController();
+    const fetchMock = vi.fn((_url: unknown, init?: RequestInit) => new Promise<Response>((_resolve, reject) => {
+      init?.signal?.addEventListener('abort', () => reject(init.signal?.reason), { once: true });
+    }));
+    vi.stubGlobal('fetch', fetchMock);
+    const pending = estimateIntercityTransport({ ...baseRequest, reasoningEffort: 'max', signal: controller.signal } as never);
+    controller.abort();
+    await expect(pending).rejects.toMatchObject({ name: 'AbortError' });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('propagates cancellation through the non-search fallback', async () => {
+    const controller = new AbortController();
+    const fetchMock = vi.fn(async (_url: unknown, init?: RequestInit) => {
+      if (!fetchMock.mock.calls.length || fetchMock.mock.calls.length === 1) return json({ status: 'completed', output: [] });
+      return new Promise<Response>((_resolve, reject) => {
+        init?.signal?.addEventListener('abort', () => reject(init.signal?.reason), { once: true });
+        controller.abort();
+      });
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(estimateIntercityTransport({ ...baseRequest, signal: controller.signal } as never)).rejects.toMatchObject({ name: 'AbortError' });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
   const TRUNCATED = {
     model: 'gpt-5.6-luna',
     status: 'incomplete',
@@ -77,6 +122,14 @@ describe('OpenAI transport estimate output budget', () => {
 
     expect(effortsOf(fetchMock)).toEqual(['max', 'xhigh']);
     // The retry answered, so no fallback reason is recorded.
+    expect(result.providerResult.fallbackReason).toBeNull();
+  });
+
+  it('rejects truncated output even when it contains parseable JSON', async () => {
+    const fetchMock = respondInOrder({ ...VALID_ANSWER, ...TRUNCATED, output: VALID_ANSWER.output }, VALID_ANSWER);
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await estimateIntercityTransport({ ...baseRequest, reasoningEffort: 'max' } as never);
+    expect(effortsOf(fetchMock)).toEqual(['max', 'xhigh']);
     expect(result.providerResult.fallbackReason).toBeNull();
   });
 
