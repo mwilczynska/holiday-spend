@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** City generation and model discovery fixes published; verified failure-message follow-up ready to publish. Prior product phases complete.
+**Status:** City generation, model discovery and failure-message fixes complete and published for review. Prior product phases complete.
 
-**Current phase:** City generation and model discovery — failure-message follow-up.
+**Current phase:** City generation and model discovery — COMPLETE.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -14,16 +14,16 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `1581388` — city-generation request limits, incomplete-response handling,
-current discovery fallbacks and GPT-6 Luna max default; rebased onto merged `main` (`c459cfd`).
+**Latest implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
+follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** `b00f643` records completed live verification; this checkpoint closes publication.
+**Latest plan checkpoint:** `515c445` records the verified failure-message follow-up; this checkpoint closes publication.
 
-**Next action:** Commit and push the verified failure-message follow-up, then update PR #11.
+**Next action:** Review [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11).
 
-**Working tree:** Failure-message improvements and tests verified; pending follow-up commit and push.
+**Working tree:** Verified implementation committed and pushed; final publication documentation recorded here.
 
-## Failure-message follow-up — IN PROGRESS
+## Failure-message follow-up — COMPLETE
 
 The continuing owner goal also requires Chrome checks of failed generation and model refresh, with useful error
 details. The prior success checks do not prove this requirement. Preserve the successful generation/defaults
@@ -32,7 +32,7 @@ evidence below; finish the failure checks and commit this follow-up separately.
 - [x] Inspect and improve generation/model-refresh errors where provider details are lost or unsafe.
 - [x] Verify controlled failures in Chrome without reading or replacing the owner's saved provider key.
 - [x] Run appropriate checks and the required baseline; record evidence.
-- [ ] Commit and push the follow-up; update PR #11.
+- [x] Commit and push the follow-up (`515c445`); update PR #11 with the final scope and checks.
 
 Generation and discovery errors preserve provider/HTTP details with credential redaction and actionable guidance.
 Schema failures identify invalid fields, and FX validation errors retain their reason as a 502 generation failure.

@@ -2483,3 +2483,7 @@ TypeScript, clean lint, production build, 64 Vitest files / 360 tests, memory mi
 guard pass. Production auth setup plus four browser regressions pass against a disposable database copy, including
 failure details, network failure, form retention and retry, default migration and multi-provider refresh. The no-key
 authenticated production endpoint returns 60 current suggestions. Temporary production QA processes exit cleanly.
+
+Committed and pushed the failure-message chunk as `515c445` on the existing PR #11 branch. Updated the PR description
+to include the final behavior and 360-test / five-browser-check evidence. Chrome is left on the successful Querétaro
+result after cancelling the failure form; the saved key is untouched and GPT-6 Luna max is restored.
