@@ -2612,3 +2612,19 @@ Interactive Wise uploads are blocked by Chrome extension `Allow access to file U
 shows an error and the chooser opens. The permission error returns after an approximately twenty-minute wait.
 User input is requested and other testing continues. No permission or integration setting is changed by Codex.
 Source review identifies import preview category persistence as the next reproduction target.
+
+## 2 October 2026 — Wise preview category persistence
+
+Request-limit fix committed/pushed as `5f3e1f4`. A new production Playwright reproduction confirms that changing
+Food to Shopping in the Wise preview still saved Food. The confirmation request omitted editable categories.
+Confirmation now sends transaction/category overrides; the API validates supported categories, membership in the
+parsed files, duplicate overrides and extra fields. Only category changes are applied; amounts remain parsed from
+the source files. Selecting replacement files invalidates the preview; file selection/parsing is disabled during import.
+
+The previously failing browser regression passes: Shopping persists, reparse reports the existing transaction as
+duplicate. A second regression confirms replacement files clear the old preview. TypeScript, production build,
+66 Vitest files / 387 tests, memory mirror and v1.1 guard pass. The two production browser regressions plus auth
+setup pass. Interactive Chrome file attachment remains blocked on the extension permission, recorded separately.
+
+Chrome planner testing adds a disposable two-night Agra leg, verifies empty picker search and tests all six
+accommodation, four food and four drink choices. Further controls and workflows remain active in the coverage ledger.

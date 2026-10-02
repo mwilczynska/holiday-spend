@@ -83,6 +83,23 @@ page interactions, including Quick Add submission and Settings form submission. 
 
 ## Required baseline
 
+### F4 — Wise preview category changes were discarded
+
+A new production Playwright reproduction uploads a disposable AUD CSV, changes Food to Shopping in the preview,
+and confirms the import. The saved expense remains Food; the regression fails with `Expected shopping / Received food`.
+The UI kept editable categories only in local state and the API reparsed the original files on confirmation.
+Fix verified in production Playwright: send transaction/category overrides, validate allowed categories and file membership, and apply
+only the category to parsed rows. Duplicate/unknown/extra-field overrides reject atomically. Replacing selected files
+clears the old preview; file selection/parsing is disabled during confirmation. TypeScript and all 387 unit tests pass.
+Production build and two new browser regressions plus auth setup pass: Shopping persists, duplicate reparse detects
+the transaction, and replacing files invalidates the earlier preview.
+Interactive Chrome file attachment remains separately blocked on the requested extension permission.
+
+Planner Chrome progress: empty picker search shows `No matches found`; clicking Agra and adding two nights creates
+a leg for 3–5 March 2027 with costs and historical climate. All six accommodation choices and all four food choices
+accept selection and update costs. Remaining drink/activity, override, transport, dates, ordering and deletion checks
+continue after the next rebuild.
+
 Interactive Chrome file attachment is blocked: the extension reports that `Allow access to file URLs` is required.
 The chooser call waits about twenty minutes before reporting this error. No setting was changed by Codex; the user
 has been asked to enable it or leave interactive file-upload coverage blocked. Fixture CSVs are ready under

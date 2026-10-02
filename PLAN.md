@@ -36,11 +36,16 @@ Second fix committed and pushed as `78967e3`: fixed-cost failures retain input, 
 blocked and controls have accessible labels. Chrome verifies a controlled database rejection, successful retry,
 paid status after reload and fixture deletion. TypeScript, build, 383 unit tests and three new browser regressions
 plus auth setup pass. Zero request-limit validation is next.
-Third fix ready to commit: zero request limits now fail validation rather than resetting an override; blanks retain
+Third fix committed and pushed as `5f3e1f4`: zero request limits now fail validation rather than resetting an override; blanks retain
 the documented reset behavior. Chrome verifies error/draft retention, valid save/reload and reset. TypeScript,
 production build, 383 unit tests and two new production browser regressions plus auth setup pass.
 Next action: continue the feature inventory, reproduce preview category persistence, and resume interactive CSV
 uploads if the extension permission is enabled. Wider planner/dataset/expense/tag/account/mobile coverage remains.
+Fourth fix ready to commit: confirmed Wise imports now preserve preview category changes and reject unsupported,
+duplicate or out-of-file overrides before writes. Changing files clears the stale preview. The production regression
+fails before the fix (Food saved instead of Shopping) and passes after it, including duplicate reparse. TypeScript,
+build, 387 unit tests and two new browser regressions plus auth setup pass. Interactive Chrome file uploads remain
+blocked on the extension permission; other Chrome checks continue.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.

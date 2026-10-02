@@ -6,6 +6,13 @@ import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
 import { prepareWiseExpenses } from '@/lib/wise-import';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
+import { EXPENSE_CATEGORIES } from '@/types';
+import { z } from 'zod';
+
+const categoryOverridesSchema = z.array(z.object({
+  wiseTxnId: z.string().min(1),
+  category: z.enum(EXPENSE_CATEGORIES.map(category => category.value)),
+}).strict());
 
 // Kept well under the SQLite bind-parameter cap, which is 999 on older builds. The duplicate
 // lookup binds one parameter per id plus the user; each inserted row binds a dozen.
@@ -18,6 +25,10 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const files = formData.getAll('file').filter(isUploadedFile);
     const confirmImport = formData.get('confirm') === 'true';
+    const categoryOverridesRaw = formData.get('categoryOverrides');
+    const categoryOverrides = categoryOverridesRaw == null
+      ? []
+      : categoryOverridesSchema.parse(JSON.parse(String(categoryOverridesRaw)));
 
     if (files.length === 0) return error('No file provided');
 
@@ -26,6 +37,13 @@ export async function POST(request: Request) {
     const csvTexts = await Promise.all(files.map((file) => file.text()));
     const parsedRows = parseWiseCsvFiles(csvTexts);
     const parsed = await prepareWiseExpenses(parsedRows);
+    const parsedTxnIds = new Set(parsed.filter(expense => !expense.skip).map(expense => expense.wiseTxnId));
+    const categoryByTxn = new Map<string, string>();
+    for (const override of categoryOverrides) {
+      if (!parsedTxnIds.has(override.wiseTxnId)) return error('Category change refers to a transaction outside the selected files. Parse the files again.');
+      if (categoryByTxn.has(override.wiseTxnId)) return error('Duplicate category changes for the same transaction. Parse the files again.');
+      categoryByTxn.set(override.wiseTxnId, override.category);
+    }
 
     const legs = await db
       .select({
@@ -82,7 +100,7 @@ export async function POST(request: Request) {
       amount: expense.amount,
       currency: expense.currency,
       amountAud: expense.amountAud,
-      category: expense.category,
+      category: categoryByTxn.get(expense.wiseTxnId) ?? expense.category,
       subcategory: expense.subcategory,
       description: expense.description,
       merchant: expense.merchant,
