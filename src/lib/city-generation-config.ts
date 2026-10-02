@@ -20,6 +20,9 @@ export function getSupportedCityGenerationReasoningEfforts(
   const normalized = model?.trim().toLowerCase() ?? '';
 
   if (provider === 'openai') {
+    if (/^gpt-6-luna(?:-|$)/.test(normalized)) {
+      return [...CITY_GENERATION_REASONING_EFFORTS];
+    }
     if (/^gpt-5\.6(?:-|$)/.test(normalized)) {
       return [...CITY_GENERATION_REASONING_EFFORTS];
     }
@@ -62,14 +65,14 @@ export function getCityGenerationThinkingBudget(effort?: CityGenerationReasoning
 
 export const CITY_GENERATION_DEFAULT_MODELS: Record<CityGenerationProvider, string> = {
   anthropic: 'claude-sonnet-4-6',
-  openai: 'gpt-5.6-luna',
+  openai: 'gpt-6-luna',
   gemini: 'gemini-2.5-flash',
 };
 
 export const CITY_GENERATION_DEFAULT_REASONING_EFFORT: CityGenerationReasoningEffort = 'max';
 
 export const CITY_GENERATION_LEGACY_DEFAULT_MODEL_MIGRATIONS: Record<CityGenerationProvider, string[]> = {
-  openai: ['gpt-4o', 'gpt-5-mini', 'gpt-5.4-mini'],
+  openai: ['gpt-4o', 'gpt-5-mini', 'gpt-5.4-mini', 'gpt-5.6-luna'],
   anthropic: ['claude-sonnet-4-20250514'],
   gemini: ['gemini-2.0-flash'],
 };

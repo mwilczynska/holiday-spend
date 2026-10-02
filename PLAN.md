@@ -1,38 +1,88 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Methodology, prior product phases and performance follow-up complete; trip climate and performance merged into `main`.
+**Status:** City generation, model discovery and failure-message fixes complete; owner-requested merge to main in progress.
 
-**Current phase:** Merge trip climate and performance into `main` — COMPLETE.
+**Current phase:** City generation and model discovery — COMPLETE.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `main` — merge completion uses an isolated checkout; the original checkout remains available to the other agent.
+**Branch:** `fix/city-generation-model-discovery` — follow-up from the completed performance branch.
 
 **Last updated:** 1 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `ded9af3` — verified server rendering, shared readers, climate deduplication,
-card memoization and performance/browser regression checks; merged into `main` through PR #10 (`1dcaba5`).
+**Latest implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
+follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** `8288d38` — requested merges started; this completion record follows both successful merges.
-Prior performance checkpoints remain recorded below.
+**Latest plan checkpoint:** `515c445` records the verified failure-message follow-up; this checkpoint closes publication.
 
-**Next action:** The requested merges are complete. New PR work continues separately.
+**Next action:** Merge [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11) into main at its verified head, then record and verify publication.
 
-**Working tree:** Local `main` is synchronized in the isolated checkout; this merge completion record is tracked there.
-The other agent's original checkout and new PR branch were left in place.
+**Working tree:** Verified implementation committed and pushed; final publication documentation recorded here.
+
+## Owner-requested PR #11 merge — IN PROGRESS
+
+- [x] Confirm the clean working tree and published head `362be43`; GitHub reports a clean, mergeable PR against `main`.
+- [ ] Merge PR #11 without rewriting its verified implementation commits.
+- [ ] Verify the merged tree and publish the completion record on `main`.
+
+The owner requested publication to `main` after the completed Chrome success/failure checks and baseline. GitHub
+has no configured status checks on this PR. No implementation changes are needed for the merge.
+
+## Failure-message follow-up — COMPLETE
+
+The continuing owner goal also requires Chrome checks of failed generation and model refresh, with useful error
+details. The prior success checks do not prove this requirement. Preserve the successful generation/defaults
+evidence below; finish the failure checks and commit this follow-up separately.
+
+- [x] Inspect and improve generation/model-refresh errors where provider details are lost or unsafe.
+- [x] Verify controlled failures in Chrome without reading or replacing the owner's saved provider key.
+- [x] Run appropriate checks and the required baseline; record evidence.
+- [x] Commit and push the follow-up (`515c445`); update PR #11 with the final scope and checks.
+
+Generation and discovery errors preserve provider/HTTP details with credential redaction and actionable guidance.
+Schema failures identify invalid fields, and FX validation errors retain their reason as a 502 generation failure.
+Chrome verifies a real unavailable-model error in both existing-city and new-city forms. A blocked refresh gives
+a connection message and recovers to 78 live account models after the block is removed. GPT-6 Luna max is restored.
+The failed Papantla request leaves the database at 207 cities / 64 history rows; Querétaro retains one active record.
+TypeScript, lint, build, 64 Vitest files / 360 tests, memory mirror and v1.1 guard pass. Production auth setup plus
+four browser regressions pass in a disposable database copy.
+
+## City generation and model discovery — COMPLETE
+
+Started 1 October 2026 at the owner's request. Preserve v1.1 formulas, current RBA validation and browser-only
+provider credentials. Accuracy calibration remains closed.
+
+- [x] Investigate the reported failures and verify Querétaro generation and model refresh in Chrome after the fixes.
+- [x] Replace the undersized city-generation cap, reject incomplete output, and recover model discovery through current no-key sources.
+- [x] Set OpenAI's default to `gpt-6-luna` with `max` reasoning and migrate the prior stored default.
+- [x] Verify the UI and required baseline; update project memory and log.
+- [x] Commit, push and open [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11) containing the fixes.
+
+The prior performance review next action is superseded by this owner-requested fix; its completed evidence is
+retained below. Official OpenAI documentation confirms `gpt-6-luna` and `max` reasoning.
+
+TypeScript, lint, production build, 63 Vitest files / 344 tests, memory mirror and v1.1 guard pass. Isolated production
+auth setup plus three browser regressions pass. The authenticated no-key refresh returns 60 current OpenRouter
+suggestions. Live Chrome refresh returns 78 OpenAI account models without warnings; Querétaro generates once and
+saves one v1.1 history record with GPT-6 Luna max and RBA FX dated 1 October 2026. Provider keys stay within the
+app's normal UI/request handling and are not read by Codex. The original failure was not captured before the fixes.
+
+The requested Chrome Recovery skill update is installed and validated. It records reconnect verification, the
+sandbox registry diagnostic limitation and the distinction between working browser control and the unverified
+sidebar `nodePath` error. Original skill files are backed up locally.
 
 ## Requested merges — COMPLETE
 
 - [x] Merge trip climate PR #9 into `main` at its verified head `92f1606` (merge `a1d08aa`).
 - [x] Publish performance PR #10 and merge it into `main` after trip climate (merge `1dcaba5`, head `8288d38`).
-- [x] Verify both merged PRs, synchronize local `main` in the isolated checkout, and record the completed merge checkpoint.
+- [x] Verify both merged PRs and synchronize local `main` in the isolated checkout.
 
-Both merges preserve the original commits. The resulting `main` tree is identical to the verified performance branch
-before this documentation update, so the existing production baseline and browser checks still apply.
+Both merges preserve the original commits. The resulting `main` tree was identical to the verified performance
+branch before the merge documentation checkpoint. This fix branch starts from that merged baseline.
 
 ## Performance follow-up — COMPLETE
 
@@ -1460,4 +1510,7 @@ harness.
   persistence regressions pass and the owner-key smoke is complete.
 - [x] No holdout, new methodology collection, lived-spending benchmark, coefficient change, or existing-city migration occurred.
 - [x] The tracked active product branch contains none of the v5/v6 experiment bloat; verified local copies are
-  quarantined outside the repository and are not part of the branch.
+  quarantined outside the repository and are not part of the branch.Verification checkpoint: TypeScript, lint, production build, 63 Vitest files / 344 tests, memory mirror and v1.1
+guard pass. Isolated production auth setup and three browser regressions pass. An authenticated production
+model-refresh request returns 60 current OpenRouter suggestions including GPT-6 Luna. Live Chrome confirms the
+OpenAI GPT-6 Luna / Maximum default and 78 models from the keyed provider API; generation is still being checked.

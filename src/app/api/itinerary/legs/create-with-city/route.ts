@@ -2,6 +2,7 @@ import { asc, eq, sql } from 'drizzle-orm';
 import { db } from '@/db';
 import { itineraryLegs } from '@/db/schema';
 import { requireCurrentUserId } from '@/lib/auth';
+import { getLlmRuntimeSettings } from '@/lib/llm-runtime-settings';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { resolveOrCreatePlannerCity, PlannerCityResolutionError } from '@/lib/planner-city-resolution';
@@ -29,6 +30,7 @@ export async function POST(request: Request) {
     const data = createSchema.parse(body);
 
     const resolvedCity = await resolveOrCreatePlannerCity({
+      runtimeSettings: await getLlmRuntimeSettings(userId),
       cityName: data.cityName,
       countryName: data.countryName,
       provider: data.provider,

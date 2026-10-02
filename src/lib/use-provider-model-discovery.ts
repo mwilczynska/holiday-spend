@@ -7,6 +7,7 @@ import {
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
 import type { ProviderModelDiscoveryResult } from '@/lib/provider-model-discovery';
+import { getLlmNetworkErrorMessage, readLlmApiResponse } from '@/lib/llm-error-messages';
 
 interface UseProviderModelDiscoveryOptions {
   provider: CityGenerationProvider;
@@ -63,10 +64,13 @@ export function formatProviderModelDiscoveryStatus(params: {
   if (result.source === 'aggregated') {
     const aggregatorLabel = formatAggregatorLabel(result.aggregatorSource);
     const discoveredCount = result.liveModels.length;
-    return `Showing aggregated suggestions from ${aggregatorLabel}${cachedSuffix}. ${pluralizeModels(discoveredCount)} listed. Add a provider API key for live models straight from the provider.`;
+    const credentialHint = result.credentialSource === 'none'
+      ? 'Add a provider API key for models available to your account.'
+      : 'Availability for this provider account is unverified.';
+    return `Showing aggregated suggestions from ${aggregatorLabel}${cachedSuffix}. ${pluralizeModels(discoveredCount)} listed. ${credentialHint}`;
   }
 
-  return 'Showing curated snapshot suggestions. Run `npm run models:refresh` to update them.';
+  return 'Showing saved model suggestions. Refresh models to try the provider again, or enter a model ID.';
 }
 
 export function summarizeProviderModelExamples(modelIds: string[], limit = 4) {
@@ -105,16 +109,12 @@ export function useProviderModelDiscovery({
           headers: normalizedApiKey ? { 'x-provider-api-key': normalizedApiKey } : undefined,
         }
       );
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to load provider models.');
-      }
+      const data = await readLlmApiResponse(response, 'Model refresh', normalizedApiKey);
 
       setResult(data.data as ProviderModelDiscoveryResult);
     } catch (err) {
       setResult(buildFallbackState(provider));
-      setError(err instanceof Error ? err.message : 'Failed to load provider models.');
+      setError(err instanceof Error && !(err instanceof TypeError) ? err.message : getLlmNetworkErrorMessage('Model refresh'));
     } finally {
       setLoading(false);
       setRefreshing(false);

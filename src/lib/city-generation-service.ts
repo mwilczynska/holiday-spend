@@ -14,7 +14,7 @@ export type CityClimateStatus = 'ready' | 'stale' | 'unavailable';
 
 export interface GenerateAndPersistCityEstimateInput extends Pick<
   CityGenerationRequest,
-  'referenceDate' | 'extraContext' | 'provider' | 'apiKey' | 'model' | 'reasoningEffort'
+  'referenceDate' | 'extraContext' | 'provider' | 'apiKey' | 'model' | 'reasoningEffort' | 'runtimeSettings'
 > {
   cityId: string;
 }
@@ -27,6 +27,7 @@ export async function generateAndPersistCityEstimate({
   apiKey,
   model,
   reasoningEffort,
+  runtimeSettings,
 }: GenerateAndPersistCityEstimateInput) {
   const city = await db.select().from(cities).where(eq(cities.id, cityId)).get();
   if (!city) throw new CityGenerationError('City not found', 404);
@@ -43,6 +44,7 @@ export async function generateAndPersistCityEstimate({
     apiKey,
     model,
     reasoningEffort,
+    runtimeSettings,
   });
   const persisted = buildCityEstimatePersistence(generated, {
     cityName: city.name,

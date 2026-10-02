@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { describeLlmRequestFailure, formatProviderHttpError, summarizeProviderError } from '@/lib/llm-error-messages';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
   CITY_GENERATION_KNOWN_MODELS,
@@ -29,33 +30,12 @@ interface DiscoveryCacheEntry {
 }
 
 const MODEL_DISCOVERY_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
+const MODEL_DISCOVERY_REQUEST_TIMEOUT_MS = 15000;
 const modelDiscoveryCache = new Map<string, DiscoveryCacheEntry>();
 
 function normalizeApiKey(apiKey?: string) {
   const trimmed = apiKey?.trim();
   return trimmed ? trimmed : undefined;
-}
-
-function summarizeProviderError(rawText: string) {
-  const text = rawText.trim();
-  if (!text) return 'Empty error body';
-
-  try {
-    const parsed = JSON.parse(text) as {
-      error?: { message?: string } | string;
-      message?: string;
-      detail?: string;
-    };
-
-    if (typeof parsed.error === 'string') return parsed.error;
-    if (parsed.error?.message) return parsed.error.message;
-    if (parsed.message) return parsed.message;
-    if (parsed.detail) return parsed.detail;
-  } catch {
-    // Fall back to plain text.
-  }
-
-  return text.slice(0, 400);
 }
 
 function getProviderServerApiKey(provider: CityGenerationProvider) {
@@ -252,6 +232,7 @@ export function normalizeGeminiModelIds(payload: unknown) {
 
 async function fetchOpenAiModelIds(apiKey: string) {
   const response = await fetch('https://api.openai.com/v1/models', {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
     headers: {
       Authorization: `Bearer ${apiKey}`,
     },
@@ -259,7 +240,7 @@ async function fetchOpenAiModelIds(apiKey: string) {
   });
 
   if (!response.ok) {
-    throw new Error(`OpenAI API error ${response.status}: ${summarizeProviderError(await response.text())}`);
+    throw new Error(formatProviderHttpError('OpenAI', response.status, await response.text(), apiKey));
   }
 
   return normalizeOpenAiModelIds(await response.json());
@@ -267,6 +248,7 @@ async function fetchOpenAiModelIds(apiKey: string) {
 
 async function fetchAnthropicModelIds(apiKey: string) {
   const response = await fetch('https://api.anthropic.com/v1/models', {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
     headers: {
       'x-api-key': apiKey,
       'anthropic-version': '2023-06-01',
@@ -275,7 +257,7 @@ async function fetchAnthropicModelIds(apiKey: string) {
   });
 
   if (!response.ok) {
-    throw new Error(`Anthropic API error ${response.status}: ${summarizeProviderError(await response.text())}`);
+    throw new Error(formatProviderHttpError('Anthropic', response.status, await response.text(), apiKey));
   }
 
   return normalizeAnthropicModelIds(await response.json());
@@ -295,11 +277,12 @@ async function fetchGeminiModelIds(apiKey: string) {
     }
 
     const response = await fetch(url.toString(), {
+      signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
       cache: 'no-store',
     });
 
     if (!response.ok) {
-      throw new Error(`Gemini API error ${response.status}: ${summarizeProviderError(await response.text())}`);
+      throw new Error(formatProviderHttpError('Gemini', response.status, await response.text(), apiKey));
     }
 
     const payload = await response.json();
@@ -438,6 +421,7 @@ async function readAggregatorJson(params: {
 
 async function fetchOpenRouterProviderModelIds(provider: CityGenerationProvider) {
   const response = await fetch('https://openrouter.ai/api/v1/models', {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
     cache: 'no-store',
   });
 
@@ -451,6 +435,7 @@ async function fetchOpenRouterProviderModelIds(provider: CityGenerationProvider)
 
 async function fetchModelsDevProviderModelIds(provider: CityGenerationProvider) {
   const response = await fetch('https://models.dev/api.json', {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
     cache: 'no-store',
   });
 
@@ -479,7 +464,7 @@ export async function fetchAggregatedProviderModelIds(
     }
     errors.push('OpenRouter returned no usable models for this provider.');
   } catch (err) {
-    errors.push(err instanceof Error ? err.message : 'OpenRouter aggregator failed.');
+    errors.push(describeLlmRequestFailure(err, 'OpenRouter', MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false));
   }
 
   try {
@@ -489,7 +474,7 @@ export async function fetchAggregatedProviderModelIds(
     }
     errors.push('models.dev returned no usable models for this provider.');
   } catch (err) {
-    errors.push(err instanceof Error ? err.message : 'models.dev aggregator failed.');
+    errors.push(describeLlmRequestFailure(err, 'models.dev', MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false));
   }
 
   throw new Error(errors.join(' '));
@@ -577,8 +562,7 @@ export async function discoverProviderModels(params: {
       return buildFallbackDiscoveryResult({
         provider: params.provider,
         credentialSource: credential.credentialSource,
-        warning:
-          'Aggregated model sources are temporarily unavailable. Showing curated snapshot suggestions.',
+        warning: `${describeLlmRequestFailure(err, 'Model refresh', MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false)} Showing curated snapshot suggestions. Refresh models to retry, or enter a model ID.`,
       });
     }
   }
@@ -588,6 +572,9 @@ export async function discoverProviderModels(params: {
       params.provider,
       await fetchProviderLiveModelIds(params.provider, credential.apiKey)
     );
+    if (liveModels.length === 0) {
+      throw new Error('The provider returned no usable generation models.');
+    }
     const value: Omit<ProviderModelDiscoveryResult, 'cacheHit'> = {
       provider: params.provider,
       source: 'live',
@@ -598,9 +585,7 @@ export async function discoverProviderModels(params: {
       liveModels,
       effectiveModels: buildEffectiveModels(params.provider, 'live', liveModels),
       fetchedAt: new Date().toISOString(),
-      warning: liveModels.length === 0
-        ? 'The provider returned no usable generation models. Showing curated snapshot suggestions first.'
-        : null,
+      warning: null,
     };
 
     modelDiscoveryCache.set(cacheKey, {
@@ -613,12 +598,24 @@ export async function discoverProviderModels(params: {
       cacheHit: false,
     };
   } catch (err) {
+    const providerError = describeLlmRequestFailure(err, `${params.provider} model refresh`, MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, credential.apiKey, false);
+    // A key may permit generation without allowing the model-list endpoint.
+    // Continue through the no-key sources before using the stored snapshot.
+    try {
+      const aggregated = await buildAggregatedDiscoveryResult({ provider: params.provider });
+      return {
+        ...aggregated,
+        credentialSource: credential.credentialSource,
+        cacheHit: false,
+        warning: `${providerError} Showing current aggregated suggestions; availability for this account is unverified.`,
+      };
+    } catch {
+      // The snapshot is the final fallback; do not cache failed provider reads.
+    }
     return buildFallbackDiscoveryResult({
       provider: params.provider,
       credentialSource: credential.credentialSource,
-      warning: err instanceof Error
-        ? `${err.message} Showing curated snapshot suggestions.`
-        : 'Live model discovery failed. Showing curated snapshot suggestions.',
+      warning: `${providerError} Aggregated sources are also unavailable. Showing curated snapshot suggestions.`,
     });
   }
 }

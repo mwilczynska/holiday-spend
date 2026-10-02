@@ -22,6 +22,7 @@ import {
 } from '@/lib/city-generation-config';
 import { useProviderApiKeys } from '@/lib/use-provider-api-keys';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
+import { getLlmNetworkErrorMessage, readLlmApiResponse } from '@/lib/llm-error-messages';
 
 interface CityGenerationPanelProps {
   cityId: string;
@@ -185,16 +186,12 @@ export function CityGenerationPanel({
         }),
       });
 
-      const data = await response.json();
-      if (!response.ok) {
-        setError(data.error || 'Failed to generate city costs.');
-        return;
-      }
+      const data = await readLlmApiResponse(response, 'City generation', activeApiKey);
 
       setResult(data.data as GenerationResult);
       onGenerated();
-    } catch {
-      setError('Failed to generate city costs.');
+    } catch (err) {
+      setError(err instanceof Error && !(err instanceof TypeError) ? err.message : getLlmNetworkErrorMessage('City generation'));
     } finally {
       setLoading(false);
     }

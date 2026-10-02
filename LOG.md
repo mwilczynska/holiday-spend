@@ -2424,3 +2424,66 @@ The memory mirror and whitespace check also pass for the merge documentation.
 Another agent started `fix/city-generation-model-discovery` in the shared working tree while these merges were in
 progress. Moved the merge work to `.local/merge-request`, removed only this task's temporary plan edits from the
 original checkout, and synchronized local `main` in the isolated checkout. The new PR branch was not merged or changed.
+
+## 1 October 2026 — City generation limits and current model discovery
+
+The owner reported failed Querétaro, Mexico generation and model refresh and requested GPT-6 Luna max as OpenAI's
+default. City generation still imposed 2,500 tokens (raised to only 12,000 at max) and never read the user request
+limits. OpenAI incomplete responses were treated as ordinary text, so exhausted reasoning surfaced as a JSON-schema
+failure. New-city, planner add-city and existing-city refresh now pass the configured limits and timeout; truncated
+OpenAI output is rejected and retried through max → xhigh → high without dropping required web search. The
+successful effort is persisted, and usage logs contain only model/status/token metadata.
+
+Keyed model-list failures previously skipped the no-key aggregators and returned the April snapshot. They now try
+current aggregators, label account availability as unverified and are not cached. Discovery calls time out after
+15 seconds. The snapshot is refreshed from upstream; the previous stored OpenAI default migrates to gpt-6-luna.
+Official model documentation: https://developers.openai.com/api/docs/models/gpt-6-luna. Other custom selections remain.
+
+TypeScript, lint, production build, 63 Vitest files / 344 tests, memory mirror and v1.1 guard pass. Isolated production
+auth setup plus three browser regressions pass, and the authenticated no-key refresh returns 60 current OpenRouter
+models. The browser tests use a disposable SQLite copy and generated test credentials; no owner-key values are
+accessed. Live Chrome verifies an explicit refresh returning 78 OpenAI account models without warnings. Querétaro,
+Mexico generates successfully once, with one history row, `openai/gpt-6-luna`, thinking `max`, v1.1 and dated RBA FX
+snapshot `llm-rba-fx-2026-10-01` (UI rate 1 USD = 1.44 AUD). The original failure was not captured before the fixes;
+the former cap and incomplete-response defects are reproduced by deterministic transport tests. No live CSV edits,
+formula changes, calibration work or bulk migrations are performed. Temporary production QA processes are stopped.
+
+Chrome control initially failed during request-header policy initialization and then reported unavailable browser
+bindings. A user-requested Astra xhigh subagent recovered control after reconnecting and verified page interaction,
+model refresh and generation through the UI. No integration files/settings were changed. The sidebar's separate
+missing-`nodePath` error was not verified repaired; successful Chrome automation is the observed recovery.
+
+Updated the owner-invoked Chrome Recovery skill with these observations and retained its original files in an
+ignored local backup. The installed skill passes Skill Creator validation and matches the validated staged files.
+The skill documents current CUA discovery, bounded reconnect checks, unknown action outcomes, sandbox registry
+false failures and the separate sidebar error; it does not claim a permanent integration repair.
+
+Published implementation `1581388` and verification checkpoint `b00f643` on
+`origin/fix/city-generation-model-discovery`. Opened PR #11 against `main`:
+https://github.com/mwilczynska/holiday-spend/pull/11. The final documentation checkpoint closes this task;
+the PR remains open for review.
+
+## 1 October 2026 — Generation and model-refresh failure messages
+
+The continuing owner goal includes Chrome checks of failed generation and refresh, beyond the earlier success
+checks. Added shared credential-safe provider errors with HTTP status and guidance for authentication, permissions,
+model access, quota and temporary provider failures. Browser network failures and unreadable server responses now
+have distinct messages. City schema failures identify invalid or missing fields without echoing returned values;
+invalid RBA FX now preserves its validation reason as a 502 generation failure rather than a generic server error.
+Anthropic and Gemini now use the configured request deadline too, including time spent waiting for retries.
+
+Live Chrome, with the saved key kept masked and never read, verifies a nonexistent-model error for an existing city
+and the new-city Papantla, Mexico form. Both display the real OpenAI 404/model-access detail and retry guidance;
+the form retains its fields and re-enables submission. A tab-scoped block on the model-refresh endpoint produces
+the connection message. Removing that block and refreshing restores 78 live account models, GPT-6 Luna and Maximum.
+The block is removed and networking restored. Read-only database checks confirm 207 cities / 64 history rows before
+and after the failed Papantla request, no Papantla row and one active Querétaro history row.
+
+TypeScript, clean lint, production build, 64 Vitest files / 360 tests, memory mirror and the unchanged-live-CSV v1.1
+guard pass. Production auth setup plus four browser regressions pass against a disposable database copy, including
+failure details, network failure, form retention and retry, default migration and multi-provider refresh. The no-key
+authenticated production endpoint returns 60 current suggestions. Temporary production QA processes exit cleanly.
+
+Committed and pushed the failure-message chunk as `515c445` on the existing PR #11 branch. Updated the PR description
+to include the final behavior and 360-test / five-browser-check evidence. Chrome is left on the successful Querétaro
+result after cancelling the failure form; the saved key is untouched and GPT-6 Luna max is restored.
