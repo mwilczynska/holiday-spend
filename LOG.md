@@ -2628,7 +2628,7 @@ setup pass. Interactive Chrome file attachment remains blocked on the extension 
 
 Chrome planner testing adds a disposable two-night Agra leg, verifies empty picker search and tests all six
 accommodation, four food and four drink choices. Further controls and workflows remain active in the coverage ledger.
-# 2 October 2026 — Feature QA: visible zero planner overrides
+## 2 October 2026 — Feature QA: visible zero planner overrides
 
 Chrome reproduces a saved zero drinks override displayed as Auto despite correct totals (155 AUD/day, two nights
 plus 65 one-off = 375). The field used a truthy fallback. Nullish fallback preserves zero, and labels now target
@@ -2636,3 +2636,17 @@ their inputs. A production regression fails before the fix and passes after it f
 to automatic pricing, and separate one-off transport. Chrome verifies zero after reload. TypeScript, build, all
 387 unit tests, memory mirror and v1.1 guard pass. The full 47-check production browser suite also passed before
 this additional regression. Testing remains on the isolated database; coverage continues.
+
+## 2 October 2026 — Feature QA: expense mutation and read failures
+
+Chrome controlled expense update failure closed the form and discarded the draft without showing an error.
+Edit/exclude/delete/bulk handlers now check HTTP and response shape, catch network failures and retain failed
+drafts/selections. A ref guards concurrent submissions. Reads retain explicitly labelled prior results with Retry,
+and stale in-flight responses cannot overwrite newer ones. Controls have labels; expanded details span eight columns.
+Chrome verifies retained fields and successful retry after removing the copy-only trigger, including category,
+merchant, subcategory and unassignment. Three production browser regressions plus auth setup pass for HTTP/network
+and validation failures, mutation retry/persistence and read-failure retry. TypeScript, build and all 387 unit tests pass.
+
+Automatic approval rejected live transport estimation because route cities, dates and notes could leave the app.
+The user has an async choice about disposable live provider checks; independent local feature testing continues.
+No owner provider keys are read. The isolated launcher explicitly clears provider and Resend environment keys.

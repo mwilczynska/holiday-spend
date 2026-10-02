@@ -18,9 +18,9 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | --- | --- | --- |
 | Authentication | Signed-out redirects; required/invalid fields; login/logout; verification/reset invalid tokens; account editing | Chrome: signed-out root redirects to login; empty Sign in disabled; fixture login reaches dashboard. Remaining checks pending. |
 | Dashboard | Populated and empty states; three charts; expansions/close; tooltips; country/category views; trip-window amounts | Chrome: nine information buttons; Per Day and Planned view switches; all three expansions; Close and Escape. Remaining empty/responsive/tooltip checks pending. |
-| Planner | Add/edit/delete legs; picker click/keyboard; nights/date boundaries; every tier; status; overrides; notes; reorder/sort; traveller scaling | Pending |
-| Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing records and retry | Pending |
-| Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Pending |
+| Planner | Add/edit/delete legs; picker click/keyboard; nights/date boundaries; every tier; status; overrides; notes; reorder/sort; traveller scaling | Chrome: disposable Agra add/delete; no-match search; all 6 accommodation and all 4 food/drink/activity tiers; three statuses; five overrides; zero-display fix/reload; zero nights normalizes to one; keyboard date editing updates dates/nights; move up/down exercised. Traveller scaling and sort persistence pending. |
+| Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing records and retry | Chrome: Agra annual chart/table, 12 months, close, C/F propagates to leg. Playwright: missing/retry, monthly segmentation and shared units pass. Remaining interactive trip/tooltips/scroll pending. |
+| Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: two rows with modes/notes, 65 and 35.50 costs, total includes both once; row removal; individual dialog open/close; six mode controls; no-mode estimate disabled; advanced settings and provider list opened. Controlled Playwright: Stop, failed-only retry, model discovery and apply paths pass. Live action rejected by automatic approval; user question pending. |
 | Plan files | CSV export/import; malformed/duplicate/missing-city rows; cancel and confirm | Pending |
 | Saved plans | Save/load/rename/delete/export/import; warnings; empty and multi-plan comparisons; category/country/chart controls | Pending |
 | Expenses | Add/edit/delete; currency and rate; date/leg assignment; category/source/date filters; pagination; exclusion; bulk include/exclude/delete | Chrome: all Quick Add category and payer buttons; USD save; active-leg assignment; missing conversion reproduced. Remaining CRUD/filter/bulk checks pending. |
@@ -102,6 +102,24 @@ empty string. Fix verified: preserve zero with nullish fallback and associate ov
 Chrome after reload shows `100, 20, 0, 30, 5`; production regression plus auth setup pass for all five zero fields,
 reload, clearing to automatic costs and an independent 65 AUD one-off transport. TypeScript, build, 387 unit tests,
 memory mirror and v1.1 guard pass. Evidence: `planner-zero-hidden.png`, `planner-zero-fixed.png` under the QA folder.
+
+### F6 — Failed expense operations hide errors and discard edit/selection state
+
+Chrome edits fixture 2227 to `QA rejected expense edit`; a temporary copy-only SQLite trigger rejects the update.
+The form closes with no error. Fix verified: mutations check HTTP/JSON/network responses before closing drafts or
+clearing selection, and controls are labelled. Failed reads preserve prior rows with an explicit warning and Retry;
+older in-flight reads cannot replace newer results. Expanded details now span all eight columns.
+Chrome displays `Internal server error` with the edit retained; after removing the trigger, retry changes description,
+merchant, subcategory, category and assignment. Three production browser regressions plus auth setup pass for
+HTTP/network/validation retention, exclusion/include/bulk/delete retry, and read-failure preservation/retry.
+TypeScript, production build and 387 unit tests pass. Evidence: `expense-edit-retained-error.png`. Trigger removed.
+
+### Live provider action approval
+
+Automatic approval rejected a batch containing model refresh and Estimate Options because route cities, dates
+and notes could be sent to external providers. No live estimate was submitted. An async choice asks whether to
+keep provider checks local or allow disposable live provider checks. The QA launcher now explicitly clears OpenAI,
+Anthropic, Gemini and Resend environment keys; owner keys are never inspected. Local and controlled regressions continue.
 
 ## Required baseline
 
