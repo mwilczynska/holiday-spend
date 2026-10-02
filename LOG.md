@@ -2539,3 +2539,7 @@ The initial full-suite run overlapped a build and hit a database setup timeout; 
 The live city CSV hash remains `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
 
 Committed the verified implementation as `caf6933` on `fix/shared-keys-city-picker`. Publication follows this checkpoint.
+
+Published implementation `caf6933` and verification checkpoint `e552ae9` to `origin/fix/shared-keys-city-picker`.
+Opened [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12) against main with the final scope and validation.
+This final documentation checkpoint closes the task; the PR remains open for review.

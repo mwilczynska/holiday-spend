@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Shared browser API keys, city-picker interactions and cancellable transport estimates verified; publication in progress. Prior product phases complete.
+**Status:** Shared browser API keys, city-picker interactions and cancellable transport estimates complete; published in PR #12. Prior product phases complete.
 
-**Current phase:** Shared API keys, city picker and transport requests — VERIFIED, awaiting publication.
+**Current phase:** Shared API keys, city picker and transport requests — COMPLETE.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -19,13 +19,13 @@ page seven times. See Phase 8 for the corrected evidence.
 **Previous implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
 follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** `28886be` records the requested merge; this checkpoint closes publication on main.
+**Latest plan checkpoint:** `e552ae9` records the verified fixes before publication; this checkpoint closes PR #12 publication.
 
-**Next action:** Push the verified implementation and publication checkpoint, then open the new PR for review.
+**Next action:** Owner review of [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12).
 
-**Working tree:** Implementation committed at `caf6933`; publication checkpoint ready to commit and push.
+**Working tree:** Publication complete; clean after this documentation checkpoint.
 
-## Shared API keys, city picker and transport requests — VERIFIED
+## Shared API keys, city picker and transport requests — COMPLETE
 
 Started at the owner's request after merging PR #11. Saved API keys should be shared by city-generation and
 transport dialogs, including already open browser windows. Provider/model preferences remain separate. Preserve
@@ -35,7 +35,7 @@ opt-in saving and migrate only previously saved keys; Codex must not read owner-
 - [x] Make city choices visibly highlighted and selectable by both click and Enter.
 - [x] Make every transport call respect configured token/time limits, including fallbacks; stop active and queued batch requests without losing completed results.
 - [x] Verify the requested interactions and required baseline; update memory/log for the implementation checkpoint.
-- [ ] Publish the new fix branch for review.
+- [x] Publish `caf6933` and verification checkpoint `e552ae9`; open [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12) for review.
 
 Chrome verifies immediate click/Enter selection, full-opacity dark highlighting, and saved-key changes between
 already-open city and transport dialogs on a disposable production origin. Clear and opt-out synchronize correctly.
