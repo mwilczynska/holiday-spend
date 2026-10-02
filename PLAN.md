@@ -1,6 +1,6 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** City generation, model discovery and failure-message fixes complete; owner-requested merge to main in progress.
+**Status:** City generation, model discovery and failure-message fixes complete and merged into main. Prior product phases complete.
 
 **Current phase:** City generation and model discovery — COMPLETE.
 
@@ -8,7 +8,7 @@
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `fix/city-generation-model-discovery` — follow-up from the completed performance branch.
+**Branch:** `main` — includes PR #11 from `fix/city-generation-model-discovery`.
 
 **Last updated:** 1 October 2026
 
@@ -17,20 +17,22 @@ page seven times. See Phase 8 for the corrected evidence.
 **Latest implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
 follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** `515c445` records the verified failure-message follow-up; this checkpoint closes publication.
+**Latest plan checkpoint:** `28886be` records the requested merge; this checkpoint closes publication on main.
 
-**Next action:** Merge [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11) into main at its verified head, then record and verify publication.
+**Next action:** None for this fix; [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11) is merged into main.
 
-**Working tree:** Verified implementation committed and pushed; final publication documentation recorded here.
+**Working tree:** Local main synchronized with the verified merge; completion documentation recorded here.
 
-## Owner-requested PR #11 merge — IN PROGRESS
+## Owner-requested PR #11 merge — COMPLETE
 
 - [x] Confirm the clean working tree and published head `362be43`; GitHub reports a clean, mergeable PR against `main`.
-- [ ] Merge PR #11 without rewriting its verified implementation commits.
-- [ ] Verify the merged tree and publish the completion record on `main`.
+- [x] Merge PR #11 without rewriting its verified implementation commits (`5a12f83`, head `28886be`).
+- [x] Verify the merged tree and publish the completion record on `main`.
 
 The owner requested publication to `main` after the completed Chrome success/failure checks and baseline. GitHub
 has no configured status checks on this PR. No implementation changes are needed for the merge.
+The merge tree is identical to the verified PR head, so the recorded 360 tests, five browser checks and baseline
+results apply. Local main is fast-forwarded to the merge before this documentation checkpoint.
 
 ## Failure-message follow-up — COMPLETE
 
