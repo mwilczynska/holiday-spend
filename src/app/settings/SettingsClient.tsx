@@ -286,6 +286,9 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               <Input
                 id="llm-max-tokens"
                 type="number"
+                min={llm?.limits.maxOutputTokens.min}
+                max={llm?.limits.maxOutputTokens.max}
+                step="1"
                 value={llmDraft.maxOutputTokens}
                 onChange={(e) => setLlmDraft((p) => ({ ...p, maxOutputTokens: e.target.value }))}
               />
@@ -298,6 +301,9 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               <Input
                 id="llm-timeout"
                 type="number"
+                min={llm ? llm.limits.requestTimeoutMs.min / 1000 : undefined}
+                max={llm ? llm.limits.requestTimeoutMs.max / 1000 : undefined}
+                step="1"
                 value={llmDraft.requestTimeoutSeconds}
                 onChange={(e) => setLlmDraft((p) => ({ ...p, requestTimeoutSeconds: e.target.value }))}
               />
@@ -312,10 +318,10 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               size="sm"
               disabled={!llm}
               onClick={() => saveLlmSettings({
-                maxOutputTokens: Number(llmDraft.maxOutputTokens) || null,
-                requestTimeoutMs: Number(llmDraft.requestTimeoutSeconds)
-                  ? Number(llmDraft.requestTimeoutSeconds) * 1000
-                  : null,
+                maxOutputTokens: llmDraft.maxOutputTokens.trim() === '' ? null : Number(llmDraft.maxOutputTokens),
+                requestTimeoutMs: llmDraft.requestTimeoutSeconds.trim() === ''
+                  ? null
+                  : Number(llmDraft.requestTimeoutSeconds) * 1000,
               })}
             >
               Save limits
@@ -329,8 +335,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               Reset to defaults
             </Button>
           </div>
-          {llmStatus ? <p className="text-sm text-muted-foreground">{llmStatus}</p> : null}
-          {llmError ? <p className="text-sm text-destructive">{llmError}</p> : null}
+          {llmStatus ? <p role="status" className="text-sm text-muted-foreground">{llmStatus}</p> : null}
+          {llmError ? <p role="alert" className="text-sm text-destructive">{llmError}</p> : null}
         </CardContent>
       </Card>
 

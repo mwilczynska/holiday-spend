@@ -32,10 +32,15 @@ and prevents duplicate success submissions. Chrome verifies 25 USD → $36.03 AU
 production build, 383 Vitest tests, memory mirror, v1.1 guard and three new browser regressions plus auth setup pass.
 The 37 existing production browser checks also pass. Coverage/findings: `docs/dev/feature-qa-2026-10-02.md`.
 Next fixes: rejected fixed-cost forms and zero request-limit validation, each committed separately.
-Second fix ready to commit: fixed-cost failures retain input, paid/delete failures expose errors, invalid amounts are
+Second fix committed and pushed as `78967e3`: fixed-cost failures retain input, paid/delete failures expose errors, invalid amounts are
 blocked and controls have accessible labels. Chrome verifies a controlled database rejection, successful retry,
 paid status after reload and fixture deletion. TypeScript, build, 383 unit tests and three new browser regressions
 plus auth setup pass. Zero request-limit validation is next.
+Third fix ready to commit: zero request limits now fail validation rather than resetting an override; blanks retain
+the documented reset behavior. Chrome verifies error/draft retention, valid save/reload and reset. TypeScript,
+production build, 383 unit tests and two new production browser regressions plus auth setup pass.
+Next action: continue the feature inventory, reproduce preview category persistence, and resume interactive CSV
+uploads if the extension permission is enabled. Wider planner/dataset/expense/tag/account/mobile coverage remains.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.

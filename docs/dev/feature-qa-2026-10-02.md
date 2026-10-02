@@ -25,7 +25,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Saved plans | Save/load/rename/delete/export/import; warnings; empty and multi-plan comparisons; category/country/chart controls | Pending |
 | Expenses | Add/edit/delete; currency and rate; date/leg assignment; category/source/date filters; pagination; exclusion; bulk include/exclude/delete | Chrome: all Quick Add category and payer buttons; USD save; active-leg assignment; missing conversion reproduced. Remaining CRUD/filter/bulk checks pending. |
 | Expense tags | Tag CRUD; assignment/removal; tagged-expense navigation; empty/duplicate names | Pending |
-| Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Pending |
+| Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
 | Dataset | City/country search; pagination; city CRUD; missing costs; editor controls; history/provenance; generation/retry | Pending |
 | Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Pending |
 | Settings | Traveller count; request-limit validity/save/reset; fixed-cost CRUD/paid; JSON/CSV exports | Chrome: fixed-cost negative blocked; controlled save failure keeps input; retry, paid toggle, reload persistence and delete. Zero-limit defect reproduced; remaining traveller/export checks pending. |
@@ -67,7 +67,13 @@ Evidence: `.local/feature-qa/fixed-cost-retained-error.png`, `fixed-cost-paid-pe
 ### F3 — Zero request limits silently reset to default
 
 Chrome entered 0 output tokens and clicked Save limits. It reports `Provider limits saved` and restores 64,000
-instead of rejecting zero; the draft uses `Number(value) || null`. Reset to defaults also works. Fix pending.
+instead of rejecting zero; the draft uses `Number(value) || null`. Reset to defaults also works.
+
+Fix verified: only an empty string becomes null; zero reaches the existing server validator and is rejected.
+Chrome displays `Too small: expected number to be >=1000` while retaining 0. Saving 32,000 tokens / 90 seconds
+persists after reload; Reset restores defaults. Two production browser regressions plus auth setup pass, covering
+zero/negative/bounds/fractional-token failures without changing saved overrides, valid persistence and reset/blank
+behavior. TypeScript, production build and 383 unit tests pass. Evidence: `.local/feature-qa/provider-zero-rejected.png`.
 
 ### Browser connection interruption
 
@@ -76,6 +82,12 @@ After dashboard checks the browser command timed out and the next attachment rep
 page interactions, including Quick Add submission and Settings form submission. No integration files/settings changed.
 
 ## Required baseline
+
+Interactive Chrome file attachment is blocked: the extension reports that `Allow access to file URLs` is required.
+The chooser call waits about twenty minutes before reporting this error. No setting was changed by Codex; the user
+has been asked to enable it or leave interactive file-upload coverage blocked. Fixture CSVs are ready under
+`.local/feature-qa/`. Code review also identifies a hypothesis requiring reproduction: edited preview categories
+are absent from the import confirmation payload.
 
 Initial production build passed. All 37 existing Playwright checks (including authentication setup) passed against the
 isolated production server in 2.1 minutes. These include controlled provider failures, climate/retry/C/F, picker

@@ -2596,3 +2596,19 @@ TypeScript, production build, all 383 Vitest tests, memory mirror and v1.1 guard
 Playwright regressions plus auth setup pass, covering failed add/network retry, paid/delete rejection and real CRUD
 persistence. Screenshots and detailed coverage are recorded in `docs/dev/feature-qa-2026-10-02.md`.
 Remaining next steps include zero request-limit validation and the wider workflow inventory.
+
+## 2 October 2026 — Request-limit zero validation
+
+Fixed-cost fix committed/pushed as `78967e3`. The separately reproduced zero-limit defect came from converting
+`Number(value) || null`: 0 reset the override and reported success. Only blank fields now become null; zero reaches
+the existing server validator. Inputs expose current bounds, status and error messages have accessible roles.
+
+Chrome verifies zero tokens retain their draft and show the minimum-value error. Valid 32,000 tokens / 90 seconds
+persist after reload, and Reset restores defaults. TypeScript, production build, 383 Vitest tests, memory mirror
+and v1.1 guard pass. Two new production browser regressions plus auth setup pass, including rejected zero/negative/
+bounds/fractional-token writes retaining saved overrides and valid persistence/reset/blank behavior.
+
+Interactive Wise uploads are blocked by Chrome extension `Allow access to file URLs`; Parse with no file correctly
+shows an error and the chooser opens. The permission error returns after an approximately twenty-minute wait.
+User input is requested and other testing continues. No permission or integration setting is changed by Codex.
+Source review identifies import preview category persistence as the next reproduction target.
