@@ -188,6 +188,9 @@ and category groupings. Manual transport remains separate.
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
+New manual expenses resolve an AUD conversion before saving when none is supplied. An unavailable rate leaves the
+conversion missing with a visible warning. Quick Add retains rejected input for retry and clears successful input
+immediately to prevent duplicate submissions.
 
 ## Running the app locally
 

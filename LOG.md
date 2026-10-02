@@ -2555,3 +2555,27 @@ Published merge-start checkpoint `d863e48`. GitHub reports a clean, mergeable PR
 local main is fast-forwarded to it. The recorded full baseline, 377 tests, five production browser checks and Chrome
 interaction evidence still apply because this merge changes no implementation. This documentation checkpoint
 records completion on main; memory consistency and whitespace checks pass.
+
+## 2 October 2026 — Comprehensive Chrome feature QA, expense creation fix
+
+Owner requests comprehensive interactive Chrome testing and a commit after each fix. Start from clean main
+`1413f3f` on `fix/comprehensive-feature-qa`. Tests use a SQLite backup at `.local/feature-qa/travel.db` with a fixture
+account; the owner database and credentials are not changed. Track actual coverage and unresolved findings in
+`docs/dev/feature-qa-2026-10-02.md`.
+
+Chrome verifies fixture login, nine dashboard information buttons, both chart view switches and all three
+expansions with Close/Escape. A transient request-header policy failure recovers on one retry; no Chrome integration
+files/settings change. Quick Add categories and payer buttons work, but saving 25 USD leaves `amount_aud` null and
+Expenses shows `No AUD conversion`. Fixed-cost negative-value rejection also closes/clears its form without an error;
+zero provider output tokens silently reset to default. Those two fixes remain separate next steps.
+
+Expense creation now resolves AUD when none is supplied, preserves missing conversion if rates fail, and warns the
+user. Quick Add displays rejected/network errors, retains input for retry, clears successful input immediately and
+prevents duplicate success submissions. Chrome verifies empty-currency rejection with retained input, then 25 USD
+retry saved as $36.03 AUD (36.0275 stored). Evidence lives under `.local/feature-qa/`.
+
+TypeScript, production build, memory mirror and v1.1 guard pass; live CSV unchanged. Ten focused route tests pass.
+The initial full suite hits an existing 10-second snapshot-import setup timeout (379 passed / four skipped); the
+rerun passes all 66 files / 383 tests. All 37 existing production Playwright checks and three new expense regressions
+plus auth setup pass. Production rebuild requires stopping the identified QA process tree after Ctrl+C leaves it
+holding `.next/standalone`; the existing guard reports this immediately.

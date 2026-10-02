@@ -6,6 +6,7 @@ import { error } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 import { loadTrackExpensePage } from '@/lib/track-data';
 import { EXPENSE_PAGE_SIZE } from '@/lib/performance-bounds';
+import { convertToAud } from '@/lib/exchange-rates';
 import { z } from 'zod';
 
 const trackViewSchema = z.object({
@@ -129,7 +130,16 @@ export async function POST(request: Request) {
         return error('Assigned leg not found', 404);
       }
     }
-    const result = await db.insert(expenses).values({ ...data, userId }).returning();
+    let amountAud: number | null = data.amountAud ?? null;
+    if (amountAud === null) {
+      try {
+        amountAud = await convertToAud(data.amount, data.currency, data.date);
+      } catch {
+        // Preserve the expense when a rate is unavailable, with its conversion explicitly missing.
+        amountAud = null;
+      }
+    }
+    const result = await db.insert(expenses).values({ ...data, amountAud, userId }).returning();
     return success(result[0], 201);
   } catch (err) {
     return handleError(err);

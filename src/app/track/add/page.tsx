@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -38,6 +38,9 @@ export default function QuickAddPage() {
   const [activeLeg, setActiveLeg] = useState<ActiveLeg | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [conversionWarning, setConversionWarning] = useState<string | null>(null);
+  const submitting = useRef(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -90,8 +93,11 @@ export default function QuickAddPage() {
   }
 
   const handleSubmit = async () => {
-    if (!amount || parseFloat(amount) <= 0) return;
+    if (submitting.current || saved || !Number.isFinite(Number(amount)) || Number(amount) <= 0) return;
+    submitting.current = true;
     setSaving(true);
+    setSaveError(null);
+    setConversionWarning(null);
 
     try {
       const res = await fetch('/api/expenses', {
@@ -109,15 +115,19 @@ export default function QuickAddPage() {
         }),
       });
 
-      if (res.ok) {
-        setSaved(true);
-        setTimeout(() => {
-          setAmount('');
-          setDescription('');
-          setSaved(false);
-        }, 1500);
+      const result = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(result?.error || `Could not save expense (HTTP ${res.status}). Try again.`);
+      if (!result?.data) throw new Error('The server returned an unreadable save response. Check Expenses before retrying.');
+      if (result.data.amountAud == null && currency !== 'AUD') {
+        setConversionWarning('Expense saved without an AUD conversion because the exchange rate is unavailable. It will not count toward AUD totals until converted.');
       }
+      setSaved(true);
+      setAmount('');
+      setDescription('');
+    } catch (err) {
+      setSaveError(err instanceof Error ? err.message : 'Could not save expense. Check your connection and try again.');
     } finally {
+      submitting.current = false;
       setSaving(false);
     }
   };
@@ -134,18 +144,20 @@ export default function QuickAddPage() {
       {/* Amount — large and prominent */}
       <Card>
         <CardContent className="p-4">
-          <Label className="text-sm text-muted-foreground">Amount</Label>
+          <Label htmlFor="quick-amount" className="text-sm text-muted-foreground">Amount</Label>
           <div className="flex items-center gap-2 mt-1">
             <Input
+              id="quick-amount"
               type="number"
               inputMode="decimal"
               placeholder="0.00"
               value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              onChange={(e) => { setAmount(e.target.value); setSaved(false); }}
               className="text-3xl h-14 font-bold text-center"
               autoFocus
             />
             <Input
+              aria-label="Currency"
               value={currency}
               onChange={(e) => setCurrency(e.target.value.toUpperCase())}
               className="w-20 h-14 text-center font-medium"
@@ -212,11 +224,13 @@ export default function QuickAddPage() {
         </div>
       </div>
 
+      {saveError && <p role="alert" className="text-sm text-destructive">{saveError}</p>}
+      {conversionWarning && <p role="status" className="text-sm text-muted-foreground">{conversionWarning}</p>}
       {/* Submit */}
       <Button
         className="w-full h-12 text-lg"
         onClick={handleSubmit}
-        disabled={saving || !amount || parseFloat(amount) <= 0}
+        disabled={saving || saved || !amount || !Number.isFinite(Number(amount)) || Number(amount) <= 0}
       >
         {saved ? 'Saved!' : (
           <LoadingButtonLabel idle="Add Expense" loading="Saving..." isLoading={saving} />

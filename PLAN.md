@@ -1,16 +1,16 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Shared browser keys, city-picker interactions and cancellable transport estimates are merged into main through PR #12. Prior product phases complete.
+**Status:** Comprehensive owner-requested Chrome feature testing is active. Prior product phases complete.
 
-**Current phase:** Owner-requested PR #12 merge — COMPLETE.
+**Current phase:** Chrome feature and edge-case testing — IN PROGRESS.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `main` — includes PR #12 merge `e34ee64` and PR #11.
+**Branch:** `fix/comprehensive-feature-qa` — starts from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 1 October 2026
+**Last updated:** 2 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
@@ -21,9 +21,32 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** No outstanding work from this request.
+**Next action:** Start an isolated production database/server; test each route and workflow in Chrome, fix reproduced defects and commit each fix.
 
-**Working tree:** Local main is synced to the merge; clean after this completion checkpoint.
+**Working tree:** Testing starts from clean main `1413f3f`. Disposable workflow writes must remain outside the owner's database.
+
+## Comprehensive Chrome feature testing — IN PROGRESS
+
+First fix ready to commit: Quick Add now converts new expenses to AUD, exposes failed saves, retains rejected input,
+and prevents duplicate success submissions. Chrome verifies 25 USD → $36.03 AUD and error/retry; TypeScript,
+production build, 383 Vitest tests, memory mirror, v1.1 guard and three new browser regressions plus auth setup pass.
+The 37 existing production browser checks also pass. Coverage/findings: `docs/dev/feature-qa-2026-10-02.md`.
+Next fixes: rejected fixed-cost forms and zero request-limit validation, each committed separately.
+
+- [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
+- [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.
+- [ ] Verify itinerary CRUD, dates, tiers, overrides, ordering, climate and transport workflows.
+- [ ] Verify saved-plan CRUD, loading and comparisons.
+- [ ] Verify expenses, tags, assignment, bulk actions and Wise CSV import/export.
+- [ ] Verify city/country library CRUD, generation, history and provider failure/retry controls.
+- [ ] Verify settings, request limits, account flows and methodology navigation.
+- [ ] Fix reproduced defects, add focused regressions and commit/push each fix with its evidence.
+- [ ] Run the required baseline and report tested coverage, problems, fixes and remaining limitations.
+
+Test production content in Chrome using an isolated database copy and fixture account. Cover empty, populated,
+invalid, boundary and failure states where feasible. Existing methodology accuracy work remains closed; provider
+credentials stay masked and are never read. Real email delivery and irreversible account actions require a separate
+disposable workflow. Record interactive Chrome evidence separately from automated regression results.
 
 ## Owner-requested PR #12 merge — COMPLETE
 
