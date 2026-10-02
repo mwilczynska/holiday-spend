@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Shared browser API keys, city-picker interactions and cancellable transport estimates complete; published in PR #12. Prior product phases complete.
+**Status:** The owner requested merging the verified shared-key, city-picker and transport fixes in PR #12 into main. Merge in progress; prior product phases complete.
 
-**Current phase:** Shared API keys, city picker and transport requests — COMPLETE.
+**Current phase:** Owner-requested PR #12 merge — IN PROGRESS.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -19,11 +19,20 @@ page seven times. See Phase 8 for the corrected evidence.
 **Previous implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
 follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** `e552ae9` records the verified fixes before publication; this checkpoint closes PR #12 publication.
+**Latest plan checkpoint:** `2ea3dbd` closes PR #12 publication; this checkpoint records the owner's merge request before publication to main.
 
-**Next action:** Owner review of [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12).
+**Next action:** Merge [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12), verify its tree and sync local main.
 
-**Working tree:** Publication complete; clean after this documentation checkpoint.
+**Working tree:** Merge-start documentation only; implementation remains verified at `caf6933`.
+
+## Owner-requested PR #12 merge — IN PROGRESS
+
+- [x] Confirm the clean working tree and published head `2ea3dbd` against main `51c50fd`.
+- [ ] Merge PR #12 while preserving its verified implementation commits.
+- [ ] Verify the merged tree, sync local main and publish the completion record.
+
+The owner requested publication to main after Chrome testing and the required baseline passed. GitHub has no
+configured status checks on this PR. This merge needs no implementation changes.
 
 ## Shared API keys, city picker and transport requests — COMPLETE
 

@@ -2543,3 +2543,9 @@ Committed the verified implementation as `caf6933` on `fix/shared-keys-city-pick
 Published implementation `caf6933` and verification checkpoint `e552ae9` to `origin/fix/shared-keys-city-picker`.
 Opened [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12) against main with the final scope and validation.
 This final documentation checkpoint closes the task; the PR remains open for review.
+
+## 1 October 2026 — Owner-requested PR #12 merge
+
+The owner requested pushing the completed fixes to main. The working tree is clean and the published PR head is
+`2ea3dbd`, based on main `51c50fd`. Preserve the verified commits with a merge commit, compare the merged tree
+with the published PR head, then synchronize local main and publish the completion record.
