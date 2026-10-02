@@ -81,8 +81,6 @@ After dashboard checks the browser command timed out and the next attachment rep
 `Unable to load browser request-header policy. Retry the browser command.` One retry restored attachment and actual
 page interactions, including Quick Add submission and Settings form submission. No integration files/settings changed.
 
-## Required baseline
-
 ### F4 — Wise preview category changes were discarded
 
 A new production Playwright reproduction uploads a disposable AUD CSV, changes Food to Shopping in the preview,
@@ -94,6 +92,20 @@ clears the old preview; file selection/parsing is disabled during confirmation. 
 Production build and two new browser regressions plus auth setup pass: Shopping persists, duplicate reparse detects
 the transaction, and replacing files invalidates the earlier preview.
 Interactive Chrome file attachment remains separately blocked on the requested extension permission.
+
+### F5 — Zero planner overrides display as Auto
+
+Chrome sets Agra overrides to 100 accommodation, 20 food, 0 drinks, 30 activities and 5 daily transport, plus a
+65 AUD one-off bus. The persisted total is correctly 155/day and 375 for two nights, but the drinks field is blank
+with the Auto placeholder, including after reload. A new production regression fails with expected `0`, received
+empty string. Fix verified: preserve zero with nullish fallback and associate override labels with their fields.
+Chrome after reload shows `100, 20, 0, 30, 5`; production regression plus auth setup pass for all five zero fields,
+reload, clearing to automatic costs and an independent 65 AUD one-off transport. TypeScript, build, 387 unit tests,
+memory mirror and v1.1 guard pass. Evidence: `planner-zero-hidden.png`, `planner-zero-fixed.png` under the QA folder.
+
+## Required baseline
+
+After F4, all 47 production Playwright checks pass in 2.2 minutes. These are separate from Chrome extension checks.
 
 Planner Chrome progress: empty picker search shows `No matches found`; clicking Agra and adding two nights creates
 a leg for 3–5 March 2027 with costs and historical climate. All six accommodation choices and all four food choices

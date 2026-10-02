@@ -2628,3 +2628,11 @@ setup pass. Interactive Chrome file attachment remains blocked on the extension 
 
 Chrome planner testing adds a disposable two-night Agra leg, verifies empty picker search and tests all six
 accommodation, four food and four drink choices. Further controls and workflows remain active in the coverage ledger.
+# 2 October 2026 — Feature QA: visible zero planner overrides
+
+Chrome reproduces a saved zero drinks override displayed as Auto despite correct totals (155 AUD/day, two nights
+plus 65 one-off = 375). The field used a truthy fallback. Nullish fallback preserves zero, and labels now target
+their inputs. A production regression fails before the fix and passes after it for all five fields, reload, clearing
+to automatic pricing, and separate one-off transport. Chrome verifies zero after reload. TypeScript, build, all
+387 unit tests, memory mirror and v1.1 guard pass. The full 47-check production browser suite also passed before
+this additional regression. Testing remains on the isolated database; coverage continues.

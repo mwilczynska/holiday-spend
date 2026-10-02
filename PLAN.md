@@ -41,11 +41,16 @@ the documented reset behavior. Chrome verifies error/draft retention, valid save
 production build, 383 unit tests and two new production browser regressions plus auth setup pass.
 Next action: continue the feature inventory, reproduce preview category persistence, and resume interactive CSV
 uploads if the extension permission is enabled. Wider planner/dataset/expense/tag/account/mobile coverage remains.
-Fourth fix ready to commit: confirmed Wise imports now preserve preview category changes and reject unsupported,
+Fourth fix committed and pushed as `a3ed1ce`: confirmed Wise imports now preserve preview category changes and reject unsupported,
 duplicate or out-of-file overrides before writes. Changing files clears the stale preview. The production regression
 fails before the fix (Food saved instead of Shopping) and passes after it, including duplicate reparse. TypeScript,
 build, 387 unit tests and two new browser regressions plus auth setup pass. Interactive Chrome file uploads remain
 blocked on the extension permission; other Chrome checks continue.
+All 47 production Playwright checks pass. Fifth fix ready to commit: zero planner overrides remain visible and
+override labels are associated with their fields. Chrome verifies the saved zero after reload. A production
+regression fails before the fix and passes after it, covering all five fields, reload, clearing to automatic costs,
+and independent one-off transport totals. TypeScript, build, 387 unit tests, memory check and v1.1 guard pass.
+Next action: continue planner dates/reordering/climate, expense operations, tags and remaining library/account/mobile controls.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.

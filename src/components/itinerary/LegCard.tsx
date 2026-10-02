@@ -606,12 +606,13 @@ export const LegCard = memo(function LegCard({
               { field: 'transportOverride', label: 'Transport $/day' },
             ].map(({ field, label }) => (
               <div key={field}>
-                <Label className="text-xs">{label}</Label>
+                <Label htmlFor={`leg-${leg.id}-${field}`} className="text-xs">{label}</Label>
                 <Input
+                  id={`leg-${leg.id}-${field}`}
                   type="number"
                   className="h-8 text-xs"
                   placeholder="Auto"
-                  value={(leg as Record<string, unknown>)[field] as string || ''}
+                  value={((leg as Record<string, unknown>)[field] as number | null) ?? ''}
                   onChange={(e) => handleFieldChange(field, e.target.value ? parseFloat(e.target.value) : null)}
                 />
               </div>
