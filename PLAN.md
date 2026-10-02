@@ -1,14 +1,14 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** The owner requested merging the verified shared-key, city-picker and transport fixes in PR #12 into main. Merge in progress; prior product phases complete.
+**Status:** Shared browser keys, city-picker interactions and cancellable transport estimates are merged into main through PR #12. Prior product phases complete.
 
-**Current phase:** Owner-requested PR #12 merge — IN PROGRESS.
+**Current phase:** Owner-requested PR #12 merge — COMPLETE.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `fix/shared-keys-city-picker` — starts from main `51c50fd`, including PR #11.
+**Branch:** `main` — includes PR #12 merge `e34ee64` and PR #11.
 
 **Last updated:** 1 October 2026
 
@@ -19,20 +19,22 @@ page seven times. See Phase 8 for the corrected evidence.
 **Previous implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
 follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** `2ea3dbd` closes PR #12 publication; this checkpoint records the owner's merge request before publication to main.
+**Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Merge [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12), verify its tree and sync local main.
+**Next action:** No outstanding work from this request.
 
-**Working tree:** Merge-start documentation only; implementation remains verified at `caf6933`.
+**Working tree:** Local main is synced to the merge; clean after this completion checkpoint.
 
-## Owner-requested PR #12 merge — IN PROGRESS
+## Owner-requested PR #12 merge — COMPLETE
 
 - [x] Confirm the clean working tree and published head `2ea3dbd` against main `51c50fd`.
-- [ ] Merge PR #12 while preserving its verified implementation commits.
-- [ ] Verify the merged tree, sync local main and publish the completion record.
+- [x] Merge PR #12 while preserving its verified implementation commits (`e34ee64`, head `d863e48`).
+- [x] Verify the merged tree, sync local main and publish the completion record.
 
 The owner requested publication to main after Chrome testing and the required baseline passed. GitHub has no
 configured status checks on this PR. This merge needs no implementation changes.
+The merge tree is identical to the published PR head. The recorded 377 tests, five production browser checks,
+Chrome interactions and baseline results therefore apply. Local main is fast-forwarded to the merge.
 
 ## Shared API keys, city picker and transport requests — COMPLETE
 

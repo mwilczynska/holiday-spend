@@ -2549,3 +2549,9 @@ This final documentation checkpoint closes the task; the PR remains open for rev
 The owner requested pushing the completed fixes to main. The working tree is clean and the published PR head is
 `2ea3dbd`, based on main `51c50fd`. Preserve the verified commits with a merge commit, compare the merged tree
 with the published PR head, then synchronize local main and publish the completion record.
+
+Published merge-start checkpoint `d863e48`. GitHub reports a clean, mergeable PR and merges that exact head as
+`e34ee64`, preserving the verified implementation commits. The merged tree is identical to the published PR head;
+local main is fast-forwarded to it. The recorded full baseline, 377 tests, five production browser checks and Chrome
+interaction evidence still apply because this merge changes no implementation. This documentation checkpoint
+records completion on main; memory consistency and whitespace checks pass.
