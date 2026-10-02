@@ -142,11 +142,16 @@ Generation and model-refresh errors include HTTP/provider details and retry guid
 Invalid city output identifies missing or invalid fields; failed RBA validation gives its reason and saves no estimate.
 Network failures and unreadable server responses have separate messages; generation forms remain available for retry.
 
+Provider keys use one opt-in browser store shared by city generation, CSV-import generation and both transport
+dialogs. Saved changes and clearing synchronize across open windows in the same browser profile and origin.
+Existing saved feature keys migrate once. Unchecking saving removes persisted keys while retaining them for the
+current window's session; unsaved keys are shared between its dialogs. Provider/model preferences remain separate.
+
 ## Provider request limits
 
 Two limits bound every provider call, configurable per user under **Settings → Provider Request Limits**, and
 overridable by `LLM_MAX_OUTPUT_TOKENS` and `LLM_REQUEST_TIMEOUT_MS`. Precedence is the user setting, then the
-environment, then the defaults in `src/lib/llm-runtime-settings.ts` (64,000 output tokens, 300-second timeout). A null
+environment, then the defaults in `src/lib/llm-runtime-settings.ts` (64,000 output tokens, 600-second timeout). A null
 column means "follow the default", so raising a default reaches everyone who has not deliberately overridden it.
 
 Neither limit is a budget. Providers bill reasoning tokens against `max_output_tokens` as they are generated, so a
@@ -161,6 +166,11 @@ to stop searching. Every call logs its token usage, so the defaults can be revis
 City generation uses these limits for both new and existing cities. Incomplete OpenAI responses are rejected even
 when their text parses as JSON; retries retain required web search and share the original timeout. Successful
 estimates record the effort that produced the answer. v1.1 never drops its required current-FX search.
+
+Every transport path, including non-search and strict JSON retries, uses the configured limits; none imposes a
+separate small answer cap. Bulk transport has a Stop control that aborts active requests and prevents queued legs
+from starting. Cancelled legs are labelled separately from failures, and completed results remain available to apply.
+Failed legs can be retried together without discarding completed estimates or rerunning successful legs.
 
 ## Product behavior
 

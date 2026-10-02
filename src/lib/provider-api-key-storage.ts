@@ -11,10 +11,61 @@ export const EMPTY_PROVIDER_API_KEYS: ProviderApiKeys = {
   gemini: '',
 };
 
-interface StorageLike {
+export interface StorageLike {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
   removeItem(key: string): void;
+}
+
+export interface ProviderApiKeyState {
+  apiKeys: ProviderApiKeys;
+  saveApiKeys: boolean;
+}
+
+export const SHARED_PROVIDER_API_KEY_STORAGE_KEY = 'holiday-spend.provider-api-keys';
+const LEGACY_STORAGE_PREFIXES = ['holiday-spend.city-generation', 'holiday-spend.transport-estimation'];
+
+export function persistSharedProviderApiKeys(storage: StorageLike, state: ProviderApiKeyState) {
+  try {
+    // One atomic record keeps the preference and its saved values in step across windows.
+    storage.setItem(SHARED_PROVIDER_API_KEY_STORAGE_KEY, JSON.stringify({
+      saveApiKeys: state.saveApiKeys,
+      apiKeys: state.saveApiKeys ? state.apiKeys : EMPTY_PROVIDER_API_KEYS,
+    }));
+    for (const prefix of LEGACY_STORAGE_PREFIXES) {
+      storage.removeItem(`${prefix}.apiKeys`);
+      storage.removeItem(`${prefix}.saveApiKeys`);
+    }
+  } catch {
+    // Keep session use working if browser storage is unavailable. Never delete a legacy
+    // saved key before its replacement has been written successfully.
+  }
+}
+
+export function loadSharedProviderApiKeys(storage: StorageLike): ProviderApiKeyState {
+  const empty = { apiKeys: { ...EMPTY_PROVIDER_API_KEYS }, saveApiKeys: false };
+  try {
+    const raw = storage.getItem(SHARED_PROVIDER_API_KEY_STORAGE_KEY);
+    if (raw !== null) {
+      const parsed = JSON.parse(raw);
+      return parsed?.saveApiKeys === true
+        ? { apiKeys: parseProviderApiKeys(JSON.stringify(parsed.apiKeys)) ?? empty.apiKeys, saveApiKeys: true }
+        : empty;
+    }
+    const migrated: ProviderApiKeyState = { apiKeys: { ...EMPTY_PROVIDER_API_KEYS }, saveApiKeys: false };
+    for (const prefix of LEGACY_STORAGE_PREFIXES) {
+      const legacy = loadProviderApiKeys(storage, prefix);
+      if (!legacy.saveApiKeys) continue;
+      migrated.saveApiKeys = true;
+      for (const provider of CITY_GENERATION_PROVIDER_OPTIONS) {
+        if (!migrated.apiKeys[provider.value].trim()) migrated.apiKeys[provider.value] = legacy.apiKeys[provider.value];
+      }
+    }
+    persistSharedProviderApiKeys(storage, migrated);
+    return migrated;
+  } catch {
+    return empty;
+  }
 }
 
 function emptyProviderApiKeys(): ProviderApiKeys {

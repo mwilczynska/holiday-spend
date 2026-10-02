@@ -81,7 +81,7 @@ export function SearchableSelect({
                     setOpen(false);
                   }}
                   className={cn(
-                    'group flex items-start gap-2 aria-selected:text-white',
+                    'group flex cursor-pointer items-start gap-2 aria-selected:text-white',
                     isSelected
                       ? 'bg-slate-900 text-white aria-selected:bg-slate-900'
                       : 'aria-selected:bg-slate-800'

@@ -129,7 +129,7 @@ export function TransportEstimateDialog({
     clearCurrentProviderApiKey: clearStoredCurrentApiKey,
     clearAllSavedApiKeys: clearStoredAllApiKeys,
     hasAnySavedApiKey,
-  } = useProviderApiKeys(STORAGE_PREFIX);
+  } = useProviderApiKeys();
 
   useEffect(() => {
     if (typeof window === 'undefined') return;

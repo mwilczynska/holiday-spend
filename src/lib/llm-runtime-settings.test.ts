@@ -55,6 +55,7 @@ describe('llm runtime settings', () => {
     // ran for around two minutes. A cap that binds during normal use is worse than none, because
     // the tokens are paid for and the answer is thrown away.
     expect(LLM_MAX_OUTPUT_TOKENS_DEFAULT).toBeGreaterThan(12259 * 3);
-    expect(LLM_REQUEST_TIMEOUT_MS_DEFAULT).toBeGreaterThan(120000);
+    // GPT-6 Luna max reached the former five-minute deadline during the October UI check.
+    expect(LLM_REQUEST_TIMEOUT_MS_DEFAULT).toBeGreaterThan(300000);
   });
 });

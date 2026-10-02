@@ -2495,3 +2495,57 @@ commits and published head `28886be`. GitHub reports the PR merged. The merged t
 the recorded 360 tests, five production browser checks and required baseline therefore apply without implementation
 changes. No GitHub status checks were configured. Fast-forwarded local main to the merge and published this completion
 record after checking the memory mirror and whitespace.
+
+## 1 October 2026 — Shared keys, city selection and transport request controls
+
+The owner requested shared saved provider keys across city and transport dialogs/windows, clearer city selection,
+and Chrome verification. They then reported every leg in a ten-leg transport batch failing at a 900-token cap,
+with no way to stop the queue, and asked for a substantially larger request size.
+
+Replaced feature-specific key hook state with one session store and one atomic opt-in browser record. Previously
+saved city and transport keys migrate once; explicit opt-outs are respected. Native storage events update other
+open windows, and same-window subscriptions update every dialog. Clearing and opting out remove saved values;
+unsaved session use remains available. Provider/model preferences retain their existing feature namespaces.
+
+The city-picker defect was a CSS selector matching `data-disabled="false"`. It applied pointer-events:none and
+50% opacity to enabled options. Disabled styling now matches only true, and enabled choices have a pointer cursor,
+full contrast, immediate click selection and the existing Enter behavior. Chrome verifies Querétaro by click,
+Lima by Enter, and a dark active row with white text at full opacity.
+
+Removed transport's 900-token browsing cap and 650-token fallback cap. Every grounded, non-search and strict JSON
+retry uses the configured output/time limits, with a 64,000-token output default regardless of effort. Truncated
+OpenAI output is rejected even if it parses as JSON. Stop aborts active browser/provider requests and prevents
+queued legs from starting; cancelled legs are distinct from failures. Completed estimates remain available,
+failed-only retries preserve them, and the action footer stays visible while scrolling. Abort signals also
+interrupt provider retry waits and prevent an aborted request from starting a fallback.
+
+Chrome's real ten-leg cancellation test returns ten cancelled / zero failed and restores the controls. A subsequent
+run at GPT-6 Luna Maximum yields nine successful estimates and one five-minute timeout on Querétaro to San Agustinillo.
+Both stored request-limit overrides are null, with no environment override, so the five-minute default is the cause.
+Increased the default to ten minutes; that route then succeeds on retry. The development reload cleared this test
+preview, so the retry selected only that route. No transport estimates were applied to the owner's itinerary.
+Parent data refreshes now preserve an open dialog's results. This is an execution check, with no accuracy calibration.
+
+Saved-key sharing, clearing and opt-out also pass in two already-open Chrome pages on a disposable production
+origin at 127.0.0.1:3002. Fixture keys and account credentials stay in the ignored QA environment; the owner key
+remains masked and is never accessed by Codex. Temporary test keys are cleared and test tabs/server are closed.
+Proof files are under `.local/city-generation-qa/`: `city-picker-highlight.jpg`, `shared-key-chrome.jpg`,
+`transport-stopped.jpg`, and `transport-retry-success.jpg`.
+
+TypeScript, clean lint, production build, 65 Vitest files / 377 tests, memory mirror and v1.1 guard pass. Production
+auth setup plus four interaction regressions pass against a disposable database copy. A first browser run exposed
+a duplicate Close locator and timed out during picker interaction; the locator is corrected and the final run passes.
+The initial full-suite run overlapped a build and hit a database setup timeout; both later full-suite runs pass.
+The live city CSV hash remains `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+Committed the verified implementation as `caf6933` on `fix/shared-keys-city-picker`. Publication follows this checkpoint.
+
+Published implementation `caf6933` and verification checkpoint `e552ae9` to `origin/fix/shared-keys-city-picker`.
+Opened [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12) against main with the final scope and validation.
+This final documentation checkpoint closes the task; the PR remains open for review.
+
+## 1 October 2026 — Owner-requested PR #12 merge
+
+The owner requested pushing the completed fixes to main. The working tree is clean and the published PR head is
+`2ea3dbd`, based on main `51c50fd`. Preserve the verified commits with a merge commit, compare the merged tree
+with the published PR head, then synchronize local main and publish the completion record.

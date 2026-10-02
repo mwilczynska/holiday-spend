@@ -1,27 +1,60 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** City generation, model discovery and failure-message fixes complete and merged into main. Prior product phases complete.
+**Status:** The owner requested merging the verified shared-key, city-picker and transport fixes in PR #12 into main. Merge in progress; prior product phases complete.
 
-**Current phase:** City generation and model discovery — COMPLETE.
+**Current phase:** Owner-requested PR #12 merge — IN PROGRESS.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `main` — includes PR #11 from `fix/city-generation-model-discovery`.
+**Branch:** `fix/shared-keys-city-picker` — starts from main `51c50fd`, including PR #11.
 
 **Last updated:** 1 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
+**Latest implementation checkpoint:** `caf6933` — shared saved keys, clickable city choices, configured transport limits, Stop and failed-leg retry.
+
+**Previous implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
 follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
 
-**Latest plan checkpoint:** `28886be` records the requested merge; this checkpoint closes publication on main.
+**Latest plan checkpoint:** `2ea3dbd` closes PR #12 publication; this checkpoint records the owner's merge request before publication to main.
 
-**Next action:** None for this fix; [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11) is merged into main.
+**Next action:** Merge [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12), verify its tree and sync local main.
 
-**Working tree:** Local main synchronized with the verified merge; completion documentation recorded here.
+**Working tree:** Merge-start documentation only; implementation remains verified at `caf6933`.
+
+## Owner-requested PR #12 merge — IN PROGRESS
+
+- [x] Confirm the clean working tree and published head `2ea3dbd` against main `51c50fd`.
+- [ ] Merge PR #12 while preserving its verified implementation commits.
+- [ ] Verify the merged tree, sync local main and publish the completion record.
+
+The owner requested publication to main after Chrome testing and the required baseline passed. GitHub has no
+configured status checks on this PR. This merge needs no implementation changes.
+
+## Shared API keys, city picker and transport requests — COMPLETE
+
+Started at the owner's request after merging PR #11. Saved API keys should be shared by city-generation and
+transport dialogs, including already open browser windows. Provider/model preferences remain separate. Preserve
+opt-in saving and migrate only previously saved keys; Codex must not read owner-key values.
+
+- [x] Share key storage and live state across every LLM dialog/window; verify migration, clearing and opt-out.
+- [x] Make city choices visibly highlighted and selectable by both click and Enter.
+- [x] Make every transport call respect configured token/time limits, including fallbacks; stop active and queued batch requests without losing completed results.
+- [x] Verify the requested interactions and required baseline; update memory/log for the implementation checkpoint.
+- [x] Publish `caf6933` and verification checkpoint `e552ae9`; open [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12) for review.
+
+Chrome verifies immediate click/Enter selection, full-opacity dark highlighting, and saved-key changes between
+already-open city and transport dialogs on a disposable production origin. Clear and opt-out synchronize correctly.
+The live owner-key ten-leg batch stops with ten cancelled and zero failed; the following run yields nine estimates
+and one five-minute timeout. Raising the default to ten minutes lets that route succeed on retry. No estimates were
+applied to the itinerary, and Codex did not read the saved key. Transport uses the 64,000-token default throughout.
+
+TypeScript, clean lint, production build, 65 Vitest files / 377 tests, memory mirror and v1.1 guard pass. Production
+authentication setup plus four interaction regressions pass on an isolated database copy: click/Enter, shared keys,
+ten-leg cancellation with completed-result retention, and failed-only retry. Generated city data and formulas are unchanged.
 
 ## Owner-requested PR #11 merge — COMPLETE
 

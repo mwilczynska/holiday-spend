@@ -139,6 +139,7 @@ export async function POST(
       // Configured in Settings; falls back to the environment and then the defaults.
       ...(await getLlmRuntimeSettings(userId)),
       routeFacts,
+      signal: request.signal,
     });
 
     return success({

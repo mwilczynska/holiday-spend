@@ -82,7 +82,7 @@ export function CityGenerationPanel({
     clearCurrentProviderApiKey: clearStoredCurrentApiKey,
     clearAllSavedApiKeys: clearStoredAllApiKeys,
     hasAnySavedApiKey,
-  } = useProviderApiKeys(STORAGE_PREFIX);
+  } = useProviderApiKeys();
 
   useEffect(() => {
     const storedProvider = window.localStorage.getItem(`${STORAGE_PREFIX}.provider`) as ProviderOption | null;

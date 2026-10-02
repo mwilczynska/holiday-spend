@@ -15,6 +15,7 @@ export async function runWithConcurrency<T, TResult>(
   concurrency: number,
   worker: (item: T, index: number) => Promise<TResult>,
   onResult?: (result: TResult, index: number) => void | Promise<void>,
+  signal?: AbortSignal,
 ): Promise<TResult[]> {
   if (items.length === 0) return [];
 
@@ -24,6 +25,7 @@ export async function runWithConcurrency<T, TResult>(
 
   async function runWorker() {
     while (true) {
+      if (signal?.aborted) return;
       const index = nextIndex;
       nextIndex += 1;
 

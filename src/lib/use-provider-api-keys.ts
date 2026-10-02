@@ -1,68 +1,31 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { CityGenerationProvider } from '@/lib/city-generation-config';
-import {
-  clearPersistedProviderApiKeys,
-  EMPTY_PROVIDER_API_KEYS,
-  loadProviderApiKeys,
-  persistProviderApiKeyPreference,
-  persistProviderApiKeys,
-  type ProviderApiKeys,
-} from '@/lib/provider-api-key-storage';
+import { useSyncExternalStore } from 'react';
+import { SHARED_PROVIDER_API_KEY_STORAGE_KEY } from '@/lib/provider-api-key-storage';
+import { createProviderApiKeyStore, EMPTY_PROVIDER_API_KEY_STATE } from '@/lib/provider-api-key-store';
 
-export function useProviderApiKeys(storagePrefix: string) {
-  const [apiKeys, setApiKeys] = useState<ProviderApiKeys>(() => ({ ...EMPTY_PROVIDER_API_KEYS }));
-  const [saveApiKeys, setSaveApiKeys] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
+const sharedKeys = createProviderApiKeyStore({
+  getStorage: () => {
+    try { return typeof window === 'undefined' ? null : window.localStorage; } catch { return null; }
+  },
+  listenForStorage: (refresh) => {
+    if (typeof window === 'undefined') return () => {};
+    const onStorage = (event: StorageEvent) => {
+      if (event.storageArea === window.localStorage && (event.key === null || event.key === SHARED_PROVIDER_API_KEY_STORAGE_KEY)) refresh();
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  },
+});
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const stored = loadProviderApiKeys(window.localStorage, storagePrefix);
-    setApiKeys(stored.apiKeys);
-    setSaveApiKeys(stored.saveApiKeys);
-    setHydrated(true);
-  }, [storagePrefix]);
-
-  useEffect(() => {
-    if (!hydrated || typeof window === 'undefined') return;
-
-    persistProviderApiKeyPreference(window.localStorage, storagePrefix, saveApiKeys);
-    if (saveApiKeys) {
-      persistProviderApiKeys(window.localStorage, storagePrefix, apiKeys);
-    } else {
-      clearPersistedProviderApiKeys(window.localStorage, storagePrefix);
-    }
-  }, [apiKeys, hydrated, saveApiKeys, storagePrefix]);
-
-  const updateApiKey = useCallback((provider: CityGenerationProvider, value: string) => {
-    setApiKeys((current) => ({
-      ...current,
-      [provider]: value,
-    }));
-  }, []);
-
-  const clearCurrentProviderApiKey = useCallback((provider: CityGenerationProvider) => {
-    updateApiKey(provider, '');
-  }, [updateApiKey]);
-
-  const clearAllSavedApiKeys = useCallback(() => {
-    setApiKeys({ ...EMPTY_PROVIDER_API_KEYS });
-  }, []);
-
-  const hasAnySavedApiKey = useMemo(
-    () => saveApiKeys && Object.values(apiKeys).some((value) => value.trim().length > 0),
-    [apiKeys, saveApiKeys]
-  );
-
+export function useProviderApiKeys() {
+  const state = useSyncExternalStore(sharedKeys.subscribe, sharedKeys.getSnapshot, () => EMPTY_PROVIDER_API_KEY_STATE);
   return {
-    apiKeys,
-    saveApiKeys,
-    setSaveApiKeys,
-    updateApiKey,
-    clearCurrentProviderApiKey,
-    clearAllSavedApiKeys,
-    hasAnySavedApiKey,
+    ...state,
+    setSaveApiKeys: sharedKeys.setSaveApiKeys,
+    updateApiKey: sharedKeys.updateApiKey,
+    clearCurrentProviderApiKey: sharedKeys.clearCurrentProviderApiKey,
+    clearAllSavedApiKeys: sharedKeys.clearAllSavedApiKeys,
+    hasAnySavedApiKey: state.saveApiKeys && Object.values(state.apiKeys).some((value) => value.trim().length > 0),
   };
 }

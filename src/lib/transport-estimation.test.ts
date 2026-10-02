@@ -92,7 +92,7 @@ describe('transport reasoning effort', () => {
     expect(requestBody).toMatchObject({
       model: 'claude-sonnet-4-6',
       thinking: { type: 'enabled', budget_tokens: 8192 },
-      max_tokens: 9692,
+      max_tokens: 64000,
     });
   });
 

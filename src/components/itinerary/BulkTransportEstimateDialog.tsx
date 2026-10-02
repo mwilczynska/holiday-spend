@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -68,7 +68,7 @@ interface EstimatedLegResult {
   origin: string;
   destination: string;
   travelDate: string;
-  status: 'success' | 'error';
+  status: 'success' | 'error' | 'cancelled';
   estimate?: TransportEstimateResult;
   error?: string;
 }
@@ -126,6 +126,16 @@ export function BulkTransportEstimateDialog({
   const [applying, setApplying] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<EstimatedLegResult[]>([]);
+  const batchController = useRef<AbortController | null>(null);
+  const [stopped, setStopped] = useState(false);
+  const wasOpen = useRef(false);
+
+  useEffect(() => () => batchController.current?.abort(), []);
+
+  function handleStop() {
+    batchController.current?.abort();
+    setStopped(true);
+  }
   const {
     apiKeys,
     saveApiKeys,
@@ -134,7 +144,7 @@ export function BulkTransportEstimateDialog({
     clearCurrentProviderApiKey: clearStoredCurrentApiKey,
     clearAllSavedApiKeys: clearStoredAllApiKeys,
     hasAnySavedApiKey,
-  } = useProviderApiKeys(STORAGE_PREFIX);
+  } = useProviderApiKeys();
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -209,10 +219,13 @@ export function BulkTransportEstimateDialog({
   );
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) { wasOpen.current = false; return; }
+    if (wasOpen.current) return;
+    wasOpen.current = true;
     setSelectedLegIds(new Set(defaultSelectedLegIds));
     setError(null);
     setResults([]);
+    setStopped(false);
   }, [defaultSelectedLegIds, open]);
 
   function handleOpenChange(nextOpen: boolean) {
@@ -285,8 +298,9 @@ export function BulkTransportEstimateDialog({
     replaceSelectedLegIds(nextSelectedLegIds);
   }
 
-  async function handleEstimateAll() {
-    if (selectedTransportLegs.length === 0) {
+  async function handleEstimateAll(legsToEstimate = selectedTransportLegs) {
+    if (batchController.current) return;
+    if (legsToEstimate.length === 0) {
       setError('Select at least one leg to estimate.');
       return;
     }
@@ -298,10 +312,14 @@ export function BulkTransportEstimateDialog({
 
     setEstimating(true);
     setError(null);
-    setResults([]);
+    const retryIds = new Set(legsToEstimate.map((leg) => leg.legId));
+    setResults((current) => current.filter((entry) => !retryIds.has(entry.legId)));
+    setStopped(false);
+    const controller = new AbortController();
+    batchController.current = controller;
 
-    const selectedLegsSnapshot = [...selectedTransportLegs];
-    const selectedLegOrder = new Map(selectedLegsSnapshot.map((leg, index) => [leg.legId, index]));
+    const selectedLegsSnapshot = [...legsToEstimate];
+    const selectedLegOrder = new Map(estimatableTransportLegs.map((leg, index) => [leg.legId, index]));
 
     try {
       await runWithConcurrency(
@@ -311,6 +329,7 @@ export function BulkTransportEstimateDialog({
           try {
             const response = await fetch(`/api/itinerary/legs/${leg.legId}/estimate-transport`, {
               method: 'POST',
+              signal: controller.signal,
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 provider,
@@ -324,6 +343,7 @@ export function BulkTransportEstimateDialog({
             });
 
             const data = await response.json();
+            controller.signal.throwIfAborted();
             if (!response.ok) {
               throw new Error(data.error || `Failed to estimate ${leg.destination}.`);
             }
@@ -342,8 +362,8 @@ export function BulkTransportEstimateDialog({
               origin: leg.origin,
               destination: leg.destination,
               travelDate: leg.travelDate,
-              status: 'error',
-              error: err instanceof Error ? err.message : 'Failed to estimate transport for this leg.',
+              status: controller.signal.aborted ? 'cancelled' : 'error',
+              error: controller.signal.aborted ? undefined : (err instanceof Error ? err.message : 'Failed to estimate transport for this leg.'),
             };
           }
         },
@@ -352,8 +372,16 @@ export function BulkTransportEstimateDialog({
             (left, right) => (selectedLegOrder.get(left.legId) ?? 0) - (selectedLegOrder.get(right.legId) ?? 0)
           ));
         },
+        controller.signal,
       );
     } finally {
+      if (controller.signal.aborted) {
+        setResults((current) => [...current, ...selectedLegsSnapshot
+          .filter((leg) => !current.some((entry) => entry.legId === leg.legId))
+          .map((leg) => ({ ...leg, status: 'cancelled' as const }))]
+          .sort((left, right) => (selectedLegOrder.get(left.legId) ?? 0) - (selectedLegOrder.get(right.legId) ?? 0)));
+      }
+      batchController.current = null;
       setEstimating(false);
     }
   }
@@ -705,6 +733,7 @@ export function BulkTransportEstimateDialog({
           ) : null}
 
           {error ? <p className="text-sm text-destructive">{error}</p> : null}
+          {stopped ? <p role="status" className="text-sm text-muted-foreground">Estimation stopped. Completed estimates are still ready to apply; unfinished legs were cancelled.</p> : null}
 
           {results.length > 0 ? (
             <div className="space-y-3">
@@ -713,6 +742,13 @@ export function BulkTransportEstimateDialog({
                 <Badge variant="outline">
                   {results.filter((result) => result.status === 'error').length} failed
                 </Badge>
+                {results.some((result) => result.status === 'cancelled') ? <Badge variant="outline">{results.filter((result) => result.status === 'cancelled').length} cancelled</Badge> : null}
+                {results.some((result) => result.status === 'error') ? (
+                  <Button type="button" variant="outline" size="sm" disabled={estimating || applying}
+                    onClick={() => void handleEstimateAll(estimatableTransportLegs.filter((leg) => results.some((result) => result.legId === leg.legId && result.status === 'error')))}>
+                    Retry failed legs
+                  </Button>
+                ) : null}
               </div>
 
               <div className="space-y-3">
@@ -726,12 +762,14 @@ export function BulkTransportEstimateDialog({
                           <div className="mt-1 text-xs text-muted-foreground">{result.travelDate}</div>
                         </div>
                         <Badge variant="outline">
-                          {result.status === 'success' ? 'Estimated' : 'Failed'}
+                          {result.status === 'success' ? 'Estimated' : result.status === 'cancelled' ? 'Cancelled' : 'Failed'}
                         </Badge>
                       </div>
 
                       {result.status === 'error' ? (
                         <p className="mt-2 text-sm text-destructive">{result.error}</p>
+                      ) : result.status === 'cancelled' ? (
+                        <p className="mt-2 text-sm text-muted-foreground">Stopped before an estimate was ready.</p>
                       ) : topOption ? (
                         <div className="mt-2 space-y-1">
                           <div className="flex flex-wrap items-center gap-2">
@@ -754,7 +792,8 @@ export function BulkTransportEstimateDialog({
             </div>
           ) : null}
 
-          <div className="flex gap-2">
+          <div className="sticky bottom-0 flex flex-wrap gap-2 border-t bg-background pt-3">
+            {estimating ? <Button type="button" variant="destructive" onClick={handleStop}>Stop estimating</Button> : null}
             <Button
               type="button"
               variant="outline"
@@ -768,7 +807,7 @@ export function BulkTransportEstimateDialog({
               type="button"
               variant="outline"
               className="flex-1"
-              onClick={handleEstimateAll}
+              onClick={() => void handleEstimateAll()}
               disabled={estimating || applying || selectedTransportLegs.length === 0 || allowedModes.length === 0}
             >
               <LoadingButtonLabel idle="Estimate Selected Legs" loading="Estimating..." isLoading={estimating} />
