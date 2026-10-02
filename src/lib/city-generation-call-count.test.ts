@@ -6,7 +6,7 @@ vi.mock('@/lib/city-llm-client', () => ({
   runJsonPromptWithProvider,
 }));
 
-import { generateCityCostEstimate } from '@/lib/city-generation';
+import { CityGenerationError, generateCityCostEstimate } from '@/lib/city-generation';
 
 const originalVersion = process.env.CITY_COST_METHODOLOGY_VERSION;
 const originalLegacyFlag = process.env.CITY_COST_METHODOLOGY_V6;
@@ -57,6 +57,35 @@ afterEach(() => {
 });
 
 describe('v1.1 generation call boundary', () => {
+  it('identifies invalid response fields without showing the returned value', async () => {
+    const payload = JSON.parse(validResponse);
+    payload.fx.source_rate = 'fixture-secret-value';
+    runJsonPromptWithProvider.mockResolvedValueOnce({ provider: 'openai', model: 'gpt-6-luna', webSearchUsed: true, text: JSON.stringify(payload) });
+    const err = await generateCityCostEstimate({ cityName: 'Toyama', countryName: 'Japan', provider: 'openai' }).catch(error => error);
+    expect(err).toBeInstanceOf(CityGenerationError);
+    expect(err.status).toBe(502);
+    expect(err.message).toContain('fx.source_rate');
+    expect(err.message).toContain('No estimate was saved');
+    expect(err.message).not.toContain('fixture-secret-value');
+  });
+
+  it('reports stale FX validation as a generation failure with the actual reason', async () => {
+    const payload = JSON.parse(validResponse);
+    payload.fx.as_of_date = '2020-01-01';
+    runJsonPromptWithProvider.mockResolvedValueOnce({ provider: 'openai', model: 'gpt-6-luna', webSearchUsed: true, text: JSON.stringify(payload) });
+    const err = await generateCityCostEstimate({ cityName: 'Toyama', countryName: 'Japan', provider: 'openai' }).catch(error => error);
+    expect(err).toBeInstanceOf(CityGenerationError);
+    expect(err.status).toBe(502);
+    expect(err.message).toContain('last seven days');
+    expect(err.message).toContain('No estimate was saved');
+  });
+
+  it('distinguishes invalid JSON from an invalid schema', async () => {
+    runJsonPromptWithProvider.mockResolvedValueOnce({ provider: 'openai', model: 'gpt-6-luna', webSearchUsed: true, text: 'No structured answer.' });
+    await expect(generateCityCostEstimate({ cityName: 'Toyama', countryName: 'Japan', provider: 'openai' }))
+      .rejects.toThrow('The model did not return a valid JSON object.');
+  });
+
   it('uses one provider call and performs derivation only after the response', async () => {
     const result = await generateCityCostEstimate({
       cityName: 'Toyama',

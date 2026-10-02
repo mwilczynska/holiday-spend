@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { z } from 'zod';
+import { z, ZodError } from 'zod';
 import type { CityEstimateData } from '@/types';
 import { runJsonPromptWithProvider, type JsonPromptResult } from '@/lib/city-llm-client';
 import { resolveLlmRuntimeDefaults, type LlmRuntimeSettings } from '@/lib/llm-request-limits';
@@ -105,6 +105,14 @@ function extractJsonObject(text: string): unknown {
   }
 
   return JSON.parse(text.slice(start, end + 1));
+}
+
+function describeInvalidCityResponse(err: unknown) {
+  if (err instanceof ZodError) {
+    const fields = Array.from(new Set(err.issues.map(issue => issue.path.join('.') || 'response'))).slice(0, 4);
+    return `Invalid or missing fields: ${fields.join(', ')}.`;
+  }
+  return 'The model did not return a valid JSON object.';
 }
 
 function findRepoFile(relativePaths: string[]) {
@@ -311,7 +319,7 @@ async function generateCityCostEstimateV1(request: CityGenerationRequest): Promi
   } catch (err) {
     if (err instanceof CityGenerationError) throw err;
     throw new CityGenerationError(
-      `The ${providerResponse.provider} response did not match the required city-cost JSON schema.`,
+      `The ${providerResponse.provider} (${providerResponse.model}) response did not match the required city-cost JSON schema. ${describeInvalidCityResponse(err)} Try again. No estimate was saved.`,
       502
     );
   }
@@ -372,14 +380,20 @@ async function generateCityCostEstimateV11(request: CityGenerationRequest): Prom
   let parsedPayload: CityCostV11AnchorResponse;
   try {
     parsedPayload = cityCostV11AnchorResponseSchema.parse(extractJsonObject(providerResponse.text));
-  } catch {
+  } catch (err) {
     throw new CityGenerationError(
-      `The ${providerResponse.provider} response did not match the required v1.1 anchor-and-current-FX JSON schema.`,
+      `The ${providerResponse.provider} (${providerResponse.model}) response did not match the required v1.1 anchor-and-current-FX JSON schema. ${describeInvalidCityResponse(err)} Try again. No estimate was saved.`,
       502
     );
   }
 
-  const v11Materialization = materializeCityCostV11(parsedPayload);
+  let v11Materialization: CityCostV11Materialization;
+  try {
+    v11Materialization = materializeCityCostV11(parsedPayload);
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : 'The returned anchors or FX observation failed validation.';
+    throw new CityGenerationError(`${providerResponse.provider} (${providerResponse.model}) returned an invalid city estimate: ${detail} Try again. No estimate was saved.`, 502);
+  }
 
   return {
     methodologyVersion: CITY_COST_V11_METHODOLOGY_VERSION,

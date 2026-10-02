@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** City generation and model discovery fixes complete and published for review. Prior product phases complete.
+**Status:** City generation and model discovery fixes published; verified failure-message follow-up ready to publish. Prior product phases complete.
 
-**Current phase:** City generation and model discovery — COMPLETE.
+**Current phase:** City generation and model discovery — failure-message follow-up.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -19,9 +19,28 @@ current discovery fallbacks and GPT-6 Luna max default; rebased onto merged `mai
 
 **Latest plan checkpoint:** `b00f643` records completed live verification; this checkpoint closes publication.
 
-**Next action:** Review [PR #11](https://github.com/mwilczynska/holiday-spend/pull/11).
+**Next action:** Commit and push the verified failure-message follow-up, then update PR #11.
 
-**Working tree:** Implementation and verification committed and pushed; final publication documentation is recorded here.
+**Working tree:** Failure-message improvements and tests verified; pending follow-up commit and push.
+
+## Failure-message follow-up — IN PROGRESS
+
+The continuing owner goal also requires Chrome checks of failed generation and model refresh, with useful error
+details. The prior success checks do not prove this requirement. Preserve the successful generation/defaults
+evidence below; finish the failure checks and commit this follow-up separately.
+
+- [x] Inspect and improve generation/model-refresh errors where provider details are lost or unsafe.
+- [x] Verify controlled failures in Chrome without reading or replacing the owner's saved provider key.
+- [x] Run appropriate checks and the required baseline; record evidence.
+- [ ] Commit and push the follow-up; update PR #11.
+
+Generation and discovery errors preserve provider/HTTP details with credential redaction and actionable guidance.
+Schema failures identify invalid fields, and FX validation errors retain their reason as a 502 generation failure.
+Chrome verifies a real unavailable-model error in both existing-city and new-city forms. A blocked refresh gives
+a connection message and recovers to 78 live account models after the block is removed. GPT-6 Luna max is restored.
+The failed Papantla request leaves the database at 207 cities / 64 history rows; Querétaro retains one active record.
+TypeScript, lint, build, 64 Vitest files / 360 tests, memory mirror and v1.1 guard pass. Production auth setup plus
+four browser regressions pass in a disposable database copy.
 
 ## City generation and model discovery — COMPLETE
 

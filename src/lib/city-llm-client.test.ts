@@ -7,6 +7,23 @@ afterEach(() => {
 });
 
 describe('OpenAI city-generation transport', () => {
+  it('includes provider HTTP details and model-access guidance without echoing a credential', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ error: { message: 'Model fixture-model does not exist. Echoed fixture-key.' } }, { status: 404 })));
+    const err = await runJsonPromptWithProvider({ systemPrompt: 'JSON', userPrompt: 'Estimate a city.', provider: 'openai', apiKey: 'fixture-key' }).catch(error => error);
+    expect(err.message).toContain('OpenAI API error 404');
+    expect(err.message).toContain('fixture-model');
+    expect(err.message).toContain('Check the model ID');
+    expect(err.message).not.toContain('fixture-key');
+  });
+
+  it.each(['anthropic', 'gemini'] as const)('aborts a stalled %s request and explains its configured timeout', async provider => {
+    vi.stubGlobal('fetch', vi.fn((_url, init: RequestInit) => new Promise((_resolve, reject) => {
+      init.signal?.addEventListener('abort', () => reject(init.signal?.reason), { once: true });
+    })));
+    await expect(runJsonPromptWithProvider({ systemPrompt: 'JSON', userPrompt: 'Estimate a city.', provider, apiKey: 'fixture-key', requestTimeoutMs: 10 }))
+      .rejects.toThrow('request timeout after 0.01 seconds');
+  });
+
   it('uses the Responses API reasoning contract for GPT-6 Luna max and honours the selected cap', async () => {
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({
       output_text: '{"region":"East Asia"}',

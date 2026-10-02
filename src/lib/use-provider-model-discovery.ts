@@ -7,6 +7,7 @@ import {
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
 import type { ProviderModelDiscoveryResult } from '@/lib/provider-model-discovery';
+import { getLlmNetworkErrorMessage, readLlmApiResponse } from '@/lib/llm-error-messages';
 
 interface UseProviderModelDiscoveryOptions {
   provider: CityGenerationProvider;
@@ -108,16 +109,12 @@ export function useProviderModelDiscovery({
           headers: normalizedApiKey ? { 'x-provider-api-key': normalizedApiKey } : undefined,
         }
       );
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to load provider models.');
-      }
+      const data = await readLlmApiResponse(response, 'Model refresh', normalizedApiKey);
 
       setResult(data.data as ProviderModelDiscoveryResult);
     } catch (err) {
       setResult(buildFallbackState(provider));
-      setError(err instanceof Error ? err.message : 'Failed to load provider models.');
+      setError(err instanceof Error && !(err instanceof TypeError) ? err.message : getLlmNetworkErrorMessage('Model refresh'));
     } finally {
       setLoading(false);
       setRefreshing(false);

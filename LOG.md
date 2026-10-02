@@ -2462,3 +2462,24 @@ Published implementation `1581388` and verification checkpoint `b00f643` on
 `origin/fix/city-generation-model-discovery`. Opened PR #11 against `main`:
 https://github.com/mwilczynska/holiday-spend/pull/11. The final documentation checkpoint closes this task;
 the PR remains open for review.
+
+## 1 October 2026 — Generation and model-refresh failure messages
+
+The continuing owner goal includes Chrome checks of failed generation and refresh, beyond the earlier success
+checks. Added shared credential-safe provider errors with HTTP status and guidance for authentication, permissions,
+model access, quota and temporary provider failures. Browser network failures and unreadable server responses now
+have distinct messages. City schema failures identify invalid or missing fields without echoing returned values;
+invalid RBA FX now preserves its validation reason as a 502 generation failure rather than a generic server error.
+Anthropic and Gemini now use the configured request deadline too, including time spent waiting for retries.
+
+Live Chrome, with the saved key kept masked and never read, verifies a nonexistent-model error for an existing city
+and the new-city Papantla, Mexico form. Both display the real OpenAI 404/model-access detail and retry guidance;
+the form retains its fields and re-enables submission. A tab-scoped block on the model-refresh endpoint produces
+the connection message. Removing that block and refreshing restores 78 live account models, GPT-6 Luna and Maximum.
+The block is removed and networking restored. Read-only database checks confirm 207 cities / 64 history rows before
+and after the failed Papantla request, no Papantla row and one active Querétaro history row.
+
+TypeScript, clean lint, production build, 64 Vitest files / 360 tests, memory mirror and the unchanged-live-CSV v1.1
+guard pass. Production auth setup plus four browser regressions pass against a disposable database copy, including
+failure details, network failure, form retention and retry, default migration and multi-provider refresh. The no-key
+authenticated production endpoint returns 60 current suggestions. Temporary production QA processes exit cleanly.

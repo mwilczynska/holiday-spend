@@ -21,6 +21,7 @@ import {
 } from '@/lib/city-generation-config';
 import { useProviderApiKeys } from '@/lib/use-provider-api-keys';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
+import { getLlmNetworkErrorMessage, readLlmApiResponse } from '@/lib/llm-error-messages';
 
 const STORAGE_PREFIX = 'holiday-spend.city-generation';
 
@@ -227,14 +228,7 @@ export function PlannerNewCityDialog({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody),
       });
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data.error ||
-            (isDatasetMode ? 'Failed to add the city to the dataset.' : 'Failed to create the city and add the leg.')
-        );
-      }
+      const data = await readLlmApiResponse(response, 'City generation', activeApiKey);
 
       onOpenChange(false);
       resetForm();
@@ -244,11 +238,9 @@ export function PlannerNewCityDialog({
       });
     } catch (err) {
       setError(
-        err instanceof Error
+        err instanceof Error && !(err instanceof TypeError)
           ? err.message
-          : isDatasetMode
-            ? 'Failed to add the city to the dataset.'
-            : 'Failed to create the city and add the leg.'
+          : getLlmNetworkErrorMessage('City generation')
       );
     } finally {
       setLoading(false);

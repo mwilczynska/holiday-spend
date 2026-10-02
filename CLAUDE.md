@@ -138,6 +138,10 @@ to it; other custom model choices are retained. A failed or empty keyed model-li
 aggregators before the saved snapshot, with account availability explicitly unverified. Discovery requests have
 15-second timeouts, and failed keyed reads are not cached.
 
+Generation and model-refresh errors include HTTP/provider details and retry guidance, with credentials redacted.
+Invalid city output identifies missing or invalid fields; failed RBA validation gives its reason and saves no estimate.
+Network failures and unreadable server responses have separate messages; generation forms remain available for retry.
+
 ## Provider request limits
 
 Two limits bound every provider call, configurable per user under **Settings → Provider Request Limits**, and

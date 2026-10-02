@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { describeLlmRequestFailure, formatProviderHttpError, summarizeProviderError } from '@/lib/llm-error-messages';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
   CITY_GENERATION_KNOWN_MODELS,
@@ -35,28 +36,6 @@ const modelDiscoveryCache = new Map<string, DiscoveryCacheEntry>();
 function normalizeApiKey(apiKey?: string) {
   const trimmed = apiKey?.trim();
   return trimmed ? trimmed : undefined;
-}
-
-function summarizeProviderError(rawText: string) {
-  const text = rawText.trim();
-  if (!text) return 'Empty error body';
-
-  try {
-    const parsed = JSON.parse(text) as {
-      error?: { message?: string } | string;
-      message?: string;
-      detail?: string;
-    };
-
-    if (typeof parsed.error === 'string') return parsed.error;
-    if (parsed.error?.message) return parsed.error.message;
-    if (parsed.message) return parsed.message;
-    if (parsed.detail) return parsed.detail;
-  } catch {
-    // Fall back to plain text.
-  }
-
-  return text.slice(0, 400);
 }
 
 function getProviderServerApiKey(provider: CityGenerationProvider) {
@@ -261,7 +240,7 @@ async function fetchOpenAiModelIds(apiKey: string) {
   });
 
   if (!response.ok) {
-    throw new Error(`OpenAI API error ${response.status}: ${summarizeProviderError(await response.text())}`);
+    throw new Error(formatProviderHttpError('OpenAI', response.status, await response.text(), apiKey));
   }
 
   return normalizeOpenAiModelIds(await response.json());
@@ -278,7 +257,7 @@ async function fetchAnthropicModelIds(apiKey: string) {
   });
 
   if (!response.ok) {
-    throw new Error(`Anthropic API error ${response.status}: ${summarizeProviderError(await response.text())}`);
+    throw new Error(formatProviderHttpError('Anthropic', response.status, await response.text(), apiKey));
   }
 
   return normalizeAnthropicModelIds(await response.json());
@@ -303,7 +282,7 @@ async function fetchGeminiModelIds(apiKey: string) {
     });
 
     if (!response.ok) {
-      throw new Error(`Gemini API error ${response.status}: ${summarizeProviderError(await response.text())}`);
+      throw new Error(formatProviderHttpError('Gemini', response.status, await response.text(), apiKey));
     }
 
     const payload = await response.json();
@@ -485,7 +464,7 @@ export async function fetchAggregatedProviderModelIds(
     }
     errors.push('OpenRouter returned no usable models for this provider.');
   } catch (err) {
-    errors.push(err instanceof Error ? err.message : 'OpenRouter aggregator failed.');
+    errors.push(describeLlmRequestFailure(err, 'OpenRouter', MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false));
   }
 
   try {
@@ -495,7 +474,7 @@ export async function fetchAggregatedProviderModelIds(
     }
     errors.push('models.dev returned no usable models for this provider.');
   } catch (err) {
-    errors.push(err instanceof Error ? err.message : 'models.dev aggregator failed.');
+    errors.push(describeLlmRequestFailure(err, 'models.dev', MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false));
   }
 
   throw new Error(errors.join(' '));
@@ -583,8 +562,7 @@ export async function discoverProviderModels(params: {
       return buildFallbackDiscoveryResult({
         provider: params.provider,
         credentialSource: credential.credentialSource,
-        warning:
-          'Aggregated model sources are temporarily unavailable. Showing curated snapshot suggestions.',
+        warning: `${describeLlmRequestFailure(err, 'Model refresh', MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false)} Showing curated snapshot suggestions. Refresh models to retry, or enter a model ID.`,
       });
     }
   }
@@ -620,9 +598,7 @@ export async function discoverProviderModels(params: {
       cacheHit: false,
     };
   } catch (err) {
-    const providerError = err instanceof Error
-      ? err.message.replaceAll(credential.apiKey, '[redacted]')
-      : 'Live model discovery failed.';
+    const providerError = describeLlmRequestFailure(err, `${params.provider} model refresh`, MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, credential.apiKey, false);
     // A key may permit generation without allowing the model-list endpoint.
     // Continue through the no-key sources before using the stored snapshot.
     try {

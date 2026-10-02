@@ -1,6 +1,48 @@
 import { expect, test, type Locator } from '@playwright/test';
 
 test.describe('planner regressions', () => {
+  test('city generation and model refresh failures explain the cause and allow retry', async ({ page }) => {
+    let failRefresh = true;
+    let failGeneration = true;
+    await page.route('**/api/llm/models?**', async route => {
+      if (failRefresh) return route.abort('failed');
+      const models = ['gpt-6-luna'];
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ data: {
+        provider: 'openai', source: 'live', credentialSource: 'browser', aggregatorSource: null,
+        defaultModel: models[0], curatedModels: [], liveModels: models, effectiveModels: models,
+        fetchedAt: new Date().toISOString(), cacheHit: false, warning: null,
+      } }) });
+    });
+    await page.route('**/api/cities/create-with-generation', async route => {
+      if (failGeneration) {
+        await route.fulfill({ status: 502, contentType: 'application/json', body: JSON.stringify({ error: 'OpenAI API error 404: model does not exist. Check the model ID and whether your account can use it.' }) });
+      } else {
+        await route.abort('failed');
+      }
+    });
+    await page.goto('/dataset');
+    await page.getByRole('button', { name: 'Add City', exact: true }).click();
+    const dialog = page.getByRole('dialog', { name: 'Add New City With LLM' });
+    await dialog.getByPlaceholder('e.g. Kunming').fill('Failure fixture city');
+    await dialog.getByPlaceholder('e.g. China').fill('Mexico');
+    await dialog.getByText('Advanced generation settings', { exact: true }).click();
+    await expect(dialog.getByText(/Model refresh could not reach the app server/)).toBeVisible();
+    failRefresh = false;
+    await dialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
+    await expect(dialog.getByText(/1 model available to this provider account/)).toBeVisible();
+    await expect(dialog.getByText(/Model refresh could not reach/)).toBeHidden();
+    const generateButton = dialog.getByRole('button', { name: 'Generate And Add City', exact: true });
+    await generateButton.click();
+    await expect(dialog.getByText(/City generation failed \(HTTP 502\): OpenAI API error 404/)).toBeVisible();
+    await expect(dialog.getByText(/Check the model ID/)).toBeVisible();
+    await expect(generateButton).toBeEnabled();
+    await expect(dialog.getByPlaceholder('e.g. Kunming')).toHaveValue('Failure fixture city');
+    failGeneration = false;
+    await generateButton.click();
+    await expect(dialog.getByText(/City generation could not reach the app server/)).toBeVisible();
+    await expect(generateButton).toBeEnabled();
+  });
+
   test('OpenAI migrates the previous default to GPT-6 Luna max and refreshes current suggestions', async ({ page }) => {
     await page.addInitScript(() => {
       localStorage.setItem('holiday-spend.city-generation.models', JSON.stringify({ openai: 'gpt-5.6-luna' }));
