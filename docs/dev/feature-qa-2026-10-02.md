@@ -28,7 +28,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Pending |
 | Dataset | City/country search; pagination; city CRUD; missing costs; editor controls; history/provenance; generation/retry | Pending |
 | Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Pending |
-| Settings | Traveller count; request-limit validity/save/reset; fixed-cost CRUD/paid; JSON/CSV exports | Pending |
+| Settings | Traveller count; request-limit validity/save/reset; fixed-cost CRUD/paid; JSON/CSV exports | Chrome: fixed-cost negative blocked; controlled save failure keeps input; retry, paid toggle, reload persistence and delete. Zero-limit defect reproduced; remaining traveller/export checks pending. |
 | Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Pending; real email delivery and password changes need a controlled separate workflow |
 | Responsive/accessibility | Desktop/mobile navigation; page/dialog/table/chart scrolling; labels; keyboard Escape/Tab/Enter; long content | Pending |
 | Failure/data integrity | Rejected writes leave data unchanged; user scoping; invalid numbers/dates; network/provider errors; reload persistence | Pending |
@@ -53,7 +53,16 @@ An empty-currency rejection retains 25 and the description with a visible error.
 ### F2 — Fixed-cost rejection closes and clears the form
 
 Chrome submitted `QA rejected negative fixed cost` with -5 AUD. The server rejects it, but the dialog closes,
-clears the input and leaves `No fixed costs yet` with no error. Fix pending in a separate commit.
+clears the input and leaves `No fixed costs yet` with no error.
+
+Fix verified: add/update/delete check HTTP and response shape and display failures. Drafts stay available for retry,
+nonpositive/nonfinite amounts and whitespace descriptions are blocked, and controls have accessible labels.
+Chrome uses a temporary SQLite trigger on the isolated database to reject only `QA controlled rejection`; the
+server error keeps description and 25 AUD visible. After removing that trigger, retry succeeds; paid status persists
+after reload; fixture deletion succeeds. Trigger and fixture are removed. Three production browser regressions
+plus auth setup pass, including controlled HTTP/network failures, paid/delete failures and real CRUD persistence.
+TypeScript, production build and all 383 unit tests pass.
+Evidence: `.local/feature-qa/fixed-cost-retained-error.png`, `fixed-cost-paid-persisted.png`.
 
 ### F3 — Zero request limits silently reset to default
 

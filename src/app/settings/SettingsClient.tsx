@@ -1,7 +1,7 @@
 'use client';
 
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -55,6 +55,9 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   const [groupSizeError, setGroupSizeError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
+  const [costError, setCostError] = useState<string | null>(null);
+  const [costSaving, setCostSaving] = useState(false);
+  const costSubmitting = useRef(false);
   const [llm, setLlm] = useState<LlmSettings | null>(initialData.llm);
   const [llmDraft, setLlmDraft] = useState({ maxOutputTokens: String(initialData.llm.maxOutputTokens), requestTimeoutSeconds: String(Math.round(initialData.llm.requestTimeoutMs / 1000)) });
   const [llmStatus, setLlmStatus] = useState<string | null>(null);
@@ -107,33 +110,48 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   useInitialPageRefresh('/settings', fetchData, true);
 
   const handleAdd = async () => {
-    await fetch('/api/fixed-costs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...newCost,
-        countryId: newCost.countryId || null,
-        date: newCost.date || null,
-        notes: newCost.notes || null,
-      }),
+    if (!newCost.description.trim() || !Number.isFinite(newCost.amountAud) || newCost.amountAud <= 0) return;
+    await mutateFixedCost('/api/fixed-costs', 'POST', {
+      ...newCost,
+      description: newCost.description.trim(),
+      countryId: newCost.countryId || null,
+      date: newCost.date || null,
+      notes: newCost.notes || null,
+    }, () => {
+      setAddOpen(false);
+      setNewCost({ description: '', amountAud: 0, category: 'other', countryId: '', date: '', notes: '' });
     });
-    setAddOpen(false);
-    setNewCost({ description: '', amountAud: 0, category: 'other', countryId: '', date: '', notes: '' });
-    fetchData();
+  };
+
+  const mutateFixedCost = async (url: string, method: string, body?: Record<string, unknown>, onSuccess?: () => void) => {
+    if (costSubmitting.current) return;
+    costSubmitting.current = true;
+    setCostSaving(true);
+    setCostError(null);
+    try {
+      const response = await fetch(url, {
+        method,
+        ...(body ? { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || `Could not update fixed costs (HTTP ${response.status}). Try again.`);
+      if (!result?.data) throw new Error('The server returned an unreadable response. Reload before retrying.');
+      onSuccess?.();
+      await fetchData();
+    } catch (err) {
+      setCostError(err instanceof Error ? err.message : 'Could not update fixed costs. Check your connection and try again.');
+    } finally {
+      costSubmitting.current = false;
+      setCostSaving(false);
+    }
   };
 
   const handleTogglePaid = async (cost: FixedCost) => {
-    await fetch(`/api/fixed-costs/${cost.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ isPaid: cost.isPaid ? 0 : 1 }),
-    });
-    fetchData();
+    await mutateFixedCost(`/api/fixed-costs/${cost.id}`, 'PUT', { isPaid: cost.isPaid ? 0 : 1 });
   };
 
   const handleDelete = async (id: number) => {
-    await fetch(`/api/fixed-costs/${id}`, { method: 'DELETE' });
-    fetchData();
+    await mutateFixedCost(`/api/fixed-costs/${id}`, 'DELETE');
   };
 
   const handleGroupSizeChange = async (value: string) => {
@@ -319,7 +337,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Fixed Costs</CardTitle>
-          <Dialog open={addOpen} onOpenChange={setAddOpen}>
+          <Dialog open={addOpen} onOpenChange={(open) => { if (!costSaving) { setAddOpen(open); setCostError(null); } }}>
             <DialogTrigger asChild>
               <Button size="sm"><Plus className="h-4 w-4 mr-2" />Add</Button>
             </DialogTrigger>
@@ -330,12 +348,12 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                 </DialogDescription></DialogHeader>
               <div className="space-y-4">
                 <div>
-                  <Label>Description</Label>
-                  <Input value={newCost.description} onChange={(e) => setNewCost(p => ({ ...p, description: e.target.value }))} />
+                  <Label htmlFor="fixed-cost-description">Description</Label>
+                  <Input id="fixed-cost-description" value={newCost.description} onChange={(e) => setNewCost(p => ({ ...p, description: e.target.value }))} />
                 </div>
                 <div>
-                  <Label>Amount (AUD)</Label>
-                  <Input type="number" value={newCost.amountAud || ''} onChange={(e) => setNewCost(p => ({ ...p, amountAud: parseFloat(e.target.value) || 0 }))} />
+                  <Label htmlFor="fixed-cost-amount">Amount (AUD)</Label>
+                  <Input id="fixed-cost-amount" type="number" min="0.01" step="any" value={newCost.amountAud || ''} onChange={(e) => setNewCost(p => ({ ...p, amountAud: parseFloat(e.target.value) || 0 }))} />
                 </div>
                 <div>
                   <Label>Category</Label>
@@ -363,17 +381,19 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                   />
                 </div>
                 <div>
-                  <Label>Date (optional)</Label>
-                  <Input type="date" value={newCost.date} onChange={(e) => setNewCost(p => ({ ...p, date: e.target.value }))} />
+                  <Label htmlFor="fixed-cost-date">Date (optional)</Label>
+                  <Input id="fixed-cost-date" type="date" value={newCost.date} onChange={(e) => setNewCost(p => ({ ...p, date: e.target.value }))} />
                 </div>
-                <Button onClick={handleAdd} className="w-full" disabled={!newCost.description || !newCost.amountAud}>
-                  Add Fixed Cost
+                {costError && <p role="alert" className="text-sm text-destructive">{costError}</p>}
+                <Button onClick={handleAdd} className="w-full" disabled={costSaving || !newCost.description.trim() || !Number.isFinite(newCost.amountAud) || newCost.amountAud <= 0}>
+                  {costSaving ? 'Saving...' : 'Add Fixed Cost'}
                 </Button>
               </div>
             </DialogContent>
           </Dialog>
         </CardHeader>
         <CardContent>
+          {!addOpen && costError && <p role="alert" className="mb-3 text-sm text-destructive">{costError}</p>}
           <div className="flex gap-4 mb-4 text-sm">
             <span>Total: <strong>${total.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</strong></span>
             <span className="text-green-600">Paid: ${totalPaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
@@ -387,6 +407,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               {costs.map((cost) => (
                 <div key={cost.id} className="flex items-center gap-3 p-2 rounded border">
                   <Switch
+                    aria-label={`Mark ${cost.description} as ${cost.isPaid ? 'unpaid' : 'paid'}`}
+                    disabled={costSaving}
                     checked={!!cost.isPaid}
                     onCheckedChange={() => handleTogglePaid(cost)}
                   />
@@ -402,7 +424,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                     {cost.date && <p className="text-xs text-muted-foreground">{cost.date}</p>}
                   </div>
                   <span className="font-medium">${cost.amountAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
-                  <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
+                  <Button aria-label={`Delete ${cost.description}`} disabled={costSaving} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>

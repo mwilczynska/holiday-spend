@@ -191,6 +191,8 @@ spending is constrained to the trip window and missing AUD conversions are exclu
 New manual expenses resolve an AUD conversion before saving when none is supplied. An unavailable rate leaves the
 conversion missing with a visible warning. Quick Add retains rejected input for retry and clears successful input
 immediately to prevent duplicate submissions.
+Fixed-cost additions retain rejected drafts and show save failures. Invalid amounts are blocked; paid-status and
+delete failures leave the displayed row unchanged and expose an error.
 
 ## Running the app locally
 

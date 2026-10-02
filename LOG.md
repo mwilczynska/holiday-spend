@@ -2579,3 +2579,20 @@ The initial full suite hits an existing 10-second snapshot-import setup timeout 
 rerun passes all 66 files / 383 tests. All 37 existing production Playwright checks and three new expense regressions
 plus auth setup pass. Production rebuild requires stopping the identified QA process tree after Ctrl+C leaves it
 holding `.next/standalone`; the existing guard reports this immediately.
+
+## 2 October 2026 — Fixed-cost failure recovery
+
+The first QA fix is committed/pushed as `1eab5ed`. The separately reproduced fixed-cost form defect is corrected:
+failed additions retain their draft and expose HTTP/network errors; paid/delete failures show errors without
+changing displayed rows. Positive finite amounts and trimmed descriptions are required. Request locking prevents
+duplicate writes while saving. Form and row controls have accessible labels.
+
+Chrome verifies -5 AUD is blocked, a controlled database rejection keeps description/25 AUD visible, and retry
+after removal of the isolated test trigger succeeds. Paid status persists after reload, then fixture deletion succeeds.
+The trigger and test row are removed. Existing expense edit also verifies changing the USD fixture to 45 AUD
+recalculates conversion and updates the total.
+
+TypeScript, production build, all 383 Vitest tests, memory mirror and v1.1 guard pass. Three new fixed-cost
+Playwright regressions plus auth setup pass, covering failed add/network retry, paid/delete rejection and real CRUD
+persistence. Screenshots and detailed coverage are recorded in `docs/dev/feature-qa-2026-10-02.md`.
+Remaining next steps include zero request-limit validation and the wider workflow inventory.

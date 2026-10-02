@@ -27,11 +27,15 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
-First fix ready to commit: Quick Add now converts new expenses to AUD, exposes failed saves, retains rejected input,
+First fix committed and pushed as `1eab5ed`: Quick Add now converts new expenses to AUD, exposes failed saves, retains rejected input,
 and prevents duplicate success submissions. Chrome verifies 25 USD → $36.03 AUD and error/retry; TypeScript,
 production build, 383 Vitest tests, memory mirror, v1.1 guard and three new browser regressions plus auth setup pass.
 The 37 existing production browser checks also pass. Coverage/findings: `docs/dev/feature-qa-2026-10-02.md`.
 Next fixes: rejected fixed-cost forms and zero request-limit validation, each committed separately.
+Second fix ready to commit: fixed-cost failures retain input, paid/delete failures expose errors, invalid amounts are
+blocked and controls have accessible labels. Chrome verifies a controlled database rejection, successful retry,
+paid status after reload and fixture deletion. TypeScript, build, 383 unit tests and three new browser regressions
+plus auth setup pass. Zero request-limit validation is next.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.
