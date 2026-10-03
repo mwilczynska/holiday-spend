@@ -26,6 +26,7 @@ interface TagExpense {
   amountAud: number | null;
   category: string;
   description: string | null;
+  isExcluded: number | null;
 }
 
 export default function TagsPage() {
@@ -205,10 +206,11 @@ export default function TagsPage() {
                 <CardTitle className="text-sm flex items-center gap-2">
                   {selectedTag.color && <div className="w-3 h-3 rounded-full" style={{ backgroundColor: selectedTag.color }} />}
                   {selectedTag.name}
-                  <Badge variant="secondary">${tagTotal.toFixed(0)} AUD</Badge>
+                  <Badge variant="secondary">{tagLoading ? 'Loading total…' : tagReadError ? 'Total unavailable' : `$${tagTotal.toFixed(0)} AUD`}</Badge>
                 </CardTitle>
               </CardHeader>
               <CardContent>
+                <p className="mb-3 text-xs text-muted-foreground">AUD totals use included expenses with an available AUD value.</p>
                 {tagLoading ? (
                   <InlineLoadingState
                     title={`Loading expenses for ${selectedTag.name}`}
@@ -223,6 +225,8 @@ export default function TagsPage() {
                         <div>
                           <span className="text-muted-foreground">{exp.date}</span>
                           {exp.description && <span className="ml-2">{exp.description}</span>}
+                          {exp.isExcluded ? <Badge variant="secondary" className="ml-2">Excluded</Badge> : null}
+                          {exp.currency !== 'AUD' && exp.amountAud == null ? <Badge variant="outline" className="ml-2">No AUD conversion</Badge> : null}
                         </div>
                         <span className="font-medium">{exp.amount.toFixed(2)} {exp.currency}</span>
                       </div>

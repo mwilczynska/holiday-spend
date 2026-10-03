@@ -21,7 +21,7 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Start an isolated production database/server; test each route and workflow in Chrome, fix reproduced defects and commit each fix.
+**Next action:** Continue remaining route and workflow coverage in Chrome against the isolated production server; fix reproduced defects and commit each fix.
 
 **Working tree:** Testing starts from clean main `1413f3f`. Disposable workflow writes must remain outside the owner's database.
 
@@ -55,10 +55,15 @@ Sixth fix committed and pushed as `656a24b`: rejected expense mutations retain d
 label the last loaded results with Retry. Chrome verifies a controlled rejection, retained draft, successful retry
 and category/merchant/subcategory/assignment edits. TypeScript, build, 387 unit tests and three new production
 browser regressions plus auth setup pass. Remaining route/control coverage continues.
-Seventh fix ready to commit: tag CRUD/read failures expose errors and retain drafts/selections; duplicate names
+Seventh fix committed and pushed as `617c06a`: tag CRUD/read failures expose errors and retain drafts/selections; duplicate names
 return 409 with guidance; selected title refreshes after rename. Chrome verifies duplicate retention and rename.
 TypeScript, build, 387 unit tests and three production browser regressions plus auth setup pass. Overlapping unit
 and browser suites caused two setup-hook timeouts; an isolated unit rerun passes all tests. Remaining coverage continues.
+Eighth fix ready to commit: tag counts/lists omit deleted expenses and totals follow the tracker's AUD helper and
+exclude excluded spend. Loading/failed totals are labelled rather than showing zero. Chrome verifies a deleted
+45 AUD fixture disappears from its tag. A production regression fails before the fix (excluded spend counted),
+then passes through exclude/include/delete and empty-state checks. TypeScript, build, 387 unit tests, memory/guard
+and all four tag browser regressions plus auth setup pass. Continue remaining saved-plan/dataset/account/mobile controls.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.

@@ -192,6 +192,8 @@ Rejected expense edits keep their drafts; failed exclusion, deletion and bulk ac
 with an error. Failed tracker reads label the last loaded results and offer retry instead of showing an empty list.
 Tag CRUD failures keep drafts and selections with an error; duplicate names return a conflict. Tag reads expose
 failures and offer retry, and renaming a selected tag updates its displayed title.
+Tag counts and lists omit deleted expenses. Tag totals follow the tracker's AUD calculation and omit excluded
+spend and unavailable foreign-currency conversions; excluded and unconverted rows are labelled.
 New manual expenses resolve an AUD conversion before saving when none is supplied. An unavailable rate leaves the
 conversion missing with a visible warning. Quick Add retains rejected input for retry and clears successful input
 immediately to prevent duplicate submissions.

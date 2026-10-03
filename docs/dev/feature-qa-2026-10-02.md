@@ -21,8 +21,8 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Planner | Add/edit/delete legs; picker click/keyboard; nights/date boundaries; every tier; status; overrides; notes; reorder/sort; traveller scaling | Chrome: disposable Agra add/delete; no-match search; all 6 accommodation and all 4 food/drink/activity tiers; three statuses; five overrides; zero-display fix/reload; zero nights normalizes to one; keyboard date editing updates dates/nights; move up/down exercised. Traveller scaling and sort persistence pending. |
 | Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing records and retry | Chrome: Agra annual chart/table, 12 months, close, C/F propagates to leg. Playwright: missing/retry, monthly segmentation and shared units pass. Remaining interactive trip/tooltips/scroll pending. |
 | Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: two rows with modes/notes, 65 and 35.50 costs, total includes both once; row removal; individual dialog open/close; six mode controls; no-mode estimate disabled; advanced settings and provider list opened. Controlled Playwright: Stop, failed-only retry, model discovery and apply paths pass. Live action rejected by automatic approval; user question pending. |
-| Plan files | CSV export/import; malformed/duplicate/missing-city rows; cancel and confirm | Pending |
-| Saved plans | Save/load/rename/delete/export/import; warnings; empty and multi-plan comparisons; category/country/chart controls | Pending |
+| Plan files | JSON snapshot export/import; malformed/duplicate/missing-city rows; cancel and confirm | Pending; interactive file attachment blocked, snapshot API atomicity/scoping regressions pass. |
+| Saved plans | Save/load/delete/export/import; warnings; empty and multi-plan comparisons; category/country/chart controls | Existing production Playwright save/persist/delete and two/five-plan comparison tests pass. Interactive Chrome coverage pending. |
 | Expenses | Add/edit/delete; currency and rate; date/leg assignment; category/source/date filters; pagination; exclusion; bulk include/exclude/delete | Chrome: Quick Add categories/payers; USD conversion; edit category/merchant/subcategory/unassignment; details expand; controlled error/retry; individual and two-row bulk exclude/include; all 10 category filters and 3 source filters; Next/Previous; filtered CSV contains exactly two manual QA records. Date bounds/delete confirmation still pending. Playwright mutation tests verify delete/retry/persistence. |
 | Expense tags | Tag CRUD; assignment/removal; tagged-expense navigation; empty/duplicate names | Chrome: empty list/create-disabled, fixture creation/color input, duplicate draft-loss reproduction and retained-error fix, view empty expenses, rename updates selected title. Playwright: duplicate create/edit, network retention, rename/color persistence, delete failure/retry, list/expense read failure/retry. Assignment/removal and deleted-record totals pending. |
 | Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
@@ -125,6 +125,26 @@ Three production browser regressions plus auth setup pass for duplicate/edit/ret
 network retention, delete failure/retry and list/expense read recovery. TypeScript, build and 387 unit tests pass.
 An overlapping unit/browser run exceeded two existing 10-second setup hooks; isolated rerun passes 66/387.
 Evidence: `.local/feature-qa/tag-duplicate-retained-error.png`.
+
+### F8 — Deleted and excluded expenses remain in tag totals
+
+A copy-only association fixture links QA expense 2227 to `QA tag renamed`. Chrome's native confirm control fails;
+the expense is verified unchanged, then the disposable fixture is explicitly marked deleted through the copy-only
+setup script. Chrome still displays the deleted expense and 45 AUD total. A production regression separately fails
+when excluding a 30 AUD tagged expense: expected total 19.25, received 49.25.
+Fix verified: deleted rows are absent from counts and lists; totals reuse the tracker's AUD helper and omit excluded
+spend. Excluded and missing-conversion rows are labelled, and loading/failed totals do not claim zero.
+Chrome now shows 0 expenses / $0 / No expenses with this tag. The production regression passes through exclusion,
+include, deletion, sidebar/detail totals and empty state; the three F7 regressions still pass. TypeScript, build,
+387 unit tests, memory mirror and v1.1 guard pass. Evidence: `deleted-expense-in-tag.png`, `deleted-expense-tag-fixed.png`.
+
+### Chrome native confirmation control
+
+The fixture expense Delete opens a native confirm and the click reports an Input.dispatchMouseEvent timeout.
+The documented dialog API and later tab operations report Emulation.setFocusEmulationEnabled timeouts. SQLite
+confirms the expense remains unchanged. A fresh tab in the same Chrome connection works; old-tab repair stops.
+Interactive native confirmation acceptance is a control-surface limitation. Actual deletion/persistence is verified
+separately by production Playwright; the copy-only deletion fixture above prepares the tag-display reproduction.
 
 ### Browser download latency
 

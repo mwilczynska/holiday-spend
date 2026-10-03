@@ -2664,3 +2664,16 @@ all 66 files / 387 tests. This is setup timing, not a product assertion failure.
 
 The expense CSV download is correct: only the two filtered manual QA rows. Chrome's download control waits about
 34 minutes despite requested short waits. That browser-control delay is recorded separately from app performance.
+
+## 2 October 2026 — Feature QA: deleted/excluded tag spend
+
+A copy-only tagged expense fixture is marked deleted after Chrome native-confirm handling fails to submit it;
+SQLite verifies the failed browser attempt changed nothing. Chrome still displays the deleted row and 45 AUD total.
+A new production regression also fails on excluded spend (49.25 total instead of 19.25). Tag counts/lists now omit
+deleted records and totals reuse the tracker AUD helper, excluding excluded spend. Rows label exclusions and missing
+conversions; loading/failed totals remain unavailable rather than zero. Chrome verifies 0 expenses / $0 and no rows.
+The new regression and all three prior tag regressions plus auth setup pass through exclude/include/delete, matching
+sidebar/detail totals and empty states. TypeScript, build and 387 unit tests pass. Memory/guard checks pass.
+
+Chrome confirmation control stalls on Emulation.setFocusEmulationEnabled; a fresh same-browser tab works. This is
+recorded as a control-surface limitation, with actual delete persistence covered by production Playwright.
