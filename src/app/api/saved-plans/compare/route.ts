@@ -5,6 +5,7 @@ import { error, handleError, success } from '@/lib/api-helpers';
 import { planSnapshotSchema } from '@/lib/plan-snapshot';
 import { computePlanComparison } from '@/lib/plan-comparison';
 import { and, eq, inArray } from 'drizzle-orm';
+import { comparisonPlanIdsSchema } from '@/lib/comparison-read-contract';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,18 +14,19 @@ export async function POST(request: Request) {
     const userId = await requireCurrentUserId();
     const body = await request.json();
 
-    const planIds = body.planIds;
-    if (!Array.isArray(planIds) || planIds.length < 1 || planIds.length > 5) {
-      return error('Provide between 1 and 5 plan IDs.', 400);
+    const parsedIds = comparisonPlanIdsSchema.safeParse(body?.planIds);
+    if (!parsedIds.success) {
+      return error('Provide between 1 and 5 unique, nonempty plan IDs.', 400);
     }
+    const planIds = parsedIds.data;
 
     const plans = await db
       .select()
       .from(savedPlans)
       .where(and(eq(savedPlans.userId, userId), inArray(savedPlans.id, planIds)));
 
-    if (plans.length === 0) {
-      return error('No matching saved plans found.', 404);
+    if (plans.length !== planIds.length) {
+      return error('One or more selected saved plans were not found. Refresh the plan list and select again.', 404);
     }
 
     // Build city data map from all cities in DB

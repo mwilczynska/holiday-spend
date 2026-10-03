@@ -2860,3 +2860,16 @@ Retry/reload and restored defaults. Three new production regressions plus fourte
 build, all 398 unit tests, memory and v1.1 guard pass. The first unit run exceeds the existing snapshot-import setup
 deadline; its complete rerun passes all 69 files. Compare Plans now has separate Chrome reproductions of a false
 empty list after GET 503 and a hidden POST calculation failure while selecting plans. That fix is next.
+
+## 3 October 2026 — Feature QA F23: comparison failures and complete results
+
+Chrome reproduces a false empty comparison list after GET 503 and a hidden POST error while selecting plans.
+List failures now retain data/selections with Retry or label initial counts unavailable. Calculation errors remain
+visible in selector mode; complete validated responses replace results, prior results stay labelled stale on failed
+history navigation, and obsolete reads are ignored. Unchanged IDs can be compared again. The API rejects malformed,
+duplicate and partially missing/unowned ID sets. Chrome verifies initial recovery, retained selections, pending
+locking, visible error and Retry. Five new production regressions and eight existing comparison/mobile/auth checks
+pass on the final build. A first mobile timeout at the third route, Dataset, passes alone and in the final full run;
+no test deadline is changed. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass. The remaining form
+audit reproduces a profile-name malformed acknowledgement clearing input and reporting success; the fixture is
+unchanged, its reproduction is prepared and that separate fix follows.

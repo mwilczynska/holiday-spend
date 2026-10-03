@@ -6,6 +6,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowLeftRight } from 'lucide-react';
 import { PageLoadingState } from '@/components/ui/loading-state';
+import { readPageResponse } from '@/lib/read-page-response';
+import { comparisonPlanIdsSchema, comparisonSavedPlansSchema, comparisonResultsSchema } from '@/lib/comparison-read-contract';
 
 import { ComparisonSummaryCards } from '@/components/itinerary/ComparisonSummaryCards';
 import type { SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
@@ -45,11 +47,16 @@ export default function ComparePlansPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [comparisonData, setComparisonData] = useState<PlanComparisonResult[] | null>(null);
+  const comparisonSequence = useRef(0);
+  const comparisonRequest = useRef<string[]>([]);
 
   // Plan selector state
   const [allPlans, setAllPlans] = useState<SavedPlanSummary[]>([]);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
-  const [plansLoading, setPlansLoading] = useState(false);
+  const [plansLoading, setPlansLoading] = useState(true);
+  const [plansError, setPlansError] = useState<string | null>(null);
+  const [hasLoadedPlans, setHasLoadedPlans] = useState(false);
+  const plansSequence = useRef(0);
   // Track whether we're in selector mode explicitly (for "Change Plans")
   const [selectorMode, setSelectorMode] = useState(false);
 
@@ -69,28 +76,35 @@ export default function ComparePlansPage() {
   }, []);
 
   const fetchComparison = useCallback(async (planIds: string[]) => {
+    const sequence = ++comparisonSequence.current;
+    comparisonRequest.current = planIds;
+    setSelectedIds(new Set(planIds));
     setLoading(true);
     setError(null);
     try {
+      if (!comparisonPlanIdsSchema.safeParse(planIds).success) throw new Error('Select between 1 and 5 unique saved plans.');
       const response = await fetch('/api/saved-plans/compare', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ planIds }),
       });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to load comparison data.');
+      const data = await readPageResponse(response, 'comparison data');
+      const parsed = comparisonResultsSchema.safeParse(data);
+      if (!parsed.success || parsed.data.plans.length !== planIds.length
+        || parsed.data.plans.some((plan, index) => plan.id !== planIds[index])) {
+        throw new Error('The server returned incomplete or invalid comparison data. Refresh the plan list or retry.');
       }
-      setComparisonData(data.data.plans);
+      if (sequence !== comparisonSequence.current) return;
+      setComparisonData(parsed.data.plans);
       setSelectorMode(false);
       // Persist last-compared IDs to sessionStorage
       try {
         sessionStorage.setItem(COMPARE_IDS_STORAGE_KEY, planIds.join(','));
       } catch { /* sessionStorage unavailable */ }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load comparison data.');
+      if (sequence === comparisonSequence.current) setError(err instanceof Error ? err.message : 'Failed to load comparison data.');
     } finally {
-      setLoading(false);
+      if (sequence === comparisonSequence.current) setLoading(false);
     }
   }, []);
 
@@ -100,7 +114,7 @@ export default function ComparePlansPage() {
       const planIds = idsParam.split(',').filter(Boolean);
       if (planIds.length >= 1) {
         fetchComparison(planIds);
-        return;
+        return () => { comparisonSequence.current += 1; };
       }
     }
     // No ids in URL — try sessionStorage
@@ -111,26 +125,45 @@ export default function ComparePlansPage() {
         if (planIds.length >= 2) {
           // Auto-load last comparison
           router.replace(`/plan/compare?ids=${planIds.join(',')}`);
-          return;
+          return () => { comparisonSequence.current += 1; };
         }
       }
     } catch { /* sessionStorage unavailable */ }
     // Fall through to selector
     setSelectorMode(true);
+    return () => { comparisonSequence.current += 1; };
   }, [idsParam, fetchComparison, router]);
 
-  // Fetch plans list when in selector mode
+  const fetchPlans = useCallback(async () => {
+    const sequence = ++plansSequence.current;
+    setPlansLoading(true);
+    try {
+      const data = await readPageResponse(await fetch('/api/saved-plans', { cache: 'no-store' }), 'saved plans');
+      const parsed = comparisonSavedPlansSchema.safeParse(data);
+      if (!parsed.success) throw new Error('The server returned invalid saved plans.');
+      if (sequence !== plansSequence.current) return;
+      setAllPlans(parsed.data);
+      setHasLoadedPlans(true);
+      setPlansError(null);
+      const available = new Set(parsed.data.map(plan => plan.id));
+      setSelectedIds(current => new Set(Array.from(current).filter(id => available.has(id))));
+    } catch (err) {
+      if (sequence === plansSequence.current) setPlansError(err instanceof Error ? err.message : 'Could not load saved plans. Check your connection and retry.');
+    } finally {
+      if (sequence === plansSequence.current) setPlansLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     if (!selectorMode) return;
-    setPlansLoading(true);
-    fetch('/api/saved-plans', { cache: 'no-store' })
-      .then((res) => res.json())
-      .then((data) => setAllPlans(data.data || []))
-      .catch(() => setAllPlans([]))
-      .finally(() => setPlansLoading(false));
-  }, [selectorMode]);
+    void fetchPlans();
+    return () => { plansSequence.current += 1; };
+  }, [selectorMode, fetchPlans]);
 
   const togglePlanSelection = (id: string) => {
+    if (loading || plansLoading || plansError) return;
+    setError(null);
+    comparisonRequest.current = [];
     setSelectedIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -143,26 +176,29 @@ export default function ComparePlansPage() {
   };
 
   const handleCompareSelected = () => {
-    if (selectedIds.size < 2) return;
-    router.push(`/plan/compare?ids=${Array.from(selectedIds).join(',')}`);
+    if (selectedIds.size < 2 || loading || plansLoading || plansError) return;
+    const planIds = Array.from(selectedIds);
+    if (idsParam === planIds.join(',')) void fetchComparison(planIds);
+    else router.push(`/plan/compare?ids=${planIds.join(',')}`);
   };
 
   const handleChangePlans = () => {
     // Pre-select the currently compared plan IDs
-    if (comparisonData) {
-      setSelectedIds(new Set(comparisonData.map((p) => p.id)));
-    }
+    setSelectedIds(new Set(comparisonRequest.current.length ? comparisonRequest.current : comparisonData?.map(p => p.id)));
+    setError(null);
     setSelectorMode(true);
   };
 
   // Derive header state
   const hasResults = !!comparisonData && comparisonData.length > 0;
-  const showSelector = selectorMode && !loading;
+  const showSelector = selectorMode;
   const comparedPlanCount = comparisonData?.length ?? 0;
   const shouldStackAnalyticsSections = comparedPlanCount >= 4;
 
   let statusText = '';
-  if (showSelector && allPlans.length > 0) {
+  if (showSelector && !hasLoadedPlans && plansError) {
+    statusText = 'Saved plan count unavailable.';
+  } else if (showSelector && allPlans.length > 0) {
     statusText = `${allPlans.length} saved plan snapshot${allPlans.length !== 1 ? 's' : ''} available. Select 2\u20135 to compare.`;
   } else if (hasResults && !selectorMode) {
     statusText = `Comparing ${comparisonData.length} plan${comparisonData.length !== 1 ? 's' : ''}.`;
@@ -171,7 +207,7 @@ export default function ComparePlansPage() {
   const contentTopPadding = headerHeight > 0 ? Math.max(headerHeight - 40, 100) : 120;
 
   // Loading state (no header — full-page skeleton)
-  if (loading) {
+  if (loading && !comparisonData && !selectorMode) {
     return (
       <PageLoadingState
         title="Comparing plans"
@@ -201,13 +237,13 @@ export default function ComparePlansPage() {
               {showSelector && allPlans.length > 0 && (
                 <Button
                   onClick={handleCompareSelected}
-                  disabled={selectedIds.size < 2}
+                  disabled={selectedIds.size < 2 || loading || plansLoading || Boolean(plansError)}
                 >
                   Compare {selectedIds.size > 0 ? `(${selectedIds.size} selected)` : ''}
                 </Button>
               )}
-              {hasResults && !selectorMode && (
-                <Button variant="outline" onClick={handleChangePlans}>
+              {(hasResults || error) && !selectorMode && (
+                <Button variant="outline" disabled={loading} onClick={handleChangePlans}>
                   <ArrowLeftRight className="mr-2 h-4 w-4" />
                   Change Plans
                 </Button>
@@ -222,12 +258,24 @@ export default function ComparePlansPage() {
         className="mx-auto max-w-[1440px] px-4 pb-8 lg:px-8"
         style={{ paddingTop: contentTopPadding }}
       >
+        {loading ? <p role="status" className="mb-4 text-sm text-muted-foreground">Loading comparison...</p> : null}
+        {error ? (
+          <div role="alert" className="mb-4 rounded-lg border border-destructive/50 bg-destructive/10 p-4 space-y-2">
+            <p className="text-sm text-destructive">{error}</p>
+            <p className="text-sm text-muted-foreground">{hasResults && !selectorMode ? 'Showing the previous comparison; it may be out of date.' : 'Comparison unavailable. Your selected plans are retained.'}</p>
+            <Button size="sm" variant="outline" disabled={loading} onClick={() => void fetchComparison(comparisonRequest.current)}>Retry comparison</Button>
+          </div>
+        ) : null}
         {/* Selector mode */}
         {showSelector && (
           <div className="rounded-lg border bg-card p-4">
-            {plansLoading ? (
-              <p className="text-sm text-muted-foreground">Loading saved plans...</p>
-            ) : allPlans.length === 0 ? (
+            {plansError ? <div role="alert" className="mb-4 space-y-2 text-sm text-destructive">
+              <p>{plansError}</p>
+              <p>{hasLoadedPlans ? 'Showing the last loaded saved plans; they may be out of date.' : 'Saved plans unavailable.'}</p>
+              <Button size="sm" variant="outline" disabled={plansLoading} onClick={() => void fetchPlans()}>Retry saved plans</Button>
+            </div> : null}
+            {plansLoading ? <p role="status" className="mb-3 text-sm text-muted-foreground">Loading saved plans...</p> : null}
+            {!hasLoadedPlans ? (!plansLoading && !plansError ? <p>Saved plans unavailable.</p> : null) : allPlans.length === 0 ? (
               <div className="flex flex-col items-center gap-3 py-6 text-center">
                 <p className="text-sm text-muted-foreground">
                   No saved plans yet. Build your itinerary on the Plan page and save
@@ -246,6 +294,7 @@ export default function ComparePlansPage() {
                   >
                     <input
                       type="checkbox"
+                      disabled={loading || plansLoading || Boolean(plansError)}
                       checked={selectedIds.has(plan.id)}
                       onChange={() => togglePlanSelection(plan.id)}
                       className="h-4 w-4"
@@ -264,13 +313,6 @@ export default function ComparePlansPage() {
                 ))}
               </div>
             )}
-          </div>
-        )}
-
-        {/* Error state */}
-        {error && !showSelector && (
-          <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
-            <p className="text-sm text-destructive">{error}</p>
           </div>
         )}
 

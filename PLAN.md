@@ -21,13 +21,25 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Fix Chrome-reproduced Compare Plans list failures that report no saved plans and calculation failures hidden in selector mode; verify retained selections, validated results and Retry. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Fix the Chrome-reproduced malformed profile-name acknowledgement that clears the draft and reports success, verify pending locking and retries, then run the complete production sweep. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Twenty-one separate fixes are pushed through `ade8003`; the verified provider-limit fix is ready for its separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+The remaining form audit has reproduced a malformed profile-name save that clears its draft and reports success.
+Its regression is being prepared; implementation follows the separate comparison commit.
+
+**Working tree:** Twenty-two separate fixes are pushed through `3634b57`; the verified comparison fix is ready for its separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
-Twenty-second fix: provider-limit acknowledgements must confirm the requested values before success. Failed saves
+Twenty-third fix: comparison list failures retain plans/selections with Retry and initial failures show unavailable
+counts. Calculation errors are visible in selector mode; validated complete results replace prior comparisons,
+and obsolete responses are ignored. The API rejects duplicate, malformed or partially missing/unowned IDs.
+Chrome verifies initial unavailable counts, selection retention, visible calculation errors and both Retry controls.
+All thirteen relevant production checks pass on the final build, including five new regressions. The first run's
+mobile check exceeds its shared thirty-second deadline while navigating to Dataset after comparison/planner pass;
+the isolated rerun and final thirteen-check run pass without changing that test. TypeScript, build, all 398 unit
+tests, memory and v1.1 guard pass. The profile-name defect is reproduced with no persistent fixture change.
+
+Twenty-second fix `3634b57` is pushed: provider-limit acknowledgements must confirm the requested values before success. Failed saves
 and resets retain input and the exact operation for Retry; newer edits replace the retry. Pending saves lock inputs
 and other Settings writes, and old success messages clear on editing/submission. Chrome verifies malformed 200
 retention, pending locking, successful Retry/reload and Reset/default restoration. All seventeen relevant production

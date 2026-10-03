@@ -2,10 +2,10 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty-one separate fixes are committed and pushed; F22 is verified for its separate commit. All 398 unit tests
+Checkpoint: twenty-two separate fixes are committed and pushed; F23 is verified for its separate commit. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
 including four new traveller regressions, pass after F21. Seventeen targeted checks pass after F22.
-Chrome evidence is recorded separately below.
+Thirteen comparison/mobile checks pass after F23. Chrome evidence is recorded separately below.
 
 ## Environment and evidence
 
@@ -42,11 +42,12 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F19 | Dataset/library/history/provenance reads expose failures and Retry | `e37bda0` |
 | F20 | Settings reads retain values, costs and unsaved limit drafts | `527db84` |
 | F21 | Traveller saves retain labelled drafts and lock pending submissions | `ade8003` |
-| F22 | Provider-limit saves validate acknowledgements and lock pending writes | Verified; separate commit pending |
+| F22 | Provider-limit saves validate acknowledgements and lock pending writes | `3634b57` |
+| F23 | Comparison failures retain plans/results and expose validated Retry | Verified; separate commit pending |
 
 ## Remaining coverage
 
-- Compare Plans read/calculation failure states need fixes after Chrome reproduction. Settings save failures/concurrent submissions are verified under F21–F22; main read/empty-state fixes are verified under F15–F20.
+- Profile-name save acknowledgement/pending failures are reproduced and need a fix. Comparison failures are verified under F23; Settings saves under F21–F22; main read/empty-state fixes under F15–F20. The complete sweep will follow the profile fix.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -77,6 +78,23 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F23 — Comparison failures report an empty list or hide calculation errors
+
+Chrome rejects GET `/api/saved-plans` and sees “No saved plans yet” without an error. Rejecting a comparison POST
+from the selector retains two selections but hides the error and offers no Retry. The fix validates list and result
+HTTP/JSON/schema responses before replacement, distinguishes unavailable from valid empty lists and preserves
+loaded plans/selections. Errors remain visible in selector mode with Retry; prior results remain labelled stale during
+failed history navigation. Obsolete comparisons cannot replace newer results. Comparing unchanged IDs sends a fresh
+request. The API rejects malformed/duplicate IDs and the whole request when any requested ID is missing or unowned.
+Chrome verifies unavailable initial counts, list Retry, retained two selections, pending locks, visible calculation
+error and successful Retry. Five new production regressions cover initial/refresh/network/unreadable/invalid reads,
+valid empty lists, selection retention, HTTP/malformed/empty/partial/invalid/wrong-order results, stale history results,
+obsolete response races and API input/all-or-nothing validation. All thirteen relevant checks pass on the final build.
+The first mobile run reaches the thirty-second multi-route deadline at Dataset after comparison/planner pass;
+an isolated rerun and the final full thirteen-check run pass without changing the test. TypeScript, build, all 398
+unit tests, memory and v1.1 guard pass. Evidence: `compare-list-false-empty.png`, `compare-failure-hidden.png`,
+`compare-list-unavailable-retry.png`, `compare-error-visible-retry.png`.
 
 ### F22 — Malformed provider-limit acknowledgements clear drafts and report success
 

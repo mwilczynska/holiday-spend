@@ -190,6 +190,10 @@ leg. Its cards are memoized so unrelated dialog and header updates do not rerend
 
 `/plan/compare` uses one canonical server-side allocation engine for summary totals, cumulative series and country
 and category groupings. Manual transport remains separate.
+Comparison list failures retain prior plans and selections with Retry; initial failures label plans/counts unavailable.
+Calculation errors remain visible in selector mode, and prior results stay labelled stale until a complete validated
+response replaces them. Obsolete responses cannot replace newer comparisons. Requested plan IDs must be unique,
+and missing or unowned IDs reject the whole comparison.
 
 Narrow screens keep wide comparison cards and dataset/expense tables inside their scroll areas. Planner controls
 and leg summaries wrap, and the mobile navigation includes a reachable Sign out action.
