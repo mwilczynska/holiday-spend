@@ -2,7 +2,7 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: seventeen fixes are committed and pushed. All 398 unit tests and 68 production Playwright checks pass, along with
+Checkpoint: twenty fixes are verified. All 398 unit tests and 81 production Playwright checks pass, along with
 TypeScript, build, memory mirror and the v1.1 guard. Chrome evidence is recorded separately below.
 
 ## Environment and evidence
@@ -37,11 +37,12 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F16 | Planner/saved-plan read failures retain prior data with Retry | `d0dec59` |
 | F17 | Inline leg edits retain drafts and serialize saves | `bc2d491` |
 | F18 | Dashboard read failures retain figures or show unavailable totals | `b40b150` |
-| F19 | Dataset/library/history/provenance reads expose failures and Retry | Included in this fix |
+| F19 | Dataset/library/history/provenance reads expose failures and Retry | `e37bda0` |
+| F20 | Settings reads retain values, costs and unsaved limit drafts | Included in this fix |
 
 ## Remaining coverage
 
-- Settings read and empty-state failures need a further local pass. Dataset failures are verified under F19, dashboard under F18 and planner under F15–F17.
+- Settings save failures/concurrent submissions and Compare Plans failure states need a further local pass. Main read/empty-state fixes are verified under F15–F20.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -63,15 +64,30 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Expenses | CRUD; conversions; assignment; filters; pagination; exclusion/bulk operations | Chrome: categories/payers; USD conversion; edit fields/unassignment; details; failure/retry; exclude/include individually/in bulk; all category/source filters; pagination; correct filtered CSV; inclusive date bounds/keyboard clear. Reversed dates show zero results without a validation message. Native delete confirmation is limited by Chrome control; Playwright verifies deletion/retry/persistence. |
 | Expense tags | CRUD; assignment/removal; expense navigation; empty/duplicate names | Chrome: create/color/empty; duplicate retention/error; rename/title; deleted fixture absent from totals; assignment persists after reload and removal works. Playwright: CRUD failures, network/draft retention, read retry, assignment/removal/retry and deleted/excluded/missing-conversion totals. |
 | Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
-| Dataset | Search; pagination; city costs; history/provenance; generation/retry | Chrome: city/country/no-match searches, both tables' pagination, source/no-match history search, Agra editor/negative rejection, controlled new/existing generation failures/retry; mobile city/history tables reach rightmost columns. Production checks verify zero/missing/decimal costs and coffee coupling. Live generation and Chrome native delete confirmation remain limited. |
+| Dataset | Search; pagination; city costs; history/provenance; generation/retry | Chrome: city/country/no-match searches, both tables' pagination, source/no-match history search, Agra editor/negative rejection, controlled new/existing generation failures/retry; mobile city/history tables reach rightmost columns. F19 verifies failed library/history/provenance reads, initial unavailable counts and Retry; production checks cover draft preservation and save-then-refresh failure. Cost checks verify zero/missing/decimal costs and coffee coupling. Live generation and Chrome native delete confirmation remain limited. |
 | Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Chrome controlled responses: three providers; editable/default model; six OpenAI efforts; refresh HTTP 503; new/existing generation HTTP 502; retained forms and retry. Playwright fixture-only profile checks saved/unsaved keys and cross-window clear/sync. Owner keys remain untouched. |
-| Settings | Travellers; request limits; fixed costs; JSON/CSV exports | Chrome: fixed-cost CRUD/paid/errors; limits validation/save/reset; all five traveller counts; five persists and propagates to planner (245,059 AUD), then restored two. Export clicks yield no observable artifact through the Chrome extension. Production Playwright downloads and validates complete JSON/CSV artifacts. |
+| Settings | Travellers; request limits; fixed costs; JSON/CSV exports | Chrome: fixed-cost CRUD/paid/errors; limits validation/save/reset; all five traveller counts; five persists and propagates to planner (245,059 AUD), then restored two. F20 verifies failed reads, retained costs/settings, draft-preserving Retry and initial unavailable values/recovery. Export clicks yield no observable artifact through the Chrome extension. Production Playwright downloads and validates complete JSON/CSV artifacts. Save failure/concurrency auditing continues. |
 | Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Chrome: profile save/reload/clear/restore; password required fields and Google disabled; public screens and back links inspected. Password changes, email delivery and OAuth remain excluded. |
 | Responsive/accessibility | Navigation; scroll areas; labels; keyboard controls | Chrome: Compare/Planner overflow fixed; all seven mobile navigation actions fit; comparison cards, dataset/history and country tables reach far edge; annual climate dialog and methodology page reach bottom; methodology Enter toggling; overrides/expenses/costs/tag/order controls labelled. Exact 390 px production regression checks Compare/Planner/Dataset/Expenses/Settings. |
 | Methodology | Current contract; sections; navigation; responsive layout | Chrome: stale v2/v3 claims reproduced and corrected; seven v1.1 sections expanded; Enter toggling; View Dataset/Open Planner links; bottom scroll; narrow page fits. Historical research remains archived. |
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F20 — Settings read failures report a false zero fixed-cost total
+
+Chrome rejects GET `/api/fixed-costs` and sees “No fixed costs yet” and zero totals despite a $25 QA row. The fix
+validates all four required HTTP/JSON/schema responses before replacing costs, country options, traveller count or
+provider limits. Failures retain prior data with a stale warning and Retry; initial failures label settings/totals
+unavailable. Obsolete reads are ignored. Provider-limit drafts survive refreshes, and dependent actions wait for valid
+reads. Chrome verifies the retained $25 row, Retry preserving unsaved 33,333 tokens / 420 seconds, initial unavailable
+values and successful recovery to saved 64,000 tokens / 600 seconds / two travellers. The QA table is restored and the
+disposable $25 row is removed. The production reproduction fails before the fix. Ten relevant browser checks pass,
+including four new regressions for HTTP/network/unreadable/invalid data, retention, valid empty results, initial
+recovery and draft preservation, plus fixed-cost/provider-limit workflows and auth setup. TypeScript, build, all 398
+unit tests, memory mirror and v1.1 guard pass. Evidence: `settings-read-false-empty.png`,
+`settings-read-retained-retry.png`, `settings-initial-unavailable.png`.
+The complete 81-check production browser suite passes in 4.1 minutes after F18–F20.
 
 ### F19 — Dataset read failures report a false empty library and hide provenance failure
 

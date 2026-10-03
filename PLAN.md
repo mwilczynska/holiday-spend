@@ -21,13 +21,23 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Continue settings reads and empty states in Chrome. Dataset/library/history/provenance failure and recovery checks pass. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Audit Settings save failures/concurrent submissions and Compare Plans failure states in Chrome. All 81 production browser checks pass after the dashboard/dataset/settings read fixes. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Eighteen separate fixes are pushed through `b40b150`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Nineteen separate fixes are pushed through `e37bda0`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
-Nineteenth fix is ready for publication: dataset read failures retain library/history together with a stale label and
+Twentieth fix is verified: Settings read failures retain costs/settings with a stale label and Retry. Initial failures
+show unavailable traveller/provider values and totals. All four required responses are validated before replacement,
+obsolete reads are ignored and retry retains unsaved provider-limit drafts. Dependent actions wait for valid reads.
+Chrome verifies the retained $25 fixture, draft 33,333 tokens / 420 seconds surviving Retry, initial unavailable values
+and recovery to saved 64,000 / 600 seconds / two travellers. Copy-only suspension is restored and the fixture removed.
+The production reproduction fails against the prior build. Ten relevant browser checks pass, including four new read
+regressions plus fixed-cost/provider-limit workflows and auth setup. TypeScript, build, all 398 unit tests, memory
+mirror and v1.1 guard pass. The full 81-check production sweep passes in 4.1 minutes, including imports, comparisons,
+climate, transport, exports and all thirteen new read regressions.
+
+Nineteenth fix `e37bda0` is pushed: dataset read failures retain library/history together with a stale label and
 Retry. Initial failures expose unavailable counts/rows; provenance failures have a separate Retry. HTTP/JSON/schema,
 cost and cross-response checks precede updates. Retries retain city drafts, and successful writes are not reported as
 failed when refresh fails. Chrome verifies retained 210 cities / 71 countries / 67 history records, initial unavailable
@@ -35,7 +45,7 @@ counts and provenance error/Retry. The production reproduction fails before the 
 including five new regressions, city editor, initial SSR/navigation and auth setup, pass. TypeScript, build, all 398
 unit tests, memory mirror and v1.1 guard pass; the copy-only table suspension is restored.
 
-Eighteenth fix is ready for publication: dashboard read failures retain prior figures with a stale warning and Retry;
+Eighteenth fix `b40b150` is pushed: dashboard read failures retain prior figures with a stale warning and Retry;
 initial failures show unavailable totals/charts. Complete validated responses replace the view together, valid empty
 trips are distinct, and the first client navigation refreshes while full loads skip duplicate reads. All four new
 production regressions fail against the prior build and pass after the fix, plus auth setup. Chrome verifies both

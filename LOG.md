@@ -2817,3 +2817,15 @@ drafts survive retry, and a successful city save stays saved when refresh fails.
 reproduction fails before the fix. Ten relevant browser checks pass, including five new regressions, city editor,
 SSR/navigation and auth setup. TypeScript, build, all 398 unit tests, memory mirror and v1.1 guard pass. Copy-only table
 suspension is restored; owner data and keys are untouched.
+
+## 3 October 2026 — Feature QA: Settings read failures
+
+Chrome reproduces a rejected fixed-cost read reporting zero totals and an empty list despite a $25 QA row. Settings
+now validates all required responses before replacing data, keeps the last loaded view with a stale warning and
+Retry, and labels initial values/totals unavailable. Retry preserves unsaved provider-limit drafts; dependent actions
+wait for valid reads. Chrome verifies retained costs, unsaved 33,333 tokens / 420 seconds, initial unavailable values
+and recovery to 64,000 / 600 seconds / two travellers. Copy-only table suspension is restored and the fixture removed.
+The production reproduction fails before the fix. Ten relevant browser checks pass, including four new regressions,
+fixed-cost/provider-limit workflows and auth setup. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass.
+The complete production browser sweep passes all 81 checks in 4.1 minutes after the three read fixes, including
+imports, comparisons, climate, transport, export artifacts and all thirteen new failure-state regressions.

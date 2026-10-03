@@ -202,6 +202,9 @@ and charts. Complete responses replace the view together, and valid empty trips 
 Dataset failures retain the last loaded city library and history with Retry; initial failures label counts and rows
 unavailable. Library/history responses are validated together, retries keep city drafts, and provenance failures have
 their own Retry. A saved city remains saved when the following refresh fails.
+Settings read failures retain the last loaded values and fixed costs with Retry. Initial failures label traveller
+count, provider limits and totals unavailable. All required responses are validated before replacement; retry keeps
+unsaved provider-limit drafts, and controls that depend on current settings wait for a successful read.
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
