@@ -1310,7 +1310,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
       <div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
         <div className="fixed inset-x-0 top-0 z-30 border-b bg-background shadow-sm lg:left-64">
           <div ref={plannerHeaderRef} className="mx-auto max-w-6xl px-4 py-4 lg:px-8">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
               <div>
                 <h1 className="text-2xl font-bold">Itinerary Planner</h1>
                 <p className="text-sm text-muted-foreground">

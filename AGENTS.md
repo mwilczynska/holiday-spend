@@ -186,6 +186,9 @@ leg. Its cards are memoized so unrelated dialog and header updates do not rerend
 `/plan/compare` uses one canonical server-side allocation engine for summary totals, cumulative series and country
 and category groupings. Manual transport remains separate.
 
+Narrow screens keep wide comparison cards and dataset/expense tables inside their scroll areas. Planner controls
+and leg summaries wrap, and the mobile navigation includes a reachable Sign out action.
+
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
 Rejected expense edits keep their drafts; failed exclusion, deletion and bulk actions retain rows and selections

@@ -382,7 +382,7 @@ export const LegCard = memo(function LegCard({
                 {leg.status}
               </Badge>
             </div>
-            <div className="mt-1 flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
               <span>{leg.nights} nights</span>
               {leg.startDate && <span>{leg.startDate} - {leg.endDate}</span>}
               <span className="font-medium text-foreground">
@@ -486,7 +486,7 @@ export const LegCard = memo(function LegCard({
         </div>
 
         <div className="mt-3 space-y-2 rounded-md border p-3">
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
             <div>
               <Label className="text-xs">Intercity Transport</Label>
               <p className="text-xs text-muted-foreground">

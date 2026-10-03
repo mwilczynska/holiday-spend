@@ -59,11 +59,16 @@ Seventh fix committed and pushed as `617c06a`: tag CRUD/read failures expose err
 return 409 with guidance; selected title refreshes after rename. Chrome verifies duplicate retention and rename.
 TypeScript, build, 387 unit tests and three production browser regressions plus auth setup pass. Overlapping unit
 and browser suites caused two setup-hook timeouts; an isolated unit rerun passes all tests. Remaining coverage continues.
-Eighth fix ready to commit: tag counts/lists omit deleted expenses and totals follow the tracker's AUD helper and
+Eighth fix committed and pushed as `9c9ade6`: tag counts/lists omit deleted expenses and totals follow the tracker's AUD helper and
 exclude excluded spend. Loading/failed totals are labelled rather than showing zero. Chrome verifies a deleted
 45 AUD fixture disappears from its tag. A production regression fails before the fix (excluded spend counted),
 then passes through exclude/include/delete and empty-state checks. TypeScript, build, 387 unit tests, memory/guard
 and all four tag browser regressions plus auth setup pass. Continue remaining saved-plan/dataset/account/mobile controls.
+Ninth fix ready to commit: Chrome reproduces narrow-screen page overflow, including a 1,152 px comparison layout.
+The production regression fails before the fix at 390 px and passes after it across Compare, Planner, Dataset,
+Expenses and Settings. The main flex item shrinks; planner controls and leg summaries wrap; mobile navigation
+fits Sign out. Chrome verifies corrected planner/comparison widths. TypeScript, build, 387 unit tests, memory
+and v1.1 guard pass. Continue the remaining dataset, settings, auth and provider controls.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.

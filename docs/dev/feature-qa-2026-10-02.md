@@ -22,7 +22,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing records and retry | Chrome: Agra annual chart/table, 12 months, close, C/F propagates to leg. Playwright: missing/retry, monthly segmentation and shared units pass. Remaining interactive trip/tooltips/scroll pending. |
 | Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: two rows with modes/notes, 65 and 35.50 costs, total includes both once; row removal; individual dialog open/close; six mode controls; no-mode estimate disabled; advanced settings and provider list opened. Controlled Playwright: Stop, failed-only retry, model discovery and apply paths pass. Live action rejected by automatic approval; user question pending. |
 | Plan files | JSON snapshot export/import; malformed/duplicate/missing-city rows; cancel and confirm | Pending; interactive file attachment blocked, snapshot API atomicity/scoping regressions pass. |
-| Saved plans | Save/load/delete/export/import; warnings; empty and multi-plan comparisons; category/country/chart controls | Existing production Playwright save/persist/delete and two/five-plan comparison tests pass. Interactive Chrome coverage pending. |
+| Saved plans | Save/load/delete/export/import; warnings; empty and multi-plan comparisons; category/country/chart controls | Chrome: whitespace name disables Save; Cancel; save/load QA snapshot with same 65 legs/390 nights/112,710 AUD; JSON export downloaded; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; all three chart expansions and Close. Delete, list scrolling and attachment remain. |
 | Expenses | Add/edit/delete; currency and rate; date/leg assignment; category/source/date filters; pagination; exclusion; bulk include/exclude/delete | Chrome: Quick Add categories/payers; USD conversion; edit category/merchant/subcategory/unassignment; details expand; controlled error/retry; individual and two-row bulk exclude/include; all 10 category filters and 3 source filters; Next/Previous; filtered CSV contains exactly two manual QA records. Date bounds/delete confirmation still pending. Playwright mutation tests verify delete/retry/persistence. |
 | Expense tags | Tag CRUD; assignment/removal; tagged-expense navigation; empty/duplicate names | Chrome: empty list/create-disabled, fixture creation/color input, duplicate draft-loss reproduction and retained-error fix, view empty expenses, rename updates selected title. Playwright: duplicate create/edit, network retention, rename/color persistence, delete failure/retry, list/expense read failure/retry. Assignment/removal and deleted-record totals pending. |
 | Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
@@ -30,10 +30,20 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Pending |
 | Settings | Traveller count; request-limit validity/save/reset; fixed-cost CRUD/paid; JSON/CSV exports | Chrome: fixed-cost negative blocked; controlled save failure keeps input; retry, paid toggle, reload persistence and delete. Zero-limit defect reproduced; remaining traveller/export checks pending. |
 | Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Pending; real email delivery and password changes need a controlled separate workflow |
-| Responsive/accessibility | Desktop/mobile navigation; page/dialog/table/chart scrolling; labels; keyboard Escape/Tab/Enter; long content | Pending |
+| Responsive/accessibility | Desktop/mobile navigation; page/dialog/table/chart scrolling; labels; keyboard Escape/Tab/Enter; long content | Chrome: narrow Compare/Planner overflow reproduced and corrected; all seven mobile navigation actions fit. Production regression checks no page overflow at 390 px on Compare/Planner/Dataset/Expenses/Settings. Remaining interactive scroll/dialog checks continue. |
 | Failure/data integrity | Rejected writes leave data unchanged; user scoping; invalid numbers/dates; network/provider errors; reload persistence | Pending |
 
 ## Findings and fixes
+
+### F9 — Narrow screens widen the whole page and hide navigation
+
+Chrome's narrow Compare page grows to 1,152 px, clipping paragraphs and charts. Planner/mobile navigation also
+overflow. A production regression at 390 px fails with page width 1,152. Fix: allow the main flex item to shrink,
+wrap planner controls/leg summaries, and reduce narrow navigation spacing. The same regression passes on Compare,
+Planner, Dataset, Expenses and Settings, with Home and Sign out in view. Chrome verifies corrected widths and
+planner controls. TypeScript, build, 387 unit tests, memory and v1.1 guard pass. Evidence: `compare-mobile-overflow.png`,
+`compare-mobile-fixed.png`, `planner-mobile-fixed.png` under the ignored QA folder. Browser zoom means the 390 px
+override reports a 355 CSS px Chrome viewport; the automated regression uses exactly 390 CSS px. Override reset.
 
 ### F1 — Quick Add skipped AUD conversion and hid failed saves
 

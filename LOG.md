@@ -2677,3 +2677,12 @@ sidebar/detail totals and empty states. TypeScript, build and 387 unit tests pas
 
 Chrome confirmation control stalls on Emulation.setFocusEmulationEnabled; a fresh same-browser tab works. This is
 recorded as a control-surface limitation, with actual delete persistence covered by production Playwright.
+
+## 2 October 2026 — Feature QA: narrow-screen overflow
+
+Chrome reproduces a 1,152 px Compare page and overflowing planner/mobile navigation at a narrow viewport.
+A new production regression fails at 390 px with page width 1,152. The root main flex item now allows shrinking;
+planner header/transport controls and leg summaries wrap; mobile navigation uses smaller narrow-screen spacing.
+The regression passes across Compare, Planner, Dataset, Expenses and Settings, including Home/Sign out visibility.
+Chrome verifies corrected comparison/planner widths and visible mobile navigation. TypeScript, build, 387 unit tests,
+memory and v1.1 guard pass. Screenshots are retained in the ignored QA folder. Viewport override is reset afterwards.
