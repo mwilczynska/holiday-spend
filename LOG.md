@@ -2940,3 +2940,16 @@ retained under the ignored QA directory. F27's application change is verified an
 The owner-entered key is available in Chrome: keyed discovery and fictional Canberra generation succeed. The
 three-night leg and climate load, and the fictional plan has three legs / nine nights / $5,344. Live transport
 checks continue without reading, copying or saving the credential.
+
+## 3 October 2026 — Feature QA F27: confirmed new-city saves
+
+Chrome reproduces a malformed HTTP 201 `{data:{}}` closing the new-city form and reporting an added Sydney leg
+without a saved row. Pending inputs remain editable. Three new production regressions fail against F26. Both
+planner and dataset forms now validate city identity and consistent creation flags before clearing input; planner
+responses must also confirm a positive saved leg ID, the city and exact requested nights. Failures retain drafts
+with an error and advice to check saved data before retrying. Pending controls lock and a ref guards duplicate
+submission. Chrome verifies disabled inputs, retained Sydney / Australia / two nights, the error, no false success
+and narrow-dialog containment. TypeScript, production build, all 69 Vitest files / 398 tests, memory and v1.1 guard
+pass. All 22 affected production checks pass in 1.6 minutes after the separate `3188b1c` transport-test readiness
+correction. The complete 101-check sweep is running. Live Canberra persistence confirms v1.1 / `gpt-6-luna` /
+`max`, preserved formulas and dated 2 October RBA conversion provenance. Only fictional QA data is submitted.

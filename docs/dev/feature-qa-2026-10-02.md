@@ -1,14 +1,17 @@
 # Comprehensive feature QA — 2–3 October 2026
 
-Status: owner-approved provider follow-through; disposable credential and file access pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
+Status: approved live OpenAI testing in progress; Chrome file access pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty-five separate fixes are committed and pushed through `a1f8370`. All 398 unit tests
+Checkpoint: twenty-six separate fixes are committed and pushed through `c12d8d9`. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
 including four new traveller regressions, pass after F21. Seventeen targeted checks pass after F22.
 Thirteen comparison/mobile checks pass after F23; both new profile checks and auth setup pass after F24.
 The timeout precision regression and auth setup pass after F25. The first 96-check production sweep passes 94;
 two trace-confirmed synchronization races are corrected in the tests and their seven file/auth checks pass.
 The complete 96-check production rerun passes in 4.1 minutes.
+After F26, thirteen affected production checks pass, including its two new nights regressions. After F27, all
+22 affected checks pass; the transport-test readiness correction is pushed separately as `3188b1c`.
+Live keyed discovery and Canberra generation pass in Chrome. The new complete 101-check sweep is running.
 Chrome evidence is recorded separately below.
 
 ## Environment and evidence
@@ -50,7 +53,8 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F23 | Comparison failures retain plans/results and expose validated Retry | `0c98b21` |
 | F24 | Profile-name saves require confirmation and retain rejected drafts | `dd9849f` |
 | F25 | Provider timeout displays and conversions preserve millisecond precision | `a1f8370` |
-| F26 | New-city leg creation rejects fractional and unsafe nights without truncation | Verified; separate commit pending |
+| F26 | New-city leg creation rejects fractional and unsafe nights without truncation | `c12d8d9` |
+| F27 | New-city acknowledgements validate confirmed city/leg and lock pending input | Verified; separate commit pending |
 
 ## Remaining coverage
 
@@ -87,6 +91,22 @@ calibration is out of scope; tests check product contracts, calculation integrit
 
 ## Findings and fixes
 
+### F27 — New-city forms report success after incomplete acknowledgements
+
+Chrome verifies a local HTTP 201 `{data:{}}` closes and clears the form and reports an added Sydney leg although
+the fictional account still has only its original two legs. Nights remain editable during the held request.
+Three new production regressions fail on the F26 build. Runtime validation now requires a complete city identity
+and consistent creation flags; planner responses must also confirm a positive leg ID, city ID and exact requested
+nights. Incomplete or inconsistent acknowledgements retain the draft with an error and advice to check saved data
+before retrying. Pending controls are locked and duplicate submission is guarded. Chrome verifies the disabled
+city, nights and provider controls, then retained Sydney / Australia / two nights, a visible error and no false
+success after the incomplete acknowledgement. The narrow dialog and advanced controls stay within their scroll
+areas. TypeScript, build, all 69 Vitest files / 398 tests, memory and v1.1 guard pass. The first affected run passes
+21 of 22; the transport-picker trace shows a completed click before client readiness and no dialog. The separate
+`3188b1c` test correction waits for the client-rendered climate image without changing app code or deadlines.
+The affected rerun passes all 22 checks in 1.6 minutes. This reproduction injects only a local response and writes
+no data. Evidence: `new-city-false-success.png`, `new-city-acknowledgement-fixed.png`.
+
 ### F26 — New-city creation silently truncates fractional nights
 
 During approved provider preparation, Chrome submits Sydney / Australia / 3.5 nights through the new-city flow.
@@ -107,9 +127,14 @@ The owner approves continuing on 3 October. `provider-qa@example.test` is a sepa
 QA database, with two travellers, Sydney (1–4 December 2026) and Melbourne (4–7 December 2026), three nights each,
 and no notes. Public city names and invented dates are the only planned route context. Canberra / Australia /
 three nights is prepared in Chrome for the new-city path, OpenAI, key saving unchecked. The QA launcher keeps all
-provider and email environment keys empty. The owner is asked to enter a disposable key directly in the UI;
-no credential value is read. A readiness check confirms the Clear This Key control remains disabled, so no live
-request is submitted. Synthetic two-file Wise imports and the original two-leg JSON snapshot are prepared in the
+provider and email environment keys empty. Initially no key is available; the owner then enters an OpenAI key
+directly in the UI and confirms it is ready. No credential value is read or copied. Keyed discovery lists 78 models;
+Canberra generation succeeds, adds exactly three nights for 7–10 December and loads historical climate. The plan
+has three legs / nine nights / $5,344. SQLite confirms v1.1, OpenAI `gpt-6-luna`, `max`, preserved formulas and an
+RBA observation dated 2 October 2026, deterministically inverted from USD per AUD to AUD per USD. This verifies
+the product contract, not calibration. Live Sydney–Melbourne transport is running. Key saving is kept off, the
+extra audit tab is closed and the active page is retained; the owner is told another entry is needed only if the
+session loses its key. Synthetic two-file Wise imports and the original two-leg JSON snapshot are prepared in the
 ignored QA directory. The prior Chrome file permission must actually change before another attachment attempt.
 
 ### F25 — Fractional timeout values are displayed as rounded seconds

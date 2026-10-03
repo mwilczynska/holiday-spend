@@ -21,7 +21,7 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Publish the transport-test readiness correction and F27 separately, then finish live transport and city provenance checks with the owner-entered key in the fictional Chrome account. Approval is recorded in the 3 October follow-up. Chrome file access still requires an actual permission change; credential changes require user entry. Preserve the entered key's current page session and the published fixes.
+**Next action:** Publish F27, then finish live transport and existing-city refresh checks with the owner-entered key in the fictional Chrome account. The transport-test readiness correction is pushed as `3188b1c`. Approval is recorded in the 3 October follow-up. Chrome file access still requires an actual permission change; credential changes require user entry. Preserve the entered key's current page session and the published fixes.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
@@ -36,6 +36,8 @@ prepared in Chrome for three nights, OpenAI, key saving off. The owner enters an
 keyed discovery lists 78 models, and live Canberra generation succeeds with a three-night leg and climate. The
 fictional plan now has three legs, nine nights and $5,344 total. Single Sydney–Melbourne estimation is running.
 No credential is read or copied. The current page is retained because unsaved keys do not survive a reload.
+The saved Canberra estimate is v1.1 / OpenAI `gpt-6-luna` / `max`, with the preserved formula version and RBA
+observation dated 2 October 2026. The server records deterministic inversion of USD per AUD to AUD per USD.
 
 F27: Chrome confirms HTTP 201 `{data:{}}` closes the new-city form and reports an added Sydney leg although no leg
 was saved. Inputs also remain editable while the request is pending. The three new production regressions fail

@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
+import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-state';
@@ -24,6 +25,20 @@ import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import { getLlmNetworkErrorMessage, readLlmApiResponse } from '@/lib/llm-error-messages';
 
 const STORAGE_PREFIX = 'holiday-spend.city-generation';
+
+const createdCitySchema = z.object({
+  cityId: z.string().trim().min(1),
+  cityName: z.string().trim().min(1),
+  countryId: z.string().trim().min(1),
+  countryName: z.string().trim().min(1),
+  createdCountry: z.boolean(),
+  createdCity: z.boolean(),
+  generatedCity: z.boolean(),
+  reusedExistingCity: z.boolean(),
+}).refine(city => city.reusedExistingCity
+  ? !city.createdCountry && !city.createdCity && !city.generatedCity
+  : city.createdCity && city.generatedCity);
+const createdLegSchema = z.object({ id: z.number().int().positive(), cityId: z.string().min(1), nights: z.number().int().positive() });
 
 type ProviderOption = CityGenerationProvider;
 
@@ -68,6 +83,7 @@ export function PlannerNewCityDialog({
   const nightsInputId = useId();
   const parsedNights = Number(nights);
   const nightsValid = Number.isSafeInteger(parsedNights) && parsedNights > 0;
+  const submitting = useRef(false);
   const [provider, setProvider] = useState<ProviderOption>('openai');
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());
   const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>(
@@ -144,7 +160,7 @@ export function PlannerNewCityDialog({
   }
 
   function handleOpenChange(nextOpen: boolean) {
-    if (loading) return;
+    if (submitting.current) return;
     onOpenChange(nextOpen);
     if (!nextOpen) {
       setError(null);
@@ -191,6 +207,7 @@ export function PlannerNewCityDialog({
   }
 
   async function handleSubmit() {
+    if (submitting.current) return;
     if (!isDatasetMode && !nightsValid) {
       setError('Nights must be a positive whole number.');
       return;
@@ -201,6 +218,7 @@ export function PlannerNewCityDialog({
       return;
     }
 
+    submitting.current = true;
     setLoading(true);
     setError(null);
 
@@ -231,11 +249,17 @@ export function PlannerNewCityDialog({
         body: JSON.stringify(requestBody),
       });
       const data = await readLlmApiResponse(response, 'City generation', activeApiKey);
+      const confirmedCity = createdCitySchema.safeParse(data?.data?.city);
+      const confirmedLeg = isDatasetMode ? null : createdLegSchema.safeParse(data?.data?.leg);
+      if (!confirmedCity.success || (!isDatasetMode && (!confirmedLeg?.success
+        || confirmedLeg.data.cityId !== confirmedCity.data.cityId || confirmedLeg.data.nights !== requested.nights))) {
+        throw new Error(`City generation could not be confirmed because the app server returned incomplete or inconsistent data. Your draft is retained. Check ${isDatasetMode ? 'the city library' : 'your plan and city library'} before retrying.`);
+      }
 
       onOpenChange(false);
       resetForm();
       await onCreated({
-        city: data.data?.city,
+        city: confirmedCity.data,
         requested,
       });
     } catch (err) {
@@ -245,6 +269,7 @@ export function PlannerNewCityDialog({
           : getLlmNetworkErrorMessage('City generation')
       );
     } finally {
+      submitting.current = false;
       setLoading(false);
     }
   }
@@ -259,6 +284,8 @@ export function PlannerNewCityDialog({
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4">
+          <fieldset disabled={loading} className="min-w-0 space-y-4">
+            <legend className="sr-only">New city generation</legend>
           <div className="space-y-1 text-sm text-muted-foreground">
             <p>Enter only the city name and country name. The server will check the current library first.</p>
             <p>
@@ -316,7 +343,7 @@ export function PlannerNewCityDialog({
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="space-y-1">
                   <Label className="text-xs">Provider</Label>
-                  <Select value={provider} onValueChange={(value) => updateProvider(value as ProviderOption)}>
+                  <Select value={provider} onValueChange={(value) => updateProvider(value as ProviderOption)} disabled={loading}>
                     <SelectTrigger className="h-9 text-sm">
                       <SelectValue />
                     </SelectTrigger>
@@ -403,7 +430,7 @@ export function PlannerNewCityDialog({
                       <Select
                         value={effectiveReasoningEffort}
                         onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
-                        disabled={supportedReasoningEfforts.length <= 1}
+                        disabled={loading || supportedReasoningEfforts.length <= 1}
                       >
                         <SelectTrigger className="h-9 text-sm">
                           <SelectValue placeholder="Select effort" />
@@ -473,6 +500,7 @@ export function PlannerNewCityDialog({
               </div>
             </div>
           </details>
+          </fieldset>
 
           {loading ? (
             <InlineLoadingState
@@ -485,7 +513,7 @@ export function PlannerNewCityDialog({
             />
           ) : null}
 
-          {error ? <p className="text-sm text-destructive">{error}</p> : null}
+          {error ? <p role="alert" className="text-sm text-destructive">{error}</p> : null}
 
           <div className="flex gap-2">
             <Button type="button" variant="outline" className="flex-1" onClick={() => handleOpenChange(false)} disabled={loading}>
