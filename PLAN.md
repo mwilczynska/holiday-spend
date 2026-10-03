@@ -1,6 +1,6 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Twenty-six fixes published. New-city acknowledgement fix verified and awaiting publication; approved fictional live-provider checks are running. Prior product phases complete.
+**Status:** Twenty-seven fixes published. The complete 101-check production sweep passes; approved fictional live-provider checks continue. Prior product phases complete.
 
 **Current phase:** Chrome feature and edge-case testing — approved provider follow-through.
 
@@ -21,12 +21,12 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Publish F27, then finish live transport and existing-city refresh checks with the owner-entered key in the fictional Chrome account. The transport-test readiness correction is pushed as `3188b1c`. Approval is recorded in the 3 October follow-up. Chrome file access still requires an actual permission change; credential changes require user entry. Preserve the entered key's current page session and the published fixes.
+**Next action:** Publish the unsaved-key regression checkpoint, then finish live bulk transport and existing-city refresh checks with the owner-entered key in the fictional Chrome account. The complete 101-check suite passes in 6.6 minutes. Approval is recorded in the 3 October follow-up. Chrome file access still requires an actual permission change; credential changes require user entry. Preserve the current key session and notify the owner only when another entry is needed.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
-**Working tree:** Twenty-six separate fixes are pushed through `c12d8d9`. F27 is being verified separately. The earlier verification checkpoint records two corrected test races and the full 96-check green sweep. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Twenty-seven separate fixes are pushed through `611e0e2`. The transport readiness correction is pushed as `3188b1c`. The full 101-check production sweep and the additional unsaved-key case pass. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
@@ -39,7 +39,17 @@ No credential is read or copied. The current page is retained because unsaved ke
 The saved Canberra estimate is v1.1 / OpenAI `gpt-6-luna` / `max`, with the preserved formula version and RBA
 observation dated 2 October 2026. The server records deterministic inversion of USD per AUD to AUD per USD.
 
-F27: Chrome confirms HTTP 201 `{data:{}}` closes the new-city form and reports an added Sydney leg although no leg
+Provider session checkpoint: all 101 production checks pass in 6.6 minutes. A new dummy-key regression plus auth
+setup pass in 15.2 seconds: a fresh isolated browser profile retains the unsaved key through real existing-city
+save, bulk dialog changes and client navigation to Dataset, then drops it on full reload. Discovery is intercepted
+and no fixture value reaches a provider; the created QA leg is cleaned up. The owner reports repeated clearing in
+the active Chrome session. That report is not reproduced by the fresh-profile case; the extra audit tab is closed,
+the current live page is retained and another entry is requested only if its key actually becomes unavailable.
+Single transport returns four explicitly labelled fallback estimates after a provider TPM 429; applying the $240
+train option raises the fictional total to $5,584. A two-leg bulk run at High effort is in progress with the current
+key. File-URL permission is requested for the prepared synthetic CSV/JSON attachments.
+
+F27 `611e0e2` is pushed: Chrome confirms HTTP 201 `{data:{}}` closes the new-city form and reports an added Sydney leg although no leg
 was saved. Inputs also remain editable while the request is pending. The three new production regressions fail
 against the F26 build. City acknowledgements now require valid identity and consistent creation flags; planner
 responses must also confirm a leg with the requested city and nights. Failed confirmation retains the draft with
@@ -48,7 +58,7 @@ Sydney / Australia / two nights, a visible error and no false success. Narrow di
 contained. TypeScript, build, 69 unit files / 398 tests, memory and v1.1 guard pass. The first affected run passes
 21 of 22 checks; the transport-picker trace shows a completed click before client readiness and no opened dialog.
 That test now waits for the client-rendered climate image. All 22 affected checks pass in 1.6 minutes without
-changing app code or deadlines for the test correction, which is published separately. F27 publication follows.
+changing app code or deadlines for the test correction, which is published separately as `3188b1c`.
 All injected responses target only the isolated local app and save no rows.
 
 F26 `c12d8d9` is pushed: Chrome confirms the new-city flow turns 3.5 nights into a saved three-night existing-city leg. The test leg is

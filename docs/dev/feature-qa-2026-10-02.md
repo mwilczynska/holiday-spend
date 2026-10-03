@@ -2,7 +2,7 @@
 
 Status: approved live OpenAI testing in progress; Chrome file access pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty-six separate fixes are committed and pushed through `c12d8d9`. All 398 unit tests
+Checkpoint: twenty-seven separate fixes are committed and pushed through `611e0e2`. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
 including four new traveller regressions, pass after F21. Seventeen targeted checks pass after F22.
 Thirteen comparison/mobile checks pass after F23; both new profile checks and auth setup pass after F24.
@@ -11,7 +11,8 @@ two trace-confirmed synchronization races are corrected in the tests and their s
 The complete 96-check production rerun passes in 4.1 minutes.
 After F26, thirteen affected production checks pass, including its two new nights regressions. After F27, all
 22 affected checks pass; the transport-test readiness correction is pushed separately as `3188b1c`.
-Live keyed discovery and Canberra generation pass in Chrome. The new complete 101-check sweep is running.
+Live keyed discovery and Canberra generation pass in Chrome. The complete 101-check production sweep passes
+in 6.6 minutes. An additional unsaved-key regression plus auth setup pass in 15.2 seconds.
 Chrome evidence is recorded separately below.
 
 ## Environment and evidence
@@ -54,7 +55,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F24 | Profile-name saves require confirmation and retain rejected drafts | `dd9849f` |
 | F25 | Provider timeout displays and conversions preserve millisecond precision | `a1f8370` |
 | F26 | New-city leg creation rejects fractional and unsafe nights without truncation | `c12d8d9` |
-| F27 | New-city acknowledgements validate confirmed city/leg and lock pending input | Verified; separate commit pending |
+| F27 | New-city acknowledgements validate confirmed city/leg and lock pending input | `611e0e2` |
 
 ## Remaining coverage
 
@@ -132,10 +133,19 @@ directly in the UI and confirms it is ready. No credential value is read or copi
 Canberra generation succeeds, adds exactly three nights for 7–10 December and loads historical climate. The plan
 has three legs / nine nights / $5,344. SQLite confirms v1.1, OpenAI `gpt-6-luna`, `max`, preserved formulas and an
 RBA observation dated 2 October 2026, deterministically inverted from USD per AUD to AUD per USD. This verifies
-the product contract, not calibration. Live Sydney–Melbourne transport is running. Key saving is kept off, the
+the product contract, not calibration. Live Sydney–Melbourne transport returns four estimates after a provider
+TPM 429 prevents final live search; the UI labels them as estimated fallback and shows the reason. Applying its
+$240 train option creates a transport row and raises the fictional total to $5,584. Two-leg bulk estimation at
+High effort is running. Key saving is kept off before each submitted request, the
 extra audit tab is closed and the active page is retained; the owner is told another entry is needed only if the
 session loses its key. Synthetic two-file Wise imports and the original two-leg JSON snapshot are prepared in the
 ignored QA directory. The prior Chrome file permission must actually change before another attachment attempt.
+
+The owner reports repeated key clearing during the active Chrome session. A dedicated fresh-profile regression
+uses only a dummy key, blocks provider discovery, reuses existing Sydney without an LLM call and cleans up its
+leg. It verifies retention after city save, transport-dialog changes and client navigation to Dataset, with saving
+unchecked throughout, then expected clearing on full reload. That case and auth pass in 15.2 seconds. No product
+defect or cause is established for the reported live-session clearing; current bulk submission has the key.
 
 ### F25 — Fractional timeout values are displayed as rounded seconds
 

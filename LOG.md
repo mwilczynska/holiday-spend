@@ -2953,3 +2953,16 @@ and narrow-dialog containment. TypeScript, production build, all 69 Vitest files
 pass. All 22 affected production checks pass in 1.6 minutes after the separate `3188b1c` transport-test readiness
 correction. The complete 101-check sweep is running. Live Canberra persistence confirms v1.1 / `gpt-6-luna` /
 `max`, preserved formulas and dated 2 October RBA conversion provenance. Only fictional QA data is submitted.
+
+## 3 October 2026 — Provider session and full production checkpoint
+
+F27 is pushed as `611e0e2`. All 101 production browser checks pass in 6.6 minutes. The owner reports repeated key
+clearing while entering it into Chrome. A dedicated fresh-profile regression with a dummy value verifies retention
+through an actual existing-city save, transport-dialog changes and client navigation to Dataset, then expected
+clearing on full reload. Provider discovery is intercepted and the existing-city path makes no LLM call; its
+test leg is deleted. The new case and auth pass in 15.2 seconds; TypeScript and memory check pass. No cause or new
+product defect is established for the owner's live-session report. The extra audit tab is closed and the current
+page retained; the owner is told another entry is needed only if the active key becomes unavailable.
+Live single transport returns four labelled estimates after OpenAI's TPM 429 prevents final live search. The
+$240 train option applies to the fictional Melbourne leg, raising the total to $5,584. Two-leg live bulk estimation
+at High effort is running. Chrome file permission is requested for the already-prepared synthetic attachments.

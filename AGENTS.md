@@ -146,6 +146,8 @@ Provider keys use one opt-in browser store shared by city generation, CSV-import
 dialogs. Saved changes and clearing synchronize across open windows in the same browser profile and origin.
 Existing saved feature keys migrate once. Unchecking saving removes persisted keys while retaining them for the
 current window's session; unsaved keys are shared between its dialogs. Provider/model preferences remain separate.
+Unsaved keys survive successful city saves, dialog changes and client navigation in that window. A full page
+reload starts a new session and drops them.
 
 ## Provider request limits
 
