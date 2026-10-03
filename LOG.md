@@ -2928,3 +2928,15 @@ visible with an associated message and disabled submission. The old-build browse
 verification shows the retained 3.5 draft and error. All thirteen affected production checks pass in 48.9 seconds,
 covering six invalid values with no request and an exact two-night existing-city reuse/save/reload. TypeScript,
 production build, all 69 Vitest files / 398 tests, memory mirror and v1.1 guard pass. F26 is published separately.
+
+## 3 October 2026 — Transport-picker test readiness
+
+During F27 verification, 21 of 22 affected production checks pass. The transport-picker trace shows its first
+Estimate transport click completing while the planner's client climate chart is still loading; no dialog opens.
+The test now waits for the client-rendered climate image before clicking, matching the planner readiness guard
+used by the order regressions. The complete affected rerun passes all 22 checks in 1.6 minutes. No application
+change or deadline increase is included in this separate test correction. The failing trace and screenshot are
+retained under the ignored QA directory. F27's application change is verified and will be published separately.
+The owner-entered key is available in Chrome: keyed discovery and fictional Canberra generation succeed. The
+three-night leg and climate load, and the fictional plan has three legs / nine nights / $5,344. Live transport
+checks continue without reading, copying or saving the credential.
