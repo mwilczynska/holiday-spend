@@ -148,6 +148,8 @@ Existing saved feature keys migrate once. Unchecking saving removes persisted ke
 current window's session; unsaved keys are shared between its dialogs. Provider/model preferences remain separate.
 Unsaved keys survive successful city saves, dialog changes and client navigation in that window. A full page
 reload starts a new session and drops them.
+Provider key fields have associated visible labels in city, transport and planner import forms; the existing-city editor's
+Show API key switch is labelled and its label toggles the control.
 
 ## Provider request limits
 

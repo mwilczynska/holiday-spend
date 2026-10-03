@@ -1,6 +1,6 @@
 # Comprehensive feature QA — 2–3 October 2026
 
-Status: approved live OpenAI testing in progress; Chrome file access pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
+Status: approved live OpenAI follow-through and import validation in progress; Chrome file access enabled. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
 Checkpoint: twenty-seven separate fixes are committed and pushed through `611e0e2`. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
@@ -13,7 +13,9 @@ After F26, thirteen affected production checks pass, including its two new night
 22 affected checks pass; the transport-test readiness correction is pushed separately as `3188b1c`.
 Live keyed discovery and Canberra generation pass in Chrome. The complete 101-check production sweep passes
 in 6.6 minutes. An additional unsaved-key regression plus auth setup pass in 15.2 seconds.
-Chrome evidence is recorded separately below.
+F28's TypeScript, isolated build, all 402 current unit tests, memory and v1.1 guard pass. The affected browser run
+passes 20/21; its credential case times out before key entry while waiting for climate readiness on 65 cards.
+Both credential cases and auth pass unchanged on rerun (3 checks, 39.8 seconds). Chrome evidence is separate below.
 
 ## Environment and evidence
 
@@ -56,14 +58,15 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F25 | Provider timeout displays and conversions preserve millisecond precision | `a1f8370` |
 | F26 | New-city leg creation rejects fractional and unsafe nights without truncation | `c12d8d9` |
 | F27 | New-city acknowledgements validate confirmed city/leg and lock pending input | `611e0e2` |
+| F28 | Provider-key fields and existing-city reveal switch have associated labels | This checkpoint |
 
 ## Remaining coverage
 
-- All 96 production checks pass. The authorized local audit is complete; remaining interactive gaps are listed below.
-- Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
-  pass separately; interactive CSV/JSON import is not claimed complete.
-- Live provider actions are approved in the 3 October follow-up. The separate fictional test account and Canberra
-  form are ready; a disposable OpenAI key must be entered directly in the app. Owner keys are never accessed.
+- The full 101-check production sweep passes. F28 adds expanded credential accessibility and import coverage.
+- Chrome JSON and multiple-CSV attachments now work. Invalid JSON retention, missing-city cancellation, edited
+  categories and duplicate re-parsing pass. F29 remains open: an unrelated CSV produces a blank zero-value candidate.
+- Approved live OpenAI discovery, Canberra generation, single-transport fallback and bulk application pass on
+  fictional data. Existing-city refresh needs one final direct UI key entry after import work. Keys are never read.
 - Chrome native confirm acceptance and Settings downloads remain limited by the control surface; production
   Playwright separately verifies deletion and complete export artifacts.
 - Password changes require user entry. Account creation, external email delivery and OAuth were not exercised.
@@ -91,6 +94,42 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F28 — Provider credential controls lack associated labels
+
+The existing-city editor's visible API Key label is not associated with its input, and the Show API key switch has
+no accessible name. Chrome confirms both; the expanded regression fails on the old production build. The same
+field association is missing in planner new-city, single/bulk transport and missing-city import forms. Unique
+React IDs now associate their labels and fields. The existing editor's switch also has a linked label. Chrome
+verifies the labelled editor field, label-click reveal/hide, and the missing-city import key field. Dummy-key tests
+intercept discovery and submit no generation. TypeScript, production build in an isolated copy, all 402 unit tests,
+memory and v1.1 guard pass. The first unit run has a snapshot setup timeout; the unchanged full rerun passes.
+An initial browser setup has no login form because email/password was not enabled in the copy's launcher; that
+QA setting is corrected. The affected run passes 20/21; the one failure occurs at the five-second climate-readiness
+assertion before any key entry, with the chart present in the failure snapshot. The unchanged credential-file
+rerun passes both cases plus auth in 39.8 seconds. No app change or test timeout increase is made for either rerun.
+No real key is read or revealed. Evidence: `credential-labels-fixed.png`.
+
+### Import and live bulk follow-through — 3 October 2026
+
+After the owner enables Chrome extension file-URL access, real chooser uploads work. Chrome imports the original
+fictional Sydney/Melbourne JSON (two legs, six nights, $3,412), rejects a string instead of a legs array while
+retaining the plan, and cancels missing-city resolution after checking canonical Australia/AUD/Oceania metadata
+and generation controls. Two synthetic Wise exports preview and import exactly $25 and $40. Editing the first
+category to Shopping survives confirmation; the tracker shows Shopping/Activities and $65 total. Re-parsing the
+files finds two duplicates with no importable rows. Choosing different files removes the old preview.
+
+F29 reproduction: `not,a,wise,export` plus one unrelated data row is parsed as one expense with blank date/currency,
+zero amount and enabled Import. Nothing is confirmed. Screenshot: `wise-unrelated-csv-reproduced.png`.
+The Chrome bridge sometimes delays attachments; one shared server restart expires the QA login. That rejected
+request is repeated successfully after restoring the dedicated isolated server. These are recorded separately
+from product validation. Final verification builds in an ignored copy, avoiding another active task's build files.
+
+Live two-route High-effort transport completed earlier: source-cited top flight options are $270 Sydney–Melbourne
+and $440 Melbourne–Canberra. Apply Top Options replaces the prior train row and adds one Canberra row, yielding
+$6,054. Read-only QA database evidence confirms no duplicated transport. JSON import subsequently restores the
+original route; generated Canberra and its v1.1 history remain. These checks verify persistence and contracts;
+price calibration is outside the audit. Existing-city live refresh remains pending.
 
 ### F27 — New-city forms report success after incomplete acknowledgements
 

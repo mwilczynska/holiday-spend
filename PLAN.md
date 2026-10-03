@@ -1,6 +1,6 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Twenty-seven fixes published. The complete 101-check production sweep passes; approved fictional live-provider checks continue. Prior product phases complete.
+**Status:** Twenty-eight fixes verified; F28 is ready to publish. The complete 101-check production sweep passes; approved fictional live-provider and import checks continue. Prior product phases complete.
 
 **Current phase:** Chrome feature and edge-case testing — approved provider follow-through.
 
@@ -21,7 +21,7 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Publish the unsaved-key regression checkpoint, then finish live bulk transport and existing-city refresh checks with the owner-entered key in the fictional Chrome account. The complete 101-check suite passes in 6.6 minutes. Approval is recorded in the 3 October follow-up. Chrome file access still requires an actual permission change; credential changes require user entry. Preserve the current key session and notify the owner only when another entry is needed.
+**Next action:** Commit and push verified F28, then fix F29: unrelated CSV headers currently become a blank zero-value expense offered for import. Thirteen validation regressions reproduce unsupported formats and invalid fields. Chrome file access is enabled and real JSON/multiple-CSV attachments work. Complete import validation before preparing one final owner-key entry for existing-city refresh.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
@@ -44,6 +44,22 @@ ignored `.local/miscellaneous-build` copy and separate database at port 3104. Al
 The credential-label audit below remains in progress.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+F28: Chrome and the old-build regression confirm unassociated provider-key labels and an unnamed existing-city
+Show API key switch. Five forms now associate labels with unique input IDs; the switch label also toggles it.
+Chrome verifies the existing editor and missing-city import field. TypeScript, isolated production build, all 402
+unit tests, memory and v1.1 guard pass. The first affected browser run passes 20/21; the credential case reaches its
+five-second climate-readiness assertion before the large itinerary renders. Both credential cases and auth pass
+unchanged on rerun (3 checks, 39.8 seconds). The first unit run has a snapshot setup timeout; all 70 files pass on
+the unchanged rerun. An initial browser auth run is corrected by enabling email/password on the dedicated server.
+Production verification uses `.local/feature-qa/f28-build` at port 3102 to avoid shared build locks.
+
+Import follow-through: the owner enables extension file-URL access. Chrome restores the fictional two-leg JSON
+plan ($3,412), rejects invalid legs without replacing it, and cancels missing-city resolution without changes.
+Two Wise CSV files import $25 Shopping and $40 Activities, with category edits preserved. Re-parsing finds two
+duplicates, and changing files clears the preview. An unrelated CSV is incorrectly offered as one blank zero-value
+transaction (F29); it is not confirmed. Live bulk transport previously applied $270 and $440 flight rows, replacing
+the prior $240 train without duplication, for $6,054 before JSON restoration. Existing-city refresh remains pending.
 
 Owner approval follow-through: a separate `provider-qa@example.test` account in the isolated QA copy has Sydney
 and Melbourne, three nights each, on invented 1–7 December 2026 dates and no notes. The Canberra new-city form is

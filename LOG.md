@@ -2987,3 +2987,27 @@ upgrade, user scoping, traveller scaling, snapshot round-trip, saved-plan persis
 The shared production server was restarted by another local session, so final build/test work used the ignored
 `.local/miscellaneous-build` copy and separate QA database at port 3104. All test writes target QA copies; the
 timed-out test's temporary leg is removed. No provider call or credential inspection is performed.
+
+## 3 October 2026 — Feature QA F28: labelled provider credentials
+
+Chrome and the old-build regression confirm unassociated provider-key labels and an unnamed existing-city
+Show API key switch. Five forms now associate visible labels with unique input IDs; the switch label also toggles
+it. Chrome verifies the editor field, reveal/hide and missing-city import label. Dummy-key regressions cover
+new-city saving, single/bulk transport, dataset dialogs, client navigation, full reload and missing-city import.
+Discovery is intercepted and no dummy value is sent to a provider. No real credential is read or revealed.
+
+TypeScript, isolated production build, all 70 unit files / 402 tests, memory and v1.1 guard pass. The first unit
+run has the previously observed snapshot setup timeout; the unchanged full rerun passes. Initial browser auth
+setup fails because the copy's launcher lacks ENABLE_EMAIL_PASSWORD; setting it explicitly restores the form.
+The affected run passes 20 of 21 checks. The sole failure is climate readiness before any key entry on 65 cards;
+the chart appears in its failure snapshot. The unchanged credential-file rerun passes both cases and auth in
+39.8 seconds, with no test timeout or application change. Verification uses `.local/feature-qa/f28-build` at 3102
+to avoid the other task's shared build output; its separate miscellaneous feature is committed as `a3f0f71`.
+
+Owner-enabled Chrome file-URL access makes real chooser uploads work. JSON import restores the fictional
+Sydney/Melbourne plan (two legs / six nights / $3,412); invalid legs are rejected without changes, and missing-city
+resolution cancels safely. Two Wise files import $25 Shopping and $40 Activities with category edits preserved;
+re-parsing detects two duplicates, and changing files clears the preview. Live High-effort bulk transport earlier
+applies $270 and $440 flights with exactly one row each ($6,054 before JSON restoration). Existing-city live refresh
+is pending one final key entry after imports. F29 remains open: unrelated headers yield an enabled blank zero-value
+candidate. It is not imported; thirteen new validation cases reproduce this and invalid field handling.

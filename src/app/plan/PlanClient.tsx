@@ -1,7 +1,7 @@
 'use client';
 
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect, useCallback, useId, useMemo, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -242,6 +242,7 @@ export interface PlanInitialData {
 }
 
 export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
+  const importApiKeyInputId = useId();
   const [legs, setLegs] = useState<Leg[]>(initialData.legs);
   const [temperatureUnit, setTemperatureUnit] = useState<TemperatureUnit>('C');
   const { climate, retry: retryClimate } = useTripClimate(legs.map(leg => leg.cityId), initialData.climate);
@@ -1256,8 +1257,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   </div>
                   <div className="space-y-2">
                     <div className="space-y-1">
-                      <Label className="text-xs">{selectedImportProvider.label} API Key</Label>
+                      <Label htmlFor={importApiKeyInputId} className="text-xs">{selectedImportProvider.label} API Key</Label>
                       <Input
+                        id={importApiKeyInputId}
                         className="h-9 text-sm"
                         placeholder="Optional. Leave blank to use a server-side key if configured."
                         type={showImportApiKey ? 'text' : 'password'}

@@ -76,6 +76,7 @@ export function PlannerNewCityDialog({
   onCreated,
   mode = 'planner',
 }: PlannerNewCityDialogProps) {
+  const apiKeyInputId = useId();
   const isDatasetMode = mode === 'dataset';
   const [cityName, setCityName] = useState('');
   const [countryName, setCountryName] = useState('');
@@ -360,8 +361,9 @@ export function PlannerNewCityDialog({
 
                 <div className="space-y-2">
                   <div className="space-y-1">
-                    <Label className="text-xs">{selectedProvider.label} API Key</Label>
+                    <Label htmlFor={apiKeyInputId} className="text-xs">{selectedProvider.label} API Key</Label>
                     <Input
+                      id={apiKeyInputId}
                       className="h-9 text-sm"
                       placeholder="Optional. Leave blank to use a server-side key if configured."
                       type={showApiKey ? 'text' : 'password'}
