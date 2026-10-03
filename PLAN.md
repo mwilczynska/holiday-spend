@@ -21,11 +21,18 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Continue planner inline edit failures and page read/empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices. Fix reproduced defects and commit each fix.
+**Next action:** Continue planner inline edit failures and the remaining dashboard/dataset/settings read and empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Fourteen separate fixes are pushed through `6a001de`; the fifteenth, Add Leg failure retention, is verified and ready to commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Fifteen separate fixes are pushed through `f16d78a`; the sixteenth, failed planner reads, is verified and ready to commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+Sixteenth fix: rejected planner reads retain all loaded data with a stale label and Retry. Required lists/settings are
+validated before replacement, obsolete reads are ignored, and saved-plan reads expose failure/retry. Snapshot saves
+and ordering are disabled while data is loading or stale. Chrome verifies retained 65 legs / $112,690 after a controlled
+503, followed by successful Retry. The production reproduction fails before the fix; nine relevant tests including
+auth setup pass afterward, covering malformed/network/HTTP/setting/list failures, valid empty data, initial SSR,
+Add Leg and ordering. TypeScript, build, all 394 unit tests, memory and v1.1 guard pass.
 
 Fifteenth fix: failed Add Leg saves retain the selected city and nights with a visible error and retry. Pending additions
 lock the form, and fractional/zero/negative nights are blocked. Chrome verifies a held POST, disabled controls, retained

@@ -2764,3 +2764,13 @@ checking whether the leg was saved before retrying. Chrome verifies the retained
 error, fractional-night rejection and pending disabled controls. Two production tests plus auth setup pass for
 HTTP/network/unreadable errors, retry/reload, validation and submission locking. TypeScript, build, 394 unit tests,
 memory and v1.1 guard pass. All writes remain in the isolated QA copy.
+
+## 2 October 2026 — Feature QA: failed planner reads
+
+Chrome rejects the itinerary GET during client navigation and sees a false zero-leg / zero-budget empty state.
+The production reproduction fails on the prior build. Refreshes now validate all required HTTP/JSON/list/settings
+responses before replacing loaded data, retain the previous view with a stale warning and Retry, and ignore obsolete
+reads. Saved-plan reads expose failures and Retry; valid empty results stay distinct. Snapshot saves and ordering
+are disabled while loading or stale. Chrome verifies retained 65 legs / $112,690 and successful Retry. Nine relevant
+production tests including auth setup pass for failures, retry, empty data, initial SSR, leg addition and ordering.
+TypeScript, build, all 68 unit files / 394 tests, memory mirror and v1.1 guard pass. No owner DB or key changes.

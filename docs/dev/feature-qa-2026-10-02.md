@@ -33,6 +33,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F12 | Reachable, atomic expense tag assignment/removal | `1c9fe62` |
 | F13 | Methodology describes the active v1.1 workflow | `a4c4352` |
 | F14 | Ordering failures reported; writes atomic | `6a001de` |
+| F15 | Leg additions retain rejected drafts and lock pending submits | `f16d78a` |
 
 ## Remaining coverage
 
@@ -67,6 +68,19 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F16 — Failed planner reads report an empty itinerary and zero totals
+
+Chrome returns a controlled GET `/api/itinerary` 503 during client navigation. The existing 65-leg itinerary disappears,
+and the planner reports zero legs, zero nights, zero total and “No legs yet”, without an error or Retry. The production
+regression fails on the prior build because the read error is absent. The fix validates HTTP/JSON/list responses and
+traveller settings before replacing any loaded state, retains prior data with an explicit stale label and Retry, and
+ignores obsolete reads. Saved-plan reads expose failure/retry while retaining the list. Saving a snapshot or ordering
+from failed/still-loading data is disabled. Successful empty results remain distinct. Nine relevant production tests
+including auth setup pass for HTTP/network/malformed/list/setting failures, retry, valid empty data, initial SSR,
+Add Leg and ordering. Chrome retains 65 legs / $112,690 with the stale warning, then clears it after Retry.
+TypeScript, build, all 394 unit tests, memory and v1.1 guard pass.
+Evidence: `planner-read-false-empty.png`, `planner-read-retained-retry.png`.
 
 ### F15 — Rejected leg additions close and clear the form
 

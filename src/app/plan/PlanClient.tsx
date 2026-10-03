@@ -171,6 +171,21 @@ function getSelectedCountryPreview(canonicalCountryId: string, countries: Countr
   };
 }
 
+async function readPlannerResponse(response: Response, label: string) {
+  const result = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(result?.error || `Could not load ${label} (HTTP ${response.status}).`);
+  if (!result || !Object.prototype.hasOwnProperty.call(result, 'data')) {
+    throw new Error(`The server returned an unreadable ${label} response.`);
+  }
+  return result.data;
+}
+
+async function readPlannerList<T>(response: Response, label: string): Promise<T[]> {
+  const data = await readPlannerResponse(response, label);
+  if (!Array.isArray(data)) throw new Error(`The server returned an invalid ${label} list.`);
+  return data;
+}
+
 function compareLegDates(a: Leg, b: Leg) {
   const aPrimaryDate = a.startDate || a.endDate;
   const bPrimaryDate = b.startDate || b.endDate;
@@ -247,6 +262,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   const newLegValid = !!newLegCity && Number.isSafeInteger(parsedNewLegNights) && parsedNewLegNights > 0;
   const [savedPlans, setSavedPlans] = useState<SavedPlanSummary[]>(initialData.savedPlans);
   const [savedPlansLoading, setSavedPlansLoading] = useState(false);
+  const [savedPlansError, setSavedPlansError] = useState<string | null>(null);
+  const savedPlansReadSequence = useRef(0);
   const [savingPlan, setSavingPlan] = useState(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string | null>(null);
   const [snapshotError, setSnapshotError] = useState<string | null>(null);
@@ -264,6 +281,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   const [importReferenceDate, setImportReferenceDate] = useState('');
   const [importExtraContext, setImportExtraContext] = useState('');
   const [pageLoading, setPageLoading] = useState(false);
+  const [pageError, setPageError] = useState<string | null>(null);
+  const plannerReadSequence = useRef(0);
   const importInputRef = useRef<HTMLInputElement>(null);
   const plannerHeaderRef = useRef<HTMLDivElement>(null);
   const [plannerHeaderHeight, setPlannerHeaderHeight] = useState(0);
@@ -303,62 +322,73 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   }, []);
 
   const fetchData = useCallback(async () => {
+    const sequence = ++plannerReadSequence.current;
     setPageLoading(true);
     try {
-      const [legsRes, citiesRes, countriesRes, fixedRes] = await Promise.all([
+      const [legsRes, citiesRes, countriesRes, fixedRes, settingsRes] = await Promise.all([
         fetch('/api/itinerary', { cache: 'no-store' }),
         fetch('/api/cities?view=planner', { cache: 'no-store' }),
         fetch('/api/countries?includeCities=false', { cache: 'no-store' }),
         fetch('/api/fixed-costs', { cache: 'no-store' }),
+        fetch('/api/planner/settings', { cache: 'no-store' }),
       ]);
-      const legsData = await legsRes.json();
-      const citiesData = await citiesRes.json();
-      const countriesData = await countriesRes.json();
-      const fixedData = await fixedRes.json();
-      const countries = (countriesData.data || []) as Country[];
+      const [legs, cities, countries, fixedCosts, settings] = await Promise.all([
+        readPlannerList<Leg>(legsRes, 'itinerary'),
+        readPlannerList<City>(citiesRes, 'cities'),
+        readPlannerList<Country>(countriesRes, 'countries'),
+        readPlannerList<FixedCost>(fixedRes, 'fixed costs'),
+        readPlannerResponse(settingsRes, 'traveller settings'),
+      ]);
+      if (!Number.isInteger(settings?.groupSize) || settings.groupSize < 1 || settings.groupSize > 5) {
+        throw new Error('The server returned invalid traveller settings.');
+      }
+      if (sequence !== plannerReadSequence.current) return false;
       const countryMap = new Map(countries.map((country) => [country.id, country.name]));
-
-      setLegs(legsData.data || []);
-      setCountries(countries.sort((a, b) => a.name.localeCompare(b.name)));
-      setCities(
-        ((citiesData.data || []) as Array<City>)
+      const sortedCountries = countries.sort((a, b) => a.name.localeCompare(b.name));
+      const sortedCities = cities
           .map((city) => ({
             ...city,
             countryName: countryMap.get(city.countryId) || 'Unknown',
           }))
-          .sort((a, b) => `${a.countryName}-${a.name}`.localeCompare(`${b.countryName}-${b.name}`))
-      );
-      setFixedCosts(fixedData.data || []);
+          .sort((a, b) => `${a.countryName}-${a.name}`.localeCompare(`${b.countryName}-${b.name}`));
+      setLegs(legs);
+      setCountries(sortedCountries);
+      setCities(sortedCities);
+      setFixedCosts(fixedCosts);
+      setGroupSize(settings.groupSize);
+      setPageError(null);
+      return true;
+    } catch (err) {
+      if (sequence === plannerReadSequence.current) {
+        setPageError(err instanceof Error ? err.message : 'Could not refresh the planner. Check your connection and retry.');
+      }
+      return false;
     } finally {
-      setPageLoading(false);
-    }
-  }, []);
-
-  const loadPlannerSettings = useCallback(async () => {
-    const response = await fetch('/api/planner/settings', { cache: 'no-store' });
-    const data = await response.json();
-    if (response.ok && data.data?.groupSize) {
-      setGroupSize(data.data.groupSize);
+      if (sequence === plannerReadSequence.current) setPageLoading(false);
     }
   }, []);
 
   const fetchSavedPlans = useCallback(async () => {
+    const sequence = ++savedPlansReadSequence.current;
     setSavedPlansLoading(true);
     try {
       const response = await fetch('/api/saved-plans', { cache: 'no-store' });
-      if (response.ok) {
-        const data = await response.json();
-        setSavedPlans(data.data || []);
+      const plans = await readPlannerList<SavedPlanSummary>(response, 'saved plans');
+      if (sequence === savedPlansReadSequence.current) {
+        setSavedPlans(plans);
+        setSavedPlansError(null);
       }
-    } catch {
-      // Silently fail — saved plans are non-critical.
+    } catch (err) {
+      if (sequence === savedPlansReadSequence.current) {
+        setSavedPlansError(err instanceof Error ? err.message : 'Could not load saved plans. Check your connection and retry.');
+      }
     } finally {
-      setSavedPlansLoading(false);
+      if (sequence === savedPlansReadSequence.current) setSavedPlansLoading(false);
     }
   }, []);
 
-  const refreshPage = useCallback(() => Promise.all([fetchData(), loadPlannerSettings(), fetchSavedPlans()]),
-    [fetchData, loadPlannerSettings, fetchSavedPlans]);
+  const refreshPage = useCallback(() => Promise.all([fetchData(), fetchSavedPlans()]),
+    [fetchData, fetchSavedPlans]);
   useInitialPageRefresh('/plan', refreshPage, true);
 
   useEffect(() => {
@@ -739,6 +769,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   }, [importSnapshot, preflightSnapshotImport, queueMissingCityResolution]);
 
   const handleSaveSnapshot = async (name: string) => {
+    if (pageError || pageLoading) return;
     setSavingPlan(true);
     try {
       const snapshot = await fetchCurrentSnapshot();
@@ -878,7 +909,6 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
 
   const handleGroupSizeChange = async (value: string) => {
     const nextGroupSize = Number.parseInt(value, 10);
-    setGroupSize(nextGroupSize);
     try {
       const response = await fetch('/api/planner/settings', {
         method: 'PUT',
@@ -1380,13 +1410,13 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   type="button"
                   variant="outline"
                   onClick={handleSortByDate}
-                  disabled={orderSaving || legs.length < 2 || isAlreadySortedByDate}
+                  disabled={orderSaving || pageLoading || !!pageError || legs.length < 2 || isAlreadySortedByDate}
                   title={isAlreadySortedByDate ? 'Legs are already in date order' : 'Sort legs by start date'}
                 >
                   <ArrowUpDown className="mr-2 h-4 w-4" />
                   Sort by Date
                 </Button>
-                <Button type="button" variant="outline" onClick={() => setSavePlanDialogOpen(true)}>
+                <Button type="button" variant="outline" disabled={pageLoading || !!pageError} onClick={() => setSavePlanDialogOpen(true)}>
                   <Save className="mr-2 h-4 w-4" />
                   Save Plan
                 </Button>
@@ -1521,8 +1551,16 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                 {snapshotError ? <span role="alert" className="text-destructive">{snapshotError}</span> : null}
               </div>
             ) : null}
+            {pageError ? (
+              <div role="alert" className="mt-3 flex flex-wrap items-center gap-2 text-sm text-destructive">
+                <span>{pageError} Showing the last loaded planner data; it may be out of date.</span>
+                <Button type="button" size="sm" variant="outline" disabled={pageLoading} onClick={() => void fetchData()}>
+                  <LoadingButtonLabel idle="Retry planner" loading="Retrying..." isLoading={pageLoading} />
+                </Button>
+              </div>
+            ) : null}
             <div className="mt-3 text-xs text-muted-foreground">
-              Current plan: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
+              {pageError ? 'Last loaded plan' : 'Current plan'}: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
             </div>
           </div>
         </div>
@@ -1532,6 +1570,12 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
           className="mx-auto max-w-6xl px-4 pb-6 lg:px-8"
           style={{ paddingTop: plannerContentTopPadding }}
         >
+          {savedPlansError ? (
+            <div role="alert" className="mb-3 flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive">
+              <span>{savedPlansError} Showing the last loaded saved plans; the list may be out of date.</span>
+              <Button type="button" size="sm" variant="outline" disabled={savedPlansLoading} onClick={() => void fetchSavedPlans()}>Retry saved plans</Button>
+            </div>
+          ) : null}
           {savedPlans.length > 0 && (
             <div className="mb-4">
               <SavedPlansList
@@ -1568,7 +1612,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   onUpdate={handleUpdateLeg}
                   onDelete={handleDeleteLeg}
                   onMove={handleReorder}
-                  orderSaving={orderSaving}
+                  orderSaving={orderSaving || pageLoading || !!pageError}
                   isFirst={i === 0}
                   isLast={i === legs.length - 1}
                   previousLeg={i > 0 ? legs[i - 1] : null}
