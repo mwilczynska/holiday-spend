@@ -2686,3 +2686,12 @@ planner header/transport controls and leg summaries wrap; mobile navigation uses
 The regression passes across Compare, Planner, Dataset, Expenses and Settings, including Home/Sign out visibility.
 Chrome verifies corrected comparison/planner widths and visible mobile navigation. TypeScript, build, 387 unit tests,
 memory and v1.1 guard pass. Screenshots are retained in the ignored QA folder. Viewport override is reset afterwards.
+
+## 2 October 2026 — Feature QA: negative city costs
+
+Chrome saves -5 hostel cost on the isolated Agra row and reports City saved. The fixture is restored to 6.
+City create/edit API schemas now reject negative/nonfinite values. The editor retains invalid costs and reports
+the field name before JSON serialization; invalid coffee/basket drafts are retained instead of becoming missing.
+Fields have associated labels and allow decimal steps. Chrome verifies retained -5/error and valid retry. A
+production regression fails before the fix, then passes API rejection, unchanged stored values, zero/blank reload,
+decimal coffee and linked drinks-none persistence. TypeScript, build and 388 unit tests pass; memory/guard pass.

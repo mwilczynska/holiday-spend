@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { SearchableSelect } from '@/components/ui/searchable-select';
-import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
+import { COST_FIELDS, COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { resolveCityDrinkInputs } from '@/lib/city-drink-inputs';
 import type { CityEstimateProvenance } from '@/lib/city-estimate-provenance';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
@@ -357,7 +357,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   const handleCostChange = (key: string, value: number | null) => {
     if (!selectedCity) return;
     const nextCity = { ...selectedCity, [key]: value };
-    if (key === 'drinkCoffee' || key === 'drinksNone') {
+    if ((key === 'drinkCoffee' || key === 'drinksNone') && (value === null || (Number.isFinite(value) && value >= 0))) {
       const drinkInputs = resolveCityDrinkInputs({
         drinkCoffee: key === 'drinkCoffee' ? value : undefined,
         drinksNone: key === 'drinksNone' ? value : undefined,
@@ -372,7 +372,17 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   };
 
   const handleSaveCity = async () => {
-    if (!selectedCity) return;
+    if (!selectedCity || isSaving) return;
+
+    const invalidField = COST_FIELDS.find(({ key }) => {
+      const value = (selectedCity as Record<string, number | null>)[key];
+      return value != null && (!Number.isFinite(value) || value < 0);
+    });
+    if (invalidField) {
+      setSaveMessage(null);
+      setSaveError(`${invalidField.label} must be a finite, nonnegative amount, or blank for missing.`);
+      return;
+    }
 
     setIsSaving(true);
     setSaveError(null);

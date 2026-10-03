@@ -26,7 +26,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Expenses | Add/edit/delete; currency and rate; date/leg assignment; category/source/date filters; pagination; exclusion; bulk include/exclude/delete | Chrome: Quick Add categories/payers; USD conversion; edit category/merchant/subcategory/unassignment; details expand; controlled error/retry; individual and two-row bulk exclude/include; all 10 category filters and 3 source filters; Next/Previous; filtered CSV contains exactly two manual QA records. Date bounds/delete confirmation still pending. Playwright mutation tests verify delete/retry/persistence. |
 | Expense tags | Tag CRUD; assignment/removal; tagged-expense navigation; empty/duplicate names | Chrome: empty list/create-disabled, fixture creation/color input, duplicate draft-loss reproduction and retained-error fix, view empty expenses, rename updates selected title. Playwright: duplicate create/edit, network retention, rename/color persistence, delete failure/retry, list/expense read failure/retry. Assignment/removal and deleted-record totals pending. |
 | Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
-| Dataset | City/country search; pagination; city CRUD; missing costs; editor controls; history/provenance; generation/retry | Pending |
+| Dataset | City/country search; pagination; city CRUD; missing costs; editor controls; history/provenance; generation/retry | Chrome: city/country and no-match search, both table pagination controls, source/no-match history searches, select/edit Agra, all cost fields inspected, negative-save reproduction and retained-error fix. Production regression verifies zero/missing/decimal reload and coffee basket coupling. Generation and delete controls continue. |
 | Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Pending |
 | Settings | Traveller count; request-limit validity/save/reset; fixed-cost CRUD/paid; JSON/CSV exports | Chrome: fixed-cost negative blocked; controlled save failure keeps input; retry, paid toggle, reload persistence and delete. Zero-limit defect reproduced; remaining traveller/export checks pending. |
 | Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Pending; real email delivery and password changes need a controlled separate workflow |
@@ -34,6 +34,16 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes leave data unchanged; user scoping; invalid numbers/dates; network/provider errors; reload persistence | Pending |
 
 ## Findings and fixes
+
+### F10 — City editing accepts negative prices
+
+Chrome saves -5 as Shared Hostel Dorm on the isolated Agra row and shows City saved. The table displays -5.00.
+The original 6 is restored. Fix: reject negative/nonfinite costs in create/edit APIs and before editor serialization;
+retain invalid drafts, including coffee/basket inputs; label all fields and allow decimal steps. Chrome verifies
+retained -5 with a field-specific error and valid retry. Production regression fails before and passes after the
+fix, including unchanged stored values on rejection, zero/blank reload and 3.25 coffee → 6.50 drinks-none.
+TypeScript, production build, 388 unit tests, memory and v1.1 guard pass. Evidence: `city-negative-saved.png` and
+`city-negative-rejected.png` under the ignored QA folder.
 
 ### F9 — Narrow screens widen the whole page and hide navigation
 

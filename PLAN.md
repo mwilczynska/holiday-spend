@@ -64,11 +64,15 @@ exclude excluded spend. Loading/failed totals are labelled rather than showing z
 45 AUD fixture disappears from its tag. A production regression fails before the fix (excluded spend counted),
 then passes through exclude/include/delete and empty-state checks. TypeScript, build, 387 unit tests, memory/guard
 and all four tag browser regressions plus auth setup pass. Continue remaining saved-plan/dataset/account/mobile controls.
-Ninth fix ready to commit: Chrome reproduces narrow-screen page overflow, including a 1,152 px comparison layout.
+Ninth fix committed and pushed as `461a943`: Chrome reproduces narrow-screen page overflow, including a 1,152 px comparison layout.
 The production regression fails before the fix at 390 px and passes after it across Compare, Planner, Dataset,
 Expenses and Settings. The main flex item shrinks; planner controls and leg summaries wrap; mobile navigation
 fits Sign out. Chrome verifies corrected planner/comparison widths. TypeScript, build, 387 unit tests, memory
 and v1.1 guard pass. Continue the remaining dataset, settings, auth and provider controls.
+Tenth fix ready to commit: Chrome saves a negative city cost as valid before the fix and retains a labelled
+error/draft after it. City creation/edit APIs reject negative/nonfinite costs; editor fields are labelled. The
+production regression passes through API rejection, unchanged stored values, zero/blank/decimal persistence and
+coffee/drinks-none coupling. TypeScript, build, 388 unit tests, memory and v1.1 guard pass.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.
