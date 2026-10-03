@@ -13,11 +13,14 @@ import { LegClimate } from './LegClimate';
 import type { CityClimate, TemperatureUnit } from '@/lib/climate';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
 import type { IntercityTransportItem } from '@/types';
+import { useQueuedDraftSave } from '@/lib/use-queued-draft-save';
 import {
   getAccommodationCostForTier,
   getActivitiesCostForTier,
   getDrinksCostForTier,
   getFoodCostForTier,
+  getDailyCost,
+  getLegTotalFromTransports,
 } from '@/lib/cost-calculator';
 import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
 import { ChevronDown, ChevronUp, GripVertical, Plus, Trash2 } from 'lucide-react';
@@ -92,7 +95,9 @@ interface LegCardProps {
     transportLocal: number | null;
   }>;
   groupSize: number;
-  onUpdate: (id: number, data: Record<string, unknown>) => void;
+  onUpdate: (id: number, data: Record<string, unknown>) => Promise<void>;
+  onDirtyChange: (id: number, dirty: boolean) => void;
+  onDiscard: () => void;
   onDelete: (id: number) => void;
   onMove: (id: number, direction: -1 | 1) => void;
   orderSaving?: boolean;
@@ -154,11 +159,13 @@ function nightsBetween(startDate: string, endDate: string): number {
 }
 
 export const LegCard = memo(function LegCard({
-  leg,
+  leg: savedLeg,
   cities,
   cityOptions,
   groupSize,
   onUpdate,
+  onDirtyChange,
+  onDiscard,
   onDelete,
   onMove,
   orderSaving = false,
@@ -170,6 +177,24 @@ export const LegCard = memo(function LegCard({
   onToggleTemperature,
   onRetryClimate,
 }: LegCardProps) {
+  const { state: editState, queue: editQueue } = useQueuedDraftSave(
+    patch => onUpdate(savedLeg.id, patch),
+    dirty => onDirtyChange(savedLeg.id, dirty),
+  );
+  const hasDraft = Object.keys(editState.patch).length > 0;
+  const leg = { ...savedLeg, ...editState.patch } as typeof savedLeg;
+  const draftCity = cities.find(city => city.id === leg.cityId);
+  if (hasDraft && draftCity) {
+    leg.cityName = draftCity.name;
+    leg.countryName = draftCity.countryName;
+    leg.dailyCost = getDailyCost(draftCity, leg.accomTier as import('@/types').AccomTier,
+      leg.foodTier as import('@/types').FoodTier, leg.drinksTier as import('@/types').DrinksTier,
+      leg.activitiesTier as import('@/types').ActivitiesTier, leg, groupSize);
+    leg.legTotal = getLegTotalFromTransports(leg.dailyCost, leg.nights, leg.intercityTransports);
+  }
+  const submitEdit = (patch: Record<string, unknown>) => {
+    void editQueue.submit(patch).catch(() => undefined);
+  };
   const [showOverrides, setShowOverrides] = useState(false);
   const [transportEstimateOpen, setTransportEstimateOpen] = useState(false);
   // Latches on first open so the dialog is not mounted for cards the user never touches,
@@ -210,6 +235,8 @@ export const LegCard = memo(function LegCard({
   const [transportDrafts, setTransportDrafts] = useState<TransportDraft[]>(() =>
     buildTransportDrafts(leg.intercityTransports || [])
   );
+  const transportDraftsRef = useRef(transportDrafts);
+  transportDraftsRef.current = transportDrafts;
 
   useEffect(() => {
     if (editingTransportKeyRef.current) {
@@ -255,11 +282,11 @@ export const LegCard = memo(function LegCard({
     : undefined;
 
   const handleTierChange = (field: string, value: string) => {
-    onUpdate(leg.id, { [field]: value });
+    submitEdit({ [field]: value });
   };
 
   const handleFieldChange = (field: string, value: unknown) => {
-    onUpdate(leg.id, { [field]: value });
+    submitEdit({ [field]: value });
   };
 
   const handleDateChange = (field: 'startDate' | 'endDate', value: string | null) => {
@@ -271,10 +298,10 @@ export const LegCard = memo(function LegCard({
     if (field === 'startDate') {
       if (leg.endDate && leg.endDate > value) {
         // Both dates set and valid — derive nights from the chosen span
-        onUpdate(leg.id, { startDate: value, nights: nightsBetween(value, leg.endDate) });
+        submitEdit({ startDate: value, nights: nightsBetween(value, leg.endDate) });
       } else {
         // No end date yet, or new start is on/after existing end — project forward using current nights
-        onUpdate(leg.id, { startDate: value, endDate: shiftIsoDate(value, leg.nights) });
+        submitEdit({ startDate: value, endDate: shiftIsoDate(value, leg.nights) });
       }
       return;
     }
@@ -282,10 +309,10 @@ export const LegCard = memo(function LegCard({
     // field === 'endDate'
     if (leg.startDate && value > leg.startDate) {
       // Both dates set and valid — derive nights from the chosen span
-      onUpdate(leg.id, { endDate: value, nights: nightsBetween(leg.startDate, value) });
+      submitEdit({ endDate: value, nights: nightsBetween(leg.startDate, value) });
     } else {
       // No start date yet, or new end is on/before existing start — project backward using current nights
-      onUpdate(leg.id, { endDate: value, startDate: shiftIsoDate(value, -leg.nights) });
+      submitEdit({ endDate: value, startDate: shiftIsoDate(value, -leg.nights) });
     }
   };
 
@@ -294,17 +321,17 @@ export const LegCard = memo(function LegCard({
 
     if (leg.startDate) {
       // endDate = check-out = startDate + nights
-      onUpdate(leg.id, { nights: nextNights, endDate: shiftIsoDate(leg.startDate, nextNights) });
+      submitEdit({ nights: nextNights, endDate: shiftIsoDate(leg.startDate, nextNights) });
       return;
     }
 
     if (leg.endDate) {
       // startDate = check-in = endDate - nights
-      onUpdate(leg.id, { nights: nextNights, startDate: shiftIsoDate(leg.endDate, -nextNights) });
+      submitEdit({ nights: nextNights, startDate: shiftIsoDate(leg.endDate, -nextNights) });
       return;
     }
 
-    onUpdate(leg.id, { nights: nextNights });
+    submitEdit({ nights: nextNights });
   };
 
   const persistIntercityTransports = (drafts: TransportDraft[]) => {
@@ -324,6 +351,7 @@ export const LegCard = memo(function LegCard({
       },
     ];
     setTransportDrafts(nextDrafts);
+    transportDraftsRef.current = nextDrafts;
     persistIntercityTransports(nextDrafts);
   };
 
@@ -337,20 +365,18 @@ export const LegCard = memo(function LegCard({
 
   const commitIntercityTransports = () => {
     editingTransportKeyRef.current = null;
-    setTransportDrafts((current) => {
-      persistIntercityTransports(current);
-      return current;
-    });
+    persistIntercityTransports(transportDraftsRef.current);
   };
 
   const removeIntercityTransport = (index: number) => {
     const nextDrafts = transportDrafts.filter((_, transportIndex) => transportIndex !== index);
     setTransportDrafts(nextDrafts);
+    transportDraftsRef.current = nextDrafts;
     persistIntercityTransports(nextDrafts);
   };
 
   return (
-    <Card data-testid="planner-leg-card" className="relative">
+    <Card data-testid="planner-leg-card" data-leg-id={leg.id} className="relative">
       <CardContent className="p-4">
         <div className="flex items-start gap-2">
           <div className="flex flex-col gap-0.5">
@@ -405,10 +431,31 @@ export const LegCard = memo(function LegCard({
             aria-label={'Delete ' + leg.cityName + ' leg'}
             title="Delete leg"
             onClick={() => onDelete(leg.id)}
+            disabled={orderSaving || editState.saving || hasDraft}
           >
             <Trash2 className="h-4 w-4" />
           </Button>
         </div>
+
+        {editState.saving || hasDraft ? (
+          <div className="mt-2 rounded-md border p-2 text-sm" role={editState.error ? 'alert' : 'status'}>
+            <p className={editState.error ? 'text-destructive' : 'text-muted-foreground'}>
+              {editState.error || (editState.saving ? 'Saving leg changes...' : 'Unsaved leg changes.')}
+            </p>
+            <p className="text-xs text-muted-foreground">This card previews your changes. Trip totals use saved values until the save succeeds.</p>
+            {editState.error ? (
+              <div className="mt-2 flex flex-wrap gap-2">
+                <Button type="button" size="sm" variant="outline" disabled={editState.saving} onClick={() => void editQueue.retry().catch(() => undefined)}>Retry leg save</Button>
+                <Button type="button" size="sm" variant="ghost" disabled={editState.saving} onClick={() => {
+                  editQueue.discard();
+                  editingTransportKeyRef.current = null;
+                  setTransportDrafts(buildTransportDrafts(savedLeg.intercityTransports || []));
+                  onDiscard();
+                }}>Discard leg changes</Button>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
 
         <LegClimate leg={leg} climate={climate} unit={temperatureUnit} onToggle={onToggleTemperature} onRetry={onRetryClimate} />
 
@@ -425,8 +472,9 @@ export const LegCard = memo(function LegCard({
             />
           </div>
           <div>
-            <Label className="text-xs">Start</Label>
+            <Label htmlFor={`leg-${leg.id}-start`} className="text-xs">Start</Label>
             <Input
+              id={`leg-${leg.id}-start`}
               type="date"
               className="h-8 text-xs"
               value={leg.startDate || ''}
@@ -434,8 +482,9 @@ export const LegCard = memo(function LegCard({
             />
           </div>
           <div>
-            <Label className="text-xs">End</Label>
+            <Label htmlFor={`leg-${leg.id}-end`} className="text-xs">End</Label>
             <Input
+              id={`leg-${leg.id}-end`}
               type="date"
               className="h-8 text-xs"
               value={leg.endDate || ''}
@@ -443,8 +492,9 @@ export const LegCard = memo(function LegCard({
             />
           </div>
           <div>
-            <Label className="text-xs">Nights</Label>
+            <Label htmlFor={`leg-${leg.id}-nights`} className="text-xs">Nights</Label>
             <Input
+              id={`leg-${leg.id}-nights`}
               type="number"
               className="h-8 text-xs"
               min={1}
@@ -504,7 +554,7 @@ export const LegCard = memo(function LegCard({
                 size="sm"
                 className="h-8"
                 onClick={() => setTransportEstimateOpen(true)}
-                disabled={previousLeg == null || !leg.startDate}
+                disabled={orderSaving || hasDraft || editState.saving || previousLeg == null || !leg.startDate}
               >
                 Estimate transport
               </Button>
@@ -651,7 +701,7 @@ export const LegCard = memo(function LegCard({
           }}
           existingTransports={leg.intercityTransports}
           onApplyTransports={async (transports) => {
-            onUpdate(leg.id, { intercityTransports: transports });
+            await editQueue.submit({ intercityTransports: transports });
           }}
         />
         ) : null}

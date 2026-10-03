@@ -21,11 +21,19 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Continue planner inline edit failures and the remaining dashboard/dataset/settings read and empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Continue dashboard/dataset/settings read and empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Fifteen separate fixes are pushed through `f16d78a`; the sixteenth, failed planner reads, is verified and ready to commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Sixteen separate fixes are pushed through `d0dec59`; the seventeenth, inline edit draft retention and serialized writes, is verified and ready to commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+Seventeenth fix: inline edit failures retain drafts with Retry/Discard. Per-leg writes are serialized/coalesced; cards
+preview drafts while trip totals use confirmed data. Plan save/export/replacement/order/estimates wait for edits to
+settle. Chrome verifies fifteen nights retained after a rejected save, unchanged aggregate totals, Retry/reload and
+restoration to fourteen. The production reproduction fails before the fix; three tests plus auth setup pass for
+failed edits, unrelated refresh preservation, automatic-order failure, retry/discard, rapid last-value persistence
+and rejected transport rows. All 69 unit files / 398 tests, TypeScript, build, memory and v1.1 guard pass. The complete
+production browser suite passes all 68 checks in 3.7 minutes, including imports, comparisons, climate and transport.
 
 Sixteenth fix: rejected planner reads retain all loaded data with a stale label and Retry. Required lists/settings are
 validated before replacement, obsolete reads are ignored, and saved-plan reads expose failure/retry. Snapshot saves

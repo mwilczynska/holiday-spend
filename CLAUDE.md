@@ -220,6 +220,9 @@ response errors. Nights must be a positive whole number. Pending additions disab
 Planner refresh failures retain the last loaded itinerary, cities, countries, costs and traveller count, labelled with
 Retry. Required responses are checked together before replacing data; stale reads cannot replace newer results.
 Saved-plan read failures retain and label the last loaded list with Retry. Valid empty reads remain distinct from failures.
+Inline planner edits keep failed drafts with Retry and Discard. Writes for a leg are serialized and newer input remains
+pending until confirmed. Cards preview unsaved changes while trip totals use saved data; plan save/export/import,
+traveller changes, reordering and estimates wait for edits to settle. Failed automatic ordering after a status save is labelled separately.
 Wise import confirmation preserves category changes from the preview, validates them against the selected files,
 and keeps amounts from parsed transaction data. Selecting different files clears the previous preview.
 

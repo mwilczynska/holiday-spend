@@ -2774,3 +2774,17 @@ reads. Saved-plan reads expose failures and Retry; valid empty results stay dist
 are disabled while loading or stale. Chrome verifies retained 65 legs / $112,690 and successful Retry. Nine relevant
 production tests including auth setup pass for failures, retry, empty data, initial SSR, leg addition and ordering.
 TypeScript, build, all 68 unit files / 394 tests, memory mirror and v1.1 guard pass. No owner DB or key changes.
+
+## 2 October 2026 — Feature QA: rejected inline leg edits
+
+Chrome changes disposable leg 1094 from fourteen to fifteen nights, rejects PUT with a controlled 503 and sees the
+draft disappear without an error. The production reproduction fails on the prior build. Cards now retain failed
+drafts with Retry/Discard; per-leg writes are serialized and coalesced so newer input survives older responses.
+Card previews are labelled and aggregate totals use confirmed data. Plan save/export/replacement/order/estimates
+wait for edits to settle. Transport edits share the queue; a status saved before an automatic-order failure is labelled.
+Three production tests plus auth setup pass for failure/retry/discard, unrelated refresh preservation, automatic
+ordering failure, rapid 2 → 20 → 200 input with two writes and transport draft persistence. Chrome verifies retained
+fifteen nights, unchanged trip totals, Retry/reload and restoration to fourteen. The focused number field's HTML
+attribute remained fourteen while its displayed/property value was fifteen; screenshot and reload confirm the result.
+All 69 unit files / 398 tests, TypeScript, build, memory and v1.1 guard pass. The complete production browser sweep
+passes all 68 checks in 3.7 minutes, including imports, comparisons, climate, transport and complete Settings exports.

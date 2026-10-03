@@ -2,7 +2,7 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: fourteen fixes are pushed. All 394 unit tests and 61 production Playwright checks pass, along with
+Checkpoint: seventeen fixes are verified. All 398 unit tests and 68 production Playwright checks pass, along with
 TypeScript, build, memory mirror and the v1.1 guard. Chrome evidence is recorded separately below.
 
 ## Environment and evidence
@@ -34,10 +34,11 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F13 | Methodology describes the active v1.1 workflow | `a4c4352` |
 | F14 | Ordering failures reported; writes atomic | `6a001de` |
 | F15 | Leg additions retain rejected drafts and lock pending submits | `f16d78a` |
+| F16 | Planner/saved-plan read failures retain prior data with Retry | `d0dec59` |
 
 ## Remaining coverage
 
-- Planner inline edit rejection and remaining page read/empty-state failures need a further local pass. Add Leg rejection is fixed under F15.
+- Dashboard/dataset/settings read and empty-state failures need a further local pass. Planner additions, reads and inline edit failures are verified under F15–F17.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -51,7 +52,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | --- | --- | --- |
 | Authentication | Signed-out redirects; required/invalid fields; login/logout; verification/reset invalid tokens; account editing | Chrome: signed-out redirect; empty Sign in disabled; fixture login; logout; wrong password feedback; forgot/signup/check-email navigation; missing reset link and invalid verification token guidance. New-password entry, account creation, email delivery and OAuth remain controlled-workflow exclusions. |
 | Dashboard | Populated/empty states; charts; expansions; tooltips; country/category views; trip-window amounts | Chrome: nine information buttons; Per Day/Planned switches; three expansions; Close/Escape; country/category/cumulative tooltips; mobile containment and country table horizontal scroll to its last column. Empty-state and read-failure review remain separate follow-up checks. |
-| Planner | Legs; picker; dates/nights; tiers; status; overrides; notes; order; traveller scaling | Chrome: disposable Agra add/delete; no-match picker; all accommodation/food/drink/activity tiers; three statuses; five overrides; saved zero; zero nights normalizes to one; keyboard dates update nights; move/reload persistence; sort rejection/error/retry; all five traveller counts and scaling. Inline edit rejection/draft behavior needs a further failure pass. |
+| Planner | Legs; picker; dates/nights; tiers; status; overrides; notes; order; traveller scaling | Chrome: disposable Agra add/delete; no-match picker; all accommodation/food/drink/activity tiers; three statuses; five overrides; saved zero; zero nights normalizes to one; keyboard dates update nights; move/reload persistence; sort rejection/error/retry; all five traveller counts and scaling. F15–F17 verify add/inline edit rejection, retained drafts/retry, failed-read preservation, saved-plan read recovery and valid empty data. Production tests cover rapid edits and transport draft retention. |
 | Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing/retry | Chrome: 12-month annual chart/table, Close/Escape, shared C/F from trip chart to legs, trip tooltip with separate temperature/rainfall, annual dialog scroll to bottom on mobile. Playwright: missing/retry, monthly segmentation and shared units pass. |
 | Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: manual rows/modes/notes/costs/removal; individual modes/empty disable; bulk All/Missing/Clear; controlled mixed success/failure; retry sends exactly one failed leg; apply persists 40 AUD QA fixture; ten-leg Stop starts five requests, retains one result, labels nine cancelled, starts no queued calls. Live provider action remains blocked pending approval. |
 | Plan files | JSON export/import; malformed/duplicate/missing-city rows; cancel/confirm | Chrome current-plan export artifact exists. Interactive JSON attachment remains blocked. Snapshot API atomicity/scoping regressions pass; these are separate from Chrome import coverage. |
@@ -68,6 +69,23 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F17 — Rejected inline leg edits discard input without feedback
+
+Chrome changes disposable Mui Ne leg 1094 from fourteen to fifteen nights, returns PUT 503, and sees fourteen restored
+without an error. The new production regression fails against the prior build because the card has no rejection alert.
+The fix keeps card drafts separate from saved trip data, reports failures with Retry/Discard, and serializes/coalesces
+each leg's writes so older responses cannot overwrite newer input. Card previews are labelled; aggregate totals use
+confirmed data, and plan save/export/replacement/order/estimates wait for edits to settle. Transport drafts use the
+same queue; status writes distinguish a saved leg from a failed automatic reorder. Three new production tests plus
+auth setup pass for HTTP/network/unreadable errors, retry/discard, preservation across an unrelated leg refresh,
+automatic-order failure, rapid 2 → 20 → 200 input with only two serialized writes, and transport draft persistence.
+Chrome verifies fifteen nights retained with the error, unchanged aggregate totals, disabled plan saves, Retry and
+reload persistence; the disposable leg is restored to fourteen. The focused-number input's HTML value attribute
+stays at fourteen while its displayed/property value is fifteen; screenshot and reload use the current value.
+Evidence: `leg-edit-rejected-lost.png`, `leg-edit-rejected-retained.png`. Four queue unit checks pass for serialization,
+merged failure/retry, discard and changing back to a confirmed value without a second request. All 69 unit files /
+398 tests, TypeScript, build, memory and v1.1 guard pass. All 68 production browser checks pass in 3.7 minutes.
 
 ### F16 — Failed planner reads report an empty itinerary and zero totals
 
