@@ -1,6 +1,6 @@
 # Comprehensive feature QA — 2–3 October 2026
 
-Status: local audit complete; restricted interactive workflows pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
+Status: owner-approved provider follow-through; disposable credential and file access pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
 Checkpoint: twenty-five separate fixes are committed and pushed through `a1f8370`. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
@@ -50,13 +50,15 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F23 | Comparison failures retain plans/results and expose validated Retry | `0c98b21` |
 | F24 | Profile-name saves require confirmation and retain rejected drafts | `dd9849f` |
 | F25 | Provider timeout displays and conversions preserve millisecond precision | `a1f8370` |
+| F26 | New-city leg creation rejects fractional and unsafe nights without truncation | Verified; separate commit pending |
 
 ## Remaining coverage
 
 - All 96 production checks pass. The authorized local audit is complete; remaining interactive gaps are listed below.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
-- Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
+- Live provider actions are approved in the 3 October follow-up. The separate fictional test account and Canberra
+  form are ready; a disposable OpenAI key must be entered directly in the app. Owner keys are never accessed.
 - Chrome native confirm acceptance and Settings downloads remain limited by the control surface; production
   Playwright separately verifies deletion and complete export artifacts.
 - Password changes require user entry. Account creation, external email delivery and OAuth were not exercised.
@@ -69,7 +71,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Dashboard | Populated/empty states; charts; expansions; tooltips; country/category views; trip-window amounts | Chrome: nine information buttons; Per Day/Planned switches; three expansions; Close/Escape; country/category/cumulative tooltips; mobile containment and country table horizontal scroll to its last column. F18 verifies initial/refresh read failure and Retry in Chrome; production regressions cover valid empty, partial/malformed/network/HTTP responses and first-navigation freshness. |
 | Planner | Legs; picker; dates/nights; tiers; status; overrides; notes; order; traveller scaling | Chrome: disposable Agra add/delete; no-match picker; all accommodation/food/drink/activity tiers; three statuses; five overrides; saved zero; zero nights normalizes to one; keyboard dates update nights; move/reload persistence; sort rejection/error/retry; all five traveller counts and scaling. F15–F17 verify add/inline edit rejection, retained drafts/retry, failed-read preservation, saved-plan read recovery and valid empty data. Production tests cover rapid edits and transport draft retention. |
 | Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing/retry | Chrome: 12-month annual chart/table, Close/Escape, shared C/F from trip chart to legs, trip tooltip with separate temperature/rainfall, annual dialog scroll to bottom on mobile. Playwright: missing/retry, monthly segmentation and shared units pass. |
-| Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: manual rows/modes/notes/costs/removal; individual modes/empty disable; bulk All/Missing/Clear; controlled mixed success/failure; retry sends exactly one failed leg; apply persists 40 AUD QA fixture; ten-leg Stop starts five requests, retains one result, labels nine cancelled, starts no queued calls. Live provider action remains blocked pending approval. |
+| Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: manual rows/modes/notes/costs/removal; individual modes/empty disable; bulk All/Missing/Clear; controlled mixed success/failure; retry sends exactly one failed leg; apply persists 40 AUD QA fixture; ten-leg Stop starts five requests, retains one result, labels nine cancelled, starts no queued calls. Live provider action is approved and awaits a disposable key in the prepared fictional account. |
 | Plan files | JSON export/import; malformed/duplicate/missing-city rows; cancel/confirm | Chrome current-plan export artifact exists. Interactive JSON attachment remains blocked. Snapshot API atomicity/scoping regressions pass; these are separate from Chrome import coverage. |
 | Saved plans | Save/load/delete/export/import; comparisons and charts | Chrome: whitespace Save disabled; Cancel; snapshot save/load with identical totals; JSON export exists; disposable saved-plan deletion verified; saved list scroll reaches bottom; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; chart expansions/Close; five-card mobile strip reaches last card. F23 verifies initial unavailable counts, list/calculation Retry, retained selections and pending locking. Production checks cover stale results, history races and complete-ID validation. Attachment remains blocked. |
 | Expenses | CRUD; conversions; assignment; filters; pagination; exclusion/bulk operations | Chrome: categories/payers; USD conversion; edit fields/unassignment; details; failure/retry; exclude/include individually/in bulk; all category/source filters; pagination; correct filtered CSV; inclusive date bounds/keyboard clear. Reversed dates show zero results without a validation message. Native delete confirmation is limited by Chrome control; Playwright verifies deletion/retry/persistence. |
@@ -84,6 +86,31 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F26 — New-city creation silently truncates fractional nights
+
+During approved provider preparation, Chrome submits Sydney / Australia / 3.5 nights through the new-city flow.
+The existing city is reused without an LLM call, and a three-night leg is saved. The reproduction leg is removed
+from the disposable provider account; its original Sydney/Melbourne itinerary is restored. The new production
+regression fails against the old build. Both client guards now validate the original number as a positive safe
+integer. Invalid input remains visible with an associated message and disabled submission; no request is sent.
+The Nights label is linked to its field. Chrome verifies the retained 3.5 draft and validation message on the final
+build. TypeScript, production build, all 398 unit tests, memory and v1.1 guard pass. All thirteen affected production
+checks pass in 48.9 seconds, including two new nights regressions, Add Leg, model/provider controls and auth setup.
+The new cases verify six invalid values send no request and a valid two-night existing-city leg persists after reload.
+Evidence: `new-city-fractional-nights-before.png`, `new-city-fractional-nights-saved.png`,
+`new-city-fractional-nights-fixed.png`.
+
+### Approved live-provider fixture and handoff
+
+The owner approves continuing on 3 October. `provider-qa@example.test` is a separate account in the isolated
+QA database, with two travellers, Sydney (1–4 December 2026) and Melbourne (4–7 December 2026), three nights each,
+and no notes. Public city names and invented dates are the only planned route context. Canberra / Australia /
+three nights is prepared in Chrome for the new-city path, OpenAI, key saving unchecked. The QA launcher keeps all
+provider and email environment keys empty. The owner is asked to enter a disposable key directly in the UI;
+no credential value is read. A readiness check confirms the Clear This Key control remains disabled, so no live
+request is submitted. Synthetic two-file Wise imports and the original two-leg JSON snapshot are prepared in the
+ignored QA directory. The prior Chrome file permission must actually change before another attachment attempt.
 
 ### F25 — Fractional timeout values are displayed as rounded seconds
 

@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Local feature audit and regression checkpoint complete. Remaining interactive workflows require access or user input. Prior product phases complete.
+**Status:** Local audit and regression checkpoint complete. Owner-approved fictional live-provider checks are being prepared. Prior product phases complete.
 
-**Current phase:** Chrome feature and edge-case testing — restricted workflows pending.
+**Current phase:** Chrome feature and edge-case testing — approved provider follow-through.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -21,7 +21,7 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Resolve the pending choices for Chrome file access and disposable live-provider testing, with user handoff for credential changes. All authorized local feature checks, twenty-five fixes and the 96-check production sweep are complete. Native Chrome confirmation/download limitations and external email/OAuth coverage remain explicit in the report. Do not rerun unchanged checks without new evidence or changes.
+**Next action:** Prepare a separate fictional QA itinerary and new-city input, then exercise the approved live-provider controls in Chrome using a disposable key entered directly by the owner. Approval is recorded in the 3 October follow-up. Chrome file access still requires an actual permission change; credential changes require user entry. Keep the twenty-five fixes and green 96-check baseline, and rerun only checks affected by new findings.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
@@ -29,6 +29,19 @@ Its regressions and Chrome verification pass.
 **Working tree:** Twenty-five separate fixes are pushed through `a1f8370`. The separate verification checkpoint records the two corrected test races and full green sweep. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+Owner approval follow-through: a separate `provider-qa@example.test` account in the isolated QA copy has Sydney
+and Melbourne, three nights each, on invented 1–7 December 2026 dates and no notes. The Canberra new-city form is
+prepared in Chrome for three nights, OpenAI, key saving off. A disposable key must be entered directly in the UI;
+approval is accepted and is not being requested again.
+
+F26: Chrome confirms the new-city flow turns 3.5 nights into a saved three-night existing-city leg. The test leg is
+removed and the original fictional two-leg route restored. Whole-number validation now uses the original number
+rather than parseInt, rejects unsafe values and retains invalid input with an associated message. The old-build
+regression fails. Chrome verifies the retained 3.5 draft and disabled submission on the final build. TypeScript,
+production build, all 69 unit files / 398 tests, memory and v1.1 guard pass; thirteen affected production checks
+pass, including invalid-input blocking without a request and an exact two-night reuse/save/reload. F26 is ready
+for its separate commit. The prepared provider form still has no disposable credential; no live call is submitted.
 
 Local checkpoint: all 96 production browser checks pass in 4.1 minutes, alongside TypeScript, production build,
 all 69 Vitest files / 398 tests, memory mirror and v1.1 guard. Chrome reload confirms the restored QA settings:

@@ -240,6 +240,8 @@ Fixed-cost additions retain rejected drafts and show save failures. Invalid amou
 delete failures leave the displayed row unchanged and expose an error.
 Planner leg additions retain the selected city and nights after rejected saves and show HTTP, network or unreadable
 response errors. Nights must be a positive whole number. Pending additions disable the form and prevent a second submission.
+The new-city leg flow also rejects fractional, nonpositive and unsafe nights before generation, retaining the input
+with an associated validation message rather than truncating it.
 Planner refresh failures retain the last loaded itinerary, cities, countries, costs and traveller count, labelled with
 Retry. Required responses are checked together before replacing data; stale reads cannot replace newer results.
 Saved-plan read failures retain and label the last loaded list with Retry. Valid empty reads remain distinct from failures.

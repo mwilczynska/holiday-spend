@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-state';
@@ -65,6 +65,9 @@ export function PlannerNewCityDialog({
   const [cityName, setCityName] = useState('');
   const [countryName, setCountryName] = useState('');
   const [nights, setNights] = useState('7');
+  const nightsInputId = useId();
+  const parsedNights = Number(nights);
+  const nightsValid = Number.isSafeInteger(parsedNights) && parsedNights > 0;
   const [provider, setProvider] = useState<ProviderOption>('openai');
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());
   const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>(
@@ -188,9 +191,8 @@ export function PlannerNewCityDialog({
   }
 
   async function handleSubmit() {
-    const parsedNights = Number.parseInt(nights, 10);
-    if (!isDatasetMode && (!Number.isInteger(parsedNights) || parsedNights < 1)) {
-      setError('Enter a valid number of nights before adding the leg.');
+    if (!isDatasetMode && !nightsValid) {
+      setError('Nights must be a positive whole number.');
       return;
     }
 
@@ -286,15 +288,19 @@ export function PlannerNewCityDialog({
 
           {!isDatasetMode ? (
             <div>
-              <Label>Nights</Label>
+              <Label htmlFor={nightsInputId}>Nights</Label>
               <Input
+                id={nightsInputId}
                 type="number"
                 min={1}
                 step={1}
                 inputMode="numeric"
                 value={nights}
                 onChange={(event) => setNights(event.target.value)}
+                aria-invalid={!nightsValid}
+                aria-describedby={!nightsValid ? `${nightsInputId}-error` : undefined}
               />
+              {!nightsValid ? <p id={`${nightsInputId}-error`} className="mt-1 text-sm text-destructive">Nights must be a positive whole number.</p> : null}
             </div>
           ) : null}
 
@@ -493,8 +499,7 @@ export function PlannerNewCityDialog({
                 loading ||
                 !cityName.trim() ||
                 !countryName.trim() ||
-                (!isDatasetMode &&
-                  (!Number.isInteger(Number.parseInt(nights, 10)) || Number.parseInt(nights, 10) < 1))
+                (!isDatasetMode && !nightsValid)
               }
             >
               <LoadingButtonLabel

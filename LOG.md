@@ -2911,3 +2911,20 @@ approval previously rejected the provider action because route cities, dates and
 Credential changes require user entry, and native Chrome confirmation/download control plus external email/OAuth
 coverage remain limitations. No owner credentials are accessed, no owner database is modified and no methodology
 calibration is opened. Do not describe the restricted workflows as tested or repeat unchanged checks at this point.
+
+## 3 October 2026 — Owner approval and feature QA F26
+
+The owner approves continuing with fictional live-provider data and a disposable test credential. A separate
+`provider-qa@example.test` account is prepared in the isolated copy, with Sydney and Melbourne, three nights each,
+invented 1–7 December 2026 dates, two travellers and no notes. Canberra / Australia / three nights is ready in Chrome,
+OpenAI, key saving unchecked. The owner is asked to enter the disposable key directly; a nonsecret readiness check
+confirms no key is available. No live request is submitted. Synthetic Wise files and the original fictional JSON
+plan are prepared for the attachment checks once Chrome file access changes.
+
+Chrome preparation uncovers another defect: the new-city flow truncates 3.5 nights to three and saves that leg.
+The reproduction uses existing Sydney without an LLM call; its extra leg is removed and the two-leg fixture restored.
+Both client guards now require the original numeric input to be a positive safe integer. Invalid drafts remain
+visible with an associated message and disabled submission. The old-build browser regression fails; final Chrome
+verification shows the retained 3.5 draft and error. All thirteen affected production checks pass in 48.9 seconds,
+covering six invalid values with no request and an exact two-night existing-city reuse/save/reload. TypeScript,
+production build, all 69 Vitest files / 398 tests, memory mirror and v1.1 guard pass. F26 is published separately.
