@@ -208,6 +208,9 @@ unsaved provider-limit drafts, and controls that depend on current settings wait
 Settings traveller selections remain labelled drafts until confirmed, with the last saved count shown. Rejected
 selections offer Retry/Discard; pending saves lock the control and dependent cost actions. A successful reread can
 confirm a write whose acknowledgement was unreadable.
+Provider-limit saves validate the returned values against the request before confirming success. Failed saves and
+resets retain input and offer Retry; newer edits replace the retry operation. Pending saves lock inputs and other
+Settings writes, and last confirmed values remain visible with unsaved drafts.
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.

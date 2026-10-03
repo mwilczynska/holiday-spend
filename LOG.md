@@ -2849,3 +2849,14 @@ pass. TypeScript, build, all 398 unit tests, memory mirror and v1.1 guard pass. 
 Chrome Retry verification; the resumed request-header policy failure cleared on one retry. Page reading and an
 interaction were verified before returning to the app. No integration settings changed. Provider-limit saves and
 Compare Plans failure states are next; interactive attachments and live providers retain their recorded gaps.
+
+## 3 October 2026 — Feature QA F22: provider-limit acknowledgements and pending writes
+
+Chrome verifies that a malformed HTTP 200 acknowledgement clears provider-limit inputs and reports success, while
+delayed writes leave Save/Reset/inputs enabled. The fix validates acknowledgements against requested values and
+configured ranges, retains failed drafts/resets with Retry and locks competing Settings writes. New edits clear
+stale status and replace the retry operation. Chrome verifies pending locking, malformed-response retention,
+Retry/reload and restored defaults. Three new production regressions plus fourteen related checks pass. TypeScript,
+build, all 398 unit tests, memory and v1.1 guard pass. The first unit run exceeds the existing snapshot-import setup
+deadline; its complete rerun passes all 69 files. Compare Plans now has separate Chrome reproductions of a false
+empty list after GET 503 and a hidden POST calculation failure while selecting plans. That fix is next.

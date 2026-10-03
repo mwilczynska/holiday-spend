@@ -43,6 +43,9 @@ interface LlmSettings {
   };
 }
 
+interface LlmSettingsUpdate { maxOutputTokens: number | null; requestTimeoutMs: number | null }
+const llmSavedValuesSchema = llmSettingsReadSchema.pick({ maxOutputTokens: true, requestTimeoutMs: true });
+
 const CATEGORIES = ['visa', 'insurance', 'flights', 'gear', 'other'];
 
 export interface SettingsInitialData {
@@ -73,6 +76,9 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   const llmDraftDirty = useRef(false);
   const [llmStatus, setLlmStatus] = useState<string | null>(null);
   const [llmError, setLlmError] = useState<string | null>(null);
+  const [llmSaving, setLlmSaving] = useState(false);
+  const llmSubmitting = useRef(false);
+  const [llmRetry, setLlmRetry] = useState<LlmSettingsUpdate | null>(null);
   const [newCost, setNewCost] = useState({
     description: '',
     amountAud: 0,
@@ -152,7 +158,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   };
 
   const mutateFixedCost = async (url: string, method: string, body?: Record<string, unknown>, onSuccess?: () => void) => {
-    if (costSubmitting.current || groupSizeSubmitting.current) return;
+    if (costSubmitting.current || groupSizeSubmitting.current || llmSubmitting.current || loading || readError) return;
     costSubmitting.current = true;
     setCostSaving(true);
     setCostError(null);
@@ -183,7 +189,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   };
 
   const saveGroupSize = async (nextGroupSize: number) => {
-    if (groupSizeSubmitting.current || costSubmitting.current || loading || readError || groupSize == null) return;
+    if (groupSizeSubmitting.current || costSubmitting.current || llmSubmitting.current || loading || readError || groupSize == null) return;
     if (!Number.isInteger(nextGroupSize) || nextGroupSize < 1 || nextGroupSize > 5) return;
     groupSizeSubmitting.current = true;
     setGroupSizeSaving(true);
@@ -221,7 +227,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   };
 
   const handleGroupSizeChange = (value: string) => {
-    if (groupSizeSubmitting.current || costSubmitting.current) return;
+    if (groupSizeSubmitting.current || costSubmitting.current || llmSubmitting.current) return;
     const nextGroupSize = Number(value);
     if (nextGroupSize === groupSize) {
       groupSizeDraftValue.current = null;
@@ -233,20 +239,33 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
     void saveGroupSize(nextGroupSize);
   };
 
-  const saveLlmSettings = async (next: { maxOutputTokens: number | null; requestTimeoutMs: number | null }) => {
+  const saveLlmSettings = async (next: LlmSettingsUpdate) => {
+    if (llmSubmitting.current || groupSizeSubmitting.current || costSubmitting.current || loading || readError || !llm) return;
+    llmSubmitting.current = true;
+    setLlmSaving(true);
+    llmDraftDirty.current = true;
+    setLlmStatus(null);
+    setLlmError(null);
+    setLlmRetry(null);
     try {
       const response = await fetch('/api/settings/llm', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(next),
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Failed to update provider limits.');
-
-      setLlm((current) => (current ? { ...current, ...data.data } : current));
+      const data = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(typeof data?.error === 'string' ? data.error : `Could not save provider limits (HTTP ${response.status}).`);
+      const parsed = llmSavedValuesSchema.safeParse(data?.data);
+      if (!parsed.success || parsed.data.maxOutputTokens !== (next.maxOutputTokens ?? llm.defaults.maxOutputTokens)
+        || parsed.data.requestTimeoutMs !== (next.requestTimeoutMs ?? llm.defaults.requestTimeoutMs)
+        || parsed.data.maxOutputTokens < llm.limits.maxOutputTokens.min || parsed.data.maxOutputTokens > llm.limits.maxOutputTokens.max
+        || parsed.data.requestTimeoutMs < llm.limits.requestTimeoutMs.min || parsed.data.requestTimeoutMs > llm.limits.requestTimeoutMs.max) {
+        throw new Error('The server did not confirm the requested provider limits. Your draft is retained; reload to check saved values or retry.');
+      }
+      setLlm((current) => (current ? { ...current, ...parsed.data } : current));
       setLlmDraft({
-        maxOutputTokens: String(data.data.maxOutputTokens),
-        requestTimeoutSeconds: String(Math.round(data.data.requestTimeoutMs / 1000)),
+        maxOutputTokens: String(parsed.data.maxOutputTokens),
+        requestTimeoutSeconds: String(Math.round(parsed.data.requestTimeoutMs / 1000)),
       });
       llmDraftDirty.current = false;
       setLlmError(null);
@@ -258,7 +277,20 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
     } catch (err) {
       setLlmStatus(null);
       setLlmError(err instanceof Error ? err.message : 'Failed to update provider limits.');
+      setLlmRetry(next);
+    } finally {
+      llmSubmitting.current = false;
+      setLlmSaving(false);
     }
+  };
+
+  const editLlmDraft = (field: keyof typeof llmDraft, value: string) => {
+    if (llmSubmitting.current) return;
+    llmDraftDirty.current = true;
+    setLlmDraft(current => ({ ...current, [field]: value }));
+    setLlmStatus(null);
+    setLlmError(null);
+    setLlmRetry(null);
   };
 
   const totalPaid = costs.filter(c => c.isPaid).reduce((s, c) => s + c.amountAud, 0);
@@ -318,7 +350,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
         <CardContent className="space-y-3">
           <div className="max-w-xs">
             <Label htmlFor="settings-travellers">Travellers</Label>
-            <Select value={groupSizeDraft != null ? String(groupSizeDraft) : groupSize == null ? '' : String(groupSize)} onValueChange={handleGroupSizeChange} disabled={groupSizeSaving || costSaving || loading || Boolean(readError)}>
+            <Select value={groupSizeDraft != null ? String(groupSizeDraft) : groupSize == null ? '' : String(groupSize)} onValueChange={handleGroupSizeChange} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)}>
               <SelectTrigger id="settings-travellers">
                 <SelectValue placeholder="Unavailable" />
               </SelectTrigger>
@@ -339,7 +371,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               <p className="text-sm text-muted-foreground">Unsaved selection: {groupSizeDraft} {groupSizeDraft === 1 ? 'traveller' : 'travellers'}. Last confirmed saved count: {groupSize ?? 'unavailable'}.</p>
               {groupSizeSaving ? <p role="status" className="text-sm text-muted-foreground">Saving traveller count...</p> : null}
               <div className="flex flex-wrap gap-2">
-                {groupSizeError ? <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveGroupSize(groupSizeDraft)}>Retry traveller count</Button> : null}
+                {groupSizeError ? <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveGroupSize(groupSizeDraft)}>Retry traveller count</Button> : null}
                 <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving} onClick={() => { groupSizeDraftValue.current = null; setGroupSizeDraft(null); setGroupSizeError(null); setGroupSizeStatus(null); }}>Discard selection</Button>
               </div>
             </div>
@@ -369,8 +401,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                 max={llm?.limits.maxOutputTokens.max}
                 step="1"
                 value={llmDraft.maxOutputTokens}
-                disabled={!hasLoadedData}
-                onChange={(e) => { llmDraftDirty.current = true; setLlmDraft((p) => ({ ...p, maxOutputTokens: e.target.value })); }}
+                disabled={llmSaving || !hasLoadedData}
+                onChange={(e) => editLlmDraft('maxOutputTokens', e.target.value)}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Covers reasoning and the answer together. Default {llm ? llm.defaults.maxOutputTokens.toLocaleString('en-AU') : '—'}.
@@ -385,8 +417,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                 max={llm ? llm.limits.requestTimeoutMs.max / 1000 : undefined}
                 step="1"
                 value={llmDraft.requestTimeoutSeconds}
-                disabled={!hasLoadedData}
-                onChange={(e) => { llmDraftDirty.current = true; setLlmDraft((p) => ({ ...p, requestTimeoutSeconds: e.target.value })); }}
+                disabled={llmSaving || !hasLoadedData}
+                onChange={(e) => editLlmDraft('requestTimeoutSeconds', e.target.value)}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Default {llm ? Math.round(llm.defaults.requestTimeoutMs / 1000) : '—'}s. High reasoning effort can run
@@ -397,7 +429,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           <div className="flex flex-wrap gap-2">
             <Button
               size="sm"
-              disabled={!llm || loading || Boolean(readError)}
+              disabled={llmSaving || groupSizeSaving || costSaving || !llm || loading || Boolean(readError)}
               onClick={() => saveLlmSettings({
                 maxOutputTokens: llmDraft.maxOutputTokens.trim() === '' ? null : Number(llmDraft.maxOutputTokens),
                 requestTimeoutMs: llmDraft.requestTimeoutSeconds.trim() === ''
@@ -410,12 +442,15 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
             <Button
               size="sm"
               variant="outline"
-              disabled={!llm || loading || Boolean(readError)}
+              disabled={llmSaving || groupSizeSaving || costSaving || !llm || loading || Boolean(readError)}
               onClick={() => saveLlmSettings({ maxOutputTokens: null, requestTimeoutMs: null })}
             >
               Reset to defaults
             </Button>
+            {llmRetry ? <Button type="button" size="sm" variant="outline" disabled={llmSaving || groupSizeSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveLlmSettings(llmRetry)}>Retry provider limits</Button> : null}
           </div>
+          {llmDraftDirty.current && llm ? <p className="text-sm text-muted-foreground">Unsaved provider limits. Last confirmed saved values: {llm.maxOutputTokens.toLocaleString('en-AU')} tokens / {llm.requestTimeoutMs / 1000} seconds.</p> : null}
+          {llmSaving ? <p role="status" className="text-sm text-muted-foreground">Saving provider limits...</p> : null}
           {llmStatus ? <p role="status" className="text-sm text-muted-foreground">{llmStatus}</p> : null}
           {llmError ? <p role="alert" className="text-sm text-destructive">{llmError}</p> : null}
         </CardContent>
@@ -426,7 +461,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           <CardTitle>Fixed Costs</CardTitle>
           <Dialog open={addOpen} onOpenChange={(open) => { if (!costSaving) { setAddOpen(open); setCostError(null); } }}>
             <DialogTrigger asChild>
-              <Button size="sm" disabled={groupSizeSaving || loading || Boolean(readError)}><Plus className="h-4 w-4 mr-2" />Add</Button>
+              <Button size="sm" disabled={groupSizeSaving || llmSaving || loading || Boolean(readError)}><Plus className="h-4 w-4 mr-2" />Add</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader><DialogTitle>Add Fixed Cost</DialogTitle>
@@ -472,7 +507,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                   <Input id="fixed-cost-date" type="date" value={newCost.date} onChange={(e) => setNewCost(p => ({ ...p, date: e.target.value }))} />
                 </div>
                 {costError && <p role="alert" className="text-sm text-destructive">{costError}</p>}
-                <Button onClick={handleAdd} className="w-full" disabled={costSaving || !newCost.description.trim() || !Number.isFinite(newCost.amountAud) || newCost.amountAud <= 0}>
+                <Button onClick={handleAdd} className="w-full" disabled={costSaving || groupSizeSaving || llmSaving || loading || Boolean(readError) || !newCost.description.trim() || !Number.isFinite(newCost.amountAud) || newCost.amountAud <= 0}>
                   {costSaving ? 'Saving...' : 'Add Fixed Cost'}
                 </Button>
               </div>
@@ -495,7 +530,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                 <div key={cost.id} className="flex items-center gap-3 p-2 rounded border">
                   <Switch
                     aria-label={`Mark ${cost.description} as ${cost.isPaid ? 'unpaid' : 'paid'}`}
-                    disabled={groupSizeSaving || costSaving || loading || Boolean(readError)}
+                    disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)}
                     checked={!!cost.isPaid}
                     onCheckedChange={() => handleTogglePaid(cost)}
                   />
@@ -511,7 +546,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                     {cost.date && <p className="text-xs text-muted-foreground">{cost.date}</p>}
                   </div>
                   <span className="font-medium">${cost.amountAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
-                  <Button aria-label={`Delete ${cost.description}`} disabled={groupSizeSaving || costSaving || loading || Boolean(readError)} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
+                  <Button aria-label={`Delete ${cost.description}`} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>

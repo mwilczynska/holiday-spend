@@ -21,13 +21,20 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Audit provider-limit saves under delayed/failed responses, then Compare Plans failure states. Traveller save locking, failure retention, Retry and reload are verified. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Fix Chrome-reproduced Compare Plans list failures that report no saved plans and calculation failures hidden in selector mode; verify retained selections, validated results and Retry. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Twenty separate fixes are pushed through `527db84`; the verified traveller save fix is ready for its separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Twenty-one separate fixes are pushed through `ade8003`; the verified provider-limit fix is ready for its separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
-Twenty-first fix: traveller selections remain labelled drafts until a validated acknowledgement or reread confirms
+Twenty-second fix: provider-limit acknowledgements must confirm the requested values before success. Failed saves
+and resets retain input and the exact operation for Retry; newer edits replace the retry. Pending saves lock inputs
+and other Settings writes, and old success messages clear on editing/submission. Chrome verifies malformed 200
+retention, pending locking, successful Retry/reload and Reset/default restoration. All seventeen relevant production
+browser checks pass, including three new regressions. TypeScript, build, all 398 unit tests, memory and v1.1 guard
+pass. The first unit run's snapshot-import setup exceeded ten seconds; the complete rerun passes all 69 files.
+
+Twenty-first fix `ade8003` is pushed: traveller selections remain labelled drafts until a validated acknowledgement or reread confirms
 the saved count. Failed saves offer Retry/Discard; pending saves lock the selector and dependent cost actions.
 Chrome verifies held writes, rejected save/read retention, both Retry controls, five travellers persisting after
 reload and restoration to two. Four new production regressions plus ten related checks pass. TypeScript, build,

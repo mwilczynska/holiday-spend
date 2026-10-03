@@ -2,9 +2,10 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty separate fixes are committed and pushed; F21 is verified for its separate commit. All 398 unit tests
+Checkpoint: twenty-one separate fixes are committed and pushed; F22 is verified for its separate commit. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
-including four new traveller regressions, pass after F21. Chrome evidence is recorded separately below.
+including four new traveller regressions, pass after F21. Seventeen targeted checks pass after F22.
+Chrome evidence is recorded separately below.
 
 ## Environment and evidence
 
@@ -40,11 +41,12 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F18 | Dashboard read failures retain figures or show unavailable totals | `b40b150` |
 | F19 | Dataset/library/history/provenance reads expose failures and Retry | `e37bda0` |
 | F20 | Settings reads retain values, costs and unsaved limit drafts | `527db84` |
-| F21 | Traveller saves retain labelled drafts and lock pending submissions | Verified; separate commit pending |
+| F21 | Traveller saves retain labelled drafts and lock pending submissions | `ade8003` |
+| F22 | Provider-limit saves validate acknowledgements and lock pending writes | Verified; separate commit pending |
 
 ## Remaining coverage
 
-- Provider-limit save failures/concurrent submissions and Compare Plans failure states need a further local pass. Traveller saves are verified under F21; main read/empty-state fixes are verified under F15–F20.
+- Compare Plans read/calculation failure states need fixes after Chrome reproduction. Settings save failures/concurrent submissions are verified under F21–F22; main read/empty-state fixes are verified under F15–F20.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -75,6 +77,19 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F22 — Malformed provider-limit acknowledgements clear drafts and report success
+
+Chrome holds a limit save and sees enabled inputs, Save and Reset. Returning HTTP 200 `{data:{}}` clears the numeric
+fields but reports “Provider limits saved.” The fix validates returned values against the request and configured
+ranges before changing confirmed state. Failed saves/resets retain drafts and the exact operation for Retry; editing
+replaces that retry and clears old status. Pending writes lock inputs and other Settings writes. Last confirmed values
+remain labelled with unsaved drafts. Chrome verifies pending locking, retained 33,333 tokens / 420 seconds after a
+malformed acknowledgement, successful Retry/reload and Reset/restoration to 64,000 / 600. Three new production
+regressions cover HTTP/network/unreadable/missing/invalid/mismatched acknowledgements, pending serialization,
+status clearing and reset retry versus newer edits. All seventeen relevant browser checks pass. TypeScript, build,
+all 398 unit tests, memory and v1.1 guard pass. The first unit run times out in the existing snapshot-import setup;
+the full rerun passes all 69 files. Evidence: `provider-limits-false-success.png`, `provider-limits-retained-error.png`.
 
 ### F21 — A rejected traveller selection looks saved after a failed refresh
 
