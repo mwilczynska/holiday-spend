@@ -92,9 +92,16 @@ Replace stale product copy with the implemented v1.1 contract, formulas, FX prov
 research remains in its archive; no calibration or collection work is reopened.
 All 60 production browser checks pass after F12 in 3.1 minutes. F13 TypeScript passes; production build and
 interactive verification are underway.
-Thirteenth fix ready to commit: Chrome verifies all seven current-method sections, keyboard Enter toggling,
+Thirteenth fix committed and pushed as `a4c4352`: Chrome verifies all seven current-method sections, keyboard Enter toggling,
 page scrolling to the bottom and narrow-screen containment. TypeScript, production build, all 392 unit tests,
 memory and v1.1 guard pass. Continue the final dataset/comparison/climate scroll pass.
+F14 in progress: a Chrome-controlled 503 on Sort by Date still reports success and leaves the saved order
+unchanged. Move failures are also ignored. Add request/error checks, retry-safe controls and atomic server order
+writes. Normal move/reload persistence and successful sorting are verified on the isolated fixture.
+Fourteenth fix ready to commit: the production regression fails before and passes after, covering rejected moves,
+failed sorts, network retry and reload persistence. Chrome verifies error/no false success and restored order after
+retry. Two unit checks verify user scoping and rollback; all 394 unit tests pass. TypeScript, build, memory and
+v1.1 guard pass. Run the full 61-check browser suite and update the coverage ledger.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.

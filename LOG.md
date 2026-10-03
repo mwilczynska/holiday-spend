@@ -2732,3 +2732,14 @@ panels or holdouts were opened. All 60 production browser checks after F12 passe
 Chrome verifies the seven current sections, Enter toggling, bottom scroll and mobile containment. TypeScript,
 build, 392 unit tests, memory and v1.1 guard pass. The body-targeted Control+End control call times out; wheel
 scrolling works and reaches the final section.
+
+## 2 October 2026 — Feature QA: rejected itinerary ordering
+
+Chrome verifies move-up persistence, then rejects Sort by Date with a controlled local 503. The saved order stays
+unchanged while the UI reports success. Restored order and cleared interception. Manual moves and date sorting now
+check HTTP/JSON/network results, retain order on rejection, report errors and permit retry. Order writes are atomic,
+and labelled move controls are disabled during a pending request. The production regression fails before the fix
+because no rejected-move error appears; an earlier fixture-shape mistake was corrected before that reproduction.
+The regression passes after the fix through HTTP/network failures, retained order, retry and reload persistence.
+Chrome sees the error without false success and restores the original order after retry. Two unit checks verify
+scoping and rollback; all 68 files / 394 tests pass. TypeScript, build, memory and v1.1 guard pass.

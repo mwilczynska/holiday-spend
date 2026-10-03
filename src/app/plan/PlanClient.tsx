@@ -245,6 +245,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   const [savingPlan, setSavingPlan] = useState(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string | null>(null);
   const [snapshotError, setSnapshotError] = useState<string | null>(null);
+  const [orderSaving, setOrderSaving] = useState(false);
+  const orderSubmitting = useRef(false);
   const [groupSize, setGroupSize] = useState(initialData.groupSize);
   const [pendingImportSnapshot, setPendingImportSnapshot] = useState<PlanSnapshot | null>(null);
   const [pendingImportSourceLabel, setPendingImportSourceLabel] = useState<string | null>(null);
@@ -469,6 +471,32 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     }
   }, [fetchData]);
 
+  const saveLegOrder = useCallback(async (legIds: number[]) => {
+    if (orderSubmitting.current) return false;
+    orderSubmitting.current = true;
+    setOrderSaving(true);
+    setSnapshotStatus(null);
+    setSnapshotError(null);
+    try {
+      const response = await fetch('/api/itinerary/reorder', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ legIds }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || `Could not save leg order (HTTP ${response.status}). Try again.`);
+      if (result?.data?.reordered !== true) throw new Error('The server returned an unreadable response. Reload before retrying.');
+      await fetchData();
+      return true;
+    } catch (err) {
+      setSnapshotError(err instanceof Error ? err.message : 'Could not save leg order. Check your connection and try again.');
+      return false;
+    } finally {
+      orderSubmitting.current = false;
+      setOrderSaving(false);
+    }
+  }, [fetchData]);
+
   const handleReorder = useCallback(async (legId: number, direction: -1 | 1) => {
     const fromIndex = legs.findIndex(leg => leg.id === legId);
     if (fromIndex < 0) return;
@@ -477,23 +505,12 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     if (toIndex < 0 || toIndex >= newLegs.length) return;
     [newLegs[fromIndex], newLegs[toIndex]] = [newLegs[toIndex], newLegs[fromIndex]];
 
-    await fetch('/api/itinerary/reorder', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ legIds: newLegs.map(l => l.id) }),
-    });
-    fetchData();
-  }, [legs, fetchData]);
+    await saveLegOrder(newLegs.map(l => l.id));
+  }, [legs, saveLegOrder]);
 
   const handleSortByDate = async () => {
     const sortedIds = [...legs].sort(compareLegDates).map((l) => l.id);
-    await fetch('/api/itinerary/reorder', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ legIds: sortedIds }),
-    });
-    await fetchData();
-    setSnapshotStatus('Legs sorted by date.');
+    if (await saveLegOrder(sortedIds)) setSnapshotStatus('Legs sorted by date.');
   };
 
   const isAlreadySortedByDate = legs.length >= 2 &&
@@ -1346,7 +1363,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   type="button"
                   variant="outline"
                   onClick={handleSortByDate}
-                  disabled={legs.length < 2 || isAlreadySortedByDate}
+                  disabled={orderSaving || legs.length < 2 || isAlreadySortedByDate}
                   title={isAlreadySortedByDate ? 'Legs are already in date order' : 'Sort legs by start date'}
                 >
                   <ArrowUpDown className="mr-2 h-4 w-4" />
@@ -1476,7 +1493,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             {snapshotStatus || snapshotError ? (
               <div className="mt-3 text-sm">
                 {snapshotStatus ? <span className="text-muted-foreground">{snapshotStatus}</span> : null}
-                {snapshotError ? <span className="text-destructive">{snapshotError}</span> : null}
+                {snapshotError ? <span role="alert" className="text-destructive">{snapshotError}</span> : null}
               </div>
             ) : null}
             <div className="mt-3 text-xs text-muted-foreground">
@@ -1526,6 +1543,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   onUpdate={handleUpdateLeg}
                   onDelete={handleDeleteLeg}
                   onMove={handleReorder}
+                  orderSaving={orderSaving}
                   isFirst={i === 0}
                   isLast={i === legs.length - 1}
                   previousLeg={i > 0 ? legs[i - 1] : null}

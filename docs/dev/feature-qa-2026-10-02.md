@@ -35,6 +35,19 @@ calibration is out of scope; tests check product contracts, calculation integrit
 
 ## Findings and fixes
 
+### F14 — Rejected sorting reports success and move errors are hidden
+
+Chrome moves the last disposable leg up and verifies persistence after reload. A controlled 503 on Sort by Date
+leaves that order unchanged but displays “Legs sorted by date”, with no server error. Interception is cleared and
+the original order restored. Fix: shared HTTP/JSON/network checks, explicit errors, no success on failure, one active
+order request and labelled/disabled move controls. Server order writes use a transaction. The production regression
+fails before the fix because the rejected move has no error; the first draft of that regression used the wrong API
+shape and was corrected before this reproduction. Evidence: `rejected-sort-false-success.png`.
+The regression passes after the fix through HTTP failure, successful move/reload, rejected sort, network failure,
+successful retry and restored order. Two unit checks verify scoped writes and full rollback on a later rejected
+update; all 68 files / 394 tests pass. Chrome verifies the error/no false success and successful restored order.
+TypeScript, production build, memory and v1.1 guard pass. Evidence: `rejected-sort-error-fixed.png`.
+
 ### F13 — Methodology presents a retired research program as current
 
 Chrome opens `/estimates` and sees “Version 2.1 baseline + Version 3 redesign”, with claims that source panels,

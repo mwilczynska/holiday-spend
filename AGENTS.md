@@ -176,6 +176,8 @@ Failed legs can be retried together without discarding completed estimates or re
 
 The Methodology page describes the active v1.1 anchor estimates, dated RBA conversion, preserved tier formulas,
 traveller scaling and limitations. Retired source-collection methods are identified as historical.
+Manual itinerary moves and date sorting expose failed requests and allow retry without false success messages.
+Order writes are atomic; move buttons are labelled and disabled while an order request is active.
 
 Accommodation tiers are hostel dorm, private room, and 1–4 star. Drinks are none, light, moderate and heavy.
 Traveller count persists per user, while city base costs remain stored for two people. Saved plans store tier

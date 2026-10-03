@@ -20,13 +20,14 @@ export async function PUT(request: Request) {
       .where(and(eq(itineraryLegs.userId, userId), inArray(itineraryLegs.id, legIds)));
     const ownedLegIds = new Set(ownedLegs.map((leg) => leg.id));
 
-    for (let i = 0; i < legIds.length; i++) {
-      if (!ownedLegIds.has(legIds[i])) continue;
-      await db
-        .update(itineraryLegs)
-        .set({ sortOrder: i + 1 })
-        .where(and(eq(itineraryLegs.id, legIds[i]), eq(itineraryLegs.userId, userId)));
-    }
+    db.transaction(tx => {
+      for (let i = 0; i < legIds.length; i++) {
+        if (!ownedLegIds.has(legIds[i])) continue;
+        tx.update(itineraryLegs)
+          .set({ sortOrder: i + 1 })
+          .where(and(eq(itineraryLegs.id, legIds[i]), eq(itineraryLegs.userId, userId))).run();
+      }
+    });
 
     return success({ reordered: true });
   } catch (err) {

@@ -95,6 +95,7 @@ interface LegCardProps {
   onUpdate: (id: number, data: Record<string, unknown>) => void;
   onDelete: (id: number) => void;
   onMove: (id: number, direction: -1 | 1) => void;
+  orderSaving?: boolean;
   isFirst: boolean;
   isLast: boolean;
   previousLeg: {
@@ -160,6 +161,7 @@ export const LegCard = memo(function LegCard({
   onUpdate,
   onDelete,
   onMove,
+  orderSaving = false,
   isFirst,
   isLast,
   previousLeg,
@@ -357,7 +359,8 @@ export const LegCard = memo(function LegCard({
               size="icon"
               className="h-6 w-6"
               onClick={() => onMove(leg.id, -1)}
-              disabled={isFirst}
+              aria-label={`Move ${leg.cityName} leg up`}
+              disabled={isFirst || orderSaving}
             >
               <ChevronUp className="h-3 w-3" />
             </Button>
@@ -366,7 +369,8 @@ export const LegCard = memo(function LegCard({
               size="icon"
               className="h-6 w-6"
               onClick={() => onMove(leg.id, 1)}
-              disabled={isLast}
+              aria-label={`Move ${leg.cityName} leg down`}
+              disabled={isLast || orderSaving}
             >
               <ChevronDown className="h-3 w-3" />
             </Button>
