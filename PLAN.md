@@ -21,16 +21,24 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Fix the Chrome-reproduced malformed profile-name acknowledgement that clears the draft and reports success, verify pending locking and retries, then run the complete production sweep. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Check fractional provider-timeout input and run the complete production sweep. Profile-name failure retention, retry, pending locking and restoration are verified. Interactive attachments and live-provider checks await the pending choices.
 
-The remaining form audit has reproduced a malformed profile-name save that clears its draft and reports success.
-Its regression is being prepared; implementation follows the separate comparison commit.
+The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
+Its regressions and Chrome verification pass.
 
-**Working tree:** Twenty-two separate fixes are pushed through `3634b57`; the verified comparison fix is ready for its separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Twenty-three separate fixes are pushed through `0c98b21`; the verified profile-name fix is ready for its separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
-Twenty-third fix: comparison list failures retain plans/selections with Retry and initial failures show unavailable
+Twenty-fourth fix: profile-name acknowledgements must confirm the requested trimmed name or explicit clearing.
+Failed saves retain drafts with a saved-name label and an error; pending submissions lock input and prevent
+duplicates, and editing clears stale status. Long saved names wrap on narrow screens. Chrome verifies malformed
+response retention, pending locking, retry/reload and restoration to Local Dev. Two new production regressions
+plus authentication setup pass for HTTP/network/unreadable/missing/invalid/wrong-name failures, trimmed/blank/
+200-character names, pending submissions and 390 px containment. TypeScript, build, all 398 unit tests, memory
+and v1.1 guard pass. Password inputs remain untouched.
+
+Twenty-third fix `0c98b21` is pushed: comparison list failures retain plans/selections with Retry and initial failures show unavailable
 counts. Calculation errors are visible in selector mode; validated complete results replace prior comparisons,
 and obsolete responses are ignored. The API rejects duplicate, malformed or partially missing/unowned IDs.
 Chrome verifies initial unavailable counts, selection retention, visible calculation errors and both Retry controls.

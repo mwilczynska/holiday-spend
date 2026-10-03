@@ -215,6 +215,8 @@ confirm a write whose acknowledgement was unreadable.
 Provider-limit saves validate the returned values against the request before confirming success. Failed saves and
 resets retain input and offer Retry; newer edits replace the retry operation. Pending saves lock inputs and other
 Settings writes, and last confirmed values remain visible with unsaved drafts.
+Profile-name saves require acknowledgement of the requested name, including clearing it. Failed saves retain drafts
+with an error and saved-name label. Pending submissions lock input; newer edits clear previous save status.
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.

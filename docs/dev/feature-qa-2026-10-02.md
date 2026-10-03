@@ -2,10 +2,11 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty-two separate fixes are committed and pushed; F23 is verified for its separate commit. All 398 unit tests
+Checkpoint: twenty-three separate fixes are committed and pushed; F24 is verified for its separate commit. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
 including four new traveller regressions, pass after F21. Seventeen targeted checks pass after F22.
-Thirteen comparison/mobile checks pass after F23. Chrome evidence is recorded separately below.
+Thirteen comparison/mobile checks pass after F23; both new profile checks and auth setup pass after F24.
+The final production sweep follows the remaining timeout-input check. Chrome evidence is recorded separately below.
 
 ## Environment and evidence
 
@@ -43,11 +44,12 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F20 | Settings reads retain values, costs and unsaved limit drafts | `527db84` |
 | F21 | Traveller saves retain labelled drafts and lock pending submissions | `ade8003` |
 | F22 | Provider-limit saves validate acknowledgements and lock pending writes | `3634b57` |
-| F23 | Comparison failures retain plans/results and expose validated Retry | Verified; separate commit pending |
+| F23 | Comparison failures retain plans/results and expose validated Retry | `0c98b21` |
+| F24 | Profile-name saves require confirmation and retain rejected drafts | Verified; separate commit pending |
 
 ## Remaining coverage
 
-- Profile-name save acknowledgement/pending failures are reproduced and need a fix. Comparison failures are verified under F23; Settings saves under F21–F22; main read/empty-state fixes under F15–F20. The complete sweep will follow the profile fix.
+- Fractional provider-timeout input needs a final edge-case check before the complete production sweep. Profile saves are verified under F24, comparison failures under F23, Settings saves under F21–F22 and main read/empty-state fixes under F15–F20.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -78,6 +80,19 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F24 — Profile-name acknowledgements clear drafts and report false success
+
+Chrome submits a display-name draft, returns HTTP 200 `{data:{}}` and sees an empty field with “Display name updated.”
+The field also remains editable during a pending save, so a later response can overwrite new input. The fix requires
+acknowledgement of the requested trimmed name or explicit clearing before confirming success, retains failed drafts
+with a saved-name label/error, locks pending input/submissions and clears stale status on editing. Long saved-name
+labels wrap on narrow screens. Chrome verifies pending locking, retained `QA profile retained draft` after malformed
+response, retry/reload persistence and restoration to `Local Dev`. The production reproduction fails before the fix.
+Two new regressions plus auth setup pass for HTTP/network/unreadable/missing/invalid/mismatched acknowledgements,
+trimmed/blank/200-character values, reload, pending locking, status clearing and 390 px containment. TypeScript,
+build, all 398 unit tests, memory and v1.1 guard pass. Password inputs are untouched. Evidence:
+`profile-name-false-success.png`, `profile-name-retained-error.png`.
 
 ### F23 — Comparison failures report an empty list or hide calculation errors
 

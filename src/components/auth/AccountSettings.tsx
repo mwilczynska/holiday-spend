@@ -1,7 +1,7 @@
 'use client';
 
 import { signOut } from 'next-auth/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -26,6 +26,7 @@ export function AccountSettings({
   const [nameLoading, setNameLoading] = useState(false);
   const [nameStatus, setNameStatus] = useState<string | null>(null);
   const [nameError, setNameError] = useState<string | null>(null);
+  const nameSubmitting = useRef(false);
 
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -35,6 +36,9 @@ export function AccountSettings({
 
   async function handleNameSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (nameSubmitting.current || name.trim() === savedName.trim()) return;
+    const requestedName = name.trim() || null;
+    nameSubmitting.current = true;
     setNameLoading(true);
     setNameStatus(null);
     setNameError(null);
@@ -43,22 +47,24 @@ export function AccountSettings({
       const response = await fetch('/api/user/profile', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim() || null }),
+        body: JSON.stringify({ name: requestedName }),
       });
       const payload = await response.json().catch(() => null);
 
       if (!response.ok) {
-        setNameError(payload?.error || 'Could not save display name.');
-        return;
+        throw new Error(typeof payload?.error === 'string' ? payload.error : `Could not save display name (HTTP ${response.status}).`);
       }
-
-      const next = (payload?.data?.name as string | null | undefined) ?? '';
+      if (payload?.data?.ok !== true || payload.data.name !== requestedName) {
+        throw new Error('The server did not confirm the requested display name. Your draft is retained; reload to check the saved name or retry.');
+      }
+      const next = requestedName ?? '';
       setSavedName(next);
       setName(next);
       setNameStatus('Display name updated.');
-    } catch {
-      setNameError('Network error. Please try again.');
+    } catch (err) {
+      setNameError(err instanceof Error ? err.message : 'Network error. Please try again.');
     } finally {
+      nameSubmitting.current = false;
       setNameLoading(false);
     }
   }
@@ -133,12 +139,19 @@ export function AccountSettings({
             <Input
               id="account-display-name"
               value={name}
+              disabled={nameLoading}
               maxLength={200}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                if (nameSubmitting.current) return;
+                setName(e.target.value);
+                setNameStatus(null);
+                setNameError(null);
+              }}
               placeholder="Optional"
             />
-            {nameStatus ? <p className="text-sm text-muted-foreground">{nameStatus}</p> : null}
-            {nameError ? <p className="text-sm text-destructive">{nameError}</p> : null}
+            {!nameUnchanged ? <p className="break-words text-sm text-muted-foreground">Unsaved display name. Last confirmed saved name: {savedName || 'None'}.</p> : null}
+            {nameStatus ? <p role="status" className="text-sm text-muted-foreground">{nameStatus}</p> : null}
+            {nameError ? <p role="alert" className="text-sm text-destructive">{nameError}</p> : null}
             <Button type="submit" disabled={nameLoading || nameUnchanged}>
               <LoadingButtonLabel idle="Save" loading="Saving..." isLoading={nameLoading} />
             </Button>

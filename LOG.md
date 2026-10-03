@@ -2873,3 +2873,14 @@ pass on the final build. A first mobile timeout at the third route, Dataset, pas
 no test deadline is changed. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass. The remaining form
 audit reproduces a profile-name malformed acknowledgement clearing input and reporting success; the fixture is
 unchanged, its reproduction is prepared and that separate fix follows.
+
+## 3 October 2026 — Feature QA F24: profile-name acknowledgements retain drafts
+
+Chrome reproduces a malformed HTTP 200 profile acknowledgement clearing the name draft and reporting success;
+pending saves leave the input editable. Saves now require confirmation of the requested trimmed name or clearing.
+Failures retain drafts with an error/saved-name label, pending input/submissions lock and newer edits clear old
+status. Long saved names wrap. Chrome verifies locking, malformed-response retention, retry/reload and restoration
+to Local Dev. The old-build regression fails; both new production checks and auth setup pass for failure variants,
+trimmed/blank/200-character names, persistence, pending behavior and 390 px containment. TypeScript, build, all
+398 unit tests, memory and v1.1 guard pass. No password field is entered or changed. A fractional-timeout edge check
+and the complete production sweep remain before the coverage checkpoint.
