@@ -205,6 +205,9 @@ their own Retry. A saved city remains saved when the following refresh fails.
 Settings read failures retain the last loaded values and fixed costs with Retry. Initial failures label traveller
 count, provider limits and totals unavailable. All required responses are validated before replacement; retry keeps
 unsaved provider-limit drafts, and controls that depend on current settings wait for a successful read.
+Settings traveller selections remain labelled drafts until confirmed, with the last saved count shown. Rejected
+selections offer Retry/Discard; pending saves lock the control and dependent cost actions. A successful reread can
+confirm a write whose acknowledgement was unreadable.
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.

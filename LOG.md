@@ -2837,3 +2837,15 @@ Chrome verifies retained data, unavailable initial values and Retry recovery; th
 passes all 81 checks. All 398 unit tests and the required baseline pass. The next local pass checks Settings saves
 and concurrent submissions, then Compare Plans failure states. Interactive attachments and live provider checks
 still await the pending choices. The QA table suspensions are restored and the temporary fixed cost is removed.
+
+## 3 October 2026 — Feature QA F21: traveller saves retain labelled drafts
+
+Chrome reproduces a rejected five-person selection appearing saved after both the PUT and following GET fail;
+the prior selector also stays enabled during a held write. Confirmed count and draft are now separate. Validated
+acknowledgements and successful rereads confirm writes; failures keep Retry/Discard, and pending writes lock the
+selector and dependent cost actions. Chrome verifies the pending lock, labelled draft, both Retry controls,
+five-person reload persistence and restoration to two. Four new production regressions plus ten related checks
+pass. TypeScript, build, all 398 unit tests, memory mirror and v1.1 guard pass. A usage-limit interruption delayed
+Chrome Retry verification; the resumed request-header policy failure cleared on one retry. Page reading and an
+interaction were verified before returning to the app. No integration settings changed. Provider-limit saves and
+Compare Plans failure states are next; interactive attachments and live providers retain their recorded gaps.

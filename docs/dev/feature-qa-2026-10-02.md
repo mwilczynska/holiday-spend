@@ -2,8 +2,9 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty separate fixes are committed and pushed. All 398 unit tests and 81 production Playwright checks pass, along with
-TypeScript, build, memory mirror and the v1.1 guard. Chrome evidence is recorded separately below.
+Checkpoint: twenty separate fixes are committed and pushed; F21 is verified for its separate commit. All 398 unit tests
+and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
+including four new traveller regressions, pass after F21. Chrome evidence is recorded separately below.
 
 ## Environment and evidence
 
@@ -39,10 +40,11 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F18 | Dashboard read failures retain figures or show unavailable totals | `b40b150` |
 | F19 | Dataset/library/history/provenance reads expose failures and Retry | `e37bda0` |
 | F20 | Settings reads retain values, costs and unsaved limit drafts | `527db84` |
+| F21 | Traveller saves retain labelled drafts and lock pending submissions | Verified; separate commit pending |
 
 ## Remaining coverage
 
-- Settings save failures/concurrent submissions and Compare Plans failure states need a further local pass. Main read/empty-state fixes are verified under F15–F20.
+- Provider-limit save failures/concurrent submissions and Compare Plans failure states need a further local pass. Traveller saves are verified under F21; main read/empty-state fixes are verified under F15–F20.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -73,6 +75,22 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F21 — A rejected traveller selection looks saved after a failed refresh
+
+Chrome selects five travellers from a saved count of two, rejects the PUT and the following GET, and sees five
+displayed without a draft label or save Retry. The selector also remains available during the pending write.
+The fix keeps confirmed values separate from drafts, validates acknowledgements against the requested count,
+offers Retry/Discard and locks dependent actions during a save. A successful reread can confirm a persisted write
+whose acknowledgement was unreadable. Chrome verifies pending locking, labelled five-person draft / saved two,
+read Retry retaining the draft, save Retry, reload persistence at five and fixture restoration/reload at two.
+The reproduction fails before the fix. Four new production regressions cover HTTP/network/unreadable/invalid or
+mismatched acknowledgement failures, pending locking, discard without another write and reread confirmation.
+All fourteen relevant browser checks pass, as do TypeScript, build, all 398 unit tests, memory and the v1.1 guard.
+Evidence: `traveller-failed-save-false-value.png`, `traveller-failed-save-labelled-draft.png`,
+`traveller-retry-restored.png`. A usage-limit interruption delayed Chrome Retry verification; after resumption,
+one retry cleared a transient request-header policy error and both reading and interaction were verified.
+No Chrome integration files or settings changed.
 
 ### F20 — Settings read failures report a false zero fixed-cost total
 

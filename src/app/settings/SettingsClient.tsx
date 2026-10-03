@@ -56,6 +56,10 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   const [groupSize, setGroupSize] = useState(initialData.groupSize);
   const [groupSizeStatus, setGroupSizeStatus] = useState<string | null>(null);
   const [groupSizeError, setGroupSizeError] = useState<string | null>(null);
+  const [groupSizeDraft, setGroupSizeDraft] = useState<number | null>(null);
+  const groupSizeDraftValue = useRef<number | null>(null);
+  const [groupSizeSaving, setGroupSizeSaving] = useState(false);
+  const groupSizeSubmitting = useRef(false);
   const [loading, setLoading] = useState(false);
   const [readError, setReadError] = useState<string | null>(initialData.readError ?? null);
   const [hasLoadedData, setHasLoadedData] = useState(!initialData.readError);
@@ -106,6 +110,13 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
       setCosts(parsedCosts.data);
       setCountries(parsedCountries.data.sort((a, b) => a.name.localeCompare(b.name)));
       setGroupSize(parsedPlanner.data.groupSize);
+      setGroupSizeStatus(null);
+      if (groupSizeDraftValue.current === parsedPlanner.data.groupSize) {
+        groupSizeDraftValue.current = null;
+        setGroupSizeDraft(null);
+        setGroupSizeError(null);
+        setGroupSizeStatus(`Traveller count set to ${parsedPlanner.data.groupSize}.`);
+      }
       setLlm(parsedLlm.data);
       if (!llmDraftDirty.current) {
         setLlmDraft({
@@ -141,7 +152,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   };
 
   const mutateFixedCost = async (url: string, method: string, body?: Record<string, unknown>, onSuccess?: () => void) => {
-    if (costSubmitting.current) return;
+    if (costSubmitting.current || groupSizeSubmitting.current) return;
     costSubmitting.current = true;
     setCostSaving(true);
     setCostError(null);
@@ -171,27 +182,55 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
     await mutateFixedCost(`/api/fixed-costs/${id}`, 'DELETE');
   };
 
-  const handleGroupSizeChange = async (value: string) => {
-    const nextGroupSize = Number.parseInt(value, 10);
-    setGroupSize(nextGroupSize);
+  const saveGroupSize = async (nextGroupSize: number) => {
+    if (groupSizeSubmitting.current || costSubmitting.current || loading || readError || groupSize == null) return;
+    if (!Number.isInteger(nextGroupSize) || nextGroupSize < 1 || nextGroupSize > 5) return;
+    groupSizeSubmitting.current = true;
+    setGroupSizeSaving(true);
+    groupSizeDraftValue.current = nextGroupSize;
+    setGroupSizeDraft(nextGroupSize);
+    setGroupSizeError(null);
+    setGroupSizeStatus(null);
     try {
       const response = await fetch('/api/planner/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ groupSize: nextGroupSize }),
       });
-      const data = await response.json();
+      const data = await response.json().catch(() => null);
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to update traveller count.');
+        throw new Error(typeof data?.error === 'string' ? data.error : `Could not save traveller count (HTTP ${response.status}).`);
       }
-      setGroupSize(data.data.groupSize);
+      const parsed = travellerSettingsReadSchema.safeParse(data?.data);
+      if (!parsed.success || parsed.data.groupSize !== nextGroupSize) {
+        throw new Error('The server did not confirm the requested traveller count. Check the saved count before retrying.');
+      }
+      setGroupSize(parsed.data.groupSize);
+      groupSizeDraftValue.current = null;
+      setGroupSizeDraft(null);
       setGroupSizeError(null);
-      setGroupSizeStatus(`Traveller count set to ${data.data.groupSize}.`);
+      setGroupSizeStatus(`Traveller count set to ${parsed.data.groupSize}.`);
     } catch (err) {
       setGroupSizeStatus(null);
       setGroupSizeError(err instanceof Error ? err.message : 'Failed to update traveller count.');
-      fetchData();
+      await fetchData();
+    } finally {
+      groupSizeSubmitting.current = false;
+      setGroupSizeSaving(false);
     }
+  };
+
+  const handleGroupSizeChange = (value: string) => {
+    if (groupSizeSubmitting.current || costSubmitting.current) return;
+    const nextGroupSize = Number(value);
+    if (nextGroupSize === groupSize) {
+      groupSizeDraftValue.current = null;
+      setGroupSizeDraft(null);
+      setGroupSizeError(null);
+      setGroupSizeStatus(null);
+      return;
+    }
+    void saveGroupSize(nextGroupSize);
   };
 
   const saveLlmSettings = async (next: { maxOutputTokens: number | null; requestTimeoutMs: number | null }) => {
@@ -279,7 +318,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
         <CardContent className="space-y-3">
           <div className="max-w-xs">
             <Label htmlFor="settings-travellers">Travellers</Label>
-            <Select value={groupSize == null ? '' : String(groupSize)} onValueChange={handleGroupSizeChange} disabled={loading || Boolean(readError)}>
+            <Select value={groupSizeDraft != null ? String(groupSizeDraft) : groupSize == null ? '' : String(groupSize)} onValueChange={handleGroupSizeChange} disabled={groupSizeSaving || costSaving || loading || Boolean(readError)}>
               <SelectTrigger id="settings-travellers">
                 <SelectValue placeholder="Unavailable" />
               </SelectTrigger>
@@ -295,8 +334,18 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           <p className="text-sm text-muted-foreground">
             City costs are stored for 2 travellers and scaled across the planner and dashboard using this setting.
           </p>
-          {groupSizeStatus ? <p className="text-sm text-muted-foreground">{groupSizeStatus}</p> : null}
-          {groupSizeError ? <p className="text-sm text-destructive">{groupSizeError}</p> : null}
+          {groupSizeDraft != null ? (
+            <div className="space-y-2">
+              <p className="text-sm text-muted-foreground">Unsaved selection: {groupSizeDraft} {groupSizeDraft === 1 ? 'traveller' : 'travellers'}. Last confirmed saved count: {groupSize ?? 'unavailable'}.</p>
+              {groupSizeSaving ? <p role="status" className="text-sm text-muted-foreground">Saving traveller count...</p> : null}
+              <div className="flex flex-wrap gap-2">
+                {groupSizeError ? <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveGroupSize(groupSizeDraft)}>Retry traveller count</Button> : null}
+                <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving} onClick={() => { groupSizeDraftValue.current = null; setGroupSizeDraft(null); setGroupSizeError(null); setGroupSizeStatus(null); }}>Discard selection</Button>
+              </div>
+            </div>
+          ) : null}
+          {groupSizeStatus ? <p role="status" className="text-sm text-muted-foreground">{groupSizeStatus}</p> : null}
+          {groupSizeError ? <p role="alert" className="text-sm text-destructive">{groupSizeError}</p> : null}
         </CardContent>
       </Card>
 
@@ -377,7 +426,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           <CardTitle>Fixed Costs</CardTitle>
           <Dialog open={addOpen} onOpenChange={(open) => { if (!costSaving) { setAddOpen(open); setCostError(null); } }}>
             <DialogTrigger asChild>
-              <Button size="sm" disabled={loading || Boolean(readError)}><Plus className="h-4 w-4 mr-2" />Add</Button>
+              <Button size="sm" disabled={groupSizeSaving || loading || Boolean(readError)}><Plus className="h-4 w-4 mr-2" />Add</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader><DialogTitle>Add Fixed Cost</DialogTitle>
@@ -446,7 +495,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                 <div key={cost.id} className="flex items-center gap-3 p-2 rounded border">
                   <Switch
                     aria-label={`Mark ${cost.description} as ${cost.isPaid ? 'unpaid' : 'paid'}`}
-                    disabled={costSaving || loading || Boolean(readError)}
+                    disabled={groupSizeSaving || costSaving || loading || Boolean(readError)}
                     checked={!!cost.isPaid}
                     onCheckedChange={() => handleTogglePaid(cost)}
                   />
@@ -462,7 +511,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                     {cost.date && <p className="text-xs text-muted-foreground">{cost.date}</p>}
                   </div>
                   <span className="font-medium">${cost.amountAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
-                  <Button aria-label={`Delete ${cost.description}`} disabled={costSaving || loading || Boolean(readError)} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
+                  <Button aria-label={`Delete ${cost.description}`} disabled={groupSizeSaving || costSaving || loading || Boolean(readError)} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>

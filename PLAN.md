@@ -21,11 +21,18 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Audit Settings save failures/concurrent submissions and Compare Plans failure states in Chrome. All 81 production browser checks pass after the dashboard/dataset/settings read fixes. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Audit provider-limit saves under delayed/failed responses, then Compare Plans failure states. Traveller save locking, failure retention, Retry and reload are verified. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Twenty separate fixes are pushed through `527db84`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Twenty separate fixes are pushed through `527db84`; the verified traveller save fix is ready for its separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+Twenty-first fix: traveller selections remain labelled drafts until a validated acknowledgement or reread confirms
+the saved count. Failed saves offer Retry/Discard; pending saves lock the selector and dependent cost actions.
+Chrome verifies held writes, rejected save/read retention, both Retry controls, five travellers persisting after
+reload and restoration to two. Four new production regressions plus ten related checks pass. TypeScript, build,
+all 398 unit tests, memory mirror and v1.1 guard pass. Chrome's transient request-header policy failure recovered
+on one retry; page reading and interaction were verified without changing integration settings.
 
 Twentieth fix `527db84` is pushed: Settings read failures retain costs/settings with a stale label and Retry. Initial failures
 show unavailable traveller/provider values and totals. All four required responses are validated before replacement,
