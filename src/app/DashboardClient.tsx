@@ -1,12 +1,14 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
+import { dashboardReadSchema } from '@/lib/dashboard-read-contract';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { InfoPopover } from '@/components/itinerary/InfoPopover';
-import { PageLoadingState } from '@/components/ui/loading-state';
+import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EXPENSE_CATEGORIES } from '@/types';
 import Link from 'next/link';
@@ -210,9 +212,6 @@ function SummaryStatCard({
   );
 }
 
-// Module scope, so it resets on a full document load and persists across client-side navigations.
-let hasMountedInThisDocument = false;
-
 export interface DashboardInitialData {
   summary: Summary | null;
   comparison: CountryComparison[];
@@ -220,6 +219,7 @@ export interface DashboardInitialData {
   plannedCategoryTotals: Record<string, number>;
   burnData: BurnRatePoint[];
   countryBands: CountryBand[];
+  readError?: string | null;
 }
 
 /**
@@ -240,56 +240,45 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
   const [burnData, setBurnData] = useState<BurnRatePoint[]>(initialData.burnData);
   const [countryBands, setCountryBands] = useState<CountryBand[]>(initialData.countryBands);
   const [budgetCeiling, setBudgetCeiling] = useState(initialData.summary?.totalBudget ?? 0);
-  const [loading, setLoading] = useState(!initialData.summary);
+  const [loading, setLoading] = useState(!initialData.summary && !initialData.readError);
+  const [readError, setReadError] = useState<string | null>(initialData.readError ?? null);
+  const readSequence = useRef(0);
   const [showCountryDailySpend, setShowCountryDailySpend] = useState(false);
   const [categoryMode, setCategoryMode] = useState<CategoryMode>('actual');
   const [expandedChart, setExpandedChart] = useState<ExpandedChart>(null);
 
-  const hasServerRenderedData = Boolean(initialData.summary);
-
-  useEffect(() => {
-    /**
-     * On a full page load this module is freshly evaluated, so `hasMountedInThisDocument` is
-     * false and the data the server just rendered is current — refetching it would send the same
-     * 89 kB twice. On a later client-side navigation back to the dashboard the module is already
-     * loaded, so the flag is true; Next's client router can serve a cached payload for a dynamic
-     * route, so that case does refetch and the previous freshness guarantee is kept.
-     */
-    if (!hasMountedInThisDocument) {
-      hasMountedInThisDocument = true;
-      if (hasServerRenderedData) return;
-    }
-
-    async function load() {
-      try {
-        // One request rather than three. The three endpoints still exist and are unchanged, but
-        // each re-read the same legs, cities, countries and 1,300 expense rows, so rendering this
-        // page loaded them three times over.
-        const response = await fetch('/api/dashboard', { cache: 'no-store' });
-        const { data } = await response.json();
-        if (!data) return;
-
-        const { summary: summaryData, plannedVsActual, burnRate } = data;
-
-        if (summaryData) {
-          setSummary(summaryData);
-          setBudgetCeiling(summaryData.totalBudget);
-        }
-        if (plannedVsActual) {
-          setComparison(plannedVsActual.comparison || []);
-          setActualCategoryTotals(plannedVsActual.actualCategoryTotals || {});
-          setPlannedCategoryTotals(plannedVsActual.plannedCategoryTotals || {});
-        }
-        if (burnRate) {
-          setBurnData(burnRate.cumulative || []);
-          setCountryBands(burnRate.countryBands || []);
-        }
-      } finally {
-        setLoading(false);
+  const loadDashboard = useCallback(async () => {
+    const sequence = ++readSequence.current;
+    setLoading(true);
+    try {
+      const response = await fetch('/api/dashboard', { cache: 'no-store' });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || `Could not load dashboard (HTTP ${response.status}).`);
+      if (!result) throw new Error('The server returned an unreadable dashboard response.');
+      const parsed = dashboardReadSchema.safeParse(result.data);
+      if (!parsed.success) {
+        const fields = parsed.error.issues.slice(0, 3).map(issue => issue.path.join('.') || 'data');
+        throw new Error(`The server returned invalid dashboard data: ${fields.join(', ')}.`);
       }
+      if (sequence !== readSequence.current) return;
+      const { summary: summaryData, plannedVsActual, burnRate } = parsed.data;
+      setSummary(summaryData);
+      setBudgetCeiling(summaryData.totalBudget);
+      setComparison(plannedVsActual.comparison);
+      setActualCategoryTotals(plannedVsActual.actualCategoryTotals);
+      setPlannedCategoryTotals(plannedVsActual.plannedCategoryTotals);
+      setBurnData(burnRate.cumulative);
+      setCountryBands(burnRate.countryBands);
+      setReadError(null);
+    } catch (err) {
+      if (sequence === readSequence.current) {
+        setReadError(err instanceof Error ? err.message : 'Could not load the dashboard. Check your connection and retry.');
+      }
+    } finally {
+      if (sequence === readSequence.current) setLoading(false);
     }
-    load();
-  }, [hasServerRenderedData]);
+  }, []);
+  useInitialPageRefresh('/', loadDashboard, Boolean(initialData.summary) && !initialData.readError);
 
   // These derivations previously ran unmemoized on every render, so toggling
   // showCountryDailySpend, categoryMode or expandedChart re-mapped and re-sorted the whole
@@ -371,7 +360,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
     return Math.max(maxEstimatedTotal, maxSpentTotal);
   }, [chartBurnData]);
 
-  if (loading && !summary) {
+  if (loading && !summary && !readError) {
     return (
       <PageLoadingState
         title="Loading dashboard"
@@ -475,6 +464,21 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
           </div>
         </div>
       </div>
+
+      {readError ? (
+        <div role="alert" className="flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive">
+          <div>
+            <p>{readError}</p>
+            <p>{summary ? 'Showing the last loaded dashboard figures; they may be out of date.' : 'Dashboard unavailable. Totals and charts could not be loaded.'}</p>
+          </div>
+          <Button type="button" size="sm" variant="outline" disabled={loading} onClick={() => void loadDashboard()}>
+            <LoadingButtonLabel idle="Retry dashboard" loading="Retrying..." isLoading={loading} />
+          </Button>
+        </div>
+      ) : null}
+      {summary && summary.destinations === 0 && summary.expenseCount === 0 ? (
+        <p className="text-sm text-muted-foreground">No itinerary or trip expenses yet. Add a destination or record an expense to start.</p>
+      ) : null}
 
       {summary && (
         <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">

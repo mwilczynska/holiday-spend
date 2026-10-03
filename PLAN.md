@@ -21,11 +21,17 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Continue dashboard/dataset/settings read and empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Continue dataset/settings reads and empty states in Chrome. Dashboard failure and recovery checks pass. Interactive attachments and live-provider checks await the pending choices.
 
 **Working tree:** Seventeen separate fixes are pushed through `bc2d491`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+Eighteenth fix is ready for publication: dashboard read failures retain prior figures with a stale warning and Retry;
+initial failures show unavailable totals/charts. Complete validated responses replace the view together, valid empty
+trips are distinct, and the first client navigation refreshes while full loads skip duplicate reads. All four new
+production regressions fail against the prior build and pass after the fix, plus auth setup. Chrome verifies both
+failure states and Retry recovery. TypeScript, production build, all 398 unit tests, memory mirror and v1.1 guard pass.
 
 Seventeenth fix: inline edit failures retain drafts with Retry/Discard. Per-leg writes are serialized/coalesced; cards
 preview drafts while trip totals use confirmed data. Plan save/export/replacement/order/estimates wait for edits to

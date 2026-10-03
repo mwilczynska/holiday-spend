@@ -26,13 +26,15 @@ const EMPTY: DashboardInitialData = {
   plannedCategoryTotals: {},
   burnData: [],
   countryBands: [],
+  readError: 'Dashboard data could not be loaded.',
 };
 
 export default async function DashboardPage() {
+  const userId = await requireCurrentUserId();
   let initialData = EMPTY;
 
   try {
-    const inputs = await loadDashboardInputs(await requireCurrentUserId());
+    const inputs = await loadDashboardInputs(userId);
     const plannedVsActual = buildPlannedVsActual(inputs);
     const burnRate = buildBurnRate(inputs);
 
@@ -45,9 +47,7 @@ export default async function DashboardPage() {
       countryBands: burnRate.countryBands as DashboardInitialData['countryBands'],
     };
   } catch {
-    // Middleware redirects unauthenticated requests before this runs, so reaching here means the
-    // data could not be read rather than that the user is anonymous. Render the shell and let the
-    // client's own fetch report the problem, exactly as it did before this page was server-rendered.
+    // Preserve the read failure in the HTML. The client can retry without claiming an empty trip.
   }
 
   return <DashboardClient initialData={initialData} />;

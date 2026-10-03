@@ -36,10 +36,11 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F15 | Leg additions retain rejected drafts and lock pending submits | `f16d78a` |
 | F16 | Planner/saved-plan read failures retain prior data with Retry | `d0dec59` |
 | F17 | Inline leg edits retain drafts and serialize saves | `bc2d491` |
+| F18 | Dashboard read failures retain figures or show unavailable totals | Included in this fix |
 
 ## Remaining coverage
 
-- Dashboard/dataset/settings read and empty-state failures need a further local pass. Planner additions, reads and inline edit failures are verified under F15–F17.
+- Dataset/settings read and empty-state failures need a further local pass. Dashboard failures are verified under F18; planner additions, reads and inline edit failures under F15–F17.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -52,7 +53,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Area | Planned checks | Evidence/status |
 | --- | --- | --- |
 | Authentication | Signed-out redirects; required/invalid fields; login/logout; verification/reset invalid tokens; account editing | Chrome: signed-out redirect; empty Sign in disabled; fixture login; logout; wrong password feedback; forgot/signup/check-email navigation; missing reset link and invalid verification token guidance. New-password entry, account creation, email delivery and OAuth remain controlled-workflow exclusions. |
-| Dashboard | Populated/empty states; charts; expansions; tooltips; country/category views; trip-window amounts | Chrome: nine information buttons; Per Day/Planned switches; three expansions; Close/Escape; country/category/cumulative tooltips; mobile containment and country table horizontal scroll to its last column. Empty-state and read-failure review remain separate follow-up checks. |
+| Dashboard | Populated/empty states; charts; expansions; tooltips; country/category views; trip-window amounts | Chrome: nine information buttons; Per Day/Planned switches; three expansions; Close/Escape; country/category/cumulative tooltips; mobile containment and country table horizontal scroll to its last column. F18 verifies initial/refresh read failure and Retry in Chrome; production regressions cover valid empty, partial/malformed/network/HTTP responses and first-navigation freshness. |
 | Planner | Legs; picker; dates/nights; tiers; status; overrides; notes; order; traveller scaling | Chrome: disposable Agra add/delete; no-match picker; all accommodation/food/drink/activity tiers; three statuses; five overrides; saved zero; zero nights normalizes to one; keyboard dates update nights; move/reload persistence; sort rejection/error/retry; all five traveller counts and scaling. F15–F17 verify add/inline edit rejection, retained drafts/retry, failed-read preservation, saved-plan read recovery and valid empty data. Production tests cover rapid edits and transport draft retention. |
 | Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing/retry | Chrome: 12-month annual chart/table, Close/Escape, shared C/F from trip chart to legs, trip tooltip with separate temperature/rainfall, annual dialog scroll to bottom on mobile. Playwright: missing/retry, monthly segmentation and shared units pass. |
 | Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: manual rows/modes/notes/costs/removal; individual modes/empty disable; bulk All/Missing/Clear; controlled mixed success/failure; retry sends exactly one failed leg; apply persists 40 AUD QA fixture; ten-leg Stop starts five requests, retains one result, labels nine cancelled, starts no queued calls. Live provider action remains blocked pending approval. |
@@ -70,6 +71,20 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F18 — Dashboard read failures leave unlabelled stale figures or an empty shell
+
+Chrome returns GET `/api/dashboard` 503 on client navigation and sees old figures without a warning or Retry.
+A temporary expenses-table suspension in the QA copy makes an initial load show only the header and navigation
+links. Both failures now have an error and Retry: prior totals/charts remain explicitly stale, and initial failures
+show unavailable totals/charts. Complete validated responses replace the view together. The first client navigation
+refreshes even when the dashboard was not previously mounted in that document; successful full loads skip duplicate
+reads. All four new production regressions fail on the prior build and pass after the fix, plus auth setup. They cover
+HTTP/network/unreadable/partial responses, atomic retention, valid empty data, initial failure/recovery and freshness.
+Chrome verifies retained $112,690 planned / $51,850 actual with the warning, initial unavailable state and both Retry
+recoveries. The QA table is restored. TypeScript, build, all 398 unit tests, memory mirror and v1.1 guard pass.
+Evidence: `dashboard-read-silent-stale.png`, `dashboard-initial-read-empty.png`,
+`dashboard-read-retained-retry.png`, `dashboard-initial-read-unavailable.png`.
 
 ### F17 — Rejected inline leg edits discard input without feedback
 

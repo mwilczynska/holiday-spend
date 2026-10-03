@@ -2796,3 +2796,13 @@ serialized inline edits `bc2d491`. Chrome proofs and the full 68-check productio
 coverage report. All 398 unit tests and the required baseline pass. The next local pass covers dashboard, dataset
 and settings read/empty-state behavior. Interactive attachments and live-provider checks still await the pending
 choices; owner data and provider keys remain untouched.
+
+## 2 October 2026 — Feature QA: dashboard read failures
+
+Chrome reproduces a rejected refresh leaving unlabelled stale totals and an initial database read failure leaving
+an empty shell. Failures now retain prior totals/charts with a stale label and Retry or show initial unavailable
+totals/charts. Responses are validated before replacing the complete view; valid empty results remain distinct.
+The first client navigation refreshes, while full successful loads skip duplicate reads. Four new production
+regressions fail against the previous build and pass after the fix, plus auth setup, covering failure/recovery,
+malformed/partial/network/HTTP data, valid empty data and freshness. Chrome verifies both failure states and Retry.
+The copy-only table suspension is restored. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass.

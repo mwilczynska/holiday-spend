@@ -184,7 +184,7 @@ Traveller count persists per user, while city base costs remain stored for two p
 choices rather than frozen city prices.
 
 Dashboard, planner, expense tracker, dataset and settings include initial database data in their server-rendered
-responses. Planner, dataset and settings skip duplicate initial browser reads and refresh on client navigation and
+responses. Dashboard, planner, dataset and settings skip duplicate initial browser reads and refresh on client navigation and
 after edits. The planner includes saved climate in its initial read, collects only missing records, and renders every
 leg. Its cards are memoized so unrelated dialog and header updates do not rerender the full itinerary.
 
@@ -196,6 +196,9 @@ and leg summaries wrap, and the mobile navigation includes a reachable Sign out 
 
 Manual city costs must be finite and nonnegative. Zero and missing values remain distinct. Invalid edits retain
 their draft with an error; the coffee price and coffee-only daily basket stay linked.
+
+Dashboard read failures retain prior figures with a stale label and Retry; an initial failure shows unavailable totals
+and charts. Complete responses replace the view together, and valid empty trips remain distinct from failed reads.
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
