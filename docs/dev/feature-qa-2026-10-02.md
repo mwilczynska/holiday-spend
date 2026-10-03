@@ -36,7 +36,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 
 ## Remaining coverage
 
-- Planner inline edit/add rejection and remaining page read/empty-state failures need a further local pass.
+- Planner inline edit rejection and remaining page read/empty-state failures need a further local pass. Add Leg rejection is fixed under F15.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -67,6 +67,17 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F15 — Rejected leg additions close and clear the form
+
+Chrome selects Amsterdam and enters nine nights. A controlled POST 503 closes Add Itinerary Leg, clears the city
+and resets nights to seven, with no error. A production regression against the prior build confirms that no alert
+appears. The fix retains the form and selected values on HTTP/network/unreadable responses, reports the failure,
+and locks a pending submission. Nights use strict positive-integer validation rather than parseInt truncation.
+TypeScript, production build, all 68 unit files / 394 tests, memory mirror and v1.1 guard pass. Two new production tests
+plus auth setup pass for HTTP/network/unreadable failure retention, successful retry/reload, invalid nights and pending
+submission locking. Chrome verifies fractional-night rejection, disabled pending controls and the retained Amsterdam /
+nine-night draft with the server error. Evidence: `add-leg-rejected-before.png`, `add-leg-rejected-retained.png`.
 
 ### F14 — Rejected sorting reports success and move errors are hidden
 

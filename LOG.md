@@ -2754,3 +2754,13 @@ methodology sections/links/bottom, inclusive expense date bounds/keyboard clear,
 dataset, history, country table and five-plan cards. Reversed expense dates return zero results without a message.
 The ledger retains remaining planner edit/add and page read/empty-state failure work. File attachment, live provider,
 native confirmation, Settings Chrome download and credential/email/OAuth limitations are explicit.
+
+## 2 October 2026 — Feature QA: rejected leg additions
+
+Chrome returns a controlled 503 for Add Leg and sees the dialog close, the city/nights reset and no error. The new
+production regression fails on the prior build. Failed saves now keep the selected city and nights with an error;
+pending additions lock the form, and nights use strict positive-integer validation. Unreadable save results advise
+checking whether the leg was saved before retrying. Chrome verifies the retained Amsterdam / nine-night draft,
+error, fractional-night rejection and pending disabled controls. Two production tests plus auth setup pass for
+HTTP/network/unreadable errors, retry/reload, validation and submission locking. TypeScript, build, 394 unit tests,
+memory and v1.1 guard pass. All writes remain in the isolated QA copy.

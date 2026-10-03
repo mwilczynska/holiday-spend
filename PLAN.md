@@ -21,11 +21,17 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Continue planner inline edit/add failures and page read/empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices. Fix reproduced defects and commit each fix.
+**Next action:** Continue planner inline edit failures and page read/empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices. Fix reproduced defects and commit each fix.
 
-**Working tree:** Fourteen separate fixes are pushed through `6a001de`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Fourteen separate fixes are pushed through `6a001de`; the fifteenth, Add Leg failure retention, is verified and ready to commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+Fifteenth fix: failed Add Leg saves retain the selected city and nights with a visible error and retry. Pending additions
+lock the form, and fractional/zero/negative nights are blocked. Chrome verifies a held POST, disabled controls, retained
+Amsterdam/nine-night draft and rejected-save error. The new production regression fails before the fix; two tests plus auth
+setup pass after it for HTTP/network/unreadable failures, success/reload, validation and pending submission. TypeScript,
+build, 68 unit files / 394 tests, memory mirror and v1.1 guard pass. Each fix remains a separate commit.
 
 First fix committed and pushed as `1eab5ed`: Quick Add now converts new expenses to AUD, exposes failed saves, retains rejected input,
 and prevents duplicate success submissions. Chrome verifies 25 USD → $36.03 AUD and error/retry; TypeScript,

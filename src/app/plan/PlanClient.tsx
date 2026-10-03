@@ -240,6 +240,11 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   const [hasOpenedPlannerNewCity, setHasOpenedPlannerNewCity] = useState(false);
   const [newLegCity, setNewLegCity] = useState('');
   const [newLegNights, setNewLegNights] = useState('7');
+  const [addingLeg, setAddingLeg] = useState(false);
+  const [addLegError, setAddLegError] = useState<string | null>(null);
+  const addLegSubmitting = useRef(false);
+  const parsedNewLegNights = Number(newLegNights);
+  const newLegValid = !!newLegCity && Number.isSafeInteger(parsedNewLegNights) && parsedNewLegNights > 0;
   const [savedPlans, setSavedPlans] = useState<SavedPlanSummary[]>(initialData.savedPlans);
   const [savedPlansLoading, setSavedPlansLoading] = useState(false);
   const [savingPlan, setSavingPlan] = useState(false);
@@ -380,27 +385,39 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
 
 
   const handleAddLeg = async () => {
-    const parsedNights = Number.parseInt(newLegNights, 10);
-    if (!newLegCity || !Number.isInteger(parsedNights) || parsedNights < 1) return;
-
-    await fetch('/api/itinerary/legs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        cityId: newLegCity,
-        nights: parsedNights,
-      }),
-    });
-    setAddDialogOpen(false);
-    setNewLegCity('');
-    setNewLegNights('7');
-    await fetchData();
+    if (addLegSubmitting.current || !newLegValid) return;
+    addLegSubmitting.current = true;
+    setAddingLeg(true);
+    setAddLegError(null);
+    try {
+      const response = await fetch('/api/itinerary/legs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cityId: newLegCity, nights: parsedNewLegNights }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || `Failed to add leg (HTTP ${response.status}).`);
+      if (!Number.isInteger(result?.data?.id)) throw new Error('The server returned an unreadable save result. Your leg could not be confirmed. Reload to check whether it saved before retrying.');
+      setAddDialogOpen(false);
+      setNewLegCity('');
+      setNewLegNights('7');
+      await fetchData().catch(() => {
+        setSnapshotError('Leg added, but the planner could not refresh. Reload to see the saved leg.');
+      });
+    } catch (err) {
+      setAddLegError(err instanceof Error ? err.message : 'Failed to add leg. Check your connection and retry.');
+    } finally {
+      setAddingLeg(false);
+      addLegSubmitting.current = false;
+    }
   };
 
   const handleCancelAddLeg = () => {
+    if (addLegSubmitting.current) return;
     setAddDialogOpen(false);
     setNewLegCity('');
     setNewLegNights('7');
+    setAddLegError(null);
   };
 
   const handlePlannerNewCityCreated = useCallback(async (payload: NewCityCreatedPayload) => {
@@ -1419,7 +1436,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     onCreated={handlePlannerNewCityCreated}
                   />
                 ) : null}
-                <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
+                <Dialog open={addDialogOpen} onOpenChange={(open) => {
+                  if (!addLegSubmitting.current) setAddDialogOpen(open);
+                }}>
                   <DialogTrigger asChild>
                     <Button>
                       <Plus className="mr-2 h-4 w-4" />
@@ -1433,7 +1452,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                         Add a city to the trip and set how many nights you will stay.
                       </DialogDescription>
                     </DialogHeader>
-                    <div className="space-y-4">
+                    <fieldset className="space-y-4" disabled={addingLeg}>
                       <div>
                         <Label>City</Label>
                         <SearchableSelect
@@ -1448,8 +1467,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                         </p>
                       </div>
                       <div>
-                        <Label>Nights</Label>
+                        <Label htmlFor="add-leg-nights">Nights</Label>
                         <Input
+                          id="add-leg-nights"
                           type="number"
                           min={1}
                           step={1}
@@ -1457,15 +1477,20 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                           value={newLegNights}
                           onChange={(e) => setNewLegNights(e.target.value)}
                         />
+                        {newLegNights !== '' && (!Number.isSafeInteger(parsedNewLegNights) || parsedNewLegNights < 1) ? (
+                          <p className="mt-1 text-sm text-destructive">Enter a whole number of nights, at least 1.</p>
+                        ) : null}
                       </div>
-                    </div>
+                    </fieldset>
+                    {addLegError ? <p role="alert" className="text-sm text-destructive">{addLegError}</p> : null}
                     <DialogFooter className="gap-2 sm:justify-end">
-                      <Button type="button" variant="ghost" onClick={handleCancelAddLeg}>
+                      <Button type="button" variant="ghost" onClick={handleCancelAddLeg} disabled={addingLeg}>
                         Cancel
                       </Button>
                       <Button
                         type="button"
                         variant="outline"
+                        disabled={addingLeg}
                         onClick={() => {
                           setAddDialogOpen(false);
                           setNewLegCity('');
@@ -1481,9 +1506,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                       <Button
                         type="button"
                         onClick={handleAddLeg}
-                        disabled={!newLegCity || !Number.isInteger(Number.parseInt(newLegNights, 10)) || Number.parseInt(newLegNights, 10) < 1}
+                        disabled={addingLeg || !newLegValid}
                       >
-                        Add Leg
+                        <LoadingButtonLabel idle="Add Leg" loading="Adding..." isLoading={addingLeg} />
                       </Button>
                     </DialogFooter>
                   </DialogContent>

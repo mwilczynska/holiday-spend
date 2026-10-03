@@ -215,6 +215,8 @@ conversion missing with a visible warning. Quick Add retains rejected input for 
 immediately to prevent duplicate submissions.
 Fixed-cost additions retain rejected drafts and show save failures. Invalid amounts are blocked; paid-status and
 delete failures leave the displayed row unchanged and expose an error.
+Planner leg additions retain the selected city and nights after rejected saves and show HTTP, network or unreadable
+response errors. Nights must be a positive whole number. Pending additions disable the form and prevent a second submission.
 Wise import confirmation preserves category changes from the preview, validates them against the selected files,
 and keeps amounts from parsed transaction data. Selecting different files clears the previous preview.
 
