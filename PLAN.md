@@ -21,9 +21,9 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Continue remaining route and workflow coverage in Chrome against the isolated production server; fix reproduced defects and commit each fix.
+**Next action:** Continue planner inline edit/add failures and page read/empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices. Fix reproduced defects and commit each fix.
 
-**Working tree:** Testing starts from clean main `1413f3f`. Disposable workflow writes must remain outside the owner's database.
+**Working tree:** Fourteen separate fixes are pushed through `6a001de`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
@@ -98,19 +98,27 @@ memory and v1.1 guard pass. Continue the final dataset/comparison/climate scroll
 F14 in progress: a Chrome-controlled 503 on Sort by Date still reports success and leaves the saved order
 unchanged. Move failures are also ignored. Add request/error checks, retry-safe controls and atomic server order
 writes. Normal move/reload persistence and successful sorting are verified on the isolated fixture.
-Fourteenth fix ready to commit: the production regression fails before and passes after, covering rejected moves,
+Fourteenth fix committed and pushed as `6a001de`: the production regression fails before and passes after, covering rejected moves,
 failed sorts, network retry and reload persistence. Chrome verifies error/no false success and restored order after
 retry. Two unit checks verify user scoping and rollback; all 394 unit tests pass. TypeScript, build, memory and
 v1.1 guard pass. Run the full 61-check browser suite and update the coverage ledger.
+Final-suite checkpoint: 60 of 61 pass; the new ordering test passes alone but its initial click sends no mocked
+request in the full run. The trace contains only the finally cleanup request. Added an explicit page-readiness
+wait to the test, matching the existing initial-data checks, and rerunning the full suite. No production code
+changed after `6a001de`.
+Checkpoint result: the complete rerun passes all 61 production browser checks in 3.1 minutes. All 394 unit tests,
+TypeScript, production build, memory mirror and v1.1 guard pass. The coverage ledger now records the completed
+chart, date-bound, methodology and horizontal/vertical scroll checks. The remaining local failure pass and
+external/control-surface limits are explicit; the comprehensive goal remains active.
 
-- [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
+- [x] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.
 - [ ] Verify itinerary CRUD, dates, tiers, overrides, ordering, climate and transport workflows.
-- [ ] Verify saved-plan CRUD, loading and comparisons.
+- [x] Verify saved-plan CRUD, loading and comparisons.
 - [ ] Verify expenses, tags, assignment, bulk actions and Wise CSV import/export.
 - [ ] Verify city/country library CRUD, generation, history and provider failure/retry controls.
-- [ ] Verify settings, request limits, account flows and methodology navigation.
-- [ ] Fix reproduced defects, add focused regressions and commit/push each fix with its evidence.
+- [x] Verify local settings, request limits, account screens and methodology navigation; credential/email/OAuth steps are excluded.
+- [x] Fix the fourteen reproduced defects and commit/push each fix with its evidence.
 - [ ] Run the required baseline and report tested coverage, problems, fixes and remaining limitations.
 
 Test production content in Chrome using an isolated database copy and fixture account. Cover empty, populated,

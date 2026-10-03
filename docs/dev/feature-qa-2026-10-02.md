@@ -2,6 +2,9 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
+Checkpoint: fourteen fixes are pushed. All 394 unit tests and 61 production Playwright checks pass, along with
+TypeScript, build, memory mirror and the v1.1 guard. Chrome evidence is recorded separately below.
+
 ## Environment and evidence
 
 Interactive testing uses the Chrome extension control surface, a production build, and an isolated SQLite backup
@@ -12,26 +15,56 @@ under `.local/feature-qa/`. Automated regression evidence is recorded separately
 No finite run covers every possible input. This report records actual coverage and remaining gaps. Methodology
 calibration is out of scope; tests check product contracts, calculation integrity and failure handling.
 
+## Fix commits
+
+| Finding | Change | Commit |
+| --- | --- | --- |
+| F1 | Quick Add conversion, retained errors and duplicate prevention | `1eab5ed` |
+| F2 | Fixed-cost failures retain drafts and rows | `78967e3` |
+| F3 | Zero request limits are rejected | `5f3e1f4` |
+| F4 | Wise preview categories survive confirmation | `a3ed1ce` |
+| F5 | Zero planner overrides stay visible | `86ccea1` |
+| F6 | Expense mutations/reads expose errors and retain input | `656a24b` |
+| F7 | Tag CRUD/read failures and duplicate conflicts | `617c06a` |
+| F8 | Tag totals omit deleted/excluded/unconverted spend | `9c9ade6` |
+| F9 | Planner/comparison/mobile navigation containment | `461a943` |
+| F10 | Negative city costs rejected with retained drafts | `7d6103e` |
+| F11 | Initial expense read failures show unavailable state/Retry | `5d9d31d` |
+| F12 | Reachable, atomic expense tag assignment/removal | `1c9fe62` |
+| F13 | Methodology describes the active v1.1 workflow | `a4c4352` |
+| F14 | Ordering failures reported; writes atomic | `6a001de` |
+
+## Remaining coverage
+
+- Planner inline edit/add rejection and remaining page read/empty-state failures need a further local pass.
+- Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
+  pass separately; interactive CSV/JSON import is not claimed complete.
+- Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
+- Chrome native confirm acceptance and Settings downloads remain limited by the control surface; production
+  Playwright separately verifies deletion and complete export artifacts.
+- Password changes require user entry. Account creation, external email delivery and OAuth were not exercised.
+
 ## Coverage ledger
 
 | Area | Planned checks | Evidence/status |
 | --- | --- | --- |
 | Authentication | Signed-out redirects; required/invalid fields; login/logout; verification/reset invalid tokens; account editing | Chrome: signed-out redirect; empty Sign in disabled; fixture login; logout; wrong password feedback; forgot/signup/check-email navigation; missing reset link and invalid verification token guidance. New-password entry, account creation, email delivery and OAuth remain controlled-workflow exclusions. |
-| Dashboard | Populated and empty states; three charts; expansions/close; tooltips; country/category views; trip-window amounts | Chrome: nine information buttons; Per Day and Planned view switches; all three expansions; Close and Escape. Remaining empty/responsive/tooltip checks pending. |
-| Planner | Add/edit/delete legs; picker click/keyboard; nights/date boundaries; every tier; status; overrides; notes; reorder/sort; traveller scaling | Chrome: disposable Agra add/delete; no-match search; all 6 accommodation and all 4 food/drink/activity tiers; three statuses; five overrides; zero-display fix/reload; zero nights normalizes to one; keyboard date editing updates dates/nights; move up/down exercised. Traveller scaling and sort persistence pending. |
-| Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing records and retry | Chrome: Agra annual chart/table, 12 months, close, C/F propagates to leg. Playwright: missing/retry, monthly segmentation and shared units pass. Remaining interactive trip/tooltips/scroll pending. |
+| Dashboard | Populated/empty states; charts; expansions; tooltips; country/category views; trip-window amounts | Chrome: nine information buttons; Per Day/Planned switches; three expansions; Close/Escape; country/category/cumulative tooltips; mobile containment and country table horizontal scroll to its last column. Empty-state and read-failure review remain separate follow-up checks. |
+| Planner | Legs; picker; dates/nights; tiers; status; overrides; notes; order; traveller scaling | Chrome: disposable Agra add/delete; no-match picker; all accommodation/food/drink/activity tiers; three statuses; five overrides; saved zero; zero nights normalizes to one; keyboard dates update nights; move/reload persistence; sort rejection/error/retry; all five traveller counts and scaling. Inline edit rejection/draft behavior needs a further failure pass. |
+| Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing/retry | Chrome: 12-month annual chart/table, Close/Escape, shared C/F from trip chart to legs, trip tooltip with separate temperature/rainfall, annual dialog scroll to bottom on mobile. Playwright: missing/retry, monthly segmentation and shared units pass. |
 | Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: manual rows/modes/notes/costs/removal; individual modes/empty disable; bulk All/Missing/Clear; controlled mixed success/failure; retry sends exactly one failed leg; apply persists 40 AUD QA fixture; ten-leg Stop starts five requests, retains one result, labels nine cancelled, starts no queued calls. Live provider action remains blocked pending approval. |
-| Plan files | JSON snapshot export/import; malformed/duplicate/missing-city rows; cancel and confirm | Pending; interactive file attachment blocked, snapshot API atomicity/scoping regressions pass. |
-| Saved plans | Save/load/delete/export/import; warnings; empty and multi-plan comparisons; category/country/chart controls | Chrome: whitespace name disables Save; Cancel; save/load QA snapshot with same 65 legs/390 nights/112,710 AUD; JSON export downloaded; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; all three chart expansions and Close. Delete, list scrolling and attachment remain. |
-| Expenses | Add/edit/delete; currency and rate; date/leg assignment; category/source/date filters; pagination; exclusion; bulk include/exclude/delete | Chrome: Quick Add categories/payers; USD conversion; edit category/merchant/subcategory/unassignment; details expand; controlled error/retry; individual and two-row bulk exclude/include; all 10 category filters and 3 source filters; Next/Previous; filtered CSV contains exactly two manual QA records. Date bounds/delete confirmation still pending. Playwright mutation tests verify delete/retry/persistence. |
-| Expense tags | Tag CRUD; assignment/removal; tagged-expense navigation; empty/duplicate names | Chrome: empty list/create-disabled, fixture creation/color input, duplicate draft-loss reproduction and retained-error fix, view empty expenses, rename updates selected title. Playwright: duplicate create/edit, network retention, rename/color persistence, delete failure/retry, list/expense read failure/retry. Assignment/removal and deleted-record totals pending. |
+| Plan files | JSON export/import; malformed/duplicate/missing-city rows; cancel/confirm | Chrome current-plan export artifact exists. Interactive JSON attachment remains blocked. Snapshot API atomicity/scoping regressions pass; these are separate from Chrome import coverage. |
+| Saved plans | Save/load/delete/export/import; comparisons and charts | Chrome: whitespace Save disabled; Cancel; snapshot save/load with identical totals; JSON export exists; disposable saved-plan deletion verified; saved list scroll reaches bottom; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; chart expansions/Close; five-card mobile strip reaches last card. Attachment remains blocked. |
+| Expenses | CRUD; conversions; assignment; filters; pagination; exclusion/bulk operations | Chrome: categories/payers; USD conversion; edit fields/unassignment; details; failure/retry; exclude/include individually/in bulk; all category/source filters; pagination; correct filtered CSV; inclusive date bounds/keyboard clear. Reversed dates show zero results without a validation message. Native delete confirmation is limited by Chrome control; Playwright verifies deletion/retry/persistence. |
+| Expense tags | CRUD; assignment/removal; expense navigation; empty/duplicate names | Chrome: create/color/empty; duplicate retention/error; rename/title; deleted fixture absent from totals; assignment persists after reload and removal works. Playwright: CRUD failures, network/draft retention, read retry, assignment/removal/retry and deleted/excluded/missing-conversion totals. |
 | Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
-| Dataset | City/country search; pagination; city CRUD; missing costs; editor controls; history/provenance; generation/retry | Chrome: city/country and no-match search, both table pagination controls, source/no-match history searches, select/edit Agra, all cost fields inspected, negative-save reproduction and retained-error fix. Production regression verifies zero/missing/decimal reload and coffee basket coupling. Generation and delete controls continue. |
+| Dataset | Search; pagination; city costs; history/provenance; generation/retry | Chrome: city/country/no-match searches, both tables' pagination, source/no-match history search, Agra editor/negative rejection, controlled new/existing generation failures/retry; mobile city/history tables reach rightmost columns. Production checks verify zero/missing/decimal costs and coffee coupling. Live generation and Chrome native delete confirmation remain limited. |
 | Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Chrome controlled responses: three providers; editable/default model; six OpenAI efforts; refresh HTTP 503; new/existing generation HTTP 502; retained forms and retry. Playwright fixture-only profile checks saved/unsaved keys and cross-window clear/sync. Owner keys remain untouched. |
-| Settings | Traveller count; request-limit validity/save/reset; fixed-cost CRUD/paid; JSON/CSV exports | Chrome: fixed-cost/error/CRUD; limits validation/save/reset; all five traveller counts; five persists after reload and propagates to planner (245,059 AUD), then restored two. Export buttons clicked; download artifacts need verification. |
+| Settings | Travellers; request limits; fixed costs; JSON/CSV exports | Chrome: fixed-cost CRUD/paid/errors; limits validation/save/reset; all five traveller counts; five persists and propagates to planner (245,059 AUD), then restored two. Export clicks yield no observable artifact through the Chrome extension. Production Playwright downloads and validates complete JSON/CSV artifacts. |
 | Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Chrome: profile save/reload/clear/restore; password required fields and Google disabled; public screens and back links inspected. Password changes, email delivery and OAuth remain excluded. |
-| Responsive/accessibility | Desktop/mobile navigation; page/dialog/table/chart scrolling; labels; keyboard Escape/Tab/Enter; long content | Chrome: narrow Compare/Planner overflow reproduced and corrected; all seven mobile navigation actions fit. Production regression checks no page overflow at 390 px on Compare/Planner/Dataset/Expenses/Settings. Remaining interactive scroll/dialog checks continue. |
-| Failure/data integrity | Rejected writes leave data unchanged; user scoping; invalid numbers/dates; network/provider errors; reload persistence | Pending |
+| Responsive/accessibility | Navigation; scroll areas; labels; keyboard controls | Chrome: Compare/Planner overflow fixed; all seven mobile navigation actions fit; comparison cards, dataset/history and country tables reach far edge; annual climate dialog and methodology page reach bottom; methodology Enter toggling; overrides/expenses/costs/tag/order controls labelled. Exact 390 px production regression checks Compare/Planner/Dataset/Expenses/Settings. |
+| Methodology | Current contract; sections; navigation; responsive layout | Chrome: stale v2/v3 claims reproduced and corrected; seven v1.1 sections expanded; Enter toggling; View Dataset/Open Planner links; bottom scroll; narrow page fits. Historical research remains archived. |
+| Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
 
@@ -47,6 +80,11 @@ The regression passes after the fix through HTTP failure, successful move/reload
 successful retry and restored order. Two unit checks verify scoped writes and full rollback on a later rejected
 update; all 68 files / 394 tests pass. Chrome verifies the error/no false success and successful restored order.
 TypeScript, production build, memory and v1.1 guard pass. Evidence: `rejected-sort-error-fixed.png`.
+First full F14 run: 60/61 pass. The ordering test's initial click sends no mocked request; its trace has only the
+200 cleanup request. It passes alone. Added a network-idle readiness wait before interaction/reload assertions,
+as used by the existing initial-data tests, and reran the complete suite. This test preparation change does not
+alter production behavior.
+The complete rerun passes all 61 browser checks in 3.1 minutes. Production code remains at `6a001de`.
 
 ### F13 — Methodology presents a retired research program as current
 

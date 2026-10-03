@@ -6,6 +6,7 @@ test('failed itinerary moves and sorts show errors, preserve order and allow ret
   expect(original.length).toBeGreaterThan(1);
   try {
     await page.goto('/plan');
+    await page.waitForLoadState('networkidle');
     const cards = page.getByTestId('planner-leg-card');
     const names = await cards.getByRole('heading').allTextContents();
     await page.route('**/api/itinerary/reorder', route => route.fulfill({ status: 503, json: { error: 'QA reorder rejected' } }));
@@ -17,6 +18,7 @@ test('failed itinerary moves and sorts show errors, preserve order and allow ret
     await cards.last().getByRole('button', { name: /^Move .* leg up$/ }).click();
     await expect.poll(readOrder).not.toEqual(original);
     await page.reload();
+    await page.waitForLoadState('networkidle');
     expect((await cards.getByRole('heading').allTextContents()).slice(-2)).toEqual(names.slice(-2).reverse());
     await page.route('**/api/itinerary/reorder', route => route.fulfill({ status: 503, json: { error: 'QA sort rejected' } }));
     await page.getByRole('button', { name: 'Sort by Date', exact: true }).click();
@@ -31,6 +33,7 @@ test('failed itinerary moves and sorts show errors, preserve order and allow ret
     await expect(page.getByText('Legs sorted by date.', { exact: true })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Sort by Date', exact: true })).toBeDisabled();
     await page.reload();
+    await page.waitForLoadState('networkidle');
     expect(await readOrder()).toEqual(original);
   } finally {
     await page.request.put('/api/itinerary/reorder', { data: { legIds: original } });

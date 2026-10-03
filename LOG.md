@@ -2743,3 +2743,14 @@ because no rejected-move error appears; an earlier fixture-shape mistake was cor
 The regression passes after the fix through HTTP/network failures, retained order, retry and reload persistence.
 Chrome sees the error without false success and restores the original order after retry. Two unit checks verify
 scoping and rollback; all 68 files / 394 tests pass. TypeScript, build, memory and v1.1 guard pass.
+
+## 2 October 2026 — Feature QA checkpoint after fourteen fixes
+
+First full F14 browser run passes 60/61; its new ordering test sends no mocked request on its first click, with
+only the finally cleanup request in the trace. Added the same network-idle page-readiness wait used by initial-data
+checks. Complete rerun passes all 61 in 3.1 minutes. Production code is unchanged after `6a001de`.
+Chrome also verifies all dashboard tooltips, trip-climate tooltip/shared units, annual mobile dialog bottom,
+methodology sections/links/bottom, inclusive expense date bounds/keyboard clear, and far-edge scrolling for the
+dataset, history, country table and five-plan cards. Reversed expense dates return zero results without a message.
+The ledger retains remaining planner edit/add and page read/empty-state failure work. File attachment, live provider,
+native confirmation, Settings Chrome download and credential/email/OAuth limitations are explicit.
