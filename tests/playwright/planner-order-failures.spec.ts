@@ -6,11 +6,13 @@ test('failed itinerary moves and sorts show errors, preserve order and allow ret
   expect(original.length).toBeGreaterThan(1);
   try {
     await page.goto('/plan');
-    await page.waitForLoadState('networkidle');
+    // The server-rendered move controls can be visible before hydration. The
+    // climate chart appears after the planner's client effects have completed.
+    await expect(page.locator('section[aria-label="Trip historical climate"]').getByRole('img', { name: /Historical mean temperature/ })).toBeVisible();
     const cards = page.getByTestId('planner-leg-card');
     const names = await cards.getByRole('heading').allTextContents();
     await page.route('**/api/itinerary/reorder', route => route.fulfill({ status: 503, json: { error: 'QA reorder rejected' } }));
-    await cards.last().getByRole('button').nth(0).click();
+    await cards.last().getByRole('button', { name: /^Move .* leg up$/ }).click();
     await expect(page.getByRole('alert').filter({ hasText: 'QA reorder rejected' })).toBeVisible();
     expect(await readOrder()).toEqual(original);
     expect(await cards.getByRole('heading').allTextContents()).toEqual(names);

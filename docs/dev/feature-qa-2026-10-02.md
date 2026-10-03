@@ -1,8 +1,8 @@
 # Comprehensive feature QA — 2–3 October 2026
 
-Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
+Status: local audit complete; restricted interactive workflows pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty-four separate fixes are committed and pushed. All 398 unit tests
+Checkpoint: twenty-five separate fixes are committed and pushed through `a1f8370`. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
 including four new traveller regressions, pass after F21. Seventeen targeted checks pass after F22.
 Thirteen comparison/mobile checks pass after F23; both new profile checks and auth setup pass after F24.
@@ -49,11 +49,11 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F22 | Provider-limit saves validate acknowledgements and lock pending writes | `3634b57` |
 | F23 | Comparison failures retain plans/results and expose validated Retry | `0c98b21` |
 | F24 | Profile-name saves require confirmation and retain rejected drafts | `dd9849f` |
-| F25 | Provider timeout displays and conversions preserve millisecond precision | Verified; separate commit pending |
+| F25 | Provider timeout displays and conversions preserve millisecond precision | `a1f8370` |
 
 ## Remaining coverage
 
-- All 96 production checks pass. The local save/read/precision defects are verified under F15–F25; remaining interactive gaps are listed below.
+- All 96 production checks pass. The authorized local audit is complete; remaining interactive gaps are listed below.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -448,6 +448,8 @@ The tests now keep Dataset's automatic retry failed until explicit recovery and 
 climate chart before moving; the planner locator also uses its accessible name. All seven checks in the affected
 files/auth setup pass in 19.4 seconds. No application code or test deadline is changed for these corrections.
 The complete 96-check rerun passes in 4.1 minutes, including both corrected workflows.
+Chrome reload afterward confirms two travellers, 64,000 tokens, 600 seconds and no fixed costs in the QA copy.
+The test corrections are published separately from F25. No unchanged checks need further reruns at this checkpoint.
 
 After F12, all 60 production Playwright checks pass in 3.1 minutes, including complete Settings export artifacts
 and tag assignment/removal/failure recovery. All 67 unit files / 392 tests, TypeScript, build, memory and v1.1 guard pass.

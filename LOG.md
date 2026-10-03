@@ -2897,3 +2897,17 @@ sub-millisecond rejection and reset. TypeScript, production build, all 69 unit f
 v1.1 guard pass. The first complete production sweep passes 94 of 96. Trace inspection identifies Dataset's
 automatic retry racing fixture recovery and a planner click before client readiness; the separate test corrections
 pass all seven affected file/auth checks. The complete production rerun passes all 96 checks in 4.1 minutes.
+
+## 3 October 2026 — Feature QA: verification checkpoint and remaining access
+
+Twenty-five separate product fixes are pushed through `a1f8370`. The two trace-confirmed test races are corrected
+in a separate checkpoint without changing application code or deadlines. The full production Chromium sweep passes
+all 96 checks in 4.1 minutes. TypeScript, production build, all 69 Vitest files / 398 tests, memory and v1.1 guard pass.
+Chrome reload confirms the QA copy is back to two travellers, 64,000 tokens, 600 seconds and no fixed costs. The
+coverage report separates interactive Chrome evidence from regression coverage and retains the earlier failures.
+The authorized local audit is complete. Interactive file attachments still await the Chrome extension's file-URL
+permission; live providers await explicit approval and a disposable credential entered by the user. Automatic
+approval previously rejected the provider action because route cities, dates and notes could leave the app.
+Credential changes require user entry, and native Chrome confirmation/download control plus external email/OAuth
+coverage remain limitations. No owner credentials are accessed, no owner database is modified and no methodology
+calibration is opened. Do not describe the restricted workflows as tested or repeat unchanged checks at this point.

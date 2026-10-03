@@ -99,14 +99,21 @@ test('failed server dataset reads show unavailable counts and recover with Retry
     expect(fixture.prepare("SELECT email FROM user WHERE id='dev-local-user'").get()).toEqual({ email: 'feature-qa@example.test' });
     fixture.exec('ALTER TABLE city_estimates RENAME TO qa_suspended_city_estimates');
     suspended = true;
+    // The failed server read is retried after hydration. Keep that read failed
+    // until the test explicitly restores service and exercises the Retry button.
+    await page.route('**/api/estimates?view=dataset', route => route.fulfill({ status: 503, json: { error: 'QA history unavailable' } }));
+    const initialRetry = page.waitForResponse(response => response.url().endsWith('/api/estimates?view=dataset'));
     await page.goto('/dataset');
     await expect(page.getByRole('alert').filter({ hasText: 'Dataset unavailable. City and history counts could not be loaded.' })).toBeVisible();
     expect(await page.locator('main .text-2xl.font-semibold').allTextContents()).toEqual(['Unavailable', 'Unavailable', 'Unavailable']);
     await expect(page.getByText('No city rows match the current search.', { exact: true })).toBeHidden();
     await expect(page.getByText('No generation history is stored yet for the current filter.', { exact: true })).toBeHidden();
-    await page.waitForLoadState('networkidle');
+    await initialRetry;
+    await expect(page.getByRole('alert').filter({ hasText: 'QA history unavailable' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Retry dataset', exact: true })).toBeEnabled();
     fixture.exec('ALTER TABLE qa_suspended_city_estimates RENAME TO city_estimates');
     suspended = false;
+    await page.unroute('**/api/estimates?view=dataset');
     await page.getByRole('button', { name: 'Retry dataset', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Retry dataset', exact: true })).toBeHidden();
     await expect(page.getByTestId('dataset-city-table').locator('tbody tr').first()).not.toContainText('unavailable');

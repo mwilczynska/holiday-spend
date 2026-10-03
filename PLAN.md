@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Comprehensive owner-requested Chrome feature testing is active. Prior product phases complete.
+**Status:** Local feature audit and regression checkpoint complete. Remaining interactive workflows require access or user input. Prior product phases complete.
 
-**Current phase:** Chrome feature and edge-case testing — IN PROGRESS.
+**Current phase:** Chrome feature and edge-case testing — restricted workflows pending.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -21,16 +21,22 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Publish the timeout-precision fix and the separate test-synchronization checkpoint, then finish the report of remaining interactive coverage gaps. All 96 production checks and the repository baseline pass. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Resolve the pending choices for Chrome file access and disposable live-provider testing, with user handoff for credential changes. All authorized local feature checks, twenty-five fixes and the 96-check production sweep are complete. Native Chrome confirmation/download limitations and external email/OAuth coverage remain explicit in the report. Do not rerun unchanged checks without new evidence or changes.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
-**Working tree:** Twenty-four separate fixes are pushed through `dd9849f`; the verified timeout-precision fix awaits the full-sweep checkpoint and separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Twenty-five separate fixes are pushed through `a1f8370`. The separate verification checkpoint records the two corrected test races and full green sweep. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
-Twenty-fifth fix: provider timeout displays preserve exact milliseconds through save, refresh and reload. Inputs use
+Local checkpoint: all 96 production browser checks pass in 4.1 minutes, alongside TypeScript, production build,
+all 69 Vitest files / 398 tests, memory mirror and v1.1 guard. Chrome reload confirms the restored QA settings:
+two travellers, 64,000 tokens, 600 seconds and no fixed costs. The report records twenty-five separate fixes and
+distinguishes Chrome interaction from production regression coverage. Remaining file/provider/credential workflows
+cannot be claimed complete while their pending access and user actions are unresolved.
+
+Twenty-fifth fix `a1f8370` is pushed: provider timeout displays preserve exact milliseconds through save, refresh and reload. Inputs use
 millisecond steps. Conversion removes only binary floating-point remainders that round-trip exactly; unsupported
 fractional milliseconds remain rejected. Nonfinite values cannot become null/default resets during serialization.
 Chrome verifies 90.5 and 16.001 seconds after reload and restored defaults. The old-build reproduction confirms
