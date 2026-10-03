@@ -35,6 +35,18 @@ calibration is out of scope; tests check product contracts, calculation integrit
 
 ## Findings and fixes
 
+### F13 — Methodology presents a retired research program as current
+
+Chrome opens `/estimates` and sees “Version 2.1 baseline + Version 3 redesign”, with claims that source panels,
+holdouts, intervals and observation collection are the current workflow. The archived v2/v3 document already labels
+that text superseded. Replaced the page with the active v1.1 ten-anchor contract, current RBA validation/conversion,
+exact preserved formulas, traveller scaling, provenance and limitations. Historical research stays in the archive;
+its banner now records the page replacement date. No collection or calibration work is reopened.
+Evidence: `methodology-stale-v3.png` in the ignored QA folder.
+Chrome verifies all seven collapsible sections, Enter toggling and bottom scrolling. At the narrow override,
+page width remains within the viewport. TypeScript, production build, 392 unit tests, memory and guard pass.
+Evidence: `methodology-v1-1-mobile.png`. A body-targeted Control+End call times out; ordinary wheel scrolling works.
+
 ### F12 — Tags cannot be assigned or removed through expense controls
 
 Chrome's expense edit dialog and row actions offer no tag selection; the tag page only creates/edits/views tags.
@@ -205,6 +217,9 @@ keep provider checks local or allow disposable live provider checks. The QA laun
 Anthropic, Gemini and Resend environment keys; owner keys are never inspected. Local and controlled regressions continue.
 
 ## Required baseline
+
+After F12, all 60 production Playwright checks pass in 3.1 minutes, including complete Settings export artifacts
+and tag assignment/removal/failure recovery. All 67 unit files / 392 tests, TypeScript, build, memory and v1.1 guard pass.
 
 After F4, all 47 production Playwright checks pass in 2.2 minutes. These are separate from Chrome extension checks.
 

@@ -2722,3 +2722,13 @@ totals and invalid tag rejection. Four unit checks cover ownership, deleted expe
 clearing and rollback after an insert rejection; all 67 files / 392 tests pass. Settings JSON/CSV downloads pass
 artifact comparisons in production Playwright. Chrome export clicks produce no observable artifact and remain
 separate from that evidence. No owner data or credentials were changed.
+
+## 2 October 2026 — Feature QA: stale methodology screen
+
+Chrome finds the retired v2.1/v3 research methodology presented as current on `/estimates`. Replaced it with the
+implemented v1.1 anchor contract, RBA conversion, preserved formulas, traveller scaling, provenance and limitations.
+The archived v2/v3 document keeps its full text and records the page replacement date. No methodology calibration,
+panels or holdouts were opened. All 60 production browser checks after F12 passed in 3.1 minutes.
+Chrome verifies the seven current sections, Enter toggling, bottom scroll and mobile containment. TypeScript,
+build, 392 unit tests, memory and v1.1 guard pass. The body-targeted Control+End control call times out; wheel
+scrolling works and reaches the final section.

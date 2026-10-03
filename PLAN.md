@@ -81,12 +81,20 @@ build, 388 unit tests, memory and v1.1 guard pass. Review remaining scroll contr
 Continuation checkpoint: Settings JSON/CSV artifacts pass a production browser check; Chrome extension clicks
 produce no observable download and remain separately limited. F12 reproduces missing expense tag assignment/removal
 controls. Add an owned, atomic tag selection workflow with retained failure drafts, then finish scroll coverage.
-Twelfth fix ready to commit: expense tags have reachable assignment/removal controls on desktop and mobile.
+Twelfth fix committed and pushed as `1c9fe62`: expense tags have reachable assignment/removal controls on desktop and mobile.
 Chrome verifies selection persistence and removal. A production regression covers rejected save retention,
 read retry, assignment totals and invalid tag rejection. Four unit checks cover ownership, deleted expenses,
 deduplication, clearing and transactional rollback; all 392 unit tests pass. Settings export artifact check passes.
 TypeScript, final production build, memory mirror and v1.1 guard also pass. Commit this fix separately, then run
 the complete production browser suite and finish the remaining interactive scroll coverage.
+F13 in progress: Chrome's Methodology page presents retired v2/v3 collection and validation as current.
+Replace stale product copy with the implemented v1.1 contract, formulas, FX provenance and limitations. Historical
+research remains in its archive; no calibration or collection work is reopened.
+All 60 production browser checks pass after F12 in 3.1 minutes. F13 TypeScript passes; production build and
+interactive verification are underway.
+Thirteenth fix ready to commit: Chrome verifies all seven current-method sections, keyboard Enter toggling,
+page scrolling to the bottom and narrow-screen containment. TypeScript, production build, all 392 unit tests,
+memory and v1.1 guard pass. Continue the final dataset/comparison/climate scroll pass.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.

@@ -174,6 +174,9 @@ Failed legs can be retried together without discarding completed estimates or re
 
 ## Product behavior
 
+The Methodology page describes the active v1.1 anchor estimates, dated RBA conversion, preserved tier formulas,
+traveller scaling and limitations. Retired source-collection methods are identified as historical.
+
 Accommodation tiers are hostel dorm, private room, and 1–4 star. Drinks are none, light, moderate and heavy.
 Traveller count persists per user, while city base costs remain stored for two people. Saved plans store tier
 choices rather than frozen city prices.
