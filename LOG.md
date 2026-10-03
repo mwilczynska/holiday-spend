@@ -3032,3 +3032,30 @@ change is included for the rerun. The verified disposable zero-override leg 1165
 only from the QA copy after confirming no expense references. The Settings baseline race is a separate pending
 test correction. Failed traces/screenshots remain ignored. F28 is pushed as `892f802`; the Canberra editor is
 prepared for one final owner-key entry after publication, with gpt-6-luna / High, key saving off and reveal off.
+
+## 3 October 2026 — Settings test readiness and completed feature audit
+
+F29 is pushed as `488bbd3`. The full browser run exposes a Settings test capturing an empty traveller label
+before hydration and later expecting that blank value after correctly retained settings. The separate test
+correction waits for a populated, enabled traveller control before recording the baseline. All five Settings/auth
+checks pass in 14.0 seconds; TypeScript passes. No application behavior or test deadline changes. The complete
+107-check run remains recorded as 103 passes, with all ten checks in its four affected files passing unchanged
+on rerun; it is not relabelled as a clean full sweep.
+
+After builds/import work finish, the owner enters an OpenAI key directly in Chrome's prepared Canberra editor.
+The nonsecret clear control becomes enabled and reveal stays off. One approved existing-city generation succeeds
+with `gpt-6-luna` / High, saving active estimate 69 while keeping estimate 68 as inactive history. The UI and read-only
+QA evidence confirm ten USD and ten AUD anchors, 19 tier outputs, v1.1, preserved formulas and the RBA observation
+dated 2 October 2026, inverted to 1.442377 AUD per USD. The fictional original two-leg plan and $65 imported
+expenses remain unchanged. This is contract/persistence verification, with no new methodology calibration.
+The key remains available; no credential is read, copied, revealed or cleared. The prepared save checkbox is off,
+then on after owner entry; its cause is unproven and Codex leaves the selection alone. A readiness read's automatic
+review times out; its permitted retry succeeds. No live generation is duplicated. Screenshot evidence is ignored
+under `.local/feature-qa/live-canberra-refresh-confirmed.png`.
+
+The owner explicitly chooses completion with password changes, account creation, external email delivery and
+OAuth untested. Chrome native confirm acceptance and Settings artifact limitations remain distinguished from
+passing production regression evidence. All 29 reproduced product defects are fixed in separate pushed commits.
+The final application baseline is TypeScript, isolated production build, 70 unit files / 419 tests, memory mirror
+and v1.1 guard. The report records actual interactive and automated coverage, failure evidence and exclusions.
+The current QA server/result page remain available, and no further provider-key entry is needed.

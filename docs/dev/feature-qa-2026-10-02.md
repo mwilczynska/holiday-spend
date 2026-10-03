@@ -1,9 +1,9 @@
 # Comprehensive feature QA — 2–3 October 2026
 
-Status: local import checks verified; approved existing-city refresh pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
+Status: complete with owner-approved authentication exclusions. Local imports and live OpenAI new/existing city generation and transport checks are verified. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty-seven separate fixes are committed and pushed through `611e0e2`. All 398 unit tests
-and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
+Checkpoint: twenty-nine separate fixes are committed and pushed through `488bbd3`. The final baseline has
+419 passing unit tests. The earlier baseline through F27 had 398. The full production sweep passed 81 checks after F20; fourteen targeted checks,
 including four new traveller regressions, pass after F21. Seventeen targeted checks pass after F22.
 Thirteen comparison/mobile checks pass after F23; both new profile checks and auth setup pass after F24.
 The timeout precision regression and auth setup pass after F25. The first 96-check production sweep passes 94;
@@ -19,6 +19,8 @@ Both credential cases and auth pass unchanged on rerun (3 checks, 39.8 seconds).
 F29 passes TypeScript, isolated build, all 419 current unit tests, memory and v1.1 guard. The final sweep passes
 103/107 in 9.4 minutes, including both new CSV cases; all ten checks in the four affected files pass unchanged on
 rerun in 57.2 seconds. The initial failures and trace evidence are retained, rather than counted as a clean sweep.
+The separate Settings test correction waits for a populated, enabled traveller control before capturing its
+baseline; its five file/auth checks pass in 14.0 seconds. App behavior and test deadlines are unchanged.
 
 ## Environment and evidence
 
@@ -62,18 +64,23 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F26 | New-city leg creation rejects fractional and unsafe nights without truncation | `c12d8d9` |
 | F27 | New-city acknowledgements validate confirmed city/leg and lock pending input | `611e0e2` |
 | F28 | Provider-key fields and existing-city reveal switch have associated labels | `892f802` |
-| F29 | Unsupported/malformed Wise CSV and invalid required values rejected before preview/writes | This checkpoint |
+| F29 | Unsupported/malformed Wise CSV and invalid required values rejected before preview/writes | `488bbd3` |
 
-## Remaining coverage
+## Completion and coverage limits
 
-- The full 101-check production sweep passes. F28 adds expanded credential accessibility and import coverage.
+- Twenty-nine fixes are committed and pushed separately. The final application baseline passes TypeScript,
+  isolated production build, 70 unit files / 419 tests, memory mirror and v1.1 guard. The final 107-check browser
+  sweep passes 103; all ten checks in its four affected files pass unchanged on rerun. Settings' separate test
+  correction passes its five checks. The earlier complete 101-check sweep also passes.
 - Chrome JSON and multiple-CSV attachments now work. Invalid JSON retention, missing-city cancellation, edited
   categories and duplicate re-parsing pass. F29's malformed/empty-file rejection and valid empty export pass.
 - Approved live OpenAI discovery, Canberra generation, single-transport fallback and bulk application pass on
-  fictional data. Existing-city refresh needs one final direct UI key entry after import work. Keys are never read.
+  fictional data. Existing-city refresh saves active estimate 69, retaining estimate 68 as history, with dated
+  RBA provenance and the selected High effort. Keys are never read, copied, revealed or cleared.
 - Chrome native confirm acceptance and Settings downloads remain limited by the control surface; production
   Playwright separately verifies deletion and complete export artifacts.
-- Password changes require user entry. Account creation, external email delivery and OAuth were not exercised.
+- The owner explicitly chooses completion with password changes, account creation, external email delivery and
+  OAuth untested. No further key entry is needed. No finite run proves every possible edge case.
 
 ## Coverage ledger
 
@@ -88,9 +95,9 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Saved plans | Save/load/delete/export/import; comparisons and charts | Chrome: whitespace Save disabled; Cancel; snapshot save/load with identical totals; JSON export exists; disposable saved-plan deletion verified; saved list scroll reaches bottom; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; chart expansions/Close; five-card mobile strip reaches last card. F23 verifies initial unavailable counts, list/calculation Retry, retained selections and pending locking. Production checks cover stale results, history races and complete-ID validation. Current-plan JSON attachment is now verified. |
 | Expenses | CRUD; conversions; assignment; filters; pagination; exclusion/bulk operations | Chrome: categories/payers; USD conversion; edit fields/unassignment; details; failure/retry; exclude/include individually/in bulk; all category/source filters; pagination; correct filtered CSV; inclusive date bounds/keyboard clear. Reversed dates show zero results without a validation message. Native delete confirmation is limited by Chrome control; Playwright verifies deletion/retry/persistence. |
 | Expense tags | CRUD; assignment/removal; expense navigation; empty/duplicate names | Chrome: create/color/empty; duplicate retention/error; rename/title; deleted fixture absent from totals; assignment persists after reload and removal works. Playwright: CRUD failures, network/draft retention, read retry, assignment/removal/retry and deleted/excluded/missing-conversion totals. |
-| Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: no-file error, real multiple-file upload, exact amounts, preview category edits, file replacement, two imports and duplicate re-parsing pass. An unsupported CSV is incorrectly offered as a blank zero-value row (F29, not confirmed); its fix is being verified. |
-| Dataset | Search; pagination; city costs; history/provenance; generation/retry | Chrome: city/country/no-match searches, both tables' pagination, source/no-match history search, Agra editor/negative rejection, controlled new/existing generation failures/retry; mobile city/history tables reach rightmost columns. F19 verifies failed library/history/provenance reads, initial unavailable counts and Retry; production checks cover draft preservation and save-then-refresh failure. Cost checks verify zero/missing/decimal costs and coffee coupling. Live Canberra generation and dated RBA/v1.1 provenance pass. Existing-city live refresh is pending; Chrome native delete confirmation remains limited. |
-| Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Chrome controlled responses: three providers; editable/default model; six OpenAI efforts; refresh HTTP 503; new/existing generation HTTP 502; retained forms and retry. Playwright fixture-only profile checks saved/unsaved keys and cross-window clear/sync. Live keyed OpenAI discovery lists 78 models; Canberra generation persists v1.1/max and dated RBA provenance. Keys are never read or copied. |
+| Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: no-file error, real multiple-file upload, exact amounts, preview category edits, file replacement, two imports and duplicate re-parsing pass. F29's unrelated/empty-file rejection, invalid calendar date guidance, disabled valid-empty import and corrected-file retry pass. Production checks verify direct/mixed rejection with unchanged expense IDs. |
+| Dataset | Search; pagination; city costs; history/provenance; generation/retry | Chrome: city/country/no-match searches, both tables' pagination, source/no-match history search, Agra editor/negative rejection, controlled new/existing generation failures/retry; mobile city/history tables reach rightmost columns. F19 verifies failed library/history/provenance reads, initial unavailable counts and Retry; production checks cover draft preservation and save-then-refresh failure. Cost checks verify zero/missing/decimal costs and coffee coupling. Live Canberra new generation and existing refresh pass with dated RBA/v1.1 provenance, all ten anchors and retained earlier history. Chrome native delete confirmation remains limited. |
+| Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Chrome controlled responses: three providers; editable/default model; six OpenAI efforts; refresh HTTP 503; new/existing generation HTTP 502; retained forms and retry. Playwright fixture-only profile checks saved/unsaved keys and cross-window clear/sync. Live keyed OpenAI discovery lists 78 models; Canberra new generation persists v1.1/max and refresh persists High with dated RBA provenance. Anthropic/Gemini live calls were not made. Keys are never read or copied. |
 | Settings | Travellers; request limits; fixed costs; JSON/CSV exports | Chrome: fixed-cost CRUD/paid/errors; limits validation/save/reset; all five traveller counts; five persists and propagates to planner (245,059 AUD), then restored two. F20 verifies failed reads, retained costs/settings, draft-preserving Retry and initial unavailable values/recovery. F21–F22 verify labelled rejected drafts, pending locking, Retry and reload for traveller/limit saves. F25 verifies exact fractional seconds and restored defaults. Export clicks yield no observable artifact through the Chrome extension. Production Playwright downloads and validates complete JSON/CSV artifacts. |
 | Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Chrome: profile save/reload/clear/restore; F24 verifies malformed acknowledgement retention, pending locking, retry/reload and fixture restoration. Production checks cover trim/blank/200-character names and mobile wrapping. Password required fields and Google disabled; public screens and back links inspected. Password changes, email delivery and OAuth remain excluded. |
 | Responsive/accessibility | Navigation; scroll areas; labels; keyboard controls | Chrome: Compare/Planner overflow fixed; all seven mobile navigation actions fit; comparison cards, dataset/history and country tables reach far edge; annual climate dialog and methodology page reach bottom; methodology Enter toggling; overrides/expenses/costs/tag/order controls labelled. Exact 390 px production regression checks Compare/Planner/Dataset/Expenses/Settings. |
@@ -120,8 +127,8 @@ assertions, and the zero test starting reload less than one second before its ov
 an empty traveller label before hydration, then incorrectly expects that blank label after later read failures.
 All ten checks in these four files pass unchanged on rerun in 57.2 seconds. The verified disposable zero-override
 leg 1165 and its transport row are removed from the QA copy after the first run; no expenses reference it.
-The Settings capture race will be corrected in a separate test-only checkpoint. No app or test deadline changes
-are made for this rerun.
+The separate Settings correction now waits for the populated, enabled traveller control before recording its
+baseline. All five Settings/auth checks pass in 14.0 seconds. No app or test deadline changes are made.
 
 ### F28 — Provider credential controls lack associated labels
 
@@ -157,7 +164,27 @@ Live two-route High-effort transport completed earlier: source-cited top flight 
 and $440 Melbourne–Canberra. Apply Top Options replaces the prior train row and adds one Canberra row, yielding
 $6,054. Read-only QA database evidence confirms no duplicated transport. JSON import subsequently restores the
 original route; generated Canberra and its v1.1 history remain. These checks verify persistence and contracts;
-price calibration is outside the audit. Existing-city live refresh remains pending.
+price calibration is outside the audit. Existing-city live refresh is now verified below.
+
+### Final existing-city refresh and completion — 3 October 2026
+
+After the application build and import checks finish, the owner enters the key directly into the prepared
+Canberra editor. Its nonsecret Clear This Key control becomes enabled; reveal remains off. One approved
+Generate City Costs submission succeeds with OpenAI `gpt-6-luna` / High. The UI shows the ten USD anchors,
+19 AUD tier outputs, v1.1, prompt/formula versions, model confidence and dated RBA conversion. Estimate 69 is
+active; estimate 68 remains inactive history. Read-only QA evidence confirms ten USD and ten AUD anchors,
+the 2 October observation `1 AUD = 0.6933 USD`, and deterministic inversion to 1.442377 AUD per USD.
+The fictional account retains its original two legs and the two imported expenses totaling $65. These checks
+verify product persistence and provenance, without calibration. Screenshot: `live-canberra-refresh-confirmed.png`.
+
+The key remains available after success and is never read, copied, revealed or cleared. Saving is off in the
+prepared form, but its checkbox is on after owner entry; the cause is not established and Codex does not change
+that selection. Dummy-profile regressions do not reproduce spontaneous opt-in or session clearing. One readiness
+read times out in automatic review; its permitted retry succeeds. No provider call is duplicated.
+
+The owner chooses completion with the authentication exclusions documented. Chrome native confirmation and
+Settings artifact limitations retain separate production regression evidence. The QA production server and
+successful result page remain available for review; no further provider-key entry is needed.
 
 ### F27 — New-city forms report success after incomplete acknowledgements
 

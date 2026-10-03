@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Twenty-nine fixes verified; F29 is ready to publish. The full sweep passes 103/107, and all ten checks in its affected files pass unchanged on rerun. Approved fictional existing-city refresh is pending. Prior product phases complete.
+**Status:** Comprehensive feature QA complete with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. Prior product phases complete.
 
-**Current phase:** Chrome feature and edge-case testing — approved provider follow-through.
+**Current phase:** Chrome feature and edge-case testing — COMPLETE with recorded exclusions.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -21,12 +21,12 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Commit and push verified F29, correct the Settings test's pre-hydration baseline capture, then request one final owner-key entry in the prepared Canberra editor at localhost:3102. No further application build is planned. F28 is pushed as `892f802`; F29's TypeScript, build, all 419 unit tests, memory and v1.1 guard pass.
+**Next action:** Review `docs/dev/feature-qa-2026-10-02.md` and the published branch. No feature-testing work remains within the agreed scope. The owner chose completion with password changes, account creation, external email delivery and OAuth excluded. Chrome native confirm acceptance and Settings download artifacts have separate production regression coverage. The current application build stays running; no further key entry is needed. F28 is pushed as `892f802`; F29 as `488bbd3`, with TypeScript, build, all 419 unit tests, memory and v1.1 guard passing.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
-**Working tree:** Twenty-seven separate fixes are pushed through `611e0e2`. The transport readiness correction is pushed as `3188b1c`. The full 101-check production sweep and the additional unsaved-key case pass. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Twenty-nine separate fixes are pushed through `488bbd3`. The final checkpoint publishes the separate Settings readiness correction and completed coverage report. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
 
 ## Manual miscellaneous planner expenses — COMPLETE (3 October 2026)
 
@@ -41,9 +41,9 @@ deadline during repeated fills. Its unchanged rerun plus authentication and both
 on the final isolated production build (4 checks, 57.8 seconds). Mobile visual inspection confirms contained
 fields and removal buttons at 390 px. A shared server restart required the final build and tests to use the
 ignored `.local/miscellaneous-build` copy and separate database at port 3104. All writes target QA copies.
-The credential-label audit below remains in progress.
+The credential-label audit is verified and pushed as `892f802`.
 
-## Comprehensive Chrome feature testing — IN PROGRESS
+## Comprehensive Chrome feature testing — COMPLETE with documented exclusions
 
 F29: unrelated CSV headers produce an enabled blank zero-value candidate in Chrome. Thirteen new validation
 cases and the old-build browser regression reproduce unsupported headers, malformed structure and invalid row
@@ -57,8 +57,15 @@ CSV cases pass. The four failures involve saved-plan empty state, zero overrides
 and a Settings baseline captured before its label hydrates. Both empty/chart states are present in failure
 snapshots; the zero-override test begins reload with less than one second left before its overall deadline.
 All ten checks in those four files pass unchanged on rerun (57.2 seconds). The verified leftover zero fixture
-1165 is removed from the QA copy; no expenses reference it. Settings' empty captured baseline will be corrected
-in a separate test-only checkpoint. Failed traces remain under `.local/feature-qa/f29-full-results`.
+1165 is removed from the QA copy; no expenses reference it. A separate test-only correction waits for the populated,
+enabled traveller control before recording its baseline. All five Settings/auth checks pass in 14.0 seconds;
+TypeScript passes. App behavior and deadlines are unchanged. Failed traces remain under `.local/feature-qa/f29-full-results`.
+
+Final approved existing-city refresh: Chrome generates Canberra with OpenAI `gpt-6-luna` / High. Estimate 69 is
+active; prior estimate 68 remains inactive history. The UI and read-only QA database confirm ten USD and ten AUD
+anchors, v1.1, preserved formulas, and the RBA observation dated 2 October 2026, inverted to 1.442377 AUD per USD.
+The fictional Sydney/Melbourne itinerary stays at two legs; its two imported expenses remain $65. Reveal stays off
+and the key remains available after success. No key value is read, copied or cleared; no new entry is needed.
 
 F28: Chrome and the old-build regression confirm unassociated provider-key labels and an unnamed existing-city
 Show API key switch. Five forms now associate labels with unique input IDs; the switch label also toggles it.
@@ -74,7 +81,8 @@ plan ($3,412), rejects invalid legs without replacing it, and cancels missing-ci
 Two Wise CSV files import $25 Shopping and $40 Activities, with category edits preserved. Re-parsing finds two
 duplicates, and changing files clears the preview. An unrelated CSV is incorrectly offered as one blank zero-value
 transaction (F29); it is not confirmed. Live bulk transport previously applied $270 and $440 flight rows, replacing
-the prior $240 train without duplication, for $6,054 before JSON restoration. Existing-city refresh remains pending.
+the prior $240 train without duplication, for $6,054 before JSON restoration. Existing-city refresh is now verified
+above; the original generation and all earlier history are retained.
 
 Owner approval follow-through: a separate `provider-qa@example.test` account in the isolated QA copy has Sydney
 and Melbourne, three nights each, on invented 1–7 December 2026 dates and no notes. The Canberra new-city form is
@@ -294,14 +302,15 @@ chart, date-bound, methodology and horizontal/vertical scroll checks. The remain
 external/control-surface limits are explicit; the comprehensive goal remains active.
 
 - [x] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
-- [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.
-- [ ] Verify itinerary CRUD, dates, tiers, overrides, ordering, climate and transport workflows.
+- [x] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.
+- [x] Verify itinerary CRUD, dates, tiers, overrides, ordering, climate and transport workflows.
 - [x] Verify saved-plan CRUD, loading and comparisons.
-- [ ] Verify expenses, tags, assignment, bulk actions and Wise CSV import/export.
-- [ ] Verify city/country library CRUD, generation, history and provider failure/retry controls.
+- [x] Verify expenses, tags, assignment, bulk actions and Wise CSV import/export; native confirm acceptance has separate production regression evidence.
+- [x] Verify city/country library CRUD, generation, history and provider failure/retry controls; live OpenAI new/existing generation is verified.
 - [x] Verify local settings, request limits, account screens and methodology navigation; credential/email/OAuth steps are excluded.
-- [x] Fix the fourteen reproduced defects and commit/push each fix with its evidence.
-- [ ] Run the required baseline and report tested coverage, problems, fixes and remaining limitations.
+- [x] Fix all twenty-nine reproduced defects and commit/push each fix with its evidence.
+- [x] Run the required baseline and report tested coverage, problems, fixes and remaining limitations.
+- [x] Resolve the owner's scope choice: finish with password changes, account creation, external email delivery and OAuth documented as untested. Chrome native confirm and Settings artifact limitations remain explicit; production regression evidence is separate.
 
 Test production content in Chrome using an isolated database copy and fixture account. Cover empty, populated,
 invalid, boundary and failure states where feasible. Existing methodology accuracy work remains closed; provider

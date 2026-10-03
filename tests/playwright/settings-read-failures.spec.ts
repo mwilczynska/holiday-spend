@@ -8,9 +8,12 @@ test('Settings read failures retain fixed costs and settings until a valid retry
   try {
     await page.goto('/settings');
     await page.waitForLoadState('networkidle');
+    const travellerControl = page.getByRole('combobox').first();
+    await expect(travellerControl).toHaveText(/^[1-5] travellers?$/);
+    await expect(travellerControl).toBeEnabled();
     const tokens = await page.getByLabel('Maximum output tokens', { exact: true }).inputValue();
     const timeout = await page.getByLabel('Request timeout (seconds)', { exact: true }).inputValue();
-    const travellers = await page.getByRole('combobox').first().innerText();
+    const travellers = await travellerControl.innerText();
     await page.route('**/api/fixed-costs', route => route.fulfill({ status: 503, json: { error: 'QA fixed costs unavailable' } }));
     await gotoClientPage(page, '/settings');
     await expect(page.getByRole('alert').filter({ hasText: 'QA fixed costs unavailable' })).toContainText('last loaded settings and fixed costs');
