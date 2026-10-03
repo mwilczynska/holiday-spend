@@ -51,10 +51,14 @@ override labels are associated with their fields. Chrome verifies the saved zero
 regression fails before the fix and passes after it, covering all five fields, reload, clearing to automatic costs,
 and independent one-off transport totals. TypeScript, build, 387 unit tests, memory check and v1.1 guard pass.
 Next action: continue planner dates/reordering/climate, expense operations, tags and remaining library/account/mobile controls.
-Sixth fix ready to commit: rejected expense mutations retain drafts/selections and expose errors. Read failures
+Sixth fix committed and pushed as `656a24b`: rejected expense mutations retain drafts/selections and expose errors. Read failures
 label the last loaded results with Retry. Chrome verifies a controlled rejection, retained draft, successful retry
 and category/merchant/subcategory/assignment edits. TypeScript, build, 387 unit tests and three new production
 browser regressions plus auth setup pass. Remaining route/control coverage continues.
+Seventh fix ready to commit: tag CRUD/read failures expose errors and retain drafts/selections; duplicate names
+return 409 with guidance; selected title refreshes after rename. Chrome verifies duplicate retention and rename.
+TypeScript, build, 387 unit tests and three production browser regressions plus auth setup pass. Overlapping unit
+and browser suites caused two setup-hook timeouts; an isolated unit rerun passes all tests. Remaining coverage continues.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.

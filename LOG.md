@@ -2650,3 +2650,17 @@ and validation failures, mutation retry/persistence and read-failure retry. Type
 Automatic approval rejected live transport estimation because route cities, dates and notes could leave the app.
 The user has an async choice about disposable live provider checks; independent local feature testing continues.
 No owner provider keys are read. The isolated launcher explicitly clears provider and Resend environment keys.
+
+## 2 October 2026 — Feature QA: tag write/read errors
+
+Chrome duplicate tag creation closed and cleared the rejected draft without feedback. Tag mutations now check
+HTTP/JSON/network responses, retain failed drafts/selections and report duplicate names with 409 guidance. Trimmed
+names reject whitespace. Fields/actions are labelled, tag selection is keyboard accessible, and renaming refreshes
+the selected title. Read failures expose errors/Retry rather than false empty states and ignore obsolete tag reads.
+Chrome verifies retained duplicate draft and selected renamed title. Three production browser regressions plus auth
+setup pass for duplicates, rename/color persistence, network and delete failure/retry, and list/expense read recovery.
+TypeScript/build pass; an overlapping unit/browser run exceeds two existing setup hooks, then isolated rerun passes
+all 66 files / 387 tests. This is setup timing, not a product assertion failure.
+
+The expense CSV download is correct: only the two filtered manual QA rows. Chrome's download control waits about
+34 minutes despite requested short waits. That browser-control delay is recorded separately from app performance.

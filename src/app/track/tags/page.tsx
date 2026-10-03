@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -39,13 +39,25 @@ export default function TagsPage() {
   const [editTag, setEditTag] = useState<Tag | null>(null);
   const [loading, setLoading] = useState(true);
   const [tagLoading, setTagLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [mutationError, setMutationError] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [tagReadError, setTagReadError] = useState<string | null>(null);
+  const submitting = useRef(false);
+  const tagReadSequence = useRef(0);
 
   const fetchTags = useCallback(async () => {
     setLoading(true);
+    setLoadError(null);
     try {
       const res = await fetch('/api/tags');
-      const data = await res.json();
-      setTags(data.data || []);
+      const data = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(data?.error || `Could not load tags (HTTP ${res.status}).`);
+      if (!Array.isArray(data?.data)) throw new Error('The server returned unreadable tags. Try again.');
+      setTags(data.data);
+      setSelectedTag(current => current ? data.data.find((tag: Tag) => tag.id === current.id) ?? null : null);
+    } catch (err) {
+      setLoadError(err instanceof Error ? err.message : 'Could not load tags. Check your connection and try again.');
     } finally {
       setLoading(false);
     }
@@ -54,52 +66,72 @@ export default function TagsPage() {
   useEffect(() => { fetchTags(); }, [fetchTags]);
 
   const selectTag = async (tag: Tag) => {
+    const read = ++tagReadSequence.current;
     setSelectedTag(tag);
     setTagLoading(true);
+    setTagReadError(null);
+    setTagExpenses([]);
+    setTagTotal(0);
     try {
       const res = await fetch(`/api/tags/${tag.id}/expenses`);
-      const data = await res.json();
-      setTagExpenses(data.data?.expenses || []);
-      setTagTotal(data.data?.totalAud || 0);
+      const data = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(data?.error || `Could not load tagged expenses (HTTP ${res.status}).`);
+      if (!Array.isArray(data?.data?.expenses)) throw new Error('The server returned unreadable tagged expenses. Try again.');
+      if (read !== tagReadSequence.current) return;
+      setTagExpenses(data.data.expenses);
+      setTagTotal(data.data.totalAud);
+    } catch (err) {
+      if (read === tagReadSequence.current) setTagReadError(err instanceof Error ? err.message : 'Could not load tagged expenses. Check your connection and try again.');
     } finally {
-      setTagLoading(false);
+      if (read === tagReadSequence.current) setTagLoading(false);
     }
   };
 
   const handleAdd = async () => {
     if (!newName.trim()) return;
-    await fetch('/api/tags', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: newName.trim(), color: newColor }),
+    await mutateTag('/api/tags', 'POST', { name: newName.trim(), color: newColor }, () => {
+      setAddOpen(false);
+      setNewName('');
     });
-    setAddOpen(false);
-    setNewName('');
-    fetchTags();
   };
 
   const handleDelete = async (id: number) => {
     if (!confirm('Delete this tag? It will be removed from all expenses.')) return;
-    await fetch(`/api/tags/${id}`, { method: 'DELETE' });
-    if (selectedTag?.id === id) {
-      setSelectedTag(null);
-      setTagExpenses([]);
-    }
-    fetchTags();
+    await mutateTag(`/api/tags/${id}`, 'DELETE', undefined, () => {
+      if (selectedTag?.id === id) {
+        tagReadSequence.current += 1;
+        setSelectedTag(null);
+        setTagExpenses([]);
+      }
+    });
   };
 
   const handleEditSave = async () => {
-    if (!editTag) return;
-    await fetch(`/api/tags/${editTag.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: editTag.name, color: editTag.color }),
-    });
-    setEditTag(null);
-    fetchTags();
+    if (!editTag?.name.trim()) return;
+    await mutateTag(`/api/tags/${editTag.id}`, 'PUT', { name: editTag.name.trim(), color: editTag.color }, () => setEditTag(null));
   };
 
-  if (loading && tags.length === 0) {
+  const mutateTag = async (url: string, method: string, body?: Record<string, unknown>, onSuccess?: () => void) => {
+    if (submitting.current) return;
+    submitting.current = true;
+    setSaving(true);
+    setMutationError(null);
+    try {
+      const response = await fetch(url, { method, ...(body ? { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}) });
+      const data = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(data?.error || `Could not update tags (HTTP ${response.status}). Try again.`);
+      if (!data?.data) throw new Error('The server returned an unreadable response. Reload before retrying.');
+      onSuccess?.();
+      await fetchTags();
+    } catch (err) {
+      setMutationError(err instanceof Error ? err.message : 'Could not update tags. Check your connection and try again.');
+    } finally {
+      submitting.current = false;
+      setSaving(false);
+    }
+  };
+
+  if (loading && tags.length === 0 && !loadError) {
     return (
       <PageLoadingState
         title="Loading tags"
@@ -114,45 +146,50 @@ export default function TagsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Tags</h1>
-        <Dialog open={addOpen} onOpenChange={setAddOpen}>
+        <Dialog open={addOpen} onOpenChange={open => { if (!saving) { setAddOpen(open); setMutationError(null); } }}>
           <DialogTrigger asChild>
-            <Button size="sm"><Plus className="h-4 w-4 mr-1" />New Tag</Button>
+            <Button size="sm" disabled={saving}><Plus className="h-4 w-4 mr-1" />New Tag</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader><DialogTitle>Create Tag</DialogTitle>
               <DialogDescription className="sr-only">
                 Create a tag you can apply to expenses and filter by.
               </DialogDescription></DialogHeader>
-            <div className="space-y-4">
-              <div><Label>Name</Label><Input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="e.g. flights, splurge-meals" /></div>
-              <div><Label>Color</Label><Input type="color" value={newColor} onChange={(e) => setNewColor(e.target.value)} className="h-10 w-20" /></div>
-              <Button onClick={handleAdd} className="w-full" disabled={!newName.trim()}>Create Tag</Button>
-            </div>
+            <fieldset disabled={saving} className="space-y-4">
+              {mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
+              <div><Label htmlFor="tag-create-name">Name</Label><Input id="tag-create-name" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="e.g. flights, splurge-meals" /></div>
+              <div><Label htmlFor="tag-create-color">Color</Label><Input id="tag-create-color" type="color" value={newColor} onChange={(e) => setNewColor(e.target.value)} className="h-10 w-20" /></div>
+              <Button onClick={handleAdd} className="w-full" disabled={saving || !newName.trim()}>{saving ? 'Creating…' : 'Create Tag'}</Button>
+            </fieldset>
           </DialogContent>
         </Dialog>
       </div>
 
+      {!addOpen && !editTag && mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
+      {loadError && <div><p role="alert" className="text-sm text-destructive">{loadError}</p><Button size="sm" variant="outline" onClick={() => void fetchTags()}>Retry loading tags</Button></div>}
+
       <div className="grid lg:grid-cols-[300px_1fr] gap-6">
         {/* Tag list */}
         <div className="space-y-2">
-          {tags.length === 0 && <p className="text-muted-foreground text-center py-8">No tags yet.</p>}
+          {tags.length === 0 && !loadError && <p className="text-muted-foreground text-center py-8">No tags yet.</p>}
           {tags.map((tag) => (
             <Card
               key={tag.id}
-              className={`cursor-pointer transition-colors ${selectedTag?.id === tag.id ? 'ring-2 ring-primary' : ''}`}
-              onClick={() => selectTag(tag)}
+              className={`transition-colors ${selectedTag?.id === tag.id ? 'ring-2 ring-primary' : ''}`}
             >
               <CardContent className="p-3 flex items-center gap-2">
+                <button type="button" className="flex min-w-0 flex-1 items-center gap-2 text-left" aria-label={`View ${tag.name} expenses`} onClick={() => void selectTag(tag)}>
                 {tag.color && (
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: tag.color }} />
                 )}
                 <span className="font-medium flex-1">{tag.name}</span>
                 <span className="text-xs text-muted-foreground">{tag.expenseCount} expenses</span>
                 <span className="text-sm font-medium">${tag.totalAud.toFixed(0)}</span>
-                <Button variant="ghost" size="icon" className="h-6 w-6" onClick={(e) => { e.stopPropagation(); setEditTag(tag); }}>
+                </button>
+                <Button aria-label={`Edit ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-6 w-6" onClick={() => { setMutationError(null); setEditTag(tag); }}>
                   <Edit className="h-3 w-3" />
                 </Button>
-                <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive" onClick={(e) => { e.stopPropagation(); handleDelete(tag.id); }}>
+                <Button aria-label={`Delete ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-6 w-6 text-destructive" onClick={() => void handleDelete(tag.id)}>
                   <Trash2 className="h-3 w-3" />
                 </Button>
               </CardContent>
@@ -177,7 +214,7 @@ export default function TagsPage() {
                     title={`Loading expenses for ${selectedTag.name}`}
                     detail="Gathering the tagged transactions and their total spend."
                   />
-                ) : tagExpenses.length === 0 ? (
+                ) : tagReadError ? <div><p role="alert" className="text-sm text-destructive">{tagReadError}</p><Button size="sm" variant="outline" onClick={() => void selectTag(selectedTag)}>Retry tagged expenses</Button></div> : tagExpenses.length === 0 ? (
                   <p className="text-muted-foreground text-sm">No expenses with this tag.</p>
                 ) : (
                   <div className="space-y-1">
@@ -201,18 +238,19 @@ export default function TagsPage() {
       </div>
 
       {/* Edit tag dialog */}
-      <Dialog open={!!editTag} onOpenChange={(open) => !open && setEditTag(null)}>
+      <Dialog open={!!editTag} onOpenChange={(open) => { if (!open && !saving) setEditTag(null); }}>
         <DialogContent>
           <DialogHeader><DialogTitle>Edit Tag</DialogTitle>
             <DialogDescription className="sr-only">
               Rename this tag or change its colour.
             </DialogDescription></DialogHeader>
           {editTag && (
-            <div className="space-y-4">
-              <div><Label>Name</Label><Input value={editTag.name} onChange={(e) => setEditTag({ ...editTag, name: e.target.value })} /></div>
-              <div><Label>Color</Label><Input type="color" value={editTag.color || '#3b82f6'} onChange={(e) => setEditTag({ ...editTag, color: e.target.value })} className="h-10 w-20" /></div>
-              <Button onClick={handleEditSave} className="w-full">Save</Button>
-            </div>
+            <fieldset disabled={saving} className="space-y-4">
+              {mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
+              <div><Label htmlFor="tag-edit-name">Name</Label><Input id="tag-edit-name" value={editTag.name} onChange={(e) => setEditTag({ ...editTag, name: e.target.value })} /></div>
+              <div><Label htmlFor="tag-edit-color">Color</Label><Input id="tag-edit-color" type="color" value={editTag.color || '#3b82f6'} onChange={(e) => setEditTag({ ...editTag, color: e.target.value })} className="h-10 w-20" /></div>
+              <Button disabled={saving || !editTag.name.trim()} onClick={handleEditSave} className="w-full">{saving ? 'Saving…' : 'Save'}</Button>
+            </fieldset>
           )}
         </DialogContent>
       </Dialog>

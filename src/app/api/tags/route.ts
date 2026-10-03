@@ -1,7 +1,8 @@
 import { db } from '@/db';
 import { tags, expenseTags, expenses } from '@/db/schema';
 import { eq, sql } from 'drizzle-orm';
-import { success, handleError } from '@/lib/api-helpers';
+import { success, error, handleError } from '@/lib/api-helpers';
+import { isTagNameConflict } from '@/lib/tag-validation';
 import { requireCurrentUserId } from '@/lib/auth';
 import { z } from 'zod';
 
@@ -37,7 +38,7 @@ export async function GET() {
 }
 
 const createSchema = z.object({
-  name: z.string().min(1),
+  name: z.string().trim().min(1),
   color: z.string().optional(),
 });
 
@@ -49,6 +50,7 @@ export async function POST(request: Request) {
     const result = await db.insert(tags).values({ ...data, userId }).returning();
     return success(result[0], 201);
   } catch (err) {
+    if (isTagNameConflict(err)) return error('A tag with this name already exists. Choose a different name.', 409);
     return handleError(err);
   }
 }

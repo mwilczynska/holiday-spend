@@ -190,6 +190,8 @@ Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operation
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
 Rejected expense edits keep their drafts; failed exclusion, deletion and bulk actions retain rows and selections
 with an error. Failed tracker reads label the last loaded results and offer retry instead of showing an empty list.
+Tag CRUD failures keep drafts and selections with an error; duplicate names return a conflict. Tag reads expose
+failures and offer retry, and renaming a selected tag updates its displayed title.
 New manual expenses resolve an AUD conversion before saving when none is supplied. An unavailable rate leaves the
 conversion missing with a visible warning. Quick Add retains rejected input for retry and clears successful input
 immediately to prevent duplicate submissions.

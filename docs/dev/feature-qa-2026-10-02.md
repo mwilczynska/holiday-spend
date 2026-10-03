@@ -23,8 +23,8 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: two rows with modes/notes, 65 and 35.50 costs, total includes both once; row removal; individual dialog open/close; six mode controls; no-mode estimate disabled; advanced settings and provider list opened. Controlled Playwright: Stop, failed-only retry, model discovery and apply paths pass. Live action rejected by automatic approval; user question pending. |
 | Plan files | CSV export/import; malformed/duplicate/missing-city rows; cancel and confirm | Pending |
 | Saved plans | Save/load/rename/delete/export/import; warnings; empty and multi-plan comparisons; category/country/chart controls | Pending |
-| Expenses | Add/edit/delete; currency and rate; date/leg assignment; category/source/date filters; pagination; exclusion; bulk include/exclude/delete | Chrome: all Quick Add category and payer buttons; USD save; active-leg assignment; missing conversion reproduced. Remaining CRUD/filter/bulk checks pending. |
-| Expense tags | Tag CRUD; assignment/removal; tagged-expense navigation; empty/duplicate names | Pending |
+| Expenses | Add/edit/delete; currency and rate; date/leg assignment; category/source/date filters; pagination; exclusion; bulk include/exclude/delete | Chrome: Quick Add categories/payers; USD conversion; edit category/merchant/subcategory/unassignment; details expand; controlled error/retry; individual and two-row bulk exclude/include; all 10 category filters and 3 source filters; Next/Previous; filtered CSV contains exactly two manual QA records. Date bounds/delete confirmation still pending. Playwright mutation tests verify delete/retry/persistence. |
+| Expense tags | Tag CRUD; assignment/removal; tagged-expense navigation; empty/duplicate names | Chrome: empty list/create-disabled, fixture creation/color input, duplicate draft-loss reproduction and retained-error fix, view empty expenses, rename updates selected title. Playwright: duplicate create/edit, network retention, rename/color persistence, delete failure/retry, list/expense read failure/retry. Assignment/removal and deleted-record totals pending. |
 | Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
 | Dataset | City/country search; pagination; city CRUD; missing costs; editor controls; history/provenance; generation/retry | Pending |
 | Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Pending |
@@ -114,6 +114,24 @@ merchant, subcategory, category and assignment. Three production browser regress
 HTTP/network/validation retention, exclusion/include/bulk/delete retry, and read-failure preservation/retry.
 TypeScript, production build and 387 unit tests pass. Evidence: `expense-edit-retained-error.png`. Trigger removed.
 
+### F7 — Duplicate and failed tag writes discard input without feedback
+
+Chrome creates `QA tag duplicate`, then submits the same name. The duplicate is rejected by SQLite, but the form
+closes and clears with no error. Fix verified: trimmed names, clear 409 conflict guidance, HTTP/JSON/network checks,
+retained drafts/selections, labelled fields/actions and keyboard-accessible tag selection. Renaming updates the
+selected title. Read failures show error and Retry rather than false empty states; obsolete tag reads are ignored.
+Chrome verifies a visible conflict with retained draft and `QA tag renamed` in both list and selected heading.
+Three production browser regressions plus auth setup pass for duplicate/edit/retry, rename/color persistence,
+network retention, delete failure/retry and list/expense read recovery. TypeScript, build and 387 unit tests pass.
+An overlapping unit/browser run exceeded two existing 10-second setup hooks; isolated rerun passes 66/387.
+Evidence: `.local/feature-qa/tag-duplicate-retained-error.png`.
+
+### Browser download latency
+
+The filtered expense Export link produces the correct two-row manual CSV. Chrome's download tool call takes
+about 34 minutes despite 10-second requested waits before returning the Downloads path. File contents are copied
+to the ignored QA folder and checked. This control-surface delay is separate from measured application response.
+
 ### Live provider action approval
 
 Automatic approval rejected a batch containing model refresh and Estimate Options because route cities, dates
@@ -125,16 +143,12 @@ Anthropic, Gemini and Resend environment keys; owner keys are never inspected. L
 
 After F4, all 47 production Playwright checks pass in 2.2 minutes. These are separate from Chrome extension checks.
 
-Planner Chrome progress: empty picker search shows `No matches found`; clicking Agra and adding two nights creates
-a leg for 3–5 March 2027 with costs and historical climate. All six accommodation choices and all four food choices
-accept selection and update costs. Remaining drink/activity, override, transport, dates, ordering and deletion checks
-continue after the next rebuild.
+Planner coverage is recorded in the ledger above. The disposable Agra leg and its transport rows are deleted.
 
 Interactive Chrome file attachment is blocked: the extension reports that `Allow access to file URLs` is required.
 The chooser call waits about twenty minutes before reporting this error. No setting was changed by Codex; the user
 has been asked to enable it or leave interactive file-upload coverage blocked. Fixture CSVs are ready under
-`.local/feature-qa/`. Code review also identifies a hypothesis requiring reproduction: edited preview categories
-are absent from the import confirmation payload.
+`.local/feature-qa/`. The category-confirmation defect is reproduced and fixed under F4 in production Playwright.
 
 Initial production build passed. All 37 existing Playwright checks (including authentication setup) passed against the
 isolated production server in 2.1 minutes. These include controlled provider failures, climate/retry/C/F, picker
