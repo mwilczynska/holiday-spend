@@ -21,6 +21,6 @@ export const comparisonResultsSchema = z.object({ plans: z.array(z.object({
     plannedDays: count, plannedPerDay: money.nullable(),
   })),
   categoryTotals: z.array(z.object({
-    category: z.enum(['accommodation', 'food', 'drinks', 'activities', 'transport', 'fixed_cost']), totalPlanned: money,
+    category: z.enum(['accommodation', 'food', 'drinks', 'activities', 'transport', 'miscellaneous', 'fixed_cost']), totalPlanned: money,
   })),
 })) });

@@ -2,6 +2,8 @@ import type { PlanSnapshot } from './plan-snapshot';
 import type { AccomTier, ActivitiesTier, DrinksTier, FoodTier } from '@/types';
 import { getDailyBreakdown } from './cost-calculator';
 import { getIntercityTransportTotal } from './intercity-transport';
+import { getMiscellaneousExpenseTotal } from './miscellaneous-expenses';
+import type { MiscellaneousExpenseItem } from '@/types';
 import { deriveLegDates } from './itinerary-leg-dates';
 import { enumerateDates } from './burn-rate';
 
@@ -39,6 +41,7 @@ export type PlannedAllocationCategory =
   | 'activities'
   | 'local_transport'
   | 'intercity_transport'
+  | 'miscellaneous'
   | 'fixed_cost';
 
 export interface PlannedAllocationRow {
@@ -68,7 +71,7 @@ export interface PlanComparisonCountryTotal {
 }
 
 export interface PlanComparisonCategoryTotal {
-  category: 'accommodation' | 'food' | 'drinks' | 'activities' | 'transport' | 'fixed_cost';
+  category: 'accommodation' | 'food' | 'drinks' | 'activities' | 'transport' | 'miscellaneous' | 'fixed_cost';
   totalPlanned: number;
 }
 
@@ -106,6 +109,7 @@ interface NormalizedComparisonLeg {
   activitiesOverride: number | null;
   transportOverride: number | null;
   intercityTransports: Array<{ cost?: number | null }>;
+  miscellaneousExpenses: MiscellaneousExpenseItem[];
 }
 
 function addDays(date: string, days: number) {
@@ -197,6 +201,14 @@ function buildLegPlannedAllocations(
           amount: entry.amount,
         });
       }
+    }
+
+    const miscellaneousTotal = getMiscellaneousExpenseTotal(leg.miscellaneousExpenses);
+    if (miscellaneousTotal > 0) {
+      allocations.push({
+        planId, legId: leg.id, date: leg.startDate, countryId, countryName,
+        cityId: leg.cityId, cityName, category: 'miscellaneous', amount: miscellaneousTotal,
+      });
     }
 
     const intercityTransportTotal = getIntercityTransportTotal(leg.intercityTransports);
@@ -374,6 +386,7 @@ function buildPlanComparisonCategoryTotals(allocations: PlannedAllocationRow[]):
     'drinks',
     'activities',
     'transport',
+    'miscellaneous',
     'fixed_cost',
   ];
 
@@ -429,6 +442,7 @@ export function computePlanComparison(
       activitiesOverride: leg.activitiesOverride ?? null,
       transportOverride: leg.transportOverride ?? null,
       intercityTransports: leg.intercityTransports ?? [],
+      miscellaneousExpenses: leg.miscellaneousExpenses ?? [],
     }))
   );
 

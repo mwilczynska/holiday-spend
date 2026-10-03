@@ -48,6 +48,8 @@ function getCategoryLabel(category: PlanComparisonCategoryTotal['category']) {
       return 'Activities';
     case 'transport':
       return 'Transport';
+    case 'miscellaneous':
+      return 'Miscellaneous';
     case 'fixed_cost':
       return 'Fixed Costs';
     default:
@@ -128,6 +130,7 @@ function buildCategoryComparisonRows(plans: PlanComparisonResult[]) {
     'drinks',
     'activities',
     'transport',
+    'miscellaneous',
     'fixed_cost',
   ];
 

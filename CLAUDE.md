@@ -181,6 +181,11 @@ traveller scaling and limitations. Retired source-collection methods are identif
 Manual itinerary moves and date sorting expose failed requests and allow retry without false success messages.
 Order writes are atomic; move buttons are labelled and disabled while an order request is active.
 
+Planner cards also support repeatable manual miscellaneous expenses with a description and AUD amount.
+Each amount is a one-off total for the leg and whole group, independent of nights and traveller scaling.
+They are included in planner/dashboard budgets, saved plans, export/import and comparisons; dashboard category
+totals include them under Other. Invalid amounts and rejected saves retain drafts with validation and Retry/Discard.
+
 Accommodation tiers are hostel dorm, private room, and 1–4 star. Drinks are none, light, moderate and heavy.
 Traveller count persists per user, while city base costs remain stored for two people. Saved plans store tier
 choices rather than frozen city prices.

@@ -334,6 +334,16 @@ if (tableNames.some((table) => table.name === 'tags')) {
   }
 }
 
+if (hasItineraryLegsTable) {
+  // Build workers can initialize the same database together. Lock before checking the column.
+  sqlite.transaction(() => {
+    const legColumns = sqlite.prepare('PRAGMA table_info(itinerary_legs)').all() as Array<{ name: string }>;
+    if (!legColumns.some(column => column.name === 'miscellaneous_expenses')) {
+      sqlite.exec("ALTER TABLE itinerary_legs ADD COLUMN miscellaneous_expenses TEXT NOT NULL DEFAULT '[]'");
+    }
+  }).immediate();
+}
+
 if (hasCityEstimatesTable) {
   const cityEstimateColumns = sqlite.prepare("PRAGMA table_info(city_estimates)").all() as Array<{ name: string }>;
   const cityEstimateColumnNames = new Set(cityEstimateColumns.map((column) => column.name));

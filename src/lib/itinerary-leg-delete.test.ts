@@ -52,6 +52,7 @@ describe.sequential('itinerary leg deletion', () => {
       '  transport_override REAL,',
       '  intercity_transport_cost REAL DEFAULT 0,',
       '  intercity_transport_note TEXT,',
+      "  miscellaneous_expenses TEXT NOT NULL DEFAULT '[]',",
       '  sort_order INTEGER,',
       '  notes TEXT,',
       '  status TEXT',

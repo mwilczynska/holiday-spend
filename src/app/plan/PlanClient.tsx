@@ -19,7 +19,8 @@ import { CostSummary } from '@/components/itinerary/CostSummary';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
 
 import { ArrowUpDown, Download, Plus, Save, Upload } from 'lucide-react';
-import type { IntercityTransportItem } from '@/types';
+import type { IntercityTransportItem, MiscellaneousExpenseItem } from '@/types';
+import { getMiscellaneousExpenseTotal, miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
 import { getDailyCost, getLegTotal } from '@/lib/cost-calculator';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
 import {
@@ -74,6 +75,7 @@ interface Leg {
   intercityTransportCost: number;
   intercityTransportNote: string | null;
   intercityTransports: IntercityTransportItem[];
+  miscellaneousExpenses: MiscellaneousExpenseItem[];
   sortOrder: number | null;
   notes: string | null;
   status: string;
@@ -490,6 +492,13 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     const result = await response.json().catch(() => null);
     if (!response.ok) throw new Error(result?.error || `Could not save this leg (HTTP ${response.status}).`);
     if (result?.data?.id !== id) throw new Error('The server returned an unreadable save result. Reload to check whether the leg saved before retrying.');
+    if (Object.prototype.hasOwnProperty.call(data, 'miscellaneousExpenses')) {
+      const confirmed = miscellaneousExpensesSchema.safeParse(result.data.miscellaneousExpenses);
+      const requested = miscellaneousExpensesSchema.safeParse(data.miscellaneousExpenses);
+      if (!confirmed.success || !requested.success || JSON.stringify(confirmed.data) !== JSON.stringify(requested.data)) {
+        throw new Error('The server did not confirm the miscellaneous expenses. Reload to check whether they saved before retrying.');
+      }
+    }
     const applyConfirmedUpdate = (leg: Leg) => {
       if (leg.id !== id) return leg;
       const next = { ...leg, ...data, ...result.data } as Leg;
@@ -501,7 +510,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
         next.dailyCost = getDailyCost(city, next.accomTier as import('@/types').AccomTier,
           next.foodTier as import('@/types').FoodTier, next.drinksTier as import('@/types').DrinksTier,
           next.activitiesTier as import('@/types').ActivitiesTier, next, groupSize);
-        next.legTotal = getLegTotal(next.dailyCost, next.nights, next.intercityTransportCost);
+        next.legTotal = getLegTotal(next.dailyCost, next.nights, next.intercityTransportCost)
+          + getMiscellaneousExpenseTotal(next.miscellaneousExpenses);
       }
       return next;
     };

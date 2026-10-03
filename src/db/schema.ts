@@ -1,5 +1,6 @@
 import { sqliteTable, text, integer, real, primaryKey } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
+import type { MiscellaneousExpenseItem } from '@/types';
 
 export const users = sqliteTable('user', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
@@ -180,6 +181,10 @@ export const itineraryLegs = sqliteTable('itinerary_legs', {
   // Intercity travel
   intercityTransportCost: real('intercity_transport_cost').default(0),
   intercityTransportNote: text('intercity_transport_note'),
+
+  // One-off manual AUD amounts for this leg and the whole group.
+  miscellaneousExpenses: text('miscellaneous_expenses', { mode: 'json' })
+    .$type<MiscellaneousExpenseItem[]>().notNull().default(sql`'[]'`),
 
   sortOrder: integer('sort_order'),
   notes: text('notes'),

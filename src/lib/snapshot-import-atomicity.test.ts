@@ -103,6 +103,7 @@ const CREATE_TABLES = [
   '  accom_override REAL, food_override REAL, drinks_override REAL,',
   '  activities_override REAL, transport_override REAL,',
   '  intercity_transport_cost REAL DEFAULT 0, intercity_transport_note TEXT,',
+  "  miscellaneous_expenses TEXT NOT NULL DEFAULT '[]',",
   '  split_pct REAL DEFAULT 50, sort_order INTEGER, notes TEXT,',
   "  status TEXT DEFAULT 'planned', user_id TEXT",
   ');',

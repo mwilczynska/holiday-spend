@@ -3,6 +3,7 @@ import { expenses, itineraryLegs, itineraryLegTransports } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { getIntercityTransportTotal, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { validateLegDates } from '@/lib/itinerary-validation';
+import { miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
 import { requireCurrentUserId } from '@/lib/auth';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { z } from 'zod';
@@ -35,6 +36,7 @@ const updateLegSchema = z
     notes: z.string().nullable(),
     status: z.enum(['planned', 'active', 'completed']),
     intercityTransports: z.array(z.unknown()),
+    miscellaneousExpenses: miscellaneousExpensesSchema,
   })
   .partial()
   .strict();

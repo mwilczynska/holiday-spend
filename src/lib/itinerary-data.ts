@@ -62,7 +62,8 @@ export async function loadItinerary(userId: string, inputs?: ItineraryInputs) {
     const legTotal = getLegTotalFromTransports(
       dailyCost,
       leg.nights,
-      intercityTransports
+      intercityTransports,
+      leg.miscellaneousExpenses
     );
 
     return {

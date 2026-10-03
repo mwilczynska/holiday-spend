@@ -10,9 +10,10 @@ import { Badge } from '@/components/ui/badge';
 import { SearchableSelect, type SearchableSelectOption } from '@/components/ui/searchable-select';
 import { TierSelector } from './TierSelector';
 import { LegClimate } from './LegClimate';
+import { MiscellaneousExpenses } from './MiscellaneousExpenses';
 import type { CityClimate, TemperatureUnit } from '@/lib/climate';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
-import type { IntercityTransportItem } from '@/types';
+import type { IntercityTransportItem, MiscellaneousExpenseItem } from '@/types';
 import { useQueuedDraftSave } from '@/lib/use-queued-draft-save';
 import {
   getAccommodationCostForTier,
@@ -57,6 +58,7 @@ interface LegCardProps {
     intercityTransportCost: number;
     intercityTransportNote: string | null;
     intercityTransports: IntercityTransportItem[];
+    miscellaneousExpenses: MiscellaneousExpenseItem[];
     notes: string | null;
     status: string;
     dailyCost: number;
@@ -177,10 +179,17 @@ export const LegCard = memo(function LegCard({
   onToggleTemperature,
   onRetryClimate,
 }: LegCardProps) {
+  const [miscellaneousError, setMiscellaneousError] = useState<string | null>(null);
+  const [miscellaneousReset, setMiscellaneousReset] = useState(0);
+  const miscellaneousErrorRef = useRef(miscellaneousError);
+  miscellaneousErrorRef.current = miscellaneousError;
   const { state: editState, queue: editQueue } = useQueuedDraftSave(
     patch => onUpdate(savedLeg.id, patch),
-    dirty => onDirtyChange(savedLeg.id, dirty),
+    dirty => onDirtyChange(savedLeg.id, dirty || miscellaneousErrorRef.current != null),
   );
+  useEffect(() => {
+    onDirtyChange(savedLeg.id, miscellaneousError != null || editState.saving || Object.keys(editState.patch).length > 0);
+  }, [miscellaneousError, editState.saving, editState.patch, onDirtyChange, savedLeg.id]);
   const hasDraft = Object.keys(editState.patch).length > 0;
   const leg = { ...savedLeg, ...editState.patch } as typeof savedLeg;
   const draftCity = cities.find(city => city.id === leg.cityId);
@@ -190,7 +199,7 @@ export const LegCard = memo(function LegCard({
     leg.dailyCost = getDailyCost(draftCity, leg.accomTier as import('@/types').AccomTier,
       leg.foodTier as import('@/types').FoodTier, leg.drinksTier as import('@/types').DrinksTier,
       leg.activitiesTier as import('@/types').ActivitiesTier, leg, groupSize);
-    leg.legTotal = getLegTotalFromTransports(leg.dailyCost, leg.nights, leg.intercityTransports);
+    leg.legTotal = getLegTotalFromTransports(leg.dailyCost, leg.nights, leg.intercityTransports, leg.miscellaneousExpenses);
   }
   const submitEdit = (patch: Record<string, unknown>) => {
     void editQueue.submit(patch).catch(() => undefined);
@@ -437,17 +446,19 @@ export const LegCard = memo(function LegCard({
           </Button>
         </div>
 
-        {editState.saving || hasDraft ? (
-          <div className="mt-2 rounded-md border p-2 text-sm" role={editState.error ? 'alert' : 'status'}>
-            <p className={editState.error ? 'text-destructive' : 'text-muted-foreground'}>
-              {editState.error || (editState.saving ? 'Saving leg changes...' : 'Unsaved leg changes.')}
+        {editState.saving || hasDraft || miscellaneousError ? (
+          <div className="mt-2 rounded-md border p-2 text-sm" role={editState.error || miscellaneousError ? 'alert' : 'status'}>
+            <p className={editState.error || miscellaneousError ? 'text-destructive' : 'text-muted-foreground'}>
+              {miscellaneousError || editState.error || (editState.saving ? 'Saving leg changes...' : 'Unsaved leg changes.')}
             </p>
             <p className="text-xs text-muted-foreground">This card previews your changes. Trip totals use saved values until the save succeeds.</p>
-            {editState.error ? (
+            {editState.error || miscellaneousError ? (
               <div className="mt-2 flex flex-wrap gap-2">
-                <Button type="button" size="sm" variant="outline" disabled={editState.saving} onClick={() => void editQueue.retry().catch(() => undefined)}>Retry leg save</Button>
+                <Button type="button" size="sm" variant="outline" disabled={editState.saving || miscellaneousError != null} onClick={() => void editQueue.retry().catch(() => undefined)}>Retry leg save</Button>
                 <Button type="button" size="sm" variant="ghost" disabled={editState.saving} onClick={() => {
                   editQueue.discard();
+                  setMiscellaneousError(null);
+                  setMiscellaneousReset(value => value + 1);
                   editingTransportKeyRef.current = null;
                   setTransportDrafts(buildTransportDrafts(savedLeg.intercityTransports || []));
                   onDiscard();
@@ -554,7 +565,7 @@ export const LegCard = memo(function LegCard({
                 size="sm"
                 className="h-8"
                 onClick={() => setTransportEstimateOpen(true)}
-                disabled={orderSaving || hasDraft || editState.saving || previousLeg == null || !leg.startDate}
+                disabled={orderSaving || hasDraft || miscellaneousError != null || editState.saving || previousLeg == null || !leg.startDate}
               >
                 Estimate transport
               </Button>
@@ -640,6 +651,10 @@ export const LegCard = memo(function LegCard({
             <p className="text-xs text-muted-foreground">No intercity transport rows added for this leg.</p>
           )}
         </div>
+
+        <MiscellaneousExpenses key={miscellaneousReset} legId={leg.id} expenses={leg.miscellaneousExpenses ?? []}
+          onChange={expenses => handleFieldChange('miscellaneousExpenses', expenses)}
+          onValidationError={setMiscellaneousError} />
 
         <Button
           variant="ghost"

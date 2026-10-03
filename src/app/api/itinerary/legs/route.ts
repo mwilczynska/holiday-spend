@@ -4,6 +4,7 @@ import { requireCurrentUserId } from '@/lib/auth';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { getIntercityTransportTotal, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { validateLegDates } from '@/lib/itinerary-validation';
+import { miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
 import { z } from 'zod';
 import { eq, sql } from 'drizzle-orm';
 
@@ -26,6 +27,7 @@ const createSchema = z.object({
   intercityTransportCost: z.number().default(0),
   intercityTransportNote: z.string().nullable().optional(),
   intercityTransports: z.array(intercityTransportSchema).optional(),
+  miscellaneousExpenses: miscellaneousExpensesSchema.default([]),
   notes: z.string().nullable().optional(),
   status: z.string().default('planned'),
 });

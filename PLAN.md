@@ -28,6 +28,21 @@ Its regressions and Chrome verification pass.
 
 **Working tree:** Twenty-seven separate fixes are pushed through `611e0e2`. The transport readiness correction is pushed as `3188b1c`. The full 101-check production sweep and the additional unsaved-key case pass. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
+## Manual miscellaneous planner expenses — COMPLETE (3 October 2026)
+
+Every planner card can add, edit and remove manual miscellaneous expenses with a description and AUD amount.
+Each amount is a one-off total for that leg and the whole group. Planner/dashboard budgets, saved plans,
+export/import and comparison totals include them. Invalid amounts and rejected saves retain drafts with
+validation and Retry/Discard. Existing databases gain an empty JSON array; old snapshots default to no entries.
+
+Verification: TypeScript, production builds, 70 unit files / 402 tests, memory mirror and v1.1 guard pass.
+The first affected browser run passes 15 of 16 checks; the existing zero-override case exhausts its 30-second
+deadline during repeated fills. Its unchanged rerun plus authentication and both new miscellaneous checks pass
+on the final isolated production build (4 checks, 57.8 seconds). Mobile visual inspection confirms contained
+fields and removal buttons at 390 px. A shared server restart required the final build and tests to use the
+ignored `.local/miscellaneous-build` copy and separate database at port 3104. All writes target QA copies.
+The credential-label audit below remains in progress.
+
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
 Owner approval follow-through: a separate `provider-qa@example.test` account in the isolated QA copy has Sydney

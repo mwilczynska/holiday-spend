@@ -2966,3 +2966,24 @@ page retained; the owner is told another entry is needed only if the active key 
 Live single transport returns four labelled estimates after OpenAI's TPM 429 prevents final live search. The
 $240 train option applies to the fictional Melbourne leg, raising the total to $5,584. Two-leg live bulk estimation
 at High effort is running. Chrome file permission is requested for the already-prepared synthetic attachments.
+
+## 3 October 2026 — Manual miscellaneous planner expenses
+
+Every planner card now has Add miscellaneous expense, with repeatable description/AUD amount rows and removal.
+Amounts are one-off totals for the leg and whole group. Planner totals, dashboard summary/country/category and
+cumulative budgets, saved plans, export/import and comparisons include them. Dashboard groups them under Other;
+comparison charts have a Miscellaneous category. Old snapshots default to an empty list. The database upgrade
+adds a JSON column with an empty-list default and locks the check/alter transaction against concurrent build workers.
+Negative/nonfinite costs are rejected. Invalid text and failed writes retain drafts; Retry/Discard and the existing
+per-leg save queue protect them. Successful responses must confirm the requested miscellaneous rows.
+
+TypeScript, production builds, 70 Vitest files / 402 tests, memory mirror and v1.1 guard pass. The first affected
+production browser run passes 15 of 16 checks; trace inspection shows the existing zero-override case spends its
+30-second deadline filling consecutive fields, without a product assertion failure. Its unchanged rerun and both
+new miscellaneous regressions plus authentication pass on the final isolated build: 4 checks in 57.8 seconds.
+The new checks cover add/edit/reload, zero, invalid drafts, HTTP rejection, malformed acknowledgement, Retry/Discard,
+removal, 390 px containment and displayed comparison categories. Unit coverage also verifies the existing-database
+upgrade, user scoping, traveller scaling, snapshot round-trip, saved-plan persistence and budget/series agreement.
+The shared production server was restarted by another local session, so final build/test work used the ignored
+`.local/miscellaneous-build` copy and separate QA database at port 3104. All test writes target QA copies; the
+timed-out test's temporary leg is removed. No provider call or credential inspection is performed.
