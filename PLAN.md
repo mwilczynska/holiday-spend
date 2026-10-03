@@ -21,16 +21,28 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Check fractional provider-timeout input and run the complete production sweep. Profile-name failure retention, retry, pending locking and restoration are verified. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Publish the timeout-precision fix and the separate test-synchronization checkpoint, then finish the report of remaining interactive coverage gaps. All 96 production checks and the repository baseline pass. Interactive attachments and live-provider checks await the pending choices.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
-**Working tree:** Twenty-three separate fixes are pushed through `0c98b21`; the verified profile-name fix is ready for its separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Twenty-four separate fixes are pushed through `dd9849f`; the verified timeout-precision fix awaits the full-sweep checkpoint and separate commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
-Twenty-fourth fix: profile-name acknowledgements must confirm the requested trimmed name or explicit clearing.
+Twenty-fifth fix: provider timeout displays preserve exact milliseconds through save, refresh and reload. Inputs use
+millisecond steps. Conversion removes only binary floating-point remainders that round-trip exactly; unsupported
+fractional milliseconds remain rejected. Nonfinite values cannot become null/default resets during serialization.
+Chrome verifies 90.5 and 16.001 seconds after reload and restored defaults. The old-build reproduction confirms
+90,500 ms saved but 91 seconds displayed. The new production regression plus auth setup pass for six valid values,
+full/client reads, sub-millisecond rejection and reset. TypeScript, build, all 398 unit tests, memory and v1.1 guard
+pass. The first complete production sweep passes 94 of 96 checks. Trace inspection identifies two test races:
+the failed server Dataset read retries after hydration and recovers before the test clicks Retry, and the planner
+test clicks a server-rendered move control before client readiness. The tests now hold the dataset's automatic
+retry at 503 until explicit recovery and wait for the client-rendered climate chart before moving. All seven
+affected file/auth checks pass. The complete 96-check rerun passes in 4.1 minutes. These are separate test changes.
+
+Twenty-fourth fix `dd9849f` is pushed: profile-name acknowledgements must confirm the requested trimmed name or explicit clearing.
 Failed saves retain drafts with a saved-name label and an error; pending submissions lock input and prevent
 duplicates, and editing clears stale status. Long saved names wrap on narrow screens. Chrome verifies malformed
 response retention, pending locking, retry/reload and restoration to Local Dev. Two new production regressions

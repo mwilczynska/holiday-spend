@@ -46,6 +46,17 @@ interface LlmSettings {
 interface LlmSettingsUpdate { maxOutputTokens: number | null; requestTimeoutMs: number | null }
 const llmSavedValuesSchema = llmSettingsReadSchema.pick({ maxOutputTokens: true, requestTimeoutMs: true });
 
+function timeoutInputToMilliseconds(value: string) {
+  if (value.trim() === '') return null;
+  const seconds = Number(value);
+  const milliseconds = seconds * 1000;
+  const wholeMilliseconds = Math.round(milliseconds);
+  // Decimal seconds can pick up a binary floating-point remainder (16.001 →
+  // 16001.000000000002). Only remove it when the integer converts back exactly;
+  // genuinely fractional milliseconds still reach the server's integer validator.
+  return wholeMilliseconds / 1000 === seconds ? wholeMilliseconds : milliseconds;
+}
+
 const CATEGORIES = ['visa', 'insurance', 'flights', 'gear', 'other'];
 
 export interface SettingsInitialData {
@@ -72,7 +83,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   const [costSaving, setCostSaving] = useState(false);
   const costSubmitting = useRef(false);
   const [llm, setLlm] = useState<LlmSettings | null>(initialData.llm);
-  const [llmDraft, setLlmDraft] = useState({ maxOutputTokens: initialData.llm ? String(initialData.llm.maxOutputTokens) : '', requestTimeoutSeconds: initialData.llm ? String(Math.round(initialData.llm.requestTimeoutMs / 1000)) : '' });
+  const [llmDraft, setLlmDraft] = useState({ maxOutputTokens: initialData.llm ? String(initialData.llm.maxOutputTokens) : '', requestTimeoutSeconds: initialData.llm ? String(initialData.llm.requestTimeoutMs / 1000) : '' });
   const llmDraftDirty = useRef(false);
   const [llmStatus, setLlmStatus] = useState<string | null>(null);
   const [llmError, setLlmError] = useState<string | null>(null);
@@ -127,7 +138,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
       if (!llmDraftDirty.current) {
         setLlmDraft({
           maxOutputTokens: String(parsedLlm.data.maxOutputTokens),
-          requestTimeoutSeconds: String(Math.round(parsedLlm.data.requestTimeoutMs / 1000)),
+          requestTimeoutSeconds: String(parsedLlm.data.requestTimeoutMs / 1000),
         });
       }
       setHasLoadedData(true);
@@ -248,6 +259,10 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
     setLlmError(null);
     setLlmRetry(null);
     try {
+      if ((next.maxOutputTokens != null && !Number.isFinite(next.maxOutputTokens))
+        || (next.requestTimeoutMs != null && !Number.isFinite(next.requestTimeoutMs))) {
+        throw new Error('Provider limits must be finite numbers. Check your draft and retry.');
+      }
       const response = await fetch('/api/settings/llm', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -265,7 +280,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
       setLlm((current) => (current ? { ...current, ...parsed.data } : current));
       setLlmDraft({
         maxOutputTokens: String(parsed.data.maxOutputTokens),
-        requestTimeoutSeconds: String(Math.round(parsed.data.requestTimeoutMs / 1000)),
+        requestTimeoutSeconds: String(parsed.data.requestTimeoutMs / 1000),
       });
       llmDraftDirty.current = false;
       setLlmError(null);
@@ -415,13 +430,13 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                 type="number"
                 min={llm ? llm.limits.requestTimeoutMs.min / 1000 : undefined}
                 max={llm ? llm.limits.requestTimeoutMs.max / 1000 : undefined}
-                step="1"
+                step="0.001"
                 value={llmDraft.requestTimeoutSeconds}
                 disabled={llmSaving || !hasLoadedData}
                 onChange={(e) => editLlmDraft('requestTimeoutSeconds', e.target.value)}
               />
               <p className="text-xs text-muted-foreground mt-1">
-                Default {llm ? Math.round(llm.defaults.requestTimeoutMs / 1000) : '—'}s. High reasoning effort can run
+                Default {llm ? llm.defaults.requestTimeoutMs / 1000 : '—'}s. High reasoning effort can run
                 for a couple of minutes.
               </p>
             </div>
@@ -432,9 +447,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               disabled={llmSaving || groupSizeSaving || costSaving || !llm || loading || Boolean(readError)}
               onClick={() => saveLlmSettings({
                 maxOutputTokens: llmDraft.maxOutputTokens.trim() === '' ? null : Number(llmDraft.maxOutputTokens),
-                requestTimeoutMs: llmDraft.requestTimeoutSeconds.trim() === ''
-                  ? null
-                  : Number(llmDraft.requestTimeoutSeconds) * 1000,
+                requestTimeoutMs: timeoutInputToMilliseconds(llmDraft.requestTimeoutSeconds),
               })}
             >
               Save limits

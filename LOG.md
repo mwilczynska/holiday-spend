@@ -2884,3 +2884,16 @@ to Local Dev. The old-build regression fails; both new production checks and aut
 trimmed/blank/200-character names, persistence, pending behavior and 390 px containment. TypeScript, build, all
 398 unit tests, memory and v1.1 guard pass. No password field is entered or changed. A fractional-timeout edge check
 and the complete production sweep remain before the coverage checkpoint.
+
+## 3 October 2026 — Feature QA F25: exact timeout seconds
+
+Chrome reproduces 90.5 seconds saving as 90,500 ms but displaying 91. The old-build regression confirms the mismatch.
+Settings now displays exact millisecond precision after acknowledgement, server load and client refresh, with
+0.001-second input steps. Decimal conversion removes only floating-point remainders that convert back exactly;
+16.001 and 16.002 seconds remain valid whole-millisecond inputs. Actual fractional milliseconds stay rejected,
+and nonfinite values cannot serialize to null/default resets. Chrome verifies 90.5 and 16.001 after reload and
+restores defaults. The production regression and auth setup pass for six valid values, full/client reads,
+sub-millisecond rejection and reset. TypeScript, production build, all 69 unit files / 398 tests, memory mirror and
+v1.1 guard pass. The first complete production sweep passes 94 of 96. Trace inspection identifies Dataset's
+automatic retry racing fixture recovery and a planner click before client readiness; the separate test corrections
+pass all seven affected file/auth checks. The complete production rerun passes all 96 checks in 4.1 minutes.

@@ -2,11 +2,14 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty-three separate fixes are committed and pushed; F24 is verified for its separate commit. All 398 unit tests
+Checkpoint: twenty-four separate fixes are committed and pushed. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
 including four new traveller regressions, pass after F21. Seventeen targeted checks pass after F22.
 Thirteen comparison/mobile checks pass after F23; both new profile checks and auth setup pass after F24.
-The final production sweep follows the remaining timeout-input check. Chrome evidence is recorded separately below.
+The timeout precision regression and auth setup pass after F25. The first 96-check production sweep passes 94;
+two trace-confirmed synchronization races are corrected in the tests and their seven file/auth checks pass.
+The complete 96-check production rerun passes in 4.1 minutes.
+Chrome evidence is recorded separately below.
 
 ## Environment and evidence
 
@@ -45,11 +48,12 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F21 | Traveller saves retain labelled drafts and lock pending submissions | `ade8003` |
 | F22 | Provider-limit saves validate acknowledgements and lock pending writes | `3634b57` |
 | F23 | Comparison failures retain plans/results and expose validated Retry | `0c98b21` |
-| F24 | Profile-name saves require confirmation and retain rejected drafts | Verified; separate commit pending |
+| F24 | Profile-name saves require confirmation and retain rejected drafts | `dd9849f` |
+| F25 | Provider timeout displays and conversions preserve millisecond precision | Verified; separate commit pending |
 
 ## Remaining coverage
 
-- Fractional provider-timeout input needs a final edge-case check before the complete production sweep. Profile saves are verified under F24, comparison failures under F23, Settings saves under F21–F22 and main read/empty-state fixes under F15–F20.
+- All 96 production checks pass. The local save/read/precision defects are verified under F15–F25; remaining interactive gaps are listed below.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -67,19 +71,31 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing/retry | Chrome: 12-month annual chart/table, Close/Escape, shared C/F from trip chart to legs, trip tooltip with separate temperature/rainfall, annual dialog scroll to bottom on mobile. Playwright: missing/retry, monthly segmentation and shared units pass. |
 | Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: manual rows/modes/notes/costs/removal; individual modes/empty disable; bulk All/Missing/Clear; controlled mixed success/failure; retry sends exactly one failed leg; apply persists 40 AUD QA fixture; ten-leg Stop starts five requests, retains one result, labels nine cancelled, starts no queued calls. Live provider action remains blocked pending approval. |
 | Plan files | JSON export/import; malformed/duplicate/missing-city rows; cancel/confirm | Chrome current-plan export artifact exists. Interactive JSON attachment remains blocked. Snapshot API atomicity/scoping regressions pass; these are separate from Chrome import coverage. |
-| Saved plans | Save/load/delete/export/import; comparisons and charts | Chrome: whitespace Save disabled; Cancel; snapshot save/load with identical totals; JSON export exists; disposable saved-plan deletion verified; saved list scroll reaches bottom; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; chart expansions/Close; five-card mobile strip reaches last card. Attachment remains blocked. |
+| Saved plans | Save/load/delete/export/import; comparisons and charts | Chrome: whitespace Save disabled; Cancel; snapshot save/load with identical totals; JSON export exists; disposable saved-plan deletion verified; saved list scroll reaches bottom; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; chart expansions/Close; five-card mobile strip reaches last card. F23 verifies initial unavailable counts, list/calculation Retry, retained selections and pending locking. Production checks cover stale results, history races and complete-ID validation. Attachment remains blocked. |
 | Expenses | CRUD; conversions; assignment; filters; pagination; exclusion/bulk operations | Chrome: categories/payers; USD conversion; edit fields/unassignment; details; failure/retry; exclude/include individually/in bulk; all category/source filters; pagination; correct filtered CSV; inclusive date bounds/keyboard clear. Reversed dates show zero results without a validation message. Native delete confirmation is limited by Chrome control; Playwright verifies deletion/retry/persistence. |
 | Expense tags | CRUD; assignment/removal; expense navigation; empty/duplicate names | Chrome: create/color/empty; duplicate retention/error; rename/title; deleted fixture absent from totals; assignment persists after reload and removal works. Playwright: CRUD failures, network/draft retention, read retry, assignment/removal/retry and deleted/excluded/missing-conversion totals. |
 | Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
 | Dataset | Search; pagination; city costs; history/provenance; generation/retry | Chrome: city/country/no-match searches, both tables' pagination, source/no-match history search, Agra editor/negative rejection, controlled new/existing generation failures/retry; mobile city/history tables reach rightmost columns. F19 verifies failed library/history/provenance reads, initial unavailable counts and Retry; production checks cover draft preservation and save-then-refresh failure. Cost checks verify zero/missing/decimal costs and coffee coupling. Live generation and Chrome native delete confirmation remain limited. |
 | Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Chrome controlled responses: three providers; editable/default model; six OpenAI efforts; refresh HTTP 503; new/existing generation HTTP 502; retained forms and retry. Playwright fixture-only profile checks saved/unsaved keys and cross-window clear/sync. Owner keys remain untouched. |
-| Settings | Travellers; request limits; fixed costs; JSON/CSV exports | Chrome: fixed-cost CRUD/paid/errors; limits validation/save/reset; all five traveller counts; five persists and propagates to planner (245,059 AUD), then restored two. F20 verifies failed reads, retained costs/settings, draft-preserving Retry and initial unavailable values/recovery. Export clicks yield no observable artifact through the Chrome extension. Production Playwright downloads and validates complete JSON/CSV artifacts. Save failure/concurrency auditing continues. |
-| Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Chrome: profile save/reload/clear/restore; password required fields and Google disabled; public screens and back links inspected. Password changes, email delivery and OAuth remain excluded. |
+| Settings | Travellers; request limits; fixed costs; JSON/CSV exports | Chrome: fixed-cost CRUD/paid/errors; limits validation/save/reset; all five traveller counts; five persists and propagates to planner (245,059 AUD), then restored two. F20 verifies failed reads, retained costs/settings, draft-preserving Retry and initial unavailable values/recovery. F21–F22 verify labelled rejected drafts, pending locking, Retry and reload for traveller/limit saves. F25 verifies exact fractional seconds and restored defaults. Export clicks yield no observable artifact through the Chrome extension. Production Playwright downloads and validates complete JSON/CSV artifacts. |
+| Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Chrome: profile save/reload/clear/restore; F24 verifies malformed acknowledgement retention, pending locking, retry/reload and fixture restoration. Production checks cover trim/blank/200-character names and mobile wrapping. Password required fields and Google disabled; public screens and back links inspected. Password changes, email delivery and OAuth remain excluded. |
 | Responsive/accessibility | Navigation; scroll areas; labels; keyboard controls | Chrome: Compare/Planner overflow fixed; all seven mobile navigation actions fit; comparison cards, dataset/history and country tables reach far edge; annual climate dialog and methodology page reach bottom; methodology Enter toggling; overrides/expenses/costs/tag/order controls labelled. Exact 390 px production regression checks Compare/Planner/Dataset/Expenses/Settings. |
 | Methodology | Current contract; sections; navigation; responsive layout | Chrome: stale v2/v3 claims reproduced and corrected; seven v1.1 sections expanded; Enter toggling; View Dataset/Open Planner links; bottom scroll; narrow page fits. Historical research remains archived. |
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F25 — Fractional timeout values are displayed as rounded seconds
+
+Chrome saves 90.5 seconds and sees 91. The production reproduction confirms the server persisted 90,500 ms, but
+the UI rounded save acknowledgements, refreshes and initial reads. The fix displays exact seconds and uses 0.001-second
+input steps. Decimal conversion removes only floating-point remainders that round-trip to the original seconds;
+16.001 seconds correctly becomes 16,001 ms. Actual fractional milliseconds remain rejected, and nonfinite numbers
+cannot serialize as null/default resets. Chrome verifies 90.5 and 16.001 after reload and restores defaults.
+The new production regression and auth setup pass for six valid values through save/full load/client refresh,
+unsupported sub-millisecond rejection and reset. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass.
+Chrome's AX numeric float shows 16.000999450683594 with Details 16.001; the actual input value and screenshot confirm
+16.001. Evidence: `provider-timeout-rounded.png`, `provider-timeout-precision-fixed.png`.
 
 ### F24 — Profile-name acknowledgements clear drafts and report false success
 
@@ -424,6 +440,14 @@ keep provider checks local or allow disposable live provider checks. The QA laun
 Anthropic, Gemini and Resend environment keys; owner keys are never inspected. Local and controlled regressions continue.
 
 ## Required baseline
+
+After F25, the first 96-check production sweep passes 94 in 9.6 minutes. The Dataset trace shows its post-hydration
+automatic retry completes successfully after the fixture table is restored, removing Retry before the test clicks it.
+The planner trace shows the correct Move up control is clicked before client readiness, with no reorder request.
+The tests now keep Dataset's automatic retry failed until explicit recovery and wait for the client-rendered
+climate chart before moving; the planner locator also uses its accessible name. All seven checks in the affected
+files/auth setup pass in 19.4 seconds. No application code or test deadline is changed for these corrections.
+The complete 96-check rerun passes in 4.1 minutes, including both corrected workflows.
 
 After F12, all 60 production Playwright checks pass in 3.1 minutes, including complete Settings export artifacts
 and tag assignment/removal/failure recovery. All 67 unit files / 392 tests, TypeScript, build, memory and v1.1 guard pass.
