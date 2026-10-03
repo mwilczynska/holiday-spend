@@ -23,7 +23,7 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Next action:** Continue dashboard/dataset/settings read and empty-state checks in Chrome. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Sixteen separate fixes are pushed through `d0dec59`; the seventeenth, inline edit draft retention and serialized writes, is verified and ready to commit. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Seventeen separate fixes are pushed through `bc2d491`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 

@@ -2788,3 +2788,11 @@ fifteen nights, unchanged trip totals, Retry/reload and restoration to fourteen.
 attribute remained fourteen while its displayed/property value was fifteen; screenshot and reload confirm the result.
 All 69 unit files / 398 tests, TypeScript, build, memory and v1.1 guard pass. The complete production browser sweep
 passes all 68 checks in 3.7 minutes, including imports, comparisons, climate, transport and complete Settings exports.
+
+## 2 October 2026 — Feature QA checkpoint after seventeen fixes
+
+Three separate planner fixes are pushed: Add Leg draft retention `f16d78a`, failed-read preservation `d0dec59`, and
+serialized inline edits `bc2d491`. Chrome proofs and the full 68-check production browser sweep are recorded in the
+coverage report. All 398 unit tests and the required baseline pass. The next local pass covers dashboard, dataset
+and settings read/empty-state behavior. Interactive attachments and live-provider checks still await the pending
+choices; owner data and provider keys remain untouched.
