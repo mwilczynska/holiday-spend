@@ -1,4 +1,4 @@
-# Comprehensive feature QA — 2 October 2026
+# Comprehensive feature QA — 2–3 October 2026
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
@@ -36,11 +36,12 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F15 | Leg additions retain rejected drafts and lock pending submits | `f16d78a` |
 | F16 | Planner/saved-plan read failures retain prior data with Retry | `d0dec59` |
 | F17 | Inline leg edits retain drafts and serialize saves | `bc2d491` |
-| F18 | Dashboard read failures retain figures or show unavailable totals | Included in this fix |
+| F18 | Dashboard read failures retain figures or show unavailable totals | `b40b150` |
+| F19 | Dataset/library/history/provenance reads expose failures and Retry | Included in this fix |
 
 ## Remaining coverage
 
-- Dataset/settings read and empty-state failures need a further local pass. Dashboard failures are verified under F18; planner additions, reads and inline edit failures under F15–F17.
+- Settings read and empty-state failures need a further local pass. Dataset failures are verified under F19, dashboard under F18 and planner under F15–F17.
 - Chrome file attachment requires the extension's file-URL permission. CSV/category and snapshot API regressions
   pass separately; interactive CSV/JSON import is not claimed complete.
 - Live provider actions remain pending approval for fictional QA data and a test credential. Owner keys are never used.
@@ -71,6 +72,20 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F19 — Dataset read failures report a false empty library and hide provenance failure
+
+Chrome rejects GET `/api/countries` and sees zero cities/countries with “No city rows match” and no error. A rejected
+selected-city provenance read is also silent. The fix validates library/history HTTP/JSON/schema/cost responses and
+their consistency before replacing either view. Failures retain prior data with a stale label and Retry; initial
+failures show unavailable counts/rows. Provenance failures expose a separate Retry. City drafts survive retries and
+successful saves remain saved when the following refresh fails. Chrome verifies retained 210 cities / 71 countries /
+67 history records, initial unavailable state, provenance error and all Retry recoveries. Copy-only table suspension
+is restored. The production reproduction fails against the prior build. Ten relevant browser checks pass, including
+five new regressions for HTTP/network/unreadable/invalid responses, atomic retention, initial recovery, valid empty
+data, provenance/draft preservation and save-then-refresh failure, plus city editor and SSR/navigation checks.
+TypeScript, build, all 398 unit tests, memory mirror and v1.1 guard pass. Evidence: `dataset-read-false-empty.png`,
+`dataset-read-retained-retry.png`, `dataset-provenance-retry.png`, `dataset-initial-unavailable.png`.
 
 ### F18 — Dashboard read failures leave unlabelled stale figures or an empty shell
 

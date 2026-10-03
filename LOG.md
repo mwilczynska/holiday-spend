@@ -2806,3 +2806,14 @@ The first client navigation refreshes, while full successful loads skip duplicat
 regressions fail against the previous build and pass after the fix, plus auth setup, covering failure/recovery,
 malformed/partial/network/HTTP data, valid empty data and freshness. Chrome verifies both failure states and Retry.
 The copy-only table suspension is restored. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass.
+
+## 3 October 2026 — Feature QA: dataset read failures
+
+Chrome reproduces rejected library reads reporting zero cities without an error and silent selected-city provenance
+failure. Library/history reads now validate complete HTTP/JSON/schema/cost data together and retain prior results
+with a stale warning and Retry. Initial failures label counts/rows unavailable; provenance has its own Retry. City
+drafts survive retry, and a successful city save stays saved when refresh fails. Chrome verifies retained 210 cities,
+71 countries and 67 history records, initial unavailable counts, provenance error and Retry recovery. The production
+reproduction fails before the fix. Ten relevant browser checks pass, including five new regressions, city editor,
+SSR/navigation and auth setup. TypeScript, build, all 398 unit tests, memory mirror and v1.1 guard pass. Copy-only table
+suspension is restored; owner data and keys are untouched.

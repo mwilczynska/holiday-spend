@@ -199,6 +199,9 @@ their draft with an error; the coffee price and coffee-only daily basket stay li
 
 Dashboard read failures retain prior figures with a stale label and Retry; an initial failure shows unavailable totals
 and charts. Complete responses replace the view together, and valid empty trips remain distinct from failed reads.
+Dataset failures retain the last loaded city library and history with Retry; initial failures label counts and rows
+unavailable. Library/history responses are validated together, retries keep city drafts, and provenance failures have
+their own Retry. A saved city remains saved when the following refresh fails.
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.

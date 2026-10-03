@@ -10,7 +10,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `fix/comprehensive-feature-qa` — starts from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 2 October 2026
+**Last updated:** 3 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
@@ -21,11 +21,19 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Continue dataset/settings reads and empty states in Chrome. Dashboard failure and recovery checks pass. Interactive attachments and live-provider checks await the pending choices.
+**Next action:** Continue settings reads and empty states in Chrome. Dataset/library/history/provenance failure and recovery checks pass. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Seventeen separate fixes are pushed through `bc2d491`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Eighteen separate fixes are pushed through `b40b150`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+Nineteenth fix is ready for publication: dataset read failures retain library/history together with a stale label and
+Retry. Initial failures expose unavailable counts/rows; provenance failures have a separate Retry. HTTP/JSON/schema,
+cost and cross-response checks precede updates. Retries retain city drafts, and successful writes are not reported as
+failed when refresh fails. Chrome verifies retained 210 cities / 71 countries / 67 history records, initial unavailable
+counts and provenance error/Retry. The production reproduction fails before the fix. Ten relevant browser checks,
+including five new regressions, city editor, initial SSR/navigation and auth setup, pass. TypeScript, build, all 398
+unit tests, memory mirror and v1.1 guard pass; the copy-only table suspension is restored.
 
 Eighteenth fix is ready for publication: dashboard read failures retain prior figures with a stale warning and Retry;
 initial failures show unavailable totals/charts. Complete validated responses replace the view together, valid empty
