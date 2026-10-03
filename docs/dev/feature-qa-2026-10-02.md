@@ -2,7 +2,7 @@
 
 Status: in progress. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
-Checkpoint: twenty fixes are verified. All 398 unit tests and 81 production Playwright checks pass, along with
+Checkpoint: twenty separate fixes are committed and pushed. All 398 unit tests and 81 production Playwright checks pass, along with
 TypeScript, build, memory mirror and the v1.1 guard. Chrome evidence is recorded separately below.
 
 ## Environment and evidence
@@ -38,7 +38,7 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F17 | Inline leg edits retain drafts and serialize saves | `bc2d491` |
 | F18 | Dashboard read failures retain figures or show unavailable totals | `b40b150` |
 | F19 | Dataset/library/history/provenance reads expose failures and Retry | `e37bda0` |
-| F20 | Settings reads retain values, costs and unsaved limit drafts | Included in this fix |
+| F20 | Settings reads retain values, costs and unsaved limit drafts | `527db84` |
 
 ## Remaining coverage
 

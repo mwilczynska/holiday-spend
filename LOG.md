@@ -2829,3 +2829,11 @@ The production reproduction fails before the fix. Ten relevant browser checks pa
 fixed-cost/provider-limit workflows and auth setup. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass.
 The complete production browser sweep passes all 81 checks in 4.1 minutes after the three read fixes, including
 imports, comparisons, climate, transport, export artifacts and all thirteen new failure-state regressions.
+
+## 3 October 2026 — Feature QA checkpoint after twenty fixes
+
+Three separate read fixes are pushed: dashboard `b40b150`, dataset/provenance `e37bda0` and Settings `527db84`.
+Chrome verifies retained data, unavailable initial values and Retry recovery; the full production browser sweep
+passes all 81 checks. All 398 unit tests and the required baseline pass. The next local pass checks Settings saves
+and concurrent submissions, then Compare Plans failure states. Interactive attachments and live provider checks
+still await the pending choices. The QA table suspensions are restored and the temporary fixed cost is removed.

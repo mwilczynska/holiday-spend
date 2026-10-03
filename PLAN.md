@@ -23,15 +23,15 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Next action:** Audit Settings save failures/concurrent submissions and Compare Plans failure states in Chrome. All 81 production browser checks pass after the dashboard/dataset/settings read fixes. Interactive attachments and live-provider checks await the pending choices.
 
-**Working tree:** Nineteen separate fixes are pushed through `e37bda0`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
+**Working tree:** Twenty separate fixes are pushed through `527db84`. Testing began at main `1413f3f`; all workflow writes target the isolated database.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
 
-Twentieth fix is verified: Settings read failures retain costs/settings with a stale label and Retry. Initial failures
+Twentieth fix `527db84` is pushed: Settings read failures retain costs/settings with a stale label and Retry. Initial failures
 show unavailable traveller/provider values and totals. All four required responses are validated before replacement,
 obsolete reads are ignored and retry retains unsaved provider-limit drafts. Dependent actions wait for valid reads.
 Chrome verifies the retained $25 fixture, draft 33,333 tokens / 420 seconds surviving Retry, initial unavailable values
-and recovery to saved 64,000 / 600 seconds / two travellers. Copy-only suspension is restored and the fixture removed.
+and recovery to saved 64,000 / 600 seconds / two travellers. The suspended QA table is restored and the fixture removed.
 The production reproduction fails against the prior build. Ten relevant browser checks pass, including four new read
 regressions plus fixed-cost/provider-limit workflows and auth setup. TypeScript, build, all 398 unit tests, memory
 mirror and v1.1 guard pass. The full 81-check production sweep passes in 4.1 minutes, including imports, comparisons,
