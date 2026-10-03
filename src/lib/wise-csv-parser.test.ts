@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseWiseCsvFiles } from '@/lib/wise-csv-parser';
+import { parseWiseCsv, parseWiseCsvFiles } from '@/lib/wise-csv-parser';
 
 const headers = [
   'ID',
@@ -41,5 +41,46 @@ describe('Wise CSV parser', () => {
       merchant: 'First Cafe',
       skip: false,
     });
+  });
+
+  it.each([
+    ['unrelated headers', 'not,a,wise,export\none,two,three,four'],
+    ['empty file', ' \n\n'],
+    ['truncated row', `${headers}\ntxn-1,COMPLETED,OUT`],
+    ['unterminated quote', `${headers}\n"txn-1,COMPLETED,OUT,2026-08-01`],
+  ])('rejects %s instead of creating a zero-value expense', (_name, csv) => {
+    expect(() => parseWiseCsv(csv)).toThrow();
+  });
+
+  it.each([
+    ['missing transaction ID', 0, ''],
+    ['invalid calendar date', 3, '2026-02-30'],
+    ['missing amount', 4, ''],
+    ['partially numeric amount', 4, '10oops'],
+    ['nonfinite amount', 4, 'Infinity'],
+    ['invalid source currency', 5, '?'],
+    ['invalid target amount', 6, '14oops'],
+    ['invalid target currency', 7, '?'],
+  ])('rejects a row with %s', (_name, index, value) => {
+    const fields = transaction('txn-1', 'First Cafe').split('\n')[1].split(',');
+    fields[index as number] = value as string;
+    expect(() => parseWiseCsv(`${headers}\n${fields.join(',')}`)).toThrow();
+  });
+
+  it('keeps supported compact and balance-statement exports, zeros and header-only files', () => {
+    expect(parseWiseCsv('ID,Date,Amount,Currency\ncompact-1,01-08-2026,0,AUD')[0]).toMatchObject({
+      wiseTxnId: 'compact-1', date: '2026-08-01', amount: 0, currency: 'AUD',
+    });
+    const balance = 'TransferWise ID,Date Time,Transaction Type,Amount,Currency,Merchant,Transaction Details Type\n'
+      + 'balance-1,2026-08-01 10:00:00,DEBIT,-25,AUD,First Cafe,CARD\n'
+      + 'balance-2,2026-08-02 10:00:00,CREDIT,25,AUD,Refund,CARD';
+    expect(parseWiseCsv(balance).map(row => ({ id: row.wiseTxnId, amount: row.amount, skip: row.skip }))).toEqual([
+      { id: 'balance-1', amount: 25, skip: false }, { id: 'balance-2', amount: 25, skip: true },
+    ]);
+    expect(parseWiseCsv(headers)).toEqual([]);
+  });
+
+  it('rejects a mixed upload if any file is unsupported', () => {
+    expect(() => parseWiseCsvFiles([transaction('valid-1', 'First Cafe'), 'not,a,wise,export\none,two,three,four'])).toThrow();
   });
 });

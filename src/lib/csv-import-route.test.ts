@@ -142,6 +142,26 @@ describe.sequential('wise csv import route', () => {
     expect(storedIds()).toEqual(['a-1', 'a-2', 'a-3']);
   });
 
+  it.each([false, true])('rejects unsupported files before preview or confirmation (confirm=%s)', async (confirm) => {
+    seedExisting(['kept-1']);
+    const response = await post('not,a,wise,export\none,two,three,four', confirm);
+    expect(response.status).toBe(400);
+    expect((await response.json()).error).toContain('Unsupported Wise CSV columns');
+    expect(storedIds()).toEqual(['kept-1']);
+  });
+
+  it('rejects a mixed valid/invalid upload before conversion or any write', async () => {
+    seedExisting(['kept-1']);
+    const form = new FormData();
+    form.append('file', new File([csv(['new-1'])], 'valid.csv', { type: 'text/csv' }));
+    form.append('file', new File(['ID,Date,Amount,Currency\nbad-1,2026-02-30,25,AUD'], 'invalid.csv', { type: 'text/csv' }));
+    form.append('confirm', 'true');
+    const response = await route.POST(new Request('http://localhost/api/expenses/import/csv', { method: 'POST', body: form }));
+    expect(response.status).toBe(400);
+    expect((await response.json()).error).toContain('CSV file 2: CSV data row 1');
+    expect(storedIds()).toEqual(['kept-1']);
+  });
+
   it('persists validated preview categories while keeping parsed amounts intact', async () => {
     const response = await post(csv(['category-1', 'category-2']), true, [{ wiseTxnId: 'category-1', category: 'shopping' }]);
     expect(response.status).toBe(200);

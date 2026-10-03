@@ -1,6 +1,6 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Twenty-eight fixes verified; F28 is ready to publish. The complete 101-check production sweep passes; approved fictional live-provider and import checks continue. Prior product phases complete.
+**Status:** Twenty-nine fixes verified; F29 is ready to publish. The full sweep passes 103/107, and all ten checks in its affected files pass unchanged on rerun. Approved fictional existing-city refresh is pending. Prior product phases complete.
 
 **Current phase:** Chrome feature and edge-case testing — approved provider follow-through.
 
@@ -21,7 +21,7 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Commit and push verified F28, then fix F29: unrelated CSV headers currently become a blank zero-value expense offered for import. Thirteen validation regressions reproduce unsupported formats and invalid fields. Chrome file access is enabled and real JSON/multiple-CSV attachments work. Complete import validation before preparing one final owner-key entry for existing-city refresh.
+**Next action:** Commit and push verified F29, correct the Settings test's pre-hydration baseline capture, then request one final owner-key entry in the prepared Canberra editor at localhost:3102. No further application build is planned. F28 is pushed as `892f802`; F29's TypeScript, build, all 419 unit tests, memory and v1.1 guard pass.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
@@ -44,6 +44,21 @@ ignored `.local/miscellaneous-build` copy and separate database at port 3104. Al
 The credential-label audit below remains in progress.
 
 ## Comprehensive Chrome feature testing — IN PROGRESS
+
+F29: unrelated CSV headers produce an enabled blank zero-value candidate in Chrome. Thirteen new validation
+cases and the old-build browser regression reproduce unsupported headers, malformed structure and invalid row
+fields. Required header aliases, complete numeric values, IDs, calendar dates and currency codes now validate
+before conversion or writes. Any invalid file rejects the whole batch with HTTP 400 and file/row guidance.
+Supported compact/history/balance exports, refunds, actual zeros and valid empty exports remain supported.
+All 33 focused tests, TypeScript, isolated production build, all 70 unit files / 419 tests, memory and v1.1 guard
+pass. Chrome verifies unrelated/empty-file errors, February 30 rejection, disabled import for valid empty output,
+and corrected-file retry with duplicate detection. The complete sweep passes 103/107 in 9.4 minutes; both new
+CSV cases pass. The four failures involve saved-plan empty state, zero overrides, credential climate readiness,
+and a Settings baseline captured before its label hydrates. Both empty/chart states are present in failure
+snapshots; the zero-override test begins reload with less than one second left before its overall deadline.
+All ten checks in those four files pass unchanged on rerun (57.2 seconds). The verified leftover zero fixture
+1165 is removed from the QA copy; no expenses reference it. Settings' empty captured baseline will be corrected
+in a separate test-only checkpoint. Failed traces remain under `.local/feature-qa/f29-full-results`.
 
 F28: Chrome and the old-build regression confirm unassociated provider-key labels and an unnamed existing-city
 Show API key switch. Five forms now associate labels with unique input IDs; the switch label also toggles it.

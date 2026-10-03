@@ -1,6 +1,6 @@
 # Comprehensive feature QA — 2–3 October 2026
 
-Status: approved live OpenAI follow-through and import validation in progress; Chrome file access enabled. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
+Status: local import checks verified; approved existing-city refresh pending. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
 
 Checkpoint: twenty-seven separate fixes are committed and pushed through `611e0e2`. All 398 unit tests
 and the required baseline pass. The full production sweep passed 81 checks after F20; fourteen targeted checks,
@@ -16,6 +16,9 @@ in 6.6 minutes. An additional unsaved-key regression plus auth setup pass in 15.
 F28's TypeScript, isolated build, all 402 current unit tests, memory and v1.1 guard pass. The affected browser run
 passes 20/21; its credential case times out before key entry while waiting for climate readiness on 65 cards.
 Both credential cases and auth pass unchanged on rerun (3 checks, 39.8 seconds). Chrome evidence is separate below.
+F29 passes TypeScript, isolated build, all 419 current unit tests, memory and v1.1 guard. The final sweep passes
+103/107 in 9.4 minutes, including both new CSV cases; all ten checks in the four affected files pass unchanged on
+rerun in 57.2 seconds. The initial failures and trace evidence are retained, rather than counted as a clean sweep.
 
 ## Environment and evidence
 
@@ -58,13 +61,14 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | F25 | Provider timeout displays and conversions preserve millisecond precision | `a1f8370` |
 | F26 | New-city leg creation rejects fractional and unsafe nights without truncation | `c12d8d9` |
 | F27 | New-city acknowledgements validate confirmed city/leg and lock pending input | `611e0e2` |
-| F28 | Provider-key fields and existing-city reveal switch have associated labels | This checkpoint |
+| F28 | Provider-key fields and existing-city reveal switch have associated labels | `892f802` |
+| F29 | Unsupported/malformed Wise CSV and invalid required values rejected before preview/writes | This checkpoint |
 
 ## Remaining coverage
 
 - The full 101-check production sweep passes. F28 adds expanded credential accessibility and import coverage.
 - Chrome JSON and multiple-CSV attachments now work. Invalid JSON retention, missing-city cancellation, edited
-  categories and duplicate re-parsing pass. F29 remains open: an unrelated CSV produces a blank zero-value candidate.
+  categories and duplicate re-parsing pass. F29's malformed/empty-file rejection and valid empty export pass.
 - Approved live OpenAI discovery, Canberra generation, single-transport fallback and bulk application pass on
   fictional data. Existing-city refresh needs one final direct UI key entry after import work. Keys are never read.
 - Chrome native confirm acceptance and Settings downloads remain limited by the control surface; production
@@ -79,14 +83,14 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Dashboard | Populated/empty states; charts; expansions; tooltips; country/category views; trip-window amounts | Chrome: nine information buttons; Per Day/Planned switches; three expansions; Close/Escape; country/category/cumulative tooltips; mobile containment and country table horizontal scroll to its last column. F18 verifies initial/refresh read failure and Retry in Chrome; production regressions cover valid empty, partial/malformed/network/HTTP responses and first-navigation freshness. |
 | Planner | Legs; picker; dates/nights; tiers; status; overrides; notes; order; traveller scaling | Chrome: disposable Agra add/delete; no-match picker; all accommodation/food/drink/activity tiers; three statuses; five overrides; saved zero; zero nights normalizes to one; keyboard dates update nights; move/reload persistence; sort rejection/error/retry; all five traveller counts and scaling. F15–F17 verify add/inline edit rejection, retained drafts/retry, failed-read preservation, saved-plan read recovery and valid empty data. Production tests cover rapid edits and transport draft retention. |
 | Climate | Monthly/annual/trip graphs; shared C/F; scroll/tooltips; missing/retry | Chrome: 12-month annual chart/table, Close/Escape, shared C/F from trip chart to legs, trip tooltip with separate temperature/rainfall, annual dialog scroll to bottom on mobile. Playwright: missing/retry, monthly segmentation and shared units pass. |
-| Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: manual rows/modes/notes/costs/removal; individual modes/empty disable; bulk All/Missing/Clear; controlled mixed success/failure; retry sends exactly one failed leg; apply persists 40 AUD QA fixture; ten-leg Stop starts five requests, retains one result, labels nine cancelled, starts no queued calls. Live provider action is approved and awaits a disposable key in the prepared fictional account. |
-| Plan files | JSON export/import; malformed/duplicate/missing-city rows; cancel/confirm | Chrome current-plan export artifact exists. Interactive JSON attachment remains blocked. Snapshot API atomicity/scoping regressions pass; these are separate from Chrome import coverage. |
-| Saved plans | Save/load/delete/export/import; comparisons and charts | Chrome: whitespace Save disabled; Cancel; snapshot save/load with identical totals; JSON export exists; disposable saved-plan deletion verified; saved list scroll reaches bottom; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; chart expansions/Close; five-card mobile strip reaches last card. F23 verifies initial unavailable counts, list/calculation Retry, retained selections and pending locking. Production checks cover stale results, history races and complete-ID validation. Attachment remains blocked. |
+| Transport | Manual multi-row CRUD; individual/bulk estimate controls; provider/model/effort; Stop; failed-only retry; apply results | Chrome: manual rows/modes/notes/costs/removal; individual modes/empty disable; bulk All/Missing/Clear; controlled mixed success/failure; retry sends exactly one failed leg; apply persists 40 AUD QA fixture; ten-leg Stop starts five requests, retains one result, labels nine cancelled, starts no queued calls. Live single estimation returns a labelled rate-limit fallback; High-effort bulk estimates apply two source-cited options with no duplicate transport rows. |
+| Plan files | JSON export/import; malformed/duplicate/missing-city rows; cancel/confirm | Chrome current-plan export artifact exists. Real JSON attachment restores the fictional plan, invalid legs retain the prior plan, and missing-city cancellation preserves it. Snapshot API atomicity/scoping regressions pass separately. |
+| Saved plans | Save/load/delete/export/import; comparisons and charts | Chrome: whitespace Save disabled; Cancel; snapshot save/load with identical totals; JSON export exists; disposable saved-plan deletion verified; saved list scroll reaches bottom; two/five comparisons; sixth selection rejected; Change Plans; country Totals/Per Day; chart expansions/Close; five-card mobile strip reaches last card. F23 verifies initial unavailable counts, list/calculation Retry, retained selections and pending locking. Production checks cover stale results, history races and complete-ID validation. Current-plan JSON attachment is now verified. |
 | Expenses | CRUD; conversions; assignment; filters; pagination; exclusion/bulk operations | Chrome: categories/payers; USD conversion; edit fields/unassignment; details; failure/retry; exclude/include individually/in bulk; all category/source filters; pagination; correct filtered CSV; inclusive date bounds/keyboard clear. Reversed dates show zero results without a validation message. Native delete confirmation is limited by Chrome control; Playwright verifies deletion/retry/persistence. |
 | Expense tags | CRUD; assignment/removal; expense navigation; empty/duplicate names | Chrome: create/color/empty; duplicate retention/error; rename/title; deleted fixture absent from totals; assignment persists after reload and removal works. Playwright: CRUD failures, network/draft retention, read retry, assignment/removal/retry and deleted/excluded/missing-conversion totals. |
-| Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: Parse with no files shows an error; chooser opens. Attaching fixture CSV is blocked by extension file-URL permission; user input requested. Existing mocked multi-file browser regression passes. |
-| Dataset | Search; pagination; city costs; history/provenance; generation/retry | Chrome: city/country/no-match searches, both tables' pagination, source/no-match history search, Agra editor/negative rejection, controlled new/existing generation failures/retry; mobile city/history tables reach rightmost columns. F19 verifies failed library/history/provenance reads, initial unavailable counts and Retry; production checks cover draft preservation and save-then-refresh failure. Cost checks verify zero/missing/decimal costs and coffee coupling. Live generation and Chrome native delete confirmation remain limited. |
-| Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Chrome controlled responses: three providers; editable/default model; six OpenAI efforts; refresh HTTP 503; new/existing generation HTTP 502; retained forms and retry. Playwright fixture-only profile checks saved/unsaved keys and cross-window clear/sync. Owner keys remain untouched. |
+| Wise imports | File selection; multiple files; malformed/empty input; preview; confirmation; duplicate handling; clear imported data | Chrome: no-file error, real multiple-file upload, exact amounts, preview category edits, file replacement, two imports and duplicate re-parsing pass. An unsupported CSV is incorrectly offered as a blank zero-value row (F29, not confirmed); its fix is being verified. |
+| Dataset | Search; pagination; city costs; history/provenance; generation/retry | Chrome: city/country/no-match searches, both tables' pagination, source/no-match history search, Agra editor/negative rejection, controlled new/existing generation failures/retry; mobile city/history tables reach rightmost columns. F19 verifies failed library/history/provenance reads, initial unavailable counts and Retry; production checks cover draft preservation and save-then-refresh failure. Cost checks verify zero/missing/decimal costs and coffee coupling. Live Canberra generation and dated RBA/v1.1 provenance pass. Existing-city live refresh is pending; Chrome native delete confirmation remains limited. |
+| Providers | OpenAI/Anthropic/Gemini selection; model refresh; editable model; effort; unsaved/saved/clear key behavior using fixtures | Chrome controlled responses: three providers; editable/default model; six OpenAI efforts; refresh HTTP 503; new/existing generation HTTP 502; retained forms and retry. Playwright fixture-only profile checks saved/unsaved keys and cross-window clear/sync. Live keyed OpenAI discovery lists 78 models; Canberra generation persists v1.1/max and dated RBA provenance. Keys are never read or copied. |
 | Settings | Travellers; request limits; fixed costs; JSON/CSV exports | Chrome: fixed-cost CRUD/paid/errors; limits validation/save/reset; all five traveller counts; five persists and propagates to planner (245,059 AUD), then restored two. F20 verifies failed reads, retained costs/settings, draft-preserving Retry and initial unavailable values/recovery. F21–F22 verify labelled rejected drafts, pending locking, Retry and reload for traveller/limit saves. F25 verifies exact fractional seconds and restored defaults. Export clicks yield no observable artifact through the Chrome extension. Production Playwright downloads and validates complete JSON/CSV artifacts. |
 | Account/public screens | Profile name; password form validation; login/signup/forgot/reset/verify/check-email navigation | Chrome: profile save/reload/clear/restore; F24 verifies malformed acknowledgement retention, pending locking, retry/reload and fixture restoration. Production checks cover trim/blank/200-character names and mobile wrapping. Password required fields and Google disabled; public screens and back links inspected. Password changes, email delivery and OAuth remain excluded. |
 | Responsive/accessibility | Navigation; scroll areas; labels; keyboard controls | Chrome: Compare/Planner overflow fixed; all seven mobile navigation actions fit; comparison cards, dataset/history and country tables reach far edge; annual climate dialog and methodology page reach bottom; methodology Enter toggling; overrides/expenses/costs/tag/order controls labelled. Exact 390 px production regression checks Compare/Planner/Dataset/Expenses/Settings. |
@@ -94,6 +98,30 @@ calibration is out of scope; tests check product contracts, calculation integrit
 | Failure/data integrity | Rejected writes; user scoping; invalid values; conversion; network/provider errors; reload | Chrome and production regressions cover rejected expenses, fixed costs, tags, sorting, city costs, initial reads and controlled provider failures. Unit tests cover ownership and atomic import/tag/order writes. Missing conversions remain unavailable. No owner DB/provider key writes or methodology calibration. |
 
 ## Findings and fixes
+
+### F29 — Unsupported CSV becomes a blank zero-value expense
+
+Chrome offers an unrelated four-column CSV as one expense with blank date/currency and zero amount; Import is
+enabled. No confirmation is submitted. Thirteen new negative parser cases fail, and the old-build browser
+regression receives HTTP 200 instead of 400. The parser now validates supported header aliases, CSV structure,
+transaction IDs, real calendar dates, currency-code shape and complete finite amounts. Invalid files return HTTP
+400 with a file/row error before conversion, preview or writes. A mixed valid/invalid batch is rejected together.
+Optional missing exchange amounts remain supported; required missing source amounts cannot become zero.
+
+All 33 focused tests pass, including confirmed/mixed-upload no-write checks, preserved compact/history/balance
+formats, refunds, real zero amounts and valid header-only exports. TypeScript, isolated production build, all 70
+unit files / 419 tests, memory and v1.1 guard pass. Chrome confirms unrelated and truly empty files show errors
+without an Import action, February 30 has a row-specific error, a valid empty export has disabled Import 0,
+and selecting a correct file recovers with accurate duplicate detection. Evidence: `wise-unrelated-csv-reproduced.png`,
+`wise-unrelated-csv-fixed.png`. Two new production browser regressions cover recoverable preview errors and
+direct/mixed rejection with unchanged expense IDs. The complete sweep passes 103/107 in 9.4 minutes, including
+both CSV cases. Failure evidence shows saved-plan empty and climate states present after their five-second
+assertions, and the zero test starting reload less than one second before its overall deadline. Settings captures
+an empty traveller label before hydration, then incorrectly expects that blank label after later read failures.
+All ten checks in these four files pass unchanged on rerun in 57.2 seconds. The verified disposable zero-override
+leg 1165 and its transport row are removed from the QA copy after the first run; no expenses reference it.
+The Settings capture race will be corrected in a separate test-only checkpoint. No app or test deadline changes
+are made for this rerun.
 
 ### F28 — Provider credential controls lack associated labels
 
@@ -533,7 +561,7 @@ The filtered expense Export link produces the correct two-row manual CSV. Chrome
 about 34 minutes despite 10-second requested waits before returning the Downloads path. File contents are copied
 to the ignored QA folder and checked. This control-surface delay is separate from measured application response.
 
-### Live provider action approval
+### Initial live provider approval block — resolved on 3 October
 
 Automatic approval rejected a batch containing model refresh and Estimate Options because route cities, dates
 and notes could be sent to external providers. No live estimate was submitted. An async choice asks whether to
@@ -559,7 +587,7 @@ After F4, all 47 production Playwright checks pass in 2.2 minutes. These are sep
 
 Planner coverage is recorded in the ledger above. The disposable Agra leg and its transport rows are deleted.
 
-Interactive Chrome file attachment is blocked: the extension reports that `Allow access to file URLs` is required.
+Initial 2 October Chrome file attachment was blocked: the extension reported that `Allow access to file URLs` is required.
 The chooser call waits about twenty minutes before reporting this error. No setting was changed by Codex; the user
 has been asked to enable it or leave interactive file-upload coverage blocked. Fixture CSVs are ready under
 `.local/feature-qa/`. The category-confirmation defect is reproduced and fixed under F4 in production Playwright.

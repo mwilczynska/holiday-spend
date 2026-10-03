@@ -1,5 +1,12 @@
 import Papa from 'papaparse';
 
+export class WiseCsvValidationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'WiseCsvValidationError';
+  }
+}
+
 export interface ParsedExpense {
   date: string;
   amount: number;
@@ -134,10 +141,15 @@ function firstNonEmpty(...values: Array<string | undefined>): string {
 }
 
 function parseNumber(value: string | undefined): number {
-  if (!value) return 0;
-  const normalized = value.replace(/,/g, '').trim();
-  const parsed = Number.parseFloat(normalized);
-  return Number.isFinite(parsed) ? parsed : 0;
+  const trimmed = value?.trim() || '';
+  // Missing optional exchange amounts are allowed; required source amounts are checked below.
+  if (!trimmed) return 0;
+  const numberPattern = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+|\d{1,3}(?:,\d{3})+(?:\.\d*)?)$/;
+  const parsed = Number(trimmed.replace(/,/g, ''));
+  if (!numberPattern.test(trimmed) || !Number.isFinite(parsed)) {
+    throw new WiseCsvValidationError('Amount must be a finite number.');
+  }
+  return parsed;
 }
 
 function normalizeDate(value: string | undefined): string {
@@ -190,10 +202,6 @@ function inferCategory(params: {
   if (containsKeyword(text, ACTIVITY_KEYWORDS)) return 'activities';
 
   return 'other';
-}
-
-function isBalanceStatementRow(row: Record<string, string>): boolean {
-  return Boolean(row['TransferWise ID'] && row['Date Time'] && row['Transaction Type']);
 }
 
 function parseTransactionHistoryRow(row: Record<string, string>): ParsedExpense {
@@ -309,16 +317,45 @@ function parseBalanceStatementRow(row: Record<string, string>): ParsedExpense {
 export function parseWiseCsv(csvText: string): ParsedExpense[] {
   const result = Papa.parse<Record<string, string>>(csvText, {
     header: true,
-    skipEmptyLines: true,
+    skipEmptyLines: 'greedy',
     transformHeader: (header: string) => header.trim(),
   });
 
-  return result.data.map((row) => {
-    if (isBalanceStatementRow(row)) {
-      return parseBalanceStatementRow(row);
-    }
+  const fields = new Set(result.meta.fields || []);
+  const balanceStatement = fields.has('Transaction Type');
+  const requiredColumns = balanceStatement
+    ? [['TransferWise ID'], ['Date Time', 'Date'], ['Transaction Type'], ['Amount'], ['Currency']]
+    : [['ID', 'TransferWise ID'], ['Created on', 'Date'], ['Source amount (after fees)', 'Amount'], ['Source currency', 'Currency']];
+  const missing = requiredColumns.filter(aliases => !aliases.some(field => fields.has(field)));
+  if (missing.length > 0) {
+    throw new WiseCsvValidationError(`Unsupported Wise CSV columns. Missing: ${missing.map(aliases => aliases.join(' or ')).join('; ')}.`);
+  }
+  const parseError = result.errors.find(issue => issue.code !== 'UndetectableDelimiter');
+  if (parseError) {
+    throw new WiseCsvValidationError(`Malformed CSV (${parseError.code}). Check the column count and quoting, then select the corrected file.`);
+  }
 
-    return parseTransactionHistoryRow(row);
+  return result.data.map((row, index) => {
+    try {
+      const sourceAmount = balanceStatement ? row['Amount'] : firstNonEmpty(row['Source amount (after fees)'], row['Amount']);
+      if (!sourceAmount?.trim()) throw new WiseCsvValidationError('Amount is missing.');
+      const expense = balanceStatement ? parseBalanceStatementRow(row) : parseTransactionHistoryRow(row);
+      if (!expense.wiseTxnId) throw new WiseCsvValidationError('Transaction ID is missing.');
+      const date = new Date(`${expense.date}T00:00:00Z`);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(expense.date) || !Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== expense.date) {
+        throw new WiseCsvValidationError('Date must be a valid calendar date.');
+      }
+      if (![expense.currency, expense.sourceCurrency].every(currency => typeof currency === 'string' && /^[A-Z]{3}$/.test(currency))) {
+        throw new WiseCsvValidationError('Currency must be a three-letter uppercase code.');
+      }
+      if (balanceStatement && !row['Transaction Type']?.trim()) throw new WiseCsvValidationError('Transaction type is missing.');
+      return expense;
+    } catch (error) {
+      if (error instanceof WiseCsvValidationError) {
+        throw new WiseCsvValidationError(`CSV data row ${index + 1}: ${error.message}`);
+      }
+      throw error;
+    }
   });
 }
 
@@ -327,10 +364,16 @@ export function parseWiseCsv(csvText: string): ParsedExpense[] {
  *
  * Each file is parsed independently so every header row is handled by Papa
  * and a header from one export can never become a transaction row in another.
- * The returned rows intentionally retain the parser's existing semantics;
- * preparation and database-level transaction deduplication happen once for
- * the combined set in the import route.
+ * Validation completes before preparation or writes. One invalid file rejects
+ * the combined upload; database-level transaction deduplication then happens once.
  */
 export function parseWiseCsvFiles(csvTexts: readonly string[]): ParsedExpense[] {
-  return csvTexts.flatMap((csvText) => parseWiseCsv(csvText));
+  return csvTexts.flatMap((csvText, index) => {
+    try {
+      return parseWiseCsv(csvText);
+    } catch (error) {
+      if (error instanceof WiseCsvValidationError) throw new WiseCsvValidationError(`CSV file ${index + 1}: ${error.message}`);
+      throw error;
+    }
+  });
 }

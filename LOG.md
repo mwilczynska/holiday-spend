@@ -3011,3 +3011,24 @@ re-parsing detects two duplicates, and changing files clears the preview. Live H
 applies $270 and $440 flights with exactly one row each ($6,054 before JSON restoration). Existing-city live refresh
 is pending one final key entry after imports. F29 remains open: unrelated headers yield an enabled blank zero-value
 candidate. It is not imported; thirteen new validation cases reproduce this and invalid field handling.
+
+## 3 October 2026 — Feature QA F29: validate Wise uploads before preview and writes
+
+Chrome offers unrelated CSV headers as one blank zero-value expense with Import enabled. No confirmation is
+submitted. Thirteen negative parser cases fail on unsupported headers, empty/malformed structure and invalid
+fields; the old-build browser preview returns 200 rather than 400. Supported header aliases, complete finite
+amounts, IDs, real calendar dates and currency-code shape now validate before conversion or writes. Any invalid
+file rejects the whole batch with HTTP 400 and file/row guidance. Compact/history/balance formats, refunds, real
+zeros, missing optional exchange amounts and valid header-only exports remain supported.
+
+All 33 focused tests, TypeScript, isolated production build, all 70 unit files / 419 tests, memory and v1.1 guard
+pass. Chrome verifies unrelated and empty-file errors, February 30 rejection, disabled import for valid empty
+output and corrected-file retry with duplicate detection. Two new production regressions verify recovery and
+direct/mixed rejection with unchanged expense IDs. The final 107-check sweep passes 103 in 9.4 minutes, including
+both new cases. Saved-plan empty/climate states appear in failure snapshots; the zero-override test starts reload
+less than one second before its overall deadline. Settings captures a blank traveller label before hydration.
+All ten checks in the four affected files pass unchanged on rerun (57.2 seconds). No application or deadline
+change is included for the rerun. The verified disposable zero-override leg 1165 and its transport are removed
+only from the QA copy after confirming no expense references. The Settings baseline race is a separate pending
+test correction. Failed traces/screenshots remain ignored. F28 is pushed as `892f802`; the Canberra editor is
+prepared for one final owner-key entry after publication, with gpt-6-luna / High, key saving off and reveal off.

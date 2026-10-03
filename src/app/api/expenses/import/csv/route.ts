@@ -1,7 +1,7 @@
 import { db } from '@/db';
 import { expenses, itineraryLegs } from '@/db/schema';
 import { and, asc, eq, inArray } from 'drizzle-orm';
-import { parseWiseCsvFiles } from '@/lib/wise-csv-parser';
+import { parseWiseCsvFiles, WiseCsvValidationError } from '@/lib/wise-csv-parser';
 import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
 import { prepareWiseExpenses } from '@/lib/wise-import';
 import { success, error, handleError } from '@/lib/api-helpers';
@@ -141,6 +141,7 @@ export async function POST(request: Request) {
       total: parsedRows.length,
     });
   } catch (err) {
+    if (err instanceof WiseCsvValidationError) return error(err.message, 400);
     return handleError(err);
   }
 }

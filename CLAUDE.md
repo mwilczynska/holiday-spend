@@ -262,6 +262,9 @@ pending until confirmed. Cards preview unsaved changes while trip totals use sav
 traveller changes, reordering and estimates wait for edits to settle. Failed automatic ordering after a status save is labelled separately.
 Wise import confirmation preserves category changes from the preview, validates them against the selected files,
 and keeps amounts from parsed transaction data. Selecting different files clears the previous preview.
+Wise uploads validate supported headers, CSV structure, IDs, calendar dates, currency codes and finite amounts
+before conversion or writes. Any invalid file rejects the entire batch with a file/row error; actual zero values
+and valid empty exports remain distinct from missing or invalid input.
 
 ## Running the app locally
 
