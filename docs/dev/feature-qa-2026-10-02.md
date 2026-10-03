@@ -35,6 +35,21 @@ calibration is out of scope; tests check product contracts, calculation integrit
 
 ## Findings and fixes
 
+### F12 — Tags cannot be assigned or removed through expense controls
+
+Chrome's expense edit dialog and row actions offer no tag selection; the tag page only creates/edits/views tags.
+Fix: a labelled tag action opens a selection picker on desktop and mobile. GET returns owned options/assignments;
+PUT validates active-expense ownership and all selected tags before atomic replacement. Empty selection removes
+assignments. Rejected saves retain selections; failed reads disable Save and offer Retry. Chrome assigns a
+disposable tag, verifies its checked state after reload, and removes it. The production regression passes failed
+save retention/retry, read retry, persistence, removal, tag totals and invalid ID retention. Four unit checks verify
+foreign/deleted expense rejection, foreign/invalid tags, deduplication and rollback on insertion failure.
+All 67 unit files / 392 tests pass. Evidence: `expense-edit-no-tag-control.png`, `expense-tag-assignment-fixed.png`.
+
+Settings exports: a separate production browser check downloads JSON and CSV, validates all seven JSON arrays
+against the authenticated API and matches every CSV expense ID. Both pass. Chrome extension clicks on either
+button/link produce no observable download and no console error; this remains a separate control-surface limitation.
+
 ### F11 — Failed initial expense reads look like a successful empty tracker
 
 Temporarily renaming the isolated copy's expense table causes the initial read to fail. Chrome still presents

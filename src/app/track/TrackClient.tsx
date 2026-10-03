@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { ExpenseTagsDialog } from '@/components/expenses/ExpenseTagsDialog';
 import { buildExpenseExportHref } from '@/lib/expense-track-page';
 import { EXPENSE_PAGE_SIZE, getPageCount } from '@/lib/performance-bounds';
 import { EXPENSE_CATEGORIES } from '@/types';
@@ -113,6 +114,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [expandedIds, setExpandedIds] = useState<Set<number>>(new Set());
   const [editExpense, setEditExpense] = useState<Expense | null>(null);
+  const [tagExpenseId, setTagExpenseId] = useState<number | null>(null);
   const [editForm, setEditForm] = useState<ExpenseEditForm | null>(null);
   const [loading, setLoading] = useState(initialData.expenses.length === 0 && initialData.totalCount > 0);
   const [expensePage, setExpensePage] = useState(0);
@@ -463,6 +465,9 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                 <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
                   <Edit className="h-3 w-3" />
                 </Button>
+                <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => setTagExpenseId(expense.id)}>
+                  <Tags className="h-3 w-3" />
+                </Button>
                 <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
                   <Trash2 className="h-3 w-3" />
                 </Button>
@@ -484,7 +489,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
               <th className="w-[10rem] px-3 py-2 font-medium">Category</th>
               <th className="w-[9rem] px-3 py-2 font-medium">Amount</th>
               <th className="px-3 py-2 font-medium">Assignment</th>
-              <th className="w-[8rem] px-3 py-2 text-right font-medium">Actions</th>
+              <th className="w-[10rem] px-3 py-2 text-right font-medium">Actions</th>
               <th className="w-[4rem] px-3 py-2 text-right font-medium">More</th>
             </tr>
           </thead>
@@ -549,6 +554,9 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                         </Button>
                         <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
                           <Edit className="h-3 w-3" />
+                        </Button>
+                        <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => setTagExpenseId(expense.id)}>
+                          <Tags className="h-3 w-3" />
                         </Button>
                         <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
                           <Trash2 className="h-3 w-3" />
@@ -642,6 +650,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
         </div>
       )}
 
+      {tagExpenseId !== null && <ExpenseTagsDialog key={tagExpenseId} expenseId={tagExpenseId} onClose={() => setTagExpenseId(null)} />}
       <Dialog open={!!editExpense} onOpenChange={(open) => {
         if (!open && !saving) {
           setEditExpense(null);

@@ -2712,3 +2712,13 @@ profile save/clear/reload and logout/invalid-login pass; missing reset and inval
 Controlled local generation errors retain retry forms. Bulk transport preserves one success while retrying only
 one failure, applies fixture rows with reload persistence, and Stop starts five calls then labels nine cancellations
 while retaining one completed option. No additional queued requests start. Request interception is cleared.
+
+## 2 October 2026 — Feature QA: reachable expense tag assignment
+
+Chrome confirms no tag assignment/removal action in expense rows or edits. Added a labelled picker on desktop
+and mobile with owned options, retained failed saves, read retry and atomic selection replacement. Chrome checks
+assignment persistence after reload and removal. Production regression checks failure retention/retry, read retry,
+totals and invalid tag rejection. Four unit checks cover ownership, deleted expenses, invalid IDs, deduplication,
+clearing and rollback after an insert rejection; all 67 files / 392 tests pass. Settings JSON/CSV downloads pass
+artifact comparisons in production Playwright. Chrome export clicks produce no observable artifact and remain
+separate from that evidence. No owner data or credentials were changed.

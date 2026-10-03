@@ -203,6 +203,8 @@ Tag CRUD failures keep drafts and selections with an error; duplicate names retu
 failures and offer retry, and renaming a selected tag updates its displayed title.
 Tag counts and lists omit deleted expenses. Tag totals follow the tracker's AUD calculation and omit excluded
 spend and unavailable foreign-currency conversions; excluded and unconverted rows are labelled.
+Expense actions include a tag picker that assigns and removes tags. Selection replacement is atomic and scoped
+to the current user's active expense and tags. Failed saves retain selections; failed reads offer Retry.
 New manual expenses resolve an AUD conversion before saving when none is supplied. An unavailable rate leaves the
 conversion missing with a visible warning. Quick Add retains rejected input for retry and clears successful input
 immediately to prevent duplicate submissions.

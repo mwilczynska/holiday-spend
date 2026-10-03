@@ -73,10 +73,20 @@ Tenth fix committed and pushed as `7d6103e`: Chrome saves a negative city cost a
 error/draft after it. City creation/edit APIs reject negative/nonfinite costs; editor fields are labelled. The
 production regression passes through API rejection, unchanged stored values, zero/blank/decimal persistence and
 coffee/drinks-none coupling. TypeScript, build, 388 unit tests, memory and v1.1 guard pass.
-Eleventh fix ready to commit: a failed initial expense read produces a false empty tracker with no Retry before
+Eleventh fix committed and pushed as `5d9d31d`: a failed initial expense read produces a false empty tracker with no Retry before
 the fix. Chrome now sees unavailable totals/Retry, then recovers 1,301 expenses after fixture restoration. The
 production regression fails before and passes after; previous expense mutation regressions pass. TypeScript,
 build, 388 unit tests, memory and v1.1 guard pass. Review remaining scroll controls, tags assignment and export artifacts.
+
+Continuation checkpoint: Settings JSON/CSV artifacts pass a production browser check; Chrome extension clicks
+produce no observable download and remain separately limited. F12 reproduces missing expense tag assignment/removal
+controls. Add an owned, atomic tag selection workflow with retained failure drafts, then finish scroll coverage.
+Twelfth fix ready to commit: expense tags have reachable assignment/removal controls on desktop and mobile.
+Chrome verifies selection persistence and removal. A production regression covers rejected save retention,
+read retry, assignment totals and invalid tag rejection. Four unit checks cover ownership, deleted expenses,
+deduplication, clearing and transactional rollback; all 392 unit tests pass. Settings export artifact check passes.
+TypeScript, final production build, memory mirror and v1.1 guard also pass. Commit this fix separately, then run
+the complete production browser suite and finish the remaining interactive scroll coverage.
 
 - [ ] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
 - [ ] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.
