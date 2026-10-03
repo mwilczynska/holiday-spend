@@ -2695,3 +2695,20 @@ the field name before JSON serialization; invalid coffee/basket drafts are retai
 Fields have associated labels and allow decimal steps. Chrome verifies retained -5/error and valid retry. A
 production regression fails before the fix, then passes API rejection, unchanged stored values, zero/blank reload,
 decimal coffee and linked drinks-none persistence. TypeScript, build and 388 unit tests pass; memory/guard pass.
+
+## 2 October 2026 — Feature QA: failed initial expense read
+
+Temporarily renaming only the isolated copy's expense table reproduces a failed server read. Chrome presents
+0 expenses / $0 / No expenses yet with no error or Retry, including after hydration. The fixture is restored.
+The server now passes its read failure to the client; initial failure triggers a retry, unavailable counts/totals
+are labelled, exports are disabled, and last-loaded wording applies only to a prior successful read. Chrome
+verifies unavailable state and Retry recovery to 1,301 rows after restoration. The production regression fails
+before the fix and passes after; three expense mutation regressions plus auth setup pass. Its schema fixture
+requires the isolated QA path/account and restores in finally. TypeScript/build and 388 unit tests pass; memory/guard pass.
+
+Additional Chrome coverage: saved-plan list scroll reaches its last row; current/saved JSON downloads exist;
+two/five-plan comparisons and all expansions pass; traveller counts 1–5, persistence and planner scaling pass;
+profile save/clear/reload and logout/invalid-login pass; missing reset and invalid verification tokens show guidance.
+Controlled local generation errors retain retry forms. Bulk transport preserves one success while retrying only
+one failure, applies fixture rows with reload persistence, and Stop starts five calls then labels nine cancellations
+while retaining one completed option. No additional queued requests start. Request interception is cleared.

@@ -24,6 +24,7 @@ const EMPTY: TrackInitialData = {
 
 export default async function TrackPage() {
   let initialData = EMPTY;
+  let initialError: string | null = null;
 
   try {
     const userId = await requireCurrentUserId();
@@ -41,9 +42,9 @@ export default async function TrackPage() {
     };
   } catch {
     // Middleware redirects unauthenticated requests before this runs, so reaching here means the
-    // data could not be read. Render the shell and let the client's own fetch report the problem,
-    // exactly as it did before this page was server-rendered.
+    // data could not be read. Preserve that failure rather than seeding a successful empty view.
+    initialError = 'Could not load expenses. Try again.';
   }
 
-  return <TrackClient initialData={initialData} />;
+  return <TrackClient initialData={initialData} initialError={initialError} />;
 }

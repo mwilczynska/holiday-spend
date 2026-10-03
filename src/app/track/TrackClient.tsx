@@ -103,7 +103,7 @@ let hasMountedInThisDocument = false;
  * Only that first view is seeded. Every filter or page change still goes through the API, which is
  * the right split: the initial view is what every visit pays for, the rest are deliberate actions.
  */
-export function TrackClient({ initialData }: { initialData: TrackInitialData }) {
+export function TrackClient({ initialData, initialError = null }: { initialData: TrackInitialData; initialError?: string | null }) {
   const [expenses, setExpenses] = useState<Expense[]>(initialData.expenses);
   const [legs, setLegs] = useState<LegOption[]>(initialData.legs);
   const [filterCat, setFilterCat] = useState('all');
@@ -120,7 +120,8 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
   const [expenseTotalAud, setExpenseTotalAud] = useState(initialData.totalAud);
   const [filteredExpenseIds, setFilteredExpenseIds] = useState<number[]>(initialData.expenseIds);
   const [mutationError, setMutationError] = useState<string | null>(null);
-  const [loadError, setLoadError] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(initialError);
+  const [hasLoadedExpenses, setHasLoadedExpenses] = useState(!initialError);
   const [saving, setSaving] = useState(false);
   const submitting = useRef(false);
   const readSequence = useRef(0);
@@ -168,6 +169,7 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
 
       const expenseData = expensesData.data as TrackExpensePage | undefined;
       setExpenses(expenseData?.items || []);
+      setHasLoadedExpenses(true);
       setExpenseTotalCount(expenseData?.totalCount || 0);
       setExpenseTotalAud(expenseData?.totalAud || 0);
       setFilteredExpenseIds(expenseData?.expenseIds || []);
@@ -199,11 +201,11 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
      */
     if (!hasMountedInThisDocument) {
       hasMountedInThisDocument = true;
-      if (showsServerRenderedView) return;
+      if (showsServerRenderedView && !initialError) return;
     }
 
     fetchData();
-  }, [fetchData, showsServerRenderedView]);
+  }, [fetchData, showsServerRenderedView, initialError]);
 
   useEffect(() => {
     setExpensePage(0);
@@ -341,11 +343,11 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
         <div className="flex flex-wrap gap-2">
           <Link href="/track/add"><Button size="sm">Add</Button></Link>
           <Link href="/track/import"><Button size="sm" variant="outline"><Upload className="mr-1 h-4 w-4" />Import</Button></Link>
-          <Button size="sm" variant="outline" asChild disabled={expenseTotalCount === 0}>
+          {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button size="sm" variant="outline" asChild>
             <a href={exportHref} download>
               <Download className="mr-1 h-4 w-4" />Export
             </a>
-          </Button>
+          </Button> : <Button size="sm" variant="outline" disabled><Download className="mr-1 h-4 w-4" />Export</Button>}
           <Link href="/track/tags"><Button size="sm" variant="outline"><Tags className="mr-1 h-4 w-4" />Tags</Button></Link>
           {expenseTotalCount > 0 && (
             <Button size="sm" variant="destructive" disabled={saving || loading || !!loadError} onClick={handleDeleteAll}>
@@ -380,12 +382,12 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
       </div>
 
       {!editExpense && mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
-      {loadError && <div className="space-y-2"><p role="alert" className="text-sm text-destructive">{loadError} Showing the last loaded results.</p><Button size="sm" variant="outline" onClick={() => void fetchData()}>Retry loading expenses</Button></div>}
+      {loadError && <div className="space-y-2"><p role="alert" className="text-sm text-destructive">{loadError}{hasLoadedExpenses ? ' Showing the last loaded results.' : ''}</p><Button size="sm" variant="outline" onClick={() => void fetchData()}>Retry loading expenses</Button></div>}
 
       <div className="space-y-1 text-sm">
         <div className="flex gap-4">
-          <span>{expenseTotalCount} expenses</span>
-          <span className="font-medium">${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD</span>
+          <span>{hasLoadedExpenses ? `${expenseTotalCount} expenses` : 'Expense count unavailable'}</span>
+          <span className="font-medium">{hasLoadedExpenses ? `$${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD` : 'AUD total unavailable'}</span>
         </div>
         <p className="text-xs text-muted-foreground">
           City and country come from the assigned itinerary leg. Use edit to move flights, tickets, or pre-paid costs into the destination where you want them counted.
@@ -404,7 +406,7 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
 
       <div className="space-y-3 lg:hidden">
         {expenses.length === 0 && (
-          <p className="py-12 text-center text-muted-foreground">No expenses yet.</p>
+          <p className="py-12 text-center text-muted-foreground">{hasLoadedExpenses ? 'No expenses yet.' : 'Expenses unavailable. Retry loading expenses.'}</p>
         )}
         {visibleExpenses.map((expense) => (
           <Card key={expense.id} className={expense.isExcluded ? 'opacity-60' : ''}>
@@ -490,7 +492,7 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
             {expenses.length === 0 && (
               <tr>
                 <td colSpan={7} className="py-12 text-center text-muted-foreground">
-                  No expenses yet.
+                  {hasLoadedExpenses ? 'No expenses yet.' : 'Expenses unavailable. Retry loading expenses.'}
                 </td>
               </tr>
             )}

@@ -194,6 +194,9 @@ their draft with an error; the coffee price and coffee-only daily basket stay li
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
+
+A failed initial tracker read displays unavailable counts/totals and Retry. It never becomes a successful empty
+result. Successful server-rendered views still skip duplicate initial browser reads.
 Rejected expense edits keep their drafts; failed exclusion, deletion and bulk actions retain rows and selections
 with an error. Failed tracker reads label the last loaded results and offer retry instead of showing an empty list.
 Tag CRUD failures keep drafts and selections with an error; duplicate names return a conflict. Tag reads expose
