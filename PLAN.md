@@ -2,7 +2,7 @@
 
 **Status:** Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Publish completed feature QA to main — COMPLETE. Chrome feature testing is complete with recorded exclusions.
+**Current phase:** Clean up older merged branches — COMPLETE. Feature QA and its publication to main are complete.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -20,12 +20,22 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Latest publication:** [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Review `docs/dev/feature-qa-2026-10-02.md` on main. No publication or feature-testing work remains within the agreed scope. The owner chose completion with password changes, account creation, external email delivery and OAuth excluded. Chrome native confirm acceptance and Settings download artifacts have separate production regression coverage. No further key entry is needed. The final application baseline passes TypeScript, build, all 419 unit tests, memory and v1.1 guard.
+**Next action:** Review the QA report on main. The four older merged branches are deleted locally and remotely; only main and the retained `feat/city-cost-methodology-v6` branch remain. The archive tag `city-cost-v6.1-research-final-2026-08-18` is unchanged. No branch cleanup, publication or feature-testing work remains within the agreed scope; the final application baseline and owner-approved exclusions remain unchanged.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
 **Working tree:** Main contains all twenty-nine fixes, the miscellaneous feature, separate test corrections and completed coverage report. Both merged feature branches are deleted. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
+
+## Clean up older merged branches — COMPLETE (3 October 2026)
+
+The owner explicitly authorizes deletion of `feat/trip-climate`, `feat/app-performance`,
+`fix/city-generation-model-discovery` and `fix/shared-keys-city-picker`, while keeping the research branch
+and archive tag. Fresh main contains all four branch tips; no worktree uses them. Atomic remote deletion
+checks their verified tips, then normal merged local-branch deletion succeeds. Local and remote inventories
+now contain only main and `feat/city-cost-methodology-v6` (`93d73d3`). The archive tag's object remains
+`cfe5694dd02147ce4cceadce690ed429a318d1fd` locally and remotely. Generated artifacts, databases and credentials
+are outside this cleanup.
 
 ## Publish completed feature QA to main — COMPLETE (3 October 2026)
 

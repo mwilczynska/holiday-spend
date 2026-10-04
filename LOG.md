@@ -3077,3 +3077,16 @@ authorized merge uses a merge commit, retaining the separate fix commits. GitHub
 and the fully merged `fix/comprehensive-feature-qa` branch is deleted. The merged application/test tree is
 unchanged from the verified branch, so the recorded final baseline remains applicable. The closure checkpoint
 updates plan/report/history only. No QA database, provider credential or unrelated branch is removed.
+
+## 3 October 2026 — Older merged branches removed; research archive preserved
+
+The owner explicitly requests deleting the four older merged branches while retaining the v6 research branch
+and its archive tag. Refreshed main contains all four tips and no worktree uses them. Atomic, tip-conditional
+remote deletion and normal merged local deletion succeed for `feat/trip-climate` (`92f1606`),
+`feat/app-performance` (`8288d38`), `fix/city-generation-model-discovery` (`28886be`) and
+`fix/shared-keys-city-picker` (`d863e48`). Their commits remain in main and their merged PR history.
+Only main and `feat/city-cost-methodology-v6` remain locally and remotely. The research branch remains
+`93d73d3845f3ccea17acafd069c14db2479f40a4`; the archive tag
+`city-cost-v6.1-research-final-2026-08-18` remains object `cfe5694dd02147ce4cceadce690ed429a318d1fd`
+locally and remotely. There is still only the primary worktree. No generated artifact, database or credential
+is deleted. This documentation-only checkpoint records cleanup; application verification is unchanged.
