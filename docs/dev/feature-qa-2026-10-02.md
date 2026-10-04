@@ -1,6 +1,6 @@
 # Comprehensive feature QA — 2–3 October 2026
 
-Status: complete with owner-approved authentication exclusions. Local imports and live OpenAI new/existing city generation and transport checks are verified. Baseline: main `1413f3f`. Branch: `fix/comprehensive-feature-qa`.
+Status: complete with owner-approved authentication exclusions; merged to main in [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`. Local imports and live OpenAI new/existing city generation and transport checks are verified. Baseline: main `1413f3f`. Tested branch: former `fix/comprehensive-feature-qa`; merged remote/local branches are deleted.
 
 Checkpoint: twenty-nine separate fixes are committed and pushed through `488bbd3`. The final baseline has
 419 passing unit tests. The earlier baseline through F27 had 398. The full production sweep passed 81 checks after F20; fourteen targeted checks,

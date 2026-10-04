@@ -3067,3 +3067,13 @@ exclusions. The working tree is clean at `13bcec0`. Fresh origin/main remains an
 GitHub has no existing PR for `fix/comprehensive-feature-qa`. Publication will create a PR and use a merge commit
 to preserve the individual fix commits, then remove the merged remote/local feature branch. Application source
 and verification evidence remain unchanged; the publication checkpoint updates documentation only.
+
+## 3 October 2026 — Feature QA merged to main; PR cleanup complete
+
+Publication checkpoint `9a4c53a` is committed and pushed. PR #13 is created and attached to the task, targets
+main, matches that exact head, and reports CLEAN/MERGEABLE with no configured status checks. The owner's
+authorized merge uses a merge commit, retaining the separate fix commits. GitHub confirms MERGED with commit
+`bffc6e05d01498560c527a409431d1faf1c31921`. The remote feature branch is deleted; local main is fast-forwarded
+and the fully merged `fix/comprehensive-feature-qa` branch is deleted. The merged application/test tree is
+unchanged from the verified branch, so the recorded final baseline remains applicable. The closure checkpoint
+updates plan/report/history only. No QA database, provider credential or unrelated branch is removed.

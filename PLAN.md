@@ -1,44 +1,46 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Comprehensive feature QA complete with owner-approved authentication exclusions; publication to main is in progress at the owner's request. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. Prior product phases complete.
+**Status:** Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Publish completed feature QA to main — IN PROGRESS. Chrome feature testing is complete with recorded exclusions.
+**Current phase:** Publish completed feature QA to main — COMPLETE. Chrome feature testing is complete with recorded exclusions.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `fix/comprehensive-feature-qa` — starts from main `1413f3f`, including PR #12 and PR #11.
+**Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
 **Last updated:** 3 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `caf6933` — shared saved keys, clickable city choices, configured transport limits, Stop and failed-leg retry.
+**Latest implementation checkpoint:** `488bbd3` — final feature QA fix: strict Wise CSV validation. The completed audit includes all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
 
-**Previous implementation checkpoint:** `515c445` — actionable, credential-safe failure details and deadline handling;
-follows `1581388` request limits, current discovery and GPT-6 Luna max default on merged `main` (`c459cfd`).
+**Previous product checkpoint:** `caf6933` — shared saved keys, clickable city choices, configured transport limits, Stop and failed-leg retry. It follows `515c445` actionable credential-safe failures and deadlines, and `1581388` request limits/current discovery/GPT-6 Luna max default on merged main (`c459cfd`).
 
-**Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
+**Latest publication:** [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Commit this publication checkpoint, create the branch's PR, merge to main preserving the individual fix commits, and remove the merged remote/local feature branch. Verify the merged PR and clean synchronized main checkout. No feature-testing work remains within the agreed scope. The owner chose completion with password changes, account creation, external email delivery and OAuth excluded. Chrome native confirm acceptance and Settings download artifacts have separate production regression coverage. No further key entry is needed. The final application baseline passes TypeScript, build, all 419 unit tests, memory and v1.1 guard.
+**Next action:** Review `docs/dev/feature-qa-2026-10-02.md` on main. No publication or feature-testing work remains within the agreed scope. The owner chose completion with password changes, account creation, external email delivery and OAuth excluded. Chrome native confirm acceptance and Settings download artifacts have separate production regression coverage. No further key entry is needed. The final application baseline passes TypeScript, build, all 419 unit tests, memory and v1.1 guard.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
-**Working tree:** Twenty-nine separate fixes are pushed through `488bbd3`. The final checkpoint publishes the separate Settings readiness correction and completed coverage report. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
+**Working tree:** Main contains all twenty-nine fixes, the miscellaneous feature, separate test corrections and completed coverage report. Both merged feature branches are deleted. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
 
-## Publish completed feature QA to main — IN PROGRESS (3 October 2026)
+## Publish completed feature QA to main — COMPLETE (3 October 2026)
 
-The owner requests commit, push, merge to main and PR cleanup. The working tree is clean at `13bcec0`;
-GitHub has no existing PR for this branch. Fresh origin/main is an ancestor with 37 branch commits and no
-diverging main commits. A merge commit will preserve each fix's history. The final baseline and coverage
-exclusions above remain unchanged; this publication checkpoint changes documentation only.
+The owner requests commit, push, merge to main and PR cleanup. The starting tree is clean at `13bcec0`;
+GitHub has no existing PR for this branch, and refreshed origin/main is an ancestor. Publication checkpoint
+`9a4c53a` is committed and pushed. PR #13 is created, attached, verified CLEAN/MERGEABLE at that exact head,
+and merged as `bffc6e0`, preserving the individual fix commits. GitHub reports MERGED; its remote feature
+branch is deleted, local main is fast-forwarded, and the fully merged local feature branch is deleted.
+The merged application/test tree matches the verified branch. Final baseline and coverage exclusions remain
+unchanged; publication and closure checkpoints change documentation only.
 
 - [x] Inspect the working tree, refreshed main and existing PRs.
-- [ ] Commit/push the publication checkpoint and create/attach the PR.
-- [ ] Verify merge readiness and merge to main.
-- [ ] Remove the merged feature branches and verify clean synchronized main.
+- [x] Commit/push the publication checkpoint and create/attach the PR.
+- [x] Verify merge readiness and merge to main.
+- [x] Remove the merged feature branches and verify synchronized main.
 
 ## Manual miscellaneous planner expenses — COMPLETE (3 October 2026)
 
