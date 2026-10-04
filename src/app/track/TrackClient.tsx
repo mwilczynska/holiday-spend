@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo, Fragment } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef, Fragment } from 'react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { ExpenseTagsDialog } from '@/components/expenses/ExpenseTagsDialog';
 import { buildExpenseExportHref } from '@/lib/expense-track-page';
 import { EXPENSE_PAGE_SIZE, getPageCount } from '@/lib/performance-bounds';
 import { EXPENSE_CATEGORIES } from '@/types';
@@ -103,7 +104,7 @@ let hasMountedInThisDocument = false;
  * Only that first view is seeded. Every filter or page change still goes through the API, which is
  * the right split: the initial view is what every visit pays for, the rest are deliberate actions.
  */
-export function TrackClient({ initialData }: { initialData: TrackInitialData }) {
+export function TrackClient({ initialData, initialError = null }: { initialData: TrackInitialData; initialError?: string | null }) {
   const [expenses, setExpenses] = useState<Expense[]>(initialData.expenses);
   const [legs, setLegs] = useState<LegOption[]>(initialData.legs);
   const [filterCat, setFilterCat] = useState('all');
@@ -113,12 +114,19 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [expandedIds, setExpandedIds] = useState<Set<number>>(new Set());
   const [editExpense, setEditExpense] = useState<Expense | null>(null);
+  const [tagExpenseId, setTagExpenseId] = useState<number | null>(null);
   const [editForm, setEditForm] = useState<ExpenseEditForm | null>(null);
   const [loading, setLoading] = useState(initialData.expenses.length === 0 && initialData.totalCount > 0);
   const [expensePage, setExpensePage] = useState(0);
   const [expenseTotalCount, setExpenseTotalCount] = useState(initialData.totalCount);
   const [expenseTotalAud, setExpenseTotalAud] = useState(initialData.totalAud);
   const [filteredExpenseIds, setFilteredExpenseIds] = useState<number[]>(initialData.expenseIds);
+  const [mutationError, setMutationError] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(initialError);
+  const [hasLoadedExpenses, setHasLoadedExpenses] = useState(!initialError);
+  const [saving, setSaving] = useState(false);
+  const submitting = useRef(false);
+  const readSequence = useRef(0);
 
   // Mirrors the filters applied to the list, so the download matches what is on screen
   // rather than silently exporting every expense.
@@ -143,18 +151,27 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
     params.set('page', String(expensePage));
     params.set('pageSize', String(EXPENSE_PAGE_SIZE));
 
+    const read = ++readSequence.current;
     setLoading(true);
+    setLoadError(null);
     try {
       const [expensesRes, itineraryRes] = await Promise.all([
         fetch(`/api/expenses?${params}`),
         fetch('/api/itinerary?view=track'),
       ]);
 
-      const expensesData = await expensesRes.json();
-      const itineraryData = await itineraryRes.json();
+      const expensesData = await expensesRes.json().catch(() => null);
+      const itineraryData = await itineraryRes.json().catch(() => null);
+      if (!expensesRes.ok) throw new Error(expensesData?.error || `Could not load expenses (HTTP ${expensesRes.status}).`);
+      if (!itineraryRes.ok) throw new Error(itineraryData?.error || `Could not load assignments (HTTP ${itineraryRes.status}).`);
+      if (!Array.isArray(expensesData?.data?.items) || !Array.isArray(itineraryData?.data)) {
+        throw new Error('The server returned unreadable expense data. Try again.');
+      }
+      if (read !== readSequence.current) return;
 
       const expenseData = expensesData.data as TrackExpensePage | undefined;
       setExpenses(expenseData?.items || []);
+      setHasLoadedExpenses(true);
       setExpenseTotalCount(expenseData?.totalCount || 0);
       setExpenseTotalAud(expenseData?.totalAud || 0);
       setFilteredExpenseIds(expenseData?.expenseIds || []);
@@ -167,8 +184,10 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
           endDate: leg.endDate,
         }))
       );
+    } catch (err) {
+      if (read === readSequence.current) setLoadError(err instanceof Error ? err.message : 'Could not load expenses. Check your connection and try again.');
     } finally {
-      setLoading(false);
+      if (read === readSequence.current) setLoading(false);
     }
   }, [expensePage, filterCat, filterSource, filterFrom, filterTo]);
 
@@ -184,39 +203,60 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
      */
     if (!hasMountedInThisDocument) {
       hasMountedInThisDocument = true;
-      if (showsServerRenderedView) return;
+      if (showsServerRenderedView && !initialError) return;
     }
 
     fetchData();
-  }, [fetchData, showsServerRenderedView]);
+  }, [fetchData, showsServerRenderedView, initialError]);
 
   useEffect(() => {
     setExpensePage(0);
   }, [filterCat, filterSource, filterFrom, filterTo]);
 
+  const mutateExpense = async (url: string, method: string, body?: Record<string, unknown>, onSuccess?: () => void) => {
+    if (submitting.current) return;
+    submitting.current = true;
+    setSaving(true);
+    setMutationError(null);
+    try {
+      const response = await fetch(url, {
+        method,
+        ...(body ? { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || `Could not update expenses (HTTP ${response.status}). Try again.`);
+      if (!result?.data) throw new Error('The server returned an unreadable response. Reload before retrying.');
+      onSuccess?.();
+      await fetchData();
+    } catch (err) {
+      setMutationError(err instanceof Error ? err.message : 'Could not update expenses. Check your connection and try again.');
+    } finally {
+      submitting.current = false;
+      setSaving(false);
+    }
+  };
+
   const handleToggleExclude = async (id: number) => {
-    await fetch(`/api/expenses/${id}/exclude`, { method: 'PATCH' });
-    fetchData();
+    await mutateExpense(`/api/expenses/${id}/exclude`, 'PATCH');
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm('Permanently delete this expense?')) return;
-    await fetch(`/api/expenses/${id}`, { method: 'DELETE' });
-    fetchData();
+    if (!confirm('Delete this expense?')) return;
+    await mutateExpense(`/api/expenses/${id}`, 'DELETE', undefined, () => {
+      setSelectedIds(current => new Set(Array.from(current).filter(selectedId => selectedId !== id)));
+    });
   };
 
   const handleEditSave = async () => {
     if (!editExpense || !editForm) return;
 
-    const amount = Number.parseFloat(editForm.amount);
-    if (!editForm.date || !Number.isFinite(amount) || amount <= 0 || !editForm.currency || !editForm.category) {
+    const amount = Number(editForm.amount);
+    if (!editForm.date || !Number.isFinite(amount) || amount <= 0 || !editForm.currency.trim() || !editForm.category) {
+      setMutationError('Enter a date, a positive amount, currency and category.');
       return;
     }
 
-    await fetch(`/api/expenses/${editExpense.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+    await mutateExpense(`/api/expenses/${editExpense.id}`, 'PUT', {
         date: editForm.date,
         amount,
         currency: editForm.currency.trim().toUpperCase(),
@@ -225,15 +265,14 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
         description: editForm.description.trim() || null,
         merchant: editForm.merchant.trim() || null,
         legId: editForm.legId === UNASSIGNED_LEG_VALUE ? null : Number.parseInt(editForm.legId, 10),
-      }),
+    }, () => {
+      setEditExpense(null);
+      setEditForm(null);
     });
-
-    setEditExpense(null);
-    setEditForm(null);
-    fetchData();
   };
 
   const openEdit = (exp: Expense) => {
+    setMutationError(null);
     setEditExpense(exp);
     setEditForm({
       date: exp.date,
@@ -268,23 +307,12 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
   };
 
   const handleBulkAction = async (action: string, extra?: Record<string, unknown>) => {
-    await fetch('/api/expenses/bulk', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ids: Array.from(selectedIds), action, ...extra }),
-    });
-    setSelectedIds(new Set());
-    fetchData();
+    await mutateExpense('/api/expenses/bulk', 'POST', { ids: Array.from(selectedIds), action, ...extra }, () => setSelectedIds(new Set()));
   };
 
   const handleDeleteAll = async () => {
-    if (!confirm(`Delete ALL ${expenseTotalCount} expenses? This cannot be undone.`)) return;
-    await fetch('/api/expenses/bulk', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ids: filteredExpenseIds, action: 'delete' }),
-    });
-    fetchData();
+    if (!confirm(`Delete all ${expenseTotalCount} expenses matching the current filters?`)) return;
+    await mutateExpense('/api/expenses/bulk', 'POST', { ids: filteredExpenseIds, action: 'delete' }, () => setSelectedIds(new Set()));
   };
 
   const expensePageCount = getPageCount(expenseTotalCount, EXPENSE_PAGE_SIZE);
@@ -317,14 +345,14 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
         <div className="flex flex-wrap gap-2">
           <Link href="/track/add"><Button size="sm">Add</Button></Link>
           <Link href="/track/import"><Button size="sm" variant="outline"><Upload className="mr-1 h-4 w-4" />Import</Button></Link>
-          <Button size="sm" variant="outline" asChild disabled={expenseTotalCount === 0}>
+          {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button size="sm" variant="outline" asChild>
             <a href={exportHref} download>
               <Download className="mr-1 h-4 w-4" />Export
             </a>
-          </Button>
+          </Button> : <Button size="sm" variant="outline" disabled><Download className="mr-1 h-4 w-4" />Export</Button>}
           <Link href="/track/tags"><Button size="sm" variant="outline"><Tags className="mr-1 h-4 w-4" />Tags</Button></Link>
           {expenseTotalCount > 0 && (
-            <Button size="sm" variant="destructive" onClick={handleDeleteAll}>
+            <Button size="sm" variant="destructive" disabled={saving || loading || !!loadError} onClick={handleDeleteAll}>
               <XCircle className="mr-1 h-4 w-4" />Delete All
             </Button>
           )}
@@ -333,7 +361,7 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
 
       <div className="flex flex-wrap gap-2">
         <Select value={filterCat} onValueChange={setFilterCat}>
-          <SelectTrigger className="h-8 w-[140px] text-xs"><SelectValue placeholder="Category" /></SelectTrigger>
+          <SelectTrigger aria-label="Filter category" className="h-8 w-[140px] text-xs"><SelectValue placeholder="Category" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All categories</SelectItem>
             {EXPENSE_CATEGORIES.map((category) => (
@@ -344,21 +372,24 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
           </SelectContent>
         </Select>
         <Select value={filterSource} onValueChange={setFilterSource}>
-          <SelectTrigger className="h-8 w-[120px] text-xs"><SelectValue /></SelectTrigger>
+          <SelectTrigger aria-label="Filter source" className="h-8 w-[120px] text-xs"><SelectValue /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All sources</SelectItem>
             <SelectItem value="manual">Manual</SelectItem>
             <SelectItem value="wise_csv">Wise CSV</SelectItem>
           </SelectContent>
         </Select>
-        <Input type="date" className="h-8 w-[140px] text-xs" value={filterFrom} onChange={(e) => setFilterFrom(e.target.value)} placeholder="From" />
-        <Input type="date" className="h-8 w-[140px] text-xs" value={filterTo} onChange={(e) => setFilterTo(e.target.value)} placeholder="To" />
+        <Input aria-label="From date" type="date" className="h-8 w-[140px] text-xs" value={filterFrom} onChange={(e) => setFilterFrom(e.target.value)} placeholder="From" />
+        <Input aria-label="To date" type="date" className="h-8 w-[140px] text-xs" value={filterTo} onChange={(e) => setFilterTo(e.target.value)} placeholder="To" />
       </div>
+
+      {!editExpense && mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
+      {loadError && <div className="space-y-2"><p role="alert" className="text-sm text-destructive">{loadError}{hasLoadedExpenses ? ' Showing the last loaded results.' : ''}</p><Button size="sm" variant="outline" onClick={() => void fetchData()}>Retry loading expenses</Button></div>}
 
       <div className="space-y-1 text-sm">
         <div className="flex gap-4">
-          <span>{expenseTotalCount} expenses</span>
-          <span className="font-medium">${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD</span>
+          <span>{hasLoadedExpenses ? `${expenseTotalCount} expenses` : 'Expense count unavailable'}</span>
+          <span className="font-medium">{hasLoadedExpenses ? `$${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD` : 'AUD total unavailable'}</span>
         </div>
         <p className="text-xs text-muted-foreground">
           City and country come from the assigned itinerary leg. Use edit to move flights, tickets, or pre-paid costs into the destination where you want them counted.
@@ -369,15 +400,15 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
       {selectedIds.size > 0 && (
         <div className="flex gap-2 rounded bg-muted p-2">
           <span className="text-sm">{selectedIds.size} selected</span>
-          <Button size="sm" variant="outline" onClick={() => handleBulkAction('exclude')}>Exclude</Button>
-          <Button size="sm" variant="outline" onClick={() => handleBulkAction('include')}>Include</Button>
-          <Button size="sm" variant="outline" onClick={() => setSelectedIds(new Set())}>Clear</Button>
+          <Button size="sm" variant="outline" disabled={saving || loading || !!loadError} onClick={() => handleBulkAction('exclude')}>Exclude</Button>
+          <Button size="sm" variant="outline" disabled={saving || loading || !!loadError} onClick={() => handleBulkAction('include')}>Include</Button>
+          <Button size="sm" variant="outline" disabled={saving} onClick={() => setSelectedIds(new Set())}>Clear</Button>
         </div>
       )}
 
       <div className="space-y-3 lg:hidden">
         {expenses.length === 0 && (
-          <p className="py-12 text-center text-muted-foreground">No expenses yet.</p>
+          <p className="py-12 text-center text-muted-foreground">{hasLoadedExpenses ? 'No expenses yet.' : 'Expenses unavailable. Retry loading expenses.'}</p>
         )}
         {visibleExpenses.map((expense) => (
           <Card key={expense.id} className={expense.isExcluded ? 'opacity-60' : ''}>
@@ -385,6 +416,8 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
               <div className="flex items-start gap-3">
                 <input
                   type="checkbox"
+                  aria-label={`Select expense ${expense.id}`}
+                  disabled={saving}
                   checked={selectedIds.has(expense.id)}
                   onChange={() => toggleSelect(expense.id)}
                   className="mt-1 h-4 w-4"
@@ -426,13 +459,16 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
                 </div>
               </div>
               <div className="flex justify-end gap-1">
-                <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => handleToggleExclude(expense.id)}>
+                <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => handleToggleExclude(expense.id)}>
                   {expense.isExcluded ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
                 </Button>
-                <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
+                <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
                   <Edit className="h-3 w-3" />
                 </Button>
-                <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
+                <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => setTagExpenseId(expense.id)}>
+                  <Tags className="h-3 w-3" />
+                </Button>
+                <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
                   <Trash2 className="h-3 w-3" />
                 </Button>
               </div>
@@ -453,7 +489,7 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
               <th className="w-[10rem] px-3 py-2 font-medium">Category</th>
               <th className="w-[9rem] px-3 py-2 font-medium">Amount</th>
               <th className="px-3 py-2 font-medium">Assignment</th>
-              <th className="w-[8rem] px-3 py-2 text-right font-medium">Actions</th>
+              <th className="w-[10rem] px-3 py-2 text-right font-medium">Actions</th>
               <th className="w-[4rem] px-3 py-2 text-right font-medium">More</th>
             </tr>
           </thead>
@@ -461,7 +497,7 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
             {expenses.length === 0 && (
               <tr>
                 <td colSpan={7} className="py-12 text-center text-muted-foreground">
-                  No expenses yet.
+                  {hasLoadedExpenses ? 'No expenses yet.' : 'Expenses unavailable. Retry loading expenses.'}
                 </td>
               </tr>
             )}
@@ -474,6 +510,8 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
                     <td className="px-3 py-3">
                       <input
                         type="checkbox"
+                        aria-label={`Select expense ${expense.id}`}
+                        disabled={saving}
                         checked={selectedIds.has(expense.id)}
                         onChange={() => toggleSelect(expense.id)}
                         className="h-4 w-4"
@@ -511,20 +549,23 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex justify-end gap-1">
-                        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => handleToggleExclude(expense.id)}>
+                        <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => handleToggleExclude(expense.id)}>
                           {expense.isExcluded ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
                         </Button>
-                        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
+                        <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
                           <Edit className="h-3 w-3" />
                         </Button>
-                        <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
+                        <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => setTagExpenseId(expense.id)}>
+                          <Tags className="h-3 w-3" />
+                        </Button>
+                        <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
                           <Trash2 className="h-3 w-3" />
                         </Button>
                       </div>
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex justify-end">
-                        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => toggleExpanded(expense.id)}>
+                        <Button aria-label={`${isExpanded ? 'Hide' : 'Show'} details for expense ${expense.id}`} aria-expanded={isExpanded} variant="ghost" size="icon" className="h-7 w-7" onClick={() => toggleExpanded(expense.id)}>
                           {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                         </Button>
                       </div>
@@ -532,7 +573,7 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
                   </tr>
                   {isExpanded && (
                     <tr className={expense.isExcluded ? 'bg-muted/10 text-muted-foreground' : 'bg-muted/5'}>
-                      <td colSpan={7} className="px-3 py-3">
+                      <td colSpan={8} className="px-3 py-3">
                         <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
                           <div>
                             <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Description</div>
@@ -609,8 +650,9 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
         </div>
       )}
 
+      {tagExpenseId !== null && <ExpenseTagsDialog key={tagExpenseId} expenseId={tagExpenseId} onClose={() => setTagExpenseId(null)} />}
       <Dialog open={!!editExpense} onOpenChange={(open) => {
-        if (!open) {
+        if (!open && !saving) {
           setEditExpense(null);
           setEditForm(null);
         }
@@ -621,11 +663,13 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
               Change the date, amount, category or assigned itinerary leg for this expense.
             </DialogDescription></DialogHeader>
           {editForm && (
-            <div className="space-y-3">
+            <fieldset disabled={saving} className="space-y-3">
+              {mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <Label className="text-xs">Date</Label>
+                  <Label htmlFor="expense-edit-date" className="text-xs">Date</Label>
                   <Input
+                    id="expense-edit-date"
                     type="date"
                     className="h-8 text-xs"
                     value={editForm.date}
@@ -633,9 +677,12 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
                   />
                 </div>
                 <div>
-                  <Label className="text-xs">Amount</Label>
+                  <Label htmlFor="expense-edit-amount" className="text-xs">Amount</Label>
                   <Input
+                    id="expense-edit-amount"
                     type="number"
+                    min="0.01"
+                    step="any"
                     className="h-8 text-xs"
                     value={editForm.amount}
                     onChange={(e) => setEditForm((prev) => prev ? { ...prev, amount: e.target.value } : prev)}
@@ -644,20 +691,21 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <Label className="text-xs">Currency</Label>
+                  <Label htmlFor="expense-edit-currency" className="text-xs">Currency</Label>
                   <Input
+                    id="expense-edit-currency"
                     className="h-8 text-xs"
                     value={editForm.currency}
                     onChange={(e) => setEditForm((prev) => prev ? { ...prev, currency: e.target.value.toUpperCase() } : prev)}
                   />
                 </div>
                 <div>
-                  <Label className="text-xs">Category</Label>
+                  <Label htmlFor="expense-edit-category" className="text-xs">Category</Label>
                   <Select
                     value={editForm.category}
                     onValueChange={(value) => setEditForm((prev) => prev ? { ...prev, category: value } : prev)}
                   >
-                    <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
+                    <SelectTrigger id="expense-edit-category" className="h-8 text-xs"><SelectValue /></SelectTrigger>
                     <SelectContent>
                       {EXPENSE_CATEGORIES.map((category) => (
                         <SelectItem key={category.value} value={category.value}>
@@ -669,12 +717,12 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
                 </div>
               </div>
               <div>
-                <Label className="text-xs">City / Country Assignment</Label>
+                <Label htmlFor="expense-edit-assignment" className="text-xs">City / Country Assignment</Label>
                 <Select
                   value={editForm.legId}
                   onValueChange={(value) => setEditForm((prev) => prev ? { ...prev, legId: value } : prev)}
                 >
-                  <SelectTrigger className="h-8 text-xs">
+                  <SelectTrigger id="expense-edit-assignment" className="h-8 text-xs">
                     <SelectValue placeholder="Select itinerary leg" />
                   </SelectTrigger>
                   <SelectContent>
@@ -701,31 +749,34 @@ export function TrackClient({ initialData }: { initialData: TrackInitialData }) 
                 </p>
               </div>
               <div>
-                <Label className="text-xs">Description</Label>
+                <Label htmlFor="expense-edit-description" className="text-xs">Description</Label>
                 <Input
+                  id="expense-edit-description"
                   className="h-8 text-xs"
                   value={editForm.description}
                   onChange={(e) => setEditForm((prev) => prev ? { ...prev, description: e.target.value } : prev)}
                 />
               </div>
               <div>
-                <Label className="text-xs">Merchant</Label>
+                <Label htmlFor="expense-edit-merchant" className="text-xs">Merchant</Label>
                 <Input
+                  id="expense-edit-merchant"
                   className="h-8 text-xs"
                   value={editForm.merchant}
                   onChange={(e) => setEditForm((prev) => prev ? { ...prev, merchant: e.target.value } : prev)}
                 />
               </div>
               <div>
-                <Label className="text-xs">Subcategory</Label>
+                <Label htmlFor="expense-edit-subcategory" className="text-xs">Subcategory</Label>
                 <Input
+                  id="expense-edit-subcategory"
                   className="h-8 text-xs"
                   value={editForm.subcategory}
                   onChange={(e) => setEditForm((prev) => prev ? { ...prev, subcategory: e.target.value } : prev)}
                 />
               </div>
-              <Button onClick={handleEditSave} className="w-full">Save Changes</Button>
-            </div>
+              <Button disabled={saving} onClick={handleEditSave} className="w-full">{saving ? 'Saving…' : 'Save Changes'}</Button>
+            </fieldset>
           )}
         </DialogContent>
       </Dialog>

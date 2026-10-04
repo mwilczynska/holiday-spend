@@ -74,10 +74,11 @@ function csv(ids: string[]) {
   return [HEADER, ...ids.map((id) => csvRow(id))].join('\n');
 }
 
-function post(csvText: string, confirm: boolean) {
+function post(csvText: string, confirm: boolean, categoryOverrides?: unknown) {
   const form = new FormData();
   form.append('file', new File([csvText], 'wise.csv', { type: 'text/csv' }));
   if (confirm) form.append('confirm', 'true');
+  if (categoryOverrides !== undefined) form.append('categoryOverrides', JSON.stringify(categoryOverrides));
   return route.POST(new Request('http://localhost/api/expenses/import/csv', { method: 'POST', body: form }));
 }
 
@@ -139,6 +140,57 @@ describe.sequential('wise csv import route', () => {
     const body = await response.json();
     expect(body.data.imported).toBe(3);
     expect(storedIds()).toEqual(['a-1', 'a-2', 'a-3']);
+  });
+
+  it.each([false, true])('rejects unsupported files before preview or confirmation (confirm=%s)', async (confirm) => {
+    seedExisting(['kept-1']);
+    const response = await post('not,a,wise,export\none,two,three,four', confirm);
+    expect(response.status).toBe(400);
+    expect((await response.json()).error).toContain('Unsupported Wise CSV columns');
+    expect(storedIds()).toEqual(['kept-1']);
+  });
+
+  it('rejects a mixed valid/invalid upload before conversion or any write', async () => {
+    seedExisting(['kept-1']);
+    const form = new FormData();
+    form.append('file', new File([csv(['new-1'])], 'valid.csv', { type: 'text/csv' }));
+    form.append('file', new File(['ID,Date,Amount,Currency\nbad-1,2026-02-30,25,AUD'], 'invalid.csv', { type: 'text/csv' }));
+    form.append('confirm', 'true');
+    const response = await route.POST(new Request('http://localhost/api/expenses/import/csv', { method: 'POST', body: form }));
+    expect(response.status).toBe(400);
+    expect((await response.json()).error).toContain('CSV file 2: CSV data row 1');
+    expect(storedIds()).toEqual(['kept-1']);
+  });
+
+  it('persists validated preview categories while keeping parsed amounts intact', async () => {
+    const response = await post(csv(['category-1', 'category-2']), true, [{ wiseTxnId: 'category-1', category: 'shopping' }]);
+    expect(response.status).toBe(200);
+    expect(dbModule.sqlite.prepare('SELECT category, amount, currency FROM expenses ORDER BY wise_txn_id').all()).toEqual([
+      { category: 'shopping', amount: 25, currency: 'AUD' },
+      { category: 'food', amount: 25, currency: 'AUD' },
+    ]);
+  });
+
+  it('rejects unsupported categories without writing any rows', async () => {
+    const response = await post(csv(['category-invalid']), true, [{ wiseTxnId: 'category-invalid', category: 'unsupported' }]);
+    expect(response.status).toBe(400);
+    expect(storedIds()).toEqual([]);
+  });
+
+  it('rejects changes for transactions outside the selected files', async () => {
+    const response = await post(csv(['category-own']), true, [{ wiseTxnId: 'other-transaction', category: 'shopping' }]);
+    expect(response.status).toBe(400);
+    expect(storedIds()).toEqual([]);
+  });
+
+  it('rejects duplicate or extra-field category overrides without writing rows', async () => {
+    for (const overrides of [
+      [{ wiseTxnId: 'category-dup', category: 'food' }, { wiseTxnId: 'category-dup', category: 'shopping' }],
+      [{ wiseTxnId: 'category-dup', category: 'shopping', amount: 999 }],
+    ]) {
+      expect((await post(csv(['category-dup']), true, overrides)).status).toBe(400);
+      expect(storedIds()).toEqual([]);
+    }
   });
 
   it('reports rows already in the ledger as duplicates rather than reimporting them', async () => {

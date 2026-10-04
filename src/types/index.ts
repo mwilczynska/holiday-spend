@@ -83,6 +83,11 @@ export interface IntercityTransportItem {
   sortOrder?: number | null;
 }
 
+export interface MiscellaneousExpenseItem {
+  description: string | null;
+  cost: number;
+}
+
 export interface TransportEstimateOption {
   mode: TransportEstimateMode;
   label: string;
@@ -162,6 +167,7 @@ export interface LegWithCost {
   intercityTransportCost: number;
   intercityTransportNote: string | null;
   intercityTransports: IntercityTransportItem[];
+  miscellaneousExpenses: MiscellaneousExpenseItem[];
   sortOrder: number | null;
   notes: string | null;
   status: LegStatus;

@@ -289,6 +289,9 @@ test.describe('planner regressions', () => {
     await page.goto('/plan');
     await expect(page.getByRole('button', { name: 'Add Leg', exact: true }).first()).toBeVisible({ timeout: 60_000 });
     const singleEstimateButtons = page.getByRole('button', { name: 'Estimate transport', exact: true });
+    await expect(page.locator('section[aria-label="Trip historical climate"]').getByRole('img', {
+      name: /Historical mean temperature/,
+    })).toBeVisible();
     let singleEstimateButton: Locator | null = null;
     for (let index = 0; index < await singleEstimateButtons.count(); index += 1) {
       const candidate = singleEstimateButtons.nth(index);

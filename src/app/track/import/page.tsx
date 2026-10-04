@@ -92,6 +92,7 @@ export default function ImportPage() {
     const formData = new FormData();
     for (const file of files) formData.append('file', file);
     formData.append('confirm', 'true');
+    formData.append('categoryOverrides', JSON.stringify(editableImports.map(({ wiseTxnId, category }) => ({ wiseTxnId, category }))));
 
     try {
       const res = await fetch('/api/expenses/import/csv', {
@@ -145,10 +146,17 @@ export default function ImportPage() {
               accept=".csv"
               multiple
               aria-label="Wise CSV files"
+              disabled={uploading || importing}
               className="text-sm"
-              onChange={(event) => setSelectedFileCount(event.target.files?.length ?? 0)}
+              onChange={(event) => {
+                setSelectedFileCount(event.target.files?.length ?? 0);
+                setPreview(null);
+                setEditableImports([]);
+                setResult(null);
+                setErrorMessage(null);
+              }}
             />
-            <Button onClick={handleUpload} disabled={uploading}>
+            <Button onClick={handleUpload} disabled={uploading || importing}>
               <Upload className="h-4 w-4 mr-2" />
               <LoadingButtonLabel
                 idle={selectedFileCount > 1 ? 'Parse CSVs' : 'Parse CSV'}

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { miscellaneousExpensesSchema } from './miscellaneous-expenses';
 
 export const planSnapshotTransportSchema = z.object({
   id: z.number().int().optional(),
@@ -30,6 +31,7 @@ export const planSnapshotLegSchema = z.object({
   intercityTransportCost: z.number().optional(),
   intercityTransportNote: z.string().nullable().optional(),
   intercityTransports: z.array(planSnapshotTransportSchema).default([]),
+  miscellaneousExpenses: miscellaneousExpensesSchema.default([]),
   sortOrder: z.number().int().nullable().optional(),
   notes: z.string().nullable().optional(),
   status: z.string().default('planned'),

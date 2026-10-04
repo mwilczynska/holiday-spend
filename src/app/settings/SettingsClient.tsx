@@ -1,7 +1,7 @@
 'use client';
 
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,7 +11,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
-import { PageLoadingState } from '@/components/ui/loading-state';
+import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
+import { readPageResponse } from '@/lib/read-page-response';
+import { fixedCostsReadSchema, settingsCountriesReadSchema, travellerSettingsReadSchema, llmSettingsReadSchema } from '@/lib/settings-read-contract';
 import { Plus, Trash2, Download } from 'lucide-react';
 import Link from 'next/link';
 
@@ -41,10 +43,25 @@ interface LlmSettings {
   };
 }
 
+interface LlmSettingsUpdate { maxOutputTokens: number | null; requestTimeoutMs: number | null }
+const llmSavedValuesSchema = llmSettingsReadSchema.pick({ maxOutputTokens: true, requestTimeoutMs: true });
+
+function timeoutInputToMilliseconds(value: string) {
+  if (value.trim() === '') return null;
+  const seconds = Number(value);
+  const milliseconds = seconds * 1000;
+  const wholeMilliseconds = Math.round(milliseconds);
+  // Decimal seconds can pick up a binary floating-point remainder (16.001 →
+  // 16001.000000000002). Only remove it when the integer converts back exactly;
+  // genuinely fractional milliseconds still reach the server's integer validator.
+  return wholeMilliseconds / 1000 === seconds ? wholeMilliseconds : milliseconds;
+}
+
 const CATEGORIES = ['visa', 'insurance', 'flights', 'gear', 'other'];
 
 export interface SettingsInitialData {
-  costs: FixedCost[]; countries: Country[]; groupSize: number; llm: LlmSettings;
+  costs: FixedCost[]; countries: Country[]; groupSize: number | null; llm: LlmSettings | null;
+  readError?: string | null;
 }
 
 export function SettingsClient({ initialData }: { initialData: SettingsInitialData }) {
@@ -53,12 +70,26 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   const [groupSize, setGroupSize] = useState(initialData.groupSize);
   const [groupSizeStatus, setGroupSizeStatus] = useState<string | null>(null);
   const [groupSizeError, setGroupSizeError] = useState<string | null>(null);
+  const [groupSizeDraft, setGroupSizeDraft] = useState<number | null>(null);
+  const groupSizeDraftValue = useRef<number | null>(null);
+  const [groupSizeSaving, setGroupSizeSaving] = useState(false);
+  const groupSizeSubmitting = useRef(false);
   const [loading, setLoading] = useState(false);
+  const [readError, setReadError] = useState<string | null>(initialData.readError ?? null);
+  const [hasLoadedData, setHasLoadedData] = useState(!initialData.readError);
+  const readSequence = useRef(0);
   const [addOpen, setAddOpen] = useState(false);
+  const [costError, setCostError] = useState<string | null>(null);
+  const [costSaving, setCostSaving] = useState(false);
+  const costSubmitting = useRef(false);
   const [llm, setLlm] = useState<LlmSettings | null>(initialData.llm);
-  const [llmDraft, setLlmDraft] = useState({ maxOutputTokens: String(initialData.llm.maxOutputTokens), requestTimeoutSeconds: String(Math.round(initialData.llm.requestTimeoutMs / 1000)) });
+  const [llmDraft, setLlmDraft] = useState({ maxOutputTokens: initialData.llm ? String(initialData.llm.maxOutputTokens) : '', requestTimeoutSeconds: initialData.llm ? String(initialData.llm.requestTimeoutMs / 1000) : '' });
+  const llmDraftDirty = useRef(false);
   const [llmStatus, setLlmStatus] = useState<string | null>(null);
   const [llmError, setLlmError] = useState<string | null>(null);
+  const [llmSaving, setLlmSaving] = useState(false);
+  const llmSubmitting = useRef(false);
+  const [llmRetry, setLlmRetry] = useState<LlmSettingsUpdate | null>(null);
   const [newCost, setNewCost] = useState({
     description: '',
     amountAud: 0,
@@ -69,6 +100,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   });
 
   const fetchData = useCallback(async () => {
+    const sequence = ++readSequence.current;
     setLoading(true);
     try {
       const [costsRes, countriesRes, plannerSettingsRes, llmRes] = await Promise.all([
@@ -79,101 +111,178 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
         fetch('/api/planner/settings', { cache: 'no-store' }),
         fetch('/api/settings/llm', { cache: 'no-store' }),
       ]);
-      const costsData = await costsRes.json();
-      const countriesData = await countriesRes.json();
-      const plannerSettingsData = await plannerSettingsRes.json();
-      setCosts(costsData.data || []);
-      setCountries(
-        (countriesData.data || [])
-          .map((c: Country & { cities?: unknown[] }) => ({ id: c.id, name: c.name }))
-          .sort((a: Country, b: Country) => a.name.localeCompare(b.name))
-      );
-      if (plannerSettingsRes.ok && plannerSettingsData.data?.groupSize) {
-        setGroupSize(plannerSettingsData.data.groupSize);
+      const [costsData, countriesData, plannerSettingsData, llmData] = await Promise.all([
+        readPageResponse(costsRes, 'fixed costs'), readPageResponse(countriesRes, 'country options'),
+        readPageResponse(plannerSettingsRes, 'traveller settings'), readPageResponse(llmRes, 'provider limits'),
+      ]);
+      const parsedCosts = fixedCostsReadSchema.safeParse(costsData);
+      const parsedCountries = settingsCountriesReadSchema.safeParse(countriesData);
+      const parsedPlanner = travellerSettingsReadSchema.safeParse(plannerSettingsData);
+      const parsedLlm = llmSettingsReadSchema.safeParse(llmData);
+      if (!parsedCosts.success) throw new Error('The server returned invalid fixed costs data.');
+      if (!parsedCountries.success) throw new Error('The server returned invalid country options data.');
+      if (!parsedPlanner.success) throw new Error('The server returned invalid traveller settings.');
+      if (!parsedLlm.success) throw new Error('The server returned invalid provider limits.');
+      if (sequence !== readSequence.current) return false;
+      setCosts(parsedCosts.data);
+      setCountries(parsedCountries.data.sort((a, b) => a.name.localeCompare(b.name)));
+      setGroupSize(parsedPlanner.data.groupSize);
+      setGroupSizeStatus(null);
+      if (groupSizeDraftValue.current === parsedPlanner.data.groupSize) {
+        groupSizeDraftValue.current = null;
+        setGroupSizeDraft(null);
+        setGroupSizeError(null);
+        setGroupSizeStatus(`Traveller count set to ${parsedPlanner.data.groupSize}.`);
       }
-      if (llmRes.ok) {
-        const llmData = (await llmRes.json()).data as LlmSettings;
-        setLlm(llmData);
+      setLlm(parsedLlm.data);
+      if (!llmDraftDirty.current) {
         setLlmDraft({
-          maxOutputTokens: String(llmData.maxOutputTokens),
-          requestTimeoutSeconds: String(Math.round(llmData.requestTimeoutMs / 1000)),
+          maxOutputTokens: String(parsedLlm.data.maxOutputTokens),
+          requestTimeoutSeconds: String(parsedLlm.data.requestTimeoutMs / 1000),
         });
       }
+      setHasLoadedData(true);
+      setReadError(null);
+      return true;
+    } catch (err) {
+      if (sequence === readSequence.current) setReadError(err instanceof Error ? err.message : 'Could not load settings. Check your connection and retry.');
+      return false;
     } finally {
-      setLoading(false);
+      if (sequence === readSequence.current) setLoading(false);
     }
   }, []);
 
-  useInitialPageRefresh('/settings', fetchData, true);
+  useInitialPageRefresh('/settings', fetchData, !initialData.readError);
 
   const handleAdd = async () => {
-    await fetch('/api/fixed-costs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...newCost,
-        countryId: newCost.countryId || null,
-        date: newCost.date || null,
-        notes: newCost.notes || null,
-      }),
+    if (!newCost.description.trim() || !Number.isFinite(newCost.amountAud) || newCost.amountAud <= 0) return;
+    await mutateFixedCost('/api/fixed-costs', 'POST', {
+      ...newCost,
+      description: newCost.description.trim(),
+      countryId: newCost.countryId || null,
+      date: newCost.date || null,
+      notes: newCost.notes || null,
+    }, () => {
+      setAddOpen(false);
+      setNewCost({ description: '', amountAud: 0, category: 'other', countryId: '', date: '', notes: '' });
     });
-    setAddOpen(false);
-    setNewCost({ description: '', amountAud: 0, category: 'other', countryId: '', date: '', notes: '' });
-    fetchData();
+  };
+
+  const mutateFixedCost = async (url: string, method: string, body?: Record<string, unknown>, onSuccess?: () => void) => {
+    if (costSubmitting.current || groupSizeSubmitting.current || llmSubmitting.current || loading || readError) return;
+    costSubmitting.current = true;
+    setCostSaving(true);
+    setCostError(null);
+    try {
+      const response = await fetch(url, {
+        method,
+        ...(body ? { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || `Could not update fixed costs (HTTP ${response.status}). Try again.`);
+      if (!result?.data) throw new Error('The server returned an unreadable response. Reload before retrying.');
+      onSuccess?.();
+      await fetchData();
+    } catch (err) {
+      setCostError(err instanceof Error ? err.message : 'Could not update fixed costs. Check your connection and try again.');
+    } finally {
+      costSubmitting.current = false;
+      setCostSaving(false);
+    }
   };
 
   const handleTogglePaid = async (cost: FixedCost) => {
-    await fetch(`/api/fixed-costs/${cost.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ isPaid: cost.isPaid ? 0 : 1 }),
-    });
-    fetchData();
+    await mutateFixedCost(`/api/fixed-costs/${cost.id}`, 'PUT', { isPaid: cost.isPaid ? 0 : 1 });
   };
 
   const handleDelete = async (id: number) => {
-    await fetch(`/api/fixed-costs/${id}`, { method: 'DELETE' });
-    fetchData();
+    await mutateFixedCost(`/api/fixed-costs/${id}`, 'DELETE');
   };
 
-  const handleGroupSizeChange = async (value: string) => {
-    const nextGroupSize = Number.parseInt(value, 10);
-    setGroupSize(nextGroupSize);
+  const saveGroupSize = async (nextGroupSize: number) => {
+    if (groupSizeSubmitting.current || costSubmitting.current || llmSubmitting.current || loading || readError || groupSize == null) return;
+    if (!Number.isInteger(nextGroupSize) || nextGroupSize < 1 || nextGroupSize > 5) return;
+    groupSizeSubmitting.current = true;
+    setGroupSizeSaving(true);
+    groupSizeDraftValue.current = nextGroupSize;
+    setGroupSizeDraft(nextGroupSize);
+    setGroupSizeError(null);
+    setGroupSizeStatus(null);
     try {
       const response = await fetch('/api/planner/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ groupSize: nextGroupSize }),
       });
-      const data = await response.json();
+      const data = await response.json().catch(() => null);
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to update traveller count.');
+        throw new Error(typeof data?.error === 'string' ? data.error : `Could not save traveller count (HTTP ${response.status}).`);
       }
-      setGroupSize(data.data.groupSize);
+      const parsed = travellerSettingsReadSchema.safeParse(data?.data);
+      if (!parsed.success || parsed.data.groupSize !== nextGroupSize) {
+        throw new Error('The server did not confirm the requested traveller count. Check the saved count before retrying.');
+      }
+      setGroupSize(parsed.data.groupSize);
+      groupSizeDraftValue.current = null;
+      setGroupSizeDraft(null);
       setGroupSizeError(null);
-      setGroupSizeStatus(`Traveller count set to ${data.data.groupSize}.`);
+      setGroupSizeStatus(`Traveller count set to ${parsed.data.groupSize}.`);
     } catch (err) {
       setGroupSizeStatus(null);
       setGroupSizeError(err instanceof Error ? err.message : 'Failed to update traveller count.');
-      fetchData();
+      await fetchData();
+    } finally {
+      groupSizeSubmitting.current = false;
+      setGroupSizeSaving(false);
     }
   };
 
-  const saveLlmSettings = async (next: { maxOutputTokens: number | null; requestTimeoutMs: number | null }) => {
+  const handleGroupSizeChange = (value: string) => {
+    if (groupSizeSubmitting.current || costSubmitting.current || llmSubmitting.current) return;
+    const nextGroupSize = Number(value);
+    if (nextGroupSize === groupSize) {
+      groupSizeDraftValue.current = null;
+      setGroupSizeDraft(null);
+      setGroupSizeError(null);
+      setGroupSizeStatus(null);
+      return;
+    }
+    void saveGroupSize(nextGroupSize);
+  };
+
+  const saveLlmSettings = async (next: LlmSettingsUpdate) => {
+    if (llmSubmitting.current || groupSizeSubmitting.current || costSubmitting.current || loading || readError || !llm) return;
+    llmSubmitting.current = true;
+    setLlmSaving(true);
+    llmDraftDirty.current = true;
+    setLlmStatus(null);
+    setLlmError(null);
+    setLlmRetry(null);
     try {
+      if ((next.maxOutputTokens != null && !Number.isFinite(next.maxOutputTokens))
+        || (next.requestTimeoutMs != null && !Number.isFinite(next.requestTimeoutMs))) {
+        throw new Error('Provider limits must be finite numbers. Check your draft and retry.');
+      }
       const response = await fetch('/api/settings/llm', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(next),
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Failed to update provider limits.');
-
-      setLlm((current) => (current ? { ...current, ...data.data } : current));
+      const data = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(typeof data?.error === 'string' ? data.error : `Could not save provider limits (HTTP ${response.status}).`);
+      const parsed = llmSavedValuesSchema.safeParse(data?.data);
+      if (!parsed.success || parsed.data.maxOutputTokens !== (next.maxOutputTokens ?? llm.defaults.maxOutputTokens)
+        || parsed.data.requestTimeoutMs !== (next.requestTimeoutMs ?? llm.defaults.requestTimeoutMs)
+        || parsed.data.maxOutputTokens < llm.limits.maxOutputTokens.min || parsed.data.maxOutputTokens > llm.limits.maxOutputTokens.max
+        || parsed.data.requestTimeoutMs < llm.limits.requestTimeoutMs.min || parsed.data.requestTimeoutMs > llm.limits.requestTimeoutMs.max) {
+        throw new Error('The server did not confirm the requested provider limits. Your draft is retained; reload to check saved values or retry.');
+      }
+      setLlm((current) => (current ? { ...current, ...parsed.data } : current));
       setLlmDraft({
-        maxOutputTokens: String(data.data.maxOutputTokens),
-        requestTimeoutSeconds: String(Math.round(data.data.requestTimeoutMs / 1000)),
+        maxOutputTokens: String(parsed.data.maxOutputTokens),
+        requestTimeoutSeconds: String(parsed.data.requestTimeoutMs / 1000),
       });
+      llmDraftDirty.current = false;
       setLlmError(null);
       setLlmStatus(
         next.maxOutputTokens === null && next.requestTimeoutMs === null
@@ -183,14 +292,27 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
     } catch (err) {
       setLlmStatus(null);
       setLlmError(err instanceof Error ? err.message : 'Failed to update provider limits.');
+      setLlmRetry(next);
+    } finally {
+      llmSubmitting.current = false;
+      setLlmSaving(false);
     }
+  };
+
+  const editLlmDraft = (field: keyof typeof llmDraft, value: string) => {
+    if (llmSubmitting.current) return;
+    llmDraftDirty.current = true;
+    setLlmDraft(current => ({ ...current, [field]: value }));
+    setLlmStatus(null);
+    setLlmError(null);
+    setLlmRetry(null);
   };
 
   const totalPaid = costs.filter(c => c.isPaid).reduce((s, c) => s + c.amountAud, 0);
   const totalUnpaid = costs.filter(c => !c.isPaid).reduce((s, c) => s + c.amountAud, 0);
   const total = totalPaid + totalUnpaid;
 
-  if (loading && costs.length === 0 && countries.length === 0) {
+  if (loading && !hasLoadedData && !readError) {
     return (
       <PageLoadingState
         title="Loading settings"
@@ -224,16 +346,28 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
         </div>
       </div>
 
+      {readError ? (
+        <div role="alert" className="flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive">
+          <div>
+            <p>{readError}</p>
+            <p>{hasLoadedData ? 'Showing the last loaded settings and fixed costs; they may be out of date.' : 'Settings unavailable. Traveller count, provider limits and fixed-cost totals could not be loaded.'}</p>
+          </div>
+          <Button type="button" size="sm" variant="outline" disabled={loading} onClick={() => void fetchData()}>
+            <LoadingButtonLabel idle="Retry settings" loading="Retrying..." isLoading={loading} />
+          </Button>
+        </div>
+      ) : null}
+
       <Card>
         <CardHeader>
           <CardTitle>Trip Settings</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="max-w-xs">
-            <Label>Travellers</Label>
-            <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
-              <SelectTrigger>
-                <SelectValue />
+            <Label htmlFor="settings-travellers">Travellers</Label>
+            <Select value={groupSizeDraft != null ? String(groupSizeDraft) : groupSize == null ? '' : String(groupSize)} onValueChange={handleGroupSizeChange} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)}>
+              <SelectTrigger id="settings-travellers">
+                <SelectValue placeholder="Unavailable" />
               </SelectTrigger>
               <SelectContent>
                 {[1, 2, 3, 4, 5].map((count) => (
@@ -247,8 +381,18 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           <p className="text-sm text-muted-foreground">
             City costs are stored for 2 travellers and scaled across the planner and dashboard using this setting.
           </p>
-          {groupSizeStatus ? <p className="text-sm text-muted-foreground">{groupSizeStatus}</p> : null}
-          {groupSizeError ? <p className="text-sm text-destructive">{groupSizeError}</p> : null}
+          {groupSizeDraft != null ? (
+            <div className="space-y-2">
+              <p className="text-sm text-muted-foreground">Unsaved selection: {groupSizeDraft} {groupSizeDraft === 1 ? 'traveller' : 'travellers'}. Last confirmed saved count: {groupSize ?? 'unavailable'}.</p>
+              {groupSizeSaving ? <p role="status" className="text-sm text-muted-foreground">Saving traveller count...</p> : null}
+              <div className="flex flex-wrap gap-2">
+                {groupSizeError ? <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveGroupSize(groupSizeDraft)}>Retry traveller count</Button> : null}
+                <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving} onClick={() => { groupSizeDraftValue.current = null; setGroupSizeDraft(null); setGroupSizeError(null); setGroupSizeStatus(null); }}>Discard selection</Button>
+              </div>
+            </div>
+          ) : null}
+          {groupSizeStatus ? <p role="status" className="text-sm text-muted-foreground">{groupSizeStatus}</p> : null}
+          {groupSizeError ? <p role="alert" className="text-sm text-destructive">{groupSizeError}</p> : null}
         </CardContent>
       </Card>
 
@@ -268,8 +412,12 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               <Input
                 id="llm-max-tokens"
                 type="number"
+                min={llm?.limits.maxOutputTokens.min}
+                max={llm?.limits.maxOutputTokens.max}
+                step="1"
                 value={llmDraft.maxOutputTokens}
-                onChange={(e) => setLlmDraft((p) => ({ ...p, maxOutputTokens: e.target.value }))}
+                disabled={llmSaving || !hasLoadedData}
+                onChange={(e) => editLlmDraft('maxOutputTokens', e.target.value)}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Covers reasoning and the answer together. Default {llm ? llm.defaults.maxOutputTokens.toLocaleString('en-AU') : '—'}.
@@ -280,11 +428,15 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               <Input
                 id="llm-timeout"
                 type="number"
+                min={llm ? llm.limits.requestTimeoutMs.min / 1000 : undefined}
+                max={llm ? llm.limits.requestTimeoutMs.max / 1000 : undefined}
+                step="0.001"
                 value={llmDraft.requestTimeoutSeconds}
-                onChange={(e) => setLlmDraft((p) => ({ ...p, requestTimeoutSeconds: e.target.value }))}
+                disabled={llmSaving || !hasLoadedData}
+                onChange={(e) => editLlmDraft('requestTimeoutSeconds', e.target.value)}
               />
               <p className="text-xs text-muted-foreground mt-1">
-                Default {llm ? Math.round(llm.defaults.requestTimeoutMs / 1000) : '—'}s. High reasoning effort can run
+                Default {llm ? llm.defaults.requestTimeoutMs / 1000 : '—'}s. High reasoning effort can run
                 for a couple of minutes.
               </p>
             </div>
@@ -292,12 +444,10 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           <div className="flex flex-wrap gap-2">
             <Button
               size="sm"
-              disabled={!llm}
+              disabled={llmSaving || groupSizeSaving || costSaving || !llm || loading || Boolean(readError)}
               onClick={() => saveLlmSettings({
-                maxOutputTokens: Number(llmDraft.maxOutputTokens) || null,
-                requestTimeoutMs: Number(llmDraft.requestTimeoutSeconds)
-                  ? Number(llmDraft.requestTimeoutSeconds) * 1000
-                  : null,
+                maxOutputTokens: llmDraft.maxOutputTokens.trim() === '' ? null : Number(llmDraft.maxOutputTokens),
+                requestTimeoutMs: timeoutInputToMilliseconds(llmDraft.requestTimeoutSeconds),
               })}
             >
               Save limits
@@ -305,23 +455,26 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
             <Button
               size="sm"
               variant="outline"
-              disabled={!llm}
+              disabled={llmSaving || groupSizeSaving || costSaving || !llm || loading || Boolean(readError)}
               onClick={() => saveLlmSettings({ maxOutputTokens: null, requestTimeoutMs: null })}
             >
               Reset to defaults
             </Button>
+            {llmRetry ? <Button type="button" size="sm" variant="outline" disabled={llmSaving || groupSizeSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveLlmSettings(llmRetry)}>Retry provider limits</Button> : null}
           </div>
-          {llmStatus ? <p className="text-sm text-muted-foreground">{llmStatus}</p> : null}
-          {llmError ? <p className="text-sm text-destructive">{llmError}</p> : null}
+          {llmDraftDirty.current && llm ? <p className="text-sm text-muted-foreground">Unsaved provider limits. Last confirmed saved values: {llm.maxOutputTokens.toLocaleString('en-AU')} tokens / {llm.requestTimeoutMs / 1000} seconds.</p> : null}
+          {llmSaving ? <p role="status" className="text-sm text-muted-foreground">Saving provider limits...</p> : null}
+          {llmStatus ? <p role="status" className="text-sm text-muted-foreground">{llmStatus}</p> : null}
+          {llmError ? <p role="alert" className="text-sm text-destructive">{llmError}</p> : null}
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Fixed Costs</CardTitle>
-          <Dialog open={addOpen} onOpenChange={setAddOpen}>
+          <Dialog open={addOpen} onOpenChange={(open) => { if (!costSaving) { setAddOpen(open); setCostError(null); } }}>
             <DialogTrigger asChild>
-              <Button size="sm"><Plus className="h-4 w-4 mr-2" />Add</Button>
+              <Button size="sm" disabled={groupSizeSaving || llmSaving || loading || Boolean(readError)}><Plus className="h-4 w-4 mr-2" />Add</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader><DialogTitle>Add Fixed Cost</DialogTitle>
@@ -330,12 +483,12 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                 </DialogDescription></DialogHeader>
               <div className="space-y-4">
                 <div>
-                  <Label>Description</Label>
-                  <Input value={newCost.description} onChange={(e) => setNewCost(p => ({ ...p, description: e.target.value }))} />
+                  <Label htmlFor="fixed-cost-description">Description</Label>
+                  <Input id="fixed-cost-description" value={newCost.description} onChange={(e) => setNewCost(p => ({ ...p, description: e.target.value }))} />
                 </div>
                 <div>
-                  <Label>Amount (AUD)</Label>
-                  <Input type="number" value={newCost.amountAud || ''} onChange={(e) => setNewCost(p => ({ ...p, amountAud: parseFloat(e.target.value) || 0 }))} />
+                  <Label htmlFor="fixed-cost-amount">Amount (AUD)</Label>
+                  <Input id="fixed-cost-amount" type="number" min="0.01" step="any" value={newCost.amountAud || ''} onChange={(e) => setNewCost(p => ({ ...p, amountAud: parseFloat(e.target.value) || 0 }))} />
                 </div>
                 <div>
                   <Label>Category</Label>
@@ -363,30 +516,34 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                   />
                 </div>
                 <div>
-                  <Label>Date (optional)</Label>
-                  <Input type="date" value={newCost.date} onChange={(e) => setNewCost(p => ({ ...p, date: e.target.value }))} />
+                  <Label htmlFor="fixed-cost-date">Date (optional)</Label>
+                  <Input id="fixed-cost-date" type="date" value={newCost.date} onChange={(e) => setNewCost(p => ({ ...p, date: e.target.value }))} />
                 </div>
-                <Button onClick={handleAdd} className="w-full" disabled={!newCost.description || !newCost.amountAud}>
-                  Add Fixed Cost
+                {costError && <p role="alert" className="text-sm text-destructive">{costError}</p>}
+                <Button onClick={handleAdd} className="w-full" disabled={costSaving || groupSizeSaving || llmSaving || loading || Boolean(readError) || !newCost.description.trim() || !Number.isFinite(newCost.amountAud) || newCost.amountAud <= 0}>
+                  {costSaving ? 'Saving...' : 'Add Fixed Cost'}
                 </Button>
               </div>
             </DialogContent>
           </Dialog>
         </CardHeader>
         <CardContent>
-          <div className="flex gap-4 mb-4 text-sm">
+          {!addOpen && costError && <p role="alert" className="mb-3 text-sm text-destructive">{costError}</p>}
+          {hasLoadedData ? <div className="flex gap-4 mb-4 text-sm">
             <span>Total: <strong>${total.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</strong></span>
             <span className="text-green-600">Paid: ${totalPaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
             <span className="text-orange-600">Unpaid: ${totalUnpaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
-          </div>
+          </div> : <p className="mb-4 text-sm text-muted-foreground">Fixed-cost totals unavailable.</p>}
 
           {costs.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8">No fixed costs yet.</p>
+            <p className="text-muted-foreground text-center py-8">{hasLoadedData ? 'No fixed costs yet.' : 'Fixed costs unavailable.'}</p>
           ) : (
             <div className="space-y-2">
               {costs.map((cost) => (
                 <div key={cost.id} className="flex items-center gap-3 p-2 rounded border">
                   <Switch
+                    aria-label={`Mark ${cost.description} as ${cost.isPaid ? 'unpaid' : 'paid'}`}
+                    disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)}
                     checked={!!cost.isPaid}
                     onCheckedChange={() => handleTogglePaid(cost)}
                   />
@@ -402,7 +559,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                     {cost.date && <p className="text-xs text-muted-foreground">{cost.date}</p>}
                   </div>
                   <span className="font-medium">${cost.amountAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
-                  <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
+                  <Button aria-label={`Delete ${cost.description}`} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>

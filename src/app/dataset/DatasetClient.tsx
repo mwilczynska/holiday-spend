@@ -8,9 +8,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { PageLoadingState } from '@/components/ui/loading-state';
+import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
+import { readPageResponse } from '@/lib/read-page-response';
+import { datasetCountriesReadSchema, datasetEstimatesReadSchema, provenanceReadSchema } from '@/lib/dataset-read-contract';
 import { SearchableSelect } from '@/components/ui/searchable-select';
-import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
+import { COST_FIELDS, COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { resolveCityDrinkInputs } from '@/lib/city-drink-inputs';
 import type { CityEstimateProvenance } from '@/lib/city-estimate-provenance';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
@@ -57,8 +59,8 @@ interface Country {
 interface EstimateHistoryItem {
   id: number;
   cityId: string;
-  cityName: string;
-  countryName: string;
+  cityName: string | null;
+  countryName: string | null;
   estimatedAt: string;
   source: string | null;
   llmProvider: string | null;
@@ -142,6 +144,7 @@ function matchesCity(row: DatasetCity, query: string) {
 
 export interface DatasetInitialData {
   countries: Country[]; history: EstimateHistoryItem[]; historyCount: number;
+  readError?: string | null;
 }
 
 export function DatasetClient({ initialData }: { initialData: DatasetInitialData }) {
@@ -159,6 +162,10 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   const [isDirty, setIsDirty] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [readError, setReadError] = useState<string | null>(initialData.readError ?? null);
+  const [hasLoadedData, setHasLoadedData] = useState(!initialData.readError);
+  const readSequence = useRef(0);
+  const pendingSelection = useRef<string | null>(null);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
@@ -174,6 +181,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   }, []);
 
   const fetchData = useCallback(async () => {
+    const sequence = ++readSequence.current;
     setLoading(true);
     try {
       const [countriesResponse, estimatesResponse] = await Promise.all([
@@ -181,16 +189,28 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
         fetch('/api/estimates?view=dataset', { cache: 'no-store' }),
       ]);
 
-      const countriesData = await countriesResponse.json();
-      const estimatesData = await estimatesResponse.json();
-      const estimateRows = (estimatesData.data?.rows || []) as Array<{
-        cityId: string;
-        currentEstimateProvenance?: CityEstimateProvenance | null;
-      }>;
+      const [countriesData, estimatesData] = await Promise.all([
+        readPageResponse(countriesResponse, 'city library'), readPageResponse(estimatesResponse, 'generation history'),
+      ]);
+      const parsedCountries = datasetCountriesReadSchema.safeParse(countriesData);
+      const parsedEstimates = datasetEstimatesReadSchema.safeParse(estimatesData);
+      if (!parsedCountries.success) throw new Error('The server returned invalid city library data.');
+      if (!parsedEstimates.success) throw new Error('The server returned invalid generation history data.');
+      const cityIds = new Set(parsedCountries.data.flatMap(country => country.cities.map(city => city.id)));
+      const estimateCityIds = new Set(parsedEstimates.data.rows.map(row => row.cityId));
+      if (cityIds.size !== estimateCityIds.size || Array.from(cityIds).some(id => !estimateCityIds.has(id)) ||
+        parsedEstimates.data.summary.historyCount !== parsedEstimates.data.history.length) {
+        throw new Error('The server returned incomplete dataset history data. Retry to read a consistent dataset.');
+      }
+      if (parsedCountries.data.some(country => country.cities.some(city => COST_FIELD_KEYS.some(key => {
+        const value = city[key];
+        return value !== null && (typeof value !== 'number' || !Number.isFinite(value) || value < 0);
+      })))) throw new Error('The server returned invalid city cost values.');
+      const estimateRows = parsedEstimates.data.rows;
       const provenanceByCityId = new Map(
         estimateRows.map((row) => [row.cityId, row.currentEstimateProvenance ?? null])
       );
-      const nextCountries = (countriesData.data || [])
+      const nextCountries = parsedCountries.data
         .map((country: Country) => ({
           ...country,
           cities: country.cities.map((city) => ({
@@ -200,17 +220,23 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
         }))
         .sort((a: Country, b: Country) => a.name.localeCompare(b.name));
 
+      if (sequence !== readSequence.current) return null;
       setCountries(nextCountries);
-      setHistory(estimatesData.data?.history || []);
-      setHistoryCount(estimatesData.data?.summary?.historyCount || 0);
+      setHistory(parsedEstimates.data.history);
+      setHistoryCount(parsedEstimates.data.summary.historyCount);
+      setHasLoadedData(true);
+      setReadError(null);
 
       return nextCountries as Country[];
+    } catch (err) {
+      if (sequence === readSequence.current) setReadError(err instanceof Error ? err.message : 'Could not load the dataset. Check your connection and retry.');
+      return null;
     } finally {
-      setLoading(false);
+      if (sequence === readSequence.current) setLoading(false);
     }
   }, []);
 
-  useInitialPageRefresh('/dataset', fetchData, true);
+  useInitialPageRefresh('/dataset', fetchData, !initialData.readError);
 
   useEffect(() => {
     if (addDialogOpen) setHasOpenedAddDialog(true);
@@ -278,31 +304,47 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   // snapshot are fetched for one city at a time, which keeps ~396 KB of blobs out of the
   // initial /dataset load.
   const [selectedProvenance, setSelectedProvenance] = useState<CityEstimateProvenance | null>(null);
+  const [provenanceError, setProvenanceError] = useState<string | null>(null);
+  const [provenanceLoading, setProvenanceLoading] = useState(false);
+  const [provenanceReload, setProvenanceReload] = useState(0);
+  const provenanceCityId = useRef<string | null>(null);
 
   useEffect(() => {
     const cityId = selectedCity?.id;
     if (!cityId) {
       setSelectedProvenance(null);
+      setProvenanceError(null);
+      setProvenanceLoading(false);
+      provenanceCityId.current = null;
       return;
     }
 
     let cancelled = false;
-    setSelectedProvenance(null);
+    if (provenanceCityId.current !== cityId) setSelectedProvenance(null);
+    provenanceCityId.current = cityId;
+    setProvenanceError(null);
+    setProvenanceLoading(true);
 
     fetch(`/api/estimates?cityId=${encodeURIComponent(cityId)}`, { cache: 'no-store' })
-      .then((response) => (response.ok ? response.json() : null))
+      .then((response) => readPageResponse(response, 'city provenance'))
       .then((payload) => {
         if (cancelled) return;
-        setSelectedProvenance(payload?.data?.currentEstimateProvenance ?? null);
+        const detail = payload as { cityId?: unknown; currentEstimateProvenance?: unknown };
+        const parsed = provenanceReadSchema.safeParse(detail?.currentEstimateProvenance);
+        if (detail?.cityId !== cityId || !parsed.success) throw new Error('The server returned invalid city provenance data.');
+        setSelectedProvenance(parsed.data);
       })
-      .catch(() => {
-        if (!cancelled) setSelectedProvenance(null);
+      .catch((err) => {
+        if (!cancelled) setProvenanceError(err instanceof Error ? err.message : 'Could not load city provenance. Retry.');
+      })
+      .finally(() => {
+        if (!cancelled) setProvenanceLoading(false);
       });
 
     return () => {
       cancelled = true;
     };
-  }, [selectedCity?.id]);
+  }, [selectedCity?.id, provenanceReload]);
 
   const selectedCityHistory = useMemo(() => {
     if (!selectedCity) return [];
@@ -346,6 +388,14 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   );
 
   useEffect(() => {
+    if (pendingSelection.current && !readError && !isDirty) {
+      const cityId = pendingSelection.current;
+      pendingSelection.current = null;
+      selectCityFromCountries(cityId, countries);
+    }
+  }, [countries, readError, isDirty, selectCityFromCountries]);
+
+  useEffect(() => {
     if (didApplyQuerySelection.current) return;
     const cityId = new URLSearchParams(window.location.search).get('cityId');
     if (countries.length === 0) return;
@@ -357,7 +407,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   const handleCostChange = (key: string, value: number | null) => {
     if (!selectedCity) return;
     const nextCity = { ...selectedCity, [key]: value };
-    if (key === 'drinkCoffee' || key === 'drinksNone') {
+    if ((key === 'drinkCoffee' || key === 'drinksNone') && (value === null || (Number.isFinite(value) && value >= 0))) {
       const drinkInputs = resolveCityDrinkInputs({
         drinkCoffee: key === 'drinkCoffee' ? value : undefined,
         drinksNone: key === 'drinksNone' ? value : undefined,
@@ -372,7 +422,17 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   };
 
   const handleSaveCity = async () => {
-    if (!selectedCity) return;
+    if (!selectedCity || isSaving) return;
+
+    const invalidField = COST_FIELDS.find(({ key }) => {
+      const value = (selectedCity as Record<string, number | null>)[key];
+      return value != null && (!Number.isFinite(value) || value < 0);
+    });
+    if (invalidField) {
+      setSaveMessage(null);
+      setSaveError(`${invalidField.label} must be a finite, nonnegative amount, or blank for missing.`);
+      return;
+    }
 
     setIsSaving(true);
     setSaveError(null);
@@ -396,8 +456,10 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
       }
 
       const nextCountries = await fetchData();
-      selectCityFromCountries(selectedCity.id, nextCountries);
+      if (nextCountries) selectCityFromCountries(selectedCity.id, nextCountries);
+      else setIsDirty(false);
       setSaveMessage('City saved.');
+      setProvenanceReload(value => value + 1);
     } catch {
       setSaveError('Failed to save city.');
     } finally {
@@ -407,7 +469,8 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
 
   const handleDatasetNewCityCreated = async (payload: NewCityCreatedPayload) => {
     const nextCountries = await fetchData();
-    selectCityFromCountries(payload.city.cityId, nextCountries);
+    if (nextCountries) selectCityFromCountries(payload.city.cityId, nextCountries);
+    else pendingSelection.current = payload.city.cityId;
     setSaveMessage(
       payload.city.reusedExistingCity
         ? 'Existing city selected.'
@@ -438,14 +501,14 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
 
       const nextCountries = await fetchData();
       if (selectedCity?.id === city.id) {
-        selectCityFromCountries(null, nextCountries);
+        selectCityFromCountries(null, nextCountries ?? countries);
       }
     } catch {
       setDeleteError('Failed to delete city.');
     }
   };
 
-  if (loading && countries.length === 0) {
+  if (loading && !hasLoadedData && !readError) {
     return (
       <PageLoadingState
         title="Loading dataset"
@@ -471,6 +534,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
           <Button
             type="button"
             size="sm"
+            disabled={loading || Boolean(readError)}
             onClick={() => {
               setAddDialogOpen(true);
               setSaveError(null);
@@ -493,6 +557,18 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
           ) : null}
         </div>
       </div>
+
+      {readError ? (
+        <div role="alert" className="flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive">
+          <div>
+            <p>{readError}</p>
+            <p>{hasLoadedData ? 'Showing the last loaded dataset and history; they may be out of date.' : 'Dataset unavailable. City and history counts could not be loaded.'}</p>
+          </div>
+          <Button type="button" variant="outline" size="sm" disabled={loading} onClick={() => void fetchData()}>
+            <LoadingButtonLabel idle="Retry dataset" loading="Retrying..." isLoading={loading} />
+          </Button>
+        </div>
+      ) : null}
 
       <Card>
         <CardHeader className="pb-3">
@@ -559,6 +635,14 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                   <CardTitle className="text-base">Estimate Provenance</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
+                  {provenanceError ? (
+                    <div role="alert" className="flex flex-wrap items-center gap-2 text-sm text-destructive">
+                      <span>{provenanceError} {selectedProvenance ? 'Showing the last loaded provenance.' : 'Provenance unavailable.'}</span>
+                      <Button type="button" variant="outline" size="sm" disabled={provenanceLoading} onClick={() => setProvenanceReload(value => value + 1)}>
+                        <LoadingButtonLabel idle="Retry provenance" loading="Retrying..." isLoading={provenanceLoading} />
+                      </Button>
+                    </div>
+                  ) : provenanceLoading ? <p role="status" className="text-sm text-muted-foreground">Loading city provenance...</p> : null}
                   <div className="grid gap-4 md:grid-cols-5">
                     <div>
                       <div className="text-xs uppercase tracking-wide text-muted-foreground">Row Source</div>
@@ -683,7 +767,9 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                     countryName={selectedCity.countryName}
                     onGenerated={async () => {
                       const nextCountries = await fetchData();
-                      selectCityFromCountries(selectedCity.id, nextCountries);
+                      if (nextCountries) selectCityFromCountries(selectedCity.id, nextCountries);
+                      else pendingSelection.current = selectedCity.id;
+                      setProvenanceReload(value => value + 1);
                       setSaveMessage('City updated from generated values.');
                     }}
                   />
@@ -696,7 +782,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                     onChange={handleCostChange}
                   />
                   <div className="flex flex-wrap items-center gap-3">
-                    <Button type="button" onClick={handleSaveCity} disabled={isSaving}>
+                    <Button type="button" onClick={handleSaveCity} disabled={isSaving || loading || Boolean(readError)}>
                       {isSaving ? 'Saving...' : 'Save City'}
                     </Button>
                     {isDirty ? <span className="text-sm text-muted-foreground">Unsaved changes</span> : null}
@@ -724,19 +810,19 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm">Cities</CardTitle>
               </CardHeader>
-              <CardContent className="text-2xl font-semibold">{allCities.length}</CardContent>
+              <CardContent className="text-2xl font-semibold">{hasLoadedData ? allCities.length : 'Unavailable'}</CardContent>
             </Card>
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm">Countries</CardTitle>
               </CardHeader>
-              <CardContent className="text-2xl font-semibold">{countries.length}</CardContent>
+              <CardContent className="text-2xl font-semibold">{hasLoadedData ? countries.length : 'Unavailable'}</CardContent>
             </Card>
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm">History Records</CardTitle>
               </CardHeader>
-              <CardContent className="text-2xl font-semibold">{historyCount}</CardContent>
+              <CardContent className="text-2xl font-semibold">{hasLoadedData ? historyCount : 'Unavailable'}</CardContent>
             </Card>
           </div>
 
@@ -820,6 +906,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                           variant="destructive"
                           size="sm"
                           onClick={() => handleDeleteCity(city)}
+                          disabled={loading || Boolean(readError)}
                         >
                           Delete
                         </Button>
@@ -830,7 +917,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                 {filteredCities.length === 0 ? (
                   <tr>
                     <td colSpan={DATASET_COLUMNS.length + 6} className="px-3 py-8 text-center text-sm text-muted-foreground">
-                      No city rows match the current search.
+                      {hasLoadedData ? 'No city rows match the current search.' : 'City rows unavailable.'}
                     </td>
                   </tr>
                 ) : null}
@@ -928,7 +1015,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                 {filteredHistory.length === 0 ? (
                   <tr>
                     <td colSpan={8} className="px-3 py-8 text-center text-sm text-muted-foreground">
-                      No generation history is stored yet for the current filter.
+                      {hasLoadedData ? 'No generation history is stored yet for the current filter.' : 'Generation history unavailable.'}
                     </td>
                   </tr>
                 ) : null}

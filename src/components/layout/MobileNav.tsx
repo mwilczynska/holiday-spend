@@ -42,7 +42,7 @@ export function MobileNav() {
                 if (item.href !== pathname) setPendingHref(item.href);
               }}
               className={cn(
-                'flex flex-col items-center gap-0.5 px-3 py-1 text-xs transition-colors',
+                'min-w-0 flex flex-col items-center gap-0.5 px-1 py-1 text-center text-[11px] sm:px-3 sm:text-xs transition-colors',
                 item.highlight && !isActive && 'text-primary',
                 isActive
                   ? 'text-primary'

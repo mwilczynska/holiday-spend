@@ -85,6 +85,17 @@ describe.sequential('write route input validation', () => {
     expect(city().accom_3star).toBe(141.5);
   });
 
+  it('rejects a negative cost atomically while allowing zero and missing costs', async () => {
+    const rejected = await put(cityRoute.PUT, 'lisbon', { accom3star: -5, foodMid: 20 });
+    expect(rejected.status).toBe(400);
+    expect(city().accom_3star).toBe(139.5);
+    expect((dbModule.sqlite.prepare('SELECT food_mid FROM cities WHERE id = ?').get('lisbon') as { food_mid: number }).food_mid).toBe(132.06);
+    expect((await put(cityRoute.PUT, 'lisbon', { accom3star: 0 })).status).toBe(200);
+    expect(city().accom_3star).toBe(0);
+    expect((await put(cityRoute.PUT, 'lisbon', { accom3star: null })).status).toBe(200);
+    expect(city().accom_3star).toBeNull();
+  });
+
   it('refuses a body that would forge estimate provenance', async () => {
     // A modelled value must never be able to claim it was an observed source price. The handler
     // previously wrote the raw body, so this request would have succeeded.

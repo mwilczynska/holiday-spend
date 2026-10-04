@@ -19,7 +19,7 @@ import { success, error, handleError } from '@/lib/api-helpers';
  * silently discarded. A new cost field must be added here deliberately, which is the fail-closed
  * behaviour this project asks for.
  */
-const costFieldSchema = z.number().nullable();
+const costFieldSchema = z.number().finite().nonnegative('City costs must be nonnegative.').nullable();
 
 const updateCitySchema = z
   .object({

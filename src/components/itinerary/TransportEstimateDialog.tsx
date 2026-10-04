@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -102,6 +102,7 @@ export function TransportEstimateDialog({
   existingTransports,
   onApplyTransports,
 }: TransportEstimateDialogProps) {
+  const apiKeyInputId = useId();
   const [provider, setProvider] = useState<ProviderOption>('openai');
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());
   const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>(
@@ -363,8 +364,9 @@ export function TransportEstimateDialog({
 
                 <div className="space-y-2">
                   <div className="space-y-1">
-                    <Label className="text-xs">{selectedProvider.label} API Key</Label>
+                    <Label htmlFor={apiKeyInputId} className="text-xs">{selectedProvider.label} API Key</Label>
                     <Input
+                      id={apiKeyInputId}
                       className="h-9 text-sm"
                       placeholder="Optional. Leave blank to use a server-side key if configured."
                       type={showApiKey ? 'text' : 'password'}

@@ -1,16 +1,16 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Shared browser keys, city-picker interactions and cancellable transport estimates are merged into main through PR #12. Prior product phases complete.
+**Status:** Comprehensive feature QA complete with owner-approved authentication exclusions; publication to main is in progress at the owner's request. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. Prior product phases complete.
 
-**Current phase:** Owner-requested PR #12 merge — COMPLETE.
+**Current phase:** Publish completed feature QA to main — IN PROGRESS. Chrome feature testing is complete with recorded exclusions.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
 page seven times. See Phase 8 for the corrected evidence.
 
-**Branch:** `main` — includes PR #12 merge `e34ee64` and PR #11.
+**Branch:** `fix/comprehensive-feature-qa` — starts from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 1 October 2026
+**Last updated:** 3 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
@@ -21,9 +21,313 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** No outstanding work from this request.
+**Next action:** Commit this publication checkpoint, create the branch's PR, merge to main preserving the individual fix commits, and remove the merged remote/local feature branch. Verify the merged PR and clean synchronized main checkout. No feature-testing work remains within the agreed scope. The owner chose completion with password changes, account creation, external email delivery and OAuth excluded. Chrome native confirm acceptance and Settings download artifacts have separate production regression coverage. No further key entry is needed. The final application baseline passes TypeScript, build, all 419 unit tests, memory and v1.1 guard.
 
-**Working tree:** Local main is synced to the merge; clean after this completion checkpoint.
+The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
+Its regressions and Chrome verification pass.
+
+**Working tree:** Twenty-nine separate fixes are pushed through `488bbd3`. The final checkpoint publishes the separate Settings readiness correction and completed coverage report. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
+
+## Publish completed feature QA to main — IN PROGRESS (3 October 2026)
+
+The owner requests commit, push, merge to main and PR cleanup. The working tree is clean at `13bcec0`;
+GitHub has no existing PR for this branch. Fresh origin/main is an ancestor with 37 branch commits and no
+diverging main commits. A merge commit will preserve each fix's history. The final baseline and coverage
+exclusions above remain unchanged; this publication checkpoint changes documentation only.
+
+- [x] Inspect the working tree, refreshed main and existing PRs.
+- [ ] Commit/push the publication checkpoint and create/attach the PR.
+- [ ] Verify merge readiness and merge to main.
+- [ ] Remove the merged feature branches and verify clean synchronized main.
+
+## Manual miscellaneous planner expenses — COMPLETE (3 October 2026)
+
+Every planner card can add, edit and remove manual miscellaneous expenses with a description and AUD amount.
+Each amount is a one-off total for that leg and the whole group. Planner/dashboard budgets, saved plans,
+export/import and comparison totals include them. Invalid amounts and rejected saves retain drafts with
+validation and Retry/Discard. Existing databases gain an empty JSON array; old snapshots default to no entries.
+
+Verification: TypeScript, production builds, 70 unit files / 402 tests, memory mirror and v1.1 guard pass.
+The first affected browser run passes 15 of 16 checks; the existing zero-override case exhausts its 30-second
+deadline during repeated fills. Its unchanged rerun plus authentication and both new miscellaneous checks pass
+on the final isolated production build (4 checks, 57.8 seconds). Mobile visual inspection confirms contained
+fields and removal buttons at 390 px. A shared server restart required the final build and tests to use the
+ignored `.local/miscellaneous-build` copy and separate database at port 3104. All writes target QA copies.
+The credential-label audit is verified and pushed as `892f802`.
+
+## Comprehensive Chrome feature testing — COMPLETE with documented exclusions
+
+F29: unrelated CSV headers produce an enabled blank zero-value candidate in Chrome. Thirteen new validation
+cases and the old-build browser regression reproduce unsupported headers, malformed structure and invalid row
+fields. Required header aliases, complete numeric values, IDs, calendar dates and currency codes now validate
+before conversion or writes. Any invalid file rejects the whole batch with HTTP 400 and file/row guidance.
+Supported compact/history/balance exports, refunds, actual zeros and valid empty exports remain supported.
+All 33 focused tests, TypeScript, isolated production build, all 70 unit files / 419 tests, memory and v1.1 guard
+pass. Chrome verifies unrelated/empty-file errors, February 30 rejection, disabled import for valid empty output,
+and corrected-file retry with duplicate detection. The complete sweep passes 103/107 in 9.4 minutes; both new
+CSV cases pass. The four failures involve saved-plan empty state, zero overrides, credential climate readiness,
+and a Settings baseline captured before its label hydrates. Both empty/chart states are present in failure
+snapshots; the zero-override test begins reload with less than one second left before its overall deadline.
+All ten checks in those four files pass unchanged on rerun (57.2 seconds). The verified leftover zero fixture
+1165 is removed from the QA copy; no expenses reference it. A separate test-only correction waits for the populated,
+enabled traveller control before recording its baseline. All five Settings/auth checks pass in 14.0 seconds;
+TypeScript passes. App behavior and deadlines are unchanged. Failed traces remain under `.local/feature-qa/f29-full-results`.
+
+Final approved existing-city refresh: Chrome generates Canberra with OpenAI `gpt-6-luna` / High. Estimate 69 is
+active; prior estimate 68 remains inactive history. The UI and read-only QA database confirm ten USD and ten AUD
+anchors, v1.1, preserved formulas, and the RBA observation dated 2 October 2026, inverted to 1.442377 AUD per USD.
+The fictional Sydney/Melbourne itinerary stays at two legs; its two imported expenses remain $65. Reveal stays off
+and the key remains available after success. No key value is read, copied or cleared; no new entry is needed.
+
+F28: Chrome and the old-build regression confirm unassociated provider-key labels and an unnamed existing-city
+Show API key switch. Five forms now associate labels with unique input IDs; the switch label also toggles it.
+Chrome verifies the existing editor and missing-city import field. TypeScript, isolated production build, all 402
+unit tests, memory and v1.1 guard pass. The first affected browser run passes 20/21; the credential case reaches its
+five-second climate-readiness assertion before the large itinerary renders. Both credential cases and auth pass
+unchanged on rerun (3 checks, 39.8 seconds). The first unit run has a snapshot setup timeout; all 70 files pass on
+the unchanged rerun. An initial browser auth run is corrected by enabling email/password on the dedicated server.
+Production verification uses `.local/feature-qa/f28-build` at port 3102 to avoid shared build locks.
+
+Import follow-through: the owner enables extension file-URL access. Chrome restores the fictional two-leg JSON
+plan ($3,412), rejects invalid legs without replacing it, and cancels missing-city resolution without changes.
+Two Wise CSV files import $25 Shopping and $40 Activities, with category edits preserved. Re-parsing finds two
+duplicates, and changing files clears the preview. An unrelated CSV is incorrectly offered as one blank zero-value
+transaction (F29); it is not confirmed. Live bulk transport previously applied $270 and $440 flight rows, replacing
+the prior $240 train without duplication, for $6,054 before JSON restoration. Existing-city refresh is now verified
+above; the original generation and all earlier history are retained.
+
+Owner approval follow-through: a separate `provider-qa@example.test` account in the isolated QA copy has Sydney
+and Melbourne, three nights each, on invented 1–7 December 2026 dates and no notes. The Canberra new-city form is
+prepared in Chrome for three nights, OpenAI, key saving off. The owner enters an OpenAI key directly in the UI;
+keyed discovery lists 78 models, and live Canberra generation succeeds with a three-night leg and climate. The
+fictional plan now has three legs, nine nights and $5,344 total. Single Sydney–Melbourne estimation is running.
+No credential is read or copied. The current page is retained because unsaved keys do not survive a reload.
+The saved Canberra estimate is v1.1 / OpenAI `gpt-6-luna` / `max`, with the preserved formula version and RBA
+observation dated 2 October 2026. The server records deterministic inversion of USD per AUD to AUD per USD.
+
+Provider session checkpoint: all 101 production checks pass in 6.6 minutes. A new dummy-key regression plus auth
+setup pass in 15.2 seconds: a fresh isolated browser profile retains the unsaved key through real existing-city
+save, bulk dialog changes and client navigation to Dataset, then drops it on full reload. Discovery is intercepted
+and no fixture value reaches a provider; the created QA leg is cleaned up. The owner reports repeated clearing in
+the active Chrome session. That report is not reproduced by the fresh-profile case; the extra audit tab is closed,
+the current live page is retained and another entry is requested only if its key actually becomes unavailable.
+Single transport returns four explicitly labelled fallback estimates after a provider TPM 429; applying the $240
+train option raises the fictional total to $5,584. A two-leg bulk run at High effort is in progress with the current
+key. File-URL permission is requested for the prepared synthetic CSV/JSON attachments.
+
+F27 `611e0e2` is pushed: Chrome confirms HTTP 201 `{data:{}}` closes the new-city form and reports an added Sydney leg although no leg
+was saved. Inputs also remain editable while the request is pending. The three new production regressions fail
+against the F26 build. City acknowledgements now require valid identity and consistent creation flags; planner
+responses must also confirm a leg with the requested city and nights. Failed confirmation retains the draft with
+an error, and pending submissions lock inputs and guard duplicate requests. Chrome verifies locking, retained
+Sydney / Australia / two nights, a visible error and no false success. Narrow dialog and advanced controls remain
+contained. TypeScript, build, 69 unit files / 398 tests, memory and v1.1 guard pass. The first affected run passes
+21 of 22 checks; the transport-picker trace shows a completed click before client readiness and no opened dialog.
+That test now waits for the client-rendered climate image. All 22 affected checks pass in 1.6 minutes without
+changing app code or deadlines for the test correction, which is published separately as `3188b1c`.
+All injected responses target only the isolated local app and save no rows.
+
+F26 `c12d8d9` is pushed: Chrome confirms the new-city flow turns 3.5 nights into a saved three-night existing-city leg. The test leg is
+removed and the original fictional two-leg route restored. Whole-number validation now uses the original number
+rather than parseInt, rejects unsafe values and retains invalid input with an associated message. The old-build
+regression fails. Chrome verifies the retained 3.5 draft and disabled submission on the final build. TypeScript,
+production build, all 69 unit files / 398 tests, memory and v1.1 guard pass; thirteen affected production checks
+pass, including invalid-input blocking without a request and an exact two-night reuse/save/reload.
+The prepared provider form still has no disposable credential; no live call is submitted.
+
+Local checkpoint: all 96 production browser checks pass in 4.1 minutes, alongside TypeScript, production build,
+all 69 Vitest files / 398 tests, memory mirror and v1.1 guard. Chrome reload confirms the restored QA settings:
+two travellers, 64,000 tokens, 600 seconds and no fixed costs. The report records twenty-five separate fixes and
+distinguishes Chrome interaction from production regression coverage. Remaining file/provider/credential workflows
+cannot be claimed complete while their pending access and user actions are unresolved.
+
+Twenty-fifth fix `a1f8370` is pushed: provider timeout displays preserve exact milliseconds through save, refresh and reload. Inputs use
+millisecond steps. Conversion removes only binary floating-point remainders that round-trip exactly; unsupported
+fractional milliseconds remain rejected. Nonfinite values cannot become null/default resets during serialization.
+Chrome verifies 90.5 and 16.001 seconds after reload and restored defaults. The old-build reproduction confirms
+90,500 ms saved but 91 seconds displayed. The new production regression plus auth setup pass for six valid values,
+full/client reads, sub-millisecond rejection and reset. TypeScript, build, all 398 unit tests, memory and v1.1 guard
+pass. The first complete production sweep passes 94 of 96 checks. Trace inspection identifies two test races:
+the failed server Dataset read retries after hydration and recovers before the test clicks Retry, and the planner
+test clicks a server-rendered move control before client readiness. The tests now hold the dataset's automatic
+retry at 503 until explicit recovery and wait for the client-rendered climate chart before moving. All seven
+affected file/auth checks pass. The complete 96-check rerun passes in 4.1 minutes. These are separate test changes.
+
+Twenty-fourth fix `dd9849f` is pushed: profile-name acknowledgements must confirm the requested trimmed name or explicit clearing.
+Failed saves retain drafts with a saved-name label and an error; pending submissions lock input and prevent
+duplicates, and editing clears stale status. Long saved names wrap on narrow screens. Chrome verifies malformed
+response retention, pending locking, retry/reload and restoration to Local Dev. Two new production regressions
+plus authentication setup pass for HTTP/network/unreadable/missing/invalid/wrong-name failures, trimmed/blank/
+200-character names, pending submissions and 390 px containment. TypeScript, build, all 398 unit tests, memory
+and v1.1 guard pass. Password inputs remain untouched.
+
+Twenty-third fix `0c98b21` is pushed: comparison list failures retain plans/selections with Retry and initial failures show unavailable
+counts. Calculation errors are visible in selector mode; validated complete results replace prior comparisons,
+and obsolete responses are ignored. The API rejects duplicate, malformed or partially missing/unowned IDs.
+Chrome verifies initial unavailable counts, selection retention, visible calculation errors and both Retry controls.
+All thirteen relevant production checks pass on the final build, including five new regressions. The first run's
+mobile check exceeds its shared thirty-second deadline while navigating to Dataset after comparison/planner pass;
+the isolated rerun and final thirteen-check run pass without changing that test. TypeScript, build, all 398 unit
+tests, memory and v1.1 guard pass. The profile-name defect is reproduced with no persistent fixture change.
+
+Twenty-second fix `3634b57` is pushed: provider-limit acknowledgements must confirm the requested values before success. Failed saves
+and resets retain input and the exact operation for Retry; newer edits replace the retry. Pending saves lock inputs
+and other Settings writes, and old success messages clear on editing/submission. Chrome verifies malformed 200
+retention, pending locking, successful Retry/reload and Reset/default restoration. All seventeen relevant production
+browser checks pass, including three new regressions. TypeScript, build, all 398 unit tests, memory and v1.1 guard
+pass. The first unit run's snapshot-import setup exceeded ten seconds; the complete rerun passes all 69 files.
+
+Twenty-first fix `ade8003` is pushed: traveller selections remain labelled drafts until a validated acknowledgement or reread confirms
+the saved count. Failed saves offer Retry/Discard; pending saves lock the selector and dependent cost actions.
+Chrome verifies held writes, rejected save/read retention, both Retry controls, five travellers persisting after
+reload and restoration to two. Four new production regressions plus ten related checks pass. TypeScript, build,
+all 398 unit tests, memory mirror and v1.1 guard pass. Chrome's transient request-header policy failure recovered
+on one retry; page reading and interaction were verified without changing integration settings.
+
+Twentieth fix `527db84` is pushed: Settings read failures retain costs/settings with a stale label and Retry. Initial failures
+show unavailable traveller/provider values and totals. All four required responses are validated before replacement,
+obsolete reads are ignored and retry retains unsaved provider-limit drafts. Dependent actions wait for valid reads.
+Chrome verifies the retained $25 fixture, draft 33,333 tokens / 420 seconds surviving Retry, initial unavailable values
+and recovery to saved 64,000 / 600 seconds / two travellers. The suspended QA table is restored and the fixture removed.
+The production reproduction fails against the prior build. Ten relevant browser checks pass, including four new read
+regressions plus fixed-cost/provider-limit workflows and auth setup. TypeScript, build, all 398 unit tests, memory
+mirror and v1.1 guard pass. The full 81-check production sweep passes in 4.1 minutes, including imports, comparisons,
+climate, transport, exports and all thirteen new read regressions.
+
+Nineteenth fix `e37bda0` is pushed: dataset read failures retain library/history together with a stale label and
+Retry. Initial failures expose unavailable counts/rows; provenance failures have a separate Retry. HTTP/JSON/schema,
+cost and cross-response checks precede updates. Retries retain city drafts, and successful writes are not reported as
+failed when refresh fails. Chrome verifies retained 210 cities / 71 countries / 67 history records, initial unavailable
+counts and provenance error/Retry. The production reproduction fails before the fix. Ten relevant browser checks,
+including five new regressions, city editor, initial SSR/navigation and auth setup, pass. TypeScript, build, all 398
+unit tests, memory mirror and v1.1 guard pass; the copy-only table suspension is restored.
+
+Eighteenth fix `b40b150` is pushed: dashboard read failures retain prior figures with a stale warning and Retry;
+initial failures show unavailable totals/charts. Complete validated responses replace the view together, valid empty
+trips are distinct, and the first client navigation refreshes while full loads skip duplicate reads. All four new
+production regressions fail against the prior build and pass after the fix, plus auth setup. Chrome verifies both
+failure states and Retry recovery. TypeScript, production build, all 398 unit tests, memory mirror and v1.1 guard pass.
+
+Seventeenth fix: inline edit failures retain drafts with Retry/Discard. Per-leg writes are serialized/coalesced; cards
+preview drafts while trip totals use confirmed data. Plan save/export/replacement/order/estimates wait for edits to
+settle. Chrome verifies fifteen nights retained after a rejected save, unchanged aggregate totals, Retry/reload and
+restoration to fourteen. The production reproduction fails before the fix; three tests plus auth setup pass for
+failed edits, unrelated refresh preservation, automatic-order failure, retry/discard, rapid last-value persistence
+and rejected transport rows. All 69 unit files / 398 tests, TypeScript, build, memory and v1.1 guard pass. The complete
+production browser suite passes all 68 checks in 3.7 minutes, including imports, comparisons, climate and transport.
+
+Sixteenth fix: rejected planner reads retain all loaded data with a stale label and Retry. Required lists/settings are
+validated before replacement, obsolete reads are ignored, and saved-plan reads expose failure/retry. Snapshot saves
+and ordering are disabled while data is loading or stale. Chrome verifies retained 65 legs / $112,690 after a controlled
+503, followed by successful Retry. The production reproduction fails before the fix; nine relevant tests including
+auth setup pass afterward, covering malformed/network/HTTP/setting/list failures, valid empty data, initial SSR,
+Add Leg and ordering. TypeScript, build, all 394 unit tests, memory and v1.1 guard pass.
+
+Fifteenth fix: failed Add Leg saves retain the selected city and nights with a visible error and retry. Pending additions
+lock the form, and fractional/zero/negative nights are blocked. Chrome verifies a held POST, disabled controls, retained
+Amsterdam/nine-night draft and rejected-save error. The new production regression fails before the fix; two tests plus auth
+setup pass after it for HTTP/network/unreadable failures, success/reload, validation and pending submission. TypeScript,
+build, 68 unit files / 394 tests, memory mirror and v1.1 guard pass. Each fix remains a separate commit.
+
+First fix committed and pushed as `1eab5ed`: Quick Add now converts new expenses to AUD, exposes failed saves, retains rejected input,
+and prevents duplicate success submissions. Chrome verifies 25 USD → $36.03 AUD and error/retry; TypeScript,
+production build, 383 Vitest tests, memory mirror, v1.1 guard and three new browser regressions plus auth setup pass.
+The 37 existing production browser checks also pass. Coverage/findings: `docs/dev/feature-qa-2026-10-02.md`.
+Next fixes: rejected fixed-cost forms and zero request-limit validation, each committed separately.
+Second fix committed and pushed as `78967e3`: fixed-cost failures retain input, paid/delete failures expose errors, invalid amounts are
+blocked and controls have accessible labels. Chrome verifies a controlled database rejection, successful retry,
+paid status after reload and fixture deletion. TypeScript, build, 383 unit tests and three new browser regressions
+plus auth setup pass. Zero request-limit validation is next.
+Third fix committed and pushed as `5f3e1f4`: zero request limits now fail validation rather than resetting an override; blanks retain
+the documented reset behavior. Chrome verifies error/draft retention, valid save/reload and reset. TypeScript,
+production build, 383 unit tests and two new production browser regressions plus auth setup pass.
+Next action: continue the feature inventory, reproduce preview category persistence, and resume interactive CSV
+uploads if the extension permission is enabled. Wider planner/dataset/expense/tag/account/mobile coverage remains.
+Fourth fix committed and pushed as `a3ed1ce`: confirmed Wise imports now preserve preview category changes and reject unsupported,
+duplicate or out-of-file overrides before writes. Changing files clears the stale preview. The production regression
+fails before the fix (Food saved instead of Shopping) and passes after it, including duplicate reparse. TypeScript,
+build, 387 unit tests and two new browser regressions plus auth setup pass. Interactive Chrome file uploads remain
+blocked on the extension permission; other Chrome checks continue.
+All 47 production Playwright checks pass. Fifth fix committed and pushed as `86ccea1`: zero planner overrides remain visible and
+override labels are associated with their fields. Chrome verifies the saved zero after reload. A production
+regression fails before the fix and passes after it, covering all five fields, reload, clearing to automatic costs,
+and independent one-off transport totals. TypeScript, build, 387 unit tests, memory check and v1.1 guard pass.
+Next action: continue planner dates/reordering/climate, expense operations, tags and remaining library/account/mobile controls.
+Sixth fix committed and pushed as `656a24b`: rejected expense mutations retain drafts/selections and expose errors. Read failures
+label the last loaded results with Retry. Chrome verifies a controlled rejection, retained draft, successful retry
+and category/merchant/subcategory/assignment edits. TypeScript, build, 387 unit tests and three new production
+browser regressions plus auth setup pass. Remaining route/control coverage continues.
+Seventh fix committed and pushed as `617c06a`: tag CRUD/read failures expose errors and retain drafts/selections; duplicate names
+return 409 with guidance; selected title refreshes after rename. Chrome verifies duplicate retention and rename.
+TypeScript, build, 387 unit tests and three production browser regressions plus auth setup pass. Overlapping unit
+and browser suites caused two setup-hook timeouts; an isolated unit rerun passes all tests. Remaining coverage continues.
+Eighth fix committed and pushed as `9c9ade6`: tag counts/lists omit deleted expenses and totals follow the tracker's AUD helper and
+exclude excluded spend. Loading/failed totals are labelled rather than showing zero. Chrome verifies a deleted
+45 AUD fixture disappears from its tag. A production regression fails before the fix (excluded spend counted),
+then passes through exclude/include/delete and empty-state checks. TypeScript, build, 387 unit tests, memory/guard
+and all four tag browser regressions plus auth setup pass. Continue remaining saved-plan/dataset/account/mobile controls.
+Ninth fix committed and pushed as `461a943`: Chrome reproduces narrow-screen page overflow, including a 1,152 px comparison layout.
+The production regression fails before the fix at 390 px and passes after it across Compare, Planner, Dataset,
+Expenses and Settings. The main flex item shrinks; planner controls and leg summaries wrap; mobile navigation
+fits Sign out. Chrome verifies corrected planner/comparison widths. TypeScript, build, 387 unit tests, memory
+and v1.1 guard pass. Continue the remaining dataset, settings, auth and provider controls.
+Tenth fix committed and pushed as `7d6103e`: Chrome saves a negative city cost as valid before the fix and retains a labelled
+error/draft after it. City creation/edit APIs reject negative/nonfinite costs; editor fields are labelled. The
+production regression passes through API rejection, unchanged stored values, zero/blank/decimal persistence and
+coffee/drinks-none coupling. TypeScript, build, 388 unit tests, memory and v1.1 guard pass.
+Eleventh fix committed and pushed as `5d9d31d`: a failed initial expense read produces a false empty tracker with no Retry before
+the fix. Chrome now sees unavailable totals/Retry, then recovers 1,301 expenses after fixture restoration. The
+production regression fails before and passes after; previous expense mutation regressions pass. TypeScript,
+build, 388 unit tests, memory and v1.1 guard pass. Review remaining scroll controls, tags assignment and export artifacts.
+
+Continuation checkpoint: Settings JSON/CSV artifacts pass a production browser check; Chrome extension clicks
+produce no observable download and remain separately limited. F12 reproduces missing expense tag assignment/removal
+controls. Add an owned, atomic tag selection workflow with retained failure drafts, then finish scroll coverage.
+Twelfth fix committed and pushed as `1c9fe62`: expense tags have reachable assignment/removal controls on desktop and mobile.
+Chrome verifies selection persistence and removal. A production regression covers rejected save retention,
+read retry, assignment totals and invalid tag rejection. Four unit checks cover ownership, deleted expenses,
+deduplication, clearing and transactional rollback; all 392 unit tests pass. Settings export artifact check passes.
+TypeScript, final production build, memory mirror and v1.1 guard also pass. Commit this fix separately, then run
+the complete production browser suite and finish the remaining interactive scroll coverage.
+F13 in progress: Chrome's Methodology page presents retired v2/v3 collection and validation as current.
+Replace stale product copy with the implemented v1.1 contract, formulas, FX provenance and limitations. Historical
+research remains in its archive; no calibration or collection work is reopened.
+All 60 production browser checks pass after F12 in 3.1 minutes. F13 TypeScript passes; production build and
+interactive verification are underway.
+Thirteenth fix committed and pushed as `a4c4352`: Chrome verifies all seven current-method sections, keyboard Enter toggling,
+page scrolling to the bottom and narrow-screen containment. TypeScript, production build, all 392 unit tests,
+memory and v1.1 guard pass. Continue the final dataset/comparison/climate scroll pass.
+F14 in progress: a Chrome-controlled 503 on Sort by Date still reports success and leaves the saved order
+unchanged. Move failures are also ignored. Add request/error checks, retry-safe controls and atomic server order
+writes. Normal move/reload persistence and successful sorting are verified on the isolated fixture.
+Fourteenth fix committed and pushed as `6a001de`: the production regression fails before and passes after, covering rejected moves,
+failed sorts, network retry and reload persistence. Chrome verifies error/no false success and restored order after
+retry. Two unit checks verify user scoping and rollback; all 394 unit tests pass. TypeScript, build, memory and
+v1.1 guard pass. Run the full 61-check browser suite and update the coverage ledger.
+Final-suite checkpoint: 60 of 61 pass; the new ordering test passes alone but its initial click sends no mocked
+request in the full run. The trace contains only the finally cleanup request. Added an explicit page-readiness
+wait to the test, matching the existing initial-data checks, and rerunning the full suite. No production code
+changed after `6a001de`.
+Checkpoint result: the complete rerun passes all 61 production browser checks in 3.1 minutes. All 394 unit tests,
+TypeScript, production build, memory mirror and v1.1 guard pass. The coverage ledger now records the completed
+chart, date-bound, methodology and horizontal/vertical scroll checks. The remaining local failure pass and
+external/control-surface limits are explicit; the comprehensive goal remains active.
+
+- [x] Inventory routes, controls, existing regressions and practical edge cases in a durable coverage report.
+- [x] Verify login, dashboard charts, filters, drill-downs and responsive scrolling.
+- [x] Verify itinerary CRUD, dates, tiers, overrides, ordering, climate and transport workflows.
+- [x] Verify saved-plan CRUD, loading and comparisons.
+- [x] Verify expenses, tags, assignment, bulk actions and Wise CSV import/export; native confirm acceptance has separate production regression evidence.
+- [x] Verify city/country library CRUD, generation, history and provider failure/retry controls; live OpenAI new/existing generation is verified.
+- [x] Verify local settings, request limits, account screens and methodology navigation; credential/email/OAuth steps are excluded.
+- [x] Fix all twenty-nine reproduced defects and commit/push each fix with its evidence.
+- [x] Run the required baseline and report tested coverage, problems, fixes and remaining limitations.
+- [x] Resolve the owner's scope choice: finish with password changes, account creation, external email delivery and OAuth documented as untested. Chrome native confirm and Settings artifact limitations remain explicit; production regression evidence is separate.
+
+Test production content in Chrome using an isolated database copy and fixture account. Cover empty, populated,
+invalid, boundary and failure states where feasible. Existing methodology accuracy work remains closed; provider
+credentials stay masked and are never read. Real email delivery and irreversible account actions require a separate
+disposable workflow. Record interactive Chrome evidence separately from automated regression results.
 
 ## Owner-requested PR #12 merge — COMPLETE
 

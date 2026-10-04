@@ -2,6 +2,7 @@
 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useId } from 'react';
 
 interface CostField {
   key: string;
@@ -49,6 +50,7 @@ interface CostEditorProps {
 }
 
 export function CostEditor({ values, onChange, sources }: CostEditorProps) {
+  const id = useId();
   const groups = COST_FIELDS.reduce<Record<string, CostField[]>>((acc, field) => {
     if (!acc[field.group]) acc[field.group] = [];
     acc[field.group].push(field);
@@ -70,7 +72,7 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
             {fields.map((field) => (
               <div key={field.key}>
                 <div className="flex items-center gap-1">
-                  <Label className="text-xs">{field.label}</Label>
+                  <Label htmlFor={`${id}-${field.key}`} className="text-xs">{field.label}</Label>
                   {sources?.[field.key] && (
                     <span className={`text-[10px] px-1 rounded ${SOURCE_BADGES[sources[field.key]] || 'bg-gray-100'}`}>
                       {sources[field.key]}
@@ -78,7 +80,10 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
                   )}
                 </div>
                 <Input
+                  id={`${id}-${field.key}`}
                   type="number"
+                  min={0}
+                  step="any"
                   className="h-8 text-xs"
                   placeholder="$"
                   value={values[field.key] ?? ''}

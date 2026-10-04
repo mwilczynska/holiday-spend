@@ -150,6 +150,7 @@ export async function POST(request: Request) {
             drinksOverride: leg.drinksOverride ?? null,
             activitiesOverride: leg.activitiesOverride ?? null,
             transportOverride: leg.transportOverride ?? null,
+            miscellaneousExpenses: leg.miscellaneousExpenses,
             intercityTransportCost,
             intercityTransportNote,
             sortOrder: index + 1,

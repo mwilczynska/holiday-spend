@@ -10,6 +10,7 @@ import { resolveDashboardAsOfDate, wholeCalendarDaysBetween } from '@/lib/dashbo
 import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { createExpenseLegResolver } from '@/lib/expense-leg-assignment';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
+import { getMiscellaneousExpenseTotal } from '@/lib/miscellaneous-expenses';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import type { AccomTier, ActivitiesTier, DrinksTier, FoodTier, LegStatus } from '@/types';
@@ -107,7 +108,7 @@ export function buildDashboardSummary(inputs: DashboardSharedInputs) {
           groupSize
         )
       : 0;
-    return getLegTotalFromTransports(dailyCost, leg.nights, transportMap.get(leg.id));
+    return getLegTotalFromTransports(dailyCost, leg.nights, transportMap.get(leg.id), leg.miscellaneousExpenses);
   });
 
   const plannedLegsTotal = legTotals.reduce((s, t) => s + t, 0);
@@ -170,7 +171,7 @@ export function buildDashboardSummary(inputs: DashboardSharedInputs) {
     const intercityTotal = (transportMap.get(leg.id) || []).reduce((sum, transport) => sum + (transport.cost ?? 0), 0);
     for (let offset = 0; offset < leg.nights; offset += 1) {
       const date = addDays(leg.startDate, offset);
-      const plannedAmount = dailyCost + (offset === 0 ? intercityTotal : 0);
+      const plannedAmount = dailyCost + (offset === 0 ? intercityTotal + getMiscellaneousExpenseTotal(leg.miscellaneousExpenses) : 0);
       plannedByDate.set(date, (plannedByDate.get(date) || 0) + plannedAmount);
     }
   }
@@ -294,7 +295,7 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
     );
 
     const intercityTransportTotal = getIntercityTransportTotal(transportMap.get(leg.id));
-    const legTotal = getLegTotalFromTransports(breakdown.total, leg.nights, transportMap.get(leg.id));
+    const legTotal = getLegTotalFromTransports(breakdown.total, leg.nights, transportMap.get(leg.id), leg.miscellaneousExpenses);
 
     if (!plannedByBlock.has(blockRef.blockId)) {
       plannedByBlock.set(blockRef.blockId, {
@@ -318,6 +319,7 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
     entry.categories.drinks = (entry.categories.drinks || 0) + breakdown.drinks * leg.nights;
     entry.categories.activities = (entry.categories.activities || 0) + breakdown.activities * leg.nights;
     entry.categories.transport = (entry.categories.transport || 0) + breakdown.transport * leg.nights + intercityTransportTotal;
+    entry.categories.other = (entry.categories.other || 0) + getMiscellaneousExpenseTotal(leg.miscellaneousExpenses);
   }
 
   // Build actual totals per country (join expense → leg → city → country)
@@ -485,7 +487,8 @@ export function buildBurnRate(inputs: DashboardSharedInputs) {
 
     for (let offset = 0; offset < leg.nights; offset += 1) {
       const date = addDays(leg.startDate, offset);
-      const plannedAmount = dailyBreakdown.total + (offset === 0 ? getIntercityTransportTotal(transportMap.get(leg.id)) : 0);
+      const plannedAmount = dailyBreakdown.total + (offset === 0
+        ? getIntercityTransportTotal(transportMap.get(leg.id)) + getMiscellaneousExpenseTotal(leg.miscellaneousExpenses) : 0);
       plannedByDate.set(date, (plannedByDate.get(date) || 0) + plannedAmount);
     }
   }

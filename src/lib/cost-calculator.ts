@@ -1,6 +1,8 @@
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
 import { derivePrivateRoomRate } from './accommodation';
 import { getIntercityTransportTotal } from './intercity-transport';
+import { getMiscellaneousExpenseTotal } from './miscellaneous-expenses';
+import type { MiscellaneousExpenseItem } from '@/types';
 
 interface CityData {
   accomHostel: number | null;
@@ -140,9 +142,11 @@ export function getLegTotal(
 export function getLegTotalFromTransports(
   dailyCost: number,
   nights: number,
-  transports: Array<{ cost?: number | null }> | null | undefined
+  transports: Array<{ cost?: number | null }> | null | undefined,
+  miscellaneousExpenses?: MiscellaneousExpenseItem[] | null
 ): number {
-  return getLegTotal(dailyCost, nights, getIntercityTransportTotal(transports));
+  return getLegTotal(dailyCost, nights, getIntercityTransportTotal(transports))
+    + getMiscellaneousExpenseTotal(miscellaneousExpenses);
 }
 
 export function getAccommodationCostForTier(

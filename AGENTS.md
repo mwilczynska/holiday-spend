@@ -146,6 +146,10 @@ Provider keys use one opt-in browser store shared by city generation, CSV-import
 dialogs. Saved changes and clearing synchronize across open windows in the same browser profile and origin.
 Existing saved feature keys migrate once. Unchecking saving removes persisted keys while retaining them for the
 current window's session; unsaved keys are shared between its dialogs. Provider/model preferences remain separate.
+Unsaved keys survive successful city saves, dialog changes and client navigation in that window. A full page
+reload starts a new session and drops them.
+Provider key fields have associated visible labels in city, transport and planner import forms; the existing-city editor's
+Show API key switch is labelled and its label toggles the control.
 
 ## Provider request limits
 
@@ -174,20 +178,93 @@ Failed legs can be retried together without discarding completed estimates or re
 
 ## Product behavior
 
+The Methodology page describes the active v1.1 anchor estimates, dated RBA conversion, preserved tier formulas,
+traveller scaling and limitations. Retired source-collection methods are identified as historical.
+Manual itinerary moves and date sorting expose failed requests and allow retry without false success messages.
+Order writes are atomic; move buttons are labelled and disabled while an order request is active.
+
+Planner cards also support repeatable manual miscellaneous expenses with a description and AUD amount.
+Each amount is a one-off total for the leg and whole group, independent of nights and traveller scaling.
+They are included in planner/dashboard budgets, saved plans, export/import and comparisons; dashboard category
+totals include them under Other. Invalid amounts and rejected saves retain drafts with validation and Retry/Discard.
+
 Accommodation tiers are hostel dorm, private room, and 1–4 star. Drinks are none, light, moderate and heavy.
 Traveller count persists per user, while city base costs remain stored for two people. Saved plans store tier
 choices rather than frozen city prices.
 
 Dashboard, planner, expense tracker, dataset and settings include initial database data in their server-rendered
-responses. Planner, dataset and settings skip duplicate initial browser reads and refresh on client navigation and
+responses. Dashboard, planner, dataset and settings skip duplicate initial browser reads and refresh on client navigation and
 after edits. The planner includes saved climate in its initial read, collects only missing records, and renders every
 leg. Its cards are memoized so unrelated dialog and header updates do not rerender the full itinerary.
 
 `/plan/compare` uses one canonical server-side allocation engine for summary totals, cumulative series and country
 and category groupings. Manual transport remains separate.
+Comparison list failures retain prior plans and selections with Retry; initial failures label plans/counts unavailable.
+Calculation errors remain visible in selector mode, and prior results stay labelled stale until a complete validated
+response replaces them. Obsolete responses cannot replace newer comparisons. Requested plan IDs must be unique,
+and missing or unowned IDs reject the whole comparison.
+
+Narrow screens keep wide comparison cards and dataset/expense tables inside their scroll areas. Planner controls
+and leg summaries wrap, and the mobile navigation includes a reachable Sign out action.
+
+Manual city costs must be finite and nonnegative. Zero and missing values remain distinct. Invalid edits retain
+their draft with an error; the coffee price and coffee-only daily basket stay linked.
+
+Dashboard read failures retain prior figures with a stale label and Retry; an initial failure shows unavailable totals
+and charts. Complete responses replace the view together, and valid empty trips remain distinct from failed reads.
+Dataset failures retain the last loaded city library and history with Retry; initial failures label counts and rows
+unavailable. Library/history responses are validated together, retries keep city drafts, and provenance failures have
+their own Retry. A saved city remains saved when the following refresh fails.
+Settings read failures retain the last loaded values and fixed costs with Retry. Initial failures label traveller
+count, provider limits and totals unavailable. All required responses are validated before replacement; retry keeps
+unsaved provider-limit drafts, and controls that depend on current settings wait for a successful read.
+Settings traveller selections remain labelled drafts until confirmed, with the last saved count shown. Rejected
+selections offer Retry/Discard; pending saves lock the control and dependent cost actions. A successful reread can
+confirm a write whose acknowledgement was unreadable.
+Provider-limit saves validate the returned values against the request before confirming success. Failed saves and
+resets retain input and offer Retry; newer edits replace the retry operation. Pending saves lock inputs and other
+Settings writes, and last confirmed values remain visible with unsaved drafts.
+Provider timeouts display exact millisecond precision in seconds after save, refresh and reload. Input accepts
+millisecond steps; values below millisecond precision remain rejected drafts.
+Profile-name saves require acknowledgement of the requested name, including clearing it. Failed saves retain drafts
+with an error and saved-name label. Pending submissions lock input; newer edits clear previous save status.
 
 Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
 spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
+
+A failed initial tracker read displays unavailable counts/totals and Retry. It never becomes a successful empty
+result. Successful server-rendered views still skip duplicate initial browser reads.
+Rejected expense edits keep their drafts; failed exclusion, deletion and bulk actions retain rows and selections
+with an error. Failed tracker reads label the last loaded results and offer retry instead of showing an empty list.
+Tag CRUD failures keep drafts and selections with an error; duplicate names return a conflict. Tag reads expose
+failures and offer retry, and renaming a selected tag updates its displayed title.
+Tag counts and lists omit deleted expenses. Tag totals follow the tracker's AUD calculation and omit excluded
+spend and unavailable foreign-currency conversions; excluded and unconverted rows are labelled.
+Expense actions include a tag picker that assigns and removes tags. Selection replacement is atomic and scoped
+to the current user's active expense and tags. Failed saves retain selections; failed reads offer Retry.
+New manual expenses resolve an AUD conversion before saving when none is supplied. An unavailable rate leaves the
+conversion missing with a visible warning. Quick Add retains rejected input for retry and clears successful input
+immediately to prevent duplicate submissions.
+Fixed-cost additions retain rejected drafts and show save failures. Invalid amounts are blocked; paid-status and
+delete failures leave the displayed row unchanged and expose an error.
+Planner leg additions retain the selected city and nights after rejected saves and show HTTP, network or unreadable
+response errors. Nights must be a positive whole number. Pending additions disable the form and prevent a second submission.
+New-city forms validate city identity and creation flags before clearing input or reporting success. Planner
+acknowledgements must also confirm a saved leg for the requested city and exact nights. Incomplete responses retain
+the draft with an error and advice to check saved data before retrying. Pending generation locks all draft controls.
+The new-city leg flow also rejects fractional, nonpositive and unsafe nights before generation, retaining the input
+with an associated validation message rather than truncating it.
+Planner refresh failures retain the last loaded itinerary, cities, countries, costs and traveller count, labelled with
+Retry. Required responses are checked together before replacing data; stale reads cannot replace newer results.
+Saved-plan read failures retain and label the last loaded list with Retry. Valid empty reads remain distinct from failures.
+Inline planner edits keep failed drafts with Retry and Discard. Writes for a leg are serialized and newer input remains
+pending until confirmed. Cards preview unsaved changes while trip totals use saved data; plan save/export/import,
+traveller changes, reordering and estimates wait for edits to settle. Failed automatic ordering after a status save is labelled separately.
+Wise import confirmation preserves category changes from the preview, validates them against the selected files,
+and keeps amounts from parsed transaction data. Selecting different files clears the previous preview.
+Wise uploads validate supported headers, CSV structure, IDs, calendar dates, currency codes and finite amounts
+before conversion or writes. Any invalid file rejects the entire batch with a file/row error; actual zero values
+and valid empty exports remain distinct from missing or invalid input.
 
 ## Running the app locally
 

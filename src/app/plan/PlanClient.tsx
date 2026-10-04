@@ -1,7 +1,7 @@
 'use client';
 
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect, useCallback, useId, useMemo, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -19,7 +19,9 @@ import { CostSummary } from '@/components/itinerary/CostSummary';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
 
 import { ArrowUpDown, Download, Plus, Save, Upload } from 'lucide-react';
-import type { IntercityTransportItem } from '@/types';
+import type { IntercityTransportItem, MiscellaneousExpenseItem } from '@/types';
+import { getMiscellaneousExpenseTotal, miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
+import { getDailyCost, getLegTotal } from '@/lib/cost-calculator';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
 import {
   CITY_GENERATION_PROVIDER_OPTIONS,
@@ -73,6 +75,7 @@ interface Leg {
   intercityTransportCost: number;
   intercityTransportNote: string | null;
   intercityTransports: IntercityTransportItem[];
+  miscellaneousExpenses: MiscellaneousExpenseItem[];
   sortOrder: number | null;
   notes: string | null;
   status: string;
@@ -171,6 +174,21 @@ function getSelectedCountryPreview(canonicalCountryId: string, countries: Countr
   };
 }
 
+async function readPlannerResponse(response: Response, label: string) {
+  const result = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(result?.error || `Could not load ${label} (HTTP ${response.status}).`);
+  if (!result || !Object.prototype.hasOwnProperty.call(result, 'data')) {
+    throw new Error(`The server returned an unreadable ${label} response.`);
+  }
+  return result.data;
+}
+
+async function readPlannerList<T>(response: Response, label: string): Promise<T[]> {
+  const data = await readPlannerResponse(response, label);
+  if (!Array.isArray(data)) throw new Error(`The server returned an invalid ${label} list.`);
+  return data;
+}
+
 function compareLegDates(a: Leg, b: Leg) {
   const aPrimaryDate = a.startDate || a.endDate;
   const bPrimaryDate = b.startDate || b.endDate;
@@ -224,6 +242,7 @@ export interface PlanInitialData {
 }
 
 export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
+  const importApiKeyInputId = useId();
   const [legs, setLegs] = useState<Leg[]>(initialData.legs);
   const [temperatureUnit, setTemperatureUnit] = useState<TemperatureUnit>('C');
   const { climate, retry: retryClimate } = useTripClimate(legs.map(leg => leg.cityId), initialData.climate);
@@ -240,11 +259,30 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   const [hasOpenedPlannerNewCity, setHasOpenedPlannerNewCity] = useState(false);
   const [newLegCity, setNewLegCity] = useState('');
   const [newLegNights, setNewLegNights] = useState('7');
+  const [addingLeg, setAddingLeg] = useState(false);
+  const [addLegError, setAddLegError] = useState<string | null>(null);
+  const addLegSubmitting = useRef(false);
+  const parsedNewLegNights = Number(newLegNights);
+  const newLegValid = !!newLegCity && Number.isSafeInteger(parsedNewLegNights) && parsedNewLegNights > 0;
   const [savedPlans, setSavedPlans] = useState<SavedPlanSummary[]>(initialData.savedPlans);
   const [savedPlansLoading, setSavedPlansLoading] = useState(false);
+  const [savedPlansError, setSavedPlansError] = useState<string | null>(null);
+  const savedPlansReadSequence = useRef(0);
   const [savingPlan, setSavingPlan] = useState(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string | null>(null);
   const [snapshotError, setSnapshotError] = useState<string | null>(null);
+  const [orderSaving, setOrderSaving] = useState(false);
+  const orderSubmitting = useRef(false);
+  const [dirtyLegIds, setDirtyLegIds] = useState<Set<number>>(() => new Set());
+  const hasUnsavedLegEdits = dirtyLegIds.size > 0;
+  const handleLegDirtyChange = useCallback((id: number, dirty: boolean) => {
+    setDirtyLegIds(current => {
+      if (current.has(id) === dirty) return current;
+      const next = new Set(current);
+      if (dirty) next.add(id); else next.delete(id);
+      return next;
+    });
+  }, []);
   const [groupSize, setGroupSize] = useState(initialData.groupSize);
   const [pendingImportSnapshot, setPendingImportSnapshot] = useState<PlanSnapshot | null>(null);
   const [pendingImportSourceLabel, setPendingImportSourceLabel] = useState<string | null>(null);
@@ -257,6 +295,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   const [importReferenceDate, setImportReferenceDate] = useState('');
   const [importExtraContext, setImportExtraContext] = useState('');
   const [pageLoading, setPageLoading] = useState(false);
+  const [pageError, setPageError] = useState<string | null>(null);
+  const plannerReadSequence = useRef(0);
   const importInputRef = useRef<HTMLInputElement>(null);
   const plannerHeaderRef = useRef<HTMLDivElement>(null);
   const [plannerHeaderHeight, setPlannerHeaderHeight] = useState(0);
@@ -296,62 +336,73 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   }, []);
 
   const fetchData = useCallback(async () => {
+    const sequence = ++plannerReadSequence.current;
     setPageLoading(true);
     try {
-      const [legsRes, citiesRes, countriesRes, fixedRes] = await Promise.all([
+      const [legsRes, citiesRes, countriesRes, fixedRes, settingsRes] = await Promise.all([
         fetch('/api/itinerary', { cache: 'no-store' }),
         fetch('/api/cities?view=planner', { cache: 'no-store' }),
         fetch('/api/countries?includeCities=false', { cache: 'no-store' }),
         fetch('/api/fixed-costs', { cache: 'no-store' }),
+        fetch('/api/planner/settings', { cache: 'no-store' }),
       ]);
-      const legsData = await legsRes.json();
-      const citiesData = await citiesRes.json();
-      const countriesData = await countriesRes.json();
-      const fixedData = await fixedRes.json();
-      const countries = (countriesData.data || []) as Country[];
+      const [legs, cities, countries, fixedCosts, settings] = await Promise.all([
+        readPlannerList<Leg>(legsRes, 'itinerary'),
+        readPlannerList<City>(citiesRes, 'cities'),
+        readPlannerList<Country>(countriesRes, 'countries'),
+        readPlannerList<FixedCost>(fixedRes, 'fixed costs'),
+        readPlannerResponse(settingsRes, 'traveller settings'),
+      ]);
+      if (!Number.isInteger(settings?.groupSize) || settings.groupSize < 1 || settings.groupSize > 5) {
+        throw new Error('The server returned invalid traveller settings.');
+      }
+      if (sequence !== plannerReadSequence.current) return false;
       const countryMap = new Map(countries.map((country) => [country.id, country.name]));
-
-      setLegs(legsData.data || []);
-      setCountries(countries.sort((a, b) => a.name.localeCompare(b.name)));
-      setCities(
-        ((citiesData.data || []) as Array<City>)
+      const sortedCountries = countries.sort((a, b) => a.name.localeCompare(b.name));
+      const sortedCities = cities
           .map((city) => ({
             ...city,
             countryName: countryMap.get(city.countryId) || 'Unknown',
           }))
-          .sort((a, b) => `${a.countryName}-${a.name}`.localeCompare(`${b.countryName}-${b.name}`))
-      );
-      setFixedCosts(fixedData.data || []);
+          .sort((a, b) => `${a.countryName}-${a.name}`.localeCompare(`${b.countryName}-${b.name}`));
+      setLegs(legs);
+      setCountries(sortedCountries);
+      setCities(sortedCities);
+      setFixedCosts(fixedCosts);
+      setGroupSize(settings.groupSize);
+      setPageError(null);
+      return true;
+    } catch (err) {
+      if (sequence === plannerReadSequence.current) {
+        setPageError(err instanceof Error ? err.message : 'Could not refresh the planner. Check your connection and retry.');
+      }
+      return false;
     } finally {
-      setPageLoading(false);
-    }
-  }, []);
-
-  const loadPlannerSettings = useCallback(async () => {
-    const response = await fetch('/api/planner/settings', { cache: 'no-store' });
-    const data = await response.json();
-    if (response.ok && data.data?.groupSize) {
-      setGroupSize(data.data.groupSize);
+      if (sequence === plannerReadSequence.current) setPageLoading(false);
     }
   }, []);
 
   const fetchSavedPlans = useCallback(async () => {
+    const sequence = ++savedPlansReadSequence.current;
     setSavedPlansLoading(true);
     try {
       const response = await fetch('/api/saved-plans', { cache: 'no-store' });
-      if (response.ok) {
-        const data = await response.json();
-        setSavedPlans(data.data || []);
+      const plans = await readPlannerList<SavedPlanSummary>(response, 'saved plans');
+      if (sequence === savedPlansReadSequence.current) {
+        setSavedPlans(plans);
+        setSavedPlansError(null);
       }
-    } catch {
-      // Silently fail — saved plans are non-critical.
+    } catch (err) {
+      if (sequence === savedPlansReadSequence.current) {
+        setSavedPlansError(err instanceof Error ? err.message : 'Could not load saved plans. Check your connection and retry.');
+      }
     } finally {
-      setSavedPlansLoading(false);
+      if (sequence === savedPlansReadSequence.current) setSavedPlansLoading(false);
     }
   }, []);
 
-  const refreshPage = useCallback(() => Promise.all([fetchData(), loadPlannerSettings(), fetchSavedPlans()]),
-    [fetchData, loadPlannerSettings, fetchSavedPlans]);
+  const refreshPage = useCallback(() => Promise.all([fetchData(), fetchSavedPlans()]),
+    [fetchData, fetchSavedPlans]);
   useInitialPageRefresh('/plan', refreshPage, true);
 
   useEffect(() => {
@@ -378,27 +429,39 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
 
 
   const handleAddLeg = async () => {
-    const parsedNights = Number.parseInt(newLegNights, 10);
-    if (!newLegCity || !Number.isInteger(parsedNights) || parsedNights < 1) return;
-
-    await fetch('/api/itinerary/legs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        cityId: newLegCity,
-        nights: parsedNights,
-      }),
-    });
-    setAddDialogOpen(false);
-    setNewLegCity('');
-    setNewLegNights('7');
-    await fetchData();
+    if (addLegSubmitting.current || !newLegValid) return;
+    addLegSubmitting.current = true;
+    setAddingLeg(true);
+    setAddLegError(null);
+    try {
+      const response = await fetch('/api/itinerary/legs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cityId: newLegCity, nights: parsedNewLegNights }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || `Failed to add leg (HTTP ${response.status}).`);
+      if (!Number.isInteger(result?.data?.id)) throw new Error('The server returned an unreadable save result. Your leg could not be confirmed. Reload to check whether it saved before retrying.');
+      setAddDialogOpen(false);
+      setNewLegCity('');
+      setNewLegNights('7');
+      await fetchData().catch(() => {
+        setSnapshotError('Leg added, but the planner could not refresh. Reload to see the saved leg.');
+      });
+    } catch (err) {
+      setAddLegError(err instanceof Error ? err.message : 'Failed to add leg. Check your connection and retry.');
+    } finally {
+      setAddingLeg(false);
+      addLegSubmitting.current = false;
+    }
   };
 
   const handleCancelAddLeg = () => {
+    if (addLegSubmitting.current) return;
     setAddDialogOpen(false);
     setNewLegCity('');
     setNewLegNights('7');
+    setAddLegError(null);
   };
 
   const handlePlannerNewCityCreated = useCallback(async (payload: NewCityCreatedPayload) => {
@@ -421,36 +484,64 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   }, [fetchData]);
 
   const handleUpdateLeg = useCallback(async (id: number, data: Record<string, unknown>) => {
-    setLegs((currentLegs) =>
-      currentLegs.map((leg) => (leg.id === id ? { ...leg, ...data } : leg))
-    );
-
     const response = await fetch(`/api/itinerary/legs/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
 
-    if (!response.ok) {
-      fetchData();
-      return;
+    const result = await response.json().catch(() => null);
+    if (!response.ok) throw new Error(result?.error || `Could not save this leg (HTTP ${response.status}).`);
+    if (result?.data?.id !== id) throw new Error('The server returned an unreadable save result. Reload to check whether the leg saved before retrying.');
+    if (Object.prototype.hasOwnProperty.call(data, 'miscellaneousExpenses')) {
+      const confirmed = miscellaneousExpensesSchema.safeParse(result.data.miscellaneousExpenses);
+      const requested = miscellaneousExpensesSchema.safeParse(data.miscellaneousExpenses);
+      if (!confirmed.success || !requested.success || JSON.stringify(confirmed.data) !== JSON.stringify(requested.data)) {
+        throw new Error('The server did not confirm the miscellaneous expenses. Reload to check whether they saved before retrying.');
+      }
     }
+    const applyConfirmedUpdate = (leg: Leg) => {
+      if (leg.id !== id) return leg;
+      const next = { ...leg, ...data, ...result.data } as Leg;
+      const city = cities.find(item => item.id === next.cityId);
+      if (city) {
+        next.cityName = city.name;
+        next.countryName = city.countryName;
+        next.countryId = city.countryId;
+        next.dailyCost = getDailyCost(city, next.accomTier as import('@/types').AccomTier,
+          next.foodTier as import('@/types').FoodTier, next.drinksTier as import('@/types').DrinksTier,
+          next.activitiesTier as import('@/types').ActivitiesTier, next, groupSize);
+        next.legTotal = getLegTotal(next.dailyCost, next.nights, next.intercityTransportCost)
+          + getMiscellaneousExpenseTotal(next.miscellaneousExpenses);
+      }
+      return next;
+    };
+    setLegs(current => current.map(applyConfirmedUpdate));
 
     if (Object.prototype.hasOwnProperty.call(data, 'status')) {
       const sortedLegIds = [...legs]
-        .map((leg) => (leg.id === id ? { ...leg, ...data } : leg))
+        .map(applyConfirmedUpdate)
         .sort(compareLegDates)
         .map((leg) => leg.id);
 
-      await fetch('/api/itinerary/reorder', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ legIds: sortedLegIds }),
-      });
+      try {
+        const orderResponse = await fetch('/api/itinerary/reorder', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ legIds: sortedLegIds }),
+        });
+        const orderResult = await orderResponse.json().catch(() => null);
+        if (!orderResponse.ok) throw new Error(orderResult?.error || `HTTP ${orderResponse.status}`);
+        if (orderResult?.data?.reordered !== true) throw new Error('Unreadable ordering response');
+      } catch (err) {
+        throw new Error(`Leg saved, but automatic date ordering failed: ${err instanceof Error ? err.message : 'Check your connection.'} Retry to save the order.`);
+      }
     }
 
-    fetchData();
-  }, [legs, fetchData]);
+    await fetchData();
+  }, [legs, cities, groupSize, fetchData]);
+
+  const handleDiscardLegEdits = useCallback(() => { void fetchData(); }, [fetchData]);
 
   const handleDeleteLeg = useCallback(async (id: number) => {
     try {
@@ -469,6 +560,32 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     }
   }, [fetchData]);
 
+  const saveLegOrder = useCallback(async (legIds: number[]) => {
+    if (orderSubmitting.current) return false;
+    orderSubmitting.current = true;
+    setOrderSaving(true);
+    setSnapshotStatus(null);
+    setSnapshotError(null);
+    try {
+      const response = await fetch('/api/itinerary/reorder', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ legIds }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || `Could not save leg order (HTTP ${response.status}). Try again.`);
+      if (result?.data?.reordered !== true) throw new Error('The server returned an unreadable response. Reload before retrying.');
+      await fetchData();
+      return true;
+    } catch (err) {
+      setSnapshotError(err instanceof Error ? err.message : 'Could not save leg order. Check your connection and try again.');
+      return false;
+    } finally {
+      orderSubmitting.current = false;
+      setOrderSaving(false);
+    }
+  }, [fetchData]);
+
   const handleReorder = useCallback(async (legId: number, direction: -1 | 1) => {
     const fromIndex = legs.findIndex(leg => leg.id === legId);
     if (fromIndex < 0) return;
@@ -477,23 +594,12 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     if (toIndex < 0 || toIndex >= newLegs.length) return;
     [newLegs[fromIndex], newLegs[toIndex]] = [newLegs[toIndex], newLegs[fromIndex]];
 
-    await fetch('/api/itinerary/reorder', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ legIds: newLegs.map(l => l.id) }),
-    });
-    fetchData();
-  }, [legs, fetchData]);
+    await saveLegOrder(newLegs.map(l => l.id));
+  }, [legs, saveLegOrder]);
 
   const handleSortByDate = async () => {
     const sortedIds = [...legs].sort(compareLegDates).map((l) => l.id);
-    await fetch('/api/itinerary/reorder', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ legIds: sortedIds }),
-    });
-    await fetchData();
-    setSnapshotStatus('Legs sorted by date.');
+    if (await saveLegOrder(sortedIds)) setSnapshotStatus('Legs sorted by date.');
   };
 
   const isAlreadySortedByDate = legs.length >= 2 &&
@@ -705,6 +811,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   }, [importSnapshot, preflightSnapshotImport, queueMissingCityResolution]);
 
   const handleSaveSnapshot = async (name: string) => {
+    if (pageError || pageLoading || hasUnsavedLegEdits) return;
     setSavingPlan(true);
     try {
       const snapshot = await fetchCurrentSnapshot();
@@ -761,6 +868,10 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   };
 
   const handleLoadSavedPlan = async (planId: string) => {
+    if (hasUnsavedLegEdits) {
+      setSnapshotError('Retry or discard your unsaved leg edits before loading a saved plan.');
+      return;
+    }
     try {
       const response = await fetch(`/api/saved-plans/${planId}`, { cache: 'no-store' });
       const data = await response.json();
@@ -844,7 +955,6 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
 
   const handleGroupSizeChange = async (value: string) => {
     const nextGroupSize = Number.parseInt(value, 10);
-    setGroupSize(nextGroupSize);
     try {
       const response = await fetch('/api/planner/settings', {
         method: 'PUT',
@@ -1147,8 +1257,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   </div>
                   <div className="space-y-2">
                     <div className="space-y-1">
-                      <Label className="text-xs">{selectedImportProvider.label} API Key</Label>
+                      <Label htmlFor={importApiKeyInputId} className="text-xs">{selectedImportProvider.label} API Key</Label>
                       <Input
+                        id={importApiKeyInputId}
                         className="h-9 text-sm"
                         placeholder="Optional. Leave blank to use a server-side key if configured."
                         type={showImportApiKey ? 'text' : 'password'}
@@ -1310,7 +1421,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
       <div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
         <div className="fixed inset-x-0 top-0 z-30 border-b bg-background shadow-sm lg:left-64">
           <div ref={plannerHeaderRef} className="mx-auto max-w-6xl px-4 py-4 lg:px-8">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
               <div>
                 <h1 className="text-2xl font-bold">Itinerary Planner</h1>
                 <p className="text-sm text-muted-foreground">
@@ -1324,7 +1435,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                 <div className="min-w-[160px]">
                   <Label className="mb-1 block text-xs text-muted-foreground">Travellers</Label>
                   <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
-                    <SelectTrigger className="h-9">
+                    <SelectTrigger className="h-9" disabled={hasUnsavedLegEdits || pageLoading}>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -1346,21 +1457,21 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   type="button"
                   variant="outline"
                   onClick={handleSortByDate}
-                  disabled={legs.length < 2 || isAlreadySortedByDate}
+                  disabled={hasUnsavedLegEdits || orderSaving || pageLoading || !!pageError || legs.length < 2 || isAlreadySortedByDate}
                   title={isAlreadySortedByDate ? 'Legs are already in date order' : 'Sort legs by start date'}
                 >
                   <ArrowUpDown className="mr-2 h-4 w-4" />
                   Sort by Date
                 </Button>
-                <Button type="button" variant="outline" onClick={() => setSavePlanDialogOpen(true)}>
+                <Button type="button" variant="outline" disabled={hasUnsavedLegEdits || pageLoading || !!pageError} onClick={() => setSavePlanDialogOpen(true)}>
                   <Save className="mr-2 h-4 w-4" />
                   Save Plan
                 </Button>
-                <Button type="button" variant="outline" onClick={handleExportCurrentPlan}>
+                <Button type="button" variant="outline" disabled={hasUnsavedLegEdits} onClick={handleExportCurrentPlan}>
                   <Download className="mr-2 h-4 w-4" />
                   Export
                 </Button>
-                <Button type="button" variant="outline" onClick={() => importInputRef.current?.click()}>
+                <Button type="button" variant="outline" disabled={hasUnsavedLegEdits} onClick={() => importInputRef.current?.click()}>
                   <Upload className="mr-2 h-4 w-4" />
                   Import
                 </Button>
@@ -1386,7 +1497,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     setSnapshotStatus(null);
                     setSnapshotError(null);
                   }}
-                  disabled={estimatableTransportLegCount === 0}
+                  disabled={hasUnsavedLegEdits || pageLoading || !!pageError || estimatableTransportLegCount === 0}
                 >
                   Estimate Intercity Transport
                   {estimatableTransportLegCount > 0
@@ -1402,7 +1513,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     onCreated={handlePlannerNewCityCreated}
                   />
                 ) : null}
-                <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
+                <Dialog open={addDialogOpen} onOpenChange={(open) => {
+                  if (!addLegSubmitting.current) setAddDialogOpen(open);
+                }}>
                   <DialogTrigger asChild>
                     <Button>
                       <Plus className="mr-2 h-4 w-4" />
@@ -1416,7 +1529,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                         Add a city to the trip and set how many nights you will stay.
                       </DialogDescription>
                     </DialogHeader>
-                    <div className="space-y-4">
+                    <fieldset className="space-y-4" disabled={addingLeg}>
                       <div>
                         <Label>City</Label>
                         <SearchableSelect
@@ -1431,8 +1544,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                         </p>
                       </div>
                       <div>
-                        <Label>Nights</Label>
+                        <Label htmlFor="add-leg-nights">Nights</Label>
                         <Input
+                          id="add-leg-nights"
                           type="number"
                           min={1}
                           step={1}
@@ -1440,15 +1554,20 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                           value={newLegNights}
                           onChange={(e) => setNewLegNights(e.target.value)}
                         />
+                        {newLegNights !== '' && (!Number.isSafeInteger(parsedNewLegNights) || parsedNewLegNights < 1) ? (
+                          <p className="mt-1 text-sm text-destructive">Enter a whole number of nights, at least 1.</p>
+                        ) : null}
                       </div>
-                    </div>
+                    </fieldset>
+                    {addLegError ? <p role="alert" className="text-sm text-destructive">{addLegError}</p> : null}
                     <DialogFooter className="gap-2 sm:justify-end">
-                      <Button type="button" variant="ghost" onClick={handleCancelAddLeg}>
+                      <Button type="button" variant="ghost" onClick={handleCancelAddLeg} disabled={addingLeg}>
                         Cancel
                       </Button>
                       <Button
                         type="button"
                         variant="outline"
+                        disabled={addingLeg}
                         onClick={() => {
                           setAddDialogOpen(false);
                           setNewLegCity('');
@@ -1464,9 +1583,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                       <Button
                         type="button"
                         onClick={handleAddLeg}
-                        disabled={!newLegCity || !Number.isInteger(Number.parseInt(newLegNights, 10)) || Number.parseInt(newLegNights, 10) < 1}
+                        disabled={addingLeg || !newLegValid}
                       >
-                        Add Leg
+                        <LoadingButtonLabel idle="Add Leg" loading="Adding..." isLoading={addingLeg} />
                       </Button>
                     </DialogFooter>
                   </DialogContent>
@@ -1476,11 +1595,22 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             {snapshotStatus || snapshotError ? (
               <div className="mt-3 text-sm">
                 {snapshotStatus ? <span className="text-muted-foreground">{snapshotStatus}</span> : null}
-                {snapshotError ? <span className="text-destructive">{snapshotError}</span> : null}
+                {snapshotError ? <span role="alert" className="text-destructive">{snapshotError}</span> : null}
               </div>
             ) : null}
+            {pageError ? (
+              <div role="alert" className="mt-3 flex flex-wrap items-center gap-2 text-sm text-destructive">
+                <span>{pageError} Showing the last loaded planner data; it may be out of date.</span>
+                <Button type="button" size="sm" variant="outline" disabled={pageLoading} onClick={() => void fetchData()}>
+                  <LoadingButtonLabel idle="Retry planner" loading="Retrying..." isLoading={pageLoading} />
+                </Button>
+              </div>
+            ) : null}
+            {hasUnsavedLegEdits ? (
+              <p role="status" className="mt-3 text-sm text-amber-700">Unsaved leg edits. Trip totals reflect saved data. Retry or discard failed changes before saving, exporting or replacing the plan.</p>
+            ) : null}
             <div className="mt-3 text-xs text-muted-foreground">
-              Current plan: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
+              {pageError ? 'Last loaded plan' : 'Current plan'}: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
             </div>
           </div>
         </div>
@@ -1490,6 +1620,12 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
           className="mx-auto max-w-6xl px-4 pb-6 lg:px-8"
           style={{ paddingTop: plannerContentTopPadding }}
         >
+          {savedPlansError ? (
+            <div role="alert" className="mb-3 flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive">
+              <span>{savedPlansError} Showing the last loaded saved plans; the list may be out of date.</span>
+              <Button type="button" size="sm" variant="outline" disabled={savedPlansLoading} onClick={() => void fetchSavedPlans()}>Retry saved plans</Button>
+            </div>
+          ) : null}
           {savedPlans.length > 0 && (
             <div className="mb-4">
               <SavedPlansList
@@ -1524,8 +1660,11 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   cityOptions={cityOptions}
                   groupSize={groupSize}
                   onUpdate={handleUpdateLeg}
+                  onDirtyChange={handleLegDirtyChange}
+                  onDiscard={handleDiscardLegEdits}
                   onDelete={handleDeleteLeg}
                   onMove={handleReorder}
+                  orderSaving={hasUnsavedLegEdits || orderSaving || pageLoading || !!pageError}
                   isFirst={i === 0}
                   isLast={i === legs.length - 1}
                   previousLeg={i > 0 ? legs[i - 1] : null}

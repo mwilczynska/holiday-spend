@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { tags, expenseTags, expenses } from '@/db/schema';
-import { and, eq } from 'drizzle-orm';
+import { and, eq, ne } from 'drizzle-orm';
+import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 
@@ -19,10 +20,10 @@ export async function GET(
       .select({ expense: expenses })
       .from(expenseTags)
       .innerJoin(expenses, eq(expenseTags.expenseId, expenses.id))
-      .where(and(eq(expenseTags.tagId, tagId), eq(expenses.userId, userId)));
+      .where(and(eq(expenseTags.tagId, tagId), eq(expenses.userId, userId), ne(expenses.isDeleted, 1)));
 
     const expenseList = taggedExpenses.map(t => t.expense);
-    const totalAud = expenseList.reduce((sum, e) => sum + (e.amountAud ?? 0), 0);
+    const totalAud = expenseList.filter(expense => !expense.isExcluded).reduce((sum, expense) => sum + getExpenseAudAmount(expense), 0);
 
     return success({
       tag,

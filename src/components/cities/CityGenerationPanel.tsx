@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -63,6 +63,8 @@ export function CityGenerationPanel({
   countryName,
   onGenerated,
 }: CityGenerationPanelProps) {
+  const apiKeyInputId = useId();
+  const showApiKeyId = useId();
   const [provider, setProvider] = useState<ProviderOption>('openai');
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultCityGenerationModels());
   const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>(
@@ -227,8 +229,9 @@ export function CityGenerationPanel({
         </div>
         <div className="space-y-2">
           <div className="space-y-1">
-            <Label className="text-xs">{selectedProvider.label} API Key</Label>
+            <Label htmlFor={apiKeyInputId} className="text-xs">{selectedProvider.label} API Key</Label>
             <Input
+              id={apiKeyInputId}
               className="h-9 text-sm"
               placeholder="Optional. Leave blank to use a server-side key if configured."
               type={showApiKey ? 'text' : 'password'}
@@ -239,8 +242,8 @@ export function CityGenerationPanel({
             />
           </div>
           <div className="flex items-center gap-2">
-            <Switch checked={showApiKey} onCheckedChange={setShowApiKey} />
-            <Label className="text-xs text-muted-foreground">Show API key</Label>
+            <Switch id={showApiKeyId} checked={showApiKey} onCheckedChange={setShowApiKey} />
+            <Label htmlFor={showApiKeyId} className="text-xs text-muted-foreground">Show API key</Label>
           </div>
           <label className="flex items-center gap-2 text-xs text-muted-foreground">
             <input

@@ -3,6 +3,7 @@ import { tags } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
+import { isTagNameConflict } from '@/lib/tag-validation';
 import { z } from 'zod';
 
 /**
@@ -11,7 +12,7 @@ import { z } from 'zod';
  */
 const updateTagSchema = z
   .object({
-    name: z.string().min(1),
+    name: z.string().trim().min(1),
     color: z.string().nullable(),
   })
   .partial()
@@ -33,6 +34,7 @@ export async function PUT(
     const updated = await db.select().from(tags).where(and(eq(tags.id, id), eq(tags.userId, userId))).get();
     return success(updated);
   } catch (err) {
+    if (isTagNameConflict(err)) return error('A tag with this name already exists. Choose a different name.', 409);
     return handleError(err);
   }
 }
