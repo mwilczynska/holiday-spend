@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Comprehensive feature QA complete with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. Prior product phases complete.
+**Status:** Comprehensive feature QA complete with owner-approved authentication exclusions; publication to main is in progress at the owner's request. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. Prior product phases complete.
 
-**Current phase:** Chrome feature and edge-case testing — COMPLETE with recorded exclusions.
+**Current phase:** Publish completed feature QA to main — IN PROGRESS. Chrome feature testing is complete with recorded exclusions.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -21,12 +21,24 @@ follows `1581388` request limits, current discovery and GPT-6 Luna max default o
 
 **Latest plan checkpoint:** `d863e48` records the owner's merge request; this checkpoint closes publication to main.
 
-**Next action:** Review `docs/dev/feature-qa-2026-10-02.md` and the published branch. No feature-testing work remains within the agreed scope. The owner chose completion with password changes, account creation, external email delivery and OAuth excluded. Chrome native confirm acceptance and Settings download artifacts have separate production regression coverage. The current application build stays running; no further key entry is needed. F28 is pushed as `892f802`; F29 as `488bbd3`, with TypeScript, build, all 419 unit tests, memory and v1.1 guard passing.
+**Next action:** Commit this publication checkpoint, create the branch's PR, merge to main preserving the individual fix commits, and remove the merged remote/local feature branch. Verify the merged PR and clean synchronized main checkout. No feature-testing work remains within the agreed scope. The owner chose completion with password changes, account creation, external email delivery and OAuth excluded. Chrome native confirm acceptance and Settings download artifacts have separate production regression coverage. No further key entry is needed. The final application baseline passes TypeScript, build, all 419 unit tests, memory and v1.1 guard.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
 **Working tree:** Twenty-nine separate fixes are pushed through `488bbd3`. The final checkpoint publishes the separate Settings readiness correction and completed coverage report. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
+
+## Publish completed feature QA to main — IN PROGRESS (3 October 2026)
+
+The owner requests commit, push, merge to main and PR cleanup. The working tree is clean at `13bcec0`;
+GitHub has no existing PR for this branch. Fresh origin/main is an ancestor with 37 branch commits and no
+diverging main commits. A merge commit will preserve each fix's history. The final baseline and coverage
+exclusions above remain unchanged; this publication checkpoint changes documentation only.
+
+- [x] Inspect the working tree, refreshed main and existing PRs.
+- [ ] Commit/push the publication checkpoint and create/attach the PR.
+- [ ] Verify merge readiness and merge to main.
+- [ ] Remove the merged feature branches and verify clean synchronized main.
 
 ## Manual miscellaneous planner expenses — COMPLETE (3 October 2026)
 

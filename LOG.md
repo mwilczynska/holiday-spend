@@ -3059,3 +3059,11 @@ passing production regression evidence. All 29 reproduced product defects are fi
 The final application baseline is TypeScript, isolated production build, 70 unit files / 419 tests, memory mirror
 and v1.1 guard. The report records actual interactive and automated coverage, failure evidence and exclusions.
 The current QA server/result page remain available, and no further provider-key entry is needed.
+
+## 3 October 2026 — Owner requests feature QA publication and PR cleanup
+
+The owner requests commit, push, merge to main and PR cleanup after accepting the recorded authentication
+exclusions. The working tree is clean at `13bcec0`. Fresh origin/main remains an ancestor with 37 branch commits;
+GitHub has no existing PR for `fix/comprehensive-feature-qa`. Publication will create a PR and use a merge commit
+to preserve the individual fix commits, then remove the merged remote/local feature branch. Application source
+and verification evidence remain unchanged; the publication checkpoint updates documentation only.
