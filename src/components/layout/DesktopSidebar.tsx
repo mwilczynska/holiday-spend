@@ -7,7 +7,7 @@ import { BarChart3, BookOpenText, Database, LayoutDashboard, Loader2, Map, Recei
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 import { BrandMark } from './BrandMark';
-import { getActiveNavHref } from './nav-match';
+import { getActiveNavHref, isAuthRoute } from './nav-match';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -30,6 +30,8 @@ export function DesktopSidebar() {
   useEffect(() => {
     setPendingHref(null);
   }, [pathname]);
+
+  if (isAuthRoute(pathname)) return null;
 
   return (
     <aside className="hidden lg:flex flex-col w-60 border-r bg-card h-screen sticky top-0">

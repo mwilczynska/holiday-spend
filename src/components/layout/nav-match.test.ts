@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { getActiveNavHref } from './nav-match';
+import { getActiveNavHref, isAuthRoute } from './nav-match';
+
+describe('isAuthRoute', () => {
+  it('recognises signed-out screens only', () => {
+    expect(isAuthRoute('/login')).toBe(true);
+    expect(isAuthRoute('/reset-password/token')).toBe(true);
+    expect(isAuthRoute('/')).toBe(false);
+    expect(isAuthRoute('/loginx')).toBe(false);
+  });
+});
 
 const hrefs = ['/', '/plan', '/plan/compare', '/track', '/track/add', '/track/tags', '/settings', '/settings/account'];
 

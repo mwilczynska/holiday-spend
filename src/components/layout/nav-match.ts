@@ -1,3 +1,10 @@
+const AUTH_ROUTES = ['/login', '/signup', '/forgot-password', '/reset-password', '/verify-email', '/check-email'];
+
+/** Signed-out screens show no app navigation; every link would redirect back to login. */
+export function isAuthRoute(pathname: string) {
+  return AUTH_ROUTES.some((route) => pathname === route || pathname.startsWith(`${route}/`));
+}
+
 /**
  * Picks the single navigation entry for a path: the longest href that equals the path or is a
  * whole-segment prefix of it. `/track/tags` therefore selects Tags rather than Expenses, and

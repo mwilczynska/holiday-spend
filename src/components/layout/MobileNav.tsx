@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { BarChart3, LayoutDashboard, Loader2, Map, Plus, Receipt, Settings } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
-import { getActiveNavHref } from './nav-match';
+import { getActiveNavHref, isAuthRoute } from './nav-match';
 
 const navItems = [
   { href: '/', label: 'Home', icon: LayoutDashboard },
@@ -25,6 +25,8 @@ export function MobileNav() {
   useEffect(() => {
     setPendingHref(null);
   }, [pathname]);
+
+  if (isAuthRoute(pathname)) return null;
 
   return (
     <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-card border-t safe-area-bottom">
