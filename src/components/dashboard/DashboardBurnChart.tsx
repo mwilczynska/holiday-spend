@@ -41,6 +41,7 @@ export const DashboardBurnChart = memo(function DashboardBurnChart({
 }) {
     const isExpanded = mode === 'expanded';
     const burnMetrics = getBurnChartMetrics(mode);
+    const hasPlannedTail = data.some((point) => point.spentPlannedTail != null);
     const chartNode = (
       <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
         <LineChart data={data} margin={burnMetrics.margin}>
@@ -67,7 +68,7 @@ export const DashboardBurnChart = memo(function DashboardBurnChart({
             />
           </YAxis>
           <Tooltip content={<BurnRateTooltip />} cursor={{ stroke: '#94a3b8', strokeOpacity: 0.4 }} />
-          {!isExpanded ? <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} mode={mode} />} /> : null}
+          {!isExpanded ? <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} includePlannedTail={hasPlannedTail} mode={mode} />} /> : null}
           {countryBands.map((band, index) => (
             <ReferenceArea
               key={getCountryBandKey(band)}

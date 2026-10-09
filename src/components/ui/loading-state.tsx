@@ -1,4 +1,5 @@
 import { Loader2 } from 'lucide-react';
+import { TravelLoader } from './TravelLoader';
 
 function PlaceholderBlock({ className }: { className: string }) {
   return <div className={`animate-pulse rounded-md bg-muted ${className}`} />;
@@ -17,21 +18,17 @@ export function PageLoadingState({
 }) {
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-card/80 p-6 shadow-sm">
-        <div className="flex items-start gap-4">
-          <div className="rounded-full bg-primary/10 p-3 text-primary">
-            <Loader2 className="h-6 w-6 animate-spin" />
-          </div>
-          <div className="space-y-2">
-            <div className="text-xl font-semibold">{title}</div>
-            <p className="text-sm text-muted-foreground">{description}</p>
-          </div>
+      <div role="status" aria-live="polite" className="flex flex-col items-center gap-3 rounded-2xl border bg-card px-6 py-8 text-center">
+        <TravelLoader className="max-w-[240px]" />
+        <div className="space-y-1">
+          <div className="text-lg font-extrabold tracking-tight">{title}</div>
+          <p className="text-sm text-muted-foreground">{description}</p>
         </div>
       </div>
 
       <div className={`grid gap-4 ${cardCount > 3 ? 'lg:grid-cols-4 md:grid-cols-2' : 'md:grid-cols-3'}`}>
         {Array.from({ length: cardCount }).map((_, index) => (
-          <div key={index} className="rounded-xl border bg-card p-4 shadow-sm">
+          <div key={index} className="rounded-2xl border bg-card p-4">
             <PlaceholderBlock className="mb-3 h-3 w-24" />
             <PlaceholderBlock className="h-8 w-28" />
             <PlaceholderBlock className="mt-4 h-3 w-32" />
@@ -39,7 +36,7 @@ export function PageLoadingState({
         ))}
       </div>
 
-      <div className="rounded-xl border bg-card p-4 shadow-sm">
+      <div className="rounded-2xl border bg-card p-4">
         <div className="mb-4 flex items-center justify-between gap-4">
           <PlaceholderBlock className="h-4 w-40" />
           <PlaceholderBlock className="h-9 w-32" />

@@ -414,7 +414,16 @@ export const LegCard = memo(function LegCard({
       className={cn('relative', isOpen && 'border-blue-200 shadow-[0_4px_14px_rgba(15,27,51,0.06)]')}
     >
       <CardContent className={cn('p-2.5 sm:p-3', isOpen && 'sm:p-3.5')}>
-        <div className="flex flex-wrap items-center gap-3 sm:flex-nowrap">
+        {/* Pointer convenience: clicking anywhere on the summary row toggles the card. The chevron
+            button remains the keyboard and screen-reader control, so this div needs no role. */}
+        <div
+          className={cn('-m-1 flex flex-wrap items-center gap-3 rounded-xl p-1 sm:flex-nowrap', !mustStayOpen && 'cursor-pointer')}
+          onClick={(event) => {
+            if (mustStayOpen) return;
+            if ((event.target as HTMLElement).closest('button, a, input, select, textarea, [role="combobox"]')) return;
+            onToggleExpanded(leg.id);
+          }}
+        >
           <span className={cn('shrink-0 overflow-hidden rounded-[10px]', isOpen ? 'h-[76px] w-[104px]' : 'h-16 w-[88px]')}>
             <DestinationScene name={leg.cityName} />
           </span>

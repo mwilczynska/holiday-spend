@@ -99,7 +99,8 @@ export const DestinationScene = memo(function DestinationScene({ name, className
       className={cn('block h-full w-full', className)}
     >
       <rect width="240" height="150" fill={palette.sky} />
-      <circle cx={kind === 'karst' ? 196 : 186} cy="40" r="17" fill={palette.sun} />
+      {/* Sun sits top-left so status pills (top-right) never cover it. */}
+      <circle cx={kind === 'karst' ? 62 : 54} cy="38" r="17" fill={palette.sun} />
       <SceneBody kind={kind} p={palette} />
     </svg>
   );

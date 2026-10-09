@@ -388,7 +388,10 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
     60,
     Math.max(34, Math.floor(((expandedCategoryChartHeight - 52) / Math.max(categoryChartData.length, 1)) * 0.68))
   );
-  const burnLegendItems = getBurnRateLegendItems(budgetCeiling > 0);
+  const burnLegendItems = getBurnRateLegendItems(
+    budgetCeiling > 0,
+    chartBurnData.some((point) => point.spentPlannedTail != null)
+  );
   const expandedChartControls = expandedChart === 'country' ? (
     <div className="flex flex-wrap items-center gap-2">
       <Tabs
@@ -548,8 +551,9 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
         </div>
       )}
 
+      {/* Current and next destination share one width; trip progress takes the narrower third. */}
       {summary && burnData.length > 0 && (
-        <div className="grid gap-3.5 md:grid-cols-2 xl:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="grid gap-3.5 md:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(240px,0.75fr)]">
           <CurrentDestinationCard position={tripPosition} />
           <UpNextCard leg={tripPosition.next} isFirst={!tripPosition.current && summary.daysElapsed <= 0} />
           <TripProgressCard spent={summary.totalSpent} budget={summary.totalBudget} />

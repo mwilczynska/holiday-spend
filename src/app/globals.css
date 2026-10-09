@@ -73,3 +73,47 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Logo mark: four scenes cross-fade on a 24s loop (BrandMark.tsx). Negative first delay keeps the
+   mountains visible on first paint. */
+.brand-scene {
+  opacity: 0;
+  animation: brand-scene-cycle 24s ease-in-out infinite;
+}
+.brand-scene:nth-of-type(1) { animation-delay: -1s; }
+.brand-scene:nth-of-type(2) { animation-delay: 5s; }
+.brand-scene:nth-of-type(3) { animation-delay: 11s; }
+.brand-scene:nth-of-type(4) { animation-delay: 17s; }
+@keyframes brand-scene-cycle {
+  0% { opacity: 0; }
+  4%, 25% { opacity: 1; }
+  29%, 100% { opacity: 0; }
+}
+
+/* Travel loader (TravelLoader.tsx): the route draws in behind the plane, the pins pulse. */
+.travel-loader-route {
+  stroke-dasharray: 4 5;
+  animation: travel-loader-dash 1.2s linear infinite;
+}
+.travel-loader-pin {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: travel-loader-pin 2.4s ease-in-out infinite;
+}
+.travel-loader-pin-end { animation-delay: 1.2s; }
+.travel-loader-static { display: none; }
+@keyframes travel-loader-dash {
+  to { stroke-dashoffset: -18; }
+}
+@keyframes travel-loader-pin {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-scene { animation: none; opacity: 0; }
+  .brand-scene:nth-of-type(1) { opacity: 1; }
+  .travel-loader-route, .travel-loader-pin { animation: none; }
+  .travel-loader-motion { display: none; }
+  .travel-loader-static { display: inline; }
+}

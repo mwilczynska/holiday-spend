@@ -62,9 +62,14 @@ test.describe('app UI smoke', () => {
       }),
     }));
 
-    await page.goto('/');
+    // A full load renders server data, so reach the dashboard by client navigation; its refresh
+    // reads /api/dashboard and receives the mock (the legend now depends on the data).
+    await page.goto('/estimates');
+    await page.waitForLoadState('networkidle');
+    await page.locator('a[href="/"]').filter({ visible: true }).first().click();
     const chartTitle = page.getByText('Cumulative Spend Over Time', { exact: true });
     await expect(chartTitle).toBeVisible();
+    await expect(page.getByText('Tottori', { exact: true }).first()).toBeVisible();
 
     for (const label of [
       'Actual spend',

@@ -212,10 +212,14 @@ export function BurnRateTooltip({
   );
 }
 
-export function getBurnRateLegendItems(includeBudget: boolean) {
+/**
+ * The grey series only exists when spending was recorded on a leg whose status is still
+ * "planned", so its legend entry is shown only then.
+ */
+export function getBurnRateLegendItems(includeBudget: boolean, includePlannedTail = true) {
   return [
     { label: 'Actual spend', color: '#16a34a' },
-    { label: 'Actual spend · leg still planned', color: '#9ca3af' },
+    ...(includePlannedTail ? [{ label: 'Actual spend · leg still planned', color: '#9ca3af' }] : []),
     { label: 'Planned estimate', color: '#0f766e', dashed: true },
     ...(includeBudget ? [{ label: 'Total trip budget', color: '#7c3aed', dashed: true }] : []),
   ];
@@ -223,13 +227,15 @@ export function getBurnRateLegendItems(includeBudget: boolean) {
 
 export function BurnRateLegend({
   includeBudget,
+  includePlannedTail,
   mode,
 }: {
   includeBudget: boolean;
+  includePlannedTail: boolean;
   mode: ChartRenderMode;
 }) {
   const metrics = getBurnChartMetrics(mode);
-  const items = getBurnRateLegendItems(includeBudget);
+  const items = getBurnRateLegendItems(includeBudget, includePlannedTail);
 
   return (
     <div

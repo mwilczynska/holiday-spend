@@ -202,26 +202,48 @@ export function UpNextCard({ leg, isFirst }: { leg: DerivedLeg | null; isFirst: 
       </section>
     );
   }
+  const perDay = leg.nights > 0 ? leg.planned / leg.nights : null;
+  // Mirrors CurrentDestinationCard so the two read as a pair: title, inset scene with a status
+  // pill, name and dates, then a two-figure footer.
   return (
-    <section className="flex flex-col overflow-hidden rounded-2xl border bg-card">
-      <div className="relative min-h-[170px] flex-1">
-        <DestinationScene name={leg.cityName} className="absolute inset-0" />
-        <span className="absolute left-3 top-3 rounded-full bg-card px-2.5 py-1 text-xs font-bold">
-          {isFirst ? 'First stop' : 'Up next'}
-        </span>
-      </div>
-      <div className="space-y-1 px-4 py-3.5">
-        <h2 className="flex flex-wrap items-baseline gap-2">
-          <span className="text-[17px] font-extrabold">{leg.cityName}</span>
-          {leg.countryName ? <span className="text-sm font-normal text-muted-foreground">{leg.countryName}</span> : null}
-        </h2>
-        <p className="text-[13px] text-muted-foreground">
-          {legDateRange(leg)} · {daysLabel(leg.nights)} · {fmtAud(leg.planned)} planned
-        </p>
-        <Link href="/plan" className="inline-flex items-center gap-1.5 pt-1 text-[13px] font-semibold text-blue-700 hover:text-blue-900">
+    <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:px-[18px]">
+      <div className="flex items-center justify-between gap-2">
+        <h2 className="text-[15px] font-bold">{isFirst ? 'First stop' : 'Up next'}</h2>
+        <Link href="/plan" className="inline-flex items-center gap-1 text-[13px] font-semibold text-blue-700 hover:text-blue-900">
           <Plane className="h-3.5 w-3.5" aria-hidden="true" />
           View in planner
         </Link>
+      </div>
+      <div className="relative h-[150px] overflow-hidden rounded-xl">
+        <DestinationScene name={leg.cityName} />
+        <span className="absolute right-2.5 top-2.5 rounded-full bg-info-soft px-2.5 py-1 text-xs font-bold text-blue-700">
+          Upcoming
+        </span>
+      </div>
+      <div>
+        <div className="flex flex-wrap items-baseline gap-2">
+          <span className="text-lg font-extrabold">{leg.cityName}</span>
+          {leg.countryName ? <span className="text-muted-foreground">{leg.countryName}</span> : null}
+        </div>
+        <p className="text-[13px] text-muted-foreground">
+          {legDateRange(leg)} · {daysLabel(leg.nights)}
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-5 border-t pt-3">
+        <div className="flex items-center gap-2.5">
+          <CircleDollarSign className="h-5 w-5 text-brand-teal" aria-hidden="true" />
+          <div>
+            <p className="font-bold">{fmtAud(leg.planned)}</p>
+            <p className="text-xs text-muted-foreground">planned for this leg</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2.5">
+          <Moon className="h-5 w-5 text-brand-blue" aria-hidden="true" />
+          <div>
+            <p className="font-bold">{perDay != null ? `${fmtAud(perDay)} / day` : '—'}</p>
+            <p className="text-xs text-muted-foreground">planned pace</p>
+          </div>
+        </div>
       </div>
     </section>
   );
