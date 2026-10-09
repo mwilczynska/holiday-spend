@@ -19,12 +19,6 @@ import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCit
 
 import { Database, Plus } from 'lucide-react';
 import { PageTitle } from '@/components/layout/PageHeader';
-import {
-  DATASET_PAGE_SIZE,
-  getPageCount,
-  getPageItems,
-  HISTORY_PAGE_SIZE,
-} from '@/lib/performance-bounds';
 
 // Kept out of this route's first-load JS. The panel renders only for a selected city and
 // the dialog only once opened, so neither needs to ship on arrival.
@@ -158,8 +152,6 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
   const [hasOpenedAddDialog, setHasOpenedAddDialog] = useState(false);
   const [query, setQuery] = useState('');
   const [historyQuery, setHistoryQuery] = useState('');
-  const [datasetPage, setDatasetPage] = useState(0);
-  const [historyPage, setHistoryPage] = useState(0);
   const [isDirty, setIsDirty] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -288,18 +280,10 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
     );
   }, [history, historyQuery]);
 
-  const datasetPageCount = getPageCount(filteredCities.length, DATASET_PAGE_SIZE);
-  const historyPageCount = getPageCount(filteredHistory.length, HISTORY_PAGE_SIZE);
-  const visibleCities = getPageItems(filteredCities, datasetPage, DATASET_PAGE_SIZE);
-  const visibleHistory = getPageItems(filteredHistory, historyPage, HISTORY_PAGE_SIZE);
-
-  useEffect(() => {
-    setDatasetPage((page) => Math.min(page, datasetPageCount - 1));
-  }, [datasetPageCount]);
-
-  useEffect(() => {
-    setHistoryPage((page) => Math.min(page, historyPageCount - 1));
-  }, [historyPageCount]);
+  // Both tables render every matching row inside a viewport-height scroll area (owner decision,
+  // 10 October 2026), replacing the earlier 25/20-row pages.
+  const visibleCities = filteredCities;
+  const visibleHistory = filteredHistory;
 
   // The list responses carry only scalar provenance badges. Anchors, FX and the input
   // snapshot are fetched for one city at a time, which keeps ~396 KB of blobs out of the
@@ -832,10 +816,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
               id="dataset-query"
               placeholder="Search city, country, region, source, or notes"
               value={query}
-              onChange={(event) => {
-                setQuery(event.target.value);
-                setDatasetPage(0);
-              }}
+              onChange={(event) => setQuery(event.target.value)}
             />
           </div>
 
@@ -849,45 +830,49 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
 
           {deleteError ? <p className="text-sm text-destructive">{deleteError}</p> : null}
 
-          <div className="w-full overflow-x-auto rounded-md border">
-            <table data-testid="dataset-city-table" className="min-w-[1800px] text-sm">
-              <thead className="bg-muted/50">
-                <tr className="border-b">
-                  <th className="sticky left-0 z-30 min-w-[180px] bg-muted px-3 py-2 text-left font-medium shadow-[1px_0_0_0_hsl(var(--border))]">
+          {/* Every row renders; the box is capped to the viewport so the table scrolls in place
+              with its header and first two columns pinned. */}
+          <div data-testid="dataset-city-scroll" className="max-h-[calc(100vh-13rem)] min-h-[16rem] w-full overflow-auto rounded-xl border">
+            <table data-testid="dataset-city-table" className="min-w-[1800px] border-separate border-spacing-0 text-sm">
+              <thead className="text-xs text-slate-600">
+                <tr>
+                  <th className="sticky left-0 top-0 z-40 min-w-[180px] border-b bg-secondary px-3 py-2 text-left font-semibold shadow-[1px_0_0_0_hsl(var(--border))]">
                     City
                   </th>
-                  <th className="sticky left-[180px] z-20 min-w-[160px] bg-muted px-3 py-2 text-left font-medium shadow-[1px_0_0_0_hsl(var(--border))]">
+                  <th className="sticky left-[180px] top-0 z-40 min-w-[160px] border-b bg-secondary px-3 py-2 text-left font-semibold shadow-[1px_0_0_0_hsl(var(--border))]">
                     Country
                   </th>
-                  <th className="px-3 py-2 text-left font-medium">Source</th>
-                  <th className="px-3 py-2 text-left font-medium">Updated</th>
+                  <th className="sticky top-0 z-30 border-b bg-secondary px-3 py-2 text-left font-semibold">Source</th>
+                  <th className="sticky top-0 z-30 border-b bg-secondary px-3 py-2 text-left font-semibold">Updated</th>
                   {DATASET_COLUMNS.map((column) => (
-                    <th key={column.key} className="px-3 py-2 text-left font-medium">
+                    <th key={column.key} className="sticky top-0 z-30 border-b bg-secondary px-3 py-2 text-left font-semibold">
                       {column.label}
                     </th>
                   ))}
-                  <th className="px-3 py-2 text-left font-medium">Notes</th>
-                  <th className="px-3 py-2 text-left font-medium">Actions</th>
+                  <th className="sticky top-0 z-30 border-b bg-secondary px-3 py-2 text-left font-semibold">Notes</th>
+                  <th className="sticky top-0 z-30 border-b bg-secondary px-3 py-2 text-left font-semibold">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {visibleCities.map((city) => (
-                  <tr key={city.id} className="border-b align-top last:border-0">
-                    <td className="sticky left-0 z-20 min-w-[180px] bg-background px-3 py-2 font-medium shadow-[1px_0_0_0_hsl(var(--border))]">
+                  <tr key={city.id} className="group align-top [&>td]:border-b">
+                    <td className="sticky left-0 z-20 min-w-[180px] bg-card px-3 py-2 font-medium shadow-[1px_0_0_0_hsl(var(--border))] group-hover:bg-secondary">
                       {city.name}
                     </td>
-                    <td className="sticky left-[180px] z-10 min-w-[160px] bg-background px-3 py-2 shadow-[1px_0_0_0_hsl(var(--border))]">
+                    <td className="sticky left-[180px] z-10 min-w-[160px] bg-card px-3 py-2 shadow-[1px_0_0_0_hsl(var(--border))] group-hover:bg-secondary">
                       <div>{city.countryName}</div>
                       {city.region ? <div className="text-xs text-muted-foreground">{city.region}</div> : null}
                     </td>
                     <td className="px-3 py-2">{city.estimationSource || '-'}</td>
-                    <td className="px-3 py-2">{fmtDate(city.estimatedAt)}</td>
+                    <td className="whitespace-nowrap px-3 py-2">{fmtDate(city.estimatedAt)}</td>
                     {DATASET_COLUMNS.map((column) => (
                       <td key={column.key} className="px-3 py-2">
                         {fmtMoney((city as Record<string, unknown>)[column.key])}
                       </td>
                     ))}
-                    <td className="min-w-[16rem] px-3 py-2 text-xs text-muted-foreground">{city.notes || '-'}</td>
+                    <td className="min-w-[16rem] max-w-[22rem] px-3 py-2 text-xs text-muted-foreground" title={city.notes || undefined}>
+                      <span className="line-clamp-2">{city.notes || '-'}</span>
+                    </td>
                     <td className="min-w-[12rem] px-3 py-2">
                       <div className="flex gap-2">
                         <Button
@@ -925,34 +910,10 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
             </table>
           </div>
           {filteredCities.length > 0 ? (
-            <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
-              <span className="text-muted-foreground">
-                Showing {datasetPage * DATASET_PAGE_SIZE + 1}–{Math.min((datasetPage + 1) * DATASET_PAGE_SIZE, filteredCities.length)} of {filteredCities.length} cities
-              </span>
-              <div className="flex gap-2">
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  disabled={datasetPage === 0}
-                  onClick={() => setDatasetPage((page) => Math.max(0, page - 1))}
-                >
-                  Previous
-                </Button>
-                <span className="self-center text-xs text-muted-foreground">
-                  Page {datasetPage + 1} of {datasetPageCount}
-                </span>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  disabled={datasetPage >= datasetPageCount - 1}
-                  onClick={() => setDatasetPage((page) => Math.min(datasetPageCount - 1, page + 1))}
-                >
-                  Next
-                </Button>
-              </div>
-            </div>
+            <p className="text-sm text-muted-foreground">
+              {filteredCities.length} {filteredCities.length === 1 ? 'city' : 'cities'}
+              {query.trim() ? ' match the search' : ''} · scroll the table to see every row
+            </p>
           ) : null}
         </CardContent>
       </Card>
@@ -973,31 +934,28 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
               id="dataset-history-query"
               placeholder="Search city, country, source, provider, or reasoning"
               value={historyQuery}
-              onChange={(event) => {
-                setHistoryQuery(event.target.value);
-                setHistoryPage(0);
-              }}
+              onChange={(event) => setHistoryQuery(event.target.value)}
             />
           </div>
 
-          <div className="w-full overflow-x-auto rounded-md border">
-            <table data-testid="dataset-history-table" className="min-w-[900px] text-sm">
-              <thead className="bg-muted/50">
-                <tr className="border-b">
-                  <th className="px-3 py-2 text-left font-medium">Date</th>
-                  <th className="px-3 py-2 text-left font-medium">City</th>
-                  <th className="px-3 py-2 text-left font-medium">Country</th>
-                  <th className="px-3 py-2 text-left font-medium">Source</th>
-                  <th className="px-3 py-2 text-left font-medium">Provider</th>
-                  <th className="px-3 py-2 text-left font-medium">AUD/USD</th>
-                  <th className="px-3 py-2 text-left font-medium">Confidence</th>
-                  <th className="px-3 py-2 text-left font-medium">Reasoning</th>
+          <div data-testid="dataset-history-scroll" className="max-h-[calc(100vh-13rem)] min-h-[16rem] w-full overflow-auto rounded-xl border">
+            <table data-testid="dataset-history-table" className="w-full min-w-[900px] border-separate border-spacing-0 text-sm">
+              <thead className="text-xs text-slate-600">
+                <tr className="[&>th]:sticky [&>th]:top-0 [&>th]:z-10 [&>th]:border-b [&>th]:bg-secondary [&>th]:px-3 [&>th]:py-2 [&>th]:text-left [&>th]:font-semibold">
+                  <th>Date</th>
+                  <th>City</th>
+                  <th>Country</th>
+                  <th>Source</th>
+                  <th>Provider</th>
+                  <th>AUD/USD</th>
+                  <th>Confidence</th>
+                  <th>Reasoning</th>
                 </tr>
               </thead>
               <tbody>
                 {visibleHistory.map((entry) => (
-                  <tr key={entry.id} className="border-b align-top last:border-0">
-                    <td className="px-3 py-2">{fmtDate(entry.estimatedAt)}</td>
+                  <tr key={entry.id} className="align-top hover:bg-secondary [&>td]:border-b">
+                    <td className="whitespace-nowrap px-3 py-2">{fmtDate(entry.estimatedAt)}</td>
                     <td className="px-3 py-2 font-medium">
                       {entry.cityName}
                       {entry.isActive ? <div className="text-xs text-muted-foreground">active</div> : null}
@@ -1009,7 +967,9 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                       {typeof entry.inferredAudPerUsd === 'number' ? entry.inferredAudPerUsd.toFixed(2) : '-'}
                     </td>
                     <td className="px-3 py-2">{entry.confidence || '-'}</td>
-                    <td className="min-w-[24rem] px-3 py-2 text-xs text-muted-foreground">{entry.reasoning || '-'}</td>
+                    <td className="min-w-[24rem] max-w-[36rem] px-3 py-2 text-xs text-muted-foreground" title={entry.reasoning || undefined}>
+                      <span className="line-clamp-2">{entry.reasoning || '-'}</span>
+                    </td>
                   </tr>
                 ))}
                 {filteredHistory.length === 0 ? (
@@ -1023,34 +983,10 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
             </table>
           </div>
           {filteredHistory.length > 0 ? (
-            <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
-              <span className="text-muted-foreground">
-                Showing {historyPage * HISTORY_PAGE_SIZE + 1}–{Math.min((historyPage + 1) * HISTORY_PAGE_SIZE, filteredHistory.length)} of {filteredHistory.length} history records
-              </span>
-              <div className="flex gap-2">
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  disabled={historyPage === 0}
-                  onClick={() => setHistoryPage((page) => Math.max(0, page - 1))}
-                >
-                  Previous
-                </Button>
-                <span className="self-center text-xs text-muted-foreground">
-                  Page {historyPage + 1} of {historyPageCount}
-                </span>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  disabled={historyPage >= historyPageCount - 1}
-                  onClick={() => setHistoryPage((page) => Math.min(historyPageCount - 1, page + 1))}
-                >
-                  Next
-                </Button>
-              </div>
-            </div>
+            <p className="text-sm text-muted-foreground">
+              {filteredHistory.length} history {filteredHistory.length === 1 ? 'record' : 'records'}
+              {historyQuery.trim() ? ' match the search' : ''} · scroll the table to see every row
+            </p>
           ) : null}
         </CardContent>
       </Card>

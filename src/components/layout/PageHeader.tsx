@@ -69,7 +69,7 @@ export function StatTile({
         className
       )}
     >
-      <h2 className="text-xs font-semibold text-slate-700">{label}</h2>
+      <p className="text-xs font-semibold text-slate-700">{label}</p>
       <p
         className={cn(
           'mt-1 text-[22px] font-extrabold tracking-tight',
