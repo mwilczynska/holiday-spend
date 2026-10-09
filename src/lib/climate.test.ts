@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { climateSegments, temperature, tripClimatePoints, type CityClimate, type ClimateLeg } from './climate';
+import { climateSegments, temperature, tripClimatePoints, tripClimateSeries, type CityClimate, type ClimateLeg } from './climate';
 
 function leg(overrides: Partial<ClimateLeg> = {}): ClimateLeg {
   return {
@@ -104,5 +104,49 @@ describe('climate display values', () => {
     expect(points[1]).toMatchObject({ temperature: null, rainfall: null });
     expect(points[2]).toMatchObject({ temperature: null, rainfall: null });
     expect(points[3]).toMatchObject({ temperature: null, rainfall: null });
+  });
+});
+
+describe('trip climate series', () => {
+  const jan: CityClimate['months'][number] = { month: 1, temperatureC: 10, highC: 15, lowC: 5, rainfallMm: 40 };
+  const feb: CityClimate['months'][number] = { month: 2, temperatureC: 20, highC: 26, lowC: 14, rainfallMm: 10 };
+  const day = (value: string) => Date.parse(`${value}T00:00:00Z`);
+
+  it('holds each month value for the days stayed and closes the step at departure', () => {
+    const { points, stays } = tripClimateSeries([
+      leg({ id: 1, startDate: '2024-01-20', endDate: '2024-02-05', nights: 16 }),
+    ], { 'city-a': cityClimate([jan, feb]) }, 'C');
+
+    expect(points.map(point => [point.t, point.temperature, point.isEnd ?? false])).toEqual([
+      [day('2024-01-20'), 10, false],
+      [day('2024-02-01'), 20, false],
+      [day('2024-02-05'), 20, true],
+    ]);
+    expect(points[0].range).toEqual([5, 15]);
+    expect(stays).toEqual([{ legId: 1, cityName: 'City A', start: day('2024-01-20'), end: day('2024-02-05') }]);
+  });
+
+  it('breaks the line across gaps between stays but not between back-to-back stays', () => {
+    const climate = { 'city-a': cityClimate([jan]), 'city-b': cityClimate([jan]) };
+    const backToBack = tripClimateSeries([
+      leg({ id: 1, startDate: '2024-01-01', endDate: '2024-01-05', nights: 4 }),
+      leg({ id: 2, cityId: 'city-b', cityName: 'City B', startDate: '2024-01-05', endDate: '2024-01-08', nights: 3 }),
+    ], climate, 'C');
+    expect(backToBack.points.some(point => point.temperature === null)).toBe(false);
+
+    const withGap = tripClimateSeries([
+      leg({ id: 1, startDate: '2024-01-01', endDate: '2024-01-05', nights: 4 }),
+      leg({ id: 2, cityId: 'city-b', cityName: 'City B', startDate: '2024-01-10', endDate: '2024-01-12', nights: 2 }),
+    ], climate, 'C');
+    expect(withGap.points.filter(point => point.temperature === null)).toHaveLength(1);
+  });
+
+  it('leaves missing climate empty and omits undated legs', () => {
+    const { points, stays } = tripClimateSeries([
+      leg({ id: 1, startDate: '2024-01-01', endDate: '2024-01-03', nights: 2 }),
+      leg({ id: 2, cityId: 'city-b', cityName: 'City B', startDate: null, endDate: null, nights: 2 }),
+    ], { 'city-a': null }, 'F');
+    expect(stays).toHaveLength(1);
+    expect(points.every(point => point.temperature === null && point.range === null)).toBe(true);
   });
 });

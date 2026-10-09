@@ -42,6 +42,64 @@ export function climateSegments(leg: ClimateLeg) {
   }
   return result;
 }
+export interface TripClimateSeriesPoint {
+  /** UTC milliseconds; the chart's x position. */
+  t: number;
+  temperature: number | null;
+  /** Average daily low and high for the month, for the shaded band. */
+  range: [number, number] | null;
+  rainfall: number | null;
+  cityName: string | null;
+  monthLabel: string | null;
+  /** True for the closing point of a stay, which only extends the previous step. */
+  isEnd?: boolean;
+}
+
+export interface TripClimateStay { legId: number; cityName: string; start: number; end: number }
+
+/**
+ * A date-scaled series for the trip chart. Each monthly segment of a stay becomes a step that
+ * holds that month's values from its first day until the next segment (or departure), so a long
+ * stay reads as a long run and a short one as a short run. Gaps between dated stays, and cities
+ * without climate, break the line rather than being bridged.
+ */
+export function tripClimateSeries(legs: ClimateLeg[], climate: Record<string, CityClimate | null | undefined>, unit: TemperatureUnit) {
+  const stays = legs
+    .map(leg => ({ leg, segments: climateSegments(leg) }))
+    .filter(entry => entry.segments.length > 0)
+    .sort((a, b) => a.segments[0].start - b.segments[0].start);
+
+  const points: TripClimateSeriesPoint[] = [];
+  const bands: TripClimateStay[] = [];
+  let previousEnd: number | null = null;
+
+  for (const { leg, segments } of stays) {
+    const start = segments[0].start;
+    const end = segments[segments.length - 1].end;
+    if (previousEnd != null && start > previousEnd) {
+      points.push({ t: previousEnd, temperature: null, range: null, rainfall: null, cityName: null, monthLabel: null });
+    }
+    bands.push({ legId: leg.id, cityName: leg.cityName, start, end });
+    let last: TripClimateSeriesPoint | null = null;
+    for (const segment of segments) {
+      const values = climate[leg.cityId]?.months.find(month => month.month === segment.month);
+      last = {
+        t: segment.start,
+        temperature: values ? temperature(values.temperatureC, unit) : null,
+        range: values ? [temperature(values.lowC, unit), temperature(values.highC, unit)] : null,
+        rainfall: values?.rainfallMm ?? null,
+        cityName: leg.cityName,
+        monthLabel: segment.label,
+      };
+      points.push(last);
+    }
+    if (last) points.push({ ...last, t: end, isEnd: true });
+    previousEnd = end;
+  }
+
+  return { points, stays: bands };
+}
+
 export function tripClimatePoints(legs: ClimateLeg[], climate: Record<string, CityClimate | null | undefined>, unit: TemperatureUnit) {
   return legs.flatMap(leg => climateSegments(leg).map(segment => {
     const values = climate[leg.cityId]?.months.find(month => month.month === segment.month);

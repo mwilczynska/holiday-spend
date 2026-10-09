@@ -201,12 +201,12 @@ test('planner climate covers the full itinerary, shares temperature units, and r
   await expect(missingClimate.getByRole('button', { name: 'Retry climate' })).toBeVisible();
   expect(climateAttempts.get('city-04') ?? 0).toBe(0);
 
-  // There are 14 dated month segments because the first leg crosses a month boundary.
-  // One city is unavailable, leaving 13 dots per series, including the 14th leg.
+  // The trip chart is date-scaled: one stepped temperature line held for each stay, plus the
+  // low–high band and rainfall areas. Series shaping is unit-tested in climate.test.ts.
   const tripChart = tripClimate.getByRole('img');
-  await expect(tripChart.locator('g.recharts-line-dots')).toHaveCount(2);
-  await expect(tripChart.locator('g.recharts-line-dots').nth(0).locator('circle.recharts-dot')).toHaveCount(13);
-  await expect(tripChart.locator('g.recharts-line-dots').nth(1).locator('circle.recharts-dot')).toHaveCount(13);
+  await expect(tripChart.locator('.recharts-line-curve')).toHaveCount(1);
+  await expect(tripChart.locator('.recharts-area-area')).toHaveCount(2);
+  await expect(tripChart.locator('.recharts-line-curve')).toHaveAttribute('d', /\d/);
 
   await tripClimate.getByRole('button', { name: 'Switch to Fahrenheit' }).click();
   await expect(tripClimate.getByRole('img', { name: /degrees F/ })).toBeVisible();
@@ -228,7 +228,8 @@ test('planner climate covers the full itinerary, shares temperature units, and r
   await expect(annualDialog.getByRole('img', { name: /degrees F/ })).toBeVisible();
   await expect(annualDialog.getByRole('columnheader').nth(1)).toContainText('F');
   await expect(januaryRow.locator('td').nth(0)).toHaveText('54.1');
-  await expect(tripClimate.getByRole('img', { name: /degrees F/ })).toBeVisible();
+  // The open dialog hides the page behind it from the accessibility tree.
+  await expect(tripClimate.getByRole('img', { name: /degrees F/, includeHidden: true })).toBeAttached();
   await expect(january).toContainText('54.1');
 
   await page.keyboard.press('Escape');
