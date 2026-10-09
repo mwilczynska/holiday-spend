@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { expandLegCard } from './client-navigation';
 
 test('manual miscellaneous costs persist, update totals, retain rejected drafts and remove', async ({ page }) => {
   test.setTimeout(60_000);
@@ -14,6 +15,7 @@ test('manual miscellaneous costs persist, update totals, retain rejected drafts 
     await page.waitForLoadState('networkidle');
     const card = page.locator(`[data-leg-id="${id}"]`);
     const misc = card.getByTestId('miscellaneous-expenses');
+    await expandLegCard(card);
     await misc.getByRole('button', { name: 'Add miscellaneous expense', exact: true }).click();
     await misc.getByLabel('Description', { exact: true }).fill('Laundry');
     await misc.getByLabel('Cost (AUD)', { exact: true }).fill('25.75');
@@ -22,6 +24,7 @@ test('manual miscellaneous costs persist, update totals, retain rejected drafts 
     expect((await readLeg()).legTotal).toBeCloseTo(original.legTotal + 25.75);
     await page.reload();
     await page.waitForLoadState('networkidle');
+    await expandLegCard(card);
     await expect(misc.getByLabel('Description', { exact: true })).toHaveValue('Laundry');
     await expect(misc.getByLabel('Cost (AUD)', { exact: true })).toHaveValue('25.75');
 

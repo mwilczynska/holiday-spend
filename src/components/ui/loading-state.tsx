@@ -17,7 +17,7 @@ export function PageLoadingState({
 }) {
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border bg-background/80 p-6 shadow-sm">
+      <div className="rounded-2xl border bg-card/80 p-6 shadow-sm">
         <div className="flex items-start gap-4">
           <div className="rounded-full bg-primary/10 p-3 text-primary">
             <Loader2 className="h-6 w-6 animate-spin" />

@@ -24,7 +24,9 @@ import {
   getLegTotalFromTransports,
 } from '@/lib/cost-calculator';
 import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
-import { ChevronDown, ChevronUp, GripVertical, Plus, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, ChevronDown, ChevronUp, Plus, Trash2 } from 'lucide-react';
+import { DestinationScene } from '@/components/dashboard/DestinationScene';
+import { cn } from '@/lib/utils';
 
 // Load transport estimation only when its dialog is opened.
 const TransportEstimateDialog = dynamic(
@@ -103,6 +105,9 @@ interface LegCardProps {
   onDelete: (id: number) => void;
   onMove: (id: number, direction: -1 | 1) => void;
   orderSaving?: boolean;
+  /** Whether the editing body is shown. Cards with unsaved, saving or failed edits stay open regardless. */
+  expanded: boolean;
+  onToggleExpanded: (id: number) => void;
   isFirst: boolean;
   isLast: boolean;
   previousLeg: {
@@ -113,10 +118,22 @@ interface LegCardProps {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  planned: 'bg-blue-100 text-blue-800',
-  active: 'bg-green-100 text-green-800',
-  completed: 'bg-gray-100 text-gray-800',
+  planned: 'bg-slate-100 text-slate-700 hover:bg-slate-100',
+  active: 'bg-info-soft text-blue-700 hover:bg-info-soft',
+  completed: 'bg-success-soft text-success hover:bg-success-soft',
 };
+
+const STATUS_LABELS: Record<string, string> = {
+  planned: 'Upcoming',
+  active: 'In progress',
+  completed: 'Completed',
+};
+
+function formatLegDate(value: string) {
+  const date = new Date(`${value}T00:00:00Z`);
+  if (!Number.isFinite(date.getTime())) return value;
+  return date.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
 
 type TransportDraft = IntercityTransportItem & {
   draftKey: string;
@@ -171,6 +188,8 @@ export const LegCard = memo(function LegCard({
   onDelete,
   onMove,
   orderSaving = false,
+  expanded,
+  onToggleExpanded,
   isFirst,
   isLast,
   previousLeg,
@@ -191,6 +210,10 @@ export const LegCard = memo(function LegCard({
     onDirtyChange(savedLeg.id, miscellaneousError != null || editState.saving || Object.keys(editState.patch).length > 0);
   }, [miscellaneousError, editState.saving, editState.patch, onDirtyChange, savedLeg.id]);
   const hasDraft = Object.keys(editState.patch).length > 0;
+  // A collapsed card must never hide an unsaved draft or its Retry/Discard controls.
+  const mustStayOpen = hasDraft || editState.saving || editState.error != null || miscellaneousError != null;
+  const isOpen = expanded || mustStayOpen;
+  const bodyId = `leg-${savedLeg.id}-body`;
   const leg = { ...savedLeg, ...editState.patch } as typeof savedLeg;
   const draftCity = cities.find(city => city.id === leg.cityId);
   if (hasDraft && draftCity) {
@@ -385,65 +408,86 @@ export const LegCard = memo(function LegCard({
   };
 
   return (
-    <Card data-testid="planner-leg-card" data-leg-id={leg.id} className="relative">
-      <CardContent className="p-4">
-        <div className="flex items-start gap-2">
-          <div className="flex flex-col gap-0.5">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-6 w-6"
-              onClick={() => onMove(leg.id, -1)}
-              aria-label={`Move ${leg.cityName} leg up`}
-              disabled={isFirst || orderSaving}
-            >
-              <ChevronUp className="h-3 w-3" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-6 w-6"
-              onClick={() => onMove(leg.id, 1)}
-              aria-label={`Move ${leg.cityName} leg down`}
-              disabled={isLast || orderSaving}
-            >
-              <ChevronDown className="h-3 w-3" />
-            </Button>
-          </div>
-          <div className="hidden cursor-grab pt-1 lg:block">
-            <GripVertical className="h-5 w-5 text-muted-foreground" />
-          </div>
+    <Card
+      data-testid="planner-leg-card"
+      data-leg-id={leg.id}
+      className={cn('relative', isOpen && 'border-blue-200 shadow-[0_4px_14px_rgba(15,27,51,0.06)]')}
+    >
+      <CardContent className={cn('p-2.5 sm:p-3', isOpen && 'sm:p-3.5')}>
+        <div className="flex flex-wrap items-center gap-3 sm:flex-nowrap">
+          <span className={cn('shrink-0 overflow-hidden rounded-[10px]', isOpen ? 'h-[76px] w-[104px]' : 'h-16 w-[88px]')}>
+            <DestinationScene name={leg.cityName} />
+          </span>
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <h3 className="font-semibold">{leg.cityName}</h3>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <h3 className={cn('font-extrabold', isOpen ? 'text-lg' : 'text-base')}>{leg.cityName}</h3>
               <span className="text-sm text-muted-foreground">{leg.countryName}</span>
-              <Badge variant="outline" className={STATUS_COLORS[leg.status] || ''}>
-                {leg.status}
+              <Badge className={cn('rounded-full border-transparent px-2.5 font-bold capitalize', STATUS_COLORS[leg.status] || '')}>
+                {STATUS_LABELS[leg.status] ?? leg.status}
               </Badge>
             </div>
-            <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
-              <span>{leg.nights} nights</span>
-              {leg.startDate && <span>{leg.startDate} - {leg.endDate}</span>}
-              <span className="font-medium text-foreground">
-                ${leg.dailyCost.toFixed(0)}/day
-              </span>
+            <p className="mt-1 flex flex-wrap gap-x-1.5 text-[13px] text-muted-foreground">
+              {leg.startDate ? (
+                <span>{formatLegDate(leg.startDate)} – {leg.endDate ? formatLegDate(leg.endDate) : '?'} ·</span>
+              ) : null}
+              <span>{leg.nights} {leg.nights === 1 ? 'night' : 'nights'} ·</span>
+              <span>${leg.dailyCost.toFixed(0)}/day</span>
+              <span aria-hidden="true">·</span>
               <span className="font-bold text-foreground">
                 ${leg.legTotal.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
               </span>
-            </div>
+            </p>
           </div>
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8 text-muted-foreground hover:text-destructive"
-            aria-label={'Delete ' + leg.cityName + ' leg'}
-            title="Delete leg"
-            onClick={() => onDelete(leg.id)}
-            disabled={orderSaving || editState.saving || hasDraft}
-          >
-            <Trash2 className="h-4 w-4" />
-          </Button>
+          <div className="ml-auto flex items-center gap-0.5">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 text-slate-600"
+              onClick={() => onMove(leg.id, -1)}
+              aria-label={`Move ${leg.cityName} leg up`}
+              title="Move up"
+              disabled={isFirst || orderSaving}
+            >
+              <ArrowUp className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 text-slate-600"
+              onClick={() => onMove(leg.id, 1)}
+              aria-label={`Move ${leg.cityName} leg down`}
+              title="Move down"
+              disabled={isLast || orderSaving}
+            >
+              <ArrowDown className="h-4 w-4" />
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 text-slate-600 hover:text-destructive"
+              aria-label={'Delete ' + leg.cityName + ' leg'}
+              title="Delete leg"
+              onClick={() => onDelete(leg.id)}
+              disabled={orderSaving || editState.saving || hasDraft}
+            >
+              <Trash2 className="h-4 w-4" />
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="h-10 w-10 text-slate-700"
+              aria-expanded={isOpen}
+              aria-controls={bodyId}
+              aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${leg.cityName}`}
+              title={mustStayOpen ? 'Open while it has unsaved changes' : undefined}
+              disabled={mustStayOpen}
+              onClick={() => onToggleExpanded(leg.id)}
+            >
+              {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
 
         {editState.saving || hasDraft || miscellaneousError ? (
@@ -468,6 +512,8 @@ export const LegCard = memo(function LegCard({
           </div>
         ) : null}
 
+        {/* Hidden rather than unmounted when collapsed, so field drafts and transport rows survive. */}
+        <div id={bodyId} hidden={!isOpen} className="mt-3 rounded-xl border border-slate-100 p-3 sm:p-4">
         <LegClimate leg={leg} climate={climate} unit={temperatureUnit} onToggle={onToggleTemperature} onRetry={onRetryClimate} />
 
         <div className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
@@ -701,6 +747,7 @@ export const LegCard = memo(function LegCard({
               {s}
             </Button>
           ))}
+        </div>
         </div>
 
         {hasOpenedTransportEstimate ? (

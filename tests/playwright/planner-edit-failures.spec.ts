@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { expandLegCard } from './client-navigation';
 
 test('rejected inline edits retain drafts, report errors, retry and discard', async ({ page }) => {
   test.setTimeout(60_000);
@@ -11,6 +12,8 @@ test('rejected inline edits retain drafts, report errors, retry and discard', as
     await page.goto('/plan');
     await page.waitForLoadState('networkidle');
     const card = page.locator(`[data-leg-id="${id}"]`);
+    await expandLegCard(card);
+    await expandLegCard(page.locator(`[data-leg-id="${otherId}"]`));
     await page.route(`**/api/itinerary/legs/${id}`, route => route.fulfill({ status: 503, json: { error: 'QA leg edit rejected' } }));
     await card.getByRole('spinbutton').fill('4');
     await expect(card.getByRole('alert')).toContainText('QA leg edit rejected');
@@ -31,6 +34,7 @@ test('rejected inline edits retain drafts, report errors, retry and discard', as
     expect((await readLeg()).nights).toBe(4);
     await page.reload();
     await page.waitForLoadState('networkidle');
+    await expandLegCard(card);
     await expect(card.getByRole('spinbutton')).toHaveValue('4');
 
     await card.getByRole('button', { name: 'Show cost overrides', exact: true }).click();
@@ -77,6 +81,7 @@ test('rapid inline edits are serialized and the last typed value persists', asyn
     await page.goto('/plan');
     await page.waitForLoadState('networkidle');
     const card = page.getByTestId('planner-leg-card').last();
+    await expandLegCard(card);
     await page.route(`**/api/itinerary/legs/${id}`, async route => {
       writes.push(route.request().postDataJSON().nights);
       if (writes.length === 1) await pending;
@@ -93,6 +98,7 @@ test('rapid inline edits are serialized and the last typed value persists', asyn
     expect(writes).toEqual([2, 200]);
     await page.reload();
     await page.waitForLoadState('networkidle');
+    await expandLegCard(card);
     await expect(card.getByRole('spinbutton')).toHaveValue('200');
   } finally {
     release();
@@ -109,6 +115,7 @@ test('rejected transport row edits retain their draft for retry', async ({ page 
     await page.goto('/plan');
     await page.waitForLoadState('networkidle');
     const card = page.getByTestId('planner-leg-card').last();
+    await expandLegCard(card);
     await page.route(`**/api/itinerary/legs/${id}`, route => route.fulfill({ status: 503, json: { error: 'QA transport edit rejected' } }));
     await card.getByRole('button', { name: 'Add transport', exact: true }).click();
     await expect(card.getByRole('alert')).toContainText('QA transport edit rejected');

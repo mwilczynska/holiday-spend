@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { expandLegCard } from './client-navigation';
 
 test('zero overrides stay visible after reload and clearing restores automatic costs', async ({ page }) => {
   const cities = (await (await page.request.get('/api/cities')).json()).data as Array<{ id: string; name: string }>;
@@ -11,6 +12,7 @@ test('zero overrides stay visible after reload and clearing restores automatic c
   try {
     await page.goto('/plan');
     const card = page.getByTestId('planner-leg-card').last();
+    await expandLegCard(card);
     await card.getByRole('button', { name: 'Show cost overrides', exact: true }).click();
     for (let index = 0; index < 5; index += 1) {
       const updated = page.waitForResponse(response => response.url().endsWith(`/api/itinerary/legs/${id}`) && response.request().method() === 'PUT');
@@ -21,6 +23,7 @@ test('zero overrides stay visible after reload and clearing restores automatic c
     await expect(card.getByText('$0/day', { exact: true })).toBeVisible();
     await expect(card.getByText('$65 total', { exact: true })).toBeVisible();
     await page.reload();
+    await expandLegCard(card);
     await card.getByRole('button', { name: 'Show cost overrides', exact: true }).click();
     for (let index = 0; index < 5; index += 1) {
       await expect(card.getByPlaceholder('Auto', { exact: true }).nth(index)).toHaveValue('0');

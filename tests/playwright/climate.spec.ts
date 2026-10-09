@@ -170,6 +170,8 @@ test('planner climate covers the full itinerary, shares temperature units, and r
 
   const tripClimate = page.locator('section[aria-label="Trip historical climate"]');
   await expect(page.getByTestId('planner-leg-card')).toHaveCount(14, { timeout: 15_000 });
+  // Per-leg climate sits inside each card's collapsible body.
+  await page.getByRole('button', { name: 'Expand all', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Show all', exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: /Show next/ })).toHaveCount(0);
   await expect(tripClimate.getByText(/Loading trip climate…/)).toBeVisible();

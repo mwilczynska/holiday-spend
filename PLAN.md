@@ -45,8 +45,27 @@ the dashboard because that data is only loaded by the planner.
 - [x] Sidebar: logo mark, navy active item, Sign out at the foot.
 - [x] Dashboard: headline and secondary stat tiles, current destination, up next and trip progress tiles; leg
       derivation unit-tested.
-- [ ] Owner review of the dashboard beside main.
-- [ ] Planner: trip banner and summary, numbered leg timeline, collapsed legs with one expanded at a time.
+- [x] Owner reviewed the dashboard beside main and asked to proceed. Leg lengths on the dashboard are labelled in
+      days (the burn series has one point per calendar day), and an over-plan leg reports its overspend.
+- [x] Planner: trip banner, trip summary and by-country cards above a numbered leg timeline. The pinned summary
+      sidebar is removed, and the fixed header now clears the 240px sidebar.
+- [x] Collapsible leg cards. The active leg starts open; a leg added after load opens (an imported plan does not);
+      Expand all / Collapse all. Bodies are hidden rather than unmounted so drafts survive, and a card with
+      unsaved, saving or failed edits cannot be collapsed.
+- [x] Form controls, dialogs and active tabs fill with card white instead of the grey-blue page background.
+- [x] Playwright planner tests expand cards before using their fields; the pinned-sidebar test is replaced by a
+      layout and collapse test.
+- [x] Hero row stacks the trip summary beside the banner below 2xl so it is not squeezed at 1280px; the
+      by-country list uses two or three columns when full width. Planner at 375px has no horizontal overflow.
+
+Evidence (9 October 2026), dev server on an isolated database copy, one worker: 35 of 39 planner, dashboard,
+climate, smoke and provider tests pass. The remaining failures are `initial-data` "returning to the planner…"
+and both `planner-read-failures` tests (mocked client-navigation reads) plus the popover test, which is fixed by
+opening the last card first. The same `initial-data` and `planner-read-failures` tests also fail on unmodified
+main in this environment (5 failed, 1 passed), so they are not caused by the redesign.
+
+Follow-up: the fixed planner header takes about half of a phone screen. That predates the redesign.
+
 - [ ] Restyle remaining routes through the shared tokens; check phone width.
 - [ ] Baseline checks, Playwright smoke, and merge decision.
 

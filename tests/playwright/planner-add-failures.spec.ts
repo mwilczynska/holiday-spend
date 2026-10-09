@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { expandLegCard } from './client-navigation';
 
 async function openAddForm(page: Page) {
   await page.goto('/plan');
@@ -43,6 +44,7 @@ test('rejected Add Leg saves retain the selected city and nights for retry', asy
     await expect(page.getByTestId('planner-leg-card').last().getByRole('heading')).toHaveText('Agra');
     await page.reload();
     await page.waitForLoadState('networkidle');
+    await expandLegCard(page.getByTestId('planner-leg-card').last());
     await expect(page.getByTestId('planner-leg-card').last().getByRole('spinbutton')).toHaveValue('9');
   } finally {
     if (createdId) await page.request.delete(`/api/itinerary/legs/${createdId}`);

@@ -120,8 +120,9 @@ function legDateRange(leg: DerivedLeg) {
   return `${formatShortDate(leg.startDate)} – ${formatShortDate(leg.endDate)}`;
 }
 
-function nightsLabel(n: number) {
-  return `${n} ${n === 1 ? 'night' : 'nights'}`;
+// The burn series has one point per calendar day, so leg lengths here are days, not nights.
+function daysLabel(n: number) {
+  return `${n} ${n === 1 ? 'day' : 'days'}`;
 }
 
 export function CurrentDestinationCard({ position }: { position: TripPosition }) {
@@ -140,7 +141,8 @@ export function CurrentDestinationCard({ position }: { position: TripPosition })
   }
 
   const remaining = leg.planned - leg.actual;
-  const perNightLeft = leg.nightsLeft > 0 && remaining > 0 ? remaining / leg.nightsLeft : null;
+  const isOver = remaining < 0;
+  const perDayLeft = leg.nightsLeft > 0 && remaining > 0 ? remaining / leg.nightsLeft : null;
 
   return (
     <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:px-[18px]">
@@ -157,7 +159,7 @@ export function CurrentDestinationCard({ position }: { position: TripPosition })
           {leg.countryName ? <span className="text-muted-foreground">{leg.countryName}</span> : null}
         </div>
         <p className="text-[13px] text-muted-foreground">
-          {legDateRange(leg)} · {nightsLabel(leg.nights)} · day {leg.dayOfLeg}
+          {legDateRange(leg)} · day {leg.dayOfLeg} of {leg.nights}
         </p>
       </div>
       <div className="flex flex-wrap gap-5 border-t pt-3">
@@ -171,10 +173,19 @@ export function CurrentDestinationCard({ position }: { position: TripPosition })
         <div className="flex items-center gap-2.5">
           <Moon className="h-5 w-5 text-brand-blue" aria-hidden="true" />
           <div>
-            <p className="font-bold">{perNightLeft != null ? `${fmtAud(perNightLeft)} / day` : '—'}</p>
-            <p className="text-xs text-muted-foreground">
-              {leg.nightsLeft > 0 ? `left for ${nightsLabel(leg.nightsLeft)}` : 'last day of this leg'}
-            </p>
+            {isOver ? (
+              <>
+                <p className="font-bold text-[#9A4B00]">{fmtAud(-remaining)} over</p>
+                <p className="text-xs text-muted-foreground">this leg&apos;s plan</p>
+              </>
+            ) : (
+              <>
+                <p className="font-bold">{perDayLeft != null ? `${fmtAud(perDayLeft)} / day` : fmtAud(remaining)}</p>
+                <p className="text-xs text-muted-foreground">
+                  {leg.nightsLeft > 0 ? `left for ${daysLabel(leg.nightsLeft)}` : 'left on the last day'}
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -205,7 +216,7 @@ export function UpNextCard({ leg, isFirst }: { leg: DerivedLeg | null; isFirst: 
           {leg.countryName ? <span className="text-sm font-normal text-muted-foreground">{leg.countryName}</span> : null}
         </h2>
         <p className="text-[13px] text-muted-foreground">
-          {legDateRange(leg)} · {nightsLabel(leg.nights)} · {fmtAud(leg.planned)} planned
+          {legDateRange(leg)} · {daysLabel(leg.nights)} · {fmtAud(leg.planned)} planned
         </p>
         <Link href="/plan" className="inline-flex items-center gap-1.5 pt-1 text-[13px] font-semibold text-blue-700 hover:text-blue-900">
           <Plane className="h-3.5 w-3.5" aria-hidden="true" />

@@ -29,6 +29,8 @@ test('an unsaved fixture key survives city saving and dialog/navigation changes 
     expect(result.data.city.reusedExistingCity).toBe(true);
     await expect(city).toBeHidden();
 
+    const expandAll = page.getByRole('button', { name: 'Expand all', exact: true });
+    if (await expandAll.isVisible()) await expandAll.click();
     const singleButtons = page.getByRole('button', { name: 'Estimate transport', exact: true });
     for (const button of await singleButtons.all()) {
       if (await button.isEnabled()) { await button.click(); break; }

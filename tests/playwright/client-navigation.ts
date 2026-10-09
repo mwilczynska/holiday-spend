@@ -1,4 +1,11 @@
-import { expect, type Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
+
+/** Planner leg cards start collapsed (except the active leg); open one before using its fields. */
+export async function expandLegCard(card: Locator) {
+  const toggle = card.getByRole('button', { name: /^(Expand|Collapse) / });
+  if ((await toggle.getAttribute('aria-expanded')) !== 'true') await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+}
 
 /** Browser API mocks apply to client refreshes, while full loads now use server readers. */
 export async function gotoClientPage(page: Page, path: '/plan' | '/dataset' | '/settings') {

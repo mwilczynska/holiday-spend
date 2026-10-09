@@ -15,10 +15,12 @@ import { LegCard } from '@/components/itinerary/LegCard';
 import { TripClimate } from '@/components/itinerary/TripClimate';
 import { useTripClimate } from '@/lib/use-trip-climate';
 import type { TemperatureUnit } from '@/lib/climate';
-import { CostSummary } from '@/components/itinerary/CostSummary';
+import { CountrySummaryCard, TripSummaryCard } from '@/components/itinerary/CostSummary';
+import { TripBanner } from '@/components/itinerary/TripBanner';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
+import { cn } from '@/lib/utils';
 
-import { ArrowUpDown, Download, Plus, Save, Upload } from 'lucide-react';
+import { ArrowUpDown, ChevronsDownUp, ChevronsUpDown, Download, Map as MapIcon, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem, MiscellaneousExpenseItem } from '@/types';
 import { getMiscellaneousExpenseTotal, miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
 import { getDailyCost, getLegTotal } from '@/lib/cost-calculator';
@@ -244,6 +246,31 @@ export interface PlanInitialData {
 export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   const importApiKeyInputId = useId();
   const [legs, setLegs] = useState<Leg[]>(initialData.legs);
+  // Legs start collapsed except the one in progress. A leg that appears after load (added here or
+  // through the new-city flow) opens automatically; a whole imported plan does not.
+  const [expandedLegIds, setExpandedLegIds] = useState<Set<number>>(
+    () => new Set(initialData.legs.filter((leg) => leg.status === 'active').map((leg) => leg.id))
+  );
+  const knownLegIds = useRef<Set<number>>(new Set(initialData.legs.map((leg) => leg.id)));
+  useEffect(() => {
+    const appeared = legs.filter((leg) => !knownLegIds.current.has(leg.id)).map((leg) => leg.id);
+    knownLegIds.current = new Set(legs.map((leg) => leg.id));
+    if (appeared.length === 0 || appeared.length > 2) return;
+    setExpandedLegIds((current) => {
+      const next = new Set(current);
+      appeared.forEach((id) => next.add(id));
+      return next;
+    });
+  }, [legs]);
+  const toggleLegExpanded = useCallback((id: number) => {
+    setExpandedLegIds((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }, []);
+  const allLegsExpanded = legs.length > 0 && legs.every((leg) => expandedLegIds.has(leg.id));
   const [temperatureUnit, setTemperatureUnit] = useState<TemperatureUnit>('C');
   const { climate, retry: retryClimate } = useTripClimate(legs.map(leg => leg.cityId), initialData.climate);
   const toggleTemperature = useCallback(() => setTemperatureUnit(unit => unit === 'C' ? 'F' : 'C'), []);
@@ -310,7 +337,6 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     hasAnySavedApiKey: hasAnySavedImportApiKey,
   } = useProviderApiKeys();
   const plannerContentTopPadding = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight - 56, 128) : 144;
-  const plannerSidebarTopOffset = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight + 10, 120) : 200;
 
   useEffect(() => {
     const header = plannerHeaderRef.current;
@@ -1419,12 +1445,15 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
       </Dialog>
 
       <div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
-        <div className="fixed inset-x-0 top-0 z-30 border-b bg-background shadow-sm lg:left-64">
-          <div ref={plannerHeaderRef} className="mx-auto max-w-6xl px-4 py-4 lg:px-8">
+        <div className="fixed inset-x-0 top-0 z-30 border-b bg-background/95 backdrop-blur lg:left-60">
+          <div ref={plannerHeaderRef} className="mx-auto max-w-7xl px-4 py-4 lg:px-8">
             <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-              <div>
-                <h1 className="text-2xl font-bold">Itinerary Planner</h1>
-                <p className="text-sm text-muted-foreground">
+              <div className="max-w-xl">
+                <div className="flex items-center gap-2.5">
+                  <MapIcon className="h-6 w-6 text-brand-teal" aria-hidden="true" />
+                  <h1 className="text-2xl font-extrabold tracking-tight">Itinerary Planner</h1>
+                </div>
+                <p className="mt-1 text-sm text-muted-foreground">
                   Build your trip leg by leg. City costs are stored for 2 people and scaled here for your selected traveller count.
                 </p>
                 <p className="text-xs text-muted-foreground">
@@ -1617,9 +1646,17 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
       </div>
 
         <div
-          className="mx-auto max-w-6xl px-4 pb-6 lg:px-8"
+          className="mx-auto max-w-7xl space-y-4 px-4 pb-6 lg:px-8"
           style={{ paddingTop: plannerContentTopPadding }}
         >
+          <div className="grid gap-3.5 lg:grid-cols-[minmax(0,1.5fr)_minmax(300px,1fr)] 2xl:grid-cols-[minmax(0,1.6fr)_minmax(300px,1fr)_minmax(260px,0.8fr)]">
+            <TripBanner legs={legs} />
+            <TripSummaryCard legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
+            <div className="lg:col-span-2 2xl:col-span-1">
+              <CountrySummaryCard legs={legs} />
+            </div>
+          </div>
+
           {savedPlansError ? (
             <div role="alert" className="mb-3 flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive">
               <span>{savedPlansError} Showing the last loaded saved plans; the list may be out of date.</span>
@@ -1640,56 +1677,73 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
 
           <TripClimate legs={legs} climate={climate} unit={temperatureUnit} onToggle={toggleTemperature} onRetry={retryClimate} />
 
-          <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
-        {/* Legs list */}
-            <div className="space-y-3">
-              {legs.length === 0 && (
-                <p className="text-muted-foreground text-center py-12">
-                  No legs yet. Add your first destination to start planning.
-                </p>
-              )}
+          <section aria-label="Itinerary legs">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+              <h2 className="text-[15px] font-bold">Legs</h2>
+              {legs.length > 0 ? (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setExpandedLegIds(allLegsExpanded ? new Set() : new Set(legs.map((leg) => leg.id)))}
+                >
+                  {allLegsExpanded
+                    ? <ChevronsDownUp className="mr-2 h-4 w-4" aria-hidden="true" />
+                    : <ChevronsUpDown className="mr-2 h-4 w-4" aria-hidden="true" />}
+                  {allLegsExpanded ? 'Collapse all' : 'Expand all'}
+                </Button>
+              ) : null}
+            </div>
+            {legs.length === 0 && (
+              <p className="text-muted-foreground text-center py-12">
+                No legs yet. Add your first destination to start planning.
+              </p>
+            )}
+            <ol className="list-none">
               {legs.map((leg, i) => (
-                <LegCard
-                  key={leg.id}
-                  leg={leg}
-                  climate={climate[leg.cityId]}
-                  temperatureUnit={temperatureUnit}
-                  onToggleTemperature={toggleTemperature}
-                  onRetryClimate={retryClimate}
-                  cities={cities}
-                  cityOptions={cityOptions}
-                  groupSize={groupSize}
-                  onUpdate={handleUpdateLeg}
-                  onDirtyChange={handleLegDirtyChange}
-                  onDiscard={handleDiscardLegEdits}
-                  onDelete={handleDeleteLeg}
-                  onMove={handleReorder}
-                  orderSaving={hasUnsavedLegEdits || orderSaving || pageLoading || !!pageError}
-                  isFirst={i === 0}
-                  isLast={i === legs.length - 1}
-                  previousLeg={i > 0 ? legs[i - 1] : null}
-                />
+                <li key={leg.id} className="flex gap-3 sm:gap-3.5">
+                  <div className="flex w-8 shrink-0 flex-col items-center" aria-hidden="true">
+                    <span className={cn('w-0.5', i === 0 ? 'h-[27px] bg-transparent' : 'h-[27px] bg-blue-200')} />
+                    <span
+                      className={cn(
+                        'flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full text-[13px] font-extrabold',
+                        leg.status === 'active' && 'bg-brand-blue text-white',
+                        leg.status === 'completed' && 'bg-blue-100 text-blue-700',
+                        leg.status !== 'active' && leg.status !== 'completed' && 'border-2 border-brand-blue bg-card text-blue-700'
+                      )}
+                    >
+                      {i + 1}
+                    </span>
+                    {i < legs.length - 1 ? <span className="w-0.5 flex-1 bg-blue-200" /> : null}
+                  </div>
+                  <div className="min-w-0 flex-1 pb-3">
+                    <LegCard
+                      leg={leg}
+                      climate={climate[leg.cityId]}
+                      temperatureUnit={temperatureUnit}
+                      onToggleTemperature={toggleTemperature}
+                      onRetryClimate={retryClimate}
+                      cities={cities}
+                      cityOptions={cityOptions}
+                      groupSize={groupSize}
+                      onUpdate={handleUpdateLeg}
+                      onDirtyChange={handleLegDirtyChange}
+                      onDiscard={handleDiscardLegEdits}
+                      onDelete={handleDeleteLeg}
+                      onMove={handleReorder}
+                      orderSaving={hasUnsavedLegEdits || orderSaving || pageLoading || !!pageError}
+                      expanded={expandedLegIds.has(leg.id)}
+                      onToggleExpanded={toggleLegExpanded}
+                      isFirst={i === 0}
+                      isLast={i === legs.length - 1}
+                      previousLeg={i > 0 ? legs[i - 1] : null}
+                    />
+                  </div>
+                </li>
               ))}
-            </div>
-
-        {/* Summary sidebar */}
-            <div className="hidden lg:block">
-              <div
-                className="sticky self-start"
-                style={{ top: plannerSidebarTopOffset }}
-              >
-                <CostSummary legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
-              </div>
-            </div>
-          </div>
+            </ol>
+          </section>
         </div>
-
-      {/* Mobile summary */}
-      <div className="-mx-4 lg:-mx-8">
-        <div className="mx-auto max-w-6xl px-4 pb-6 lg:hidden lg:px-8">
-          <CostSummary legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
-        </div>
-      </div>
     </div>
   );
 }

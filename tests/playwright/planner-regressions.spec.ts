@@ -1,4 +1,5 @@
 import { expect, test, type Locator } from '@playwright/test';
+import { expandLegCard } from './client-navigation';
 
 test.describe('planner regressions', () => {
   test('city generation and model refresh failures explain the cause and allow retry', async ({ page }) => {
@@ -71,36 +72,36 @@ test.describe('planner regressions', () => {
     expect(refreshCount).toBe(1);
   });
 
-  test('trip summary aligns with the legs below climate and stays pinned while scrolling', async ({ page }) => {
+  // The bento layout replaced the pinned summary sidebar with a summary row above the leg timeline.
+  test('trip summary sits above the leg timeline and legs collapse and expand', async ({ page }) => {
     await page.goto('/plan');
 
     const header = page.locator('div.fixed.inset-x-0.top-0.z-30').first();
-    const tripSummary = page.getByText('Trip Summary').first();
-    const tripSummaryCard = page.locator('div.rounded-lg.border').filter({ has: tripSummary }).first();
+    const tripSummaryCard = page.locator('section').filter({
+      has: page.getByRole('heading', { name: 'Trip summary', exact: true }),
+    }).first();
+    const firstLeg = page.getByTestId('planner-leg-card').first();
 
     await expect(tripSummaryCard).toBeVisible();
-
+    await expect(firstLeg).toBeVisible();
     const headerBox = await header.boundingBox();
-    const summaryBoxBefore = await tripSummaryCard.boundingBox();
-    const firstLegBox = await page.getByTestId('planner-leg-card').first().boundingBox();
+    const summaryBox = await tripSummaryCard.boundingBox();
+    const firstLegBox = await firstLeg.boundingBox();
+    expect(summaryBox!.y).toBeGreaterThan(headerBox!.y + headerBox!.height);
+    expect(firstLegBox!.y).toBeGreaterThan(summaryBox!.y + summaryBox!.height);
 
-    expect(headerBox).not.toBeNull();
-    expect(summaryBoxBefore).not.toBeNull();
-    expect(firstLegBox).not.toBeNull();
+    const toggle = firstLeg.getByRole('button', { name: /^(Expand|Collapse) / });
+    const initially = await toggle.getAttribute('aria-expanded');
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', initially === 'true' ? 'false' : 'true');
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', initially ?? 'false');
 
-    await expect.poll(() => tripSummaryCard.evaluate(card => {
-      const firstLeg = document.querySelector('[data-testid="planner-leg-card"]')!;
-      return Math.abs(card.getBoundingClientRect().y - firstLeg.getBoundingClientRect().y);
-    })).toBeLessThan(12);
-    expect(summaryBoxBefore!.y).toBeGreaterThan(headerBox!.y + headerBox!.height);
-
-    await page.mouse.wheel(0, 800);
-    await expect.poll(async () => (await tripSummaryCard.boundingBox())?.y ?? Infinity).toBeLessThan(headerBox!.height + 30);
-
-    const summaryBoxAfter = await tripSummaryCard.boundingBox();
-    expect(summaryBoxAfter).not.toBeNull();
-    await page.mouse.wheel(0, 420);
-    await expect.poll(async () => Math.abs((await tripSummaryCard.boundingBox())!.y - summaryBoxAfter!.y)).toBeLessThan(12);
+    const expandAll = page.getByRole('button', { name: 'Expand all', exact: true });
+    if (await expandAll.isVisible()) await expandAll.click();
+    await expect(page.getByRole('button', { name: /^Expand / })).toHaveCount(0);
+    await page.getByRole('button', { name: 'Collapse all', exact: true }).click();
+    await expect(page.getByRole('button', { name: /^Collapse / })).toHaveCount(0);
   });
 
   test('new city dialog fields accept typing without blocking the UI', async ({ page }) => {
@@ -288,6 +289,7 @@ test.describe('planner regressions', () => {
 
     await page.goto('/plan');
     await expect(page.getByRole('button', { name: 'Add Leg', exact: true }).first()).toBeVisible({ timeout: 60_000 });
+    await page.getByRole('button', { name: 'Expand all', exact: true }).click();
     const singleEstimateButtons = page.getByRole('button', { name: 'Estimate transport', exact: true });
     await expect(page.locator('section[aria-label="Trip historical climate"]').getByRole('img', {
       name: /Historical mean temperature/,
@@ -342,6 +344,9 @@ test.describe('planner regressions', () => {
     await page.goto('/plan');
 
     await page.waitForTimeout(250);
+    // Info buttons live in each card's collapsible body; open the last card to reach the bottom one.
+    const lastCard = page.getByTestId('planner-leg-card').last();
+    if (await lastCard.count()) await expandLegCard(lastCard);
 
     const infoButtons = page.getByRole('button', { name: 'More information about Accommodation' });
     const count = await infoButtons.count();
