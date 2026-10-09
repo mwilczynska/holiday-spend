@@ -412,7 +412,7 @@ export function BurnCountryHeaderStrip({
 
   return (
     <div
-      className="pointer-events-none"
+      className="pointer-events-none overflow-x-clip"
       style={{
         paddingLeft: metrics.margin.left + metrics.yAxisWidth,
         paddingRight: metrics.margin.right,
@@ -423,6 +423,9 @@ export function BurnCountryHeaderStrip({
         {bands.map((band) => {
           const left = `${band.segmentStartRatio * 100}%`;
           const width = `${Math.max((band.segmentEndRatio - band.segmentStartRatio) * 100, 2)}%`;
+          // A label centred on a narrow band at either end would spill past the chart, so edge
+          // labels grow inward instead.
+          const edge = band.segmentEndRatio >= 0.94 ? 'end' : band.segmentStartRatio <= 0.06 ? 'start' : null;
 
           return (
             <div
@@ -438,7 +441,13 @@ export function BurnCountryHeaderStrip({
                 ref={(node) => {
                   labelRefs.current[getCountryBandKey(band)] = node;
                 }}
-                className="px-1 text-center font-bold text-slate-600"
+                className={
+                  edge === 'end'
+                    ? 'absolute right-0 whitespace-nowrap px-1 text-right font-bold text-slate-600'
+                    : edge === 'start'
+                      ? 'absolute left-0 whitespace-nowrap px-1 text-left font-bold text-slate-600'
+                      : 'px-1 text-center font-bold text-slate-600'
+                }
                 style={{
                   fontSize: metrics.countryLabelFontSize,
                   lineHeight: metrics.countryLabelLineHeight,

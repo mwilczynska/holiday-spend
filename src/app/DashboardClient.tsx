@@ -401,9 +401,6 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
           <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
         </TabsList>
       </Tabs>
-      <Badge variant={showCountryDailySpend ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
-        {countryViewLabel}
-      </Badge>
     </div>
   ) : expandedChart === 'category' ? (
     <div className="flex flex-wrap items-center gap-2">
@@ -417,9 +414,6 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
           <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
         </TabsList>
       </Tabs>
-      <Badge variant={categoryMode === 'planned' ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
-        {categoryViewLabel}
-      </Badge>
     </div>
   ) : expandedChart === 'burn' ? (
     <ExpandedChartLegend items={burnLegendItems} className="justify-end" />
@@ -492,7 +486,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
             label="Actual spent to date"
             help={SUMMARY_HELP.actualSpentToDate}
             value={fmtAud(summary.totalSpent)}
-            subtext={`${summary.expenseCount} expenses · ${asOfLabel}`}
+            subtext={`${summary.expenseCount} trip expenses logged · ${asOfLabel}`}
             icon={<Receipt />}
           />
           <BentoStat
@@ -569,22 +563,17 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <CardTitle className="text-sm">{countryChartTitle}</CardTitle>
                 <div className="flex flex-wrap items-center gap-2">
-                  <div className="flex items-center gap-2 rounded-md border px-2 py-1">
-                    <span className="text-xs font-medium text-muted-foreground">View</span>
-                    <Tabs
-                      value={showCountryDailySpend ? 'daily' : 'total'}
-                      onValueChange={(value) => setShowCountryDailySpend(value === 'daily')}
-                      className="gap-0"
-                    >
-                      <TabsList className="h-8">
-                        <TabsTrigger value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
-                        <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
-                      </TabsList>
-                    </Tabs>
-                    <Badge variant={showCountryDailySpend ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
-                      {countryViewLabel}
-                    </Badge>
-                  </div>
+                  <Tabs
+                    value={showCountryDailySpend ? 'daily' : 'total'}
+                    onValueChange={(value) => setShowCountryDailySpend(value === 'daily')}
+                    className="gap-0"
+                    aria-label={`Country chart view, ${countryViewLabel.toLowerCase()}`}
+                  >
+                    <TabsList className="h-9">
+                      <TabsTrigger value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
+                      <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
+                    </TabsList>
+                  </Tabs>
                   <Button type="button" variant="outline" size="sm" onClick={() => setExpandedChart('country')}>
                     <Maximize2 className="mr-2 h-4 w-4" />
                     Expand
@@ -610,22 +599,17 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <CardTitle className="text-sm">{categoryChartTitle}</CardTitle>
                 <div className="flex flex-wrap items-center gap-2">
-                  <div className="flex items-center gap-2 rounded-md border px-2 py-1">
-                    <span className="text-xs font-medium text-muted-foreground">View</span>
-                    <Tabs
-                      value={categoryMode}
-                      onValueChange={(value) => setCategoryMode(value as CategoryMode)}
-                      className="gap-0"
-                    >
-                      <TabsList className="h-8">
-                        <TabsTrigger value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
-                        <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
-                      </TabsList>
-                    </Tabs>
-                    <Badge variant={categoryMode === 'planned' ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
-                      {categoryViewLabel}
-                    </Badge>
-                  </div>
+                  <Tabs
+                    value={categoryMode}
+                    onValueChange={(value) => setCategoryMode(value as CategoryMode)}
+                    className="gap-0"
+                    aria-label={`Category chart view, ${categoryViewLabel.toLowerCase()}`}
+                  >
+                    <TabsList className="h-9">
+                      <TabsTrigger value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
+                      <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
+                    </TabsList>
+                  </Tabs>
                   <Button type="button" variant="outline" size="sm" onClick={() => setExpandedChart('category')}>
                     <Maximize2 className="mr-2 h-4 w-4" />
                     Expand
@@ -729,16 +713,16 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="border-b">
+                <thead className="border-b bg-secondary text-xs text-slate-600">
                   <tr>
-                    <th className="p-2 text-left">Country</th>
+                    <th className="py-2 pl-5 pr-2 text-left">Country</th>
                     <th className="p-2 text-right"># days</th>
                     <th className="p-2 text-right">Planned</th>
                     <th className="p-2 text-right">Planned $/day</th>
                     <th className="p-2 text-right">Actual</th>
                     <th className="p-2 text-right">Actual $/day</th>
                     <th className="p-2 text-right">Difference</th>
-                    <th className="p-2 text-right">Status</th>
+                    <th className="py-2 pl-2 pr-5 text-right">Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -746,8 +730,8 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
                     const diff = c.actual - c.planned;
                     const isOver = diff > 0;
                     return (
-                      <tr key={`${c.countryId}:${c.blockIndex ?? 'actual'}:${index}`} className="border-b last:border-0">
-                        <td className="p-2">
+                      <tr key={`${c.countryId}:${c.blockIndex ?? 'actual'}:${index}`} className="border-b transition-colors last:border-0 hover:bg-secondary/60">
+                        <td className="py-2 pl-5 pr-2">
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{c.countryName}</span>
                             {c.status ? (
@@ -763,11 +747,19 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
                         <td className="p-2 text-right">{fmtAud(c.actual)}</td>
                         <td className="p-2 text-right">{c.actualPerDay != null ? fmtAud(c.actualPerDay) : '—'}</td>
                         <td className={`p-2 text-right ${isOver ? 'text-[#9A4B00]' : 'text-success'}`}>
-                          {isOver ? '+' : ''}{fmtAud(diff)}
+                          {fmtAudSigned(diff)}
                         </td>
-                        <td className="p-2 text-right">
+                        <td className="py-2 pl-2 pr-5 text-right">
                           {c.planned > 0 ? (
-                            <Badge variant={isOver ? 'destructive' : 'default'} className="text-xs">
+                            <Badge
+                              className={`text-xs ${
+                                c.actual === 0
+                                  ? 'border-transparent bg-slate-100 text-slate-600 hover:bg-slate-100'
+                                  : isOver
+                                    ? 'border-transparent bg-[#FCE7C8] text-[#9A4B00] hover:bg-[#FCE7C8]'
+                                    : 'border-transparent bg-success-soft text-success hover:bg-success-soft'
+                              }`}
+                            >
                               {((c.actual / c.planned) * 100).toFixed(0)}%
                             </Badge>
                           ) : (
@@ -784,31 +776,23 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
         </Card>
       )}
 
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
-        <Link href="/plan" className="block">
-          <Card className="cursor-pointer transition-colors hover:bg-accent">
-            <CardContent className="flex flex-col items-center gap-1 py-4">
-              <Map className="h-6 w-6 text-muted-foreground" />
-              <span className="text-sm font-medium">Plan Trip</span>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href="/track" className="block">
-          <Card className="cursor-pointer transition-colors hover:bg-accent">
-            <CardContent className="flex flex-col items-center gap-1 py-4">
-              <Receipt className="h-6 w-6 text-muted-foreground" />
-              <span className="text-sm font-medium">Expenses</span>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href="/track/import" className="block">
-          <Card className="cursor-pointer transition-colors hover:bg-accent">
-            <CardContent className="flex flex-col items-center gap-1 py-4">
-              <TrendingUp className="h-6 w-6 text-muted-foreground" />
-              <span className="text-sm font-medium">Import CSV</span>
-            </CardContent>
-          </Card>
-        </Link>
+      <div className="grid gap-3 sm:grid-cols-3">
+        {[
+          { href: '/plan', label: 'Plan Trip', icon: Map },
+          { href: '/track', label: 'Expenses', icon: Receipt },
+          { href: '/track/import', label: 'Import CSV', icon: TrendingUp },
+        ].map(({ href, label, icon: Icon }) => (
+          <Link
+            key={href}
+            href={href}
+            className="flex items-center gap-3 rounded-2xl border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-accent"
+          >
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-[9px] bg-info-soft text-blue-700">
+              <Icon className="h-4 w-4" aria-hidden="true" />
+            </span>
+            {label}
+          </Link>
+        ))}
       </div>
     </div>
   );

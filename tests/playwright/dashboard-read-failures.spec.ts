@@ -6,33 +6,33 @@ test('dashboard refresh failures retain the complete prior view and recover with
   const current = (await (await page.request.get('/api/dashboard')).json()).data;
   await page.goto('/');
   await page.waitForLoadState('networkidle');
-  const values = await page.locator('main p.text-xl').allTextContents();
+  const values = await page.getByTestId('dashboard-stat-value').allTextContents();
   expect(values.length).toBeGreaterThan(0);
   await page.route('**/api/dashboard', route => route.fulfill({ status: 503, json: { error: 'QA dashboard unavailable' } }));
   await page.locator('a[href="/estimates"]').filter({ visible: true }).first().click();
   await expect(page).toHaveURL(/\/estimates$/);
   await page.locator('a[href="/"]').filter({ visible: true }).first().click();
   await expect(page.getByRole('alert').filter({ hasText: 'QA dashboard unavailable' })).toContainText('last loaded dashboard figures');
-  expect(await page.locator('main p.text-xl').allTextContents()).toEqual(values);
+  expect(await page.getByTestId('dashboard-stat-value').allTextContents()).toEqual(values);
   await page.unroute('**/api/dashboard');
   await page.route('**/api/dashboard', route => route.fulfill({ status: 200, contentType: 'text/plain', body: 'not JSON' }));
   await page.getByRole('button', { name: 'Retry dashboard', exact: true }).click();
   await expect(page.getByRole('alert').filter({ hasText: 'unreadable dashboard response' })).toBeVisible();
-  expect(await page.locator('main p.text-xl').allTextContents()).toEqual(values);
+  expect(await page.getByTestId('dashboard-stat-value').allTextContents()).toEqual(values);
   await page.unroute('**/api/dashboard');
   await page.route('**/api/dashboard', route => route.abort());
   await page.getByRole('button', { name: 'Retry dashboard', exact: true }).click();
   await expect(page.getByRole('alert').filter({ hasText: /fetch|connection/i })).toBeVisible();
-  expect(await page.locator('main p.text-xl').allTextContents()).toEqual(values);
+  expect(await page.getByTestId('dashboard-stat-value').allTextContents()).toEqual(values);
   await page.unroute('**/api/dashboard');
   await page.route('**/api/dashboard', route => route.fulfill({ json: { data: { ...current, summary: { ...current.summary, totalSpent: 999999 }, burnRate: { cumulative: [] } } } }));
   await page.getByRole('button', { name: 'Retry dashboard', exact: true }).click();
   await expect(page.getByRole('alert').filter({ hasText: 'invalid dashboard data: burnRate.countryBands' })).toBeVisible();
-  expect(await page.locator('main p.text-xl').allTextContents()).toEqual(values);
+  expect(await page.getByTestId('dashboard-stat-value').allTextContents()).toEqual(values);
   await page.unroute('**/api/dashboard');
   await page.getByRole('button', { name: 'Retry dashboard', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Retry dashboard', exact: true })).toBeHidden();
-  expect(await page.locator('main p.text-xl').allTextContents()).toEqual(values);
+  expect(await page.getByTestId('dashboard-stat-value').allTextContents()).toEqual(values);
 });
 
 test('successful empty dashboard data is distinct from an unavailable read', async ({ page }) => {
@@ -62,7 +62,7 @@ test('dashboard skips duplicate full-load reads but refreshes on the first clien
   await page.waitForLoadState('networkidle');
   await page.locator('a[href="/"]').filter({ visible: true }).first().click();
   await expect.poll(() => reads).toBe(1);
-  await expect(page.getByText('Actual Spent To Date', { exact: true })).toBeVisible();
+  await expect(page.getByText('Actual spent to date', { exact: true })).toBeVisible();
 });
 
 test('failed initial dashboard reads show unavailable totals and recover with Retry', async ({ page }) => {
@@ -76,14 +76,14 @@ test('failed initial dashboard reads show unavailable totals and recover with Re
     suspended = true;
     await page.goto('/');
     await expect(page.getByRole('alert').filter({ hasText: 'Dashboard unavailable. Totals and charts could not be loaded.' })).toBeVisible();
-    await expect(page.getByText('Actual Spent To Date', { exact: true })).toBeHidden();
+    await expect(page.getByText('Actual spent to date', { exact: true })).toBeHidden();
     await expect(page.getByText(/No itinerary or trip expenses yet/)).toBeHidden();
     fixture.exec('ALTER TABLE qa_suspended_expenses RENAME TO expenses');
     suspended = false;
     await page.waitForLoadState('networkidle');
     await page.getByRole('button', { name: 'Retry dashboard', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Retry dashboard', exact: true })).toBeHidden();
-    await expect(page.getByText('Actual Spent To Date', { exact: true })).toBeVisible();
+    await expect(page.getByText('Actual spent to date', { exact: true })).toBeVisible();
   } finally {
     if (suspended) fixture.exec('ALTER TABLE qa_suspended_expenses RENAME TO expenses');
     fixture.close();

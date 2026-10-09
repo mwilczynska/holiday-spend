@@ -59,7 +59,7 @@ export function BentoStat({
           {icon}
         </span>
       </div>
-      <p className={cn('mt-1 text-[28px] font-extrabold tracking-tight', TONE_VALUE[tone])}>{value}</p>
+      <p data-testid="dashboard-stat-value" className={cn('mt-1 text-[28px] font-extrabold tracking-tight', TONE_VALUE[tone])}>{value}</p>
       {subtext ? <p className="text-xs text-muted-foreground">{subtext}</p> : null}
     </section>
   );
@@ -85,7 +85,7 @@ export function BentoMiniStat({
 }) {
   return (
     <section className="rounded-2xl border bg-card px-4 py-3.5">
-      <p className="text-[22px] font-extrabold tracking-tight">
+      <p data-testid="dashboard-stat-value" className="text-[22px] font-extrabold tracking-tight">
         {value}
         {unit ? <span className="ml-1 text-sm font-semibold text-muted-foreground">{unit}</span> : null}
       </p>
