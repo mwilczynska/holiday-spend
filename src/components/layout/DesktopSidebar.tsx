@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { BarChart3, BookOpenText, Database, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags, UserCircle } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
+import { BrandMark } from './BrandMark';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -29,12 +30,15 @@ export function DesktopSidebar() {
   }, [pathname]);
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 border-r bg-card h-screen sticky top-0">
-      <div className="p-6 border-b">
-        <h1 className="text-xl font-bold">Holiday Spend</h1>
-        <p className="text-xs text-muted-foreground">Travel Budget Tracker</p>
+    <aside className="hidden lg:flex flex-col w-60 border-r bg-card h-screen sticky top-0">
+      <div className="flex items-center gap-2.5 px-5 pt-6 pb-4">
+        <BrandMark />
+        <div>
+          <h1 className="text-[15px] font-extrabold leading-tight">Holiday Spend</h1>
+          <p className="text-[11px] text-muted-foreground">Travel budget tracker</p>
+        </div>
       </div>
-      <nav className="flex-1 p-4 space-y-1">
+      <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 py-2">
         {navItems.map((item) => {
           const isActive = (pathname === item.href ||
             (item.href !== '/' && pathname.startsWith(item.href))) &&
@@ -51,20 +55,20 @@ export function DesktopSidebar() {
                 if (item.href !== pathname) setPendingHref(item.href);
               }}
               className={cn(
-                'flex w-full items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors',
+                'flex w-full items-center gap-3 rounded-[10px] px-3 py-2.5 text-sm transition-colors',
                 isActive
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground',
+                  ? 'bg-primary font-semibold text-primary-foreground'
+                  : 'font-medium text-slate-600 hover:bg-accent hover:text-accent-foreground',
                 isNavigating && 'opacity-80'
               )}
             >
-              {isNavigating ? <Loader2 className="h-4 w-4 animate-spin" /> : <item.icon className="h-4 w-4" />}
+              {isNavigating ? <Loader2 className="h-[18px] w-[18px] animate-spin" /> : <item.icon className="h-[18px] w-[18px]" />}
               {item.label}
             </Link>
           );
         })}
       </nav>
-      <div className="border-t p-4">
+      <div className="p-3">
         <SignOutButton />
       </div>
     </aside>

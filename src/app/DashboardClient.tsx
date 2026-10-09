@@ -7,12 +7,20 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { InfoPopover } from '@/components/itinerary/InfoPopover';
 import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EXPENSE_CATEGORIES } from '@/types';
 import Link from 'next/link';
-import { Map, Maximize2, Receipt, TrendingUp } from 'lucide-react';
+import { CalendarDays, Map, Maximize2, Receipt, TrendingDown, TrendingUp, Users } from 'lucide-react';
+import {
+  BentoMiniStat,
+  BentoStat,
+  CurrentDestinationCard,
+  TripProgressCard,
+  UpNextCard,
+  type StatHelp,
+} from '@/components/dashboard/DashboardBento';
+import { deriveTripPosition } from '@/components/dashboard/trip-position';
 import dynamic from 'next/dynamic';
 import {
   DashboardChartPlaceholder,
@@ -87,19 +95,12 @@ interface CountryComparison {
 
 type ExpandedChart = 'country' | 'category' | 'burn' | null;
 
-interface StatHelp {
-  summary: string;
-  items?: Array<{
-    label: string;
-    description: string;
-  }>;
-}
-
-const CHART_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1'];
+// Bento categorical order: blue, teal, amber, red, violet, then quieter tones.
+const CHART_COLORS = ['#2563EB', '#12A594', '#F5A524', '#E5484D', '#8E4EC6', '#0EA5E9', '#B8C2D6', '#D97706', '#64748B', '#13254A'];
 const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> = {
-  planned: 'bg-blue-100 text-blue-800',
-  active: 'bg-green-100 text-green-800',
-  completed: 'bg-gray-100 text-gray-800',
+  planned: 'border-transparent bg-slate-100 text-slate-700',
+  active: 'border-transparent bg-info-soft text-blue-700',
+  completed: 'border-transparent bg-success-soft text-success',
 };
 
 const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.abs(n).toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
@@ -182,35 +183,6 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
     ],
   },
 };
-
-function SummaryStatCard({
-  label,
-  help,
-  value,
-  subtext,
-  valueClassName,
-}: {
-  label: string;
-  help: StatHelp;
-  value: string;
-  subtext?: string;
-  valueClassName?: string;
-}) {
-  return (
-    <Card>
-      <CardHeader className="pb-1">
-        <CardTitle className="flex items-center gap-1 text-sm text-muted-foreground">
-          <span>{label}</span>
-          <InfoPopover title={label} summary={help.summary} items={help.items} />
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className={`text-xl font-bold ${valueClassName || ''}`}>{value}</p>
-        {subtext ? <p className="text-xs text-muted-foreground">{subtext}</p> : null}
-      </CardContent>
-    </Card>
-  );
-}
 
 export interface DashboardInitialData {
   summary: Summary | null;
@@ -360,6 +332,11 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
     return Math.max(maxEstimatedTotal, maxSpentTotal);
   }, [chartBurnData]);
 
+  const tripPosition = useMemo(
+    () => deriveTripPosition(burnData, summary?.asOfDate),
+    [burnData, summary?.asOfDate]
+  );
+
   if (loading && !summary && !readError) {
     return (
       <PageLoadingState
@@ -374,6 +351,18 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
   const asOfLabel = summary
     ? `${summary.asOfSource === 'last_transaction' ? 'Last transaction' : 'Today'} · ${formatDashboardDate(summary.asOfDate)}`
     : '';
+  const tripLength = summary ? summary.daysElapsed + summary.daysRemaining : 0;
+  const tripDateRange = burnData.length > 0
+    ? `${formatDashboardDate(burnData[0].date)} – ${formatDashboardDate(burnData[burnData.length - 1].date)}`
+    : null;
+  const variancePercent = summary && summary.plannedToDate > 0
+    ? Math.abs(summary.varianceToDate / summary.plannedToDate) * 100
+    : null;
+  const varianceSubtext = !summary
+    ? ''
+    : summary.varianceToDate === 0
+      ? 'Exactly on plan so far'
+      : `${summary.varianceToDate > 0 ? 'Over' : 'Under'} plan${variancePercent != null ? ` by ${variancePercent.toFixed(1)}%` : ''} so far`;
   const chartYAxisMax = Math.max(
     cumulativeSeriesMax,
     budgetCeiling,
@@ -450,18 +439,28 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
       : 'grid h-[80vh] max-h-[80vh] w-[96vw] max-w-[96vw] grid-rows-[auto_minmax(0,1fr)] gap-0 overflow-hidden p-0 sm:max-w-[92vw] xl:max-w-[1380px]';
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Holiday Spend</h1>
-          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <span>Travel Budget Planner & Tracker</span>
-            {summary ? (
-              <Badge variant="outline">
-                {summary.groupSize} {summary.groupSize === 1 ? 'traveller' : 'travellers'}
-              </Badge>
-            ) : null}
-          </div>
+          <h1 className="text-2xl font-extrabold tracking-tight">Welcome back</h1>
+          <p className="mt-1 text-sm text-muted-foreground">Here&apos;s how your trip is tracking.</p>
+        </div>
+        <div className="flex flex-wrap gap-2.5">
+          {summary ? (
+            <Link
+              href="/settings"
+              className="inline-flex h-11 items-center gap-2 rounded-xl border bg-card px-3.5 text-sm font-semibold hover:bg-accent"
+            >
+              <Users className="h-4 w-4" aria-hidden="true" />
+              {summary.groupSize} {summary.groupSize === 1 ? 'traveller' : 'travellers'}
+            </Link>
+          ) : null}
+          {tripDateRange ? (
+            <span className="inline-flex h-11 items-center gap-2 rounded-xl border bg-card px-3.5 text-sm font-semibold">
+              <CalendarDays className="h-4 w-4" aria-hidden="true" />
+              {tripDateRange}
+            </span>
+          ) : null}
         </div>
       </div>
 
@@ -481,70 +480,89 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
       ) : null}
 
       {summary && (
-        <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
-          <SummaryStatCard
-            label="Planned Total"
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-4">
+          <BentoStat
+            label="Planned total"
             help={SUMMARY_HELP.plannedTotal}
             value={fmtAud(summary.totalBudget)}
-            subtext={`${summary.groupSize} ${summary.groupSize === 1 ? 'traveller' : 'travellers'} selected. Leg plan ${fmtAud(summary.plannedLegsTotal)} + fixed ${fmtAud(summary.fixedTotal)}`}
+            subtext={`Legs ${fmtAud(summary.plannedLegsTotal)} + fixed ${fmtAud(summary.fixedTotal)}`}
+            icon={<TrendingUp />}
           />
-          <SummaryStatCard
-            label="Actual Spent To Date"
+          <BentoStat
+            label="Actual spent to date"
             help={SUMMARY_HELP.actualSpentToDate}
             value={fmtAud(summary.totalSpent)}
-            subtext={`${summary.expenseCount} trip expenses logged · ${asOfLabel}`}
+            subtext={`${summary.expenseCount} expenses · ${asOfLabel}`}
+            icon={<Receipt />}
           />
-          <SummaryStatCard
-            label="Planned Spend To Date"
+          <BentoStat
+            label="Planned spend to date"
             help={SUMMARY_HELP.plannedSpendToDate}
             value={fmtAud(summary.plannedToDate)}
-            subtext={`Cumulative itinerary plan through ${formatDashboardDate(summary.asOfDate)}`}
+            subtext={`Through ${formatDashboardDate(summary.asOfDate)}`}
+            icon={<CalendarDays />}
           />
-          <SummaryStatCard
-            label="Variance To Date"
+          <BentoStat
+            label="Variance to date"
             help={SUMMARY_HELP.varianceToDate}
             value={fmtAudSigned(summary.varianceToDate)}
-            valueClassName={summary.varianceToDate > 0 ? 'text-red-600' : summary.varianceToDate < 0 ? 'text-green-600' : ''}
-            subtext={`${summary.varianceToDate > 0 ? 'Over plan so far' : summary.varianceToDate < 0 ? 'Under plan so far' : 'Exactly on plan so far'} · ${asOfLabel}`}
+            tone={summary.varianceToDate > 0 ? 'warn' : summary.varianceToDate < 0 ? 'good' : 'default'}
+            icon={summary.varianceToDate > 0 ? <TrendingUp /> : <TrendingDown />}
+            subtext={varianceSubtext}
           />
         </div>
       )}
 
       {summary && (
-        <div className="grid grid-cols-2 gap-3 xl:grid-cols-5">
-          <SummaryStatCard
-            label="Planned $/day"
+        <div className="grid grid-cols-2 gap-3.5 md:grid-cols-3 xl:grid-cols-5">
+          <BentoMiniStat
+            label="Planned daily spend"
             help={SUMMARY_HELP.plannedPerDay}
-            value={summary.totalNights > 0 ? `${fmtAud(summary.totalBudget / summary.totalNights)}/day` : '—'}
-            subtext={`${summary.totalNights} nights planned`}
+            value={summary.totalNights > 0 ? fmtAud(summary.totalBudget / summary.totalNights) : '—'}
+            unit={summary.totalNights > 0 ? '/ day' : undefined}
+            subtext={`across ${summary.totalNights} nights`}
           />
-          <SummaryStatCard
-            label="Plan $/day to Date"
+          <BentoMiniStat
+            label="Planned, to date"
             help={SUMMARY_HELP.plannedPerDayToDate}
-            value={summary.daysElapsed > 0 ? `${fmtAud(summary.plannedToDate / summary.daysElapsed)}/day` : '—'}
-            subtext={`Over ${summary.daysElapsed} days elapsed · ${asOfLabel}`}
+            value={summary.daysElapsed > 0 ? fmtAud(summary.plannedToDate / summary.daysElapsed) : '—'}
+            unit={summary.daysElapsed > 0 ? '/ day' : undefined}
+            subtext={`over ${summary.daysElapsed} days elapsed`}
           />
-          <SummaryStatCard
-            label="Actual $/day"
+          <BentoMiniStat
+            label="Actual daily spend"
             help={SUMMARY_HELP.actualPerDay}
-            value={`${fmtAud(summary.burnRate.tripAvg)}/day`}
-            subtext={`Over ${summary.daysElapsed} days elapsed · ${asOfLabel}`}
+            value={fmtAud(summary.burnRate.tripAvg)}
+            unit="/ day"
+            subtext={`over ${summary.daysElapsed} days elapsed`}
           />
-          <SummaryStatCard
-            label="Days Elapsed"
+          <BentoMiniStat
+            label="Days elapsed"
             help={SUMMARY_HELP.daysElapsed}
             value={String(summary.daysElapsed)}
+            progress={tripLength > 0 ? (summary.daysElapsed / tripLength) * 100 : null}
+            subtext={tripLength > 0 ? `${Math.round((summary.daysElapsed / tripLength) * 100)}% of trip` : undefined}
           />
-          <SummaryStatCard
-            label="Days Remaining at Cutoff"
+          <BentoMiniStat
+            label="Days remaining"
             help={SUMMARY_HELP.daysLeft}
             value={String(summary.daysRemaining)}
+            progress={tripLength > 0 ? (summary.daysRemaining / tripLength) * 100 : null}
+            progressClassName="bg-brand-teal"
             subtext={asOfLabel}
           />
         </div>
       )}
 
-      <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+      {summary && burnData.length > 0 && (
+        <div className="grid gap-3.5 md:grid-cols-2 xl:grid-cols-[1.3fr_1fr_1fr]">
+          <CurrentDestinationCard position={tripPosition} />
+          <UpNextCard leg={tripPosition.next} isFirst={!tripPosition.current && summary.daysElapsed <= 0} />
+          <TripProgressCard spent={summary.totalSpent} budget={summary.totalBudget} />
+        </div>
+      )}
+
+      <div className="grid gap-3.5 lg:grid-cols-2 lg:items-start">
         {barData.length > 0 && (
           <Card>
             <CardHeader className="pb-2">
@@ -744,7 +762,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
                         <td className="p-2 text-right">{c.plannedPerDay != null ? fmtAud(c.plannedPerDay) : '—'}</td>
                         <td className="p-2 text-right">{fmtAud(c.actual)}</td>
                         <td className="p-2 text-right">{c.actualPerDay != null ? fmtAud(c.actualPerDay) : '—'}</td>
-                        <td className={`p-2 text-right ${isOver ? 'text-red-600' : 'text-green-600'}`}>
+                        <td className={`p-2 text-right ${isOver ? 'text-[#9A4B00]' : 'text-success'}`}>
                           {isOver ? '+' : ''}{fmtAud(diff)}
                         </td>
                         <td className="p-2 text-right">

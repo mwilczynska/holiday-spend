@@ -2,7 +2,7 @@
 
 **Status:** Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Clean up older merged branches — COMPLETE. Feature QA and its publication to main are complete.
+**Current phase:** Bento UI redesign — IN PROGRESS on `redesign/bento` (worktree `C:\Dev\holiday-spend-bento`). Older branch cleanup, feature QA and its publication to main are complete.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -10,7 +10,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 3 October 2026
+**Last updated:** 9 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
@@ -26,6 +26,29 @@ The remaining form audit has fixed the malformed profile-name save that cleared 
 Its regressions and Chrome verification pass.
 
 **Working tree:** Main contains all twenty-nine fixes, the miscellaneous feature, separate test corrections and completed coverage report. Both merged feature branches are deleted. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
+
+## Bento UI redesign — IN PROGRESS (9 October 2026)
+
+The owner compared four mockups and chose design D, "Bento": a white sidebar with a navy active item, white cards on
+a grey-blue ground, and illustrated destination tiles. Designs A to C are discarded. Work happens on
+`redesign/bento` in a separate worktree so it can run beside main (ports 3001 and 3000) for comparison before
+anything merges. The redesign is presentation-only: no API, database or methodology changes.
+
+City photos in the mockup are replaced by drawn scenes chosen deterministically from the city name, because the app
+has no image source and paid data APIs are out of scope. The dashboard's destination tiles derive the current and
+next leg from the existing burn-rate series; no new request or contract field is needed. Climate is not shown on
+the dashboard because that data is only loaded by the planner.
+
+- [x] Create the worktree and branch from main `db8777b`.
+- [x] Bento theme tokens, Plus Jakarta Sans, and `font-sans` wired to the loaded font (it previously fell back to the
+      system font).
+- [x] Sidebar: logo mark, navy active item, Sign out at the foot.
+- [x] Dashboard: headline and secondary stat tiles, current destination, up next and trip progress tiles; leg
+      derivation unit-tested.
+- [ ] Owner review of the dashboard beside main.
+- [ ] Planner: trip banner and summary, numbered leg timeline, collapsed legs with one expanded at a time.
+- [ ] Restyle remaining routes through the shared tokens; check phone width.
+- [ ] Baseline checks, Playwright smoke, and merge decision.
 
 ## Clean up older merged branches — COMPLETE (3 October 2026)
 
