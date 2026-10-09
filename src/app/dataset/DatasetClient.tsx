@@ -534,7 +534,6 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
         <div className="flex flex-wrap gap-2">
           <Button
             type="button"
-            size="sm"
             disabled={loading || Boolean(readError)}
             onClick={() => {
               setAddDialogOpen(true);

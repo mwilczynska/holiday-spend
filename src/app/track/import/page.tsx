@@ -134,7 +134,7 @@ export default function ImportPage() {
         title="Import Wise CSV"
         description="Upload one or more Wise statement exports, review categories, then import."
         actions={(
-          <Button variant="ghost" size="sm" className="text-destructive hover:bg-red-50 hover:text-destructive" onClick={handleClearImported} disabled={clearing}>
+          <Button variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" onClick={handleClearImported} disabled={clearing}>
             <Trash2 className="h-4 w-4 mr-1" />
             <LoadingButtonLabel idle="Clear All Imported" loading="Clearing..." isLoading={clearing} />
           </Button>

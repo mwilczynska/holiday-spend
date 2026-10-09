@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { BookOpenText } from 'lucide-react';
+import { BookOpenText, ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { PageTitle } from '@/components/layout/PageHeader';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -93,26 +94,27 @@ export default function EstimatesPage() {
       <PageTitle icon={BookOpenText}>Methodology</PageTitle>
       <p className="text-sm text-muted-foreground">How city-cost estimates become your travel budget.</p>
       <p className="text-xs text-muted-foreground">New cities: v1.1 · Reference dataset: April 2026 · Base values: 2 travellers · Currency: AUD</p>
-      <div className="flex gap-4 text-sm">
-        <Link className="underline" href="/dataset">View Dataset</Link>
-        <Link className="underline" href="/plan">Open Planner</Link>
+      <div className="flex flex-wrap gap-2 pt-1">
+        <Button variant="outline" asChild><Link href="/dataset">View Dataset</Link></Button>
+        <Button variant="outline" asChild><Link href="/plan">Open Planner</Link></Button>
       </div>
     </div>
     <div className="grid gap-4">
       {sections.map((section, index) => <Card key={section.title}>
         <CardContent className="p-0">
           <details className="group" open={index === 0}>
-            <summary className="cursor-pointer list-none px-6 py-4">
-              <div className="flex items-start justify-between gap-4">
+            <summary className="cursor-pointer list-none rounded-2xl px-5 py-4 hover:bg-secondary/60 [&::-webkit-details-marker]:hidden">
+              <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0 space-y-1">
-                  <h2 className="text-base font-semibold">{section.title}</h2>
+                  <h2 className="text-base font-bold">{section.title}</h2>
                   <p className="text-sm text-muted-foreground">{section.summary}</p>
                 </div>
-                <span className="text-xs text-muted-foreground group-open:hidden">Expand</span>
-                <span className="hidden text-xs text-muted-foreground group-open:block">Collapse</span>
+                <span className="sr-only group-open:hidden">Expand</span>
+                <span className="sr-only hidden group-open:inline">Collapse</span>
+                <ChevronDown className="h-5 w-5 shrink-0 text-slate-600 transition-transform group-open:rotate-180" aria-hidden="true" />
               </div>
             </summary>
-            <div className="space-y-4 border-t px-6 py-4 text-sm text-muted-foreground">
+            <div className="space-y-4 border-t px-5 py-4 text-sm text-muted-foreground">
               {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
               {section.bullets && <ul className="list-disc space-y-2 pl-5">{section.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul>}
               {section.formulas && <ul className="space-y-2">{section.formulas.map(formula => <li className="break-words font-mono text-xs" key={formula}>{formula}</li>)}</ul>}

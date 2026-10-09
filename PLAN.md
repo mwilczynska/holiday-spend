@@ -66,7 +66,19 @@ main in this environment (5 failed, 1 passed), so they are not caused by the red
 
 Follow-up: the fixed planner header takes about half of a phone screen. That predates the redesign.
 
-- [ ] Restyle remaining routes through the shared tokens; check phone width.
+- [x] Remaining routes (Expenses, Quick Add, Import, Tags, Dataset, Settings, Account, Methodology, Compare) use
+      the shared PageHeader/PageTitle, card, badge and button styles. Only the most specific nav entry is active.
+- [x] Refinement round: page-header actions are 40px (the planner size), in-card and toolbar actions 36px, row
+      icon actions 32px with 16px icons. Links styled as buttons use `asChild` instead of nesting a button inside
+      a link, so Settings' exports are links (test updated). Methodology sections use an aligned chevron.
+      No route overflows horizontally at 390px once charts settle.
+
+Evidence (9 October 2026), isolated QA server: expense, tag, settings-export, Wise, fixed-cost, comparison,
+mobile-layout, dataset and city-cost-editor tests pass (36 passed, 2 skipped). `expense-tag-assignment` failed
+once and passed on rerun: after `page.reload()` it can click the server-rendered Manage tags button before
+hydration. The same race explains the login PIN being cleared when typed during the first dev compile.
+
+- [ ] Optional: country-specific destination visuals (options recorded for the owner).
 - [ ] Baseline checks, Playwright smoke, and merge decision.
 
 ## Clean up older merged branches — COMPLETE (3 October 2026)

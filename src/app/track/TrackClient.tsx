@@ -347,27 +347,27 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
         description="Manual and imported spending, assigned to the itinerary leg it counts against."
         actions={(
           <>
-            <Link href="/track/add"><Button size="sm"><Plus className="mr-1 h-4 w-4" />Add</Button></Link>
-            <Link href="/track/import"><Button size="sm" variant="outline"><Upload className="mr-1 h-4 w-4" />Import</Button></Link>
-            {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button size="sm" variant="outline" asChild>
+            <Button asChild><Link href="/track/add"><Plus className="mr-2 h-4 w-4" />Add</Link></Button>
+            <Button variant="outline" asChild><Link href="/track/import"><Upload className="mr-2 h-4 w-4" />Import</Link></Button>
+            {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button variant="outline" asChild>
               <a href={exportHref} download>
-                <Download className="mr-1 h-4 w-4" />Export
+                <Download className="mr-2 h-4 w-4" />Export
               </a>
-            </Button> : <Button size="sm" variant="outline" disabled><Download className="mr-1 h-4 w-4" />Export</Button>}
-            <Link href="/track/tags"><Button size="sm" variant="outline"><Tags className="mr-1 h-4 w-4" />Tags</Button></Link>
+            </Button> : <Button variant="outline" disabled><Download className="mr-2 h-4 w-4" />Export</Button>}
+            <Button variant="outline" asChild><Link href="/track/tags"><Tags className="mr-2 h-4 w-4" />Tags</Link></Button>
             {expenseTotalCount > 0 && (
-              <Button size="sm" variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" disabled={saving || loading || !!loadError} onClick={handleDeleteAll}>
-                <XCircle className="mr-1 h-4 w-4" />Delete All
+              <Button variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" disabled={saving || loading || !!loadError} onClick={handleDeleteAll}>
+                <XCircle className="mr-2 h-4 w-4" />Delete All
               </Button>
             )}
           </>
         )}
       />
 
-      <div className="grid gap-3.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,2fr)]">
+      <div className="grid grid-cols-2 gap-3.5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,2fr)]">
         <StatTile label="Expenses" value={hasLoadedExpenses ? `${expenseTotalCount} expenses` : 'Expense count unavailable'} />
         <StatTile label="Total in AUD" value={hasLoadedExpenses ? `$${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD` : 'AUD total unavailable'} />
-        <section className="rounded-2xl border bg-card px-4 py-3.5 text-xs leading-5 text-muted-foreground">
+        <section className="col-span-2 rounded-2xl border bg-card px-4 py-3.5 text-xs leading-5 text-muted-foreground lg:col-span-1">
           City and country come from the assigned itinerary leg. Use edit to move flights, tickets, or pre-paid costs into the destination where you want them counted.
           Dashboard timelines will keep the original transaction date visible here, but report assigned spend inside the leg&apos;s date window.
         </section>

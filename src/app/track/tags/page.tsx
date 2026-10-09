@@ -153,7 +153,7 @@ export default function TagsPage() {
         actions={(
         <Dialog open={addOpen} onOpenChange={open => { if (!saving) { setAddOpen(open); setMutationError(null); } }}>
           <DialogTrigger asChild>
-            <Button size="sm" disabled={saving}><Plus className="h-4 w-4 mr-1" />New Tag</Button>
+            <Button disabled={saving}><Plus className="mr-2 h-4 w-4" />New Tag</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader><DialogTitle>Create Tag</DialogTitle>

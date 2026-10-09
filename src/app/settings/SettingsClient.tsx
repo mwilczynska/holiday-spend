@@ -328,22 +328,17 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
     <div className="space-y-6">
       <div>
         <PageTitle icon={SettingsIcon}>Settings</PageTitle>
+        <p className="mt-1 text-sm text-muted-foreground">Travellers, provider request limits and fixed trip costs.</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          <Link href="/settings/account">
-            <Button variant="outline" size="sm">Account</Button>
-          </Link>
-          <Link href="/dataset">
-            <Button variant="outline" size="sm">Dataset</Button>
-          </Link>
-          <Link href="/estimates">
-            <Button variant="outline" size="sm">Methodology</Button>
-          </Link>
-          <a href="/api/export?format=json" download>
-            <Button variant="outline" size="sm"><Download className="h-4 w-4 mr-1" />Export JSON</Button>
-          </a>
-          <a href="/api/export?format=csv" download>
-            <Button variant="outline" size="sm"><Download className="h-4 w-4 mr-1" />Export CSV</Button>
-          </a>
+          <Button variant="outline" asChild><Link href="/settings/account">Account</Link></Button>
+          <Button variant="outline" asChild><Link href="/dataset">Dataset</Link></Button>
+          <Button variant="outline" asChild><Link href="/estimates">Methodology</Link></Button>
+          <Button variant="outline" asChild>
+            <a href="/api/export?format=json" download><Download className="mr-2 h-4 w-4" />Export JSON</a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="/api/export?format=csv" download><Download className="mr-2 h-4 w-4" />Export CSV</a>
+          </Button>
         </div>
       </div>
 

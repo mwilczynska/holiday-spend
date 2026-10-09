@@ -9,7 +9,7 @@ test('Settings exports download complete JSON and CSV artifacts', async ({ page 
   const expected = await expectedResponse.json();
 
   const jsonDownload = page.waitForEvent('download');
-  await page.getByRole('button', { name: 'Export JSON', exact: true }).click();
+  await page.getByRole('link', { name: 'Export JSON', exact: true }).click();
   const json = await jsonDownload;
   expect(json.suggestedFilename()).toMatch(/^holiday-spend-export-\d{4}-\d{2}-\d{2}\.json$/);
   const artifact = JSON.parse(await fs.readFile((await json.path())!, 'utf8'));
@@ -18,7 +18,7 @@ test('Settings exports download complete JSON and CSV artifacts', async ({ page 
   }
 
   const csvDownload = page.waitForEvent('download');
-  await page.getByRole('button', { name: 'Export CSV', exact: true }).click();
+  await page.getByRole('link', { name: 'Export CSV', exact: true }).click();
   const csv = await csvDownload;
   expect(csv.suggestedFilename()).toMatch(/^holiday-spend-expenses-\d{4}-\d{2}-\d{2}\.csv$/);
   const parsed = Papa.parse<Record<string, string>>(await fs.readFile((await csv.path())!, 'utf8'), { header: true });
