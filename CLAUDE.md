@@ -103,8 +103,10 @@ holdouts, import staged rows, run Phase 11, or enable their old three-call/searc
 
 The planner displays 2021–2025 monthly historical mean temperature and precipitation, an annual view, and a whole-trip
 graph with separate temperature/rainfall axes. Celsius is the default; shared C/F controls update all weather views.
-Average daily highs and lows are also collected and saved but are not currently displayed. Monthly precipitation is
-the average of the five monthly totals, including snow water equivalent; it is not a forecast or a stay total.
+The trip graph is date-scaled: each stay holds its month's mean temperature for the days spent there, with the month's
+average daily low–high as a band and rainfall as an area; gaps between stays and missing climate break the line.
+Monthly precipitation is the average of the five monthly totals, including snow water equivalent; it is not a
+forecast or a stay total.
 
 Weather uses the no-key Open-Meteo historical archive with ERA5-Seamless and country-checked coordinates. Salento,
 Colombia explicitly uses ECMWF IFS because its ERA5 rainfall disagrees sharply with official station evidence;
@@ -114,6 +116,12 @@ planner loads read saved records in one request. Existing cities collect once wh
 missing, or retain an explicitly labelled prior successful record after a failed refresh. All itinerary cards render;
 the former twelve-card limit and load-more controls are removed. The trip chart waits for its initial data load to
 settle rather than drawing incomplete lines repeatedly. See `docs/product/trip-climate.md` for the data contract.
+
+## City images
+
+Destinations currently show a drawn scene chosen deterministically from the city name. A free photo method using
+Wikipedia/Wikimedia Commons, verified against stored coordinates and Commons licences, is tested but not integrated;
+see `docs/product/city-images.md` and the read-only probe `scripts/city-image-probe.mjs`.
 
 ## Transport
 

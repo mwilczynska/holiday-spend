@@ -89,7 +89,21 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
 (default timeout 30 s), and `planner-edit-failures` "rapid inline edits" sees Save Plan re-enable just after its
 5 s wait; the failure snapshot shows it enabled. Both are dev-server timing, not regressions.
 
-- [ ] Optional: country-specific destination visuals (options recorded for the owner).
+### Owner fix round (10 October 2026)
+
+- [x] Planner: clicking a leg card's summary row toggles it; the chevron remains the keyboard control.
+- [x] Trip climate: date-scaled chart. Each stay holds its month's mean for the days stayed, with the average daily
+      low–high band (previously collected but not shown), rainfall area, alternating stay shading and a Today marker.
+- [x] Dashboard: Up next mirrors Current destination at equal width.
+- [x] Travel-themed loader (plane on a dashed route between pins) in every page loading state.
+- [x] Cumulative chart: the "leg still planned" legend entry appears only when that series has data.
+- [x] Logo cycles mountains, beach, plains and city scenes (24 s, CSS only; static with reduced motion).
+- [x] Dataset: both tables scroll through every row in a viewport-height area. This supersedes the 25/20-row paging
+      bound from the performance phase, at the owner's request.
+- [x] City images: free Wikipedia/Commons method tested (38/40 on a broad sample) and documented in
+      `docs/product/city-images.md`; integration (table, batch fetch, credit caption) awaits the owner's go-ahead.
+
+- [ ] Optional: integrate city photos per `docs/product/city-images.md`.
 - [ ] Baseline checks, Playwright smoke, and merge decision.
 
 ## Clean up older merged branches — COMPLETE (3 October 2026)
