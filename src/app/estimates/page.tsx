@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { BookOpenText } from 'lucide-react';
+import { PageTitle } from '@/components/layout/PageHeader';
 import { Card, CardContent } from '@/components/ui/card';
 
 const sections = [
@@ -88,7 +90,7 @@ const sections = [
 export default function EstimatesPage() {
   return <div className="space-y-6">
     <div className="space-y-2">
-      <h1 className="text-2xl font-bold">Methodology</h1>
+      <PageTitle icon={BookOpenText}>Methodology</PageTitle>
       <p className="text-sm text-muted-foreground">How city-cost estimates become your travel budget.</p>
       <p className="text-xs text-muted-foreground">New cities: v1.1 · Reference dataset: April 2026 · Base values: 2 travellers · Currency: AUD</p>
       <div className="flex gap-4 text-sm">

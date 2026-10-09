@@ -1,1 +1,2 @@
-export const PLAN_COLORS = ['#3b82f6', '#8b5cf6', '#14b8a6', '#eab308', '#22c55e'];
+// Bento order: blue, teal, amber, violet, navy. Adjacent plans differ in lightness as well as hue.
+export const PLAN_COLORS = ['#2563EB', '#12A594', '#F5A524', '#8E4EC6', '#13254A'];

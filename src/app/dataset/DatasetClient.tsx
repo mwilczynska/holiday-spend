@@ -17,7 +17,8 @@ import { resolveCityDrinkInputs } from '@/lib/city-drink-inputs';
 import type { CityEstimateProvenance } from '@/lib/city-estimate-provenance';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
 
-import { Plus } from 'lucide-react';
+import { Database, Plus } from 'lucide-react';
+import { PageTitle } from '@/components/layout/PageHeader';
 import {
   DATASET_PAGE_SIZE,
   getPageCount,
@@ -523,7 +524,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
     <div className="space-y-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold">Dataset</h1>
+          <PageTitle icon={Database}>Dataset</PageTitle>
           <p className="max-w-3xl text-sm text-muted-foreground">
             Manage the planner-facing city cost dataset. All values are stored in AUD for two people,
             then scaled at runtime for traveller count. Methodology now lives on its own page, while

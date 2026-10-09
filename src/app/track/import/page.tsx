@@ -7,7 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { EXPENSE_CATEGORIES } from '@/types';
-import { Upload, Check, Trash2 } from 'lucide-react';
+import { Upload, Check, Trash2, FileUp } from 'lucide-react';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { getImportErrorMessage, readImportApiResponse } from '@/lib/transaction-import-response';
 
 interface ParsedExpense {
@@ -128,18 +129,22 @@ export default function ImportPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Import Wise CSV</h1>
-        <Button variant="destructive" size="sm" onClick={handleClearImported} disabled={clearing}>
-          <Trash2 className="h-4 w-4 mr-1" />
-          <LoadingButtonLabel idle="Clear All Imported" loading="Clearing..." isLoading={clearing} />
-        </Button>
-      </div>
+      <PageHeader
+        icon={FileUp}
+        title="Import Wise CSV"
+        description="Upload one or more Wise statement exports, review categories, then import."
+        actions={(
+          <Button variant="ghost" size="sm" className="text-destructive hover:bg-red-50 hover:text-destructive" onClick={handleClearImported} disabled={clearing}>
+            <Trash2 className="h-4 w-4 mr-1" />
+            <LoadingButtonLabel idle="Clear All Imported" loading="Clearing..." isLoading={clearing} />
+          </Button>
+        )}
+      />
 
       {/* Upload */}
       <Card>
         <CardContent className="p-4">
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
             <input
               ref={fileRef}
               type="file"
@@ -147,7 +152,7 @@ export default function ImportPage() {
               multiple
               aria-label="Wise CSV files"
               disabled={uploading || importing}
-              className="text-sm"
+              className="min-w-0 max-w-full text-sm file:mr-3 file:h-9 file:cursor-pointer file:rounded-md file:border file:border-input file:bg-card file:px-3 file:text-sm file:font-medium file:text-foreground hover:file:bg-accent"
               onChange={(event) => {
                 setSelectedFileCount(event.target.files?.length ?? 0);
                 setPreview(null);

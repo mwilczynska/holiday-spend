@@ -7,6 +7,7 @@ import { BarChart3, BookOpenText, Database, LayoutDashboard, Loader2, Map, Recei
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 import { BrandMark } from './BrandMark';
+import { getActiveNavHref } from './nav-match';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -24,6 +25,7 @@ const navItems = [
 export function DesktopSidebar() {
   const pathname = usePathname();
   const [pendingHref, setPendingHref] = useState<string | null>(null);
+  const activeHref = getActiveNavHref(pathname, navItems.map((item) => item.href));
 
   useEffect(() => {
     setPendingHref(null);
@@ -40,9 +42,8 @@ export function DesktopSidebar() {
       </div>
       <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 py-2">
         {navItems.map((item) => {
-          const isActive = (pathname === item.href ||
-            (item.href !== '/' && pathname.startsWith(item.href))) &&
-            !('excludePrefix' in item && item.excludePrefix && pathname.startsWith(item.excludePrefix));
+          // Only the most specific match is active, so /track/tags highlights Tags but not Expenses.
+          const isActive = item.href === activeHref;
           const isNavigating = pendingHref === item.href;
           return (
             // `next/link` rather than router.push, so Next prefetches each route

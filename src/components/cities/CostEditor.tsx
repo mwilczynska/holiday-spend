@@ -58,9 +58,9 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
   }, {});
 
   const SOURCE_BADGES: Record<string, string> = {
-    manual: 'bg-gray-100 text-gray-700',
-    llm: 'bg-blue-100 text-blue-700',
-    numbeo: 'bg-green-100 text-green-700',
+    manual: 'bg-slate-100 text-slate-700',
+    llm: 'bg-info-soft text-blue-700',
+    numbeo: 'bg-success-soft text-success',
   };
 
   return (
@@ -74,7 +74,7 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
                 <div className="flex items-center gap-1">
                   <Label htmlFor={`${id}-${field.key}`} className="text-xs">{field.label}</Label>
                   {sources?.[field.key] && (
-                    <span className={`text-[10px] px-1 rounded ${SOURCE_BADGES[sources[field.key]] || 'bg-gray-100'}`}>
+                    <span className={`rounded-full px-1.5 text-[10px] font-semibold ${SOURCE_BADGES[sources[field.key]] || 'bg-slate-100'}`}>
                       {sources[field.key]}
                     </span>
                   )}

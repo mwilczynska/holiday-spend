@@ -8,7 +8,8 @@ import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { InlineLoadingState, PageLoadingState } from '@/components/ui/loading-state';
-import { Plus, Trash2, Edit } from 'lucide-react';
+import { Plus, Trash2, Edit, Tags as TagsIcon } from 'lucide-react';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 interface Tag {
   id: number;
@@ -145,8 +146,11 @@ export default function TagsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Tags</h1>
+      <PageHeader
+        icon={TagsIcon}
+        title="Tags"
+        description="Group expenses across categories, such as flights or splurge meals, and see their AUD totals."
+        actions={(
         <Dialog open={addOpen} onOpenChange={open => { if (!saving) { setAddOpen(open); setMutationError(null); } }}>
           <DialogTrigger asChild>
             <Button size="sm" disabled={saving}><Plus className="h-4 w-4 mr-1" />New Tag</Button>
@@ -164,7 +168,8 @@ export default function TagsPage() {
             </fieldset>
           </DialogContent>
         </Dialog>
-      </div>
+        )}
+      />
 
       {!addOpen && !editTag && mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
       {loadError && <div><p role="alert" className="text-sm text-destructive">{loadError}</p><Button size="sm" variant="outline" onClick={() => void fetchTags()}>Retry loading tags</Button></div>}
@@ -172,11 +177,11 @@ export default function TagsPage() {
       <div className="grid lg:grid-cols-[300px_1fr] gap-6">
         {/* Tag list */}
         <div className="space-y-2">
-          {tags.length === 0 && !loadError && <p className="text-muted-foreground text-center py-8">No tags yet.</p>}
+          {tags.length === 0 && !loadError && <p className="rounded-2xl border-2 border-dashed border-slate-300 py-8 text-center text-muted-foreground">No tags yet.</p>}
           {tags.map((tag) => (
             <Card
               key={tag.id}
-              className={`transition-colors ${selectedTag?.id === tag.id ? 'ring-2 ring-primary' : ''}`}
+              className={`transition-colors ${selectedTag?.id === tag.id ? 'border-blue-300 bg-info-soft' : 'hover:bg-secondary'}`}
             >
               <CardContent className="p-3 flex items-center gap-2">
                 <button type="button" className="flex min-w-0 flex-1 items-center gap-2 text-left" aria-label={`View ${tag.name} expenses`} onClick={() => void selectTag(tag)}>
@@ -187,11 +192,11 @@ export default function TagsPage() {
                 <span className="text-xs text-muted-foreground">{tag.expenseCount} expenses</span>
                 <span className="text-sm font-medium">${tag.totalAud.toFixed(0)}</span>
                 </button>
-                <Button aria-label={`Edit ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-6 w-6" onClick={() => { setMutationError(null); setEditTag(tag); }}>
-                  <Edit className="h-3 w-3" />
+                <Button aria-label={`Edit ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-8 w-8 text-slate-600" onClick={() => { setMutationError(null); setEditTag(tag); }}>
+                  <Edit className="h-4 w-4" />
                 </Button>
-                <Button aria-label={`Delete ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-6 w-6 text-destructive" onClick={() => void handleDelete(tag.id)}>
-                  <Trash2 className="h-3 w-3" />
+                <Button aria-label={`Delete ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-8 w-8 text-slate-600 hover:text-destructive" onClick={() => void handleDelete(tag.id)}>
+                  <Trash2 className="h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>
@@ -236,7 +241,7 @@ export default function TagsPage() {
               </CardContent>
             </Card>
           ) : (
-            <p className="text-muted-foreground text-center py-12">Select a tag to see its expenses.</p>
+            <p className="rounded-2xl border-2 border-dashed border-slate-300 py-12 text-center text-muted-foreground">Select a tag to see its expenses.</p>
           )}
         </div>
       </div>

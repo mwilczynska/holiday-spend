@@ -14,7 +14,8 @@ import { ExpenseTagsDialog } from '@/components/expenses/ExpenseTagsDialog';
 import { buildExpenseExportHref } from '@/lib/expense-track-page';
 import { EXPENSE_PAGE_SIZE, getPageCount } from '@/lib/performance-bounds';
 import { EXPENSE_CATEGORIES } from '@/types';
-import { ChevronDown, ChevronUp, Download, Edit, Eye, EyeOff, Tags, Trash2, Upload, XCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, Download, Edit, Eye, EyeOff, Filter, Plus, Receipt, Tags, Trash2, Upload, XCircle } from 'lucide-react';
+import { PageHeader, StatTile } from '@/components/layout/PageHeader';
 
 interface Expense {
   id: number;
@@ -340,26 +341,40 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Expenses</h1>
-        <div className="flex flex-wrap gap-2">
-          <Link href="/track/add"><Button size="sm">Add</Button></Link>
-          <Link href="/track/import"><Button size="sm" variant="outline"><Upload className="mr-1 h-4 w-4" />Import</Button></Link>
-          {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button size="sm" variant="outline" asChild>
-            <a href={exportHref} download>
-              <Download className="mr-1 h-4 w-4" />Export
-            </a>
-          </Button> : <Button size="sm" variant="outline" disabled><Download className="mr-1 h-4 w-4" />Export</Button>}
-          <Link href="/track/tags"><Button size="sm" variant="outline"><Tags className="mr-1 h-4 w-4" />Tags</Button></Link>
-          {expenseTotalCount > 0 && (
-            <Button size="sm" variant="destructive" disabled={saving || loading || !!loadError} onClick={handleDeleteAll}>
-              <XCircle className="mr-1 h-4 w-4" />Delete All
-            </Button>
-          )}
-        </div>
+      <PageHeader
+        icon={Receipt}
+        title="Expenses"
+        description="Manual and imported spending, assigned to the itinerary leg it counts against."
+        actions={(
+          <>
+            <Link href="/track/add"><Button size="sm"><Plus className="mr-1 h-4 w-4" />Add</Button></Link>
+            <Link href="/track/import"><Button size="sm" variant="outline"><Upload className="mr-1 h-4 w-4" />Import</Button></Link>
+            {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button size="sm" variant="outline" asChild>
+              <a href={exportHref} download>
+                <Download className="mr-1 h-4 w-4" />Export
+              </a>
+            </Button> : <Button size="sm" variant="outline" disabled><Download className="mr-1 h-4 w-4" />Export</Button>}
+            <Link href="/track/tags"><Button size="sm" variant="outline"><Tags className="mr-1 h-4 w-4" />Tags</Button></Link>
+            {expenseTotalCount > 0 && (
+              <Button size="sm" variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" disabled={saving || loading || !!loadError} onClick={handleDeleteAll}>
+                <XCircle className="mr-1 h-4 w-4" />Delete All
+              </Button>
+            )}
+          </>
+        )}
+      />
+
+      <div className="grid gap-3.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,2fr)]">
+        <StatTile label="Expenses" value={hasLoadedExpenses ? `${expenseTotalCount} expenses` : 'Expense count unavailable'} />
+        <StatTile label="Total in AUD" value={hasLoadedExpenses ? `$${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD` : 'AUD total unavailable'} />
+        <section className="rounded-2xl border bg-card px-4 py-3.5 text-xs leading-5 text-muted-foreground">
+          City and country come from the assigned itinerary leg. Use edit to move flights, tickets, or pre-paid costs into the destination where you want them counted.
+          Dashboard timelines will keep the original transaction date visible here, but report assigned spend inside the leg&apos;s date window.
+        </section>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-center gap-2 rounded-2xl border bg-card p-3">
+        <Filter className="ml-1 h-4 w-4 text-muted-foreground" aria-hidden="true" />
         <Select value={filterCat} onValueChange={setFilterCat}>
           <SelectTrigger aria-label="Filter category" className="h-8 w-[140px] text-xs"><SelectValue placeholder="Category" /></SelectTrigger>
           <SelectContent>
@@ -386,20 +401,9 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
       {!editExpense && mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
       {loadError && <div className="space-y-2"><p role="alert" className="text-sm text-destructive">{loadError}{hasLoadedExpenses ? ' Showing the last loaded results.' : ''}</p><Button size="sm" variant="outline" onClick={() => void fetchData()}>Retry loading expenses</Button></div>}
 
-      <div className="space-y-1 text-sm">
-        <div className="flex gap-4">
-          <span>{hasLoadedExpenses ? `${expenseTotalCount} expenses` : 'Expense count unavailable'}</span>
-          <span className="font-medium">{hasLoadedExpenses ? `$${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD` : 'AUD total unavailable'}</span>
-        </div>
-        <p className="text-xs text-muted-foreground">
-          City and country come from the assigned itinerary leg. Use edit to move flights, tickets, or pre-paid costs into the destination where you want them counted.
-          Dashboard timelines will keep the original transaction date visible here, but report assigned spend inside the leg&apos;s date window.
-        </p>
-      </div>
-
       {selectedIds.size > 0 && (
-        <div className="flex gap-2 rounded bg-muted p-2">
-          <span className="text-sm">{selectedIds.size} selected</span>
+        <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-blue-200 bg-info-soft px-3 py-2">
+          <span className="text-sm font-semibold text-blue-800">{selectedIds.size} selected</span>
           <Button size="sm" variant="outline" disabled={saving || loading || !!loadError} onClick={() => handleBulkAction('exclude')}>Exclude</Button>
           <Button size="sm" variant="outline" disabled={saving || loading || !!loadError} onClick={() => handleBulkAction('include')}>Include</Button>
           <Button size="sm" variant="outline" disabled={saving} onClick={() => setSelectedIds(new Set())}>Clear</Button>
@@ -459,17 +463,17 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                 </div>
               </div>
               <div className="flex justify-end gap-1">
-                <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => handleToggleExclude(expense.id)}>
-                  {expense.isExcluded ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
+                <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
+                  {expense.isExcluded ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                 </Button>
-                <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
-                  <Edit className="h-3 w-3" />
+                <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
+                  <Edit className="h-4 w-4" />
                 </Button>
-                <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => setTagExpenseId(expense.id)}>
-                  <Tags className="h-3 w-3" />
+                <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
+                  <Tags className="h-4 w-4" />
                 </Button>
-                <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
-                  <Trash2 className="h-3 w-3" />
+                <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
+                  <Trash2 className="h-4 w-4" />
                 </Button>
               </div>
             </CardContent>
@@ -477,9 +481,9 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
         ))}
       </div>
 
-      <div className="hidden rounded-lg border bg-background lg:block">
+      <div className="hidden overflow-hidden rounded-2xl border bg-card lg:block">
         <table className="w-full table-fixed text-sm" data-testid="expense-table">
-          <thead className="bg-muted/50 text-left">
+          <thead className="bg-secondary text-left text-xs text-slate-600">
             <tr className="border-b">
               <th className="w-10 px-3 py-2">
                 <span className="sr-only">Select</span>
@@ -506,7 +510,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
 
               return (
                 <Fragment key={expense.id}>
-                  <tr className={`border-b align-top ${expense.isExcluded ? 'bg-muted/20 text-muted-foreground' : ''}`}>
+                  <tr className={`border-b align-top transition-colors hover:bg-secondary/60 ${expense.isExcluded ? 'bg-muted/40 text-muted-foreground' : ''}`}>
                     <td className="px-3 py-3">
                       <input
                         type="checkbox"
@@ -549,23 +553,23 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex justify-end gap-1">
-                        <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => handleToggleExclude(expense.id)}>
-                          {expense.isExcluded ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
+                        <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
+                          {expense.isExcluded ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                         </Button>
-                        <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
-                          <Edit className="h-3 w-3" />
+                        <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
+                          <Edit className="h-4 w-4" />
                         </Button>
-                        <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7" onClick={() => setTagExpenseId(expense.id)}>
-                          <Tags className="h-3 w-3" />
+                        <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
+                          <Tags className="h-4 w-4" />
                         </Button>
-                        <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
-                          <Trash2 className="h-3 w-3" />
+                        <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
+                          <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex justify-end">
-                        <Button aria-label={`${isExpanded ? 'Hide' : 'Show'} details for expense ${expense.id}`} aria-expanded={isExpanded} variant="ghost" size="icon" className="h-7 w-7" onClick={() => toggleExpanded(expense.id)}>
+                        <Button aria-label={`${isExpanded ? 'Hide' : 'Show'} details for expense ${expense.id}`} aria-expanded={isExpanded} variant="ghost" size="icon" className="h-8 w-8" onClick={() => toggleExpanded(expense.id)}>
                           {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                         </Button>
                       </div>

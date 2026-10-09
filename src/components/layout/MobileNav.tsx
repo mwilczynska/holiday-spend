@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { BarChart3, LayoutDashboard, Loader2, Map, Plus, Receipt, Settings } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
+import { getActiveNavHref } from './nav-match';
 
 const navItems = [
   { href: '/', label: 'Home', icon: LayoutDashboard },
@@ -19,6 +20,7 @@ const navItems = [
 export function MobileNav() {
   const pathname = usePathname();
   const [pendingHref, setPendingHref] = useState<string | null>(null);
+  const activeHref = getActiveNavHref(pathname, navItems.map((item) => item.href));
 
   useEffect(() => {
     setPendingHref(null);
@@ -28,9 +30,7 @@ export function MobileNav() {
     <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-card border-t safe-area-bottom">
       <div className="flex items-center justify-around h-16">
         {navItems.map((item) => {
-          const isActive = (pathname === item.href ||
-            (item.href !== '/' && pathname.startsWith(item.href))) &&
-            !('excludePrefix' in item && item.excludePrefix && pathname.startsWith(item.excludePrefix));
+          const isActive = item.href === activeHref;
           const isNavigating = pendingHref === item.href;
           return (
             // `next/link` rather than router.push, so Next prefetches each route as

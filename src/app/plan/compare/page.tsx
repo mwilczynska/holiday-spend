@@ -4,7 +4,8 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { ArrowLeftRight } from 'lucide-react';
+import { ArrowLeftRight, BarChart3 } from 'lucide-react';
+import { PageTitle } from '@/components/layout/PageHeader';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { readPageResponse } from '@/lib/read-page-response';
 import { comparisonPlanIdsSchema, comparisonSavedPlansSchema, comparisonResultsSchema } from '@/lib/comparison-read-contract';
@@ -221,11 +222,11 @@ export default function ComparePlansPage() {
   return (
     <div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
       {/* Fixed header */}
-      <div className="fixed inset-x-0 top-0 z-30 border-b bg-background shadow-sm lg:left-64">
+      <div className="fixed inset-x-0 top-0 z-30 border-b bg-background/95 backdrop-blur lg:left-60">
         <div ref={headerRef} className="mx-auto max-w-[1440px] px-4 py-4 lg:px-8">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold">Compare Plans</h1>
+              <PageTitle icon={BarChart3}>Compare Plans</PageTitle>
               <p className="text-sm text-muted-foreground">
                 Compare saved plan snapshots with one canonical planned-cost calculation.
               </p>
@@ -268,7 +269,7 @@ export default function ComparePlansPage() {
         ) : null}
         {/* Selector mode */}
         {showSelector && (
-          <div className="rounded-lg border bg-card p-4">
+          <div className="rounded-2xl border bg-card p-4 sm:p-5">
             {plansError ? <div role="alert" className="mb-4 space-y-2 text-sm text-destructive">
               <p>{plansError}</p>
               <p>{hasLoadedPlans ? 'Showing the last loaded saved plans; they may be out of date.' : 'Saved plans unavailable.'}</p>
@@ -286,31 +287,38 @@ export default function ComparePlansPage() {
                 </Button>
               </div>
             ) : (
-              <div className="space-y-2">
-                {allPlans.map((plan) => (
-                  <label
-                    key={plan.id}
-                    className="flex items-center gap-3 rounded-md border p-3 cursor-pointer hover:bg-muted/50 transition-colors"
-                  >
-                    <input
-                      type="checkbox"
-                      disabled={loading || plansLoading || Boolean(plansError)}
-                      checked={selectedIds.has(plan.id)}
-                      onChange={() => togglePlanSelection(plan.id)}
-                      className="h-4 w-4"
-                    />
-                    <div className="min-w-0 flex-1">
-                      <div className="font-medium text-sm">{plan.name}</div>
-                      <div className="text-xs text-muted-foreground">
-                        {plan.legCount} legs, {plan.totalNights} nights, $
-                        {plan.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
-                      </div>
-                      <div className="text-[11px] text-muted-foreground/80">
-                        Saved snapshot metadata. Loaded comparison totals are recomputed from current city rates.
-                      </div>
-                    </div>
-                  </label>
-                ))}
+              <div className="space-y-3">
+                <p className="text-xs text-muted-foreground">
+                  Figures below are saved snapshot metadata. Loaded comparison totals are recomputed from current city rates.
+                </p>
+                <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+                  {allPlans.map((plan) => {
+                    const selected = selectedIds.has(plan.id);
+                    return (
+                      <label
+                        key={plan.id}
+                        className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition-colors ${
+                          selected ? 'border-blue-300 bg-info-soft' : 'hover:bg-secondary'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          disabled={loading || plansLoading || Boolean(plansError)}
+                          checked={selected}
+                          onChange={() => togglePlanSelection(plan.id)}
+                          className="h-4 w-4 accent-[hsl(var(--brand-blue))]"
+                        />
+                        <div className="min-w-0 flex-1">
+                          <div className="truncate text-sm font-semibold">{plan.name}</div>
+                          <div className="text-xs text-muted-foreground">
+                            {plan.legCount} legs, {plan.totalNights} nights, $
+                            {plan.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
+                          </div>
+                        </div>
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>

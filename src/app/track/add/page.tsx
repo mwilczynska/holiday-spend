@@ -7,6 +7,8 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { EXPENSE_CATEGORIES } from '@/types';
+import { BedDouble, Bus, Plus, ShoppingBag, Ticket, Utensils, Wine } from 'lucide-react';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 interface ActiveLeg {
   id: number;
@@ -21,12 +23,12 @@ interface Country {
 }
 
 const QUICK_CATEGORIES = [
-  { value: 'food', label: 'Food', emoji: '🍜' },
-  { value: 'drinks', label: 'Drinks', emoji: '🍺' },
-  { value: 'transport_local', label: 'Transport', emoji: '🚕' },
-  { value: 'accommodation', label: 'Accom', emoji: '🏨' },
-  { value: 'activities', label: 'Activities', emoji: '🎭' },
-  { value: 'shopping', label: 'Shopping', emoji: '🛍️' },
+  { value: 'food', label: 'Food', icon: Utensils },
+  { value: 'drinks', label: 'Drinks', icon: Wine },
+  { value: 'transport_local', label: 'Transport', icon: Bus },
+  { value: 'accommodation', label: 'Accom', icon: BedDouble },
+  { value: 'activities', label: 'Activities', icon: Ticket },
+  { value: 'shopping', label: 'Shopping', icon: ShoppingBag },
 ];
 
 export default function QuickAddPage() {
@@ -134,12 +136,11 @@ export default function QuickAddPage() {
 
   return (
     <div className="space-y-4 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold">Quick Add</h1>
-      {activeLeg && (
-        <p className="text-sm text-muted-foreground">
-          Active: {activeLeg.cityName} ({currency})
-        </p>
-      )}
+      <PageHeader
+        icon={Plus}
+        title="Quick Add"
+        description={activeLeg ? `Active: ${activeLeg.cityName} (${currency})` : 'Record an expense in a few taps.'}
+      />
 
       {/* Amount — large and prominent */}
       <Card>
@@ -173,11 +174,11 @@ export default function QuickAddPage() {
           <Button
             key={cat.value}
             variant={category === cat.value ? 'default' : 'outline'}
-            className="h-14 flex flex-col gap-0.5"
+            className="flex h-16 flex-col gap-1 rounded-xl"
             onClick={() => setCategory(cat.value)}
           >
-            <span className="text-lg">{cat.emoji}</span>
-            <span className="text-xs">{cat.label}</span>
+            <cat.icon className="h-5 w-5" aria-hidden="true" />
+            <span className="text-xs font-semibold">{cat.label}</span>
           </Button>
         ))}
       </div>

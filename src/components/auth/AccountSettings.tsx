@@ -4,6 +4,8 @@ import { signOut } from 'next-auth/react';
 import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { UserCircle } from 'lucide-react';
+import { PageTitle } from '@/components/layout/PageHeader';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { LoadingButtonLabel } from '@/components/ui/loading-state';
@@ -115,7 +117,7 @@ export function AccountSettings({
   return (
     <div className="space-y-6 max-w-2xl">
       <div>
-        <h1 className="text-2xl font-bold">Account</h1>
+        <PageTitle icon={UserCircle}>Account</PageTitle>
         <p className="text-sm text-muted-foreground">
           Manage your profile, password, and linked sign-in methods.
         </p>

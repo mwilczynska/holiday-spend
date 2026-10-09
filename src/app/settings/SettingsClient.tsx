@@ -14,7 +14,8 @@ import { Switch } from '@/components/ui/switch';
 import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { readPageResponse } from '@/lib/read-page-response';
 import { fixedCostsReadSchema, settingsCountriesReadSchema, travellerSettingsReadSchema, llmSettingsReadSchema } from '@/lib/settings-read-contract';
-import { Plus, Trash2, Download } from 'lucide-react';
+import { Plus, Trash2, Download, Settings as SettingsIcon } from 'lucide-react';
+import { PageTitle } from '@/components/layout/PageHeader';
 import Link from 'next/link';
 
 interface FixedCost {
@@ -326,16 +327,16 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Settings</h1>
-        <div className="flex flex-wrap gap-2 mt-4">
+        <PageTitle icon={SettingsIcon}>Settings</PageTitle>
+        <div className="mt-4 flex flex-wrap gap-2">
           <Link href="/settings/account">
-            <Button variant="outline">Account</Button>
+            <Button variant="outline" size="sm">Account</Button>
           </Link>
           <Link href="/dataset">
-            <Button variant="outline">Dataset</Button>
+            <Button variant="outline" size="sm">Dataset</Button>
           </Link>
           <Link href="/estimates">
-            <Button variant="outline">Methodology</Button>
+            <Button variant="outline" size="sm">Methodology</Button>
           </Link>
           <a href="/api/export?format=json" download>
             <Button variant="outline" size="sm"><Download className="h-4 w-4 mr-1" />Export JSON</Button>
@@ -531,8 +532,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           {!addOpen && costError && <p role="alert" className="mb-3 text-sm text-destructive">{costError}</p>}
           {hasLoadedData ? <div className="flex gap-4 mb-4 text-sm">
             <span>Total: <strong>${total.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</strong></span>
-            <span className="text-green-600">Paid: ${totalPaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
-            <span className="text-orange-600">Unpaid: ${totalUnpaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
+            <span className="font-semibold text-success">Paid: ${totalPaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
+            <span className="font-semibold text-[#9A4B00]">Unpaid: ${totalUnpaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
           </div> : <p className="mb-4 text-sm text-muted-foreground">Fixed-cost totals unavailable.</p>}
 
           {costs.length === 0 ? (
