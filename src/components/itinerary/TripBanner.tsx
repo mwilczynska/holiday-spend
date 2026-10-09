@@ -31,7 +31,7 @@ export function TripBanner({ legs }: { legs: BannerLeg[] }) {
   return (
     <section aria-label="Trip at a glance" className="relative min-h-[210px] overflow-hidden rounded-2xl bg-[#BFDCEB]">
       {focus ? <DestinationScene name={focus.cityName} className="absolute inset-0" /> : null}
-      <div className="absolute inset-x-4 bottom-4 max-w-sm rounded-[14px] bg-[rgba(15,27,51,0.78)] px-4 py-3.5 text-white sm:inset-x-5 sm:bottom-5">
+      <div className="absolute inset-x-4 bottom-4 max-w-md rounded-[14px] bg-[rgba(15,27,51,0.78)] px-4 py-3.5 text-white sm:inset-x-5 sm:bottom-5">
         <p className="text-xs font-semibold text-slate-300">
           {eyebrow}
           {remainingNights > 0 && active ? ` · ${remainingNights} nights planned after this` : ''}

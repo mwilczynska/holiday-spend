@@ -78,6 +78,17 @@ mobile-layout, dataset and city-cost-editor tests pass (36 passed, 2 skipped). `
 once and passed on rerun: after `page.reload()` it can click the server-rendered Manage tags button before
 hydration. The same race explains the login PIN being cleared when typed during the first dev compile.
 
+- [x] Dashboard polish: no redundant view badges, soft status pills, signed differences, compact quick links,
+      table aligned to card padding. Edge country labels on the cumulative chart grow inward, fixing a 14px
+      overflow at phone width.
+- [x] Planner header: the Travellers control is a labelled 40px select in line with the buttons, and content
+      shares the header's left edge (it previously doubled the layout padding).
+
+QA note: the isolated QA copy accumulates "Agra" legs when a test's cleanup times out, which retargets tests that
+use `.last()`. Reset or prune the copy between runs. On the dev server `planner-zero-overrides` needs about 33 s
+(default timeout 30 s), and `planner-edit-failures` "rapid inline edits" sees Save Plan re-enable just after its
+5 s wait; the failure snapshot shows it enabled. Both are dev-server timing, not regressions.
+
 - [ ] Optional: country-specific destination visuals (options recorded for the owner).
 - [ ] Baseline checks, Playwright smoke, and merge decision.
 

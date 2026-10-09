@@ -20,7 +20,7 @@ import { TripBanner } from '@/components/itinerary/TripBanner';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
 import { cn } from '@/lib/utils';
 
-import { ArrowUpDown, ChevronsDownUp, ChevronsUpDown, Download, Map as MapIcon, Plus, Save, Upload } from 'lucide-react';
+import { ArrowUpDown, ChevronsDownUp, ChevronsUpDown, Download, Map as MapIcon, Plus, Save, Upload, Users } from 'lucide-react';
 import type { IntercityTransportItem, MiscellaneousExpenseItem } from '@/types';
 import { getMiscellaneousExpenseTotal, miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
 import { getDailyCost, getLegTotal } from '@/lib/cost-calculator';
@@ -1461,10 +1461,10 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                 </p>
               </div>
               <div className="flex flex-wrap items-center justify-end gap-2">
-                <div className="min-w-[160px]">
-                  <Label className="mb-1 block text-xs text-muted-foreground">Travellers</Label>
+                <div className="min-w-[170px]">
                   <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
-                    <SelectTrigger className="h-9" disabled={hasUnsavedLegEdits || pageLoading}>
+                    <SelectTrigger aria-label="Travellers" className="h-10 gap-2 font-semibold" disabled={hasUnsavedLegEdits || pageLoading}>
+                      <Users className="h-4 w-4 shrink-0" aria-hidden="true" />
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -1646,7 +1646,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
       </div>
 
         <div
-          className="mx-auto max-w-7xl space-y-4 px-4 pb-6 lg:px-8"
+          className="space-y-4 pb-6"
           style={{ paddingTop: plannerContentTopPadding }}
         >
           <div className="grid gap-3.5 lg:grid-cols-[minmax(0,1.5fr)_minmax(300px,1fr)] 2xl:grid-cols-[minmax(0,1.6fr)_minmax(300px,1fr)_minmax(260px,0.8fr)]">
