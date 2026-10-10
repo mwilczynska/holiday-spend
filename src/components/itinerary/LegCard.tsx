@@ -25,7 +25,8 @@ import {
 } from '@/lib/cost-calculator';
 import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
 import { ArrowDown, ArrowUp, ChevronDown, ChevronUp, Plus, Trash2 } from 'lucide-react';
-import { DestinationScene } from '@/components/dashboard/DestinationScene';
+import { CityPhoto, photoCredit } from '@/components/dashboard/CityPhoto';
+import type { CityImageView } from '@/lib/city-image-view';
 import { cn } from '@/lib/utils';
 
 // Load transport estimation only when its dialog is opened.
@@ -57,6 +58,7 @@ interface LegCardProps {
     drinksOverride: number | null;
     activitiesOverride: number | null;
     transportOverride: number | null;
+    cityImage?: CityImageView | null;
     intercityTransportCost: number;
     intercityTransportNote: string | null;
     intercityTransports: IntercityTransportItem[];
@@ -224,6 +226,8 @@ export const LegCard = memo(function LegCard({
       leg.activitiesTier as import('@/types').ActivitiesTier, leg, groupSize);
     leg.legTotal = getLegTotalFromTransports(leg.dailyCost, leg.nights, leg.intercityTransports, leg.miscellaneousExpenses);
   }
+  // A draft that changes the city shows that city's drawn scene until the save returns its photo.
+  const photo = savedLeg.cityImage && savedLeg.cityImage.cityId === leg.cityId ? savedLeg.cityImage : null;
   const submitEdit = (patch: Record<string, unknown>) => {
     void editQueue.submit(patch).catch(() => undefined);
   };
@@ -425,7 +429,7 @@ export const LegCard = memo(function LegCard({
           }}
         >
           <span className={cn('shrink-0 overflow-hidden rounded-[10px]', isOpen ? 'h-[76px] w-[104px]' : 'h-16 w-[88px]')}>
-            <DestinationScene name={leg.cityName} />
+            <CityPhoto name={leg.cityName} image={photo} size="small" credit="tooltip" />
           </span>
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -757,6 +761,13 @@ export const LegCard = memo(function LegCard({
             </Button>
           ))}
         </div>
+        {photo ? (
+          <p className="mt-3 text-[11px] text-muted-foreground" data-testid="leg-photo-credit">
+            <a href={photo.descriptionUrl} target="_blank" rel="noopener noreferrer" className="underline-offset-2 hover:underline">
+              {photoCredit(photo)}
+            </a>
+          </p>
+        ) : null}
         </div>
 
         {hasOpenedTransportEstimate ? (

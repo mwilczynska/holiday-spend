@@ -157,6 +157,22 @@ export const cityClimate = sqliteTable('city_climate', {
   version: text('version').notNull(),
 });
 
+// Free city photos from Wikimedia Commons (src/lib/city-image-service.ts). Status records misses so
+// they are not retried on every run; files live outside the repository next to the database.
+export const cityImages = sqliteTable('city_images', {
+  cityId: text('city_id').primaryKey().references(() => cities.id, { onDelete: 'cascade' }),
+  cityName: text('city_name').notNull(),
+  countryCode: text('country_code').notNull(),
+  status: text('status').notNull(), // ok | no-location | no-article | no-free-image | error
+  dataJson: text('data_json'),
+  largeFile: text('large_file'),
+  smallFile: text('small_file'),
+  fetchedAt: text('fetched_at'),
+  lastAttemptAt: text('last_attempt_at').notNull(),
+  lastError: text('last_error'),
+  version: text('version').notNull(),
+});
+
 export const itineraryLegs = sqliteTable('itinerary_legs', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),

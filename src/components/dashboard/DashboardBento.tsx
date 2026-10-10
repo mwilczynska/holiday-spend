@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { CircleDollarSign, Moon, Plane } from 'lucide-react';
 import { InfoPopover } from '@/components/itinerary/InfoPopover';
 import { cn } from '@/lib/utils';
-import { DestinationScene } from './DestinationScene';
+import { CityPhoto } from './CityPhoto';
+import type { CityImageView } from '@/lib/city-image-view';
 import { fmtAud } from './dashboard-chart-parts';
 import type { DerivedLeg, TripPosition } from './trip-position';
 
@@ -125,7 +126,7 @@ function daysLabel(n: number) {
   return `${n} ${n === 1 ? 'day' : 'days'}`;
 }
 
-export function CurrentDestinationCard({ position }: { position: TripPosition }) {
+export function CurrentDestinationCard({ position, image }: { position: TripPosition; image?: CityImageView | null }) {
   const leg = position.current;
   if (!leg) {
     return (
@@ -148,7 +149,7 @@ export function CurrentDestinationCard({ position }: { position: TripPosition })
     <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:px-[18px]">
       <h2 className="text-[15px] font-bold">Current destination</h2>
       <div className="relative h-[150px] overflow-hidden rounded-xl">
-        <DestinationScene name={leg.cityName} />
+        <CityPhoto name={leg.cityName} image={image} />
         <span className="absolute right-2.5 top-2.5 rounded-full bg-success-soft px-2.5 py-1 text-xs font-bold text-success">
           In progress
         </span>
@@ -193,7 +194,7 @@ export function CurrentDestinationCard({ position }: { position: TripPosition })
   );
 }
 
-export function UpNextCard({ leg, isFirst }: { leg: DerivedLeg | null; isFirst: boolean }) {
+export function UpNextCard({ leg, isFirst, image }: { leg: DerivedLeg | null; isFirst: boolean; image?: CityImageView | null }) {
   if (!leg) {
     return (
       <section className="flex flex-col justify-center gap-2 rounded-2xl border bg-card p-5">
@@ -215,7 +216,7 @@ export function UpNextCard({ leg, isFirst }: { leg: DerivedLeg | null; isFirst: 
         </Link>
       </div>
       <div className="relative h-[150px] overflow-hidden rounded-xl">
-        <DestinationScene name={leg.cityName} />
+        <CityPhoto name={leg.cityName} image={image} />
         <span className="absolute right-2.5 top-2.5 rounded-full bg-info-soft px-2.5 py-1 text-xs font-bold text-blue-700">
           Upcoming
         </span>

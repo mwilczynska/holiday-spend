@@ -43,6 +43,7 @@ const hasItineraryLegTransportsTable = tableNames.some((table) => table.name ===
 const hasCityEstimatesTable = tableNames.some((table) => table.name === 'city_estimates');
 const hasCityPriceInputsTable = tableNames.some((table) => table.name === 'city_price_inputs');
 const hasCityClimateTable = tableNames.some((table) => table.name === 'city_climate');
+const hasCityImagesTable = tableNames.some((table) => table.name === 'city_images');
 const hasSavedPlansTable = tableNames.some((table) => table.name === 'saved_plans');
 const hasUserPreferencesTable = tableNames.some((table) => table.name === 'user_preferences');
 const hasUserPasswordsTable = tableNames.some((table) => table.name === 'user_passwords');
@@ -150,6 +151,24 @@ if (hasCitiesTable && !hasCityClimateTable) {
       country_code TEXT NOT NULL,
       data_json TEXT,
       collected_at TEXT,
+      last_attempt_at TEXT NOT NULL,
+      last_error TEXT,
+      version TEXT NOT NULL
+    )
+  `);
+}
+
+if (hasCitiesTable && !hasCityImagesTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS city_images (
+      city_id TEXT PRIMARY KEY REFERENCES cities(id) ON DELETE CASCADE,
+      city_name TEXT NOT NULL,
+      country_code TEXT NOT NULL,
+      status TEXT NOT NULL,
+      data_json TEXT,
+      large_file TEXT,
+      small_file TEXT,
+      fetched_at TEXT,
       last_attempt_at TEXT NOT NULL,
       last_error TEXT,
       version TEXT NOT NULL
@@ -570,3 +589,5 @@ for (const statement of [
 
 export const db = drizzle(sqlite, { schema });
 export { schema, sqlite };
+/** Directory holding the database; downloaded city photos live in its `city-images` folder. */
+export const dataDirectory = dataDir;

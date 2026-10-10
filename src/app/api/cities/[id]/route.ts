@@ -1,4 +1,5 @@
 import { db } from '@/db';
+import { getCityImageRow, removeCityImageFiles } from '@/lib/city-image-service';
 import { cities, cityEstimates, cityPriceInputs, itineraryLegs } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
@@ -95,9 +96,11 @@ export async function DELETE(
       return error('This city is used in the itinerary and cannot be deleted until those itinerary legs are removed.', 409);
     }
 
+    const imageRow = getCityImageRow(id);
     await db.delete(cityEstimates).where(eq(cityEstimates.cityId, id));
     await db.delete(cityPriceInputs).where(eq(cityPriceInputs.cityId, id));
     await db.delete(cities).where(eq(cities.id, id));
+    removeCityImageFiles(imageRow);
 
     return success({ id, deleted: true });
   } catch (err) {

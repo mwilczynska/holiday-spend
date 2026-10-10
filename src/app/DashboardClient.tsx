@@ -334,6 +334,9 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
     () => deriveTripPosition(burnData, summary?.asOfDate),
     [burnData, summary?.asOfDate]
   );
+  // The burn series names cities but not ids; the city rows carry the stored photo for each stay.
+  const imageFor = (leg: { cityName: string; countryName: string | null } | null) =>
+    leg ? cityComparison.find((row) => row.cityName === leg.cityName && row.countryName === leg.countryName)?.cityImage ?? null : null;
 
   if (loading && !summary && !readError) {
     return (
@@ -552,8 +555,8 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
       {/* Current and next destination share one width; trip progress takes the narrower third. */}
       {summary && burnData.length > 0 && (
         <div className="grid gap-3.5 md:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(240px,0.75fr)]">
-          <CurrentDestinationCard position={tripPosition} />
-          <UpNextCard leg={tripPosition.next} isFirst={!tripPosition.current && summary.daysElapsed <= 0} />
+          <CurrentDestinationCard position={tripPosition} image={imageFor(tripPosition.current)} />
+          <UpNextCard leg={tripPosition.next} isFirst={!tripPosition.current && summary.daysElapsed <= 0} image={imageFor(tripPosition.next)} />
           <TripProgressCard spent={summary.totalSpent} budget={summary.totalBudget} />
         </div>
       )}

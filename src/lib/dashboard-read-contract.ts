@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { cityImageViewSchema } from './city-image-view';
 
 const amount = z.number().finite();
 const optionalAmount = amount.nullable();
@@ -29,6 +30,7 @@ export const dashboardReadSchema = z.object({
       legId: amount, cityName: z.string(), countryName: z.string(), startDate: z.string().nullable(),
       planned: amount, actual: amount, plannedDays: amount,
       plannedPerDay: optionalAmount, actualPerDay: optionalAmount, status,
+      cityImage: cityImageViewSchema.nullable().default(null),
     })).default([]),
     actualCategoryTotals: z.record(z.string(), amount), plannedCategoryTotals: z.record(z.string(), amount),
   }),

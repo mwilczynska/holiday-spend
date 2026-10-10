@@ -33,6 +33,9 @@ vi.mock('@/db', async () => {
 });
 
 vi.mock('./climate-provider', () => ({
+  coordinateOverride: vi.fn((name: string, countryCode: string) => name === 'Moved' && countryCode === 'CO'
+    ? { name: 'Moved', countryCode: 'CO', latitude: 1, longitude: 2, queryName: 'Moved', sourceUrl: 'https://example.com/moved' }
+    : undefined),
   fetchCityClimate: vi.fn(),
   getClimateModel: vi.fn((name: string, countryCode: string) => name === 'Salento' && countryCode === 'CO' ? 'ecmwf_ifs' : 'era5_seamless'),
 }));
@@ -336,6 +339,22 @@ describe('city climate persistence', () => {
 
     expect(repaired?.location.countryCode).toBe('CO');
     expect(repaired?.months[0].temperatureC).toBe(21);
+  });
+
+  it('recollects a saved record that disagrees with an explicit coordinate override', async () => {
+    addCity('moved', 'Moved');
+    sqlite.prepare(`
+      INSERT INTO city_climate (city_id, city_name, country_code, data_json, collected_at, last_attempt_at, last_error, version)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `).run('moved', 'Moved', 'CO', JSON.stringify(makeClimate('moved')), '2026-10-01T00:00:00.000Z', '2026-10-01T00:00:00.000Z', null, CITY_CLIMATE_DATA_VERSION);
+
+    expect(await getStoredCityClimates(['moved'])).toEqual({});
+    const corrected = makeClimate('moved', 18);
+    corrected.location = { ...corrected.location, latitude: 1, longitude: 2 };
+    fetchClimateMock.mockResolvedValueOnce(corrected);
+    await ensureCityClimate('moved', 'Moved', 'CO');
+
+    expect((await getStoredCityClimates(['moved'])).moved?.months[0].temperatureC).toBe(18);
   });
 
   it('omits a null marker while this process is still collecting so callers can join it', async () => {

@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
+import type { CityImageView } from '@/lib/city-image-view';
 import { fmtAud } from './dashboard-chart-parts';
 
 type Status = 'planned' | 'active' | 'completed' | null;
@@ -33,6 +34,7 @@ export interface CityComparisonRow {
   plannedPerDay: number | null;
   actualPerDay: number | null;
   status: Status;
+  cityImage?: CityImageView | null;
 }
 
 type View = 'countries' | 'cities';

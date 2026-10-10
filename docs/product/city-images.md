@@ -1,121 +1,129 @@
 # City images
 
-Status: server library and live check written, not yet wired into city creation (10 October 2026). Until it is, every city shows a drawn
-scene chosen from its name (`src/components/dashboard/DestinationScene.tsx`).
+Status: integrated (10 October 2026). Every city has a stored free photo where one can be verified;
+the rest show the drawn scene chosen from the city name (`src/components/dashboard/DestinationScene.tsx`).
 
 ## Source
 
-Free photos come from Wikipedia and Wikimedia Commons. Both are free to use without an API key,
-like Open-Meteo, so this stays within the "no paid data APIs" constraint. Commons only hosts
-freely licensed or public-domain files.
+Free photos come from Wikipedia, Wikidata and Wikimedia Commons. All three are free to use without
+an API key, like Open-Meteo, so this stays within the "no paid data APIs" constraint. Commons only
+hosts freely licensed or public-domain files.
 
 The method is plain HTTP calls to public JSON APIs. It needs no browser, no agent, no API key and
-no LLM, so it can run on the live server whenever a city is added.
+no LLM, and it runs on the server whenever a city is added.
 
-- `src/lib/city-image-lookup.ts`: the server library. `lookupCityImage({ name, countryName, latitude,
-  longitude })` returns a verified image with its credit data, or a `no-article` / `no-free-image`
-  status. `fetch` is injectable; `city-image-lookup.test.ts` covers it offline.
-- `scripts/check-city-image-lookup.ts`: live, read-only check. It geocodes each city with the app's
-  own Open-Meteo geocoding (`geocodingUrl` and `resolveClimateLocation` in `climate-provider.ts`),
-  then calls the library. It writes nothing.
-- `scripts/city-image-probe.mjs`: the earlier exploratory probe over the existing library.
+| File | Role |
+| --- | --- |
+| `src/lib/city-image-lookup.ts` | Finds and verifies the article and image; returns credit data or a miss |
+| `src/lib/city-image-service.ts` | Coordinates, download, storage, identity checks and page views |
+| `src/lib/city-image-view.ts` | Client-safe view type and schema |
+| `src/app/city-images/[cityId]/route.ts` | Serves stored files (authenticated, cached by versioned URL) |
+| `src/components/dashboard/CityPhoto.tsx` | Photo over the drawn scene, with the credit |
+| `scripts/collect-city-images.ts` | Batch collection for the whole library |
+| `scripts/check-city-image-lookup.ts` | Read-only live check for cities not in the library |
 
 ```
-npx tsx scripts/check-city-image-lookup.ts
-npx tsx scripts/check-city-image-lookup.ts "Hue|VN|Vietnam" "Brno|CZ|Czech Republic"
-node scripts/city-image-probe.mjs --cities "Salento,Puerto Escondido"
+npx tsx scripts/collect-city-images.ts                  # cities without a result, plus failed attempts
+npx tsx scripts/collect-city-images.ts --retry-misses   # also look again where no photo was found
+npx tsx scripts/collect-city-images.ts --refresh        # look again for every city
+npx tsx scripts/collect-city-images.ts --city salento --refresh
+npx tsx scripts/check-city-image-lookup.ts "Hue|VN|Vietnam"
 ```
+
+The batch uses `HOLIDAY_SPEND_DB_PATH` like the app and writes photos to the `city-images` folder
+beside the database (`data/city-images/` by default, gitignored). It runs sequentially at about one
+city per second and can be stopped and rerun.
 
 ## Method
 
-1. **Find the article.** Search English Wikipedia for `<place> <country>`. `Bali (Ubud)` searches
-   for `ubud`. Skip disambiguation pages.
-2. **Confirm it is the right place.**
-   - When the city has stored climate coordinates, accept only an article whose coordinates are
-     within 50 km. This picks Salento, Quindío (Colombia) rather than Salento in Italy.
-   - Without coordinates, accept only a geolocated article whose title matches the place name, and
-     flag the result `title-only`.
-   - Prefer an exact title match, then a title that starts with the name, then search order.
-3. **Choose the image.** Use the article's lead image (the PageImages API). If it is missing, local
-   to English Wikipedia (possibly non-free), an SVG (maps, flags, seals), or non-free, fall back to
-   the Wikidata item's `image` (P18), which must be a Commons file.
-4. **Read the licence.** Query Commons `imageinfo` with `extmetadata` for `LicenseShortName`,
-   `LicenseUrl`, `Artist`, `Credit` and `AttributionRequired`. Reject anything not on Commons or
-   with a non-free licence.
-5. **Size.** Request a 1280px-wide thumbnail (`iiurlwidth`). Never hotlink the original file.
+1. **Coordinates.** Use the city's saved climate location. Without one, geocode exactly as climate
+   collection does (Open-Meteo, exact name and ISO country code).
+2. **Find the article.** Search English Wikipedia for `<place> <country>` (`Bali (Ubud)` searches for
+   `ubud`). Skip disambiguation pages and facility articles (airport, stadium, showground, arena,
+   station, railway, university, hospital, festival). Request all article coordinates, because many
+   city infoboxes mark theirs as non-primary; an exact title match without coordinates uses its
+   Wikidata coordinate (P625). Any of an article's points may be the near one: Seoul's first point
+   is the centre of South Korea.
+3. **Confirm it is the right place.**
+   - With coordinates: the article must be within 50 km. This picks Salento, Quindío (Colombia)
+     rather than Salento in Italy.
+   - Without coordinates (the geocoder cannot place islands, regions and some spellings): the
+     article must be a title match or the top search result, and its Wikidata country (P17) must be
+     the city's country, found from its ISO code (P297). A territory that is itself the country
+     item, such as Hong Kong, also matches.
+   - Prefer an exact title match, ignoring spacing and punctuation (`Sa Pa` matches `Sapa`), the
+     nearest first when several match (`Querétaro (city)` over the state); then the name followed by
+     a place word (`Ko Lanta district`, `Jeju Province`); then search order.
+4. **Choose the image.** Use the article's lead image. If it is missing, local to English Wikipedia
+   (possibly non-free), an SVG (maps, flags, seals) or non-free, use the Wikidata item's `image`
+   (P18), which must be a Commons file.
+5. **Read the licence.** Commons `imageinfo` with `extmetadata`. Reject anything not on Commons or
+   with a non-free licence. Keep author, licence, licence URL and description page.
+6. **Download.** 1280px and 500px thumbnails, only from `upload.wikimedia.org` or
+   `thumb.wikimedia.org`, as JPEG/PNG/WebP/GIF up to 8 MB, written atomically under versioned names.
 
-API etiquette: send a descriptive `User-Agent`, make about one request per second, and run
-batches sequentially. A city costs three or four requests.
+API etiquette: a descriptive `User-Agent`, about one city per second, batches run sequentially.
 
-## Evidence
+## Storage and lifecycle
 
-| Sample | Usable | Notes |
-| --- | --- | --- |
-| 10 hand-picked hard cases | 10/10 after fixes | Salento resolves to Colombia; Puerto Escondido via the Wikidata fallback |
-| First 40 cities alphabetically, 25 without stored coordinates | 38/40 | Misses were `Bali (Ubud/Canggu)`, a combined entry, and `Banatayan`, a misspelt duplicate of `Bantayan` |
-| 24 cities not in the library, via the live-site path (geocode, then lookup) | 23/24 | Valladolid, Córdoba, Granada and Perth resolve to Mexico, Argentina, Nicaragua and Australia rather than their namesakes. The miss, Tottori, stops at geocoding ("ambiguous"), as its climate collection would |
+`city_images` holds one row per city: status (`ok`, `no-location`, `no-article`, `no-free-image`,
+`error`), the verified image metadata as JSON, the two file names, fetch and attempt times, and the
+last error. The row records the city name and country code it was collected for and a method
+version; a rename or country change makes the row stale, so the old photo is never shown for the new
+identity.
 
-The licences seen were CC BY, CC BY-SA, CC0, public domain, and Korea's KOGL Type 1. All allow
-reuse with attribution. One known imperfection is that `Bali (Ubud)` resolves to Ubud Palace,
-which is inside the town. The manual override below covers cases like that.
+- **New city.** Manual add (`POST /api/cities`) and every generation path
+  (`generateAndPersistCityEstimate`, used by the planner, dataset and CSV import) collect the photo
+  after climate, so they reuse its coordinates. Failure is logged and never blocks saving the city.
+- **Regeneration.** A current result is kept; the photo is looked up again only when the city's
+  name or country changed.
+- **Misses** are recorded and not retried on every run, because they are deterministic. Errors
+  (network, HTTP) are retried by the batch.
+- **Refresh.** A transient failure keeps the previous photo; a deterministic miss under the current
+  rules drops it.
 
-## Why no LLM is needed, and where a small one would fit
+## Display
 
-City creation already produces verified coordinates: climate collection geocodes every new city
-against its ISO country code. With coordinates, choosing the article is a distance check, not a
-judgement, so the lookup is deterministic and repeatable.
+Itinerary legs and the dashboard's per-city rows carry the photo view in their existing
+server-rendered data, so a full page load still makes no `/api/` requests. Images are served from
+`/city-images/<cityId>?v=<fetchedAt>` outside `/api`, with long private caching.
 
-The only remaining failure is a city the geocoder cannot pin down (Tottori, above). That city also
-has no climate, so it should be fixed at the geocoding step for both, using the existing
-`locationQueries` / `coordinateOverrides` tables in `climate-provider.ts`.
-
-If unattended handling of those cases is wanted later, a small model (for example `gpt-6-luna`)
-could be asked for one thing only: the English Wikipedia article title for the city. The answer
-would still go through the same checks (the article must exist, be geolocated, not be a
-disambiguation page, and carry a free Commons image), so a wrong title is rejected rather than
-shown. The model never supplies an image URL or licence. This is not built; on the evidence so far
-it would rescue about one city in twenty-five.
+The dashboard's Current destination and Up next cards and the planner banner show the 1280px photo
+with a credit chip. Planner leg cards show the 500px photo, lazily loaded, with the credit as a
+tooltip and as a line in the expanded card. While an unsaved draft changes a leg's city, the card
+shows that city's drawn scene. A missing row, a missing file or a failed image load shows the drawn
+scene; another city's photo is never substituted.
 
 ## Licence obligations
 
-CC BY and CC BY-SA require credit: author, licence name with a link, and a link to the source
-file. Show this in a small caption or tooltip wherever the photo appears. A link to the Commons
-description page meets the source requirement. Do not crop away watermarks or alter the meaning
-of the image. Resizing and cropping for layout are fine.
+CC BY and CC BY-SA require credit: author, licence name, and a link to the source. The credit links
+to the Commons description page, which carries the licence text and link. Do not crop away
+watermarks or alter the meaning of the image. Resizing and cropping for layout are fine.
 
-## Proposed integration
+## Evidence
 
-**Storage.** Add a `city_images` table keyed by `city_id`:
+| Sample | Result | Notes |
+| --- | --- | --- |
+| 10 hand-picked hard cases (probe) | 10/10 | Salento resolves to Colombia; Puerto Escondido via the Wikidata fallback |
+| 24 cities not in the library, via geocode then lookup | 23/24 | Valladolid, Córdoba, Granada and Perth resolve to Mexico, Argentina, Nicaragua and Australia rather than their namesakes |
+| Full library, first rules | 183/211 | Audit found Kraków matched to its airport, Wollongong to its showground and Ubud to Ubud Palace: their city articles' coordinates were non-primary or absent. 22 misses were places the geocoder could not pin down |
+| Full library, current rules | 207/211 | 186 confirmed by distance, 21 by Wikidata country. All non-exact and country-confirmed matches were reviewed by hand. Misses: `Banatayan` (misspelt duplicate of Bantayan), Cotopaxi (a volcano and national park), Zanzibar and Tomo (no freely licensed photo on the matched article) |
+| New cities through the app (QA database) | 2/2 | Hobart (by distance) and Koh Phangan (by country) saved with climate and photo in 5-6 s; the planner card showed the photo and credit; deleting the city removed its files |
 
-- `source` (`article` or `wikidata`)
-- `article_title`
-- `commons_file`
-- `description_url`
-- `license`, `license_url`
-- `artist`, `credit`
-- `attribution_required`
-- `width`, `height`
-- `location_check` (`coordinates` or `title-only`)
-- `local_path`
-- `fetched_at`, `last_attempt_at`, `last_error`
-- `override_file` (nullable; set by hand to replace a wrong pick)
+The licences seen are CC BY, CC BY-SA, CC0, public domain, the Free Art Licence and Korea's KOGL
+Type 1. All allow reuse with credit.
 
-Download the 1280px thumbnail once into `data/city-images/<cityId>.jpg`. Like the database, this
-is gitignored and local. Pages serve the local copy, so viewing a page never calls Wikimedia.
+## Climate cross-check
 
-**When it runs.** Follow the climate pattern: collect once and keep the result.
+The distance check doubles as a check on the saved climate location: a city whose saved point has no
+same-named article within 50 km deserves a look. It found that Querétaro's climate had been collected
+for a village in Chiapas about 900 km away, because the geocoder's only exact "Querétaro" is that
+village and it lists the capital as "Querétaro City". `climate-provider.ts` now gives Querétaro an
+explicit point, and a saved record that disagrees with an explicit point is recollected.
 
-- **New city** (generation or manual add): call `lookupCityImage` after `ensureCityClimate` in
-  `generateAndPersistCityEstimate`, using the coordinates it saved. A failure stores
-  `last_error` and leaves the drawn scene; it never blocks saving the city.
-- **City refresh:** keep an existing image unless `override_file` changed or the owner asks for a
-  re-fetch.
-- **Batch for existing cities:** a script around `lookupCityImage`, writing rows and files. Run it
-  sequentially at one request per second (211 cities is about 12 minutes) and make it resumable,
-  skipping rows already fetched.
+## Why no LLM is needed
 
-**Display.** Prefer the photo, with the credit caption. Fall back to the drawn scene when there is
-no row, the row has an error, or the local file is missing. Never substitute another city's photo.
-
-**Fail closed.** If the location check, licence check or download fails, store no image. Do not
-present a photo of a different place as the city.
+With coordinates, choosing the article is a distance check; without them, it is a country check
+against Wikidata. Both are deterministic and repeatable. A small model could be asked only for an
+article title in the remaining cases, and its answer would have to pass the same checks; this is not
+built.

@@ -4,6 +4,7 @@ import { cities, countries } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { eq } from 'drizzle-orm';
 import { ensureCityClimate } from '@/lib/city-climate-service';
+import { collectCityImageQuietly } from '@/lib/city-image-service';
 import {
   CountryMetadataResolutionError,
   findExistingCountryForCanonical,
@@ -136,6 +137,9 @@ export async function POST(request: Request) {
       console.warn('[city-climate] Initial climate collection failed for ' + id + ': ' + message);
     }
 
+    // After climate, so the photo search can reuse its verified coordinates. Never blocks the save.
+    const imageStatus = await collectCityImageQuietly(id);
+
     return success(
       {
         ...data,
@@ -143,6 +147,7 @@ export async function POST(request: Request) {
         countryId,
         name,
         climateStatus,
+        imageStatus,
       },
       201
     );

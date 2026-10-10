@@ -55,6 +55,17 @@ const coordinateOverrides: Record<string, ClimateLocation> = {
     queryName: 'Pu Luong',
     sourceUrl: 'https://www.openstreetmap.org/node/5191527721',
   },
+  // The only exact "Querétaro" result is a village in Chiapas, about 900 km from the state capital,
+  // which the geocoder lists as "Querétaro City" (PPLA, Querétaro) and returns only for an unaccented
+  // search. Found 10 October 2026 when no Wikipedia article for the city lay near the saved point.
+  'MX|Querétaro': {
+    name: 'Querétaro City',
+    countryCode: 'MX',
+    latitude: 20.58806,
+    longitude: -100.38806,
+    queryName: 'Queretaro',
+    sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Queretaro&countryCode=MX&count=20&language=en&format=json',
+  },
 };
 
 function locationQuery(name: string, countryCode: string): LocationQuery {
@@ -68,7 +79,8 @@ export function geocodingUrl(name: string, countryCode: string) {
   return url;
 }
 
-function coordinateOverride(name: string, countryCode: string) {
+/** An explicit point for a city the geocoder places wrongly; saved climate elsewhere is stale. */
+export function coordinateOverride(name: string, countryCode: string): ClimateLocation | undefined {
   return coordinateOverrides[`${countryCode}|${name}`];
 }
 

@@ -76,8 +76,9 @@ test('dataset and settings refresh on their first client navigation', async ({ p
   await page.route('**/api/planner/settings', route => route.fulfill({ json: { data: { groupSize: 5 } } }));
   await page.locator('a[href="/settings"]').filter({ visible: true }).first().click();
   await expect(page.getByRole('combobox').first()).toHaveText('5 travellers');
-  // Exercise hydration without a write.
-  await page.getByRole('button', { name: 'Add', exact: true }).click();
-  await expect(page.getByRole('dialog')).toBeVisible();
+  // Exercise hydration without a write: open the traveller selector and close it unchanged.
+  await page.getByRole('combobox').first().click();
+  await expect(page.getByRole('listbox')).toBeVisible();
   await page.keyboard.press('Escape');
+  await expect(page.getByRole('combobox').first()).toHaveText('5 travellers');
 });

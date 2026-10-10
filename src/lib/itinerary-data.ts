@@ -5,6 +5,7 @@ import { getDailyCost, getLegTotalFromTransports } from '@/lib/cost-calculator';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
+import { getCityImageViews } from '@/lib/city-image-service';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
 
 
@@ -35,6 +36,7 @@ export async function loadItinerary(userId: string, inputs?: ItineraryInputs) {
   const cityMap = new Map(allCities.map(c => [c.id, c]));
   const countryMap = new Map(allCountries.map(c => [c.id, c]));
   const transportMap = groupIntercityTransportsByLegId(transportRows);
+  const cityImages = getCityImageViews(legs.map((leg) => leg.cityId));
 
   const legsWithCosts = deriveLegDates(legs).map(leg => {
     const city = cityMap.get(leg.cityId);
@@ -71,6 +73,7 @@ export async function loadItinerary(userId: string, inputs?: ItineraryInputs) {
       cityName: city?.name ?? 'Unknown',
       countryName: country?.name ?? 'Unknown',
       countryId: city?.countryId ?? '',
+      cityImage: cityImages[leg.cityId] ?? null,
       intercityTransports,
       intercityTransportCost: getIntercityTransportTotal(intercityTransports),
       intercityTransportNote: intercityTransports.find((transport) => transport.note)?.note ?? null,

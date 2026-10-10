@@ -1,14 +1,16 @@
-import { DestinationScene } from '@/components/dashboard/DestinationScene';
+import { CityPhoto } from '@/components/dashboard/CityPhoto';
+import type { CityImageView } from '@/lib/city-image-view';
 
 interface BannerLeg {
   cityName: string;
   countryName: string;
   status: string;
   nights: number;
+  cityImage?: CityImageView | null;
 }
 
 /**
- * Planner hero: a drawn scene for the leg in progress (or the next upcoming one) with a short
+ * Planner hero: the city photo (or drawn scene) for the leg in progress (or the next upcoming one) with a short
  * trip summary. Uses leg statuses only, so it never guesses today's date.
  */
 export function TripBanner({ legs }: { legs: BannerLeg[] }) {
@@ -30,7 +32,7 @@ export function TripBanner({ legs }: { legs: BannerLeg[] }) {
 
   return (
     <section aria-label="Trip at a glance" className="relative min-h-[210px] overflow-hidden rounded-2xl bg-[#BFDCEB]">
-      {focus ? <DestinationScene name={focus.cityName} className="absolute inset-0" /> : null}
+      {focus ? <CityPhoto name={focus.cityName} image={focus.cityImage} credit="top-right" className="absolute inset-0" /> : null}
       <div className="absolute inset-x-4 bottom-4 max-w-md rounded-[14px] bg-[rgba(15,27,51,0.78)] px-4 py-3.5 text-white sm:inset-x-5 sm:bottom-5">
         <p className="text-xs font-semibold text-slate-300">
           {eyebrow}

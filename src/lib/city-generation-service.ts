@@ -2,6 +2,7 @@ import { db } from '@/db';
 import { cities, cityEstimates, countries } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { ensureCityClimate } from '@/lib/city-climate-service';
+import { collectCityImageQuietly } from '@/lib/city-image-service';
 import {
   CityGenerationError,
   generateCityCostEstimate,
@@ -114,6 +115,10 @@ export async function generateAndPersistCityEstimate({
     console.warn('[city-climate] Climate refresh failed for ' + city.id + ': ' + message);
   }
 
+  // After climate, so the photo search can reuse its verified coordinates. An existing photo is
+  // kept on regeneration; it is only looked up again when the city's name or country changed.
+  const imageStatus = await collectCityImageQuietly(city.id);
+
   return {
     provider: generated.provider,
     model: generated.model,
@@ -132,5 +137,6 @@ export async function generateAndPersistCityEstimate({
     anchorsAud: generated.v11Materialization?.anchorsAud,
     tiersAud: generated.v11Materialization?.tiersAud,
     climateStatus,
+    imageStatus,
   };
 }

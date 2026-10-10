@@ -112,7 +112,9 @@ forecast or a stay total.
 
 Weather uses the no-key Open-Meteo historical archive with ERA5-Seamless and country-checked coordinates. Salento,
 Colombia explicitly uses ECMWF IFS because its ERA5 rainfall disagrees sharply with official station evidence;
-the source model is saved and only that city's prior record is invalidated. Saved monthly weather and provenance
+the source model is saved and only that city's prior record is invalidated. Querétaro uses an explicit point because
+the geocoder's only exact match is a village in Chiapas; a saved record that disagrees with an explicit point is
+recollected. Saved monthly weather and provenance
 live in SQLite. City collection/generation and refresh also collect weather; routine
 planner loads read saved records in one request. Existing cities collect once when needed. Provider failures remain
 missing, or retain an explicitly labelled prior successful record after a failed refresh. All itinerary cards render;
@@ -121,14 +123,19 @@ settle rather than drawing incomplete lines repeatedly. See `docs/product/trip-c
 
 ## City images
 
-Destinations currently show a drawn scene chosen deterministically from the city name. The sidebar logo cross-fades
+The sidebar logo cross-fades
 four drawn scenes (mountains, beach, plains, city), showing only the mountains under reduced motion.
 
-Free photos come from Wikipedia/Wikimedia Commons with no key and no LLM. `src/lib/city-image-lookup.ts` searches for
-the article, accepts it only within 50 km of the city's geocoded coordinates, and returns a freely licensed Commons
-image with its credit data, falling back to Wikidata's image; otherwise it returns a miss. It is not yet wired into
-city creation or display. `scripts/check-city-image-lookup.ts` is a read-only live check through the app's own
-geocoding. See `docs/product/city-images.md`.
+Destinations show a free Wikimedia Commons photo where one can be verified, over the drawn scene, with the
+author and licence credit linking to the Commons page. No key and no LLM: `src/lib/city-image-lookup.ts` accepts a
+Wikipedia article only within 50 km of the city's coordinates (saved climate location, else the same Open-Meteo
+geocoding), or, when the geocoder cannot place it, only if its Wikidata country matches; facility articles are never
+chosen. `src/lib/city-image-service.ts` stores 1280px and 500px copies beside the database (`data/city-images/`,
+gitignored) with a `city_images` row recording the city identity, status and credit. New cities collect a photo after
+climate on manual add and every generation path; failure never blocks the save. Misses are recorded, renames make a row
+stale, and pages fall back to the scene for any missing row or file. Photo metadata rides on itinerary legs and dashboard
+city rows, and files are served from `/city-images/<cityId>` outside `/api`. `scripts/collect-city-images.ts` fills
+or refreshes the library. See `docs/product/city-images.md`.
 
 ## Transport
 

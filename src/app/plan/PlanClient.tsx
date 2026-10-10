@@ -17,6 +17,7 @@ import { useTripClimate } from '@/lib/use-trip-climate';
 import type { TemperatureUnit } from '@/lib/climate';
 import { CountrySummaryCard, TripSummaryCard } from '@/components/itinerary/CostSummary';
 import { TripBanner } from '@/components/itinerary/TripBanner';
+import type { CityImageView } from '@/lib/city-image-view';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
 import { cn } from '@/lib/utils';
 
@@ -83,6 +84,7 @@ interface Leg {
   status: string;
   dailyCost: number;
   legTotal: number;
+  cityImage?: CityImageView | null;
 }
 
 interface City {

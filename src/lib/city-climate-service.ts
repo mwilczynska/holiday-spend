@@ -4,7 +4,7 @@ import { db } from '@/db';
 import { cities, cityClimate } from '@/db/schema';
 import { findKnownCountryMetadata } from './country-metadata';
 import { CLIMATE_END_YEAR, CLIMATE_START_YEAR, type CityClimate } from './climate';
-import { fetchCityClimate, getClimateModel } from './climate-provider';
+import { coordinateOverride, fetchCityClimate, getClimateModel } from './climate-provider';
 
 export const CITY_CLIMATE_DATA_VERSION = 'era5_seamless_2021_2025_v1';
 
@@ -110,6 +110,12 @@ function climateFromJson(dataJson: string | null, identity: CityIdentity, model:
       // ERA5 version, but require explicit model provenance for non-default models.
       || !sourceModelMatches(parsed.data, model)) return null;
   if (parsed.data.months.some((month, index) => month.month !== index + 1 || month.lowC > month.temperatureC || month.highC < month.temperatureC)) {
+    return null;
+  }
+  // A record collected before an explicit point was added belongs to the wrong place: recollect it.
+  const override = coordinateOverride(identity.cityName, identity.countryCode);
+  if (override && (Math.abs(parsed.data.location.latitude - override.latitude) > 1e-6
+      || Math.abs(parsed.data.location.longitude - override.longitude) > 1e-6)) {
     return null;
   }
   return parsed.data as CityClimate;

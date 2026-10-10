@@ -61,6 +61,7 @@ const metadataResponse = {
 
 const providerMock = vi.fn();
 const ensureCityClimateMock = vi.fn();
+const collectCityImageMock = vi.fn();
 
 type DbModule = typeof import('@/db');
 type GenerationServiceModule = typeof import('@/lib/city-generation-service');
@@ -122,6 +123,9 @@ describe.sequential('city climate collection integration', () => {
     vi.doMock('@/lib/city-climate-service', () => ({
       ensureCityClimate: ensureCityClimateMock,
     }));
+    vi.doMock('@/lib/city-image-service', () => ({
+      collectCityImageQuietly: collectCityImageMock,
+    }));
     generationService = await import('@/lib/city-generation-service');
     plannerResolution = await import('@/lib/planner-city-resolution');
     citiesRoute = await import('@/app/api/cities/route');
@@ -137,6 +141,7 @@ describe.sequential('city climate collection integration', () => {
     else process.env.CITY_COST_METHODOLOGY_V6 = originalV6Flag;
     vi.doUnmock('@/lib/city-llm-client');
     vi.doUnmock('@/lib/city-climate-service');
+    vi.doUnmock('@/lib/city-image-service');
     vi.resetModules();
     fs.rmSync(tempDir, { recursive: true, force: true });
   });
@@ -154,6 +159,8 @@ describe.sequential('city climate collection integration', () => {
     }));
     ensureCityClimateMock.mockReset();
     ensureCityClimateMock.mockResolvedValue(climate);
+    collectCityImageMock.mockReset();
+    collectCityImageMock.mockResolvedValue('ok');
     await dbModule.db.insert(dbModule.schema.countries).values({
       id: 'japan',
       name: 'Japan',
@@ -176,6 +183,10 @@ describe.sequential('city climate collection integration', () => {
 
     expect(result.climateStatus).toBe('ready');
     expect(ensureCityClimateMock).toHaveBeenCalledWith('osaka', 'Osaka', 'JP', { refresh: true });
+    // The photo is collected after climate so it can reuse the verified coordinates.
+    expect(result.imageStatus).toBe('ok');
+    expect(collectCityImageMock).toHaveBeenCalledWith('osaka');
+    expect(collectCityImageMock.mock.invocationCallOrder[0]).toBeGreaterThan(ensureCityClimateMock.mock.invocationCallOrder[0]);
     const persistedCity = await dbModule.db
       .select()
       .from(dbModule.schema.cities)
@@ -235,8 +246,10 @@ describe.sequential('city climate collection integration', () => {
       id: 'osaka',
       countryId: 'japan',
       climateStatus: 'ready',
+      imageStatus: 'ok',
     });
     expect(ensureCityClimateMock).toHaveBeenCalledWith('osaka', 'Osaka', 'JP', { refresh: false });
+    expect(collectCityImageMock).toHaveBeenCalledWith('osaka');
     expect(providerMock).not.toHaveBeenCalled();
   });
 

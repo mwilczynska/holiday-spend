@@ -12,6 +12,7 @@ import { createExpenseLegResolver } from '@/lib/expense-leg-assignment';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
 import { getMiscellaneousExpenseTotal } from '@/lib/miscellaneous-expenses';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
+import { getCityImageViews } from '@/lib/city-image-service';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import type { AccomTier, ActivitiesTier, DrinksTier, ExpenseCategory, FoodTier, LegStatus } from '@/types';
 
@@ -277,6 +278,7 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
   // One row per stay, for the dashboard's city view.
   type PlannedCityRow = {
     legId: number;
+    cityId: string;
     cityName: string;
     countryName: string;
     startDate: string | null;
@@ -338,6 +340,7 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
     entry.days += leg.nights;
     plannedByLeg.set(leg.id, {
       legId: leg.id,
+      cityId: city.id,
       cityName: city.name,
       countryName,
       startDate: leg.startDate ?? null,
@@ -464,6 +467,7 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
 
 
   // City view: one row per stay in itinerary order, with the same per-day rule as countries.
+  const cityImages = getCityImageViews(Array.from(plannedByLeg.values(), (row) => row.cityId));
   const cityComparison = Array.from(plannedByLeg.values()).map((row) => {
     const actual = actualByLeg.get(row.legId);
     return {
@@ -477,6 +481,7 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
       plannedPerDay: row.days > 0 ? row.plannedExTransport / row.days : null,
       actualPerDay: row.days > 0 ? (actual?.actualExTransport ?? 0) / row.days : null,
       status: row.status,
+      cityImage: cityImages[row.cityId] ?? null,
     };
   });
 

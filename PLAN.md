@@ -118,7 +118,20 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
       `scripts/check-city-image-lookup.ts` found verified free images for 23/24 cities outside the library. The miss
       (Tottori) fails at geocoding, not image lookup. A small-LLM title fallback is described, not built.
 
-- [ ] Optional: wire `lookupCityImage` into city creation and display per `docs/product/city-images.md`.
+### City photos integrated (10 October 2026)
+
+- [x] `city_images` table and `city-image-service.ts`: coordinates from saved climate or the same geocoding,
+      Wikimedia lookup, 1280/500px downloads beside the database, identity-checked rows, recorded misses.
+- [x] New cities collect a photo after climate (manual add and every generation path); failure never blocks the save.
+      Deleting a city removes its files.
+- [x] Display: dashboard destination cards, planner banner and leg cards, with credit; scene fallback. Metadata rides
+      on existing server data, files served from `/city-images` outside `/api`.
+- [x] Batch: 207/211 cities after fixing four matching defects found by audit (non-primary article coordinates,
+      title-prefix landmarks, event articles, equal-title ties) and adding a Wikidata-country check for places the
+      geocoder cannot place.
+- [x] Querétaro climate was for a village in Chiapas; explicit point added and stale records recollect.
+- [x] Live new-city check on the QA database: Hobart and Koh Phangan saved with climate and photo, shown in the planner.
+- [ ] After merge, run `npx tsx scripts/collect-city-images.ts` once against the main database.
 - [ ] Baseline checks, Playwright smoke, and merge decision.
 
 ## Clean up older merged branches — COMPLETE (3 October 2026)

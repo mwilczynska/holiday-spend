@@ -90,16 +90,18 @@ test('failed initial Settings reads show unavailable values and recover with Ret
     await expect(page.getByRole('alert').filter({ hasText: 'Settings unavailable. Traveller count, provider limits and fixed-cost totals could not be loaded.' })).toBeVisible();
     await expect(page.getByRole('combobox').first()).toHaveText('Unavailable');
     await expect(page.getByLabel('Maximum output tokens', { exact: true })).toHaveValue('');
-    await expect(page.getByText('Fixed-cost totals unavailable.', { exact: true })).toBeVisible();
+    // The retired fixed-cost section only renders for loaded rows; the alert above names the unavailable totals.
+    await expect(page.getByText('Fixed costs (retired)', { exact: true })).toBeHidden();
     await expect(page.getByText('No fixed costs yet.', { exact: true })).toBeHidden();
-    await expect(page.getByRole('button', { name: 'Add', exact: true })).toBeDisabled();
+    // Fixed costs are retired from the UI; Save limits is the control that waits for a successful read.
+    await expect(page.getByRole('button', { name: 'Save limits', exact: true })).toBeDisabled();
     await page.waitForLoadState('networkidle');
     fixture.exec('ALTER TABLE qa_suspended_fixed_costs RENAME TO fixed_costs');
     suspended = false;
     await page.getByRole('button', { name: 'Retry settings', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Retry settings', exact: true })).toBeHidden();
     await expect(page.getByLabel('Maximum output tokens', { exact: true })).not.toHaveValue('');
-    await expect(page.getByRole('button', { name: 'Add', exact: true })).toBeEnabled();
+    await expect(page.getByRole('button', { name: 'Save limits', exact: true })).toBeEnabled();
   } finally {
     if (suspended) fixture.exec('ALTER TABLE qa_suspended_fixed_costs RENAME TO fixed_costs');
     fixture.close();
