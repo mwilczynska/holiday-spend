@@ -158,6 +158,9 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
       retries with the place name alone when the country drowns it (York). Full photo refresh: 264/264, two picks
       changed (York found; Bath now its own article).
 - [x] Noted, not calibrated: new UK 3-star anchors (US$166-240) sit above the older London entry.
+- [ ] Europe (64 cities) handed off to a Codex agent with GPT 6 Luna Max subagents:
+      `docs/dev/handoffs/add-cities-europe.md`. The batch script now takes `--provider` and `--agent` so the
+      provenance names the model and runner correctly.
 
 ## New cities via subagents — COMPLETE (10 October 2026)
 

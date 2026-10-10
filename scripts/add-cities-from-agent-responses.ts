@@ -4,6 +4,7 @@
  *
  *   npx tsx scripts/add-cities-from-agent-responses.ts prompts --dir <dir> "Chongqing|China" ...
  *   npx tsx scripts/add-cities-from-agent-responses.ts persist --dir <dir> --model claude-haiku-5-5 --effort max
+ *   npx tsx scripts/add-cities-from-agent-responses.ts persist --dir <dir> --provider openai --model gpt-6-luna \n *     --effort max --agent "Codex subagent"
  *
  * `prompts` writes <slug>.prompt.md: the exact system and user prompt the app sends for that city
  * (`buildCityGenerationV11Prompt`, the active v1.1 contract). The agent writes its raw answer to
@@ -14,7 +15,7 @@
  * country checks, schema and RBA validation, v1 formulas, persistence, climate and photo collection
  * are exactly the app's. Only `runJsonPromptWithProvider` is answered from the files, and only when
  * the prompt the app builds is byte-identical to the one the agent was given. Provenance records the
- * model as "<model> (Claude Code subagent)". Cities only: no itinerary legs are created.
+ * model as "<model> (<agent>)", by default "Claude Code subagent". Cities only: no itinerary legs are created.
  */
 import fs from 'fs';
 import path from 'path';
@@ -24,6 +25,7 @@ import { setExternalJsonPromptRunner } from '../src/lib/city-llm-client';
 import { resolveOrCreatePlannerCity } from '../src/lib/planner-city-resolution';
 import { resolveLlmRuntimeDefaults } from '../src/lib/llm-request-limits';
 import { getCityImageRow } from '../src/lib/city-image-service';
+import { CITY_GENERATION_PROVIDERS, type CityGenerationProvider } from '../src/lib/city-generation-config';
 
 const SYSTEM_PROMPT = 'You are a careful travel cost estimation assistant. Return valid JSON only.';
 const sha256 = (text: string) => crypto.createHash('sha256').update(text).digest('hex');
@@ -50,7 +52,7 @@ function writePrompts(dir: string, entries: string[]) {
   }
 }
 
-async function persist(dir: string, model: string, effort: string) {
+async function persist(dir: string, provider: CityGenerationProvider, model: string, effort: string, agent: string) {
   const ids = fs.readdirSync(dir).filter((file) => file.endsWith('.prompt.json')).map((file) => file.replace(/\.prompt\.json$/, '')).sort();
   for (const id of ids) {
     const resultPath = path.join(dir, `${id}.result.json`);
@@ -67,8 +69,8 @@ async function persist(dir: string, model: string, effort: string) {
         throw new Error('The prompt the app built differs from the one the agent answered; not using this response.');
       }
       return {
-        provider: 'anthropic',
-        model: `${model} (Claude Code subagent)`,
+        provider,
+        model: `${model} (${agent})`,
         text,
         webSearchUsed: provenance.web_search_used === true,
         reasoningEffort: effort as never,
@@ -78,7 +80,7 @@ async function persist(dir: string, model: string, effort: string) {
       const city = await resolveOrCreatePlannerCity({
         cityName: meta.cityName,
         countryName: meta.countryName,
-        provider: 'anthropic',
+        provider,
         model,
         reasoningEffort: effort as never,
         runtimeSettings: resolveLlmRuntimeDefaults(),
@@ -110,7 +112,9 @@ if (!dir) throw new Error('--dir is required.');
 if (command === 'prompts') {
   writePrompts(dir, process.argv.slice(2).filter((value, index, all) => index > 0 && all[index - 1] !== '--dir' && value !== '--dir'));
 } else if (command === 'persist') {
-  persist(dir, arg('--model') ?? 'claude-haiku-5-5', arg('--effort') ?? 'max').catch((error) => { console.error(error); process.exit(1); });
+  const provider = (arg('--provider') ?? 'anthropic') as CityGenerationProvider;
+  if (!CITY_GENERATION_PROVIDERS.includes(provider)) throw new Error(`--provider must be one of ${CITY_GENERATION_PROVIDERS.join(', ')}.`);
+  persist(dir, provider, arg('--model') ?? 'claude-haiku-5-5', arg('--effort') ?? 'max', arg('--agent') ?? 'Claude Code subagent').catch((error) => { console.error(error); process.exit(1); });
 } else {
   throw new Error('Usage: prompts|persist --dir <dir> ...');
 }

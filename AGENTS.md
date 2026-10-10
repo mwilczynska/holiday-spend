@@ -177,8 +177,9 @@ Show API key switch is labelled and its label toggles the control.
 Cities can also be added in batches with `scripts/add-cities-from-agent-responses.ts`: it writes the exact v1.1 prompt
 the app sends for each city, an external agent (for example a Claude Code subagent) answers it, and `persist` runs the
 real `resolveOrCreatePlannerCity` path with only the provider call answered from file (`setExternalJsonPromptRunner`,
-never set by the app), after checking the app-built prompt is byte-identical. Provenance records the model as
-"<model> (Claude Code subagent)". It creates cities only, never itinerary legs.
+never set by the app), after checking the app-built prompt is byte-identical. `--provider`, `--model`, `--effort` and `--agent` set the
+recorded provenance, for example "gpt-6-luna (Codex subagent)". It creates cities only, never itinerary legs.
+`docs/dev/handoffs/add-cities-europe.md` is the handoff for continuing with European cities.
 
 ## Provider request limits
 
