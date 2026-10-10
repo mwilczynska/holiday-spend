@@ -309,7 +309,12 @@ code, not while judging speed.
 `NEXTAUTH_URL` in `.env.local` (main 3000, the bento worktree 3001). Before this, signing in on any other port
 succeeded and then redirected to a port with nothing listening. Trusting the Host header is for local development
 only and is never set for `npm start`. Auth form inputs adopt text typed before the page's JavaScript loaded (and
-browser autofill), so Sign in and Enter dev mode enable without retyping on a slow first compile.
+browser autofill), so Sign in and Enter dev mode enable without retyping on a slow first compile. Set `NEXT_DIST_DIR`
+to give a second dev server its own build directory; two dev servers sharing `.next-dev` overwrite each other's chunks.
+
+Dashboard charts render without entry animation. Animated bars stay empty until the browser paints frames, which it
+does not do for a background tab or hidden window, so a dashboard loaded that way after sign-in showed axes without
+bars until the page was revisited.
 
 `npm run serve` is for using the app: it builds and then starts. One command rather than two because `&&` is a
 parser error in Windows PowerShell 5.1, which is the shell this project is developed in, and npm runs its own

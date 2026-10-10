@@ -86,7 +86,10 @@ export const DashboardCategoryChart = memo(function DashboardCategoryChart({
               `${categoryMode === 'planned' ? 'Planned' : 'Actual'}: ${label}`
             }
           />
-          <Bar dataKey="value" radius={isExpanded ? [0, 7, 7, 0] : [0, 5, 5, 0]} barSize={isExpanded ? expandedBarSize : 20}>
+          {/* No entry animation: animated bars stay empty until the browser paints frames, which it
+              does not do for a background tab or hidden window, so a dashboard loaded that way after
+              sign-in showed axes without bars. */}
+          <Bar dataKey="value" isAnimationActive={false} radius={isExpanded ? [0, 7, 7, 0] : [0, 5, 5, 0]} barSize={isExpanded ? expandedBarSize : 20}>
             {data.map((entry) => (
               <Cell key={entry.name} fill={entry.fill} />
             ))}

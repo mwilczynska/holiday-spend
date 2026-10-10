@@ -101,14 +101,19 @@ export const DashboardCountryChart = memo(function DashboardCountryChart({
               }}
             />
           ) : null}
+          {/* No entry animation: animated bars stay empty until the browser paints frames, which it
+              does not do for a background tab or hidden window, so a dashboard loaded that way after
+              sign-in showed axes without bars. */}
           <Bar
             dataKey="Planned"
+            isAnimationActive={false}
             fill="#94a3b8"
             radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
             barSize={isExpanded ? expandedBarSize : undefined}
           />
           <Bar
             dataKey="Actual"
+            isAnimationActive={false}
             fill="#2563eb"
             radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
             barSize={isExpanded ? expandedBarSize : undefined}

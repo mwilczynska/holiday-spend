@@ -8,7 +8,8 @@ const isDevServer = process.env.NODE_ENV === 'development';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: isDevServer ? '.next-dev' : '.next',
+  // NEXT_DIST_DIR lets a second dev server (tests, a cold-start check) run without wiping this one.
+  distDir: process.env.NEXT_DIST_DIR || (isDevServer ? '.next-dev' : '.next'),
   output: 'standalone',
   experimental: {
     outputFileTracingIncludes: {

@@ -83,9 +83,9 @@ export const DashboardBurnChart = memo(function DashboardBurnChart({
               ifOverflow="extendDomain"
             />
           ))}
-          <Line type="monotone" dataKey="spentActual" name="Actual spend" stroke="#16a34a" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
-          <Line type="monotone" dataKey="spentPlannedTail" name="Actual spend · leg still planned" stroke="#9ca3af" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} legendType="none" />
-          <Line type="monotone" dataKey="plannedCumulative" name="Planned estimate" stroke="#0f766e" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" strokeDasharray={isExpanded ? '7 5' : '6 4'} activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
+          <Line isAnimationActive={false} type="monotone" dataKey="spentActual" name="Actual spend" stroke="#16a34a" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
+          <Line isAnimationActive={false} type="monotone" dataKey="spentPlannedTail" name="Actual spend · leg still planned" stroke="#9ca3af" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} legendType="none" />
+          <Line isAnimationActive={false} type="monotone" dataKey="plannedCumulative" name="Planned estimate" stroke="#0f766e" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" strokeDasharray={isExpanded ? '7 5' : '6 4'} activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
           {budgetCeiling > 0 && (
             <ReferenceLine
               y={budgetCeiling}
