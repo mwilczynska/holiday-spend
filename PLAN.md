@@ -27,6 +27,11 @@ Its regressions and Chrome verification pass.
 
 **Working tree:** European geocoding fixes and milestone records are on main. Added cities and photos are local application data. Concurrent methodology/documentation edits are excluded from the European commits.
 
+## README and screenshots for the bento UI — COMPLETE (10 October 2026)
+
+- [x] Eight 1920×1080 screenshots in `docs/images/` from a fictional demo trip (19 legs around the Mediterranean, 267 generated expenses). The demo database was a `VACUUM INTO` copy with every personal table emptied and the library cut to the 121 shipped cities plus the trip's cities; it ran on its own dev server and build directory. The real database was only read.
+- [x] README rewritten: corrected the city-cost description (the model estimates prices from its own knowledge and searches only for the exchange rate), added climate, photos, current destination and one-off costs, linked the methodology documents, and removed history-heavy asides.
+
 ## Dashboard current destination pace — COMPLETE (10 October 2026)
 
 - [x] The Current destination card showed the leg's unspent budget divided by the days left. Expenses arrive by manual upload, so the leg usually has little or no logged spending and the figure was inflated (Mexico City: $4,013 over 4 days = $1,003/day while the last expense was 3 Oct). It now shows the leg's planned pace (planned ÷ days, $401/day), matching the Up next card. Type-check, lint and dashboard tests pass; checked on the live dashboard.

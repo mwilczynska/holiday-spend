@@ -3158,3 +3158,21 @@ TypeScript, the production build and 465 tests passed for the geocoding implemen
 Final memory-mirror and v1.1 guard checks pass; the live CSV hash is unchanged. Later European checkpoints only
 record documentation and local data. Concurrent methodology/documentation edits are left outside these commits.
 The completed backup and gitignored batch responses/provenance/results remain available for audit.
+
+
+## README screenshots for the bento UI - 10 October 2026
+
+The README screenshots were retaken at 1920x1080 after the bento redesign, and two were added: the trip climate chart
+and the Methodology page. As in September they show a fictional trip, not real data. This time the real database was
+never modified. A demo copy was made with `VACUUM INTO` (a read-only operation on the source), every personal table in
+the copy was emptied, the city library was cut to the 121 shipped cities plus the demo trip's cities, and a 19-leg
+Mediterranean trip with 267 generated expenses was seeded. The copy ran on a separate dev server with its own build
+directory, pointed at it through `HOLIDAY_SPEND_DB_PATH`. A byte scan of the copy found no personal identifiers.
+
+Two capture details: the pointer has to be parked off the charts, or Recharts tooltips appear in the image, and the
+planner's sticky header covers anything scrolled to the top of the page, so scroll targets need a 175 px offset. The
+demo dev server also added its build directory to `tsconfig.json`; that edit was reverted.
+
+The README's city-cost section had described a single web-enabled call returning the price anchors. In v1.1 the model
+estimates the prices from its own knowledge and searches only for the exchange rate. The section now says so and links
+to `docs/product/city-cost-methodology.md`.

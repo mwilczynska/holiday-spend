@@ -1,94 +1,105 @@
 # Holiday Spend
 
-A travel budget planner and spend tracker built for long multi-city trips — the kind where you are away for
-months, crossing a dozen countries, and "what will this actually cost?" is genuinely hard to answer.
+A travel budget planner and spend tracker for long multi-city trips: months away, a dozen or more countries, and a
+budget that has to hold up the whole way.
 
-![Dashboard showing planned versus actual spend](docs/images/dashboard.jpg)
+![Dashboard: trip totals, the current and next destination, and planned versus actual by country and category](docs/images/dashboard.jpg)
 
-## The problem
+## Why it exists
 
-Most budgeting tools assume you are at home with a fixed income and recurring bills. Trip planners assume a
-two-week holiday to one place. Neither helps when you are planning eleven months across four continents and need
-to know whether staying an extra week in Japan means cutting one in Peru.
+Budgeting apps assume a fixed income and recurring bills. Trip planners assume two weeks in one place. Neither helps
+when you are planning three months around the Mediterranean, or a year across four continents, and need to know
+whether an extra week in one city means cutting one somewhere else.
 
 Two things make that hard:
 
-1. **Costs vary enormously by city and by how you travel.** A night in Tokyo is not a night in Hanoi, and a
-   3-star hotel is not a hostel dorm. You need per-city, per-tier numbers, not a single daily average.
-2. **Plans change constantly while you travel.** You need to see how actual spending is tracking against the
-   plan, per country and per category, and re-forecast as you go.
+1. **Costs vary by city and by how you travel.** A night in Santorini is not a night in Zagreb, and a 3-star hotel is
+   not a hostel dorm. You need per-city, per-tier numbers, not one daily average.
+2. **Plans change while you travel.** You need to see how spending is tracking against the plan, by country and by
+   category, and adjust as you go.
 
-Holiday Spend answers both: model the trip city by city before you leave, then track what you actually spend
-against it while you are away.
+Holiday Spend handles both: plan the trip city by city before you leave, then track what you spend against it while
+you are away.
 
 ## What it does
 
-### Plan a trip leg by leg
+### Plan the trip leg by leg
 
-Each leg picks a city, dates, and a tier for accommodation, food, drinks and activities. Costs are stored per
-city for two travellers and scaled at runtime for your traveller count, so changing party size re-costs the whole
-trip without rewriting any data.
+Each leg is a city, dates, and a tier for accommodation, food, drinks and activities. City costs are stored for two
+travellers and scaled for your group size, so changing the number of travellers re-costs the whole trip. Legs also
+hold intercity transport and one-off costs, and any category can be overridden with a known price such as a booked
+hotel.
 
-![Itinerary planner with per-leg tier selection](docs/images/planner.jpg)
+![An expanded leg in the planner: dates, tier choices, intercity transport and one-off costs](docs/images/planner.jpg)
 
-Intercity transport is tracked separately, with optional LLM-backed estimation that returns reviewable options
-with sources — nothing is applied to your plan until you choose it.
+Intercity transport can be entered by hand or estimated by a language model, which returns up to four options with
+their sources. Nothing is added to the plan until you choose one.
+
+### See the weather you will travel in
+
+Every stay shows its typical temperature and rainfall for the month, from 2021 to 2025 historical averages. The trip
+chart plots the whole journey day by day, so a cold or wet stretch is visible before you book it.
+
+![Trip climate chart across the itinerary, above the list of legs with city photos](docs/images/trip-climate.jpg)
+
+Destinations carry a freely licensed photo from Wikimedia Commons, credited to its author.
 
 ### Track what you actually spend
 
-Log expenses manually or import Wise CSV exports. Each expense is assigned to an itinerary leg, so spending is
-attributed to the right city and country even when you paid for it weeks earlier.
+Log expenses by hand or import Wise CSV exports. Each expense is assigned to a leg, so spending lands in the right
+city and country even when it was paid weeks earlier. Expenses can be tagged, excluded, reassigned and exported.
 
-![Expense tracking with per-leg assignment](docs/images/expenses.jpg)
+![Expense list with each expense assigned to an itinerary leg](docs/images/expenses.jpg)
 
-### Compare planned against actual
+### Compare the plan with reality
 
-The dashboard shows variance to date, burn rate per day, and planned-versus-actual broken down by country and
-category. The cumulative view plots actual spend against the planned estimate and the total trip budget, shaded by
-which country you were in, so overspend shows up as a widening gap rather than a number you have to interpret.
+The dashboard shows spending to date against the plan, your current destination and the next one, and planned
+versus actual by country, city and category. The cumulative chart plots actual spending against the plan and the
+total budget, banded by country, so overspending shows as a widening gap.
 
-![Cumulative spend against plan and budget, banded by country](docs/images/cumulative-spend.jpg)
+![Cumulative spend against plan and budget, and the planned versus actual table by country](docs/images/cumulative-spend.jpg)
 
-Saved plan snapshots can be compared side by side to see how a change to the itinerary moves the total — here the
-same trip costed for two travellers against three.
+Saved plans can be compared side by side. Here the same trip is costed for two travellers and for three.
 
-![Two saved plans compared, cumulative spend diverging](docs/images/compare-plans.jpg)
+![Two saved plans compared, with their cumulative planned spend](docs/images/compare-plans.jpg)
 
-### Maintain the city cost library
+### Keep a library of city costs
 
-121 cities ship with the app. Any city not in the library can be generated on demand, and every generated row
-records where its numbers came from.
+The app ships with 121 cities. Any other city can be generated on demand, and every generated city records exactly
+how its numbers were produced.
 
-![City cost dataset with provenance](docs/images/dataset.jpg)
+![A generated city in the dataset, with its provenance: model, prompt, formula version and exchange rate](docs/images/dataset.jpg)
 
-## How the city costs work
+## How city costs are estimated
 
-This is the part with the most design behind it, so it is worth explaining.
+Each city has 19 values in AUD for two people: six accommodation tiers per night, and four tiers each for food,
+drinks and activities per day.
 
-Generating a city's costs uses **one** web-enabled LLM call that returns ten intuitive price anchors in USD — a
-hostel bed, a 3-star hotel, a street meal, a beer, and so on — plus the latest dated RBA USD/AUD observation.
+To add a city, the app makes one request to a language model (OpenAI, Anthropic or Gemini):
 
-The model does no arithmetic. Deterministic server code validates the FX observation, applies fixed formulas to
-derive all 19 planner fields from the ten anchors, and converts to AUD. The same inputs always produce the same
-output, and the derivation can be re-run and checked.
+1. The model estimates ten prices in USD from its general knowledge: a beer, a coffee, two restaurant meals, a
+   cocktail, a glass of wine, a hostel bed, a hostel private room, and 1-star and 3-star hotel rooms.
+2. In the same request it looks up the latest Reserve Bank of Australia exchange rate, with its date and source.
+3. The app checks the response, applies fixed formulas to turn the ten prices into the 19 tiers, and converts them
+   to AUD. The model does no arithmetic.
 
-Every generated row stores its provenance: the anchors, the provider and model, the reasoning effort, the prompt
-and formula versions, the FX snapshot with its as-of date, and the model's own confidence notes. The
-`/estimates` page documents the methodology in the app itself.
+Everything used is saved with the city: the ten prices, the model and settings, the prompt and formula versions, the
+exchange rate and its date, and the model's own confidence note. The estimates are model judgements, not observed
+prices, and the app labels them that way.
 
-Two principles run through it:
+![The Methodology page in the app](docs/images/methodology.jpg)
 
-- **Fail closed.** An unsupported value stays missing rather than becoming a plausible substitute.
-- **Never present a model estimate as an observed price.** Generated values are labelled as what they are.
+The full method, including its limitations and the more elaborate approaches that were tried and set aside, is in
+[docs/product/city-cost-methodology.md](docs/product/city-cost-methodology.md) and on the app's Methodology page.
 
 ## Built with
 
-Next.js 14 (App Router) · TypeScript · Tailwind · Radix/shadcn · SQLite via Drizzle ORM and `better-sqlite3` ·
-Zod · Recharts · NextAuth · Vitest and Playwright.
+Next.js 14 (App Router) · TypeScript · Tailwind · Radix/shadcn · SQLite with Drizzle ORM and `better-sqlite3` · Zod ·
+Recharts · NextAuth · Vitest and Playwright. Weather comes from Open-Meteo and photos from Wikimedia Commons; neither
+needs a key.
 
-The app is a single Next.js deployment with SQLite on disk — deliberately simple to run and back up for something
-one household uses. Provider API keys for LLM generation are entered in the browser and never reach the
-repository, server database, or logs.
+It is a single Next.js app with a SQLite file on disk, which keeps it simple to run and back up for one household.
+Language-model API keys are entered in the browser and never reach the repository, the database or the logs.
 
 ## Running it locally
 
@@ -101,61 +112,63 @@ npm run db:seed                # loads the 121-city cost dataset
 Then either:
 
 ```bash
-npm run dev                    # for editing code
-npm run serve                  # for actually using the app (build, then start)
+npm run dev                    # for changing code
+npm run serve                  # for using the app (builds, then starts)
 ```
 
-Use the production build when you want to use the app. Development mode serves unminified bundles — roughly
-14 MB of JavaScript for the dashboard against 263 kB built — so it is not representative of how the app performs.
-The two write to separate build directories (`.next-dev` and `.next`) so they do not invalidate each other.
+Use `npm run serve` to use the app. Development mode serves unminified bundles, about 14 MB of JavaScript for the
+dashboard against 263 kB in a production build. The two use separate build directories (`.next-dev` and `.next`) so
+they do not overwrite each other.
 
-Sign in with `AUTH_DEV_PIN` in development. Production disables that PIN by design, so it needs an
-email/password account — `npm run auth:set-local-password` sets one for the local user.
+In development, sign in with `AUTH_DEV_PIN`. A production build disables the PIN and needs an email and password;
+`npm run auth:set-local-password` sets one for the local user.
 
-### Verification
+### Checks
 
 ```bash
 npx tsc --noEmit
 npm run build
 npm test -- --run
 npm run docs:check-memory          # CLAUDE.md and AGENTS.md must stay identical
-npm run methodology:v1.1:check     # deterministic formula, FX and dataset-integrity check
-npm run performance:check          # authenticated route, payload and JS-size budgets
+npm run methodology:v1.1:check     # formula, exchange-rate and dataset-integrity check
+npm run performance:check          # route, payload and JavaScript-size budgets for a signed-in user
 ```
 
-`performance:check` needs credentials (`WEBAPP_AUTH_EMAIL` and `WEBAPP_AUTH_PASSWORD`, or `WEBAPP_AUTH_PIN` with
-`WEBAPP_REQUIRE_BUILD=false` against a dev server). It fails rather than measuring an unauthenticated redirect,
-which is a mistake an earlier version of it made for a month.
+`performance:check` needs credentials: `WEBAPP_AUTH_EMAIL` and `WEBAPP_AUTH_PASSWORD` for a production build, or
+`WEBAPP_AUTH_PIN` with `WEBAPP_REQUIRE_BUILD=false` for a dev server. Without them it fails rather than measuring the
+sign-in page.
 
 ## Project structure
 
 | Path | Contents |
 | --- | --- |
-| `src/app` | Routes and API handlers |
-| `src/components` | Planner, dashboard, city library and UI components |
-| `src/lib` | Cost calculators, import logic, LLM clients, methodology code |
-| `src/db` | Schema, runtime bootstrap and seed script |
-| `data/reference/` | Canonical datasets and retained methodology evidence |
-| `docs/prompts/` | Versioned LLM prompt contracts |
-| `scripts/` | Build, validation and reproducibility tooling |
+| `src/app` | Pages and API routes |
+| `src/components` | Planner, dashboard, expenses, city library and shared UI |
+| `src/lib` | Cost calculation, imports, language-model clients, climate, photos and methodology code |
+| `src/db` | Schema, database setup and seed script |
+| `data/reference/` | The city cost dataset and retained methodology evidence |
+| `docs/prompts/` | Versioned language-model prompts |
+| `scripts/` | Build, validation and data tooling |
 
 ## Documentation
 
 | File | Purpose |
 | --- | --- |
-| [CLAUDE.md](./CLAUDE.md) / [AGENTS.md](./AGENTS.md) | Project memory — what the app is and how it works today |
-| [PLAN.md](./PLAN.md) | Active plan, milestone status, open decisions |
-| [LOG.md](./LOG.md) | History — what was built, what was tried, and what the evidence showed |
-| [docs/product/transport-estimation.md](./docs/product/transport-estimation.md) | How intercity transport estimation works |
-| [docs/ops/deployment.md](./docs/ops/deployment.md) | Deployment |
-| [docs/README.md](./docs/README.md) | Guide to everything else under `docs/` |
+| [docs/product/city-cost-methodology.md](docs/product/city-cost-methodology.md) | How city costs are estimated and turned into a budget |
+| [docs/product/transport-estimation.md](docs/product/transport-estimation.md) | How intercity transport is estimated |
+| [docs/product/trip-climate.md](docs/product/trip-climate.md) | Where the weather averages come from |
+| [docs/product/city-images.md](docs/product/city-images.md) | How city photos are found and credited |
+| [CLAUDE.md](CLAUDE.md) / [AGENTS.md](AGENTS.md) | Project memory: what the app is and how it works today |
+| [PLAN.md](PLAN.md) | Current plan and milestone status |
+| [LOG.md](LOG.md) | History: what was built, what was tried, and what the evidence showed |
+| [docs/ops/deployment.md](docs/ops/deployment.md) | Deployment |
+| [docs/README.md](docs/README.md) | Guide to everything else under `docs/` |
 
-`LOG.md` is worth a look if you are interested in how decisions were reached. It records approaches that were
-tried and rejected alongside the ones that shipped, including a city-cost methodology that took six iterations
-before being abandoned in favour of the simpler one now in use.
+`LOG.md` records the approaches that were rejected as well as the ones that shipped. The city-cost method went
+through several far more elaborate designs, built on collecting prices from the web, before the simpler one in use
+now.
 
-## A note on scope
+## Scope
 
-This is a personal project built for one household's travel, not a product with sign-ups. The screenshots use
-fictional demo data. It is public because the engineering may be of interest, not because it is looking for
-users.
+This is a personal project for one household's travel, not a product with sign-ups. It is public because the
+engineering may be of interest. The screenshots show a fictional demo trip, not real spending.
