@@ -144,6 +144,20 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
       docs memory check, methodology check, production build.
 - [x] Worktree `C:\Dev\holiday-spend-bento` removed after the merge.
 
+## New cities via subagents — COMPLETE (10 October 2026)
+
+- [x] Owner asked for popular cities in China, Taiwan, India and Sri Lanka, added as a user would, to the library
+      only, with Haiku 5.5 (max effort) subagents in place of the provider API.
+- [x] `scripts/add-cities-from-agent-responses.ts` and `setExternalJsonPromptRunner`: the exact v1.1 prompt, persisted
+      through `resolveOrCreatePlannerCity`, so validation, formulas, climate and photo are the app's.
+- [x] Test batch (Chongqing, Hangzhou), then 34 more in waves: 12 China, 5 Taiwan, 12 India, 7 Sri Lanka. All 36
+      saved with climate and a verified photo; every RBA observation is 2026-10-09 (0.6979 USD per AUD) from fetched
+      rba.gov.au pages. Library 211 -> 247 cities; itinerary unchanged at 66 legs.
+- [x] Geocoding fixes found on the way: Suzhou (two prefecture seats; Jiangsu), Pingyao ("Pingyao County"),
+      Kaohsiung ("Kaohsiung City"), Kenting (not in the geocoder; OpenStreetMap point).
+- [x] Noted, not calibrated: new Taiwanese 3-star anchors (US$95-115) sit above the April 2026 Taipei entry.
+      Pushkar is a dry town; its drink anchors are a disclosed hypothetical basis.
+
 ## Clean up older merged branches — COMPLETE (3 October 2026)
 
 The owner explicitly authorizes deletion of `feat/trip-climate`, `feat/app-performance`,

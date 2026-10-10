@@ -44,6 +44,8 @@ const locationQueries: Record<string, LocationQuery> = {
   'PH|Palawan (El Nido)': { queryName: 'El Nido', admin2: 'Province of Palawan', admin3: 'El Nido' },
   'PH|Santa Fe (Bantayan)': { queryName: 'Santa Fe', admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Municipality of Santa Fe' },
   'TH|Koh Lanta': { queryName: 'Ko Lanta Yai', admin1: 'Krabi', featureCode: 'ISL', sourceUrl: 'https://www.geonames.org/1152414/ko-lanta-yai.html' },
+  // Jiangsu's Suzhou (6.7M) and Anhui's (1.6M) are both prefecture seats; the travel city is Jiangsu's.
+  'CN|Suzhou': { queryName: 'Suzhou', admin1: 'Jiangsu' },
 };
 
 const coordinateOverrides: Record<string, ClimateLocation> = {
@@ -77,6 +79,34 @@ const coordinateOverrides: Record<string, ClimateLocation> = {
     longitude: -78.436,
     queryName: 'Cotopaxi',
     sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Cotopaxi&count=10&language=en&format=json',
+  },
+  // The ancient walled city is the seat the geocoder lists as "Pingyao County" (PPLA3, Shanxi); the
+  // exact name "Pingyao" matches a dozen unrelated villages.
+  'CN|Pingyao': {
+    name: 'Pingyao County',
+    countryCode: 'CN',
+    latitude: 37.2025,
+    longitude: 112.17806,
+    queryName: 'Pingyao',
+    sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Pingyao&countryCode=CN&count=20&language=en&format=json',
+  },
+  // The geocoder lists the city only as "Kaohsiung City" (PPLA), so the exact name finds nothing.
+  'TW|Kaohsiung': {
+    name: 'Kaohsiung City',
+    countryCode: 'TW',
+    latitude: 22.61626,
+    longitude: 120.31333,
+    queryName: 'Kaohsiung',
+    sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Kaohsiung&countryCode=TW&count=20&language=en&format=json',
+  },
+  // A resort village in Hengchun township that the geocoder does not list. Point from OpenStreetMap.
+  'TW|Kenting': {
+    name: 'Kenting',
+    countryCode: 'TW',
+    latitude: 21.9453078,
+    longitude: 120.7987855,
+    queryName: 'Kenting',
+    sourceUrl: 'https://www.openstreetmap.org/node/4252467696',
   },
   // A village in Boulouparis that the geocoder does not list. Point from OpenStreetMap.
   'NC|Tomo': {
