@@ -3129,3 +3129,13 @@ backup; itinerary, transport, plan and expense hashes remain unchanged. Accented
 Wrocław are inspected and correct. Hallstatt retains low confidence for limited seasonal accommodation; newer
 Austrian, Czech and Greek room estimates exceed older entries, with no adjustment or calibration. Source is
 unchanged since the passing baseline. The Greek-island/Balkan wave is generating.
+
+## 10 October 2026 — European cities: 50 saved
+
+The fourth wave adds the twelve Greek-island and Balkan destinations listed in PLAN.md, bringing the library to
+314. All 50 additions pass v1.1/max provenance and date checks: city/history timestamps agree, and estimate,
+climate and photo dates are all 10 October 2026, separate from the 9 October RBA observation. Every city has twelve
+climate months and verified photo files. Sarandë's photo is inspected and matches Saranda. Original library rows
+and protected itinerary/transport/plan/expense hashes remain unchanged. Resort seasonality is disclosed; newer
+Croatian room estimates exceed older Split/Dubrovnik entries and are not calibrated. Source is unchanged since
+the passing baseline. The remaining fourteen cities are generating.
