@@ -39,6 +39,8 @@ const locationQueries: Record<string, LocationQuery> = {
   'ID|Bali (Canggu)': { queryName: 'Canggu', admin1: 'Bali' },
   'ID|Bali (Ubud/Canggu)': { queryName: 'Bali', admin1: 'Bali', featureCode: 'ISL' },
   'PH|Bantayan (Bantayan)': { queryName: 'Bantayan', admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Bantayan' },
+  // Saved library spelling of the same municipality; the geocoder only knows "Bantayan".
+  'PH|Banatayan': { queryName: 'Bantayan', admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Bantayan' },
   'PH|Palawan (El Nido)': { queryName: 'El Nido', admin2: 'Province of Palawan', admin3: 'El Nido' },
   'PH|Santa Fe (Bantayan)': { queryName: 'Santa Fe', admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Municipality of Santa Fe' },
   'TH|Koh Lanta': { queryName: 'Ko Lanta Yai', admin1: 'Krabi', featureCode: 'ISL', sourceUrl: 'https://www.geonames.org/1152414/ko-lanta-yai.html' },
@@ -65,6 +67,25 @@ const coordinateOverrides: Record<string, ClimateLocation> = {
     longitude: -100.38806,
     queryName: 'Queretaro',
     sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Queretaro&countryCode=MX&count=20&language=en&format=json',
+  },
+  // The saved destination is the volcano's national park. The only populated "Cotopaxi" is a
+  // village in Esmeraldas, about 150 km away; use the park point the geocoder lists (PRK).
+  'EC|Cotopaxi': {
+    name: 'Cotopaxi National Park',
+    countryCode: 'EC',
+    latitude: -0.6777,
+    longitude: -78.436,
+    queryName: 'Cotopaxi',
+    sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Cotopaxi&count=10&language=en&format=json',
+  },
+  // A village in Boulouparis that the geocoder does not list. Point from OpenStreetMap.
+  'NC|Tomo': {
+    name: 'Tomo',
+    countryCode: 'NC',
+    latitude: -21.9584436,
+    longitude: 166.1510476,
+    queryName: 'Tomo',
+    sourceUrl: 'https://www.openstreetmap.org/node/539287120',
   },
 };
 

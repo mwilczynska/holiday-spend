@@ -121,14 +121,29 @@ export function getCityImageRow(cityId: string) {
   return db.select().from(cityImages).where(eq(cityImages.cityId, cityId)).get();
 }
 
+/**
+ * A place with no Wikipedia article of its own is shown by the area that contains it; the article
+ * must still lie within MAX_DISTANCE_KM of the place. Tomo is a village in the Boulouparis commune.
+ */
+const CONTAINING_AREA: Record<string, string> = {
+  'NC|Tomo': 'Boulouparis',
+};
+
+/**
+ * Coordinates and the name to search Wikipedia for. The search uses the geocoding alias, so a
+ * library spelling such as "Banatayan" is searched as "Bantayan".
+ */
 async function cityCoordinates(identity: CityIdentity, fetchImpl: Fetch) {
+  const area = CONTAINING_AREA[`${identity.countryCode}|${identity.cityName}`];
   const climate = (await getStoredCityClimates([identity.cityId]))[identity.cityId];
-  if (climate?.location) return { latitude: climate.location.latitude, longitude: climate.location.longitude };
-  // No saved climate yet (or its collection failed): geocode exactly as climate collection does.
-  const response = await fetchImpl(geocodingUrl(identity.cityName, identity.countryCode).toString(), { signal: AbortSignal.timeout(20_000) });
-  if (!response.ok) throw new Error(`Geocoding failed (HTTP ${response.status}).`);
-  const location = resolveClimateLocation(await response.json(), identity.cityName, identity.countryCode);
-  return { latitude: location.latitude, longitude: location.longitude };
+  let location: { latitude: number; longitude: number; queryName?: string } | undefined = climate?.location;
+  if (!location) {
+    // No saved climate yet (or its collection failed): geocode exactly as climate collection does.
+    const response = await fetchImpl(geocodingUrl(identity.cityName, identity.countryCode).toString(), { signal: AbortSignal.timeout(20_000) });
+    if (!response.ok) throw new Error(`Geocoding failed (HTTP ${response.status}).`);
+    location = resolveClimateLocation(await response.json(), identity.cityName, identity.countryCode);
+  }
+  return { latitude: location.latitude, longitude: location.longitude, searchName: area ?? location.queryName ?? identity.cityName };
 }
 
 async function download(url: string, fetchImpl: Fetch) {
@@ -228,9 +243,12 @@ export async function ensureCityImage(cityId: string, options: EnsureCityImageOp
     // Coordinates allow a distance check. A place the geocoder cannot pin down (an island, a region,
     // an ambiguous name) is matched by its Wikidata country instead. Network failures are errors.
     let coordinates: { latitude: number; longitude: number } | null = null;
+    let searchName = identity.cityName;
     let geocodeMiss: string | null = null;
     try {
-      coordinates = await cityCoordinates(identity, fetchImpl);
+      const located = await cityCoordinates(identity, fetchImpl);
+      coordinates = { latitude: located.latitude, longitude: located.longitude };
+      searchName = located.searchName;
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Geocoding failed.';
       if (!/ambiguous|No matching/i.test(message)) return recordFailure('error', message.slice(0, 500));
@@ -239,7 +257,7 @@ export async function ensureCityImage(cityId: string, options: EnsureCityImageOp
 
     try {
       const result = await lookupCityImage({
-        name: identity.cityName, countryName: identity.countryName, countryCode: identity.countryCode, ...coordinates,
+        name: searchName, countryName: identity.countryName, countryCode: identity.countryCode, ...coordinates,
       }, fetchImpl);
       if (result.status !== 'ok') {
         const detail = [geocodeMiss, result.articleTitle ? `Article: ${result.articleTitle}` : null].filter(Boolean).join(' ');

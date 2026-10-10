@@ -112,9 +112,10 @@ forecast or a stay total.
 
 Weather uses the no-key Open-Meteo historical archive with ERA5-Seamless and country-checked coordinates. Salento,
 Colombia explicitly uses ECMWF IFS because its ERA5 rainfall disagrees sharply with official station evidence;
-the source model is saved and only that city's prior record is invalidated. Querétaro uses an explicit point because
-the geocoder's only exact match is a village in Chiapas; a saved record that disagrees with an explicit point is
-recollected. Saved monthly weather and provenance
+the source model is saved and only that city's prior record is invalidated. Querétaro, Cotopaxi and Tomo use explicit points
+because the geocoder's only match is the wrong place (a Chiapas village; an Esmeraldas village 150 km from the national
+park) or none; a saved record that disagrees with an explicit point is recollected. The library spelling "Banatayan"
+geocodes through an alias to Bantayan, Cebu. Saved monthly weather and provenance
 live in SQLite. City collection/generation and refresh also collect weather; routine
 planner loads read saved records in one request. Existing cities collect once when needed. Provider failures remain
 missing, or retain an explicitly labelled prior successful record after a failed refresh. All itinerary cards render;
@@ -302,6 +303,13 @@ and valid empty exports remain distinct from missing or invalid input.
 `npm run dev` is for editing code. It serves unminified development bundles — roughly 14 MB of JavaScript for `/`
 against 263 kB in a production build — so it is not representative of how the app performs. Use it while changing
 code, not while judging speed.
+
+`npm run dev` runs `scripts/start-next-dev.mjs`, which starts `next dev` (arguments pass through) with
+`AUTH_TRUST_HOST=true`, so NextAuth redirects to the port actually serving the page instead of the one named by
+`NEXTAUTH_URL` in `.env.local` (main 3000, the bento worktree 3001). Before this, signing in on any other port
+succeeded and then redirected to a port with nothing listening. Trusting the Host header is for local development
+only and is never set for `npm start`. Auth form inputs adopt text typed before the page's JavaScript loaded (and
+browser autofill), so Sign in and Enter dev mode enable without retyping on a slow first compile.
 
 `npm run serve` is for using the app: it builds and then starts. One command rather than two because `&&` is a
 parser error in Windows PowerShell 5.1, which is the shell this project is developed in, and npm runs its own

@@ -51,12 +51,19 @@ city per second and can be stopped and rerun.
      article must be a title match or the top search result, and its Wikidata country (P17) must be
      the city's country, found from its ISO code (P297). A territory that is itself the country
      item, such as Hong Kong, also matches.
-   - Prefer an exact title match, ignoring spacing and punctuation (`Sa Pa` matches `Sapa`), the
-     nearest first when several match (`Querétaro (city)` over the state); then the name followed by
-     a place word (`Ko Lanta district`, `Jeju Province`); then search order.
+   - Prefer an exact title match, ignoring spacing and punctuation (`Sa Pa` matches `Sapa`). Among
+     equal titles a settlement qualifier comes first, then a bare title, then any other qualifier,
+     then the nearest (`Querétaro (city)` over the state article `Querétaro`; `Rio de Janeiro`
+     over `Rio de Janeiro (state)`). Then the name followed by a place word (`Ko Lanta district`,
+     `Jeju Province`); without any title match, only the first geolocated search result.
+   - The search uses the city's geocoding alias where one exists, so the library spelling
+     `Banatayan` is searched as `Bantayan`. A place with no article of its own is searched by the
+     area that contains it (`CONTAINING_AREA` in `city-image-service.ts`: Tomo by its commune,
+     Boulouparis); the distance check still applies.
 4. **Choose the image.** Use the article's lead image. If it is missing, local to English Wikipedia
    (possibly non-free), an SVG (maps, flags, seals) or non-free, use the Wikidata item's `image`
-   (P18), which must be a Commons file.
+   (P18), which must be a Commons file. If neither is usable, try the next matching article, up to
+   three (`Zanzibar` has only a flag; `Zanzibar City` has a photo).
 5. **Read the licence.** Commons `imageinfo` with `extmetadata`. Reject anything not on Commons or
    with a non-free licence. Keep author, licence, licence URL and description page.
 6. **Download.** 1280px and 500px thumbnails, only from `upload.wikimedia.org` or
@@ -107,7 +114,8 @@ watermarks or alter the meaning of the image. Resizing and cropping for layout a
 | 10 hand-picked hard cases (probe) | 10/10 | Salento resolves to Colombia; Puerto Escondido via the Wikidata fallback |
 | 24 cities not in the library, via geocode then lookup | 23/24 | Valladolid, Córdoba, Granada and Perth resolve to Mexico, Argentina, Nicaragua and Australia rather than their namesakes |
 | Full library, first rules | 183/211 | Audit found Kraków matched to its airport, Wollongong to its showground and Ubud to Ubud Palace: their city articles' coordinates were non-primary or absent. 22 misses were places the geocoder could not pin down |
-| Full library, current rules | 207/211 | 186 confirmed by distance, 21 by Wikidata country. All non-exact and country-confirmed matches were reviewed by hand. Misses: `Banatayan` (misspelt duplicate of Bantayan), Cotopaxi (a volcano and national park), Zanzibar and Tomo (no freely licensed photo on the matched article) |
+| Full library, second rules | 207/211 | 186 confirmed by distance, 21 by Wikidata country; non-exact and country-confirmed matches reviewed by hand. Misses: `Banatayan` (library spelling), Cotopaxi (the only populated "Cotopaxi" is 150 km from the park), Zanzibar (archipelago article has only a flag) and Tomo (no article; not in the geocoder) |
+| Full library, current rules | 211/211 | 190 confirmed by distance, 21 by Wikidata country. Misses fixed by a geocoding alias (Banatayan), explicit points (Cotopaxi National Park; Tomo from OpenStreetMap), trying the next matching article (Zanzibar City) and the containing commune (Tomo: Boulouparis, 15 km). Side effects checked by diff: Santa Fe now gets its own town rather than Bantayan, Koh Lanta and Bali (Ubud/Canggu) improved; Rio de Janeiro briefly matched its state article until the qualifier rule above, which also moved Hoi An, Hue and Sa Pa to their city or town articles |
 | New cities through the app (QA database) | 2/2 | Hobart (by distance) and Koh Phangan (by country) saved with climate and photo in 5-6 s; the planner card showed the photo and credit; deleting the city removed its files |
 
 The licences seen are CC BY, CC BY-SA, CC0, public domain, the Free Art Licence and Korea's KOGL
@@ -116,7 +124,8 @@ Type 1. All allow reuse with credit.
 ## Climate cross-check
 
 The distance check doubles as a check on the saved climate location: a city whose saved point has no
-same-named article within 50 km deserves a look. It found that Querétaro's climate had been collected
+same-named article within 50 km deserves a look. Cotopaxi would have been collected for an
+Esmeraldas village 150 km from the national park, and now has an explicit point. It found that Querétaro's climate had been collected
 for a village in Chiapas about 900 km away, because the geocoder's only exact "Querétaro" is that
 village and it lists the capital as "Querétaro City". `climate-provider.ts` now gives Querétaro an
 explicit point, and a saved record that disagrees with an explicit point is recollected.

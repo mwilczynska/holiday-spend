@@ -120,6 +120,30 @@ describe('city image lookup', () => {
     expect((await lookupCityImage(seoul, fakeFetch({ search: { query: { pages } }, commons }))).status).toBe('no-article');
   });
 
+  it('tries the next matching article when the best one has no free image', async () => {
+    const zanzibar = { name: 'Zanzibar', countryName: 'Tanzania', latitude: -6.164, longitude: 39.198 };
+    const result = await lookupCityImage(zanzibar, fakeFetch({
+      search: { query: { pages: [
+        { index: 1, title: 'Zanzibar', coordinates: [{ lat: -5.9, lon: 39.3 }], pageimage: 'Flag_of_Zanzibar.svg', pageprops: { wikibase_item: 'Q1774' } },
+        { index: 3, title: 'Zanzibar City', coordinates: [{ lat: -6.17, lon: 39.2 }], pageimage: 'Malawi_Rd.jpg' },
+      ] } },
+      commons: { 'Flag_of_Zanzibar.svg': { ...freeInfo('Flag_of_Zanzibar.svg'), mime: 'image/svg+xml' }, 'Malawi_Rd.jpg': freeInfo('Malawi_Rd.jpg') },
+    }));
+    expect(result.status === 'ok' && result.image).toMatchObject({ articleTitle: 'Zanzibar City', commonsFile: 'Malawi_Rd.jpg' });
+  });
+
+  it('prefers the city over a nearer state article of the same name', async () => {
+    const rio = { name: 'Rio de Janeiro', countryName: 'Brazil', latitude: -22.9, longitude: -43.2 };
+    const result = await lookupCityImage(rio, fakeFetch({
+      search: { query: { pages: [
+        { index: 1, title: 'Rio de Janeiro', coordinates: [{ lat: -22.91, lon: -43.17 }], pageimage: 'City.jpg' },
+        { index: 2, title: 'Rio de Janeiro (state)', coordinates: [{ lat: -22.9, lon: -43.21 }], pageimage: 'State.jpg' },
+      ] } },
+      commons: { 'City.jpg': freeInfo('City.jpg'), 'State.jpg': freeInfo('State.jpg') },
+    }));
+    expect(result.status === 'ok' && result.image.articleTitle).toBe('Rio de Janeiro');
+  });
+
   it('matches names that differ only in spacing or punctuation', async () => {
     const result = await lookupCityImage({ name: 'Sapa', countryName: 'Vietnam', latitude: 22.34, longitude: 103.84 }, fakeFetch({
       search: { query: { pages: [

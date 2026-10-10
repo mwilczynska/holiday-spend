@@ -131,6 +131,10 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
       geocoder cannot place.
 - [x] Querétaro climate was for a village in Chiapas; explicit point added and stale records recollect.
 - [x] Live new-city check on the QA database: Hobart and Koh Phangan saved with climate and photo, shown in the planner.
+- [x] Remaining four (10 October 2026): Banatayan (geocoding alias), Cotopaxi (park point; the only populated
+      "Cotopaxi" is 150 km away), Zanzibar (next matching article), Tomo (OSM point, containing commune). 211/211.
+- [x] Login on a dev server: inputs adopt text typed before hydration; `npm run dev` trusts the request host so
+      sign-in redirects to the serving port, not the `.env.local` one.
 - [ ] After merge, run `npx tsx scripts/collect-city-images.ts` once against the main database.
 - [ ] Baseline checks, Playwright smoke, and merge decision.
 

@@ -173,16 +173,27 @@ async function wikidataCoordinate(wikidataId: string, fetchImpl: Fetch): Promise
 }
 
 /**
- * Best title match; among equal titles the nearest wins ("Querétaro (city)" over the state article
- * that shares its name). Otherwise the first geolocated search result.
+ * Title matches in order of preference: exact titles, then name plus a place word, nearest first
+ * within each ("Querétaro (city)" over the state article that shares its name). Without any title
+ * match, only the first geolocated search result. Later entries are tried when an earlier article
+ * has no free image ("Zanzibar" shows only a flag; "Zanzibar City" has a photo).
  */
-const best = (candidates: ArticleCandidate[]) => {
-  for (const rank of [2, 1]) {
-    const matches = candidates.filter((c) => c.rank === rank).sort((a, b) => (a.km ?? 0) - (b.km ?? 0));
-    if (matches.length) return matches[0];
-  }
-  return candidates[0] ?? null;
+const ranked = (candidates: ArticleCandidate[]) => {
+  const matches = [2, 1].flatMap((rank) => candidates.filter((c) => c.rank === rank)
+    .sort((a, b) => qualifierOrder(a.title) - qualifierOrder(b.title) || (a.km ?? 0) - (b.km ?? 0)));
+  return matches.length ? matches.slice(0, 3) : candidates.slice(0, 1);
 };
+
+/**
+ * Equal titles differ only by a qualifier: "(city)" names the settlement, a bare title usually does,
+ * and "(state)", "(province)" and the like name the wider area ("Rio de Janeiro" over
+ * "Rio de Janeiro (state)", "Querétaro (city)" over the state article "Querétaro").
+ */
+function qualifierOrder(title: string) {
+  const qualifier = title.match(/\(([^)]*)\)/)?.[1]?.toLowerCase();
+  if (!qualifier) return 1;
+  return /\b(city|town|village|municipality)\b/.test(qualifier) ? 0 : 2;
+}
 
 async function countryItem(countryCode: string, fetchImpl: Fetch): Promise<string[]> {
   const params = new URLSearchParams({
@@ -256,24 +267,27 @@ async function commonsImage(fileName: string, fetchImpl: Fetch, width = LARGE_WI
 export async function lookupCityImage(query: CityImageQuery, fetchImpl: Fetch = fetch): Promise<CityImageResult> {
   const candidates = await searchArticles(query, fetchImpl);
   const byCoordinates = typeof query.latitude === 'number' && typeof query.longitude === 'number';
-  const article = byCoordinates ? best(candidates) : await findArticleByCountry(query, candidates, fetchImpl);
-  if (!article) return { status: 'no-article' };
+  const countryMatch = byCoordinates ? null : await findArticleByCountry(query, candidates, fetchImpl);
+  const articles = byCoordinates ? ranked(candidates) : countryMatch ? [countryMatch] : [];
+  if (!articles.length) return { status: 'no-article' };
 
   const tried = new Set<string>();
-  for (const source of ['article', 'wikidata'] as const) {
-    const fileName = source === 'article' ? article.imageName : await wikidataImage(article.wikidataId, fetchImpl);
-    if (!fileName || tried.has(fileName)) continue;
-    tried.add(fileName);
-    const info = await commonsImage(fileName, fetchImpl);
-    if (!info) continue;
-    const small = await commonsImage(fileName, fetchImpl, SMALL_WIDTH);
-    if (!small) continue;
-    return {
-      status: 'ok',
-      image: {
-        source, articleTitle: article.title, locationCheck: byCoordinates ? 'coordinates' : 'country',
-        distanceKm: article.km === null ? null : Number(article.km.toFixed(1)), commonsFile: fileName, ...info, smallThumbUrl: small.thumbUrl },
-    };
+  for (const article of articles) {
+    for (const source of ['article', 'wikidata'] as const) {
+      const fileName = source === 'article' ? article.imageName : await wikidataImage(article.wikidataId, fetchImpl);
+      if (!fileName || tried.has(fileName)) continue;
+      tried.add(fileName);
+      const info = await commonsImage(fileName, fetchImpl);
+      if (!info) continue;
+      const small = await commonsImage(fileName, fetchImpl, SMALL_WIDTH);
+      if (!small) continue;
+      return {
+        status: 'ok',
+        image: {
+          source, articleTitle: article.title, locationCheck: byCoordinates ? 'coordinates' : 'country',
+          distanceKm: article.km === null ? null : Number(article.km.toFixed(1)), commonsFile: fileName, ...info, smallThumbUrl: small.thumbUrl },
+      };
+    }
   }
-  return { status: 'no-free-image', articleTitle: article.title };
+  return { status: 'no-free-image', articleTitle: articles[0].title };
 }

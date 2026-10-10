@@ -111,6 +111,16 @@ describe('city image service', () => {
     expect(getCityImageViews(['salento'])).toEqual({});
   });
 
+  it('searches under the geocoding alias for a library spelling the geocoder does not know', async () => {
+    sqlite.exec("INSERT INTO countries VALUES ('philippines', 'Philippines', 'PHP', 'sea'); INSERT INTO cities VALUES ('bantayan', 'philippines', 'Banatayan');");
+    const { fetchImpl, calls } = fakeNetwork({ geocode: { results: [
+      { name: 'Bantayan', country_code: 'PH', feature_code: 'PPLA3', population: 87394, admin1: 'Central Visayas', admin2: 'Province of Cebu', admin3: 'Bantayan', latitude: 4.637, longitude: -75.57 },
+    ] } });
+    expect(await ensureCityImage('bantayan', { fetchImpl })).toBe('ok');
+    const search = calls.find((url) => url.includes('en.wikipedia.org'))!;
+    expect(new URL(search).searchParams.get('gsrsearch')).toBe('bantayan Philippines');
+  });
+
   it('treats an ambiguous place as a miss, not an error', async () => {
     const { fetchImpl } = fakeNetwork({ geocode: { results: [
       { name: 'Salento', country_code: 'CO', feature_code: 'PPL', population: 5000, latitude: 4.6, longitude: -75.6 },
