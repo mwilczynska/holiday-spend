@@ -9,6 +9,7 @@ const isDevServer = process.env.NODE_ENV === 'development';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // NEXT_DIST_DIR lets a second dev server (tests, a cold-start check) run without wiping this one.
+  // Next adds the directory to tsconfig.json includes when it starts; revert that line before committing.
   distDir: process.env.NEXT_DIST_DIR || (isDevServer ? '.next-dev' : '.next'),
   output: 'standalone',
   experimental: {
