@@ -61,4 +61,18 @@ describe('deriveTripPosition', () => {
   it('stays empty without data rather than inventing a destination', () => {
     expect(deriveTripPosition([], '2027-03-01')).toEqual({ current: null, next: null });
   });
+
+  it('prefers the leg marked active over the last transaction date', () => {
+    const withActive = series.map((point) => (point.cityName === 'Osaka' ? { ...point, legStatus: 'active' } : point));
+    // The last transaction is still in Kyoto, but the traveller has marked Osaka active.
+    const position = deriveTripPosition(withActive, '2027-03-04', '2027-03-06');
+    expect(position.current).toMatchObject({ cityName: 'Osaka', dayOfLeg: 1 });
+    expect(position.next).toBeNull();
+  });
+
+  it('clamps the day of an active leg when today falls outside it', () => {
+    const withActive = series.map((point) => (point.cityName === 'Kyoto' ? { ...point, legStatus: 'active' } : point));
+    expect(deriveTripPosition(withActive, null, '2027-02-01').current).toMatchObject({ cityName: 'Kyoto', dayOfLeg: 1 });
+    expect(deriveTripPosition(withActive, null, '2027-05-01').current).toMatchObject({ cityName: 'Kyoto', dayOfLeg: 3, nightsLeft: 0 });
+  });
 });

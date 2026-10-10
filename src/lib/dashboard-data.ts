@@ -13,7 +13,10 @@ import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/l
 import { getMiscellaneousExpenseTotal } from '@/lib/miscellaneous-expenses';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
-import type { AccomTier, ActivitiesTier, DrinksTier, FoodTier, LegStatus } from '@/types';
+import type { AccomTier, ActivitiesTier, DrinksTier, ExpenseCategory, FoodTier, LegStatus } from '@/types';
+
+/** Expense category excluded from per-day comparisons, matching planned intercity transport. */
+const INTERCITY_TRANSPORT_CATEGORY: ExpenseCategory = 'transport_intercity';
 
 /**
  * Shared loading and derivation for the dashboard.
@@ -256,6 +259,8 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
     blockIndex: number;
     name: string;
     planned: number;
+    /** Planned spend without intercity transport, for per-day comparisons. */
+    plannedExTransport: number;
     days: number;
     status: LegStatus | null;
     categories: Record<string, number>;
@@ -264,8 +269,24 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
   type ActualTotals = {
     name: string;
     actual: number;
+    /** Actual spend without the Intercity Transport category, for per-day comparisons. */
+    actualExTransport: number;
     categories: Record<string, number>;
   };
+
+  // One row per stay, for the dashboard's city view.
+  type PlannedCityRow = {
+    legId: number;
+    cityName: string;
+    countryName: string;
+    startDate: string | null;
+    planned: number;
+    plannedExTransport: number;
+    days: number;
+    status: LegStatus | null;
+  };
+  const plannedByLeg = new Map<number, PlannedCityRow>();
+  const actualByLeg = new Map<number, { actual: number; actualExTransport: number }>();
 
   // Build planned totals in itinerary order. A country gets a new row when
   // the itinerary leaves that country and later returns to it.
@@ -304,6 +325,7 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
         blockIndex: blockRef.blockIndex,
         name: countryName,
         planned: 0,
+        plannedExTransport: 0,
         days: 0,
         status: null,
         categories: {},
@@ -312,7 +334,18 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
     const entry = plannedByBlock.get(blockRef.blockId)!;
     blockIdByLegId.set(leg.id, blockRef.blockId);
     entry.planned += legTotal;
+    entry.plannedExTransport += legTotal - intercityTransportTotal;
     entry.days += leg.nights;
+    plannedByLeg.set(leg.id, {
+      legId: leg.id,
+      cityName: city.name,
+      countryName,
+      startDate: leg.startDate ?? null,
+      planned: legTotal,
+      plannedExTransport: legTotal - intercityTransportTotal,
+      days: leg.nights,
+      status: (leg.status as LegStatus | null) ?? 'planned',
+    });
     entry.status = mergeCountryStatus(entry.status, leg.status) ?? 'planned';
     entry.categories.accommodation = (entry.categories.accommodation || 0) + breakdown.accommodation * leg.nights;
     entry.categories.food = (entry.categories.food || 0) + breakdown.food * leg.nights;
@@ -352,12 +385,21 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
     const target = matchedBlockId ? actualByBlock : actualOnlyByCountry;
     const targetId = matchedBlockId ?? countryId;
     if (!target.has(targetId)) {
-      target.set(targetId, { name: countryName, actual: 0, categories: {} });
+      target.set(targetId, { name: countryName, actual: 0, actualExTransport: 0, categories: {} });
     }
     const entry = target.get(targetId)!;
     const audAmount = getExpenseAudAmount(exp);
+    const isIntercity = exp.category === INTERCITY_TRANSPORT_CATEGORY;
     entry.actual += audAmount;
+    if (!isIntercity) entry.actualExTransport += audAmount;
     entry.categories[exp.category] = (entry.categories[exp.category] || 0) + audAmount;
+
+    if (matchedLeg) {
+      const legActual = actualByLeg.get(matchedLeg.id) ?? { actual: 0, actualExTransport: 0 };
+      legActual.actual += audAmount;
+      if (!isIntercity) legActual.actualExTransport += audAmount;
+      actualByLeg.set(matchedLeg.id, legActual);
+    }
   }
 
   const toComparisonRow = (
@@ -373,11 +415,13 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
     planned: planned?.planned ?? 0,
     actual: actual?.actual ?? 0,
     plannedDays: planned?.days ?? 0,
+    // Per-day figures leave out intercity transport: a long-haul flight booked against a short
+    // stay would otherwise make that place look far dearer per day than it is.
     plannedPerDay: (planned?.days ?? 0) > 0
-      ? (planned?.planned ?? 0) / (planned?.days ?? 0)
+      ? (planned?.plannedExTransport ?? 0) / (planned?.days ?? 0)
       : null,
     actualPerDay: (planned?.days ?? 0) > 0
-      ? (actual?.actual ?? 0) / (planned?.days ?? 0)
+      ? (actual?.actualExTransport ?? 0) / (planned?.days ?? 0)
       : null,
     status: planned?.status ?? null,
     plannedCategories: planned?.categories ?? {},
@@ -419,7 +463,24 @@ export function buildPlannedVsActual(inputs: DashboardSharedInputs) {
   }
 
 
-  return { comparison, plannedCategoryTotals, actualCategoryTotals };
+  // City view: one row per stay in itinerary order, with the same per-day rule as countries.
+  const cityComparison = Array.from(plannedByLeg.values()).map((row) => {
+    const actual = actualByLeg.get(row.legId);
+    return {
+      legId: row.legId,
+      cityName: row.cityName,
+      countryName: row.countryName,
+      startDate: row.startDate,
+      planned: row.planned,
+      actual: actual?.actual ?? 0,
+      plannedDays: row.days,
+      plannedPerDay: row.days > 0 ? row.plannedExTransport / row.days : null,
+      actualPerDay: row.days > 0 ? (actual?.actualExTransport ?? 0) / row.days : null,
+      status: row.status,
+    };
+  });
+
+  return { comparison, cityComparison, plannedCategoryTotals, actualCategoryTotals };
 }
 
 export function buildBurnRate(inputs: DashboardSharedInputs) {

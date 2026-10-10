@@ -94,6 +94,12 @@ describe.sequential('manual miscellaneous planner expenses', () => {
     const comparison = dashboard.buildPlannedVsActual(inputs);
     expect(comparison.comparison[0].planned).toBe(312.5);
     expect(comparison.plannedCategoryTotals.other).toBe(12.5);
+    // The city view lists the stay with the same totals; with no intercity transport, its per-day
+    // figure is simply the leg total over its nights.
+    expect(comparison.cityComparison).toHaveLength(1);
+    expect(comparison.cityComparison[0]).toMatchObject({ planned: 312.5, plannedDays: 3 });
+    expect(comparison.cityComparison[0].plannedPerDay).toBeCloseTo(312.5 / 3);
+    expect(comparison.comparison[0].plannedPerDay).toBeCloseTo(312.5 / 3);
     const series = dashboard.buildBurnRate(inputs).cumulative;
     expect(series[series.length - 1].plannedCumulative).toBe(312.5);
     const { setPlannerGroupSize } = await import('./planner-settings');

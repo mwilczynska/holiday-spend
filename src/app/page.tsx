@@ -22,6 +22,7 @@ export const dynamic = 'force-dynamic';
 const EMPTY: DashboardInitialData = {
   summary: null,
   comparison: [],
+  cityComparison: [],
   actualCategoryTotals: {},
   plannedCategoryTotals: {},
   burnData: [],
@@ -41,6 +42,7 @@ export default async function DashboardPage() {
     initialData = {
       summary: buildDashboardSummary(inputs) as DashboardInitialData['summary'],
       comparison: plannedVsActual.comparison as DashboardInitialData['comparison'],
+      cityComparison: plannedVsActual.cityComparison as DashboardInitialData['cityComparison'],
       actualCategoryTotals: plannedVsActual.actualCategoryTotals,
       plannedCategoryTotals: plannedVsActual.plannedCategoryTotals,
       burnData: burnRate.cumulative as DashboardInitialData['burnData'],

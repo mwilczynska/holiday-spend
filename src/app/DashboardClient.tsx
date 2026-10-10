@@ -21,6 +21,7 @@ import {
   type StatHelp,
 } from '@/components/dashboard/DashboardBento';
 import { deriveTripPosition } from '@/components/dashboard/trip-position';
+import { ComparisonTable, type CityComparisonRow } from '@/components/dashboard/ComparisonTable';
 import dynamic from 'next/dynamic';
 import {
   DashboardChartPlaceholder,
@@ -97,11 +98,6 @@ type ExpandedChart = 'country' | 'category' | 'burn' | null;
 
 // Bento categorical order: blue, teal, amber, red, violet, then quieter tones.
 const CHART_COLORS = ['#2563EB', '#12A594', '#F5A524', '#E5484D', '#8E4EC6', '#0EA5E9', '#B8C2D6', '#D97706', '#64748B', '#13254A'];
-const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> = {
-  planned: 'border-transparent bg-slate-100 text-slate-700',
-  active: 'border-transparent bg-info-soft text-blue-700',
-  completed: 'border-transparent bg-success-soft text-success',
-};
 
 const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.abs(n).toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 
@@ -187,6 +183,7 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
 export interface DashboardInitialData {
   summary: Summary | null;
   comparison: CountryComparison[];
+  cityComparison: CityComparisonRow[];
   actualCategoryTotals: Record<string, number>;
   plannedCategoryTotals: Record<string, number>;
   burnData: BurnRatePoint[];
@@ -207,6 +204,7 @@ export interface DashboardInitialData {
 export function DashboardClient({ initialData }: { initialData: DashboardInitialData }) {
   const [summary, setSummary] = useState<Summary | null>(initialData.summary);
   const [comparison, setComparison] = useState<CountryComparison[]>(initialData.comparison);
+  const [cityComparison, setCityComparison] = useState<CityComparisonRow[]>(initialData.cityComparison);
   const [actualCategoryTotals, setActualCategoryTotals] = useState<Record<string, number>>(initialData.actualCategoryTotals);
   const [plannedCategoryTotals, setPlannedCategoryTotals] = useState<Record<string, number>>(initialData.plannedCategoryTotals);
   const [burnData, setBurnData] = useState<BurnRatePoint[]>(initialData.burnData);
@@ -237,6 +235,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
       setSummary(summaryData);
       setBudgetCeiling(summaryData.totalBudget);
       setComparison(plannedVsActual.comparison);
+      setCityComparison(plannedVsActual.cityComparison);
       setActualCategoryTotals(plannedVsActual.actualCategoryTotals);
       setPlannedCategoryTotals(plannedVsActual.plannedCategoryTotals);
       setBurnData(burnRate.cumulative);
@@ -711,73 +710,8 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
         </DialogContent>
       </Dialog>
 
-      {comparison.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-sm">Country Comparison</CardTitle></CardHeader>
-          <CardContent className="p-0">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead className="border-b bg-secondary text-xs text-slate-600">
-                  <tr>
-                    <th className="py-2 pl-5 pr-2 text-left">Country</th>
-                    <th className="p-2 text-right"># days</th>
-                    <th className="p-2 text-right">Planned</th>
-                    <th className="p-2 text-right">Planned $/day</th>
-                    <th className="p-2 text-right">Actual</th>
-                    <th className="p-2 text-right">Actual $/day</th>
-                    <th className="p-2 text-right">Difference</th>
-                    <th className="py-2 pl-2 pr-5 text-right">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparison.filter((c) => c.planned > 0 || c.actual > 0).map((c, index) => {
-                    const diff = c.actual - c.planned;
-                    const isOver = diff > 0;
-                    return (
-                      <tr key={`${c.countryId}:${c.blockIndex ?? 'actual'}:${index}`} className="border-b transition-colors last:border-0 hover:bg-secondary/60">
-                        <td className="py-2 pl-5 pr-2">
-                          <div className="flex items-center gap-2">
-                            <span className="font-medium">{c.countryName}</span>
-                            {c.status ? (
-                              <Badge variant="outline" className={`text-[10px] capitalize ${COUNTRY_STATUS_BADGE[c.status]}`}>
-                                {c.status}
-                              </Badge>
-                            ) : null}
-                          </div>
-                        </td>
-                        <td className="p-2 text-right">{c.plannedDays}</td>
-                        <td className="p-2 text-right">{fmtAud(c.planned)}</td>
-                        <td className="p-2 text-right">{c.plannedPerDay != null ? fmtAud(c.plannedPerDay) : '—'}</td>
-                        <td className="p-2 text-right">{fmtAud(c.actual)}</td>
-                        <td className="p-2 text-right">{c.actualPerDay != null ? fmtAud(c.actualPerDay) : '—'}</td>
-                        <td className={`p-2 text-right ${isOver ? 'text-[#9A4B00]' : 'text-success'}`}>
-                          {fmtAudSigned(diff)}
-                        </td>
-                        <td className="py-2 pl-2 pr-5 text-right">
-                          {c.planned > 0 ? (
-                            <Badge
-                              className={`text-xs ${
-                                c.actual === 0
-                                  ? 'border-transparent bg-slate-100 text-slate-600 hover:bg-slate-100'
-                                  : isOver
-                                    ? 'border-transparent bg-[#FCE7C8] text-[#9A4B00] hover:bg-[#FCE7C8]'
-                                    : 'border-transparent bg-success-soft text-success hover:bg-success-soft'
-                              }`}
-                            >
-                              {((c.actual / c.planned) * 100).toFixed(0)}%
-                            </Badge>
-                          ) : (
-                            <Badge variant="secondary" className="text-xs">No plan</Badge>
-                          )}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
+      {(comparison.length > 0 || cityComparison.length > 0) && (
+        <ComparisonTable countries={comparison} cities={cityComparison} />
       )}
 
       <div className="grid gap-3 sm:grid-cols-3">

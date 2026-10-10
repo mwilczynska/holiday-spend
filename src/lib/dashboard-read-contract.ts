@@ -25,6 +25,11 @@ export const dashboardReadSchema = z.object({
       planned: amount, actual: amount, plannedDays: amount,
       plannedPerDay: optionalAmount, actualPerDay: optionalAmount, status,
     })),
+    cityComparison: z.array(z.object({
+      legId: amount, cityName: z.string(), countryName: z.string(), startDate: z.string().nullable(),
+      planned: amount, actual: amount, plannedDays: amount,
+      plannedPerDay: optionalAmount, actualPerDay: optionalAmount, status,
+    })).default([]),
     actualCategoryTotals: z.record(z.string(), amount), plannedCategoryTotals: z.record(z.string(), amount),
   }),
   burnRate: z.object({

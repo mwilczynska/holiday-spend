@@ -47,10 +47,33 @@ export function deriveLegs(points: BurnRatePoint[]): DerivedLeg[] {
   return legs;
 }
 
-/** Locates the leg containing the cutoff date and the one after it. Missing data stays null. */
-export function deriveTripPosition(points: BurnRatePoint[], asOfDate: string | null | undefined): TripPosition {
+/**
+ * Locates the current leg and the one after it. A leg the traveller has marked active wins, so
+ * changing the current city in the planner moves the dashboard immediately, before any expense is
+ * logged there. Without an active leg, the leg containing the cutoff date is current. Missing data
+ * stays null.
+ */
+export function deriveTripPosition(
+  points: BurnRatePoint[],
+  asOfDate: string | null | undefined,
+  today: string = new Date().toISOString().slice(0, 10)
+): TripPosition {
   const legs = deriveLegs(points);
   if (legs.length === 0) return { current: null, next: null };
+
+  const activeIndex = legs.findIndex((leg) => leg.status === 'active');
+  if (activeIndex !== -1) {
+    const leg = legs[activeIndex];
+    // Count the day from today when today falls inside the leg, else from the cutoff date, and
+    // clamp to the leg so a leg marked active early or late still reads sensibly.
+    const reference = [today, asOfDate].find((date) => date && leg.startDate <= date && date <= leg.endDate)
+      ?? (today < leg.startDate ? leg.startDate : leg.endDate);
+    const dayOfLeg = daysBetween(leg.startDate, reference) + 1;
+    return {
+      current: { ...leg, dayOfLeg, nightsLeft: Math.max(leg.nights - dayOfLeg, 0) },
+      next: legs[activeIndex + 1] ?? null,
+    };
+  }
 
   const currentIndex = asOfDate
     ? legs.findIndex((leg) => leg.startDate <= asOfDate && asOfDate <= leg.endDate)
