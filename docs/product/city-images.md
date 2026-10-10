@@ -56,6 +56,8 @@ city per second and can be stopped and rerun.
      then the nearest (`Querétaro (city)` over the state article `Querétaro`; `Rio de Janeiro`
      over `Rio de Janeiro (state)`). Then the name followed by a place word (`Ko Lanta district`,
      `Jeju Province`); without any title match, only the first geolocated search result.
+   - When the country-qualified search finds no title match, search the place name alone (`york United
+     Kingdom` returns only articles about the country). The distance or country check still decides.
    - The search uses the city's geocoding alias where one exists, so the library spelling
      `Banatayan` is searched as `Bantayan`. A place with no article of its own is searched by the
      area that contains it (`CONTAINING_AREA` in `city-image-service.ts`: Tomo by its commune,

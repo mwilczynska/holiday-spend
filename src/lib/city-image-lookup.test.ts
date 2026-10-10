@@ -4,6 +4,8 @@ import { basePlaceName, distanceKm, lookupCityImage } from './city-image-lookup'
 // Offline fakes of the three Wikimedia APIs, keyed by host and request shape.
 function fakeFetch(handlers: {
   search: unknown;
+  /** Search results by exact query, overriding `search` for that query. */
+  searchByQuery?: Record<string, unknown>;
   commons?: Record<string, unknown>;
   wikidata?: Record<string, string>;
   /** Item id -> its P17 countries; ISO code -> country item ids. */
@@ -15,7 +17,7 @@ function fakeFetch(handlers: {
   return async (url: string) => {
     const parsed = new URL(url);
     let body: unknown;
-    if (parsed.host === 'en.wikipedia.org') body = handlers.search;
+    if (parsed.host === 'en.wikipedia.org') body = handlers.searchByQuery?.[parsed.searchParams.get('gsrsearch') ?? ''] ?? handlers.search;
     else if (parsed.host === 'www.wikidata.org' && parsed.searchParams.get('list') === 'search') {
       const iso = (parsed.searchParams.get('srsearch') ?? '').split('=').pop() ?? '';
       body = { query: { search: (handlers.countryItems?.[iso] ?? []).map((title) => ({ title })) } };
@@ -142,6 +144,22 @@ describe('city image lookup', () => {
       commons: { 'City.jpg': freeInfo('City.jpg'), 'State.jpg': freeInfo('State.jpg') },
     }));
     expect(result.status === 'ok' && result.image.articleTitle).toBe('Rio de Janeiro');
+  });
+
+  it('searches the place name alone when its country drowns a short name', async () => {
+    const york = { name: 'York', countryName: 'United Kingdom', latitude: 53.958, longitude: -1.083 };
+    const result = await lookupCityImage(york, fakeFetch({
+      search: { query: { pages: [] } },
+      searchByQuery: {
+        'york United Kingdom': { query: { pages: [{ index: 1, title: 'United Kingdom', coordinates: [{ lat: 55, lon: -3 }], pageimage: 'Flag.svg' }] } },
+        york: { query: { pages: [
+          { index: 1, title: 'New York City', coordinates: [{ lat: 40.71, lon: -74.0 }], pageimage: 'Manhattan.jpg' },
+          { index: 2, title: 'York', coordinates: [{ lat: 53.96, lon: -1.08 }], pageimage: 'Minster.jpg' },
+        ] } },
+      },
+      commons: { 'Minster.jpg': freeInfo('Minster.jpg'), 'Manhattan.jpg': freeInfo('Manhattan.jpg') },
+    }));
+    expect(result.status === 'ok' && result.image).toMatchObject({ articleTitle: 'York', commonsFile: 'Minster.jpg' });
   });
 
   it('matches names that differ only in spacing or punctuation', async () => {

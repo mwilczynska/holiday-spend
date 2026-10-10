@@ -46,6 +46,9 @@ const locationQueries: Record<string, LocationQuery> = {
   'TH|Koh Lanta': { queryName: 'Ko Lanta Yai', admin1: 'Krabi', featureCode: 'ISL', sourceUrl: 'https://www.geonames.org/1152414/ko-lanta-yai.html' },
   // Jiangsu's Suzhou (6.7M) and Anhui's (1.6M) are both prefecture seats; the travel city is Jiangsu's.
   'CN|Suzhou': { queryName: 'Suzhou', admin1: 'Jiangsu' },
+  // Several Nepali villages share these names and the geocoder lists no populations to choose by.
+  'NP|Bandipur': { queryName: 'Bandipur', admin1: 'Gandaki Pradesh', admin2: 'Tanahun' },
+  'NP|Bhaktapur': { queryName: 'Bhaktapur', admin2: 'Bhaktapur' },
 };
 
 const coordinateOverrides: Record<string, ClimateLocation> = {
@@ -98,6 +101,16 @@ const coordinateOverrides: Record<string, ClimateLocation> = {
     longitude: 120.31333,
     queryName: 'Kaohsiung',
     sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Kaohsiung&countryCode=TW&count=20&language=en&format=json',
+  },
+  // The Chitwan National Park gateway village; the geocoder lists two adjoining Chitwan points and
+  // other Saurahas elsewhere, none with a population. The first Chitwan point.
+  'NP|Sauraha': {
+    name: 'Sauraha',
+    countryCode: 'NP',
+    latitude: 27.57983,
+    longitude: 84.49709,
+    queryName: 'Sauraha',
+    sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Sauraha&countryCode=NP&count=10&language=en&format=json',
   },
   // A resort village in Hengchun township that the geocoder does not list. Point from OpenStreetMap.
   'TW|Kenting': {

@@ -144,6 +144,21 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
       docs memory check, methodology check, production build.
 - [x] Worktree `C:\Dev\holiday-spend-bento` removed after the merge.
 
+## New cities via subagents: Nepal and UK — COMPLETE (10 October 2026)
+
+- [x] Owner asked for Nepal, then the UK, then Europe, and then said to stop after Nepal and the UK. The 64 European
+      prompts were written but never sent to subagents; nothing European was added.
+- [x] Removed an empty duplicate "United Kingdom" country row (`uk`, not a canonical id); new UK cities would have
+      landed there instead of beside London and Edinburgh. An April 2026 saved-plan snapshot still names `uk`;
+      comparisons group by the snapshot's own id and name, so it is unaffected.
+- [x] 17 added: Nepal (Bhaktapur, Sauraha, Lumbini, Nagarkot, Bandipur) and UK (Manchester, Liverpool, Glasgow, Bath,
+      York, Oxford, Cambridge, Brighton, Bristol, Inverness, Belfast, Cardiff). All have climate and a photo; library
+      247 -> 264; itinerary unchanged at 66 legs.
+- [x] Fixes: Bandipur and Bhaktapur constrained to their districts, Sauraha given its Chitwan point; photo search
+      retries with the place name alone when the country drowns it (York). Full photo refresh: 264/264, two picks
+      changed (York found; Bath now its own article).
+- [x] Noted, not calibrated: new UK 3-star anchors (US$166-240) sit above the older London entry.
+
 ## New cities via subagents — COMPLETE (10 October 2026)
 
 - [x] Owner asked for popular cities in China, Taiwan, India and Sri Lanka, added as a user would, to the library

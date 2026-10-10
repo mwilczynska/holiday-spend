@@ -86,11 +86,11 @@ interface ArticleCandidate {
   title: string; index: number; km: number | null; rank: number; imageName: string | null; wikidataId: string | null;
 }
 
-async function searchArticles(query: CityImageQuery, fetchImpl: Fetch): Promise<ArticleCandidate[]> {
+async function searchArticles(query: CityImageQuery, fetchImpl: Fetch, withCountry = true): Promise<ArticleCandidate[]> {
   const wanted = basePlaceName(query.name);
   const params = new URLSearchParams({
     action: 'query', format: 'json', formatversion: '2', origin: '*',
-    generator: 'search', gsrsearch: `${wanted} ${query.countryName}`, gsrlimit: '8', gsrnamespace: '0',
+    generator: 'search', gsrsearch: withCountry ? `${wanted} ${query.countryName}` : wanted, gsrlimit: '8', gsrnamespace: '0',
     // Many city articles mark their infobox coordinates as non-primary, so ask for all of them.
     prop: 'coordinates|pageimages|pageprops', piprop: 'name', ppprop: 'disambiguation|wikibase_item',
     colimit: 'max', coprimary: 'all',
@@ -265,7 +265,15 @@ async function commonsImage(fileName: string, fetchImpl: Fetch, width = LARGE_WI
 }
 
 export async function lookupCityImage(query: CityImageQuery, fetchImpl: Fetch = fetch): Promise<CityImageResult> {
-  const candidates = await searchArticles(query, fetchImpl);
+  let candidates = await searchArticles(query, fetchImpl);
+  // A short name can be drowned by its country ("york United Kingdom" returns only articles about the
+  // country). With no title match, search the place name alone; the distance or country check still
+  // decides, so another York cannot pass.
+  if (!candidates.some((c) => c.rank > 0)) {
+    const seen = new Set(candidates.map((c) => c.title));
+    const extra = (await searchArticles(query, fetchImpl, false)).filter((c) => !seen.has(c.title));
+    candidates = [...candidates, ...extra.map((c) => ({ ...c, index: c.index + 100 }))];
+  }
   const byCoordinates = typeof query.latitude === 'number' && typeof query.longitude === 'number';
   const countryMatch = byCoordinates ? null : await findArticleByCountry(query, candidates, fetchImpl);
   const articles = byCoordinates ? ranked(candidates) : countryMatch ? [countryMatch] : [];

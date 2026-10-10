@@ -112,10 +112,10 @@ forecast or a stay total.
 
 Weather uses the no-key Open-Meteo historical archive with ERA5-Seamless and country-checked coordinates. Salento,
 Colombia explicitly uses ECMWF IFS because its ERA5 rainfall disagrees sharply with official station evidence;
-the source model is saved and only that city's prior record is invalidated. Querétaro, Cotopaxi, Tomo, Pingyao, Kaohsiung and Kenting use explicit points
+the source model is saved and only that city's prior record is invalidated. Querétaro, Cotopaxi, Tomo, Pingyao, Kaohsiung, Kenting and Sauraha use explicit points
 because the geocoder's only match is the wrong place (a Chiapas village; an Esmeraldas village 150 km from the national
 park) or none; a saved record that disagrees with an explicit point is recollected. The library spelling "Banatayan"
-geocodes through an alias to Bantayan, Cebu, and Suzhou is constrained to Jiangsu. Saved monthly weather and provenance
+geocodes through an alias to Bantayan, Cebu, Suzhou is constrained to Jiangsu, and Bandipur and Bhaktapur to their districts. Saved monthly weather and provenance
 live in SQLite. City collection/generation and refresh also collect weather; routine
 planner loads read saved records in one request. Existing cities collect once when needed. Provider failures remain
 missing, or retain an explicitly labelled prior successful record after a failed refresh. All itinerary cards render;
@@ -131,7 +131,7 @@ Destinations show a free Wikimedia Commons photo where one can be verified, over
 author and licence credit linking to the Commons page. No key and no LLM: `src/lib/city-image-lookup.ts` accepts a
 Wikipedia article only within 50 km of the city's coordinates (saved climate location, else the same Open-Meteo
 geocoding), or, when the geocoder cannot place it, only if its Wikidata country matches; facility articles are never
-chosen. `src/lib/city-image-service.ts` stores 1280px and 500px copies beside the database (`data/city-images/`,
+chosen, and a search drowned by the country name is retried with the place name alone. `src/lib/city-image-service.ts` stores 1280px and 500px copies beside the database (`data/city-images/`,
 gitignored) with a `city_images` row recording the city identity, status and credit. New cities collect a photo after
 climate on manual add and every generation path; failure never blocks the save. Misses are recorded, renames make a row
 stale, and pages fall back to the scene for any missing row or file. Photo metadata rides on itinerary legs and dashboard
