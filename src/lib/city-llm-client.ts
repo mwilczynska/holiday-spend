@@ -309,7 +309,7 @@ async function runGeminiJsonPrompt(params: {
   return { provider: 'gemini', model, text, webSearchUsed };
 }
 
-export async function runJsonPromptWithProvider(params: {
+export type JsonPromptParams = {
   systemPrompt: string;
   userPrompt: string;
   provider?: CityGenerationProvider;
@@ -320,7 +320,22 @@ export async function runJsonPromptWithProvider(params: {
   requireWebSearch?: boolean;
   requestTimeoutMs?: number;
   signal?: AbortSignal;
-}) {
+};
+
+let externalRunner: ((params: JsonPromptParams) => Promise<JsonPromptResult | null>) | null = null;
+
+/**
+ * For offline scripts only: answer provider calls with responses produced outside the app (for
+ * example by a Claude Code subagent given the identical prompt), while everything around the call
+ * (identity, validation, formulas, persistence, climate and photo) runs unchanged. The app never
+ * sets this. Pass null to restore normal provider calls.
+ */
+export function setExternalJsonPromptRunner(runner: typeof externalRunner) {
+  externalRunner = runner;
+}
+
+export async function runJsonPromptWithProvider(params: JsonPromptParams) {
+  if (externalRunner) return externalRunner(params);
   const providerOrder: CityGenerationProvider[] = params.provider
     ? [params.provider]
     : ['anthropic', 'openai', 'gemini'];

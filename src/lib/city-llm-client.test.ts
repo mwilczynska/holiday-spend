@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
+import { runJsonPromptWithProvider, setExternalJsonPromptRunner } from '@/lib/city-llm-client';
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -143,5 +143,24 @@ describe('OpenAI city-generation transport', () => {
       systemPrompt: 'Return JSON.', userPrompt: 'Estimate Querétaro.', provider: 'openai',
       apiKey: 'fixture-key', requestTimeoutMs: 10,
     })).rejects.toThrow(/timeout/i);
+  });
+});
+
+describe('external prompt runner for offline scripts', () => {
+  afterEach(() => setExternalJsonPromptRunner(null));
+
+  it('answers provider calls without contacting a provider, then restores normal calls', async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+    setExternalJsonPromptRunner(async (params) => ({
+      provider: 'anthropic', model: 'claude-haiku-5-5 (Claude Code subagent)', text: params.userPrompt.toUpperCase(), webSearchUsed: true,
+    }));
+    const result = await runJsonPromptWithProvider({ systemPrompt: 's', userPrompt: 'answer', provider: 'anthropic', apiKey: 'unused' });
+    expect(result).toMatchObject({ text: 'ANSWER', model: 'claude-haiku-5-5 (Claude Code subagent)', webSearchUsed: true });
+    expect(fetchMock).not.toHaveBeenCalled();
+
+    setExternalJsonPromptRunner(null);
+    expect(await runJsonPromptWithProvider({ systemPrompt: 's', userPrompt: 'answer', provider: 'anthropic' })).toBeNull();
+    vi.unstubAllGlobals();
   });
 });
