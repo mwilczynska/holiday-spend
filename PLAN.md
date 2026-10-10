@@ -103,7 +103,22 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
 - [x] City images: free Wikipedia/Commons method tested (38/40 on a broad sample) and documented in
       `docs/product/city-images.md`; integration (table, batch fetch, credit caption) awaits the owner's go-ahead.
 
-- [ ] Optional: integrate city photos per `docs/product/city-images.md`.
+### Owner fix round 3 (10 October 2026)
+
+- [x] Dashboard current destination follows the in-progress leg (otherwise the leg containing today).
+- [x] Expenses: one scroll area with infinite loading, no paging; Quick Add is a dialog inside Expenses.
+- [x] Sidebar: Tags and Quick Add removed (both reached from Expenses).
+- [x] Fixed costs: 0 rows in the owner's database and 0 of 72 saved plans use them; retired from the UI, data model
+      kept. Plan header no longer shows them.
+- [x] Dashboard comparison: per-day excludes intercity transport; one scroll area with Countries/Cities toggle and search.
+- [x] Trip climate: daily points so hover works on any date; labelled axes.
+- [x] Cumulative spend chart: Today line, omitted when today is outside the plotted dates.
+- [x] Logo scenes redrawn after two rounds of rendered candidates (layered range, sunset palm, fields, dusk skyline).
+- [x] City images: `src/lib/city-image-lookup.ts` (deterministic, no key, no LLM) with offline tests; live check
+      `scripts/check-city-image-lookup.ts` found verified free images for 23/24 cities outside the library. The miss
+      (Tottori) fails at geocoding, not image lookup. A small-LLM title fallback is described, not built.
+
+- [ ] Optional: wire `lookupCityImage` into city creation and display per `docs/product/city-images.md`.
 - [ ] Baseline checks, Playwright smoke, and merge decision.
 
 ## Clean up older merged branches — COMPLETE (3 October 2026)

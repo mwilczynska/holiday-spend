@@ -103,8 +103,10 @@ holdouts, import staged rows, run Phase 11, or enable their old three-call/searc
 
 The planner displays 2021–2025 monthly historical mean temperature and precipitation, an annual view, and a whole-trip
 graph with separate temperature/rainfall axes. Celsius is the default; shared C/F controls update all weather views.
-The trip graph is date-scaled: each stay holds its month's mean temperature for the days spent there, with the month's
-average daily low–high as a band and rainfall as an area; gaps between stays and missing climate break the line.
+The trip graph is date-scaled with one point per day: each stay holds its month's mean temperature for the days spent
+there, with the month's average daily low–high as a band and rainfall as an area; gaps between stays and missing
+climate break the line. Hovering any date shows that day's values. Axes are labelled, and a Today line appears when
+today falls inside the plotted range.
 Monthly precipitation is the average of the five monthly totals, including snow water equivalent; it is not a
 forecast or a stay total.
 
@@ -119,9 +121,14 @@ settle rather than drawing incomplete lines repeatedly. See `docs/product/trip-c
 
 ## City images
 
-Destinations currently show a drawn scene chosen deterministically from the city name. A free photo method using
-Wikipedia/Wikimedia Commons, verified against stored coordinates and Commons licences, is tested but not integrated;
-see `docs/product/city-images.md` and the read-only probe `scripts/city-image-probe.mjs`.
+Destinations currently show a drawn scene chosen deterministically from the city name. The sidebar logo cross-fades
+four drawn scenes (mountains, beach, plains, city), showing only the mountains under reduced motion.
+
+Free photos come from Wikipedia/Wikimedia Commons with no key and no LLM. `src/lib/city-image-lookup.ts` searches for
+the article, accepts it only within 50 km of the city's geocoded coordinates, and returns a freely licensed Commons
+image with its credit data, falling back to Wikidata's image; otherwise it returns a miss. It is not yet wired into
+city creation or display. `scripts/check-city-image-lookup.ts` is a read-only live check through the app's own
+geocoding. See `docs/product/city-images.md`.
 
 ## Transport
 
@@ -237,8 +244,15 @@ millisecond steps; values below millisecond precision remain rejected drafts.
 Profile-name saves require acknowledgement of the requested name, including clearing it. Failed saves retain drafts
 with an error and saved-name label. Pending submissions lock input; newer edits clear previous save status.
 
-Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. Dashboard
-spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
+Expense tracking supports CRUD, tagging, exclusion, reassignment, bulk operations, and Wise CSV imports. The expense
+list loads further pages as it scrolls inside one viewport-height area, and a refresh reloads every loaded page.
+Quick Add opens as a dialog from Expenses (`/track/add` remains); Tags are reached from Expenses, not the sidebar.
+Dashboard spending is constrained to the trip window and missing AUD conversions are excluded rather than treated as zero.
+
+The dashboard's current destination is the leg with an in-progress status, otherwise the leg containing today. Its
+comparison table toggles between countries and cities, with search, in one scroll area. Per-day figures there exclude
+intercity transport (planned and `transport_intercity` spend); totals still include it. The cumulative spend chart
+shows a Today line only when today falls within the plotted dates.
 
 A failed initial tracker read displays unavailable counts/totals and Retry. It never becomes a successful empty
 result. Successful server-rendered views still skip duplicate initial browser reads.
@@ -253,8 +267,10 @@ to the current user's active expense and tags. Failed saves retain selections; f
 New manual expenses resolve an AUD conversion before saving when none is supplied. An unavailable rate leaves the
 conversion missing with a visible warning. Quick Add retains rejected input for retry and clears successful input
 immediately to prevent duplicate submissions.
-Fixed-cost additions retain rejected drafts and show save failures. Invalid amounts are blocked; paid-status and
-delete failures leave the displayed row unchanged and expose an error.
+Fixed costs are retired from the UI in favour of per-leg miscellaneous expenses. The data model and budget arithmetic
+remain for compatibility; Settings lists existing rows as "Fixed costs (retired)" with paid-status and delete only, and
+summaries show a fixed-cost line only when the total is nonzero. Paid-status and delete failures leave the displayed row
+unchanged and expose an error.
 Planner leg additions retain the selected city and nights after rejected saves and show HTTP, network or unreadable
 response errors. Nights must be a positive whole number. Pending additions disable the form and prevent a second submission.
 New-city forms validate city identity and creation flags before clearing input or reporting success. Planner

@@ -1,6 +1,6 @@
 # City images
 
-Status: method tested, not yet integrated (10 October 2026). Until it is, every city shows a drawn
+Status: server library and live check written, not yet wired into city creation (10 October 2026). Until it is, every city shows a drawn
 scene chosen from its name (`src/components/dashboard/DestinationScene.tsx`).
 
 ## Source
@@ -9,11 +9,20 @@ Free photos come from Wikipedia and Wikimedia Commons. Both are free to use with
 like Open-Meteo, so this stays within the "no paid data APIs" constraint. Commons only hosts
 freely licensed or public-domain files.
 
-The probe `scripts/city-image-probe.mjs` implements the method. It is read-only: it writes no
-database rows and downloads no images.
+The method is plain HTTP calls to public JSON APIs. It needs no browser, no agent, no API key and
+no LLM, so it can run on the live server whenever a city is added.
+
+- `src/lib/city-image-lookup.ts`: the server library. `lookupCityImage({ name, countryName, latitude,
+  longitude })` returns a verified image with its credit data, or a `no-article` / `no-free-image`
+  status. `fetch` is injectable; `city-image-lookup.test.ts` covers it offline.
+- `scripts/check-city-image-lookup.ts`: live, read-only check. It geocodes each city with the app's
+  own Open-Meteo geocoding (`geocodingUrl` and `resolveClimateLocation` in `climate-provider.ts`),
+  then calls the library. It writes nothing.
+- `scripts/city-image-probe.mjs`: the earlier exploratory probe over the existing library.
 
 ```
-node scripts/city-image-probe.mjs --limit 40 --json probe.json
+npx tsx scripts/check-city-image-lookup.ts
+npx tsx scripts/check-city-image-lookup.ts "Hue|VN|Vietnam" "Brno|CZ|Czech Republic"
 node scripts/city-image-probe.mjs --cities "Salento,Puerto Escondido"
 ```
 
@@ -44,10 +53,28 @@ batches sequentially. A city costs three or four requests.
 | --- | --- | --- |
 | 10 hand-picked hard cases | 10/10 after fixes | Salento resolves to Colombia; Puerto Escondido via the Wikidata fallback |
 | First 40 cities alphabetically, 25 without stored coordinates | 38/40 | Misses were `Bali (Ubud/Canggu)`, a combined entry, and `Banatayan`, a misspelt duplicate of `Bantayan` |
+| 24 cities not in the library, via the live-site path (geocode, then lookup) | 23/24 | Valladolid, Córdoba, Granada and Perth resolve to Mexico, Argentina, Nicaragua and Australia rather than their namesakes. The miss, Tottori, stops at geocoding ("ambiguous"), as its climate collection would |
 
 The licences seen were CC BY, CC BY-SA, CC0, public domain, and Korea's KOGL Type 1. All allow
 reuse with attribution. One known imperfection is that `Bali (Ubud)` resolves to Ubud Palace,
 which is inside the town. The manual override below covers cases like that.
+
+## Why no LLM is needed, and where a small one would fit
+
+City creation already produces verified coordinates: climate collection geocodes every new city
+against its ISO country code. With coordinates, choosing the article is a distance check, not a
+judgement, so the lookup is deterministic and repeatable.
+
+The only remaining failure is a city the geocoder cannot pin down (Tottori, above). That city also
+has no climate, so it should be fixed at the geocoding step for both, using the existing
+`locationQueries` / `coordinateOverrides` tables in `climate-provider.ts`.
+
+If unattended handling of those cases is wanted later, a small model (for example `gpt-6-luna`)
+could be asked for one thing only: the English Wikipedia article title for the city. The answer
+would still go through the same checks (the article must exist, be geolocated, not be a
+disambiguation page, and carry a free Commons image), so a wrong title is rejected rather than
+shown. The model never supplies an image URL or licence. This is not built; on the evidence so far
+it would rescue about one city in twenty-five.
 
 ## Licence obligations
 
@@ -78,11 +105,12 @@ is gitignored and local. Pages serve the local copy, so viewing a page never cal
 
 **When it runs.** Follow the climate pattern: collect once and keep the result.
 
-- **New city** (generation or manual add): fetch after the city is saved. A failure stores
+- **New city** (generation or manual add): call `lookupCityImage` after `ensureCityClimate` in
+  `generateAndPersistCityEstimate`, using the coordinates it saved. A failure stores
   `last_error` and leaves the drawn scene; it never blocks saving the city.
 - **City refresh:** keep an existing image unless `override_file` changed or the owner asks for a
   re-fetch.
-- **Batch for existing cities:** a script like the probe, writing rows and files. Run it
+- **Batch for existing cities:** a script around `lookupCityImage`, writing rows and files. Run it
   sequentially at one request per second (211 cities is about 12 minutes) and make it resumable,
   skipping rows already fetched.
 

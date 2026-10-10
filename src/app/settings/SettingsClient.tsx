@@ -6,15 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { readPageResponse } from '@/lib/read-page-response';
 import { fixedCostsReadSchema, settingsCountriesReadSchema, travellerSettingsReadSchema, llmSettingsReadSchema } from '@/lib/settings-read-contract';
-import { Plus, Trash2, Download, Settings as SettingsIcon } from 'lucide-react';
+import { Trash2, Download, Settings as SettingsIcon } from 'lucide-react';
 import { PageTitle } from '@/components/layout/PageHeader';
 import Link from 'next/link';
 
@@ -58,8 +56,6 @@ function timeoutInputToMilliseconds(value: string) {
   return wholeMilliseconds / 1000 === seconds ? wholeMilliseconds : milliseconds;
 }
 
-const CATEGORIES = ['visa', 'insurance', 'flights', 'gear', 'other'];
-
 export interface SettingsInitialData {
   costs: FixedCost[]; countries: Country[]; groupSize: number | null; llm: LlmSettings | null;
   readError?: string | null;
@@ -67,7 +63,8 @@ export interface SettingsInitialData {
 
 export function SettingsClient({ initialData }: { initialData: SettingsInitialData }) {
   const [costs, setCosts] = useState<FixedCost[]>(initialData.costs);
-  const [countries, setCountries] = useState<Country[]>(initialData.countries);
+  // Country options are still read and validated with the rest of Settings; nothing renders them now.
+  const [, setCountries] = useState<Country[]>(initialData.countries);
   const [groupSize, setGroupSize] = useState(initialData.groupSize);
   const [groupSizeStatus, setGroupSizeStatus] = useState<string | null>(null);
   const [groupSizeError, setGroupSizeError] = useState<string | null>(null);
@@ -79,7 +76,6 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   const [readError, setReadError] = useState<string | null>(initialData.readError ?? null);
   const [hasLoadedData, setHasLoadedData] = useState(!initialData.readError);
   const readSequence = useRef(0);
-  const [addOpen, setAddOpen] = useState(false);
   const [costError, setCostError] = useState<string | null>(null);
   const [costSaving, setCostSaving] = useState(false);
   const costSubmitting = useRef(false);
@@ -91,14 +87,6 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   const [llmSaving, setLlmSaving] = useState(false);
   const llmSubmitting = useRef(false);
   const [llmRetry, setLlmRetry] = useState<LlmSettingsUpdate | null>(null);
-  const [newCost, setNewCost] = useState({
-    description: '',
-    amountAud: 0,
-    category: 'other',
-    countryId: '',
-    date: '',
-    notes: '',
-  });
 
   const fetchData = useCallback(async () => {
     const sequence = ++readSequence.current;
@@ -154,20 +142,6 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
   }, []);
 
   useInitialPageRefresh('/settings', fetchData, !initialData.readError);
-
-  const handleAdd = async () => {
-    if (!newCost.description.trim() || !Number.isFinite(newCost.amountAud) || newCost.amountAud <= 0) return;
-    await mutateFixedCost('/api/fixed-costs', 'POST', {
-      ...newCost,
-      description: newCost.description.trim(),
-      countryId: newCost.countryId || null,
-      date: newCost.date || null,
-      notes: newCost.notes || null,
-    }, () => {
-      setAddOpen(false);
-      setNewCost({ description: '', amountAud: 0, category: 'other', countryId: '', date: '', notes: '' });
-    });
-  };
 
   const mutateFixedCost = async (url: string, method: string, body?: Record<string, unknown>, onSuccess?: () => void) => {
     if (costSubmitting.current || groupSizeSubmitting.current || llmSubmitting.current || loading || readError) return;
@@ -475,7 +449,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           <p className="text-sm text-muted-foreground">New one-off costs belong on a plan leg as a miscellaneous cost. These older items still count toward trip totals.</p>
         </CardHeader>
         <CardContent>
-          {!addOpen && costError && <p role="alert" className="mb-3 text-sm text-destructive">{costError}</p>}
+          {costError && <p role="alert" className="mb-3 text-sm text-destructive">{costError}</p>}
           {hasLoadedData ? <div className="flex gap-4 mb-4 text-sm">
             <span>Total: <strong>${total.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</strong></span>
             <span className="font-semibold text-success">Paid: ${totalPaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>

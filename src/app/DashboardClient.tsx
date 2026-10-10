@@ -5,7 +5,6 @@ import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
 import { dashboardReadSchema } from '@/lib/dashboard-read-contract';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';

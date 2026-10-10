@@ -61,7 +61,7 @@ function locationQuery(name: string, countryCode: string): LocationQuery {
   return locationQueries[`${countryCode}|${name}`] ?? { queryName: name };
 }
 
-function geocodingUrl(name: string, countryCode: string) {
+export function geocodingUrl(name: string, countryCode: string) {
   const query = locationQuery(name, countryCode);
   const url = new URL('https://geocoding-api.open-meteo.com/v1/search');
   url.search = new URLSearchParams({ name: query.queryName, countryCode, count: '100', language: 'en', format: 'json' }).toString();
