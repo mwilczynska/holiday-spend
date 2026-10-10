@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
+import { useAdoptPrefilledValue } from '@/lib/use-adopt-prefilled-value';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,7 +15,9 @@ export function ResetPasswordScreen() {
   const params = useSearchParams();
   const token = params.get('token');
   const [newPassword, setNewPassword] = useState('');
+  const adoptNewPassword = useAdoptPrefilledValue(setNewPassword);
   const [confirmPassword, setConfirmPassword] = useState('');
+  const adoptConfirmPassword = useAdoptPrefilledValue(setConfirmPassword);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -89,6 +92,7 @@ export function ResetPasswordScreen() {
                   autoComplete="new-password"
                   required
                   minLength={10}
+                  ref={adoptNewPassword}
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                 />
@@ -104,6 +108,7 @@ export function ResetPasswordScreen() {
                   type="password"
                   autoComplete="new-password"
                   required
+                  ref={adoptConfirmPassword}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />

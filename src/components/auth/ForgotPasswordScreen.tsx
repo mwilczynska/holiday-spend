@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { useAdoptPrefilledValue } from '@/lib/use-adopt-prefilled-value';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -10,6 +11,7 @@ import { LoadingButtonLabel } from '@/components/ui/loading-state';
 
 export function ForgotPasswordScreen() {
   const [email, setEmail] = useState('');
+  const adoptEmail = useAdoptPrefilledValue(setEmail);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
@@ -79,6 +81,7 @@ export function ForgotPasswordScreen() {
                   type="email"
                   autoComplete="email"
                   required
+                  ref={adoptEmail}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />

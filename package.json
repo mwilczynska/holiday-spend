@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "predev": "node scripts/prepare-next-dev.mjs",
-    "dev": "next dev",
+    "dev": "node scripts/start-next-dev.mjs",
     "prebuild": "node scripts/prepare-next-build.mjs",
     "build": "next build",
     "start": "node scripts/start-next-production.mjs",

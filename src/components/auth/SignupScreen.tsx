@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useAdoptPrefilledValue } from '@/lib/use-adopt-prefilled-value';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -12,8 +13,11 @@ import { LoadingButtonLabel } from '@/components/ui/loading-state';
 export function SignupScreen() {
   const router = useRouter();
   const [email, setEmail] = useState('');
+  const adoptEmail = useAdoptPrefilledValue(setEmail);
   const [password, setPassword] = useState('');
+  const adoptPassword = useAdoptPrefilledValue(setPassword);
   const [name, setName] = useState('');
+  const adoptName = useAdoptPrefilledValue(setName);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -65,6 +69,7 @@ export function SignupScreen() {
                 type="email"
                 autoComplete="email"
                 required
+                ref={adoptEmail}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -77,6 +82,7 @@ export function SignupScreen() {
                 autoComplete="new-password"
                 required
                 minLength={10}
+                ref={adoptPassword}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -92,6 +98,7 @@ export function SignupScreen() {
                 id="signup-name"
                 type="text"
                 autoComplete="name"
+                ref={adoptName}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />

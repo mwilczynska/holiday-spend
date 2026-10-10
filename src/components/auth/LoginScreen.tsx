@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
+import { useAdoptPrefilledValue } from '@/lib/use-adopt-prefilled-value';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BrandMark } from '@/components/layout/BrandMark';
@@ -26,8 +27,11 @@ export function LoginScreen({
   linkRequired = null,
 }: LoginScreenProps) {
   const [email, setEmail] = useState('');
+  const adoptEmail = useAdoptPrefilledValue(setEmail);
   const [password, setPassword] = useState('');
+  const adoptPassword = useAdoptPrefilledValue(setPassword);
   const [pin, setPin] = useState('');
+  const adoptPin = useAdoptPrefilledValue(setPin);
   const [emailError, setEmailError] = useState('');
   const [unverifiedEmail, setUnverifiedEmail] = useState<string | null>(null);
   const [pinError, setPinError] = useState('');
@@ -141,6 +145,7 @@ export function LoginScreen({
                   type="email"
                   autoComplete="email"
                   required
+                  ref={adoptEmail}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -160,6 +165,7 @@ export function LoginScreen({
                   type="password"
                   autoComplete="current-password"
                   required
+                  ref={adoptPassword}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -239,6 +245,7 @@ export function LoginScreen({
                 <Input
                   type="password"
                   placeholder="Development PIN"
+                  ref={adoptPin}
                   value={pin}
                   onChange={(e) => setPin(e.target.value)}
                   className="text-center text-2xl tracking-widest"
