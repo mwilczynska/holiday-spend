@@ -98,13 +98,50 @@ const scaling = [
   ['Food', 'In proportion, less 5% per traveller above two', 'Five travellers pay 2.125×'],
 ];
 
-const history = [
-  ['v1', 'The model estimated the ten prices, applied the formulas and converted to AUD itself. The exchange rate was not recorded.', 'Produced the reference dataset; kept as a rollback'],
-  ['v3', 'Collect every price directly from named sources.', 'Abandoned at 23% coverage, no complete city'],
-  ['v4', 'Collect a few prices from a cost-of-living site; derive the rest with fitted ratios.', 'Researched, never integrated'],
-  ['v5', 'Prompt experiments.', 'Rejected'],
-  ['v6', 'Source-heavy collection across several model calls.', 'Rejected'],
-  ['v1.1', 'v1’s prices and formulas, with arithmetic, conversion and checks done by the app.', 'Current'],
+const history: {
+  version: string;
+  when: string;
+  outcome: string;
+  tried: string;
+  why: string;
+  labels?: [string, string];
+}[] = [
+  {
+    version: 'v1',
+    when: 'April 2026',
+    outcome: 'Replaced by v1.1',
+    labels: ['What it did', 'Why it was replaced'],
+    tried: 'The model estimated the ten prices, applied the formulas and converted to AUD, all in one answer.',
+    why: 'Its arithmetic and exchange rate could not be checked, and the rate was not recorded. An early audit reported 17.5% average error, but it covered nine prices in three cities and most of the error came from one city, so it did not show the prices were unusable. v1 still supplies the reference dataset and remains a rollback.',
+  },
+  {
+    version: 'v3',
+    when: 'July 2026',
+    outcome: 'Abandoned',
+    tried: 'Collect every price directly from named sources, such as restaurant menus and hotel sites, for a 36-city pilot.',
+    why: 'Each tier needs several prices at once, so one missing price blanks every tier that uses it. Street food alone blocked three food tiers in every pilot city. After weeks of collection it had 23% of the tier values and no complete city. It averaged one usable price per six web searches, and finishing all 121 cities would have taken about 17,300 lookups, repeated at every refresh.',
+  },
+  {
+    version: 'v4',
+    when: 'July 2026',
+    outcome: 'Never integrated',
+    tried: 'Read food and drink prices from a crowd-sourced cost-of-living site and hotel prices from booking-site pages, then derive the remaining prices from ratios fitted across 99 cities.',
+    why: 'Food and drink prices were exact when the site lookup worked, but the site blocked requests after about 40 in a row and had no usable page for 55% of low-cost destinations. Hotel prices read from booking pages came out about 50% high against direct quotes, and the reading method was unstable. Activity prices had no relationship to food prices. The fitted ratios still missed by 18 to 22%.',
+  },
+  {
+    version: 'v5',
+    when: 'August 2026',
+    outcome: 'Rejected',
+    tried: 'About 90 prompt experiments, each sending a model to find particular prices from particular sources, including Expedia, Momondo, Expatistan and BudgetYourTrip.',
+    why: 'No source covered every price for every city. Many pages did not say whether a room was for one or two people, or which star class it was. A single call asking for every price never returned a complete city.',
+  },
+  {
+    version: 'v6',
+    when: 'August 2026',
+    outcome: 'Rejected',
+    tried: 'Three web-search calls per city to collect source prices, with statistical fallbacks for gaps and graded estimates with ranges, staged as a full replacement of the 121 cities.',
+    why: 'Too large and fragile to run or refresh. In the final test, the searches found none of the nine prices in three Japanese cities, so the estimates rested on fallback values anyway while costing several model calls per city.',
+  },
 ];
 
 const keyFacts = [
@@ -339,7 +376,7 @@ export default function EstimatesPage() {
         </Tile>
       </div>
 
-      <div className="grid gap-3.5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+      <div className="grid gap-3.5">
         <section className="min-w-0 rounded-2xl border border-[#F6D9AE] bg-[#FFF5E6] p-4 sm:px-[18px]">
           <div className="flex items-start justify-between gap-2">
             <h2 className="text-sm font-semibold text-slate-700">Limitations</h2>
@@ -347,7 +384,7 @@ export default function EstimatesPage() {
               <TriangleAlert />
             </span>
           </div>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-700">
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-700 lg:columns-2 lg:gap-10 [&>li]:break-inside-avoid">
             <li>City prices come from model knowledge, not current listings, and ignore season, neighbourhood and events.</li>
             <li>Tier multipliers are fixed assumptions, never fitted to data. The 4-star value adds nothing beyond 3-star.</li>
             <li>Activity tiers are not based on activity prices.</li>
@@ -355,12 +392,37 @@ export default function EstimatesPage() {
             <li>No accuracy figure is claimed for city costs; transport was checked on three routes. Both are accepted as reasonable for budgeting.</li>
           </ul>
         </section>
-        <Tile title="Earlier methods" icon={<History />} lead="Researched July to August 2026. Only v1 and v1.1 shipped.">
-          <Table head={['Version', 'Approach', 'Outcome']} rows={history} />
-          <p className="text-xs text-muted-foreground">
-            Each replacement for v1 cost too much to run or refresh for the accuracy it gained. v1.1 keeps v1’s formulas
-            and moves the arithmetic, currency conversion and checks into the app.
-          </p>
+        <Tile title="Earlier methods" icon={<History />} lead="Only v1 and v1.1 have shipped. The rest were researched and set aside.">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {history.map(method => (
+              <article key={method.version} className="rounded-xl border bg-secondary/40 p-3.5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded-md bg-card px-2 py-0.5 text-xs font-extrabold text-foreground ring-1 ring-border">{method.version}</span>
+                  <span className="text-xs text-muted-foreground">{method.when}</span>
+                  <span className="ml-auto rounded-full bg-card px-2 py-0.5 text-xs font-semibold text-slate-600 ring-1 ring-border">{method.outcome}</span>
+                </div>
+                <h3 className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{method.labels?.[0] ?? 'What it tried'}</h3>
+                <p className="mt-1">{method.tried}</p>
+                <h3 className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{method.labels?.[1] ?? 'Why it was not used'}</h3>
+                <p className="mt-1">{method.why}</p>
+              </article>
+            ))}
+            <article className="rounded-xl border border-brand-teal/30 bg-brand-teal/5 p-3.5">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded-md bg-card px-2 py-0.5 text-xs font-extrabold text-brand-teal ring-1 ring-brand-teal/30">v1.1</span>
+                <span className="text-xs text-muted-foreground">August 2026</span>
+                <span className="ml-auto rounded-full bg-card px-2 py-0.5 text-xs font-semibold text-brand-teal ring-1 ring-brand-teal/30">Current</span>
+              </div>
+              <h3 className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">What it does</h3>
+              <p className="mt-1">Keeps v1’s ten model prices and formulas, and moves the arithmetic, currency conversion and checks into the app.</p>
+              <h3 className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Why</h3>
+              <p className="mt-1">
+                The research showed that public prices exist for large cities but often not for small destinations, and
+                collecting enough of them to fill every tier cost far more than the accuracy it added. v1.1 takes one
+                model call per city and records everything it used.
+              </p>
+            </article>
+          </div>
         </Tile>
       </div>
     </div>

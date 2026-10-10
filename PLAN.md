@@ -36,6 +36,7 @@ Its regressions and Chrome verification pass.
 - [x] Pointers updated in `CLAUDE.md`/`AGENTS.md`, `docs/README.md` and `docs/dev/archive/README.md`.
 - [x] `tsc`, build, full tests, `docs:check-memory` and `methodology:v1.1:check` pass; page checked in the browser.
 - [x] `/estimates` redesigned in the bento style without collapsible sections: headline figures, three step tiles, tables for prices, formulas, scaling, the example and history. Header buttons removed (both pages are in the sidebar; Dataset is linked inline). Checked at desktop and phone width with no horizontal overflow.
+- [x] "Earlier methods" expanded on the page and in `city-cost-methodology.md` §10: what each of v1, v3, v4, v5 and v6 tried and why it was not used, from `LOG.md`, `methodology-v4.md`, the prompt register and the archived v6.1 plan.
 
 ## New cities via subagents: Europe — COMPLETE (10 October 2026)
 

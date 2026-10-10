@@ -219,22 +219,67 @@ When you know a real price, such as a booked hotel, use an override.
 
 ## 10. History of earlier methods
 
-Several replacements for v1 were researched between July and August 2026. None shipped. Each was rejected because it
-cost too much to run or refresh for the accuracy gained. The details are in `LOG.md` and the archived branch.
+Only v1 and v1.1 have shipped. The others were researched between July and August 2026 and set aside. The full record
+is in `LOG.md`, `methodology-v4.md`, `docs/prompts/README.md` and the archived branch `feat/city-cost-methodology-v6`.
 
-| Version | Approach | Outcome |
-| --- | --- | --- |
-| v1 | Model estimates ten anchors, applies the formulas and converts to AUD | Produced the reference dataset; kept as rollback |
-| v2.1 | v1 plus a hotel-price lookup service for accommodation | Removed; code deleted |
-| v3 | Collect every price directly from named sources | Abandoned after reaching 23% of the pilot's values and no complete city |
-| v4 | Collect a few prices from a cost-of-living site, derive the rest with fitted ratios | Research completed (`methodology-v4.md`), never integrated |
-| v5 | Prompt experiments 085 to 094 | Rejected (`docs/prompts/README.md`) |
-| v6, v6.1 | Source-heavy, multi-call collection | Rejected; kept for audit on branch `feat/city-cost-methodology-v6` |
-| v1.1 | v1 anchors and formulas; server does the arithmetic and records a dated RBA rate | Current |
+### v1 (April 2026): replaced by v1.1
 
-Two findings from that work still matter:
+**What it did.** The model estimated the ten prices, applied the formulas and converted to AUD, all in one answer.
 
-- An early accuracy audit of v1 (17.5% average error) rested on nine prices in three cities, most of the error from
-  one city. It did not show v1 was unusable.
-- Collecting every price directly fails because each tier needs several prices at once. One missing price, such as
-  street food, blanks every tier that uses it, so coverage stays low no matter how much is collected.
+**Why it was replaced.** Its arithmetic and exchange rate could not be checked, and the rate was not recorded. An early
+audit reported 17.5% average error, but it covered nine prices in three cities and most of the error came from one
+city, so it did not show the prices were unusable. v1 still supplies the reference dataset and remains a rollback.
+
+### v2.1: removed
+
+Added an external hotel-price lookup on top of v1. The code was removed in a cleanup pass.
+
+### v3 (July 2026): abandoned
+
+**What it tried.** Collect every price directly from named sources, such as restaurant menus and hotel sites, for a
+36-city pilot.
+
+**Why it was not used.** Each tier needs several prices at once, so one missing price blanks every tier that uses it.
+Street food alone blocked three food tiers in every pilot city. After weeks of collection it had 23% of the tier
+values (156 of 684) and no complete city. It averaged one usable price per six web searches, and finishing all 121
+cities would have taken about 17,300 lookups, repeated at every refresh.
+
+### v4 (July 2026): never integrated
+
+**What it tried.** Read food and drink prices from a crowd-sourced cost-of-living site and hotel prices from
+booking-site pages, then derive the remaining prices from ratios fitted across 99 cities.
+
+**Why it was not used.**
+
+- Food and drink prices were exact when the site lookup worked, but the site blocked requests after about 40 in a row,
+  and it had no usable page for 55% of low-cost destinations.
+- Hotel prices read from booking pages came out about 50% high against direct quotes in Copenhagen, and the reading
+  method was unstable between runs.
+- Activity prices had no relationship to food prices, so activities could not be derived.
+- The fitted ratios still missed by 18 to 22% (median), against a 15% target.
+
+v4 also measured the 4-star to 3-star price ratio at about 1.3 across 16 cities, against the 1.8 the formulas use.
+v1.1 kept 1.8 so as not to change existing behaviour.
+
+### v5 (August 2026): rejected
+
+**What it tried.** About 90 prompt experiments, each sending a model to find particular prices from particular
+sources, including Expedia, Momondo, Expatistan and BudgetYourTrip.
+
+**Why it was not used.** No source covered every price for every city. Many pages did not say whether a room was for
+one or two people, or which star class it was. A single call asking for every price never returned a complete city.
+
+### v6 and v6.1 (August 2026): rejected
+
+**What it tried.** Three web-search calls per city to collect source prices, with statistical fallbacks for gaps and
+graded estimates with ranges, staged as a full replacement of the 121 cities.
+
+**Why it was not used.** Too large and fragile to run or refresh. In the final test, the searches found none of the
+nine prices in three Japanese cities, so the estimates rested on fallback values anyway while costing several model
+calls per city.
+
+### What carried into v1.1
+
+Public prices exist for large cities but often not for small destinations, and collecting enough of them to fill every
+tier cost far more than the accuracy it added. v1.1 therefore keeps v1's model estimates and formulas, takes one model
+call per city, and moves the arithmetic, currency conversion and checks into the app so everything it used is recorded.
