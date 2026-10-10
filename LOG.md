@@ -3119,3 +3119,13 @@ The differing photo article titles Lagos, Portugal, Málaga and San Sebastián a
 San Sebastian's first response uses stale FX; its second has nonconforming provenance. Both pairs are discarded and
 a fresh third response passes before persistence. No response is edited. Code is unchanged since the passing baseline;
 checkpoint `a132d8b` is pushed, and the next wave is generating.
+
+## 10 October 2026 — European cities: 38 saved
+
+The third wave adds Ghent, four Swiss cities, three Austrian destinations, Cesky Krumlov, Wroclaw, Thessaloniki
+and Chania, bringing the library to 302. All 38 European additions have active v1.1/max provenance, saved dates,
+twelve climate months and verified photos. Existing cities, estimates, climate and photos match the pre-Europe
+backup; itinerary, transport, plan and expense hashes remain unchanged. Accented photo titles Český Krumlov and
+Wrocław are inspected and correct. Hallstatt retains low confidence for limited seasonal accommodation; newer
+Austrian, Czech and Greek room estimates exceed older entries, with no adjustment or calibration. Source is
+unchanged since the passing baseline. The Greek-island/Balkan wave is generating.
