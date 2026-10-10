@@ -1,193 +1,368 @@
 import Link from 'next/link';
-import { BookOpenText, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { PageTitle } from '@/components/layout/PageHeader';
-import { Card, CardContent } from '@/components/ui/card';
+import type { ReactNode } from 'react';
+import {
+  BedDouble,
+  BookOpenText,
+  Calculator,
+  CloudSun,
+  Coffee,
+  Database,
+  History,
+  ListOrdered,
+  Plane,
+  TriangleAlert,
+  Users,
+  UtensilsCrossed,
+  Ticket,
+} from 'lucide-react';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { cn } from '@/lib/utils';
 
-type Section = {
-  title: string;
-  summary: string;
-  paragraphs: string[];
-  bullets?: string[];
-  formulas?: string[];
-};
+const anchors = [
+  ['Beer', 'One domestic draft beer in a restaurant'],
+  ['Coffee', 'One regular cappuccino'],
+  ['Inexpensive meal', 'One meal at an inexpensive restaurant, one person'],
+  ['Mid-range meal', 'Three courses for two at a mid-range restaurant, no drinks'],
+  ['Cocktail', 'One standard cocktail'],
+  ['Wine', 'One glass at a restaurant'],
+  ['Hostel dorm', 'One bed, one night'],
+  ['Hostel private room', 'One room for two, one night'],
+  ['1-star room', 'A very basic hotel or guesthouse room for two, one night'],
+  ['3-star room', 'A registered 3-star hotel room for two, one night'],
+];
 
-const sections: Section[] = [
+const tierGroups: { title: string; unit: string; icon: ReactNode; note: string; rows: [string, string][] }[] = [
   {
-    title: 'What a city estimate is',
-    summary: 'Nineteen values per city, in AUD, for two people.',
-    paragraphs: [
-      'Each city has six accommodation tiers (hostel dorm, hostel private room, 1-star to 4-star) priced per night, and four food, four drinks and four activity tiers priced per day. All values are in AUD for two travellers. The planner adjusts them for your group size.',
-      'These are planning estimates, not quotes or observed prices. Transport is not part of a city estimate; it is entered separately.',
+    title: 'Accommodation',
+    unit: 'per night',
+    icon: <BedDouble />,
+    note: 'The 4-star multiplier is a fixed assumption applied to every city.',
+    rows: [
+      ['Hostel dorm', 'dorm bed × 2'],
+      ['Private room', 'private room'],
+      ['1-star', '1-star room'],
+      ['2-star', '(1-star + 3-star) ÷ 2'],
+      ['3-star', '3-star room'],
+      ['4-star', '3-star room × 1.8'],
     ],
   },
   {
-    title: 'Where city prices come from',
-    summary: 'The reference dataset, cities generated in the app, or manual edits.',
-    paragraphs: [
-      'The reference dataset has 121 cities in 58 countries, produced in April 2026 with the v1 method. Cities generated in the app, or added with the batch script, use v1.1. Cities edited by hand on the Dataset page are labelled manual. The Dataset page shows each city’s source and generation history.',
-      'New and regenerated cities use v1.1. Reference cities stay on v1 until someone regenerates them.',
+    title: 'Food',
+    unit: 'per day',
+    icon: <UtensilsCrossed />,
+    note: 'street meal = inexpensive meal × 0.6',
+    rows: [
+      ['Street food', 'street meal × 3 × 2'],
+      ['Budget', '(street meal × 2 + inexpensive meal) × 2'],
+      ['Mid-range', '(street meal + inexpensive meal + mid-range meal ÷ 2) × 2'],
+      ['High-end', 'mid-range food × 1.5'],
     ],
   },
   {
-    title: 'Step 1: ten prices in USD',
-    summary: 'A language model estimates ten prices from its general knowledge.',
-    paragraphs: [
-      'The app sends one request to the selected model (OpenAI, Anthropic or Gemini). The model returns these ten prices in USD. It does not search the web for them, and it does no arithmetic. It also returns a confidence label (high, medium or low) and a short note on how it reached the estimate.',
-    ],
-    bullets: [
-      'Beer: one domestic draft beer in a restaurant.',
-      'Coffee: one regular cappuccino.',
-      'Inexpensive meal: one meal at an inexpensive restaurant, one person.',
-      'Mid-range meal: three courses for two at a mid-range restaurant, no drinks.',
-      'Cocktail: one standard cocktail.',
-      'Wine: one glass at a restaurant.',
-      'Hostel dorm: one bed, one night.',
-      'Hostel private room: one room for two, one night.',
-      '1-star: one very basic hotel or guesthouse room for two, one night.',
-      '3-star: one registered 3-star hotel room for two, one night.',
+    title: 'Drinks',
+    unit: 'per day',
+    icon: <Coffee />,
+    note: 'None means no alcohol. It still includes one coffee each.',
+    rows: [
+      ['None', 'coffee × 2'],
+      ['Light', 'coffee × 2 + beer × 2'],
+      ['Moderate', 'coffee × 2 + beer × 4 + cocktail × 2'],
+      ['Heavy', 'coffee × 2 + beer × 6 + cocktail × 4 + wine × 2'],
     ],
   },
   {
-    title: 'Step 2: the exchange rate',
-    summary: 'The latest Reserve Bank of Australia rate, checked before anything is saved.',
-    paragraphs: [
-      'In the same request, the model uses web search for one thing: the latest published RBA USD/AUD rate, with its date and the rba.gov.au page it came from.',
-      'Nothing is saved if any price is missing or not a positive number, if the source is not rba.gov.au, if the rate is more than seven days old, or if the rate is outside 0.1 to 10. The RBA usually quotes US dollars per Australian dollar, so the app inverts the rate to get AUD per USD.',
-    ],
-  },
-  {
-    title: 'Step 3: accommodation and food tiers',
-    summary: 'The server calculates every tier, then converts to AUD.',
-    paragraphs: [
-      'Tiers are calculated in USD from the ten prices, converted to AUD and rounded to whole dollars. The 4-star and high-end food multipliers are fixed assumptions applied to every city.',
-    ],
-    formulas: [
-      'hostel dorm = dorm bed × 2',
-      'private room = hostel private room',
-      '1-star = 1-star room;  3-star = 3-star room',
-      '2-star = (1-star room + 3-star room) ÷ 2',
-      '4-star = 3-star room × 1.8',
-      'street meal = inexpensive meal × 0.6',
-      'street food = street meal × 3 meals × 2 people',
-      'budget food = (street meal × 2 + inexpensive meal) × 2',
-      'mid-range food = (street meal + inexpensive meal + mid-range meal for two ÷ 2) × 2',
-      'high-end food = mid-range food × 1.5',
-    ],
-  },
-  {
-    title: 'Step 3: drinks and activity tiers',
-    summary: 'No alcohol still includes coffee; activities are a meal-based proxy.',
-    paragraphs: [
-      'The None drinks tier means no alcohol and includes one coffee each. The activity tiers are calculated from the inexpensive-meal price plus a fixed USD 10. They are not based on attraction or tour prices.',
-    ],
-    formulas: [
-      'drinks none = coffee × 2',
-      'drinks light = coffee × 2 + beer × 2',
-      'drinks moderate = coffee × 2 + beer × 4 + cocktail × 2',
-      'drinks heavy = coffee × 2 + beer × 6 + cocktail × 4 + wine × 2',
-      'activity unit = (inexpensive meal + USD 10) ÷ 2',
-      'activities free = 0;  budget = unit × 2;  mid-range = unit × 5.5;  high-end = unit × 12',
-    ],
-  },
-  {
-    title: 'Example',
-    summary: 'One city, from model prices to AUD tiers.',
-    paragraphs: [
-      'Suppose the model returns an inexpensive meal of USD 15, a mid-range meal for two of USD 60, beer USD 6, coffee USD 4 and a 3-star room of USD 150, with an RBA rate of 0.65 USD per AUD. The app uses 1 ÷ 0.65 = 1.5385 AUD per USD.',
-    ],
-    formulas: [
-      '3-star = 150 USD → A$231',
-      '4-star = 150 × 1.8 = 270 USD → A$415',
-      'mid-range food = (9 + 15 + 30) × 2 = 108 USD → A$166',
-      'light drinks = 4 × 2 + 6 × 2 = 20 USD → A$31',
-      'budget activities = (15 + 10) ÷ 2 × 2 = 25 USD → A$38',
-    ],
-  },
-  {
-    title: 'From city estimates to your budget',
-    summary: 'Tiers, group size, nights, overrides and extras.',
-    paragraphs: [
-      'For each leg you choose one tier per category. Settings sets the group size, from one to five travellers. City values are for two people, so the planner scales them as follows.',
-    ],
-    bullets: [
-      'Hostel dorm, drinks and activities: in proportion to group size. One traveller pays half.',
-      'Rooms: one room for every two travellers, rounded up. One traveller pays for a full room; three pay for two rooms.',
-      'Food: in proportion to group size, less 5% for each traveller above two. Five travellers pay 2.5 × 0.85 times the two-person value.',
-      'Overrides replace a category for the whole group (accommodation per night, others per day) and are not scaled again.',
-      'Leg total = daily cost × nights + intercity transport + miscellaneous expenses. Daily cost includes any transport per day you enter.',
-      'If a city has no private-room value, the average of its dorm and 1-star values is used. Any other missing value counts as zero.',
-      'Saved plans store your tier choices, not prices, so later changes to a city change saved plans too.',
-    ],
-  },
-  {
-    title: 'Intercity transport',
-    summary: 'A separate model estimate, added once per leg.',
-    paragraphs: [
-      'Transport between cities can be entered by hand or estimated by a language model. An estimate is a one-way cost for your group at standard adult fares, in whole AUD, added once to the destination leg. The model is asked for the typical fare a traveller would book: not the cheapest fare and not a premium ticket. Flights are economy with carry-on only; driving covers fuel and tolls.',
-      'The model may use web search. It returns up to four options with a confidence label, the basis for the price and its sources. Nothing is saved until you apply an option. If the search request fails, the model is asked again without search, and the result is marked as not web-grounded.',
-    ],
-  },
-  {
-    title: 'Trip climate',
-    summary: 'Monthly averages for 2021 to 2025, not a forecast.',
-    paragraphs: [
-      'Temperatures and precipitation come from the Open-Meteo historical archive (ECMWF ERA5 and ERA5-Land reanalysis). For each month, the app averages the daily mean, high and low temperatures over 2021 to 2025, and averages the five monthly precipitation totals. Precipitation includes snow as water equivalent.',
-      'These are grid estimates, not weather-station readings, and five years is a short sample. Salento, Colombia uses the ECMWF IFS model instead, because ERA5 rainfall there disagrees badly with local station records.',
-    ],
-  },
-  {
-    title: 'Limitations',
-    summary: 'Useful for comparing cities and planning, not a precise forecast of spending.',
-    paragraphs: [
-      'City prices come from model knowledge, not current listings, and do not reflect season, neighbourhood or events. The tier multipliers are fixed assumptions that were never fitted to data; the 4-star value adds nothing beyond the 3-star price. Activity tiers are not based on activity prices. Confidence labels are the model’s own judgement, not a measured error.',
-      'No accuracy figure is claimed for city costs. Transport estimates were checked on three routes only. Both are accepted as reasonable for budgeting, and further calibration is deliberately out of scope. When you know a real price, such as a booked hotel, use an override.',
-    ],
-  },
-  {
-    title: 'Earlier methods',
-    summary: 'What was tried before v1.1.',
-    paragraphs: [
-      'v1 used the same ten prices and formulas, but the model also did the arithmetic and currency conversion, and the exchange rate was not recorded. It produced the reference dataset and remains available as a rollback.',
-      'Between July and August 2026, several replacements were researched: collecting every price directly from named sources (v3), collecting a few prices and deriving the rest with fitted ratios (v4), prompt experiments (v5), and multi-call source collection (v6). None shipped. Each cost too much to run or refresh for the accuracy gained. v1.1 keeps v1’s formulas and moves the arithmetic, conversion and checks into the app.',
+    title: 'Activities',
+    unit: 'per day',
+    icon: <Ticket />,
+    note: 'unit = (inexpensive meal + USD 10) ÷ 2. A meal-based proxy, not attraction or tour prices.',
+    rows: [
+      ['Free', '0'],
+      ['Budget', 'unit × 2'],
+      ['Mid-range', 'unit × 5.5'],
+      ['High-end', 'unit × 12'],
     ],
   },
 ];
 
+const example = [
+  ['3-star', '150', 'A$231'],
+  ['4-star', '150 × 1.8 = 270', 'A$415'],
+  ['Mid-range food', '(9 + 15 + 30) × 2 = 108', 'A$166'],
+  ['Light drinks', '4 × 2 + 6 × 2 = 20', 'A$31'],
+  ['Budget activities', '(15 + 10) ÷ 2 × 2 = 25', 'A$38'],
+];
+
+const scaling = [
+  ['Dorm, drinks, activities', 'In proportion to group size', 'One traveller pays half'],
+  ['Rooms', 'One room per two travellers, rounded up', 'Three travellers pay for two rooms'],
+  ['Food', 'In proportion, less 5% per traveller above two', 'Five travellers pay 2.125×'],
+];
+
+const history = [
+  ['v1', 'The model estimated the ten prices, applied the formulas and converted to AUD itself. The exchange rate was not recorded.', 'Produced the reference dataset; kept as a rollback'],
+  ['v3', 'Collect every price directly from named sources.', 'Abandoned at 23% coverage, no complete city'],
+  ['v4', 'Collect a few prices from a cost-of-living site; derive the rest with fitted ratios.', 'Researched, never integrated'],
+  ['v5', 'Prompt experiments.', 'Rejected'],
+  ['v6', 'Source-heavy collection across several model calls.', 'Rejected'],
+  ['v1.1', 'v1’s prices and formulas, with arithmetic, conversion and checks done by the app.', 'Current'],
+];
+
+const keyFacts = [
+  { value: '19', label: 'Values per city', subtext: '6 accommodation, 4 food, 4 drinks, 4 activities, plus coffee', icon: <ListOrdered /> },
+  { value: '10', label: 'Prices from the model', subtext: 'Everything else is calculated by the app', icon: <Calculator /> },
+  { value: '2', label: 'Travellers per base value', subtext: 'The planner scales for groups of 1 to 5', icon: <Users /> },
+  { value: '121', label: 'Reference cities', subtext: '58 countries, April 2026 (v1)', icon: <Database /> },
+];
+
+/** Bento tile: title row with an icon chip, then content. */
+function Tile({
+  title,
+  icon,
+  lead,
+  className,
+  children,
+}: {
+  title: string;
+  icon: ReactNode;
+  lead?: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className={cn('min-w-0 rounded-2xl border bg-card p-4 sm:px-[18px]', className)}>
+      <div className="flex items-start justify-between gap-2">
+        <div>
+          <h2 className="text-sm font-semibold text-slate-700">{title}</h2>
+          {lead ? <p className="mt-0.5 text-xs text-muted-foreground">{lead}</p> : null}
+        </div>
+        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-info-soft text-blue-700 [&_svg]:h-4 [&_svg]:w-4">
+          {icon}
+        </span>
+      </div>
+      <div className="mt-3 space-y-3 text-sm leading-relaxed text-slate-700">{children}</div>
+    </section>
+  );
+}
+
+function Table({ head, rows, mono }: { head: string[]; rows: ReadonlyArray<ReadonlyArray<string>>; mono?: number[] }) {
+  return (
+    <div className="overflow-x-auto rounded-xl border">
+      <table className="w-full border-collapse text-sm">
+        <thead className="bg-secondary text-left text-xs font-semibold text-slate-600">
+          <tr>{head.map(cell => <th key={cell} scope="col" className="px-3 py-2">{cell}</th>)}</tr>
+        </thead>
+        <tbody>
+          {rows.map(row => (
+            <tr key={row.join('|')} className="border-t align-top">
+              {row.map((cell, index) => (
+                <td
+                  key={index}
+                  className={cn('px-3 py-2', index === 0 && 'font-medium text-foreground', mono?.includes(index) && 'font-mono text-[12.5px]')}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function Step({ number, title, children }: { number: number; title: string; children: ReactNode }) {
+  return (
+    <section className="min-w-0 rounded-2xl border bg-card p-4 sm:px-[18px]">
+      <div className="flex items-center gap-2.5">
+        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-brand-teal/10 text-sm font-extrabold text-brand-teal">
+          {number}
+        </span>
+        <h3 className="text-sm font-semibold text-slate-700">{title}</h3>
+      </div>
+      <div className="mt-3 space-y-3 text-sm leading-relaxed text-slate-700">{children}</div>
+    </section>
+  );
+}
+
+function Note({ children }: { children: ReactNode }) {
+  return <p className="rounded-xl bg-secondary px-3 py-2 text-xs leading-relaxed text-muted-foreground">{children}</p>;
+}
+
+function GroupHeading({ children }: { children: ReactNode }) {
+  return <h2 className="px-1 pt-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{children}</h2>;
+}
+
 export default function EstimatesPage() {
-  return <div className="space-y-6">
-    <div className="space-y-2">
-      <PageTitle icon={BookOpenText}>Methodology</PageTitle>
-      <p className="text-sm text-muted-foreground">How city-cost estimates become your travel budget.</p>
-      <p className="text-xs text-muted-foreground">New cities: v1.1 · Reference dataset: April 2026 · Base values: 2 travellers · Currency: AUD</p>
-      <div className="flex flex-wrap gap-2 pt-1">
-        <Button variant="outline" asChild><Link href="/dataset">View Dataset</Link></Button>
-        <Button variant="outline" asChild><Link href="/plan">Open Planner</Link></Button>
+  return (
+    <div className="space-y-4">
+      <PageHeader
+        icon={BookOpenText}
+        title="Methodology"
+        description="How the app estimates city costs, transport and weather, and how they become your trip budget."
+      />
+
+      <div className="grid grid-cols-2 gap-3.5 xl:grid-cols-4">
+        {keyFacts.map(fact => (
+          <section key={fact.label} className="rounded-2xl border bg-card p-4 sm:px-[18px]">
+            <div className="flex items-start justify-between gap-2">
+              <h2 className="text-sm font-semibold text-slate-700">{fact.label}</h2>
+              <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-info-soft text-blue-700 [&_svg]:h-4 [&_svg]:w-4">
+                {fact.icon}
+              </span>
+            </div>
+            <p className="mt-1 text-[28px] font-extrabold tracking-tight">{fact.value}</p>
+            <p className="text-xs text-muted-foreground">{fact.subtext}</p>
+          </section>
+        ))}
+      </div>
+
+      <div className="grid gap-3.5 lg:grid-cols-3">
+        <Tile title="What an estimate is" icon={<BookOpenText />} lead="AUD, for two people">
+          <p>
+            Accommodation is priced per night. Food, drinks and activities are priced per day. These are planning
+            estimates, not quotes or observed prices.
+          </p>
+          <p>Transport between cities is not part of a city estimate and is handled separately.</p>
+        </Tile>
+        <Tile title="Where prices come from" icon={<Database />} className="lg:col-span-2">
+          <ul className="space-y-1.5">
+            <li><span className="font-semibold text-foreground">Reference dataset.</span> 121 cities produced in April 2026 with the v1 method.</li>
+            <li><span className="font-semibold text-foreground">Generated cities.</span> Cities generated in the app, or added in batches, use v1.1, described below.</li>
+            <li><span className="font-semibold text-foreground">Manual edits.</span> Values entered by hand.</li>
+          </ul>
+          <p>
+            New and regenerated cities use v1.1. Reference cities stay on v1 until they are regenerated. The{' '}
+            <Link href="/dataset" className="font-semibold text-brand-blue underline-offset-2 hover:underline">Dataset</Link>{' '}
+            page shows each city’s source and generation history.
+          </p>
+        </Tile>
+      </div>
+
+      <GroupHeading>How a city is estimated</GroupHeading>
+      <div className="grid gap-3.5 lg:grid-cols-3">
+        <Step number={1} title="The model estimates ten prices in USD">
+          <p>
+            One request goes to the selected model (OpenAI, Anthropic or Gemini). It estimates the ten prices listed
+            below from its general knowledge. It does not search for them and does no arithmetic.
+          </p>
+          <p>It also gives a confidence label (high, medium or low) and a short note on how it reached the estimate.</p>
+        </Step>
+        <Step number={2} title="The model looks up the exchange rate">
+          <p>
+            In the same request it searches the web for one thing: the latest Reserve Bank of Australia USD/AUD rate,
+            with its date and source page. The app inverts the usual USD-per-AUD quote.
+          </p>
+          <Note>
+            Nothing is saved if a price is missing or not positive, the source is not rba.gov.au, the rate is more than
+            seven days old, or it is outside 0.1 to 10.
+          </Note>
+        </Step>
+        <Step number={3} title="The app calculates the tiers">
+          <p>
+            The app applies the formulas below in USD, converts each result to AUD and rounds to whole dollars.
+          </p>
+          <p>
+            It saves the ten prices, every tier, the model and settings used, the confidence note and the exchange rate
+            with its date and source.
+          </p>
+        </Step>
+      </div>
+
+      <div className="grid gap-3.5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <Tile title="The ten model prices" icon={<ListOrdered />} lead="In USD, before conversion">
+          <Table head={['Price', 'Definition']} rows={anchors} />
+        </Tile>
+        <Tile title="Worked example" icon={<Calculator />} lead="One city, from model prices to AUD">
+          <p>
+            The model returns an inexpensive meal of USD 15, a mid-range meal for two of USD 60, beer USD 6, coffee
+            USD 4 and a 3-star room of USD 150. The RBA rate is 0.65 USD per AUD, so 1 USD = 1.5385 AUD. A street meal
+            is 15 × 0.6 = USD 9.
+          </p>
+          <Table head={['Tier', 'USD', 'AUD']} rows={example} mono={[1, 2]} />
+        </Tile>
+      </div>
+
+      <GroupHeading>Tier formulas · inputs are the ten model prices · all tiers for two people</GroupHeading>
+      <div className="grid gap-3.5 md:grid-cols-2">
+        {tierGroups.map(group => (
+          <Tile key={group.title} title={group.title} icon={group.icon} lead={group.unit}>
+            <Table head={['Tier', 'Formula']} rows={group.rows} mono={[1]} />
+            <Note>{group.note}</Note>
+          </Tile>
+        ))}
+      </div>
+
+      <GroupHeading>Using estimates in your plan</GroupHeading>
+      <div className="grid gap-3.5 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+        <Tile title="From estimates to your budget" icon={<Users />} lead="Group size is set in Settings, from 1 to 5">
+          <p>For each leg you choose one tier per category. City values are for two people, so the planner scales them:</p>
+          <Table head={['Category', 'Scaling', 'Example']} rows={scaling} />
+          <div className="rounded-xl bg-secondary px-3 py-2 font-mono text-[12.5px] leading-6">
+            <div>leg total = daily cost × nights + intercity transport + miscellaneous</div>
+            <div>daily cost = accommodation + food + drinks + activities + transport per day</div>
+          </div>
+        </Tile>
+        <Tile title="Overrides and edge cases" icon={<ListOrdered />}>
+          <ul className="space-y-2">
+            <li><span className="font-semibold text-foreground">Overrides</span> replace a category for the whole group and are not scaled again. Use one when you know a real price, such as a booked hotel.</li>
+            <li><span className="font-semibold text-foreground">Transport per day</span> is a manual daily amount, zero unless entered.</li>
+            <li><span className="font-semibold text-foreground">Intercity transport</span> and <span className="font-semibold text-foreground">miscellaneous expenses</span> are added once per leg, not per night.</li>
+            <li><span className="font-semibold text-foreground">Missing values.</span> A missing private-room value uses the average of dorm and 1-star. Any other missing value counts as zero.</li>
+            <li><span className="font-semibold text-foreground">Saved plans</span> store tier choices, not prices, so later city changes flow through.</li>
+          </ul>
+        </Tile>
+      </div>
+
+      <GroupHeading>Other estimates</GroupHeading>
+      <div className="grid gap-3.5 lg:grid-cols-2">
+        <Tile title="Intercity transport" icon={<Plane />} lead="One-way, whole AUD, added once to the destination leg">
+          <p>
+            Entered by hand or estimated by a language model for your group at standard adult fares. The model is asked
+            for the typical fare a traveller would book: not the cheapest, and not premium or flexible. Flights are
+            economy with carry-on only; driving covers fuel and tolls.
+          </p>
+          <p>
+            It may search the web and returns up to four options, each with a confidence label, price basis and
+            sources. Nothing is saved until you apply one. If search fails, the model is asked again without it and the
+            result is marked as not web-grounded.
+          </p>
+        </Tile>
+        <Tile title="Trip climate" icon={<CloudSun />} lead="Monthly averages for 2021 to 2025, not a forecast">
+          <p>
+            From the Open-Meteo historical archive (ECMWF ERA5 and ERA5-Land). Each month averages the daily mean, high
+            and low temperatures over five years, and the five monthly precipitation totals, including snow as water.
+          </p>
+          <p>
+            These are grid estimates of about 11 to 25 km, not station readings, and five years is a short sample.
+            Salento, Colombia uses ECMWF IFS, because ERA5 rainfall there disagrees badly with station records.
+          </p>
+        </Tile>
+      </div>
+
+      <div className="grid gap-3.5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+        <section className="min-w-0 rounded-2xl border border-[#F6D9AE] bg-[#FFF5E6] p-4 sm:px-[18px]">
+          <div className="flex items-start justify-between gap-2">
+            <h2 className="text-sm font-semibold text-slate-700">Limitations</h2>
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-[#FCE7C8] text-[#9A4B00] [&_svg]:h-4 [&_svg]:w-4">
+              <TriangleAlert />
+            </span>
+          </div>
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-700">
+            <li>City prices come from model knowledge, not current listings, and ignore season, neighbourhood and events.</li>
+            <li>Tier multipliers are fixed assumptions, never fitted to data. The 4-star value adds nothing beyond 3-star.</li>
+            <li>Activity tiers are not based on activity prices.</li>
+            <li>Confidence labels are the model’s own judgement, not a measured error.</li>
+            <li>No accuracy figure is claimed for city costs; transport was checked on three routes. Both are accepted as reasonable for budgeting.</li>
+          </ul>
+        </section>
+        <Tile title="Earlier methods" icon={<History />} lead="Researched July to August 2026. Only v1 and v1.1 shipped.">
+          <Table head={['Version', 'Approach', 'Outcome']} rows={history} />
+          <p className="text-xs text-muted-foreground">
+            Each replacement for v1 cost too much to run or refresh for the accuracy it gained. v1.1 keeps v1’s formulas
+            and moves the arithmetic, currency conversion and checks into the app.
+          </p>
+        </Tile>
       </div>
     </div>
-    <div className="grid gap-4">
-      {sections.map((section, index) => <Card key={section.title}>
-        <CardContent className="p-0">
-          <details className="group" open={index === 0}>
-            <summary className="cursor-pointer list-none rounded-2xl px-5 py-4 hover:bg-secondary/60 [&::-webkit-details-marker]:hidden">
-              <div className="flex items-center justify-between gap-4">
-                <div className="min-w-0 space-y-1">
-                  <h2 className="text-base font-bold">{section.title}</h2>
-                  <p className="text-sm text-muted-foreground">{section.summary}</p>
-                </div>
-                <span className="sr-only group-open:hidden">Expand</span>
-                <span className="sr-only hidden group-open:inline">Collapse</span>
-                <ChevronDown className="h-5 w-5 shrink-0 text-slate-600 transition-transform group-open:rotate-180" aria-hidden="true" />
-              </div>
-            </summary>
-            <div className="space-y-4 border-t px-5 py-4 text-sm text-muted-foreground">
-              {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-              {section.bullets && <ul className="list-disc space-y-2 pl-5">{section.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul>}
-              {section.formulas && <ul className="space-y-2">{section.formulas.map(formula => <li className="break-words font-mono text-xs" key={formula}>{formula}</li>)}</ul>}
-            </div>
-          </details>
-        </CardContent>
-      </Card>)}
-    </div>
-  </div>;
+  );
 }

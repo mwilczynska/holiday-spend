@@ -35,6 +35,7 @@ Its regressions and Chrome verification pass.
 - [x] `/estimates` page rewritten to match, adding transport, climate and a worked example. Corrects the transport override (per day, not separate) and documents missing-value fallbacks.
 - [x] Pointers updated in `CLAUDE.md`/`AGENTS.md`, `docs/README.md` and `docs/dev/archive/README.md`.
 - [x] `tsc`, build, full tests, `docs:check-memory` and `methodology:v1.1:check` pass; page checked in the browser.
+- [x] `/estimates` redesigned in the bento style without collapsible sections: headline figures, three step tiles, tables for prices, formulas, scaling, the example and history. Header buttons removed (both pages are in the sidebar; Dataset is linked inline). Checked at desktop and phone width with no horizontal overflow.
 
 ## New cities via subagents: Europe — COMPLETE (10 October 2026)
 
