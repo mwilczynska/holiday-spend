@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
+**Status:** European city additions complete: 64 added, library 328, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** European city additions — IN PROGRESS. Bento is merged to main and its worktree is removed; the completed sections below retain the implementation evidence.
+**Current phase:** European city additions — COMPLETE. Bento is merged to main and its worktree is removed; the completed sections below retain the implementation evidence.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -14,20 +14,20 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `488bbd3` — final feature QA fix: strict Wise CSV validation. The completed audit includes all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
+**Latest implementation checkpoint:** `a132d8b` — four constrained European geocoding cases and regressions; TypeScript, production build, 465 tests, memory mirror and v1.1 guard pass. The earlier feature QA checkpoint is `488bbd3`, including all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
 
 **Previous product checkpoint:** `caf6933` — shared saved keys, clickable city choices, configured transport limits, Stop and failed-leg retry. It follows `515c445` actionable credential-safe failures and deadlines, and `1581388` request limits/current discovery/GPT-6 Luna max default on merged main (`c459cfd`).
 
-**Latest publication:** [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
+**Latest publication:** European checkpoints pushed through `eb5b149`; final closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Finish the final 14 European cities after the verified 50-city checkpoint. Review and persist their responses with collection dates, climate and photos; verify the complete batch and unchanged itinerary/plans/expenses.
+**Next action:** European batch complete; await the owner's next task. Keep the backup and local batch evidence. No calibration or regeneration of older estimates is planned.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
-**Working tree:** Main contains all twenty-nine fixes, the miscellaneous feature, separate test corrections and completed coverage report. Both merged feature branches are deleted. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
+**Working tree:** European geocoding fixes and milestone records are on main. Added cities and photos are local application data. Concurrent methodology/documentation edits are excluded from the European commits.
 
-## New cities via subagents: Europe — IN PROGRESS (10 October 2026)
+## New cities via subagents: Europe — COMPLETE (10 October 2026)
 
 - [x] Owner authorized the 64-city handoff. Consistent SQLite backup at `C:\Dev\holiday-spend-db-backups\2026-10-10\travel-before-europe.db`; backup integrity `ok`, 264 cities and 66 legs.
 - [x] Nice/Venice test batch reviewed and persisted with costs, twelve-month climate and verified photos. Library 264 -> 266. Itinerary, leg transports, saved plans and expenses match their pre-batch row hashes.
@@ -40,8 +40,9 @@ Its regressions and Chrome verification pass.
 - [x] Second wave: Malaga, San Sebastian, Lagos, Sintra, Hamburg, Cologne, Dresden, Heidelberg, Rotterdam, Utrecht, Brussels and Bruges. Library 290; all 26 additions have timestamps, twelve-month climate and photos, with protected row hashes unchanged. Lagos, Portugal, Málaga and San Sebastián photo-title differences inspected and confirmed. San Sebastian required fresh responses after a stale RBA observation and malformed provenance were rejected; no rejected estimate was saved.
 - [x] Third wave: Ghent, Zurich, Lucerne, Interlaken, Geneva, Salzburg, Innsbruck, Hallstatt, Cesky Krumlov, Wroclaw, Thessaloniki and Chania. Library 302; all 38 additions pass provenance, date, climate and photo checks. Original city/estimate/climate/photo rows also match the backup. Český Krumlov and Wrocław photos inspected. Hallstatt has low confidence for scarce/seasonal lodging. New Austrian, Czech and Greek room estimates exceed older Vienna/Prague/Athens entries; noted without adjustment or calibration.
 - [x] Fourth wave: Santorini, Mykonos, Zagreb, Zadar, Ljubljana, Bled, Kotor, Budva, Sarajevo, Mostar, Tirana and Saranda. Library 314; all 50 additions have valid provenance, today's estimate/climate/photo timestamps, twelve climate months and verified photos. Protected rows and original library records remain unchanged. Sarandë photo inspected and correct. Seasonal resort uncertainty is disclosed; newer Croatian room estimates exceed older Split/Dubrovnik entries, recorded without calibration. Final 14-city wave is generating.
-- [ ] Remaining cities reviewed and persisted; gaps investigated, discrepancies recorded without calibration.
-- [ ] Verify provenance, photos, climate and unchanged itinerary/plans/expenses; run baseline, commit and push.
+- [x] Final wave: Dublin, Galway, Aarhus, Oslo, Bergen, Tromso, Gothenburg, Rovaniemi, Tallinn, Riga, Vilnius, Valletta, Bratislava and Plovdiv. Library 328; all 64 requested cities match distinct successful saves. Tromsø photo inspected. Rovaniemi retains low confidence for Christmas/winter lodging uncertainty; newer Plovdiv, Rovaniemi and Gothenburg room estimates exceed older Sofia, Helsinki and Stockholm entries, recorded without calibration.
+- [x] Complete database audit: integrity `ok`, no duplicate country names, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance for all 64, twelve climate months and both photo files, no new itinerary legs. Estimate/history dates match; all estimate, climate and photo dates are 10 October 2026. The 9 October RBA observation remains separate. All 264 original city rows, 121 estimates, 119 climate rows and 264 photo rows match the backup; all 66 legs, 68 transports, 72 saved plans and 1,543 expenses retain their original row hashes.
+- [x] All 64 responses tabulated and validated before saving; photo-title differences inspected. Full baseline passes at implementation checkpoint `a132d8b` (465 tests); final memory mirror and v1.1 guard pass. Later European checkpoints change documentation and local application data only. Completion recorded for commit/push to main; unrelated concurrent edits excluded.
 
 ## European city batch preparation — COMPLETE (10 October 2026)
 
@@ -182,7 +183,7 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
       retries with the place name alone when the country drowns it (York). Full photo refresh: 264/264, two picks
       changed (York found; Bath now its own article).
 - [x] Noted, not calibrated: new UK 3-star anchors (US$166-240) sit above the older London entry.
-- [ ] Europe (64 cities) handed off to a Codex agent with GPT 6 Luna Max subagents:
+- [x] Europe (64 cities) handed off to a Codex agent with GPT 6 Luna Max subagents and completed in the dated section above:
       `docs/dev/handoffs/add-cities-europe.md`. The batch script now takes `--provider` and `--agent` so the
       provenance names the model and runner correctly.
 

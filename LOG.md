@@ -3139,3 +3139,22 @@ climate months and verified photo files. Sarandë's photo is inspected and match
 and protected itinerary/transport/plan/expense hashes remain unchanged. Resort seasonality is disclosed; newer
 Croatian room estimates exceed older Split/Dubrovnik entries and are not calibrated. Source is unchanged since
 the passing baseline. The remaining fourteen cities are generating.
+
+## 10 October 2026 — European cities complete: 64 saved
+
+The final fourteen cities bring the library to 328. Every handoff prompt matches a distinct successful city save,
+with active v1.1 provenance identifying OpenAI, GPT-6 Luna (Codex subagent) and max reasoning. Each city has twelve
+climate months, verified photo metadata and both local image files. Tromsø's differently titled photo is inspected
+and correct. Rovaniemi retains low confidence for seasonal lodging; differences from older Sofia, Helsinki and
+Stockholm room estimates are recorded in PLAN.md without calibration.
+
+Final database integrity is `ok`, with no duplicate country names. All 64 city/history estimate dates agree and
+all cost, climate and photo collection dates are 10 October 2026. The RBA observation remains 9 October; earlier
+53-city batches already have dates and require no backfill. Every original city, estimate, climate and photo row
+matches the pre-Europe backup, and all 66 itinerary legs, 68 transports, 72 saved plans and 1,543 expenses retain
+their original row hashes. No itinerary legs were created for the additions.
+
+TypeScript, the production build and 465 tests passed for the geocoding implementation checkpoint `a132d8b`.
+Final memory-mirror and v1.1 guard checks pass; the live CSV hash is unchanged. Later European checkpoints only
+record documentation and local data. Concurrent methodology/documentation edits are left outside these commits.
+The completed backup and gitignored batch responses/provenance/results remain available for audit.
