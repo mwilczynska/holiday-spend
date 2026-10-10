@@ -72,7 +72,6 @@ test('pending traveller saves lock submissions until confirmed', async ({ page, 
     await expect.poll(() => writes).toBe(1);
     await expect(page.getByRole('combobox').first()).toBeDisabled();
     await expect(page.getByRole('button', { name: 'Discard selection', exact: true })).toBeDisabled();
-    await expect(page.getByRole('button', { name: 'Add', exact: true })).toBeDisabled();
     await expect(page.getByRole('status')).toHaveText('Saving traveller count...');
     await expect(page.getByText(`Unsaved selection: ${wanted} travellers. Last confirmed saved count: ${confirmed}.`, { exact: true })).toBeVisible();
     release();

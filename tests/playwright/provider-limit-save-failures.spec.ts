@@ -71,7 +71,6 @@ test('pending provider saves clear old success and lock Save, Reset, drafts and 
     await expect(page.getByRole('button', { name: 'Save limits', exact: true })).toBeDisabled();
     await expect(page.getByRole('button', { name: 'Reset to defaults', exact: true })).toBeDisabled();
     await expect(page.getByRole('combobox', { name: 'Travellers', exact: true })).toBeDisabled();
-    await expect(page.getByRole('button', { name: 'Add', exact: true })).toBeDisabled();
     await expect(page.getByRole('status')).toHaveText('Saving provider limits...');
     release();
     await expect(page.getByRole('status')).toHaveText('Provider limits saved.');

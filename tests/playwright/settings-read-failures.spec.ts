@@ -66,13 +66,15 @@ test('Settings retry preserves unsaved provider limit drafts', async ({ page }) 
   await expect(page.getByRole('button', { name: 'Save limits', exact: true })).toBeEnabled();
 });
 
+// Fixed costs are retired (10 October 2026): with none stored the section is absent, and an empty
+// read is still not reported as a failure.
 test('successful empty fixed-cost reads remain distinct from read failure', async ({ page }) => {
   await page.route('**/api/fixed-costs', route => route.fulfill({ json: { data: [] } }));
   await gotoClientPage(page, '/settings');
-  await expect(page.getByText('No fixed costs yet.', { exact: true })).toBeVisible();
+  await expect(page.getByText('Fixed costs (retired)', { exact: true })).toBeHidden();
   await expect(page.getByRole('button', { name: 'Retry settings', exact: true })).toBeHidden();
   await expect(page.getByText('Fixed-cost totals unavailable.', { exact: true })).toBeHidden();
-  await expect(page.getByRole('button', { name: 'Add', exact: true })).toBeEnabled();
+  await expect(page.getByRole('button', { name: 'Save limits', exact: true })).toBeEnabled();
 });
 
 test('failed initial Settings reads show unavailable values and recover with Retry', async ({ page }) => {

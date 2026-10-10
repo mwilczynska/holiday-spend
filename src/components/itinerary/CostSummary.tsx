@@ -42,10 +42,13 @@ export function TripSummaryCard({ legs, fixedCostsTotal, groupSize = 2 }: CostSu
         <span className="text-slate-700">Total leg costs</span>
         <span className="font-bold">{fmt(totalLegsCost)}</span>
       </div>
-      <div className="flex justify-between text-sm">
-        <span className="text-slate-700">Fixed costs</span>
-        <span className="font-bold">{fmt(fixedCostsTotal)}</span>
-      </div>
+      {/* Fixed costs are retired; only older ones that still count toward the total are listed. */}
+      {fixedCostsTotal > 0 ? (
+        <div className="flex justify-between text-sm">
+          <span className="text-slate-700">Older fixed costs</span>
+          <span className="font-bold">{fmt(fixedCostsTotal)}</span>
+        </div>
+      ) : null}
       <div className="flex items-baseline justify-between border-t pt-2.5">
         <span className="text-base font-extrabold">Total</span>
         <span className="text-xl font-extrabold">

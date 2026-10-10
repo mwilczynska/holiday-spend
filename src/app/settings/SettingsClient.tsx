@@ -465,63 +465,14 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
         </CardContent>
       </Card>
 
+      {/* Fixed costs are retired: one-off costs belong on a plan leg (Miscellaneous costs). The
+          section only appears when older fixed costs exist, so they can still be reviewed, marked
+          paid or deleted; they continue to count toward totals and saved plans. */}
+      {costs.length > 0 ? (
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Fixed Costs</CardTitle>
-          <Dialog open={addOpen} onOpenChange={(open) => { if (!costSaving) { setAddOpen(open); setCostError(null); } }}>
-            <DialogTrigger asChild>
-              <Button size="sm" disabled={groupSizeSaving || llmSaving || loading || Boolean(readError)}><Plus className="h-4 w-4 mr-2" />Add</Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader><DialogTitle>Add Fixed Cost</DialogTitle>
-                <DialogDescription className="sr-only">
-                  Record a one-off cost that is not tied to a single itinerary leg.
-                </DialogDescription></DialogHeader>
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="fixed-cost-description">Description</Label>
-                  <Input id="fixed-cost-description" value={newCost.description} onChange={(e) => setNewCost(p => ({ ...p, description: e.target.value }))} />
-                </div>
-                <div>
-                  <Label htmlFor="fixed-cost-amount">Amount (AUD)</Label>
-                  <Input id="fixed-cost-amount" type="number" min="0.01" step="any" value={newCost.amountAud || ''} onChange={(e) => setNewCost(p => ({ ...p, amountAud: parseFloat(e.target.value) || 0 }))} />
-                </div>
-                <div>
-                  <Label>Category</Label>
-                  <Select value={newCost.category} onValueChange={(v) => setNewCost(p => ({ ...p, category: v }))}>
-                    <SelectTrigger><SelectValue /></SelectTrigger>
-                    <SelectContent>
-                      {CATEGORIES.map(c => <SelectItem key={c} value={c} className="capitalize">{c}</SelectItem>)}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label>Country (optional)</Label>
-                  <SearchableSelect
-                    value={newCost.countryId}
-                    onValueChange={(value) => setNewCost(p => ({ ...p, countryId: value }))}
-                    placeholder="General"
-                    searchPlaceholder="Search countries..."
-                    options={[
-                      { value: '', label: 'General', description: 'Not tied to a specific country.' },
-                      ...countries.map((country) => ({
-                        value: country.id,
-                        label: country.name,
-                      })),
-                    ]}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="fixed-cost-date">Date (optional)</Label>
-                  <Input id="fixed-cost-date" type="date" value={newCost.date} onChange={(e) => setNewCost(p => ({ ...p, date: e.target.value }))} />
-                </div>
-                {costError && <p role="alert" className="text-sm text-destructive">{costError}</p>}
-                <Button onClick={handleAdd} className="w-full" disabled={costSaving || groupSizeSaving || llmSaving || loading || Boolean(readError) || !newCost.description.trim() || !Number.isFinite(newCost.amountAud) || newCost.amountAud <= 0}>
-                  {costSaving ? 'Saving...' : 'Add Fixed Cost'}
-                </Button>
-              </div>
-            </DialogContent>
-          </Dialog>
+        <CardHeader>
+          <CardTitle>Fixed costs (retired)</CardTitle>
+          <p className="text-sm text-muted-foreground">New one-off costs belong on a plan leg as a miscellaneous cost. These older items still count toward trip totals.</p>
         </CardHeader>
         <CardContent>
           {!addOpen && costError && <p role="alert" className="mb-3 text-sm text-destructive">{costError}</p>}
@@ -564,6 +515,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           )}
         </CardContent>
       </Card>
+      ) : null}
     </div>
   );
 }

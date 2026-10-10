@@ -119,9 +119,9 @@ function getCategoryLabel(categoryKey: string) {
 
 const SUMMARY_HELP: Record<string, StatHelp> = {
   plannedTotal: {
-    summary: 'All planned itinerary leg spend plus fixed costs.',
+    summary: 'All planned itinerary leg spend, including each leg’s transport and one-off costs.',
     items: [
-      { label: 'Formula', description: 'planned leg totals + fixed costs' },
+      { label: 'Formula', description: 'sum of planned leg totals (plus any older fixed costs)' },
       { label: 'Scope', description: 'This is the full planned trip amount shown as the top-level budget.' },
     ],
   },
@@ -150,7 +150,7 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
     summary: 'Average planned daily spend across the entire trip.',
     items: [
       { label: 'Formula', description: 'planned total / total trip nights' },
-      { label: 'Scope', description: 'Includes leg costs and fixed costs spread across the trip.' },
+      { label: 'Scope', description: 'Includes every leg cost spread across the trip.' },
     ],
   },
   daysElapsed: {
@@ -481,7 +481,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
             label="Planned total"
             help={SUMMARY_HELP.plannedTotal}
             value={fmtAud(summary.totalBudget)}
-            subtext={`Legs ${fmtAud(summary.plannedLegsTotal)} + fixed ${fmtAud(summary.fixedTotal)}`}
+            subtext={summary.fixedTotal > 0 ? `Legs ${fmtAud(summary.plannedLegsTotal)} + older fixed costs ${fmtAud(summary.fixedTotal)}` : `${summary.destinations} destinations · ${summary.totalNights} nights`}
             icon={<TrendingUp />}
           />
           <BentoStat
