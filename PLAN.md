@@ -27,6 +27,10 @@ Its regressions and Chrome verification pass.
 
 **Working tree:** European geocoding fixes and milestone records are on main. Added cities and photos are local application data. Concurrent methodology/documentation edits are excluded from the European commits.
 
+## Dashboard current destination pace — COMPLETE (10 October 2026)
+
+- [x] The Current destination card showed the leg's unspent budget divided by the days left. Expenses arrive by manual upload, so the leg usually has little or no logged spending and the figure was inflated (Mexico City: $4,013 over 4 days = $1,003/day while the last expense was 3 Oct). It now shows the leg's planned pace (planned ÷ days, $401/day), matching the Up next card. Type-check, lint and dashboard tests pass; checked on the live dashboard.
+
 ## Methodology documentation rewrite — COMPLETE (10 October 2026)
 
 - [x] New `docs/product/city-cost-methodology.md` describes current behaviour (v1.1 steps, formulas, worked example, traveller scaling, limitations), with earlier methods in a closing section.

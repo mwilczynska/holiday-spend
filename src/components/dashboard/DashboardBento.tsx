@@ -141,9 +141,9 @@ export function CurrentDestinationCard({ position, image }: { position: TripPosi
     );
   }
 
-  const remaining = leg.planned - leg.actual;
-  const isOver = remaining < 0;
-  const perDayLeft = leg.nightsLeft > 0 && remaining > 0 ? remaining / leg.nightsLeft : null;
+  // Planned pace rather than budget left per remaining day: expenses arrive by manual upload, so
+  // spending on the current leg is usually incomplete and "left per day" would overstate it.
+  const perDay = leg.nights > 0 ? leg.planned / leg.nights : null;
 
   return (
     <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:px-[18px]">
@@ -174,19 +174,8 @@ export function CurrentDestinationCard({ position, image }: { position: TripPosi
         <div className="flex items-center gap-2.5">
           <Moon className="h-5 w-5 text-brand-blue" aria-hidden="true" />
           <div>
-            {isOver ? (
-              <>
-                <p className="font-bold text-[#9A4B00]">{fmtAud(-remaining)} over</p>
-                <p className="text-xs text-muted-foreground">this leg&apos;s plan</p>
-              </>
-            ) : (
-              <>
-                <p className="font-bold">{perDayLeft != null ? `${fmtAud(perDayLeft)} / day` : fmtAud(remaining)}</p>
-                <p className="text-xs text-muted-foreground">
-                  {leg.nightsLeft > 0 ? `left for ${daysLabel(leg.nightsLeft)}` : 'left on the last day'}
-                </p>
-              </>
-            )}
+            <p className="font-bold">{perDay != null ? `${fmtAud(perDay)} / day` : '—'}</p>
+            <p className="text-xs text-muted-foreground">planned pace</p>
           </div>
         </div>
       </div>
