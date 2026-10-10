@@ -20,7 +20,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Latest publication:** [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Continue European waves after the verified 14-city checkpoint. The next 12 cities are generating; review and persist them with GPT-6 Luna/max provenance, collection dates, climate and photos, preserving the itinerary/plans/expenses.
+**Next action:** Continue European waves after the verified 26-city checkpoint. The next wave covers Ghent, Switzerland, Austria, Czech Republic, Poland and Greece; review and persist it with collection dates, climate and photos, preserving the itinerary/plans/expenses.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
@@ -37,6 +37,7 @@ Its regressions and Chrome verification pass.
 - [x] Geocoder preflight identified four cases before saving them: Saranda/Sarandë, Tromso/Tromsø, San Sebastian/Donostia (the unqualified name selects an Asturias village), and Mykonos island versus town. Added constrained aliases; all 43 climate-provider regressions pass outside the sandbox. Other proposed cities resolve without changes.
 - [x] First wave adds Lyon, Marseille, Bordeaux, Strasbourg, Milan, Naples, Bologna, Amalfi, Siena, Seville, Granada and Valencia. With Nice/Venice: 14 additions, library 278, all climate/photos and collection dates verified. Protected row hashes unchanged. New Italian lodging, especially Amalfi's seasonal resort estimate, remains higher than older entries; recorded without calibration.
 - [x] Checkpoint baseline: TypeScript, production build, 74 unit files / 465 tests, memory mirror and v1.1 guard pass. Initial sandbox runs failed on filesystem permissions before tests/build could complete; network-enabled persistence and unsandboxed verification recovered without application workarounds.
+- [x] Second wave: Malaga, San Sebastian, Lagos, Sintra, Hamburg, Cologne, Dresden, Heidelberg, Rotterdam, Utrecht, Brussels and Bruges. Library 290; all 26 additions have timestamps, twelve-month climate and photos, with protected row hashes unchanged. Lagos, Portugal, Málaga and San Sebastián photo-title differences inspected and confirmed. San Sebastian required fresh responses after a stale RBA observation and malformed provenance were rejected; no rejected estimate was saved.
 - [ ] Remaining cities reviewed and persisted; gaps investigated, discrepancies recorded without calibration.
 - [ ] Verify provenance, photos, climate and unchanged itinerary/plans/expenses; run baseline, commit and push.
 

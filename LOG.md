@@ -3109,3 +3109,13 @@ Windows sandbox invocations have separate temporary directories, so batches use 
 Network restrictions initially prevent Nice/Venice climate/photo reads; explicit refresh with network access recovers
 both. Test-cache renames and build-directory creation fail in the sandbox; verification outside it passes: TypeScript,
 production build, 74 unit files / 465 tests, memory mirror and v1.1 guard. The next wave is generating.
+
+## 10 October 2026 — European cities: 26 saved
+
+Twelve more cities in Spain, Portugal, Germany, the Netherlands and Belgium bring the library to 290. All 26
+European additions have valid active v1.1/max provenance, city/history dates, twelve climate months and existing
+photo files. The itinerary, leg transports, saved plans and expenses still match their original row hashes.
+The differing photo article titles Lagos, Portugal, Málaga and San Sebastián are inspected and match the intended places.
+San Sebastian's first response uses stale FX; its second has nonconforming provenance. Both pairs are discarded and
+a fresh third response passes before persistence. No response is edited. Code is unchanged since the passing baseline;
+checkpoint `a132d8b` is pushed, and the next wave is generating.
