@@ -49,6 +49,13 @@ const locationQueries: Record<string, LocationQuery> = {
   // Several Nepali villages share these names and the geocoder lists no populations to choose by.
   'NP|Bandipur': { queryName: 'Bandipur', admin1: 'Gandaki Pradesh', admin2: 'Tanahun' },
   'NP|Bhaktapur': { queryName: 'Bhaktapur', admin2: 'Bhaktapur' },
+  // The English travel labels differ from the geocoder's settlement names.
+  'AL|Saranda': { queryName: 'Sarandë', admin1: 'Vlorë County' },
+  'NO|Tromso': { queryName: 'Tromsø', admin1: 'Troms' },
+  // "San Sebastian" alone selects a village in Asturias, not the Basque city.
+  'ES|San Sebastian': { queryName: 'Donostia / San Sebastian', admin1: 'Basque Country' },
+  // The island and its town share a name; use the island, as for Santorini.
+  'GR|Mykonos': { queryName: 'Mykonos', admin1: 'South Aegean', featureCode: 'ISL' },
 };
 
 const coordinateOverrides: Record<string, ClimateLocation> = {

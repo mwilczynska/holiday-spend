@@ -178,6 +178,29 @@ describe('Open-Meteo Archive climate aggregation', () => {
 });
 
 describe('climate geocoding', () => {
+  it.each([
+    { city: 'Saranda', country: 'AL', name: 'Sarandë', admin1: 'Vlorë County', latitude: 39.87534, longitude: 20.00477 },
+    { city: 'Tromso', country: 'NO', name: 'Tromsø', admin1: 'Troms', latitude: 69.6489, longitude: 18.95508 },
+    { city: 'San Sebastian', country: 'ES', name: 'Donostia / San Sebastian', admin1: 'Basque Country', latitude: 43.31283, longitude: -1.97499 },
+  ])('resolves $city through its verified geocoder name and region', ({city,country,name,admin1,latitude,longitude}) => {
+    const location = resolveClimateLocation({results: [
+      place(city, country, 1_000_000, {admin1:'Wrong region'}),
+      place(name, country, 100_000, {admin1,latitude,longitude}),
+    ]}, city, country);
+    expect(location).toMatchObject({name,countryCode:country,queryName:name,latitude,longitude});
+    expect(new URL(location.sourceUrl).searchParams.get('name')).toBe(name);
+    expect(() => resolveClimateLocation({results:[place(name,country,100_000,{admin1:'Wrong region'})]},city,country)).toThrow(/No matching city/);
+  });
+
+  it('distinguishes Mykonos island from its same-named town', () => {
+    const location = resolveClimateLocation({results: [
+      place('Mykonos','GR',3783,{feature_code:'PPL',admin1:'South Aegean',latitude:37.44529,longitude:25.32872}),
+      place('Mykonos','GR',10704,{feature_code:'ISL',admin1:'South Aegean',latitude:37.44931,longitude:25.38075}),
+    ]},'Mykonos','GR');
+    expect(location).toMatchObject({latitude:37.44931,longitude:25.38075});
+    expect(() => resolveClimateLocation({results:[place('Mykonos','GR',3783,{feature_code:'PPL',admin1:'South Aegean'})]},'Mykonos','GR')).toThrow(/No matching city/);
+  });
+
   it('does not accept an exact city-name match from another country', () => {
     expect(() => resolveClimateLocation({ results: [place('Springfield', 'US')] }, 'Springfield', 'CA'))
       .toThrow(/No matching city coordinates/);

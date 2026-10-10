@@ -2,7 +2,7 @@
 
 **Status:** Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Bento UI redesign — IN PROGRESS on `redesign/bento` (worktree `C:\Dev\holiday-spend-bento`). Older branch cleanup, feature QA and its publication to main are complete.
+**Current phase:** European city additions — IN PROGRESS. Bento is merged to main and its worktree is removed; the completed sections below retain the implementation evidence.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -10,7 +10,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 9 October 2026
+**Last updated:** 10 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
@@ -20,12 +20,33 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Latest publication:** [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Review the QA report on main. The four older merged branches are deleted locally and remotely; only main and the retained `feat/city-cost-methodology-v6` branch remain. The archive tag `city-cost-v6.1-research-final-2026-08-18` is unchanged. No branch cleanup, publication or feature-testing work remains within the agreed scope; the final application baseline and owner-approved exclusions remain unchanged.
+**Next action:** Continue European waves after the verified 14-city checkpoint. The next 12 cities are generating; review and persist them with GPT-6 Luna/max provenance, collection dates, climate and photos, preserving the itinerary/plans/expenses.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
 **Working tree:** Main contains all twenty-nine fixes, the miscellaneous feature, separate test corrections and completed coverage report. Both merged feature branches are deleted. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
+
+## New cities via subagents: Europe — IN PROGRESS (10 October 2026)
+
+- [x] Owner authorized the 64-city handoff. Consistent SQLite backup at `C:\Dev\holiday-spend-db-backups\2026-10-10\travel-before-europe.db`; backup integrity `ok`, 264 cities and 66 legs.
+- [x] Nice/Venice test batch reviewed and persisted with costs, twelve-month climate and verified photos. Library 264 -> 266. Itinerary, leg transports, saved plans and expenses match their pre-batch row hashes.
+- [x] Stable batch files use gitignored `.local/europe`: Windows gives each sandbox invocation a different temporary directory, so the initially suggested temp location was not shared. Public climate/photo requests require network-enabled execution; both first-save fetch failures recovered on refresh.
+- [x] Noted, not calibrated: Nice's US$180 and Venice's US$260 three-star room anchors sit above older French/Italian library entries; Venice's notes disclose the historic-centre and seasonal premium.
+- [x] Owner requested date audit: all 53 earlier subagent cities already have matching city/estimate-history timestamps, and Nice/Venice record 10 October 2026. Climate collection and photo fetch timestamps are saved separately. RBA observation date is 9 October 2026; it is not the generation date. No backfill required for these batches; verify dates on every European addition.
+- [x] Geocoder preflight identified four cases before saving them: Saranda/Sarandë, Tromso/Tromsø, San Sebastian/Donostia (the unqualified name selects an Asturias village), and Mykonos island versus town. Added constrained aliases; all 43 climate-provider regressions pass outside the sandbox. Other proposed cities resolve without changes.
+- [x] First wave adds Lyon, Marseille, Bordeaux, Strasbourg, Milan, Naples, Bologna, Amalfi, Siena, Seville, Granada and Valencia. With Nice/Venice: 14 additions, library 278, all climate/photos and collection dates verified. Protected row hashes unchanged. New Italian lodging, especially Amalfi's seasonal resort estimate, remains higher than older entries; recorded without calibration.
+- [x] Checkpoint baseline: TypeScript, production build, 74 unit files / 465 tests, memory mirror and v1.1 guard pass. Initial sandbox runs failed on filesystem permissions before tests/build could complete; network-enabled persistence and unsandboxed verification recovered without application workarounds.
+- [ ] Remaining cities reviewed and persisted; gaps investigated, discrepancies recorded without calibration.
+- [ ] Verify provenance, photos, climate and unchanged itinerary/plans/expenses; run baseline, commit and push.
+
+## European city batch preparation — COMPLETE (10 October 2026)
+
+- [x] Read the current project memory, recent implementation evidence, Europe handoff, exact v1.1 prompt and batch persistence path.
+- [x] Read-only database preflight: 264 cities, 70 countries, 66 itinerary legs, 72 saved plans and 1,543 expenses. All 264 photo rows have status `ok`; no duplicate country names.
+- [x] All 64 proposed cities across 28 countries are absent from the library. The example `C:\Dev\city-batches\europe` folder has no prompts or answers, and the specified pre-Europe backup does not yet exist.
+- [x] All 28 countries resolve in canonical metadata. Memory mirror and deterministic v1.1 guard pass; the live CSV hash is unchanged. Full build/test verification remains part of batch completion, not this documentation-only preparation.
+- [x] Preparation complete. No subagents, generation, provider calls or application-data writes in this preparation task. Next: backup with SQLite's backup API and check its integrity, generate exact prompts, then review and persist Nice/Venice before continuing in waves. Require saved climate and verified photos, retain 66 itinerary legs, and record discrepancies without calibration.
 
 ## Bento UI redesign — COMPLETE (merged to main 10 October 2026)
 
