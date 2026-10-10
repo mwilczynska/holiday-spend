@@ -27,7 +27,7 @@ Its regressions and Chrome verification pass.
 
 **Working tree:** Main contains all twenty-nine fixes, the miscellaneous feature, separate test corrections and completed coverage report. Both merged feature branches are deleted. Testing began at main `1413f3f`; all workflow writes target the isolated database. No application code changed after F29's baseline.
 
-## Bento UI redesign — IN PROGRESS (9 October 2026)
+## Bento UI redesign — COMPLETE (merged to main 10 October 2026)
 
 The owner compared four mockups and chose design D, "Bento": a white sidebar with a navy active item, white cards on
 a grey-blue ground, and illustrated destination tiles. Designs A to C are discarded. Work happens on
@@ -135,8 +135,14 @@ use `.last()`. Reset or prune the copy between runs. On the dev server `planner-
       "Cotopaxi" is 150 km away), Zanzibar (next matching article), Tomo (OSM point, containing commune). 211/211.
 - [x] Login on a dev server: inputs adopt text typed before hydration; `npm run dev` trusts the request host so
       sign-in redirects to the serving port, not the `.env.local` one.
-- [ ] After merge, run `npx tsx scripts/collect-city-images.ts` once against the main database.
-- [ ] Baseline checks, Playwright smoke, and merge decision.
+- [x] Owner approved the redesign; `main` fast-forwarded to `redesign/bento` (10 October 2026).
+- [x] Owner chose the bento worktree database for main: it carries the edits made while using the redesign
+      (Mexico City current, 385 nights) and all 211 city photos. Main's previous database is backed up, outside the
+      repository, at `C:\Dev\holiday-spend-db-backups\2026-10-10\travel-main-before-bento-merge.db`
+      (integrity checked). Photos copied to `data/city-images/` (422 files), so no recollection was needed.
+- [x] Baseline on main: typecheck, 459 unit tests (snapshot-import file timed out once under load, passes alone),
+      docs memory check, methodology check, production build.
+- [x] Worktree `C:\Dev\holiday-spend-bento` removed after the merge.
 
 ## Clean up older merged branches — COMPLETE (3 October 2026)
 
