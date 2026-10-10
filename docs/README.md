@@ -15,7 +15,11 @@ The four root-level documents come first:
 
 ## Layout
 
-- `product/methodology-v4.md` — **the active city cost methodology**
+- `product/city-cost-methodology.md` — **the active city cost methodology**
+- `product/transport-estimation.md`, `product/trip-climate.md`, `product/city-images.md` — how intercity
+  transport estimates, climate averages and city photos are produced
+- `product/methodology-v4.md` — superseded v4 research methodology, never integrated; kept in place because
+  the v4 prompt is generated from it
 - `prompts/` - tracked LLM prompt templates. `llm_prompt_city_anchors_v4.md` is **generated** from
   `product/methodology-v4.md` §9.1 — never edit it directly
 - `ops/` - deployment and operational runbooks

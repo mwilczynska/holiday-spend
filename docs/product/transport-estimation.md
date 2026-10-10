@@ -1,229 +1,121 @@
 # Intercity transport estimation
 
-**Status:** active planner feature; directional accuracy calibration in progress  
-**Last updated:** 26 August 2026
+How the planner estimates the cost of getting from one city to the next. This is separate from the city cost
+methodology (`city-cost-methodology.md`), which does not include transport.
 
-This document describes the separate LLM-backed intercity transport feature. It is not part of the city-cost
-methodology. The result is a budgeting aid, not a guaranteed fare or a booking quote.
+An estimate is a budgeting aid, not a fare quote. When you have a real booking, enter it instead.
 
-## Scope and unit
+## 1. What an estimate is
 
-- The estimate is one-way and attached once to the destination itinerary leg.
-- It covers the planner's configured traveller count and uses standard adult pricing.
-- Amounts are returned and stored as whole-number AUD totals.
-- The city-cost model does not include local or intercity transport. A user can still enter a manual transport row or
-  override an estimate.
-- No paid fare API or deterministic fare formula is used. The model may use live web grounding when the provider
-  supports it and otherwise makes a clearly labelled conservative estimate.
+- A one-way cost from the previous leg's city to this leg's city.
+- In whole AUD, for the planner's traveller count, at standard adult fares.
+- Attached once to the destination leg. It is not multiplied by nights.
+- For one of six modes: flight, train, bus, ferry, drive or rental car.
 
-## Runtime pipeline
+The price asked for is the **typical fare a traveller would actually book**: a standard, reasonably timed service
+from a reputable operator. It is not the cheapest fare on the market, and not a premium or flexible ticket. Where
+fares vary widely, the model picks a mid-range figure and says so.
 
-1. `POST /api/itinerary/legs/[id]/estimate-transport` authenticates the user, resolves the origin and destination
-   legs, derives the destination travel date, loads city/country metadata, obtains the planner group size, and builds
-   route facts (same-country/cross-border, region relationship, and traveller count).
-2. The server combines those facts with the allowed modes, optional booking/reference context, and extra context in
-   the frozen [`llm_prompt_intercity_transport_1.md`](../prompts/llm_prompt_intercity_transport_1.md) contract. The
-   prompt requests plausible one-way options only: flight, train, bus, ferry, drive, or rental car.
-3. The selected provider adapter receives the selected model and provider-native reasoning effort:
-   - OpenAI Responses API with `web_search_preview` when available.
-   - Anthropic Messages API with `web_search_20250305` when available.
-   - Gemini `generateContent` with Google Search grounding when available.
-4. If a browse/grounding request fails, the same provider is retried through the strict JSON fallback transport. The
-   response records the fallback reason and no longer claims web grounding. If no usable key/provider response is
-   available, the request fails closed; it does not invent a value. OpenAI's web-search request intentionally omits
-   JSON mode because that API rejects JSON mode together with web search; the prompt, parser, and Zod schema still
-   enforce the JSON contract, while the strict fallback may use provider JSON mode.
-5. The server extracts a JSON object (including a fenced/object substring recovery for provider wrappers) and validates
-   it with Zod. It then removes duplicate modes, keeps at most four options, trims explanatory fields, rounds each
-   `total_aud` to a whole AUD amount, and forces `transport_row_draft.cost` to equal that rounded total.
-6. The API returns the options plus assumptions, confidence, source basis, notes, search queries, citations, provider,
-   model, prompt version, and fallback metadata. The user reviews the choices; only an explicit apply action saves a
-   transport row. In the bulk flow, the selected top option is applied to its matching leg and transport rows remain
-   attached to the correct destination leg.
+The price covers the named mode between the two cities. A connecting transfer is included only when the route cannot
+be travelled without it, such as a ferry to an island. Optional extras (hotel pickup, seat selection, checked bags,
+insurance) are excluded. Flights are economy with carry-on only. Drive covers fuel and tolls. Rental cost appears only
+under rental car.
 
-The planner's existing allocation engine adds saved intercity transport once to the destination leg's total (rather
-than once per night). Multiple transport rows on a leg are summed, so a user can represent a multi-part journey.
+## 2. How an estimate is made
 
-## What the estimate means
+1. The server works out the route: the two cities, their countries and regions, whether the route crosses a border,
+   the travel date and the traveller count.
+2. It sends this to the selected model (OpenAI, Anthropic or Gemini) with the prompt in
+   `docs/prompts/llm_prompt_intercity_transport_v1_1.md`. The model may use web search where the provider supports
+   it.
+3. The model returns up to four options, one per mode. Each has a total in AUD, a confidence label (high, medium or
+   low), the basis for the price (live search, typical operator pricing, or a conservative estimate), assumptions and
+   notes. Search queries and cited pages are kept when the provider returns them.
+4. The server checks the response against a fixed schema, removes duplicate modes, keeps at most four options and
+   rounds each total to whole dollars.
+5. The options are shown for review. Nothing is saved until the user applies one. In the bulk flow, the top option
+   for each leg is applied to that leg.
 
-The model is asked to use current search/grounding evidence when it can, but search results can be incomplete, stale,
-seasonal, tax-exclusive, or unavailable for a future date. `source_basis`, `notes`, `confidence`, assumptions, and
-citations are therefore part of the returned review surface. A web-grounded response is still an estimate; a fallback
-response is explicitly less evidenced. Users should replace it with a booking or operator quote when they have one.
+If the search request fails, the same provider is asked again without web search. That result is marked as not
+web-grounded. If a model runs out of output space while reasoning, the search request is retried at a lower reasoning
+effort before giving up on search. If no provider responds with a valid answer, the estimate fails and no value is
+saved.
 
-## Directional accuracy smoke
+A leg can hold several transport rows, which are added together, so a journey with several parts can be entered as
+separate rows. Any row can be edited or entered by hand.
 
-The repeatable helper in `src/lib/transport-estimation-accuracy.ts` compares one returned option per route with a
-same-assumption reference quote. It reports, per route:
+## 3. What is recorded
 
-- absolute error in AUD;
-- relative error against the reference total;
-- provider/model, search/fallback path, queries, citations, and assumptions; and
-- missing modes and rows outside the selected tolerance.
+Each estimate returns its options with assumptions, confidence, price basis, notes, search queries, citations,
+provider, model, prompt version and whether the no-search fallback was used. Applying an option saves a transport
+row with its mode, note and cost.
 
-It also reports matched and missing-route counts, median and min/max error summaries, and outliers. This is explicitly
-directional and is not a statistical benchmark.
+## 4. Limitations
 
-The mocked pipeline smoke in `src/lib/transport-estimation-accuracy.test.ts` covers four route classes:
+- The price is a model estimate. Even with web search, search results can be stale, seasonal, missing taxes, or
+  unavailable for a future date. Results from the no-search fallback have less evidence behind them.
+- The confidence label is the model's judgement, not a measured error.
+- Accuracy has been checked on three routes only (section 6). No tolerance is set, and the method is accepted as
+  reasonable for budgeting without further calibration.
 
-| Route class | Example shape | Mode |
-| --- | --- | --- |
-| Domestic short | Sydney → Canberra | train |
-| Domestic long | Sydney → Perth | flight |
-| International short | Paris → Brussels | train |
-| International long | Tokyo → London | flight |
+## 5. Code and files
 
-The fixtures run through the actual OpenAI adapter response parsing, option normalization, provenance collection, and
-report helper. The focused run on 26 August 2026 passed **7 tests** (four pipeline/report cases plus the existing
-provider transport checks). The fixture totals are deliberately synthetic and are not observed fares.
+| Path | Role |
+| --- | --- |
+| `docs/prompts/llm_prompt_intercity_transport_v1_1.md` | Current prompt |
+| `docs/prompts/llm_prompt_intercity_transport_1.md` | v1 prompt, kept as rollback (`TRANSPORT_PROMPT_VERSION=v1`) |
+| `src/lib/transport-estimation.ts` | Provider calls, fallback, schema and option clean-up |
+| `src/lib/bulk-transport-estimation.ts` | Estimating many legs at once |
+| `src/lib/transport-estimation-accuracy.ts` | Report comparing estimates with reference fares |
 
-### Live UI smoke
+## 6. Accuracy checks and history
 
-On 26 August 2026 the authenticated planner was exercised for Ho Chi Minh City → Can Tho (two travellers, the
-existing leg date `2026-02-11`) with OpenAI `gpt-5.6-luna` and Maximum effort. The corrected request used web search
-and returned two review-only options: standard coach at A$24 and self-drive at A$30, with visible Vexere and
-VietnamPlus citations. Neither option was applied to the itinerary.
+### Prompt versions
 
-As a one-route directional sanity check, an independent [redBus route page](https://www.redbus.vn/ve-xe-khach/tuyen-duong/ho-chi-minh-di-can-tho)
-listed Phuong Trang at 185,000 VND per adult one way. Two seats are 370,000 VND; using the 26 August 2026
-[AUD/VND reference](https://www.forbes.com/advisor/money-transfer/currency-converter/aud-vnd/) of 18,722.73 gives A$19.76.
-Compared with the model's A$24 coach option, the absolute error is A$4.24 and the relative error is 21.4%, inside a
-provisional 25% tolerance. This is not a calibrated benchmark: the route date is historical, the public fare is
-dynamic, and only one mode/route has an independent quote.
+v1 did not say which fare to quote. On 5 September 2026, three routes were compared against fares captured the same
+day. The v1 estimates were all high, and the median error was 36% against the cheapest listed fare and 25% against a
+typical fare. The size of the error depended on which fare was used as the reference, which showed the prompt was not
+asking a precise question.
 
-The full live calibration step remains open: capture same-day operator or aggregator quotes for all fixed route
-classes with the same route, date, traveller count, direction, mode, and fare assumptions, then feed those references
-into the report. Only after that comparison should an initial tolerance or need for more routes be chosen. No
-synthetic value in the repository is presented as an independent accuracy observation.
-
-## Same-day reference fares captured 5 September 2026
-
-Three upcoming routes from the live itinerary now have independently captured fares, in
-`data/reference/transport_accuracy_references_2026-09-05.json`:
-
-| Route | Date | Class | Reference mode | Reference total for two |
-| --- | --- | --- | --- | --- |
-| Bangkok to Phuket | 2026-12-26 | domestic_long | bus | A$88 |
-| Koh Lanta to Bangkok | 2026-12-20 | domestic_long | bus | A$90 |
-| Colombo to Chennai | 2027-01-17 | international_short | flight | A$402 |
-
-Three details in that file matter more than the numbers.
-
-The aggregator quotes **per adult**; the app stores costs for two people. The doubling is applied in the reference
-file rather than left for the comparison to infer, because a silent factor of two would not look like an error, it
-would look like a badly calibrated model.
-
-Each route records both the cheapest listed fare for the mode and a representative mid-tier option. Those are
-different numbers — A$44 against A$48 per adult for the Bangkok bus — and the tolerance decision depends on which one
-the estimate is supposed to predict. That question is deliberately left open rather than answered by picking whichever
-makes the error smaller.
-
-The South American and long-haul legs are not covered by that aggregator and were left out rather than filled in from
-a different source. Mixing sources without matching their fare bases is what would make the error figures meaningless.
-
-Fares three or more months out move, so this is a snapshot, not a stable benchmark. A comparison run later must
-recapture.
-
-### Directional accuracy run, 5 September 2026
-
-Estimates were generated in the running planner for the three reference routes, with OpenAI
-`gpt-5.6-luna` at Maximum reasoning effort, two travellers, review only - no option was applied to the
-itinerary. Results in `data/reference/transport_accuracy_run_2026-09-05.json`.
-
-| Route | Mode | Reference (cheapest) | Estimate | Relative error |
-| --- | --- | --- | --- | --- |
-| Bangkok to Phuket | bus | A$88 | A$120 | 36.4% |
-| Koh Lanta to Bangkok | bus | A$90 | A$160 | 77.8% (fell back) |
-| Colombo to Chennai | flight | A$402 | A$450 | 11.9% |
-
-Median relative error 36.4% against the cheapest listed fare, and **25.0% against the representative
-fare**, where the same three estimates give 25.0%, 35.6% and 12.5%. That the median moves by eleven
-points purely on the choice of reference basis is the most important number here: a tolerance quoted
-without saying which basis it applies to would mean nothing.
-
-Every estimate is high. Not one route came in under the listed fare, so this is a consistent upward
-bias rather than scatter, which is a more tractable thing to correct than noise would be.
-
-The one route that fell back to the non-search path is the worst on both bases. One observation is not
-evidence, but it points the same way as the design assumption that the grounded path should be better.
-
-Three routes, one provider, one model, one day. Directional. Not a calibration, and not a basis for
-setting a tolerance yet.
-
-### Prompt v1.1: stating the estimand, 5 September 2026
-
-v1 never said which fare to quote. That is why the median relative error moved from 36.4% to 25.0%
-purely on which reference it was compared against - a disagreement about the question, not an error
-measurement. `llm_prompt_intercity_transport_v1_1.md` states it: the typical fare a traveller would
-actually book, not the cheapest on the market and not a premium or flexible ticket, with connecting
-transfers included only where the route cannot be travelled without one.
-
-The two prompts are identical from `Output rules:` onward, so any difference in output is
-attributable to the estimand. v1 stays frozen and reachable with `TRANSPORT_PROMPT_VERSION=v1`.
-
-Re-running the same three routes, against the representative fare that v1.1 now targets:
+v1.1 states the fare to quote (section 1). Everything else in the prompt is unchanged. Re-run on the same routes
+against the typical fare:
 
 | Route | Reference | v1 | v1.1 | v1 error | v1.1 error |
 | --- | --- | --- | --- | --- | --- |
-| Koh Lanta to Bangkok | A$118 | A$160 | A$115 | 35.6% | **2.5%** |
-| Bangkok to Phuket | A$96 | A$120 | A$80 | 25.0% | **16.7%** |
-| Colombo to Chennai | A$400 | A$450 | A$400 | 12.5% | **0.0%** |
+| Koh Lanta to Bangkok | A$118 | A$160 | A$115 | 35.6% | 2.5% |
+| Bangkok to Phuket | A$96 | A$120 | A$80 | 25.0% | 16.7% |
+| Colombo to Chennai | A$400 | A$450 | A$400 | 12.5% | 0.0% |
 
-Median relative error 25.0% to **2.5%**, and the consistent upward bias is gone: v1 overshot on all
-three routes, while v1.1 undershoots slightly on two and is exact on the third.
+Median error fell from 25.0% to 2.5%, and the estimates were no longer consistently high. Caveats: three routes, one
+run each, one provider (OpenAI `gpt-5.6-luna`, maximum reasoning). The Koh Lanta v1 run had used the no-search
+fallback, so part of its improvement comes from regaining search. Two of the four route classes (domestic short and
+international long) have no coverage.
 
-Three caveats, because the headline is flattering. The first route's v1 run had fallen back to the
-non-search path, so its improvement conflates the estimand with regained grounding; the other two are
-clean comparisons. Bangkok to Phuket remains 16.7% low, and it is the route where the aggregator
-listed the widest spread between cheapest and representative, so it is the most sensitive to how the
-estimand is worded. And this is still three routes, one run each, one model - directional, not a
-calibration, and not yet grounds for setting a tolerance.
+The reference fares and runs are in `data/reference/transport_accuracy_references_2026-09-05.json`,
+`transport_accuracy_run_2026-09-05.json` and `transport_accuracy_run_v1_1_2026-09-05.json`. The aggregator quoted
+fares per adult; the reference file doubles them for two travellers.
 
-### Accuracy status: accepted as directional, not calibrated
+An earlier single-route check on 26 August 2026 (Ho Chi Minh City to Can Tho by coach) came in 21% above a public bus
+fare.
 
-**Owner decision, 5 September 2026. No tolerance is set, and the route set will not be widened.** The methodology is
-accepted as reasonably accurate and not fully methodologically tested. That is a deliberate trade, not an omission,
-and it should not be reopened as unfinished work.
+### Decision, 5 September 2026
 
-The limits are known rather than pending. Three routes, one run each, one provider and one model. Two of the four
-route classes have no coverage, and both `domestic_long` samples are Thai buses. One of the three v1 comparisons is
-confounded by a fallback. Bangkok to Phuket remains 16.7% low. There are no repeat runs, so the noise floor is
-unknown.
+The method is accepted as reasonably accurate without further calibration. No tolerance is set and the route set will
+not be widened. A tolerance would only matter as a regression check for future prompt or model changes, and earning
+one would need fares from several aggregators, normalised to the same basis, plus repeat runs.
 
-The reasoning for stopping: the `tolerance` argument to `buildTransportAccuracyReport` feeds only its `outliers` list
-and reaches no user-facing surface, so setting it changes nothing anyone sees. Its value would be as a regression gate
-for future prompt or model work, which is not planned. Earning one honestly would need same-day reference fares from
-two or three aggregators with their fare bases normalised — the per-adult versus per-booking difference alone would
-read as a factor-of-two model error — plus repeat runs for a noise floor. This project has spent that kind of effort
-before: `docs/prompts/README.md` records v5 experiments 085 to 094 as rejected, and v6 and v6.1 are archived as
-rejected approaches retained only for audit.
+### How to re-measure
 
-No synthetic value in the repository is presented as an independent accuracy observation, and the references above are
-the only independent quotes currently recorded.
-
-### If the prompt, provider or model changes
-
-Re-measure then, rather than on a schedule. References must be captured the same day as the estimates, because fares
-months out drift and a stale reference measures drift rather than model error.
-
-The model side needs a provider API key. Keys are entered in the app UI, stay in browser storage, and are never
-handled by an assistant, written to the repository, or stored in the database — so this step is the owner's to run.
+Re-measure when the prompt, provider or model changes, not on a schedule. Reference fares must be captured on the same
+day as the estimates. The owner runs this, because it needs a provider key entered in the app.
 
 1. Start the app with `npm run serve` and open `/plan`.
-2. Recapture reference fares for the routes being compared, on the same day, recording the fare basis for each source.
-3. For each route, run an intercity transport estimate at the recorded travel date with the traveller count set to 2,
-   and record the provider, model, reasoning effort, whether the web-search path or the fallback was used, and the
-   returned options, assumptions and citations.
-4. Pair each result with its reference to form a `TransportAccuracyObservation` and pass the set to
-   `buildTransportAccuracyReport` (`src/lib/transport-estimation-accuracy.ts`).
+2. Capture reference fares for the routes being compared, recording each source's fare basis (per adult or per
+   booking, cheapest or typical).
+3. For each route, run an estimate at the recorded travel date with two travellers. Record the provider, model,
+   reasoning effort, whether search or the fallback was used, and the returned options.
+4. Pair each result with its reference as a `TransportAccuracyObservation` and pass the set to
+   `buildTransportAccuracyReport` in `src/lib/transport-estimation-accuracy.ts`.
 
-Compare against the previous run recorded in `data/reference/transport_accuracy_run_v1_1_2026-09-05.json`. The
-question is whether the change moved the numbers, not whether they clear an absolute bar.
-
-## Implementation references
-
-- Prompt contract: `docs/prompts/llm_prompt_intercity_transport_v1_1.md` (v1 is the frozen rollback)
-- Provider and schema pipeline: `src/lib/transport-estimation.ts`
-- Bulk bounded concurrency: `src/lib/bulk-transport-estimation.ts`
-- Accuracy report: `src/lib/transport-estimation-accuracy.ts`
-- Repeatable smoke: `src/lib/transport-estimation-accuracy.test.ts`
+Compare against `data/reference/transport_accuracy_run_v1_1_2026-09-05.json`. The question is whether the change moved
+the numbers.

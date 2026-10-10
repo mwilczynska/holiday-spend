@@ -1,128 +1,98 @@
-# Trip climate data and methodology
+# Trip climate
 
-This document defines the data contract for the trip-climate feature. The active implementation and
-verification status are tracked in [`PLAN.md`](../../PLAN.md).
+How the planner shows typical weather for each stay. The values are recent historical averages. They are not a
+forecast, and not a 30-year climate normal.
 
-## Data period
+## 1. What is shown
 
-Use the five most recent complete calendar years: **2021–2025**, pinned as of 1 October 2026. This is more current
-for trip planning than the earlier 2001–2020 proposal. Keep the period fixed during routine refreshes so results
-remain comparable and reproducible. Moving to a later five-year window requires an explicit methodology and cache
-version update; do not roll the years forward automatically.
+For each city and calendar month, averaged over **2021 to 2025**:
 
-Five years capture recent conditions while remaining a short and variable sample. These values are recent historical
-averages, not a standard 30-year climate normal, a forecast, or a prediction for particular travel dates.
+| Value | Calculation |
+| --- | --- |
+| Mean temperature | Average of the daily mean temperatures for every day in that month across the five years |
+| Average daily high and low | The same, using daily maximum and minimum temperatures |
+| Monthly precipitation | Total precipitation in that month for each year, averaged over the five years. Includes snow as water equivalent. Labelled rainfall in the app |
 
-## Sources and provenance
+Temperatures are in Celsius by default. A shared C/F switch converts all views (°F = °C × 9/5 + 32). Precipitation is
+in millimetres per month.
 
-- [Open-Meteo Historical Weather API](https://open-meteo.com/en/docs/historical-weather-api), using the archive
-  endpoint with `models=era5_seamless` by default and the explicit Salento exception below.
-- [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api), whose location records are based on
-  [GeoNames](https://www.geonames.org/).
-- The underlying [ECMWF/Copernicus ERA5-Land dataset](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land)
-  supplies higher-resolution land temperature; [ERA5](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview)
-  supplies precipitation. ERA5 and ERA5-Land are reanalysis datasets, which combine model output with observations
-  to make a spatially complete historical record.
+Where they appear:
 
-Attribute the displayed data to Open-Meteo and ECMWF/Copernicus ERA5 and ERA5-Land, or ECMWF IFS for Salento;
-location search is based on Open-Meteo / GeoNames. The annual view identifies the source model.
+- **Itinerary cards** show the mean temperature and precipitation for each month the stay covers.
+- **The annual view** shows all twelve months and names the source model.
+- **The trip chart** has one point per day. Each day of a stay shows that month's mean temperature, with the average
+  daily low to high as a band and precipitation as a shaded area on its own axis. Gaps between stays, and cities with
+  no data, break the line. Hovering a date shows its values. A Today line appears when today is within the chart.
 
-The archive request covers 2021-01-01 through 2025-12-31 and requests these daily variables: mean, maximum and
-minimum 2 m temperature, and precipitation sum. It sets `timezone=auto`, `temperature_unit=celsius`, and
-`precipitation_unit=mm`. Daily values must be present and valid for every date in the 1,826-day period; incomplete
-or invalid responses fail closed rather than filling gaps with zero or a substitute.
+Monthly precipitation is not scaled to the length of a stay. Undated legs show the annual view only. The departure
+date is not counted as a day of the stay.
 
-City lookup uses the saved city name and its canonical ISO 3166-1 alpha-2 country code. Accept only a normalized exact
-name match in that country for a populated place or island; ambiguous or missing matches remain unavailable.
-Saved destination qualifiers use explicit country-checked aliases and administrative metadata. Pu Luong uses
-a sourced OpenStreetMap reserve coordinate because name search resolves an unrelated mountain. Koh Lanta uses
-the exact GeoNames Ko Lanta Yai island feature in Krabi. These resolved location sources are retained with the record. The response
-provenance includes the resolved location and coordinates plus the exact archive request URL, which identifies the
-model, date range, variables, units, and coordinates used.
+## 2. Where the data comes from
 
-ERA5-Seamless combines ERA5-Land temperature data at about 0.1° (roughly 11 km) with ERA5 precipitation at about
-0.25° (roughly 25 km), according to the [Open-Meteo model and variable documentation](https://open-meteo.com/en/docs/historical-weather-api).
-Open-Meteo's default land-cell selection uses a 90 m elevation model to find a suitable grid cell. The temperature
-and precipitation values can therefore represent different grid scales for the same city coordinate.
+- **Weather:** the Open-Meteo historical archive, model `era5_seamless`. This combines ERA5-Land temperature (a grid
+  of about 11 km) with ERA5 precipitation (about 25 km). Both are ECMWF/Copernicus reanalysis datasets: model output
+  combined with observations to give complete coverage. No API key is needed.
+- **Location:** the Open-Meteo geocoder (based on GeoNames), searched with the city name and its country code.
 
-### Salento source exception
+The request covers 1 January 2021 to 31 December 2025 and asks for daily mean, maximum and minimum temperature and
+daily precipitation. Every one of the 1,826 days must be present and within range. If any day is missing or invalid,
+the city has no climate data rather than partial data.
 
-Salento, Colombia uses `models=ecmwf_ifs` for its complete 2021–2025 temperature and precipitation record. The
-ERA5 result at the verified city coordinate (4.6375, -75.57028) gave about 14,243 mm/year, with August averaging
-1,552 mm and July the wettest month. Direct ERA5 requests reproduced the values, so the anomaly is upstream
-of the application's monthly calculation. The exact upstream cause is unconfirmed.
+### Choosing the location
 
-The [Quindío government report](https://www.quindio.gov.co/home/docs/items/item_100/PDD_2020_2023_TU_Y_YO_SOMOS_QUINDIO/Componente_Diagnostico/12._AMBIENTE.pdf)
-lists Salento station 26120160 for 1975–2014 with 2,549.5 mm/year, July/August means of 64.8/74.7 mm and
-October/November peaks. An independent [Cortolima report](https://cortolima.gov.co/images/planes_y_programas/recurso_hidrico/pomca/COELLO/2004/II_FASE_DIAGNOSTICO/J-%202.9%20ECOSISTEMAS%20ESTRATEGICOS.pdf)
-also places low rainfall in July/August and peaks in October/November. These older station periods provide a
-location check; their values are not substituted into the recent five-year record.
+The geocoder result must be in the city's country, be a populated place or an island, and match the name exactly
+(ignoring accents and case). If several places match, the largest is used only if it has at least ten times the
+population of the next; otherwise the city has no climate data.
 
-The 9 km ECMWF IFS archive returned all 1,826 days and all four required variables without gaps, averaging
-3,126.6 mm/year and 225.8 mm in August. Its July minimum and March/April and October/November wet periods
-are more consistent with the station evidence. Select this model explicitly for this country/name pair, retain
-the request URL/model/grid and invalidate only Salento's old ERA5 record. There is no clipping, scaling or
-automatic model fallback. Other cities retain their saved ERA5-Seamless records.
+Some cities need help. These are listed in `src/lib/climate-provider.ts`:
 
-[Open-Meteo documents IFS coverage from 2017](https://open-meteo.com/en/docs/historical-weather-api) and warns
-that changing model versions affect long-term consistency. This exception is a fixed five-year snapshot, not a
-multi-decade climate trend. Both sources are gridded estimates, and the older station check does not establish
-the accuracy of every recent monthly value.
+- **Search hints** where the travel name differs from the geocoder's name, or where several places share it. For
+  example, Tromso is searched as Tromsø, San Sebastian as Donostia / San Sebastian in the Basque Country, and Suzhou is
+  limited to Jiangsu.
+- **Fixed points** where the geocoder's only match is the wrong place, or there is none. For example, the only
+  "Querétaro" it knows is a village in Chiapas, and the only populated "Cotopaxi" is 150 km from the national park.
+  Each fixed point records its source (the geocoder or OpenStreetMap). A saved record that disagrees with a fixed point
+  is collected again.
 
-## Monthly calculations
+### One model exception: Salento, Colombia
 
-For each calendar month, average the daily values across all matching days in 2021–2025:
+Salento uses Open-Meteo's `ecmwf_ifs` model (9 km grid) instead of ERA5. ERA5 gave about 14,200 mm of rain a year,
+with July the wettest month. Station records published by regional authorities show about 2,550 mm a year, with July
+and August the driest months. ECMWF IFS gave 3,127 mm a year with a seasonal pattern that matches the stations. The
+model is chosen only for this city; there is no automatic switching between models and no adjustment of values.
 
-- Monthly mean temperature is the average of daily mean temperatures.
-- Average daily high and average daily low are calculated from daily maximum and minimum temperatures in the same way.
-  These values are retained in the climate response but are hidden in the current UI.
-- Average monthly precipitation is calculated by summing daily precipitation totals separately for each of the five
-  years, then averaging those five monthly totals. It includes snow water equivalent and is not a predicted total for
-  the length of a stay.
+## 3. When data is collected
 
-Monthly temperature means are weighted by the number of daily values in each month across the period, including the
-2024 leap day. Monthly precipitation gives each year's total equal weight. Temperature conversion to Fahrenheit is
-`°F = °C × 9/5 + 32`; precipitation remains in millimetres per month.
+- Generating, regenerating or manually adding a city collects its climate.
+- A city without a saved record is collected once, the first time the planner needs it. A failed attempt is saved so
+  page loads do not keep retrying; retry controls are available.
+- Ordinary planner loads read saved records only. Records do not expire.
+- If a refresh fails, the previous record is kept and labelled with its original date and the failed refresh. A city
+  that has never been collected successfully stays without data.
+- Renaming a city, changing its country, or changing the data version (`era5_seamless_2021_2025_v1`) invalidates the
+  saved record.
+- A climate failure never blocks saving a city's cost estimate.
 
-On itinerary cards, show the historical monthly mean temperature and average monthly precipitation for each occupied
-month. The annual view contains all twelve month values. The trip chart places one point per itinerary-month segment
-using that segment's calendar month averages; it does not scale monthly precipitation by nights or interpolate a
-weather forecast. The departure date is exclusive, matching the planner's nights convention. Undated legs can show
-the annual view but have no seasonal point.
+At most three collections run at once, and simultaneous requests for the same city are combined. Saved records hold
+the twelve months, the resolved location and its source, the grid, the exact request URL, the collection time and the
+data version, in the SQLite table `city_climate`.
 
-## Persistence and keys
+The 2021 to 2025 period is fixed. Moving to a later period requires a new data version.
 
-Use no provider API keys. The geocoding and archive requests use public endpoints without credentials; no provider
-secret is sent to the browser or stored by this feature.
+## 4. Limitations
 
-Store the twelve monthly records, including mean/high/low temperatures, location/grid provenance, source URL,
-collection time and data version in SQLite `city_climate`. Ordinary planner loads use one bulk database request for
-the complete itinerary. They do not refresh saved data or expire it on a timer. A legacy city without a record is
-collected once on first use; failed attempts are persisted so page loads do not repeatedly hit the provider.
+- Reanalysis is a grid-cell estimate, not a weather station. It smooths out local terrain, coastal effects, urban heat
+  and conditions at a particular hotel or trail.
+- Temperature and precipitation come from grids of different sizes.
+- Five years is a short sample, and one unusual year can move an average.
+- Highs and lows are typical daily values for the month, not records.
+- Open-Meteo can revise its archive, so a refresh can change a city's values even though the period is fixed.
 
-City generation and regeneration explicitly collect weather and replace a successful saved record. Manual city
-creation also collects weather. Weather failure does not discard a valid cost estimate. A failed weather refresh
-retains a prior valid record with its original collection date and a visible failed-refresh note; a first failure
-stays missing. Retry controls explicitly retry missing records. Changed city identity or a new data version invalidates
-the prior record. Coalesce simultaneous requests for the same city and allow at most three upstream collections.
+## 5. Code
 
-The chart bundle begins loading alongside the database request. During an initial collection, the trip chart holds
-a fixed-height loading state until all requested cities have settled, then draws the complete result once. Individual
-card values can become available during collection. Every itinerary card renders; there is no twelve-card cap or
-Show all / Show next control. Partial and unavailable results leave gaps rather than joining fabricated points.
-
-The date range stays fixed when city weather refreshes, though an upstream retrospective data revision can change a
-result. Saved weather survives process restarts and production rebuilds in the application's canonical database.
-
-## Limitations
-
-Reanalysis combines observations with numerical models to provide a spatially complete estimate; it is not a local
-weather-station record. Grid-cell averages smooth neighborhood variation and may miss microclimates, local terrain,
-urban heat, and conditions at a particular hotel or trail. ERA5-Land and ERA5 use different spatial resolutions for
-temperature and precipitation. Open-Meteo's elevation-aware land-cell selection helps choose a relevant cell, but it
-does not make gridded data equivalent to a station observation.
-
-The five-year window can be shifted by a small number of unusual years and should not be read as a long-term normal.
-Average daily high and low are typical daily extremes for the month, not record extremes. Precipitation includes snow
-water equivalent, so the interface's rainfall label is a travel-friendly shorthand for total precipitation. Missing
-or ambiguous city data stays unavailable and leaves a gap in the trip chart.
+| Path | Role |
+| --- | --- |
+| `src/lib/climate.ts` | Period constants |
+| `src/lib/climate-provider.ts` | Geocoding, search hints, fixed points, model choice, monthly calculation |
+| `src/lib/city-climate-service.ts` | Storage, data version, refresh and retry rules |
+| `src/components/itinerary/TripClimateChart.tsx` | Trip chart |

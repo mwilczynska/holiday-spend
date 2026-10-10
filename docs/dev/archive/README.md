@@ -28,7 +28,7 @@ frozen FX snapshot all feed v4. See `data/reference/README.md`. Only the *progra
 | File | Replaced by |
 | --- | --- |
 | `PLAN-v4-early-draft.md` | `docs/product/methodology-v4.md` — figures here come from a 58-city sample, since closed at 99 |
-| `../product/archive/methodology-v2-v3.md` | `docs/product/methodology-v4.md` — but its text still matches the un-rewritten `/estimates` page |
+| `../product/archive/methodology-v2-v3.md` | `docs/product/city-cost-methodology.md` (v1.1, current). The v4 research in `docs/product/methodology-v4.md` came in between and is also superseded |
 | `../product/archive/estimates-page-v3-draft.md` | Never wired up; live page content is hardcoded in `src/app/estimates/page.tsx` |
 
 ### Complete — shipped app workstreams

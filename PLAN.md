@@ -27,6 +27,15 @@ Its regressions and Chrome verification pass.
 
 **Working tree:** European geocoding fixes and milestone records are on main. Added cities and photos are local application data. Concurrent methodology/documentation edits are excluded from the European commits.
 
+## Methodology documentation rewrite — COMPLETE (10 October 2026)
+
+- [x] New `docs/product/city-cost-methodology.md` describes current behaviour (v1.1 steps, formulas, worked example, traveller scaling, limitations), with earlier methods in a closing section.
+- [x] `docs/product/methodology-v4.md` carries a `SUPERSEDED` banner; it stays in place because the v4 prompt is generated from its §9.1.
+- [x] `transport-estimation.md` and `trip-climate.md` rewritten method-first; accuracy evidence moved to the end. `trip-climate.md` corrected to the daily trip chart with its low–high band.
+- [x] `/estimates` page rewritten to match, adding transport, climate and a worked example. Corrects the transport override (per day, not separate) and documents missing-value fallbacks.
+- [x] Pointers updated in `CLAUDE.md`/`AGENTS.md`, `docs/README.md` and `docs/dev/archive/README.md`.
+- [x] `tsc`, build, full tests, `docs:check-memory` and `methodology:v1.1:check` pass; page checked in the browser.
+
 ## New cities via subagents: Europe — COMPLETE (10 October 2026)
 
 - [x] Owner authorized the 64-city handoff. Consistent SQLite backup at `C:\Dev\holiday-spend-db-backups\2026-10-10\travel-before-europe.db`; backup integrity `ok`, 264 cities and 66 legs.

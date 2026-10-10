@@ -1,5 +1,11 @@
 # City Cost Estimation — Methodology
 
+<!-- status-banner -->
+> **SUPERSEDED — not current.** The v4 research methodology. It was never integrated into the app. Current behaviour is described in `docs/product/city-cost-methodology.md` (10 October 2026).
+>
+> Retained for provenance and because `docs/prompts/llm_prompt_city_anchors_v4.md` is generated from §9.1. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 **Version 4 · July 2026 · Status: collection contract tested end to end; app integration not yet built**
 
 This document describes how Holiday Spend estimates the cost of travelling in a city: what is measured, where the numbers come from, which models were considered, which were chosen, and what the measured error is. It is written to be auditable — every accuracy claim below traces to a reproducible script and a stored artifact.

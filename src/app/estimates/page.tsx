@@ -4,86 +4,152 @@ import { Button } from '@/components/ui/button';
 import { PageTitle } from '@/components/layout/PageHeader';
 import { Card, CardContent } from '@/components/ui/card';
 
-const sections = [
+type Section = {
+  title: string;
+  summary: string;
+  paragraphs: string[];
+  bullets?: string[];
+  formulas?: string[];
+};
+
+const sections: Section[] = [
   {
-    title: 'Current city-cost method',
-    summary: 'v1.1 estimates new cities; existing library prices keep their recorded version.',
+    title: 'What a city estimate is',
+    summary: 'Nineteen values per city, in AUD, for two people.',
     paragraphs: [
-      'City costs are planning estimates in AUD for two people. Accommodation is per night; food, drinks and activities are daily baskets. The April 2026 reference dataset contains 121 cities in 58 countries and remains on v1. Generating a new city uses v1.1 by default; it does not rewrite the reference dataset or migrate existing cities.',
-      'One model call estimates ten USD anchor prices from general knowledge and city context. Web search obtains the latest published Reserve Bank of Australia exchange-rate observation. The server validates the response, calculates the tiers and converts them to AUD.',
-      'City-price anchors are holistic model estimates. They are not observed prices from live hotel, restaurant or attraction listings. Transport and fixed costs are separate from city-cost generation.',
+      'Each city has six accommodation tiers (hostel dorm, hostel private room, 1-star to 4-star) priced per night, and four food, four drinks and four activity tiers priced per day. All values are in AUD for two travellers. The planner adjusts them for your group size.',
+      'These are planning estimates, not quotes or observed prices. Transport is not part of a city estimate; it is entered separately.',
     ],
   },
   {
-    title: 'Ten anchor prices',
-    summary: 'Each anchor has a defined serving, person or room unit.',
-    paragraphs: ['The model returns positive USD estimates for these inputs. Uncertainty and any comparable-city basis are recorded with the estimate.'],
+    title: 'Where city prices come from',
+    summary: 'The reference dataset, cities generated in the app, or manual edits.',
+    paragraphs: [
+      'The reference dataset has 121 cities in 58 countries, produced in April 2026 with the v1 method. Cities generated in the app, or added with the batch script, use v1.1. Cities edited by hand on the Dataset page are labelled manual. The Dataset page shows each city’s source and generation history.',
+      'New and regenerated cities use v1.1. Reference cities stay on v1 until someone regenerates them.',
+    ],
+  },
+  {
+    title: 'Step 1: ten prices in USD',
+    summary: 'A language model estimates ten prices from its general knowledge.',
+    paragraphs: [
+      'The app sends one request to the selected model (OpenAI, Anthropic or Gemini). The model returns these ten prices in USD. It does not search the web for them, and it does no arithmetic. It also returns a confidence label (high, medium or low) and a short note on how it reached the estimate.',
+    ],
     bullets: [
-      'Domestic draft beer: one standard restaurant serving.',
+      'Beer: one domestic draft beer in a restaurant.',
       'Coffee: one regular cappuccino.',
-      'Inexpensive meal: one person at an inexpensive restaurant.',
-      'Mid-range meal: a three-course restaurant meal for two, without drinks.',
-      'Cocktail: one standard bar or restaurant cocktail.',
-      'Wine: one restaurant glass.',
-      'Hostel dorm: one bed for one person per night.',
-      'Hostel private room: one room for two per night.',
-      'One-star accommodation: one basic hotel or guesthouse room for two per night.',
-      'Three-star accommodation: one registered three-star hotel room for two per night.',
+      'Inexpensive meal: one meal at an inexpensive restaurant, one person.',
+      'Mid-range meal: three courses for two at a mid-range restaurant, no drinks.',
+      'Cocktail: one standard cocktail.',
+      'Wine: one glass at a restaurant.',
+      'Hostel dorm: one bed, one night.',
+      'Hostel private room: one room for two, one night.',
+      '1-star: one very basic hotel or guesthouse room for two, one night.',
+      '3-star: one registered 3-star hotel room for two, one night.',
     ],
   },
   {
-    title: 'Currency conversion and provenance',
-    summary: 'A dated RBA observation is validated before any new estimate is saved.',
+    title: 'Step 2: the exchange rate',
+    summary: 'The latest Reserve Bank of Australia rate, checked before anything is saved.',
     paragraphs: [
-      'The model returns the published rate, quote direction, observation date and official RBA source URL. The server checks that the observation is recent and valid. A USD-per-AUD quote is inverted before converting USD anchors and tiers to AUD. Invalid or stale FX prevents the estimate from being saved.',
-      'Daily tiers and accommodation are rounded to whole AUD. Unit anchor prices, including coffee, retain cents. Generation history records anchors, provider, model, reasoning effort, prompt and formula versions, confidence notes and FX provenance. Confidence labels are qualitative; they are not calibrated probabilities, grades or statistical intervals.',
+      'In the same request, the model uses web search for one thing: the latest published RBA USD/AUD rate, with its date and the rba.gov.au page it came from.',
+      'Nothing is saved if any price is missing or not a positive number, if the source is not rba.gov.au, if the rate is more than seven days old, or if the rate is outside 0.1 to 10. The RBA usually quotes US dollars per Australian dollar, so the app inverts the rate to get AUD per USD.',
     ],
   },
   {
-    title: 'Accommodation and food baskets',
-    summary: 'v1.1 preserves the v1 tier formulas for two travellers.',
+    title: 'Step 3: accommodation and food tiers',
+    summary: 'The server calculates every tier, then converts to AUD.',
     paragraphs: [
-      'A dorm night uses two beds. Private, one-star and three-star rooms use their room anchors. Two-star accommodation is the average of the one-star and three-star anchors. Four-star accommodation is 1.80 times the three-star anchor. That multiplier is a modelling assumption with known limitations.',
-      'A street-food meal is 60% of the inexpensive-meal anchor. Each food tier combines meals for two people using the formulas below. These are representative baskets, not itemised restaurant quotes.',
+      'Tiers are calculated in USD from the ten prices, converted to AUD and rounded to whole dollars. The 4-star and high-end food multipliers are fixed assumptions applied to every city.',
     ],
     formulas: [
-      'street meal = inexpensive meal × 0.60',
-      'street food = street meal × 3 × 2',
+      'hostel dorm = dorm bed × 2',
+      'private room = hostel private room',
+      '1-star = 1-star room;  3-star = 3-star room',
+      '2-star = (1-star room + 3-star room) ÷ 2',
+      '4-star = 3-star room × 1.8',
+      'street meal = inexpensive meal × 0.6',
+      'street food = street meal × 3 meals × 2 people',
       'budget food = (street meal × 2 + inexpensive meal) × 2',
       'mid-range food = (street meal + inexpensive meal + mid-range meal for two ÷ 2) × 2',
-      'high-end food = mid-range food × 1.50',
+      'high-end food = mid-range food × 1.5',
     ],
   },
   {
-    title: 'Drinks and activity baskets',
-    summary: 'No alcohol still includes coffee; activities use a meal-based proxy.',
+    title: 'Step 3: drinks and activity tiers',
+    summary: 'No alcohol still includes coffee; activities are a meal-based proxy.',
     paragraphs: [
-      'The None drinks tier means no alcohol and includes one coffee per person. Activity tiers use a blended proxy based on the inexpensive-meal price and a fixed USD 10 input. They do not represent observed attraction or tour prices.',
+      'The None drinks tier means no alcohol and includes one coffee each. The activity tiers are calculated from the inexpensive-meal price plus a fixed USD 10. They are not based on attraction or tour prices.',
     ],
     formulas: [
       'drinks none = coffee × 2',
       'drinks light = coffee × 2 + beer × 2',
       'drinks moderate = coffee × 2 + beer × 4 + cocktail × 2',
-      'drinks heavy = coffee × 2 + beer × 6 + cocktail × 4 + wine glass × 2',
-      'activity proxy = (inexpensive meal + USD 10) ÷ 2',
-      'activities free = 0; budget = proxy × 2; mid-range = proxy × 5.5; high-end = proxy × 12',
+      'drinks heavy = coffee × 2 + beer × 6 + cocktail × 4 + wine × 2',
+      'activity unit = (inexpensive meal + USD 10) ÷ 2',
+      'activities free = 0;  budget = unit × 2;  mid-range = unit × 5.5;  high-end = unit × 12',
     ],
   },
   {
-    title: 'Using estimates in your plan',
-    summary: 'Traveller count, selected tiers, nights and overrides determine your budget.',
+    title: 'Example',
+    summary: 'One city, from model prices to AUD tiers.',
     paragraphs: [
-      'Settings supports one to five travellers. Dorm beds, drinks and activities scale with traveller count. Rooms use one room per pair, rounded up. Food scales per person with a 5% sharing discount for each traveller above two. A manual override is the total for your group and replaces the scaled category value.',
-      'The planner multiplies the daily basket by nights and adds manual transport separately. Saved plans retain tier choices rather than freezing city prices, so later library edits can change a saved plan’s budget. Expenses and fixed costs are tracked separately from these city estimates.',
-      'Use the Dataset page to inspect prices and generation history, and adjust your itinerary when a known booking or personal spending preference differs from the model.',
+      'Suppose the model returns an inexpensive meal of USD 15, a mid-range meal for two of USD 60, beer USD 6, coffee USD 4 and a 3-star room of USD 150, with an RBA rate of 0.65 USD per AUD. The app uses 1 ÷ 0.65 = 1.5385 AUD per USD.',
+    ],
+    formulas: [
+      '3-star = 150 USD → A$231',
+      '4-star = 150 × 1.8 = 270 USD → A$415',
+      'mid-range food = (9 + 15 + 30) × 2 = 108 USD → A$166',
+      'light drinks = 4 × 2 + 6 × 2 = 20 USD → A$31',
+      'budget activities = (15 + 10) ÷ 2 × 2 = 25 USD → A$38',
     ],
   },
   {
-    title: 'Limitations and historical methods',
-    summary: 'Useful planning estimates do not establish a precise spend for every traveller.',
+    title: 'From city estimates to your budget',
+    summary: 'Tiers, group size, nights, overrides and extras.',
     paragraphs: [
-      'Season, neighbourhood, room availability, events, exchange rates and personal choices can change actual spending. Qualitative confidence does not establish an error tolerance. City-cost and transport accuracy are accepted as reasonably useful; no broad calibration or holdout study is claimed.',
-      'The former v2/v3 and later source-heavy research methods are archived. They are not the active generation workflow. The v1 method remains available as a rollback, while v1.1 keeps its tier formulas and moves validation, conversion and calculation to the server.',
+      'For each leg you choose one tier per category. Settings sets the group size, from one to five travellers. City values are for two people, so the planner scales them as follows.',
+    ],
+    bullets: [
+      'Hostel dorm, drinks and activities: in proportion to group size. One traveller pays half.',
+      'Rooms: one room for every two travellers, rounded up. One traveller pays for a full room; three pay for two rooms.',
+      'Food: in proportion to group size, less 5% for each traveller above two. Five travellers pay 2.5 × 0.85 times the two-person value.',
+      'Overrides replace a category for the whole group (accommodation per night, others per day) and are not scaled again.',
+      'Leg total = daily cost × nights + intercity transport + miscellaneous expenses. Daily cost includes any transport per day you enter.',
+      'If a city has no private-room value, the average of its dorm and 1-star values is used. Any other missing value counts as zero.',
+      'Saved plans store your tier choices, not prices, so later changes to a city change saved plans too.',
+    ],
+  },
+  {
+    title: 'Intercity transport',
+    summary: 'A separate model estimate, added once per leg.',
+    paragraphs: [
+      'Transport between cities can be entered by hand or estimated by a language model. An estimate is a one-way cost for your group at standard adult fares, in whole AUD, added once to the destination leg. The model is asked for the typical fare a traveller would book: not the cheapest fare and not a premium ticket. Flights are economy with carry-on only; driving covers fuel and tolls.',
+      'The model may use web search. It returns up to four options with a confidence label, the basis for the price and its sources. Nothing is saved until you apply an option. If the search request fails, the model is asked again without search, and the result is marked as not web-grounded.',
+    ],
+  },
+  {
+    title: 'Trip climate',
+    summary: 'Monthly averages for 2021 to 2025, not a forecast.',
+    paragraphs: [
+      'Temperatures and precipitation come from the Open-Meteo historical archive (ECMWF ERA5 and ERA5-Land reanalysis). For each month, the app averages the daily mean, high and low temperatures over 2021 to 2025, and averages the five monthly precipitation totals. Precipitation includes snow as water equivalent.',
+      'These are grid estimates, not weather-station readings, and five years is a short sample. Salento, Colombia uses the ECMWF IFS model instead, because ERA5 rainfall there disagrees badly with local station records.',
+    ],
+  },
+  {
+    title: 'Limitations',
+    summary: 'Useful for comparing cities and planning, not a precise forecast of spending.',
+    paragraphs: [
+      'City prices come from model knowledge, not current listings, and do not reflect season, neighbourhood or events. The tier multipliers are fixed assumptions that were never fitted to data; the 4-star value adds nothing beyond the 3-star price. Activity tiers are not based on activity prices. Confidence labels are the model’s own judgement, not a measured error.',
+      'No accuracy figure is claimed for city costs. Transport estimates were checked on three routes only. Both are accepted as reasonable for budgeting, and further calibration is deliberately out of scope. When you know a real price, such as a booked hotel, use an override.',
+    ],
+  },
+  {
+    title: 'Earlier methods',
+    summary: 'What was tried before v1.1.',
+    paragraphs: [
+      'v1 used the same ten prices and formulas, but the model also did the arithmetic and currency conversion, and the exchange rate was not recorded. It produced the reference dataset and remains available as a rollback.',
+      'Between July and August 2026, several replacements were researched: collecting every price directly from named sources (v3), collecting a few prices and deriving the rest with fitted ratios (v4), prompt experiments (v5), and multi-call source collection (v6). None shipped. Each cost too much to run or refresh for the accuracy gained. v1.1 keeps v1’s formulas and moves the arithmetic, conversion and checks into the app.',
     ],
   },
 ];

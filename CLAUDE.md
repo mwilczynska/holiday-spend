@@ -13,7 +13,9 @@ This file describes what the project is and currently does. It is deliberately f
 | Cold-start handoff and exact next action | `docs/dev/handoffs/city-cost-v1-1.md` |
 | Active city-cost loop | `LOOP-PROMPT-V1-1.md` |
 | Retired v6.1 research history | archived `feat/city-cost-methodology-v6` branch and tag `city-cost-v6.1-research-final-2026-08-18` |
-| Prior methodology evidence | `docs/product/methodology-v4.md`, `data/reference/v5/` |
+| Current city-cost methodology | `docs/product/city-cost-methodology.md` |
+| Transport and climate methods | `docs/product/transport-estimation.md`, `docs/product/trip-climate.md` |
+| Prior methodology evidence (superseded) | `docs/product/methodology-v4.md`, `data/reference/v5/` |
 
 ---
 
@@ -209,8 +211,9 @@ Failed legs can be retried together without discarding completed estimates or re
 
 ## Product behavior
 
-The Methodology page describes the active v1.1 anchor estimates, dated RBA conversion, preserved tier formulas,
-traveller scaling and limitations. Retired source-collection methods are identified as historical.
+The Methodology page (`/estimates`) follows `docs/product/city-cost-methodology.md`: where city prices come from,
+the v1.1 steps with a worked example, traveller scaling and leg totals, intercity transport, trip climate,
+limitations, and a short history of earlier methods at the end. Keep the page and the document in step.
 Manual itinerary moves and date sorting expose failed requests and allow retry without false success messages.
 Order writes are atomic; move buttons are labelled and disabled while an order request is active.
 
@@ -458,6 +461,7 @@ authentication, or methodology.
 | Path | Purpose |
 | --- | --- |
 | `PLAN.md` | Active v1.1 implementation and rollout checklist |
+| `docs/product/city-cost-methodology.md` | Current city-cost methodology, mirrored by the `/estimates` page |
 | `docs/prompts/llm_prompt_new_cities_1.md` | Frozen v1 rollback prompt |
 | `docs/prompts/llm_prompt_new_cities_v1_1.md` | v1.1 prompt for holistic anchors plus a current RBA FX observation; tiers and conversion stay server-side |
 | `src/lib/city-cost-methodology-v1-1.ts` | v1.1 schema, fresh-FX validation/inversion and formula-preserving materializer |
