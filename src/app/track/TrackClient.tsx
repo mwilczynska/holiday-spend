@@ -5,17 +5,22 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import dynamic from 'next/dynamic';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ExpenseTagsDialog } from '@/components/expenses/ExpenseTagsDialog';
 import { buildExpenseExportHref } from '@/lib/expense-track-page';
-import { EXPENSE_PAGE_SIZE, getPageCount } from '@/lib/performance-bounds';
+import { EXPENSE_PAGE_SIZE } from '@/lib/performance-bounds';
 import { EXPENSE_CATEGORIES } from '@/types';
 import { ChevronDown, ChevronUp, Download, Edit, Eye, EyeOff, Filter, Plus, Receipt, Tags, Trash2, Upload, XCircle } from 'lucide-react';
 import { PageHeader, StatTile } from '@/components/layout/PageHeader';
+
+// Code-split like the planner's dialogs: the form loads only when Quick add opens, so it adds
+// nothing to the work this page does before it becomes interactive.
+const QuickAddForm = dynamic(() => import('@/components/expenses/QuickAddForm').then((m) => m.QuickAddForm), { ssr: false });
 
 interface Expense {
   id: number;
@@ -118,7 +123,19 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
   const [tagExpenseId, setTagExpenseId] = useState<number | null>(null);
   const [editForm, setEditForm] = useState<ExpenseEditForm | null>(null);
   const [loading, setLoading] = useState(initialData.expenses.length === 0 && initialData.totalCount > 0);
-  const [expensePage, setExpensePage] = useState(0);
+  // Pages are appended as the list scrolls; refreshes reload every page already shown.
+  const loadedPagesRef = useRef(1);
+  const loadingMoreRef = useRef(false);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const tableScrollRef = useRef<HTMLDivElement | null>(null);
+  const tableSentinelRef = useRef<HTMLDivElement | null>(null);
+  const listSentinelRef = useRef<HTMLDivElement | null>(null);
+  // Row actions are server-rendered; until hydration attaches their handlers a click would be
+  // silently lost, so they stay disabled until then.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
+  const [quickAddOpen, setQuickAddOpen] = useState(false);
+  const [quickAddSummary, setQuickAddSummary] = useState<string | null>(null);
   const [expenseTotalCount, setExpenseTotalCount] = useState(initialData.totalCount);
   const [expenseTotalAud, setExpenseTotalAud] = useState(initialData.totalAud);
   const [filteredExpenseIds, setFilteredExpenseIds] = useState<number[]>(initialData.expenseIds);
@@ -142,36 +159,47 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
     [filterCat, filterSource, filterFrom, filterTo]
   );
 
-  const fetchData = useCallback(async () => {
+  const pageUrl = useCallback((page: number) => {
     const params = new URLSearchParams();
     if (filterCat !== 'all') params.set('cat', filterCat);
     if (filterSource !== 'all') params.set('source', filterSource);
     if (filterFrom) params.set('from', filterFrom);
     if (filterTo) params.set('to', filterTo);
     params.set('view', 'track');
-    params.set('page', String(expensePage));
+    params.set('page', String(page));
     params.set('pageSize', String(EXPENSE_PAGE_SIZE));
+    return `/api/expenses?${params}`;
+  }, [filterCat, filterSource, filterFrom, filterTo]);
 
+  const readExpensePage = async (response: Response) => {
+    const body = await response.json().catch(() => null);
+    if (!response.ok) throw new Error(body?.error || `Could not load expenses (HTTP ${response.status}).`);
+    if (!Array.isArray(body?.data?.items)) throw new Error('The server returned unreadable expense data. Try again.');
+    return body.data as TrackExpensePage;
+  };
+
+  /** Reloads every page currently shown (or the first `pageCount` pages) plus leg assignments. */
+  const fetchData = useCallback(async (pageCount: number = loadedPagesRef.current) => {
     const read = ++readSequence.current;
     setLoading(true);
     setLoadError(null);
     try {
-      const [expensesRes, itineraryRes] = await Promise.all([
-        fetch(`/api/expenses?${params}`),
+      const [itineraryRes, ...pageResponses] = await Promise.all([
         fetch('/api/itinerary?view=track'),
+        ...Array.from({ length: Math.max(1, pageCount) }, (_, page) => fetch(pageUrl(page))),
       ]);
 
-      const expensesData = await expensesRes.json().catch(() => null);
       const itineraryData = await itineraryRes.json().catch(() => null);
-      if (!expensesRes.ok) throw new Error(expensesData?.error || `Could not load expenses (HTTP ${expensesRes.status}).`);
+      const pages = await Promise.all(pageResponses.map(readExpensePage));
       if (!itineraryRes.ok) throw new Error(itineraryData?.error || `Could not load assignments (HTTP ${itineraryRes.status}).`);
-      if (!Array.isArray(expensesData?.data?.items) || !Array.isArray(itineraryData?.data)) {
+      if (!Array.isArray(itineraryData?.data)) {
         throw new Error('The server returned unreadable expense data. Try again.');
       }
       if (read !== readSequence.current) return;
 
-      const expenseData = expensesData.data as TrackExpensePage | undefined;
-      setExpenses(expenseData?.items || []);
+      const expenseData = pages[0];
+      loadedPagesRef.current = pages.length;
+      setExpenses(pages.flatMap((page) => page.items));
       setHasLoadedExpenses(true);
       setExpenseTotalCount(expenseData?.totalCount || 0);
       setExpenseTotalAud(expenseData?.totalAud || 0);
@@ -190,10 +218,53 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
     } finally {
       if (read === readSequence.current) setLoading(false);
     }
-  }, [expensePage, filterCat, filterSource, filterFrom, filterTo]);
+  }, [pageUrl]);
+
+  /** Appends the next page; a refresh started meanwhile wins and the appended page is dropped. */
+  const loadMore = useCallback(async () => {
+    if (loadingMoreRef.current || loading) return;
+    loadingMoreRef.current = true;
+    setLoadingMore(true);
+    const read = readSequence.current;
+    try {
+      const page = await readExpensePage(await fetch(pageUrl(loadedPagesRef.current)));
+      if (read !== readSequence.current) return;
+      loadedPagesRef.current += 1;
+      setExpenses((current) => {
+        const seen = new Set(current.map((expense) => expense.id));
+        return [...current, ...page.items.filter((expense) => !seen.has(expense.id))];
+      });
+      setExpenseTotalCount(page.totalCount || 0);
+    } catch (err) {
+      if (read === readSequence.current) setLoadError(err instanceof Error ? err.message : 'Could not load more expenses. Check your connection and try again.');
+    } finally {
+      loadingMoreRef.current = false;
+      setLoadingMore(false);
+    }
+  }, [pageUrl, loading]);
+
+  const hasMoreExpenses = hasLoadedExpenses && !loadError && expenses.length < expenseTotalCount;
+
+  // Load the next page when the end of either list (desktop table box or phone card list) nears view.
+  useEffect(() => {
+    if (!hasMoreExpenses) return;
+    const observers: IntersectionObserver[] = [];
+    for (const [target, root] of [
+      [tableSentinelRef.current, tableScrollRef.current],
+      [listSentinelRef.current, null],
+    ] as const) {
+      if (!target) continue;
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) void loadMore();
+      }, { root, rootMargin: '400px 0px' });
+      observer.observe(target);
+      observers.push(observer);
+    }
+    return () => observers.forEach((observer) => observer.disconnect());
+  }, [hasMoreExpenses, loadMore, expenses.length]);
 
   const showsServerRenderedView =
-    expensePage === 0 && filterCat === 'all' && filterSource === 'all' && !filterFrom && !filterTo;
+    filterCat === 'all' && filterSource === 'all' && !filterFrom && !filterTo;
 
   useEffect(() => {
     /**
@@ -207,12 +278,9 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
       if (showsServerRenderedView && !initialError) return;
     }
 
-    fetchData();
+    // A filter change (new fetchData identity) starts again from the first page.
+    fetchData(1);
   }, [fetchData, showsServerRenderedView, initialError]);
-
-  useEffect(() => {
-    setExpensePage(0);
-  }, [filterCat, filterSource, filterFrom, filterTo]);
 
   const mutateExpense = async (url: string, method: string, body?: Record<string, unknown>, onSuccess?: () => void) => {
     if (submitting.current) return;
@@ -316,15 +384,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
     await mutateExpense('/api/expenses/bulk', 'POST', { ids: filteredExpenseIds, action: 'delete' }, () => setSelectedIds(new Set()));
   };
 
-  const expensePageCount = getPageCount(expenseTotalCount, EXPENSE_PAGE_SIZE);
-  const boundedExpensePage = Math.min(expensePage, expensePageCount - 1);
   const visibleExpenses = expenses;
-  const visibleExpenseStart = expenseTotalCount === 0 ? 0 : boundedExpensePage * EXPENSE_PAGE_SIZE + 1;
-  const visibleExpenseEnd = Math.min((boundedExpensePage + 1) * EXPENSE_PAGE_SIZE, expenseTotalCount);
-
-  useEffect(() => {
-    setExpensePage((page) => Math.min(page, expensePageCount - 1));
-  }, [expensePageCount]);
 
   const categoryLabel = (value: string) => EXPENSE_CATEGORIES.find((category) => category.value === value)?.label ?? value;
 
@@ -347,7 +407,20 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
         description="Manual and imported spending, assigned to the itinerary leg it counts against."
         actions={(
           <>
-            <Button asChild><Link href="/track/add"><Plus className="mr-2 h-4 w-4" />Add</Link></Button>
+            <Dialog open={quickAddOpen} onOpenChange={setQuickAddOpen}>
+              <DialogTrigger asChild>
+                <Button><Plus className="mr-2 h-4 w-4" />Quick add</Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Quick add</DialogTitle>
+                  <DialogDescription>{quickAddSummary ?? 'Record an expense in a few taps.'}</DialogDescription>
+                </DialogHeader>
+                {quickAddOpen ? (
+                  <QuickAddForm onActiveLegLoaded={setQuickAddSummary} onSaved={() => void fetchData()} />
+                ) : null}
+              </DialogContent>
+            </Dialog>
             <Button variant="outline" asChild><Link href="/track/import"><Upload className="mr-2 h-4 w-4" />Import</Link></Button>
             {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button variant="outline" asChild>
               <a href={exportHref} download>
@@ -356,7 +429,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
             </Button> : <Button variant="outline" disabled><Download className="mr-2 h-4 w-4" />Export</Button>}
             <Button variant="outline" asChild><Link href="/track/tags"><Tags className="mr-2 h-4 w-4" />Tags</Link></Button>
             {expenseTotalCount > 0 && (
-              <Button variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" disabled={saving || loading || !!loadError} onClick={handleDeleteAll}>
+              <Button variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" disabled={!hydrated || saving || loading || !!loadError} onClick={handleDeleteAll}>
                 <XCircle className="mr-2 h-4 w-4" />Delete All
               </Button>
             )}
@@ -404,8 +477,8 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
       {selectedIds.size > 0 && (
         <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-blue-200 bg-info-soft px-3 py-2">
           <span className="text-sm font-semibold text-blue-800">{selectedIds.size} selected</span>
-          <Button size="sm" variant="outline" disabled={saving || loading || !!loadError} onClick={() => handleBulkAction('exclude')}>Exclude</Button>
-          <Button size="sm" variant="outline" disabled={saving || loading || !!loadError} onClick={() => handleBulkAction('include')}>Include</Button>
+          <Button size="sm" variant="outline" disabled={!hydrated || saving || loading || !!loadError} onClick={() => handleBulkAction('exclude')}>Exclude</Button>
+          <Button size="sm" variant="outline" disabled={!hydrated || saving || loading || !!loadError} onClick={() => handleBulkAction('include')}>Include</Button>
           <Button size="sm" variant="outline" disabled={saving} onClick={() => setSelectedIds(new Set())}>Clear</Button>
         </div>
       )}
@@ -463,36 +536,43 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                 </div>
               </div>
               <div className="flex justify-end gap-1">
-                <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
+                <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
                   {expense.isExcluded ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                 </Button>
-                <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
+                <Button aria-label={`Edit expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
                   <Edit className="h-4 w-4" />
                 </Button>
-                <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
+                <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
                   <Tags className="h-4 w-4" />
                 </Button>
-                <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
+                <Button aria-label={`Delete expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
                   <Trash2 className="h-4 w-4" />
                 </Button>
               </div>
             </CardContent>
           </Card>
         ))}
+        <div ref={listSentinelRef} aria-hidden="true" />
       </div>
 
-      <div className="hidden overflow-hidden rounded-2xl border bg-card lg:block">
+      {/* The whole list scrolls in one box; further pages load as its end comes into view. */}
+      <div
+        ref={tableScrollRef}
+        data-testid="expense-scroll"
+        className="hidden max-h-[calc(100vh-12rem)] min-h-[18rem] overflow-auto rounded-2xl border bg-card lg:block"
+      >
         <table className="w-full table-fixed text-sm" data-testid="expense-table">
-          <thead className="bg-secondary text-left text-xs text-slate-600">
-            <tr className="border-b">
+          <thead className="text-left text-xs text-slate-600">
+            <tr className="border-b [&>th]:sticky [&>th]:top-0 [&>th]:z-10 [&>th]:bg-secondary [&>th]:shadow-[0_1px_0_hsl(var(--border))]">
               <th className="w-10 px-3 py-2">
                 <span className="sr-only">Select</span>
               </th>
               <th className="w-[8rem] px-3 py-2 font-medium">Date</th>
-              <th className="w-[18rem] px-3 py-2 font-medium">Location</th>
+              {/* Location takes the spare width; its second line already says whether the
+                  expense is assigned to a leg, so there is no separate Assignment column. */}
+              <th className="px-3 py-2 font-medium">Location</th>
               <th className="w-[10rem] px-3 py-2 font-medium">Category</th>
               <th className="w-[9rem] px-3 py-2 font-medium">Amount</th>
-              <th className="px-3 py-2 font-medium">Assignment</th>
               <th className="w-[10rem] px-3 py-2 text-right font-medium">Actions</th>
               <th className="w-[4rem] px-3 py-2 text-right font-medium">More</th>
             </tr>
@@ -544,25 +624,17 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                       </div>
                     </td>
                     <td className="px-3 py-3">
-                      <div className="text-sm font-medium">
-                        {expense.legId != null ? 'Assigned' : 'Unassigned'}
-                      </div>
-                      <div className="truncate text-xs text-muted-foreground">
-                        {expense.legId != null ? 'Counts against this itinerary leg' : 'Will not roll into a destination'}
-                      </div>
-                    </td>
-                    <td className="px-3 py-3">
                       <div className="flex justify-end gap-1">
-                        <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
+                        <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
                           {expense.isExcluded ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                         </Button>
-                        <Button aria-label={`Edit expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
+                        <Button aria-label={`Edit expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
                           <Edit className="h-4 w-4" />
                         </Button>
-                        <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
+                        <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
                           <Tags className="h-4 w-4" />
                         </Button>
-                        <Button aria-label={`Delete expense ${expense.id}`} disabled={saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
+                        <Button aria-label={`Delete expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
@@ -577,7 +649,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                   </tr>
                   {isExpanded && (
                     <tr className={expense.isExcluded ? 'bg-muted/10 text-muted-foreground' : 'bg-muted/5'}>
-                      <td colSpan={8} className="px-3 py-3">
+                      <td colSpan={7} className="px-3 py-3">
                         <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
                           <div>
                             <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Description</div>
@@ -621,36 +693,21 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
             })}
           </tbody>
         </table>
+        <div ref={tableSentinelRef} aria-hidden="true" className="h-px" />
       </div>
 
-      {expenseTotalCount > EXPENSE_PAGE_SIZE && (
-        <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
+      {hasLoadedExpenses && expenseTotalCount > 0 && (
+        <div className="flex flex-wrap items-center justify-between gap-3 text-sm" role="status">
           <span className="text-muted-foreground">
-            Showing {visibleExpenseStart}-{visibleExpenseEnd} of {expenseTotalCount} expenses
+            Showing {expenses.length} of {expenseTotalCount} expenses
+            {hasMoreExpenses ? ' · scroll for more' : ''}
           </span>
-          <div className="flex items-center gap-2">
-            <Button
-              type="button"
-              size="sm"
-              variant="outline"
-              disabled={boundedExpensePage === 0}
-              onClick={() => setExpensePage((page) => Math.max(0, page - 1))}
-            >
-              Previous
+          {hasMoreExpenses ? (
+            // Fallback for keyboard users and environments without IntersectionObserver.
+            <Button type="button" size="sm" variant="ghost" disabled={loadingMore} onClick={() => void loadMore()}>
+              {loadingMore ? 'Loading…' : 'Load more'}
             </Button>
-            <span className="text-muted-foreground">
-              Page {boundedExpensePage + 1} of {expensePageCount}
-            </span>
-            <Button
-              type="button"
-              size="sm"
-              variant="outline"
-              disabled={boundedExpensePage >= expensePageCount - 1}
-              onClick={() => setExpensePage((page) => Math.min(expensePageCount - 1, page + 1))}
-            >
-              Next
-            </Button>
-          </div>
+          ) : null}
         </div>
       )}
 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BarChart3, BookOpenText, Database, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags, UserCircle } from 'lucide-react';
+import { BarChart3, BookOpenText, Database, LayoutDashboard, Loader2, Map, Receipt, Settings, UserCircle } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 import { BrandMark } from './BrandMark';
@@ -15,9 +15,8 @@ const navItems = [
   { href: '/plan/compare', label: 'Compare Plans', icon: BarChart3 },
   { href: '/dataset', label: 'Dataset', icon: Database },
   { href: '/estimates', label: 'Methodology', icon: BookOpenText },
+  // Quick Add and Tags live inside Expenses (its header), so /track/* highlights Expenses.
   { href: '/track', label: 'Expenses', icon: Receipt },
-  { href: '/track/add', label: 'Quick Add', icon: Plus },
-  { href: '/track/tags', label: 'Tags', icon: Tags },
   { href: '/settings', label: 'Settings', icon: Settings, excludePrefix: '/settings/account' },
   { href: '/settings/account', label: 'Account', icon: UserCircle },
 ];
