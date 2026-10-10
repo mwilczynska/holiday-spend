@@ -42,6 +42,10 @@ export const DashboardBurnChart = memo(function DashboardBurnChart({
     const isExpanded = mode === 'expanded';
     const burnMetrics = getBurnChartMetrics(mode);
     const hasPlannedTail = data.some((point) => point.spentPlannedTail != null);
+    // Local calendar date (en-CA formats as YYYY-MM-DD). The marker shows only when today is one of
+    // the chart's dates, so a trip entirely in the future or past has none.
+    const today = new Date().toLocaleDateString('en-CA');
+    const showToday = data.some((point) => point.date === today);
     const chartNode = (
       <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
         <LineChart data={data} margin={burnMetrics.margin}>
@@ -90,6 +94,14 @@ export const DashboardBurnChart = memo(function DashboardBurnChart({
               strokeDasharray="5 5"
             />
           )}
+          {showToday ? (
+            <ReferenceLine
+              x={today}
+              stroke="#13254A"
+              strokeDasharray="4 3"
+              label={{ value: 'Today', position: 'insideTopLeft', fontSize: isExpanded ? 13 : 11, fill: '#13254A' }}
+            />
+          ) : null}
         </LineChart>
       </ResponsiveContainer>
     );

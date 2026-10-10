@@ -28,10 +28,11 @@ function tickLabel(t: number) {
 function ClimateTooltip({ active, payload, unit }: { active?: boolean; payload?: Array<{ payload: TripClimateSeriesPoint }>; unit: TemperatureUnit }) {
   const point = payload?.[0]?.payload;
   if (!active || !point || !point.cityName) return null;
+  const day = new Date(point.t).toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
   return (
     <div className="rounded-xl border bg-card px-3 py-2 text-xs shadow-md">
       <p className="font-bold">{point.cityName}</p>
-      <p className="text-muted-foreground">{point.monthLabel} · 2021–2025 average</p>
+      <p className="text-muted-foreground">{point.isEnd ? `Departure · ${day}` : day} · {point.monthLabel?.split(' ')[0]} 2021–2025 average</p>
       {point.temperature != null ? (
         <p className="mt-1">
           <span className="font-semibold" style={{ color: TEMP }}>{point.temperature.toFixed(1)}°{unit}</span> mean
@@ -64,7 +65,7 @@ export function TripClimateChart({ points, stays, unit }: { points: TripClimateS
       </div>
       <div className="h-72 w-full" role="img" aria-label={`Historical mean temperature in degrees ${unit} and monthly rainfall in millimetres for each day of every dated stay`}>
         <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart data={points} margin={{ top: 8, right: 4, left: 4, bottom: 0 }}>
+          <ComposedChart data={points} margin={{ top: 8, right: 8, left: 8, bottom: 18 }}>
             {stays.map((stay, index) => index % 2 === 1 ? (
               <ReferenceArea key={stay.legId} x1={stay.start} x2={stay.end} yAxisId="temp" fill="#EEF2F7" fillOpacity={0.7} strokeOpacity={0} ifOverflow="hidden" />
             ) : null)}
@@ -79,9 +80,29 @@ export function TripClimateChart({ points, stays, unit }: { points: TripClimateS
               tick={{ fontSize: 11, fill: '#5A6478' }}
               tickLine={false}
               axisLine={{ stroke: '#D5DCE6' }}
+              label={{ value: 'Date of stay', position: 'insideBottom', offset: -14, fontSize: 11, fill: '#5A6478' }}
             />
-            <YAxis yAxisId="temp" width={48} tick={{ fontSize: 11, fill: '#5A6478' }} tickLine={false} axisLine={false} tickFormatter={value => `${value}°`} domain={['auto', 'auto']} />
-            <YAxis yAxisId="rain" orientation="right" width={52} tick={{ fontSize: 11, fill: '#5A6478' }} tickLine={false} axisLine={false} tickFormatter={value => `${value}mm`} domain={[0, 'auto']} />
+            <YAxis
+              yAxisId="temp"
+              width={58}
+              tick={{ fontSize: 11, fill: '#5A6478' }}
+              tickLine={false}
+              axisLine={false}
+              tickFormatter={value => `${value}°`}
+              domain={['auto', 'auto']}
+              label={{ value: `Temperature (°${unit})`, angle: -90, position: 'insideLeft', offset: 4, fontSize: 11, fill: TEMP, style: { textAnchor: 'middle' } }}
+            />
+            <YAxis
+              yAxisId="rain"
+              orientation="right"
+              width={62}
+              tick={{ fontSize: 11, fill: '#5A6478' }}
+              tickLine={false}
+              axisLine={false}
+              tickFormatter={value => `${value}mm`}
+              domain={[0, 'auto']}
+              label={{ value: 'Rainfall (mm/month)', angle: 90, position: 'insideRight', offset: 4, fontSize: 11, fill: RAIN, style: { textAnchor: 'middle' } }}
+            />
             <Tooltip content={<ClimateTooltip unit={unit} />} cursor={{ stroke: '#94A3B8', strokeDasharray: '3 3' }} />
             <Area yAxisId="rain" type="stepAfter" dataKey="rainfall" name="Monthly rainfall" stroke={RAIN} strokeOpacity={0.45} strokeWidth={1} fill={RAIN} fillOpacity={0.12} connectNulls={false} isAnimationActive={false} activeDot={false} />
             <Area yAxisId="temp" type="stepAfter" dataKey="range" name="Average daily low–high" stroke="none" fill={RANGE} fillOpacity={0.22} connectNulls={false} isAnimationActive={false} activeDot={false} />

@@ -112,16 +112,18 @@ describe('trip climate series', () => {
   const feb: CityClimate['months'][number] = { month: 2, temperatureC: 20, highC: 26, lowC: 14, rainfallMm: 10 };
   const day = (value: string) => Date.parse(`${value}T00:00:00Z`);
 
-  it('holds each month value for the days stayed and closes the step at departure', () => {
+  it('gives every day stayed its month value and closes the step at departure', () => {
     const { points, stays } = tripClimateSeries([
       leg({ id: 1, startDate: '2024-01-20', endDate: '2024-02-05', nights: 16 }),
     ], { 'city-a': cityClimate([jan, feb]) }, 'C');
 
-    expect(points.map(point => [point.t, point.temperature, point.isEnd ?? false])).toEqual([
-      [day('2024-01-20'), 10, false],
-      [day('2024-02-01'), 20, false],
-      [day('2024-02-05'), 20, true],
-    ]);
+    // 16 nights give 16 daily points (12 in January, 4 in February) plus the departure point.
+    expect(points).toHaveLength(17);
+    expect(points.filter(point => !point.isEnd).every((point, index) => point.t === day('2024-01-20') + index * 86_400_000)).toBe(true);
+    expect(points.filter(point => point.temperature === 10)).toHaveLength(12);
+    expect(points.find(point => point.t === day('2024-01-31'))).toMatchObject({ temperature: 10, monthLabel: 'Jan 2024' });
+    expect(points.find(point => point.t === day('2024-02-01'))).toMatchObject({ temperature: 20, monthLabel: 'Feb 2024' });
+    expect(points[points.length - 1]).toMatchObject({ t: day('2024-02-05'), temperature: 20, isEnd: true });
     expect(points[0].range).toEqual([5, 15]);
     expect(stays).toEqual([{ legId: 1, cityName: 'City A', start: day('2024-01-20'), end: day('2024-02-05') }]);
   });

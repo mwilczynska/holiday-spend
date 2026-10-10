@@ -57,9 +57,11 @@ export interface TripClimateSeriesPoint {
 
 export interface TripClimateStay { legId: number; cityName: string; start: number; end: number }
 
+const DAY_MS = 86_400_000;
+
 /**
- * A date-scaled series for the trip chart. Each monthly segment of a stay becomes a step that
- * holds that month's values from its first day until the next segment (or departure), so a long
+ * A date-scaled series for the trip chart: one point for each day of every dated stay, carrying
+ * the city's averages for that month, plus a closing point at departure. Drawn as steps, a long
  * stay reads as a long run and a short one as a short run. Gaps between dated stays, and cities
  * without climate, break the line rather than being bridged.
  */
@@ -83,15 +85,19 @@ export function tripClimateSeries(legs: ClimateLeg[], climate: Record<string, Ci
     let last: TripClimateSeriesPoint | null = null;
     for (const segment of segments) {
       const values = climate[leg.cityId]?.months.find(month => month.month === segment.month);
-      last = {
-        t: segment.start,
+      const base = {
         temperature: values ? temperature(values.temperatureC, unit) : null,
-        range: values ? [temperature(values.lowC, unit), temperature(values.highC, unit)] : null,
+        range: values ? [temperature(values.lowC, unit), temperature(values.highC, unit)] as [number, number] : null,
         rainfall: values?.rainfallMm ?? null,
         cityName: leg.cityName,
         monthLabel: segment.label,
       };
-      points.push(last);
+      // One point per day stayed, so hovering anywhere on the chart lands on that day rather than
+      // snapping to the start or end of a month. Each day carries its month's averages.
+      for (let day = segment.start; day < segment.end; day += DAY_MS) {
+        last = { t: day, ...base };
+        points.push(last);
+      }
     }
     if (last) points.push({ ...last, t: end, isEnd: true });
     previousEnd = end;
