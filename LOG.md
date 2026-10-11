@@ -3299,3 +3299,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 Differently titled photos visually reviewed. Key West lodging reflects constrained island supply and seasonality; Muscat retains licensed-venue/hostel uncertainty. Faro lodging exceeds older Lisbon despite the regional comparison; recorded without calibration. Malé remains deferred, with the alcohol availability distinction corroborated by current UK government Maldives travel advice (https://www.gov.uk/foreign-travel-advice/maldives/safety-and-security); no city-price research.
 
 No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 71–80 — 11 October 2026
+
+Added Adelaide, Hobart, Nanjing, Sanya, Nadi, Kota Kinabalu, Christchurch, Rotorua, Wellington, Zermatt, library 397 -> 407. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-71-80.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-71-80-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Zermatt is low confidence with a seasonal alpine-resort premium (three-star room USD450, about AUD645 versus Geneva AUD394). Kota Kinabalu (AUD93) and Sanya (AUD115) exceed older country entries; Nanjing (AUD129) exceeds older Shanghai despite its relative-city wording. These differences are retained without calibration. All photo article titles match the city names.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
