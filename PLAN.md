@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** European city additions complete: 64 added, library 328, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
+**Status:** European additions and the first twenty ranked destinations are complete: library 348, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination additions — batch 1 complete (338 cities); commit/push, then add ranks 11–20 as authorized. European additions are complete; the completed sections below retain the implementation evidence.
+**Current phase:** Ranked destination additions — first two batches COMPLETE (348 cities). Batch 1 checkpoint is `3e40c9f`; this milestone records verified batch 2 completion. The completed sections below retain the implementation evidence.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -14,18 +14,18 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `a132d8b` — four constrained European geocoding cases and regressions; TypeScript, production build, 465 tests, memory mirror and v1.1 guard pass. The earlier feature QA checkpoint is `488bbd3`, including all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
+**Latest implementation checkpoint:** `3e40c9f` — Macau city geocoding and exact country-label prompt preparation; TypeScript, production build, 466 tests across full/isolated runs, memory mirror and v1.1 guard pass. The earlier feature QA checkpoint is `488bbd3`, including all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
 
 **Previous product checkpoint:** `caf6933` — shared saved keys, clickable city choices, configured transport limits, Stop and failed-leg retry. It follows `515c445` actionable credential-safe failures and deadlines, and `1581388` request limits/current discovery/GPT-6 Luna max default on merged main (`c459cfd`).
 
-**Latest publication:** European checkpoints pushed through `eb5b149`; final closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
+**Latest publication:** Ranked batch 1 pushed at `3e40c9f`; this milestone closes batch 2. European closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Commit and push batch 1, then back up the 338-city database and add ranks 11–20: Chicago, Toronto, San Diego, Washington, D.C., Boston, Hurghada, Sharm El Sheikh, Palma, Playa del Carmen and Doha. Use the same exact-prompt subagent/app-persistence method and verify collection dates and unchanged existing data. Stop after rank 20.
+**Next action:** Await owner instructions before adding rank 21 or later. The authorized twenty cities are complete.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
-**Working tree:** European geocoding fixes and milestone records are on main. Added cities and photos are local application data. Concurrent methodology/documentation edits are excluded from the European commits.
+**Working tree:** Ranked batch implementation and milestone records belong on main. Added cities, photos and batch audit files are local application data.
 
 ## New cities via subagents: ranked destinations, batch 1 — COMPLETE (11 October 2026)
 
@@ -37,6 +37,15 @@ Its regressions and Chrome verification pass.
 - [x] All ten reviewed and saved, library 328 -> 338, with twelve climate months and both licensed photo files. Orlando's differently titled photo was inspected. New Honolulu/Miami lodging and Antalya lodging exceed older US/Istanbul entries; seasonal, location and limited-hostel uncertainty is disclosed and differences are recorded without calibration.
 - [x] Integrity `ok`; all original country/city/estimate/climate/photo rows and protected row hashes match the backup. All ten have active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, exact response anchors, matching estimate/history dates and 11 October cost/climate/photo timestamps. Latest FX observation is separately dated 9 October. No itinerary legs added.
 - [x] TypeScript, production build, memory mirror and v1.1 guard pass. Full unit run: 72 files / 449 tests pass; two setup hooks timed out under load, then their isolated reruns pass all 17 tests (74 files / 466 tests overall). No test or timeout changes. Ready to commit/push before the next ten, as owner requested.
+
+## New cities via subagents: ranked destinations, batch 2 — COMPLETE (11 October 2026)
+
+- [x] Owner authorized moving to the next ten after committing batch 1. First milestone committed/pushed at `3e40c9f`.
+- [x] All ten remain absent. Consistent backup `C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-11-20.db` has integrity `ok`; protected counts remain 66/68/73/1,543. Prompts and baseline are in gitignored `.local/popular-11-20-2026-10-11`. All ten resolve directly to their intended countries/cities; no geocoding change needed.
+- [x] Added Chicago, Toronto, San Diego, Washington, D.C., Boston, Hurghada, Sharm El Sheikh, Palma, Playa del Carmen and Doha. Ten fresh GPT-6 Luna/max responses pass schema, FX and provenance review and save through the byte-identical app prompt path. Library 338 -> 348; every city has twelve climate months and both verified licensed photo files. Palma de Mallorca and Playa del Carmen municipality photo-title differences were visually reviewed.
+- [x] Boston's USD320 room anchor, Toronto's USD205 and Palma's USD225 exceed older New York/Vancouver/Barcelona estimates after conversion. Egyptian resort rooms also exceed older Cairo. Seasonal/location uncertainty and Doha's limited hostels/licensed alcohol are disclosed; noted without calibration or adjustment.
+- [x] Integrity `ok`; no duplicate country names. All original country/city/estimate/climate/photo records and protected row hashes match the second backup. All ten have matching city/history dates, exact response anchors, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance and 11 October cost/climate/photo timestamps; FX observation remains 9 October. No new itinerary legs.
+- [x] No implementation changes since the passing batch 1 baseline (TypeScript, build and 466 tests across full/isolated runs). Memory mirror, v1.1 guard and diff checks pass for closure. Completion recorded for commit/push; stop before rank 21.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
 

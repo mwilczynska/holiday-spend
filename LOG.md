@@ -3201,3 +3201,26 @@ Higher new Honolulu/Miami and Antalya room estimates versus older library entrie
 TypeScript, production build, memory mirror and v1.1 guard pass. The full unit run passes 72 files / 449 tests;
 two setup hooks time out under load and their isolated reruns pass all 17 tests, covering 74 files / 466 tests overall.
 The owner requests this batch be committed before continuing with ranks 11–20.
+
+## Ranked destination additions, ranks 11–20 — 11 October 2026
+
+After committing and pushing the first batch at `3e40c9f`, added Chicago, Toronto, San Diego, Washington, D.C.,
+Boston, Hurghada, Sharm El Sheikh, Palma, Playa del Carmen and Doha. The library grows from 338 to 348. A fresh
+consistent backup at `C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-11-20.db` has integrity `ok`.
+Exact prompts, fresh GPT-6 Luna/max responses, provenance and save/audit results remain in gitignored
+`.local/popular-11-20-2026-10-11`. All ten geocode directly to the intended locations without further code changes.
+
+All ten responses pass schema and latest RBA checks before app persistence, including the exact prompt guard.
+Each addition has twelve climate months, verified licensed photo metadata and both local image files. Palma de
+Mallorca's cathedral and Playa del Carmen municipality's garden scene were visually reviewed for title differences.
+All cost, climate and photo collection dates are 11 October; city and active estimate-history timestamps agree.
+The FX observation remains separately dated 9 October. Persisted anchors match the unmodified responses.
+
+Every original country, city, estimate, climate and photo row matches the second backup. Protected hashes remain
+unchanged for 66 itinerary legs, 68 transports, 73 saved plans and 1,543 expenses. Integrity is `ok`, with no duplicate
+country names or new itinerary legs. Higher Boston, Toronto, Palma and Egyptian resort lodging versus older library
+entries is recorded without calibration; response notes disclose seasonality/location uncertainty and Doha's
+limited hostel supply/licensed alcohol market.
+
+There are no implementation changes after the passing first-batch baseline; final memory, v1.1 and diff checks pass.
+The authorized twenty cities are complete. Work stops before rank 21.
