@@ -52,6 +52,8 @@ const locationQueries: Record<string, LocationQuery> = {
   // The English travel labels differ from the geocoder's settlement names.
   'AL|Saranda': { queryName: 'Sarandë', admin1: 'Vlorë County' },
   'NO|Tromso': { queryName: 'Tromsø', admin1: 'Troms' },
+  // The geocoder spells Macau as "Macao"; choose the city, not the territory record.
+  'MO|Macau': { queryName: 'Macao', featureCode: 'PPLC' },
   // "San Sebastian" alone selects a village in Asturias, not the Basque city.
   'ES|San Sebastian': { queryName: 'Donostia / San Sebastian', admin1: 'Basque Country' },
   // The island and its town share a name; use the island, as for Santorini.

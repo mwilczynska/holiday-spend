@@ -3176,3 +3176,28 @@ demo dev server also added its build directory to `tsconfig.json`; that edit was
 The README's city-cost section had described a single web-enabled call returning the price anchors. In v1.1 the model
 estimates the prices from its own knowledge and searches only for the exchange rate. The section now says so and links
 to `docs/product/city-cost-methodology.md`.
+
+## Ranked destination additions, first ten — 11 October 2026
+
+Added Orlando, Las Vegas, Cancún, Antalya, Miami, Macau, Pattaya, Honolulu, Punta Cana and Abu Dhabi with fresh
+GPT-6 Luna/max subagents answering the exact app prompts. The library grows from 328 to 338. Macau uses canonical
+Macau/MOP/MO metadata. A consistent pre-batch backup is retained at
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-10.db`; raw prompts, responses and results are in
+gitignored `.local/popular-10-2026-10-11`.
+
+Macau's geocoder uses Macao and returns both a city and a territory. A country/feature-constrained alias selects
+the city, with a regression rejecting the territory and a foreign-country result. Abu Dhabi's first save failed
+closed because the app used its existing UAE label while prompt preparation used United Arab Emirates. Prompt
+preparation now resolves the same stored country label; the rejected attempt is archived unchanged and a fresh
+subagent response saves successfully. Existing country aliases remain intact.
+
+Every addition has twelve climate months, a verified licensed photo and both image files. Orlando's differently
+titled photo was inspected. All cost, climate and photo timestamps are 11 October; city and active estimate-history
+dates agree. RBA FX provenance is separately dated 9 October. All response anchors match persisted values.
+Original countries, cities, estimates, climate and image rows match the backup. The 66 itinerary legs, 68 transports,
+73 saved plans and 1,543 expenses retain their row hashes. Database integrity is `ok`; no duplicate country names.
+Higher new Honolulu/Miami and Antalya room estimates versus older library entries are recorded without calibration.
+
+TypeScript, production build, memory mirror and v1.1 guard pass. The full unit run passes 72 files / 449 tests;
+two setup hooks time out under load and their isolated reruns pass all 17 tests, covering 74 files / 466 tests overall.
+The owner requests this batch be committed before continuing with ranks 11–20.

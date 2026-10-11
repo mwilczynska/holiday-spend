@@ -26,6 +26,9 @@ import { resolveOrCreatePlannerCity } from '../src/lib/planner-city-resolution';
 import { resolveLlmRuntimeDefaults } from '../src/lib/llm-request-limits';
 import { getCityImageRow } from '../src/lib/city-image-service';
 import { CITY_GENERATION_PROVIDERS, type CityGenerationProvider } from '../src/lib/city-generation-config';
+import { db } from '../src/db';
+import { countries } from '../src/db/schema';
+import { findExistingCountryForCanonical } from '../src/lib/country-metadata';
 
 const SYSTEM_PROMPT = 'You are a careful travel cost estimation assistant. Return valid JSON only.';
 const sha256 = (text: string) => crypto.createHash('sha256').update(text).digest('hex');
@@ -39,11 +42,16 @@ function arg(name: string) {
 
 function writePrompts(dir: string, entries: string[]) {
   fs.mkdirSync(dir, { recursive: true });
+  const countryRows = db.select({ id: countries.id, name: countries.name }).from(countries).all();
   for (const entry of entries) {
-    const [cityName, countryName] = entry.split('|').map((part) => part.trim());
-    if (!cityName || !countryName) throw new Error(`Expected "City|Country", got "${entry}".`);
+    const [cityName, requestedCountryName] = entry.split('|').map((part) => part.trim().replace(/\s+/g, ' '));
+    if (!cityName || !requestedCountryName) throw new Error(`Expected "City|Country", got "${entry}".`);
+    const resolved = findExistingCountryForCanonical(countryRows, { name: requestedCountryName });
+    if (!resolved) throw new Error(`Unknown canonical country: "${requestedCountryName}".`);
+    // Generation uses the selected database row's label, which may be an alias such as "UAE".
+    const countryName = resolved.existing?.name ?? resolved.canonical.name;
     const { prompt, promptVersion } = buildCityGenerationV11Prompt({ cityName, countryName } as Parameters<typeof buildCityGenerationV11Prompt>[0]);
-    const id = slug(cityName, countryName);
+    const id = slug(cityName, requestedCountryName);
     fs.writeFileSync(path.join(dir, `${id}.prompt.json`), JSON.stringify({
       cityName, countryName, promptVersion, systemPrompt: SYSTEM_PROMPT, userPromptSha256: sha256(prompt),
     }, null, 2));

@@ -118,7 +118,7 @@ the source model is saved and only that city's prior record is invalidated. Quer
 because the geocoder's only match is the wrong place (a Chiapas village; an Esmeraldas village 150 km from the national
 park) or none; a saved record that disagrees with an explicit point is recollected. The library spelling "Banatayan"
 geocodes through an alias to Bantayan, Cebu, Suzhou is constrained to Jiangsu, and Bandipur and Bhaktapur to their districts.
-Saranda and Tromso use the geocoder's Sarandë and Tromsø names; San Sebastian uses Donostia / San Sebastian in the Basque Country to avoid an Asturias village. Mykonos selects the island rather than its same-named town. Saved monthly weather and provenance
+Saranda and Tromso use the geocoder's Sarandë and Tromsø names; Macau uses the Macao city point rather than its territory record. San Sebastian uses Donostia / San Sebastian in the Basque Country to avoid an Asturias village. Mykonos selects the island rather than its same-named town. Saved monthly weather and provenance
 live in SQLite. City collection/generation and refresh also collect weather; routine
 planner loads read saved records in one request. Existing cities collect once when needed. Provider failures remain
 missing, or retain an explicitly labelled prior successful record after a failed refresh. All itinerary cards render;
@@ -178,7 +178,7 @@ Provider key fields have associated visible labels in city, transport and planne
 Show API key switch is labelled and its label toggles the control.
 
 Cities can also be added in batches with `scripts/add-cities-from-agent-responses.ts`: it writes the exact v1.1 prompt
-the app sends for each city, an external agent (for example a Claude Code subagent) answers it, and `persist` runs the
+the app sends for each city, using the resolved existing country label (such as UAE), an external agent (for example a Claude Code subagent) answers it, and `persist` runs the
 real `resolveOrCreatePlannerCity` path with only the provider call answered from file (`setExternalJsonPromptRunner`,
 never set by the app), after checking the app-built prompt is byte-identical. `--provider`, `--model`, `--effort` and `--agent` set the
 recorded provenance, for example "gpt-6-luna (Codex subagent)". It creates cities only, never itinerary legs.

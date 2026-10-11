@@ -178,6 +178,19 @@ describe('Open-Meteo Archive climate aggregation', () => {
 });
 
 describe('climate geocoding', () => {
+  it('resolves Macau to the Macao city rather than the territory or a foreign match', () => {
+    const location = resolveClimateLocation({ results: [
+      place('Macao', 'CN', 1_000_000),
+      place('Macao', 'MO', 631636, { feature_code: 'PCLS', latitude: 22.15778, longitude: 113.55972 }),
+      place('Macao', 'MO', 649335, { latitude: 22.20056, longitude: 113.54611 }),
+    ] }, 'Macau', 'MO');
+    expect(location).toMatchObject({ name: 'Macao', countryCode: 'MO', queryName: 'Macao', latitude: 22.20056, longitude: 113.54611 });
+    expect(new URL(location.sourceUrl).searchParams.get('name')).toBe('Macao');
+    expect(new URL(location.sourceUrl).searchParams.get('countryCode')).toBe('MO');
+    expect(() => resolveClimateLocation({ results: [place('Macao', 'MO', 631636, { feature_code: 'PCLS' })] }, 'Macau', 'MO')).toThrow(/No matching city/);
+    expect(() => resolveClimateLocation({ results: [place('Macao', 'CN', 1_000_000)] }, 'Macau', 'MO')).toThrow(/No matching city/);
+  });
+
   it.each([
     { city: 'Saranda', country: 'AL', name: 'Sarandë', admin1: 'Vlorë County', latitude: 39.87534, longitude: 20.00477 },
     { city: 'Tromso', country: 'NO', name: 'Tromsø', admin1: 'Troms', latitude: 69.6489, longitude: 18.95508 },

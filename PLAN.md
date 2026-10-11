@@ -2,7 +2,7 @@
 
 **Status:** European city additions complete: 64 added, library 328, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** European city additions — COMPLETE. Bento is merged to main and its worktree is removed; the completed sections below retain the implementation evidence.
+**Current phase:** Ranked destination additions — batch 1 complete (338 cities); commit/push, then add ranks 11–20 as authorized. European additions are complete; the completed sections below retain the implementation evidence.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -10,7 +10,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 10 October 2026
+**Last updated:** 11 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
@@ -20,12 +20,23 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Latest publication:** European checkpoints pushed through `eb5b149`; final closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** European batch complete; await the owner's next task. Keep the backup and local batch evidence. No calibration or regeneration of older estimates is planned.
+**Next action:** Commit and push batch 1, then back up the 338-city database and add ranks 11–20: Chicago, Toronto, San Diego, Washington, D.C., Boston, Hurghada, Sharm El Sheikh, Palma, Playa del Carmen and Doha. Use the same exact-prompt subagent/app-persistence method and verify collection dates and unchanged existing data. Stop after rank 20.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
 **Working tree:** European geocoding fixes and milestone records are on main. Added cities and photos are local application data. Concurrent methodology/documentation edits are excluded from the European commits.
+
+## New cities via subagents: ranked destinations, batch 1 — COMPLETE (11 October 2026)
+
+- [x] Owner authorized the first ten cities from the ranked list: Orlando, Las Vegas, Cancún, Antalya, Miami, Macau, Pattaya, Honolulu, Punta Cana and Abu Dhabi. All are absent from the 328-city library. Current protected counts: 66 legs, 68 transports, 73 saved plans and 1,543 expenses.
+- [x] Reuse the prior exact v1.1 prompt/file-response/app-persistence method, one fresh GPT-6 Luna/max subagent per city. Search only for RBA FX; do not access provider keys or calibrate city prices. Macau uses canonical Macau/MOP/MO metadata. Existing United States/United States of America alias rows are retained; no same-name country duplicates were found.
+- [x] Consistent SQLite backup at `C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-10.db`, integrity `ok`; saved current protected row hashes and a local baseline copy for comparison. Exact prompts are in gitignored `.local/popular-10-2026-10-11`.
+- [x] Geocoder preflight: nine cities resolve directly; Macau returns the spelling Macao. Public Macao/MO query confirms the city capital and a separate territory record. Added a country/feature-constrained alias and regression covering the city, territory and foreign-country cases; preserve stored Macau identity.
+- [x] Nine cities saved with climate/photos. Abu Dhabi's first attempt failed closed on prompt equality: the app resolves to an existing UAE-labelled country row, whereas the prepared prompt used United Arab Emirates. Fixed prompt preparation to resolve the same existing country label and normalize whitespace; archived the rejected attempt unchanged and generated a fresh exact prompt for a new subagent response. Existing UAE/full-name country rows remain intact.
+- [x] All ten reviewed and saved, library 328 -> 338, with twelve climate months and both licensed photo files. Orlando's differently titled photo was inspected. New Honolulu/Miami lodging and Antalya lodging exceed older US/Istanbul entries; seasonal, location and limited-hostel uncertainty is disclosed and differences are recorded without calibration.
+- [x] Integrity `ok`; all original country/city/estimate/climate/photo rows and protected row hashes match the backup. All ten have active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, exact response anchors, matching estimate/history dates and 11 October cost/climate/photo timestamps. Latest FX observation is separately dated 9 October. No itinerary legs added.
+- [x] TypeScript, production build, memory mirror and v1.1 guard pass. Full unit run: 72 files / 449 tests pass; two setup hooks timed out under load, then their isolated reruns pass all 17 tests (74 files / 466 tests overall). No test or timeout changes. Ready to commit/push before the next ten, as owner requested.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
 
