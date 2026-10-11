@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** European additions and the first twenty ranked destinations are complete: library 348, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
+**Status:** European additions and ranked destinations through 40 complete: library 367, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination additions — continuing ranks 21–200 in batches of ten, with verification and commit/push after each. First two batches complete (348 cities), published through `356c5e7`.
+**Current phase:** Ranked destination additions — ranks 1–40 processed (367 cities; Malé deferred unsaved); verify and publish each batch before continuing to rank 200.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -53,6 +53,13 @@ Its regressions and Chrome verification pass.
 - [x] Ranks 21–30: Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and Nassau. Library 348 -> 358. Backup `travel-before-popular-21-30.db`, integrity `ok`; exact files in `.local/popular-21-30-2026-10-11`. All ten have matching city/history dates, 11 October cost/climate/photo timestamps, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, twelve climate months and both licensed photo files. Original library records and protected hashes (66/68/73/1,543) unchanged. Gold Coast, Nassau, Rhodes city and San Juan photo titles visually checked.
 - [x] Rhodes city/island ambiguity resolved with a country/region/feature constraint selecting the city; regression rejects the island and foreign matches. TypeScript, production build and all 74 files / 467 tests pass. Sapporo/Rhodes/Heraklion rooms exceed older Japanese/Athens entries; seasonal uncertainty is disclosed and noted without calibration. Memory mirror and v1.1 guard pass for publication.
 - [ ] Continue ranks 31–200 with the same backup, prompt, response review, persistence, date/photo/climate audit and publication gates. Record each batch below; preserve any existing entries and report them.
+
+### Ranks 31–40 — COMPLETE (11 October 2026)
+
+- Added Perth, Luxor, Antigua Guatemala, Taormina, Alicante, Benidorm, Bodrum, Göreme, Anaheim. Library 358 -> 367; consistent backup `travel-before-popular-31-40.db`, integrity `ok`; exact files in `.local/popular-31-40-2026-10-11`.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- Malé deferred unsaved: its response substitutes licensed island-resort alcohol prices for unavailable city drinks; archived unchanged. Taormina and Bodrum retain low confidence for seasonal lodging; newer Turkish/Perth/Luxor room estimates exceed older Istanbul/Sydney/Cairo entries, recorded without calibration. Differently titled photos visually reviewed.
+- No implementation change after the passing 467-test/build/TypeScript baseline; memory mirror, v1.1 guard and database audit pass. Completion recorded for commit/push before the next batch.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
 

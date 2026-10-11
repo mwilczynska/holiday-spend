@@ -3243,3 +3243,17 @@ calibration, with seasonal uncertainty retained.
 Integrity is `ok`; all original country/city/estimate/climate/photo rows and protected hashes match the backup
 (66 legs, 68 transports, 73 saved plans, 1,543 expenses). TypeScript, production build, 74 test files / 467 tests,
 memory mirror and v1.1 guard pass. No provider keys or itinerary writes.
+
+
+## Ranked destination additions, ranks 31–40 — 11 October 2026
+
+Added Perth, Luxor, Antigua Guatemala, Taormina, Alicante, Benidorm, Bodrum, Göreme, Anaheim, library 358 -> 367. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-31-40.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-31-40-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Malé deferred unsaved: its response substitutes licensed island-resort alcohol prices for unavailable city drinks; archived unchanged. Taormina and Bodrum retain low confidence for seasonal lodging; newer Turkish/Perth/Luxor room estimates exceed older Istanbul/Sydney/Cairo entries, recorded without calibration. Differently titled photos visually reviewed.
+
+No implementation change after the passing 467-test/build/TypeScript baseline; memory mirror, v1.1 guard and database audit pass.
