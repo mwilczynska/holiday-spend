@@ -3271,3 +3271,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 Corfu and Ibiza city photo-title differences visually checked. Ibiza Town and Panama City retain low confidence; seasonal resort/hostel uncertainty is disclosed. New Naha/Corfu/Albufeira room estimates exceed older Japanese/Athens/Lisbon entries, recorded without calibration. Public queue preflight identified fourteen spelling, city/island and region constraints; implemented with country checks, preserving requested identities and existing rows.
 
 TypeScript, production build, all 74 files / 481 tests, memory mirror and v1.1 guard pass.
+
+
+## Ranked destination additions, ranks 51–60 — 11 October 2026
+
+Added Quebec City, Catania, Palermo, Positano, Sorrento, Turin, Verona, Wadi Musa, Johannesburg, San Antonio, library 377 -> 387. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-51-60.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-51-60-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Photo-title differences visually reviewed. Positano and Wadi Musa retain low confidence for seasonal/scarce lodging and venue-dependent alcohol. New Quebec City and Wadi Musa room estimates exceed older Montreal/Amman entries; Positano exceeds Amalfi. Differences are disclosed and recorded without calibration.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
