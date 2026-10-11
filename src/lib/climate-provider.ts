@@ -46,6 +46,8 @@ const locationQueries: Record<string, LocationQuery> = {
   'TH|Koh Lanta': { queryName: 'Ko Lanta Yai', admin1: 'Krabi', featureCode: 'ISL', sourceUrl: 'https://www.geonames.org/1152414/ko-lanta-yai.html' },
   // Jiangsu's Suzhou (6.7M) and Anhui's (1.6M) are both prefecture seats; the travel city is Jiangsu's.
   'CN|Suzhou': { queryName: 'Suzhou', admin1: 'Jiangsu' },
+  // The tourism city is in Anhui; exact Huangshan also names a Yunnan settlement.
+  'CN|Huangshan': { queryName: 'Huangshan City', admin1: 'Anhui', featureCode: 'PPLA3' },
   // Several Nepali villages share these names and the geocoder lists no populations to choose by.
   'NP|Bandipur': { queryName: 'Bandipur', admin1: 'Gandaki Pradesh', admin2: 'Tanahun' },
   'NP|Bhaktapur': { queryName: 'Bhaktapur', admin2: 'Bhaktapur' },

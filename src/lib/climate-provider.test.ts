@@ -231,6 +231,15 @@ describe('climate geocoding', () => {
     expect(new URL(geocodingUrl('Puebla', 'MX')).searchParams.get('name')).toBe('Puebla City');
   });
 
+  it('selects Huangshan City in Anhui rather than the exact-name Yunnan settlement', () => {
+    const city = place('Huangshan City', 'CN', 460786, { feature_code: 'PPLA3', admin1: 'Anhui', latitude: 29.71139, longitude: 118.3125 });
+    const other = place('Huangshan', 'CN', 20136, { feature_code: 'PPLA3', admin1: 'Yunnan', latitude: 26.82634, longitude: 100.21906 });
+    expect(resolveClimateLocation({ results: [other, city] }, 'Huangshan', 'CN')).toMatchObject({ latitude: 29.71139, longitude: 118.3125 });
+    expect(() => resolveClimateLocation({ results: [other] }, 'Huangshan', 'CN')).toThrow(/No matching city/);
+    expect(() => resolveClimateLocation({ results: [{ ...city, admin1: 'Yunnan' }] }, 'Huangshan', 'CN')).toThrow(/No matching city/);
+    expect(new URL(geocodingUrl('Huangshan', 'CN')).searchParams.get('name')).toBe('Huangshan City');
+  });
+
   it.each([
     ['Corfu Town', 'GR', 'Corfu', 'Ionian Islands', 'PPLA', 39.62441, 19.92016],
     ['Kos Town', 'GR', 'Kos', 'South Aegean', 'PPLA3', 36.89295, 27.28768],

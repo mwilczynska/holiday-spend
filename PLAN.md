@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** European additions and ranked destinations through 140 processed: library 467, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
+**Status:** European additions and ranked destinations through 150 processed: library 477, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination additions — ranks 1–140 processed (467 cities); verify and publish each batch before continuing to rank 200.
+**Current phase:** Ranked destination additions — ranks 1–150 processed (477 cities); verify and publish each batch before continuing to rank 200.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -130,6 +130,13 @@ Its regressions and Chrome verification pass.
 - All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
 - Victoria Falls, Ushuaia and Puerto Iguazu are low confidence because of seasonal visitor markets or Argentine currency uncertainty. Patagonia three-star estimates AUD193-315 exceed older Buenos Aires AUD78 with remoteness and visitor demand disclosed; Brazilian additions AUD112-165 exceed older Rio AUD78. Mombasa AUD143 exceeds older Nairobi AUD70. Differences retained without calibration. Visually checked Bariloche cathedral, Salvador Bahia coastline and Victoria Falls Zimbabwe town street; all match their destinations.
 - No implementation changes after the Puebla checkpoint passing TypeScript, production build and all 482 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
+
+### Ranks 141–150 — COMPLETE (11 October 2026)
+
+- Added Recife, Puerto Natales, Huangshan, San Andrés, Santa Marta, Cuenca, Arequipa, Victoria, Montevideo, Punta del Este. Library 467 -> 477; consistent backup `travel-before-popular-141-150.db`, integrity `ok`; exact files in `.local/popular-141-150-2026-10-11`.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- Fixed Huangshan geocoding before saving: exact-name matching selected a Yunnan settlement; the Huangshan City/Anhui/PPLA3 alias now selects 29.71139,118.3125. Added regression coverage and synced memory. Punta del Este and Victoria Seychelles are low confidence because of seasonal resort demand or scarce dorm supply/import costs. Puerto Natales three-star AUD229 reflects remote Patagonia demand; Santa Marta AUD107 exceeds older Cartagena AUD78 despite its relative-city wording, and San Andres AUD193 has a disclosed island premium. Differences retained without calibration. Visually checked Huangshan City historic street, San Andres town waterfront, Cuenca Ecuador montage and Victoria Seychelles clock tower; all match their destinations.
+- TypeScript, production build, all 483 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
 
