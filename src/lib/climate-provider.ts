@@ -60,6 +60,23 @@ const locationQueries: Record<string, LocationQuery> = {
   'GR|Mykonos': { queryName: 'Mykonos', admin1: 'South Aegean', featureCode: 'ISL' },
   // The ranked city destination is Rhodes city, not the larger same-named island.
   'GR|Rhodes': { queryName: 'Rhodes', admin1: 'South Aegean', featureCode: 'PPLA2' },
+  // Explicit city labels and regional constraints verified against the public geocoder.
+  'GR|Corfu Town': { queryName: 'Corfu', admin1: 'Ionian Islands', featureCode: 'PPLA' },
+  'GR|Kos Town': { queryName: 'Kos', admin1: 'South Aegean', featureCode: 'PPLA3' },
+  'GR|Nafplio': { queryName: 'Nafplion', admin1: 'Peloponnese' },
+  'CA|Quebec City': { queryName: 'Quebec', admin1: 'Quebec', featureCode: 'PPLA' },
+  // Wadi Musa is listed as the populated Petra district seat, east of the archaeological site.
+  'JO|Wadi Musa': { queryName: 'Petra', admin1: "Ma'an Governorate", featureCode: 'PPLA2' },
+  'US|Charleston': { queryName: 'Charleston', admin1: 'South Carolina' },
+  'US|Palm Springs': { queryName: 'Palm Springs', admin1: 'California' },
+  'US|Santa Fe': { queryName: 'Santa Fe', admin1: 'New Mexico' },
+  'PH|Puerto Princesa': { queryName: 'Puerto Princesa City', admin2: 'Province of Palawan' },
+  'TH|Ayutthaya': { queryName: 'Phra Nakhon Si Ayutthaya', admin1: 'Phra Nakhon Si Ayutthaya', featureCode: 'PPLA' },
+  // The geocoder uses ASCII i, whereas the saved name contains Turkish dotless ı.
+  'TR|Kuşadası': { queryName: 'Kusadasi', admin1: 'Aydın', featureCode: 'PPLA2' },
+  'MX|Guanajuato': { queryName: 'Guanajuato City', admin1: 'Guanajuato', featureCode: 'PPLA' },
+  'AR|San Carlos de Bariloche': { queryName: 'Bariloche', admin1: 'Rio Negro' },
+  'LU|Luxembourg City': { queryName: 'Luxembourg', featureCode: 'PPLC' },
 };
 
 const coordinateOverrides: Record<string, ClimateLocation> = {

@@ -222,6 +222,28 @@ describe('climate geocoding', () => {
     expect(() => resolveClimateLocation({ results: [{ ...city, country_code: 'US' }] }, 'Rhodes', 'GR')).toThrow(/No matching city/);
   });
 
+  it.each([
+    ['Corfu Town', 'GR', 'Corfu', 'Ionian Islands', 'PPLA', 39.62441, 19.92016],
+    ['Kos Town', 'GR', 'Kos', 'South Aegean', 'PPLA3', 36.89295, 27.28768],
+    ['Nafplio', 'GR', 'Nafplion', 'Peloponnese', 'PPLA2', 37.56863, 22.80691],
+    ['Quebec City', 'CA', 'Québec', 'Quebec', 'PPLA', 46.81228, -71.21454],
+    ['Wadi Musa', 'JO', 'Petra', "Ma'an Governorate", 'PPLA2', 30.32096, 35.47895],
+    ['Charleston', 'US', 'Charleston', 'South Carolina', 'PPLA2', 32.77632, -79.93275],
+    ['Palm Springs', 'US', 'Palm Springs', 'California', 'PPL', 33.8303, -116.54529],
+    ['Santa Fe', 'US', 'Santa Fe', 'New Mexico', 'PPLA', 35.68698, -105.9378],
+    ['Puerto Princesa', 'PH', 'Puerto Princesa City', 'Mimaropa', 'PPL', 9.73917, 118.73528],
+    ['Ayutthaya', 'TH', 'Phra Nakhon Si Ayutthaya', 'Phra Nakhon Si Ayutthaya', 'PPLA', 14.35167, 100.57739],
+    ['Kuşadası', 'TR', 'Kusadasi', 'Aydın', 'PPLA2', 37.86014, 27.25713],
+    ['Guanajuato', 'MX', 'Guanajuato City', 'Guanajuato', 'PPLA', 21.01858, -101.2591],
+    ['San Carlos de Bariloche', 'AR', 'Bariloche', 'Rio Negro', 'PPLA3', -41.14557, -71.30822],
+    ['Luxembourg City', 'LU', 'Luxembourg', 'Luxembourg', 'PPLC', 49.60982, 6.13268],
+  ] as const)('resolves ranked destination %s and rejects foreign matches', (city, country, name, admin1, feature_code, latitude, longitude) => {
+    const row = place(name, country, 100_000, { admin1, admin2: 'Province of Palawan', feature_code, latitude, longitude });
+    expect(resolveClimateLocation({ results: [row, { ...row, country_code: 'XX', population: 1_000_000 }] }, city, country)).toMatchObject({ countryCode: country, latitude, longitude });
+    expect(() => resolveClimateLocation({ results: [{ ...row, country_code: 'XX' }] }, city, country)).toThrow(/No matching city/);
+    expect(() => resolveClimateLocation({ results: [{ ...row, feature_code: 'ISL', admin1: 'Wrong region', admin2: 'Wrong province' }] }, city, country)).toThrow(/No matching city/);
+  });
+
   it('does not accept an exact city-name match from another country', () => {
     expect(() => resolveClimateLocation({ results: [place('Springfield', 'US')] }, 'Springfield', 'CA'))
       .toThrow(/No matching city coordinates/);

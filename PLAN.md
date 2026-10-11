@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** European additions and ranked destinations through 40 complete: library 367, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
+**Status:** European additions and ranked destinations through 50 processed: library 377, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination additions — ranks 1–40 processed (367 cities; Malé deferred unsaved); verify and publish each batch before continuing to rank 200.
+**Current phase:** Ranked destination additions — ranks 1–50 processed (377 cities); verify and publish each batch before continuing to rank 200.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -60,6 +60,13 @@ Its regressions and Chrome verification pass.
 - All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
 - Malé deferred unsaved: its response substitutes licensed island-resort alcohol prices for unavailable city drinks; archived unchanged. Taormina and Bodrum retain low confidence for seasonal lodging; newer Turkish/Perth/Luxor room estimates exceed older Istanbul/Sydney/Cairo entries, recorded without calibration. Differently titled photos visually reviewed.
 - No implementation change after the passing 467-test/build/TypeScript baseline; memory mirror, v1.1 guard and database audit pass. Completion recorded for commit/push before the next batch.
+
+### Ranks 41–50 — COMPLETE (11 October 2026)
+
+- Added Paphos, Corfu Town, Naha, Panama City, Albufeira, Ibiza Town, Marbella, Alanya, Fethiye, Marmaris. Library 367 -> 377; consistent backup `travel-before-popular-41-50.db`, integrity `ok`; exact files in `.local/popular-41-50-2026-10-11`.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- Corfu and Ibiza city photo-title differences visually checked. Ibiza Town and Panama City retain low confidence; seasonal resort/hostel uncertainty is disclosed. New Naha/Corfu/Albufeira room estimates exceed older Japanese/Athens/Lisbon entries, recorded without calibration. Public queue preflight identified fourteen spelling, city/island and region constraints; implemented with country checks, preserving requested identities and existing rows.
+- TypeScript, production build, all 74 files / 481 tests, memory mirror and v1.1 guard pass. Completion recorded for commit/push before the next batch.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
 
