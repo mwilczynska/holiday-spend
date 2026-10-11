@@ -134,7 +134,7 @@ Destinations show a free Wikimedia Commons photo where one can be verified, over
 author and licence credit linking to the Commons page. No key and no LLM: `src/lib/city-image-lookup.ts` accepts a
 Wikipedia article only within 50 km of the city's coordinates (saved climate location, else the same Open-Meteo
 geocoding), or, when the geocoder cannot place it, only if its Wikidata country matches; facility articles are never
-chosen, and a search drowned by the country name is retried with the place name alone. `src/lib/city-image-service.ts` stores 1280px and 500px copies beside the database (`data/city-images/`,
+chosen, settlement articles rank ahead of same-named municipality articles, and a search drowned by the country name is retried with the place name alone. `src/lib/city-image-service.ts` stores 1280px and 500px copies beside the database (`data/city-images/`,
 gitignored) with a `city_images` row recording the city identity, status and credit. New cities collect a photo after
 climate on manual add and every generation path; failure never blocks the save. Misses are recorded, renames make a row
 stale, and pages fall back to the scene for any missing row or file. Photo metadata rides on itinerary legs and dashboard

@@ -3439,3 +3439,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 All ten are medium confidence, with seasonal lodging uncertainty disclosed. Bern and Lugano three-star AUD387/AUD365 sit near existing Swiss cities AUD337-394; Bilbao AUD236 reflects Basque visitor demand. Lucca AUD258 exceeds Pisa AUD201/Siena AUD222, and Cagliari AUD222 exceeds older Rome AUD171 despite its relative-city wording. Differences retained without calibration. Visually checked Cordoba Spain aerial view and Toledo Spain river-city panorama; both match the destinations.
 
 No implementation changes after the Frankfurt checkpoint passing TypeScript, production build and all 484 tests; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 171–180 — 11 October 2026
+
+Added Port Douglas, Rovinj, Kos Town, Nafplio, Rethymno, La Spezia, Ohrid, Coimbra, Cluj-Napoca, Sibiu, library 497 -> 507. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-171-180.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-171-180-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Port Douglas is low confidence because of seasonal resort demand and limited room inventory. Coimbra three-star AUD165 exceeds older Lisbon AUD140/Porto AUD124 despite its comparison text; Nafplio AUD189 exceeds older Athens AUD109, and Port Douglas AUD358 exceeds Cairns AUD171 with a resort premium disclosed. Differences retained without calibration. Visual inspection caught a Rethymno municipality map: settlement articles now rank ahead of same-named municipalities, with regression coverage. Refreshed all four stored municipality selections through the real collector in an isolated copy and compared all 507 stored picks; Paracas was unchanged and Playa del Carmen, San Miguel de Allende and Rethymno changed, all visually reviewed. Only the new Rethymno live row was refreshed, preserving every older image row. Its licensed city/fortress photo and Kos Town harbour photo both pass visual review.
+
+TypeScript, production build, all 485 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass.

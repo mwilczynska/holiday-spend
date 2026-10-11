@@ -49,6 +49,17 @@ const freeInfo = (file: string) => ({
 const salentoColombia = { name: 'Salento', countryName: 'Colombia', latitude: 4.637, longitude: -75.570 };
 
 describe('city image lookup', () => {
+  it('prefers the settlement photo over a municipality map even when the municipality is nearer', async () => {
+    const result = await lookupCityImage({ name: 'Rethymno', countryName: 'Greece', latitude: 35.36555, longitude: 24.48232 }, fakeFetch({
+      search: { query: { pages: [
+        { index: 1, title: 'Rethymno (municipality)', coordinates: [{ lat: 35.36555, lon: 24.48232 }], pageimage: 'Map.png' },
+        { index: 2, title: 'Rethymno', coordinates: [{ lat: 35.36889, lon: 24.47389 }], pageimage: 'City.jpg' },
+      ] } },
+      commons: { 'Map.png': { ...freeInfo('Map.png'), mime: 'image/png' }, 'City.jpg': freeInfo('City.jpg') },
+    }));
+    expect(result.status === 'ok' && result.image).toMatchObject({ articleTitle: 'Rethymno', commonsFile: 'City.jpg' });
+  });
+
   it('normalises place names and measures distance', () => {
     expect(basePlaceName('Bali (Ubud)')).toBe('ubud');
     expect(basePlaceName('Hội An')).toBe('hoi an');

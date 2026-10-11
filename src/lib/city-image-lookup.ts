@@ -186,13 +186,13 @@ const ranked = (candidates: ArticleCandidate[]) => {
 
 /**
  * Equal titles differ only by a qualifier: "(city)" names the settlement, a bare title usually does,
- * and "(state)", "(province)" and the like name the wider area ("Rio de Janeiro" over
+ * and "(municipality)", "(state)", "(province)" and the like name the wider area ("Rio de Janeiro" over
  * "Rio de Janeiro (state)", "Querétaro (city)" over the state article "Querétaro").
  */
 function qualifierOrder(title: string) {
   const qualifier = title.match(/\(([^)]*)\)/)?.[1]?.toLowerCase();
   if (!qualifier) return 1;
-  return /\b(city|town|village|municipality)\b/.test(qualifier) ? 0 : 2;
+  return /\b(city|town|village)\b/.test(qualifier) ? 0 : 2;
 }
 
 async function countryItem(countryCode: string, fetchImpl: Fetch): Promise<string[]> {

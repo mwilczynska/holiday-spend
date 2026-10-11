@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** European additions and ranked destinations through 170 processed: library 497, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
+**Status:** European additions and ranked destinations through 180 processed: library 507, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination additions — ranks 1–170 processed (497 cities); verify and publish each batch before continuing to rank 200.
+**Current phase:** Ranked destination additions — ranks 1–180 processed (507 cities); verify and publish each batch before continuing to rank 200.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -151,6 +151,13 @@ Its regressions and Chrome verification pass.
 - All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
 - All ten are medium confidence, with seasonal lodging uncertainty disclosed. Bern and Lugano three-star AUD387/AUD365 sit near existing Swiss cities AUD337-394; Bilbao AUD236 reflects Basque visitor demand. Lucca AUD258 exceeds Pisa AUD201/Siena AUD222, and Cagliari AUD222 exceeds older Rome AUD171 despite its relative-city wording. Differences retained without calibration. Visually checked Cordoba Spain aerial view and Toledo Spain river-city panorama; both match the destinations.
 - No implementation changes after the Frankfurt checkpoint passing TypeScript, production build and all 484 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
+
+### Ranks 171–180 — COMPLETE (11 October 2026)
+
+- Added Port Douglas, Rovinj, Kos Town, Nafplio, Rethymno, La Spezia, Ohrid, Coimbra, Cluj-Napoca, Sibiu. Library 497 -> 507; consistent backup `travel-before-popular-171-180.db`, integrity `ok`; exact files in `.local/popular-171-180-2026-10-11`.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- Port Douglas is low confidence because of seasonal resort demand and limited room inventory. Coimbra three-star AUD165 exceeds older Lisbon AUD140/Porto AUD124 despite its comparison text; Nafplio AUD189 exceeds older Athens AUD109, and Port Douglas AUD358 exceeds Cairns AUD171 with a resort premium disclosed. Differences retained without calibration. Visual inspection caught a Rethymno municipality map: settlement articles now rank ahead of same-named municipalities, with regression coverage. Refreshed all four stored municipality selections through the real collector in an isolated copy and compared all 507 stored picks; Paracas was unchanged and Playa del Carmen, San Miguel de Allende and Rethymno changed, all visually reviewed. Only the new Rethymno live row was refreshed, preserving every older image row. Its licensed city/fortress photo and Kos Town harbour photo both pass visual review.
+- TypeScript, production build, all 485 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
 
