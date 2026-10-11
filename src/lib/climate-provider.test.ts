@@ -214,6 +214,14 @@ describe('climate geocoding', () => {
     expect(() => resolveClimateLocation({results:[place('Mykonos','GR',3783,{feature_code:'PPL',admin1:'South Aegean'})]},'Mykonos','GR')).toThrow(/No matching city/);
   });
 
+  it('selects Rhodes city rather than the more populous island', () => {
+    const city = place('Rhodes', 'GR', 56128, { feature_code: 'PPLA2', admin1: 'South Aegean', latitude: 36.43556, longitude: 28.22199 });
+    const island = place('Rhodes', 'GR', 127613, { feature_code: 'ISL', admin1: 'South Aegean', latitude: 36.19613, longitude: 27.96081 });
+    expect(resolveClimateLocation({ results: [island, city] }, 'Rhodes', 'GR')).toMatchObject({ latitude: 36.43556, longitude: 28.22199 });
+    expect(() => resolveClimateLocation({ results: [island] }, 'Rhodes', 'GR')).toThrow(/No matching city/);
+    expect(() => resolveClimateLocation({ results: [{ ...city, country_code: 'US' }] }, 'Rhodes', 'GR')).toThrow(/No matching city/);
+  });
+
   it('does not accept an exact city-name match from another country', () => {
     expect(() => resolveClimateLocation({ results: [place('Springfield', 'US')] }, 'Springfield', 'CA'))
       .toThrow(/No matching city coordinates/);

@@ -3224,3 +3224,22 @@ limited hostel supply/licensed alcohol market.
 
 There are no implementation changes after the passing first-batch baseline; final memory, v1.1 and diff checks pass.
 The authorized twenty cities are complete. Work stops before rank 21.
+
+## Ranked destination additions, ranks 21–30 — 11 October 2026
+
+The owner authorized continuing all remaining entries in batches of ten, committing and pushing each batch.
+Added Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and
+Nassau, growing the library from 348 to 358. Consistent backup `travel-before-popular-21-30.db` is under
+`C:\Dev\holiday-spend-db-backups\2026-10-11`; exact responses/provenance/results are in gitignored
+`.local/popular-21-30-2026-10-11`.
+
+Rhodes returned both city and island points; a country/region/feature constraint selects the city and a regression
+rejects the island and foreign matches. All ten fresh GPT-6 Luna/max responses pass the exact app prompt and RBA
+validation. All cost, climate and photo dates are 11 October, with matching city/history timestamps, twelve climate
+months and both licensed photo files. Differently titled Gold Coast, Nassau, Rhodes city and San Juan photos were
+visually checked. Sapporo and Greek regional room estimates exceed older Japanese/Athens entries; recorded without
+calibration, with seasonal uncertainty retained.
+
+Integrity is `ok`; all original country/city/estimate/climate/photo rows and protected hashes match the backup
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). TypeScript, production build, 74 test files / 467 tests,
+memory mirror and v1.1 guard pass. No provider keys or itinerary writes.

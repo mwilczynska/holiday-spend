@@ -58,6 +58,8 @@ const locationQueries: Record<string, LocationQuery> = {
   'ES|San Sebastian': { queryName: 'Donostia / San Sebastian', admin1: 'Basque Country' },
   // The island and its town share a name; use the island, as for Santorini.
   'GR|Mykonos': { queryName: 'Mykonos', admin1: 'South Aegean', featureCode: 'ISL' },
+  // The ranked city destination is Rhodes city, not the larger same-named island.
+  'GR|Rhodes': { queryName: 'Rhodes', admin1: 'South Aegean', featureCode: 'PPLA2' },
 };
 
 const coordinateOverrides: Record<string, ClimateLocation> = {

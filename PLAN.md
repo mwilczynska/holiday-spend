@@ -2,7 +2,7 @@
 
 **Status:** European additions and the first twenty ranked destinations are complete: library 348, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination additions — first two batches COMPLETE (348 cities). Batch 1 checkpoint is `3e40c9f`; this milestone records verified batch 2 completion. The completed sections below retain the implementation evidence.
+**Current phase:** Ranked destination additions — continuing ranks 21–200 in batches of ten, with verification and commit/push after each. First two batches complete (348 cities), published through `356c5e7`.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -20,7 +20,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Latest publication:** Ranked batch 1 pushed at `3e40c9f`; this milestone closes batch 2. European closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Await owner instructions before adding rank 21 or later. The authorized twenty cities are complete.
+**Next action:** Work through the remaining ranked list in order, ten entries per batch. Back up before each batch, use fresh GPT-6 Luna/max city subagents and exact app persistence, verify dates/climate/photos and unchanged existing data, then commit/push before starting the next batch. Preserve any destination already present rather than regenerating it.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
@@ -46,6 +46,13 @@ Its regressions and Chrome verification pass.
 - [x] Boston's USD320 room anchor, Toronto's USD205 and Palma's USD225 exceed older New York/Vancouver/Barcelona estimates after conversion. Egyptian resort rooms also exceed older Cairo. Seasonal/location uncertainty and Doha's limited hostels/licensed alcohol are disclosed; noted without calibration or adjustment.
 - [x] Integrity `ok`; no duplicate country names. All original country/city/estimate/climate/photo records and protected row hashes match the second backup. All ten have matching city/history dates, exact response anchors, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance and 11 October cost/climate/photo timestamps; FX observation remains 9 October. No new itinerary legs.
 - [x] No implementation changes since the passing batch 1 baseline (TypeScript, build and 466 tests across full/isolated runs). Memory mirror, v1.1 guard and diff checks pass for closure. Completion recorded for commit/push; stop before rank 21.
+
+## Remaining ranked destinations — IN PROGRESS (11 October 2026)
+
+- [x] Owner authorized continuing the whole ranked list, in batches of ten, committing and pushing each verified batch. The original queue is retained in gitignored `.local/ranked-destinations-200.json`.
+- [x] Ranks 21–30: Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and Nassau. Library 348 -> 358. Backup `travel-before-popular-21-30.db`, integrity `ok`; exact files in `.local/popular-21-30-2026-10-11`. All ten have matching city/history dates, 11 October cost/climate/photo timestamps, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, twelve climate months and both licensed photo files. Original library records and protected hashes (66/68/73/1,543) unchanged. Gold Coast, Nassau, Rhodes city and San Juan photo titles visually checked.
+- [x] Rhodes city/island ambiguity resolved with a country/region/feature constraint selecting the city; regression rejects the island and foreign matches. TypeScript, production build and all 74 files / 467 tests pass. Sapporo/Rhodes/Heraklion rooms exceed older Japanese/Athens entries; seasonal uncertainty is disclosed and noted without calibration. Memory mirror and v1.1 guard pass for publication.
+- [ ] Continue ranks 31–200 with the same backup, prompt, response review, persistence, date/photo/climate audit and publication gates. Record each batch below; preserve any existing entries and report them.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
 
