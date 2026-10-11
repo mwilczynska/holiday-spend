@@ -3327,3 +3327,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 Oranjestad is low confidence because of seasonal resort demand and limited hostel inventory. Hakone and Fujikawaguchiko disclose resort lodging uncertainty. Yokohama (three-star AUD193 versus older Tokyo AUD155), Pisa (AUD201 versus older Florence AUD178) and Puerto Princesa (AUD75 versus older Manila AUD54/Cebu AUD47) exceed their stated relative-city comparisons; retained without calibration. Visually checked Takayama, Gifu (snowy city view) and Coron, Palawan (town and bay); both match the destinations.
 
 No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 91–100 — 11 October 2026
+
+Added Chamonix, Labuan Bajo, Como, Rimini, Kuching, Las Palmas de Gran Canaria, Santa Cruz de Tenerife, Ayutthaya, Hua Hin, Kuşadası, library 417 -> 427. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-91-100.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-91-100-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+All ten are medium confidence. Labuan Bajo (three-star AUD122) exceeds older Bali/Lombok entries with a disclosed Komodo gateway premium; Chamonix (AUD358) exceeds Nice AUD258 with alpine seasonality. Las Palmas (AUD179) exceeds older Barcelona AUD155 despite its relative-city wording; Ayutthaya (AUD69) and Hua Hin (AUD97) exceed older Bangkok/Pattaya entries. Differences retained without calibration. Visually checked Las Palmas beach, Phra Nakhon Si Ayutthaya city ruins and Hua Hin district coastline; all match their destinations.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
