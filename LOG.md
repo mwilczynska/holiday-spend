@@ -3383,3 +3383,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 Fixed Puebla geocoding before saving: exact-name matching chose a Baja California settlement; the constrained Puebla City/Puebla/PPLA alias now selects 19.04778,-98.20723. Added regression coverage and synced project memory. Trinidad is low confidence because of Cuban currency/supply uncertainty. Byron Bay three-star AUD337 has a disclosed tourism premium; Puebla AUD112 and Guadalajara AUD150 exceed older Mexico City AUD78 despite their comparison text. Differences retained without calibration. Visually checked Trinidad, Guanajuato, Merida and Puebla city photos; San Miguel de Allende uses a rural landscape from its municipality article, correctly identified as the surrounding municipality rather than a city-centre scene.
 
 TypeScript, production build, all 482 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. The sandbox test attempt could not start because temporary-file renames were denied; the unchanged suite passed outside that sandbox.
+
+
+## Ranked destination additions, ranks 131–140 — 11 October 2026
+
+Added El Calafate, Puerto Iguazú, San Carlos de Bariloche, Ushuaia, Florianópolis, Foz do Iguaçu, Salvador, São Paulo, Mombasa, Victoria Falls, library 457 -> 467. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-131-140.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-131-140-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Victoria Falls, Ushuaia and Puerto Iguazu are low confidence because of seasonal visitor markets or Argentine currency uncertainty. Patagonia three-star estimates AUD193-315 exceed older Buenos Aires AUD78 with remoteness and visitor demand disclosed; Brazilian additions AUD112-165 exceed older Rio AUD78. Mombasa AUD143 exceeds older Nairobi AUD70. Differences retained without calibration. Visually checked Bariloche cathedral, Salvador Bahia coastline and Victoria Falls Zimbabwe town street; all match their destinations.
+
+No implementation changes after the Puebla checkpoint passing TypeScript, production build and all 482 tests; memory mirror, v1.1 guard and complete database audit pass.
