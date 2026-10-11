@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** European additions and ranked destinations through 100 processed: library 427, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
+**Status:** European additions and ranked destinations through 110 processed: library 437, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination additions — ranks 1–100 processed (427 cities); verify and publish each batch before continuing to rank 200.
+**Current phase:** Ranked destination additions — ranks 1–110 processed (437 cities); verify and publish each batch before continuing to rank 200.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -101,6 +101,13 @@ Its regressions and Chrome verification pass.
 - Added Chamonix, Labuan Bajo, Como, Rimini, Kuching, Las Palmas de Gran Canaria, Santa Cruz de Tenerife, Ayutthaya, Hua Hin, Kuşadası. Library 417 -> 427; consistent backup `travel-before-popular-91-100.db`, integrity `ok`; exact files in `.local/popular-91-100-2026-10-11`.
 - All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
 - All ten are medium confidence. Labuan Bajo (three-star AUD122) exceeds older Bali/Lombok entries with a disclosed Komodo gateway premium; Chamonix (AUD358) exceeds Nice AUD258 with alpine seasonality. Las Palmas (AUD179) exceeds older Barcelona AUD155 despite its relative-city wording; Ayutthaya (AUD69) and Hua Hin (AUD97) exceed older Bangkok/Pattaya entries. Differences retained without calibration. Visually checked Las Palmas beach, Phra Nakhon Si Ayutthaya city ruins and Hua Hin district coastline; all match their destinations.
+- No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
+
+### Ranks 101–110 — COMPLETE (11 October 2026)
+
+- Added Hvar, Pula, Aqaba, Agadir, Casablanca, Chefchaouen, Essaouira, Tangier, Durban, İzmir. Library 427 -> 437; consistent backup `travel-before-popular-101-110.db`, integrity `ok`; exact files in `.local/popular-101-110-2026-10-11`.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All ten are medium confidence. Casablanca and Chefchaouen disclose limited licensed alcohol venues; Aqaba discloses venue-dependent alcohol uncertainty. Hvar three-star AUD315 exceeds older Dubrovnik AUD171 with summer island demand disclosed; Izmir AUD150 exceeds older Istanbul AUD70 despite its relative-city wording, and Moroccan additions AUD93-109 exceed older Marrakech AUD62. Differences retained without calibration. Visually checked Hvar (town), showing the correct town and harbour.
 - No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
