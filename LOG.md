@@ -3453,3 +3453,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 Port Douglas is low confidence because of seasonal resort demand and limited room inventory. Coimbra three-star AUD165 exceeds older Lisbon AUD140/Porto AUD124 despite its comparison text; Nafplio AUD189 exceeds older Athens AUD109, and Port Douglas AUD358 exceeds Cairns AUD171 with a resort premium disclosed. Differences retained without calibration. Visual inspection caught a Rethymno municipality map: settlement articles now rank ahead of same-named municipalities, with regression coverage. Refreshed all four stored municipality selections through the real collector in an isolated copy and compared all 507 stored picks; Paracas was unchanged and Playa del Carmen, San Miguel de Allende and Rethymno changed, all visually reviewed. Only the new Rethymno live row was refreshed, preserving every older image row. Its licensed city/fortress photo and Kos Town harbour photo both pass visual review.
 
 TypeScript, production build, all 485 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 181–190 — 11 October 2026
+
+Added Graz, Brno, Karlovy Vary, Cork, Killarney, Luxembourg City, Delft, Maastricht, Poznań, Zakopane, library 507 -> 517. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-181-190.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-181-190-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+All ten are medium confidence with lodging seasonality and event uncertainty disclosed. Graz three-star AUD222 exceeds older Vienna AUD155, Brno AUD172 exceeds older Prague AUD109 and Poznan AUD132 exceeds older Krakow AUD85 despite relative-city wording; differences retained without calibration. Cork/Killarney AUD312/322 sit near Galway AUD330. Visually checked Cork city university quadrangle and Luxembourg City Greinskapell chapel. The latter comes through the Luxembourg article and Wikidata image, but the Commons file explicitly identifies Luxembourg City and the location check is 0.3km from the saved city point.
+
+No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass.
