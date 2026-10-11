@@ -3467,3 +3467,46 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 All ten are medium confidence with lodging seasonality and event uncertainty disclosed. Graz three-star AUD222 exceeds older Vienna AUD155, Brno AUD172 exceeds older Prague AUD109 and Poznan AUD132 exceeds older Krakow AUD85 despite relative-city wording; differences retained without calibration. Cork/Killarney AUD312/322 sit near Galway AUD330. Visually checked Cork city university quadrangle and Luxembourg City Greinskapell chapel. The latter comes through the Luxembourg article and Wikidata image, but the Commons file explicitly identifies Luxembourg City and the location check is 0.3km from the saved city point.
 
 No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass.
+
+## Ranked destination additions, ranks 191–200 — 11 October 2026
+
+Added Dahab, Ipoh, Atlanta, Austin, Denver, Palm Springs, Santa Fe, Savannah, Sedona, Livingstone, library 517 -> 527. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-191-200.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-191-200-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Sedona and Santa Fe retain low confidence for seasonal lodging and limited registered-hostel supply. Savannah and Santa Fe rooms are about AUD330, above older New York City AUD310; Sedona is about AUD430. Ipoh is about AUD79 versus older Kuala Lumpur AUD54/Penang AUD47 despite its lower-relative-city wording; Dahab is about AUD93 versus older Cairo AUD54. Differences are recorded without calibration. All six differently titled photos were visually reviewed and match their destinations.
+
+No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass.
+
+## Ranked destination list closure — 11 October 2026
+
+All 200 ranked entries are accounted for in twenty batches: 199 added and rank 37, Malé, deferred unsaved.
+The library grew from 328 to 527 cities. This continuation added 179 cities after the previously completed first
+twenty; each completed ten-entry batch was committed and pushed before the next began. The final ten are recorded
+for publication after ranks 181–190 at `bed6d62`.
+
+The final audit compares every original country/city/estimate/climate/photo row with the consistent first-batch
+backup and verifies exact original protected-table hashes: 66 legs, 68 transports, 73 saved plans and 1,543 expenses.
+All match. Integrity is `ok`, country names have no duplicates, and the canonical city CSV SHA256 remains
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+The complete queue/save/date/source audit is retained locally at
+`.local/popular-191-200-2026-10-11/final-audit.json`.
+
+All 199 additions have exact saved anchors, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance,
+matching city/history dates and 11 October cost/climate/photo timestamps. The RBA observation is separately dated
+9 October, at 0.6979 USD per AUD. Every saved city has twelve climate months and both licensed photo files.
+Malé remains unsaved because its response substituted resort alcohol prices for unavailable city prices;
+the rejected files remain archived unchanged. No estimate was calibrated or substituted.
+
+The broader source audit found that Negril's Commons file supplies a CC BY-SA 3.0 licence but no machine-readable
+artist. Its source page was checked directly:
+https://commons.wikimedia.org/wiki/File:Negril_Jamaica_2007-09.jpg . The artist field remains missing and the
+Commons credit link is retained; the same pre-existing metadata limitation in Apia and Bali is unchanged.
+No photo or old library record was rewritten during this audit.
+
+Implementation remains at the passing `d94a04f` checkpoint: TypeScript, production build, all 74 files / 485 tests,
+memory mirror and v1.1 guard. No implementation changes in the last two batches. Final publication also checks
+documentation whitespace, memory synchronization and the methodology guard. No ranked collection remains queued.

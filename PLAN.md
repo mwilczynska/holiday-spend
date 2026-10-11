@@ -1,8 +1,8 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-**Status:** European additions and ranked destinations through 190 processed: library 517, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
+**Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination additions — ranks 1–190 processed (517 cities); verify and publish each batch before continuing to rank 200.
+**Current phase:** Ranked destination collection complete with one deferred entry. All 199 saved additions pass the final audit against the original 328-city backup; final batch 191–200 closes this milestone.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -14,18 +14,18 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `3e40c9f` — Macau city geocoding and exact country-label prompt preparation; TypeScript, production build, 466 tests across full/isolated runs, memory mirror and v1.1 guard pass. The earlier feature QA checkpoint is `488bbd3`, including all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
+**Latest implementation checkpoint:** `d94a04f` — settlement photo selection, following the ranked-run geocoding fixes. TypeScript, production build, all 74 files / 485 tests, memory mirror and v1.1 guard pass. The earlier feature QA checkpoint is `488bbd3`, including all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
 
 **Previous product checkpoint:** `caf6933` — shared saved keys, clickable city choices, configured transport limits, Stop and failed-leg retry. It follows `515c445` actionable credential-safe failures and deadlines, and `1581388` request limits/current discovery/GPT-6 Luna max default on merged main (`c459cfd`).
 
-**Latest publication:** Ranked batch 1 pushed at `3e40c9f`; this milestone closes batch 2. European closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
+**Latest publication:** Ranked batches 1–19 pushed separately, through ranks 181–190 at `bed6d62`; this milestone records the final batch, 191–200. European closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Work through the remaining ranked list in order, ten entries per batch. Back up before each batch, use fresh GPT-6 Luna/max city subagents and exact app persistence, verify dates/climate/photos and unchanged existing data, then commit/push before starting the next batch. Preserve any destination already present rather than regenerating it.
+**Next action:** Await the owner's next task. No ranked collection remains queued. Malé stays unsaved because its response substituted resort alcohol prices for unavailable city prices; the v1.1 contract requires positive anchors and cannot represent that absence.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
-**Working tree:** Ranked batch implementation and milestone records belong on main. Added cities, photos and batch audit files are local application data.
+**Working tree:** Main; ranked collection and final audit complete. Added cities, photos and batch audit files remain local application data; implementation fixes and milestone records are published per batch.
 
 ## New cities via subagents: ranked destinations, batch 1 — COMPLETE (11 October 2026)
 
@@ -47,12 +47,21 @@ Its regressions and Chrome verification pass.
 - [x] Integrity `ok`; no duplicate country names. All original country/city/estimate/climate/photo records and protected row hashes match the second backup. All ten have matching city/history dates, exact response anchors, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance and 11 October cost/climate/photo timestamps; FX observation remains 9 October. No new itinerary legs.
 - [x] No implementation changes since the passing batch 1 baseline (TypeScript, build and 466 tests across full/isolated runs). Memory mirror, v1.1 guard and diff checks pass for closure. Completion recorded for commit/push; stop before rank 21.
 
-## Remaining ranked destinations — IN PROGRESS (11 October 2026)
+## Ranked destinations — PROCESSED, ONE DEFERRED (11 October 2026)
 
 - [x] Owner authorized continuing the whole ranked list, in batches of ten, committing and pushing each verified batch. The original queue is retained in gitignored `.local/ranked-destinations-200.json`.
 - [x] Ranks 21–30: Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and Nassau. Library 348 -> 358. Backup `travel-before-popular-21-30.db`, integrity `ok`; exact files in `.local/popular-21-30-2026-10-11`. All ten have matching city/history dates, 11 October cost/climate/photo timestamps, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, twelve climate months and both licensed photo files. Original library records and protected hashes (66/68/73/1,543) unchanged. Gold Coast, Nassau, Rhodes city and San Juan photo titles visually checked.
 - [x] Rhodes city/island ambiguity resolved with a country/region/feature constraint selecting the city; regression rejects the island and foreign matches. TypeScript, production build and all 74 files / 467 tests pass. Sapporo/Rhodes/Heraklion rooms exceed older Japanese/Athens entries; seasonal uncertainty is disclosed and noted without calibration. Memory mirror and v1.1 guard pass for publication.
-- [ ] Continue ranks 31–200 with the same backup, prompt, response review, persistence, date/photo/climate audit and publication gates. Record each batch below; preserve any existing entries and report them.
+- [x] Processed ranks 31–200 in batches of ten with consistent backups, exact prompts, response review, app persistence and date/photo/climate audits. Every completed batch was committed and pushed before starting the next. Across the full list, 199 cities were added; rank 37, Malé, remains deferred unsaved.
+
+### Full ranked-list closure — COMPLETE WITH ONE DEFERRED (11 October 2026)
+
+- All 200 queue entries accounted for across twenty batches. The original library grew from 328 to 527 cities; this continuation added 179 after the first twenty. No destination was regenerated or linked to an itinerary leg.
+- Final audit compares every original country, city, estimate, climate and photo row with the consistent first-batch backup; all match. Protected tables also match their original hashes: 66 itinerary legs, 68 transports, 73 saved plans and 1,543 expenses. Database integrity is `ok`, country names have no duplicates, and the canonical CSV hash is unchanged.
+- All 199 additions retain their exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance. City/history timestamps match, costs/climate/photos are dated 11 October, and the actual RBA FX observation remains separately dated 9 October. Each has twelve climate months, a verified free licence/source and both photo files. Full audit retained in gitignored `.local/popular-191-200-2026-10-11/final-audit.json`.
+- Negril's Commons file has a verified CC BY-SA 3.0 licence, but Commons omits a machine-readable artist. That field remains missing rather than inventing an author; the original Commons source link is retained. Existing Apia and Bali records have the same metadata limitation and are unchanged.
+- Malé's rejected response and provenance remain archived unchanged. Its resort-price substitution was not imported, and no calibration or methodology expansion was undertaken.
+- The latest implementation baseline passes TypeScript, production build and all 485 tests. Final documentation, memory and methodology checks accompany the last batch publication.
 
 ### Ranks 31–40 — COMPLETE (11 October 2026)
 
@@ -165,6 +174,13 @@ Its regressions and Chrome verification pass.
 - All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
 - All ten are medium confidence with lodging seasonality and event uncertainty disclosed. Graz three-star AUD222 exceeds older Vienna AUD155, Brno AUD172 exceeds older Prague AUD109 and Poznan AUD132 exceeds older Krakow AUD85 despite relative-city wording; differences retained without calibration. Cork/Killarney AUD312/322 sit near Galway AUD330. Visually checked Cork city university quadrangle and Luxembourg City Greinskapell chapel. The latter comes through the Luxembourg article and Wikidata image, but the Commons file explicitly identifies Luxembourg City and the location check is 0.3km from the saved city point.
 - No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
+
+### Ranks 191–200 — COMPLETE (11 October 2026)
+
+- Added Dahab, Ipoh, Atlanta, Austin, Denver, Palm Springs, Santa Fe, Savannah, Sedona, Livingstone. Library 517 -> 527; consistent backup `travel-before-popular-191-200.db`, integrity `ok`; exact files in `.local/popular-191-200-2026-10-11`.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- Sedona and Santa Fe retain low confidence for seasonal lodging and limited registered-hostel supply. Savannah and Santa Fe rooms are about AUD330, above older New York City AUD310; Sedona is about AUD430. Ipoh is about AUD79 versus older Kuala Lumpur AUD54/Penang AUD47 despite its lower-relative-city wording; Dahab is about AUD93 versus older Cairo AUD54. Differences are recorded without calibration. All six differently titled photos were visually reviewed and match their destinations.
+- No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for final commit/push; no further batch remains.
 
 ## README and screenshots for the bento UI — COMPLETE (10 October 2026)
 
