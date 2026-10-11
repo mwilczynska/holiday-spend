@@ -3285,3 +3285,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 Photo-title differences visually reviewed. Positano and Wadi Musa retain low confidence for seasonal/scarce lodging and venue-dependent alcohol. New Quebec City and Wadi Musa room estimates exceed older Montreal/Amman entries; Positano exceeds Amalfi. Differences are disclosed and recorded without calibration.
 
 No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 61–70 — 11 October 2026
+
+Added San José, Malacca, Muscat, Faro, Charleston, Fort Lauderdale, Key West, Nashville, Philadelphia, Tampa, library 387 -> 397. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-61-70.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-61-70-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Differently titled photos visually reviewed. Key West lodging reflects constrained island supply and seasonality; Muscat retains licensed-venue/hostel uncertainty. Faro lodging exceeds older Lisbon despite the regional comparison; recorded without calibration. Malé remains deferred, with the alcohol availability distinction corroborated by current UK government Maldives travel advice (https://www.gov.uk/foreign-travel-advice/maldives/safety-and-security); no city-price research.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
