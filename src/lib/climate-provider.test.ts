@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { fetchCityClimate, getClimateModel, parseArchiveClimate, resolveClimateLocation } from './climate-provider';
+import { fetchCityClimate, geocodingUrl, getClimateModel, parseArchiveClimate, resolveClimateLocation } from './climate-provider';
 
 const numericFields = [
   'temperature_2m_mean',
@@ -220,6 +220,15 @@ describe('climate geocoding', () => {
     expect(resolveClimateLocation({ results: [island, city] }, 'Rhodes', 'GR')).toMatchObject({ latitude: 36.43556, longitude: 28.22199 });
     expect(() => resolveClimateLocation({ results: [island] }, 'Rhodes', 'GR')).toThrow(/No matching city/);
     expect(() => resolveClimateLocation({ results: [{ ...city, country_code: 'US' }] }, 'Rhodes', 'GR')).toThrow(/No matching city/);
+  });
+
+  it('selects Puebla City rather than same-named settlements elsewhere in Mexico', () => {
+    const city = place('Puebla City', 'MX', 1692181, { feature_code: 'PPLA', admin1: 'Puebla', latitude: 19.04778, longitude: -98.20723 });
+    const village = place('Puebla', 'MX', 15168, { feature_code: 'PPL', admin1: 'Baja California', latitude: 32.56645, longitude: -115.35387 });
+    expect(resolveClimateLocation({ results: [village, city] }, 'Puebla', 'MX')).toMatchObject({ latitude: 19.04778, longitude: -98.20723 });
+    expect(() => resolveClimateLocation({ results: [village] }, 'Puebla', 'MX')).toThrow(/No matching city/);
+    expect(() => resolveClimateLocation({ results: [{ ...city, admin1: 'Baja California' }] }, 'Puebla', 'MX')).toThrow(/No matching city/);
+    expect(new URL(geocodingUrl('Puebla', 'MX')).searchParams.get('name')).toBe('Puebla City');
   });
 
   it.each([

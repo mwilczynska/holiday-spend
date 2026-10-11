@@ -3369,3 +3369,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 Archived the first Hammamet response unchanged because it explicitly substituted guesthouse equivalents for hostel anchors; a fresh exact-contract response passed. Archived the first Bridgetown response with stale 8 October FX; a fresh response fetched the verified 9 October observation. Aswan, Ocho Rios, Bridgetown and Varadero are low confidence because of licensed alcohol venues, limited hostel supply or volatile resort pricing. Varadero three-star AUD236 exceeds older Havana AUD85; Cannes AUD301 exceeds Nice AUD258. Differences retained without calibration. Visually checked Hammamet, Tunisia montage against the correct destination.
 
 No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 121–130 — 11 October 2026
+
+Added Byron Bay, Trinidad, Guadalajara, Guanajuato, Mazatlán, Mérida, Puebla, San Miguel de Allende, San Miguel de Cozumel, Arusha, library 447 -> 457. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-121-130.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-121-130-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Fixed Puebla geocoding before saving: exact-name matching chose a Baja California settlement; the constrained Puebla City/Puebla/PPLA alias now selects 19.04778,-98.20723. Added regression coverage and synced project memory. Trinidad is low confidence because of Cuban currency/supply uncertainty. Byron Bay three-star AUD337 has a disclosed tourism premium; Puebla AUD112 and Guadalajara AUD150 exceed older Mexico City AUD78 despite their comparison text. Differences retained without calibration. Visually checked Trinidad, Guanajuato, Merida and Puebla city photos; San Miguel de Allende uses a rural landscape from its municipality article, correctly identified as the surrounding municipality rather than a city-centre scene.
+
+TypeScript, production build, all 482 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. The sandbox test attempt could not start because temporary-file renames were denied; the unchanged suite passed outside that sandbox.

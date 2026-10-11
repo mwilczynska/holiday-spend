@@ -75,6 +75,8 @@ const locationQueries: Record<string, LocationQuery> = {
   // The geocoder uses ASCII i, whereas the saved name contains Turkish dotless ı.
   'TR|Kuşadası': { queryName: 'Kusadasi', admin1: 'Aydın', featureCode: 'PPLA2' },
   'MX|Guanajuato': { queryName: 'Guanajuato City', admin1: 'Guanajuato', featureCode: 'PPLA' },
+  // Exact "Puebla" matches are smaller settlements; the state capital is Puebla City.
+  'MX|Puebla': { queryName: 'Puebla City', admin1: 'Puebla', featureCode: 'PPLA' },
   'AR|San Carlos de Bariloche': { queryName: 'Bariloche', admin1: 'Rio Negro' },
   'LU|Luxembourg City': { queryName: 'Luxembourg', featureCode: 'PPLC' },
 };
