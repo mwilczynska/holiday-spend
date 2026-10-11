@@ -3355,3 +3355,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 All ten are medium confidence. Casablanca and Chefchaouen disclose limited licensed alcohol venues; Aqaba discloses venue-dependent alcohol uncertainty. Hvar three-star AUD315 exceeds older Dubrovnik AUD171 with summer island demand disclosed; Izmir AUD150 exceeds older Istanbul AUD70 despite its relative-city wording, and Moroccan additions AUD93-109 exceed older Marrakech AUD62. Differences retained without calibration. Visually checked Hvar (town), showing the correct town and harbour.
 
 No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 111–120 — 11 October 2026
+
+Added Bridgetown, Varadero, Willemstad, Aswan, Cannes, Montego Bay, Negril, Ocho Rios, Hammamet, Tunis, library 437 -> 447. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-111-120.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-111-120-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Archived the first Hammamet response unchanged because it explicitly substituted guesthouse equivalents for hostel anchors; a fresh exact-contract response passed. Archived the first Bridgetown response with stale 8 October FX; a fresh response fetched the verified 9 October observation. Aswan, Ocho Rios, Bridgetown and Varadero are low confidence because of licensed alcohol venues, limited hostel supply or volatile resort pricing. Varadero three-star AUD236 exceeds older Havana AUD85; Cannes AUD301 exceeds Nice AUD258. Differences retained without calibration. Visually checked Hammamet, Tunisia montage against the correct destination.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
