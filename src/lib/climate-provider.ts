@@ -48,6 +48,8 @@ const locationQueries: Record<string, LocationQuery> = {
   'CN|Suzhou': { queryName: 'Suzhou', admin1: 'Jiangsu' },
   // The tourism city is in Anhui; exact Huangshan also names a Yunnan settlement.
   'CN|Huangshan': { queryName: 'Huangshan City', admin1: 'Anhui', featureCode: 'PPLA3' },
+  // Frankfurt alone resolves to a Bavarian settlement rather than the Main city.
+  'DE|Frankfurt': { queryName: 'Frankfurt am Main', admin1: 'Hesse', featureCode: 'PPLA3' },
   // Several Nepali villages share these names and the geocoder lists no populations to choose by.
   'NP|Bandipur': { queryName: 'Bandipur', admin1: 'Gandaki Pradesh', admin2: 'Tanahun' },
   'NP|Bhaktapur': { queryName: 'Bhaktapur', admin2: 'Bhaktapur' },

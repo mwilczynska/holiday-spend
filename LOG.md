@@ -3411,3 +3411,17 @@ both licensed photo files. Original country/city/estimate/climate/photo rows and
 Fixed Huangshan geocoding before saving: exact-name matching selected a Yunnan settlement; the Huangshan City/Anhui/PPLA3 alias now selects 29.71139,118.3125. Added regression coverage and synced memory. Punta del Este and Victoria Seychelles are low confidence because of seasonal resort demand or scarce dorm supply/import costs. Puerto Natales three-star AUD229 reflects remote Patagonia demand; Santa Marta AUD107 exceeds older Cartagena AUD78 despite its relative-city wording, and San Andres AUD193 has a disclosed island premium. Differences retained without calibration. Visually checked Huangshan City historic street, San Andres town waterfront, Cuenca Ecuador montage and Victoria Seychelles clock tower; all match their destinations.
 
 TypeScript, production build, all 483 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 151–160 — 11 October 2026
+
+Added Aix-en-Provence, Annecy, Avignon, Toulouse, Düsseldorf, Frankfurt, Leipzig, Nuremberg, Grand Baie, Lausanne, library 477 -> 487. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-151-160.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-151-160-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Fixed Frankfurt geocoding before saving: exact-name matching selected a Bavarian settlement; Frankfurt am Main/Hesse/PPLA3 now selects 50.11552,8.68417. Added regression coverage and synced memory. Grand Baie is low confidence because of scarce conventional hostel supply and imported drinks. Nuremberg AUD251 and Leipzig AUD189 exceed older Munich AUD171 despite their relative-city wording; Annecy AUD322 has a disclosed seasonal lake tourism premium. Differences retained without calibration. All photo article titles match the city names.
+
+TypeScript, production build, all 484 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass.

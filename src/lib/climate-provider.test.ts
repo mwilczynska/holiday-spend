@@ -240,6 +240,15 @@ describe('climate geocoding', () => {
     expect(new URL(geocodingUrl('Huangshan', 'CN')).searchParams.get('name')).toBe('Huangshan City');
   });
 
+  it('selects Frankfurt am Main rather than an exact-name Bavarian settlement', () => {
+    const city = place('Frankfurt am Main', 'DE', 650000, { feature_code: 'PPLA3', admin1: 'Hesse', latitude: 50.11552, longitude: 8.68417 });
+    const village = place('Frankfurt', 'DE', 100, { feature_code: 'PPLL', admin1: 'Bavaria', latitude: 49.68333, longitude: 10.53333 });
+    expect(resolveClimateLocation({ results: [village, city] }, 'Frankfurt', 'DE')).toMatchObject({ latitude: 50.11552, longitude: 8.68417 });
+    expect(() => resolveClimateLocation({ results: [village] }, 'Frankfurt', 'DE')).toThrow(/No matching city/);
+    expect(() => resolveClimateLocation({ results: [{ ...city, admin1: 'Bavaria' }] }, 'Frankfurt', 'DE')).toThrow(/No matching city/);
+    expect(new URL(geocodingUrl('Frankfurt', 'DE')).searchParams.get('name')).toBe('Frankfurt am Main');
+  });
+
   it.each([
     ['Corfu Town', 'GR', 'Corfu', 'Ionian Islands', 'PPLA', 39.62441, 19.92016],
     ['Kos Town', 'GR', 'Kos', 'South Aegean', 'PPLA3', 36.89295, 27.28768],
