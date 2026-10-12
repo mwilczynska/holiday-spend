@@ -13,6 +13,7 @@ const nextConfig = {
   distDir: process.env.NEXT_DIST_DIR || (isDevServer ? '.next-dev' : '.next'),
   output: 'standalone',
   poweredByHeader: false,
+  devIndicators: false,
   serverExternalPackages: ['better-sqlite3', 'argon2'],
   outputFileTracingIncludes: {
       '/*': [

@@ -12,6 +12,10 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 12 October 2026
 
+## Development indicator — COMPLETE (12 October 2026)
+
+- [x] Hide the Next.js development indicator with `devIndicators: false`. Configuration syntax, Next.js configuration loading for development and production build phases, memory mirror and diff whitespace checks pass. Ready for commit and push.
+
 ## Multiple city additions — COMPLETE (12 October 2026)
 
 - [x] Let Add Leg accept several existing cities with separate nights, preserving entry order.

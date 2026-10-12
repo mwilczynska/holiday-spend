@@ -3536,3 +3536,8 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - The shared card-expansion test helper also retries clicks lost before hydration. The corrected full browser run passed all six new checks and six of the seven older checks; the remaining failure reached the saved leg and failed only on that expansion helper. Its isolated rerun follows the helper correction.
 - Final result: the remaining real Add Leg rejection/retry/save/reload check and authentication pass on isolated rerun. All 13 affected form checks are verified. Final production build, standalone TypeScript, memory mirror and whitespace checks pass. No methodology or provider-transport change, and no personal database mutation.
 - TypeScript and the final production build pass. The full 507-test unit suite passed initially; the final run passed 504 checks and hit load timeouts in the two-test ordering setup and one password-hashing check. Both unchanged files then passed all five checks with their original deadlines. Targeted ESLint still reports seven pre-existing effect-state violations in these files; no new lint violation was introduced. Sandbox path/temporary-file restrictions required running builds/tests outside the sandbox.
+
+# 12 October 2026 — Hide development indicator
+
+- Set devIndicators to false in next.config.mjs to hide the Next.js N indicator during development. Framework errors still surface normally.
+- Verified JavaScript syntax, configuration loading through Next.js for development and production build phases, memory mirror and diff whitespace. No application logic changes; the existing generated tsconfig.json include is excluded from this commit.
