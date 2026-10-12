@@ -127,7 +127,7 @@ describe.sequential('itinerary leg deletion', () => {
 
     const response = await deleteRouteModule.DELETE(
       new Request('http://localhost/api/itinerary/legs/' + legId, { method: 'DELETE' }),
-      { params: { id: String(legId) } }
+      { params: Promise.resolve({ id: String(legId) }) }
     );
 
     expect(response.status).toBe(200);

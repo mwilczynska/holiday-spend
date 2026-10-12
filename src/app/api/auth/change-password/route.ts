@@ -1,7 +1,7 @@
 import { eq, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
-import { userPasswords, users } from '@/db/schema';
+import { authTokens, userPasswords, users } from '@/db/schema';
 import { requireCurrentUser } from '@/lib/auth';
 import {
   authError,
@@ -56,19 +56,20 @@ export async function POST(request: Request) {
     }
 
     const newHash = await hashPassword(data.newPassword);
-    await db
-      .update(userPasswords)
+    db.transaction(tx => {
+    tx.update(userPasswords)
       .set({
         hash: newHash,
         updatedAt: sql`(datetime('now'))`,
         lastChangedAt: sql`(datetime('now'))`,
       })
-      .where(eq(userPasswords.userId, user.id));
+      .where(eq(userPasswords.userId, user.id)).run();
 
-    await db
-      .update(users)
+    tx.update(users)
       .set({ tokenVersion: sql`${users.tokenVersion} + 1` })
-      .where(eq(users.id, user.id));
+      .where(eq(users.id, user.id)).run();
+    tx.update(authTokens).set({ consumedAt: sql`(datetime('now'))` }).where(eq(authTokens.userId, user.id)).run();
+    });
 
     return authSuccess({ ok: true });
   } catch (err) {

@@ -1,10 +1,6 @@
-import { and, eq, isNull } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import { db } from '@/db';
 import {
-  expenses,
-  fixedCosts,
-  itineraryLegs,
-  tags,
   userPreferences,
   users,
 } from '@/db/schema';
@@ -32,7 +28,7 @@ export async function ensureUserRow(input: EnsureUserRowInput) {
     .onConflictDoNothing({ target: users.id });
 }
 
-export async function claimLegacyDataForUser(userId: string) {
+export async function initializeUserPreferences(userId: string) {
   const userPrefs = await db.select().from(userPreferences).where(eq(userPreferences.userId, userId)).get();
   if (!userPrefs) {
     await db
@@ -44,18 +40,6 @@ export async function claimLegacyDataForUser(userId: string) {
       .onConflictDoNothing();
   }
 
-  const existingOwnedLeg = await db
-    .select({ id: itineraryLegs.id })
-    .from(itineraryLegs)
-    .where(eq(itineraryLegs.userId, userId))
-    .get();
-
-  if (!existingOwnedLeg) {
-    await db.update(itineraryLegs).set({ userId }).where(isNull(itineraryLegs.userId));
-    await db.update(expenses).set({ userId }).where(isNull(expenses.userId));
-    await db.update(fixedCosts).set({ userId }).where(isNull(fixedCosts.userId));
-    await db.update(tags).set({ userId }).where(isNull(tags.userId));
-  }
-
-  await db.update(expenses).set({ userId }).where(and(isNull(expenses.userId), isNull(expenses.legId)));
+  // Unowned records require an explicit administrative migration. Signing in must
+  // never give a new account another traveller's legacy records.
 }

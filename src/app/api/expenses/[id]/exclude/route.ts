@@ -6,11 +6,11 @@ import { requireCurrentUserId } from '@/lib/auth';
 
 export async function PATCH(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const id = parseInt(params.id);
+    const id = parseInt((await params).id);
     const existing = await db.select().from(expenses).where(and(eq(expenses.id, id), eq(expenses.userId, userId))).get();
     if (!existing) return error('Expense not found', 404);
 

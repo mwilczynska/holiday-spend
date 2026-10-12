@@ -1,3 +1,4 @@
+import { requireLibraryAdmin } from '@/lib/library-auth';
 import { db } from '@/db';
 import { cities } from '@/db/schema';
 import { CityGenerationError } from '@/lib/city-generation';
@@ -23,14 +24,15 @@ const requestSchema = z.object({
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await requireLibraryAdmin();
     const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = requestSchema.parse(body);
 
-    const city = await db.select().from(cities).where(eq(cities.id, params.id)).get();
+    const city = await db.select().from(cities).where(eq(cities.id, (await params).id)).get();
     if (!city) return error('City not found', 404);
     const generated = await generateAndPersistCityEstimate({
       cityId: city.id,

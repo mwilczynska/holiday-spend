@@ -9,10 +9,10 @@ import { z } from 'zod';
 const selectionSchema = z.object({ tagIds: z.array(z.number().int().positive()).max(500) });
 const expenseIdSchema = z.coerce.number().int().positive();
 
-export async function GET(_request: Request, { params }: { params: { id: string } }) {
+export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const userId = await requireCurrentUserId();
-    const expenseId = expenseIdSchema.parse(params.id);
+    const expenseId = expenseIdSchema.parse((await params).id);
     const expense = db.select({ id: expenses.id }).from(expenses)
       .where(and(eq(expenses.id, expenseId), eq(expenses.userId, userId), ne(expenses.isDeleted, 1))).get();
     if (!expense) return error('Expense not found', 404);
@@ -26,10 +26,10 @@ export async function GET(_request: Request, { params }: { params: { id: string 
   }
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const userId = await requireCurrentUserId();
-    const expenseId = expenseIdSchema.parse(params.id);
+    const expenseId = expenseIdSchema.parse((await params).id);
     const { tagIds } = selectionSchema.parse(await request.json());
     const selectedIds = Array.from(new Set(tagIds));
     const expense = db.select({ id: expenses.id }).from(expenses)
@@ -51,13 +51,13 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
     const { tagIds } = z.object({ tagIds: z.array(z.number()) }).parse(body);
-    const expenseId = parseInt(params.id);
+    const expenseId = parseInt((await params).id);
 
     const expense = await db
       .select({ id: expenses.id })

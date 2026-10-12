@@ -8,6 +8,8 @@ import { invalidateUserTokens, issueToken } from '@/lib/auth-tokens';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { sendVerificationEmail } from '@/lib/mailer';
+import { getRequestIp } from '@/lib/request-ip';
+import { isEmailAllowed, isEmailPasswordEnabled } from '@/lib/auth-policy';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +22,11 @@ export async function POST(request: Request) {
     const body = await request.json();
     const data = resendSchema.parse(body);
     const normalizedEmail = normalizeEmail(data.email);
+    if (!isEmailPasswordEnabled() || !isEmailAllowed(normalizedEmail)) return authSuccess({ ok: true });
+    const ipLimit = await checkRateLimit(`resend-verification:ip:${getRequestIp(request) ?? 'unknown'}`, {
+      max: 10, windowSeconds: 60 * 60,
+    });
+    if (!ipLimit.allowed) throw new RateLimitError(ipLimit.retryAfterSeconds);
 
     const emailLimit = await checkRateLimit(`resend-verification:email:${normalizedEmail}`, {
       max: 3,
@@ -30,7 +37,7 @@ export async function POST(request: Request) {
       throw new RateLimitError(emailLimit.retryAfterSeconds);
     }
 
-    if (!isValidEmailShape(data.email)) {
+    if (!isValidEmailShape(normalizedEmail)) {
       return authSuccess({ ok: true });
     }
     const email = normalizedEmail;

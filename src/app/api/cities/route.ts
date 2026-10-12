@@ -1,3 +1,5 @@
+import { requireCurrentUserId } from '@/lib/auth';
+import { requireLibraryAdmin } from '@/lib/library-auth';
 import { loadPlannerCities } from '@/lib/city-library-data';
 import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
@@ -46,6 +48,7 @@ const createSchema = z.object({
 
 export async function GET(request: Request) {
   try {
+    await requireCurrentUserId();
     const view = new URL(request.url).searchParams.get('view');
 
     if (view === 'planner') {
@@ -62,6 +65,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    await requireLibraryAdmin();
     const body = await request.json();
     const data = createSchema.parse(body);
     const name = data.name.trim();

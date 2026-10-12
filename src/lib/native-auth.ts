@@ -25,11 +25,10 @@ export async function verifyEmailPasswordCredentials(
   if (typeof rawEmail !== 'string' || typeof rawPassword !== 'string') {
     return { kind: 'invalid' };
   }
-  if (!rawPassword || !isValidEmailShape(rawEmail)) {
+  const email = normalizeEmail(rawEmail);
+  if (!rawPassword || !isValidEmailShape(email)) {
     return { kind: 'invalid' };
   }
-
-  const email = normalizeEmail(rawEmail);
 
   const user = await db
     .select({

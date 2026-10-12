@@ -58,12 +58,12 @@ function buildRouteFacts(params: {
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
     const body = requestSchema.parse(await request.json());
-    const legId = Number.parseInt(params.id, 10);
+    const legId = Number.parseInt((await params).id, 10);
     if (!Number.isInteger(legId)) return error('Invalid leg id.', 400);
 
     const rawLegs = await db

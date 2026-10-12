@@ -12,14 +12,16 @@ const nextConfig = {
   // Next adds the directory to tsconfig.json includes when it starts; revert that line before committing.
   distDir: process.env.NEXT_DIST_DIR || (isDevServer ? '.next-dev' : '.next'),
   output: 'standalone',
-  experimental: {
-    outputFileTracingIncludes: {
+  poweredByHeader: false,
+  serverExternalPackages: ['better-sqlite3', 'argon2'],
+  outputFileTracingIncludes: {
       '/*': [
         './node_modules/argon2/prebuilds/**/*',
         './docs/prompts/llm_prompt_new_cities_1.md',
         './docs/prompts/llm_prompt_new_cities_v1_1.md',
+        './docs/prompts/llm_prompt_intercity_transport_1.md',
+        './docs/prompts/llm_prompt_intercity_transport_v1_1.md',
       ],
-    },
   },
 };
 

@@ -1,3 +1,4 @@
+import { requireLibraryAdmin } from '@/lib/library-auth';
 import { db } from '@/db';
 import { getCityImageRow, removeCityImageFiles } from '@/lib/city-image-service';
 import { cities, cityEstimates, cityPriceInputs, itineraryLegs } from '@/db/schema';
@@ -53,12 +54,13 @@ const updateCitySchema = z
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await requireLibraryAdmin();
     const body = await request.json();
     const data = updateCitySchema.parse(body);
-    const { id } = params;
+    const { id } = await params;
 
     const existing = await db.select().from(cities).where(eq(cities.id, id)).get();
     if (!existing) return error('City not found', 404);
@@ -78,10 +80,11 @@ export async function PUT(
 
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    await requireLibraryAdmin();
+    const { id } = await params;
 
     const existing = await db.select().from(cities).where(eq(cities.id, id)).get();
     if (!existing) return error('City not found', 404);

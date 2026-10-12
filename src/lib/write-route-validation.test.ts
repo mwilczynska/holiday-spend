@@ -1,3 +1,4 @@
+vi.mock('@/lib/library-auth', async (original) => ({ ...await original<typeof import('@/lib/library-auth')>(), requireLibraryAdmin: vi.fn(async () => 'test-owner') }));
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -17,14 +18,14 @@ let tagRoute: TagRouteModule;
 let tempDir: string;
 const originalCwd = process.cwd();
 
-function put(handler: (r: Request, c: { params: { id: string } }) => Promise<Response>, id: string, body: unknown) {
+function put(handler: (r: Request, c: { params: Promise<{ id: string }> }) => Promise<Response>, id: string, body: unknown) {
   return handler(
     new Request(`http://localhost/api/x/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     }),
-    { params: { id } }
+    { params: Promise.resolve({ id }) }
   );
 }
 

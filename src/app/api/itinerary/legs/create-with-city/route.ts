@@ -1,3 +1,4 @@
+import { requireLibraryAdmin } from '@/lib/library-auth';
 import { asc, eq, sql } from 'drizzle-orm';
 import { db } from '@/db';
 import { itineraryLegs } from '@/db/schema';
@@ -25,6 +26,7 @@ const createSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    await requireLibraryAdmin();
     const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = createSchema.parse(body);

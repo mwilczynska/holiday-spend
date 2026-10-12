@@ -11,10 +11,10 @@ const CONTENT_TYPES: Record<string, string> = { jpg: 'image/jpeg', png: 'image/p
  * Serves a stored city photo. It lives outside /api so that image loads are not counted as data
  * reads; the versioned URL (?v=fetchedAt) lets the browser cache it indefinitely.
  */
-export async function GET(request: Request, { params }: { params: { cityId: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ cityId: string }> }) {
   try {
     await requireCurrentUserId();
-    const cityId = decodeURIComponent(params.cityId);
+    const cityId = decodeURIComponent((await params).cityId);
     // Only serve a photo the pages would currently show (current name, country and version).
     if (!getCityImageViews([cityId])[cityId]) return new Response('Not found', { status: 404 });
     const row = getCityImageRow(cityId);

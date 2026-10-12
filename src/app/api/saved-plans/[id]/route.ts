@@ -17,11 +17,11 @@ async function findOwnedPlan(planId: string, userId: string) {
 
 export async function GET(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const plan = await findOwnedPlan(params.id, userId);
+    const plan = await findOwnedPlan((await params).id, userId);
     if (!plan) {
       return error('Saved plan not found.', 404);
     }
@@ -47,11 +47,11 @@ export async function GET(
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const plan = await findOwnedPlan(params.id, userId);
+    const plan = await findOwnedPlan((await params).id, userId);
     if (!plan) {
       return error('Saved plan not found.', 404);
     }
@@ -65,7 +65,7 @@ export async function PATCH(
     const updated = await db
       .update(savedPlans)
       .set({ name: name.trim(), updatedAt: new Date().toISOString().replace('T', ' ').slice(0, 19) })
-      .where(eq(savedPlans.id, params.id))
+      .where(eq(savedPlans.id, (await params).id))
       .returning({ id: savedPlans.id, name: savedPlans.name, updatedAt: savedPlans.updatedAt });
 
     return success(updated[0]);
@@ -76,16 +76,16 @@ export async function PATCH(
 
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const plan = await findOwnedPlan(params.id, userId);
+    const plan = await findOwnedPlan((await params).id, userId);
     if (!plan) {
       return error('Saved plan not found.', 404);
     }
 
-    await db.delete(savedPlans).where(eq(savedPlans.id, params.id));
+    await db.delete(savedPlans).where(eq(savedPlans.id, (await params).id));
 
     return success({ deleted: true });
   } catch (err) {

@@ -64,7 +64,7 @@ type ParsedCity = {
   notes: string;
 };
 
-const dbPath = path.join(process.cwd(), 'data', 'travel.db');
+const dbPath = path.resolve(process.env.HOLIDAY_SPEND_DB_PATH || path.join(process.cwd(), 'data', 'travel.db'));
 const dataDir = path.dirname(dbPath);
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
@@ -73,6 +73,12 @@ if (!fs.existsSync(dataDir)) {
 const sqlite = new Database(dbPath);
 sqlite.pragma('journal_mode = WAL');
 sqlite.pragma('foreign_keys = ON');
+
+const hasExistingCities = sqlite.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='cities'").get();
+if (hasExistingCities && (sqlite.prepare('SELECT count(*) AS n FROM cities').get() as { n: number }).n > 0) {
+  sqlite.close();
+  throw new Error('Refusing to seed an existing city library. Restore a snapshot or use the city editor; seeding would overwrite current costs.');
+}
 
 sqlite.exec(`
 CREATE TABLE IF NOT EXISTS countries (

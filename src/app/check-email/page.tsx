@@ -5,10 +5,11 @@ export const dynamic = 'force-dynamic';
 export const metadata = authPageMetadata;
 
 type PageProps = {
-  searchParams?: { email?: string };
+  searchParams?: Promise<{ email?: string }>;
 };
 
-export default function CheckEmailPage({ searchParams }: PageProps) {
-  const email = typeof searchParams?.email === 'string' ? searchParams.email : null;
+export default async function CheckEmailPage({ searchParams }: PageProps) {
+  const query = await searchParams;
+  const email = typeof query?.email === 'string' ? query.email : null;
   return <CheckEmailScreen email={email} />;
 }

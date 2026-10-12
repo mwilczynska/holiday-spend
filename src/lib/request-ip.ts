@@ -30,23 +30,10 @@ export function getRequestIp(request: RequestLike): string | null {
     return null;
   }
 
-  const forwardedFor = readHeader(request.headers, 'x-forwarded-for');
-  if (forwardedFor) {
-    const firstIp = forwardedFor
-      .split(',')
-      .map((value) => value.trim())
-      .find(Boolean);
-
-    if (firstIp) {
-      return firstIp;
-    }
+  // The public proxy must overwrite X-Real-IP. Client-supplied forwarded lists
+  // are not evidence of an address, even when a proxy appends its own address.
+  if (process.env.HOLIDAY_SPEND_TRUST_PROXY !== 'true') {
+    return ('ip' in request ? request.ip : null)?.trim() || null;
   }
-
-  const realIp = readHeader(request.headers, 'x-real-ip');
-  if (realIp?.trim()) {
-    return realIp.trim();
-  }
-
-  const fallbackIp = 'ip' in request ? request.ip : null;
-  return fallbackIp?.trim() || null;
+  return readHeader(request.headers, 'x-real-ip')?.trim() || null;
 }

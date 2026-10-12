@@ -22,7 +22,7 @@ function put(id: string, body: Record<string, unknown>) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     }),
-    { params: { id } }
+    { params: Promise.resolve({ id }) }
   );
 }
 

@@ -1,3 +1,4 @@
+import { requireLibraryAdmin } from '@/lib/library-auth';
 import { z } from 'zod';
 import { requireCurrentUserId } from '@/lib/auth';
 import { getLlmRuntimeSettings } from '@/lib/llm-runtime-settings';
@@ -23,6 +24,7 @@ const createSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    await requireLibraryAdmin();
     const userId = await requireCurrentUserId();
     const data = createSchema.parse(await request.json());
     const city = await resolveOrCreatePlannerCity({ ...data, runtimeSettings: await getLlmRuntimeSettings(userId) });

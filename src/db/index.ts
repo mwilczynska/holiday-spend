@@ -23,6 +23,10 @@ const dbPath = process.env.HOLIDAY_SPEND_DB_PATH
   ? path.resolve(process.env.HOLIDAY_SPEND_DB_PATH)
   : path.join(process.cwd(), 'data', 'travel.db');
 
+if (process.env.HOLIDAY_SPEND_REQUIRE_DATABASE === 'true' && !fs.existsSync(dbPath)) {
+  throw new Error('Persistent database is missing; restore a verified snapshot before starting.');
+}
+
 // Ensure data directory exists
 const dataDir = path.dirname(dbPath);
 if (!fs.existsSync(dataDir)) {

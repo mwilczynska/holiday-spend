@@ -3,6 +3,7 @@ import { cities, countries, expenses, fixedCosts, itineraryLegs, itineraryLegTra
 import { NextResponse } from 'next/server';
 import { error, handleError, success } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
+import { requireLibraryAdmin } from '@/lib/library-auth';
 import { CityGenerationError } from '@/lib/city-generation';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { getPlannerGroupSize, setPlannerGroupSize } from '@/lib/planner-settings';
@@ -75,6 +76,9 @@ export async function POST(request: Request) {
     );
 
     const missingCities = collectMissingSnapshotCities(snapshot, knownCityIds);
+    if (missingCities.length > 0 || importRequest.missingCityResolutions.some(row => !knownCityIds.has(row.cityId))) {
+      await requireLibraryAdmin();
+    }
     if (missingCities.length > 0) {
       const unresolvedCities = missingCities.filter((missingCity) => {
         const resolution = resolutionByCityId.get(missingCity.cityId);

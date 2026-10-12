@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { DesktopSidebar } from "@/components/layout/DesktopSidebar";
 import { MobileNav } from "@/components/layout/MobileNav";
 
-// Downloaded at build time and self-hosted by Next, so pages make no request to Google.
-const jakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
+// Bundled with npm dependencies: builds and pages need no Google Fonts request.
+const jakartaSans = localFont({
+  src: '../../node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2',
   variable: "--font-sans",
   display: "swap",
 });

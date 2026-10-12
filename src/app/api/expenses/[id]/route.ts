@@ -27,13 +27,13 @@ const updateSchema = z
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = updateSchema.parse(body);
-    const id = parseInt(params.id);
+    const id = parseInt((await params).id);
 
     const existing = await db.select().from(expenses).where(and(eq(expenses.id, id), eq(expenses.userId, userId), ne(expenses.isDeleted, 1))).get();
     if (!existing) return error('Expense not found', 404);
@@ -90,11 +90,11 @@ export async function PUT(
 
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const id = parseInt(params.id);
+    const id = parseInt((await params).id);
     const existing = await db.select().from(expenses).where(and(eq(expenses.id, id), eq(expenses.userId, userId), ne(expenses.isDeleted, 1))).get();
     if (!existing) return error('Expense not found', 404);
 

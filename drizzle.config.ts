@@ -5,6 +5,6 @@ export default {
   out: './drizzle',
   dialect: 'sqlite',
   dbCredentials: {
-    url: './data/travel.db',
+    url: process.env.HOLIDAY_SPEND_DB_PATH || './data/travel.db',
   },
 } satisfies Config;

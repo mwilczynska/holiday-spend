@@ -10,17 +10,16 @@ import {
   verifyEmailPasswordCredentials,
 } from '@/lib/native-auth';
 import { normalizeEmail } from '@/lib/email';
-import { isMailConfigured } from '@/lib/mailer';
+import { isEmailAllowed, isEmailPasswordEnabled } from '@/lib/auth-policy';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { getRequestIp } from '@/lib/request-ip';
-import { ensureUserRow, claimLegacyDataForUser } from '@/lib/user-data';
+import { ensureUserRow, initializeUserPreferences } from '@/lib/user-data';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const devPin = !isProduction
   ? process.env.AUTH_DEV_PIN || process.env.APP_SECRET || undefined
   : undefined;
-const emailPasswordEnabled =
-  process.env.ENABLE_EMAIL_PASSWORD === 'true' || isMailConfigured();
+const emailPasswordEnabled = isEmailPasswordEnabled();
 
 async function getUserTokenVersion(userId: string) {
   const user = await db
@@ -121,6 +120,8 @@ if (emailPasswordEnabled || devPin) {
           return null;
         }
 
+        if (!isEmailAllowed(credentials?.email)) return null;
+
         const normalizedEmail =
           typeof credentials?.email === 'string' ? credentials.email.trim().toLowerCase() : '';
         const clientIp = getRequestIp(req) ?? 'unknown';
@@ -179,12 +180,16 @@ export const authOptions: NextAuthOptions = {
   },
   providers,
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account, profile }) {
       if (!account) {
         return false;
       }
 
       if (account.provider === 'google') {
+        if (!isEmailAllowed(user.email)
+          || (profile as { email_verified?: boolean } | undefined)?.email_verified !== true) {
+          return false;
+        }
         const existingUser = await getUserByNormalizedEmail(user.email);
         if (!existingUser) {
           return true;
@@ -215,7 +220,7 @@ export const authOptions: NextAuthOptions = {
           name: user.name,
           image: user.image,
         });
-        await claimLegacyDataForUser(userId);
+        await initializeUserPreferences(userId);
         token.sub = userId;
         token.tokenVersion = (await getUserTokenVersion(userId)) ?? 0;
         return token;
@@ -224,6 +229,8 @@ export const authOptions: NextAuthOptions = {
       if (!token.sub) {
         return token;
       }
+
+      if (!isEmailAllowed(token.email)) return {};
 
       const currentTokenVersion = await getUserTokenVersion(String(token.sub));
       if (currentTokenVersion == null) {
@@ -263,6 +270,8 @@ export async function requireCurrentUser() {
   if (!session?.user?.id) {
     throw new AuthRequiredError();
   }
+
+  if (!isEmailAllowed(session.user.email)) throw new AuthRequiredError();
 
   return session.user;
 }

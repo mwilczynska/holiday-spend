@@ -76,14 +76,17 @@ export function LoginScreen({
     if (!unverifiedEmail) return;
     setResendState('loading');
     try {
-      await fetch('/api/auth/resend-verification', {
+      const response = await fetch('/api/auth/resend-verification', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: unverifiedEmail }),
       });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || payload?.data?.ok !== true) throw new Error('Could not resend the verification email. Please try again.');
       setResendState('sent');
     } catch {
       setResendState('idle');
+      setEmailError('Could not resend the verification email. Please try again.');
     }
   }
 

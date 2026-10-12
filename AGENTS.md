@@ -48,8 +48,8 @@ to the repository or database.
 
 ## Tech stack and layout
 
-Next.js 14 App Router · TypeScript · Tailwind · Radix/shadcn UI · Drizzle ORM + better-sqlite3 · Zod · Recharts ·
-NextAuth · Vitest + Playwright.
+Next.js 16 App Router · React 19 · Node.js 24 · TypeScript · Tailwind · Radix/shadcn UI · Drizzle ORM + better-sqlite3 ·
+Zod · Recharts · NextAuth · Vitest + Playwright.
 
 | Path | Contents |
 | --- | --- |
@@ -66,8 +66,10 @@ Archived documents open with a `SUPERSEDED`, `ABANDONED`, or `COMPLETE` banner. 
 
 ## City-cost system
 
-The live dataset is `data/reference/city_costs_app_aud.csv`: 121 cities, 58 countries, AUD for two people,
-tagged `base_csv_apr_2026`. `src/db/seed.ts` imports it. Existing cities remain on v1 and are not bulk-migrated.
+The canonical seed dataset is `data/reference/city_costs_app_aud.csv`: 121 cities, 58 countries, AUD for two people,
+tagged `base_csv_apr_2026`. `src/db/seed.ts` imports it only into an empty library. The local SQLite library contains
+527 cities, including later additions. Deployment uses a verified full SQLite/photo snapshot to preserve all cities,
+costs, provenance, climate and photos; reseeding is not migration. Existing cities are not bulk-migrated.
 
 ### v1 rollback path
 
@@ -350,11 +352,33 @@ Playwright using the same email/password variables. It records compressed and de
 request timing. Use an isolated database copy and a test account for repeatable comparisons. The HTTP check keeps a
 512 KiB base HTML limit and adds 24 KiB per fully rendered planner card; all cards are present in the response.
 
-`npm start` sets `NODE_ENV=production`, which disables the development PIN in `src/lib/auth.ts`. All existing
-itinerary, expense and saved-plan rows belong to `dev-local-user`, which has no password row and an unverified email,
-so email/password sign-in is refused for it until both are set. Run `npm run auth:set-local-password` in a real
-terminal to fix that; it prompts for the password rather than accepting it as an argument, so the value never reaches
-shell history or logs, and it applies the same strength rules as signup — at least ten characters, and not all digits.
+`npm start` sets `NODE_ENV=production`, which disables the development PIN in `src/lib/auth.ts`. Email/password
+sign-in requires a password row, verified email and an allowed address. Run `npm run auth:set-local-password` in a
+real terminal for local credentials; it prompts for the password rather than accepting it as an argument, so the value
+never reaches shell history or logs, and it applies the same strength rules as signup — at least ten characters, and
+not all digits. Private container settings stay outside Next.js's automatic environment-file search path during local
+development and builds.
+
+## Production accounts and persistence
+
+Production registration and sign-in fail closed against `AUTH_ALLOWED_EMAILS`. `AUTH_ADMIN_EMAILS` identifies
+allowed accounts that may mutate the shared city/country library. Other allowed accounts can read it and maintain
+their own trips, expenses and plans. Signing in initializes preferences and never claims unowned records. Server
+session checks enforce current database token versions; reset/change-password revoke prior sessions. Verification and
+reset tokens are opaque, hashed, expiring and single-use; consumption and the protected write are atomic. A failed
+verification-email delivery can be retried without replacing an existing account's password.
+
+Production runs one Node 24 container, with SQLite and licensed photos in the writable `runtime-data/` bind mount.
+Startup checks configuration, database existence/integrity/nonempty library and all runtime prompts. `/api/health`
+reports readiness without exposing identities or data. Only the trusted private proxy may supply `X-Real-IP`; arbitrary
+forwarded address lists are ignored. Fonts are bundled locally.
+
+`scripts/data-snapshot.ts` creates verified full or catalogue-only database/photo packages. Full owner provisioning
+changes credentials only in the deployment copy and retains ownership IDs and personal records. The original local
+database remains intact. `scripts/backup.mjs` creates and verifies consistent backups and restores only into a new
+directory. Private packages and deployment settings are gitignored and excluded from Docker build contexts. See
+`docs/ops/production-launch.md` for the launch, email, proxy and backup contract. Linux container verification is
+defined in `.github/workflows/production-checks.yml`; local Windows checks do not establish Linux or public-host success.
 
 ## Methodology testing is closed
 

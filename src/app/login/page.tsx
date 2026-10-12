@@ -7,20 +7,21 @@ export const dynamic = 'force-dynamic';
 export const metadata = authPageMetadata;
 
 type PageProps = {
-  searchParams?: { reset?: string; linkRequired?: string };
+  searchParams?: Promise<{ reset?: string; linkRequired?: string }>;
 };
 
 export default async function LoginPage({ searchParams }: PageProps) {
+  const query = await searchParams;
   const session = await getAuthSession();
   if (session?.user?.id) {
     redirect('/');
   }
 
   const configuredProviders = getConfiguredAuthProviders();
-  const passwordResetSuccess = searchParams?.reset === 'success';
+  const passwordResetSuccess = query?.reset === 'success';
   const linkRequired =
-    searchParams?.linkRequired === 'google' || searchParams?.linkRequired === 'password'
-      ? searchParams.linkRequired
+    query?.linkRequired === 'google' || query?.linkRequired === 'password'
+      ? query.linkRequired
       : null;
 
   return (

@@ -42,7 +42,7 @@ afterAll(() => {
   if (tempDir) fs.rmSync(tempDir, { recursive: true, force: true });
 });
 
-const context = (id = '1') => ({ params: { id } });
+const context = (id = '1') => ({ params: Promise.resolve({ id }) });
 const read = (id = '1') => route.GET(new Request('http://localhost/api/expenses/tags'), context(id));
 const write = (tagIds: unknown[], id = '1') => route.PUT(new Request('http://localhost/api/expenses/tags', {
   method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tagIds }),

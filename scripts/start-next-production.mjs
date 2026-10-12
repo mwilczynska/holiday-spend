@@ -74,6 +74,11 @@ if (existsSync(bundledDataPath)) {
   console.log('[start] Removed the database copy traced into the standalone bundle.');
 }
 
+// Runtime settings come from the launcher environment, never a traced private file.
+for (const name of ['.env', '.env.local', '.env.production', '.env.production.local']) {
+  rmSync(resolve(standaloneRoot, name), { force: true });
+}
+
 if (!existsSync(resolve(projectRoot, 'data', 'travel.db'))) {
   console.warn('[start] No database at data/travel.db; the app will create an empty one.');
 }

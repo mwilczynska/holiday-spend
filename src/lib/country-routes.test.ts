@@ -1,3 +1,5 @@
+vi.mock('@/lib/library-auth', async (original) => ({ ...await original<typeof import('@/lib/library-auth')>(), requireLibraryAdmin: vi.fn(async () => 'test-owner') }));
+vi.mock('@/lib/auth', () => ({ requireCurrentUserId: vi.fn(async () => 'test-owner') }));
 import fs from 'fs';
 import os from 'os';
 import path from 'path';

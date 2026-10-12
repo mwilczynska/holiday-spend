@@ -1,3 +1,4 @@
+import { requireLibraryAdmin } from '@/lib/library-auth';
 import { success, handleError } from '@/lib/api-helpers';
 import { resolveMissingCities } from '@/lib/resolve-missing-cities';
 import {
@@ -16,6 +17,7 @@ const createSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    await requireLibraryAdmin();
     const body = await request.json();
     const data = createSchema.parse(body);
 

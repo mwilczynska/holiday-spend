@@ -7,13 +7,16 @@ services:
     ports:
       - "127.0.0.1:3000:3000"
     volumes:
-      - ./data:/app/data
+      - ./runtime-data:/app/data
     env_file:
-      - .env.local
+      - ${HOLIDAY_SPEND_ENV_FILE:-.env.production.local}
     environment:
-      - DATABASE_URL=file:./data/travel.db
+      - HOLIDAY_SPEND_DB_PATH=/app/data/travel.db
+      - HOLIDAY_SPEND_REQUIRE_DATABASE=true
+    init: true
+    stop_grace_period: 30s
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/login >/dev/null 2>&1 || exit 1"]
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 30s
       timeout: 5s
       retries: 5
@@ -25,8 +28,20 @@ services:
       target: seed
     profiles: ["tools"]
     volumes:
-      - ./data:/app/data
+      - ./runtime-data:/app/data
     env_file:
-      - .env.local
+      - ${HOLIDAY_SPEND_ENV_FILE:-.env.production.local}
     environment:
-      - DATABASE_URL=file:./data/travel.db
+      - HOLIDAY_SPEND_DB_PATH=/app/data/travel.db
+
+  backup:
+    build:
+      context: .
+      target: runner
+    profiles: ["tools"]
+    entrypoint: ["node", "scripts/backup.mjs"]
+    volumes:
+      - ./runtime-data:/app/data:ro
+      - ./backups:/backups
+    environment:
+      - HOLIDAY_SPEND_DB_PATH=/app/data/travel.db

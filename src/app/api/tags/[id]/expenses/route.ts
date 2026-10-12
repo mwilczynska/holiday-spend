@@ -7,11 +7,11 @@ import { requireCurrentUserId } from '@/lib/auth';
 
 export async function GET(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const tagId = parseInt(params.id);
+    const tagId = parseInt((await params).id);
 
     const tag = await db.select().from(tags).where(and(eq(tags.id, tagId), eq(tags.userId, userId))).get();
     if (!tag) return error('Tag not found', 404);

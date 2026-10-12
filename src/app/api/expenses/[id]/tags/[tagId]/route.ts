@@ -7,12 +7,12 @@ import { requireCurrentUserId } from '@/lib/auth';
 
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string; tagId: string } }
+  { params }: { params: Promise<{ id: string; tagId: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const expenseId = parseInt(params.id);
-    const tagId = parseInt(params.tagId);
+    const expenseId = parseInt((await params).id);
+    const tagId = parseInt((await params).tagId);
 
     const expense = await db
       .select({ id: expenses.id })

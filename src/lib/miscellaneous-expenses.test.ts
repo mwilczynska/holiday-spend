@@ -60,7 +60,7 @@ describe.sequential('manual miscellaneous planner expenses', () => {
   const request = (body: unknown) => new Request('http://localhost/api/itinerary/legs', {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
   });
-  const patch = (body: unknown) => edit.PUT(request(body), { params: { id: String(legId) } });
+  const patch = (body: unknown) => edit.PUT(request(body), { params: Promise.resolve({ id: String(legId) }) });
 
   it('defaults old snapshots to no expenses and rejects invalid amounts', () => {
     expect(planSnapshotSchema.parse({ legs: [{ cityId: 'qa-city', nights: 2 }] }).legs[0].miscellaneousExpenses).toEqual([]);

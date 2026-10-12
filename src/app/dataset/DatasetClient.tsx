@@ -142,7 +142,7 @@ export interface DatasetInitialData {
   readError?: string | null;
 }
 
-export function DatasetClient({ initialData }: { initialData: DatasetInitialData }) {
+export function DatasetClient({ initialData, canManageLibrary = false }: { initialData: DatasetInitialData; canManageLibrary?: boolean }) {
   const didApplyQuerySelection = useRef(false);
   const [countries, setCountries] = useState<Country[]>(initialData.countries);
   const [selectedCity, setSelectedCity] = useState<DatasetCity | null>(null);
@@ -518,7 +518,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
         <div className="flex flex-wrap gap-2">
           <Button
             type="button"
-            disabled={loading || Boolean(readError)}
+            disabled={!canManageLibrary || loading || Boolean(readError)}
             onClick={() => {
               setAddDialogOpen(true);
               setSaveError(null);
@@ -745,7 +745,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                   <CardTitle className="text-base">Base Cost Values</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <CityGenerationPanel
+                  {canManageLibrary ? <CityGenerationPanel
                     cityId={selectedCity.id}
                     cityName={selectedCity.name}
                     countryName={selectedCity.countryName}
@@ -756,17 +756,19 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                       setProvenanceReload(value => value + 1);
                       setSaveMessage('City updated from generated values.');
                     }}
-                  />
+                  /> : <p className="text-sm text-muted-foreground">The shared city library is read-only for your account. Contact the administrator to change costs or add cities.</p>}
                   <p className="text-sm text-muted-foreground">
                     These are the canonical planner costs stored on the city row. You can generate fresh
                     methodology-driven values above, then fine-tune any fields manually here if needed.
                   </p>
+                  <fieldset disabled={!canManageLibrary}>
                   <CostEditor
                     values={selectedCity as unknown as Record<string, number | null>}
                     onChange={handleCostChange}
                   />
+                  </fieldset>
                   <div className="flex flex-wrap items-center gap-3">
-                    <Button type="button" onClick={handleSaveCity} disabled={isSaving || loading || Boolean(readError)}>
+                    <Button type="button" onClick={handleSaveCity} disabled={!canManageLibrary || isSaving || loading || Boolean(readError)}>
                       {isSaving ? 'Saving...' : 'Save City'}
                     </Button>
                     {isDirty ? <span className="text-sm text-muted-foreground">Unsaved changes</span> : null}
@@ -891,7 +893,7 @@ export function DatasetClient({ initialData }: { initialData: DatasetInitialData
                           variant="destructive"
                           size="sm"
                           onClick={() => handleDeleteCity(city)}
-                          disabled={loading || Boolean(readError)}
+                          disabled={!canManageLibrary || loading || Boolean(readError)}
                         >
                           Delete
                         </Button>

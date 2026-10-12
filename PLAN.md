@@ -2,7 +2,7 @@
 
 **Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Ranked destination collection complete with one deferred entry. All 199 saved additions pass the final audit against the original 328-city backup; final batch 191–200 closes this milestone.
+**Current phase:** Production preparation for `spend.projectinfinitesummer.com`, deployed by the separate Project Infinite Summer repository. Preserve all 527 cities and personal data, upgrade supported runtimes, finish private account access and shared-library permissions, and verify migration/restore and authentication before handoff.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -10,7 +10,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 11 October 2026
+**Last updated:** 12 October 2026
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
@@ -20,7 +20,22 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Latest publication:** Ranked batches 1–19 pushed separately, through ranks 181–190 at `bed6d62`; this milestone records the final batch, 191–200. European closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Await the owner's next task. No ranked collection remains queued. Malé stays unsaved because its response substituted resort alcohol prices for unavailable city prices; the v1.1 contract requires positive anchors and cannot represent that absence.
+**Next action:** Complete the production-preparation checklist below. No ranked collection remains queued. Malé stays unsaved because its response substituted resort alcohol prices for unavailable city prices; the v1.1 contract requires positive anchors and cannot represent that absence.
+
+## Production preparation — IN PROGRESS (12 October 2026)
+
+Owner authorized completing the deployment/authentication readiness work. Project Infinite Summer owns the landing page, public proxy, DNS, TLS and production cutover; this repository owns app changes and a reviewed deployment handoff. The owner supplied their real email privately for provisioning; do not commit it or credentials.
+
+- [x] Upgrade to Next.js 16.4.0, React 19.3.0 and Docker Node 24; migrate asynchronous framework APIs, proxy and lint configuration. Production dependency audit: no known vulnerabilities. Build and TypeScript pass.
+- [x] Package all four runtime prompts, local font, a writable persistent database/photo directory, strict container startup validation and readiness checks; standardize the database path and refuse reseeding a nonempty library.
+- [x] Add consistent database/photo snapshot, full-library export, restore verification and backup tooling. All 527 cities and 1,054 photos verify; every original table hash still matches the pre-work backup.
+- [x] Enforce private registration/sign-in, owner/admin library writes and current server-side session checks. Signing in initializes preferences without claiming unowned records.
+- [x] Prepare a private production copy with the owner's real identity and unchanged ownership/data; revoke copied local credentials/sessions. Independent restore matches the production package. Catalogue-only package contains no personal records.
+- [x] Verify native-auth registration, verification, delivery failure recovery, token expiry/reuse, reset/change-password, revocation and guest/admin permissions. All 77 files / 507 tests pass. Owner entered a domain-restricted Resend key privately; sending domain verified and authorized test delivered (initially Gmail spam, marked Not spam). Approved DMARC TXT is publicly visible. Live HTTPS account-email links remain a deployment check.
+- [x] Update production documentation and integration contract for Project Infinite Summer, including exact private package/settings paths in `docs/dev/handoffs/production-launch.md`. Keep private settings outside Next.js's local automatic environment loading. Add Linux Docker/native-auth/backup smoke workflow; its result must be checked after publication.
+- [ ] Run the required baseline, commit/push each verified milestone, and complete the handoff.
+
+Local evidence: production build, TypeScript, 507 tests, memory mirror, v1.1 guard, dependency audit and full restore/data-hash audit pass. Remaining external work: Linux CI result; transfer/restore on the host; spend DNS/TLS/private proxy; first owner reset/verification/sign-in; daily/off-host backup configuration and public-host checks. Existing blog/volumes stay in place. Docker is not installed locally.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.

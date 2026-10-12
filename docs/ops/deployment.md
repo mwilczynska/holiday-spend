@@ -1,4 +1,6 @@
-# Deployment
+> **SUPERSEDED — 12 October 2026.** Use [Production launch](production-launch.md). The older instructions below describe the prior Node/Next.js stack and CSV-only seed; they must not be used to deploy the full current library.
+
+# Deployment (historical)
 
 This document covers the recommended VPS deployment path for Holiday Spend.
 

@@ -4,27 +4,30 @@ import { db } from '@/db';
 import { userPasswords, users } from '@/db/schema';
 import { authError, authSuccess, handleAuthError, RateLimitError } from '@/lib/auth-responses';
 import { buildAuthLink } from '@/lib/auth-links';
-import { issueToken } from '@/lib/auth-tokens';
+import { issueToken, invalidateUserTokens } from '@/lib/auth-tokens';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { sendVerificationEmail } from '@/lib/mailer';
 import { hashPassword, validatePasswordStrength } from '@/lib/password';
 import { getRequestIp } from '@/lib/request-ip';
+import { isEmailAllowed, isEmailPasswordEnabled } from '@/lib/auth-policy';
 
 export const dynamic = 'force-dynamic';
 
 const signupSchema = z.object({
-  email: z.string().email(),
+  email: z.string().trim().email(),
   password: z.string().min(1),
   name: z.string().trim().max(200).optional(),
 });
 
 export async function POST(request: Request) {
   try {
+    if (!isEmailPasswordEnabled()) return authError('Email/password registration is disabled.', 403);
     const body = await request.json();
     const data = signupSchema.parse(body);
     const clientIp = getRequestIp(request) ?? 'unknown';
     const normalizedEmail = normalizeEmail(data.email);
+    if (!isEmailAllowed(normalizedEmail)) return authError('Registration is not available for this email address.', 403);
 
     const [ipLimit, emailLimit] = await Promise.all([
       checkRateLimit(`signup:ip:${clientIp}`, {
@@ -55,25 +58,31 @@ export async function POST(request: Request) {
     const email = normalizedEmail;
 
     const existing = await db
-      .select({ id: users.id })
+      .select({ id: users.id, emailVerified: users.emailVerified })
       .from(users)
       .where(eq(users.email, email))
       .get();
 
     if (existing) {
+      if (!existing.emailVerified) {
+        await invalidateUserTokens(existing.id, 'verify_email');
+        const issued = await issueToken(existing.id, 'verify_email');
+        await sendVerificationEmail(email, buildAuthLink('/verify-email', issued.rawToken, request));
+      }
       return authSuccess({ ok: true });
     }
 
     const userId = crypto.randomUUID();
-    await db.insert(users).values({
-      id: userId,
-      email,
-      name: data.name?.trim() || null,
-      emailVerified: null,
-    });
-
     const hash = await hashPassword(data.password);
-    await db.insert(userPasswords).values({ userId, hash });
+    db.transaction(tx => {
+      tx.insert(users).values({
+        id: userId,
+        email,
+        name: data.name?.trim() || null,
+        emailVerified: null,
+      }).run();
+      tx.insert(userPasswords).values({ userId, hash }).run();
+    });
 
     const issued = await issueToken(userId, 'verify_email');
     const verifyUrl = buildAuthLink('/verify-email', issued.rawToken, request);

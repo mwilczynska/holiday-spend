@@ -1,0 +1,37 @@
+name: Production checks
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - PLAN.md
+      - LOG.md
+      - AGENTS.md
+      - CLAUDE.md
+      - docs/ops/**
+      - docs/dev/handoffs/**
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm test -- --run
+      - run: npm run docs:check-memory
+      - run: npm run methodology:v1.1:check
+      - run: npm audit --omit=dev
+      - run: docker build --target runner -t holiday-spend:ci .
+      - run: docker build --target seed -t holiday-spend:ci-seed .
+      - run: node scripts/check-container.mjs

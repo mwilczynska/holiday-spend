@@ -20,12 +20,12 @@ const updateTagSchema = z
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
     const body = updateTagSchema.parse(await request.json());
-    const id = parseInt(params.id);
+    const id = parseInt((await params).id);
 
     const existing = await db.select().from(tags).where(and(eq(tags.id, id), eq(tags.userId, userId))).get();
     if (!existing) return error('Tag not found', 404);
@@ -41,11 +41,11 @@ export async function PUT(
 
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await requireCurrentUserId();
-    const id = parseInt(params.id);
+    const id = parseInt((await params).id);
     // Cascade will handle expense_tags
     await db.delete(tags).where(and(eq(tags.id, id), eq(tags.userId, userId)));
     return success({ deleted: true });

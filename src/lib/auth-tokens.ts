@@ -1,6 +1,6 @@
 import { createHash, randomBytes } from 'crypto';
 import { and, eq, isNull, lte } from 'drizzle-orm';
-import { db } from '@/db';
+import { db, sqlite } from '@/db';
 import { authTokens } from '@/db/schema';
 
 export type TokenPurpose = 'verify_email' | 'reset_password';
@@ -58,36 +58,21 @@ export async function consumeToken(
   rawToken: string,
   purpose: TokenPurpose
 ): Promise<{ userId: string } | null> {
+  return consumeTokenSync(rawToken, purpose);
+}
+
+/** Synchronous so consumption and the protected write share one SQLite transaction. */
+export function consumeTokenSync(rawToken: string, purpose: TokenPurpose): { userId: string } | null {
   if (!rawToken) return null;
   const tokenHash = hashRawToken(rawToken);
   const nowStamp = toSqliteTimestamp(new Date());
 
-  const row = await db
-    .select({
-      id: authTokens.id,
-      userId: authTokens.userId,
-      expiresAt: authTokens.expiresAt,
-      consumedAt: authTokens.consumedAt,
-    })
-    .from(authTokens)
-    .where(and(eq(authTokens.tokenHash, tokenHash), eq(authTokens.purpose, purpose)))
-    .get();
-
-  if (!row) return null;
-  if (row.consumedAt) return null;
-  if (row.expiresAt <= nowStamp) return null;
-
-  const result = await db
-    .update(authTokens)
-    .set({ consumedAt: nowStamp })
-    .where(and(eq(authTokens.id, row.id), isNull(authTokens.consumedAt)))
-    .run();
-
-  if (result.changes === 0) {
-    return null;
-  }
-
-  return { userId: row.userId };
+  const row = sqlite.prepare(`
+    UPDATE auth_tokens SET consumed_at = ?
+    WHERE token_hash = ? AND purpose = ? AND consumed_at IS NULL AND expires_at > ?
+    RETURNING user_id AS userId
+  `).get(nowStamp, tokenHash, purpose, nowStamp) as { userId: string } | undefined;
+  return row ?? null;
 }
 
 export async function invalidateUserTokens(userId: string, purpose: TokenPurpose): Promise<void> {

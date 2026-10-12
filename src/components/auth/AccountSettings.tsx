@@ -56,6 +56,7 @@ export function AccountSettings({
       if (!response.ok) {
         throw new Error(typeof payload?.error === 'string' ? payload.error : `Could not save display name (HTTP ${response.status}).`);
       }
+
       if (payload?.data?.ok !== true || payload.data.name !== requestedName) {
         throw new Error('The server did not confirm the requested display name. Your draft is retained; reload to check the saved name or retry.');
       }
@@ -101,6 +102,7 @@ export function AccountSettings({
         return;
       }
 
+      if (payload?.data?.ok !== true) throw new Error('The server did not confirm the password change. Sign in again to check before retrying.');
       await signOut({ callbackUrl: '/login?passwordChanged=1' });
     } catch {
       setPasswordError('Network error. Please try again.');
