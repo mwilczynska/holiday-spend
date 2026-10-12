@@ -12,6 +12,7 @@ const name = 'holiday-spend-smoke-' + randomBytes(5).toString('hex');
 const directory = mkdtempSync(path.join(os.tmpdir(), name));
 const environment = path.join(directory, 'runtime.env');
 const volume = name + '-data';
+const backupVolume = name + '-backups';
 const password = 'Disposable-container-test-123';
 writeFileSync(environment, [
   'NEXTAUTH_SECRET=' + randomBytes(48).toString('hex'),
@@ -43,16 +44,23 @@ async function request(route, options = {}) {
   return response;
 }
 async function ready() {
+  let lastFailure = 'No response';
   for (let attempt = 0; attempt < 60; attempt++) {
-    try { if ((await request('/api/health')).ok) return; } catch {}
+    try {
+      const response = await request('/api/health');
+      if (response.ok) return;
+      lastFailure = 'HTTP ' + response.status;
+    } catch (error) { lastFailure = error.cause?.code || error.message; }
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
-  throw new Error('Container never became ready.');
+  throw new Error('Container never became ready: ' + lastFailure);
 }
 try {
   docker('volume', 'create', volume);
+  docker('volume', 'create', backupVolume);
   docker('run', '--rm', '-v', volume + ':/app/data', '-e', 'HOLIDAY_SPEND_DB_PATH=/app/data/travel.db', seedImage);
   docker('run', '--rm', '--user', '0', '-v', volume + ':/app/data', '--entrypoint', 'chown', image, '-R', '1001:1001', '/app/data');
+  docker('run', '--rm', '--user', '0', '-v', backupVolume + ':/backups', '--entrypoint', 'chown', image, '-R', '1001:1001', '/backups');
   assert.throws(() => docker('run', '--rm', '--env-file', environment, image), /Command failed/, 'An image without a restored database must refuse startup.');
   docker('run', '-d', '--name', name, '--env-file', environment, '-v', volume + ':/app/data', '-p', '127.0.0.1::3000', image);
   const port = docker('port', name, '3000/tcp').split(':').at(-1);
@@ -88,11 +96,18 @@ try {
   assert.equal((await request('/api/countries', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })).status, 403);
   runCode("const db=new(require('better-sqlite3'))('/app/data/travel.db');db.prepare('UPDATE user SET token_version=token_version+1 WHERE id=?').run('guest');db.close();");
   assert.equal((await request('/api/cities')).status, 401);
-  docker('exec', name, 'node', 'scripts/backup.mjs', '--destination', '/app/data/snapshot');
-  docker('exec', name, 'node', 'scripts/backup.mjs', '--restore-from', '/app/data/snapshot', '--destination', '/app/data/restored');
+  // Match Compose's production helper: read-only source, separate writable backup storage.
+  docker('run', '--rm', '-v', volume + ':/app/data:ro', '-v', backupVolume + ':/backups', '--entrypoint', 'node', image,
+    'scripts/backup.mjs', '--destination', '/backups/snapshot');
+  docker('run', '--rm', '-v', backupVolume + ':/backups', '--entrypoint', 'node', image,
+    'scripts/backup.mjs', '--restore-from', '/backups/snapshot', '--destination', '/backups/restored');
   docker('restart', name);
+  // Docker may allocate a different host port when an ephemeral binding restarts.
+  base = 'http://127.0.0.1:' + docker('port', name, '3000/tcp').split(':').at(-1);
   await ready();
   assert.equal((await request('/api/cities')).status, 401);
+  await signIn('owner@example.com');
+  assert.equal((await (await request('/api/cities')).json()).data?.length, 121);
   console.log('Linux container, native modules, prompts/assets, auth, permissions, revocation, backup/restore and restart checks passed.');
 } catch (error) {
   try { console.error(docker('logs', name)); } catch {}
@@ -100,5 +115,6 @@ try {
 } finally {
   try { docker('rm', '-f', name); } catch {}
   try { docker('volume', 'rm', volume); } catch {}
+  try { docker('volume', 'rm', backupVolume); } catch {}
   rmSync(directory, { recursive: true, force: true });
 }

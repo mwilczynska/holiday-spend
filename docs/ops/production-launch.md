@@ -66,19 +66,21 @@ Build on a machine with enough memory, or publish the Linux image from CI and pu
 ```sh
 docker build --target runner -t holiday-spend:release .
 mkdir -p restore-staging
-sudo chown 1001:1001 restore-staging
-docker run --rm --user 1001:1001 \
+docker run --rm --user 0:0 \
   -v "$PWD/incoming:/incoming:ro" -v "$PWD/restore-staging:/restore" \
   --entrypoint node holiday-spend:release scripts/backup.mjs \
   --restore-from /incoming/production --destination /restore/runtime-data
+sudo chown -R 1001:1001 restore-staging/runtime-data
 test ! -e runtime-data
-mv restore-staging/runtime-data runtime-data
+sudo mv restore-staging/runtime-data runtime-data
 chmod 600 .env.production.local
 docker compose up -d --build holiday-spend
 curl --fail http://127.0.0.1:3000/api/health
 ```
 
 Restoring into an existing directory is refused. The Compose bind mount is `./runtime-data:/app/data`; this directory is distinct from the source checkout's `data/reference/`. UID/GID 1001 must own the database, its directory and photos so SQLite can create WAL/SHM files. Verify the expected 527 cities and personal-table counts before making the proxy public.
+
+The one-off restore helper runs as container root so it can read a private incoming package owned by the SSH user. Its input mount is read-only and its output is a new staging directory. Ownership is then assigned to UID/GID 1001; the running app remains non-root.
 
 ## Proxy contract for Project Infinite Summer
 

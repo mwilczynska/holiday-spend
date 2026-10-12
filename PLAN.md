@@ -41,6 +41,10 @@ Publication: implementation committed and pushed at `9a36b83`. First Linux run r
 
 Lockfile repair published at `c4aee6a`. Linux clean install, TypeScript, all 507 tests and memory mirror pass. The existing raw-byte CSV guard failed because Linux checked out LF while its recorded hash is CRLF. Add an explicit CRLF checkout attribute for that one frozen CSV; neither its committed contents nor the integrity guard changes. Rerun Linux checks through the container stages.
 
+CSV checkout repair published at `41d8e10`. Linux baseline and both Docker builds pass. Container sign-in, guest permissions, revocation and backup/restore pass; only the post-restart readiness check timed out while the app logged a successful second start. Refresh the smoke harness's ephemeral Docker port after restart and retain the last readiness error for diagnosis. Correct the host restore recipe to read SSH-owned input with a one-off root helper, then assign output ownership to the non-root app. Publish and rerun the final smoke check.
+
+The final smoke rerun also matches the actual backup helper's read-only source/separate writable volume and reconfirms owner access plus 121 disposable fixture cities after restart. Workflow actions use their verified official Node-24 releases (`checkout` 7.0.1, `setup-node` 7.1.0), replacing deprecated Node-20 actions.
+
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
 
