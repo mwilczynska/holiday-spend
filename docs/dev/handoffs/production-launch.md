@@ -3,6 +3,8 @@
 The Project Infinite Summer repository owns public deployment at `https://spend.projectinfinitesummer.com`.
 The app's complete operational contract is [production-launch.md](../../ops/production-launch.md).
 
+**Verified code checkpoint:** `e3e9045`. [Linux Production checks passed](https://github.com/mwilczynska/holiday-spend/actions/runs/38285498810), including all 507 tests, both Docker images, native modules/assets/prompts, real sign-in, guest permissions, revocation, backup from a read-only database mount into separate storage, restore and restart. Windows production build and full data/restore audits also pass. Subsequent documentation commits do not change this tested code.
+
 ## Local private inputs
 
 These files are available on the owner's machine and must be transferred privately through SSH, outside Git and Docker build contexts:

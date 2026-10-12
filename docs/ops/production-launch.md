@@ -125,9 +125,12 @@ Schedule that command daily with the deployment host's scheduler, and before eve
 
 For an update: take/verify the backup, retain the previous image tag, build/pull the new image, recreate the app with the same bind mount, and check readiness and authenticated data. Do not reseed. For recovery: stop the app, restore a verified package to a new directory, point the bind mount at it, and start the matching image. Never overwrite a database while the app is running, and never remove existing blog volumes.
 
-## Launch checks that require the host
+## Launch evidence and remaining host checks
 
-- Linux Docker build/native modules and container startup pass. `.github/workflows/production-checks.yml` builds the runner and a disposable CSV seed fixture, then `scripts/check-container.mjs` verifies native modules, prompts/static assets, real NextAuth sign-in, guest permissions, revocation, backup/restore and restart. Record the workflow result; adding it alone does not establish that it passed.
+Linux Docker/native modules and container startup are verified at code checkpoint `e3e9045`: [passing workflow](https://github.com/mwilczynska/holiday-spend/actions/runs/38285498810). `.github/workflows/production-checks.yml` builds the runner and a disposable CSV seed fixture, then `scripts/check-container.mjs` verifies native modules, prompts/static assets, real NextAuth sign-in, guest permissions, revocation, backup through a read-only source mount, restore and restart. Windows baseline and the private 527-city restore/data-hash audit also pass.
+
+The deployment host still needs these checks:
+
 - Public HTTPS, redirects, host/proxy headers, readiness and private upstream are verified.
 - Snapshot restore contains all 527 cities and expected personal records, with working photo attribution and both image sizes.
 - Live verification and password-reset links open the public app and reach the owner's inbox.

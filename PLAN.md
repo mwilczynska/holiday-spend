@@ -2,7 +2,7 @@
 
 **Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** Production preparation for `spend.projectinfinitesummer.com`, deployed by the separate Project Infinite Summer repository. Preserve all 527 cities and personal data, upgrade supported runtimes, finish private account access and shared-library permissions, and verify migration/restore and authentication before handoff.
+**Current phase:** App-side production preparation complete for `spend.projectinfinitesummer.com`. All 527 cities and personal data are preserved; private authentication, shared-library permissions and full migration/restore are verified. Windows baseline and Linux Docker/auth/backup/restart checks pass. Project Infinite Summer owns host deployment and public account-flow checks; use `docs/dev/handoffs/production-launch.md`.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -14,15 +14,17 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
-**Latest implementation checkpoint:** `d94a04f` — settlement photo selection, following the ranked-run geocoding fixes. TypeScript, production build, all 74 files / 485 tests, memory mirror and v1.1 guard pass. The earlier feature QA checkpoint is `488bbd3`, including all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
+**Latest implementation checkpoint:** `e3e9045` — private production auth, complete database/photo migration and backups, supported runtimes and Linux container verification. Windows build/TypeScript and all 77 files / 507 tests pass. [Linux CI](https://github.com/mwilczynska/holiday-spend/actions/runs/38285498810) passes the full baseline, dependency audit, Docker builds, native modules, real sign-in, permissions/revocation, read-only-source backup/restore and restart.
+
+**Previous city-library checkpoint:** `d94a04f` — settlement photo selection, following the ranked-run geocoding fixes. TypeScript, production build, all 74 files / 485 tests, memory mirror and v1.1 guard pass. The earlier feature QA checkpoint is `488bbd3`, including all 29 fixes and manual miscellaneous planner expenses (`a3f0f71`).
 
 **Previous product checkpoint:** `caf6933` — shared saved keys, clickable city choices, configured transport limits, Stop and failed-leg retry. It follows `515c445` actionable credential-safe failures and deadlines, and `1581388` request limits/current discovery/GPT-6 Luna max default on merged main (`c459cfd`).
 
 **Latest publication:** Ranked batches 1–19 pushed separately, through ranks 181–190 at `bed6d62`; this milestone records the final batch, 191–200. European closure records all 64 additions below. Earlier [PR #13](https://github.com/mwilczynska/holiday-spend/pull/13), merge `bffc6e0`, preserves the individual fix commits. Final QA evidence is `13bcec0`; publication preparation is `9a4c53a`.
 
-**Next action:** Complete the production-preparation checklist below. No ranked collection remains queued. Malé stays unsaved because its response substituted resort alcohol prices for unavailable city prices; the v1.1 contract requires positive anchors and cannot represent that absence.
+**Next action:** Deploy through Project Infinite Summer using the production handoff: transfer/restore private data/settings, configure HTTPS/proxy, complete owner reset/verification/sign-in, and configure daily/off-host backups. No ranked collection remains queued. Malé stays unsaved because its response substituted resort alcohol prices for unavailable city prices; the v1.1 contract requires positive anchors and cannot represent that absence.
 
-## Production preparation — IN PROGRESS (12 October 2026)
+## Production preparation — APP READY; HOST DEPLOYMENT PENDING (12 October 2026)
 
 Owner authorized completing the deployment/authentication readiness work. Project Infinite Summer owns the landing page, public proxy, DNS, TLS and production cutover; this repository owns app changes and a reviewed deployment handoff. The owner supplied their real email privately for provisioning; do not commit it or credentials.
 
@@ -33,9 +35,11 @@ Owner authorized completing the deployment/authentication readiness work. Projec
 - [x] Prepare a private production copy with the owner's real identity and unchanged ownership/data; revoke copied local credentials/sessions. Independent restore matches the production package. Catalogue-only package contains no personal records.
 - [x] Verify native-auth registration, verification, delivery failure recovery, token expiry/reuse, reset/change-password, revocation and guest/admin permissions. All 77 files / 507 tests pass. Owner entered a domain-restricted Resend key privately; sending domain verified and authorized test delivered (initially Gmail spam, marked Not spam). Approved DMARC TXT is publicly visible. Live HTTPS account-email links remain a deployment check.
 - [x] Update production documentation and integration contract for Project Infinite Summer, including exact private package/settings paths in `docs/dev/handoffs/production-launch.md`. Keep private settings outside Next.js's local automatic environment loading. Add Linux Docker/native-auth/backup smoke workflow; its result must be checked after publication.
-- [ ] Run the required baseline, commit/push each verified milestone, and complete the handoff.
+- [x] Run the required baseline, commit/push verified milestones, and complete the app handoff. Final code `e3e9045` passes Linux CI including both images, native auth and production backup/restart checks. Host-only launch checks remain explicit below and in the handoff.
 
-Local evidence: production build, TypeScript, 507 tests, memory mirror, v1.1 guard, dependency audit and full restore/data-hash audit pass. Remaining external work: Linux CI result; transfer/restore on the host; spend DNS/TLS/private proxy; first owner reset/verification/sign-in; daily/off-host backup configuration and public-host checks. Existing blog/volumes stay in place. Docker is not installed locally.
+Local evidence: production build, TypeScript, 507 tests, memory mirror, v1.1 guard, dependency audit and full restore/data-hash audit pass. Linux CI also passes all baseline/container checks. Remaining external work: transfer/restore on the host; spend DNS/TLS/private proxy; first owner reset/verification/sign-in; daily/off-host backup configuration and public-host checks. Existing blog/volumes stay in place. Docker is not installed locally.
+
+### Publication and CI repair history — 12 October 2026
 
 Publication: implementation committed and pushed at `9a36b83`. First Linux run rejected a missing optional Sharp/WASM dependency in the lockfile generated by local npm 11.6.2. Regenerated metadata with CI's npm 11.19.0; locked application versions are unchanged, clean-install dry run passes, and production audit remains zero. Publish this repair and check the next Linux run before closing the handoff.
 
@@ -44,6 +48,8 @@ Lockfile repair published at `c4aee6a`. Linux clean install, TypeScript, all 507
 CSV checkout repair published at `41d8e10`. Linux baseline and both Docker builds pass. Container sign-in, guest permissions, revocation and backup/restore pass; only the post-restart readiness check timed out while the app logged a successful second start. Refresh the smoke harness's ephemeral Docker port after restart and retain the last readiness error for diagnosis. Correct the host restore recipe to read SSH-owned input with a one-off root helper, then assign output ownership to the non-root app. Publish and rerun the final smoke check.
 
 The final smoke rerun also matches the actual backup helper's read-only source/separate writable volume and reconfirms owner access plus 121 disposable fixture cities after restart. Workflow actions use their verified official Node-24 releases (`checkout` 7.0.1, `setup-node` 7.1.0), replacing deprecated Node-20 actions.
+
+Final result: `e3e9045` passes the complete Linux workflow. Every original table's row hash matches the pre-work backup, and the independent restore matches the owner-provisioned package. All private inputs remain ignored. App handoff complete; public deployment is pending in Project Infinite Summer.
 
 The remaining form audit has fixed the malformed profile-name save that cleared its draft and reported success.
 Its regressions and Chrome verification pass.
