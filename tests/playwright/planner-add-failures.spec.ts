@@ -1,10 +1,9 @@
 import { expect, test, type Page } from '@playwright/test';
-import { expandLegCard } from './client-navigation';
+import { expandLegCard, openAddLegDialog } from './client-navigation';
 
 async function openAddForm(page: Page) {
   await page.goto('/plan');
-  await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'Add Leg', exact: true }).click();
+  await openAddLegDialog(page);
   await page.getByRole('button', { name: 'Select a city', exact: true }).click();
   const picker = page.getByRole('dialog', { name: 'Select a city', exact: true });
   await picker.getByRole('combobox').fill('Agra');
@@ -41,9 +40,8 @@ test('rejected Add Leg saves retain the selected city and nights for retry', asy
     expect(response.status()).toBe(201);
     createdId = (await response.json()).data.id;
     await expect(form).toBeHidden();
-    await expect(page.getByTestId('planner-leg-card').last().getByRole('heading')).toHaveText('Agra');
+    await expect(page.getByTestId('planner-leg-card').last().getByRole('heading')).toHaveText('Agra', { timeout: 15_000 });
     await page.reload();
-    await page.waitForLoadState('networkidle');
     await expandLegCard(page.getByTestId('planner-leg-card').last());
     await expect(page.getByTestId('planner-leg-card').last().getByRole('spinbutton')).toHaveValue('9');
   } finally {

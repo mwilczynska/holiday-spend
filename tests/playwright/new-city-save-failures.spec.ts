@@ -1,12 +1,12 @@
 import { expect, test, type Page } from '@playwright/test';
+import { openAddLegDialog } from './client-navigation';
 
 const city = { cityId: 'sydney', cityName: 'Sydney', countryId: 'australia', countryName: 'Australia', createdCountry: false, createdCity: false, generatedCity: false, reusedExistingCity: true };
 
 async function openForm(page: Page, dataset = false) {
   await page.goto(dataset ? '/dataset' : '/plan');
   if (!dataset) {
-    await expect(page.locator('section[aria-label="Trip historical climate"]').getByRole('img', { name: /Historical mean temperature/ })).toBeVisible();
-    await page.getByRole('button', { name: 'Add Leg', exact: true }).click();
+    await openAddLegDialog(page);
   }
   await page.getByRole('button', { name: 'Add City', exact: true }).click();
   const form = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });

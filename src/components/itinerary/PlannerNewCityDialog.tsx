@@ -62,8 +62,9 @@ export interface NewCityCreatedPayload {
 interface PlannerNewCityDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onCreated: (payload: NewCityCreatedPayload) => Promise<void> | void;
+  onCreated: (payloads: NewCityCreatedPayload[]) => Promise<void> | void;
   mode?: 'planner' | 'dataset';
+  initialCity?: { cityName: string; nights: string };
 }
 
 function getDefaultModels() {
@@ -75,15 +76,29 @@ export function PlannerNewCityDialog({
   onOpenChange,
   onCreated,
   mode = 'planner',
+  initialCity,
 }: PlannerNewCityDialogProps) {
   const apiKeyInputId = useId();
   const isDatasetMode = mode === 'dataset';
-  const [cityName, setCityName] = useState('');
-  const [countryName, setCountryName] = useState('');
-  const [nights, setNights] = useState('7');
+  const nextDraftId = useRef(1);
+  const [drafts, setDrafts] = useState([{ id: 0, cityName: '', countryName: '', nights: '7' }]);
   const nightsInputId = useId();
-  const parsedNights = Number(nights);
-  const nightsValid = Number.isSafeInteger(parsedNights) && parsedNights > 0;
+  const validNights = (value: string) => Number.isSafeInteger(Number(value)) && Number(value) > 0;
+  const draftsValid = drafts.every(draft => draft.cityName.trim() && draft.countryName.trim()
+    && (isDatasetMode || validNights(draft.nights)));
+  const consumedInitialCity = useRef<typeof initialCity>(undefined);
+  useEffect(() => {
+    if (!open || !initialCity || consumedInitialCity.current === initialCity) return;
+    consumedInitialCity.current = initialCity;
+    const seeded = { id: nextDraftId.current++, cityName: initialCity.cityName, countryName: '', nights: initialCity.nights };
+    setDrafts(current => {
+      if (current.some(draft => draft.cityName.trim().toLowerCase() === initialCity.cityName.trim().toLowerCase())) return current;
+      return current.length === 1 && !current[0].cityName && !current[0].countryName ? [seeded] : [...current, seeded];
+    });
+  }, [open, initialCity]);
+  function updateDraft(id: number, changes: Partial<(typeof drafts)[number]>) {
+    setDrafts(current => current.map(draft => draft.id === id ? { ...draft, ...changes } : draft));
+  }
   const submitting = useRef(false);
   const [provider, setProvider] = useState<ProviderOption>('openai');
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());
@@ -95,6 +110,7 @@ export function PlannerNewCityDialog({
   const [showApiKey, setShowApiKey] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [progress, setProgress] = useState<string | null>(null);
   const {
     apiKeys,
     saveApiKeys,
@@ -152,12 +168,11 @@ export function PlannerNewCityDialog({
       : 'none';
 
   function resetForm() {
-    setCityName('');
-    setCountryName('');
-    setNights('7');
+    setDrafts([{ id: nextDraftId.current++, cityName: '', countryName: '', nights: '7' }]);
     setReferenceDate('');
     setExtraContext('');
     setError(null);
+    setProgress(null);
   }
 
   function handleOpenChange(nextOpen: boolean) {
@@ -209,12 +224,12 @@ export function PlannerNewCityDialog({
 
   async function handleSubmit() {
     if (submitting.current) return;
-    if (!isDatasetMode && !nightsValid) {
+    if (!isDatasetMode && drafts.some(draft => !validNights(draft.nights))) {
       setError('Nights must be a positive whole number.');
       return;
     }
 
-    if (!cityName.trim() || !countryName.trim()) {
+    if (!draftsValid) {
       setError('Enter both the city name and country name.');
       return;
     }
@@ -222,54 +237,71 @@ export function PlannerNewCityDialog({
     submitting.current = true;
     setLoading(true);
     setError(null);
+    setProgress(null);
+    const completed: NewCityCreatedPayload[] = [];
 
     try {
-      const requested = {
-        cityName: cityName.trim(),
-        countryName: countryName.trim(),
-        nights: parsedNights,
-      };
+      for (const [index, draft] of drafts.entries()) {
+        setProgress(`Adding ${index + 1} of ${drafts.length}: ${draft.cityName}, ${draft.countryName}`);
+        const requested = {
+          cityName: draft.cityName.trim(),
+          countryName: draft.countryName.trim(),
+          nights: Number(draft.nights),
+        };
 
-      const endpoint = isDatasetMode
-        ? '/api/cities/create-with-generation'
-        : '/api/itinerary/legs/create-with-city';
-      const requestBody = {
-        cityName: requested.cityName,
-        countryName: requested.countryName,
-        ...(isDatasetMode ? {} : { nights: requested.nights }),
-        provider,
-        apiKey: activeApiKey || undefined,
-        model: modelValidation.effectiveModel || undefined,
-        reasoningEffort: effectiveReasoningEffort,
-        referenceDate: referenceDate || undefined,
-        extraContext: extraContext || undefined,
-      };
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(requestBody),
-      });
-      const data = await readLlmApiResponse(response, 'City generation', activeApiKey);
-      const confirmedCity = createdCitySchema.safeParse(data?.data?.city);
-      const confirmedLeg = isDatasetMode ? null : createdLegSchema.safeParse(data?.data?.leg);
-      if (!confirmedCity.success || (!isDatasetMode && (!confirmedLeg?.success
-        || confirmedLeg.data.cityId !== confirmedCity.data.cityId || confirmedLeg.data.nights !== requested.nights))) {
-        throw new Error(`City generation could not be confirmed because the app server returned incomplete or inconsistent data. Your draft is retained. Check ${isDatasetMode ? 'the city library' : 'your plan and city library'} before retrying.`);
+        const endpoint = isDatasetMode
+          ? '/api/cities/create-with-generation'
+          : '/api/itinerary/legs/create-with-city';
+        const requestBody = {
+          cityName: requested.cityName,
+          countryName: requested.countryName,
+          ...(isDatasetMode ? {} : { nights: requested.nights }),
+          provider,
+          apiKey: activeApiKey || undefined,
+          model: modelValidation.effectiveModel || undefined,
+          reasoningEffort: effectiveReasoningEffort,
+          referenceDate: referenceDate || undefined,
+          extraContext: extraContext || undefined,
+        };
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody),
+        });
+        const data = await readLlmApiResponse(response, 'City generation', activeApiKey);
+        const confirmedCity = createdCitySchema.safeParse(data?.data?.city);
+        const confirmedLeg = isDatasetMode ? null : createdLegSchema.safeParse(data?.data?.leg);
+        if (!confirmedCity.success || (!isDatasetMode && (!confirmedLeg?.success
+          || confirmedLeg.data.cityId !== confirmedCity.data.cityId || confirmedLeg.data.nights !== requested.nights))) {
+          throw new Error(`City generation could not be confirmed because the app server returned incomplete or inconsistent data. Your draft is retained. Check ${isDatasetMode ? 'the city library' : 'your plan and city library'} before retrying.`);
+        }
+
+        completed.push({
+          city: confirmedCity.data,
+          requested,
+        });
+        setDrafts(current => current.filter(item => item.id !== draft.id));
       }
-
       onOpenChange(false);
       resetForm();
-      await onCreated({
-        city: confirmedCity.data,
-        requested,
-      });
     } catch (err) {
-      setError(
-        err instanceof Error && !(err instanceof TypeError)
-          ? err.message
-          : getLlmNetworkErrorMessage('City generation')
-      );
+      setProgress(null);
+      const message = err instanceof Error && !(err instanceof TypeError)
+        ? err.message : getLlmNetworkErrorMessage('City generation');
+      const failed = drafts[completed.length];
+      setError(drafts.length > 1 && failed ? `${failed.cityName}, ${failed.countryName}: ${message}` : message);
     } finally {
+      if (completed.length > 0) {
+        if (completed.length < drafts.length) {
+          const noun = isDatasetMode ? (completed.length === 1 ? 'city' : 'cities') : (completed.length === 1 ? 'leg' : 'legs');
+          setProgress(`${completed.length} ${noun} saved. Confirmed additions will not be submitted again.`);
+        }
+        try {
+          await onCreated(completed);
+        } catch {
+          setError('Additions saved, but the view could not refresh. Reload to see the saved data.');
+        }
+      }
       submitting.current = false;
       setLoading(false);
     }
@@ -288,7 +320,7 @@ export function PlannerNewCityDialog({
           <fieldset disabled={loading} className="min-w-0 space-y-4">
             <legend className="sr-only">New city generation</legend>
           <div className="space-y-1 text-sm text-muted-foreground">
-            <p>Enter only the city name and country name. The server will check the current library first.</p>
+            <p>Enter a city and country for each destination. Add another city to generate several in order with the same settings.</p>
             <p>
               {isDatasetMode
                 ? 'If the city is missing, it will infer the IDs, country currency, region, and city-cost data before the city is added to the dataset.'
@@ -296,41 +328,58 @@ export function PlannerNewCityDialog({
             </p>
           </div>
 
-          <div>
-            <Label>City Name</Label>
-            <Input
-              value={cityName}
-              onChange={(event) => setCityName(event.target.value)}
-              placeholder="e.g. Kunming"
-            />
-          </div>
+          {drafts.map((draft, index) => {
+            const nightsValid = validNights(draft.nights);
+            const cityNameId = `${nightsInputId}-${draft.id}-city`;
+            const countryNameId = `${nightsInputId}-${draft.id}-country`;
+            const draftNightsId = `${nightsInputId}-${draft.id}`;
+            return (
+              <div key={draft.id} className="space-y-3 rounded-md border p-3">
+                {drafts.length > 1 ? <div className="flex items-center justify-between gap-2">
+                  <span className="text-sm font-medium">City {index + 1}</span>
+                  <Button type="button" variant="ghost" size="sm" onClick={() => setDrafts(current => current.filter(item => item.id !== draft.id))} aria-label={`Remove city ${index + 1}`}>Remove</Button>
+                </div> : null}
+                <div>
+                  <Label htmlFor={cityNameId}>City Name</Label>
+                  <Input
+                    id={cityNameId}
+                    value={draft.cityName}
+                    onChange={(event) => updateDraft(draft.id, { cityName: event.target.value })}
+                    placeholder="e.g. Kunming"
+                  />
+                </div>
 
-          <div>
-            <Label>Country Name</Label>
-            <Input
-              value={countryName}
-              onChange={(event) => setCountryName(event.target.value)}
-              placeholder="e.g. China"
-            />
-          </div>
+                <div>
+                  <Label htmlFor={countryNameId}>Country Name</Label>
+                  <Input
+                    id={countryNameId}
+                    value={draft.countryName}
+                    onChange={(event) => updateDraft(draft.id, { countryName: event.target.value })}
+                    placeholder="e.g. China"
+                  />
+                </div>
 
-          {!isDatasetMode ? (
-            <div>
-              <Label htmlFor={nightsInputId}>Nights</Label>
-              <Input
-                id={nightsInputId}
-                type="number"
-                min={1}
-                step={1}
-                inputMode="numeric"
-                value={nights}
-                onChange={(event) => setNights(event.target.value)}
-                aria-invalid={!nightsValid}
-                aria-describedby={!nightsValid ? `${nightsInputId}-error` : undefined}
-              />
-              {!nightsValid ? <p id={`${nightsInputId}-error`} className="mt-1 text-sm text-destructive">Nights must be a positive whole number.</p> : null}
-            </div>
-          ) : null}
+                {!isDatasetMode ? (
+                  <div>
+                    <Label htmlFor={draftNightsId}>Nights</Label>
+                    <Input
+                      id={draftNightsId}
+                      type="number"
+                      min={1}
+                      step={1}
+                      inputMode="numeric"
+                      value={draft.nights}
+                      onChange={(event) => updateDraft(draft.id, { nights: event.target.value })}
+                      aria-invalid={!nightsValid}
+                      aria-describedby={!nightsValid ? `${draftNightsId}-error` : undefined}
+                    />
+                    {!nightsValid ? <p id={`${draftNightsId}-error`} className="mt-1 text-sm text-destructive">Nights must be a positive whole number.</p> : null}
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+          <Button type="button" variant="outline" onClick={() => setDrafts(current => [...current, { id: nextDraftId.current++, cityName: '', countryName: '', nights: '7' }])}>Add another city</Button>
 
           <details className="rounded-md border bg-muted/20">
             <summary className="cursor-pointer px-3 py-2 text-sm font-medium text-foreground">
@@ -516,6 +565,7 @@ export function PlannerNewCityDialog({
           ) : null}
 
           {error ? <p role="alert" className="text-sm text-destructive">{error}</p> : null}
+          {progress ? <p role="status" className="text-sm text-muted-foreground">{progress}</p> : null}
 
           <div className="flex gap-2">
             <Button type="button" variant="outline" className="flex-1" onClick={() => handleOpenChange(false)} disabled={loading}>
@@ -527,13 +577,11 @@ export function PlannerNewCityDialog({
               onClick={handleSubmit}
               disabled={
                 loading ||
-                !cityName.trim() ||
-                !countryName.trim() ||
-                (!isDatasetMode && !nightsValid)
+                !draftsValid
               }
             >
               <LoadingButtonLabel
-                idle={isDatasetMode ? 'Generate And Add City' : 'Generate City And Add Leg'}
+                idle={drafts.length > 1 ? (isDatasetMode ? `Generate And Add ${drafts.length} Cities` : `Generate Cities And Add ${drafts.length} Legs`) : (isDatasetMode ? 'Generate And Add City' : 'Generate City And Add Leg')}
                 loading={isDatasetMode ? 'Generating And Adding...' : 'Generating And Adding...'}
                 isLoading={loading}
               />

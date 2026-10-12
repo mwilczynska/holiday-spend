@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Check, ChevronDown } from 'lucide-react';
+import { Check, ChevronDown, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   CommandDialog,
@@ -28,6 +28,7 @@ interface SearchableSelectProps {
   searchPlaceholder?: string;
   emptyText?: string;
   className?: string;
+  onCreateOption?: (search: string) => void;
 }
 
 export function SearchableSelect({
@@ -38,8 +39,10 @@ export function SearchableSelect({
   searchPlaceholder = 'Search...',
   emptyText = 'No matches found.',
   className,
+  onCreateOption,
 }: SearchableSelectProps) {
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
 
   const sortedOptions = useMemo(
     () => [...options].sort((a, b) => a.label.localeCompare(b.label)),
@@ -58,14 +61,14 @@ export function SearchableSelect({
           !selectedOption && 'text-muted-foreground',
           className
         )}
-        onClick={() => setOpen(true)}
+        onClick={() => { setSearch(''); setOpen(true); }}
       >
         <span className="truncate">{selectedOption?.label || placeholder}</span>
         <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
       {/* `placeholder` already names the field, so it doubles as the dialog's accessible name. */}
       <CommandDialog open={open} onOpenChange={setOpen} title={placeholder} description={searchPlaceholder}>
-        <CommandInput placeholder={searchPlaceholder} />
+        <CommandInput placeholder={searchPlaceholder} value={search} onValueChange={setSearch} />
         <CommandList>
           <CommandEmpty>{emptyText}</CommandEmpty>
           <CommandGroup>
@@ -111,6 +114,20 @@ export function SearchableSelect({
             })}
           </CommandGroup>
         </CommandList>
+        {onCreateOption && search.trim() ? (
+          <div className="border-t p-3">
+            <Button type="button" variant="outline" className="w-full" onKeyDown={event => {
+              // Keep cmdk from consuming the button's native Enter/Space activation.
+              if (event.key === 'Enter' || event.key === ' ') event.stopPropagation();
+            }} onClick={() => {
+              setOpen(false);
+              onCreateOption(search.trim());
+            }}>
+              <Plus className="mr-2 h-4 w-4 shrink-0" />
+              <span className="truncate">Add city “{search.trim()}”</span>
+            </Button>
+          </div>
+        ) : null}
       </CommandDialog>
     </>
   );

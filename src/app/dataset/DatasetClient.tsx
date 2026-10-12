@@ -150,6 +150,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
   const [historyCount, setHistoryCount] = useState(initialData.historyCount);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [hasOpenedAddDialog, setHasOpenedAddDialog] = useState(false);
+  const [initialNewCity, setInitialNewCity] = useState<{ cityName: string; nights: string }>();
   const [query, setQuery] = useState('');
   const [historyQuery, setHistoryQuery] = useState('');
   const [isDirty, setIsDirty] = useState(false);
@@ -162,6 +163,13 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  const openNewCity = (cityName = '') => {
+    setInitialNewCity(cityName ? { cityName, nights: '7' } : undefined);
+    setAddDialogOpen(true);
+    setSaveError(null);
+    setSaveMessage(null);
+  };
 
   const syncCityQuery = useCallback((cityId: string | null) => {
     const nextUrl = new URL(window.location.href);
@@ -452,12 +460,13 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
     }
   };
 
-  const handleDatasetNewCityCreated = async (payload: NewCityCreatedPayload) => {
+  const handleDatasetNewCityCreated = async (payloads: NewCityCreatedPayload[]) => {
+    const payload = payloads[payloads.length - 1];
     const nextCountries = await fetchData();
     if (nextCountries) selectCityFromCountries(payload.city.cityId, nextCountries);
     else pendingSelection.current = payload.city.cityId;
     setSaveMessage(
-      payload.city.reusedExistingCity
+      payloads.length > 1 ? `${payloads.length} cities added or selected.` : payload.city.reusedExistingCity
         ? 'Existing city selected.'
         : payload.city.generatedCity
           ? 'City added and costs generated.'
@@ -519,11 +528,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
           <Button
             type="button"
             disabled={!canManageLibrary || loading || Boolean(readError)}
-            onClick={() => {
-              setAddDialogOpen(true);
-              setSaveError(null);
-              setSaveMessage(null);
-            }}
+            onClick={() => openNewCity()}
           >
             <Plus className="mr-2 h-4 w-4" />
             Add City
@@ -537,11 +542,13 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                 if (!open) setSaveError(null);
               }}
               onCreated={handleDatasetNewCityCreated}
+              initialCity={initialNewCity}
             />
           ) : null}
         </div>
       </div>
 
+      {saveMessage ? <p role="status" className="text-sm text-muted-foreground">{saveMessage}</p> : null}
       {readError ? (
         <div role="alert" className="flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive">
           <div>
@@ -566,6 +573,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
               onValueChange={(cityId) => selectCityFromCountries(cityId || null, countries)}
               placeholder="Search for a city"
               searchPlaceholder="Type a city or country..."
+              onCreateOption={canManageLibrary && !loading && !readError ? openNewCity : undefined}
               options={allCities.map((city) => ({
                 value: city.id,
                 label: `${city.name}, ${city.countryName}`,
@@ -772,7 +780,6 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                       {isSaving ? 'Saving...' : 'Save City'}
                     </Button>
                     {isDirty ? <span className="text-sm text-muted-foreground">Unsaved changes</span> : null}
-                    {saveMessage ? <span className="text-sm text-muted-foreground">{saveMessage}</span> : null}
                     {saveError ? <span className="text-sm text-destructive">{saveError}</span> : null}
                   </div>
                 </CardContent>
@@ -905,6 +912,11 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                   <tr>
                     <td colSpan={DATASET_COLUMNS.length + 6} className="px-3 py-8 text-center text-sm text-muted-foreground">
                       {hasLoadedData ? 'No city rows match the current search.' : 'City rows unavailable.'}
+                      {hasLoadedData && query.trim() && canManageLibrary && !loading && !readError ? (
+                        <div className="mt-3">
+                          <Button type="button" variant="outline" onClick={() => openNewCity(query.trim())}>Add city “{query.trim()}”</Button>
+                        </div>
+                      ) : null}
                     </td>
                   </tr>
                 ) : null}

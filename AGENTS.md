@@ -294,6 +294,11 @@ summaries show a fixed-cost line only when the total is nonzero. Paid-status and
 unchanged and expose an error.
 Planner leg additions retain the selected city and nights after rejected saves and show HTTP, network or unreadable
 response errors. Nights must be a positive whole number. Pending additions disable the form and prevent a second submission.
+Add Leg accepts several existing cities with separate nights. Planner and dataset new-city dialogs accept several
+city/country entries with shared generation settings, and planner entries have separate nights. Batches save in entry
+order, stop on the first failure, and remove only confirmed additions from the pending draft; retry does not resubmit
+confirmed saves. Add Leg and dataset city searches offer Add City with the searched name prefilled, including when
+fuzzy matches exist; an empty dataset filter also offers it. The planner carries the nights and retains other selected cities.
 New-city forms validate city identity and creation flags before clearing input or reporting success. Planner
 acknowledgements must also confirm a saved leg for the requested city and exact nights. Incomplete responses retain
 the draft with an error and advice to check saved data before retrying. Pending generation locks all draft controls.

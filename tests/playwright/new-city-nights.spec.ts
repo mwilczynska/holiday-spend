@@ -1,9 +1,9 @@
 import { expect, test, type Page } from '@playwright/test';
+import { expandLegCard, openAddLegDialog } from './client-navigation';
 
 async function openNewCity(page: Page) {
   await page.goto('/plan');
-  await expect(page.locator('section[aria-label="Trip historical climate"]').getByRole('img', { name: /Historical mean temperature/ })).toBeVisible();
-  await page.getByRole('button', { name: 'Add Leg', exact: true }).click();
+  await openAddLegDialog(page);
   await page.getByRole('button', { name: 'Add City', exact: true }).click();
   const form = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });
   await form.getByPlaceholder('e.g. Kunming', { exact: true }).fill('Sydney');
@@ -46,6 +46,7 @@ test('new-city flow reuses an existing city and saves the exact whole-number nig
     await expect(form).toBeHidden();
     await page.reload();
     await expect(page.getByTestId('planner-leg-card').last().getByRole('heading')).toHaveText('Sydney');
+    await expandLegCard(page.getByTestId('planner-leg-card').last());
     await expect(page.getByTestId('planner-leg-card').last().getByLabel('Nights', { exact: true })).toHaveValue('2');
   } finally {
     if (createdId) expect((await request.delete(`/api/itinerary/legs/${createdId}`)).ok()).toBe(true);

@@ -12,6 +12,16 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 12 October 2026
 
+## Multiple city additions — COMPLETE (12 October 2026)
+
+- [x] Let Add Leg accept several existing cities with separate nights, preserving entry order.
+- [x] Let planner and dataset generation accept several missing cities with shared provider settings.
+- [x] Offer Add City from city searches and prefill the searched name, including when fuzzy results exist. Dataset's empty filter also offers it.
+- [x] Keep confirmed additions separate from pending drafts after partial failures; retry only pending entries.
+- [x] Verify browser regressions, TypeScript, production build, unit tests and memory mirror. All 13 form checks plus authentication pass, with the last card-expansion check rerun after its hydration helper correction. All 507 unit checks pass, including unchanged isolated reruns for two loaded files. Ready for commit and push.
+
+Add another city is available in Add Leg and both generation dialogs. Search shortcuts preserve the typed name and planner nights. Confirmed additions are removed from the pending batch; failed and queued drafts remain available. No methodology, provider transport or personal data changes.
+
 **History note (19 September 2026).** The `Claude-Session` trailers were stripped from nineteen commits, rewriting the 35 commits from 3 September to the tip. Trees are unchanged, but every SHA from 3 September onward is new, and the checkpoint hashes below were updated to match. See LOG.md for the mapping and the setting that produced the trailers.
 
 **Latest implementation checkpoint:** `e3e9045` — private production auth, complete database/photo migration and backups, supported runtimes and Linux container verification. Windows build/TypeScript and all 77 files / 507 tests pass. [Linux CI](https://github.com/mwilczynska/holiday-spend/actions/runs/38285498810) passes the full baseline, dependency audit, Docker builds, native modules, real sign-in, permissions/revocation, read-only-source backup/restore and restart.
