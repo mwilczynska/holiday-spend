@@ -14,6 +14,8 @@ Private data packages stay outside Git and the Docker build context. The city ca
 
 Use Node 24 and the locked dependencies. Pause city-photo refresh while taking a snapshot. Other writes may continue; SQLite's backup API produces a consistent database. If a photo or its metadata changes during copying, the snapshot fails and must be retried into a new directory.
 
+The Linux checks use npm 11.19.0. When refreshing the lockfile on the older Windows runtime, use `npx --yes npm@11.19.0 install --package-lock-only --ignore-scripts`; npm 11.6.2 omitted an optional Sharp/WASM runtime entry that Linux clean installs require.
+
 ```powershell
 npm run data:snapshot -- --destination .local/deployment/backup --mode full
 npm run data:snapshot -- --destination .local/deployment/production --mode full --owner-email YOUR_EMAIL
