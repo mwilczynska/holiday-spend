@@ -9,9 +9,10 @@ This file describes what the project is and currently does. It is deliberately f
 | --- | --- |
 | What is planned next, milestone status, open decisions | **[PLAN.md](PLAN.md)** |
 | What was built, what was tried, and what the evidence showed | **[LOG.md](LOG.md)** |
-| Active city-cost implementation plan | **[PLAN.md](PLAN.md)** |
-| Cold-start handoff and exact next action | `docs/dev/handoffs/city-cost-v1-1.md` |
-| Active city-cost loop | `LOOP-PROMPT-V1-1.md` |
+| City-cost accuracy research plan | [docs/dev/plans/city-cost-accuracy.md](docs/dev/plans/city-cost-accuracy.md) |
+| City-cost accuracy goal prompt | [CITY-COST-ACCURACY-GOAL.md](CITY-COST-ACCURACY-GOAL.md) |
+| Research next action | **[PLAN.md](PLAN.md)** and `CITY-COST-ACCURACY-GOAL.md` |
+| Prior v1.1 implementation handoff and loop | `docs/dev/handoffs/city-cost-v1-1.md`, `LOOP-PROMPT-V1-1.md` |
 | Retired v6.1 research history | archived `feat/city-cost-methodology-v6` branch and tag `city-cost-v6.1-research-final-2026-08-18` |
 | Current city-cost methodology | `docs/product/city-cost-methodology.md` |
 | Transport and climate methods | `docs/product/transport-estimation.md`, `docs/product/trip-climate.md` |
@@ -385,22 +386,27 @@ directory. Private packages and deployment settings are gitignored and excluded 
 `docs/ops/production-launch.md` for the launch, email, proxy and backup contract. Linux container verification is
 defined in `.github/workflows/production-checks.yml`; local Windows checks do not establish Linux or public-host success.
 
-## Methodology testing is closed
+## City-cost accuracy research
 
-City-cost and transport accuracy are accepted as reasonably accurate and not fully methodologically tested. That is a
-deliberate trade. Do not open new calibration, holdout, panel-collection or tolerance-setting work, and do not treat
-the recorded limitations as a backlog.
+This research worktree follows `docs/dev/plans/city-cost-accuracy.md`; `CITY-COST-ACCURACY-GOAL.md` is its
+execution prompt. The owner has authorized planning this stream and reopening city-cost accuracy measurement
+and calibration here. Execution starts when the goal is activated. The production method remains v1.1.
 
-The record supports this. `docs/prompts/README.md` lists v5 experiments 085 to 094 as rejected, v6 and v6.1 are
-archived as rejected approaches retained only for audit, and the 5 September 2026 transport accuracy check is
-explicitly directional at three routes. Calibration work has a poor return here relative to its cost.
+All estimate generation uses fresh inexpensive-model subagents, following the previous city-batch pattern.
+GPT-6 Luna/max and Haiku 5.5 are the target models when their agent runtimes are available. Do not use paid
+provider API calls or access application keys. Exact prompts and responses are saved and checked through
+deterministic research-only materialization/scoring; the batch persistence step is not used.
 
-The distinction that matters: fixing a **specification** defect is in scope, and fixing a **calibration** gap is not.
-Prompt v1.1 was worth making because the contract genuinely failed to say which fare to return, and stating it moved
-the median relative error from 25.0% to 2.5%. Chasing a tolerance on top of that is the activity to avoid.
+Research compares repeated predictions against definition-matched public references, then tests small
+methodology changes within fixed sample and resource limits. The stronger coordinator's estimates and LLM
+consensus are not independent price truth. Useful category findings do not require reference coverage for
+every tier. Agent/tool environments are recorded; API billing and transport performance are unmeasured.
 
-Re-measure when the prompt, provider or model changes, not on a schedule, and follow
-`docs/product/transport-estimation.md`.
+Historical v5/v6 holdouts stay closed. Fresh confirmation evidence is isolated from tuning and evaluated only
+after a candidate is frozen. The main database, canonical CSV, photos and production defaults are not research
+write targets. Rollout or bulk migration is a separate decision. Transport methodology testing remains closed;
+its recorded limitations are accepted rather than an implicit research backlog. The prior closure and its
+reasoning remain in LOG.md and the archived research record.
 
 ## Conventions and verification
 
@@ -489,7 +495,7 @@ authentication, or methodology.
 
 | Path | Purpose |
 | --- | --- |
-| `PLAN.md` | Active v1.1 implementation and rollout checklist |
+| `PLAN.md` | Active research checklist with prior product plan retained below |
 | `docs/product/city-cost-methodology.md` | Current city-cost methodology, mirrored by the `/estimates` page |
 | `docs/prompts/llm_prompt_new_cities_1.md` | Frozen v1 rollback prompt |
 | `docs/prompts/llm_prompt_new_cities_v1_1.md` | v1.1 prompt for holistic anchors plus a current RBA FX observation; tiers and conversion stay server-side |

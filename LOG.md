@@ -3541,3 +3541,25 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 
 - Set devIndicators to false in next.config.mjs to hide the Next.js N indicator during development. Framework errors still surface normally.
 - Verified JavaScript syntax, configuration loading through Next.js for development and production build phases, memory mirror and diff whitespace. No application logic changes; the existing generated tsconfig.json include is excluded from this commit.
+
+# 13 October 2026 — City-cost accuracy research planning
+
+- Owner requested a dedicated worktree and a plan/goal prompt for measuring and incrementally improving
+  city-cost estimates using inexpensive LLMs such as GPT-6 Luna/max and Haiku 5.5 in the published app.
+- Created the attached managed worktree `city-cost-accuracy/holiday-spend` from `origin/main` at `7168e3b`,
+  on `research/city-cost-accuracy`. The main checkout's pre-existing tsconfig edit is excluded.
+- The owner request supersedes the September blanket city-cost testing closure for this research stream.
+  Its reasoning remains in the 5 September entry and archived v3-v6 history. Transport testing stays closed;
+  old spent holdouts, live data and production defaults are preserved.
+- Added `docs/dev/plans/city-cost-accuracy.md` and `CITY-COST-ACCURACY-GOAL.md`: reference feasibility before
+  expansion, repeated cheap-model baselines, fixed definitions, paired city scoring, incremental experiments,
+  isolated fresh confirmation and a valid no-improvement finish.
+- Owner specified subscription-backed subagents for all estimate calls, as used in previous city batches.
+  The final plan requires exact prompt/response files and deterministic research-only scoring, with no API
+  calls, application keys or persistence. API billing/transport is explicitly unmeasured and not an execution gate.
+- Proposed limits: six-city feasibility pilot; 16 development/eight confirmation cities; six candidates;
+  stop after three consecutive non-improvements; 400 delegated estimation invocations with 100 reserved for
+  confirmation; 300 reference retrieval actions; at most three concurrent estimation workers.
+- No goal activated, subagent started, new price collected, holdout read, application changed or live data written.
+  Memory consistency and tracked diff whitespace checks pass. Local-link and final staged-diff validation
+  accompany publication; a production rebuild is unnecessary for this planning change.

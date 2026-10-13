@@ -1,4 +1,39 @@
-# City Cost v1.1 — Restore the Simple, Effective Method
+# City-cost accuracy research
+
+**Last updated:** 13 October 2026
+**Branch:** `research/city-cost-accuracy`
+**Status:** Planning complete; goal not activated and no new measurement or collection started.
+**Worktree:** `C:\Users\chawi\.codex\worktrees\city-cost-accuracy\holiday-spend`
+
+The owner requested a dedicated worktree, an accuracy/improvement plan, and an iterative goal prompt for
+the cheap LLMs intended for the published app. This city-cost research scope supersedes the older blanket
+testing closure in this worktree. Old v5/v6 holdouts remain closed and the production v1.1 path is unchanged.
+All estimate generation uses subscription-backed cheap-model subagents, as in the previous city batches;
+no paid provider API calls or API key setup are part of this campaign.
+
+- [x] Create and attach an isolated worktree from `origin/main` at `7168e3b`.
+- [x] Review current v1.1 and the prior v1-v6.1 evidence.
+- [x] Write [the bounded evaluation plan](docs/dev/plans/city-cost-accuracy.md).
+- [x] Write [the copyable goal prompt](CITY-COST-ACCURACY-GOAL.md).
+- [x] Record the owner's subagent-only execution requirement.
+- [x] Update the worktree memory to reflect the authorized research scope.
+- [x] Verify documentation and prepare the planning checkpoint for publication.
+- [ ] Activate the goal when the owner chooses to start.
+- [ ] Freeze the feasibility protocol and implement isolated replay/scoring.
+- [ ] Establish repeated cheap-model v1.1 baselines and reference coverage.
+- [ ] Run bounded incremental experiments and fresh confirmation.
+- [ ] Deliver the reproducible evidence report and recommendation.
+
+**Next action:** The owner can activate `CITY-COST-ACCURACY-GOAL.md` in this worktree. Begin section 10 of the
+detailed plan when activated. Publish this verified planning checkpoint; do not start experiments during this
+planning task. Proposed limits are 24 cities (16 development/eight confirmation), six candidates, 400 delegated
+estimation invocations and 300 reference retrievals. These are resource allocations, not statistical-power claims.
+
+---
+
+## Prior product plan (retained context)
+
+### City Cost v1.1 — Restore the Simple, Effective Method
 
 **Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
