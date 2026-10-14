@@ -2,7 +2,7 @@
 
 **Last updated:** 13 October 2026
 **Branch:** `research/city-cost-accuracy`
-**Status:** Bounded revised run complete: failed feasibility, insufficient evidence for improvement. Astra/Medium assessment complete. Baseline000 preserved.
+**Status:** Single measurement-redesign experiment running under frozen Astra/Medium contract; three Luna/Max collectors dispatched. Earlier failed run remains closed.
 **Worktree:** `C:\Users\chawi\.codex\worktrees\city-cost-accuracy\holiday-spend`
 
 The owner requested a dedicated worktree, an accuracy/improvement plan, and an iterative goal prompt for
@@ -27,16 +27,34 @@ no paid provider API calls or API key setup are part of this campaign.
 - [x] Validate and freeze the restart protocol and designer-authored first experiment before dispatch.
 - [x] Complete the bounded run and final report; candidate experiments, ten-experiment reviews and confirmation remain conditional on gates.
 
-**Next action:** None under this closed revision; reproduce the saved evidence or review the report. No further
-scientific acquisition or candidate dispatch. [Final report](research/city-cost-accuracy/REPORT-RESTART-1.md) and
+## Single measurement redesign — owner authorized
+
+- [x] Explicit owner authorization received to run one redesign experiment and have Astra/Medium define it.
+- [x] Carry prior actual usage and protected allocations into a separate linked journal; do not reset budgets.
+- [x] Validate and freeze Astra/Medium's complete measurement, acquisition, stability/detectability and execution contract.
+- [ ] Execute the registered cheap-worker schedule, assess with Astra/Medium and publish the bounded result.
+
+**Next action:** Finish the fixed collectors, generate masked verifier assignments from their original frames,
+then assess and report under `research/city-cost-accuracy/redesign-1/`. The question is whether a narrow
+independent benchmark can reliably detect a useful improvement. This authorizes one measurement experiment,
+not an automatic candidate campaign or new goal. The accepted schedule uses six workers/27 reference actions
+and zero estimates: four menu-listed cappuccino slots in each of Hanoi, Oaxaca and Copenhagen. Seventeen
+focused tests pass; contract SHA256 `424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628`.
+Ceilings:40 new reference actions/12 reference workers/12 optional unchanged-v1.1 estimate calls, within all
+cumulative caps. Preserve100 confirmation estimate calls and80 reference actions/16 reference workers for
+confirmation. No paid APIs or production writes. Stop after this experiment's assessment and report.
+
+## Earlier bounded outcome — preserved
+
+[Final report](research/city-cost-accuracy/REPORT-RESTART-1.md) and
 [Astra/Medium assessment](research/city-cost-accuracy/restart-1-prep/designer-assessment.md) record zero
 qualifying cities against the four-city/three-venue requirement and zero matched dated hotel offers.
 Invalid/missing records are execution failures, not measured price errors. The independent diagnostic review
 is complete; all excluded records remain excluded. No candidate, extension, ten-experiment review or
 confirmation ran. Keep v1.1 unchanged; broader city-budget accuracy and improvement remain unmeasured.
-Any future acquisition design requires a separately authorized prospective revision preserving this failure,
-the original baseline and cumulative usage: 19 estimate/recovery calls, 73 charged reference actions,
-13 reference-worker calls, four design calls and two separately tracked engineering delegations.
+The new owner authorization permits a prospective redesign while preserving this failure and the original
+baseline. Prior usage remains19 estimate/recovery calls,73 charged reference actions,13 reference-worker
+calls,four design calls and two engineering delegations. The new design is cumulative designcall5.
 
 ---
 

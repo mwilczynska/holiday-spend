@@ -1,0 +1,36 @@
+{"type":"opening","consumed":{"estimateInvocations":19,"referenceActions":73,"referenceWorkerInvocations":13,"estimateRetrievalActions":44,"designInvocations":4,"candidateAttempts":0,"fullExtensions":0},"parentJournal":"restart-1-prep/budget.jsonl","parentSha256":"cce85f0569f900bfa17d3bbb4554c1c09d8173d00e1ef088fcf53488236b5049","note":"Linked cumulative carry-forward, not a resource reset. Parent reservations imported once; old snapshot remains historical.","sequence":1,"recordedAt":"2026-10-14T05:13:40.650Z"}
+{"type":"reserve","id":"protected-estimate-unknownheadroom","resources":{"estimateInvocations":1,"estimateRetrievalActions":3},"sequence":2,"recordedAt":"2026-10-14T05:13:40.651Z"}
+{"type":"reserve","id":"protected-estimate-freshprimarybaseline16x3","resources":{"estimateInvocations":48,"estimateRetrievalActions":144},"sequence":3,"recordedAt":"2026-10-14T05:13:40.662Z"}
+{"type":"reserve","id":"protected-estimate-candidatepilot6x2","resources":{"estimateInvocations":12,"estimateRetrievalActions":36},"sequence":4,"recordedAt":"2026-10-14T05:13:40.663Z"}
+{"type":"reserve","id":"protected-estimate-candidateextension10x2","resources":{"estimateInvocations":20,"estimateRetrievalActions":60},"sequence":5,"recordedAt":"2026-10-14T05:13:40.664Z"}
+{"type":"reserve","id":"protected-estimate-secondarybaseline16x3","resources":{"estimateInvocations":48,"estimateRetrievalActions":144},"sequence":6,"recordedAt":"2026-10-14T05:13:40.665Z"}
+{"type":"reserve","id":"protected-estimate-secondaryfinalist16x2","resources":{"estimateInvocations":32,"estimateRetrievalActions":96},"sequence":7,"recordedAt":"2026-10-14T05:13:40.665Z"}
+{"type":"reserve","id":"protected-estimate-confirmationexclusive","resources":{"estimateInvocations":100,"estimateRetrievalActions":300},"sequence":8,"recordedAt":"2026-10-14T05:13:40.666Z"}
+{"type":"reserve","id":"protected-estimate-failurerecoveryheadroom","resources":{"estimateInvocations":20,"estimateRetrievalActions":60},"sequence":9,"recordedAt":"2026-10-14T05:13:40.667Z"}
+{"type":"reserve","id":"protected-reference-development","resources":{"referenceActions":80,"referenceWorkerInvocations":20},"sequence":10,"recordedAt":"2026-10-14T05:13:40.667Z"}
+{"type":"reserve","id":"protected-reference-confirmation","resources":{"referenceActions":80,"referenceWorkerInvocations":16},"sequence":11,"recordedAt":"2026-10-14T05:13:40.668Z"}
+{"type":"reserve","id":"protected-reference-fx","resources":{"referenceActions":12,"referenceWorkerInvocations":4},"sequence":12,"recordedAt":"2026-10-14T05:13:40.669Z"}
+{"type":"reserve","id":"protected-reference-dispute-failure","resources":{"referenceActions":25,"referenceWorkerInvocations":10},"sequence":13,"recordedAt":"2026-10-14T05:13:40.670Z"}
+{"type":"reserve","id":"protected-reference-unallocated","resources":{"referenceActions":20,"referenceWorkerInvocations":37},"sequence":14,"recordedAt":"2026-10-14T05:13:40.670Z"}
+{"type":"reserve","id":"protected-future-assessments","resources":{"designInvocations":4},"sequence":15,"recordedAt":"2026-10-14T05:13:40.671Z"}
+{"type":"cancel","id":"protected-future-assessments","note":"Transfer one of four unused design allocations for owner-authorized redesign; preserve three.","sequence":16,"recordedAt":"2026-10-14T05:13:40.672Z"}
+{"type":"reserve","id":"protected-redesign-future-design","resources":{"designInvocations":3},"sequence":17,"recordedAt":"2026-10-14T05:13:40.673Z"}
+{"type":"reserve","id":"redesign-design","resources":{"designInvocations":1},"sequence":18,"recordedAt":"2026-10-14T05:13:40.674Z"}
+{"type":"start","id":"redesign-design","consumed":{"designInvocations":1},"model":"gpt-6-astra","effort":"medium","runtime":"Codex subagent","sequence":19,"recordedAt":"2026-10-14T05:13:40.674Z"}
+{"type":"finish","id":"redesign-design","actual":{},"sequence":20,"recordedAt":"2026-10-14T05:25:07.251Z"}
+{"type":"cancel","id":"protected-redesign-future-design","note":"Transfer one unused allocation to repair; preserve the remainder.","sequence":21,"recordedAt":"2026-10-14T05:27:14.700Z"}
+{"type":"reserve","id":"protected-redesign-after-repair-design","resources":{"designInvocations":2},"sequence":22,"recordedAt":"2026-10-14T05:27:14.701Z"}
+{"type":"reserve","id":"redesign-repair","resources":{"designInvocations":1},"sequence":23,"recordedAt":"2026-10-14T05:27:14.702Z"}
+{"type":"start","id":"redesign-repair","consumed":{"designInvocations":1},"model":"gpt-6-astra","effort":"medium","runtime":"Codex subagent","sequence":24,"recordedAt":"2026-10-14T05:27:14.704Z"}
+{"type":"finish","id":"redesign-repair","actual":{},"sequence":25,"recordedAt":"2026-10-14T05:31:30.180Z"}
+{"type":"cancel","id":"protected-reference-development","note":"Prospective transfer only; cumulative actuals and confirmation unchanged","sequence":26,"recordedAt":"2026-10-14T15:17:07.239Z"}
+{"type":"reserve","id":"redesign-reference-development-remainder","resources":{"referenceActions":53,"referenceWorkerInvocations":14},"sequence":27,"recordedAt":"2026-10-14T15:17:07.241Z"}
+{"type":"reserve","id":"collect-hanoi","resources":{"referenceActions":5,"referenceWorkerInvocations":1},"sequence":28,"recordedAt":"2026-10-14T15:17:07.243Z"}
+{"type":"reserve","id":"verify-hanoi","resources":{"referenceActions":4,"referenceWorkerInvocations":1},"sequence":29,"recordedAt":"2026-10-14T15:17:07.244Z"}
+{"type":"reserve","id":"collect-oaxaca","resources":{"referenceActions":5,"referenceWorkerInvocations":1},"sequence":30,"recordedAt":"2026-10-14T15:17:07.246Z"}
+{"type":"reserve","id":"verify-oaxaca","resources":{"referenceActions":4,"referenceWorkerInvocations":1},"sequence":31,"recordedAt":"2026-10-14T15:17:07.247Z"}
+{"type":"reserve","id":"collect-copenhagen","resources":{"referenceActions":5,"referenceWorkerInvocations":1},"sequence":32,"recordedAt":"2026-10-14T15:17:07.248Z"}
+{"type":"reserve","id":"verify-copenhagen","resources":{"referenceActions":4,"referenceWorkerInvocations":1},"sequence":33,"recordedAt":"2026-10-14T15:17:07.250Z"}
+{"type":"start","id":"collect-hanoi","consumed":{"referenceWorkerInvocations":1},"requestSha256":"5931c98d9c5a6fa19e908c18af27d7e2d5007f017659a8c39d8095bcca5a0aba","model":"gpt-6-luna","effort":"max","runtime":"Codex subscription subagent","deadlineAt":"2026-10-14T15:27:33.564Z","sequence":34,"recordedAt":"2026-10-14T15:17:33.565Z"}
+{"type":"start","id":"collect-oaxaca","consumed":{"referenceWorkerInvocations":1},"requestSha256":"65e1b233beead7cde812da52b51f059f1dbeee8bd970c1ff5be474cad9e6d164","model":"gpt-6-luna","effort":"max","runtime":"Codex subscription subagent","deadlineAt":"2026-10-14T15:27:53.081Z","sequence":35,"recordedAt":"2026-10-14T15:17:53.083Z"}
+{"type":"start","id":"collect-copenhagen","consumed":{"referenceWorkerInvocations":1},"requestSha256":"21471fcdad70fdebd530932b0ed8d9f00cb71dc07a17388900a987e41cf85d12","model":"gpt-6-luna","effort":"max","runtime":"Codex subscription subagent","deadlineAt":"2026-10-14T15:28:13.185Z","sequence":36,"recordedAt":"2026-10-14T15:18:13.186Z"}

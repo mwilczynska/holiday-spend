@@ -1,0 +1,41 @@
+{
+  "taskId": "collect-hanoi",
+  "phase": 1,
+  "role": "collect",
+  "cityId": "hanoi",
+  "dependsOn": [],
+  "maxActions": 5,
+  "query": "Hanoi Hoan Kiem cafe cappuccino menu official",
+  "toolOrder": [
+    "search",
+    "open s1",
+    "open s2",
+    "open s3",
+    "open s4"
+  ],
+  "promptTemplate": "collector",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subscription subagent",
+  "freshContext": true,
+  "maxConcurrency": 3,
+  "maxSeconds": 600,
+  "retries": 0,
+  "paidCalls": 0,
+  "substitutions": false,
+  "assignment": {
+    "taskId": "collect-hanoi",
+    "cityId": "hanoi",
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "area": "Hoan Kiem district",
+    "currency": "VND",
+    "query": "Hanoi Hoan Kiem cafe cappuccino menu official",
+    "slots": null,
+    "outputDirectory": "C:\\Users\\chawi\\.codex\\worktrees\\city-cost-accuracy\\holiday-spend\\research\\city-cost-accuracy\\redesign-1\\tasks\\collect-hanoi",
+    "maxActions": 5
+  },
+  "systemSha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+  "promptSha256": "478d47e43f75b0c08ded523a8e78bab57c325dfc46c4174ab304199f8545698f",
+  "contractSha256": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628"
+}

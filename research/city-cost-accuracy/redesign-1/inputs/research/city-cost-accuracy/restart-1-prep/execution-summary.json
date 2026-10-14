@@ -1,0 +1,937 @@
+{
+  "schemaVersion": 1,
+  "kind": "offline_pre_assessment_execution_snapshot",
+  "target": "restart-1-prep",
+  "asOfBudgetSequence": 45,
+  "asOfBudgetRecordedAt": "2026-10-14T04:53:38.448Z",
+  "auditCodeSha256": "e7d31f9cb80b2b728f2784d69c81b4fd8b130fad6cd84c1a1f0f6e200834b4fe",
+  "frozenVerification": {
+    "status": "verified",
+    "contractSha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602"
+  },
+  "frozenSourceCodeSha256": {
+    "scripts/city-cost-accuracy/restart.mjs": "620549b4743401d5ed719571df03115e4070c03c9a589e133ec8c988c30ce590",
+    "scripts/city-cost-accuracy/core.mjs": "f0cba8e73ae6482d638a640e8424a8db1a14f4d2ecaa748a1a21553ddb80361a",
+    "scripts/city-cost-accuracy/budget.mjs": "7690231ca61663c5cc8d6c530de05e8c6b9e49fea6729b183de81bba65b931a0",
+    "scripts/city-cost-accuracy/fees.mjs": "e987d1eaee4086ca6423f5df759f3424a8207a446fdcaa1e8c535f6544b02809",
+    "scripts/city-cost-accuracy/summarize.mjs": "f2343a69cfae69613622432f6c8e98d332d174f331c6df1bb2e30c8502f62d9f",
+    "src/lib/city-generation.ts": "83ba9d3a27e3cbb9755bf50d68deb60eb0f098e9e37931bca1293c41405f5aa1",
+    "src/lib/city-cost-methodology-v1-1.ts": "1a913ec8354c00d9c9d62c3f3174c3f0de8529b952c28116e7e85e8ab1c79d84"
+  },
+  "inputArtifacts": {
+    "manifest.json": {
+      "sha256": "8f91e3b753beff4f8b73e4b7abb70fa07340a9741ef9b759b00d7792e6583851",
+      "bytes": 7338
+    },
+    "restart-1-prep/aggregate-ledger.json": {
+      "sha256": "d99db533ad68e86d9f7f408efc5857627693b0e6f1d959586c924778ad65fa4b",
+      "bytes": 114355
+    },
+    "restart-1-prep/contract.json": {
+      "sha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602",
+      "bytes": 51751
+    },
+    "restart-1-prep/freeze.json": {
+      "sha256": "6928fe01c9fff30066bd217ec7608a6401db16813de6b9c44ef2a977ff3ff457",
+      "bytes": 2854
+    },
+    "restart-1-prep/review-execution-errata.json": {
+      "sha256": "cf85f85171c8ad61f4d5a45545a4d95e32a871b311cbb44bd75a169ade25cdfd",
+      "bytes": 960
+    },
+    "restart-1-prep/review-selection.json": {
+      "sha256": "b3617094bb3e27ec8209e8ba8d9a93754ab8192edcce2fd2f90baf17f6ec9355",
+      "bytes": 72121
+    },
+    "restart-1-prep/runtime-failures.json": {
+      "sha256": "5cd914621497098014538c68dc0f4bbb17d873d6bb561e0cd9c96f5239b5717f",
+      "bytes": 1047
+    },
+    "restart-1-prep/serialization-errata.json": {
+      "sha256": "8b5a53afe3df5b22a1a662cbdaa6247c16e68981c1a84879839394b5ebd7d2f4",
+      "bytes": 1054
+    },
+    "restart-1-prep/tasks/hotel-bled/delivery-v2.json": {
+      "sha256": "83d1e485699e158691f23999766a94c684f8d264beebac8b7a271d4885a13cb4",
+      "bytes": 296
+    },
+    "restart-1-prep/tasks/hotel-bled/delivery-v2.txt": {
+      "sha256": "db68cea2f189595536eb9a037afc427beade2f007ca19188d51e4f7bc7e7879b",
+      "bytes": 2992
+    },
+    "restart-1-prep/tasks/hotel-bled/prompt.txt": {
+      "sha256": "68fcc54a4c2a8a8f0bbd9596054397d8d4b5c9b51a96bdfb226a47b31b0a3203",
+      "bytes": 11942
+    },
+    "restart-1-prep/tasks/hotel-bled/request.json": {
+      "sha256": "8a4c657ee514bc978ec8a1cf076a7ce09dec1c859cdf5f8de05db07445cef2f8",
+      "bytes": 5949
+    },
+    "restart-1-prep/tasks/hotel-bled/response.json": {
+      "sha256": "50a1160b38a424b3d38cca8da0e61fa36f5a5c0ba29d0b35d5cabe2fe9c5982c",
+      "bytes": 7012
+    },
+    "restart-1-prep/tasks/hotel-bled/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/hotel-bled/validation.json": {
+      "sha256": "a4e3b296cc4075499262a00efe5e838d56844ec430a6063564f553b3253eb3b6",
+      "bytes": 862
+    },
+    "restart-1-prep/tasks/hotel-copenhagen/delivery-v2.json": {
+      "sha256": "dfc319889637b51f9e134998fc8f0881cc98fd125f69b334f74f8e92012c9694",
+      "bytes": 302
+    },
+    "restart-1-prep/tasks/hotel-copenhagen/delivery-v2.txt": {
+      "sha256": "351815b45f6af9439e3eab21656ddfcf8ba87fe8f9477df27500ea520e4fceba",
+      "bytes": 2998
+    },
+    "restart-1-prep/tasks/hotel-copenhagen/prompt.txt": {
+      "sha256": "9b148b813800d6525b163d4132df7b9d30eb5989a54b6337ace059782ff77b12",
+      "bytes": 11964
+    },
+    "restart-1-prep/tasks/hotel-copenhagen/request.json": {
+      "sha256": "160f49245073ca4703c38f982c1bd075637e510b64767265c295030f9888a862",
+      "bytes": 5971
+    },
+    "restart-1-prep/tasks/hotel-copenhagen/response.json": {
+      "sha256": "b17d95b36a815f3c2dcc21cdf80040ac4e11debecb03e42edc7aad6196f8071e",
+      "bytes": 7915
+    },
+    "restart-1-prep/tasks/hotel-copenhagen/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/hotel-copenhagen/validation.json": {
+      "sha256": "4e72975b66e1feb0a4fd4faed75209ca6957f564fcc4078e31a12aae1519dba9",
+      "bytes": 825
+    },
+    "restart-1-prep/tasks/hotel-hanoi/delivery-v2.json": {
+      "sha256": "a4047dd7336fd8a1e1f3d4d2508656aaf82e83a2d83de2c0d8b3cb4b3ff639a8",
+      "bytes": 297
+    },
+    "restart-1-prep/tasks/hotel-hanoi/delivery-v2.txt": {
+      "sha256": "7bc079d1471de020c3a1017cdbdd35330ee57107fd5ef5c295d3bcce615c675b",
+      "bytes": 2993
+    },
+    "restart-1-prep/tasks/hotel-hanoi/prompt.txt": {
+      "sha256": "44d908cc91cc2c47cb03d889ea54e47d8f24d166d9046fcf539199a031ce622a",
+      "bytes": 11944
+    },
+    "restart-1-prep/tasks/hotel-hanoi/request.json": {
+      "sha256": "2821d3e2fafb2d05419294f84d8996a549fd78f20f8770e5bf9734d6eca623ee",
+      "bytes": 5951
+    },
+    "restart-1-prep/tasks/hotel-hanoi/response.json": {
+      "sha256": "fd9e8fb1edfcd11e8fb9115f52f4fd11cb6a4b0d2673b6150de0ee24010620a3",
+      "bytes": 9066
+    },
+    "restart-1-prep/tasks/hotel-hanoi/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/hotel-hanoi/validation.json": {
+      "sha256": "59c0d35d4f46964dd70763a0ec4c3369be6a5202061c5e68465215251c1542dc",
+      "bytes": 816
+    },
+    "restart-1-prep/tasks/menu-bandipur/delivery-v1.json": {
+      "sha256": "d2b6c90f976cbc3dcebef39063cfecc60ecfb8979ae00ece16c4793099e5639d",
+      "bytes": 202
+    },
+    "restart-1-prep/tasks/menu-bandipur/delivery-v1.txt": {
+      "sha256": "aa4c113fa148e7a381961d975c9832316e55fdaa7a257f458c31075c99cf3c66",
+      "bytes": 1726
+    },
+    "restart-1-prep/tasks/menu-bandipur/prompt.txt": {
+      "sha256": "22bc5ebc2c97ba57fffee8660dccc4dd99292f3a7fe3bcbac3dd271e70317cce",
+      "bytes": 12047
+    },
+    "restart-1-prep/tasks/menu-bandipur/request.json": {
+      "sha256": "239459552396e22ba638b43f0b8eac28c1c7afa0d37bbca800eac4b32f90c8cd",
+      "bytes": 5944
+    },
+    "restart-1-prep/tasks/menu-bandipur/response.json": {
+      "sha256": "a3e8b8748680838c7d014ba10c2060518b358d722f5d1f453b82284ec645e9b6",
+      "bytes": 109228
+    },
+    "restart-1-prep/tasks/menu-bandipur/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/menu-bandipur/validation.json": {
+      "sha256": "2e1df5161c8d1a62fe4ff72d068af73fcf5814bc2fb21d8c94eb2769f8d8d219",
+      "bytes": 12818
+    },
+    "restart-1-prep/tasks/menu-bled/delivery-v2.json": {
+      "sha256": "b2304d63967d6114624dd83a74cace8cee69370d016eec2a621f83648f74ee6d",
+      "bytes": 295
+    },
+    "restart-1-prep/tasks/menu-bled/delivery-v2.txt": {
+      "sha256": "53a036287f539a86e303f1b3bf6dea8568eeaffd81f028adb91ddd12dc8da824",
+      "bytes": 2991
+    },
+    "restart-1-prep/tasks/menu-bled/prompt.txt": {
+      "sha256": "4d868e142a02f3c9f36e0b7dfe55ea7749ec9f4739a85acec888fcec799361f8",
+      "bytes": 12037
+    },
+    "restart-1-prep/tasks/menu-bled/request.json": {
+      "sha256": "e3dd440fbda5c98f6380b013056432d294722e9c2096555461391c5a75cbb44d",
+      "bytes": 5934
+    },
+    "restart-1-prep/tasks/menu-bled/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/menu-bled/validation.json": {
+      "sha256": "79723e1cc551628b5b89cb3d59dba9169d58aa329306a714e2011434164fd6cf",
+      "bytes": 244
+    },
+    "restart-1-prep/tasks/menu-copenhagen/delivery-v2.json": {
+      "sha256": "7000453aa9615a3359385e15f65b06faa53bd0dd8b15880d4b46a227b2010040",
+      "bytes": 301
+    },
+    "restart-1-prep/tasks/menu-copenhagen/delivery-v2.txt": {
+      "sha256": "2c09dfcbd39b07e3a35ad8df0d527be59d405fd706d1c4bc8e0ef0653a055c92",
+      "bytes": 2997
+    },
+    "restart-1-prep/tasks/menu-copenhagen/prompt.txt": {
+      "sha256": "7ccf63b4e028d01670ff3b7701fdcb7be14aaf58fdb56a31ee235ac69bf79d52",
+      "bytes": 12059
+    },
+    "restart-1-prep/tasks/menu-copenhagen/request.json": {
+      "sha256": "edf85b68b8d141b32814c561ea20910e2dc5db669127f0629e7f4641b8e0a94d",
+      "bytes": 5956
+    },
+    "restart-1-prep/tasks/menu-copenhagen/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/menu-copenhagen/validation.json": {
+      "sha256": "47595f03216c8e6b814be777cd136a26ffc25bc5d2cf0195fecea32b978b35bf",
+      "bytes": 250
+    },
+    "restart-1-prep/tasks/menu-hanoi/delivery-v1.json": {
+      "sha256": "eb31838a5bad8c63a2b15d9b3862e8e6ad2abecc93de77cc25405862d54655e7",
+      "bytes": 199
+    },
+    "restart-1-prep/tasks/menu-hanoi/delivery-v1.txt": {
+      "sha256": "3e504cd9c636608b49349392ee4e6be12b7328d6020cca277ca7c9d8d8096e24",
+      "bytes": 1723
+    },
+    "restart-1-prep/tasks/menu-hanoi/prompt.txt": {
+      "sha256": "8a7fad0a37a0e30c208443aea5d128daba19fe456d6ffb142e1606d7f506023a",
+      "bytes": 12039
+    },
+    "restart-1-prep/tasks/menu-hanoi/request.json": {
+      "sha256": "2f2c772004e545496f5c435f5a188126a6c9b19b5acf8e5536c2f972b57ad15e",
+      "bytes": 5936
+    },
+    "restart-1-prep/tasks/menu-hanoi/response.json": {
+      "sha256": "8ab48116f92cb6a121ceae41768039a430f0569bdcf6e58f9ed9c67f4f06eca6",
+      "bytes": 84890
+    },
+    "restart-1-prep/tasks/menu-hanoi/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/menu-hanoi/validation.json": {
+      "sha256": "3be2e1ffe0bd9d9bcc461d143a22198d9d496aa8d4cf2f73d984442186df53ca",
+      "bytes": 8444
+    },
+    "restart-1-prep/tasks/menu-kyoto/delivery-v2.json": {
+      "sha256": "12e7372cc5913880aa32f997ba9ba37c52f145dd8cc8e079b21808d40309d8fa",
+      "bytes": 296
+    },
+    "restart-1-prep/tasks/menu-kyoto/delivery-v2.txt": {
+      "sha256": "4ceabbb663ea8e41fae796f80c10a195d786087dec34da9d822fb4043aba1199",
+      "bytes": 2992
+    },
+    "restart-1-prep/tasks/menu-kyoto/prompt.txt": {
+      "sha256": "9b9f54048fea78d9e1b74b97ab68f7566d8e477f0a999f7921b47c41fe7a24d7",
+      "bytes": 12035
+    },
+    "restart-1-prep/tasks/menu-kyoto/request.json": {
+      "sha256": "99660974ae545a9ee7dec355759af638f746af98a76a45a2485c1556c4a35b90",
+      "bytes": 5932
+    },
+    "restart-1-prep/tasks/menu-kyoto/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/menu-kyoto/validation.json": {
+      "sha256": "0fa37e7769813756ff800ccde5620bdb04578bb24534f42bcfd503b103935008",
+      "bytes": 245
+    },
+    "restart-1-prep/tasks/menu-oaxaca/delivery-v1.json": {
+      "sha256": "8704d562e591790592794c9e549b18e650e5d1784e65f632a2b891aff51322c6",
+      "bytes": 200
+    },
+    "restart-1-prep/tasks/menu-oaxaca/delivery-v1.txt": {
+      "sha256": "ca4a94eab7cd183dd5db7e78ade8ea2c8f29983d02752bf9e9e9130f51bf30ef",
+      "bytes": 1724
+    },
+    "restart-1-prep/tasks/menu-oaxaca/prompt.txt": {
+      "sha256": "6d197c3abc887be6b1474e7fcedd56454ee6b25300d6cc0b95908e5f62e528e9",
+      "bytes": 12041
+    },
+    "restart-1-prep/tasks/menu-oaxaca/request.json": {
+      "sha256": "2f3c62ea8472a0bf16d3bf26a94dbe884f4706a65d37b404601cf58e0f27b4de",
+      "bytes": 5938
+    },
+    "restart-1-prep/tasks/menu-oaxaca/response.json": {
+      "sha256": "a36672262b886823b7f4b75bd80047de0230d8cd4dc4375b384231a1c60daa23",
+      "bytes": 117060
+    },
+    "restart-1-prep/tasks/menu-oaxaca/system.txt": {
+      "sha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+      "bytes": 504
+    },
+    "restart-1-prep/tasks/menu-oaxaca/validation.json": {
+      "sha256": "a56350c84e9701099ac7b4a5a52f9acda816c760ebb900da505a8fcf12a4ce9f",
+      "bytes": 19273
+    },
+    "restart-1-prep/tasks/review-feasibility/delivery.txt": {
+      "sha256": "6e44f03b34777d4aa9200edf948eb73c5232b12df6c15c8618c9eb10dd48c36a",
+      "bytes": 2553
+    },
+    "restart-1-prep/tasks/review-feasibility/prompt.txt": {
+      "sha256": "402a575af99f76314cb1c2dddf32d1a6f933120eb1b1458deaf1ba7d4e09153c",
+      "bytes": 82859
+    },
+    "restart-1-prep/tasks/review-feasibility/request.json": {
+      "sha256": "9f0fc8661b09e1828cd90478ceb945a3060a3fd858f041b51fc87f9e5c9b1c8f",
+      "bytes": 71908
+    },
+    "restart-1-prep/tasks/review-feasibility/response.json": {
+      "sha256": "440a2e181c956d85acd96a96500fd1986c812f35e964e3aba5251c37550d4fc0",
+      "bytes": 19903
+    },
+    "restart-1-prep/tasks/review-feasibility/system.txt": {
+      "sha256": "dbdbdce03bc1c1121942d1782090f473d485240093e34ef0bedc94182467ad70",
+      "bytes": 324
+    },
+    "restart-1-prep/tasks/review-feasibility/validation.json": {
+      "sha256": "5429c5c888843024f06f594b24cb6e85f9a030672734f2b51079d94a2a01e112",
+      "bytes": 829
+    },
+    "restart-prior-audit.json": {
+      "sha256": "3d136d32db22507f70b2ff59b44317e90ecdbfbd728e44fb397f23aab5dab84e",
+      "bytes": 5202
+    }
+  },
+  "budgetSnapshot": {
+    "journalArtifact": "restart-1-prep/budget.jsonl",
+    "prefixByteLength": 9356,
+    "prefixSha256": "d045eb2f0f97c26eddc6cecb78caedba7fef0d4452b53649fb764c5b181c8ca2",
+    "eventCount": 45,
+    "limits": {
+      "estimateInvocations": 400,
+      "referenceActions": 300,
+      "referenceWorkerInvocations": 100,
+      "estimateRetrievalActions": 1600,
+      "designInvocations": 50,
+      "candidateAttempts": 20,
+      "fullExtensions": 2
+    },
+    "state": {
+      "used": {
+        "estimateInvocations": 19,
+        "referenceActions": 73,
+        "referenceWorkerInvocations": 13,
+        "estimateRetrievalActions": 44,
+        "designInvocations": 3,
+        "candidateAttempts": 0,
+        "fullExtensions": 0
+      },
+      "reserved": {
+        "estimateInvocations": 281,
+        "referenceActions": 217,
+        "referenceWorkerInvocations": 87,
+        "estimateRetrievalActions": 843,
+        "designInvocations": 5,
+        "candidateAttempts": 0,
+        "fullExtensions": 0
+      },
+      "available": {
+        "estimateInvocations": 100,
+        "referenceActions": 10,
+        "referenceWorkerInvocations": 0,
+        "estimateRetrievalActions": 713,
+        "designInvocations": 42,
+        "candidateAttempts": 20,
+        "fullExtensions": 2
+      },
+      "started": [],
+      "pending": [
+        "protected-estimate-unknownheadroom",
+        "protected-estimate-freshprimarybaseline16x3",
+        "protected-estimate-candidatepilot6x2",
+        "protected-estimate-candidateextension10x2",
+        "protected-estimate-secondarybaseline16x3",
+        "protected-estimate-secondaryfinalist16x2",
+        "protected-estimate-confirmationexclusive",
+        "protected-estimate-failurerecoveryheadroom",
+        "protected-reference-development",
+        "protected-reference-confirmation",
+        "protected-reference-fx",
+        "protected-reference-dispute-failure",
+        "protected-reference-unallocated",
+        "protected-design-assessments"
+      ]
+    },
+    "referenceAccounting": {
+      "priorKnownActions": 43,
+      "newKnownReportedActions": 18,
+      "newConservativeUnknownCharge": 12,
+      "cumulativeKnownReportedActions": 61,
+      "cumulativeChargedActions": 73
+    },
+    "priorEstimateRetrievalAccounting": {
+      "knownReportedActions": 36,
+      "conservativeUnknownCharge": 8,
+      "chargedTotal": 44,
+      "unknownRunIds": [
+        "oaxaca-luna-r1"
+      ],
+      "limitation": "Unknown accounting charge is neither observed usage nor a proven upper bound; true old cumulative telemetry remains unresolved."
+    }
+  },
+  "taskCounts": {
+    "total": 10,
+    "collectors": 9,
+    "validRecords": 3,
+    "invalidRecords": 7,
+    "invalidReturnedRecords": 4,
+    "missingResponseArtifacts": 3
+  },
+  "tasks": [
+    {
+      "taskId": "menu-hanoi",
+      "role": "menu",
+      "cityId": "hanoi",
+      "status": "invalid",
+      "terminalStatus": "partial",
+      "responsePresent": true,
+      "validationErrorCount": 177,
+      "validationErrorCounts": {
+        "Aggregate must use one ranked original menu source": 1,
+        "Invalid or duplicate atomic row ID": 45,
+        "Invalid ranked results": 1,
+        "Invalid terminal status": 1,
+        "Missing identity/eligibility reason": 45,
+        "Numeric quote lacks underlying-source evidence": 39,
+        "Row ID rank/measure differs": 45
+      },
+      "validationArtifact": "restart-1-prep/tasks/menu-hanoi/validation.json",
+      "responseArtifact": "restart-1-prep/tasks/menu-hanoi/response.json",
+      "requestSha256": "2f2c772004e545496f5c435f5a188126a6c9b19b5acf8e5536c2f972b57ad15e",
+      "sidecarRequestHashPresent": true,
+      "rawReportedActionCount": 4,
+      "knownReportedActions": 4,
+      "referenceActionsCharged": 4,
+      "conservativeUnknownActionsCharge": 0,
+      "reportedActionTypes": {
+        "open": 3,
+        "search": 1
+      },
+      "reportedActionOutcomes": {
+        "success": 3,
+        "timeout": 1
+      },
+      "rawRowCount": 45,
+      "rawAggregateCount": 1,
+      "rawDisputeCount": 1,
+      "envelopeVersions": [
+        1
+      ]
+    },
+    {
+      "taskId": "menu-bandipur",
+      "role": "menu",
+      "cityId": "bandipur",
+      "status": "invalid",
+      "terminalStatus": "partial",
+      "responsePresent": true,
+      "validationErrorCount": 266,
+      "validationErrorCounts": {
+        "Aggregate must use one ranked original menu source": 2,
+        "Eligible aggregate has unsupported constituent": 1,
+        "Eligible row lacks required observed/normalized basis": 27,
+        "Invalid or duplicate atomic row ID": 60,
+        "Invalid ranked results": 1,
+        "Invalid terminal status": 1,
+        "Missing identity/eligibility reason": 60,
+        "Numeric quote lacks underlying-source evidence": 54,
+        "Row ID rank/measure differs": 60
+      },
+      "validationArtifact": "restart-1-prep/tasks/menu-bandipur/validation.json",
+      "responseArtifact": "restart-1-prep/tasks/menu-bandipur/response.json",
+      "requestSha256": "239459552396e22ba638b43f0b8eac28c1c7afa0d37bbca800eac4b32f90c8cd",
+      "sidecarRequestHashPresent": true,
+      "rawReportedActionCount": 3,
+      "knownReportedActions": 3,
+      "referenceActionsCharged": 3,
+      "conservativeUnknownActionsCharge": 0,
+      "reportedActionTypes": {
+        "open": 2,
+        "search": 1
+      },
+      "reportedActionOutcomes": {
+        "success": 3
+      },
+      "rawRowCount": 60,
+      "rawAggregateCount": 2,
+      "rawDisputeCount": 0,
+      "envelopeVersions": [
+        1
+      ]
+    },
+    {
+      "taskId": "menu-oaxaca",
+      "role": "menu",
+      "cityId": "oaxaca",
+      "status": "invalid",
+      "terminalStatus": "partial",
+      "responsePresent": true,
+      "validationErrorCount": 417,
+      "validationErrorCounts": {
+        "Aggregate must use one ranked original menu source": 2,
+        "Eligible aggregate has unsupported constituent": 2,
+        "Eligible row lacks required observed/normalized basis": 46,
+        "Invalid currency/unit/serving": 56,
+        "Invalid evidence/date/basis fields": 61,
+        "Invalid missing-measure reason": 4,
+        "Invalid or duplicate atomic row ID": 64,
+        "Invalid ranked results": 1,
+        "Invalid terminal status": 1,
+        "Missing identity/eligibility reason": 56,
+        "Numeric quote lacks underlying-source evidence": 60,
+        "Row ID rank/measure differs": 64
+      },
+      "validationArtifact": "restart-1-prep/tasks/menu-oaxaca/validation.json",
+      "responseArtifact": "restart-1-prep/tasks/menu-oaxaca/response.json",
+      "requestSha256": "2f3c62ea8472a0bf16d3bf26a94dbe884f4706a65d37b404601cf58e0f27b4de",
+      "sidecarRequestHashPresent": true,
+      "rawReportedActionCount": 4,
+      "knownReportedActions": 4,
+      "referenceActionsCharged": 4,
+      "conservativeUnknownActionsCharge": 0,
+      "reportedActionTypes": {
+        "open": 3,
+        "search": 1
+      },
+      "reportedActionOutcomes": {
+        "success": 4
+      },
+      "rawRowCount": 64,
+      "rawAggregateCount": 2,
+      "rawDisputeCount": 0,
+      "envelopeVersions": [
+        1
+      ]
+    },
+    {
+      "taskId": "menu-bled",
+      "role": "menu",
+      "cityId": "bled",
+      "status": "invalid",
+      "terminalStatus": "missing",
+      "responsePresent": false,
+      "validationErrorCount": 1,
+      "validationErrorCounts": {
+        "No returned artifact/action telemetry": 1
+      },
+      "validationArtifact": "restart-1-prep/tasks/menu-bled/validation.json",
+      "responseArtifact": null,
+      "requestSha256": "e3dd440fbda5c98f6380b013056432d294722e9c2096555461391c5a75cbb44d",
+      "sidecarRequestHashPresent": false,
+      "rawReportedActionCount": null,
+      "knownReportedActions": null,
+      "referenceActionsCharged": 4,
+      "conservativeUnknownActionsCharge": 4,
+      "reportedActionTypes": {},
+      "reportedActionOutcomes": {},
+      "rawRowCount": 0,
+      "rawAggregateCount": 0,
+      "rawDisputeCount": 0,
+      "envelopeVersions": [
+        2
+      ]
+    },
+    {
+      "taskId": "menu-kyoto",
+      "role": "menu",
+      "cityId": "kyoto",
+      "status": "invalid",
+      "terminalStatus": "missing",
+      "responsePresent": false,
+      "validationErrorCount": 1,
+      "validationErrorCounts": {
+        "No returned artifact/action telemetry": 1
+      },
+      "validationArtifact": "restart-1-prep/tasks/menu-kyoto/validation.json",
+      "responseArtifact": null,
+      "requestSha256": "99660974ae545a9ee7dec355759af638f746af98a76a45a2485c1556c4a35b90",
+      "sidecarRequestHashPresent": false,
+      "rawReportedActionCount": null,
+      "knownReportedActions": null,
+      "referenceActionsCharged": 4,
+      "conservativeUnknownActionsCharge": 4,
+      "reportedActionTypes": {},
+      "reportedActionOutcomes": {},
+      "rawRowCount": 0,
+      "rawAggregateCount": 0,
+      "rawDisputeCount": 0,
+      "envelopeVersions": [
+        2
+      ]
+    },
+    {
+      "taskId": "menu-copenhagen",
+      "role": "menu",
+      "cityId": "copenhagen",
+      "status": "invalid",
+      "terminalStatus": "missing",
+      "responsePresent": false,
+      "validationErrorCount": 1,
+      "validationErrorCounts": {
+        "No returned artifact/action telemetry": 1
+      },
+      "validationArtifact": "restart-1-prep/tasks/menu-copenhagen/validation.json",
+      "responseArtifact": null,
+      "requestSha256": "edf85b68b8d141b32814c561ea20910e2dc5db669127f0629e7f4641b8e0a94d",
+      "sidecarRequestHashPresent": false,
+      "rawReportedActionCount": null,
+      "knownReportedActions": null,
+      "referenceActionsCharged": 4,
+      "conservativeUnknownActionsCharge": 4,
+      "reportedActionTypes": {},
+      "reportedActionOutcomes": {},
+      "rawRowCount": 0,
+      "rawAggregateCount": 0,
+      "rawDisputeCount": 0,
+      "envelopeVersions": [
+        2
+      ]
+    },
+    {
+      "taskId": "hotel-hanoi",
+      "role": "hotel",
+      "cityId": "hanoi",
+      "status": "valid",
+      "terminalStatus": "success",
+      "responsePresent": true,
+      "validationErrorCount": 0,
+      "validationErrorCounts": {},
+      "validationArtifact": "restart-1-prep/tasks/hotel-hanoi/validation.json",
+      "responseArtifact": "restart-1-prep/tasks/hotel-hanoi/response.json",
+      "requestSha256": "2821d3e2fafb2d05419294f84d8996a549fd78f20f8770e5bf9734d6eca623ee",
+      "sidecarRequestHashPresent": true,
+      "rawReportedActionCount": 2,
+      "knownReportedActions": 2,
+      "referenceActionsCharged": 2,
+      "conservativeUnknownActionsCharge": 0,
+      "reportedActionTypes": {
+        "open": 1,
+        "search": 1
+      },
+      "reportedActionOutcomes": {
+        "error": 1,
+        "success": 1
+      },
+      "rawRowCount": 0,
+      "rawAggregateCount": 0,
+      "rawDisputeCount": 0,
+      "envelopeVersions": [
+        2
+      ]
+    },
+    {
+      "taskId": "hotel-bled",
+      "role": "hotel",
+      "cityId": "bled",
+      "status": "invalid",
+      "terminalStatus": "failed",
+      "responsePresent": true,
+      "validationErrorCount": 1,
+      "validationErrorCounts": {
+        "Provenance hash mismatch: taskSha256": 1
+      },
+      "validationArtifact": "restart-1-prep/tasks/hotel-bled/validation.json",
+      "responseArtifact": "restart-1-prep/tasks/hotel-bled/response.json",
+      "requestSha256": "8a4c657ee514bc978ec8a1cf076a7ce09dec1c859cdf5f8de05db07445cef2f8",
+      "sidecarRequestHashPresent": true,
+      "rawReportedActionCount": 2,
+      "knownReportedActions": 2,
+      "referenceActionsCharged": 2,
+      "conservativeUnknownActionsCharge": 0,
+      "reportedActionTypes": {
+        "open": 1,
+        "search": 1
+      },
+      "reportedActionOutcomes": {
+        "blocked": 1,
+        "success": 1
+      },
+      "rawRowCount": 0,
+      "rawAggregateCount": 0,
+      "rawDisputeCount": 0,
+      "envelopeVersions": [
+        2
+      ]
+    },
+    {
+      "taskId": "hotel-copenhagen",
+      "role": "hotel",
+      "cityId": "copenhagen",
+      "status": "valid",
+      "terminalStatus": "success",
+      "responsePresent": true,
+      "validationErrorCount": 0,
+      "validationErrorCounts": {},
+      "validationArtifact": "restart-1-prep/tasks/hotel-copenhagen/validation.json",
+      "responseArtifact": "restart-1-prep/tasks/hotel-copenhagen/response.json",
+      "requestSha256": "160f49245073ca4703c38f982c1bd075637e510b64767265c295030f9888a862",
+      "sidecarRequestHashPresent": true,
+      "rawReportedActionCount": 2,
+      "knownReportedActions": 2,
+      "referenceActionsCharged": 2,
+      "conservativeUnknownActionsCharge": 0,
+      "reportedActionTypes": {
+        "open": 1,
+        "search": 1
+      },
+      "reportedActionOutcomes": {
+        "success": 2
+      },
+      "rawRowCount": 1,
+      "rawAggregateCount": 0,
+      "rawDisputeCount": 0,
+      "envelopeVersions": [
+        2
+      ]
+    },
+    {
+      "taskId": "review-feasibility",
+      "role": "review",
+      "cityId": null,
+      "status": "valid",
+      "terminalStatus": "review",
+      "responsePresent": true,
+      "validationErrorCount": 0,
+      "validationErrorCounts": {},
+      "validationArtifact": "restart-1-prep/tasks/review-feasibility/validation.json",
+      "responseArtifact": "restart-1-prep/tasks/review-feasibility/response.json",
+      "requestSha256": "9f0fc8661b09e1828cd90478ceb945a3060a3fd858f041b51fc87f9e5c9b1c8f",
+      "sidecarRequestHashPresent": true,
+      "rawReportedActionCount": 1,
+      "knownReportedActions": 1,
+      "referenceActionsCharged": 1,
+      "conservativeUnknownActionsCharge": 0,
+      "reportedActionTypes": {
+        "open": 1
+      },
+      "reportedActionOutcomes": {
+        "success": 1
+      },
+      "rawRowCount": 0,
+      "rawAggregateCount": 0,
+      "rawDisputeCount": 1,
+      "envelopeVersions": []
+    }
+  ],
+  "primaryMealCoverage": {
+    "validEligibleCompleteAggregates": 0,
+    "cityCount": 0,
+    "cityIds": [],
+    "aggregateIds": [],
+    "pilotCities": [
+      {
+        "cityId": "hanoi",
+        "menuTaskStatus": "invalid",
+        "responsePresent": true,
+        "validPrimaryAggregates": 0
+      },
+      {
+        "cityId": "bandipur",
+        "menuTaskStatus": "invalid",
+        "responsePresent": true,
+        "validPrimaryAggregates": 0
+      },
+      {
+        "cityId": "oaxaca",
+        "menuTaskStatus": "invalid",
+        "responsePresent": true,
+        "validPrimaryAggregates": 0
+      },
+      {
+        "cityId": "bled",
+        "menuTaskStatus": "invalid",
+        "responsePresent": false,
+        "validPrimaryAggregates": 0
+      },
+      {
+        "cityId": "kyoto",
+        "menuTaskStatus": "invalid",
+        "responsePresent": false,
+        "validPrimaryAggregates": 0
+      },
+      {
+        "cityId": "copenhagen",
+        "menuTaskStatus": "invalid",
+        "responsePresent": false,
+        "validPrimaryAggregates": 0
+      }
+    ]
+  },
+  "hotels": {
+    "validRecordRows": 1,
+    "recordedExactDateEligibleRows": 0,
+    "rowIds": [],
+    "predicate": "Valid collector record, hotel measure, eligible observed offer, complete normalization, dated requested ISO start/end, two adults, one room, one or three nights, public non-member, no conditional discount. Recorded fields only; no new scientific certification."
+  },
+  "review": {
+    "status": "valid",
+    "responsePresent": true,
+    "validationArtifact": "restart-1-prep/tasks/review-feasibility/validation.json",
+    "primarySamplingDenominator": 0,
+    "randomSampleCount": 0,
+    "sampledAggregateIds": [],
+    "requiredAggregateIds": [
+      "hanoi-downtown-inexp-meal-1p"
+    ],
+    "requiredRowIds": [
+      "hanoi-downtown-bun-cha",
+      "hanoi-downtown-braised-pork-paste",
+      "hanoi-downtown-sauteed-pork-rib",
+      "hanoi-downtown-baked-pork-rib",
+      "hanoi-downtown-red-tuna-steak",
+      "hanoi-downtown-grilled-chicken-ginger",
+      "hanoi-downtown-beef-noodle-pho-bo",
+      "hanoi-downtown-grilled-chicken-lemongrass",
+      "hanoi-downtown-traditional-hanoi-grilled-fish",
+      "hanoi-downtown-stewed-fish-clay-pot",
+      "hanoi-downtown-stewed-tender-beef",
+      "hanoi-downtown-sauteed-chicken-cashew",
+      "hanoi-downtown-sizzled-australian-beef-seafood-chicken",
+      "hanoi-downtown-sauteed-shrimps-cashew",
+      "hanoi-downtown-grilled-fish-banana-leaf",
+      "hanoi-downtown-tenderloin-beefsteak",
+      "hanoi-downtown-beef-noodle-southern",
+      "hanoi-downtown-sauteed-crispy-noodle-options",
+      "hanoi-downtown-chicken-curry",
+      "hanoi-downtown-fried-rice-options",
+      "hanoi-downtown-sauteed-vegetable-cashew",
+      "hanoi-downtown-vegetarian-curry",
+      "hanoi-downtown-braised-eggplant-mushroom",
+      "hanoi-downtown-crispy-tofu-salted-egg",
+      "hanoi-downtown-bolognese-spaghetti",
+      "hanoi-downtown-seafood-spaghetti",
+      "hanoi-downtown-carbonara-spaghetti",
+      "hanoi-downtown-spaghetti-tomato-sauce",
+      "hanoi-downtown-margarita-pizza",
+      "hanoi-downtown-hawaiian-pizza",
+      "hanoi-downtown-seafood-pizza",
+      "hanoi-downtown-cowboy-pizza",
+      "hanoi-downtown-pan-seared-salmon",
+      "hanoi-downtown-beef-burger",
+      "hanoi-downtown-chicken-burger",
+      "hanoi-downtown-fish-and-chips",
+      "hanoi-downtown-cheesy-quesadillas"
+    ],
+    "urlCount": 1,
+    "excludedDiagnosticAggregateCount": 1,
+    "excludedDiagnosticRowCount": 37,
+    "excludedDiagnostics": [
+      {
+        "taskId": "menu-hanoi",
+        "aggregateIds": [
+          "hanoi-downtown-inexp-meal-1p"
+        ],
+        "rowIds": [
+          "hanoi-downtown-bun-cha",
+          "hanoi-downtown-braised-pork-paste",
+          "hanoi-downtown-sauteed-pork-rib",
+          "hanoi-downtown-baked-pork-rib",
+          "hanoi-downtown-red-tuna-steak",
+          "hanoi-downtown-grilled-chicken-ginger",
+          "hanoi-downtown-beef-noodle-pho-bo",
+          "hanoi-downtown-grilled-chicken-lemongrass",
+          "hanoi-downtown-traditional-hanoi-grilled-fish",
+          "hanoi-downtown-stewed-fish-clay-pot",
+          "hanoi-downtown-stewed-tender-beef",
+          "hanoi-downtown-sauteed-chicken-cashew",
+          "hanoi-downtown-sizzled-australian-beef-seafood-chicken",
+          "hanoi-downtown-sauteed-shrimps-cashew",
+          "hanoi-downtown-grilled-fish-banana-leaf",
+          "hanoi-downtown-tenderloin-beefsteak",
+          "hanoi-downtown-beef-noodle-southern",
+          "hanoi-downtown-sauteed-crispy-noodle-options",
+          "hanoi-downtown-chicken-curry",
+          "hanoi-downtown-fried-rice-options",
+          "hanoi-downtown-sauteed-vegetable-cashew",
+          "hanoi-downtown-vegetarian-curry",
+          "hanoi-downtown-braised-eggplant-mushroom",
+          "hanoi-downtown-crispy-tofu-salted-egg",
+          "hanoi-downtown-bolognese-spaghetti",
+          "hanoi-downtown-seafood-spaghetti",
+          "hanoi-downtown-carbonara-spaghetti",
+          "hanoi-downtown-spaghetti-tomato-sauce",
+          "hanoi-downtown-margarita-pizza",
+          "hanoi-downtown-hawaiian-pizza",
+          "hanoi-downtown-seafood-pizza",
+          "hanoi-downtown-cowboy-pizza",
+          "hanoi-downtown-pan-seared-salmon",
+          "hanoi-downtown-beef-burger",
+          "hanoi-downtown-chicken-burger",
+          "hanoi-downtown-fish-and-chips",
+          "hanoi-downtown-cheesy-quesadillas"
+        ],
+        "reason": "Original invalid record; dispute verification only, never primary reference admission."
+      }
+    ],
+    "rawCollectorDisputeCount": 1,
+    "assignedDisputeCount": 1,
+    "rawCollectorDisputes": [
+      {
+        "taskId": "menu-hanoi",
+        "disputeId": "dispute-spaghetti-heading-description"
+      }
+    ],
+    "assignedDisputeIds": [
+      "dispute-spaghetti-heading-description"
+    ],
+    "rowOutcomeCounts": {
+      "ineligible": 37
+    },
+    "aggregateOutcomeCounts": {
+      "ineligible": 1
+    },
+    "unresolvedRowIds": [],
+    "aggregateOutcomes": [
+      {
+        "aggregateId": "hanoi-downtown-inexp-meal-1p",
+        "verdict": "ineligible",
+        "reason": "The menu exposes all listed candidates across its main-course, vegetarian-dish, and western-food sections, and each recorded amount matches. The page evidence does not establish the mandatory-charge basis, and the pasta heading/description conflict remains; this aggregate stays excluded.",
+        "enumerationComplete": true,
+        "amountsVerified": true,
+        "feeBasisVerified": false
+      }
+    ],
+    "disputeOutcomes": [
+      {
+        "id": "dispute-spaghetti-heading-description",
+        "verdict": "ineligible",
+        "reason": "The accessible menu itself pairs a spaghetti-with-tomato-sauce heading with a description of shrimp, bell peppers, cashews, and steamed rice. The source cannot resolve the item classification; mandatory charges are also undocumented."
+      }
+    ],
+    "outcomesAdmission": "Validated diagnostic outcomes; excluded collectors remain excluded."
+  },
+  "limitations": [
+    "Execution/accounting snapshot only; no point estimates, scores, calibration, accuracy gains or scientific verdicts generated.",
+    "Invalid or missing menu records do not establish absence of public menus.",
+    "Excluded diagnostic review cannot promote original invalid records or enter the primary denominator.",
+    "This immutable pre-assessment budget snapshot excludes later assessment accounting; replay verifies its exact original prefix and validates later journal entries separately."
+  ]
+}

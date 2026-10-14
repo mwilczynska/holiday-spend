@@ -1,0 +1,389 @@
+{
+  "schemaVersion": 1,
+  "assessedAt": "2026-10-14T05:00:41.275Z",
+  "roleProvenance": {
+    "task": "/root/restart_feasibility_assessment",
+    "model": "gpt-6-astra",
+    "effort": "medium",
+    "runtime": "Codex subagent",
+    "identityAuthority": "Coordinator-selected settings recorded in budget sequence 49; not independently self-attested.",
+    "designInvocation": 4
+  },
+  "contractSha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602",
+  "evidenceFiles": [
+    {
+      "path": "CITY-COST-ACCURACY-GOAL.md",
+      "sha256": "09d7586b4c92bf65284bf6ef7b5c97ea54a29d4ad7d1b039b7aa1507fcfd2422"
+    },
+    {
+      "path": "docs/dev/plans/city-cost-accuracy.md",
+      "sha256": "d7310f9d947c9e2f464423829584741679bf6a394861bf2c4d0390dafaa97037"
+    },
+    {
+      "path": "docs/dev/plans/city-cost-experiment-agent-architecture.md",
+      "sha256": "95b3d87dc5538aa16b0d4c1134f396a042b81127a12133b17bffcc322f40505f"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-design.md",
+      "sha256": "a5c571c8bbbe5bbc234e6a41397866697635960d73463017fd36626c77b7c039"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-design-repair.md",
+      "sha256": "0e80e38f073509c062b81421af7af104e4900c26f8333733154907d36997da92"
+    },
+    {
+      "path": "research/city-cost-accuracy/REPORT.md",
+      "sha256": "005140375ef6a11915a95f6f92a72012ed5983a6d9548eed17cdb3dcfa32751a"
+    },
+    {
+      "path": "research/city-cost-accuracy/experiments/000-baseline/summary.json",
+      "sha256": "75a8b6ce3b9e7b49331bdeaaed78085e0d32d9b916d452e4f81e19f818bae489"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/assessment-request.txt",
+      "sha256": "d97fa7058f072254dca55fb80ed20aee21dbe3492fe6f186efbf9603f92ac090"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/contract.json",
+      "sha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/freeze.json",
+      "sha256": "6928fe01c9fff30066bd217ec7608a6401db16813de6b9c44ef2a977ff3ff457"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/execution-summary.json",
+      "sha256": "5003800e1e4d73c9d865a8ce0ab331f4c46874a1ae78ea99e3d7855f18a787e0"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/aggregate-ledger.json",
+      "sha256": "d99db533ad68e86d9f7f408efc5857627693b0e6f1d959586c924778ad65fa4b"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/review-selection.json",
+      "sha256": "b3617094bb3e27ec8209e8ba8d9a93754ab8192edcce2fd2f90baf17f6ec9355"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/serialization-errata.json",
+      "sha256": "8b5a53afe3df5b22a1a662cbdaa6247c16e68981c1a84879839394b5ebd7d2f4"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/runtime-failures.json",
+      "sha256": "5cd914621497098014538c68dc0f4bbb17d873d6bb561e0cd9c96f5239b5717f"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/review-execution-errata.json",
+      "sha256": "cf85f85171c8ad61f4d5a45545a4d95e32a871b311cbb44bd75a169ade25cdfd"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/budget.jsonl",
+      "sha256": "30cf8ffb011d7b9cd68cb675ef5ae007529414d5c340d90f35c4554f236a1b18"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-bled/validation.json",
+      "sha256": "a4e3b296cc4075499262a00efe5e838d56844ec430a6063564f553b3253eb3b6"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-bled/response.json",
+      "sha256": "50a1160b38a424b3d38cca8da0e61fa36f5a5c0ba29d0b35d5cabe2fe9c5982c"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-copenhagen/validation.json",
+      "sha256": "4e72975b66e1feb0a4fd4faed75209ca6957f564fcc4078e31a12aae1519dba9"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-copenhagen/response.json",
+      "sha256": "b17d95b36a815f3c2dcc21cdf80040ac4e11debecb03e42edc7aad6196f8071e"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-hanoi/validation.json",
+      "sha256": "59c0d35d4f46964dd70763a0ec4c3369be6a5202061c5e68465215251c1542dc"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-hanoi/response.json",
+      "sha256": "fd9e8fb1edfcd11e8fb9115f52f4fd11cb6a4b0d2673b6150de0ee24010620a3"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-bandipur/validation.json",
+      "sha256": "2e1df5161c8d1a62fe4ff72d068af73fcf5814bc2fb21d8c94eb2769f8d8d219"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-bandipur/response.json",
+      "sha256": "a3e8b8748680838c7d014ba10c2060518b358d722f5d1f453b82284ec645e9b6"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-bled/validation.json",
+      "sha256": "79723e1cc551628b5b89cb3d59dba9169d58aa329306a714e2011434164fd6cf"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-copenhagen/validation.json",
+      "sha256": "47595f03216c8e6b814be777cd136a26ffc25bc5d2cf0195fecea32b978b35bf"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-hanoi/validation.json",
+      "sha256": "3be2e1ffe0bd9d9bcc461d143a22198d9d496aa8d4cf2f73d984442186df53ca"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-hanoi/response.json",
+      "sha256": "8ab48116f92cb6a121ceae41768039a430f0569bdcf6e58f9ed9c67f4f06eca6"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-kyoto/validation.json",
+      "sha256": "0fa37e7769813756ff800ccde5620bdb04578bb24534f42bcfd503b103935008"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-oaxaca/validation.json",
+      "sha256": "a56350c84e9701099ac7b4a5a52f9acda816c760ebb900da505a8fcf12a4ce9f"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-oaxaca/response.json",
+      "sha256": "a36672262b886823b7f4b75bd80047de0230d8cd4dc4375b384231a1c60daa23"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/review-feasibility/validation.json",
+      "sha256": "5429c5c888843024f06f594b24cb6e85f9a030672734f2b51079d94a2a01e112"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/review-feasibility/response.json",
+      "sha256": "440a2e181c956d85acd96a96500fd1986c812f35e964e3aba5251c37550d4fc0"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-hanoi/delivery-v1.txt",
+      "sha256": "3e504cd9c636608b49349392ee4e6be12b7328d6020cca277ca7c9d8d8096e24"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-bled/delivery-v2.txt",
+      "sha256": "53a036287f539a86e303f1b3bf6dea8568eeaffd81f028adb91ddd12dc8da824"
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-bled/delivery-v2.txt",
+      "sha256": "db68cea2f189595536eb9a037afc427beade2f007ca19188d51e4f7bc7e7879b"
+    }
+  ],
+  "verdict": "insufficient_evidence_failed_frozen_feasibility",
+  "feasibility": {
+    "required": {
+      "cities": 4,
+      "ofCities": 6,
+      "independentEligibleMealVenuesPerCity": 3,
+      "review": "ceil(20% of provisionally eligible primary aggregates) plus every genuine dispute; no unresolved basis ambiguity in primary cells"
+    },
+    "observed": {
+      "qualifyingCities": 0,
+      "validEligibleCompleteAggregates": 0,
+      "perCity": [
+        {
+          "cityId": "hanoi",
+          "menuTaskStatus": "invalid",
+          "responsePresent": true,
+          "validPrimaryAggregates": 0
+        },
+        {
+          "cityId": "bandipur",
+          "menuTaskStatus": "invalid",
+          "responsePresent": true,
+          "validPrimaryAggregates": 0
+        },
+        {
+          "cityId": "oaxaca",
+          "menuTaskStatus": "invalid",
+          "responsePresent": true,
+          "validPrimaryAggregates": 0
+        },
+        {
+          "cityId": "bled",
+          "menuTaskStatus": "invalid",
+          "responsePresent": false,
+          "validPrimaryAggregates": 0
+        },
+        {
+          "cityId": "kyoto",
+          "menuTaskStatus": "invalid",
+          "responsePresent": false,
+          "validPrimaryAggregates": 0
+        },
+        {
+          "cityId": "copenhagen",
+          "menuTaskStatus": "invalid",
+          "responsePresent": false,
+          "validPrimaryAggregates": 0
+        }
+      ],
+      "returnedMenuRecords": 3,
+      "invalidReturnedMenuRecords": 3,
+      "missingMenuRecords": 3
+    },
+    "pass": false,
+    "reason": "The frozen executed acquisition contract failed. No primary meal aggregate is admissible. All returned first-wave menu rows have missing normalization independently of their serialization defects. The three later menu responses are absent. Invalid and missing collectors remain in the six-city execution denominator; unsupported reference cells are unscored, not zero-price observations. This is not an estimate of price error or proof that public menus cannot be obtained."
+  },
+  "hotelDiagnostic": {
+    "requiredExactDateMatchedOffers": 1,
+    "observedExactDateMatchedOffers": 0,
+    "probes": 3,
+    "pass": false,
+    "separateFromMealGate": true,
+    "byCity": {
+      "hanoi": "Valid execution record with no offer rows; first booking-provider open errored and indexed dates differed from requested stay.",
+      "bled": "Invalid record due to uppercase taskSha256 text; the digest letters match after case-folding, but the frozen validation failure is retained. Independently, the source was blocked and no offer row was returned.",
+      "copenhagen": "Valid execution record contains one uncertain proxy from-rate. Two-adult/one-room and three-star descriptions do not establish requested dates or mandatory-charge basis; no matched offer."
+    },
+    "interpretation": "Exact-date class/occupancy/tax-matched access was not demonstrated for 17-20 November 2026. This does not establish accommodation price accuracy or absence of bookable rooms."
+  },
+  "independentReview": {
+    "complete": true,
+    "scientificRepairCompliant": true,
+    "primarySamplingDenominator": 0,
+    "randomSampleCount": 0,
+    "postReviewPrimaryAggregates": 0,
+    "requiredDiagnosticAggregates": 1,
+    "requiredDiagnosticRows": 37,
+    "requiredGenuineDisputes": 1,
+    "reviewActions": 1,
+    "unresolvedAssignedRows": 0,
+    "reason": "The frozen rule requires all genuine disputes even in excluded records. Restoring the omitted Hanoi dispute to independent diagnostic review complied with that rule: raw rows and original invalid status were preserved, and no primary admission or numeric repair occurred. The reviewer returned ineligible outcomes for the aggregate, all 37 constituents and the dispute after opening its source. Source ambiguity remains factually unresolved, but eligibility is resolved by exclusion, as permitted; it is not an inaccessible or unfinished review. An additional burger-description ambiguity noticed during that same review was also excluded. N=0 means no random sample was due and explicitly fails feasibility; it is not evidence of broad review coverage.",
+    "audit": "Offline SHA256 checks matched every execution-summary input artifact and returned-response validation hash. All 37 selected diagnostic rows exactly matched raw objects; every required row, aggregate and dispute had an outcome. This audit does not independently certify external source truth."
+  },
+  "executionLimitations": {
+    "sourceAcquisition": [
+      "Hanoi, Bandipur and Oaxaca returned raw menus; missing mandatory-charge normalization is independent of formatting. Bandipur also records incomplete exposed menu sections and uncertain geography for one venue; Oaxaca records currency/unit/geography uncertainties. None may be admitted by inference.",
+      "Current-undated menus are allowed but give limited temporal certainty. No complete daily basket was acquired or required.",
+      "Hotel search/open limitations and mismatched or blank dates prevented matched hotel coverage."
+    ],
+    "serializationAndHashes": [
+      "First-wave collector instructions under-specified exact validator conventions for ranked-result fields, structured IDs, boolean operator status and terminal enums; raw outputs failed multiple checks. Some errors also concern missing source evidence, so they cannot all be dismissed as superficial formatting.",
+      "The later delivery clarification made existing mechanical requirements explicit; no first-wave retry, price repair, query change or relaxed threshold occurred. Envelope-version differences prevent attributing apparent later schema compliance to estimator improvement.",
+      "Bled hotel task hash differs in casing only. Preserve invalid status; even accepting equivalent digest bytes would yield no matched offer."
+    ],
+    "runtime": [
+      "Bled, Kyoto and Copenhagen menu artifacts are absent after interruption; actual source actions and task completion are unknown. Each is charged its full four-action allocation.",
+      "Bled accounting began before dispatch while the coordinator audited serialization. Queue delay and interruption are not model latency; elapsed journal intervals cannot prove continuous worker execution or timeout compliance."
+    ],
+    "modelAndTransport": "Cost work tested only GPT-6 Luna/Max through subscription-backed Codex agents. Haiku 5.5/Max and Opus 5.5/Max execution remain unverified. This is not an app API transport, tool-equivalence, latency or billing evaluation.",
+    "scope": "No new predictions, candidate001, extension, confirmation, old holdout, paid API, application keys or database work was needed for this assessment."
+  },
+  "accuracyClaimsSupported": [
+    "Original unchanged v1.1 has descriptive conditional agreement measurements on sparse named offers in four exposed development cities under pilot-1.",
+    "The executed restart preparation failed its frozen reference feasibility gate, with distinct source-basis, serialization, provenance and runtime limitations.",
+    "Independent diagnostic review confirmed exclusion of the recorded Hanoi dispute without creating usable primary references."
+  ],
+  "accuracyClaimsUnsupported": [
+    "Any comparative estimator improvement or superiority of a candidate; no candidate executed.",
+    "Global/population city-price, dated accommodation, complete daily-budget or actual-spend accuracy.",
+    "That invalid JSON, missing artifacts, unknown taxes or blocked pages are measured price errors or demonstrate that suitable public sources do not exist.",
+    "That improved serialization, schema validity, repeat consistency or source reproduction establishes estimation accuracy.",
+    "Haiku/Opus performance or subscription-agent/API equivalence."
+  ],
+  "baselineAssessment": {
+    "experiment": "000-baseline",
+    "status": "preserved_exposed_historical_development_evidence",
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "registeredAttempts": 18,
+    "appValid": 17,
+    "usageLimitFailures": 1,
+    "chargedCopyOnlyRecoveries": 1,
+    "chargedEstimateInvocations": 19,
+    "supportedCities": 4,
+    "distinctSupportedCityMeasureCells": 15,
+    "expectedRepeatCells": 45,
+    "failedRepeatCells": 3,
+    "successfulRepeatCells": 42,
+    "primaryLoss": 0.3979154954318823,
+    "primaryLossInterpretation": "Equal-city mean absolute log error under original pilot hierarchy and ln(4) failed-cell penalty; not a percentage and not the restart multi-venue estimand.",
+    "successfulOnlyMedianAPE": 0.18899285141113753,
+    "successfulOnlyP90APE": 0.9166399999999991,
+    "penaltySensitivity": [
+      {
+        "penaltyRatio": 4,
+        "primaryLoss": 0.3979154954318823
+      },
+      {
+        "penaltyRatio": 2,
+        "primaryLoss": 0.3401532303852202
+      },
+      {
+        "penaltyRatio": 10,
+        "primaryLoss": 0.4742730564213952
+      }
+    ],
+    "fx": "16 of 17 valid responses returned the independently observed latest RBA date. Oaxaca repeat 3 used the preceding date, app-valid but not latest as requested; frozen evaluation FX keeps that separate from anchor scoring.",
+    "limits": "Thin one-venue/operator observations, current-undated menus and serving/tax/basket uncertainties. Hanoi and Kyoto lack scored references; no dated hotels or complete baskets. Repeated prediction cells are not independent source observations. Preserve the baseline without pooling it into the failed restart stratum; no comparative improvement claim is possible."
+  },
+  "candidateCount": 0,
+  "tenExperimentReviewDue": false,
+  "resources": {
+    "asOfBudgetSequence": 49,
+    "executionSummaryImmutableSequence": 45,
+    "executionSummaryDesignInvocations": 3,
+    "currentCumulativeUsed": {
+      "estimateInvocations": 19,
+      "referenceWorkerInvocations": 13,
+      "referenceActionsCharged": 73,
+      "estimateRetrievalActionsCharged": 44,
+      "designInvocations": 4,
+      "candidateAttempts": 0,
+      "fullExtensions": 0,
+      "totalChargedRoleInvocations": 36
+    },
+    "newPreparation": {
+      "referenceWorkerInvocations": 10,
+      "knownReportedReferenceActions": 18,
+      "unknownActionsConservativelyCharged": 12,
+      "chargedReferenceActions": 30,
+      "actionAllocation": 40
+    },
+    "priorReferenceActions": 43,
+    "cumulativeKnownReportedReferenceActions": 61,
+    "priorEstimateActions": {
+      "knownReported": 36,
+      "unknownConservativeCharge": 8,
+      "charged": 44,
+      "limitation": "Unknown Oaxaca telemetry is not zero; eight is an accounting charge, not a proven bound. True historical cumulative retrieval usage remains unresolved."
+    },
+    "hardLimits": {
+      "estimateInvocations": 400,
+      "referenceActions": 300,
+      "referenceWorkerInvocations": 100,
+      "estimateRetrievalActions": 1600,
+      "designInvocations": 50,
+      "candidateAttempts": 20,
+      "fullExtensions": 2
+    },
+    "protectedReservationsAtAssessment": {
+      "estimateInvocations": 281,
+      "referenceActions": 217,
+      "referenceWorkerInvocations": 87,
+      "estimateRetrievalActions": 843,
+      "designInvocations": 4,
+      "confirmationEstimateInvocationsIncluded": 100
+    },
+    "reservationsMeaning": "Protected future work is not executed usage. Retain cumulative debits on closeout; do not reset budgets. Assessment call 4 is already charged, awaiting its finish event.",
+    "tokensAndCost": "Tokens unavailable; no invented monetary/API cost or latency claims."
+  },
+  "recommendation": {
+    "decision": "Stop new experiments now and complete bounded insufficient-evidence closeout; retain unchanged v1.1.",
+    "reason": "The original explicit failed-feasibility stop applies even though execution defects contributed. Remaining numerical budget is not authorization to recollect until success.",
+    "candidate001": "Do not release or count the contingent proposal.",
+    "future": "A new acquisition method requires separate owner authorization and a prospective designer revision with new frozen strata, prior failures and cumulative usage preserved."
+  },
+  "requiredRemainingWork": [
+    {
+      "owner": "coordinator",
+      "task": "Append the terminal assessment finish event for assessment-restart-1; preserve execution-summary.json at sequence 45/design total 3 and report current total 4 separately."
+    },
+    {
+      "owner": "coordinator",
+      "task": "Publish final bounded report, per-city acquisition/missingness and separate hotel/review findings; update PLAN.md and append LOG.md to terminal insufficient-evidence state. Clearly supersede stale inactive-restart wording in the historical report while retaining its baseline evidence and provenance."
+    },
+    {
+      "owner": "coordinator",
+      "task": "Run offline reproducibility/hash and appropriate documentation/diff checks; record assessment artifacts, terminal resource totals and any future reservation disposition without rewriting consumed counts. Commit and push the authorized research checkpoint."
+    }
+  ],
+  "prospectiveLessons": [
+    "If separately authorized, make exact delivery schemas and hash serialization explicit before freezing; validate with synthetic fixtures rather than actual-city retries.",
+    "Align coordinator accounting with actual dispatch and persist terminal/missing artifacts robustly; record interruption separately from model latency.",
+    "Any future feasibility design should confront charge-basis availability and exact-date booking access prospectively. Do not infer charges, substitute easier cities or relax this gate.",
+    "Retain the all-disputes rule for excluded observations in tooling, with diagnostics segregated from random primary eligibility."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "taskId": "collect-copenhagen",
+  "phase": 1,
+  "role": "collect",
+  "cityId": "copenhagen",
+  "dependsOn": [],
+  "maxActions": 5,
+  "query": "Copenhagen Indre By cafe cappuccino menu official",
+  "toolOrder": [
+    "search",
+    "open s1",
+    "open s2",
+    "open s3",
+    "open s4"
+  ],
+  "promptTemplate": "collector",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subscription subagent",
+  "freshContext": true,
+  "maxConcurrency": 3,
+  "maxSeconds": 600,
+  "retries": 0,
+  "paidCalls": 0,
+  "substitutions": false,
+  "assignment": {
+    "taskId": "collect-copenhagen",
+    "cityId": "copenhagen",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "area": "Indre By",
+    "currency": "DKK",
+    "query": "Copenhagen Indre By cafe cappuccino menu official",
+    "slots": null,
+    "outputDirectory": "C:\\Users\\chawi\\.codex\\worktrees\\city-cost-accuracy\\holiday-spend\\research\\city-cost-accuracy\\redesign-1\\tasks\\collect-copenhagen",
+    "maxActions": 5
+  },
+  "systemSha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+  "promptSha256": "2ceb4ec0eb14a5b14b04dc0905d5be99e3e6ad3d28cc70d5f72ad71dc975c4b2",
+  "contractSha256": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628"
+}

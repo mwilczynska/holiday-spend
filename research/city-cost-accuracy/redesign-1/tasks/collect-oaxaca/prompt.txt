@@ -1,0 +1,601 @@
+Assignment: {
+  "taskId": "collect-oaxaca",
+  "cityId": "oaxaca",
+  "city": "Oaxaca",
+  "country": "Mexico",
+  "area": "Centro, Oaxaca de Juarez",
+  "currency": "MXN",
+  "query": "Oaxaca de Juarez Centro cafeteria capuchino menu oficial",
+  "slots": null,
+  "outputDirectory": "C:\\Users\\chawi\\.codex\\worktrees\\city-cost-accuracy\\holiday-spend\\research\\city-cost-accuracy\\redesign-1\\tasks\\collect-oaxaca",
+  "maxActions": 5
+}
+Definition:
+One menu-listed regular hot cappuccino, default dairy milk, one cup for one adult, without flavours, add-ons or discounts, at a public cafe in the assigned district. Use explicitly regular/standard size; otherwise smallest explicitly named adult size; a single cappuccino price without size is an unspecified cup. No latte, flat white, iced coffee, child serving, bundles or takeaway/delivery-only offers. Unspecified service mode is allowed but never asserted dine-in. This target is the LISTED amount, not payable cost. Unknown charges do not disqualify a listed quote. Never infer taxes, volume, currency or dates. Exact single prices only, no ranges/from-prices. If multiple qualifying items share selected size/default preparation, take first in document reading order, not cheapest. Retain explicit size/volume; never standardize volume.
+Selection/tool order:
+Exactly one assigned search, no reformulation. Inspect first ten ordinary organic results in returned order, fewer if fewer returned. Exclude ads, aggregators, social posts, directories, review/travel articles, delivery platforms and unowned mirrors. Choose first four distinct apparent cafe-brand domains whose title/non-price snippet identifies a cafe in assigned city and a menu/drinks page. Never choose using price/affordability. One brand/domain per slot. Assign s1-s4 by selected rank; null-fill absent slots. Save immutable frame.json BEFORE any open. Open each selected URL once in slot order. Never replace blocked, ambiguous, off-district, unpriced, non-menu or subsequently dependent slots. No clicks, screenshots, second search, alternate links or extra pages. Automatic redirects within an open are recorded, never manually followed. Single opened page must establish branch/district, item and currency. Known common owner/menu makes dependent slots; unknown ultimate ownership remains limitation. This is a finite search-result frame, not random city sampling.
+Maximum 5 actions: exact assigned search, then <=4 assigned URL opens. Unknown activity charged5. Save frame.json with first ten ranked results and all4 slots BEFORE any open. No source replacements. Complete response includes s1-s4 exactly once, including failures/nulls. At most25 quoted words per underlying source across all evidence fields; other facts may be concise paraphrases. listedAmount is numeric source amount, amountScale=1000 ONLY if source explicitly states thousands in the currency, otherwise1 for full units; unclear scale means ambiguous_price and null scale. Record scale evidence in currencyEvidence. Currency requires source name/ISO/unambiguous symbol; bare dollar sign alone is ambiguous. District requires source address or explicit district; no coordinate/map inference. Explicitly expired menu =>expired; undated live page =>undated. Default unflavoured cappuccino without milk options denotes default milk; never add a surcharge. operatorName/menuGroup contain source-stated operator/shared-menu identities else null. Retain all unsupported facts as null. Every non-observed status has listedAmount=null. retrievedAt is UTC ISO timestamp; menuDate is literal source date text or null. reason is brief eligibility/failure reasoning, never a substitute price. Do not normalize prices.
+FRAME_SCHEMA:
+{
+  "type": "object",
+  "properties": {
+    "taskId": {
+      "type": "string"
+    },
+    "cityId": {
+      "enum": [
+        "hanoi",
+        "oaxaca",
+        "copenhagen"
+      ]
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "selection": {
+            "enum": [
+              "selected",
+              "duplicate_brand",
+              "not_official_menu",
+              "not_city",
+              "not_cafe",
+              "beyond_four"
+            ]
+          },
+          "slot": {
+            "enum": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              null
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "rank",
+          "title",
+          "url",
+          "selection",
+          "slot",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 10
+    },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slot": {
+            "enum": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          "searchRank": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 10
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "slot",
+          "searchRank",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    }
+  },
+  "required": [
+    "taskId",
+    "cityId",
+    "results",
+    "slots"
+  ],
+  "additionalProperties": false
+}
+RESPONSE_SCHEMA:
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "cityId": {
+      "enum": [
+        "hanoi",
+        "oaxaca",
+        "copenhagen"
+      ]
+    },
+    "role": {
+      "enum": [
+        "collect",
+        "verify"
+      ]
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "failed"
+      ]
+    },
+    "failureReason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ordinal": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "type": {
+            "enum": [
+              "search",
+              "open"
+            ]
+          },
+          "query": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "at": {
+            "type": "string"
+          },
+          "outcome": {
+            "enum": [
+              "success",
+              "blocked",
+              "error",
+              "timeout"
+            ]
+          }
+        },
+        "required": [
+          "ordinal",
+          "type",
+          "query",
+          "url",
+          "at",
+          "outcome"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 5
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slot": {
+            "enum": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          "sourceUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resolvedUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceTitle": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "retrievedAt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "venueName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "addressText": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "geography": {
+            "enum": [
+              "confirmed",
+              "off_area",
+              "unknown"
+            ]
+          },
+          "geographyEvidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "operatorName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "menuGroup": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "itemLabel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sizeText": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "volumeMl": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "exclusiveMinimum": 0
+          },
+          "serviceMode": {
+            "enum": [
+              "dine_in",
+              "unspecified",
+              "takeaway_only",
+              "delivery_only",
+              "unknown"
+            ]
+          },
+          "listedAmount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "exclusiveMinimum": 0
+          },
+          "amountScale": {
+            "enum": [
+              1,
+              1000,
+              null
+            ]
+          },
+          "currency": {
+            "enum": [
+              "VND",
+              "MXN",
+              "DKK",
+              null
+            ]
+          },
+          "currencyEvidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "priceEvidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "chargeBasis": {
+            "enum": [
+              "all_included_explicit",
+              "additional_explicit",
+              "unknown",
+              "contradictory"
+            ]
+          },
+          "chargeEvidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "menuDate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dateBasis": {
+            "enum": [
+              "dated",
+              "undated",
+              "expired",
+              "unknown"
+            ]
+          },
+          "status": {
+            "enum": [
+              "observed",
+              "no_slot",
+              "blocked",
+              "not_menu",
+              "off_area",
+              "absent_product",
+              "ambiguous_unit",
+              "ambiguous_currency",
+              "ambiguous_price",
+              "expired",
+              "technical_failure",
+              "timeout",
+              "action_cap"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "slot",
+          "sourceUrl",
+          "resolvedUrl",
+          "sourceTitle",
+          "retrievedAt",
+          "venueName",
+          "addressText",
+          "geography",
+          "geographyEvidence",
+          "operatorName",
+          "menuGroup",
+          "itemLabel",
+          "sizeText",
+          "volumeMl",
+          "serviceMode",
+          "listedAmount",
+          "amountScale",
+          "currency",
+          "currencyEvidence",
+          "priceEvidence",
+          "chargeBasis",
+          "chargeEvidence",
+          "menuDate",
+          "dateBasis",
+          "status",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "taskId",
+    "cityId",
+    "role",
+    "status",
+    "failureReason",
+    "actions",
+    "rows"
+  ],
+  "additionalProperties": false
+}
+Read entire schemas BEFORE tools. Exact names/types; blanks null. Write only immutable frame.json, response.json and provenance.json in assignment.outputDirectory, in the required order. Then return saved path and terminal status, no long narrative.
+Literal identities:
+LITERAL IDENTITY EXTRACTION: Copy itemLabel, sizeText, venueName and addressText from the selected source, never translate, paraphrase or invent labels. Preserve spelling/punctuation; plain-text whitespace may differ and the declared normalizer handles it. itemLabel is the selected product title excluding separately displayed price and size columns; if size is inseparable in its title retain the full title. sizeText is the literal selected size label or explicit volume text; if neither exists use null, never write "unspecified", "regular" or a guessed volume. Retain volumeMl only for explicitly stated ml; no unit conversion. For multiple size choices keep the original regular/standard-then-smallest-adult selection; indistinguishable ordering uses first in document reading order. Identify branches explicitly associated with this menu in the assigned district. If the page explicitly applies one menu to several eligible branches, choose the first eligible branch in document reading order; otherwise a menu must be tied to its branch, with unresolved association treated unknown. venueName is that branch heading; if none, first visible cafe-name heading identifying the menu, then page title if no visible heading. Copy its whole displayed name without appending city/brand text. addressText is the first complete contiguous street/postal address block for that selected branch, excluding phone/hours; join line breaks as spaces, never reconstruct an address from scattered fragments. Multiple unresolved branch associations mean geography unknown; absent usable name/address means null. operatorName is the first explicitly identified legal operator name for this branch, copied literally, else null; a copyright owner alone does not establish operator. menuGroup is a literal named common-menu/brand identity ONLY where source explicitly says the same menu applies to multiple branches/venues, else null; generic "drinks/menu" headings are not group IDs. No translation or inferred corporate relationship. All identical source strings will undergo only NFC/lowercase/trim/whitespace normalization; genuine source differences remain disputes.
+Provenance and chronology:
+PROVENANCE DELIVERY: Also write one immutable provenance.json using PROVENANCE_SCHEMA below after response.json and before narrative. It is a worker-recorded action snapshot, NOT an exported native runtime transcript. For each actual search/open record one ordinal, exact toolName, exact query or requested URL, start/end UTC ISO timestamps measured with the local clock immediately around the tool call, outcome, assigned slot for open (null search), returned resolvedUrl/sourceTitle if exposed, and a brief factual resultNote with NO copied source passage or new price. For search resolvedUrl/sourceTitle are null and resultNote records returned result count; frame.json carries ranks. query is null for opens; url is null for search. Include errors. Do not fabricate unavailable tool metadata: resolvedUrl falls back to requested URL only when the tool does not expose a redirect, noting this in resultNote; sourceTitle may be null. Response actions must correspond one-to-one, with same ordinal/type/query/url/outcome and at=startedAt. Observed row sourceUrl is the assigned URL, resolvedUrl matches the action record, and retrievedAt=endedAt. Use frameSavedAt from frame.json filesystem mtime in UTC for collector, null verifier. responseSavedAt is response.json filesystem mtime; recordedAt is snapshot creation time. Set completeActionLog=false if any action/timing was lost or uncertain, retaining all known entries. No logging searches or extra page actions. You may read local clock/filesystem metadata without using network or acquiring source facts. Save frame before opens, response before provenance; never overwrite any saved file. All timestamps have millisecond ISO UTC precision. Only metadata is duplicated; supporting source excerpts stay solely in response.json under the existing25-word/source limit. If interrupted, preserve whatever artifacts exist; no continuation/retry.
+PROVENANCE_SCHEMA:
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "cityId": {
+      "enum": [
+        "hanoi",
+        "oaxaca",
+        "copenhagen"
+      ]
+    },
+    "role": {
+      "enum": [
+        "collect",
+        "verify"
+      ]
+    },
+    "evidenceKind": {
+      "const": "worker_recorded_not_native_transcript"
+    },
+    "recordedAt": {
+      "type": "string"
+    },
+    "frameSavedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "responseSavedAt": {
+      "type": "string"
+    },
+    "completeActionLog": {
+      "type": "boolean"
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ordinal": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "type": {
+            "enum": [
+              "search",
+              "open"
+            ]
+          },
+          "toolName": {
+            "type": "string"
+          },
+          "query": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "startedAt": {
+            "type": "string"
+          },
+          "endedAt": {
+            "type": "string"
+          },
+          "outcome": {
+            "enum": [
+              "success",
+              "blocked",
+              "error",
+              "timeout"
+            ]
+          },
+          "slot": {
+            "enum": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              null
+            ]
+          },
+          "resolvedUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceTitle": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resultNote": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ordinal",
+          "type",
+          "toolName",
+          "query",
+          "url",
+          "startedAt",
+          "endedAt",
+          "outcome",
+          "slot",
+          "resolvedUrl",
+          "sourceTitle",
+          "resultNote"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 5
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "taskId",
+    "cityId",
+    "role",
+    "evidenceKind",
+    "recordedAt",
+    "frameSavedAt",
+    "responseSavedAt",
+    "completeActionLog",
+    "actions"
+  ],
+  "additionalProperties": false
+}
+These instructions and schema are part of the request and must be read before any tools.

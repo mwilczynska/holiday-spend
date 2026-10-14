@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "status": "scientific_run_closed",
+  "verdict": "insufficient_evidence_failed_frozen_feasibility",
+  "contractSha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602",
+  "finalJournalSequence": 50,
+  "currentCumulativeUsage": {
+    "estimateInvocations": 19,
+    "referenceActions": 73,
+    "referenceWorkerInvocations": 13,
+    "estimateRetrievalActions": 44,
+    "designInvocations": 4,
+    "candidateAttempts": 0,
+    "fullExtensions": 0
+  },
+  "unexecutedProtectedReservations": {
+    "estimateInvocations": 281,
+    "referenceActions": 217,
+    "referenceWorkerInvocations": 87,
+    "estimateRetrievalActions": 843,
+    "designInvocations": 4,
+    "candidateAttempts": 0,
+    "fullExtensions": 0
+  },
+  "activeCalls": [],
+  "reservationDisposition": "Preserved historical future allocations; never executed, not new dispatch authorization. No consumed counters reset.",
+  "assessmentEvidenceVerified": [
+    {
+      "path": "CITY-COST-ACCURACY-GOAL.md",
+      "sha256": "09d7586b4c92bf65284bf6ef7b5c97ea54a29d4ad7d1b039b7aa1507fcfd2422",
+      "prefixEventCount": null
+    },
+    {
+      "path": "docs/dev/plans/city-cost-accuracy.md",
+      "sha256": "d7310f9d947c9e2f464423829584741679bf6a394861bf2c4d0390dafaa97037",
+      "prefixEventCount": null
+    },
+    {
+      "path": "docs/dev/plans/city-cost-experiment-agent-architecture.md",
+      "sha256": "95b3d87dc5538aa16b0d4c1134f396a042b81127a12133b17bffcc322f40505f",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-design.md",
+      "sha256": "a5c571c8bbbe5bbc234e6a41397866697635960d73463017fd36626c77b7c039",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-design-repair.md",
+      "sha256": "0e80e38f073509c062b81421af7af104e4900c26f8333733154907d36997da92",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/REPORT.md",
+      "sha256": "005140375ef6a11915a95f6f92a72012ed5983a6d9548eed17cdb3dcfa32751a",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/experiments/000-baseline/summary.json",
+      "sha256": "75a8b6ce3b9e7b49331bdeaaed78085e0d32d9b916d452e4f81e19f818bae489",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/assessment-request.txt",
+      "sha256": "d97fa7058f072254dca55fb80ed20aee21dbe3492fe6f186efbf9603f92ac090",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/contract.json",
+      "sha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/freeze.json",
+      "sha256": "6928fe01c9fff30066bd217ec7608a6401db16813de6b9c44ef2a977ff3ff457",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/execution-summary.json",
+      "sha256": "5003800e1e4d73c9d865a8ce0ab331f4c46874a1ae78ea99e3d7855f18a787e0",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/aggregate-ledger.json",
+      "sha256": "d99db533ad68e86d9f7f408efc5857627693b0e6f1d959586c924778ad65fa4b",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/review-selection.json",
+      "sha256": "b3617094bb3e27ec8209e8ba8d9a93754ab8192edcce2fd2f90baf17f6ec9355",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/serialization-errata.json",
+      "sha256": "8b5a53afe3df5b22a1a662cbdaa6247c16e68981c1a84879839394b5ebd7d2f4",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/runtime-failures.json",
+      "sha256": "5cd914621497098014538c68dc0f4bbb17d873d6bb561e0cd9c96f5239b5717f",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/review-execution-errata.json",
+      "sha256": "cf85f85171c8ad61f4d5a45545a4d95e32a871b311cbb44bd75a169ade25cdfd",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/budget.jsonl",
+      "sha256": "30cf8ffb011d7b9cd68cb675ef5ae007529414d5c340d90f35c4554f236a1b18",
+      "prefixEventCount": 49
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-bled/validation.json",
+      "sha256": "a4e3b296cc4075499262a00efe5e838d56844ec430a6063564f553b3253eb3b6",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-bled/response.json",
+      "sha256": "50a1160b38a424b3d38cca8da0e61fa36f5a5c0ba29d0b35d5cabe2fe9c5982c",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-copenhagen/validation.json",
+      "sha256": "4e72975b66e1feb0a4fd4faed75209ca6957f564fcc4078e31a12aae1519dba9",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-copenhagen/response.json",
+      "sha256": "b17d95b36a815f3c2dcc21cdf80040ac4e11debecb03e42edc7aad6196f8071e",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-hanoi/validation.json",
+      "sha256": "59c0d35d4f46964dd70763a0ec4c3369be6a5202061c5e68465215251c1542dc",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-hanoi/response.json",
+      "sha256": "fd9e8fb1edfcd11e8fb9115f52f4fd11cb6a4b0d2673b6150de0ee24010620a3",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-bandipur/validation.json",
+      "sha256": "2e1df5161c8d1a62fe4ff72d068af73fcf5814bc2fb21d8c94eb2769f8d8d219",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-bandipur/response.json",
+      "sha256": "a3e8b8748680838c7d014ba10c2060518b358d722f5d1f453b82284ec645e9b6",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-bled/validation.json",
+      "sha256": "79723e1cc551628b5b89cb3d59dba9169d58aa329306a714e2011434164fd6cf",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-copenhagen/validation.json",
+      "sha256": "47595f03216c8e6b814be777cd136a26ffc25bc5d2cf0195fecea32b978b35bf",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-hanoi/validation.json",
+      "sha256": "3be2e1ffe0bd9d9bcc461d143a22198d9d496aa8d4cf2f73d984442186df53ca",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-hanoi/response.json",
+      "sha256": "8ab48116f92cb6a121ceae41768039a430f0569bdcf6e58f9ed9c67f4f06eca6",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-kyoto/validation.json",
+      "sha256": "0fa37e7769813756ff800ccde5620bdb04578bb24534f42bcfd503b103935008",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-oaxaca/validation.json",
+      "sha256": "a56350c84e9701099ac7b4a5a52f9acda816c760ebb900da505a8fcf12a4ce9f",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-oaxaca/response.json",
+      "sha256": "a36672262b886823b7f4b75bd80047de0230d8cd4dc4375b384231a1c60daa23",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/review-feasibility/validation.json",
+      "sha256": "5429c5c888843024f06f594b24cb6e85f9a030672734f2b51079d94a2a01e112",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/review-feasibility/response.json",
+      "sha256": "440a2e181c956d85acd96a96500fd1986c812f35e964e3aba5251c37550d4fc0",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-hanoi/delivery-v1.txt",
+      "sha256": "3e504cd9c636608b49349392ee4e6be12b7328d6020cca277ca7c9d8d8096e24",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/menu-bled/delivery-v2.txt",
+      "sha256": "53a036287f539a86e303f1b3bf6dea8568eeaffd81f028adb91ddd12dc8da824",
+      "prefixEventCount": null
+    },
+    {
+      "path": "research/city-cost-accuracy/restart-1-prep/tasks/hotel-bled/delivery-v2.txt",
+      "sha256": "db68cea2f189595536eb9a037afc427beade2f007ca19188d51e4f7bc7e7879b",
+      "prefixEventCount": null
+    }
+  ],
+  "artifacts": {
+    "REPORT-RESTART-1.md": "79d77de48cebbdab8e981021e50eb08c57b33522598ea4f185c2c92bb31960d7",
+    "restart-leaderboard.csv": "b4e7c430fba801b120d112a8a63e766118341d0f29f857b45b7b41e9e566ef17",
+    "restart-1-prep/designer-assessment.json": "5601d90d8bede756c9c782a016bf69d33cf5278ea7584721962fec2c8aa43288",
+    "restart-1-prep/designer-assessment.md": "877f81153fed2831b636403ffcb4414af0fbbc7cd406086d4aec48df9dad09ef",
+    "restart-1-prep/budget.jsonl": "cce85f0569f900bfa17d3bbb4554c1c09d8173d00e1ef088fcf53488236b5049",
+    "restart-1-prep/execution-summary.json": "5003800e1e4d73c9d865a8ce0ab331f4c46874a1ae78ea99e3d7855f18a787e0"
+  },
+  "modelScope": "Cost data: Codex gpt-6-luna/max; design/assessment: gpt-6-astra/medium. Haiku/Opus unverified.",
+  "engineeringDelegations": 2,
+  "candidatesExecuted": 0,
+  "confirmationExecuted": false,
+  "tenExperimentReviewDue": false,
+  "reason": "Designer-assessed frozen feasibility failed. Closeout contains actual acquisition/review evidence and prior measured baseline; no comparative improvement claim.",
+  "immutableSourceChecks": "restart verify; audit-final --replay additionally verifies the original execution snapshot and current lawful journal replay."
+}

@@ -3671,3 +3671,41 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   Twenty-five focused tests, fourteen audit self-checks and memory/diff checks pass. All changes remain in the
   research worktree; no production/database/canonical CSV/default/holdout/deployment changes. Final commit,
   push and goal completion follow this closeout; any future research needs a separately authorized design.
+
+# 14 October 2026 UTC — One measurement redesign authorized
+
+- Owner explicitly said "OK let's run the redesign experiment. Have Astra Medium define the details of it."
+  This authorizes one new prospective measurement experiment, execution and assessment. It preserves the
+  closed failed run and does not launch an automatic methodology-candidate campaign or a new /goal.
+- Dispatched fresh GPT-6 Astra/Medium to define a narrow target, independent benchmark, sampling/interpretation
+  uncertainty, practical detectability, exact cheap-worker prompts/schemas, robust artifact handling and gates.
+  It may inspect released evidence but cannot source/generate/repair prices. All future cost workers remain
+  subscription-backed Luna/Max or verified Haiku/Max; no provider API fallback or application keys.
+- The separate `redesign-1/budget.jsonl` carries prior usage and each unexecuted protected allocation once,
+  linked by exact parent-journal SHA256. It transfers one unused design allocation and charges designcall5.
+  Old closeout/journal artifacts remain byte-identical. New experiment ceilings40 reference actions,
+  12 reference-worker calls and12 optional unchanged-v1.1 estimates are ceilings, not targets. Global caps and
+  100-call confirmation reserve plus80 reference actions/16 workers for confirmation remain protected.
+  Source dispatch waits for coordinator validation, full schedule reservation and contract freeze.
+
+# 14 October 2026 — Measurement-redesign contract frozen and collection started
+
+- Astra/Medium defined three fixed central-district frames, four menu-listed cappuccino slots each, blind
+  independent re-extraction, all disjoint two-versus-two subsets and leave-one-out sensitivity. Listed-price
+  observation is explicitly separate from payable-price, population and daily-budget accuracy. Zero estimates,
+  six reference workers and27 reference actions maximum; no automatic candidate experiment follows.
+- One prospective Astra repair clarified worker-recorded provenance, literal identity extraction and partial
+  frame faults. It corrected percentage wording while retaining the absolute0.10 log-loss target and every
+  mathematical gate. Initial design and repair are cumulative designcalls5/6. Original files remain unchanged.
+- Engineering implemented the isolated runner and tests. Its continuation reached a subscription limit after
+  saving code; no source worker had been started then. On owner continuation, verified code and completed
+  the recorded-mtime replay regression check. Seventeen focused tests and contract validation pass. Original
+  mtimes are validated at ingest and replayed from hash-bound sidecars, avoiding dependence on Git checkout
+  timestamps. This is a technical reproducibility fix, not a scientific-criteria change.
+- Frozen contract SHA256 `424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628`. Harness,
+  original/repair/accepted contracts, parent journal and prompt bytes are hash-bound. Mutable designer inputs
+  are preserved as exact snapshots so normal PLAN updates cannot rewrite the inspected evidence.
+- Transferred27 actions/six calls from unexecuted development allocations in the linked new journal, preserving
+  all consumed totals and confirmation reserves. Started three fresh Luna/Max collectors on14 October at
+  15:17–15:18 UTC, each with one fixed query and up to four original-source opens, no replacement or retries.
+  Source actions and missingness will be reported honestly; source outcomes are not yet assessed.
