@@ -1,0 +1,143 @@
+{
+  "taskId": "hotel-hanoi",
+  "cityId": "hanoi",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "startedAt": "2026-10-14T04:47:18Z",
+  "finishedAt": "2026-10-14T04:47:54Z",
+  "actions": [
+    {
+      "ordinal": 1,
+      "type": "search",
+      "query": "Hanoi Vietnam 3 star hotel 17 November 2026 20 November 2026 2 adults total taxes",
+      "url": null,
+      "startedAt": "2026-10-14T04:47:18Z",
+      "outcome": "success"
+    },
+    {
+      "ordinal": 2,
+      "type": "open",
+      "query": null,
+      "url": "https://bookitbutton.booking.com/threestars/city/vn/hanoi.en-us.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=d831db6bbb7519c7484f546e6a05d140",
+      "startedAt": "2026-10-14T04:47:29Z",
+      "outcome": "error"
+    }
+  ],
+  "rankedResults": [
+    {
+      "rank": 1,
+      "title": "The 10 best 3-star hotels in Hanoi, Vietnam | Booking.com",
+      "url": "https://bookitbutton.booking.com/threestars/city/vn/hanoi.en-us.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=d831db6bbb7519c7484f546e6a05d140",
+      "eligibilityReason": "First-ranked public booking-provider result; indexed page shows October 13–16 selected dates and no exact-date offer."
+    },
+    {
+      "rank": 2,
+      "title": "The 10 best 3-star hotels in Hanoi, Vietnam | Booking.com",
+      "url": "https://bookitbutton.booking.com/threestars/city/vn/hanoi.en-us.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=944a93ad30ce65fb751995fb9e7f2701",
+      "eligibilityReason": "Duplicate 3-star listing; indexed page shows October 14–17 selected dates and no exact-date offer."
+    },
+    {
+      "rank": 3,
+      "title": "The 10 best 3-star hotels in Hanoi, Vietnam | Booking.com",
+      "url": "https://bookitbutton.booking.com/threestars/city/vn/hanoi.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=704bae6f56261ea488164f7130df73c3",
+      "eligibilityReason": "Duplicate 3-star listing; indexed page shows October 13–16 selected dates and no exact-date offer."
+    },
+    {
+      "rank": 4,
+      "title": "The 10 best 3-star hotels in Hanoi, Vietnam | Booking.com",
+      "url": "https://bookitbutton.booking.com/threestars/city/vn/hanoi.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=93fe7b9a2fcc4d8e4d36f13475cf2464",
+      "eligibilityReason": "Duplicate 3-star listing; indexed page shows October 14–17 selected dates and no exact-date offer."
+    },
+    {
+      "rank": 5,
+      "title": "10 Best Hanoi Hotels, Vietnam (From CNY 105)",
+      "url": "https://www.booking.com/city/vn/hanoi.en.html",
+      "eligibilityReason": "Generic city listing with October 13–16 selected dates; no exact-date three-star offer."
+    },
+    {
+      "rank": 6,
+      "title": "The 10 best three-star hotels in Hanoi, Vietnam | Booking.com",
+      "url": "https://bookitbutton.booking.com/threestars/city/vn/hanoi.en-gb.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=5e6bde884610d980db335cca38ba2b81",
+      "eligibilityReason": "Duplicate three-star listing; indexed page shows October 14–17 selected dates and no exact-date offer."
+    },
+    {
+      "rank": 7,
+      "title": "3B Hotel Hanoi - Google hotels",
+      "url": "https://www.google.com.vn/travel/hotels/entity/ChgI-Orj5KyO-oYnGgwvZy8xMmpsanNxYzMQAQ?ap=MABasQEKBgiAn0kQACIDVk5EKhYKBwjiDxAKGB0SBwjiDxAKGB4YASgAigFUChIJHE7cUHxwJUARVC8jsSCtWkASEgmMYVaaxHYlQBH851WNnq1aQBoqChsRqIs8n1-tWkAZ1FeZdaBzJUAJpGZZgms1t0AaBgjmAhDGBCWamVFBkgECIAGaARASDkjhu5MgQ2jDrSBNaW5oogEaCggvbS8w aG40aBIOSOG7kyBDaMOtIE1pbmhwAWITNTUyNTIxMDkyMDEwMTQ4NTU5MA&g2lb=4181926%2C4207631%2C4208993%2C4254308%2C4258168%2C4260007%2C4274032%2C4276710%2C4302814%2C4305595%2C4306835%2C4308216%2C4314846%2C4315873%2C4317915%2C4328159%2C4329282%2C4329283%2C4330862%2C4340162%2C4346110%2C4270859%2C4284970%2C4292955%2C4316256&gl=vn&hl=en&rp=OAHCAhwiGg0Aj_dIEhMIoJ_u4ZuxhwMVmEJvBB0i_gfW&tcfs=EjQKCC9tLzBobjRoEg5I4buTIENobg&ts=CAEaIgoCGgASHBIUCgcI6g8QCxgBEgcI6g8QCxgDGAIyAhAAOAEqBAoAGgA&un=0",
+      "eligibilityReason": "Named property is explicitly two-star and the shown offer is November 1–3, not the requested dates."
+    },
+    {
+      "rank": 8,
+      "title": "3B Hotel Hanoi - Google hotels",
+      "url": "https://www.google.com.vn/travel/hotels/entity/ChgI-Orj5KyO-oYnGgwvZy8xMmpsanNxYzMQAQ?ap=MAA&g2lb=2502548%2C4208993%2C4254308%2C4258168%2C4260007%2C4274032%2C4276710%2C4302814%2C4305595%2C4306835%2C4308216%2C4314846%2C4315873%2C4317915%2C4328159%2C4329288%2C4330862%2C4340162%2C4346110%2C4270859%2C4284970%2C4292955%2C4316256&gl=vn&hl=en&rp=OAHCAhwiGg1Q5S9JEhMI_Izm08GplgMV_JKrBx31ByXI&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QCxgFEgcI6g8QCxgIGAMyAhAAKgkKBToDVk5EGgA&un=1",
+      "eligibilityReason": "Named property is explicitly two-star and the shown offer is November 5–8, not the requested dates."
+    },
+    {
+      "rank": 9,
+      "title": "3B Hotel Hanoi - Google hotels",
+      "url": "https://www.google.com.vn/travel/hotels/entity/ChgI-Orj5KyO-oYnGgwvZy8xMmpsanNxYzMQAQ?ap=MAA&g2lb=2502548%2C4208993%2C4254308%2C4258168%2C4260007%2C4274032%2C4276710%2C4302814%2C4305595%2C4306835%2C4308216%2C4314846%2C4315873%2C4317915%2C4328159%2C4329288%2C4330862%2C4340162%2C4346110%2C4270859%2C4284970%2C4292955%2C4316256&gl=vn&hl=en&rp=OAHCAhwiGg1IhxpKEhMItMnIxciplgMVZQK4Bx2veTjq&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QChgTEgcI6g8QChgWGAMyAhAAKgkKBToDVk5EGgA&un=1",
+      "eligibilityReason": "Named property is explicitly two-star; indexed offer is not for the requested dates."
+    },
+    {
+      "rank": 10,
+      "title": "10 Best Hanoi Hotels, Vietnam (From £14)",
+      "url": "https://www.booking.com/city/vn/hanoi.en-gb.html?inac=0",
+      "eligibilityReason": "Generic city listing with October 13–16 selected dates; no exact-date three-star offer."
+    },
+    {
+      "rank": 11,
+      "title": "3B Hotel Hanoi - Google hotels",
+      "url": "https://www.google.com.vn/travel/hotels/entity/ChgI-Orj5KyO-oYnGgwvZy8xMmpsanNxYzMQAQ?ap=MAC6AQZwcmljZXM&g2lb=2502548%2C4208993%2C4254308%2C4258168%2C4260007%2C4274032%2C4276710%2C4302814%2C4305595%2C4306835%2C4308216%2C4314846%2C4315873%2C4317915%2C4328159%2C4329288%2C4330862%2C4340162%2C4346110%2C4270859%2C4284970%2C4292955%2C4316256&gl=vn&hl=en&rp=OAHCAhwiGg247A1KEhMIm8v7xeWmlgMV1Z2rBx2Rgw3G&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QChgJEgcI6g8QChgOGAUyAhAAKgkKBToDVk5EGgA&un=1",
+      "eligibilityReason": "Named property is explicitly two-star and the shown offer is not for the requested dates."
+    },
+    {
+      "rank": 12,
+      "title": "3B Hotel Hanoi - Google hotels",
+      "url": "https://www.google.com.vn/travel/hotels/entity/ChgI-Orj5KyO-oYnGgwvZy8xMmpsanNxYzMQAQ?ap=MAA&g2lb=2502548%2C4208993%2C4254308%2C4258168%2C4260007%2C4274032%2C4276710%2C4302814%2C4305595%2C4306835%2C4308216%2C4314846%2C4315873%2C4317915%2C4328159%2C4329288%2C4330862%2C4340162%2C4346110%2C4270859%2C4284970%2C4292955%2C4316256&gl=vn&hl=en&rp=OAHCAhwiGg1ABJFIEhMIm9yTt-aelgMVcb2rBx0vlRj3&ts=CAEaIgoCGgASHBIUCgcI6g8QCRgBEgcI6g8QCRgEGAMyAhAAOAEqBAoAGgA&un=1",
+      "eligibilityReason": "Named property is explicitly two-star and the shown offer is October 6–7, not the requested dates."
+    },
+    {
+      "rank": 13,
+      "title": "HANOI TOURIST SERVICE JOINT STOCK COMPANY",
+      "url": "https://hanoitoserco.com.vn/uploaded/QUAN%20HE%20CO%20DONG/bao%20cao%20tai%20chinh/2026/FinancialStatements_Q1_2026%2BExplanationsRelatingToFSs.pdf",
+      "eligibilityReason": "Financial statement, not a hotel offer."
+    },
+    {
+      "rank": 14,
+      "title": "ID 5863 - Vietnam for 2",
+      "url": "https://assets.tripadeal.com.au/dealpdf/5863/5863-vietnam-for-2_2025-06-17-22-13-33.pdf",
+      "eligibilityReason": "Tour package and accommodation period is not the requested standalone exact-date hotel offer."
+    },
+    {
+      "rank": 15,
+      "title": "Sulit na ba 40k all in (inc tax) for a HanoixSapa tour 4d3n? Huhu",
+      "url": "https://www.reddit.com/r/FilipinoTravel/comments/1wt30pv/sulit_na_ba_40k_all_in_inc_tax_for_a_hanoixsapa_tour/",
+      "eligibilityReason": "Unverified travel discussion, not a public hotel booking offer."
+    },
+    {
+      "rank": 16,
+      "title": "Slide 1",
+      "url": "https://www.sunway.travel/wp-content/uploads/2026/01/4D3N_Hanoi_HaLong311226.pdf",
+      "eligibilityReason": "Tour package rates are not a standalone exact-date hotel offer."
+    }
+  ],
+  "rows": [],
+  "missingMeasures": [
+    {
+      "measure": "hotel_3star_2p",
+      "reason": "technical_failure"
+    }
+  ],
+  "status": "success",
+  "aggregates": [],
+  "disputes": [],
+  "taskSha256": "2821d3e2fafb2d05419294f84d8996a549fd78f20f8770e5bf9734d6eca623ee",
+  "systemSha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+  "userSha256": "44d908cc91cc2c47cb03d889ea54e47d8f24d166d9046fcf539199a031ce622a",
+  "protocolSha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602",
+  "searchCount": 1,
+  "retrievalCount": 2,
+  "tokenUsage": null,
+  "failureReason": null
+}

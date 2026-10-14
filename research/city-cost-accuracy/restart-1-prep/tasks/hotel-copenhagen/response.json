@@ -1,0 +1,178 @@
+{
+  "taskId": "hotel-copenhagen",
+  "cityId": "copenhagen",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "startedAt": "2026-10-14T04:47:43Z",
+  "finishedAt": "2026-10-14T04:49:00Z",
+  "actions": [
+    {
+      "ordinal": 1,
+      "type": "search",
+      "query": "Copenhagen Denmark 3 star hotel 17 November 2026 20 November 2026 2 adults total taxes",
+      "url": null,
+      "startedAt": "2026-10-14T04:47:43Z",
+      "outcome": "success"
+    },
+    {
+      "ordinal": 2,
+      "type": "open",
+      "query": null,
+      "url": "https://www.booking.com/city/dk/copenhagen.en-gb.html",
+      "startedAt": "2026-10-14T04:47:51Z",
+      "outcome": "success"
+    }
+  ],
+  "rankedResults": [
+    {
+      "rank": 1,
+      "title": "10 Best Copenhagen Hotels, Denmark (From £56)",
+      "url": "https://www.booking.com/city/dk/copenhagen.en-gb.html",
+      "eligibilityReason": "First ranked public booking-provider listing opened under the frozen source order; its date selector was blank and no exact-date offer was visible."
+    },
+    {
+      "rank": 2,
+      "title": "10 Best Copenhagen Hotels, Denmark (From £56)",
+      "url": "https://www.booking.com/city/dk/copenhagen.en-gb.html?ur_dat=1",
+      "eligibilityReason": "Not opened; rank 1 was the earlier public booking-provider listing and the one-open cap was used there."
+    },
+    {
+      "rank": 3,
+      "title": "10 Best Copenhagen Hotels, Denmark (From £57)",
+      "url": "https://www.booking.com/city/dk/copenhagen.en-gb.html?inac=0",
+      "eligibilityReason": "Not opened; rank 1 was the earlier public booking-provider listing and the one-open cap was used there."
+    },
+    {
+      "rank": 4,
+      "title": "The best 3-star hotels in Hovedstaden, Denmark",
+      "url": "https://www.booking.com/threestars/region/dk/hovedstaden.html",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 5,
+      "title": "3-star hotels in Copenhagen 2026 – 74 hotels | HotHotels",
+      "url": "https://www.hothotels.co/hotels/in/copenhagen/3-star",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 6,
+      "title": "The Best 3 Star Hotels in Copenhagen from $85 | Expedia",
+      "url": "https://www.expedia.com/3Star-Copenhagen-Hotels.s30-0-d178252.Travel-Guide-Filter-Hotels",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 7,
+      "title": "10 Best Copenhagen Hotels, Denmark (From £56)",
+      "url": "https://bookitbutton.booking.com/city/dk/copenhagen.en-gb.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=a1620f9b98a2becd642fa014f6a02737",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 8,
+      "title": "The best three-star hotels in Copenhagen City Centre, Copenhagen, Denmark",
+      "url": "https://www.booking.com/threestars/district/dk/copenhagen/copenhagen-centre.en-gb.html",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 9,
+      "title": "10 Best Copenhagen Hotels, Denmark (From US$84)",
+      "url": "https://bookitbutton.booking.com/city/dk/copenhagen.en-us.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=659b5541127b10f42588237b870ca317",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 10,
+      "title": "The 10 best three-star hotels in Copenhagen, Denmark | Booking.com",
+      "url": "https://www.booking.com/threestars/city/dk/copenhagen.en-gb.html",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 11,
+      "title": "10 Best Copenhagen Hotels, Denmark (From £57)",
+      "url": "https://bookitbutton.booking.com/city/dk/copenhagen.en-gb.html?aid=9&label=mkt123sc-c3b4d078-b115-45f4-aacc-29c29f597559&sid=f790f9e2ef0bcff6b3b52325ef57529c",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 12,
+      "title": "DENMARKCopenhagen",
+      "url": "https://5-continents.ca/wp-content/uploads/2026/02/DENMARKCopenhagen.pdf",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 13,
+      "title": "table id e1",
+      "url": "https://eu-assets.contentstack.com/v3/assets/bltfd73aa2de3a5c4e3/bltc89fac60dcc412ed/Close_out_dates_2026.pdf",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    },
+    {
+      "rank": 14,
+      "title": "Rapport",
+      "url": "https://edagsorden.regionh.dk/committee_1432/agenda_159645/documents/68b24a1c-f2ba-4ede-80a1-bcc8a21c16a5.pdf",
+      "eligibilityReason": "Not opened; rank 1 was selected by source order and the one-open cap."
+    }
+  ],
+  "rows": [
+    {
+      "id": "copenhagen/1/hotel_3star_2p/4",
+      "venueId": "hotel-bethel",
+      "venueName": "Hotel Bethel",
+      "independentOperator": false,
+      "measure": "hotel_3star_2p",
+      "itemLabel": "Generic one-night from-rate; exact stay dates not selected",
+      "amount": 288.46,
+      "currency": "AUD",
+      "unit": "per night, one room, 2 adults; from-rate",
+      "servingSize": null,
+      "sourceUrl": "https://www.booking.com/city/dk/copenhagen.en-gb.html",
+      "sourceTitle": "10 Best Copenhagen Hotels, Denmark (From AUD 106)",
+      "retrievedAt": "2026-10-14T04:47:51Z",
+      "applicableDate": null,
+      "datedStatus": "unknown",
+      "excerpt": "This 3-star hotel offers luggage storage space. Price from AUD 288.46; 1 night, 2 adults.",
+      "geographyEvidence": "The listing places Hotel Bethel in Nyhavn, Copenhagen.",
+      "taxBasis": "unknown",
+      "inclusions": "Breakfast, mandatory taxes, and fees are not stated.",
+      "selectionRank": 1,
+      "evidenceClass": "proxy",
+      "eligibility": "uncertain",
+      "reason": "The property is explicitly listed as 3-star and the page shows a one-night, two-adult from-rate, but dates are blank, tax basis is unstated, and independent operation is not established.",
+      "listedAmount": 288.46,
+      "listedUnit": "per night, one room, 2 adults; from-rate",
+      "transaction": {
+        "people": 2,
+        "rooms": 1,
+        "nights": 1,
+        "items": [
+          {
+            "atomicRowId": "copenhagen/1/hotel_3star_2p/4",
+            "quantity": 1
+          }
+        ],
+        "listedQuantityInTarget": 1
+      },
+      "mandatoryChargeStatus": "unknown",
+      "charges": [],
+      "allMandatoryChargesDocumented": false,
+      "normalizationStatus": "missing",
+      "normalizationReason": "The quote is an undated from-rate, the requested 17–20 November 2026 dates were not selected, and the source does not state whether mandatory taxes and fees are included or exhaustive.",
+      "sourceBasisEvidence": null
+    }
+  ],
+  "missingMeasures": [
+    {
+      "measure": "hotel_3star_2p",
+      "reason": "unavailable_dates",
+      "detail": "No exact-date offer for 17–20 November 2026 was visible. The opened page showed only an undated one-night from-rate; mandatory-charge basis is also unknown."
+    }
+  ],
+  "status": "success",
+  "aggregates": [],
+  "disputes": [],
+  "taskSha256": "160f49245073ca4703c38f982c1bd075637e510b64767265c295030f9888a862",
+  "systemSha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+  "userSha256": "9b148b813800d6525b163d4132df7b9d30eb5989a54b6337ace059782ff77b12",
+  "protocolSha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602",
+  "searchCount": 1,
+  "retrievalCount": 2,
+  "tokenUsage": null,
+  "failureReason": null
+}

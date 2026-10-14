@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "programRevision": "restart-1",
+  "status": "frozen_preparation_only",
+  "contractSource": "restart-design-validated.json",
+  "contractSha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602",
+  "manifestSha256": "8f91e3b753beff4f8b73e4b7abb70fa07340a9741ef9b759b00d7792e6583851",
+  "priorAuditSha256": "3d136d32db22507f70b2ff59b44317e90ecdbfbd728e44fb397f23aab5dab84e",
+  "frozenAt": "2026-10-14T00:35:48.2488522Z",
+  "createdDate": "2026-10-13",
+  "referenceDate": "17–20 November 2026 (three nights; food/drink prices current in October–November 2026)",
+  "referenceWindow": {
+    "stayStart": "2026-11-17",
+    "stayEndExclusive": "2026-11-20",
+    "nights": 3,
+    "adults": 2,
+    "foodWindow": "October-November 2026 current menus",
+    "stageWindow": "Reference acquisition finishes within seven days of its first dispatch. Paired fresh methods finish within72 hours of one another and within seven days of reference acquisition. Violations invalidate promotion under this matched-window design; preserve descriptive results.",
+    "latestStart": "2026-11-10; later work needs prospective date redesign and separate evidence stratum",
+    "oldFx": "Validate old responses at their original dispatch time, never bypass freshness. Use original frozen evaluation FX for the six old currencies so descriptive replays are comparable. Model-returned FX is not the scoring conversion."
+  },
+  "sourceCodeSha256": {
+    "scripts/city-cost-accuracy/restart.mjs": "620549b4743401d5ed719571df03115e4070c03c9a589e133ec8c988c30ce590",
+    "scripts/city-cost-accuracy/core.mjs": "f0cba8e73ae6482d638a640e8424a8db1a14f4d2ecaa748a1a21553ddb80361a",
+    "scripts/city-cost-accuracy/budget.mjs": "7690231ca61663c5cc8d6c530de05e8c6b9e49fea6729b183de81bba65b931a0",
+    "scripts/city-cost-accuracy/fees.mjs": "e987d1eaee4086ca6423f5df759f3424a8207a446fdcaa1e8c535f6544b02809",
+    "scripts/city-cost-accuracy/summarize.mjs": "f2343a69cfae69613622432f6c8e98d332d174f331c6df1bb2e30c8502f62d9f",
+    "src/lib/city-generation.ts": "83ba9d3a27e3cbb9755bf50d68deb60eb0f098e9e37931bca1293c41405f5aa1",
+    "src/lib/city-cost-methodology-v1-1.ts": "1a913ec8354c00d9c9d62c3f3174c3f0de8529b952c28116e7e85e8ab1c79d84"
+  },
+  "sourceCodeGitSha": "90f4c4bc02a6595c0d9d8010f90486f214aa495f",
+  "gitReadError": null,
+  "promptSourceSha256": "83ba9d3a27e3cbb9755bf50d68deb60eb0f098e9e37931bca1293c41405f5aa1",
+  "materializerCodeSha256": "1a913ec8354c00d9c9d62c3f3174c3f0de8529b952c28116e7e85e8ab1c79d84",
+  "scorerCodeSha256": "f0cba8e73ae6482d638a640e8424a8db1a14f4d2ecaa748a1a21553ddb80361a",
+  "templateSha256": "113bc9050def6763ad75844fe3626d344f72c1f5e3575ab02cb6a34f3d4aa0fd",
+  "limitation": "Reference pipeline only. Estimate preparation/materialization, scoring and gate adjudication are deferred; no worker dispatched."
+}

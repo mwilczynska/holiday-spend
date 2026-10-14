@@ -1,0 +1,155 @@
+{
+  "taskId": "hotel-bled",
+  "cityId": "bled",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "startedAt": "2026-10-14T04:47:44Z",
+  "finishedAt": "2026-10-14T04:47:50Z",
+  "actions": [
+    {
+      "ordinal": 1,
+      "type": "search",
+      "query": "Bled Slovenia 3 star hotel 17 November 2026 20 November 2026 2 adults total taxes",
+      "url": null,
+      "startedAt": "2026-10-14T04:47:44Z",
+      "outcome": "success"
+    },
+    {
+      "ordinal": 2,
+      "type": "open",
+      "query": null,
+      "url": "https://www.booking.com/city/si/bled.html",
+      "startedAt": "2026-10-14T04:47:47Z",
+      "outcome": "blocked"
+    }
+  ],
+  "rankedResults": [
+    {
+      "rank": 1,
+      "title": "10 Best Bled Hotels, Slovenia (From US$96)",
+      "url": "https://www.booking.com/city/si/bled.html",
+      "eligibilityReason": "Public booking-provider page; November calendar includes the requested dates but no matched offer in the search result. Opened first; page required JavaScript/robot verification."
+    },
+    {
+      "rank": 2,
+      "title": "The best three-star hotels in Bled Region, Slovenia",
+      "url": "https://www.booking.com/threestars/region/si/blejsko-jezero.en-gb.html",
+      "eligibilityReason": "Three-star booking-provider listing, but displayed occupancy and default dates do not match the task; no matched offer shown."
+    },
+    {
+      "rank": 3,
+      "title": "10 Best Bled Hotels, Slovenia (From £73)",
+      "url": "https://www.booking.com/city/si/bled.en-gb.html?keep_landing=1",
+      "eligibilityReason": "Generic city booking-provider listing; no matched offer shown."
+    },
+    {
+      "rank": 4,
+      "title": "Hotel Starkl - Google hotels",
+      "url": "https://www.google.com/travel/hotels/entity/CgsItKDF8tjipsTuARAB",
+      "eligibilityReason": "Named three-star property, but displayed offer is for 12–13 October, not the requested stay."
+    },
+    {
+      "rank": 5,
+      "title": "Hotel Starkl - Google hotels",
+      "url": "https://www.google.com.gh/travel/hotels/entity/ChoItKDF8tjipsTuARoNL2cvMTFwd3BmcmI4axAB?rp=OAHCAhwiGg0AABVDEhMIw-jVxOnQlgMV9C6tBh08gwhj&ts=CAEaIAoCGgASGhIUCgcI6g8QChgBEgcI6g8QChgCGAEyAhAAKgkKBToDVVNEGgA",
+      "eligibilityReason": "Named three-star property, but displayed offer is for 3–4 November, not the requested stay."
+    },
+    {
+      "rank": 6,
+      "title": "HOTEL STARKL HERITAGE & UNIQUE - Latest Reviews, Deals & Photos 2026 - Expedia.ca",
+      "url": "https://www.expedia.ca/Bled-Hotels-Hotek-Starkl-Heritage-Unique.h89183297.Hotel-Information?equalTargetTab=tab-0",
+      "eligibilityReason": "Named three-star property, but displayed price is for 5 November and excludes taxes and fees."
+    },
+    {
+      "rank": 7,
+      "title": "10 Hotel Terbaik di Bled, Slovenia (Dari US$96)",
+      "url": "https://www.booking.com/city/si/bled.ms.html",
+      "eligibilityReason": "Generic city booking-provider listing; no matched offer shown."
+    },
+    {
+      "rank": 8,
+      "title": "Hotel Triglav l.l.c. Bled – Google hotels",
+      "url": "https://www.google.com/travel/hotels/entity/CgsIhsi7qJTRmIS3ARAB?rp=OAHCAhwiGg0AACtDEhMIz-PGrqGllgMV4dmfCR0P1gFr&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QCxgLEgcI6g8QCxgNGAIyAhAAKgkKBToDVVNEGgA",
+      "eligibilityReason": "Named property is listed as four-star, outside the requested three-star class; displayed dates also differ."
+    },
+    {
+      "rank": 9,
+      "title": "Top 3 Star Hotels in Bled | Hotels.com",
+      "url": "https://www.hotels.com/de1253149-st3/three-star-hotels-bled-slovenia/",
+      "eligibilityReason": "Generic three-star search page; no matched offer shown."
+    },
+    {
+      "rank": 10,
+      "title": "Hotel Triglav l.l.c. Bled – Google hotels",
+      "url": "https://www.google.com.gh/travel/hotels/entity/CgsIhsi7qJTRmIS3ARAB?rp=OAHCAhwiGg0AAMJCEhMI8bb5krWrlgMVAEktBB2dFB9w&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QCxgGEgcI6g8QCxgNGAcyAhAAKgkKBToDVVNEGgA",
+      "eligibilityReason": "Named property is listed as four-star and displayed dates do not match the requested stay."
+    },
+    {
+      "rank": 11,
+      "title": "Triglav Bled (Hotel) - Latest Reviews, Deals & Photos 2026 - Expedia.ca",
+      "url": "https://www.expedia.ca/Bled-Hotels-Triglav-Bled.h2822302.Hotel-Information",
+      "eligibilityReason": "Displayed price is for 5 November and excludes taxes and fees; no matched offer shown."
+    },
+    {
+      "rank": 12,
+      "title": "SAVA HOTELS & RESORTS",
+      "url": "https://chemch2026.fkkt.uni-lj.si/wp-content/uploads/2026/01/CHEMCH-2026-Hotel-booking-info.pdf",
+      "eligibilityReason": "Conference hotel information with unrelated event booking conditions, not the requested public matched offer."
+    },
+    {
+      "rank": 13,
+      "title": "RECOMMENDED HOTELS AND OTHER ACCOMMODATION",
+      "url": "https://www.labod-bled.si/wp-content/uploads/2024/11/RECOMMENDED-HOTELS-AND-OTHER-ACCOMMODATION-1.pdf",
+      "eligibilityReason": "2024 booking information is stale and does not match the requested stay."
+    },
+    {
+      "rank": 14,
+      "title": "VISIT SLOVENIA AND DISCOVER NEW",
+      "url": "https://www.privilegium-slovenia.si/images/SLOVENIAN_DELIGHT.pdf",
+      "eligibilityReason": "Package information does not provide a matched public room offer for the requested dates."
+    },
+    {
+      "rank": 15,
+      "title": "INDEPENDENT",
+      "url": "https://d26rldnzfebmh0.cloudfront.net/wp-content/uploads/2024/01/FIT-2024.pdf?x67681=",
+      "eligibilityReason": "2024 package rates are stale and do not provide a matched public room offer."
+    },
+    {
+      "rank": 16,
+      "title": "Bled",
+      "url": "https://www.bled.si/mma/Bled_zima-pomlad_2025-26_web.pdf/2025120214165372/1764681413",
+      "eligibilityReason": "Destination event information, not a matched hotel offer."
+    },
+    {
+      "rank": 17,
+      "title": "Lake Ble",
+      "url": "https://www.sava-hotels-resorts.com/media/wgtf5fhd/group-offers-bled.pdf",
+      "eligibilityReason": "Group offer information does not provide the requested public room offer."
+    },
+    {
+      "rank": 18,
+      "title": "Bled",
+      "url": "https://en.wikipedia.org/wiki/Bled",
+      "eligibilityReason": "General city information, not a hotel offer."
+    }
+  ],
+  "rows": [],
+  "missingMeasures": [
+    {
+      "measure": "hotel_3star_2p",
+      "reason": "blocked"
+    }
+  ],
+  "status": "failed",
+  "aggregates": [],
+  "disputes": [],
+  "taskSha256": "8A4C657EE514BC978EC8A1CF076A7CE09DEC1C859CDF5F8DE05DB07445CEF2F8",
+  "systemSha256": "7f7543b4d490af0028df226265d6d4c9dd71ffa83b83f9b4d378476e3b3df5ef",
+  "userSha256": "68fcc54a4c2a8a8f0bbd9596054397d8d4b5c9b51a96bdfb226a47b31b0a3203",
+  "protocolSha256": "32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602",
+  "searchCount": 1,
+  "retrievalCount": 2,
+  "tokenUsage": null,
+  "failureReason": "The opened Booking.com page required JavaScript/robot verification, so no exact-date offer could be checked."
+}

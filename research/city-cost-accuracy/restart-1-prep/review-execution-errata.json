@@ -1,0 +1,7 @@
+{
+  "kind": "preserve_invalid_record_disputes",
+  "recordedBeforeReviewDispatch": true,
+  "defect": "The frozen prepare-review implementation ignores all fields in invalid collector records, inadvertently omitting their genuine disputes. The frozen scientific rule requires all genuine disputes, including excluded observations, to be reviewed.",
+  "repair": "New final-review.mjs preserves original disputed aggregates and every constituent as excluded diagnostic observations. Original raw bytes, IDs, amounts and invalid statuses remain unchanged. Only valid complete eligible aggregates can contribute to the random-review denominator. It uses the unchanged selectReview, prompts, schemas, ten-action allocation, worker model and criteria.",
+  "limits": "Diagnostic review cannot promote an invalid collector record, count it as a primary venue, or claim estimator improvement. This execution repair does not authorize recollection or a new experiment."
+}

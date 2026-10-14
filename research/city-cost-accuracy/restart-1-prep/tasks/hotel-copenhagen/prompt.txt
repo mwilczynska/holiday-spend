@@ -1,0 +1,81 @@
+Taskhotel-copenhagen. Citycopenhagen:Copenhagen,Denmark. Rolehotel. Stay17-20 November2026,two adults. Definitions:
+{
+  "geography": "City proper, ordinary visitor-accessible central neighbourhoods; Bandipur is the Nepal settlement, Oaxaca is Oaxaca de Juarez. No distant resorts or country substitutes.",
+  "inexp_meal_1p": "One regular non-premium main dish or explicitly complete single-person meal at an ordinary casual sit-down restaurant, excluding starter, dessert, beverage, tips and optional service. Exclude tasting menus, sharing platters, child menus, snacks/sides, hotel fine dining and international fast-food chains. Determine main-course eligibility from menu labelling/description, not price. Enumerate every explicitly eligible regular main/complete meal visible in the selected menu; venue reference is their median. Missing eligibility remains missing.",
+  "coffee": "Regular cappuccino without add-ons; median qualifying prices within venue.",
+  "beer": "Domestic draft standard serving, retain stated serving size; no bottled substitution or volume conversion. Different known sizes remain separate diagnostic strata; unknown size remains separately labelled.",
+  "cocktail": "Standard non-premium cocktail at bar/restaurant; median qualifying items within venue.",
+  "wine_glass": "Ordinary wine by glass; median qualifying items within venue, retain size and do not pool mismatched serving bases.",
+  "midrange_meal_2p": "Diagnostic only: explicit three-course menu per person doubled, or separately identified starter/main/dessert sections with within-course medians summed and doubled; no drinks. Conditional priced basket, not an observed actual order.",
+  "hotel_3star_2p": "Probe one standard room for two adults,17-20 November2026, public non-member rate, independently stated three-star class, excluding breakfast and including evidenced mandatory taxes/fees. Divide complete three-night total by3; explicit nightly quote requires same dates and all charges. Unknown occupancy/date/class/tax means proxy/missing. Retain cancellation terms. No from-rate as matched evidence.",
+  "tax": "Primary references include only source-evidenced mandatory charges and exclude optional tips/service. Record explicit inclusion/exclusion, mandatory status, fixed amounts or percentage rates, application base and any order/compounding. Missing information is uncertain-basis diagnostic; contradictory interpretations are genuine disputes. Apply the exact feeNormalization contract; never infer rates,inclusion,order,discounts or exemptions.",
+  "fullBaskets": "Not a feasibility requirement or a permitted claim in this revision. No comprehensive street meals, premium meals or guided activities are acquired. Old basket definitions stay archived hypotheses; no production ratios may manufacture reference components."
+}
+Selection:
+For Hanoi/Bled/Copenhagen only query exactly: Copenhagen Denmark 3 star hotel 17 November 2026 20 November 2026 2 adults total taxes. Open first ranked named-property or public booking-provider result showing an exact-date offer or booking entry. No login, checkout, API or paid access. A failed exact-date attempt stays failed. Search order, not price, selects property. One open maximum; no interactive navigation beyond the2-action allocation.
+Maximum2 retrieval actions,one invocation,600 seconds,no retry. Every query/open/click counts,even failure. Record ranked results before opening; never sort by prices. Menu: enumerate all explicitly eligible main items and any supported diagnostic drinks/dinner items on the same pages; preserve unit/tax/serving basis. Hotel: exact-date observed offer,proxy or missing only. Record source URL/title,retrieval timestamp,applicable date or undated,original currency/unconverted amount,minimal supporting excerpts totaling at most25 words per source,venue/address/geography,rank,inclusions and uncertainty. Return referenceRecord schema. No other city access. Fee/normalization contract:
+{
+  "purpose": "Normalize directly documented menu/offer amounts to a complete mandatory-charge basis before within-venue medians, currency conversion or scoring. All arithmetic is deterministic offline. Collector records facts, not invented fee corrections.",
+  "targetTransactions": {
+    "inexp_meal_1p": "One diner buying exactly one eligible main/complete meal, no other item. A documented mandatory per-bill charge applies once; this one-person anchor convention does not validate a two-person whole budget.",
+    "coffee_beer_cocktail_wine": "Diagnostic one adult buying one stated serving in one transaction; require charge applicability to that transaction.",
+    "midrange_meal_2p": "Two adults buying the documented two-person three-course basket, no drinks; per-bill fee once, per-person fee twice.",
+    "hotel_3star_2p": "One room,two adults,three nights; normalize whole stay, then divide3. Room-night multiplier3,person-night multiplier6,person multiplier2,stay/booking multiplier1."
+  },
+  "requiredRowFields": [
+    "listedAmount",
+    "currency",
+    "listedUnit",
+    "transaction",
+    "mandatoryChargeStatus",
+    "charges",
+    "allMandatoryChargesDocumented",
+    "normalizationStatus",
+    "normalizationReason"
+  ],
+  "listedAmount": "Original finite positive numeric quote; preserve original amount field as alias equal to listedAmount. No normalized value overwrites the source quote. Principal P=listedAmount*documented listedQuantityInTarget; menu main quantity1, an exact-date room-night quote quantity3, a full3-night quote quantity1. Do not multiply a per-room quote by adults.",
+  "transaction": "{people:positiveInteger,rooms:nonnegativeInteger,nights:nonnegativeInteger,items:[{atomicRowId,quantity:positiveNumber}],listedQuantityInTarget:positiveNumber}; quantities derive solely from the frozen target and documented unit. Ambiguous unit means missing.",
+  "mandatoryChargeStatus": "all_included|explicit_additions|unknown. all_included requires an explicit source statement covering mandatory charges. explicit_additions requires an explicit exhaustive basis or statement that the listed additions complete the payable mandatory total; merely seeing one tax does not prove no other fees. Unknown stays diagnostic.",
+  "chargeSchema": {
+    "required": [
+      "id",
+      "label",
+      "kind",
+      "mandatory",
+      "includedInListedAmount",
+      "value",
+      "valueUnit",
+      "currency",
+      "applicationUnit",
+      "baseRefs",
+      "sourceUrl",
+      "sourceEvidence",
+      "orderEvidence",
+      "rounding"
+    ],
+    "id": "Unique within row; stable menu order. Preserve every explicit mandatory or optional charge; optional excluded from normalization.",
+    "kind": "fixed|percentage",
+    "mandatory": "true|false|null; null disqualifies matched primary when potentially payable",
+    "includedInListedAmount": "true|false|null; true means do not add again, null means incomplete basis",
+    "value": "finite nonnegative number directly sourced; no assumed value",
+    "valueUnit": "currency_amount|percent|fraction; percentage r=value/100 for percent or r=value for explicitly fractional quote",
+    "currency": "Source currency; fixed additions must match principal currency, otherwise normalization missing under this revision",
+    "applicationUnit": "per_item|per_person|per_bill|per_room_night|per_person_night|per_stay|percentage_base; must be evidenced and applicable to the target",
+    "baseRefs": "For percentage only, nonempty array of principal and/or explicit prior charge IDs. Represents the exact documented taxable/service base, not a guessed order. For fixed charge empty array.",
+    "sourceEvidence": "Minimal source statement establishing value,mandatory status,inclusion and applicability, shared25-word/source excerpt allowance plus document location/section metadata",
+    "orderEvidence": "Source statement establishing base/compounding/order, or explicit independent percentages of listed principal; unknown if not stated",
+    "rounding": "null or {stage:charge,decimalPlaces:nonnegativeInteger,mode:half_up|floor|ceiling}; only use when explicitly documented, otherwise retain unrounded deterministic arithmetic"
+  },
+  "arithmetic": [
+    "Compute principal P from original quoted amount and documented unit. For a multi-item dinner P=sum normalized listed quantities BEFORE transaction-level additions; never charge per-bill amounts once per course.",
+    "For each explicit mandatory fixed fee excluded from listed amount, delta=value*target quantity for its evidenced applicationUnit: item count,people,1 bill,rooms*nights,people*nights,or1 stay. Per-item applicability to particular items must be documented; otherwise missing.",
+    "For each explicit mandatory percentage excluded from listed amount, compute delta=r*(sum of explicitly named baseRefs). principal refers to P; charge IDs refer to their computed delta. The dependency graph must be acyclic and source-evidenced. Same-base independent percentages all reference principal and do not compound; compound percentage may reference principal and a prior fee only when the source states that basis. A textual list of two percentages without base/order does NOT establish either form.",
+    "Included charges contribute no additional delta and are never extracted/re-added. This revision does not support a percentage base that requires separately extracting any included tax/fee component; such normalization is missing even if a component is mentioned, unless the source directly states the complete payable total for the target transaction. Do not back-solve an included component. Charge IDs in baseRefs therefore refer only to excluded mandatory charge deltas; reject any included-charge reference.",
+    "Payable T=P+sum excluded mandatory deltas. Exclude source-explicit optional tips/service and conditional discounts; select the public non-member undiscounted quote. No coupon assumptions. If only a conditional discounted amount is visible, proxy/missing.",
+    "Apply only source-explicit rounding at its documented stage; otherwise retain unrounded arithmetic and label analytical total. No inferred tax rounding. Convert currency AFTER target total; hotel divides complete total by3; meal remains per one main. Aggregate normalized item amounts within venue then city.",
+    "Missing mandatory status,inclusion,exhaustiveness,unit,rate/base/order or unclear applicability means normalizationStatus=missing and normalizedAmount=null. Conflicting evidence creates dispute as defined; absence alone is uncertain. No percentage/fixed fee fallback."
+  ],
+  "output": "Coordinator produces {principal,chargeDeltas:[{id,amount,baseRefs}],normalizedTransactionTotal,normalizedMeasureAmount,normalizationStatus:complete|missing,normalizationReason,derivationHash}. Keep source fields and original rows immutable. Reviewer checks inputs and deterministic mapping; reviewer must not invent missing components.",
+  "tests": "Before collection freeze fixture tests for all-included, one explicit fixed fee, one explicit percent, independently additive percentages, explicitly compounded percentages, fixed fee taxed versus untaxed, per-person/per-stay multipliers, included-fee nonduplication, unknown order, optional charge, conditional discount and contradictory status. Synthetic values only; no city prices."
+}
+Preserve listed amounts and explicit charge statements,including fixed or percentage value,mandatory/included status,application units,base and order. No inferred rate,inclusion or discount. Absent information is uncertainty/missing; conflicting evidence or disagreement is a logged definition dispute. Return atomic rows AND one provisional primary meal aggregate per selected independent venue with all constituent IDs. A primary aggregate must use a single original menu document opened under your allocation; do not conceal additional basis-page retrievals. Do not normalize uncertain rows into primary evidence.

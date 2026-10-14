@@ -1,0 +1,11 @@
+{
+  "observedAt": "2026-10-14T04:45:00Z",
+  "observedAtPrecision": "minute, approximate coordinator record; exact finish events are in budget.jsonl",
+  "observation": "After the execution interruption, live agent inventory contained only /root and none of these task directories had response.json. finish-missing charged the full remaining action allocation for each. Actual source activity is unknown.",
+  "tasks": [
+    {"taskId":"menu-bled","agent":"/root/r1_menu_bled","actionsCharged":4,"actualActions":null,"queueIssue":"Coordinator started accounting several minutes before dispatch while auditing the first-wave serializer. This delay is not model latency."},
+    {"taskId":"menu-kyoto","agent":"/root/r1_menu_kyoto","actionsCharged":4,"actualActions":null},
+    {"taskId":"menu-copenhagen","agent":"/root/r1_menu_copenhagen","actionsCharged":4,"actualActions":null}
+  ],
+  "interpretation": "Missing artifacts are execution failures, not observed price errors or evidence of absent public menus. No retry or replacement city was used."
+}

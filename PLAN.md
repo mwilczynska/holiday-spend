@@ -2,7 +2,7 @@
 
 **Last updated:** 13 October 2026
 **Branch:** `research/city-cost-accuracy`
-**Status:** Revised designer-led goal active on explicit owner restart. Baseline000 preserved; first Astra/Medium design in progress.
+**Status:** Bounded revised run complete: failed feasibility, insufficient evidence for improvement. Astra/Medium assessment complete. Baseline000 preserved.
 **Worktree:** `C:\Users\chawi\.codex\worktrees\city-cost-accuracy\holiday-spend`
 
 The owner requested a dedicated worktree, an accuracy/improvement plan, and an iterative goal prompt for
@@ -24,15 +24,19 @@ no paid provider API calls or API key setup are part of this campaign.
 - [x] Publish [the baseline checkpoint](research/city-cost-accuracy/REPORT.md), including limited scope and failures.
 - [x] Prepare [the designer-led architecture](docs/dev/plans/city-cost-experiment-agent-architecture.md) and rewrite the goal.
 - [x] Explicit owner restart received; activate the revised designer-led goal and preserve prior consumption.
-- [ ] Validate and freeze the restart protocol and designer-authored first experiment before dispatch.
-- [ ] Execute bounded experiments, mandatory ten-experiment reviews where reached, confirmation and final report.
+- [x] Validate and freeze the restart protocol and designer-authored first experiment before dispatch.
+- [x] Complete the bounded run and final report; candidate experiments, ten-experiment reviews and confirmation remain conditional on gates.
 
-**Next action:** Receive and validate the Astra/Medium restart/first-experiment design, reconcile resource/exposure
-ledgers, and freeze the new machine protocol before cost-worker dispatch. Preserve `pilot-1`/experiment000.
-Design/assessment uses Astra/Medium or Opus 5.5/Max; all cost collection/verification/generation uses Luna/Max
-or Haiku 5.5/Max. Review after every ten completed candidates. Prior consumption remains19 estimate/recovery
-calls,43 reference actions and three reference-worker calls; two design-role calls are now reserved/consumed,
-including the earlier architecture draft and current first design. Full-budget accuracy remains unmeasured.
+**Next action:** None under this closed revision; reproduce the saved evidence or review the report. No further
+scientific acquisition or candidate dispatch. [Final report](research/city-cost-accuracy/REPORT-RESTART-1.md) and
+[Astra/Medium assessment](research/city-cost-accuracy/restart-1-prep/designer-assessment.md) record zero
+qualifying cities against the four-city/three-venue requirement and zero matched dated hotel offers.
+Invalid/missing records are execution failures, not measured price errors. The independent diagnostic review
+is complete; all excluded records remain excluded. No candidate, extension, ten-experiment review or
+confirmation ran. Keep v1.1 unchanged; broader city-budget accuracy and improvement remain unmeasured.
+Any future acquisition design requires a separately authorized prospective revision preserving this failure,
+the original baseline and cumulative usage: 19 estimate/recovery calls, 73 charged reference actions,
+13 reference-worker calls, four design calls and two separately tracked engineering delegations.
 
 ---
 

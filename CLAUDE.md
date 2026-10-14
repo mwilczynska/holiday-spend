@@ -390,9 +390,11 @@ defined in `.github/workflows/production-checks.yml`; local Windows checks do no
 ## City-cost accuracy research
 
 This research worktree follows `docs/dev/plans/city-cost-accuracy.md` and the experiment-agent architecture.
-The owner explicitly restarted the revised `CITY-COST-ACCURACY-GOAL.md` after the completed `000-baseline`.
-The designer-led goal is active. Preserve the original pilot/baseline and cumulative resource use; validate and
-freeze each new designer-authored protocol before dispatch. The production method remains v1.1.
+The bounded designer-led run is closed at failed reference feasibility with an insufficient-evidence verdict.
+`research/city-cost-accuracy/REPORT-RESTART-1.md` and its strong-agent assessment are the current outcome;
+`REPORT.md` is the immutable earlier baseline checkpoint. The production method remains v1.1. No more
+collection or candidate dispatch is authorized under the closed revision. Any future restart requires a
+separately authorized prospective designer protocol, preserving original evidence and cumulative usage.
 
 On restart, every experiment is designed and assessed by GPT-6 Astra/Medium in Codex or Opus 5.5/Max in
 Claude Code. All agents retrieving/generating cost information, including reference collection and source
@@ -504,7 +506,7 @@ authentication, or methodology.
 
 | Path | Purpose |
 | --- | --- |
-| `PLAN.md` | Active research checklist with prior product plan retained below |
+| `PLAN.md` | Bounded research outcome and next-action record, with prior product plan retained below |
 | `docs/product/city-cost-methodology.md` | Current city-cost methodology, mirrored by the `/estimates` page |
 | `docs/prompts/llm_prompt_new_cities_1.md` | Frozen v1 rollback prompt |
 | `docs/prompts/llm_prompt_new_cities_v1_1.md` | v1.1 prompt for holistic anchors plus a current RBA FX observation; tiers and conversion stay server-side |

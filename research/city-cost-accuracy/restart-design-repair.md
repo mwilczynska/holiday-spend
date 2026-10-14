@@ -1,0 +1,11 @@
+# Pre-freeze design repair
+
+Design invocation **3**, shared repair **1 of 6**, authored by the coordinator-selected GPT-6 Astra / Medium Codex designer. The original draft remains unchanged. The corrected full contract is [restart-design-repaired.json](restart-design-repaired.json); its provenance records the original draft SHA-256. No new price evidence was read or generated.
+
+Random independent review now samples **20% of provisionally eligible primary meal venue/measure aggregates**, with deterministic SHA-256 selection from a frozen ledger. Each selected aggregate requires verification of every constituent item, completeness of main-course inclusion, and mandatory-charge basis. Atomic observations remain preserved. Across at most 18 menu aggregates this requires at most four random source opens, leaving six of the ten review actions for genuine disputes. The minimum four-city/three-venue gate entails at least 12 aggregates and three random opens. Extra required access or disputes may still exhaust the cap and cause an honest feasibility failure.
+
+Missing tax or application-basis information is recorded as ineligible uncertainty, not automatically a definition dispute requiring another search. Conflicting source statements or disagreements about applying a rule remain genuine disputes and require independent review. Uncertain rows cannot contribute to the three-venue primary gate. Diagnostic drinks/hotels are outside the primary random-review denominator and cannot be represented as randomly reviewed.
+
+The contract now specifies source fields and deterministic arithmetic for mandatory fixed and percentage charges, transaction quantities, included-charge nonduplication, explicit percentage bases and compounding. Unknown order, rate, inclusion or applicability yields missing normalization; no inferred taxes or discounts. Source quotes remain separate from normalized values. Exact collector/reviewer templates now include these rules.
+
+The six cities, four-of-six feasibility threshold, three independent venues, 40 reference actions, cheap-worker restrictions, independence, accuracy criteria and reservations are unchanged. Known design calls are now three. The repair fixes prospective measurement mechanics; it does not respond to a price result or lower an accuracy threshold.

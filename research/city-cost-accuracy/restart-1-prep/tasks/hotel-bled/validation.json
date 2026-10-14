@@ -1,0 +1,23 @@
+{
+  "valid": false,
+  "errors": [
+    "Provenance hash mismatch: taskSha256"
+  ],
+  "telemetryKnown": true,
+  "actionCount": 2,
+  "terminalStatus": "failed",
+  "taskId": "hotel-bled",
+  "status": "invalid",
+  "responseSha256": "50a1160b38a424b3d38cca8da0e61fa36f5a5c0ba29d0b35d5cabe2fe9c5982c",
+  "requestSha256": "8a4c657ee514bc978ec8a1cf076a7ce09dec1c859cdf5f8de05db07445cef2f8",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "coordinatorStartedAt": "2026-10-14T04:47:05.504Z",
+  "rawArtifactSource": "restart-1-prep/tasks/hotel-bled/response.json",
+  "rawArtifactModifiedAt": "2026-10-14T04:49:03.933Z",
+  "artifactElapsedMs": 118428.84912109375,
+  "coordinatorDeadline": "2026-10-14T04:57:05.504Z",
+  "budgetChargeActions": 2,
+  "provenanceAuthority": "Coordinator-selected identity; worker metadata checked for consistency"
+}

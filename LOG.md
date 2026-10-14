@@ -3611,3 +3611,63 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   retrieve new prices, inspect confirmation/old holdouts or generate numeric candidate estimates. New
   cost-worker dispatch waits for coordinator validation and protocol freeze. Designer assessment and reviews
   after every ten completed candidate experiments follow the activated architecture.
+
+# 13–14 October 2026 — Revised feasibility collection and execution audit
+
+- Received the Astra/Medium restart design and one pre-freeze repair. The repair sampled venue/meal
+  aggregates rather than atomic menu items so independent review fits ten source opens, and specified
+  source-documented mandatory charges. Frozen restart-1 contract SHA256
+  `32953a2bc9937e5a91f2e5e5ab4acff06bce12e7361f82c083e10d929fda3602` preserves the original six pilot identities,
+  dates, cumulative resource balances and 100-call confirmation reserve. Candidate001 remains conditional.
+- Implemented append-only reservation/accounting and deterministic source-only fee normalization. An
+  owner-authorized engineering delegate implemented the isolated restart runner; another audits hashes,
+  statuses and resources. Engineering delegation is separate from cost-source and design-role calls. No
+  provider API, application key, database, canonical CSV, production-default or holdout access.
+- Registered six Luna/Max menu collectors. Hanoi/Bandipur/Oaxaca retained raw menus but failed serialization
+  validation; all their primary aggregates also lacked complete mandatory-charge normalization. The frozen
+  validator's field/enum/ID requirements were underspecified in the delivery instructions. Recorded a
+  mechanical clarification before later dispatch, preserving invalid originals without retries or numeric repairs.
+- Bled/Kyoto/Copenhagen menu agents were absent after a runtime interruption and returned no saved artifacts.
+  Charged all twelve allocated actions conservatively; actual activity remains unknown. Bled's early accounting
+  start included coordinator audit delay, which is not model latency. Missing outputs are not price errors or
+  evidence of absent public menus.
+- Completed three two-action hotel probes. Hanoi/Copenhagen returned valid missing-result records; Bled
+  retained a hash-invalid record. No exact-date/class/occupancy/charge-matched offer was obtained. These are
+  source-access/contract failures, not measured hotel estimation errors.
+- Fixed the review preparation omission of genuine disputes in invalid collector records through a separate
+  helper without changing frozen source files. Preserved Hanoi's original disputed aggregate and all 37
+  constituents as excluded diagnostics. Independent Luna/Max review used one source open, confirmed the
+  recorded enumeration/amounts but not fee basis, and adjudicated every row and the conflicting dish description
+  ineligible. Random primary-review denominator remains zero; this is not 37 validated city-price references.
+- At the pre-assessment checkpoint: 19 estimate/recovery calls, 73 charged reference actions (61 known,
+  twelve unknown charged at allocation), thirteen reference-worker calls, three design calls, zero candidates,
+  extensions or confirmations. Thirty of forty feasibility actions charged; ten unused actions released. Old
+  estimate telemetry remains 36 known actions plus an explicit eight-action accounting convention, not a proven
+  upper bound. No budget reset. All future protected allocations remain unexecuted.
+- Twenty-five focused offline tests pass. Original baseline hashes and score replay remain unchanged:
+  loss0.3979154954, successful-only median APE18.9%, p9091.7%, sparse four-city offers. Restart frozen hashes,
+  deterministic review replay and memory-mirror checks pass. Mandatory strong-agent assessment and bounded
+  report follow before goal closure; broader accuracy and improvement remain unmeasured.
+
+# 14 October 2026 UTC — Designer assessment and bounded closeout
+
+- GPT-6 Astra/Medium assessed the frozen evidence, offline hashes and excluded diagnostic review. Original
+  feasibility failed: zero of six cities qualify against four required, each with three eligible independent
+  venues. Zero of three hotel probes produced a matched dated offer. Independent review is complete through
+  ineligible adjudication; source ambiguity and missing charge basis remain explicit. No scientific acquisition
+  remains necessary to close this revision. Final verdict: insufficient evidence; keep production v1.1.
+- Finished assessment accounting as designcall4 without resetting prior debits. Final totals: 19 estimate/
+  recovery calls, 13 reference-worker calls, 73 charged reference actions (61 known plus12 unknown), four
+  design calls and two separate engineering delegations. Estimate retrieval balance44 includes36 known and
+  an eight-action accounting convention for unknown old activity, not a proven upper bound. No active calls
+  remain. Protected future allocations, including100 confirmation calls, were never executed and remain
+  unexecuted historical reservations.
+- Published the bounded synthesis in `research/city-cost-accuracy/REPORT-RESTART-1.md` and separate result
+  ledger. It supersedes historical inactive-restart wording without rewriting baseline evidence. The new run
+  did not dispatch a candidate, extension or confirmation, and did not reach the ten-candidate review trigger.
+  Failed acquisition and execution defects are not price errors or an estimator-improvement result.
+- Exact frozen source/contract/request/response/review hashes and immutable pre-assessment snapshot replay
+  pass; later assessment events are validated separately. Original baseline loss/coverage reproduce unchanged.
+  Twenty-five focused tests, fourteen audit self-checks and memory/diff checks pass. All changes remain in the
+  research worktree; no production/database/canonical CSV/default/holdout/deployment changes. Final commit,
+  push and goal completion follow this closeout; any future research needs a separately authorized design.

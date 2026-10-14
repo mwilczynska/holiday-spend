@@ -1,5 +1,30 @@
 # Isolated accuracy tooling
 
+`000-baseline`/`pilot-1` are immutable completed historical evidence. The example dispatch sequence below
+documents that earlier run; do not dispatch those IDs again. Revised feasibility artifacts are separate under
+`research/city-cost-accuracy/restart-1-prep/`. Its frozen source/contract files cannot be edited in place.
+
+Read-only reproduction for the revised run:
+
+```powershell
+node --test scripts/city-cost-accuracy/core.test.mjs scripts/city-cost-accuracy/budget.test.mjs scripts/city-cost-accuracy/fees.test.mjs scripts/city-cost-accuracy/restart.test.mjs
+node scripts/city-cost-accuracy/restart.mjs verify restart-1-prep
+node scripts/city-cost-accuracy/restart.mjs budget restart-1-prep
+node scripts/city-cost-accuracy/audit-final.mjs --self-test
+node scripts/city-cost-accuracy/audit-final.mjs --replay
+```
+
+The audit verifies exact raw/request/prompt/source hashes, original validation and review outcomes, full
+denominators, conservative unknown-action charges and the immutable pre-assessment journal prefix. Later
+assessment accounting is checked separately without overwriting the earlier snapshot. Reservations are not
+executed calls. `fees.mjs` requires explicit source charge bases/order; it never guesses tax rates.
+
+`final-review.mjs` is a separately documented execution repair: it preserves genuine disputes from invalid
+collector records as excluded diagnostics without changing their raw bytes, IDs, amounts or eligibility. It
+cannot admit those records to primary references. Its selection/input replay is immutable. `envelope.mjs`
+records mechanical delivery instructions, and `assessment-budget.mjs` splits protected design reservations
+for the mandatory assessment. These are coordinator-only accounting/preparation, not LLM calls.
+
 Run from the research worktree. These tools import the app's prompt builder and pure v1.1 materializer;
 they never invoke a provider, load credentials or import a persistence service. Dependencies were installed
 with lifecycle scripts disabled. A production build/native database check is not part of this research preflight.
