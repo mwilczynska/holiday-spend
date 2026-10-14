@@ -1,0 +1,1593 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "redesign-1",
+  "contractSha256": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+  "harnessSha256": "f2c598c85fdf5a488e5a9e2c1db270275528f9fe337619bdbc2754830e736905",
+  "budgetPrefixSha256": "eadf56658101f479c44bf793091e7e0a8090e23c5afcfb45905cd9c2090c20a3",
+  "budgetEventCount": 45,
+  "budget": {
+    "used": {
+      "estimateInvocations": 19,
+      "referenceActions": 97,
+      "referenceWorkerInvocations": 19,
+      "estimateRetrievalActions": 44,
+      "designInvocations": 6,
+      "candidateAttempts": 0,
+      "fullExtensions": 0
+    },
+    "reserved": {
+      "estimateInvocations": 281,
+      "referenceActions": 190,
+      "referenceWorkerInvocations": 81,
+      "estimateRetrievalActions": 843,
+      "designInvocations": 2,
+      "candidateAttempts": 0,
+      "fullExtensions": 0
+    },
+    "available": {
+      "estimateInvocations": 100,
+      "referenceActions": 13,
+      "referenceWorkerInvocations": 0,
+      "estimateRetrievalActions": 713,
+      "designInvocations": 42,
+      "candidateAttempts": 20,
+      "fullExtensions": 2
+    },
+    "started": [],
+    "pending": [
+      "protected-estimate-unknownheadroom",
+      "protected-estimate-freshprimarybaseline16x3",
+      "protected-estimate-candidatepilot6x2",
+      "protected-estimate-candidateextension10x2",
+      "protected-estimate-secondarybaseline16x3",
+      "protected-estimate-secondaryfinalist16x2",
+      "protected-estimate-confirmationexclusive",
+      "protected-estimate-failurerecoveryheadroom",
+      "protected-reference-confirmation",
+      "protected-reference-fx",
+      "protected-reference-dispute-failure",
+      "protected-reference-unallocated",
+      "protected-redesign-after-repair-design",
+      "redesign-reference-development-remainder"
+    ]
+  },
+  "expected": {
+    "cities": 3,
+    "slots": 12,
+    "rowExtractions": 24
+  },
+  "observed": {
+    "eligibleExtractions": 0,
+    "eligiblePairs": 0,
+    "independentCompleteCities": 0
+  },
+  "tasks": [
+    {
+      "taskId": "collect-hanoi",
+      "role": "collect",
+      "cityId": "hanoi",
+      "status": "traceable",
+      "spawnAt": "2026-10-14T15:17:33.565Z",
+      "terminalAt": "2026-10-14T15:22:37.521Z",
+      "model": "gpt-6-luna",
+      "effort": "max",
+      "runtime": "Codex subscription subagent",
+      "knownActions": 3,
+      "chargedActions": 3,
+      "unknownActivity": false,
+      "hashes": {
+        "request": "5931c98d9c5a6fa19e908c18af27d7e2d5007f017659a8c39d8095bcca5a0aba",
+        "system": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+        "prompt": "478d47e43f75b0c08ded523a8e78bab57c325dfc46c4174ab304199f8545698f",
+        "contract": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+        "response": "bec6f86d6d5af6033faadaaa31adf10e7dd35dcad88b6cb4b384ca05554faca5",
+        "frame": "7c942b16b979d27c71b91d1566990ccf0c3c89d4846fa9cc3e3e1b54f8a9d6f4",
+        "provenance": "592e99506cf61283970f6ec968d7e989daa30c0773930b9aa6d7cdadac46b972"
+      }
+    },
+    {
+      "taskId": "verify-hanoi",
+      "role": "verify",
+      "cityId": "hanoi",
+      "status": "untraceable",
+      "spawnAt": "2026-10-14T15:24:07.926Z",
+      "terminalAt": "2026-10-14T15:27:48.885Z",
+      "model": "gpt-6-luna",
+      "effort": "max",
+      "runtime": "Codex subscription subagent",
+      "knownActions": null,
+      "chargedActions": 4,
+      "unknownActivity": true,
+      "hashes": {
+        "request": "3683f5d9c8fd258dae4c48c34cca6312af0b9c7bd5dd683f8d85f32a80152a8d",
+        "system": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+        "prompt": "e767aa991732b59fc43f4bf9bfc7dd782e63e9e0ebf42b21133f1312e414414c",
+        "contract": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+        "response": "54054e6555667f3ce5885895e8757c6c7ac88178a96419f928c4e241ec2dcb6c",
+        "provenance": "b445d51f44228242ac0b062b4a15ec2cd92c1b46572bf975785d018d081df9d6"
+      }
+    },
+    {
+      "taskId": "collect-oaxaca",
+      "role": "collect",
+      "cityId": "oaxaca",
+      "status": "untraceable",
+      "spawnAt": "2026-10-14T15:17:53.083Z",
+      "terminalAt": "2026-10-14T15:23:18.887Z",
+      "model": "gpt-6-luna",
+      "effort": "max",
+      "runtime": "Codex subscription subagent",
+      "knownActions": null,
+      "chargedActions": 5,
+      "unknownActivity": true,
+      "hashes": {
+        "request": "65e1b233beead7cde812da52b51f059f1dbeee8bd970c1ff5be474cad9e6d164",
+        "system": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+        "prompt": "b45cc20157e96d0eb0394d00e7fc0955d0ae8b11bd3f3d747211e8cdd85743aa",
+        "contract": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+        "response": "68c41728b7aee353c17511f6f8e97ea3ec08839011b01f8babba19e8836cf09c",
+        "frame": "95c014902a64f9d2963323d80d6b333b828bbde060a5a21d699fc7962d28fd37",
+        "provenance": "7ba6719c4e410cbb685eb33e297058f5af9c0d1bf6b45943516d39d23433dc45"
+      }
+    },
+    {
+      "taskId": "verify-oaxaca",
+      "role": "verify",
+      "cityId": "oaxaca",
+      "status": "traceable",
+      "spawnAt": "2026-10-14T15:24:30.664Z",
+      "terminalAt": "2026-10-14T15:28:47.931Z",
+      "model": "gpt-6-luna",
+      "effort": "max",
+      "runtime": "Codex subscription subagent",
+      "knownActions": 3,
+      "chargedActions": 3,
+      "unknownActivity": false,
+      "hashes": {
+        "request": "8df9f784e054ab7c345dc6c6c9adbff45754346145b317b656b514564486db4f",
+        "system": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+        "prompt": "1e6ed60932294d9c8db546190335f46435c7ed4d64db22f8d202c41f68f1c8eb",
+        "contract": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+        "response": "400f2aabe4b56745623d51a542584f3d6cb2b60faf992baa6ea4a59df71f6269",
+        "provenance": "9fa80369d2b3515a09fbf48d32d0e1143b001386af2974ac34a0a3ba26fd3ea4"
+      }
+    },
+    {
+      "taskId": "collect-copenhagen",
+      "role": "collect",
+      "cityId": "copenhagen",
+      "status": "untraceable",
+      "spawnAt": "2026-10-14T15:18:13.186Z",
+      "terminalAt": "2026-10-14T15:23:22.010Z",
+      "model": "gpt-6-luna",
+      "effort": "max",
+      "runtime": "Codex subscription subagent",
+      "knownActions": null,
+      "chargedActions": 5,
+      "unknownActivity": true,
+      "hashes": {
+        "request": "21471fcdad70fdebd530932b0ed8d9f00cb71dc07a17388900a987e41cf85d12",
+        "system": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+        "prompt": "2ceb4ec0eb14a5b14b04dc0905d5be99e3e6ad3d28cc70d5f72ad71dc975c4b2",
+        "contract": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+        "response": "e7d7710e58edd053ffea03cd56b031649f48c48093aed80d12285d3307a03a0c",
+        "frame": "00c8f385966ac8caf9c2087899d05690aa1548f43deb0a72fd26d753b961f458",
+        "provenance": "e9d468263de57118c62ad4dad6a953b3c61250935caf5660610b8420f9b9cef1"
+      }
+    },
+    {
+      "taskId": "verify-copenhagen",
+      "role": "verify",
+      "cityId": "copenhagen",
+      "status": "untraceable",
+      "spawnAt": "2026-10-14T15:24:52.936Z",
+      "terminalAt": "2026-10-14T15:29:43.659Z",
+      "model": "gpt-6-luna",
+      "effort": "max",
+      "runtime": "Codex subscription subagent",
+      "knownActions": null,
+      "chargedActions": 4,
+      "unknownActivity": true,
+      "hashes": {
+        "request": "21905ddf2d9331f80c56375f85ed1c523c3a9caae962190f2c12004ebb0a9125",
+        "system": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+        "prompt": "4a4ad6a578398368e7a0f7fb113c5471948ee0d4e4f09fd8f7d1d48e4754c27b",
+        "contract": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+        "response": "7410a6a39f82bf4d82fbc4334588584a8a5890924733d9ce6e1fef521401660b",
+        "provenance": "af182a3391c36c7cd9ee31cd6725749ce46e468afcdffd29b3cd8c2776401b52"
+      }
+    }
+  ],
+  "cities": [
+    {
+      "cityId": "hanoi",
+      "currency": "VND",
+      "expectedSlots": 4,
+      "expectedExtractions": 8,
+      "eligiblePairs": 0,
+      "complete": false,
+      "pairs": [
+        {
+          "slot": "s1",
+          "eligible": false,
+          "collector": {
+            "slot": "s1",
+            "row": {
+              "slot": "s1",
+              "sourceUrl": "https://thehanoicafe.com/",
+              "resolvedUrl": "https://thehanoicafe.com/",
+              "sourceTitle": "Thehanoicafe",
+              "retrievedAt": "2026-10-14T15:19:56.669Z",
+              "venueName": "The Hanoi Cafe",
+              "addressText": "10 Hang Manh str, Hoan Kiem dist, Hanoi, Vietnam",
+              "geography": "confirmed",
+              "geographyEvidence": "The page address identifies Hang Manh Street in Hoan Kiem district, Hanoi.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "not_menu",
+              "reason": "Cafe overview links to menus but displays no menu item, amount, or currency."
+            },
+            "errors": [
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: itemLabel",
+              "Ineligible mode/date"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s1",
+            "row": {
+              "slot": "s1",
+              "sourceUrl": "https://thehanoicafe.com/",
+              "resolvedUrl": "https://thehanoicafe.com/",
+              "sourceTitle": "Thehanoicafe",
+              "retrievedAt": "2026-10-14T15:24:42.000Z",
+              "venueName": "The Hanoi Cafe",
+              "addressText": "10 Hang Manh str, Hoan Kiem dist, Hanoi, Vietnam",
+              "geography": "confirmed",
+              "geographyEvidence": "10 Hang Manh str, Hoan Kiem dist, Hanoi, Vietnam",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": "The returned page text shows a general menu section and links, but no cappuccino listing or price.",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "not_menu",
+              "reason": "The assigned URL opens the cafe homepage; the returned text has menu links but no listed cappuccino item or amount."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: itemLabel",
+              "Ineligible mode/date"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s2",
+          "eligible": false,
+          "collector": {
+            "slot": "s2",
+            "row": {
+              "slot": "s2",
+              "sourceUrl": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+              "resolvedUrl": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+              "sourceTitle": "XLIII Coffee - 2nd Floor 2D Quang Trung, Hoan Kiem, Ha Noi City",
+              "retrievedAt": "2026-10-14T15:20:11.124Z",
+              "venueName": "XLIII Coffee – Hoan Kiem, Ha Noi",
+              "addressText": "2nd Floor 2D Quang Trung, Hoan Kiem, Ha Noi City",
+              "geography": "confirmed",
+              "geographyEvidence": "The page identifies its branch on 2D Quang Trung in Hoan Kiem, Ha Noi City.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "technical_failure",
+              "reason": "The menu page returned category names and images but no readable cappuccino item, amount, or currency."
+            },
+            "errors": [
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: itemLabel",
+              "Ineligible mode/date"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s2",
+            "row": {
+              "slot": "s2",
+              "sourceUrl": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+              "resolvedUrl": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+              "sourceTitle": "XLIII Coffee - 2nd Floor 2D Quang Trung, Hoan Kiem, Ha Noi City",
+              "retrievedAt": "2026-10-14T15:24:52.000Z",
+              "venueName": "XLIII Coffee – Hoan Kiem, Ha Noi",
+              "addressText": "2nd Floor 2D Quang Trung, Hoan Kiem, Ha Noi City",
+              "geography": "confirmed",
+              "geographyEvidence": "2nd Floor 2D Quang Trung, Hoan Kiem, Ha Noi City",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": "No cappuccino listing or amount appears in the returned page text.",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "absent_product",
+              "reason": "The returned menu page text has no cappuccino listing; no qualifying item or listed amount can be established."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: itemLabel",
+              "Ineligible mode/date"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s3",
+          "eligible": false,
+          "collector": {
+            "slot": "s3",
+            "row": {
+              "slot": "s3",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "No further eligible domain appeared within the inspected first ten results."
+            },
+            "errors": [
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s3",
+            "row": {
+              "slot": "s3",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "The assigned slot has no URL; no retrieval was permitted or needed."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s4",
+          "eligible": false,
+          "collector": {
+            "slot": "s4",
+            "row": {
+              "slot": "s4",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "No further eligible domain appeared within the inspected first ten results."
+            },
+            "errors": [
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s4",
+            "row": {
+              "slot": "s4",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "The assigned slot has no URL; no retrieval was permitted or needed."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        }
+      ],
+      "sourceIndependence": {
+        "collector": {
+          "independent": false,
+          "dimensions": {
+            "domain": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "venue": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "operator": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "menu": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            }
+          }
+        },
+        "verifier": {
+          "independent": false,
+          "dimensions": {
+            "domain": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "venue": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "operator": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "menu": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            }
+          }
+        }
+      },
+      "dimensions": {
+        "chargeBasis": {
+          "unknown": 8
+        },
+        "sizeText": {
+          "null": 8
+        },
+        "volumeMl": {
+          "null": 8
+        },
+        "serviceMode": {
+          "unknown": 8
+        },
+        "dateBasis": {
+          "undated": 4,
+          "unknown": 4
+        },
+        "operatorName": {
+          "null": 8
+        },
+        "menuGroup": {
+          "null": 8
+        }
+      },
+      "metrics": {
+        "complete": false,
+        "R": null,
+        "S": null,
+        "D": null,
+        "L": null,
+        "U": null
+      },
+      "sourceOverlap": {
+        "collectorVerifierAssignedUrls": "100% by design",
+        "disjointHalvesSlots": 0
+      }
+    },
+    {
+      "cityId": "oaxaca",
+      "currency": "MXN",
+      "expectedSlots": 4,
+      "expectedExtractions": 8,
+      "eligiblePairs": 0,
+      "complete": false,
+      "pairs": [
+        {
+          "slot": "s1",
+          "eligible": false,
+          "collector": {
+            "slot": "s1",
+            "row": {
+              "slot": "s1",
+              "sourceUrl": "https://www.cafecafeoax.com/menu-centro",
+              "resolvedUrl": "https://www.cafecafeoax.com/menu-centro",
+              "sourceTitle": "MENU CENTRO | cafecafeoax",
+              "retrievedAt": "2026-10-14T15:19:57.000Z",
+              "venueName": "MENU CENTRO | cafecafeoax",
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": "The page identifies a Centro menu but does not give a street address or explicit Oaxaca de Juárez branch address.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unspecified",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "absent_product",
+              "reason": "The plural cappuccino entry is followed only by named varieties; no unflavoured hot cup is identified."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: addressText"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s1",
+            "row": {
+              "slot": "s1",
+              "sourceUrl": "https://www.cafecafeoax.com/menu-centro",
+              "resolvedUrl": "https://www.cafecafeoax.com/menu-centro",
+              "sourceTitle": "MENU CENTRO | cafecafeoax",
+              "retrievedAt": "2026-10-14T15:25:11.965Z",
+              "venueName": "Café Café",
+              "addressText": null,
+              "geography": "confirmed",
+              "geographyEvidence": "Page title says “MENU CENTRO”; the menu is explicitly associated with the Centro branch.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": "Capuccinos",
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unspecified",
+              "listedAmount": null,
+              "amountScale": 1,
+              "currency": null,
+              "currencyEvidence": "Bare “$” only; no currency name or ISO. The displayed amount is full units, with no thousands convention.",
+              "priceEvidence": "Capuccinos - $40",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "ambiguous_currency",
+              "reason": "The menu lists a cappuccino price but identifies no currency for the bare dollar sign."
+            },
+            "errors": [
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: addressText"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s2",
+          "eligible": false,
+          "collector": {
+            "slot": "s2",
+            "row": {
+              "slot": "s2",
+              "sourceUrl": "https://atzomx.com.mx/menu",
+              "resolvedUrl": "https://atzomx.com.mx/menu",
+              "sourceTitle": "Menú | Atzomx Café — Centro de Oaxaca",
+              "retrievedAt": "2026-10-14T15:20:24.000Z",
+              "venueName": "Atzomx Café",
+              "addressText": "C. de Los Libres 800-letra B, Centro, 68000 Oaxaca de Juárez, Oax.",
+              "geography": "confirmed",
+              "geographyEvidence": "The contact section places the cafe at a street address in Centro, Oaxaca de Juárez.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": "Capuchino",
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unspecified",
+              "listedAmount": null,
+              "amountScale": 1,
+              "currency": null,
+              "currencyEvidence": "The amount uses a bare $ symbol; the page names no currency or ISO code.",
+              "priceEvidence": "Capuchino — Caliente $60",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "ambiguous_currency",
+              "reason": "The hot cappuccino and exact listed amount appear, but a bare dollar symbol does not establish currency."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s2",
+            "row": {
+              "slot": "s2",
+              "sourceUrl": "https://atzomx.com.mx/menu",
+              "resolvedUrl": "https://atzomx.com.mx/menu",
+              "sourceTitle": "Menú | Atzomx Café — Centro de Oaxaca",
+              "retrievedAt": "2026-10-14T15:25:58.696Z",
+              "venueName": "Atzomx Café",
+              "addressText": "C. de Los Libres 800-letra B, Centro, 68000 Oaxaca de Juárez, Oax.",
+              "geography": "confirmed",
+              "geographyEvidence": "The address states “Centro”.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": "Capuchino",
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unspecified",
+              "listedAmount": null,
+              "amountScale": 1,
+              "currency": null,
+              "currencyEvidence": "Bare “$” only; no currency name or ISO. The displayed amount is full units, with no thousands convention.",
+              "priceEvidence": "Caliente$60",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "ambiguous_currency",
+              "reason": "The hot cappuccino has a listed price, but the page does not identify the currency of its bare dollar sign."
+            },
+            "errors": [
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s3",
+          "eligible": false,
+          "collector": {
+            "slot": "s3",
+            "row": {
+              "slot": "s3",
+              "sourceUrl": "https://cafeteriaoaxaca.com/",
+              "resolvedUrl": "https://cafeteriaoaxaca.com/",
+              "sourceTitle": "Cafetería Oaxaca – Auténtico Sabor Oaxaqueño",
+              "retrievedAt": "2026-10-14T15:20:37.000Z",
+              "venueName": "cafeteria oaxaca",
+              "addressText": "Calle Xicoténcatl 116, Centro Oaxaca de Juárez, Oax. 68000",
+              "geography": "confirmed",
+              "geographyEvidence": "The address block identifies the Centro location in Oaxaca de Juárez.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "absent_product",
+              "reason": "The opened menu lists coffee and other drinks but no cappuccino."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: itemLabel",
+              "Ineligible mode/date"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s3",
+            "row": {
+              "slot": "s3",
+              "sourceUrl": "https://cafeteriaoaxaca.com/",
+              "resolvedUrl": "https://cafeteriaoaxaca.com/",
+              "sourceTitle": "Cafetería Oaxaca – Auténtico Sabor Oaxaqueño",
+              "retrievedAt": "2026-10-14T15:26:42.065Z",
+              "venueName": "cafeteria OAXACA",
+              "addressText": "Calle Xicoténcatl 116, Centro Oaxaca de Juárez, Oax. 68000",
+              "geography": "confirmed",
+              "geographyEvidence": "The address block states “Xicoténcatl 116, Centro”.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": "MXN",
+              "currencyEvidence": "Precios en pesos mexicanos.",
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "absent_product",
+              "reason": "The menu has no cappuccino listing."
+            },
+            "errors": [
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: itemLabel",
+              "Ineligible mode/date"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s4",
+          "eligible": false,
+          "collector": {
+            "slot": "s4",
+            "row": {
+              "slot": "s4",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "No URL qualified for this slot in the first-ten search frame."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s4",
+            "row": {
+              "slot": "s4",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "No URL was assigned for this slot."
+            },
+            "errors": [
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        }
+      ],
+      "sourceIndependence": {
+        "collector": {
+          "independent": false,
+          "dimensions": {
+            "domain": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "venue": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "operator": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "menu": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            }
+          }
+        },
+        "verifier": {
+          "independent": false,
+          "dimensions": {
+            "domain": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "venue": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "operator": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "menu": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            }
+          }
+        }
+      },
+      "dimensions": {
+        "chargeBasis": {
+          "unknown": 8
+        },
+        "sizeText": {
+          "null": 8
+        },
+        "volumeMl": {
+          "null": 8
+        },
+        "serviceMode": {
+          "unspecified": 4,
+          "unknown": 4
+        },
+        "dateBasis": {
+          "undated": 6,
+          "unknown": 2
+        },
+        "operatorName": {
+          "null": 8
+        },
+        "menuGroup": {
+          "null": 8
+        }
+      },
+      "metrics": {
+        "complete": false,
+        "R": null,
+        "S": null,
+        "D": null,
+        "L": null,
+        "U": null
+      },
+      "sourceOverlap": {
+        "collectorVerifierAssignedUrls": "100% by design",
+        "disjointHalvesSlots": 0
+      }
+    },
+    {
+      "cityId": "copenhagen",
+      "currency": "DKK",
+      "expectedSlots": 4,
+      "expectedExtractions": 8,
+      "eligiblePairs": 0,
+      "complete": false,
+      "pairs": [
+        {
+          "slot": "s1",
+          "eligible": false,
+          "collector": {
+            "slot": "s1",
+            "row": {
+              "slot": "s1",
+              "sourceUrl": "https://kopenhag.dk/menu/",
+              "resolvedUrl": "https://kopenhag.dk/menu/",
+              "sourceTitle": "Menu – Café Kopenhag",
+              "retrievedAt": "2026-10-14T15:20:22.000Z",
+              "venueName": "Café Kopenhag",
+              "addressText": "Anker Heegaards Gade 2 1572 København V",
+              "geography": "off_area",
+              "geographyEvidence": "The contact address identifies København V, outside assigned Indre By.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": "Cappuccino",
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unspecified",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": "The item amount is displayed without a currency name or symbol.",
+              "priceEvidence": "Cappuccino — 52,-",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "off_area",
+              "reason": "The menu lists a cappuccino, but its contact address is in København V rather than the assigned area."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s1",
+            "row": {
+              "slot": "s1",
+              "sourceUrl": "https://kopenhag.dk/menu/",
+              "resolvedUrl": "https://kopenhag.dk/menu/",
+              "sourceTitle": "Menu – Café Kopenhag",
+              "retrievedAt": "2026-10-14T15:25:32.000Z",
+              "venueName": "Menu – Café Kopenhag",
+              "addressText": "Anker Heegaards Gade 2 1572 København V",
+              "geography": "off_area",
+              "geographyEvidence": "Anker Heegaards Gade 2; 1572 København V",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": "Cappuccino",
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unspecified",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": "The menu marks prices with ,- and gives no currency name.",
+              "priceEvidence": "Cappuccino — 52,-",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "undated",
+              "status": "off_area",
+              "reason": "The menu lists a cappuccino at Anker Heegaards Gade 2, 1572 København V, outside the assigned Indre By area."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s2",
+          "eligible": false,
+          "collector": {
+            "slot": "s2",
+            "row": {
+              "slot": "s2",
+              "sourceUrl": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+              "resolvedUrl": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+              "sourceTitle": "winter menu 25/26 engelsk",
+              "retrievedAt": "2026-10-14T15:20:35.000Z",
+              "venueName": "winter menu 25/26 engelsk",
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": "Cappuccino",
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unspecified",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": "The menu uses kr., which does not uniquely identify DKK.",
+              "priceEvidence": "Cappuccino 49 kr.",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": "winter menu 25/26",
+              "dateBasis": "expired",
+              "status": "expired",
+              "reason": "The PDF labels this a winter 25/26 menu, past the retrieval date; no branch address or district is stated."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: addressText",
+              "Ineligible mode/date"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s2",
+            "row": {
+              "slot": "s2",
+              "sourceUrl": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+              "resolvedUrl": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+              "sourceTitle": "winter menu 25/26 engelsk",
+              "retrievedAt": "2026-10-14T15:25:45.000Z",
+              "venueName": "winter menu 25/26 engelsk",
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": "The PDF provides no branch address or district.",
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": "Cappuccino",
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unspecified",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": "The menu lists kr.; it does not state an ISO currency code.",
+              "priceEvidence": "Cappuccino 49 kr.",
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": "winter menu 25/26",
+              "dateBasis": "expired",
+              "status": "expired",
+              "reason": "The stated winter 25/26 menu predates the 2026-10-14 retrieval date."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: addressText",
+              "Ineligible mode/date"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s3",
+          "eligible": false,
+          "collector": {
+            "slot": "s3",
+            "row": {
+              "slot": "s3",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "No eligible result from the finite first-ten frame was selected for this slot."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s3",
+            "row": {
+              "slot": "s3",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "No URL was assigned to slot s3."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        },
+        {
+          "slot": "s4",
+          "eligible": false,
+          "collector": {
+            "slot": "s4",
+            "row": {
+              "slot": "s4",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "No eligible result from the finite first-ten frame was selected for this slot."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "verifier": {
+            "slot": "s4",
+            "row": {
+              "slot": "s4",
+              "sourceUrl": null,
+              "resolvedUrl": null,
+              "sourceTitle": null,
+              "retrievedAt": null,
+              "venueName": null,
+              "addressText": null,
+              "geography": "unknown",
+              "geographyEvidence": null,
+              "operatorName": null,
+              "menuGroup": null,
+              "itemLabel": null,
+              "sizeText": null,
+              "volumeMl": null,
+              "serviceMode": "unknown",
+              "listedAmount": null,
+              "amountScale": null,
+              "currency": null,
+              "currencyEvidence": null,
+              "priceEvidence": null,
+              "chargeBasis": "unknown",
+              "chargeEvidence": null,
+              "menuDate": null,
+              "dateBasis": "unknown",
+              "status": "no_slot",
+              "reason": "No URL was assigned to slot s4."
+            },
+            "errors": [
+              "Task provenance untraceable",
+              "Not observed in assigned geography",
+              "Invalid price/scale/currency",
+              "Missing evidence: priceEvidence",
+              "Missing evidence: currencyEvidence",
+              "Missing evidence: geographyEvidence",
+              "Missing evidence: itemLabel",
+              "Missing evidence: venueName",
+              "Missing evidence: addressText",
+              "Missing evidence: sourceUrl",
+              "Missing evidence: resolvedUrl",
+              "Missing evidence: retrievedAt",
+              "Ineligible mode/date",
+              "Assigned source/timestamp mismatch"
+            ],
+            "eligible": false
+          },
+          "identityDisputes": []
+        }
+      ],
+      "sourceIndependence": {
+        "collector": {
+          "independent": false,
+          "dimensions": {
+            "domain": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "venue": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "operator": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "menu": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            }
+          }
+        },
+        "verifier": {
+          "independent": false,
+          "dimensions": {
+            "domain": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "venue": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "operator": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            },
+            "menu": {
+              "unique": 0,
+              "unknown": 0,
+              "overlap": []
+            }
+          }
+        }
+      },
+      "dimensions": {
+        "chargeBasis": {
+          "unknown": 8
+        },
+        "sizeText": {
+          "null": 8
+        },
+        "volumeMl": {
+          "null": 8
+        },
+        "serviceMode": {
+          "unspecified": 4,
+          "unknown": 4
+        },
+        "dateBasis": {
+          "undated": 2,
+          "expired": 2,
+          "unknown": 4
+        },
+        "operatorName": {
+          "null": 8
+        },
+        "menuGroup": {
+          "null": 8
+        }
+      },
+      "metrics": {
+        "complete": false,
+        "R": null,
+        "S": null,
+        "D": null,
+        "L": null,
+        "U": null
+      },
+      "sourceOverlap": {
+        "collectorVerifierAssignedUrls": "100% by design",
+        "disjointHalvesSlots": 0
+      }
+    }
+  ],
+  "identityDisputes": 0,
+  "protocol": [],
+  "verdict": "inconclusive_missing_evidence",
+  "U_macro": null,
+  "B": null,
+  "minimumFutureCentralGain": null,
+  "limitations": [
+    "Cup size, service mode, publication age, charges, unknown ownership and search selection may systematically differ. No population city-price, daily-spend or payable-price inference. App coffee is holistic USD regular cappuccino; this is a different narrow listed-price diagnostic. No old/fresh estimate scoring; estimator repeat variation unmeasured.",
+    "S sampling/frame sensitivity; R retrieval/interpretation discrepancy; identity/missingness; unknown charges; unknown volume/service/date; unknown ownership separately. Estimator repeat variation not_measured. Systematic search coverage/source correctness/payable-price mismatch not_bounded. No significance test, bootstrap or nominal confidence interval.",
+    "All provenance action/source metadata is worker-recorded; native browsing is not independently verified."
+  ],
+  "reproduction": "node scripts/city-cost-accuracy/redesign.mjs summary"
+}

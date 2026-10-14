@@ -392,10 +392,12 @@ defined in `.github/workflows/production-checks.yml`; local Windows checks do no
 This research worktree follows `docs/dev/plans/city-cost-accuracy.md` and the experiment-agent architecture.
 The earlier bounded designer-led run is closed at failed reference feasibility with an insufficient-evidence
 verdict in `research/city-cost-accuracy/REPORT-RESTART-1.md`; `REPORT.md` is its immutable earlier baseline
-checkpoint. The owner authorizes one separate measurement-redesign experiment under `redesign-1/`, designed
-and assessed by Astra/Medium. Freeze its prospective contract before cost dispatch and stop after its report.
-The question is benchmark stability/detectability, not an automatic candidate-tuning campaign. Prior evidence
-and cumulative usage/protected confirmation reserves stay intact. The production method remains v1.1.
+checkpoint. The separately authorized measurement redesign is closed as inconclusive in
+`research/city-cost-accuracy/redesign-1/REPORT.md`, assessed by Astra/Medium. It produced no eligible paired
+reference observations, so stability/detectability remain unmeasured. No further acquisition or methodology
+tuning is authorized under these closed revisions. Any later work needs a separately authorized prospective
+design with viable references and instrumentation. Prior evidence and cumulative usage/protected confirmation
+reserves stay intact. The production method remains v1.1.
 
 On restart, every experiment is designed and assessed by GPT-6 Astra/Medium in Codex or Opus 5.5/Max in
 Claude Code. All agents retrieving/generating cost information, including reference collection and source

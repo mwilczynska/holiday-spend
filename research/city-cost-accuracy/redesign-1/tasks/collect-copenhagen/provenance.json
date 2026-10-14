@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "taskId": "collect-copenhagen",
+  "cityId": "copenhagen",
+  "role": "collect",
+  "evidenceKind": "worker_recorded_not_native_transcript",
+  "recordedAt": "2026-10-14T15:22:27.296Z",
+  "frameSavedAt": "2026-10-14T15:20:09.927Z",
+  "responseSavedAt": "2026-10-14T15:22:00.389Z",
+  "completeActionLog": false,
+  "actions": [
+    {
+      "ordinal": 1,
+      "type": "search",
+      "toolName": "web.run",
+      "query": "Copenhagen Indre By cafe cappuccino menu official",
+      "url": null,
+      "startedAt": "2026-10-14T15:18:39.000Z",
+      "endedAt": "2026-10-14T15:18:42.000Z",
+      "outcome": "success",
+      "slot": null,
+      "resolvedUrl": null,
+      "sourceTitle": null,
+      "resultNote": "Returned 18 result entries; local clock timestamps were available only to whole-second precision."
+    },
+    {
+      "ordinal": 2,
+      "type": "open",
+      "toolName": "web.run",
+      "query": null,
+      "url": "https://kopenhag.dk/menu/",
+      "startedAt": "2026-10-14T15:20:16.000Z",
+      "endedAt": "2026-10-14T15:20:22.000Z",
+      "outcome": "success",
+      "slot": "s1",
+      "resolvedUrl": "https://kopenhag.dk/menu/",
+      "sourceTitle": "Menu – Café Kopenhag",
+      "resultNote": "Page loaded; address indicates a location outside the assigned district. Redirect metadata was not exposed; clock precision was whole seconds."
+    },
+    {
+      "ordinal": 3,
+      "type": "open",
+      "toolName": "web.run",
+      "query": null,
+      "url": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+      "startedAt": "2026-10-14T15:20:30.000Z",
+      "endedAt": "2026-10-14T15:20:35.000Z",
+      "outcome": "success",
+      "slot": "s2",
+      "resolvedUrl": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+      "sourceTitle": "winter menu 25/26 engelsk",
+      "resultNote": "PDF loaded; no branch address or district was exposed. Redirect metadata was not exposed; clock precision was whole seconds."
+    }
+  ]
+}

@@ -3709,3 +3709,32 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   all consumed totals and confirmation reserves. Started three fresh Luna/Max collectors on14 October at
   15:17–15:18 UTC, each with one fixed query and up to four original-source opens, no replacement or retries.
   Source actions and missingness will be reported honestly; source outcomes are not yet assessed.
+
+# 14 October 2026 — Measurement redesign completed: inconclusive
+
+- Executed all six fresh Luna/Max source tasks without retries, replacement sources or estimate generation.
+  Original frames selected2/3/2 URLs rather than four per city. This independently prevents the fixed twelve-
+  pair gate, even with perfect metadata. Public content also had unreadable/missing products, bare-dollar
+  currency ambiguity, branch evidence gaps and disputed interpretations. No eligible paired observations or
+  complete city; stability/detectability metrics remain null, not zero. No recorded protocol breaches.
+- Two jobs were traceable, four failed provenance requirements because of malformed timestamp strings or
+  uncertain clock precision. Retained all six responses, provenance records, three frames, rejected/null rows
+  and raw byte copies. Native browsing is not independently captured. Copenhagen district/season-expiry
+  classifications remain worker judgements, not verified geographic/expiry truth. No coordinator repairs.
+- Astra/Medium designcall7 audited all26 frozen hashes, six task artifacts, both journal prefixes and recorded-
+  mtime validation replay. No deterministic discrepancy. Its verdict is inconclusive_missing_evidence and it
+  recommends stopping further methodology tuning: the design did not produce a benchmark for comparison.
+  Manual metadata demands and source-selection/access constraints were poorly matched to the available
+  tools. Future lessons are prospective only, not authorization to loosen/retry this experiment.
+- New reference use24/27 charged actions: six traceable worker-reported plus18 conservative full-cap charges.
+  Raw arrays report17 actions at a weaker telemetry level; not independently verified and no proof of hidden
+  extra activity. Cumulative:97/300 reference actions,19/100 reference workers,19/400 estimates,7/50 design
+  calls; estimate retrieval accounting44 retains36 known+8 unknown convention, not a proven bound. Protected
+  confirmation100 estimates/80 actions/16 workers unused. All calls terminal; no candidates/confirmation/new goal.
+- Final report: `research/city-cost-accuracy/redesign-1/REPORT.md`. All42 focused tests pass, including17 new
+  redesign tests; summary and parent closeout reproduce unchanged. Canonical memory mirror and diff/byte/link
+  checks support closeout. No production defaults, DB, canonical CSV, private spending, old holdouts or rollout.
+- Local freeze checkpoint `ab725e4` preserved before closeout. Automatic publication review initially rejected
+  an unverified destination; read-only checks confirmed the existing public `mwilczynska/holiday-spend` origin,
+  tracked branch, earlier published checkpoint and ADMIN repository access. Final publication may retry only
+  with that new verification and content checks; if rejected again, retain local commits and request approval.

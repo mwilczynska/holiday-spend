@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "taskId": "collect-copenhagen",
+  "cityId": "copenhagen",
+  "role": "collect",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subscription subagent",
+  "spawnAt": "2026-10-14T15:18:13.186Z",
+  "terminalAt": "2026-10-14T15:23:22.010Z",
+  "deadlineAt": "2026-10-14T15:28:13.186Z",
+  "hashes": {
+    "request": "21471fcdad70fdebd530932b0ed8d9f00cb71dc07a17388900a987e41cf85d12",
+    "system": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+    "prompt": "2ceb4ec0eb14a5b14b04dc0905d5be99e3e6ad3d28cc70d5f72ad71dc975c4b2",
+    "contract": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+    "response": "e7d7710e58edd053ffea03cd56b031649f48c48093aed80d12285d3307a03a0c",
+    "frame": "00c8f385966ac8caf9c2087899d05690aa1548f43deb0a72fd26d753b961f458",
+    "provenance": "e9d468263de57118c62ad4dad6a953b3c61250935caf5660610b8420f9b9cef1"
+  },
+  "originalFileMtimes": {
+    "response": 1791991320389.5945,
+    "frame": 1791991209927.355,
+    "provenance": 1791991347343.955
+  },
+  "captureStable": true,
+  "status": "untraceable",
+  "chargedActions": 5,
+  "knownActions": null,
+  "unknownActivity": true,
+  "tokenUsage": null,
+  "errors": [
+    "Incomplete action log"
+  ],
+  "protocol": [],
+  "warnings": [],
+  "rows": [
+    {
+      "slot": "s1",
+      "row": {
+        "slot": "s1",
+        "sourceUrl": "https://kopenhag.dk/menu/",
+        "resolvedUrl": "https://kopenhag.dk/menu/",
+        "sourceTitle": "Menu – Café Kopenhag",
+        "retrievedAt": "2026-10-14T15:20:22.000Z",
+        "venueName": "Café Kopenhag",
+        "addressText": "Anker Heegaards Gade 2 1572 København V",
+        "geography": "off_area",
+        "geographyEvidence": "The contact address identifies København V, outside assigned Indre By.",
+        "operatorName": null,
+        "menuGroup": null,
+        "itemLabel": "Cappuccino",
+        "sizeText": null,
+        "volumeMl": null,
+        "serviceMode": "unspecified",
+        "listedAmount": null,
+        "amountScale": null,
+        "currency": null,
+        "currencyEvidence": "The item amount is displayed without a currency name or symbol.",
+        "priceEvidence": "Cappuccino — 52,-",
+        "chargeBasis": "unknown",
+        "chargeEvidence": null,
+        "menuDate": null,
+        "dateBasis": "undated",
+        "status": "off_area",
+        "reason": "The menu lists a cappuccino, but its contact address is in København V rather than the assigned area."
+      },
+      "errors": [
+        "Task provenance untraceable",
+        "Not observed in assigned geography",
+        "Invalid price/scale/currency"
+      ],
+      "eligible": false
+    },
+    {
+      "slot": "s2",
+      "row": {
+        "slot": "s2",
+        "sourceUrl": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+        "resolvedUrl": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+        "sourceTitle": "winter menu 25/26 engelsk",
+        "retrievedAt": "2026-10-14T15:20:35.000Z",
+        "venueName": "winter menu 25/26 engelsk",
+        "addressText": null,
+        "geography": "unknown",
+        "geographyEvidence": null,
+        "operatorName": null,
+        "menuGroup": null,
+        "itemLabel": "Cappuccino",
+        "sizeText": null,
+        "volumeMl": null,
+        "serviceMode": "unspecified",
+        "listedAmount": null,
+        "amountScale": null,
+        "currency": null,
+        "currencyEvidence": "The menu uses kr., which does not uniquely identify DKK.",
+        "priceEvidence": "Cappuccino 49 kr.",
+        "chargeBasis": "unknown",
+        "chargeEvidence": null,
+        "menuDate": "winter menu 25/26",
+        "dateBasis": "expired",
+        "status": "expired",
+        "reason": "The PDF labels this a winter 25/26 menu, past the retrieval date; no branch address or district is stated."
+      },
+      "errors": [
+        "Task provenance untraceable",
+        "Not observed in assigned geography",
+        "Invalid price/scale/currency",
+        "Missing evidence: geographyEvidence",
+        "Missing evidence: addressText",
+        "Ineligible mode/date"
+      ],
+      "eligible": false
+    },
+    {
+      "slot": "s3",
+      "row": {
+        "slot": "s3",
+        "sourceUrl": null,
+        "resolvedUrl": null,
+        "sourceTitle": null,
+        "retrievedAt": null,
+        "venueName": null,
+        "addressText": null,
+        "geography": "unknown",
+        "geographyEvidence": null,
+        "operatorName": null,
+        "menuGroup": null,
+        "itemLabel": null,
+        "sizeText": null,
+        "volumeMl": null,
+        "serviceMode": "unknown",
+        "listedAmount": null,
+        "amountScale": null,
+        "currency": null,
+        "currencyEvidence": null,
+        "priceEvidence": null,
+        "chargeBasis": "unknown",
+        "chargeEvidence": null,
+        "menuDate": null,
+        "dateBasis": "unknown",
+        "status": "no_slot",
+        "reason": "No eligible result from the finite first-ten frame was selected for this slot."
+      },
+      "errors": [
+        "Task provenance untraceable",
+        "Not observed in assigned geography",
+        "Invalid price/scale/currency",
+        "Missing evidence: priceEvidence",
+        "Missing evidence: currencyEvidence",
+        "Missing evidence: geographyEvidence",
+        "Missing evidence: itemLabel",
+        "Missing evidence: venueName",
+        "Missing evidence: addressText",
+        "Missing evidence: sourceUrl",
+        "Missing evidence: resolvedUrl",
+        "Missing evidence: retrievedAt",
+        "Ineligible mode/date",
+        "Assigned source/timestamp mismatch"
+      ],
+      "eligible": false
+    },
+    {
+      "slot": "s4",
+      "row": {
+        "slot": "s4",
+        "sourceUrl": null,
+        "resolvedUrl": null,
+        "sourceTitle": null,
+        "retrievedAt": null,
+        "venueName": null,
+        "addressText": null,
+        "geography": "unknown",
+        "geographyEvidence": null,
+        "operatorName": null,
+        "menuGroup": null,
+        "itemLabel": null,
+        "sizeText": null,
+        "volumeMl": null,
+        "serviceMode": "unknown",
+        "listedAmount": null,
+        "amountScale": null,
+        "currency": null,
+        "currencyEvidence": null,
+        "priceEvidence": null,
+        "chargeBasis": "unknown",
+        "chargeEvidence": null,
+        "menuDate": null,
+        "dateBasis": "unknown",
+        "status": "no_slot",
+        "reason": "No eligible result from the finite first-ten frame was selected for this slot."
+      },
+      "errors": [
+        "Task provenance untraceable",
+        "Not observed in assigned geography",
+        "Invalid price/scale/currency",
+        "Missing evidence: priceEvidence",
+        "Missing evidence: currencyEvidence",
+        "Missing evidence: geographyEvidence",
+        "Missing evidence: itemLabel",
+        "Missing evidence: venueName",
+        "Missing evidence: addressText",
+        "Missing evidence: sourceUrl",
+        "Missing evidence: resolvedUrl",
+        "Missing evidence: retrievedAt",
+        "Ineligible mode/date",
+        "Assigned source/timestamp mismatch"
+      ],
+      "eligible": false
+    }
+  ],
+  "frameCheck": {
+    "frame": {
+      "taskId": "collect-copenhagen",
+      "cityId": "copenhagen",
+      "results": [
+        {
+          "rank": 1,
+          "title": "Café du Nord at Magasin du Nord - Indre By",
+          "url": "https://www.visitindreby.com/en/shop/caf-e-du-nord",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "VisitIndreBy directory listing; excluded as a directory."
+        },
+        {
+          "rank": 2,
+          "title": "Coffee at Magasin du Nord - Indre By",
+          "url": "https://www.visitindreby.com/en/shop/coffee",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "VisitIndreBy directory listing; excluded as a directory."
+        },
+        {
+          "rank": 3,
+          "title": "Coffee at Magasin du Nord - Indre By",
+          "url": "https://visitindreby.com/shop/coffee",
+          "selection": "duplicate_brand",
+          "slot": null,
+          "reason": "Duplicate Coffee at Magasin listing on the same directory domain as rank 2."
+        },
+        {
+          "rank": 4,
+          "title": "Menu – Café Kopenhag",
+          "url": "https://kopenhag.dk/menu/",
+          "selection": "selected",
+          "slot": "s1",
+          "reason": "Cafe Kopenhag's own menu page in Copenhagen; branch area remains to be checked on open."
+        },
+        {
+          "rank": 5,
+          "title": "EMMYLOU CAFÉ, København - Indre By - Menukort, priser og restaurantanmeldelser",
+          "url": "https://www.tripadvisor.dk/Restaurant_Review-g189541-d24114251-Reviews-Emmylou_Cafe-Copenhagen_Zealand.html",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Tripadvisor review/listing page; excluded as a review directory."
+        },
+        {
+          "rank": 6,
+          "title": "Original Coffee Store Kongensgade – Coffee shop in Inner City, Copenhagen",
+          "url": "https://originalcoffee.dk/en/pages/store-kongensgade",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Store information page, not a menu or drinks page in the result snippet."
+        },
+        {
+          "rank": 7,
+          "title": "Original Coffee Illum 4th Floor – Coffee Shop in Indre By, Copenhagen",
+          "url": "https://originalcoffee.dk/en/pages/illum-4-sal",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Store information page, not a menu or drinks page in the result snippet."
+        },
+        {
+          "rank": 8,
+          "title": "Original Coffee Bredgade – Kaffebar i Indre By, København",
+          "url": "https://originalcoffee.dk/pages/bredgade",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Store information page, not a menu or drinks page in the result snippet."
+        },
+        {
+          "rank": 9,
+          "title": "Original Coffee Bredgade – Coffee shop in Inner City, Copenhagen",
+          "url": "https://originalcoffee.dk/en/pages/bredgade",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Store information page, not a menu or drinks page in the result snippet."
+        },
+        {
+          "rank": 10,
+          "title": "winter menu 25/26 engelsk",
+          "url": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf",
+          "selection": "selected",
+          "slot": "s2",
+          "reason": "Museum-hosted winter menu PDF; snippet lists cappuccino and names Café Spire-vippen."
+        }
+      ],
+      "slots": [
+        {
+          "slot": "s1",
+          "searchRank": 4,
+          "url": "https://kopenhag.dk/menu/"
+        },
+        {
+          "slot": "s2",
+          "searchRank": 10,
+          "url": "https://cphmuseum.kk.dk/sites/default/files/2025-10/winter%20menu%202526%20engelsk%20gl%C3%B8gg.pdf"
+        },
+        {
+          "slot": "s3",
+          "searchRank": null,
+          "url": null
+        },
+        {
+          "slot": "s4",
+          "searchRank": null,
+          "url": null
+        }
+      ]
+    },
+    "errors": [],
+    "slotErrors": {
+      "s1": [],
+      "s2": [],
+      "s3": [],
+      "s4": []
+    },
+    "warnings": []
+  },
+  "traceabilityLimit": "Worker-recorded evidence, not independently captured native browsing telemetry."
+}

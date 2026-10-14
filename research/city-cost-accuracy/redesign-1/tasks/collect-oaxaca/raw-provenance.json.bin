@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "taskId": "collect-oaxaca",
+  "cityId": "oaxaca",
+  "role": "collect",
+  "evidenceKind": "worker_recorded_not_native_transcript",
+  "recordedAt": "2026-10-14T15:22:21 UTC.000Z",
+  "frameSavedAt": "2026-10-14T15:19:48.980Z",
+  "responseSavedAt": "2026-10-14T15:21:54.577Z",
+  "completeActionLog": false,
+  "actions": [
+    {
+      "ordinal": 1,
+      "type": "search",
+      "toolName": "web__run",
+      "query": "Oaxaca de Juarez Centro cafeteria capuchino menu oficial",
+      "url": null,
+      "startedAt": "2026-10-14T15:18:30.000Z",
+      "endedAt": "2026-10-14T15:18:33.000Z",
+      "outcome": "success",
+      "slot": null,
+      "resolvedUrl": null,
+      "sourceTitle": null,
+      "resultNote": "Returned 17 result entries; the first ten were recorded in frame.json. Clock readings had second precision."
+    },
+    {
+      "ordinal": 2,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://www.cafecafeoax.com/menu-centro",
+      "startedAt": "2026-10-14T15:19:53.000Z",
+      "endedAt": "2026-10-14T15:19:57.000Z",
+      "outcome": "success",
+      "slot": "s1",
+      "resolvedUrl": "https://www.cafecafeoax.com/menu-centro",
+      "sourceTitle": "MENU CENTRO | cafecafeoax",
+      "resultNote": "Page content returned; no redirect was exposed. Clock readings had second precision."
+    },
+    {
+      "ordinal": 3,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://atzomx.com.mx/menu",
+      "startedAt": "2026-10-14T15:20:18.000Z",
+      "endedAt": "2026-10-14T15:20:24.000Z",
+      "outcome": "success",
+      "slot": "s2",
+      "resolvedUrl": "https://atzomx.com.mx/menu",
+      "sourceTitle": "Menú | Atzomx Café — Centro de Oaxaca",
+      "resultNote": "Menu and contact content returned; no redirect was exposed. Clock readings had second precision."
+    },
+    {
+      "ordinal": 4,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://cafeteriaoaxaca.com/",
+      "startedAt": "2026-10-14T15:20:34.000Z",
+      "endedAt": "2026-10-14T15:20:37.000Z",
+      "outcome": "success",
+      "slot": "s3",
+      "resolvedUrl": "https://cafeteriaoaxaca.com/",
+      "sourceTitle": "Cafetería Oaxaca – Auténtico Sabor Oaxaqueño",
+      "resultNote": "Menu and venue content returned; no redirect was exposed. Clock readings had second precision."
+    }
+  ]
+}

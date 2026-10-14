@@ -1,0 +1,59 @@
+{
+  "taskId": "verify-hanoi",
+  "phase": 2,
+  "role": "verify",
+  "cityId": "hanoi",
+  "dependsOn": [
+    "collect-hanoi"
+  ],
+  "maxActions": 4,
+  "query": null,
+  "toolOrder": [
+    "open s1",
+    "open s2",
+    "open s3",
+    "open s4"
+  ],
+  "promptTemplate": "verifier",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subscription subagent",
+  "freshContext": true,
+  "maxConcurrency": 3,
+  "maxSeconds": 600,
+  "retries": 0,
+  "paidCalls": 0,
+  "substitutions": false,
+  "assignment": {
+    "taskId": "verify-hanoi",
+    "cityId": "hanoi",
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "area": "Hoan Kiem district",
+    "currency": "VND",
+    "query": null,
+    "slots": [
+      {
+        "slot": "s1",
+        "url": "https://thehanoicafe.com/"
+      },
+      {
+        "slot": "s2",
+        "url": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/"
+      },
+      {
+        "slot": "s3",
+        "url": null
+      },
+      {
+        "slot": "s4",
+        "url": null
+      }
+    ],
+    "outputDirectory": "C:\\Users\\chawi\\.codex\\worktrees\\city-cost-accuracy\\holiday-spend\\research\\city-cost-accuracy\\redesign-1\\tasks\\verify-hanoi",
+    "maxActions": 4
+  },
+  "systemSha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+  "promptSha256": "e767aa991732b59fc43f4bf9bfc7dd782e63e9e0ebf42b21133f1312e414414c",
+  "contractSha256": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628"
+}

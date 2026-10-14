@@ -1,0 +1,108 @@
+{
+  "taskId": "collect-oaxaca",
+  "cityId": "oaxaca",
+  "results": [
+    {
+      "rank": 1,
+      "title": "White and White Minimalist Coffee Cafe Menu",
+      "url": "https://centrocafe.com.mx/wp-content/uploads/2023/10/MENU-CENTRO_ESP.pdf",
+      "selection": "not_city",
+      "slot": null,
+      "reason": "Cafe menu result, but title and snippet do not identify Oaxaca."
+    },
+    {
+      "rank": 2,
+      "title": "MENU CENTRO | cafecafeoax",
+      "url": "https://www.cafecafeoax.com/menu-centro",
+      "selection": "selected",
+      "slot": "s1",
+      "reason": "Cafe-branded Centro menu page with Oaxaca identified by the brand name."
+    },
+    {
+      "rank": 3,
+      "title": "Menú",
+      "url": "https://casonaoaxaca.mx/menu/",
+      "selection": "not_cafe",
+      "slot": null,
+      "reason": "Restaurant-style menu result does not identify a cafe brand."
+    },
+    {
+      "rank": 4,
+      "title": "Menú | Atzomx Café — Centro de Oaxaca",
+      "url": "https://atzomx.com.mx/menu",
+      "selection": "selected",
+      "slot": "s2",
+      "reason": "Cafe menu result explicitly identifies Centro de Oaxaca."
+    },
+    {
+      "rank": 5,
+      "title": "Cafetería Oaxaca – Auténtico Sabor Oaxaqueño",
+      "url": "https://cafeteriaoaxaca.com/",
+      "selection": "selected",
+      "slot": "s3",
+      "reason": "Cafe result identifies its Centro location and menu."
+    },
+    {
+      "rank": 6,
+      "title": "Mar&miel Coffee Shop - Oaxaca Centro Precios y Menú a Domicilio - Rappi",
+      "url": "https://www.rappi.com.mx/restaurantes/1930470644-marymiel-coffee-shop",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Delivery platform listing."
+    },
+    {
+      "rank": 7,
+      "title": "Coffee & Màs Avenida Benito Juarez 308 - Oaxaca Centro Precios y Menú a Domicilio - Rappi",
+      "url": "https://www.rappi.com.mx/restaurantes/1930412897-coffee-y-mas-avenida-benito-juarez-",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Delivery platform listing."
+    },
+    {
+      "rank": 8,
+      "title": "Café Central Xoxo | DiDi Food México",
+      "url": "https://web.didiglobal.com/mx/food/oaxaca-oax/cafe-central-xoxo/5764607640165155203/",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Delivery platform listing."
+    },
+    {
+      "rank": 9,
+      "title": "Grano de Cafe - Oaxaca Centro Precios y Menú a Domicilio - Rappi",
+      "url": "https://www.rappi.com.mx/restaurantes/1930014230-grano-de-cafe",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Delivery platform listing."
+    },
+    {
+      "rank": 10,
+      "title": "Catpuchino (oaxaca) Menú y Precios - Pide a Domicilio en Oaxaca de Juárez - Uber Eats",
+      "url": "https://www.ubereats.com/mx/store/catpuchino-oaxaca/zdszPp-KX-qekJhZ7NjOQw",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Delivery platform listing."
+    }
+  ],
+  "slots": [
+    {
+      "slot": "s1",
+      "searchRank": 2,
+      "url": "https://www.cafecafeoax.com/menu-centro"
+    },
+    {
+      "slot": "s2",
+      "searchRank": 4,
+      "url": "https://atzomx.com.mx/menu"
+    },
+    {
+      "slot": "s3",
+      "searchRank": 5,
+      "url": "https://cafeteriaoaxaca.com/"
+    },
+    {
+      "slot": "s4",
+      "searchRank": null,
+      "url": null
+    }
+  ]
+}

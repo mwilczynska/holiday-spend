@@ -1,8 +1,8 @@
 # City-cost accuracy research
 
-**Last updated:** 13 October 2026
+**Last updated:** 14 October 2026
 **Branch:** `research/city-cost-accuracy`
-**Status:** Single measurement-redesign experiment running under frozen Astra/Medium contract; three Luna/Max collectors dispatched. Earlier failed run remains closed.
+**Status:** Single measurement-redesign experiment complete and assessed: inconclusive missing reference evidence. Earlier evidence remains preserved; no further tuning authorized.
 **Worktree:** `C:\Users\chawi\.codex\worktrees\city-cost-accuracy\holiday-spend`
 
 The owner requested a dedicated worktree, an accuracy/improvement plan, and an iterative goal prompt for
@@ -32,17 +32,20 @@ no paid provider API calls or API key setup are part of this campaign.
 - [x] Explicit owner authorization received to run one redesign experiment and have Astra/Medium define it.
 - [x] Carry prior actual usage and protected allocations into a separate linked journal; do not reset budgets.
 - [x] Validate and freeze Astra/Medium's complete measurement, acquisition, stability/detectability and execution contract.
-- [ ] Execute the registered cheap-worker schedule, assess with Astra/Medium and publish the bounded result.
+- [x] Execute the registered cheap-worker schedule, assess with Astra/Medium and write the bounded result.
 
-**Next action:** Finish the fixed collectors, generate masked verifier assignments from their original frames,
-then assess and report under `research/city-cost-accuracy/redesign-1/`. The question is whether a narrow
-independent benchmark can reliably detect a useful improvement. This authorizes one measurement experiment,
-not an automatic candidate campaign or new goal. The accepted schedule uses six workers/27 reference actions
-and zero estimates: four menu-listed cappuccino slots in each of Hanoi, Oaxaca and Copenhagen. Seventeen
-focused tests pass; contract SHA256 `424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628`.
-Ceilings:40 new reference actions/12 reference workers/12 optional unchanged-v1.1 estimate calls, within all
-cumulative caps. Preserve100 confirmation estimate calls and80 reference actions/16 reference workers for
-confirmation. No paid APIs or production writes. Stop after this experiment's assessment and report.
+**Next action:** None under this closed experiment. Review the [report](research/city-cost-accuracy/redesign-1/REPORT.md)
+and [Astra/Medium assessment](research/city-cost-accuracy/redesign-1/designer-assessment.md). Six Luna/Max
+tasks completed; zero of12 eligible pairs and zero complete cities. Frames selected2/3/2 URLs before opens,
+independently preventing full coverage. Four task provenance records were untraceable; source-content gaps
+also remain. Precision/detectability were not measured. No estimate, candidate or confirmation ran.
+
+Further methodology tuning is premature without a viable checked reference dataset and reliable source
+instrumentation. Any later work needs separate authorization and a prospective design, preserving this
+failure and cumulative usage. New charged reference actions24/27; global totals97 actions,19 reference
+workers,19 estimate/recovery calls and7 design calls. Confirmation reserves100 estimates/80 actions/16 workers
+remain unexecuted. All42 focused tests pass; contract SHA256
+`424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628`. Keep v1.1 unchanged.
 
 ## Earlier bounded outcome — preserved
 

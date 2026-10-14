@@ -1,0 +1,19 @@
+{
+  "verificationDate": "2026-10-14",
+  "earlierReview": "A combined local checkpoint/push command was rejected before execution because the destination was considered unverified and potentially private repository contents could be disclosed.",
+  "destinationChecks": {
+    "gitRemoteOrigin": "https://github.com/mwilczynska/holiday-spend.git",
+    "trackedBranchRemote": "origin",
+    "previousPublishedCheckpoint": "c3b3151",
+    "githubCliRepository": {
+      "nameWithOwner": "mwilczynska/holiday-spend",
+      "url": "https://github.com/mwilczynska/holiday-spend",
+      "isPrivate": false,
+      "viewerPermission": "ADMIN"
+    }
+  },
+  "evidence": "Read-only git remote/tracking/log commands and gh repo view --json nameWithOwner,isPrivate,viewerPermission,url; no credentials or auth tokens inspected.",
+  "authorizationContext": "The previously activated goal explicitly authorizes commit/push research checkpoints. This owner-authorized experiment continues in the same research branch and destination; existing publication authorization has not been revoked.",
+  "contentScope": "Research tooling, prospective contracts, public-menu observations, model/task provenance and documentation. No application keys, database, private spending, provider headers, browser state, production changes or old holdout contents.",
+  "nextAction": "Retry publication only after full experiment/assessment/report and final content checks using the now-verified existing destination. If automatic review still rejects publication, preserve the local checkpoint and ask the owner for explicit destination approval."
+}

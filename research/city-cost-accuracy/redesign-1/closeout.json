@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "status": "experiment_complete_inconclusive",
+  "verdict": "inconclusive_missing_evidence",
+  "contractSha256": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+  "finalJournalSequence": 50,
+  "consumed": {
+    "estimateInvocations": 19,
+    "referenceActions": 97,
+    "referenceWorkerInvocations": 19,
+    "estimateRetrievalActions": 44,
+    "designInvocations": 7,
+    "candidateAttempts": 0,
+    "fullExtensions": 0
+  },
+  "unexecutedReservations": {
+    "estimateInvocations": 281,
+    "referenceActions": 190,
+    "referenceWorkerInvocations": 81,
+    "estimateRetrievalActions": 843,
+    "designInvocations": 1,
+    "candidateAttempts": 0,
+    "fullExtensions": 0
+  },
+  "activeCalls": [],
+  "expected": {
+    "cities": 3,
+    "slots": 12,
+    "rowExtractions": 24
+  },
+  "observed": {
+    "eligibleExtractions": 0,
+    "eligiblePairs": 0,
+    "independentCompleteCities": 0
+  },
+  "precisionMeasured": false,
+  "newEstimates": 0,
+  "candidatesExecuted": 0,
+  "confirmationExecuted": false,
+  "engineering": {
+    "tasks": 3,
+    "turns": 4
+  },
+  "assessmentEvidenceVerified": [
+    {
+      "path": "research/city-cost-accuracy/redesign-1/contract.json",
+      "sha256": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/design.md",
+      "sha256": "cc95aa7b9141498cb25ce7b8e90e87fc48b6b9d843dab9e0dec35951d05fb24f"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/design-repair.md",
+      "sha256": "d7adf9a576ebb5fdc5963fa2ae84388f47fbde88a12ce347e8b268224bd418d7"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/freeze.json",
+      "sha256": "9d7700410f87e2de4b0cb68c999cb06a79e393cb7ef92051f536b5834c33d7f4"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/execution-summary.json",
+      "sha256": "c094a9fce11969386e3552ac429ecf6b6c095d9d635d344994bef284cee48ee5"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/assessment-request.txt",
+      "sha256": "138cfb24ff0ee2c8badd04261eb3ef4bc4da0c09a9f7f067180695852f77ea19"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/request.json",
+      "sha256": "21471fcdad70fdebd530932b0ed8d9f00cb71dc07a17388900a987e41cf85d12"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/prompt.txt",
+      "sha256": "2ceb4ec0eb14a5b14b04dc0905d5be99e3e6ad3d28cc70d5f72ad71dc975c4b2"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/validation.json",
+      "sha256": "84596603f6a79a9e61002315a810c4bb1d52cbf6790555d1be6984ec0f376ed3"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/response.json",
+      "sha256": "e7d7710e58edd053ffea03cd56b031649f48c48093aed80d12285d3307a03a0c"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/provenance.json",
+      "sha256": "e9d468263de57118c62ad4dad6a953b3c61250935caf5660610b8420f9b9cef1"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/frame.json",
+      "sha256": "00c8f385966ac8caf9c2087899d05690aa1548f43deb0a72fd26d753b961f458"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/request.json",
+      "sha256": "5931c98d9c5a6fa19e908c18af27d7e2d5007f017659a8c39d8095bcca5a0aba"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/prompt.txt",
+      "sha256": "478d47e43f75b0c08ded523a8e78bab57c325dfc46c4174ab304199f8545698f"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/validation.json",
+      "sha256": "2230cdef76023a01a943a783ea0707df81076cb7db3e0c40afd689a4a7645fdd"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/response.json",
+      "sha256": "bec6f86d6d5af6033faadaaa31adf10e7dd35dcad88b6cb4b384ca05554faca5"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/provenance.json",
+      "sha256": "592e99506cf61283970f6ec968d7e989daa30c0773930b9aa6d7cdadac46b972"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/frame.json",
+      "sha256": "7c942b16b979d27c71b91d1566990ccf0c3c89d4846fa9cc3e3e1b54f8a9d6f4"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/request.json",
+      "sha256": "65e1b233beead7cde812da52b51f059f1dbeee8bd970c1ff5be474cad9e6d164"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/prompt.txt",
+      "sha256": "b45cc20157e96d0eb0394d00e7fc0955d0ae8b11bd3f3d747211e8cdd85743aa"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/validation.json",
+      "sha256": "91326736373b426e99c702db372fca767c6371da3d19a349367745135b71c57d"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/response.json",
+      "sha256": "68c41728b7aee353c17511f6f8e97ea3ec08839011b01f8babba19e8836cf09c"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/provenance.json",
+      "sha256": "7ba6719c4e410cbb685eb33e297058f5af9c0d1bf6b45943516d39d23433dc45"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/frame.json",
+      "sha256": "95c014902a64f9d2963323d80d6b333b828bbde060a5a21d699fc7962d28fd37"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/request.json",
+      "sha256": "21905ddf2d9331f80c56375f85ed1c523c3a9caae962190f2c12004ebb0a9125"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/prompt.txt",
+      "sha256": "4a4ad6a578398368e7a0f7fb113c5471948ee0d4e4f09fd8f7d1d48e4754c27b"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/validation.json",
+      "sha256": "26bc789f6702be4d892198c392f165cce4be430170c3275aa54e6a589500a917"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/response.json",
+      "sha256": "7410a6a39f82bf4d82fbc4334588584a8a5890924733d9ce6e1fef521401660b"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/provenance.json",
+      "sha256": "af182a3391c36c7cd9ee31cd6725749ce46e468afcdffd29b3cd8c2776401b52"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/request.json",
+      "sha256": "3683f5d9c8fd258dae4c48c34cca6312af0b9c7bd5dd683f8d85f32a80152a8d"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/prompt.txt",
+      "sha256": "e767aa991732b59fc43f4bf9bfc7dd782e63e9e0ebf42b21133f1312e414414c"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/validation.json",
+      "sha256": "2497108ba80bf56bb83dbb91e15d4124da6e83a5fd150d1ac4fd62ba0904e9fd"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/response.json",
+      "sha256": "54054e6555667f3ce5885895e8757c6c7ac88178a96419f928c4e241ec2dcb6c"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/provenance.json",
+      "sha256": "b445d51f44228242ac0b062b4a15ec2cd92c1b46572bf975785d018d081df9d6"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/request.json",
+      "sha256": "8df9f784e054ab7c345dc6c6c9adbff45754346145b317b656b514564486db4f"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/prompt.txt",
+      "sha256": "1e6ed60932294d9c8db546190335f46435c7ed4d64db22f8d202c41f68f1c8eb"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/validation.json",
+      "sha256": "6fbe0a590164e01e089dcd8c3331fc193a3ec62ec62bdf0c72f98c98adcb7390"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/response.json",
+      "sha256": "400f2aabe4b56745623d51a542584f3d6cb2b60faf992baa6ea4a59df71f6269"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/provenance.json",
+      "sha256": "9fa80369d2b3515a09fbf48d32d0e1143b001386af2974ac34a0a3ba26fd3ea4"
+    },
+    {
+      "path": "research/city-cost-accuracy/REPORT-RESTART-1.md",
+      "sha256": "79d77de48cebbdab8e981021e50eb08c57b33522598ea4f185c2c92bb31960d7"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/budget.jsonl",
+      "sha256": "ad528e31da1764a84127c6a4b4feadb325da99456c3d5a646a5598e5ac289adb",
+      "prefixEvents": 49,
+      "scope": "Exact prefix through assessment start; later lawful closeout entries may follow."
+    }
+  ],
+  "artifacts": {
+    "REPORT.md": "61b58e44a780b161745031021c6a57af5293daf12af94d37ba5762478d4df7db",
+    "designer-assessment.json": "99a68418ee9eab9785e290509f9e82ae4da0043c6114fd9ae789ed41146935e1",
+    "designer-assessment.md": "7f863e6f804b5486e5c6204927d4415d68a28e48b55cba7d7ae016949646773a",
+    "contract.json": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+    "freeze.json": "9d7700410f87e2de4b0cb68c999cb06a79e393cb7ef92051f536b5834c33d7f4",
+    "execution-summary.json": "c094a9fce11969386e3552ac429ecf6b6c095d9d635d344994bef284cee48ee5",
+    "budget.jsonl": "595281c1c7cc9b4b0f8b2efc7d0f5c030386cbe36377a0239902b69dbb72713e"
+  },
+  "scope": "One separately authorized measurement experiment; no new goal or automatic further experiment. Listed-price feasibility/precision only; no app/city-population accuracy claim.",
+  "reservationDisposition": "Prior protected allocations remain unexecuted historical reservations, not dispatch authorization. Cumulative consumed counters never reset.",
+  "telemetry": "24 new charged reference actions:6 traceable worker-reported plus18 conservative caps. Raw arrays report17; native browsing not independently captured. Old estimate unknown8 is an accounting convention, not a proven bound."
+}

@@ -1,0 +1,108 @@
+{
+  "taskId": "collect-hanoi",
+  "cityId": "hanoi",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Thehanoicafe",
+      "url": "https://thehanoicafe.com/",
+      "selection": "selected",
+      "slot": "s1",
+      "reason": "Cafe site in Hanoi; result includes menu information."
+    },
+    {
+      "rank": 2,
+      "title": "Menu Offerings in Ha Noi City | Häagen-Dazs at Hoan Kiem Lake",
+      "url": "https://www.haagen-dazs.global/en-vn/vn-sg/hanoicity/menu-hoan-kiem-lake",
+      "selection": "not_cafe",
+      "slot": null,
+      "reason": "Dessert and ice cream menu result does not identify a cafe."
+    },
+    {
+      "rank": 3,
+      "title": "BLACK MARKET COFFEE SPACE, Hoan Kiem - Menu, Prices & Restaurant Reviews - Tripadvisor",
+      "url": "https://www.tripadvisor.ie/Restaurant_Review-g27501570-d33261381-Reviews-Black_Market_Coffee_Space-Hoan_Kiem_Hanoi.html",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Third-party review and directory listing."
+    },
+    {
+      "rank": 4,
+      "title": "LE PETIT BRUXELLES ( HOAN KIEM ) | AnAn Vietnam",
+      "url": "https://anan-vietnam.com/en/ha-noi/hoan-kiem-district/other-western/le-petit-bruxelles-hoan-kiem/",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Third-party directory listing."
+    },
+    {
+      "rank": 5,
+      "title": "BLACK MARKET COFFEE SPACE, Hoan Kiem - Menu, Prices & Restaurant Reviews - Tripadvisor",
+      "url": "https://www.tripadvisor.in/Restaurant_Review-g27501570-d33261381-Reviews-Black_Market_Coffee_Space-Hoan_Kiem_Hanoi.html",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Third-party review and directory listing."
+    },
+    {
+      "rank": 6,
+      "title": "CITY VIEW CAFE | AnAn Vietnam",
+      "url": "https://anan-vietnam.com/en/ha-noi/hoan-kiem-district/fusion/cafe/city-view-cafe/",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Third-party directory listing."
+    },
+    {
+      "rank": 7,
+      "title": "XLIII Coffee - 2nd Floor 2D Quang Trung, Hoan Kiem, Ha Noi City",
+      "url": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+      "selection": "selected",
+      "slot": "s2",
+      "reason": "Cafe menu page on the cafe's own domain in Hoan Kiem."
+    },
+    {
+      "rank": 8,
+      "title": "XLIII Coffee - Tầng 02, Số 2D Quang Trung, Hoàn Kiếm, Tp.Hà Nội",
+      "url": "https://xliiicoffee.com/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+      "selection": "duplicate_brand",
+      "slot": null,
+      "reason": "Same cafe domain as selected rank 7."
+    },
+    {
+      "rank": 9,
+      "title": "The Menu",
+      "url": "https://skylinehanoi.com/menu",
+      "selection": "not_cafe",
+      "slot": null,
+      "reason": "Menu result identifies a lounge rather than a cafe."
+    },
+    {
+      "rank": 10,
+      "title": "CITY VIEW CAFE | AnAn Vietnam",
+      "url": "https://anan-vietnam.com/vn/ha-noi/quan-hoan-kiem/am-thuc-da-phong-cach-fusion/ca-phe/city-view-cafe/",
+      "selection": "not_official_menu",
+      "slot": null,
+      "reason": "Third-party directory listing."
+    }
+  ],
+  "slots": [
+    {
+      "slot": "s1",
+      "searchRank": 1,
+      "url": "https://thehanoicafe.com/"
+    },
+    {
+      "slot": "s2",
+      "searchRank": 7,
+      "url": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/"
+    },
+    {
+      "slot": "s3",
+      "searchRank": null,
+      "url": null
+    },
+    {
+      "slot": "s4",
+      "searchRank": null,
+      "url": null
+    }
+  ]
+}

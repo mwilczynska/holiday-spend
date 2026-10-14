@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "taskId": "verify-hanoi",
+  "cityId": "hanoi",
+  "role": "verify",
+  "evidenceKind": "worker_recorded_not_native_transcript",
+  "recordedAt": "2026-10-14T15:26:57.004Z",
+  "frameSavedAt": null,
+  "responseSavedAt": "2026-10-14T15:26:39.827Z",
+  "completeActionLog": false,
+  "actions": [
+    {
+      "ordinal": 1,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://thehanoicafe.com/",
+      "startedAt": "2026-10-14T15:24:40.000Z",
+      "endedAt": "2026-10-14T15:24:42.000Z",
+      "outcome": "success",
+      "slot": "s1",
+      "resolvedUrl": "https://thehanoicafe.com/",
+      "sourceTitle": "Thehanoicafe",
+      "resultNote": "Page loaded; the tool did not expose a redirect target, so resolvedUrl uses the requested URL."
+    },
+    {
+      "ordinal": 2,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+      "startedAt": "2026-10-14T15:24:47.000Z",
+      "endedAt": "2026-10-14T15:24:52.000Z",
+      "outcome": "success",
+      "slot": "s2",
+      "resolvedUrl": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+      "sourceTitle": "XLIII Coffee - 2nd Floor 2D Quang Trung, Hoan Kiem, Ha Noi City",
+      "resultNote": "Page loaded; the tool did not expose a redirect target, so resolvedUrl uses the requested URL."
+    }
+  ]
+}

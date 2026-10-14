@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "taskId": "collect-oaxaca",
+  "cityId": "oaxaca",
+  "role": "collect",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subscription subagent",
+  "spawnAt": "2026-10-14T15:17:53.083Z",
+  "terminalAt": "2026-10-14T15:23:18.887Z",
+  "deadlineAt": "2026-10-14T15:27:53.083Z",
+  "hashes": {
+    "request": "65e1b233beead7cde812da52b51f059f1dbeee8bd970c1ff5be474cad9e6d164",
+    "system": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85",
+    "prompt": "b45cc20157e96d0eb0394d00e7fc0955d0ae8b11bd3f3d747211e8cdd85743aa",
+    "contract": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+    "response": "68c41728b7aee353c17511f6f8e97ea3ec08839011b01f8babba19e8836cf09c",
+    "frame": "95c014902a64f9d2963323d80d6b333b828bbde060a5a21d699fc7962d28fd37",
+    "provenance": "7ba6719c4e410cbb685eb33e297058f5af9c0d1bf6b45943516d39d23433dc45"
+  },
+  "originalFileMtimes": {
+    "response": 1791991314577.4612,
+    "frame": 1791991188980.4685,
+    "provenance": 1791991345425.2473
+  },
+  "captureStable": true,
+  "status": "untraceable",
+  "chargedActions": 5,
+  "knownActions": null,
+  "unknownActivity": true,
+  "tokenUsage": null,
+  "errors": [
+    "Incomplete action log",
+    "Invalid snapshot chronology"
+  ],
+  "protocol": [],
+  "warnings": [],
+  "rows": [
+    {
+      "slot": "s1",
+      "row": {
+        "slot": "s1",
+        "sourceUrl": "https://www.cafecafeoax.com/menu-centro",
+        "resolvedUrl": "https://www.cafecafeoax.com/menu-centro",
+        "sourceTitle": "MENU CENTRO | cafecafeoax",
+        "retrievedAt": "2026-10-14T15:19:57.000Z",
+        "venueName": "MENU CENTRO | cafecafeoax",
+        "addressText": null,
+        "geography": "unknown",
+        "geographyEvidence": "The page identifies a Centro menu but does not give a street address or explicit Oaxaca de Juárez branch address.",
+        "operatorName": null,
+        "menuGroup": null,
+        "itemLabel": null,
+        "sizeText": null,
+        "volumeMl": null,
+        "serviceMode": "unspecified",
+        "listedAmount": null,
+        "amountScale": null,
+        "currency": null,
+        "currencyEvidence": null,
+        "priceEvidence": null,
+        "chargeBasis": "unknown",
+        "chargeEvidence": null,
+        "menuDate": null,
+        "dateBasis": "undated",
+        "status": "absent_product",
+        "reason": "The plural cappuccino entry is followed only by named varieties; no unflavoured hot cup is identified."
+      },
+      "errors": [
+        "Task provenance untraceable",
+        "Not observed in assigned geography",
+        "Invalid price/scale/currency",
+        "Missing evidence: priceEvidence",
+        "Missing evidence: currencyEvidence",
+        "Missing evidence: itemLabel",
+        "Missing evidence: addressText"
+      ],
+      "eligible": false
+    },
+    {
+      "slot": "s2",
+      "row": {
+        "slot": "s2",
+        "sourceUrl": "https://atzomx.com.mx/menu",
+        "resolvedUrl": "https://atzomx.com.mx/menu",
+        "sourceTitle": "Menú | Atzomx Café — Centro de Oaxaca",
+        "retrievedAt": "2026-10-14T15:20:24.000Z",
+        "venueName": "Atzomx Café",
+        "addressText": "C. de Los Libres 800-letra B, Centro, 68000 Oaxaca de Juárez, Oax.",
+        "geography": "confirmed",
+        "geographyEvidence": "The contact section places the cafe at a street address in Centro, Oaxaca de Juárez.",
+        "operatorName": null,
+        "menuGroup": null,
+        "itemLabel": "Capuchino",
+        "sizeText": null,
+        "volumeMl": null,
+        "serviceMode": "unspecified",
+        "listedAmount": null,
+        "amountScale": 1,
+        "currency": null,
+        "currencyEvidence": "The amount uses a bare $ symbol; the page names no currency or ISO code.",
+        "priceEvidence": "Capuchino — Caliente $60",
+        "chargeBasis": "unknown",
+        "chargeEvidence": null,
+        "menuDate": null,
+        "dateBasis": "undated",
+        "status": "ambiguous_currency",
+        "reason": "The hot cappuccino and exact listed amount appear, but a bare dollar symbol does not establish currency."
+      },
+      "errors": [
+        "Task provenance untraceable",
+        "Not observed in assigned geography",
+        "Invalid price/scale/currency"
+      ],
+      "eligible": false
+    },
+    {
+      "slot": "s3",
+      "row": {
+        "slot": "s3",
+        "sourceUrl": "https://cafeteriaoaxaca.com/",
+        "resolvedUrl": "https://cafeteriaoaxaca.com/",
+        "sourceTitle": "Cafetería Oaxaca – Auténtico Sabor Oaxaqueño",
+        "retrievedAt": "2026-10-14T15:20:37.000Z",
+        "venueName": "cafeteria oaxaca",
+        "addressText": "Calle Xicoténcatl 116, Centro Oaxaca de Juárez, Oax. 68000",
+        "geography": "confirmed",
+        "geographyEvidence": "The address block identifies the Centro location in Oaxaca de Juárez.",
+        "operatorName": null,
+        "menuGroup": null,
+        "itemLabel": null,
+        "sizeText": null,
+        "volumeMl": null,
+        "serviceMode": "unknown",
+        "listedAmount": null,
+        "amountScale": null,
+        "currency": null,
+        "currencyEvidence": null,
+        "priceEvidence": null,
+        "chargeBasis": "unknown",
+        "chargeEvidence": null,
+        "menuDate": null,
+        "dateBasis": "undated",
+        "status": "absent_product",
+        "reason": "The opened menu lists coffee and other drinks but no cappuccino."
+      },
+      "errors": [
+        "Task provenance untraceable",
+        "Not observed in assigned geography",
+        "Invalid price/scale/currency",
+        "Missing evidence: priceEvidence",
+        "Missing evidence: currencyEvidence",
+        "Missing evidence: itemLabel",
+        "Ineligible mode/date"
+      ],
+      "eligible": false
+    },
+    {
+      "slot": "s4",
+      "row": {
+        "slot": "s4",
+        "sourceUrl": null,
+        "resolvedUrl": null,
+        "sourceTitle": null,
+        "retrievedAt": null,
+        "venueName": null,
+        "addressText": null,
+        "geography": "unknown",
+        "geographyEvidence": null,
+        "operatorName": null,
+        "menuGroup": null,
+        "itemLabel": null,
+        "sizeText": null,
+        "volumeMl": null,
+        "serviceMode": "unknown",
+        "listedAmount": null,
+        "amountScale": null,
+        "currency": null,
+        "currencyEvidence": null,
+        "priceEvidence": null,
+        "chargeBasis": "unknown",
+        "chargeEvidence": null,
+        "menuDate": null,
+        "dateBasis": "unknown",
+        "status": "no_slot",
+        "reason": "No URL qualified for this slot in the first-ten search frame."
+      },
+      "errors": [
+        "Task provenance untraceable",
+        "Not observed in assigned geography",
+        "Invalid price/scale/currency",
+        "Missing evidence: priceEvidence",
+        "Missing evidence: currencyEvidence",
+        "Missing evidence: geographyEvidence",
+        "Missing evidence: itemLabel",
+        "Missing evidence: venueName",
+        "Missing evidence: addressText",
+        "Missing evidence: sourceUrl",
+        "Missing evidence: resolvedUrl",
+        "Missing evidence: retrievedAt",
+        "Ineligible mode/date",
+        "Assigned source/timestamp mismatch"
+      ],
+      "eligible": false
+    }
+  ],
+  "frameCheck": {
+    "frame": {
+      "taskId": "collect-oaxaca",
+      "cityId": "oaxaca",
+      "results": [
+        {
+          "rank": 1,
+          "title": "White and White Minimalist Coffee Cafe Menu",
+          "url": "https://centrocafe.com.mx/wp-content/uploads/2023/10/MENU-CENTRO_ESP.pdf",
+          "selection": "not_city",
+          "slot": null,
+          "reason": "Cafe menu result, but title and snippet do not identify Oaxaca."
+        },
+        {
+          "rank": 2,
+          "title": "MENU CENTRO | cafecafeoax",
+          "url": "https://www.cafecafeoax.com/menu-centro",
+          "selection": "selected",
+          "slot": "s1",
+          "reason": "Cafe-branded Centro menu page with Oaxaca identified by the brand name."
+        },
+        {
+          "rank": 3,
+          "title": "Menú",
+          "url": "https://casonaoaxaca.mx/menu/",
+          "selection": "not_cafe",
+          "slot": null,
+          "reason": "Restaurant-style menu result does not identify a cafe brand."
+        },
+        {
+          "rank": 4,
+          "title": "Menú | Atzomx Café — Centro de Oaxaca",
+          "url": "https://atzomx.com.mx/menu",
+          "selection": "selected",
+          "slot": "s2",
+          "reason": "Cafe menu result explicitly identifies Centro de Oaxaca."
+        },
+        {
+          "rank": 5,
+          "title": "Cafetería Oaxaca – Auténtico Sabor Oaxaqueño",
+          "url": "https://cafeteriaoaxaca.com/",
+          "selection": "selected",
+          "slot": "s3",
+          "reason": "Cafe result identifies its Centro location and menu."
+        },
+        {
+          "rank": 6,
+          "title": "Mar&miel Coffee Shop - Oaxaca Centro Precios y Menú a Domicilio - Rappi",
+          "url": "https://www.rappi.com.mx/restaurantes/1930470644-marymiel-coffee-shop",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Delivery platform listing."
+        },
+        {
+          "rank": 7,
+          "title": "Coffee & Màs Avenida Benito Juarez 308 - Oaxaca Centro Precios y Menú a Domicilio - Rappi",
+          "url": "https://www.rappi.com.mx/restaurantes/1930412897-coffee-y-mas-avenida-benito-juarez-",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Delivery platform listing."
+        },
+        {
+          "rank": 8,
+          "title": "Café Central Xoxo | DiDi Food México",
+          "url": "https://web.didiglobal.com/mx/food/oaxaca-oax/cafe-central-xoxo/5764607640165155203/",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Delivery platform listing."
+        },
+        {
+          "rank": 9,
+          "title": "Grano de Cafe - Oaxaca Centro Precios y Menú a Domicilio - Rappi",
+          "url": "https://www.rappi.com.mx/restaurantes/1930014230-grano-de-cafe",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Delivery platform listing."
+        },
+        {
+          "rank": 10,
+          "title": "Catpuchino (oaxaca) Menú y Precios - Pide a Domicilio en Oaxaca de Juárez - Uber Eats",
+          "url": "https://www.ubereats.com/mx/store/catpuchino-oaxaca/zdszPp-KX-qekJhZ7NjOQw",
+          "selection": "not_official_menu",
+          "slot": null,
+          "reason": "Delivery platform listing."
+        }
+      ],
+      "slots": [
+        {
+          "slot": "s1",
+          "searchRank": 2,
+          "url": "https://www.cafecafeoax.com/menu-centro"
+        },
+        {
+          "slot": "s2",
+          "searchRank": 4,
+          "url": "https://atzomx.com.mx/menu"
+        },
+        {
+          "slot": "s3",
+          "searchRank": 5,
+          "url": "https://cafeteriaoaxaca.com/"
+        },
+        {
+          "slot": "s4",
+          "searchRank": null,
+          "url": null
+        }
+      ]
+    },
+    "errors": [],
+    "slotErrors": {
+      "s1": [],
+      "s2": [],
+      "s3": [],
+      "s4": []
+    },
+    "warnings": []
+  },
+  "traceabilityLimit": "Worker-recorded evidence, not independently captured native browsing telemetry."
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "taskId": "verify-oaxaca",
+  "cityId": "oaxaca",
+  "role": "verify",
+  "evidenceKind": "worker_recorded_not_native_transcript",
+  "recordedAt": "2026-10-14T15:28:14.229Z",
+  "frameSavedAt": null,
+  "responseSavedAt": "2026-10-14T15:28:14.195Z",
+  "completeActionLog": true,
+  "actions": [
+    {
+      "ordinal": 1,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://www.cafecafeoax.com/menu-centro",
+      "startedAt": "2026-10-14T15:25:01.498Z",
+      "endedAt": "2026-10-14T15:25:11.965Z",
+      "outcome": "success",
+      "slot": "s1",
+      "resolvedUrl": "https://www.cafecafeoax.com/menu-centro",
+      "sourceTitle": "MENU CENTRO | cafecafeoax",
+      "resultNote": "Assigned page opened successfully; the tool returned its resolved URL, title and page content."
+    },
+    {
+      "ordinal": 2,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://atzomx.com.mx/menu",
+      "startedAt": "2026-10-14T15:25:37.710Z",
+      "endedAt": "2026-10-14T15:25:58.696Z",
+      "outcome": "success",
+      "slot": "s2",
+      "resolvedUrl": "https://atzomx.com.mx/menu",
+      "sourceTitle": "Menú | Atzomx Café — Centro de Oaxaca",
+      "resultNote": "Assigned page opened successfully; the tool returned its resolved URL, title and page content."
+    },
+    {
+      "ordinal": 3,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://cafeteriaoaxaca.com/",
+      "startedAt": "2026-10-14T15:26:03.089Z",
+      "endedAt": "2026-10-14T15:26:42.065Z",
+      "outcome": "success",
+      "slot": "s3",
+      "resolvedUrl": "https://cafeteriaoaxaca.com/",
+      "sourceTitle": "Cafetería Oaxaca – Auténtico Sabor Oaxaqueño",
+      "resultNote": "Assigned page opened successfully; the tool returned its resolved URL, title and page content."
+    }
+  ]
+}

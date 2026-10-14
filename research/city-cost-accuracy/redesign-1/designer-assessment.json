@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "assessedAt": "2026-10-14T15:37:50.462Z",
+  "roleProvenance": {
+    "task": "/root/redesign_measurement_assessment",
+    "model": "gpt-6-astra",
+    "effort": "medium",
+    "runtime": "Codex subagent",
+    "designCall": 7,
+    "authority": "Coordinator-selected fresh assessment, not model self-attestation.",
+    "scope": "Released evidence and offline checks only; no new retrieval, estimates or scientific repair."
+  },
+  "contractSha256": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628",
+  "evidenceFiles": [
+    {
+      "path": "research/city-cost-accuracy/redesign-1/contract.json",
+      "sha256": "424a4cab316cc60a9442b84c7b915272d89fa388fd6e47082de59180b2771628"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/design.md",
+      "sha256": "cc95aa7b9141498cb25ce7b8e90e87fc48b6b9d843dab9e0dec35951d05fb24f"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/design-repair.md",
+      "sha256": "d7adf9a576ebb5fdc5963fa2ae84388f47fbde88a12ce347e8b268224bd418d7"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/freeze.json",
+      "sha256": "9d7700410f87e2de4b0cb68c999cb06a79e393cb7ef92051f536b5834c33d7f4"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/execution-summary.json",
+      "sha256": "c094a9fce11969386e3552ac429ecf6b6c095d9d635d344994bef284cee48ee5"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/assessment-request.txt",
+      "sha256": "138cfb24ff0ee2c8badd04261eb3ef4bc4da0c09a9f7f067180695852f77ea19"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/request.json",
+      "sha256": "21471fcdad70fdebd530932b0ed8d9f00cb71dc07a17388900a987e41cf85d12"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/prompt.txt",
+      "sha256": "2ceb4ec0eb14a5b14b04dc0905d5be99e3e6ad3d28cc70d5f72ad71dc975c4b2"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/validation.json",
+      "sha256": "84596603f6a79a9e61002315a810c4bb1d52cbf6790555d1be6984ec0f376ed3"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/response.json",
+      "sha256": "e7d7710e58edd053ffea03cd56b031649f48c48093aed80d12285d3307a03a0c"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/provenance.json",
+      "sha256": "e9d468263de57118c62ad4dad6a953b3c61250935caf5660610b8420f9b9cef1"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-copenhagen/frame.json",
+      "sha256": "00c8f385966ac8caf9c2087899d05690aa1548f43deb0a72fd26d753b961f458"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/request.json",
+      "sha256": "5931c98d9c5a6fa19e908c18af27d7e2d5007f017659a8c39d8095bcca5a0aba"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/prompt.txt",
+      "sha256": "478d47e43f75b0c08ded523a8e78bab57c325dfc46c4174ab304199f8545698f"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/validation.json",
+      "sha256": "2230cdef76023a01a943a783ea0707df81076cb7db3e0c40afd689a4a7645fdd"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/response.json",
+      "sha256": "bec6f86d6d5af6033faadaaa31adf10e7dd35dcad88b6cb4b384ca05554faca5"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/provenance.json",
+      "sha256": "592e99506cf61283970f6ec968d7e989daa30c0773930b9aa6d7cdadac46b972"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-hanoi/frame.json",
+      "sha256": "7c942b16b979d27c71b91d1566990ccf0c3c89d4846fa9cc3e3e1b54f8a9d6f4"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/request.json",
+      "sha256": "65e1b233beead7cde812da52b51f059f1dbeee8bd970c1ff5be474cad9e6d164"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/prompt.txt",
+      "sha256": "b45cc20157e96d0eb0394d00e7fc0955d0ae8b11bd3f3d747211e8cdd85743aa"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/validation.json",
+      "sha256": "91326736373b426e99c702db372fca767c6371da3d19a349367745135b71c57d"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/response.json",
+      "sha256": "68c41728b7aee353c17511f6f8e97ea3ec08839011b01f8babba19e8836cf09c"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/provenance.json",
+      "sha256": "7ba6719c4e410cbb685eb33e297058f5af9c0d1bf6b45943516d39d23433dc45"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/collect-oaxaca/frame.json",
+      "sha256": "95c014902a64f9d2963323d80d6b333b828bbde060a5a21d699fc7962d28fd37"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/request.json",
+      "sha256": "21905ddf2d9331f80c56375f85ed1c523c3a9caae962190f2c12004ebb0a9125"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/prompt.txt",
+      "sha256": "4a4ad6a578398368e7a0f7fb113c5471948ee0d4e4f09fd8f7d1d48e4754c27b"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/validation.json",
+      "sha256": "26bc789f6702be4d892198c392f165cce4be430170c3275aa54e6a589500a917"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/response.json",
+      "sha256": "7410a6a39f82bf4d82fbc4334588584a8a5890924733d9ce6e1fef521401660b"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-copenhagen/provenance.json",
+      "sha256": "af182a3391c36c7cd9ee31cd6725749ce46e468afcdffd29b3cd8c2776401b52"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/request.json",
+      "sha256": "3683f5d9c8fd258dae4c48c34cca6312af0b9c7bd5dd683f8d85f32a80152a8d"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/prompt.txt",
+      "sha256": "e767aa991732b59fc43f4bf9bfc7dd782e63e9e0ebf42b21133f1312e414414c"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/validation.json",
+      "sha256": "2497108ba80bf56bb83dbb91e15d4124da6e83a5fd150d1ac4fd62ba0904e9fd"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/response.json",
+      "sha256": "54054e6555667f3ce5885895e8757c6c7ac88178a96419f928c4e241ec2dcb6c"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-hanoi/provenance.json",
+      "sha256": "b445d51f44228242ac0b062b4a15ec2cd92c1b46572bf975785d018d081df9d6"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/request.json",
+      "sha256": "8df9f784e054ab7c345dc6c6c9adbff45754346145b317b656b514564486db4f"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/system.txt",
+      "sha256": "d033da6874e6b35bdd979e4f5dff8a1c330c0c2ed6177753329760fb825aca85"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/prompt.txt",
+      "sha256": "1e6ed60932294d9c8db546190335f46435c7ed4d64db22f8d202c41f68f1c8eb"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/validation.json",
+      "sha256": "6fbe0a590164e01e089dcd8c3331fc193a3ec62ec62bdf0c72f98c98adcb7390"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/response.json",
+      "sha256": "400f2aabe4b56745623d51a542584f3d6cb2b60faf992baa6ea4a59df71f6269"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/tasks/verify-oaxaca/provenance.json",
+      "sha256": "9fa80369d2b3515a09fbf48d32d0e1143b001386af2974ac34a0a3ba26fd3ea4"
+    },
+    {
+      "path": "research/city-cost-accuracy/REPORT-RESTART-1.md",
+      "sha256": "79d77de48cebbdab8e981021e50eb08c57b33522598ea4f185c2c92bb31960d7"
+    },
+    {
+      "path": "research/city-cost-accuracy/redesign-1/budget.jsonl",
+      "sha256": "ad528e31da1764a84127c6a4b4feadb325da99456c3d5a646a5598e5ac289adb",
+      "prefixEvents": 49,
+      "scope": "Exact prefix through assessment start; later lawful closeout entries may follow."
+    }
+  ],
+  "verdict": {
+    "decision": "inconclusive_missing_evidence",
+    "operationalFeasibility": "failed_for_this_executed_design",
+    "precision": "not_measured",
+    "eligibleExtractions": 0,
+    "eligiblePairs": 0,
+    "completeCities": 0,
+    "expectedCities": 3,
+    "expectedSlots": 12,
+    "expectedExtractions": 24,
+    "recordedProtocolBreaches": [],
+    "precedence": "No recorded invalid_protocol condition. Missing coverage precedes precision evaluation; fail_precision is unsupported."
+  },
+  "structuralFeasibility": {
+    "selectedOriginalUrls": {
+      "hanoi": 2,
+      "oaxaca": 3,
+      "copenhagen": 2
+    },
+    "requiredPerCity": 4,
+    "absentOriginalSlots": 5,
+    "assessment": "All three frames were short before opens. Even perfect extraction and metadata could not supply five absent original slots or pass the twelve-pair gate. One query, first-ten results, distinct cafe-brand selection and no replacements tested this procedure, not the existence of public coffee prices.",
+    "chronology": "Saved frame mtimes precede recorded first opens. Only Hanoi collector provenance is fully traceable; chronology is not native browser attestation."
+  },
+  "sourceFindings": {
+    "hanoi": "Both workers report an accessible homepage without a displayed cappuccino amount at s1. At s2 the collector reports image/category text without readable prices (technical_failure); verifier labels absent_product. Returned-text absence does not establish absence of a venue product or public price.",
+    "oaxaca": "Cafe Cafe s1 has divergent product interpretation: collector finds no qualifying unflavoured hot cup; verifier reports a cappuccino heading/amount but ambiguous currency and missing address. Atzomx s2 has reported hot cappuccino amount text but bare-dollar currency fails the frozen criterion. Cafeteria Oaxaca s3 lacks the product; verifier records explicit Mexican-peso text there. Separate pages cannot repair one another.",
+    "copenhagen": "Both sources have reported cappuccino amount text. Cafe Kopenhag is labelled off_area from the saved Kobenhavn V address and lacks explicit currency. District truth was not independently checked. Museum PDF lacks branch/address and unambiguous currency evidence. Its winter 25/26 label is called expired by both workers; the saved seasonal label is not an explicit source expiry statement. Preserve that judgement without promoting it to verified expiry or correcting the row.",
+    "dimensions": "Unknown charges are allowed for listed prices, not a new exclusion. Size/volume, service mode, age and ownership remain limited or unknown. No excerpt amount or rejected row is admitted or reconstructed."
+  },
+  "executionFindings": {
+    "delivery": "All six responses/provenance files and three frames arrived, improving on earlier missing/malformed delivery. Complete schemas, hashing and blind fixed-URL extraction improved auditability but did not create usable references.",
+    "traceableTasks": [
+      "collect-hanoi",
+      "verify-oaxaca"
+    ],
+    "untraceableTasks": [
+      "collect-oaxaca",
+      "collect-copenhagen",
+      "verify-hanoi",
+      "verify-copenhagen"
+    ],
+    "metadata": "Three workers set completeActionLog=false. collect-oaxaca and verify-copenhagen recordedAt strings contain malformed UTC.000Z encoding. Collector notes report whole-second clock precision; timing uncertainty and duplicated clock/file metadata proved fragile. These are provenance failures, not price errors or proof of additional hidden actions.",
+    "designBurden": "Four qualifying sites from one finite search, all item/currency/branch evidence on one original page, literal identities, no navigation, and extensive manually duplicated metadata were poorly matched to ordinary menu publishing and cheap acquisition. Narrowing to listed prices removed charge normalization but did not resolve frame coverage, access or instrumentation. This is not permission to loosen the frozen criteria.",
+    "deterministicAudit": {
+      "frozenCodeAndInputHashesChecked": 26,
+      "contractHashVerified": true,
+      "taskArtifactHashSetsChecked": 6,
+      "recordedMtimeTaskReplaysMatched": 6,
+      "journalPrefixesMatched": [
+        25,
+        45
+      ],
+      "currentJournalPrefixEvents": 49,
+      "discrepancies": []
+    },
+    "instrumentation": "Checks establish saved-byte integrity and deterministic treatment using recorded original mtimes. They do not establish native browsing telemetry, actual action counts, clock accuracy, complete search ordering or independent source truth. Selection/district/product/date remain worker judgements.",
+    "diagnosticCaution": "Not observed in assigned geography combines status!=observed with geography!=confirmed, so is not evidence that every rejected row is outside its district. Zero machine identity disputes reflects the eligible-pair gate, not absence of divergent interpretations."
+  },
+  "stabilityDetectability": {
+    "R": null,
+    "S": null,
+    "D": null,
+    "L": null,
+    "U": null,
+    "U_macro": null,
+    "B": null,
+    "minimumFutureCentralGain": null,
+    "assessment": "No complete matched pair or city permits estimation of retrieval-price discrepancy, subset sensitivity or useful-gain detectability. Null is not zero, failed precision or an error penalty.",
+    "theory": "The 0.10 absolute mean-log-loss improvement target and U/2U sensitivity logic remain prospective definitions, not demonstrated detection capability. Same-source verification cannot bound shared source error or population coverage bias. Estimator repeat variation was not measured."
+  },
+  "claimsSupported": [
+    "This bounded procedure failed frozen operational feasibility.",
+    "Frame deficits independently prevent full coverage.",
+    "Saved evidence distinguishes content and provenance failures.",
+    "Old baseline remains descriptive sparse named-offer agreement."
+  ],
+  "claimsUnsupported": [
+    "Precision pass or measured precision failure.",
+    "Improvement or deterioration of v1.1 or a candidate.",
+    "Public price information is absent or measurement impossible.",
+    "Listed prices validate payable prices, city-wide prices, daily budgets or actual spend.",
+    "Seventeen independently verified actions, or proven actual activity exceeding seventeen.",
+    "Monetary cost, token, API-equivalence or subscription cost-effectiveness claims."
+  ],
+  "resources": {
+    "newReferenceWorkers": 6,
+    "newReferenceActionCap": 27,
+    "newChargedReferenceActions": 24,
+    "traceableKnownActions": 6,
+    "conservativeUnknownActivityCharge": 18,
+    "rawResponseReportedActions": 17,
+    "reportedSearches": 3,
+    "reportedOpens": 14,
+    "newEstimates": 0,
+    "cumulative": {
+      "referenceActions": "97/300",
+      "referenceWorkers": "19/100",
+      "estimates": "19/400",
+      "estimateRetrievalAccounting": "44/1600",
+      "design": "7/50",
+      "candidateAttempts": 0,
+      "fullExtensions": 0
+    },
+    "estimateRetrievalQualification": "36 known plus eight accounting convention; eight is not a proven upper bound on historical unknown activity.",
+    "snapshotQualification": "Immutable summary ends at event45/design6; current event49 prefix includes designcall7. Expected distinction, not discrepancy.",
+    "confirmationReservation": {
+      "estimates": 100,
+      "referenceActions": 80,
+      "referenceWorkers": 16,
+      "executed": false
+    },
+    "engineering": "3 tasks / 4 turns, separate counters.",
+    "paidProviderApiUse": false,
+    "applicationKeyUse": false,
+    "monetaryCostClaim": null
+  },
+  "recommendation": "Close this experiment as insufficient measurement evidence and stop. Keep production v1.1 unchanged. Further methodology-tuning experiments are not warranted now because there is no usable reference or comparative signal. No rerun, source replacement, scientific repair, relaxed threshold, filler candidate or confirmation access.",
+  "requiredRemainingWork": [
+    "Coordinator completes assessment accounting with design7 while retaining immutable preassessment design6.",
+    "Finish bounded report/ledger/checkpoint with fixed denominators, null metrics, distinct telemetry levels and every raw failure preserved.",
+    "Perform applicable offline closeout integrity checks, preserve reservations and stop without acquisition."
+  ],
+  "prospectiveLessons": [
+    "A separately authorized future measurement must choose a decision-relevant estimand; listed-cup reproduction cannot silently replace app payable daily spending.",
+    "Source coverage and supported extraction access must be attainable prospectively, without selecting favourable prices or rescuing this frame.",
+    "Supported machine capture should shoulder metadata burden; distinguish clock uncertainty from source uncertainty and align precision with available instrumentation.",
+    "Branch/currency/product/explicit-expiry evidence and unbounded systematic bias need prospective treatment before any comparison.",
+    "Only viable references could support a separately authorized comparison of repeat variation and useful gain. These lessons are unexecuted, not a replacement contract."
+  ]
+}

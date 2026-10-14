@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "taskId": "collect-hanoi",
+  "cityId": "hanoi",
+  "role": "collect",
+  "evidenceKind": "worker_recorded_not_native_transcript",
+  "recordedAt": "2026-10-14T15:22:04.715Z",
+  "frameSavedAt": "2026-10-14T15:19:46.073Z",
+  "responseSavedAt": "2026-10-14T15:21:21.627Z",
+  "completeActionLog": true,
+  "actions": [
+    {
+      "ordinal": 1,
+      "type": "search",
+      "toolName": "web__run",
+      "query": "Hanoi Hoan Kiem cafe cappuccino menu official",
+      "url": null,
+      "startedAt": "2026-10-14T15:18:12.772Z",
+      "endedAt": "2026-10-14T15:18:15.335Z",
+      "outcome": "success",
+      "slot": null,
+      "resolvedUrl": null,
+      "sourceTitle": null,
+      "resultNote": "Search returned 21 results; frame records the first ten."
+    },
+    {
+      "ordinal": 2,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://thehanoicafe.com/",
+      "startedAt": "2026-10-14T15:19:52.817Z",
+      "endedAt": "2026-10-14T15:19:56.669Z",
+      "outcome": "success",
+      "slot": "s1",
+      "resolvedUrl": "https://thehanoicafe.com/",
+      "sourceTitle": "Thehanoicafe",
+      "resultNote": "Page loaded; no menu-listed price was exposed in the retrieved text."
+    },
+    {
+      "ordinal": 3,
+      "type": "open",
+      "toolName": "web__run",
+      "query": null,
+      "url": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+      "startedAt": "2026-10-14T15:20:06.444Z",
+      "endedAt": "2026-10-14T15:20:11.124Z",
+      "outcome": "success",
+      "slot": "s2",
+      "resolvedUrl": "https://xliiicoffee.com/en/location/xliii-coffee-hoan-kiem-ha-noi/menu-hoan-kiem-ha-noi/",
+      "sourceTitle": "XLIII Coffee - 2nd Floor 2D Quang Trung, Hoan Kiem, Ha Noi City",
+      "resultNote": "Page loaded; no readable cappuccino listing or price was exposed in the retrieved text."
+    }
+  ]
+}

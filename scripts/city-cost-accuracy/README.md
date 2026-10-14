@@ -1,5 +1,19 @@
 # Isolated accuracy tooling
 
+The one authorized measurement redesign is complete: see
+`research/city-cost-accuracy/redesign-1/REPORT.md` and its Astra assessment. Read-only reproduction:
+
+```powershell
+node --test scripts/city-cost-accuracy/redesign.test.mjs
+node scripts/city-cost-accuracy/redesign.mjs summary
+node scripts/city-cost-accuracy/redesign-budget.mjs show
+```
+
+No new source calls follow reproduction. The frozen helper verifies exact contract/code/input/raw hashes,
+recorded original chronology and the immutable pre-assessment budget prefix while checking later lawful
+accounting. Current Git checkout timestamps do not replace the recorded source timestamps. Missingness is
+fixed at three cities/twelve slots/twenty-four extractions. Null metrics remain unmeasured, not zero.
+
 `000-baseline`/`pilot-1` are immutable completed historical evidence. The example dispatch sequence below
 documents that earlier run; do not dispatch those IDs again. Revised feasibility artifacts are separate under
 `research/city-cost-accuracy/restart-1-prep/`. Its frozen source/contract files cannot be edited in place.
