@@ -1,0 +1,161 @@
+{
+  "cityId": "bled",
+  "collector": {
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "runtime": "Codex subagent"
+  },
+  "actions": [
+    {
+      "index": 1,
+      "kind": "search",
+      "queryOrUrl": "Bled Slovenia cafe restaurant menu cappuccino draft beer prices official menu",
+      "outcome": "Found the named Bled restaurant Sova's official current menu page with coffee, draft beer and food prices."
+    },
+    {
+      "index": 2,
+      "kind": "open",
+      "queryOrUrl": "https://www.restavracija-sova.com/en/menu/",
+      "outcome": "Opened the restaurant's menu: regular cappuccino EUR 3.00; Laško draft beer EUR 3.80 for 0.3 L and EUR 4.50 for 0.5 L; food prices are listed and VAT inclusion is stated. Menu has no printed effective date."
+    },
+    {
+      "index": 3,
+      "kind": "search",
+      "queryOrUrl": "Bled Slovenia official 3 star hotel accommodation rate 17 20 November 2026 2 adults",
+      "outcome": "Search returned Bled hotel listings and an official Sava Hotels Bled page showing an undated Hotel Savica Garni from-rate. No dated public rate was returned."
+    },
+    {
+      "index": 4,
+      "kind": "open",
+      "queryOrUrl": "https://www.sava-hotels-resorts.com/en/sava-hotels-bled/",
+      "outcome": "Official page lists Hotel Savica Garni at EUR 118 per room per night, but no selected dates, occupancy, standard room, tax/breakfast basis or class is stated there; treated as proxy only, not the target booking price."
+    },
+    {
+      "index": 5,
+      "kind": "search",
+      "queryOrUrl": "Bled Slovenia official museum attraction adult admission price Bled Castle",
+      "outcome": "Found official Bled tourism and attraction pages with public adult admission prices, including Bled Island."
+    },
+    {
+      "index": 6,
+      "kind": "open",
+      "queryOrUrl": "https://www.bled.si/en/what-to-see-do/attractions/2/1/",
+      "outcome": "Opened the official Bled tourism page for Bled Island: adult entrance fee EUR 12.00; admission includes the church, wishing bell, viewing tower and museum exhibition."
+    }
+  ],
+  "rows": [
+    {
+      "id": "coffee-cappuccino",
+      "measure": "coffee",
+      "category": "drinks",
+      "evidenceClass": "observed_offer",
+      "venue": "Restavracija Sova Bled",
+      "sourceUrl": "https://www.restavracija-sova.com/en/menu/",
+      "amount": 3.0,
+      "currency": "EUR",
+      "unit": "one regular cappuccino",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "The named Bled restaurant's current public menu lists a regular cappuccino; the undated current-menu rule applies.",
+      "notes": "The menu page was crawled two days before retrieval and does not print an effective date. All prices include VAT."
+    },
+    {
+      "id": "beer-draft-05l",
+      "measure": "beer",
+      "category": "drinks",
+      "evidenceClass": "observed_offer",
+      "venue": "Restavracija Sova Bled",
+      "sourceUrl": "https://www.restavracija-sova.com/en/menu/",
+      "amount": 4.5,
+      "currency": "EUR",
+      "unit": "one 0.5 L draft Laško beer",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "A current public menu directly prices draft beer by serving size; no bottled-beer conversion is used.",
+      "notes": "The menu also lists 0.3 L draft Laško at EUR 3.80. The menu page was crawled two days before retrieval, has no printed effective date, and states that prices include VAT."
+    },
+    {
+      "id": "inexp-meal-main",
+      "measure": "inexp_meal_1p",
+      "category": "food",
+      "evidenceClass": "observed_offer",
+      "venue": "Restavracija Sova Bled",
+      "sourceUrl": "https://www.restavracija-sova.com/en/menu/",
+      "amount": 16.5,
+      "currency": "EUR",
+      "unit": "one regular main, no drink",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "The public menu lists a regular non-premium main suitable for a one-person inexpensive restaurant meal.",
+      "notes": "Linguine arrabbiata is EUR 16.50. The menu has no printed effective date and states that prices include VAT."
+    },
+    {
+      "id": "midrange-menu-three-course",
+      "measure": "midrange_meal_2p",
+      "category": "food",
+      "evidenceClass": "observed_offer",
+      "venue": "Restavracija Sova Bled",
+      "sourceUrl": "https://www.restavracija-sova.com/en/menu/",
+      "amount": 62.6,
+      "currency": "EUR",
+      "unit": "two diners, three menu-priced courses, no drinks",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "Three publicly priced menu courses provide a direct, reproducible two-person dinner price without using a cost ratio.",
+      "notes": "Per diner: beef soup EUR 6.60 + chicken risotto EUR 17.80 + apple pie EUR 6.90 = EUR 31.30; two diners total EUR 62.60. Menu has no printed effective date; all prices include VAT."
+    },
+    {
+      "id": "hotel-from-proxy",
+      "measure": "hotel_3star_2p",
+      "category": "accommodation",
+      "evidenceClass": "proxy",
+      "venue": "Hotel Savica Garni (Sava Hotels Bled listing)",
+      "sourceUrl": "https://www.sava-hotels-resorts.com/en/sava-hotels-bled/",
+      "amount": 118.0,
+      "currency": "EUR",
+      "unit": "from-price per room per night; room type and occupancy not stated",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "This official page shows only an undated from-rate, not availability or a public rate for 17–20 November 2026; the opened page also does not establish the hotel's star class or tax/meal basis.",
+      "notes": "Do not treat EUR 118 as a dated two-adult booking."
+    },
+    {
+      "id": "hotel-3star-dated-missing",
+      "measure": "hotel_3star_2p",
+      "category": "accommodation",
+      "evidenceClass": "missing",
+      "venue": null,
+      "sourceUrl": "https://www.sava-hotels-resorts.com/en/sava-hotels-bled/",
+      "amount": null,
+      "currency": null,
+      "unit": "one standard public non-member room for two adults, 17–20 November 2026, three nights, no breakfast",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "No dated, public, class-verified room offer for the target dates was visible within the six-action allocation.",
+      "notes": "The only official opened price was the undated Hotel Savica Garni from-rate above."
+    },
+    {
+      "id": "ordinary-admission-bled-island",
+      "measure": "ordinary_admission_1p",
+      "category": "activities",
+      "evidenceClass": "observed_offer",
+      "venue": "Bled Island",
+      "sourceUrl": "https://www.bled.si/en/what-to-see-do/attractions/2/1/",
+      "amount": 12.0,
+      "currency": "EUR",
+      "unit": "one adult entrance fee",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "The official Bled tourism attraction page directly lists the adult public entrance fee for a cultural/heritage site.",
+      "notes": "Admission includes the church, wishing bell, viewing tower and museum exhibition. The page does not specify whether boat transport is included; do not add or infer a boat cost."
+    }
+  ],
+  "summary": "Six retrieval actions completed. Current direct menu evidence supports coffee, draft beer, an inexpensive main and a menu-priced three-course dinner at one Bled restaurant; official tourism evidence supports one adult heritage admission. The dated three-night standard hotel price is missing; the official EUR 118 from-rate is retained only as an excluded proxy."
+}

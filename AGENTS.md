@@ -11,6 +11,7 @@ This file describes what the project is and currently does. It is deliberately f
 | What was built, what was tried, and what the evidence showed | **[LOG.md](LOG.md)** |
 | City-cost accuracy research plan | [docs/dev/plans/city-cost-accuracy.md](docs/dev/plans/city-cost-accuracy.md) |
 | City-cost accuracy goal prompt | [CITY-COST-ACCURACY-GOAL.md](CITY-COST-ACCURACY-GOAL.md) |
+| Experiment designer/worker architecture | [docs/dev/plans/city-cost-experiment-agent-architecture.md](docs/dev/plans/city-cost-experiment-agent-architecture.md) |
 | Research next action | **[PLAN.md](PLAN.md)** and `CITY-COST-ACCURACY-GOAL.md` |
 | Prior v1.1 implementation handoff and loop | `docs/dev/handoffs/city-cost-v1-1.md`, `LOOP-PROMPT-V1-1.md` |
 | Retired v6.1 research history | archived `feat/city-cost-methodology-v6` branch and tag `city-cost-v6.1-research-final-2026-08-18` |
@@ -388,14 +389,21 @@ defined in `.github/workflows/production-checks.yml`; local Windows checks do no
 
 ## City-cost accuracy research
 
-This research worktree follows `docs/dev/plans/city-cost-accuracy.md`; `CITY-COST-ACCURACY-GOAL.md` is its
-execution prompt. The owner has authorized planning this stream and reopening city-cost accuracy measurement
-and calibration here. Execution starts when the goal is activated. The production method remains v1.1.
+This research worktree follows `docs/dev/plans/city-cost-accuracy.md` and the experiment-agent architecture.
+The owner requested a stop after the registered `000-baseline` experiment. Do not continue experiments or
+activate the revised `CITY-COST-ACCURACY-GOAL.md` without an explicit restart. The production method remains v1.1.
 
-All estimate generation uses fresh inexpensive-model subagents, following the previous city-batch pattern.
-GPT-6 Luna/max and Haiku 5.5 are the target models when their agent runtimes are available. Do not use paid
-provider API calls or access application keys. Exact prompts and responses are saved and checked through
-deterministic research-only materialization/scoring; the batch persistence step is not used.
+On restart, every experiment is designed and assessed by GPT-6 Astra/Medium in Codex or Opus 5.5/Max in
+Claude Code. All agents retrieving/generating cost information, including reference collection and source
+verification, use GPT-6 Luna/Max or Haiku 5.5/Max respectively. Verify exact runtime availability; no silent
+substitution or lower effort. Use fresh isolated prediction workers. No paid provider APIs or application keys.
+Exact prompts/responses are saved and checked by deterministic research-only materialization/scoring;
+the batch persistence step is not used. Strong agents do not supply replacement numeric prices.
+
+The designer freezes each experiment's measurement, references, prompts, accuracy assessment and resource
+contract before execution. It reviews all released development results after every ten completed candidate
+experiments and adjusts the program prospectively. Repeats do not pad that count; revisions cannot rewrite
+completed evidence, relax acceptance rules, reset cumulative budgets or expose sealed confirmation.
 
 Research compares repeated predictions against definition-matched public references, then tests small
 methodology changes within fixed sample and resource limits. The stronger coordinator's estimates and LLM

@@ -1,0 +1,19 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "0184653e75f1bbcc9877a7faa9f9fff19efa745f85d582a9c8a46430df2df05b",
+  "startedAt": "2026-10-13T23:54:18Z",
+  "finishedAt": "2026-10-13T23:54:26Z",
+  "actions": [
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html daily exchange rates 13 October 2026 USD",
+      "outcome": "Official RBA search result reported the 13 October 2026 observation as 0.6961 USD per AUD."
+    }
+  ],
+  "searchCount": 1,
+  "retrievalCount": 0,
+  "tokenUsage": null,
+  "notes": "Used one official RBA page search; no page was opened. City anchors are holistic estimates from general knowledge; no city-price searches were made."
+}

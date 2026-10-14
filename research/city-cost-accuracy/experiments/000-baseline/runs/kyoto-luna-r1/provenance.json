@@ -1,0 +1,29 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "2dfec059a55fc7b904b6d943b8ed6e88a618dac75b03bc94ca18e5671f0a0699",
+  "startedAt": "2026-10-13T23:46:06Z",
+  "finishedAt": "2026-10-13T23:46:51Z",
+  "actions": [
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html RBA exchange rates October 2026 USD Australian dollar latest",
+      "outcome": "Official RBA search result showed USD per AUD through 12 Oct 2026; no city-price sourcing was performed."
+    },
+    {
+      "kind": "open",
+      "queryOrUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-12-21-13-16-31",
+      "outcome": "Opened the official RBA page, but this retrieved view was stale and showed data only through 9 Oct 2026."
+    },
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html \"13 Oct 2026\" \"United States dollar\"",
+      "outcome": "Official RBA search result showed 13 Oct 2026 as the latest observation and USD per AUD 0.6961."
+    }
+  ],
+  "searchCount": 2,
+  "retrievalCount": 1,
+  "tokenUsage": null,
+  "notes": "Model and effort are coordinator-selected metadata and are not independently attested by this runtime. The first timestamp capture after input loading was used for startedAt because the platform did not expose the turn-start timestamp."
+}

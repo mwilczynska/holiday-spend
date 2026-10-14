@@ -1,0 +1,172 @@
+{
+  "cityId": "hanoi",
+  "collector": {
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "runtime": "Codex subagent"
+  },
+  "actions": [
+    {
+      "index": 1,
+      "kind": "search",
+      "queryOrUrl": "Hanoi Vietnam restaurant official menu cappuccino draft beer prices Hanoi Social Club menu",
+      "outcome": "Search returned the official Lotte Hotel Hanoi Top of Hanoi menu PDF (https://www.lottehotel.com/cms/asset/2026/01/15/36005/TOHMenu0115.pdf). The indexed excerpt lists ‘Capuccino 160’ and says menu prices are in 000 VND, excluding 5% service and 10% VAT; no priced draft-beer item was visible."
+    },
+    {
+      "index": 2,
+      "kind": "open",
+      "queryOrUrl": "https://www.lottehotel.com/cms/asset/2026/01/15/36005/TOHMenu0115.pdf",
+      "outcome": "Open failed at Lotte Hotel’s bot-interruption page; PDF contents could not be inspected."
+    },
+    {
+      "index": 3,
+      "kind": "search",
+      "queryOrUrl": "Hanoi official 3 star hotel booking 17 November 2026 20 November 2026 two adults room public rate",
+      "outcome": "Search surfaced the official Amara Hanoi booking page (https://amarahanoihotel.com/book-now/?room-type=5024947), but no visible price or hotel star class. An unrelated third-party result listed Blue Hanoi Inn as 3-star, USD 40/night for two adults for 17–19 Nov (2 nights), and USD 63/night on Expedia; neither is the requested 3-night official rate."
+    },
+    {
+      "index": 4,
+      "kind": "open",
+      "queryOrUrl": "https://amarahanoihotel.com/book-now/?room-type=5024947",
+      "outcome": "Open failed with a cache miss; no booking dates, availability or price were accessible."
+    },
+    {
+      "index": 5,
+      "kind": "search",
+      "queryOrUrl": "Hanoi Vietnam official museum adult admission ticket price museum official website 2026",
+      "outcome": "Search found the Vietnam National Museum of History official ticket-price page at https://baotanglichsu.vn/en/Articles/3197/ticket-price."
+    },
+    {
+      "index": 6,
+      "kind": "open",
+      "queryOrUrl": "https://baotanglichsu.vn/en/Articles/3197/ticket-price",
+      "outcome": "Official page states adult admission is VND 40,000 per person and includes both museum buildings; no effective date is stated."
+    }
+  ],
+  "rows": [
+    {
+      "id": "hanoi-coffee-lotte-snippet",
+      "measure": "coffee",
+      "category": "drinks",
+      "evidenceClass": "proxy",
+      "venue": "Top of Hanoi, Lotte Hotel Hanoi",
+      "sourceUrl": "https://www.lottehotel.com/cms/asset/2026/01/15/36005/TOHMenu0115.pdf",
+      "amount": 160000,
+      "currency": "VND",
+      "unit": "one cappuccino; listed as 160 in 000 VND",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "The indexed menu snippet is the only visible price basis because opening the PDF was blocked; its asset path is dated 2026-01-15, not the current Oct–Nov 2026 menu period, and the rooftop hotel bar is a premium venue.",
+      "notes": "Search excerpt also says prices exclude 5% service charge and 10% VAT. Effective date was not established."
+    },
+    {
+      "id": "hanoi-coffee-missing",
+      "measure": "coffee",
+      "category": "drinks",
+      "evidenceClass": "missing",
+      "venue": "No eligible current direct menu price",
+      "sourceUrl": "https://www.lottehotel.com/cms/asset/2026/01/15/36005/TOHMenu0115.pdf",
+      "amount": null,
+      "currency": null,
+      "unit": "regular cappuccino per serving",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "No current Oct–Nov 2026 direct menu price could be verified after the official PDF open failed."
+    },
+    {
+      "id": "hanoi-beer-missing",
+      "measure": "beer",
+      "category": "drinks",
+      "evidenceClass": "missing",
+      "venue": "No eligible current direct menu price",
+      "sourceUrl": "https://www.lottehotel.com/cms/asset/2026/01/15/36005/TOHMenu0115.pdf",
+      "amount": null,
+      "currency": null,
+      "unit": "one local standard draft serving",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "The search excerpt had no priced draft-beer item and the PDF could not be opened; bottled beer cannot substitute."
+    },
+    {
+      "id": "hanoi-inexp-meal-missing",
+      "measure": "inexp_meal_1p",
+      "category": "food",
+      "evidenceClass": "missing",
+      "venue": "No eligible current direct menu price",
+      "sourceUrl": "https://www.lottehotel.com/cms/asset/2026/01/15/36005/TOHMenu0115.pdf",
+      "amount": null,
+      "currency": null,
+      "unit": "one regular inexpensive complete meal, no drink",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "No qualifying current direct meal price was accessible because the menu PDF open failed."
+    },
+    {
+      "id": "hanoi-midrange-meal-missing",
+      "measure": "midrange_meal_2p",
+      "category": "food",
+      "evidenceClass": "missing",
+      "venue": "No eligible current direct menu price",
+      "sourceUrl": "https://www.lottehotel.com/cms/asset/2026/01/15/36005/TOHMenu0115.pdf",
+      "amount": null,
+      "currency": null,
+      "unit": "three-course mid-range dinner for two, excluding drinks",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "No qualifying three-course dinner offer was accessible because the menu PDF open failed."
+    },
+    {
+      "id": "hanoi-hotel-blue-hanoi-inn-proxy",
+      "measure": "hotel_3star_2p",
+      "category": "accommodation",
+      "evidenceClass": "proxy",
+      "venue": "Blue Hanoi Inn Hotel",
+      "sourceUrl": "https://helloaxel.com/en/hotels/destinations/hanoi",
+      "amount": 40,
+      "currency": "USD",
+      "unit": "per night; search result says two nights 17–19 Nov 2026 for two adults; room and tax terms not stated",
+      "priceDate": "2026-11-17",
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "Third-party off-market listing rather than an official property rate, and the two-night offer does not match the required three nights from 17–20 November.",
+      "notes": "Search result labels the property 3-star, refundable at USD 40/night, and shows USD 63/night on Expedia for the same two-night dates. No exact requested-window offer was established."
+    },
+    {
+      "id": "hanoi-hotel-3star-missing",
+      "measure": "hotel_3star_2p",
+      "category": "accommodation",
+      "evidenceClass": "missing",
+      "venue": "No eligible official 3-star property rate",
+      "sourceUrl": "https://amarahanoihotel.com/book-now/?room-type=5024947",
+      "amount": null,
+      "currency": null,
+      "unit": "one standard room for two adults, 17–20 November 2026, three nights, excluding breakfast",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "The official booking page fetch failed; no verified star class, dated availability, tax-inclusive rate or room basis was obtained."
+    },
+    {
+      "id": "hanoi-admission-national-history-museum",
+      "measure": "ordinary_admission_1p",
+      "category": "activities",
+      "evidenceClass": "observed_offer",
+      "venue": "Vietnam National Museum of History",
+      "sourceUrl": "https://baotanglichsu.vn/en/Articles/3197/ticket-price",
+      "amount": 40000,
+      "currency": "VND",
+      "unit": "adult admission per person; includes both museum buildings",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "The museum’s official ticket page directly states VND 40,000 per adult; the page does not state an effective date.",
+      "notes": "The two buildings are at No. 1 Trang Tien Street and 216 Tran Quang Khai Street, Hanoi."
+    }
+  ],
+  "summary": "One eligible directly priced adult admission was found (VND 40,000). The opened-source budget did not establish eligible current food or drink prices or an official three-night star-rated hotel offer; menu and lodging search-only evidence is retained as proxy. Exactly six retrieval actions were used."
+}

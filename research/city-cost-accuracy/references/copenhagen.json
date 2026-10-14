@@ -1,0 +1,145 @@
+{
+  "cityId": "copenhagen",
+  "collector": {
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "runtime": "Codex subagent"
+  },
+  "actions": [
+    {
+      "index": 1,
+      "kind": "search",
+      "queryOrUrl": "Copenhagen Denmark cafe restaurant menu cappuccino draft beer prices official menu",
+      "outcome": "Found Café Kopenhag's official English menu page with cappuccino, draft beer, and regular meal prices."
+    },
+    {
+      "index": 2,
+      "kind": "open",
+      "queryOrUrl": "https://kopenhag.dk/en/menu-2/",
+      "outcome": "Opened the named café's current menu: cappuccino DKK 52; Carlsberg draft DKK 69 for 0.4 L and DKK 79 for 0.5 L; regular food prices are listed. The page is crawled as current and prints no menu effective date."
+    },
+    {
+      "index": 3,
+      "kind": "search",
+      "queryOrUrl": "Copenhagen Denmark official 3 star hotel rates 17 20 November 2026 two adults room direct booking",
+      "outcome": "Search returned 3-star listings and official Copenhagen hotel pages, but no official page with a date-specific public non-member rate for the target stay."
+    },
+    {
+      "index": 4,
+      "kind": "open",
+      "queryOrUrl": "https://www.scandichotels.com/da/hoteller/scandic-palace?bookingCode=TIV",
+      "outcome": "Opened Scandic Palace Hotel's official page. A standard room is described for up to two guests, but no room rate for 17–20 November 2026 is shown. The page exposes a member-price offer and does not state a hotel star class."
+    },
+    {
+      "index": 5,
+      "kind": "search",
+      "queryOrUrl": "Copenhagen official museum attraction adult admission price Copenhagen official site 2026",
+      "outcome": "Search returned official Copenhagen museum pages, including a National Museum single-museum adult ticket and a separate Museum of Copenhagen multi-museum ticket."
+    },
+    {
+      "index": 6,
+      "kind": "open",
+      "queryOrUrl": "https://nationalmuseet.dk/en/tickets/admission-ticket",
+      "outcome": "Opened the National Museum of Denmark's official ticket page: one adult ticket is DKK 150 at the museum or DKK 135 online, with one-year validity and access to the museum's exhibitions."
+    }
+  ],
+  "rows": [
+    {
+      "id": "coffee-cappuccino",
+      "measure": "coffee",
+      "category": "drinks",
+      "evidenceClass": "observed_offer",
+      "venue": "Café Kopenhag",
+      "sourceUrl": "https://kopenhag.dk/en/menu-2/",
+      "amount": 52.0,
+      "currency": "DKK",
+      "unit": "one regular cappuccino",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "The café's current public menu directly lists a regular cappuccino; the undated current-menu rule applies.",
+      "notes": "The page was crawled the day before retrieval and does not print a menu effective date. It notes a double espresso shot is standard; cappuccino size is not stated."
+    },
+    {
+      "id": "beer-draft-05l",
+      "measure": "beer",
+      "category": "drinks",
+      "evidenceClass": "observed_offer",
+      "venue": "Café Kopenhag",
+      "sourceUrl": "https://kopenhag.dk/en/menu-2/",
+      "amount": 79.0,
+      "currency": "DKK",
+      "unit": "one 0.5 L large draft Carlsberg Pilsner (4.6%)",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "The current menu explicitly gives draft beer prices and serving sizes; no bottled beer or size conversion is used.",
+      "notes": "The same beer is DKK 69 for the listed 0.4 L medium serving. Menu effective date is not printed."
+    },
+    {
+      "id": "inexp-meal-main",
+      "measure": "inexp_meal_1p",
+      "category": "food",
+      "evidenceClass": "observed_offer",
+      "venue": "Café Kopenhag",
+      "sourceUrl": "https://kopenhag.dk/en/menu-2/",
+      "amount": 139.0,
+      "currency": "DKK",
+      "unit": "one regular main, no drink",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "The café's current public menu lists a regular non-premium one-person main suitable for an inexpensive restaurant meal.",
+      "notes": "Margherita sourdough pizza is DKK 139. The same menu lists a chicken sandwich at DKK 89 and other regular mains; only one venue/menu observation is represented here."
+    },
+    {
+      "id": "midrange-meal-missing",
+      "measure": "midrange_meal_2p",
+      "category": "food",
+      "evidenceClass": "missing",
+      "venue": "Café Kopenhag",
+      "sourceUrl": "https://kopenhag.dk/en/menu-2/",
+      "amount": null,
+      "currency": null,
+      "unit": "two diners, three courses, no drinks",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "The opened café menu has no priced starter-plus-main-plus-dessert combination or three-course dinner basis.",
+      "notes": "Single mains and snacks are not substituted for the required three-course dinner."
+    },
+    {
+      "id": "hotel-3star-dated-missing",
+      "measure": "hotel_3star_2p",
+      "category": "accommodation",
+      "evidenceClass": "missing",
+      "venue": "Scandic Palace Hotel",
+      "sourceUrl": "https://www.scandichotels.com/da/hoteller/scandic-palace?bookingCode=TIV",
+      "amount": null,
+      "currency": null,
+      "unit": "one standard public non-member room for two adults, 17–20 November 2026, three nights, no breakfast",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": false,
+      "reason": "The official page confirms a standard room for up to two guests but shows no public rate for the frozen dates and does not state the hotel's star class.",
+      "notes": "A visible member-price offer is excluded. No amount is inferred from it or from other hotels' rates."
+    },
+    {
+      "id": "ordinary-admission-national-museum",
+      "measure": "ordinary_admission_1p",
+      "category": "activities",
+      "evidenceClass": "observed_offer",
+      "venue": "National Museum of Denmark, Copenhagen",
+      "sourceUrl": "https://nationalmuseet.dk/en/tickets/admission-ticket",
+      "amount": 150.0,
+      "currency": "DKK",
+      "unit": "one adult single-museum admission ticket",
+      "priceDate": null,
+      "retrievedDate": "2026-10-13",
+      "eligiblePrimary": true,
+      "reason": "The official museum page directly lists its regular public adult admission; the ticket is for one visitor and one museum, not a multi-attraction pass.",
+      "notes": "Adult ticket is DKK 150 at the museum; the same page offers DKK 135 online (10% discount). A ticket can be used within one year and covers the museum's exhibitions."
+    }
+  ],
+  "summary": "Six retrieval actions completed. Current direct menu evidence supports coffee, draft beer and one regular main at one Copenhagen café; official museum evidence supports a single-site adult admission. The three-course dinner and dated standard two-adult hotel price remain missing."
+}

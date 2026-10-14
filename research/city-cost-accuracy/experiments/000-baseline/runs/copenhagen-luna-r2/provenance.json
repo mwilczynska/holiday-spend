@@ -1,0 +1,29 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "a8bc5c8e468209a18d511035cd67f942dcd555aca175ec49e728170653df4165",
+  "startedAt": "2026-10-13T23:53:00Z",
+  "finishedAt": "2026-10-13T23:54:47Z",
+  "actions": [
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html 12 October 2026 US dollar Australian dollar exchange rates",
+      "outcome": "Official RBA result showed rates through 12 October 2026; queried for the latest published observation."
+    },
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/historical-data.html USD AUD 12 October 2026 exchange rate",
+      "outcome": "No useful result beyond official RBA exchange-rate page."
+    },
+    {
+      "kind": "open",
+      "queryOrUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+      "outcome": "Official page listed 13 October 2026 as latest date and USD per AUD at 0.6961."
+    }
+  ],
+  "searchCount": 2,
+  "retrievalCount": 1,
+  "tokenUsage": null,
+  "notes": "City-price anchors are holistic estimates from general knowledge; no city-price searches were made."
+}

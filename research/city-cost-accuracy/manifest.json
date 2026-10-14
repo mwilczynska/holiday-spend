@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "campaign": "city-cost-accuracy-2026-10",
+  "protocolVersion": "pilot-1",
+  "frozenAt": "2026-10-13",
+  "primaryModel": {
+    "id": "gpt-6-luna",
+    "effort": "max",
+    "runtime": "Codex subagent"
+  },
+  "secondaryModel": {
+    "id": "claude-haiku-5-5",
+    "effort": "max",
+    "runtime": "Claude Code subscription",
+    "availability": "authenticated claude.ai; model execution pending"
+  },
+  "referenceDate": "17–20 November 2026 (three nights; food/drink prices current in October–November 2026)",
+  "extraContext": "Two adult travellers. City proper, ordinary visitor-accessible central neighbourhoods. Accommodation is one standard room for two or one dorm bed as specified, public non-member rates, including mandatory taxes where known, excluding breakfast. Food and drink exclude tips and optional service. Use the existing anchor definitions; disclose uncertainty where availability or price basis is unclear.",
+  "cities": [
+    {
+      "id": "hanoi",
+      "name": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "type": "large_city",
+      "split": "development",
+      "pilot": true
+    },
+    {
+      "id": "bandipur",
+      "name": "Bandipur",
+      "country": "Nepal",
+      "region": "South Asia",
+      "band": "low",
+      "type": "small_sparse",
+      "split": "development",
+      "pilot": true
+    },
+    {
+      "id": "oaxaca",
+      "name": "Oaxaca",
+      "country": "Mexico",
+      "region": "Latin America",
+      "band": "middle",
+      "type": "regional_city",
+      "split": "development",
+      "pilot": true
+    },
+    {
+      "id": "bled",
+      "name": "Bled",
+      "country": "Slovenia",
+      "region": "Europe",
+      "band": "high",
+      "type": "small_seasonal",
+      "split": "development",
+      "pilot": true
+    },
+    {
+      "id": "kyoto",
+      "name": "Kyoto",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": "middle",
+      "type": "seasonal_city",
+      "split": "development",
+      "pilot": true
+    },
+    {
+      "id": "copenhagen",
+      "name": "Copenhagen",
+      "country": "Denmark",
+      "region": "Europe",
+      "band": "high",
+      "type": "large_city",
+      "split": "development",
+      "pilot": true
+    },
+    {
+      "id": "lisbon",
+      "name": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "band": "middle",
+      "type": "large_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "prague",
+      "name": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "band": "middle",
+      "type": "large_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "bangkok",
+      "name": "Bangkok",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": "low",
+      "type": "large_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "cape-town",
+      "name": "Cape Town",
+      "country": "South Africa",
+      "region": "Africa",
+      "band": "middle",
+      "type": "large_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "marrakech",
+      "name": "Marrakech",
+      "country": "Morocco",
+      "region": "Africa",
+      "band": "low",
+      "type": "seasonal_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "istanbul",
+      "name": "Istanbul",
+      "country": "Turkey",
+      "region": "Europe",
+      "band": "middle",
+      "type": "large_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "buenos-aires",
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "region": "Latin America",
+      "band": "middle",
+      "type": "large_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "vancouver",
+      "name": "Vancouver",
+      "country": "Canada",
+      "region": "North America",
+      "band": "high",
+      "type": "large_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "cairns",
+      "name": "Cairns",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": "high",
+      "type": "regional_seasonal",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "amman",
+      "name": "Amman",
+      "country": "Jordan",
+      "region": "Middle East",
+      "band": "middle",
+      "type": "regional_city",
+      "split": "development",
+      "pilot": false
+    },
+    {
+      "id": "luang-prabang",
+      "name": "Luang Prabang",
+      "country": "Laos",
+      "region": "SEA",
+      "band": "low",
+      "type": "small_seasonal",
+      "split": "confirmation",
+      "pilot": false
+    },
+    {
+      "id": "george-town",
+      "name": "George Town",
+      "country": "Malaysia",
+      "region": "SEA",
+      "band": "low",
+      "type": "regional_city",
+      "split": "confirmation",
+      "pilot": false
+    },
+    {
+      "id": "matsumoto",
+      "name": "Matsumoto",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": "middle",
+      "type": "regional_city",
+      "split": "confirmation",
+      "pilot": false
+    },
+    {
+      "id": "galle",
+      "name": "Galle",
+      "country": "Sri Lanka",
+      "region": "South Asia",
+      "band": "low",
+      "type": "small_seasonal",
+      "split": "confirmation",
+      "pilot": false
+    },
+    {
+      "id": "gjirokaster",
+      "name": "Gjirokastër",
+      "country": "Albania",
+      "region": "Europe",
+      "band": "low",
+      "type": "small_sparse",
+      "split": "confirmation",
+      "pilot": false
+    },
+    {
+      "id": "guanajuato",
+      "name": "Guanajuato",
+      "country": "Mexico",
+      "region": "Latin America",
+      "band": "middle",
+      "type": "regional_city",
+      "split": "confirmation",
+      "pilot": false
+    },
+    {
+      "id": "hobart",
+      "name": "Hobart",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": "high",
+      "type": "regional_city",
+      "split": "confirmation",
+      "pilot": false
+    },
+    {
+      "id": "halifax",
+      "name": "Halifax",
+      "country": "Canada",
+      "region": "North America",
+      "band": "high",
+      "type": "regional_city",
+      "split": "confirmation",
+      "pilot": false
+    }
+  ],
+  "limits": {
+    "estimationInvocations": 400,
+    "confirmationReserve": 100,
+    "referenceActions": 300,
+    "pilotReferenceActions": 40,
+    "candidates": 6,
+    "consecutiveNonImprovements": 3,
+    "concurrency": 3,
+    "perCityInvocations": 3,
+    "perCitySearches": 8
+  },
+  "metrics": {
+    "primary": "city-macro mean absolute log error; category then measure equal weighting; all repeats",
+    "missingPenaltyRatios": [
+      4,
+      2,
+      10
+    ],
+    "practicalRelativeImprovement": 0.1,
+    "bootstrapCitySamples": 10000,
+    "bootstrapSeed": 13102026,
+    "confirmationCI": 0.95,
+    "p90RegressionPercentagePoints": 5,
+    "biasRegressionLog": 0.05,
+    "requireNoNewFailures": true
+  },
+  "baselineRepeats": 3,
+  "selection": {
+    "type": "purposive stratified fixed list; not random population sample",
+    "orderSeed": 13102026,
+    "confirmationNote": "Fresh evidence only after finalist freeze; no claims of unseen historical city names."
+  },
+  "status": "pilot_protocol_frozen_no_measurements"
+}

@@ -1,0 +1,19 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "4bb87ea7b09b7272a59220f90cc0eb0f9877fd683b9c0fcba73fd71b664318dd",
+  "startedAt": "2026-10-13T23:56:06Z",
+  "finishedAt": "2026-10-13T23:56:41Z",
+  "actions": [
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html October 2026 United States dollar exchange rates RBA",
+      "outcome": "The official RBA result showed its latest available observation as 12 October 2026, with 0.6979 United States dollars per Australian dollar. No city-price sources were searched."
+    }
+  ],
+  "searchCount": 1,
+  "retrievalCount": 0,
+  "tokenUsage": null,
+  "notes": "The FX value came from the official RBA search result. City anchors are holistic estimates from general knowledge; no current listings or city-price sources were inspected. Model and effort are coordinator-selected metadata."
+}

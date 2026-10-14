@@ -1,0 +1,12 @@
+{
+  "reviewer": "coordinator; separate from collection agent",
+  "retrievedDate": "2026-10-13",
+  "actions": [{"index": 1, "kind": "open", "queryOrUrl": "https://casonaoaxaca.mx/menu/", "outcome": "Menu retrieved; accepted coffee and meal amounts confirmed; additional standard cocktail price visible."}],
+  "reviewedRows": [
+    {"id": "oaxaca-cappuccino-casona", "verdict": "confirmed", "amount": 50, "currency": "MXN", "note": "Regular cappuccino; current undated menu, single venue."},
+    {"id": "oaxaca-meal-casona-cazuela", "verdict": "confirmed_with_scope_limit", "amount": 165, "currency": "MXN", "note": "Priced regular dish with tortillas. A hotel restaurant menu offer, not a measured city-wide inexpensive-restaurant average. Inexpensive interpretation follows the frozen non-premium-main definition."}
+  ],
+  "supplementaryRows": [
+    {"id": "oaxaca-cocktail-casona", "cityId": "oaxaca", "measure": "cocktail", "category": "drinks", "evidenceClass": "observed_offer", "venue": "Casona Oaxaca", "sourceUrl": "https://casonaoaxaca.mx/menu/", "amount": 120, "currency": "MXN", "unit": "one standard cocktail", "priceDate": null, "retrievedDate": "2026-10-13", "eligiblePrimary": true, "reason": "Mimosa, Carajillo and Aperol Spritz each have the same posted price; one venue observation, not three independent observations.", "notes": "Additional eligible anchor found during independent review before any candidate selection. Undated menu; tax treatment unstated."}
+  ]
+}

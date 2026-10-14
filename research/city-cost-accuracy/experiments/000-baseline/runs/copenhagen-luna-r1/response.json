@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimate from general city-cost knowledge. Restaurant anchors are more stable than accommodation; central lodging for the specified November dates is especially uncertain, and no live rates were checked.",
+  "comparable_city_reasoning": "Used the high-cost Nordic city level associated with Stockholm and Oslo, with Copenhagen's own high-wage, visitor-oriented central market in mind.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.0,
+    "coffee": 6.5,
+    "inexp_meal_1p": 24.0,
+    "midrange_meal_2p": 130.0,
+    "cocktail": 18.0,
+    "wine_glass": 14.0,
+    "hostel_dorm_1p": 52.0,
+    "hostel_private_2p": 150.0,
+    "hotel_1star_2p": 170.0,
+    "hotel_3star_2p": 270.0
+  }
+}

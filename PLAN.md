@@ -2,7 +2,7 @@
 
 **Last updated:** 13 October 2026
 **Branch:** `research/city-cost-accuracy`
-**Status:** Planning complete; goal not activated and no new measurement or collection started.
+**Status:** Baseline experiment complete. Research stopped at the owner's request; replacement architecture/goal prepared and inactive.
 **Worktree:** `C:\Users\chawi\.codex\worktrees\city-cost-accuracy\holiday-spend`
 
 The owner requested a dedicated worktree, an accuracy/improvement plan, and an iterative goal prompt for
@@ -18,16 +18,18 @@ no paid provider API calls or API key setup are part of this campaign.
 - [x] Record the owner's subagent-only execution requirement.
 - [x] Update the worktree memory to reflect the authorized research scope.
 - [x] Verify documentation and prepare the planning checkpoint for publication.
-- [ ] Activate the goal when the owner chooses to start.
-- [ ] Freeze the feasibility protocol and implement isolated replay/scoring.
-- [ ] Establish repeated cheap-model v1.1 baselines and reference coverage.
-- [ ] Run bounded incremental experiments and fresh confirmation.
-- [ ] Deliver the reproducible evidence report and recommendation.
+- [x] Activate the goal when the owner chooses to start.
+- [x] Freeze the feasibility protocol and implement isolated replay/scoring.
+- [x] Complete the six-city, three-repeat Luna/Max v1.1 baseline and reference-feasibility pilot.
+- [x] Publish [the baseline checkpoint](research/city-cost-accuracy/REPORT.md), including limited scope and failures.
+- [x] Prepare [the designer-led architecture](docs/dev/plans/city-cost-experiment-agent-architecture.md) and rewrite the goal.
+- [ ] Restart only on an explicit owner instruction; no candidate/confirmation experiment has run.
 
-**Next action:** The owner can activate `CITY-COST-ACCURACY-GOAL.md` in this worktree. Begin section 10 of the
-detailed plan when activated. Publish this verified planning checkpoint; do not start experiments during this
-planning task. Proposed limits are 24 cities (16 development/eight confirmation), six candidates, 400 delegated
-estimation invocations and 300 reference retrievals. These are resource allocations, not statistical-power claims.
+**Next action:** Stop. Await owner review and explicit restart of the revised goal. Do not resume the original goal
+or launch another experiment automatically. Preserve `pilot-1` and experiment 000 unchanged. The proposed future
+program uses Astra/Medium or Opus 5.5/Max designers, Luna/Max or Haiku 5.5/Max cost workers, and reviews after each
+ten completed candidate experiments. Prior consumption is 19 estimate/recovery calls and 43 reference actions;
+these remain charged against cumulative 400/300 ceilings. Full-budget accuracy remains unmeasured.
 
 ---
 
@@ -128,7 +130,7 @@ Its regressions and Chrome verification pass.
 ## Ranked destinations — PROCESSED, ONE DEFERRED (11 October 2026)
 
 - [x] Owner authorized continuing the whole ranked list, in batches of ten, committing and pushing each verified batch. The original queue is retained in gitignored `.local/ranked-destinations-200.json`.
-- [x] Ranks 21–30: Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and Nassau. Library 348 -> 358. Backup `travel-before-popular-21-30.db`, integrity `ok`; exact files in `.local/popular-21-30-2026-10-11`. All ten have matching city/history dates, 11 October cost/climate/photo timestamps, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, twelve climate months and both licensed photo files. Original library records and protected hashes (66/68/73/1,543) unchanged. Gold Coast, Nassau, Rhodes city and San Juan photo titles visually checked.
+- [x] Ranks 21–30: Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and Nassau. Library 348 -> 358. Backup `travel-before-popular- 21-30.db`, integrity `ok`; exact files in `.local/popular- 21-30-2026-10-11`. All ten have matching city/history dates, 11 October cost/climate/photo timestamps, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, twelve climate months and both licensed photo files. Original library records and protected hashes (66/68/73/1,543) unchanged. Gold Coast, Nassau, Rhodes city and San Juan photo titles visually checked.
 - [x] Rhodes city/island ambiguity resolved with a country/region/feature constraint selecting the city; regression rejects the island and foreign matches. TypeScript, production build and all 74 files / 467 tests pass. Sapporo/Rhodes/Heraklion rooms exceed older Japanese/Athens entries; seasonal uncertainty is disclosed and noted without calibration. Memory mirror and v1.1 guard pass for publication.
 - [x] Processed ranks 31–200 in batches of ten with consistent backups, exact prompts, response review, app persistence and date/photo/climate audits. Every completed batch was committed and pushed before starting the next. Across the full list, 199 cities were added; rank 37, Malé, remains deferred unsaved.
 
@@ -241,14 +243,14 @@ Its regressions and Chrome verification pass.
 
 ### Ranks 171–180 — COMPLETE (11 October 2026)
 
-- Added Port Douglas, Rovinj, Kos Town, Nafplio, Rethymno, La Spezia, Ohrid, Coimbra, Cluj-Napoca, Sibiu. Library 497 -> 507; consistent backup `travel-before-popular-171-180.db`, integrity `ok`; exact files in `.local/popular-171-180-2026-10-11`.
+- Added Port Douglas, Rovinj, Kos Town, Nafplio, Rethymno, La Spezia, Ohrid, Coimbra, Cluj-Napoca, Sibiu. Library 497 -> 507; consistent backup `travel-before-popular-171- 180.db`, integrity `ok`; exact files in `.local/popular-171- 180-2026-10-11`.
 - All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
 - Port Douglas is low confidence because of seasonal resort demand and limited room inventory. Coimbra three-star AUD165 exceeds older Lisbon AUD140/Porto AUD124 despite its comparison text; Nafplio AUD189 exceeds older Athens AUD109, and Port Douglas AUD358 exceeds Cairns AUD171 with a resort premium disclosed. Differences retained without calibration. Visual inspection caught a Rethymno municipality map: settlement articles now rank ahead of same-named municipalities, with regression coverage. Refreshed all four stored municipality selections through the real collector in an isolated copy and compared all 507 stored picks; Paracas was unchanged and Playa del Carmen, San Miguel de Allende and Rethymno changed, all visually reviewed. Only the new Rethymno live row was refreshed, preserving every older image row. Its licensed city/fortress photo and Kos Town harbour photo both pass visual review.
 - TypeScript, production build, all 485 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 181–190 — COMPLETE (11 October 2026)
 
-- Added Graz, Brno, Karlovy Vary, Cork, Killarney, Luxembourg City, Delft, Maastricht, Poznań, Zakopane. Library 507 -> 517; consistent backup `travel-before-popular-181-190.db`, integrity `ok`; exact files in `.local/popular-181-190-2026-10-11`.
+- Added Graz, Brno, Karlovy Vary, Cork, Killarney, Luxembourg City, Delft, Maastricht, Poznań, Zakopane. Library 507 -> 517; consistent backup `travel-before-popular- 181-190.db`, integrity `ok`; exact files in `.local/popular- 181-190-2026-10-11`.
 - All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
 - All ten are medium confidence with lodging seasonality and event uncertainty disclosed. Graz three-star AUD222 exceeds older Vienna AUD155, Brno AUD172 exceeds older Prague AUD109 and Poznan AUD132 exceeds older Krakow AUD85 despite relative-city wording; differences retained without calibration. Cork/Killarney AUD312/322 sit near Galway AUD330. Visually checked Cork city university quadrangle and Luxembourg City Greinskapell chapel. The latter comes through the Luxembourg article and Wikidata image, but the Commons file explicitly identifies Luxembourg City and the location check is 0.3km from the saved city point.
 - No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.

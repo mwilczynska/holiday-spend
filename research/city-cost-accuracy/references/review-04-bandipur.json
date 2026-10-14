@@ -1,0 +1,14 @@
+{
+  "reviewer": "coordinator; separate from collection agent",
+  "retrievedDate": "2026-10-13",
+  "actions": [{"index": 1, "kind": "open", "queryOrUrl": "https://sites.google.com/view/samaybajirestaurant/", "outcome": "NPR 350 vegetarian set meal confirmed; first listed cocktail also visible."}],
+  "reviewedRows": [
+    {"cityId": "bandipur", "id": "bandipur-inexp-meal-samay-baji-veg-set", "verdict": "confirmed", "note": "One ordinary complete meal offer, not a measured city average."}
+  ],
+  "eligibilityOverrides": [
+    {"cityId": "hanoi", "id": "hanoi-admission-national-history-museum", "eligiblePrimary": false, "evidenceClass": "proxy", "reason": "Official museum price established, but official city tourism attraction-list selection is not established in collector evidence. Apply the same frozen exclusion as Oaxaca and Copenhagen."}
+  ],
+  "supplementaryRows": [
+    {"id": "bandipur-cocktail-samay-baji", "cityId": "bandipur", "measure": "cocktail", "category": "drinks", "evidenceClass": "observed_offer", "venue": "Samay Baji Restaurant & Bar", "sourceUrl": "https://sites.google.com/view/samaybajirestaurant/", "amount": 400, "currency": "NPR", "unit": "one gin and tonic", "priceDate": null, "retrievedDate": "2026-10-13", "eligiblePrimary": true, "reason": "First cocktail listed in the direct current menu.", "notes": "Undated menu; serving volume/tax treatment unstated. Found during review before candidate selection. Other listed cocktails NPR 300."}
+  ]
+}

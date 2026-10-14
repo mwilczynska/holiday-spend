@@ -1,0 +1,24 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "9491b4f4b1a92a3234fd724ffc6ff20427eb6b3d2faf3613444c0cb05c31f6d8",
+  "startedAt": "2026-10-13T23:47:30Z",
+  "finishedAt": "2026-10-13T23:48:54Z",
+  "actions": [
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html Reserve Bank exchange rates USD AUD latest",
+      "outcome": "Found the official RBA Exchange Rates page."
+    },
+    {
+      "kind": "page_read",
+      "queryOrUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+      "outcome": "The latest table shown on the generation date reports 0.6961 United States dollars per Australian dollar for 2026-10-13."
+    }
+  ],
+  "searchCount": 1,
+  "retrievalCount": 1,
+  "tokenUsage": null,
+  "notes": "The selected model and effort are coordinator-provided settings and were not independently attested. City anchors are holistic learned estimates; no city-price searches or provider APIs were used."
+}

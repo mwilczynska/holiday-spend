@@ -2,8 +2,46 @@
 
 **Prepared:** 13 October 2026
 **Branch:** `research/city-cost-accuracy`
-**Status:** Planning complete; experiments have not started.
+**Status:** Original baseline closing at the owner's request. Revised program prepared but inactive.
 **Execution prompt:** [CITY-COST-ACCURACY-GOAL.md](../../../CITY-COST-ACCURACY-GOAL.md)
+
+## Owner-directed architecture revision
+
+Finish the registered `000-baseline` experiment, then stop research and pause the current goal. Do not start
+another experiment or activate the replacement goal without a new owner instruction. Preserve the immutable
+`pilot-1` protocol and results; this revision does not retrospectively change their rules.
+
+On a future restart, [the experiment-agent architecture](city-cost-experiment-agent-architecture.md) and the
+replacement goal govern execution, superseding the original role, candidate-limit and stopping rules in
+sections 5, 7 and 8 below. Retained sections document the original protocol and its measurement safeguards.
+Freeze a new machine-readable revision; do not edit the original manifest to conceal the timing of changes.
+
+| Responsibility | Codex | Claude Code |
+| --- | --- | --- |
+| Design every experiment and assess results | GPT-6 Astra / Medium | Opus 5.5 / Max |
+| Retrieve/reference/verify prices and generate estimates | GPT-6 Luna / Max | Haiku 5.5 / Max |
+| Schedule, validate, score and report | Coordinator and deterministic code | Coordinator and deterministic code |
+
+Every experiment needs a designer-authored frozen contract: hypothesis; what/how measured; date/unit/tax/basket
+definitions; independent reference selection; exact cheap-worker prompts/schemas; tools/repeats/retries;
+accuracy metrics, failures and uncertainty; decision thresholds; resources; and execution/stop gates. The designer
+assesses results against those rules. Strong agents cannot supply replacement candidate or reference prices.
+
+After every ten completed candidate experiments, halt dispatch for a design-agent review of the released
+development program, including failures, coverage and resources. It must make justified prospective adjustments
+to hypotheses, acquisition, future prompts or scope. It cannot reset budgets, rewrite prior outcomes, relax
+acceptance rules or inspect sealed confirmation. Repeated city runs do not count as experiments.
+
+Proposed restart policy: up to 20 candidate attempts in two blocks, replacing six; stop earlier after five
+consecutive assessed non-improvements, failed feasibility, owner stop or exhausted resources. Never create
+filler experiments to reach a review. Retain cumulative 400 estimate calls (100 reserved for confirmation) and
+300 reference actions, subtracting prior usage. Separately cap design-role calls at 50, reference-worker calls
+at 100 and estimate retrieval actions at 1600; at most three concurrent cost workers. See the architecture for
+per-route/time limits and accounting. These are proposed restart limits, not authorization to resume now.
+Unavailable exact models/Max effort remain unavailable; no reduced-effort or paid-API fallback.
+
+The original pilot's single-venue offers can support conditional food/drink agreement; they cannot establish
+population city-price or complete-budget accuracy. Future designers must address that evidence limitation.
 
 ## 1. Objective and scope
 

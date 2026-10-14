@@ -1,0 +1,24 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "673664aec298a20eeb542f40dc8be3412806d5bd88b1463137da8fb75f56d8f9",
+  "startedAt": "2026-10-13T23:43:30Z",
+  "finishedAt": "2026-10-13T23:44:41Z",
+  "actions": [
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html USD AUD exchange rates 2026 Reserve Bank Australia",
+      "outcome": "Search returned official RBA exchange-rate page results; no city-price sources were sought."
+    },
+    {
+      "kind": "open",
+      "queryOrUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-08-12-16-16-49",
+      "outcome": "Opened the official RBA page. It showed USD per AUD of 0.6961 for 2026-10-13, the latest date displayed."
+    }
+  ],
+  "searchCount": 1,
+  "retrievalCount": 1,
+  "tokenUsage": null,
+  "notes": "City anchors are holistic estimates from learned knowledge and supplied context. No city-price web search or provider API was used."
+}

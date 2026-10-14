@@ -1,0 +1,19 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "0184653e75f1bbcc9877a7faa9f9fff19efa745f85d582a9c8a46430df2df05b",
+  "startedAt": "2026-10-13T23:48:10.000Z",
+  "finishedAt": null,
+  "actions": [
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html daily exchange rates 13 October 2026 USD AUD RBA",
+      "outcome": "Official RBA Exchange Rates search result showed 0.6961 US dollars per Australian dollar for 2026-10-13. No page was opened."
+    }
+  ],
+  "searchCount": 1,
+  "retrievalCount": 0,
+  "tokenUsage": null,
+  "notes": "City anchors are holistic estimates; the single web search was used only for the official RBA FX observation. The initial artifact save command exited 1. Its generated finishedAt value was not returned and cannot be recovered."
+}

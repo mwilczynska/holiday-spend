@@ -1,0 +1,14 @@
+{
+  "reviewer": "coordinator; separate from collection agent",
+  "retrievedDate": "2026-10-13",
+  "actions": [{"index": 1, "kind": "open", "queryOrUrl": "https://www.restavracija-sova.com/en/menu/", "outcome": "Four original accepted menu amounts and dinner arithmetic confirmed; VAT included."}],
+  "reviewedRows": [
+    {"cityId": "bled", "id": "coffee-cappuccino", "verdict": "confirmed"},
+    {"cityId": "bled", "id": "beer-draft-05l", "verdict": "confirmed_with_scope_limit", "note": "Half-litre is an observed serving choice; menu also offers 0.3 L. No city-wide modal serving has been measured."},
+    {"cityId": "bled", "id": "inexp-meal-main", "verdict": "confirmed_with_scope_limit", "note": "A regular pasta offer, not a city-wide inexpensive-restaurant statistic."},
+    {"cityId": "bled", "id": "midrange-menu-three-course", "verdict": "confirmed_with_scope_limit", "note": "2 x (6.60 + 17.80 + 6.90) = EUR 62.60. One explicitly chosen dinner basket, not a population average."}
+  ],
+  "supplementaryRows": [
+    {"id": "bled-cocktail-sova", "cityId": "bled", "measure": "cocktail", "category": "drinks", "evidenceClass": "observed_offer", "venue": "Restavracija Sova Bled", "sourceUrl": "https://www.restavracija-sova.com/en/menu/", "amount": 6.8, "currency": "EUR", "unit": "one Aperol spritz", "priceDate": null, "retrievedDate": "2026-10-13", "eligiblePrimary": true, "reason": "First cocktail in the regular spritzes/cocktails section, current undated menu including VAT.", "notes": "One venue observation found in review before candidate selection; other regular cocktails EUR 6.70–6.80."}
+  ]
+}

@@ -3563,3 +3563,38 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - No goal activated, subagent started, new price collected, holdout read, application changed or live data written.
   Memory consistency and tracked diff whitespace checks pass. Local-link and final staged-diff validation
   accompany publication; a production rebuild is unnecessary for this planning change.
+
+# 13 October 2026 — Accuracy baseline and owner-directed architecture revision
+
+- Activated the owner-requested goal and froze `pilot-1` before estimates: six purposive development cities,
+  three fresh Luna/Max repeats each, fixed consumption/date/context, independent evidence rules, penalties,
+  resource limits and no production persistence. Preserved manifest/protocol and exact prompt hashes.
+- Collected 36 source actions through three isolated Luna/Max reference workers and used four independent
+  coordinator review opens under the original contract. Three further central-bank actions froze normalization
+  and verified RBA FX, for 43 cumulative reference actions. Sparse matched offers support 15 city/measure cells
+  in four cities; no dated hotel offer or complete daily basket. Review consistently excludes admissions whose
+  city-tourism-list selection was unsupported. Ten of 13 original accepted rows reviewed; four menu anchors
+  additionally recorded during review. All cells remain thin, named-offer evidence, not city population truth.
+- Completed 18 registered baseline attempts: 17 app-valid, one Oaxaca usage-limit failure. A Bandipur artifact
+  save failure required one same-worker copy-only recovery; original failure retained, no new estimate/search.
+  Count 19 against the 400 estimate allowance. No paid APIs, application keys, database, canonical CSV,
+  production defaults or old sealed holdouts were accessed/changed by the experiment.
+- Reproducible primary mean absolute log loss 0.3979 (four-city macro, ln(4) failure penalty), sensitivities 0.3402
+  and 0.4743. Successful-only median APE 18.9%, p90 91.7%, mean 30.2%; 45 supported repeat cells, three failed cells.
+  Largest deviations are Bandipur menu meal/cocktail offers; sparse venue evidence cannot establish city bias
+  or justify a universal correction. Sixteen of 17 valid responses return the latest independently checked
+  October 13 RBA observation; Oaxaca repeat 3 returns October 12, app-valid but not latest. No candidate,
+  extension or confirmation ran. See `research/city-cost-accuracy/REPORT.md` and saved summary/cells.
+- Owner then requested stopping after this experiment and changing the architecture: Astra/Medium in Codex
+  or Opus 5.5/Max in Claude Code designs every experiment and assesses outcomes; Luna/Max or Haiku 5.5/Max
+  handles all cost information, including future collection/verification. Spawned one fresh Astra/Medium
+  designer to author the architecture without baseline answers or holdouts, and rewrote the goal prompt/plan.
+- Future program proposal replaces six candidates with up to 20 attempts and designer reviews after every ten
+  completed candidates, with prospective adjustments only, no filler experiments, cumulative budgets and early
+  stopping. The replacement is prepared, inactive and requires an explicit restart. The owner stop applies to
+  the original goal after this completed baseline; no broader research-completion claim is made.
+- Pure runner imports the actual app prompt builder/materializer without provider/persistence calls. Immutable
+  artifact checks, output confinement, confirmation gating, full-denominator/category weighting and city-paired
+  bootstrap have five passing focused tests. Standalone TypeScript and memory-mirror checks pass; frozen
+  hashes and offline score replay verified. Dependencies installed with lifecycle scripts disabled; no native
+  database or production build claim. Checkpoint publication and final whitespace/link checks follow.

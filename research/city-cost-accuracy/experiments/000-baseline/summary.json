@@ -1,0 +1,1459 @@
+{
+  "experiment": "000-baseline",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "status": "completed",
+  "interpretation": "Conditional agreement with sparse named-venue offers, not population city prices or total-budget accuracy.",
+  "referenceCoverage": [
+    {
+      "cityId": "hanoi",
+      "measures": [],
+      "datedHotelOffers": 0,
+      "completeDailyBaskets": 0
+    },
+    {
+      "cityId": "bandipur",
+      "measures": [
+        "inexp_meal_1p",
+        "cocktail"
+      ],
+      "datedHotelOffers": 0,
+      "completeDailyBaskets": 0
+    },
+    {
+      "cityId": "oaxaca",
+      "measures": [
+        "coffee",
+        "inexp_meal_1p",
+        "cocktail"
+      ],
+      "datedHotelOffers": 0,
+      "completeDailyBaskets": 0
+    },
+    {
+      "cityId": "bled",
+      "measures": [
+        "coffee",
+        "beer",
+        "inexp_meal_1p",
+        "midrange_meal_2p",
+        "ordinary_admission_1p",
+        "cocktail"
+      ],
+      "datedHotelOffers": 0,
+      "completeDailyBaskets": 0
+    },
+    {
+      "cityId": "kyoto",
+      "measures": [],
+      "datedHotelOffers": 0,
+      "completeDailyBaskets": 0
+    },
+    {
+      "cityId": "copenhagen",
+      "measures": [
+        "coffee",
+        "beer",
+        "inexp_meal_1p",
+        "wine_glass"
+      ],
+      "datedHotelOffers": 0,
+      "completeDailyBaskets": 0
+    }
+  ],
+  "references": [
+    {
+      "cityId": "bandipur",
+      "measure": "inexp_meal_1p",
+      "category": "food",
+      "usd": 2.2956841138659323,
+      "minUsd": 2.2956841138659323,
+      "maxUsd": 2.2956841138659323,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://sites.google.com/view/samaybajirestaurant/"
+      ],
+      "rowIds": [
+        "bandipur-inexp-meal-samay-baji-veg-set"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "oaxaca",
+      "measure": "coffee",
+      "category": "drinks",
+      "usd": 2.7271043163714013,
+      "minUsd": 2.7271043163714013,
+      "maxUsd": 2.7271043163714013,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://casonaoaxaca.mx/menu/"
+      ],
+      "rowIds": [
+        "oaxaca-cappuccino-casona"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "oaxaca",
+      "measure": "inexp_meal_1p",
+      "category": "food",
+      "usd": 8.999444244025625,
+      "minUsd": 8.999444244025625,
+      "maxUsd": 8.999444244025625,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://casonaoaxaca.mx/menu/"
+      ],
+      "rowIds": [
+        "oaxaca-meal-casona-cazuela"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "bled",
+      "measure": "coffee",
+      "category": "drinks",
+      "usd": 3.3514684641309582,
+      "minUsd": 3.3514684641309582,
+      "maxUsd": 3.3514684641309582,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://www.restavracija-sova.com/en/menu/"
+      ],
+      "rowIds": [
+        "coffee-cappuccino"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "bled",
+      "measure": "beer",
+      "category": "drinks",
+      "usd": 5.027202696196437,
+      "minUsd": 5.027202696196437,
+      "maxUsd": 5.027202696196437,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://www.restavracija-sova.com/en/menu/"
+      ],
+      "rowIds": [
+        "beer-draft-05l"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "bled",
+      "measure": "inexp_meal_1p",
+      "category": "food",
+      "usd": 18.433076552720273,
+      "minUsd": 18.433076552720273,
+      "maxUsd": 18.433076552720273,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://www.restavracija-sova.com/en/menu/"
+      ],
+      "rowIds": [
+        "inexp-meal-main"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "bled",
+      "measure": "midrange_meal_2p",
+      "category": "food",
+      "usd": 69.933975284866,
+      "minUsd": 69.933975284866,
+      "maxUsd": 69.933975284866,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://www.restavracija-sova.com/en/menu/"
+      ],
+      "rowIds": [
+        "midrange-menu-three-course"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "bled",
+      "measure": "ordinary_admission_1p",
+      "category": "activities",
+      "usd": 13.405873856523833,
+      "minUsd": 13.405873856523833,
+      "maxUsd": 13.405873856523833,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://www.bled.si/en/what-to-see-do/attractions/2/1/"
+      ],
+      "rowIds": [
+        "ordinary-admission-bled-island"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "copenhagen",
+      "measure": "coffee",
+      "category": "drinks",
+      "usd": 7.782644174815727,
+      "minUsd": 7.782644174815727,
+      "maxUsd": 7.782644174815727,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://kopenhag.dk/en/menu-2/"
+      ],
+      "rowIds": [
+        "coffee-cappuccino"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "copenhagen",
+      "measure": "beer",
+      "category": "drinks",
+      "usd": 11.823632496354662,
+      "minUsd": 11.823632496354662,
+      "maxUsd": 11.823632496354662,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://kopenhag.dk/en/menu-2/"
+      ],
+      "rowIds": [
+        "beer-draft-05l"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "copenhagen",
+      "measure": "inexp_meal_1p",
+      "category": "food",
+      "usd": 20.80360654421896,
+      "minUsd": 20.80360654421896,
+      "maxUsd": 20.80360654421896,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://kopenhag.dk/en/menu-2/"
+      ],
+      "rowIds": [
+        "inexp-meal-main"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "oaxaca",
+      "measure": "cocktail",
+      "category": "drinks",
+      "usd": 6.545050359291363,
+      "minUsd": 6.545050359291363,
+      "maxUsd": 6.545050359291363,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://casonaoaxaca.mx/menu/"
+      ],
+      "rowIds": [
+        "oaxaca-cocktail-casona"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "bled",
+      "measure": "cocktail",
+      "category": "drinks",
+      "usd": 7.596661852030172,
+      "minUsd": 7.596661852030172,
+      "maxUsd": 7.596661852030172,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://www.restavracija-sova.com/en/menu/"
+      ],
+      "rowIds": [
+        "bled-cocktail-sova"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "copenhagen",
+      "measure": "wine_glass",
+      "category": "drinks",
+      "usd": 13.320294837665378,
+      "minUsd": 13.320294837665378,
+      "maxUsd": 13.320294837665378,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://kopenhag.dk/en/menu-2/"
+      ],
+      "rowIds": [
+        "copenhagen-wine-kopenhag"
+      ],
+      "thin": true
+    },
+    {
+      "cityId": "bandipur",
+      "measure": "cocktail",
+      "category": "drinks",
+      "usd": 2.6236389872753514,
+      "minUsd": 2.6236389872753514,
+      "maxUsd": 2.6236389872753514,
+      "venues": 1,
+      "observations": 1,
+      "sourceUrls": [
+        "https://sites.google.com/view/samaybajirestaurant/"
+      ],
+      "rowIds": [
+        "bandipur-cocktail-samay-baji"
+      ],
+      "thin": true
+    }
+  ],
+  "scores": [
+    {
+      "primaryLoss": 0.3979154954318823,
+      "cityLosses": {
+        "bandipur": 0.7514879766339344,
+        "oaxaca": 0.5596272597441991,
+        "bled": 0.11167258478706858,
+        "copenhagen": 0.1688741605623272
+      },
+      "expectedCells": 45,
+      "failedCells": 3,
+      "successfulOnlyMedianAPE": 0.18899285141113753,
+      "successfulOnlyP90APE": 0.9166399999999991,
+      "successfulOnlyMedianLogBias": 0.039441531036842455,
+      "penaltyRatio": 4
+    },
+    {
+      "primaryLoss": 0.3401532303852202,
+      "cityLosses": {
+        "bandipur": 0.7514879766339344,
+        "oaxaca": 0.3285781995575507,
+        "bled": 0.11167258478706858,
+        "copenhagen": 0.1688741605623272
+      },
+      "expectedCells": 45,
+      "failedCells": 3,
+      "successfulOnlyMedianAPE": 0.18899285141113753,
+      "successfulOnlyP90APE": 0.9166399999999991,
+      "successfulOnlyMedianLogBias": 0.039441531036842455,
+      "penaltyRatio": 2
+    },
+    {
+      "primaryLoss": 0.4742730564213952,
+      "cityLosses": {
+        "bandipur": 0.7514879766339344,
+        "oaxaca": 0.8650575037022508,
+        "bled": 0.11167258478706858,
+        "copenhagen": 0.1688741605623272
+      },
+      "expectedCells": 45,
+      "failedCells": 3,
+      "successfulOnlyMedianAPE": 0.18899285141113753,
+      "successfulOnlyP90APE": 0.9166399999999991,
+      "successfulOnlyMedianLogBias": 0.039441531036842455,
+      "penaltyRatio": 10
+    }
+  ],
+  "categories": {
+    "food": {
+      "primaryLoss": 0.3429055641719089,
+      "cityLosses": {
+        "bandipur": 0.624395204645249,
+        "oaxaca": 0.4621392887536104,
+        "bled": 0.11494563315301075,
+        "copenhagen": 0.17014213013576543
+      },
+      "expectedCells": 15,
+      "failedCells": 1,
+      "successfulOnlyMedianAPE": 0.16994578338089972,
+      "successfulOnlyP90APE": 0.8295200000000003,
+      "successfulOnlyMedianLogBias": 0.02911453228555803,
+      "penaltyRatio": 4
+    },
+    "drinks": {
+      "primaryLoss": 0.4669162343421365,
+      "cityLosses": {
+        "bandipur": 0.8785807486226199,
+        "oaxaca": 0.6571152307347878,
+        "bled": 0.16436276702224928,
+        "copenhagen": 0.167606190988889
+      },
+      "expectedCells": 27,
+      "failedCells": 2,
+      "successfulOnlyMedianAPE": 0.20117461324934816,
+      "successfulOnlyP90APE": 0.9527314074603751,
+      "successfulOnlyMedianLogBias": 0.09893422235762452,
+      "penaltyRatio": 4
+    },
+    "activities": {
+      "primaryLoss": 0.055709354185945685,
+      "cityLosses": {
+        "bled": 0.055709354185945685
+      },
+      "expectedCells": 3,
+      "failedCells": 0,
+      "successfulOnlyMedianAPE": 0.06757290619163914,
+      "successfulOnlyP90APE": 0.08249173969257295,
+      "successfulOnlyMedianLogBias": -0.06996431410418935,
+      "penaltyRatio": 4
+    }
+  },
+  "anchorDiagnostics": {
+    "primaryLoss": 0.3979154954318823,
+    "cityLosses": {
+      "bandipur": 0.7514879766339344,
+      "oaxaca": 0.5596272597441991,
+      "bled": 0.11167258478706858,
+      "copenhagen": 0.1688741605623272
+    },
+    "expectedCells": 45,
+    "failedCells": 3,
+    "successfulOnlyMedianAPE": 0.18899285141113753,
+    "successfulOnlyP90APE": 0.9166399999999991,
+    "successfulOnlyMedianLogBias": 0.039441531036842455,
+    "penaltyRatio": 4
+  },
+  "successfulOnlyMeanAPE": 0.3024074555662007,
+  "successfulOnlyMeanAbsoluteAudErrorPerMeasure": 2.883609106488294,
+  "successfulOnlyUnderestimateFraction": 0.38095238095238093,
+  "repeatDispersion": [
+    {
+      "cityId": "hanoi",
+      "successfulRepeats": 3,
+      "anchors": {
+        "beer": {
+          "min": 1.25,
+          "max": 1.8,
+          "mean": 1.5166666666666666,
+          "populationCV": 0.14824986333222026
+        },
+        "coffee": {
+          "min": 2.2,
+          "max": 2.8,
+          "mean": 2.4166666666666665,
+          "populationCV": 0.11247935469172472
+        },
+        "inexp_meal_1p": {
+          "min": 3.5,
+          "max": 4,
+          "mean": 3.8333333333333335,
+          "populationCV": 0.061487546190134565
+        },
+        "midrange_meal_2p": {
+          "min": 28,
+          "max": 34,
+          "mean": 31.333333333333332,
+          "populationCV": 0.07960973163348811
+        },
+        "cocktail": {
+          "min": 6.5,
+          "max": 8,
+          "mean": 7.333333333333333,
+          "populationCV": 0.08503766788122594
+        },
+        "wine_glass": {
+          "min": 5,
+          "max": 7,
+          "mean": 6.166666666666667,
+          "populationCV": 0.1378113382052104
+        },
+        "hostel_dorm_1p": {
+          "min": 9,
+          "max": 10.5,
+          "mean": 9.833333333333334,
+          "populationCV": 0.06341792180972781
+        },
+        "hostel_private_2p": {
+          "min": 26,
+          "max": 35,
+          "mean": 31.666666666666668,
+          "populationCV": 0.12718995761678498
+        },
+        "hotel_1star_2p": {
+          "min": 24,
+          "max": 28,
+          "mean": 25.666666666666668,
+          "populationCV": 0.06622103264406214
+        },
+        "hotel_3star_2p": {
+          "min": 52,
+          "max": 60,
+          "mean": 56.666666666666664,
+          "populationCV": 0.059988464865797474
+        }
+      }
+    },
+    {
+      "cityId": "bandipur",
+      "successfulRepeats": 3,
+      "anchors": {
+        "beer": {
+          "min": 3,
+          "max": 4,
+          "mean": 3.4,
+          "populationCV": 0.1270733470276051
+        },
+        "coffee": {
+          "min": 2.25,
+          "max": 2.5,
+          "mean": 2.3333333333333335,
+          "populationCV": 0.050507627227610534
+        },
+        "inexp_meal_1p": {
+          "min": 3.5,
+          "max": 5,
+          "mean": 4.333333333333333,
+          "populationCV": 0.14390989949130545
+        },
+        "midrange_meal_2p": {
+          "min": 22,
+          "max": 26,
+          "mean": 23.333333333333332,
+          "populationCV": 0.08081220356417686
+        },
+        "cocktail": {
+          "min": 6,
+          "max": 7,
+          "mean": 6.333333333333333,
+          "populationCV": 0.0744322927564787
+        },
+        "wine_glass": {
+          "min": 5,
+          "max": 6.5,
+          "mean": 5.666666666666667,
+          "populationCV": 0.1100487466698218
+        },
+        "hostel_dorm_1p": {
+          "min": 8,
+          "max": 10,
+          "mean": 9,
+          "populationCV": 0.09072184232530289
+        },
+        "hostel_private_2p": {
+          "min": 22,
+          "max": 25,
+          "mean": 23.666666666666668,
+          "populationCV": 0.052699399813717476
+        },
+        "hotel_1star_2p": {
+          "min": 22,
+          "max": 28,
+          "mean": 25,
+          "populationCV": 0.09797958971132711
+        },
+        "hotel_3star_2p": {
+          "min": 58,
+          "max": 65,
+          "mean": 62.666666666666664,
+          "populationCV": 0.05265688796070035
+        }
+      }
+    },
+    {
+      "cityId": "oaxaca",
+      "successfulRepeats": 2,
+      "anchors": {
+        "beer": {
+          "min": 2.5,
+          "max": 3,
+          "mean": 2.75,
+          "populationCV": 0.09090909090909091
+        },
+        "coffee": {
+          "min": 3.25,
+          "max": 3.5,
+          "mean": 3.375,
+          "populationCV": 0.037037037037037035
+        },
+        "inexp_meal_1p": {
+          "min": 9,
+          "max": 9,
+          "mean": 9,
+          "populationCV": 0
+        },
+        "midrange_meal_2p": {
+          "min": 48,
+          "max": 50,
+          "mean": 49,
+          "populationCV": 0.02040816326530612
+        },
+        "cocktail": {
+          "min": 9.5,
+          "max": 9.5,
+          "mean": 9.5,
+          "populationCV": 0
+        },
+        "wine_glass": {
+          "min": 8,
+          "max": 9,
+          "mean": 8.5,
+          "populationCV": 0.058823529411764705
+        },
+        "hostel_dorm_1p": {
+          "min": 16,
+          "max": 18,
+          "mean": 17,
+          "populationCV": 0.058823529411764705
+        },
+        "hostel_private_2p": {
+          "min": 52,
+          "max": 52,
+          "mean": 52,
+          "populationCV": 0
+        },
+        "hotel_1star_2p": {
+          "min": 45,
+          "max": 60,
+          "mean": 52.5,
+          "populationCV": 0.14285714285714285
+        },
+        "hotel_3star_2p": {
+          "min": 95,
+          "max": 115,
+          "mean": 105,
+          "populationCV": 0.09523809523809523
+        }
+      }
+    },
+    {
+      "cityId": "bled",
+      "successfulRepeats": 3,
+      "anchors": {
+        "beer": {
+          "min": 4,
+          "max": 5.5,
+          "mean": 4.833333333333333,
+          "populationCV": 0.12902266850944624
+        },
+        "coffee": {
+          "min": 3.2,
+          "max": 3.7,
+          "mean": 3.366666666666667,
+          "populationCV": 0.07001057239470766
+        },
+        "inexp_meal_1p": {
+          "min": 14.5,
+          "max": 17,
+          "mean": 15.5,
+          "populationCV": 0.06968538385384797
+        },
+        "midrange_meal_2p": {
+          "min": 63,
+          "max": 72,
+          "mean": 69,
+          "populationCV": 0.061487546190134565
+        },
+        "cocktail": {
+          "min": 9.5,
+          "max": 11,
+          "mean": 10.5,
+          "populationCV": 0.06734350297014739
+        },
+        "wine_glass": {
+          "min": 5.5,
+          "max": 7,
+          "mean": 6.333333333333333,
+          "populationCV": 0.09846466807299846
+        },
+        "hostel_dorm_1p": {
+          "min": 30,
+          "max": 36,
+          "mean": 33.666666666666664,
+          "populationCV": 0.07796047400011694
+        },
+        "hostel_private_2p": {
+          "min": 70,
+          "max": 85,
+          "mean": 79,
+          "populationCV": 0.08203469238490962
+        },
+        "hotel_1star_2p": {
+          "min": 90,
+          "max": 115,
+          "mean": 100,
+          "populationCV": 0.10801234497346433
+        },
+        "hotel_3star_2p": {
+          "min": 130,
+          "max": 165,
+          "mean": 146.66666666666666,
+          "populationCV": 0.09775369621639349
+        }
+      }
+    },
+    {
+      "cityId": "kyoto",
+      "successfulRepeats": 3,
+      "anchors": {
+        "beer": {
+          "min": 4.25,
+          "max": 5,
+          "mean": 4.6499999999999995,
+          "populationCV": 0.06628402153730083
+        },
+        "coffee": {
+          "min": 3.5,
+          "max": 4,
+          "mean": 3.75,
+          "populationCV": 0.05443310539518174
+        },
+        "inexp_meal_1p": {
+          "min": 8.7,
+          "max": 11,
+          "mean": 9.566666666666666,
+          "populationCV": 0.1067135388927774
+        },
+        "midrange_meal_2p": {
+          "min": 62,
+          "max": 75,
+          "mean": 70.66666666666667,
+          "populationCV": 0.08672064297570867
+        },
+        "cocktail": {
+          "min": 8.5,
+          "max": 9.5,
+          "mean": 8.9,
+          "populationCV": 0.04854487414537724
+        },
+        "wine_glass": {
+          "min": 6.5,
+          "max": 7.5,
+          "mean": 7.1000000000000005,
+          "populationCV": 0.060852025337163
+        },
+        "hostel_dorm_1p": {
+          "min": 34,
+          "max": 38,
+          "mean": 36,
+          "populationCV": 0.045360921162651446
+        },
+        "hostel_private_2p": {
+          "min": 76,
+          "max": 96,
+          "mean": 85.66666666666667,
+          "populationCV": 0.09546960425202566
+        },
+        "hotel_1star_2p": {
+          "min": 105,
+          "max": 110,
+          "mean": 106.66666666666667,
+          "populationCV": 0.022097086912079605
+        },
+        "hotel_3star_2p": {
+          "min": 225,
+          "max": 240,
+          "mean": 231.66666666666666,
+          "populationCV": 0.02691839846599958
+        }
+      }
+    },
+    {
+      "cityId": "copenhagen",
+      "successfulRepeats": 3,
+      "anchors": {
+        "beer": {
+          "min": 9,
+          "max": 10.5,
+          "mean": 9.666666666666666,
+          "populationCV": 0.06451133425472312
+        },
+        "coffee": {
+          "min": 6,
+          "max": 7,
+          "mean": 6.5,
+          "populationCV": 0.06280742930213278
+        },
+        "inexp_meal_1p": {
+          "min": 24,
+          "max": 25,
+          "mean": 24.666666666666668,
+          "populationCV": 0.019110994086122907
+        },
+        "midrange_meal_2p": {
+          "min": 125,
+          "max": 135,
+          "mean": 130,
+          "populationCV": 0.03140371465106639
+        },
+        "cocktail": {
+          "min": 18,
+          "max": 18,
+          "mean": 18,
+          "populationCV": 0
+        },
+        "wine_glass": {
+          "min": 14,
+          "max": 16,
+          "mean": 15,
+          "populationCV": 0.05443310539518174
+        },
+        "hostel_dorm_1p": {
+          "min": 40,
+          "max": 52,
+          "mean": 46.666666666666664,
+          "populationCV": 0.10690449676496976
+        },
+        "hostel_private_2p": {
+          "min": 115,
+          "max": 150,
+          "mean": 133.33333333333334,
+          "populationCV": 0.10752906583803283
+        },
+        "hotel_1star_2p": {
+          "min": 145,
+          "max": 175,
+          "mean": 163.33333333333334,
+          "populationCV": 0.08034701912256949
+        },
+        "hotel_3star_2p": {
+          "min": 210,
+          "max": 270,
+          "mean": 236.66666666666666,
+          "populationCV": 0.10539879962743498
+        }
+      }
+    }
+  ],
+  "independentReview": {
+    "originalAcceptedRows": 13,
+    "reviewedOriginalAcceptedRows": 10,
+    "supplementaryRows": 4,
+    "note": "Original acceptance count before review overrides; supplementary observations were recorded during review, not independently re-reviewed."
+  },
+  "resources": {
+    "estimationInvocations": 19,
+    "predictionAttempts": 18,
+    "artifactRecoveryCalls": 1,
+    "referenceWorkerInvocations": 3,
+    "referenceCollectionActions": 36,
+    "referenceReviewActions": 4,
+    "normalizationActions": 3,
+    "referenceActions": 43,
+    "designPreparationInvocations": 1,
+    "paidApiCalls": 0,
+    "unknownTelemetryRuns": 1,
+    "knownReportedSearches": 21,
+    "perRun": [
+      {
+        "runId": "hanoi-luna-r1",
+        "status": "valid",
+        "elapsedSeconds": 72,
+        "reportedSearches": 1,
+        "reportedRetrievals": 1,
+        "recordedActions": 2,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "hanoi-luna-r2",
+        "status": "valid",
+        "elapsedSeconds": 84,
+        "reportedSearches": 1,
+        "reportedRetrievals": 1,
+        "recordedActions": 2,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "hanoi-luna-r3",
+        "status": "valid",
+        "elapsedSeconds": 21,
+        "reportedSearches": 2,
+        "reportedRetrievals": 1,
+        "recordedActions": 3,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "bandipur-luna-r1",
+        "status": "valid",
+        "elapsedSeconds": 34.686,
+        "reportedSearches": 1,
+        "reportedRetrievals": 1,
+        "recordedActions": 2,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "bandipur-luna-r2",
+        "status": "valid",
+        "elapsedSeconds": null,
+        "reportedSearches": 1,
+        "reportedRetrievals": 0,
+        "recordedActions": 1,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "bandipur-luna-r3",
+        "status": "valid",
+        "elapsedSeconds": 8,
+        "reportedSearches": 1,
+        "reportedRetrievals": 0,
+        "recordedActions": 1,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "oaxaca-luna-r1",
+        "status": "invalid",
+        "elapsedSeconds": null,
+        "reportedSearches": null,
+        "reportedRetrievals": null,
+        "recordedActions": 0,
+        "tokenUsage": null,
+        "fxDate": null,
+        "fxLatestObservationVerified": false
+      },
+      {
+        "runId": "oaxaca-luna-r2",
+        "status": "valid",
+        "elapsedSeconds": 111,
+        "reportedSearches": 2,
+        "reportedRetrievals": 1,
+        "recordedActions": 3,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "oaxaca-luna-r3",
+        "status": "valid",
+        "elapsedSeconds": 35,
+        "reportedSearches": 1,
+        "reportedRetrievals": 0,
+        "recordedActions": 1,
+        "tokenUsage": null,
+        "fxDate": "2026-10-12",
+        "fxLatestObservationVerified": false
+      },
+      {
+        "runId": "bled-luna-r1",
+        "status": "valid",
+        "elapsedSeconds": 71,
+        "reportedSearches": 1,
+        "reportedRetrievals": 1,
+        "recordedActions": 2,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "bled-luna-r2",
+        "status": "valid",
+        "elapsedSeconds": 10,
+        "reportedSearches": 2,
+        "reportedRetrievals": 1,
+        "recordedActions": 3,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "bled-luna-r3",
+        "status": "valid",
+        "elapsedSeconds": 18,
+        "reportedSearches": 1,
+        "reportedRetrievals": 1,
+        "recordedActions": 2,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "kyoto-luna-r1",
+        "status": "valid",
+        "elapsedSeconds": 45,
+        "reportedSearches": 2,
+        "reportedRetrievals": 1,
+        "recordedActions": 3,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "kyoto-luna-r2",
+        "status": "valid",
+        "elapsedSeconds": 18,
+        "reportedSearches": 1,
+        "reportedRetrievals": 1,
+        "recordedActions": 2,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "kyoto-luna-r3",
+        "status": "valid",
+        "elapsedSeconds": 16,
+        "reportedSearches": 0,
+        "reportedRetrievals": 1,
+        "recordedActions": 1,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "copenhagen-luna-r1",
+        "status": "valid",
+        "elapsedSeconds": 11,
+        "reportedSearches": 1,
+        "reportedRetrievals": 2,
+        "recordedActions": 3,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "copenhagen-luna-r2",
+        "status": "valid",
+        "elapsedSeconds": 107,
+        "reportedSearches": 2,
+        "reportedRetrievals": 1,
+        "recordedActions": 3,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      },
+      {
+        "runId": "copenhagen-luna-r3",
+        "status": "valid",
+        "elapsedSeconds": 41,
+        "reportedSearches": 1,
+        "reportedRetrievals": 1,
+        "recordedActions": 2,
+        "tokenUsage": null,
+        "fxDate": "2026-10-13",
+        "fxLatestObservationVerified": true
+      }
+    ]
+  },
+  "cells": [
+    {
+      "city": "bandipur",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "bandipur-luna-r1",
+      "reference": 2.2956841138659323,
+      "prediction": 4.5,
+      "valid": true
+    },
+    {
+      "city": "bandipur",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "bandipur-luna-r1",
+      "reference": 2.6236389872753514,
+      "prediction": 6,
+      "valid": true
+    },
+    {
+      "city": "bandipur",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "bandipur-luna-r2",
+      "reference": 2.2956841138659323,
+      "prediction": 3.5,
+      "valid": true
+    },
+    {
+      "city": "bandipur",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "bandipur-luna-r2",
+      "reference": 2.6236389872753514,
+      "prediction": 6,
+      "valid": true
+    },
+    {
+      "city": "bandipur",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "bandipur-luna-r3",
+      "reference": 2.2956841138659323,
+      "prediction": 5,
+      "valid": true
+    },
+    {
+      "city": "bandipur",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "bandipur-luna-r3",
+      "reference": 2.6236389872753514,
+      "prediction": 7,
+      "valid": true
+    },
+    {
+      "city": "oaxaca",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "oaxaca-luna-r1",
+      "reference": 2.7271043163714013,
+      "prediction": null,
+      "valid": false
+    },
+    {
+      "city": "oaxaca",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "oaxaca-luna-r1",
+      "reference": 8.999444244025625,
+      "prediction": null,
+      "valid": false
+    },
+    {
+      "city": "oaxaca",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "oaxaca-luna-r1",
+      "reference": 6.545050359291363,
+      "prediction": null,
+      "valid": false
+    },
+    {
+      "city": "oaxaca",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "oaxaca-luna-r2",
+      "reference": 2.7271043163714013,
+      "prediction": 3.25,
+      "valid": true
+    },
+    {
+      "city": "oaxaca",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "oaxaca-luna-r2",
+      "reference": 8.999444244025625,
+      "prediction": 9,
+      "valid": true
+    },
+    {
+      "city": "oaxaca",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "oaxaca-luna-r2",
+      "reference": 6.545050359291363,
+      "prediction": 9.5,
+      "valid": true
+    },
+    {
+      "city": "oaxaca",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "oaxaca-luna-r3",
+      "reference": 2.7271043163714013,
+      "prediction": 3.5,
+      "valid": true
+    },
+    {
+      "city": "oaxaca",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "oaxaca-luna-r3",
+      "reference": 8.999444244025625,
+      "prediction": 9,
+      "valid": true
+    },
+    {
+      "city": "oaxaca",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "oaxaca-luna-r3",
+      "reference": 6.545050359291363,
+      "prediction": 9.5,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "bled-luna-r1",
+      "reference": 3.3514684641309582,
+      "prediction": 3.2,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "beer",
+      "run": "bled-luna-r1",
+      "reference": 5.027202696196437,
+      "prediction": 4,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "bled-luna-r1",
+      "reference": 18.433076552720273,
+      "prediction": 15,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "food",
+      "measure": "midrange_meal_2p",
+      "run": "bled-luna-r1",
+      "reference": 69.933975284866,
+      "prediction": 63,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "activities",
+      "measure": "ordinary_admission_1p",
+      "run": "bled-luna-r1",
+      "reference": 13.405873856523833,
+      "prediction": 12.5,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "bled-luna-r1",
+      "reference": 7.596661852030172,
+      "prediction": 9.5,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "bled-luna-r2",
+      "reference": 3.3514684641309582,
+      "prediction": 3.2,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "beer",
+      "run": "bled-luna-r2",
+      "reference": 5.027202696196437,
+      "prediction": 5.5,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "bled-luna-r2",
+      "reference": 18.433076552720273,
+      "prediction": 14.5,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "food",
+      "measure": "midrange_meal_2p",
+      "run": "bled-luna-r2",
+      "reference": 69.933975284866,
+      "prediction": 72,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "activities",
+      "measure": "ordinary_admission_1p",
+      "run": "bled-luna-r2",
+      "reference": 13.405873856523833,
+      "prediction": 12.25,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "bled-luna-r2",
+      "reference": 7.596661852030172,
+      "prediction": 11,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "bled-luna-r3",
+      "reference": 3.3514684641309582,
+      "prediction": 3.7,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "beer",
+      "run": "bled-luna-r3",
+      "reference": 5.027202696196437,
+      "prediction": 5,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "bled-luna-r3",
+      "reference": 18.433076552720273,
+      "prediction": 17,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "food",
+      "measure": "midrange_meal_2p",
+      "run": "bled-luna-r3",
+      "reference": 69.933975284866,
+      "prediction": 72,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "activities",
+      "measure": "ordinary_admission_1p",
+      "run": "bled-luna-r3",
+      "reference": 13.405873856523833,
+      "prediction": 13.5,
+      "valid": true
+    },
+    {
+      "city": "bled",
+      "category": "drinks",
+      "measure": "cocktail",
+      "run": "bled-luna-r3",
+      "reference": 7.596661852030172,
+      "prediction": 11,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "copenhagen-luna-r1",
+      "reference": 7.782644174815727,
+      "prediction": 6.5,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "beer",
+      "run": "copenhagen-luna-r1",
+      "reference": 11.823632496354662,
+      "prediction": 9,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "copenhagen-luna-r1",
+      "reference": 20.80360654421896,
+      "prediction": 24,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "wine_glass",
+      "run": "copenhagen-luna-r1",
+      "reference": 13.320294837665378,
+      "prediction": 14,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "copenhagen-luna-r2",
+      "reference": 7.782644174815727,
+      "prediction": 6,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "beer",
+      "run": "copenhagen-luna-r2",
+      "reference": 11.823632496354662,
+      "prediction": 10.5,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "copenhagen-luna-r2",
+      "reference": 20.80360654421896,
+      "prediction": 25,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "wine_glass",
+      "run": "copenhagen-luna-r2",
+      "reference": 13.320294837665378,
+      "prediction": 15,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "coffee",
+      "run": "copenhagen-luna-r3",
+      "reference": 7.782644174815727,
+      "prediction": 7,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "beer",
+      "run": "copenhagen-luna-r3",
+      "reference": 11.823632496354662,
+      "prediction": 9.5,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "food",
+      "measure": "inexp_meal_1p",
+      "run": "copenhagen-luna-r3",
+      "reference": 20.80360654421896,
+      "prediction": 25,
+      "valid": true
+    },
+    {
+      "city": "copenhagen",
+      "category": "drinks",
+      "measure": "wine_glass",
+      "run": "copenhagen-luna-r3",
+      "reference": 13.320294837665378,
+      "prediction": 16,
+      "valid": true
+    }
+  ],
+  "hashes": {
+    "manifest": "8f91e3b753beff4f8b73e4b7abb70fa07340a9741ef9b759b00d7792e6583851",
+    "fx": "f1853c9186b39566be973f1b7efb5f9fa8b086065ee49040cfcd97f263445574"
+  }
+}

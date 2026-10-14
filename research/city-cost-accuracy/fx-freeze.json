@@ -1,0 +1,16 @@
+{
+  "frozenBeforeNumericScoring": true,
+  "retrievedDateUtc": "2026-10-13",
+  "observations": {
+    "rba": {"sourceUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html", "date": "2026-10-13", "basis": "foreign currency per AUD", "USD": 0.6961, "EUR": 0.6231, "JPY": 110.17, "VND": 18037},
+    "ecb": {"sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", "date": "2026-10-13", "basis": "foreign currency per EUR", "USD": 1.1188, "AUD": 1.6033, "JPY": 176.91, "DKK": 7.4753, "MXN": 20.5126},
+    "nrb": {"sourceUrl": "https://www.nrb.org.np/forex/", "date": "2026-10-14", "basis": "NPR per USD", "buy": 152.16, "sell": 152.76, "note": "Displayed local Nepal date is already October14 at retrieval on October13 UTC. Use midpoint only for benchmark normalization, not a claim of retail transaction rates."}
+  },
+  "conversionPolicy": "Fixed AUD per USD = 1/RBA USD. EUR/JPY/VND USD crossrates use same RBA table. DKK/MXN USD crossrates use the ECB table. NPR USD uses the NRB buy/sell midpoint. Freeze all observations independently of estimate returns; no model-supplied FX controls anchor accuracy scores. FX source validity/correctness assessed separately.",
+  "actions": [
+    {"kind": "open", "queryOrUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", "outcome": "Dated October13 USD/AUD/JPY/DKK/MXN per EUR table read."},
+    {"kind": "open", "queryOrUrl": "https://www.nrb.org.np/forex/", "outcome": "Displayed October14 local-date USD buy/sell rates read."},
+    {"kind": "open", "queryOrUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html", "outcome": "October9/12/13 table read; latest USD per AUD0.6961 verified independently."}
+  ],
+  "resourceNote": "These three campaign normalization/FX-verification actions are outside the completed40-action pilot collection/review allocation and inside the cumulative300 reference-action cap. They retrieve no additional venue prices. Total reference actions at this freeze43."
+}

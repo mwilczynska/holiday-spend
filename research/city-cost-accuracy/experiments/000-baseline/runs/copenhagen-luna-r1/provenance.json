@@ -1,0 +1,29 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "a8bc5c8e468209a18d511035cd67f942dcd555aca175ec49e728170653df4165",
+  "startedAt": "2026-10-13T23:46:37Z",
+  "finishedAt": "2026-10-13T23:46:48Z",
+  "actions": [
+    {
+      "kind": "web_search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html USD AUD exchange rates latest October 2026",
+      "outcome": "Official RBA search result showed observations through 13 Oct 2026 and USD 0.6961 for that date."
+    },
+    {
+      "kind": "page_read",
+      "queryOrUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-12-21-13-16-31",
+      "outcome": "This opened page showed data only through 9 Oct 2026, so it was stale."
+    },
+    {
+      "kind": "page_read",
+      "queryOrUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+      "outcome": "The current official RBA page showed units of foreign currencies per Australian dollar and USD 0.6961 for 13 Oct 2026."
+    }
+  ],
+  "searchCount": 1,
+  "retrievalCount": 2,
+  "tokenUsage": null,
+  "notes": "City anchors used learned general knowledge only; no web search sourced them. Model and effort are coordinator-selected settings and were not independently attested. The stale versioned RBA page was not used for the FX value."
+}

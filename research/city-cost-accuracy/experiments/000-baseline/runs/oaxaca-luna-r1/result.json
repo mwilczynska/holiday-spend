@@ -1,0 +1,23 @@
+{
+  "runId": "oaxaca-luna-r1",
+  "status": "invalid",
+  "error": "[\n  {\n    \"code\": \"invalid_value\",\n    \"values\": [\n      \"SEA\",\n      \"East Asia\",\n      \"South Asia\",\n      \"Middle East\",\n      \"Africa\",\n      \"Europe\",\n      \"Latin America\",\n      \"North America\",\n      \"Oceania\"\n    ],\n    \"path\": [\n      \"region\"\n    ],\n    \"message\": \"Invalid option: expected one of \\\"SEA\\\"|\\\"East Asia\\\"|\\\"South Asia\\\"|\\\"Middle East\\\"|\\\"Africa\\\"|\\\"Europe\\\"|\\\"Latin America\\\"|\\\"North America\\\"|\\\"Oceania\\\"\"\n  },\n  {\n    \"code\": \"invalid_value\",\n    \"values\": [\n      \"low\",\n      \"medium\",\n      \"high\"\n    ],\n    \"path\": [\n      \"confidence\"\n    ],\n    \"message\": \"Invalid option: expected one of \\\"low\\\"|\\\"medium\\\"|\\\"high\\\"\"\n  },\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"confidence_notes\"\n    ],\n    \"message\": \"Invalid input: expected string, received undefined\"\n  },\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"comparable_city_reasoning\"\n    ],\n    \"message\": \"Invalid input: expected string, received undefined\"\n  },\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"fx\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  },\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"anchors_usd\"\n    ],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  },\n  {\n    \"code\": \"unrecognized_keys\",\n    \"keys\": [\n      \"failure\"\n    ],\n    \"path\": [],\n    \"message\": \"Unrecognized key: \\\"failure\\\"\"\n  }\n]",
+  "responseSha256": "4d9dd7562b6dd24910c2b732f622e855b75dee51bc5a1acd69f7f17fbb1b45ad",
+  "promptSha256": "4bb87ea7b09b7272a59220f90cc0eb0f9877fd683b9c0fcba73fd71b664318dd",
+  "materialized": null,
+  "diagnosticAnchors": null,
+  "diagnosticNote": "Anchor-only diagnostics never count as a successful app response when FX/schema fails.",
+  "provenance": {
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "runtime": "Codex subagent",
+    "promptSha256": "4bb87ea7b09b7272a59220f90cc0eb0f9877fd683b9c0fcba73fd71b664318dd",
+    "startedAt": "2026-10-13T19:21:58.500Z",
+    "finishedAt": null,
+    "actions": [],
+    "searchCount": null,
+    "retrievalCount": null,
+    "tokenUsage": null,
+    "notes": "Coordinator failure record. collaboration.list_agents reports the subagent errored because the account hit its usage limit. No response/provenance artifacts existed. Web activity and exact failure time are unavailable, not asserted zero. Count this invocation and preserve the failed run; no replacement numeric estimate."
+  }
+}

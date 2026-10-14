@@ -1,0 +1,24 @@
+{
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "runtime": "Codex subagent",
+  "promptSha256": "9491b4f4b1a92a3234fd724ffc6ff20427eb6b3d2faf3613444c0cb05c31f6d8",
+  "startedAt": "2026-10-13T19:21:11Z",
+  "finishedAt": "2026-10-13T19:22:23Z",
+  "actions": [
+    {
+      "kind": "search",
+      "queryOrUrl": "site:rba.gov.au/statistics/frequency/exchange-rates.html USD AUD daily exchange rates October 2026",
+      "outcome": "Official RBA search result indicated the latest table included 13 Oct 2026; no city-price searches were made."
+    },
+    {
+      "kind": "open",
+      "queryOrUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+      "outcome": "The RBA table showed 13 Oct 2026, United States dollar 0.6961, under units of foreign currencies per Australian dollar."
+    }
+  ],
+  "searchCount": 1,
+  "retrievalCount": 1,
+  "tokenUsage": null,
+  "notes": "City anchors are holistic estimates from general knowledge as instructed; no live listings were inspected. No conversion or derived tiers were returned. The recorded startedAt is the first clock reading available during this run, after the initial file read and RBA retrieval; the tools did not expose a turn-start timestamp."
+}

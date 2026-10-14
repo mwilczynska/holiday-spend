@@ -1,0 +1,16 @@
+{
+  "reviewer": "coordinator; separate from collection agent",
+  "retrievedDate": "2026-10-13",
+  "actions": [{"index": 1, "kind": "open", "queryOrUrl": "https://kopenhag.dk/en/menu-2/", "outcome": "Three accepted menu amounts confirmed; additional glass of house wine visible."}],
+  "reviewedRows": [
+    {"cityId": "copenhagen", "id": "coffee-cappuccino", "verdict": "confirmed"},
+    {"cityId": "copenhagen", "id": "beer-draft-05l", "verdict": "confirmed_with_scope_limit", "note": "DKK 79 is a large 0.5 L serving; the menu also offers medium 0.4 L at DKK 69. Large is not proved the city's standard serving."},
+    {"cityId": "copenhagen", "id": "inexp-meal-main", "verdict": "confirmed_with_scope_limit", "note": "Pizza price matches. Menu also offers cheaper sandwiches; this is one defined meal offer."}
+  ],
+  "eligibilityOverrides": [
+    {"cityId": "copenhagen", "id": "ordinary-admission-national-museum", "eligiblePrimary": false, "evidenceClass": "proxy", "reason": "Collector evidence establishes an official museum price but not selection from the official city tourism attraction list required by pilot-1. Same exclusion as Oaxaca; retain for diagnostics."}
+  ],
+  "supplementaryRows": [
+    {"id": "copenhagen-wine-kopenhag", "cityId": "copenhagen", "measure": "wine_glass", "category": "drinks", "evidenceClass": "observed_offer", "venue": "Café Kopenhag", "sourceUrl": "https://kopenhag.dk/en/menu-2/", "amount": 89, "currency": "DKK", "unit": "one glass of Merlot or Chardonnay", "priceDate": null, "retrievedDate": "2026-10-13", "eligiblePrimary": true, "reason": "Menu lists both house wine glasses at DKK 89; treated as one venue observation.", "notes": "Undated current menu; glass volume unstated. Found during review before candidate selection."}
+  ]
+}
