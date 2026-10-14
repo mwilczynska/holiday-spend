@@ -390,8 +390,9 @@ defined in `.github/workflows/production-checks.yml`; local Windows checks do no
 ## City-cost accuracy research
 
 This research worktree follows `docs/dev/plans/city-cost-accuracy.md` and the experiment-agent architecture.
-The owner requested a stop after the registered `000-baseline` experiment. Do not continue experiments or
-activate the revised `CITY-COST-ACCURACY-GOAL.md` without an explicit restart. The production method remains v1.1.
+The owner explicitly restarted the revised `CITY-COST-ACCURACY-GOAL.md` after the completed `000-baseline`.
+The designer-led goal is active. Preserve the original pilot/baseline and cumulative resource use; validate and
+freeze each new designer-authored protocol before dispatch. The production method remains v1.1.
 
 On restart, every experiment is designed and assessed by GPT-6 Astra/Medium in Codex or Opus 5.5/Max in
 Claude Code. All agents retrieving/generating cost information, including reference collection and source

@@ -1,8 +1,8 @@
 # Goal prompt: designer-led city-cost research
 
-Revised 13 October 2026. **Prepared, not activated.** At the owner's request, finish `000-baseline` under
-its original contract, pause the current goal and stop research. Use this replacement only on an explicit restart.
-Saving it does not resume the goal. Full contract: [research plan](docs/dev/plans/city-cost-accuracy.md) and
+Revised 13 October 2026. **Activated on explicit owner restart.** The earlier goal was cleared after
+`000-baseline` finished under its original contract. This replacement is now active; immutable baseline artifacts
+and prior resource consumption are retained. Full contract: [research plan](docs/dev/plans/city-cost-accuracy.md) and
 [agent architecture](docs/dev/plans/city-cost-experiment-agent-architecture.md).
 
 ```text

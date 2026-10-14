@@ -2,16 +2,16 @@
 
 **Prepared:** 13 October 2026
 **Branch:** `research/city-cost-accuracy`
-**Status:** Original baseline closing at the owner's request. Revised program prepared but inactive.
+**Status:** Original baseline complete and preserved. Revised designer-led program active on explicit owner restart.
 **Execution prompt:** [CITY-COST-ACCURACY-GOAL.md](../../../CITY-COST-ACCURACY-GOAL.md)
 
 ## Owner-directed architecture revision
 
-Finish the registered `000-baseline` experiment, then stop research and pause the current goal. Do not start
-another experiment or activate the replacement goal without a new owner instruction. Preserve the immutable
-`pilot-1` protocol and results; this revision does not retrospectively change their rules.
+The registered `000-baseline` finished and its goal was stopped/cleared. The owner has explicitly started the
+replacement designer-led goal. Preserve immutable `pilot-1` and its results; the restart does not retrospectively
+change their rules. The architecture below is now authorized, subject to a newly frozen machine protocol.
 
-On a future restart, [the experiment-agent architecture](city-cost-experiment-agent-architecture.md) and the
+On this restart, [the experiment-agent architecture](city-cost-experiment-agent-architecture.md) and the
 replacement goal govern execution, superseding the original role, candidate-limit and stopping rules in
 sections 5, 7 and 8 below. Retained sections document the original protocol and its measurement safeguards.
 Freeze a new machine-readable revision; do not edit the original manifest to conceal the timing of changes.
@@ -37,7 +37,7 @@ consecutive assessed non-improvements, failed feasibility, owner stop or exhaust
 filler experiments to reach a review. Retain cumulative 400 estimate calls (100 reserved for confirmation) and
 300 reference actions, subtracting prior usage. Separately cap design-role calls at 50, reference-worker calls
 at 100 and estimate retrieval actions at 1600; at most three concurrent cost workers. See the architecture for
-per-route/time limits and accounting. These are proposed restart limits, not authorization to resume now.
+per-route/time limits and accounting. These limits are authorized by the explicit restart; prior usage is retained.
 Unavailable exact models/Max effort remain unavailable; no reduced-effort or paid-API fallback.
 
 The original pilot's single-venue offers can support conditional food/drink agreement; they cannot establish

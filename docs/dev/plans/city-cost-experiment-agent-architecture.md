@@ -1,8 +1,8 @@
 # Future city-cost experiment agent architecture
 
-Prepared 13 October 2026. **Proposal only; inactive.** Applies only to an explicitly restarted research
-program. Finish the already registered current experiment under its original contract, then stop work and
-pause the active goal at the owner's request. This document does not activate or extend that goal.
+Prepared 13 October 2026. **Activated on explicit owner restart.** The earlier baseline experiment finished
+under its original contract and its goal was paused/cleared. The owner has now started the replacement
+designer-led goal. Freeze the new machine protocol before execution; saving this document alone is not activation.
 The current `pilot-1` protocol, manifest, registrations, responses and evidence remain immutable.
 
 ## Roles and boundaries

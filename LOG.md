@@ -3598,3 +3598,16 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   bootstrap have five passing focused tests. Standalone TypeScript and memory-mirror checks pass; frozen
   hashes and offline score replay verified. Dependencies installed with lifecycle scripts disabled; no native
   database or production build claim. Checkpoint publication and final whitespace/link checks follow.
+
+# 13 October 2026 — Revised designer-led goal activated
+
+- Owner explicitly requested clearing the old goal and starting the saved replacement. Goal lookup returned
+  no existing goal; created the new active goal referencing the full revised prompt/plan/architecture.
+  The tool's4000-character objective limit required a compact synopsis; saved documents remain authoritative.
+- Preserved immutable pilot-1/experiment000 and prior19 estimate/recovery calls,43 reference actions,
+  three reference-worker calls and one architecture-design call. No resource reset or production write.
+- Reserved the second design-role call and spawned a fresh GPT-6 Astra/Medium designer for restart protocol,
+  evidence-feasibility and first-experiment design. It may inspect released development evidence but cannot
+  retrieve new prices, inspect confirmation/old holdouts or generate numeric candidate estimates. New
+  cost-worker dispatch waits for coordinator validation and protocol freeze. Designer assessment and reviews
+  after every ten completed candidate experiments follow the activated architecture.
