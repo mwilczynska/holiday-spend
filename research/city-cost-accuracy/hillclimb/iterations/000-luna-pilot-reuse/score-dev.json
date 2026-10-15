@@ -1,22 +1,23 @@
 {
   "predictions": "predictions.jsonl",
+  "panel": "references.jsonl",
   "split": "dev",
   "grades": [
     "A",
     "B",
     "C"
   ],
-  "panelSha256": "d9639e946f40ea17f4f77bca1082aa79a38e8ff1730bdb8a231d9bd9aeb5f72b",
+  "panelSha256": "64b0d525442f9a4585757fb1d0f2f06eb4a2378472b18a56769c143b7612e4d9",
   "referenceCities": 54,
   "groups": {
     "all": {
       "cities": 1,
       "runs": 3,
-      "primaryLoss": 0.46977050604326176,
-      "unweightedLoss": 0.3753390735735236,
-      "pooledRepeatLoss": 0.45508001515801033,
-      "medianCityLoss": 0.46977050604326176,
-      "p90CityLoss": 0.46977050604326176,
+      "primaryLoss": 0.31592209009653344,
+      "unweightedLoss": 0.37771785971539223,
+      "pooledRepeatLoss": 0.31007748619594966,
+      "medianCityLoss": 0.31592209009653344,
+      "p90CityLoss": 0.31592209009653344,
       "perAnchor": {
         "inexp_meal_1p": {
           "n": 1,
@@ -41,10 +42,34 @@
           "medianAPE": 0.17664462609095755,
           "meanAbsLog": 0.16266685073420328,
           "medianBias": 0.16266685073420328
+        },
+        "hostel_dorm_1p": {
+          "n": 1,
+          "medianAPE": 0.663356172258283,
+          "meanAbsLog": 0.5088373518176539,
+          "medianBias": 0.5088373518176539
+        },
+        "hostel_private_2p": {
+          "n": 1,
+          "medianAPE": 0.7935793604514754,
+          "meanAbsLog": 0.5842132659387476,
+          "medianBias": 0.5842132659387476
+        },
+        "hotel_1star_2p": {
+          "n": 1,
+          "medianAPE": 0.3474047770153299,
+          "meanAbsLog": 0.2981803548961085,
+          "medianBias": 0.2981803548961085
+        },
+        "hotel_3star_2p": {
+          "n": 1,
+          "medianAPE": 0.13786717478454324,
+          "meanAbsLog": 0.12915561077653426,
+          "medianBias": 0.12915561077653426
         }
       },
       "cityLosses": {
-        "kyoto": 0.46977050604326176
+        "kyoto": 0.31592209009653344
       }
     }
   }

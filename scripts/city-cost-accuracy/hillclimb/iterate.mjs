@@ -29,10 +29,14 @@ function panelCities() {
 const taskId = (cityKey, k) => `${cityKey.replace(/ /g, '-')}-r${k}`;
 
 // Same substitution as buildCityGenerationV11Prompt: first occurrence of each placeholder.
+// A candidate may build per-city extra context ("contextBuilder": module whose default export maps a panel city to
+// text), filling the same {{EXTRA_CONTEXT}} slot the app exposes.
+const contextBuilder = cand.contextBuilder ? (await import(pathToFileURL(path.join(dir, cand.contextBuilder)))).default : null;
 function render(template, city) {
+  const extra = contextBuilder ? contextBuilder(city) : cand.extraContext;
   return template.replace('{{CITY}}', city.city).replace('{{COUNTRY}}', city.country)
     .replace('{{REFERENCE_DATE}}', cand.referenceDate?.trim() || 'current best available estimate')
-    .replace('{{EXTRA_CONTEXT}}', cand.extraContext?.trim() || 'none');
+    .replace('{{EXTRA_CONTEXT}}', () => extra?.trim() || 'none');
 }
 
 if (command === 'prepare') {

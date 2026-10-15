@@ -10,9 +10,13 @@ import { ANCHORS } from './lib.mjs';
 const name = process.argv[2];
 const manifest = readJson(path.join(hcRoot, `panel/manifest${name ? '-' + name : ''}.json`));
 const rows = [];
-for (const file of manifest.sources) {
+// A source entry is a file name, or { file, anchors } to take only some anchors from it.
+for (const entry of manifest.sources) {
+  const file = typeof entry === 'string' ? entry : entry.file;
+  const only = typeof entry === 'string' ? null : entry.anchors;
   for (const r of readJsonl(path.join(hcRoot, 'panel', file))) {
     if (!ANCHORS.includes(r.anchor)) continue; // diagnostics stay in their source file
+    if (only && !only.includes(r.anchor)) continue;
     if (r.source === 'hostelworld' && r.anchor === 'hostel_private_2p' && !r.mapped) {
       // Hostelworld prices are per person; a private room for two costs twice the per-person price. The minimum
       // can be a single room, so these rows are capped at grade C.

@@ -1,15 +1,21 @@
 {
-  "version": "R0",
+  "version": "R1",
   "sources": [
-    "r0-numbeo.jsonl"
+    "r0-numbeo.jsonl",
+    "r1-hostelworld-2026-10-15.jsonl",
+    "r1-budgetyourtrip-2026-10-15.jsonl"
   ],
-  "rows": 272,
+  "rows": 528,
   "cities": 68,
   "citiesPerAnchor": {
     "inexp_meal_1p": 68,
     "midrange_meal_2p": 68,
     "beer": 68,
-    "coffee": 68
+    "coffee": 68,
+    "hostel_dorm_1p": 66,
+    "hostel_private_2p": 66,
+    "hotel_1star_2p": 62,
+    "hotel_3star_2p": 62
   },
-  "referencesSha256": "d9639e946f40ea17f4f77bca1082aa79a38e8ff1730bdb8a231d9bd9aeb5f72b"
+  "referencesSha256": "64b0d525442f9a4585757fb1d0f2f06eb4a2378472b18a56769c143b7612e4d9"
 }
