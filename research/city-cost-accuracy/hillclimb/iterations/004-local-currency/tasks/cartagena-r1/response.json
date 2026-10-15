@@ -1,0 +1,26 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge for July 2026 high season, extrapolated forward from earlier price knowledge; no live listings or price pages were checked. Restaurant, beer and coffee anchors are the most reliable; accommodation varies widely by neighborhood, booking channel and season and is least certain. Cocktail and wine were set relative to the beer anchor (about 2.5x and 2.7x) because direct venue knowledge is weaker. The RBA rate comes from search-result summaries citing rba.gov.au; the page itself was not opened and one result flagged a stale-looking page date, so verify the 2026-10-15 value before relying on it.",
+  "comparable_city_reasoning": "Regional basis only: Colombian Caribbean coast tourist pricing, with Cartagena's Old Town and Getsemani as reference zones and Santa Marta as a loose nearby comparable. A July high-season uplift is applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "COP",
+  "anchors_local": {
+    "beer": 12000,
+    "coffee": 11000,
+    "inexp_meal_1p": 28000,
+    "midrange_meal_2p": 260000,
+    "cocktail": 30000,
+    "wine_glass": 32000,
+    "hostel_dorm_1p": 70000,
+    "hostel_private_2p": 190000,
+    "hotel_1star_2p": 180000,
+    "hotel_3star_2p": 450000
+  }
+}

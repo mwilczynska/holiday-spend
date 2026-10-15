@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Cartagena price levels for a July 2026 window; no live menus, listings, or booking pages were checked. Restaurant and cafe anchors are the most solid. Hostel and hotel rates are least certain because they swing with July holiday demand and the Old City and Getsemani premium. Cocktail and wine anchors were set from the local beer relationship because direct price knowledge is weak. Peso examples assume a recent exchange-rate range, so USD values may drift if the peso moves. The FX observation comes from two rba.gov.au search results that agreed on the 15 October 2026 value; the live RBA table was not opened directly and should be rechecked.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: Colombia's large tourist cities and Caribbean-coast resort cities in Latin America, with a premium for the historic center and Getsemani in July.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "local lager (Aguila) at a mid-range restaurant in the Old City, about 13,000 COP",
+    "coffee": "cappuccino at an independent cafe in the historic center, about 11,000 COP",
+    "inexp_meal_1p": "almuerzo corriente set lunch at a local eatery, about 20,000 COP",
+    "midrange_meal_2p": "three-course seafood dinner for two at a mid-range Getsemani restaurant, about 240,000 COP total before drinks",
+    "cocktail": "mojito at an Old City bar, about 35,000 COP",
+    "wine_glass": "house glass of wine at a restaurant, about 30,000 COP",
+    "hostel_dorm_1p": "mixed dorm bed in a registered Getsemani hostel, about 72,000 COP per night in July",
+    "hostel_private_2p": "private double room in a registered hostel, about 200,000 COP per night",
+    "hotel_1star_2p": "basic registered hotel or guesthouse double with private bath, about 180,000 COP per night",
+    "hotel_3star_2p": "registered three-star hotel double in the Old City or Bocagrande, about 520,000 COP per night"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 2.75,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.75,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 130.00
+  }
+}

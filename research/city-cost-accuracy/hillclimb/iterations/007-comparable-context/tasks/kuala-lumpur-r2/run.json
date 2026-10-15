@@ -4,23 +4,38 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 1816,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 1793,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 151399,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 12674,
+          "outputTokens": 38087,
+          "cacheReadInputTokens": 4811,
+          "cacheCreationInputTokens": 12947,
+          "webSearchRequests": 1,
+          "costUSD": 0.03294841,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 36683,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.03294841,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US dollar latest October 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate calibrated to the supplied comparables; no live listings or booking pages were inspected. Food and hostel anchors are the most reliable; the three-star hotel rate varies widely by district and date. Beer assumes a 0.5 L draught serving to match the comparables. Cocktail (about 2.3x beer) and wine (about 2x beer) follow the local beer relationship because direct price knowledge is weaker.",
+  "comparable_city_reasoning": "Calibrated mainly to Penang, Malaysia, as the closest domestic comparable. Kuala Lumpur is set modestly higher for beer, mid-range dining and capital-city lodging. Nha Trang and Vientiane serve as lower-cost regional bounds for food and budget rooms.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.60,
+    "coffee": 3.30,
+    "inexp_meal_1p": 3.70,
+    "midrange_meal_2p": 25.50,
+    "cocktail": 10.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 33.00,
+    "hotel_1star_2p": 31.00,
+    "hotel_3star_2p": 66.00
+  }
+}

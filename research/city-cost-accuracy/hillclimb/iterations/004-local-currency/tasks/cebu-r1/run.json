@@ -4,23 +4,49 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 3737,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 4294,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 308368,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 32650,
+          "outputTokens": 71490,
+          "cacheReadInputTokens": 24259,
+          "cacheCreationInputTokens": 14054,
+          "webSearchRequests": 2,
+          "costUSD": 0.06206339000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 69192,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06206339000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates US dollar per Australian dollar October 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates overview AUD US dollar 14 October 2026 15 October 2026 4:00 pm",
+            "mode": "extended"
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live menus, listings or booking pages were checked. Food and cafe anchors are more reliable than hotel and hostel rates, which vary with season (July is rainy season, typically lower demand). Cocktail and wine anchors are less certain and were set from the local price relationship to beer (about 2.5 to 3 times a restaurant beer). USD values assume about 32.5 THB per USD. FX rate taken from a web search summary of the RBA page, not verified on the live table.",
+  "comparable_city_reasoning": "Regional Southeast Asia basis, benchmarked against Thailand's other mid-sized tourist cities such as Chiang Rai and set below Bangkok and Phuket tourist-core price levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Chang draft, one standard glass at a casual restaurant, about 90 THB",
+    "coffee": "cappuccino at an independent cafe in Nimman or the Old City, about 80 THB",
+    "inexp_meal_1p": "khao soi with chicken at an inexpensive local restaurant, about 90 THB",
+    "midrange_meal_2p": "three-course meal for two without drinks at a mid-range restaurant, about 1,500 THB",
+    "cocktail": "standard mixed cocktail such as a gin and tonic at a Nimman bar, about 250 THB",
+    "wine_glass": "house wine by the glass at a sit-down restaurant, about 240 THB",
+    "hostel_dorm_1p": "shared dorm bed at a registered hostel in the Old City, about 320 THB per night",
+    "hostel_private_2p": "private double room at a registered hostel, about 800 THB per night",
+    "hotel_1star_2p": "basic double room at a registered guesthouse, about 600 THB per night",
+    "hotel_3star_2p": "double room at a registered three-star hotel, about 2,000 THB per night"
+  },
+  "anchors_usd": {
+    "beer": 2.77,
+    "coffee": 2.46,
+    "inexp_meal_1p": 2.77,
+    "midrange_meal_2p": 46.15,
+    "cocktail": 7.69,
+    "wine_glass": 7.38,
+    "hostel_dorm_1p": 9.85,
+    "hostel_private_2p": 24.62,
+    "hotel_1star_2p": 18.46,
+    "hotel_3star_2p": 61.54
+  }
+}

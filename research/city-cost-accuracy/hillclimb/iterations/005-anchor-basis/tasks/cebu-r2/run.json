@@ -4,23 +4,48 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 1996,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 2182,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 294747,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 28513,
+          "outputTokens": 70248,
+          "cacheReadInputTokens": 42437,
+          "cacheCreationInputTokens": 20543,
+          "webSearchRequests": 2,
+          "costUSD": 0.06250827,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 67832,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06250827,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 = US$ latest F11.1",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates US dollar per Australian dollar 4pm 15 October 2026 latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

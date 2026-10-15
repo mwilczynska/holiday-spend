@@ -4,23 +4,48 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 1810,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 1708,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 242074,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 27475,
+          "outputTokens": 63145,
+          "cacheReadInputTokens": 8948,
+          "cacheCreationInputTokens": 7972,
+          "webSearchRequests": 2,
+          "costUSD": 0.05600388,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 60587,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05600388,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily rate",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates AUD USD 4pm Sydney latest observation October 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

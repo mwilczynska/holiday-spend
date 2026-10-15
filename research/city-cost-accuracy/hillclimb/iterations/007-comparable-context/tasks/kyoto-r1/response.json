@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge plus the supplied Nara and Hiroshima observations; no live listings or booking pages were inspected. Beer, coffee and meal anchors are moderately grounded by those comparables. Accommodation is least certain because Kyoto has no direct observation in the input and July is peak season (Gion Matsuri, summer holidays). Cocktail (about 2.2x beer) and wine_glass (about 1.9x beer) are not directly observed and use the local beer relationship. The FX value came from web-search results that cite the RBA Exchange Rates page; the RBA page itself was not opened, so confirm the 2026-10-15 value before relying on it.",
+  "comparable_city_reasoning": "Calibrated to the supplied Nara and Hiroshima observations (Japan, mid-2026). Restaurant and cafe anchors sit a modest premium above both cities; accommodation anchors sit a larger premium for Kyoto's typically higher hotel prices and July demand. Hong Kong was used only as a loose upper reference for restaurant and cafe price levels, not for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.80,
+    "inexp_meal_1p": 6.40,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.10,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 170.00
+  }
+}

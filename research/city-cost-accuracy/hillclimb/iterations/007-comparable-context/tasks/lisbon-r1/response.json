@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general Lisbon price knowledge plus the supplied Porto, Berlin and Florence figures; no live pages, menus or listings were inspected. Cafe, beer (0.5 L draught, matching the comparables) and restaurant anchors are moderately reliable. Hotel and hostel anchors are least certain because July is peak season and rates vary widely by district and booking date. Cocktail and wine glass are weak direct estimates: cocktail is set at roughly three times the beer anchor and wine glass at roughly 1.1 times, both cross-checked against the local beer price relationship. FX uses the 13 Oct 2026 RBA figure from search results; an unverified 14 Oct figure was not used.",
+  "comparable_city_reasoning": "Lisbon was placed above Porto, the closest Portuguese comparable, and mostly between Porto and Berlin/Florence for food, drink and hotels. Hostel anchors sit above all three comparables to reflect Lisbon's July peak demand.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 2.95,
+    "inexp_meal_1p": 15.50,
+    "midrange_meal_2p": 72.50,
+    "cocktail": 12.00,
+    "wine_glass": 4.80,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 74.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 205.00
+  }
+}

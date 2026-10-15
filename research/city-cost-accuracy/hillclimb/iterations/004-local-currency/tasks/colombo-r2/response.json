@@ -1,0 +1,26 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, rates or listings. Restaurant and coffee anchors are the more stable; alcohol and the 3-star hotel anchor are low confidence given heavy alcohol taxes and wide hotel rate variation. Cocktail and wine were set at about 2.5x the beer anchor because direct price knowledge is weak. FX is stale: no current RBA observation could be verified, so the value is the latest RBA-page figure surfaced in search text (2026-03-20) and should be refreshed before use.",
+  "comparable_city_reasoning": "No single comparable city used; regional South Asia basis anchored to general Colombo price levels for local eateries, mid-range restaurants, and budget-to-mid hostel and hotel rates.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "LKR",
+  "anchors_local": {
+    "beer": 800,
+    "coffee": 950,
+    "inexp_meal_1p": 1000,
+    "midrange_meal_2p": 11000,
+    "cocktail": 2000,
+    "wine_glass": 2000,
+    "hostel_dorm_1p": 3000,
+    "hostel_private_2p": 6500,
+    "hotel_1star_2p": 8000,
+    "hotel_3star_2p": 24000
+  }
+}

@@ -25,7 +25,14 @@ const items = [
   ['coffee', /Cappuccino \$([\d,]+(?:\.\d+)?)/, 'Cappuccino.'],
 ];
 
-const cities = [...new Map(loadPanel().map(r => [r.cityKey, r])).values()].filter(c => !only || only.has(c.cityKey));
+// --cities <file> [--out name]: collect for an external list ({ city, country, region }) instead of panel cities.
+const citiesArg = args.includes('--cities') ? args[args.indexOf('--cities') + 1] : null;
+const outArg = args.includes('--out') ? args[args.indexOf('--out') + 1] : null;
+const regionName = { europe: 'Europe', latin_america: 'Latin America', oceania: 'Oceania', se_asia: 'SEA', north_america: 'North America',
+  'north-america': 'North America', east_asia: 'East Asia', middle_east: 'Middle East', south_asia: 'South Asia', africa: 'Africa' };
+const cities = citiesArg
+  ? JSON.parse(fs.readFileSync(citiesArg, 'utf8')).map(c => ({ ...c, cityKey: c.city.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(), region: regionName[c.region] ?? c.region }))
+  : [...new Map(loadPanel().map(r => [r.cityKey, r])).values()].filter(c => !only || only.has(c.cityKey));
 const rows = [], log = [];
 for (const c of cities) {
   try {
@@ -57,10 +64,10 @@ for (const c of cities) {
   await new Promise(r => setTimeout(r, delayMs));
 }
 // Re-runs replace rows for the cities they processed and keep the rest of the day's file.
-const outFile = path.join(hcRoot, `panel/r2-livingcost-${today}.jsonl`);
+const outFile = path.join(hcRoot, `panel/${outArg ?? `r2-livingcost-${today}`}.jsonl`);
 const kept = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l))
   .filter(r => !cities.some(c => c.cityKey === r.cityKey)) : [];
 fs.writeFileSync(outFile, [...kept, ...rows].map(r => JSON.stringify(r)).join('\n') + '\n');
-fs.writeFileSync(path.join(hcRoot, `panel/r2-livingcost-${today}.log.json`), JSON.stringify(log, null, 1) + '\n');
+fs.writeFileSync(path.join(hcRoot, `panel/${outArg ?? `r2-livingcost-${today}`}.log.json`), JSON.stringify(log, null, 1) + '\n');
 console.log(`${rows.length} rows for ${new Set(rows.map(r => r.cityKey)).size} cities`);
 for (const l of log.filter(l => l.error || l.found < 4)) console.log('GAP', JSON.stringify(l));

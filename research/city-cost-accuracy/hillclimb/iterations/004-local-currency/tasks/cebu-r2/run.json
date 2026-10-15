@@ -4,23 +4,49 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 4174,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 4325,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 395634,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 106575,
+          "outputTokens": 65503,
+          "cacheReadInputTokens": 24818,
+          "cacheCreationInputTokens": 17197,
+          "webSearchRequests": 5,
+          "costUSD": 0.09709658,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 63032,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09709658,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD US dollar October 2026 daily F11 A$1 US$",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rate 14 October 2026 US dollar per Australian dollar",
+            "mode": "standard"
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

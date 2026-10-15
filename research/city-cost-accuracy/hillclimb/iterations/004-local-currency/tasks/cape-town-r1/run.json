@@ -4,23 +4,58 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 2392,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 2172,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 401257,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 34089,
+          "outputTokens": 71638,
+          "cacheReadInputTokens": 24810,
+          "cacheCreationInputTokens": 15277,
+          "webSearchRequests": 2,
+          "costUSD": 0.0625314,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 69169,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0625314,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates daily A$1 US dollars October 2026 AUD/USD rate table",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates 14 October 2026 15 October 2026 US dollar per Australian dollar 0.7002 0.6955",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied comparable prices; no live listings or booking pages were checked. Restaurant, cafe and beer anchors are moderately reliable; July hostel and hotel rates are least certain because they vary widely by area, lead time and demand. Cocktail (about 2.8x beer) and wine_glass (about 1.1x beer) use a beer-relative basis because direct knowledge is weaker. The FX value comes from a web search summary attributed to the RBA exchange-rates page; I did not open that page, and the 15 October figure could not be corroborated or confirmed as posted, so verify before use.",
+  "comparable_city_reasoning": "Calibrated against the supplied Porto, Berlin and Florence prices: all directly comparable anchors sit above Porto, most restaurant and hotel anchors sit below Florence, and hostel rates sit above all three comparables given Lisbon's summer hostel demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.40,
+    "coffee": 2.80,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 12.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 29.00,
+    "hostel_private_2p": 82.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 200.00
+  }
+}

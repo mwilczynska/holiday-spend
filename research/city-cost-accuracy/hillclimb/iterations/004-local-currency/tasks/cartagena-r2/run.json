@@ -4,23 +4,45 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 3551,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 4132,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 320706,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 34728,
+          "outputTokens": 73178,
+          "cacheReadInputTokens": 19151,
+          "cacheCreationInputTokens": 8465,
+          "webSearchRequests": 3,
+          "costUSD": 0.07194631,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 70648,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07194631,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily A$1 = US$ latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates daily A$1 US$ October 2026 latest",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

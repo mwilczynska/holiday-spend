@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, booking pages or 2026 listings. Beer, coffee and restaurant anchors are the most reliable; accommodation rates vary with season and booking channel. Cocktail and wine anchors are weakly known and were set relative to typical beer pricing. The FX figure comes from a search-result summary of the RBA table and was not verified on the live RBA page.",
+  "comparable_city_reasoning": "No external comparable city was used. Prices are benchmarked to Chiang Mai's own tier within Thailand, placed below Bangkok, with food and drink reflecting local eateries and cafes and lodging reflecting the city's guesthouse and three-star hotel market.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "one 330 ml Chang or Leo bottle at a local restaurant, about 100 baht",
+    "coffee": "cappuccino at a Nimman cafe, about 85 baht",
+    "inexp_meal_1p": "khao soi with chicken at a neighbourhood eatery, about 75 baht",
+    "midrange_meal_2p": "three-course dinner for two (starter, main, dessert, no drinks) at a mid-range restaurant, about 1,400 baht total",
+    "cocktail": "classic cocktail such as a gin and tonic at a Nimman bar, about 220 baht",
+    "wine_glass": "house red or white by the glass at a mid-range restaurant, about 210 baht",
+    "hostel_dorm_1p": "bed in a 6 to 8 bed dorm at a registered Old City hostel, about 350 baht a night",
+    "hostel_private_2p": "private double room at a registered hostel, about 900 baht a night",
+    "hotel_1star_2p": "basic double room at a registered guesthouse with fan or air conditioning, about 600 baht a night",
+    "hotel_3star_2p": "double room at a registered three-star hotel in Nimman or the Old City, about 2,250 baht a night"
+  },
+  "anchors_usd": {
+    "beer": 3.10,
+    "coffee": 2.60,
+    "inexp_meal_1p": 2.30,
+    "midrange_meal_2p": 43.00,
+    "cocktail": 6.80,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 10.80,
+    "hostel_private_2p": 27.70,
+    "hotel_1star_2p": 18.50,
+    "hotel_3star_2p": 69.20
+  }
+}

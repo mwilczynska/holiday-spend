@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live prices or listings were checked. Lodging is the least certain, given July high-season swings. Examples assume roughly 4,000 COP per USD. Cocktail and wine are set at about 3x and 2.5x the beer anchor, since direct price knowledge is weaker. The FX figure comes from search results citing the RBA exchange-rates page; the page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city was used. The regional basis is general knowledge of Colombian Caribbean tourist pricing, with a July high-season uplift on lodging.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Águila lager, one serving at a Getsemaní restaurant, about 10,000 COP.",
+    "coffee": "Cappuccino at a Centro café, about 9,000 COP.",
+    "inexp_meal_1p": "Corriente lunch (soup, main, juice) at a local eatery, about 16,000 COP.",
+    "midrange_meal_2p": "Starter, main and dessert each for two at a Getsemaní restaurant, no drinks, about 260,000 COP total.",
+    "cocktail": "Mojito or gin tonic at a Getsemaní bar, about 30,000 COP.",
+    "wine_glass": "House red by the glass at a mid-range restaurant, about 25,000 COP.",
+    "hostel_dorm_1p": "Bed in a 6-bed mixed dorm at a Getsemaní hostel in July, about 80,000 COP per night.",
+    "hostel_private_2p": "Private double room at a Getsemaní hostel in July, about 200,000 COP per night.",
+    "hotel_1star_2p": "Basic registered guesthouse double in Getsemaní or Centro in July, about 180,000 COP per night.",
+    "hotel_3star_2p": "Registered three-star double in the Old Town or Bocagrande in July, about 520,000 COP per night."
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.25,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.25,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 130.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate; no live menus, listings or booking pages were checked. Restaurant and coffee anchors are the most reliable; July accommodation has the widest range. Cocktail and wine were cross-checked against the beer anchor (about 2x and 1.5x) because direct knowledge is weaker. USD figures assume about 1.16 USD per EUR from general knowledge, not a live rate. FX is the latest RBA reading found (4pm, 14 Oct 2026), taken from the RBA homepage in search results and not checked against the F11.1 table.",
+  "comparable_city_reasoning": "Regional basis: general knowledge of Nordic capital price levels (Stockholm, Copenhagen, Oslo), with Helsinki restaurant prices set below Oslo and Copenhagen and drink prices reflecting Finland's high alcohol taxes. Accommodation is from general knowledge of Helsinki summer hotel and hostel rates.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.40,
+    "inexp_meal_1p": 19.50,
+    "midrange_meal_2p": 145.00,
+    "cocktail": 18.50,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 245.00
+  }
+}

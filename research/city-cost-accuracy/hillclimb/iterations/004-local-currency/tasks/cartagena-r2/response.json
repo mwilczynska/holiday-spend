@@ -1,0 +1,26 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not checked against live menus, listings or booking pages. Meals and beer are moderately certain; hostel and hotel rates are least certain given July peak-season variability. Cocktail and wine were set relative to the beer anchor (about 2.7x and 2.9x) because direct knowledge is weak. The FX figure came from search summaries of the RBA daily rates page and was not verified by opening the table.",
+  "comparable_city_reasoning": "Reasoned from general knowledge of Cartagena's walled-city and Getsemani price levels, with Medellin's tourist districts as a mental reference for restaurants and drinks and other Caribbean-coast resort cities for lodging.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "COP",
+  "anchors_local": {
+    "beer": 12000,
+    "coffee": 11000,
+    "inexp_meal_1p": 22000,
+    "midrange_meal_2p": 280000,
+    "cocktail": 32000,
+    "wine_glass": 35000,
+    "hostel_dorm_1p": 70000,
+    "hostel_private_2p": 165000,
+    "hotel_1star_2p": 200000,
+    "hotel_3star_2p": 520000
+  }
+}

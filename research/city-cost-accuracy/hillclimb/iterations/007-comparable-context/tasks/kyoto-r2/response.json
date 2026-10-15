@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate, not checked against live listings or booking pages. Restaurant anchors are more reliable than lodging, where Kyoto's tourism premium and the July high season (including Gion Matsuri) are estimated rather than observed. Cocktail and wine are derived from the beer anchor at roughly 1.85x and 1.45x because no direct data was supplied. The FX value comes from web search summaries that cite the RBA exchange rates table; the page itself was not opened, and those summaries flagged a page-age mismatch for the 15 October figure.",
+  "comparable_city_reasoning": "Primary basis is the Nara and Hiroshima (Japan) comparables, adjusted upward for Kyoto's tourism premium, mostly for lodging. Hong Kong was used only as an upper-bound sanity check, not as a direct basis for the Japanese anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.10,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.30,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 5.75,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 27.50,
+    "hostel_private_2p": 61.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 165.00
+  }
+}

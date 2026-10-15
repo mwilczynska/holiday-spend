@@ -1,0 +1,37 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge; no live listings or menus were checked. Restaurant anchors are moderately reliable; accommodation is less certain given July seasonality. Cocktail and wine use the local price relationship to beer (about 2.5x and 1.5x beer) because direct knowledge is weaker. USD values assume an approximate working rate of R17.5 per USD, not a live quote. The fx value comes from search-result summaries attributed to the RBA listing; I did not open the page, and the 15 October date was flagged for confirmation.",
+  "comparable_city_reasoning": "Regional basis: general South African urban-tourism price levels, with Cape Town placed toward the higher end of comparable South African tourist cities because of accommodation demand and restaurant and wine-region pricing; no external price source was consulted.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "340 ml draft Castle Lager at a Cape Town restaurant or bar, about R55",
+    "coffee": "regular cappuccino at a neighbourhood cafe, about R50",
+    "inexp_meal_1p": "chicken burger and chips at a casual local restaurant, about R130 before drinks",
+    "midrange_meal_2p": "starter, main and dessert for two at a mid-range bistro, about R1,000 total without drinks",
+    "cocktail": "standard gin and tonic or similar cocktail at a mid-range bar, about R140",
+    "wine_glass": "175 ml glass of a mid-range South African wine at a restaurant, about R80",
+    "hostel_dorm_1p": "one bed in a six-bed mixed dorm at a registered Cape Town hostel, about R280 per night",
+    "hostel_private_2p": "private double room at a registered hostel, about R750 per night",
+    "hotel_1star_2p": "basic double room at a registered guesthouse with en-suite bathroom, about R850 per night",
+    "hotel_3star_2p": "standard double at a registered three-star hotel in the city or Waterfront area, about R1,800 per night"
+  },
+  "anchors_usd": {
+    "beer": 3.14,
+    "coffee": 2.86,
+    "inexp_meal_1p": 7.43,
+    "midrange_meal_2p": 57.14,
+    "cocktail": 8.00,
+    "wine_glass": 4.57,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.86,
+    "hotel_1star_2p": 48.57,
+    "hotel_3star_2p": 102.86
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Model estimates from general knowledge, not checked against live listings, price surveys, or any July 2026 data set. Restaurant anchors are the most reliable; accommodation is the most volatile. Cocktail and wine were derived from the beer anchor using assumed multipliers of about 2.7x and 2.6x because direct knowledge of current Colombo bar prices is weak. The RBA rate was read from a search summary of the RBA table and could not be re-checked on the live page.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis is South Asia, with Colombo priced as a tourism-facing capital above typical rural Sri Lankan levels and below Western European capitals. Remembered price levels were carried forward by judgment for local inflation and rupee movements, not by a computed index.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.90,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.80,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 27.00,
+    "hotel_1star_2p": 33.00,
+    "hotel_3star_2p": 85.00
+  }
+}

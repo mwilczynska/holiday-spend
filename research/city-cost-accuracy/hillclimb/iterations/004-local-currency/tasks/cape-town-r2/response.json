@@ -1,0 +1,26 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not checked against live menus or listings. Restaurant anchors are more reliable than accommodation, which is seasonal and volatile. Cocktail and wine_glass were set relative to the beer anchor (about 2.5x and 1.5x) because direct knowledge of current bar prices is weaker. The FX observation came from search results and could not be confirmed on the live RBA table, and the search copy's age labels were inconsistent.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general Cape Town and South African tourist-city price levels in rand, adjusted for Cape Town's tourism premium and July (winter) accommodation pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "ZAR",
+  "anchors_local": {
+    "beer": 55.00,
+    "coffee": 48.00,
+    "inexp_meal_1p": 140.00,
+    "midrange_meal_2p": 900.00,
+    "cocktail": 140.00,
+    "wine_glass": 80.00,
+    "hostel_dorm_1p": 300.00,
+    "hostel_private_2p": 850.00,
+    "hotel_1star_2p": 900.00,
+    "hotel_3star_2p": 1800.00
+  }
+}

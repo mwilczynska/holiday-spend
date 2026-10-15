@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not live listings or booking pages. Restaurant and cafe anchors are moderately reliable for the historic centre, where prices vary widely. Accommodation is least certain because July is peak season and rates depend on date and district; room rates exclude the city tourist tax. Cocktail and wine anchors are inferred from the local price relationship to beer because direct knowledge is weak. USD values assume about 1.16 USD per EUR for mid-2026, which was not verified. The FX value was taken from web search results citing the RBA 15 October 2026 rate; the RBA table itself was not read directly.",
+  "comparable_city_reasoning": "No single comparable city was used. Estimates are based on Florence's own historic-centre price levels, with nearby Italian tourist cities such as Siena, Pisa and Bologna as rough reference points for food and drink, and hotel rates set for July peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.80,
+    "coffee": 3.50,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 12.80,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 139.00,
+    "hotel_1star_2p": 151.00,
+    "hotel_3star_2p": 278.00
+  }
+}

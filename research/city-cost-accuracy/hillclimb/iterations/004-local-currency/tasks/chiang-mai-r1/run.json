@@ -4,23 +4,58 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 4344,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 4527,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 288014,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 33253,
+          "outputTokens": 65795,
+          "cacheReadInputTokens": 28184,
+          "cacheCreationInputTokens": 16650,
+          "webSearchRequests": 2,
+          "costUSD": 0.05983464,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 63468,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05983464,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates daily AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11 daily exchange rates USD per AUD 15 October 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rss-cb-exchange-rates RBA USD AUD latest rate date",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

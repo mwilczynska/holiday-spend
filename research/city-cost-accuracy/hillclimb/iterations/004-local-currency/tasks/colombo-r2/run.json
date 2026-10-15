@@ -4,23 +4,42 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 5543,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 6997,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 224450,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 146324,
+          "outputTokens": 43518,
+          "cacheReadInputTokens": 18665,
+          "cacheCreationInputTokens": 11705,
+          "webSearchRequests": 5,
+          "costUSD": 0.18450704999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 41798,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.18450704999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest daily F11.1",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates F11.1 Australian dollar US dollar October 2026 latest observation",
+            "mode": "extended"
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true

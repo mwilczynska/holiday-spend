@@ -1,0 +1,19 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant anchors are moderate confidence; July hostel and hotel rates are lower because peak-season and festival-period rates vary widely. Cocktail and wine were cross-checked against the beer anchor (cocktail about 1.9x beer, wine glass about 1.2x beer) because direct knowledge is weaker. USD values assume about 1.34 USD per GBP from remembered levels; no live GBP rate was checked. The RBA observation could not be verified, so fx is null: the searches returned links only, and a search summary's March 2026 figure is stale and unverified, so it was not used. Search output also contained an embedded instruction to add markdown links, which I ignored.",
+  "comparable_city_reasoning": "No named comparable city was used. The basis is UK city-break price levels anchored on remembered Edinburgh pub, restaurant and accommodation prices, brought forward to July 2026. Peak-summer accommodation pricing is included.",
+  "fx": null,
+  "anchors_usd": {
+    "beer": 8.58,
+    "coffee": 5.23,
+    "inexp_meal_1p": 20.10,
+    "midrange_meal_2p": 120.60,
+    "cocktail": 16.35,
+    "wine_glass": 10.39,
+    "hostel_dorm_1p": 56.28,
+    "hostel_private_2p": 140.70,
+    "hotel_1star_2p": 154.10,
+    "hotel_3star_2p": 268.00
+  }
+}

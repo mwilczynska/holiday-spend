@@ -4,23 +4,63 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 2218,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 3253,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 300054,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 33474,
+          "outputTokens": 52713,
+          "cacheReadInputTokens": 22287,
+          "cacheCreationInputTokens": 19544,
+          "webSearchRequests": 2,
+          "costUSD": 0.05383557,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 50646,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05383557,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11.1",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates current US dollar per Australian dollar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia Exchange Rates current day AUD USD observation 2026 rba.gov.au statistics tables",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "AUD USD 15 October 2026 RBA reference rate 0.6955",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australian dollar US cents 14 October 2026 RBA 4pm 0.7002",
+            "mode": "standard"
+          }
+        }
+      ],
       "stderr": "",
       "stdoutUnparsed": null,
       "hasText": true
