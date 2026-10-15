@@ -41,16 +41,16 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
 - [ ] Luna-lane confirmation before any production proposal.
 
-**Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108; . Hostelworld expansion complete
+**Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108. Hostelworld expansion complete
 (268 extra cities with dorm prices); BudgetYourTrip expansion saved for 302 cities
-(, not yet ingested); livingcost expansion was interrupted and
+(`panel/byt-browser-expansion-partial-2026-10-15.json`, not yet ingested); livingcost expansion was interrupted and
 must be rerun; Numbeo blocks this IP (429) and the VPN IP (503), so retry from the new network. Provisional raw
 look on answered cities: 007 comparable-city context about -0.07 vs baseline (26/37 cities better); 004/005 about
 +0.01; 003 slightly worse.
 
-**Next action on restart:** test Numbeo from the new network; rerun  for 003, 004, 005, 007 (fills gaps
-only), then 008 and 009; ingest/assess each raw and calibrated () against
-; rerun the livingcost expansion; ingest BYT expansion; compose panel R2.
+**Next action on restart:** test Numbeo from the new network; rerun `dispatch.mjs` for 003, 004, 005, 007 (fills gaps
+only), then 008 and 009; ingest/assess each raw and calibrated (`make-calibrated.mjs <iteration> --group region`)
+against `001-v11-haiku-baseline-cal-region`; rerun the livingcost expansion; ingest BYT expansion; compose panel R2.
 
 ## Single measurement redesign — owner authorized
 
