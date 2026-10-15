@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Berlin price levels, brought forward to July 2026 with allowance for post-2022 price growth. No live listings or booking pages were checked. Restaurant and drink anchors are moderately reliable. Hostel and hotel anchors are less certain because July rates vary with season, events and booking lead time. Beer assumes a roughly 0.5 L restaurant draft. Cocktail and wine were cross-checked against the beer price relationship because direct recall is weaker. USD values assume roughly 1.16 USD per EUR, which was not verified by search. The FX observation comes from search-result summaries of the RBA exchange-rates page; the underlying F11.1 table was not opened.",
+  "comparable_city_reasoning": "No external comparable city was used; the anchors are Berlin-specific. Hamburg and Munich were used as relative benchmarks for ordering, and both are generally pricier than Berlin, especially for hotels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.38,
+    "coffee": 4.64,
+    "inexp_meal_1p": 15.66,
+    "midrange_meal_2p": 110.20,
+    "cocktail": 15.08,
+    "wine_glass": 8.70,
+    "hostel_dorm_1p": 46.40,
+    "hostel_private_2p": 116.00,
+    "hotel_1star_2p": 104.40,
+    "hotel_3star_2p": 208.80
+  }
+}

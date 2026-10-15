@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Bogota price levels, not from live listings or booking pages. Restaurant and cafe anchors are moderately reliable; hostel and hotel rates vary widely by neighborhood and booking channel, so they are less certain. Cocktail and wine are set from the beer anchor (about 2.5x and 2.2x) because direct knowledge is weaker. The FX figure comes from a search summary of the RBA daily rates page, not a direct re-read of that page.",
+  "comparable_city_reasoning": "Regional basis: roughly calibrated between the supplied Lima and Cartagena figures for drinks, meals, hostel and basic hotel rates, with the 3-star hotel nearer Buenos Aires to reflect Bogota's business-hotel market. No single comparable city was used directly.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 54.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 37.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 96.00
+  }
+}

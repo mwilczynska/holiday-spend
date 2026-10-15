@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Cape Town price levels, rolled forward to July 2026; not checked against live listings or booking pages. Restaurant and beer anchors are moderately reliable; hostel and hotel rates vary widely by area and season, so they are less certain. Cocktail and wine were set relative to the beer anchor (cocktail about 3 times beer, wine about 1.7 times beer) because direct recall was weak. FX provenance: the 13 Oct 2026 rate is taken from search-result summaries attributed to RBA exchange-rate pages; I did not open the RBA table. A 14 Oct 2026 figure may also exist, but I could not verify it.",
+  "comparable_city_reasoning": "No comparable city was supplied. Priced on a Cape Town and South African basis: ZAR price levels for cafes, restaurants, backpacker hostels and hotels, converted at an assumed rate of about R17.5 per USD (general knowledge, not checked). July is winter and usually a lower-demand period for international visitors, so accommodation anchors sit toward the lower-middle of the range.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.90,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 46.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 115.00
+  }
+}

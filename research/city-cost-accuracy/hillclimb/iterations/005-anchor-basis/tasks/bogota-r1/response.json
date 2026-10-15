@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and regional context; no live menus, listings or booking pages were checked. Restaurant anchors are moderately reliable. Cocktail and wine are set from their typical premium over the beer anchor because direct knowledge of those prices is weaker. Hostel and hotel anchors are least certain: July is a busy domestic holiday period and the tax treatment of quoted rates varies. Local-currency examples are approximate.",
+  "comparable_city_reasoning": "No single comparable city was benchmarked. Food and budget-lodging anchors use the Andean capital group (for example Lima and Quito) as a regional basis; the 3-star hotel anchor reflects Bogota's own business-hotel tier.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "draft or 330 ml bottle of a domestic lager (Poker or Aguila) at a restaurant, about 10,000 COP",
+    "coffee": "cappuccino at a mid-range cafe, about 11,000 COP",
+    "inexp_meal_1p": "menu del dia (soup, main, juice) at a local corrientazo, about 18,000 COP",
+    "midrange_meal_2p": "three courses (starter, main, dessert) for two at a mid-range restaurant, no drinks, about 240,000 COP including service",
+    "cocktail": "standard mixed cocktail at a bar in Zona T or Chapinero, about 30,000 COP",
+    "wine_glass": "house red or white by the glass at a mid-range restaurant, about 28,000 COP",
+    "hostel_dorm_1p": "bunk in a mixed dorm at a registered hostel in La Candelaria, about 50,000 COP per night",
+    "hostel_private_2p": "private double with shared bath at a registered hostel, about 130,000 COP per night",
+    "hotel_1star_2p": "basic double with private bath at a registered guesthouse, about 150,000 COP per night",
+    "hotel_3star_2p": "standard double at a registered 3-star business hotel in Chapinero or Zona Rosa, about 400,000 COP per night"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 7.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.50,
+    "hostel_private_2p": 32.50,
+    "hotel_1star_2p": 37.50,
+    "hotel_3star_2p": 100.00
+  }
+}

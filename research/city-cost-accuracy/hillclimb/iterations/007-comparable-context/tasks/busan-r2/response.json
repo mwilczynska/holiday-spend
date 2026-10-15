@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied comparables; no city price pages, menus or live listings were checked. Local prices were converted to USD using approximate exchange levels from general knowledge, so the anchors carry some FX sensitivity. Cafe, beer and restaurant anchors are relatively better anchored; hostel and hotel anchors are less certain because July peak-season rates in beach and downtown districts vary widely. Cocktail and wine anchors use the local beer relationship (cocktail about three times the draught beer anchor, wine glass about 2.6 times) because direct knowledge of bar prices here is weak.",
+  "comparable_city_reasoning": "East Asian basis calibrated to the supplied Taipei, Beijing and Kyoto figures: beer and cafe anchors sit at or somewhat above Kyoto's level, the inexpensive meal sits between the Taipei/Beijing and Kyoto figures, the mid-range meal is slightly above Taipei's, and accommodation anchors fall within the range of the supplied hostel and hotel figures, with a July uplift for peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 3.80,
+    "inexp_meal_1p": 6.80,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 21.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 52.00,
+    "hotel_3star_2p": 105.00
+  }
+}

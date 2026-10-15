@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Belgrade price levels for July 2026; no live menus, listings or booking pages were checked. Restaurant and cafe anchors are moderately reliable, with roughly 20% uncertainty. July hostel and hotel rates are least certain, with roughly 30% uncertainty, because they vary widely by district and season. Cocktail and wine anchors were not directly known, so they were set from the local beer price relationship: a cocktail at roughly twice a draft beer and a wine glass somewhat above a beer. USD values also depend on the dinar-dollar rate, which tracks the euro.",
+  "comparable_city_reasoning": "Regional basis: Central and Southeast European capitals such as Sofia, Bucharest, Budapest and Zagreb as rough price-level comparators. Belgrade sits below Western EU capitals, and July accommodation is lifted for summer tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.5 L draft Jelen or Lav at a neighborhood restaurant, about 380 RSD",
+    "coffee": "cappuccino at a central cafe, about 320 RSD",
+    "inexp_meal_1p": "cevapi with bread, onion and ajvar at a local grill, about 850 RSD",
+    "midrange_meal_2p": "starter, grilled main and dessert for two at a mid-range restaurant in Skadarlija, about 5,600 RSD total, no drinks",
+    "cocktail": "gin and tonic or Aperol spritz at a city bar, about 800 RSD",
+    "wine_glass": "house red or white by the glass (about 150 ml) at a restaurant, about 500 RSD",
+    "hostel_dorm_1p": "6- to 8-bed mixed dorm bed in a registered Belgrade hostel in July, about 1,600 RSD per night",
+    "hostel_private_2p": "private double room in a registered Belgrade hostel in July, about 4,500 RSD per night",
+    "hotel_1star_2p": "basic double room with private bath in a registered guesthouse or 1-star hotel, about 5,000 RSD per night",
+    "hotel_3star_2p": "standard double room in a registered three-star hotel in central Belgrade in July, about 11,000 RSD per night"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 3.20,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 8.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

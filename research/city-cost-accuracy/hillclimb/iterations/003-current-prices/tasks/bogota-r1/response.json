@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, booking pages or current listings; no web source was used for city prices. Restaurant anchors are moderate confidence; accommodation is lower, since hostel and 3-star rates swing with July demand. Remembered prices were projected forward for local inflation with an assumed COP/USD rate near 4,100, and a materially different peso rate would shift the USD anchors. Cocktail and wine are set relative to the beer anchor (about 3.0x and 2.6x) because direct recall of Bogota drink prices is weak.",
+  "comparable_city_reasoning": "No single comparable city was used. Bogota was estimated as a Colombian capital from general knowledge of local restaurant and accommodation price levels in Latin American capitals. Cocktail and wine anchors are beer-relative, as described in confidence_notes.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.70,
+    "coffee": 2.80,
+    "inexp_meal_1p": 5.80,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 36.00,
+    "hotel_3star_2p": 105.00
+  }
+}

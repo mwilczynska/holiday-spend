@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not checked against live menus, listings or booking pages. Restaurant anchors are the most reliable; hotel tiers, cocktail and wine are less certain (cocktail and wine are derived from the beer anchor). Egyptian pound moves could shift all USD values materially. The FX figure came from search-indexed RBA pages with conflicting date labels, so its recency is not fully confirmed.",
+  "comparable_city_reasoning": "Calibrated against the supplied comparables and general knowledge of Egypt's price levels: Cairo sits below Marrakech and Cape Town overall and close to the Mumbai-to-Marrakech range for most tiers. Grouped as Africa, with North African Marrakech as the closest basis. Cocktail and wine are not directly calibrated and are set as multiples of the beer anchor (about 2x and 1.4x).",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.20,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 68.00
+  }
+}

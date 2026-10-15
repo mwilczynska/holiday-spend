@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied comparables; no live listings or booking pages were checked and no city-price sources are cited. Restaurant anchors are moderately reliable; hostel and hotel anchors are least certain because July rates vary with season and events. Cocktail and wine were derived from the beer estimate using a local price relationship (about 2.4x and 1.2x beer) because direct knowledge is weaker. The FX value is the 14 Oct 2026 figure reported in search results attributed to the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable was copied. Restaurant anchors sit below Krakow and well below Madrid and Berlin, reflecting Belgrade's lower price level; hostel and hotel anchors sit between Krakow and Madrid/Berlin levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.90,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.20,
+    "hostel_dorm_1p": 18.50,
+    "hostel_private_2p": 46.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 120.00
+  }
+}

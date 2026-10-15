@@ -1,0 +1,37 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or booking pages. Restaurant and beer anchors are more grounded; hostel and hotel anchors vary widely by district and season (July is peak), so they are least certain. Cocktail and wine are anchored to beer and typical bar pricing. USD values assume about 7.1 CNY per USD from general knowledge, not a live rate. Web search was used only for the FX observation, from search-result summaries of the RBA exchange-rate table; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked to other mainland China tier-1 metros such as Shanghai and Guangzhou, with accommodation adjusted for Beijing's July peak tourism season.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Draft Yanjing or Tsingtao, 500 ml, at a casual Beijing restaurant, about 18 CNY",
+    "coffee": "Regular cappuccino at a mid-market cafe or chain in Chaoyang, about 30 CNY",
+    "inexp_meal_1p": "Zhajiangmian with a cold side dish at a local noodle eatery, about 35 CNY per person",
+    "midrange_meal_2p": "Three-course-equivalent mid-range restaurant meal for two (several dishes plus rice or dessert), no drinks, about 320 CNY",
+    "cocktail": "Standard cocktail at a mid-range bar in Sanlitun or Houhai, about 80 CNY",
+    "wine_glass": "House red by the glass at a Western-style restaurant in Chaoyang, about 60 CNY",
+    "hostel_dorm_1p": "Bed in a six-bed mixed dorm at a registered hutong hostel, about 90 CNY per night in July",
+    "hostel_private_2p": "Private double room at a registered hutong hostel, about 250 CNY per night",
+    "hotel_1star_2p": "Basic double room at a budget chain or registered guesthouse, about 200 CNY per night",
+    "hotel_3star_2p": "Double room at a registered three-star business hotel, about 600 CNY per night"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 4.20,
+    "inexp_meal_1p": 4.90,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 11.25,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 12.70,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 85.00
+  }
+}

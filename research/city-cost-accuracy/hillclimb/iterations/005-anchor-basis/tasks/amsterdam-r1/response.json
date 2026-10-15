@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic general-knowledge estimates; no live menus, listings, or booking pages were consulted, and 2026 levels are projected forward from recent knowledge. Beer and restaurant anchors are the firmest. July peak-season hostel and hotel rates have the widest plausible range. Cocktail and wine were cross-checked against the beer anchor for a plausible local price relationship because direct knowledge is only moderate. Euro-denominated estimates were converted to USD at an approximate general-knowledge rate, not a live quote.",
+  "comparable_city_reasoning": "Amsterdam-specific general knowledge, placed within the general price level of other high-cost Western European capitals with strong summer hotel demand; no comparable-city price data was consulted.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Heineken or Amstel draft, 0.25 L glass at a central café, about €5.00",
+    "coffee": "cappuccino at a central café, about €4.20",
+    "inexp_meal_1p": "kapsalon or stamppot main at a casual local eatery, about €16 per person",
+    "midrange_meal_2p": "three-course dinner for two (starter, main, dessert, no drinks) at a mid-range restaurant, about €115 total",
+    "cocktail": "classic mixed cocktail at a central bar, about €14",
+    "wine_glass": "house wine, about 150 ml glass at a restaurant, about €8",
+    "hostel_dorm_1p": "mixed 4–8 bed dorm bed at a registered central hostel in July, about €50 per night",
+    "hostel_private_2p": "private double room at a registered central hostel in July, about €125 per night",
+    "hotel_1star_2p": "basic double room at a budget registered hotel or guesthouse in July, about €160 per night",
+    "hotel_3star_2p": "double room at a registered three-star hotel in central Amsterdam in July, about €280 per night"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 4.83,
+    "inexp_meal_1p": 18.40,
+    "midrange_meal_2p": 132.25,
+    "cocktail": 16.10,
+    "wine_glass": 9.20,
+    "hostel_dorm_1p": 57.50,
+    "hostel_private_2p": 143.75,
+    "hotel_1star_2p": 184.00,
+    "hotel_3star_2p": 322.00
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Low confidence: holistic estimate from general knowledge, not checked against live menus, booking pages or listings. Egyptian pound prices have moved sharply since 2023, so the overall USD level for July 2026 is the main uncertainty, and accommodation and alcohol are the least certain. Cocktail and wine anchors were set from the local price relationship to beer (cocktail nearly twice a beer, wine about one and a half beers) because direct knowledge of those prices is weak. Relative ordering across tiers is more reliable than absolute levels.",
+  "comparable_city_reasoning": "No single comparable city. Regional basis is Northern African and Middle Eastern tourist cities such as Tunis and Amman, adjusted for Cairo's lower USD-equivalent price level after the pound's devaluation. Cocktail and wine anchors follow Cairo's price relationship to beer.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Stella draft or bottle, one standard serving at a mid-range licensed restaurant, about 160 EGP",
+    "coffee": "cappuccino at a mid-range cafe chain outlet, about 120 EGP",
+    "inexp_meal_1p": "koshary or grilled chicken with bread and a soft drink at an inexpensive local eatery, about 175 EGP",
+    "midrange_meal_2p": "starter, main course and dessert for two at a mid-range Zamalek restaurant, no drinks, about 1,500 EGP with service and tax",
+    "cocktail": "standard gin and tonic at a mid-range bar, about 300 EGP",
+    "wine_glass": "glass of Egyptian house red or white at a mid-range restaurant, about 250 EGP",
+    "hostel_dorm_1p": "dorm bed in a registered Downtown hostel, about 500 EGP per night",
+    "hostel_private_2p": "private double room in a registered hostel, about 1,200 EGP per night",
+    "hotel_1star_2p": "basic double with private bath at a registered 1-star hotel or guesthouse, about 1,300 EGP per night",
+    "hotel_3star_2p": "standard double at a registered three-star hotel in central Cairo, about 3,250 EGP per night"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.40,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 65.00
+  }
+}

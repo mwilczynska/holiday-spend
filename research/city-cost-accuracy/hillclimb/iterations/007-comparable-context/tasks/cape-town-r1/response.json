@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or price sources. Restaurant and coffee anchors are the most grounded; hostel and hotel anchors are less certain and seasonal, and rand movements can shift them. Cocktail is set at about 1.7x the beer anchor and wine by the glass near the beer price, because direct knowledge of local bar pricing is weaker. The FX figure comes from RBA exchange-rate content surfaced in search results rather than a direct page read, so verify it against the RBA F11.1 table.",
+  "comparable_city_reasoning": "Calibrated against the supplied Cairo, Marrakech and Manila observations. Restaurant meals, coffee and hostel beds are set above all three comparables; beer falls between the Cairo/Manila and Marrakech levels; hotel rates sit between the low and high comparables. Cocktail and wine have no direct comparables and are set relative to beer. July is the winter low season, so accommodation is not set at peak-season rates.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 44.00,
+    "cocktail": 6.00,
+    "wine_glass": 3.30,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 90.00
+  }
+}

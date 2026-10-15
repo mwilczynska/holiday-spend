@@ -1,0 +1,27 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied comparables; no live menus, booking pages or listings were checked. Restaurant and cafe anchors are moderately reliable. Hotel rates vary widely by district and season, and July falls in Indonesia's school holiday period. Cocktail and wine anchors are derived from the beer anchor using typical bar multiples and are the least certain. FX: the 13 Oct 2026 RBA observation comes from search-result summaries of the RBA overview page, not a direct page read. An unconfirmed 14 Oct homepage reading of 0.7002 was not used.",
+  "comparable_city_reasoning": "Calibrated to the supplied Yogyakarta, Chiang Mai and Vientiane observations. Jakarta is a larger, costlier capital, so cafe, meal and hostel anchors sit above Yogyakarta and near or above Chiang Mai. Hotel anchors sit near Chiang Mai and Vientiane levels, with a central-Jakarta premium on three-star rooms. Beer sits above the comparables, reflecting Indonesia's alcohol taxes. Cocktail and wine are set as multiples of the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.40,
+    "coffee": 2.50,
+    "inexp_meal_1p": 2.10,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 8.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 52.00
+  }
+}
+
+Your usage limit was reached, so I'm stopping here. Done: all ten USD anchors, plus the FX observation for 13 Oct 2026 (0.6961) from the extended search. Left: the 14 Oct 2026 RBA reading (0.7002 reported, unconfirmed) was not checked, because the limit blocked the follow-up search. If it is confirmed as published, it should replace the 13 Oct value. The limit resets at 2:40am (America/Mexico_City).

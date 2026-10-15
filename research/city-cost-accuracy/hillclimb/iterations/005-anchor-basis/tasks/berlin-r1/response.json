@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Berlin prices for July 2026; no live listings or booking pages were checked. Restaurant and cafe anchors are moderately reliable, while hostel and hotel rates are less certain because summer demand and events move them. Euro examples assume about 1.15 USD per EUR, an unsourced assumption, and cocktail and wine anchors were cross-checked against the beer anchor.",
+  "comparable_city_reasoning": "No single comparable city was used; the regional basis is large German city pricing, placed between cheaper Central European capitals such as Prague and costlier Western European capitals such as Amsterdam.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.4 L draft Pilsner at a neighbourhood restaurant, about €5.00",
+    "coffee": "cappuccino at a neighbourhood cafe, about €4.00",
+    "inexp_meal_1p": "main course at a casual neighbourhood eatery, about €14",
+    "midrange_meal_2p": "three courses for two at a mid-range bistro, no drinks, about €95 total",
+    "cocktail": "standard cocktail at a neighbourhood bar, about €12",
+    "wine_glass": "0.2 L glass of house wine at a restaurant, about €6.00",
+    "hostel_dorm_1p": "bunk in a 6-bed dorm at a central registered hostel in July, about €40 a night",
+    "hostel_private_2p": "private double at a central registered hostel in July, about €90 a night",
+    "hotel_1star_2p": "basic double at a guesthouse (Pension) in July, about €85 a night",
+    "hotel_3star_2p": "standard double at a central three-star hotel in July, about €160 a night"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 4.60,
+    "inexp_meal_1p": 16.10,
+    "midrange_meal_2p": 109.25,
+    "cocktail": 13.80,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 103.50,
+    "hotel_1star_2p": 97.75,
+    "hotel_3star_2p": 184.00
+  }
+}

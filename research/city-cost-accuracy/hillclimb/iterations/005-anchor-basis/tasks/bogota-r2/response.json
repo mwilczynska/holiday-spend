@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Bogota prices, not live listings. USD values assume about 4,000 COP per USD, so peso moves or 2026 price changes could shift them. Restaurant and hostel anchors are more reliable than hotel, cocktail and wine anchors; cocktail and wine were partly set from the beer price relationship because direct knowledge is weaker. July holiday demand may push accommodation toward the upper end. FX value taken from search-result summaries of the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city used. Regional basis: mid-sized Latin American capitals with similar tourism pricing, such as Medellin and Lima for restaurant and hostel levels, with Bogota hotel rates set higher because of business-travel demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "domestic draft lager (Poker or Club Colombia) at a mid-range restaurant, about 12,000 COP",
+    "coffee": "cappuccino at a mid-range cafe chain such as Juan Valdez, about 11,000 COP",
+    "inexp_meal_1p": "set lunch menu del dia (soup, main, juice) at a local eatery, about 20,000 COP",
+    "midrange_meal_2p": "three courses for two (starters, mains, desserts, no drinks) at a mid-range Chapinero restaurant, about 200,000 COP total",
+    "cocktail": "standard cocktail such as a mojito or gin and tonic at a mid-range bar, about 30,000 COP",
+    "wine_glass": "house red wine by the glass at a mid-range restaurant, about 26,000 COP",
+    "hostel_dorm_1p": "dorm bed in a registered hostel in La Candelaria or Chapinero, about 56,000 COP per night",
+    "hostel_private_2p": "private double room in a registered hostel, about 160,000 COP per night",
+    "hotel_1star_2p": "basic double room with private bath at a registered guesthouse or budget hotel, about 120,000 COP per night",
+    "hotel_3star_2p": "double room at a registered three-star business hotel, about 400,000 COP per night"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 100.00
+  }
+}

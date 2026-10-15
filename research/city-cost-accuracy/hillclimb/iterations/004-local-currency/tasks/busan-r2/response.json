@@ -1,0 +1,28 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for July 2026, at or just past my knowledge horizon, so values are extrapolated rather than checked against listings. Restaurant anchors are most reliable; July hostel and hotel rates are least certain. Cocktail and wine are set from the beer anchor (about 2.6x and 2.4x) because direct knowledge is weaker. FX reading is from a search summary of the RBA overview page, not the F11.1 table; a newer 14 Oct reading was reported by a secondary source but not verified.",
+  "comparable_city_reasoning": "No single comparable city. Based on South Korean regional price levels: Busan restaurant and lodging costs sit somewhat below Seoul, with a July peak-season adjustment applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "KRW",
+  "anchors_local": {
+    "beer": 5000,
+    "coffee": 5500,
+    "inexp_meal_1p": 10000,
+    "midrange_meal_2p": 100000,
+    "cocktail": 13000,
+    "wine_glass": 12000,
+    "hostel_dorm_1p": 30000,
+    "hostel_private_2p": 85000,
+    "hotel_1star_2p": 60000,
+    "hotel_3star_2p": 180000
+  }
+}
+
+Usage limit reached. Done: the ten KRW anchors and the FX object above, with the 13 Oct 2026 RBA reading taken from a search summary of the RBA overview page. Left: the search to confirm the 14 Oct RBA reading on rba.gov.au failed on the session limit and was not completed. If a 14 Oct reading is confirmed, the fx object should be refreshed.

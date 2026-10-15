@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied comparables; no live listings or booking pages were checked, so July 2026 levels are unverified. Restaurant and dorm anchors are the most reliable; hotel anchors, especially the 3-star, are the least certain. Cocktail and wine were set relative to the beer anchor (roughly 2.2 and 2.8 times beer) because direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "Chiang Mai is generally priced below Phuket and above Yogyakarta: Phuket was the upper reference for Thai restaurant and hotel levels, and Yogyakarta the lower reference for budget food and dorms. Koh Samui hotel figures (132.50 basic, 247.34 three-star) look like resort outliers against Phuket and were not used directly.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.30,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 48.00
+  }
+}

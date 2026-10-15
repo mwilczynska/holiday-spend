@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus or booking sites, with July peak-season pricing applied. Beer and restaurant anchors are moderately confident; hostel and hotel rates are least certain and vary by neighbourhood and date. Cocktail and wine were cross-checked against the beer anchor because direct bar-price knowledge is weaker. EUR values assume about 1.16 USD per EUR, not verified. The RBA rate comes from search-result summaries rather than an opened table, and one RBA overview page still showed 13 October, so confirm the 14 October value.",
+  "comparable_city_reasoning": "Benchmarked against large Western European capitals with strong summer tourism demand, such as Brussels, Copenhagen and Paris, adjusted to Dutch menu and drink price levels and Amsterdam's central tourist premium.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 5.10,
+    "inexp_meal_1p": 18.56,
+    "midrange_meal_2p": 127.60,
+    "cocktail": 17.40,
+    "wine_glass": 9.86,
+    "hostel_dorm_1p": 67.28,
+    "hostel_private_2p": 179.80,
+    "hotel_1star_2p": 197.20,
+    "hotel_3star_2p": 336.40
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied context only; no live listings, menus or booking pages were checked. Restaurant and coffee anchors are moderate confidence. Cocktail and wine were anchored to the beer price using typical local multiples, since direct knowledge of those is weaker. Accommodation is the least certain group given July peak-season demand. Remembered prices were rolled forward to July 2026 for local inflation and peso movement.",
+  "comparable_city_reasoning": "Regional basis: Colombian Caribbean-coast tourist pricing, broadly in line with or somewhat above Bogota and Medellin tourist districts and below Panama City and Cancun. Drink anchors tied to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 130.00
+  }
+}

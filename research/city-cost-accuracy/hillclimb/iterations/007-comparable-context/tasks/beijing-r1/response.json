@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not from live listings or booking pages, extrapolated to a July 2026 window that falls in peak summer season. Restaurant and coffee anchors are the most reliable; lodging anchors vary widely by district and season and are less certain. Cocktail and wine anchors are set at 4x and 3x the beer anchor because direct knowledge of Beijing bar pricing is weak. The FX figure was located through a web search of rba.gov.au; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Calibrated against the supplied Japanese comparables (Kyoto, Hiroshima, Nara). Beijing sits below them on lodging and inexpensive meals, above them on coffee and mid-range dining, and similar on beer. No single matched city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 4.20,
+    "inexp_meal_1p": 5.20,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 10.40,
+    "wine_glass": 7.80,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 88.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Knowledge-based holistic estimate; no web search was used for city prices and no live menus, listings or booking pages were checked. Restaurant and cafe anchors are moderate confidence; hotel and hostel rates are less certain given wide variation by district and season. Cocktail and wine were set from the local beer relationship (roughly 3.4 and 3.7 times beer) because direct knowledge of those prices is weak. FX value was taken from RBA-domain search results rather than a direct page or spreadsheet read.",
+  "comparable_city_reasoning": "No single named comparator city was used. Cebu was treated as a mid-sized Philippine tourist and business hub, with restaurant and cafe prices set to general Philippine urban levels and accommodation set from typical Cebu City hotel and hostel rate bands.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.90,
+    "coffee": 2.70,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 80.00
+  }
+}

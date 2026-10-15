@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate, not checked against live listings. Beer, coffee and meal anchors sit close to the Nara and Kyoto comparables, and hotel anchors are assumed to fall between Nara and Kyoto. Hotel tiers are the least certain. Cocktail and wine are set as ratios to draft beer because there is no direct comparable. FX as_of 2026-10-13 is the latest RBA figure found in search; a 14 Oct figure could not be retrieved.",
+  "comparable_city_reasoning": "Primary basis is Nara and Kyoto (same country, similar beer and meal pricing). Hiroshima is treated as a large city with a smaller tourist premium than Kyoto, so its anchors are set near or between Nara and Kyoto. Taipei is a regional cross-check only, not a direct basis.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.05,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.80,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.80,
+    "wine_glass": 5.20,
+    "hostel_dorm_1p": 21.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 145.00
+  }
+}

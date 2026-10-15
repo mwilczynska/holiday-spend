@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live menus, listings or booking pages were checked. Coffee and restaurant anchors are the firmest; drinks are less certain. Cocktail and wine_glass were set relative to the draft beer anchor (cocktail about twice beer, wine glass slightly above beer) because direct recall of Belgrade bar prices is weaker. Hostel and hotel rates vary widely by season and property, with perhaps about 30% uncertainty. Values were projected forward to July 2026; USD figures assume roughly 100 RSD per USD.",
+  "comparable_city_reasoning": "No single comparable city used. Estimated from general knowledge of Belgrade's own price levels, positioned near Sofia and Bucharest and below Budapest and Zagreb on restaurant and hotel prices. No peer price data was retrieved.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 23.00,
+    "hostel_private_2p": 56.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 112.00
+  }
+}

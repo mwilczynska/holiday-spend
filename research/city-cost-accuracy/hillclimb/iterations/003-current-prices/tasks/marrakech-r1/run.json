@@ -1,0 +1,29 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "attempts": [
+    {
+      "code": 1,
+      "ms": 7911,
+      "isError": true,
+      "modelUsage": {},
+      "costUsdList": 0,
+      "toolCalls": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true
+    },
+    {
+      "code": 1,
+      "ms": 8070,
+      "isError": true,
+      "modelUsage": {},
+      "costUsdList": 0,
+      "toolCalls": [],
+      "stderr": "\nClaude configuration file at C:\\Users\\chawi\\.claude.json is corrupted: JSON Parse error: Unexpected EOF\nThe corrupted file has been backed up to: C:\\Users\\chawi\\.claude\\backups\\.claude.json.corrupted.1792039487207\nA backup file exists at: C:\\Users\\chawi\\.claude\\backups\\.claude.json.backup.1792039441443\nYou can manually restore it by running: cp \"C:\\Users\\chawi\\.claude\\backups\\.claude.json.backup.1792039441443\" \"C:\\Users\\chawi\\.claude.json\"\n\n",
+      "stdoutUnparsed": null,
+      "hasText": true
+    }
+  ]
+}

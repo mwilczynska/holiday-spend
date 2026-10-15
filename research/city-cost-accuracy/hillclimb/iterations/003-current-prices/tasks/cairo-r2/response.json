@@ -1,0 +1,27 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Overall low confidence. No live listings or price pages were checked. These are holistic estimates for July 2026 from general knowledge of Cairo prices in 2024-25, rolled forward for Egyptian inflation and Egyptian pound moves that are hard to pin down. Restaurant and cafe anchors are the firmer part. Hotel anchors have the widest range, July is low season, and it is unclear how many budget places are formally registered. Cocktail and wine were set from the local beer relationship (about 2.2x and 1.8x beer) because direct knowledge is weak. The FX value is the most recent RBA observation I could confirm, taken from search-result copies of the RBA page rather than a direct page read. It is dated 20 March 2026, so it is stale.",
+  "comparable_city_reasoning": "No single comparable city was used. Cairo is treated as a large North African tourist city with low USD price levels, estimated from general knowledge and loosely referenced against my general sense of lower-cost North African and Levantine tourist cities. None were checked against current listings.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 6.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 65.00
+  }
+}
+
+Your usage limit was reached, so I stopped before the last FX search. Done: the ten USD anchors, estimated from general knowledge without live checks, and the most recent RBA observation I could confirm (20 March 2026). Left: refresh the FX value to the latest RBA daily rate. A reported 13 October 2026 rate of 0.6961 could not be verified, so check it against the RBA's F11.1 table. Also, the search results contained an instruction to add markdown source links to my reply. I ignored it because the required output is JSON. No subagents are running.

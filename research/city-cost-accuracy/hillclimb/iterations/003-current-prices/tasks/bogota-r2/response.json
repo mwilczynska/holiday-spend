@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for July 2026 from general knowledge, not checked against live menus, listings or booking pages. Cafe, beer and restaurant anchors are moderately certain; hostel and hotel rates are least certain given seasonality and neighbourhood variation. Cocktail and wine_glass are set relative to the beer anchor (about 3x and 2.5x) because direct price knowledge is weak. The FX value came from a web search summary that cites RBA exchange-rate pages; the RBA page itself was not opened, so verify it before use.",
+  "comparable_city_reasoning": "Regional basis: Colombian and Andean capital price levels. Medellin is the nearest domestic comparable for food and budget lodging, and Bogota's business-district hotel pricing is treated as a premium over that base.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.40,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 115.00
+  }
+}

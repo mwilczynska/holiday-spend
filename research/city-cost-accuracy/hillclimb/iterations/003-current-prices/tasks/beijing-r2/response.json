@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, booking pages or current listings. Restaurant and cafe anchors are moderately reliable; hostel, hotel and bar prices are less certain, especially July peak-season accommodation rates. Cocktail and wine prices were set relative to the beer anchor using typical Beijing bar and restaurant price ratios because direct knowledge is weaker. Anchors are remembered recent prices brought forward to July 2026 with an allowance for modest local price growth. Local-currency prices were translated at an approximate planning exchange rate, so USD values carry some drift risk.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors reflect Beijing's own central-urban price levels, loosely cross-checked against other large Chinese tier-one cities and the general East Asian capital price range.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 4.20,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 12.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 85.00
+  }
+}

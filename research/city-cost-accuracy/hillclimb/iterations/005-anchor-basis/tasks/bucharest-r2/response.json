@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and city context, not checked against live listings or booking pages. Restaurant and cafe anchors are moderately certain; accommodation has wider seasonal uncertainty for July. Cocktail and wine anchors were cross-checked against the local beer price relationship because direct knowledge is less precise.",
+  "comparable_city_reasoning": "Benchmarked against comparable Central and Southeast European capitals, placing Bucharest between Sofia and Budapest on typical restaurant and hotel levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.5 L Ursus draft at a mid-range restaurant, about 15 RON",
+    "coffee": "regular cappuccino at an independent cafe, about 12 RON",
+    "inexp_meal_1p": "soup plus main at a local eatery, about 45 RON per person, no drinks",
+    "midrange_meal_2p": "starters, mains and desserts for two at a central mid-range restaurant, no drinks, about 250 RON total",
+    "cocktail": "classic-style cocktail at a central bar, about 42 RON",
+    "wine_glass": "150 ml house wine by the glass at a restaurant, about 22 RON",
+    "hostel_dorm_1p": "dorm bed in a central registered hostel in July, about 90 RON per night",
+    "hostel_private_2p": "private double room in a central registered hostel in July, about 200 RON per night",
+    "hotel_1star_2p": "basic double room at a registered guesthouse or one-star hotel, about 220 RON per night",
+    "hotel_3star_2p": "double room at a three-star hotel in central Bucharest in July, about 450 RON per night"
+  },
+  "anchors_usd": {
+    "beer": 3.40,
+    "coffee": 2.75,
+    "inexp_meal_1p": 10.20,
+    "midrange_meal_2p": 57.00,
+    "cocktail": 9.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 20.50,
+    "hostel_private_2p": 45.50,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 102.00
+  }
+}

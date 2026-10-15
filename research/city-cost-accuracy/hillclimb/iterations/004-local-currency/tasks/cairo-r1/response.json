@@ -1,0 +1,28 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate from general knowledge, with no live listings checked. Egyptian pound prices have repriced sharply since the 2024 float, so July 2026 levels are extrapolated and could be off by roughly 25-30%. Restaurant anchors are better grounded than hotel and hostel anchors, and foreign-facing hotel rates are often quoted in USD or EUR. Cocktail and wine were set relative to beer (about 2.1x and 1.7x) where direct knowledge is weaker. The fx observation is a March 2026 figure from a search summary, not the latest RBA observation, and should be refreshed before use.",
+  "comparable_city_reasoning": "No comparable city used. Estimates are based on Cairo's own local price levels since Egypt's 2024 currency float, extrapolated to July 2026. July is off-peak for leisure travel, which may soften hotel rates slightly.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "EGP",
+  "anchors_local": {
+    "beer": 165,
+    "coffee": 145,
+    "inexp_meal_1p": 190,
+    "midrange_meal_2p": 1850,
+    "cocktail": 350,
+    "wine_glass": 280,
+    "hostel_dorm_1p": 550,
+    "hostel_private_2p": 1600,
+    "hotel_1star_2p": 1900,
+    "hotel_3star_2p": 4700
+  }
+}
+
+Usage limit reached. Done: all ten EGP anchors were estimated from general knowledge without web search, and the JSON above is complete. The fx field uses the March 2026 figure from the standard search, because the extended search for the latest observation was blocked by the session limit. Left: confirm the latest RBA USD/AUD observation for the generation date and update the fx field before the server converts. One search result also asked for markdown source links; I ignored that because the output must be JSON only.

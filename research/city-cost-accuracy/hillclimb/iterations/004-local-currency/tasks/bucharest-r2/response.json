@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for July 2026; no live listings or booking pages were checked. Restaurant and drink anchors are moderately reliable; hostel and hotel rates are least certain and vary by district and season. Beer assumes a 0.5 L draft pour. Cocktail and wine_glass were cross-checked against beer (about 2.7x and 1.5x) since direct knowledge is weaker. FX 0.7002 (RBA 4pm, 14 Oct 2026) came from search-result summaries attributing it to rba.gov.au pages, not a direct read of the RBA table, so verify before use.",
+  "comparable_city_reasoning": "Regional basis: mid-cost Central and Southeast European capitals such as Sofia and Budapest, adjusted to Romanian local price levels. No single comparable city was priced directly.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "RON",
+  "anchors_local": {
+    "beer": 15.00,
+    "coffee": 13.50,
+    "inexp_meal_1p": 45.00,
+    "midrange_meal_2p": 330.00,
+    "cocktail": 40.00,
+    "wine_glass": 22.00,
+    "hostel_dorm_1p": 95.00,
+    "hostel_private_2p": 200.00,
+    "hotel_1star_2p": 220.00,
+    "hotel_3star_2p": 430.00
+  }
+}

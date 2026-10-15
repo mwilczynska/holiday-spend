@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, brought forward to July 2026; no live menus, listings or booking pages were checked. Restaurant and cafe anchors are moderately reliable. Hostel and hotel rates are less certain given seasonal and district variation, and July is peak domestic travel demand. Cocktail and wine anchors lean on the local beer-price relationship because direct recall is weaker, and beer serving size varies by venue. FX is the RBA 14 Oct 2026 USD/AUD figure as surfaced in search results.",
+  "comparable_city_reasoning": "Benchmarked to the tier-one Chinese city group (for example Shanghai and Guangzhou) rather than a single comparable city. Restaurant and cafe prices follow that group; accommodation follows registered budget and mid-range hotel and hostel rates in the same tier, with a July peak-season uplift.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 10.50,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 41.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 78.00
+  }
+}

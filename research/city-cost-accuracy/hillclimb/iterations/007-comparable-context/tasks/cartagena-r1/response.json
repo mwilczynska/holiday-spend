@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied Bogota, Lima and Santiago references; no live listings or booking pages were checked. Restaurant anchors are better grounded; hostel and hotel anchors are least certain given mid-year domestic holiday demand and wide variation between neighbourhoods. Beer uses the 0.5 L draught basis of the comparables. Cocktail (about 2.7x beer) and wine (about 2.5x beer) follow the local beer relationship because direct knowledge of those prices is weak. FX figure taken from web search summaries of rba.gov.au, consistent across two searches; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Calibrated mainly to Bogota (same country and currency) with a Cartagena tourism premium: about 1.0x on inexpensive meals, 1.1x on coffee, 1.2x on mid-range dining, 1.3-1.4x on beer, hostels and basic hotels, and about 1.7x on three-star hotels. Lima and Santiago were used as regional reference points; Cartagena hostel and three-star rates sit near or above Santiago levels because of strong tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.80,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 44.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

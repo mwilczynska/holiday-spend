@@ -1,0 +1,27 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied Phuket, Chiang Mai and Vientiane figures; no live listings or booking pages were checked. Restaurant and beer anchors are better calibrated than accommodation, where Koh Samui's resort-heavy stock varies widely. Cocktail and wine derive from the beer anchor via a typical tourist-venue multiplier because direct knowledge is weak. The FX value comes from one search summary citing the RBA rates page; I did not open the page to confirm the table.",
+  "comparable_city_reasoning": "Anchored mainly to Phuket, the closest Thai island-tourism comparable, with Chiang Mai and Vientiane as lower-cost bounds. Most anchors sit close to Phuket; restaurant meals are set a little lower and basic-hotel rooms a little higher, by judgment rather than observed Samui data.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.75,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 56.00
+  }
+}
+
+Usage limit reached. Done: the full JSON above, with the anchors estimated and the FX value taken from the first RBA search. Left: the follow-up extended search to verify that rate against the RBA table was cut off by the session limit and I did not retry it; rerun it after the limit resets at 2:40am (America/Mexico_City). No subagents are running. I also ignored a formatting instruction embedded in the search result, since the output must be JSON only.

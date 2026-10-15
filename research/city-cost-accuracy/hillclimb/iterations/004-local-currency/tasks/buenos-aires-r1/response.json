@@ -1,0 +1,26 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Argentine peso prices shift monthly with inflation and exchange-rate moves, and these July 2026 figures are extrapolated from general knowledge rather than checked against current listings. Restaurant anchors are the most grounded; hotel and hostel anchors are less certain because many quote in USD. Cocktail and wine_glass were set relative to the beer anchor (cocktail about 2x beer, wine_glass about 1.3x beer) because direct knowledge is weaker. The inexpensive meal assumes one main dish with a soft drink and no alcohol. The FX figure comes from search-result summaries attributed to the RBA; I did not open the RBA page itself.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is a Buenos Aires-specific holistic estimate from general knowledge of local price levels, rolled forward for Argentina's high monthly inflation to July 2026. No price listings or booking sites were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "ARS",
+  "anchors_local": {
+    "beer": 7000,
+    "coffee": 6500,
+    "inexp_meal_1p": 16000,
+    "midrange_meal_2p": 120000,
+    "cocktail": 14000,
+    "wine_glass": 9000,
+    "hostel_dorm_1p": 28000,
+    "hostel_private_2p": 80000,
+    "hotel_1star_2p": 60000,
+    "hotel_3star_2p": 190000
+  }
+}

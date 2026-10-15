@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimate, not checked against live listings. Persistent inflation, peso volatility and USD-quoted tourist pricing make Buenos Aires levels hard to pin down; hotels and drinks are least certain. Cocktail and wine_glass are derived from beer-relative ratios (about 2.2x and 1.25x beer), not direct price checks. FX is the RBA 4 pm figure for 14 Oct 2026 as reported in search results; the RBA page itself was not opened.",
+  "comparable_city_reasoning": "Beer, coffee, meal and dorm anchors fall within the supplied Lima-Santiago range; the private hostel room and three-star hotel fall within the Santiago-Cartagena range; the basic hotel falls within Lima-Santiago. No other comparable basis used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 3.30,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 46.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 46.00,
+    "hotel_3star_2p": 100.00
+  }
+}

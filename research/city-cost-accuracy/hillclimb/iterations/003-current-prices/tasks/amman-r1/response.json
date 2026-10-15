@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied city context, not checked against live menus, booking pages or current listings. Restaurant and cafe anchors are moderate confidence; beer is less certain because alcohol prices are tax-driven and venue-dependent; hotel and hostel tiers are lower confidence given demand and regional tourism swings. Cocktail and wine_glass were set from the local beer price relationship because direct bar pricing knowledge is weaker. FX is the 2026-03-20 RBA figure, the latest I could retrieve through search; no later RBA observation could be confirmed, so the rate may be stale and should be refreshed before use.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is a Levant and Eastern Mediterranean urban price level, placed above Cairo and below Beirut for restaurant and hotel pricing. The Jordanian dinar is pegged to the US dollar, so USD anchors track local price levels rather than exchange-rate moves.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.80,
+    "coffee": 3.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 10.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 90.00
+  }
+}

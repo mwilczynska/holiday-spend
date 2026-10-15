@@ -1,0 +1,26 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Bogota price levels; no live menus, listings, or booking pages were checked. Restaurant and cafe anchors are moderately reliable; lodging is least certain given wide variation by neighborhood and season. Cocktail and wine_glass were set relative to the beer anchor (about 2.5x and 2x) because direct knowledge of those prices is weaker. The FX observation came from web search summaries of RBA exchange-rate pages, not a direct read of the RBA table, and the 14 October 2026 value was not corroborated by a second source.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors reflect general knowledge of Bogota price levels, informed by similar Colombian and Andean cities such as Medellin and Lima for the mid-range and lodging tiers.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "COP",
+  "anchors_local": {
+    "beer": 12000,
+    "coffee": 10000,
+    "inexp_meal_1p": 24000,
+    "midrange_meal_2p": 250000,
+    "cocktail": 30000,
+    "wine_glass": 25000,
+    "hostel_dorm_1p": 55000,
+    "hostel_private_2p": 150000,
+    "hotel_1star_2p": 130000,
+    "hotel_3star_2p": 370000
+  }
+}

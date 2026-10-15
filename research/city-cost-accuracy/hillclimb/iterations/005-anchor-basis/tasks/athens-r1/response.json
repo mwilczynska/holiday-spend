@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Athens price levels for July 2026; no live listings or booking pages were checked. Restaurant and beer anchors are moderately reliable, while July hostel and hotel rates vary widely by district and demand, so accommodation is least certain. EUR figures assume roughly 1.15 USD per EUR (my approximation, not searched). Cocktail is set near 2x draft beer and wine glass near 1.1x beer as a cross-check where direct knowledge is weaker. The FX value came from search results citing the RBA daily table; I did not open that table directly.",
+  "comparable_city_reasoning": "Regional basis: Southern European capital cities with similar summer tourist demand (for example Lisbon), adjusted to Athens' moderate restaurant and hotel price levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "draft lager (Mythos or Fix), 500 ml, at a central Athens taverna, about EUR 5.50",
+    "coffee": "cappuccino at a neighbourhood cafe in Athens, about EUR 3.50",
+    "inexp_meal_1p": "gyros or souvlaki plate with fries and a bottle of water at a neighbourhood taverna, about EUR 14",
+    "midrange_meal_2p": "two three-course meals (starters, mains, desserts) at a mid-range Athens restaurant, no drinks, about EUR 78 total",
+    "cocktail": "standard cocktail (for example gin and tonic or sour) at a central Athens bar, about EUR 11",
+    "wine_glass": "glass of house wine (about 150 ml) at a mid-range Athens restaurant, about EUR 6",
+    "hostel_dorm_1p": "one bed in a 6 to 8 bed dorm at a registered central Athens hostel in July, about EUR 32 per night",
+    "hostel_private_2p": "private double room at a registered central Athens hostel in July, about EUR 70 per night",
+    "hotel_1star_2p": "very basic double room at a registered 1-star hotel or guesthouse in central Athens in July, about EUR 68 per night",
+    "hotel_3star_2p": "double room at a registered 3-star central Athens hotel in July, about EUR 130 per night"
+  },
+  "anchors_usd": {
+    "beer": 6.33,
+    "coffee": 4.03,
+    "inexp_meal_1p": 16.10,
+    "midrange_meal_2p": 89.70,
+    "cocktail": 12.65,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 36.80,
+    "hostel_private_2p": 80.50,
+    "hotel_1star_2p": 78.20,
+    "hotel_3star_2p": 149.50
+  }
+}

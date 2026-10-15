@@ -86,7 +86,7 @@ for (const c of cities) {
     }
     break;
   }
-  log.push(entry);
+  if (entry.status !== 'rate-limited') log.push(entry); // rate-limited cities are retried on resume
   fs.writeFileSync(logFile, JSON.stringify(log, null, 1) + '\n');
   if (consecutive429 >= 3) { console.log('Stopping after repeated 429s; rerun later to resume.'); break; }
   await new Promise(r => setTimeout(r, delayMs));

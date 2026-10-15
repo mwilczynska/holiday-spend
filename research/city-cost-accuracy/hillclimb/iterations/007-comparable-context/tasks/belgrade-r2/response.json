@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate; no live listings or booking pages were checked. Restaurant, beer and coffee anchors are the firmer part, set below Krakow to reflect Belgrade's lower price level. Hostel and hotel rates are less certain (roughly plus or minus 25 percent) given July demand swings. Cocktail and wine_glass were set from the draught-beer anchor (cocktail about twice beer, wine about equal to beer) because direct knowledge of Belgrade bar menus is limited. Beer assumes a 0.5 L draught. FX figure taken from search-result text attributed to the RBA exchange-rates page; the page was not opened directly, and no 14 October observation was found.",
+  "comparable_city_reasoning": "Krakow is the closest price-level comparable (a Central European city with similar summer tourism demand). Restaurant and drink anchors sit below Krakow and well below Berlin and Madrid, reflecting Serbia's lower general price level. Basic and three-star hotel rooms are set close to Krakow's levels; hostel dorm and private room are set above Krakow's levels for summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 2.60,
+    "inexp_meal_1p": 8.80,
+    "midrange_meal_2p": 46.00,
+    "cocktail": 6.80,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 115.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of local price levels, moved forward to July 2026; no live menus, listings or booking pages were checked. Restaurant, coffee and beer anchors are moderately grounded. Hostel and hotel anchors are least certain because July rates vary widely by area, property and booking timing. Cocktail and wine were cross-checked against draft beer (cocktail about 2.3x beer, house wine glass about 1x beer) because direct knowledge is weaker. USD values assume a general-knowledge EUR/USD level, not a live rate. The FX observation came from rba.gov.au search results; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Regional basis: southern European capital with strong summer tourism demand. Restaurant, beer and coffee anchors reflect typical central Athens levels, loosely benchmarked against other southern European capitals such as Lisbon. Accommodation anchors reflect typical July high-season rates for central hostels and hotels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.20,
+    "coffee": 4.20,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 82.00,
+    "cocktail": 14.00,
+    "wine_glass": 6.40,
+    "hostel_dorm_1p": 39.00,
+    "hostel_private_2p": 102.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 175.00
+  }
+}

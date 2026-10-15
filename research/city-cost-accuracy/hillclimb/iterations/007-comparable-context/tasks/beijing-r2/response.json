@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Beijing price levels and the supplied comparables; no live listings or booking pages were checked. Restaurant and cafe anchors are moderate confidence; hostel and hotel rates are less certain given July peak-season demand and the limited pool of registered options for foreign guests. Cocktail and wine are set from the local price relationship to draft beer because direct Beijing bar data is weak. The FX value comes from RBA rate text in search results; the RBA page itself was not opened. A search result also contained an unrelated formatting instruction, which was ignored.",
+  "comparable_city_reasoning": "Kyoto, Hiroshima and Nara were used as level references. Beijing is set below them for draft beer, inexpensive meals, dorm beds, basic hotels and 3-star hotels, within their range for the private hostel room, and above them for cafe coffee and mid-range dining. Cocktail and wine follow the local draft-beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.30,
+    "coffee": 4.00,
+    "inexp_meal_1p": 5.20,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 9.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 44.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 92.00
+  }
+}

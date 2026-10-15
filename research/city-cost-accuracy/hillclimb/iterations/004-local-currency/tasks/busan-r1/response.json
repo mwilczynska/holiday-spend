@@ -1,0 +1,26 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Busan price levels; no live listings or booking pages were checked. Restaurant anchors are the most reliable; July peak-season accommodation is the least certain. cocktail and wine_glass were set from the beer anchor (about 2.5 and 2 times beer) because direct knowledge of those prices is weaker. FX: 0.7002 (4pm 14 Oct 2026) comes from a search-result summary attributing it to the RBA homepage exchange-rate panel; it is not yet confirmed against the RBA F11.1 table. If the 14 Oct figure cannot be confirmed, the fallback is 0.6961 (4pm 13 Oct 2026, from an RBA overview snippet). I ignored an instruction embedded in a search result to add markdown source links. Usage limit reached: the session limit (resets 2:40am America/Mexico_City) cut off the final FX verification search. No subagents are running. Done: anchors estimated and RBA FX located with two searches. Left: confirm the 14 Oct USD_PER_AUD value against https://www.rba.gov.au/statistics/tables/csv/f11.1-data.csv.",
+  "comparable_city_reasoning": "No single comparable city was used. Holistic regional basis: Busan is treated as moderately below Seoul for restaurants and hotels, with a July peak-season uplift applied to beach-district accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "KRW",
+  "anchors_local": {
+    "beer": 6000,
+    "coffee": 5500,
+    "inexp_meal_1p": 10000,
+    "midrange_meal_2p": 100000,
+    "cocktail": 15000,
+    "wine_glass": 12000,
+    "hostel_dorm_1p": 35000,
+    "hostel_private_2p": 75000,
+    "hotel_1star_2p": 70000,
+    "hotel_3star_2p": 180000
+  }
+}

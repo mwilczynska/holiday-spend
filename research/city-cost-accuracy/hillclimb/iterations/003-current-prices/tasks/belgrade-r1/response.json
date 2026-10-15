@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and regional comparison; not checked against live menus, price lists or booking sites. Restaurant and coffee anchors are moderately certain. Cocktail and wine anchors are derived from the local beer price relationship because direct knowledge is weaker. Beer assumes a 0.5 L draft. Accommodation carries the widest uncertainty (roughly +/-25%) because of seasonality, location and booking lead time.",
+  "comparable_city_reasoning": "Regional basis: Belgrade sits in the lower-to-mid price band of Central and Southeast European capitals, with anchors close to Sofia and Bucharest levels and below Zagreb and Ljubljana.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 9.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 110.00
+  }
+}

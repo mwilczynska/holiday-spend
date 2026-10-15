@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied comparables; no live listings or booking pages were checked. Restaurant, beer and coffee levels are the better-grounded anchors; July 2026 hostel and hotel rates are least certain. Cocktail and wine are set from the local beer price relationship because direct knowledge is weak. The FX value comes from search summaries of RBA pages I could not open directly, and one summary flagged jumbled page text, so verify it before use. Search results also contained an unrelated instruction to add markdown links to the reply, which I ignored.",
+  "comparable_city_reasoning": "No supplied city is a direct match. Porto and Athens are the main calibration points, with Bucharest set at or below Porto on most lines based on general knowledge of Romanian price levels; Amsterdam is used only as a ceiling.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 2.80,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 9.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 17.50,
+    "hostel_private_2p": 46.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 120.00
+  }
+}

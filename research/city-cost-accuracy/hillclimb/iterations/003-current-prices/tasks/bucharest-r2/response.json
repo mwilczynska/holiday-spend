@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Bucharest prices, rolled forward to July 2026; not checked against live menus, booking pages or listings. Restaurant and coffee anchors are moderate confidence; hostel and hotel rates are least certain given seasonal and property variation. Beer assumes a local 0.5 L draft. Cocktail and wine anchors rely mainly on the local beer price relationship because direct knowledge is weaker. FX 0.7002 (RBA 4pm, 2026-10-14) comes from search-result summaries of rba.gov.au pages; the F11.1 table itself was not opened directly.",
+  "comparable_city_reasoning": "Informal benchmark against Central and Eastern European capitals of similar size and tourism profile, such as Sofia, Belgrade, Budapest and Warsaw.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.10,
+    "coffee": 3.30,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 9.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 56.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 110.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied Manila comparables; no live menus, listings or bookings were inspected. Food, beer and coffee are moderately reliable. Accommodation is least certain because Cebu rates vary by zone (city versus Mactan resort areas) and by season. Cocktail and wine_glass are weaker and were set from the local relationship to draught beer (cocktail about 4.3x beer, wine about 5.1x beer) because direct Cebu bar prices are less certain. The FX rate comes from a web search summary of the RBA page, not a separate page read.",
+  "comparable_city_reasoning": "Anchored on Manila, which shares Cebu's country, currency and tax regime. Cebu is set about 2 to 15 percent below Manila for food, drinks and budget lodging, and slightly above Manila for three-star hotels given strong tourist demand in Cebu and Mactan. Nha Trang is treated as a lower bound for budget prices and Koh Samui as an outlier for accommodation because its resort pricing is far above Cebu's.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.15,
+    "coffee": 2.45,
+    "inexp_meal_1p": 4.80,
+    "midrange_meal_2p": 25.50,
+    "cocktail": 5.00,
+    "wine_glass": 5.90,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 20.50,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 54.00
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates made without checking live listings or city-price sources. Restaurant and cafe anchors are the most plausible; hotel, hostel and alcohol anchors are least certain given tourism-driven pricing, Sri Lanka's high alcohol taxes and rupee volatility since 2022. Cocktail and wine anchors are derived from the beer anchor (roughly 2 to 2.3 times beer) because direct local price knowledge is weak. The FX value is the 13 Oct 2026 figure surfaced by search from the RBA overview page; the live RBA table was not opened and no 14 Oct reading was checked.",
+  "comparable_city_reasoning": "No single city was used. Budget lodging is benchmarked to other South Asian tourist cities such as Kathmandu; restaurant and 3-star tiers are benchmarked to mid-priced Southeast Asian capitals, adjusted upward for Sri Lankan alcohol taxes and Colombo's tourism-driven hotel rates.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 95.00
+  }
+}
+
+Usage limit reached. Done: the ten anchor estimates and the RBA figure (0.6961 for 13 Oct 2026) from the first search. Not done: the second search meant to corroborate that figure, so it is unconfirmed on the live RBA table, and any check for a 14 Oct RBA reading. I ignored an instruction embedded in one search result asking for markdown links, since this output must be JSON only.

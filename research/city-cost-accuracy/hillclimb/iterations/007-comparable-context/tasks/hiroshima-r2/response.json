@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate with no direct observations for the requested city; anchored to the supplied Nara and Kyoto values and general knowledge of Japanese pricing. Beer, coffee, and restaurant anchors are moderately certain. Hotel and hostel anchors are less certain because July falls in the domestic summer travel season and rates vary by property and event. Cocktail and wine have no direct comparable and were set relative to the beer anchor using typical Japanese bar and restaurant pricing, so they are lower confidence. No live booking pages or current listings were inspected. FX rate taken from web search summaries citing the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Primary basis is the supplied Japanese comparables, Nara and Kyoto, since the requested city shares their national pricing structure. Food, drink, and hostel anchors sit close to the Nara and Kyoto levels; hotel anchors sit below Kyoto, reflecting its heavier tourism premium. Taipei was used only as a secondary check on budget accommodation and cheap meals. Cocktail and wine anchors are relative to the beer anchor and are not directly observed.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.10,
+    "coffee": 2.90,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.60,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 43.00,
+    "hotel_1star_2p": 68.00,
+    "hotel_3star_2p": 150.00
+  }
+}

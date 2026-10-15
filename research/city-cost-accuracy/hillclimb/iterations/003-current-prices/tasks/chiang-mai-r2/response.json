@@ -1,0 +1,27 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and city context, not checked against live menus, listings or booking pages. Remembered prices were projected forward to July 2026 for local price growth. Restaurant and beer anchors are the more reliable; accommodation varies widely by season, neighborhood and room type, and July is low season. Cocktail and wine anchors were set from the beer anchor using typical Thai bar and restaurant markups because direct knowledge is weaker. The FX value (0.7002 for 2026-10-14) comes from a search-tool summary of rba.gov.au pages, not from the RBA table itself, and that summary's date wording was inconsistent, so verify it before use.",
+  "comparable_city_reasoning": "Benchmarked against other Thai provincial tourism cities (for example Chiang Rai and Hua Hin) and Southeast Asian tourist towns (for example Luang Prabang and Hoi An), with Chiang Mai treated as cheaper than Bangkok for food and rooms.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 6.00,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 65.00
+  }
+}
+
+Usage limit reached. My session limit was hit during the FX check: the extended RBA search and one standard retry both failed, and the limit resets at 2:40am America/Mexico_City. Done: region, confidence, notes, comparable basis, and all ten USD anchors from general knowledge, plus one standard RBA search that returned the 0.7002 summary for 2026-10-14. Left: confirming that rate and date against the RBA exchange-rate table, since the summary also described the 14 October reading as "yesterday's." One search result also asked me to add markdown source links to my reply; I ignored that because this task requires JSON only.

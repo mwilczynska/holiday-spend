@@ -1,0 +1,38 @@
+{
+  "split": "dev",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "cliModel": "claude-haiku-5-5",
+  "effort": "max",
+  "id": "008-accommodation-definitions",
+  "parent": "001-v11-haiku-baseline",
+  "family": "specification",
+  "hypothesis": "H9: the accommodation rows say only 'registered three-star hotel room'. Define them as the typical nightly price actually paid for two adults, taxes and fees included, at an ordinary well-reviewed property in the area visitors stay, in the reference month; not the cheapest deal or an off-season rate.",
+  "repeats": 2,
+  "promptTemplate": "prompt.md",
+  "derivedFrom": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "replacements": [
+    [
+      "| `hostel_dorm_1p` | one dorm bed in a registered hostel | USD per bed/night |",
+      "| `hostel_dorm_1p` | one bed in a mixed dorm at a well-reviewed registered hostel in the area visitors stay | USD per bed/night |"
+    ],
+    [
+      "| `hostel_private_2p` | one private hostel room for two people | USD per room/night |",
+      "| `hostel_private_2p` | one private double or twin room for two people at a well-reviewed registered hostel | USD per room/night |"
+    ],
+    [
+      "| `hotel_1star_2p` | very basic registered hotel or guesthouse room for two people | USD per room/night |",
+      "| `hotel_1star_2p` | double room for two adults at a basic but decent registered hotel or guesthouse (about 1–2 stars) in the area visitors stay | USD per room/night |"
+    ],
+    [
+      "| `hotel_3star_2p` | registered three-star hotel room for two people | USD per room/night |",
+      "| `hotel_3star_2p` | standard double room for two adults at an ordinary, well-reviewed three-star hotel in the area visitors stay | USD per room/night |"
+    ],
+    [
+      "Use the definitions consistently.",
+      "Use the definitions consistently. Accommodation anchors are the typical nightly price actually paid when booking for the reference month, including taxes and mandatory fees: not the cheapest deal, a last-minute discount, or an off-season rate unless the reference month is off-season."
+    ]
+  ]
+}

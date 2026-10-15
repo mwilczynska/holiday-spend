@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied comparables; not checked against live menus or booking sites. Food and drink anchors are moderate confidence; hotel and hostel anchors are less certain (Koh Samui figures look like outliers, and July is low season). Cocktail and wine were derived from the beer anchor using typical local markups because direct price knowledge is weak. The FX value came from search summaries attributed to the RBA's daily rates and was not confirmed on rba.gov.au; a later search did not reproduce it and no 14 Oct value was confirmed. Verify before use.",
+  "comparable_city_reasoning": "Anchored on Phuket and Koh Samui as Thai tourist comparables, adjusted down for Chiang Mai's generally lower tourist price levels and July low season. Yogyakarta used only as a lower-bound sanity check for local meals and dorm beds. Koh Samui's basic and three-star hotel figures were treated as outliers and not used directly.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 8.50,
+    "hostel_private_2p": 19.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 48.00
+  }
+}

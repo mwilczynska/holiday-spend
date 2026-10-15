@@ -1,0 +1,37 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall: holistic estimates from general knowledge of Amman price levels, not checked against live menus, listings or booking pages. Restaurant and hostel anchors are more reliable; the 3-star hotel and alcohol anchors are less certain (seasonal and regional demand, tax-driven alcohol pricing). Cocktail and wine anchors are set relative to the beer anchor because direct price knowledge is weak. The FX value comes from an RBA-domain web search summary that cites the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city used. Regional basis is Levant and Middle East capital price levels, with Amman's restaurant and hotel prices judged to sit above Cairo and below Beirut.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "domestic lager, one 500 ml serving at a licensed restaurant, about 3.5 JOD",
+    "coffee": "regular cappuccino at a mid-market Amman cafe, about 2.2 JOD",
+    "inexp_meal_1p": "chicken shawarma plate with fries and a soft drink at a local eatery, about 4 JOD",
+    "midrange_meal_2p": "three courses for two (starter, main, dessert, no drinks) at a mid-range restaurant, about 40 JOD including tax and service",
+    "cocktail": "standard spirit-based cocktail at a licensed bar, about 7 JOD",
+    "wine_glass": "150 ml glass of house red or white at a licensed restaurant, about 6 JOD",
+    "hostel_dorm_1p": "one dorm bed in a registered central Amman hostel, about 10 JOD per night",
+    "hostel_private_2p": "private double room in a registered hostel, about 25 JOD per night",
+    "hotel_1star_2p": "basic double room at a registered downtown guesthouse or small hotel, about 30 JOD per night",
+    "hotel_3star_2p": "double room at a registered three-star hotel, about 80 JOD per night"
+  },
+  "anchors_usd": {
+    "beer": 4.94,
+    "coffee": 3.10,
+    "inexp_meal_1p": 5.64,
+    "midrange_meal_2p": 56.40,
+    "cocktail": 9.87,
+    "wine_glass": 8.46,
+    "hostel_dorm_1p": 14.10,
+    "hostel_private_2p": 35.25,
+    "hotel_1star_2p": 42.30,
+    "hotel_3star_2p": 112.80
+  }
+}

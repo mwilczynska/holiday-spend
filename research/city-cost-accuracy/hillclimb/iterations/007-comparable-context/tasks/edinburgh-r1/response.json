@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Beer, coffee and meal anchors are firmest; hostel and hotel anchors are less certain because July demand and neighbourhood vary widely. Cocktail (about 2x beer) and wine glass (about 1.2x beer) rest on the local beer relationship, as direct Edinburgh bar knowledge is weak. FX value came from search-result summaries citing the RBA exchange-rates page, not a direct page read; one third-party source suggests the USD column may be credited to WM/Reuters, so check the RBA F11.1 Source row if strict attribution is needed.",
+  "comparable_city_reasoning": "Calibrated to London as the closest UK reference: beer, coffee and meal anchors about 12-16% below London, hotels about 6-11% below, hostels roughly level. Amsterdam and Lisbon used only as sense checks. No August Festival premium applied, since the window is July.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.80,
+    "coffee": 4.80,
+    "inexp_meal_1p": 22.50,
+    "midrange_meal_2p": 94.00,
+    "cocktail": 15.80,
+    "wine_glass": 9.40,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 230.00
+  }
+}

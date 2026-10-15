@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 high season; not checked against live listings or booking pages. Restaurant anchors are moderately confident; hostel and hotel rates are least certain given seasonal swings and tourist-district pricing. Cocktail and wine are estimated from the beer anchor (about 2.2x and 2.5x). FX came from search-result summaries of the RBA exchange-rates listing; the rate table itself was not opened.",
+  "comparable_city_reasoning": "Restaurant anchors are calibrated to Bogota as the closest local-price comparable, moved toward Santiago for Cartagena's tourist-district premium. Hostel and hotel anchors are set above Bogota and Lima to reflect July high-season tourist demand, near or above Santiago levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 46.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 105.00
+  }
+}

@@ -1,0 +1,655 @@
+{
+  "candidateSha256": "d33a0ee8ea1d4c806948b50c18c3a8e298a56181d9c8cfd2578f90a574883ac7",
+  "templateSha256": "323cf798ff5efa5460b4ecc2d083310261e1c2c1a98b9dd4894ac1e15842bb27",
+  "panelSha256": "d9639e946f40ea17f4f77bca1082aa79a38e8ff1730bdb8a231d9bd9aeb5f72b",
+  "tasks": [
+    {
+      "id": "amman-r1",
+      "cityKey": "amman",
+      "repeat": 1,
+      "promptSha256": "a6798dc80cb7ae09296766c71fffcf7324c6cc4127722f496fb62f177ff6b2ec"
+    },
+    {
+      "id": "amman-r2",
+      "cityKey": "amman",
+      "repeat": 2,
+      "promptSha256": "a6798dc80cb7ae09296766c71fffcf7324c6cc4127722f496fb62f177ff6b2ec"
+    },
+    {
+      "id": "amsterdam-r1",
+      "cityKey": "amsterdam",
+      "repeat": 1,
+      "promptSha256": "12b28e49fc7bc2e30ab25f7fa4b06e9c33f8e78c60ff8f56b28567ec2a1d1fbe"
+    },
+    {
+      "id": "amsterdam-r2",
+      "cityKey": "amsterdam",
+      "repeat": 2,
+      "promptSha256": "12b28e49fc7bc2e30ab25f7fa4b06e9c33f8e78c60ff8f56b28567ec2a1d1fbe"
+    },
+    {
+      "id": "athens-r1",
+      "cityKey": "athens",
+      "repeat": 1,
+      "promptSha256": "a52f28008b6d0da6aced374170ae3eecab375d4b6035a38c266e7fd836cb629d"
+    },
+    {
+      "id": "athens-r2",
+      "cityKey": "athens",
+      "repeat": 2,
+      "promptSha256": "a52f28008b6d0da6aced374170ae3eecab375d4b6035a38c266e7fd836cb629d"
+    },
+    {
+      "id": "beijing-r1",
+      "cityKey": "beijing",
+      "repeat": 1,
+      "promptSha256": "05c0a4b45270b0769503ce6fea7990850d93a57cac57f2813da3c039cd4777b3"
+    },
+    {
+      "id": "beijing-r2",
+      "cityKey": "beijing",
+      "repeat": 2,
+      "promptSha256": "05c0a4b45270b0769503ce6fea7990850d93a57cac57f2813da3c039cd4777b3"
+    },
+    {
+      "id": "belgrade-r1",
+      "cityKey": "belgrade",
+      "repeat": 1,
+      "promptSha256": "4edaea8734b090b17dfce0cee5447c4a27cdee09c45a1a0dbcf92cdc6f9995d6"
+    },
+    {
+      "id": "belgrade-r2",
+      "cityKey": "belgrade",
+      "repeat": 2,
+      "promptSha256": "4edaea8734b090b17dfce0cee5447c4a27cdee09c45a1a0dbcf92cdc6f9995d6"
+    },
+    {
+      "id": "berlin-r1",
+      "cityKey": "berlin",
+      "repeat": 1,
+      "promptSha256": "98a10cd286710412335d67745f39e3f4d225182029109dd353ee8b66f21a9bdc"
+    },
+    {
+      "id": "berlin-r2",
+      "cityKey": "berlin",
+      "repeat": 2,
+      "promptSha256": "98a10cd286710412335d67745f39e3f4d225182029109dd353ee8b66f21a9bdc"
+    },
+    {
+      "id": "bogota-r1",
+      "cityKey": "bogota",
+      "repeat": 1,
+      "promptSha256": "e1f9c3f4eb5c9afb9f54831ebff80a03ee2c9f2794be70b635aefed442aa3513"
+    },
+    {
+      "id": "bogota-r2",
+      "cityKey": "bogota",
+      "repeat": 2,
+      "promptSha256": "e1f9c3f4eb5c9afb9f54831ebff80a03ee2c9f2794be70b635aefed442aa3513"
+    },
+    {
+      "id": "bucharest-r1",
+      "cityKey": "bucharest",
+      "repeat": 1,
+      "promptSha256": "5a02f3a4b2fb4e4e0277bec91072b4ddce508e084dac7d8fc384963a543689b1"
+    },
+    {
+      "id": "bucharest-r2",
+      "cityKey": "bucharest",
+      "repeat": 2,
+      "promptSha256": "5a02f3a4b2fb4e4e0277bec91072b4ddce508e084dac7d8fc384963a543689b1"
+    },
+    {
+      "id": "buenos-aires-r1",
+      "cityKey": "buenos aires",
+      "repeat": 1,
+      "promptSha256": "2f97d16a8c884f70e29275b82ea809be2326ccecfcb37058b88e9bcfc12132b6"
+    },
+    {
+      "id": "buenos-aires-r2",
+      "cityKey": "buenos aires",
+      "repeat": 2,
+      "promptSha256": "2f97d16a8c884f70e29275b82ea809be2326ccecfcb37058b88e9bcfc12132b6"
+    },
+    {
+      "id": "busan-r1",
+      "cityKey": "busan",
+      "repeat": 1,
+      "promptSha256": "2aec144b457254dafcf50a1756ca03e22eeeb96fdd8c345491a56e4884382179"
+    },
+    {
+      "id": "busan-r2",
+      "cityKey": "busan",
+      "repeat": 2,
+      "promptSha256": "2aec144b457254dafcf50a1756ca03e22eeeb96fdd8c345491a56e4884382179"
+    },
+    {
+      "id": "cairo-r1",
+      "cityKey": "cairo",
+      "repeat": 1,
+      "promptSha256": "181c6e7afe4209ede1f9e9d3852be0e6acd722c0d4098eb7738f81d67fafec4d"
+    },
+    {
+      "id": "cairo-r2",
+      "cityKey": "cairo",
+      "repeat": 2,
+      "promptSha256": "181c6e7afe4209ede1f9e9d3852be0e6acd722c0d4098eb7738f81d67fafec4d"
+    },
+    {
+      "id": "cape-town-r1",
+      "cityKey": "cape town",
+      "repeat": 1,
+      "promptSha256": "35b476fb83a35c9b4be291dba34c62e24c65bfd70cdc18bc3c25b7a7e43719e1"
+    },
+    {
+      "id": "cape-town-r2",
+      "cityKey": "cape town",
+      "repeat": 2,
+      "promptSha256": "35b476fb83a35c9b4be291dba34c62e24c65bfd70cdc18bc3c25b7a7e43719e1"
+    },
+    {
+      "id": "cartagena-r1",
+      "cityKey": "cartagena",
+      "repeat": 1,
+      "promptSha256": "be3a11fcd8dd6907ed909db00fe78324e6ebed356d4209e29d6d857b92f99b0c"
+    },
+    {
+      "id": "cartagena-r2",
+      "cityKey": "cartagena",
+      "repeat": 2,
+      "promptSha256": "be3a11fcd8dd6907ed909db00fe78324e6ebed356d4209e29d6d857b92f99b0c"
+    },
+    {
+      "id": "cebu-r1",
+      "cityKey": "cebu",
+      "repeat": 1,
+      "promptSha256": "c8121cc724e97e5d8113d211e29dcf744609d85c7ab10ddd2221c02551f2325a"
+    },
+    {
+      "id": "cebu-r2",
+      "cityKey": "cebu",
+      "repeat": 2,
+      "promptSha256": "c8121cc724e97e5d8113d211e29dcf744609d85c7ab10ddd2221c02551f2325a"
+    },
+    {
+      "id": "chiang-mai-r1",
+      "cityKey": "chiang mai",
+      "repeat": 1,
+      "promptSha256": "02f26eff2c311f5ce1c4dd8144af7490f7ad8f74ff814523be3b85e41dd03dbe"
+    },
+    {
+      "id": "chiang-mai-r2",
+      "cityKey": "chiang mai",
+      "repeat": 2,
+      "promptSha256": "02f26eff2c311f5ce1c4dd8144af7490f7ad8f74ff814523be3b85e41dd03dbe"
+    },
+    {
+      "id": "colombo-r1",
+      "cityKey": "colombo",
+      "repeat": 1,
+      "promptSha256": "0d81c733ff7bfe2a2ca309de64b90129fd0d88cc0a437b35a2f590797e2af7d3"
+    },
+    {
+      "id": "colombo-r2",
+      "cityKey": "colombo",
+      "repeat": 2,
+      "promptSha256": "0d81c733ff7bfe2a2ca309de64b90129fd0d88cc0a437b35a2f590797e2af7d3"
+    },
+    {
+      "id": "edinburgh-r1",
+      "cityKey": "edinburgh",
+      "repeat": 1,
+      "promptSha256": "ed7ea9de97f8f5f782f52cf9772643adbb336db57449cd91cf6a4ee2a9b0857d"
+    },
+    {
+      "id": "edinburgh-r2",
+      "cityKey": "edinburgh",
+      "repeat": 2,
+      "promptSha256": "ed7ea9de97f8f5f782f52cf9772643adbb336db57449cd91cf6a4ee2a9b0857d"
+    },
+    {
+      "id": "florence-r1",
+      "cityKey": "florence",
+      "repeat": 1,
+      "promptSha256": "e9ab2779d7cbce315f2bdc2a180e0be6d5da161f2f7f1a18586cbb132984f678"
+    },
+    {
+      "id": "florence-r2",
+      "cityKey": "florence",
+      "repeat": 2,
+      "promptSha256": "e9ab2779d7cbce315f2bdc2a180e0be6d5da161f2f7f1a18586cbb132984f678"
+    },
+    {
+      "id": "helsinki-r1",
+      "cityKey": "helsinki",
+      "repeat": 1,
+      "promptSha256": "128a644415620ea68870d45395e67f0ef96abee49368b02a3b5a55fd1de1ccb9"
+    },
+    {
+      "id": "helsinki-r2",
+      "cityKey": "helsinki",
+      "repeat": 2,
+      "promptSha256": "128a644415620ea68870d45395e67f0ef96abee49368b02a3b5a55fd1de1ccb9"
+    },
+    {
+      "id": "hiroshima-r1",
+      "cityKey": "hiroshima",
+      "repeat": 1,
+      "promptSha256": "b565023fb5ce636d26418289a861f86b5266d48dba5ee8ba94ac159e39038331"
+    },
+    {
+      "id": "hiroshima-r2",
+      "cityKey": "hiroshima",
+      "repeat": 2,
+      "promptSha256": "b565023fb5ce636d26418289a861f86b5266d48dba5ee8ba94ac159e39038331"
+    },
+    {
+      "id": "hong-kong-r1",
+      "cityKey": "hong kong",
+      "repeat": 1,
+      "promptSha256": "3890927f76d8d5f43fc06e27e997b152ebae13576d73df26a27467ecf6048432"
+    },
+    {
+      "id": "hong-kong-r2",
+      "cityKey": "hong kong",
+      "repeat": 2,
+      "promptSha256": "3890927f76d8d5f43fc06e27e997b152ebae13576d73df26a27467ecf6048432"
+    },
+    {
+      "id": "jakarta-r1",
+      "cityKey": "jakarta",
+      "repeat": 1,
+      "promptSha256": "3c4d81f37b70af48a1dfb7105ad6f1f2ccc0246172cd15558cb4853058a0513b"
+    },
+    {
+      "id": "jakarta-r2",
+      "cityKey": "jakarta",
+      "repeat": 2,
+      "promptSha256": "3c4d81f37b70af48a1dfb7105ad6f1f2ccc0246172cd15558cb4853058a0513b"
+    },
+    {
+      "id": "kathmandu-r1",
+      "cityKey": "kathmandu",
+      "repeat": 1,
+      "promptSha256": "562964530e2638c37313d66173d2afc2161455308794891fec5264e453b24339"
+    },
+    {
+      "id": "kathmandu-r2",
+      "cityKey": "kathmandu",
+      "repeat": 2,
+      "promptSha256": "562964530e2638c37313d66173d2afc2161455308794891fec5264e453b24339"
+    },
+    {
+      "id": "koh-samui-r1",
+      "cityKey": "koh samui",
+      "repeat": 1,
+      "promptSha256": "61beab144e9dacaab1997b12a5a5d7e3e4e2de18f8370eb5df271510850034b6"
+    },
+    {
+      "id": "koh-samui-r2",
+      "cityKey": "koh samui",
+      "repeat": 2,
+      "promptSha256": "61beab144e9dacaab1997b12a5a5d7e3e4e2de18f8370eb5df271510850034b6"
+    },
+    {
+      "id": "krakow-r1",
+      "cityKey": "krakow",
+      "repeat": 1,
+      "promptSha256": "c12c35059e0655ef8ad74ee03ff8f2d706db217d918e71fcdab6282eba71962c"
+    },
+    {
+      "id": "krakow-r2",
+      "cityKey": "krakow",
+      "repeat": 2,
+      "promptSha256": "c12c35059e0655ef8ad74ee03ff8f2d706db217d918e71fcdab6282eba71962c"
+    },
+    {
+      "id": "kuala-lumpur-r1",
+      "cityKey": "kuala lumpur",
+      "repeat": 1,
+      "promptSha256": "e6574883076807891ad0f83c28dc6c26b0d451ed533e5751cb1c8d1c00fe27de"
+    },
+    {
+      "id": "kuala-lumpur-r2",
+      "cityKey": "kuala lumpur",
+      "repeat": 2,
+      "promptSha256": "e6574883076807891ad0f83c28dc6c26b0d451ed533e5751cb1c8d1c00fe27de"
+    },
+    {
+      "id": "kyoto-r1",
+      "cityKey": "kyoto",
+      "repeat": 1,
+      "promptSha256": "c467098faea695a7814b0e537ee295fe48406a253a9af16dd5cfd9424f228f0b"
+    },
+    {
+      "id": "kyoto-r2",
+      "cityKey": "kyoto",
+      "repeat": 2,
+      "promptSha256": "c467098faea695a7814b0e537ee295fe48406a253a9af16dd5cfd9424f228f0b"
+    },
+    {
+      "id": "lima-r1",
+      "cityKey": "lima",
+      "repeat": 1,
+      "promptSha256": "86acdf9a24b458a967f00679529bb7d8fa134b5d7079202e94dcf41820b9bd2a"
+    },
+    {
+      "id": "lima-r2",
+      "cityKey": "lima",
+      "repeat": 2,
+      "promptSha256": "86acdf9a24b458a967f00679529bb7d8fa134b5d7079202e94dcf41820b9bd2a"
+    },
+    {
+      "id": "lisbon-r1",
+      "cityKey": "lisbon",
+      "repeat": 1,
+      "promptSha256": "7eb0d6584bc360b611f67b5e93f61c326237feb9b6b0b0f30572d1621c005163"
+    },
+    {
+      "id": "lisbon-r2",
+      "cityKey": "lisbon",
+      "repeat": 2,
+      "promptSha256": "7eb0d6584bc360b611f67b5e93f61c326237feb9b6b0b0f30572d1621c005163"
+    },
+    {
+      "id": "london-r1",
+      "cityKey": "london",
+      "repeat": 1,
+      "promptSha256": "60718107b263ba5477c2dbfea5e7911dee3d9fe50e5d56cd19d4c8d817286292"
+    },
+    {
+      "id": "london-r2",
+      "cityKey": "london",
+      "repeat": 2,
+      "promptSha256": "60718107b263ba5477c2dbfea5e7911dee3d9fe50e5d56cd19d4c8d817286292"
+    },
+    {
+      "id": "los-angeles-r1",
+      "cityKey": "los angeles",
+      "repeat": 1,
+      "promptSha256": "3456938c926069aba09cadc30840cfa37eae9591e8a9970bb04c8d0a8815c94d"
+    },
+    {
+      "id": "los-angeles-r2",
+      "cityKey": "los angeles",
+      "repeat": 2,
+      "promptSha256": "3456938c926069aba09cadc30840cfa37eae9591e8a9970bb04c8d0a8815c94d"
+    },
+    {
+      "id": "madrid-r1",
+      "cityKey": "madrid",
+      "repeat": 1,
+      "promptSha256": "2b5ac3da3b7b02f64deabebd3cfcabd13a5296952699172dee138a6a50463468"
+    },
+    {
+      "id": "madrid-r2",
+      "cityKey": "madrid",
+      "repeat": 2,
+      "promptSha256": "2b5ac3da3b7b02f64deabebd3cfcabd13a5296952699172dee138a6a50463468"
+    },
+    {
+      "id": "manila-r1",
+      "cityKey": "manila",
+      "repeat": 1,
+      "promptSha256": "a7c493f398f9cb81106d9fd3114931f52a249d782702dce81b72740ce8062d08"
+    },
+    {
+      "id": "manila-r2",
+      "cityKey": "manila",
+      "repeat": 2,
+      "promptSha256": "a7c493f398f9cb81106d9fd3114931f52a249d782702dce81b72740ce8062d08"
+    },
+    {
+      "id": "marrakech-r1",
+      "cityKey": "marrakech",
+      "repeat": 1,
+      "promptSha256": "4994ea237579d7264c8b924ae28d2a19cfc13e17b300530a20937044d9a96996"
+    },
+    {
+      "id": "marrakech-r2",
+      "cityKey": "marrakech",
+      "repeat": 2,
+      "promptSha256": "4994ea237579d7264c8b924ae28d2a19cfc13e17b300530a20937044d9a96996"
+    },
+    {
+      "id": "melbourne-r1",
+      "cityKey": "melbourne",
+      "repeat": 1,
+      "promptSha256": "3df21688d1b15edc55f41622eed2537c5f50c44ded4020f7b2a9ef7c0c698562"
+    },
+    {
+      "id": "melbourne-r2",
+      "cityKey": "melbourne",
+      "repeat": 2,
+      "promptSha256": "3df21688d1b15edc55f41622eed2537c5f50c44ded4020f7b2a9ef7c0c698562"
+    },
+    {
+      "id": "mumbai-r1",
+      "cityKey": "mumbai",
+      "repeat": 1,
+      "promptSha256": "550e1adf4103fdbaa4e8d5db4748127183da68a2ba14c38c7754125c063ee2bb"
+    },
+    {
+      "id": "mumbai-r2",
+      "cityKey": "mumbai",
+      "repeat": 2,
+      "promptSha256": "550e1adf4103fdbaa4e8d5db4748127183da68a2ba14c38c7754125c063ee2bb"
+    },
+    {
+      "id": "nara-r1",
+      "cityKey": "nara",
+      "repeat": 1,
+      "promptSha256": "4ac67835c358e3ce8bc3e534e3b2b62de0ec19b33b9de5fa0723b0bbb8816876"
+    },
+    {
+      "id": "nara-r2",
+      "cityKey": "nara",
+      "repeat": 2,
+      "promptSha256": "4ac67835c358e3ce8bc3e534e3b2b62de0ec19b33b9de5fa0723b0bbb8816876"
+    },
+    {
+      "id": "nha-trang-r1",
+      "cityKey": "nha trang",
+      "repeat": 1,
+      "promptSha256": "84dddd64ac1c81401a0c586c87db99dad19557e69c028f71399af69324c981b3"
+    },
+    {
+      "id": "nha-trang-r2",
+      "cityKey": "nha trang",
+      "repeat": 2,
+      "promptSha256": "84dddd64ac1c81401a0c586c87db99dad19557e69c028f71399af69324c981b3"
+    },
+    {
+      "id": "penang-r1",
+      "cityKey": "penang",
+      "repeat": 1,
+      "promptSha256": "65c43ff1da3303584790f158d2dfe928afbf7606574d59e491a36cc592e773a0"
+    },
+    {
+      "id": "penang-r2",
+      "cityKey": "penang",
+      "repeat": 2,
+      "promptSha256": "65c43ff1da3303584790f158d2dfe928afbf7606574d59e491a36cc592e773a0"
+    },
+    {
+      "id": "phnom-penh-r1",
+      "cityKey": "phnom penh",
+      "repeat": 1,
+      "promptSha256": "a52958414c8337a8d174050fef188e63446979d05b1cd56711f3f9fbe0bbf4ff"
+    },
+    {
+      "id": "phnom-penh-r2",
+      "cityKey": "phnom penh",
+      "repeat": 2,
+      "promptSha256": "a52958414c8337a8d174050fef188e63446979d05b1cd56711f3f9fbe0bbf4ff"
+    },
+    {
+      "id": "phuket-r1",
+      "cityKey": "phuket",
+      "repeat": 1,
+      "promptSha256": "e610347145d0b4ded1e726852ecac192fbcd4435d108968cb09c076c1ca92053"
+    },
+    {
+      "id": "phuket-r2",
+      "cityKey": "phuket",
+      "repeat": 2,
+      "promptSha256": "e610347145d0b4ded1e726852ecac192fbcd4435d108968cb09c076c1ca92053"
+    },
+    {
+      "id": "porto-r1",
+      "cityKey": "porto",
+      "repeat": 1,
+      "promptSha256": "c3d7c7a4091ac2c6b6c47abe334cee313bfa77604ccaf3d5257bac00397dc3a9"
+    },
+    {
+      "id": "porto-r2",
+      "cityKey": "porto",
+      "repeat": 2,
+      "promptSha256": "c3d7c7a4091ac2c6b6c47abe334cee313bfa77604ccaf3d5257bac00397dc3a9"
+    },
+    {
+      "id": "reykjavik-r1",
+      "cityKey": "reykjavik",
+      "repeat": 1,
+      "promptSha256": "bca1f247d09a7c0edd9b755025f61e2c34c4282d2547cd285f484b5f1a1614d3"
+    },
+    {
+      "id": "reykjavik-r2",
+      "cityKey": "reykjavik",
+      "repeat": 2,
+      "promptSha256": "bca1f247d09a7c0edd9b755025f61e2c34c4282d2547cd285f484b5f1a1614d3"
+    },
+    {
+      "id": "rio-de-janeiro-r1",
+      "cityKey": "rio de janeiro",
+      "repeat": 1,
+      "promptSha256": "a7f0d2f3ab5601c383fe0eda941d5a41f4019b3b7d6024714befd1adfae88a0f"
+    },
+    {
+      "id": "rio-de-janeiro-r2",
+      "cityKey": "rio de janeiro",
+      "repeat": 2,
+      "promptSha256": "a7f0d2f3ab5601c383fe0eda941d5a41f4019b3b7d6024714befd1adfae88a0f"
+    },
+    {
+      "id": "rome-r1",
+      "cityKey": "rome",
+      "repeat": 1,
+      "promptSha256": "61554950ec01b2ea093b4db408d4808aea8b5666ae162ff29db2ca948952b306"
+    },
+    {
+      "id": "rome-r2",
+      "cityKey": "rome",
+      "repeat": 2,
+      "promptSha256": "61554950ec01b2ea093b4db408d4808aea8b5666ae162ff29db2ca948952b306"
+    },
+    {
+      "id": "santiago-r1",
+      "cityKey": "santiago",
+      "repeat": 1,
+      "promptSha256": "1f214c0b51bb84d9a79a792c5203512137ae322b3c0bd5382d68b47193d5ad03"
+    },
+    {
+      "id": "santiago-r2",
+      "cityKey": "santiago",
+      "repeat": 2,
+      "promptSha256": "1f214c0b51bb84d9a79a792c5203512137ae322b3c0bd5382d68b47193d5ad03"
+    },
+    {
+      "id": "siem-reap-r1",
+      "cityKey": "siem reap",
+      "repeat": 1,
+      "promptSha256": "35a0a8df8b8c7c9118183515ac03422719103150b85a96995ba6e593138b4fd5"
+    },
+    {
+      "id": "siem-reap-r2",
+      "cityKey": "siem reap",
+      "repeat": 2,
+      "promptSha256": "35a0a8df8b8c7c9118183515ac03422719103150b85a96995ba6e593138b4fd5"
+    },
+    {
+      "id": "sydney-r1",
+      "cityKey": "sydney",
+      "repeat": 1,
+      "promptSha256": "244da00d9644ae105faed3a75a3ec91e0c7db01978a2f91beefaa7f08224e38a"
+    },
+    {
+      "id": "sydney-r2",
+      "cityKey": "sydney",
+      "repeat": 2,
+      "promptSha256": "244da00d9644ae105faed3a75a3ec91e0c7db01978a2f91beefaa7f08224e38a"
+    },
+    {
+      "id": "taipei-r1",
+      "cityKey": "taipei",
+      "repeat": 1,
+      "promptSha256": "a7102b18a7969cf73b2075e0239cee4c91466d4cbfc8bb2d532e85dff785bfe2"
+    },
+    {
+      "id": "taipei-r2",
+      "cityKey": "taipei",
+      "repeat": 2,
+      "promptSha256": "a7102b18a7969cf73b2075e0239cee4c91466d4cbfc8bb2d532e85dff785bfe2"
+    },
+    {
+      "id": "tbilisi-r1",
+      "cityKey": "tbilisi",
+      "repeat": 1,
+      "promptSha256": "049a88fa68937c9c12636dd4a2034b9e7079a0d44868a672ae14d96781f36c62"
+    },
+    {
+      "id": "tbilisi-r2",
+      "cityKey": "tbilisi",
+      "repeat": 2,
+      "promptSha256": "049a88fa68937c9c12636dd4a2034b9e7079a0d44868a672ae14d96781f36c62"
+    },
+    {
+      "id": "tel-aviv-r1",
+      "cityKey": "tel aviv",
+      "repeat": 1,
+      "promptSha256": "f78420f2e3d04c0f405ae9e7ddbb3fa6d14901df79e7ea3af9c209710f26ae40"
+    },
+    {
+      "id": "tel-aviv-r2",
+      "cityKey": "tel aviv",
+      "repeat": 2,
+      "promptSha256": "f78420f2e3d04c0f405ae9e7ddbb3fa6d14901df79e7ea3af9c209710f26ae40"
+    },
+    {
+      "id": "vienna-r1",
+      "cityKey": "vienna",
+      "repeat": 1,
+      "promptSha256": "7f3d8b84dcd337d96ca2a2bec7ae1cc13880eaca287b2d2d9a54767fd7c59412"
+    },
+    {
+      "id": "vienna-r2",
+      "cityKey": "vienna",
+      "repeat": 2,
+      "promptSha256": "7f3d8b84dcd337d96ca2a2bec7ae1cc13880eaca287b2d2d9a54767fd7c59412"
+    },
+    {
+      "id": "vientiane-r1",
+      "cityKey": "vientiane",
+      "repeat": 1,
+      "promptSha256": "32a5351da949a0dfcfd4e994d56c1f842f8309e1670c98715438f11cf3123987"
+    },
+    {
+      "id": "vientiane-r2",
+      "cityKey": "vientiane",
+      "repeat": 2,
+      "promptSha256": "32a5351da949a0dfcfd4e994d56c1f842f8309e1670c98715438f11cf3123987"
+    },
+    {
+      "id": "yogyakarta-r1",
+      "cityKey": "yogyakarta",
+      "repeat": 1,
+      "promptSha256": "2155dd996e32436e2bbeea884b10a9cd8bb0b2147e4ad2dd22c77f8de93c04ca"
+    },
+    {
+      "id": "yogyakarta-r2",
+      "cityKey": "yogyakarta",
+      "repeat": 2,
+      "promptSha256": "2155dd996e32436e2bbeea884b10a9cd8bb0b2147e4ad2dd22c77f8de93c04ca"
+    }
+  ]
+}

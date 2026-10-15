@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Berlin price levels for July 2026; no live listings or booking pages were checked. Restaurant and cafe anchors are firmer than accommodation, which varies with July demand. Cocktail and wine are less certain and were sanity-checked against the beer price. EUR is converted at an assumed rate of about 1.16 USD per EUR, not verified. The FX figure comes from RBA search results; the RBA page was not opened directly.",
+  "comparable_city_reasoning": "Anchored to large German city price levels such as Hamburg and Cologne, adjusted for Berlin's moderate restaurant prices and July accommodation demand. No comparable-city data was searched.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.5 L draft Pilsner at a neighborhood bar or restaurant, about EUR 5.00",
+    "coffee": "cappuccino at a neighborhood cafe, about EUR 3.90",
+    "inexp_meal_1p": "one main course at a casual Turkish or Vietnamese restaurant, no drink, about EUR 13",
+    "midrange_meal_2p": "two three-course dinners at a mid-range restaurant, no drinks, about EUR 85 total",
+    "cocktail": "classic cocktail such as a Negroni at a bar, about EUR 12",
+    "wine_glass": "0.2 L glass of house wine at a restaurant, about EUR 6.50",
+    "hostel_dorm_1p": "bed in a 4 to 8 bed mixed dorm at a central registered hostel in July, about EUR 38 per night",
+    "hostel_private_2p": "private double room at a central registered hostel in July, about EUR 90 per night",
+    "hotel_1star_2p": "basic double room at a registered Pension or 1-star hotel in July, about EUR 100 per night",
+    "hotel_3star_2p": "double room at a registered 3-star hotel in July, about EUR 165 per night"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.52,
+    "inexp_meal_1p": 15.08,
+    "midrange_meal_2p": 98.60,
+    "cocktail": 13.92,
+    "wine_glass": 7.54,
+    "hostel_dorm_1p": 44.08,
+    "hostel_private_2p": 104.40,
+    "hotel_1star_2p": 116.00,
+    "hotel_3star_2p": 191.40
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied comparables; no price pages or listings were checked. Restaurant and cafe anchors are moderately reliable; July hostel and hotel rates vary widely and are less certain. Cocktail and house wine glass are estimated from the local beer relationship (cocktail about 2.2x beer, wine glass close to beer) because direct knowledge is weaker. The FX value is from search-result text attributed to the RBA homepage for 14 October 2026, 4.00pm Sydney time; the page was not opened directly, so confirm against the RBA F11.1 table before use.",
+  "comparable_city_reasoning": "Calibrated to the supplied Madrid, Rome and Amsterdam levels: Athens restaurant anchors sit somewhat below Rome and Madrid, reflecting generally lower Greek dining costs. The cappuccino, beer and hostel anchors fall between these comparables, and July hotel rates are set near Madrid's levels, below Rome, for peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 62.00,
+    "cocktail": 13.00,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 168.00
+  }
+}

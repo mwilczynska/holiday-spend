@@ -1,0 +1,26 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Low confidence. All ten anchors are holistic model estimates from general knowledge of Cairo price levels, not checked against live listings or sources. Egyptian pound prices are volatile and inflation-driven, so absolute 2026 levels are uncertain by a wide margin; the relative ordering (hostel below hotel, restaurant tiers) is more reliable. Cocktail and wine were set relative to the beer anchor (about 2.3x and 1.9x) because direct knowledge is weak. USAGE LIMIT REACHED: the session usage limit was hit during this task and resets at 2:40am America/Mexico_City. Done: the anchor estimates, and one standard RBA search that returned no verified current observation. The extended search and two follow-up searches failed on the limit. Left to do: obtain the latest RBA USD/AUD observation from https://www.rba.gov.au/statistics/frequency/exchange-rates.html and fill the fx fields. A search summary cited 0.7088 for 2026-03-20, but it was unverified and stale, so I did not use it. The fx fields stay null until a verified observation is obtained.",
+  "comparable_city_reasoning": "No single comparable city was used. The estimate is loosely benchmarked against other large, budget-oriented North African and Middle Eastern tourist capitals, adjusted to Cairo's local EGP price levels. Egypt is grouped under Africa because Cairo is geographically in North Africa.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "EGP",
+  "anchors_local": {
+    "beer": 130,
+    "coffee": 110,
+    "inexp_meal_1p": 180,
+    "midrange_meal_2p": 1600,
+    "cocktail": 300,
+    "wine_glass": 250,
+    "hostel_dorm_1p": 500,
+    "hostel_private_2p": 1400,
+    "hotel_1star_2p": 1000,
+    "hotel_3star_2p": 3500
+  }
+}

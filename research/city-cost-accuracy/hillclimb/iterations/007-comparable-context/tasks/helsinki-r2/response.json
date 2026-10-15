@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate with no live price checks; calibrated to the supplied Amsterdam, Florence and Porto values plus general knowledge of the requested city's price level. Restaurant and coffee anchors are moderately reliable; hostel and budget-hotel anchors are least certain and may be low for July peak rates. Cocktail and wine rest on the beer relationship (cocktail about 1.85x beer, wine glass about 1.5x beer) because direct knowledge is weak. The FX value of 0.7002 comes from a search summary that attributes it to the RBA exchange-rates page. I did not read that page directly, and a follow-up search could not confirm the figure, so verify it before use.",
+  "comparable_city_reasoning": "Calibrated to the supplied Amsterdam, Florence and Porto USD observations, adjusted from general knowledge of the requested city's price level: drinks and mid-range dining above Amsterdam, inexpensive meals close to Amsterdam, three-star and basic hotels somewhat below Amsterdam, and hostel beds above all three comparables. No supplied comparable covers cocktails or wine.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 22.50,
+    "midrange_meal_2p": 108.00,
+    "cocktail": 17.50,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 155.00,
+    "hotel_3star_2p": 245.00
+  }
+}

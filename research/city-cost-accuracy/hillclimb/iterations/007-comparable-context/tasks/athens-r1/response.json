@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied comparables, not checked against live menus, listings or booking pages. Restaurant and coffee anchors are moderately confident; accommodation is least certain given July peak-season variation; cocktail and wine rely on the beer relationship. EUR-to-USD was assumed at roughly 1.12-1.17 without verification. No verified RBA USD/AUD observation was retrieved (searches returned only market quotes and outdated or conflicting RBA figures), so fx fields are null. Take the observation from https://www.rba.gov.au/statistics/frequency/exchange-rates.html before any AUD conversion.",
+  "comparable_city_reasoning": "No Athens comparable was supplied; anchors are calibrated to Madrid, Rome and Amsterdam. Restaurant meals are set below Rome and Madrid, beer and coffee near Madrid-to-Rome levels, and accommodation around Madrid and below Rome for July demand. Amsterdam is used only as an upper bound. Cocktail is set at about 2.3x beer and wine glass at about 1.2x beer because direct price knowledge is weaker.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.40,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 64.00,
+    "cocktail": 12.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 74.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 160.00
+  }
+}

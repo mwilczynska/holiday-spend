@@ -1,0 +1,22 @@
+{
+  "split": "dev",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "cliModel": "claude-haiku-5-5",
+  "effort": "max",
+  "id": "003-current-prices",
+  "parent": "001-v11-haiku-baseline",
+  "family": "date",
+  "hypothesis": "H3: the legacy CSV underprices meals and coffee by about 25%, consistent with stale price memory. Tell the model its remembered prices may be dated and to bring them forward to the reference date.",
+  "repeats": 2,
+  "promptTemplate": "prompt.md",
+  "derivedFrom": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "replacements": [
+    [
+      "Use the definitions consistently.",
+      "Use the definitions consistently. Prices must be current for the reference date. Remembered prices are often several years old, and restaurant, drink and accommodation prices in most countries have risen since 2022, in some by much more than general inflation. Bring any remembered price forward to the reference date, allowing for local price growth and exchange-rate changes since then."
+    ]
+  ]
+}

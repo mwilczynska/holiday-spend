@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge, calibrated to the supplied mid-2026 USD observations for Madrid, Florence and Lisbon. No live booking pages, menus or listings were inspected, and no web search was used for city prices. Restaurant, beer and coffee anchors are the most reliable. Hostel and hotel anchors assume July peak-season demand and carry roughly +/-20-25% uncertainty. Cocktail is set at about 2.2x the beer anchor and wine glass at about 1.4x, a beer-relative basis cross-checked against typical Krakow bar prices. USAGE LIMIT REACHED: both RBA search attempts were rejected with a session limit (resets 2:40am America/Mexico_City), so the fx block is null and no RBA observation or source is claimed. Done: all ten USD anchors. Left: the RBA USD/AUD observation and its provenance, which must be re-run after the limit resets.",
+  "comparable_city_reasoning": "Calibrated to the supplied mid-2026 USD observations for Madrid, Florence and Lisbon, adjusted for Krakow's lower Polish restaurant and hotel price levels: meals and hotels about 0.85-0.95x of Lisbon and Madrid, beer and coffee near parity with them, and hostel beds near the comparable average. Florence was treated as an outlier for accommodation and given little weight.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 4.10,
+    "coffee": 3.20,
+    "inexp_meal_1p": 11.50,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 56.00,
+    "hotel_1star_2p": 78.00,
+    "hotel_3star_2p": 150.00
+  }
+}

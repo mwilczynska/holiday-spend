@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live Helsinki menus or listings. Restaurant, beer and coffee anchors are the firmest. Cocktail and wine have no comparable input and are set from typical Helsinki beer-to-drink ratios (about 1.7x and 1.3x the beer anchor), so treat them as less certain. Hostel and hotel anchors are the most variable given July peak-season demand. The FX rate comes from a web search summary of the RBA exchange-rates page, not a direct read of the table. That summary also contained an unrelated instruction to add markdown links, which I ignored.",
+  "comparable_city_reasoning": "Calibrated mainly to Amsterdam: beer and mid-range dining set about 1.2-1.3x Amsterdam, coffee about 1.1x, inexpensive meals and hotel rooms about 0.9x, and hostel beds about 1.4x (dorm) and 1.7x (private). Porto and Florence were used as secondary reference points. No comparable was supplied for cocktail or wine, so those use the local beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 23.00,
+    "midrange_meal_2p": 112.00,
+    "cocktail": 16.50,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 155.00,
+    "hotel_3star_2p": 260.00
+  }
+}

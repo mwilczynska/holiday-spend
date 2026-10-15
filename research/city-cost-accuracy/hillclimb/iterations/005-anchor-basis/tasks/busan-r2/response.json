@@ -1,0 +1,37 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Busan price levels, not live listings or booking pages. Restaurant, beer and cafe anchors are moderate confidence; accommodation is less certain given July peak-season and Haeundae rate swings. Cocktail and wine_glass use the beer relationship (roughly two to two-and-a-half times the beer example) because direct knowledge is weaker. Local-currency examples assume about 1,400 KRW per USD.",
+  "comparable_city_reasoning": "Regional East Asian basis: a mid-to-large South Korean port city priced below Seoul, with dining and budget-to-mid hotel levels broadly comparable to Fukuoka; no named listings were checked.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "500 ml draft or bottled domestic beer at a Busan restaurant, about 6,000 KRW",
+    "coffee": "cappuccino at a neighborhood cafe in Seomyeon or Haeundae, about 5,500 KRW",
+    "inexp_meal_1p": "pork-rice soup (dwaeji gukbap) at a local eatery, about 10,000 KRW",
+    "midrange_meal_2p": "three-course dinner for two at a mid-range restaurant in Haeundae or Seomyeon, about 120,000 KRW total",
+    "cocktail": "standard cocktail at a neighborhood bar in Seomyeon or Gwangalli, about 14,000 KRW",
+    "wine_glass": "glass of house wine at a wine bar or restaurant, about 12,000 KRW",
+    "hostel_dorm_1p": "dorm bed in a registered hostel in Nampo or Haeundae, July rate, about 35,000 KRW per night",
+    "hostel_private_2p": "private double room in a registered hostel or guesthouse, July rate, about 70,000 KRW per night",
+    "hotel_1star_2p": "basic registered yeogwan (budget motel) double room, about 60,000 KRW per night",
+    "hotel_3star_2p": "registered three-star business hotel double room in Seomyeon or Haeundae, July rate, about 170,000 KRW per night"
+  },
+  "anchors_usd": {
+    "beer": 4.29,
+    "coffee": 3.93,
+    "inexp_meal_1p": 7.14,
+    "midrange_meal_2p": 85.71,
+    "cocktail": 10.00,
+    "wine_glass": 8.57,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 42.86,
+    "hotel_3star_2p": 121.43
+  }
+}

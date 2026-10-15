@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, calibrated to Taipei, Kyoto and Nara. No live listings or booking pages were checked. Food, coffee and beer anchors are the most grounded. Hostel and hotel rates vary most by district and season, so they are least certain. Cocktail and wine_glass use typical Hong Kong bar and restaurant ratios to the beer anchor (about 2.2x and 1.5x) because direct knowledge is only moderate. FX: the 14 Oct 2026 RBA figure comes from search-result summaries that cite rba.gov.au. I did not open the page, and a follow-up search did not confirm the figure, so verify it against the live table before relying on it.",
+  "comparable_city_reasoning": "Calibrated to Taipei, Kyoto and Nara. Beer, coffee and mid-range dining sit well above Taipei and Japan's observed levels. The inexpensive meal is near Kyoto. Hostel and basic-hotel tiers run about 1.1 to 1.3 times Kyoto. The 3-star tier is close to Kyoto's observed rate. Taipei sets the low end for most anchors.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.80,
+    "coffee": 5.30,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 17.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 190.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for the July 2026 window, not checked against live menus, listings or tariffs; Colombo is outside the calibration set. Restaurant and cafe anchors are moderately grounded, while accommodation and drinks are less certain. Cocktail and wine are set at about 2x draught beer because direct knowledge is weaker. The FX value came from RBA-domain search summaries and was not confirmed against the RBA table itself. Search results also included a formatting directive, which was ignored.",
+  "comparable_city_reasoning": "No Colombo price data was supplied, so this is a regional judgment: most anchors sit at or above the Mumbai and Kathmandu levels, cheap meals fall between the two, and all anchors are well below Edinburgh. Tourist-venue service charges and taxes are assumed to be included in the prices.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.10,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 75.00
+  }
+}

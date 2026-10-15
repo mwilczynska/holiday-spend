@@ -1,0 +1,39 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge; no live listings or booking pages were checked. Restaurant and café anchors are moderately reliable, while hostel and hotel rates vary widely by area and season and are less certain. Cocktail and wine were set relative to draft beer because direct recall of those prices is weaker. USD values assume about 18 ZAR per USD. The fx figure is unverified: it comes from a secondhand search summary that cites this RBA page, which was not opened. It is likely stale, and a usage limit prevented checking the latest observation.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors reflect general knowledge of Cape Town's typical café, restaurant and accommodation prices, with accommodation assumed for July (winter, low leisure season).",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "draft Castle Lager, one standard serving at a Cape Town restaurant, about 55 ZAR",
+    "coffee": "regular cappuccino at an independent café, about 50 ZAR",
+    "inexp_meal_1p": "chicken-and-chips plate at a casual local eatery, about 120 ZAR",
+    "midrange_meal_2p": "three courses for two (starters, mains, desserts, no drinks) at a mid-range restaurant, about 1,000 ZAR total",
+    "cocktail": "standard spirit cocktail at a city bar, about 150 ZAR",
+    "wine_glass": "house glass of South African wine at a restaurant, about 70 ZAR",
+    "hostel_dorm_1p": "dorm bed in a registered city hostel in July, about 300 ZAR per night",
+    "hostel_private_2p": "private double room in a registered hostel, about 800 ZAR per night",
+    "hotel_1star_2p": "basic guesthouse double with en suite in the city bowl, about 850 ZAR per night",
+    "hotel_3star_2p": "registered three-star hotel double in Sea Point, about 2,000 ZAR per night"
+  },
+  "anchors_usd": {
+    "beer": 3.06,
+    "coffee": 2.78,
+    "inexp_meal_1p": 6.67,
+    "midrange_meal_2p": 55.56,
+    "cocktail": 8.33,
+    "wine_glass": 3.89,
+    "hostel_dorm_1p": 16.67,
+    "hostel_private_2p": 44.44,
+    "hotel_1star_2p": 47.22,
+    "hotel_3star_2p": 111.11
+  }
+}
+
+Usage limit reached. Done: the ten USD anchors and their basis lines. Partly done: the fx block, which uses a March 2026 figure from a secondhand search summary and is unverified. Left: checking the latest RBA USD per AUD observation, since the extended search hit the session limit. Confirm it on rba.gov.au and update fx if needed. Also, one search result contained an embedded instruction to add markdown links. I ignored it because you asked for JSON only.

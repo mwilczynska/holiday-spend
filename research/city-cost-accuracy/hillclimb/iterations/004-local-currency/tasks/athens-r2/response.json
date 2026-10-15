@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July peak-season pricing, not checked against live menus, listings or booking pages. Restaurant and beer anchors are more reliable than accommodation, which swings with demand, location and booking lead time. Cocktail and wine anchors were cross-checked against the beer anchor because direct knowledge of those prices is thinner. The FX value comes from search results citing the RBA Exchange Rates page; that page was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked loosely against other Southern European capitals with similar summer tourism demand, such as Lisbon. No live listings were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "EUR",
+  "anchors_local": {
+    "beer": 5.50,
+    "coffee": 3.70,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 12.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 150.00
+  }
+}

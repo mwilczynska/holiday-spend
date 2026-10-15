@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus or booking listings; prices were brought forward to July 2026 with assumed local price growth. Argentine peso prices and their USD equivalents have been highly volatile, so ranges are wide, especially for accommodation, which assumes moderate non-peak July demand. Cocktail is set at about 2x the draft-beer anchor and wine glass at about 1x, because direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "Regional basis: Latin American capital-city tourist pricing, placed in the range of other large South American capitals (such as Santiago, Montevideo and Sao Paulo) and below Western European capitals, from general knowledge only.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.75,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 9.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 56.00,
+    "hotel_3star_2p": 105.00
+  }
+}
