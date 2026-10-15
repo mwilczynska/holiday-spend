@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Hiroshima price levels; no live listings, menus, or booking pages were consulted. Restaurant anchors are moderately reliable; accommodation is least certain because July demand and room rates vary widely by date. Yen-based values assume roughly 150 JPY per USD, so currency moves could shift the USD anchors. Cocktail and wine_glass were set relative to the beer anchor using typical local price ratios (about 1.6x and 1.4x) because direct knowledge is weaker. The FX value came from a search-result summary of the RBA exchange-rate table; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked against other large regional Japanese cities such as Okayama and Sendai, with dining and hotel levels set below Tokyo, Kyoto, and Osaka and hotel rates raised for July tourist demand from Peace Memorial Park and Miyajima visits.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.30,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 115.00
+  }
+}

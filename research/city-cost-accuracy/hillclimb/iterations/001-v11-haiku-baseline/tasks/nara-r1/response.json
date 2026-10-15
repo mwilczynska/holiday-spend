@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge; no live listings or booking pages were checked. Restaurant and cafe anchors are moderate confidence; cocktail and wine are inferred from the local beer relationship because direct knowledge is weaker; accommodation is lower confidence given July peak-season variability. Assumes roughly 150 yen per USD. FX value is from search-result summaries citing the RBA exchange-rates table, not a direct page read, and some RBA pages in the results showed earlier dates.",
+  "comparable_city_reasoning": "No single named comparable city. Regional basis: Kansai heritage cities near Kyoto and Osaka; dining and cafe prices are set against casual Kansai tourist districts, and accommodation is estimated below central Kyoto hotel rates.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 67.00,
+    "hotel_3star_2p": 130.00
+  }
+}

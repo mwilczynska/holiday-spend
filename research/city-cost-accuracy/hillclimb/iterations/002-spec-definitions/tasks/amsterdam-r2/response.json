@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 from general knowledge of Amsterdam price levels, not checked against live menus, bar lists or booking pages. Beer, coffee and restaurant anchors are moderately reliable; hostel and hotel anchors are least reliable given peak-season rate swings. Cocktail is set at about 2.5x beer and wine at about 1.5x because direct knowledge of those prices is weaker. Euro prices were converted at an assumed EUR/USD near 1.16, not a live rate, so all USD anchors move with that assumption. The RBA figure came from search-result text attributed to the RBA Exchange Rates page; the page was not opened directly, and that text's dating conflicts with the 2026-10-14 generation date.",
+  "comparable_city_reasoning": "Benchmarked to other high-cost Western European capitals with strong tourism, notably Brussels for restaurant, cafe and beer levels. Lodging reflects Amsterdam's tight hotel supply and July peak demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.80,
+    "inexp_meal_1p": 19.50,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 16.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 270.00
+  }
+}

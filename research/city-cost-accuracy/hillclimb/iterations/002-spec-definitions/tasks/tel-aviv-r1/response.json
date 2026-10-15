@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge; no live menus, listings or booking pages were checked. Food and beer anchors are the most reliable. Cocktail and wine_glass are set from the beer price because direct knowledge is weaker. Accommodation has the widest range, and regional conditions in July 2026 could move it sharply. FX: the newest RBA figure I could surface is dated 20 March 2026, taken from search-result text describing the RBA page, which I did not open directly. A third-party site reports 0.6979 for 9 October 2026, which I could not verify. The server should refresh the rate before converting.",
+  "comparable_city_reasoning": "No single exact comparator. Tel Aviv is among the costliest cities in the region, so high-cost Western European cities were used as a loose reference for dining, coffee and beer. Cocktail and wine prices follow the beer price. Accommodation reflects Tel Aviv's dense, high-demand summer market rather than a specific city.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.50,
+    "coffee": 5.25,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 15.50,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 260.00
+  }
+}

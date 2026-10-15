@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not checked against live listings or July 2026 prices. Food and coffee anchors are moderate confidence. Alcohol is lower confidence: cocktail and wine were set from the local beer relationship (about 2x and 2.3x the beer anchor) because direct knowledge of ordinary-venue prices is weak. Hostel and hotel ranges are broad. USD values assume roughly IDR 16,000–17,000 per USD and include typical tax and service. The FX figure comes from search-result summaries of RBA exchange-rate pages, which I did not open directly.",
+  "comparable_city_reasoning": "Regional basis: large Southeast Asian capitals. Food and coffee are set near local rupiah-priced dining levels; alcohol is set high relative to food because of Indonesian excise and import duties; hostel and hotel tiers follow central Jakarta budget and business-hotel stock. No single named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 2.10,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 55.00
+  }
+}

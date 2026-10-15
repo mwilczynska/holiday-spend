@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live menus or listings. July 2026 is a forward window that may not reflect changes after the model's knowledge cutoff, including regional security or tourism shifts. Restaurant and cafe anchors are moderate confidence. Alcohol is least certain because of licensing limits and heavy taxation, so cocktail and wine are set off the beer anchor (about 1.9x and 1.4x) since direct bar-price knowledge is weak. Accommodation tiers vary widely by district and timing. The FX figure is the 14 Oct 2026 RBA observation as reported in search results; I did not check it against the RBA table directly.",
+  "comparable_city_reasoning": "No single comparable city. Regional basis: mid-cost Middle East and Levant capitals, with food and hotel prices set below Western European and Gulf capitals and alcohol priced high relative to food because of taxation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.80,
+    "coffee": 2.70,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 9.00,
+    "wine_glass": 6.70,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 110.00
+  }
+}

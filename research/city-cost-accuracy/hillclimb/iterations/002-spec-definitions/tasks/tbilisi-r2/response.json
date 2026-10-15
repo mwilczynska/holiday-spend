@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge; no live menus, booking pages or listings were checked. Cafe, beer and restaurant anchors are moderately certain; hostel and hotel anchors are least certain given July demand. Cocktail and wine_glass were cross-checked against the beer anchor (cocktail about 2.3x beer, wine about 1.25x beer) since direct knowledge is weaker. USD values carry lari exchange-rate drift. FX value comes from search-result summaries of rba.gov.au pages, not a direct page read; one result still showed 13 Oct 2026 at 0.6961.",
+  "comparable_city_reasoning": "No single comparable city. Regional basis is Caucasus and Eastern European capitals with similar price levels and tourist demand (for example Yerevan, Sofia, Belgrade). Region set to Europe for travel-price grouping although Georgia is transcontinental. Hostel and hotel anchors reflect July high-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 2.60,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 6.50,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 90.00
+  }
+}

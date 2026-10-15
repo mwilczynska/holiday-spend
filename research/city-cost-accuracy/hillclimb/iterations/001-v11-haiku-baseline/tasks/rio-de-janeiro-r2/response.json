@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge for a July 2026 window (Brazilian winter, outside Carnival and New Year peaks); no live listings or booking pages were checked. Restaurant and beer anchors are more reliable than accommodation, which varies by neighborhood and booking date. Cocktail and wine_glass were anchored to the local beer relationship (about 1.6x and 1.9x the beer anchor) because direct knowledge of those prices is weaker. Local prices are in BRL, so the USD anchors also carry currency-movement risk. The FX value was taken from RBA-site search-result text; the F11 table itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city. Regional basis: Latin American coastal tourist cities with similar restaurant and accommodation price levels, benchmarked to Rio's beach-district pricing.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.40,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 5.75,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 80.00
+  }
+}

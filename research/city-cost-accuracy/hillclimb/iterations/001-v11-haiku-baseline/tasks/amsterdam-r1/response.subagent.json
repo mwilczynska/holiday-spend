@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Amsterdam prices for July 2026. Not checked against live menus, listings or booking pages. Restaurant and cafe anchors are more reliable than accommodation, which varies widely in July peak season. Cocktail and wine were set by reference to the beer anchor because direct knowledge of bar prices is weaker: the cocktail is about 2.8 times the beer anchor and the wine glass about 1.6 times.",
+  "comparable_city_reasoning": "Compared with other large northwest European cities with similar restaurant pricing and strong summer hotel demand, with accommodation set at July peak-season levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.80,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 17.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 290.00
+  }
+}

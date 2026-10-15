@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Athens price levels for July 2026; no live listings or booking pages were checked. Restaurant and drink anchors are moderately confident; accommodation is least certain because July room rates vary widely by area and lead time. Cocktail and wine were checked against draft-beer ratios (cocktail about 2x a draft beer; house wine glass about equal to a draft beer) since direct knowledge of those prices is moderate. Euro prices assume roughly 1.16 USD per EUR. The FX value was located via RBA-domain search results and cross-checked across two searches; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "No specific comparable city's live prices were consulted. Based on general knowledge of central Athens, loosely benchmarked against other southern European capitals with similar tourism seasonality, with Greek restaurant and hotel prices set below Western European capital levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.80,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.50,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 82.00,
+    "hotel_3star_2p": 155.00
+  }
+}

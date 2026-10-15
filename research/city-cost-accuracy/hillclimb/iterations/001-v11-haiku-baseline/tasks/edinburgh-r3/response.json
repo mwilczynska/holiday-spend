@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Edinburgh price levels for July 2026; no live menus, listings or booking pages were checked. Restaurant and cafe anchors are moderately reliable. Accommodation is least certain because summer rates vary by area and booking date, and July sits below the August Festival peak. Cocktail and wine anchors use typical UK bar price ratios to the beer anchor. USD figures use approximate GBP/USD levels from general knowledge, not a live rate. The FX value comes from search results and snippets for the RBA exchange-rates page, which I did not open directly, and the 13 October 2026 date was not confirmed by a second search.",
+  "comparable_city_reasoning": "Benchmarked to comparable UK cities such as Glasgow and York, adjusted upward for Edinburgh's stronger summer accommodation demand and somewhat higher city-centre restaurant prices. No single exact comparable city.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 15.50,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 270.00
+  }
+}

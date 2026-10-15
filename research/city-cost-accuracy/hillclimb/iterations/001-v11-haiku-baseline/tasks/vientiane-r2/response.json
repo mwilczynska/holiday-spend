@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied context only; price anchors were not sourced from web search or live listings. Restaurant and beer anchors are moderately reliable. Cocktail and wine are scaled from the local beer price because direct knowledge of those prices is weak. Accommodation, especially the 3-star tier, and wine carry the most uncertainty. Local prices are kip-denominated, which adds exchange-rate uncertainty for the July 2026 window.",
+  "comparable_city_reasoning": "No direct database comparable. Estimated relative to budget-oriented Southeast Asian tourist cities with similar price levels, such as Phnom Penh and Luang Prabang. Cocktail and wine anchors use the local beer price as the reference point.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.10,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 60.00
+  }
+}

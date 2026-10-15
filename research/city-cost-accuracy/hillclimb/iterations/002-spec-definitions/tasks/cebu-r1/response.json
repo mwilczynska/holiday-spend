@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Metro Cebu prices; no live menus, listings, or booking pages were inspected. Beer and restaurant anchors are the most reliable; room rates are least certain because they vary widely by area, season, and room type. Cocktail and wine_glass have weak direct knowledge and were derived from the beer anchor using typical local bar markups. Local prices were converted to USD at approximate, not live, rates. The FX observation came from search-result summaries of the RBA exchange-rates page; the page itself was not read directly.",
+  "comparable_city_reasoning": "Regional basis only: general Philippine urban and tourist-city price levels for Metro Cebu, loosely cross-checked against other mid-sized Southeast Asian tourist cities. No single named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 2.40,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 10.50,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 66.00
+  }
+}

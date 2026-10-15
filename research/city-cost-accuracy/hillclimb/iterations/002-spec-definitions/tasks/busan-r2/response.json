@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Busan price levels for July 2026; no live menus, listings or booking pages were checked. Food, beer and coffee anchors are the more reliable ones. Accommodation varies by district and date, and July is peak beach season, so the hostel and hotel anchors carry the widest ranges. Cocktail and wine_glass were set from the draught-beer price relationship because direct knowledge is weaker. The FX figure comes from web search results citing the RBA's 14 October 2026 observation; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general South Korean price levels, with Busan set below Seoul for dining and accommodation. Cocktail and wine anchors follow the local draught-beer price relationship.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.10,
+    "inexp_meal_1p": 7.20,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 52.00,
+    "hotel_3star_2p": 125.00
+  }
+}

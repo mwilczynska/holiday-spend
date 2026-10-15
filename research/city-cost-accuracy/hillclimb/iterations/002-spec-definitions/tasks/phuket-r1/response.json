@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Thai resort-island pricing, not checked against live listings. Beer, coffee and meal anchors are moderately reliable; accommodation is least certain because July low-season rates vary widely by area and season. Cocktail and wine were set relative to the beer anchor (roughly 2x and 2.4x beer) because direct recall of ordinary-venue prices is weaker. FX: the 13 Oct 2026 4pm RBA figure comes from search summaries that attribute it to the RBA exchange-rates page. I did not open that page directly, and a 14 Oct 2026 value could not be confirmed, so the FX date may lag by one business day.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: Thai island-resort price levels (loosely similar to Krabi and Koh Samui), using ordinary local venues rather than tourist-strip prices and July low-season accommodation rates.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 2.40,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 7.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 60.00
+  }
+}

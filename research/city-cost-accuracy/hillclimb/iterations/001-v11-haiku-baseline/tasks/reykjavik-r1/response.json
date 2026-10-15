@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Reykjavik price levels. No live menus, booking pages, or current listings were inspected, and no web search was used for city prices. Restaurant and cafe anchors are moderate confidence. Accommodation is the least certain because July peak-season rates vary widely, so treat the hostel and hotel anchors as roughly 25 percent either way. Cocktail and wine_glass were not directly anchored; they were set as beer-relative multiples (about 1.7x and 1.4x the beer anchor) because direct knowledge is weak. USD figures assume roughly 125 to 135 ISK per USD.",
+  "comparable_city_reasoning": "Regional basis: Nordic high-cost capitals such as Oslo and Copenhagen, with several anchors placed at or above that tier for Iceland's import-heavy price level and July peak-season accommodation demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.00,
+    "coffee": 7.00,
+    "inexp_meal_1p": 28.00,
+    "midrange_meal_2p": 190.00,
+    "cocktail": 20.00,
+    "wine_glass": 16.50,
+    "hostel_dorm_1p": 72.00,
+    "hostel_private_2p": 200.00,
+    "hotel_1star_2p": 230.00,
+    "hotel_3star_2p": 390.00
+  }
+}

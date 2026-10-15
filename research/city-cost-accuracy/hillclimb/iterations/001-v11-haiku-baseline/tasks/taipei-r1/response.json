@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Taipei price levels, not checked against live listings or booking pages. Cafe and restaurant anchors are moderately reliable; hostel and hotel rates are least certain because they vary by district, booking lead time and July peak demand. Cocktail and wine were derived from the beer anchor (about 2.75x and 2x) because direct bar pricing knowledge is weaker.",
+  "comparable_city_reasoning": "Benchmarked as a mid-cost East Asian capital: lodging generally below Tokyo and Hong Kong, and cafes, hotels and inexpensive meals above Southeast Asian capitals such as Bangkok. No single named comparable city was used for the anchors.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.70,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 120.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings or July 2026 price data. Assumes roughly IDR 16,000-17,500 per USD. Local meal, cafe and beer anchors are moderately reliable. The midrange meal, hostel and hotel anchors are less certain and may vary substantially by neighborhood. Cocktail and wine were not set from direct knowledge. They were derived from the beer anchor using typical bar-to-beer price ratios (about 2.5x and 2.8x) because direct knowledge of Jakarta bar pricing is weak.",
+  "comparable_city_reasoning": "Regional basis: large Southeast Asian capitals with similar local-meal and cafe price levels (for example Bangkok, Manila and Kuala Lumpur) used as loose cross-checks. Jakarta alcohol prices reflect Indonesia's high alcohol taxation. Cocktail and wine are set from the beer anchor by price ratio, as noted in confidence_notes.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 2.40,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 9.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 9.50,
+    "hostel_private_2p": 19.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 55.00
+  }
+}

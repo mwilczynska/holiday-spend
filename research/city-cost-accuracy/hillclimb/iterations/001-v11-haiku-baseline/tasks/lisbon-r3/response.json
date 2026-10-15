@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Lisbon price levels for July 2026; no live listings or booking pages were checked. Restaurant and cafe anchors are moderately reliable, while July hostel and hotel rates are seasonal and volatile, so accommodation is least certain. USD figures rest on an approximate euro-to-dollar rate from general knowledge, not a live quote. Cocktail and wine anchors come from direct local price knowledge and were sanity-checked against the beer anchor. The FX observation comes from WebSearch results summarizing rba.gov.au's Exchange Rates page; the page and the F11.1 table were not opened directly.",
+  "comparable_city_reasoning": "General knowledge of Southern European capitals with strong summer tourism, using Porto and Madrid as loose reference points. Lisbon restaurant prices sit below Paris and London levels, while July accommodation carries a seasonal premium. No live comparisons were made.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 3.00,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 13.00,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 215.00
+  }
+}

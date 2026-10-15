@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Hong Kong price levels; not checked against live menus, listings or booking pages. Restaurant, cafe and beer anchors are better grounded; accommodation is least certain (roughly 25-30% either way) because July room rates vary widely by district and date. 'Domestic' draught beer is ambiguous in Hong Kong, so the beer anchor reflects typical local pub or restaurant draught. Cocktail and wine were cross-checked against the beer level (about 2.1x and 1.6x). Midrange assumes a typical 10% service charge. FX 0.7002 came from RBA feed and cached-page results returned by search, not an opened F11.1 table; verify before use.",
+  "comparable_city_reasoning": "Regional basis: a high-cost East Asian financial hub. Levels come from general knowledge of Hong Kong, with relative positioning checked against other major Asian hub cities such as Singapore and Tokyo; no single city was copied. HKD is pegged to USD in a 7.75-7.85 band, so USD anchors are steady against HKD.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.70,
+    "coffee": 5.80,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 16.50,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 190.00
+  }
+}

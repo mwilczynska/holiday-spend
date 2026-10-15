@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live menus, listings, or city-price web searches were used. Food and drink anchors are moderately reliable for ordinary venues. Accommodation is least certain: July falls in Colombia's mid-year holiday season, and rates vary widely by neighborhood and availability. Cocktail and wine anchors are partly derived from the local beer price relationship. The FX value is taken from search results citing the RBA exchange-rates page for 2026-10-14; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general knowledge of Colombian Caribbean coastal tourism pricing, with a premium for historic-centre and Getsemaní-area venues relative to interior Colombian cities.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 7.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 140.00
+  }
+}

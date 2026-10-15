@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Berlin price levels; no live listings or booking pages were inspected. Restaurant, cafe and beer anchors are the better-known figures. Cocktail and wine are set against the beer price using typical Berlin relationships (cocktail roughly twice a draft beer, glass of wine roughly 1.3 times). Lodging anchors are the least certain because July rates vary widely by district, booking lead time and events. Berlin price levels are estimated in euros and expressed in USD.",
+  "comparable_city_reasoning": "Berlin-specific judgement for restaurant, cafe and bar prices. Lodging tiers reflect typical July rate ranges for large German and Central European city centres with comparable summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.40,
+    "inexp_meal_1p": 16.20,
+    "midrange_meal_2p": 87.00,
+    "cocktail": 12.80,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 37.10,
+    "hostel_private_2p": 92.80,
+    "hotel_1star_2p": 104.40,
+    "hotel_3star_2p": 185.60
+  }
+}

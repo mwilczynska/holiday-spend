@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Berlin prices, not checked against live menus, listings or booking pages. Restaurant and cafe anchors are more reliable than accommodation, which varies by season and district. Cocktail and wine rest on general bar pricing and sit near typical beer multiples (about 2.5x and 1.5x). EUR converted at an assumed rate of about 1.16 USD per EUR, not a live rate. FX value taken from rba.gov.au search results (two searches agreed on 0.7002 for 2026-10-14); the RBA page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city used. Restaurant and cafe levels benchmarked against other large German cities such as Hamburg and Cologne, with Berlin generally similar to or somewhat below them. Accommodation anchors reflect July peak-season rates.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.87,
+    "inexp_meal_1p": 15.66,
+    "midrange_meal_2p": 98.60,
+    "cocktail": 14.50,
+    "wine_glass": 8.70,
+    "hostel_dorm_1p": 41.76,
+    "hostel_private_2p": 104.40,
+    "hotel_1star_2p": 110.20,
+    "hotel_3star_2p": 191.40
+  }
+}

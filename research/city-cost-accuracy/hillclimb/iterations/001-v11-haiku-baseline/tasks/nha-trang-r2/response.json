@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Nha Trang and Vietnamese coastal pricing. No live menus, booking pages, or listings were inspected, and no web sources were used for city prices. Restaurant and beer anchors are the firmest. Hostel and hotel anchors vary widely by property and are set for July peak season, so they are less certain. Cocktail and wine anchors are set relative to the beer anchor because direct knowledge of bar prices is weaker. The FX figure comes from search-result summaries citing the RBA homepage's 4pm reading dated 2026-10-14. The RBA page itself was not opened, so confirm it before relying on it.",
+  "comparable_city_reasoning": "Regional basis: Vietnamese coastal resort towns such as Da Nang and Hoi An, adjusted to Nha Trang's own beach-resort and seafood-dining price level. Lodging anchors reflect July peak-season demand. No single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 2.30,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 55.00
+  }
+}

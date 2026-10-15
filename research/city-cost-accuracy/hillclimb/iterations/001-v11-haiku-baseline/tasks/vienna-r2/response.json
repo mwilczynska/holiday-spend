@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall: holistic estimates from general knowledge; no live menus, listings or booking pages were checked. Cafe, beer and restaurant anchors are most reliable; hostel and hotel rates vary widely in July peak season. Beer assumes a 0.5 L restaurant draft. Cocktail and wine were set from the beer price (cocktail about 2.5x a 0.5 L draft; wine glass about 1.1x) because direct knowledge is weaker. Euro-denominated prices were converted using an approximate market rate, not a checked quote. FX value came from rba.gov.au search results, not a direct page read.",
+  "comparable_city_reasoning": "No single comparable city was used. Basis is general Central European capital pricing, placing Vienna between Prague (generally lower) and Munich (similar or higher) for restaurant and hotel levels, with a July peak-season premium on accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.40,
+    "coffee": 5.80,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 15.80,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 47.00,
+    "hostel_private_2p": 118.00,
+    "hotel_1star_2p": 132.00,
+    "hotel_3star_2p": 205.00
+  }
+}

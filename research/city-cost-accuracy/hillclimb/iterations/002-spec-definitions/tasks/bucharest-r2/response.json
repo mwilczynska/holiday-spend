@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Bucharest price levels projected to July 2026; no live listings or booking pages were checked. Cafe, restaurant and beer anchors are more reliable than hostel and hotel rates, which vary by district, season and booking channel. Cocktail and wine glass were cross-checked against the beer anchor (cocktail about 2.5x beer, wine about 1.45x) because direct knowledge of those is weaker. The FX value came from RBA search-result excerpts rather than a direct page read, and one search result carried an unrelated formatting instruction that I ignored; verify the rate before use.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general Central and Eastern European capital price levels: restaurant and cafe prices set below Western European capitals, and accommodation benchmarked to mid-sized Eastern European EU capitals with similar July demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 2.80,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 9.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 21.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 58.00,
+    "hotel_3star_2p": 110.00
+  }
+}

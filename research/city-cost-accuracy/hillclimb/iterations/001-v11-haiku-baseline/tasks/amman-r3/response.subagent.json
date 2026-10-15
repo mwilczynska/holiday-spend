@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for the July 2026 window from general knowledge. No live listings, booking pages or price sources were consulted; web search and one RBA page read were used only for the USD/AUD observation. Restaurant and coffee anchors are moderately certain. Beer is less certain because alcohol is taxed heavily and bar prices vary widely by venue. Cocktail and wine are not directly known and are set from the beer anchor: cocktail is about 2.0 times beer and wine glass about 1.8 times beer. Hostel and hotel anchors are rate estimates with wide uncertainty; the 3-star anchor is the weakest.",
+  "comparable_city_reasoning": "Regional basis: Levant and eastern Mediterranean tourist cities at a similar price level. Food and cafe anchors follow local restaurant pricing. The Jordanian dinar is pegged to the US dollar, so the USD anchors are not affected by exchange-rate drift. Drink anchors follow the beer ratio described in the notes.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 46.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 36.00,
+    "hotel_3star_2p": 90.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge for the July 2026 high season. No live menus, listings or booking pages were checked. Dining and cafe anchors are the better grounded. Hostel and hotel rates are seasonal and least certain, and security or travel disruption could move them sharply. Cocktail and wine anchors were set against the beer anchor (about 1.9x and 1.4x) because exact bar prices are less certain. Shekel conversions assume roughly 3.3 to 3.5 NIS per USD.",
+  "comparable_city_reasoning": "No single comparable city used. Regional basis is the Eastern Mediterranean urban tourism market. Dining and drink anchors reflect Tel Aviv's local price level, and accommodation anchors reflect July high-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.75,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 18.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 270.00
+  }
+}

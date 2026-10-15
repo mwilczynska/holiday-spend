@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Kuala Lumpur prices, projected to July 2026. Not checked against live menus, listings or booking pages. Ringgit amounts were converted using an approximate general-knowledge rate, not a verified FX source. Lodging and alcohol are the least certain. Cocktail and wine were set from the local beer relationship (about twice the beer anchor) because direct knowledge of those prices is weaker. The FX rate comes from RBA content returned by a web search, not a direct page read. No web search was used for city prices.",
+  "comparable_city_reasoning": "No formal comparable city was used. The basis is general knowledge of Kuala Lumpur price levels within an urban Southeast Asian tourism context. Alcohol is priced relatively high for the region because of Malaysian taxes.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.2,
+    "coffee": 3.1,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 55.0,
+    "cocktail": 8.0,
+    "wine_glass": 8.5,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 31.0,
+    "hotel_1star_2p": 33.0,
+    "hotel_3star_2p": 66.0
+  }
+}

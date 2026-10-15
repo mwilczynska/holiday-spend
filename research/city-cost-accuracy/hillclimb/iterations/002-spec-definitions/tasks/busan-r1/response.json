@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live menus, booking pages, or current listings were checked. Restaurant, cafe, and beer anchors are the most grounded. They were estimated in KRW and converted at an assumed rate of about 1,400 KRW per USD, which was not verified by search. Accommodation is least certain because July is peak season and the seasonal rates are estimated. The mid-range meal figure varies widely by restaurant style. Cocktail and wine were set from the beer anchor (about 2.7x and 2.2x) because direct price knowledge is weaker.",
+  "comparable_city_reasoning": "Based on general South Korean urban price levels, with Busan placed somewhat below Seoul for everyday meals, cafes, and lodging and roughly in line with other large Korean regional cities. No single comparable city was used as a direct reference.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.70,
+    "coffee": 3.60,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 23.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 130.00
+  }
+}

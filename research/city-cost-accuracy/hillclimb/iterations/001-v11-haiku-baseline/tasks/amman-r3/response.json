@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings, booking pages, or city-price web sources; treat as approximate. Restaurant and coffee anchors are the firmer basis. Beer, cocktail, and wine are least certain because of alcohol taxation and venue-to-venue variation; cocktail and wine were set from the local beer price relationship because direct knowledge of them is weak. Hotel and hostel anchors vary by neighborhood, season, and current regional conditions. FX came from RBA search results that point to the official page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: Levant and Eastern Mediterranean tourist capitals, with mid-cost local restaurants and tourism-driven hotel pricing. Jordan's dinar is pegged to the US dollar at about 0.709 JOD per USD, so the USD anchors reflect local price levels at that stable peg.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 9.35,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 80.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Helsinki July price levels, not checked against live menus, listings, or booking pages. Restaurant and cafe anchors are the most reliable. Hostel and hotel rates swing widely with booking window and availability, and the 1-star anchor is least certain because very basic registered rooms are scarce centrally. Cocktail and wine were set relative to the local beer price because direct bar-pricing knowledge is weaker. USD values also carry some uncertainty from the euro-dollar level assumed.",
+  "comparable_city_reasoning": "Benchmarked against Nordic capitals: Helsinki sits near Stockholm's price level and somewhat below Oslo and Copenhagen on restaurant and hotel prices. Summer accommodation was reasoned against Western European capitals with similar tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.30,
+    "coffee": 5.30,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 17.50,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 240.00
+  }
+}

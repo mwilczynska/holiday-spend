@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates of July 2026 London price levels, expressed in USD at approximate recent sterling-dollar levels; not checked against live listings or web price pages. Restaurant and drink anchors are more reliable. July peak-season hostel and hotel rates, and the size of a 'standard serving' of beer, are least certain. Cocktail and wine were set from the local beer relationship (roughly 2x and 1.4x) because direct knowledge is weaker. FX: the 2026-10-14 RBA figure came from web search summaries of rba.gov.au; the RBA page itself was not opened directly, so verify before use.",
+  "comparable_city_reasoning": "No external comparable city used. London is priced on its own terms as a top-tier Western European capital, with rough cross-checks against other high-demand European capitals for restaurant and accommodation levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.30,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 18.50,
+    "wine_glass": 13.20,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 158.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 300.00
+  }
+}

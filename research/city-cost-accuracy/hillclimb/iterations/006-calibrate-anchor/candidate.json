@@ -1,0 +1,11 @@
+{
+  "id": "006-calibrate-anchor",
+  "parent": "001-v11-haiku-baseline",
+  "family": "calibration",
+  "hypothesis": "H1: a per-anchor multiplicative correction removes systematic bias. Leave-one-city-out: each city's factor is fitted on the other dev cities only. Anchors without dev references are unchanged.",
+  "replayFrom": "001-v11-haiku-baseline",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "repeats": 3,
+  "split": "dev"
+}

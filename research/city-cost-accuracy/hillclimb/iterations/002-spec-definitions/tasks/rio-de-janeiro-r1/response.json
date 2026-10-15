@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Rio price levels, extrapolated to July 2026; no live prices or listings were checked. Restaurant and bar anchors are moderately reliable; accommodation is less certain given July seasonality and wide variation across neighborhoods. Cocktail and wine were set relative to the draft-beer estimate because direct knowledge of their local prices is weak. USD values assume the BRL trades in the mid-5s per US dollar, which is uncertain. The FX value came from RBA exchange-rate pages as surfaced in web search excerpts, not opened directly; confirm it on the live RBA table.",
+  "comparable_city_reasoning": "No single comparable city. Restaurant and drink levels are judged against Brazil's other large tourist cities, such as Sao Paulo and Salvador, with a hotel premium for beachfront districts such as Copacabana, Ipanema and Leblon. Regional basis: Latin America. This is a model judgment, not a sourced comparison.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 110.00
+  }
+}

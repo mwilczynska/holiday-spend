@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general Hong Kong price knowledge for July 2026; no live booking pages or current listings were inspected. Restaurant, cafe and beer anchors are moderately reliable; hostel and hotel rates are seasonal and volatile, so they carry the widest range. Cocktail and wine were set relative to the beer anchor because direct price knowledge is weaker. Restaurant figures may exclude the usual service charge. The FX figure is from a web-search summary of the RBA exchange-rates page, which I did not open directly; verify against the live F11.1 series.",
+  "comparable_city_reasoning": "Hong Kong-specific general knowledge, with other high-cost Asian financial hubs such as Singapore as a loose comparable for hotel and mid-range restaurant levels. No web-sourced city prices were used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.75,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 17.50,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 185.00
+  }
+}

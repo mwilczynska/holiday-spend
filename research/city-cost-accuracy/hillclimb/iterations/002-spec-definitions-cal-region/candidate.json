@@ -1,0 +1,11 @@
+{
+  "id": "002-spec-definitions-cal-region",
+  "parent": "001-v11-haiku-baseline-cal-region",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 002-spec-definitions: leave-one-city-out per-anchor x region multiplicative correction.",
+  "replayFrom": "002-spec-definitions",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "repeats": 2,
+  "split": "dev"
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Kuala Lumpur price levels, not inspected listings or live prices. Restaurant and hostel anchors are the most grounded. Hotel rates vary widely by district and date, and alcohol prices carry extra uncertainty from taxes and venue type. Cocktail and wine are partly derived from the beer relationship and typical restaurant markups because direct knowledge is weaker. USD values assume an approximate ringgit level of RM4.2-4.6 per USD for July 2026, which was not verified. The FX observation comes from a web search summary that cites the RBA exchange-rates page, not from a direct page read.",
+  "comparable_city_reasoning": "Regional Southeast Asia basis; no single comparable city was used. Food and budget lodging follow general Southeast Asian capital-city levels, while drink prices sit higher relative to food because of Malaysian alcohol taxes.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.40,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 9.50,
+    "wine_glass": 8.20,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 66.00
+  }
+}

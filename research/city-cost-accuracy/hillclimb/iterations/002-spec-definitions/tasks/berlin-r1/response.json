@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were checked. Restaurant, cafe and beer anchors are the most reliable. July accommodation could plausibly sit 15 to 25 percent above or below the values given. Cocktail and wine rest on general knowledge with a beer cross-check. Euro figures assume about 1.15 USD per EUR (not looked up). Midrange bills exclude tips, which are voluntary in Germany. FX is the latest RBA reading I could confirm from search results (13 Oct 2026); the RBA page and F11.1 table were not opened, and no 14 Oct reading was confirmed.",
+  "comparable_city_reasoning": "Regional basis: German large-city pricing. No single comparable city was used; Berlin is generally priced below Munich and Hamburg, which served as rough upper-side sense checks.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.98,
+    "coffee": 4.49,
+    "inexp_meal_1p": 15.53,
+    "midrange_meal_2p": 120.75,
+    "cocktail": 13.80,
+    "wine_glass": 7.48,
+    "hostel_dorm_1p": 43.70,
+    "hostel_private_2p": 109.25,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 201.25
+  }
+}

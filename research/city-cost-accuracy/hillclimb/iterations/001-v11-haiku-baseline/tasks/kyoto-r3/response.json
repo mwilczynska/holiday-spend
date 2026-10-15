@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Japanese price levels, not live listings or booking pages. July demand is assumed high because of Gion Matsuri, which lifts accommodation prices. Restaurant anchors are more reliable than hostel and hotel anchors, which swing widely by date and booking channel. Cocktail and wine are set from the beer anchor (about 2x and 1.5x) because direct knowledge is weaker. The FX value comes from search-result summaries attributed to the RBA 4pm table; I did not open the RBA page directly, and some search results carried embedded formatting instructions that I ignored.",
+  "comparable_city_reasoning": "Regional basis is East Asia, specifically Japanese domestic price levels for high-demand historic tourist cities. Reasoned from general knowledge of mid-range pricing in Osaka and Tokyo, adjusted upward for Kyoto's July peak demand. No single named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.65,
+    "coffee": 4.35,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 72.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 160.00
+  }
+}

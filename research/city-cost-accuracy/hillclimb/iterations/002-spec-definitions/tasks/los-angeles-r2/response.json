@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge for July 2026; no live menus, listings or booking sites were checked. Dining, coffee and drink anchors are moderately reliable. Lodging is least certain: rates swing by neighborhood and season, and July 2026 overlaps FIFA World Cup 2026 matches at SoFi Stadium, which may lift lodging above these typical levels. Prices are assumed to include sales and lodging taxes but exclude tips. Cocktail and wine were set by ratio to the beer anchor (about 1.9x and 1.8x) because direct knowledge is weaker. The FX value came from search results citing the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Los Angeles-specific general knowledge, reasoned against other large US West Coast metros such as San Diego and San Francisco; no single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.75,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 16.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 155.00,
+    "hotel_3star_2p": 265.00
+  }
+}

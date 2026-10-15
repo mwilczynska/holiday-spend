@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate with no live listing or booking-page checks. Accommodation is least certain because hostel and hotel rates vary widely by district (Malate and Ermita versus Makati) and by booking channel. Draught beer is uncommon at ordinary venues, so the beer anchor is a bounded estimate for a 0.5 L local beer. Cocktail and wine are set from the local beer relationship (cocktail a bit over twice beer, wine roughly twice beer) because direct knowledge of ordinary bar pricing is weak. The FX value comes from search-result summaries that cite the RBA homepage; the RBA page itself was not opened and the daily table row was not confirmed.",
+  "comparable_city_reasoning": "Southeast Asian regional basis: meal and cafe anchors benchmarked to ordinary venues in Metro Manila and comparable Southeast Asian capitals; accommodation anchors reflect central Manila districts such as Malate, Ermita and Makati rather than premium Bonifacio Global City rates.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.70,
+    "inexp_meal_1p": 3.40,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 27.00,
+    "hotel_3star_2p": 70.00
+  }
+}

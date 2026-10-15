@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Japanese price levels. No live menus, listings or booking pages were checked, and no current yen rate was looked up, so the USD values carry FX uncertainty. Café and inexpensive-meal anchors are the most dependable. Hostel and hotel rates vary widely by date and may run above shoulder-season levels in July. Cocktail and wine were set relative to draft beer using local price relationships, since direct knowledge of those prices is limited. The midrange meal assumes tax-inclusive menu prices with no separate service charge. The FX observation came from RBA search snippets rather than a direct page read, so confirm it before formal use.",
+  "comparable_city_reasoning": "Treated as a large Japanese regional city: food and café prices in line with other regional Japanese cities and below Tokyo, Kyoto and Osaka, with accommodation between regional and major tourist-city levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.30,
+    "coffee": 4.20,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 6.60,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 72.00,
+    "hotel_3star_2p": 135.00
+  }
+}

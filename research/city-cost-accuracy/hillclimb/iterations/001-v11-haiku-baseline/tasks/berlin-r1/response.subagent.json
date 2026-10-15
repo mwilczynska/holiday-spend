@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Berlin price levels; no live booking pages, menus or listings were inspected. Restaurant and drink anchors are more reliable than July 2026 accommodation rates. Euro prices were converted at an assumed EUR/USD of about 1.16 without a live rate check, so every USD anchor carries that conversion uncertainty. Cocktail and wine come from direct knowledge of Berlin bar prices; the beer ratio (cocktail about 2.6 times beer, glass of wine about 1.4 times beer) was used only as a sanity check.",
+  "comparable_city_reasoning": "Priced against other large German and central European capitals with similar restaurant and hotel markets. The FX observation is the RBA USD/AUD rate for 14 October 2026; no web search was used to source city prices.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.64,
+    "inexp_meal_1p": 16.24,
+    "midrange_meal_2p": 104.40,
+    "cocktail": 15.08,
+    "wine_glass": 8.12,
+    "hostel_dorm_1p": 44.08,
+    "hostel_private_2p": 110.20,
+    "hotel_1star_2p": 104.40,
+    "hotel_3star_2p": 197.20
+  }
+}

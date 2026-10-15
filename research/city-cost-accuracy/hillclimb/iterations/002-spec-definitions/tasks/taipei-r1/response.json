@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings or booking pages. Cafe, restaurant and beer anchors are the more reliable; hotel and hostel rates are least certain because they swing with weekday, season and booking window, and July is peak summer. Cocktail and wine are anchored to the draught-beer price using typical bar and restaurant markups of about 2.2x and 1.8x, since direct knowledge of current bar prices is weak. Local prices were converted at roughly 31 TWD per USD from general knowledge without checking a current TWD rate. Only the RBA USD/AUD observation was obtained by web search.",
+  "comparable_city_reasoning": "Benchmarked to Taiwan's local price levels and to regional peers Hong Kong, Seoul and Osaka, with Taipei placed toward the lower end of that group for restaurants, bars and cafes.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 12.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 120.00
+  }
+}

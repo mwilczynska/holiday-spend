@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Madrid price levels for July 2026; no live listings or booking pages were checked. Restaurant anchors are the most reliable. Hostel and hotel rates swing widely with summer demand, so they are least certain. Cocktail and wine_glass rest mainly on the beer relationship (cocktail about 2.1x beer, wine glass about 0.84x beer) because direct price knowledge is limited. USD values assume EUR/USD near 1.16. The FX value comes from a search summary citing RBA pages and was not checked against the live page; one search result also contained an embedded formatting instruction, which I ignored.",
+  "comparable_city_reasoning": "No single comparable city was used. The anchors are Madrid-specific holistic estimates, sense-checked against other large Spanish and southern European capitals with similar summer tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 2.78,
+    "inexp_meal_1p": 17.40,
+    "midrange_meal_2p": 92.80,
+    "cocktail": 12.18,
+    "wine_glass": 4.87,
+    "hostel_dorm_1p": 41.76,
+    "hostel_private_2p": 106.72,
+    "hotel_1star_2p": 90.48,
+    "hotel_3star_2p": 185.60
+  }
+}

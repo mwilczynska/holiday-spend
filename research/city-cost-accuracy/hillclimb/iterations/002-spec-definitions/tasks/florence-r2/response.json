@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Florence prices, not live menus, listings, or booking pages. Restaurant and cafe anchors are moderate confidence; hostel and hotel anchors are less certain because July rates swing with demand and events. Euro-based prices were converted at an assumed rate of about 1.15 USD per EUR. Cocktail and wine were cross-checked against the beer anchor (cocktail roughly 1.7 times beer, wine roughly 0.9 times beer). The FX value came from a web-search summary of the RBA Exchange Rates page. I did not open that page, and I could not corroborate the 14 October 2026 figure from other sources, so treat it as unverified.",
+  "comparable_city_reasoning": "No single comparable city. Dining and drinks were reasoned from general knowledge of central Italian tourist cities such as Siena and Bologna, and lodging was set higher to reflect Florence's high July demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 23.00,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 12.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 52.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 245.00
+  }
+}

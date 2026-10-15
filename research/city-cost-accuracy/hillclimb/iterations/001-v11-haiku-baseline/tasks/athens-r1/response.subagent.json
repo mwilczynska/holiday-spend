@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Athens prices; no menus, booking pages or live listings were consulted. Restaurant and bar anchors are more reliable than the July accommodation rates, which vary widely by district and booking date. Euro prices were translated at an assumed rate of about 1.16 USD per EUR. Cocktail and wine rest partly on the local beer relationship (about 2.1 and 1.2 times a draft beer) because direct knowledge is weaker.",
+  "comparable_city_reasoning": "Benchmarked against other Southern European capitals with similar July tourism demand, such as Lisbon and Rome. Athens restaurant prices are treated as somewhat below Rome; July hotel rates reflect peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.00,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 12.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 81.00,
+    "hotel_1star_2p": 98.00,
+    "hotel_3star_2p": 175.00
+  }
+}

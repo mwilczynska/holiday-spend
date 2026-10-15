@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus or listings. Beer, coffee and restaurant anchors are moderately reliable; hotel and hostel tiers vary widely by district, season and booking channel. Cocktail and wine are based on typical Lima pisco sour and house wine prices and sanity-checked against the beer anchor (about 2.3x and 2.1x). Pricing is for July, Lima's cool winter season. FX is the 13 Oct 2026 4pm RBA rate as shown in search-result summaries of the RBA exchange-rates page; the page itself was not opened, and the 14 Oct figure could not be verified.",
+  "comparable_city_reasoning": "No single city used. Estimates are benchmarked against Latin American capitals with similar tourism profiles, such as Bogota and Quito, adjusted for Miraflores and Barranco hotel pricing and Peru's generally moderate restaurant prices.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 105.00
+  }
+}

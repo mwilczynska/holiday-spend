@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Amman price levels, not checked against live menus, listings, or booking pages. Restaurant and coffee anchors are moderately reliable. Beer, cocktail and wine are less certain because alcohol taxes and venue types vary widely; cocktail and wine were anchored to the local beer price relationship where direct knowledge was weak. Hotel and hostel anchors carry the most uncertainty because rates move with demand and regional conditions, and no July 2026 events or rate data were checked.",
+  "comparable_city_reasoning": "No single named comparison city was used. Regional basis: a mid-cost Levant capital, priced above Egypt on budget items and below Gulf and Israeli city price levels. Local prices were reasoned in Jordanian dinars, which are pegged to the US dollar, and alcohol reflects Jordan's high alcohol taxes.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 10.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 85.00
+  }
+}

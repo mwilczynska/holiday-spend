@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 with no live listings checked; values are projected from general knowledge of Vienna's typical price levels. Restaurant, cafe and beer anchors are more reliable than accommodation, which varies widely with July peak demand and events. USD values assume about 1.16 USD per EUR, which is uncertain for mid-2026. Cocktail and wine_glass were set relative to the beer anchor (about 2.6 and 1.1 times beer) because direct bar-price knowledge is weaker. The fx block is the latest RBA figure found for 14 Oct 2026 and was not used to set the anchors.",
+  "comparable_city_reasoning": "No external comparable city or dataset was used; anchors reflect Vienna's own typical price levels, judged broadly similar to other major Western European capitals with strong summer tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.90,
+    "coffee": 5.60,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 15.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 52.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 220.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Mumbai price levels for a July 2026 window; no live menus, listings or rate pages were checked. Restaurant and cafe anchors are moderately reliable, with midrange_meal_2p depending on how tax and service charge are billed at each venue. Accommodation varies widely by neighborhood, and July is monsoon low season, so rates reflect off-peak levels. Cocktail and wine_glass were set from the local beer-price relationship because direct bar-price knowledge is weaker; wine is the least certain. The FX observation came from two rba.gov.au-restricted search summaries that agree on the 14 October 2026 4pm rate; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used. Estimates were reasoned from general knowledge of large Indian metros, adjusted upward for Mumbai's higher hotel and alcohol costs. No listings or price pages were checked.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 2.30,
+    "inexp_meal_1p": 2.90,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 6.10,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 9.50,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 62.00
+  }
+}

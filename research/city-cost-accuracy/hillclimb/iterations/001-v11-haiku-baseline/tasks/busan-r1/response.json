@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied context. No live booking pages or current listings were checked. Restaurant and cafe anchors are moderately confident. Hotel and hostel anchors are less certain because July beach-season demand in Busan varies widely by district and date. Cocktail and wine_glass are weakly grounded, so they were set relative to the draft beer anchor (cocktail about 2.5x beer, wine glass about 2x beer). USD values assume a working rate of roughly 1,350 to 1,450 KRW per USD, which is my assumption and was not checked. The FX observation came from RBA search-result summaries that agreed across two searches; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used as a source. The basis is South Korean domestic pricing for Busan, a second-tier port city priced below Seoul and loosely benchmarked against mid-sized Japanese port cities such as Fukuoka, with a July peak-season uplift applied to lodging.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 4.30,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 10.50,
+    "wine_glass": 8.40,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 125.00
+  }
+}

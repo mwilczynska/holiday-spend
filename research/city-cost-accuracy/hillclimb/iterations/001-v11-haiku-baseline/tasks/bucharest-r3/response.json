@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge for a July 2026 window. Not checked against live menus, booking pages, or listings; no web search was used for the city anchors. Restaurant and coffee anchors are moderately reliable. Accommodation is least certain given wide July rate variation. Cocktail and wine were set as typical premiums over the beer anchor because direct bar-price knowledge is weak. The FX figure comes from search results pointing to the RBA exchange-rates page; the page itself was not opened.",
+  "comparable_city_reasoning": "Regional basis: Central and Eastern European capitals. Bucharest is placed between Sofia (generally cheaper) and Budapest (generally pricier) for restaurants and hotels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 10.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 105.00
+  }
+}

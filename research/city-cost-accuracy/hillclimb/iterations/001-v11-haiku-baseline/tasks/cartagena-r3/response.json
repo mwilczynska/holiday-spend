@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Cartagena's tourist price levels for July 2026. No live menus, listings or rate sheets were checked. Restaurant and cafe anchors are moderately certain. Cocktail and wine anchors are weakly grounded and were set from a rough 2.5x to 3x beer price relationship. Hostel and hotel anchors are least certain because prices swing widely by season, neighborhood and booking channel. The FX value is the RBA 13 Oct 2026 observation as reported in search results; a 14 Oct RBA value was not confirmed.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is regional: Colombian Caribbean coast tourist pricing for Cartagena's Old Town and Getsemani neighborhoods, loosely benchmarked against other Latin American historic coastal tourist destinations.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.90,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 120.00
+  }
+}

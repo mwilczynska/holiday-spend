@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Taipei price levels; no live menus, listings, or booking pages were checked, and no web search was used for city-price anchors. Food and cafe anchors are more reliable than hostel and hotel rates, which vary by district and season (July is peak summer demand). 2026 TWD/USD movement was not verified. Cocktail and wine_glass were positioned relative to the beer anchor (cocktail about 2.5 to 3 times beer, wine_glass about 2 times beer) because direct knowledge of local bar and by-the-glass prices is weaker. The FX value came from search results summarizing RBA exchange-rate and homepage pages, not from a direct page read.",
+  "comparable_city_reasoning": "Regional basis: large East Asian cities with dense street-food dining, cafes, and a mix of hostels and business hotels, loosely benchmarked against Seoul and Osaka. Taipei dining and cafe prices are judged at or somewhat below those cities; hostel and hotel rates are placed in a similar range. No single comparable city was used as a direct price source.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 12.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 120.00
+  }
+}

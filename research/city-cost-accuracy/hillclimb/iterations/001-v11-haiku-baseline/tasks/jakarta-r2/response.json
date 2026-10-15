@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Jakarta price levels for July 2026, not checked against live menus, hotel listings, or booking pages. Restaurant, cafe and budget accommodation anchors are moderately grounded. The mid-range meal and 3-star hotel anchors vary widely by district and season. Cocktail and wine anchors are set relative to the beer anchor because direct knowledge of Jakarta bar pricing is weaker, and the wine anchor carries a premium for import duties. Taxes and service charges can move restaurant and hotel totals, and the July 2026 window is projected rather than observed.",
+  "comparable_city_reasoning": "Regional basis: Southeast Asian capital-city price levels from general knowledge, reasoned against other large SEA capitals for tier spacing. Cocktail and wine anchors are set as multiples of the beer anchor because direct knowledge of bar pricing is limited.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.25,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.50,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 21.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 65.00
+  }
+}

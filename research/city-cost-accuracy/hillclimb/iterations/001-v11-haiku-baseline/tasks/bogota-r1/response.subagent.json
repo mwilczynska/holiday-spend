@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge for July 2026; no live listings or booking pages were inspected. Restaurant and coffee anchors are the firmest. Hotel anchors and bar prices are less certain; cocktail and wine were set from the beer anchor because direct bar-price knowledge is weak.",
+  "comparable_city_reasoning": "General comparison with other large Latin American capitals that combine budget hostels, menu-of-the-day restaurants and mid-range dining. Cocktail (about 3.5 times the beer anchor) and wine glass (about 3 times the beer anchor) follow the local beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.30,
+    "coffee": 2.80,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 105.00
+  }
+}

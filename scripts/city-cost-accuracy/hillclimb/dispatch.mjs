@@ -64,10 +64,22 @@ async function runTask(task) {
   return attempts.at(-1).hasText;
 }
 
+// Atomic per-task claim so overlapping dispatchers never run the same task; claims older than 20 minutes without
+// a response are treated as abandoned.
+function claim(task) {
+  const file = path.join(dir, 'tasks', task.id, '.claim');
+  if (fs.existsSync(path.join(dir, 'tasks', task.id, 'response.json'))) return false;
+  try { fs.writeFileSync(file, `${process.pid} ${new Date().toISOString()}`, { flag: 'wx' }); return true; } catch {
+    if (Date.now() - fs.statSync(file).mtimeMs < 20 * 60 * 1000) return false;
+    fs.writeFileSync(file, `${process.pid} ${new Date().toISOString()}`); return true;
+  }
+}
+
 let next = 0, ok = 0, failed = 0;
 await Promise.all(Array.from({ length: Math.min(concurrency, pending.length) }, async () => {
   while (next < pending.length) {
     const task = pending[next++];
+    if (!claim(task)) continue;
     (await runTask(task)) ? ok++ : failed++;
     console.log(`${new Date().toISOString()} ${task.id} done (${ok} ok, ${failed} failed, ${pending.length - ok - failed} left)`);
   }

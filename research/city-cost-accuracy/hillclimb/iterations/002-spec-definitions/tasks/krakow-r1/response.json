@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, booking pages or listings. Restaurant and café anchors are moderately reliable; accommodation is least certain given July peak-season pricing. Cocktail and wine anchors were compared with the draught-beer anchor (cocktail about 2.3x beer, wine glass about 1.3x). PLN prices were converted at an assumed rate of about 3.7 PLN per USD. The FX value came from search results, not an opened RBA table.",
+  "comparable_city_reasoning": "Anchored on general knowledge of Krakow's price level and compared with other Polish and Central European cities with strong summer tourism demand, such as Wrocław, Gdańsk and Brno. Accommodation anchors reflect July peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.10,
+    "coffee": 3.80,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 9.50,
+    "wine_glass": 5.30,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 78.00,
+    "hotel_3star_2p": 150.00
+  }
+}

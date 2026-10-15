@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Vientiane's price tiers. No web search was run for city prices, and no live listings or menus were checked. Food and drink anchors are moderately reliable. Accommodation is the least certain, since hostel and guesthouse rates vary widely by location, season and property, and kip-denominated prices can move with the currency. Cocktail and wine were derived from the beer anchor (about 4x and 5x) because direct knowledge of bar prices is weak.",
+  "comparable_city_reasoning": "Benchmarked against Southeast Asian capitals and tourist cities in a similar price tier, such as Phnom Penh and Hanoi, adjusted for Vientiane's relatively high imported-goods costs (notably wine and Western-style cafe drinks). No single named comparable city was used for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.75,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 4.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 55.00
+  }
+}

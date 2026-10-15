@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Lima prices; no live listings, menus or booking pages were checked. Restaurant and beer anchors are the most reliable. Lodging varies by district and booking window, and late-July Fiestas Patrias demand may lift some hostel and hotel rates. Cocktail and wine are partly inferred from the local beer price relationship because direct knowledge of bar and by-the-glass wine prices is limited. FX: the 2026-10-14 value comes from search-result excerpts attributed to the RBA exchange-rates table; the RBA page itself was not opened, so verify against table F11.1. If the 14 October figure was not yet published at generation time, the 13 October value of 0.6961 applies instead.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: large South American capitals with mid-priced tourist markets, such as Bogota and Santiago, adjusted to Lima's local food, drink and lodging price levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.90,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 110.00
+  }
+}

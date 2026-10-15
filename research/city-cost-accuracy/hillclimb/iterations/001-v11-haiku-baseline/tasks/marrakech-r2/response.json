@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were checked. Restaurant and dorm anchors are the most grounded. Beer, cocktail and wine are least certain because licensing and venue type vary; beer assumes a local bottle in a licensed restaurant. Accommodation varies by riad versus chain and by summer demand. FX 0.7002 comes from a search-result summary of the RBA page, not a direct page read.",
+  "comparable_city_reasoning": "Estimated from general price levels in other Moroccan tourist cities such as Fez and Essaouira, adjusted for Marrakech's medina and Gueliz mix. Cocktail and wine were set relative to the beer anchor (cocktail about 2.3 times beer, wine glass about 1.6 times beer) because direct knowledge of those prices is weaker. July is treated as a hot-summer window that may soften some accommodation rates.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.75,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 11.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 34.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 95.00
+  }
+}

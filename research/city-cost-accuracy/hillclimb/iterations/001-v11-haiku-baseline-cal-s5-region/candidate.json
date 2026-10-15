@@ -1,0 +1,11 @@
+{
+  "id": "001-v11-haiku-baseline-cal-s5-region",
+  "parent": "001-v11-haiku-baseline",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 001-v11-haiku-baseline: leave-one-city-out per-anchor x region multiplicative correction, shrink 5.",
+  "replayFrom": "001-v11-haiku-baseline",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "repeats": 3,
+  "split": "dev"
+}

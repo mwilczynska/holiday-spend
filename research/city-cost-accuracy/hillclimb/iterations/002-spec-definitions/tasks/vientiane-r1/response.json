@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Vientiane visitor prices; no live menus, booking pages or current listings were checked. Beer, coffee and local-meal anchors are the most reliable; the mid-range meal, cocktail, wine and 3-star hotel anchors are less certain, and accommodation varies widely by property and season (July is rainy season). Cocktail and wine were anchored to the draught beer relationship because direct knowledge of bar and wine prices is weak: cocktail is set at roughly four times the beer anchor and wine glass at roughly five times. Approximate bounded ranges: beer 0.60-1.30, mid-range meal for two 18-40, 3-star room 40-80. The FX value came from RBA-directed search results (two searches returned the same figure); the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Southeast Asian capital with a budget-to-mid-range visitor market, set below Bangkok and broadly in line with budget-to-mid-range levels in Phnom Penh and central Hanoi. Regional judgment only; no comparable listings were reviewed.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.90,
+    "coffee": 1.40,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 3.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 10.00,
+    "hotel_3star_2p": 55.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for a July 2026 low-season (monsoon) window, not checked against live listings or current prices. Restaurant and beer anchors are the most reliable; hostel and hotel rates vary widely by beach area, star rating and booking date, so treat them as approximate. Cocktail and wine were set from the local beer relationship (about 2.8x and 3x beer) because direct knowledge is weaker. The FX rate comes from search-result summaries that cite RBA exchange-rate listings; the RBA page itself was not opened directly, so verify the 14 October value before relying on it.",
+  "comparable_city_reasoning": "Benchmarked to other Thai beach and island resort destinations such as Krabi and Koh Samui, with general Thai restaurant price levels for food and drink, adjusted for Phuket's July low season.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.25,
+    "inexp_meal_1p": 4.25,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 80.00
+  }
+}

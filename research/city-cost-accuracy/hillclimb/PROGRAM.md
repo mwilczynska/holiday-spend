@@ -154,9 +154,10 @@ No paid provider API calls or application keys are used.
 
 | Item | Value |
 | --- | --- |
-| Panel | R0, 68 cities (54 dev / 14 test) |
-| Legacy reference point | v1 CSV anchors (inverted from tiers), dev primary loss 0.2914; meals and coffee biased low by ~23–28% (median log bias −0.23 to −0.28), beer +7% |
-| Incumbent | to be set by `001-v11-haiku-baseline` |
+| Panel | R1, 68 cities (54 dev / 14 test): Numbeo food/drink, Hostelworld hostels, BudgetYourTrip/KAYAK hotels |
+| Legacy reference point | v1 CSV anchors (inverted from tiers): dev loss 0.390 on R1 (0.291 on R0). Hotels about 40% low, meals and coffee about 25% low |
+| Production v1.1, Haiku lane | `001-v11-haiku-baseline`: 0.292. Mid-range meal +38%, hostel dorm +26%, private +37%, 3-star +14%, inexpensive meal −10%. Pooling three repeats only reaches 0.286, so run-to-run noise is small |
+| Incumbent | `001-v11-haiku-baseline-cal-region`: v1.1 prompt + leave-one-out per-region × per-anchor calibration, **0.207**. Marginal accept (lower bound 0.003) after five zero-call calibration variants on the same dev set; the first test milestone must check it |
 
 ## 10. Hypothesis backlog (ordered by expected value per cost)
 
@@ -176,3 +177,9 @@ No paid provider API calls or application keys are used.
 ## 11. Program revisions
 
 - 14 October 2026: program created; acceptance rule, metric, weights and split frozen as above.
+- 15 October 2026 (UTC): primary panel promoted from R0 to R1 before any round-1 verdict; all scores re-made on R1.
+- 15 October 2026: **prompt candidates are judged after calibration.** Calibration removes any uniform bias, so a
+  prompt change that only moves the price level looks good raw and adds nothing once calibrated. Each prompt
+  candidate is therefore assessed as its own calibrated replay (`make-calibrated.mjs`, same calibration form as
+  the incumbent, fitted leave-one-out on that candidate's own raw outputs) against the calibrated incumbent. Raw
+  verdicts are still recorded for information.

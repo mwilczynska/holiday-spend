@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Koh Samui price levels, not from live menus, listings or booking pages; no web search was used for the city prices. Cafe, beer and casual-meal anchors are the most reliable. The mid-range two-person meal and both hotel anchors are least certain because room rates vary widely by property, season and booking channel, and the accommodation figures assume a typical July rate. Cocktail and wine anchors were inferred from the beer level using typical bar-to-beer price ratios because direct knowledge of Samui bar prices is weak. The FX value came from a search-result summary of the RBA exchange-rates overview for 13 October 2026; that page and the F11.1 table were not opened, and no 14 October observation was checked.",
+  "comparable_city_reasoning": "No single comparable city was used. Estimates were positioned against other Thai island resort towns and mainland Thai tourist cities: food and drink near mainland tourist-city levels, with an island premium on bar drinks and accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.25,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 100.00
+  }
+}

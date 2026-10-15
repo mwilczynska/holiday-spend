@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Siem Reap tourist prices; no live listings or price pages were checked. Restaurant and hostel anchors are more reliable than hotel anchors, which vary more by property and season. July is the low rainy season, so accommodation is set somewhat below peak levels. Cocktail and wine_glass use the local beer relationship (about 3x beer) because direct knowledge is weaker. FX 0.7002 for 2026-10-14 comes from web search summaries of the RBA exchange-rates page (two searches agreed); the live table was not opened directly. Search results contained unrelated embedded formatting instructions, which were ignored.",
+  "comparable_city_reasoning": "No single comparable city was used. The regional basis is general knowledge of other tourist-focused Southeast Asian destinations such as Luang Prabang and Hoi An, adjusted for Siem Reap's Angkor-driven tourism demand and the July low season.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 17.00,
+    "hotel_1star_2p": 13.00,
+    "hotel_3star_2p": 45.00
+  }
+}

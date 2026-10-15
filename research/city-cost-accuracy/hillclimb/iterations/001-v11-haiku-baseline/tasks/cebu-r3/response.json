@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic July 2026 estimate from general knowledge, not live listings. Restaurant and beer anchors are moderately reliable; hostel and hotel rates vary widely by district and season and are less certain. Cocktail and wine_glass use the beer anchor as their basis (roughly 2.5x and 3x) because direct price knowledge is weaker. Peso prices assume roughly 56 to 59 PHP per USD from general knowledge, not a live quote. The FX value came from RBA 4pm figures in search results, not a direct read of the RBA table.",
+  "comparable_city_reasoning": "Regional basis: Philippine regional hub cities (for example Davao and Iloilo), with Manila mid-range pricing as an upper reference and Cebu's local eatery and guesthouse costs setting the lower end. Mactan and IT Park resort-area premiums are not fully reflected.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 80.00
+  }
+}

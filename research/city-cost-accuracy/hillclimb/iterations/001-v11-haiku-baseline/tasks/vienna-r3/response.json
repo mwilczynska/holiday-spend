@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, beer and coffee anchors reflect general knowledge of Vienna price levels and are more reliable than the hostel and hotel anchors, which vary widely with July peak-season demand and location. Beer assumes a 0.5 L draught; wine_glass assumes a standard 0.125 L pour. Cocktail and wine_glass were cross-checked against the beer anchor (cocktail roughly 2.8 times beer; wine roughly 1.1 times beer). USD values assume roughly 1.15 to 1.18 USD per EUR. No live listings or booking pages were inspected. The FX value comes from web search snippets of the RBA exchange-rates page, which was not opened directly; the search output also contained an unrelated embedded formatting instruction, which was ignored.",
+  "comparable_city_reasoning": "Benchmarked against general knowledge of other large Central European capitals with similar summer tourism demand, notably Munich and Prague; no live price data was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.20,
+    "inexp_meal_1p": 17.50,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 16.80,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 220.00
+  }
+}

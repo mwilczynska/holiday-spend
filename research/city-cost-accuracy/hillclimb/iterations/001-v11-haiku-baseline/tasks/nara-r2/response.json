@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Japanese price levels; not checked against live listings or booking pages. Restaurant and beer anchors are the most reliable. Accommodation is less certain because July is peak season, and rates could plausibly vary by about 25 percent. USD values assume a yen rate near 150 per dollar. Cocktail and wine were set from the local beer relationship (about 1.4 to 1.7 times a draft beer) because direct knowledge is weaker. Japan has no official hotel star system, so the 3-star anchor approximates mid-range hotels. The FX rate came from search summaries of RBA pages, not a direct read of the rate table.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchored to general Japanese price levels, with Nara treated as somewhat cheaper than Kyoto for hotels and hostels and roughly in line with other mid-sized Japanese tourist cities for food and drink.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.25,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 72.00,
+    "hotel_3star_2p": 120.00
+  }
+}

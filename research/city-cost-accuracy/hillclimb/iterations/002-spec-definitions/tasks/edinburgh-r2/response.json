@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Edinburgh price levels, not checked against live menus, listings or booking pages. Restaurant, cafe and beer anchors are moderately confident; the midrange meal assumes a typical service charge where one is added. Cocktail and wine reflect typical bar prices cross-checked against the beer ratio, assuming a standard 175 ml house-wine glass. Hostel and hotel anchors for July peak season carry the widest uncertainty, roughly 25% either way. USD figures assume about 1.34 USD per GBP from general knowledge, not a live rate. The FX observation comes from search-result summaries of rba.gov.au pages and was not checked against the live table.",
+  "comparable_city_reasoning": "Based on general knowledge of Edinburgh's price level, benchmarked against other UK tourist cities such as Glasgow and York and adjusted up for July peak-season tourism. No web sources were used for city prices.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.10,
+    "coffee": 4.69,
+    "inexp_meal_1p": 18.10,
+    "midrange_meal_2p": 120.60,
+    "cocktail": 14.10,
+    "wine_glass": 10.72,
+    "hostel_dorm_1p": 53.60,
+    "hostel_private_2p": 127.30,
+    "hotel_1star_2p": 147.40,
+    "hotel_3star_2p": 254.60
+  }
+}

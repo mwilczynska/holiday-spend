@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Jakarta price levels for July 2026; no live menus, listings, or booking pages were checked. Restaurant and cafe anchors are the firmest; hostel and hotel tiers vary widely by area and booking channel. Cocktail and wine_glass are weakly grounded: direct local knowledge is limited, so they are set at about 2.8x and 3x the draft beer anchor. The fx figure comes from web search results that cite the RBA exchange rates page for 14 Oct 2026 at 4pm. The RBA page itself was not opened directly, though same-day third-party quotes are consistent with it.",
+  "comparable_city_reasoning": "Regional Southeast Asia basis. Jakarta was set from general knowledge of local price levels and loosely benchmarked against other large Southeast Asian capitals such as Kuala Lumpur and Manila. No single comparable city was copied.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 8.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 8.50,
+    "hostel_private_2p": 19.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 60.00
+  }
+}

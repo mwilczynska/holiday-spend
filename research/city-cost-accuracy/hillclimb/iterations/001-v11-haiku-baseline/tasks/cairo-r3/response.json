@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Cairo's tourist price levels, not from live menus, listings or booking pages (none were searched for). Egypt's currency has been volatile since the 2024 devaluation and inflation has been high, so July 2026 USD levels could differ materially; accommodation and bar drinks are least certain. Draft beer is uncommon, so the beer anchor assumes a served bottle of domestic lager. Cocktail and wine anchors were set relative to the beer anchor because direct knowledge of bar pricing is weak. July is generally off-peak in Cairo, so accommodation may sit below peak-season rates. The FX value comes from search-snippet summaries of the RBA homepage, not the RBA daily table, which I could not open; it is consistent with same-day market quotes but should be confirmed before use.",
+  "comparable_city_reasoning": "No single comparable city was used as a direct anchor. Egypt is in Northern Africa under the UN geoscheme, so the Africa region is used, although Cairo's tourist price structure also overlaps with the Middle East. Estimates reflect general knowledge of local restaurant, hostel and hotel price levels, loosely reasoned against other tourist-oriented North African cities.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 75.00
+  }
+}

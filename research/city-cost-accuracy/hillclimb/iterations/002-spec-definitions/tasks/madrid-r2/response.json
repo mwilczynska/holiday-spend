@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Madrid price levels, not checked against live menus, listings or booking pages; no web sources were used for the price anchors. Restaurant, cafe and beer anchors are the most grounded; cocktail and wine are partly inferred from local beer and bar pricing; accommodation is least certain and varies with neighbourhood, booking lead time and July demand. EUR prices were converted at an approximate general-knowledge rate, not a live quote. The 14 October 2026 FX value comes from two search runs whose RBA-attributed snippets agree; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used as a direct input. Restaurant and cafe levels are based on general knowledge of Spanish capital-city pricing and are broadly in line with similar large southern European capitals such as Barcelona and Lisbon; accommodation is set to Spanish metropolitan capital summer rates.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 2.70,
+    "inexp_meal_1p": 17.40,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 12.80,
+    "wine_glass": 5.20,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 92.80,
+    "hotel_1star_2p": 98.60,
+    "hotel_3star_2p": 174.00
+  }
+}

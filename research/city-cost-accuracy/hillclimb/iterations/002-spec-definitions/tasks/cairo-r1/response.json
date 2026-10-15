@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied context; no live listings or booking pages were checked. The Egyptian pound has been volatile since its 2024 float and local inflation has been high, so USD-equivalent levels for July 2026 could plausibly differ by 20 percent or more from these figures. Restaurant and coffee anchors are the most reliable; hotel and hostel rates and the drink anchors are less certain. Cocktail and wine were set relative to the beer anchor (wine at a moderate premium to beer, cocktail at a larger premium) because direct Cairo knowledge of those prices is thin. Beer is priced as a domestic lager serving, since draught is less common in ordinary Cairo venues than bottles. The FX figure comes from RBA data surfaced in search results; the RBA table itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is a North African and Levant regional comparison: Cairo's restaurant and budget-lodging levels were benchmarked against capitals with similar tourism infrastructure such as Tunis and Casablanca, with Amman as a higher-cost reference. Hotel tiers reflect registered central-Cairo hotels at ordinary summer rates rather than resort or Gulf-style pricing.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 1.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 5.50,
+    "wine_glass": 4.10,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 60.00
+  }
+}

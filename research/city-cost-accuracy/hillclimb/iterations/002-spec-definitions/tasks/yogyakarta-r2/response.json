@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings, or booking pages; July peak-season effects are approximate. Restaurant and cafe anchors are moderately grounded; beer assumes a bottled domestic serve since draught is less common locally. Cocktail (about 1.75x beer) and wine_glass (about 2.4x beer) use the local beer relationship because direct knowledge is weak. Hostel and hotel anchors are least certain and vary widely by district and season. The FX value comes from WebSearch result summaries citing RBA daily exchange-rate pages; the spreadsheet itself was not opened.",
+  "comparable_city_reasoning": "No specific comparable city was used. Reasoned from general knowledge: priced as a mid-sized Indonesian tourist city below Bali, with backpacker accommodation and food levels roughly in line with mid-sized Southeast Asian travel hubs such as Chiang Mai.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 1.65,
+    "inexp_meal_1p": 1.90,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 4.20,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 6.80,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 52.00
+  }
+}

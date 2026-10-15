@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live menus, hotel or hostel listings were checked. Restaurant and beer anchors are moderately reliable. Accommodation, especially hostel private rooms and 3-star hotels, has the widest range because July is high season. Cocktail (about 2.8x beer) and wine_glass (about 2.5x beer) rely partly on the beer price relationship because direct knowledge is weaker. FX: 0.6961 (13 Oct 2026) is the latest RBA-attributed figure I found, but it comes from a search summary that attributes it to the RBA exchange-rates overview page. I did not open that page, and a second search could not corroborate it, so verify before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Estimates reflect general knowledge of Colombian Caribbean coastal tourism pricing, with tourist-facing prices reflecting the Walled City and Getsemani premium and July treated as high season. Assumes roughly 4,000 COP per USD.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 170.00
+  }
+}

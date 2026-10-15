@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for a July 2026 window from general knowledge; no web search or listing check was used for the price anchors. Restaurant and coffee anchors are the most reliable; hostel and hotel rates are less certain and could plausibly vary by about 25% with season, location and booking timing. Cocktail and wine anchors are partly based on their local price relationship to beer because direct knowledge of those prices is weaker. The FX value was read from search summaries of rba.gov.au pages, not from the raw RBA data table.",
+  "comparable_city_reasoning": "Regional Southeast Asia basis: mid-range dining and hotels benchmarked loosely against Bangkok and Penang, with budget hostel and guesthouse levels set in line with other regional capitals. Drink prices sit above typical regional levels because of Malaysian alcohol taxation. No specific comparable listings were checked.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.20,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 9.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 80.00
+  }
+}

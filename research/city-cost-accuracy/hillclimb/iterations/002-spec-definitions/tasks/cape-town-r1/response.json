@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Cape Town and South African price levels. No live listings, menus, or booking pages were inspected; web search was used only for the RBA FX observation. Restaurant and cafe anchors are moderately reliable, with a typical uncertainty band of roughly 20-30 percent. Accommodation is the least certain group because rates vary widely by neighbourhood and season, and July is a low-to-shoulder period for Cape Town tourism, so these are typical nightly rates rather than peak-season or promotional prices. Cocktail and wine anchors are the weakest direct estimates: they were set relative to the beer anchor (cocktail about 2.3 times beer, wine glass about 1.1 times beer). Rand volatility means USD values can shift materially.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general knowledge of South Africa's major urban visitor markets, with Johannesburg and Durban as domestic reference points, and Cape Town's higher tourism demand reflected mainly in accommodation and restaurant prices.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.60,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 7.50,
+    "wine_glass": 3.60,
+    "hostel_dorm_1p": 14.50,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 47.00,
+    "hotel_3star_2p": 92.00
+  }
+}

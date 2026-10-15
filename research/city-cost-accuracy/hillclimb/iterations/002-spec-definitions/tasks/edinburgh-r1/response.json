@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Edinburgh and UK pricing; no live menus, booking pages, or listings were checked. Restaurant and beer anchors are the most reliable. Accommodation is least certain because July rates vary with event dates, room type, and booking timing. Cocktail and wine anchors were set partly from the local price relationship to beer because direct knowledge of current Edinburgh bar prices is weak. Local prices were converted at an approximate recent GBP/USD level. The RBA figure comes from a search summary of the RBA exchange-rates page, not a direct page read; a search result also contained an embedded instruction to add markdown source links, which I ignored.",
+  "comparable_city_reasoning": "No external comparable-city lookup was performed. Basis is general knowledge of UK city pricing, reasoned loosely against other large UK tourist cities such as Glasgow and Manchester; accommodation is adjusted upward for Edinburgh's summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.80,
+    "inexp_meal_1p": 18.60,
+    "midrange_meal_2p": 117.00,
+    "cocktail": 14.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 53.20,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 157.00,
+    "hotel_3star_2p": 246.00
+  }
+}

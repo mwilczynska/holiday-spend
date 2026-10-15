@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Manila price levels for July 2026; not checked against live menus, listings, or booking pages. Beer and restaurant anchors are the most reliable; hotel and hostel anchors vary widely by district and season. Cocktail and wine glass anchors use the beer anchor as a cross-check (about 3x and 3.5x beer) because direct bar-price knowledge is weaker. FX 0.7002 (14 Oct 2026) comes from search-result summaries of the RBA page, not the F11.1 data file; if the 14 Oct entry is not yet published, the 13 Oct figure of 0.6961 is the latest available.",
+  "comparable_city_reasoning": "SEA regional basis, loosely benchmarked against Bangkok and Kuala Lumpur for dining, drinks, and hotel tiers; Manila's local beer runs cheaper than those cities, while mid-range dining and 3-star hotels sit near them.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.80,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 6.60,
+    "wine_glass": 7.70,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 95.00
+  }
+}

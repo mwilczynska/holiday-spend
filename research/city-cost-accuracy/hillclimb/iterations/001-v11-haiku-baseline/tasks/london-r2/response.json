@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of London prices, not from live listings or booking pages. Restaurant, coffee and beer anchors are the better-bounded; hostel and hotel anchors are least certain because July rates vary widely by district, booking lead time and events. USD anchors embed an assumed sterling-dollar level of roughly 1.30 to 1.35, not verified for July 2026. The FX observation came from a web-search summary of RBA statistics, not a direct page read.",
+  "comparable_city_reasoning": "No single comparable city; based on general knowledge of London's own price level, benchmarked against other large Western European capitals with similar tourism demand. Cocktail and wine anchors are set relative to the beer anchor using typical London pint-to-cocktail and pint-to-glass ratios.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 18.50,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 56.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 265.00
+  }
+}

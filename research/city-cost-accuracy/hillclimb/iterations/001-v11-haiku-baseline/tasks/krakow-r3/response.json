@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate with no live listings checked. Meal and cafe anchors are moderately reliable; hostel and hotel rates swing with July demand. Cocktail and wine are scaled from the local beer price because direct knowledge is weak; beer assumes a 0.5 L draft. FX: the 2026-10-14 value came from a search summary attributed to RBA pages; I did not open the RBA table, search results conflicted, and no independent source confirmed the 13-14 October figures, so verify before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Krakow is priced as a tourist-heavy Polish city above national averages; accommodation is benchmarked loosely to Central European city-break rates in July.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.75,
+    "coffee": 3.70,
+    "inexp_meal_1p": 11.50,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 11.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 150.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Low confidence: Buenos Aires prices shift quickly with Argentine inflation and peso moves, and my knowledge of mid-2026 local prices is limited, so every anchor is a holistic model estimate, not a live listing. Restaurant and cafe anchors are best grounded; the midrange meal and 3-star hotel are least certain. Cocktail and wine were set relative to the beer estimate (cocktail about 1.8x beer, wine about one beer per glass). The FX value comes from search-result summaries attributed to the RBA homepage for 14 Oct 2026; I could not open that page to verify it, and conflicting recent rates appeared in the results.",
+  "comparable_city_reasoning": "No single comparable city. Anchors reflect general knowledge of Buenos Aires price levels in USD terms, reasoned against other large South American capitals such as Santiago and Montevideo, and adjusted for July being winter low season with some domestic school-holiday demand. No web search was used for the city prices.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

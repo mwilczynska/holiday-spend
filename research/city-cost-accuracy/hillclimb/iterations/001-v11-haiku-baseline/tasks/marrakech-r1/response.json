@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings, booking pages, or price sources were checked. Restaurant food anchors are moderately reliable; beer, hostel, and hotel rates vary widely by area and season, and July is usually a quiet, very hot month in Marrakech. Cocktail and wine were derived from beer using local price relationships because direct knowledge is weak (cocktail about 2.5 times beer; wine glass about 1.5 times beer). FX value comes from a search summary of the RBA Exchange Rates Overview page for 13 October 2026; I did not open that page or the RBA CSV directly.",
+  "comparable_city_reasoning": "Regional basis: North African tourist pricing, benchmarked loosely against other Moroccan destinations such as Fez, with Marrakech placed above Fez for tourist-facing restaurants, bars, and riad or hotel rooms. No single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.30,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 34.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 100.00
+  }
+}

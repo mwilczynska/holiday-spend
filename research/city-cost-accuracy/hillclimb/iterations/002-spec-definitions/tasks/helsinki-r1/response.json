@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Helsinki price levels; no live listings or booking pages were checked. Restaurant and beer anchors are the firmer ones; July hostel and hotel rates vary widely with demand. Cocktail and wine are partly derived from the local beer relationship (roughly 1.8x and 1.4x the beer anchor) because direct venue knowledge is weaker. USD values assume an approximate mid-2026 euro-to-dollar rate of about 1.16. FX: the RBA figure is the newest I could confirm from search results; the RBA page itself was not opened. It is dated 2026-03-20, so it may be stale for the 2026-10-14 generation date. Later readings in one search summary could not be verified and were not used.",
+  "comparable_city_reasoning": "No single comparable city was used. The regional basis is the Nordic capital price band (Stockholm, Oslo, Copenhagen), adjusted to Helsinki's own restaurant, alcohol and summer accommodation levels.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.86,
+    "coffee": 5.22,
+    "inexp_meal_1p": 18.56,
+    "midrange_meal_2p": 145.00,
+    "cocktail": 17.40,
+    "wine_glass": 13.92,
+    "hostel_dorm_1p": 48.72,
+    "hostel_private_2p": 127.60,
+    "hotel_1star_2p": 139.20,
+    "hotel_3star_2p": 232.00
+  }
+}

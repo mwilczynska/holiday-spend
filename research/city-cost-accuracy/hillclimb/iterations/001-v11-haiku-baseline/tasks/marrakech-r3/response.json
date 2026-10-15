@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Marrakech tourist pricing; no live listings or booking pages were inspected. Restaurant and beer anchors are the most reliable. Cocktail and wine_glass are set from beer-relative multiples (about 2.4x and 1.5x) because direct price knowledge is weak. Accommodation anchors are least certain given Medina versus Gueliz location differences and July seasonality, and beer and cocktail prices assume licensed venues.",
+  "comparable_city_reasoning": "Regional basis: Moroccan tourist-city pricing, reasoned from general knowledge with Fez and Tangier as rough regional comparables, adjusted upward for Marrakech's tourism concentration in the Medina and Gueliz. No live-listing comparison was performed.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 12.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

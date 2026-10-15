@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings, booking pages or price sources were inspected. Restaurant and coffee anchors are moderately certain. Alcohol prices are tax-driven and vary by venue, and hostel and hotel rates vary by season and district, so those are less certain. Cocktail and wine_glass are set relative to the beer anchor because direct bar-price knowledge is weak.",
+  "comparable_city_reasoning": "General knowledge of Amman price levels relative to the wider Levant, not one named comparable city. Cocktail is about 2.1x the beer anchor and wine_glass about 1.75x, because direct bar-price knowledge is weak.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.20,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 27.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 90.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge. No live listings, booking pages or price pages were checked, and no web search informed the anchors. Restaurant and beer figures are moderately reliable. Accommodation tiers are least certain because rates vary with season, weekday versus weekend, and booking channel. Cocktail and wine were set as a typical multiple of the beer estimate because direct local price knowledge for them is thinner. The FX value comes from search-result summaries of rba.gov.au exchange-rate pages. I did not open the RBA page or the F11.1 table directly.",
+  "comparable_city_reasoning": "Regional Southeast Asian basis: Malaysian tourist-city price levels, benchmarked informally against Kuala Lumpur's budget and mid-range tiers and adjusted down for lower hawker, restaurant and guesthouse costs in Penang.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.30,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 8.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 10.50,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 65.00
+  }
+}

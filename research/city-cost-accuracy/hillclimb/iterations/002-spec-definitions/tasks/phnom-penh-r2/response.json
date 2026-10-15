@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate; no live menus, listings, or booking pages were checked. July is rainy-season low season, so lodging may run below peak rates. Restaurant and beer anchors are moderately confident. Cocktail and wine_glass are inferred from the local beer relationship (about 3x and 4x beer) because direct knowledge is weaker. Hostel and hotel anchors are least certain. FX value taken from search-result text for the RBA exchange-rates page (4pm, 14 Oct 2026); the page itself was not opened directly.",
+  "comparable_city_reasoning": "Estimated from general knowledge of Phnom Penh tourist pricing, loosely benchmarked against other Southeast Asian tourist cities such as Siem Reap and Ho Chi Minh City; no single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 4.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 50.00
+  }
+}

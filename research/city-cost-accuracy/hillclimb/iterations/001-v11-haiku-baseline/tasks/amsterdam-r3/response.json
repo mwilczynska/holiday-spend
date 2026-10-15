@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Model estimate from general knowledge; no live prices or listings were checked. Restaurant and cafe anchors are moderately reliable. July accommodation is least certain, especially dorm and 1-star, and may not clearly reflect local tourist tax. Cocktail and wine were set relative to beer (wine about 1.7x, cocktail about 2.8x) because direct knowledge is weaker. USD values assume about 1.15 USD per EUR from general knowledge, not a live quote. FX comes from RBA exchange-rate pages surfaced by search; the F11.1 file itself was not opened.",
+  "comparable_city_reasoning": "Regional basis: high-cost Western European capitals, using Benelux restaurant and cafe norms, with a peak-July premium on accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.60,
+    "coffee": 4.90,
+    "inexp_meal_1p": 18.40,
+    "midrange_meal_2p": 126.50,
+    "cocktail": 18.40,
+    "wine_glass": 11.50,
+    "hostel_dorm_1p": 57.50,
+    "hostel_private_2p": 172.50,
+    "hotel_1star_2p": 184.00,
+    "hotel_3star_2p": 299.00
+  }
+}

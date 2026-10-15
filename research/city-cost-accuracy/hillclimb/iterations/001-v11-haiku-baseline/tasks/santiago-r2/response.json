@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of local price levels, not from live menus, listings or bookings. Restaurant and beer anchors are moderately reliable. Accommodation is less certain and reflects July, which is winter, a low-to-shoulder leisure period with school winter holidays typically in July. Cocktail and wine_glass were set from the local price relationship to draft beer because direct bar-price knowledge is weaker. Currency moves after the knowledge cutoff are not reflected. The FX observation comes from a web search summary of RBA daily rates for 14 October 2026 and was not separately checked on the RBA page.",
+  "comparable_city_reasoning": "No single named comparable city was used. The basis is the general price level of upper-middle-income Latin American capitals, adjusted for July winter seasonality in accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 115.00
+  }
+}

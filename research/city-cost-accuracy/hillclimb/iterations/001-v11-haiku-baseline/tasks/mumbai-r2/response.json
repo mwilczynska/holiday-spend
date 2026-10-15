@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live menus, listings or booking pages were checked. Food, coffee and beer are more reliable than hostel and hotel rates, which vary by area and season (July monsoon usually means softer demand). Hotel rates assume taxes are included, and registration status of hostels and hotels is not verified. Cocktail and wine_glass were cross-checked against the beer anchor (about 2x) because direct local price knowledge is weaker. FX: I could not open the RBA page or find an October 2026 observation. The value given is the latest I could verify from RBA exchange-rate page copies in search results, so it is about seven months old.",
+  "comparable_city_reasoning": "No single comparable city. Food, coffee and drinks are benchmarked to other large Indian metros such as Delhi and Bengaluru, and accommodation is set at Mumbai's higher hotel-rate level.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 75.00
+  }
+}

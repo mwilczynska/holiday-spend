@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Phuket tourist-area pricing for a July low-season window; not checked against live menus, listings, or booking pages. Accommodation and drink anchors are less certain than meal anchors; cocktail and wine_glass lean on the beer anchor (about 2.4x and 2.1x) because direct bar-price knowledge is weaker. The FX observation came from search summaries of rba.gov.au, not a direct page read.",
+  "comparable_city_reasoning": "Based on general knowledge of Thailand's other beach and island resort towns (for example Krabi and Koh Samui) and Bangkok's tourist-facing mid-range prices. Restaurant and bar anchors reflect Phuket's tourist-area level rather than rural Thai rates; accommodation anchors are set below peak-season levels because July falls in Phuket's low season.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.40,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 65.00
+  }
+}

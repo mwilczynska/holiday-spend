@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Kuala Lumpur price levels for July 2026; no live listings or page reads. Restaurant and hostel anchors are moderately reliable. Hotel and alcohol anchors are least certain because of seasonality, booking channel and Malaysian alcohol taxes. Cocktail and wine_glass were set from local beer relationships (about 2.1x and 1.8x draught beer) because direct knowledge is weaker. The FX rate was located via web search and attributed to the RBA overview page; it was not page-read directly, and a 14 October observation may exist.",
+  "comparable_city_reasoning": "SEA regional basis: Kuala Lumpur is priced against other Southeast Asian cities with similar budget-to-midrange tiers (for example Bangkok and George Town), adjusted to Malaysian local price levels and alcohol taxation. Holistic model estimate, not drawn from live listings.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 2.80,
+    "inexp_meal_1p": 3.30,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 80.00
+  }
+}

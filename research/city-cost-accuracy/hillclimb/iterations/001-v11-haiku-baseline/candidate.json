@@ -1,0 +1,16 @@
+{
+  "id": "001-v11-haiku-baseline",
+  "hypothesis": "Baseline: unchanged production v1.1 prompt, Haiku lane. Sets the incumbent and measures run-to-run noise.",
+  "parent": null,
+  "family": "baseline",
+  "promptTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "repeats": 3,
+  "split": "dev",
+  "dispatch": "scripts/city-cost-accuracy/hillclimb/dispatch.mjs: one headless claude -p process per task, system.txt as system prompt, prompt.txt on stdin, WebSearch only, no MCP, empty cwd. 21 earlier Agent-tool answers kept as response.subagent.json for a lane comparison.",
+  "cliModel": "claude-haiku-5-5",
+  "effort": "max"
+}

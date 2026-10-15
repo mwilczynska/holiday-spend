@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, rates or listings. Restaurant and cafe anchors are moderately reliable; hotel and hostel anchors for July peak demand are least certain. Cocktail and wine are estimated from the local beer price relationship because direct bar-price knowledge is weaker. Yen prices were converted at about 150 JPY per USD. The FX value was taken from search results attributed to the RBA overview page and was not opened directly; a 14 Oct figure could not be verified.",
+  "comparable_city_reasoning": "Modelled on mid-sized Kansai heritage cities near Kyoto and Osaka, using general knowledge of ordinary-venue prices in Japan: restaurant and cafe prices close to Kyoto's non-tourist venues, with accommodation set below Kyoto's peak-season rates because Nara is a smaller city. Not based on live listings.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.33,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 66.67,
+    "cocktail": 6.33,
+    "wine_glass": 5.67,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 53.33,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 133.33
+  }
+}

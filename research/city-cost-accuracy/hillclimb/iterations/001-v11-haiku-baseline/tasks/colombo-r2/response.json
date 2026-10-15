@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, tariffs or booking sites; no web search was used for city prices. Restaurant and cafe anchors are moderately grounded; beer, cocktail and wine are least certain because alcohol taxes and bar markups vary widely, and July 2026 accommodation rates may move with tax, currency and season. Cocktail and wine_glass are set at about two times the beer anchor because direct bar-price knowledge is weak. The FX observation comes from a web search summary of rba.gov.au data, not a direct page read.",
+  "comparable_city_reasoning": "Regional basis: South Asian tourist-capital price levels. Colombo is placed above budget South Asian capitals such as Kathmandu for hotels and alcohol, reflecting Sri Lanka's high alcohol taxes and tourist-hotel pricing. No named listing set was used as a direct comparison.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.75,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 75.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Cartagena price levels; no live listings or booking pages were checked and no web source was used for the price anchors. Restaurant and beer anchors are moderately reliable; hostel and hotel rates are least certain given July high season and wide variation by neighborhood. cocktail and wine_glass were not directly known and were set from the beer anchor using typical local markups. midrange_meal_2p assumes any tax and service charge on the bill. Peso volatility adds uncertainty.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: Colombian Caribbean-coast urban tourism pricing, with the Old City and Getsemani tourist districts as the reference for July high-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 125.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, booking pages, or current listings. Egypt's pound has been volatile with high inflation, so July 2026 USD price levels could differ materially; accommodation and bar anchors are the least certain. Cocktail and wine anchors use a beer-ratio basis (about 2.4 times the beer anchor) because direct knowledge of Cairo bar prices is weak.",
+  "comparable_city_reasoning": "No single comparable city used. The regional basis is North African and Levant tourism capitals (for example Tunis and Amman), adjusted for Cairo's currency-driven price level.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 6.75,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 65.00
+  }
+}

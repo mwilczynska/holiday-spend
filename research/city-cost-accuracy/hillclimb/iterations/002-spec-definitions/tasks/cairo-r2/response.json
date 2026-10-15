@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Cairo's post-2024 USD price levels; no live listings were checked. Restaurant and coffee anchors are moderate confidence. Alcohol and hotel tiers are lower confidence because of EGP volatility, inflation, and variable tax and service charges. July is off-peak for Cairo tourism, so hotel rates may sit modestly below winter peaks. The FX value comes from RBA exchange-rate page results returned by search; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city was used. Estimates reflect Cairo's local price level in USD terms after the 2024 currency float, loosely consistent with mid-sized North African and Levant capitals such as Tunis and Amman for hotel and restaurant tiers. Cocktail and wine are set relative to the beer anchor (cocktail roughly double beer, wine glass roughly one and a half times beer) because direct knowledge of bar prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 1.50,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 6.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 70.00
+  }
+}

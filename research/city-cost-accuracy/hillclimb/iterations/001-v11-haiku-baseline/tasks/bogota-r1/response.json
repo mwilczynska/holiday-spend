@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, extrapolated to July 2026 beyond the June 2026 knowledge horizon. No live listings or booking pages were checked and no city context was supplied. Everyday restaurant and dorm anchors are better grounded than the 3-star hotel, cocktail and wine anchors, which have wider ranges. Hotel rates vary by neighborhood, weekday and mid-year holiday demand, and peso movements add uncertainty. Cocktail and wine were cross-checked against the beer anchor using typical local price relationships because direct knowledge is weaker. The FX value comes from a web search summary attributed to the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Anchored to Bogota's own local price levels and cross-checked against other large Latin American capitals with similar budget-hostel and mid-range restaurant tiers, such as Medellin, Lima and Mexico City. No single city was copied.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 115.00
+  }
+}

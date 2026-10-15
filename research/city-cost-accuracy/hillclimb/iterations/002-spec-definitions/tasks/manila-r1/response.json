@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings, or price sources; the July 2026 window is projected from knowledge that ends in June 2026. Restaurant and beer anchors are the firmer ones; hotel and hostel anchors vary by district and season and are the least certain. Cocktail and wine are derived from the beer anchor using typical local multipliers. The FX figure comes from search-result summaries of the RBA exchange-rates page; I did not open the page directly, and its date stamp looked inconsistent, so confirm the 14 October figure before relying on it.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general knowledge of ordinary-venue prices in Southeast Asian capitals, loosely benchmarked to Bangkok and Ho Chi Minh City. Food and drink sit toward the lower end of that band, and accommodation anchors reflect the city's own hotel levels. Cocktail and wine anchors derive from the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.30,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.30,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 33.00,
+    "hotel_3star_2p": 90.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied context. No live listings, booking pages, or price sources were checked, and mid-2026 levels are projected forward from earlier knowledge. Beer, coffee, and restaurant anchors are moderately reliable; July accommodation is least certain because peak-season and event-driven rates vary widely. Cocktail and wine were set from their usual relationship to the beer anchor, so treat them as lower confidence. Euro-based estimates were converted to USD at an assumed general-knowledge exchange rate, not a live quote.",
+  "comparable_city_reasoning": "Regional basis: a Northwest European capital with heavy tourism demand. Estimates were benchmarked by reasoning against cities such as Brussels, Copenhagen, and Vienna, then adjusted upward for Amsterdam's high summer accommodation demand. No city-price sources were searched.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.83,
+    "coffee": 4.87,
+    "inexp_meal_1p": 20.30,
+    "midrange_meal_2p": 121.80,
+    "cocktail": 16.82,
+    "wine_glass": 9.86,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 162.40,
+    "hotel_1star_2p": 174.00,
+    "hotel_3star_2p": 290.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimate from general knowledge with no live price checks. July 2026 sits just beyond the knowledge horizon, so levels are extrapolated. Argentina's high, volatile inflation and history of multiple exchange-rate regimes mean USD-equivalent prices can move quickly, and tourist prices vary widely by neighbourhood and payment method. Restaurant anchors are the most grounded; hostel and hotel anchors are the least certain. Cocktail and wine_glass were set relative to beer (cocktail about 2x beer, wine about 1.1x beer) because direct price knowledge is weak. The FX value was taken from search-result summaries rather than a direct page read. A 14 Oct 2026 RBA figure reported in one summary could not be confirmed, so check the RBA table for a later observation before relying on this value.",
+  "comparable_city_reasoning": "No single close comparator. Anchors are positioned against Latin American capitals with similar tourist dining and lodging tiers, such as Montevideo, Santiago and São Paulo, with a wider uncertainty band than those cities because of Argentina's price volatility.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge. No live listings, menus or booking pages were inspected or cited. Restaurant, cafe and beer anchors are the most reliable; hostel and hotel anchors are less certain and assume July peak-season rates. Euro prices were converted at an assumed 1.15 USD per EUR, not a sourced quote, which is the largest single uncertainty in the USD values. Cocktail and wine_glass were set from approximate Berlin bar prices and checked against the beer anchor (cocktail about 2.5 times beer; wine glass about 1.46 times beer). The RBA observation is used only as FX provenance; no price anchor was sourced from web search.",
+  "comparable_city_reasoning": "No single named comparable city was used. The basis is general knowledge of Berlin's own price level for July, benchmarked loosely against other large German cities and Central European capitals.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.52,
+    "coffee": 4.37,
+    "inexp_meal_1p": 14.38,
+    "midrange_meal_2p": 97.75,
+    "cocktail": 13.80,
+    "wine_glass": 8.05,
+    "hostel_dorm_1p": 41.40,
+    "hostel_private_2p": 103.50,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 172.50
+  }
+}

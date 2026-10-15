@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. All anchors are holistic estimates from general knowledge of Cebu price levels, projected to July 2026. No live listings or booking pages were checked. Restaurant and cafe anchors are the most grounded. Hostel and hotel anchors are least certain and can vary by roughly 30% or more by district, season and booking channel. Draught beer is uncertain because bottled beer dominates ordinary venues. Cocktail and wine were set relative to the beer anchor (about 2.2x and 2.4x) because direct knowledge of local bar and by-the-glass prices is weak. The FX value comes from RBA-domain search results; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Regional basis rather than a single comparable city: general knowledge of Philippine urban price levels, anchored on Cebu City and Mactan, with Manila and Davao consulted only loosely as cross-checks.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.10,
+    "coffee": 2.40,
+    "inexp_meal_1p": 3.60,
+    "midrange_meal_2p": 44.00,
+    "cocktail": 4.60,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 85.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not an observed source price; no live listings were inspected. Restaurant and cafe anchors are moderately certain. Hostel and hotel anchors are less certain because July peak-season rates vary widely by district and booking date. Cocktail and wine anchors follow the beer anchor (about 5x and 4x) because direct knowledge of those prices is weak.",
+  "comparable_city_reasoning": "Benchmarked against other large Chinese tier-one cities, mainly Shanghai, for restaurant and hotel levels; room anchors reflect July peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.10,
+    "coffee": 4.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 10.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 90.00
+  }
+}

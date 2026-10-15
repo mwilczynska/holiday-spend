@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate; no live booking pages or listings were checked. USD values are sensitive to shekel moves. Restaurant and cafe anchors are moderately reliable; hostel and hotel anchors are less certain given seasonal and security-driven demand swings. Beer assumes a roughly 0.5 L domestic draft. Cocktail and wine were cross-checked against beer (about 1.4x and 1.2x) because direct price knowledge is weaker. FX: 13 Oct 2026 RBA reading taken from search excerpts of the RBA overview page; the table itself was not opened, and no 14 Oct value was found.",
+  "comparable_city_reasoning": "Middle East regional basis, using Tel Aviv's own high price level. Restaurant and cafe anchors are benchmarked to high-cost Western European and Mediterranean city centres; hostel and hotel anchors to mid-range tourist accommodation in comparable Mediterranean cities. Jerusalem and Haifa are lower-cost domestic reference points.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.80,
+    "coffee": 6.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 17.00,
+    "wine_glass": 14.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 210.00
+  }
+}

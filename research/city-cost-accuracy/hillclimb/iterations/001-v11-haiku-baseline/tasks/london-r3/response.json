@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of London price levels, not checked against live menus, listings, or booking sites. Restaurant and drink anchors are moderately reliable; July hostel and hotel anchors are least certain because district and booking date can move them substantially. GBP converted to USD at an assumed planning rate of about 1.33 USD per GBP. FX value taken from a search summary that cites the RBA exchange-rates page; not checked against the RBA F11.1 table.",
+  "comparable_city_reasoning": "None; London-specific general knowledge used directly rather than a comparable city.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.30,
+    "coffee": 5.25,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 19.00,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 64.00,
+    "hostel_private_2p": 155.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 310.00
+  }
+}

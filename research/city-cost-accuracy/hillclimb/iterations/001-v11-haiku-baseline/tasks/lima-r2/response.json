@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Lima, not live listings. Restaurant anchors are more reliable than accommodation, which varies by neighborhood (Miraflores and Barranco run higher) and by season. Cocktail and wine are less certain and were set from their relation to the beer anchor (about 1.9x and 1.6x) because direct bar-price knowledge is weaker. The FX figure came from RBA exchange-rate pages via web search, not a direct page fetch, and search metadata was inconsistent, so re-check the live RBA table before use.",
+  "comparable_city_reasoning": "No single comparable city. Based on general knowledge of Lima's price tiers, using Miraflores and Barranco as the reference for hotels and tourist restaurants and setting local eateries and budget lodging lower, compared with typical pricing in other large Latin American capitals with similar tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.30,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 100.00
+  }
+}

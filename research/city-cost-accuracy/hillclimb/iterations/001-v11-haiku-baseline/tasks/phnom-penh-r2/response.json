@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and city context, not checked against live listings or booking pages. Restaurant and cafe anchors are the most reliable; hostel and 3-star hotel anchors vary most by location and season. Cocktail and wine glass were bounded from the draft beer anchor (roughly 3x and 3.3x) because direct knowledge of those prices is weaker. Figures are approximate and reflect typical USD pricing at tourist-facing venues.",
+  "comparable_city_reasoning": "Based on general knowledge of Southeast Asian capital and tourist-city pricing, with Siem Reap and Vientiane as loose regional reference points; no single comparable city was used as a direct price copy.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 60.00
+  }
+}

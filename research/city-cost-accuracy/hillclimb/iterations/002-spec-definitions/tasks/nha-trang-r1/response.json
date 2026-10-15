@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are moderate confidence; July peak-season accommodation and bar prices are less certain. Cocktail and wine were cross-checked against draught beer (about 3-4x). FX is from search-result summaries of RBA pages, not a direct page read; a market-data site showed 0.6971 for the same day, so verify against RBA table F11 before use.",
+  "comparable_city_reasoning": "No web sourcing for city prices. Benchmarked against other Vietnamese coastal resort cities such as Da Nang, with a July peak-season premium applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 4.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 52.00
+  }
+}

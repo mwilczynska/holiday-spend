@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, extrapolated to July 2026. Not checked against live menus, listings or booking sites; no web search was used for city prices. Restaurant and hostel anchors are the most grounded. Cocktail and wine were set relative to the beer anchor (about 3.5 to 4 times beer) because direct knowledge of current bar prices is limited. The 3-star hotel anchor is the least certain given property variation and July low season. FX came from RBA search results; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "Benchmarked against Southeast Asian capital and tourist-city price levels with USD-dollarized pricing, using Siem Reap and Vientiane as regional reference points and adjusting for Phnom Penh's capital-city restaurant and cafe pricing. No listing-level comparison was made.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 2.25,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 60.00
+  }
+}

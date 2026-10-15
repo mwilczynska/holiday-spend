@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge, not from live listings or booking pages. Restaurant and drink anchors are moderately reliable; July hostel and hotel rates are least certain because they swing with dates and demand. Cocktail and wine are inferred from the local beer price (about 1.6x and 1.2x beer) because direct knowledge is weaker. Figures assume roughly 125 to 135 ISK per USD. The FX value comes from search-result summaries attributed to the RBA's 14 October 2026 4pm reading; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked against Nordic capitals (Oslo, Copenhagen, Stockholm) for restaurant and hotel levels, adjusted for Iceland's high alcohol prices and July peak-season accommodation demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 14.00,
+    "coffee": 7.50,
+    "inexp_meal_1p": 30.00,
+    "midrange_meal_2p": 190.00,
+    "cocktail": 22.00,
+    "wine_glass": 17.00,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 200.00,
+    "hotel_1star_2p": 220.00,
+    "hotel_3star_2p": 360.00
+  }
+}

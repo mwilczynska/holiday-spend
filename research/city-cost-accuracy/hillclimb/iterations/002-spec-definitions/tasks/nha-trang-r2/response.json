@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for a July 2026 peak-season window, based on general knowledge only. No live listings or city-price sources were consulted, and 2026 price levels are extrapolated. Restaurant and beer anchors are moderately reliable. Accommodation rates vary widely by season and property, so the hostel and hotel figures are less certain. Cocktail and wine_glass were not known directly with confidence, so they were set at roughly four to five times the draught beer anchor, following typical local beer-to-drink price relationships in Vietnamese tourist-area venues.",
+  "comparable_city_reasoning": "Nha Trang is a coastal resort city in central Vietnam. Estimates are benchmarked to typical price levels in comparable Vietnamese beach resort cities such as Da Nang and Phan Thiet, adjusted for July high-season beach-tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 1.60,
+    "inexp_meal_1p": 2.30,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.50,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 52.00
+  }
+}

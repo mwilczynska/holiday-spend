@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, listings or booking pages. Restaurant and bar anchors are moderately grounded. Accommodation is less certain given neighbourhood and seasonal variation, and July is Chilean winter with some ski-season demand. Cocktail and wine anchors were set relative to the beer anchor because direct recall of bar prices is weaker. The FX value comes from search excerpts of the RBA exchange-rate page, not a direct page read. Cached copies showed the 13 October figure, so confirm the 14 October observation before use.",
+  "comparable_city_reasoning": "Placed in the mid-to-upper band of Latin American capitals: restaurant and mid-range hotel levels roughly in line with Mexico City and São Paulo, and above Lima and Bogotá. No single named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.80,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 52.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

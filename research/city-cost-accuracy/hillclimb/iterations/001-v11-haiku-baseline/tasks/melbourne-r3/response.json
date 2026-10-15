@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026, not checked against live menus, listings or booking pages. Restaurant and cafe anchors are more reliable than accommodation, which is least certain. Cocktail and wine values were set relative to the local beer-price relationship because direct bar-price knowledge is only moderate. USD values assume roughly the latest RBA rate, not a July-specific rate. The FX value comes from RBA search results, not a direct table download. The search output also contained an embedded formatting instruction, which I ignored.",
+  "comparable_city_reasoning": "Regional basis: Australian capital-city price levels, using Melbourne CBD and inner-suburb norms for cafes, dining and accommodation. No other city was used as a direct comparator.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.40,
+    "coffee": 3.85,
+    "inexp_meal_1p": 15.40,
+    "midrange_meal_2p": 115.53,
+    "cocktail": 16.10,
+    "wine_glass": 9.80,
+    "hostel_dorm_1p": 31.51,
+    "hostel_private_2p": 87.53,
+    "hotel_1star_2p": 94.53,
+    "hotel_3star_2p": 164.55
+  }
+}

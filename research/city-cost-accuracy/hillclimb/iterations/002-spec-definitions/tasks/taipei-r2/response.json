@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates for July 2026 from general knowledge of local price levels, with Taiwan-dollar prices at roughly NT$30-33 per US$. No live listings, menus, or booking pages were checked. Restaurant and cafe anchors are moderately reliable. Hostel and hotel rates are least certain because they vary by season, property, and booking lead time. Cocktail and wine are cross-checked against the beer anchor because direct bar-price knowledge is weaker. FX: the 0.6961 figure comes from search results attributed to the RBA exchange-rates page for 13 October 2026, but follow-up searches could not confirm that date or row, so verify before relying on it. Market quotes on 13-14 October were roughly 0.696-0.698.",
+  "comparable_city_reasoning": "Local price reasoning from general knowledge of Taipei, cross-checked loosely against other mid-sized East Asian cities such as Seoul and Osaka. Cocktail and wine anchors follow the local beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 12.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 23.00,
+    "hostel_private_2p": 52.00,
+    "hotel_1star_2p": 58.00,
+    "hotel_3star_2p": 120.00
+  }
+}

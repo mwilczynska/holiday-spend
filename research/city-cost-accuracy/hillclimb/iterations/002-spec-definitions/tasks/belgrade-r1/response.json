@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Belgrade price levels; no live listings or booking pages were checked. Restaurant, beer and coffee anchors are moderate confidence; July hostel and hotel rates are least certain because they are seasonal. Cocktail and wine were set relative to the beer anchor (roughly 2x and 1.1x) since direct knowledge is weaker. FX 0.6961 comes from search-result summaries of the RBA Exchange Rates Overview page for 13 Oct 2026, not a direct page read; a 14 Oct figure appeared only in a scrambled page extract and could not be verified.",
+  "comparable_city_reasoning": "Regional basis: Central and Southeast European capitals with similar price levels, such as Sofia and Bucharest, with Serbian restaurant and drink prices set below Western EU capitals. Accommodation anchors reflect July peak-season demand. No specific comparable listings were retrieved.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 7.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 46.00,
+    "hotel_1star_2p": 52.00,
+    "hotel_3star_2p": 95.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Rome price levels; not checked against live listings or booking pages. Restaurant, beer and coffee anchors are moderately reliable; July hotel and hostel rates are least certain. Cocktail and wine were set from beer-relative ratios (cocktail about 1.8x beer, wine about 0.9x beer) because direct knowledge is weaker. Inexpensive meal assumes one main dish plus water and cover charge. FX was not verified against the RBA table: the 2026-10-14 figure came from search summaries attributed to the RBA exchange-rates page, and a follow-up search found only March 2026 RBA data, so confirm the rate before use.",
+  "comparable_city_reasoning": "No comparable city used; anchors reflect Rome's own price levels. Euro-denominated prices were estimated against an assumed EUR/USD of about 1.16, not a checked rate, so USD anchors move with that rate.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.20,
+    "coffee": 2.50,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 108.00,
+    "cocktail": 13.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 265.00
+  }
+}

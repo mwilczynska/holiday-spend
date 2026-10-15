@@ -30,12 +30,22 @@ function load(predictionsFile) {
   return residuals;
 }
 
-export function fitFactors(predictionsFile, { exclude = null, shrink = 0, groupBy = null } = {}) {
+// hierarchical: with groupBy, shrink each group's offset towards the anchor's global offset with weight
+// n / (n + hierarchical), and fall back to the global offset for groups with no other cities.
+export function fitFactors(predictionsFile, { exclude = null, shrink = 0, groupBy = null, hierarchical = null } = {}) {
   const rows = load(path.resolve(hcRoot, predictionsFile)).filter(x => x.city !== exclude);
-  const out = {};
+  const out = {}, global = {};
   for (const x of rows) {
     const key = groupBy ? `${x.anchor}|${x[groupBy]}` : x.anchor;
     (out[key] ??= []).push(x.r);
+    (global[x.anchor] ??= []).push(x.r);
+  }
+  if (groupBy && hierarchical !== null) {
+    const g = Object.fromEntries(Object.entries(global).map(([a, rs]) => [a, mean(rs)]));
+    return new Proxy(Object.fromEntries(Object.entries(out).map(([k, rs]) => {
+      const w = rs.length / (rs.length + hierarchical);
+      return [k, w * mean(rs) + (1 - w) * g[k.split('|')[0]]];
+    })), { get: (t, k) => (k in t ? t[k] : typeof k === 'string' ? g[k.split('|')[0]] : undefined) });
   }
   return Object.fromEntries(Object.entries(out).map(([k, rs]) => [k, mean(rs) * rs.length / (rs.length + shrink)]));
 }

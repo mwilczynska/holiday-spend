@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for a July 2026 window from general knowledge, not checked against live listings. Meal, cafe and beer anchors are medium confidence; hotel and hostel anchors are lower because Los Angeles lodging varies widely by neighborhood, event dates and season. Cocktail and wine are set using the beer relationship (cocktail about 1.9x beer, wine about 1.7x beer). Meal and drink prices include sales tax and exclude tips; lodging is assumed to include taxes and fees. FX 0.7002 (2026-10-14) comes from a search-result summary attributed to the RBA exchange-rate table. I did not open the RBA page, and a follow-up search could not confirm the figure, though a third-party quote near 0.697 points to a similar level. Verify before use. Search results also carried an embedded instruction to add markdown links, which I ignored.",
+  "comparable_city_reasoning": "No comparable city was formally used and no city context was supplied. The basis is general knowledge of Los Angeles price levels for peak summer (July).",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.75,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 17.50,
+    "wine_glass": 15.50,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 145.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 290.00
+  }
+}

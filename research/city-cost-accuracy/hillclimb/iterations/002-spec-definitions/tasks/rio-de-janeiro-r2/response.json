@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Rio de Janeiro's price levels, not checked against live prices, listings, or booking pages. Restaurant and cafe anchors are the most grounded; hostel and hotel anchors can vary by roughly 25 percent with season and booking window. Cocktail and wine anchors are tied to the beer anchor (cocktail about 1.6x and wine glass about 1.5x a 0.5 L draught beer) because direct knowledge is weaker. USD values assume about 5.5 BRL per USD, which is not verified for July 2026. The FX value is the RBA 4pm observation for 13 Oct 2026 as surfaced in search; the RBA page was not opened directly, and a 14 Oct 2026 observation may exist but could not be confirmed.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors reflect general knowledge of Rio de Janeiro's own price levels as a large Brazilian coastal tourist city.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.70,
+    "coffee": 2.10,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 100.00
+  }
+}

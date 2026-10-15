@@ -1,0 +1,12 @@
+{
+  "id": "009-search-grounded",
+  "parent": "001-v11-haiku-baseline",
+  "family": "grounding",
+  "hypothesis": "H7: allow up to six web searches for current typical prices (cost-of-living indexes, hostel and hotel listing averages) within the eight-action serving cap. Source-reproduction risk: the model may read Numbeo, which is also the food/drink reference; accommodation references come from other sources and are reported separately.",
+  "baseTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "repeats": 2,
+  "replacements": [
+    ["The city prices are holistic model estimates: use your learned general knowledge and the\nsupplied city context, and do not claim that you inspected live booking pages or current listings.", "Combine your general knowledge with a small number of web searches for current typical prices in this city, and\nthe supplied city context."],
+    ["Use web search only to obtain the latest published Reserve Bank of Australia USD/AUD exchange-rate observation. Do\nnot use web search to source the city-price anchors. Return the RBA observation and its provenance; the server owns\nthe inversion, currency conversion, tier formulas, and rounding.", "Use at most seven web searches in total: one to obtain the latest published Reserve Bank of Australia USD/AUD\nexchange-rate observation, and up to six to check current typical prices in this city (for example cost-of-living\nprice indexes for restaurant meals, beer and coffee, and hostel or hotel listing averages for accommodation). Prefer\naggregated typical prices over single venues or single listings, and use your judgement where sources disagree or\nare thin. Return the RBA observation and its provenance; the server owns the inversion, currency conversion, tier\nformulas, and rounding."]
+  ]
+}

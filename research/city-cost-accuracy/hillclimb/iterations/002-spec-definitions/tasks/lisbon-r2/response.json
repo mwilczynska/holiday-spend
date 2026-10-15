@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings. Restaurant and coffee anchors are moderate confidence; accommodation is least certain for July peak pricing (about 25-30%). Cocktail and wine_glass are set from the local beer relationship because direct knowledge of those prices is weaker. Euro prices were converted at an assumed EUR/USD of about 1.16, not live-checked. The FX value comes from a search-result summary of the RBA exchange-rates page, not a direct page read; an earlier search reached only March 2026 RBA data, so verify before use.",
+  "comparable_city_reasoning": "Regional basis: large Southern European capitals with strong summer tourism, using Porto and Madrid as reference points for restaurant and drink price levels, with accommodation adjusted up for Lisbon's July demand. No web search was used for the city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 2.67,
+    "inexp_meal_1p": 16.20,
+    "midrange_meal_2p": 83.50,
+    "cocktail": 12.20,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 41.80,
+    "hostel_private_2p": 104.40,
+    "hotel_1star_2p": 110.20,
+    "hotel_3star_2p": 209.00
+  }
+}

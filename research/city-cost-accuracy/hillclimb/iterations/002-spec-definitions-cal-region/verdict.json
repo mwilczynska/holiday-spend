@@ -1,0 +1,33 @@
+{
+  "iteration": "002-spec-definitions-cal-region",
+  "against": "001-v11-haiku-baseline-cal-region",
+  "verdict": "reject",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 54,
+    "meanImprovement": 0.010384676608447234,
+    "lower95": -0.0015648720629154948,
+    "upper95": 0.022710721888490118,
+    "wins": 30,
+    "losses": 24
+  },
+  "baseLoss": 0.20742460338884036,
+  "candidateLoss": 0.19703992678039306,
+  "anchorRegressions": [],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "inexp_meal_1p": 0.006965437274142339,
+    "midrange_meal_2p": -0.020421525794568657,
+    "beer": 0.03827515994799727,
+    "coffee": 0.002003948977765929,
+    "hostel_dorm_1p": 0.0011502003783563919,
+    "hostel_private_2p": -0.013955971924676458,
+    "hotel_1star_2p": -0.005365456438109206,
+    "hotel_3star_2p": -0.017177321015689917
+  }
+}

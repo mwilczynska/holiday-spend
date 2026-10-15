@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Chiang Mai price levels for July 2026. No live menus, listings, or booking pages were inspected, and no web sources were used for these anchors. Restaurant and cafe anchors are moderately reliable. Hostel, hotel, and 3-star room anchors vary by area and season, and July is the green season with softer lodging demand, so they carry the most uncertainty. Cocktail (about 2.2x the beer anchor) and wine (about 2x) are set from the local beer relationship because direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Thai tourist cities and mainland Southeast Asian tourist hubs with similar price levels, such as Hoi An and Luang Prabang, with Bangkok tourist-zone prices as a reference for the upper end. Chiang Mai lodging is set below Bangkok's central tourist zones, and its dining is set near Thai provincial tourist-town levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.30,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 55.00
+  }
+}

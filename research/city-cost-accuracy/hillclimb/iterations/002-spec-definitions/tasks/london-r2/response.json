@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of London prices, not checked against live menus or listings. Restaurant and drink anchors are more reliable than hotel and hostel rates, which vary widely by district and July demand. GBP converted at an assumed 1.33 USD per GBP, not a live rate. Cocktail and wine were set from general knowledge and sense-checked against the beer anchor (roughly 2.3 and 1.5 times beer). The FX value comes from a search excerpt attributed to the RBA overview page; that page itself was not opened.",
+  "comparable_city_reasoning": "No comparable-city substitution; anchors reflect London's own price level, loosely sense-checked against other high-cost Western European capitals such as Paris and Amsterdam.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.98,
+    "coffee": 4.92,
+    "inexp_meal_1p": 19.95,
+    "midrange_meal_2p": 139.65,
+    "cocktail": 18.62,
+    "wine_glass": 11.97,
+    "hostel_dorm_1p": 63.84,
+    "hostel_private_2p": 152.95,
+    "hotel_1star_2p": 172.9,
+    "hotel_3star_2p": 292.6
+  }
+}
