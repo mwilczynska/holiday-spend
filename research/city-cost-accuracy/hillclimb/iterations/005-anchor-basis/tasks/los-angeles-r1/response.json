@@ -1,0 +1,37 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Los Angeles prices; not checked against live menus, rate calendars, or listings. Restaurant and cafe anchors are better grounded than July hotel and hostel rates, which swing widely by neighborhood, date, and events. Restaurant prices are pre-tax and pre-tip; accommodation rates exclude taxes and fees. Cocktail and wine come from direct menu knowledge and sit about 2x and 1.75x the beer anchor. FX value comes from WebSearch result text attributed to rba.gov.au; the page itself was not opened, and the 15 Oct figure is unconfirmed because its page date metadata conflicts (14 Oct was 0.7002, under 1% different).",
+  "comparable_city_reasoning": "No single comparable city was used. Reasoned from Los Angeles-specific general knowledge, placing restaurant and hotel levels broadly alongside other large US West Coast metros such as San Diego and Seattle, with a July peak-season uplift on hotel and hostel rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "16 oz domestic draft pint at a casual restaurant in Hollywood, about $8.50 before tax and tip.",
+    "coffee": "12 oz cappuccino at an independent cafe, about $5.75 before tax.",
+    "inexp_meal_1p": "three-taco plate with rice and beans at a neighborhood taqueria, about $16 before tax and tip.",
+    "midrange_meal_2p": "starter, main and dessert for two at a neighborhood bistro, no drinks, about $130 total before tax and tip.",
+    "cocktail": "classic gin and tonic or margarita at a mid-range restaurant bar, about $17 before tax and tip.",
+    "wine_glass": "house-pour glass of California wine at a mid-range restaurant, about $15 before tax and tip.",
+    "hostel_dorm_1p": "shared dorm bed at a registered hostel in July, about $60 per night before taxes and fees.",
+    "hostel_private_2p": "private double room at a registered hostel in July, about $150 per night before taxes and fees.",
+    "hotel_1star_2p": "basic budget motel double room in July, about $140 per night before taxes and fees.",
+    "hotel_3star_2p": "standard double room at a three-star hotel in July, about $270 per night before taxes and fees."
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.75,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 270.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not checked against live menus, booking pages or listings; remembered prices were brought forward to July 2026 with local price growth. Restaurant and beer anchors are moderate confidence; hostel and hotel anchors are less certain given summer seasonality and wide rate spread, with the 3-star anchor the least certain. Cocktail and wine are set from the local beer relationship. FX value was read from RBA table content surfaced by search, not from the F11.1 download, so the same-day figure should be confirmed.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is Marrakech's own tourist market, with Fes and Essaouira as loose Moroccan reference points; cocktail and wine anchors follow the local beer relationship because licensed-venue prices vary widely.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 12.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 41.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 110.00
+  }
+}

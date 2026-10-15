@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied Lima, Buenos Aires and Bogota figures; no live listings or booking pages were checked. Restaurant and coffee anchors are the most reliable. Hotel and hostel rates vary by neighborhood and season (July school holidays can lift demand), so they are less certain. Cocktail and wine were set as a local premium over the draft beer anchor because direct price knowledge of those is weaker. FX: the 15 October 2026 reading came from search-result text citing the RBA exchange rates page; the live page was not opened, and the search flagged a cache-date conflict, so verify before use.",
+  "comparable_city_reasoning": "Calibrated to the supplied comparables: restaurant and coffee levels fall roughly between Bogota and Buenos Aires, and accommodation levels sit near Buenos Aires and well above Lima and Bogota. No single comparable city was copied.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 2.80,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 105.00
+  }
+}

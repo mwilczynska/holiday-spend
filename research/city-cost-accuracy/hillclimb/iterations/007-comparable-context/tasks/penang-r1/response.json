@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied Kuala Lumpur comparables, not live listings. Restaurant and hostel anchors are the most reliable; hotel anchors and July seasonality are less certain. Cocktail and wine_glass are not directly known: they are set from the draught-beer anchor using an assumed local price multiple (about 2.1x for cocktails and 1.8x for wine) because direct Penang bar-price knowledge is weak.",
+  "comparable_city_reasoning": "Anchored mainly to Kuala Lumpur (same country). Beer, coffee, and meals are set below Kuala Lumpur levels to reflect Penang's generally lower restaurant prices. Hotel anchors are also set somewhat below Kuala Lumpur, while the private hostel room is close to Kuala Lumpur. Yogyakarta and Manila were used only as sanity checks for the budget tiers.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.70,
+    "coffee": 2.65,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 21.50,
+    "cocktail": 7.80,
+    "wine_glass": 6.80,
+    "hostel_dorm_1p": 9.20,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 27.00,
+    "hotel_3star_2p": 62.00
+  }
+}

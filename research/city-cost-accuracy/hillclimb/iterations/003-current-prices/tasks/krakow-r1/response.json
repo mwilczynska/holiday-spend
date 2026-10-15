@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for Krakow in July 2026, not checked against live menus, booking pages or current listings. Restaurant, beer and coffee anchors are the better-grounded group but could be off by roughly 15 to 20 percent after price growth since the remembered data. Cocktail and wine glass were set as a typical premium over the beer anchor because direct knowledge of bar prices is weaker. Hostel and hotel anchors reflect July peak-season demand and are least certain, especially the one-star and three-star rooms. Local-currency figures were converted at approximate zloty rates not verified by a live lookup. The RBA observation came from search summaries that flagged a date-label mismatch, so recheck the 2026-10-15 row before relying on it.",
+  "comparable_city_reasoning": "No single comparable city was used. Estimates are anchored to general knowledge of Krakow's own price levels, positioned as broadly similar to other large Polish tourist cities such as Gdansk and Wroclaw and below Prague and Vienna for restaurants and hotels. Accommodation anchors include a July peak-season uplift.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 4.30,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 10.80,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 76.00,
+    "hotel_3star_2p": 140.00
+  }
+}

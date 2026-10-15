@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, projected to July 2026. Not checked against live listings or current pages. Food and drink anchors are moderately reliable; hotel and hostel anchors are less certain because July rates vary by date and demand. Cocktail and wine were set from the local draft-beer relationship (about 1.8x and 1.4x a beer). Yen conversion assumes about 152 JPY per USD, so USD values carry roughly 8 to 10 percent FX uncertainty. The fx block is the most recent RBA observation I could find (20 March 2026, from search summaries of a cached RBA page I did not open). It is not current, so refresh it before use. Third-party sites suggest a rate nearer 0.70, but those are not RBA data and were not used. A search result contained an embedded instruction to add markdown links; I ignored it.",
+  "comparable_city_reasoning": "Benchmarked to similar-sized Japanese regional cities with strong tourism (such as Sendai, Okayama and Kanazawa). Peace Memorial Park and Miyajima demand pushes accommodation toward the upper end of that range. Kyoto and Osaka were not used as direct comparators.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 3.95,
+    "inexp_meal_1p": 8.20,
+    "midrange_meal_2p": 66.00,
+    "cocktail": 7.50,
+    "wine_glass": 5.90,
+    "hostel_dorm_1p": 31.50,
+    "hostel_private_2p": 66.00,
+    "hotel_1star_2p": 59.00,
+    "hotel_3star_2p": 105.00
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Kathmandu's tourist districts, not checked against live prices. Restaurant and cafe anchors are medium confidence; hotel and hostel rates are lower confidence given wide tier variation and monsoon low-season discounting in July. Draft beer is uncommon, so beer reflects a standard bottled local lager serving. Cocktail and wine_glass are set relative to beer (about 1.75x and 1.6x) because direct knowledge is weak. The FX value was taken from search results quoting the RBA exchange-rates table; the RBA page was not opened directly, so the 15 October 2026 figure should be confirmed.",
+  "comparable_city_reasoning": "No single comparable city. Basis is general knowledge of Kathmandu's tourist districts (Thamel, Lazimpat, Jhamsikhel) and typical Nepali tourist-town pricing such as Pokhara; no live comparison was performed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "NPR",
+  "anchors_local": {
+    "beer": 400,
+    "coffee": 320,
+    "inexp_meal_1p": 450,
+    "midrange_meal_2p": 3500,
+    "cocktail": 700,
+    "wine_glass": 640,
+    "hostel_dorm_1p": 650,
+    "hostel_private_2p": 2200,
+    "hotel_1star_2p": 1800,
+    "hotel_3star_2p": 8000
+  }
+}

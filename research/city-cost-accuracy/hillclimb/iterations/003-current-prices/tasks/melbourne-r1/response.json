@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate; no live listings were checked. Cafe, beer and restaurant anchors are moderately reliable. Cocktail and wine anchors were checked against the local beer price relationship because direct recall is weaker. Accommodation is least certain given July winter demand, school holidays and events. Remembered prices were brought forward to 2026 for local price growth. USD values use the RBA 15 Oct 2026 observation as reported in search results (the RBA page itself was not opened), not a July 2026 rate, so a July rate could shift them slightly.",
+  "comparable_city_reasoning": "Anchored on Melbourne's own price level from general knowledge, with Sydney and Auckland as nearby high-cost Oceania comparables for sense-checking. No web-sourced city prices were used. Accommodation reflects July winter demand rather than the summer peak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.30,
+    "coffee": 4.03,
+    "inexp_meal_1p": 14.61,
+    "midrange_meal_2p": 121.71,
+    "cocktail": 16.69,
+    "wine_glass": 9.74,
+    "hostel_dorm_1p": 31.30,
+    "hostel_private_2p": 97.37,
+    "hotel_1star_2p": 111.28,
+    "hotel_3star_2p": 173.88
+  }
+}

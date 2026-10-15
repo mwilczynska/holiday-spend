@@ -1,0 +1,37 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or booking pages. Restaurant and cafe anchors are the most reliable; lodging is less certain because July includes Gion Matsuri peak demand. Local examples were translated at roughly 150 yen per US dollar, so USD anchors move inversely with the yen rate. Cocktail and wine anchors follow the local beer price relationship (cocktails roughly twice draft beer) because direct knowledge is weaker. The FX figure came from search-index summaries of the RBA page, which flagged a date-label inconsistency, so it was not confirmed on the live page.",
+  "comparable_city_reasoning": "No single comparable city was used. Restaurant and drink levels follow general Japanese mid-sized tourist-city pricing, with Osaka as a rough reference; lodging reflects a July peak premium for Kyoto.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "medium draft beer at a casual izakaya, about 650 JPY",
+    "coffee": "cappuccino at an independent cafe, about 600 JPY",
+    "inexp_meal_1p": "teishoku set meal or ramen at a casual eatery, about 1,100 JPY",
+    "midrange_meal_2p": "three-course dinner at a mid-range restaurant, about 6,000 JPY per person, so about 12,000 JPY for two with no drinks",
+    "cocktail": "classic cocktail at a standard bar, about 1,300 JPY",
+    "wine_glass": "house wine by the glass at a restaurant, about 900 JPY",
+    "hostel_dorm_1p": "dorm bed in a registered Kyoto hostel in July, about 4,500 JPY per night",
+    "hostel_private_2p": "private double room in a registered Kyoto hostel in July, about 11,000 JPY per night",
+    "hotel_1star_2p": "very basic business hotel or guesthouse twin room, about 13,000 JPY per night",
+    "hotel_3star_2p": "registered three-star hotel double room in July, about 30,000 JPY per night"
+  },
+  "anchors_usd": {
+    "beer": 4.33,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.33,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 8.67,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 73.33,
+    "hotel_1star_2p": 86.67,
+    "hotel_3star_2p": 200.00
+  }
+}

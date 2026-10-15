@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, carried forward from remembered price levels to a July 2026 peak-season window with an allowance for recent local price growth. No live menus, booking pages or listings were inspected, and no web sources were used for the city-price anchors; the only web search performed was for the RBA USD/AUD observation. Restaurant and cafe anchors are moderately reliable. Accommodation is the least certain group because July rates vary widely by district, lead time and property type, so treat the hostel and hotel anchors as wide ranges. Local-currency estimates were converted to USD at an assumed 1.17 USD per EUR from general knowledge, not a live quote, so all USD anchors carry roughly plus or minus 5 percent FX uncertainty. Cocktail and wine anchors were set from the local price relationship to beer (cocktail about 3 times beer, house wine glass about 1.5 times beer) because direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "Regional basis: a Southern European capital with heavy summer tourism demand, placed in a Western European pricing tier. No single named comparable city was verified; the estimates are anchored on remembered café, restaurant and accommodation price levels for the city itself, carried forward to July 2026.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.98,
+    "coffee": 3.04,
+    "inexp_meal_1p": 16.38,
+    "midrange_meal_2p": 88.92,
+    "cocktail": 12.29,
+    "wine_glass": 5.85,
+    "hostel_dorm_1p": 51.48,
+    "hostel_private_2p": 117.00,
+    "hotel_1star_2p": 105.30,
+    "hotel_3star_2p": 216.45
+  }
+}

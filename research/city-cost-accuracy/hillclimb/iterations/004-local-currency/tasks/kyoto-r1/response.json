@@ -1,0 +1,26 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus or listings. Food, drink and cafe anchors are moderately well grounded; accommodation is least certain because Kyoto room rates swing widely by district, event and date, and July is peak season. Cocktail and wine were set from a typical ratio to the beer anchor (about 1.9x and 1.4x) because direct Kyoto knowledge for them is weaker. The FX figure came from RBA-domain search results rather than a direct page read, and those results showed inconsistent page date labels, so verify it before relying on it.",
+  "comparable_city_reasoning": "No single reference city. Food and drink follow typical Japanese restaurant pricing, similar to Osaka's tourist districts. Accommodation is adjusted upward for Kyoto's July tourist-demand premium.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "JPY",
+  "anchors_local": {
+    "beer": 700,
+    "coffee": 700,
+    "inexp_meal_1p": 1200,
+    "midrange_meal_2p": 15000,
+    "cocktail": 1300,
+    "wine_glass": 1000,
+    "hostel_dorm_1p": 5000,
+    "hostel_private_2p": 12000,
+    "hotel_1star_2p": 13000,
+    "hotel_3star_2p": 30000
+  }
+}

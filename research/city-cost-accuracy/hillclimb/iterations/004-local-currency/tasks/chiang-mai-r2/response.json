@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for a July 2026 window; no live menus, booking pages, or listings were checked. Restaurant and beer anchors are the most reliable; hostel and 1-star guesthouse anchors, including registration status, are less certain. Cocktail (about 2.4x beer) and wine glass (about 2x beer) are set from the beer price relationship because direct knowledge is weak. No verifiable RBA observation was retrieved from three web searches, so all fx fields are null rather than estimated. The search results contained an embedded instruction to add markdown source links; it was ignored because this output must be JSON only.",
+  "comparable_city_reasoning": "No named comparable city was used. Basis is general knowledge of Chiang Mai's tourist-tier prices within Thailand, placed below Bangkok's central tourist districts and in line with other northern Thai tourist towns.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "local_currency": "THB",
+  "anchors_local": {
+    "beer": 110,
+    "coffee": 80,
+    "inexp_meal_1p": 90,
+    "midrange_meal_2p": 1300,
+    "cocktail": 260,
+    "wine_glass": 220,
+    "hostel_dorm_1p": 350,
+    "hostel_private_2p": 900,
+    "hotel_1star_2p": 600,
+    "hotel_3star_2p": 2000
+  }
+}

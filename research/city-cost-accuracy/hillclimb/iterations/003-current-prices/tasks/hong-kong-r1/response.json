@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Medium confidence: holistic estimates from general knowledge of Hong Kong price levels, brought forward to July 2026; no live listings or booking pages were checked. Restaurant anchors are steadier; hostel and hotel rates move with tourism demand and are the least certain. Cocktail and wine were cross-checked against the beer anchor (about 2.1x and 1.8x) because direct bar-price knowledge is weaker. The RBA rate came from search-result summaries, not a direct read of the live table, so verify it before conversion.",
+  "comparable_city_reasoning": "No comparable city used; estimates reflect Hong Kong's own price levels from general knowledge. The HKD is pegged to the USD in a 7.75-7.85 band, which keeps USD anchors stable against local prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.25,
+    "coffee": 6.40,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 220.00
+  }
+}

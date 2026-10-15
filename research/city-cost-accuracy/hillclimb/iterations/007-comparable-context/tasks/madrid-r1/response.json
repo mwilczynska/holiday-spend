@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not a live price check. Coffee and restaurant anchors are the firmest; hostel and hotel anchors are wider given July demand swings. Cocktail and wine are derived from the beer anchor (cocktail about 2x beer, wine glass about equal to beer) because direct knowledge is weaker. FX came from search-result summaries of the RBA exchange-rates page, not a direct table read; the 15 October publication time is unconfirmed, and the prior observation (14 October) was reported as 0.7002.",
+  "comparable_city_reasoning": "Calibrated to the supplied Athens, Berlin and Amsterdam figures plus general knowledge of Madrid: beer and coffee sit below all three comparables, restaurant meals sit near Athens and Berlin, and lodging sits near Berlin and Athens and well below Amsterdam.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 3.00,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 57.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 175.00
+  }
+}

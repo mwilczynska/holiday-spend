@@ -1,0 +1,26 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live listings. Prices vary by district; anchors reflect typical mid-range areas (Miraflores, San Isidro, Barranco), and accommodation is the least certain. Cocktail and wine were cross-checked against beer (about 2.1x and 1.9x) because glass-level knowledge is weaker. FX came from search-result summaries of the RBA table, not a direct page read; the 15 October value appears only in the table, which had date-stamp inconsistencies, so verify before use.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Latin American capitals with comparable tourist accommodation and restaurant markets (for example Bogota), adjusted for Lima's wide price spread between Centro and upscale districts such as Miraflores and San Isidro.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "PEN",
+  "anchors_local": {
+    "beer": 14.00,
+    "coffee": 12.00,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 240.00,
+    "cocktail": 30.00,
+    "wine_glass": 26.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 330.00
+  }
+}

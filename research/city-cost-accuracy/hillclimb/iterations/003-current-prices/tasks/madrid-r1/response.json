@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings; no web search was used for prices. Restaurant and coffee anchors are moderately reliable; July hostel and hotel rates are least certain. Beer assumes a 330 ml draft. Wine and cocktail were set from Madrid price levels and checked against typical beer ratios. Remembered 2024-2025 prices were brought forward to July 2026 for hospitality price growth. USD values assume EUR/USD near 1.16 from memory, not a checked rate; a 5% EUR/USD move shifts all USD anchors about 5%. FX 0.6955 (2026-10-15) comes from search-result summaries citing the RBA exchange-rates page (14 Oct shown as 0.7002). I did not open that page, and one result warned its date label may not match its contents, so confirm on the live table.",
+  "comparable_city_reasoning": "Reasoned by comparison with Barcelona and Lisbon as similar Iberian and Southern European capitals, adjusted for Madrid's typical restaurant and accommodation levels; no live city-price lookup was performed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.29,
+    "coffee": 2.90,
+    "inexp_meal_1p": 17.40,
+    "midrange_meal_2p": 97.44,
+    "cocktail": 13.34,
+    "wine_glass": 4.87,
+    "hostel_dorm_1p": 48.72,
+    "hostel_private_2p": 110.20,
+    "hotel_1star_2p": 87.00,
+    "hotel_3star_2p": 197.20
+  }
+}

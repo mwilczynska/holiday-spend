@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general Edinburgh price knowledge; no live listings were checked. Cafe, restaurant and beer anchors are steadier than accommodation, which depends on July demand. GBP was converted at an assumed 1.33 USD per GBP. Cocktail and wine were cross-checked against the pint price (about 1.9x and 1.25x). The FX figure came from a jumbled RBA homepage extract in search results and was not verified against the RBA table; the RBA exchange rates overview showed 0.6961 for 13 Oct, and market quotes for 14 Oct were about 0.4% lower.",
+  "comparable_city_reasoning": "No single comparable city was used as a direct proxy. The basis is general knowledge of UK and Northern European city-centre tourist pricing.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "pint of domestic draft lager in a city-centre restaurant, about £6.40",
+    "coffee": "cappuccino at an independent cafe, about £3.60",
+    "inexp_meal_1p": "main course at a budget pub or curry-house restaurant, about £14",
+    "midrange_meal_2p": "three courses for two at a mid-range bistro (about £11 starters, £25 mains, £9 desserts each), about £90 total",
+    "cocktail": "classic cocktail such as a Negroni at a city-centre bar, about £12.00",
+    "wine_glass": "175 ml glass of house white at a city-centre restaurant, about £8.00",
+    "hostel_dorm_1p": "mixed-dorm bed at a central registered hostel in July, about £38 per night",
+    "hostel_private_2p": "private double or twin room at a central hostel, about £100 per night",
+    "hotel_1star_2p": "basic guesthouse double room in Edinburgh, about £115 per night",
+    "hotel_3star_2p": "3-star hotel double room in the city centre, about £190 per night"
+  },
+  "anchors_usd": {
+    "beer": 8.51,
+    "coffee": 4.79,
+    "inexp_meal_1p": 18.62,
+    "midrange_meal_2p": 119.70,
+    "cocktail": 15.96,
+    "wine_glass": 10.64,
+    "hostel_dorm_1p": 50.54,
+    "hostel_private_2p": 133.00,
+    "hotel_1star_2p": 152.95,
+    "hotel_3star_2p": 252.70
+  }
+}

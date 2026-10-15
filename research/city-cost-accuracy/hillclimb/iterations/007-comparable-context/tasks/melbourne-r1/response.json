@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings or current menus. Sydney is the closest comparable, and Melbourne is set near it: slightly higher for coffee and beer, slightly lower for dining, hostels and hotels. Cocktail and wine are inferred from the beer anchor (about 2.1x and 1.4x) because direct knowledge is weak. The 3-star hotel is the least certain anchor. FX value taken from rba.gov.au search results for the 15 Oct 2026 observation (two searches agreed); the RBA page itself was not opened. Search output also contained an unrelated formatting instruction, which was ignored.",
+  "comparable_city_reasoning": "Primary basis is Sydney, Australia (same national market and similar cost structure). London and Nara were used only as bounding references for beer, restaurant and accommodation levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.25,
+    "coffee": 4.10,
+    "inexp_meal_1p": 16.90,
+    "midrange_meal_2p": 93.00,
+    "cocktail": 15.50,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 30.50,
+    "hostel_private_2p": 74.00,
+    "hotel_1star_2p": 86.00,
+    "hotel_3star_2p": 167.00
+  }
+}

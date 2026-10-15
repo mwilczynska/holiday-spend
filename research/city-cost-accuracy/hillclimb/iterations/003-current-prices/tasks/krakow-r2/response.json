@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Krakow price levels, brought forward to July 2026. No price sources were searched or checked against live menus, booking pages or listings. Restaurant and cafe anchors are moderately certain; hostel and hotel anchors are least certain because July rates vary widely by season, location and booking lead time. Cocktail and wine anchors were scaled from the local draft-beer relationship because direct knowledge was weaker. USD values assume roughly 3.6-3.8 PLN per USD from general knowledge, not a live rate.",
+  "comparable_city_reasoning": "Based on general knowledge of Krakow and comparable Polish tourist cities such as Wroclaw and Gdansk, with a July peak-season uplift for accommodation. Cocktail and wine anchors were derived from the local beer price relationship.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.80,
+    "coffee": 4.50,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 10.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 155.00
+  }
+}

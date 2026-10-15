@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, coffee and beer anchors rest on general knowledge of Mumbai price levels, moved forward to July 2026 and converted at an assumed 88-90 INR per USD (not a live rate). Accommodation is least certain because rates vary widely by area, and July falls in monsoon, usually a softer period for hotel rates. Cocktail and wine_glass were not recalled directly; they were set from the beer anchor using typical bar multiples (about 2.4x and 2.0x). No live listings or booking pages were inspected. The FX value came from RBA search results that agreed with each other, not from a direct page read.",
+  "comparable_city_reasoning": "Regional basis: South Asian metro pricing, using Delhi and Bengaluru as reference points for meals and drinks. Mumbai accommodation and alcohol are set higher to reflect high land costs and Maharashtra liquor taxes. No single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.20,
+    "inexp_meal_1p": 3.25,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 27.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 80.00
+  }
+}

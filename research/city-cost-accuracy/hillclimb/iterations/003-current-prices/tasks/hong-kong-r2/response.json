@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of local price levels, brought forward to July 2026; no live listings or booking pages were checked. Restaurant and drink anchors are moderately reliable; accommodation is least certain because hotel and hostel rates swing with season and demand. Cocktail and wine come from direct knowledge of bar and restaurant prices, cross-checked against the local beer relationship. The local currency is pegged to the US dollar, so FX risk is low. The FX observation is from RBA exchange-rate page summaries returned by search (the page itself was not opened): the same-day 15 October 2026 reading, with its 4pm posting time unconfirmed.",
+  "comparable_city_reasoning": "No comparable city used. Anchors are estimated from local price levels for casual and mid-range dining, bars, guesthouses and three-star hotels, placed within the East Asia regional basis.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.70,
+    "coffee": 6.15,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 29.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 180.00
+  }
+}

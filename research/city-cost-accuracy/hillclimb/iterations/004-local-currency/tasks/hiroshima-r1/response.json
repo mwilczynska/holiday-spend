@@ -1,0 +1,26 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Japanese price levels, not inspected listings, projected to July 2026. Restaurant and cafe anchors are steadier; hotel and hostel anchors vary more with season and date. Cocktail and wine anchors use the local beer relationship (about 1.5x and 1.2x beer) because direct knowledge is weaker. FX is the RBA 14 October 2026 observation as reported in search results; a 15 October entry also appeared, but its date label could not be verified, so it was not used.",
+  "comparable_city_reasoning": "Benchmarked to mid-sized Japanese prefectural capitals with strong visitor demand, priced below Tokyo, Osaka and Kyoto; hotel anchors reflect summer demand in that peer group.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "JPY",
+  "anchors_local": {
+    "beer": 650,
+    "coffee": 600,
+    "inexp_meal_1p": 1150,
+    "midrange_meal_2p": 11000,
+    "cocktail": 1000,
+    "wine_glass": 800,
+    "hostel_dorm_1p": 3800,
+    "hostel_private_2p": 9000,
+    "hotel_1star_2p": 11000,
+    "hotel_3star_2p": 17000
+  }
+}

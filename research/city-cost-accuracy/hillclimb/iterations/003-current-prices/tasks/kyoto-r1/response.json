@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and cafe anchors are moderate confidence. Accommodation is least certain because July is peak season (Gion Matsuri) and rates vary widely by date and room type. Cocktail and wine were set relative to draft beer (about 2x and 1.3x) because direct recall of Kyoto bar prices is weaker. JPY conversions assume about 150 JPY per USD, not a verified quote; a 10% yen move shifts all anchors by roughly 10%. The FX figure came from a search-result summary attributed to the RBA homepage and was not directly opened or cross-checked.",
+  "comparable_city_reasoning": "No foreign comparable city was used. Anchors follow Japanese domestic price levels, benchmarked against Osaka and Tokyo mid-tier and budget pricing, with a July peak-season premium on Kyoto accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.80,
+    "coffee": 4.53,
+    "inexp_meal_1p": 7.67,
+    "midrange_meal_2p": 113.33,
+    "cocktail": 9.33,
+    "wine_glass": 6.33,
+    "hostel_dorm_1p": 36.67,
+    "hostel_private_2p": 83.33,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 213.33
+  }
+}

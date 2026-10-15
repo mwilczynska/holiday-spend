@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate of central Florence prices for the July 2026 peak-season window, based on general knowledge. No live listings, booking pages, or web price sources were used. Restaurant and drink anchors are moderate confidence; hostel and hotel rates are least certain because July rates vary widely by date and event. Cocktail and wine were cross-checked against the local beer price relationship. Euro examples were converted to USD at an unsourced approximate rate. The FX value came from RBA-domain search results rather than a direct read of the F11.1 table, so confirm the 15 Oct 2026 observation there.",
+  "comparable_city_reasoning": "Benchmarked against central Rome and Bologna price levels for restaurants and cafes, with an upward adjustment for Florence's high July accommodation demand. No single comparable city was matched exactly.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "draft lager (birra alla spina, 0.4 L) at a central trattoria, about EUR 6.50",
+    "coffee": "cappuccino at a central bar counter, about EUR 2.00",
+    "inexp_meal_1p": "margherita pizza with a bottle of water at a casual pizzeria, about EUR 14",
+    "midrange_meal_2p": "starter, pasta and main course for two at a central trattoria, no drinks, about EUR 105 total",
+    "cocktail": "Negroni at a central bar, about EUR 11",
+    "wine_glass": "glass of house Chianti at a central trattoria, about EUR 6",
+    "hostel_dorm_1p": "bed in a 6-bed mixed dorm at a central registered hostel in July, about EUR 45 per night",
+    "hostel_private_2p": "private double room at a central registered hostel in July, about EUR 120 per night",
+    "hotel_1star_2p": "basic double room at a registered central guesthouse or 1-star hotel in July, about EUR 130 per night",
+    "hotel_3star_2p": "double room at a registered central 3-star hotel in July, about EUR 250 per night"
+  },
+  "anchors_usd": {
+    "beer": 7.48,
+    "coffee": 2.30,
+    "inexp_meal_1p": 16.10,
+    "midrange_meal_2p": 120.75,
+    "cocktail": 12.65,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 51.75,
+    "hostel_private_2p": 138.00,
+    "hotel_1star_2p": 149.50,
+    "hotel_3star_2p": 287.50
+  }
+}

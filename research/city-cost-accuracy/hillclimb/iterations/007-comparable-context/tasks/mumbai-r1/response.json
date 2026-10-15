@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied comparables, not checked against live listings. Coffee and restaurant anchors are more reliable; hotel and drink anchors are less certain given Mumbai's wide price range and Indian alcohol taxation. Cocktail and wine are set at about twice the draught beer anchor and cross-checked against typical bar price bands. FX rate taken from the RBA exchange-rates page as surfaced by web search; the F11.1 table itself was not opened directly.",
+  "comparable_city_reasoning": "Calibrated against the supplied mid-2026 Kathmandu, Colombo and Manila figures: draught beer sits near Kathmandu and above Colombo; coffee tracks Colombo and Manila; inexpensive meals fall between Kathmandu and Colombo; mid-range two-person meals sit above all three comparables; dorm beds track Colombo and Manila; private hostel and three-star rooms fall between Manila and Colombo; basic hotel rooms fall between Kathmandu and Manila.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.40,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 70.00
+  }
+}

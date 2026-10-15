@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Kuala Lumpur price levels, moved forward to July 2026 for local inflation; no live menus, listings or booking pages were checked. Restaurant meal anchors are moderately reliable; draft beer, cocktail, wine and hotel and hostel rates are less certain and vary by venue, location and season. Cocktail and wine were cross-checked against the draft beer anchor using typical local price ratios because direct recall for them is weaker. Ringgit prices were converted at an assumed mid-2026 planning rate, not a looked-up rate. The FX value came from search-result summaries of rba.gov.au pages rather than a direct page read, so verify the 2026-10-15 figure on the RBA daily table.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is Kuala Lumpur-specific recall of restaurant, bar, hostel and hotel price levels, placed within the Southeast Asian large-city price tier.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.75,
+    "coffee": 3.60,
+    "inexp_meal_1p": 3.40,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 10.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 80.00
+  }
+}

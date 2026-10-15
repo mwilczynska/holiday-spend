@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Florence pricing; no live listings or booking pages were inspected. Restaurant anchors are more reliable than July accommodation, which is volatile. USD figures assume about 1.15 USD per EUR (a planning rate, not sourced). Cocktail and wine anchors are cross-checked against the beer anchor. FX: the 14 Oct 2026 rate comes from search-result text attributed to the RBA, not a direct read of the F11.1 table; a 15 Oct value (0.6955) seen in results could not be verified.",
+  "comparable_city_reasoning": "Benchmarked against Rome, Venice and Bologna for restaurant and hotel levels, adjusted for Florence's high July demand; no specific listing was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.33 L Italian lager at a restaurant in the centro, about €6",
+    "coffee": "cappuccino at a centro café bar, about €2.50",
+    "inexp_meal_1p": "pasta or pizza main with water at a trattoria, about €14",
+    "midrange_meal_2p": "two starters, two mains and two desserts at a mid-range trattoria, no drinks, about €90 total",
+    "cocktail": "Negroni at a centro bar, about €13",
+    "wine_glass": "house Chianti, 150 ml glass, at a restaurant, about €6",
+    "hostel_dorm_1p": "bed in a 6-8 bed dorm at a central registered hostel, July, about €40 per night",
+    "hostel_private_2p": "private double at a central registered hostel, July, about €115 per night",
+    "hotel_1star_2p": "basic ensuite double at a registered pensione or guesthouse, July, about €125 per night",
+    "hotel_3star_2p": "double at a registered three-star hotel in the centro, July, about €230 per night"
+  },
+  "anchors_usd": {
+    "beer": 6.90,
+    "coffee": 2.88,
+    "inexp_meal_1p": 16.10,
+    "midrange_meal_2p": 103.50,
+    "cocktail": 14.95,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 132.25,
+    "hotel_1star_2p": 143.75,
+    "hotel_3star_2p": 264.50
+  }
+}

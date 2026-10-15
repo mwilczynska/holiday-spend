@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings. July 2026 values are projected forward from remembered Madrid price levels. Restaurant, beer and coffee anchors are more reliable than hostel and hotel rates, which vary widely by neighbourhood and booking lead time. Beer assumes roughly a 330 ml serving. Cocktail and wine were set with reference to the local beer price (about 3.5x and 1.1x a draft beer) because direct knowledge is weaker. USD values assume a EUR/USD rate near 1.16, which was not sourced by search. The RBA rate came from rba.gov.au search results without opening the page itself, and the RBA figures and date stamps looked inconsistent across pages, so verify it before relying on it.",
+  "comparable_city_reasoning": "No single comparator city was used. Estimates are a loose benchmark against other large Spanish and southern European capitals with similar tourism demand, such as Barcelona and Lisbon, adjusted to Madrid's general price level.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.29,
+    "coffee": 2.90,
+    "inexp_meal_1p": 17.98,
+    "midrange_meal_2p": 81.20,
+    "cocktail": 15.08,
+    "wine_glass": 4.87,
+    "hostel_dorm_1p": 39.44,
+    "hostel_private_2p": 97.44,
+    "hotel_1star_2p": 81.20,
+    "hotel_3star_2p": 185.60
+  }
+}

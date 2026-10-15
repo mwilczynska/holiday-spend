@@ -1,0 +1,26 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge; no live listings or booking pages were inspected. Restaurant and cafe anchors are moderately reliable; accommodation is least certain given July peak-season volatility (Gion Matsuri). Cocktail and wine were set relative to the beer anchor (cocktail about double, wine about a third more) because direct price knowledge for them is less certain. FX 0.6955 is relayed from a web search summary of the RBA exchange-rates page and is not confirmed against the live table; a cross-check found only a March 2026 RBA snapshot, so verify before use. If the 15 Oct entry is not yet posted, the prior observation is 14 Oct at 0.7002.",
+  "comparable_city_reasoning": "No single comparable city; based on general Japanese price levels with a Kyoto tourist premium for lodging and mid-range dining, loosely compared to Osaka and Nara from general knowledge (no live data).",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "JPY",
+  "anchors_local": {
+    "beer": 750,
+    "coffee": 650,
+    "inexp_meal_1p": 1200,
+    "midrange_meal_2p": 13000,
+    "cocktail": 1500,
+    "wine_glass": 1000,
+    "hostel_dorm_1p": 5000,
+    "hostel_private_2p": 12000,
+    "hotel_1star_2p": 14000,
+    "hotel_3star_2p": 32000
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic general-knowledge estimate for July 2026; no live listings or booking pages were checked. Restaurant and coffee anchors are moderately reliable; accommodation is least certain given July demand. Cocktail and wine were set from typical price ratios to the beer anchor. FX is the 14 Oct 2026 RBA figure from search summaries of rba.gov.au, not a direct table read. A 15 Oct figure (0.6955) appeared on only one page with inconsistent date labels, so it was not used. An unrelated markdown-link instruction in the search output was ignored.",
+  "comparable_city_reasoning": "Benchmarked against other UK major tourist cities such as York and Glasgow, with an upward adjustment for Edinburgh's central tourist premium. Accommodation reflects July peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "GBP",
+  "anchors_local": {
+    "beer": 6.20,
+    "coffee": 3.60,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 12.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 190.00
+  }
+}

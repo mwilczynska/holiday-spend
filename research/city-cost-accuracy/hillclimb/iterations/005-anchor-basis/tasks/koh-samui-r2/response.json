@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge; no live listings or booking pages were checked. Accommodation and drinks are least certain given island and seasonal premiums. Cocktail and wine were cross-checked against the beer price (about 2.2x and 2.6x beer). Local examples assume roughly 33 THB per USD. The FX value comes from search summaries attributed to the RBA, not a direct page read; a 15 Oct 2026 figure of 0.6955 was reported but could not be confirmed, so verify on rba.gov.au before use.",
+  "comparable_city_reasoning": "No single comparable city; regional basis is tourist-zone pricing in southern Thai beach towns such as Phuket, Krabi and Hua Hin, with a modest island premium on accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Chang draft, 500 ml glass at a casual restaurant, about 115 THB",
+    "coffee": "cappuccino at an independent cafe in Bophut, about 90 THB",
+    "inexp_meal_1p": "pad krapow moo with rice and fried egg at a casual local eatery, about 100 THB",
+    "midrange_meal_2p": "three-course dinner for two at a mid-range seafood restaurant, about 1,500 THB, no drinks",
+    "cocktail": "mojito at a beachfront bar, about 250 THB",
+    "wine_glass": "house red by the glass at a mid-range restaurant, about 300 THB",
+    "hostel_dorm_1p": "dorm bed in a registered hostel in Chaweng or Lamai, about 400 THB per night",
+    "hostel_private_2p": "private double room at a hostel in Bophut or Lamai, about 1,000 THB per night",
+    "hotel_1star_2p": "basic air-con double room at a guesthouse in Maenam or Lamai, about 800 THB per night",
+    "hotel_3star_2p": "standard double room at a three-star hotel in Bophut or Chaweng, about 3,000 THB per night"
+  },
+  "anchors_usd": {
+    "beer": 3.48,
+    "coffee": 2.73,
+    "inexp_meal_1p": 3.03,
+    "midrange_meal_2p": 45.45,
+    "cocktail": 7.58,
+    "wine_glass": 9.09,
+    "hostel_dorm_1p": 12.12,
+    "hostel_private_2p": 30.30,
+    "hotel_1star_2p": 24.24,
+    "hotel_3star_2p": 90.91
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or booking pages. Restaurant and drink anchors are moderately firm. Accommodation is least certain because July is peak season, includes the July 4 holiday period, and overlaps the tail of the FIFA World Cup 2026, which Los Angeles hosts, so event-date rates may run well above these figures. Restaurant prices are pre-tip, and taxes are not separately modelled. The FX value comes from search-result summaries of the RBA exchange rates page for 15 October 2026; the page itself was not opened, so confirm the figure before relying on it.",
+  "comparable_city_reasoning": "No single comparable city was used. Estimates rest on general knowledge of Los Angeles price levels, adjusted forward to July 2026 peak-season conditions.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.75,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 260.00
+  }
+}

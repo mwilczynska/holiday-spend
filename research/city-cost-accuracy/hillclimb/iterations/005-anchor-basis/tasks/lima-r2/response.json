@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Lima price tiers (Miraflores, Barranco, central Lima). Not checked against live menus, listings, or booking pages. Restaurant, beer and coffee anchors are more reliable than hotel and hostel rates, which vary widely by neighborhood, season and booking channel. Local examples assume roughly 3.6 soles per US dollar; re-check the USD values if the sol has moved materially. Reference window is July 2026.",
+  "comparable_city_reasoning": "Regional basis: large South American capitals with established tourist districts (Bogota, Quito, Santiago). Lima's dining and budget lodging sit toward the lower-middle of that group, and three-star hotel rates follow upscale business-hotel pricing in Miraflores and San Isidro.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Cusqueña or Pilsen 330 ml bottle at a Miraflores restaurant, about S/ 13",
+    "coffee": "Cappuccino at a Miraflores cafe, about S/ 11",
+    "inexp_meal_1p": "Lomo saltado or set plate at a local eatery, about S/ 18",
+    "midrange_meal_2p": "Three-course dinner for two at a mid-range Miraflores restaurant without drinks, about S/ 216 total",
+    "cocktail": "Pisco sour at a Miraflores bar, about S/ 27",
+    "wine_glass": "House red by the glass at a mid-range restaurant, about S/ 29",
+    "hostel_dorm_1p": "Dorm bed in a Miraflores or Barranco hostel, about S/ 54 per night",
+    "hostel_private_2p": "Private double room in a Miraflores hostel, about S/ 144 per night",
+    "hotel_1star_2p": "Basic double room at a guesthouse in central Lima, about S/ 108 per night",
+    "hotel_3star_2p": "Standard double room at a three-star Miraflores hotel, about S/ 360 per night"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 3.10,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 100.00
+  }
+}

@@ -4,24 +4,49 @@
   "tools": "WebSearch",
   "attempts": [
     {
-      "code": 1,
-      "ms": 7911,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
+      "code": 0,
+      "ms": 251193,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 26770,
+          "outputTokens": 66974,
+          "cacheReadInputTokens": 14479,
+          "cacheCreationInputTokens": 12993,
+          "webSearchRequests": 2,
+          "costUSD": 0.05890739,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 64935,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05890739,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD F11.1 latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates table USD per AUD 15 October 2026 14 October 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
       "stderr": "",
-      "stdoutUnparsed": null,
-      "hasText": true
-    },
-    {
-      "code": 1,
-      "ms": 8070,
-      "isError": true,
-      "modelUsage": {},
-      "costUsdList": 0,
-      "toolCalls": [],
-      "stderr": "\nClaude configuration file at C:\\Users\\chawi\\.claude.json is corrupted: JSON Parse error: Unexpected EOF\nThe corrupted file has been backed up to: C:\\Users\\chawi\\.claude\\backups\\.claude.json.corrupted.1792039487207\nA backup file exists at: C:\\Users\\chawi\\.claude\\backups\\.claude.json.backup.1792039441443\nYou can manually restore it by running: cp \"C:\\Users\\chawi\\.claude\\backups\\.claude.json.backup.1792039441443\" \"C:\\Users\\chawi\\.claude.json\"\n\n",
       "stdoutUnparsed": null,
       "hasText": true
     }

@@ -1,0 +1,37 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus or listings. Restaurant and cafe anchors are firmest; hostel and hotel rates vary with July demand. Cocktail and wine are set relative to draft beer (about 1.7x and 1.5x) because direct local knowledge is weaker. Yen examples assume 150 JPY per USD, not a looked-up rate. The FX figure comes from search-result summaries citing the RBA exchange-rates table; I did not open that page or independently corroborate it, so verify on rba.gov.au before use.",
+  "comparable_city_reasoning": "Benchmarked to mid-sized Japanese regional cities such as Okayama, with lodging nudged upward for Hiroshima's steady tourist demand (Peace Memorial Park, Miyajima day trips).",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Asahi or Kirin draft, 350 ml glass at an izakaya, about 600 yen",
+    "coffee": "Cappuccino at a chain or independent cafe, about 550 yen",
+    "inexp_meal_1p": "Ramen or teishoku set at a local eatery, about 1,100 yen",
+    "midrange_meal_2p": "Three-course bistro dinner for two without drinks, about 11,000 yen total",
+    "cocktail": "Standard cocktail at a bar, about 1,000 yen",
+    "wine_glass": "House wine by the glass at a restaurant, about 900 yen",
+    "hostel_dorm_1p": "Mixed dorm bed at a registered hostel, about 4,000 yen per night",
+    "hostel_private_2p": "Private double at a registered hostel or guesthouse, about 9,000 yen per night",
+    "hotel_1star_2p": "Twin room at a basic registered business hotel, about 11,000 yen per night",
+    "hotel_3star_2p": "Double or twin at a mid-range three-star hotel, about 20,000 yen per night"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.67,
+    "inexp_meal_1p": 7.33,
+    "midrange_meal_2p": 73.33,
+    "cocktail": 6.67,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 26.67,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 73.33,
+    "hotel_3star_2p": 133.33
+  }
+}

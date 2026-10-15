@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of London price levels; no live menus, hotel rates or listings were checked. Accommodation is least certain because July peak-season rates vary widely by zone and booking date. USD values assume a working rate of about 1.33 USD per GBP, not a live quote. Beer is a 568 ml pint; meal figures exclude drinks and tips; cocktail and wine were cross-checked against the beer price relationship. The RBA rate came from search-result summaries rather than a direct read of the RBA table, so verify it before use.",
+  "comparable_city_reasoning": "No web search was used for city prices. Benchmarked against London's own price level and against other high-cost Western European capitals such as Paris and Amsterdam, with London accommodation placed at the upper end of that group.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "pint (568 ml) of draught British lager or ale in a central London pub or restaurant, about £6.80",
+    "coffee": "cappuccino at an independent London cafe, about £3.80",
+    "inexp_meal_1p": "main dish and side at a casual budget restaurant such as a curry house or noodle bar, no drinks, about £15",
+    "midrange_meal_2p": "starter, main and dessert for two at a mid-range central London bistro, no drinks, about £95 total",
+    "cocktail": "standard cocktail such as a gin and tonic or negroni at a central London bar, about £13",
+    "wine_glass": "175 ml glass of house wine at a mid-range London restaurant, about £10",
+    "hostel_dorm_1p": "bed in a 6 to 8 bed mixed dorm at a central London hostel in July, about £50 per night",
+    "hostel_private_2p": "private twin or double room at a central London hostel in July, about £130 per night",
+    "hotel_1star_2p": "very basic double room at a London guesthouse or budget hotel in July, about £140 per night",
+    "hotel_3star_2p": "standard double room at a central London three-star hotel in July, about £230 per night"
+  },
+  "anchors_usd": {
+    "beer": 9.04,
+    "coffee": 5.05,
+    "inexp_meal_1p": 19.95,
+    "midrange_meal_2p": 126.35,
+    "cocktail": 17.29,
+    "wine_glass": 13.30,
+    "hostel_dorm_1p": 66.50,
+    "hostel_private_2p": 172.90,
+    "hotel_1star_2p": 186.20,
+    "hotel_3star_2p": 305.90
+  }
+}

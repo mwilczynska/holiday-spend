@@ -1,0 +1,37 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge projected to July 2026; no live prices or listings were checked. Restaurant and budget-room anchors are more reliable than alcohol and 3-star hotel rates, which move with excise rules and tourist demand. Cocktail and wine were set from the beer price (about 2.7x and 2.8x) because direct knowledge is weak. Local-currency examples assume about 300 LKR per USD and roughly include typical service and tax. The FX value came from web-search text citing the RBA exchange-rates table; that page was not opened directly.",
+  "comparable_city_reasoning": "Regional South Asian tourist-city basis from general knowledge of local price levels. Alcohol and 3-star hotel tiers are set above regional norms to reflect Sri Lankan excise duties and tourist demand. No specific comparable city was used as a direct benchmark.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Lion Lager draft or 330 ml bottle at a mid-range restaurant, about 750 LKR",
+    "coffee": "cappuccino at a mid-range cafe chain, about 700 LKR",
+    "inexp_meal_1p": "rice and curry with chicken at a budget sit-down restaurant, about 900 LKR",
+    "midrange_meal_2p": "three courses for two at a mid-range restaurant, no drinks, about 7,800 LKR",
+    "cocktail": "gin and tonic at a mid-range bar, about 2,000 LKR",
+    "wine_glass": "house wine by the glass at a mid-range restaurant, about 2,100 LKR",
+    "hostel_dorm_1p": "bed in a 6-bed mixed dorm at a registered hostel, about 3,000 LKR a night",
+    "hostel_private_2p": "private double room at a registered hostel, about 7,500 LKR a night",
+    "hotel_1star_2p": "basic double room with fan at a registered guesthouse in Colpetty, about 6,000 LKR a night",
+    "hotel_3star_2p": "standard double room at a registered three-star hotel, about 21,000 LKR a night"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.33,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 26.00,
+    "cocktail": 6.67,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 70.00
+  }
+}

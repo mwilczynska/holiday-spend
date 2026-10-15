@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Kuala Lumpur price levels, extrapolated to July 2026; no live listings, menus, or booking pages were inspected. Restaurant and coffee anchors are moderately reliable; hostel and hotel anchors are least certain given wide seasonal and platform variation. Cocktail and wine_glass are set at roughly twice the beer anchor because direct knowledge of those prices is weaker. FX not verified: search results were thin and contradictory and included embedded formatting instructions, which were ignored, so the fx fields are null rather than an unverified rate.",
+  "comparable_city_reasoning": "No comparable-city dataset or source was used. Basis is general knowledge of Kuala Lumpur price levels and its position among Southeast Asian capitals with a similar tourist profile.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "MYR",
+  "anchors_local": {
+    "beer": 18.00,
+    "coffee": 14.00,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 240.00,
+    "cocktail": 38.00,
+    "wine_glass": 40.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 320.00
+  }
+}

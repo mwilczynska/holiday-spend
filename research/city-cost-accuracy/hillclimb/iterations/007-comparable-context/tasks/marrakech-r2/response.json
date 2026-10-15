@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or July 2026 quotes. Meal and hotel anchors are moderately grounded in general Marrakech price levels; beer is less certain because alcohol licensing and taxes vary by venue. Cocktail and wine glass are set from the local beer price relationship because direct knowledge is weak. Hostel anchors are the loosest given few registered hostels. FX is the 14 Oct 2026 RBA 4pm rate taken from search snippets of rba.gov.au, not a direct read of the F11.1 table; no 15 Oct figure was found.",
+  "comparable_city_reasoning": "Calibrated on Cairo and Cape Town: inexpensive meals, hostels and hotels fall between them, the mid-range meal is roughly at Cape Town level, and beer and cappuccino sit above both because of Morocco's alcohol taxation and tourist cafe pricing. Amsterdam is used only as a ceiling reference. Lodging reflects a July pricing window.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.75,
+    "coffee": 3.20,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 9.50,
+    "wine_glass": 5.90,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 34.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 100.00
+  }
+}

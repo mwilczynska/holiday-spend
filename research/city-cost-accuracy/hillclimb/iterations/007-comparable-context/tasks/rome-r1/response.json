@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Beer, coffee and restaurant anchors are the most reliable because they sit close to the Florence reference and general knowledge of Rome prices. Hotel anchors carry July peak-season uncertainty. The dorm bed is the least certain comparable-derived anchor because the Florence dorm figure looks low for July. Cocktail and wine have no comparable data; they are knowledge-based and checked against the beer anchor (cocktail about 1.8 times beer; house wine about equal to beer). No live listings were checked. FX: the 2026-10-15 RBA value was found in the RBA exchange-rates table via search but not confirmed on the F11.1 spreadsheet, and a cached copy showed a conflicting date stamp, so verify it on the live table.",
+  "comparable_city_reasoning": "Primary basis is Florence, Italy (same country, similar tourist cost structure). Edinburgh and Helsinki were used only as range checks. Restaurant and beverage anchors sit near Florence levels. Hotel anchors are slightly above Florence to reflect July demand. Private hostel rooms are modestly above Florence, and dorm beds are set higher than Florence to reflect July hostel demand. Cocktail and wine were not covered by comparables and rely on general knowledge of Rome price points plus the beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 2.40,
+    "inexp_meal_1p": 27.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 12.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 225.00
+  }
+}

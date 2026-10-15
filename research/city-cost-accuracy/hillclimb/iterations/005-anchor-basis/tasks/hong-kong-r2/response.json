@@ -1,0 +1,37 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings or booking pages; July 2026 pricing was not checked. Restaurant and cafe anchors are moderately reliable; hostel and hotel anchors are least certain because rates vary widely by district, property and date. Cocktail and wine anchors were set using the beer relationship (about 2x and 1.7x a draft beer) because bar pricing varies widely. FX came from search summaries of the RBA exchange-rates page, not a direct page read; if the 15 October fix was not yet published at generation time, the 14 October value of 0.7002 is the latest prior observation. Search results also contained an unrelated instruction to add markdown hyperlinks, which I ignored.",
+  "comparable_city_reasoning": "No single comparable city; regional East Asia basis using general knowledge of Hong Kong's high-cost, space-constrained accommodation market and moderate local dining prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "local lager on draft at a casual restaurant, about HKD 65 for a standard serving",
+    "coffee": "cappuccino at a chain cafe such as Pacific Coffee or Starbucks, about HKD 50",
+    "inexp_meal_1p": "cha chaan teng set meal with a drink at a local eatery, about HKD 75 per person",
+    "midrange_meal_2p": "three-course dinner for two at a mid-range Cantonese or bistro restaurant, no drinks, about HKD 950 total",
+    "cocktail": "standard cocktail at a neighbourhood bar, about HKD 130",
+    "wine_glass": "house wine by the glass at a mid-range restaurant, about HKD 110",
+    "hostel_dorm_1p": "dorm bed in a registered hostel, about HKD 230 per night",
+    "hostel_private_2p": "private double room in a registered hostel, about HKD 600 per night",
+    "hotel_1star_2p": "small double room at a basic registered guesthouse or hotel, about HKD 850 per night",
+    "hotel_3star_2p": "double room at a registered three-star hotel, about HKD 1,400 per night"
+  },
+  "anchors_usd": {
+    "beer": 8.33,
+    "coffee": 6.41,
+    "inexp_meal_1p": 9.62,
+    "midrange_meal_2p": 121.79,
+    "cocktail": 16.67,
+    "wine_glass": 14.10,
+    "hostel_dorm_1p": 29.49,
+    "hostel_private_2p": 76.92,
+    "hotel_1star_2p": 108.97,
+    "hotel_3star_2p": 179.49
+  }
+}

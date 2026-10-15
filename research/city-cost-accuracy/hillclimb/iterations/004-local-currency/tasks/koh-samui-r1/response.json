@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of island tourist price levels for July 2026; no live menus, rates, or listings were checked. Restaurant anchors are moderately uncertain, and accommodation varies widely by beach area and season. Cocktail and wine anchors are set at roughly two times the beer anchor, using the local price relationship, because direct knowledge is weaker. The FX value comes from search-result summaries of the RBA exchange-rates table; the page's dates were inconsistent, so verify the as_of_date and rate against the RBA page before use.",
+  "comparable_city_reasoning": "Regional basis: Thai beach-resort islands with tourist-oriented pricing, using Phuket and Krabi as reference points, adjusted for this island's mix of hostels, guesthouses and mid-range resorts. No specific comparable listing was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "THB",
+  "anchors_local": {
+    "beer": 130,
+    "coffee": 110,
+    "inexp_meal_1p": 120,
+    "midrange_meal_2p": 1800,
+    "cocktail": 250,
+    "wine_glass": 280,
+    "hostel_dorm_1p": 400,
+    "hostel_private_2p": 1000,
+    "hotel_1star_2p": 750,
+    "hotel_3star_2p": 2800
+  }
+}

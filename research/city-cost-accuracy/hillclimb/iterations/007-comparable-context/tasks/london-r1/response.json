@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live prices or listings. Food, coffee and beer anchors sit about 5-18% above the Edinburgh comparable and are the most reliable. Hostel and hotel anchors are less certain (roughly +/-20-25%) because London accommodation varies widely by district, season and booking lead time, and July is peak season. Cocktail and wine rest on a beer-relationship basis rather than direct price knowledge: cocktail is set at about 2.1x the beer anchor and wine at about 1.36x.",
+  "comparable_city_reasoning": "Edinburgh is the primary comparable (same UK price base and currency). London food, coffee and beer sit about 5-18% above it, the basic hotel about 27% above, the three-star about 10% above, and hostel dorm and private room about 76-77% above. Vienna and Reykjavik bracket the range: Vienna is lower than London on every comparable price point, while Reykjavik is higher on food and drink, roughly level on hostels, and lower on hotels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.80,
+    "coffee": 5.40,
+    "inexp_meal_1p": 26.40,
+    "midrange_meal_2p": 126.00,
+    "cocktail": 18.50,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 44.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 200.00,
+    "hotel_3star_2p": 345.00
+  }
+}

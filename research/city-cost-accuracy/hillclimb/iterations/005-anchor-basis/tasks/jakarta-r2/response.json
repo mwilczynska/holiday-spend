@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Jakarta price levels for July 2026; no live listings or booking pages were checked. Restaurant and hostel anchors are moderately reliable, while hotel rates vary widely by district and season. Beer uses bottled domestic lager as the nearest match to draft. Cocktail and wine are set relative to beer because direct price knowledge is weaker and alcohol is heavily taxed. Local examples assume roughly 16,500 IDR per USD, so a large rupiah move would call for revisiting the USD values. The FX figure comes from RBA exchange-rate search results and the RBA page itself was not opened, so confirm the 15 October 2026 reading before use.",
+  "comparable_city_reasoning": "Regional Southeast Asia basis, loosely benchmarked to Bangkok and Kuala Lumpur for hotels and restaurants, adjusted to Jakarta's generally lower local-food and budget-lodging prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Bottled domestic lager (Bintang), one 330 ml serving at a restaurant, about 50,000 IDR incl. tax and service",
+    "coffee": "Cappuccino at an independent cafe, about 40,000 IDR",
+    "inexp_meal_1p": "Nasi goreng with iced tea at a local restaurant, about 50,000 IDR",
+    "midrange_meal_2p": "Two starters, two mains and two desserts at a mid-range restaurant, about 700,000 IDR total incl. tax and service, excluding drinks",
+    "cocktail": "Gin or rum cocktail at a mid-range bar, about 125,000 IDR incl. tax and service",
+    "wine_glass": "House red by the glass at a mid-range restaurant, about 150,000 IDR incl. tax and service",
+    "hostel_dorm_1p": "Bunk in a 6-bed mixed dorm at a registered hostel, about 130,000 IDR per night",
+    "hostel_private_2p": "Private double room at a registered hostel, about 300,000 IDR per night",
+    "hotel_1star_2p": "Basic double room at a registered budget hotel or guesthouse, about 350,000 IDR per night incl. tax",
+    "hotel_3star_2p": "Standard double at a registered three-star hotel in central Jakarta, about 1,000,000 IDR per night incl. taxes"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.40,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 7.60,
+    "wine_glass": 9.10,
+    "hostel_dorm_1p": 7.90,
+    "hostel_private_2p": 18.20,
+    "hotel_1star_2p": 21.20,
+    "hotel_3star_2p": 60.60
+  }
+}

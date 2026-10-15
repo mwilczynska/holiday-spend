@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied comparables, not from live menus or listings. Restaurant and cafe anchors are moderately reliable; hostel and hotel anchors are least certain and vary widely by neighborhood and booking channel. Beer is set above all comparables to reflect higher local alcohol taxes and bar markups. Cocktail and wine anchors were set relative to the beer anchor because direct knowledge of local bar prices is limited. July is monsoon season, which may soften hotel rates. The FX value was taken from the RBA exchange-rates page as reported in search results; the daily table itself was not opened.",
+  "comparable_city_reasoning": "Requested city is not in the supplied set. Levels are benchmarked mainly to Colombo, with Manila as a second reference for mid-range dining and hotels and Kathmandu as a low-end reference for inexpensive eating and budget lodging. Mid-range dining, hostels and hotels sit broadly near Colombo's levels; inexpensive food is set below Colombo and Manila; beer is set above all three. Cocktail and wine anchors use the beer relationship rather than a supplied comparable.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.90,
+    "coffee": 2.70,
+    "inexp_meal_1p": 2.70,
+    "midrange_meal_2p": 25.50,
+    "cocktail": 6.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 33.00,
+    "hotel_3star_2p": 78.00
+  }
+}

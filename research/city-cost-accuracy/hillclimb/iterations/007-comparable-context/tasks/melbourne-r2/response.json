@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied Sydney, London and Nara context; no live menus, booking pages or listings were inspected. Melbourne is set modestly below Sydney, mainly on accommodation, and near parity on restaurant meals, coffee and beer. Accommodation and hostel anchors are the least certain. Cocktail and wine_glass rely on the local price relationship to the beer anchor because direct knowledge of those prices is weak. The FX observation comes from search-result summaries of RBA exchange-rate pages, not a direct read of the live table; if the 15 October figure is not yet published, the 14 October observation of 0.7002 applies.",
+  "comparable_city_reasoning": "Sydney, Australia is the primary comparable as the same-country city with similar visitor demand. Melbourne is set slightly below Sydney, with the largest adjustment on accommodation. London and Nara were used only to check that the anchors fall between a higher-cost and a lower-cost reference.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.90,
+    "coffee": 3.90,
+    "inexp_meal_1p": 16.60,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 15.00,
+    "wine_glass": 10.50,
+    "hostel_dorm_1p": 29.50,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 172.00
+  }
+}

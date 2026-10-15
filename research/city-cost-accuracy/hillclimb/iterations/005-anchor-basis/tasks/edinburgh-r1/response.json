@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Edinburgh price levels; no live listings, price pages, or GBP rates were checked. Restaurant and cafe anchors are the most reliable; hotel and hostel rates are least certain because July prices vary widely by date and event. Cocktail and wine values rest on general UK bar and restaurant prices and were sanity-checked against the pint price. GBP examples assume a planning rate of about 1.34 USD per GBP. FX: the 2026-10-14 RBA figure came from search-result summaries and was not opened directly; search results cited market quotes of roughly 0.697 to 0.701 for that date, and no 2026-10-15 RBA figure was found. Verify on rba.gov.au before use.",
+  "comparable_city_reasoning": "Reasoned from general knowledge of Edinburgh's own price levels, loosely compared with other UK heritage tourist cities such as York and Bath for restaurants and budget stays, with accommodation set at July demand levels. No comparable-city price pages were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "pint of domestic draught lager at a city-centre restaurant, about GBP 6.00",
+    "coffee": "cappuccino at an independent cafe, about GBP 3.60",
+    "inexp_meal_1p": "main course such as burger and chips at a casual eatery, about GBP 14",
+    "midrange_meal_2p": "three-course bistro dinner for two without drinks, about GBP 90 total",
+    "cocktail": "Negroni at a city-centre bar, about GBP 11.50",
+    "wine_glass": "175 ml house wine by the glass at a restaurant, about GBP 7.50",
+    "hostel_dorm_1p": "bed in a 6-8 bed dorm at a central registered hostel in July, about GBP 38 per night",
+    "hostel_private_2p": "private double or twin room at a central registered hostel in July, about GBP 100 per night",
+    "hotel_1star_2p": "basic double room at a registered guesthouse or budget hotel in July, about GBP 120 per night",
+    "hotel_3star_2p": "double room at a central three-star hotel in July, about GBP 200 per night"
+  },
+  "anchors_usd": {
+    "beer": 8.04,
+    "coffee": 4.82,
+    "inexp_meal_1p": 18.76,
+    "midrange_meal_2p": 120.60,
+    "cocktail": 15.41,
+    "wine_glass": 10.05,
+    "hostel_dorm_1p": 50.92,
+    "hostel_private_2p": 134.00,
+    "hotel_1star_2p": 160.80,
+    "hotel_3star_2p": 268.00
+  }
+}

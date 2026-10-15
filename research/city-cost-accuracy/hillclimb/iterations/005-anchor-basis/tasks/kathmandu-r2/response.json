@@ -1,0 +1,37 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Kathmandu tourist price levels, not live listings. Restaurant, coffee and dorm anchors are moderately reliable; the 3-star hotel and wine anchors are least certain. July is monsoon low season, so hotel rates may run below peak. USD values depend on an unsourced NPR/USD assumption. The fx observation was taken from search-result text attributed to the RBA exchange rates table and could not be confirmed on a second RBA page; verify against the live table.",
+  "comparable_city_reasoning": "No single comparable city was matched; estimates reflect general knowledge of Thamel and wider Kathmandu tourist price levels. Cocktail and wine anchors were set relative to the local beer anchor because direct bar-price knowledge is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Everest or Gorkha lager, one standard serving at a Thamel restaurant, about 400 NPR",
+    "coffee": "cappuccino at a typical Thamel cafe, about 350 NPR",
+    "inexp_meal_1p": "momo or dal bhat set with a soft drink at a budget local eatery, about 400 NPR",
+    "midrange_meal_2p": "three courses for two (starter, main, dessert, no drinks) at a mid-range Thamel restaurant, about 4,000 NPR total",
+    "cocktail": "gin and tonic or mojito at a Thamel bar, about 700 NPR",
+    "wine_glass": "imported house red or white by the glass at a Thamel restaurant, about 800 NPR",
+    "hostel_dorm_1p": "bed in a multi-bed dorm at a registered Thamel hostel, about 700 NPR per night",
+    "hostel_private_2p": "private double room at a Thamel hostel, about 1,600 NPR per night",
+    "hotel_1star_2p": "basic double room with attached bath at a registered Thamel guesthouse, about 1,800 NPR per night",
+    "hotel_3star_2p": "double room at a registered three-star Kathmandu hotel, about 7,000 NPR per night in low season"
+  },
+  "anchors_usd": {
+    "beer": 2.86,
+    "coffee": 2.50,
+    "inexp_meal_1p": 2.86,
+    "midrange_meal_2p": 28.57,
+    "cocktail": 5.00,
+    "wine_glass": 5.71,
+    "hostel_dorm_1p": 5.00,
+    "hostel_private_2p": 11.43,
+    "hotel_1star_2p": 12.86,
+    "hotel_3star_2p": 50.00
+  }
+}

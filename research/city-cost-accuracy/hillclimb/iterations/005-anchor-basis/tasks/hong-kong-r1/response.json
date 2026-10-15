@@ -1,0 +1,37 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were checked. Restaurant and cafe anchors are the most reliable; hostel and hotel rates swing with season, events and booking lead time, so accommodation is least certain. Cocktail and wine were set relative to the beer anchor because direct price knowledge is only moderate. The FX value comes from RBA overview-page text surfaced in search, not a page I opened; a 14 October 2026 RBA value may exist but could not be confirmed.",
+  "comparable_city_reasoning": "No single external comparable city was used. Restaurant levels were reasoned against similar high-cost Asian financial hubs such as Singapore and Tokyo, and budget accommodation against Kowloon's dense guesthouse and hostel stock.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "local lager, one standard serving at a casual restaurant, about HKD 55",
+    "coffee": "cappuccino at a chain cafe such as Pacific Coffee, about HKD 45",
+    "inexp_meal_1p": "cha chaan teng set meal with a drink, about HKD 70",
+    "midrange_meal_2p": "three-course dinner for two at a mid-range restaurant, no drinks, about HKD 850 total",
+    "cocktail": "standard cocktail at a mid-priced bar in Central, about HKD 130",
+    "wine_glass": "house wine by the glass at a mid-range restaurant, about HKD 100",
+    "hostel_dorm_1p": "bed in a 6-8 bed mixed dorm at a registered hostel, about HKD 240 per night",
+    "hostel_private_2p": "private double room with shared bath at a registered hostel, about HKD 600 per night",
+    "hotel_1star_2p": "small double room at a basic registered guesthouse in Yau Ma Tei, about HKD 800 per night",
+    "hotel_3star_2p": "double room at a registered three-star hotel in Sheung Wan, about HKD 1,800 per night"
+  },
+  "anchors_usd": {
+    "beer": 7.05,
+    "coffee": 5.77,
+    "inexp_meal_1p": 8.97,
+    "midrange_meal_2p": 108.97,
+    "cocktail": 16.67,
+    "wine_glass": 12.82,
+    "hostel_dorm_1p": 30.77,
+    "hostel_private_2p": 76.92,
+    "hotel_1star_2p": 102.56,
+    "hotel_3star_2p": 230.77
+  }
+}

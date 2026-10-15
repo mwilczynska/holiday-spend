@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied comparable-city figures; no live menus, listings or booking pages were checked. Beer and restaurant anchors are moderately reliable; hostel and hotel rates vary by district and season and are less certain. Cocktail and wine_glass are weak direct estimates and follow the local price relationship to draught beer (cocktail about 4x beer, wine glass about 4.4x beer). The FX value comes from RBA-domain search results rather than a direct page read; the latest figure found is for 14 October 2026, and no 15 October reading was found.",
+  "comparable_city_reasoning": "Anchored mainly to Siem Reap (same country, similar tourist-facing price base), with Nha Trang and Yogyakarta bounding the budget accommodation tiers. Food, drink and mid-range hotel anchors are set close to Siem Reap, with a modest upward adjustment for capital-city cafes and mid-range dining. Cocktail and wine have no comparable data and use the local beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 2.25,
+    "inexp_meal_1p": 2.75,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 52.00
+  }
+}

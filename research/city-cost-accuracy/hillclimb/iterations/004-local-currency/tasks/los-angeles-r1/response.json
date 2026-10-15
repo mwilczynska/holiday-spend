@@ -1,0 +1,26 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live listings. Restaurant and bar anchors are moderately reliable; lodging is less certain because July rates swing with demand, Los Angeles-area World Cup 2026 matches, and property type. Cocktail and wine_glass were set relative to the beer anchor (about 2.1x and 1.9x) since direct knowledge of their current prices is less precise. Prices are listed amounts before sales tax, tips, and hotel occupancy taxes and fees. The FX value comes from RBA results surfaced by search; the date stamps were inconsistent and the live page was not opened, so it is not independently confirmed.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general knowledge of US West Coast major-metro price levels across restaurants, bars, hostels and hotels, adjusted for Los Angeles and July peak-season demand. No web search was used for city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "USD",
+  "anchors_local": {
+    "beer": 8.00,
+    "coffee": 5.75,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 290.00
+  }
+}

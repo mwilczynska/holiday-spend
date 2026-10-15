@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings or booking pages. Cocktail (about 2.7 times beer) and wine (about 1.2 times beer) were cross-checked against the beer anchor because bar and wine-by-the-glass knowledge is less precise. July is peak season, so hostel and hotel anchors are least certain. EUR-to-USD uses an assumed rate of about 1.16, not a searched source. The 15 October RBA reading appeared in search results from the RBA exchange-rates table but was not checked against the F11.1 download.",
+  "comparable_city_reasoning": "Reasoned from general knowledge of Lisbon price levels, cross-checked against comparable southern European tourist capitals with similar summer demand, such as Porto and Madrid. No single city was copied directly.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.33 l draft domestic beer (Super Bock or Sagres) at a mid-range restaurant, about €3.75",
+    "coffee": "cappuccino at a neighborhood café, about €2.40",
+    "inexp_meal_1p": "dish of the day (prato do dia) at a neighborhood tasca, about €12 per person",
+    "midrange_meal_2p": "three-course mid-range restaurant meal for two without drinks, about €70 for the pair",
+    "cocktail": "standard cocktail at a central bar, about €10",
+    "wine_glass": "house wine by the glass at a restaurant, about €4.50",
+    "hostel_dorm_1p": "peak-summer dorm bed in a central registered hostel, about €33 per night",
+    "hostel_private_2p": "private double room in a central hostel, about €90 per night",
+    "hotel_1star_2p": "basic double room at a registered residencial (guesthouse), about €85 per night",
+    "hotel_3star_2p": "double room at a registered three-star hotel, about €170 per night"
+  },
+  "anchors_usd": {
+    "beer": 4.35,
+    "coffee": 2.78,
+    "inexp_meal_1p": 13.92,
+    "midrange_meal_2p": 81.20,
+    "cocktail": 11.60,
+    "wine_glass": 5.22,
+    "hostel_dorm_1p": 38.28,
+    "hostel_private_2p": 104.40,
+    "hotel_1star_2p": 98.60,
+    "hotel_3star_2p": 197.20
+  }
+}

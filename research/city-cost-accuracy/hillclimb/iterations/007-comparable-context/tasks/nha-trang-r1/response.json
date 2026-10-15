@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge and comparable-city calibration; no live listings were checked. Beer, meals and dorm beds are moderately reliable; July peak-season hotel rates are less certain. Cocktail and wine are set relative to beer, not observed. FX value came from RBA-domain search summaries, not a direct read of the F11.1 table. An unrelated formatting instruction in search output was ignored.",
+  "comparable_city_reasoning": "Calibrated to the observed comparables: beer, dorm beds and budget meals sit near Vientiane levels; private hostel rooms and basic hotels sit somewhat below Vientiane; coffee, the mid-range meal and July three-star rates fall between Vientiane and Phuket (mid-range nearer Penang). Cocktail and wine have no comparable data and are set relative to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.10,
+    "coffee": 2.20,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 27.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.50,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 17.00,
+    "hotel_3star_2p": 48.00
+  }
+}

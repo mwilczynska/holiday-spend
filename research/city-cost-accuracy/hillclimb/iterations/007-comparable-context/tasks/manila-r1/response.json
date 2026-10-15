@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied comparables; no live menus, listings, or booking pages were inspected. Food and coffee anchors are the most reliable. Hotel and hostel anchors vary widely by district (for example Malate or Ermita versus Makati or BGC) and are less certain. Cocktail and wine_glass anchors are not directly observed; they are set above the beer anchor using a typical bar price relationship. The fx figure came from search-result excerpts of the RBA exchange-rates page because the live table could not be opened, and some cached copies were older with mismatched date labels; re-verify before use.",
+  "comparable_city_reasoning": "Cebu (same country) is the closest calibration point for beer, coffee, inexpensive meals and mid-range dining. Manila is set above Cebu for mid-range dining and three-star hotels to reflect pricier Metro Manila business districts. Hostel and basic hotel tiers are calibrated to Penang, with Yogyakarta as a lower reference point.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.75,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 68.00
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings or booking pages. Restaurant and beer anchors are firmest; July hostel and hotel rates vary widely and are least certain. Local prices were converted at an assumed 3.7 PLN per USD, not a live rate. Cocktail and wine were cross-checked against beer (about 2.1x and 1.4x). FX: 2026-10-13 is the most recent observation I found, per search summaries that attribute it to the RBA Exchange Rates Overview. I did not open that page. A third-party early-October rate is roughly consistent with it, and 14 and 15 October could not be found. A formatting reminder in the search output was not followed.",
+  "comparable_city_reasoning": "Benchmarked to other mid-sized Polish and Central European tourist cities such as Wroclaw and Gdansk, with accommodation set toward the upper end for July tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.5 L draft Tyskie at a mid-range Krakow restaurant, about 16 PLN",
+    "coffee": "regular cappuccino at an independent Krakow cafe, about 14 PLN",
+    "inexp_meal_1p": "pierogi ruskie plate (about 10 pieces) at a local pierogarnia, about 40 PLN, no drinks",
+    "midrange_meal_2p": "three-course meal for two at a mid-range Krakow restaurant, about 300 PLN total, no drinks",
+    "cocktail": "standard mixed cocktail (gin and tonic) at a Kazimierz bar, about 34 PLN",
+    "wine_glass": "house wine by the glass (150 ml) at a mid-range restaurant, about 22 PLN",
+    "hostel_dorm_1p": "dorm bed in a central registered hostel in July, about 110 PLN per night",
+    "hostel_private_2p": "private double room in a central registered hostel in July, about 250 PLN per night",
+    "hotel_1star_2p": "very basic registered guesthouse double room in July, about 320 PLN per night",
+    "hotel_3star_2p": "registered three-star hotel double room in central Krakow in July, about 500 PLN per night"
+  },
+  "anchors_usd": {
+    "beer": 4.32,
+    "coffee": 3.78,
+    "inexp_meal_1p": 10.81,
+    "midrange_meal_2p": 81.08,
+    "cocktail": 9.19,
+    "wine_glass": 5.95,
+    "hostel_dorm_1p": 29.73,
+    "hostel_private_2p": 67.57,
+    "hotel_1star_2p": 86.49,
+    "hotel_3star_2p": 135.14
+  }
+}

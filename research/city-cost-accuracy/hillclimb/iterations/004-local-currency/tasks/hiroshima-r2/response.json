@@ -1,0 +1,26 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Japanese price levels, not checked against live menus, booking pages or listings. Food and drink anchors are more reliable than accommodation, which swings with date and demand; July 2026 levels are projected rather than observed. Cocktail and wine are set relative to the beer anchor and typical Japanese bar pricing. The FX figure comes from a search-result snapshot attributed to the RBA homepage (4pm, 14 Oct 2026), not a direct read of the RBA table; no 15 Oct figure was found.",
+  "comparable_city_reasoning": "Benchmarked to mid-sized Japanese regional cities with moderate tourism, such as Okayama, and priced below Kyoto, Osaka and Tokyo; accommodation adjusted for July summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "JPY",
+  "anchors_local": {
+    "beer": 600,
+    "coffee": 550,
+    "inexp_meal_1p": 1100,
+    "midrange_meal_2p": 12000,
+    "cocktail": 1100,
+    "wine_glass": 800,
+    "hostel_dorm_1p": 3500,
+    "hostel_private_2p": 9000,
+    "hotel_1star_2p": 10000,
+    "hotel_3star_2p": 18000
+  }
+}

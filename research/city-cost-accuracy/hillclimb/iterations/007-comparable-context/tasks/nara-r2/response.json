@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live Nara menus, listings or booking pages. Food, beer and coffee fall between the Kyoto and Hiroshima comparables, which bracket Nara on most anchors. Accommodation is least certain because summer and weekend demand spills over from Kyoto and Osaka, so hotel_3star_2p carries the widest range. Cocktail and wine_glass have no comparable data and are set from the local premium over draught beer. The FX value comes from RBA exchange-rate search excerpts rather than a direct page read.",
+  "comparable_city_reasoning": "Kyoto and Hiroshima (observed mid-2026 USD prices) bracket Nara for most anchors, applied to the July 2026 window. Nara is placed between them and generally nearer Hiroshima for food and budget rooms. midrange_meal_2p follows their shared 30.52 level, shaded slightly lower for Nara. Hong Kong values were not used because that market differs materially. No comparable values were supplied for cocktail or wine, so they are derived from the draught-beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.70,
+    "coffee": 2.80,
+    "inexp_meal_1p": 6.80,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.45,
+    "wine_glass": 3.40,
+    "hostel_dorm_1p": 20.80,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 130.00
+  }
+}

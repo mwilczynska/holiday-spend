@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied comparables, not live listings or current booking data. Accommodation and mid-range dining are least certain given Rio's neighborhood spread, July 2026 seasonality and BRL moves. Cocktail and wine have no supplied comparables and are set from the local beer relationship (about 1.3x and 1.4x the beer anchor). Beer assumes a 0.5 L draught to match the comparables. FX 0.6955 (15 Oct 2026) came from web search summaries of the RBA table rather than a direct page read and rests on a single reading; the 14 Oct figure is 0.7002, so verify before use.",
+  "comparable_city_reasoning": "Calibrated against the supplied Lima, Buenos Aires and Bogota observations. Most Rio anchors fall between the Bogota and Buenos Aires levels, with Lima as a lower reference; the hostel dorm sits roughly at Buenos Aires level. Cocktail and wine have no supplied comparables and use the local draught-beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 2.80,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.40,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 88.00
+  }
+}

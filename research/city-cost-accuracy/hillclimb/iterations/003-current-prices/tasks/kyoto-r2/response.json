@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Kyoto price levels, rolled forward to July 2026 for inflation and exchange-rate drift; no live listings checked. Restaurant and beer anchors are moderate confidence; accommodation is least certain given July peak demand, event-driven rate swings and unclear lodging-tax treatment. Cocktail and wine anchors are inferred from the beer anchor because direct knowledge is weaker. FX figure is from a search summary attributed to the RBA overview page (not opened directly); latest found is 13 Oct 2026, with no 14 or 15 Oct figure located.",
+  "comparable_city_reasoning": "Benchmarked to general Japanese price levels, using Osaka and Tokyo as broad reference points for food and drink and Kyoto's own tourism-driven accommodation market for lodging.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.60,
+    "coffee": 4.40,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 7.80,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 29.00,
+    "hostel_private_2p": 73.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 209.00
+  }
+}

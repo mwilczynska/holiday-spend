@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings or booking pages. Cafe, beer and restaurant anchors are more reliable than hotel and hostel rates, which are approximate for July winter pricing. Cocktail and wine were cross-checked against the local beer relationship (about 2.3x and 1.4x beer) because direct knowledge of those prices is weaker. USD values assume about 0.70 USD per AUD for July 2026. The FX observation came from RBA table summaries in search results and was not confirmed on the live RBA page.",
+  "comparable_city_reasoning": "Benchmarked against other large Australian cities, mainly Sydney, then adjusted for Melbourne's cafe and bar prices and July winter hotel demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.56,
+    "coffee": 3.85,
+    "inexp_meal_1p": 16.10,
+    "midrange_meal_2p": 119.00,
+    "cocktail": 17.50,
+    "wine_glass": 10.85,
+    "hostel_dorm_1p": 31.50,
+    "hostel_private_2p": 91.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 157.50
+  }
+}

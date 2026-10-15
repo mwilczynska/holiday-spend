@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and supplied comparables, not live listings; assumes roughly 1.33 USD per GBP. Restaurant anchors are the most reliable; hostel and hotel anchors are July peak-season guesses with wider uncertainty (roughly 25% or more). Cocktail and wine were checked against the local beer price because direct knowledge is only moderate. FX came from RBA-domain search summaries without opening the RBA page, and the summaries conflicted on 14 October, so verify the 15 October value.",
+  "comparable_city_reasoning": "Calibrated to the supplied comparables: coffee and inexpensive meal close to Edinburgh, mid-range meal between Edinburgh and Reykjavik, beer between Vienna and Reykjavik, hotels about 10% above Edinburgh, and hostel beds about 1.8 to 1.9 times Edinburgh to reflect London's premium.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 24.00,
+    "midrange_meal_2p": 128.00,
+    "cocktail": 17.50,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 108.00,
+    "hotel_1star_2p": 172.00,
+    "hotel_3star_2p": 345.00
+  }
+}

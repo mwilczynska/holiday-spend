@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not checked against live menus, listings or booking pages. Restaurant anchors are moderately reliable; hostel and hotel anchors are least certain given July peak demand. Cocktail and wine were set from the local beer relationship (about 1.6x and 1.45x a draft beer) because direct price knowledge is weak. Yen figures, and so the USD anchors, assume about 150 JPY per USD, not a live rate. FX is unverified: I could not open the RBA exchange-rates page or its daily table, and the 0.7088 value is the newest RBA figure a search summary reported, dated 2026-03-20. It is about seven months old and not confirmed as the latest observation, so re-check the RBA table before converting.",
+  "comparable_city_reasoning": "No single comparable city was used. Hiroshima is treated as a mid-sized Japanese regional city: restaurant and drink prices near regional averages, and accommodation priced below Kyoto and Osaka.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.13,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.33,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 6.67,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 25.33,
+    "hostel_private_2p": 58.67,
+    "hotel_1star_2p": 66.67,
+    "hotel_3star_2p": 146.67
+  }
+}

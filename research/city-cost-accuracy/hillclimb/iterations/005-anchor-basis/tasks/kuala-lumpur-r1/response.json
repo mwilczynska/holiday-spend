@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Kuala Lumpur price levels, not live booking pages or current listings. Restaurant anchors are the most reliable; accommodation varies with season, neighborhood and platform, and beer and wine vary sharply by venue type. Cocktail and wine follow the local price relationship to beer (about 2.25x and 2.5x the beer serving) because direct knowledge is weaker.",
+  "comparable_city_reasoning": "Regional Southeast Asia basis: benchmarked against large SEA tourism capitals with similar food and hotel price levels, priced below Singapore. Alcohol is set higher than in neighboring Thailand to reflect Malaysia's alcohol duties.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "domestic lager draft at a casual bar, one standard serving, about MYR 16",
+    "coffee": "cappuccino at a mid-range cafe, about MYR 13",
+    "inexp_meal_1p": "rice or noodle dish with teh tarik at a local mamak restaurant, about MYR 19",
+    "midrange_meal_2p": "three-course meal for two at a mid-range restaurant, no drinks, about MYR 200 total",
+    "cocktail": "standard cocktail at a mid-range bar, about MYR 36",
+    "wine_glass": "house red or white by the glass at a mid-range restaurant, about MYR 40",
+    "hostel_dorm_1p": "bed in a 6-bed mixed dorm at a central registered hostel, about MYR 45 per night",
+    "hostel_private_2p": "private double room at a central registered hostel, about MYR 135 per night",
+    "hotel_1star_2p": "basic double room at a registered budget hotel or guesthouse, about MYR 120 per night",
+    "hotel_3star_2p": "double room at a registered three-star hotel in central KL, about MYR 350 per night"
+  },
+  "anchors_usd": {
+    "beer": 3.81,
+    "coffee": 3.10,
+    "inexp_meal_1p": 4.52,
+    "midrange_meal_2p": 47.62,
+    "cocktail": 8.57,
+    "wine_glass": 9.52,
+    "hostel_dorm_1p": 10.71,
+    "hostel_private_2p": 32.14,
+    "hotel_1star_2p": 28.57,
+    "hotel_3star_2p": 83.33
+  }
+}

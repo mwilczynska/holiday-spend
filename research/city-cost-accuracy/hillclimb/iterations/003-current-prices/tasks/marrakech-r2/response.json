@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Marrakech prices, brought forward to July 2026. No live listings, booking pages or price sources were inspected or cited. Restaurant anchors are moderately reliable; hostel and hotel rates are least certain because summer demand and events swing them widely. Dirham-to-dollar rate assumed at about 9-10 per dollar. Draft beer is uncommon, so the beer anchor reflects a typical domestic serving in a licensed venue; cocktail (about 2x beer) and wine (about 1.4x beer) rely on that beer relationship. FX 0.6955 (2026-10-15) came from search-indexed RBA exchange-rate summaries with conflicting timestamps, not a direct read of the live table; the 14 October figure in those sources was 0.7002.",
+  "comparable_city_reasoning": "Regional basis only: general knowledge of Morocco's tourist-city price levels for medina and Gueliz restaurants, riads and hotels. No single comparable foreign city was used. Drink anchors are set relative to beer: cocktail about 2x beer and wine by the glass about 1.4x beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.25,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 11.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 115.00
+  }
+}

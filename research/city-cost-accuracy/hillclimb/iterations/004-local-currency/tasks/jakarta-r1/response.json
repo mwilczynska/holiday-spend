@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Jakarta price levels, projected to July 2026; no live listings or booking pages were checked. Prices vary widely by district and alcohol is taxed heavily. Restaurant and coffee anchors are moderately reliable; hostel and budget hotel anchors are least certain. Cocktail and wine glass are set from the local beer price (about 3x and 2.8x beer) because direct knowledge is weak. The FX value comes from RBA-domain search results rather than a directly opened page and may be a same-day figure.",
+  "comparable_city_reasoning": "SEA regional basis, loosely benchmarked against large SEA capitals with similar tourist accommodation supply (for example Bangkok, Kuala Lumpur and Manila), adjusted to Jakarta's local food, coffee and hotel price levels and its alcohol taxation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "IDR",
+  "anchors_local": {
+    "beer": 50000,
+    "coffee": 40000,
+    "inexp_meal_1p": 45000,
+    "midrange_meal_2p": 650000,
+    "cocktail": 150000,
+    "wine_glass": 140000,
+    "hostel_dorm_1p": 120000,
+    "hostel_private_2p": 260000,
+    "hotel_1star_2p": 300000,
+    "hotel_3star_2p": 950000
+  }
+}

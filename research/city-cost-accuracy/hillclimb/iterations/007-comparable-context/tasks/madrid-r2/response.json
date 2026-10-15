@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings or booking pages. Restaurant and coffee anchors are moderate confidence; accommodation is less certain because of July demand. Beer assumes a 0.5 L draught, matching the comparables. Cocktail is set at about 2.3 times the beer anchor and wine glass near beer level, as relative estimates. The FX value came from search-result summaries of the RBA table, not from opening the RBA page, and the 15 October date metadata was flagged as inconsistent, so verify it on rba.gov.au before use.",
+  "comparable_city_reasoning": "Calibrated to the supplied Athens, Berlin and Amsterdam figures. Madrid restaurant meals sit near Athens and Berlin and well below Amsterdam; coffee sits below Athens and Berlin; accommodation is roughly in line with Athens and Berlin, with a modest allowance for July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.40,
+    "coffee": 3.50,
+    "inexp_meal_1p": 16.50,
+    "midrange_meal_2p": 78.00,
+    "cocktail": 12.50,
+    "wine_glass": 5.20,
+    "hostel_dorm_1p": 23.00,
+    "hostel_private_2p": 57.00,
+    "hotel_1star_2p": 96.00,
+    "hotel_3star_2p": 185.00
+  }
+}

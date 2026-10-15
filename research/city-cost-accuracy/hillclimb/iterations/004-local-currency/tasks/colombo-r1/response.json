@@ -1,0 +1,26 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for a July 2026 window; no live listings or booking pages were checked. Restaurant and hostel anchors are medium confidence. Beer and hotel anchors are lower: alcohol excise and USD-linked hotel rates move quickly, and hotel figures are typical quoted rates that may exclude service charge and VAT. Cocktail and wine_glass are low confidence and were set from the local price relationship to beer (cocktail about 2.2x beer, wine glass about 2.5x beer) because direct knowledge is weak. The fx block is null because three web searches did not return a readable, dated RBA observation; hold conversion until a verified RBA observation is supplied.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: South Asian capital-city tourist pricing expressed in LKR, with Sri Lanka's high alcohol taxation reflected in the drink anchors. Not checked against live listings.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "local_currency": "LKR",
+  "anchors_local": {
+    "beer": 900,
+    "coffee": 850,
+    "inexp_meal_1p": 1100,
+    "midrange_meal_2p": 10000,
+    "cocktail": 2000,
+    "wine_glass": 2300,
+    "hostel_dorm_1p": 3000,
+    "hostel_private_2p": 7500,
+    "hotel_1star_2p": 8500,
+    "hotel_3star_2p": 27000
+  }
+}

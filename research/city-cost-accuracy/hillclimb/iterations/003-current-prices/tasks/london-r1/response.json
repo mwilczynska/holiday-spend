@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from remembered London price levels carried forward to July 2026; not checked against live menus, listings or booking pages. Restaurant, cafe and bar anchors are more reliable than July accommodation rates, which are seasonal and volatile. Cocktail and wine were cross-checked against the beer anchor (cocktail about twice beer, house wine about a third above beer) because direct recall is weaker. USD values assume GBP/USD in the mid-1.30s, as no current GBP rate was sourced. The AUD/USD value came from RBA-domain search-result summaries pointing to the exchange-rates page; that page was not read directly.",
+  "comparable_city_reasoning": "Based mainly on remembered central-London price levels rather than a comparison set. Relative positioning was sense-checked against other high-cost Western European capitals such as Paris and Amsterdam; no comparable-city web sourcing was performed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.60,
+    "coffee": 5.20,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 145.00,
+    "cocktail": 19.30,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 64.00,
+    "hostel_private_2p": 173.00,
+    "hotel_1star_2p": 186.00,
+    "hotel_3star_2p": 352.00
+  }
+}

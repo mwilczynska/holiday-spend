@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied comparables; no live listings or booking pages were checked. Restaurant anchors are the most reliable. Hostel and hotel rooms vary by district and season (July is low season), so they are less certain. Beer assumes a 0.5 L domestic draught, and cocktail and wine are tied to the beer anchor using typical bar pricing, with moderate direct knowledge. FX is the RBA 4pm 14 Oct 2026 USD/AUD value as reported in web search results from the RBA homepage; the 15 Oct figure could not be confirmed. Search results also carried an unrelated instruction to add markdown links, which I ignored.",
+  "comparable_city_reasoning": "Calibrated mainly to Siem Reap (same country, similar budget and tourist price levels), with Nha Trang and Yogyakarta as regional SEA references. Inexpensive meal, hostel dorm, private hostel and basic-hotel anchors sit close to Siem Reap's observed levels; beer, coffee and the mid-range meal are set somewhat higher, reflecting the capital's cafe and restaurant scene; the 3-star room is set somewhat below Siem Reap. Cocktail and wine have no direct comparable and are set relative to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.75,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 17.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 45.00
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings. Restaurant, cafe and bar anchors are moderately confident; July hostel and hotel rates vary widely by date and demand and are the least certain. Cocktail and wine were cross-checked against the beer anchor (roughly 1.8x and 1.3x). Local EUR prices were converted at a working assumption of about 1.16 USD per EUR, not a sourced rate. The FX figure is from the RBA exchange-rates table as surfaced by search; cached date labels did not fully reconcile, so verify on the live page.",
+  "comparable_city_reasoning": "Benchmarked to Nordic capital pricing: restaurant and bar levels roughly in line with Stockholm and below Oslo and Copenhagen; budget lodging sits above Tallinn-level pricing. July lodging uses summer peak-season levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.4 L draft Lapin Kulta at a central restaurant, about EUR 8.50",
+    "coffee": "cappuccino at a central Helsinki cafe, about EUR 4.50",
+    "inexp_meal_1p": "lunch set or plate of the day at an inexpensive local restaurant, about EUR 15",
+    "midrange_meal_2p": "three-course mid-range dinner for two, no drinks, about EUR 120 total",
+    "cocktail": "standard bar cocktail in central Helsinki, about EUR 15",
+    "wine_glass": "150 ml house wine by the glass at a restaurant, about EUR 11",
+    "hostel_dorm_1p": "shared dorm bed in a registered central hostel in July, about EUR 45 per night",
+    "hostel_private_2p": "private double room in a registered central hostel in July, about EUR 115 per night",
+    "hotel_1star_2p": "basic guesthouse or budget hotel double in July, about EUR 130 per night",
+    "hotel_3star_2p": "registered three-star central hotel double in July, about EUR 200 per night"
+  },
+  "anchors_usd": {
+    "beer": 9.86,
+    "coffee": 5.22,
+    "inexp_meal_1p": 17.40,
+    "midrange_meal_2p": 139.20,
+    "cocktail": 17.40,
+    "wine_glass": 12.76,
+    "hostel_dorm_1p": 52.20,
+    "hostel_private_2p": 133.40,
+    "hotel_1star_2p": 150.80,
+    "hotel_3star_2p": 232.00
+  }
+}

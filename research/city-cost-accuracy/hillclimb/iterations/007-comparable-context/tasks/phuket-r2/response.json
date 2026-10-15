@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate with no live listings checked. Food, drink and hostel anchors are close to the comparable range and are the firmer part. Hotel anchors are least certain because Koh Samui hotel figures run far above Chiang Mai and Kuala Lumpur, so they were set between those references and Samui, with some July low-season discounting assumed. Cocktail and wine_glass rest on weak direct knowledge and were set from beer-relative ratios (about 2.6x and 2.2x beer). FX came from rba.gov.au search snippets, not an opened table, and one snippet's date stamp did not clearly match, so confirm 2026-10-15 at 0.6955 on the live RBA page.",
+  "comparable_city_reasoning": "Koh Samui is the closest island comparator. Phuket is set a little above Samui for beer, coffee, mid-range dining and dorm beds, about level for private hostel rooms, and below it for inexpensive meals. Chiang Mai and Kuala Lumpur serve as lower reference points, and both hotel anchors fall between Kuala Lumpur and Koh Samui.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.70,
+    "coffee": 2.40,
+    "inexp_meal_1p": 3.60,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 92.00
+  }
+}

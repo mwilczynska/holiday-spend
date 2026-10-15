@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings or booking pages. July 2026 is past the knowledge cutoff, so values are projected. Restaurant and beer anchors are more reliable than accommodation, which varies widely with date and demand and reflects typical July demand rather than August Festival peaks. Beer is a standard UK pint (568 ml). Cocktail and wine were estimated from general Edinburgh bar pricing and checked against the beer anchor (cocktail about 1.9x beer, wine glass about 1.3x). The FX figure came from web-search summaries of RBA pages rather than a direct page read, and one copy showed a conflicting age stamp, so verify on rba.gov.au before use.",
+  "comparable_city_reasoning": "Based on general knowledge of central Edinburgh pricing, compared with other major UK tourist cities with strong summer demand (for example York). No comparable-city data was retrieved via search.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "GBP",
+  "anchors_local": {
+    "beer": 6.30,
+    "coffee": 3.70,
+    "inexp_meal_1p": 14.50,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 12.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 200.00
+  }
+}
