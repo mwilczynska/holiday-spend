@@ -10,13 +10,26 @@ import { ANCHORS } from './lib.mjs';
 const name = process.argv[2];
 const manifest = readJson(path.join(hcRoot, `panel/manifest${name ? '-' + name : ''}.json`));
 const rows = [];
-// A source entry is a file name, or { file, anchors } to take only some anchors from it.
+// A source entry is a file name, or { file, anchors?, fallbackOnly?, crosswalk? }:
+//  anchors       take only these anchors from the file;
+//  fallbackOnly  take a city/anchor only when no earlier entry supplied it;
+//  crosswalk     { anchor: logOffset } added to ln(value), a fixed level adjustment measured on overlapping cities
+//                and recorded on each row.
+const seen = new Set();
 for (const entry of manifest.sources) {
   const file = typeof entry === 'string' ? entry : entry.file;
   const only = typeof entry === 'string' ? null : entry.anchors;
-  for (const r of readJsonl(path.join(hcRoot, 'panel', file))) {
-    if (!ANCHORS.includes(r.anchor)) continue; // diagnostics stay in their source file
-    if (only && !only.includes(r.anchor)) continue;
+  const fallbackOnly = typeof entry === 'object' && entry.fallbackOnly;
+  const crosswalk = (typeof entry === 'object' && entry.crosswalk) || {};
+  const added = [];
+  for (const raw of readJsonl(path.join(hcRoot, 'panel', file))) {
+    if (!ANCHORS.includes(raw.anchor)) continue; // diagnostics stay in their source file
+    if (only && !only.includes(raw.anchor)) continue;
+    if (fallbackOnly && seen.has(`${raw.cityKey}|${raw.anchor}`)) continue;
+    added.push(`${raw.cityKey}|${raw.anchor}`);
+    const offset = crosswalk[raw.anchor];
+    const r = offset === undefined ? raw : { ...raw, valueUsd: +(raw.valueUsd * Math.exp(offset)).toFixed(4),
+      crosswalk: offset, notes: `${raw.notes} Cross-walked by exp(${offset}) to the primary source's level.` };
     if (r.source === 'hostelworld' && r.anchor === 'hostel_private_2p' && !r.mapped) {
       // Hostelworld prices are per person; a private room for two costs twice the per-person price. The minimum
       // can be a single room, so these rows are capped at grade C.
@@ -26,6 +39,7 @@ for (const entry of manifest.sources) {
     }
     rows.push(r);
   }
+  for (const k of added) seen.add(k);
 }
 const text = rows.map(r => JSON.stringify(r)).join('\n') + '\n';
 fs.writeFileSync(path.join(hcRoot, `panel/references${name ? '-' + name : ''}.jsonl`), text);
