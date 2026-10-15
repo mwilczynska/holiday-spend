@@ -2,7 +2,7 @@
 
 **Last updated:** 14 October 2026
 **Branch:** `research/city-cost-accuracy`
-**Status:** Single measurement-redesign experiment complete and assessed: inconclusive missing reference evidence. Earlier evidence remains preserved; no further tuning authorized.
+**Status:** Hill-climb program active (see below). Earlier designer-led runs closed and preserved.
 **Worktree:** `C:\Users\chawi\.codex\worktrees\city-cost-accuracy\holiday-spend`
 
 The owner requested a dedicated worktree, an accuracy/improvement plan, and an iterative goal prompt for
@@ -26,6 +26,22 @@ no paid provider API calls or API key setup are part of this campaign.
 - [x] Explicit owner restart received; activate the revised designer-led goal and preserve prior consumption.
 - [x] Validate and freeze the restart protocol and designer-authored first experiment before dispatch.
 - [x] Complete the bounded run and final report; candidate experiments, ten-experiment reviews and confirmation remain conditional on gates.
+
+## Hill-climb program — active (started 14 October 2026)
+
+Owner-authorized open-ended program, run from Claude Code (Opus 5.5 coordinator, Haiku 5.5 prediction workers via
+headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillclimb/PROGRAM.md); playbook:
+[LOOP.md](research/city-cost-accuracy/hillclimb/LOOP.md); results: `research/city-cost-accuracy/hillclimb/leaderboard.csv`.
+
+- [x] Diagnose the closed runs and write the program, acceptance rule and loop playbook.
+- [x] Panel R0 (Numbeo, 68 cities, 54 dev / 14 sealed test) and legacy v1 CSV reference point (dev loss 0.2914).
+- [x] Harness: prepare/dispatch/ingest/assess/rescore, replay transforms, leave-one-out calibration, alternate panels.
+- [x] R1 accommodation collectors (Hostelworld, BudgetYourTrip/KAYAK); livingcost sensitivity panel.
+- [ ] Round 1: 001 baseline, 002–005 prompt candidates, 006 calibration replay; assess and set the incumbent.
+- [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
+- [ ] Luna-lane confirmation before any production proposal.
+
+**Next action:** finish round-1 dispatch, ingest and assess, then pick round 2 from PROGRAM.md section 10.
 
 ## Single measurement redesign — owner authorized
 

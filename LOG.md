@@ -3738,3 +3738,28 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   an unverified destination; read-only checks confirmed the existing public `mwilczynska/holiday-spend` origin,
   tracked branch, earlier published checkpoint and ADMIN repository access. Final publication may retry only
   with that new verification and content checks; if rejected again, retain local commits and request approval.
+
+# 14 October 2026 — Hill-climb program started (Claude Code, Opus 5.5 coordinator)
+
+- Owner asked for a research program that can hill-climb city-cost accuracy iteratively with a large budget.
+  Diagnosis of the three closed runs: each experiment had to build new venue-level truth before testing anything,
+  acquisition failed twice, cheap workers were asked to hand-write provenance, and the Numbeo captures already in
+  `data/reference/dry-run` (68 cities, the same item definitions as the v1.1 anchors) were not used.
+- New program: `research/city-cost-accuracy/hillclimb/PROGRAM.md` and `LOOP.md`. A versioned reference panel is
+  built once by deterministic collectors and reused; each iteration changes one thing, is scored as expected
+  single-call budget-weighted mean |log error| on 54 dev cities, and is judged by a frozen paired-bootstrap rule.
+  14 test cities are sealed and every read is logged. Earlier experiments and reports are unchanged.
+- Panel R0: Numbeo, 68 cities x 4 food/drink anchors, FX 25 July 2026 (cross-checked within 0.3% of the frozen
+  central-bank snapshot). Legacy reference point: v1 CSV anchors recovered by inverting the linear v1 formulas
+  score 0.2914 on dev; meals and coffee run about 23–28% low, beer about 7% high.
+- Prediction workers run as headless `claude -p` processes (Haiku 5.5, max effort, the app's system prompt,
+  WebSearch only, no MCP). Rendered prompts are byte-identical to `buildCityGenerationV11Prompt`. The worktree
+  checkout of the production template is CRLF; all candidate prompts keep that line ending so diffs stay minimal.
+  21 early Agent-tool answers ran under Claude Code's own system context and are kept as `response.subagent.json`.
+- R1 accommodation collected deterministically: Hostelworld city pages (66 cities; median of per-property lowest
+  dorm and private prices; private prices are per person, so the two-person room reference is doubled and graded C)
+  and BudgetYourTrip/KAYAK category ranges (budget -> 1-star, mid-range -> 3-star, before taxes; rate-limited, so
+  collected at 25-second spacing). livingcost.org (66 cities) agrees with Numbeo within 3–5% on beer, coffee and
+  inexpensive meals, too close to be an independent family; it is kept as a sensitivity panel only.
+- Round 1 dispatched: 001 production v1.1 baseline (54 x 3), 002 definitions, 003 current-price instruction,
+  004 local-currency elicitation, 005 per-anchor basis (54 x 2 each); 006 leave-one-out calibration replay staged.

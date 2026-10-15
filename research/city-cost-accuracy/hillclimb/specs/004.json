@@ -1,0 +1,25 @@
+{
+  "id": "004-local-currency",
+  "parent": "001-v11-haiku-baseline",
+  "family": "elicitation",
+  "hypothesis": "H4: models remember local prices in local currency. Ask for the ten anchors in the local currency and convert with frozen FX, removing the model's own currency conversion.",
+  "baseTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "repeats": 2,
+  "localCurrency": { "anchorsField": "anchors_local", "currencyField": "local_currency", "fxFile": "panel/fx-usd-2026-07-25.raw.json" },
+  "replacements": [
+    ["## RETURN THE TEN USD ANCHORS AND CURRENT FX OBSERVATION", "## RETURN THE TEN LOCAL-CURRENCY ANCHORS AND CURRENT FX OBSERVATION"],
+    ["- `anchors_usd`: an object containing exactly the ten positive numeric fields below", "- `local_currency`: the ISO 4217 code of the currency prices are normally quoted in for this city (for example `VND`, `EUR`, `JPY`)\n- `anchors_local`: an object containing exactly the ten positive numeric fields below, priced in `local_currency`"],
+    ["| `beer` | domestic draft beer, one standard serving in a restaurant | USD per serving |", "| `beer` | domestic draft beer, one standard serving in a restaurant | local currency per serving |"],
+    ["| `coffee` | regular cappuccino | USD per cup |", "| `coffee` | regular cappuccino | local currency per cup |"],
+    ["| `inexp_meal_1p` | meal at an inexpensive restaurant | USD per person |", "| `inexp_meal_1p` | meal at an inexpensive restaurant | local currency per person |"],
+    ["| `midrange_meal_2p` | three-course mid-range restaurant meal, two people, no drinks | USD per meal |", "| `midrange_meal_2p` | three-course mid-range restaurant meal, two people, no drinks | local currency per meal |"],
+    ["| `cocktail` | standard cocktail at a bar or restaurant | USD per drink |", "| `cocktail` | standard cocktail at a bar or restaurant | local currency per drink |"],
+    ["| `wine_glass` | glass of wine at a restaurant | USD per glass |", "| `wine_glass` | glass of wine at a restaurant | local currency per glass |"],
+    ["| `hostel_dorm_1p` | one dorm bed in a registered hostel | USD per bed/night |", "| `hostel_dorm_1p` | one dorm bed in a registered hostel | local currency per bed/night |"],
+    ["| `hostel_private_2p` | one private hostel room for two people | USD per room/night |", "| `hostel_private_2p` | one private hostel room for two people | local currency per room/night |"],
+    ["| `hotel_1star_2p` | very basic registered hotel or guesthouse room for two people | USD per room/night |", "| `hotel_1star_2p` | very basic registered hotel or guesthouse room for two people | local currency per room/night |"],
+    ["| `hotel_3star_2p` | registered three-star hotel room for two people | USD per room/night |", "| `hotel_3star_2p` | registered three-star hotel room for two people | local currency per room/night |"],
+    ["- Return USD anchors plus only the source FX observation described above. Do not return AUD anchor/tier values,\n  derived tiers, formulas, or conversion arithmetic.", "- Return local-currency anchors plus only the source FX observation described above. Do not convert them to USD or\n  AUD, and do not return derived tiers, formulas, or conversion arithmetic."],
+    ["  \"anchors_usd\": {", "  \"local_currency\": \"EUR\",\n  \"anchors_local\": {"]
+  ]
+}

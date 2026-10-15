@@ -389,6 +389,17 @@ defined in `.github/workflows/production-checks.yml`; local Windows checks do no
 
 ## City-cost accuracy research
 
+**Active: the hill-climb program** (`research/city-cost-accuracy/hillclimb/PROGRAM.md`, run with `LOOP.md`).
+It replaces the designer-led contract below for new work. A versioned reference panel (Numbeo food/drink,
+Hostelworld and BudgetYourTrip/KAYAK accommodation, all parsed deterministically) is built once and reused. Each
+iteration changes one thing in the v1.1 prompt or a deterministic transform, is scored as expected single-call
+budget-weighted mean |log error| on dev cities, and is judged by the frozen paired-bootstrap rule in
+`iterate.mjs assess`. Test cities are sealed and every read is logged. Prediction workers are headless
+`claude -p` Haiku 5.5/max processes with the app's system prompt and WebSearch only; Luna-lane confirmation in Codex
+precedes any production proposal. Production code, the canonical CSV and the main database are not changed.
+
+The paragraphs below describe the earlier, closed designer-led runs and remain accurate as history.
+
 This research worktree follows `docs/dev/plans/city-cost-accuracy.md` and the experiment-agent architecture.
 The earlier bounded designer-led run is closed at failed reference feasibility with an insufficient-evidence
 verdict in `research/city-cost-accuracy/REPORT-RESTART-1.md`; `REPORT.md` is its immutable earlier baseline

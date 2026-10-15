@@ -1,0 +1,15 @@
+{
+  "id": "002-spec-definitions",
+  "parent": "001-v11-haiku-baseline",
+  "family": "specification",
+  "hypothesis": "H2: state concrete serving sizes and venue types for the food and drink anchors, and ask for the typical price at ordinary venues. The production table leaves serving size and venue class open.",
+  "baseTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "repeats": 2,
+  "replacements": [
+    ["| `beer` | domestic draft beer, one standard serving in a restaurant | USD per serving |", "| `beer` | domestic draught beer, 0.5 litre, at an ordinary restaurant or pub (not a hotel bar) | USD per 0.5 L |"],
+    ["| `coffee` | regular cappuccino | USD per cup |", "| `coffee` | regular-size cappuccino at an ordinary local café (not a hotel) | USD per cup |"],
+    ["| `inexp_meal_1p` | meal at an inexpensive restaurant | USD per person |", "| `inexp_meal_1p` | one meal at an inexpensive sit-down restaurant where locals eat (not street food, not fast food) | USD per person |"],
+    ["| `midrange_meal_2p` | three-course mid-range restaurant meal, two people, no drinks | USD per meal |", "| `midrange_meal_2p` | total bill for two people at a mid-range restaurant, three courses each, no drinks, including tax and any service charge on the bill | USD per meal |"],
+    ["Use the definitions consistently.", "Use the definitions consistently. For every anchor, give the typical price a visitor pays at ordinary venues in the city on the reference date: not the cheapest option, not tourist-trap or luxury venues."]
+  ]
+}

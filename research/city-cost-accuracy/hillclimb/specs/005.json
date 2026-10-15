@@ -1,0 +1,12 @@
+{
+  "id": "005-anchor-basis",
+  "parent": "001-v11-haiku-baseline",
+  "family": "reasoning",
+  "hypothesis": "H5: asking for a short concrete local example behind each anchor (a dish, a venue type, a local-currency price) grounds the number in specific recall instead of a generic level.",
+  "baseTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "repeats": 2,
+  "replacements": [
+    ["- `anchors_usd`: an object containing exactly the ten positive numeric fields below", "- `anchor_basis`: an object with the same ten keys as `anchors_usd`; each value is one short line naming a concrete\n  typical local example and its local-currency price (for example \"bun cha at a local eatery, about 50,000 VND\"). Write\n  these before deciding the USD numbers, and make each USD number consistent with its example.\n- `anchors_usd`: an object containing exactly the ten positive numeric fields below"],
+    ["  \"anchors_usd\": {", "  \"anchor_basis\": {\n    \"beer\": \"...\", \"coffee\": \"...\", \"inexp_meal_1p\": \"...\", \"midrange_meal_2p\": \"...\", \"cocktail\": \"...\",\n    \"wine_glass\": \"...\", \"hostel_dorm_1p\": \"...\", \"hostel_private_2p\": \"...\", \"hotel_1star_2p\": \"...\", \"hotel_3star_2p\": \"...\"\n  },\n  \"anchors_usd\": {"]
+  ]
+}
