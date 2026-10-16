@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and draft-beer estimates align with 2026 Chengdu cost-of-living aggregates. Cocktail and restaurant wine prices are less certain, estimated at roughly three to four times the domestic draft-beer price; accommodation is a broad city-level model estimate.",
+  "comparable_city_reasoning": "Used Chengdu-specific aggregated food and drink prices; accommodation reflects broad estimates for a large inland Chinese city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.47,
+    "coffee": 2.89,
+    "inexp_meal_1p": 2.94,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 5.90,
+    "wine_glass": 4.41,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 45.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use city-specific aggregated prices near July 2026. Cocktail and wine estimates are less certain and use roughly 2.5–3 times local draft-beer pricing. Accommodation anchors are holistic estimates.",
+  "comparable_city_reasoning": "Food and drink estimates use Da Nang-specific price data; accommodation estimates reflect a Vietnamese coastal tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.35,
+    "coffee": 1.68,
+    "inexp_meal_1p": 2.30,
+    "midrange_meal_2p": 18.15,
+    "cocktail": 3.50,
+    "wine_glass": 3.75,
+    "hostel_dorm_1p": 5.50,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 42.00
+  }
+}

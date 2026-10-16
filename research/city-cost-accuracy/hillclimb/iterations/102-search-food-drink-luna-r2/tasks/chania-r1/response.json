@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Chania price-index entries anchor meals, cappuccino, and beer. Cocktail pricing is less certain; the estimate uses a city cost-of-living entry checked against beer, and wine is estimated at about 1.25 times draft beer. July accommodation prices are holistic high-season estimates and are the least certain.",
+  "comparable_city_reasoning": "Food and drink estimates use direct Chania price data. Accommodation uses Chania's high-season Crete tourism context; no comparable city or live lodging rates were used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 16.80,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 10.10,
+    "wine_glass": 5.60,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 230.00
+  }
+}

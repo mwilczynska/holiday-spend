@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Delft city price data were last updated 9 June 2026, close to the July window. Cocktail and wine-glass prices are less certain and inferred relative to draft beer; lodging is a holistic summer estimate.",
+  "comparable_city_reasoning": "Food anchors use Delft city-level prices; lodging is estimated using comparable Dutch university and heritage cities, including nearby The Hague and Rotterdam.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.38,
+    "coffee": 4.11,
+    "inexp_meal_1p": 23.20,
+    "midrange_meal_2p": 98.60,
+    "cocktail": 12.76,
+    "wine_glass": 7.54,
+    "hostel_dorm_1p": 50,
+    "hostel_private_2p": 120,
+    "hotel_1star_2p": 140,
+    "hotel_3star_2p": 215
+  }
+}

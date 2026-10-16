@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent Doha city-price signals around the requested window. Licensed-venue drink prices vary; wine is estimated relative to beer. Accommodation is a holistic estimate, with hostel prices especially uncertain.",
+  "comparable_city_reasoning": "Used Doha-specific food and drink price signals; accommodation is a broad estimate for Doha’s upscale Gulf capital market, without a city comparator.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 13.5,
+    "coffee": 5.75,
+    "inexp_meal_1p": 11.0,
+    "midrange_meal_2p": 77.5,
+    "cocktail": 20.0,
+    "wine_glass": 17.0,
+    "hostel_dorm_1p": 22.0,
+    "hostel_private_2p": 55.0,
+    "hotel_1star_2p": 65.0,
+    "hotel_3star_2p": 125.0
+  }
+}

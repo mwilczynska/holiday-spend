@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Córdoba city price aggregates support the meal, coffee, and draft beer estimates. Cocktail and wine prices are inferred from their usual relationship to draft beer; July accommodation estimates are broad seasonal models.",
+  "comparable_city_reasoning": "Food and drink use Córdoba citywide price aggregates; accommodation is modeled against mid-sized Andalusian heritage cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.81,
+    "coffee": 2.64,
+    "inexp_meal_1p": 13.47,
+    "midrange_meal_2p": 56.15,
+    "cocktail": 7.86,
+    "wine_glass": 3.93,
+    "hostel_dorm_1p": 31.44,
+    "hostel_private_2p": 65.13,
+    "hotel_1star_2p": 78.6,
+    "hotel_3star_2p": 117.91
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors align with small-sample Dahab price-index data. Cocktail prices vary by venue, and the wine estimate uses its local price relationship to beer. Accommodation anchors are holistic estimates and less certain.",
+  "comparable_city_reasoning": "No comparable city used: food anchors use Dahab-specific price data, while accommodation estimates reflect Dahab’s budget hostel and guesthouse market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.9,
+    "coffee": 1.6,
+    "inexp_meal_1p": 3.85,
+    "midrange_meal_2p": 13.5,
+    "cocktail": 3.5,
+    "wine_glass": 3.0,
+    "hostel_dorm_1p": 6.0,
+    "hostel_private_2p": 16.0,
+    "hotel_1star_2p": 25.0,
+    "hotel_3star_2p": 50.0
+  }
+}

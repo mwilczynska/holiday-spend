@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Dublin-specific crowd-sourced prices near the July 2026 window. Cocktail data are sparse; wine is estimated at about 1.35 times the €7 draft-beer price. Accommodation is a broad holistic July high-season estimate and is least certain.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates use Dublin-specific price benchmarks, and accommodation is estimated for Dublin's summer market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.86,
+    "coffee": 4.83,
+    "inexp_meal_1p": 22.46,
+    "midrange_meal_2p": 101.05,
+    "cocktail": 15.72,
+    "wine_glass": 10.67,
+    "hostel_dorm_1p": 72,
+    "hostel_private_2p": 160,
+    "hotel_1star_2p": 190,
+    "hotel_3star_2p": 270
+  }
+}

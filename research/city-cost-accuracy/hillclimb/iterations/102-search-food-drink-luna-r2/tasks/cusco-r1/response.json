@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "City price aggregates are sparse and vary between neighborhood and tourist-center prices. July accommodation values are holistic seasonal estimates; cocktail and wine prices use local beer-price relationships.",
+  "comparable_city_reasoning": "Cusco-specific aggregated price benchmarks inform the food estimates; accommodation estimates reflect Cusco’s tourism demand and July high-season context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.2,
+    "coffee": 2.2,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 28,
+    "cocktail": 7.5,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 38,
+    "hotel_1star_2p": 42,
+    "hotel_3star_2p": 85
+  }
+}

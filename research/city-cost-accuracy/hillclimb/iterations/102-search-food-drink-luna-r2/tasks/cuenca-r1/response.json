@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "City-level reported averages support the restaurant and coffee anchors, though contributor data are limited. The cocktail estimate is based on the local beer price and below a reported downtown-club price; wine is estimated from the local bottle price and beer relationship. Lodging anchors are holistic estimates.",
+  "comparable_city_reasoning": "Food and drink estimates use Cuenca-specific cost-of-living data; lodging estimates reflect a moderate-cost secondary Andean city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.73,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 65.00
+  }
+}
