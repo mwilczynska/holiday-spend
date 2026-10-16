@@ -22,6 +22,7 @@ const E = [
   ['R1', '005-anchor-basis-cal-region', '005-anchor-basis', 'Local example per item', 'prompt'],
   ['R1', '008-accommodation-definitions-cal-region', '008-accommodation-definitions', 'Accommodation definitions', 'prompt'],
   ['R1', '012-v11-haiku-effort-high-cal-region', '012-v11-haiku-effort-high', 'Effort high instead of max (cost)', 'cost'],
+  ['R1', '018-search-grounded-high-cal-region', '018-search-grounded-high', 'Web search for prices (effort high)', 'prompt'],
   ['R2', '014-v11-haiku-high-r2', null, 'v1.1 prompt, unchanged (333 cities)', 'baseline'],
   ['R2', '014-v11-haiku-high-r2-cal', null, 'Correction factor per item', 'calibration'],
   ['R2', '014-v11-haiku-high-r2-cal-region', null, 'Correction per item and region', 'calibration'],
@@ -29,6 +30,7 @@ const E = [
   ['R2', '015-spec-definitions-r2-cal-region', '015-spec-definitions-r2', 'Clearer item definitions', 'prompt'],
   ['R2', '016-accommodation-definitions-r2-cal-region', '016-accommodation-definitions-r2', 'Accommodation definitions', 'prompt'],
   ['R2', '017-country-calibration-r2', null, 'Correction per country, shrunk to region', 'calibration'],
+  ['R2', '019-search-food-drink-r2-cal-region', '019-search-food-drink-r2', 'Web search for food and drink only', 'prompt'],
 ];
 
 const it = id => path.join(hcRoot, 'iterations', id);
