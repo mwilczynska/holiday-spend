@@ -41,11 +41,16 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
 - [ ] Luna-lane confirmation before any production proposal.
 
-**Codex collection checkpoint — 16 October 2026 UTC.** Frozen `101-v11-luna-r2` has 12/333 responses saved
-(321 pending), using fresh GPT-6 Luna/Max subagents. No Luna score or verdict has been run. A Codex-side attempt to
+**Codex collection checkpoint — 16 October 2026 UTC.** Frozen `101-v11-luna-r2` has 30/333 responses saved
+(303 pending), using fresh GPT-6 Luna/Max subagents. No Luna score or verdict has been run. A Codex-side attempt to
 run `014-v11-haiku-high-r2` through the existing Claude dispatcher yielded 17 immediate failed attempts and zero
 answers; it was stopped. Claude/Haiku dispatch is left to the Claude Code coordinator. Stale `.claim` and failed
 `run.json` records from that attempt remain because automatic approval review rejected their cleanup.
+
+A further 18 Luna responses were saved and validated. The next fresh subagent spawn, for `los-angeles-r1`, hit
+`agent thread limit reached`; no worker was substituted. The frozen Booking.com main collector ran against the first
+five of 133 queued cities, returned HTTP 200 with search cards but kept zero priced cards in every class, and was
+stopped. Its five raw rows are saved as `panel/booking-main-partial-2026-10-16.raw.json`; no ingest was run.
 
 ```
 008-accommodation-definitions            pending   30 / 108  (repeat-1 pending 15)
@@ -54,7 +59,7 @@ answers; it was stopped. Claude/Haiku dispatch is left to the Claude Code coordi
 014-v11-haiku-high-r2                    pending  126 / 333  (repeat-1 pending 126)
 015-spec-definitions-r2                  pending  333 / 333  (repeat-1 pending 333)
 016-accommodation-definitions-r2         pending  333 / 333  (repeat-1 pending 333)
-101-v11-luna-r2                          pending  321 / 333  (repeat-1 pending 321)
+101-v11-luna-r2                          pending  303 / 333  (repeat-1 pending 303)
 ```
 
 **Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108. Hostelworld expansion complete

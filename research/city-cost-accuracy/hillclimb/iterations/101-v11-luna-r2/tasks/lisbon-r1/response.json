@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for July, when Lisbon accommodation demand is high. Restaurant anchors are more stable; hostel and hotel prices vary widely by location and booking timing. Cocktail and wine estimates use typical local price premiums over beer.",
+  "comparable_city_reasoning": "Based on Lisbon's Western European tourist pricing, with Porto as a nearby comparison and an allowance for Lisbon's higher summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.0,
+    "inexp_meal_1p": 16.0,
+    "midrange_meal_2p": 65.0,
+    "cocktail": 13.0,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 125.0,
+    "hotel_1star_2p": 135.0,
+    "hotel_3star_2p": 200.0
+  }
+}

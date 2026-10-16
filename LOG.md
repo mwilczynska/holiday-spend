@@ -3793,3 +3793,14 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   Claude Code session before retrying that dispatcher.
 - The logged-in Chrome Booking.com tab was available for inspection. No browser collection or export ran in this
   checkpoint. Existing worktree changes outside the twelve Luna task folders, PLAN and LOG were not staged.
+
+# 16 October 2026 UTC — Second Codex collection checkpoint
+
+- A second Codex batch saved 18 more frozen `101-v11-luna-r2` responses, Cartagena through London, using one fresh
+  GPT-6 Luna/Max subagent per task. All 30 response/run pairs parse as JSON and report the required model and effort.
+  Queue status: 303/333 pending. The next worker spawn for `los-angeles-r1` returned `agent thread limit reached`;
+  no substitute or retry ran. Ingest and scoring await a complete iteration.
+- Loaded the unchanged `booking-collect.js` in the owner's logged-in Booking.com Chrome tab and started the main
+  133-city to-do list. The first five city rows had HTTP 200 search results and property cards, but every class kept
+  zero priced cards. Saved those five raw rows as `panel/booking-main-partial-2026-10-16.raw.json`, then reloaded the
+  tab to stop collection. No parser change, further queries, or ingest ran. The coordinator must decide any repair.

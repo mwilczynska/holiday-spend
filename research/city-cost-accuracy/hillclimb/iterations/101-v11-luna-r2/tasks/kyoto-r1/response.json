@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates for July, with Kyoto's tourism demand and Gion Matsuri contributing to accommodation uncertainty. Restaurant anchors are more predictable; cocktail and wine estimates use their usual local price relationship to draft beer.",
+  "comparable_city_reasoning": "Uses Japan's major urban dining and lodging costs as a baseline, with a premium for Kyoto's strong visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.8,
+    "inexp_meal_1p": 8.5,
+    "midrange_meal_2p": 58,
+    "cocktail": 8,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 75,
+    "hotel_1star_2p": 80,
+    "hotel_3star_2p": 155
+  }
+}

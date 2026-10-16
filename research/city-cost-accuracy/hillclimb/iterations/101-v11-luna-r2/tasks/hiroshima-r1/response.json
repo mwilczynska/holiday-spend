@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate based on typical prices in regional Japanese cities. Hiroshima's visitor demand may raise room prices; cocktail and wine estimates are less certain and are based on their usual price relationship to domestic draft beer.",
+  "comparable_city_reasoning": "Use regional Japanese-city pricing, comparable to Okayama and Matsuyama, with a modest allowance for Hiroshima's visitor demand. Assume standard, non-premium venues.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 6.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 58.00,
+    "hotel_3star_2p": 95.00
+  }
+}
