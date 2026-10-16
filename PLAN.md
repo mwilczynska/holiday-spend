@@ -115,8 +115,10 @@ with build-hotel-refs.mjs once the Booking.com window run is saved, then rescore
 calibration refinements on 014 (country-level factors shrunk to region); (d) a Haiku x Luna ensemble replay;
 (e) search grounding at high effort on a 54-city sample before any R2 run.
 
-Open owner decision: should the app's 3-star tier mean a typical 3-star room booked on a platform (about 40%
-below current estimates) or KAYAK-style mid-range accommodation (current level)? See LOG 16 October.
+Owner decision (16 October 2026): the app's 3-star tier should reflect actual 3-star booking prices (booking-platform
+member prices incl. taxes, year-typical), not KAYAK-style mid-range. To-do, not started: build R3 hotel references
+with build-hotel-refs.mjs once the Booking.com window run is complete, make them the primary hotel references,
+rescore all iterations, and refit the production correction factors to that level.
 
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;

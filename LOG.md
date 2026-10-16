@@ -3965,3 +3965,9 @@ Ingest output:
 ```
 
 - `npm.cmd run docs:check-memory` passed. Session collection record: `research/city-cost-accuracy/hillclimb/iterations/101-v11-luna-r2/codex-session-2026-10-16-1839.json`.
+
+# 16 October 2026 — Owner decision: 3-star tier = actual 3-star booking prices
+
+- The owner decided the app's 3-star tier should reflect actual 3-star booking prices (booking-platform member prices
+  incl. taxes, scaled to a year-typical level), not KAYAK-style "mid-range". Recorded as a to-do in PLAN.md; no
+  references, scores or calibration were changed in this session.
