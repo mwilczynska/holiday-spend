@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer estimates use current aggregated city prices. The cocktail estimate reflects a current downtown-club price; wine is estimated relative to local beer. Accommodation is a holistic July-season estimate, with hostel and basic-room prices less certain.",
+  "comparable_city_reasoning": "City-specific prices inform food and drink estimates. Accommodation is based on a mid-sized Spanish island capital, allowing for summer tourism and Santa Cruz's urban rather than resort profile.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.81,
+    "coffee": 2.03,
+    "inexp_meal_1p": 20.21,
+    "midrange_meal_2p": 61.76,
+    "cocktail": 11.23,
+    "wine_glass": 3.93,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 73.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 125.00
+  }
+}

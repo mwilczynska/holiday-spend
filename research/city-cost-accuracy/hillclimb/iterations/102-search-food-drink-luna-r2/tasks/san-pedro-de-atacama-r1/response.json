@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and beer estimates use city price data updated in October 2026 as a nearby reference for July; coverage appears thin. Cocktail is estimated from local menu examples in relation to beer, and wine is inferred from beer. July lodging estimates are holistic and have substantial property and seasonal uncertainty.",
+  "comparable_city_reasoning": "No proxy city used; lodging estimates reflect San Pedro's remote, high-demand desert-tourism market and northern Chile guesthouse norms.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.71,
+    "coffee": 2.95,
+    "inexp_meal_1p": 9.29,
+    "midrange_meal_2p": 46.46,
+    "cocktail": 6.5,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 26.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 105.0,
+    "hotel_3star_2p": 190.0
+  }
+}

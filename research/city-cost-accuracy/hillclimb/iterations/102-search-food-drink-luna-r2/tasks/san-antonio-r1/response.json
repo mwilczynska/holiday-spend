@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent city cost-of-living data supports the meal, coffee, and beer anchors. Cocktail pricing is less certain; the estimate is below a sparse downtown-club price. Wine is estimated at about 1.7 times the local draft-beer price. Accommodation values are holistic estimates, with hostel prices especially uncertain due to limited inventory.",
+  "comparable_city_reasoning": "Food and drink estimates use San Antonio price data. Accommodation estimates reflect a mid-sized U.S. city with established tourism and convention demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.25,
+    "coffee": 5.19,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 12.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 165.00
+  }
+}

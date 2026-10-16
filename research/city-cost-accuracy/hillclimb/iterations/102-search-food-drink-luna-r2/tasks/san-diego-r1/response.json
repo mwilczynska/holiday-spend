@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent San Diego price aggregations support the food anchors. Cocktail and wine estimates use local drink prices in relation to the $8 draft-beer benchmark; lodging is a broad July-season estimate with greater uncertainty.",
+  "comparable_city_reasoning": "Food anchors use San Diego city-level price data; lodging reflects a high-tourism Southern California coastal market and July seasonality.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.92,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 16.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 260.00
+  }
+}

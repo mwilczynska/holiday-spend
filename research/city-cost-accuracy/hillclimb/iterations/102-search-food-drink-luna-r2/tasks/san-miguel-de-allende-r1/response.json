@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee, and beer estimates track city-level cost indexes. Cocktail data is sparse; wine is estimated at about 1.8 times the draft-beer price. Accommodation is a holistic July 2026 estimate and is more uncertain.",
+  "comparable_city_reasoning": "Food and drink use San Miguel de Allende city-level prices. Lodging reflects its heritage-tourism and expat demand, with July seasonality considered.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 3.80,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 43.00,
+    "cocktail": 8.10,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 155.00
+  }
+}

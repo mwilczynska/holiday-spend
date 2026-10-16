@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Aggregated San Francisco price indexes place cappuccino near $6, draft beer around $8–9, inexpensive meals around $18–25, and a three-course meal for two around $122–128. Cocktail estimates are around $17; wine is estimated from its relationship to local draft beer because glass-specific averages were sparse. Accommodation is a holistic summer estimate and is less certain.",
+  "comparable_city_reasoning": "No proxy city used for food and drink. Accommodation reflects a high-cost US coastal city in summer, with an allowance for San Francisco demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 6.00,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 65.00,
+    "hostel_private_2p": 175.00,
+    "hotel_1star_2p": 185.00,
+    "hotel_3star_2p": 300.00
+  }
+}

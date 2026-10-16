@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Sihanoukville aggregated prices last updated January 2026, cross-checked against Cambodia-wide October 2026 data; the city sample is limited. Cocktail and wine estimates are rough multiples of the $1 draft beer price. Accommodation anchors are holistic estimates and less certain.",
+  "comparable_city_reasoning": "Used Sihanoukville-specific meal, beer, and cappuccino indicators, with Cambodia-wide prices as a broad cross-check. Accommodation estimates reflect general knowledge of Cambodian coastal guesthouses and hotels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 2.25,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 48.00
+  }
+}

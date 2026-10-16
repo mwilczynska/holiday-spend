@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors align with recent aggregated Santa Fe cost-of-living estimates. Cocktail and wine are estimated at roughly 2x and 1.6x the local draft-beer anchor. Lodging is a broad model estimate and especially uncertain for July peak season.",
+  "comparable_city_reasoning": "Food and drink use Santa Fe aggregate price estimates; lodging is modeled for a small Southwestern U.S. tourist city with seasonal visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.2,
+    "coffee": 5.45,
+    "inexp_meal_1p": 17.1,
+    "midrange_meal_2p": 70,
+    "cocktail": 12.5,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 100,
+    "hotel_1star_2p": 135,
+    "hotel_3star_2p": 240
+  }
+}

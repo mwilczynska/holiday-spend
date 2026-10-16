@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's October 2026 city data supports the meal, coffee, and draft beer estimates; the available collaborative price data is limited. The cocktail estimate uses the local draft beer price and is checked against Expatistan's $17 downtown-club figure; the wine-glass estimate uses the beer price and a $15.60 mid-range retail wine bottle as anchors. Accommodation prices are holistic seasonal estimates, with hostel availability and hotel class adding uncertainty.",
+  "comparable_city_reasoning": "Food and drink estimates use San Juan price aggregates directly. Accommodation is modeled from general knowledge of US Caribbean tourist-city pricing and Puerto Rico's US-dollar cost base.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.60,
+    "inexp_meal_1p": 19.13,
+    "midrange_meal_2p": 82.00,
+    "cocktail": 14.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 250.00
+  }
+}

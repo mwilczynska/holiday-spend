@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino, and draft beer anchors use 2026 aggregated Sibiu typical-price data. Cocktail and wine estimates use their local price relationship to beer; accommodation is a less certain holistic estimate for July.",
+  "comparable_city_reasoning": "Sibiu is assessed directly for food and drink. Accommodation is modeled against mid-sized Transylvanian and Eastern European historic tourism centers, allowing for July seasonal demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.28,
+    "coffee": 3.41,
+    "inexp_meal_1p": 9.04,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 58.00,
+    "hotel_3star_2p": 104.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and beer estimates use a current Siena price index; cocktail (about 1.5 times draft beer) and wine (about 1.1 times) are less directly observed. Lodging is a holistic July-season estimate. The RBA page retrieved displayed 2026-07-10 as its latest observation.",
+  "comparable_city_reasoning": "Food and drink use Siena city-level prices; lodging is modeled on central Tuscan historic tourist towns with July seasonality.",
+  "fx": {
+    "as_of_date": "2026-07-10",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6949,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.4,
+    "coffee": 2.0,
+    "inexp_meal_1p": 16.2,
+    "midrange_meal_2p": 92.8,
+    "cocktail": 9.3,
+    "wine_glass": 7.0,
+    "hostel_dorm_1p": 58,
+    "hostel_private_2p": 112,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 225
+  }
+}
