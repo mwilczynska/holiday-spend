@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate; no live menus, listings or booking pages were checked. Restaurant anchors are moderate confidence. Hotel anchors are least certain because Mumbai rates vary widely by neighborhood. Accommodation assumes July monsoon pricing, a lower leisure-demand period, so it sits modestly below peak season and is meant to include taxes and mandatory fees. Cocktail and wine anchors rest on weaker direct knowledge and were set relative to the beer anchor (cocktail about 2.1 times beer, wine glass about 1.8 times beer). FX value taken from search excerpts of the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors reflect general knowledge of Mumbai as a large, business-heavy Indian metro: restaurant and hostel prices sit above typical tier-two Indian cities, and hotel rates reflect steady business demand with a modest monsoon-month discount.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.25,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 11.50,
+    "hostel_private_2p": 31.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 84.00
+  }
+}

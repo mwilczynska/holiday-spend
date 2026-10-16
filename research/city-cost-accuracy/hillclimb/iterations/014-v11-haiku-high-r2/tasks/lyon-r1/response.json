@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Lyon price levels, not checked against live menus, booking pages, or current listings. Restaurant anchors are more reliable than accommodation, which swings with July peak-season demand and events. Drink anchors are estimated from typical French café and bar pricing. Values assume roughly EUR/USD 1.16 to 1.17 and are not tied to a specific date.",
+  "comparable_city_reasoning": "Benchmarked against Bordeaux, Strasbourg, and Marseille for general French mid-sized and large-city pricing, with Lyon placed near the upper end for restaurants and accommodation because of its bouchon dining scene and tourism demand. No single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.60,
+    "coffee": 4.40,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 87.00,
+    "cocktail": 15.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 37.00,
+    "hostel_private_2p": 104.00,
+    "hotel_1star_2p": 87.00,
+    "hotel_3star_2p": 170.00
+  }
+}

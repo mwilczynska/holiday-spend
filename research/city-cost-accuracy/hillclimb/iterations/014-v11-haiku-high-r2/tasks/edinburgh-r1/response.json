@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live listings. Restaurant and beer anchors are moderately reliable. Accommodation is less certain because July is peak festival-season demand in Edinburgh, and rates vary widely by district and date. Cocktail and wine are estimated from the local beer-to-drink relationship, not direct price knowledge.",
+  "comparable_city_reasoning": "Benchmarked against large historic European capitals with strong summer tourism and festival demand, adjusted to UK price levels. Prices were converted from approximate GBP levels at a rounded USD/GBP assumption, so the server's conversion will govern the final figures.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 15.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 165.00,
+    "hotel_3star_2p": 250.00
+  }
+}

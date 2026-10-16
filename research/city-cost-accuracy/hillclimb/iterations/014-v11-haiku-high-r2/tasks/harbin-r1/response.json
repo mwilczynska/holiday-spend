@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live prices or current listings. Restaurant and beer anchors are moderately confident for a second-tier northern Chinese city. Accommodation anchors are less certain, especially the July peak-season rates for 3-star hotels and private hostel rooms, which can vary widely by district and booking platform. Cocktail and wine are set from the local beer relationship because direct knowledge of bar prices in Harbin is weak.",
+  "comparable_city_reasoning": "Based on regional East Asian price levels for mid-sized northern Chinese cities such as Shenyang, Changchun and Dalian, adjusted for Harbin's lower cost base relative to Beijing and Shanghai. Harbin's Chinese-language beer culture supports a low beer price. Cocktail and wine anchors are set as multiples of the beer anchor, since direct price knowledge is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.70,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 55.00
+  }
+}

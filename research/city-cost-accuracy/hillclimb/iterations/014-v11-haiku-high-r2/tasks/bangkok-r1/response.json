@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for July 2026 from general knowledge, not checked against live menus, booking pages, or current listings. Restaurant and meal anchors are the most reliable; the hotel and hostel anchors carry wider uncertainty because Bangkok room rates vary a lot by district, season, and booking channel. The cocktail and wine anchors are weaker and were set using the local price relationship to beer (roughly 3 to 3.5 times the beer anchor). The FX observation was taken from a web search summary that attributes the 15 October 2026 4.00 pm rate to the RBA Exchange Rates Overview page. I did not open the RBA page directly, and the RBA homepage in the same results showed a different rate for 14 October, so the figure should be verified before use.",
+  "comparable_city_reasoning": "Benchmarked to Southeast Asian capital and major tourist cities with similar price levels, such as Kuala Lumpur, Ho Chi Minh City, and Hanoi, adjusted for Bangkok's mid-range hotel and restaurant pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 60.00
+  }
+}

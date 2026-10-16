@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of UK regional pricing for July 2026. No live booking pages or current listings were checked. Restaurant and pub anchors are more reliable than accommodation, which varies widely with events and weekday demand. Cocktail and wine anchors are set relative to beer because direct knowledge is weaker: cocktail is about 1.9x beer and wine glass about 1.2x beer. The USD figures assume roughly 1.30 to 1.35 USD per GBP. The FX observation comes from an RBA search-result summary; the source page was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized UK regional cities such as Bristol and Birmingham, with Cardiff placed slightly below Bristol on hotel and restaurant prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.30,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 13.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 175.00
+  }
+}

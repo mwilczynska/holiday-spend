@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Cagliari and Sardinia in July, not checked against live menus or booking pages. Restaurant and beer anchors are more reliable than July hotel and hostel rates, which swing widely with demand. Cocktail and wine were estimated directly and sanity-checked against the beer anchor. The FX observation comes from search-result summaries attributed to rba.gov.au pages; I did not open the RBA page or the F11.1 table, so the value should be verified before use.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Italian port cities with summer tourist demand, such as Palermo and Bari, with a modest adjustment for Cagliari's lower tourist density than Sardinian resort towns.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 165.00
+  }
+}

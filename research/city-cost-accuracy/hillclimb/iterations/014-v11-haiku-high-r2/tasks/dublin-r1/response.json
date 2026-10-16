@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Dublin price levels, not live booking pages or current listings. Restaurant and drink anchors are moderately reliable; July hotel and hostel rates are the least certain because peak-season demand varies widely. The FX observation comes from a search summary that cites the RBA exchange rates page for 15 October 2026 at 4.00 pm, and I did not independently open the RBA table. A third-party market quote of about 0.6956 for the same date is consistent with it.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Western European capitals with similar tourism demand, such as Amsterdam and Edinburgh, with a premium applied to Dublin hotel and hostel rates for July demand. Beer, coffee, and cocktail anchors use general Dublin café and pub pricing; the wine anchor is set from the local price relationship to beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 4.20,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 15.00,
+    "wine_glass": 10.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 270.00
+  }
+}

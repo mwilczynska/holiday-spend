@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of southern Sri Lankan tourist pricing, not live listings. Restaurant anchors are moderately reliable. Accommodation anchors are less certain and vary widely by season and property. Cocktail and wine were cross-checked against the beer anchor because direct knowledge is weaker. Sri Lankan rupee moves and July southwest-monsoon, off-peak conditions on the south coast may shift prices. The FX value comes from a search-result snippet of the RBA Exchange Rates Overview page (4.00 pm, 15 Oct 2026), which I did not open in full.",
+  "comparable_city_reasoning": "Based on southern Sri Lankan coastal tourist towns with similar pricing, such as Weligama and Unawatuna, adjusted for Mirissa's beach-town hotel and restaurant mix. Regional basis is South Asia.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 6.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 90.00
+  }
+}

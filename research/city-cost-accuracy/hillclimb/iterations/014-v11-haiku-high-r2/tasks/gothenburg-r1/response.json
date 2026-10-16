@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Swedish and Nordic pricing, not checked against live listings. Restaurant anchors (beer, coffee, meals) are moderately reliable; cocktail and wine are less certain and are bounded from the beer relationship; hostel and hotel rates are the least certain because they vary strongly by season and event demand, and July is a busy summer period in Gothenburg. FX observation was taken from RBA-sourced search summaries for the 2026-10-15 F11 figure, not from a downloaded table.",
+  "comparable_city_reasoning": "Benchmarked to Swedish and Nordic pricing, with Gothenburg set somewhat below Stockholm and in the range of other mid-sized Scandinavian cities; restaurant and accommodation levels were bounded against that Nordic basis. Cocktail and wine were set relative to the local beer price.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 15.50,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 17.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 220.00
+  }
+}

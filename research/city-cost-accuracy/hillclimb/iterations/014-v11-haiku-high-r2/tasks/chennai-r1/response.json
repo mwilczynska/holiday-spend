@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Chennai and comparable Indian metros, not checked against live listings. Restaurant anchors are more reliable than accommodation; wine and hotel_3star_2p are least certain, and alcohol prices vary with licensing and taxes. The FX value comes from a search-result summary attributed to the RBA exchange-rates overview page; the table itself was not directly verified.",
+  "comparable_city_reasoning": "Priced against other large Indian metros such as Bengaluru, Hyderabad, and Kolkata, adjusted to Chennai's typically lower hotel and dining costs relative to Mumbai and Delhi. Beer and cocktail anchors use the local relationship to restaurant bar pricing, since direct knowledge of licensed-venue prices is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 6.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 55.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Tasmanian and Australian price levels, not live listings. Restaurant and beer anchors are more reliable than accommodation, which varies with season and events. Pricing window is July (winter, lower accommodation demand than summer). FX observation came from a search summary of the RBA page and may be a cached copy, so it should be verified against the live RBA table.",
+  "comparable_city_reasoning": "Benchmarked to mid-sized Australian cities such as Hobart's regional peers, priced somewhat below Sydney and Melbourne. Cocktail and wine were checked against the beer anchor: cocktail is about 2.1x beer and wine glass about 1.3x beer, which is typical for Australian venues.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 3.60,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 15.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 31.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 180.00
+  }
+}

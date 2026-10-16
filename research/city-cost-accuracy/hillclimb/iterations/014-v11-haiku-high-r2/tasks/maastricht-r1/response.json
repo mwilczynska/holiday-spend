@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or booking pages. Restaurant and beer anchors are medium confidence. Accommodation is lower confidence because July demand and event-driven rate spikes vary. Cocktail and wine anchors are based on the typical local price relationship to beer because direct knowledge is weak. FX: no verified RBA observation could be retrieved. Search returned only an older cached RBA page (March 2026) and third-party copies, so the fx fields are null and should not be used until a verified RBA observation is supplied.",
+  "comparable_city_reasoning": "Based on general knowledge of mid-sized Dutch university and tourist cities such as Leiden, Utrecht and Groningen, with summer hotel and hostel rates adjusted upward for tourist demand. City prices were not sourced by web search.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 4.30,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 14.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 185.00
+  }
+}

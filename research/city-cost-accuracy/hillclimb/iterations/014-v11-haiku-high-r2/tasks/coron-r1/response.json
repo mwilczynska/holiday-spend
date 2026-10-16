@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not based on live listings or price checks. Restaurant and beer anchors are more reliable than accommodation, which varies widely by season and by location within town. July is in the rainy season, so accommodation demand is likely below the December to April peak, but room rates may still differ from the estimates. The hotel_3star_2p anchor is the least certain. The FX observation came from search-result content citing rba.gov.au pages; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Based on general knowledge of Palawan tourism towns, mainly Puerto Princesa and El Nido, adjusted for Coron's island-tour and diving-centred pricing. Local peso price levels were converted at an approximate PHP 58 per USD assumption.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 5.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 10.50,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 85.00
+  }
+}

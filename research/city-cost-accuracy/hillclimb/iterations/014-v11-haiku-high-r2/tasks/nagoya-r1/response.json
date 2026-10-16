@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Japanese prices, not checked against live listings. Restaurant anchors (beer, coffee, meals) are more reliable than accommodation, which varies a lot by season and event calendar. Cocktail and wine are estimated from the local price relationship to beer (cocktail about 1.4x and wine glass about 1.6x the beer anchor), since direct knowledge is weaker. The FX value comes from a search-result snippet attributed to the RBA Exchange Rates Overview page, which I did not open directly, and I did not verify the F11 table itself.",
+  "comparable_city_reasoning": "Basis is Japanese mid-sized and major regional cities (for example Osaka and other non-Tokyo Japanese cities) with comparable izakaya, cafe, business hotel, and hostel pricing, adjusted for the weaker yen that prevailed through 2025-2026.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 7.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 150.00
+  }
+}

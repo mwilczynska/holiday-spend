@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July high season in a small, tourist-heavy walled Tuscan city; restaurant anchors are more reliable than accommodation, which is widest-range and most sensitive to season and availability. Cocktail and wine were set from the local price relationship to beer (cocktail about 1.8x beer, wine glass close to beer), since direct knowledge is weaker. No live listings were inspected. FX: the 0.6955 observation came from search-result summaries attributed to the RBA's latest rates; I could not open the RBA page, so verify it against the RBA F11.1 table before any formal use.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Tuscan historic cities with strong summer tourism demand, such as Siena and Pisa, adjusted for Lucca's compact walled centre and proximity to Florence. Not derived from web search.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 12.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 210.00
+  }
+}

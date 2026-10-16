@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of New Orleans price levels. No live booking pages or current listings were inspected. Restaurant and drink anchors are moderately certain. Accommodation is least certain because hotel and hostel rates swing with events such as festivals and conventions, and July is peak heat and a shoulder period for tourism. Cocktail and wine are estimated from the beer anchor, since direct knowledge of local drink prices is approximate.",
+  "comparable_city_reasoning": "Based on the general US price level for mid-sized Southern tourism cities with a comparable restaurant and lodging market, such as Memphis, Savannah, and Charleston, adjusted for New Orleans' bar and restaurant culture and its lodging demand profile.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 14.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 230.00
+  }
+}

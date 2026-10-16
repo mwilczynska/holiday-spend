@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of South Korean price levels, not from live listings. Restaurant and cafe anchors are moderately confident. Hostel and hotel anchors are less certain because July is peak season in Busan, and rates vary widely by district (Haeundae versus other areas). Cocktail and wine were estimated from general Busan bar and restaurant price levels relative to draft beer. The FX observation could not be checked against the RBA F11 table; it comes from a search summary attributed to the RBA exchange rates page and may need manual verification.",
+  "comparable_city_reasoning": "Busan is treated as a mid-priced Korean port city, priced somewhat below Seoul for restaurants and hotels and comparable to other large South Korean regional cities. Prices reflect South Korean domestic price levels and the approximate KRW/USD rate of recent periods.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.30,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 135.00
+  }
+}

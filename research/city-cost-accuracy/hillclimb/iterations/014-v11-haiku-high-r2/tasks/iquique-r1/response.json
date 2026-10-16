@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings. Restaurant and beer anchors are more reliable than accommodation, which varies by season and by beach-versus-centre location. Cocktail and wine anchors use general Chilean price levels relative to beer because direct local knowledge is limited. The FX observation comes from a search snippet of the RBA exchange-rates page; figures for nearby dates in the same results conflicted, so verify against the RBA F11 table before use.",
+  "comparable_city_reasoning": "Based on general price levels in mid-sized northern Chilean port and tourism cities such as Antofagasta and La Serena, adjusted for Iquique's beach and free-trade-zone tourism. Santiago prices were not used as a direct basis because they run higher.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 6.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 105.00
+  }
+}

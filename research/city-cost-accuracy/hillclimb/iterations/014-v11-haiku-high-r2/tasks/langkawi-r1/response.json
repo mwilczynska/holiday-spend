@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, booking pages, or current listings. Restaurant and beer anchors are moderately confident. Accommodation anchors are less certain because Langkawi rates vary widely by season, resort versus guesthouse, and weekday versus weekend. Cocktail and wine_glass are bounded using the local price relationship to beer (roughly 2.5 to 2.6 times the beer anchor), since direct knowledge of those prices is weaker. Langkawi's duty-free status keeps alcohol relatively affordable compared with mainland Malaysia, which is reflected in the beer and drink anchors.",
+  "comparable_city_reasoning": "Based on the Southeast Asian resort-island and tourist-town basis, using Malaysian pricing (George Town, Penang, as a mainland tourist reference) adjusted for Langkawi's resort-heavy accommodation mix, duty-free alcohol, and July school-holiday demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 100.00
+  }
+}

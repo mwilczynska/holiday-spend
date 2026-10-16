@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Negril and Jamaican resort-town pricing, not from live listings or menus. Restaurant and drink anchors (beer, coffee, meals, cocktail, wine) are moderately certain. Hostel anchors are the least certain because Negril has few registered hostels, so the dorm and private-room figures are weakly grounded. Hotel anchors vary widely by beach-front versus town location and by seasonal demand, and July is a shoulder period. Cocktail and wine were estimated from the local price relationship to beer, since direct knowledge of those prices is weaker. Jamaican dollar prices move with exchange rates, so these USD figures may drift.",
+  "comparable_city_reasoning": "Placed in Latin America because Jamaica is in the Caribbean and this list has no separate Caribbean region. Benchmarked against other Caribbean resort towns with similar tourism-driven pricing, adjusted for Negril's mix of beach-front restaurants, guesthouses, and a limited hostel supply. The estimates are not tied to any specific current listing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 9.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 170.00
+  }
+}

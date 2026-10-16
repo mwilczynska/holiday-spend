@@ -1,0 +1,30 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate with no live price checks. Restaurant and drink anchors are moderately reliable for a Thai beach town. Accommodation is less certain and July is monsoon low season on the Andaman coast, so rates may be lower than peak-season listings. Cocktail and wine are bounded using the beer relationship because direct knowledge of Krabi bar prices is weak. The FX value was taken from a search-result summary of the RBA Exchange Rates Overview page, which I did not open directly.",
+  "comparable_city_reasoning": "Based on general knowledge of Thailand's Andaman coast tourist towns (Phuket, Ao Nang, Koh Samui), adjusted downward for Krabi's generally lower hotel and restaurant prices and the July monsoon season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.50,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 65.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [OFX AUD to USD historical rates](https://www.ofx.com/en-au/forex-news/historical-exchange-rates/aud/usd/)

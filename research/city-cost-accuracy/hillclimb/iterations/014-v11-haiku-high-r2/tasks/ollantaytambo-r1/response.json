@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not from live listings or prices. Restaurant anchors (beer, coffee, meals, cocktail, wine) are moderately reliable for a Machu Picchu gateway town in high season. Accommodation anchors are less certain because Ollantaytambo's lodging prices vary widely with season and property. The RBA FX lookup did not complete (web search session limit reached), so the fx source_rate and as_of_date are null and must be filled from a successful RBA lookup before use.",
+  "comparable_city_reasoning": "Based on Cusco and the Sacred Valley tourism market in Peru, adjusted for Ollantaytambo's smaller size and its role as the Inca Trail and Machu Picchu train departure point, which supports tourist-priced restaurants and lodging in July high season.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 85.00
+  }
+}

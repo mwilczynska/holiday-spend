@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Los Cabos tourist pricing, not checked against live listings or booking pages. Restaurant anchors are the most reliable. Hotel and hostel anchors are less certain and are priced for July, a summer shoulder period that is usually cheaper than the winter high season. Cocktail and wine were cross-checked against the beer anchor using a typical resort-bar multiple of about 2x. FX: the RBA observation was taken from search-result snippets of the RBA exchange rates page, and the F11 table itself was not opened, so it should be verified against the official table.",
+  "comparable_city_reasoning": "Benchmarked to Mexico's Pacific and Caribbean resort towns, mainly Puerto Vallarta and the Riviera Maya (Cancun/Playa del Carmen), then adjusted upward for Cabo's higher tourist price level, particularly for hotels and bars.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 11.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 170.00
+  }
+}

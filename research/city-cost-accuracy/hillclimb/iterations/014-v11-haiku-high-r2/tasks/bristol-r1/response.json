@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Bristol and UK city pricing, not inspected live listings. Restaurant and beer anchors are more reliable than accommodation, which varies widely by season and location. July is peak tourist season, so accommodation is set toward the higher end of typical ranges. Cocktail and wine were estimated from direct knowledge of UK bar pricing, cross-checked against the beer anchor (cocktail about 1.7x beer, wine glass about 1.2x beer).",
+  "comparable_city_reasoning": "Benchmarked against mid-sized English and Welsh cities with comparable tourism demand and cost of living, such as Bath, Cardiff, and Manchester, rather than London. Prices are expressed in USD using general knowledge of recent GBP/USD levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 13.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 170.00
+  }
+}

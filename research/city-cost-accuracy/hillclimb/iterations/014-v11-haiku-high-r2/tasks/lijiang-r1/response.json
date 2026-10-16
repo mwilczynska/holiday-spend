@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Yunnan tourist-town pricing; no live listings were checked. Peak-season accommodation and Old Town bar prices are the least certain anchors, and restaurant anchors are more reliable. The FX rate comes from an RBA exchange-rates overview page that appeared in search results; I did not open the page itself.",
+  "comparable_city_reasoning": "Based on Dali and other Yunnan tourist old towns, adjusted for Lijiang's July high-season premium and its Old Town bar and hostel concentration. No live price sources were consulted for the anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 80.00
+  }
+}

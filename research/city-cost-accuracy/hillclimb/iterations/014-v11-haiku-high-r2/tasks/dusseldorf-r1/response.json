@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of German city pricing, not checked against live menus, booking pages, or current listings. Restaurant and coffee anchors are more reliable than hotel and hostel anchors, which vary with trade fairs and summer demand in July. Cocktail and wine are estimated from the local beer price relationship, since direct knowledge is weaker.",
+  "comparable_city_reasoning": "Regional basis: large western German cities with similar restaurant and accommodation pricing, such as Cologne and Frankfurt. Düsseldorf is priced slightly above smaller German cities and below Munich and Hamburg.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 14.50,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 15.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 185.00
+  }
+}

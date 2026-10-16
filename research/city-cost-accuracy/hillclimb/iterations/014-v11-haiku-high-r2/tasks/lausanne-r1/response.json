@@ -1,0 +1,27 @@
+```json
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Swiss price levels, not checked against live listings or menus. Restaurant anchors (beer, coffee, cocktail, wine, meals) are more reliable than accommodation, which varies widely with July high season and events. The FX observation is not verified: I did not open the RBA page, and the rate and date come from unverified search-summary text. Confirm against RBA table F11 before use.",
+  "comparable_city_reasoning": "Basis is Switzerland's general price level, benchmarked against other Swiss cities of similar size and tourism demand, such as Geneva and Bern, with Lausanne's lakeside summer demand applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 22.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 260.00
+  }
+}
+```

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Mumbai price levels; no live listings or booking pages were checked, and anchors were not sourced from web search. Restaurant and beer anchors are moderately reliable. Accommodation is least certain because tariffs vary widely by neighborhood and star rating, and July is monsoon low season for leisure travel, which may soften rates. Cocktail and wine were anchored to the beer price (about 2.3x and 1.9x beer) because direct knowledge of bar prices is weaker. The FX value comes from a search-result summary of the RBA exchange-rate table; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Regional basis: large South Asian metros. Restaurant and beer prices are benchmarked to other major Indian cities; accommodation reflects Mumbai's higher hotel tariffs in central business and tourist districts. No named comparable property or listing was consulted.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 34.00,
+    "hotel_3star_2p": 65.00
+  }
+}

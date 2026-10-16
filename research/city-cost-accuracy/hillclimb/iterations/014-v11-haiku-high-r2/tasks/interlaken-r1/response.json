@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Swiss tourist-town price levels for July, not checked against live menus, rates, or booking pages. Restaurant anchors are more reliable than accommodation, which varies widely with season and availability in Interlaken. The FX observation came from a search-result summary that attributed 0.6955 to the RBA exchange-rates page for 2026-10-15. I did not open the RBA page directly, and the only corroboration is an OFX figure of 0.695572 for the same date, which is a market rate rather than the RBA's 4pm rate.",
+  "comparable_city_reasoning": "Basis is Swiss alpine tourist-town pricing (similar to Lucerne and Grindelwald), with July peak-season uplift for accommodation and tourist-area uplift for drinks and restaurants. Swiss franc prices were translated to USD by the estimator. Beer and wine were estimated relative to the cappuccino and restaurant meal levels, and cocktails were set at a premium over beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 6.00,
+    "inexp_meal_1p": 24.00,
+    "midrange_meal_2p": 180.00,
+    "cocktail": 22.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 160.00,
+    "hotel_1star_2p": 175.00,
+    "hotel_3star_2p": 290.00
+  }
+}

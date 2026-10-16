@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings. Restaurant and cafe anchors are more reliable than accommodation, which varies by season and location. Cocktail and wine were set relative to the beer anchor (about 2.3x and 1.5x) because direct knowledge is weaker. The FX rate was taken from a third-party page that reproduces the RBA F11.1 table; I did not verify it on rba.gov.au, and it may not be the latest observation as of 2026-10-15. Check the fx fields against the RBA table before use.",
+  "comparable_city_reasoning": "Benchmarked against other large Australian capital cities, mainly Sydney, with Melbourne's restaurant and cafe prices broadly similar and accommodation somewhat lower.",
+  "fx": {
+    "as_of_date": "2026-10-09",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/tables/",
+    "source_rate": 0.6979,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 17.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 170.00
+  }
+}

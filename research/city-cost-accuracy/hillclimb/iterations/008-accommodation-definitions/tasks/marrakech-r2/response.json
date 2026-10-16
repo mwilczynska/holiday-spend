@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic general-knowledge estimate; no live listings or booking pages were checked, and the only web search was for the RBA FX rate. Meal and coffee anchors are moderately grounded. Beer is a bottled domestic proxy priced at licensed venues, as alcohol is restricted in Morocco. Cocktail and wine are weakly grounded and were set from beer ratios (about 2.2x and 1.4x the beer anchor). Accommodation is the least certain: July is a hot summer month where rates can sit below spring and autumn peaks, nightly rates vary widely by neighbourhood, and taxes are approximated.",
+  "comparable_city_reasoning": "Regional basis: North African tourist-city price levels (Fes, Tangier, Tunis) adjusted upward for Marrakech's stronger tourist demand, with Istanbul's tourist districts as a loose reference for restaurant and bar levels. No single city was copied.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 12.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 85.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or booking pages. Food, cafe and beer anchors are better grounded than July 2026 accommodation, which varies widely by neighborhood and booking date. Cocktail and wine figures are set relative to the beer anchor because direct knowledge is weaker. The fx observation (0.6955 USD per AUD, as at 4pm on 2026-10-15) comes from search-result reporting of the RBA exchange rates overview page. I could not open that page or confirm the value against the F11.1 table, and the search results were inconsistent, so verify it before use.",
+  "comparable_city_reasoning": "No single comparable city. Anchors reflect Madrid-specific price knowledge, loosely benchmarked against other large Southern European capitals with similar tourism demand. Euro prices were converted at an assumed 1.15 USD per EUR. No live listings or price pages were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.37,
+    "coffee": 2.99,
+    "inexp_meal_1p": 17.25,
+    "midrange_meal_2p": 80.50,
+    "cocktail": 13.80,
+    "wine_glass": 5.18,
+    "hostel_dorm_1p": 40.25,
+    "hostel_private_2p": 89.70,
+    "hotel_1star_2p": 94.30,
+    "hotel_3star_2p": 172.50
+  }
+}

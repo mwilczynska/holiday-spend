@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of London price levels, not inspected live listings. Restaurant and beer anchors are moderately certain. Hostel and hotel anchors are less certain because London accommodation prices vary widely by district and season, and July is peak season. Cocktail and wine were set from London bar and restaurant price levels, cross-checked against the beer anchor (cocktail about 2x beer, wine glass about 1.4x beer).",
+  "comparable_city_reasoning": "Benchmarked against other large Western European capitals with high tourism demand, such as Paris and Amsterdam, with a London premium on accommodation and drinks. No single comparable city was used as a direct source.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 165.00,
+    "cocktail": 18.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 52.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 260.00
+  }
+}

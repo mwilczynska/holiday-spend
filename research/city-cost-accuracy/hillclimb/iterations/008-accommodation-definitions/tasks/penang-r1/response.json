@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus or booking pages. Restaurant and coffee anchors are the most grounded; hotel and hostel anchors assume typical July rates including taxes and fees and are plausibly within about ±25%. Cocktail and wine are set from the beer anchor at about 2.3x and 2.0x because direct knowledge of Penang bar pricing is weak. The FX value comes from search-result summaries that point to rba.gov.au; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked against Malaysian heritage tourism cities such as Melaka and Ipoh, with regional Southeast Asian city-break pricing as a cross-check. Accommodation anchors reflect the concentration of budget-to-midrange guesthouses and hostels in George Town. Food and drink anchors follow Malaysian hawker and casual-restaurant pricing, with alcohol reflecting Malaysia's comparatively high drink prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.80,
+    "inexp_meal_1p": 4.20,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 75.00
+  }
+}

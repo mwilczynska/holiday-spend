@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 (peak season), not checked against live listings. Restaurant and beer anchors are more reliable than hotel anchors, which swing widely with season, lake-view premiums and events. Como is a pricier lakeside resort than typical Italian inland towns, so the estimates lean higher. The FX observation comes from search-result snippets citing rba.gov.au and was not confirmed by opening the F11.1 table.",
+  "comparable_city_reasoning": "Benchmarked against Italian lake and resort towns with similar summer tourism demand, such as Bellagio, Sirmione and Desenzano on Lake Garda, and Lecco on Lake Como. Beer and cocktail prices were set relative to the local restaurant meal price, since direct knowledge of bar pricing is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 3.30,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 13.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 220.00
+  }
+}

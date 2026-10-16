@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Chinese domestic prices and Huangshan's tourism market; no live listings or booking pages were checked. Restaurant and beer anchors are the more reliable ones. Accommodation is less certain because July is peak season, and rooms near the Yellow Mountain scenic area or on the mountain can cost well above town-centre rates. Cocktail and wine are weaker estimates, so they are set relative to local beer prices: a cocktail at about 4-5x a draft beer and a restaurant glass of wine at about 4-5x a draft beer, reflecting the usual Chinese bar and restaurant markup.",
+  "comparable_city_reasoning": "Based on mid-sized Chinese tourist cities such as Guilin and Lijiang, adjusted down for Huangshan's smaller town economy, with accommodation adjusted up for summer peak demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 4.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 65.00
+  }
+}

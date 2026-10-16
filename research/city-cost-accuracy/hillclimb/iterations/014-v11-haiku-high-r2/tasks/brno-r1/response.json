@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Czech price levels in a mid-sized university city; no live listings or booking pages were checked. Restaurant and beer anchors are more reliable than accommodation, which varies widely by season and event calendar, so the hostel and hotel anchors are less certain. Cocktail and wine are estimated from local beer and restaurant price relationships because direct knowledge is weaker. FX observation was taken from RBA search-result snippets and not verified by opening the RBA page.",
+  "comparable_city_reasoning": "Priced below Prague as a Czech benchmark and in line with mid-sized Central European university cities such as Graz, Ljubljana, and Olomouc, adjusted for Brno's lower Czech hospitality costs. Czech koruna conversions use approximate 2026 rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.90,
+    "coffee": 3.20,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 10.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 125.00
+  }
+}

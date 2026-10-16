@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or menus. Restaurant and hostel anchors are medium confidence. Hotel anchors are medium-low because July is monsoon low season, so rates may sit below peak-season levels and vary widely by property. Cocktail and wine_glass are low confidence: wine is scarce in Kerala and bar prices vary, so both were set relative to the beer anchor (cocktail about 2x beer, wine glass about 2.4x beer). FX observation came from search-result snippets attributed to the RBA; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked against other Indian hill stations and tourist towns, such as Kodaikanal, Ooty, and Madikeri (Coorg), adjusted for Kerala's higher alcohol taxes and the off-season July window. Not based on a specific cited price source.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 55.00
+  }
+}

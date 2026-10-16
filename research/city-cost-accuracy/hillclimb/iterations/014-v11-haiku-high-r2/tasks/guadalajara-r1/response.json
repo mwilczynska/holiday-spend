@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for July 2026, not checked against live listings or current menus. Restaurant anchors are more reliable than accommodation, which varies a lot by neighborhood and season. Peso-denominated prices are converted at an assumed exchange rate, so USD figures can shift with peso moves. The FX observation came from search-result summaries that cite the RBA exchange-rates table; I did not open the rba.gov.au page directly.",
+  "comparable_city_reasoning": "Basis is general knowledge of mid-sized Mexican metropolitan cities with a strong tourism and business market, such as Monterrey and Puebla, adjusted for Guadalajara's pricing relative to Mexico City. Beer and cocktail anchors use the local beer-to-cocktail price relationship where direct knowledge is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

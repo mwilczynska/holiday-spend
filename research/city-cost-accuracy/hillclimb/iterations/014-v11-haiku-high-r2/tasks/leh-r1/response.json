@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates for Leh in July 2026, which is peak summer season in Ladakh. Restaurant anchors are more reliable than accommodation, which varies widely by season, room quality and booking channel. No live listings or menus were checked. Beer and cocktail prices are uncertain, so wine_glass uses a local beer relationship (roughly 1.5x beer) rather than direct knowledge. FX: the 0.6955 USD per AUD value comes from a search-result summary of the RBA overview page, which I did not open directly. A Banque de France cross-check implied roughly 0.698 for 9 October 2026, which is consistent but is not an RBA figure. Verify the RBA value on rba.gov.au before relying on it.",
+  "comparable_city_reasoning": "Basis is the Himalayan hill-station tourism market in northern India (for example Manali and McLeod Ganj), adjusted upward for Leh's remote location, higher freight and fuel costs, and summer altitude-tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 90.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings or booking pages. Restaurant and beer anchors are more reliable than accommodation, which varies widely by season and neighbourhood, and July demand could push hotel rates higher. The FX rate was reported by a third-party site as an RBA figure. I did not open or verify the rba.gov.au page, so as_of_date and source_rate should be checked against the RBA F11.1 table before use.",
+  "comparable_city_reasoning": "Basis is a mid-sized Spanish city with comparable tourism demand, such as Valencia, Seville or Porto, with a Basque premium on restaurant and bar prices. Beer, cocktail and wine anchors use the local price relationship to beer, since direct knowledge of bar prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-09",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6979,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 2.90,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 13.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 150.00
+  }
+}

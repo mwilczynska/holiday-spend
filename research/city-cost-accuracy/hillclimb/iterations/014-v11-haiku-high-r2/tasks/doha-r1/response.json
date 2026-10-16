@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or menus. Restaurant anchors are moderately reliable. Alcohol prices are least certain because Qatar restricts alcohol to licensed hotel and venue outlets, so beer and wine prices vary widely by venue. Hostel dorm and private-room anchors are low confidence because registered hostels are scarce in Doha. Hotel anchors are moderate, with the 3-star figure reflecting a July low-season estimate.",
+  "comparable_city_reasoning": "Gulf-region basis, benchmarked loosely against Dubai and Abu Dhabi for hotel and restaurant pricing, adjusted down for the thinner budget-accommodation market. Cocktail and wine_glass use the local relationship to beer, since direct knowledge of venue pricing is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 19.00,
+    "wine_glass": 20.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 150.00
+  }
+}

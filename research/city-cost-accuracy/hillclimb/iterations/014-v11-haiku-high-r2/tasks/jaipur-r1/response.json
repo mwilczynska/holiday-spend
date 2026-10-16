@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and coffee anchors are the more reliable; hotel and hostel anchors vary widely by area and season, and the wine and cocktail anchors are the least certain. July is monsoon low season in Jaipur, so accommodation may run below the October-March peak. FX: the 0.6955 figure is the RBA observation for 15 Oct 2026 as reported on the RBA exchange-rates overview page in search results. Third-party sources show a similar rate (about 0.6956), but I did not directly retrieve the official F11 table.",
+  "comparable_city_reasoning": "Based on South Asian and Indian heritage tourism cities of similar size and visitor profile (for example Udaipur and Agra), using typical Indian restaurant, café, guesthouse and hostel price levels. Alcohol-related anchors reflect licensed hotel and bar pricing, where Indian excise and markups raise prices above local street-level beer. Wine and cocktails are set relative to beer, since direct price knowledge is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.20,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 5.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 48.00
+  }
+}

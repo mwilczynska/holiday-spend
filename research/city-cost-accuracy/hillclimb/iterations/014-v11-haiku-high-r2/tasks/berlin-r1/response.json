@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Berlin price levels, not live listings. Restaurant anchors are moderately certain; hostel and hotel anchors vary widely by district and season, and drink prices are less certain. The FX observation comes from a search snippet attributed to the RBA exchange-rates page, which I did not open directly.",
+  "comparable_city_reasoning": "Based on general knowledge of large German cities such as Hamburg and Cologne, adjusted upward for Berlin's tourist accommodation demand and summer pricing. Drink anchors use the typical German restaurant beer-to-cocktail and beer-to-wine price relationship where direct knowledge is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 15.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 165.00
+  }
+}

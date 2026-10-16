@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Polish city prices, not checked against live menus, listings, or booking pages. Restaurant and cafe anchors are moderately reliable. Accommodation anchors are less certain and assume July high-season demand in Gdansk. Cocktail and wine anchors rest on the local price relationship to beer, since direct knowledge of those prices is weaker. Beer is a 0.5 L draft serving.",
+  "comparable_city_reasoning": "Benchmarked against Poland's other major tourist cities (Krakow, Wroclaw, Poznan) with similar restaurant and accommodation pricing, adjusted for Gdansk's Baltic seaside summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 140.00
+  }
+}

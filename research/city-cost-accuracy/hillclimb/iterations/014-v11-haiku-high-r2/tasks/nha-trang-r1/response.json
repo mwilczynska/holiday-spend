@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for a July 2026 window, not from inspected live listings. Restaurant and drink anchors are more reliable than hotel and hostel anchors, which vary widely by beachfront location, season, and booking channel. The FX observation is stale: the most recent RBA table I could retrieve covers 18 to 20 March 2026, and a later extended search could not run because of a session limit, so the latest published RBA observation may differ.",
+  "comparable_city_reasoning": "Benchmarked against other coastal resort cities in central and southern Vietnam, such as Da Nang, and against the broader Southeast Asia beach-tourism price range. Beer and cocktail prices are set relative to each other using the usual local beer-to-cocktail ratio, since direct knowledge of cocktail prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.2,
+    "coffee": 2.5,
+    "inexp_meal_1p": 3.0,
+    "midrange_meal_2p": 35.0,
+    "cocktail": 4.5,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 8.0,
+    "hostel_private_2p": 16.0,
+    "hotel_1star_2p": 14.0,
+    "hotel_3star_2p": 45.0
+  }
+}

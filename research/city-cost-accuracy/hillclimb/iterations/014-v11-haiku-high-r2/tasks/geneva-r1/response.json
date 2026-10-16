@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Geneva's price levels, not checked against live menus, booking sites, or current listings. Restaurant anchors (meals, coffee, beer) are moderately reliable. Hotel and hostel anchors are less certain because Geneva rates vary widely with trade-fair dates and July high season. Cocktail and wine were estimated from the beer anchor, since direct knowledge of bar prices is weaker.",
+  "comparable_city_reasoning": "Benchmarked against other large Swiss cities, principally Zurich, and adjusted upward for Geneva's high hotel and restaurant prices. Geneva is generally at or above Zurich on lodging and dining costs.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 6.50,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 200.00,
+    "cocktail": 22.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 200.00,
+    "hotel_3star_2p": 360.00
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus or booking listings. Restaurant and coffee anchors are moderately confident. Hotel and hostel anchors are less certain because July is peak season in Florence and rates vary widely by location and date. Cocktail and wine_glass were set from the beer anchor and typical Italian restaurant markups because direct knowledge is weaker. The RBA USD/AUD observation could not be verified: searches returned no retrievable rba.gov.au F11.1 table, and the only RBA-attributed figures came from third-party sites. fx is therefore null rather than filled with an unverified rate.",
+  "comparable_city_reasoning": "Anchored to Italian and Tuscan tourist cities with similar July demand, such as Bologna, Siena and Pisa, adjusted upward for Florence's premium lodging and central-restaurant pricing. Based on the model's learned general knowledge only; no web-sourced city price data was used.",
+  "fx": null,
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 15.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 300.00
+  }
+}

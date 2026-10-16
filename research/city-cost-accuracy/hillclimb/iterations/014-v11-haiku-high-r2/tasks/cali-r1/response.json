@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Colombian pricing, not from live listings. Restaurant anchors are more reliable than accommodation, which varies widely by neighborhood and season. The FX observation comes from a search summary of the RBA exchange-rates page; I did not open the page directly.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Colombian tourist city, priced somewhat below Bogota and Medellin for restaurants and lodging. Drinks are estimated from local restaurant and bar pricing, with wine and cocktails set above beer on that basis.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.30,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 90.00
+  }
+}

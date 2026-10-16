@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Hangzhou price levels for a July 2026 window, not checked against live menus, booking sites, or listings. Restaurant and beverage anchors are moderately certain. Hostel and hotel anchors are less certain because summer tourism demand around West Lake can move rates substantially. Values assume roughly CNY 7 per USD. Cocktail and wine anchors are bounded by the local beer relationship, since direct knowledge of bar and wine pricing in Hangzhou is weaker.",
+  "comparable_city_reasoning": "Based on the East Asian pricing of second-tier Chinese tourist cities, benchmarked against Nanjing and Suzhou and set below Shanghai. Hangzhou's July peak-season demand is reflected in the accommodation anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 3.80,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 9.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 58.00
+  }
+}

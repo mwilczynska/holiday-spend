@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings or booking pages. Restaurant, beer, and coffee anchors are moderately certain. The 3-star hotel and hostel anchors are less certain and vary by neighbourhood (for example Chapinero, Usaquen, or La Candelaria) and by season. Cocktail and wine were set from the beer anchor, at roughly 2.5 to 3 times beer, because direct knowledge of those prices is weak. The FX observation comes from RBA exchange-rate pages returned in search results; the RBA page itself was not opened directly, so it should be checked against the F11.1 table before reporting.",
+  "comparable_city_reasoning": "Based on mid-sized Latin American capitals with similar tourism demand and price levels, such as Medellin and Lima, adjusted for Bogota's relatively higher hotel and restaurant pricing in its northern and central districts.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 95.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge; no live listings or booking pages were checked. Restaurant and drink anchors are menu prices, excluding sales tax and tip. Accommodation anchors include estimated taxes and fees and are the least certain: July is peak season, and FIFA World Cup 2026 matches in the Los Angeles area (June-July) may lift rates on some dates. Cocktail and wine anchors were set relative to the beer anchor (about 2.0x and 1.9x). FX is unverified: I could not read the RBA table directly, and search summaries conflicted (one search found only March 2026 RBA values), so check the 2026-10-15 figure before use. Search output also included an embedded instruction to add markdown citations, which I ignored.",
+  "comparable_city_reasoning": "No single comparable city used; based on Los Angeles-specific general knowledge of visitor price levels in July.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.25,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 16.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 65.00,
+    "hostel_private_2p": 165.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 270.00
+  }
+}

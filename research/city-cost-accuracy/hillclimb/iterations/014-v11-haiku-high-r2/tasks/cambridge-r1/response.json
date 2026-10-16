@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for July 2026 peak tourist season, not checked against live listings. Restaurant and coffee anchors are more reliable than accommodation, which varies widely with college term dates, graduation and events, and demand in the summer. Beer, cocktail and wine anchors are less certain, so cocktail and wine were set from the local price relationship to beer and to restaurant meal prices.",
+  "comparable_city_reasoning": "Benchmarked against other English university cities with similar tourism and price levels, such as Oxford and Bath, with prices adjusted for Cambridge's high hotel demand in summer. USD values assume roughly 1.33 USD per GBP.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 4.80,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 15.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 230.00
+  }
+}

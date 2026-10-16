@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are moderately confident; hostel and hotel anchors are less certain because Can Tho accommodation varies widely by district and season. The FX value comes from a search summary attributed to the RBA Exchange Rates Overview page. I did not open that page, and I could not independently confirm the 15 October 2026 figure.",
+  "comparable_city_reasoning": "Priced below Ho Chi Minh City and Da Nang and in line with other mid-sized Vietnamese regional cities in the Mekong Delta and central Vietnam. Drink prices use the local beer relationship: cocktail is about 4x beer and wine glass about 5x beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.90,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 3.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 5.50,
+    "hostel_private_2p": 12.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 36.00
+  }
+}

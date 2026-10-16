@@ -41,6 +41,10 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
 - [ ] Luna-lane confirmation before any production proposal.
 
+**Job A resumed — 16 October 2026 UTC.** Owner requested continuation from 89/333 saved responses.
+Fresh GPT-6 Luna/Max collection starts at cabo-san-lucas-r1. Prior answers and the Alicante dispatch deviation
+remain preserved.
+
 **Job A stopped at owner request — 16 October 2026 UTC.** Added 29 responses in this continuation,
 annecy-r1 through byron-bay-r1, using fresh GPT-6 Luna/Max subagents. Frozen 101-v11-luna-r2 has 89/333
 saved responses (244 pending). All response/run pairs parse and record the required model and effort.

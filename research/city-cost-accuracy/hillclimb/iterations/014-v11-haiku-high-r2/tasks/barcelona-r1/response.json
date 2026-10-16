@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Barcelona prices, not from live menus, listings or booking pages. Restaurant and coffee anchors are reasonably bounded. Accommodation is less certain because July is peak season and room rates vary widely by neighbourhood and booking lead time. Cocktail and wine are estimated from general Barcelona bar and restaurant pricing and cross-checked against the beer anchor. Euro figures were converted at an assumed rate of about 1.16 USD per EUR. FX: the 0.6955 observation came from a search-result summary that cites the RBA exchange-rates overview page; I did not open that page directly, so it should be verified against the RBA F11 table.",
+  "comparable_city_reasoning": "Benchmarked against other large Western European tourist cities with similar restaurant and bar pricing, such as Madrid and Lisbon, with accommodation adjusted upward for Barcelona's strong July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.40,
+    "coffee": 3.30,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 98.50,
+    "cocktail": 13.90,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 48.70,
+    "hostel_private_2p": 139.00,
+    "hotel_1star_2p": 127.50,
+    "hotel_3star_2p": 220.00
+  }
+}

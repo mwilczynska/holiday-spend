@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Kenyan coastal tourist pricing; no live listings or booking pages were checked. Restaurant anchors are more reliable than accommodation, which varies widely by season and location. Cocktail and wine_glass were set from the local beer relationship (about 2.2 to 2.4 times beer) because direct knowledge is weaker. The FX observation comes from a web search summary of the RBA's rba.gov.au exchange-rate pages; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Based on coastal East African tourist pricing (Dar es Salaam and Zanzibar) and Nairobi restaurant pricing, adjusted for Mombasa's beach-resort and budget-hostel market.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 75.00
+  }
+}

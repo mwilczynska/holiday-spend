@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Glasgow price levels, not from live listings or menus. Restaurant and drink anchors (beer, coffee, meals, wine) are moderately reliable. Cocktail and wine are less certain and were set relative to the beer anchor, since direct knowledge of Glasgow bar prices is weak. Hostel and hotel anchors are the least certain because summer demand and room rates vary widely. FX: the 0.6955 USD_PER_AUD observation for 15 October 2026 at 4.00 pm came from search-result text attributed to the RBA exchange rates pages. I did not open the RBA F11.1 table directly, and an earlier search returned a different, older RBA snapshot (March 2026), so the server should verify the observation against the official table.",
+  "comparable_city_reasoning": "Scotland's largest city, priced somewhat below Edinburgh and broadly in line with Manchester and Liverpool for restaurants and mid-range hotels. Hostel and budget hotel anchors reflect the UK urban budget segment in peak summer season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.60,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 14.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 185.00
+  }
+}

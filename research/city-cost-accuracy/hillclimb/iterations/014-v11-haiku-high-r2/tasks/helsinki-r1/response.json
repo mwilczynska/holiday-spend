@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for July 2026; no live listings or booking pages were checked. Restaurant and beer anchors are more reliable than hotel and hostel rates, which vary widely by season and location. Cocktail and wine were set relative to the beer anchor because direct knowledge is weaker. The FX figure came from a search summary of the RBA overview page, which I could not open directly. A second search returned a cached RBA snapshot from March 2026, so the RBA page should be checked before relying on this rate.",
+  "comparable_city_reasoning": "Nordic capital pricing, benchmarked to Stockholm, Copenhagen and Oslo at the lower end of their ranges, with Tallinn as a lower-cost reference. Helsinki is generally cheaper than Oslo and Copenhagen for food and drink but still high by European standards.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.20,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 18.50,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 240.00
+  }
+}

@@ -105,7 +105,7 @@ for d in research/city-cost-accuracy/hillclimb/iterations/*/tasks/*/; do [ -f "$
 Only if browser automation works in this session. In a booking.com tab, run the contents of
 `scripts/city-cost-accuracy/hillclimb/browser/booking-collect.js` with the javascript tool, then:
 
-1. Main run, 217 remaining cities: set `CITIES` to the array in `panel/booking-todo-main.json` and run
+1. Main run, remaining cities: set `CITIES` to the array in `panel/booking-todo-main.json` and run
    `window.__bkCollect(CITIES, 'main')`. Check progress with `({ n: window.__bkOut.length, done: window.__bkDone })`.
 2. When done (or before stopping), export: `JSON.stringify(window.__bkOut) + ' '.repeat(200000)`. The tool saves an
    oversized result to a file; convert it with

@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied context, not live listings. Restaurant meal anchors are moderately certain. Alcohol prices vary widely by venue, so beer, cocktail and wine are less certain, and cocktail and wine are set relative to the beer anchor because direct knowledge is weak. Hotel and hostel rates are seasonal and less certain. FX: the 0.7002 figure came from an rba.gov.au homepage search snippet dated 2026-10-14, and I did not open the RBA statistics table. A later 15 Oct figure (about 0.6955) appeared in secondary sources but was not verified on rba.gov.au.",
+  "comparable_city_reasoning": "Based on other mid-sized North African tourist cities such as Tunis and Fez, adjusted upward for Marrakech's tourist-facing pricing in the Medina and Gueliz districts. No specific current listings or prices were checked.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 9.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 105.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Nafplio's summer tourist pricing, not checked against live listings or menus. Restaurant anchors are moderately confident; accommodation and drinks are less certain and depend on season and location. FX: I could not retrieve a verifiable official RBA observation. Two searches returned only third-party figures and RBA page titles without a readable rate, so the fx fields are null rather than filled with unverified values. The fx block must be populated from an rba.gov.au table before use.",
+  "comparable_city_reasoning": "Based on mid-sized Greek mainland and coastal tourist towns in peak season, such as Kalamata and Rethymno, adjusted for Nafplio's strong seasonal demand. Price points assume euro-based pricing converted at an approximate EUR/USD of 1.15.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 12.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 150.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Bratislava and Slovak/euro-area price levels; no live listings or booking pages were checked. Restaurant and beer anchors are more reliable than hostel and hotel anchors, which vary more by season and property. Cocktail and wine_glass are direct estimates rather than beer-derived. FX provenance is weaker than the anchors: the 0.6955 observation for 2026-10-15 came from a search summary attributed to the RBA, but I could not confirm the value on the rba.gov.au page itself. Another search returned an RBA cached table dated only to March 2026, and a standard search returned a cached RBA table to 31 December 2025, so the date and value should be checked against the official RBA daily table before use.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Central European capitals with similar tourism demand and euro-area pricing, such as Ljubljana, Budapest, and Prague, with Bratislava priced somewhat below Vienna, which is about an hour away by road.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 110.00
+  }
+}

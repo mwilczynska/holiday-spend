@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not from live listings or menus. Figures reflect typical July peak-season Kyoto levels, so accommodation is the most seasonal and uncertain. Cocktail and wine were set relative to the beer anchor because direct knowledge is weaker. FX: the 0.6955 value came from search summaries attributed to the RBA exchange rates page; the RBA daily table was not opened directly, and other snippets gave conflicting October figures, so verify before use.",
+  "comparable_city_reasoning": "Compared with other major Japanese visitor cities such as Osaka, Nara and Hiroshima, adjusted upward for Kyoto's higher summer accommodation premium.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 200.00
+  }
+}

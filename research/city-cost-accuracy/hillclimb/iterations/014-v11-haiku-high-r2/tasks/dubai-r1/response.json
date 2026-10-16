@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant anchors are more reliable than accommodation. Hotel and hostel rates are seasonal, and July is low season in Dubai, so these figures assume off-peak demand. Hostel supply is thin, so the dorm and private hostel anchors are less certain. Alcohol prices are high and vary widely by venue type. FX: the 0.6955 value came from search-result excerpts of rba.gov.au pages dated 15 Oct 2026; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "Based on Gulf hub cities such as Abu Dhabi and Doha, adjusted for Dubai's higher hotel and alcohol pricing and July off-peak demand. Cocktail (about 1.5x beer) and wine glass (about 1.3x beer) were cross-checked against the beer anchor, since direct knowledge of bar pricing is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 13.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 20.00,
+    "wine_glass": 17.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 140.00
+  }
+}

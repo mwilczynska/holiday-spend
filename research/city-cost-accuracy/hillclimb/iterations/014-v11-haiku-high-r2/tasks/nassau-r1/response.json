@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 with no live listings checked. Restaurant anchors are moderately confident. Cocktail and wine are derived from the beer anchor (cocktail about 2x beer, wine about 1.85x beer) because direct knowledge is weak. Hostel anchors are the least certain, since Nassau has few registered hostels. The FX observation comes from search snippets attributed to rba.gov.au; the RBA page itself was not opened, and third-party figures for 9-14 October conflict, so verify before use.",
+  "comparable_city_reasoning": "Benchmarked to Caribbean resort capitals with tourist-facing, import-heavy pricing. The Bahamian dollar is pegged 1:1 to USD, so USD-based tourist prices are used directly. No single comparable city is named.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 13.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 260.00
+  }
+}

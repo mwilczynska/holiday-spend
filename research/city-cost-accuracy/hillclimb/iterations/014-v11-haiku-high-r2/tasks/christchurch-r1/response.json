@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of New Zealand price levels and a USD conversion at the RBA rate; no live listings or booking pages were inspected. Restaurant and beer anchors are moderately confident. Cocktail and wine_glass were set from the local beer relationship, since direct knowledge is weaker. Accommodation is less certain: July is low season for city tourism, though ski-season demand can lift rates in some years. Ranges are roughly plus or minus 15 to 20 percent.",
+  "comparable_city_reasoning": "Anchored to general New Zealand urban price levels, benchmarked against other mid-sized New Zealand cities (such as Wellington and Dunedin) and adjusted to Christchurch's mid-range position. No specific external comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 3.60,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 12.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 140.00
+  }
+}

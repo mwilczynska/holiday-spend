@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Kunming and comparable inland Chinese cities, not live listings. Restaurant and beer anchors are moderately confident; hotel and hostel anchors are less certain and seasonal (July is peak Yunnan tourism). Cocktail and wine_glass rely on the local beer relationship because direct price knowledge is weak. FX: the 0.7002 figure comes from an RBA homepage snapshot surfaced by search, with the currency labels in that snapshot jumbled. It was not confirmed against the F11.1 table, so verify it before relying on it.",
+  "comparable_city_reasoning": "Benchmarked against second-tier inland Chinese tourist cities such as Chengdu and Guiyang, adjusted down slightly for Kunming's lower restaurant and hotel price levels relative to Chengdu and up slightly for its summer tourism demand as a gateway to Dali and Lijiang. Conversion assumes roughly CNY 7 per USD.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.70,
+    "coffee": 3.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 9.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 27.00,
+    "hotel_3star_2p": 70.00
+  }
+}

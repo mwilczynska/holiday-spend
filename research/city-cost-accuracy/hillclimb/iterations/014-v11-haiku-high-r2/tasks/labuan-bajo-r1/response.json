@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and beer anchors are moderately certain. Accommodation is less certain because Labuan Bajo rates swing widely with July peak-season demand and property type. Cocktail and wine anchors are bounded using the local price relationship to beer, since direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "Benchmarked against Indonesian tourist hubs such as Ubud and Canggu in Bali, and other island resort towns that serve as gateways to national parks. Prices are adjusted upward for July 2026 peak dry-season and school-holiday demand. Cocktail and wine were set relative to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 6.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 80.00
+  }
+}

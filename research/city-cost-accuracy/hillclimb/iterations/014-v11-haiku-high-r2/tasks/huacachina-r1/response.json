@@ -1,0 +1,25 @@
+{
+"region": "Latin America",
+"confidence": "medium",
+"confidence_notes": "Holistic model estimate from general knowledge of Peruvian backpacker-town pricing, not from live listings or inspected booking pages. Restaurant and dorm anchors are moderately reliable. Private hostel and 3-star hotel anchors are less certain because Huacachina accommodation varies widely by property and season. Cocktail and wine are not based on direct price knowledge: cocktail is set at roughly twice the beer anchor and wine is set near the cocktail level, per the local beer-relationship rule. The FX observation comes from a search-result summary attributed to the RBA exchange rates overview page; the page itself was not read directly. July is treated as high season.",
+"comparable_city_reasoning": "Based on Peru's dune and oasis backpacker circuit, using Ica-region and Paracas/Nazca-style tourist pricing with a premium for tourist-facing bars, hostels and hotels in Huacachina.",
+"fx": {
+"as_of_date": "2026-10-15",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+"source_rate": 0.6955,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 3.00,
+"coffee": 2.75,
+"inexp_meal_1p": 4.00,
+"midrange_meal_2p": 35.00,
+"cocktail": 6.00,
+"wine_glass": 6.50,
+"hostel_dorm_1p": 9.00,
+"hostel_private_2p": 28.00,
+"hotel_1star_2p": 22.00,
+"hotel_3star_2p": 75.00
+}
+}

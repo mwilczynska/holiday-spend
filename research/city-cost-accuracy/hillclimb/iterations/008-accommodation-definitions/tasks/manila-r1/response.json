@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were inspected. Restaurant and coffee anchors are firmer; accommodation ranges are wider, and July is rainy season, so no deep off-season discount was applied. Cocktail and wine are set at about 3.2-3.3x the beer anchor because direct price knowledge for them is weaker. Accommodation assumes VAT and typical service charges are included. The FX figure (0.6955, 15 Oct 2026) comes from a search-result summary attributed to the RBA exchange-rates page; a second search could not reconfirm it, so verify against the RBA daily table before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: Southeast Asian large-city price levels (e.g., Bangkok, Kuala Lumpur, Ho Chi Minh City), with local food priced low and imported alcohol priced high due to import duties; accommodation reflects visitor districts such as Malate/Ermita, Makati and Pasay.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.90,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.25,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 90.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Madrid price levels. No live menus, booking pages, or listings were checked, and the city anchors were not web-sourced; web search was used only for the FX observation. Restaurant and beer anchors are the most reliable. Cocktail and wine_glass are less certain and were checked against the beer anchor because direct knowledge of those prices is weaker. Accommodation anchors are tax-inclusive estimates for July, a busy tourist month not treated as off-season. Nightly rates vary widely by district, booking lead time, and any local tourist-tax treatment, so the hostel and hotel anchors carry wider uncertainty.",
+  "comparable_city_reasoning": "No single comparable city was used. Restaurant and bar levels reflect general knowledge of Madrid, with Barcelona and Lisbon as informal reference points for large Southern European capitals. Accommodation reflects July demand in central districts such as Sol, Centro, Lavapiés, and the Atocha area.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.10,
+    "coffee": 3.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 14.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 195.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Dutch and Delft pricing, not live listings or booking pages. Restaurant and drink anchors are more reliable than accommodation, which is seasonal and varies widely. Anchors assume July 2026 peak-season demand and an approximate EUR-to-USD conversion of about 1.16. Cocktail and wine anchors are set by reference to the beer anchor, since direct price knowledge for those is weaker.",
+  "comparable_city_reasoning": "Based on comparable Dutch university and historic cities such as Leiden, Haarlem and Utrecht, adjusted for Delft's proximity to Rotterdam and The Hague and its strong summer tourist demand. Hotel and hostel anchors are set somewhat below Amsterdam levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 4.40,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 16.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 220.00
+  }
+}
