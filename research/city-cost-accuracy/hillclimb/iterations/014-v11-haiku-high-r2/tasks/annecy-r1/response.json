@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for July 2026 peak season; no live listings or booking pages were inspected. Restaurant anchors are more reliable than accommodation, which is seasonal and volatile. Cocktail and wine_glass were set from beer using typical French lake-town ratios (cocktail about 2.6x beer, wine glass about 1.3x beer). FX: the 2026-10-15 value of 0.6955 came from an rba.gov.au Exchange Rates Overview search snippet and was not verified against the F11 table. Other search snippets showed a different RBA-attributed value (0.7002 for 2026-10-14), so the FX observation should be checked before use.",
+  "comparable_city_reasoning": "Regional basis: mid-sized French Alpine and lake tourist towns with Geneva-adjacent price levels in peak summer, such as Chambery and Aix-les-Bains, adjusted upward for July demand around Lake Annecy. Drink prices were derived from the beer anchor as described in confidence_notes.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.20,
+    "coffee": 4.80,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 16.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 220.00
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 47251,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 47620,
+          "outputTokens": 7360,
+          "cacheReadInputTokens": 11755,
+          "cacheCreationInputTokens": 4059,
+          "webSearchRequests": 3,
+          "costUSD": 0.03937135,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 5246,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.03937135,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD latest observation rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates table United States dollar October 2026 F11 daily rates",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true
+    }
+  ]
+}

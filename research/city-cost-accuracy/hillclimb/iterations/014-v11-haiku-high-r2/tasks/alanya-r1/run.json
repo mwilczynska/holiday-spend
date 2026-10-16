@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 53045,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 14093,
+          "outputTokens": 4542,
+          "cacheReadInputTokens": 4388,
+          "cacheCreationInputTokens": 3949,
+          "webSearchRequests": 1,
+          "costUSD": 0.01451398,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3075,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.01451398,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates AUD USD latest daily rate",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true
+    }
+  ]
+}

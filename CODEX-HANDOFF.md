@@ -40,6 +40,7 @@ node scripts/city-cost-accuracy/hillclimb/queue.mjs --status
 | `009-search-grounded` | Search-grounded candidate, R1 dev, repeat 1 only (expensive) | Claude CLI (Job B) |
 | `011-v11-haiku-baseline-r2` | Same prompts, Haiku effort max; paused (expensive), lowest priority | Claude CLI (Job B, last) |
 | `012`, `013` | Effort test and its comparator: complete | none |
+| `015-spec-definitions-r2`, `016-accommodation-definitions-r2` | Round-2 screening candidates on R2, Haiku high, 1 run | Claude CLI (Job B) |
 | `010-comparable-context-5` | Withdrawn. Never dispatch | none |
 
 ## Job A — answer Luna tasks (Codex quota; main job)
@@ -85,6 +86,8 @@ Stop when Claude usage runs out (workers then exit within seconds; that is expec
 
 ```bash
 node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 014-v11-haiku-high-r2 --concurrency 16
+node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 015-spec-definitions-r2 --concurrency 12
+node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 016-accommodation-definitions-r2 --concurrency 12
 node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 008-accommodation-definitions --concurrency 8
 node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 009-search-grounded --max-repeat 1 --concurrency 6
 node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 011-v11-haiku-baseline-r2 --max-repeat 1 --max-tasks 100 --concurrency 12
@@ -135,6 +138,13 @@ node $H/iterate.mjs ingest 008-accommodation-definitions && node $H/iterate.mjs 
 node $H/make-calibrated.mjs 008-accommodation-definitions --parent 001-v11-haiku-baseline-cal-region --group region
 node $H/iterate.mjs ingest 008-accommodation-definitions-cal-region && node $H/iterate.mjs assess 008-accommodation-definitions-cal-region
 # same three lines with 009-search-grounded
+# 015 and 016 (R2 screening candidates): raw and calibrated against the R2 screening baseline 014
+node $H/iterate.mjs ingest 014-v11-haiku-high-r2
+node $H/make-calibrated.mjs 014-v11-haiku-high-r2 --group region && node $H/iterate.mjs ingest 014-v11-haiku-high-r2-cal-region
+node $H/iterate.mjs ingest 015-spec-definitions-r2 && node $H/iterate.mjs assess 015-spec-definitions-r2
+node $H/make-calibrated.mjs 015-spec-definitions-r2 --parent 014-v11-haiku-high-r2-cal-region --group region
+node $H/iterate.mjs ingest 015-spec-definitions-r2-cal-region && node $H/iterate.mjs assess 015-spec-definitions-r2-cal-region
+# same three lines with 016-accommodation-definitions-r2
 # 014, 011 and 101: ingest only (scores without verdicts)
 node $H/iterate.mjs ingest 014-v11-haiku-high-r2
 node $H/iterate.mjs ingest 011-v11-haiku-baseline-r2

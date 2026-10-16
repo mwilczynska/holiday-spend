@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, booking pages, or listings. Restaurant anchors are moderately uncertain (about ±30%). Accommodation anchors are less certain and July is peak safari season, so hotel and hostel rates may run high. Beer, cocktail and wine rely partly on the beer-relative basis because direct knowledge of bar prices is weak. The RBA FX observation could not be verified: the search returned only an older RBA snapshot, unlabelled homepage figures, and third-party aggregators, so the fx fields are null rather than guessed.",
+  "comparable_city_reasoning": "Based on East African safari-gateway towns with Tanzanian local price levels and tourist-facing pricing, roughly comparable to Moshi and similar northern Tanzanian tourism hubs. Wine and cocktail estimates use the local beer relationship as a fallback basis.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 90.00
+  }
+}

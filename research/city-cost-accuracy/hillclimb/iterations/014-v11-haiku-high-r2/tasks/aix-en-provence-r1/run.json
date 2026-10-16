@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 73131,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 49028,
+          "outputTokens": 7442,
+          "cacheReadInputTokens": 9581,
+          "cacheCreationInputTokens": 5914,
+          "webSearchRequests": 3,
+          "costUSD": 0.03990241,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 5105,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.03990241,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au statistics tables exchange rates F11 daily US dollar AUD 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true
+    }
+  ]
+}

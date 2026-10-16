@@ -1,0 +1,29 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Japanese regional price levels, not checked against live menus, booking pages, or current listings. Restaurant and cafe anchors are moderately reliable. Accommodation is less certain because business-hotel and hostel rates vary by season and event dates. Drink anchors are set from general Japanese price levels rather than a beer-based ratio. FX: the 2026-10-09 figure (0.6979) came from a third-party converter that says it reads the RBA feed. I did not open the rba.gov.au page directly, so the source_url below is the official RBA page for reference and should be checked against the F11.1 table. The RBA observation for 2026-10-15 was not available in the sources I could reach.",
+  "comparable_city_reasoning": "Treated as a mid-sized regional Japanese prefectural capital, priced near comparable northern Honshu cities such as Morioka, Akita, and Hirosaki, and below Tokyo and Osaka. USD values assume roughly 150 JPY per USD.",
+  "fx": {
+    "as_of_date": "2026-10-09",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6979,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 6.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 23.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 115.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates page](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [RBA Daily Exchange Rates, 1 AUD = 0.6979 USD (third-party, citing RBA feed)](https://ozfinancehub.com.au/exchange-rates)

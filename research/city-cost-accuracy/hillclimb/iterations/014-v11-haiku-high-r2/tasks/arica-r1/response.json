@@ -1,0 +1,30 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Chilean pricing, not live listings. Restaurant anchors (beer, coffee, meals, wine) are the most reliable. Accommodation and cocktail prices are less certain because Arica is a smaller northern city with a limited hostel and hotel market. July 2026 is off-peak for Arica's coastal climate, so prices are set near typical year-round levels. The FX observation came from search-result summaries that were not verified by opening the RBA page, and those summaries conflict on the most recent figures (about 0.6955 to 0.7002 USD per AUD in mid-October 2026).",
+  "comparable_city_reasoning": "Based on general knowledge of northern Chilean coastal cities such as Iquique and Antofagasta, scaled down slightly for Arica's smaller size and tourism base, with Santiago used only as an upper reference for mid-range and 3-star levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 6.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 90.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)
+- [RBA Exchange Rates Today (ozfinancehub)](https://ozfinancehub.com.au/exchange-rates)

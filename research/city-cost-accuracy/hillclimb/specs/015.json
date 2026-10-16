@@ -1,0 +1,33 @@
+{
+  "id": "015-spec-definitions-r2",
+  "parent": "014-v11-haiku-high-r2",
+  "family": "specification",
+  "hypothesis": "Round 2 re-test of 002 (explicit food/drink definitions) on panel R2, screening lane (Haiku high, 1 run, 333 dev cities). 002 was a near-miss on 54 cities.",
+  "baseTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "repeats": 1,
+  "replacements": [
+    [
+      "| `beer` | domestic draft beer, one standard serving in a restaurant | USD per serving |",
+      "| `beer` | domestic draught beer, 0.5 litre, at an ordinary restaurant or pub (not a hotel bar) | USD per 0.5 L |"
+    ],
+    [
+      "| `coffee` | regular cappuccino | USD per cup |",
+      "| `coffee` | regular-size cappuccino at an ordinary local café (not a hotel) | USD per cup |"
+    ],
+    [
+      "| `inexp_meal_1p` | meal at an inexpensive restaurant | USD per person |",
+      "| `inexp_meal_1p` | one meal at an inexpensive sit-down restaurant where locals eat (not street food, not fast food) | USD per person |"
+    ],
+    [
+      "| `midrange_meal_2p` | three-course mid-range restaurant meal, two people, no drinks | USD per meal |",
+      "| `midrange_meal_2p` | total bill for two people at a mid-range restaurant, three courses each, no drinks, including tax and any service charge on the bill | USD per meal |"
+    ],
+    [
+      "Use the definitions consistently.",
+      "Use the definitions consistently. For every anchor, give the typical price a visitor pays at ordinary venues in the city on the reference date: not the cheapest option, not tourist-trap or luxury venues."
+    ]
+  ],
+  "cliModel": "claude-haiku-5-5",
+  "effort": "high",
+  "lane": "claude-haiku-5-5/high (claude -p, app system prompt, WebSearch only)"
+}

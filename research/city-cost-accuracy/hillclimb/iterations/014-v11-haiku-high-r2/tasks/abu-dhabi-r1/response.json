@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of UAE pricing; no live booking pages or current listings were inspected. Restaurant and coffee anchors are more reliable than accommodation, and July is a low hotel season in Abu Dhabi, which may pull rates down. Alcohol is only sold in licensed venues and hotel bars run high, so beer, cocktail and wine are less certain. Cocktail (about 1.45x beer) and wine (about 1.35x beer) were set from the local beer relationship because direct knowledge is weak. The FX observation comes from a search-result summary that could not be confirmed on the RBA F11.1 table itself, though a same-day third-party quote (about 0.6953) is consistent with it.",
+  "comparable_city_reasoning": "Based on the Gulf mid-market basis of Dubai, with Doha as a secondary reference for restaurant and hotel levels. Abu Dhabi is treated as similar to Dubai's mid-market for meals and hotels, with alcohol priced high relative to food.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 16.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 100.00
+  }
+}

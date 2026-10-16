@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Lisbon price levels; no menus, listings, or booking pages were inspected. Restaurant and cafe anchors are moderately confident. Cocktail and wine were cross-checked against the beer anchor (cocktail about 3.5x beer, wine about 1.4x beer) because direct knowledge of those prices is weaker. Accommodation is least certain given July peak-season volatility; taxes and fees, including VAT and the municipal tourist tax, are assumed included, and private hostel and 1-2 star rates overlap. The FX figure came from search-result text for the RBA exchange-rates page; that page was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked to Portuguese price norms, with Porto as a Portuguese comparator (typically somewhat cheaper for accommodation) and other Southern European tourist cities such as Madrid and Seville for restaurant and bar tiers. Accommodation reflects central Lisbon neighborhoods (Baixa, Chiado, Alfama, Bairro Alto) at peak July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.70,
+    "coffee": 3.00,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 13.00,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 205.00
+  }
+}

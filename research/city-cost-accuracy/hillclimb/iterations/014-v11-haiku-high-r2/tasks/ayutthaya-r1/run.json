@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 47267,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 59882,
+          "outputTokens": 6831,
+          "cacheReadInputTokens": 12555,
+          "cacheCreationInputTokens": 4941,
+          "webSearchRequests": 4,
+          "costUSD": 0.050517450000000005,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4455,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.050517450000000005,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest F11 historical rates",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates Australian dollar US dollar October 2026 latest observation",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true
+    }
+  ]
+}

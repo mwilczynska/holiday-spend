@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or menus. Restaurant anchors are moderate confidence. Cocktail and wine were estimated relative to the beer anchor, since direct knowledge of Alicante bar prices is weak. Hostel and hotel anchors are least certain because July is peak season and beach-area rates vary widely. The FX rate comes from search snippets attributed to the RBA exchange rates page; the official table itself was not opened.",
+  "comparable_city_reasoning": "Benchmarked against Valencia and Malaga and other mid-sized Spanish Mediterranean resort cities. Accommodation is set slightly below Valencia because Alicante's summer hotel and hostel rates are generally lower. Beer, coffee and menu prices follow typical Spanish bar and restaurant pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.40,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 11.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 72.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 150.00
+  }
+}

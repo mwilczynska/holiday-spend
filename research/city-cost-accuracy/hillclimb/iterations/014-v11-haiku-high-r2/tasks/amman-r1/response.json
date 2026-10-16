@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and regional context, not checked against live listings. Restaurant and coffee anchors are moderately confident. Alcohol prices are less certain because licensing limits where alcohol is sold, and the cocktail and wine anchors are inferred from the beer anchor. Accommodation rates vary by season and neighbourhood, so the hostel and hotel anchors are wider ranges.",
+  "comparable_city_reasoning": "Regional basis: mid-priced Levantine and Eastern Mediterranean capitals with similar tourism demand. Cocktail and wine_glass anchors use the local price relationship to beer because direct knowledge of bar prices is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 80.00
+  }
+}
