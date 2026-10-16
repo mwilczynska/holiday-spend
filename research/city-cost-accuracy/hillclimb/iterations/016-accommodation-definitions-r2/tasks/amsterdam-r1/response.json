@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus or booking pages. Restaurant and drink anchors are more reliable than accommodation, which is more sensitive to July demand and the city's tourist tax. Beer, cocktail and wine were set from Amsterdam's usual relative pricing rather than direct recall. The FX observation (0.6955 on 2026-10-15) came from a search summary attributed to the RBA exchange rates page. I could not open that page to confirm it, and an earlier search returned a different, older-looking rate, so verify it on rba.gov.au before relying on it.",
+  "comparable_city_reasoning": "Priced as a high-cost Northern European capital with strong summer tourist demand. Restaurant and drink levels are benchmarked loosely against Copenhagen, Brussels and Dublin. Accommodation levels reflect Amsterdam's July hotel rates and included tourist tax, and are benchmarked against comparable Western European capitals.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 17.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 145.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 280.00
+  }
+}

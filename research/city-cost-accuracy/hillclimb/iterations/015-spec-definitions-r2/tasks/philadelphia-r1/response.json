@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Philadelphia price levels; no live booking pages or current listings were inspected. Restaurant and café anchors are moderately confident. Hotel and hostel anchors are less certain because July demand, conventions and events can move room rates widely. Accommodation figures are treated as typical pre-tax room rates. Cocktail and wine anchors are based on direct knowledge of typical Philadelphia bar pricing, cross-checked against the beer anchor.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized US Northeast cities with similar tourism demand and restaurant pricing, such as Baltimore and Boston, with Philadelphia set somewhat below New York and Boston for dining and lodging. Meal anchors include Philadelphia's sales tax on prepared food. Tips are not included in the bill-based anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 4.75,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 240.00
+  }
+}

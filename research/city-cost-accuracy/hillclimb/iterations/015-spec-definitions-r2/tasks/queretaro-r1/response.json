@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live menus, hotel listings or booking pages. Restaurant and beer anchors are more reliable than hotel and hostel anchors, and cocktail and wine are the least certain. FX came from a search-result snippet of the rba.gov.au homepage dated 15 October 2026. I could not confirm the value against the F11.1 table, and a third-party site showed 0.6947 for a nearby date.",
+  "comparable_city_reasoning": "Treated as a mid-sized, relatively affluent Mexican city with a moderate tourist draw and a business and industrial base. Prices are benchmarked against other mid-sized Mexican cities such as Puebla and Guanajuato, with some uplift for Querétaro's higher incomes and newer hotel stock. Drinks are priced relative to local beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.30,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 62.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

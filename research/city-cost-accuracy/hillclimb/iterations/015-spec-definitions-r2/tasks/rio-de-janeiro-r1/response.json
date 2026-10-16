@@ -1,0 +1,19 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Rio de Janeiro pricing, not live price checks. Restaurant, beer, and coffee anchors are moderate confidence. Hotel and hostel rates are lower confidence because they vary widely by neighbourhood and by July school-holiday demand. Cocktail and wine are estimated from the local beer relationship because direct knowledge is weaker. FX: no official rba.gov.au observation could be retrieved and verified in this session, so fx is null. A third-party site showed 0.6947 USD per AUD dated 2026-10-16, but it is not an RBA source and was not used.",
+  "comparable_city_reasoning": "Based on typical ordinary-venue pricing in Rio's mid-range visitor districts (Copacabana, Ipanema, Botafogo, Centro), cross-checked against other large Brazilian and Latin American tourist cities such as São Paulo. No specific comparable city was used for direct pricing.",
+  "fx": null,
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 1.80,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 6.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 80.00
+  }
+}

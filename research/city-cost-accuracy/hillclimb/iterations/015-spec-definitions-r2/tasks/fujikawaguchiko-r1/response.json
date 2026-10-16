@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 (peak summer and Mt Fuji season), not based on inspected booking pages or current listings. Restaurant and café anchors (beer, coffee, inexpensive and mid-range meals) are the more reliable, since Japanese menu pricing is fairly stable. Accommodation anchors are low confidence because Fuji-view and peak-season premiums vary widely by date and property. Cocktail and wine_glass are not based on direct knowledge: both are set at about 1.4 times the beer anchor, the usual local relationship for bar drinks versus draught beer. The FX observation is the RBA figure dated 2026-10-15; a 2026-10-16 figure reported by a third-party site was not used because it could not be confirmed against the RBA.",
+  "comparable_city_reasoning": "Benchmarked to Japanese mid-sized tourist resort towns in Yamanashi and the Fuji Five Lakes area, with Hakone and similar Kanto-region sightseeing towns as the closest reference points. Prices reflect typical ordinary venues in peak summer. Accommodation includes a seasonal uplift for Fuji views and July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 190.00
+  }
+}

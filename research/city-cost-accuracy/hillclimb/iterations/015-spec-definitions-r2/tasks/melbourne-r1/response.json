@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Melbourne prices, not checked against live menus or booking pages. Restaurant, café and drink anchors are more reliable than accommodation, which is more seasonal and varies more by area. July is winter, so accommodation is assumed at typical low-to-mid season rates. The 2026-10-16 FX value (0.6947) came from search-result snippets. I did not open the RBA page, and the only corroboration was a third-party site, so verify it against the RBA F11.1 series before relying on it.",
+  "comparable_city_reasoning": "Restaurant, café and bar anchors are based on Sydney and Brisbane pricing, adjusted to Melbourne's café and laneway dining scene. Accommodation anchors are based on Melbourne CBD hostel and hotel rates in winter.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.25,
+    "coffee": 3.60,
+    "inexp_meal_1p": 17.50,
+    "midrange_meal_2p": 139.00,
+    "cocktail": 15.25,
+    "wine_glass": 9.40,
+    "hostel_dorm_1p": 34.50,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 173.00
+  }
+}

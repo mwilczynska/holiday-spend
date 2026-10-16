@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings or menus. Restaurant and café anchors are moderately reliable; accommodation (hostel, hotel) and cocktail prices are less certain because July rates vary widely by season, venue, and booking lead time. FX: the 2026-10-15 observation comes from a search-result summary of the RBA overview page, not a direct page read, so verify against the RBA F11.1 table before relying on it.",
+  "comparable_city_reasoning": "Basis is Spain's mid-sized Canary Islands and Atlantic coastal cities, principally Las Palmas de Gran Canaria, with Spanish mainland provincial capitals as secondary reference. Santa Cruz is a working capital with less resort pricing than the south of Tenerife, so anchors sit between local-city and resort-town levels. Drinks anchors follow the typical Spanish relationship of beer to wine and cocktail prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 11.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 68.00,
+    "hotel_3star_2p": 125.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Zadar and comparable Croatian coastal cities, not from live listings or checked prices. July is peak season, so restaurant and accommodation prices are set for summer demand. Restaurant anchors (beer, coffee, meals, wine) are more reliable than accommodation, and the cocktail anchor is least certain. Euro prices were converted to USD at roughly 1 EUR = 1.15 USD from general knowledge, not from a fetched rate. The FX observation came from search results that cite the RBA exchange-rates overview page; I did not open that page to confirm the figure, so it should be checked against rba.gov.au.",
+  "comparable_city_reasoning": "Benchmarked against Split and other mid-sized Dalmatian coastal cities in Croatia, adjusted for Zadar's somewhat lower prices and its heavy summer tourism. Euro-area pricing applies, as Croatia has used the euro since 2023.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.60,
+    "coffee": 3.20,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 80.50,
+    "cocktail": 12.00,
+    "wine_glass": 5.20,
+    "hostel_dorm_1p": 34.50,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 109.00,
+    "hotel_3star_2p": 161.00
+  }
+}

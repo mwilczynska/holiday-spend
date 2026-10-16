@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for Dambulla, a small Central Province town that serves the Sigiriya and Dambulla Cave Temple tourist circuit. Restaurant anchors are moderately reliable. Accommodation is less certain because hotel prices vary widely with resort-versus-guesthouse positioning and Sri Lankan tax and service charges. Cocktail and wine_glass are derived from a beer-relative basis (roughly 2.3x and 3.2x the beer anchor) because direct local knowledge of bar prices is weak. The FX observation comes from a search summary citing rba.gov.au; the RBA page itself was not opened and read directly, so verify before relying on it.",
+  "comparable_city_reasoning": "Benchmarked against other Sri Lankan inland tourist towns on the Cultural Triangle circuit (Sigiriya, Habarana, Kandy outskirts), adjusted for a smaller local market with fewer hostels and a higher share of mid-range guesthouses. Restaurant pricing follows typical tourist-oriented eateries in the region rather than major-city pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 5.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 75.00
+  }
+}

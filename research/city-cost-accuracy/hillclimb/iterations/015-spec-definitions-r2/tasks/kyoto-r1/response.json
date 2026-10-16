@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings or booking pages. Restaurant and drink anchors are medium confidence. Accommodation anchors are lower confidence because July is peak season in Kyoto and rates vary widely by date and neighbourhood. Yen-based estimates assume roughly 150 JPY per USD. The FX observation came from search-result summary text that cites the official RBA exchange-rates page; I could not open the RBA table directly, so verify it against RBA table F11.1 before use.",
+  "comparable_city_reasoning": "Based on general knowledge of Japan's major visitor cities, mainly Osaka and Tokyo, adjusted for Kyoto's tourist-driven accommodation demand in July, which pushes hotel and hostel prices above ordinary-season levels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 86.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 200.00
+  }
+}

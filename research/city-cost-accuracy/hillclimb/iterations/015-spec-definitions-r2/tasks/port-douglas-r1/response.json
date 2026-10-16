@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Far North Queensland tourism pricing for July (peak dry-season) and no live listings were checked. Restaurant and beer anchors are moderately confident; accommodation anchors are lower confidence because seasonal rates vary widely. The FX value was taken from a search summary of the RBA exchange-rates overview page, and the page itself was not read directly.",
+  "comparable_city_reasoning": "Based on regional Queensland tourist towns near Cairns, scaled for Port Douglas's higher peak-season accommodation and dining prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 3.60,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 118.00,
+    "cocktail": 15.00,
+    "wine_glass": 9.75,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 94.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 215.00
+  }
+}

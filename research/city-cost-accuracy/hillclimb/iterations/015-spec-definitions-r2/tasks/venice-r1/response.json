@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Venice pricing, not from inspected live listings or menus. Restaurant and café anchors are moderately confident. Hotel and hostel anchors are less certain because Venice seasonal rates vary widely in July. Euro-denominated prices were converted at an assumed EUR/USD of about 1.16. The FX observation came from a search summary attributing 0.6955 to the RBA exchange-rates overview for 15 October 2026. I did not open that page directly, and a second search did not corroborate the figure. Third-party sites show roughly 0.69 to 0.70 around that date, which is consistent with it.",
+  "comparable_city_reasoning": "Basis is Venice's own price level, benchmarked against Florence and Bologna for restaurants and cafés. Hotels and hostels are set higher than mainland Italian comparables to reflect the lagoon tourism premium and July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 1.90,
+    "inexp_meal_1p": 23.00,
+    "midrange_meal_2p": 116.00,
+    "cocktail": 14.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 151.00,
+    "hotel_1star_2p": 174.00,
+    "hotel_3star_2p": 278.00
+  }
+}

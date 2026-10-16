@@ -1,0 +1,25 @@
+{
+"region": "Oceania",
+"confidence": "medium",
+"confidence_notes": "Holistic estimates from general knowledge of Hobart and Australian pricing for July 2026. Restaurant and coffee anchors are moderately certain; accommodation and drink anchors are less certain. No live listings or booking pages were checked. July is Tasmanian winter, so accommodation reflects a cooler, lower-demand period than summer. The FX observation comes from search result snippets that cite RBA figures. I did not open the RBA page directly, so verify the value and date on rba.gov.au before use. The 16 October figure may be provisional.",
+"comparable_city_reasoning": "Based on mid-sized Australian tourism cities such as Adelaide, Canberra and Perth, adjusted for Hobart's smaller market and July winter demand. For cocktail and wine, I used the local price relationship to beer (cocktail about 2.3x and wine glass about 1.35x the draft beer price) because direct knowledge of those prices is weaker.",
+"fx": {
+"as_of_date": "2026-10-16",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+"source_rate": 0.6947,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 7.00,
+"coffee": 3.60,
+"inexp_meal_1p": 16.00,
+"midrange_meal_2p": 105.00,
+"cocktail": 16.00,
+"wine_glass": 9.50,
+"hostel_dorm_1p": 31.00,
+"hostel_private_2p": 90.00,
+"hotel_1star_2p": 100.00,
+"hotel_3star_2p": 150.00
+}
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Lyon price levels, with no live listings or booking pages inspected. Restaurant anchors (inexpensive meal, mid-range meal for two, beer, coffee, wine) are more reliable than accommodation, which varies strongly with July peak-season demand and room type. Cocktail and wine are weaker and were set using the local beer relationship, as Lyon bar and wine prices are only loosely known. The FX observation was taken from search-result summaries of the RBA exchange-rate page; the RBA statistical spreadsheet itself was not opened.",
+  "comparable_city_reasoning": "Basis is general knowledge of Lyon as a large French city with prices above the French average, especially for hotels in summer. Restaurant and café anchors were set by reference to mid-to-upper French regional cities such as Bordeaux, Nantes and Strasbourg, adjusted for Lyon's bouchon and bistro dining culture. Accommodation anchors reflect July tourism demand in Lyon.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.20,
+    "coffee": 4.30,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 14.50,
+    "wine_glass": 6.70,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 165.00
+  }
+}

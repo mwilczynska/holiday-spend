@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings, or booking pages. Restaurant and beer prices are moderately reliable for a mid-sized Mexican city. Accommodation and cocktail/wine prices are less certain, and MXN-to-USD conversion assumes a typical 2026 range.",
+  "comparable_city_reasoning": "Based on mid-sized Mexican colonial cities with similar tourism and cost levels (e.g., Querétaro, Oaxaca, Guanajuato), priced below Mexico City.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.90,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 80.00
+  }
+}

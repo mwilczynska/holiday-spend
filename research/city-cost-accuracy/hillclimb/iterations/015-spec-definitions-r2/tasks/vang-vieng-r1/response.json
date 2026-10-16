@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and beer anchors are moderately reliable for a backpacker-oriented Lao town. Accommodation is less certain because Vang Vieng's guesthouse and hotel rates vary widely by season and location, and July falls in the rainy low season, so rates may sit toward the lower end. Cocktail and wine_glass are estimated from the local beer relationship because direct knowledge is weaker. The FX observation came from search-result snippets attributed to the RBA exchange-rates page and was not confirmed by opening the RBA table directly.",
+  "comparable_city_reasoning": "No single comparable city was used. The estimates reflect Laos secondary tourist towns, with a backpacker-town premium on bars and Western-style restaurants relative to Vientiane and Luang Prabang. Cocktail and wine were set relative to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.80,
+    "coffee": 1.50,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 3.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 4.00,
+    "hostel_private_2p": 10.00,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 45.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and drink anchors are moderately certain, but UK prices shift with inflation and the pricing window is July 2026, a peak tourist month in Oxford. Accommodation anchors are the least certain, especially the 1-star and 3-star hotel rates, which depend heavily on event dates and availability. Anchors are GBP-based estimates converted at an assumed GBP/USD of about 1.33.",
+  "comparable_city_reasoning": "Benchmarked against comparable English heritage and university cities with strong summer tourism, such as Cambridge, Bath and York, adjusted for Oxford's high accommodation demand and relatively expensive central hotels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 4.80,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 15.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 155.00,
+    "hotel_3star_2p": 250.00
+  }
+}

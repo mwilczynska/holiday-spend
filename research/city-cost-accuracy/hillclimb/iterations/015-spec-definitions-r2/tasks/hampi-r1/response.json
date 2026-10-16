@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Indian backpacker-town pricing, not live listings. Coffee and restaurant anchors are medium confidence. Beer is low confidence: it assumes bottled beer, since draught is less common in Hampi, and alcohol availability and pricing vary. Cocktail and wine_glass are derived from the local beer price relationship, and wine is the weakest because it is scarce locally. The 3-star hotel is low confidence given few options and wide rate variation. The FX observation (15 October 2026, 4pm) was taken from RBA data as reported in search results and was not opened directly on the rba.gov.au page.",
+  "comparable_city_reasoning": "Regional basis: small Indian backpacker and temple towns in Karnataka with similar guesthouse, café and simple restaurant pricing. No specific comparable city was priced. Cocktail and wine_glass are set from the local beer anchor, using typical Indian on-premise markups.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 1.40,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 14.00,
+    "cocktail": 3.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 5.00,
+    "hostel_private_2p": 12.00,
+    "hotel_1star_2p": 9.00,
+    "hotel_3star_2p": 50.00
+  }
+}

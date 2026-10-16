@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Japanese prices, not checked against live menus, listings, or booking pages. Restaurant and café anchors are the most reliable. Hotel and hostel anchors are less certain and may run higher in peak summer. Yen-denominated prices are converted at an assumed exchange rate of roughly 140 to 160 JPY per USD, so currency moves could shift the USD values. Cocktail and wine anchors rest on the local price relationship to beer, since direct knowledge is weaker. FX observation taken from the RBA exchange-rates overview page (15 Oct 2026, 4pm); not confirmed against the RBA daily statistics table.",
+  "comparable_city_reasoning": "Priced as part of the Greater Tokyo metropolitan market, with Yokohama assumed slightly below central Tokyo for accommodation and dining. Based on general knowledge of Tokyo and Kanagawa price levels, not on any specific comparison source.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.80,
+    "coffee": 3.75,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 135.00
+  }
+}

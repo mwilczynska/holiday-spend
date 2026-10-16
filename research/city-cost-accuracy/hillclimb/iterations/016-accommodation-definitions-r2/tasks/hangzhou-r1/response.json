@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026, not checked against live listings. Restaurant and beer anchors are more reliable than accommodation, which varies widely by district and season. Cocktail and wine_glass are weaker: no direct recall was strong enough, so they were set from the local beer-to-bar and beer-to-restaurant price relationship. FX: 0.6955 is the RBA observation for 2026-10-15 as reported in a search summary of the RBA exchange-rates overview page. I did not open the F11.1 table itself, and I did not use a third-party 16 October figure.",
+  "comparable_city_reasoning": "Compared with other mid-to-large Chinese tourist cities with West Lake-style attractions and mainland Chinese price levels (for example Suzhou and Nanjing, and lower-priced parts of Shanghai). Accommodation is set against the districts visitors usually stay in, such as near West Lake and the central business district.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 4.00,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 10.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 68.00
+  }
+}

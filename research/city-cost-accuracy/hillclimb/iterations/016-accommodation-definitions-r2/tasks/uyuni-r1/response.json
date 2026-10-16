@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not based on inspected listings or live prices. Restaurant anchors are moderately confident for a small Bolivian tourist town. Accommodation is less certain, especially hotel_3star_2p, since Uyuni has few ordinary three-star options and July is peak dry-season tour season. Cocktail and wine are set at about 2x the beer anchor because direct knowledge of local bar and wine prices is weak.",
+  "comparable_city_reasoning": "Based on general price levels in Bolivian highland tourist towns (Potosí, Tupiza, and La Paz tourist districts), scaled down for Uyuni's remote location and tour-driven demand. Accommodation reflects in-season July rates for Salar de Uyuni visitors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 70.00
+  }
+}

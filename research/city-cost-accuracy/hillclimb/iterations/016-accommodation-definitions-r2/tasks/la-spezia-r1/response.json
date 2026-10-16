@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings or menus. Restaurant anchors are moderately certain. Cocktail and wine anchors are inferred from the local beer price, not from direct knowledge. Accommodation is least certain because La Spezia has a thin hostel supply and July is peak season for Cinque Terre spillover demand. FX: the 0.6947 figure for 2026-10-16 came from a search-result summary attributing it to the RBA exchange-rates page. I could not open that page directly, and a follow-up search did not corroborate it, so it should be verified against rba.gov.au before use.",
+  "comparable_city_reasoning": "Based on mid-sized Ligurian and northwest Italian coastal port cities such as Genoa and Livorno, adjusted upward for accommodation to reflect demand from visitors using La Spezia as a base for the Cinque Terre and Portovenere in peak July season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 3.80,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 13.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 185.00
+  }
+}

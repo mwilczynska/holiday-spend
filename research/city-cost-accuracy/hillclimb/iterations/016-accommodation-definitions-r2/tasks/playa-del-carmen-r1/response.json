@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for a well-known Riviera Maya resort town; no live listings or booking pages were checked. Beer, coffee, and meal anchors are moderately confident. Accommodation anchors are less certain, especially the 3-star and hostel figures for July peak season. Cocktail (about 2x beer) and wine (about 2.2x beer) are inferred from typical tourist-bar price ratios, not direct knowledge. Accommodation includes Mexican IVA and the Quintana Roo lodging tax. The FX observation comes from search-result summaries of RBA pages that I did not open directly.",
+  "comparable_city_reasoning": "Riviera Maya tourist-zone pricing, loosely benchmarked to Cancún and Tulum, adjusted for Playa del Carmen's mix of beach, Fifth Avenue, and budget-hostel areas during July high season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 10.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 150.00
+  }
+}

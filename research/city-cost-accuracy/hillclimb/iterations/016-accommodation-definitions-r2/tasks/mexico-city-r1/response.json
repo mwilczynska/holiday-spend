@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and coffee anchors are more certain than hotel and hostel anchors, which vary by neighborhood and season. Cocktail and wine were set from the local price relationship to beer (roughly 3x). The FX rate comes from search results that cite the RBA exchange-rate table; I did not open the RBA page directly, and one result showed the 15 October rate on the overview page.",
+  "comparable_city_reasoning": "Based on major Latin American capitals with strong tourism demand and mid-to-upper restaurant pricing, such as Bogota, Lima and Santiago, adjusted for Mexico City's central neighborhoods (Roma, Condesa, Juarez, Centro). Accommodation includes Mexican VAT and the Mexico City lodging tax.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 11.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 120.00
+  }
+}

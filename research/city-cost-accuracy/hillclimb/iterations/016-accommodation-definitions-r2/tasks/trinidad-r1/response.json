@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or menus. Restaurant anchors are medium confidence; accommodation and drinks are low, and Cuba's 2025-2026 economic disruption makes prices harder to pin down. Cocktail and wine are derived from the beer anchor. The FX value comes from an RBA homepage snippet in search results (4.00 pm, 15 October 2026), not a direct read of the RBA table. Third-party quotes for nearby dates cluster around 0.692 to 0.697.",
+  "comparable_city_reasoning": "Trinidad de Cuba (Sancti Spiritus province), not Trinidad and Tobago. Basis: Cuban colonial heritage tourist towns such as Vinales, Cienfuegos and Baracoa, where private casa particular guesthouses are the usual budget lodging and paladares are the usual mid-range dining. Cocktail and wine_glass are set from the beer anchor (cocktail roughly 1.6x beer, wine glass roughly 2x beer) because direct knowledge of local drink prices is weak. The hostel_dorm_1p anchor is a bounded proxy because registered dorm beds are scarce in Trinidad. July is a reasonably busy month for Cuban tourism, so accommodation anchors reflect high-season rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.75,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 110.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or current prices. Restaurant, café and drink anchors are moderate confidence. Hostel anchors are lower confidence because hostel supply in Willemstad is thin and dorm pricing is hard to judge. Hotel anchors are moderate and vary a lot by season and location. The FX observation (RBA, 2026-10-15) comes from a search-result snippet of the RBA exchange rates overview page. I did not open that page, and I could not confirm a 2026-10-16 figure on rba.gov.au.",
+  "comparable_city_reasoning": "Based on general pricing for mid-sized Caribbean island tourist capitals with US-dollar-friendly, tourism-oriented venues. The local currency (Netherlands Antillean guilder) is pegged to the US dollar, so USD-equivalent restaurant prices are broadly in line with other ABC-islands and eastern Caribbean capitals. No specific comparable city was priced from listings.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.5,
+    "coffee": 3.75,
+    "inexp_meal_1p": 16,
+    "midrange_meal_2p": 120,
+    "cocktail": 12,
+    "wine_glass": 9.5,
+    "hostel_dorm_1p": 38,
+    "hostel_private_2p": 85,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 190
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Prague price levels, not checked against live listings. Restaurant and beer anchors are the most reliable. Hotel and hostel anchors vary widely with July peak-season demand, so they carry more uncertainty. Cocktail and wine are estimated from the local beer relationship (cocktail about 4x beer, wine glass about 2x beer), not direct price knowledge. The FX observation was taken from search-result summaries of the RBA Exchange Rates Overview page; I did not open the RBA page or the F11.1 table directly, so the figure should be verified against the RBA source.",
+  "comparable_city_reasoning": "Based on Central European capitals with comparable tourism demand and price levels, such as Vienna, Budapest and Krakow, adjusted to Prague's local pricing for July.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 12.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 190.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)
+- [RBA Statistical Tables](https://www.rba.gov.au/statistics/tables/)

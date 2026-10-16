@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied city context, not from live booking pages or current listings. Restaurant and café anchors are moderately confident for a small, high-cost US tourist city. Bar prices (cocktail, wine) are less certain and are set from typical US mid-market levels. Hostel anchors are the least certain because Santa Fe has a limited hostel supply and dorm and private prices vary. Hotel anchors reflect a July peak-season premium, which is also uncertain. Tips are excluded from the meal anchors.",
+  "comparable_city_reasoning": "Treated as a mid-sized, tourism-driven US Mountain West city with price levels above Albuquerque and broadly comparable to other small heritage tourist towns in the region, with a summer lodging premium for July.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 275.00
+  }
+}

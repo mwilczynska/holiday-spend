@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates, not checked against live listings. Restaurant anchors are moderate-confidence; accommodation and drinks are least certain, and Turkish lira volatility makes USD levels hard to pin down for July 2026 peak season. Beer and cocktail are estimated from typical tourist-area pricing. FX value taken from a search summary attributed to the RBA exchange rates page, not read directly; the 2026-10-16 figure from a third-party site was not used.",
+  "comparable_city_reasoning": "Turkish Aegean and Mediterranean resort towns with similar July tourism demand, such as Marmaris, Bodrum, and Kaş, adjusted for Fethiye's lower restaurant and guesthouse prices. Turkey straddles Europe and Asia; Europe is used here because the tourist price basis is Mediterranean resort pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 110.00
+  }
+}

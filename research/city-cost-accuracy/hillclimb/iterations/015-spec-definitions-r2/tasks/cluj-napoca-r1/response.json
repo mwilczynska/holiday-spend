@@ -1,0 +1,28 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Cluj-Napoca and Romanian pricing, not live listings. Restaurant and beer anchors are more reliable than accommodation, since July is peak season and room rates vary widely. The FX value is the RBA 4pm mid-point for 15 October 2026, as surfaced by web search; it was not checked against the RBA table directly.",
+  "comparable_city_reasoning": "Based on other mid-sized Romanian university and tourism cities such as Iasi, Timisoara and Brasov, adjusted upward for Cluj-Napoca's higher restaurant and hotel prices and its summer tourism demand. Still priced well below Western European and Central European capitals.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.20,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)

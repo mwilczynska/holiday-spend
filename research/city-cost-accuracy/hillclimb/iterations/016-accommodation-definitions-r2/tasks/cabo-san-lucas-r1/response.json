@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live listings or booking pages were checked. Restaurant and drink anchors are moderately confident. Accommodation is less certain, and the July rates assume Cabo's low season. Hostel anchors are the least certain because Cabo has few hostels. FX: the 0.6955 figure is the RBA 4pm observation for 15 October 2026, taken from a search result that quotes the RBA exchange-rates overview page. I did not open that page directly. A later 16 October figure from a third-party site was not verified and was not used.",
+  "comparable_city_reasoning": "Benchmarked against resort-town pricing in Cancún and Puerto Vallarta, adjusted upward for Cabo San Lucas's marina and resort positioning. Accommodation reflects July low-season rates, including taxes.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.25,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 13.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 150.00
+  }
+}

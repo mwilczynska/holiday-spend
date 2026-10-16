@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were checked. Restaurant and drink anchors are moderately reliable for Barcelona. Accommodation is least certain because July is peak season and tourist-tax and fee treatment varies. FX value came from search summaries of rba.gov.au pages, not a direct page read; the 2026-10-16 figure may be provisional because RBA rates are posted after 4pm Sydney time.",
+  "comparable_city_reasoning": "Based on general knowledge of Barcelona's tourist pricing, benchmarked against other large Spanish and southern European tourist cities with similar July demand. Drink anchors are anchored to local beer prices.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 3.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 14.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 165.00,
+    "hotel_3star_2p": 265.00
+  }
+}

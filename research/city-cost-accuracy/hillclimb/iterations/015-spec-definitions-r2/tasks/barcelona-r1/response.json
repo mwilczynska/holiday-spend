@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Barcelona price levels, not from live listings or booking pages. Restaurant and beer anchors are moderately reliable. Hotel and hostel anchors are the least certain because July is peak season and rates vary widely. Anchors assume roughly 1.15 USD per EUR. Hotel rates exclude any city tourist tax unless it is already included in the quoted rate.",
+  "comparable_city_reasoning": "Benchmarked against other major Spanish and Western Mediterranean tourist cities (Madrid, Valencia, Lisbon) with a summer accommodation premium for Barcelona in July. Restaurant and drink anchors follow typical Barcelona ordinary-venue pricing, including the menu del dia convention for inexpensive meals.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 13.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 215.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings or menus. Restaurant anchors are more reliable than accommodation, which varies widely by weekday, weekend, and July peak-season demand, and by ryokan versus hotel format. Hakone's onsen-resort premium over Tokyo is estimated, not verified. Beer, coffee, cocktail, and wine are inferred from typical Japanese restaurant and bar pricing relative to the meal anchors, not from specific venues.",
+  "comparable_city_reasoning": "Based on general knowledge of Japanese resort towns with onsen and ryokan tourism, such as Kamakura and Nikko, adjusted upward for Hakone's summer resort demand and its limited budget accommodation supply.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 200.00
+  }
+}

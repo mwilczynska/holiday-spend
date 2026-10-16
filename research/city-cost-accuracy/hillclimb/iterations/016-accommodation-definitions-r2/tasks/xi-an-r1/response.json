@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Xi'an price levels, not checked against live menus, listings or booking pages. Restaurant and beer anchors are moderately reliable. Accommodation anchors are less certain because hotel rates vary widely by chain, district and season, and July is peak summer travel. Cocktail and wine anchors are weaker: direct knowledge is limited, so they were set from the local price relationship to beer (cocktail roughly 4 to 5 times beer, wine glass roughly 3 to 4 times beer).",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized inland Chinese historic tourist cities, priced below Beijing and Shanghai and broadly in line with Chengdu-style tourist-city costs. Accommodation carries a modest July peak-season uplift.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 58.00
+  }
+}

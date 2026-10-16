@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Milan price levels, not checked against live menus, listings, or booking pages. Restaurant and café anchors are moderately confident. Hostel and hotel anchors are less certain because Milan lodging prices vary a lot with trade fairs and events. The cocktail and wine anchors rely on the local price relationship to beer and to Milan's aperitivo and bar pricing. The FX observation is the RBA USD/AUD rate for 15 October 2026 as reported in search results, cross-checked against an inverse OFX quote, not read directly from the RBA table.",
+  "comparable_city_reasoning": "Based on Italian urban price norms, adjusted upward from other large northern Italian cities (such as Turin and Bologna) toward Western European capital levels. Milan's premium reflects its status as a high-cost business and fashion hub. Lodging anchors reflect typical registered-hotel and hostel rates for a major Italian metro in a non-peak summer month.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 2.10,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 13.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 210.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Helsinki price levels, not checked against live listings. Restaurant and café anchors are more reliable than hotel anchors, which are less certain given July peak-season demand. The FX observation comes from search summaries that cite RBA figures; I did not open the RBA table directly.",
+  "comparable_city_reasoning": "Nordic capital-city basis, using Stockholm and Oslo price levels adjusted to Finnish prices, with Helsinki generally a little cheaper than those two cities for restaurants and accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 4.80,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 16.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 220.00
+  }
+}

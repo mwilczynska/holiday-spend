@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Chinese mid-sized tourist-city pricing; no live booking pages, menus or listings were inspected. Food and café anchors are more reliable than accommodation, which is uncertain because July is peak season for Huangshan (Yellow Mountain) and prices near the scenic-area gates can run well above town prices. Cocktail and wine are weaker: they are set from the local beer-price relationship (cocktails roughly 4-5x a draught beer, wine at a restaurant roughly 4x), not direct observation. The midrange_meal_2p anchor assumes a comparable mid-range Chinese restaurant bill for two with shared dishes, as the three-course format is not standard locally, so it is an approximation.",
+  "comparable_city_reasoning": "Based on general knowledge of mid-sized Chinese tourist cities in Anhui and comparable inland destinations such as Guilin and Lijiang, with prices below Shanghai and Beijing levels. The local price basis is RMB converted at the FX rate in the fx field.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 3.50,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 70.00
+  }
+}

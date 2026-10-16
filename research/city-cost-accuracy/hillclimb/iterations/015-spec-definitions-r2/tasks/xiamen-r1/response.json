@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for a second-tier Fujian coastal city, not checked against live menus, hotel listings, or current prices. Restaurant and café anchors are more reliable than accommodation, and the hotel anchors are the least certain. The FX observation could not be fully verified: search results conflicted, and the 15 October 2026 value was not confirmed on the RBA page itself, so the 16 October observation is not confirmed.",
+  "comparable_city_reasoning": "Based on general knowledge of mid-sized Chinese coastal cities such as Fuzhou and Quanzhou, with prices set somewhat below Tier-1 cities like Shanghai and Beijing and above inland Tier-3 cities. Beer, coffee, and meal anchors use typical local price ranges. Cocktail and wine are estimated directly from bar and restaurant price levels, not from the beer price ratio.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 4.20,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 48.00
+  }
+}

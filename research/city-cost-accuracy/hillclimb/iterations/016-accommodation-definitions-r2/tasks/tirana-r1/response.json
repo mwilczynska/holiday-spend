@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live price pages or listings were checked. Restaurant and beer anchors are the more reliable; accommodation rates for July are less certain and could vary widely by season, booking lead time, and neighborhood. Cocktail and wine are benchmarked to the local beer price because direct knowledge of those prices is weaker. The FX observation came from a search-result snippet of the RBA exchange-rates page and was not opened directly, so it should be checked against the RBA F11.1 daily data.",
+  "comparable_city_reasoning": "Regional basis: Tirana's own price level, benchmarked against other Balkan capitals (Skopje, Podgorica, Sarajevo) and below Western European capitals. Tirana's hotel and hostel prices run somewhat above the cheaper Balkan capitals, reflecting its growing tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 6.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 100.00
+  }
+}

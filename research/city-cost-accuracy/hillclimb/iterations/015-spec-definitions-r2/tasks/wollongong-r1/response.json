@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and café anchors are moderately reliable for an Australian regional city. Hostel and hotel anchors are less certain because Wollongong has a thin budget-accommodation market. FX is the RBA 15 Oct 2026 observation (0.6955) from the RBA exchange-rates page; search snippets gave conflicting figures for 15-16 Oct from non-RBA sources, so the 16 Oct figure was not used.",
+  "comparable_city_reasoning": "Benchmarked against regional coastal NSW cities and Australian regional centres with prices somewhat below Sydney, applying a discount to Sydney-level restaurant and accommodation prices. July is winter, so accommodation is taken as off-peak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 3.60,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 16.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 165.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are more reliable than hostel and budget-hotel anchors, which have less visible pricing and lower confidence. The FX rate comes from search-result text that cites the RBA exchange-rates page; I did not open that page, and I could not confirm a 16 October 2026 RBA observation.",
+  "comparable_city_reasoning": "Based on general knowledge of Dominican Republic resort-area pricing, benchmarked against other Caribbean resort towns with a mix of independent and all-inclusive tourism. Lodging is adjusted upward for Punta Cana's resort-zone pricing, and food and drink are adjusted toward local Dominican prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 8.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 140.00
+  }
+}

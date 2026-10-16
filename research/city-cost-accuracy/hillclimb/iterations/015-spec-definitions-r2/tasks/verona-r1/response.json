@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not live listings. Food and drink anchors are medium confidence. Accommodation is low confidence because July is peak season and Verona's summer opera festival at the Arena pushes room rates up. Cocktail and wine are inferred from typical Italian bar and restaurant pricing relative to beer, not direct observation. Euro-to-USD conversion assumes roughly 1 EUR = 1.15 to 1.18 USD. FX provenance: the rate was taken from search-result summaries attributed to the RBA exchange rates page for 15 October 2026 at 4pm; I did not directly read the RBA table, so it should be verified against the official page.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Italian art cities with strong summer tourism, such as Padua, Bergamo and Bologna, with a seasonal premium for July in Verona.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 12.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 240.00
+  }
+}

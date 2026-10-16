@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of German city price levels, not checked against live listings. Restaurant and beer anchors are more reliable than accommodation, which is seasonal and event-sensitive, and July demand in Nuremberg can push hotel rates higher. The FX observation could not be confirmed against the full RBA F11 table; it comes from a single search snippet of the RBA homepage and is consistent with nearby third-party October 2026 rates.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Bavarian and Franconian German cities (for example Munich-adjacent and Würzburg-type price levels), with Nuremberg set slightly below Munich for restaurants and accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 13.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 150.00
+  }
+}

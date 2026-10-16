@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Guadalajara prices, not from live listings. Restaurant and cafe anchors are moderately reliable. Hotel and hostel anchors are less certain and are bounded to a typical 2026 range for a mid-sized Mexican city. Beer and wine are estimates based on local price norms. Restaurant and cafe prices can vary widely between neighborhoods. The FX observation came from search summaries of the RBA exchange-rates pages and was not read directly, so it should be verified against rba.gov.au.",
+  "comparable_city_reasoning": "Treated as a mid-sized Mexican metropolitan city with tourism demand and prices below Mexico City's central tourist districts and below Monterrey. Anchors are benchmarked against the general Mexican urban price level and Guadalajara's lower-cost hostel and guesthouse stock.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 95.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Rhodes tourist pricing, not checked against live menus or booking sites. Restaurant and coffee anchors are moderately confident. Accommodation is less certain because July is peak season and nightly rates vary widely by location and booking lead time, so the hostel and hotel values are bounded estimates. Cocktail and wine are estimated from the local beer price relationship, since direct knowledge of those prices is weaker. The FX observation comes from a search summary of the RBA exchange rates overview page (dated 2026-10-15), and I did not open the RBA F11.1 table directly to confirm it.",
+  "comparable_city_reasoning": "Priced against other mainland-Greece and Greek island tourist centres with similar July demand (for example Chania and Corfu), with Rhodes Old Town tourist-area prices weighted more heavily than the cheaper residential areas of the city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 140.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings or booking pages. Restaurant and bar anchors are medium confidence. Accommodation anchors are lower confidence because they vary with events and school holidays in July (Western Australian winter). Cocktail and wine anchors are set relative to the local draft beer price because direct knowledge of those prices is weaker. The FX observation comes from a search summary of the RBA exchange-rates overview page; I did not open the RBA page directly.",
+  "comparable_city_reasoning": "Priced as a mid-sized Australian capital, generally somewhat below Sydney and Melbourne and broadly comparable to Adelaide and Brisbane for restaurants and hotels. Accommodation is benchmarked to well-reviewed Perth CBD, Northbridge and Fremantle options.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 3.75,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 15.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 150.00
+  }
+}

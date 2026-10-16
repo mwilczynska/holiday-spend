@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live venues or listings. Restaurant and café anchors are moderate confidence. Alcohol anchors (beer, cocktail, wine) are less certain because licensed venues are fewer in Varanasi and prices vary with licensing. Cocktail and wine were set from beer using local price ratios (cocktail about 2x beer, wine glass about 2.4x beer), not direct observation. Hotel anchors are low confidence and vary widely by riverfront or old-town location. July is monsoon season, so prices reflect an off-peak window. FX: the 0.6947 USD_PER_AUD observation for 2026-10-16 came from a third-party site that reports the RBA figure. I did not open the RBA F11.1 table directly, so verify the value against the RBA page before relying on it.",
+  "comparable_city_reasoning": "South Asia basis, priced against lower-cost Indian tourist cities such as Jaipur and Agra rather than Delhi or Mumbai. Varanasi's hotel and hostel prices are set near those comparables, and its restaurant prices are set near typical Indian mid-sized tourist-city menus.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 1.40,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 14.00,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 50.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings or booking pages. La Ceiba is a secondary Honduran port city with thin published price data, so restaurant anchors are rough and accommodation anchors are least certain. Cocktail and wine were set from the beer anchor (about 2.4x and 2.8x) because direct knowledge is weak. FX caveat: the 2026-10-16 rate came from a third-party site that republishes RBA data (ozfinancehub.com.au). I did not open the rba.gov.au table, and the RBA page I could reach showed only March 2026 values, so the rate is unverified against the RBA source and should be checked against the RBA F11.1 table before use.",
+  "comparable_city_reasoning": "Benchmarked against secondary Caribbean-coast and Central American port and tourist towns, set below San Pedro Sula and the Bay Islands ferry-hub pricing. Accommodation was benchmarked to small Honduran and Central American towns with domestic and backpacker tourist demand, not to large-city or resort rates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 6.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 75.00
+  }
+}

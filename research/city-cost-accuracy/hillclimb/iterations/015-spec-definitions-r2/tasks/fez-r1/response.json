@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or current prices. Restaurant and café anchors are moderately reliable. Beer, cocktail and wine are less certain because alcohol is limited to licensed venues and prices vary widely; the cocktail figure is set at roughly twice the beer anchor, and the wine figure is a loose local estimate. Accommodation varies with season and medina location. FX: the 0.6955 figure came from a search summary that attributed it to the RBA exchange-rates page. I could not confirm that row on the RBA page, and the RBA page in search results showed only older March 2026 data, so verify the rate before relying on it.",
+  "comparable_city_reasoning": "Based on general knowledge of Morocco's inland medina cities, using Marrakech as an upper reference and cheaper Moroccan cities such as Meknes as a lower reference. Fez is generally cheaper than Marrakech for meals and lodging.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 1.70,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 8.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 90.00
+  }
+}

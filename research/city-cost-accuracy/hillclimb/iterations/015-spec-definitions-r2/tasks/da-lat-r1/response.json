@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Vietnamese highland tourist-town pricing, not from live listings or menus. Food and beer anchors are more reliable than accommodation and wine, which are wider bands. Wine is a judgement based on the restaurant-price relationship to beer. The FX rate comes from a search summary of the RBA exchange-rates page, which I did not open directly.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Vietnamese tourist cities such as Nha Trang and Hue, with prices adjusted down slightly for Da Lat's lower-cost accommodation and food relative to coastal resort towns. Cocktail and wine are set relative to the local beer price.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.90,
+    "coffee": 1.70,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 40.00
+  }
+}

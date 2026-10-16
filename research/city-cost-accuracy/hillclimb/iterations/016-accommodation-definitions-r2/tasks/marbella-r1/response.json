@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for Marbella in July 2026 peak season, not checked against live menus, listings, or booking pages. Restaurant anchors are moderate confidence. Accommodation anchors are lower confidence, especially the hostel and 3-star values, because July resort pricing varies widely by location and booking lead time. Drinks follow typical Costa del Sol tourist-bar pricing. FX provenance: the 0.6947 figure for 2026-10-16 comes from search results (a third-party site and a search summary of the RBA table). I did not open the RBA page directly, and the RBA overview page was reported as showing 0.6955 for 15 October, so the figure should be verified against the RBA F11 table before use.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized Spanish Mediterranean resort towns on the Costa del Sol and Costa Blanca during peak summer, with prices adjusted upward for Marbella's upscale positioning and higher summer accommodation demand. Restaurant and drink prices follow Spanish tourist-area norms, with the cocktail and wine anchors set relative to beer where direct knowledge was weak.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.20,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 14.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 200.00
+  }
+}

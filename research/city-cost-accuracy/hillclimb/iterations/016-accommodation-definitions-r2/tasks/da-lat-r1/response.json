@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate with no live listing checks. Restaurant and coffee anchors are moderately reliable. Hostel and hotel anchors are less certain because Da Lat's lodging rates vary widely by season and location, and July is a shoulder-to-peak domestic tourism period. Cocktail and wine are estimated from the local beer relationship and general Vietnamese bar pricing, with weaker direct knowledge.",
+  "comparable_city_reasoning": "Basis is general knowledge of Vietnamese highland and inland tourist towns (such as Sapa and Hue) with similar domestic-tourism demand and cafe-driven pricing. Da Lat is priced somewhat below coastal resort towns such as Nha Trang and Hoi An for accommodation and drinks.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.20,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 4.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 14.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 38.00
+  }
+}

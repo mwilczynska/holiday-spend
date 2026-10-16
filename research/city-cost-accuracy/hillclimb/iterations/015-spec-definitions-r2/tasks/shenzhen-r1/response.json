@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Shenzhen pricing, not checked against live venues or listings. Restaurant and coffee anchors are the most reliable; hotel rates and cocktail prices are less certain and vary widely by district and venue type. Values assume a CNY-to-USD rate near 7.1 and may drift for July 2026. The FX observation was taken from a search summary of the RBA overview page, not from the F11 table itself.",
+  "comparable_city_reasoning": "Based on other tier-1 mainland Chinese cities, mainly Guangzhou and Shanghai, with Shenzhen priced close to Guangzhou for food and accommodation and slightly higher for cafés and bars.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.80,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 9.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 27.00,
+    "hotel_3star_2p": 58.00
+  }
+}

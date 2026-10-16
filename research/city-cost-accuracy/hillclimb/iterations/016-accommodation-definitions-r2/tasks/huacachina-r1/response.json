@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied context (small oasis town near Ica, Peru, heavily visited for dune buggy tours and backpacker lodging); no city-price web search was performed and no live listings were inspected. Restaurant and drink anchors are medium confidence. Hostel and hotel anchors are lower confidence because tourist-area accommodation prices vary a lot by season and property. Accommodation anchors include the 18% IGV tax and assume July 2026 is a shoulder period, not peak summer. Cocktail (pisco sour) and wine were set using the local beer relationship because direct price knowledge is weaker. FX: the RBA figure was taken from a search summary that attributed it to the RBA exchange-rates page; I did not open the RBA page directly, so the value and date should be checked against the official F11 table.",
+  "comparable_city_reasoning": "Benchmarked against small tourist towns on the Peruvian south coast and in the Ica region (for example Paracas and Huacachina-area guesthouses) and general Peruvian tourist-town restaurant pricing, with Cusco-adjacent tourist pricing used as an upper reference for restaurants and bars.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

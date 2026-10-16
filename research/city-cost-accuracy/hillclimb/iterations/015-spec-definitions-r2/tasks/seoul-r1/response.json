@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and café anchors are moderately reliable; hotel and hostel anchors are less certain because Seoul lodging prices vary widely by district and season. Converted at roughly 1,400 KRW per USD. FX: the 0.6955 observation is for 2026-10-15, as shown on the RBA exchange-rates statistics page and homepage in search results. A 2026-10-16 figure (0.6947) appeared only on a third-party site, so I did not use it.",
+  "comparable_city_reasoning": "Based on general knowledge of Seoul's mid-tier price levels, benchmarked informally against Tokyo and Busan for restaurant, bar and lodging tiers. No city-specific listings were inspected.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 12.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 120.00
+  }
+}

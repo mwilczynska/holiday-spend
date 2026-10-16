@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 peak season, not based on live listings. Restaurant and beer anchors are moderately reliable; accommodation is less certain because Baltic coastal demand in summer can move room rates sharply. Cocktail and wine are estimated from the local beer and restaurant price relationship. FX observation was taken from a search-result report of the RBA exchange-rates page and was not independently opened; the RBA 16 October figure was not confirmed.",
+  "comparable_city_reasoning": "Based on Polish mid-sized tourist cities with similar pricing (such as Krakow, Wroclaw and Poznan), adjusted for Gdansk's Baltic seaside tourism in July, which pushes up hotel and hostel rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 150.00
+  }
+}

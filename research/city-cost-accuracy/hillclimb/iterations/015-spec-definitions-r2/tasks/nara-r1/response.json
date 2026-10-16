@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Japanese prices, not checked against live menus or booking pages. Restaurant and beer anchors are more reliable than accommodation, which varies with summer demand spillover from Kyoto and Osaka. Hostel and budget hotel anchors are the least certain. Figures assume roughly 150 JPY per USD. FX value taken from the RBA 16 Oct 2026 observation shown in the search results and was not verified by opening the RBA page.",
+  "comparable_city_reasoning": "Basis is mid-sized Japanese tourist cities near Kyoto and Osaka (for example Kyoto's outer districts and Himeji or Kobe), adjusted for Nara's somewhat lower restaurant prices and high day-tripper accommodation demand in July.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 145.00
+  }
+}

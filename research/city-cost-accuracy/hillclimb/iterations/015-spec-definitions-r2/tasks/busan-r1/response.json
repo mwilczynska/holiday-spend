@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Busan prices, not checked against live listings or booking pages. Restaurant and beer anchors are moderately certain. Cocktail and wine are less certain and are set from typical Korean bar pricing relative to beer. Hotel and hostel anchors are the least certain because July is peak beach season in Haeundae, and rates vary widely by district. FX: the 0.6955 USD per AUD figure (15 Oct 2026, 4.00 pm) comes from a search-result excerpt of the RBA overview page, which I did not open directly. A third-party site reported 0.6947 for 16 Oct 2026, but I could not verify it on rba.gov.au, so I did not use it.",
+  "comparable_city_reasoning": "Regional South Korean port city priced somewhat below Seoul for food, drink and lodging. Cross-checked loosely against mid-sized East Asian port cities such as Fukuoka. No specific venues or listings were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.20,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 10.50,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 125.00
+  }
+}

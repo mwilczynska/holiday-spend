@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Chilean and Patagonian price levels, not from sampled listings or live menus. Restaurant anchors are the more reliable group. Accommodation is less certain and uses July low-season rates. Cocktail and wine are set relative to the beer anchor (cocktail about 1.6x beer, wine about 1.3x beer) because direct knowledge is weak. The FX observation was taken from a search snippet of the RBA exchange-rates page and was not opened directly; the 16 October figure found was from a third-party site, so it was not used.",
+  "comparable_city_reasoning": "Benchmarked against other Patagonian gateway towns in Chile, mainly Punta Arenas, and adjusted for Puerto Natales' tourism-driven price premium and July off-season accommodation rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 115.00
+  }
+}

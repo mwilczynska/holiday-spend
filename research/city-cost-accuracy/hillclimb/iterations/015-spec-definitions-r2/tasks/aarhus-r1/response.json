@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Danish price levels, not from live listings or booking pages. Restaurant, beer and coffee anchors are moderately reliable. Hotel and hostel anchors are less certain because July is peak season and rates vary widely. Cocktail and wine are estimated from the local beer relationship, since direct knowledge of those prices is weaker. Denmark's high price level and the DKK-EUR peg underpin the estimates. FX is the RBA indicative 4.00 pm rate for 15 October 2026, taken from a search summary of the RBA exchange rates page and not independently opened. The 16 October fixing could not be confirmed. Market rates from OFX (0.695572, 15 Oct) and Macrotrends (0.6973, 14 Oct) are consistent with it.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Danish and southern Swedish university cities such as Odense and Malmo, adjusted toward Copenhagen-level prices for restaurants and drinks, with summer tourist-season uplift applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 6.80,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 19.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 165.00,
+    "hotel_3star_2p": 250.00
+  }
+}

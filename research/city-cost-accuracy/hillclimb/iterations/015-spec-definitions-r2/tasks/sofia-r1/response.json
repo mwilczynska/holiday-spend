@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Sofia price levels, not from live listings or booking pages. Restaurant and beer anchors are moderately certain. Cocktail and wine_glass have weaker direct knowledge and were set from the local beer relationship (cocktail about 3x beer, wine glass about 1.9x beer). Accommodation is the least certain group, and July demand could push hotel rates above these levels. FX caveat: the 0.6955 value was taken from a search summary that attributes it to the RBA exchange rates page for 2026-10-15. I did not open or verify the RBA table itself, I could not confirm a 2026-10-16 observation, and earlier results gave conflicting older figures. Treat the fx block as unverified until checked against the RBA table.",
+  "comparable_city_reasoning": "Priced against Central and Southeast European capitals with similar cost levels, such as Budapest, Bucharest and Belgrade, and set below Western European capitals.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 10.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 100.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for July 2026, not checked against live listings or menus. Restaurant and drink anchors are moderately confident because Tel Aviv's price level is well known, but the NIS-to-USD conversion and the summer 2026 price level are uncertain. Hotel anchors are less certain because July is peak season and rates vary with regional security conditions. The FX value of 0.6947 for 2026-10-16 came from a third-party site that attributes it to the RBA. I did not open the RBA F11.1 table, so it should be checked against the official table.",
+  "comparable_city_reasoning": "Based on general knowledge of high-cost Mediterranean coastal cities such as Barcelona and Athens for restaurant and hotel tiers. Tel Aviv restaurant, bar, and coffee prices sit at the upper end of that group, and accommodation prices are high in summer. No web search was used for the city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.50,
+    "coffee": 6.00,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 240.00
+  }
+}

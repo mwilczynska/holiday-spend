@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of German city pricing, not checked against live listings or menus. Restaurant and beer anchors are the more reliable; accommodation is least certain because July demand and trade-fair dates can move hotel rates. Cocktail and wine were set from the local beer relationship (about 2.3x and 1.2x beer) because direct knowledge is weaker. The FX observation comes from search-result summaries of the RBA exchange-rates page and a secondary RBA summary, not a direct read of the F11.1 table, so verify against the official table before use.",
+  "comparable_city_reasoning": "Benchmarked against other large Bavarian and German cities with similar tourist and business demand, placed below Munich and above smaller regional centres such as Würzburg or Bamberg.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.20,
+    "coffee": 4.40,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 14.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 92.00,
+    "hotel_3star_2p": 150.00
+  }
+}

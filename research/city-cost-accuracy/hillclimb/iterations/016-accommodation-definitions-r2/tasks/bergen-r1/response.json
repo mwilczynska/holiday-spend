@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus or booking pages. Restaurant and drink anchors are moderately confident for a high-cost Norwegian city. Accommodation anchors are less certain and assume July peak-season demand in Bergen, which is high. The FX observation comes from search-result excerpts that cite the RBA F11.1 table; I did not open the rba.gov.au page directly.",
+  "comparable_city_reasoning": "Regional basis: Norway's high-cost, mid-sized tourist cities (for example Stavanger and Trondheim), adjusted for Bergen's summer tourism demand and its position as a cruise and fjord gateway. Beer, cocktail, and wine were checked against the local price relationship to beer, using typical Norwegian restaurant markups.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.80,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 17.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 190.00
+  }
+}

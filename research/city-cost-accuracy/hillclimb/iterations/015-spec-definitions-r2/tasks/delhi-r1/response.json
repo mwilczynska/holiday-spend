@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not based on live inspection of listings or prices. Restaurant anchors (meals, beer, coffee) are moderately reliable for Delhi. Accommodation anchors are less certain and may vary by area, booking channel, and monsoon-season demand in July. Cocktail and wine were set using the local price relationship to beer (cocktail about 2.3x beer, wine glass about 2.6x beer), since direct knowledge of bar pricing is weaker; alcohol prices also reflect state excise and taxes that vary. The FX observation came from search results that summarize the RBA's published rates; I did not open the RBA page itself in this session.",
+  "comparable_city_reasoning": "Basis is other large Indian metros (Mumbai, Bengaluru, Kolkata) adjusted for Delhi's local restaurant, café, and hotel pricing, with an eye to mid-tier Delhi neighbourhoods rather than Connaught Place tourist or luxury venues.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 2.30,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 50.00
+  }
+}

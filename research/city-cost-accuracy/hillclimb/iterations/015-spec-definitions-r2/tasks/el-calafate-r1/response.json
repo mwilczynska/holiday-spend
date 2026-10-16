@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates from general knowledge of Patagonian tourist pricing, not checked against live listings or menus. Argentine prices are volatile and quoted across several peso rates, so USD figures may be off by a wide margin. Accommodation is the least certain group, and July is low season, so lodging may be below the peak-season level. FX could not be verified: the RBA page results were stale (March 2026) and the only October 2026 figure came from a third-party site, so the fx source fields are null and must not be used until a verified RBA observation is supplied.",
+  "comparable_city_reasoning": "Basis is other Patagonian tourist towns in Argentina, such as Ushuaia and San Carlos de Bariloche, adjusted for El Calafate's remoteness and winter (low-season) timing. Restaurant anchors assume ordinary local venues rather than tourist-district prices.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 120.00
+  }
+}

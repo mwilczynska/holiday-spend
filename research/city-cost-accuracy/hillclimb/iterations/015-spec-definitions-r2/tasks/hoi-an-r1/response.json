@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and beer anchors are moderately reliable; accommodation is less certain, and July is peak season in Hoi An, so room rates may run high. The FX value comes from a garbled search snippet attributed to the rba.gov.au homepage, not from a verified read of the F11.1 table, so confirm it against the official table before use.",
+  "comparable_city_reasoning": "Based on general Vietnamese price levels for tourist-oriented central cities such as Da Nang and Hue, adjusted upward for Hoi An's heritage-town tourist demand and July peak-season accommodation pricing. Drink anchors were set from the local beer price, since wine and cocktail prices are less certain.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.20,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.80,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 4.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 50.00
+  }
+}

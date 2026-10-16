@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Sri Lankan hill-country tourist towns, not checked against live menus or listings. Restaurant and beer anchors are moderately confident. Hostel and hotel anchors are less certain because room rates vary widely by season, booking channel, and property quality. Alcohol prices are sensitive to Sri Lankan excise taxes, which can change.",
+  "comparable_city_reasoning": "Regional basis: Sri Lankan hill-country and mid-sized tourist towns such as Ella and Kandy, adjusted for Nuwara Eliya's typical visitor pricing in July 2026. Cocktail and wine anchors use the local beer-price relationship because direct knowledge of bar prices is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 1.80,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 17.00,
+    "hotel_3star_2p": 55.00
+  }
+}

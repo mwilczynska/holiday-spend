@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Chilean and northern coastal Chilean price levels; no live listings or booking pages were checked. Restaurant and beer anchors are moderately grounded. Hostel and hotel anchors are less certain and may vary with July winter-holiday demand. Cocktail and wine are estimated from the local beer price relationship (cocktail and wine priced as multiples of the beer anchor), not from direct venue data. FX provenance: the 0.6947 USD per AUD observation for 2026-10-16 came from a third-party page that attributes it to the RBA. I did not confirm it on rba.gov.au, where my search showed only a March 2026 snapshot, so it should be verified against the RBA F11 table.",
+  "comparable_city_reasoning": "Benchmarked against other northern Chilean coastal cities with similar tourism and price levels (such as Arica and Antofagasta), adjusted for Iquique's modest free-zone retail economy and its beach-resort tourist segment. Restaurant and drink prices are placed between Santiago's mid-range and smaller regional Chilean cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 6.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 85.00
+  }
+}

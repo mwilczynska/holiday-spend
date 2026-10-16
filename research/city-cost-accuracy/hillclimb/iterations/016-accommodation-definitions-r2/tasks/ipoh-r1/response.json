@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not live listings. Restaurant and beer anchors are more reliable than accommodation, which is less certain. Cocktail and wine are derived from the local beer price (about 3x beer), because direct knowledge of bar prices is weak. The FX rate could not be confirmed on the RBA page: the RBA exchange-rates page was not read for its USD value. The 0.6947 figure comes from a third-party site (ozfinancehub.com.au) that says it reproduces RBA daily rates, and the RBA overview header refers to 15 Oct 2026. The source_url is the RBA page where the rate should be checked.",
+  "comparable_city_reasoning": "Regional basis: secondary Malaysian cities such as Melaka and Johor Bahru, priced somewhat below Kuala Lumpur and George Town. Ipoh's hawker and kopitiam prices are low, and its 3-star hotel prices are set by a small business-and-leisure market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.70,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 65.00
+  }
+}

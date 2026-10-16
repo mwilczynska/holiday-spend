@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings or current menus. Restaurant food anchors are the most reliable. Draught beer is uncommon in Sri Lanka, so the beer anchor is a bottled-lager-equivalent estimate, and alcohol taxes make drinks prices uncertain. Cocktail and wine have weak direct knowledge and are set relative to the beer anchor. Accommodation may run higher in the July to August peak season (Esala Perahera period). The FX observation was taken from a search summary of the RBA exchange-rate page for 15 October 2026 and was not independently re-fetched.",
+  "comparable_city_reasoning": "No single comparable city. Regional basis: Sri Lankan hill-country tourist towns, priced below Colombo for accommodation, with Kandy's restaurant and guesthouse levels assumed between Colombo and smaller hill towns, adjusted for July to August peak demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 2.00,
+    "inexp_meal_1p": 1.80,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 17.00,
+    "hotel_1star_2p": 19.00,
+    "hotel_3star_2p": 75.00
+  }
+}

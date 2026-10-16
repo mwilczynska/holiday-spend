@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Mombasa and coastal Kenya pricing; no live booking pages or current listings were inspected. Restaurant and beer anchors are the most reliable. Hostel and hotel anchors are less certain because rates vary widely by neighbourhood, season and booking channel. Cocktail and wine were estimated from the local beer relationship (cocktail about 3x beer, wine glass about 2.7x beer), since direct knowledge of those prices is weaker. Prices are converted from KES at approximate rates and the July 2026 exchange rate was not checked.",
+  "comparable_city_reasoning": "Regional basis: coastal East African tourist cities such as Dar es Salaam and Zanzibar, adjusted to Mombasa's mix of local eateries, mid-range hotels and beach-area guesthouses. Kenya's general price level is used as a cross-check.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.80,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 75.00
+  }
+}

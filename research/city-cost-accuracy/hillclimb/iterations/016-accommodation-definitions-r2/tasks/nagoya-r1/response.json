@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Nagoya price levels, not checked against live listings or booking pages. Restaurant anchors are more reliable than accommodation, which varies with July demand and events. Assumes roughly 150-160 JPY per USD. The FX value comes from a search summary attributed to the RBA exchange-rates page; I did not independently read the RBA table, so verify it before relying on it.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Japanese cities such as Hiroshima and Sendai, priced somewhat below Tokyo and Osaka. Accommodation is based on business and mid-tier hotels near Nagoya Station and Sakae, with hostel anchors from the central dorm and private-room market. No web search was used for the city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 68.00,
+    "hotel_1star_2p": 72.00,
+    "hotel_3star_2p": 135.00
+  }
+}

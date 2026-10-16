@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, rates or listings. Restaurant prices are moderately reliable; accommodation (July is low season, taxes and fees assumed included) and drink prices are less certain. The 0.6947 FX rate came from a third-party page that attributes it to the RBA. I did not verify it on rba.gov.au, and an RBA page snippet referenced 15 October 2026, so the date may be off by one day.",
+  "comparable_city_reasoning": "No single named comparable city. Estimated from the Caribbean resort-town tourism pricing pattern (USD-priced tourist services, Jamaican local-restaurant prices, and July low-season hotel rates). Drinks were set from typical resort-bar levels relative to beer.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 11.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 185.00
+  }
+}

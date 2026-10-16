@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live menus or booking listings. Restaurant and drink anchors are more reliable than accommodation, which varies a lot with July demand in Aarhus. The FX value comes from a search-result summary of the RBA exchange-rates page, not a direct page read. The beer, cocktail and wine anchors come from general knowledge of Danish restaurant pricing, not from a local price relationship.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Nordic and Danish cities such as Odense and Gothenburg, adjusted upward for Denmark's high restaurant and hotel price level and for July peak-season hotel demand in Aarhus.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 6.50,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 155.00,
+    "cocktail": 19.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 240.00
+  }
+}

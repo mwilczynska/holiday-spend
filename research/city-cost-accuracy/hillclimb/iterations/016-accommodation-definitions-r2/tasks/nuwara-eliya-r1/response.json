@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Sri Lankan hill-country tourist pricing, not live listings. Restaurant and café anchors are more reliable than accommodation, which varies widely by season, guesthouse grade and tax/service-charge treatment. Cocktail and wine were set relative to beer because direct knowledge is weaker; Sri Lankan wine is import-taxed and priced high. The FX observation came from search-result summaries of RBA data and was not verified by reading the RBA page directly, so confirm it against the source URL before use.",
+  "comparable_city_reasoning": "Based on the Sri Lankan hill-country tourist circuit, using Kandy and Ella as reference points. Adjusted for Nuwara Eliya's cooler highland climate and its guesthouse-heavy accommodation market. July falls in the southwest monsoon, outside the April peak season, so no peak-season uplift is applied.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 5.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 65.00
+  }
+}

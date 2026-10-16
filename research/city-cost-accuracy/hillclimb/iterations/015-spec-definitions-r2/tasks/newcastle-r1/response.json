@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for a July 2026 pricing window, not checked against live listings. Restaurant and beer anchors are more reliable than hotel and hostel anchors, which vary more with season and events. The RBA rate came from search-result summaries rather than a direct read of the RBA table. Two RBA pages show different figures for 15 October (0.6955 on the overview page, 0.6947 for 16 October in the table), so the FX observation should be verified against the RBA table before use.",
+  "comparable_city_reasoning": "Regional coastal Australian city priced below Sydney and Melbourne for restaurants and accommodation, with a similar level to other mid-sized NSW and Victorian regional cities such as Wollongong and Geelong. Drink prices follow typical Australian pub and bar levels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 3.60,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 15.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 150.00
+  }
+}

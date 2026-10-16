@@ -1,0 +1,28 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are reasonably well grounded in typical Nanjing price levels. Hostel and hotel anchors are lower confidence because summer demand and chain pricing vary widely by district, and this is a holistic model estimate, not a check of live listings. Cocktail and wine anchors use the local beer relationship because direct knowledge is weaker. FX uses the RBA observation for 2026-10-15; the 2026-10-16 figure was not used because RBA rates are typically published after 4pm on weekdays and may not have been final.",
+  "comparable_city_reasoning": "Based on similar tier-2 eastern Chinese cities with comparable tourism levels and price structure, such as Hangzhou, Suzhou, and Wuhan. Prices are estimated at roughly 7.1 RMB per USD. July is peak summer, so accommodation anchors reflect in-season rates rather than off-season discounts.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 62.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)

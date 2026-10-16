@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus or booking pages. Restaurant and drink anchors are more reliable than accommodation, which varies a lot by neighbourhood (Lagoa da Conceição, Jurerê, and the city centre differ) and by mid-July school holidays. July is off-season for the beaches, so accommodation is set below summer peak rates. The FX observation comes from search-result summaries that attribute 0.6955 to the RBA exchange-rates pages for 15 October 2026. I did not open those pages directly. A third-party site lists 0.6947 for 16 October 2026, which is not an RBA source and was not used. Beer, cocktail and wine are bounded using local price relationships to beer and general Brazilian resort-city pricing.",
+  "comparable_city_reasoning": "No web search was used for city prices. The basis is general knowledge of mid-sized Brazilian coastal resort cities, with restaurant prices close to other southern Brazilian coastal cities and accommodation adjusted for July off-season pricing in Florianópolis.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 36.00,
+    "hotel_3star_2p": 65.00
+  }
+}

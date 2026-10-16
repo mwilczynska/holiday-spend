@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of San Diego pricing, not live listings. Restaurant and drink anchors are moderately certain. Accommodation is less certain because July is peak season, and taxes and tourism fees vary by property. The FX observation comes from search-result snippets that attribute the 15 Oct 2026 4:00 pm reading to the RBA exchange rates page. I did not open the RBA page directly, and the snippets did not show the full F11.1 series.",
+  "comparable_city_reasoning": "Based on US coastal leisure cities with similar tourism demand and price levels, such as Los Angeles and Santa Barbara, adjusted for San Diego's mid-range restaurant prices and July peak-season hotel rates in the Downtown, Gaslamp, Mission Bay, and Pacific Beach areas.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.25,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 16.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 185.00,
+    "hotel_3star_2p": 290.00
+  }
+}

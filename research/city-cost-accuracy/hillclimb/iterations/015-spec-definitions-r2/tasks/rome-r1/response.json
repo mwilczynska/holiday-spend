@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Rome price levels, not from live listings. Restaurant and beer anchors are more reliable than hotel and hostel anchors, which vary widely by season and location. Euro-to-USD conversion assumes roughly 1.15 to 1.17 USD per EUR. The FX observation comes from a search summary attributed to the RBA; the figure was not verified on the RBA table itself and may not be the very latest publication.",
+  "comparable_city_reasoning": "Benchmarked against other large Italian tourist cities (Florence, Milan, Naples) with Rome adjusted upward for its July peak-season demand and higher accommodation prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.5,
+    "coffee": 2.1,
+    "inexp_meal_1p": 18.5,
+    "midrange_meal_2p": 95.0,
+    "cocktail": 13.5,
+    "wine_glass": 7.0,
+    "hostel_dorm_1p": 38.0,
+    "hostel_private_2p": 115.0,
+    "hotel_1star_2p": 125.0,
+    "hotel_3star_2p": 225.0
+  }
+}

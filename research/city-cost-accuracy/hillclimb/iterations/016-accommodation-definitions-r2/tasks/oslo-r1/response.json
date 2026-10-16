@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Oslo's price levels for July 2026, not from live listings or menus. Restaurant and drink anchors are moderately reliable; accommodation anchors are less certain because summer hotel rates vary widely by season and event demand. Cocktail and wine were set from their usual ratio to a draft beer (about 1.9x and 1.4x) because direct knowledge is weaker. FX: the only RBA observation I could verify is 2026-03-20 (0.7088 USD per AUD), which is well before the 2026-10-16 generation date. Later figures I saw (including a reported 0.6955 for 2026-10-15) were not confirmed on rba.gov.au and were not used.",
+  "comparable_city_reasoning": "Benchmarked against other Nordic capitals such as Stockholm and Copenhagen, adjusted for Oslo's generally higher restaurant and hotel prices. Norway's currency (NOK) is roughly 10 per USD, which underlies the USD conversions.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.80,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 18.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 195.00
+  }
+}

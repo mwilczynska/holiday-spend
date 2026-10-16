@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Helsinki price levels for a July 2026 window; no live menus, listings, or booking pages were inspected. Restaurant anchors (meals, coffee, beer) are moderately reliable. Accommodation is less certain because July is peak season and nightly rates vary widely by location, date, and booking source. Cocktail and wine are estimated from the local beer relationship, since direct knowledge is weaker. FX is the RBA mid-point from a search result that was not confirmed on the RBA page itself.",
+  "comparable_city_reasoning": "Benchmarked against other Nordic capitals: priced below Stockholm, Copenhagen, and Oslo for restaurants and hotels, and above Tallinn and most of Central Europe. Drink prices were set relative to draft beer, and accommodation reflects summer demand in central Helsinki.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.80,
+    "coffee": 5.20,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 18.00,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 230.00
+  }
+}

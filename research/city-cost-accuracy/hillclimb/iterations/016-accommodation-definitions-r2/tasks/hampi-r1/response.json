@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Hampi, not checked against live listings or menus. Restaurant anchors are the more reliable, since small-town Indian menu prices are fairly stable. Accommodation is less certain: the lodging stock is small and varies widely by riverside location and season. July is monsoon low season in Hampi, so accommodation anchors reflect off-season levels. Wine is inferred from the local beer price, since wine is rarely served there. The FX value comes from a partly legible search snippet attributed to rba.gov.au and should be verified against the RBA table.",
+  "comparable_city_reasoning": "Basis is inland Karnataka and other small Indian backpacker and heritage towns (for example Gokarna, Pushkar and Hospet), adjusted for Hampi's guesthouse-dominated accommodation market and the limited alcohol availability in the village area. Cocktail and wine are set relative to the beer anchor, with wine priced at roughly 2.5 times beer and cocktail at roughly 1.6 times beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 1.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 4.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 13.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 45.00
+  }
+}

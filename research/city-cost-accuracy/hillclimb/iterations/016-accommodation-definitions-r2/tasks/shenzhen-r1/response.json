@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Chinese urban pricing, not live listings. Restaurant prices are moderately certain. Beer, cocktail and wine are less certain; cocktail and wine were set from the local beer relationship. Accommodation is the least certain, especially the 3-star anchor, which depends on district and season. FX: the 0.6955 figure came from a search summary attributed to the RBA exchange-rates page, as at 4.00 pm on 2026-10-15. I did not open the RBA page or its F11 table directly, so this value should be verified against rba.gov.au.",
+  "comparable_city_reasoning": "Shenzhen is a Pearl River Delta megacity. Its restaurant and bar prices are broadly similar to Guangzhou and somewhat above inland Chinese cities, and its hotel pricing is close to Guangzhou's for comparable tiers.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 4.30,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 11.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 65.00
+  }
+}

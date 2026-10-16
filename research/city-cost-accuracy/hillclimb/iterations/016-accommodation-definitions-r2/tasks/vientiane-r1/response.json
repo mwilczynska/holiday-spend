@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, listings, or booking pages. Restaurant and cafe anchors are more reliable than accommodation, and the 3-star hotel anchor is the least certain. July is rainy season in Laos, so demand is lower, but the accommodation anchors reflect typical paid rates rather than a deliberate off-season discount. The FX observation came from search-result summaries attributed to the RBA, not from a direct read of the RBA table, so it should be verified against rba.gov.au.",
+  "comparable_city_reasoning": "Priced relative to budget-to-mid-range Southeast Asian capitals and tourist towns such as Luang Prabang and Phnom Penh, and below Bangkok. Imported wine and cocktails are marked up from a low local base, so drink anchors are set against the local beer price.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.20,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 75.00
+  }
+}

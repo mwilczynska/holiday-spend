@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live listings or booking pages were checked. Restaurant and drink anchors are moderately confident. Accommodation is least certain because July is peak season in Orlando and rates vary widely by property and week. The FX observation comes from a web search summary that reported the RBA's 2026-10-16 USD/AUD figure. The RBA F11.1 table itself was not opened, so verify the value against rba.gov.au before official use.",
+  "comparable_city_reasoning": "Benchmarked against large US leisure-tourism metros with similar theme-park visitor demand and similar restaurant and hotel price levels, with US sales tax and tipping conventions included where they apply to the anchor definitions.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 4.75,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 185.00
+  }
+}

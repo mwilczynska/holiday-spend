@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Valletta, not checked against live listings or menus. Restaurant anchors are moderately reliable; accommodation (especially July peak-season hostel and hotel rates) and cocktail prices are less certain. EUR-to-USD conversion assumes roughly 1.15 USD per EUR. FX: the 0.6955 figure for 15 October 2026 (4.00 pm) came from search-result summaries attributing it to the RBA; I did not independently read the RBA table, so verify it against the official F11 series.",
+  "comparable_city_reasoning": "Basis is general Maltese and southern European island-capital pricing in the euro area, with Valletta's tourist-season premium for accommodation and central-venue drinks. Not based on a single named comparable city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.70,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 12.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 170.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live listings or price pages were inspected. Beer, coffee, and restaurant anchors are moderately confident. Cocktail and wine are less certain and are estimated from general local price levels, not a beer-based relationship. Accommodation anchors are the least certain and may vary by season and neighbourhood; July is winter in Chile. The FX observation comes from a search-result summary of the RBA exchange rates page for 15 October 2026. I did not open the RBA page directly.",
+  "comparable_city_reasoning": "Based on general knowledge of mid-sized South American capitals with similar restaurant and bar price levels, such as Montevideo and Lima, adjusted for Santiago's generally higher hotel rates. No specific comparable-city dataset was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.30,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 120.00
+  }
+}

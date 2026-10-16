@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant anchors are moderately certain. Accommodation is less certain and is set for the July monsoon off-season, when Kathmandu demand is lower. Cocktail and wine_glass are scaled from the beer estimate because direct knowledge is weaker. Taxes and service charges are assumed to be included.",
+  "comparable_city_reasoning": "Based on general knowledge of Kathmandu's Thamel and other central tourist-visitor areas, benchmarked against other South Asian visitor hubs with similar backpacker and mid-range hotel tiers. Adjusted for July monsoon off-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 6.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 65.00
+  }
+}

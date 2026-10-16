@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of mid-sized Provençal towns, not inspected listings. Restaurant and café anchors are moderately reliable. Accommodation is less certain because July coincides with the Festival d'Aix-en-Provence, which pushes hotel and hostel rates up and varies widely by date. Cocktail and wine_glass are estimated from typical French café and bar pricing relative to beer, not from specific venue knowledge. The FX observation (RBA overview page, 15 Oct 2026, 4pm AEST midpoint) comes from a search summary of that page, not a direct page read.",
+  "comparable_city_reasoning": "Benchmarked against comparable southern French cities such as Avignon, Arles, Montpellier and Nîmes, adjusted upward for Aix's higher hotel and restaurant pricing and its July festival demand. Euro-denominated prices converted to USD at roughly 1.15 USD per EUR.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 15.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 220.00
+  }
+}

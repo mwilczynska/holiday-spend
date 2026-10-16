@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings. Restaurant and drink anchors are moderately confident. Accommodation is less certain because July is peak ski season in Queenstown, so nightly rates are at the high end of the normal range and vary widely by month and property. The FX value was reported in search results attributed to the RBA's exchange rates page, but I could not open that page to verify it directly.",
+  "comparable_city_reasoning": "Based on general knowledge of New Zealand resort-town price levels, with an uplift for the July winter ski-season peak in accommodation. Prices were converted from NZD to USD at an approximate rate from general knowledge. No specific comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 13.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 200.00
+  }
+}

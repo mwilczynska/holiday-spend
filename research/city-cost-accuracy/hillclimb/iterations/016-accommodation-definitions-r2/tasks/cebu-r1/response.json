@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are more reliable than accommodation, where Cebu's wide spread between districts (IT Park, Lahug, Mabolo, Mactan) makes the 1-star and 3-star figures less certain. Cocktail and wine_glass are derived from the local beer price using typical bar-to-beer ratios (roughly 3x for cocktails, 4x for wine by the glass) because direct knowledge is weak. July is rainy season with no major Cebu peak, so accommodation is treated as a normal rate. The FX value was taken from a search-result summary of the RBA exchange rates page and not verified by opening the page directly; the page's published F11 table should be checked before use.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized Philippine urban and leisure cities (Davao, Iloilo, Bohol-area tourism hubs) for food and hostels, with Metro Manila mid-range hotel pricing as a reference for the 3-star anchor, adjusted down for Cebu's lower hotel base. Cross-checked against general Southeast Asian mid-tier city price levels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 6.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 85.00
+  }
+}

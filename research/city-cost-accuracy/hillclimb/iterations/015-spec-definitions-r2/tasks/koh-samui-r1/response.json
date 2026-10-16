@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied context, not live listings. Restaurant and café anchors (beer, coffee, meals, wine) are moderately reliable. Accommodation anchors are less certain because Samui prices vary widely by beachfront location and season. Cocktail and wine_glass are estimated from the local beer and restaurant price relationship, not from direct menu knowledge. The FX observation was taken from a search-result summary of the RBA exchange rates overview and was not opened directly.",
+  "comparable_city_reasoning": "Based on Thai island and beach-resort pricing (Phuket, Krabi, Pattaya) with Koh Samui placed slightly below Phuket for restaurants and accommodation. Mainland Thai local-venue prices were used as the floor for the inexpensive and beer anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 85.00
+  }
+}

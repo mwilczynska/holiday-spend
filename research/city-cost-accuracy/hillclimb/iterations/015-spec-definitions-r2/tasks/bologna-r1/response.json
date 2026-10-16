@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Bologna and Italian price levels. No live booking pages, menus or listings were inspected. Restaurant and drink anchors are more reliable than hotel anchors, since July accommodation prices vary widely by date and neighbourhood. FX is not verified: the RBA table could not be read directly in this session. The 0.6947 value was taken from a third-party site (ozfinancehub.com.au) that attributes it to the RBA for 2026-10-16. Another site quoted 0.6923 for the same day. The source_url below is the RBA exchange-rates page that search surfaced, but its contents were not read. Confirm the rate against the RBA F11.1 table before relying on it.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized northern Italian university and regional cities with similar tourism demand and price levels (for example Parma, Padua and Turin), adjusted for Bologna's relatively high restaurant and café prices. Hotel rates reflect typical July demand for a city with a strong tourism and conference base.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 11.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 180.00
+  }
+}

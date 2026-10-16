@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings, or booking pages. Restaurant, café, and drink anchors are medium confidence. Accommodation anchors are lower confidence and assume a July (NZ winter, low-to-shoulder season) booking window, with taxes included. Cocktail and wine anchors are cross-checked against the beer anchor based on the usual local price relationship. The FX observation comes from search-result summaries of the RBA exchange rates table, not from a direct page read; the summaries agree on 0.6947 for 2026-10-16 and 0.6955 for 2026-10-15, so verify against the RBA page before relying on it.",
+  "comparable_city_reasoning": "No search was used for city prices. Estimates are based on general knowledge of Wellington central-city pricing, converted from NZD at an assumed rate of roughly 0.58 USD per NZD. Positioned close to Auckland and other New Zealand city-centre pricing, with Wellington's café culture informing the coffee and mid-range restaurant anchors.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 3.40,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 12.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 88.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 140.00
+  }
+}

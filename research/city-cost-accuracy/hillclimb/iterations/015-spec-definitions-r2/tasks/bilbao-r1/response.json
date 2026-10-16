@@ -1,0 +1,27 @@
+```json
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Basque and Spanish pricing, not from inspected listings or menus. Restaurant and café anchors are the most reliable; accommodation is less certain because July demand swings widely. Drink and hotel figures are estimated from typical euro price bands converted at an assumed rate near 1.16 USD per EUR. FX: the 2026-10-15 value comes from a single search summary that was not verified against the RBA table. Older RBA snippets from March 2026 in the same search results conflict with the newer figures, so the rate should be checked against the official F11.1 table before use.",
+  "comparable_city_reasoning": "No single named comparable city. Basis is general knowledge of mid-sized northern Spanish tourist cities, with Bilbao placed between cheaper inland cities such as Valencia or Seville and pricier San Sebastian. Restaurant anchors reflect Basque menu del dia and pintxo-bar price patterns; beer, cocktail and wine anchors use the local euro price relationship; hotel and hostel anchors reflect July summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 13.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 150.00
+  }
+}
+```

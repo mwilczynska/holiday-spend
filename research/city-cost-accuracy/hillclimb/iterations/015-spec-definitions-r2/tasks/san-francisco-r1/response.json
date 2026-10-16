@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for a July 2026 window, not checked against live listings or menus. Restaurant and café anchors are moderately certain. Hotel and hostel anchors are less certain because summer demand and event-driven rate swings are large. Tax and tipping treatment follows the field definitions. The FX observation came from a search-result summary of the RBA overview page and was not opened directly. A secondary site showed 0.6947 for 16 October 2026, and the RBA 4 pm rate for 15 October was used.",
+  "comparable_city_reasoning": "Benchmarked against high-cost North American metros (for example Seattle, Los Angeles, and New York) with a San Francisco premium on lodging and mid-range dining. No single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 18.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 62.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 300.00
+  }
+}

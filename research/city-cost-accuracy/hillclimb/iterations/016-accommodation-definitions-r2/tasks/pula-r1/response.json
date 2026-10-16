@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Istrian coastal pricing in peak July season, not live listings. Restaurant anchors (meals, beer, coffee, wine) are more reliable than accommodation, which varies widely by season, property, and booking window. Cocktail and wine are estimated from the local beer relationship because direct knowledge is weaker. Hostel and hotel anchors carry the widest uncertainty. FX is the RBA 15 October 2026 observation (0.6955), which both searches corroborated; a 16 October figure of 0.6947 was reported but not confirmed on an RBA fixing page.",
+  "comparable_city_reasoning": "Based on coastal Istrian and northern Dalmatian towns with similar summer tourism demand, such as Rovinj, Poreč, and Zadar, adjusted for Pula's larger size and urban accommodation supply. Prices assume euro-area pricing converted to USD and include mandatory taxes and tourist-tax fees where applicable.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.40,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 165.00
+  }
+}

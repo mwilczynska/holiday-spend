@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for Hyderabad, based on general knowledge of Indian city price levels and no live listings. Restaurant anchors are more reliable than accommodation, which varies widely by area, star rating, and GST band. July is monsoon season, so accommodation is estimated at non-peak rates. The FX observation comes from the RBA Exchange Rates Overview page as surfaced in web search; the page content was not read directly and was not checked against the F11.1 table.",
+  "comparable_city_reasoning": "Benchmarked against other large Indian metros and tech hubs (Bengaluru, Pune, Chennai) for restaurant and bar prices, and against mid-tier Indian business-hotel pricing for accommodation, with taxes included.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 55.00
+  }
+}

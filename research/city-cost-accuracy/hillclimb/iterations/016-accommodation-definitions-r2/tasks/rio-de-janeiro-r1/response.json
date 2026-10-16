@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are moderately certain. Accommodation anchors are less certain and assume July winter-season pricing in the Zona Sul areas visitors use (Copacabana, Ipanema, Botafogo), with taxes and fees included. Cocktail and wine anchors are based on the local price relationship to beer (about 2.0x and 1.6x the beer anchor), because direct knowledge of those prices is weaker. The FX observation (15 October 2026, 0.6955) was taken from search-result text attributed to the RBA, not from a direct read of the RBA table, so verify it before relying on it.",
+  "comparable_city_reasoning": "Benchmarked against Brazil's other large coastal tourist cities, mainly São Paulo, and against Latin American capitals with similar visitor demand, using BRL-denominated price levels converted at approximate recent exchange rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 110.00
+  }
+}

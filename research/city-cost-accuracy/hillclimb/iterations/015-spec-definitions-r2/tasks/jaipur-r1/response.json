@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings or menus. Restaurant meal and café anchors are the more reliable; hotel and hostel prices vary widely by season and location, and July is monsoon low season in Jaipur. Cocktail and wine_glass are less certain: they were set from the local beer price relationship because direct knowledge of bar pricing is weaker. Alcohol prices in Jaipur include high excise duty and vary by venue type, so beer, cocktail and wine carry the widest uncertainty.",
+  "comparable_city_reasoning": "Based on general knowledge of mid-sized North Indian tourist cities (such as Agra, Udaipur and Varanasi) with Jaipur's hotel and restaurant price levels, adjusted for July low season. Beer, cocktail and wine were estimated from the local price relationship between them, not from direct local knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 45.00
+  }
+}

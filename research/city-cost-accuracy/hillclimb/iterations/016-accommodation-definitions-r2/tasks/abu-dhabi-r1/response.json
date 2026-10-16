@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026, which is peak summer heat and low season for UAE hotels, so accommodation anchors reflect summer rates rather than winter peak. Restaurant and bar anchors are moderately confident, based on typical Abu Dhabi price levels. Alcohol prices are less certain because licensing and taxes vary by venue. Hostel anchors are lower confidence because Abu Dhabi has a thin hostel market. Cocktail and wine were set relative to the beer anchor using the typical local premium, since direct knowledge is weaker. No live booking pages or current listings were checked, and no web search was used for the city anchors. FX: the 2026-10-16 value of 0.6947 was taken from search results that attribute it to RBA data. I did not open the rba.gov.au F11.1 table to confirm it, and the 2026-10-15 value (0.6955) may be the latest published figure if the 16 October rate is not yet on the table, so verify before relying on it.",
+  "comparable_city_reasoning": "Benchmarked against Dubai and other Gulf coastal cities with similar hotel stock and alcohol pricing, adjusted down for Abu Dhabi's somewhat lower mid-range hotel rates and smaller hostel supply, and for July being low season for hotels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 13.5,
+    "coffee": 5.0,
+    "inexp_meal_1p": 10.0,
+    "midrange_meal_2p": 105.0,
+    "cocktail": 18.0,
+    "wine_glass": 16.5,
+    "hostel_dorm_1p": 38.0,
+    "hostel_private_2p": 85.0,
+    "hotel_1star_2p": 65.0,
+    "hotel_3star_2p": 115.0
+  }
+}

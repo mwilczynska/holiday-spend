@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are holistic estimates from general knowledge of Swiss and Ticino price levels, with moderate uncertainty. Accommodation anchors are less certain and reflect typical July high-season rates in Lugano, not live listings. No live booking pages or current listings were inspected. The FX observation comes from a search summary of the RBA exchange-rates overview page; I did not open the page or the F11.1 table directly, and no separate 16 October RBA observation was confirmed.",
+  "comparable_city_reasoning": "Based on Swiss price levels adjusted for Ticino, which runs somewhat below Zurich and Geneva but well above typical northern Italian lakeside towns. Accommodation reflects July lakeside tourism demand in Lugano. Drink anchors use direct knowledge of Swiss restaurant pricing rather than the beer-relationship method.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 6.00,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 160.00,
+    "cocktail": 20.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 235.00
+  }
+}

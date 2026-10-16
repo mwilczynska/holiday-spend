@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate with no live price checks. Restaurant and drink anchors are moderately uncertain because Egyptian pound-denominated prices move with currency swings; accommodation (especially 3-star) and wine are least certain. The FX value comes from search-result excerpts of the RBA exchange-rate page, not a direct page read, and should be verified against the RBA series before use.",
+  "comparable_city_reasoning": "Benchmarked against budget Red Sea and South Sinai coastal tourist towns and Egyptian beach resorts, using the price tier of backpacker-oriented Dahab for hostels and guesthouses and a mid-range seafood-restaurant tier for dining. Egypt is classed as Africa (Northern Africa) for region purposes.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 1.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 55.00
+  }
+}

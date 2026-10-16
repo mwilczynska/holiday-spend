@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Polish resort pricing, not checked against live menus, rate cards, or listings. Restaurant and café anchors are moderately certain. Accommodation is less certain because July is peak season in the Tatras and rates vary widely by location, season, and booking lead time. Drink anchors are direct estimates rather than derived from beer. Street food (zapiekanka) and fast food are excluded from the meal anchor by definition. Values are USD equivalents of local-currency price levels and move with the zloty exchange rate.",
+  "comparable_city_reasoning": "Based on Polish mountain resort pricing, with Zakopane's summer premium over typical Polish mid-sized cities such as Kraków, and on comparable alpine and mountain tourist towns in Central Europe. No single city was used as a direct price anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 150.00
+  }
+}

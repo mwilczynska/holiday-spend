@@ -1,0 +1,29 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and regional price patterns, not checked against live listings or current menus. Restaurant and café anchors are moderately reliable. Hostel and hotel anchors are less certain because Antofagasta's mining-linked business demand can push accommodation prices up and vary by season. Cocktail and wine anchors were estimated directly from typical Chilean bar and restaurant pricing, not derived from the beer anchor.",
+  "comparable_city_reasoning": "Based on mid-sized Chilean coastal and mining-port cities, with restaurant prices set somewhat below Santiago and accommodation priced higher than the national average because of mining and business demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 8.0,
+    "midrange_meal_2p": 45.0,
+    "cocktail": 8.0,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 16.0,
+    "hostel_private_2p": 45.0,
+    "hotel_1star_2p": 40.0,
+    "hotel_3star_2p": 105.0
+  }
+}
+
+Sources:
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)

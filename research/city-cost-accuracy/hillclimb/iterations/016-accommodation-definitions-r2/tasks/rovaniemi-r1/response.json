@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Finnish Lapland pricing, not inspected live listings. Restaurant and cafe anchors are moderately reliable. Accommodation anchors are less certain because summer demand in Rovaniemi varies with midnight-sun tourism and Christmas-season pricing is excluded. Drink anchors are based on typical Finnish restaurant price levels. FX: the 0.6955 value for 2026-10-15 came from a search summary that attributed it to the RBA exchange rates page. I did not open the RBA page, and a third-party aggregator reported 0.6947 for 2026-10-16, which I could not confirm against the RBA.",
+  "comparable_city_reasoning": "Benchmarked against Finnish regional tourist towns outside Helsinki, with Finland's Nordic price level applied to a Lapland summer tourism market. Accommodation is estimated for July demand, and the euro-to-USD conversion assumes roughly 1.15 to 1.17 USD per EUR.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 16.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 185.00
+  }
+}

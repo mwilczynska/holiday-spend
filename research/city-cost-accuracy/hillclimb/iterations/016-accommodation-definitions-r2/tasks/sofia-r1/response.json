@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and regional price levels, not from live booking pages or current menus. Bulgaria adopted the euro on 1 January 2026, so the USD figures assume euro-era Sofia price levels. Restaurant and coffee anchors are moderately confident. Cocktail and wine_glass are less certain and were set using Sofia's local price relationship to beer, since direct knowledge is weak. Hostel and hotel anchors are the least certain: they assume July peak-season rates, which can vary widely with event dates and booking lead time, and they reflect central Sofia areas where visitors usually stay.",
+  "comparable_city_reasoning": "Regional basis: Central and Southeastern European capitals with similar tourism demand and mid-range price levels, such as Budapest and Bucharest, adjusted for Sofia's generally lower restaurant and bar prices and its moderate accommodation rates. No specific current listings were used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 2.70,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 85.00
+  }
+}

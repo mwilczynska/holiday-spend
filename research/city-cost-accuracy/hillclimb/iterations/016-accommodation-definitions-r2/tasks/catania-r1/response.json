@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Sicilian pricing, not checked against live menus or listings. Restaurant and drink anchors are moderately reliable; accommodation anchors are less certain and assume July peak-season rates including city tourist tax. The FX value comes from a search summary of the RBA overview page, not from the page content itself, so verify it before relying on it.",
+  "comparable_city_reasoning": "Based on mid-sized southern Italian tourist cities such as Palermo and Syracuse, adjusted for Catania's lower hotel prices than Taormina and its July demand from Etna and coastal visitors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 2.90,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 82.00,
+    "hotel_1star_2p": 92.00,
+    "hotel_3star_2p": 150.00
+  }
+}

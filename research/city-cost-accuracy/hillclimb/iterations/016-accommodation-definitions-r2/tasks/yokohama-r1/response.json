@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer prices are moderately reliable; July accommodation rates, which vary with events and demand, are the least certain, and the cocktail and wine anchors are set relative to the beer price. The FX value (0.6947 USD per AUD, 2026-10-16) came from search-result summaries that cite RBA data and was corroborated by same-day market reports, but I did not open the rba.gov.au page directly.",
+  "comparable_city_reasoning": "Based on the Tokyo metropolitan price level, adjusted down for Yokohama's somewhat lower central accommodation and dining costs. Yen-denominated prices were converted at roughly 158 JPY per USD for this estimate.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 160.00
+  }
+}

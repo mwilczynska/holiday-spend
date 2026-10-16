@@ -1,0 +1,29 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not live listings. Restaurant anchors are more reliable than accommodation, and Tulum's spread is wide (town versus beachfront hotel zone), so the midrange and hotel figures carry more uncertainty. Drink prices are moderately uncertain. The FX observation comes from a search-result summary of the RBA overview page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Based on Caribbean-coast Mexican resort towns, primarily Playa del Carmen and Cancun, adjusted toward Tulum town pricing for ordinary venues. Accommodation reflects July high-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 12.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 150.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Riga's price levels, not checked against live menus, booking sites, or July 2026 listings. Restaurant and café anchors are moderately certain. Hostel and hotel anchors are less certain because summer demand moves rates a lot. USD values assume roughly 1.15 USD per EUR, so they will shift with the exchange rate. Cocktail and wine are estimated from local beer and restaurant price levels, since direct knowledge is weaker. The FX observation is the RBA 16 October 2026 figure reported in search results, not independently opened on the RBA page.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized Baltic and Eurozone capitals with similar tourism demand and price levels, such as Tallinn and Vilnius, adjusted for Riga's typical restaurant and accommodation pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.60,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 115.00
+  }
+}

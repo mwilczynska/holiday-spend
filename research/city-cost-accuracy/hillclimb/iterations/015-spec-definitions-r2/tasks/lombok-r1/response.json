@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for Lombok, Indonesia, July 2026, not checked against live listings or venue prices. Restaurant and café anchors are moderately confident. Hostel and hotel anchors are less certain because Lombok's accommodation market varies widely by area (Kuta, Senggigi, Gili access points, Mataram). Cocktail and wine are estimated from the local beer relationship because direct knowledge is weaker. Indonesian rupiah conversion makes all USD values sensitive to exchange-rate movement.",
+  "comparable_city_reasoning": "Based on Indonesian tourist-island price levels, using Bali's lower-cost tourist areas (such as Kuta and Ubud outskirts) and mid-tier coastal Southeast Asian resort towns as a regional reference. Lombok is generally priced somewhat below Bali for food and accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 5.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 13.00,
+    "hotel_3star_2p": 50.00
+  }
+}

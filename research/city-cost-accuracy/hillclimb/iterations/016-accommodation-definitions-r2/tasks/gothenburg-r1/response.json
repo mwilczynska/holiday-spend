@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Swedish and Nordic price levels. No live booking pages or current listings were inspected. Restaurant and drink anchors are moderately reliable. Accommodation anchors are less certain because July demand in Gothenburg varies by event and booking lead time, and the figures are rounded typical nightly prices including taxes. The FX observation comes from one standard web search of the RBA Exchange Rates page; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "Basis is Sweden and the Nordic region. Restaurant and drink prices are set a little below Stockholm and in line with other mid-sized Scandinavian port and university cities such as Malmö and Aarhus. Accommodation reflects typical registered hostel and hotel rates in central Gothenburg for a July visit.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 15.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 220.00
+  }
+}

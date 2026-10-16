@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are moderately reliable for a Cretan resort town in peak July season. Accommodation is less certain because July rates swing widely with demand. Cocktail and wine are estimated from the usual Greek beer relationship, not direct knowledge. FX: the 2026-10-16 value was taken from a search summary of the RBA exchange-rates table; the RBA page was not opened directly. The 2026-10-15 value of 0.6955 was also reported in that summary.",
+  "comparable_city_reasoning": "Benchmarked against Chania and Heraklion and other Cretan and mainland Greek coastal tourist towns of similar size and July demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "AUD_PER_USD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 3.80,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 12.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 160.00
+  }
+}

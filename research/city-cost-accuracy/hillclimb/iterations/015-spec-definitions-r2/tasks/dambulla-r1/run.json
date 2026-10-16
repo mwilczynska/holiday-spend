@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 95736,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 70873,
+          "outputTokens": 7885,
+          "cacheReadInputTokens": 9691,
+          "cacheCreationInputTokens": 6395,
+          "webSearchRequests": 4,
+          "costUSD": 0.05240571,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 5374,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05240571,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 rate",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates daily USD per AUD 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "\nClaude configuration file at C:\\Users\\chawi\\.claude.json is corrupted: JSON Parse error: Unexpected EOF\nThe corrupted file has already been backed up.\nA backup file exists at: C:\\Users\\chawi\\.claude\\backups\\.claude.json.backup.1792171412432\nYou can manually restore it by running: cp \"C:\\Users\\chawi\\.claude\\backups\\.claude.json.backup.1792171412432\" \"C:\\Users\\chawi\\.claude.json\"\n\n",
+      "stdoutUnparsed": null,
+      "hasText": true
+    }
+  ]
+}

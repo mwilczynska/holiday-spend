@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Chinese tier-2 city pricing; no live listings or booking pages were inspected. Restaurant and cafe anchors are moderately grounded. Accommodation anchors are less certain and assume July peak-summer demand around the Central Street and Daoli districts. Cocktail and wine_glass are weakly grounded and were set from the local beer relationship (cocktail roughly 4-5x draft beer, wine glass roughly 3.5-4x). FX: the RBA value could not be independently confirmed. One search summary attributed it to the RBA page, but a follow-up search did not reproduce it, so verify the observation on rba.gov.au before use.",
+  "comparable_city_reasoning": "Benchmarked to Chinese provincial-capital and tier-2 northern cities with similar domestic tourism (for example Changchun and Shenyang), adjusted for Harbin's summer visitor demand. Restaurant and cafe prices follow mainland Chinese chain and independent price levels. Accommodation follows registered hostel and hotel pricing in Harbin's central tourist districts.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.90,
+    "coffee": 3.50,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 58.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live booking pages or current menus. Restaurant and drink anchors are more reliable than July accommodation anchors, which are peak-season and more uncertain. Cocktail and wine are set from the local beer relationship. The FX observation comes from a search-result summary of the RBA overview page and was not opened directly.",
+  "comparable_city_reasoning": "Based on general knowledge of Romanian mid-sized university and tourism cities such as Timisoara, Iasi, Brasov and Sibiu, adjusted for Cluj-Napoca's tech-sector and student demand. Accommodation anchors reflect July peak-season pricing including taxes.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 9.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 21.00,
+    "hostel_private_2p": 58.00,
+    "hotel_1star_2p": 68.00,
+    "hotel_3star_2p": 120.00
+  }
+}

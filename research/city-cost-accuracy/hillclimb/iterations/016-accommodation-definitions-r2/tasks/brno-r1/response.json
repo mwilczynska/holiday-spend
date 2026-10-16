@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live listings. Restaurant anchors are moderately reliable. Accommodation anchors are less certain and assume a July peak-season rate including Czech VAT and city tax. Cocktail and wine were anchored to the local beer price relationship. The FX observation came from a search summary attributed to the RBA exchange-rates page; I did not open the RBA page or the F11 table to verify it.",
+  "comparable_city_reasoning": "Basis is Czech regional and mid-sized Central European cities such as Olomouc and Plzen, with Brno hotel and hostel pricing set below Prague and above smaller regional towns given its trade-fair and university demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 145.00
+  }
+}

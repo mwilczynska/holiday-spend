@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of mid-sized Mexican cities; no live booking pages or menus were inspected. Restaurant and café anchors are more reliable than hotel and hostel anchors, which vary more by season, event calendar, and platform. Accommodation anchors assume typical July rates including Mexican taxes (IVA and lodging tax). Cocktail and wine anchors are inferred from the local beer price level because direct knowledge of bar pricing is weaker. FX observation taken from the RBA exchange rates page as returned in search results; the 16 October 2026 value was not confirmed by opening the page.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Mexican colonial and regional cities with domestic tourism and some international visitors (for example Guanajuato, Puebla, and San Luis Potosí), adjusted to Querétaro's levels. Priced below Mexico City and San Miguel de Allende, and above the cheapest regional towns.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 9.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 100.00
+  }
+}

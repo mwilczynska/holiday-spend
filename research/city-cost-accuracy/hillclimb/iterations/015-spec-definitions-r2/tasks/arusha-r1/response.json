@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate from general knowledge of Arusha's safari-tourist pricing. No price searches were run and no live listings or booking pages were checked. Local prices are in Tanzanian shillings (TZS) and were converted at an assumed rate of roughly 2,500 to 2,700 TZS per USD. Certainty is lowest for accommodation and drinks, and the mid-range meal anchor has wide variance between tourist-oriented restaurants. FX is stale: the only RBA observation seen in search results is dated 2026-03-20, not the latest available. A third-party site (ozfinancehub.com.au) reports 0.6947 USD per AUD for 2026-10-16 and attributes it to the RBA, but I did not verify that figure against the RBA table and its date metadata is inconsistent. The server should check the latest F11 row on rba.gov.au before relying on this rate.",
+  "comparable_city_reasoning": "Regional basis: East African safari-hub towns with TZS-denominated local pricing, such as Moshi and tourist districts of Nairobi. Accommodation anchors reflect Arusha's safari-tourist demand, and restaurant and drink anchors reflect a mix of local eateries and tourist-oriented venues.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.60,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 95.00
+  }
+}

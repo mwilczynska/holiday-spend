@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Trinidad here is the Cuban colonial town in Sancti Spiritus province, not Trinidad and Tobago. Cuban tourist prices are volatile and often quoted in USD or EUR, with shortages and dual pricing making them hard to pin down, so all anchors are wide. Accommodation is mainly private casas particulares, so the hostel anchors (especially dorm beds) are the least reliable because registered hostels are scarce. The hotel_3star anchor reflects state-run tourist hotels, which are priced above typical town venues. Cocktail and wine_glass are set relative to the beer anchor because direct knowledge of bar and wine prices is weak. July is a low-season, hot-weather period, which is reflected in the accommodation estimates.",
+  "comparable_city_reasoning": "Based on general Cuban provincial tourist-town pricing (casa particular, paladar and state hotel price levels), cross-checked against other Caribbean and Latin American tourist towns of similar size. No web search was used for city prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 85.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Colombian price levels, not from inspected listings or menus. Restaurant anchors (beer, coffee, meals) are moderately reliable. Accommodation anchors are less certain and assume taxes and mandatory fees are included. Cocktail and wine were set from the local beer relationship (about 3 times the beer price) because direct knowledge is weak. Colombian peso rates are volatile, so USD figures may drift from the reference window.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Colombian and Andean tourist cities, priced somewhat below Bogota and Medellin for restaurants and mid-range hotels, with hostel and budget-hotel prices in line with comparable Latin American mid-sized cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

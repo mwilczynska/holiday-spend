@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Andalusian city pricing; no live listings or booking pages were checked. Restaurant, café and beer anchors are moderately reliable. Accommodation, cocktail and July peak-season hotel rates are less certain. The FX observation comes from RBA overview and homepage search snippets for 15 October 2026 at 4pm, not from a full F11.1 table read.",
+  "comparable_city_reasoning": "Benchmarked against Seville, Granada and Málaga, with Córdoba priced somewhat below Seville and Málaga for restaurants and hotels. Based on general knowledge of mid-sized Spanish tourist cities in summer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.60,
+    "coffee": 2.60,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 12.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 58.00,
+    "hotel_3star_2p": 125.00
+  }
+}

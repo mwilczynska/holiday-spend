@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Tallinn price levels, not checked against live menus, listings or booking pages. Restaurant and café anchors are moderately reliable. Accommodation anchors are less certain because July is peak season and rates vary widely by location and booking date. Drink anchors for cocktail and wine are estimated from the local beer price relationship, since direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "Based on general knowledge of Estonia's capital and comparable Baltic and Northern European capitals with similar July tourism demand, such as Riga and Vilnius, adjusted for Tallinn's Old Town tourist pricing. Cocktail and wine anchors use the local beer relationship as a fallback.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 3.90,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 160.00
+  }
+}

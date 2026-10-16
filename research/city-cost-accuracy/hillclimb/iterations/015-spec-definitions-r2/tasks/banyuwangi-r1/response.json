@@ -1,0 +1,27 @@
+```json
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings, or booking sites. Restaurant and dorm anchors are moderately certain. Hotel anchors and cocktail prices are less certain because Banyuwangi has a thinner, more variable lodging and bar scene than Bali. FX provenance: the RBA daily table in search results showed 0.6947 for 2026-10-16, while the RBA overview and homepage showed 0.6955 for 2026-10-15. The 2026-10-16 value is reported here, but it should be verified against the RBA page.",
+  "comparable_city_reasoning": "Basis is secondary East Java and Lombok-style Indonesian tourism towns (for example Malang and Mataram) with some surf and nature-tourism demand, priced below Bali resort areas. Cocktail and wine anchors use the local price relationship to beer, since direct knowledge of bar prices is weak. Wine is set at roughly three to four times the beer anchor, and cocktail at roughly two and a half times.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 1.90,
+    "inexp_meal_1p": 1.80,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 4.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 40.00
+  }
+}
+```

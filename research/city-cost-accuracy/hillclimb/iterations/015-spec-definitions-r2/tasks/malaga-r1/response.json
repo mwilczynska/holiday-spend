@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings or booking pages. Café, menu del día and restaurant anchors are the more reliable; accommodation is less certain because July peak-season rates vary widely. Beer is priced per 0.5 L equivalent, since Spanish bars usually serve smaller cañas.",
+  "comparable_city_reasoning": "Based on typical ordinary-venue prices in mid-sized Andalusian tourist cities such as Seville and Granada, adjusted for Malaga's coastal summer demand. No specific external source was used for the city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 2.60,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 12.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 150.00
+  }
+}

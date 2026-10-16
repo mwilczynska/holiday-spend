@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Chiang Mai price levels, not checked against live listings or current menus. Restaurant and beer anchors are the most reliable. Cocktail and wine are less certain: no direct price data was used, so they are set from the local beer price (cocktail roughly 3x beer, wine glass roughly 3.5x beer, because alcohol is heavily taxed in Thailand). Accommodation is also less certain and assumes July green-season rates, which sit below the Nov-Feb peak. The FX rate comes from an RBA Exchange Rates Overview page surfaced by search, not from a fetched F11 table, and a third-party aggregator quoted a slightly different figure for 16 October, so confirm it against the official RBA table.",
+  "comparable_city_reasoning": "Anchored to general Thai provincial and northern-city price levels, with Bangkok excluded because it is substantially more expensive. Comparable to other mid-sized Southeast Asian tourist cities with a strong local café and guesthouse market. Thai baht conversion assumed at roughly 33 THB per USD.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 55.00
+  }
+}

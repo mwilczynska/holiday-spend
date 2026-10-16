@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Krakow price levels, not live listings or booking pages. Restaurant and coffee anchors are the most reliable. Accommodation is less certain because July is peak season and prices vary widely by district and season. Hotel anchors assume taxes and the city tourist tax are included. Beer, cocktail and wine are bounded using typical central-Krakow tourist-area pricing relative to beer. The FX observation comes from a search summary attributed to the RBA exchange-rates page; I did not read that page directly, and a secondary site reports a slightly different 16 October figure.",
+  "comparable_city_reasoning": "Comparable to other mid-sized Central European tourist cities such as Prague, Budapest, Wroclaw and Gdansk, with Krakow's July accommodation pricing set above its off-peak level because of tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.80,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 10.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 150.00
+  }
+}

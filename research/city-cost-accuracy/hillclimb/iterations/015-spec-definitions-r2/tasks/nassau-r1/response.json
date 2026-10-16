@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Nassau's tourist pricing, which runs high for the Caribbean, with 10% VAT and a common 15% service charge on restaurant bills. Restaurant and bar anchors are moderately confident. Hostel anchors are least certain because Nassau has few registered hostels, so the dorm and private-room values are bounded guesses. Hotel anchors are sensitive to season and property, and July is a shoulder period. No live listings or booking pages were checked. FX value 0.6955 comes from a search-result summary attributed to the RBA Exchange Rates Overview page; the page itself was not opened, so verify it against rba.gov.au before use.",
+  "comparable_city_reasoning": "Regional basis: high-cost English-speaking Caribbean tourist capitals and resort-city pricing, with restaurant and hotel levels calibrated to typical North American island resort pricing. Not based on a named comparable city's verified price list.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.75,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 14.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 230.00
+  }
+}

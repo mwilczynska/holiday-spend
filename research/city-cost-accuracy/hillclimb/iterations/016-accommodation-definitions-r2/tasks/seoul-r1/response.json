@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge and city context; no live booking pages or listings were inspected. Restaurant anchors are more reliable than accommodation, which is sensitive to July peak-season demand and district. Cocktail (about 2.5x beer) and wine_glass (about 2.4x beer) are derived from the local beer relationship because direct knowledge is weaker. Assumed exchange rate roughly 1,350 to 1,450 KRW per USD. The FX observation was taken from a search summary attributing it to the RBA for 15 October 2026; the RBA page itself was not opened or verified in this session.",
+  "comparable_city_reasoning": "Based on major East Asian capitals with similar restaurant and mid-range hotel pricing, such as Tokyo. Accommodation reflects central visitor districts (Myeongdong, Jongno, Hongdae) in July, including taxes and mandatory fees.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 12.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 140.00
+  }
+}

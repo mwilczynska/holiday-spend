@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not based on live listings or price checks. Restaurant and café anchors are more reliable than hotel and hostel anchors, which vary more with season and booking timing. The July 2026 peak season could push accommodation toward the upper end of each range. The FX value was not verified on rba.gov.au. It comes from a secondary site that says it republishes RBA data for 16 October 2026, and the RBA's 4pm figure may not have been published yet at generation time.",
+  "comparable_city_reasoning": "Basis is Switzerland's high general cost level, with Geneva's food and drink prices benchmarked against other large Swiss cities such as Zurich and Lausanne. Geneva is treated as one of Europe's most expensive cities, so accommodation anchors are set above typical Western European mid-sized cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 6.00,
+    "inexp_meal_1p": 24.00,
+    "midrange_meal_2p": 180.00,
+    "cocktail": 22.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 180.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 320.00
+  }
+}

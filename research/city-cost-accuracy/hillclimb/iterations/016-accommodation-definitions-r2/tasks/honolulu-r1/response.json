@@ -1,0 +1,29 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus or booking pages. Restaurant and café anchors are moderately certain. Accommodation is least certain: July is peak season, so nightly rates sit at the high end, and Hawaii transient accommodation tax, general excise tax and some resort fees are included. Hostel anchors are the least certain, since registered hostel supply in Honolulu is limited and changes often. Cocktail and wine anchors rely on the local price relationship to beer.",
+  "comparable_city_reasoning": "Based on high-cost US leisure markets with comparable Waikiki-style tourism demand, such as Maui and San Diego, adjusted for Honolulu's island import costs and peak-season hotel pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 16.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 62.00,
+    "hostel_private_2p": 145.00,
+    "hotel_1star_2p": 210.00,
+    "hotel_3star_2p": 330.00
+  }
+}
+
+Sources:
+- [Reserve Bank of Australia, Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [Reserve Bank of Australia, Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)

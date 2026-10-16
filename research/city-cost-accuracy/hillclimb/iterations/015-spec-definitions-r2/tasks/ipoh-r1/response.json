@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Ipoh and Malaysian price levels. Not checked against live menus, booking pages or current listings. Restaurant and beer anchors are moderately confident; hotel and hostel anchors are less certain because rates vary with season, weekends and listing type. Cocktail and wine_glass were set from the local price relationship to beer, since direct knowledge of Ipoh bar prices is weak. The FX value (0.6955 for 2026-10-15) comes from a search-result summary attributed to the RBA exchange rates page. I did not open the RBA page directly, and a later 16 October figure from a third-party site could not be confirmed on rba.gov.au.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized Malaysian cities priced below Kuala Lumpur and Penang, with Ipoh's food-centred local restaurant scene as the main reference point. No single named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.10,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 9.50,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 60.00
+  }
+}

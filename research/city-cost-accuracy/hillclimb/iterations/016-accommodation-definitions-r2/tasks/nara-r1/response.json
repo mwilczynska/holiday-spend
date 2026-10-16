@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the Nara/Kansai tourism context, not checked against live menus or booking pages. Restaurant and drink anchors are moderately confident. Accommodation anchors are less certain because July is peak summer demand and rates vary by weekday and event. The FX observation could not be verified against the RBA table in this session: the only directly seen RBA figure is an older March 2026 observation, and a later summary I could not confirm from the page itself was not used.",
+  "comparable_city_reasoning": "Based on Kansai-region small-city tourism pricing, benchmarked against Kyoto and Osaka price levels with a discount for Nara's smaller scale and lower hotel supply. Japanese restaurant and cafe prices are used for the meal and drink anchors, and summer peak pricing is applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 7.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 150.00
+  }
+}

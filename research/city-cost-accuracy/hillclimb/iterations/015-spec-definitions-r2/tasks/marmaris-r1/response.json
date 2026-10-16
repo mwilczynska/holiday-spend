@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Marmaris and Turkish resort pricing for July 2026, not from live listings or booking pages. Restaurant anchors are moderate confidence. Accommodation anchors are lower confidence because July is peak season and rates vary widely. Cocktail and wine_glass were set from local beer using a price relationship (cocktail about 2x beer, wine glass about 1.5x beer) because direct knowledge is weak. Turkish prices move quickly with inflation, so these may drift. The FX observation comes from the RBA exchange-rates overview page as surfaced in search results (15 Oct 2026, 4.00 pm), not from the RBA F11.1 table itself.",
+  "comparable_city_reasoning": "Based on other Aegean and Mediterranean Turkish resort towns such as Fethiye and Bodrum, adjusted down for Turkish price levels, and on Mediterranean resort towns in southern Europe for the tourist-accommodation tier. Region set to Europe because Turkey's Aegean coast is grouped with European tourism markets in this taxonomy.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 120.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer, coffee, cocktail, and wine anchors are holistic model estimates from general knowledge of German city pricing; Düsseldorf is a comparatively expensive western German city. Accommodation anchors are less certain because July fair and event demand can push room rates well above typical levels. No live booking pages or current listings were checked. The 2026 EUR/USD conversion is an assumed rate of about 1.15, not a sourced figure. FX provenance is weak: the 0.6955 figure was reported in search summaries as an RBA 4.00pm observation for 2026-10-15, but I could not confirm it on the RBA page, and a third-party site lists 0.6947 for 2026-10-16. Verify fx against the RBA F11.1 table before relying on it.",
+  "comparable_city_reasoning": "Based on comparable mid-to-large western German cities with similar tourism and business demand, such as Cologne and Frankfurt, with Düsseldorf restaurant and hotel levels set slightly below Munich.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 98.00,
+    "cocktail": 14.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 180.00
+  }
+}

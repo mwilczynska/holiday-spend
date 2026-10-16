@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Gold Coast and Queensland prices. No live booking pages or current listings were checked. Restaurant and café anchors are moderately reliable. Accommodation is least certain because July falls in Queensland school holidays, when Surfers Paradise rates run high and vary widely by venue and week. Drink anchors are rough: the cocktail and wine values are set from typical Australian beer and bar price relationships, not direct observation. FX is an October 2026 RBA observation, applied to a July 2026 pricing window and used only as context; the USD anchors are not derived from it. A 16 October 2026 rate of 0.6947 appeared only on a third-party site, was not confirmed on rba.gov.au, and was not used.",
+  "comparable_city_reasoning": "Restaurant, café and bar anchors follow Australian coastal tourist cities of similar size, such as the Sunshine Coast, Cairns and central Brisbane. Accommodation anchors follow the Surfers Paradise and Broadbeach tourist market for budget hostels, basic motels and mid-range hotels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 3.75,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 14.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 160.00
+  }
+}

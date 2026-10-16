@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Belgrade's price levels, not checked against live menus or booking listings. Restaurant and café anchors are more reliable than accommodation, which varies with season, neighborhood, and event demand. Drink anchors are based on local restaurant and bar pricing knowledge. FX: the latest RBA figure I could locate is for 15 October 2026 (0.6955), taken from search-result summaries rather than a direct page read; a 16 October observation was not confirmed.",
+  "comparable_city_reasoning": "Priced against mid-sized Central and Southeast European capitals with similar tourism demand, such as Sofia, Bucharest, and Budapest, and kept below Western European capital levels. Accommodation assumes July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.80,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 52.00,
+    "hotel_3star_2p": 105.00
+  }
+}

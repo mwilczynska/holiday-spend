@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Japanese price levels and Fuji-area resort seasonality, not live listings. Restaurant and drink anchors are medium confidence. Accommodation anchors are lower confidence because July is peak Mount Fuji season and nightly rates vary widely by weekday, lake view and hotel tier. Taxes and mandatory fees are assumed to be included. The FX observation was taken from a search summary attributed to the RBA homepage (0.6955 at 4.00 pm, 15 Oct 2026); I did not open the page to confirm it. A third-party site reproducing RBA data showed 0.6947 for 16 Oct 2026, so the RBA page should be checked before use.",
+  "comparable_city_reasoning": "Based on general Japanese price levels, with Fujikawaguchiko priced as a Mount Fuji lakeside resort town. Restaurant and drink prices are set near typical Japanese regional tourist towns and somewhat below Hakone and Kawaguchiko-core peak prices. Accommodation is set against peak-July demand in Fuji Five Lakes towns, with no specific comparable property or listing used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 200.00
+  }
+}

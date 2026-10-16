@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Zurich price levels, which are among the highest in Europe. Restaurant anchors are more reliable than accommodation and drinks. Hotel and hostel figures carry the widest uncertainty because seasonal demand in July can move rates substantially. No live listings or booking pages were checked. Beer, coffee, and meal values reflect typical CHF price bands converted at approximately current USD levels.",
+  "comparable_city_reasoning": "Based on high-cost Swiss urban benchmarks (Geneva, Bern, Basel) and the general Zurich premium over other large European cities such as Munich and Vienna.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 190.00,
+    "cocktail": 22.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 165.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 300.00
+  }
+}

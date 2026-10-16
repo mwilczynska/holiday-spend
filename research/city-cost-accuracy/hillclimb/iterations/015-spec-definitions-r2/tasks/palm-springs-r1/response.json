@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and beer anchors are more reliable than hostel anchors, since Palm Springs has few registered hostels and their prices are uncertain. Hotel prices reflect July low season, when desert resort rates are usually well below winter peak. FX is the latest RBA observation I could verify (2026-03-20), not a confirmed rate for the generation date (2026-10-16), so it may be stale.",
+  "comparable_city_reasoning": "Based on US desert and Southwest leisure towns of similar size and tourism profile, with a summer low-season adjustment applied to lodging anchors. No specific venues or listings were consulted.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.25,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 15.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 210.00
+  }
+}

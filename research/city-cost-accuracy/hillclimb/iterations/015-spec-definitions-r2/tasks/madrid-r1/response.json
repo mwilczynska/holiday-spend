@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, café and bar anchors are holistic estimates from general knowledge of Madrid price levels in 2025-2026, converted at about 1.15 USD per EUR. Accommodation for July high season is less certain and may vary widely by neighbourhood and booking lead time. FX WARNING: I did not open the RBA page or the RBA F11.1 table. The 0.6947 USD per AUD figure for 2026-10-16 comes from a third-party site (ozfinancehub.com.au) that says it reproduces RBA rates. Its page age stamp is internally inconsistent, and the RBA cached page I saw still showed March 2026 data. The server should verify the rate against the official RBA F11.1 table before relying on it. The source_url is the RBA page to check, not a page I read.",
+  "comparable_city_reasoning": "Benchmarked against other large Southern European capitals with similar tourism demand and price levels, such as Barcelona and Lisbon, adjusted for Madrid's comparatively lower restaurant and café prices and higher July hotel rates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 2.90,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 14.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 37.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 170.00
+  }
+}

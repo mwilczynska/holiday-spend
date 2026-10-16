@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings, or current rates. Zimbabwe's multi-currency, USD-denominated tourist pricing and its history of inflation make these figures less reliable than for stable markets. Accommodation and dinner bills are the most uncertain, and July is peak season in Victoria Falls, so those figures carry a tourist premium. Beer is a bottled-lager equivalent at an ordinary restaurant because draught is less common locally. Cocktail (about 2.3x beer) and wine glass (about 2x beer) are estimated from the local beer relationship because direct knowledge of those prices is weak.",
+  "comparable_city_reasoning": "Based on southern African tourism towns with similar visitor-driven pricing, such as Livingstone (Zambia) and Kasane (Botswana), adjusted for Zimbabwe's USD-based pricing and the tourist premium in Victoria Falls during the July high season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 3.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 6.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 120.00
+  }
+}

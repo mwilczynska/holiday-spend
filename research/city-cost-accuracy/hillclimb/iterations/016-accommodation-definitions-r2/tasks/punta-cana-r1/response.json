@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings. Restaurant and drink anchors are medium confidence because resort-area menus are fairly predictable. Hostel anchors are low confidence because Punta Cana has few registered hostels, so the dorm and private-room figures are rough. Hotel anchors are medium-low because resort-area rates vary widely by property and season; July is shoulder season with hurricane-season risk, so these are not peak-season rates. FX NOT VERIFIED: web searches returned no confirmable RBA observation for the latest date. Results were third-party, undated, or older than the reference window, and the rba.gov.au results gave no readable rate content. The fx observation fields are therefore null. Do not convert AUD values from this record until a verified RBA observation is supplied. The official source is the RBA exchange rates table at https://www.rba.gov.au/statistics/frequency/exchange-rates.html.",
+  "comparable_city_reasoning": "Based on general knowledge of Caribbean resort destinations with similar all-inclusive and beach-tourism price structures, such as Cancun/Playa del Carmen and Puerto Plata. Local food prices are benchmarked to the Dominican domestic market. Accommodation is benchmarked to the Bavaro/Punta Cana resort corridor, where visitors typically stay, and includes typical Dominican taxes and service charges.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 10.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 150.00
+  }
+}

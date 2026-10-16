@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings. Restaurant and beer anchors are moderately reliable; hostel and hotel anchors are less certain because summer demand in Cardiff varies with events. GBP-to-USD conversion uses an assumed working rate of about 1.33, not a live rate. The FX observation came from a search result that described the RBA daily page; I did not open that page directly, so confirm 0.6955 on 2026-10-15 before relying on it.",
+  "comparable_city_reasoning": "Basis is the UK regional city tier: Cardiff is a mid-sized Welsh capital with restaurant and bar prices below London and broadly similar to Bristol, Birmingham, and Nottingham, and with accommodation prices that rise in summer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.20,
+    "coffee": 4.50,
+    "inexp_meal_1p": 18.60,
+    "midrange_meal_2p": 90.40,
+    "cocktail": 14.60,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 33.25,
+    "hostel_private_2p": 86.50,
+    "hotel_1star_2p": 106.40,
+    "hotel_3star_2p": 186.20
+  }
+}

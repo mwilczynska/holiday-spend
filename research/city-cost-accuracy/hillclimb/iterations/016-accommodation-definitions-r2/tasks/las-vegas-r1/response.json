@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are general-knowledge estimates for Las Vegas in July 2026 and are moderately reliable. Accommodation anchors are less certain because Strip resort fees and taxes vary by property. Hostel anchors rest on a thin local hostel market. FX: the 0.6955 figure came from a search summary attributed to the RBA exchange rates overview for 2026-10-15. I did not open the rba.gov.au page myself, and a third-party figure for 2026-10-16 (0.6947) conflicts with it, so verify against the RBA table before use.",
+  "comparable_city_reasoning": "Benchmarked against large US resort and convention destinations such as Orlando and Phoenix, adjusted for Las Vegas Strip pricing, mandatory resort fees and Nevada lodging taxes. Drink prices are cross-checked against the beer anchor, with cocktail at roughly 1.25x beer and wine at roughly 1.3x beer, based on typical local price relationships.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 145.00,
+    "cocktail": 15.00,
+    "wine_glass": 15.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 118.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 215.00
+  }
+}

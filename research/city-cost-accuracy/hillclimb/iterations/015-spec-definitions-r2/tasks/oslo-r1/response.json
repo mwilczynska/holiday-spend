@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Oslo and Norwegian price levels, not from live booking pages or current listings. Restaurant and beer anchors are more reliable than accommodation, which varies strongly by season and is likely higher in July. Cocktail and wine anchors use the local beer-to-drink relationship because direct knowledge is weaker. Figures are approximate USD conversions of NOK price ranges.",
+  "comparable_city_reasoning": "Benchmarked against Nordic capitals, mainly Stockholm and Copenhagen, adjusted for Norway's generally high price level. Oslo is typically among the most expensive large cities in Europe for food, drink and hotels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.80,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 16.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 200.00
+  }
+}

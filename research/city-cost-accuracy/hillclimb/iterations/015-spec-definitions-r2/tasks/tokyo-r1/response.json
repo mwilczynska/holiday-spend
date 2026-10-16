@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings or menus. Restaurant and café anchors are moderately reliable. Hotel and hostel anchors are the least certain because Tokyo rates vary widely by district, event calendar, and booking lead time, and July is peak season. Cocktail and wine anchors were estimated from typical Tokyo bar and restaurant pricing rather than specific venue data. The FX observation (RBA homepage, 15 October 2026) was taken from a search result snippet and was not independently confirmed on the RBA page.",
+  "comparable_city_reasoning": "Based on general knowledge of Tokyo pricing, using a yen level of roughly 150 to 160 JPY per USD and benchmarked against other large East Asian capitals with high-cost urban dining and a broad supply of budget business hotels, such as Seoul and Osaka.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 200.00
+  }
+}

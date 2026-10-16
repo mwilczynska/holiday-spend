@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of South Korean provincial city prices, not checked against live listings. Restaurant and café anchors are more reliable than accommodation, which is least certain and may vary a lot with July demand and weekday or weekend timing. Cocktail and wine_glass are estimated from the local beer relationship because direct knowledge is weaker. The FX observation comes from a search excerpt of the RBA exchange-rates page; I did not open that page or its F11.1 table directly.",
+  "comparable_city_reasoning": "No direct benchmark. Priced as a mid-sized South Korean provincial city, similar to Gwangju or Daejeon and below Seoul, with modest tourist premiums in the Hanok village area.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.70,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 110.00
+  }
+}

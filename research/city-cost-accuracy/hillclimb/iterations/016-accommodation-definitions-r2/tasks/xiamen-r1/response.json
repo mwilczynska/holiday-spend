@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Xiamen and mainland China price levels, not from live listings or booking pages. Restaurant and coffee anchors are moderately reliable; July accommodation rates (peak summer season) and bar prices are less certain. Cocktail and wine anchors use the local price relationship to beer because direct knowledge is weaker. FX figures come from search-result summaries of RBA statistics that I did not open directly; the 2026-10-15 observation is used because the 2026-10-16 figure may not yet be final.",
+  "comparable_city_reasoning": "Treated as a mid-sized Chinese coastal tourist city with price levels between second-tier provincial cities and popular leisure destinations, using East Asia mainland China mid-market pricing as the regional basis. Accommodation anchors reflect summer tourist demand in the Xiamen island and Zhongshan Road area.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 8.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 33.00,
+    "hotel_3star_2p": 65.00
+  }
+}

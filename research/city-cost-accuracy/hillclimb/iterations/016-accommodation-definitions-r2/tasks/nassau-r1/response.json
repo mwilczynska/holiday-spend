@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, listings, or booking pages. Restaurant anchors are moderately reliable. Hostel anchors are the weakest because Nassau has few registered hostels. Hotel anchors are typical July nightly prices including taxes, and Bahamas taxes are high. FX CAVEAT: I could not retrieve the RBA observation for the generation date (2026-10-16). The as_of_date and source_rate below are the most recent RBA figure I could attribute from search summaries (20 March 2026, 0.7088), so they are stale. Third-party pages reported about 0.6947 USD per AUD for 16 October 2026, but that is not an RBA source. The server should re-verify the RBA F11.1 series before using fx.",
+  "comparable_city_reasoning": "Benchmarked against Florida resort cities such as Miami and Fort Lauderdale, adjusted upward for import-dependent food, drink, and hotel costs typical of Nassau. The Bahamian dollar is pegged 1:1 to USD, so USD anchors are close to local prices. Drink prices were set relative to beer, with cocktails and wine at roughly 2 to 2.5 times the draft beer price. July is in the shoulder/low season (outside the December to April peak), so accommodation anchors reflect a non-peak month.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 15.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 240.00
+  }
+}

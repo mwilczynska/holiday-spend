@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Como and Lake Como tourist pricing for July, which is peak season. Restaurant anchors are moderately confident. Accommodation anchors are less certain because July rates at lakeside properties vary widely, so they are bounded estimates that include taxes and the tourist tax. Cocktail and wine are weaker: cocktail is set at roughly twice the beer anchor and wine_glass at roughly 1.3 times beer, based on the local price relationship. FX provenance: the 0.6955 value was taken from a search-result summary attributed to the RBA exchange rates overview page; the page contents were not read directly, and third-party figures for nearby dates (about 0.692 to 0.695) are consistent with it. Verify against the RBA F11 table before formal use.",
+  "comparable_city_reasoning": "Basis is comparable Italian lake and tourist towns with similar July demand, such as Bellagio, Varenna, Lake Garda towns, and Bergamo, adjusted to Como's pricing level.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 14.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 240.00
+  }
+}

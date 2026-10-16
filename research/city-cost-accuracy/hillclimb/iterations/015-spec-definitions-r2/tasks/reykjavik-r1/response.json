@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the Nordic price-level context, not checked against live listings or current menus. Restaurant and drink anchors are more reliable than accommodation, which varies a lot by season and booking window, so the July hostel and hotel figures are the least certain. Cocktail and wine are set relative to the local beer price because direct knowledge of those prices is weaker. The FX observation is the RBA AUD/USD figure for 15 October 2026, taken from a search summary of the RBA exchange-rates page; I did not open that page directly, and the 16 October figure from third-party sites was not verified on rba.gov.au, so I did not use it.",
+  "comparable_city_reasoning": "Based on Nordic capital price levels (Oslo, Copenhagen, Stockholm), adjusted toward the upper end because Iceland's restaurant, drink and tourist-season accommodation costs run high. No web search was used for the city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 6.50,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 230.00,
+    "cocktail": 19.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 175.00,
+    "hotel_1star_2p": 220.00,
+    "hotel_3star_2p": 360.00
+  }
+}

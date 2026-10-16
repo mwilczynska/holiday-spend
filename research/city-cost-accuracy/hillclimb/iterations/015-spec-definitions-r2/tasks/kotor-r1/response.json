@@ -1,0 +1,27 @@
+```json
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Kotor's pricing and July peak-season demand; no live listings or booking pages were checked. Restaurant and café anchors are moderately confident. Hotel and hostel anchors are less certain because July rates vary widely by season, booking lead time, and property. Cocktail and wine are set relative to the beer anchor (cocktail about 2x beer, wine about 1.25x beer) because direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "Based on coastal Adriatic tourist towns, mainly Dubrovnik and Split, adjusted downward for Montenegro's generally lower price levels. Kotor's Old Town carries a peak-summer premium, so the figures reflect ordinary venues in July rather than the cheapest or most touristy options.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.20,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 120.00
+  }
+}
+```

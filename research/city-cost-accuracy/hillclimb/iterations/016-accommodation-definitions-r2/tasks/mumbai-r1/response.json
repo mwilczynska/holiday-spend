@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and regional price patterns, not from live menus, booking pages, or current listings. Restaurant and drink anchors are moderately confident. Accommodation anchors are less certain and depend on area (Colaba, Bandra, Andheri, Lower Parel) and on taxes (GST rates change with room price). July is monsoon season and a low tourist period in Mumbai, so nightly rates may sit at the lower end of the typical range. Cocktail and wine anchors rely on the local beer relationship because direct price knowledge is weaker: bar and restaurant markups and import duties on wine push them well above beer.",
+  "comparable_city_reasoning": "Regional basis: Indian metro comparables such as Delhi and Bengaluru for food, drink, and budget lodging, adjusted upward for Mumbai's higher hotel and hostel rates and for its restaurant markups. Cocktail and wine were estimated from the beer anchor, given typical bar markups and wine import duties in India.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 7.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 80.00
+  }
+}

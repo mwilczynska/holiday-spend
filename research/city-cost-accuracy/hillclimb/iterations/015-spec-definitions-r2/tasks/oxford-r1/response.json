@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Oxford and comparable English cities, not from live listings or current menus. Restaurant, café, and drink anchors are moderately reliable. Hostel and hotel anchors are less certain because July is peak season in Oxford, when accommodation prices are high and volatile. The FX observation could not be confirmed directly on rba.gov.au. The rate is from an RBA homepage snapshot whose labels were jumbled, cross-checked against third-party sites that republish RBA mid-points, so verify it before relying on it.",
+  "comparable_city_reasoning": "Benchmarked against other historic university and tourist cities in England with similar summer demand, such as Cambridge, Bath, and York, adjusted for Oxford's comparatively high accommodation prices. Beer, coffee, and wine were estimated from general UK pub and restaurant price levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.90,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 15.50,
+    "wine_glass": 10.50,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 225.00
+  }
+}

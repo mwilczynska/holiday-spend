@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Doha pricing; no live listings or booking pages were inspected. Restaurant and licensed-venue anchors are moderately reliable. Hostel anchors are least certain because Doha has few registered hostels, and the 1-star and 3-star hotel anchors are also uncertain. July is low season, so accommodation anchors reflect summer discounting. Beer, cocktail and wine anchors are based on general licensed-venue price levels, with cocktail and wine set relative to beer. FX: the 0.6955 figure came from a search snippet of the RBA homepage, not a verified read of the RBA table. A third-party site reported 0.6947 for 16 October, but the RBA's 16 October figure may not be published yet at generation time.",
+  "comparable_city_reasoning": "Benchmarked against other Gulf cities such as Dubai and Abu Dhabi, adjusted for Doha's thinner budget-accommodation supply, high alcohol prices in licensed hotel and restaurant venues, and summer off-season hotel rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 18.00,
+    "wine_glass": 16.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 145.00
+  }
+}

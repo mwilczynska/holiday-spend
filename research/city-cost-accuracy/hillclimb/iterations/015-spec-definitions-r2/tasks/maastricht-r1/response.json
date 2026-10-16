@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for July 2026, not checked against live listings. Restaurant and beer anchors are moderately reliable, based on typical Dutch pricing in mid-sized university cities. Accommodation anchors are less certain because summer rates in Maastricht vary a lot with events and season, so they carry wider bounds. The FX observation is weaker than the price anchors: the 0.6955 value was taken from a search-result summary attributing it to the RBA page for 15 October 2026 at 4pm. I did not open the RBA page directly, and an earlier search returned an RBA snapshot showing March 2026 values, so the observation is unverified and should be rechecked against the RBA F11 table before use.",
+  "comparable_city_reasoning": "Priced as a mid-sized Dutch university and tourist city in Limburg, comparable to Leiden, Groningen and Delft in the Netherlands, and to nearby border cities such as Aachen and Liège. Euro-denominated prices were estimated and converted at an assumed rate of about 1.16 USD per EUR.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 4.40,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 139.00,
+    "cocktail": 16.20,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 40.60,
+    "hostel_private_2p": 116.00,
+    "hotel_1star_2p": 133.00,
+    "hotel_3star_2p": 209.00
+  }
+}

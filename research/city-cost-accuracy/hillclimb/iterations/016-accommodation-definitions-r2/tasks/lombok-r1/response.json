@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate with no live price checks. Restaurant and drink anchors are more reliable than accommodation, which is least certain, especially for hotel tax and service totals in July high season. FX: the RBA exchange-rates overview page was seen only as a search-result summary, not opened directly, and the 15 Oct 2026 observation is the latest I could verify; a 16 Oct RBA figure was not confirmed.",
+  "comparable_city_reasoning": "Based on general knowledge of Lombok's tourist areas (Kuta Lombok, Senggigi, and the Gili Islands), with prices set below Bali's busiest hubs such as Canggu and Ubud and above rural Indonesian towns. Drinks are priced at tourist-bar levels. Wine is set at roughly 2.5 times the beer anchor, based on the local price relationship, because direct knowledge of wine prices is weak. Accommodation assumes July dry-season high-season demand, including Indonesian taxes and service charges.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 70.00
+  }
+}

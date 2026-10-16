@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings. Restaurant and beer anchors are more reliable than accommodation, which varies widely by neighbourhood and booking channel. July is monsoon season, a low tourism period in Delhi, so accommodation anchors reflect off-season pricing. The FX observation comes from a search summary of the RBA overview page (0.6955 at 4pm, 15 October 2026); I did not open that page, and a later 16 October figure was reported only by a third-party site, so I did not use it.",
+  "comparable_city_reasoning": "Based on regional knowledge of other large Indian metros, mainly Mumbai and Bengaluru, adjusted to Delhi's price levels. Accommodation anchors are lowered for July, since Delhi's peak tourist season runs roughly October to March. Restaurant and drink anchors use general knowledge of Delhi's mid-range and inexpensive dining and bar scene, with alcohol taxes included.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 8.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 62.00
+  }
+}

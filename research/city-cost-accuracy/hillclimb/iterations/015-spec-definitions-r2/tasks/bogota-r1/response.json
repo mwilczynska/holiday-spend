@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Bogota pricing, not live listings. Restaurant and beer anchors are more reliable than hotel and hostel anchors, and COP exchange-rate volatility adds uncertainty to all USD figures. FX: I could not open an rba.gov.au page to confirm an observation. A third-party site reported about 0.6947 USD per AUD for 2026-10-16, but that is unverified and is not supplied as the RBA observation, so the fx fields are null.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Andean and Latin American capitals with similar tourism and local-restaurant price levels (for example Medellin, Lima, and Mexico City), adjusted to Bogota's cost level. No single comparable city was used.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 2.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 110.00
+  }
+}

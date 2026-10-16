@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Japanese regional-city pricing, not from live listings or booking pages. Restaurant anchors are more reliable than accommodation, which varies with events and demand. Cocktail and wine are set relative to the local beer price, since direct knowledge of Toyama bar prices is weak. The FX observation comes from a search-result summary of the RBA exchange-rates pages; I did not open the RBA page directly.",
+  "comparable_city_reasoning": "Based on mid-sized Japanese regional cities such as Niigata and Okayama, with accommodation pricing set slightly below Kanazawa, which draws more tourists. July is not a peak season for Toyama.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 3.80,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 115.00
+  }
+}

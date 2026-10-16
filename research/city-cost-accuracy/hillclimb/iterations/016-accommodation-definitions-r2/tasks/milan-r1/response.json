@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Milan pricing, not checked against live listings or menus. Restaurant anchors are moderately reliable. Drink and accommodation anchors are less certain, and hotel prices vary widely by district and event calendar. Prices exclude service/cover charges and tourist tax, except where accommodation is described as including taxes. FX caveat: the 0.6955 USD/AUD value (15 Oct 2026) appeared in search summary text attributed to the RBA exchange-rates page, but I could not confirm it against RBA page content in my searches. A third-party figure of 0.6947 for 16 Oct is consistent with it. Verify against the RBA F11 daily table before use.",
+  "comparable_city_reasoning": "Priced against Milan's own centre-city tourist market, benchmarked to other large Italian and Western European tourist cities (for example Rome, Florence, Barcelona) with Milan's typically higher hotel and aperitivo prices. Drink pricing follows local beer relationships, with cocktails and wine set from typical Milan aperitivo and restaurant pricing rather than direct recall.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 15.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 210.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Lisbon price levels, not checked against live listings or current menus. Restaurant and beer anchors are moderately certain. Hostel and hotel anchors are less certain because July is peak season and rates vary widely by location and booking lead time. Cocktail and wine are estimated relative to local beer prices. The FX observation comes from a search summary attributed to the RBA overview page; I did not open the RBA page directly, so confirm the figure on rba.gov.au.",
+  "comparable_city_reasoning": "Based on Western European mid-sized capital price levels with strong summer tourism demand, cross-checked against Porto and Madrid for restaurant and bar prices. Accommodation is set for July high season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 2.30,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 11.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 160.00
+  }
+}

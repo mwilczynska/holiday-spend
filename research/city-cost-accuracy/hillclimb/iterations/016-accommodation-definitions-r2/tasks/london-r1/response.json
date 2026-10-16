@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and coffee anchors are more reliable than accommodation, which varies widely by district and booking date in July peak season. Cocktail and wine are estimated from London beer prices and typical bar-to-pub markups. FX: the 2026-10-15 RBA 4.00 pm rate was taken from an RBA overview page snippet; the later 2026-10-16 figure (0.6947) came only from a third-party site and was not used.",
+  "comparable_city_reasoning": "Benchmarked against other major Western European capitals with high tourist demand, such as Paris and Amsterdam, with a London premium on dining and central hotels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 4.80,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 18.50,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 265.00
+  }
+}

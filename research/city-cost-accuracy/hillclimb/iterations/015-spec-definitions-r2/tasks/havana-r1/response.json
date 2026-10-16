@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimate with weak direct price data. Cuba has a dual-currency and informal-rate environment, frequent shortages, and high price volatility, so tourist-facing USD prices and CUP prices can differ sharply. Restaurant and café anchors are the least uncertain; accommodation anchors are rougher because casas particulares and registered hostels vary widely. Cocktail and wine are based on the local price relationship to beer, since direct knowledge is weak. FX: 0.7088 is dated 2026-03-20, the latest RBA observation I could identify. A later third-party figure (0.6947 on 2026-10-16) could not be confirmed against the official RBA daily table, so the rate may be stale by about 2 percent.",
+  "comparable_city_reasoning": "Regional basis: Latin American and Caribbean capitals with dollarized tourist pricing, such as Santo Domingo and Mexico City at ordinary tourist-facing venues, adjusted for Cuba's supply shortages and currency constraints. Accommodation is benchmarked against Caribbean capitals with comparable guesthouse and mid-range hotel supply.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 110.00
+  }
+}

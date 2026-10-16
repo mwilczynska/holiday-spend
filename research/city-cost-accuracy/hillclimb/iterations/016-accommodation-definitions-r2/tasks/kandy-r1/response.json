@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Kandy and Sri Lankan tourist pricing, not live listings. Restaurant and bar anchors are moderately certain; accommodation is less certain. The reference month of July 2026 likely overlaps the Esala Perahera festival in Kandy, which can push up hotel and guesthouse rates, so the accommodation anchors are nudged upward. Alcohol prices are high from Sri Lankan excise taxes. FX observation came from a search summary of the RBA exchange rates overview page, not a direct page read; confirm against the RBA F11.1 daily table.",
+  "comparable_city_reasoning": "Based on Sri Lanka's cultural-triangle and hill-country tourist circuit. Kandy's price level is set against other Sri Lankan tourist towns such as Ella and Nuwara Eliya, and sits between Colombo and smaller rural towns.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 70.00
+  }
+}

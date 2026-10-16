@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and café anchors are moderately certain because Norwegian price levels are well known. Accommodation is less certain because July is peak season in Bergen and rates vary widely by week and booking lead time. Cocktail and wine are estimated from the local beer relationship, since direct knowledge of Bergen bar prices is weaker. Figures are USD at a Norwegian krone rate of roughly 10 to 10.5 NOK per USD.",
+  "comparable_city_reasoning": "Based on Norway's high national price level and comparable Scandinavian coastal tourism cities such as Stavanger and Oslo, adjusted for Bergen's mid-sized, heavily seasonal tourist market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.80,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 18.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 210.00
+  }
+}

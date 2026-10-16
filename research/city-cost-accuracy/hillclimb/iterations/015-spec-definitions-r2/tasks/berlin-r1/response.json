@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Berlin price levels for July 2026, not from live listings or menus. Restaurant and café anchors are moderately reliable. Accommodation is less certain because summer demand varies by week and venue. Cocktail and wine anchors rely on the local beer-to-drink relationship because direct knowledge is weaker. The FX observation comes from a search summary attributed to the RBA exchange rates overview page; I did not open the RBA page directly to confirm it.",
+  "comparable_city_reasoning": "Priced against Germany's other large mid-to-high tourism cities, such as Hamburg and Cologne, with a Berlin adjustment: restaurant and café prices are close to these peers, while summer hostel and hotel rates run somewhat higher because of event-driven demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.80,
+    "inexp_meal_1p": 16.50,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 13.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 175.00
+  }
+}

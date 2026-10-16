@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Sri Lankan and Galle pricing, not live listings. Restaurant and hostel anchors are more reliable. Beer and wine are less certain because Sri Lankan alcohol is heavily taxed and draught beer is uncommon, so beer is a bottled-beer equivalent per 0.5 L. Cocktail and wine use the local price relationship to beer. Hotel rates assume July shoulder-season pricing on the south-west coast during monsoon, which can be softer than the Dec-Apr peak. Galle's Fort area may run higher than inland or suburban venues.",
+  "comparable_city_reasoning": "Basis is other Sri Lankan southern coastal and heritage tourist towns (for example Unawatuna, Mirissa and Colombo's tourist districts) for restaurant and accommodation levels, with local beer pricing used as the anchor for alcohol.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 75.00
+  }
+}

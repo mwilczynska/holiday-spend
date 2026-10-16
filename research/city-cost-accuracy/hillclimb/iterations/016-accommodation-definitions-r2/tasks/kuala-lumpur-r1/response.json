@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings. Restaurant and hawker anchors are moderately confident; accommodation and bar prices (cocktail, wine, hotel tiers) are less certain and could vary by district and venue. Taxes and service charges are included in the accommodation anchors as best estimated. FX value was read from the RBA homepage as summarised by search, not verified directly on the page; an OFX mid-market rate of about 0.6956 for 15 Oct 2026 is consistent with it.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Southeast Asian tourist cities with similar price levels, such as Bangkok and Penang, adjusted for Kuala Lumpur's restaurant, bar and hotel pricing. Cocktail and wine were set relative to the beer anchor because direct knowledge of those prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.20,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 9.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 85.00
+  }
+}

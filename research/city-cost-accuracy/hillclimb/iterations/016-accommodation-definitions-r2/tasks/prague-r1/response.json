@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings or booking pages. Restaurant and drink anchors are more reliable than accommodation, and July is peak tourist season, so the accommodation anchors carry more uncertainty. The FX observation comes from a search summary attributing 0.6955 (as at 15 Oct 2026) to the RBA exchange-rates overview; I did not open that page directly. A third-party 16 Oct figure of 0.6947 is unverified and differs slightly.",
+  "comparable_city_reasoning": "Benchmarked against Central European capitals with similar summer tourist demand (such as Vienna, Budapest and Krakow), adjusted to Czech price levels. Drink prices are set relative to beer, and the wine and cocktail anchors follow the local beer-to-drink price relationship.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 12.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 195.00
+  }
+}

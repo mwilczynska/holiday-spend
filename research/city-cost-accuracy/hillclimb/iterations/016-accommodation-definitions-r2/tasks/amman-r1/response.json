@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and regional context, not checked against live listings or menus. Restaurant and hostel anchors are the most reliable; hotel anchors are less certain because Amman rates shift with regional tourism demand and tax and fee treatment. Beer and drink anchors are weaker, and the cocktail and wine anchors are set from the beer anchor. The FX observation comes from RBA published-rate content in search results and was not separately verified on the F11 table.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Levant and Eastern Mediterranean capitals with similar tourism demand and a high alcohol tax. Cocktail is set at about 2x the beer anchor and wine at about 1.5x, because direct local knowledge of bar and wine prices is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 110.00
+  }
+}

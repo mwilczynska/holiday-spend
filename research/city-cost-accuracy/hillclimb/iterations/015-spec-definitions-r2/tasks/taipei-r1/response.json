@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and café anchors are moderately reliable. Hotel and hostel anchors are less certain and vary by district and season. The FX value is the RBA AUD/USD figure as shown in a search snippet of the RBA overview page; I did not open the page myself, and the 16 October 2026 figure could not be verified as an official RBA observation.",
+  "comparable_city_reasoning": "Price level is benchmarked against mid-sized East Asian cities with similar local dining and budget-hotel costs (for example Seoul and Osaka), adjusted for Taipei's lower restaurant and hotel prices relative to Tokyo-level pricing. Cocktail and wine anchors use the local beer-to-bar price relationship because direct Taipei bar and wine data is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 12.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 115.00
+  }
+}

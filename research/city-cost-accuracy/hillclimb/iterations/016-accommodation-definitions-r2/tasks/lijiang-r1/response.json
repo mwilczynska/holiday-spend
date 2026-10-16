@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Lijiang's tourist pricing, not checked against live listings. Restaurant anchors are moderately reliable; accommodation and bar prices vary more by location (Old Town vs. New Town) and by season. The reference window is July 2026, a peak domestic tourist period, so accommodation is set at peak-season levels. The FX observation came from a search-result summary attributed to the RBA homepage and was not independently opened on rba.gov.au.",
+  "comparable_city_reasoning": "Basis is other mid-sized Yunnan and southwest China tourist destinations with similar old-town restaurant and guesthouse markets (e.g., Dali, Guilin), adjusted for Lijiang's higher-altitude heritage-town tourism pricing. Cocktail and wine anchors were set using the local beer-to-bar price relationship because direct knowledge of those prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 4.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 70.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live menus or listings. Restaurant and bar anchors are moderately reliable; accommodation is less certain because Negril's summer rates vary widely by property and season. July is low season and hurricane season, so accommodation anchors are set for off-season pricing with taxes and fees included. Drink anchors are based on local price levels, with wine priced high relative to beer because of import costs. The FX observation comes from a search-result summary of the RBA exchange rates page, not from the F11 table itself.",
+  "comparable_city_reasoning": "Caribbean resort towns with similar tourism demand and price levels, such as other north-coast and west-coast Jamaican beach towns and mid-priced Caribbean leisure destinations. Pricing is adjusted for Jamaican local costs and for the summer low season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 9.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 170.00
+  }
+}

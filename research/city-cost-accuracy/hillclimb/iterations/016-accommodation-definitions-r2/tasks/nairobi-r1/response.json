@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Nairobi price levels. No live listings or booking pages were checked. Restaurant and beer anchors are more reliable than accommodation anchors, which vary widely by neighbourhood. July falls in Kenya's dry, relatively high tourist season, and the accommodation anchors reflect that rather than an off-season rate. Accommodation figures include VAT where it normally applies. Cocktail and wine were set from the local price relationship to draft beer because direct knowledge is weaker. The FX observation (15 October 2026) comes from a search excerpt of the RBA exchange-rates overview page; I did not open the page itself.",
+  "comparable_city_reasoning": "Based on general knowledge of Nairobi as a mid-income East African capital with a mixed local and tourist price structure, benchmarked against other major East African and sub-Saharan African tourist cities. Not based on any named current listing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 3.20,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 110.00
+  }
+}

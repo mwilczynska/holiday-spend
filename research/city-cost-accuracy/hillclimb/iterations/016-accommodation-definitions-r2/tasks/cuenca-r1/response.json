@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, booking pages, or current listings. Restaurant anchors (meals, beer, coffee) are moderately reliable for a dollarized mid-sized Andean city. Cocktail and wine are less certain and are set relative to the beer anchor, since direct price knowledge is weak. Hostel and hotel anchors are the least certain and could vary substantially by neighborhood and season.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Ecuadorian and Andean highland cities with strong expat and tourist demand, priced in US dollars, and Quito-level pricing adjusted down for Cuenca's generally lower restaurant and lodging costs.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 62.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimate from general knowledge, not checked against live listings. Turkish inflation and lira moves make July 2026 prices hard to pin down, so all anchors are bounded guesses. Beer, cocktail and hotel anchors are the least certain; July is peak season for accommodation. The FX observation comes from search-result summaries of the RBA homepage and exchange-rates overview for 15 October 2026; I did not open the RBA page directly, and earlier search results showed older, conflicting rates.",
+  "comparable_city_reasoning": "Turkey is transcontinental and is classed here as Middle East. Prices are benchmarked to ordinary venues in other Turkish Mediterranean resort and provincial cities, adjusted for Antalya's peak-season tourism and the lira's USD value in mid-2026. Not benchmarked to a specific European city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 85.00
+  }
+}

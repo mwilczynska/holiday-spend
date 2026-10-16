@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Japanese prices, not checked against live listings. Restaurant and café anchors are the most reliable. Accommodation is less certain because Nikko's supply is small and July is peak season, so room rates vary a lot. The 3-star and private-hostel anchors are the weakest. The FX observation comes from a search-result summary of the RBA exchange-rates overview page for 15 October 2026. I did not open that page directly, and no later official RBA observation was found, so the 16 October figure from third-party sites is not used.",
+  "comparable_city_reasoning": "Priced against small, tourism-heavy Japanese destinations near Tokyo, such as Kamakura, Hakone and Takayama, with a weak-yen adjustment for 2026 and a July peak-season uplift for lodging.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 165.00
+  }
+}

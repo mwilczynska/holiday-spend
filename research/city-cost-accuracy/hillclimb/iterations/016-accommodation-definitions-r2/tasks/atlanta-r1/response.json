@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Atlanta's pricing, with no live listings or booking pages checked. Restaurant and drink anchors are moderately reliable; accommodation is less certain because July 2026 demand may be inflated by FIFA World Cup matches in Atlanta, and taxes and fees vary by property. Meal and drink anchors are menu-level estimates and may or may not include sales tax and tip. The FX value is the most recent RBA observation confirmed in search (15 Oct 2026); a 16 Oct figure was reported by a third party but could not be verified against the RBA.",
+  "comparable_city_reasoning": "Based on general pricing knowledge of large southeastern US metros with comparable tourism and hotel markets, such as Charlotte, Nashville, Dallas and Houston, adjusted for Atlanta's hotel tax load and July event-driven demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 220.00
+  }
+}

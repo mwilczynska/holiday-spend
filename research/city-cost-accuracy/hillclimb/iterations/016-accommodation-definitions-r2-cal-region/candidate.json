@@ -1,0 +1,11 @@
+{
+  "id": "016-accommodation-definitions-r2-cal-region",
+  "parent": "014-v11-haiku-high-r2-cal-region",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 016-accommodation-definitions-r2: leave-one-city-out per-anchor x region multiplicative correction.",
+  "replayFrom": "016-accommodation-definitions-r2",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/high (claude -p, app system prompt, WebSearch only)",
+  "repeats": 1,
+  "split": "dev"
+}

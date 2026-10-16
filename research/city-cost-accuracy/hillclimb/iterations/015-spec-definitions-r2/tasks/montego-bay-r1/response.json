@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Montego Bay and Jamaican resort-town pricing; no live listings or booking pages were checked, and no city-price sources were searched. Restaurant and drink anchors are more reliable than accommodation anchors, which vary widely by season, property and whether USD or JMD quotes apply. Cocktail and wine are estimated from the local beer relationship (roughly 2 to 2.25 times the beer price), not from direct observation. The FX observation is the RBA AUD/USD rate for 15 October 2026 as surfaced in search results from the rba.gov.au exchange-rates overview page; I did not open that page directly, so confirm against the RBA F11.1 table before any formal use.",
+  "comparable_city_reasoning": "No comparable city was supplied. Basis is general knowledge of Caribbean resort-town pricing, with Montego Bay treated as a mid-priced tourist hub: local restaurant and drink prices somewhat below large US Caribbean resort towns, and accommodation priced for a July shoulder period in the Caribbean.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 9.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 160.00
+  }
+}

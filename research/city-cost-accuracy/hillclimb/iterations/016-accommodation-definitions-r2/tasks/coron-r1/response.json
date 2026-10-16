@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Palawan tourist-town pricing, not checked against live menus, listings, or booking pages. Restaurant anchors are more reliable than accommodation, and the 3-star hotel and wine anchors are the least certain. Cocktail is derived from the beer anchor using an assumed local price relationship of about 2.5 times beer. Prices assume a July rainy-season, low-demand window. FX observation: 0.6955 USD per AUD for 2026-10-15 was taken from a search summary of the RBA exchange-rates overview page and was not confirmed by opening the page or the F11.1 table; verify before relying on it.",
+  "comparable_city_reasoning": "Regional basis: Palawan leisure towns such as El Nido and Puerto Princesa, adjusted for Coron's smaller size and dive-tourism pricing. Not based on Manila prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.70,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 5.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 70.00
+  }
+}

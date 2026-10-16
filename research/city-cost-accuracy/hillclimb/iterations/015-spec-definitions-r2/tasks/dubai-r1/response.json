@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and regional context, not checked against live menus, booking pages, or current listings. Restaurant meal prices are moderately certain. Beer and cocktail prices are less certain because alcohol pricing varies widely by venue and licensing, and hotel and hostel rates vary by season and event calendar. Anchors are bounded to typical ordinary venues in Dubai in July 2026, excluding hotel bars and luxury venues.",
+  "comparable_city_reasoning": "Regional basis from Gulf hub cities with comparable hotel and dining costs and high alcohol prices, such as Doha and Abu Dhabi. No web search was used for city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 18.00,
+    "wine_glass": 17.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 130.00
+  }
+}

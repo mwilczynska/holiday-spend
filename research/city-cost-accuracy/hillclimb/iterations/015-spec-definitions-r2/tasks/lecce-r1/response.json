@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of southern Italian pricing, not live listings. Restaurant and beer anchors are moderately reliable. Accommodation is less certain because July is peak season in the Salento and hostel supply in Lecce is limited. Cocktail and wine anchors were set relative to the beer anchor because direct knowledge is weaker. FX: the 2026-10-15 observation was reported on RBA pages that a search summary surfaced, but I could not open the RBA table directly to confirm it. A 2026-10-16 figure (0.6947) was also reported but could not be confirmed as published.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized southern Italian tourist cities such as Bari and Matera, adjusted for Lecce's summer tourism demand and generally lower restaurant prices than central Rome or Florence.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 2.40,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 160.00
+  }
+}

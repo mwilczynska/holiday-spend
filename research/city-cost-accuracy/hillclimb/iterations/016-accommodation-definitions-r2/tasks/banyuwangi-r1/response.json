@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and regional context. No live booking pages or current listings were checked. Restaurant and street-food anchors are more reliable than accommodation, which is less certain for a smaller regional market. Drinks are weaker: cocktail and wine were set from the local beer relationship (cocktail about 2.25x beer, wine glass about 3.75x beer), not direct price knowledge. Rupiah conversions assume a rate of roughly IDR 16,000 to 17,000 per USD. Accommodation anchors assume July's dry-season and school-holiday demand, which can push rates up. Hotel prices are assumed to include Indonesian tax and service charges.",
+  "comparable_city_reasoning": "Based on secondary Indonesian tourism and regional-city pricing in East Java, such as Malang and Yogyakarta, adjusted to Banyuwangi's position as a gateway to Ijen, Baluran, and surf destinations. Prices are set below Bali's main tourist hubs such as Ubud and Canggu, with accommodation reflecting the city-centre and Ketapang ferry-port area visitors commonly use.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 1.80,
+    "inexp_meal_1p": 1.80,
+    "midrange_meal_2p": 16.00,
+    "cocktail": 4.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 38.00
+  }
+}

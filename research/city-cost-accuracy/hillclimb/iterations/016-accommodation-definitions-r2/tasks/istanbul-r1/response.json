@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and bar anchors are holistic estimates from general knowledge of Istanbul's lira-based price levels for a July 2026 window, with no live menu or listing checks. Accommodation anchors are less certain because July is peak season and rates vary widely by district. The FX observation came from search-result summaries attributed to the RBA; I did not open the RBA page directly, and a third-party site showed a different value.",
+  "comparable_city_reasoning": "Turkey is transcontinental. Region is set to Europe because Istanbul's visitor core (Sultanahmet, Beyoglu, Karakoy) is on the European side and its tourist price structure is closer to southeastern European capitals than to Middle Eastern ones. Restaurant prices are benchmarked to local lokanta, meyhane and café prices, adjusted for the lira-to-USD rate. Accommodation includes Turkish VAT and tourism-related charges and reflects July peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 9.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 95.00
+  }
+}

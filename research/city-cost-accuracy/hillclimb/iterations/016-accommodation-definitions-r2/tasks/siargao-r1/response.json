@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Siargao's surf-town tourist pricing, not live listings. Restaurant anchors are moderately certain; accommodation (especially 3-star and private room) is less certain and reflects July as a shoulder, rainy-season month. FX: the 0.6955 value and 2026-10-15 date came from search-result summaries of the RBA exchange-rates overview page, which I did not open directly; verify against the RBA F11.1 table before relying on it.",
+  "comparable_city_reasoning": "Regional basis: Philippine island resort and surf towns (similar to El Nido, Puerto Princesa and Bohol-style tourist towns), priced above Manila-style local levels and below Boracay's premium tier. Drinks are anchored to local beer pricing, with cocktail and wine set as multiples of the beer price.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 6.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 60.00
+  }
+}

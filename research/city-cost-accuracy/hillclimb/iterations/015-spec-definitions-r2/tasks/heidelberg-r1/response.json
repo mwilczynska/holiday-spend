@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of German university-town pricing, not from live listings or menus. Restaurant and café anchors are moderately confident. Accommodation is least certain because Heidelberg has high tourist demand in summer, so hostel and hotel figures could vary widely. The FX value comes from search-result summaries that cite the RBA exchange rates page; I did not open the RBA page directly. A third-party source reports 0.6947 for 16 October, which I could not verify against rba.gov.au, so I used the 15 October figure.",
+  "comparable_city_reasoning": "Based on comparable mid-sized German university and tourist cities such as Freiburg im Breisgau, Tübingen, Darmstadt and Karlsruhe, adjusted upward for Heidelberg's higher summer accommodation demand and its tourist-heavy old town.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.30,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 14.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 200.00
+  }
+}

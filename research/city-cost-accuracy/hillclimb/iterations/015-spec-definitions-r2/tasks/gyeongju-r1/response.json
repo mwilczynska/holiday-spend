@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and café anchors are moderately confident because Korean everyday pricing is well known, though Gyeongju's tourist-district prices vary. Cocktail and wine are less certain: cocktail is anchored to typical Korean bar prices relative to beer, and wine is anchored to restaurant wine-glass pricing relative to beer. Accommodation is least certain because July is peak season, and hanok guesthouses and hotels near Bomun and the historic core can price well above the basic estimates. The FX observation is the RBA 15 October 2026 figure as reported in a search summary of the RBA Exchange Rates Overview page; I did not open that page directly.",
+  "comparable_city_reasoning": "Based on mid-sized Korean heritage and tourism cities such as Jeonju and Andong, with prices set somewhat below Seoul. Gyeongju's accommodation is priced higher than typical regional cities in peak season because of heritage tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 9.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 130.00
+  }
+}

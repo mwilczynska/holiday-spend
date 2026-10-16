@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Nairobi price levels, not checked against live listings. Restaurant and beer anchors are moderately reliable. Hotel and hostel anchors are less certain because published rates vary by season, booking channel, and neighbourhood. Cocktail and wine are bounded against local beer prices. The FX observation comes from a search-result summary of the RBA exchange-rates page and was not read directly.",
+  "comparable_city_reasoning": "Regional basis: East African capitals with similar price levels and tourism profiles, such as Kampala and Addis Ababa, adjusted to Nairobi's higher hotel rates and its mix of local and international restaurants.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 85.00
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Montevideo and Uruguayan price levels; no live booking pages, menus, or current listings were checked. Restaurant and beer anchors are the more reliable ones. Cocktail and wine are bounded from the local beer relationship (cocktail about 2.4x beer, wine about 1.5x beer). Hostel and hotel anchors are the least certain, since they assume July winter low-season rates, Uruguayan taxes and fees included, and typical central or Pocitos-area stays. Uruguayan peso exchange-rate movement adds further uncertainty.",
+  "comparable_city_reasoning": "Regional basis: mid-tier South American capitals, with Buenos Aires and Santiago de Chile as the main reference points for dining and mid-range hotel levels. Montevideo is assessed as roughly comparable to or somewhat above these for tourist-facing accommodation, and July is treated as a low-season winter month.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 62.00,
+    "cocktail": 12.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 100.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)

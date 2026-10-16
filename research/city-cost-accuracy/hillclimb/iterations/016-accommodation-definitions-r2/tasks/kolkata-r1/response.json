@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or menus. Restaurant anchors are more reliable than accommodation, which varies widely by neighbourhood and is less certain. July is the monsoon shoulder period, so accommodation anchors reflect lower-than-peak Kolkata rates. Hotel and restaurant prices include typical taxes and service charges, which vary by venue. FX provenance: the 0.6955 value (15 Oct 2026) was taken from the RBA exchange-rates overview page as surfaced in search output and was not directly page-read. A third-party site's 0.6947 figure for 16 Oct 2026 was not used because it is not an RBA source.",
+  "comparable_city_reasoning": "Based on general knowledge of Indian metro pricing, positioned at or below Delhi and Mumbai for restaurants and mid-range hotels, reflecting Kolkata's generally lower cost base. Beer and cocktail prices reflect high alcohol taxes in India, so beer and cocktail anchors are set relative to restaurant meal prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 6.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 19.00,
+    "hotel_3star_2p": 55.00
+  }
+}

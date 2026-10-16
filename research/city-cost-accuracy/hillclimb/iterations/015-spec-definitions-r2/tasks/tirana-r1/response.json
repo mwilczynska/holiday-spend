@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Tirana and Albania, not checked against live menus, listings, or booking pages. Restaurant, beer, and coffee anchors are moderately reliable for ordinary central venues. Cocktail and wine are weaker and partly inferred from the local beer price relationship. Accommodation is least certain: July is peak season and hostel and guesthouse rates change quickly. Prices are for the July 2026 window.",
+  "comparable_city_reasoning": "Calibrated against Balkan and Southeast European capitals with similar tourism demand (for example Sarajevo, Podgorica, and Skopje), with prices in central Tirana placed between those cities and cheaper Southern European capitals.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 95.00
+  }
+}

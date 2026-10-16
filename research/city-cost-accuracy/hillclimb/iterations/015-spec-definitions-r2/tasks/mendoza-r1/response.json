@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates for Mendoza in July 2026 (austral winter, with mid-year school holidays), not checked against live menus, listings or booking pages. Argentine peso-denominated prices move sharply with inflation and the exchange rate, so USD equivalents are especially uncertain. Restaurant and café anchors are somewhat more reliable than accommodation. Cocktail and wine_glass were set from the local beer and wine price relationship (Mendoza is a wine region, so wine is comparatively cheap), not from direct price knowledge. The FX observation (0.6955 as at 15 October 2026) was taken from search-result summaries that attribute it to the RBA exchange rates page; I could not open that page to confirm the figure directly. A 16 October figure of 0.6947 from a third-party site was not used.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Argentine tourist and wine-region cities and other Latin American cities with comparable domestic-tourism price levels, adjusted for Mendoza's winter season and its reputation as a wine destination.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 2.80,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.50,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 100.00
+  }
+}

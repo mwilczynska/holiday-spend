@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Malaysian price levels and Malacca's position as a smaller heritage city below Kuala Lumpur and Penang; no live listings or booking pages were inspected. Restaurant and café anchors are more reliable than accommodation, which varies widely by district and season. Cocktail and wine were estimated directly from local bar price levels, not from the beer anchor. The FX observation is taken from search-result summaries that cite the RBA exchange-rates page and F11.1 table. The RBA page itself was not opened, and an earlier search returned an older third-party figure (0.703 dated 2026-07-31), so the FX value should be verified against the official RBA table.",
+  "comparable_city_reasoning": "Regional basis: other mid-sized Malaysian heritage and tourist cities (Penang George Town, Ipoh) with prices somewhat below Kuala Lumpur, adjusted for Malacca's tourist-heavy historic centre and its many guesthouses.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.40,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 70.00
+  }
+}

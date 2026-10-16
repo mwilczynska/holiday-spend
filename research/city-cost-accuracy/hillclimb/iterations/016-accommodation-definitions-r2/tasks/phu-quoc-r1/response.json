@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings or menus. Restaurant and drink anchors are moderately confident, since Phu Quoc prices sit between mainland Vietnam and tourist-resort levels. Accommodation anchors are less certain and assume July rainy-season pricing, which is lower than the Nov-April dry-season peak, with taxes and service charges included. Cocktail and wine anchors are estimated from the local beer relationship because direct knowledge is weaker.",
+  "comparable_city_reasoning": "Based on mainland Vietnamese beach destinations such as Nha Trang and Da Nang, with a resort premium for Phu Quoc's island pricing. July is rainy season, so accommodation is set near off-peak levels for the island.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.80,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 50.00
+  }
+}

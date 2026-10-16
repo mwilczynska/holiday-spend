@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant anchors are more reliable than accommodation, since Nikko's rates vary a lot by season and weekday versus weekend. July is peak summer tourism, so accommodation may run higher than these figures on weekends. Cocktail and wine anchors are set relative to the beer anchor, because direct price knowledge for those is weaker. FX caveat: the latest RBA observation I could confirm is 2026-03-20, which is stale for an October 2026 run. A later figure (about 0.6955 on 2026-10-15) was reported but I could not verify it on rba.gov.au, so I did not use it.",
+  "comparable_city_reasoning": "Based on Japanese small tourist towns within reach of Tokyo, such as Kamakura and Hakone, adjusted down for Nikko's smaller size and more limited premium lodging. Prices assume the yen trades in the usual recent range of roughly 145 to 155 per USD.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 68.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 160.00
+  }
+}

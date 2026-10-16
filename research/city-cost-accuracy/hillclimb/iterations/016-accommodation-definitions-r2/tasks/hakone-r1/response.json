@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer prices are more reliable than hotel and hostel anchors, which vary widely with Hakone's weekend and summer demand and its many ryokan-style properties. Cocktail and wine were set from the local beer relationship, since direct knowledge is weaker. FX: the 2026-10-15 figure was taken from the RBA exchange rates overview page as surfaced by search; I did not open that page directly.",
+  "comparable_city_reasoning": "Based on general knowledge of Japanese mountain-resort and day-trip towns near Tokyo (Hakone-Yumoto, Gora, and Lake Ashi areas), with tourist-area pricing for food and lodging in a summer month. Basic guesthouses and ordinary business-style hotels were used for the 1-star and 3-star anchors. Traditional ryokan rates were excluded because they include meals and are far above the ordinary hotel definition.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 9.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 210.00
+  }
+}

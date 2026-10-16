@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, booking pages, or listings. Restaurant and café anchors are more reliable than accommodation, which varies widely by season, event calendar, and booking lead time in July. Cocktail and wine_glass are rough, based on the typical Dutch pub and restaurant price relationship to beer. FX: the 0.6955 USD-per-AUD figure was taken from a search summary that attributes it to the RBA homepage. I did not open the RBA page directly, so the value and its date should be verified against the RBA F11 table before use.",
+  "comparable_city_reasoning": "Mid-sized Dutch city with price levels close to other Randstad-area cities such as Haarlem and Leiden, somewhat below Amsterdam for food and drink, and with July accommodation pricing that tracks Amsterdam-region demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.90,
+    "coffee": 4.30,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 128.00,
+    "cocktail": 16.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 230.00
+  }
+}

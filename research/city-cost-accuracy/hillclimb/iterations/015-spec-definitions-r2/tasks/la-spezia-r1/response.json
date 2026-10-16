@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Italian coastal port-city pricing; not checked against live menus, bar lists or booking pages. Restaurant, beer, coffee, cocktail and wine anchors are moderately reliable. Hostel and hotel anchors are the least certain because July demand is seasonal and partly spills over from Cinque Terre, so they are wider ranges. FX as_of 2026-10-15 comes from an RBA exchange-rates overview search excerpt, not a page I opened directly. A 0.6947 figure for 16 Oct from a third-party aggregator was not used because it is not an RBA observation.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Ligurian and Tuscan coastal and port cities (for example Genoa and Livorno), with July accommodation pressure adjusted upward for proximity to Cinque Terre and the Versilia coast.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 11.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 170.00
+  }
+}

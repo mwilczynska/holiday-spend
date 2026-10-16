@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live menus or booking listings. Restaurant and drink anchors are more reliable than accommodation, which varies widely by season and location and is set for July peak season. Cocktail and wine anchors use local price relationships to beer where direct knowledge is weaker: cocktail about 2.4x beer and house wine glass about 1.4x beer. FX observation is the RBA figure shown on the RBA homepage in search results for 15 October 2026 at 4.00 pm. I did not open the RBA F11.1 table to confirm it, and I did not use the third-party 16 October figure because it is not an RBA source.",
+  "comparable_city_reasoning": "Benchmarked to Greek historic coastal tourist towns (such as Rethymno or Chania on Crete, or Greek mainland seaside resorts) during July peak season, with prices in EUR converted to USD at roughly 1.16 to 1.17.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.20,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 170.00
+  }
+}

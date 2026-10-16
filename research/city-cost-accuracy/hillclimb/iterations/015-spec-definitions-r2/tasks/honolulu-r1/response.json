@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and café anchors are moderately confident; July is peak season, so Waikiki accommodation anchors are less certain and the hostel and hotel figures are the weakest. Cocktail and wine are estimated from the local beer relationship because direct knowledge is limited. The FX value was taken from a search summary of the RBA Exchange Rates Overview page (15 Oct 2026, 4pm), not from opening the RBA F11.1 table directly.",
+  "comparable_city_reasoning": "Priced as a high-cost US tourist destination: restaurant and drink prices are set against mainland US resort cities such as San Diego and Honolulu's own Waikiki hotel market, adjusted upward for island import costs and Hawaii GET tax. Accommodation is set against Waikiki peak-season (July) rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.25,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 155.00,
+    "cocktail": 17.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 200.00,
+    "hotel_3star_2p": 330.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for July 2026, the peak season, drawn from general knowledge and no live booking pages or current listings were checked. Restaurant and drink anchors are moderately certain; accommodation anchors are less certain and include an estimate of taxes and tourist fees. Cocktail and wine_glass were scaled from the local beer price relationship because direct knowledge is weaker. The FX observation is the RBA 15 October 2026 figure, corroborated by two RBA pages. A 16 October figure appeared in a search snippet but could not be verified, so it was not used.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized EU capitals with similar tourism demand and price levels, such as Ljubljana and Budapest, adjusted for Zagreb's Eurozone pricing and its July tourist peak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.20,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 10.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 165.00
+  }
+}

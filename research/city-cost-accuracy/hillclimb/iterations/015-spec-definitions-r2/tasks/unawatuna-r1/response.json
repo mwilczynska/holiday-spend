@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Sri Lankan southern beach-town prices, not checked against live listings. Restaurant and bar anchors are moderately certain. Hostel and hotel anchors are less certain because seasonal July demand can move room rates considerably. Cocktail and wine are estimated from the local beer relationship, since direct knowledge of those prices is weaker. The FX observation comes from a search-result excerpt describing the RBA page for 15 October 2026; I did not open the RBA page directly.",
+  "comparable_city_reasoning": "Based on regional comparison with other small coastal tourist towns in southern Sri Lanka (for example Mirissa and Hikkaduwa), adjusted for Unawatuna's mix of guesthouses, cafés and beachfront restaurants.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 1.80,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 75.00
+  }
+}

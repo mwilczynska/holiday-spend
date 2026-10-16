@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied context; no live booking pages or current listings were inspected. Argentine prices are volatile and often quoted in USD in tourist towns, so all anchors carry wide uncertainty. Restaurant anchors are somewhat more reliable than accommodation, which varies widely by property and winter (July) demand. Cocktail and wine anchors are inferred from the local beer price, since direct knowledge is weak.",
+  "comparable_city_reasoning": "Regional basis: Argentine Patagonian tourist towns such as Bariloche and Ushuaia, adjusted down for El Calafate's smaller size and fewer hotels, and set for the July winter season rather than the December to February peak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 7.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 135.00
+  }
+}

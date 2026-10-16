@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Beijing price levels for July 2026, not checked against live listings. Restaurant and beer anchors are moderately reliable; hotel and hostel anchors are less certain and could vary widely by district and season. Cocktail and wine estimates rely on the local beer-to-drink price relationship because direct knowledge is weaker. The FX observation came from a search-result snippet for the RBA exchange-rates overview page (AUD/USD 0.6955 at 4.00 pm, 15 October 2026); I did not open the page or the F11.1 table directly, and other sites showed different figures that are not RBA data.",
+  "comparable_city_reasoning": "Based on Beijing's general price level relative to other large Chinese tier-1 cities such as Shanghai and Guangzhou, and to mid-priced East Asian capitals. Cocktail and wine were anchored to the local beer price, since direct knowledge of bar prices is limited.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 3.90,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 60.00
+  }
+}

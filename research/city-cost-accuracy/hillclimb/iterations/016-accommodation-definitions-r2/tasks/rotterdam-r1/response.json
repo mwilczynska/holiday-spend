@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live price checks. Restaurant and beer anchors are more reliable than accommodation, which varies widely by season and booking window. FX: I could not confirm a current RBA observation. The latest one I could verify is 2026-03-20, so the rate may be stale; a 15 Oct 2026 figure of about 0.6955 was reported by search but was not confirmed against the RBA table.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Dutch and Western European urban price levels (comparable to The Hague and Utrecht, slightly below Amsterdam) with July tourism-season accommodation pricing. No specific listings were inspected.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.20,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 15.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 180.00
+  }
+}

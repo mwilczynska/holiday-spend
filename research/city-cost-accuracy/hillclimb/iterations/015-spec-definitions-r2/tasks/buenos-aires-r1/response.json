@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimates from general knowledge, not checked against live menus, listings or booking pages. Argentine prices in USD move sharply with inflation and peso exchange-rate swings, so July 2026 levels are uncertain and restaurant and hotel anchors may be well off. The FX observation comes from RBA homepage text surfaced in search; I did not open the RBA rate table, and a third-party figure for 16 October (0.6947) was not confirmed as an RBA observation.",
+  "comparable_city_reasoning": "Regional basis: Latin American capitals with strong tourism demand (for example Santiago and Montevideo), adjusted for Argentina's price levels and currency volatility. Beer, coffee and cocktail estimates are anchored to typical Buenos Aires bar and café prices, with the wine glass priced at a discount to the cocktail.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 90.00
+  }
+}

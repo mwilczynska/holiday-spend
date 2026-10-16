@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings or booking pages. Panama uses the US dollar, so the USD anchors carry no currency conversion risk. July is the rainy season with softer hotel demand, which may pull accommodation anchors slightly low. Restaurant anchors are more reliable than accommodation, and beer, cocktail and wine prices are the least certain. FX: no verified RBA observation was obtained. Searches returned only third-party reproductions and market quotes: ozfinancehub.com.au cites 0.6947 USD per AUD for 16 October 2026, Trading Economics shows a market quote of 0.6923, and an rba.gov.au overview snippet is headed 'As at 4.00 pm, 15 October 2026' but its rate table was not extracted. Because these figures conflict and none is confirmed against the RBA F11 table, the fx observation fields are null until verified.",
+  "comparable_city_reasoning": "No single named comparable city was used. Prices are based on Panama City's own cost structure as a USD-dollarized, tourism-oriented Latin American capital, roughly in line with other mid-sized Latin American capitals with similar visitor demand.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 8.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

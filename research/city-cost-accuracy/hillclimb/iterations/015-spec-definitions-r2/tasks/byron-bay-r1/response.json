@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings, or booking pages. Restaurant and café anchors rest on general knowledge of regional NSW coastal tourism pricing and are moderately reliable. Accommodation anchors are less certain because July is a peak winter and school-holiday period in Byron Bay, and rates vary widely by season and property. Cocktail and wine were estimated from local price levels relative to beer rather than from direct observation. FX: the 0.6955 USD-per-AUD observation for 2026-10-15 was taken from search-result summaries that cite the RBA homepage and exchange-rates overview page. The RBA page itself was not opened directly, and the 2026-10-16 figure could not be confirmed as published, so verify the observation against RBA table F11.1 before use.",
+  "comparable_city_reasoning": "Regional Australian coastal tourist towns of comparable size and demand, such as Coffs Harbour, Ballina, and the wider Gold Coast hinterland, with Byron's premium boutique-hospitality positioning reflected in accommodation and drinks.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.70,
+    "coffee": 3.80,
+    "inexp_meal_1p": 17.40,
+    "midrange_meal_2p": 114.80,
+    "cocktail": 16.00,
+    "wine_glass": 10.40,
+    "hostel_dorm_1p": 34.80,
+    "hostel_private_2p": 104.30,
+    "hotel_1star_2p": 132.20,
+    "hotel_3star_2p": 222.60
+  }
+}

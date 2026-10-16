@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live booking pages or listings were inspected. Victoria Falls prices are often quoted in USD with a dual-currency local market, which adds volatility. Restaurant anchors are more reliable than accommodation, and hotel_3star_2p is the least certain. Cocktail and wine are set relative to beer using the local price relationship because direct knowledge is weak. The FX observation comes from a search-result summary of the RBA exchange-rates page and was not verified against the page contents directly.",
+  "comparable_city_reasoning": "Regional basis: Southern African tourist towns that serve visitors to major falls and safari gateways, such as Livingstone (Zambia) and Kasane (Botswana), adjusted for Zimbabwe's tourist-facing USD pricing. The July 2026 window is in the high tourist season, so accommodation anchors reflect in-season rates with taxes and mandatory fees included.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 7.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 130.00
+  }
+}

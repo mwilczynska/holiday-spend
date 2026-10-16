@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Japanese regional city prices, not checked against live listings. Restaurant prices are medium confidence. Cocktail and wine are weaker and were set relative to local beer prices. Accommodation is lower confidence because Aomori rates vary by season and event dates. The FX value comes from a search-result summary of the RBA overview page and was not opened directly, so verify it against the RBA F11.1 table.",
+  "comparable_city_reasoning": "Compared with mid-sized regional cities in northern Honshu (such as Morioka and Akita) and with national Japanese pricing for everyday restaurants and drinks. Accommodation is informed by Tohoku regional business-hotel and hostel rates, not Tokyo or Kyoto.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 7.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 120.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or menus. Restaurant and drink anchors are more reliable than accommodation, which varies widely by beachfront location and season. Baht-to-USD conversion is assumed at roughly 32-35 THB per USD. Accommodation anchors assume Thai VAT and the typical 10% service charge are included. The FX observation comes from search-result text citing the RBA exchange-rates overview; I did not open the RBA page, so verify the 0.6955 value against the RBA F11 table before relying on it.",
+  "comparable_city_reasoning": "Basis is Thai resort-island pricing (Phuket and Krabi tourist areas) adjusted down slightly for Koh Samui's smaller market and lower hotel rates, with July treated as a moderate-demand shoulder period on the Gulf side. Drink prices are estimated from the local beer price relationship: cocktails and wine are set at roughly 2.5 to 3 times the draft beer price.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 90.00
+  }
+}

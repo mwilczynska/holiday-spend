@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Guanajuato, not checked against live menus, listings, or booking pages. Restaurant and café anchors are the most reliable; hotel and hostel anchors are less certain because July is a peak domestic-travel month and rates vary by season and venue. Cocktail and wine are loosely benchmarked to the local beer price. The FX observation comes from search-result text quoting the RBA exchange-rates page; I did not open the RBA page directly, and the snippet gives a 16 October figure alongside a 15 October headline, so the 16 October value should be verified.",
+  "comparable_city_reasoning": "Treated as a mid-sized Mexican colonial city with strong domestic and international tourism, priced similarly to other Bajío and central Mexican heritage destinations such as San Miguel de Allende and Querétaro, and below Mexico City's central tourist districts.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 90.00
+  }
+}

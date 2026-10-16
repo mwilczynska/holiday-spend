@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, listings, or current prices. Laos prices are volatile because the kip is volatile, and tourist-town pricing varies a lot, so every anchor is approximate. Restaurant and beer anchors are somewhat more reliable than hotel and hostel anchors. The FX value comes from an rba.gov.au exchange-rates search excerpt that lists 0.6947 for 16 October 2026; I did not open the page directly, so the server should verify it against the official table.",
+  "comparable_city_reasoning": "Based on mid-sized Southeast Asian tourist towns with a heritage and tourism core, such as Chiang Mai and Vang Vieng, adjusted down for Lao price levels and the kip. Accommodation and cafe anchors reflect the tourist-oriented pricing typical of Luang Prabang's old town.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.30,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 65.00
+  }
+}

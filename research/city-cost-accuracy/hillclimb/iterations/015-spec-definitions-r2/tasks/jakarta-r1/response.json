@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Jakarta prices, not checked against live listings. Restaurant and beer anchors are moderately confident. Hotel and hostel anchors are less certain because Jakarta lodging varies widely by district and season. The FX observation was taken from a search-result summary attributed to the RBA exchange-rates overview page; I did not open that page or the F11 table directly.",
+  "comparable_city_reasoning": "Basis is other large Southeast Asian capitals (Bangkok, Manila, Kuala Lumpur) with food and drink priced below Bangkok and Kuala Lumpur, and hotel tiers roughly in line with mid-tier Southeast Asian city-centre stays. Alcohol is priced higher than food due to import duties and local alcohol restrictions.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 55.00
+  }
+}

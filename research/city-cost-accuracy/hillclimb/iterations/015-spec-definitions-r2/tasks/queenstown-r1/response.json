@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings. Restaurant and drink anchors are moderately reliable; accommodation is least certain because July is Queenstown's winter ski peak and rates vary widely by season and property. FX value comes from RBA exchange-rates results returned by search, not from opening the RBA table directly, and the 16 October figure may be provisional.",
+  "comparable_city_reasoning": "Based on general knowledge of New Zealand resort towns with ski-season tourism pricing (for example Wanaka and similar alpine resort towns), converted from NZD at roughly 0.58 USD per NZD. No specific listings or booking pages were inspected.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.80,
+    "coffee": 3.50,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 12.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 195.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied context, not live booking or menu checks. Restaurant and food anchors are moderately certain; accommodation is less certain because July is Brazilian winter school-holiday season and Iguazu Falls demand can firm nightly rates. Drink anchors (beer, coffee, cocktail, wine) are rough, with cocktail and wine set relative to beer prices in local bars. FX is the RBA overview figure as at 4.00 pm 15 October 2026, taken from search summaries of the RBA page; the F11 daily table was not directly retrieved.",
+  "comparable_city_reasoning": "Priced as a mid-sized Brazilian tourist destination, cheaper than Rio de Janeiro or São Paulo and in line with other Brazilian interior resort and waterfall destinations. Accommodation is anchored to the nearby hostel and guesthouse stock in Foz do Iguaçu's central and falls-access areas.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.40,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 75.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for a July 2026 peak-season window. Not checked against live menus, listings, or booking pages. Restaurant and coffee anchors are moderately reliable. Accommodation anchors are less certain because Valletta has limited hotel stock and summer rates vary widely with events and demand. Cocktail and wine were set from the local price relationship to beer (cocktail about 2.3x beer, wine glass about 1.4x beer) because direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "Benchmarked against Mediterranean island and coastal tourist cities of similar size and visitor profile, such as Palermo, Split, and Dubrovnik, adjusted for Malta's pricing level, its English-speaking service norms, and its 7% VAT on accommodation and dining. No specific published price source was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.60,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 12.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 180.00
+  }
+}

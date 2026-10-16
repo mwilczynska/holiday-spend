@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Peruvian mid-sized city pricing, not checked against live menus, listings, or booking pages. Restaurant and café anchors are more reliable than accommodation anchors, which vary more by season and property. July is a busy domestic and foreign travel period, so accommodation is set toward the upper part of the usual range. Drink prices carry more uncertainty than meals. FX: the 0.6955 observation is the RBA's published 15 Oct 2026 rate as reported in a search summary of the RBA homepage; I did not open the RBA page directly. A third-party site lists 0.6947 for 16 Oct 2026, which I could not confirm on an RBA page, so the RBA-attributed 15 Oct figure is used.",
+  "comparable_city_reasoning": "Priced as a mid-sized Peruvian highland tourist city, somewhat below Cusco's visitor-facing prices and above smaller regional towns, with meal and drink prices in line with the local sol-denominated market. No single named comparator city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 27.00,
+    "hotel_3star_2p": 90.00
+  }
+}

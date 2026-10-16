@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Japanese regional city prices; no live listings or booking pages were checked. Restaurant and café anchors are moderately reliable. Hostel and hotel anchors are less certain and could shift with July demand and spillover from Kanazawa. Japanese restaurants usually add no service charge, so the midrange figure reflects tax-inclusive pricing. Cocktail and wine anchors are estimated from the local beer price because direct knowledge is weaker. The FX observation was taken from a search-result summary that cites the RBA overview page; that page was not opened directly, so verify the figure before relying on it.",
+  "comparable_city_reasoning": "Based on mid-sized regional Japanese cities such as Niigata and Okayama, priced below Tokyo, Osaka and Kyoto. Accommodation is also anchored to the Hokuriku tourism market, given Toyama's proximity to Kanazawa.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 120.00
+  }
+}

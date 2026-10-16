@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Sihanoukville pricing; no live booking pages or current listings were inspected. Restaurant and beer anchors are more reliable than accommodation, which varies widely by beach area and property. July is low season (rainy season), so hotel and hostel anchors lean toward the lower end of the range. Cocktail and wine are estimated from the beer anchor (roughly 2.5x and 3x beer). FX uses the RBA 15 Oct 2026 value, which appeared on two RBA pages; a 16 Oct value was reported by one search snippet but could not be cross-checked, so it was not used.",
+  "comparable_city_reasoning": "Compared with budget-to-mid-range Southeast Asian beach resort towns with a guesthouse and hostel backpacker market, adjusted for Cambodia's generally lower restaurant and drink prices and common USD pricing. Accommodation is benchmarked to beach-area guesthouses and hotels in the July low season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 45.00
+  }
+}

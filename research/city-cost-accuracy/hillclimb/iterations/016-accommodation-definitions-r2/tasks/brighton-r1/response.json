@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of UK south-coast price levels, converted to USD at an approximate rate; no live listings were inspected. Restaurant and drink anchors are more reliable than accommodation, which varies widely by event dates and weekday in July. Cocktail and wine anchors are estimated from the local beer relationship. FX was taken from a web search summary that cites the RBA exchange-rates page for 15 October 2026; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Based on English south-coast resort and university cities (for example Bournemouth and Portsmouth) with London-adjacent pricing pressure on accommodation in summer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 4.80,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 14.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 240.00
+  }
+}

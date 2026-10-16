@@ -1,0 +1,27 @@
+```json
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are moderately certain. Hostel and hotel anchors are less certain because trade-fair demand can move Düsseldorf rates sharply in any given month. Cocktail and wine were set relative to the beer anchor using typical German restaurant markups. The FX figure comes from a search summary citing the RBA exchange rates page for 15 October 2026, cross-checked against an OFX reciprocal. The rba.gov.au page itself was not directly opened, so verify it before relying on the rate.",
+  "comparable_city_reasoning": "Based on other large western German cities such as Cologne and Frankfurt am Main, adjusted for Düsseldorf's Altbier restaurant pricing and trade-fair-driven hotel demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 15.50,
+    "wine_glass": 7.25,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 175.00
+  }
+}
+```

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Cardiff and UK pricing, not checked against live menus or booking listings. Restaurant and drink anchors are more reliable than accommodation, which is priced at July peak-season levels and is less certain. Cocktail and wine were set relative to the beer anchor because direct knowledge is weak. FX: the 0.6955 USD per AUD figure for 2026-10-15 is attributed to the RBA exchange-rates overview page in a search-result summary; I did not open that page directly, and the RBA F11.1 daily table was not confirmed.",
+  "comparable_city_reasoning": "Treated as a mid-sized UK regional city with steady visitor demand, priced similarly to other mid-sized UK cities such as Bristol, with restaurant and accommodation levels set against UK city-centre norms.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.40,
+    "coffee": 4.50,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 12.50,
+    "wine_glass": 8.60,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 160.00
+  }
+}

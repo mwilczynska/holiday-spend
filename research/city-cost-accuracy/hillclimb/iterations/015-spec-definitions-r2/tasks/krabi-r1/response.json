@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of southern Thai tourist-town prices for July 2026; no live booking pages or current listings were consulted. Restaurant and beer anchors are the most reliable. Accommodation anchors are less certain because July is low season and rates vary a lot by location (Ao Nang vs Railay vs inland). Cocktail and wine are estimated relative to the beer anchor (roughly 3x beer), not from direct price observation. FX: the 0.6947 USD per AUD figure for 2026-10-16 came from a search summary that cited the RBA exchange-rates page and a third-party page (ozfinancehub) that reports the same rate. I could not open the RBA F11.1 table to confirm the value, so verify it on rba.gov.au before relying on it.",
+  "comparable_city_reasoning": "Priced against southern Thai beach and island tourism towns (Phuket outside its premium areas, Koh Samui, Ao Nang-style resort strips) and general Thai provincial tourist price levels, with prices set below Phuket and Samui for mid-range and hotel categories.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 60.00
+  }
+}

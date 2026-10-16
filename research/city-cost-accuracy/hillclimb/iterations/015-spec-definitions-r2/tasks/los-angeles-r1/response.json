@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Los Angeles price levels for July 2026. No live booking pages, menus, or listings were checked. Restaurant and beer anchors are more reliable than accommodation, which swings with July peak-season demand and events. The midrange meal excludes tipping, which is not on the bill in the US. The FX figure is the 15 October 2026 RBA value; the 16 October value was not used because the RBA publishes after 4 pm and it could not be confirmed as final.",
+  "comparable_city_reasoning": "Basis is general knowledge of major US coastal metropolitan price levels, with Los Angeles' high summer tourist demand reflected in the lodging anchors. No specific comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 16.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 235.00
+  }
+}

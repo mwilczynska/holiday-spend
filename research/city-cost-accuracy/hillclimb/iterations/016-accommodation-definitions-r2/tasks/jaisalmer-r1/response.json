@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Jaisalmer and Rajasthan tourist pricing, with no live listings checked. Restaurant anchors are moderately reliable. Accommodation is less certain because July is off-season and the Fort-area guesthouse market varies widely. Drinks are the weakest: alcohol pricing in Rajasthan is irregular, and the wine and cocktail anchors use beer-relative judgment. The FX value comes from a search snippet attributed to the RBA 4pm rate for 15 October 2026. I did not open the RBA page directly, so it should be verified against rba.gov.au.",
+  "comparable_city_reasoning": "South Asia basis, benchmarked against Jodhpur and Jaipur tourist districts and adjusted for Jaisalmer's Old Town and Fort-area guesthouse market. Prices reflect July off-season rates, which are lower than the October to March peak. Accommodation figures include GST.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.20,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 4.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 5.00,
+    "hostel_private_2p": 14.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 38.00
+  }
+}

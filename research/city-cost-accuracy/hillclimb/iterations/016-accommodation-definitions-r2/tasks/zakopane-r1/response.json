@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or booking pages. Restaurant and meal anchors are moderately reliable for Polish resort pricing. Drinks and July accommodation are less certain because Zakopane's seasonal and resort premiums vary widely by street and property. Accommodation anchors assume peak-summer pricing for July and include mandatory local fees as best estimated. The FX figure comes from the rba.gov.au homepage as surfaced in search, not from a verified read of the F11.1 table.",
+  "comparable_city_reasoning": "Based on Polish price levels for mid-sized tourist towns, adjusted upward for Zakopane's mountain-resort premium in peak summer, with reference to Krakow as a broader Polish comparator. No web search was used for city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 10.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 72.00,
+    "hotel_3star_2p": 130.00
+  }
+}

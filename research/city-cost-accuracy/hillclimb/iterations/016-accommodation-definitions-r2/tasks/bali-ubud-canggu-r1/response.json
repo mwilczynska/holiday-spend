@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Bali tourist-area pricing, not from live listings or menus. Restaurant and café anchors are moderately certain. Accommodation anchors are assumed to reflect July high-season rates, with taxes and service charges (typically about 21% in Indonesia) included, and are less certain than food prices. Cocktail and wine were estimated from the local price relationship to beer (roughly 2.3x and 2.4x), since direct knowledge is weaker. FX: the rate was taken from a web search result attributed to the RBA exchange rates page; I did not open the RBA page directly. A third-party site reports 0.6947 for 16 Oct 2026, which I could not confirm on rba.gov.au, so the 15 Oct 2026 figure is used.",
+  "comparable_city_reasoning": "Basis is the SEA tourist-hub tier of Bali (Ubud and Canggu), compared with similar Southeast Asian beach and cultural tourism hubs. Dorm and guesthouse prices reflect Ubud and Canggu's demand, with July as peak dry-season travel.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 80.00
+  }
+}

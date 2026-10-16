@@ -1,0 +1,29 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates, not checked against live listings. Restaurant and coffee anchors are medium confidence. Beer, cocktail and wine are low confidence because alcohol is largely limited to licensed hotel venues, so ordinary-venue prices are sparse; cocktail and wine are set relative to the beer anchor. Hostel anchors are low confidence because registered hostel supply in Doha is thin. Hotel anchors assume July off-peak pricing and are uncertain. FX: the 0.6955 observation (15 October 2026, 4 pm) was taken from search-result snippets attributed to the RBA and was not verified by reading the RBA page.",
+  "comparable_city_reasoning": "Based on general knowledge of Doha's price level relative to other Gulf cities such as Dubai and Abu Dhabi, adjusted for Qatar's licensing rules on alcohol and the QAR-USD peg (about 3.64 QAR per USD). No specific comparable city was used for the restaurant anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 17.00,
+    "wine_glass": 18.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 165.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)

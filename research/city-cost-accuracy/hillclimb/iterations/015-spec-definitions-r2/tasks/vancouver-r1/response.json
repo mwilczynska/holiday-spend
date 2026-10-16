@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors are holistic estimates from general knowledge of Vancouver prices, roughly CAD-converted and adjusted for mid-2026; they were not checked against live menus. Accommodation anchors are lower confidence because July is peak season and rates vary widely by neighbourhood. FX: the 0.6955 figure was not verified against the official RBA table. The rba.gov.au page was not opened or read; the value came from search-result summaries that attribute it to the RBA 4 pm rate for 2026-10-15. Those summaries also report 0.6947 for 2026-10-16 from a third-party site, which could not be confirmed as an RBA entry, so the server should verify the observation against the F11.1 table before relying on it.",
+  "comparable_city_reasoning": "Priced against Seattle and Portland, Oregon, with a Canadian-dollar conversion adjustment. Vancouver's restaurant and hotel costs sit close to Seattle's, and its hostel and hotel tiers track the Pacific Northwest.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 13.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 165.00,
+    "hotel_3star_2p": 260.00
+  }
+}

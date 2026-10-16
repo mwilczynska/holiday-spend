@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings or booking pages. Restaurant anchors are moderately certain for a tourist beach town. Accommodation is less certain and assumes July low-season (southwest monsoon) rates with taxes and service charges included. Beer and wine are the weakest drink anchors because local draft beer is rare and wine markups vary widely. FX: the 0.6955 USD per AUD observation is the RBA 4.00 pm rate for 15 October 2026 as reported in a search summary, not confirmed by opening the RBA page. A 16 October figure from a third-party site was not used because the RBA has not been verified to publish it.",
+  "comparable_city_reasoning": "Based on southern Sri Lankan beach resort towns such as Mirissa, Hikkaduwa and nearby Galle, using tourist-area pricing in South Asia. July is the monsoon low season on the southwest coast, so accommodation anchors reflect off-season rates. Drink anchors use the local beer price as a reference point. Cocktail and wine are set at roughly 2x and 2.5x beer respectively, which is a judgement call.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 36.00,
+    "hotel_3star_2p": 75.00
+  }
+}

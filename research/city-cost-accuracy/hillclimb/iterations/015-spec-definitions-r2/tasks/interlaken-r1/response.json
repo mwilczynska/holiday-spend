@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for a July 2026 reference window, not checked against live menus, booking pages, or listings. Restaurant and beer anchors are more reliable than accommodation, which is less certain because summer resort rates in Interlaken move a lot. Cocktail and wine_glass are inferred from local beer pricing because direct knowledge is weaker. FX: 0.6955 is the RBA-attributed rate for 2026-10-15 (4 pm) as shown on the RBA exchange-rates overview page in search results. I did not confirm it in the RBA F11.1 table. A third-party 2026-10-16 figure (0.6947) could not be verified, so the 2026-10-15 observation is used.",
+  "comparable_city_reasoning": "Swiss alpine resort towns with similar summer tourism demand (for example Lucerne and other Swiss resort towns), adjusted down from Zurich and Geneva levels and up for the peak-season accommodation premium. No web search was used for city-price anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 6.00,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 145.00,
+    "cocktail": 23.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 155.00,
+    "hotel_3star_2p": 260.00
+  }
+}

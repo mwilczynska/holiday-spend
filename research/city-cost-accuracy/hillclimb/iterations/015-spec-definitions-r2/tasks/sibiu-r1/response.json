@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus or booking listings. Restaurant and café anchors are more reliable than accommodation, since July is peak season and hotel and hostel rates vary widely. Cocktail and wine are inferred from the local beer and restaurant price relationship. The FX observation was taken from a search summary attributed to the RBA page and was not independently opened.",
+  "comparable_city_reasoning": "Based on regional Romanian tourist cities such as Brasov and Cluj-Napoca, adjusted for Sibiu being somewhat cheaper than Bucharest, with Romanian restaurant and accommodation pricing as the reference.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 9.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 120.00
+  }
+}

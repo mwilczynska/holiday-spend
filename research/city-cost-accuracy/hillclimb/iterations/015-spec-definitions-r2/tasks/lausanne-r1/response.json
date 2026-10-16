@@ -1,0 +1,29 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Swiss pricing, not a check of live listings. Restaurant and beer anchors are moderately reliable. Hotel and hostel anchors are the least certain because Lausanne accommodation varies widely with season and events, and the July 2026 window is future-dated relative to my knowledge. Cocktail and wine_glass are derived from typical Swiss restaurant pricing relative to beer rather than direct venue knowledge. The FX observation comes from RBA exchange-rate table content in search results; I did not open the RBA page directly.",
+  "comparable_city_reasoning": "Priced against Swiss mid-to-upper-tier cities such as Geneva and Zurich, with Lausanne set somewhat below Geneva and Zurich for restaurants and hotels. CHF to USD conversion is assumed at roughly 1 CHF = 1.25 USD.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 6.00,
+    "inexp_meal_1p": 24.00,
+    "midrange_meal_2p": 165.00,
+    "cocktail": 24.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 165.00,
+    "hotel_3star_2p": 270.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html)

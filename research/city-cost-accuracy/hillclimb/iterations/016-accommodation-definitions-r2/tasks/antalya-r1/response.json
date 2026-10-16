@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not live listings. Restaurant and beer anchors are moderately confident for a tourist-area Antalya, since lira-denominated prices move quickly. Accommodation is less certain, especially for July peak-season pricing, so treat the hostel and hotel anchors as wide bands. Cocktail and wine were set relative to the beer anchor, as the tourist-bar price relationship was weaker in direct knowledge. Turkey is transcontinental; it is placed in Middle East for this classification. The FX figure was reported in a search-result summary attributed to the RBA exchange-rates page, but I did not open that page directly, so it is unverified and the 16 October 2026 figure could not be confirmed on rba.gov.au.",
+  "comparable_city_reasoning": "Regional basis: Turkish Mediterranean resort towns (for example Bodrum and Fethiye) with lira-based pricing and a July tourist peak. Accommodation anchors reflect typical July rates in Antalya's coastal and old-town areas, including taxes and mandatory fees. Cocktail and wine anchors follow the beer anchor using the typical tourist-bar price ratio.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 9.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 100.00
+  }
+}

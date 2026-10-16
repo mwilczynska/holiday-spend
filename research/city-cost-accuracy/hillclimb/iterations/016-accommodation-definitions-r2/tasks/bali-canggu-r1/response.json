@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or menus. Restaurant and drink anchors are moderately reliable; accommodation is less certain, especially for July peak season. The FX value (0.6955 for 2026-10-15) comes from a search summary attributed to the RBA exchange-rates page, which I did not open directly; the 2026-10-16 figure in that summary was not used because its publication could not be confirmed.",
+  "comparable_city_reasoning": "Based on general knowledge of Canggu and similar Bali tourist areas (Seminyak, Ubud), adjusted for Canggu's Western cafe and bar pricing and July high-season demand. Drink anchors use typical Bali restaurant and bar markups, with wine and cocktail set relative to beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are moderately confident; hotel anchors are lower confidence because July is low season in Mazatlan and rates vary widely. Cocktail and wine were set from the local beer relationship, since direct knowledge is weak. FX: the latest RBA observation I could verify is 2026-03-20, which is stale for an October 2026 generation date. A later figure surfaced in search but could not be confirmed on rba.gov.au, so it was not used.",
+  "comparable_city_reasoning": "Based on general knowledge of Mexican Pacific resort cities such as Puerto Vallarta, adjusted down slightly for Mazatlan's lower tourist demand in July. Ordinary local venues only; hotel-zone and luxury pricing excluded.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

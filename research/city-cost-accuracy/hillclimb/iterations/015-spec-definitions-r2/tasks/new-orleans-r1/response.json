@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of US tourism pricing, not checked against live listings. Restaurant and bar anchors are moderately reliable. Hotel and hostel anchors are less certain because July is a shoulder season in New Orleans and rates swing with events and conventions. Tax and service are assumed to be included where the field definition requires it. FX: the 0.6955 value for 15 October 2026 was taken from search-result summaries that attribute it to the RBA exchange-rates overview page. I did not read the RBA table directly, so verify it before relying on it. A secondary source gave 0.6947 for 16 October 2026, but I could not confirm that figure against the RBA.",
+  "comparable_city_reasoning": "Based on the US Gulf Coast and Southern tourism cities of similar size and visitor profile, such as Savannah, Charleston and Memphis, adjusted for New Orleans French Quarter pricing and July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 14.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 220.00
+  }
+}

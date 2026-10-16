@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings or menus. Restaurant and beer anchors are more reliable than accommodation, which could be off by roughly 25 percent depending on hotel zone and July rainy-season and Mexican domestic holiday demand. Cocktail and wine were set relative to the beer anchor (about 2.5 to 3 times beer) because direct knowledge is weaker. The FX figure comes from a web search summary; I could not open the RBA page to confirm it, and an earlier search returned older cached RBA values, so verify it before relying on it.",
+  "comparable_city_reasoning": "Based on mid-sized Mexican Pacific coast resort and port cities with a similar tourism mix. Accommodation is set below major resort hubs, reflecting a July reference month in the rainy season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.25,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 8.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

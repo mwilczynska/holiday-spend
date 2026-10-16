@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Italian and Tuscan pricing, not checked against live listings. Restaurant and beer anchors are moderately reliable; accommodation is least certain because July demand and spillover from Florence can move hotel and hostel rates a lot. The FX value comes from a search-result snippet attributed to the rba.gov.au homepage for 2026-10-15; I did not open the RBA page itself.",
+  "comparable_city_reasoning": "Benchmarked against smaller Tuscan and central Italian tourist cities such as Lucca and Siena, with Florence used as an upper reference for July lodging. Pisa's ordinary trattoria and bar pricing is treated as similar to these cities, with accommodation adjusted for its proximity to Florence and steady summer tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 2.60,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 11.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 165.00
+  }
+}

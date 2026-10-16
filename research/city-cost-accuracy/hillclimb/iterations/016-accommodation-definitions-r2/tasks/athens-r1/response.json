@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or current menus. Restaurant and drink anchors are medium confidence; July hotel and hostel rates are less certain because of peak-season and Athens demand swings. Cocktail and wine are estimated from the usual Athens beer-to-drink price relationship. FX: the 0.6947 figure for 2026-10-16 came from a third-party site (ozfinancehub.com.au) that presents RBA-labelled daily figures. I did not open the rba.gov.au table, so verify it against F11.1 before relying on it.",
+  "comparable_city_reasoning": "Benchmarked against other southern European capitals with similar tourism demand, such as Lisbon. Athens restaurant and drink prices sit somewhat below those cities, while July accommodation in the central historic districts is priced high.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 13.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 185.00
+  }
+}
