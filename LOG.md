@@ -3948,3 +3948,20 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   66% high (median log +0.51); against KAYAK mid-range it is about right. Which level the app's 3-star tier should
   represent is an owner decision; calibration fits whichever is chosen.
 - 018 search-grounded at Haiku high on R1 (54 cities) dispatched.
+
+# 16 October 2026 UTC ? Luna lane complete at 333/333
+
+- Collected 121 frozen answers in this session, from 212/333 saved responses to 333/333 (0 pending), including the requeued Alicante task. Every task used a fresh GPT-6 Luna worker at Max; final messages were saved verbatim with prompt SHA-256 and run metadata.
+- Worker retries: 0. Worker failures: 0. Skipped tasks: 0. No model or effort substitutions.
+- The first six tasks used fresh isolated collaboration workers. Nanjing and the remaining 114 tasks used fresh ephemeral Codex CLI workers with explicit `gpt-6-luna` / `max`, receiving the exact hash-checked worker message directly from `codex-task-message.mjs`. Up to six CLI workers ran concurrently. The initial sandboxed CLI launch exited before starting a model: `Error finding codex home: Could not find home directory`; automatic review approved the subsequent execution, which succeeded.
+- Timing provenance: the first seven runs use approximate/coordinator-observed dispatch and save times (the first three share an approximate start time). Later CLI runs record timestamps immediately before dispatch and after completion. Unknown search counts are null; CLI search counts count search actions.
+- Pushed response checkpoints: `781322fb` (241/333), `8ee78dbe` (265/333), `d93de2d2` (289/333), `72bf9cb4` (313/333), and `8d92cc80` (333/333). Running workers finished before each checkpoint.
+- Stop condition: the iteration queue is empty. Ran the single authorized ingest, then `queue.mjs --status`. No assessment, comparison, interpretation, or sealed-test read was performed.
+
+Ingest output:
+
+```json
+{"tasks":333,"failures":0,"primaryLoss":0.2878430193159483,"pooledRepeatLoss":0.2878430193159484}
+```
+
+- `npm.cmd run docs:check-memory` passed. Session collection record: `research/city-cost-accuracy/hillclimb/iterations/101-v11-luna-r2/codex-session-2026-10-16-1839.json`.
