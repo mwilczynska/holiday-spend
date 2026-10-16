@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Belgrade price levels; no live menus, booking pages, or listings were checked. Restaurant and coffee anchors are the more reliable ones. Accommodation is least certain because July rates vary with weekday, events and availability (roughly +/-25%). Cocktail and wine have weaker direct knowledge and are set from the beer anchor (cocktail about 2x beer; wine glass about 1.05x beer). The FX observation came from search-result reporting of the RBA daily exchange-rate table, not a direct page read.",
+  "comparable_city_reasoning": "No single exact comparable. Based on the regional price level of mid-sized Southeast and Central European capitals (for example Sofia, Bucharest and Zagreb), placed at the lower end of the European range and adjusted for Serbia's dinar-based prices and July high-season accommodation demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 3.20,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 52.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 100.00
+  }
+}

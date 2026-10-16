@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Cairo price levels, not live listings or booking pages. Food and drink anchors are moderately reliable; beer reflects a standard domestic lager serving because draft is uncommon. Accommodation anchors reflect typical July rates including taxes and fees, but July is a low-demand summer month and quality and area vary widely, so they are less certain. Cocktail and wine anchors are derived from the beer anchor using rough local multiples of about 2.4x and 1.6x because direct knowledge is weaker. Egyptian inflation and pound moves could shift all anchors materially. The FX figure came from search-result summaries of the RBA exchange-rate page, not a direct page read.",
+  "comparable_city_reasoning": "No single named comparable city was used. Estimates rest on Cairo's own local price level, loosely cross-checked against other North African and Levant capitals for hotel and restaurant tiers.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.25,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 6.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 55.00
+  }
+}

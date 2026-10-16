@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Model estimates from general knowledge of Thai provincial tourist prices, not checked against menus, live listings or booking pages. Food and beer are moderate confidence. Hostel and hotel rates are less certain because registration status and availability were not checked, and July is usually off-peak. Cocktail and wine use beer-relative ratios (about 2.4x and 2.8x beer) because direct knowledge of local bar prices is weak. The FX value comes from search results pointing to the RBA exchange-rates page; the F11.1 table was not opened.",
+  "comparable_city_reasoning": "Regional basis: Thai provincial heritage and tourist towns, priced below Bangkok's central tourist districts and in line with other mid-sized Thai destinations. No specific city price list was consulted.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.30,
+    "inexp_meal_1p": 2.70,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 9.50,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 17.00,
+    "hotel_3star_2p": 50.00
+  }
+}

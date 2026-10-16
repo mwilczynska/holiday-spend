@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Athens pricing, not from live menus, listings or booking pages. Food and drink anchors are moderately reliable. Accommodation anchors are least certain because July is peak season and rates vary widely by district, date and booking window; they reflect typical peak-season rates including taxes and mandatory fees. Cocktail and wine anchors were cross-checked against the beer anchor using typical local price ratios rather than set from direct knowledge alone. The FX value was taken from a search-result summary of the RBA daily table; the F11.1 file itself was not opened.",
+  "comparable_city_reasoning": "Regional basis: southern European capital pricing with heavy summer tourism, adjusted down for Athens' generally lower restaurant and cafe prices compared with Western European capitals. Hotel anchors reflect July demand in central Athens districts.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.20,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 12.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 88.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 170.00
+  }
+}

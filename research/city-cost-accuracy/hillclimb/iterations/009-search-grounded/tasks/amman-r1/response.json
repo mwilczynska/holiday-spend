@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, cafe, beer and dorm anchors agree across several aggregator snapshots dated 2023-2026, read as search excerpts rather than full pages. Hotel anchors are less certain: 3-star averages span about $59-87 by source, and the 1-star anchor rests on budget-hotel averages and guesthouse from-prices with no direct 1-star figure. Cocktail (about 2x beer) is near the low end of an upscale-leaning venue range (Tabiji, JD10-20) and fits the beer relationship. Wine glass is set at about 1.6x beer because direct independent-restaurant glass prices were not found; bottle prices and one luxury-hotel glass list only loosely check it. July seasonality was not measured and sources disagree on its direction. FX comes from RBA exchange-rates page excerpts returned by search; the full F11.1 table was not opened, so confirm before use.",
+  "comparable_city_reasoning": "No comparable city used; anchors rest on Amman-specific aggregator and listing data.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 15.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 70.00
+  }
+}

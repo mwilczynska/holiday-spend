@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer and coffee anchors rest mainly on Numbeo Belgrade averages (updated 2 Oct 2026; an Aug 2026 snapshot ran about 10% lower), the strongest part of the estimate. Cocktail and wine_glass are less certain because direct per-bar and per-glass data were weak. Hostel and hotel anchors are low confidence: sources conflict (dorm averages about 16 to 30 USD, hostel private about 41 to 44 USD, 3-star about 62 to 76 USD), most are undated or not July-specific, and July seasonality is unclear. No October euro rate was found, so the EUR/USD assumption is approximate. The RBA rate comes from a search summary of the RBA exchange-rate table, not a directly opened page.",
+  "comparable_city_reasoning": "No comparable city was used; the basis is Belgrade-specific data. Local prices were converted at about 102.4 RSD per USD (about 117.3 RSD per EUR and EUR/USD about 1.145 for July 2026). The wine glass is inferred from the local draught beer price (about 1.15x), and the cocktail is a Belgrade club price reduced to bar level.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.71,
+    "coffee": 3.12,
+    "inexp_meal_1p": 12.89,
+    "midrange_meal_2p": 54.00,
+    "cocktail": 7.03,
+    "wine_glass": 4.39,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 44.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 88.00
+  }
+}

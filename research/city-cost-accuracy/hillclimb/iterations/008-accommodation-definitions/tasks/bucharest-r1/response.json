@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not checked against live listings. Restaurant and cafe anchors are more reliable than accommodation, which varies by district and hotel category; the 1-star and 3-star hotel anchors are least certain. Accommodation assumes ordinary July rates, not off-season, with taxes as best estimated. Cocktail and wine were cross-checked against beer (cocktail about 3x, wine glass about 1.5x beer) because direct knowledge is weaker. The FX value came from search-result summaries and was not verified on the RBA page.",
+  "comparable_city_reasoning": "Benchmarked against Central and Southeastern European capitals with similar tourism demand, such as Sofia and Budapest, and against Romania's domestic price level. No live listings or price pages were checked.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 3.20,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 11.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 56.00,
+    "hotel_1star_2p": 68.00,
+    "hotel_3star_2p": 110.00
+  }
+}

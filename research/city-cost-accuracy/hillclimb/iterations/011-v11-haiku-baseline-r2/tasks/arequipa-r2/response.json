@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Peruvian price levels, not checked against live menus, booking pages or listings. Restaurant and cafe anchors are more reliable than accommodation, which varies widely by season and room type. Cocktail and wine were set from the beer relationship (about 2.2x and 1.8x beer) because direct knowledge is weak. The FX figure comes from web search summaries citing the RBA table, not a direct page read, so verify it before use.",
+  "comparable_city_reasoning": "Treated as a mid-sized Peruvian tourist city. Cusco is the closest tourist-price reference and Arequipa is set somewhat below it; Lima is a higher-cost national reference. Local soles prices were converted at an assumed working rate of about 3.55 soles per US dollar from general knowledge, not a live quote.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.30,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 6.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 70.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, cafe and beer anchors rest on several aggregated sources, but they are dated (Numbeo-derived figures from November 2025) and beer sources differ widely. Dinar conversions use roughly 100-105 RSD per USD. Cocktail is one club price from a source that flags it as unreliable, cross-checked against the beer price. Wine_glass has no direct source and is set at about 1.3x beer. Accommodation is least certain: hostel and hotel snapshots vary two to three times, many are undated or show 'from' rates, and July values are judgement. The 1-star anchor is inferred from budget double-room snippets rather than a verified average. FX 0.6955 comes from RBA exchange-rate excerpts returned by search, not a direct table read.",
+  "comparable_city_reasoning": "No comparable city used. Anchors are Belgrade-specific: restaurant and bar figures from aggregated sources (Numbeo-derived figures republished by Expat.com, MyLifeElsewhere, getwherenext, Expatistan) and hostel and hotel listing snapshots (Budgetyourtrip, Hostelz, KAYAK, Skyscanner, Trabber, Trip.com), set to July peak-season levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.60,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 105.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, listings or booking pages. Restaurant and drink anchors are moderate confidence. Accommodation is least certain because of wide price spread across neighborhoods and rand-driven price changes. Cocktail and wine anchors were cross-checked against the beer anchor using typical bar and restaurant price relationships. July is winter low season, so accommodation reflects typical July rates, with some domestic school-holiday demand early in the month. FX value taken from a search-result summary citing the RBA 15 Oct 2026 4pm reading; the RBA page itself was not opened.",
+  "comparable_city_reasoning": "No single foreign comparable used. Benchmarked to South African coastal tourism pricing, with restaurant and bar anchors reflecting Cape Town's tourist districts (City Bowl, Sea Point, V&A Waterfront) and accommodation set at July low-season levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 52.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 110.00
+  }
+}

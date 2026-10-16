@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of northern Tanzania safari-gateway pricing; no live listings or booking pages were checked. Restaurant and beer anchors are moderately reliable. Beer assumes a bottled local lager, since draft is uncommon. Cocktail and wine_glass are set at roughly three times the beer anchor because direct local knowledge is weak. Hotel and hostel anchors are least certain because July is high season and rates vary widely. The FX value of 0.6955 for 2026-10-15 came from web search summaries, not an opened RBA table, and earlier summaries gave conflicting RBA values, so verify it before use.",
+  "comparable_city_reasoning": "No single comparable city. Based on general pricing in northern Tanzania safari-gateway towns, loosely benchmarked against Moshi and other East African tourist towns. Lodging anchors include a July high-season uplift.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 95.00
+  }
+}

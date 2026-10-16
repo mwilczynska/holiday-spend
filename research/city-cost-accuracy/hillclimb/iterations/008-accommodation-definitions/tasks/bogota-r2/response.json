@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Bogota price levels and the supplied context; no live booking pages, menus or current listings were inspected. Restaurant and beer anchors are the more reliable part. Accommodation anchors are less certain because nightly rates vary by neighbourhood and demand. July overlaps Colombia's mid-year holiday period, so accommodation anchors sit at typical rather than discounted levels and are assumed to include IVA and mandatory fees. Cocktail and wine anchors were cross-checked against the beer anchor at roughly 3x because direct knowledge of those prices is weaker. The FX observation comes from search-result summaries of RBA pages, not a directly opened RBA table, so verify it before relying on it.",
+  "comparable_city_reasoning": "Regional basis: Colombian and Andean capital-level pricing, using Medellín and Quito as broad reference points for restaurant and budget lodging levels. No single city was used as an exact price source, and no comparable-city listing data was consulted.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 3.25,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 8.25,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 100.00
+  }
+}

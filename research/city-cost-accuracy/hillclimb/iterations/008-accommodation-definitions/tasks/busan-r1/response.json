@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, booking pages, or current listings. Restaurant and cafe anchors are moderately reliable for typical Busan price levels. Accommodation is least certain because July spans the monsoon season and the start of beach-season peak pricing around Haeundae and Seomyeon, so the nightly figures are best bounded estimates. The cocktail and wine anchors are inferred from the beer anchor using typical local price ratios because direct knowledge of those prices is weaker. Won-to-dollar conversions assume a rate of roughly 1,400 to 1,450 won per dollar, which may have moved since my knowledge cutoff.",
+  "comparable_city_reasoning": "Based on Busan's own price level as South Korea's second-largest city and a port and beach tourism hub. Restaurant and cafe prices follow Korean domestic menu norms. Accommodation is benchmarked loosely against Seoul's budget and mid-range hotels, set lower for Busan, and against Fukuoka, a comparable Japanese port city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.10,
+    "inexp_meal_1p": 7.80,
+    "midrange_meal_2p": 67.00,
+    "cocktail": 10.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 64.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 120.00
+  }
+}

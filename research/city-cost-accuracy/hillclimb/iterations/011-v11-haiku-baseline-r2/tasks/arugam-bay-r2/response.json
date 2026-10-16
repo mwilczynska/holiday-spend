@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for a small Sri Lankan surf town, priced for the July 2026 peak season; no live listings were consulted. Restaurant and dorm anchors are moderately reliable; hotel_3star_2p and alcohol anchors are less certain. Cocktail and wine_glass were set relative to beer using a local price relationship (cocktail about double beer) because direct bar-price knowledge is weak. FX caveat: no RBA observation after 2026-03-20 could be verified, and later figures in search summaries could not be checked against rba.gov.au, so the supplied rate is about seven months old and should be refreshed from the RBA daily table before use.",
+  "comparable_city_reasoning": "Benchmarked against other Sri Lankan surf and beach-resort towns such as Mirissa and Hikkaduwa, adjusted for Arugam Bay's smaller scale and July peak surf-season demand; no specific comparable listings were checked.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 70.00
+  }
+}

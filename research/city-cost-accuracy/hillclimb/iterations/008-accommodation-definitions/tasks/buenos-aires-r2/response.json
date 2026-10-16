@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate from general knowledge only; no live listings, booking pages, or city-price searches were used. Argentina's high and volatile inflation and exchange-rate regime can move USD prices sharply, and my knowledge of 2026 conditions is limited, so the set is rated low: restaurant and cafe anchors are roughly within 30 percent and accommodation roughly within 40 percent. Cocktail and wine anchors were set from the beer anchor (cocktail about 2x beer, wine glass about 1.25x beer) because direct bar-price knowledge is weak. Accommodation anchors reflect typical July rates: winter is lower-demand than summer, with some school-holiday demand in late July, and are assumed to include 21 percent IVA and typical mandatory fees. The FX value comes from a search result attributed to the RBA exchange-rates page; that page was not re-read directly.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: general Latin American capital price levels, loosely benchmarked from general knowledge against Montevideo and Mexico City, with wider uncertainty for Argentina's currency-driven pricing. No comparison data was retrieved.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 110.00
+  }
+}

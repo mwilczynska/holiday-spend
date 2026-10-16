@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate with no live menu, listing, or rate checks; July high-season prices are extrapolated from general knowledge. Restaurant and café anchors are moderately reliable; accommodation is least certain. Cocktail and wine were set as a typical multiple of the beer anchor because direct Canggu venue knowledge is limited. FX came from search-result summaries citing the RBA overview page; that page was not opened, so verify the 2026-10-15 value against the live RBA table.",
+  "comparable_city_reasoning": "No single comparable city. Regional basis is Bali tourist-hub pricing (Seminyak and Ubud as reference points), with a Canggu café and surf-tourism premium and a July high-season uplift on accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.25,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 7.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 34.00,
+    "hotel_3star_2p": 100.00
+  }
+}

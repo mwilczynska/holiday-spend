@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied city context; live menus, booking pages, and listings were not inspected. Restaurant and cafe anchors are moderately reliable. Cocktail and wine were set from the draft-beer anchor (about five and four times its price) because direct bar-price knowledge is weaker. Hostel and hotel anchors are least certain: they assume central districts, July demand, and taxes and fees included, and they vary widely by area and date.",
+  "comparable_city_reasoning": "Regional basis: mainland China tier-one city price levels, using general knowledge of Beijing's central visitor districts (for example Dongcheng, Xicheng and Sanlitun) for dining and lodging. No single comparable city was used as a direct substitute.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 4.30,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 46.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 44.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 80.00
+  }
+}

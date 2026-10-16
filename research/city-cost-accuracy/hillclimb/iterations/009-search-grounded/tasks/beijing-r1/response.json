@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Beer, coffee and meal anchors use Numbeo's Beijing crowd-sourced means (about 1,400 submissions, refreshed June 2026). Beer is set at ¥10, a little above Numbeo's ¥8 draught mean. Midrange uses Numbeo's ¥200 for two, and Western-style venues may cost more. Cocktail and wine_glass are judgement values set off the ¥10 beer price (about 7.5x and 5.5x) and checked against sparse Beijing figures. Accommodation is weakest: aggregator averages conflict, several figures are undated, and nothing is specific to July. CNY converted at about 6.77 per USD (Numbeo-implied). FX came from RBA search excerpts; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "No comparable city used; Beijing-specific figures only. A national-average cheap-meal figure (about $10) was excluded because its own source flags it as not Beijing-specific.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.48,
+    "coffee": 3.19,
+    "inexp_meal_1p": 4.43,
+    "midrange_meal_2p": 29.54,
+    "cocktail": 11.08,
+    "wine_glass": 8.12,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 62.04,
+    "hotel_3star_2p": 110.78
+  }
+}

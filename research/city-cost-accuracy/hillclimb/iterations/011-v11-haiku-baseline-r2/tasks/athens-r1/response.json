@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates for the July 2026 window from general knowledge; no live listings, booking pages, or observed July 2026 prices were checked. Restaurant and beer anchors are the most reliable. July peak-season hostel and hotel rates vary widely by neighbourhood and booking lead time. Cocktail and wine were set relative to the beer anchor because direct knowledge is weaker. The FX value came from search-result text attributed to the RBA exchange-rates overview page; the page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city. The basis is general knowledge of Southern European capitals with similar euro pricing and tourism demand (for example Lisbon and Rome), adjusted for Athens generally lower dining prices and higher July accommodation demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 13.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 190.00
+  }
+}

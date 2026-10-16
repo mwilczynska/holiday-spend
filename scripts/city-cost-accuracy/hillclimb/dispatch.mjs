@@ -20,7 +20,12 @@ const tools = cand.workerTools ?? 'WebSearch';
 const concurrency = Number(opt('concurrency', 8));
 const freeze = readJson(path.join(dir, 'freeze.json'));
 const workDir = fs.mkdtempSync(path.join(os.tmpdir(), 'hc-worker-'));
-const pending = freeze.tasks.filter(t => !fs.existsSync(path.join(dir, 'tasks', t.id, 'response.json')));
+// Work is chunked for usage windows: repeat 1 of every city runs before any repeat 2 (so a partial run is a
+// complete one-run-per-city dataset), --max-repeat skips higher repeats, and --max-tasks bounds one session.
+const maxRepeat = Number(opt('max-repeat', Infinity));
+const maxTasks = Number(opt('max-tasks', Infinity));
+const pending = freeze.tasks.filter(t => t.repeat <= maxRepeat && !fs.existsSync(path.join(dir, 'tasks', t.id, 'response.json')))
+  .sort((a, b) => a.repeat - b.repeat || a.cityKey.localeCompare(b.cityKey)).slice(0, maxTasks);
 console.log(`${iteration}: ${pending.length} pending, model ${model}, effort ${effort}, concurrency ${concurrency}`);
 
 function runOnce(task) {

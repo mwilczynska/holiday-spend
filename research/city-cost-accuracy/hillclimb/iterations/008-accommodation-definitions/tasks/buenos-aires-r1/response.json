@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimates from general knowledge; no live menus, listings or booking pages were checked. Argentina's high and volatile inflation and exchange-rate conditions can move USD prices sharply by July 2026, so restaurant and accommodation anchors are both loose. Cocktail and wine glass were set relative to the beer anchor (cocktail about 2x, wine glass about 1.2x) because direct knowledge of current bar prices is weak. Accommodation assumes a typical July rate including taxes and mandatory fees, not a discount. FX is the 15 Oct 2026 RBA 4pm rate as reported in a search summary of the RBA exchange-rates page; the page itself was not separately opened.",
+  "comparable_city_reasoning": "Regional Latin American capital-city basis. No city context was supplied, so Santiago, Montevideo and Sao Paulo served only as rough general reference points rather than a matched comparable. Argentine currency and inflation volatility is treated as extra uncertainty rather than as a fixed peer adjustment.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 3.75,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 52.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 100.00
+  }
+}

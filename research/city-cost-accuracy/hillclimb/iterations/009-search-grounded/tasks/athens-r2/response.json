@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Food, coffee and beer anchors rest mainly on 2026-dated cost-of-living guides, though sources differ (lunch at EUR 15 versus EUR 18). Cocktail and wine come from mixed or undated bar sources and were cross-checked against beer (cocktail about 2.2x beer, wine glass about 1.3x beer). Accommodation is low confidence: no July 2026 Athens nightly averages were found, so hostel and hotel anchors use undated or 2025 aggregates plus an estimated summer uplift, and the private hostel room is set at about 2.2x the dorm bed. Beer assumes a 0.5 L draft, as quoted in sources. EUR was converted at an assumed 1.16 USD per EUR, not a retrieved rate; a 0.05 change moves all USD anchors by about 4 percent. FX is not current: the one RBA search returned no observation for 2026-10-15, so the newest retrieved value (2026-03-20, 0.7088) is stale and the live table was not confirmed.",
+  "comparable_city_reasoning": "No comparable city used. Anchors are Athens-specific, drawn from 2026-dated cost-of-living guides and Athens hotel and hostel aggregates; Greece-wide hostel averages were a secondary check.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.29,
+    "inexp_meal_1p": 15.08,
+    "midrange_meal_2p": 69.60,
+    "cocktail": 12.76,
+    "wine_glass": 7.54,
+    "hostel_dorm_1p": 30.16,
+    "hostel_private_2p": 67.28,
+    "hotel_1star_2p": 87.00,
+    "hotel_3star_2p": 156.60
+  }
+}

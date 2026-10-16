@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were checked. Restaurant and coffee anchors are most reliable, while July 2026 hostel and hotel rates are least certain. Cocktail and wine_glass are tied to the local beer-price relationship, and EUR-to-USD conversion uses an approximate working rate. The FX figure comes from RBA exchange-rate page content surfaced by search, not a direct page fetch.",
+  "comparable_city_reasoning": "No additional city context was supplied. Anchors are benchmarked against southern European capitals with comparable summer tourism demand and restaurant price levels, such as Lisbon and Rome, with July accommodation set at peak-season levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.10,
+    "inexp_meal_1p": 13.40,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 13.90,
+    "wine_glass": 6.95,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 180.00
+  }
+}

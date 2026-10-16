@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium: holistic estimates from general knowledge of Berlin price levels for July 2026, not checked against live menus, listings or booking pages. Restaurant and beer anchors are firmer. Cocktail and wine were derived from the local beer relationship (cocktail about 2.4x and wine glass about 1.3x draft beer) because direct knowledge is weaker. Accommodation is least certain and assumes July peak-season rates including Berlin's city tax. USD values assume about 1.15 USD per EUR and shift proportionally if the July 2026 rate differs. The FX value comes from RBA exchange-rate search results (two searches agree), not a direct page read. One search result carried an unrelated formatting instruction, which was ignored.",
+  "comparable_city_reasoning": "No single comparable city. Benchmarked to general German big-city price levels, generally below Munich and Hamburg and below Western European capitals, with accommodation set at July peak-season rates for central districts such as Mitte, Friedrichshain and Kreuzberg.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 4.60,
+    "inexp_meal_1p": 16.10,
+    "midrange_meal_2p": 101.20,
+    "cocktail": 13.80,
+    "wine_glass": 7.48,
+    "hostel_dorm_1p": 43.70,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 120.75,
+    "hotel_3star_2p": 178.25
+  }
+}

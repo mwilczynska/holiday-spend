@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, beer and coffee anchors are best supported by a 2026 Greece-wide price guide, a May 2026 Athens lunch price and older undated listings. Hostel anchors extrapolate Athens shoulder-season guide rates with a summer uplift; no July listings were checked. Hotel anchors are low to medium: no 2026 Athens three-star average was found, so the three-star blends year-round booking-site averages (about USD 139 to 173) with a July uplift, and the one-star is set at roughly half of it. Cocktail and wine rest on sparse direct data: cocktail uses a summer 2026 Athens club-cocktail average and casual-venue ranges, cross-checked at about 2.2 times the beer anchor; wine uses taverna and by-the-glass ranges, cross-checked at about 1.1 times the beer anchor. EUR was converted at about 1.15 USD per EUR, the midpoint of Jul-Sep 2026 snapshots (1.14 to 1.16). The FX observation came from a search summary of the RBA exchange-rates page, not an opened page, and that summary's dating was partly inconsistent; verify against RBA table F11.1.",
+  "comparable_city_reasoning": "No comparable city used. Athens-specific figures where found (shoulder-season hostel guide rates, older citywide hotel averages, an Athens lunch price); Greece-wide 2026 guide prices for restaurant meals and beer; US-dollar booking-site three-star averages as a hotel cross-check.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 4.03,
+    "inexp_meal_1p": 17.25,
+    "midrange_meal_2p": 66.70,
+    "cocktail": 12.65,
+    "wine_glass": 6.33,
+    "hostel_dorm_1p": 29.90,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 80.50,
+    "hotel_3star_2p": 172.50
+  }
+}

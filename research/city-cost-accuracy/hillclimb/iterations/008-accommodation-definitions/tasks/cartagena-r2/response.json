@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge only; no city-price searches, live listings, or booking pages were used. Restaurant anchors are moderately certain. Accommodation tiers vary widely by neighborhood and are set at July mid-year holiday rates including taxes. Cocktail and wine are derived from the beer anchor using typical local multipliers because direct knowledge is weak. The FX value was taken from search-result summaries citing the RBA exchange-rates page; that page was not opened directly, and some snapshots had inconsistent timestamps, so confirm against the live RBA table.",
+  "comparable_city_reasoning": "Regional basis: Latin American Caribbean-coast and colonial-center tourist destinations with similar visitor demand, adjusted to Colombian local price levels. Accommodation tiers reflect historic-center and Getsemaní guesthouse and hostel stock plus beach-strip mid-range hotels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 58.00,
+    "hotel_3star_2p": 120.00
+  }
+}

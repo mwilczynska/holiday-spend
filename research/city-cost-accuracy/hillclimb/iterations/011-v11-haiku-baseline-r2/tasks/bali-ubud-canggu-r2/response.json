@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Bali tourist-hub prices in a July high-season window; no live listings or booking pages were inspected. Beer and restaurant anchors are moderately confident; accommodation tiers and wine vary widely by property and location. The FX value comes from web search summaries of the RBA exchange-rates page, which was not opened directly; stale earlier search results were set aside.",
+  "comparable_city_reasoning": "No single named comparable city; the basis is Bali's tourist-hub pricing (Ubud and Canggu) within Southeast Asia, with alcohol priced above local food due to import duties and lodging adjusted for July peak demand. Cocktail and wine anchors were set from typical multiples of the beer anchor (cocktail about 2.5x, wine about 2.8x) because direct price knowledge is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.25,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 21.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 70.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of French price levels; no live menus, listings, or booking pages were checked. Food and drink anchors are moderately reliable. Lodging anchors are least certain because July 2026 overlaps the Festival d'Avignon, which can sharply raise accommodation rates and widen the plausible range. Cocktail and wine anchors lean on the local price relationship to beer. USD values use an approximate euro-to-dollar rate from general knowledge, not a live quote. The FX observation came from search-result snippets citing the RBA exchange-rates page; the page itself was not opened.",
+  "comparable_city_reasoning": "Based on general knowledge of mid-sized southern French tourist cities such as Arles and Nimes, with lodging and some drink prices adjusted upward for July festival demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.60,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 12.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 190.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Restaurant anchors rest on Numbeo-style crowd-sourced Beijing averages seen in search excerpts, cross-checked with a Wise USD figure; beer and coffee were nudged up toward restaurant-level venues. Wine direct data is weak or undated, so it follows the local beer relationship (about 4.4x beer); cocktail (about 5.6x beer) is cross-checked against one Expatistan club price and a 2026 bar guide range. Hostel data is thin (two party-hostel listings near $9, probably a December low; no private-room rate), so dorm is raised for July and private is set at about 2.8x dorm. The 1-star hotel extrapolates an old 2016 CEIC series; 3-star sources conflict widely (about $60 to $141 or more), so $110 is a judgement midpoint. RMB was converted at an assumed rate of about 6.9 per USD, not searched. FX: the RBA page surfaced appears to be an older copy; its latest visible table is dated 2026-03-20 and could not be confirmed as the observation for 2026-10-15, so verify before use.",
+  "comparable_city_reasoning": "No comparable city used. Anchors are Beijing-specific, drawn from search excerpts (Numbeo, Wise, MyLifeElsewhere, Expatistan; Hostelz, HotelsCombined, Travelocity, Momondo, CEIC) and general knowledge of Chinese city pricing; cocktail and wine were cross-checked against the local beer relationship.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 10.10,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 31.00,
+    "hotel_3star_2p": 110.00
+  }
+}

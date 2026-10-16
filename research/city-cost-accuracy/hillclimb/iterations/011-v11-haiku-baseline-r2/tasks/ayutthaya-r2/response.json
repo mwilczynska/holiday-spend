@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Thai provincial tourist pricing; no live menus, listings or booking pages were checked. Food anchors are more reliable; hostel and hotel rates vary by season and room type. Cocktail and wine_glass are inferred from the beer anchor (about 2.6x and 3.1x beer) because direct knowledge is weak. Baht prices were converted at an assumed 32-33 THB per USD. The FX observation comes from search-result summaries attributed to the RBA exchange-rates page; the RBA table was not read directly, so verify it before use.",
+  "comparable_city_reasoning": "No specific comparable city was supplied. Ayutthaya is treated as a small Central Thailand heritage town and day-trip destination, priced near similar provincial tourist towns such as Kanchanaburi and Lopburi and below Bangkok. Hotel tiers reflect Thai provincial guesthouse and three-star rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.70,
+    "coffee": 2.50,
+    "inexp_meal_1p": 2.80,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 7.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 62.00
+  }
+}
