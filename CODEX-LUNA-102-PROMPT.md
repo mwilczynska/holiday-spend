@@ -1,16 +1,16 @@
-# Codex launch prompt: finish the Luna lane without stopping
+# Codex launch prompt: Luna lane 102 (food and drink search) without stopping
 
 Prepared 16 October 2026 by the Claude Code coordinator. Launch from the worktree root
 `C:\Users\chawi\.codex\worktrees\city-cost-accuracy\holiday-spend` (branch `research/city-cost-accuracy`) with:
 
 ```bash
-codex exec --approve-for-me -c sandbox_workspace_write.network_access=true - < CODEX-LUNA-PROMPT.md
+codex exec --approve-for-me -c sandbox_workspace_write.network_access=true - < CODEX-LUNA-102-PROMPT.md
 ```
 
 `--approve-for-me` routes approval requests through automatic review in the workspace-write sandbox, so the run never
 waits for a person; the network setting lets `git push` work. If pushes still fail, the prompt keeps committing
 locally and the coordinator pushes afterwards. To resume a stopped run instead of starting a new one:
-`codex exec resume <SESSION_ID> "Continue with CODEX-LUNA-PROMPT.md until a stop condition is met."`
+`codex exec resume <SESSION_ID> "Continue with CODEX-LUNA-102-PROMPT.md until a stop condition is met."`
 
 Everything below the line is the prompt.
 
