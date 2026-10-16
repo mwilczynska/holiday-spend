@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are medium-confidence: several Phuket sources (Citycost, WhereAndWhen, MyLifeElsewhere and Patong venue listings) agree closely, and July is treated as low season. Cocktail and wine rest on only two Patong venues plus rooftop listings, not a city average. The hostel dorm figure comes from a BudgetYourTrip average of 97 hostels, but that data is dated 2024-2025. Hotel anchors are judgement-based and low-confidence: the KAYAK averages ($254-$385 per double) mix all hotel classes and are not usable for the 1-star or 3-star tiers, and the hostel private-room figure is inferred from a Hostelz Patong listing from $22. The FX value comes from search snippets of the RBA exchange-rates page, which showed 0.6947 for 16 October and 0.6955 for 15 October; it should be verified against the RBA F11.1 table.",
+  "comparable_city_reasoning": "No comparable city was used. Estimates are Phuket-specific, drawn from Phuket price guides, venue listings and hostel and hotel aggregator data. Local prices were converted at roughly 33.5 THB per USD, the rate implied by the Citycost conversions.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.25,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 60.00
+  }
+}

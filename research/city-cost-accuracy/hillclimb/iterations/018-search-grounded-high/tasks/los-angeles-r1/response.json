@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on several aggregated sources that roughly agree, so they are moderately reliable. Hotel and hostel anchors are weaker: sources conflict widely, and the 3-star figure is an approximate blend of the Engine all-class average and seasonal July uplift rather than a direct 3-star average. Rates are pre-tax and pre-tip for most sources, so the anchors may understate what a visitor pays. FX caveat: the search only surfaced RBA observations from 18 to 20 March 2026, not the latest observation as of 2026-10-16, so the fx rate below is likely stale and should be refreshed before use.",
+  "comparable_city_reasoning": "No comparable city used. Estimates are built from Los Angeles-specific and US-level aggregated price sources, with the July 2026 window taken into account for accommodation.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.75,
+    "coffee": 5.75,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 98.00,
+    "cocktail": 18.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 225.00
+  }
+}

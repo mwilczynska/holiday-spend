@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors come from an undated Numbeo snapshot and an Expat.com page citing Numbeo data from November 2025, converted at about 100 RSD per USD (an assumed rate). The three-course midrange meal and cocktail figures are general-knowledge estimates, not sourced. Accommodation comes from BudgetYourTrip (annual dorm average about $16), Hostelz (Belgrade monthly dorm prices about $23-30, with summer as peak), and Trip.com (3-star average about EUR 54-56). Those values were raised for the July 2026 peak season. Sources disagreed and some were thin, especially for hotels and the midrange meal. The FX observation could not be refreshed: the only RBA figure I could retrieve is 0.7088 USD per AUD dated 2026-03-20, roughly seven months before the generation date, so it is not the latest published observation. Treat the FX value as stale and refresh it from the RBA F11 series before use.",
+  "comparable_city_reasoning": "Priced from Belgrade-specific sources (Numbeo, Expat.com, BudgetYourTrip, Hostelz, Trip.com) and adjusted for July peak season. Cocktail and wine were estimated from the local beer price, at about 2.5 times beer for cocktails and about 1.3 times for wine, because direct data was weak.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 9.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 72.00
+  }
+}

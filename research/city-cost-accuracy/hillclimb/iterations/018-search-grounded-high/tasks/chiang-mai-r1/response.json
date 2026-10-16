@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on several aggregator figures that agree within a narrow range, so they are medium-high. Wine and cocktail have no direct price data and are bounded from the beer anchor using the Chiang Mai bar and restaurant price relationship, so they are low. Accommodation is medium-low: sources mix undated guides, booking-site listings and a Skyscanner average in euros, and rates rise in high season and once taxes and fees are added. The 3-star hotel anchor is the least certain. The FX value was taken from search-result summaries of the RBA exchange rates page and was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked to Chiang Mai-specific cost-of-living aggregators and travel guides for meals, beer, coffee and accommodation, cross-checked against Bangkok comparisons. Cocktail and wine_glass are estimated from the local beer relationship because direct data was thin.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 35.00
+  }
+}

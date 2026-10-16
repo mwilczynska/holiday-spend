@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors are a fair bound from aggregator data, but sources disagree and some are undated, and peso-to-USD conversions in the sources are inconsistent, so I used my own judgement. Dorm and hotel anchors are rough: the 3-star range is about $27 to $59 across sources, and I took a central value. Cocktail and wine are estimated from the local beer price (about 3 times beer), since I have no direct price data for them. FX: the 0.7088 rate for 2026-03-20 came from a search summary that cited the RBA page; I could not open the live RBA F11 table, so this observation is likely stale for the 2026-10-16 generation date and should be checked.",
+  "comparable_city_reasoning": "No substitute city was needed. Anchors are based on Cebu-specific aggregator and listing data, cross-checked against typical Southeast Asian tourist-city price levels.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 2.90,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 45.00
+  }
+}

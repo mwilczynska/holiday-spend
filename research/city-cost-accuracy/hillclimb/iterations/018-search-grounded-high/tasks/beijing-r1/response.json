@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors rest on thin 2026 and crowd-sourced Beijing data, so they are medium-low quality. Wine is derived from the beer price, and the midrange meal is a judgement estimate. Hotel and hostel searches were rate-limited or returned only aggregator floor prices, so accommodation anchors are low confidence and rely mainly on general knowledge. The FX rate comes from a search-result summary of the RBA Exchange Rates page and was not verified by opening the page. CNY conversions assume about 6.8 CNY per USD, implied by the cited comparison-site conversions and not separately verified. July is peak season, which pushes accommodation prices up.",
+  "comparable_city_reasoning": "No comparable city used. Beijing was priced directly from a 2026 Beijing nightlife guide (neighbourhood pint, mid-range cocktail ranges), a crowd-sourced Beijing comparison site (basic restaurant meal, beer, cappuccino), and budget hostel aggregator listings. Hotel anchors are general-knowledge estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.70,
+    "coffee": 3.60,
+    "inexp_meal_1p": 4.60,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 14.70,
+    "wine_glass": 7.35,
+    "hostel_dorm_1p": 10.50,
+    "hostel_private_2p": 26.50,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 66.00
+  }
+}

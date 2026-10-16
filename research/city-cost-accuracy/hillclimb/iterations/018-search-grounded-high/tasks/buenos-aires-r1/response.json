@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer and coffee anchors rest on several crowd-sourced and guide sources, but peso inflation moves prices quickly, so they may already be stale. Hotel anchors are low confidence because sources disagree widely (3-star averages ranged from about $118 to $229). Wine is derived from beer using a Feb 2025 Buenos Aires Herald ratio of wine to beer (about 1.4x), since no current wine price was found. The FX observation is from a search snippet of the RBA exchange-rates page dated 2026-03-20, not the latest published rate, and the page was not read directly.",
+  "comparable_city_reasoning": "No comparable city used. Anchors come from Buenos Aires-specific aggregated sources (Expatistan, Cheapflights, HotelsCombined, BudgetYourTrip, Hostelz, guide-style cost-of-living pages), with peso prices converted to USD at an implied rate of roughly 1,480 ARS per USD.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.75,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 140.00
+  }
+}

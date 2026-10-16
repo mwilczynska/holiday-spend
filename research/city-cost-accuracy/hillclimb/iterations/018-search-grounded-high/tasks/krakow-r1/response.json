@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are medium confidence: several aggregator and comparison pages agree roughly on PLN prices, but none is clearly dated to July 2026. Cocktail and wine were set from the local beer relationship (cocktail about 2.5 times beer; wine about 1.4 times beer) because direct evidence was weak. Accommodation anchors are low confidence: sources conflict widely, mostly lack dates, and do not separate July high-season rates. The hostel dorm and private room figures lean toward the July peak, and the 3-star figure is a judgement between Momondo and Skyscanner averages. The FX value comes from a search-result excerpt of the RBA exchange rates page; I did not open the page directly. A third-party figure of about 0.669 with an unclear date was discarded as it conflicts with the RBA excerpt. PLN-to-USD conversion uses about 0.26 to 0.27 USD per PLN, implied by the cited comparison figures.",
+  "comparable_city_reasoning": "No other city used as a comparator. Anchors are Krakow-specific, built from aggregated PLN price figures from comparison and travel-guide pages, converted to USD at about 0.263 USD per PLN, and adjusted for July peak season for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.70,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.80,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 9.20,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 125.00
+  }
+}

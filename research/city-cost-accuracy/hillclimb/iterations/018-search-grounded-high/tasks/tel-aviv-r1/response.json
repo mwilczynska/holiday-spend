@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors are medium confidence: an undated Numbeo Tel Aviv basket (shekel prices) agrees with a secondary USD conversion of the same data and a July 2026 euro-denominated guide, but the shekel-to-USD rate is implied rather than verified. Accommodation anchors are low confidence: they come from undated aggregator snippets, a floor price, and a Europe-wide comparison, not from a verified Tel Aviv average. Cocktail and wine_glass are estimates from the beer price, using typical Israeli bar and restaurant ratios and local shekel price ranges from a 2025 guide. The FX rate was taken from a search snippet of the RBA exchange-rate page (0.6947 for 2026-10-16, possibly provisional), not from a direct read of table F11.1.",
+  "comparable_city_reasoning": "No comparable city was used. Restaurant and drink anchors are based on the Tel Aviv-Yafo city basket (Numbeo-style averages) cross-checked against a July 2026 cost-of-living guide. Accommodation anchors are based on Tel Aviv hostel and hotel listing aggregates, with a Momondo 3-star average (about USD 144) as the lower reference point and other snippets as upper reference points.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 14.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 170.00
+  }
+}

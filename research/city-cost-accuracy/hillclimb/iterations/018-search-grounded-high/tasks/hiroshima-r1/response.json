@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors are triangulated from crowdsourced and expat cost guides and a travel-budget aggregator, some dated 2023. Cappuccino, meal and beer sources agree within a few hundred yen. Hostel dorm is based on a listing average plus individual hostel listings. Hotel_3star_2p is low confidence because Trip.com and Skyscanner disagree widely. Hostel private room, hotel_1star_2p, cocktail and wine_glass have no direct source and are inferred from related prices; cocktail and wine use the local beer relationship (roughly 1.5 to 1.6 times beer). Yen figures were converted at an assumed rate of about 150 JPY per USD. The FX value is from a search-result summary of RBA data for 16 October 2026; I did not open the RBA F11.1 file, so it should be verified against the official table.",
+  "comparable_city_reasoning": "Estimated directly from Hiroshima city price data (restaurant, cafe and hostel listing aggregates, plus a 3-star hotel range), cross-checked against general Japanese regional city pricing. No separate comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 130.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors rest on several 2026 price guides that broadly agree, so they are medium-confidence. Cocktail and wine are less certain: no 2026 Amsterdam wine-by-the-glass menu was found, so they are bounded from guide ranges and checked against beer. Accommodation is lower confidence: sources are mostly undated or from 2024, and July is peak season with wide ranges, so the hostel and hotel figures are bounded estimates. EUR figures were converted at roughly 1.16 USD per EUR, a rate taken from a search snippet and not verified. The FX observation came from a search-result summary of the RBA exchange-rates page and was not fetched directly.",
+  "comparable_city_reasoning": "No comparable city was used. Anchors are based on direct Amsterdam sources for 2026 (restaurant, bar, coffee, hostel and hotel guides), with July high-season adjustments for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 21.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 17.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 64.00,
+    "hostel_private_2p": 139.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 255.00
+  }
+}

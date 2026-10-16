@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors draw on several Marrakech-specific aggregated price sources with mixed dates. Accommodation and drink anchors are lower confidence: sources were crowd-sourced, inconsistent, or undated, and the July window was not checked against seasonal listings. Dollar figures for dirham prices were converted at approximate rates. The FX rate came from RBA exchange-rate content surfaced in search results; I did not open the RBA table directly.",
+  "comparable_city_reasoning": "No comparable city was used. Anchors are based on Marrakech-specific aggregated sources (cost-of-living guides, hostel and hotel listing averages, and drink price aggregators), adjusted for typical tourist-area and local-venue pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 11.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 75.00
+  }
+}

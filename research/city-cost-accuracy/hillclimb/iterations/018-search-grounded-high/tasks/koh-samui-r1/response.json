@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Estimate used 7 web searches. Restaurant anchors rest on user-submitted listings and a 2024 resort menu, with mixed dates, so they are approximate. Accommodation sources mix currencies and years and cover different areas, so the hotel and hostel anchors are the least certain. Wine per glass was not found in any source and is inferred from the beer anchor. Cocktail is anchored to Chaweng beach and happy-hour listings. The fx observation is the latest RBA figure the search returned (0.7088 on 2026-03-20). It is about seven months older than the generation date, and I could not retrieve a newer RBA F11.1 observation, so the server should verify it before use.",
+  "comparable_city_reasoning": "No separate comparable city was used. The basis is Koh Samui-specific tourist pricing, with Thai beach-resort price relationships used to infer wine per glass from the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 7.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 65.00
+  }
+}

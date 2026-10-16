@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on a few sources that are partly dated (Expatistan figures from 2024, Time Out listings undated or from 2023) plus general knowledge. Accommodation sources conflict widely: aggregator averages of about US$35 to 40 for 3-star, and sample December listings of about US$59 to 68. Wine by the glass has no direct price found, so wine_glass is set at about 2x the beer anchor. Cocktail is set from one dated Expatistan estimate. The FX observation is taken from a search summary that cites the RBA exchange rates overview page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No comparable city was used. The anchors are Penang-specific, cross-checked against Malaysian pricing and general Southeast Asian budget-destination levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 45.00
+  }
+}

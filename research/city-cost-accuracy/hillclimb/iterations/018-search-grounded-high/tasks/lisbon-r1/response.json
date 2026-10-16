@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are medium confidence: they rest on blog and aggregator ranges (Portugalist, GetWhereNext, Expatistan, Lisbon Tourism-style guides) that partly conflict, and the cheap-end figures differ by about 2x. Accommodation anchors are low confidence: the sources are undated, mix currencies and areas, and are not July 2026 listing averages, so the July high-season uplift is an estimate. Cocktail and wine_glass are informed by local price relationships: the cocktail anchor is based on an undated club-level average, and the wine glass anchor is based on Lisbon bar glass prices (around 4-5 EUR) and sits close to the beer anchor, as is typical locally. The FX observation (0.6955 USD per AUD, 15 Oct 2026) was reported in a search summary attributed to the RBA's published figures; I did not independently read the RBA table, and the 16 Oct figure from a third-party site was not used. EUR-denominated prices were converted at an approximate mid-2026 EUR/USD rate, which was not separately verified.",
+  "comparable_city_reasoning": "No single comparable city was used. Lisbon-specific sources were cross-checked against the broader Western European tourist-city pattern, with July high-season pricing applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.90,
+    "coffee": 3.15,
+    "inexp_meal_1p": 13.40,
+    "midrange_meal_2p": 84.00,
+    "cocktail": 11.80,
+    "wine_glass": 5.60,
+    "hostel_dorm_1p": 35.80,
+    "hostel_private_2p": 112.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 179.00
+  }
+}

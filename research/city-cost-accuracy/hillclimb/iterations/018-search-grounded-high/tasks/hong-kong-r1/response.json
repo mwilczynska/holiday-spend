@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on crowdsourced aggregators (Expatistan, MyLifeElsewhere, BearSavings) and a 2026 happy-hour guide, so they are medium confidence. Some of those sources are undated, and none gives a restaurant draft beer price, so the beer anchor is inferred from a pub benchmark. midrange_meal_2p is low confidence: no search returned a mid-range three-course price, so it comes from general knowledge. Hostel and hotel anchors are low-to-medium confidence. The dorm sources disagree (about $28 undated with unclear currency, about $35 to $83 for hostel averages), and the hotel sources are mostly converted or undated. wine_glass is derived from the local beer-to-wine relationship because no direct wine price was found. FX: no official RBA observation could be retrieved, so the fx fields are null rather than estimated from third-party market quotes.",
+  "comparable_city_reasoning": "No comparable city was used; the anchors are based on Hong Kong-specific aggregated price data. Hong Kong's HKD peg means HKD-to-USD conversion is stable, but the USD values are derived from HKD benchmarks in the window around July 2026.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 7.70,
+    "coffee": 5.20,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 15.40,
+    "wine_glass": 12.80,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 110.00
+  }
+}

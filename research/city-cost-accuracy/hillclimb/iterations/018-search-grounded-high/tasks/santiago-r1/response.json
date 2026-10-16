@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are the strongest: several sources agree on roughly CLP 2,800 for a cappuccino and CLP 11,000 for an inexpensive meal, though the sources are undated or from 2024-2025. Beer and cocktails are moderately supported by bar and student guides, but mostly list craft or venue prices, so the domestic beer and cocktail figures are adjusted down. Wine has no direct per-glass source; wine_glass is estimated from the local beer relationship and a wine-flight price (CLP 15,000-20,000 for 3-4 tastings). Accommodation is low confidence: hostel dorm figures from aggregator averages (about $17, with a range of $8-34) are reasonably consistent, but private hostel rooms and 1-star and 3-star hotels rely on dated or conflicting listing averages (2024 HotelsCombined euro data, Cheapflights and Momondo snapshots, and Skyscanner figures that look inconsistent). The 3-star anchor is a judgement between those conflicting sources. FX: the 0.6955 observation (15 October 2026, 4.00 pm) was taken from a search-result snippet attributed to the RBA Exchange Rates Overview page; I did not open the RBA page to verify it. A secondary source reported 0.6947 for 16 October, so the official RBA table should be checked before use.",
+  "comparable_city_reasoning": "No comparable-city basis was used. Anchors are built from Santiago-specific sources (student and cost-of-living guides, bar guides, and hostel and hotel aggregator averages) and are cross-checked against each other. Local CLP prices were converted to USD at the rate implied by the USD-quoted sources (about 900-950 CLP per USD).",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 105.00
+  }
+}

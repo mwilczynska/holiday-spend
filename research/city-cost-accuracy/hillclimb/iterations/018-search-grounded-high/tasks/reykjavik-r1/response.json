@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and café anchors are medium-high confidence. They rest on aggregator and travel-site figures, some undated, converted at roughly 130 ISK per USD. The generic $38 three-course average was set aside in favour of Reykjavik-specific ISK figures. Cocktail is the weakest drink anchor: the only current figure is one expatistan value (3,322 ISK) from about seven data points, so it is set at about 1.6x the beer anchor and kept near 2,500-3,000 ISK. Wine uses a 1,500-2,500 ISK per-glass range from one guide. Accommodation is lower confidence. The hostel and hotel figures are aggregator averages in mixed currencies and years. The July uplift is an estimate, since sources say July and August run about 30-50% above shoulder months. The 3-star anchor is built from EUR 276-287 average figures converted at a 14 Oct 2026 cross-rate, not from a July-specific figure. FX: 0.6955 was taken from an rba.gov.au homepage search snippet (as at 4.00 pm, 15 Oct 2026). I did not open the F11 table itself. OFX lists 0.695572 for the same date as a cross-check.",
+  "comparable_city_reasoning": "No single comparable city was used for the core anchors. Reykjavik-specific ISK price points were converted at roughly 130 ISK per USD. Accommodation used Reykjavik hostel and hotel aggregator averages, with a July uplift applied. The cocktail anchor relies on the local beer relationship, and the wine anchor is a midpoint of the cited glass range. Price levels are broadly in line with other high-cost Nordic capitals, but that was not used as a numeric basis.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 13.00,
+    "coffee": 6.50,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 21.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 340.00
+  }
+}

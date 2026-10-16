@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant and accommodation anchors come from aggregator and listing sources that disagree: mid-range meal for two ranges from about $20-30 to about $50, and hostel private rooms from about $30 (aggregate) to $50-70 (listings). The 3-star anchor is from Hopper and Momondo averages, which show June and July as the cheapest months. Beer and coffee come from crowdsourced ranges and were adjusted upward for tourist-area pricing. Cocktail and wine are derived from the beer anchor at about 3x and 2.75x because direct sources were weak. FX is the RBA observation for 15 Oct 2026, taken from a search-result summary of the RBA exchange rates page and not read directly from the F11 table. A third-party 16 Oct figure was not verified as an RBA publication and was not used.",
+  "comparable_city_reasoning": "No comparable-city basis used. Estimates are Cartagena-specific, drawn from cost-of-living aggregators (livingcost.org, ExpatExchange), BudgetYourTrip hostel and guesthouse averages, and Hopper and Momondo hotel averages.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 105.00
+  }
+}

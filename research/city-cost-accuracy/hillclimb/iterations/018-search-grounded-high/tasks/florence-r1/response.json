@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors rest on several Florence-specific aggregator figures that broadly agree, though most are undated. Cocktail and wine anchors are thinner: the cocktail source dates from 2024, and wine is inferred from wine-bar ranges. Accommodation is low confidence: the hostel figures come from booking-site summaries, the hotel sources conflict (a Skyscanner 3-star average of about USD 130-150 versus summer peak-season expectations), and July is high season, so the figures were set above the all-season averages. Euro figures were converted at roughly 1.15 USD per EUR, the rate implied by the price sources, not a live rate. The FX observation is the RBA figure for 16 October 2026 as listed in the RBA statistics table; the 15 October figure of 0.6955 was confirmed on the RBA overview page.",
+  "comparable_city_reasoning": "No comparable city was used. Anchors are based on Florence-specific aggregated sources (Citycost, Whereandwhen, Expatistan, Okvoyage, Savvy Backpacker) plus hostel and hotel listing summaries, adjusted for July high season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.30,
+    "coffee": 2.90,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 78.00,
+    "cocktail": 11.50,
+    "wine_glass": 8.60,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 212.00
+  }
+}

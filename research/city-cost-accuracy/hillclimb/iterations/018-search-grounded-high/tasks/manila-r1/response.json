@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Mixed-quality sources: crowd-sourced cost-of-living figures, Expatistan estimates (small samples, self-labelled as guesses), BudgetYourTrip and Momondo hostel averages/ranges, and Agoda tier bands with no star-rating split. beer, coffee and inexp_meal_1p are the best-supported anchors (multiple converging figures). hostel_dorm_1p is reasonably supported. midrange_meal_2p is extrapolated from two-person dinner estimates that include wine. hotel_3star_2p is inferred from the Agoda mid-range band ($40-80), and KAYAK all-hotel averages ($122-204) were not used because they appear to include higher star classes. hotel_1star_2p and hostel_private_2p are bounded estimates. wine_glass has no direct source and is inferred from beer (about 3.5x), so treat it as low confidence. cocktail is anchored on an Expatistan downtown-club estimate (about PHP 417) and a Fairmont offer (PHP 600++), so it is moderate. FX: the 2026-10-16 RBA value (0.6947) came from search-result excerpts for rba.gov.au pages. I did not open the RBA page directly. Those excerpts are consistent with third-party rates of roughly 0.69-0.70 for early October 2026. Verify against the RBA F11 table before relying on it.",
+  "comparable_city_reasoning": "No comparable city substituted. Anchors are based on Metro Manila-specific sources, with the PHP-to-USD conversion implied by the sources (about PHP 61.6 per USD). The wine_glass anchor uses a local beer-based relationship (about 3.5x the beer anchor) because no direct Manila wine-by-the-glass price was found.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 60.00
+  }
+}

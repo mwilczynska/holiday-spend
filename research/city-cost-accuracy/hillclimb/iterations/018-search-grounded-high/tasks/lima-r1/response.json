@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal and hostel dorm anchors rest on cost-of-living and listing-site aggregates, though those sources mix currencies and have unclear dates. The 3-star hotel anchor is a converted Trip.com average that may not be specific to double rooms. The private hostel, 1-star hotel, beer, coffee, cocktail and wine anchors are bounded judgment estimates from general knowledge of Lima prices. Cocktail and wine were set using a local price relationship to beer (cocktail about twice a beer, wine glass about twice a beer), since no direct Lima bar or restaurant price was found. The FX observation came from a search summary of the RBA exchange rates page, not from a directly opened page.",
+  "comparable_city_reasoning": "No comparable city was used. Anchors are Lima-specific, drawn from MyLifeElsewhere and Expatistan restaurant and beer prices, Hostelz average dorm prices, and Trip.com 3-star averages. Private hostel, 1-star hotel, cocktail and wine anchors are judgment-based.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 85.00
+  }
+}

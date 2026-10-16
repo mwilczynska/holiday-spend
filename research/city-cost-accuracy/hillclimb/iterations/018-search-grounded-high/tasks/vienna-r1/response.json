@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Beer, coffee and restaurant anchors are cross-checked across several Vienna price guides (Citycost, Expatistan, Where and When, and a 2026 cost guide), though some sources are undated. Cocktail and wine_glass are inferred from the local beer price, because no direct cocktail or wine source was found. Hostel and hotel anchors are aggregator averages with mixed dates and seasons, so accommodation is less certain than food and drink. hotel_1star_2p is a bounded estimate for a basic guesthouse, not a checked listing average. Beer is priced for a 0.5 L draught; a 0.3 L Seidel, which is common in Vienna, would cost less. Prices were converted from EUR to USD at an approximate rate of about 1.12 USD per EUR, taken from a third-party aggregator snapshot, not from the RBA. The fx observation is the RBA AUD/USD rate for 15 October 2026 at 4pm; I could not verify the 16 October value on an RBA page, so I did not use it.",
+  "comparable_city_reasoning": "No comparable city was substituted. Anchors rest on Vienna-specific aggregated price guides and Vienna hostel and hotel averages, expressed in EUR and converted to USD at an approximate rate.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.44,
+    "coffee": 5.38,
+    "inexp_meal_1p": 17.92,
+    "midrange_meal_2p": 78.40,
+    "cocktail": 12.88,
+    "wine_glass": 6.72,
+    "hostel_dorm_1p": 33.60,
+    "hostel_private_2p": 89.60,
+    "hotel_1star_2p": 100.80,
+    "hotel_3star_2p": 140.00
+  }
+}

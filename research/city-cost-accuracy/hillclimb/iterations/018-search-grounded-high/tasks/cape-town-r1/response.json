@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are medium confidence. They rest on a secondary report of Numbeo-style rankings, a cost-of-living tool dated January 2026, and an undated Expatistan cocktail data point, cross-checked against general knowledge. Dorm anchors use a BudgetYourTrip average and Hostelz monthly averages, adjusted for July as a low season. The hotel_3star_2p anchor is the least certain. The HotelsCombined range of $329-475 looked high and internally inconsistent, and an undated Amimir double-room average of $127 pointed lower, so the value is a judgement-based figure. Cocktail and wine were set from the local price relationship to beer where direct data was weak. The FX observation (0.7088, dated 2026-03-20) was read from a cached RBA exchange-rates page snippet. I could not retrieve the current daily table, so it may not be the latest published rate for 2026-10-16.",
+  "comparable_city_reasoning": "No comparable city was used. Estimates are Cape Town-specific, drawn from aggregated price sources and general knowledge, and pitched to July (austral winter, low tourist season).",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.75,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 140.00
+  }
+}

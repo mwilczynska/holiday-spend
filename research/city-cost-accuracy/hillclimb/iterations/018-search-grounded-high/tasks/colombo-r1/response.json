@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and meal anchors rest on crowd-sourced aggregators (MyLifeElsewhere, Expatistan) and a Lion Lager menu price with no date, mostly from 2024-2025 rather than July 2026, and were converted at about 336 LKR per USD as implied by those sources. Cocktail is bounded between budget-bar and upscale-club figures from Expatistan and Gini. Wine by the glass has no direct Colombo price and is set at about 2.5x the beer anchor. Hostel anchors come from Hostelz listing snippets (one dated 2024). The 3-star figure follows Skyscanner's Colombo average, and the 1-star figure is a judgement estimate with no direct source. The FX observation is the latest RBA value surfaced by search (2026-03-20), which I could not confirm as the most recent published observation, so it may be stale. A third-party 0.703 figure for 31 July 2026 was not used because it is not an RBA publication.",
+  "comparable_city_reasoning": "No comparable city was used. The anchors are based on Colombo-specific aggregated listings and menu prices. The wine glass anchor uses a beer-relative ratio, and the 1-star hotel anchor is a judgement estimate for basic guesthouses.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.70,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 50.00
+  }
+}

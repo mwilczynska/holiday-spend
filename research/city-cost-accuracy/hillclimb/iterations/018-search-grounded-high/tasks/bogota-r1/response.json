@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee, inexpensive meal, dorm and midrange meal anchors are triangulated from several Bogota sources, but the sources mix dates (some undated, some 2024 to 2026) and COP-to-USD conversion assumes about 4,000 COP per USD. wine_glass_usd has no direct restaurant COP price; it is inferred from draft beer (assumed about 2x). hotel_1star_2p is an inferred budget estimate with no direct listing average. hotel_3star_2p blends Trip.com (about 59-60 EUR/night), Cheapflights (about 82 GBP average), and a Destination.com median (about 75 USD), with no July 2026 seasonal adjustment. The FX value comes from search results attributed to the RBA site; I did not open the RBA page directly, so verify it before use.",
+  "comparable_city_reasoning": "No comparable city used. Anchors are based on Bogota-specific aggregated sources (cost-of-living comparison sites, hostel and hotel listing averages, and a travel guide), converted from COP at roughly 4,000 COP per USD.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 8.75,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 80.00
+  }
+}

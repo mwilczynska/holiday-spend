@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Restaurant and cafe anchors rest on undated aggregator and crowdsourced figures, reconciled by judgement. Cocktail and wine anchors come from a small Expatistan sample and a 2026 nightlife guide whose figures are not fully consistent. Hostel dorm anchors come from aggregator sites with mixed dates. Hotel anchors are weakly sourced: no reliable AUD average for Melbourne 2-star or 3-star rooms was found, so they rest mainly on general knowledge and low-end booking floors. FX: the only RBA observation I could verify is 20 March 2026, about seven months old, and I could not confirm a more recent RBA value. Refresh the FX observation before use. Anchors were converted from AUD estimates at 0.7088 USD per AUD.",
+  "comparable_city_reasoning": "No comparable-city substitution. Estimates are Melbourne-specific, drawn from Melbourne sources and adjusted by judgement for July 2026 winter pricing.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.80,
+    "coffee": 3.54,
+    "inexp_meal_1p": 17.72,
+    "midrange_meal_2p": 85.06,
+    "cocktail": 17.01,
+    "wine_glass": 9.92,
+    "hostel_dorm_1p": 24.81,
+    "hostel_private_2p": 77.97,
+    "hotel_1star_2p": 81.51,
+    "hotel_3star_2p": 148.85
+  }
+}

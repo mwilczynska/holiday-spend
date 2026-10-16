@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "No RBA observation could be verified. Searches returned no readable rba.gov.au rate, so all fx fields are null and the server must not use them until a verified RBA observation is supplied. Anchors are rough estimates from undated or mixed-date aggregator pages (WhereAndWhen 2026 page, MyLifeElsewhere, Expatistan April 2026 cappuccino figure, an older Expat.com forum post, BudgetYourTrip and Hostelz hostel averages, and KAYAK and Skyscanner hotel averages). Restaurant and hostel anchors are moderately supported. Hotel anchors conflict: Momondo shows about $164 for 3-star and Skyscanner in euros is about 54 to 59 per night, so the 3-star figure is a judgement. The 1-star figure is inferred from cheapest-listing data, not a direct basic-guesthouse average. Cocktail and wine are not directly sourced: cocktail is set at about 1.8 times the beer anchor and wine at about 1.4 times the beer anchor, based on the local beer-to-drink price relationship. Beer prices differ most across sources, from about $4 to $8.5 per 0.5L draught.",
+  "comparable_city_reasoning": "No comparable city was used. The basis is direct Amman price aggregators and a judgement about local price levels. Restaurant and café anchors use typical Amman averages across several sources. Hostel and hotel anchors use aggregator averages and cheapest-listing figures, adjusted for a July high-season window.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 10.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 70.00
+  }
+}

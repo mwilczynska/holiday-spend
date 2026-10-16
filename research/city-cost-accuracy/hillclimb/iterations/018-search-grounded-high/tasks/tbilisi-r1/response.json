@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on crowd-sourced Numbeo-style aggregates that disagree by up to about 2x (cappuccino ranged from about $1.9 to $5.6), so they are medium confidence. Accommodation is low confidence: the sources conflict, and the 3-star figure relies on a Trip.com average and Georgia-wide lari data rather than a Tbilisi double-room rate. Hostel prices were set with July peak season in mind. The cocktail anchor is a bounded estimate of roughly 2.4 times the beer anchor, a relationship chosen by judgement and not sourced directly. The wine glass anchor is a local price judgement, not sourced. The FX observation comes from a search-result snippet that attributes the 15 October 2026 AUD/USD value of 0.6955 to the RBA exchange-rates page; I did not open that page or the F11.1 table.",
+  "comparable_city_reasoning": "No single comparable city was used. Tbilisi is treated as a Caucasus tourist city in the Eastern European price band. Anchors come from Tbilisi-specific restaurant and drink aggregates, Tbilisi hostel listing averages, and Trip.com and Georgia-wide 3-star hotel data converted to USD.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 37.00,
+    "cocktail": 6.00,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 70.00
+  }
+}
