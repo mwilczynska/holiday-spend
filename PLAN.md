@@ -106,7 +106,13 @@ resumable chunks. Each window:
    `extract-browser-json.mjs`) before any shutdown, and restart only for missing cities.
 4. Ingest/assess whatever completed; commit and push.
 
-Current priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
+Round 2 complete (16 October): 015/016 rejected; prompt wording exhausted. Next levers, in order: (a) finish the
+Luna lane (Codex) and judge Luna + per-region calibration, the production candidate; (b) build R3 hotel references
+with build-hotel-refs.mjs once the Booking.com window run is saved, then rescore everything; (c) zero-call
+calibration refinements on 014 (country-level factors shrunk to region); (d) a Haiku x Luna ensemble replay;
+(e) search grounding at high effort on a 54-city sample before any R2 run.
+
+Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.
 

@@ -3903,3 +3903,13 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - All 165 response/run pairs parse as JSON and record Luna/Max. No ingest, scoring, sealed-test read, frozen-file
   change, other job or production write ran in this Codex collection session. Prior Alicante deviation is preserved.
 - Next queued task: kandy-r1. Collection continues after this checkpoint.
+
+# 16 October 2026 — Round 2 complete (coordinator)
+
+- R2 screening (Haiku high, 333 dev cities), judged after per-region calibration against 014-cal-region (0.2238):
+  015 clearer item definitions 0.2235 (-0.0003, CI -0.008 to 0.009) and 016 accommodation definitions 0.2219
+  (-0.0018, CI -0.007 to 0.011). Both rejected. 002's R1 near-miss (-0.010 on 54 cities) does not replicate.
+- 008 accommodation definitions on R1: raw worse (hostels +0.07), calibrated 0.2063 vs 0.2074, rejected.
+- Conclusion: prompt wording is exhausted as a lever (seven variants; none adds accuracy after calibration).
+- Progress plot published as an artifact (https://claude.ai/artifact/GSdP69DDreugCNUwX2HfcC), rebuilt by
+  build-progress.mjs after each assessment.
