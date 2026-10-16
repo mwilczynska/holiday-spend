@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors follow Galle price aggregations, but those sources report limited local data. Accommodation is a holistic estimate; cocktail and wine prices are inferred from local beer pricing.",
+  "comparable_city_reasoning": "Food and drink estimates use Galle-specific cost-of-living data; accommodation reflects a south-coast heritage and tourism market.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2.0,
+    "inexp_meal_1p": 2.0,
+    "midrange_meal_2p": 25.0,
+    "cocktail": 6.0,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 35.0,
+    "hotel_3star_2p": 80.0
+  }
+}

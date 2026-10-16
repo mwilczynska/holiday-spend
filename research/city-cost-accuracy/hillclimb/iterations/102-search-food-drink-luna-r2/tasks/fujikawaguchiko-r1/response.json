@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Mid-2026 local and Japan-wide cost-of-living estimates provide a useful food-price basis, though local coverage is limited. Cocktail and wine estimates are inferred relative to local beer prices; accommodation estimates are holistic and season-sensitive.",
+  "comparable_city_reasoning": "Used Fujikawaguchiko price estimates where available and Japan-wide typical prices to fill gaps; accommodation estimates reflect the town's Mount Fuji tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.02,
+    "coffee": 2.63,
+    "inexp_meal_1p": 7.36,
+    "midrange_meal_2p": 38.0,
+    "cocktail": 6.5,
+    "wine_glass": 4.8,
+    "hostel_dorm_1p": 28.0,
+    "hostel_private_2p": 65.0,
+    "hotel_1star_2p": 85.0,
+    "hotel_3star_2p": 165.0
+  }
+}

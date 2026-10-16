@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors follow Faro aggregate prices. Cocktail and wine are estimated from their local price relationship to draft beer. July accommodation estimates reflect high-season demand and are least certain.",
+  "comparable_city_reasoning": "Food and drink use Faro-specific price aggregates; accommodation is estimated for a midsized Algarve city in peak summer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 1.87,
+    "inexp_meal_1p": 13.46,
+    "midrange_meal_2p": 44.86,
+    "cocktail": 8.41,
+    "wine_glass": 4.21,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 210.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent 2026 Guanajuato cost-of-living aggregates support the meal, beer, and coffee estimates. Cocktail and wine prices are estimated from the local beer price; accommodation estimates are holistic and less certain.",
+  "comparable_city_reasoning": "Food anchors use Guanajuato city averages. For accommodation, the basis is a mid-sized Bajío colonial city with university and cultural tourism; nearby San Miguel de Allende provides regional context.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 3.6,
+    "inexp_meal_1p": 14,
+    "midrange_meal_2p": 44,
+    "cocktail": 7.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 15,
+    "hostel_private_2p": 42,
+    "hotel_1star_2p": 40,
+    "hotel_3star_2p": 85
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use a Fethiye aggregate closest to July 2026, with a limited contributor base. Cocktail and wine prices are inferred from the local beer relationship; July accommodation values are broad peak-season estimates.",
+  "comparable_city_reasoning": "Food and drink use Fethiye city-level prices. Accommodation is modeled for a Turkish Mediterranean resort town, with Antalya and Marmaris as loose comparables.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.0,
+    "inexp_meal_1p": 9.0,
+    "midrange_meal_2p": 57.0,
+    "cocktail": 12.0,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 24.0,
+    "hostel_private_2p": 60.0,
+    "hotel_1star_2p": 70.0,
+    "hotel_3star_2p": 125.0
+  }
+}

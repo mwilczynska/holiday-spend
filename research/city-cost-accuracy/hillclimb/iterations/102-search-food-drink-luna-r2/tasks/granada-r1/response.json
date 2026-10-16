@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Granada city price aggregates from October 2026 are a near-term proxy for July. Lodging is a seasonal model estimate. Cocktail uses a current city cost estimate; wine is estimated relative to local draft beer.",
+  "comparable_city_reasoning": "Dining and drink estimates use Granada-specific city price data; lodging reflects Granada's summer tourism demand, with no comparable-city substitution.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.37,
+    "coffee": 2.27,
+    "inexp_meal_1p": 15.72,
+    "midrange_meal_2p": 39.31,
+    "cocktail": 8.98,
+    "wine_glass": 3.93,
+    "hostel_dorm_1p": 32,
+    "hostel_private_2p": 80,
+    "hotel_1star_2p": 90,
+    "hotel_3star_2p": 150
+  }
+}

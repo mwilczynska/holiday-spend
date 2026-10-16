@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "June 2026 Fez price data provide a useful basis for meals, coffee, and beer. Cocktail and wine estimates use local beer prices as a reference; accommodation estimates are holistic and less certain.",
+  "comparable_city_reasoning": "No city proxy used for food and drink; estimates use Fez-specific aggregated prices. Accommodation reflects a historic Moroccan tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.74,
+    "coffee": 1.37,
+    "inexp_meal_1p": 3.2,
+    "midrange_meal_2p": 32.02,
+    "cocktail": 6.75,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 9,
+    "hostel_private_2p": 28,
+    "hotel_1star_2p": 32,
+    "hotel_3star_2p": 60
+  }
+}

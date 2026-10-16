@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and draft-beer anchors follow Gothenburg typical-price indexes. The cocktail estimate comes from a sparse downtown price estimate; wine is inferred at about 1.7 times the local draft-beer price. July-season lodging estimates are holistic and least certain.",
+  "comparable_city_reasoning": "No proxy city used; food and drink estimates are city-specific, while lodging reflects Gothenburg’s regional price level and summer visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.8,
+    "coffee": 4.9,
+    "inexp_meal_1p": 14.2,
+    "midrange_meal_2p": 89.5,
+    "cocktail": 18.7,
+    "wine_glass": 11.5,
+    "hostel_dorm_1p": 39,
+    "hostel_private_2p": 99,
+    "hotel_1star_2p": 125,
+    "hotel_3star_2p": 205
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Guangzhou aggregate prices support the meal, coffee, and draft beer estimates. Current cocktail data are sparse, so cocktail and wine are less certain; wine is estimated from its usual price relationship to local beer. Accommodation is a holistic estimate, not based on live booking pages.",
+  "comparable_city_reasoning": "Food and drink estimates use Guangzhou-specific aggregate prices; accommodation reflects general knowledge of large mainland Chinese cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.1,
+    "coffee": 3.0,
+    "inexp_meal_1p": 2.8,
+    "midrange_meal_2p": 28.0,
+    "cocktail": 7.0,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 28.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 60.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Geneva cost indexes support the restaurant anchors. Cocktail and wine are less certain and use local price relationships to beer; accommodation is a holistic, season-sensitive estimate. The latest RBA rates visible in the retrieved page snapshot were through 2026-09-11.",
+  "comparable_city_reasoning": "No external city comparable used; Geneva-specific price indexes anchor food and drinks, with Swiss high-cost urban context for accommodation.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.85,
+    "coffee": 6.34,
+    "inexp_meal_1p": 30.76,
+    "midrange_meal_2p": 129.2,
+    "cocktail": 24.61,
+    "wine_glass": 13.54,
+    "hostel_dorm_1p": 80,
+    "hostel_private_2p": 170,
+    "hotel_1star_2p": 210,
+    "hotel_3star_2p": 320
+  }
+}
