@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general New Zealand city pricing patterns; accommodation has the widest uncertainty. Cocktail and wine estimates follow typical local bar pricing relative to draft beer.",
+  "comparable_city_reasoning": "Based on New Zealand capital-city pricing, broadly comparable to Auckland, with Wellington's smaller market and July winter demand informing the lodging estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 11.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 145.00
+  }
+}
