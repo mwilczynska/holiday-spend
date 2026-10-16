@@ -3923,3 +3923,13 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - All 189 response/run pairs parse as JSON and record Luna/Max. No ingest, scoring, sealed-test read, frozen-file
   change, other job or production write ran in this Codex collection session. Prior Alicante deviation is preserved.
 - Next queued task: lugano-r1. Collection continues after this checkpoint.
+# 16 October 2026 UTC — Job A concurrent-worker checkpoint at 213/333
+
+- Added 24 frozen answers, lugano-r1 through nadi-r1, with one fresh GPT-6 Luna/Max subagent per task.
+  Used up to three worker slots concurrently. Every final message is saved verbatim with run metadata; timestamps
+  are coordinator observations and unknown search counts remain null.
+- Lane total 213/333 saved (120 pending), up from 189/333. Since resuming from Cabo San Lucas, 124 answers have
+  been collected. No worker failures, retries, substitutions or answer edits occurred.
+- All 213 response/run pairs parse as JSON and record Luna/Max. No ingest, scoring, sealed-test read, frozen-file
+  change, other job or production write ran in this Codex collection session. Prior Alicante deviation is preserved.
+- Next queued task: nafplio-r1. Collection continues after this checkpoint.
