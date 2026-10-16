@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors are based mainly on Oslo price-index data close to July 2026. Cocktail and wine estimates are less direct and follow local bar prices relative to beer. Accommodation estimates are holistic July estimates, not live listing prices.",
+  "comparable_city_reasoning": "No proxy city used: food and drink anchors use Oslo-specific price data; accommodation reflects Oslo’s high-cost Nordic capital profile in summer.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.60,
+    "coffee": 5.85,
+    "inexp_meal_1p": 25.80,
+    "midrange_meal_2p": 126.30,
+    "cocktail": 20.00,
+    "wine_glass": 14.75,
+    "hostel_dorm_1p": 63.00,
+    "hostel_private_2p": 147.00,
+    "hotel_1star_2p": 179.00,
+    "hotel_3star_2p": 263.00
+  }
+}

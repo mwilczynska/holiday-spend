@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use aggregated Nice prices published near the July 2026 window. Cocktail and wine prices are estimated from local bar pricing relative to draft beer. Accommodation is a holistic peak-season estimate and is less certain.",
+  "comparable_city_reasoning": "Food anchors follow Nice cost-of-living averages; July accommodation estimates reflect high-season demand on the French Riviera.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.5,
+    "coffee": 3.75,
+    "inexp_meal_1p": 23,
+    "midrange_meal_2p": 92,
+    "cocktail": 14,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 58,
+    "hostel_private_2p": 130,
+    "hotel_1star_2p": 170,
+    "hotel_3star_2p": 260
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "City-level price indexes provide a useful basis for meals, cappuccino and draft beer, though reported USD prices vary. Cocktail and wine are estimated from their relationship to local restaurant beer prices; accommodation is a holistic estimate and less certain.",
+  "comparable_city_reasoning": "Food and drink estimates use Nuwara Eliya-specific cost indexes. Accommodation estimates use general knowledge of Sri Lanka's hill-country tourist towns, adjusted for Nuwara Eliya's visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.6,
+    "coffee": 2.6,
+    "inexp_meal_1p": 5.0,
+    "midrange_meal_2p": 24.5,
+    "cocktail": 6.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 9.5,
+    "hostel_private_2p": 24.0,
+    "hotel_1star_2p": 28.0,
+    "hotel_3star_2p": 70.0
+  }
+}

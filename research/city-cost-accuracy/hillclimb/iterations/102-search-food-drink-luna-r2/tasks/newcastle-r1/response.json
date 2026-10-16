@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "City-level food and drink estimates vary across price aggregators. Cocktail uses reported local drink prices; wine is estimated from the local beer relationship. Accommodation anchors are holistic estimates and less certain.",
+  "comparable_city_reasoning": "Food and drink anchors use Newcastle price references; accommodation is calibrated to a mid-sized Australian coastal city below Sydney's typical cost level.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.0,
+    "coffee": 3.85,
+    "inexp_meal_1p": 20.85,
+    "midrange_meal_2p": 103.0,
+    "cocktail": 10.5,
+    "wine_glass": 9.7,
+    "hostel_dorm_1p": 35.0,
+    "hostel_private_2p": 85.0,
+    "hotel_1star_2p": 95.0,
+    "hotel_3star_2p": 155.0
+  }
+}

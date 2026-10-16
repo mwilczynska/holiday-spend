@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "The available Nuremberg price index is from October 2026, a nearby proxy for July. Cocktail evidence is limited, wine is estimated relative to local draft beer, and accommodation is modeled.",
+  "comparable_city_reasoning": "Food and drink use Nuremberg price data; accommodation reflects a mid-sized German tourism and fair city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.05,
+    "coffee": 4.49,
+    "inexp_meal_1p": 17.75,
+    "midrange_meal_2p": 81.40,
+    "cocktail": 10.10,
+    "wine_glass": 6.20,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 98.00,
+    "hotel_3star_2p": 142.00
+  }
+}

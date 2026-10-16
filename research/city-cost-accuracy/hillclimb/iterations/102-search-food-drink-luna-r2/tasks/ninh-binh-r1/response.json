@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates combine Vietnam-wide typical prices with local Ninh Binh travel price ranges. Cocktail and wine prices are less certain and estimated relative to local beer prices. Accommodation is a holistic estimate without live listing checks.",
+  "comparable_city_reasoning": "Based on local Ninh Binh and Tam Coc budget ranges for meals and beer, supplemented by Vietnam-wide typical prices for cappuccino and mid-range dining; accommodation reflects a provincial tourism center.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.8,
+    "coffee": 1.6,
+    "inexp_meal_1p": 2.0,
+    "midrange_meal_2p": 16.0,
+    "cocktail": 4.0,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 6.0,
+    "hostel_private_2p": 18.0,
+    "hotel_1star_2p": 20.0,
+    "hotel_3star_2p": 40.0
+  }
+}

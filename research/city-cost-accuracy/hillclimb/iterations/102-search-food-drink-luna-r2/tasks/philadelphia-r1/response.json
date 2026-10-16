@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "June 2026 Philadelphia price averages anchor meals, coffee, and beer. Cocktail and wine prices are less certain; wine is estimated from its local price relationship to draft beer. Lodging is a broad model estimate with substantial variation by July dates.",
+  "comparable_city_reasoning": "Food and drink use Philadelphia price data; lodging is broadly calibrated to a major northeastern U.S. city, below New York and Washington, D.C. pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.22,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 14.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 165.00,
+    "hotel_3star_2p": 260.00
+  }
+}

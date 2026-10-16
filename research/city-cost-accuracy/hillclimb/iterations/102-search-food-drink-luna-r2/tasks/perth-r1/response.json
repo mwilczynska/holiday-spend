@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and draft beer use recent Perth cost-of-living aggregates; the latest city update reviewed was October 2026, so the July 2026 window is approximate. Cocktail uses a Perth cost-of-living index; wine is estimated relative to local beer. Accommodation is a holistic winter estimate without live lodging checks and is least certain.",
+  "comparable_city_reasoning": "Food and drink use Perth city-level price inputs. Accommodation reflects general knowledge of Perth as a high-cost, geographically isolated Australian capital during the July winter period.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.34,
+    "coffee": 4.45,
+    "inexp_meal_1p": 20.15,
+    "midrange_meal_2p": 83.36,
+    "cocktail": 15.28,
+    "wine_glass": 9.73,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 185.00
+  }
+}

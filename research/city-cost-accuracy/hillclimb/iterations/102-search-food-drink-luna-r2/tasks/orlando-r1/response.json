@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Orlando price aggregates support the meal, coffee and draft-beer estimates. Cocktail and wine estimates use local drink-price relationships to draft beer; accommodation is less certain because hostel inventory and July lodging costs vary with tourist demand.",
+  "comparable_city_reasoning": "No external comparable city used. Food and drink estimates are based on Orlando price aggregates; accommodation is a holistic estimate for a major U.S. theme-park destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.0,
+    "coffee": 5.28,
+    "inexp_meal_1p": 21.0,
+    "midrange_meal_2p": 85.0,
+    "cocktail": 15.0,
+    "wine_glass": 9.0,
+    "hostel_dorm_1p": 38.0,
+    "hostel_private_2p": 85.0,
+    "hotel_1star_2p": 105.0,
+    "hotel_3star_2p": 165.0
+  }
+}

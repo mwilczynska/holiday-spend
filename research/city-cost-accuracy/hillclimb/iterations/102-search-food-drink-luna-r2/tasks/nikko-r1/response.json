@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Nikko price ranges and Japan-wide typical prices; cocktails and wine glasses are estimated relative to local beer. Accommodation is a holistic estimate and can vary with season and weekends.",
+  "comparable_city_reasoning": "Food estimates follow Nikko’s tourism-oriented price ranges, checked against recent Japan-wide typical prices and nearby Utsunomiya as a regional reference. Accommodation reflects general Japanese tourist-town norms.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.45,
+    "coffee": 3.15,
+    "inexp_meal_1p": 10.0,
+    "midrange_meal_2p": 47.5,
+    "cocktail": 5.7,
+    "wine_glass": 5.05,
+    "hostel_dorm_1p": 25.0,
+    "hostel_private_2p": 50.65,
+    "hotel_1star_2p": 69.65,
+    "hotel_3star_2p": 126.65
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Current Ocho Rios price indexes provide meal, coffee, and beer benchmarks, though the local data are sparse and vary. Cocktail and wine estimates use their price relationship to beer; accommodation estimates are broad because hostel supply and lodging costs vary with Ocho Rios's resort market.",
+  "comparable_city_reasoning": "Meal and drink anchors use Ocho Rios price indexes. Accommodation uses broad estimates for Jamaican north-coast tourist towns, adjusted for Ocho Rios's resort demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 3.17,
+    "inexp_meal_1p": 9.31,
+    "midrange_meal_2p": 62.32,
+    "cocktail": 7.5,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 28,
+    "hostel_private_2p": 75,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 175
+  }
+}

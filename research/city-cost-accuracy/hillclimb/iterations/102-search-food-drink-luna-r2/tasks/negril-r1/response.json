@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Negril price-index coverage is thin and inconsistent. Cocktail and wine estimates are based on their price relationship to local beer; accommodation anchors are holistic model estimates with substantial seasonal and beachfront variation.",
+  "comparable_city_reasoning": "Food estimates use Negril aggregate price indexes. Lodging is modeled for a Jamaican Caribbean beach-resort town, with Montego Bay as broad regional context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.30,
+    "coffee": 2.00,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 51.00,
+    "cocktail": 6.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 185.00
+  }
+}
