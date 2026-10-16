@@ -41,7 +41,12 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
 - [ ] Luna-lane confirmation before any production proposal.
 
-**Codex collection checkpoint — 16 October 2026 UTC.** Frozen `101-v11-luna-r2` has 30/333 responses saved
+**Codex Job A checkpoint — 16 October 2026 UTC.** Added 25 responses, los-angeles-r1 through aarhus-r1,
+using fresh GPT-6 Luna/Max subagents. Frozen 101-v11-luna-r2 now has 55/333 responses (278 pending).
+All response/run pairs parse and record the required model and effort. No failures or retries; next abu-dhabi-r1.
+No ingest or scoring has run. Collection continues after this commit.
+
+**Previous Codex collection checkpoint — 16 October 2026 UTC.** Frozen `101-v11-luna-r2` has 30/333 responses saved
 (303 pending), using fresh GPT-6 Luna/Max subagents. No Luna score or verdict has been run. A Codex-side attempt to
 run `014-v11-haiku-high-r2` through the existing Claude dispatcher yielded 17 immediate failed attempts and zero
 answers; it was stopped. Claude/Haiku dispatch is left to the Claude Code coordinator. With explicit owner approval,
@@ -59,7 +64,7 @@ stopped. Its five raw rows are saved as `panel/booking-main-partial-2026-10-16.r
 014-v11-haiku-high-r2                    pending  126 / 333  (repeat-1 pending 126)
 015-spec-definitions-r2                  pending  333 / 333  (repeat-1 pending 333)
 016-accommodation-definitions-r2         pending  333 / 333  (repeat-1 pending 333)
-101-v11-luna-r2                          pending  303 / 333  (repeat-1 pending 303)
+101-v11-luna-r2                          pending  278 / 333  (repeat-1 pending 278)
 ```
 
 **Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108. Hostelworld expansion complete

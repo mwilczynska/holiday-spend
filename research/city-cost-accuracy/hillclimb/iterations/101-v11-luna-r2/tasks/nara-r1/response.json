@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate using July 2026 pricing context. Nara's dining anchors are relatively well bounded; accommodation is less certain because visitor demand and limited city inventory can shift room prices. Cocktail and wine estimates are based on typical restaurant price relationships to domestic beer.",
+  "comparable_city_reasoning": "Based on Japan's Kansai region, with Kyoto and Osaka as broad cost references, adjusted for Nara's smaller city scale and strong tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.8,
+    "inexp_meal_1p": 9.0,
+    "midrange_meal_2p": 58.0,
+    "cocktail": 7.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 31.0,
+    "hostel_private_2p": 62.0,
+    "hotel_1star_2p": 75.0,
+    "hotel_3star_2p": 135.0
+  }
+}

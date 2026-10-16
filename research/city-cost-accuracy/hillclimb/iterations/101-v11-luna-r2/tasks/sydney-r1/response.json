@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for July. Accommodation prices vary by season and location; cocktail and wine estimates are based on Sydney’s local price relationship to beer.",
+  "comparable_city_reasoning": "Anchored to the higher-cost range of Australian metropolitan cities such as Melbourne, with Sydney’s central accommodation and dining costs toward the upper end.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.5,
+    "coffee": 4.3,
+    "inexp_meal_1p": 17,
+    "midrange_meal_2p": 100,
+    "cocktail": 16.5,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 120,
+    "hotel_1star_2p": 125,
+    "hotel_3star_2p": 185
+  }
+}

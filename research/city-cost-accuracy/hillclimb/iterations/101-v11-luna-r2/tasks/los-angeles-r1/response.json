@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic July estimate. Los Angeles prices vary substantially by neighborhood and season; lodging is especially uncertain. Cocktail and wine estimates use their usual premium over draft beer as a guide.",
+  "comparable_city_reasoning": "Based on general knowledge of prices in major US coastal cities, adjusted for Los Angeles’s high restaurant and summer lodging costs.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9,
+    "coffee": 6,
+    "inexp_meal_1p": 22,
+    "midrange_meal_2p": 120,
+    "cocktail": 19,
+    "wine_glass": 17,
+    "hostel_dorm_1p": 65,
+    "hostel_private_2p": 145,
+    "hotel_1star_2p": 190,
+    "hotel_3star_2p": 290
+  }
+}

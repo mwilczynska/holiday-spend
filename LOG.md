@@ -3815,3 +3815,13 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   its background daemon endpoint refused connection, so no supported external unload route was available.
   Official documentation describes completed-thread closure, but this session does not expose that control.
   The Luna queue remains 30/333 answered, next los-angeles-r1; a fresh CLI chat is the available recovery path.
+
+# 16 October 2026 UTC — Job A resumed from Los Angeles
+
+- Continued CODEX-HANDOFF.md Job A in the research worktree from 30/333 answered. Saved 25 new frozen
+  101-v11-luna-r2 answers, los-angeles-r1 through aarhus-r1, with one fresh GPT-6 Luna/Max subagent per task.
+- Saved every final message verbatim with response.json and run.json. Run timestamps are coordinator observations;
+  search counts are unknown and recorded as null. No failed workers, retries, substitutions or answer edits.
+- Lane now has 55/333 answers (278 pending); next abu-dhabi-r1. Collection continues after this checkpoint.
+  No ingest, scoring, sealed-test read, prompt/spec change or production write was made.
+- PowerShell blocked npm.ps1 through execution policy; validation uses npm.cmd instead.

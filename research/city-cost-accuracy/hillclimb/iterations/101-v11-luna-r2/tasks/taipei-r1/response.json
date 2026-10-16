@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates for July; restaurant anchors are more certain than accommodation, which varies by location and date. Cocktail and wine estimates use a rough local-price relationship to domestic beer and are less certain.",
+  "comparable_city_reasoning": "Based on Taiwan's large-city price range, with a Taipei premium for lodging and hospitality compared with cities such as Taichung and Kaohsiung.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.6,
+    "inexp_meal_1p": 8,
+    "midrange_meal_2p": 55,
+    "cocktail": 10,
+    "wine_glass": 9,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 65,
+    "hotel_3star_2p": 125
+  }
+}
