@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic July 2026 estimates. Restaurant anchors are more certain; hotel prices vary by season and location. Cocktail and wine estimates use their likely local price relationship to beer because those anchors are less certain.",
+  "comparable_city_reasoning": "Based on Amman's role as a Levant capital and regional travel hub, with moderate restaurant costs and higher alcohol prices relative to everyday meals.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.0,
+    "coffee": 3.25,
+    "inexp_meal_1p": 7.0,
+    "midrange_meal_2p": 40.0,
+    "cocktail": 11.0,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 16.0,
+    "hostel_private_2p": 40.0,
+    "hotel_1star_2p": 45.0,
+    "hotel_3star_2p": 85.0
+  }
+}

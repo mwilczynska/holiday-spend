@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates based on general knowledge. Restaurant anchors are more certain than July accommodation prices, which vary with demand. Cocktail and wine estimates use their typical price relationship to draft beer.",
+  "comparable_city_reasoning": "Based on Berlin as a major German capital with prices generally below Paris and Amsterdam, while reflecting strong summer tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.85,
+    "coffee": 4.68,
+    "inexp_meal_1p": 17.55,
+    "midrange_meal_2p": 81.9,
+    "cocktail": 15.21,
+    "wine_glass": 9.36,
+    "hostel_dorm_1p": 48,
+    "hostel_private_2p": 117,
+    "hotel_1star_2p": 117,
+    "hotel_3star_2p": 199
+  }
+}

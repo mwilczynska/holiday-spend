@@ -1,6 +1,6 @@
 # City-cost accuracy research
 
-**Last updated:** 14 October 2026
+**Last updated:** 16 October 2026
 **Branch:** `research/city-cost-accuracy`
 **Status:** Hill-climb program active (see below). Earlier designer-led runs closed and preserved.
 **Worktree:** `C:\Users\chawi\.codex\worktrees\city-cost-accuracy\holiday-spend`
@@ -40,6 +40,22 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Round 1: 001 baseline, 002–005 prompt candidates, 006 calibration replay; assess and set the incumbent.
 - [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
 - [ ] Luna-lane confirmation before any production proposal.
+
+**Codex collection checkpoint — 16 October 2026 UTC.** Frozen `101-v11-luna-r2` has 12/333 responses saved
+(321 pending), using fresh GPT-6 Luna/Max subagents. No Luna score or verdict has been run. A Codex-side attempt to
+run `014-v11-haiku-high-r2` through the existing Claude dispatcher yielded 17 immediate failed attempts and zero
+answers; it was stopped. Claude/Haiku dispatch is left to the Claude Code coordinator. Stale `.claim` and failed
+`run.json` records from that attempt remain because automatic approval review rejected their cleanup.
+
+```
+008-accommodation-definitions            pending   30 / 108  (repeat-1 pending 15)
+009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
+011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
+014-v11-haiku-high-r2                    pending  126 / 333  (repeat-1 pending 126)
+015-spec-definitions-r2                  pending  333 / 333  (repeat-1 pending 333)
+016-accommodation-definitions-r2         pending  333 / 333  (repeat-1 pending 333)
+101-v11-luna-r2                          pending  321 / 333  (repeat-1 pending 321)
+```
 
 **Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108. Hostelworld expansion complete
 (268 extra cities with dorm prices); BudgetYourTrip expansion saved for 302 cities

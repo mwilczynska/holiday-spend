@@ -3779,3 +3779,17 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   and taxes. 3-star medians agree closely across the two sites on paid prices (Lisbon $86 vs $85, Kyoto $52 vs
   $52.50). 1-2 star listings are not cheaper than 3-star in central districts, so the basic-hotel reference will be
   defined as a price tier (lower percentile of decent hotels/guesthouses/B&Bs), decided from the collected data.
+
+# 16 October 2026 UTC — Codex collection checkpoint
+
+- Read `CODEX-HANDOFF.md` and the frozen hill-climb program. `101-v11-luna-r2` began at 0/333 answered.
+- Answered the first twelve queued tasks, Amman through Cape Town, with fresh Codex GPT-6 Luna/Max subagents.
+  Saved each returned JSON verbatim with a `run.json`; all twelve files parse as JSON. The queue now has 321/333
+  Luna tasks pending. No ingest, score, assessment, test-split read, or candidate change was made.
+- Attempted the existing `014-v11-haiku-high-r2` Claude dispatcher once. It returned 17 immediate failures and no
+  successful answers, so it was stopped. The owner clarified that this Codex session should spawn only Luna workers;
+  no further Haiku dispatch was run. Failed `run.json` and `.claim` records remain. Automatic approval review
+  rejected cleanup across the iterations tree as too broad; those markers need a reviewed narrow cleanup in a
+  Claude Code session before retrying that dispatcher.
+- The logged-in Chrome Booking.com tab was available for inspection. No browser collection or export ran in this
+  checkpoint. Existing worktree changes outside the twelve Luna task folders, PLAN and LOG were not staged.
