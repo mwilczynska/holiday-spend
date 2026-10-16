@@ -28,6 +28,7 @@ const E = [
   ['R2', '014-v11-haiku-high-r2-cal-region-h3', null, 'Region correction, shrunk to item', 'calibration'],
   ['R2', '015-spec-definitions-r2-cal-region', '015-spec-definitions-r2', 'Clearer item definitions', 'prompt'],
   ['R2', '016-accommodation-definitions-r2-cal-region', '016-accommodation-definitions-r2', 'Accommodation definitions', 'prompt'],
+  ['R2', '017-country-calibration-r2', null, 'Correction per country, shrunk to region', 'calibration'],
 ];
 
 const it = id => path.join(hcRoot, 'iterations', id);

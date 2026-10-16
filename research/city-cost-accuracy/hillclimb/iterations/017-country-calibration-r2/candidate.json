@@ -1,0 +1,11 @@
+{
+  "id": "017-country-calibration-r2",
+  "parent": "014-v11-haiku-high-r2-cal-region",
+  "family": "calibration",
+  "hypothesis": "Correction factors per country, shrunk towards the region factor with weight n/(n+3) (n = other dev cities in the country); countries without other dev cities use the region factor. Price levels differ within regions (Japan vs Vietnam), which a region factor averages away. Zero-call replay of 014.",
+  "replayFrom": "014-v11-haiku-high-r2",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/high (claude -p, app system prompt, WebSearch only)",
+  "repeats": 1,
+  "split": "dev"
+}

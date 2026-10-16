@@ -10,7 +10,7 @@ function load(predictionsFile) {
   if (cache.has(predictionsFile)) return cache.get(predictionsFile);
   const refs = new Map();
   for (const r of loadPanel().filter(r => r.split === 'dev')) {
-    if (!refs.has(r.cityKey)) refs.set(r.cityKey, { region: r.region, anchors: {} });
+    if (!refs.has(r.cityKey)) refs.set(r.cityKey, { region: r.region, country: r.country, anchors: {} });
     (refs.get(r.cityKey).anchors[r.anchor] ??= []).push(Math.log(r.valueUsd));
   }
   const preds = new Map();
@@ -24,7 +24,7 @@ function load(predictionsFile) {
   for (const [city, ref] of refs) {
     const pc = preds.get(city);
     if (!pc) continue;
-    for (const [a, logs] of Object.entries(ref.anchors)) if (pc[a]) residuals.push({ city, region: ref.region, anchor: a, r: mean(logs) - mean(pc[a]) });
+    for (const [a, logs] of Object.entries(ref.anchors)) if (pc[a]) residuals.push({ city, region: ref.region, country: ref.country, anchor: a, r: mean(logs) - mean(pc[a]) });
   }
   cache.set(predictionsFile, residuals);
   return residuals;
@@ -48,4 +48,19 @@ export function fitFactors(predictionsFile, { exclude = null, shrink = 0, groupB
     })), { get: (t, k) => (k in t ? t[k] : typeof k === 'string' ? g[k.split('|')[0]] : undefined) });
   }
   return Object.fromEntries(Object.entries(out).map(([k, rs]) => [k, mean(rs) * rs.length / (rs.length + shrink)]));
+}
+
+// Two-level factors: country offsets shrunk towards their region's offset with weight n / (n + k), where the region
+// offset is the plain per-region mean; a country with no other dev city takes its region's offset, and a region with
+// none takes the global anchor offset. Leave-one-city-out like fitFactors.
+export function countryInRegionOffset(predictionsFile, { exclude, anchor, country, region, k = 3 }) {
+  const rows = load(path.resolve(hcRoot, predictionsFile)).filter(x => x.city !== exclude && x.anchor === anchor);
+  if (!rows.length) return null;
+  const g = mean(rows.map(x => x.r));
+  const rr = rows.filter(x => x.region === region).map(x => x.r);
+  const reg = rr.length ? mean(rr) : g;
+  const cr = rows.filter(x => x.country === country).map(x => x.r);
+  if (!cr.length) return reg;
+  const w = cr.length / (cr.length + k);
+  return w * mean(cr) + (1 - w) * reg;
 }
