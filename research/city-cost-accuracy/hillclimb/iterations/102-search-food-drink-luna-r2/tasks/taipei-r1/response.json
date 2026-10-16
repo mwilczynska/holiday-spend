@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Taipei aggregates anchor meals, cappuccino and draft beer. Cocktail and wine estimates are less direct and use typical price relationships to local draft beer. Accommodation is a holistic estimate and has the widest uncertainty.",
+  "comparable_city_reasoning": "No external city proxy used; food and drink estimates use Taipei-specific aggregate prices, with June 2026 data as a close proxy for the July pricing window.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.77,
+    "coffee": 3.48,
+    "inexp_meal_1p": 4.93,
+    "midrange_meal_2p": 46.22,
+    "cocktail": 10.79,
+    "wine_glass": 7.40,
+    "hostel_dorm_1p": 21.00,
+    "hostel_private_2p": 58.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 115.00
+  }
+}

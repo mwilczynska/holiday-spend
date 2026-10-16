@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use recent Reykjavík price aggregates and local price data. Accommodation is modeled for July high season and is less certain; wine is estimated at roughly 1.15 times the draft beer price because glass-price data was limited.",
+  "comparable_city_reasoning": "No comparable-city proxy used; food and drink estimates are Reykjavík-specific, and accommodation is modeled for Reykjavík in July.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 14.00,
+    "coffee": 6.50,
+    "inexp_meal_1p": 29.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 25.00,
+    "wine_glass": 16.00,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 200.00,
+    "hotel_1star_2p": 260.00,
+    "hotel_3star_2p": 380.00
+  }
+}

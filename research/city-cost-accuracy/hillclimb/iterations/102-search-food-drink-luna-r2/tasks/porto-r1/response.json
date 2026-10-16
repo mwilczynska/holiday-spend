@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors are based on recent Porto cost-of-living averages and the July 2026 price window. Lodging estimates are holistic and less certain because summer demand affects rates. Cocktail is estimated at roughly 2.3 times draft beer; wine by the glass is estimated just above beer because direct aggregate data is limited.",
+  "comparable_city_reasoning": "Used Porto-specific price averages; lodging reflects Porto's summer tourism demand rather than a substitute city's rates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.40,
+    "coffee": 2.60,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 170.00
+  }
+}

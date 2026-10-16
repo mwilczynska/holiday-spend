@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use Santiago citywide price aggregates from 2026, with October data as a proxy for the July window. Accommodation is a holistic estimate and is less certain. Cocktail is estimated at about 2.5 times draft beer; a wine glass at about 1.5 times beer.",
+  "comparable_city_reasoning": "No comparable city used; estimates are based on Santiago price aggregates and a direct model estimate for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.0,
+    "coffee": 3.4,
+    "inexp_meal_1p": 11.0,
+    "midrange_meal_2p": 56.0,
+    "cocktail": 10.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 48.0,
+    "hotel_1star_2p": 60.0,
+    "hotel_3star_2p": 100.0
+  }
+}

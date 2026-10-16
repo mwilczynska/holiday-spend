@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant estimates are supported by aggregated Lisbon prices around the July 2026 window. Accommodation is a holistic high-season estimate; wine is estimated near the beer price from local house-wine ranges, and drinks vary by venue.",
+  "comparable_city_reasoning": "Food and drink anchors use Lisbon-specific typical prices. Accommodation reflects a general July high-season estimate for a heavily visited Southern European capital.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.36,
+    "coffee": 3.04,
+    "inexp_meal_1p": 16.82,
+    "midrange_meal_2p": 61.66,
+    "cocktail": 11.22,
+    "wine_glass": 3.92,
+    "hostel_dorm_1p": 48.0,
+    "hostel_private_2p": 105.0,
+    "hotel_1star_2p": 135.0,
+    "hotel_3star_2p": 200.0
+  }
+}

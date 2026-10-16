@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Lima price indexes support the meal, coffee, and beer estimates. The cocktail uses a current downtown-club reference; wine is inferred at roughly twice the local draft-beer price. Accommodation estimates are holistic and less certain.",
+  "comparable_city_reasoning": "No proxy city used; food and drink estimates use recent Lima price indexes.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.61,
+    "coffee": 3.24,
+    "inexp_meal_1p": 4.36,
+    "midrange_meal_2p": 34.85,
+    "cocktail": 10.17,
+    "wine_glass": 5.81,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 75.00
+  }
+}

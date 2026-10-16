@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee, and beer estimates track Mumbai-specific aggregated prices. Bar cocktail data is limited, and the wine-glass estimate uses its local price relationship to beer. Accommodation values are holistic estimates with substantial neighborhood variation.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates are based on Mumbai-specific price data, while accommodation reflects Mumbai's large-city cost profile.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.65,
+    "coffee": 2.73,
+    "inexp_meal_1p": 5.27,
+    "midrange_meal_2p": 21.06,
+    "cocktail": 8.50,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 90.00
+  }
+}

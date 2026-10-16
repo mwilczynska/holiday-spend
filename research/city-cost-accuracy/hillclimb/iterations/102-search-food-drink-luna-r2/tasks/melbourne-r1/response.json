@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current aggregated Melbourne prices as an approximation for July 2026; cocktail and wine estimates reflect local bar ranges relative to beer. Accommodation is modeled holistically and is least certain.",
+  "comparable_city_reasoning": "No external comparable-city adjustment; food and drink estimates use Melbourne-specific price data, with accommodation estimated for a major Australian city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.74,
+    "coffee": 4.01,
+    "inexp_meal_1p": 17.39,
+    "midrange_meal_2p": 83.46,
+    "cocktail": 17.39,
+    "wine_glass": 10.43,
+    "hostel_dorm_1p": 36,
+    "hostel_private_2p": 120,
+    "hotel_1star_2p": 115,
+    "hotel_3star_2p": 170
+  }
+}

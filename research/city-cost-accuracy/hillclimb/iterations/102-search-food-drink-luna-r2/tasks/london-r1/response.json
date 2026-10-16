@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "The closest aggregated London price snapshot available was October 2026 rather than the July reference window. Meal, coffee and draft-beer anchors use direct city price data; cocktail and wine are estimated relative to beer. Accommodation anchors are holistic estimates and less certain.",
+  "comparable_city_reasoning": "No substitute city used; food and drink are based on London data, and accommodation on general knowledge of London's urban lodging market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.31,
+    "coffee": 5.65,
+    "inexp_meal_1p": 26.60,
+    "midrange_meal_2p": 106.40,
+    "cocktail": 16.76,
+    "wine_glass": 10.71,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 145.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 270.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Recent city price aggregates support the meal, cappuccino, and domestic beer estimates. Cocktail is guided by local bar price levels; wine uses its likely price relationship to beer. Accommodation is a holistic July estimate, not based on live listings.",
+  "comparable_city_reasoning": "Food anchors use Nha Trang price aggregates; accommodation reflects a competitively priced Vietnamese coastal destination with July domestic tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.65,
+    "coffee": 1.75,
+    "inexp_meal_1p": 2.85,
+    "midrange_meal_2p": 19.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 45.00
+  }
+}
