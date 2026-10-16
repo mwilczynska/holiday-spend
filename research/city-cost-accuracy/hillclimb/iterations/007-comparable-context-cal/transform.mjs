@@ -1,0 +1,6 @@
+import { fitFactors } from '../../../../../scripts/city-cost-accuracy/hillclimb/calibration.mjs';
+// Leave-one-city-out: factors are fitted on 007-comparable-context's raw predictions for the other dev cities only.
+export default (anchors, ctx) => {
+  const f = fitFactors('iterations/007-comparable-context/predictions.jsonl', { exclude: ctx.cityKey, shrink: 0, groupBy: null, hierarchical: null });
+  return Object.fromEntries(Object.entries(anchors).map(([a, v]) => { const k = a; return [a, f[k] !== undefined ? v * Math.exp(f[k]) : v]; }));
+};

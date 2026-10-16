@@ -1,0 +1,26 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and Santiago price-level context for July 2026; no live prices, menus, or listings were checked. Restaurant and coffee anchors are moderately certain; hostel and hotel rates vary widely by neighborhood and season and are least certain. Cocktail and wine anchors follow their usual relationship to the draft beer anchor because direct knowledge is weaker. The FX figure comes from search results citing rba.gov.au; the RBA pages and F11.1 file were not opened directly.",
+  "comparable_city_reasoning": "Benchmarked against other upper-middle-income South American capitals such as Montevideo, adjusted for Santiago's relatively high hotel rates and its Chilean peso price levels; no single city was used for exact figures.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "CLP",
+  "anchors_local": {
+    "beer": 5000,
+    "coffee": 4000,
+    "inexp_meal_1p": 9500,
+    "midrange_meal_2p": 62000,
+    "cocktail": 8500,
+    "wine_glass": 5500,
+    "hostel_dorm_1p": 16000,
+    "hostel_private_2p": 42000,
+    "hotel_1star_2p": 48000,
+    "hotel_3star_2p": 110000
+  }
+}

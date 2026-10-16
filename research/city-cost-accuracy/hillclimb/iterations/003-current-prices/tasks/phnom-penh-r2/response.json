@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Phnom Penh price levels, not checked against live menus, listings or booking pages. Restaurant and beer anchors are the most reliable; the hostel, 3-star hotel, cocktail and wine anchors are less certain. Cocktail and wine were set at about 3-4x draft beer where direct knowledge is weak. Prices are largely USD-denominated, so no FX adjustment was applied. The FX figure comes from two rba.gov.au-restricted search results that agreed on the 15 Oct 2026 value; the RBA page itself was not read directly.",
+  "comparable_city_reasoning": "Regional Southeast Asian basis: compared with mid-priced, tourist-oriented capitals in the region and adjusted for Phnom Penh's USD-based price levels. No single comparable city was matched precisely.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.50,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 60.00
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Manila price levels, not live menus or listings; no city-price web sources were used. Restaurant anchors are moderately reliable. Hostel and hotel anchors vary widely by district (Malate and Ermita versus Makati and BGC), so treat them as central estimates. Cocktail and wine anchors rest mainly on the local beer price relationship because direct price knowledge is weaker for them; that is the stated basis for those two values. Assumes July 2026 (rainy season) pricing.",
+  "comparable_city_reasoning": "Benchmarked against other large Southeast Asian capitals with similar tourist accommodation tiers (for example Bangkok and Ho Chi Minh City), adjusted for Manila's inexpensive local eating, its district-driven hotel spread, and a moderate bar price level.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "San Miguel Pale Pilsen, one draft glass (about 330 ml) at a casual restaurant, about 120 PHP",
+    "coffee": "cappuccino at a mid-range cafe chain, about 160 PHP",
+    "inexp_meal_1p": "Filipino rice plate with a main dish and iced tea at an inexpensive local restaurant, about 200 PHP",
+    "midrange_meal_2p": "three-course dinner for two (starter, shared main, dessert, no drinks) at a mid-range Makati restaurant, about 2,600 PHP total",
+    "cocktail": "gin- or rum-based house cocktail at a mid-range Makati bar, about 400 PHP",
+    "wine_glass": "house red or white by the glass at a mid-range restaurant, about 380 PHP",
+    "hostel_dorm_1p": "6-8 bed mixed dorm bed in a registered Malate or Ermita hostel, about 650 PHP per night",
+    "hostel_private_2p": "private double room with shared bath in a registered Malate or Ermita hostel, about 1,700 PHP per night",
+    "hotel_1star_2p": "basic air-conditioned double with private bath at a registered Malate or Ermita guesthouse, about 2,000 PHP per night",
+    "hotel_3star_2p": "standard double at a registered three-star business hotel in Makati, about 5,000 PHP per night"
+  },
+  "anchors_usd": {
+    "beer": 2.07,
+    "coffee": 2.76,
+    "inexp_meal_1p": 3.45,
+    "midrange_meal_2p": 44.83,
+    "cocktail": 6.90,
+    "wine_glass": 6.55,
+    "hostel_dorm_1p": 11.21,
+    "hostel_private_2p": 29.31,
+    "hotel_1star_2p": 34.48,
+    "hotel_3star_2p": 86.21
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings; no web sources were used for the price anchors. Restaurant and bar prices are reasonably reliable for Zona Sul districts such as Copacabana, Ipanema and Botafogo, while hostel and hotel rates are least certain given wide variation by neighborhood, platform and July school-holiday demand. Cocktail (about 2x draft beer) and wine glass (about 1.8x draft beer) are inferred from the beer anchor because direct knowledge of those prices is weaker. The FX figure came from search-result summaries of the RBA page rather than a direct page read.",
+  "comparable_city_reasoning": "No single close comparable; based on Rio's own Zona Sul tourist pricing, with restaurant levels in line with other large Brazilian tourism cities and accommodation set for peak July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "BRL",
+  "anchors_local": {
+    "beer": 18.00,
+    "coffee": 13.00,
+    "inexp_meal_1p": 45.00,
+    "midrange_meal_2p": 340.00,
+    "cocktail": 36.00,
+    "wine_glass": 32.00,
+    "hostel_dorm_1p": 110.00,
+    "hostel_private_2p": 280.00,
+    "hotel_1star_2p": 230.00,
+    "hotel_3star_2p": 550.00
+  }
+}

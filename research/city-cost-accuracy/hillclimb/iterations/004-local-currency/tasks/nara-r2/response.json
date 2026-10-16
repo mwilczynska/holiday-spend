@@ -1,0 +1,26 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Japanese price levels, not from live menus, listings or booking pages. Restaurant and drink anchors are more reliable than accommodation, which varies widely by date and room type during peak summer travel. Cocktail and wine were set relative to the beer anchor because Nara-specific knowledge of them is limited. The FX figure came from search-result summaries of RBA pages rather than a direct page read, and the 15 October value may not be fully published yet.",
+  "comparable_city_reasoning": "Regional basis: general Japanese price levels from model knowledge, benchmarked against Kyoto and Osaka mid-market pricing and adjusted for Nara's lower hotel demand as a day-trip destination near those cities.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "JPY",
+  "anchors_local": {
+    "beer": 650,
+    "coffee": 650,
+    "inexp_meal_1p": 1100,
+    "midrange_meal_2p": 10000,
+    "cocktail": 1000,
+    "wine_glass": 900,
+    "hostel_dorm_1p": 3800,
+    "hostel_private_2p": 10000,
+    "hotel_1star_2p": 12000,
+    "hotel_3star_2p": 20000
+  }
+}

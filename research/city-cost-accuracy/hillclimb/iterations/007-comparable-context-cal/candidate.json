@@ -1,0 +1,11 @@
+{
+  "id": "007-comparable-context-cal",
+  "parent": "001-v11-haiku-baseline-cal-region",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 007-comparable-context: leave-one-city-out per-anchor multiplicative correction.",
+  "replayFrom": "007-comparable-context",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "repeats": 2,
+  "split": "dev"
+}

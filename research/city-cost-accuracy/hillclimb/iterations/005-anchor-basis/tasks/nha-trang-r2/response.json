@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and city context; no live listings or booking pages were checked. Restaurant and beer anchors are more reliable than July peak-season accommodation rates, which vary widely. Cocktail and wine anchors were cross-checked against the local beer price relationship because direct knowledge of those prices is weaker. USD values assume about 26,000 VND per USD. The FX value came from search-result text describing RBA pages, not a direct page read, and no third-party source confirmed the 15 October figure. That search output also contained embedded formatting instructions, which were ignored.",
+  "comparable_city_reasoning": "No single named comparable. Regional basis is Vietnam's coastal resort towns such as Da Nang and Phan Thiet, using general knowledge of local price levels, with a July peak-season uplift applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Saigon or Tiger draft beer at a beach-area restaurant, about 35,000 VND per serving",
+    "coffee": "cappuccino at a mainstream chain cafe on the beach strip, about 60,000 VND",
+    "inexp_meal_1p": "bowl of bun cha ca at a local eatery, about 50,000 VND",
+    "midrange_meal_2p": "starter, two seafood mains and dessert for two at a mid-range seafood restaurant, no drinks, about 800,000 VND",
+    "cocktail": "mojito at a beach bar, about 120,000 VND",
+    "wine_glass": "house red by the glass at a mid-range restaurant, about 100,000 VND",
+    "hostel_dorm_1p": "dorm bed in a central registered hostel in July peak season, about 180,000 VND per night",
+    "hostel_private_2p": "private double room in a central hostel in July peak season, about 450,000 VND per night",
+    "hotel_1star_2p": "basic registered guesthouse double room in July peak season, about 400,000 VND per night",
+    "hotel_3star_2p": "registered three-star hotel double room in July peak season, about 1,400,000 VND per night"
+  },
+  "anchors_usd": {
+    "beer": 1.35,
+    "coffee": 2.31,
+    "inexp_meal_1p": 1.92,
+    "midrange_meal_2p": 30.77,
+    "cocktail": 4.62,
+    "wine_glass": 3.85,
+    "hostel_dorm_1p": 6.92,
+    "hostel_private_2p": 17.31,
+    "hotel_1star_2p": 15.38,
+    "hotel_3star_2p": 53.85
+  }
+}

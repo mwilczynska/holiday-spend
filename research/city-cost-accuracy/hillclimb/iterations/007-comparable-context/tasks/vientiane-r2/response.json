@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the supplied calibrators, not checked against live listings; treat each anchor as roughly plus or minus 25 percent. Restaurant and beer anchors are medium confidence; hostel and hotel anchors are less certain. Cocktail and wine_glass use the local price relationship to draught beer (about 3 times and 4 times the beer anchor) because direct knowledge is weak. The 2026-10-15 FX figure was taken from search-reported RBA pages and was not independently confirmed against the RBA table, so verify it before use.",
+  "comparable_city_reasoning": "Anchored to the supplied Siem Reap and Chiang Mai data as the closest regional calibrators, with Phuket used only as an upper bound. Beer sits between the two calibrators, coffee and inexpensive meals are close to both, mid-range dining and dorm and private hostel rooms fall between them, basic hotel rooms sit slightly below both, and three-star rooms sit within their range. The figures are set for the mid-2026 window supplied.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.10,
+    "coffee": 1.75,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 21.00,
+    "cocktail": 3.30,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 19.00,
+    "hotel_3star_2p": 50.00
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not from live booking pages or current listings. Restaurant and beer values are the best grounded. Hostel and hotel rates vary widely by area, room type and season, and July is monsoon low season for leisure demand, so accommodation is less certain. Cocktail and wine values partly rely on the local beer-relative price relationship because direct knowledge is weaker. USD values assume roughly 90 INR per USD and would shift with currency moves. The FX observation comes from search results citing the RBA daily rates page, which was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city; anchored on South Asian metro-level pricing, such as other large Indian cities, adjusted upward for Mumbai's higher hotel and rent levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "330 ml domestic draught lager at a casual restaurant, about 250 INR",
+    "coffee": "regular cappuccino at a mid-range café, about 250 INR",
+    "inexp_meal_1p": "veg thali at a local Udupi-style eatery, about 220 INR per person",
+    "midrange_meal_2p": "three courses for two, no drinks, at a mid-range Bandra restaurant, about 2,700 INR",
+    "cocktail": "classic mixed cocktail at a mid-range bar, about 650 INR",
+    "wine_glass": "glass of Indian house wine at a mid-range restaurant, about 550 INR",
+    "hostel_dorm_1p": "shared dorm bed at a registered Colaba hostel, about 800 INR per night",
+    "hostel_private_2p": "private double room at a registered Colaba hostel, about 2,200 INR per night",
+    "hotel_1star_2p": "basic non-AC double at a registered budget hotel in Dadar, about 1,800 INR per night",
+    "hotel_3star_2p": "standard double at a three-star hotel in Andheri, about 6,500 INR per night including taxes"
+  },
+  "anchors_usd": {
+    "beer": 2.78,
+    "coffee": 2.78,
+    "inexp_meal_1p": 2.44,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 7.22,
+    "wine_glass": 6.11,
+    "hostel_dorm_1p": 8.89,
+    "hostel_private_2p": 24.44,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 72.22
+  }
+}

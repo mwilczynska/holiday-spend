@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, with remembered prices brought forward to July 2026. No live listings or booking pages were inspected. Restaurant anchors are moderately reliable; hostel and hotel anchors are least certain given summer demand swings. Cocktail and wine anchors use the local beer relationship (about 3x and 2x the beer anchor) because direct bar-pricing knowledge is weaker. The FX value comes from search summaries of RBA pages, not an opened RBA page, so verify it against the RBA table.",
+  "comparable_city_reasoning": "Loosely benchmarked against Seoul, Tokyo and Hong Kong: restaurant meals and mid-range hotels sit at the lower end of that group, while cafe, beer and cocktail prices are closer to Seoul levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 5.10,
+    "inexp_meal_1p": 6.80,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 12.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 125.00
+  }
+}

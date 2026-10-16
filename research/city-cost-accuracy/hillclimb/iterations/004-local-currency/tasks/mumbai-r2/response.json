@@ -1,0 +1,26 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live listings or price searches. Cafe and restaurant anchors are the most reliable. Hotel and bar prices vary widely by neighborhood and season, and July falls in the monsoon, which is usually a softer travel period, so hotel rates may run lower. Cocktail and wine were set mainly from the beer anchor (cocktail about 1.9x beer, wine about 1.4x beer) because direct bar-price knowledge is weaker. The FX value comes from search excerpts attributed to the RBA overview page, not a direct page read.",
+  "comparable_city_reasoning": "No single comparable city used. Anchored to Indian metro price levels (Delhi, Bengaluru, Hyderabad, Pune), adjusted upward for Mumbai's higher hotel and bar prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "INR",
+  "anchors_local": {
+    "beer": 350,
+    "coffee": 220,
+    "inexp_meal_1p": 250,
+    "midrange_meal_2p": 3000,
+    "cocktail": 650,
+    "wine_glass": 500,
+    "hostel_dorm_1p": 800,
+    "hostel_private_2p": 2200,
+    "hotel_1star_2p": 1800,
+    "hotel_3star_2p": 6500
+  }
+}

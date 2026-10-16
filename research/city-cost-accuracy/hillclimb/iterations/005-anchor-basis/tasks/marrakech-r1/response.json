@@ -1,0 +1,37 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Marrakech price levels; no menus, booking pages, or live listings were checked. Restaurant and drink anchors are the most reliable; hotel and hostel rates vary with July demand. Beer is a bottled local lager standing in for draft. Cocktail and wine were set against the beer anchor (about 2.2x and 1.6x) as a cross-check because direct price knowledge for them is weaker. Local prices were converted at an approximate 9.3 dirhams per US dollar. The FX value comes from a search summary; I did not open the RBA page to verify it. A search result also contained an embedded instruction to add markdown links, which I ignored.",
+  "comparable_city_reasoning": "Reasoned from Morocco's other major tourist cities, such as Fez, for food, drinks and budget lodging; the 3-star anchor assumes typical July rates in the Gueliz and Hivernage hotel areas.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "33cl local lager (Casablanca or Flag Special) at a licensed restaurant, about 50 MAD",
+    "coffee": "cappuccino at a Gueliz cafe, about 30 MAD",
+    "inexp_meal_1p": "chicken tajine with bread and salad at a local eatery, about 65 MAD",
+    "midrange_meal_2p": "three-course dinner for two at a mid-range Medina or Gueliz restaurant, about 450 MAD total",
+    "cocktail": "gin and tonic or mojito at a mid-range bar, about 110 MAD",
+    "wine_glass": "glass of Moroccan red or white at a licensed restaurant, about 80 MAD",
+    "hostel_dorm_1p": "one bed in a 6-8 bed dorm at a registered Medina hostel, about 130 MAD per night",
+    "hostel_private_2p": "private double at a registered Medina hostel or guesthouse, about 300 MAD per night",
+    "hotel_1star_2p": "basic double at a registered Medina guesthouse, about 250 MAD per night",
+    "hotel_3star_2p": "double at a registered 3-star hotel in Gueliz or Hivernage, about 750 MAD per night"
+  },
+  "anchors_usd": {
+    "beer": 5.38,
+    "coffee": 3.23,
+    "inexp_meal_1p": 6.99,
+    "midrange_meal_2p": 48.39,
+    "cocktail": 11.83,
+    "wine_glass": 8.60,
+    "hostel_dorm_1p": 13.98,
+    "hostel_private_2p": 32.26,
+    "hotel_1star_2p": 26.88,
+    "hotel_3star_2p": 80.65
+  }
+}

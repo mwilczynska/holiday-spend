@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Phuket price levels, projected to a July 2026 window. No live listings, menus or booking pages were inspected. Food and drink anchors are moderately grounded in typical Thai tourist-area pricing. Accommodation anchors are less certain and assume July low-season rates. Cocktail and wine were cross-checked against the beer anchor (about 2.0 to 2.3 times beer) because direct knowledge of current bar menus is weak. USD values assume roughly 33 THB per USD; a materially different baht rate would move every USD anchor proportionally. The midrange meal anchor depends heavily on venue style, so expect a wide band.",
+  "comparable_city_reasoning": "Regional basis: Thai island and beach resort destinations such as Koh Samui and Krabi, with restaurant and drink levels in line with other Thai tourist centres. Accommodation reflects July low-season (southwest monsoon) rates rather than the December to February peak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 3.20,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 9.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 13.50,
+    "hostel_private_2p": 31.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 70.00
+  }
+}

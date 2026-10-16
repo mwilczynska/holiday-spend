@@ -1,0 +1,16 @@
+{
+  "id": "010-comparable-context-5",
+  "parent": "007-comparable-context",
+  "family": "comparable-cities",
+  "hypothesis": "Follow-up to H8: five comparable cities instead of three. More observed price points should steady the level; more distant comparables may dilute it.",
+  "promptTemplate": "prompt.md",
+  "derivedFrom": "docs/prompts/llm_prompt_new_cities_v1_1.md (unchanged; only EXTRA_CONTEXT differs)",
+  "contextBuilder": "context.mjs",
+  "referenceDate": "July 2026",
+  "transform": null,
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "cliModel": "claude-haiku-5-5",
+  "effort": "max",
+  "repeats": 2,
+  "split": "dev"
+}

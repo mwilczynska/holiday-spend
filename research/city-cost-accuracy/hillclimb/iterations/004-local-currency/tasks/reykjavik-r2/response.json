@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Reykjavik price levels for July 2026, not checked against live menus, booking pages, or listings; no web search was used for the anchors. Restaurant and cafe prices are moderately reliable given Iceland's consistently high price level. Accommodation is least certain because July peak-season rates vary widely by location, room type, and booking timing. Cocktail and wine anchors are weaker and were cross-checked against the beer anchor, at about 1.5x and 1.25x beer respectively.",
+  "comparable_city_reasoning": "Benchmarked loosely against Oslo, Copenhagen, and Stockholm for food, drink, and summer accommodation levels, reflecting Reykjavik's high Nordic price level and July peak-season tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "ISK",
+  "anchors_local": {
+    "beer": 1900,
+    "coffee": 1000,
+    "inexp_meal_1p": 4000,
+    "midrange_meal_2p": 26000,
+    "cocktail": 2800,
+    "wine_glass": 2400,
+    "hostel_dorm_1p": 9000,
+    "hostel_private_2p": 26000,
+    "hotel_1star_2p": 28000,
+    "hotel_3star_2p": 48000
+  }
+}

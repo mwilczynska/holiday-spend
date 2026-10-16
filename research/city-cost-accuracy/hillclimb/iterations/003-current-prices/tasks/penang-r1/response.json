@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, with remembered price levels brought forward to July 2026. No live menus, listings or booking pages were checked. Beer, coffee and restaurant anchors are the most reliable. Cocktail and wine were set from the local beer relationship (about 2.4 to 2.6 times the beer anchor) because direct knowledge is weaker. Hotel and hostel anchors vary widely by district and weekend demand. The FX value comes from search results citing the RBA exchange-rates page; I did not open the page directly, and one search summary called the 15 Oct reading 'yesterday's', so the date is less certain than the value.",
+  "comparable_city_reasoning": "Benchmarked to other Malaysian heritage-tourism cities such as Melaka and Ipoh, with restaurant prices set slightly below Kuala Lumpur's central districts. Hotel and hostel anchors reflect George Town's Chinatown and Gurney Drive accommodation stock.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.10,
+    "coffee": 2.80,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 11.50,
+    "hostel_private_2p": 27.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 68.00
+  }
+}

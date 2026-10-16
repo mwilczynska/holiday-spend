@@ -1,0 +1,37 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Melbourne prices, not checked against live menus, booking pages or listings. Cafe, beer and restaurant anchors are moderately reliable; cocktail, hostel and hotel anchors vary widely by area and date, with accommodation assuming July winter levels. AUD examples were converted at the latest RBA rate (15 Oct 2026), not a July rate; that figure is as reported in a search result citing the RBA exchange-rates overview, and the page itself was not opened.",
+  "comparable_city_reasoning": "No external comparable city was used; the basis is general knowledge of Melbourne price levels, informally benchmarked against other large Australian cities such as Sydney, with a modest allowance for 2026 price increases.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Carlton Draught 285 ml pot at a city restaurant, about A$10.50",
+    "coffee": "cappuccino at an independent city cafe, about A$5.50",
+    "inexp_meal_1p": "main such as pho or a rice plate at a casual budget eatery, about A$22 per person",
+    "midrange_meal_2p": "three-course mid-range restaurant meal for two without drinks, about A$200 total",
+    "cocktail": "standard cocktail at a city bar, about A$24",
+    "wine_glass": "glass of house wine at a casual restaurant, about A$14",
+    "hostel_dorm_1p": "dorm bed in a registered central hostel, about A$45 per night",
+    "hostel_private_2p": "private double room in a registered hostel, about A$140 per night",
+    "hotel_1star_2p": "very basic registered hotel or guesthouse double room, about A$160 per night",
+    "hotel_3star_2p": "registered three-star hotel double room in the central city, about A$240 per night"
+  },
+  "anchors_usd": {
+    "beer": 7.30,
+    "coffee": 3.83,
+    "inexp_meal_1p": 15.30,
+    "midrange_meal_2p": 139.10,
+    "cocktail": 16.69,
+    "wine_glass": 9.74,
+    "hostel_dorm_1p": 31.30,
+    "hostel_private_2p": 97.37,
+    "hotel_1star_2p": 111.28,
+    "hotel_3star_2p": 166.92
+  }
+}

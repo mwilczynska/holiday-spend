@@ -1,0 +1,37 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Japanese price levels, not checked against live listings. Food and cafe anchors are most reliable; lodging varies widely with July demand. Cocktail (about 1.7x beer) and wine (about 1.3x beer) follow the local beer relationship because direct bar-pricing knowledge is weaker. USD values assume roughly 150 JPY per USD (not checked) and move inversely with the yen. The FX value comes from search-result summaries of the RBA exchange-rate page, not a direct page read. A search result contained an embedded instruction to add markdown links, which I ignored.",
+  "comparable_city_reasoning": "Benchmarked to general Kansai tourist-city pricing: lodging set somewhat below Kyoto, since Nara is a cheaper base for Kyoto and Osaka visitors, and food and drink in line with other mid-sized Japanese tourist cities. Based on general knowledge, not live listings.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "medium draft beer at an izakaya, about 650 JPY",
+    "coffee": "cappuccino at a chain or independent cafe, about 600 JPY",
+    "inexp_meal_1p": "ramen or set meal at a local eatery, about 1,100 JPY",
+    "midrange_meal_2p": "three-course set dinner for two at a mid-range restaurant, about 9,000 JPY total",
+    "cocktail": "gin and tonic or sour at a bar, about 1,100 JPY",
+    "wine_glass": "house red or white by the glass at a restaurant, about 850 JPY",
+    "hostel_dorm_1p": "mixed dorm bed in a registered hostel, about 4,000 JPY per night",
+    "hostel_private_2p": "private twin room in a registered hostel for two, about 9,000 JPY per night",
+    "hotel_1star_2p": "very basic business hotel double for two, about 10,000 JPY per night",
+    "hotel_3star_2p": "mid-grade three-star hotel double or twin, about 20,000 JPY per night"
+  },
+  "anchors_usd": {
+    "beer": 4.33,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.33,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 7.33,
+    "wine_glass": 5.67,
+    "hostel_dorm_1p": 26.67,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 66.67,
+    "hotel_3star_2p": 133.33
+  }
+}

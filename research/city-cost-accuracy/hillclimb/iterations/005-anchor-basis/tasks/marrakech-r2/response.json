@@ -1,0 +1,37 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Marrakech price levels for July 2026; no live listings, booking pages or tourism registries were checked, so the registered status of hostels and hotels is assumed. Restaurant and coffee anchors are the firmest; accommodation rates vary widely by area, booking channel and season. Cocktail and wine anchors are set relative to the beer example (about 2.2x and 1.8x) because direct knowledge is weaker. Alcohol availability varies by venue. Local prices were converted at an approximate working rate of 9.5 MAD per USD from general knowledge, not a live quote. The RBA rate was taken from search-result summaries citing the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No specific comparable city from the database was used. Judgment rests on general knowledge of Marrakech price levels: restaurant and drink prices sit well below typical Western European city-break levels, and mid-range hotel rates are judged against other mid-sized North African and Mediterranean leisure destinations.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "one 33 cl bottle or draught of Casablanca lager at a licensed restaurant, about 45 MAD",
+    "coffee": "one cappuccino at a Gueliz cafe, about 30 MAD",
+    "inexp_meal_1p": "a chicken or kefta tajine with bread at a local medina eatery, about 60 MAD",
+    "midrange_meal_2p": "starter, tajine main and dessert for two at a mid-range medina restaurant, no drinks, about 500 MAD total",
+    "cocktail": "one standard gin or rum cocktail at a rooftop or lounge bar, about 100 MAD (about 2.2x the beer example)",
+    "wine_glass": "one 15 cl glass of house red or white at a licensed restaurant, about 80 MAD (about 1.8x the beer example)",
+    "hostel_dorm_1p": "one bed in a 6-8 bed mixed dorm at a central medina hostel, about 150 MAD per night",
+    "hostel_private_2p": "one private double room at a central medina hostel or guesthouse-style hostel, about 350 MAD per night",
+    "hotel_1star_2p": "one basic double with en-suite bathroom at a registered 1-star hotel or guesthouse, about 400 MAD per night",
+    "hotel_3star_2p": "one standard double at a registered 3-star hotel in Gueliz or Hivernage, about 900 MAD per night in July"
+  },
+  "anchors_usd": {
+    "beer": 4.74,
+    "coffee": 3.16,
+    "inexp_meal_1p": 6.32,
+    "midrange_meal_2p": 52.63,
+    "cocktail": 10.53,
+    "wine_glass": 8.42,
+    "hostel_dorm_1p": 15.79,
+    "hostel_private_2p": 36.84,
+    "hotel_1star_2p": 42.11,
+    "hotel_3star_2p": 94.74
+  }
+}

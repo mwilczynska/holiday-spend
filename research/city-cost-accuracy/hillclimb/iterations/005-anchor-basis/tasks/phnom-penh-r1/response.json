@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge. No live menus, listings or booking pages were checked, and July 2026 prices may differ. Restaurant and cafe anchors are moderately grounded; accommodation tiers are less certain. Cocktail and wine were set at roughly three to three-and-a-half times the beer anchor because direct knowledge of their local prices is weaker. Riel examples assume about 4,000 riel per USD. Web search was used only for the RBA FX observation, which a second search confirmed.",
+  "comparable_city_reasoning": "No single comparable city. Regional basis: Southeast Asian capital tourist hubs, with Hanoi and Vientiane as broad reference points for food and drink and Bangkok as a higher-priced reference for mid-range restaurants and hotels. Accommodation tiers reflect central hostel and guesthouse pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "one standard glass of domestic draft beer at a casual restaurant, about 7,000 riel",
+    "coffee": "regular cappuccino at a neighborhood cafe, about 10,000 riel",
+    "inexp_meal_1p": "rice plate with grilled pork or fried chicken at a neighborhood eatery, about 15,000 riel",
+    "midrange_meal_2p": "two starters, two mains and two desserts at a mid-range restaurant including tax, about 180,000 riel",
+    "cocktail": "gin and tonic or mojito at a riverside bar, about 22,000 riel",
+    "wine_glass": "house wine by the glass at a mid-range restaurant, about 24,000 riel",
+    "hostel_dorm_1p": "bed in a shared 6-8 bed dorm at a central hostel, about 28,000 riel",
+    "hostel_private_2p": "private double room with ensuite at a central hostel, about 72,000 riel",
+    "hotel_1star_2p": "basic double room with fan or air-con at a registered guesthouse, about 56,000 riel",
+    "hotel_3star_2p": "standard double room at a registered three-star hotel, about 260,000 riel"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.75,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 65.00
+  }
+}

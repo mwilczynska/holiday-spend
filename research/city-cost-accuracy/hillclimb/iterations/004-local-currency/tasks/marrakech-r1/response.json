@@ -1,0 +1,26 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Marrakech tourist pricing; no live listings or booking pages were inspected, so July 2026 values are projected. Restaurant and coffee anchors are moderately grounded; hostel, hotel, and beer anchors are less certain because accommodation and bar prices vary widely by season and district. Cocktail and wine were cross-checked against beer (about 2.4x and 1.6x) because direct knowledge is weaker. FX 0.6955 for 2026-10-15 comes from search-result text attributed to the RBA exchange-rates overview page and matches an OFX historical value of 0.695572; the RBA page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis: general North African tourist-city pricing (for example Fes and Agadir in Morocco), adjusted upward for Marrakech's Medina and Gueliz tourist districts, with July heat assumed to soften hotel demand relative to spring and autumn peaks.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "MAD",
+  "anchors_local": {
+    "beer": 50,
+    "coffee": 30,
+    "inexp_meal_1p": 75,
+    "midrange_meal_2p": 500,
+    "cocktail": 120,
+    "wine_glass": 80,
+    "hostel_dorm_1p": 150,
+    "hostel_private_2p": 380,
+    "hotel_1star_2p": 360,
+    "hotel_3star_2p": 950
+  }
+}

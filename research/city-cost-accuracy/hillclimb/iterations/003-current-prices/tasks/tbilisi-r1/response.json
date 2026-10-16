@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, adjusted to July 2026. No web search or live listing check was used for city prices. Local prices were approximated in USD at about 2.7 GEL per USD. Beer assumes a 0.5 L pour. Cocktail (about 2x the beer anchor) and wine (near the beer anchor) use the local beer relationship because direct knowledge is weaker. Restaurant and beer anchors are the most reliable. Accommodation is least certain because of seasonal and district variation. The FX value comes from a search-result summary attributed to the RBA overview page and was not checked against the F11.1 data file.",
+  "comparable_city_reasoning": "Basis is similar mid-sized Caucasus and Eastern European capitals with tourism-driven prices, such as Yerevan and Sofia. Restaurant prices sit below Western European capitals. Georgia is mapped to Europe for this enum as a Council of Europe member, though it is geographically transcontinental.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 3.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 6.50,
+    "wine_glass": 3.70,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 44.00,
+    "hotel_3star_2p": 90.00
+  }
+}

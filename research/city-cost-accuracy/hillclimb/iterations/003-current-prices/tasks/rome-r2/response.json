@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from learned general knowledge, brought forward to July 2026; no live listings or booking pages were checked. Restaurant and drink anchors are moderately reliable; July accommodation rates swing widely, so they are less certain. EUR/USD was assumed near 1.15 without a live check, so USD anchors move with the euro. Cocktail and wine were cross-checked against beer. Accommodation is assumed to exclude city tourist tax. The RBA rate comes from a search-result report of the RBA overview page; the F11.1 table itself could not be opened.",
+  "comparable_city_reasoning": "Benchmarked to major Italian tourist cities such as Florence and Venice, with a Rome-specific adjustment for its large hotel market and July peak-season demand. No specific listings were checked.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.48,
+    "coffee": 3.45,
+    "inexp_meal_1p": 17.25,
+    "midrange_meal_2p": 103.50,
+    "cocktail": 14.95,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 51.75,
+    "hostel_private_2p": 138.00,
+    "hotel_1star_2p": 132.25,
+    "hotel_3star_2p": 253.00
+  }
+}

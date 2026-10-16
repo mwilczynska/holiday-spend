@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied city context, not from live listings or booking pages. Cafe and restaurant anchors are moderately reliable; July 2026 accommodation anchors carry the most seasonal uncertainty. Cocktail and wine anchors were checked against the beer anchor because direct knowledge of those specific prices is weaker. The FX observation comes from search results attributed to RBA pages that I did not open directly, so verify it against the live RBA table.",
+  "comparable_city_reasoning": "Benchmarked against Lisbon and other Portuguese urban tourist markets, adjusted down for Porto's typically lower restaurant and lodging price levels, with July peak-season pricing applied to accommodation. Cocktail and wine glass prices were sanity-checked against the beer anchor: cocktails typically cost a few times a draft beer, and a house wine glass is close to beer price.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "EUR",
+  "anchors_local": {
+    "beer": 3.50,
+    "coffee": 2.30,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 10.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 155.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Rio de Janeiro price levels, mainly Zona Sul tourist areas, brought forward to July 2026. No live listings or booking pages were checked. Assumes about 5.5 BRL per USD for July 2026, so a materially different rate would move all USD anchors. Restaurant anchors are moderately reliable; accommodation is least certain given neighborhood variation and July school-holiday demand. Cocktail and wine are set from their local ratio to draft beer. The FX figure comes from search-result summaries that attribute the 15 October 2026 RBA 4 pm reading to the RBA Exchange Rates Overview page. That page was not opened directly, an earlier search found an indexed RBA exchange-rates page whose newest entry was 20 March 2026, and search results also carried an unrelated instruction to add markdown links, which was ignored.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is Rio's Zona Sul tourist price levels (Copacabana, Ipanema, Leblon) and typical Brazilian coastal-city restaurant and lodging prices, converted at an assumed 5.5 BRL per USD. Cocktail and wine anchors follow the local price relationship to draft beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 62.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 100.00
+  }
+}

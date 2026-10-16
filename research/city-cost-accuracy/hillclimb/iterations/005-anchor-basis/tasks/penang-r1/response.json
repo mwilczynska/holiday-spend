@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 from general knowledge of Penang prices; no live listings or booking pages were checked. Meal and beer anchors are moderately reliable; hotel and hostel rates vary by season and area. Local prices assume about 4.3 MYR per USD. Cocktail and wine anchors are partly scaled from beer-relative pricing where direct knowledge is weak. The FX figure comes from a web search summary of RBA exchange-rate data; the rba.gov.au page itself was not opened directly.",
+  "comparable_city_reasoning": "Regional Southeast Asia basis: comparable to other mid-sized heritage tourism cities in the region with hawker-led dining and guesthouse supply, priced somewhat below Kuala Lumpur levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Draft or 330 ml bottle of Tiger or Carlsberg at a casual restaurant, about RM 13",
+    "coffee": "Cappuccino at an independent cafe in George Town, about RM 11",
+    "inexp_meal_1p": "Char kway teow plus teh tarik at a hawker stall, about RM 15 per person",
+    "midrange_meal_2p": "Starter, main and dessert for two at a sit-down mid-range restaurant, no drinks, about RM 160 total",
+    "cocktail": "Standard spirit-based cocktail at a mid-range bar, about RM 32",
+    "wine_glass": "House red by the glass at a mid-range restaurant, about RM 30",
+    "hostel_dorm_1p": "Dorm bed in a registered George Town hostel, about RM 45 per night",
+    "hostel_private_2p": "Private double room in a registered hostel, about RM 130 per night",
+    "hotel_1star_2p": "Basic registered guesthouse double room, about RM 150 per night",
+    "hotel_3star_2p": "Registered three-star hotel double room in central George Town, about RM 320 per night"
+  },
+  "anchors_usd": {
+    "beer": 3.02,
+    "coffee": 2.56,
+    "inexp_meal_1p": 3.49,
+    "midrange_meal_2p": 37.21,
+    "cocktail": 7.44,
+    "wine_glass": 6.98,
+    "hostel_dorm_1p": 10.47,
+    "hostel_private_2p": 30.23,
+    "hotel_1star_2p": 34.88,
+    "hotel_3star_2p": 74.42
+  }
+}

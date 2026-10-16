@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for a July 2026 window, not checked against live listings or booking pages. Restaurant and cafe anchors are the more reliable group; hostel and hotel anchors are least certain because rates vary widely by neighborhood, event calendar and booking date. Cocktail and wine anchors lean on the beer anchor (cocktail about three times beer, wine glass slightly above beer) because direct knowledge of those prices is weaker. The FX value comes from a search summary attributed to the RBA exchange-rates overview; that page was not opened directly.",
+  "comparable_city_reasoning": "Based on general knowledge of Madrid price levels, informally compared with Barcelona, Lisbon and Rome. No live price checks were run.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "EUR",
+  "anchors_local": {
+    "beer": 4.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 12.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 170.00
+  }
+}

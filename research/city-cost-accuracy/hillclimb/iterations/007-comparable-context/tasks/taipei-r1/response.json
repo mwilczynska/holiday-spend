@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026; no live listings were checked. Restaurant anchors are steadier than hotel and hostel rates, which swing with season and events. Cocktail and wine were set from the local beer price relationship because direct knowledge is weaker. The FX value comes from a search summary that attributes it to the RBA exchange-rates overview page; that page was not opened directly, the 15 October figure could not be corroborated, and a third-party description says the table's USD column is attributed to WM/Reuters.",
+  "comparable_city_reasoning": "Anchored to Hong Kong as the high-cost reference and to Nara and Busan for budget lodging. Taipei sits below Hong Kong on restaurant prices, close to Nara on dorm beds and basic hotels, above both on private hostel rooms, and below Nara on 3-star hotels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 11.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 56.00,
+    "hotel_3star_2p": 115.00
+  }
+}

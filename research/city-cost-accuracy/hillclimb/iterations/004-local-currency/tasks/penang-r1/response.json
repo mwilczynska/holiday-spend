@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Penang price levels, not checked against live menus, listings or booking sites. Restaurant anchors are the most reliable; hostel and hotel rates vary widely by season, weekday and district. Cocktail and wine anchors are set at about 2x and 3x the beer anchor because direct knowledge is weak. Beer and wine assume venues that serve alcohol, which many halal-certified eateries do not. The FX value came from RBA exchange-rate results returned by web search, not a direct page read.",
+  "comparable_city_reasoning": "No web source was used for prices. Reasoned from general knowledge of George Town and Penang price levels, loosely compared with other Malaysian heritage tourist cities such as Malacca and Ipoh for budget tiers, and with Kuala Lumpur's mid-range hotel market as an upper reference for the 3-star tier.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "MYR",
+  "anchors_local": {
+    "beer": 14.00,
+    "coffee": 12.00,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 200.00,
+    "cocktail": 30.00,
+    "wine_glass": 42.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 270.00
+  }
+}

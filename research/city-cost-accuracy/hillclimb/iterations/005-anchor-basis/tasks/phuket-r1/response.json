@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not live listings. Restaurant and hostel anchors are moderately solid; hotel rates are least certain given wide beach-area price spreads and July low-season effects. Assumes about 33 THB per USD. Cocktail and wine set from beer-relative pricing (about 2.5 to 2.7 times beer) due to weaker direct knowledge. FX value came from web search summaries of the RBA table, not a direct page read; if the 15 Oct 4pm rate was not yet published, 14 Oct (0.7002) is the prior observation.",
+  "comparable_city_reasoning": "Regional basis: Thai beach and island tourism pricing, using Krabi and Koh Samui as informal comparables, with July low-season discounting applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Chang draft beer, one 500 ml serving at a mid-range restaurant, about 120 THB.",
+    "coffee": "Cappuccino at an independent cafe in Phuket Town or Patong, about 100 THB.",
+    "inexp_meal_1p": "Pad kra pao moo with rice at a local eatery, about 110 THB.",
+    "midrange_meal_2p": "Starter, main and dessert for two at a mid-range Thai-Western restaurant, no drinks, about 2,000 THB total.",
+    "cocktail": "Standard spirit cocktail at a Patong bar, about 300 THB.",
+    "wine_glass": "House red wine by the glass at a mid-range restaurant, about 320 THB.",
+    "hostel_dorm_1p": "Dorm bed in a registered hostel in Phuket Town or Patong, about 450 THB per night.",
+    "hostel_private_2p": "Private double room in a registered hostel, about 1,000 THB per night.",
+    "hotel_1star_2p": "Basic air-conditioned double room at a registered guesthouse, about 800 THB per night.",
+    "hotel_3star_2p": "Double room at a registered three-star hotel in a beach area, July rate, about 2,400 THB per night."
+  },
+  "anchors_usd": {
+    "beer": 3.64,
+    "coffee": 3.03,
+    "inexp_meal_1p": 3.33,
+    "midrange_meal_2p": 60.61,
+    "cocktail": 9.09,
+    "wine_glass": 9.70,
+    "hostel_dorm_1p": 13.64,
+    "hostel_private_2p": 30.30,
+    "hotel_1star_2p": 24.24,
+    "hotel_3star_2p": 72.73
+  }
+}

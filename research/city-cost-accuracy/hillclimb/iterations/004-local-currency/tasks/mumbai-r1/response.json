@@ -1,0 +1,26 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings or current prices. Restaurant anchors are moderately reliable. Hostel and hotel rates vary widely by neighbourhood and season (July is monsoon off-peak), so accommodation anchors are less certain, especially the 3-star. Bar prices are least certain because of Maharashtra liquor taxes. The FX value is the RBA 4 pm rate for 15 October 2026 as shown in RBA page excerpts returned by search, not a direct download of the F11.1 table, so confirm it against the live table.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors reflect general knowledge of Mumbai price levels, with other large Indian metros such as Delhi and Bengaluru as a rough scale for restaurants and budget lodging. Cocktail and wine anchors were set partly from the beer anchor, using typical bar price ratios, because direct knowledge of those prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "INR",
+  "anchors_local": {
+    "beer": 350,
+    "coffee": 250,
+    "inexp_meal_1p": 250,
+    "midrange_meal_2p": 2200,
+    "cocktail": 700,
+    "wine_glass": 600,
+    "hostel_dorm_1p": 800,
+    "hostel_private_2p": 2000,
+    "hotel_1star_2p": 1800,
+    "hotel_3star_2p": 6000
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge (knowledge runs to about June 2026, so July 2026 levels are extrapolated); no live listings, booking pages or city-specific web sources were consulted. Restaurant, cafe and drink anchors are the firmer group (roughly +/-15 percent). Hostel and hotel anchors are looser (roughly +/-25 to 30 percent) because July demand and room supply swing widely. Cocktail and wine anchors were partly cross-checked against the beer anchor (about 1.4x and 1.3x) because direct knowledge of Nara bar prices is weak. Remembered yen prices were brought forward to July 2026 and translated at an assumed rate of about 150 yen per US dollar, which is not a verified mid-2026 rate. The RBA value comes from search results summarising RBA pages. Two searches agreed on the 15 October 2026 reading, but the F11.1 table file was not opened and some cached snippets showed conflicting timestamps.",
+  "comparable_city_reasoning": "No single comparable city was used. Basis is general Japanese city price levels, adjusted for Nara being a smaller, cheaper historic tourist town than Kyoto: accommodation set below central Kyoto, food and drink near general Japanese city levels, and July treated as a peak-season accommodation month.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.70,
+    "coffee": 4.40,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 87.00,
+    "cocktail": 6.70,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 170.00
+  }
+}

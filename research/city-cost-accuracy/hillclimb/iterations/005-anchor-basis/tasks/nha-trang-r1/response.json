@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings, booking pages, or city-price searches were used. Restaurant and hostel anchors are steadier; hotel rates are least certain given July peak-season variability. Cocktail and wine were set relative to the beer anchor because direct local bar and wine pricing knowledge is weak. FX value comes from search results citing RBA pages; the live page was not opened and cached-copy dates could not be confirmed.",
+  "comparable_city_reasoning": "Based on general knowledge of other Vietnamese coastal resort cities such as Da Nang and Hoi An, adjusted upward for Nha Trang's July peak-season demand; no live price checks were made.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "draft Saigon-style lager at a beachfront restaurant, about 35,000 VND per glass",
+    "coffee": "cappuccino at a mid-range café, about 60,000 VND",
+    "inexp_meal_1p": "bún chả cá with an iced tea at a local eatery, about 60,000 VND",
+    "midrange_meal_2p": "starter, shared seafood main and dessert for two at a mid-range seafood restaurant, about 1,000,000 VND, no drinks",
+    "cocktail": "standard cocktail at a tourist-area bar, about 120,000 VND",
+    "wine_glass": "house red by the glass at a beachfront restaurant, about 110,000 VND",
+    "hostel_dorm_1p": "dorm bed in a registered hostel in July, about 170,000 VND per night",
+    "hostel_private_2p": "private double room in a registered hostel, about 400,000 VND per night",
+    "hotel_1star_2p": "basic air-conditioned double room in a registered guesthouse, about 350,000 VND per night",
+    "hotel_3star_2p": "double room in a registered three-star hotel in July, about 1,250,000 VND per night"
+  },
+  "anchors_usd": {
+    "beer": 1.35,
+    "coffee": 2.31,
+    "inexp_meal_1p": 2.31,
+    "midrange_meal_2p": 38.46,
+    "cocktail": 4.62,
+    "wine_glass": 4.23,
+    "hostel_dorm_1p": 6.54,
+    "hostel_private_2p": 15.38,
+    "hotel_1star_2p": 13.46,
+    "hotel_3star_2p": 48.08
+  }
+}

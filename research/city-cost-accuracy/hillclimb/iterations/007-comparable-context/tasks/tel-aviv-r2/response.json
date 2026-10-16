@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Tel Aviv price levels and the supplied comparables; no live listings or booking pages were inspected. Beer, coffee and restaurant anchors are moderately reliable. Cocktail and wine_glass were set relative to the beer anchor (cocktail above beer, wine glass near beer level) because direct knowledge of those prices is weaker. Hostel and hotel anchors are least certain because July rates are seasonal and sensitive to regional security events and shekel movements.",
+  "comparable_city_reasoning": "No single comparable was used as a direct proxy. Tel Aviv was placed above the supplied Amman, Rio de Janeiro and Cairo levels in every category, reflecting higher restaurant, cafe and accommodation prices in Israel. Cairo served only as a low-cost reference point.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.75,
+    "coffee": 6.00,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 16.50,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 210.00
+  }
+}

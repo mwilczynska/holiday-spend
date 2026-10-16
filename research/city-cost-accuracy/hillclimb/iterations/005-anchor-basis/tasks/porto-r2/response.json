@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Porto price levels; no live listings or booking pages were checked. Restaurant and drink anchors are moderately reliable; July accommodation is least certain given dynamic peak-season pricing. Cocktail and wine partly rely on beer-price relationships. EUR examples were converted at an approximate general-knowledge rate, not a live quote. FX was read from search-result summaries of the RBA exchange-rates page, not its live table; an OFX figure for the same date is very close. An embedded formatting instruction in search results was ignored.",
+  "comparable_city_reasoning": "No city dataset was used. Basis is general knowledge of Porto's tourist price level, placed somewhat below Lisbon and broadly similar to Seville and Valencia for dining and lodging, with accommodation reflecting July peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Super Bock draft, about 0.33 L, at a central restaurant, about EUR 3.00",
+    "coffee": "cappuccino at a city-centre cafe, about EUR 2.00",
+    "inexp_meal_1p": "prato do dia (dish of the day) at a neighbourhood tasca, about EUR 10",
+    "midrange_meal_2p": "starter, main and dessert for two at a mid-range bistro, no drinks, about EUR 75 total",
+    "cocktail": "gin and tonic at a central bar, about EUR 10",
+    "wine_glass": "house red or white by the glass (about 150 ml) at a restaurant, about EUR 4.50",
+    "hostel_dorm_1p": "bed in a 6-to-8-bed dorm at a registered central hostel in July, about EUR 35 per night",
+    "hostel_private_2p": "double private room at a registered central hostel in July, about EUR 80 per night",
+    "hotel_1star_2p": "basic double room at a registered residencial in July, about EUR 90 per night",
+    "hotel_3star_2p": "double room at a registered three-star hotel in central Porto in July, about EUR 170 per night"
+  },
+  "anchors_usd": {
+    "beer": 3.45,
+    "coffee": 2.30,
+    "inexp_meal_1p": 11.50,
+    "midrange_meal_2p": 86.25,
+    "cocktail": 11.50,
+    "wine_glass": 5.18,
+    "hostel_dorm_1p": 40.25,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 103.50,
+    "hotel_3star_2p": 195.50
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for Melbourne in AUD for the July 2026 winter window; no live menus, listings or booking pages were checked. Restaurant and coffee anchors are more reliable than accommodation, which varies widely by suburb and date. Cocktail and wine_glass were cross-checked against the beer anchor, so they are less certain. The FX value is the 15 Oct 2026 4pm reading as shown in search-result text attributed to the RBA overview page; I did not open the RBA page directly.",
+  "comparable_city_reasoning": "No comparable city was used. Anchors reflect general knowledge of Melbourne CBD and inner-suburb pricing; beer is the reference used to cross-check cocktail and wine.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "AUD",
+  "anchors_local": {
+    "beer": 13.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 160.00,
+    "cocktail": 22.00,
+    "wine_glass": 15.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 225.00
+  }
+}

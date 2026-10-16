@@ -1,0 +1,37 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge for a July 2026 peak-season window; no live booking pages, menus or current listings were consulted. Restaurant and cafe anchors are moderately reliable, while hostel and hotel rates vary widely by neighborhood, date and booking window. Cocktail and wine anchors were cross-checked against their usual ratio to draft beer because exact local list prices vary widely.",
+  "comparable_city_reasoning": "No single comparable city used; based on general knowledge of large US coastal metro pricing (similar to San Francisco and San Diego), with a July peak-season uplift on hostel and hotel rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "16 oz domestic draft pint at a casual restaurant, about $9.50 USD",
+    "coffee": "12 oz cappuccino at an independent cafe, about $5.75 USD",
+    "inexp_meal_1p": "burrito or taco plate with a soft drink at a taqueria, about $16 USD",
+    "midrange_meal_2p": "two starters, two entrees and two desserts at a neighborhood bistro, about $120 USD before drinks and tax",
+    "cocktail": "classic margarita or old fashioned at a restaurant bar, about $16 USD",
+    "wine_glass": "house red or white by the glass at a restaurant, about $14 USD",
+    "hostel_dorm_1p": "shared dorm bed in a Hollywood-area hostel in July, about $60 USD per night",
+    "hostel_private_2p": "private double room in a Hollywood-area hostel in July, about $165 USD per night",
+    "hotel_1star_2p": "basic budget motel double room in July, about $145 USD per night",
+    "hotel_3star_2p": "mid-tier chain hotel double room in July, about $280 USD per night"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 5.75,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 16.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 165.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 280.00
+  }
+}

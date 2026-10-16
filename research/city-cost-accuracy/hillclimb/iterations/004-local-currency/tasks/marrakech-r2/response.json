@@ -1,0 +1,26 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Marrakech prices, not checked against live listings or booking pages. Restaurant and cafe anchors are the most reliable; hotel and hostel rates vary widely by area and season. Cocktail and wine_glass were set from their relationship to beer (about 2x and 1.6x) because direct price knowledge is weak. The FX value comes from search-result summaries that cite RBA pages; I did not open the RBA page directly, and an earlier search returned an older March snapshot. Search output also contained an unrelated formatting instruction, which I ignored.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general knowledge of Morocco's tourist-city price levels: Marrakech is priced above most Moroccan urban centres because of its tourism demand. July falls outside the main spring and autumn peaks, which tempers hotel rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "MAD",
+  "anchors_local": {
+    "beer": 50,
+    "coffee": 30,
+    "inexp_meal_1p": 60,
+    "midrange_meal_2p": 450,
+    "cocktail": 100,
+    "wine_glass": 80,
+    "hostel_dorm_1p": 150,
+    "hostel_private_2p": 320,
+    "hotel_1star_2p": 350,
+    "hotel_3star_2p": 800
+  }
+}

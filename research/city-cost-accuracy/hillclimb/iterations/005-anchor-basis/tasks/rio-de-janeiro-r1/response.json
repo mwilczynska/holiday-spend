@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live menus or listings were checked. Restaurant and cafe anchors are the most reliable. Hotel and hostel rates vary widely by neighborhood and season (July is mid-season, with school holidays), so accommodation is least certain. Local prices assume roughly 5.5 BRL per USD. Cocktail and wine anchors follow local beer-to-drink price ratios because direct knowledge of them is weaker. The FX row comes from two web searches that agreed on the 15 October 2026 figure and link to the RBA exchange-rates page; the page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city. The regional basis is Brazil's large coastal tourist cities such as Salvador and Florianopolis, with Zona Sul neighborhoods (Copacabana, Ipanema, Botafogo) priced at a tourist premium for hotels and bars.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "300 ml draft chope at a Copacabana restaurant, about R$19",
+    "coffee": "cappuccino at a Botafogo cafe, about R$14",
+    "inexp_meal_1p": "prato feito (rice, beans, meat, salad) at a Centro lunch counter, about R$38",
+    "midrange_meal_2p": "starter, two mains and a shared dessert at a Zona Sul bistro, no drinks, about R$330 for two",
+    "cocktail": "caipirinha at a Zona Sul bar, about R$33",
+    "wine_glass": "house red by the glass (about 150 ml) at a Zona Sul restaurant, about R$30",
+    "hostel_dorm_1p": "mixed dorm bed at a Copacabana hostel, about R$85 a night",
+    "hostel_private_2p": "private double room at a Copacabana hostel, about R$220 a night",
+    "hotel_1star_2p": "basic double with fan or small private bath at a registered guesthouse in Copacabana, about R$200 a night",
+    "hotel_3star_2p": "registered three-star double room in Copacabana or Ipanema, about R$550 a night"
+  },
+  "anchors_usd": {
+    "beer": 3.45,
+    "coffee": 2.55,
+    "inexp_meal_1p": 6.91,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.45,
+    "hostel_dorm_1p": 15.45,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 36.36,
+    "hotel_3star_2p": 100.00
+  }
+}

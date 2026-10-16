@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings, or current ISK exchange rates. Restaurant and cafe anchors are moderately reliable; July accommodation is least certain. Cocktail and wine were set relative to beer (about 1.5x and 1.2x) because exact bar prices are not known to me. FX figure is from search-result summaries attributed to the RBA Exchange Rates Overview page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Loose regional basis: high-cost Nordic capitals such as Oslo and Copenhagen, adjusted for Iceland's high food, alcohol and labour costs and for July peak-season accommodation demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "half-liter draft Gull lager at a city-center restaurant, about 1,700 ISK",
+    "coffee": "regular cappuccino at a central Reykjavik cafe, about 900 ISK",
+    "inexp_meal_1p": "casual burger, pizza, or noodle-bowl meal at an inexpensive eatery, about 3,800 ISK per person",
+    "midrange_meal_2p": "three courses for two at a mid-range restaurant (starters, lamb or Arctic char mains, desserts, no drinks), about 25,000 ISK total",
+    "cocktail": "standard cocktail at a downtown bar, about 2,600 ISK",
+    "wine_glass": "house glass of wine at a restaurant, about 2,100 ISK",
+    "hostel_dorm_1p": "July dorm bed in a registered Reykjavik hostel, about 10,400 ISK per night",
+    "hostel_private_2p": "July private double room in a registered Reykjavik hostel, about 24,000 ISK per night",
+    "hotel_1star_2p": "July double room at a very basic registered guesthouse, about 26,000 ISK per night",
+    "hotel_3star_2p": "July double room at a registered three-star hotel, about 47,000 ISK per night"
+  },
+  "anchors_usd": {
+    "beer": 13.08,
+    "coffee": 6.92,
+    "inexp_meal_1p": 29.23,
+    "midrange_meal_2p": 192.31,
+    "cocktail": 20.00,
+    "wine_glass": 16.15,
+    "hostel_dorm_1p": 80.00,
+    "hostel_private_2p": 184.62,
+    "hotel_1star_2p": 200.00,
+    "hotel_3star_2p": 361.54
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of July 2026 tourist pricing; no live listings, menus or booking pages were checked. Restaurant and drink prices vary widely between beachfront venues and local eateries, and accommodation is least certain at July high-season rates. Cocktail and wine anchors were set relative to the local draft-beer anchor (tourist-venue drinks priced at several times the beer price) because direct knowledge of them is weaker. FX: the value and date come from web-search summaries of the RBA exchange-rates page; I did not open the RBA table directly. The most recent RBA row my searches reached is dated 2026-03-20, which predates the generation date. An October 2026 figure appeared in one summary, but a later search could not confirm it, so treat the FX observation as potentially stale.",
+  "comparable_city_reasoning": "Regional basis is Southeast Asian beach-resort pricing, informally benchmarked against Vietnamese coastal tourist cities such as Da Nang and Phu Quoc. Accommodation anchors reflect July high-season demand. No live listings were consulted.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "VND",
+  "anchors_local": {
+    "beer": 25000,
+    "coffee": 55000,
+    "inexp_meal_1p": 65000,
+    "midrange_meal_2p": 1000000,
+    "cocktail": 130000,
+    "wine_glass": 140000,
+    "hostel_dorm_1p": 200000,
+    "hostel_private_2p": 450000,
+    "hotel_1star_2p": 500000,
+    "hotel_3star_2p": 1500000
+  }
+}

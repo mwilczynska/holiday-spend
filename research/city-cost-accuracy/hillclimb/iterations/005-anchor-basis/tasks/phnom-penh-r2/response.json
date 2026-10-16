@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or booking pages. Restaurant, beer and coffee anchors are the most reliable; hostel and hotel rates vary widely by location and season (July assumed to be rainy-season demand). Cocktail and wine anchors are scaled from the beer anchor (about 3 to 3.3 times) because direct knowledge is weaker. The FX rate comes from search-result excerpts of the RBA Exchange Rates Overview and was not re-read from the live page, so verify it before relying on it.",
+  "comparable_city_reasoning": "Regional basis: Southeast Asian capital and tourist-city price levels (for example Siem Reap and Hanoi), adjusted for Phnom Penh's largely USD-priced tourist sector. Web search was used only for the RBA FX observation, not for city prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Angkor draft beer, about 330 ml glass at a mid-level restaurant, about 6,000 riel.",
+    "coffee": "Cappuccino at a mid-range cafe, about 10,000 riel.",
+    "inexp_meal_1p": "Bai sach chrouk (grilled pork with rice) at a local eatery, about 14,000 riel.",
+    "midrange_meal_2p": "Two starters, two Khmer mains such as fish amok, and two desserts at a mid-range restaurant, about 120,000 riel total.",
+    "cocktail": "Mojito or similar standard cocktail at a riverside bar, about 18,000 riel.",
+    "wine_glass": "House red wine by the glass at a mid-range restaurant, about 20,000 riel.",
+    "hostel_dorm_1p": "Bed in a six-bed mixed dorm at a central registered hostel, about 6 USD per night.",
+    "hostel_private_2p": "Private double room with fan or AC at a central registered hostel, about 18 USD per night.",
+    "hotel_1star_2p": "Basic double room with fan and private bathroom at a registered guesthouse, about 14 USD per night.",
+    "hotel_3star_2p": "Standard double room at a registered three-star hotel, about 60 USD per night."
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 60.00
+  }
+}

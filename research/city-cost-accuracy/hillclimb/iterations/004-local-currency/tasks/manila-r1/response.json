@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate of Metro Manila price levels for July 2026 from general knowledge; no live listings or booking pages were inspected. Prices vary widely by district (Makati/BGC versus Malate/Ermita), so restaurant and hotel anchors carry wide uncertainty. Cocktail and wine were bounded against the beer anchor (about 2.9x and 2.7x) because direct knowledge of those prices is weaker. The FX reading (2026-10-15, 0.6955 USD per AUD) came from a search summary restricted to rba.gov.au and was not verified by opening the page; confirm the latest RBA row before relying on it.",
+  "comparable_city_reasoning": "No single comparator city was used. Regional basis: Southeast Asian capital-city price levels, adjusted to Metro Manila restaurant and accommodation pricing from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "PHP",
+  "anchors_local": {
+    "beer": 140,
+    "coffee": 170,
+    "inexp_meal_1p": 170,
+    "midrange_meal_2p": 2600,
+    "cocktail": 400,
+    "wine_glass": 380,
+    "hostel_dorm_1p": 700,
+    "hostel_private_2p": 1600,
+    "hotel_1star_2p": 1800,
+    "hotel_3star_2p": 5000
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Siem Reap tourist price levels, projected to July 2026; no live listings or booking pages were checked. Beer, coffee and meal anchors are moderately confident; accommodation anchors are least certain because online rates vary widely by season and booking channel. Cocktail and wine anchors use the local draft-beer relationship as the basis because direct knowledge is weaker.",
+  "comparable_city_reasoning": "No single comparable city was used as a direct benchmark. The basis is general Southeast Asian tourist-town pricing, informed by Siem Reap's tourist districts and similar Mekong-region destinations. Cocktail and wine anchors are scaled from the draft-beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 50.00
+  }
+}

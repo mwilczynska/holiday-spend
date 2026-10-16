@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of local price levels, rolled forward to July 2026; no live listings, menus or booking pages were inspected. Restaurant and cafe anchors are moderately reliable; hostel and hotel anchors are least certain because summer and event-driven room rates swing widely. Cocktail and wine anchors were set relative to the beer anchor (cocktail about 2.5 times beer, wine glass about 2 times beer) because direct bar-price knowledge is weaker. Web search was used only for the FX observation, taken from search-result summaries that attribute it to RBA exchange-rate pages; those RBA pages were not opened directly.",
+  "comparable_city_reasoning": "Regional basis: East Asia. Restaurant and drink anchors were benchmarked informally against East Asian capitals with similar cafe, night-market and mid-range dining patterns, adjusted for generally lower restaurant prices in this city. Accommodation anchors reflect budget and mid-range hostel and hotel levels typical of city-center markets in the same region.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 5.40,
+    "inexp_meal_1p": 6.20,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 11.50,
+    "wine_glass": 9.20,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 57.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 120.00
+  }
+}

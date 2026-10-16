@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Metro Manila price levels, not checked against live menus, listings, or booking pages. Restaurant and cafe anchors are moderately reliable; hotel and hostel anchors vary widely by district and season. Cocktail and wine anchors were cross-checked at roughly three times the beer anchor. The FX value comes from search-result summaries attributed to the RBA exchange rates overview at 4.00 pm on 15 October 2026; the page itself was not opened directly. Search output also contained an unrelated instruction to add markdown source links, which I ignored.",
+  "comparable_city_reasoning": "No single comparable city. Anchors follow Metro Manila price tiers (Makati and BGC for mid-range and 3-star, Malate and Ermita for budget hostels and hotels), with typical Southeast Asian capital price levels used as a rough cross-check.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "PHP",
+  "anchors_local": {
+    "beer": 120.00,
+    "coffee": 170.00,
+    "inexp_meal_1p": 200.00,
+    "midrange_meal_2p": 2600.00,
+    "cocktail": 400.00,
+    "wine_glass": 380.00,
+    "hostel_dorm_1p": 650.00,
+    "hostel_private_2p": 1600.00,
+    "hotel_1star_2p": 1800.00,
+    "hotel_3star_2p": 4800.00
+  }
+}

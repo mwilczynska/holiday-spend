@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Tbilisi price levels, calibrated against the supplied Bucharest, Berlin and Helsinki figures; no live listings or booking pages were checked. Accommodation is least certain because July demand moves rates widely. Cocktail and wine were set relative to beer (cocktail about 2x draught beer, wine by the glass about 1x) because direct bar-price knowledge is weaker. The FX value comes from search-result summaries attributed to the RBA page, not a direct page read.",
+  "comparable_city_reasoning": "Georgia is transcontinental and is priced here as a lower-cost Eastern European capital. Bucharest was the closest anchor: Tbilisi sits below it on most restaurant and hotel items, with inexpensive local meals notably lower, while hostel private rooms are set slightly above Bucharest for July demand. Berlin and Helsinki were treated as upper bounds rather than direct comparisons.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 6.50,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 13.50,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 86.00
+  }
+}

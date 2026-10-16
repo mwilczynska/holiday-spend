@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates, not checked against live listings or booking pages. Restaurant and cafe anchors are best grounded by the Melbourne calibration; hostel and hotel anchors are less certain given seasonality and wide within-category variation, and assume July non-peak pricing. Cocktail and wine_glass have no comparable data: they were set from general price levels and checked against the beer anchor (cocktail about 1.8x beer, wine glass about 1.2x beer), making them the weakest anchors. FX 0.6955 (RBA, 15 Oct 2026) comes from search-result summaries; a second search did not confirm it and the RBA F11.1 table was not opened.",
+  "comparable_city_reasoning": "Melbourne, Australia is the primary comparable (same country, similar cafe, restaurant and accommodation market). Target-city anchors are set above Melbourne by roughly 3 to 15 percent for food, drink and hotels, and about a third higher for hostel beds, based on general knowledge of local price levels rather than supplied data. Krakow and Kathmandu were used only as sanity checks on relative price ratios. The beer anchor follows the 0.5 L draught basis of the comparables.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.10,
+    "coffee": 4.10,
+    "inexp_meal_1p": 19.10,
+    "midrange_meal_2p": 94.00,
+    "cocktail": 18.50,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 30.50,
+    "hostel_private_2p": 84.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 220.00
+  }
+}

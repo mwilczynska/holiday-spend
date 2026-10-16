@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings or booking pages. Restaurant and coffee anchors are moderate confidence; accommodation is least certain given July peak demand (roughly +/-20-25%). Beer assumes a ~0.33 L serving. Cocktail and wine were set from the beer relationship (cocktail about 3.6x beer, wine glass about 1.6x beer) because direct knowledge is weaker. EUR figures assume EUR/USD near 1.16. No verified RBA observation was obtained, so fx fields are null; do not convert to AUD until a verified RBA rate is supplied.",
+  "comparable_city_reasoning": "No comparable-city proxy used. Porto is priced from its own recalled local levels, rolled forward to July 2026 for local price growth, with Portugal's cafe and restaurant prices generally below much of Western Europe.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 3.70,
+    "coffee": 2.90,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 13.30,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 195.00
+  }
+}

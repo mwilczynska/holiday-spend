@@ -1,0 +1,26 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied city, country, and July 2026 window; no live listings or booking pages were inspected. Restaurant and beer anchors are more reliable than accommodation, which varies widely by neighborhood and season, and July often brings domestic school-holiday demand. Cocktail and wine_glass are set at roughly two times the beer anchor because direct price recall for them is weaker. The inexpensive meal anchor assumes a main meal without alcohol.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors are calibrated to general Brazilian major-metro restaurant and hotel price levels, with a Zona Sul (Copacabana and Ipanema) beachfront tourism premium applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "BRL",
+  "anchors_local": {
+    "beer": 16.00,
+    "coffee": 12.00,
+    "inexp_meal_1p": 45.00,
+    "midrange_meal_2p": 340.00,
+    "cocktail": 34.00,
+    "wine_glass": 32.00,
+    "hostel_dorm_1p": 90.00,
+    "hostel_private_2p": 210.00,
+    "hotel_1star_2p": 230.00,
+    "hotel_3star_2p": 460.00
+  }
+}

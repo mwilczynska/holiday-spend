@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from remembered Phnom Penh price points, brought forward to July 2026. No live menus, booking pages or current listings were inspected. Restaurant and food anchors are moderately reliable. Accommodation anchors, especially 3-star and private hostel rooms, and bar drinks are less certain and vary by neighborhood and season. Hotel rates may exclude taxes or service charges. Cocktail and wine anchors were set using the local price relationship to the draft beer anchor (roughly 3.5-4x) because direct knowledge of current bar prices is weak. Cambodia's economy is heavily dollarized, so USD-quoted prices are less exposed to riel movements.",
+  "comparable_city_reasoning": "Southeast Asian capital-city basis, reasoned from remembered Phnom Penh price points and comparable tourist cities in Cambodia and mainland Southeast Asia (such as Siem Reap and Ho Chi Minh City), projected forward to July 2026. No live listings or web sources were used for the city prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.75,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 60.00
+  }
+}

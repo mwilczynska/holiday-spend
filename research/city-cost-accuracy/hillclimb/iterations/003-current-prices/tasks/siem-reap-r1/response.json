@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and city context, not checked against live menus, booking pages or listings. Restaurant and beer anchors are moderately grounded. Accommodation is least certain given July rainy-season demand and wide variation by property and district. Cocktail and wine anchors use the local beer relationship as their basis because direct knowledge is weaker.",
+  "comparable_city_reasoning": "No web search was used for the city-price anchors. The basis is general knowledge of the price level in a tourism-driven Southeast Asian heritage town, loosely benchmarked against similar regional tourist hubs such as Luang Prabang and Hoi An, with a premium for central tourist districts.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 55.00
+  }
+}

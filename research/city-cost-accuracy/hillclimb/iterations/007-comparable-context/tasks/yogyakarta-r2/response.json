@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge and the supplied reference cities, not from live listings or booking pages. Restaurant and coffee anchors are the most reliable. Hotel and hostel tiers vary by district and are sensitive to July peak-season demand. Beer is less certain because venue and alcohol-service prices vary. Cocktail and wine are the weakest: they were set from the beer anchor using a typical local price relationship, since direct local knowledge is limited.",
+  "comparable_city_reasoning": "Calibrated mainly to the supplied Jakarta reference, with Yogyakarta set below Jakarta for food, coffee, beer and budget lodging because it is a lower-cost city with a large budget-tourism market. The three-star hotel anchor sits near Jakarta's level to allow for July peak-season demand. Phnom Penh was used only as a broad regional sanity check. Koh Samui's resort-driven hotel rates were not used as a basis.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.30,
+    "coffee": 1.80,
+    "inexp_meal_1p": 1.70,
+    "midrange_meal_2p": 15.00,
+    "cocktail": 4.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 5.80,
+    "hostel_private_2p": 15.50,
+    "hotel_1star_2p": 11.50,
+    "hotel_3star_2p": 32.00
+  }
+}

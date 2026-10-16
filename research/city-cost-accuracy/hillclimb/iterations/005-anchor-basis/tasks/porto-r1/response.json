@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate; no live prices or listings were checked. Café, beer and restaurant anchors are moderately certain; July hostel and hotel rates are seasonal and least certain. Euro-denominated estimates were converted at roughly 1.16 USD per EUR from memory, not looked up. The FX figure comes from search-result text attributed to the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked to Lisbon, which is generally pricier for dining and lodging, and adjusted down modestly for Porto. Also checked against similar mid-sized Iberian tourist cities and general Portuguese food-and-drink price norms.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.33 L draft lager at a neighbourhood restaurant (e.g. Super Bock), about €3.00",
+    "coffee": "cappuccino at a central café, about €2.20",
+    "inexp_meal_1p": "prato do dia (dish of the day, usually with soup) at a local tasca, about €12",
+    "midrange_meal_2p": "three courses for two at a mid-range Porto restaurant, no drinks, about €70 total",
+    "cocktail": "gin and tonic at a city-centre bar, about €9.00",
+    "wine_glass": "house wine by the glass (about 150 ml) at a restaurant, about €4.00",
+    "hostel_dorm_1p": "shared 6-8 bed dorm bed in a registered hostel in July, about €34 per night",
+    "hostel_private_2p": "private double room in a registered hostel in July, about €80 per night",
+    "hotel_1star_2p": "basic double room in a registered pensão or residencial in July, about €68 per night",
+    "hotel_3star_2p": "double room in a registered three-star hotel in July, about €150 per night"
+  },
+  "anchors_usd": {
+    "beer": 3.48,
+    "coffee": 2.55,
+    "inexp_meal_1p": 13.92,
+    "midrange_meal_2p": 81.20,
+    "cocktail": 10.44,
+    "wine_glass": 4.64,
+    "hostel_dorm_1p": 39.44,
+    "hostel_private_2p": 92.80,
+    "hotel_1star_2p": 78.88,
+    "hotel_3star_2p": 174.00
+  }
+}
