@@ -3825,3 +3825,16 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - Lane now has 55/333 answers (278 pending); next abu-dhabi-r1. Collection continues after this checkpoint.
   No ingest, scoring, sealed-test read, prompt/spec change or production write was made.
 - PowerShell blocked npm.ps1 through execution policy; validation uses npm.cmd instead.
+
+# 16 October 2026 UTC — Job A final collection checkpoint and dispatch deviation
+
+- After checkpoint 61e5e330 was pushed, five more fresh GPT-6 Luna/Max workers answered abu-dhabi-r1,
+  aix-en-provence-r1, alanya-r1, albufeira-r1 and alicante-r1. Saved their final messages verbatim and run metadata.
+- Thirty new responses were collected this session; lane total 60/333 (273 pending). Every response/run pair parses
+  as JSON and records GPT-6 Luna/Max. No worker failed, no answer was retried, edited, discarded or replaced.
+- The coordinator made a transcription error in Alicante's dispatched coffee definition: "regular cappuccinouccino"
+  rather than the frozen "regular cappuccino". Recorded the exact deviation in Alicante's run.json and preserved the
+  answer. Job A stopped under CODEX-HANDOFF.md's broken-job instruction; coordinator review is required.
+  No verdict about that answer was made, and all frozen prompt/spec files remain unchanged.
+- Next queued task is annecy-r1. No other jobs, ingest, scoring, sealed-test reads or production writes ran.
+- Validation: all 60 response/run pairs parse and report Luna/Max; docs:check-memory and diff whitespace pass.
