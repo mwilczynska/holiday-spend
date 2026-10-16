@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Aix city averages last updated around June 2026. Cocktail pricing uses a June local guide; wine is estimated near the local draft-beer price because robust glass-price averages were unavailable. July accommodation estimates are holistic and uncertain, especially for the limited hostel inventory.",
+  "comparable_city_reasoning": "Food anchors are Aix-specific; accommodation estimates reflect general Provence university and tourism demand during the July peak season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.12,
+    "coffee": 4.73,
+    "inexp_meal_1p": 20.88,
+    "midrange_meal_2p": 81.2,
+    "cocktail": 13.92,
+    "wine_glass": 8.12,
+    "hostel_dorm_1p": 48.0,
+    "hostel_private_2p": 122.0,
+    "hotel_1star_2p": 140.0,
+    "hotel_3star_2p": 210.0
+  }
+}

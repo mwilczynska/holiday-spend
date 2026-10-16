@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors are based on mid-2026 Alanya cost-of-living observations; local prices move quickly. Cocktail and wine are estimated at roughly 2× and 1.5× the draft-beer anchor. Lodging is a broad July resort-season estimate, especially uncertain for registered hostels.",
+  "comparable_city_reasoning": "Food anchors use Alanya price indexes; lodging reflects the Turkish Riviera resort market and its July high season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.0,
+    "coffee": 2.6,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 27.0,
+    "cocktail": 8.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 20.0,
+    "hostel_private_2p": 50.0,
+    "hotel_1star_2p": 55.0,
+    "hotel_3star_2p": 90.0
+  }
+}

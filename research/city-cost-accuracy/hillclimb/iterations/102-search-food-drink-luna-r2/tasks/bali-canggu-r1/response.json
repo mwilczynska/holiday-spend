@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use 2026 Bali and Canggu benchmarks as proxies for July; prices vary by venue and tax or service charges. Cocktail and wine estimates are less certain, at roughly 2–2.5 times draft beer. Accommodation is a holistic seasonal estimate, not based on live listings.",
+  "comparable_city_reasoning": "Used Canggu-specific benchmarks where available and Bali-wide prices as a cross-check, allowing for Canggu's higher tourist and café prices.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.1,
+    "coffee": 3.0,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 38.0,
+    "cocktail": 7.0,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 38.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 80.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates draw on Arugam Bay meal-price aggregates, Sri Lanka-wide cost data, and a few local menu prices. July accommodation is a broad seasonal estimate; cocktail and wine prices vary by venue and are less certain.",
+  "comparable_city_reasoning": "No city proxy for food prices: Arugam Bay estimates are used with Sri Lanka-wide restaurant costs as a baseline. Accommodation reflects a small, seasonal Sri Lankan surf town.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.2,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.5,
+    "midrange_meal_2p": 28.0,
+    "cocktail": 6.5,
+    "wine_glass": 7.25,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 28.0,
+    "hotel_1star_2p": 38.0,
+    "hotel_3star_2p": 75.0
+  }
+}

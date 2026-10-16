@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Meal and coffee estimates use nearby 2026 Yogyakarta price data. Beer prices vary by serving and venue; cocktail data is limited, wine is estimated from its local price relationship to beer, and accommodation anchors are holistic estimates rather than live booking prices.",
+  "comparable_city_reasoning": "No proxy city used; food and drink anchors are city-specific, while accommodation reflects Yogyakarta’s budget-tourism market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.25,
+    "coffee": 1.25,
+    "inexp_meal_1p": 1.15,
+    "midrange_meal_2p": 14.0,
+    "cocktail": 5.35,
+    "wine_glass": 4.75,
+    "hostel_dorm_1p": 6.0,
+    "hostel_private_2p": 18.0,
+    "hotel_1star_2p": 22.0,
+    "hotel_3star_2p": 40.0
+  }
+}

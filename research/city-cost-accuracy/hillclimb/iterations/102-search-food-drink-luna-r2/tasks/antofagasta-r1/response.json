@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates align with Antofagasta cost-of-living data updated in August 2026, but the city sample is modest and the local draft-beer entry is especially sparse. Cocktail and wine are inferred at roughly three and two times the beer price. Lodging is a holistic estimate without live listing checks.",
+  "comparable_city_reasoning": "Food anchors use Antofagasta-specific cost-of-living prices; accommodation is estimated for a northern Chilean regional capital with mining and port business demand.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 3.0,
+    "inexp_meal_1p": 8.0,
+    "midrange_meal_2p": 39.0,
+    "cocktail": 7.5,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 42.0,
+    "hotel_1star_2p": 52.0,
+    "hotel_3star_2p": 95.0
+  }
+}

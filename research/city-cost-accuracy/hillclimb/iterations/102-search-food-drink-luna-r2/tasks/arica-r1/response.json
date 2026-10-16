@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink estimates use sparse Arica price data published around October 2026 as a proxy for July 2026. Cocktail and wine prices are less certain; the wine glass estimate uses its local price relationship to beer. Accommodation values are holistic estimates, not live listing prices.",
+  "comparable_city_reasoning": "Food and drink are based on Arica city-level price estimates; accommodation is estimated from general knowledge of a northern Chilean coastal city, broadly comparable to Iquique.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 3.0,
+    "inexp_meal_1p": 6.9,
+    "midrange_meal_2p": 42.0,
+    "cocktail": 8.0,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 42.0,
+    "hotel_1star_2p": 50.0,
+    "hotel_3star_2p": 80.0
+  }
+}

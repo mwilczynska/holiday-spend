@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current Antalya cost-of-living aggregates. Cocktail pricing has limited city data; wine is estimated from its local price relationship to beer. Accommodation is a holistic July high-season estimate and is less certain.",
+  "comparable_city_reasoning": "Food and drink estimates use Antalya data; accommodation reflects Antalya’s Turkish Mediterranean resort demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 3.75,
+    "inexp_meal_1p": 9.10,
+    "midrange_meal_2p": 39.00,
+    "cocktail": 7.60,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 120.00
+  }
+}

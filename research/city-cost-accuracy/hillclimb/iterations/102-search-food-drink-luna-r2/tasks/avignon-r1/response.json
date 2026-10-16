@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use 2026 Avignon price reports, which vary notably for a mid-range meal for two. Wine and cocktail estimates are based on roughly 1.4× and 2.5× the €4 draft-beer anchor. Accommodation is a holistic July festival-season estimate, not listing data.",
+  "comparable_city_reasoning": "No proxy city used; food anchors are Avignon-specific, and lodging reflects Avignon's July festival-season demand as a Provençal heritage destination.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 17,
+    "midrange_meal_2p": 58,
+    "cocktail": 11.25,
+    "wine_glass": 6.25,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 185
+  }
+}

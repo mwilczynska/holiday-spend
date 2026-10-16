@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Local aggregate data support meals, cappuccino, and draft beer, but Ayutthaya price samples are sparse; accommodation is a holistic estimate. Cocktail and wine prices use estimated bar markups of about 2.5 and 3 times the local draft beer price.",
+  "comparable_city_reasoning": "Used Ayutthaya cost-of-living entries for food and drink, with accommodation estimated for a provincial heritage destination in central Thailand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 1.95,
+    "inexp_meal_1p": 1.80,
+    "midrange_meal_2p": 29.90,
+    "cocktail": 6.00,
+    "wine_glass": 7.20,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 55.00
+  }
+}

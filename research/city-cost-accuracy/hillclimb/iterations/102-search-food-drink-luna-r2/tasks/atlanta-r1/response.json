@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Atlanta price-index snapshots span May to October 2026, so July food and drink anchors are estimates. Cocktail and wine prices are less certain; they are estimated in relation to local beer prices. Accommodation is a holistic estimate and can vary with season and events.",
+  "comparable_city_reasoning": "Food and drink use Atlanta-specific price references; accommodation reflects general knowledge of lodging in a large U.S. Sun Belt metro.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 15.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 180.00
+  }
+}

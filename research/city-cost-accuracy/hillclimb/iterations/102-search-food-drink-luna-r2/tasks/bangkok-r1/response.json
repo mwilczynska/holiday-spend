@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors are grounded in June 2026 aggregated Bangkok price data. Cocktail and wine prices are less certain, estimated at about three times and two-and-a-half times the local draft beer price, respectively. Accommodation values are broad July off-season model estimates.",
+  "comparable_city_reasoning": "No comparable city was needed: food and drink estimates use Bangkok-specific aggregated prices, while accommodation is modeled from general Bangkok market context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.90,
+    "inexp_meal_1p": 3.30,
+    "midrange_meal_2p": 35.90,
+    "cocktail": 9.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 55.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee estimates use current local price aggregates, which vary substantially. Cocktail and wine estimates are inferred from the local draft-beer price. July accommodation anchors are holistic peak-season estimates and are less certain.",
+  "comparable_city_reasoning": "No separate comparable city used; food and drink estimates are based on Annecy price aggregates, with July lodging reflecting its lakeside Alpine tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.98,
+    "coffee": 4.49,
+    "inexp_meal_1p": 19.65,
+    "midrange_meal_2p": 78.60,
+    "cocktail": 13.47,
+    "wine_glass": 6.74,
+    "hostel_dorm_1p": 56.14,
+    "hostel_private_2p": 134.74,
+    "hotel_1star_2p": 157.20,
+    "hotel_3star_2p": 258.25
+  }
+}

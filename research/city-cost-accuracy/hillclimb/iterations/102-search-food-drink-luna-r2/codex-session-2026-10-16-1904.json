@@ -205,6 +205,126 @@
       "id": "tbilisi-r1",
       "finishedAt": "2026-10-16T19:18:12.713Z",
       "attempts": 1
+    },
+    {
+      "id": "tel-aviv-r1",
+      "finishedAt": "2026-10-16T19:18:51.712Z",
+      "attempts": 1
+    },
+    {
+      "id": "vientiane-r1",
+      "finishedAt": "2026-10-16T19:18:56.126Z",
+      "attempts": 1
+    },
+    {
+      "id": "vienna-r1",
+      "finishedAt": "2026-10-16T19:19:14.423Z",
+      "attempts": 1
+    },
+    {
+      "id": "aarhus-r1",
+      "finishedAt": "2026-10-16T19:19:44.681Z",
+      "attempts": 1
+    },
+    {
+      "id": "yogyakarta-r1",
+      "finishedAt": "2026-10-16T19:19:58.442Z",
+      "attempts": 1
+    },
+    {
+      "id": "abu-dhabi-r1",
+      "finishedAt": "2026-10-16T19:20:18.780Z",
+      "attempts": 1
+    },
+    {
+      "id": "aix-en-provence-r1",
+      "finishedAt": "2026-10-16T19:20:48.822Z",
+      "attempts": 1
+    },
+    {
+      "id": "alanya-r1",
+      "finishedAt": "2026-10-16T19:21:09.683Z",
+      "attempts": 1
+    },
+    {
+      "id": "albufeira-r1",
+      "finishedAt": "2026-10-16T19:21:11.489Z",
+      "attempts": 1
+    },
+    {
+      "id": "alicante-r1",
+      "finishedAt": "2026-10-16T19:21:51.007Z",
+      "attempts": 1
+    },
+    {
+      "id": "annecy-r1",
+      "finishedAt": "2026-10-16T19:22:00.425Z",
+      "attempts": 1
+    },
+    {
+      "id": "antalya-r1",
+      "finishedAt": "2026-10-16T19:22:25.545Z",
+      "attempts": 1
+    },
+    {
+      "id": "antofagasta-r1",
+      "finishedAt": "2026-10-16T19:22:48.582Z",
+      "attempts": 1
+    },
+    {
+      "id": "aomori-r1",
+      "finishedAt": "2026-10-16T19:22:49.445Z",
+      "attempts": 1
+    },
+    {
+      "id": "arequipa-r1",
+      "finishedAt": "2026-10-16T19:23:21.712Z",
+      "attempts": 1
+    },
+    {
+      "id": "arica-r1",
+      "finishedAt": "2026-10-16T19:23:43.278Z",
+      "attempts": 1
+    },
+    {
+      "id": "arugam-bay-r1",
+      "finishedAt": "2026-10-16T19:23:47.828Z",
+      "attempts": 1
+    },
+    {
+      "id": "arusha-r1",
+      "finishedAt": "2026-10-16T19:24:05.560Z",
+      "attempts": 1
+    },
+    {
+      "id": "atlanta-r1",
+      "finishedAt": "2026-10-16T19:24:30.644Z",
+      "attempts": 1
+    },
+    {
+      "id": "avignon-r1",
+      "finishedAt": "2026-10-16T19:24:35.812Z",
+      "attempts": 1
+    },
+    {
+      "id": "ayutthaya-r1",
+      "finishedAt": "2026-10-16T19:24:55.200Z",
+      "attempts": 1
+    },
+    {
+      "id": "bali-ubud-canggu-r1",
+      "finishedAt": "2026-10-16T19:25:23.461Z",
+      "attempts": 1
+    },
+    {
+      "id": "bali-canggu-r1",
+      "finishedAt": "2026-10-16T19:25:30.722Z",
+      "attempts": 1
+    },
+    {
+      "id": "bangkok-r1",
+      "finishedAt": "2026-10-16T19:25:37.285Z",
+      "attempts": 1
     }
   ],
   "retries": [],
@@ -224,9 +344,23 @@
         "out": "",
         "err": "To https://github.com/mwilczynska/holiday-spend.git\n   b06fe1d4..dada05a2  research/city-cost-accuracy -> research/city-cost-accuracy\n"
       }
+    },
+    {
+      "at": "2026-10-16T19:18:13.666Z",
+      "answered": 50,
+      "commit": {
+        "code": 0,
+        "out": "[research/city-cost-accuracy 5e542ca9] Luna lane: 50/333 answered\n 49 files changed, 761 insertions(+), 2 deletions(-)\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/kyoto-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/kyoto-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/lima-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/lima-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/lisbon-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/lisbon-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/london-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/london-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/los-angeles-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/los-angeles-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/madrid-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/madrid-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/manila-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/manila-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/marrakech-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/marrakech-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/melbourne-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/melbourne-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/mumbai-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/mumbai-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/nara-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/nara-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/nha-trang-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/nha-trang-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/penang-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/penang-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/phnom-penh-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/phnom-penh-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/phuket-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/phuket-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/porto-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/porto-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/reykjavik-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/reykjavik-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/rio-de-janeiro-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/rio-de-janeiro-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/rome-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/rome-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/santiago-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/santiago-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/siem-reap-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/siem-reap-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/sydney-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/sydney-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/taipei-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/taipei-r1/run.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/tbilisi-r1/response.json\n create mode 100644 research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/tasks/tbilisi-r1/run.json\n",
+        "err": ""
+      },
+      "push": {
+        "code": 0,
+        "out": "",
+        "err": "To https://github.com/mwilczynska/holiday-spend.git\n   dada05a2..5e542ca9  research/city-cost-accuracy -> research/city-cost-accuracy\n"
+      }
     }
   ],
   "stop": null,
-  "updatedAt": "2026-10-16T19:18:12.735Z",
+  "updatedAt": "2026-10-16T19:25:37.304Z",
   "active": []
 }

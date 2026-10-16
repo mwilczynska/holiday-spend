@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Recent city-level aggregates support the meal, coffee, and beer estimates. Cocktail and wine prices are estimated relative to local beer; accommodation estimates are holistic and less certain.",
+  "comparable_city_reasoning": "Food estimates use Vientiane city-level price aggregates. Accommodation reflects a budget Southeast Asian capital-city guesthouse and hostel market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.4,
+    "coffee": 1.75,
+    "inexp_meal_1p": 2.55,
+    "midrange_meal_2p": 18.5,
+    "cocktail": 3.5,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 7.5,
+    "hostel_private_2p": 20.0,
+    "hotel_1star_2p": 24.0,
+    "hotel_3star_2p": 50.0
+  }
+}

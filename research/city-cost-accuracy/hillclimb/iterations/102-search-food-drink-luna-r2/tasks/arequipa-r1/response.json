@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors follow aggregated Arequipa price indexes around the July 2026 window, with approximate PEN-to-USD translation. Cocktail is estimated at about 3.7 times local draft beer and wine at about 2.1 times; accommodation anchors are holistic estimates.",
+  "comparable_city_reasoning": "Food and drink use Arequipa-specific price aggregates. Accommodation reflects a regional Peruvian tourist hub, broadly comparable to Cusco but with less peak-driven demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.15,
+    "coffee": 2.45,
+    "inexp_meal_1p": 3.55,
+    "midrange_meal_2p": 28.0,
+    "cocktail": 8.0,
+    "wine_glass": 4.6,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 28.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 60.0
+  }
+}

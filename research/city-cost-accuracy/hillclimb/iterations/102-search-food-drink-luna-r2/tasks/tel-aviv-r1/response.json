@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use Tel Aviv-Yafo aggregate prices updated in May 2026. Cocktail is estimated from a small October price sample; wine is estimated relative to local beer. Accommodation is a holistic July seasonal estimate and is less certain.",
+  "comparable_city_reasoning": "No external comparable city used; food anchors use Tel Aviv-Yafo prices, and accommodation reflects a high-demand Mediterranean coastal city in July.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.5,
+    "coffee": 5.5,
+    "inexp_meal_1p": 26,
+    "midrange_meal_2p": 130,
+    "cocktail": 18,
+    "wine_glass": 14,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 235
+  }
+}
