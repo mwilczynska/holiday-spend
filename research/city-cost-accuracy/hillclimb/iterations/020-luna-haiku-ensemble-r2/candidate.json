@@ -1,0 +1,3 @@
+{ "id": "020-luna-haiku-ensemble-r2", "parent": "101-v11-luna-r2", "family": "ensemble",
+  "hypothesis": "Two-model ensemble: per-anchor geometric mean of Luna (101) and Haiku-high (014) answers for the same city. Different models' errors are partly independent. Zero-call replay; raw form.",
+  "replayFrom": "101-v11-luna-r2", "transform": "transform.mjs", "lane": "gpt-6-luna/max x claude-haiku-5-5/high", "repeats": 1, "split": "dev" }

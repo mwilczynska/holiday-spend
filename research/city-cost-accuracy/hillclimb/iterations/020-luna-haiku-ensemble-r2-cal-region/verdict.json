@@ -1,0 +1,33 @@
+{
+  "iteration": "020-luna-haiku-ensemble-r2-cal-region",
+  "against": "101-v11-luna-r2-cal-region",
+  "verdict": "reject",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 333,
+    "meanImprovement": 0.005654123983117463,
+    "lower95": -0.0005305412102222713,
+    "upper95": 0.01162008060810298,
+    "wins": 186,
+    "losses": 147
+  },
+  "baseLoss": 0.20770830576470148,
+  "candidateLoss": 0.20205418178158407,
+  "anchorRegressions": [],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "hostel_private_2p": -0.014965225475055077,
+    "inexp_meal_1p": 0.0034849186711466695,
+    "midrange_meal_2p": 0.00036596928022980535,
+    "beer": -0.0049407185269154386,
+    "coffee": -0.002962440174452491,
+    "hostel_dorm_1p": -0.014934518312630235,
+    "hotel_1star_2p": -0.012803940794070018,
+    "hotel_3star_2p": -0.009680443198774619
+  }
+}

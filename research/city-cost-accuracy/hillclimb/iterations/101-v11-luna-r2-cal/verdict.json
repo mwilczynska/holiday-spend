@@ -1,0 +1,33 @@
+{
+  "iteration": "101-v11-luna-r2-cal",
+  "against": "101-v11-luna-r2",
+  "verdict": "accept",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 333,
+    "meanImprovement": 0.0514870733730435,
+    "lower95": 0.039219495272014,
+    "upper95": 0.06408972915447932,
+    "wins": 236,
+    "losses": 97
+  },
+  "baseLoss": 0.2878430193159483,
+  "candidateLoss": 0.23635594594290457,
+  "anchorRegressions": [],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "hostel_private_2p": -0.28185467699594724,
+    "inexp_meal_1p": -0.013632149501958624,
+    "midrange_meal_2p": -0.018095344373192074,
+    "beer": -0.012820037435842702,
+    "coffee": -0.008036425730844177,
+    "hostel_dorm_1p": -0.20407242377453075,
+    "hotel_1star_2p": -0.046620263004134854,
+    "hotel_3star_2p": -0.012455280888469422
+  }
+}

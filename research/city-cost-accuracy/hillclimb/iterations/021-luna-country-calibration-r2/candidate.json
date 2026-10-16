@@ -1,0 +1,3 @@
+{ "id": "021-luna-country-calibration-r2", "parent": "101-v11-luna-r2-cal-region", "family": "calibration",
+  "hypothesis": "017's country-in-region correction (k = 3) applied to the production model's answers (Luna, 101). Zero-call replay.",
+  "replayFrom": "101-v11-luna-r2", "transform": "transform.mjs", "lane": "gpt-6-luna/max (Codex subagent)", "repeats": 1, "split": "dev" }

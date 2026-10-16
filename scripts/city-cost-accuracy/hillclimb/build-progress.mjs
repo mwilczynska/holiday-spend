@@ -31,6 +31,9 @@ const E = [
   ['R2', '016-accommodation-definitions-r2-cal-region', '016-accommodation-definitions-r2', 'Accommodation definitions', 'prompt'],
   ['R2', '017-country-calibration-r2', null, 'Correction per country, shrunk to region', 'calibration'],
   ['R2', '019-search-food-drink-r2-cal-region', '019-search-food-drink-r2', 'Web search for food and drink only', 'prompt'],
+  ['R2', '101-v11-luna-r2-cal-region', '101-v11-luna-r2', 'Production model (GPT-6 Luna) + region correction', 'model'],
+  ['R2', '020-luna-haiku-ensemble-r2-cal-region', '020-luna-haiku-ensemble-r2', 'Luna and Haiku averaged', 'model'],
+  ['R2', '021-luna-country-calibration-r2', null, 'Luna + correction per country', 'calibration'],
 ];
 
 const it = id => path.join(hcRoot, 'iterations', id);
