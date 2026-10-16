@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates for July 2026. Restaurant anchors are more certain than lodging; Tampa's summer hotel prices and limited hostel supply add uncertainty. Cocktail and wine estimates use typical bar and restaurant premiums over domestic draft beer.",
+  "comparable_city_reasoning": "Estimated against Florida Sun Belt metros such as Orlando and Jacksonville, allowing for Tampa's tourism demand and generally lower costs than Miami.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.5,
+    "coffee": 5.25,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 80,
+    "cocktail": 14.5,
+    "wine_glass": 12.5,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 190
+  }
+}
