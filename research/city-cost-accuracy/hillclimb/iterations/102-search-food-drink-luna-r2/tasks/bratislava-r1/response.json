@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current Bratislava cost-of-living aggregates as evidence for the July 2026 window. Cocktail is estimated at about twice the draft-beer price; wine uses a local glass-price relationship of roughly 1.5–2 times beer. Accommodation is a holistic summer estimate and is less certain.",
+  "comparable_city_reasoning": "No proxy city was needed for food prices; accommodation reflects Bratislava as a compact Central European capital with summer tourism.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.45,
+    "coffee": 3.67,
+    "inexp_meal_1p": 11.5,
+    "midrange_meal_2p": 69.0,
+    "cocktail": 6.9,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 30.0,
+    "hostel_private_2p": 65.0,
+    "hotel_1star_2p": 80.0,
+    "hotel_3star_2p": 130.0
+  }
+}

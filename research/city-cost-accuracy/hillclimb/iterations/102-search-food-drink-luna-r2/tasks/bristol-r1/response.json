@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Bristol aggregate benchmarks support meal, coffee, and beer estimates; the cocktail uses an urban average, while wine is estimated relative to local beer. Accommodation is a holistic July estimate and more uncertain because of seasonal and event-related variation.",
+  "comparable_city_reasoning": "Food and drink use Bristol-specific aggregate benchmarks; accommodation is estimated for a popular UK regional city with summer visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.98,
+    "coffee": 5.2,
+    "inexp_meal_1p": 19.95,
+    "midrange_meal_2p": 106.4,
+    "cocktail": 14.63,
+    "wine_glass": 10.64,
+    "hostel_dorm_1p": 43,
+    "hostel_private_2p": 100,
+    "hotel_1star_2p": 115,
+    "hotel_3star_2p": 180
+  }
+}

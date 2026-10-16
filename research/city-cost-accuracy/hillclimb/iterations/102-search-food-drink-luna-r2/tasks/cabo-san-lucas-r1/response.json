@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent city price aggregates support the meal, coffee, and beer estimates, though the drinks data is thinner. Cocktail is based on a sparse local price estimate; wine is estimated relative to beer. Accommodation anchors are holistic seasonal estimates, and the MXN-to-USD conversion is approximate.",
+  "comparable_city_reasoning": "No proxy city used. Food and drink estimates use Cabo San Lucas price data; accommodation estimates reflect its resort market and seasonal variation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 10.5,
+    "midrange_meal_2p": 50.0,
+    "cocktail": 9.5,
+    "wine_glass": 7.0,
+    "hostel_dorm_1p": 25.0,
+    "hostel_private_2p": 60.0,
+    "hotel_1star_2p": 85.0,
+    "hotel_3star_2p": 170.0
+  }
+}

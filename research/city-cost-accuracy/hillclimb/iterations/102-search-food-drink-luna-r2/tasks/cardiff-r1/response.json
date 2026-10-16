@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Cardiff price indexes from May and July 2026; the cocktail estimate comes from sparse Expatistan data. Wine is estimated from its local relationship to beer. Accommodation is holistic, with no live listings consulted.",
+  "comparable_city_reasoning": "Food and drink use Cardiff-specific price references. Accommodation uses a bounded estimate for a mid-sized UK city with summer tourism and event-driven demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.32,
+    "coffee": 4.60,
+    "inexp_meal_1p": 19.95,
+    "midrange_meal_2p": 82.48,
+    "cocktail": 11.97,
+    "wine_glass": 7.32,
+    "hostel_dorm_1p": 42.57,
+    "hostel_private_2p": 93.12,
+    "hotel_1star_2p": 113.08,
+    "hotel_3star_2p": 172.94
+  }
+}

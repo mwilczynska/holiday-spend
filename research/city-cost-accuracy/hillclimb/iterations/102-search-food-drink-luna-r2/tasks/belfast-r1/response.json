@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use aggregated Belfast cost-of-living prices. Cocktail and wine are less certain and estimated relative to local draft beer; accommodation is a holistic estimate. The latest RBA observation I could verify was dated 2026-09-11.",
+  "comparable_city_reasoning": "Food prices use Belfast-specific benchmarks; accommodation is estimated for a mid-sized UK city with seasonal visitor demand.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.1,
+    "coffee": 4.9,
+    "inexp_meal_1p": 24.3,
+    "midrange_meal_2p": 94.5,
+    "cocktail": 14.6,
+    "wine_glass": 10.5,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 160
+  }
+}

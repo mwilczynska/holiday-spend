@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Boston aggregate prices updated June 5, 2026, near the July pricing window. Cocktail and wine are estimates based on the $8 draft beer price, at about 2x and 1.6x; lodging estimates are broad and especially uncertain during Boston’s summer season.",
+  "comparable_city_reasoning": "Food anchors use Boston-specific aggregated prices; accommodation estimates reflect Boston’s high-cost city and summer travel market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.04,
+    "inexp_meal_1p": 30.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 16.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 70.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 310.00
+  }
+}

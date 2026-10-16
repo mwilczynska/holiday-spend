@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates follow recent Bergen price indexes, which are collaborative and uneven; cocktail pricing is sparse, and the wine-glass estimate is inferred from local beer pricing. July lodging estimates are holistic and especially uncertain because they are not based on booking listings.",
+  "comparable_city_reasoning": "Food and drink are based on Bergen's local price context. Lodging is a holistic estimate for a high-cost western Norwegian city with summer tourism, broadly comparable in cost context to Trondheim or Stavanger.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.5,
+    "coffee": 5.5,
+    "inexp_meal_1p": 22,
+    "midrange_meal_2p": 125,
+    "cocktail": 14.5,
+    "wine_glass": 15,
+    "hostel_dorm_1p": 60,
+    "hostel_private_2p": 155,
+    "hotel_1star_2p": 165,
+    "hotel_3star_2p": 235
+  }
+}

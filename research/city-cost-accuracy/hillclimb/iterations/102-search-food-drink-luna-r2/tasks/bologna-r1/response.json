@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors align with Bologna citywide price averages. Cocktail prices are less certain; the wine-glass estimate is set below the local draft-beer price. Lodging anchors are holistic July estimates with substantial seasonal variation.",
+  "comparable_city_reasoning": "Food and drink estimates use Bologna price signals; lodging is estimated for a northern Italian university and tourism hub, with broad regional city comparables.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 2.2,
+    "inexp_meal_1p": 22.5,
+    "midrange_meal_2p": 90.0,
+    "cocktail": 9.0,
+    "wine_glass": 5.6,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 110.0,
+    "hotel_1star_2p": 145.0,
+    "hotel_3star_2p": 220.0
+  }
+}

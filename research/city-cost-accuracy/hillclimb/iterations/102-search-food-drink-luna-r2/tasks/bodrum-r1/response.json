@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Bodrum aggregate price benchmarks adjusted to the July 2026 window. Cocktail and wine estimates are based on their likely local price relationship to draft beer. Accommodation is a holistic peak-season estimate and is less certain.",
+  "comparable_city_reasoning": "No comparable city used; Bodrum price aggregates anchor food and drink where available, while accommodation reflects its Aegean resort setting in July.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.6,
+    "coffee": 3.2,
+    "inexp_meal_1p": 9.5,
+    "midrange_meal_2p": 52.0,
+    "cocktail": 8.0,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 30.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 90.0,
+    "hotel_3star_2p": 180.0
+  }
+}

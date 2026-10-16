@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Catania cost-of-living indexes support the meal and coffee estimates. Beer prices vary; cocktail data are sparse and the wine estimate is inferred relative to local beer pricing. Accommodation is a holistic July high-season estimate.",
+  "comparable_city_reasoning": "Food and drink estimates use Catania price indexes. Accommodation is benchmarked qualitatively against southern Italian regional cities with a July tourism premium.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 2.25,
+    "inexp_meal_1p": 16.75,
+    "midrange_meal_2p": 56.0,
+    "cocktail": 7.75,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 33.0,
+    "hostel_private_2p": 90.0,
+    "hotel_1star_2p": 80.0,
+    "hotel_3star_2p": 135.0
+  }
+}

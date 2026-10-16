@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors follow current Cagliari aggregated prices. The cocktail estimate uses a sparse city price report, and wine is estimated near local draft-beer pricing. July accommodation anchors are holistic peak-season estimates and are less certain.",
+  "comparable_city_reasoning": "Restaurant anchors use Cagliari city-level aggregates; accommodation estimates use a broad southern Italian coastal-city summer basis.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.8,
+    "coffee": 2.0,
+    "inexp_meal_1p": 23.0,
+    "midrange_meal_2p": 87.0,
+    "cocktail": 9.2,
+    "wine_glass": 5.2,
+    "hostel_dorm_1p": 50.0,
+    "hostel_private_2p": 120.0,
+    "hotel_1star_2p": 140.0,
+    "hotel_3star_2p": 220.0
+  }
+}

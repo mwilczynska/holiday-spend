@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant price estimates are supported by 2026 city-level data, though mid-range meal figures vary. Cocktail and wine prices are estimated from their local price relationship to draft beer. Accommodation figures are holistic July high-season estimates, not live listing prices.",
+  "comparable_city_reasoning": "No single comparable city used; restaurant estimates are Bruges-specific, while accommodation estimates reflect Bruges's high-season tourism profile and similar historic tourist cities in Flanders.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.25,
+    "coffee": 4.35,
+    "inexp_meal_1p": 22.5,
+    "midrange_meal_2p": 90,
+    "cocktail": 11,
+    "wine_glass": 7,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 125,
+    "hotel_1star_2p": 165,
+    "hotel_3star_2p": 245
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "May 2026 Benidorm price-index averages support the meal, cappuccino, and draft-beer estimates. Cocktail and wine estimates use local bar-price ranges in relation to the €3 draft-beer benchmark, rather than robust aggregated data; USD equivalents are approximate. July accommodation estimates are holistic high-season estimates, with hostel inventory especially uncertain.",
+  "comparable_city_reasoning": "No proxy city used; food and drink estimates use Benidorm price-index entries and local 2026 bar-price ranges.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.3,
+    "coffee": 2.31,
+    "inexp_meal_1p": 16.5,
+    "midrange_meal_2p": 49.5,
+    "cocktail": 10.45,
+    "wine_glass": 3.58,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 170
+  }
+}

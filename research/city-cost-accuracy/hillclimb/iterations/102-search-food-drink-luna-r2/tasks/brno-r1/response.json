@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use aggregated Brno prices near the July 2026 window. Accommodation is a holistic seasonal estimate. Wine uses local average-price guidance; cocktail is estimated at roughly 2.5–3 times the draft-beer price.",
+  "comparable_city_reasoning": "Accommodation is estimated for a mid-sized Central European university city, below Prague and Vienna price levels; food anchors are Brno-specific.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 9.0,
+    "midrange_meal_2p": 45.0,
+    "cocktail": 7.0,
+    "wine_glass": 3.75,
+    "hostel_dorm_1p": 27.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 75.0,
+    "hotel_3star_2p": 125.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use Cambridge cost-of-living aggregates, whose samples are crowdsourced and sparse. Cocktail and wine prices are bounded using local beer prices. Accommodation values are holistic July estimates and more uncertain because of seasonal demand.",
+  "comparable_city_reasoning": "No separate comparable city was used; local Cambridge aggregates anchor food and drink, while lodging reflects a high-demand UK university and tourist destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.8,
+    "coffee": 4.7,
+    "inexp_meal_1p": 23.5,
+    "midrange_meal_2p": 94,
+    "cocktail": 10.75,
+    "wine_glass": 8.25,
+    "hostel_dorm_1p": 52,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 140,
+    "hotel_3star_2p": 190
+  }
+}
