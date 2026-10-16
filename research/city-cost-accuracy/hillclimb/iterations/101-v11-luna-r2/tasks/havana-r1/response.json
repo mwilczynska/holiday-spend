@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimate with limited reliability because Cuba's prices and currency conditions are volatile. Registered lodging availability and prices are especially uncertain. Cocktail and wine estimates use a tourist-facing premium over domestic beer.",
+  "comparable_city_reasoning": "Broadly based on Caribbean and Latin American tourist-city prices, adjusted upward for Havana's constrained lodging supply and imported goods; local economic conditions make close comparisons weak.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 3,
+    "inexp_meal_1p": 9,
+    "midrange_meal_2p": 48,
+    "cocktail": 7,
+    "wine_glass": 8,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 50,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 120
+  }
+}

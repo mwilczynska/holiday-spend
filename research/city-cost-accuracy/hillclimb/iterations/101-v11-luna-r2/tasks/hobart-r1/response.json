@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates based on Australian city pricing. July seasonality and Hobart’s limited accommodation supply make room prices uncertain; cocktail and wine estimates follow their local price relationship to beer.",
+  "comparable_city_reasoning": "Used a small Australian capital city cost profile, with Melbourne as a broad urban food and drink reference and an adjustment for Hobart’s smaller market and tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.0,
+    "coffee": 4.2,
+    "inexp_meal_1p": 18.0,
+    "midrange_meal_2p": 85.0,
+    "cocktail": 16.0,
+    "wine_glass": 11.5,
+    "hostel_dorm_1p": 38.0,
+    "hostel_private_2p": 100.0,
+    "hotel_1star_2p": 130.0,
+    "hotel_3star_2p": 190.0
+  }
+}

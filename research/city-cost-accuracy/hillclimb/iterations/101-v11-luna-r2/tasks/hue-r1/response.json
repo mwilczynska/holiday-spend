@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for July 2026. Local meals and beer are more predictable than hotel category pricing; July demand and tourist-facing venues may shift rates. Cocktail and wine estimates use their typical price premium over domestic draft beer.",
+  "comparable_city_reasoning": "Based on general knowledge of mid-sized central Vietnamese destinations, with Hue below the more tourist-priced Hoi An and Da Nang for lodging and dining.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.8,
+    "coffee": 1.8,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 22,
+    "cocktail": 5.5,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 6,
+    "hostel_private_2p": 18,
+    "hotel_1star_2p": 20,
+    "hotel_3star_2p": 40
+  }
+}
