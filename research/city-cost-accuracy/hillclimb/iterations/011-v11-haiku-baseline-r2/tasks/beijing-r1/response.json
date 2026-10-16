@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Beijing prices; no live listings or booking pages were checked. Restaurant and coffee anchors are moderately reliable. Hostel and hotel rates vary by district and season (July is peak), so they are least certain. Cocktail and wine were not sourced directly and were set using the local price relationship to draft beer (cocktail about 4x beer, wine about 3x beer). The FX value comes from a search-result summary of the RBA exchange-rates table; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Regional basis: mainland China tier-1 city price levels within East Asia, drawn from general knowledge rather than a single named comparator city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 4.20,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 46.00,
+    "hotel_3star_2p": 85.00
+  }
+}

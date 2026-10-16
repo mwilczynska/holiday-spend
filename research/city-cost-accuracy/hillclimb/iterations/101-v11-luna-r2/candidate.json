@@ -1,0 +1,14 @@
+{
+  "id": "101-v11-luna-r2",
+  "hypothesis": "Lane copy of 011-v11-haiku-baseline-r2 answered by gpt-6-luna/max (Codex subagent, app system prompt, web search as the prompt allows). Identical frozen prompts; only the answering model differs.",
+  "parent": null,
+  "family": "baseline",
+  "promptTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "gpt-6-luna/max (Codex subagent, app system prompt, web search as the prompt allows)",
+  "repeats": 1,
+  "split": "dev",
+  "laneOf": "011-v11-haiku-baseline-r2"
+}

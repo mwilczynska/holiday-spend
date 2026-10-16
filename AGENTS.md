@@ -389,6 +389,9 @@ defined in `.github/workflows/production-checks.yml`; local Windows checks do no
 
 ## City-cost accuracy research
 
+**Codex sessions: read `CODEX-HANDOFF.md` first.** Codex collects only (answers frozen tasks, runs the existing
+collectors and mechanical scoring) and does not design, create, change or judge anything.
+
 **Active: the hill-climb program** (`research/city-cost-accuracy/hillclimb/PROGRAM.md`, run with `LOOP.md`).
 It replaces the designer-led contract below for new work. A versioned reference panel (Numbeo food/drink,
 Hostelworld and BudgetYourTrip/KAYAK accommodation, all parsed deterministically) is built once and reused. Each

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Norway's high price level; no live listings or booking pages were consulted, and USD values are approximate conversions rather than live quotes. Restaurant and cafe anchors are moderately certain; July accommodation is least certain because peak and cruise-season rates vary widely. Cocktail and wine were cross-checked against beer (cocktail about 1.6x beer, wine glass about 1.3x beer) because direct knowledge is weaker. The FX observation came from web search summaries citing the RBA exchange-rates page; the RBA table itself was not opened directly.",
+  "comparable_city_reasoning": "Anchored to Norway's general price level, with Oslo and Stavanger as the closest Norwegian comparators; Bergen restaurant prices are set slightly below Oslo. July hotel and hostel rates are benchmarked to peak-summer rates in comparable Scandinavian and Western European heritage port cities.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.00,
+    "coffee": 6.00,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 16.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 240.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge only; no live booking pages, menus, or current listings were inspected, and no web search was used for city prices. Beer and restaurant anchors are the best grounded. Hotel anchors assume Cebu City's IT Park/Lahug-type districts rather than the Mactan resort strip, are estimated to include taxes and mandatory fees, and reflect July rainy-season softness only modestly. Cocktail and wine are set from the beer anchor (about 2.9x and 3.25x beer) because direct knowledge is weaker. The FX observation came from search results restricted to rba.gov.au; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No single comparable city was used numerically. Anchors reflect general knowledge of Philippine regional-city prices, benchmarked to Cebu City's central tourist districts, with cocktail and wine tied to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.60,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 5.80,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 34.00,
+    "hotel_3star_2p": 76.00
+  }
+}

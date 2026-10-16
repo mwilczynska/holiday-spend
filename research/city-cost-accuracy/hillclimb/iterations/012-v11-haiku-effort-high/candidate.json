@@ -1,0 +1,16 @@
+{
+  "id": "012-v11-haiku-effort-high",
+  "hypothesis": "Cost test: identical v1.1 prompts with reasoning effort high instead of max (about 70k output tokens per task at max). If accuracy after calibration is equivalent, later research runs and production calls get several times cheaper.",
+  "parent": "001-v11-haiku-baseline",
+  "family": "cost",
+  "promptTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "claude-haiku-5-5/high (claude -p, app system prompt, WebSearch only)",
+  "repeats": 1,
+  "split": "dev",
+  "laneOf": "001-v11-haiku-baseline",
+  "cliModel": "claude-haiku-5-5",
+  "effort": "high"
+}

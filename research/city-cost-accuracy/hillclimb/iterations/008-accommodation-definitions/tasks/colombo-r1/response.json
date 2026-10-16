@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live menus, listings, or booking pages were checked. Restaurant and cafe anchors are the most reliable; hostel and budget-hotel anchors vary widely by area. Cocktail and wine anchors use the local beer relationship (about 2.5x and 2.2x the beer anchor) because direct bar-price knowledge is limited. July is monsoon season, but Colombo city hotels are mostly business-driven, so no off-season discount was applied. Accommodation assumes usual service charges and taxes are included. The FX figure is from RBA-domain search results (two searches agreed); the RBA page itself was not opened.",
+  "comparable_city_reasoning": "South Asian tourist-city basis: budget meals and dorm beds benchmarked against Kathmandu-level pricing, mid-range hotel rooms against Indian metro tourist hotels, then adjusted upward for Colombo's higher alcohol taxes and hotel service and tax layers. No specific listings or city-price pages were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 33.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 95.00
+  }
+}

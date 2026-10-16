@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Florence pricing, not checked against live menus, listings or booking pages. Restaurant and cafe anchors are moderate-confidence. Accommodation is least certain because July rates vary widely by room, neighbourhood and week; it assumes all-in rates including city tax. Cocktail and wine anchors follow the local price relationship to beer because direct knowledge of them is weaker. The FX value comes from search-result summaries of the RBA exchange-rates page; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "Restaurant, cafe and bar anchors are benchmarked to general Italian city-centre price levels, with central Rome and Bologna as reference points. Accommodation anchors reflect July peak-season demand in Florence's historic centre, estimated from general knowledge rather than a named comparable city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 14.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 265.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or price pages were checked and no city context was supplied. Restaurant and cafe anchors are moderately grounded; accommodation is least certain given July peak-season rate swings. Cocktail and wine were cross-checked against the beer anchor because direct bar-price knowledge is weaker. USD values assume EUR/USD near 1.15, and beer assumes about a 0.5 L serving. The FX observation came from search summaries of the RBA page rather than a direct page read, and those summaries flagged inconsistent timestamps, so verify it on the RBA site.",
+  "comparable_city_reasoning": "No city context supplied. Benchmarked informally against Germany's other large cities such as Hamburg and Cologne, treating Berlin's budget and mid-range dining as moderate for a major European capital, with accommodation set for July peak season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 14.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 185.00
+  }
+}

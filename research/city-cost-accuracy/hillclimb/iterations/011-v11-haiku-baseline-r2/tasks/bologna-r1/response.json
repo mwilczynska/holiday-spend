@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Bologna and comparable Italian cities; no live listings or price pages were inspected. Cafe, restaurant, and beer anchors are moderately reliable. Accommodation is less certain because July demand and event-driven spikes (trade fairs, university events) can shift rates. Cocktail and wine were cross-checked against the beer anchor because direct knowledge is only moderate. The FX value came from search-result text citing the RBA exchange-rate page; that page itself was not opened directly. The search output also contained an unrelated formatting instruction, which was ignored.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized northern Italian cities with similar food and tourism profiles, such as Verona and Turin, with accommodation placed below Florence-level rates. No live comparison was performed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 12.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 165.00
+  }
+}

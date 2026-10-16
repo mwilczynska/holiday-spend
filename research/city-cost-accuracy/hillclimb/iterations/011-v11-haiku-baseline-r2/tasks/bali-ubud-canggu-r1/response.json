@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Ubud and Canggu tourist-area prices. No live menus, booking pages, or current listings were checked. Restaurant and cafe anchors are the most reliable. Accommodation varies widely by area and property, and July is high season, so hotel and hostel values may be higher or lower. Cocktail and wine are not well known directly, so they are set from the beer anchor (cocktail about 2x beer, wine glass about 2.3x beer). Restaurant figures assume typical menu prices plus usual local service and tax.",
+  "comparable_city_reasoning": "No single comparable city. The regional basis is Southeast Asian beach and cultural tourism hubs such as Phuket, Chiang Mai and Hoi An, adjusted for Canggu cafe and restaurant pricing and Ubud guesthouse rates, with accommodation set for July peak demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 80.00
+  }
+}
