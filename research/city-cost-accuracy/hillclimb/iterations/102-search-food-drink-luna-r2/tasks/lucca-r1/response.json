@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Lucca price indexes provide direct figures for meals, cappuccino and draft beer, but the crowdsourced samples are modest. The cocktail estimate uses a sparse local observation; wine is estimated from its local price relationship to beer. Lodging prices are holistic July high-season estimates, with hostel options especially uncertain.",
+  "comparable_city_reasoning": "Food and drink estimates use Lucca price data directly; lodging reflects a small, popular Tuscan historic city’s July tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.05,
+    "coffee": 1.64,
+    "inexp_meal_1p": 16.82,
+    "midrange_meal_2p": 70.10,
+    "cocktail": 7.85,
+    "wine_glass": 5.61,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 220.00
+  }
+}

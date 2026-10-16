@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Krabi cost-of-living aggregates support the meal, coffee, and beer estimates, though the reported sample is limited. Cocktail and wine prices are estimated from local bar ranges relative to beer. July lodging prices are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "No proxy city used; food and drink estimates use Krabi price aggregates, while lodging reflects general knowledge of a southern Thai beach destination in July.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.88,
+    "coffee": 1.82,
+    "inexp_meal_1p": 3.03,
+    "midrange_meal_2p": 19.22,
+    "cocktail": 6.05,
+    "wine_glass": 6.66,
+    "hostel_dorm_1p": 8.0,
+    "hostel_private_2p": 25.0,
+    "hotel_1star_2p": 28.0,
+    "hotel_3star_2p": 55.0
+  }
+}

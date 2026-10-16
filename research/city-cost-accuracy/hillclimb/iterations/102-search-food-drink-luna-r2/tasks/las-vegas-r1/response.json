@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use aggregated Las Vegas price data around July 2026. Cocktail and wine estimates are based on their local price relationship to draft beer. Accommodation is a holistic estimate and can vary substantially with Strip location, events, and day of week.",
+  "comparable_city_reasoning": "Estimated directly from Las Vegas price data; no comparable city was used. Accommodation reflects the city's visitor and convention demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 6.22,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 15.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 180.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Lausanne cost-of-living entries from around the July 2026 window. Cocktail data is thinner, wine is estimated relative to local beer prices, and accommodation is a broad model estimate.",
+  "comparable_city_reasoning": "Used Lausanne-specific food and drink prices; accommodation reflects general expectations for a high-cost Swiss city in July.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.3,
+    "coffee": 6.1,
+    "inexp_meal_1p": 30.2,
+    "midrange_meal_2p": 117.3,
+    "cocktail": 19.4,
+    "wine_glass": 12.1,
+    "hostel_dorm_1p": 70,
+    "hostel_private_2p": 170,
+    "hotel_1star_2p": 210,
+    "hotel_3star_2p": 300
+  }
+}

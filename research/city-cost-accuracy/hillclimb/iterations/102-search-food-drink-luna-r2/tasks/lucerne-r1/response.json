@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meals, cappuccino and draft beer are based on current Lucerne price aggregates. Wine uses a local restaurant-menu median; the cocktail estimate follows its roughly two-to-one price relationship to draft beer. Accommodation is a holistic July high-season estimate and is less certain.",
+  "comparable_city_reasoning": "Food and drink use Lucerne-specific price benchmarks; accommodation reflects modeled high-season prices in Swiss tourist cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 6,
+    "inexp_meal_1p": 33,
+    "midrange_meal_2p": 121,
+    "cocktail": 18,
+    "wine_glass": 11,
+    "hostel_dorm_1p": 65,
+    "hostel_private_2p": 185,
+    "hotel_1star_2p": 220,
+    "hotel_3star_2p": 350
+  }
+}

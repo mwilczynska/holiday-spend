@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee, and beer reflect city cost-of-living aggregates. Cocktail uses a small-sample city estimate; wine is inferred at roughly 1.5 times the local draft beer price. July accommodation prices are holistic estimates and season-sensitive.",
+  "comparable_city_reasoning": "No direct comparable city used; accommodation estimates reflect Las Palmas as a Spanish Atlantic island destination with year-round tourism and July demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.10,
+    "coffee": 2.55,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 73.00,
+    "cocktail": 11.25,
+    "wine_glass": 4.65,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 135.00
+  }
+}

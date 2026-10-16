@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Maastricht aggregates support the meal and coffee estimates, while beer prices vary. Cocktail data is sparse; the wine glass estimate follows its local price relationship to draft beer. July accommodation figures are broad model estimates and can vary with weekends and events.",
+  "comparable_city_reasoning": "Maastricht-specific aggregate price readings inform food and drink; Dutch university and regional tourism-city norms inform accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.5,
+    "coffee": 4.25,
+    "inexp_meal_1p": 20.5,
+    "midrange_meal_2p": 90,
+    "cocktail": 8,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 130,
+    "hotel_3star_2p": 190
+  }
+}

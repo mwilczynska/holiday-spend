@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant prices are anchored to current Malaga cost-of-living data. Cocktail and wine prices are less certain; they are estimated relative to local draft beer. Accommodation estimates are broad July seasonal estimates, not live listing prices.",
+  "comparable_city_reasoning": "Food and drink estimates use Malaga-specific cost-of-living data. Accommodation is estimated holistically for Malaga’s busy Mediterranean summer season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.4,
+    "coffee": 2.8,
+    "inexp_meal_1p": 16.9,
+    "midrange_meal_2p": 66.5,
+    "cocktail": 11.2,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 190
+  }
+}

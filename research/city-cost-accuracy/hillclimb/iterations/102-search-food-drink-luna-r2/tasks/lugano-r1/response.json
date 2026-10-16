@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Aggregated Lugano price indexes support the meal, coffee, and beer estimates. Cocktail and wine prices are estimated relative to local beer prices; accommodation estimates are less certain and account for summer demand.",
+  "comparable_city_reasoning": "No proxy city used; food and drink estimates draw on Lugano price indexes, with Swiss lakeside summer-tourism context for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.70,
+    "coffee": 4.75,
+    "inexp_meal_1p": 35.00,
+    "midrange_meal_2p": 182.00,
+    "cocktail": 17.00,
+    "wine_glass": 10.90,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 165.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 270.00
+  }
+}

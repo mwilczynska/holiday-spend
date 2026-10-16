@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Recent Leh food references support meal and coffee estimates, but price coverage is limited. Cocktail and wine are estimated relative to local bar beer prices. July accommodation estimates are broad and seasonal; no current listings were checked.",
+  "comparable_city_reasoning": "Based on Leh and Ladakh food-cost references, with India-wide price data as a secondary check. Leh’s remote, seasonal tourism market supports higher restaurant and accommodation estimates than a general India baseline.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 16,
+    "cocktail": 6.5,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 32,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 75
+  }
+}

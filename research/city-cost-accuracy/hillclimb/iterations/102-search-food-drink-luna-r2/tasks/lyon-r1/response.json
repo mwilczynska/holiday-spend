@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are supported by Lyon cost-of-living indexes; beer prices vary across sources. Cocktail uses a recent city price index, wine is estimated relative to local draft beer, and accommodation is a holistic July-season estimate.",
+  "comparable_city_reasoning": "No external comparable city used; food and drink estimates use Lyon-specific price indexes, while accommodation reflects typical summer demand in a major French regional city.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.25,
+    "coffee": 4.19,
+    "inexp_meal_1p": 16.82,
+    "midrange_meal_2p": 67.26,
+    "cocktail": 13.45,
+    "wine_glass": 6.17,
+    "hostel_dorm_1p": 40.36,
+    "hostel_private_2p": 95.29,
+    "hotel_1star_2p": 123.31,
+    "hotel_3star_2p": 173.76
+  }
+}
