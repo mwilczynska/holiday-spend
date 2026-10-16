@@ -3847,3 +3847,16 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - Lane now has 85/333 saved responses (248 pending). No worker failures, retries or substitutions in this continuation.
   No ingest, scoring, sealed-test reads, frozen-file changes, other jobs or production writes ran. Next bristol-r1;
   collection continues after this checkpoint.
+
+# 16 October 2026 UTC — Owner-requested Job A stop after completed workers
+
+- After pushing the 85/333 checkpoint as 5bc96276, collected four further frozen answers: bristol-r1, brno-r1,
+  bruges-r1 and byron-bay-r1. Each used a fresh GPT-6 Luna/Max subagent and was saved verbatim with run metadata.
+- Owner requested stopping after active agents completed, writing results, committing and pushing. Agent inventory
+  confirms no running subagents. Cabo San Lucas was read for dispatch but no worker was spawned for it.
+- Continuation total: 29 new responses, annecy-r1 through byron-bay-r1; lane total 89/333 saved (244 pending).
+  No failed workers, retries, substitutions or answer edits occurred in this continuation. All 89 response/run pairs
+  parse as JSON and record the required GPT-6 Luna/Max provenance. Search counts remain unknown (null).
+- Next queued task: cabo-san-lucas-r1. The prior Alicante transcription deviation remains recorded and unchanged.
+  No ingest, scoring, accuracy assessment, sealed-test read, frozen-file edit, other job or production write ran.
+- Validation: docs:check-memory and final diff whitespace checks pass.

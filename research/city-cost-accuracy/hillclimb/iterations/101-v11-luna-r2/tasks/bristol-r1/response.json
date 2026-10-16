@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for July; accommodation varies with summer demand and booking timing. Cocktail and wine anchors are estimated from typical local pub and restaurant prices relative to beer.",
+  "comparable_city_reasoning": "Estimated from UK regional-city prices, allowing for Bristol's visitor demand without treating it as a London-priced market.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.5,
+    "coffee": 4.65,
+    "inexp_meal_1p": 21.5,
+    "midrange_meal_2p": 88,
+    "cocktail": 14.5,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 108,
+    "hotel_1star_2p": 125,
+    "hotel_3star_2p": 185
+  }
+}

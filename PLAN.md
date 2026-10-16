@@ -41,12 +41,13 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
 - [ ] Luna-lane confirmation before any production proposal.
 
-**Job A continuation checkpoint — 16 October 2026 UTC.** Owner requested continuation after the recorded
-Alicante transcription deviation. Added 25 responses, annecy-r1 through brighton-r1, using fresh GPT-6 Luna/Max
-subagents. Frozen 101-v11-luna-r2 has 85/333 saved responses (248 pending). All response/run pairs parse and
-record the required model and effort. No worker failures or retries in this continuation; no scoring or ingest.
-Alicante's answer and deviation remain preserved for coordinator review. Next queued task: bristol-r1.
-Collection continues after this commit.
+**Job A stopped at owner request — 16 October 2026 UTC.** Added 29 responses in this continuation,
+annecy-r1 through byron-bay-r1, using fresh GPT-6 Luna/Max subagents. Frozen 101-v11-luna-r2 has 89/333
+saved responses (244 pending). All response/run pairs parse and record the required model and effort.
+All dispatched workers completed; no worker failures, retries or substitutions in this continuation.
+No scoring or ingest ran. Alicante's prior answer and dispatch deviation remain preserved for coordinator review.
+Checkpoint 85/333 was pushed as 5bc96276. Next queued task: cabo-san-lucas-r1 (not dispatched).
+The owner requested stopping after active runs completed, writing results, committing and pushing.
 
 **Codex Job A checkpoint — 16 October 2026 UTC.** Added 30 responses, los-angeles-r1 through alicante-r1,
 using fresh GPT-6 Luna/Max subagents. Frozen 101-v11-luna-r2 now has 60/333 responses (273 pending).
@@ -73,7 +74,7 @@ stopped. Its five raw rows are saved as `panel/booking-main-partial-2026-10-16.r
 014-v11-haiku-high-r2                    pending  126 / 333  (repeat-1 pending 126)
 015-spec-definitions-r2                  pending  333 / 333  (repeat-1 pending 333)
 016-accommodation-definitions-r2         pending  333 / 333  (repeat-1 pending 333)
-101-v11-luna-r2                          pending  248 / 333  (repeat-1 pending 248)
+101-v11-luna-r2                          pending  244 / 333  (repeat-1 pending 244)
 ```
 
 **Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108. Hostelworld expansion complete
