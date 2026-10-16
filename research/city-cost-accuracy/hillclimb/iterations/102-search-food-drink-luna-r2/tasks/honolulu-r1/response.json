@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee estimates align with recent Honolulu cost-of-living aggregates. The cocktail estimate comes from a sparse collaborative index; wine is estimated at about 1.2 times the local draft-beer price. Lodging figures are broad July model estimates with substantial seasonal and property variation; no live listings were checked.",
+  "comparable_city_reasoning": "No external comparable city used. Honolulu-specific price aggregates guide food and drink; lodging estimates reflect the city’s island costs and strong tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10,
+    "coffee": 9,
+    "inexp_meal_1p": 25,
+    "midrange_meal_2p": 128,
+    "cocktail": 18,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 165,
+    "hotel_1star_2p": 220,
+    "hotel_3star_2p": 340
+  }
+}

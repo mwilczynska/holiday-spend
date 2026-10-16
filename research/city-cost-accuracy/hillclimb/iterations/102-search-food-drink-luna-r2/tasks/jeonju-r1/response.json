@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Jeonju food prices use a May 2026 cost-of-living aggregate, which reports only five contributors in the past 18 months; the mid-range meal estimate is smoothed toward South Korea typical prices. Cocktail and wine-glass estimates use their price relationship to Jeonju draft beer, informed by Korea-wide drink prices. Accommodation anchors are holistic model estimates, not live listing prices.",
+  "comparable_city_reasoning": "Jeonju-specific food prices are used where available, with South Korea-wide prices as a check. Accommodation is modeled on a mid-sized Korean provincial city with tourism demand around Hanok Village, rather than Seoul-level pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.83,
+    "coffee": 3.67,
+    "inexp_meal_1p": 7.45,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 9.12,
+    "wine_glass": 5.96,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 95.00
+  }
+}

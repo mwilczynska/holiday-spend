@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee, and beer estimates use Hoi An cost-of-living price-index levels, with limited and variable local samples. Cocktail and wine prices are estimated as several times the local draft-beer price. Accommodation figures are holistic estimates, not live listing prices.",
+  "comparable_city_reasoning": "Used Hoi An price data directly for food and drink; no comparable city was substituted. Accommodation estimates reflect Hoi An’s tourist-town context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 1.85,
+    "inexp_meal_1p": 3.0,
+    "midrange_meal_2p": 18.0,
+    "cocktail": 4.5,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 7.0,
+    "hostel_private_2p": 22.0,
+    "hotel_1star_2p": 24.0,
+    "hotel_3star_2p": 50.0
+  }
+}

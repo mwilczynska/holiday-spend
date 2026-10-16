@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use current crowdsourced Inverness prices, but local samples are sparse and mid-range meal estimates vary between snapshots. Wine is estimated from its local price relationship to beer. Accommodation is a holistic July high-season estimate, not based on live booking prices.",
+  "comparable_city_reasoning": "No city proxy used for food and drink; accommodation reflects Inverness as a small Scottish Highlands tourism hub during peak July season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.62,
+    "coffee": 4.01,
+    "inexp_meal_1p": 19.86,
+    "midrange_meal_2p": 79.46,
+    "cocktail": 10.59,
+    "wine_glass": 9.93,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 250.00
+  }
+}

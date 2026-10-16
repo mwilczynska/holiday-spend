@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent Taiwan-wide aggregates and limited Kenting price references. Accommodation is a holistic July estimate with uncertainty from seasonal and weekend demand. Cocktail and wine prices are estimated as multiples of local draft beer rather than reliable citywide averages.",
+  "comparable_city_reasoning": "Kenting-specific price data are sparse, so food estimates use Taiwan-wide typical prices adjusted for a coastal resort town; accommodation is estimated holistically for summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 2.9,
+    "inexp_meal_1p": 4.5,
+    "midrange_meal_2p": 29,
+    "cocktail": 8,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 58,
+    "hotel_3star_2p": 125
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent Kandy cost indexes, some updated after July 2026, so they are current proxies rather than a measured July snapshot. Cocktail pricing is supported by a current index; wine by the glass is estimated from its local price relationship to beer. Accommodation is a holistic estimate with greater uncertainty, not based on live booking listings.",
+  "comparable_city_reasoning": "No external city comparator used: food anchors use Kandy price data, while accommodation reflects general patterns for hostels and guesthouses in inland Sri Lankan tourist towns.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.83,
+    "coffee": 1.97,
+    "inexp_meal_1p": 2.74,
+    "midrange_meal_2p": 13.07,
+    "cocktail": 5.70,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 65.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Hualien price aggregates broadly support the meal and cappuccino estimates, while beer varies by venue and serving. Cocktail and wine are estimated relative to local beer. Accommodation is a broad July estimate based on general knowledge, not live listings.",
+  "comparable_city_reasoning": "Based on Hualien city price aggregates, cross-checked with Taiwan-wide cost-of-living prices; accommodation reflects a smaller regional tourist city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.4,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.6,
+    "midrange_meal_2p": 23,
+    "cocktail": 8,
+    "wine_glass": 7,
+    "hostel_dorm_1p": 17,
+    "hostel_private_2p": 44,
+    "hotel_1star_2p": 58,
+    "hotel_3star_2p": 98
+  }
+}

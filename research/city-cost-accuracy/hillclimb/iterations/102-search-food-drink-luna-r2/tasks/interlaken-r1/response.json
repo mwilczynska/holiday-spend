@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Interlaken price aggregates support the meal, coffee and beer estimates, but report only eight recent contributors. Wine uses a local house-wine range; cocktail is estimated at roughly twice the draft-beer price. Accommodation estimates reflect July high-season demand and are holistic, not based on live listings.",
+  "comparable_city_reasoning": "Food and drink estimates use Interlaken-specific aggregate prices. Accommodation reflects the Swiss Alpine tourism market and July peak demand; no direct city comparator was used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.2,
+    "coffee": 5.45,
+    "inexp_meal_1p": 30.25,
+    "midrange_meal_2p": 96.75,
+    "cocktail": 16.3,
+    "wine_glass": 12.1,
+    "hostel_dorm_1p": 85,
+    "hostel_private_2p": 230,
+    "hotel_1star_2p": 260,
+    "hotel_3star_2p": 430
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "City price-index data is sparse. USD equivalents are approximate; cocktail and wine prices are estimated from local draft-beer prices, and accommodation is a holistic estimate.",
+  "comparable_city_reasoning": "Food and drink estimates use Iquique city price-index data updated in June 2026. Accommodation estimates draw on northern Chile coastal cities such as Arica and Antofagasta, with their tourism and mining demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.4,
+    "coffee": 3.65,
+    "inexp_meal_1p": 8.05,
+    "midrange_meal_2p": 43.0,
+    "cocktail": 7.5,
+    "wine_glass": 4.8,
+    "hostel_dorm_1p": 20.0,
+    "hostel_private_2p": 42.0,
+    "hotel_1star_2p": 55.0,
+    "hotel_3star_2p": 95.0
+  }
+}
