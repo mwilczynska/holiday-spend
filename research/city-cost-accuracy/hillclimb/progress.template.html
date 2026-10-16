@@ -1,0 +1,231 @@
+<title>City Cost Hill Climb</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one wide instrument panel (summary strip, chart, legend) over a compact experiment register. */
+:root {
+  --bg: #f3f6f2; --surface: #fbfcfa; --ink: #16221e; --muted: #5d6c66; --faint: #8e9b96; --grid: #dde4df;
+  --accent: #19705b; --accent-soft: rgba(25,112,91,.10); --ref: #a8692a; --band: rgba(22,34,30,.035);
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1614; --surface: #141d1a; --ink: #e5ece9; --muted: #9aaaa4; --faint: #6c7a75; --grid: #24312d;
+  --accent: #4cc39f; --accent-soft: rgba(76,195,159,.12); --ref: #d6a15c; --band: rgba(229,236,233,.035); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1614; --surface: #141d1a; --ink: #e5ece9; --muted: #9aaaa4; --faint: #6c7a75; --grid: #24312d;
+  --accent: #4cc39f; --accent-soft: rgba(76,195,159,.12); --ref: #d6a15c; --band: rgba(229,236,233,.035); color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 22px; }
+header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 4vw, 40px); line-height: 1.05; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.sub { color: var(--muted); margin: 6px 0 0; max-width: 62ch; }
+.summary { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.stat { display: grid; gap: 2px; min-width: 0; }
+.stat .k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.stat .v { font-family: var(--mono); font-size: 24px; font-variant-numeric: tabular-nums; }
+.stat .v small { font-size: 13px; color: var(--muted); margin-left: 6px; }
+.stat.best .v { color: var(--accent); }
+.panel { background: var(--surface); border: 1px solid var(--grid); border-radius: 10px; padding: 18px 18px 12px; min-width: 0; }
+#chart { width: 100%; display: block; }
+#chart text { font-family: var(--mono); fill: var(--muted); font-size: 11px; }
+#chart .axis-title { font-family: var(--body); fill: var(--muted); font-size: 12px; }
+#chart .band-label { font-family: var(--body); font-size: 12px; font-weight: 600; fill: var(--ink); }
+#chart .end-label { font-family: var(--mono); font-size: 12px; fill: var(--accent); font-weight: 500; }
+.pt { cursor: pointer; }
+.pt:focus { outline: none; }
+.pt:focus .hit, .pt:hover .hit { stroke: var(--ink); stroke-width: 1; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 13px; padding: 10px 2px 2px; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend svg { overflow: visible; }
+.note { color: var(--muted); font-size: 13px; max-width: 80ch; margin: 0; }
+.tip { position: fixed; pointer-events: none; z-index: 5; background: var(--ink); color: var(--bg); font-size: 12.5px; line-height: 1.45; border-radius: 6px; padding: 8px 10px; max-width: 280px; box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+.tip b { font-weight: 600; }
+.tip .m { font-family: var(--mono); }
+h2 { font-family: var(--display); font-weight: 500; font-size: 20px; margin: 0 0 10px; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 13.5px; }
+th { text-align: left; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 8px 10px; border-bottom: 1px solid var(--grid); }
+td { padding: 7px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+th.num { text-align: right; }
+tr.sep td { background: var(--band); font-weight: 600; font-size: 12px; letter-spacing: .04em; color: var(--muted); }
+.pill { display: inline-block; font-size: 11.5px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--grid); color: var(--muted); white-space: nowrap; }
+.pill.not_adopted { color: var(--accent); }
+.pill.accept { background: var(--accent-soft); color: var(--accent); border-color: transparent; font-weight: 600; }
+.pill.reference, .pill.baseline { color: var(--ref); }
+.pill.pending { border-style: dashed; }
+footer { color: var(--faint); font-size: 12px; }
+@media (prefers-reduced-motion: no-preference) { .best-path { transition: opacity .3s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>City Cost Hill Climb</h1>
+      <p class="sub">Each point is one experiment on Holiday Spend's city-cost estimates, scored against reference prices. Lower is better. The line tracks the best accepted method.</p>
+    </div>
+    <div class="summary" id="summary"></div>
+  </header>
+
+  <section class="panel" aria-label="Error by experiment">
+    <svg id="chart" role="img" aria-label="Error by experiment with best-so-far line"></svg>
+    <div class="legend" aria-hidden="true">
+      <span><svg width="26" height="10"><line x1="0" y1="5" x2="26" y2="5" stroke="var(--accent)" stroke-width="3"/></svg>Best accepted so far</span>
+      <span><svg width="10" height="10"><circle cx="5" cy="5" r="4.5" fill="var(--accent)"/></svg>Accepted</span>
+      <span><svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/></svg>Passed, not adopted</span>
+      <span><svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="var(--surface)" stroke="var(--faint)" stroke-width="1.5"/></svg>Rejected</span>
+      <span><svg width="10" height="10"><rect x="1" y="1" width="8" height="8" fill="var(--ref)"/></svg>Baseline</span>
+      <span><svg width="12" height="12"><path d="M6 1 L11 6 L6 11 L1 6 Z" fill="var(--ref)" opacity=".75"/></svg>Old reference point</span>
+      <span><svg width="10" height="18"><line x1="5" y1="2" x2="5" y2="15" stroke="var(--faint)" stroke-dasharray="2 2"/><circle cx="5" cy="2" r="2" fill="var(--faint)"/></svg>Raw score before correction</span>
+      <span><svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="none" stroke="var(--faint)" stroke-dasharray="2 2"/></svg>Running</span>
+    </div>
+  </section>
+
+  <p class="note" id="note"></p>
+
+  <section>
+    <h2>Experiment register</h2>
+    <div class="table-wrap"><table id="tbl"></table></div>
+  </section>
+  <footer id="foot"></footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const DATA = /*DATA*/null;
+const pct = e => Math.round((Math.exp(e) - 1) * 100);
+const fmt = v => v === null || v === undefined ? '–' : v.toFixed(3);
+const VLABEL = { accept: 'Accepted', not_adopted: 'Passed, not adopted', reject: 'Rejected', promising_extend: 'Promising', invalid_coverage: 'Invalid', pending: 'Running', unassessed: 'Scored', reference: 'Reference', baseline: 'Baseline' };
+
+function bestSeries(rows) {
+  // Best accepted method so far, per panel: starts at the panel's baseline and steps down on each accepted change.
+  const out = [];
+  for (const panel of ['R1', 'R2']) {
+    const pr = rows.filter(r => r.panel === panel);
+    let best = null;
+    for (const r of pr) {
+      if (r.kind === 'baseline' && r.error !== null) best = r.error;
+      else if (r.verdict === 'accept' && r.error !== null && (best === null || r.error < best)) best = r.error;
+      if (best !== null) out.push({ n: r.n, panel, best });
+    }
+  }
+  return out;
+}
+
+function render() {
+  const rows = DATA.rows, svg = document.getElementById('chart');
+  const W = Math.max(340, svg.clientWidth || svg.parentNode.clientWidth), narrow = W < 560;
+  const H = narrow ? 360 : 420, m = { l: narrow ? 46 : 58, r: narrow ? 46 : 58, t: 34, b: 44 };
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('height', H);
+  const errs = rows.flatMap(r => [r.error, r.raw]).filter(v => v !== null);
+  const y0 = Math.floor((Math.min(...errs) - 0.012) * 50) / 50, y1 = Math.ceil((Math.max(...errs) + 0.012) * 50) / 50;
+  const n = rows.length, gapAfter = rows.filter(r => r.panel === 'R1').length;
+  const slot = (W - m.l - m.r) / (n + 1);
+  const X = i => m.l + slot * (i + 0.5 + (i >= gapAfter ? 1 : 0)); // one empty slot separates the panels
+  const Y = v => m.t + (y1 - v) / (y1 - y0) * (H - m.t - m.b);
+  const ns = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent = svg) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+  svg.innerHTML = '';
+
+  // Panel bands
+  for (const [panel, from, to] of [['R1', 0, gapAfter - 1], ['R2', gapAfter, n - 1]]) {
+    if (to < from) continue;
+    const xa = X(from) - slot / 2, xb = X(to) + slot / 2;
+    el('rect', { x: xa, y: m.t - 22, width: xb - xa, height: H - m.b - m.t + 22, fill: 'var(--band)', rx: 6 });
+    const t = el('text', { x: xa + 8, y: m.t - 8, class: 'band-label' }); t.textContent = DATA.panels[panel].label;
+  }
+  // Grid and axes
+  for (let v = y0; v <= y1 + 1e-9; v += 0.02) {
+    const y = Y(v);
+    el('line', { x1: m.l, x2: W - m.r, y1: y, y2: y, stroke: 'var(--grid)', 'stroke-width': 1 });
+    el('text', { x: m.l - 8, y: y + 4, 'text-anchor': 'end' }).textContent = v.toFixed(2);
+    el('text', { x: W - m.r + 8, y: y + 4, 'text-anchor': 'start' }).textContent = '≈' + pct(v) + '%';
+  }
+  rows.forEach((r, i) => { el('text', { x: X(i), y: H - m.b + 18, 'text-anchor': 'middle' }).textContent = r.n; });
+  el('text', { x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', class: 'axis-title' }).textContent = 'Experiment';
+  const ly = el('text', { x: 14, y: (m.t + H - m.b) / 2, 'text-anchor': 'middle', class: 'axis-title', transform: `rotate(-90 14 ${(m.t + H - m.b) / 2})` });
+  ly.textContent = narrow ? 'Error' : 'Error (budget-weighted mean |log error|)';
+  if (!narrow) { const ry = el('text', { x: W - 12, y: (m.t + H - m.b) / 2, 'text-anchor': 'middle', class: 'axis-title', transform: `rotate(90 ${W - 12} ${(m.t + H - m.b) / 2})` }); ry.textContent = 'Typical error'; }
+
+  // Best-so-far step line with a soft fill beneath, per panel
+  const best = bestSeries(rows);
+  for (const panel of ['R1', 'R2']) {
+    const pts = best.filter(b => b.panel === panel);
+    if (!pts.length) continue;
+    let d = '', prev = null;
+    pts.forEach(p => { const i = rows.findIndex(r => r.n === p.n), x = X(i), y = Y(p.best);
+      if (prev === null) d += `M${x - slot * 0.35},${y} L${x},${y}`; else d += ` L${x},${Y(prev)} L${x},${y}`; prev = p.best; });
+    const last = pts[pts.length - 1], lx = X(rows.findIndex(r => r.n === last.n)) + slot * 0.35;
+    d += ` L${lx},${Y(last.best)}`;
+    el('path', { d: d + ` L${lx},${H - m.b} L${X(rows.findIndex(r => r.n === pts[0].n)) - slot * 0.35},${H - m.b} Z`, fill: 'var(--accent-soft)', stroke: 'none' });
+    el('path', { d, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 3, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', class: 'best-path' });
+    const tl = el('text', { x: Math.min(lx + 6, W - m.r - 4), y: Y(last.best) - 8, 'text-anchor': lx + 6 > W - m.r - 60 ? 'end' : 'start', class: 'end-label' });
+    tl.textContent = `${last.best.toFixed(3)} · ≈${pct(last.best)}%`;
+  }
+
+  // Raw ghosts, then points
+  const tip = document.getElementById('tip');
+  rows.forEach((r, i) => {
+    const x = X(i);
+    if (r.raw !== null && r.error !== null) {
+      el('line', { x1: x, x2: x, y1: Y(r.raw), y2: Y(r.error), stroke: 'var(--faint)', 'stroke-width': 1, 'stroke-dasharray': '2 3' });
+      el('circle', { cx: x, cy: Y(r.raw), r: 2.6, fill: 'var(--faint)' });
+    }
+    const g = el('g', { class: 'pt', tabindex: 0, 'aria-label': `${r.n}. ${r.label}: ${fmt(r.error)}, ${VLABEL[r.verdict] || r.verdict}` });
+    const yy = r.error === null ? Y((y0 + y1) / 2) : Y(r.error);
+    if (r.verdict === 'reference') el('path', { d: `M${x},${yy - 6} L${x + 6},${yy} L${x},${yy + 6} L${x - 6},${yy} Z`, fill: 'var(--ref)', opacity: .75, class: 'hit' }, g);
+    else if (r.verdict === 'baseline') el('rect', { x: x - 5, y: yy - 5, width: 10, height: 10, fill: 'var(--ref)', class: 'hit' }, g);
+    else if (r.verdict === 'accept') el('circle', { cx: x, cy: yy, r: 5.5, fill: 'var(--accent)', stroke: 'var(--surface)', 'stroke-width': 1.5, class: 'hit' }, g);
+    else if (r.verdict === 'not_adopted') el('circle', { cx: x, cy: yy, r: 4.8, fill: 'var(--surface)', stroke: 'var(--accent)', 'stroke-width': 1.6, class: 'hit' }, g);
+    else if (r.verdict === 'pending') el('circle', { cx: x, cy: yy, r: 5, fill: 'none', stroke: 'var(--faint)', 'stroke-width': 1.5, 'stroke-dasharray': '2 2', class: 'hit' }, g);
+    else el('circle', { cx: x, cy: yy, r: 4.8, fill: 'var(--surface)', stroke: 'var(--faint)', 'stroke-width': 1.6, class: 'hit' }, g);
+    el('circle', { cx: x, cy: yy, r: 12, fill: 'transparent' }, g);
+    const show = ev => {
+      const ci = r.ci ? ` <span class="m">(95% CI ${r.ci[0].toFixed(3)} to ${r.ci[1].toFixed(3)})</span>` : '';
+      tip.innerHTML = `<b>${r.n}. ${r.label}</b><br>Error <span class="m">${fmt(r.error)}</span>${r.error !== null ? ` (≈${pct(r.error)}% typical)` : ''}` +
+        (r.raw !== null ? `<br>Raw before correction <span class="m">${fmt(r.raw)}</span>` : '') +
+        (r.improvement !== null ? `<br>Change vs incumbent <span class="m">${r.improvement >= 0 ? '−' : '+'}${Math.abs(r.improvement).toFixed(3)}</span>${ci}` : '') +
+        `<br>${VLABEL[r.verdict] || r.verdict}`;
+      tip.hidden = false;
+      const b = (ev.type === 'focus' ? g.getBoundingClientRect() : { left: ev.clientX, top: ev.clientY, width: 0 });
+      const tx = Math.min(window.innerWidth - 296, b.left + (b.width || 0) / 2 + 14), ty = b.top + 14;
+      tip.style.left = Math.max(8, tx) + 'px'; tip.style.top = Math.min(window.innerHeight - 150, ty) + 'px';
+    };
+    g.addEventListener('mousemove', show); g.addEventListener('focus', show);
+    g.addEventListener('mouseleave', () => tip.hidden = true); g.addEventListener('blur', () => tip.hidden = true);
+  });
+}
+
+function fill() {
+  const rows = DATA.rows, best = bestSeries(rows);
+  const bR2 = best.filter(b => b.panel === 'R2').pop(), bR1 = best.filter(b => b.panel === 'R1').pop();
+  const base2 = rows.find(r => r.panel === 'R2' && r.kind === 'baseline');
+  const done = rows.filter(r => !['reference', 'baseline', 'pending'].includes(r.verdict)).length;
+  const acc = rows.filter(r => r.verdict === 'accept').length;
+  const stat = (k, v, cls = '') => `<div class="stat ${cls}"><span class="k">${k}</span><span class="v">${v}</span></div>`;
+  document.getElementById('summary').innerHTML =
+    (bR2 ? stat('Best, 333 cities', `${bR2.best.toFixed(3)}<small>≈${pct(bR2.best)}%</small>`, 'best') : '') +
+    (base2 && base2.error !== null ? stat('Unchanged v1.1', `${base2.error.toFixed(3)}<small>≈${pct(base2.error)}%</small>`) : '') +
+    stat('Experiments judged', `${done}<small>${acc} accepted</small>`);
+  document.getElementById('note').textContent =
+    'Errors on the two panels are not comparable: panel R2 adds 279 harder, smaller cities to the original 54. ' +
+    'Prompt changes are judged after re-fitting their own correction factors, so a raw gain that only shifts prices up or down earns no credit. ' +
+    'Some rejected points sit below the line because their gain was too small to separate from noise.';
+  const t = document.getElementById('tbl');
+  let html = '<thead><tr><th>#</th><th>Experiment</th><th class="num">Error</th><th class="num">Raw</th><th class="num">Change (95% CI)</th><th>Result</th></tr></thead><tbody>';
+  let lastPanel = null;
+  for (const r of rows) {
+    if (r.panel !== lastPanel) { html += `<tr class="sep"><td colspan="6">${DATA.panels[r.panel].label}</td></tr>`; lastPanel = r.panel; }
+    const ch = r.improvement !== null ? `${r.improvement >= 0 ? '−' : '+'}${Math.abs(r.improvement).toFixed(3)} (${r.ci[0].toFixed(3)}, ${r.ci[1].toFixed(3)})` : '–';
+    html += `<tr><td class="num">${r.n}</td><td>${r.label}</td><td class="num">${fmt(r.error)}</td><td class="num">${fmt(r.raw)}</td><td class="num">${ch}</td><td><span class="pill ${r.verdict}">${VLABEL[r.verdict] || r.verdict}</span></td></tr>`;
+  }
+  t.innerHTML = html + '</tbody>';
+  document.getElementById('foot').textContent = `Updated ${new Date(DATA.updated).toUTCString().replace(':00 GMT', ' UTC')}. Error is the budget-weighted mean absolute log error per city, averaged over dev cities; ≈% is exp(error) − 1.`;
+}
+fill(); render();
+let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 120); });
+</script>

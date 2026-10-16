@@ -55,6 +55,12 @@ verdict, per-anchor deltas, and what it suggests next. On **accept**, update the
 On **promising_extend**, add one repeat (raise `repeats` in a new registration that replays the same prompt) and
 reassess once.
 
+## 3a. Progress plot
+
+After any assess, add the experiment to the register in `scripts/city-cost-accuracy/hillclimb/build-progress.mjs` (if new),
+run `node scripts/city-cost-accuracy/hillclimb/build-progress.mjs`, and republish `research/city-cost-accuracy/hillclimb/progress.html`
+(artifact https://claude.ai/artifact/GSdP69DDreugCNUwX2HfcC).
+
 ## 4. After the panel grows
 
 ```bash
