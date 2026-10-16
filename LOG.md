@@ -3933,3 +3933,18 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - All 213 response/run pairs parse as JSON and record Luna/Max. No ingest, scoring, sealed-test read, frozen-file
   change, other job or production write ran in this Codex collection session. Prior Alicante deviation is preserved.
 - Next queued task: nafplio-r1. Collection continues after this checkpoint.
+
+# 16 October 2026 — Booking.com saved, Codex prompt, country calibration, hotel preview (coordinator)
+
+- Booking.com main run complete for all 475 panel cities (no errors); six-window run saved at 63/333 and continuing.
+- Codex launch prompt `CODEX-LUNA-PROMPT.md` prepared (not started) to finish the Luna lane unattended; workers now
+  get their exact message from `codex-task-message.mjs` (hash-checked). The Alicante answer from a hand-retyped
+  prompt is kept as `response.deviation.json` and the task is requeued.
+- 017 country-in-region calibration (zero-call replay of 014): 0.2170 vs 0.2238, improvement 0.0068, CI 0.001 to
+  0.012. Reliable but below the frozen 0.015 margin; rejected by the rule and kept as a bundle candidate.
+- Hotel preview (63 cities with window data): 3-star prices vary modestly by stay window (November weekday 0.91x,
+  July weekend 1.11x the March weekday; year-typical factor 1.03), so season does not explain the 40-45% gap between
+  platform 3-star prices and KAYAK "mid-range". Against platform 3-star references, Haiku's v1.1 3-star anchor is about
+  66% high (median log +0.51); against KAYAK mid-range it is about right. Which level the app's 3-star tier should
+  represent is an owner decision; calibration fits whichever is chosen.
+- 018 search-grounded at Haiku high on R1 (54 cities) dispatched.
