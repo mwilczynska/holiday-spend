@@ -42,12 +42,12 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Luna-lane confirmation before any production proposal.
 
 **Job A collection checkpoint — 16 October 2026 UTC.** Resumed at cabo-san-lucas-r1 from 89/333 saved
-responses. Added 76 answers through kampot-r1, using fresh GPT-6 Luna/Max subagents. At the owner's request,
+responses. Added 100 answers through lucerne-r1, using fresh GPT-6 Luna/Max subagents. At the owner's request,
 workers dispatch in groups of up to three (the session allows three workers beside the coordinator).
-Frozen 101-v11-luna-r2 has 165/333 saved responses (168 pending). All response/run pairs parse and record
+Frozen 101-v11-luna-r2 has 189/333 saved responses (144 pending). All response/run pairs parse and record
 Luna/Max; no worker failures, retries or substitutions in this continuation. Prior answers and the Alicante
 dispatch deviation remain preserved. No ingest or scoring ran in this Codex collection session.
-Next queued task: kandy-r1. Collection continues after this checkpoint.
+Next queued task: lugano-r1. Collection continues after this checkpoint.
 
 **Job A stopped at owner request — 16 October 2026 UTC.** Added 29 responses in this continuation,
 annecy-r1 through byron-bay-r1, using fresh GPT-6 Luna/Max subagents. Frozen 101-v11-luna-r2 has 89/333
@@ -78,9 +78,7 @@ stopped. Its five raw rows are saved as `panel/booking-main-partial-2026-10-16.r
 ```
 009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
 011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
-015-spec-definitions-r2                  pending  133 / 333  (repeat-1 pending 133)
-016-accommodation-definitions-r2         pending  137 / 333  (repeat-1 pending 137)
-101-v11-luna-r2                          pending  168 / 333  (repeat-1 pending 168)
+101-v11-luna-r2                          pending  144 / 333  (repeat-1 pending 144)
 ```
 
 **Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108. Hostelworld expansion complete

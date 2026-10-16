@@ -3913,3 +3913,13 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - Conclusion: prompt wording is exhausted as a lever (seven variants; none adds accuracy after calibration).
 - Progress plot published as an artifact (https://claude.ai/artifact/GSdP69DDreugCNUwX2HfcC), rebuilt by
   build-progress.mjs after each assessment.
+# 16 October 2026 UTC — Job A concurrent-worker checkpoint at 189/333
+
+- Added 24 frozen answers, kandy-r1 through lucerne-r1, with one fresh GPT-6 Luna/Max subagent per task.
+  Used up to three worker slots concurrently. Every final message is saved verbatim with run metadata; timestamps
+  are coordinator observations and unknown search counts remain null.
+- Lane total 189/333 saved (144 pending), up from 165/333. Since resuming from Cabo San Lucas, 100 answers have
+  been collected. No worker failures, retries, substitutions or answer edits occurred.
+- All 189 response/run pairs parse as JSON and record Luna/Max. No ingest, scoring, sealed-test read, frozen-file
+  change, other job or production write ran in this Codex collection session. Prior Alicante deviation is preserved.
+- Next queued task: lugano-r1. Collection continues after this checkpoint.
