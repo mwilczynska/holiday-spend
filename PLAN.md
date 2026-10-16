@@ -41,9 +41,12 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
 - [ ] Luna-lane confirmation before any production proposal.
 
-**Job A resumed — 16 October 2026 UTC.** Owner requested continuation from 89/333 saved responses.
-Fresh GPT-6 Luna/Max collection starts at cabo-san-lucas-r1. Prior answers and the Alicante dispatch deviation
-remain preserved.
+**Job A collection checkpoint — 16 October 2026 UTC.** Resumed at cabo-san-lucas-r1 from 89/333 saved
+responses. Added 24 answers through dahab-r1, using fresh GPT-6 Luna/Max subagents. At the owner's request,
+workers now dispatch in groups of up to three (the session allows three workers beside the coordinator).
+Frozen 101-v11-luna-r2 has 113/333 saved responses (220 pending). All response/run pairs parse and record
+Luna/Max; no worker failures, retries or substitutions in this continuation. Prior answers and the Alicante
+dispatch deviation remain preserved. No ingest or scoring ran. Collection continues after this checkpoint.
 
 **Job A stopped at owner request — 16 October 2026 UTC.** Added 29 responses in this continuation,
 annecy-r1 through byron-bay-r1, using fresh GPT-6 Luna/Max subagents. Frozen 101-v11-luna-r2 has 89/333
@@ -78,7 +81,7 @@ stopped. Its five raw rows are saved as `panel/booking-main-partial-2026-10-16.r
 014-v11-haiku-high-r2                    pending  126 / 333  (repeat-1 pending 126)
 015-spec-definitions-r2                  pending  333 / 333  (repeat-1 pending 333)
 016-accommodation-definitions-r2         pending  333 / 333  (repeat-1 pending 333)
-101-v11-luna-r2                          pending  244 / 333  (repeat-1 pending 244)
+101-v11-luna-r2                          pending  220 / 333  (repeat-1 pending 220)
 ```
 
 **Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108. Hostelworld expansion complete

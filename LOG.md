@@ -3860,3 +3860,13 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - Next queued task: cabo-san-lucas-r1. The prior Alicante transcription deviation remains recorded and unchanged.
   No ingest, scoring, accuracy assessment, sealed-test read, frozen-file edit, other job or production write ran.
 - Validation: docs:check-memory and final diff whitespace checks pass.
+
+# 16 October 2026 UTC — Job A resumed from Cabo San Lucas
+
+- Resumed frozen 101-v11-luna-r2 collection from 89/333 saved responses. Added 24 answers, cabo-san-lucas-r1
+  through dahab-r1, with one fresh GPT-6 Luna/Max subagent per task. Saved every final message verbatim with run
+  metadata; timestamps are coordinator observations and unknown search counts are null.
+- Owner requested more simultaneous workers. Dispatch now uses groups of up to three, within the session's four
+  total agent slots. No worker failures, retries, substitutions or answer edits occurred in this continuation.
+- Lane total 113/333 saved (220 pending). No ingest, scoring, sealed-test read, frozen prompt/spec change, other job
+  or production write ran. The prior Alicante deviation remains recorded and unchanged. Collection continues.
