@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from comparator-site averages (Combien Coûte, Expat Exchange, a 2026 travel-budget guide, and an eurovistatrips guide), with mixed dates and some 2024-2025 data. Beer and coffee rest on a half-litre average and one general cappuccino figure. Cocktail is a guide range of EUR 10-15 and wine a range of EUR 4-6. Accommodation (all four hostel and hotel anchors) is a holistic model estimate for a summer French regional city; no booking pages or current listings were inspected. USD values use an assumed EUR-to-USD rate of about 1.13, taken from an early-October 2026 Banque de France snippet that is not an RBA observation. FX fallback: the latest RBA observation I could verify is 0.7088 USD per AUD for 2026-03-20, read from a search summary of the RBA exchange-rates page. I could not retrieve the RBA F11 data for later dates, so this observation is about seven months old relative to the 2026-10-16 generation date. Other October 2026 FX figures found (OFX, Banque de France) are not RBA data and were not used.",
+  "comparable_city_reasoning": "Food and drink anchors are benchmarked to Toulouse-specific comparator averages and checked against national French averages. Accommodation anchors are a holistic estimate from general knowledge of mid-sized French regional cities with moderate summer tourist demand; no comparable city was used for the numbers.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.30,
+    "inexp_meal_1p": 14.50,
+    "midrange_meal_2p": 77.00,
+    "cocktail": 13.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 74.00,
+    "hotel_3star_2p": 147.00
+  }
+}

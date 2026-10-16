@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Restaurant meal and coffee anchors are rough aggregator figures, some dated 2022-2023, with inconsistent LKR conversions. Beer, cocktail and wine are inferred from one Galle cocktail data point, a 2024 Tangalle resort menu and a beer-relative rule, not from current Galle menus. Accommodation is a holistic model estimate; no booking pages or listings were inspected. LKR figures were converted at an assumed rate of about 320 LKR per USD, not a searched rate. The FX value comes from search-result excerpts of the RBA exchange-rate data for 2026-10-16; the RBA page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city. Basis is a South Asian coastal tourist town, anchored to Galle aggregator restaurant and coffee figures and cross-checked against Hikkaduwa/Weligama-area reference points and a 2024 Tangalle resort menu. Drink anchors use local beer as the reference: cocktail about 2.9x beer and wine glass about 2.3x beer.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 2.35,
+    "inexp_meal_1p": 3.75,
+    "midrange_meal_2p": 20.30,
+    "cocktail": 6.25,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 75.00
+  }
+}

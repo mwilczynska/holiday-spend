@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors rest on a few third-party cost-of-living guides, travel-site estimates and one undated crowd-sourced page, not on verified menus. No current wine price was found, so wine_glass is set at about 2x the beer anchor. Accommodation anchors are holistic model estimates from general knowledge and city context; no booking pages or listings were inspected. FX: as_of_date 2026-03-20 is the most recent RBA observation I could verify. It is not the latest observation as of the 2026-10-16 generation date, because the RBA daily table could not be retrieved. Refresh the FX observation before conversion.",
+  "comparable_city_reasoning": "Priced as an interior Mexican colonial tourist town with a large visitor and expat base, roughly in line with other popular highland colonial towns in Mexico. Cafe and casual-restaurant levels follow city-specific guides; mid-range and cocktail levels follow travel-site estimates; wine follows the beer relationship; accommodation is a holistic estimate.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 9.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 120.00
+  }
+}

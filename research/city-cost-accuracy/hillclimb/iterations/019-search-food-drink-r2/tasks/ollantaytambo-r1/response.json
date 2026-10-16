@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are proxies from Cusco, not Ollantaytambo-specific prices. The sources were mostly crowd-sourced Expatistan pages last updated in 2025, plus one travel-budget guide and one 2026 cost-of-living page. No Ollantaytambo menus were found. The wine-by-the-glass figure has no direct local price; it is derived from a Cusco bottle benchmark (about S/30) and the local beer relationship. The cocktail figure rests on a few Cusco bar prices. Accommodation anchors are holistic model estimates from general knowledge and the city context; no booking pages or listings were inspected. The FX rate comes from a search summary citing the RBA overview page for 15 October 2026. I did not open that page directly, and third-party sources differed slightly.",
+  "comparable_city_reasoning": "Food and drink are anchored to Cusco price points (local draft beer, cappuccino, lunch and set-menu meals, and bar and bottle benchmarks), adjusted upward for Ollantaytambo's tourist-village pricing near Machu Picchu access. Accommodation is a holistic estimate for a small Sacred Valley tourist town, with the hostel and hotel tiers kept in ascending order.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 100.00
+  }
+}

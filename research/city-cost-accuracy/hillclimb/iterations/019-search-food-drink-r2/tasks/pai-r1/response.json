@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Pai-specific evidence is thin. Restaurant prices rest on one 2026-dated Pai guide (a rental-shop blog, possibly promotional) plus Chiang Mai and general Thailand price guides, mostly undated. The only Pai-specific meal data with a dinner price was from 2017 and was not used. Beer, coffee and mid-range meal anchors are rough cross-city proxies. Cocktail and wine are weakest: the cocktail anchor follows a general Thailand bar range, and the wine glass anchor uses a local beer-to-wine relationship because direct glass prices were not found. Accommodation anchors are holistic model estimates from general knowledge and the Pai context. No accommodation searches were run and no live listings or booking pages were inspected. THB-to-USD conversions were approximated at roughly 33 THB per USD, which is an assumption, not a sourced rate. FX: the RBA observation came from a cached RBA Exchange Rates page surfaced in search, not a live fetch. It is dated 20 March 2026, about seven months before the 16 October 2026 generation date, and was not confirmed as the latest published observation. Treat the FX field as stale until refreshed.",
+  "comparable_city_reasoning": "Priced as a small, tourist-heavy northern Thai town, using Chiang Mai as the closest comparable for bar, café and mid-range restaurant prices, adjusted for Pai's Walking Street and riverside tourist pricing. Street-food and budget restaurant ranges come from Thailand-wide guides. Accommodation is a holistic estimate for a small Pai guesthouse and resort market.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.10,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 6.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 70.00
+  }
+}

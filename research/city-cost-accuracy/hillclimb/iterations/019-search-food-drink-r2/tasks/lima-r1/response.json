@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on aggregated cost-of-living data (Expatistan, MyLifeElsewhere) and a few food-review snippets. Some figures are dated or come from older reviews, and the sol-to-USD conversion uses about 3.45 PEN per USD, which the sources imply (roughly 3.4 to 3.8). Wine by the glass has no direct price in the sources, so it is estimated from the local beer relationship (about 2 times beer, rounded). Cocktail uses a Lima downtown-club average and a pisco sour range. Accommodation anchors are holistic model estimates from general knowledge of Lima's hostel and hotel markets; no booking pages or current listings were inspected. The FX observation is stale: the search summary reported the RBA 20 March 2026 USD rate of 0.7088, which I did not confirm by opening the RBA page, and I could not confirm it is the latest available on 2026-10-16.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Lima's own aggregated price data, with the business district and Miraflores/San Isidro figures used as upper bounds. Accommodation is a holistic estimate for Lima's hostel and hotel tiers, benchmarked loosely against mid-sized Latin American capitals with comparable tourism demand.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 2.90,
+    "inexp_meal_1p": 4.30,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 115.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and pub anchors are cross-checked against Brighton crowdsourced figures (Numbeo, Mylifeelsewhere, Hardens, World Travel Guide) and UK trade or ONS averages (Morning Advertiser April 2026 pint average, ONS January 2025 wine glass average). Those sources are mixed in age and method, so food anchors are approximate. The cocktail anchor has no direct Brighton source; it is inferred from the local beer anchor using a typical bar markup, with a 2025 consumer survey as a loose check. Accommodation anchors are holistic model estimates from general knowledge of Brighton's summer seaside demand. No booking pages or current listings were inspected, and no accommodation searches were run. GBP to USD conversion for the food anchors used an assumed rate of about 1.33 USD per GBP, which was not verified by search. The FX observation is the 15 Oct 2026 RBA rate, which appears in both the RBA exchange rates table and overview. A 16 Oct 2026 figure also appeared in search output but was not confirmed, so it was not used.",
+  "comparable_city_reasoning": "Brighton is a south-east England coastal city with London-adjacent cost levels and strong summer tourism. Food and drink anchors use UK national averages (pub pint, 175ml wine glass) adjusted to Brighton's higher restaurant and bar pricing. Accommodation anchors are based on comparable UK seaside and commuter-belt cities, with a July peak-season premium.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.98,
+    "coffee": 5.05,
+    "inexp_meal_1p": 22.61,
+    "midrange_meal_2p": 90.44,
+    "cocktail": 13.97,
+    "wine_glass": 9.04,
+    "hostel_dorm_1p": 42.56,
+    "hostel_private_2p": 106.40,
+    "hotel_1star_2p": 133.00,
+    "hotel_3star_2p": 226.10
+  }
+}

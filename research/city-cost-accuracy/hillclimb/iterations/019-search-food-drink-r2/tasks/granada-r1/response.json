@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are based on web-search snippets with inconsistent figures across sources (Numbeo-style averages, crowd-sourced Expatistan, cost-of-living guides), so they are bounded estimates. Wine by the glass is the weakest food anchor: no reliable 2026 Granada glass price was found, so it is an inferred value from the free-tapas custom and bottle-price proxies. Cocktail is a Granada-adjusted estimate from crowd-sourced data. The four accommodation anchors were not searched, as instructed, and are holistic model estimates for July high season, not checked against live listings. EUR amounts were converted to USD at an assumed 1.16 USD per EUR, which was not sourced from any search. FX: the 2026-10-16 RBA value of 0.6947 was read from a search-result snippet of the RBA exchange-rates statistics page; the page itself was not opened, and the 15 Oct value (0.6955) in the same snippet matches the RBA homepage figure quoted there.",
+  "comparable_city_reasoning": "Food and drink are anchored to Granada-specific figures where available, with Spanish national and Madrid/Barcelona averages used as upper-bound checks and Granada's lower prices (and free-tapa custom) used to adjust downward. Accommodation uses general knowledge of mid-sized Spanish tourist cities such as Seville and Malaga, adjusted for peak-season July demand in Granada. No single comparable city was substituted for the food anchors.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.48,
+    "coffee": 2.32,
+    "inexp_meal_1p": 13.92,
+    "midrange_meal_2p": 48.72,
+    "cocktail": 10.44,
+    "wine_glass": 3.48,
+    "hostel_dorm_1p": 29.00,
+    "hostel_private_2p": 69.60,
+    "hotel_1star_2p": 63.80,
+    "hotel_3star_2p": 127.60
+  }
+}

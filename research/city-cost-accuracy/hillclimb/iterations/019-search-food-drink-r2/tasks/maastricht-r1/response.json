@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are medium confidence. They are based on undated expat guides, crowdsourced price sites, and Amsterdam, Rotterdam and national Dutch figures, adjusted down for Maastricht, which is smaller. No 2026 Maastricht-specific price survey was found. The cocktail anchor uses one crowdsourced Maastricht club figure (EUR 7, May 2025) and is raised to a restaurant/bar level, with a beer-relationship check (cocktail about 2.75x the beer anchor). Wine uses the EUR 5-7 range seen in guides. Accommodation anchors (hostel and hotel) are holistic model estimates for July peak season from general knowledge and city context. No booking pages or current listings were inspected, so they are low confidence. The EUR-to-USD conversion (about 1.15) is a working assumption, not from a search. The FX observation is the most recent RBA figure retrieved (20 March 2026), which is about seven months before the reference date, so it may be stale. Third-party figures near 0.70 for mid-2026 are not official RBA data and were not used.",
+  "comparable_city_reasoning": "Priced against Dutch cost-of-living references for Amsterdam, Rotterdam and Utrecht, adjusted down for Maastricht's smaller size and lower tourist density. Accommodation uses general knowledge of mid-sized Dutch tourist cities in summer.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.60,
+    "coffee": 4.37,
+    "inexp_meal_1p": 17.25,
+    "midrange_meal_2p": 80.50,
+    "cocktail": 12.65,
+    "wine_glass": 6.33,
+    "hostel_dorm_1p": 40.25,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 109.25,
+    "hotel_3star_2p": 189.75
+  }
+}

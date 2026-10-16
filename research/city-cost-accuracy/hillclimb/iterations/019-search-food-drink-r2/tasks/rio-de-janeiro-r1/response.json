@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are triangulated from aggregated sources (Expatistan, LifeIndexed, CostLiving, and Numbeo figures republished by HeySuccess), but several are undated or appear low, so they are bounded estimates. Beer draws on an Expatistan pub average. Cocktail and wine rely on undated venue listings and a single 2026 event price, so they are weak and wine is partly set by local beer relationship. Hostel and hotel anchors are holistic model estimates from general knowledge and the city context; no live booking pages or listings were inspected. The FX observation is the most recent RBA figure the search returned, dated 2026-03-20, which is older than the generation date, so it may be stale and should be re-verified against the RBA F11 table.",
+  "comparable_city_reasoning": "No single comparable city. Pricing is benchmarked to Brazilian large-city levels, mainly Rio and São Paulo restaurant data, with accommodation estimated holistically for beach-district tourist supply.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 1.80,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 5.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 120.00
+  }
+}

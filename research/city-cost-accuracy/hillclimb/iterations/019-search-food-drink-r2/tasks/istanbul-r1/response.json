@@ -1,0 +1,19 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough. They come from mixed-date crowd-sourced and guide prices in Turkish lira, converted at an assumed rate of about 47 TRY per USD because I did not verify a current USD/TRY rate. Some sources were older (2023-2025), and one guide's venue attribution conflicted, so I did not use it. Cappuccino and beer rest on about three sources each. Cocktail and wine are based on a single guide's rooftop and restaurant listings, not broad coverage. Accommodation anchors are holistic model estimates with no live listing checks. The RBA page on rba.gov.au was not reachable, so no verified RBA observation was obtained and fx is null. Numbeo's Istanbul page was also not reached. Istanbul straddles Europe and Asia; Europe was chosen because the main tourist districts are on the European side.",
+  "comparable_city_reasoning": "Istanbul-specific Turkish lira price points from Expatistan, Wohin-und-wann, MyLifeElsewhere and a 2026 istanbul.com rooftop guide, converted to USD at an assumed ~47 TRY per USD, with EUR-quoted figures converted at approximate rates. Accommodation is a holistic estimate for a mid-sized European tourist city with lira-denominated hotel pricing, not a sourced comparison.",
+  "fx": null,
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 95.00
+  }
+}

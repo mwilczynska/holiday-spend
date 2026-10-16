@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are bounded estimates from aggregated search snippets. Sources are mixed in date and method, several are crowdsourced or theme-park or hotel menus, and no official Tokyo price index was retrieved. Beer and cappuccino rest on the most usable data. Cocktail is a rough midpoint of conflicting sources. Wine is derived from the beer price, since no reliable wine-by-the-glass price was found. Accommodation anchors are holistic model estimates for Tokyo in July, not checked against live listings. Yen-to-USD conversion assumes roughly 158 JPY per USD, based on an early-2026 travel guide. The FX observation was taken from RBA Exchange Rates page content surfaced in search results; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on Tokyo-specific yen price points from search results. Wine is set relative to the local beer price. Accommodation anchors come from general knowledge of Tokyo's budget, guesthouse and business-hotel market in peak summer season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 8.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 175.00
+  }
+}

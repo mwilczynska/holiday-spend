@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors rest on general Japan price guides and a Tokyo special-wards average, not Nikko-specific data. Cocktail and wine anchors come from a few Kyoto, Osaka and Tokyo menus and are adjusted down for Nikko, so they are less certain. Hostel and hotel anchors are holistic model estimates with no accommodation search. Yen conversions assume about 150 JPY per USD. The FX observation value came from a search summary; the RBA page was not opened, so it should be checked against the RBA F11.1 daily series before use.",
+  "comparable_city_reasoning": "Japanese mid-sized tourist towns outside Tokyo and Kyoto, such as Kamakura and Hakone. Food and drink prices are adjusted from Tokyo-area averages and Kyoto and Osaka bar and hotel menus, and accommodation is a holistic estimate for a small, seasonal tourist town.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.30,
+    "coffee": 4.30,
+    "inexp_meal_1p": 6.70,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 10.70,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 23.30,
+    "hostel_private_2p": 66.70,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 146.70
+  }
+}

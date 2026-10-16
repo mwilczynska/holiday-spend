@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are bounded estimates from aggregator and price-series snippets, not verified current Nagoya menus. The beer and coffee figures are yen-based ranges converted to USD at an assumed rate of about 155 JPY per USD; the Nagoya-specific meal figures are cross-checked against Japan-wide and Tokyo data. Cocktail and wine are not directly sourced: cocktail uses reported highball and cocktail ranges, and wine is set relative to the beer estimate. Accommodation anchors are holistic model estimates from general knowledge of Nagoya's hotel and hostel tiers for a July window; no booking pages or current listings were inspected. The FX observation is about seven months older than the generation date and was taken from a search summary of the RBA page, not from a verified live table, so it should be re-checked before use.",
+  "comparable_city_reasoning": "Basis is Japanese domestic price levels: Tokyo official coffee-eating-out series and Japan-wide chain café and izakaya ranges, adjusted to a mid-sized Nagoya level. Nagoya restaurant-meal aggregator figures were used for the inexpensive and typical meal anchors. Accommodation is a holistic estimate from general knowledge of Nagoya business-hotel and hostel pricing, not from any cited source.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 3.75,
+    "inexp_meal_1p": 7.75,
+    "midrange_meal_2p": 38.70,
+    "cocktail": 7.10,
+    "wine_glass": 6.45,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 58.00,
+    "hotel_1star_2p": 71.00,
+    "hotel_3star_2p": 129.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors are rough aggregates. Current Trinidad-specific price data was not found; the figures blend Havana and Cuba-wide Numbeo, BearSavings and Hikersbay values with older Trinidad lunch and cappuccino entries from 2017 and a Cuba-wide 2026 page. Sources disagree by up to about 2x, and tourist and private-restaurant prices differ a lot. Wine by the glass is inferred from bottle-price data and the beer relationship, not a direct menu price. Cocktail is based on tourist-bar reports and older guides. Accommodation anchors are holistic model estimates with no searches or live listings checked, and registered hostels are scarce in Cuba. The FX observation is the latest RBA rate I could verify (20 March 2026), about seven months before the generation date, so it may be stale. Prices may also be quoted or charged in USD or EUR, and the rate used for those can shift the real cost.",
+  "comparable_city_reasoning": "No Trinidad-specific current price basis was found. Food and drink anchors use Cuba-wide and Havana aggregates (Numbeo Havana user-contributed prices, BearSavings, Hikersbay 2026 page, and a Cuba-wide 2026 restaurant summary) adjusted for a small tourist town. Accommodation is a holistic estimate for a small Cuban colonial tourist town, with casas particulares and state or joint-venture hotels as the reference set.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 1.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 105.00
+  }
+}

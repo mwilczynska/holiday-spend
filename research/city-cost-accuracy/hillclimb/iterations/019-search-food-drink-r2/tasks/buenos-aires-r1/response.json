@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on several aggregator snapshots (Expatistan, Combien-Coute citing Numbeo) dated May to July 2026, with peso prices converted at an approximate 1,450-1,500 ARS per USD taken from Expatistan's own USD figures, not an official ARS rate. Peso volatility means these may be stale by the pricing window. Cocktail is a rough estimate from one downtown-club average, adjusted down for typical bars. Wine glass is low confidence: no per-glass price was found, so it is inferred from bottle-retail prices and the beer anchor. Both accommodation anchors are holistic model estimates from general knowledge; no listings or booking pages were checked. The FX rate came from RBA daily-rate figures shown in search results for 14-16 October 2026; the RBA page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city was used. Prices are Buenos Aires-specific food and drink snapshots, with accommodation set holistically against regional Latin American city levels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 115.00
+  }
+}

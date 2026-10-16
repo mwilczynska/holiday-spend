@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on several undated or crowd-sourced UK sources, mainly a Scottish pub-price survey, a Holidu city comparison and budget-deal roundups, so they are approximate. Cocktail and wine anchors are weaker: they use Glasgow and Edinburgh crowd-sourced cocktail samples and a beer-to-wine relationship, not Inverness-specific data. Accommodation anchors are holistic model estimates for a July peak-season window and do not reflect any inspected live listings. The FX observation is stale: the latest RBA observation I could verify is 2026-03-20, not one from near the 2026-10-16 generation date, and I could not retrieve the live RBA F11 table. The GBP to USD conversion of about 1.33 per pound is an assumption from general knowledge, not from a search, so the USD values carry that extra uncertainty.",
+  "comparable_city_reasoning": "Regional basis is the Scottish Highlands, anchored to Inverness pub-price survey figures (roughly GBP 3.20 to 4.10 per pint, cappuccino about GBP 3 to 3.90) with a modest uplift for July tourist demand. Cocktail pricing is benchmarked to Glasgow and Edinburgh samples (GBP 10 to 11) with a discount for Inverness. Wine is set by the beer-to-wine relationship from UK restaurant pricing. Accommodation uses general knowledge of comparable Scottish Highland towns and is not based on any search.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.72,
+    "coffee": 4.52,
+    "inexp_meal_1p": 17.29,
+    "midrange_meal_2p": 79.80,
+    "cocktail": 13.30,
+    "wine_glass": 9.04,
+    "hostel_dorm_1p": 39.90,
+    "hostel_private_2p": 106.40,
+    "hotel_1star_2p": 113.05,
+    "hotel_3star_2p": 199.50
+  }
+}

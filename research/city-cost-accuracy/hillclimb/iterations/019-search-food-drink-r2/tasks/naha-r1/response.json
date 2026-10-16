@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors come from crowdsourced aggregator figures (citycost.org Naha page) and a few Naha bar menus, so quality is medium, and the cocktail and wine anchors rest on sparse bar listings. Hostel and hotel anchors are holistic model estimates; I did not search for or inspect accommodation listings, so they are low confidence. FX is stale: the only official rba.gov.au observation I could confirm is 2026-03-20, which is not the latest as of 2026-10-16. A third-party mirror suggested about 0.7049 for 2026-08-05, but I could not verify it on rba.gov.au, so refresh the RBA observation before use. Yen figures were converted at an assumed rate of about 155 JPY per USD from general knowledge, not from a search.",
+  "comparable_city_reasoning": "No comparable city used. Estimates are based on Naha price levels from the citycost.org Naha page, which puts Naha roughly 12% below Okinawa prefecture overall, plus a few Naha bar menus. Cocktail and wine anchors are set from the bar listings and sit at about 1.5 times the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.90,
+    "coffee": 3.55,
+    "inexp_meal_1p": 6.45,
+    "midrange_meal_2p": 32.25,
+    "cocktail": 6.15,
+    "wine_glass": 6.45,
+    "hostel_dorm_1p": 22.60,
+    "hostel_private_2p": 51.60,
+    "hotel_1star_2p": 61.30,
+    "hotel_3star_2p": 109.70
+  }
+}

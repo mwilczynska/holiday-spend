@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rely on crowdsourced Expatistan Cuenca comparison pages, updated May to September 2026, whose values vary between snapshots (for example, the Italian dinner for two appears at 28, 31 and 36 USD). The lunch anchor uses one Expatistan menu figure of about 6 USD that includes a drink, so it is adjusted down for an inexpensive meal without a drink. No restaurant glass-of-wine price was found, so wine_glass is inferred from a shop bottle price of about 11 to 12 USD plus a restaurant markup. Cocktail and beer are benchmarked against each other, and the cocktail anchor is set at a bounded midpoint between local bars and the downtown-club figure. Accommodation anchors are holistic model estimates without accommodation searches and are low confidence. The FX observation is the 20 March 2026 RBA figure reported in a search excerpt of the RBA exchange-rates page; I did not retrieve newer RBA observations, so the rate is about seven months old as of 2026-10-16.",
+  "comparable_city_reasoning": "No formal comparable city was substituted. Food and drink anchors are anchored to Cuenca-specific crowdsourced comparison pages, with local informal-eatery pricing reasoned from the lower end of those ranges. Cuenca is a mid-sized Andean city in a dollarized economy, so accommodation anchors are set against the regional Andean mid-sized city tourist-hotel market from general knowledge, without live listings.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 3.25,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 65.00
+  }
+}

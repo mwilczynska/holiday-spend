@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregator and travel-guide figures, which are mixed in quality and partly crowd-sourced; restaurant anchors are moderately reliable and beer, cocktail and wine are the least certain. Accommodation anchors are holistic model estimates for July peak season, not checked against live listings. The FX value is the 15 Oct 2026 4pm RBA overview figure; a 16 Oct figure seen only on a third-party site was not used. Euro-based food and drink figures were converted using a same-day third-party EUR/USD cross, so they carry a small additional error.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Lyon-specific aggregated price guides, cross-checked against typical French bistro and café ranges; the cocktail and wine anchors were checked against the beer price relationship. Accommodation anchors are modeled on comparable mid-sized French cities with strong summer tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.18,
+    "coffee": 4.15,
+    "inexp_meal_1p": 17.96,
+    "midrange_meal_2p": 80.84,
+    "cocktail": 12.35,
+    "wine_glass": 6.74,
+    "hostel_dorm_1p": 39.30,
+    "hostel_private_2p": 106.67,
+    "hotel_1star_2p": 89.82,
+    "hotel_3star_2p": 179.65
+  }
+}

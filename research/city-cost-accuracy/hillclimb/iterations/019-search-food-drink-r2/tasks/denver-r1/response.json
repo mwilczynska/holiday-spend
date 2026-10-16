@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors draw on crowdsourced Expatistan and Numbeo figures and older Westword snapshots (2017 and 2022), so they are rough. Inexpensive meal (~$20/person) is the best-supported restaurant anchor. Cappuccino ($5.50) is cross-checked against Expatistan (~$6) and undated Toast menu listings ($3.75 to $5.50). Beer ($7.00) and cocktail ($15.00) are checked against Expatistan's Denver figures ($8 pub beer, $16 downtown cocktail) and 2022 Westword figures. No current Denver wine-by-the-glass figure was found, so wine_glass ($13.00) is a bounded estimate based on the beer and cocktail relationship and typical US restaurant pours; treat it as low confidence. The mid-range two-person meal ($130) is a holistic estimate, since the sources conflict ($88 in 2022 including wine, about $156 in Expatistan's expat-area estimate). All four accommodation anchors are holistic model estimates for July peak season. No booking pages or current listings were inspected. FX: the 0.6955 observation for 15 October 2026 was reported in an RBA Exchange Rates Overview search summary. I did not read the RBA table directly, and a 7 to 9 October range was also reported. An earlier March 2026 RBA snapshot was stale and not used.",
+  "comparable_city_reasoning": "Denver-specific crowdsourced restaurant and drink data where available, with US metro norms for wine and mid-range dining. Accommodation is a holistic estimate from general knowledge of Denver summer hotel and hostel rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 240.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are rough aggregates from UK national figures and crowd-sourced Cardiff comparison data, several of them dated or from small samples, so they are bounded estimates rather than current menu surveys. The cappuccino figure is a Cardiff mid-range café estimate and the wine glass figure is a restaurant-level estimate. Cocktail and wine use the UK venue and ONS ranges, with the beer and meal anchors checked against the Cardiff pub and restaurant sources. Accommodation anchors are holistic model estimates from general knowledge and city context, with no live listings inspected. GBP values were converted at an assumed 1.30 USD per GBP that was not taken from a searched source. FX observation: the 0.6955 AUD/USD figure came from a search snippet of the RBA exchange rates overview page for 15 October 2026 (4.00 pm); I did not open the page or the F11.1 table, and a 16 October figure may already exist.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors are based on UK national averages and mid-sized UK city context, with Cardiff-specific crowd-sourced figures where available. London pricing was not used as a baseline.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.02,
+    "coffee": 4.55,
+    "inexp_meal_1p": 15.60,
+    "midrange_meal_2p": 104.00,
+    "cocktail": 13.65,
+    "wine_glass": 8.45,
+    "hostel_dorm_1p": 39.00,
+    "hostel_private_2p": 84.50,
+    "hotel_1star_2p": 97.50,
+    "hotel_3star_2p": 169.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and coffee anchors rest on Lucerne-specific 2026 aggregated guides (combien-coute.net) and a Numbeo Lucerne meal figure seen only in a search snippet, cross-checked against Swiss-wide Empa averages and Numbeo Walenstadt. Cocktail (no Lucerne price found) is inferred from the local beer price, roughly 2.5 to 3 times a draft beer. Wine is a rough estimate from an older Swiss forum post and the beer relationship; the St. Moritz hotel list was not used because it is a luxury outlier. Accommodation anchors are holistic model estimates from general knowledge of Lucerne's summer tourism market. No booking pages or current listings were inspected, so hostel and hotel anchors are low confidence. The RBA rate was taken from search-result text of the rba.gov.au exchange rates page and was not opened directly; the prior-day figure in the same result was 0.6955. CHF-to-USD conversion uses approximate 2026 rates.",
+  "comparable_city_reasoning": "Lucerne-specific food and drink data with Swiss-wide and Zurich/Geneva cross-checks for restaurant and coffee prices. Accommodation uses a Lucerne-in-July holistic estimate, not a comparable-city listing study.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.00,
+    "coffee": 6.50,
+    "inexp_meal_1p": 44.00,
+    "midrange_meal_2p": 138.00,
+    "cocktail": 25.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 70.00,
+    "hostel_private_2p": 175.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 340.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors come from several secondary sources (Expatistan, Combien-coute/Numbeo-based averages, Radical Storage, migaku, and a Numbeo table) that are dated 2025-2026 and partly crowd-sourced; the cocktail is a single-source citywide figure and the wine glass is inferred from the beer anchor because no direct Zurich wine price was found. Accommodation anchors are holistic model estimates from general knowledge and the Swiss city context, not from any search or live booking page. CHF figures were converted to USD at an assumed rate of about 1.25 USD per CHF, which is not a sourced rate and should be updated. The FX observation (0.6947 USD per AUD for 2026-10-16) came from a search snippet describing the RBA exchange-rates page; I did not open the page to confirm the figure.",
+  "comparable_city_reasoning": "Based on Zurich-specific price sources for food and drink, which rank Zurich among the most expensive Swiss and European cities for eating out. Accommodation is estimated from Zurich's general high hotel and hostel price level in peak summer, with no price search performed.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.38,
+    "coffee": 8.13,
+    "inexp_meal_1p": 31.25,
+    "midrange_meal_2p": 143.75,
+    "cocktail": 23.75,
+    "wine_glass": 11.88,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 175.00,
+    "hotel_1star_2p": 200.00,
+    "hotel_3star_2p": 325.00
+  }
+}

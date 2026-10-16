@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors rest on several sources that roughly agree (Numbeo, Wise, KoronaPay, a Cyprus-wide survey), but some are crowdsourced or dated, and Numbeo's page has user comments flagging outdated data. Drink anchors are weaker: the cappuccino figure is well corroborated, but beer and cocktail come from a mix of menus, aggregators and an undated café-bar review, and the wine glass is derived from the local beer relationship because the only direct wine figure (EUR 2) is undated and likely stale. Cocktail uses a beer-relationship basis (about 2.5x a draft beer) with the undated 'from EUR 5' review as a floor. Accommodation anchors are holistic model estimates for July peak season; no live booking pages or listings were inspected. EUR figures were converted to USD at about 1.17, implied by Wise's USD figures for Paphos; no live exchange rate was checked. The fx observation is the most recent one the search surfaced (20 March 2026, about seven months before the generation date), not a confirmed latest value; the rate was reported in search output and I did not open the RBA page or its CSV to verify it.",
+  "comparable_city_reasoning": "Anchored to Paphos-specific restaurant data (Numbeo: inexpensive meal about EUR 15, three-course dinner for two about EUR 60, cappuccino about EUR 3.24, domestic draft about EUR 3.50; cross-checked against Wise USD figures and a Cyprus-wide survey indicating lower meal prices, and KoronaPay's Numbeo-based summary). Drinks use the same local price level. Accommodation is a holistic estimate benchmarked to coastal southern European resort towns in July peak season, with Paphos treated as a relatively affordable Cypriot resort.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 140.00
+  }
+}

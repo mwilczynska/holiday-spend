@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from crowd-sourced guides and one Algarve bar-price study, which disagree on beer and wine, so they are less certain than the restaurant meal figures. Cocktail rests on a single undated guide. Accommodation anchors are holistic model estimates for July peak season and were not checked against live listings. The EUR-to-USD conversion used a rate of about 1.12 USD per EUR, derived from an RBA AUD/USD observation and a third-party AUD/EUR figure for 16 Oct 2026 that I could not verify. The FX observation is the RBA AUD/USD 0.6955 for 15 Oct 2026, as shown on the RBA Exchange Rates Overview page in search results; I did not open the page itself.",
+  "comparable_city_reasoning": "Algarve resort-town basis: Albufeira-specific cost-of-living guides, Algarve restaurant and bar price reports, and Faro and Alvor comparisons for drinks. Accommodation uses a holistic estimate of summer-peak resort pricing in the Algarve, with no listing searches.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.08,
+    "coffee": 2.52,
+    "inexp_meal_1p": 13.44,
+    "midrange_meal_2p": 53.76,
+    "cocktail": 8.96,
+    "wine_glass": 4.76,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 150.00
+  }
+}

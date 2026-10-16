@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors come from secondary, partly undated sources: Numbeo-style national Greek figures, Crete and Chania taverna guides, and Athens bar guides. No Rethymno-specific price was found, so the figures are adjusted to a Cretan tourist-town basis. Beer, cocktail and wine are the weakest. Cocktail and wine were set from the local beer and taverna price range, as the source data was thin. Accommodation values are holistic model estimates for July high season, not checked against live listings. EUR to USD conversions use an assumed rate of about 1.15, which is not a sourced rate. The FX observation is not the latest available on the generation date. The only RBA figure I found is dated 2026-03-20 and came from search-result text, not from a page I read, so it should be verified against the RBA page before use.",
+  "comparable_city_reasoning": "No Rethymno-specific price source found. Restaurant and coffee anchors are based on Greek national figures and Chania/Crete taverna guides. Beer, cocktail and wine are cross-checked against Athens bar and taverna ranges. Rethymno is treated as a mid-sized Cretan resort town with a tourist-area uplift. Accommodation is based on general knowledge of Cretan coastal towns in July peak season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 3.70,
+    "inexp_meal_1p": 12.65,
+    "midrange_meal_2p": 57.50,
+    "cocktail": 11.50,
+    "wine_glass": 6.30,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 155.00
+  }
+}

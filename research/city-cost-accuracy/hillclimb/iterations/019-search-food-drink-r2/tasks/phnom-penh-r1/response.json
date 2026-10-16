@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium-to-low confidence. Restaurant and coffee anchors rest on a crowd-sourced MyLifeElsewhere comparison (page updated July 2026), an IPS Cambodia guide (updated February 2023), an Expatistan cappuccino estimate (May 2024), a Kaffe Phnom Penh Foodpanda listing, and a forex comparison site. Cocktail and wine anchors are weaker: the Expatistan cocktail estimate (May 2024, 9 data points) and undated bar guides conflict, and the wine figure is based on starting per-glass prices from bar listings, not verified menus. Beer uses the MyLifeElsewhere pint average (about 1.21 USD) and the IPS pub beer figure (about 1.01 USD), adjusted up for restaurant service. Accommodation anchors are holistic model estimates from general knowledge and the city context; no accommodation searches were run and no live booking pages or current listings were checked. FX is weak: the one RBA search did not open the RBA page. The 0.7088 USD per AUD value for 2026-03-20 came from the search summary, not a page read, and is about seven months older than the 2026-10-16 generation date, so it is not the latest observation. Third-party rates of about 0.6984 (10 Oct 2026) and 0.6928 (1 Oct 2026) are not RBA data and were not used. The FX value needs verification against the RBA F11 table before use.",
+  "comparable_city_reasoning": "Benchmarked against dollarised Southeast Asian tourist capitals and cities such as Siem Reap and Ho Chi Minh City, then adjusted to the Phnom Penh price points found in the searches (cappuccino about 2.5 to 2.8 USD, basic restaurant meal about 5 USD including drink, bar cocktails about 4.5 to 9 USD, wine by the glass starting at about 4.75 to 6.70 USD). Accommodation tiers are general SEA budget-to-3-star benchmarks.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 26.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 55.00
+  }
+}

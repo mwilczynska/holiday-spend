@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant and coffee anchors rest on several third-party aggregated sites (Expatistan, trek.zone, combien-coute.net, Intravel, city guides) with uneven and sometimes undated figures. Cocktail and wine are weaker: the cocktail is set near a single Expatistan club average (about EUR 11), and the wine glass is set from a retail bottle average (about EUR 9) adjusted to a restaurant glass. Both were cross-checked against the local beer relationship (cocktail about 2x beer, wine glass about 1.7x beer), so treat them as low-to-medium confidence. Beer is a 0.5 L domestic draught in a restaurant, anchored to about EUR 4.80 (Expatistan pub average), with tourist-core and Old Town prices likely higher. The three-course mid-range meal for two (no drinks) is a bounded estimate from mid-range per-person ranges of EUR 15-35, not a direct price. All four accommodation anchors are holistic model estimates from general knowledge for July peak season; no accommodation search was run and no live listings or booking pages were inspected. The EUR-to-USD conversion (about 1.15) was assumed, not searched, so it adds uncertainty to every food and drink anchor. The FX observation (0.6947 USD per AUD, 2026-10-16) comes from a search-result summary of the RBA exchange rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Tallinn is treated as a Baltic capital with restaurant and drink prices somewhat below Helsinki (per a koda.ee comparison) and in the mid-range of European mid-sized capitals. Numbeo's 2025 cost-of-living index places Tallinn 138th of 327 cities (score 52.7, New York City = 100), which supports this mid-to-lower European positioning. Accommodation is benchmarked to general July tourist-season rates for comparable Central and Northern European capitals, without a live check.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.50,
+    "inexp_meal_1p": 11.50,
+    "midrange_meal_2p": 71.00,
+    "cocktail": 11.50,
+    "wine_glass": 9.20,
+    "hostel_dorm_1p": 34.50,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 103.50,
+    "hotel_3star_2p": 161.00
+  }
+}

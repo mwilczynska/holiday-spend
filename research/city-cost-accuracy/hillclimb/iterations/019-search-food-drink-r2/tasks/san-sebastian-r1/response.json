@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors rest on a few weekday menu del dia listings, a crowd-sourced beer average (8 data points), and a generic 2026 budget guide. Those sources are mostly undated blogs or single venues, not official price lists. No 2026 cappuccino or cocktail price was found, so coffee and cocktail are bounded estimates; cocktail is set from a typical multiple of the beer anchor plus a premium-bar anecdote. Wine is from a blog (about EUR 2 a glass) and txakoli pricing, adjusted upward for restaurant service. Accommodation is a holistic model estimate for July peak season with no search and no check of live listings. The EUR-to-USD step uses an assumed rate of about 1.15 from general knowledge, not from a search, so the USD values carry that FX uncertainty. The FX observation is the RBA USD mid-point for 15 October 2026 (4.00 pm).",
+  "comparable_city_reasoning": "Priced as a Basque coastal Spanish tourist city, benchmarked to typical Spanish tourist-city restaurant and bar prices, with a premium adjustment for high summer demand. Accommodation is set from general knowledge of peak-season Spanish coastal tourist rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.03,
+    "coffee": 2.99,
+    "inexp_meal_1p": 17.25,
+    "midrange_meal_2p": 59.80,
+    "cocktail": 12.65,
+    "wine_glass": 3.45,
+    "hostel_dorm_1p": 51.75,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 126.50,
+    "hotel_3star_2p": 218.50
+  }
+}

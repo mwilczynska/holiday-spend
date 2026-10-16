@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on aggregated Greek island price ranges from travel and price-comparison sites, converted from EUR at an approximate general-knowledge rate of about 1.15 USD per EUR that I did not verify. Wine is inferred from the beer relationship because no Rhodes wine-by-the-glass price was found. Cocktail is from one aggregator's range. Accommodation anchors are holistic model estimates for July peak season, not checked against live listings. The FX observation was taken from an RBA overview page surfaced in search results; I did not open the page directly.",
+  "comparable_city_reasoning": "Benchmarked to Rhodes Town as a Dodecanese island tourist hub, using Greek island tourist price ranges for food and drink. Accommodation is judged against typical peak-season pricing in other mid-sized Greek island resort towns, such as Corfu.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.18,
+    "coffee": 4.37,
+    "inexp_meal_1p": 13.80,
+    "midrange_meal_2p": 59.80,
+    "cocktail": 11.50,
+    "wine_glass": 4.95,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 150.00
+  }
+}

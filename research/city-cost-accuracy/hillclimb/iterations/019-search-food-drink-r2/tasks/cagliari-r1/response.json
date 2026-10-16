@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on several aggregated Cagliari-specific sources (Citycost, Expatistan, Whereandwhen, Combien-coûte) and are medium confidence. Cocktail and wine have no direct Cagliari data; they are set from the local beer price (cocktail about 2x beer, wine about 1.1x beer) and are lower confidence. Hostel and hotel anchors are holistic model estimates from general knowledge, not checked against live listings, and are lower confidence. The FX observation is the 2026-03-20 RBA figure from a search summary of the RBA page; it is about seven months old and I could not confirm a later observation. The EUR-to-USD conversion uses an assumed rate of 1.15 that I did not verify by search. Sources disagree on beer (about EUR 4.3 to 5.1) and cappuccino (about EUR 1.5 to 1.8), so the anchors sit near the middle of those ranges.",
+  "comparable_city_reasoning": "No comparable city was needed for the food and drink anchors, which use Cagliari-specific aggregated price sources. Cocktail and wine are derived from the Cagliari beer anchor using the local price relationship described above. Accommodation is a holistic estimate for a mid-sized southern Italian coastal city in July tourist season, informed by general knowledge and not by any accommodation search.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.18,
+    "coffee": 1.96,
+    "inexp_meal_1p": 18.40,
+    "midrange_meal_2p": 80.50,
+    "cocktail": 10.35,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 34.50,
+    "hostel_private_2p": 80.50,
+    "hotel_1star_2p": 86.25,
+    "hotel_3star_2p": 161.00
+  }
+}

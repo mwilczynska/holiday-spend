@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors come from web snippets from travel-cost sites and one consumer-group report, not audited price surveys. Restaurant anchors (meal, coffee, beer, wine) are medium-quality; the cocktail is a weak estimate based on a beer-relative basis and club prices from other cities. Accommodation is a holistic model estimate with no search, reflecting July peak demand from the Cinque Terre gateway, and was not checked against live listings. EUR figures were converted at an assumed 1.15 USD per EUR from general knowledge, not a sourced rate. The RBA observation could not be verified: the search returned third-party OFX pages, not an rba.gov.au table, so the fx fields are null rather than guessed.",
+  "comparable_city_reasoning": "Basis is Italian mid-sized coastal cities rather than major tourist cities. Search snippets put La Spezia restaurant meals below Rome and Milan and near Italian small-town levels, but Cinque Terre proximity and July demand push up lodging and some tourist-zone drinks. Cocktail uses about 2x the estimated draft beer price, cross-checked against Expatistan club prices in Milan, Rome and Turin (about EUR 10 to 13).",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 2.00,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 86.00,
+    "cocktail": 11.50,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 34.50,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 98.00,
+    "hotel_3star_2p": 172.50
+  }
+}

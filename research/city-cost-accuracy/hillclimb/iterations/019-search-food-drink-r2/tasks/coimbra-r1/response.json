@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on several aggregator figures (Numbeo, Expatistan, combien-coute, idealista) that agree reasonably well, but they are crowd-sourced or small-sample. Cocktail is derived from the local beer price and wine glass is an estimate; no direct Coimbra cocktail or per-glass wine data was found. Accommodation anchors are holistic model estimates for July peak season, not based on any searched or live listings. EUR amounts were converted to USD at an approximate EUR/USD of 1.12, taken from a third-party cross rate. FX: the 2026-10-15 value of 0.6955 was reported in a search result citing the RBA exchange rates page; I did not open that page directly.",
+  "comparable_city_reasoning": "Coimbra-specific aggregator data for restaurant meals, cappuccino, draft beer and table wine, cross-checked across sources. Cocktail price set at roughly three times the local restaurant beer price, a typical ratio in Portuguese bars. Accommodation based on general knowledge of a mid-sized Portuguese university city in summer, compared with other mid-sized Portuguese cities.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 1.79,
+    "inexp_meal_1p": 11.20,
+    "midrange_meal_2p": 44.80,
+    "cocktail": 8.40,
+    "wine_glass": 3.92,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 67.20,
+    "hotel_1star_2p": 72.80,
+    "hotel_3star_2p": 123.20
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant and beer anchors rest on aggregated Ljubljana price guides (Numbeo-derived Combien-coute figures, Expatistan, Mylifeelsewhere) of mixed dates, and one Expatistan beer figure is from 2024. Cocktail and wine anchors are weaker: they come from bar-guide ranges and a travel blog, with cocktail set near the low-middle of the 9 to 15 EUR range. Accommodation anchors (dorm, private hostel, 1-star, 3-star) are holistic model estimates from general knowledge of Ljubljana's July demand; no booking pages or current listings were inspected, so they carry the widest uncertainty. EUR values were converted at about 1.14 USD per EUR, the rate implied by a cited conversion, not a live rate check. The FX search summary reported 0.6947 for 16 October 2026 and 0.6955 for 15 October 2026; the 16 October figure is used, but the RBA page should be checked because the two dates conflicted.",
+  "comparable_city_reasoning": "Ljubljana-specific aggregated price guides for food and drink, converted from EUR to USD. Accommodation is based on general knowledge of mid-sized Central European capitals with comparable summer tourist demand, adjusted for Ljubljana's pricing level.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.56,
+    "coffee": 3.19,
+    "inexp_meal_1p": 15.96,
+    "midrange_meal_2p": 68.40,
+    "cocktail": 11.40,
+    "wine_glass": 5.70,
+    "hostel_dorm_1p": 34.20,
+    "hostel_private_2p": 85.50,
+    "hotel_1star_2p": 79.80,
+    "hotel_3star_2p": 148.20
+  }
+}

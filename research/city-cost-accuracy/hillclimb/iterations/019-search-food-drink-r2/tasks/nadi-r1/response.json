@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are bounded estimates from aggregator and venue-level reports, not Nadi price surveys. Bear Savings figures are modeled national averages and were treated as USD. FJD figures were converted at roughly 0.46 USD per FJD from one undated source. Resort and town prices differ, and the sources conflict on local beer. Cocktail and wine were estimated from Fijian bar reports in FJD and cross-checked against beer: cocktail is about 2.3 times draft beer and wine glass about 1.7 times. Accommodation anchors are holistic model estimates from general knowledge and Nadi context. No booking pages or current listings were inspected, so they are low confidence. The FX rate comes from search-result text quoting the RBA exchange-rates page for 16 October 2026. I did not open the RBA page itself.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors follow Fiji national averages and Fijian bar and resort reports, with the resort premium reflected in the upper part of the range. Accommodation anchors reflect Nadi's mix of budget hostels, guesthouses and mid-range resort hotels, based on general knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.90,
+    "inexp_meal_1p": 4.60,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 150.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Inexpensive and mid-range meal anchors rest on Numbeo and Citycost Pisa figures that agree closely; the mid-range figure is crowd-sourced and wide-ranging. Beer and cappuccino come from the same two sources plus Expatistan, with a small allowance for table service in central Pisa. Cocktail and wine are weaker: no Pisa-specific data was found, so they are scaled from Expatistan downtown-club cocktail estimates for Rome, Turin and Venice, and a travel FAQ's casual-restaurant wine estimate, with beer used as the local price check. Hostel and hotel anchors are holistic model estimates from general knowledge and the July tourist-season context, not drawn from searches or live listings. EUR amounts were converted to USD at about 1.163, the rate implied by Citycost's own EUR/USD conversions, not from an RBA observation. FX: the RBA Latest Exchange Rates table lists 0.6947 for 16 October 2026, but the RBA homepage and Exchange Rates Overview showed 0.6955 at 4.00 pm on 15 October 2026. I could not open the F11 table to confirm the final observation.",
+  "comparable_city_reasoning": "Mid-sized Tuscan university and tourist city with a Leaning Tower draw. Food and drink anchors use Pisa-specific crowd-sourced data from Numbeo and Citycost; cocktail and wine are scaled from Rome, Turin and Venice estimates. Accommodation is a holistic model estimate informed by comparable Italian mid-sized tourist cities in peak summer.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.40,
+    "coffee": 2.09,
+    "inexp_meal_1p": 20.93,
+    "midrange_meal_2p": 82.57,
+    "cocktail": 10.47,
+    "wine_glass": 5.23,
+    "hostel_dorm_1p": 37.22,
+    "hostel_private_2p": 93.04,
+    "hotel_1star_2p": 104.67,
+    "hotel_3star_2p": 203.53
+  }
+}

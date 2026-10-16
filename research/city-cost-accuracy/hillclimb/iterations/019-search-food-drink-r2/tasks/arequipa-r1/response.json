@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on crowdsourced and aggregator figures (Expatistan, Numbeo 2025 data, Tripbase) that conflict by up to about 2x for coffee and wine, so they are bounded estimates. Beer and cocktail have at least two sources; the cocktail figure rests mainly on one crowdsourced source. Accommodation anchors (dorm, private hostel, 1-star, 3-star) are holistic model estimates, not checked against live listings, and are low confidence. Sol-to-USD conversions use an assumed rate of about 3.6 PEN per USD, which was not sourced in this session. FX: the 2026-10-16 observation came from a search summary of the RBA exchange-rates page; the RBA page itself was not opened, and a related RBA overview snippet cited 0.6955 for 15 October, so verify the latest row before relying on it.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are based on Arequipa-specific sources (menu del dia reviews, Expatistan, Numbeo 2025, Tripbase) converted to USD at an assumed rate of about 3.6 PEN per USD. Accommodation anchors are holistic estimates for Arequipa's Centro Historico and general Peruvian regional hotel pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 85.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from search snippets of undated or 2025-era cost-of-living aggregators (MyLifeElsewhere, Expatistan, a Numbeo mirror), not from current menus or a verified 2026 survey. Beer and cappuccino are the best-supported. The cocktail and wine_glass anchors are estimated from the local beer price relationship (cocktail about 2.6x beer, wine glass about 1.3x beer) because direct sources were thin. Restaurant meal anchors are rough benchmarks for the local price level. Accommodation anchors are holistic model estimates from general knowledge and the city context; no accommodation searches were run and no live listings were inspected. The RON-to-USD conversion uses an assumed rate of about 4.45 RON per USD. FX: the 0.6955 USD per AUD value for 2026-10-15 was taken from a search summary that attributed it to the RBA homepage; I did not open that page directly. A third-party 0.6947 figure for 2026-10-16 was not used because it is not RBA-attributed and the RBA 4pm fixing for that date would not yet be published. Verify the value against the RBA F11.1 table before relying on it.",
+  "comparable_city_reasoning": "Domestic Romanian price levels for a mid-sized university city, cross-checked against cost-of-living comparison data for Cluj-Napoca. Accommodation is benchmarked holistically against typical July tourist-season levels for similar mid-sized Central and Eastern European cities.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.30,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.25,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 95.00
+  }
+}

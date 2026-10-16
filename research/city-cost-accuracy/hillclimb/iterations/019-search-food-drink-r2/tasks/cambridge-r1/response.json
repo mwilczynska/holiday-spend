@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from partly dated web sources (2023 to 2026) and several differ, so they are bounded estimates. Beer is the best-covered anchor. Coffee is weaker, and cocktail and wine rest on 2023-2025 UK averages adjusted upward. Restaurant anchors are approximate and the midrange meal assumes no drinks. Accommodation anchors are holistic model estimates from general knowledge and city context; no live booking pages or current listings were inspected. GBP converted to USD at an assumed 1.34 USD per GBP, since no dated October 2026 GBP/USD rate was found. The FX observation was taken from RBA table snippets in search results, not from a directly opened page.",
+  "comparable_city_reasoning": "Priced as a mid-sized English university city with strong tourist demand, using UK-wide 2025-2026 pub and restaurant averages and reported Cambridge-versus-London differences (Cambridge is generally a few percent cheaper than London). Wine glass is anchored to a UK average glass of wine and a sparkling wine benchmark, adjusted upward for restaurant markup and inflation. Accommodation uses general knowledge of Cambridge's summer room rates, which are typically high.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.24,
+    "coffee": 4.69,
+    "inexp_meal_1p": 20.10,
+    "midrange_meal_2p": 104.52,
+    "cocktail": 14.07,
+    "wine_glass": 8.71,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 250.00
+  }
+}

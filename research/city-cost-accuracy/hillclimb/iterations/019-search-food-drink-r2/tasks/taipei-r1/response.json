@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on several aggregated cost-of-living and crowdsourced figures, which vary widely and some are dated 2024. Beer, cocktail and wine anchors are lower confidence: the cocktail and wine figures come from a 2024 guide and a few venue-level data points, not current menus. The beer anchor is a bounded estimate across conflicting sources. Accommodation anchors are holistic model estimates from general knowledge and regional context; no live booking pages or current listings were inspected. The FX observation was taken from the RBA exchange-rates overview page in search results and was not checked against the F11.1 daily table. Cocktail (about 2.6 times beer) and wine (about 3.4 times beer) are roughly consistent with typical local beer-to-drink ratios.",
+  "comparable_city_reasoning": "East Asian basis: price levels benchmarked against other mid-sized Northeast Asian cities with similar local-restaurant and budget-hotel pricing, cross-checked against the aggregated Taipei food and drink figures found in search.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 9.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 120.00
+  }
+}

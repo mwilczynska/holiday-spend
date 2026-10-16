@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on 2026 UK-wide trade and cost-of-living data plus Glasgow-specific crowd-sourced points, so they are moderate quality. Cocktail and wine are weaker: the cocktail is a bounded estimate from a single low-sample Glasgow listing and survey data, and the wine anchor relies on a 2023 on-trade figure and a January 2025 ONS benchmark. Both hostel and hotel anchors are holistic model estimates from general knowledge with no live listings checked. GBP to USD uses an assumed rate of about 1.30 from general knowledge, not a searched observation. FX NOT RETRIEVED: the RBA search returned only commercial OFX pages, so no official RBA observation, date, or URL is supplied and all fx fields are null. Fill the fx block from the RBA F11 table before use.",
+  "comparable_city_reasoning": "No comparable-city basis was used. Beer and coffee are anchored to UK-wide 2026 pub and coffee-price data, with Glasgow treated as near the national average. Meals are anchored to Glasgow-specific cost-of-living points and a casual-meal range. Cocktail is set at roughly twice the pint price, consistent with the local price relationship, and cross-checked against a Glasgow Expatistan listing. Wine is set from on-trade and ONS benchmarks adjusted upward for inflation. Accommodation is a holistic model estimate for July peak season, with no accommodation searches run.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.88,
+    "inexp_meal_1p": 15.60,
+    "midrange_meal_2p": 80.60,
+    "cocktail": 13.65,
+    "wine_glass": 10.08,
+    "hostel_dorm_1p": 39.00,
+    "hostel_private_2p": 104.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 221.00
+  }
+}

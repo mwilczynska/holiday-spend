@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence: they rest on crowdsourced city figures (mainly Amsterdam, Rotterdam and Utrecht) and national averages, with Delft adjusted down for its smaller size. Cocktail and wine anchors are lower confidence and were checked against those figures. Accommodation anchors are low confidence: they are holistic model estimates for July, not checked against live listings. Euro figures were converted at an assumed rate of about 1.16 USD per EUR, which was not sourced. The FX observation is the most recent RBA figure the search returned (20 March 2026), not verified as the latest October 2026 observation; the server should refresh it.",
+  "comparable_city_reasoning": "Delft is treated as a smaller, tourist-visited Dutch university city. Food and drink anchors use Amsterdam, Rotterdam and Utrecht price points and Dutch national averages, adjusted downward for Delft. Accommodation is a model estimate from general knowledge of Delft and nearby Hague and Rotterdam pricing in peak summer, with no booking pages inspected.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.22,
+    "coffee": 4.64,
+    "inexp_meal_1p": 18.56,
+    "midrange_meal_2p": 81.20,
+    "cocktail": 14.50,
+    "wine_glass": 6.96,
+    "hostel_dorm_1p": 46.40,
+    "hostel_private_2p": 98.60,
+    "hotel_1star_2p": 116.00,
+    "hotel_3star_2p": 214.60
+  }
+}

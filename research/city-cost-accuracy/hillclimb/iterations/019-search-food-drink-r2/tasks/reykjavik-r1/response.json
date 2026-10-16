@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are corroborated across several aggregator and budget sites: mylifeelsewhere (undated, beer about ISK 1,591 to 1,651 across pages), a German travel-budget page with 2026 data (lunch about EUR 25 and three-course dinner about EUR 43 per person), a Numbeo-derived cafe cappuccino figure of about EUR 5.15, the World Travel Index dinner range, and an Expatistan cocktail average updated July 2026 from a small sample. These are approximate, not verified menu prices. Accommodation anchors are holistic model estimates from general knowledge of Reykjavik's July pricing. No accommodation searches were run and no booking pages or listings were inspected, so treat those four anchors as lower confidence. FX: the RBA search did not return a verified current observation. The only RBA figure surfaced (0.7088 on 2026-03-20) comes from a search summary, not from opening the RBA table, and is several months older than the July 2026 pricing window and the generation date. The server should refresh the FX observation before use. An OFX market rate (about 0.7024 USD per AUD on 2026-08-03) is not an RBA observation and was not used.",
+  "comparable_city_reasoning": "Iceland is a European country. Restaurant and drink anchors are based directly on the Reykjavik-specific sources above, cross-checked against the German budget site's claim that Reykjavik restaurant spending runs about 63% above Germany. Cocktail and wine anchors use the local price relationship to beer where direct data was thin: cocktail at about 1.8 times beer, wine glass at about 1.25 times beer. Accommodation is benchmarked to general knowledge of Reykjavik's high-season guesthouse, hostel and three-star hotel rates, which are among the highest in Europe for a city of its size.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.00,
+    "coffee": 6.00,
+    "inexp_meal_1p": 24.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 22.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 210.00,
+    "hotel_1star_2p": 230.00,
+    "hotel_3star_2p": 340.00
+  }
+}

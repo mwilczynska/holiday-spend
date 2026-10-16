@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are rough: they draw on dated, crowdsourced Rotorua figures (Expatistan pub beer about NZ$9 and cappuccino about NZ$4.97, both early 2025; Expat Exchange meal ranges, undated) plus 2026 NZ café and pub reports from other cities, then adjusted up for 2026 costs and the 1 July 2026 excise rise. Cocktail and wine_glass are judgement estimates, with cocktail set at about 1.6 times the beer anchor and wine at about 1.6 times the beer anchor's local price band. Accommodation anchors are holistic model estimates from general knowledge and the Rotorua tourist-town context; no booking pages or listings were inspected, so hostel and hotel anchors are low confidence. NZD figures were converted to USD using an assumed NZD/USD of about 0.63, derived from the RBA AUD rate and a typical AUD/NZD cross; no NZD rate was observed. FX provenance: the 2026-10-15 RBA figure of 0.6955 came from a search-result summary that attributed it to the RBA exchange-rates overview, and I did not open the RBA table directly. A third-party source shows 0.6947 for 16 October 2026, which is not an RBA observation and was not used.",
+  "comparable_city_reasoning": "Priced as a mid-sized NZ visitor town, roughly in line with other NZ tourist centres such as Taupo and Napier, with NZ-wide café and pub price levels adjusted for Rotorua being somewhat cheaper than Auckland or Wellington. Accommodation is based on general knowledge of the Rotorua motel, guesthouse and hostel market, not on comparable-city listings.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.56,
+    "coffee": 3.47,
+    "inexp_meal_1p": 12.60,
+    "midrange_meal_2p": 69.30,
+    "cocktail": 11.97,
+    "wine_glass": 7.56,
+    "hostel_dorm_1p": 28.35,
+    "hostel_private_2p": 75.60,
+    "hotel_1star_2p": 88.20,
+    "hotel_3star_2p": 151.20
+  }
+}

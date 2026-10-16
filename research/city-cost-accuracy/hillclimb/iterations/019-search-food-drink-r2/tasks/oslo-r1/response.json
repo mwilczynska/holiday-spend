@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors (beer, coffee, cocktail, wine, meals) come from five web searches of Oslo travel guides and the Expatistan aggregator. The sources roughly agree but are often undated or based on few data points, so these are medium-confidence. Restaurant anchors were converted from NOK at about 10 NOK per USD, which matches the USD figures the sources themselves quoted. Hostel and hotel anchors are holistic estimates from general knowledge of Oslo's July peak-season pricing. No booking pages or live listings were checked, so these are low-confidence. The RBA USD/AUD observation could not be verified: two searches returned only third-party FX sites and no RBA observation or RBA page was read, so the fx fields are null and should not be used for conversion.",
+  "comparable_city_reasoning": "No comparable city was used for the food and drink anchors; they are based on Oslo-specific sources. Accommodation anchors are holistic model estimates for Oslo in peak July season, benchmarked against general knowledge of Nordic capital hotel and hostel pricing.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 6.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 19.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 230.00
+  }
+}

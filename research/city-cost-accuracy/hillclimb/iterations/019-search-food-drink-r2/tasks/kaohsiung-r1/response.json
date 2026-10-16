@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on aggregated 2026 estimates and street-level examples, so they are moderately reliable. Beer and cocktail anchors are sparser and draw on Taipei and craft-bar data. wine_glass is derived from the beer anchor using an assumed 2.5x restaurant ratio because no NT$ wine-by-the-glass price was found. The four accommodation anchors are holistic model estimates from general knowledge; no booking pages or listings were checked. The FX rate comes from a search-result summary of the RBA exchange-rates page that I did not open directly, and the 2026-10-16 observation may not yet be published, so verify it before use. Currency conversion assumes about NT$31 per US$.",
+  "comparable_city_reasoning": "Kaohsiung is priced as a somewhat cheaper sibling of Taipei and Taichung. Cocktail and craft-beer points come from Taipei bar guides, while meal and coffee anchors use Kaohsiung-specific estimates and national or chain price points. Hostel and hotel tiers reflect general knowledge of mid-sized Taiwanese cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 10.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 90.00
+  }
+}

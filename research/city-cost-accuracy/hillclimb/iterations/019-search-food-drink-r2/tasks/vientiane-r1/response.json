@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Food and coffee anchors rest on 2026-dated cost guides (combien-coute.net, mylifeelsewhere.com) and are medium quality. Beer, cocktail and accommodation anchors come from undated or conflicting crowdsourced snippets, older kip-denominated bar reviews, and model judgement. No wine-by-the-glass price was found, so wine_glass is inferred from the beer anchor. Accommodation is a holistic model estimate with no live listings checked. The FX observation was taken from the RBA Exchange Rates Overview snippet for 15 October 2026 and matches an OFX figure for the same date, but the F11 table itself was not opened.",
+  "comparable_city_reasoning": "Priced as a lower-cost Southeast Asian capital, below Thailand and broadly in line with mid-tier Cambodian and Vietnamese cities. Luang Prabang and Vientiane tourist-area pricing were used as the reference for hostel and guesthouse tiers.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.30,
+    "coffee": 1.70,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 3.50,
+    "wine_glass": 3.90,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 45.00
+  }
+}

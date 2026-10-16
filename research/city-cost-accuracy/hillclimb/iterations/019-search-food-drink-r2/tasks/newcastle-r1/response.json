@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors are medium confidence. They rest on an undated Numbeo Newcastle page, cost-of-living blogs and a few city-level price sites, with no current Newcastle menus checked. Cocktail and wine-glass anchors are lower confidence: cocktails use city-level Melbourne, Brisbane and Adelaide figures, and the wine-glass value is a judgement from one undated single-venue wine list and the local beer-to-wine relationship. The mid-range two-person meal is the least certain food anchor because sources disagree widely. Accommodation anchors are holistic model estimates from general knowledge and regional context. No live booking pages or current listings were inspected, and no accommodation searches were run. The FX observation comes from RBA-attributed search snippets for the 16 October 2026 rate, not from opening the RBA F11.1 table, so it should be confirmed against the official RBA dataset.",
+  "comparable_city_reasoning": "Newcastle is a mid-sized coastal city in New South Wales. Its food and drink prices are benchmarked against Numbeo's Newcastle figures and national coffee and cocktail data, then set somewhat below Sydney and Melbourne and close to Brisbane and Adelaide. Hotel and hostel anchors use Newcastle's regional coastal market, between Sydney-adjacent and rural NSW rates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.34,
+    "coffee": 3.82,
+    "inexp_meal_1p": 17.37,
+    "midrange_meal_2p": 90.31,
+    "cocktail": 15.28,
+    "wine_glass": 9.73,
+    "hostel_dorm_1p": 34.74,
+    "hostel_private_2p": 90.31,
+    "hotel_1star_2p": 83.36,
+    "hotel_3star_2p": 152.83
+  }
+}

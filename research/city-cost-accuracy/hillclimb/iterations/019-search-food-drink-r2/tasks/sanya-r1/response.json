@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Food anchors rest on CityCost aggregate estimates (undated, not verified against current menus) and one undated Trip.com review of a Dadonghai pub; cocktail and wine anchors are weakly supported. Beer and cocktail are judgment calls informed by a sparse source; wine is set from the beer relationship (about 2.2x draft beer) with no direct price data. The midrange anchor is adjusted above the CityCost aggregate (about $22-25) for tourist-area pricing. Accommodation anchors are holistic model estimates from general knowledge and the Sanya resort-market context, not from live listings; July is peak domestic season, so rates may be on the high side. FX observation is the most recent RBA table I could retrieve (18-20 March 2026), which is about seven months older than the generation date; third-party August 2026 data suggests a similar level (roughly 0.70 USD per AUD), but the RBA value was not confirmed as current.",
+  "comparable_city_reasoning": "No close single comparable city was used. Food anchors draw on CityCost's Sanya aggregate with an upward adjustment for resort-area pricing; accommodation anchors are holistic estimates for a mid-sized Hainan beach resort city in peak season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 8.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 80.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "Overall low. Coffee and meal anchors rest on crowdsourced Expatistan averages, a Numbeo-derived national figure, and a chain price rise. The beer anchor is adjusted down from a dated GoEuro bar-beer average, which covers hotel bars and imported beer. The cocktail anchor blends a crowdsourced club average with an older bar listing. No direct per-glass wine price was found, so wine_glass is set at about 1.8x the beer anchor. The mid-range meal is an estimate for three courses without drinks, since the only dinner-for-two figure found included wine. All four hotel and hostel anchors are holistic model estimates for July peak season and were not checked against live listings or booking pages. NIS-to-USD conversions use about 3.05 NIS per USD, implied by conversions in the sources. The FX observation of 0.6947 for 2026-10-16 was taken from search-result text describing the RBA exchange-rate page, not from opening the page directly.",
+  "comparable_city_reasoning": "No single comparable city was used. Restaurant and drink anchors are anchored to Tel Aviv-specific sources (Expatistan crowdsourced averages, a Numbeo-derived Israel average, Aroma chain pricing, a GoEuro beer index cited by Tablet Magazine, and bar listings). Accommodation anchors are holistic model judgment reflecting Tel Aviv's high coastal hotel pricing in summer, without a comparable-city calibration.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.90,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 131.00,
+    "cocktail": 16.50,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 230.00
+  }
+}

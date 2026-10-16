@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on regional Japanese price listings and one Tottori cost-of-living comparison, so they are moderately reliable. Beer, cocktail and wine are weaker: they use Tokyo and hotel-bar examples adjusted down for a smaller city. Both accommodation anchors are holistic model estimates from general knowledge; no live booking pages or listings were checked. The FX observation comes from a search summary that cites the RBA exchange-rates page; I did not read that page directly, and a third-party feed (OFX, 0.695572 for 15 Oct 2026) is consistent with it. Yen figures were converted at roughly 160 JPY per USD.",
+  "comparable_city_reasoning": "Treated as a regional Japanese prefectural capital on the Sea of Japan coast. Restaurant and coffee anchors are benchmarked to Tottori-specific cost-of-living comparisons and to regional cafe listings from cities such as Akita, Kofu, Shizuoka and Kitakyushu. Tokyo and hotel-bar prices were used only as upper reference points for drinks.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.75,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 44.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 88.00
+  }
+}

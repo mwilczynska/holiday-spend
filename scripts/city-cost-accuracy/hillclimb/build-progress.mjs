@@ -34,6 +34,7 @@ const E = [
   ['R2', '101-v11-luna-r2-cal-region', '101-v11-luna-r2', 'Production model (GPT-6 Luna) + region correction', 'model'],
   ['R2', '020-luna-haiku-ensemble-r2-cal-region', '020-luna-haiku-ensemble-r2', 'Luna and Haiku averaged', 'model'],
   ['R2', '021-luna-country-calibration-r2', null, 'Luna + correction per country', 'calibration'],
+  ['R2', '022-bundle-luna-search-country', '102-search-food-drink-luna-r2', 'Bundle: Luna + food/drink search + country correction', 'bundle'],
 ];
 
 const it = id => path.join(hcRoot, 'iterations', id);

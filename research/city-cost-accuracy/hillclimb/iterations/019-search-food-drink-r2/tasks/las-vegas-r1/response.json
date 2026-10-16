@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and bar anchors rest on Las Vegas-specific aggregated sources: Square menu-pricing averages, cost-of-living guides, and venue menus. Several are dated or crowdsourced. Coffee draws on a 2023 citywide cappuccino figure and independent cafe listings, adjusted upward for July 2026. Meal anchors are cross-checked against Expatistan, MyLifeElsewhere and WhereAndWhen estimates, and cocktail and wine ranges come from Square, Ole Red and cost guides, so they are moderately reliable. Accommodation anchors are holistic model estimates from general knowledge and Las Vegas seasonality. Live booking pages and current listings were not inspected. The FX observation is the only RBA value with a date that I could find (2026-03-20, 0.7088). A newer RBA observation could not be confirmed, so the as_of_date is about seven months older than the 2026-10-16 generation date. FX does not affect the USD anchors.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on direct Las Vegas price ranges and averages, with US cost-of-living comparisons used only as cross-checks. Accommodation anchors reflect the general North American Las Vegas market for a July window.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 15.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 190.00
+  }
+}

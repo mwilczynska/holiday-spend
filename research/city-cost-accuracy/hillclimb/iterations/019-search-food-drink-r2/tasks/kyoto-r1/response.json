@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough estimates from a few searches: some sources are undated or from 2021-2024, the wine figure rests on a single review, and yen prices were converted at an approximate rate. Cocktail and wine anchors use the beer-based price relationship, since direct evidence is weak. Accommodation anchors are holistic model estimates from general knowledge and July peak-season context (Gion Matsuri), not from live listings. The FX observation is dated 2026-03-20 and was taken from a search summary of the RBA exchange-rates page; I did not confirm it against the page or verify that it is the latest observation.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are based on Japanese national and Tokyo/Osaka benchmarks, adjusted toward Kyoto-specific izakaya, cafe, and hotel-bar listings. Accommodation is a holistic estimate for a tourist-heavy Japanese city in July.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.40,
+    "coffee": 3.75,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 8.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 240.00
+  }
+}

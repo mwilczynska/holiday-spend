@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on undated, mixed-quality web sources (a cost-comparison site, travel blogs, a budget guide) and are rough. Beer is the most direct anchor. Cocktail and wine are partly inferred from the local price relationship to beer and from a single upscale cocktail price, so treat them as lower confidence. Coffee is from general Canggu cafe ranges, not a verified cappuccino price. Accommodation anchors are holistic model estimates from general knowledge and the Canggu context; no live booking pages or current listings were inspected. Sources disagree on the rupiah rate (roughly IDR 15,800 to 18,000 per USD), so USD figures will move with the currency. Wine and cocktail prices are assumed to be listed menu prices; service charge and tax (which can add about 20% or more) are not included. FX provenance: the 0.6947 figure was taken from third-party reporting of the RBA mid-point for 2026-10-16, cross-checked against snippets of RBA exchange-rate pages that showed nearby values (0.7002 and 0.6955). I did not open the RBA F11.1 table directly, so the as_of_date and rate should be verified against that table before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Pricing was anchored to Bali and Canggu-specific ranges from the searches (warung and cafe meal ranges, a Canggu draft beer price, and an upscale Canggu cocktail price), then cross-checked against general Southeast Asian beach and tourist-hub pricing. Accommodation was estimated holistically for Canggu's guesthouse, hostel and villa-hotel market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.80,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 75.00
+  }
+}

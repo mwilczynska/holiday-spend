@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded from mixed, dated sources: crowd-sourced cost-of-living listings, an aggregator citing Numbeo-style data, a nightlife travel guide, an older travel blog, and one wine-bar listing for the wine glass. Beer and cappuccino are the best-supported anchors. The inexpensive and mid-range meal anchors are the least certain food figures; the mid-range meal is a bounded estimate. Accommodation anchors are holistic model estimates from general knowledge and the city context, not based on inspected booking pages or current listings. The FX observation is the most recent RBA-sourced observation I could confirm (2026-03-20), not a verified observation for the generation date, so it may be stale. Local prices were converted at roughly 54 MKD per USD, implied by the conversions in the cost-of-living sources.",
+  "comparable_city_reasoning": "Priced from Skopje-specific local menu and cost-of-living data (denar prices), with accommodation set from general knowledge of Skopje's position as a low-cost European capital, below Western European capitals and broadly in line with other Balkan capitals.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.95,
+    "coffee": 2.30,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 31.00,
+    "cocktail": 5.90,
+    "wine_glass": 3.70,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 46.00,
+    "hotel_3star_2p": 92.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and beer anchors rest on aggregator and travel-guide price points, some dated 2024 and not all in USD, converted at roughly 58 PHP per USD. Coffee and the inexpensive and mid-range meal anchors are bounded estimates from those ranges. Cocktail and wine are inferred from the beer anchor, with no direct El Nido drink prices found. Accommodation anchors are holistic model estimates with no accommodation searches or live listing checks. FX uses the 2026-10-15 RBA observation (0.6955), which is corroborated by the RBA overview page. A 0.6947 value for 2026-10-16 appeared in one search result table with stale-looking metadata and possibly provisional status, so it was not used.",
+  "comparable_city_reasoning": "Basis is Philippine island tourist-town price levels (El Nido town restaurants, carinderia and mid-range guide ranges, and Philippine menu-price context), adjusted upward for beach-area tourist venues. Accommodation is a model estimate for a high-demand Palawan tourist town.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 6.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 95.00
+  }
+}

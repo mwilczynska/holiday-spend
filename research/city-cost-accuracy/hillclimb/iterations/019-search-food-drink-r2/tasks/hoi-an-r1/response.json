@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer/coffee anchors rest on several 2026-dated or recent aggregator sources that disagree by roughly 20-50%, so treat them as rough ranges. Cocktail anchors come from scattered undated bar listings. The wine_glass anchor has no direct Hoi An evidence and is inferred from the beer anchor. Accommodation anchors are holistic model estimates from general knowledge and the Hoi An tourism context; no accommodation searches or live listings were checked. FX is the most recent RBA observation I could confirm (2026-03-20, taken from search-result excerpts of the RBA table, not a direct page read). It is several months older than the 2026-10-16 generation date, and I could not confirm a later RBA observation.",
+  "comparable_city_reasoning": "No formal comparable-city model. Basis is Vietnamese domestic price levels with a tourist-town premium, benchmarked against Da Nang and other central Vietnamese coastal tourism towns. Hoi An's Old Town and An Bang beach bars are priced above local Vietnamese venues, which is reflected in the cocktail and mid-range meal anchors.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.20,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 55.00
+  }
+}

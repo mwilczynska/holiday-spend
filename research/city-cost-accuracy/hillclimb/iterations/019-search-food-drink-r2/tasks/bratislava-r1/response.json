@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on crowd-sourced comparison sites and some undated or 2025 figures, cross-checked against each other. Wine by the glass was not found directly; it is inferred from 2026 bottle prices and a typical glass-to-bottle relationship. Cocktail rests on a few Expatistan data points, and the cocktail-to-beer ratio is consistent with local pricing. Accommodation anchors are holistic model estimates from general knowledge and the Central European city context. No accommodation searches or live listings were used. Beer is assumed to be a 0.5 L draft. The RBA rate was taken from search-result summaries of the RBA exchange-rate table for 16 October 2026, not from opening the table directly. The EUR-to-USD bridge is derived from the RBA's USD per AUD and EUR per AUD quotes for the same date.",
+  "comparable_city_reasoning": "Central European capital basis, calibrated to Bratislava's own reported restaurant and drink prices, which sit below Vienna and close to other mid-sized Central European capitals such as Prague, Budapest and Ljubljana. Accommodation tiers are holistic estimates for a July 2026 mid-summer window.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.92,
+    "coffee": 3.14,
+    "inexp_meal_1p": 10.11,
+    "midrange_meal_2p": 53.89,
+    "cocktail": 6.74,
+    "wine_glass": 5.05,
+    "hostel_dorm_1p": 24.70,
+    "hostel_private_2p": 56.14,
+    "hotel_1star_2p": 61.75,
+    "hotel_3star_2p": 117.89
+  }
+}

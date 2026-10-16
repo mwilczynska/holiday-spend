@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors come from search-result snippets and summaries; I did not open any of the pages. Cocktail and beer rest on Expatistan crowd-sourced estimates (beer based on 8 price points), with a Center City happy-hour cross-check. Cappuccino is inferred from a campus menu and Toast listings, plus a 2025 Inquirer median for plain coffee. Wine is the weakest anchor: it rests on a 2018 magazine column and anecdotes, inflated to 2026 by judgment. Inexpensive and mid-range meal anchors draw on mylifeelsewhere, Expatistan and Whereandwhen figures of mixed and uncertain dates. Accommodation anchors are holistic model estimates from general knowledge of Philadelphia July demand. No accommodation search was run and no live listings were checked. FX: the 2026-10-16 rate was taken from a search summary of the RBA exchange-rates page, which I did not open. That value is a same-day 4pm Sydney publication and should be confirmed on the page before use.",
+  "comparable_city_reasoning": "No substitute city was used; all food and drink anchors are Philadelphia-specific, with Washington DC noted only as a rough price reference point. Accommodation anchors are holistic estimates for a large US city with July tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 14.50,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 300.00
+  }
+}

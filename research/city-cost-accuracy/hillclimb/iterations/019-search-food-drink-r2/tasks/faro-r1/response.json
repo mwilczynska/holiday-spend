@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal anchors rest on several aggregated sources (Numbeo-based and guide-based ranges) and are the strongest. Coffee and beer are cross-checked against Portuguese national and Albufeira averages, but no Faro-specific 2026 beer price was found. The cocktail anchor rests on one small, dated Faro sample (October 2025) and the beer relationship. The wine anchor rests on one undated, unlocated restaurant menu and judgment. Hostel and hotel anchors are holistic model estimates from general knowledge and the city context. They were not checked against live listings and assume July peak-season pricing, so they are the least certain. Euro-based figures were converted at roughly 1.14 USD per EUR, an approximate rate. The FX observation is the RBA AUD/USD figure for 15 October 2026, taken from a search excerpt of the RBA exchange rates page and not from a page I opened in full.",
+  "comparable_city_reasoning": "Faro is priced on its own restaurant aggregates. Coffee and beer are cross-checked against the Portuguese national cappuccino average and Albufeira, a coastal Algarve resort town. Cocktail and wine use the local beer relationship because direct data was thin. Accommodation is a holistic estimate benchmarked to coastal Algarve summer pricing and general knowledge, not to any inspected listings.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.85,
+    "coffee": 2.50,
+    "inexp_meal_1p": 13.70,
+    "midrange_meal_2p": 45.60,
+    "cocktail": 10.25,
+    "wine_glass": 5.70,
+    "hostel_dorm_1p": 34.20,
+    "hostel_private_2p": 91.20,
+    "hotel_1star_2p": 85.50,
+    "hotel_3star_2p": 159.60
+  }
+}

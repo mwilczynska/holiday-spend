@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from search-result summaries (komodoresort.com, sologuides.com, globalcostdata.com, championtraveler.com, a Komodo budget guide) and a few other travel sites. Those sources are mixed in age and quality, and I did not open the pages. Beer and cappuccino are triangulated from a Bintang price of $3-5, a cafe coffee of $2-4, and a Rp 20,000-40,000 local cafe price. Restaurant meal anchors are rough, since the sources conflict by up to about 2x. Cocktail and wine_glass are estimated from the local beer relationship: the cocktail is about 2x beer, the wine glass about 2.5-3x beer because of import duty. Accommodation anchors are holistic model estimates from general knowledge of Labuan Bajo, a high-demand Flores tourism town. No booking pages or current listings were inspected. July is peak dry-season demand, so these rates may run above the annual average. FX caveat: the only RBA USD observation I could find is dated 2026-03-20, about seven months before today (2026-10-16), and it came from a search-result summary; I did not verify the live F11 table. Treat the FX observation as stale and unverified until refreshed.",
+  "comparable_city_reasoning": "Priced against tourist-facing Indonesian destinations, mainly Bali's resort-adjacent areas, adjusted down for Labuan Bajo's smaller and more limited market and the higher cost of imported goods. Local warung and Indonesian beer prices anchor the low end. Lodging is a holistic estimate with no per-property comparison.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 6.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 90.00
+  }
+}

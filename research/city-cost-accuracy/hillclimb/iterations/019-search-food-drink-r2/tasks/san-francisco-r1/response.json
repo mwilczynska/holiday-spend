@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Food and drink anchors come from San Francisco-specific aggregated sources (Cities Insider, Square, Whereandwhen, SF Standard, LifeIndexed) that mix years and methods, so treat them as planning benchmarks. Cappuccino rests on a single Cities Insider figure, and cocktail and wine are bounded by the sources' ranges. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings. One search strayed into accommodation against the instructions; I did not rely on its results for these figures. FX: the RBA page snippet found only shows 0.7088 USD per AUD for 2026-03-20, which is stale relative to the 2026-10-16 generation date. I could not retrieve a more recent RBA F11 row, and the server should treat this observation as stale. Third-party sites show roughly 0.69 to 0.70 for later 2026 dates, but those are not RBA figures and were not used.",
+  "comparable_city_reasoning": "No comparable city used. Food and drink anchors are based on San Francisco aggregated price sources. Accommodation anchors are a holistic San Francisco estimate from general knowledge, reflecting its high lodging costs.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.70,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 16.00,
+    "wine_glass": 18.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 175.00,
+    "hotel_3star_2p": 290.00
+  }
+}

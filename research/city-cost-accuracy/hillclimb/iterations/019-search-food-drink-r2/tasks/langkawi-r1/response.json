@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Six searches were run. Restaurant anchors draw on travel guides and one Malaysian coffee price site, with no 2026 Langkawi restaurant survey. Beer and wine come from a cost-of-living aggregator whose bottle and bar figures conflict. Cocktail is derived from the beer anchor because no cocktail prices were found. Hostel dorm and private-room anchors come from 2024-or-later listing snapshots, not live prices. Both hotel anchors are holistic model estimates from general knowledge and the Langkawi context, not from inspected listings or searches. The FX observation is the latest RBA figure I could verify (20 March 2026); later RBA observations were not retrievable, so the rate may be about seven months stale as of 16 October 2026.",
+  "comparable_city_reasoning": "Malaysian national prices, with Kota Bharu used as a single-city coffee reference. Langkawi is treated as a tourist island with mainland-Malaysia restaurant pricing. One budget guide reports alcohol 30-50% cheaper on Langkawi than on the mainland, which was applied to beer and wine. Cocktail is set at about 2x beer, and wine glass at about 2.5x beer, as local-relationship estimates.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 7.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

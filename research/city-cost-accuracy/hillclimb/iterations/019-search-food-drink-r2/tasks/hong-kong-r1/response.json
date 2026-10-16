@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on 2025-2026 secondary aggregates (Numbeo, Expatistan, BearSavings, a dated 2026 happy-hour menu). Beer, cocktail and wine anchors come from sparse and partly dated bar listings, and wine is set by judgement relative to beer. Hostel and hotel anchors are holistic model estimates from general knowledge; no live listings were inspected. FX: the 0.6947 figure came from a third-party aggregator that attributes it to the RBA for 16 Oct 2026. I did not read that value on rba.gov.au, and the RBA exchange-rates page I found was labelled as at 15 Oct 2026, so verify before relying on it.",
+  "comparable_city_reasoning": "No comparable city used. Anchors are based on Hong Kong-specific secondary sources, with drink and accommodation gaps filled by judgement against local restaurant and bar price relationships.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.69,
+    "coffee": 4.87,
+    "inexp_meal_1p": 10.26,
+    "midrange_meal_2p": 89.74,
+    "cocktail": 15.38,
+    "wine_glass": 12.82,
+    "hostel_dorm_1p": 35.90,
+    "hostel_private_2p": 89.74,
+    "hotel_1star_2p": 96.15,
+    "hotel_3star_2p": 192.31
+  }
+}

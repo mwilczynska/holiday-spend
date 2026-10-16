@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors rest on several 2026 aggregator figures (Expatistan, MyLifeElsewhere, BearSavings, and a French price site) that disagree by roughly 20 to 40 percent, so they are bounded estimates. Expatistan's sample is small, and its data is dated May 2026. Beer and coffee are medium confidence. Cocktail and wine have no direct source; cocktail is set at about 2.7 times the beer anchor and wine at about 1.25 times, which is a local price-relationship estimate. Hostel and hotel anchors are holistic model estimates from general knowledge for July peak season and were not checked against live listings. Local-currency figures were converted at an approximate 1 KM = 0.59 USD, based on the fixed BAM/EUR peg of 1.95583 and an unverified EUR/USD of about 1.16. The RBA rate came from a search summary of the rba.gov.au exchange-rates page, which I did not open directly.",
+  "comparable_city_reasoning": "Bosnia and Herzegovina cost-of-living data from Expatistan, MyLifeElsewhere, BearSavings and a French price-comparison site, with Mostar placed among the cheapest Southeast European tourist cities (Expatistan reports it about 44 percent cheaper than Split, Croatia). Accommodation is benchmarked holistically against mid-sized Southeast European tourist towns in peak season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 1.75,
+    "inexp_meal_1p": 7.40,
+    "midrange_meal_2p": 31.00,
+    "cocktail": 6.50,
+    "wine_glass": 3.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 46.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 110.00
+  }
+}

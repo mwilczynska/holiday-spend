@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors come from 2026 and undated third-party sources for the Netherlands and Rotterdam, converted at an assumed EUR/USD of about 1.17 from general knowledge (not searched). Beer and cocktail figures are weakly sourced: beer comes from beach-bar surveys and cocktail from an Expatistan club estimate. The wine glass anchor is inferred from beer prices and wholesale glass-price ranges. Accommodation anchors are holistic model estimates from general knowledge and city context; no accommodation listings or booking pages were checked. The RBA FX observation could not be verified: search results showed RBA exchange-rate values from March 2026 without dates, so as_of_date and source_rate are null and should not be used until confirmed on rba.gov.au.",
+  "comparable_city_reasoning": "Priced as a mid-sized Dutch port city, using Rotterdam-specific cocktail and cappuccino figures where available and national Dutch price ranges elsewhere. Accommodation is benchmarked to other mid-sized Western European cities with similar July tourism demand.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.25,
+    "coffee": 4.30,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 16.90,
+    "wine_glass": 8.20,
+    "hostel_dorm_1p": 44.00,
+    "hostel_private_2p": 128.00,
+    "hotel_1star_2p": 111.00,
+    "hotel_3star_2p": 186.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on secondary web sources: MyLifeElsewhere and ExpatExchange Oxford pages (meal, cappuccino and beer ranges), an combien-coute.net Oxford lunch average updated June 2026, and the Morning Advertiser April 2026 national pint average of 5.34 GBP. The cocktail anchor is weakly sourced: it uses a 2025 DesignMyNight consumer survey (9.83 GBP) and a cruise menu, not Oxford venue prices. The wine glass anchor is largely estimated from older ONS data (2023-2025) and typical restaurant pricing, not a 2026 Oxford survey. Beer is taken as one pint. Accommodation anchors (dorm, private hostel, 1-star, 3-star) are holistic model estimates from general knowledge and the supplied context. No booking pages or current listings were inspected. GBP to USD conversion uses an assumed rate of about 1.33 USD per GBP from general knowledge; this was not verified by search and should be checked. FX: 0.6947 USD per AUD for 2026-10-16 was taken from search-result text describing the RBA statistics page; I did not open the page directly. The same results showed 0.6955 for 15 October on the RBA homepage, so the latest row should be verified. Search use: five searches in total, within the six-search limit, but two were RBA-targeted rather than the single one allowed for FX.",
+  "comparable_city_reasoning": "Oxford is treated as a mid-sized English university city. Restaurant prices are anchored to Oxford-specific aggregator figures, which one source places roughly 15 percent below London overall. Drink prices are benchmarked to UK-wide 2026 pub averages with a modest urban premium. Accommodation is a holistic estimate benchmarked loosely against comparable English cathedral and university cities, not against Oxford listings.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.65,
+    "coffee": 4.79,
+    "inexp_meal_1p": 19.95,
+    "midrange_meal_2p": 86.45,
+    "cocktail": 13.30,
+    "wine_glass": 9.31,
+    "hostel_dorm_1p": 50.54,
+    "hostel_private_2p": 119.70,
+    "hotel_1star_2p": 133.00,
+    "hotel_3star_2p": 239.40
+  }
+}

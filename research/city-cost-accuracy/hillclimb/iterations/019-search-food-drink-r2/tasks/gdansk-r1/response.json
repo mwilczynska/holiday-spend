@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on crowd-sourced cost-of-living pages dated mid-2026 and converted to USD at an assumed rate of about 3.7 PLN per USD. Beer is from several sources that broadly agree. Wine has no Gdansk data and is derived from beer using a typical restaurant ratio of about 1.5x. Cocktail is inferred from Warsaw and Krakow reference points. Accommodation is a holistic model estimate for July peak season, not checked against live listings. The FX observation was seen in a snippet of the RBA homepage, not on the F11.1 table, and should be verified against the official table.",
+  "comparable_city_reasoning": "Food and drink are anchored to Gdansk-specific cost-of-living figures, cross-checked against Polish reference cities (Warsaw, Krakow, Torun). Wine is derived from the local beer price. Accommodation is estimated from general knowledge of mid-sized Baltic and Central European tourist cities in peak summer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.30,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 54.00,
+    "cocktail": 9.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 130.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+"region": "East Asia",
+"confidence": "medium",
+"confidence_notes": "Food and drink anchors are medium-to-low confidence. Taiwan-wide aggregator averages (BearSavings for basic meal, mid-range dinner for two, local beer and cappuccino; a French aggregator for cappuccino averages in Taipei, Kaohsiung, Hsinchu and Taitung) were uplifted modestly for resort pricing. Kenting-specific sources were old, anecdotal blog posts from 2017 with no current sit-down prices. Beer has no direct restaurant draft-price source. Cocktail and wine rest on 2024-2026 Taipei price ranges and the local beer relationship, which is a partly indirect basis. Accommodation anchors are holistic model estimates from general knowledge and the city context, not checked against live listings. July is peak season, so they carry low confidence. The NT$-to-USD conversion assumes roughly 31-32 NT$ per USD from general knowledge, not a sourced rate. The FX observation (0.6947 for 2026-10-16) comes from a search-result summary of the RBA daily table; the RBA page itself was not opened, so verify it before relying on it.",
+"comparable_city_reasoning": "Taiwan national price levels, using the Taipei and Kaohsiung aggregates, with a resort uplift for Kenting's tourist-facing venues. Accommodation is benchmarked to Taiwan's southern and eastern resort towns in peak summer, without a live listing check.",
+"fx": {
+"as_of_date": "2026-10-16",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+"source_rate": 0.6947,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 4.00,
+"coffee": 3.50,
+"inexp_meal_1p": 5.50,
+"midrange_meal_2p": 50.00,
+"cocktail": 11.00,
+"wine_glass": 10.00,
+"hostel_dorm_1p": 22.00,
+"hostel_private_2p": 50.00,
+"hotel_1star_2p": 56.00,
+"hotel_3star_2p": 120.00
+}
+}

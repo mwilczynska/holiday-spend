@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant anchors are the best-supported: Leh guide ranges of about Rs 150-250 for budget meals, Rs 250-450 per person for mid-range, and Rs 400-800 for cafe meals. Coffee is cross-checked against a rough Wise figure of about $2. Beer, cocktail and wine are weak: no Leh drink price was found, so they are bounded estimates. Cocktail is set at about 1.7x beer and wine at about 2.3x beer, reflecting typical Indian bar pricing with import duties on wine. Accommodation anchors are holistic model estimates for July peak season; no booking pages or listings were inspected. Rupee-to-dollar conversion uses an assumed rate of about 88 INR per USD, which was not searched. The FX observation comes from the RBA exchange-rates table as surfaced in search summaries, not a full page read. The 16 October value may be provisional. Some sources conflict (for example, Wise's $49 dining figure implies an unrealistic exchange rate), so they were not used directly.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is Leh's own restaurant ranges from 2026 guide sources, adjusted upward for July high-season tourist demand at altitude, and cross-checked against general Indian tourist-town pricing for drinks and guesthouses.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 5.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 85.00
+  }
+}

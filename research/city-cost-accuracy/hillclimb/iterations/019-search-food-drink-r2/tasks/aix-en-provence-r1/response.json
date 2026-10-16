@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on 2026 French price reports: Numbeo-based regional draft-beer and cappuccino figures, a crowdsourced Aix-en-Provence cost-of-living page (inexpensive meal and two-person three-course meal), and Paris and Bordeaux cocktail and wine-by-the-glass estimates. Aix-specific cocktail, wine and beer prices are inferred from those comparables and the local beer-to-wine relationship, so they are less certain than the restaurant anchors. Euro figures were converted at an assumed EUR/USD of about 1.15 that I did not verify by search. Accommodation anchors are holistic model estimates from general knowledge and July festival-season context (the Festival d'Aix); I did not check live booking pages or current listings. FX: the only RBA observation I could retrieve is the 20 March 2026 USD rate (0.7088) from the rba.gov.au exchange-rates page snippet. That is about seven months before the generation date, I could not confirm it is the latest published observation, and a search for an October 2026 rate returned nothing current.",
+  "comparable_city_reasoning": "Aix-en-Provence is a mid-sized French university and tourist city. Its food and drink prices are benchmarked to French regional averages and to Paris and Bordeaux comparables, with Aix-specific cost-of-living figures where available. Accommodation is estimated from comparable mid-sized Provençal tourist towns in peak summer season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 4.40,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 13.80,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 230.00
+  }
+}

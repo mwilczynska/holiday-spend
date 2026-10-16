@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded from aggregator price sites (Citycost, BearSavings, Numbeo Weligama, Where and When Colombo, Tripbase Trincomalee). These sources are mixed in quality and mostly undated. Cocktail and wine rely partly on a price relationship to beer because direct data was weak: cocktail is set at about 2x beer, and wine glass at about 2.2x beer, reflecting high import duties on wine. Accommodation anchors are holistic model estimates from general knowledge; no live listings or booking pages were checked, so treat them as low confidence. July is peak season on the east coast, which may push beach-area rates higher. The FX value comes from a search summary of the RBA exchange rates page; third-party figures for nearby dates range from about 0.692 to 0.696.",
+  "comparable_city_reasoning": "No direct comparable city. The basis is Sri Lankan national and Colombo/Weligama aggregator prices, adjusted down for Trincomalee's provincial cost level and up modestly for beach-tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.40,
+    "inexp_meal_1p": 2.80,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 65.00
+  }
+}

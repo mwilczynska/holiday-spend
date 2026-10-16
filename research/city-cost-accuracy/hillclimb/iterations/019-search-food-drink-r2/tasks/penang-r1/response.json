@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Food and coffee anchors come from Penang-specific guides dated 2024 to 2026 and are averages across venues. Beer, cocktail and wine rest on undated listings and a beer-relative rule, with cocktail about 2 times beer and wine by the glass about 1.4 times beer. Accommodation is a holistic model estimate; no booking pages were checked. The FX observation came from search-result summaries and I could not open the RBA F11.1 table, so verify it. An earlier RBA search returned only March 2026 values. Ringgit-to-USD conversions assume about 4.2 MYR per USD, which I did not verify.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are based on Penang sources (LifeIndexed, Wise, Penang Traveltips, Expatistan, Time Out listings) converted from MYR at about 4.2 MYR per USD. Accommodation is based on general price levels for mid-sized Southeast Asian tourist cities, with George Town guesthouses and hotels as the reference. Cocktail and wine were set relative to beer where direct Penang data was weak.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 8.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 70.00
+  }
+}

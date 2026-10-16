@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant food and beer anchors draw on several converging sources (ExpatExchange, citycost, Expatistan, TravelFish, Bamboo Travel), but those sources are dated or crowdsourced and disagree, especially on cocktails. Cocktail and wine_glass are less certain: no Siem Reap wine price was found, so wine_glass is derived from the beer anchor (about 3x) and cocktail is set from the Miss Wong listings and the Expatistan average. Accommodation anchors are holistic model estimates from general knowledge and the city context; no accommodation pages or listings were searched or inspected. The FX observation is stale: the latest RBA observation I could retrieve is from 20 March 2026, and I could not obtain an October 2026 RBA rate.",
+  "comparable_city_reasoning": "No external comparable city was used. Anchors are Siem Reap-specific, based on local price reports and tourist-town norms in Cambodia, where prices are commonly quoted in USD.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 5.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 55.00
+  }
+}

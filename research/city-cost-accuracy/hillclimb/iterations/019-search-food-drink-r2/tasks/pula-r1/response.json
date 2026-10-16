@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence. They come from secondary price sources (Numbeo, combien-coute, Bookiscout, Expatistan search snippets) rather than current Pula menus, and the sources are dated differently. The cocktail figure leans on an Expatistan page last updated in 2023. Peak-season uplift for July was applied as a judgement. Accommodation anchors are low confidence: they are holistic model estimates for peak-summer coastal Istria and were not checked against live listings. The RBA observation was taken from search summaries that cite rba.gov.au pages; the F11 table itself was not opened, and a third-party 16 October figure was not used.",
+  "comparable_city_reasoning": "Food and drink anchors use Pula-specific aggregated price sources. Accommodation anchors are a holistic estimate for mid-sized coastal Croatian towns in peak July demand, with no comparable-city search performed. Euro-denominated figures were converted to USD at an approximate market rate.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.95,
+    "coffee": 2.90,
+    "inexp_meal_1p": 15.10,
+    "midrange_meal_2p": 61.60,
+    "cocktail": 10.10,
+    "wine_glass": 6.15,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 78.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 190.00
+  }
+}

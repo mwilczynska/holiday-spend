@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and coffee anchors rest on third-party cost-of-living aggregators and travel guides that disagree (inexpensive meal about $10-20, mid-range three-course meal for two about $40-83), so they are bounded estimates, not menu checks. Beer and cocktail come from scattered figures ($3.32 Numbeo-style draft beer, $5-10 bar drinks, about $12 cocktail in one guide). Wine is derived from the beer price (about 2x), not observed. Hostel and hotel anchors are holistic model estimates from general knowledge and city context; no accommodation search was run and no live listings were checked. The FX observation is stale: the most recent RBA value I could verify was 20 March 2026, not a value from the generation date, so AUD conversions may be out of date.",
+  "comparable_city_reasoning": "Caribbean is not an available region option, so Latin America was chosen as the nearest. Restaurant prices were benchmarked against aggregator comparisons to US-level pricing, with the mid-range meal and coffee anchors near US levels. Accommodation was estimated from general knowledge of Willemstad's guesthouse, hostel and mid-range hotel tiers, with the hotel tiers allowing for high-season uplift.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.70,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 200.00
+  }
+}

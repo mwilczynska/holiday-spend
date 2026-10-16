@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are rough estimates from a few secondary sources. Christchurch-specific figures were thin: the cafe range came from travel guides, the bar and pub ranges came from Auckland and Dunedin guides and venue menus, and the meal price came from an aggregator. NZD prices were converted to USD using an assumed NZD/USD rate of about 0.58, which I did not source from a search. The FX observation (2026-10-15, 0.6955 USD per AUD) comes from a search snippet describing the RBA exchange-rates page; I did not open that page directly. A 2026-10-16 figure from a third-party site was not used because it is not an RBA observation. Accommodation anchors are holistic model estimates from general knowledge of Christchurch's hotel and hostel market. I did not inspect live booking pages or current listings. The midrange two-person meal and the hotel anchors are the least certain.",
+  "comparable_city_reasoning": "No comparable-city substitution. Food and drink anchors are based on Christchurch cafe ranges from travel guides, with cross-checks against New Zealand bar guides for Auckland and Dunedin, and an aggregator restaurant estimate for Christchurch. Accommodation anchors are holistic estimates for a mid-sized New Zealand city of Christchurch's size and tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 3.20,
+    "inexp_meal_1p": 12.80,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 11.50,
+    "wine_glass": 8.10,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 72.50,
+    "hotel_1star_2p": 84.00,
+    "hotel_3star_2p": 145.00
+  }
+}

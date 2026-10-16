@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are triangulated from several aggregator sources (Wise, Trek.zone, BearSavings, Expatistan, Whereandwhen, GlobalCostData) that are mostly national or Santiago-based, with no Arica-specific restaurant data found, so they were adjusted modestly downward. Cocktail and restaurant wine are weaker: cocktail is loosely based on one Santiago club price and a beer-relative check, and restaurant wine glass is inferred from retail bottle prices and the beer relationship. Accommodation anchors are holistic model estimates from general knowledge and city context, with no accommodation searches or live listings checked. The FX value for 16 October 2026 was read from the RBA exchange-rates page snippet, which lists the 14 to 16 October values, and was not checked against the full F11 table.",
+  "comparable_city_reasoning": "No Arica-specific price data was found. Food and drink anchors use Chile-wide and Santiago aggregator figures, adjusted modestly for Arica's smaller, northern, tourism-oriented market. Cocktail and restaurant wine use the local beer relationship where direct data is weak. Accommodation is a holistic estimate for a small northern Chilean coastal city with a tourist market, not based on searched listings.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 3.20,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 44.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 90.00
+  }
+}

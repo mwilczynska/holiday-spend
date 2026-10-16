@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Overall low confidence. The FX observation is stale: I could not confirm an RBA observation for 2026-10-16. The 0.7088 value dated 2026-03-20 comes from a search summary of a cached RBA page, not from a page I read directly. A third-party figure of about 0.703 for 31 July 2026 could not be checked against the RBA and was not used. Korean food and drink anchors are Seoul and Wonju proxies discounted for Jeonju; the only Jeonju-specific restaurant data found dates from 2021. The KRW-to-USD conversion uses an assumed rate of about 1,450 KRW per USD, which I did not search for. Cocktail and wine anchors are weakly sourced: cocktail is set at about 3x and wine glass at about 2x the draft beer anchor, with undated Seoul bar prices as a cross-check. Accommodation anchors are holistic model estimates from general knowledge; I did not search for or inspect live booking listings. The draft beer tax discount is scheduled to end on 31 December 2026 unless extended, which could raise draft prices.",
+  "comparable_city_reasoning": "Jeonju is treated as a smaller, cheaper Korean city than Seoul. Draft beer and cappuccino anchors start from Seoul averages of about 5,200 to 5,500 KRW per item (Expatistan pub beer, Expatistan expat-area cappuccino, and a citywide cappuccino estimate) and a Wonju cappuccino average of about 5,000 KRW, then are set near 5,000 KRW for Jeonju. Restaurant meal anchors rely on a 2021 Jeonju lunch-set figure, adjusted upward for inflation, and on general knowledge of Jeonju bibimbap and stew prices. Accommodation anchors rest on general knowledge of the Jeonju hostel and guesthouse market.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.45,
+    "coffee": 3.45,
+    "inexp_meal_1p": 6.90,
+    "midrange_meal_2p": 41.40,
+    "cocktail": 10.34,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 105.00
+  }
+}

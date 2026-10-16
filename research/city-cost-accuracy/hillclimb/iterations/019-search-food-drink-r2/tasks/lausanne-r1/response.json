@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors come from mixed-date sources: aggregator estimates (Expatistan, Numbeo-derived pages), a 2024-dated Expat Exchange guide, and a few Swiss menus. They are converted from CHF at an assumed 1.25 USD per CHF, which I did not source from a search. Beer is based on a 0.5 L pub serving. Cocktail and wine anchors come from Swiss bistro menus, not Lausanne-specific data. Accommodation anchors are holistic model estimates from general knowledge and city context, not checked against live listings, and July peak season (including Montreux Jazz and Lausanne events) may push rates higher. The FX observation was taken from a search summary of the RBA exchange-rates page, not a direct page read.",
+  "comparable_city_reasoning": "Lausanne is a mid-sized Swiss city priced below Zurich and Geneva in cost-of-living comparisons. Restaurant and drink anchors are benchmarked to Swiss city menu and aggregator prices. Accommodation anchors are benchmarked to Swiss hostel and hotel price levels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.00,
+    "coffee": 6.88,
+    "inexp_meal_1p": 27.50,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 20.00,
+    "wine_glass": 11.88,
+    "hostel_dorm_1p": 62.50,
+    "hostel_private_2p": 162.50,
+    "hotel_1star_2p": 187.50,
+    "hotel_3star_2p": 300.00
+  }
+}

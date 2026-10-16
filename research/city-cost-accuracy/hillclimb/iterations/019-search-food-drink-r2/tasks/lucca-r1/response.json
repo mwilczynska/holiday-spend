@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Restaurant anchors rest on Italian national Numbeo-style averages from secondary sites (Jan and mid-2026), not Lucca-specific data. Drink anchors come from Tuscan and Italian bar observations and an older Lucca guide, with tourist-centre uplift applied; the restaurant wine glass is inferred from the beer price because no direct figure was found. Accommodation anchors are holistic model estimates from general knowledge with no booking pages or listings checked. EUR to USD uses an assumed rate of about 1.16, which was not sourced. The FX observation is not the latest available: the only RBA figures I could see were a snippet of the RBA exchange-rates page showing March 2026 values for 18 to 20 March (0.7115, 0.7038, 0.7088). I took 0.7088 as the 20 March value, but that mapping is an assumption. Refresh the FX observation from the RBA F11 table before use.",
+  "comparable_city_reasoning": "Priced as a mid-sized Tuscan tourist city, using Italian national restaurant averages as the base and Florence-area and Tuscan tourist-centre bar prices as the drink reference. Hotel and hostel prices are adjusted for summer tourist demand in Lucca's historic centre. EUR converted to USD at an assumed rate of about 1.16.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 3.50,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 81.00,
+    "cocktail": 11.50,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 209.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on aggregator averages (Combien Coute, Wohin-und-wann, Numbeo-style data) from 2026 and undated pages, converted at about 0.28 USD per PLN from a May 2026 Wroclaw Guide rate. Cocktail anchors use one dated Expatistan club figure (34 PLN, Sept 2025) and undated guides (30-50 PLN). The wine_glass anchor has no direct Wroclaw restaurant price; it is set from the local beer relationship (about 1.3x a draft beer) and a bottle-price proxy, which is a weak basis. Dorm, private-room, and hotel anchors are holistic model estimates for a July peak-season window. They were not checked against live booking pages or current listings, and no accommodation searches were run. FX uses the RBA 15 October 2026 4pm rate; the 16 October value was not used because it appeared only as a provisional table snippet.",
+  "comparable_city_reasoning": "Priced as a mid-sized Polish city. Wroclaw restaurant prices are roughly 12% below Warsaw per one comparison site, and Old Town venues run higher than the city average. Restaurant and beer anchors are cross-checked against cost-of-living aggregators for Poland and nearby Central European cities. Accommodation is benchmarked against typical summer rates for comparable Polish regional cities, from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 4.50,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.60,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 118.00
+  }
+}

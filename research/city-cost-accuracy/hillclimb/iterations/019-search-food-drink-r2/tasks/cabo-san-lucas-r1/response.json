@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors are grounded in crowd-sourced aggregator averages and budget guides of uncertain date, cross-checked against each other and tourist-zone ranges, so they are moderate quality. Cocktail is a bounded estimate from scattered margarita reports across venues. No usable wine-by-the-glass price was found, so wine_glass is derived from the local beer relationship (roughly 2.7x the draft beer anchor) and is less certain. Accommodation anchors are holistic model estimates from general knowledge and city context; I did not inspect live booking pages or current listings. A hostel-price search was run in error despite the no-accommodation-search instruction; its results were only loosely considered as a sanity check and no accommodation value was taken from them. FX: the 2026-10-16 observation comes from the RBA exchange-rates page as surfaced in search results (which also listed 0.7002 for 14 Oct and 0.6955 for 15 Oct), corroborated by a third-party page citing RBA data. I did not open the RBA F11.1 table directly, so verify the official value there before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Basis is Los Cabos / Cabo San Lucas resort-town pricing for Mexico's Pacific tourist corridor, with restaurant and beer anchors set against aggregator averages and budget-guide ranges, and accommodation set holistically from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 140.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from aggregated sources (Expatistan and Numbeo-derived figures, plus a few dated restaurant menus), converted at an assumed rate of about 18.5 MXN per USD. Beer and coffee are the most reliable. Cocktail and wine are weaker: cocktail is inferred from other Mexican city data and the beer relationship, and wine from dated glass prices and bottle averages. Accommodation anchors are holistic model estimates from general knowledge and regional context. No live booking pages or current listings were inspected. The FX observation is the latest RBA figure I could confirm from search results (20 March 2026), not a figure for the generation date; later RBA dates were not verified.",
+  "comparable_city_reasoning": "Priced as a mid-sized Mexican colonial city, below Mexico City and close to regional centres such as Oaxaca, Mérida, Cuernavaca and Morelia. Puebla's café price (about 59 MXN for a cappuccino) and pub beer benchmarks from comparable cities anchor the food and drink figures. Accommodation is a general regional estimate with no city-specific listing data.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.20,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 34.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

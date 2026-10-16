@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee, inexpensive meal, and cocktail anchors are bounded estimates from crowd-sourced cost-of-living aggregators and listing sites (Expatistan, Worldcostofliving, Numbeo-based listings) with mixed dates and methods, so they are medium confidence. midrange_meal_2p is a bounded estimate because the sources gave different dinner-for-two figures. No restaurant wine source was found, so wine_glass is inferred from the local beer and cocktail price relationship. Accommodation anchors (hostel_dorm_1p, hostel_private_2p, hotel_1star_2p, hotel_3star_2p) are holistic model estimates from general knowledge and city context; I did not search accommodation prices or check live listings, so they are lower confidence. FX: the most recent RBA observation I could retrieve was a cached RBA exchange-rates page entry for 2026-03-20. That is months older than the 2026-10-16 generation date and may not be the latest. An earlier search returned an RBA table ending 2025-12-31, so the server should verify the current F11 value before relying on this figure.",
+  "comparable_city_reasoning": "No single comparable city was used. Restaurant and drink anchors were cross-checked against Latin American mid-sized city benchmarks in the cost-of-living sources, including a Medellín versus Mexico City comparison, and against Medellín listing data. Accommodation anchors reflect Medellín's mid-sized Latin American tourist-hotel market, with El Poblado as the reference neighbourhood for 3-star pricing.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 3.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 10.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 120.00
+  }
+}

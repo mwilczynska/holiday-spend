@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on Numbeo-derived kip figures and aggregator summaries; these were taken from search summaries, not opened pages, and converted at an assumed rate of about 22,500 kip per USD. Cappuccino is medium confidence. Cocktail and wine_glass are low confidence: no direct Luang Prabang cocktail or wine-by-the-glass price was found, so both are set from the local beer relationship (cocktail about 3x draft beer) and one undated review quoting $3.50 to $5 per glass. Accommodation anchors are holistic model estimates from general knowledge and the city context, not inspected listings. The FX observation is stale: the most recent RBA value I could confirm is for 20 March 2026, and the search summary of the RBA page did not show anything later, so a newer observation may exist.",
+  "comparable_city_reasoning": "Luang Prabang is treated as a Southeast Asian UNESCO heritage tourist town with prices similar to other Lao and Northern Thai tourist centres. Restaurant anchors are anchored to Numbeo kip figures (inexpensive meal about 40,000 kip, three-course mid-range meal for two about 380,000 kip, draft beer about 29,000 kip, cappuccino about 34,000 kip) with a tourist-district uplift. Accommodation anchors are holistic estimates for registered guesthouses and hostels in the same tourist market.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 75.00
+  }
+}

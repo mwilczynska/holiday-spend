@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on Amsterdam-specific crowd-sourced and guide prices (Expatistan, AmsterdamTips), which are of mixed age and sample size, and were converted from EUR at about 1.12 USD per EUR. Beer, cocktail and wine are the least certain. Hostel and hotel anchors are holistic model estimates from general knowledge for July, not from live listings. FX: the latest RBA observation I could retrieve is from 20 March 2026, not from the generation date; the October 2026 RBA figure could not be confirmed, so the server should verify or refresh this rate.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink are anchored to Amsterdam price points, with cocktail and wine partly reasoned from the local beer price. Accommodation reflects general knowledge of Western European capital-city summer pricing.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.90,
+    "coffee": 5.00,
+    "inexp_meal_1p": 17.90,
+    "midrange_meal_2p": 78.40,
+    "cocktail": 15.70,
+    "wine_glass": 8.40,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 157.00,
+    "hotel_3star_2p": 235.00
+  }
+}

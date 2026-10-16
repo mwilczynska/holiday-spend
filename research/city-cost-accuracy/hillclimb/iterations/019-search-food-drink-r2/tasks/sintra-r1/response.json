@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated 2026 secondary sources (travel guides, Expatistan, and Numbeo-derived combien-coute figures) and are converted from EUR at an assumed rate of about 1.15 USD per EUR. That rate was not verified by search. Restaurant and coffee anchors are the most reliable. The cocktail anchor rests on one Expatistan Lisbon estimate from a small sample and is cross-checked against the beer price. The wine glass anchor is weaker, so it is set at a restaurant house-wine level. Accommodation anchors are holistic model estimates from general knowledge and Lisbon/Sintra context. I did not inspect live booking pages or current listings. They assume July peak season and a Sintra tourist premium over Lisbon. FX: the 0.6955 figure was taken from the RBA homepage as shown in search results for the 4:00 pm 15 October 2026 reading. I did not open the RBA exchange-rates table directly, and I did not use the third-party 16 October figures.",
+  "comparable_city_reasoning": "Lisbon metro as the price basis, since Sintra is about 30 km from Lisbon. Restaurant and coffee prices follow Lisbon Numbeo-derived and travel-guide ranges. Accommodation is adjusted upward for Sintra's summer tourist demand. Cocktail and wine are checked against the local beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 13.80,
+    "wine_glass": 5.20,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 195.00
+  }
+}

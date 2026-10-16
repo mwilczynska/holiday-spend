@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and coffee anchors come from aggregated cost-of-living estimates (Numbeo, CityCost, BeaSavings, Trek.zone) with mixed dates, so they are medium quality. Beer is medium. Cocktail and wine are low: cocktail rests on scattered Kandy and upscale-hotel data, and the wine glass rests on one bottle-level figure plus the local beer relationship. Accommodation anchors are holistic model estimates from general knowledge; no booking pages or current listings were checked, and the hostel and guesthouse levels are the least certain. FX is the RBA exchange-rate summary for 16 Oct 2026 as surfaced in search; the F11 historical table was not opened directly.",
+  "comparable_city_reasoning": "Basis is Nuwara Eliya's own aggregated cost-of-living estimates, cross-checked against Sri Lanka-wide averages and the similar central-highlands tourist towns of Kandy and Ella. Drink anchors lean on the local draught-beer relationship where direct data was thin.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 75.00
+  }
+}

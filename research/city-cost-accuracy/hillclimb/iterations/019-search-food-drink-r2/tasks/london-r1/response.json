@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on UK aggregate figures (Finder, Morning Advertiser, Expatistan, Monin) from mixed dates and methods, plus a GBP-to-USD conversion of about 1.30 that I assumed rather than looked up. Restaurant and pint anchors are reasonably firm; the cocktail and wine anchors are less certain and use judgment on the pint and restaurant markup. Accommodation anchors are holistic model estimates for July peak season and were not checked against live listings. FX: the RBA exchange-rate table was located through a search, but I did not open the page. The 15 October 2026 value of 0.6955 is the one I could confirm was published; a 16 October value appeared in the search summary but was not confirmed as final.",
+  "comparable_city_reasoning": "London is priced as its own benchmark rather than from a comparable city. Food and drink were cross-checked against UK-wide and London-specific price surveys. Accommodation is a holistic estimate from general knowledge of central London July rates, with no accommodation searches performed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 19.50,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 17.00,
+    "wine_glass": 11.50,
+    "hostel_dorm_1p": 49.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 285.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant anchors are medium-low confidence. Tokyo official eating-out averages (beer about 667 yen, coffee about 622 yen, Jan 2026) were scaled down for Aomori, and citycost.org Aomori figures were used as a cross-check; that site is crowdsourced and undated. Teishoku and ramen ranges come from travel guides. Cocktail and wine are weaker, estimated from the Tokyo casual-bar range and the beer anchor. Accommodation is a holistic model estimate with no live listings checked. The FX observation is NOT verified from rba.gov.au: all RBA searches failed (rate limited or no rba.gov.au results). The 0.703 USD per AUD figure is a secondhand snapshot from a third-party API vendor, dated 2026-07-31, and it is not the latest RBA observation for 2026-10-16. The source_url is the canonical RBA exchange-rate page, which was not opened. Verify the FX before use. Yen-to-USD conversion for the anchors assumes about 159 JPY per USD, implied by citycost conversions; this is not a live rate.",
+  "comparable_city_reasoning": "Japanese regional city priced below Tokyo. Yen prices were taken from Tokyo official eating-out averages, discounted for Aomori using citycost Aomori-versus-Tokyo comparisons (beer about 27 percent cheaper overall). Hotel and hostel anchors are general knowledge of a small northern Japanese city, with no search performed.",
+  "fx": {
+    "as_of_date": "2026-07-31",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7030,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.46,
+    "coffee": 3.52,
+    "inexp_meal_1p": 6.29,
+    "midrange_meal_2p": 37.74,
+    "cocktail": 6.29,
+    "wine_glass": 5.03,
+    "hostel_dorm_1p": 22.01,
+    "hostel_private_2p": 47.17,
+    "hotel_1star_2p": 59.75,
+    "hotel_3star_2p": 106.92
+  }
+}

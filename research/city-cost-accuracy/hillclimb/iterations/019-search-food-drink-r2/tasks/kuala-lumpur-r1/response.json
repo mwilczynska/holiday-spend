@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on aggregator estimates and mixed-date sources: a 2025 Expatistan cocktail average, a 2026 Expatistan pub-beer figure, and coffee data mostly from 2016 to 2019 that was adjusted upward by inference. The MYR-to-USD conversion uses an assumed rate of about 4.3 MYR per USD, which was not sourced. Accommodation anchors are holistic model estimates from general knowledge and city context; no booking pages or current listings were inspected. The FX observation is the latest RBA figure retrieved (20 March 2026), not a figure from near the 16 October 2026 generation date, so it is stale. Wine and cocktail prices are checked against the beer and restaurant anchors for consistency rather than from direct current menus.",
+  "comparable_city_reasoning": "Southeast Asian capital-city basis: restaurant and drink prices are set against mainstream regional cities such as Bangkok and other Klang Valley and SEA urban centres, which sit well below Singapore. Accommodation tiers follow typical KL guesthouse, hostel and mid-range hotel pricing from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 44.00,
+    "cocktail": 9.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

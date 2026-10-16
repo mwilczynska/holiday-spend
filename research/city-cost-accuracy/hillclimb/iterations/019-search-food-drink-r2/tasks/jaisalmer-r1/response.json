@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors are rough bounded estimates. Jaisalmer-specific food sources were undated budget guides, and no dated 2026 Jaisalmer menu was found. Beer, cocktail and wine rest on undated Indian menus from other cities, and cocktail and wine are set from the local beer relationship because direct knowledge was weak. Cappuccino had no usable Jaisalmer or Rajasthan data, so it is a general Indian tourist-cafe estimate. Accommodation anchors are holistic model estimates from general knowledge and the city context; no accommodation searches or live listings were checked. The FX observation (15 October 2026) was taken from a search summary of the rba.gov.au homepage and was not opened directly; a 16 October figure from a third-party site was not verified as an RBA observation and was not used. Converted INR figures assume an approximate exchange rate of about 85 to 90 INR per USD.",
+  "comparable_city_reasoning": "Basis is Rajasthan tourist towns (Jaipur, Udaipur, Jodhpur) with a downward adjustment for Jaisalmer's smaller, lower-cost desert-town market. Food anchors use Jaisalmer budget and restaurant guides (dal baati and thali-type meals at roughly INR 100-200, rooftop and fort restaurants costing more). Drink anchors use Indian bar menus from Mumbai, Delhi and other cities, discounted for Jaisalmer. Cocktail and wine are set from the beer price (about 2.25x and 2.5x beer) because direct local knowledge was weak. Accommodation is a general-knowledge model estimate for budget guesthouses, hostels and mid-range hotels in Jaisalmer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 13.00,
+    "hotel_3star_2p": 45.00
+  }
+}

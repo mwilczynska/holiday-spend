@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors rest on mixed-date sources: Expatistan 2026 crowd-sourced figures for a pub beer and a downtown club cocktail, a LifeIndexed 2026 one-person meal estimate, and GoDigit and magicpin figures that are undated or from 2024. No current 2026 Mumbai cappuccino price was found, so coffee is a chain-based estimate. Wine by the glass is set at about 2x the beer anchor because the by-glass data was dated or unclear. Cocktail is based on the Expatistan figure, cross-checked against budget and upscale bar ranges. The mid-range two-person meal is the least certain restaurant anchor, since the sources do not clearly say whether meal prices are per person or per couple. Accommodation anchors are holistic model estimates from general knowledge and city context; no live booking pages or current listings were inspected, and no accommodation searches were run. FX is the RBA observation shown on the rba.gov.au Exchange Rates Overview page in search results; the full page was not opened.",
+  "comparable_city_reasoning": "No comparable foreign city was used. Food and drink anchors use Mumbai-specific sources where available, with India-wide chain and fast-food figures as proxies for coffee. Accommodation anchors reflect general knowledge that Mumbai hotel and hostel rates run higher than in most other Indian cities.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 100.00
+  }
+}

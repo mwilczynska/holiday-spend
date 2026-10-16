@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and coffee anchors rest on several secondary listings of mixed age (2024 to 2026) and crowd-sourced figures, so they are medium-to-low quality. The cocktail anchor is a mid-point of several venue ranges. The wine glass anchor has no direct Abu Dhabi restaurant glass-price source. It is bounded from a single undated bar listing and a restaurant bottle-price range, and it is cross-checked against the beer anchor. Accommodation anchors are holistic model estimates from general knowledge and city context, with no live booking pages or current listings inspected, and the hostel anchors are especially uncertain because registered hostels are scarce in Abu Dhabi. The FX observation comes from a search-result snippet attributed to the RBA Exchange Rates Overview page. I did not open that page, and a third-party site reports a different figure for 16 October 2026, so verify the RBA value against the official table before relying on it.",
+  "comparable_city_reasoning": "Local UAE/Abu Dhabi basis. Food and drink anchors use Abu Dhabi listings from cost-of-living comparison pages and bar and restaurant menus, with the wine glass estimated from beer and bottle relationships. Accommodation anchors are holistic estimates for a July low-season window in a Gulf capital, based on general knowledge and the supplied city context.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.90,
+    "coffee": 5.70,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 19.00,
+    "wine_glass": 13.60,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 150.00
+  }
+}

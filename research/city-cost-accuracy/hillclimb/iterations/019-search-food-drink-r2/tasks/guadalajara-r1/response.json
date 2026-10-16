@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence. They rest on crowdsourced Numbeo and Expatistan averages in MXN, converted at an assumed rate of about 18.5 MXN per USD that I did not source from a search. The wine glass price is inferred from a bottle average because no per-glass figure was found, and the cocktail rests on a single Expatistan downtown figure. Accommodation anchors are low confidence: they are holistic model estimates from general knowledge and city context, not checked against live listings or booking pages. One of my searches was meant for food prices but returned lodging snippets; I did not use those figures for the accommodation anchors. The FX observation came from search-result excerpts of rba.gov.au pages, not a direct download of the F11.1 table, so the 16 October 2026 value should be verified against the official table.",
+  "comparable_city_reasoning": "Guadalajara is Mexico's second-largest city. Food and drink are benchmarked to aggregated Guadalajara averages, with Mexico City lower-end and mid-range restaurant pricing as a sense check. Accommodation is a holistic estimate for a Mexican interior metro with a historic-centre hostel scene and a moderate business-hotel market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.60,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 10.80,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 95.00
+  }
+}

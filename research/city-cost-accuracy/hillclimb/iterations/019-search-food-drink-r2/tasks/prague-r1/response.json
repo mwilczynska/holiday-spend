@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and cocktail anchors come from Prague-specific price sources of mixed dates, and some are small-sample estimates. The beer anchor assumes a standard restaurant serving of about 0.3 to 0.5 L; tourist-centre pricing may be higher. The wine glass anchor rests on an undated 0.2 L price range, not a 2026 source. Hostel and hotel anchors are holistic model estimates from general knowledge and the July pricing window, with no accommodation search. The FX observation is the latest RBA figure the search returned, dated 2026-03-20, which is older than the 2026-10-16 generation date, so it may be stale; the RBA's F11.1 page should be checked for a newer value.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Prague-specific local price sources, with CZK converted at about 22 CZK per USD, the rate implied by the cited USD conversions. Accommodation anchors are holistic estimates informed by general knowledge of Prague and comparable Central European capitals in peak summer season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.70,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 10.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 180.00
+  }
+}

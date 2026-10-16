@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors come from crowd-sourced cost-of-living data (Expatistan item prices and a Numbeo-based cappuccino average) with small samples, some dated 2024 to 2026, and some reflect licensed hotel bars because alcohol is largely sold only in hotel venues. Midrange meal is derived by removing an estimated wine cost from a dinner-for-two price that included wine. Wine glass is inferred from the local beer price and one low-quality guide range, not a direct menu price. Accommodation anchors are holistic model estimates from general knowledge and the Doha context, with no live booking pages or current listings checked. Pricing assumes July, which is low season in Doha. The FX rate was read from a third-party aggregator (ozfinancehub.com.au) that says it reflects the RBA feed for 2026-10-16. I did not open the RBA page or F11.1 table, so the rate is unverified against the official source. An earlier RBA snapshot from March 2026 was stale and was not used.",
+  "comparable_city_reasoning": "Doha-specific crowd-sourced price points for food and drink, with QAR converted at the riyal's US dollar peg (about 3.64 QAR per USD). Accommodation is a holistic Gulf-hub estimate, positioned below Dubai-style 3-star pricing and adjusted for July low season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 14.29,
+    "coffee": 6.04,
+    "inexp_meal_1p": 10.99,
+    "midrange_meal_2p": 76.92,
+    "cocktail": 20.05,
+    "wine_glass": 17.86,
+    "hostel_dorm_1p": 32.97,
+    "hostel_private_2p": 63.19,
+    "hotel_1star_2p": 68.68,
+    "hotel_3star_2p": 137.36
+  }
+}

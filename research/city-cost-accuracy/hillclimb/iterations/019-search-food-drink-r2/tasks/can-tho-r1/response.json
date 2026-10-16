@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal and beer anchors are supported by several cost-of-living aggregators from search summaries, but these sources disagree and some are dated. Cappuccino is the most consistent drink figure. Cocktail and wine are weaker: no clean Can Tho wine-by-the-glass figure was found, so wine is set from the beer relationship and cocktail is a bounded estimate. Accommodation anchors are holistic model estimates with no accommodation search. FX: the only RBA-series figure found came from a third-party mirror (frankfurter.dev), not rba.gov.au, and it is dated 2026-07-31, about 2.5 months before the generation date. It was not confirmed as the latest observation, so the server should verify it against the official RBA F11.1 table.",
+  "comparable_city_reasoning": "Mid-sized Mekong Delta city in Vietnam. Expat.com puts restaurant prices about a third below Ho Chi Minh City. Restaurant and budget-meal anchors are cross-checked against aggregator figures for Can Tho and against regional secondary cities such as Chiang Mai. Drink anchors use the local beer price as the base, with cocktail and wine set as multiples of beer where direct data was weak. Accommodation is a holistic estimate for a small Vietnamese city, not based on listings.",
+  "fx": {
+    "as_of_date": "2026-07-31",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://frankfurter.dev/providers/rba/",
+    "source_rate": 0.7030,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.80,
+    "coffee": 1.00,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 4.00,
+    "wine_glass": 3.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 40.00
+  }
+}

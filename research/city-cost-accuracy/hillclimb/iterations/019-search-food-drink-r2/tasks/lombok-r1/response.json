@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Food anchors rest on travel-budget aggregator snippets with conflicting figures (lunch about $1 to $2.50; three-course dinner about $5 per person), so the restaurant and coffee values are bounded estimates. Beer, cocktail and wine rely partly on Bali resort menus from 2021 to 2024 with some undated entries, discounted for Lombok, and the cocktail and wine values were also set using the beer relationship. Accommodation values are holistic model estimates from general knowledge and were not checked against live listings or booking pages. FX: the RBA page I could reach in search showed only March 2026 values. A third-party page (ozfinancehub.com.au) reported 0.6947 USD per AUD for 16 October 2026 and attributed it to the RBA, but I did not open the RBA table to confirm it, and the RBA publishes around 4pm Sydney time, so the 16 October value may not have been published when this was generated. Verify the FX value against the RBA F11.1 table before use.",
+  "comparable_city_reasoning": "Indonesian island tourism pricing, using Lombok-specific aggregator figures for warung and tourist-restaurant meals, coffee and beer. Bali resort menus were used as a high-side reference for cocktails and wine and discounted for Lombok's lower prices, which are generally below Bali's. Accommodation was estimated holistically for Kuta and Senggigi-style tourist areas.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 16.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 55.00
+  }
+}

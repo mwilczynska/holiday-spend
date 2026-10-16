@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are rough aggregates from undated or crowdsourced guides (Expatistan, Franksalt, Freemalta, Wise, a Valletta bar menu) and were converted at an assumed 1.15 USD per EUR from general knowledge, not from a sourced rate. Beer, coffee and wine sit in the middle of a wide source range. Cocktail is based on a bar menu and Expatistan, and wine on a bar menu and a range. Accommodation anchors are holistic model estimates from general knowledge and the Valletta context; no live listings or booking pages were inspected. One accommodation-price search was run in error, against the instructions, and its results were disregarded. FX is stale: the RBA observation below came from search-summary text, could not be confirmed against the current F11.1 table, and is months older than the 2026-10-16 generation date.",
+  "comparable_city_reasoning": "Restaurant and drink prices are benchmarked to southern European tourist capitals, consistent with a Malta guide's statement that its restaurant prices roughly match Italy and Spain. Accommodation is a holistic estimate for Valletta's small hostel and guesthouse market in July, based on general knowledge rather than a comparable-city dataset.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.90,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 63.00,
+    "cocktail": 10.35,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 190.00
+  }
+}

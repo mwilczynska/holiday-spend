@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on mixed, partly crowdsourced sources covering Aarhus, Copenhagen and national Denmark, so they are medium confidence. Cocktail and wine anchors are weaker and derived from the beer relationship; wine uses a rough Aarhus shop price cross-check. Accommodation anchors are holistic model estimates for July peak season with no live listings checked and no accommodation searches run, so they are low confidence. FX: the RBA exchange-rate table, as summarized in search results, showed a 20 March 2026 USD per AUD observation. I did not open the RBA page directly and could not confirm a more recent official RBA observation for 16 October 2026. Mid-2026 AUD/USD figures from third-party sites were not used because they are not RBA data.",
+  "comparable_city_reasoning": "Aarhus is Denmark's second city. Its restaurant and drink prices were set between Copenhagen-based and Aarhus-specific crowdsourced figures and national Danish cost-of-living indexes, with Aarhus assumed somewhat below Copenhagen. Cocktail was set at roughly 2.3 times the beer anchor and wine glass from typical Danish restaurant pricing, because no Aarhus-specific cocktail or restaurant wine price was found. Accommodation was estimated holistically from Aarhus's general market level and July demand.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 7.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 21.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 260.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated Portugal cost-of-living guides (Numbeo-based euro ranges) and undated Lagos price sheets, adjusted upward for Algarve tourist-season pricing. Cocktail is an estimate from the local beer relationship because no reliable cocktail price was found. Wine is from general Portugal restaurant ranges adjusted for Lagos. Euro figures were converted using an assumed EUR/USD of about 1.16, which was not searched. Accommodation anchors are holistic model estimates from general knowledge for July peak season; no booking pages or current listings were inspected. The FX observation (0.6955 at 4pm on 15 October 2026) was taken from a search-result summary attributed to the RBA exchange rates overview page; a follow-up search could not re-verify it, so the server should confirm it against rba.gov.au before use.",
+  "comparable_city_reasoning": "Lagos is a Portuguese Algarve resort town. Pricing is benchmarked against Algarve coastal resort towns and Faro, with a tourist-season premium of about 20-30% over Lisbon and Porto noted in one guide. Accommodation is benchmarked against Algarve coastal resort towns in July peak season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 10.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 185.00
+  }
+}

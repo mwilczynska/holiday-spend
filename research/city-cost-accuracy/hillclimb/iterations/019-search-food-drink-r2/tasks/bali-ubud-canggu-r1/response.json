@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors rest on aggregator and blog price ranges for Bali-wide cafés and warungs. Canggu-specific figures were thin, and no current menus were verified. Cocktail is a pre-tax estimate from a Sanur listing and a 2025 Denpasar aggregator. Wine is set from the beer relationship because no current wine price list was found. Accommodation is a holistic model estimate from general knowledge and July high-season context; no live booking pages or current listings were inspected. The FX observation is the latest RBA figure I could retrieve (20 March 2026). It is not confirmed as the latest RBA observation on 2026-10-16, and third-party October 2026 readings were near 0.69, so it may be stale. The USD anchors assume an approximate IDR/USD rate of about 16,500.",
+  "comparable_city_reasoning": "Bali-wide aggregated price data, with Ubud and Canggu treated as higher than the island average. Pricing is positioned qualitatively against other Southeast Asian resort-town tourist markets; no specific comparable city was searched or priced.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.30,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 8.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 80.00
+  }
+}

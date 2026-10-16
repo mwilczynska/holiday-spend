@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food anchors rest on secondary and crowdsourced sources (Expat Exchange, Numbeo figures reported by others, a French guide) dated 2022 to 2026, mostly national rather than La Ceiba-specific. Drink anchors are thin: the beer and cocktail figures come from Expatistan samples of 7 and 4 price points last updated in 2022, and the cappuccino price is a national average. The wine glass is derived from the beer anchor using an assumed ratio of about 2.25x, with no local wine price found. Accommodation anchors are holistic model estimates from general knowledge and city context; no booking pages or listings were inspected. FX: I could not retrieve the live RBA F11.1 table. The 0.7088 USD per AUD figure is the only RBA-attributed observation I found, from a search summary dated 2026-03-20, so it is about seven months stale and should be refreshed from the RBA before use. Later third-party quotes for 1 October 2026 were near 0.693 but are not RBA data and were not used.",
+  "comparable_city_reasoning": "Priced as a lower-cost Caribbean-coast city in Honduras, benchmarked against national Numbeo restaurant figures (inexpensive about USD 7.50, mid-range three-course about USD 33.76) and a reported La Ceiba mid-range meal for two of about USD 30. Drink prices use local bar estimates. Accommodation is a holistic estimate for a secondary Central American tourism city, not a comparable-city lookup.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.25,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 70.00
+  }
+}

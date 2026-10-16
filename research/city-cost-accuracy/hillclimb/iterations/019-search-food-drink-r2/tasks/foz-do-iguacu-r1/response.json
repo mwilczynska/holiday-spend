@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Low overall. FX: I did not retrieve the official RBA table. The 0.7049 USD per AUD value comes from a third-party site that republishes RBA data, with a page date of 2026-08-05. It is likely not the latest RBA observation available on 2026-10-16, and the date may not match the RBA observation date. Verify against the RBA exchange-rate page before use. Food: meal anchors draw on Expatistan Foz do Iguaçu data points last updated December 2025, converted from BRL at an assumed rate of about 5.5 BRL per USD. Beer, coffee, cocktail and wine anchors are rough estimates; I found reviews and venue guides but no dated menu prices. Cocktail is judged from caipirinha-level pricing, and wine_glass is scaled from an Expatistan retail bottle price (R$34) to a restaurant pour. Accommodation anchors are holistic model estimates for July high season. I did not inspect any booking pages or current listings.",
+  "comparable_city_reasoning": "No formal comparable city was used. The basis is typical mid-sized Brazilian tourist-destination pricing, adjusted using the Foz do Iguaçu meal and drink data points where available. Accommodation is a general-knowledge estimate.",
+  "fx": {
+    "as_of_date": "2026-08-05",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7049,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.40,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 5.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 95.00
+  }
+}

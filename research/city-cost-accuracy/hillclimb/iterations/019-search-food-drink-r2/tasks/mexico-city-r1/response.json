@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from aggregator and crowd-sourced figures (Expatistan, Getwherenext, Numbeo-derived, undated guides) that conflict in places and are not verified for July 2026. Peso figures were converted at an assumed rate of about 18 MXN per USD, which I did not verify. Wine_glass has no direct local data and is inferred from the beer anchor. Cocktail is set at about 3x beer, based on the Expatistan downtown club figure. The midrange_meal_2p figure is inferred from a 2024 guide and inflation. Accommodation anchors are holistic model estimates from general knowledge, not checked against live listings. FX caveat: no current RBA observation could be verified. The observation returned (0.7088 on 2026-03-20) was reported in a search summary as taken from the RBA exchange rates table. I did not read that table directly, and the rate is about seven months older than the generation date, so it should be replaced with the latest F11.1 daily value before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Restaurant and drink anchors are anchored to Mexico City-specific peso observations converted to USD. Accommodation anchors are a holistic judgment for a large Latin American capital with a mid-range tourist market.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 11.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 125.00
+  }
+}

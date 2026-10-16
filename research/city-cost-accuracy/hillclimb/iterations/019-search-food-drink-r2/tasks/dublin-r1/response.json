@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on Dublin aggregator data (Expatistan, Pint Tracker, Tourlane, Tagvenue, MyLifeElsewhere) with small samples and mixed dates. Euro figures were converted at about 1.14 USD per EUR, the rate implied by Expatistan's own USD conversions. Cappuccino is set from Expatistan's expat-area figure of EUR 4.54, shaded down slightly for city-centre cafes. Wine has no direct source and is set at about 1.2 times the beer anchor. Hostel and hotel anchors are holistic model estimates from general knowledge of Dublin's summer market; no accommodation search or live listing was checked. FX: the 0.6947 value is the 16 October 2026 row of the RBA daily exchange-rate table as it appeared in search results. I did not open the RBA page itself. The same results say the 16 October row may be intraday or provisional, and the 4 pm figure shown on the RBA overview was 0.6955 for 15 October.",
+  "comparable_city_reasoning": "Anchored to Dublin-specific published price points for pints, cocktails, cappuccinos, restaurant meals and cost-of-living indices. Accommodation is a holistic estimate, benchmarked loosely against other high-cost Western European capitals.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.55,
+    "coffee": 4.85,
+    "inexp_meal_1p": 17.10,
+    "midrange_meal_2p": 114.00,
+    "cocktail": 15.96,
+    "wine_glass": 10.26,
+    "hostel_dorm_1p": 43.32,
+    "hostel_private_2p": 119.70,
+    "hotel_1star_2p": 142.50,
+    "hotel_3star_2p": 250.80
+  }
+}

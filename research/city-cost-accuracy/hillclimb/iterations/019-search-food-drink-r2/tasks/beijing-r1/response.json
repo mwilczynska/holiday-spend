@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors draw on several search results (Numbeo, That's Mandarin, Hutong School, MyLifeElsewhere, Expatistan, Starbucks reports), but the sources are crowd-sourced or dated (May 2025 to older Starbucks reports), their dates are often unstated, and they disagree on beer (about 8 to 16 yuan for a domestic draft). Beer is set near the restaurant-serving end of that range. Cocktail uses an Expatistan downtown-club average and wine uses a Numbeo bottle price converted to a per-glass restaurant price. The meal anchors are below Numbeo's three-course figure because Western-style mid-range meals in other sources cost more. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live booking pages or current listings. CNY to USD is assumed at about 7.0 yuan per dollar and is not from a searched source. The FX observation is the RBA figure for 15 October 2026; a 16 October figure was not confirmed from the RBA.",
+  "comparable_city_reasoning": "No comparable city was used for the restaurant or drink anchors, which rest on Beijing-specific search results. Accommodation is a model estimate informed by general knowledge of mid-tier Chinese mega-city hotel and hostel pricing, not by a searched comparable city. Beer and cocktail were cross-checked against each other: the cocktail anchor is roughly four times the beer anchor, consistent with a bar-versus-restaurant price gap.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.30,
+    "coffee": 4.60,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.70,
+    "hostel_dorm_1p": 14.30,
+    "hostel_private_2p": 42.90,
+    "hotel_1star_2p": 34.30,
+    "hotel_3star_2p": 68.60
+  }
+}

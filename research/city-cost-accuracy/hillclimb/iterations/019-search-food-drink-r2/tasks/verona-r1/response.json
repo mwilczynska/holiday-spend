@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from search-result snippets (Expatistan, ExpatExchange, TableJourney, Italian press and guides), not opened pages or an official Verona price list. Beer, cocktail and wine are thinly sourced; wine is set relative to beer, and cocktail is a centre-bar blend. Euro figures were converted at about 1.12 USD per EUR, a cross rate derived from the RBA AUD/USD observation and an unverified third-party AUD/EUR figure. Accommodation anchors are holistic model estimates for July peak season, which overlaps the Arena summer opera season. They were not checked against live listings and are low confidence. FX came from search snippets of the RBA homepage and exchange-rates overview, not a direct read of table F11.1.",
+  "comparable_city_reasoning": "No direct comparable city was used. Food and drink reflect Verona-specific sources, with centre-square and tourist premiums weighted in. Accommodation reflects a general northern Italian mid-sized city benchmark, adjusted upward for July demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.70,
+    "coffee": 3.15,
+    "inexp_meal_1p": 16.80,
+    "midrange_meal_2p": 78.40,
+    "cocktail": 12.30,
+    "wine_glass": 6.70,
+    "hostel_dorm_1p": 35.80,
+    "hostel_private_2p": 100.80,
+    "hotel_1star_2p": 112.00,
+    "hotel_3star_2p": 196.00
+  }
+}

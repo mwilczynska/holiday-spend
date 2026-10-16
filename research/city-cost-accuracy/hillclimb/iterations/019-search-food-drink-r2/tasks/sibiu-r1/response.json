@@ -1,0 +1,25 @@
+{
+"region": "Europe",
+"confidence": "low",
+"confidence_notes": "Restaurant anchors are medium-quality: they combine 2025 crowd-sourced Expatistan snippets (lunch menu about 30 lei, pub dinner for two 61 lei, Italian dinner for two incl. wine 101 lei) with a 2026 Numbeo-derived cappuccino figure of about 15 RON (range 10-20) and a 2026 Romania Experience blog note that a daily menu is about EUR 8 and a full course about EUR 20. Beer, cocktail and wine anchors are weak: the beer figure is inferred from older undated pub prices (3-10 lei, Expatistan 6 lei) and restaurant markup, and the cocktail and wine figures use Expatistan 2025 values (18 lei cocktail, 27 lei bottle) plus the local beer-to-drink ratio. Accommodation anchors are holistic model estimates from general knowledge and Sibiu's status as a mid-sized tourist city; no booking pages or current listings were checked. Lei figures were converted to USD at a rough rate of about 4.4 RON per USD. FX provenance is unverified: the 0.6947 USD per AUD figure dated 2026-10-16 appeared only in a third-party aggregator snippet (ozfinancehub.com.au) that says it reads RBA data. A follow-up search could not confirm it on rba.gov.au, and the RBA table itself was not read. The source_url is the RBA exchange-rates page that surfaced in search, not a page I opened. Treat the FX value as unverified.",
+"comparable_city_reasoning": "Anchored on Sibiu-specific snippets where available, cross-checked against the general Romanian price level (Bucharest Numbeo 2020 baseline, roughly doubled since 2023 per the blog) and Sibiu's status as a mid-sized, tourist-heavy Transylvanian city priced below the capital. Accommodation uses a holistic estimate for a summer tourist-season mid-sized Romanian city.",
+"fx": {
+"as_of_date": "2026-10-16",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+"source_rate": 0.6947,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 3.00,
+"coffee": 3.40,
+"inexp_meal_1p": 9.00,
+"midrange_meal_2p": 52.00,
+"cocktail": 9.00,
+"wine_glass": 4.10,
+"hostel_dorm_1p": 17.00,
+"hostel_private_2p": 40.00,
+"hotel_1star_2p": 46.00,
+"hotel_3star_2p": 95.00
+}
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough estimates. No Banyuwangi-specific 2026 menu price was found; figures were triangulated from Bali averages (discounted for a smaller, less touristy city), a Banyuwangi cafe listing from an undated article, Yogyakarta and Jakarta restaurant reports, and a Numbeo-derived Banyuwangi average from 2017. Cocktail and wine anchors are inferred from the local price relationship to beer, since direct Banyuwangi data was weak; wine is the least certain, because hotel wine lists were used as a ceiling check. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings or any search. The IDR-to-USD conversion used in the reasoning (about 16,500 IDR per USD) is an assumption, not a sourced rate. FX caveat: the RBA figure is the most recent one I could locate in search results (a snippet of the RBA exchange-rates page listing 18 to 20 March 2026). I could not open the RBA page or confirm it is the latest observation as of 2026-10-16, so it may be about seven months stale and should be re-checked before use.",
+  "comparable_city_reasoning": "Basis: secondary East Java city priced below Bali's tourist hubs (Ubud, Seminyak, Kuta). Bali cappuccino averages of about IDR 40,000 and Bali draft beer of about EUR 2.20 were used as upper references. Local warung meal prices (Rp 17,000-26,000 for nasi pecel rawon) and a Banyuwangi cafe average of about Rp 12,000-15,000 anchored the lower end. Yogyakarta restaurant Bintang prices (about Rp 20,000-30,000) and Jakarta and Bandung pub and club data were used as cross-checks. Cocktails were set at roughly three times the beer anchor, and wine at roughly 3.5 to 4 times beer, as the disclosed fallback. Accommodation is a holistic model estimate for a small Indonesian port town, with 3-star supply thinner than in Bali.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.80,
+    "coffee": 1.50,
+    "inexp_meal_1p": 1.70,
+    "midrange_meal_2p": 16.00,
+    "cocktail": 5.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 13.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 45.00
+  }
+}

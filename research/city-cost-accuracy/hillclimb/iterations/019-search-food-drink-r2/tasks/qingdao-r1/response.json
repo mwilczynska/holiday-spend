@@ -1,0 +1,25 @@
+{
+"region": "East Asia",
+"confidence": "low",
+"confidence_notes": "Food and drink anchors rest on aggregated but mixed-date sources: crowdsourced cost-of-living sites with small samples, Shanghai and Beijing data used as a cross-check, and travel-blog reports for Qingdao. Beer, cappuccino and meal anchors are better supported than cocktail and wine. No source gave a wine-by-the-glass price, so wine_glass is set at roughly three times the beer anchor, a local price-relationship judgement. Accommodation anchors are holistic model estimates from general knowledge and comparable-city context only. No accommodation searches were run, no booking pages or listings were inspected, and July is peak beach-season pricing, so these are rough. Yuan prices were converted at approximate rates, so USD values will drift with the exchange rate. The FX value comes from a search result for the RBA exchange-rates page dated 16 October 2026; it may be provisional relative to the 4 pm fixing, and I did not open the page itself.",
+"comparable_city_reasoning": "No single comparable city. Food and drink are anchored to Chinese tier-2 coastal city pricing, with Qingdao-specific travel reports for local meals and Shanghai and Beijing crowdsourced averages as a ceiling for bar and cafe prices. Accommodation is a holistic estimate for a mid-sized Chinese coastal resort city in peak summer season.",
+"fx": {
+"as_of_date": "2026-10-16",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+"source_rate": 0.6947,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 2.00,
+"coffee": 3.50,
+"inexp_meal_1p": 4.00,
+"midrange_meal_2p": 42.00,
+"cocktail": 7.50,
+"wine_glass": 6.00,
+"hostel_dorm_1p": 15.00,
+"hostel_private_2p": 36.00,
+"hotel_1star_2p": 45.00,
+"hotel_3star_2p": 78.00
+}
+}

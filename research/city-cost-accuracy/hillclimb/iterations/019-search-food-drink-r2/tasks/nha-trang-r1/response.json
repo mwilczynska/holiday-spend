@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on crowdsourced aggregates (Numbeo and Expatistan) that mostly fall between 2025 and early 2026, converted at roughly 26,000 VND per USD, a conversion assumption not from the searches. Beer is a blend of an Expatistan neighbourhood-pub figure last updated March 2024 and Numbeo's draft-beer average. Cocktail is a bar-level estimate drawn partly from rooftop-venue listings (about 90,000 to 200,000 VND). Wine by the glass has no direct Nha Trang price found; it is set from a from-90,000-VND glass listing and the local beer relationship. Hostel and hotel anchors are holistic model estimates from general knowledge of Nha Trang's July beach-season pricing and were not checked against live listings or booking pages. The fx observation is the most recent RBA figure I could verify (20 March 2026), not an October 2026 rate, so it may be stale.",
+  "comparable_city_reasoning": "Southeast Asian coastal resort-city basis, anchored on Nha Trang-specific crowdsourced food and drink data. Accommodation is set from general knowledge of Vietnamese beach-resort tiers rather than any comparable-city dataset.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 19.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 40.00
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors (beer, coffee, meals) come from aggregator and guide-site figures with mixed update dates, so they are rough. The cocktail anchor uses crowdsourced club prices from Berlin, Munich and Leipzig, and the wine glass is an estimate from the beer price, since I found no sourced restaurant wine price for Germany. Accommodation anchors are holistic model estimates from general knowledge and the Düsseldorf context (trade-fair demand can push rates up); I did not inspect live booking pages or current listings. The EUR-to-USD conversion uses an assumed rate of about 1.16, which I did not verify with a search. The pricing window is July 2026, but the FX observation is from October 2026. The FX value was taken from RBA table excerpts returned by search, not from a page I opened directly, and those excerpts were internally inconsistent. The 15 October figure is the one that appeared in two places. A 16 October figure (0.6947) also appeared but was not corroborated.",
+  "comparable_city_reasoning": "Priced against German mid-to-large city restaurant and bar levels (Berlin, Munich, Cologne-type), adjusted to Düsseldorf's relatively high cost of living and a holistic European hotel and hostel view for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 4.40,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 90.50,
+    "cocktail": 13.90,
+    "wine_glass": 6.40,
+    "hostel_dorm_1p": 40.60,
+    "hostel_private_2p": 104.40,
+    "hotel_1star_2p": 98.60,
+    "hotel_3star_2p": 174.00
+  }
+}
+
+Sources:
+- [RBA exchange rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [Nomad Watch, Düsseldorf costs](https://nomad.watch/cities/DE/dusseldorf/costs)
+- [CitiesInsider, Düsseldorf cost of living](https://citiesinsider.com/country/germany/dusseldorf/guides/dusseldorf-cost-of-living/zh)
+- [Expatistan, cappuccino in Düsseldorf](https://expatistan.com/price/capuccino/dusseldorf)
+- [TieTalent, moving to Düsseldorf](https://tietalent.com/en/moving-to/dusseldorf-germany)
+- [OkVoyage](https://www.okvoyage.com/?p=34394)
+- [Expatistan, cocktail in Berlin](https://expatistan.com/price/cocktail/berlin)
+- [Expatistan, cocktail in Munich](https://expatistan.com/price/cocktail/munich)
+- [Expatistan, cocktail in Leipzig](https://expatistan.com/price/cocktail/leipzig)

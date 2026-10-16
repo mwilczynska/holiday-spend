@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough. They rest on Argentine national and Buenos Aires price points, mostly from crowdsourced or undated sources and converted at an implied rate of about 1,480 ARS per USD, then adjusted upward for a tourist town. Restaurant and bar anchors are cross-checked against each other but not against El Calafate menus. Accommodation anchors are holistic model estimates from general knowledge of Patagonian tourist towns, with July treated as low season. No live booking pages or current listings were inspected. The FX observation is the most recent RBA figure I could retrieve (20 March 2026), which is older than the generation date, so it may not reflect current rates. Argentina's high inflation and peso volatility mean all anchors could move quickly.",
+  "comparable_city_reasoning": "Basis is Argentine national and Buenos Aires price points, including a July 2026 national cappuccino average and 2026 Buenos Aires pub and cocktail data, with a tourist premium applied for El Calafate. Cocktail and wine were anchored on beer ratios where direct data was weak: cocktail is about twice the draft beer price and wine is about 1.2 times it. Accommodation is a holistic estimate from general knowledge of Patagonian tourist towns, not from any searched accommodation prices.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 4.25,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 7.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 120.00
+  }
+}

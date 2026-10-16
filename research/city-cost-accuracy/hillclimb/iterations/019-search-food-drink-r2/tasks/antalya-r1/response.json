@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on a few crowdsourced or small-sample sources (Numbeo, Expatistan, Whereandwhen, Mylifeelsewhere, a transfer-company blog). Some are dated 2025, and the Turkish lira figures were converted at roughly 46 TRY per USD, implied by Numbeo's own totals, not a verified current rate. Restaurant meal anchors are the most reliable. Cocktail is a loose estimate from a small sample. wine_glass has no direct price source and is derived from the beer anchor using an assumed ratio. Accommodation anchors are holistic model estimates for July peak season, with no live listings checked, so they are lower confidence. The FX observation was read from search snippets of the RBA exchange rates page and not opened directly. A third-party mirror showed 0.6947 for 16 October, which I did not use because it is not verified as an RBA figure.",
+  "comparable_city_reasoning": "No comparable city was needed for food and drink, which were anchored on Antalya-specific published figures. Accommodation was estimated from general knowledge of Antalya's mid-to-high season coastal and old-town hotel and hostel market. Wine was inferred from beer using a typical restaurant ratio of about 1.4x.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.60,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 90.00
+  }
+}

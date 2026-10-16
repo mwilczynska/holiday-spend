@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "No Kampot-specific price data was found. Food anchors are adjusted down from national and Phnom Penh/Siem Reap figures from dated, crowd-sourced or aggregated sources (some undated or from 2018-2024). Cocktail is based on rooftop and club price points. Wine has no reliable direct price, so it is set at about 3x the beer anchor, a relationship assumed from general knowledge of Cambodian restaurant pricing. All accommodation anchors are holistic model estimates from general knowledge of small riverside Cambodian towns; no booking pages or listings were inspected. FX: 0.7088 USD per AUD is the 20 March 2026 RBA observation as shown in search-result text, not verified on the live RBA page. It is about seven months older than the 2026-10-16 generation date, so it should be refreshed from the RBA F11.1 table before use.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Cambodian national averages and Phnom Penh and Siem Reap price points, adjusted down for a smaller provincial riverside town. Accommodation anchors are holistic model estimates for small Cambodian towns, not derived from a named comparable city's listings.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.25,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 4.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 55.00
+  }
+}

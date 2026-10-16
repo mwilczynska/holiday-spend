@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on 2026-dated aggregate guides (Cities Insider, Combien-coute citing Numbeo) plus older Expatistan data, so they are medium quality. Cocktail is medium-low. Wine by the glass is low confidence: no Chengdu by-glass price was found, so it is estimated from beer and bottle-price relationships. Hostel and hotel anchors are holistic model estimates from general knowledge and the city context; no accommodation search or live listing was checked. The sources are not dated to July 2026, and July is peak summer, so accommodation may run higher than the estimates. FX: the 0.6955 value for 2026-10-15 was reported in a search summary attributed to the RBA, but I did not confirm it on the RBA page itself, so verify it there before relying on it.",
+  "comparable_city_reasoning": "Priced against other mainland Chinese provincial capitals and large second-tier cities with similar restaurant and hotel levels. Restaurant and drink anchors use Chengdu-specific aggregate guides. Accommodation uses general knowledge of comparable Chinese cities, not any inspected listing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 4.80,
+    "inexp_meal_1p": 3.70,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.40,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 56.00
+  }
+}

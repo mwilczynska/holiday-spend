@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors come from crowd-sourced aggregators (Expatistan, Numbeo, Wise, MyLifeElsewhere) with mixed dates, some from 2022, and beer and wine rest on thin evidence. Restaurant meal anchors are better supported. Accommodation anchors are holistic model estimates for a July window; no live booking pages or current listings were inspected. FX is weak: the RBA figure was not verified by reading the RBA page. It was relayed from a search summary as 0.7088 USD per AUD dated 2026-03-20, which is not the latest observation for 2026-10-16, so re-verify it before use. EUR-to-USD conversion for the anchors assumes about 1.12 USD per EUR, based on a search snippet of a 14 Oct 2026 Banque de France release.",
+  "comparable_city_reasoning": "Basis is Bologna-specific aggregator data for meals and drinks, cross-checked against other Italian cities, which generally run cheaper than Milan and Florence but dearer than southern Italy. Beer and wine are estimated from the Bologna nightlife and aperitivo price ranges. Accommodation is a holistic model estimate for a mid-sized northern Italian city in peak summer.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.60,
+    "coffee": 2.46,
+    "inexp_meal_1p": 17.92,
+    "midrange_meal_2p": 76.16,
+    "cocktail": 10.08,
+    "wine_glass": 6.72,
+    "hostel_dorm_1p": 33.60,
+    "hostel_private_2p": 84.00,
+    "hotel_1star_2p": 89.60,
+    "hotel_3star_2p": 179.20
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are medium confidence. They are triangulated from aggregator snippets (Travelsafe-abroad, Expatistan, Whereandwhen, combien-coute.net, a German budget guide) that disagree on exact figures and dates, and some are 2024-2025 vintage. Beer, cocktail and wine_glass are low confidence: the cocktail rests on a single $7 snippet, and the wine glass is derived from a bottle price, not a per-glass menu price. Hostel and hotel anchors are holistic model estimates from general knowledge and the city context, with no accommodation search or live listing check. The RBA FX observation could not be verified: the search returned no official rba.gov.au table, and the only rate found was a third-party mirror showing 0.703 USD per AUD for 2026-07-31, which is not an RBA source and was not used. The fx fields are therefore null rather than attributed to the RBA.",
+  "comparable_city_reasoning": "Priced against Indian tier-2 tourist cities with comparable restaurant and guesthouse markets. Restaurant and drink anchors are anchored to the snippet figures (roughly USD 2.9 to 3.6 for a budget meal, about USD 11.5 to 12.6 for a three-course meal for two, about USD 1.5 to 3 for coffee and beer). Cocktail and wine are set from the local beer relationship (cocktail about 2.4x beer; glass of wine about 1.8x beer), since direct cocktail and per-glass wine data were thin. Accommodation is a holistic estimate for Jaipur's guesthouse, hostel and mid-market hotel tiers.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 14.00,
+    "cocktail": 6.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 45.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant anchors are the most grounded, from a 2026 Numbeo-based aggregator in euros, converted with an assumed rate; the implied peso-to-euro rate is roughly 1,700 ARS per EUR. Beer and coffee rest on that same aggregator plus a 2025 Mendoza pub estimate. Cocktail is inferred from the beer price, and wine is a 2025 Mendoza restaurant range adjusted upward, since no 2026 Mendoza wine or cocktail price was found. Accommodation values are holistic model estimates informed by undated hostel aggregators and search snippets; no live booking pages or current listings were inspected. The FX value is the RBA 4.00 pm rate for 15 October 2026 as shown in a search snippet of the RBA exchange rates overview page; I did not open the live RBA table. A third-party listing gave 0.6947 for 16 October, which I could not verify on rba.gov.au. Peso prices move quickly, so treat all anchors as indicative.",
+  "comparable_city_reasoning": "Mendoza restaurant and drink prices were anchored to Argentine city-level price data, with Buenos Aires club cocktail prices used only as a ceiling. Accommodation was set against typical mid-sized Latin American tourist cities with a budget-hostel scene and Argentine domestic hotel pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 95.00
+  }
+}

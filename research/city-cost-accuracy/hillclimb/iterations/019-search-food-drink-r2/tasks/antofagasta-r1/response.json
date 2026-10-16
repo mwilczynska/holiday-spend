@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are proxied from Chilean national and Santiago price data: a national menu del dia of about CLP 8,000 (Preciosmundi, July 2026), a national draft beer of about CLP 3,505 (Preciosmundi), and Santiago cappuccino listings of about CLP 2,600 to 3,200. I added a modest uplift for Antofagasta based on Edenred's 2025 lunch-spend figure (CLP 11,064 for Antofagasta vs 8,525 nationally). I found no Antofagasta-specific menu, beer, or wine prices. The wine and cocktail anchors are estimates: wine is set at roughly 1.25x the beer anchor and cocktail from the typical bar range, with no direct price data. Accommodation anchors are holistic model estimates from general knowledge and the city context. I did not inspect live booking pages or current listings. The FX value (0.6947 USD per AUD, dated 2026-10-16) came from a third-party aggregator that states it reproduces RBA data. I did not read the RBA table itself, and a Trading Economics quote of 0.6923 differs slightly. Verify the observation against the RBA F11.1 table before use.",
+  "comparable_city_reasoning": "Chilean national restaurant and drink price data, with Santiago listings as the closest proxy and an uplift toward national levels for Antofagasta's higher lunch spend (mining and port city). Accommodation is a holistic model estimate based on a northern Chilean regional hub with business-travel demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.30,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 7.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 125.00
+  }
+}

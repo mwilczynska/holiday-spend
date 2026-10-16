@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough guides from secondary sources. Expatistan's Tampa figures for beer, cocktail, cappuccino and dinner are small-sample estimates that the site itself flags as unreliable. Its beer figure was last updated in November 2024. Pulte and Amber Student were used only as context. No Numbeo Tampa figures were found for cappuccino, cocktail or wine. The wine_glass anchor is inferred from the local beer relationship (about 1.5x a draft beer) and is not directly sourced; the happy-hour wine prices found ($5-6) were not used because they are discounted prices. Accommodation anchors (hostel_dorm_1p, hostel_private_2p, hotel_1star_2p, hotel_3star_2p) are holistic model estimates from general knowledge and the Tampa city context. No accommodation searches were run and no live booking pages or listings were inspected. The FX value is the RBA's 15 October 2026 4.00pm reading as shown on the RBA exchange-rates overview page. A 16 October 0.6947 figure appeared only on a third-party site and was not used.",
+  "comparable_city_reasoning": "No comparable city was needed. Anchors are based on US mid-sized metro pricing norms, adjusted with the Tampa-specific figures found: Expatistan's Tampa beer (about $7), cappuccino in the expat area (about $5.27), cocktail (about $12) and dinner for two; a fast-casual range of about $10-15; and a casual lunch range of about $15-20 per person from the Pulte guide, which cites Numbeo.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 5.25,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 13.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 185.00
+  }
+}

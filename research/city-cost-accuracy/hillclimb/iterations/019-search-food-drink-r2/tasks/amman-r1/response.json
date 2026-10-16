@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "The RBA observation could not be retrieved. The FX search returned only third-party and OFX rates, not an rba.gov.au observation, so all fx fields are null. Two price searches failed with rate-limit errors, so the coffee and restaurant anchors rely mainly on general knowledge. Beer and cocktail anchors draw on Expatistan crowd-sourced estimates last updated in 2025 and an undated expat forum draught price. Wine, meal, coffee and all accommodation anchors are holistic model estimates with no current listing or price-index check. Accommodation was not searched, per instructions. Treat all anchors as bounded approximations, not verified current prices.",
+  "comparable_city_reasoning": "No comparable city was used. Estimates are regional Middle East judgements anchored to the Jordanian dinar's peg of roughly 1 JOD = 1.41 USD, which is general knowledge rather than a retrieved source. Drink anchors were checked against Expatistan's Amman beer (about 5.49 JOD for a pub 500 ml) and cocktail (about 5.49 JOD at a downtown club) estimates. Cocktail is set at about 1.6 times the beer anchor, following the local price relationship, because direct cocktail evidence was weak. Wine was set from general knowledge of local restaurant pricing, not from a found source.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.20,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

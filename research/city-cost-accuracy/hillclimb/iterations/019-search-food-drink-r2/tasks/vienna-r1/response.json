@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer, coffee, cocktail and wine anchors rest on a few 2026 aggregator and guide figures, not a full price survey, so they are approximate. Beer is the most consistent (about EUR 4.90 to 5.60 across sources), cocktail rests on one aggregator average, and the wine glass rests on a single Vienna menu that priced 125 ml pours at EUR 6.90 to 7.50. No RBA observation was retrieved: the search returned the RBA F11 table reference but no rate value, so the fx observation fields are null and no rate is claimed. USD values were converted from EUR at an assumed rate of about 1.08 USD per EUR, which I did not verify with a search. Hostel and hotel anchors are holistic model estimates from general knowledge and the supplied context. No accommodation searches were run and no live booking pages or current listings were inspected. Expect accommodation to be the least certain group, with July high-season rates likely to vary widely by district and date.",
+  "comparable_city_reasoning": "Vienna-specific aggregated 2026 food and drink figures, converted from EUR at an assumed rate of about 1.08 USD per EUR. Accommodation is a holistic model estimate from general knowledge of central European capital pricing in July high season, not a comparison to a named city.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 5.60,
+    "coffee": 5.20,
+    "inexp_meal_1p": 16.20,
+    "midrange_meal_2p": 102.60,
+    "cocktail": 12.96,
+    "wine_glass": 7.45,
+    "hostel_dorm_1p": 45.36,
+    "hostel_private_2p": 108.00,
+    "hotel_1star_2p": 129.60,
+    "hotel_3star_2p": 205.20
+  }
+}

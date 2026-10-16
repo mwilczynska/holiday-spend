@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors are based on aggregator averages for Nara and Osaka, with Tokyo figures as a cross-check; they are typical prices, not menu prices. Cocktail and wine_glass are inferred from the local beer relationship because only one weak cocktail figure was found and no wine price was found. Hostel and hotel anchors are holistic model estimates without inspecting live listings, so they are low confidence. The FX observation is the 2026-03-20 value shown on the RBA exchange-rates page, which was the most recent observation visible in the search result. It is not confirmed as the latest published rate for 2026-10-16. Unofficial July 2026 aggregator quotes were around 0.698 to 0.699, so the RBA rate may have moved.",
+  "comparable_city_reasoning": "Japanese mid-sized tourist city priced below Tokyo and roughly in line with or slightly below Osaka for food and drink, with Nara-specific beer and coffee figures used where available. Accommodation is based on Japanese regional guesthouse and business-hotel price levels, with Nara's strong visitor demand taken into account.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 33.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 135.00
+  }
+}

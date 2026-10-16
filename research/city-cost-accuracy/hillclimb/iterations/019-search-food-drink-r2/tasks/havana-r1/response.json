@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors are rough: they rest on traveler accounts from roughly 2021 to 2025, one undated Havana bar menu, and one 2026 price guide that lists only a cappuccino. Cuban peso prices were converted at informal rates I could not verify for 2026, so USD figures may be off. Accommodation anchors are holistic model estimates from general knowledge and the city context; no booking pages or current listings were checked. The RBA USD/AUD observation was not obtained: the one RBA search returned only third-party OFX data, which is not an RBA source, so all fx fields are null rather than guessed. The wine glass has no direct price data and is set from the local price relationship to beer (about 1.7 times the beer anchor). Expatistan CUC-denominated figures were treated as unreliable because the CUC was withdrawn in 2021.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on Havana-specific traveler reports and one 2026 Havana price guide, cross-checked against the peso figures for a Havana Vieja bar menu. Accommodation anchors are holistic estimates for a tourist-facing Havana market, where casas particulares and state-run hotels are the main lodging types.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 1.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 4.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 150.00
+  }
+}

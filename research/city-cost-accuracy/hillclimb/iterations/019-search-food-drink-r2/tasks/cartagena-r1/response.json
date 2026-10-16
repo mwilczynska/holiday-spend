@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal anchors rest on undated or crowdsourced aggregator ranges (livingcost.org, expatexchange and similar guides), so treat them as approximate. Cocktail anchors come from two named Cartagena bars and one budget guide, which is thin. No 2026 wine-by-the-glass price was found, so wine_glass is a beer-relative estimate. Accommodation anchors are holistic model estimates from general knowledge and the Cartagena city context; no accommodation search was run and no live booking pages or listings were inspected. Drinks and accommodation are less certain than the restaurant anchors.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are based on Cartagena-specific aggregator ranges and two Cartagena cocktail-bar prices, cross-checked against the sources' statement that Cartagena is among the pricier Colombian cities. wine_glass is set at about three times the beer anchor, which is a Latin American tourist-restaurant pattern, because direct wine data was not found. Accommodation tiers reflect Cartagena's tourist-district pricing from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.20,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

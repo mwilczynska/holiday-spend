@@ -1,0 +1,25 @@
+{
+"region": "Latin America",
+"confidence": "low",
+"confidence_notes": "Huacachina-specific price data was not found. Restaurant and drink anchors are bounded estimates from Lima and Cusco expat-area and pub averages (Expatistan, Whereandwhen; mostly 2024-2026 crowd-sourced samples), with a tourist-town premium added. Local soles prices were converted at roughly 3.4 soles per USD. Ica prices were reported as lower, but no figure was found. The cocktail anchor is based on Cusco and Lima club figures. The wine_glass anchor has no direct source and is set at about 2x the beer anchor, a local price-relationship assumption. Accommodation anchors are holistic model estimates from general knowledge and city context; no live booking pages or listings were inspected. FX is weak: the RBA Exchange Rates page was identified but its table was not opened. The 2026-03-20 value of 0.7088 comes from a search snippet of that page. It was read as USD per AUD because values near 0.71 match AUD/USD levels. It is about seven months older than the 2026-10-16 generation date, so it is stale and should be replaced with the latest RBA observation before use.",
+"comparable_city_reasoning": "Peruvian pricing benchmarked against Lima and Cusco expat-area and pub data, adjusted upward for a small oasis tourist town near Ica. Accommodation is a holistic model estimate, not checked against current listings.",
+"fx": {
+"as_of_date": "2026-03-20",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+"source_rate": 0.7088,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 3.00,
+"coffee": 3.50,
+"inexp_meal_1p": 5.00,
+"midrange_meal_2p": 26.00,
+"cocktail": 7.00,
+"wine_glass": 6.00,
+"hostel_dorm_1p": 10.00,
+"hostel_private_2p": 30.00,
+"hotel_1star_2p": 28.00,
+"hotel_3star_2p": 75.00
+}
+}

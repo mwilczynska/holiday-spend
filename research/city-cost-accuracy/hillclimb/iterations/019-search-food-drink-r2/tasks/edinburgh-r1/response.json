@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer and coffee anchors come from aggregated UK and Edinburgh cost-of-living and pub-price sources, which broadly agree, though some are undated. Cocktail and wine anchors rest on thin, mixed sources and a beer-relative judgement, so they are lower confidence. Accommodation anchors are holistic model estimates for a July festival-season window and were not checked against live listings. The FX value (0.6955, 15 Oct 2026) was taken from search-result excerpts attributed to the RBA, not read directly from rba.gov.au. GBP-denominated estimates were converted at about 1.35 USD per GBP, based on a September 2026 quote.",
+  "comparable_city_reasoning": "No comparable city was needed for food and drink, since Edinburgh-specific and UK-wide price guides were available. The wine glass is set relative to beer (roughly 1.35 times a pint) because direct Edinburgh restaurant wine-by-the-glass data was weak. Accommodation reflects general knowledge of Edinburgh's high summer demand, especially during the August festivals, relative to other UK capital-city hotel markets.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.43,
+    "coffee": 5.00,
+    "inexp_meal_1p": 16.20,
+    "midrange_meal_2p": 121.50,
+    "cocktail": 14.18,
+    "wine_glass": 10.13,
+    "hostel_dorm_1p": 47.25,
+    "hostel_private_2p": 121.50,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 236.25
+  }
+}

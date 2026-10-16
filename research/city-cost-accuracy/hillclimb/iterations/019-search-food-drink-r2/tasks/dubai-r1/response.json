@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and drink anchors come from aggregator, FAQ and blog sources that disagree with each other, not from official statistics; the restaurant and drink figures are bounded midpoints of those ranges. Cocktail and wine figures are direct-range estimates from the same sources, not derived from beer. Accommodation anchors (hostel and hotel) are holistic model estimates for July low season, based on general knowledge and not on any live listings or search results, and are the least certain. The FX value 0.6947 comes from an RBA latest-rates table excerpt returned by search, which I did not open directly; a separate excerpt showed 0.6955 for 15 October, so the 16 October observation should be checked on the RBA page.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on Dubai-specific secondary price ranges converted at the AED peg of about 3.6725 AED per USD. Accommodation anchors are judged from Dubai's general market level for July, which is typically low season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 13.60,
+    "coffee": 6.00,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 69.40,
+    "cocktail": 17.70,
+    "wine_glass": 16.30,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 76.00,
+    "hotel_1star_2p": 82.00,
+    "hotel_3star_2p": 122.50
+  }
+}

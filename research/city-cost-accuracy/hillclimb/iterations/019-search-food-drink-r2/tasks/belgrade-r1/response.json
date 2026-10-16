@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors use crowd-sourced Expatistan listings, older Numbeo and guide figures, and an approximate conversion of about 100 to 102 RSD per USD; the mid-range meal and inexpensive meal are less certain than the drink anchors. Hostel and hotel anchors are holistic model estimates from general knowledge and city context, not from inspected live listings or current booking pages. FX: the 0.6955 rate was taken from a search summary of the RBA exchange rates page and I did not open the page directly; the RBA summary flagged the 16 October value as possibly provisional, so the 15 October observation was used.",
+  "comparable_city_reasoning": "Priced against mid-sized Central and Southeast European capitals with similar tourism demand. Expatistan places Belgrade close to Sofia overall, and Belgrade's food and drink prices sit below Western European capitals. Cocktail and wine anchors use direct listing data, and the wine glass anchor is inferred from the bottle price relationship. Accommodation is a holistic estimate for a mid-sized Balkan capital in peak summer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 105.00
+  }
+}

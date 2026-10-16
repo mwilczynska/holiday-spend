@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and coffee anchors rest on aggregated Ayutthaya estimates from several sources, some dated (one was last updated in 2023), so treat them as indicative. Beer and the inexpensive and mid-range meal anchors are the firmest. Cocktail and wine_glass have no Ayutthaya-specific data; they are inferred from Bangkok and resort menus and the local beer relationship. Accommodation anchors are holistic model estimates from general knowledge and city context, not inspected live listings. The FX observation is the most recent RBA value I could verify (20 March 2026); a newer daily value may exist.",
+  "comparable_city_reasoning": "Priced as a lower-cost Thai provincial tourist city, below Bangkok and Chiang Mai. Food and drink anchors are informed by Ayutthaya aggregator estimates and Thai menu data. Cocktail and wine are set relative to the local beer price. Accommodation is a holistic estimate for a small Thai heritage-tourism town.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.10,
+    "inexp_meal_1p": 2.20,
+    "midrange_meal_2p": 21.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 45.00
+  }
+}

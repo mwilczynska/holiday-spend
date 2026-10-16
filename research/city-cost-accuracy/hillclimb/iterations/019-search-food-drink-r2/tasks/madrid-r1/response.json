@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are based on aggregated 2026 and recent travel-budget sources, but those sources conflict and some are undated or commercial estimates; wine and cocktail figures are the least certain. Hostel and hotel anchors are holistic model estimates for July peak season from general knowledge and the city context; no live booking pages or current listings were checked. The EUR-to-USD conversion uses an assumed rate of about 1.15 from general knowledge, not a searched source. The FX value comes from a search summary of rba.gov.au exchange-rate pages listing 0.6947 for 16 October 2026; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "Priced against Madrid's own 2026 menu del dia (about EUR 12-15 with drink), a dining price index median of about EUR 16 per person, cappuccino at about EUR 3 in central areas, and draught beer at about EUR 3.5-4 in bars. Accommodation is benchmarked to other large southern European capitals in peak July season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.45,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 71.00,
+    "cocktail": 12.65,
+    "wine_glass": 4.60,
+    "hostel_dorm_1p": 43.70,
+    "hostel_private_2p": 109.25,
+    "hotel_1star_2p": 92.00,
+    "hotel_3star_2p": 201.25
+  }
+}

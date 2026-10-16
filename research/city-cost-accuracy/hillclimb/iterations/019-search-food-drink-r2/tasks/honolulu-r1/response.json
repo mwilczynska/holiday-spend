@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and inexpensive-meal anchors rest on aggregated cost-of-living figures (Numbeo, Expatistan, MyLifeElsewhere) and are reasonably supported. Cocktail anchors use Expatistan's crowdsourced average and happy-hour listings as a cross-check. The mid-range meal, wine glass and all four accommodation anchors are model estimates, not searched figures; accommodation was not searched, per instructions, and no live listings were inspected. Wine uses the local beer relationship because no reliable Honolulu wine-by-the-glass average was found. FX caveat: the only RBA observation I could identify is 0.7088 USD per AUD dated 2026-03-20, taken from a search-result snippet of the RBA exchange-rates page. I did not open that page, and this is not the latest observation available on 2026-10-16. I could not retrieve a later RBA figure within the search limit, so the FX value should be refreshed from rba.gov.au before use.",
+  "comparable_city_reasoning": "No comparable city was needed. Honolulu is a US city, so the North America basis applies, anchored to Honolulu-specific aggregated price data where available. Wine is estimated from the beer anchor, and the mid-range meal and accommodation anchors are holistic estimates for a July 2026 tourist-season window.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 8.00,
+    "inexp_meal_1p": 22.50,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 16.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 320.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Restaurant food and beer anchors rest on crowdsourced Sa Pa and national Vietnam price guides of mixed dates, so they are medium at best. Cocktail and wine anchors are inferred from the local beer relationship and from upscale Hanoi and Saigon menus, not from Sa Pa data. Accommodation anchors are holistic model estimates from general knowledge and the city context; I did not search for accommodation prices or check live listings. FX: I could not verify an RBA observation for the reference date. The value given is the most recent RBA exchange-rate page snapshot I saw in search results (20 Mar 2026). It is stale, and a later third-party figure I could not confirm against rba.gov.au was not used. Refresh the FX observation before use.",
+  "comparable_city_reasoning": "Northern Vietnam mountain tourist town. Food and drink priced from national Vietnam restaurant benchmarks and Sa Pa-specific guides, with a tourist-town premium. Cocktail and wine priced from the local beer relationship and upscale Vietnamese bar menus. Accommodation is a holistic estimate for a high-season Sa Pa stay.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.95,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 45.00
+  }
+}

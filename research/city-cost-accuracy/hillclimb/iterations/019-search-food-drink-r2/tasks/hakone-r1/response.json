@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are rough. They come from mixed-date, non-Hakone sources (Tokyo and national cost-of-living pages, some with stale FX) and were adjusted upward for Hakone's resort premium, so they are bounded estimates rather than measured local prices. Accommodation anchors are holistic model estimates from general knowledge and city context, not inspected listings. The RBA FX observation could not be retrieved: the one allowed RBA search returned no current rate, so fx fields are null and no source is claimed. Yen-based estimates were converted at an assumed rate of roughly 150 JPY per USD, which is unverified and should be replaced by the server's rate. One search unintentionally returned Hakone hotel listings despite the no-accommodation-search rule; those results were not used for any anchor. Cocktail and wine are weakly sourced; the cocktail anchor sits at roughly 1.6x the beer anchor and the wine anchor at roughly 1.8x, using the local price relationship as a cross-check.",
+  "comparable_city_reasoning": "Basis is national Japan restaurant and cafe price levels from cost-of-living sources (typical draft beer about 549 to 700 JPY, cappuccino about 528 JPY, budget meal about 800 to 1,114 JPY, three-course dinner for two about 5,500 to 5,700 JPY, cocktail about 995 JPY, glass of wine about 1,000 JPY or more), adjusted up for Hakone as a tourist resort town. Accommodation is a holistic estimate for a Hakone hot-spring resort area, where weekend and seasonal demand pushes rates above typical Japanese provincial towns.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 43.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 185.00
+  }
+}

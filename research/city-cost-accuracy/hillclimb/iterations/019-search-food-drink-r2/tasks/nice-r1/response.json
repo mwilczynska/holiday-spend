@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on several cost-of-living and venue snippets with mixed dates, so they are moderate-confidence. Beer, cocktail and wine are less certain: beer comes from a few Nice venue and guide figures, and cocktail and wine are bounded from scattered bar listings. Hostel and hotel anchors are holistic model estimates for Nice in July peak season, not checked against live listings. Local euro prices were converted using an assumed EUR/USD rate of about 1.15 from general knowledge, not from a search. The FX value comes from a search snippet of the RBA exchange-rates page for 2026-10-16; I did not verify it on the F11.1 table.",
+  "comparable_city_reasoning": "No comparable city was needed. Food and drink anchors are based on Nice-specific published snippets, aggregated where possible. Accommodation anchors are holistic estimates for a Mediterranean resort city in peak July season, informed by the Nice context supplied.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.90,
+    "coffee": 3.80,
+    "inexp_meal_1p": 19.55,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 17.25,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 51.75,
+    "hostel_private_2p": 138.00,
+    "hotel_1star_2p": 149.50,
+    "hotel_3star_2p": 264.50
+  }
+}

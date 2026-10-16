@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on undated or crowdsourced cost-of-living and travel-guide figures, cross-checked against each other, so they are rough. Beer and cocktail anchors use few data points (Beijing listings plus Xi'an guide figures). The wine glass anchor has no direct Xi'an or China restaurant price and is derived from the beer anchor and a Beijing retail bottle price. Accommodation anchors are holistic model estimates from general knowledge and the Xi'an context, with a July peak-season adjustment, and were not checked against live listings. The FX observation (15 Oct 2026) was taken from a search snippet of the RBA exchange-rates page and was not confirmed on the live table.",
+  "comparable_city_reasoning": "Priced as a mid-sized inland Chinese city below Beijing. Restaurant and coffee anchors are benchmarked to Xi'an travel-guide figures and to coffee averages for Wuhan, Xiamen and Beijing. Beer and cocktail anchors are benchmarked to a Beijing pub beer (about 29 yuan) and a Beijing club cocktail (about 62 yuan), scaled down for Xi'an. Wine glass is derived from the beer anchor using a typical restaurant wine-to-beer ratio. Accommodation is a model estimate for a Chinese second-tier tourist city in summer, supported by a Xi'an youth-hostel price of about 50 to 80 yuan per bed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 60.00
+  }
+}

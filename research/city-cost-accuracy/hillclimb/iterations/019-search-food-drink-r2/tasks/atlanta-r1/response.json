@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer, cocktail and wine anchors rest on mixed, partly dated third-party sources (travel guides, Expatistan, a bar guide, a national wine-by-the-glass guide) and are triangulated rather than from an Atlanta price survey; wine by the glass has no Atlanta-specific figure. Accommodation anchors (hostel and hotel) are holistic model estimates from general knowledge and were not searched or checked against live listings. The FX observation is the most recent RBA exchange-rate page value I could verify (2026-03-20), not a current observation as of 2026-10-16; I could not retrieve the RBA F11 table directly, so it should be refreshed before use.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on Atlanta-area price evidence, with a national US by-the-glass benchmark for wine. Accommodation anchors reflect the general Atlanta hotel and hostel market by tier.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 16.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 185.00
+  }
+}

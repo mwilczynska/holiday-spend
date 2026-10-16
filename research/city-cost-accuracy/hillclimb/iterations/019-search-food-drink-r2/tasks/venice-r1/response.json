@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on aggregator, blog and undated figures, mostly in EUR, converted at about 1.12 USD per EUR (an assumption derived from a third-party AUD cross rate). Prices vary sharply between residential bacari and the San Marco tourist core. Cocktail and wine values are bounded estimates from bar-price ranges, with the beer figure as a reference point. Hostel and hotel anchors are holistic model estimates for July with no live listings or accommodation searches. The FX value comes from a search excerpt of the RBA overview page dated 15 October 2026; I did not open the page, and I could not confirm a 16 October RBA observation.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink were priced from Italian tourist-city evidence, with one aggregator cross-check against Rome. Accommodation reflects general knowledge of Venice's high-season hotel market, which is priced above most other Italian cities.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.72,
+    "coffee": 2.13,
+    "inexp_meal_1p": 22.40,
+    "midrange_meal_2p": 61.60,
+    "cocktail": 11.20,
+    "wine_glass": 6.72,
+    "hostel_dorm_1p": 56.00,
+    "hostel_private_2p": 134.40,
+    "hotel_1star_2p": 156.80,
+    "hotel_3star_2p": 268.80
+  }
+}

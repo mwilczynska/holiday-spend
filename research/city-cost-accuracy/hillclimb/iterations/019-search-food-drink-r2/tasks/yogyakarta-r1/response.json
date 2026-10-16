@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors rest on aggregated 2026 cost-of-living sources (MyLifeElsewhere, Where and When, combien-coute) rather than official surveys. The cocktail figure comes from 2021 Expatistan club data and was adjusted upward by judgement. The beer figure is a judgement from 2021 Expatistan pub data and older forum anecdotes. No local wine price was found, so wine_glass is inferred from beer using a local price relationship of about 2.75 times beer. Accommodation anchors are holistic model estimates from general knowledge; no live booking pages or current listings were inspected. FX: the latest RBA observation for 2026-10-16 could not be retrieved. The fx values are the most recent RBA figure surfaced by search (a search summary attributed 0.7088 USD per AUD to 2026-03-20 on the RBA exchange-rates page). I could not open the live RBA table to verify it, and the value is roughly seven months old, so it should be replaced by the latest RBA observation.",
+  "comparable_city_reasoning": "No single comparable city was used. Estimates are anchored to Yogyakarta-specific sources and to typical pricing in mid-sized Indonesian tourist cities. Bali and Jakarta were treated as higher-priced and were not used as bases. Wine is derived from the beer anchor by the stated local price relationship.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 14.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 45.00
+  }
+}

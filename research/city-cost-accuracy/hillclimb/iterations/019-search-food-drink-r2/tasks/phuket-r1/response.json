@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are triangulated from several 2026-dated Phuket guides and one cost-of-living index. Sources differ by venue type (street, local, tourist or beach bar), so the anchors sit near the middle of the ranges. THB was converted at an assumed rate of about 33 THB per USD, which is not from a search. Hostel and hotel anchors are holistic knowledge-based estimates with no accommodation search, priced for the July low season, and are the least certain. The FX observation is the most recent one I could find, dated 2026-03-20 and taken from a search summary of the RBA page rather than the live table. It is about seven months older than the generation date, so it may not be the latest published rate.",
+  "comparable_city_reasoning": "No comparable city used. Food and drink anchors come from Phuket-specific price guides and an index. Accommodation anchors come from general knowledge of Phuket guesthouse and hotel tiers in low season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.30,
+    "inexp_meal_1p": 3.60,
+    "midrange_meal_2p": 39.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 60.00
+  }
+}

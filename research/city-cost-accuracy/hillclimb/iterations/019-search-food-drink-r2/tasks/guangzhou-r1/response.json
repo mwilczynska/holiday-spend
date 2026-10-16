@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on several cross-checked guides (Expat Arrivals January 2026 averages, ExamineChina, Citiesinsider/Livingcost October 2025, combien-coute 2026 estimate) and are medium confidence. Beer uses those guides plus a 2026 Guangzhou nightlife guide. Cocktail uses that guide's upscale range, so it may run high for a casual bar. The wine glass figure has no direct source and is estimated from the local beer price. Both hostel and hotel anchors are holistic model estimates from general knowledge and the city context, not from live booking pages or current listings, and are lower confidence. FX provenance caveat: the 0.6947 USD per AUD figure for 2026-10-16 came from a third-party page (ozfinancehub.com.au) that reports RBA indicative mid-points. The rba.gov.au exchange-rates page was listed in search results but was not opened to confirm this figure, so verify it against the official RBA F11.1 table before relying on it. Pricing window is July 2026 and some sources are older, so treat all anchors as approximate.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors are based on Guangzhou-specific price sources and on general tier-1 mainland Chinese city price levels for accommodation and wine.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.45,
+    "coffee": 3.90,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.30,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 27.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 63.00
+  }
+}

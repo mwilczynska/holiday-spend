@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Restaurant and coffee anchors rest on aggregated guides and Numbeo-derived Portugal ranges (medium). Beer, cocktail and wine rest on travel blogs with thin Porto-specific data (low to medium). Accommodation anchors are knowledge-based holistic estimates for Porto in peak summer, not checked against live listings (low). EUR figures were converted to USD at an approximate 1.16 from general knowledge, not from a search. The FX observation is the most recent RBA figure I could confirm (2026-03-20, from a search summary of the RBA page). It is not a current observation and may be stale for the 2026-10-16 generation date.",
+  "comparable_city_reasoning": "No comparable-city substitution. Food and drink anchors use Porto-specific guide prices, with Portugal-wide Numbeo ranges where Porto data was thin. Cocktail and wine are set against the beer price level, since the cocktail and wine sources were sparse. Accommodation is a holistic model estimate for Porto in summer, not from live listings.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.65,
+    "inexp_meal_1p": 11.60,
+    "midrange_meal_2p": 64.00,
+    "cocktail": 9.30,
+    "wine_glass": 4.60,
+    "hostel_dorm_1p": 34.80,
+    "hostel_private_2p": 87.00,
+    "hotel_1star_2p": 104.40,
+    "hotel_3star_2p": 197.20
+  }
+}

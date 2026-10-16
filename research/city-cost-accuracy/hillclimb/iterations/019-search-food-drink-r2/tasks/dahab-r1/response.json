@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Beer, coffee and meal anchors rest on crowdsourced Dahab estimates that disagree with each other, so they are bounded ranges rather than measured prices. Cocktail and wine are inferred from the local beer price, with only one unverified bottle-price hint. Accommodation anchors are holistic model estimates, not checked against live listings. The FX observation is the latest RBA figure I could verify (20 March 2026), so it may be stale for an October 2026 generation date.",
+  "comparable_city_reasoning": "Dahab-specific food and drink estimates from travel-cost aggregators and a French price site (July 2026 updates), with Red Sea resort menus used only as an upper bound. Cocktail and wine are set from a beer-relative basis (cocktail about 2.5 times draft beer; wine glass about 1.75 times draft beer). Accommodation is a holistic estimate for South Sinai Red Sea budget tourism, with no accommodation search performed.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 1.60,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 5.00,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 60.00
+  }
+}

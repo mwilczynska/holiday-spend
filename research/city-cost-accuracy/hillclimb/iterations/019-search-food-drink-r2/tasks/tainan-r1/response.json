@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and beer anchors rest on crowdsourced aggregator averages (MyLifeElsewhere for Tainan; combien-coute.net for Taipei, Taichung and Kaohsiung), not official Tainan surveys. Mid-range meal is adjusted down from a Taipei figure. Cocktail is cross-checked against a World's 50 Best Discovery Tainan average of about $11-12 (currency and year unclear) and the beer ratio. Wine glass is inferred from the beer ratio because no direct Taiwan wine price was found. Accommodation anchors are holistic model estimates and were not checked against listings. NT$ figures are converted at about 32.4 NT$ per USD, the rate implied by the aggregator's own conversions. The FX observation was not retrieved: the one RBA search returned only the RBA exchange-rates page link, with no published rate in the results, and the RBA search allocation was used, so the fx observation fields are null rather than guessed.",
+  "comparable_city_reasoning": "Anchored to Tainan-specific aggregator figures where available (basic restaurant meal with drink about NT$212; local draft pint about NT$105), with Taipei, Taichung and Kaohsiung cappuccino averages (about NT$92-110) as regional proxies. Tainan is generally cheaper than Taipei for dining, so Taipei figures were scaled down.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.10,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 90.00
+  }
+}

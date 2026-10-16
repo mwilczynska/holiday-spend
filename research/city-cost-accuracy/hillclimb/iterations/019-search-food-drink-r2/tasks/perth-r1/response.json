@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and restaurant anchors are medium confidence. They come from Perth aggregator snippets (Expatistan, Numbeo-derived listings, Cities Insider) that disagree somewhat and are based on few data points. Cocktail and wine_glass are low confidence: no Perth bar price data was found, so they are derived from the beer anchor (cocktail about 1.7x beer, wine about 1.1x beer). Hostel and hotel anchors are holistic model estimates without inspecting live listings, so they are low confidence. The FX observation was taken from a search-result excerpt of the RBA exchange rates page, not from an opened page; verify it against the RBA page before relying on it.",
+  "comparable_city_reasoning": "No comparable city was used. Restaurant, coffee and beer anchors are Perth-specific aggregator estimates. Cocktail and wine are derived from the local beer price. Accommodation is a holistic estimate for Perth's tourist market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.03,
+    "coffee": 4.17,
+    "inexp_meal_1p": 17.37,
+    "midrange_meal_2p": 100.73,
+    "cocktail": 15.28,
+    "wine_glass": 9.73,
+    "hostel_dorm_1p": 31.26,
+    "hostel_private_2p": 83.36,
+    "hotel_1star_2p": 104.21,
+    "hotel_3star_2p": 159.78
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on crowdsourced comparison data (Expatistan, May 2026) and travel guides, with a Croatia-wide 2025 range as a cross-check; treat them as bounded estimates. Beer, cocktail and wine are lower confidence because the guides disagree widely (cocktails about 6 to 15 EUR); cocktail and wine were set using the local beer-to-cocktail and beer-to-wine relationship. Accommodation anchors are holistic model estimates from general knowledge of Split's July seasonal pricing; no live booking pages or current listings were inspected. The FX observation is the RBA USD per AUD figure for 16 October 2026 (0.6947) as it appeared in a search snippet of the RBA exchange-rates table; the 16 October 4.00 pm snapshot was not separately confirmed, and the snippet layout was jumbled, so verify on the RBA page. Euro-denominated prices were converted to USD at an assumed rate of about 1.15 USD per EUR, which was not sourced from a search and is a material assumption for all price anchors. Figures reflect July 2026 summer pricing and may be lower off-season.",
+  "comparable_city_reasoning": "No close single comparator was used. Split was benchmarked against Croatian coastal tourist pricing (Split is priced above much of the rest of Croatia) and against comparable Southern European tourist cities for drinks and accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.40,
+    "coffee": 3.20,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.50,
+    "wine_glass": 6.30,
+    "hostel_dorm_1p": 43.00,
+    "hostel_private_2p": 92.00,
+    "hotel_1star_2p": 104.00,
+    "hotel_3star_2p": 172.00
+  }
+}

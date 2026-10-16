@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are scaled down from Shanghai and Beijing expat-area and national benchmarks because no Huangshan-specific price list was found; they are rough. Cocktail and wine are weaker: cocktail is adjusted from one crowdsourced Shanghai club price and wine is set from the local beer relationship. Accommodation anchors are holistic model estimates from general knowledge and city context, not from live booking pages. The reference window is July 2026 (peak season) but the sources are undated or from 2026 snapshots. The FX rate was read from a search-result summary of the RBA exchange-rates overview page and was not checked against the F11.1 table; secondary sites differ by about 0.001 to 0.005.",
+  "comparable_city_reasoning": "Scaled from eastern Chinese tourist cities below Shanghai and Beijing price levels, using national and Shanghai/Beijing benchmarks as upper references. Accommodation is a holistic estimate for the urban area of Huangshan (Tunxi), not the mountain scenic area, where prices are higher.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.60,
+    "coffee": 3.80,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 26.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 21.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 52.00
+  }
+}

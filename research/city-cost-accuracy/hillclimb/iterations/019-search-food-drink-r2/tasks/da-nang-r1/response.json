@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors rest on aggregated cost-of-living and price-index snippets from several sites, some undated, so they are moderately reliable. Cappuccino was not directly sourced: it is inferred from the Americano and street-coffee prices found, plus a small premium for milk-based drinks. Cocktail is based on an Expatistan downtown-club average, raised for tourist-area bars. Wine by the glass is derived from an Expatistan retail bottle price with a restaurant markup. Accommodation anchors are holistic model estimates from general knowledge and city context; no live booking pages or current listings were inspected. VND figures were converted at roughly 26,000 VND per USD. The FX observation was taken from a search snippet of the RBA page, not from a downloaded RBA data file.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is Vietnamese coastal tourist cities, with price levels placed below Hanoi, since Numbeo-attributed figures put Da Nang about 9% below Hanoi on a cost-of-living-plus-rent basis. Hostel and hotel tiers follow typical Southeast Asian beach-city tourist pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 20.00,
+    "cocktail": 4.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 45.00
+  }
+}

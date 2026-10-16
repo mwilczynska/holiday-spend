@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "low",
+  "confidence_notes": "Restaurant anchors rest on several undated or conflicting cost-of-living sources (BearSavings, combien-coute.net) and are medium-quality at best. Beer, cocktail and wine anchors are weak: no current Sharm El Sheikh menu was found, so beer rests on a single undated menu plus cost-of-living figures, and cocktail and wine use the local price relationship to beer. Accommodation anchors are holistic model estimates from general knowledge, not from any search or live listings, and July is a low season for Sharm El Sheikh. FX: the official RBA page I found was a March 2026 snapshot, not the latest observation as of 2026-10-16, so the rate is stale. The snapshot lists 18-20 March 2026, and I assigned 0.7088 to 20 March based on listing order.",
+  "comparable_city_reasoning": "Priced as a Red Sea Egyptian resort town, benchmarked against Egyptian tourist-facing restaurant and cafe prices in the cited cost-of-living sources, with a resort-area uplift over local Egyptian prices. Accommodation is a holistic estimate for Naama Bay-style resort-town stock, not a comparison to a named city.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 21.00,
+    "cocktail": 6.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 75.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "Byron Bay-specific price data was not found. Food and drink anchors are adjusted from a national 2026 café survey (Hey You and Westpac DataX, June 2026, average cup about AUD 4.69, Queensland about 5.17), Melbourne bar guides (schooners about AUD 9.50 to 14, house wine by the glass about AUD 11.50 to 16, signature cocktails about AUD 22 to 35), Sydney and Melbourne happy-hour listings, and a 2024-era cost-of-living guide with conflicting meal figures. I raised the café and bar figures for a high-demand tourist town. Beer, cocktail and wine anchors are less certain and rest on Melbourne and Sydney data rather than Byron Bay. Restaurant meal anchors are the weakest because the sources conflict widely. Accommodation anchors are holistic model estimates for a peak-season coastal tourist town in July, not based on live listings or any accommodation search. FX is the RBA observation for 15 October 2026 as reported in a search result for the RBA exchange rates page; I did not open the page directly. A later aggregator figure for 16 October was not confirmed, so I did not use it.",
+  "comparable_city_reasoning": "No direct Byron Bay benchmark was available. Food and drink pricing is anchored to national café averages and Melbourne/Sydney bar and happy-hour data, with an upward adjustment for a premium regional tourist destination. Accommodation is a holistic estimate for regional NSW coastal tourism in peak winter season, informed by general knowledge of the destination's room mix.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.35,
+    "coffee": 3.83,
+    "inexp_meal_1p": 15.30,
+    "midrange_meal_2p": 83.46,
+    "cocktail": 15.30,
+    "wine_glass": 9.74,
+    "hostel_dorm_1p": 38.25,
+    "hostel_private_2p": 90.42,
+    "hotel_1star_2p": 132.15,
+    "hotel_3star_2p": 194.74
+  }
+}

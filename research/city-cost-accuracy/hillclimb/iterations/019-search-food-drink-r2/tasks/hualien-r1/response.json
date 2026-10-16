@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant meal and coffee anchors are triangulated across CityCost, BearSavings, Wise and Taipei-based aggregates, with Hualien set below Taipei. Beer sources conflict (about NT$41 per 0.5L in one listing versus about $4 per pint in another), so the beer anchor sits near typical restaurant pricing and is uncertain. No direct cocktail or wine price was found; both are derived from the beer anchor using assumed multiples (cocktail about 3x beer, wine glass about 2.5x beer). Dorm, private hostel and hotel anchors are holistic model estimates from general knowledge of eastern Taiwan tourist towns, not inspected or live listings. FX: the rate was not read directly from the RBA page. It comes from a third-party summary dated 2026-07-31 that cites the RBA table, and a more recent RBA observation before 2026-10-16 may exist. Verify against the RBA F11 table before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are based on aggregated Taiwan figures (nationwide and Taipei) discounted for Hualien, a smaller coastal city in eastern Taiwan. Accommodation anchors are holistic estimates from general knowledge of similar Taiwanese tourist towns.",
+  "fx": {
+    "as_of_date": "2026-07-31",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7030,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 95.00
+  }
+}

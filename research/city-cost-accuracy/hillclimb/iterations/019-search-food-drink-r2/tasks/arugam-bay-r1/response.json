@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors are bounded estimates. They rest on 2024 hotel menus, aggregator averages (Numbeo-derived) and general knowledge of Sri Lankan beach-town pricing, not on current Arugam Bay menus. Rupee figures were converted at an approximate market rate. Accommodation anchors are holistic model estimates with no live listings checked. Cocktail and wine_glass are set from the local beer relationship because direct Arugam Bay data was thin. The fx value is not the latest RBA observation: the most recent RBA-attributed figure I could find was a March 2026 snapshot (2026-03-20) from search-result text, and I could not open the live RBA table. Treat the fx value as stale.",
+  "comparable_city_reasoning": "Priced between Sri Lankan local towns (Negombo, Kandy, Colombo aggregator averages) and southern beach-tourism towns (Weligama, Hikkaduwa, Tangalle), adjusted up for a surf-tourism destination with a limited, seasonal supply of accommodation and restaurants.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.10,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 16.00,
+    "cocktail": 4.80,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 65.00
+  }
+}

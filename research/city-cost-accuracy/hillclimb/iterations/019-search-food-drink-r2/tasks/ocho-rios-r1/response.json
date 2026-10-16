@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on third-party snapshots from 2023 to 2025 (Numbeo June 2025, Expat Exchange 2023 and 2024, Bearsavings, and general Jamaica guides), which mix currencies and disagree by up to about 2x. Beer and cappuccino are the most consistent. The cocktail anchor follows one guide's casual sit-down range. The wine glass has no direct source and is set at about 1.75x the beer anchor. The mid-range two-person meal sits between the Expat Exchange range and the Bearsavings figure. Accommodation anchors are holistic model estimates from general knowledge and the Ocho Rios resort-town context. No accommodation search or live booking or listing check was performed. FX: the only RBA-attributed value I found is a 2026-03-20 figure from a third-party snapshot labelled as the RBA page. I did not read the live rba.gov.au page, and this value is likely about seven months older than the latest RBA observation, so it should be verified before use.",
+  "comparable_city_reasoning": "Caribbean resort-town basis, cross-checked against Ocho Rios-specific guide and Numbeo figures and Jamaican resort-town (Montego Bay, Negril) restaurant ranges. Tourist-oriented pricing is assumed for Ocho Rios, a cruise and resort destination, with a cheaper local cookshop tier for the inexpensive meal anchor.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.75,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 160.00
+  }
+}

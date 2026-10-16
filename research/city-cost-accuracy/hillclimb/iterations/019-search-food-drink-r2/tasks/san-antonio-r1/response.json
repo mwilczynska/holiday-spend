@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors rest on mixed-quality snippets: Square bar-pricing averages, menu snapshots with mostly undated pages, a crowd-sourced Expatistan dinner-for-two figure from a small sample, and secondary articles citing Numbeo (2023 figures, adjusted upward for inflation). Mid-range meal and cocktail/wine figures are the least certain. Accommodation anchors are holistic model estimates for July 2026 from general knowledge and the city context; no booking pages or current listings were checked. The FX value comes from a search snippet of the RBA exchange-rates page, which reported 0.6947 for 16 October 2026 but flagged inconsistent cache metadata, so the value should be verified against the live RBA page.",
+  "comparable_city_reasoning": "No comparable-city transfer was used. Food and drink anchors are San Antonio-specific: Square and menu snapshots for coffee, beer, cocktails and wine, and Expatistan, Tableagent and SumUp/Numbeo-cited figures for meals. Cocktail and wine were checked against the beer anchor and local happy-hour and menu prices. Accommodation reflects a general US Sun Belt mid-size metro, with the 3-star anchor reflecting Riverwalk-area demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 11.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 190.00
+  }
+}

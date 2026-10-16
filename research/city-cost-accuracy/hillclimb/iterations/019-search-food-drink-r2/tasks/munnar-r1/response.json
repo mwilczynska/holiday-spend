@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Food anchors rest on India- and Kerala-wide crowd-sourced estimates, not Munnar-specific menus. Beer and cappuccino have some direct, though indirect, data points. Cocktail and wine are inferred from the local beer price relationship because direct data was weak; wine is uncommon and heavily taxed in Kerala. Accommodation anchors are holistic model estimates from general knowledge and seasonal hill-station context, with no live listings inspected. The FX observation came from a search summary of the RBA exchange-rates page and was not independently checked on rba.gov.au.",
+  "comparable_city_reasoning": "Kerala hill-station tourist towns, based on Kerala and India-wide estimates: Expatistan Kochi neighbourhood-pub beer, Numbeo-derived cappuccino and meal estimates republished by Combien-coûte.net and Preciosmundi, and Kerala retail beer prices, with an uplift for tourist-area pricing. Cocktail and wine are estimated from beer using a local price relationship.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 1.70,
+    "inexp_meal_1p": 2.30,
+    "midrange_meal_2p": 15.50,
+    "cocktail": 5.30,
+    "wine_glass": 6.70,
+    "hostel_dorm_1p": 5.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 48.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Beer and cappuccino rest on several published figures that disagree (beer about 3-6 BAM, cappuccino about 2-3.9 BAM), so these are bounded midpoints. Cocktail and wine prices rest on fewer sources: cocktail on local guide and crowdsourced listings, wine on a single venue's starting price, with the wine glass also set against the beer price. The meal anchors come from crowdsourced cost-of-living figures. Accommodation anchors are holistic model estimates from general knowledge and were not checked against live listings. BAM was converted to USD at about 0.58 USD per BAM, implied by a published BAM and USD pair. FX is not current: the newest RBA observation I could identify is dated 2026-03-20, roughly seven months before the generation date. I could not open the RBA page directly, so that figure comes from search result text and should be verified against rba.gov.au before use.",
+  "comparable_city_reasoning": "Priced against Balkan regional capitals with similar local and tourist price levels. Food and drink come from published BAM/EUR prices (BAM is pegged to EUR) converted to USD. Accommodation is a holistic estimate for a mid-sized Balkan city with a growing tourist market.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 1.85,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 5.80,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 95.00
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food anchors are rough, crowd-sourced or dated (2023-2026 sources, mostly not Queretaro-specific). Cappuccino is the best-supported anchor, from Mexico-wide and nearby-city averages. No Queretaro-specific cocktail or wine data was found, so cocktail is derived from the beer anchor (about 2x) and wine from beer (about 1.6x). Meal anchors rest on a few menu and cost-of-living snippets. Accommodation anchors are holistic model estimates only; no booking pages or listings were inspected. FX uses the RBA observation for 15 October 2026 (0.6955 USD per AUD), which the RBA overview page shows. A 16 October figure appeared in search output but could not be verified, so it was not used.",
+  "comparable_city_reasoning": "Treated as a mid-sized Mexican city priced somewhat below Mexico City and Guadalajara, with a modest premium in the historic centre and tourist areas. Basis: Mexico-wide and Mexico City/Guadalajara/Puebla cappuccino averages, Expatistan and cost-of-living snippets for Queretaro meals and wine, and Mexico-wide beer price guides. Cocktail and wine anchors use the local beer relationship as a fallback.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 95.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [Cost of Living in Queretaro (Expatistan)](https://www.expatistan.com/cost-of-living/comparison/geneva/queretaro)
+- [Expatistan dinner prices, Queretaro](https://expatistan.com/price/dinner/queretaro)
+- [Expatistan wine prices, Queretaro](https://expatistan.com/price/wine/queretaro)
+- [Cappuccino prices, Mexico (combien-coute.net)](https://www.combien-coute.net/cappuccino/mexique/)
+- [Cappuccino prices, Mexico City (combien-coute.net)](https://www.combien-coute.net/cappuccino/mexique/mexico/)
+- [Cappuccino prices, Guadalajara (combien-coute.net)](https://www.combien-coute.net/cappuccino/mexique/guadalajara/)
+- [Expatistan cappuccino, Mexico City](https://expatistan.com/price/capuccino/mexico-city)
+- [Beer price guide in Mexico 2026](https://new.risingsunartscentre.org/news/beer-price-guide-in-mexico-2026.html)
+- [Restaurant Map 2 (SMB Queretaro)](https://smb.org.mx/wp-content/uploads/2026/05/Restaurant-Map-2.pdf)

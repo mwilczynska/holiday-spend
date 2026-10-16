@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors rest on a few aggregator and blog figures, some undated or from Santiago rather than San Pedro, and they conflict. Accommodation anchors are holistic model estimates from general knowledge and the city context; no accommodation search was run and no listings were inspected. Cocktail and wine were estimated from the local beer relationship because no direct San Pedro bar prices were found. FX: the 0.6947 value for 2026-10-16 came from a third-party page (ozfinancehub.com.au) that reproduces RBA indicative rates. I did not open rba.gov.au, so the source_url is the official RBA exchange-rate page where this series is published and should be verified there. Another third-party snippet showed 0.6979 for 2026-10-09.",
+  "comparable_city_reasoning": "No direct comparable city was used. Basis: Chilean tourist-destination pricing, which runs above national averages in the Atacama tourism hub because of remote supply costs and visitor demand. Food anchors were adjusted from aggregator figures for Chile (BearSavings, Expat.cl, CityCost, Livingcost) and San Pedro blog estimates, with the Calle Caracoles tourist strip weighted higher. Accommodation was estimated holistically.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.75,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 140.00
+  }
+}

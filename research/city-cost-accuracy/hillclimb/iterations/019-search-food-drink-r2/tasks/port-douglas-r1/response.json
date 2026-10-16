@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "No Port Douglas-specific menu prices were found. Restaurant and drink anchors are inferred from Australian national averages (coffee and beer reports), Cairns expat cost guides and Melbourne cocktail listings, with a judgement uplift for the Port Douglas resort-town market. Wine is anchored on 150ml venue menu ranges, and cocktails are set at about twice the beer anchor, with the uplift applied by judgement. Accommodation anchors are holistic model estimates for July peak season from general knowledge; no booking pages or current listings were inspected. FX: the most recent RBA-attributed observation surfaced by search is 0.7088 on 2026-03-20. I did not open the RBA table directly, and this rate may be about seven months stale. The AUD-based anchors were converted at roughly 0.70 USD per AUD, a mid-2026 third-party level, not the RBA figure.",
+  "comparable_city_reasoning": "Australian national averages for coffee and beer, Cairns for inexpensive and mid-range meals, Melbourne for cocktail pricing, and a Port Douglas premium applied by judgement. Accommodation is a model estimate with no search basis.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.40,
+    "coffee": 3.85,
+    "inexp_meal_1p": 15.40,
+    "midrange_meal_2p": 73.50,
+    "cocktail": 17.50,
+    "wine_glass": 9.80,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 98.00,
+    "hotel_1star_2p": 112.00,
+    "hotel_3star_2p": 196.00
+  }
+}

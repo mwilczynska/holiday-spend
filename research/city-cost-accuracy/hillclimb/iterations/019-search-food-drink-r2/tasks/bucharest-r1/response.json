@@ -1,0 +1,19 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are medium-quality, based on crowd-sourced Expatistan figures mostly dated late 2025, an undated Newsweek Romania Numbeo excerpt, and a 2024 blog. Lei-to-USD conversions use roughly 4.5 lei per USD, implied by Expatistan's 15 lei = $3.35. beer, coffee and cocktail are reasonably supported. inexp_meal_1p is inferred from an undated 60-lei Numbeo figure and a 129-lei two-person pub dinner. midrange_meal_2p is adjusted down from Expatistan's 303-lei Italian dinner for two, which included wine and dessert, so it is a judgment estimate. wine_glass has weak direct support: one reviewer's note of about EUR 5 at a wine bar and 2018 Romania Insider ranges, so it is set from the beer relationship (about 1.7x a pub beer). Both accommodation anchors are holistic model estimates from general knowledge for July peak season; I did not check live listings or search for accommodation prices. The fx field is null because the single FX search returned only OFX commercial quotes, not an RBA F11 observation, and the search budget was exhausted, so no RBA rate was verified or used.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Bucharest-specific sources, cross-checked against the 2020 Numbeo snapshot and regional capital comparisons. Accommodation anchors are holistic estimates from general knowledge of Bucharest's mid-tier European capital pricing in peak summer, with no live-listing check.",
+  "fx": null,
+  "anchors_usd": {
+    "beer": 3.40,
+    "coffee": 3.50,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 7.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 95.00
+  }
+}

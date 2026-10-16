@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and bar anchors come from aggregator averages with small samples (roughly 7 to 9 price points each), and the sources themselves describe them as estimates. Beer and cappuccino ranges are wide. The wine glass has no direct restaurant price source; it is derived from retail bottle prices and the beer relationship (about 1.7 times beer). The cocktail anchor rests on one club estimate and two bar listings. Accommodation anchors are holistic model estimates from general knowledge and no live listings or booking pages were checked. The FX observation is the 15 October 2026 4 pm RBA indicative rate as reported on the RBA Exchange Rates Overview page; a 16 October third-party print was not used because it could not be verified against the RBA.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors were built from Nairobi-specific aggregator data (Expatistan, combien-coute.net citing Numbeo, CostLiving, Wise) converted at an assumed rate of about 130 KES per USD from general knowledge, not from a searched source. Accommodation anchors reflect a general East African capital benchmark with a mid-range tourist market.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 110.00
+  }
+}

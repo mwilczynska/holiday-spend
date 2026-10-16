@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors are medium-to-low confidence. The sources were mostly national or Sydney/Melbourne averages from 2026 plus Wollongong-specific figures from 2023 crowdsourced sites, so the Wollongong adjustment is judgement. Coffee is based on a June 2026 national average cup of about AUD 4.69, adjusted up for a cappuccino. Beer is based on current pub-price reporting and a 2025 Tyro survey, and no 2026 pub survey was found. Cocktail and wine_glass are weakly sourced: no 2026 price data was found, so they were estimated from general knowledge and cross-checked against the local beer price (cocktail about 2.2x beer, wine about 1.3x beer). Meal anchors are estimates from general knowledge; the only Wollongong meal data found was 2023 small-sample Expatistan figures and a student guide. Accommodation anchors are holistic model estimates from general knowledge and regional NSW context. No accommodation searches or live booking or listing checks were performed. FX is the RBA's 15 October 2026 4pm mid-point as shown on RBA summary pages in search results; the RBA F11 table itself was not opened, and a third-party 16 October figure was not used because it is not an RBA observation.",
+  "comparable_city_reasoning": "Regional NSW coastal city priced against Australian national and Sydney/Melbourne cafe and pub averages, adjusted for Wollongong's lower regional price level. Accommodation is a holistic estimate for a regional NSW coastal city in July (winter, shoulder season), not a listing-based figure.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.61,
+    "coffee": 3.62,
+    "inexp_meal_1p": 15.30,
+    "midrange_meal_2p": 90.42,
+    "cocktail": 14.61,
+    "wine_glass": 8.35,
+    "hostel_dorm_1p": 34.78,
+    "hostel_private_2p": 83.46,
+    "hotel_1star_2p": 97.37,
+    "hotel_3star_2p": 153.01
+  }
+}

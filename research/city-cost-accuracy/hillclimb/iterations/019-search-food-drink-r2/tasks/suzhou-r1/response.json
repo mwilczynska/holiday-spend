@@ -1,0 +1,25 @@
+{
+"region": "East Asia",
+"confidence": "medium",
+"confidence_notes": "Food and drink anchors come from several web sources of mixed date and method, mostly crowdsourced guides and expat-price pages, with some figures dated 2024. Yuan price points were converted at an assumed rate of about 7.15 CNY per USD. Restaurant meal and coffee anchors are the most reliable. Beer is taken from restaurant and shop figures rather than bar prices. Cocktail and wine have no direct 2026 source: cocktail is set at roughly three times a restaurant draft beer, using bar beer prices as a sanity check, and wine is a judgement call. Accommodation anchors are holistic model estimates from general knowledge; no booking pages or listings were inspected and no accommodation searches were run. FX: the only RBA observation surfaced was 0.7088 USD per AUD dated 2026-03-20 on the RBA exchange rates page. I could not confirm it as the latest observation on 2026-10-16, so it may be stale and should be re-checked against the RBA F11.1 series before use. The USD anchors do not depend on it.",
+"comparable_city_reasoning": "Suzhou is a mid-sized Yangtze Delta city near Shanghai. Restaurant and café anchors are benchmarked to Chinese mid-sized city guides and Shanghai and Beijing expat café prices. One 2026 source puts Suzhou mid-range meals about 12 to 19 percent below Shanghai, and the anchors reflect that.",
+"fx": {
+"as_of_date": "2026-03-20",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+"source_rate": 0.7088,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 2.50,
+"coffee": 4.20,
+"inexp_meal_1p": 4.90,
+"midrange_meal_2p": 42.00,
+"cocktail": 8.40,
+"wine_glass": 7.00,
+"hostel_dorm_1p": 15.00,
+"hostel_private_2p": 35.00,
+"hotel_1star_2p": 26.00,
+"hotel_3star_2p": 56.00
+}
+}

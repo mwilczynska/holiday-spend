@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and drink anchors are rough. They rest on mixed-date sources (some from 2022 to 2023 and some undated), and no current Koh Lanta menu was checked. No cocktail or wine price for Koh Lanta was found directly, so those anchors use the beer relationship and beach-bar benchmarks from other Thai venues. Accommodation anchors are holistic model estimates only; no booking pages or current listings were inspected. The FX observation comes from the rba.gov.au exchange rates page as shown in a search result. The F11 file was not opened, and the snippet's 16 October value is not fully consistent with its 15 October figure, so it should be verified on the live site.",
+  "comparable_city_reasoning": "Thai island tourist pricing, benchmarked against Thai national cost-of-living surveys (Bangkok and Chiang Mai), beach and island venue menus from Phuket, Hua Hin and Koh Larn, and a Koh Lanta restaurant and budget guide. Island venues are assumed to carry a premium over mainland Thai prices. Accommodation is a holistic estimate for registered guesthouses and hotels on Koh Lanta, not a sourced price.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 7.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 75.00
+  }
+}

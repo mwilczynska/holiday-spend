@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are medium confidence. They rest on crowdsourced national and Helsinki/Oulu averages (Numbeo via a French comparison site), a Helsinki pub beer figure, and a lunch-price aggregator, all from 2026 pages. Cocktail and wine are low confidence: no usable Rovaniemi or Finnish menu prices were found, so cocktail is set at about 2.2x beer and wine at about 1.4x beer, with a catering per-glass price as a cross-check. Accommodation is low confidence: it is a holistic model estimate for July in Lapland, with no booking pages or listings checked. EUR to USD uses an assumed rate of about 1.15 USD per EUR, which I did not source. The RBA fx observation could not be verified. A search surfaced a third-party site citing 0.6947 USD per AUD for 2026-10-16, but I could not open the official RBA F11.1 table, so the fx fields are null rather than cited to the RBA.",
+  "comparable_city_reasoning": "Food and drink are anchored to Finnish national averages and Oulu/Helsinki reference prices, adjusted down slightly for Rovaniemi as a smaller city. Accommodation is a holistic estimate for a small Lapland tourism town in summer, with prices set between Helsinki and smaller Finnish regional towns.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": null,
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 7.48,
+    "coffee": 5.06,
+    "inexp_meal_1p": 16.10,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 16.10,
+    "wine_glass": 10.93,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 126.50,
+    "hotel_3star_2p": 195.50
+  }
+}

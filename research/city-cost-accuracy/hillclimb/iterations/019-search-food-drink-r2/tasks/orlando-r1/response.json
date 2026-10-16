@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium-low confidence. They come from aggregator estimates (Expatistan, Numbeo-derived and Wise figures) and a few Orlando venue menus, with some dates unclear and some sources marked by their publishers as guesses. Coffee is the most consistent (about $5 across sources). Beer and cocktail rest on a few venues and small samples. The glass-of-wine anchor has no sourced figure and is derived from the beer anchor. Accommodation anchors are low-confidence holistic model estimates from general knowledge and the Orlando context; no booking pages or current listings were inspected. The searched prices are current as of October 2026, not July 2026. FX is the RBA observation for 15 October 2026, which was confirmed on two RBA pages; the 16 October figure from the same search was not used because its page metadata looked inconsistent.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are based on Orlando-specific sources (Expatistan Orlando pages, Numbeo-derived coffee figures, Wise Orlando dining and coffee figures, and Orlando venue menus). Wine glass is derived from the beer anchor using a typical US restaurant wine-to-draft price ratio of about 1.6x, because no direct Orlando per-glass wine price was found. Accommodation anchors are holistic estimates for a mid-sized US tourist city in peak summer, based on general knowledge and the supplied city context only.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 14.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 185.00
+  }
+}

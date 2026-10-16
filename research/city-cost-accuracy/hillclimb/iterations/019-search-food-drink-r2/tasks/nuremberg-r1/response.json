@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer and cocktail anchors are crowd-sourced city and national estimates, cross-checked against Leipzig, Munich, Berlin and a German Numbeo cappuccino figure; the cocktail figure for Nuremberg is from January 2025. Wine is derived from the beer anchor because no usable wine data was found. Accommodation anchors are holistic model estimates without inspecting live listings, and July trade-fair demand in Nuremberg may push hotel rates higher. The FX rate comes from a search-result summary attributed to the RBA exchange-rates overview page; I did not open that page directly. EUR was converted to USD at about 1.12, an assumed rate implied by an unverified third-party snippet.",
+  "comparable_city_reasoning": "Nuremberg-specific crowd-sourced restaurant and cocktail data, cross-checked against Leipzig, Munich, Berlin and Stuttgart and a national German cappuccino figure. Accommodation is a holistic estimate for a mid-sized German city with trade-fair seasonality.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.38,
+    "coffee": 4.37,
+    "inexp_meal_1p": 15.68,
+    "midrange_meal_2p": 78.40,
+    "cocktail": 12.32,
+    "wine_glass": 6.16,
+    "hostel_dorm_1p": 35.84,
+    "hostel_private_2p": 89.60,
+    "hotel_1star_2p": 100.80,
+    "hotel_3star_2p": 162.40
+  }
+}

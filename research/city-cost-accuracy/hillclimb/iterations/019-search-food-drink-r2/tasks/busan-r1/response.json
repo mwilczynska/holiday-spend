@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Overall low. The RBA observation could not be verified from retrieved content, so the fx date and rate are null. One search summary cited specific October 2026 RBA figures, but the retrieved results contained only links and no rate data, so I did not use them. Food and drink anchors come from a few aggregator sites with mixed dates (some 2026, some 2021). Inexpensive and mid-range meals are the best supported. Beer and coffee are moderately supported. Cocktail and by-glass wine are weak: no current Busan price was found, so cocktail is set at about 2.6x the draft beer anchor and wine glass at about 2x, based on the 2021 Expatistan bottle and cocktail figures. Accommodation anchors are holistic estimates from general knowledge; no accommodation search or live listing check was performed. KRW figures were converted at a working rate of about 1,450 KRW per USD, implied by the source conversions. The sources cover mid-2026 pricing only loosely, not specifically July 2026. A reported end to the draught beer tax holiday could raise bar prices, but its timing is unclear and it is not reflected in the anchors.",
+  "comparable_city_reasoning": "No comparable city was used for the anchors. Busan-specific aggregator sources were used, with Seoul prices as a loose reference point only. Accommodation is based on Busan's general hostel, guesthouse and hotel market, not a comparable city.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.80,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 120.00
+  }
+}

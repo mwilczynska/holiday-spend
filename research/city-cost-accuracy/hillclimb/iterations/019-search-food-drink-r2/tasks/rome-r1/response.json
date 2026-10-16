@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on aggregator data with small samples (Expatistan, plus a Numbeo-derived comparison site), so they are moderately reliable. Wine and cocktail are weaker: sources conflict widely (bar guides vs. forum reports), so cocktail uses a beer-relative basis (about 1.8x the beer anchor) and wine uses a restaurant-table midpoint. Accommodation is a holistic model estimate for July high season and was not checked against live listings. The FX observation was taken from search-result text describing the RBA exchange rates page; I did not open the RBA page directly. The EUR-to-USD conversion is an assumed rate of about 1.16, implied by snippet data that ranged from about 1.12 to 1.18.",
+  "comparable_city_reasoning": "No comparable city was used. Restaurant and drink anchors come from Rome-specific cost-of-living aggregators and are converted from EUR. Accommodation is a holistic estimate for a major Italian capital in July peak season, based on general knowledge and the supplied city context.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 2.32,
+    "inexp_meal_1p": 17.40,
+    "midrange_meal_2p": 87.00,
+    "cocktail": 10.44,
+    "wine_glass": 8.12,
+    "hostel_dorm_1p": 44.08,
+    "hostel_private_2p": 133.40,
+    "hotel_1star_2p": 139.20,
+    "hotel_3star_2p": 243.60
+  }
+}

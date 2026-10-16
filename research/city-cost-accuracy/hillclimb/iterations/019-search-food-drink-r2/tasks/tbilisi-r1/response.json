@@ -1,0 +1,25 @@
+{
+"region": "Europe",
+"confidence": "medium",
+"confidence_notes": "Restaurant and drink anchors draw on several 2026 aggregator sources (Numbeo-derived averages, Wise, Expatistan, Sakhva Travel, getwherenext). They broadly agree but vary by venue, and they are crowd-sourced or blog-based rather than official statistics. Cocktail and wine anchors are weaker: the cocktail figure is a city average from limited data, and the wine glass figure is a bounded estimate across Shardeni, Agmashenebeli and natural wine bar price ranges. Hostel and hotel anchors (dorm, private room, 1-star, 3-star) are holistic model estimates from general knowledge and the city context. They are not based on live booking pages or current listings, and they are the least certain values. July is high season. The FX observation is not verified. The value 0.6947 dated 2026-10-16 came from a third-party page that said it mirrors RBA data, and that page's age stamp is internally inconsistent. The rba.gov.au page was not successfully read. A market quote near 0.69 on the same day is broadly consistent, but this should be checked against the RBA F11.1 table before use.",
+"comparable_city_reasoning": "No direct benchmark for Tbilisi is in the database. Expatistan and getwherenext comparisons place Tbilisi's overall cost of living below Balkan and Central American capitals such as Belgrade, Tirana and Mexico City, and restaurant and beer levels were cross-checked against that pattern. Accommodation is benchmarked to general knowledge of mid-priced Caucasus and Balkan capitals in peak season.",
+"fx": {
+"as_of_date": "2026-10-16",
+"source_name": "Reserve Bank of Australia",
+"source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+"source_rate": 0.6947,
+"source_rate_basis": "USD_PER_AUD"
+},
+"anchors_usd": {
+"beer": 3.00,
+"coffee": 3.00,
+"inexp_meal_1p": 10.50,
+"midrange_meal_2p": 38.00,
+"cocktail": 8.50,
+"wine_glass": 4.00,
+"hostel_dorm_1p": 13.00,
+"hostel_private_2p": 34.00,
+"hotel_1star_2p": 45.00,
+"hotel_3star_2p": 90.00
+}
+}
