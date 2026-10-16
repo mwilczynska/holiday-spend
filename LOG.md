@@ -3883,3 +3883,13 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   +0.08 vs +0.30) and worse on accommodation (dorm +0.37, private +0.50, basic hotel +0.17). Luna x Haiku geometric
   ensemble 0.266. Calibrated Luna comparison waits for the complete lane.
 - Booking.com main run 342/475 saved; remaining cities and the six-window run continue in the browser.
+# 16 October 2026 UTC — Job A concurrent-worker checkpoint at 138/333
+
+- Added 25 frozen answers, dambulla-r1 through granada-r1, with fresh GPT-6 Luna/Max subagents. Used groups
+  of up to three workers, the session's available worker slots. Saved every final message verbatim with run metadata;
+  timestamps are coordinator observations and unknown search counts are null.
+- Lane total 138/333 saved (195 pending), up from the 113/333 checkpoint. Since resuming from Cabo San Lucas,
+  49 answers have been collected. No worker failures, retries, substitutions or answer edits occurred.
+- All 138 response/run pairs parse as JSON and record Luna/Max. No ingest, scoring, sealed-test read, frozen-file
+  change, other job or production write ran in this Codex collection session. Prior Alicante deviation is preserved.
+- Next queued task: guadalajara-r1. Collection continues after this checkpoint.
