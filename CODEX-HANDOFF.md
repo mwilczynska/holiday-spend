@@ -51,6 +51,8 @@ Each task folder holds `system.txt` and `prompt.txt`. Get the next folders in pr
 node scripts/city-cost-accuracy/hillclimb/queue.mjs 101-v11-luna-r2 --limit 12
 ```
 
+Print each task's exact worker message with `node scripts/city-cost-accuracy/hillclimb/codex-task-message.mjs 101-v11-luna-r2 <task-id>` and copy it byte for byte; never retype prompt text (a retyped prompt corrupted Alicante, now requeued). For a long unattended run use `CODEX-LUNA-PROMPT.md`.
+
 For each folder, spawn one **fresh** subagent with **GPT-6 Luna, reasoning Max** (verify the exact model and effort;
 if unavailable, stop Job A and log it; never substitute). At most 6 at a time. Give the subagent only this text, with
 the two files' contents pasted in verbatim:
