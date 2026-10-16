@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of local price levels and July tourist demand; no live menus, listings or booking pages were consulted. Restaurant and coffee anchors are the most reliable; lodging is least certain because peak-season rates vary widely. Beer is assumed to be a 0.5 L draft and wine a standard glass of about 150 ml. Cocktail and wine are anchored to draft beer price relationships (cocktail about twice a 0.5 L beer, wine glass about 1.2 times) because direct knowledge is weaker. The FX observation came from a search summary of the RBA page, not a direct page read.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general Czech price levels outside Prague, adjusted upward for the concentrated summer tourism of a small UNESCO heritage town, reasoned by analogy with similar heavily visited historic towns in Central Europe.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.30,
+    "coffee": 4.20,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 67.00,
+    "cocktail": 10.00,
+    "wine_glass": 6.30,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 92.00,
+    "hotel_3star_2p": 175.00
+  }
+}

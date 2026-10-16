@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and drink anchors are more reliable than accommodation, which varies by season and neighbourhood. July is Melbourne's winter. FX value taken from search-result summaries of RBA pages, not from opening the RBA table directly.",
+  "comparable_city_reasoning": "Based on general knowledge of Melbourne's price level, compared with Sydney and other large Australian cities. Drinks use Melbourne's typical beer-to-cocktail and beer-to-wine ratios where direct recall was weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 3.70,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 16.50,
+    "wine_glass": 10.50,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 180.00
+  }
+}

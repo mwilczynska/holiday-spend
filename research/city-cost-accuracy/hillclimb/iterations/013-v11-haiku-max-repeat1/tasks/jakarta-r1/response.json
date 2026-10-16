@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not from live listings or booking pages. Restaurant anchors are moderately reliable; hotel and hostel rates vary widely by district and season, so they are less certain. Beer assumes a domestic lager at restaurant prices. Cocktail and wine are derived from the local beer relationship (about 2.8x and 3x beer) because direct knowledge is weaker. The FX value comes from search-result summaries of RBA pages, not a direct read of the F11.1 table; verify it before use.",
+  "comparable_city_reasoning": "Regional basis: Southeast Asian capital-city price levels, using general knowledge of Jakarta's mix of budget and mid-range options. Service charge and tax often add roughly 15-20% to restaurant and hotel bills, which is reflected in the figures. No single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 8.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 55.00
+  }
+}

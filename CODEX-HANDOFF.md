@@ -35,10 +35,11 @@ node scripts/city-cost-accuracy/hillclimb/queue.mjs --status
 | Iteration | What it is | Runs on |
 | --- | --- | --- |
 | `101-v11-luna-r2` | Production v1.1 prompt, GPT-6 Luna lane, 333 R2 dev cities, 1 run each | **Codex (Job A)** |
-| `011-v11-haiku-baseline-r2` | Same prompts, Haiku lane, repeat 1 first | Claude CLI (Job B) |
+| `014-v11-haiku-high-r2` | Same prompts, Haiku effort **high** (screening lane), 333 R2 dev cities, 1 run | Claude CLI (Job B, first) |
 | `008-accommodation-definitions` | Accommodation-definition candidate, R1 dev, 2 repeats | Claude CLI (Job B) |
-| `012-v11-haiku-effort-high` | v1.1 at Haiku effort high (cost test), R1 dev, 1 run | Claude CLI (Job B) |
 | `009-search-grounded` | Search-grounded candidate, R1 dev, repeat 1 only (expensive) | Claude CLI (Job B) |
+| `011-v11-haiku-baseline-r2` | Same prompts, Haiku effort max; paused (expensive), lowest priority | Claude CLI (Job B, last) |
+| `012`, `013` | Effort test and its comparator: complete | none |
 | `010-comparable-context-5` | Withdrawn. Never dispatch | none |
 
 ## Job A — answer Luna tasks (Codex quota; main job)
@@ -83,10 +84,10 @@ Run from the worktree root, one at a time, in this order. Each command is resuma
 Stop when Claude usage runs out (workers then exit within seconds; that is expected).
 
 ```bash
-node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 011-v11-haiku-baseline-r2 --max-repeat 1 --max-tasks 150 --concurrency 12
+node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 014-v11-haiku-high-r2 --concurrency 16
 node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 008-accommodation-definitions --concurrency 8
-node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 012-v11-haiku-effort-high --concurrency 8
 node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 009-search-grounded --max-repeat 1 --concurrency 6
+node scripts/city-cost-accuracy/hillclimb/dispatch.mjs 011-v11-haiku-baseline-r2 --max-repeat 1 --max-tasks 100 --concurrency 12
 ```
 
 Before each window, clear stale records (failures from a usage-limit stop):
@@ -134,10 +135,8 @@ node $H/iterate.mjs ingest 008-accommodation-definitions && node $H/iterate.mjs 
 node $H/make-calibrated.mjs 008-accommodation-definitions --parent 001-v11-haiku-baseline-cal-region --group region
 node $H/iterate.mjs ingest 008-accommodation-definitions-cal-region && node $H/iterate.mjs assess 008-accommodation-definitions-cal-region
 # same three lines with 009-search-grounded
-node $H/iterate.mjs ingest 012-v11-haiku-effort-high && node $H/iterate.mjs assess 012-v11-haiku-effort-high --against 001-v11-haiku-baseline
-node $H/make-calibrated.mjs 012-v11-haiku-effort-high --parent 001-v11-haiku-baseline-cal-region --group region
-node $H/iterate.mjs ingest 012-v11-haiku-effort-high-cal-region && node $H/iterate.mjs assess 012-v11-haiku-effort-high-cal-region
-# 011 and 101: ingest only (scores without verdicts)
+# 014, 011 and 101: ingest only (scores without verdicts)
+node $H/iterate.mjs ingest 014-v11-haiku-high-r2
 node $H/iterate.mjs ingest 011-v11-haiku-baseline-r2
 node $H/iterate.mjs ingest 101-v11-luna-r2
 ```

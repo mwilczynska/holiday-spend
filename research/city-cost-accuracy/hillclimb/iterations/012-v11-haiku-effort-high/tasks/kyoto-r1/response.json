@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Kyoto prices, with no live listings checked. Restaurant anchors are more reliable than accommodation, which swings sharply with July peak season and Gion Matsuri demand. Cocktail and wine are estimated from the beer anchor because direct knowledge of bar prices is weaker. The FX observation comes from a search-result snippet of the RBA Exchange Rates Overview page, not a direct page read.",
+  "comparable_city_reasoning": "Based on Japanese major tourist cities such as Osaka and Tokyo, adjusted for Kyoto's premium tourist pricing and its strong summer accommodation seasonality.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 200.00
+  }
+}

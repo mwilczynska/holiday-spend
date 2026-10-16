@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates for a July 2026 peak-season window, not from inspected listings or live prices. Restaurant and coffee anchors are more reliable than accommodation, which swings widely with season and location. Cocktail and wine are bounded from the beer anchor (cocktail about 2.75x beer, wine glass about 1.5x beer) because direct knowledge is weak. FX: the 0.6955 observation came from a search summary that attributes it to the RBA exchange rates page as at 4pm 15 October 2026. I did not open that RBA page directly, so verify the figure against rba.gov.au before relying on it.",
+  "comparable_city_reasoning": "Benchmarked to Portugal's other mid-sized tourist cities, with Porto priced below Lisbon for restaurants and accommodation. Euro-denominated local prices were converted to USD at a rate near 1.15 to 1.18 USD per EUR, and rounded.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 160.00
+  }
+}

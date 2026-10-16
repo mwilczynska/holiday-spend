@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and the Phnom Penh context, not live price checks. Restaurant and beer anchors are more reliable than hotel anchors, which vary widely by district and season. The FX rate comes from a search-result summary attributed to the RBA overview page; I did not open the page or the F11.1 table to verify it.",
+  "comparable_city_reasoning": "Benchmarked against lower-cost Southeast Asian tourist cities (for example Siem Reap and secondary Vietnamese and Thai cities) for food and hostels, with mid-tier Phnom Penh guesthouse and hotel pricing as the basis for the room anchors. Beer, cocktail and wine use the local beer-to-drink price relationship, since direct knowledge of cocktail and wine prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.25,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 55.00
+  }
+}

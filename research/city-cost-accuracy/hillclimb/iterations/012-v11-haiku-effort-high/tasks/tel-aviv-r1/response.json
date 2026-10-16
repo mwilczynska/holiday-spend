@@ -1,0 +1,29 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were checked. Accommodation is least certain because July is peak season and rates vary widely by neighbourhood and season. Restaurant and coffee anchors are moderately certain. Cocktail and wine were set relative to the beer anchor (cocktail about 1.8x and wine about 1.4x beer) because direct knowledge is weak. The FX rate comes from a search summary of the RBA exchange-rates page; I did not open the page directly.",
+  "comparable_city_reasoning": "Based on Israeli urban price levels, with Tel Aviv priced above most Eastern Mediterranean cities and near Western European coastal capitals for dining and hotels, and with a July high-season premium for accommodation. No specific comparable city was used as a direct source.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 16.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 250.00
+  }
+}
+
+Sources:
+- [Exchange Rates - Reserve Bank of Australia](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [Exchange Rates Overview - Reserve Bank of Australia](https://www.rba.gov.au/exchange-rates-overview.html)

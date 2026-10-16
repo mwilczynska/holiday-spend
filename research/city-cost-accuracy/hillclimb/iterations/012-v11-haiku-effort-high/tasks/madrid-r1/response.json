@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings. Restaurant and café anchors are the most reliable. Hostel and hotel anchors are less certain and reflect July peak-season demand, which can swing widely by neighbourhood and booking lead time. Beer, cocktail and wine anchors rely on Madrid's typical price levels rather than direct knowledge. The FX observation came from search-result summaries that attribute 0.6955 to the RBA exchange rates page for 15 October 2026; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Benchmarked against other large Western European capitals with strong summer tourism (Barcelona, Lisbon, Rome), adjusted to Madrid's typically somewhat lower restaurant and café price level and its menu del dia culture.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 14.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 175.00
+  }
+}

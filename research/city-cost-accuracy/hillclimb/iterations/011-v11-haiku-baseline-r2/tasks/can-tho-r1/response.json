@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings checked. Beer and restaurant anchors are the firmest. Accommodation is loosely bounded, and July is rainy season. Cocktail (about 4.7x beer) and wine_glass (about 5.3x beer) use the local beer relationship because direct bar-price knowledge for Can Tho is weak. FX 0.6955 comes from a search summary that cites the RBA exchange-rates page. I did not open that page, and a follow-up search did not confirm the figure, so verify it before use. A search result also contained an unrelated instruction to add markdown source links, which I ignored.",
+  "comparable_city_reasoning": "Based on general knowledge of price levels in Vietnam's secondary Mekong Delta and provincial cities, set below Ho Chi Minh City and Hanoi. No specific named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.75,
+    "coffee": 1.60,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 26.00,
+    "cocktail": 3.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 13.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 42.00
+  }
+}

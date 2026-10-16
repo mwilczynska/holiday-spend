@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Hong Kong price levels, not from live menus, booking pages or current listings. Restaurant and drink anchors are the more reliable part; hostel and hotel anchors vary widely by district, room type and date. Cocktail and wine were set partly from their local price relationship to beer because direct knowledge there is weaker. The FX value comes from search-result summaries of the RBA exchange-rates page; the RBA table itself was not opened directly.",
+  "comparable_city_reasoning": "Regional East Asia basis, informally benchmarked against Singapore and other major Asian financial hubs. Hong Kong's dense, competitive budget dining and hostel market is reflected in the lower-end anchors.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 18.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 220.00
+  }
+}

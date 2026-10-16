@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, hotel listings, or booking pages. Restaurant and beer anchors are moderately certain; hostel and hotel rates vary widely by season, neighbourhood, and event calendar, so they are less certain. Figures are treated as pre-tax and pre-tip. The FX value comes from search excerpts that cite the RBA exchange-rates page; I did not open that page directly.",
+  "comparable_city_reasoning": "Basis is other large US West Coast metros with high hotel demand and US restaurant pricing, such as San Francisco and Seattle, adjusted for Los Angeles's sprawling lodging market and lower hostel density. Cocktail and wine were set relative to beer, with cocktails at roughly 1.7 times the beer price and wine at roughly 1.5 times, because direct knowledge of those prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.25,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 16.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 240.00
+  }
+}

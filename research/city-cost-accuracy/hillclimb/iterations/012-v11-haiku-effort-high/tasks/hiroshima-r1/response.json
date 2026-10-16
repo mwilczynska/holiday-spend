@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and no live listings were checked. Restaurant anchors (beer, coffee, meals, wine, cocktail) are moderately confident. Hostel and hotel anchors are less certain because July demand, seasonal pricing, and yen movement can shift them. Cocktail and wine are based on the local price relationship to beer, since direct knowledge is weaker. FX was taken from a web search summary that cites the RBA exchange-rates page, and I did not open that page directly. The 15 October 2026 value is consistent with an OFX daily figure of 0.695572, but the RBA F11 table should be checked to confirm.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Japanese regional cities such as Okayama and Kanazawa, not Tokyo, Osaka, or Kyoto, with prices adjusted for Hiroshima's lower accommodation demand than Kyoto.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.20,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 160.00
+  }
+}

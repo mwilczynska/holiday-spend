@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or menus. Restaurant and beer anchors are the most reliable. Hostel and hotel rates vary widely by season, location (IT Park vs. outer districts), and booking channel, so those are less certain. Cocktail and wine are bounded using the local beer price, since direct knowledge of bar pricing is weaker. FX: the value comes from search-result summaries that attribute it to the RBA exchange-rates overview page, and I did not read the RBA page or table directly. Treat it as unverified until checked against the official RBA table.",
+  "comparable_city_reasoning": "Based on mid-sized Southeast Asian tourism cities in the Philippines and similar regional hubs (for example Davao and Iloilo), adjusted for Cebu's larger visitor base and IT Park dining scene. No specific named listings were used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 6.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 75.00
+  }
+}

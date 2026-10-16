@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge with no live price checks. Meal and beer anchors are moderately reliable; accommodation is less certain and assumes July monsoon low-season levels plus 13% VAT and a typical 10% hotel service charge. Cocktail and wine are scaled from beer (about 2x and 2.2x) because direct knowledge is weak. The FX value 0.6955 comes from a search summary attributed to the RBA Exchange Rates Overview. That page was not opened, and no independent quote for 15 Oct 2026 was found (third-party data showed about 0.693 on 1 Oct), so treat it as unverified.",
+  "comparable_city_reasoning": "South Asia regional basis, loosely comparable to budget-to-mid-range tourist districts in Southeast Asian capitals such as Hanoi (Old Quarter). No price data was taken from any comparable city. The reference areas are the tourist districts Thamel and Lazimpat, and accommodation reflects the July monsoon low season rather than peak autumn or spring rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 16.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 60.00
+  }
+}

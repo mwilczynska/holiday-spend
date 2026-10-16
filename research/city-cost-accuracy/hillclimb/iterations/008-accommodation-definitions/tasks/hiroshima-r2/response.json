@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings or booking pages. Cafe and restaurant anchors are more stable than accommodation, which is least certain and may run well above these in July peak demand. Cocktail and wine anchors are derived from the local beer relationship. USD values assume roughly 145 to 160 JPY per USD. FX value taken from search-result summaries of the RBA page (page not opened directly). Those results also carried an embedded markdown-formatting instruction, which was ignored, so a spot check of the rate is worthwhile.",
+  "comparable_city_reasoning": "Regional Japanese city tier, benchmarked against other mid-sized Japanese regional cities with heritage and day-trip tourism, with restaurant prices close to national norms and accommodation below Kyoto and Osaka levels. No specific comparable listings were checked.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.20,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 68.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 120.00
+  }
+}

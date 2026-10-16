@@ -1,0 +1,11 @@
+{
+  "id": "012-v11-haiku-effort-high-cal-region",
+  "parent": "001-v11-haiku-baseline-cal-region",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 012-v11-haiku-effort-high: leave-one-city-out per-anchor x region multiplicative correction.",
+  "replayFrom": "012-v11-haiku-effort-high",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/high (claude -p, app system prompt, WebSearch only)",
+  "repeats": 1,
+  "split": "dev"
+}

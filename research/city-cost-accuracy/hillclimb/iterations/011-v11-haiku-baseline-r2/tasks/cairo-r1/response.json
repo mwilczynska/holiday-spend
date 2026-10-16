@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate; no live listings or booking pages were checked. Meal and hostel anchors are more reliable than hotel and alcohol anchors, and July is usually a lower season for Cairo city tourism, so hotel rates may sit below peak. Cocktail (about 2.4x beer) and wine (about 2x beer) were bounded against the beer anchor because direct local bar-price knowledge is weak. Egyptian pound volatility could move USD anchors materially. The FX value (0.6955 for 2026-10-15) comes from search snippets attributed to the RBA; I did not open the RBA page or its F11.1 table to confirm it.",
+  "comparable_city_reasoning": "Egypt is in Northern Africa, so Cairo is benchmarked against North African tourism cities at a similar price level, such as Tunis and Marrakech, for meals and budget lodging. Beer, cocktail and wine anchors follow Cairo's general price level and the beer-relative ratios noted above.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 60.00
+  }
+}

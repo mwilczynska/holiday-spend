@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Vientiane's price levels, not checked against live listings. Restaurant and cafe anchors are more reliable than accommodation, and the wine and cocktail anchors were set partly from the local beer relationship because direct knowledge is weaker. FX provenance is weaker than the anchors: the 2026-10-15 value was taken from search-result summaries of the RBA overview page, which I did not open, so it should be verified against the RBA table before use.",
+  "comparable_city_reasoning": "Benchmarked against lower-cost Southeast Asian capitals and provincial tourism hubs such as Phnom Penh and Yangon, adjusted for Vientiane's relatively low restaurant and hotel price level and its limited mid-range hotel supply.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.20,
+    "coffee": 2.20,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 60.00
+  }
+}

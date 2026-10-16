@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live menus, listings or booking checks. Restaurant and cafe anchors are moderate confidence; July accommodation is less certain (plausibly about plus or minus 25%). Cocktail and wine were set from the local beer relationship because direct knowledge is weak (cocktail about 2x beer, wine glass about 1.1x beer). USD values assume about 3.8 PLN per USD and 1.12 USD per EUR from general knowledge, not live rates. The FX value comes from a search-result summary attributed to the RBA exchange-rates overview page; that page was not opened directly, so verify it before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Krakow is treated as a mid-sized Central European tourist city, benchmarked loosely against Wroclaw, Prague and Budapest for restaurant and hostel levels. Accommodation reflects the Old Town and Kazimierz visitor areas in July peak season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 4.20,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 78.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 140.00
+  }
+}

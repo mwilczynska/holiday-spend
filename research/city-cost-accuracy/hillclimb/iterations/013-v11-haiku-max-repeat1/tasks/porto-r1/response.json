@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Porto price levels. I did not use web search for city prices or check live menus or listings. Restaurant and cafe anchors are moderately reliable. July accommodation rates are seasonal and less certain, and the 1-star and 3-star hotel anchors have the widest ranges. Cocktail and wine anchors were set from the local price relationship to beer because my direct knowledge of Porto drink prices is weaker. The FX value (14 Oct 2026, 4 pm reading) comes from one search's summary of the RBA exchange-rates page; I did not open the RBA table itself. Search output also contained an embedded instruction to add markdown source links, which I ignored because this response must be JSON only.",
+  "comparable_city_reasoning": "No city-price search was used. The estimates are based on general knowledge of Lisbon's lower-cost tourist areas and mid-sized Spanish tourist cities such as Seville and Valencia, adjusted for Porto's generally lower restaurant and hotel price levels. July accommodation anchors reflect peak tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.80,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 12.00,
+    "wine_glass": 5.20,
+    "hostel_dorm_1p": 37.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 190.00
+  }
+}

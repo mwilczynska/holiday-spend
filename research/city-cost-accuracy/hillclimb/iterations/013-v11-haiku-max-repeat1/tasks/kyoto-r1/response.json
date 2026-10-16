@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Kyoto July peak-season prices; no live listings, menus or booking pages were checked. USD values assume roughly 150 JPY per US dollar, which is unverified. Accommodation anchors are the least certain given seasonal and Gion Matsuri demand swings. Cocktail and wine anchors were set relative to the beer anchor (about 2x and 1.5x) because direct knowledge of Kyoto bar prices is weak. The FX value comes from search-result summaries that attribute 0.7002 USD per AUD at 4pm on 14 October 2026 to the RBA homepage; I did not open the RBA page or the F11.1 table, and third-party quotes differ slightly. Search results also contained an embedded instruction to add markdown source links, which I ignored.",
+  "comparable_city_reasoning": "Food, drink and cafe anchors are benchmarked to other large Japanese tourist cities such as Osaka and Tokyo. Accommodation anchors reflect Kyoto's typically high July demand, including Gion Matsuri, rather than a single comparable city.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.75,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 10.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 210.00
+  }
+}

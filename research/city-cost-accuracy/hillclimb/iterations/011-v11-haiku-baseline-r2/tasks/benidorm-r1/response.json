@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Spanish resort pricing for July; no live menus, listings or booking pages were checked. Restaurant and bar anchors are moderately reliable, but July accommodation varies widely, so the hostel and hotel anchors are less certain. Cocktail and wine anchors were set relative to the beer anchor because direct price knowledge is weaker. Euro prices use an assumed rate, not a live quote. The FX value is the RBA exchange-rates overview figure for 2026-10-15 as reported in search results; I could not confirm it against the RBA daily table, and that page's age label conflicts with its stated date.",
+  "comparable_city_reasoning": "No single comparator city was used. Priced against other Costa Blanca and Costa Dorada resort towns with similar July high-season demand, drawing on general knowledge of Spanish bar, menu del dia and seafront restaurant pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.71,
+    "coffee": 3.36,
+    "inexp_meal_1p": 16.24,
+    "midrange_meal_2p": 78.88,
+    "cocktail": 11.60,
+    "wine_glass": 4.64,
+    "hostel_dorm_1p": 37.12,
+    "hostel_private_2p": 81.20,
+    "hotel_1star_2p": 90.48,
+    "hotel_3star_2p": 150.80
+  }
+}

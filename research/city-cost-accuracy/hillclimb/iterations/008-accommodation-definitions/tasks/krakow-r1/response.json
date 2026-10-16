@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Krakow price levels, not checked against live menus, listings, or booking data. Restaurant anchors are moderately confident. July accommodation anchors are least certain because peak-season rates vary widely by location and booking lead time; any municipal tourist fee is small relative to that uncertainty. Beer assumes a typical 0.5 L draft. Cocktail and wine anchors are based on the local beer price relationship (cocktail roughly twice beer, wine glass a little above beer) because direct knowledge of bar prices is weaker. The FX observation comes from RBA exchange-rate page content surfaced in search results, not from a direct page read.",
+  "comparable_city_reasoning": "Restaurant and drink levels are benchmarked against Wrocław and Gdańsk, comparable Polish tourist cities. Accommodation is cross-checked against higher-priced Central European peers such as Budapest and Prague, with this city placed below them and a July peak-season uplift applied.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 3.60,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 10.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 145.00
+  }
+}

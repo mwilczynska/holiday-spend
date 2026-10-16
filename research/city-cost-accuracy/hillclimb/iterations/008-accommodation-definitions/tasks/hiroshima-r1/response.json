@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Japanese prices; no menus, booking pages, or live listings were inspected. Food and drink anchors are steadier. Accommodation is least certain because July demand swings, and it assumes tax and any local lodging levy are included. Cocktail and wine anchors were cross-checked against the beer anchor (cocktail roughly 1.75 times beer, wine glass roughly 1.4 times) because bar pricing knowledge is weaker. Yen prices were converted at an approximate 150 JPY per USD from general knowledge, not a live quote.",
+  "comparable_city_reasoning": "No single comparable city. Benchmarked to Japan's general price level and mid-sized Japanese tourist cities, with Hiroshima priced below Tokyo and Kyoto. July is treated as early summer-holiday demand rather than off-peak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 130.00
+  }
+}

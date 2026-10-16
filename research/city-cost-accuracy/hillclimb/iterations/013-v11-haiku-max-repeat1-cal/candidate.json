@@ -1,0 +1,11 @@
+{
+  "id": "013-v11-haiku-max-repeat1-cal",
+  "parent": null,
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 013-v11-haiku-max-repeat1: leave-one-city-out per-anchor multiplicative correction.",
+  "replayFrom": "013-v11-haiku-max-repeat1",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "repeats": 1,
+  "split": "dev"
+}

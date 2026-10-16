@@ -1,0 +1,29 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Siem Reap's tourist-hub pricing, not checked against live menus, hotel listings, or booking pages. Restaurant and beer anchors are more reliable than accommodation, which varies widely by location and season. July is green season, so accommodation anchors are set toward the lower-middle of the typical range. Cocktail and wine anchors are weaker and were set from the typical premium over draft beer in Pub Street-style venues. The FX value comes from a search-result summary of the RBA exchange-rates overview page; I did not open the rba.gov.au page or the F11.1 table itself, and the same results carried conflicting dating cues.",
+  "comparable_city_reasoning": "Based on regional comparison with other Southeast Asian tourist-centre towns with similar visitor mix and price levels, such as Luang Prabang and Hoi An, adjusted for Siem Reap's Angkor-driven tourism demand and its dollar-denominated pricing for visitor services.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.80,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 55.00
+  }
+}
+
+Sources:
+- [RBA Exchange Rates Overview](https://www.rba.gov.au/exchange-rates-overview.html) (FX figure taken from search-result summary, not opened directly)
+- [RBA RSS exchange-rate feed](https://www.rba.gov.au/rss/rss-cb-exchange-rates.xml) (checked via search; stale)

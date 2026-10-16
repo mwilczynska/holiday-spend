@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of Sicilian and Italian price levels, not checked against live menus, booking pages, or July 2026 listings. Restaurant and cafe anchors are moderately reliable. July accommodation rates and hostel dorm prices are the least certain and may vary with events and peak-season demand. Cocktail and wine anchors were set from the local relationship to draft beer because direct knowledge is weaker: cocktail at a typical premium over draft beer, and wine by the glass close to draft-beer level. Euro-denominated local prices were translated to USD using an assumed rate that the search did not verify.",
+  "comparable_city_reasoning": "Based on general knowledge, not a named listing set. Catania is treated as a mid-sized Sicilian tourist city, priced below major northern Italian destinations such as Rome, Florence and Venice and broadly in line with other southern Italian provincial cities such as Palermo and Syracuse. Accommodation anchors assume July high season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 2.30,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 10.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 29.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 160.00
+  }
+}

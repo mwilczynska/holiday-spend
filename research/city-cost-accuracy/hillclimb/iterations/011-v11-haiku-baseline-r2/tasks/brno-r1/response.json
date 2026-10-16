@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, listings or booking pages. Restaurant, cafe and beer anchors are the better-grounded part; hotel and hostel rates vary with season and events, so they are least certain. Beer assumes a 0.5 L draft pour. Cocktail and wine glass were set from the beer anchor at about 2.7 and 1.4 times, because direct price knowledge for Brno bars is weak. FX: the 2026-10-15 figure comes from search summaries that attribute it to the RBA overview page. A later check could not reproduce it on the RBA table, so verify it before use.",
+  "comparable_city_reasoning": "Brno is the Czech Republic's second-largest city and usually cheaper than Prague, so anchors sit below Prague levels. Benchmarked against mid-sized Central European cities with similar tourism demand, such as Krakow and Bratislava, with July lodging demand considered.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 130.00
+  }
+}

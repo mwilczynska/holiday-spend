@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live menus, listings or current rates. Restaurant anchors are moderate confidence. Accommodation is less certain, and July 2026 pricing is projected. cocktail and wine_glass are set as multiples of the beer anchor (about 2.3x and 1.7x) because direct price knowledge is weak. The FX rate comes from search-result summaries attributed to the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "No close single comparable in the supplied context. Benchmarked against large Latin American capitals with similar visitor profiles and adjusted to Lima's local price levels. Accommodation anchors assume visitor districts such as Miraflores and Barranco, with prices including IGV and typical hotel service charges.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.25,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 62.00,
+    "cocktail": 8.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 58.00,
+    "hotel_3star_2p": 115.00
+  }
+}

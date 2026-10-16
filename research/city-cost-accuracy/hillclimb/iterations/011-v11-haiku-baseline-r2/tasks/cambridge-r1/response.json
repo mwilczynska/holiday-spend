@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live listings. Dining and cafe anchors are moderately reliable; accommodation is least certain given July peak-season variability. Cocktail and wine were set relative to the local pint price. Sterling prices were converted at an unverified exchange rate. The RBA rate came from search excerpts of the RBA exchange-rates page, not a direct page read.",
+  "comparable_city_reasoning": "Reasoned from comparable English university and heritage cities such as Oxford and York. Dining and drink anchors follow UK city-centre pub and restaurant pricing, and accommodation reflects July peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.20,
+    "coffee": 4.70,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 14.50,
+    "wine_glass": 9.40,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 165.00,
+    "hotel_3star_2p": 295.00
+  }
+}

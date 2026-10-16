@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Florence price levels, without live menus, booking pages or listings; no web search was used for these anchors. Restaurant and coffee anchors are moderately reliable. July peak-season accommodation is least certain, given wide variation by date, location and star rating and unclear inclusion of local tourist tax. Cocktail and wine anchors were set relative to the beer anchor (cocktail about twice beer, wine glass slightly above beer) because direct local knowledge of these is weaker.",
+  "comparable_city_reasoning": "Benchmarked against other high-demand Italian historic cities, chiefly Rome and Venice, with July peak-season demand reflected in hostel and hotel rates. Cocktail and wine anchors follow the beer relationship described in confidence_notes.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 3.30,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 14.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 280.00
+  }
+}

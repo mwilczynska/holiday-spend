@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimates, not checked against live listings or current menus. Argentine USD prices are volatile because of high inflation and exchange-rate regime changes, so July 2026 levels could differ materially. Cocktail and wine_glass were set from the local price relationship to beer, since direct knowledge of those prices is weak. FX is stale: the most recent dated RBA observation I found is 2026-03-20 (0.7088), not the latest available on 2026-10-15. An undated RBA snippet (0.6961/0.7002/0.6955) could not be assigned a date, so I did not use it. Refresh the fx field from the RBA page before relying on it.",
+  "comparable_city_reasoning": "Regional basis: large Latin American capitals with tourist-oriented pricing, such as Santiago, Montevideo and Sao Paulo, adjusted for Buenos Aires's local price levels. Hostel and hotel anchors reflect Buenos Aires tourist accommodation. Beer is based on restaurant draft pricing in the region. Cocktail is set at roughly three times the beer anchor. Wine_glass is set near the beer anchor because Argentina is a wine producer and restaurant wine is typically inexpensive relative to beer and cocktails.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 9.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 95.00
+  }
+}

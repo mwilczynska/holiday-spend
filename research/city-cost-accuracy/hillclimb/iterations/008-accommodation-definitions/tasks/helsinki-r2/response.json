@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were checked. Restaurant and coffee anchors are the most reliable; hostel and hotel anchors are less certain and can shift with July demand and events. Cocktail and wine anchors partly rely on beer-price ratios (cocktail about 2x beer, wine about 1.4x beer). EUR figures were converted at an assumed 1.12 USD per EUR. The FX value comes from search-result summaries of the RBA exchange-rates page, not an opened RBA table, so verify it before use.",
+  "comparable_city_reasoning": "Nordic capital price level, benchmarked loosely to Stockholm, with Helsinki-specific adjustments for restaurant, alcohol and hotel pricing. No single exact comparison city was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.80,
+    "coffee": 5.20,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 17.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 53.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 152.00,
+    "hotel_3star_2p": 215.00
+  }
+}

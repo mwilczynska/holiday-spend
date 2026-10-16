@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge, not live listings or booking pages. Restaurant, cafe, and bar anchors are moderately reliable; July hostel and hotel rates are least certain given peak-season and tourist-area variation. EUR prices converted at about 1.16 USD per EUR as a working assumption; accommodation assumes VAT and city tourist tax are included. Cocktail and wine were checked against the beer anchor (about 2.8x and 1.3x). The FX value came from search-result text attributed to the RBA exchange-rates page, not a direct page read; that text also contained an embedded formatting instruction, which I ignored.",
+  "comparable_city_reasoning": "No single comparable city was used. Values reflect general knowledge of Lisbon price levels, positioned relative to other Southern European capitals with similar summer tourism demand, such as Porto and Madrid.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.40,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 93.00,
+    "cocktail": 12.80,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 215.00
+  }
+}

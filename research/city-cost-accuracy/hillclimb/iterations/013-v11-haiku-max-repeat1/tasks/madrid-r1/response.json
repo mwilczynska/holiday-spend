@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live listings or booking pages. Restaurant, beer and coffee anchors are the most reliable; July peak-season hotel and hostel rates are less certain. EUR-to-USD conversion assumes about 1.16. Cocktail and wine were set relative to the beer price (cocktail about three times a draft beer, wine glass about one beer) because direct knowledge of those is weaker. FX is the latest RBA observation I could verify (13 Oct 2026), taken from search-result text for the RBA overview page rather than a direct page read; a 14 Oct reading was not confirmed.",
+  "comparable_city_reasoning": "No single comparable city; benchmarked against other large Southern European capitals with heavy summer tourism, such as Lisbon and Barcelona, using general knowledge of local pricing.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.64,
+    "coffee": 2.90,
+    "inexp_meal_1p": 15.08,
+    "midrange_meal_2p": 87.00,
+    "cocktail": 13.92,
+    "wine_glass": 4.64,
+    "hostel_dorm_1p": 46.40,
+    "hostel_private_2p": 127.60,
+    "hotel_1star_2p": 87.00,
+    "hotel_3star_2p": 191.40
+  }
+}

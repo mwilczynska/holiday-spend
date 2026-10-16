@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Jakarta price levels, not checked against live listings. Restaurant anchors (beer, coffee, inexpensive meal, midrange meal) are more reliable than accommodation. Hostel and hotel rates vary widely by district and season, and July is a peak tourist month, so these are central estimates within a broad range. Cocktail and wine are less certain; cocktail is set from typical bar prices relative to beer, and wine is set higher than beer to reflect import duties on imported wine.",
+  "comparable_city_reasoning": "Regional basis: Southeast Asian capital cities with mid-range restaurant and budget-hotel prices similar to Jakarta, such as Kuala Lumpur and Manila, adjusted for Jakarta's lower food and drink costs and its higher accommodation costs in central districts.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.80,
+    "coffee": 2.90,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.50,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 60.00
+  }
+}

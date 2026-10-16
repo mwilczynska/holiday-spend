@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Boston price levels for a July peak-season window. No live listings, booking pages, or price sources were checked. Restaurant and cafe anchors are moderately reliable. Hostel and hotel rates swing widely with event demand and are the least certain. Beer assumes a domestic draft pint (about 16 oz). Cocktail and wine were set from general knowledge of Boston bar pricing and checked against the beer anchor (cocktail about 1.9x beer, wine about 1.7x beer). The FX figure comes from RBA page text returned by two web searches. I did not open the RBA page directly, and some snapshot dates were inconsistent, so confirm the live RBA figure before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Boston was benchmarked informally, from general knowledge, against other high-cost U.S. East Coast metros such as New York and Washington, DC, with a July peak-season uplift on accommodation. No web research was used for prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.25,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 16.50,
+    "wine_glass": 14.50,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 190.00,
+    "hotel_1star_2p": 220.00,
+    "hotel_3star_2p": 340.00
+  }
+}

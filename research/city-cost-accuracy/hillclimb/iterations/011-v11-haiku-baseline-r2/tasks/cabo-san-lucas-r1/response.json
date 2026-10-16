@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 from general knowledge of Los Cabos tourist pricing; no live listings, booking pages or price sites were checked. Restaurant and beer anchors are moderately certain; the hostel and 1-star hotel anchors are least certain because budget lodging and summer rates are thinly known. Cocktail and wine were set at roughly twice the beer anchor because direct knowledge of specific bar prices is weaker. FX fields are null: no RBA observation was verified (the RBA exchange-rate page copy returned by search was dated March 2026, and an unconfirmed 15 Oct 2026 figure was not used). Check https://www.rba.gov.au/statistics/frequency/exchange-rates.html before conversion.",
+  "comparable_city_reasoning": "No specific comparable city was checked. Basis is a judgement that Cabo San Lucas prices as a high-demand Mexican Pacific resort: well above typical mainland Mexican urban prices and in line with other Mexican beach resorts. Hotel and hostel anchors reflect July demand, which is outside the winter-spring peak. Region Latin America follows Mexico's usual regional classification.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.25,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 12.50,
+    "wine_glass": 11.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 140.00
+  }
+}

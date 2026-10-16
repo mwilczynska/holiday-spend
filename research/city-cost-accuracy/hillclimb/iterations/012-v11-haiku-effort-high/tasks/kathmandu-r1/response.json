@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Kathmandu tourist-district pricing (Thamel and similar areas); no live listings or booking pages were inspected. Restaurant and hostel dorm anchors are moderately certain. Private hostel and 3-star hotel rates vary widely by season and location and are less certain. Cocktail and wine_glass are derived from the local beer price relationship because direct knowledge is weak. The FX observation came from an RBA-linked search result snippet for 15 October 2026 (4.00 pm) and was not read in full.",
+  "comparable_city_reasoning": "Regional basis: Nepal's tourist hubs (Thamel and Pokhara), cross-checked against backpacker price levels in northern India and budget Southeast Asian capitals. Price levels were benchmarked to general knowledge of local NPR pricing, not to current listings.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 6.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 17.00,
+    "hotel_3star_2p": 62.00
+  }
+}

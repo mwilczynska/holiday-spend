@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Chiang Mai price levels. No live listings or booking pages were inspected. Restaurant and street-food anchors are more reliable than hotel and hostel anchors, which vary by season and location. Cocktail and wine were set by checking their ratio to beer, since direct knowledge of bar pricing is weaker. FX: the 0.6955 rate for 2026-10-15 comes from a search-result summary of the RBA exchange rates page, not from a direct read of that page.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized Northern and Upper Southeast Asian tourism cities with comparable backpacker and mid-range hotel markets, adjusted to Thai local price levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 60.00
+  }
+}

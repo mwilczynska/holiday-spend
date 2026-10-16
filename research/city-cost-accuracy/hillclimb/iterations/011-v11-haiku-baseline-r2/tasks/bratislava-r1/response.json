@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Bratislava price levels for July 2026. No live menus, listings, or booking pages were checked. Restaurant anchors are moderately reliable, while July accommodation rates are seasonal and could plausibly differ by roughly 20 percent. Local euro prices were converted to USD at an approximate rate that was not verified by search, so a wrong rate would shift all USD anchors by a few percent. The beer anchor assumes a 0.5 L draft. The cocktail and wine anchors rely on the local beer price level as their basis more than on direct price knowledge. The FX observation came from search results pointing to the RBA daily exchange-rate page; I did not open that page directly.",
+  "comparable_city_reasoning": "Benchmarked against other euro-area Central European capitals with similar tourism demand, notably Ljubljana and Zagreb. Vienna, about an hour away, serves as a higher-price reference point rather than a direct comparison.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 3.30,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 9.90,
+    "wine_glass": 5.20,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 67.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 127.00
+  }
+}

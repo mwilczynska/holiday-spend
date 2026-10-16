@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Amsterdam price levels; no live menus, booking pages or listings were checked. Restaurant and drink anchors are moderately reliable; accommodation is least certain because July peak-season rates vary widely. USD values assume approximate euro-dollar levels that were not separately verified. Cocktail and wine anchors were set from the local price relationship to draft beer (cocktail roughly 3x beer, wine glass roughly 1.6x) because direct knowledge is weaker for them. The FX observation came from a search summary of the RBA daily rates page; the page itself was not opened.",
+  "comparable_city_reasoning": "Benchmarked against other high-cost Western European capitals and tourist cities such as Brussels and Paris, then adjusted to Amsterdam's own restaurant prices and its strong July accommodation demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.80,
+    "inexp_meal_1p": 16.80,
+    "midrange_meal_2p": 98.00,
+    "cocktail": 17.00,
+    "wine_glass": 9.30,
+    "hostel_dorm_1p": 64.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 185.00,
+    "hotel_3star_2p": 305.00
+  }
+}

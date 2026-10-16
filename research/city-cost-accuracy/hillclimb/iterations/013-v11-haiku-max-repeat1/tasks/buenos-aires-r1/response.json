@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live menus, listings or booking pages were checked. Argentina's peso prices and exchange rate are highly volatile, so all USD levels could move materially by July 2026, and restaurant and hostel anchors carry the widest range. Cocktail and wine_glass were set from the local beer relationship (cocktail about twice draft beer, wine glass about equal to draft beer) because direct price knowledge for them is weaker.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general knowledge of Buenos Aires tourist-facing price levels, which look moderate in USD terms relative to other major South American capitals, with peso volatility making the USD level less stable. Cocktail is set at about twice the beer anchor and wine_glass at about the beer anchor, per the local beer relationship.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 9.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

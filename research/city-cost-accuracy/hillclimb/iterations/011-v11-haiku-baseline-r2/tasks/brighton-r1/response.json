@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of UK seaside-city price levels for July 2026; no live menus, listings or booking pages were checked. Restaurant, beer and coffee anchors are moderately reliable; accommodation is least certain given July peak demand. Beer assumes a pint-size (about 568 ml) serving. Cocktail and wine are set relative to beer because direct knowledge is weaker. GBP prices were converted using approximate general-knowledge rates, not a live quote. FX value taken from an RBA exchange-rates overview excerpt returned by search; the daily F11.1 table could not be opened to cross-check.",
+  "comparable_city_reasoning": "No single comparable city was used. Basis is general UK south-coast seaside-city pricing: meals and drinks broadly in line with large English regional cities and below central London, with accommodation raised for summer seaside demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.10,
+    "coffee": 4.80,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 106.00,
+    "cocktail": 13.90,
+    "wine_glass": 9.30,
+    "hostel_dorm_1p": 46.50,
+    "hostel_private_2p": 117.00,
+    "hotel_1star_2p": 133.00,
+    "hotel_3star_2p": 233.00
+  }
+}

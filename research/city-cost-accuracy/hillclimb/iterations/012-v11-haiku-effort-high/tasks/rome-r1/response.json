@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and coffee anchors are moderately reliable. Hotel and hostel prices are less certain because July demand swings widely. FX: the search summaries gave conflicting RBA figures (0.6955 for 15 Oct 2026 and 0.7002 for 14 Oct 2026), so the server should verify the RBA F11 series before relying on the rate.",
+  "comparable_city_reasoning": "Based on general knowledge of Rome's tourist-area restaurant, bar, and accommodation pricing for summer, benchmarked against other major Italian and Western European tourist cities. Beer and wine anchors use the usual local price relationship to coffee and meals. No web pages were read for city prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 15.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 230.00
+  }
+}

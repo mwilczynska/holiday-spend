@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live listings or booking pages were checked. Restaurant and drink anchors are moderately reliable; accommodation is least certain given wide variation by beach area and season. Cocktail and wine_glass were set from their ratio to beer (about 2.3x and 2.4x) because direct knowledge is weak. Assumes about 33 THB per USD and accommodation rates including Thai taxes and service charges. The FX value comes from search-result summaries of the RBA exchange rates page; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "Reasoned from general knowledge of Thai island beach-resort towns such as Phuket and Krabi (Ao Nang), adjusted for Koh Samui's mix of guesthouses, hostels and resorts. No specific comparable-city dataset was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.50,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 80.00
+  }
+}

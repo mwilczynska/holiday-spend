@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Tbilisi price levels, not checked against live menus or booking pages. Restaurant and cafe anchors are more reliable than accommodation, which varies widely; hotel and hostel figures assume July peak-season rates. Cocktail and wine were set relative to beer (about 2.2x and 1.25x) because direct knowledge is weaker. The FX figure came from search-result text for rba.gov.au pages; the RBA page itself was not opened.",
+  "comparable_city_reasoning": "Georgia straddles Europe and West Asia; Europe was chosen from the fixed region list. Anchors were benchmarked against mid-sized Southeastern European and South Caucasus cities such as Yerevan, Sofia and Belgrade.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 6.50,
+    "wine_glass": 3.75,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 95.00
+  }
+}

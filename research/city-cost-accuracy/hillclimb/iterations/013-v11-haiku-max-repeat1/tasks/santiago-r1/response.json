@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no menus, listings, or booking pages were checked. Restaurant and coffee anchors are moderately grounded. Accommodation anchors carry the widest uncertainty because rates vary by neighborhood, booking channel, and season. Cocktail and wine_glass were anchored to the local beer relationship (cocktail about 2x draft beer; wine glass about 1.2x beer) because direct knowledge is weaker. July is Chilean winter, so accommodation assumes off-peak to shoulder-season rates. Meal anchors are menu-price estimates that exclude the customary 10% propina.",
+  "comparable_city_reasoning": "Regional Latin American basis: Santiago is treated as an upper-middle-income South American capital, priced above typical Lima and Bogotá restaurant and hotel levels and below Western European capitals. No named comparable listings were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 3.75,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 46.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 120.00
+  }
+}

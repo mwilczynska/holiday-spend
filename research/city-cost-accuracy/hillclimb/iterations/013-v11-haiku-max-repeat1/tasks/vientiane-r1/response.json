@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge; no live menus, listings, or booking pages were checked. Beer, coffee, and restaurant anchors are moderately grounded. Hostel and hotel anchors are less certain and vary by season, room type, and booking channel; July is rainy season, when rates may be lower. Cocktail and wine are weaker estimates set from the local beer relationship (cocktail about 3.6x beer; wine glass about 4.5x beer, reflecting import duties). Pricing in kip, USD, or Thai baht adds variance.",
+  "comparable_city_reasoning": "Based on general knowledge of tourist-level pricing in Vientiane and similar lower-cost Southeast Asian capitals such as Phnom Penh, adjusted for the limited supply of international-standard hotels in Laos. Draft beer is the local base for the cocktail and wine relationships.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.10,
+    "coffee": 1.90,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 60.00
+  }
+}

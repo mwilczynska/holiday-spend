@@ -1,0 +1,16 @@
+{
+  "id": "014-v11-haiku-high-r2",
+  "hypothesis": "R2 baseline in the screening lane: production v1.1 prompt, Haiku effort high (about a tenth of the tokens of max; equivalent within noise in 012 vs 013), 333 R2 dev cities, one run each. Incumbent base for screening rounds on R2.",
+  "parent": null,
+  "family": "baseline",
+  "promptTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "claude-haiku-5-5/high (claude -p, app system prompt, WebSearch only)",
+  "repeats": 1,
+  "split": "dev",
+  "laneOf": "011-v11-haiku-baseline-r2",
+  "cliModel": "claude-haiku-5-5",
+  "effort": "high"
+}

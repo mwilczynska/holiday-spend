@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge and city context, not live price checks; no menus, listings or booking pages were inspected. Restaurant, cafe and beer anchors are moderately reliable; hostel and hotel rates are least certain because summer prices vary widely by district, date and lead time. Beer assumes a 0.5 L domestic draft. Cocktail and wine anchors were set against the local beer price level because direct knowledge of bar pricing is weaker. Levels may have drifted since the model's knowledge cutoff. The FX observation comes from rba.gov.au search results rather than a direct page read.",
+  "comparable_city_reasoning": "No single comparable city was used. The estimate is positioned against other Central and Southeast European capitals such as Sofia, Belgrade and Budapest, at the lower end of EU capital price levels.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 3.20,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 9.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 105.00
+  }
+}

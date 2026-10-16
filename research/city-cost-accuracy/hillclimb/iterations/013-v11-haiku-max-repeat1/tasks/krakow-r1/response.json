@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Polish price levels, extrapolated to July 2026 peak season; no live listings or price pages were checked. Restaurant and cafe anchors are moderately reliable. Cocktail and wine anchors were cross-checked against the beer anchor using typical local price ratios because direct knowledge is weaker. Hostel and hotel rates are least certain given peak-season and district variation. The FX rate comes from a search-result summary citing the RBA exchange-rates page; that page was not opened directly.",
+  "comparable_city_reasoning": "Reasoned from other Polish tourist cities such as Wroclaw and Gdansk for food and drink prices, with Prague and Budapest as an upper reference for hotel tiers; a peak-season premium is applied to lodging. No specific comparable-city dataset was used.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.60,
+    "coffee": 3.70,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 9.50,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 76.00,
+    "hotel_3star_2p": 140.00
+  }
+}

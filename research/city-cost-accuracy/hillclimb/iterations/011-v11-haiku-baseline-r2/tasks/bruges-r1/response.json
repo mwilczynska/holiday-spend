@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied context only; no live menus, booking pages, or current listings were inspected. Restaurant, beer, and coffee anchors are moderately grounded. Hotel and hostel anchors carry the widest uncertainty because Bruges July rates are highly seasonal and demand-driven. Cocktail and wine anchors are set relative to the beer anchor because direct local price knowledge for them is weaker. The FX figure comes from a web search summary of the RBA exchange-rate table; the RBA page itself was not opened.",
+  "comparable_city_reasoning": "No single named comparable city was used. Regional basis: Belgian and nearby Western European tourist cities (such as Ghent, Antwerp, and Brussels) for restaurant and drink levels, adjusted upward for Bruges' compact historic-center tourist premium and July peak-season accommodation demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 4.75,
+    "inexp_meal_1p": 17.50,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 15.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 255.00
+  }
+}

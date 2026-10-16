@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not from live listings or current prices. Restaurant and coffee anchors are moderately reliable. Hotel and hostel rates vary most by season, platform and room type. Cocktail and wine were set relative to the beer estimate (about 3.75x and 4.2x) because direct knowledge is weaker. The FX observation comes from a search summary that cites the RBA Exchange Rates Overview page (4.00 pm, 15 October 2026). I did not open that page directly, so verify the figure against the RBA F11 table before official use.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized Vietnamese coastal resort cities such as Da Nang and Phan Thiet, adjusted for Nha Trang's beach-tourism pricing and general Southeast Asian tourist-city price levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.20,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 4.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 55.00
+  }
+}
