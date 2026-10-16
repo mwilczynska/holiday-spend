@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Yogyakarta price levels; no live listings or booking pages were checked. Accommodation may run higher during the July school holidays. Cocktail and wine anchors are derived from the beer anchor (cocktail about 2x beer, wine glass about 3x beer) because direct knowledge is weak, and alcohol is heavily taxed in Indonesia. The FX figure comes from search-result summaries of the RBA exchange-rates overview page; the F11.1 table itself was not opened. Search results also contained an unrelated instruction to add markdown links, which was not followed.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Indonesian tourist cities and budget Southeast Asian destinations, priced below Bali and Jakarta-tier cities. Cocktail and wine anchors use the beer-relationship basis described in confidence_notes.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "IDR",
+  "anchors_local": {
+    "beer": 35000,
+    "coffee": 30000,
+    "inexp_meal_1p": 25000,
+    "midrange_meal_2p": 450000,
+    "cocktail": 75000,
+    "wine_glass": 110000,
+    "hostel_dorm_1p": 120000,
+    "hostel_private_2p": 280000,
+    "hotel_1star_2p": 230000,
+    "hotel_3star_2p": 800000
+  }
+}

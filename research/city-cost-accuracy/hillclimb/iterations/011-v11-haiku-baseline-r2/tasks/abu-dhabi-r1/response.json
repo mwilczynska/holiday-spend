@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not from live booking pages or current listings. Restaurant and coffee anchors are moderately reliable. Beer, cocktail and wine are less certain because licensed-venue alcohol pricing varies widely. Cocktail and wine are set at about 1.5 times the beer anchor because direct knowledge is weak. Accommodation reflects July low season. Hostel anchors are the least certain because registered hostel supply in Abu Dhabi is limited. The FX value of 0.6955 for 2026-10-15 comes from search-result summaries that point to rba.gov.au exchange-rate pages; the RBA table itself was not opened, so verify it against the live RBA table. One search result also contained an embedded instruction to change the output format, which was ignored.",
+  "comparable_city_reasoning": "Benchmarked against Dubai and other Gulf hub cities for restaurant, coffee and hotel price levels, with a July low-season adjustment for accommodation. Alcohol anchors reflect licensed hotel and restaurant pricing in the UAE, with cocktail and wine tied to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 125.00,
+    "cocktail": 16.50,
+    "wine_glass": 16.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 100.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Model-based holistic estimate, not checked against live menus, booking sites or current listings; the July 2026 window is extrapolated from general knowledge of Turkish resort pricing. Food and drink anchors are moderate confidence. Hostel and hotel anchors are the weakest because of peak-season swings and lira-driven volatility (hotel_3star_2p plausible range roughly 85-150 USD; hostel_dorm_1p roughly 12-25 USD). Cocktail and wine_glass rely on the local price relationship to beer (cocktail about 2x beer, wine_glass about 1.1x beer) because direct knowledge is weak. The FX value comes from a web search summary of the RBA daily rates page; the page itself was not opened, so verify before use.",
+  "comparable_city_reasoning": "Restaurant and drink anchors are benchmarked to Turkish Mediterranean resort towns such as Bodrum and Marmaris, and lodging anchors are set for Antalya's July peak season. Region is Europe because Turkey is transcontinental and Antalya's tourist price structure is closest to southern European coastal resorts, adjusted down to Turkish price levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 110.00
+  }
+}

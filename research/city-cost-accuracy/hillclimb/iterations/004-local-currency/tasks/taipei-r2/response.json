@@ -1,0 +1,26 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Taipei price levels for July 2026; no live menus, booking pages, or current listings were checked. Cafe, cheap-eats, and restaurant anchors are the more reliable. Hostel and hotel rates vary widely by district, weekday versus weekend, and availability, and July is peak summer travel, so treat accommodation as broad bands. Cocktail and wine anchors were cross-checked against the beer anchor (roughly two to three times the beer price), so they are less certain. The FX observation comes from search results citing the RBA exchange-rates page for 15 October 2026; two separate searches reported the same figure, but the page itself was not opened directly.",
+  "comparable_city_reasoning": "Regional East Asian basis, reasoned from general knowledge of large East Asian metros and placing Taipei above Southeast Asian capitals and broadly in line with other East Asian city centers, with Taipei-specific adjustments. No single comparable city was used as a direct anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "TWD",
+  "anchors_local": {
+    "beer": 150,
+    "coffee": 160,
+    "inexp_meal_1p": 220,
+    "midrange_meal_2p": 2400,
+    "cocktail": 380,
+    "wine_glass": 320,
+    "hostel_dorm_1p": 800,
+    "hostel_private_2p": 2000,
+    "hotel_1star_2p": 2400,
+    "hotel_3star_2p": 4200
+  }
+}

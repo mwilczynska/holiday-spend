@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings or bookings. Restaurant and café anchors are moderately reliable. Hotel and hostel rates vary by area, season and booking date and are less certain; July is winter, usually a lower-demand period for city lodging. Local prices converted at an assumed 950 CLP per USD. Cocktail and wine were sanity-checked against the draft beer anchor (about 1.7x and 1.1x). The FX figure comes from a search-result summary attributed to the RBA exchange-rates overview page and was not confirmed against the RBA daily table; verify before use.",
+  "comparable_city_reasoning": "No single comparable city was used. Price levels follow large Latin American capitals with established tourism (for example Montevideo, Mexico City and Lima), adjusted for Santiago's relatively higher restaurant and hotel prices within the region. Accommodation tiers reflect general knowledge of central Santiago rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "500 ml draft beer (schop) at a Bellavista bar, about 4,500 CLP",
+    "coffee": "cappuccino at a mid-range café, about 3,800 CLP",
+    "inexp_meal_1p": "menú del día set lunch at a neighborhood fuente de soda, about 8,500 CLP",
+    "midrange_meal_2p": "three courses for two at a Lastarria bistro, no drinks, about 65,000 CLP total",
+    "cocktail": "pisco sour at a central bar, about 7,500 CLP",
+    "wine_glass": "glass of house Chilean red at a restaurant, about 5,000 CLP",
+    "hostel_dorm_1p": "dorm bed at a registered central hostel, about 20,000 CLP per night",
+    "hostel_private_2p": "private double room at a registered central hostel, about 45,000 CLP per night",
+    "hotel_1star_2p": "basic registered hotel or hospedaje double room, about 40,000 CLP per night",
+    "hotel_3star_2p": "registered three-star hotel double room in Providencia, about 110,000 CLP per night"
+  },
+  "anchors_usd": {
+    "beer": 4.74,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.95,
+    "midrange_meal_2p": 68.42,
+    "cocktail": 7.89,
+    "wine_glass": 5.26,
+    "hostel_dorm_1p": 21.05,
+    "hostel_private_2p": 47.37,
+    "hotel_1star_2p": 42.11,
+    "hotel_3star_2p": 115.79
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Yogyakarta price levels, with remembered prices brought forward to July 2026 for local inflation and tourism price growth. No live listings or booking pages were checked. Restaurant and coffee anchors are moderately reliable. Accommodation is least certain because July is a peak school-holiday period and room rates vary widely. Alcohol is the weakest area: cocktail and wine were set from the beer anchor (about 2.2x and 2.6x beer) because direct price knowledge is weak, and alcohol pricing varies by venue. Rupiah movements add uncertainty. The FX rate comes from RBA exchange-rate page snippets returned by search, not from the downloadable F11.1 file.",
+  "comparable_city_reasoning": "Regional basis: Southeast Asia, benchmarked against other mid-sized Javanese tourist and cultural cities such as Solo for food, coffee and guesthouse prices. Yogyakarta is priced below Bali's Seminyak and Canggu and below Jakarta. Accommodation anchors include an allowance for July peak demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.30,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.20,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 55.00
+  }
+}

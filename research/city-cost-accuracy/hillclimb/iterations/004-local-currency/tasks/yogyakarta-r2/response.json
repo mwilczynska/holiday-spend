@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge; no live listings or booking pages were checked. Restaurant and lodging anchors are moderate confidence and vary by neighbourhood and season (July is peak). Beer is a bottled domestic lager proxy because draft is uncommon locally. Cocktail (about 2x beer) and wine by the glass (about 2.7x beer) are set relative to beer because direct knowledge is weaker. The FX rate comes from search-result summaries of the RBA page; the page itself was not opened.",
+  "comparable_city_reasoning": "Regional basis: general knowledge of Indonesian mid-sized tourist cities such as Malang and Solo, adjusted to Yogyakarta's tourist-district pricing and July peak demand. Alcohol anchors reflect Indonesia's high alcohol excise and tourist-venue markups.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "IDR",
+  "anchors_local": {
+    "beer": 35000,
+    "coffee": 30000,
+    "inexp_meal_1p": 35000,
+    "midrange_meal_2p": 420000,
+    "cocktail": 70000,
+    "wine_glass": 95000,
+    "hostel_dorm_1p": 100000,
+    "hostel_private_2p": 250000,
+    "hotel_1star_2p": 200000,
+    "hotel_3star_2p": 750000
+  }
+}

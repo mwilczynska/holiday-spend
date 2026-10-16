@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general Danish price knowledge; no live listings or booking pages were checked. Restaurant, coffee and beer anchors are more reliable than hostel and hotel anchors, which swing with July demand. Cocktail and wine were set from the beer anchor (about 2.0x and 1.5x) because direct knowledge is weaker. USD values assume about 6.5 DKK per USD. FX is stale: 0.7088 (20 Mar 2026) is the latest RBA observation I could confirm, read from search-result summaries of that page rather than an opened page. A later 15 Oct 2026 figure reported by one search could not be corroborated and is not used. Refresh the FX before relying on it.",
+  "comparable_city_reasoning": "Regional basis: Danish national price levels, with the city set somewhat below Copenhagen and in line with other large Danish provincial cities. No single named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 7.50,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 22.00,
+    "wine_glass": 16.50,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 160.00,
+    "hotel_3star_2p": 250.00
+  }
+}

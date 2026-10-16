@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for the July 2026 window. No live booking pages, menus, or current listings were checked. Restaurant and cafe anchors are moderately reliable. Drink prices are harder to pin down because alcohol is heavily taxed and licensed, and hotel and hostel rates vary with demand and season, so accommodation is the least certain. The cocktail (about 2 times the beer anchor) and wine_glass (about 1.8 times the beer anchor) values are derived from the beer anchor because direct knowledge of bar and wine prices is weak. The beer anchor assumes a domestic serving in a licensed restaurant.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is a regional judgment: Amman as a mid-cost Levant capital with steady tourism and business demand, priced above lower-cost Egyptian cities and below Gulf hubs such as Dubai. The Jordanian dinar is pegged to the US dollar, so USD anchors should be less exposed to currency swings.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 85.00
+  }
+}

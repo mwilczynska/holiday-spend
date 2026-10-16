@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not from live listings or fetched price pages. Restaurant and coffee anchors are the most reliable; hotel and hostel anchors are less certain given July low-season discounting and limited hostel supply. Cocktail and wine anchors were set from the beer anchor (cocktail about 1.5x beer, wine glass about 1.6x beer) because direct price knowledge is weak. The FX observation came from a search that surfaced the RBA exchange-rates overview page; it was not cross-checked against the RBA daily table, so treat it as provisional.",
+  "comparable_city_reasoning": "Regional basis: Gulf hub pricing, with Dubai as the nearest comparable, adjusted for July low-season hotel discounting and limited hostel supply. Based on general model knowledge, not live listings or web price sources.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 17.25,
+    "wine_glass": 18.40,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 95.00
+  }
+}

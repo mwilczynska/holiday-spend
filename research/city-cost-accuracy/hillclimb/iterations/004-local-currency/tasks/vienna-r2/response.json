@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not live prices or listings. Restaurant and cafe anchors are moderately certain; July accommodation is the most variable and event-sensitive. Beer assumes a 0.5 L glass; a 0.3 L Seidel would price lower. Cocktail and wine come from direct knowledge of Viennese bar and wine-glass pricing rather than the beer relationship. The FX value comes from search-result summaries that cite the RBA exchange-rates page; I did not open that page directly.",
+  "comparable_city_reasoning": "No single comparable city used. Anchors reflect general knowledge of Vienna's cafe, Beisl, Heuriger and hotel price levels, with loose reference to other large Central European capitals.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "EUR",
+  "anchors_local": {
+    "beer": 5.50,
+    "coffee": 4.80,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 98.00,
+    "cocktail": 14.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 195.00
+  }
+}

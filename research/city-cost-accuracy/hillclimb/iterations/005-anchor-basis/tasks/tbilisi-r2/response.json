@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge; no live prices or listings were checked. Restaurant and cafe anchors are moderate confidence; July hostel and hotel rates are least certain. USD values were set from local GEL examples at a rough general-knowledge rate, not a live one. Cocktail and wine are partly set from the local price relationship to draft beer (cocktail about twice a beer, wine close to a beer), as direct knowledge is weak. FX is second-hand: taken from search-result summaries attributed to the RBA exchange-rates page; the page was not opened and a follow-up search could not reproduce the 15 October figure, so verify before use.",
+  "comparable_city_reasoning": "Region set to Europe: Georgia is a Council of Europe member and its traveller price profile sits closer to Eastern European and Balkan capitals than to the Middle East. Price level judged against capitals such as Sofia and Belgrade.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.5 L draft local lager in a mid-range restaurant, about 7 GEL",
+    "coffee": "cappuccino at a central cafe, about 6 GEL",
+    "inexp_meal_1p": "khinkali with a side salad at a local eatery, about 20 GEL",
+    "midrange_meal_2p": "starters, mains and dessert for two at a mid-range Georgian restaurant, no drinks, about 110 GEL",
+    "cocktail": "classic cocktail at a central bar, about 14 GEL (about twice a draft beer)",
+    "wine_glass": "150 ml glass of house Georgian wine at a restaurant, about 8 GEL",
+    "hostel_dorm_1p": "dorm bed in a central Tbilisi hostel in July, about 30 GEL per night",
+    "hostel_private_2p": "private double in a central Tbilisi hostel in July, about 90 GEL per night",
+    "hotel_1star_2p": "basic double at a registered guesthouse in July, about 95 GEL per night",
+    "hotel_3star_2p": "standard double at a registered three-star hotel in central Tbilisi in July, about 240 GEL per night"
+  },
+  "anchors_usd": {
+    "beer": 2.59,
+    "coffee": 2.22,
+    "inexp_meal_1p": 7.41,
+    "midrange_meal_2p": 40.74,
+    "cocktail": 5.19,
+    "wine_glass": 2.96,
+    "hostel_dorm_1p": 11.11,
+    "hostel_private_2p": 33.33,
+    "hotel_1star_2p": 35.19,
+    "hotel_3star_2p": 88.89
+  }
+}

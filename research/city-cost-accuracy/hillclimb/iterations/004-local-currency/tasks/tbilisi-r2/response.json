@@ -1,0 +1,26 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of local price levels for July 2026 (peak season). No live menus, listings, or booking pages were inspected. Restaurant, beer and coffee anchors are the firmer estimates; July hostel and hotel rates are less certain. Cocktail and wine_glass were set relative to the beer anchor (about 1.8x and 1.2x) because direct knowledge of those prices is weak. The FX observation came from a web search result that points to the RBA exchange-rates page; the page itself was not opened directly.",
+  "comparable_city_reasoning": "Georgia is in the Caucasus (UN Western Asia), but its budget and mid-range price levels are broadly comparable to Eastern European capitals such as Sofia, Bucharest and Belgrade, so Europe was used as the regional basis. Accommodation anchors include a July peak-season uplift.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "GEL",
+  "anchors_local": {
+    "beer": 9.00,
+    "coffee": 8.00,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 16.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 270.00
+  }
+}

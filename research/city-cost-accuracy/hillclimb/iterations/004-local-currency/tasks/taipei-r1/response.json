@@ -1,0 +1,26 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Taipei prices; no live menus, listings or booking pages were checked. Meal and cafe anchors are moderately reliable. Accommodation is least certain because rates vary widely by district and weekday and summer demand is high. Cocktail and wine anchors are directional and were sanity-checked against the beer anchor (cocktail about 3x beer, wine glass about 2.5x). FX provenance: taken from search-result summaries of rba.gov.au pages, using the printed 15 Oct 2026 date; the F11 data file itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors reflect general knowledge of Taipei local price levels for a July 2026 window.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "TWD",
+  "anchors_local": {
+    "beer": 120,
+    "coffee": 160,
+    "inexp_meal_1p": 200,
+    "midrange_meal_2p": 2600,
+    "cocktail": 380,
+    "wine_glass": 300,
+    "hostel_dorm_1p": 700,
+    "hostel_private_2p": 1900,
+    "hotel_1star_2p": 2100,
+    "hotel_3star_2p": 4000
+  }
+}

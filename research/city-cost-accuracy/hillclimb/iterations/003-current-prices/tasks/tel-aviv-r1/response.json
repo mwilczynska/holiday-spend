@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live listings or booking pages were checked. Restaurant, cafe and drink anchors are moderately confident (roughly 20-30%); accommodation is least certain given peak-season and regional-security swings. Cocktail and wine were cross-checked against the beer anchor (about 1.3x and 1.1x). The FX value came from a search summary of the RBA overview page and was not verified in the RBA table; another search showed an older RBA page (20 March 2026), so treat the FX observation as provisional.",
+  "comparable_city_reasoning": "No single comparator city. Benchmarked to Israel's high local price level and to other high-cost Mediterranean coastal tourist cities, with food and drink set above Athens- and Lisbon-type levels and hotel anchors reflecting central Tel Aviv demand in July peak season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.50,
+    "coffee": 7.20,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 135.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 41.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 158.00,
+    "hotel_3star_2p": 240.00
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Taipei price levels; no live menus, listings or booking pages were checked. Restaurant and coffee anchors are moderately reliable, while hotel tiers vary by district and season. Cocktail and wine anchors were set relative to the draft-beer anchor because direct price knowledge for them is weaker. Local-currency examples were translated at an assumed rate of about NT$31 per US dollar, which may differ from the July 2026 rate by a few percent.",
+  "comparable_city_reasoning": "Benchmarked against Seoul and Osaka as regional references for dining and hotel tiers, adjusted down for Taipei's generally lower dining costs and similar budget accommodation pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Taiwan Beer draft glass at a casual restaurant, about NT$140",
+    "coffee": "cappuccino at an independent cafe, about NT$150",
+    "inexp_meal_1p": "beef noodle soup with a side dish at a neighborhood eatery, about NT$220",
+    "midrange_meal_2p": "three-course set dinner for two at a mid-range Japanese or Western restaurant, about NT$2,500 for both",
+    "cocktail": "classic cocktail at a neighborhood cocktail bar, about NT$350",
+    "wine_glass": "house red by the glass at a mid-range restaurant, about NT$300",
+    "hostel_dorm_1p": "mixed dorm bed in a central Taipei hostel, about NT$600 per night",
+    "hostel_private_2p": "private double room at a central Taipei hostel, about NT$1,600 per night",
+    "hotel_1star_2p": "very basic budget hotel double room with private bath, about NT$2,000 per night",
+    "hotel_3star_2p": "standard double room at a registered three-star hotel, about NT$3,600 per night"
+  },
+  "anchors_usd": {
+    "beer": 4.52,
+    "coffee": 4.84,
+    "inexp_meal_1p": 7.10,
+    "midrange_meal_2p": 80.65,
+    "cocktail": 11.29,
+    "wine_glass": 9.68,
+    "hostel_dorm_1p": 19.35,
+    "hostel_private_2p": 51.61,
+    "hotel_1star_2p": 64.52,
+    "hotel_3star_2p": 116.13
+  }
+}

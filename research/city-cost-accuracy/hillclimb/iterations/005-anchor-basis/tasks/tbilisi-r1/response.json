@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge; no live listings or price pages were checked. Restaurant and cafe anchors are moderately reliable; July accommodation rates vary widely, so hotel and hostel anchors are least certain. Cocktail and wine_glass use the local beer relationship (cocktail about twice draft beer; wine glass slightly above beer) because direct knowledge is weak. Local-currency examples were converted at approximate general-knowledge rates. The FX value came from search-result text for the RBA exchange-rates page, not from an opened rate table.",
+  "comparable_city_reasoning": "Georgia is transcontinental and is grouped under Europe here because Tbilisi price levels track Eastern and Southeastern European capitals such as Sofia or Belgrade; Yerevan is a regional cross-check for restaurant and drink prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.5 L draft local lager (for example Natakhtari) at a restaurant, about GEL 8",
+    "coffee": "cappuccino at a local cafe, about GEL 6",
+    "inexp_meal_1p": "six khinkali and a Georgian salad at a local eatery, about GEL 22 per person",
+    "midrange_meal_2p": "three courses for two (shared starters, two mains, one dessert) at a central mid-range restaurant, no drinks, about GEL 115",
+    "cocktail": "standard cocktail at a central Tbilisi bar, about GEL 16",
+    "wine_glass": "150 ml house wine at a restaurant, about GEL 10",
+    "hostel_dorm_1p": "dorm bed in a registered Old Town hostel in July, about GEL 35 per night",
+    "hostel_private_2p": "private double room in a registered hostel in July, about GEL 100 per night",
+    "hotel_1star_2p": "basic guesthouse double with private bath in July, about GEL 120 per night",
+    "hotel_3star_2p": "registered three-star hotel double in July, about GEL 250 per night"
+  },
+  "anchors_usd": {
+    "beer": 2.96,
+    "coffee": 2.22,
+    "inexp_meal_1p": 8.15,
+    "midrange_meal_2p": 42.59,
+    "cocktail": 5.93,
+    "wine_glass": 3.70,
+    "hostel_dorm_1p": 12.96,
+    "hostel_private_2p": 37.04,
+    "hotel_1star_2p": 44.44,
+    "hotel_3star_2p": 92.59
+  }
+}

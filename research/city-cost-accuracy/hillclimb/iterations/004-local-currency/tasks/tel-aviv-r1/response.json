@@ -1,0 +1,26 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate. No live menus, listings or booking pages were checked, and July 2026 values are projected from knowledge that runs to about June 2026. Beer assumes a roughly 0.5 L draft. Coffee and restaurant anchors are more reliable than hostel and hotel rates, which swing with peak-season demand and regional conditions. Cocktail and wine_glass were set relative to the beer anchor because direct price knowledge is weaker. FX came from a search summary of the RBA exchange-rates page, not a direct page read.",
+  "comparable_city_reasoning": "No single comparable city was used as a source. The basis is general knowledge of Tel Aviv's own price level, loosely cross-checked against high-cost Western European and Eastern Mediterranean cities, with a July peak-season uplift applied to accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "ILS",
+  "anchors_local": {
+    "beer": 42.00,
+    "coffee": 21.00,
+    "inexp_meal_1p": 70.00,
+    "midrange_meal_2p": 420.00,
+    "cocktail": 60.00,
+    "wine_glass": 45.00,
+    "hostel_dorm_1p": 170.00,
+    "hostel_private_2p": 450.00,
+    "hotel_1star_2p": 520.00,
+    "hotel_3star_2p": 1000.00
+  }
+}

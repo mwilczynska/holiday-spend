@@ -3763,3 +3763,19 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   inexpensive meals, too close to be an independent family; it is kept as a sensitivity panel only.
 - Round 1 dispatched: 001 production v1.1 baseline (54 x 3), 002 definitions, 003 current-price instruction,
   004 local-currency elicitation, 005 per-anchor basis (54 x 2 each); 006 leave-one-out calibration replay staged.
+
+# 15 October 2026 — Round 1 results, panel R2, accommodation pilot
+
+- 007 comparable-city context: raw 0.217 vs 0.292 (accept raw, 40/54 cities), but calibrated it does not beat
+  the calibrated incumbent (0.2085 per anchor, 0.2258 per region vs 0.2074). Context and calibration remove the
+  same shared bias; they do not stack. 003 current-price instruction rejected raw and calibrated.
+- Panel R2 promoted: 475 cities (333 dev, 142 test). Expansion from app-library cities: Hostelworld 268,
+  BudgetYourTrip 302 (in-browser), livingcost 311 (fallback only, cross-walked to Numbeo by median log ratio on 66
+  overlap cities), Numbeo partial (direct fetches rate-limited/blocked by IP; collection resumes slowly). Earlier
+  scores reproduce exactly. R2 baseline 011 (333 x 2) dispatched.
+- Accommodation pilot with owner-authorized logged-in sessions. trip.com: the list API is replayed in-page from a
+  captured signed request; per hotel it gives star, base, taxes, discounts and total, so list (pre-discount, incl.
+  tax) and paid prices are both recorded. Booking.com: first-page server-rendered cards (25) with per-stay price
+  and taxes. 3-star medians agree closely across the two sites on paid prices (Lisbon $86 vs $85, Kyoto $52 vs
+  $52.50). 1-2 star listings are not cheaper than 3-star in central districts, so the basic-hotel reference will be
+  defined as a price tier (lower percentile of decent hotels/guesthouses/B&Bs), decided from the collected data.

@@ -1,0 +1,26 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Sydney price levels; no live listings or booking pages were inspected. Cafe, restaurant and beer anchors are more reliable than accommodation, which varies by season, events, location and star rating. Figures reflect a July winter window outside the summer peak. Cocktail and wine anchors are less directly known and were checked against the beer anchor. FX value is the 15 October 2026 RBA reading as surfaced in WebSearch results referencing the RBA exchange rate pages; the F11.1 data file itself was not retrieved, so the entry should be verified against it.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors were estimated directly for Sydney and sanity-checked against general Australian capital-city and Oceania price levels; cocktail and wine were set in relation to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "AUD",
+  "anchors_local": {
+    "beer": 11.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 180.00,
+    "cocktail": 25.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 165.00,
+    "hotel_3star_2p": 240.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant and drink anchors are moderate-confidence holistic estimates for a July resort window. Accommodation is less certain because of peak-season swings and an unstated rate basis (room-only, breakfast, or all-inclusive). Turkish lira inflation and depreciation add drift risk. Cocktail is set at about 2x draft beer and wine glass at about 1.2x beer because direct bar-price knowledge is weak. The FX value came from search summaries of RBA exchange-rate pages, not the live table, and the cached copies I saw conflicted on date.",
+  "comparable_city_reasoning": "Estimated from general knowledge of Turkish Mediterranean resort pricing, benchmarked to Antalya-area resort towns and southern European resort norms. Turkey is mapped to the Middle East region as a transcontinental country. No live listings or booking pages were checked.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.75,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 9.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 95.00
+  }
+}

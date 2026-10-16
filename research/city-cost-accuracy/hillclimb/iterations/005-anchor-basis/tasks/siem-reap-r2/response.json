@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live prices or listings were checked. Restaurant anchors are moderately reliable for the tourist core. Room rates are less certain, and July is in the low, rainy season, so they may sit below peak. Cocktail and wine anchors are set relative to beer because direct knowledge is weaker. FX value is from rba.gov.au search results (4pm observation, 2026-10-15); the RBA page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city. Regional basis is tourist-oriented Southeast Asian destinations such as Luang Prabang (Laos) and Hoi An (Vietnam), with Phnom Penh as a lower-cost reference point. Visitor prices are commonly quoted in USD.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Angkor draft beer, one glass in a restaurant, about 7,000 riel (approx. 1.75 USD)",
+    "coffee": "cappuccino at a tourist-area cafe, about 10,000 riel (approx. 2.50 USD)",
+    "inexp_meal_1p": "Khmer noodle soup or fried rice at a local eatery, about 16,000 riel (approx. 4.00 USD)",
+    "midrange_meal_2p": "starter, main and dessert for two at a mid-range restaurant, about 150,000 riel (approx. 37.50 USD)",
+    "cocktail": "standard cocktail at a Pub Street bar, about 18,000 riel (approx. 4.50 USD)",
+    "wine_glass": "house wine by the glass at a restaurant, about 22,000 riel (approx. 5.50 USD)",
+    "hostel_dorm_1p": "mixed dorm bed in a budget hostel, about 24,000 riel per night (approx. 6.00 USD)",
+    "hostel_private_2p": "private double room in a budget hostel, about 72,000 riel per night (approx. 18.00 USD)",
+    "hotel_1star_2p": "basic guesthouse double room with fan and cold water, about 56,000 riel per night (approx. 14.00 USD)",
+    "hotel_3star_2p": "standard double room at a central three-star hotel, about 220,000 riel per night (approx. 55.00 USD)"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 37.50,
+    "cocktail": 4.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 55.00
+  }
+}

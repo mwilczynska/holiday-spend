@@ -1,0 +1,37 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no live prices or listings were checked and no city-price searches were run. Restaurant and beer anchors are moderately solid, while July hostel and hotel rates are less certain given summer demand and tourism volatility. Shekel examples were converted at an approximate rate from memory, so USD values may shift with currency moves. Cocktail and wine were cross-checked against the beer relationship. The FX value is from a search excerpt of the RBA exchange-rates overview page, not a direct read of the live table; confirm on rba.gov.au before formal use.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is Tel Aviv's high general price level in the Eastern Mediterranean, with restaurant and hotel levels positioned near high-cost Western European capitals and hostel and hotel rates adjusted for July peak demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Goldstar-style draft lager (about 0.5 L) at a Tel Aviv bar or restaurant, about 38 ILS",
+    "coffee": "Regular cappuccino at a neighbourhood cafe in central Tel Aviv, about 20 ILS",
+    "inexp_meal_1p": "Shawarma or hummus plate with salad and a soft drink at a local eatery, about 75 ILS per person",
+    "midrange_meal_2p": "Three-course bistro dinner for two without drinks in central Tel Aviv, about 450 ILS total",
+    "cocktail": "Standard cocktail such as a gin and tonic at a central Tel Aviv bar, about 55 ILS",
+    "wine_glass": "House white or red by the glass (about 150 ml) at a restaurant, about 48 ILS",
+    "hostel_dorm_1p": "Mixed dorm bed in a registered Tel Aviv hostel in July, about 160 ILS per night",
+    "hostel_private_2p": "Private double room in a registered Tel Aviv hostel in July, about 350 ILS per night",
+    "hotel_1star_2p": "Basic registered guesthouse double in central Tel Aviv in July, about 475 ILS per night",
+    "hotel_3star_2p": "Registered three-star hotel double in central Tel Aviv in July, about 800 ILS per night"
+  },
+  "anchors_usd": {
+    "beer": 11.50,
+    "coffee": 6.05,
+    "inexp_meal_1p": 22.75,
+    "midrange_meal_2p": 136.40,
+    "cocktail": 16.70,
+    "wine_glass": 14.55,
+    "hostel_dorm_1p": 48.50,
+    "hostel_private_2p": 106.05,
+    "hotel_1star_2p": 143.90,
+    "hotel_3star_2p": 242.40
+  }
+}

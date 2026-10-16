@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Rome price levels, not live listings. Restaurant anchors are the most reliable; hotel and hostel anchors are least certain because July peak-season rates vary widely by area and date. Cocktail and wine were cross-checked against the draft-beer example (cocktail about 1.8x beer, house wine about equal to beer). EUR figures were converted at an assumed working rate of about 1.15 USD per EUR. The FX value is taken from the RBA exchange-rates overview page as reported in search results; the F11.1 table itself was not opened directly.",
+  "comparable_city_reasoning": "Based on Rome's own centro-storico price levels, cross-checked against other large Italian tourist cities such as Florence and Milan. Hotel and hostel figures reflect July peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.4 L draft Peroni at a centro-storico trattoria, about EUR 6.50",
+    "coffee": "cappuccino at a centro-storico cafe, about EUR 3.00",
+    "inexp_meal_1p": "pasta main plus water and coperto at a neighborhood trattoria, about EUR 16 per person",
+    "midrange_meal_2p": "three-course trattoria dinner for two with no drinks, about EUR 90 total",
+    "cocktail": "Negroni or Aperol spritz at a centro bar, about EUR 12",
+    "wine_glass": "house red by the glass (calice) at a trattoria, about EUR 6",
+    "hostel_dorm_1p": "6-bed mixed dorm bed in a central registered hostel, about EUR 42 per night in July",
+    "hostel_private_2p": "private double room in a central registered hostel, about EUR 110 per night in July",
+    "hotel_1star_2p": "basic pensione double with private bath, about EUR 120 per night in July",
+    "hotel_3star_2p": "registered three-star double near the centre, about EUR 210 per night in July"
+  },
+  "anchors_usd": {
+    "beer": 7.48,
+    "coffee": 3.45,
+    "inexp_meal_1p": 18.40,
+    "midrange_meal_2p": 103.50,
+    "cocktail": 13.80,
+    "wine_glass": 6.90,
+    "hostel_dorm_1p": 48.30,
+    "hostel_private_2p": 126.50,
+    "hotel_1star_2p": 138.00,
+    "hotel_3star_2p": 241.50
+  }
+}

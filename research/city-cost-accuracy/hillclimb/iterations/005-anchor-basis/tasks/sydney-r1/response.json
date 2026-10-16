@@ -1,0 +1,37 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Sydney price levels; no live menus, listings or booking pages were inspected, and no web search was used for the city-price anchors. Cafe, casual meal and mid-range restaurant anchors are the most reliable. Accommodation is the least certain because Sydney room rates vary widely by suburb, event and season, and July is generally a lower-demand winter month. Cocktail and wine were set relative to the beer anchor (cocktail roughly twice, wine roughly one and a quarter times a restaurant beer) because direct price knowledge for those is weaker.",
+  "comparable_city_reasoning": "Built from general knowledge of Sydney price levels, informed by similarly high-cost Australian and Oceanian coastal cities such as Melbourne and Auckland; no single comparable city was used as a formal anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "a 285ml glass of mainstream draught lager at a Sydney restaurant, about A$12",
+    "coffee": "a regular cappuccino at an independent cafe in the inner city, about A$5.50",
+    "inexp_meal_1p": "a main such as pho or pad see ew at a casual Vietnamese or Thai restaurant, about A$25",
+    "midrange_meal_2p": "two starters, two mains and two desserts at a mid-range bistro with no drinks, about A$200 total",
+    "cocktail": "a standard spirit-based cocktail at a central Sydney bar, about A$25",
+    "wine_glass": "a 150ml glass of house red or white at a mid-range restaurant, about A$15",
+    "hostel_dorm_1p": "a bed in a 6-bed mixed dorm at a registered hostel near Central or Kings Cross, about A$55 per night",
+    "hostel_private_2p": "a private double room at a registered hostel in the inner city, about A$160 per night",
+    "hotel_1star_2p": "a very basic double room at a registered budget hotel or guesthouse in an inner suburb, about A$180 per night",
+    "hotel_3star_2p": "a standard double room at a registered three-star hotel in the CBD, about A$260 per night"
+  },
+  "anchors_usd": {
+    "beer": 8.35,
+    "coffee": 3.83,
+    "inexp_meal_1p": 17.39,
+    "midrange_meal_2p": 139.10,
+    "cocktail": 17.39,
+    "wine_glass": 10.43,
+    "hostel_dorm_1p": 38.25,
+    "hostel_private_2p": 111.28,
+    "hotel_1star_2p": 125.19,
+    "hotel_3star_2p": 180.83
+  }
+}

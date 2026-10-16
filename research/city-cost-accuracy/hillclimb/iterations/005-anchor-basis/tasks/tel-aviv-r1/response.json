@@ -1,0 +1,37 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Tel Aviv price levels for a July peak-season window; no live listings or booking pages were checked. Restaurant, cafe, and beer anchors are moderately reliable. The cocktail and wine_glass anchors were set relative to the beer anchor, both somewhat higher, because direct knowledge of bar prices is weaker. Hostel and hotel anchors are least certain: peak-summer rates shift with demand and with regional security conditions that may have changed after the model's knowledge cutoff. Shekel exchange-rate movement adds uncertainty to all USD figures.",
+  "comparable_city_reasoning": "Regional basis: Tel Aviv treated as a high-cost Eastern Mediterranean coastal city with Western-style dining and hotel prices. Restaurant and cafe levels were judged roughly in line with high-cost Southern European coastal cities, and accommodation was set for July peak demand rather than off-season rates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Goldstar or Maccabee draft, 400 ml at a neighborhood restaurant, about 35 ILS",
+    "coffee": "Cappuccino at a local independent cafe, about 22 ILS",
+    "inexp_meal_1p": "Shawarma plate with salad and a soft drink at a casual eatery, about 62 ILS",
+    "midrange_meal_2p": "Three-course dinner for two (starters, mains, desserts) at a mid-range bistro, no drinks, about 420 ILS total",
+    "cocktail": "Classic-style cocktail at a bar in Florentin or Rothschild, about 52 ILS",
+    "wine_glass": "House white or red, 150 ml pour at a mid-range restaurant, about 42 ILS",
+    "hostel_dorm_1p": "Mixed dorm bed in a central registered hostel, peak-summer rate about 155 ILS per night",
+    "hostel_private_2p": "Private double in a central registered hostel, peak-summer rate about 350 ILS per night",
+    "hotel_1star_2p": "Basic double in a registered guesthouse or budget hotel, peak-summer rate about 450 ILS per night",
+    "hotel_3star_2p": "Standard double in a registered three-star hotel, peak-summer rate about 910 ILS per night"
+  },
+  "anchors_usd": {
+    "beer": 10.00,
+    "coffee": 6.30,
+    "inexp_meal_1p": 17.70,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 14.90,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 44.30,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 128.60,
+    "hotel_3star_2p": 260.00
+  }
+}

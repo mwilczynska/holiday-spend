@@ -1,0 +1,26 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Tel Aviv price levels; no live menus, booking pages, or current listings were consulted. Restaurant, cafe, and beer anchors are moderately reliable. Cocktail and wine anchors are weaker and were set relative to the beer anchor using typical bar markups. Hostel and hotel anchors are least certain given July seasonality and 2026 demand conditions. The FX observation came from search-result summaries of RBA pages; the F11.1 table itself was not opened.",
+  "comparable_city_reasoning": "No specific comparable city was used. Tel Aviv is priced on its own Israeli domestic price level (shekel-denominated restaurant, cafe, and bar pricing) and its coastal July high-season accommodation market. Cocktail and wine anchors use the beer price relationship because direct knowledge of those prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "ILS",
+  "anchors_local": {
+    "beer": 38.00,
+    "coffee": 23.00,
+    "inexp_meal_1p": 80.00,
+    "midrange_meal_2p": 420.00,
+    "cocktail": 55.00,
+    "wine_glass": 45.00,
+    "hostel_dorm_1p": 150.00,
+    "hostel_private_2p": 420.00,
+    "hotel_1star_2p": 550.00,
+    "hotel_3star_2p": 1000.00
+  }
+}

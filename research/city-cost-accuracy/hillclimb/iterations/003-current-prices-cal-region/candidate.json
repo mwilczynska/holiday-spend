@@ -1,0 +1,11 @@
+{
+  "id": "003-current-prices-cal-region",
+  "parent": "001-v11-haiku-baseline-cal-region",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 003-current-prices: leave-one-city-out per-anchor x region multiplicative correction.",
+  "replayFrom": "003-current-prices",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "repeats": 2,
+  "split": "dev"
+}

@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied city context only. No menus, listings, booking pages, or current CLP rates were checked, and price levels are extrapolated to the July 2026 window. Restaurant and café anchors are the most reliable. Hostel and hotel anchors vary by neighborhood and season, and July is winter, generally a softer tourist period than summer. Cocktail and wine anchors are set relative to the beer anchor, so they are less certain. USD values assume roughly 950 CLP per USD. The FX observation came from web-search snippets of RBA data, not from a page opened directly.",
+  "comparable_city_reasoning": "Regional basis: Latin American capitals in the upper-middle price band. Santiago is treated as one of the pricier South American capitals, so anchors sit above cheaper capitals such as Lima and Bogotá and broadly in the range of other upper-middle-cost regional capitals such as Mexico City and Montevideo.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "500 ml draft lager (schop) at a neighborhood restaurant, about 4,500 CLP",
+    "coffee": "cappuccino at a mid-market café chain, about 3,800 CLP",
+    "inexp_meal_1p": "menú del día (soup and main) at a neighborhood eatery, about 8,500 CLP",
+    "midrange_meal_2p": "three-course dinner for two at a mid-range restaurant, no drinks, about 75,000 CLP total",
+    "cocktail": "pisco sour at a central bar, about 7,500 CLP",
+    "wine_glass": "glass of house Chilean red or white at a restaurant, about 5,000 CLP",
+    "hostel_dorm_1p": "bed in a 6-bed dorm at a central registered hostel, about 17,000 CLP per night",
+    "hostel_private_2p": "double private room at a central registered hostel, about 45,000 CLP per night",
+    "hotel_1star_2p": "basic double room with private bath at a registered hostal, about 50,000 CLP per night",
+    "hotel_3star_2p": "double room at a central three-star hotel, about 110,000 CLP per night"
+  },
+  "anchors_usd": {
+    "beer": 4.74,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.95,
+    "midrange_meal_2p": 78.95,
+    "cocktail": 7.89,
+    "wine_glass": 5.26,
+    "hostel_dorm_1p": 17.89,
+    "hostel_private_2p": 47.37,
+    "hotel_1star_2p": 52.63,
+    "hotel_3star_2p": 115.79
+  }
+}
