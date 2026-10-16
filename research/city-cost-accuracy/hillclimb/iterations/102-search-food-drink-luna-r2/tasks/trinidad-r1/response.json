@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Current city price data is sparse and crowdsourced. Food anchors combine limited city estimates with broader Cuba benchmarks; accommodation estimates are holistic and especially uncertain given limited hostel supply and uneven tourist pricing. Cocktail and wine prices are estimated relative to local draft beer.",
+  "comparable_city_reasoning": "Based mainly on Trinidad’s tourism-oriented pricing, with broader Cuba price benchmarks where city-level data is limited.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.77,
+    "coffee": 2.62,
+    "inexp_meal_1p": 6.63,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 4.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 110.00
+  }
+}

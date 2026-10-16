@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Toyama-specific aggregate food prices are sparse and differ across sources. Cocktail and wine estimates are based on their price relationship to local draft beer; accommodation anchors are holistic regional estimates, with no live listings reviewed.",
+  "comparable_city_reasoning": "Food anchors use Toyama-specific aggregate prices; accommodation is modeled on a regional Japanese city baseline comparable to Kanazawa.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.25,
+    "inexp_meal_1p": 3.95,
+    "midrange_meal_2p": 37.50,
+    "cocktail": 4.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 52.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 95.00
+  }
+}

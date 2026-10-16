@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Tulum-specific cost-of-living aggregates inform the mid-2026 food baseline, but the contributor sample is small and prices vary sharply between town and beach areas. Cocktail and wine estimates use their local price relationship to beer; lodging anchors are holistic estimates with substantial seasonal and location uncertainty.",
+  "comparable_city_reasoning": "Food anchors use Tulum-specific aggregates; lodging estimates reflect Tulum's resort-town context and are not based on live listings.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.15,
+    "coffee": 4.05,
+    "inexp_meal_1p": 8.5,
+    "midrange_meal_2p": 57.0,
+    "cocktail": 11.0,
+    "wine_glass": 9.5,
+    "hostel_dorm_1p": 23.0,
+    "hostel_private_2p": 65.0,
+    "hotel_1star_2p": 82.0,
+    "hotel_3star_2p": 155.0
+  }
+}

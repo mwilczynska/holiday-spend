@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Aggregated Tottori and Japan price indexes provide food benchmarks, but July prices are approximate. Cocktail and wine estimates are inferred from beer prices; accommodation anchors are holistic estimates.",
+  "comparable_city_reasoning": "No separate comparable city used; Tottori city-level aggregated food prices were cross-checked against Japan-wide averages. Lodging reflects small regional Japanese-city norms.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.30,
+    "coffee": 3.40,
+    "inexp_meal_1p": 7.60,
+    "midrange_meal_2p": 33.70,
+    "cocktail": 4.75,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 21.00,
+    "hostel_private_2p": 49.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 103.00
+  }
+}

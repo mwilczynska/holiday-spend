@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use recent Tampa price aggregates near the July 2026 window. Cocktail is about twice the local draft beer price; wine by the glass is estimated at about 1.5 times beer. Accommodation anchors are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates are Tampa-specific, while accommodation estimates reflect general knowledge of a U.S. Gulf Coast city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.65,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 14.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 185.00
+  }
+}

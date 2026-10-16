@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Toulouse city price indexes provide meal, cappuccino and draft beer averages. Cocktail is estimated around €10 using a collaborative price index; wine is estimated from its local price relationship to beer. July lodging estimates are broad seasonal models and less certain.",
+  "comparable_city_reasoning": "No specific comparable city; lodging estimates use regional French city travel costs and July demand as a broad basis.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.40,
+    "coffee": 4.35,
+    "inexp_meal_1p": 16.85,
+    "midrange_meal_2p": 78.60,
+    "cocktail": 11.25,
+    "wine_glass": 6.20,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 82.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 140.00
+  }
+}

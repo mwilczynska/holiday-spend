@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Current Ushuaia price aggregates are sparse and disagree substantially. Cocktail and wine estimates use their local price relationship to beer; accommodation anchors are holistic seasonal estimates.",
+  "comparable_city_reasoning": "Food and drink estimates use Ushuaia cost-of-living aggregates. Accommodation is estimated for a remote southern Patagonia tourism destination, loosely comparable to Punta Arenas and El Calafate, with July winter demand in mind.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 4.0,
+    "inexp_meal_1p": 19.5,
+    "midrange_meal_2p": 55.0,
+    "cocktail": 12.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 35.0,
+    "hostel_private_2p": 85.0,
+    "hotel_1star_2p": 110.0,
+    "hotel_3star_2p": 200.0
+  }
+}

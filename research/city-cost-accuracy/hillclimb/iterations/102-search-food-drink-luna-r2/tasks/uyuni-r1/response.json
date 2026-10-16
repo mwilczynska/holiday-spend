@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Current food price data are mostly Bolivia-wide and provide only a rough proxy for July in Uyuni. Accommodation is a holistic estimate; cocktails and wine are estimated from local beer prices and wine bottle prices.",
+  "comparable_city_reasoning": "No close city proxy; food anchors use Bolivia-wide averages adjusted for Uyuni’s tourism demand, while accommodation reflects a small altiplano gateway town.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.5,
+    "coffee": 1.5,
+    "inexp_meal_1p": 2.0,
+    "midrange_meal_2p": 14.0,
+    "cocktail": 3.5,
+    "wine_glass": 2.5,
+    "hostel_dorm_1p": 8.0,
+    "hostel_private_2p": 20.0,
+    "hotel_1star_2p": 25.0,
+    "hotel_3star_2p": 55.0
+  }
+}

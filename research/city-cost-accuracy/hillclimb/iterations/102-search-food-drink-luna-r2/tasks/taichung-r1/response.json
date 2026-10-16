@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee estimates use recent Taichung price aggregates. Cocktail data is sparse; the wine-glass estimate is inferred from local beer and bottle-wine levels. Accommodation is a holistic estimate and has wider uncertainty.",
+  "comparable_city_reasoning": "Food and drink estimates use Taichung-specific data; accommodation is calibrated to a major regional Taiwanese city, with Taipei treated as higher-cost.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.55,
+    "coffee": 2.85,
+    "inexp_meal_1p": 4.65,
+    "midrange_meal_2p": 30.85,
+    "cocktail": 8.85,
+    "wine_glass": 6.8,
+    "hostel_dorm_1p": 15,
+    "hostel_private_2p": 38,
+    "hotel_1star_2p": 48,
+    "hotel_3star_2p": 75
+  }
+}

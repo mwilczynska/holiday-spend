@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent Tokyo cost-of-living aggregates. Cocktail and wine estimates are approximate and based on their local price relationship to draft beer. Lodging is a holistic estimate; area and seasonal variation is large, and October 2026 price data may not perfectly match the July 2026 window.",
+  "comparable_city_reasoning": "Estimated directly for Tokyo; no comparable city proxy used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 3.57,
+    "inexp_meal_1p": 7.59,
+    "midrange_meal_2p": 37.97,
+    "cocktail": 7.59,
+    "wine_glass": 6.33,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 155.00
+  }
+}
