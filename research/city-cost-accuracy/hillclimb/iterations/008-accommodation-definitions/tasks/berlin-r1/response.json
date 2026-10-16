@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live listings or booking pages were inspected. Restaurant, beer and coffee anchors are firmest; July accommodation is peak-season and least certain (roughly +/-20-25%). Beer assumes a 0.5 L draft. Cocktail and wine were cross-checked against the local beer relationship. Euro estimates were converted at an assumed working rate of about 1.15 USD per EUR, not a searched rate. The FX figure came from a rba.gov.au-restricted search result, not a direct page read; the search output flagged possible stale page dates, so confirm it on the RBA site.",
+  "comparable_city_reasoning": "Model judgment, not a sourced benchmark: Berlin levels were positioned against other large German city-break markets such as Hamburg and Cologne, below Munich and above lower-cost Central European capitals such as Prague. July accommodation reflects peak summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 4.60,
+    "inexp_meal_1p": 16.10,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 13.80,
+    "wine_glass": 8.05,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 126.50,
+    "hotel_1star_2p": 132.25,
+    "hotel_3star_2p": 212.75
+  }
+}

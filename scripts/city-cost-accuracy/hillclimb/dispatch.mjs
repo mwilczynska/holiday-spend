@@ -61,7 +61,7 @@ async function runTask(task) {
     }
   }
   fs.writeFileSync(path.join(dir, 'tasks', task.id, 'run.json'), JSON.stringify({ model, effort, tools, attempts }, null, 2) + '\n');
-  return attempts.at(-1).hasText;
+  return fs.existsSync(path.join(dir, 'tasks', task.id, 'response.json')); // success means an answer was saved
 }
 
 // Atomic per-task claim so overlapping dispatchers never run the same task; claims older than 20 minutes without

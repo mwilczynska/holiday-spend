@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of regional Japanese price levels; no live listings or booking pages were checked and no city-specific data was supplied. Restaurant and cafe anchors are more reliable than accommodation, and hostel supply in Aomori is thin, so hostel anchors are the least certain. July pricing excludes the early-August Nebuta Festival surge. Cocktail and wine are derived from the beer anchor (about 1.5x and 1.3x beer) because direct bar pricing knowledge is weaker. USD values assume roughly 150 JPY per USD. The FX value comes from search summaries of rba.gov.au pages rather than a direct read of the F11.1 table, and one summary cited a different 14 October homepage value, so verify before use.",
+  "comparable_city_reasoning": "No comparable city was supplied. Estimate is anchored to mid-sized Japanese regional cities such as Morioka, Akita and Hakodate, which sit well below major tourist hubs like Tokyo, Kyoto and Osaka. Hotel anchors reflect typical July business-hotel and mid-tier room rates for a regional city of this size.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 6.67,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 6.00,
+    "wine_glass": 5.33,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 44.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 90.00
+  }
+}

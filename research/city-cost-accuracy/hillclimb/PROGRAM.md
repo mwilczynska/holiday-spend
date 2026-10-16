@@ -184,6 +184,17 @@ error plus reference noise. Next levers, in order: (1) better accommodation refe
 (2) candidates that add city-specific information (009 search grounding); (3) panel R2 (333 dev cities) to detect
 smaller gains; (4) accommodation definitions (008), judged against the improved references.
 
+## 10b. Hotel reference level (16 October 2026)
+
+Platform searches (trip.com list API, Booking.com search pages; owner's logged-in sessions; 2 adults, 9-11 March
+2027) give 3-star medians that rank cities like BudgetYourTrip/KAYAK (log correlation 0.88 over 56 cities) but sit
+about 42% lower (median log gap -0.55 vs the KAYAK mid-range geometric mean, -0.57 vs BudgetYourTrip
+traveller-paid). trip.com and Booking.com agree within 2% in Lisbon, Kyoto and Berlin, less well in Cairo, Mexico City
+and Hanoi. The absolute hotel level is therefore a definition choice, and calibration inherits it. The estimand is a
+typical night for two, so the hotel reference must average stay windows across seasons and weekday/weekend rather
+than one off-peak weekday. Next: multi-window Booking.com collection for dev cities, then rebuild the hotel
+references as the window average, with platform spread recorded as reference noise.
+
 ## 11. Program revisions
 
 - 14 October 2026: program created; acceptance rule, metric, weights and split frozen as above.

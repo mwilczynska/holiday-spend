@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Chilean price levels, not from live menus, listings, or price searches. Beer, coffee, and restaurant anchors are moderately reliable. Accommodation anchors are least certain, and the July timing is only roughly reflected. Cocktail and wine were set relative to beer because direct knowledge of local prices is limited. The FX value comes from a search summary that cites the RBA exchange rates page; the page itself was not opened.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general price levels for mid-sized northern Chilean coastal tourist cities such as Iquique and Antofagasta. Restaurant anchors reflect typical Chilean menu prices. Lodging anchors assume shoulder-level rates, since July falls outside the summer peak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.20,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 6.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 90.00
+  }
+}
