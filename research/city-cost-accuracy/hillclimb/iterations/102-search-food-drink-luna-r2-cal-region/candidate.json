@@ -1,0 +1,11 @@
+{
+  "id": "102-search-food-drink-luna-r2-cal-region",
+  "parent": "101-v11-luna-r2-cal-region",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 102-search-food-drink-luna-r2: leave-one-city-out per-anchor x region multiplicative correction.",
+  "replayFrom": "102-search-food-drink-luna-r2",
+  "transform": "transform.mjs",
+  "lane": "gpt-6-luna/max (Codex subagent, app system prompt, web search as the prompt allows)",
+  "repeats": 1,
+  "split": "dev"
+}

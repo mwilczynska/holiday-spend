@@ -3996,3 +3996,10 @@ Final `queue.mjs --status` output:
 ```
 
 - Updated the PLAN.md status block to record 102 at 333/333, 0 pending. `npm.cmd run docs:check-memory` passed. Session collection record: `research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/codex-session-2026-10-16-1904.json`.
+
+# 16 October 2026 — Bundle 022 accepted (coordinator)
+
+- Codex completed Luna lane 102 (food/drink-search prompt, 333/333, no failures).
+- Pre-registered bundle 022 (Luna + food/drink search + country-in-region correction): 0.1649 vs 0.2077, -0.043
+  (CI 0.032 to 0.054), 235/98 cities, accepted. New R2 best; typical error about 18%. Search works far better on Luna
+  than on Haiku. Caveats: Numbeo source reproduction, up to six searches per city, sealed-test confirmation pending.
