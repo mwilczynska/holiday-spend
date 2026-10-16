@@ -56,12 +56,12 @@ against `001-v11-haiku-baseline-cal-region`; rerun the livingcost expansion; ing
 
 A Haiku/max prediction task uses about 70k output tokens (search-grounded about 300k), so work runs in bounded,
 resumable chunks. Each window:
-1. Clean stale records: delete  files and  files without a .
+1. Clean stale records: delete `.claim` files and any `run.json` without a `response.json`.
 2. Dispatch in priority order with a budget, e.g.
-   .
+   `node scripts/city-cost-accuracy/hillclimb/dispatch.mjs <iteration> --max-repeat 1 --max-tasks 150 --concurrency 12`.
    Repeat 1 of every city runs before any repeat 2; rerunning fills only gaps.
 3. Browser collections keep results in page memory: export them to disk (padded javascript_tool result +
-   ) before any shutdown, and restart only for missing cities.
+   `extract-browser-json.mjs`) before any shutdown, and restart only for missing cities.
 4. Ingest/assess whatever completed; commit and push.
 
 Current priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
