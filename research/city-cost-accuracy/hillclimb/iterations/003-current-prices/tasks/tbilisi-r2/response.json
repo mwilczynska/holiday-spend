@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not live listings. Assumes roughly 2.7-2.8 GEL per USD and projects prices forward to July 2026. Beer, coffee and restaurant anchors are the more reliable; July hostel and hotel rates are the least certain. Cocktail (about 2x beer) and wine glass (about 1.1x beer) use the local beer relationship because direct knowledge is weak. The FX figure comes from RBA overview search results and was not opened directly.",
+  "comparable_city_reasoning": "Regional basis: Caucasus and Eastern European capitals with similar tourist price levels (for example Yerevan and Sofia), with accommodation adjusted for peak summer demand. Georgia is transcontinental; Europe is used as its region here.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.50,
+    "wine_glass": 3.60,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 100.00
+  }
+}

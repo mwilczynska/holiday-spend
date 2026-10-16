@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live menus, listings or booking pages. USD is used as the quote currency because tourist-facing Siem Reap prices are commonly quoted in US dollars, with riel for small change. Beer and meal anchors are moderately reliable. Accommodation anchors are less certain and reflect July rainy-season, lower-demand pricing. Cocktail and wine anchors were set at roughly three times the beer anchor because direct knowledge of those prices is weaker.",
+  "comparable_city_reasoning": "No single comparable city was used. The basis is general knowledge of Cambodian and mainland Southeast Asian tourist-town pricing, with Phnom Penh as a loose cross-check.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "USD",
+  "anchors_local": {
+    "beer": 1.75,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 55.00
+  }
+}

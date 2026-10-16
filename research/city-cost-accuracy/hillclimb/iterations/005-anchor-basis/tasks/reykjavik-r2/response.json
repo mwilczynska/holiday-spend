@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings or booking pages. Restaurant and drink anchors are moderately reliable; July accommodation is seasonal and least certain. Cocktail and wine were set relative to the beer anchor (about 1.6x and 1.5x) because direct knowledge is thinner. USD values assume roughly 125 ISK per USD, which is unverified. The FX value comes from search-result summaries of the RBA table, not a direct read of the RBA page, so verify the 15 Oct 2026 USD line before use.",
+  "comparable_city_reasoning": "No single comparable city; benchmarked to Nordic capital price levels (Oslo, Copenhagen, Stockholm) from general knowledge, placing Reykjavik at or above them for restaurants and drinks and at the high end for July accommodation because of high wages and peak tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "0.5 L domestic draft lager at a Reykjavik restaurant, about 1,700 ISK",
+    "coffee": "cappuccino at a city cafe, about 950 ISK",
+    "inexp_meal_1p": "burger or fish and chips at a casual counter restaurant, about 3,750 ISK",
+    "midrange_meal_2p": "three-course dinner for two at a mid-range restaurant, no drinks, about 20,000 ISK total",
+    "cocktail": "standard cocktail at a downtown bar, about 2,750 ISK",
+    "wine_glass": "150 ml house wine by the glass at a restaurant, about 2,500 ISK",
+    "hostel_dorm_1p": "bunk in a 4 to 6 bed mixed dorm at a registered hostel in July, about 7,000 ISK per night",
+    "hostel_private_2p": "private double room at a registered hostel in July, about 21,250 ISK per night",
+    "hotel_1star_2p": "basic guesthouse double with shared bath in July, about 26,250 ISK per night",
+    "hotel_3star_2p": "standard double at a three-star hotel in July, about 45,000 ISK per night"
+  },
+  "anchors_usd": {
+    "beer": 13.60,
+    "coffee": 7.60,
+    "inexp_meal_1p": 30.00,
+    "midrange_meal_2p": 160.00,
+    "cocktail": 22.00,
+    "wine_glass": 20.00,
+    "hostel_dorm_1p": 56.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 210.00,
+    "hotel_3star_2p": 360.00
+  }
+}

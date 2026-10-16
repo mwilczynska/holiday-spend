@@ -1,0 +1,37 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge; no live listings or booking pages were checked. Local prices were converted at an assumed rate of about R$5.5 per US$, not a live quote. Accommodation is the least certain because it varies by season and neighborhood; restaurant anchors are steadier. Cocktail and wine anchors were set using their typical price relationship to beer, since direct knowledge of those prices is weaker. The FX value comes from a search-result summary of the RBA exchange rates overview page, not a direct check of that page or table F11.1.",
+  "comparable_city_reasoning": "No single comparable city. The basis is general knowledge of large Brazilian coastal tourist-city pricing, with Copacabana, Ipanema and Botafogo as reference neighborhoods.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "300 ml draft chopp at a Copacabana restaurant, about R$ 20",
+    "coffee": "regular cappuccino at a Copacabana café, about R$ 14",
+    "inexp_meal_1p": "prato feito lunch at a neighborhood eatery, about R$ 45",
+    "midrange_meal_2p": "three-course dinner for two at a mid-range Ipanema restaurant, no drinks, about R$ 380",
+    "cocktail": "caipirinha at an Ipanema bar, about R$ 36",
+    "wine_glass": "house red by the glass at a Zona Sul restaurant, about R$ 40",
+    "hostel_dorm_1p": "mixed dorm bed in a registered Copacabana hostel, about R$ 90 per night",
+    "hostel_private_2p": "private double room in a Copacabana hostel with shared bath, about R$ 240 per night",
+    "hotel_1star_2p": "very basic registered double room in a Centro or Santa Teresa guesthouse, about R$ 280 per night",
+    "hotel_3star_2p": "registered three-star double room in Copacabana or Ipanema, about R$ 520 per night"
+  },
+  "anchors_usd": {
+    "beer": 3.64,
+    "coffee": 2.55,
+    "inexp_meal_1p": 8.18,
+    "midrange_meal_2p": 69.09,
+    "cocktail": 6.55,
+    "wine_glass": 7.27,
+    "hostel_dorm_1p": 16.36,
+    "hostel_private_2p": 43.64,
+    "hotel_1star_2p": 50.91,
+    "hotel_3star_2p": 94.55
+  }
+}

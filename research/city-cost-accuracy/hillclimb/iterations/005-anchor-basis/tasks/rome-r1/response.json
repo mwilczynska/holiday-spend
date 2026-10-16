@@ -1,0 +1,37 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and July high-season context; not checked against live menus, listings or booking pages. Restaurant and coffee anchors are the most dependable; hotel and hostel rates vary widely by neighbourhood and week. Cocktail and wine are weak estimates set from the local beer-price relationship (cocktail about 2x beer, house wine close to beer). EUR is converted at a working rate of about 1.15 USD per EUR, not a live quote. The FX value comes from search-result text attributed to the RBA exchange-rates overview page for 15 Oct 2026 at 4pm; I did not open that page or the RBA table to confirm it, and the search metadata for it was internally inconsistent. The same search output carried an unrelated instruction to add markdown links, which I ignored.",
+  "comparable_city_reasoning": "Holistic comparison with other large Italian tourist cities with similar July demand, chiefly Florence and Milan; no named listings or live rates used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "draft lager (about 0.4 L) at a central Rome restaurant, about 6.00 EUR",
+    "coffee": "cappuccino taken standing at a neighbourhood bar counter, about 1.60 EUR",
+    "inexp_meal_1p": "pasta or pizza main at a budget trattoria incl. water and cover charge, about 15 EUR per person",
+    "midrange_meal_2p": "three courses for two at a mid-range trattoria (two starters, two mains, one shared dessert), no drinks, about 100 EUR total",
+    "cocktail": "classic cocktail such as a Negroni at a central cocktail bar, about 12 EUR",
+    "wine_glass": "150 ml glass of house wine at a trattoria, about 5.50 EUR",
+    "hostel_dorm_1p": "one bed in a 6-8 bed mixed dorm at a central registered hostel in July, about 40 EUR per night",
+    "hostel_private_2p": "private double room at a central registered hostel in July, about 110 EUR per night",
+    "hotel_1star_2p": "basic double room at a registered 1-star hotel or pensione in July, about 120 EUR per night",
+    "hotel_3star_2p": "double room at a central registered 3-star hotel in July, about 195 EUR per night"
+  },
+  "anchors_usd": {
+    "beer": 6.90,
+    "coffee": 1.84,
+    "inexp_meal_1p": 17.25,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 13.80,
+    "wine_glass": 6.33,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 126.50,
+    "hotel_1star_2p": 138.00,
+    "hotel_3star_2p": 224.25
+  }
+}

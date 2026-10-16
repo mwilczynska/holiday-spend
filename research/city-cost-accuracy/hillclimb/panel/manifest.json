@@ -1,1 +1,14 @@
-{ "version": "R1", "note": "Numbeo food/drink (July 2026); Hostelworld dorm and private (Oct 2026, private doubled, grade C); BudgetYourTrip/KAYAK budget and mid-range hotel categories (Oct 2026).", "sources": ["r0-numbeo.jsonl", "r1-hostelworld-2026-10-15.jsonl", "r1-budgetyourtrip-2026-10-15.jsonl"] }
+{
+  "version": "R2",
+  "note": "R1 plus app-library expansion. Food/drink: Numbeo (July for R0 cities, October for 31 expansion cities), then livingcost.org only where Numbeo is absent, cross-walked to Numbeo's level by the median log ratio measured on the 66 R0 overlap cities. Hostels: Hostelworld. Hotels: BudgetYourTrip/KAYAK categories.",
+  "sources": [
+    "r0-numbeo.jsonl",
+    "r1-hostelworld-2026-10-15.jsonl",
+    "r1-budgetyourtrip-2026-10-15.jsonl",
+    "r3-numbeo-2026-10-15.jsonl",
+    "r3-hostelworld-2026-10-15.jsonl",
+    "r3-budgetyourtrip-2026-10-15.jsonl",
+    { "file": "r3-livingcost-2026-10-15.jsonl", "fallbackOnly": true,
+      "crosswalk": { "inexp_meal_1p": 0.0035, "midrange_meal_2p": 0.1058, "beer": -0.012, "coffee": -0.0248 } }
+  ]
+}
