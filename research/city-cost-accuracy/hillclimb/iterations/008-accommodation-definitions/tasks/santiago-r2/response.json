@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and city context, not live menus, booking pages, or listings. Restaurant and beer anchors are moderately reliable. Cocktail and wine were set from the beer anchor (cocktail about 1.9x beer, wine glass about 1.1x beer). Accommodation is least certain and reflects July winter levels, a lower-demand period than the December-February peak or the September Fiestas Patrias spike; they are believed to include VAT (IVA) and typical mandatory fees. The FX value came from search-indexed copies of the RBA exchange-rates page and was not re-verified on the live RBA site.",
+  "comparable_city_reasoning": "No single comparable city was used. Regional basis only: Latin American capital-city pricing, set from Santiago's local price tiers and placed above lower-cost capitals such as Lima and Bogota for most anchors.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.60,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 58.00,
+    "hotel_3star_2p": 110.00
+  }
+}

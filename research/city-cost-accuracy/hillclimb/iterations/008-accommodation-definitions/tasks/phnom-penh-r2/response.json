@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge. No live menus, listings, or booking pages were checked, and no web search was used for city prices. Restaurant and cafe anchors are more reliable than accommodation. Accommodation anchors are all-in estimates with typical taxes and service charges, reflecting July's rainy, lower-tourism season. Cocktail and wine anchors sit at roughly 3 to 4 times the beer anchor because direct bar-price knowledge is weaker. The FX figure came from web search results that quoted the RBA exchange-rates table. I did not open the RBA page, so confirm 0.6947 USD per AUD for 2026-10-16 on rba.gov.au.",
+  "comparable_city_reasoning": "No single comparable city was used as a formula. The basis is general knowledge of Phnom Penh's tourist price tiers, loosely compared with other Southeast Asian capitals and tourist hubs that have a similar budget-to-midrange structure, such as Siem Reap and Ho Chi Minh City.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 60.00
+  }
+}

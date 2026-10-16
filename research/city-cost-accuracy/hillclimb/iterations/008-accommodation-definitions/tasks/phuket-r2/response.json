@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge, not live listings. Restaurant and beer anchors are moderately certain. Accommodation is the least certain because Phuket rates vary widely by beach area and property tier, and July falls in the monsoon low season. Cocktail and wine were set from typical beer multiples in Thai tourist venues (about 2.9x and 2.4x the beer anchor) because direct price knowledge is weaker. FX was taken from RBA exchange-rate listings returned by search; the RBA page itself was not opened directly.",
+  "comparable_city_reasoning": "Regional basis: Thai Andaman-coast resort towns such as Krabi, with Bangkok tourist districts as a loose reference for restaurant and bar prices. Accommodation anchors are July off-season rates, which fits the reference month.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 10.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 36.00,
+    "hotel_3star_2p": 78.00
+  }
+}

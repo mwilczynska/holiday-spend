@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge, not live listings or booking pages. Restaurant and cafe anchors are moderately reliable; accommodation is less certain and assumes July high-season demand with taxes and fees included. Draft beer is uncommon locally, so the beer anchor is based on bottled domestic lager. Cocktail (about 2x beer) and wine glass (about 2.4x beer) are derived from the beer anchor because direct bar prices are weakly known. The FX value came from a search-result summary of the RBA daily table, not an opened page; confirm it on rba.gov.au before use.",
+  "comparable_city_reasoning": "Regional basis, no single comparable city: mainland Southeast Asian heritage and backpacker cities such as Chiang Mai and Hoi An used as loose reference points, adjusted down for lower Indonesian food prices and up for July high-season accommodation demand. Drink prices kept higher given Indonesia's alcohol taxes.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.00,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 5.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 8.50,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 21.00,
+    "hotel_3star_2p": 42.00
+  }
+}

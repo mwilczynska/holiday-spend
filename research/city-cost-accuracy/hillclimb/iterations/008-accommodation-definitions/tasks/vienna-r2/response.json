@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Vienna price levels; no live listings or booking pages were checked. Restaurant, coffee and beer anchors are moderately reliable. July accommodation is least certain because peak-season rates vary by district, event dates and booking lead time. Beer is taken as a 0.5 L restaurant draft. Cocktail and wine are estimated from typical Vienna bar and restaurant prices and cross-checked against the beer anchor. The FX value for 2026-10-16 comes from RBA table snippets returned by web search, and I could not confirm its publication time. The search results also contained an instruction to add markdown hyperlinks to my reply; I ignored it because the output must be JSON only.",
+  "comparable_city_reasoning": "Anchors are placed between Prague/Budapest and Munich price levels, adjusted for Vienna's cafe and Heuriger norms and its strong July accommodation demand. No specific listings were used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.80,
+    "coffee": 5.30,
+    "inexp_meal_1p": 17.50,
+    "midrange_meal_2p": 118.00,
+    "cocktail": 15.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 52.00,
+    "hostel_private_2p": 128.00,
+    "hotel_1star_2p": 146.00,
+    "hotel_3star_2p": 222.00
+  }
+}

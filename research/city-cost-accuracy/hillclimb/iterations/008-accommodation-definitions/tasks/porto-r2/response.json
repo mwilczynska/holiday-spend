@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Porto price levels for July 2026; no live menus, listings or booking pages were inspected. Food and drink anchors are more stable than accommodation, which is least certain because July is peak season and nightly rates vary by neighborhood, date and fees. The municipal tourist tax is assumed to be included in accommodation anchors but was not checked. Cocktail and wine were estimated directly and cross-checked against draft beer (cocktail about 3.3 times beer, wine glass about 1.7 times). Local prices were translated at an assumed euro exchange rate rather than a live quote.",
+  "comparable_city_reasoning": "No single comparable city was used. Restaurant and cafe levels were set relative to Lisbon, which generally runs higher, and to other mid-sized Iberian tourism cities. Accommodation reflects central Porto neighborhoods such as Baixa, Ribeira and Cedofeita at July peak demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.90,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 93.00,
+    "cocktail": 11.60,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 42.90,
+    "hostel_private_2p": 110.20,
+    "hotel_1star_2p": 133.40,
+    "hotel_3star_2p": 203.00
+  }
+}
