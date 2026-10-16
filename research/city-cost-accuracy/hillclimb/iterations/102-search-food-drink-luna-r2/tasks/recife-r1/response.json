@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current aggregated Recife price data. Cocktail is less certain, and the wine glass estimate is inferred from its relationship to beer and local wine prices. Accommodation relies on broad regional knowledge and is least certain.",
+  "comparable_city_reasoning": "Food and drink are based on Recife city-level prices; lodging is modeled from lower-cost Brazilian coastal cities with tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.55,
+    "coffee": 2.45,
+    "inexp_meal_1p": 5.40,
+    "midrange_meal_2p": 36.50,
+    "cocktail": 4.30,
+    "wine_glass": 3.80,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 33.00,
+    "hotel_3star_2p": 78.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Meals, beer, and cappuccino use citywide data closest to July (May 2026); lodging is a holistic seasonal estimate. Cocktail and wine prices are inferred from the local draft-beer price, so venue mix and July tourism demand add uncertainty.",
+  "comparable_city_reasoning": "No substitution city used: food anchors use Playa del Carmen citywide averages, while lodging estimates reflect the Riviera Maya coastal resort market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 3.7,
+    "inexp_meal_1p": 12.0,
+    "midrange_meal_2p": 43.0,
+    "cocktail": 7.5,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 48.0,
+    "hotel_1star_2p": 65.0,
+    "hotel_3star_2p": 135.0
+  }
+}

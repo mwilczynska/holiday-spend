@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee, and beer estimates follow Rotorua price indexes; their observations span late 2025 to September 2026. Cocktail and wine estimates use their typical price relationship to local draft beer. Accommodation estimates are holistic and seasonally uncertain.",
+  "comparable_city_reasoning": "No city proxy used for food and drink; accommodation estimates reflect a regional New Zealand tourism destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.39,
+    "coffee": 3.23,
+    "inexp_meal_1p": 11.68,
+    "midrange_meal_2p": 62.20,
+    "cocktail": 10.20,
+    "wine_glass": 7.92,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 72.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 150.00
+  }
+}

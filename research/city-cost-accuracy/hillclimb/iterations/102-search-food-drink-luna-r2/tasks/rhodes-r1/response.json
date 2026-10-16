@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "2026 Rhodes food-price snapshots have sparse samples. July lodging is a holistic seasonal estimate; the cocktail estimate is roughly twice draft beer, and wine is estimated near beer parity.",
+  "comparable_city_reasoning": "Food anchors use Rhodes price snapshots; July lodging reflects the island’s peak tourism season, with no city proxy used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.68,
+    "coffee": 4.41,
+    "inexp_meal_1p": 17.40,
+    "midrange_meal_2p": 69.60,
+    "cocktail": 11.60,
+    "wine_glass": 5.80,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 195.00
+  }
+}

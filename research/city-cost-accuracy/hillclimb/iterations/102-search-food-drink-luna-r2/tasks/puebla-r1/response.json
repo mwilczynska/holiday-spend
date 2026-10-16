@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Crowd-sourced Puebla prices support the meal, coffee, and beer estimates. Cocktail and wine estimates use local beer-price relationships; accommodation is a holistic estimate and has the widest uncertainty.",
+  "comparable_city_reasoning": "Accommodation estimates use a broad comparison to lower-cost inland Mexican regional cities with historic-tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 3.30,
+    "inexp_meal_1p": 10.25,
+    "midrange_meal_2p": 49.00,
+    "cocktail": 8.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 70.00
+  }
+}

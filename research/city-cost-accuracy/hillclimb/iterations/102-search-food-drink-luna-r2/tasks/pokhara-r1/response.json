@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food prices use Pokhara-specific cost-of-living data last updated in September 2026 as a proxy for July; the contributor sample is limited. Cocktail and wine prices are estimated from the local beer price relationship, and accommodation is a holistic estimate.",
+  "comparable_city_reasoning": "Food and drink use Pokhara-specific prices; accommodation is estimated from general knowledge of the city’s tourist-market guesthouses and hotels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.6,
+    "coffee": 1.2,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 14.0,
+    "cocktail": 3.6,
+    "wine_glass": 3.8,
+    "hostel_dorm_1p": 7.0,
+    "hostel_private_2p": 22.0,
+    "hotel_1star_2p": 22.0,
+    "hotel_3star_2p": 50.0
+  }
+}

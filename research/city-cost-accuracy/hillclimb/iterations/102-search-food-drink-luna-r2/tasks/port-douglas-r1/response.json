@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "City-level food aggregates support the meal, coffee and draft-beer estimates, but local data are sparse. Cocktail and wine prices are inferred from the draft-beer price; July lodging is a holistic dry-season estimate with the widest uncertainty. The RBA page surfaced 2026-09-11 as its latest observation.",
+  "comparable_city_reasoning": "Food anchors use Port Douglas price aggregates; July accommodation is modeled against Cairns and other North Queensland coastal resort towns, allowing for Port Douglas's seasonal demand.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.94,
+    "coffee": 4.32,
+    "inexp_meal_1p": 17.76,
+    "midrange_meal_2p": 100.41,
+    "cocktail": 14.34,
+    "wine_glass": 10.04,
+    "hostel_dorm_1p": 43.03,
+    "hostel_private_2p": 114.75,
+    "hotel_1star_2p": 136.27,
+    "hotel_3star_2p": 229.50
+  }
+}

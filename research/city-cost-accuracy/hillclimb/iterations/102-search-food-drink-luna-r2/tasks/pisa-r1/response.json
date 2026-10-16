@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors use current aggregated Pisa price data. Summer accommodation is a holistic estimate and is less certain; cocktail and wine prices are estimated from their local relationship to draft beer.",
+  "comparable_city_reasoning": "Food anchors use Pisa city-level prices; accommodation reflects a small Tuscan university and tourist city with higher demand in July.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 2.10,
+    "inexp_meal_1p": 21.00,
+    "midrange_meal_2p": 83.00,
+    "cocktail": 9.50,
+    "wine_glass": 6.25,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 190.00
+  }
+}

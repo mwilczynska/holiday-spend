@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Sa Pa food benchmarks are useful but mid-range meal estimates vary. Cocktail and wine use a shared ~100,000 VND per drink proxy, about 3–4 draft beers; lodging is a general estimate. The latest RBA row I could verify was dated 2026-09-11, and I could not confirm a newer observation.",
+  "comparable_city_reasoning": "Food anchors use Sa Pa-specific cost-of-living benchmarks checked against Vietnam-wide typical prices. Lodging estimates reflect general knowledge of a small trekking town.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.1,
+    "coffee": 1.8,
+    "inexp_meal_1p": 2.0,
+    "midrange_meal_2p": 19.0,
+    "cocktail": 3.8,
+    "wine_glass": 3.8,
+    "hostel_dorm_1p": 7.0,
+    "hostel_private_2p": 16.0,
+    "hotel_1star_2p": 20.0,
+    "hotel_3star_2p": 40.0
+  }
+}

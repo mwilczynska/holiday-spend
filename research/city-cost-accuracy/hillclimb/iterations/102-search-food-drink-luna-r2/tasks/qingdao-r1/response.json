@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use Qingdao price-index data. July accommodation estimates account for summer coastal demand; cocktail and wine-glass prices are less certain and use local beer and bar-price relationships, with a mid-range wine benchmark for wine.",
+  "comparable_city_reasoning": "Qingdao-specific price benchmarks inform food and drink; accommodation is modeled for a Chinese coastal city with strong summer tourism.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.10,
+    "coffee": 2.85,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 6.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 68.00
+  }
+}

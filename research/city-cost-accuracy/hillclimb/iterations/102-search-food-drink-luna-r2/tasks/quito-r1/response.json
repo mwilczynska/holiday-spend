@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent Quito cost-of-living data, whose latest snapshot postdates the July 2026 window. Cocktail and wine estimates use local bar-price ranges relative to draft beer; accommodation estimates are holistic and less certain.",
+  "comparable_city_reasoning": "City-specific Quito price data anchors food and drink estimates; accommodation uses general knowledge of urban tourism costs in Ecuador.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.38,
+    "inexp_meal_1p": 6.0,
+    "midrange_meal_2p": 54.5,
+    "cocktail": 8.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 34.0,
+    "hotel_1star_2p": 38.0,
+    "hotel_3star_2p": 68.0
+  }
+}
