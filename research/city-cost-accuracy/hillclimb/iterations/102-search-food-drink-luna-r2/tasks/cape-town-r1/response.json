@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors follow Cape Town aggregates last updated in May 2026. The cocktail estimate uses a sparse October collaborative estimate and is about twice the local draft-beer price; wine is estimated relative to beer because citywide restaurant glass prices are limited. Accommodation is a holistic seasonal estimate and is least certain.",
+  "comparable_city_reasoning": "No comparable-city transfer used; food and drink use Cape Town price aggregates, while accommodation reflects the city's visitor market and July winter season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.05,
+    "coffee": 2.46,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 49.00,
+    "cocktail": 6.00,
+    "wine_glass": 3.90,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 120.00
+  }
+}

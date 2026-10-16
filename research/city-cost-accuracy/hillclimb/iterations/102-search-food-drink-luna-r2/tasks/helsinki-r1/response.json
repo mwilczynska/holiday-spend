@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Helsinki aggregate prices near July 2026. Cocktail is near the local bar benchmark; wine is estimated modestly above local draft beer. Accommodation is a holistic peak-summer estimate and is less certain.",
+  "comparable_city_reasoning": "No proxy city used; food and drink estimates are Helsinki-specific, while accommodation is modeled for a Nordic capital in peak summer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.4,
+    "coffee": 5.55,
+    "inexp_meal_1p": 18.0,
+    "midrange_meal_2p": 106.0,
+    "cocktail": 16.0,
+    "wine_glass": 10.5,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 125.0,
+    "hotel_1star_2p": 180.0,
+    "hotel_3star_2p": 250.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Cartagena price indexes vary considerably, especially for mid-range meals. Cocktail and wine estimates use local price relationships to beer; accommodation is a holistic estimate with substantial neighborhood and seasonal variation.",
+  "comparable_city_reasoning": "Used Cartagena-specific aggregated food and drink prices; accommodation reflects Cartagena's tourist market and is not based on live listings.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 3.75,
+    "inexp_meal_1p": 5.5,
+    "midrange_meal_2p": 60,
+    "cocktail": 12,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 47,
+    "hotel_1star_2p": 52,
+    "hotel_3star_2p": 95
+  }
+}

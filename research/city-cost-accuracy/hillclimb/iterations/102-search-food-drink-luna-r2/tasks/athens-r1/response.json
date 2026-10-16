@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent aggregated Athens cost-of-living prices. Cocktail and wine prices are less certain; they are estimated at about twice and 1.2 times the local draft-beer price, respectively. Accommodation is a holistic estimate for July high season; no live lodging listings were checked.",
+  "comparable_city_reasoning": "Athens-specific food and drink prices anchor those estimates. Accommodation reflects general knowledge of a high-tourism Southern European capital in July.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.6,
+    "coffee": 4.0,
+    "inexp_meal_1p": 17.0,
+    "midrange_meal_2p": 67.0,
+    "cocktail": 11.2,
+    "wine_glass": 6.7,
+    "hostel_dorm_1p": 30.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 108.0,
+    "hotel_3star_2p": 170.0
+  }
+}

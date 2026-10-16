@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use 2026 cost-of-living benchmarks. Cocktail is based on a downtown bar benchmark; wine is estimated from its usual premium over draft beer. Lodging is a broad July model estimate and varies substantially by neighborhood and property.",
+  "comparable_city_reasoning": "Estimated for Hong Kong using city-specific food and drink benchmarks; no comparable city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.5,
+    "coffee": 5.0,
+    "inexp_meal_1p": 8.0,
+    "midrange_meal_2p": 64.0,
+    "cocktail": 18.0,
+    "wine_glass": 11.5,
+    "hostel_dorm_1p": 32.0,
+    "hostel_private_2p": 90.0,
+    "hotel_1star_2p": 90.0,
+    "hotel_3star_2p": 170.0
+  }
+}

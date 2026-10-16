@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Bucharest price-index reports from June 2026, close to the requested July window. The cocktail estimate uses a later city-price report; wine is estimated relative to local draft beer. Accommodation anchors are holistic estimates, with no live listings consulted.",
+  "comparable_city_reasoning": "Bucharest-specific food and drink prices; accommodation estimated holistically for a lower-cost European capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.68,
+    "coffee": 3.71,
+    "inexp_meal_1p": 13.79,
+    "midrange_meal_2p": 68.97,
+    "cocktail": 7.36,
+    "wine_glass": 5.52,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 43.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 78.00
+  }
+}

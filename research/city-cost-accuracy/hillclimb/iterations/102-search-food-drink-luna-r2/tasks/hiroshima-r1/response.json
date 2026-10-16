@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Hiroshima price indexes from May and October 2026 as a proxy for July. Direct cocktail and wine data are sparse, so those estimates are based on their local price relationship to draft beer. Accommodation is a holistic estimate with greater uncertainty.",
+  "comparable_city_reasoning": "Hiroshima-specific price indexes inform food and drink; accommodation reflects a mid-sized Japanese regional city with tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.69,
+    "coffee": 2.75,
+    "inexp_meal_1p": 5.86,
+    "midrange_meal_2p": 31.49,
+    "cocktail": 5.10,
+    "wine_glass": 4.75,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 58.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 110.00
+  }
+}

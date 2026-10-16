@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use June 2026 aggregated Berlin prices, held close for July. Accommodation is a holistic summer estimate without live listing checks. Cocktail is roughly twice the local draft-beer price and wine about one-quarter higher, consistent with broad Berlin price guidance.",
+  "comparable_city_reasoning": "No comparable city needed; city-specific food and drink prices anchor those estimates, while accommodation reflects general knowledge of a major Central European capital.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.4,
+    "coffee": 4.7,
+    "inexp_meal_1p": 17.4,
+    "midrange_meal_2p": 81.2,
+    "cocktail": 10.0,
+    "wine_glass": 6.4,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 110.0,
+    "hotel_1star_2p": 125.0,
+    "hotel_3star_2p": 180.0
+  }
+}

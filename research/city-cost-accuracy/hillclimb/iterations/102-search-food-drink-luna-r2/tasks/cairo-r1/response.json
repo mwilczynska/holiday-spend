@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Cairo cost-of-living aggregates near the July 2026 window. Alcohol prices vary across licensed and tourist venues; cocktail and wine estimates use local beer pricing and available alcohol price cues. Lodging anchors are holistic estimates, not live listing checks.",
+  "comparable_city_reasoning": "No comparable city used; the food estimates are based on Cairo-specific aggregates, while accommodation is estimated for Cairo as a large tourism capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.7,
+    "coffee": 1.88,
+    "inexp_meal_1p": 5.0,
+    "midrange_meal_2p": 30.0,
+    "cocktail": 6.5,
+    "wine_glass": 4.8,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 32.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 65.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates follow current Krakow price aggregates: roughly 47 PLN for an inexpensive meal, 200 PLN for a mid-range meal for two, 18 PLN for draft beer, and 16 PLN for cappuccino. Cocktail evidence is sparse; the wine-glass estimate uses its local price relationship to beer. July lodging estimates are holistic and vary with location and dates.",
+  "comparable_city_reasoning": "No city proxy used: food estimates are Krakow-specific, and accommodation reflects a high-season Central European tourist destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.90,
+    "coffee": 4.50,
+    "inexp_meal_1p": 12.75,
+    "midrange_meal_2p": 54.25,
+    "cocktail": 11.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 140.00
+  }
+}

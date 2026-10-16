@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use Cebu typical-price aggregates around June 2026. Cocktail and wine are estimated from their local price relationship to beer; lodging is a broad model estimate, not based on live listings.",
+  "comparable_city_reasoning": "Food and drink are based on Cebu-specific price data; lodging reflects Cebu's profile as a major Philippine regional and tourism hub.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.7,
+    "coffee": 2.65,
+    "inexp_meal_1p": 4.15,
+    "midrange_meal_2p": 25,
+    "cocktail": 4.4,
+    "wine_glass": 4.1,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 24,
+    "hotel_1star_2p": 26,
+    "hotel_3star_2p": 62
+  }
+}
