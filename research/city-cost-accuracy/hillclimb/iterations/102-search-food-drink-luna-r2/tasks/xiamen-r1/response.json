@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are supported by recent Xiamen price aggregates and approximate the requested July 2026 window. Cocktail and wine-glass prices are less certain: they are estimated from local beer and reported mid-range bottle-wine prices. Accommodation figures are holistic estimates.",
+  "comparable_city_reasoning": "No proxy city used for food and drink; those estimates use Xiamen-specific aggregates. Accommodation is estimated for a coastal Fujian city with Xiamen's tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.4,
+    "coffee": 2.35,
+    "inexp_meal_1p": 2.85,
+    "midrange_meal_2p": 22.2,
+    "cocktail": 5.0,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 28.0,
+    "hotel_3star_2p": 58.0
+  }
+}

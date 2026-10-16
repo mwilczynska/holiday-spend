@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Yokohama restaurant anchors are based on aggregated typical-price levels. Cocktail and wine prices are estimated from their local relationship to draft beer. Accommodation anchors are holistic July estimates and are less certain.",
+  "comparable_city_reasoning": "Restaurant anchors use Yokohama-specific aggregate prices; accommodation estimates reflect Yokohama's urban market and its proximity to greater Tokyo.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.55,
+    "coffee": 3.52,
+    "inexp_meal_1p": 6.44,
+    "midrange_meal_2p": 41.22,
+    "cocktail": 5.1,
+    "wine_glass": 4.45,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 62,
+    "hotel_1star_2p": 78,
+    "hotel_3star_2p": 145
+  }
+}

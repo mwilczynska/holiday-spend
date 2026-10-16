@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer estimates follow Venice city price aggregates. Cocktail and wine prices are inferred relative to beer; accommodation estimates are holistic and more uncertain because July demand and location can shift room prices substantially.",
+  "comparable_city_reasoning": "No comparable city used: food and drink estimates are Venice-specific, while accommodation reflects peak-season demand and limited supply in a major historic destination.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.73,
+    "coffee": 2.21,
+    "inexp_meal_1p": 22.43,
+    "midrange_meal_2p": 98.14,
+    "cocktail": 11.22,
+    "wine_glass": 6.73,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 165.00,
+    "hotel_1star_2p": 210.00,
+    "hotel_3star_2p": 340.00
+  }
+}

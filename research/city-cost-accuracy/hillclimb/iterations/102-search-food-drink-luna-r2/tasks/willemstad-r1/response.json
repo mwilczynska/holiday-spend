@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors align with recent aggregated Willemstad price indexes, which have limited crowdsourced coverage. Cocktail and wine estimates use roughly 2x and 1.5x the domestic draft beer price. Accommodation anchors are broad model estimates and are the least certain.",
+  "comparable_city_reasoning": "Lodging is modeled against Caribbean island tourist markets such as Oranjestad, allowing for Willemstad’s urban guesthouse stock and island tourism and import costs.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.87,
+    "coffee": 3.88,
+    "inexp_meal_1p": 20.0,
+    "midrange_meal_2p": 84.0,
+    "cocktail": 12.0,
+    "wine_glass": 9.0,
+    "hostel_dorm_1p": 35.0,
+    "hostel_private_2p": 80.0,
+    "hotel_1star_2p": 100.0,
+    "hotel_3star_2p": 180.0
+  }
+}

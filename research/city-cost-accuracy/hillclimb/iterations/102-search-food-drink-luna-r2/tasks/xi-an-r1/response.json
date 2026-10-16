@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meal, beer, and coffee estimates follow Numbeo's June 2026 Xi'an aggregates. Expatistan's October pub-price sample has fewer than 10 entries; cocktail and wine estimates use their relationship to local pub beer. Accommodation is a holistic estimate and is less certain.",
+  "comparable_city_reasoning": "Direct Xi'an price data inform food and drink anchors; no proxy city was used. Accommodation reflects a major inland Chinese tourist city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.42,
+    "coffee": 2.13,
+    "inexp_meal_1p": 2.99,
+    "midrange_meal_2p": 17.94,
+    "cocktail": 6.13,
+    "wine_glass": 4.78,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 50.00
+  }
+}

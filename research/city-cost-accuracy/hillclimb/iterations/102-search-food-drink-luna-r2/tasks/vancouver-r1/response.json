@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Citywide meal, beer and cappuccino aggregates are fairly direct. Cocktail is less broadly sampled, and wine is estimated relative to draft beer. Accommodation is a holistic July peak-season estimate, not a live listing average.",
+  "comparable_city_reasoning": "No separate comparable city used; food anchors use Vancouver city-level price aggregates, while accommodation reflects a high-cost North American coastal destination in peak summer.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.84,
+    "coffee": 4.29,
+    "inexp_meal_1p": 21.90,
+    "midrange_meal_2p": 87.60,
+    "cocktail": 11.68,
+    "wine_glass": 10.22,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 285.00
+  }
+}

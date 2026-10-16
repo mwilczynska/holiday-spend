@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "The July 2026 window is approximated using current city price guides; local meal, coffee and beer estimates cluster fairly closely, but the data samples are unclear. Cocktail and wine use a pooled local drink price relative to beer, so their separate prices are uncertain. Accommodation anchors are holistic estimates with wider uncertainty.",
+  "comparable_city_reasoning": "Used Vang Vieng-specific price guides where available and Vientiane and broader Laos prices as a cross-check, adjusted for Vang Vieng's backpacker tourism. Accommodation estimates are holistic.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.15,
+    "coffee": 1.5,
+    "inexp_meal_1p": 2.1,
+    "midrange_meal_2p": 16.0,
+    "cocktail": 2.75,
+    "wine_glass": 2.75,
+    "hostel_dorm_1p": 5.0,
+    "hostel_private_2p": 16.0,
+    "hotel_1star_2p": 20.0,
+    "hotel_3star_2p": 42.0
+  }
+}

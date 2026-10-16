@@ -41,6 +41,11 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 - [ ] Compose panel R1 and rescore; continue rounds per LOOP.md; ablation and test read every 5 accepted changes.
 - [ ] Luna-lane confirmation before any production proposal.
 
+**Food/drink search Luna lane complete - 16 October 2026 UTC.** Frozen `102-search-food-drink-luna-r2`
+has 333/333 saved responses (0 pending). All 333 answers were collected in this session with fresh GPT-6 Luna/Max
+workers, with no worker retries, failures or skipped tasks. The single authorized ingest completed with 333 tasks
+and 0 failures; its exact output is in LOG.md. Collection stopped because the iteration queue is empty.
+
 **Job A complete ? 16 October 2026 UTC.** Frozen `101-v11-luna-r2` has 333/333 saved responses (0 pending).
 This session collected 121 answers with fresh GPT-6 Luna/Max workers, with no worker retries, failures or skipped tasks.
 The single authorized ingest completed with 333 tasks and 0 failures; its exact output is recorded in LOG.md.
@@ -84,6 +89,7 @@ stopped. Its five raw rows are saved as `panel/booking-main-partial-2026-10-16.r
 009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
 011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
 101-v11-luna-r2                          complete 333 / 333  (0 pending)
+102-search-food-drink-luna-r2            complete 333 / 333  (0 pending)
 ```
 
 **Paused 15 October 2026 (laptop shutdown).** Round-1 answers: 003 72/108; 004 63/108; 005 62/108; 007 89/108; 008 0/108; 009 0/108. Hostelworld expansion complete

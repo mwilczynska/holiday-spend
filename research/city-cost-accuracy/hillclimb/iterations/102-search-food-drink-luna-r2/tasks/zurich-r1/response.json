@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink benchmarks use Numbeo's Zurich aggregate refreshed in October 2026, later than the July pricing window. Cocktail and wine estimates are based on their local price relationship to draft beer. Accommodation is modeled without live listings and is season-sensitive.",
+  "comparable_city_reasoning": "Used Zurich's own cost-of-living aggregate for food and drink; lodging reflects Zurich's high-price, high-demand city profile.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.64,
+    "coffee": 7.02,
+    "inexp_meal_1p": 34.93,
+    "midrange_meal_2p": 144.53,
+    "cocktail": 22.88,
+    "wine_glass": 13.24,
+    "hostel_dorm_1p": 66,
+    "hostel_private_2p": 175,
+    "hotel_1star_2p": 220,
+    "hotel_3star_2p": 310
+  }
+}

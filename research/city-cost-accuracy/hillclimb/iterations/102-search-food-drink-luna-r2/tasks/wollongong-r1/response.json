@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Recent Wollongong cost-of-living aggregates support the meal, coffee, and beer estimates. Cocktail data is sparse; the wine-glass estimate is based on its local price relationship to beer. Accommodation anchors are holistic July estimates and are the least certain.",
+  "comparable_city_reasoning": "Food and drink use Wollongong-specific aggregate prices. Accommodation is estimated for a mid-sized New South Wales coastal city with Sydney-adjacent demand, allowing for July winter travel.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.96,
+    "coffee": 3.48,
+    "inexp_meal_1p": 17.04,
+    "midrange_meal_2p": 83.46,
+    "cocktail": 11.13,
+    "wine_glass": 9.04,
+    "hostel_dorm_1p": 34.78,
+    "hostel_private_2p": 69.55,
+    "hotel_1star_2p": 83.46,
+    "hotel_3star_2p": 125.19
+  }
+}

@@ -3971,3 +3971,28 @@ Ingest output:
 - The owner decided the app's 3-star tier should reflect actual 3-star booking prices (booking-platform member prices
   incl. taxes, scaled to a year-typical level), not KAYAK-style "mid-range". Recorded as a to-do in PLAN.md; no
   references, scores or calibration were changed in this session.
+
+# 16 October 2026 UTC - Luna food/drink search lane complete at 333/333
+
+- Collected all 333 frozen answers for `102-search-food-drink-luna-r2` in this session, from 0/333 to 333/333 (0 pending). Each task used a fresh GPT-6 Luna worker at Max, and final messages were saved verbatim with run metadata and the frozen prompt SHA-256. All 333 response/run pairs exist; run model, effort and prompt hashes were verified.
+- Worker retries: 0. Worker failures: 0. Skipped tasks: 0. No model or effort substitutions.
+- The first nine answers used fresh isolated collaboration workers. Busan and the remaining 323 answers used fresh ephemeral Codex CLI workers with explicit `gpt-6-luna` / `max`, receiving the exact hash-checked worker message directly from `codex-task-message.mjs`. At most three workers ran concurrently. ChatGPT login was forced; no application keys or paid provider APIs were used.
+- One sandboxed CLI setup attempt exited before starting a model: `Error finding codex home: Could not find home directory`. Automatic review approved the subsequent execution, which succeeded. This was a launcher setup failure, not a worker retry.
+- Timing provenance: the first nine runs use approximate/coordinator-observed dispatch and save times. CLI runs record timestamps immediately before dispatch and after completion. Unknown search counts are null. Existing response/run files and frozen inputs were not edited or deleted.
+- Routine checkpoints were committed and pushed after active workers finished: 26/333 (`dada05a2`), 50/333 (`5e542ca9`), 74/333 (`f47d5317`), 98/333 (`29f03e56`), 122/333 (`220ccbc0`), 146/333 (`81bc8d6d`), 170/333 (`b4adc75a`), 194/333 (`e885ca41`), 218/333 (`9e2665a0`), 242/333 (`1bcc39ef`), 266/333 (`a16e2fec`), 290/333 (`33e633bc`), 314/333 (`8b8c0876`). Collection continued after every checkpoint.
+- Stop condition: the iteration queue is empty. Ran the single authorized ingest, then `queue.mjs --status`, in that order. No assessment, comparison, result interpretation or sealed-test read was performed.
+
+Ingest output:
+
+```json
+{"tasks":333,"failures":0,"primaryLoss":0.20262401014923292,"pooledRepeatLoss":0.20262401014923292}
+```
+
+Final `queue.mjs --status` output:
+
+```text
+009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
+011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
+```
+
+- Updated the PLAN.md status block to record 102 at 333/333, 0 pending. `npm.cmd run docs:check-memory` passed. Session collection record: `research/city-cost-accuracy/hillclimb/iterations/102-search-food-drink-luna-r2/codex-session-2026-10-16-1904.json`.
