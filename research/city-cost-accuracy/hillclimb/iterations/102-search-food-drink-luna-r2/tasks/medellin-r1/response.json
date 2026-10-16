@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors use recent aggregated Medellín prices as a proxy for the July 2026 window. Cocktail and wine prices are approximate estimates based on their relationship to local draft beer. Accommodation prices are holistic estimates and less certain.",
+  "comparable_city_reasoning": "Food and drink estimates use Medellín-specific price aggregates; accommodation is estimated from Medellín's urban visitor market without a proxy city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.95,
+    "coffee": 2.87,
+    "inexp_meal_1p": 7.65,
+    "midrange_meal_2p": 44.12,
+    "cocktail": 8.0,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 35.0,
+    "hotel_1star_2p": 42.0,
+    "hotel_3star_2p": 78.0
+  }
+}

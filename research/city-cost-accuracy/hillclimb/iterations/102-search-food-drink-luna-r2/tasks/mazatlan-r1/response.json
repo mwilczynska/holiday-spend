@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated city prices cover meals, cappuccino, and draft beer, but the data is modest: 89 entries from 11 contributors, last updated October 2, 2026. Cocktail and wine-glass estimates use roughly 3–4 times the local draft-beer price; lodging estimates are holistic and less certain.",
+  "comparable_city_reasoning": "Food anchors use Mazatlán's own recent aggregated prices. Lodging estimates reflect broad Pacific-coast Mexico secondary-resort norms, with July seasonality considered.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.2,
+    "coffee": 3.65,
+    "inexp_meal_1p": 11.5,
+    "midrange_meal_2p": 49.0,
+    "cocktail": 8.0,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 17.0,
+    "hostel_private_2p": 36.0,
+    "hotel_1star_2p": 43.0,
+    "hotel_3star_2p": 85.0
+  }
+}

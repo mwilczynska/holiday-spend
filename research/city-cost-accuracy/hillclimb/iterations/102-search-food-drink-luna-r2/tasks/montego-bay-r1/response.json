@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent local price averages support meals, coffee and beer. Drink data is thinner, and lodging is modeled from general knowledge; no live accommodation prices were checked.",
+  "comparable_city_reasoning": "Food anchors use Montego Bay price averages. Lodging reflects general Caribbean resort-city demand and Montego Bay’s tourism premium.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.2,
+    "coffee": 5.35,
+    "inexp_meal_1p": 11.1,
+    "midrange_meal_2p": 76.0,
+    "cocktail": 7.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 30.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 90.0,
+    "hotel_3star_2p": 190.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated city prices support the restaurant, coffee, and beer estimates. Cocktail and wine prices are less certain and use local bar ranges and beer-relative pricing. Accommodation is a holistic estimate and varies with dates and location.",
+  "comparable_city_reasoning": "Food prices are Nagoya-specific; accommodation is modeled using regional Japanese city norms, with Nagoya below Tokyo-level pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.1,
+    "coffee": 2.4,
+    "inexp_meal_1p": 8.6,
+    "midrange_meal_2p": 31.2,
+    "cocktail": 7.6,
+    "wine_glass": 5.7,
+    "hostel_dorm_1p": 23,
+    "hostel_private_2p": 50,
+    "hotel_1star_2p": 58,
+    "hotel_3star_2p": 105
+  }
+}

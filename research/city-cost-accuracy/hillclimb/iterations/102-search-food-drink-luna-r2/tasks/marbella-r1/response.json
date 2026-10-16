@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino, and draft-beer estimates follow aggregated Marbella prices near July 2026. Cocktail is estimated at about 3.5 times beer and wine at about 1.25 times beer. July lodging estimates are less certain because they are model estimates, not live rates.",
+  "comparable_city_reasoning": "Lodging estimates reflect Marbella's July resort-season demand, modeled against nearby Málaga and Estepona with a premium for Marbella.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.64,
+    "coffee": 3.78,
+    "inexp_meal_1p": 23.2,
+    "midrange_meal_2p": 92.8,
+    "cocktail": 16.24,
+    "wine_glass": 5.8,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 145,
+    "hotel_1star_2p": 175,
+    "hotel_3star_2p": 290
+  }
+}

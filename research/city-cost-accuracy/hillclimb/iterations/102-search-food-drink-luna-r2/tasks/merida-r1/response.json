@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Mérida 2026 cost-of-living and July budget references; crowdsourced prices vary. Accommodation is a holistic estimate. Cocktail data is sparse, and wine is estimated relative to local beer.",
+  "comparable_city_reasoning": "Used Mérida-specific 2026 price references; no comparable-city proxy was needed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.1,
+    "coffee": 3.9,
+    "inexp_meal_1p": 11.5,
+    "midrange_meal_2p": 56,
+    "cocktail": 8.5,
+    "wine_glass": 6.2,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 36,
+    "hotel_1star_2p": 45,
+    "hotel_3star_2p": 80
+  }
+}

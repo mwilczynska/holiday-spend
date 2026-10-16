@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use aggregated Mostar prices around the requested window, but local observations are limited. Cocktail is estimated at about 1.5 times draft beer and wine at about 1.25 times; July accommodation estimates are holistic and seasonally uncertain.",
+  "comparable_city_reasoning": "Local Mostar price data inform food and drink anchors; accommodation estimates use broad summer ranges for smaller Balkan tourist cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.36,
+    "coffee": 1.71,
+    "inexp_meal_1p": 7.08,
+    "midrange_meal_2p": 29.50,
+    "cocktail": 3.54,
+    "wine_glass": 2.95,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 95.00
+  }
+}

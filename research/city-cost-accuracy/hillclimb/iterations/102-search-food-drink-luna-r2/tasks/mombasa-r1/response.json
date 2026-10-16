@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use June–July 2026 local cost-of-living indexes, whose estimates vary and whose Mombasa samples are limited. Cocktail relies on a sparse local pub-price entry; wine by the glass is estimated relative to local draft beer. Accommodation is a broad coastal Kenya estimate.",
+  "comparable_city_reasoning": "Food and drink use Mombasa-specific cost-of-living entries; accommodation is estimated from general coastal Kenya tourism-market context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.15,
+    "coffee": 2.25,
+    "inexp_meal_1p": 2.5,
+    "midrange_meal_2p": 23.0,
+    "cocktail": 7.0,
+    "wine_glass": 3.25,
+    "hostel_dorm_1p": 12.5,
+    "hostel_private_2p": 38.0,
+    "hotel_1star_2p": 32.0,
+    "hotel_3star_2p": 85.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use aggregated Nairobi prices updated in October 2026. Cocktail is estimated at about 2.8 times local beer and wine at about 1.5 times; accommodation anchors are holistic estimates without live listing checks.",
+  "comparable_city_reasoning": "No single city substitute used. The regional basis is Nairobi as a major East African capital; food and drink anchors use Nairobi-specific aggregated prices.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.35,
+    "coffee": 2.65,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 35.0,
+    "cocktail": 6.5,
+    "wine_glass": 3.5,
+    "hostel_dorm_1p": 16.0,
+    "hostel_private_2p": 42.0,
+    "hotel_1star_2p": 45.0,
+    "hotel_3star_2p": 95.0
+  }
+}

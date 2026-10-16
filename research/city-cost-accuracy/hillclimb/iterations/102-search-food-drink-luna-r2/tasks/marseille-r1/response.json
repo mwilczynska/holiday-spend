@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Marseille cost-of-living aggregates support meals, coffee, and beer. Cocktail pricing has a thinner collaborative estimate, and the wine glass price is inferred from local beer pricing. Accommodation is a holistic July estimate with substantial seasonal uncertainty.",
+  "comparable_city_reasoning": "Used Marseille’s local price basket for food and drink; no comparable-city proxy was needed. Accommodation reflects a major French Mediterranean city during the summer season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.74,
+    "coffee": 3.53,
+    "inexp_meal_1p": 19.09,
+    "midrange_meal_2p": 76.94,
+    "cocktail": 12.35,
+    "wine_glass": 6.18,
+    "hostel_dorm_1p": 44,
+    "hostel_private_2p": 110,
+    "hotel_1star_2p": 125,
+    "hotel_3star_2p": 190
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Montevideo cost-of-living averages, which vary between snapshots, especially for a mid-range meal. Cocktail and wine prices are bounded estimates based on their local price relationship to beer. Accommodation estimates are holistic and less certain.",
+  "comparable_city_reasoning": "No proxy city used; food anchors are based on Montevideo price data, and accommodation is estimated from general knowledge of this high-cost Southern Cone capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.75,
+    "coffee": 4.5,
+    "inexp_meal_1p": 15,
+    "midrange_meal_2p": 50,
+    "cocktail": 8.5,
+    "wine_glass": 4.25,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 45,
+    "hotel_1star_2p": 60,
+    "hotel_3star_2p": 105
+  }
+}

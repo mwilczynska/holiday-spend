@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated Muscat price indexes support the meal, coffee, and beer estimates. Accommodation is a holistic estimate, with hostel prices especially uncertain because hostel supply is limited; cocktail and wine prices are inferred from the relatively high draft-beer price.",
+  "comparable_city_reasoning": "Food anchors use recent Muscat price aggregates. Accommodation is estimated from Gulf capital guesthouse and hotel levels, allowing for Muscat's hot-season low demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.35,
+    "coffee": 4.7,
+    "inexp_meal_1p": 5.2,
+    "midrange_meal_2p": 26.0,
+    "cocktail": 18.5,
+    "wine_glass": 13.0,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 38.0,
+    "hotel_1star_2p": 45.0,
+    "hotel_3star_2p": 85.0
+  }
+}
