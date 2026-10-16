@@ -195,6 +195,13 @@ typical night for two, so the hotel reference must average stay windows across s
 than one off-peak weekday. Next: multi-window Booking.com collection for dev cities, then rebuild the hotel
 references as the window average, with platform spread recorded as reference noise.
 
+Cross-platform agreement (16 October 2026, March window): trip.com vs Booking.com 3-star medians over 60 cities,
+median log gap +0.058, median absolute 0.130, p90 0.318. Booking.com 3-star vs KAYAK mid-range: -0.593 bias. Booking.com
+decent-property p25 vs KAYAK budget: -0.185 bias, 0.248 median absolute. Basic/3-star ratio on Booking.com: median 0.78
+(p10 0.59, p90 0.94). Planned R3 hotel reference (coordinator to build after the window run): geometric mean of the
+platform 3-star medians, scaled to a year-typical level by the Booking.com window average; basic room = Booking.com
+decent-property p25 with the same scaling. Platform spread is recorded per city as reference noise.
+
 ## 11. Program revisions
 
 - 14 October 2026: program created; acceptance rule, metric, weights and split frozen as above.
