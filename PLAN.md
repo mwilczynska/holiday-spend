@@ -52,6 +52,22 @@ look on answered cities: 007 comparable-city context about -0.07 vs baseline (26
 only), then 008 and 009; ingest/assess each raw and calibrated (`make-calibrated.mjs <iteration> --group region`)
 against `001-v11-haiku-baseline-cal-region`; rerun the livingcost expansion; ingest BYT expansion; compose panel R2.
 
+### Work-window routine (usage limits and laptop shutdowns)
+
+A Haiku/max prediction task uses about 70k output tokens (search-grounded about 300k), so work runs in bounded,
+resumable chunks. Each window:
+1. Clean stale records: delete  files and  files without a .
+2. Dispatch in priority order with a budget, e.g.
+   .
+   Repeat 1 of every city runs before any repeat 2; rerunning fills only gaps.
+3. Browser collections keep results in page memory: export them to disk (padded javascript_tool result +
+   ) before any shutdown, and restart only for missing cities.
+4. Ingest/assess whatever completed; commit and push.
+
+Current priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
+dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
+(5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.
+
 ## Single measurement redesign — owner authorized
 
 - [x] Explicit owner authorization received to run one redesign experiment and have Astra/Medium define it.
