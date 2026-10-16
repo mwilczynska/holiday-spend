@@ -3838,3 +3838,12 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   No verdict about that answer was made, and all frozen prompt/spec files remain unchanged.
 - Next queued task is annecy-r1. No other jobs, ingest, scoring, sealed-test reads or production writes ran.
 - Validation: all 60 response/run pairs parse and report Luna/Max; docs:check-memory and diff whitespace pass.
+
+# 16 October 2026 UTC — Job A continuation from Annecy
+
+- Owner requested continuation after the Alicante dispatch deviation. Preserved that answer and its recorded deviation.
+- Added 25 frozen 101-v11-luna-r2 responses, annecy-r1 through brighton-r1, with one fresh GPT-6 Luna/Max subagent
+  per task. Saved final messages verbatim with run metadata; timestamps are coordinator observations and searches null.
+- Lane now has 85/333 saved responses (248 pending). No worker failures, retries or substitutions in this continuation.
+  No ingest, scoring, sealed-test reads, frozen-file changes, other jobs or production writes ran. Next bristol-r1;
+  collection continues after this checkpoint.

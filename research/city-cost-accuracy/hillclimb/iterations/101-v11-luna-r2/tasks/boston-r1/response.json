@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for July 2026. Boston's summer accommodation prices are especially uncertain because hostel and basic-hotel options are limited. Cocktail and wine estimates use their typical restaurant price relationship to beer.",
+  "comparable_city_reasoning": "Based on a high-cost US Northeast city, with Boston's summer tourism demand and restaurant prices in mind.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.5,
+    "coffee": 5.5,
+    "inexp_meal_1p": 25,
+    "midrange_meal_2p": 115,
+    "cocktail": 17,
+    "wine_glass": 15,
+    "hostel_dorm_1p": 95,
+    "hostel_private_2p": 190,
+    "hotel_1star_2p": 210,
+    "hotel_3star_2p": 340
+  }
+}

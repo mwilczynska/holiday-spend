@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic July 2026 estimate. Restaurant anchors are more certain than accommodation, especially hostel prices because Atlanta has limited hostel inventory. Cocktail and wine estimates use their typical local price relationship to draft beer.",
+  "comparable_city_reasoning": "Based on large US metro pricing, with restaurant and hotel costs broadly comparable to Charlotte or Nashville and below major coastal hubs.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.5,
+    "coffee": 5.5,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 75,
+    "cocktail": 15,
+    "wine_glass": 14,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 110,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 175
+  }
+}
