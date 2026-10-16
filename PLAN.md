@@ -44,8 +44,8 @@ headless `claude -p`). Program: [PROGRAM.md](research/city-cost-accuracy/hillcli
 **Codex collection checkpoint — 16 October 2026 UTC.** Frozen `101-v11-luna-r2` has 30/333 responses saved
 (303 pending), using fresh GPT-6 Luna/Max subagents. No Luna score or verdict has been run. A Codex-side attempt to
 run `014-v11-haiku-high-r2` through the existing Claude dispatcher yielded 17 immediate failed attempts and zero
-answers; it was stopped. Claude/Haiku dispatch is left to the Claude Code coordinator. Stale `.claim` and failed
-`run.json` records from that attempt remain because automatic approval review rejected their cleanup.
+answers; it was stopped. Claude/Haiku dispatch is left to the Claude Code coordinator. With explicit owner approval,
+the exact 33 stale `.claim` files and 17 failed `run.json` records from that dispatch were removed and absence verified.
 
 A further 18 Luna responses were saved and validated. The next fresh subagent spawn, for `los-angeles-r1`, hit
 `agent thread limit reached`; no worker was substituted. The frozen Booking.com main collector ran against the first

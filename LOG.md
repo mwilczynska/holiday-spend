@@ -3804,3 +3804,14 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   133-city to-do list. The first five city rows had HTTP 200 search results and property cards, but every class kept
   zero priced cards. Saved those five raw rows as `panel/booking-main-partial-2026-10-16.raw.json`, then reloaded the
   tab to stop collection. No parser change, further queries, or ingest ran. The coordinator must decide any repair.
+
+# 16 October 2026 UTC — Approved retry cleanup and thread-limit diagnosis
+
+- Owner explicitly approved removal of the stopped 014 dispatch's 33 stale claims and 17 failed run records.
+  Verified the exact task names, the 03:21:13–03:21:27 UTC modification window, failed attempt status, and absent
+  responses before removing those 50 files. Verified zero remaining claims and failed run records in 014.
+- Agent inventory retained three completed subagents alongside the primary agent. Interrupting the completed Lisbon
+  worker did not remove it. The exposed collaboration tools have no close operation. Installed Codex CLI is 0.163.0;
+  its background daemon endpoint refused connection, so no supported external unload route was available.
+  Official documentation describes completed-thread closure, but this session does not expose that control.
+  The Luna queue remains 30/333 answered, next los-angeles-r1; a fresh CLI chat is the available recovery path.
