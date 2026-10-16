@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge and the supplied city context only; no live menus, booking pages, or current listings were inspected. Restaurant anchors are moderately reliable for a small, tourism-heavy US city. Lodging anchors assume the July peak summer season, when Santa Fe rates run high, so they may vary a lot by week and event. Hostel anchors are weaker because Santa Fe has few registered hostels. Cocktail and wine anchors are inferred from the beer anchor because direct knowledge of local prices is limited.",
+  "comparable_city_reasoning": "Regional basis: US mid-sized tourist and arts cities with similar price levels, such as Taos, Asheville, and Boulder, adjusted for Santa Fe's high-season lodging demand. Cocktail and wine are set relative to the beer anchor as a fallback.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 14.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 260.00
+  }
+}

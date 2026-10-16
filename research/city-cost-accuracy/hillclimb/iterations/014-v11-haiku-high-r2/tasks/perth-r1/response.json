@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Perth price levels. Live menus, hotel listings and hostel rates were not checked. Restaurant and coffee anchors are more reliable than accommodation, which moves with season and events. Beer, cocktail and wine are estimated from Perth's usual restaurant pricing relative to beer. The FX observation is dated 2026-10-15 and is attributed to the RBA exchange-rates page in a search summary, but I could not confirm the value on the page itself.",
+  "comparable_city_reasoning": "Based on general knowledge of Australian city price levels, adjusted slightly below Sydney and Melbourne for Perth's generally lower dining and accommodation costs. July is Perth's winter, so accommodation is treated as off-peak. No specific comparable city listings were used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 3.60,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 140.00,
+    "cocktail": 16.50,
+    "wine_glass": 9.75,
+    "hostel_dorm_1p": 31.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 104.00,
+    "hotel_3star_2p": 167.00
+  }
+}

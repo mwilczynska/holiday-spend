@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Swiss alpine resort pricing, not live listings. Restaurant anchors (beer, coffee, meals) are moderately reliable. Cocktail and wine are less certain and follow the local beer relationship. Hostel and hotel rates are the least certain because they swing widely with July high-season demand and booking lead time. The FX observation comes from search-result summaries and was not confirmed by opening the RBA page directly.",
+  "comparable_city_reasoning": "Based on Swiss price levels, adjusted upward for Zermatt's resort premium, car-free alpine location, and July high-season demand. Compared with other high-cost Swiss alpine resort towns such as Grindelwald, Wengen, and St. Moritz.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 7.00,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 190.00,
+    "cocktail": 24.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 200.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 380.00
+  }
+}

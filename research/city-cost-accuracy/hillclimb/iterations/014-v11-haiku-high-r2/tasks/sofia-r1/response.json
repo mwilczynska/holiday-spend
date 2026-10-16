@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Sofia price levels for July 2026, not checked against live listings. Restaurant anchors (beer, coffee, meals) are the most reliable; accommodation is less certain because July demand and seasonal rates vary. Cocktail and wine were set from the local price relationship to beer, since direct knowledge is weaker: cocktail is about 2.4 times the beer anchor and wine glass about 1.4 times. FX caveat: the source_rate is the most recent RBA observation I could verify on the RBA exchange-rates page (18 March 2026), which is about seven months old. A search summary reported a later figure of 0.6955 for 15 October 2026, but I could not confirm it on the RBA page, so I did not use it. The FX value should be refreshed before use.",
+  "comparable_city_reasoning": "No single benchmark city was used. Anchors are based on the restaurant, cafe, and budget-accommodation price levels of mid-sized Southeast and Central European capitals with comparable tourist demand.",
+  "fx": {
+    "as_of_date": "2026-03-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7115,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 90.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Rome price levels, not checked against live menus or booking listings. Restaurant and drink anchors are moderately reliable. Accommodation is less certain because July is peak season and prices vary widely by district and season. Cocktail and wine were set from the beer anchor using the typical local price relationship, since direct knowledge of those prices is weaker. FX was taken from a search summary of the RBA Latest Exchange Rates table; the F11.1 data page itself could not be opened to confirm it.",
+  "comparable_city_reasoning": "Based on major Italian and Western European tourist capitals with comparable July demand, such as Florence, Milan, and Paris. Rome's historic-centre tourist pricing is the reference for restaurants, bars, and accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 14.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 220.00
+  }
+}

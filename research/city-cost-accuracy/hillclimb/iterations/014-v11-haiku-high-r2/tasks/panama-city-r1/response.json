@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Panama City prices, not from live listings. Restaurant and coffee anchors are moderately confident; hostel and hotel anchors are less certain because accommodation prices vary a lot by neighborhood (Casco Viejo, Obarrio, Costa del Este) and season. Panama uses the US dollar, so USD anchors carry no currency-conversion uncertainty. FX is the RBA 15 Oct 2026 observation (0.6955) reported in search results; I could not open the RBA table directly, and a 16 Oct figure (0.6947) from a third-party site is unverified and not used.",
+  "comparable_city_reasoning": "Anchored to the Latin American dollarized capital tier, using San José (Costa Rica) and other mid-sized Latin American capitals as reference points, adjusted upward for Panama City's higher hotel and mid-range restaurant prices in the central business and Casco Viejo areas. Beer and cocktail estimates use the typical local ratio of bar prices to draft beer; wine was estimated as a fixed premium over the cocktail price because direct knowledge is weak.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.25,
+    "inexp_meal_1p": 6.0,
+    "midrange_meal_2p": 60.0,
+    "cocktail": 8.5,
+    "wine_glass": 9.0,
+    "hostel_dorm_1p": 20.0,
+    "hostel_private_2p": 55.0,
+    "hotel_1star_2p": 40.0,
+    "hotel_3star_2p": 120.0
+  }
+}

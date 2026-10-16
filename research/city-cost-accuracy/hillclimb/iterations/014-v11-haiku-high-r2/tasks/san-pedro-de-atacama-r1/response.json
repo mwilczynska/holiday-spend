@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Chilean tourist-town pricing, not inspected live listings. Restaurant and drink anchors are more reliable than accommodation, which is more seasonal and variable. July is Chilean winter and a high season for domestic school holidays and international tourists, and the remote desert location adds a price premium. FX observation 0.6955 for 2026-10-15 is taken from search-result text attributed to the RBA exchange-rates page; I did not directly read the RBA table, and a third-party site listed a different 2026-10-16 figure that I could not verify against rba.gov.au.",
+  "comparable_city_reasoning": "Based on regional knowledge of high-demand Chilean and Andean tourist towns (for example Pucón and Cusco), adjusted upward for San Pedro de Atacama's remote location and supply-constrained lodging in peak season. No direct city-specific source was used.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 8.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 160.00
+  }
+}

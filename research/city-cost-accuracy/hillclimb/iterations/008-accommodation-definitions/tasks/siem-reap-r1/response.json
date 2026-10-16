@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge, not checked against live menus, listings or booking pages. Restaurant and coffee anchors are the more reliable part. Accommodation rates vary widely and are bounded midpoints for July (green season, off-peak), with local taxes and common service charges assumed included. Cocktail and wine were set relative to the beer anchor (about 3.1x and 3.4x) because direct knowledge is only moderate. The FX value 0.6947 for 2026-10-16 came from search-result excerpts of the RBA exchange-rates page and was not opened directly. Another RBA page in those results still showed 0.6955 for 15 October, so re-check the latest figure before use.",
+  "comparable_city_reasoning": "Judgment-based comparison with other Southeast Asian tourist hubs such as Luang Prabang and Hoi An, adjusted for cheap local dining near the Old Market, widespread USD pricing, and lower July accommodation demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 50.00
+  }
+}

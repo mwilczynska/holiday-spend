@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Reykjavik price levels, not from live menus or booking pages. Restaurant and drink anchors are moderately confident. July is peak season, so accommodation anchors are less certain and could vary widely by neighborhood and booking lead time. FX: the 2026-10-15 RBA value was taken from search-result text citing the RBA exchange rates page; the F11 table itself was not opened, and no 2026-10-16 RBA observation was confirmed.",
+  "comparable_city_reasoning": "Regional basis: Nordic capitals such as Oslo and Copenhagen, adjusted upward for Iceland's generally higher restaurant and accommodation costs and summer tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 25.00,
+    "midrange_meal_2p": 190.00,
+    "cocktail": 19.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 210.00,
+    "hotel_3star_2p": 380.00
+  }
+}

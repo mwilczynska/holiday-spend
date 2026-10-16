@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimate from general knowledge of Zanzibar tourist pricing for a July peak-season window; no live listings or price pages were checked. Restaurant and beer anchors are moderately reliable. Accommodation, cocktail and wine anchors are least certain because Zanzibar prices vary widely between Stone Town, Nungwi, Paje and resort areas. Cocktail and wine were set from the beer anchor, with wine and cocktail priced above beer, as a rough local relationship. FX: the RBA observation could not be verified from rba.gov.au in this session. Searches returned conflicting figures (a 0.6947 USD rate dated 2026-10-16 that appeared only on a third-party site, and older RBA March 2026 values), so all fx fields are null rather than guessed. The FX observation needs a manual check against the RBA F11 table before use.",
+  "comparable_city_reasoning": "Based on East African coastal beach-tourism destinations, mainly Mombasa and Diani Beach in Kenya, adjusted for Zanzibar's tourist-facing price level and July high season.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 110.00
+  }
+}

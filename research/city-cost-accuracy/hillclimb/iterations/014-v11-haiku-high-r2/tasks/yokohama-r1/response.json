@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Yokohama and Japanese price levels, not checked against live menus, listings, or booking pages. Restaurant and café anchors (beer, coffee, meals, cocktail, wine) are more reliable than accommodation, which varies widely by neighbourhood, weekday, and event demand. Hostel and 3-star hotel figures carry the widest uncertainty. Cocktail and wine are estimated from Japanese bar and restaurant pricing relative to beer, since direct knowledge of specific Yokohama prices is limited. Estimates assume a yen exchange rate of roughly 150 JPY per USD.",
+  "comparable_city_reasoning": "Based on Japanese city price levels, using Tokyo-adjacent mid-sized and port-city pricing as the reference. Yokohama is generally somewhat cheaper than central Tokyo for accommodation and dining, so figures sit modestly below Tokyo-centre levels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.80,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 180.00
+  }
+}

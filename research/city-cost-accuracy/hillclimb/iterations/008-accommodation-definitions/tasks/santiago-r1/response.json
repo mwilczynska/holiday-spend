@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge; no web-sourced prices or live listings were used. Restaurant and coffee anchors are moderate confidence. Cocktail and wine were set from the local beer price relationship because direct knowledge is weaker. Accommodation is least certain. July is winter and typically lower-demand for city stays than the summer peak, and taxes are assumed included. FX: the rate was taken from search-result text about the RBA exchange rates table (newest entry 16 Oct 2026); I did not open the page directly. The 4pm publication time of the 16 Oct entry is unconfirmed, and 15 Oct at 0.6955 is the last value with a stated 4pm timestamp.",
+  "comparable_city_reasoning": "No single comparable city was used. Anchors reflect Santiago's own local price levels in central visitor areas (Centro, Lastarria, Bellavista, Providencia), assumed at roughly 900-1,000 CLP per USD. They sit within the Latin American range, where Santiago is generally among the higher-cost capitals for hotels and mid-range dining.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.75,
+    "coffee": 3.75,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 8.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 105.00
+  }
+}

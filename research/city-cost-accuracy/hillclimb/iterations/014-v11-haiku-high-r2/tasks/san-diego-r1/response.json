@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not from live listings or menus. Restaurant anchors are more reliable than accommodation, which is sensitive to July peak season, event dates, and the specific neighborhood. Beer and cocktail prices are higher in San Diego than the US average, reflecting its craft-beer market. The meal and hotel tiers are bounded estimates with wide ranges.",
+  "comparable_city_reasoning": "Benchmarked against Southern California coastal and tourist-heavy US metros, such as Los Angeles and Long Beach, adjusted for San Diego's summer tourism demand and its strong craft-beer and cocktail scene.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.00,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 16.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 280.00
+  }
+}

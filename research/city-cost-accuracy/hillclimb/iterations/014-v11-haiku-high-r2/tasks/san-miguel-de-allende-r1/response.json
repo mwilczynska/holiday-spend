@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Mexican highland tourist-town pricing, not checked against live menus, listings, or booking pages. Restaurant and beer anchors are more reliable than the accommodation anchors, which vary more by season, location, and property standard. Cocktail and wine were set from the local price relationship to beer (roughly 2.5 to 3 times the draft beer price), since direct knowledge of those prices is weaker. The FX observation is the RBA figure for 15 October 2026 from the RBA exchange-rates overview; a third-party 16 October figure could not be verified against the RBA, so it was not used.",
+  "comparable_city_reasoning": "Latin America regional basis, benchmarked against Mexico's colonial highland tourist towns such as Guanajuato and Querétaro, with a premium for San Miguel de Allende's international visitor and expat demand that pushes restaurant and hotel prices above typical Mexican provincial towns.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 9.50,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 130.00
+  }
+}

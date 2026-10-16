@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate of July 2026 peak-season prices in a Adriatic beach resort, not checked against live menus or booking pages. Restaurant and beer anchors are moderately certain; hotel and hostel anchors are least certain because July rates vary widely by weekday, event and booking window. Assumes roughly 1 EUR = 1.15 USD. FX observation came from search-result summaries of rba.gov.au pages and was not opened directly; the 16 October figure cited by a third-party site was unverified and not used.",
+  "comparable_city_reasoning": "Based on general knowledge of mid-sized Italian Adriatic seaside resorts with high summer tourism demand (for example Riccione and Cesenatico), with Rimini's beach-front and historic-centre pricing mixed in. The beer-to-wine and cocktail relationships follow typical Italian resort menus, where cocktails run about twice the beer price and house wine by the glass sits slightly above beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.50,
+    "coffee": 3.50,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 160.00
+  }
+}

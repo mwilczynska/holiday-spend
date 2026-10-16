@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge for a mid-tier Riviera Maya resort town in July. No live booking pages, menus, or current listings were inspected. Restaurant and beer anchors are more reliable than accommodation, cocktail, and wine anchors, which are wider ranges. Cocktail and wine were set relative to the beer anchor because direct knowledge is weaker. The FX observation (0.6955 USD per AUD, 2026-10-15) was taken from search-result summaries that attributed it to the RBA exchange-rates overview page. I did not open that page directly.",
+  "comparable_city_reasoning": "Benchmarked against other Quintana Roo tourist towns such as Cancún and Tulum, adjusted to Playa del Carmen's mid-tier resort-town pricing. Accommodation is set for July, outside the peak winter season.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 10.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 140.00
+  }
+}

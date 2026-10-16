@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Polish price levels, not checked against live menus or booking pages. Restaurant anchors (beer, coffee, meals, wine) are moderately reliable. Cocktail and wine are inferred from the local beer relationship because direct knowledge is weaker. Hostel and hotel anchors are the least certain, since summer July rates vary a lot by season, event dates, and booking lead time. FX: the 0.6955 observation (15 Oct 2026) was taken from a search-result summary of the RBA exchange-rates overview page. I did not open that page directly, so verify it against the RBA F11.1 table before relying on it.",
+  "comparable_city_reasoning": "Priced as a mid-sized Polish tourist city, comparable to Krakow, Poznan, and Gdansk, with restaurant and accommodation levels a little below Warsaw and Krakow's historic core.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.20,
+    "coffee": 3.60,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 105.00,
+    "cocktail": 11.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 115.00
+  }
+}

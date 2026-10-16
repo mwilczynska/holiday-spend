@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Istria and Croatian coastal pricing for July, not checked against live listings. Restaurant and coffee anchors are moderately reliable; accommodation anchors are less certain because July rates vary widely by season, location, and booking lead time. Cocktail and wine anchors are bounded relative to beer, since direct knowledge of Pula bar prices is weak. FX provenance is weaker than the anchors: the 0.6947 figure came from search-result summaries attributed to RBA statistics, and I did not read the rba.gov.au page directly. A third-party site shows the same value, but verify against the RBA F11 series before use.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Croatian Adriatic tourist towns in the Istria and Kvarner region, such as Rovinj, Porec, and Opatija, with Pula priced somewhat below Rovinj in peak summer. Restaurant and accommodation levels also reference Split and Zadar at the lower end of the coastal range. Euro-denominated prices were converted to USD using an approximate market rate, not the RBA observation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.30,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 37.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 170.00
+  }
+}

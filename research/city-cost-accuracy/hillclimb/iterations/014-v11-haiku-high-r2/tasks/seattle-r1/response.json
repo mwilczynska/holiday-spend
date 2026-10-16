@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Seattle price levels, not checked against live listings or menus. Restaurant anchors are moderately certain; hostel and hotel anchors are less certain and vary by neighborhood and season. Cocktail and wine are based on the local beer relationship. FX is not current: I could not verify an RBA observation for the generation date (2026-10-16). The only RBA figure I could confirm is the 2026-03-20 value, which is stale relative to the July 2026 pricing window and should be refreshed from the RBA daily table before use.",
+  "comparable_city_reasoning": "Benchmarked against large US West Coast metros with similar restaurant and lodging price levels (for example Portland, Oregon, and the broader US urban market), adjusted for Seattle's high hotel rates and pub and cafe pricing. No specific city was matched exactly.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 240.00
+  }
+}

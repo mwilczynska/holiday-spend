@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and beer anchors are moderately reliable; hotel and hostel rates for July are less certain because of seasonal demand. FX figure is from a third-party page that cites the RBA 16:00 rate for 2026-10-16. I did not read the RBA table directly, so verify it there.",
+  "comparable_city_reasoning": "Based on general knowledge of Dutch city price levels, set below Amsterdam and close to other mid-sized Dutch cities such as Utrecht and The Hague, with accommodation adjusted for July tourism demand. Beer, cocktail and wine were anchored to the local restaurant price relationship, with direct knowledge weaker for the drink anchors.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.00,
+    "inexp_meal_1p": 16.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 15.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 200.00
+  }
+}

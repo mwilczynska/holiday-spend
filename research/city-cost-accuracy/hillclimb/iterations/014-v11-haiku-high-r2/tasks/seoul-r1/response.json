@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Seoul price levels for July 2026, not checked against live menus, booking pages, or listings. Restaurant and café anchors are moderately reliable. Accommodation is less certain because July is peak season and room rates vary widely by district. Cocktail and wine anchors were set relative to the beer anchor, since direct knowledge of bar pricing is weaker. FX observation was taken from the RBA exchange rates page as reported in search results; the 16 October 2026 value was not confirmed on rba.gov.au.",
+  "comparable_city_reasoning": "Based on East Asian major-city price levels, with Seoul dining and bar prices benchmarked against Tokyo, Osaka, and Taipei and accommodation adjusted for Seoul's guesthouse and hostel supply.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.80,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 115.00,
+    "cocktail": 13.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 170.00
+  }
+}

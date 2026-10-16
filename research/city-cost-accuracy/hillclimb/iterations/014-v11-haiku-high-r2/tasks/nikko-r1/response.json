@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Japanese regional tourist-town pricing, not live listings. Restaurant and beer anchors are moderately reliable. Accommodation is less certain because Nikko's prices swing with season and weekends, and its ryokan and hotel stock is wide. The cocktail and wine anchors are set from the beer anchor using typical Japanese bar pricing, since direct knowledge is weak. The FX observation is the RBA's 15 October 2026 figure as reported in its exchange rates overview; I took it from search-result text and did not independently open the RBA page.",
+  "comparable_city_reasoning": "Benchmarked against Japanese regional tourist towns outside central Tokyo, such as Kamakura and Hakone, with a modest discount for Nikko's smaller restaurant market and a premium for its tourist-driven lodging demand. Cocktail and wine were set relative to the beer anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 4.50,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 90.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 180.00
+  }
+}

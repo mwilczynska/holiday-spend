@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate, not checked against live listings. Restaurant and coffee anchors are the most reliable. Hostel and hotel rates are less certain and vary a lot by season and location, and July is peak tourist season. Beer, cocktail and wine are bounded by local price levels; cocktail and wine are estimated from beer and general Chinese city bar pricing because direct knowledge is weaker. The FX observation comes from an RBA-domain search summary (F11 daily extract), which I did not open directly.",
+  "comparable_city_reasoning": "Benchmarked against other mid-sized Chinese provincial-capital tourist cities (for example Chengdu and Xi'an-tier domestic travel hubs), using general Chinese restaurant, café and budget-hotel price levels at roughly CNY 7 to 7.2 per USD.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.70,
+    "coffee": 3.80,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 42.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 26.00,
+    "hotel_3star_2p": 55.00
+  }
+}

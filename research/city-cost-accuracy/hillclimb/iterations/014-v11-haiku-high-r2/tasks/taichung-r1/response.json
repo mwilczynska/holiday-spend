@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Taichung pricing, not checked against live listings or menus. Restaurant and beer anchors are more reliable than hotel and hostel anchors, which vary by season and location. Cocktail and wine are bounded using the beer-to-drink relationship. FX: 0.6955 is a search-summary figure attributed to the RBA 4pm observation for 15 October 2026. I could not re-read the RBA table in my searches, so verify it against the RBA page before relying on it.",
+  "comparable_city_reasoning": "Regional basis: Taiwan's mid-sized western cities (Tainan, Kaohsiung) and comparable regional Japanese and Korean cities, adjusted to Taiwan's typically lower restaurant and accommodation prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 4.50,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 75.00
+  }
+}

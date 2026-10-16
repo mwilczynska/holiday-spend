@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Rome pricing for July, not checked against live menus or listings. Restaurant and beer anchors are the most reliable; July accommodation anchors are less certain because rates vary by neighbourhood, booking lead time and star classification. Cocktail and wine anchors were set from typical Rome bar prices and cross-checked against the beer anchor (cocktail about 1.85x beer, wine about 0.9x beer). USD values are converted from typical euro prices at about 1.16 USD per EUR. The FX value came from search snippets citing the RBA exchange-rates page, not a direct page read, so verify it against the live table before use.",
+  "comparable_city_reasoning": "Benchmarked against Florence and other major Italian tourist cities for restaurant, bar and central hotel pricing. July accommodation reflects Rome's peak-season demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.20,
+    "coffee": 3.50,
+    "inexp_meal_1p": 18.50,
+    "midrange_meal_2p": 102.00,
+    "cocktail": 13.30,
+    "wine_glass": 6.40,
+    "hostel_dorm_1p": 53.00,
+    "hostel_private_2p": 139.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 255.00
+  }
+}

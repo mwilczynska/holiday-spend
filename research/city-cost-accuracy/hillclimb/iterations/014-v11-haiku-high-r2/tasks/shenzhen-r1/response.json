@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant and beer anchors are moderately certain. Cocktail and wine are less certain and are scaled from the local beer level. Hotel and hostel anchors vary widely by district and season, so they are the least certain. The FX observation (15 Oct 2026) was taken from search-result text describing the RBA exchange-rates page; the page itself was not opened and read directly.",
+  "comparable_city_reasoning": "Priced against other large mainland Chinese tier-1 and tier-2 coastal cities such as Guangzhou, with Shenzhen treated as broadly similar to Guangzhou and somewhat below Shanghai and Beijing for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 4.00,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 11.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 60.00
+  }
+}

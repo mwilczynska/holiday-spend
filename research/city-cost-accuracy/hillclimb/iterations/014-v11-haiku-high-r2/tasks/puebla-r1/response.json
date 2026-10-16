@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Mexican mid-sized city prices, not from inspected menus or live listings. Restaurant anchors are more reliable than accommodation, and the cocktail and wine values lean on the local beer relationship. The RBA rate came from search-result snippets that cite the RBA exchange-rates page; I did not open the page to verify it, and the 16 October value may be provisional.",
+  "comparable_city_reasoning": "Benchmarked against mid-sized Mexican cities priced below Mexico City, such as Querétaro and Guadalajara's outer districts, adjusted for Puebla's historic-centre tourism demand. No live booking or menu pages were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.20,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 80.00
+  }
+}

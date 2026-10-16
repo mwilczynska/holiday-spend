@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Holistic estimate from general knowledge of Jamaican resort-town pricing, not checked against live listings or menus. Restaurant, coffee, and drink anchors are moderately grounded; the hostel anchors are least certain because Ocho Rios has few registered hostels. Accommodation rates are July-dependent and may shift with demand. Cocktail and wine anchors were set relative to the beer anchor, since direct knowledge of bar prices is limited. FX: the 0.6955 USD per AUD figure comes from a search summary that cites the RBA as of 15 October 2026. I did not open the RBA page directly, and a third-party site reported 0.6947 for 16 October, so verify the rate on rba.gov.au before relying on it.",
+  "comparable_city_reasoning": "Based on other Caribbean resort and tourist towns with similar pricing, such as Montego Bay and Negril in Jamaica, and general Jamaican resort-town restaurant and lodging price levels, with imported goods and tourist-area markups.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 11.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 190.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Porto price levels for July 2026; no live listings or booking pages were inspected. Restaurant and cafe anchors are moderately reliable, while July accommodation rates are least certain because peak-season prices vary widely by property and date. Cocktail and wine anchors are partly based on the local beer price relationship (wine about 1.3x and cocktail about 3.3x the beer anchor) because direct knowledge is weaker. USD values assume roughly 1.16 USD per EUR, which was not web-sourced. The FX observation comes from RBA search excerpts; the 16 October 2026 value was not checked against a full download of the live table, and the RBA overview page showed 15 October at 0.6955.",
+  "comparable_city_reasoning": "Benchmarked against Lisbon and other mid-sized Iberian tourist cities such as Seville and Valencia, adjusted for Porto's generally lower restaurant and hotel price levels relative to Lisbon. City prices were not sourced by web search.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.55,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 11.50,
+    "wine_glass": 4.60,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 98.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 175.00
+  }
+}

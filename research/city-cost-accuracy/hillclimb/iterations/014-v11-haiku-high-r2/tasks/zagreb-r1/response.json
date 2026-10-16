@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge and regional price levels. No live listings or booking pages were checked. Restaurant and drink anchors are more reliable than accommodation, which is most uncertain because July is peak season in Zagreb. Euro-to-USD conversion assumes roughly 1.15 to 1.17 USD per EUR. The FX value comes from search-result summaries that cite rba.gov.au pages. The RBA page itself was not directly read, and a 15 October value of 0.6955 was also reported, so the 16 October figure may be intraday rather than the final 4pm fixing.",
+  "comparable_city_reasoning": "Regional basis: mid-sized Central European capitals with similar price levels and euro-area status, such as Ljubljana and Budapest, adjusted for Zagreb's summer tourism demand. Beer and wine were anchored to local restaurant price levels, and cocktail was set relative to beer and wine.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 2.90,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 11.00,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 160.00
+  }
+}

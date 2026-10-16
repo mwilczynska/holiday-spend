@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge, not checked against live listings. Restaurant anchors are moderately reliable. Accommodation is least certain because July is Zakopane's peak Tatra season, when rates vary widely by location and date. Cocktail and wine were set from the local beer relationship (about 2.3x and 1.45x beer), since direct knowledge is weaker. The FX observation comes from a search summary of the RBA exchange-rates page; I did not open that page directly.",
+  "comparable_city_reasoning": "Based on Poland's tourist-oriented mountain and mid-sized city pricing (for example Kraków's tourist core), adjusted upward for Zakopane's seasonal premium in July.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 12.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 10.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 140.00
+  }
+}

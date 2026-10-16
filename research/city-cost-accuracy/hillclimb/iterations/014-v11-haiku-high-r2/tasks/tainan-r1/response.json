@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live booking pages or current listings were inspected. Restaurant and café anchors are moderately reliable. Hotel and hostel anchors are less certain because they vary by season, district, and booking channel. Cocktail and wine were derived from the local beer relationship because direct knowledge is weaker. FX observation could not be verified: search results conflicted (an RBA homepage snippet and a third-party figure for 15-16 Oct 2026 disagreed or were garbled), so the fx observation fields are null and must be filled from the official RBA table before use.",
+  "comparable_city_reasoning": "Based on general price levels for mid-sized Taiwanese cities outside Taipei (for example Taichung and Kaohsiung), adjusted slightly lower for Tainan's lower hotel and dining costs relative to the capital.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 4.25,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 90.00
+  }
+}

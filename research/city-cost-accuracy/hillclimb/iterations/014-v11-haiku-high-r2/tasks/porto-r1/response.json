@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of Porto's July high-season pricing, not live listings. Restaurant anchors are more reliable than accommodation, which varies most with season and location. Cocktail and wine values rely on Porto's typical bar and restaurant price levels relative to beer. FX value 0.6955 (RBA, 2026-10-15) was taken from search-surfaced RBA page text and not confirmed by fetching the page; the 2026-10-16 figure found was third-party and was not used.",
+  "comparable_city_reasoning": "Priced against Lisbon and other mid-sized Southern European tourist cities with comparable July demand, adjusted down for Porto's generally lower restaurant and hotel price levels.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 70.00,
+    "cocktail": 11.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 180.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Rio de Janeiro price levels for a July 2026 window; no live booking pages or current listings were inspected. Restaurant and bar anchors are moderately reliable. Hostel and hotel anchors vary widely by neighbourhood (Copacabana and Ipanema versus Centro or Santa Teresa) and season, so they are less certain. The FX observation came from a search-result summary that I could not open directly on rba.gov.au, and the 16 October 2026 figure could not be confirmed as published by the RBA.",
+  "comparable_city_reasoning": "Regional basis: Latin America, benchmarked to Brazilian tourist cities such as Sao Paulo, with a beachfront-district premium applied to accommodation. Drink anchors use the local beer relationship: cocktail is roughly 2.3 times beer and wine glass roughly 1.8 times beer.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.30,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 36.00,
+    "hotel_3star_2p": 110.00
+  }
+}

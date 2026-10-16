@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Holistic model estimate from general knowledge of Sri Lankan tourist-town prices. No live listings or booking pages were inspected. Restaurant anchors are moderately uncertain. Accommodation and imported-alcohol anchors are the least certain. Cocktail and wine were set from the local beer relationship because direct knowledge is weak. FX: the 0.6955 figure came from a search summary of RBA data, and I did not open the RBA page directly. A third-party page showed 0.6947 for 16 October 2026, so verify the RBA table before relying on the exact rate.",
+  "comparable_city_reasoning": "Basis is Sri Lanka's Cultural Triangle tourist towns, such as Dambulla and Kandy, adjusted for Sigiriya being a smaller village-scale hub with fewer mid-range options.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 5.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 80.00
+  }
+}

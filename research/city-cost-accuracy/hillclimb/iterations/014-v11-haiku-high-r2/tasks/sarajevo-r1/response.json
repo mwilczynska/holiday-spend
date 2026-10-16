@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Sarajevo price levels, not from live listings or current menus. Restaurant and café anchors are moderately reliable. Hostel and hotel anchors are less certain because seasonal demand in July swings widely. The beer and cocktail anchors are the weakest, so cocktail is set as a multiple of beer and wine is set below cocktail, consistent with local price relationships.",
+  "comparable_city_reasoning": "Priced as a low-to-mid-cost Southeast European capital, similar to Skopje, Podgorica, Tirana and Sofia, with restaurant prices somewhat below Western European capitals. Bosnia and Herzegovina's convertible mark is pegged to the euro, so euro-area tourist price levels are used as a rough anchor.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 6.00,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 95.00
+  }
+}

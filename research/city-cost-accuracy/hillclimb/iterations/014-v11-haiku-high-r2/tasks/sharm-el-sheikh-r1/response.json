@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of Egyptian resort pricing, not from live booking pages or current listings. Restaurant and drink anchors are moderately confident. Accommodation anchors are less certain because resort rates vary widely by season, property type, and inclusions, and July is a hot low season. Egyptian pound volatility adds uncertainty to all USD figures. Cocktail and wine anchors were set relative to the beer anchor, since direct knowledge of resort bar prices is weaker. The FX observation is the 16 October 2026 RBA figure from the search result, which may be provisional.",
+  "comparable_city_reasoning": "Based on Red Sea resort towns in Egypt, principally Hurghada, adjusted for Sharm El Sheikh's Naama Bay tourist-centre price levels, and on the Middle East/MENA grouping for Egypt. Sharm El Sheikh is in the Sinai Peninsula, which is geographically in Asia, but the resort economy is that of Egypt's Red Sea coast.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 75.00
+  }
+}

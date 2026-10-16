@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge of George Town pricing, not live listings. Restaurant and hostel anchors are moderately certain; the 3-star hotel anchor is the least certain because tourist-season rates vary widely. Cocktail and wine use the local beer relationship (roughly 3 to 3.7 times draft beer) because direct price knowledge is weaker. FX: the 2026-10-16 figure comes from search-result snippets attributed to the RBA exchange-rates pages and was not verified by opening the page. A third-party source gives the same 0.6947 value, but the 15 October 0.6955 figure differs slightly.",
+  "comparable_city_reasoning": "Regional basis: Malaysian mid-sized tourist-city pricing, benchmarked against Kuala Lumpur and other Malaysian heritage destinations, adjusted for George Town's lower hotel and hostel rates and its hawker-centre food culture.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.60,
+    "coffee": 2.40,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 8.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 65.00
+  }
+}

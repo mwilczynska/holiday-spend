@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July peak season in Positano, a high-demand Amalfi Coast resort. Restaurant and drink anchors are more reliable than accommodation, which varies widely by season and location. Positano has limited registered hostel supply, so the dorm and private-room anchors are bounded estimates informed by wider Amalfi Coast and Campania pricing. The cocktail anchor is about 2.2 times the beer anchor, and the wine anchor follows a typical Italian restaurant markup relative to beer, because direct knowledge of exact local prices is weaker. FX: the value was taken from search summaries and third-party pages that mirror RBA data, not from directly opening the rba.gov.au page. The 2026-10-16 figure was reported as the RBA observation for that date, but the timing of the 4 pm Sydney publication means it should be checked against table F11.1. The 2026-10-15 observation of 0.6955 is the fallback if the 16 October figure is not yet published or cannot be confirmed.",
+  "comparable_city_reasoning": "Benchmarked against comparable high-demand Italian coastal resort towns in peak summer, such as Capri, Sorrento and Amalfi, plus general Italian restaurant and hotel pricing. Based on learned general knowledge and the supplied city context, not on live booking pages or current listings.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 18.00,
+    "wine_glass": 11.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 230.00,
+    "hotel_3star_2p": 400.00
+  }
+}

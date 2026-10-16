@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge of San Francisco price levels for July 2026; no live booking pages or current listings were inspected. Restaurant and bar anchors (beer, coffee, meals, cocktail, wine) are moderately certain. Hotel and hostel anchors are less certain because lodging rates in SF vary widely by season, event calendar and neighbourhood. The FX observation was taken from RBA page summaries returned by search and was not opened directly, so the exact figure should be confirmed against the RBA table.",
+  "comparable_city_reasoning": "Benchmarked against major US West Coast metropolitan areas with high restaurant and lodging costs, such as Seattle and Los Angeles, and adjusted upward for San Francisco's premium on lodging and dining.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/tables/",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 170.00,
+    "cocktail": 17.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 160.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 300.00
+  }
+}

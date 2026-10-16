@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate for July 2026 peak season, not based on inspected live listings. Restaurant and beer anchors are more reliable than accommodation, which varies widely by season, location and availability. The FX value (0.6955 USD per AUD, 4pm, 15 Oct 2026) was taken from search-result text on the RBA exchange rates overview page and corroborated by a third-party OFX figure. I did not open the RBA page or the F11 table directly.",
+  "comparable_city_reasoning": "Basis is other Greek island resort towns with similar peak-summer tourism demand, such as Chania and Heraklion on Crete and Kos. Cocktail and wine anchors are based on the local price relationship to beer, since direct knowledge of bar prices is weaker.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 11.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 165.00
+  }
+}
