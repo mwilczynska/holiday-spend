@@ -3870,3 +3870,16 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   total agent slots. No worker failures, retries, substitutions or answer edits occurred in this continuation.
 - Lane total 113/333 saved (220 pending). No ingest, scoring, sealed-test read, frozen prompt/spec change, other job
   or production write ran. The prior Alicante deviation remains recorded and unchanged. Collection continues.
+
+# 16 October 2026 — Effort test, R2 screening baseline, first Luna look (coordinator)
+
+- Effort: Haiku high uses about 6-9k output tokens per task vs about 70k at max (about 40 s vs 270 s). Against a fair
+  one-run comparator (013 = 001's first runs), raw 0.286 vs 0.290 and calibrated -0.006 to -0.014 with CIs including
+  zero. Screening now runs at high effort on panel R2; finalists are confirmed at max and on Luna.
+- R2 screening baseline 014 (333 dev cities): raw 0.2992, per-anchor calibration 0.2664, per-region 0.2238 (accepted
+  over per-anchor, CI 0.033-0.053). Per-region calibration is confirmed with six times more cities.
+- Codex Luna lane in progress (collect-only handoff working as intended). Descriptive look at 119 answered cities, not a
+  verdict: Luna raw 0.261 vs Haiku-high 0.302 on the same cities; Luna is better on food/drink (mid-range meal bias
+  +0.08 vs +0.30) and worse on accommodation (dorm +0.37, private +0.50, basic hotel +0.17). Luna x Haiku geometric
+  ensemble 0.266. Calibrated Luna comparison waits for the complete lane.
+- Booking.com main run 342/475 saved; remaining cities and the six-window run continue in the browser.
