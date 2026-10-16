@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate from general knowledge of Yogyakarta's tourist price levels for a July 2026 window, which is a peak travel period. No menus, listings, or booking pages were checked. Restaurant and budget-accommodation anchors are moderately reliable; the three-star hotel rate is the least certain because of seasonal swings. Cocktail and wine anchors were set relative to local beer pricing because direct knowledge is weaker and alcohol prices vary widely by venue.",
+  "comparable_city_reasoning": "No comparable city was supplied. The basis is Yogyakarta's own budget-to-mid-range tourism pricing, placed among Indonesia's mid-sized heritage tourist cities and below Bali's resort pricing.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Bintang lager, one 330 ml serving at a casual restaurant (draft is uncommon), about 40,000 IDR",
+    "coffee": "Cappuccino at a tourist-area cafe, about 30,000 IDR",
+    "inexp_meal_1p": "Nasi goreng or gudeg main at a budget restaurant, about 35,000 IDR",
+    "midrange_meal_2p": "Three-course dinner for two, no drinks, at a mid-range restaurant, about 350,000 IDR",
+    "cocktail": "Standard cocktail at a bar, about 75,000 IDR, set relative to beer pricing",
+    "wine_glass": "Glass of wine at a mid-range restaurant, about 100,000 IDR, set relative to beer pricing",
+    "hostel_dorm_1p": "Dorm bed in a registered hostel in Prawirotaman or Sosrowijayan, about 110,000 IDR per night",
+    "hostel_private_2p": "Private double room in a budget hostel, about 300,000 IDR per night",
+    "hotel_1star_2p": "Basic guesthouse (losmen) double room, about 200,000 IDR per night",
+    "hotel_3star_2p": "Standard double room at a registered three-star hotel, about 650,000 IDR per night"
+  },
+  "anchors_usd": {
+    "beer": 2.42,
+    "coffee": 1.82,
+    "inexp_meal_1p": 2.12,
+    "midrange_meal_2p": 21.21,
+    "cocktail": 4.55,
+    "wine_glass": 6.06,
+    "hostel_dorm_1p": 6.67,
+    "hostel_private_2p": 18.18,
+    "hotel_1star_2p": 12.12,
+    "hotel_3star_2p": 39.39
+  }
+}

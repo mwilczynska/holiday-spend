@@ -174,6 +174,16 @@ No paid provider API calls or application keys are used.
 | H9 | Accommodation | Tier definitions (2 adults, average nightly rate incl. taxes, typical season) once R1 exists | Calls |
 | H10 | Formula | Replace `accom_4_star = 3★ × 1.80` with the fitted ladder (1.297) once 4-star references exist | Replay |
 
+## 10a. Round 1 synthesis (15 October 2026)
+
+Prompt candidates 002 (definitions), 003 (current prices), 004 (local currency), 005 (local example) and 007
+(comparable-city context) all improve raw accuracy by 0.015-0.075 but none beats the calibrated incumbent (0.2074)
+once recalibrated. They shift price levels, which calibration already removes. Remaining error is city-specific
+error plus reference noise. Next levers, in order: (1) better accommodation references from booking platforms
+(hotels carry 40% of the weight and the current KAYAK-category proxy disagrees with traveller-paid prices by 0.24);
+(2) candidates that add city-specific information (009 search grounding); (3) panel R2 (333 dev cities) to detect
+smaller gains; (4) accommodation definitions (008), judged against the improved references.
+
 ## 11. Program revisions
 
 - 14 October 2026: program created; acceptance rule, metric, weights and split frozen as above.

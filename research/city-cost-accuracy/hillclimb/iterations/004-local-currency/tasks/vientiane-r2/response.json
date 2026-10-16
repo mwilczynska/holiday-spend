@@ -1,0 +1,26 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimates from general knowledge; no live menus, listings, or booking pages were checked. Restaurant and hostel anchors are moderately reliable; the 3-star hotel, cocktail, and wine anchors are less certain, and cocktail and wine were cross-checked against beer-relative pricing (about 3x and 5x the beer anchor). Kip inflation and volatility, and some venues quoting in USD or THB, may shift actual levels. The FX observation came from search-result summaries attributed to the RBA exchange-rates page, which I did not open directly; an OFX listing for the same date matched.",
+  "comparable_city_reasoning": "Holistic regional comparison with other Southeast Asian capitals and Mekong-region tourist cities at similar price levels, such as Phnom Penh; beer is the reference point for the cocktail and wine relationships.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "local_currency": "LAK",
+  "anchors_local": {
+    "beer": 25000,
+    "coffee": 40000,
+    "inexp_meal_1p": 45000,
+    "midrange_meal_2p": 500000,
+    "cocktail": 80000,
+    "wine_glass": 120000,
+    "hostel_dorm_1p": 120000,
+    "hostel_private_2p": 280000,
+    "hotel_1star_2p": 240000,
+    "hotel_3star_2p": 1300000
+  }
+}

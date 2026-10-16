@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates from general knowledge; no city-price sources or live listings were checked. Restaurant and cafe anchors are more reliable than hotel, guesthouse, and bar prices. Cocktail and wine were set from the beer relationship (about 4x and 6x a draft beer) because direct knowledge is weak. Local examples assume about 22,000 LAK per USD, which may differ in July 2026. FX rate taken from search-result summaries of the RBA page, not a direct page read.",
+  "comparable_city_reasoning": "No single comparable city; loosely comparable to other low-cost Southeast Asian capitals such as Phnom Penh, with tourist-facing prices set from general knowledge of Vientiane.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Beerlao draft, one glass (about 330 ml) at a casual restaurant, about 20,000 LAK",
+    "coffee": "cappuccino at a Vientiane cafe, about 40,000 LAK",
+    "inexp_meal_1p": "rice dish with a soft drink at a local eatery, about 55,000 LAK",
+    "midrange_meal_2p": "three courses for two at a mid-range restaurant, no drinks, about 600,000 LAK",
+    "cocktail": "gin or rum cocktail at a bar, about 85,000 LAK",
+    "wine_glass": "house red by the glass at a mid-range restaurant, about 120,000 LAK",
+    "hostel_dorm_1p": "bed in a mixed dorm at a central registered hostel, about 130,000 LAK",
+    "hostel_private_2p": "private double room at a central registered hostel, about 330,000 LAK",
+    "hotel_1star_2p": "basic double room with fan or AC at a registered guesthouse, about 220,000 LAK",
+    "hotel_3star_2p": "standard double at a registered three-star hotel, about 1,200,000 LAK"
+  },
+  "anchors_usd": {
+    "beer": 0.90,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 27.00,
+    "cocktail": 3.90,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 10.00,
+    "hotel_3star_2p": 55.00
+  }
+}

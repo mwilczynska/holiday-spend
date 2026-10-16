@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general knowledge of regional Japanese price levels; no live booking pages, menus or listings were inspected and no web search was used for these anchors. Beer, coffee and restaurant figures are the more reliable; accommodation is least certain given thin local hostel supply and event-driven rate swings (for example around the early-August Nebuta Festival). Yen prices were translated at an assumed working rate of about 150 yen per US dollar for July 2026, so an actual rate in that window would shift all USD anchors proportionally. Cocktail and wine anchors were set relative to the draft beer anchor because direct knowledge of local bar prices is limited. The RBA observation came from search-result excerpts of rba.gov.au, not a directly opened page.",
+  "comparable_city_reasoning": "Reasoned from general knowledge of northern Honshu regional price levels, using similarly sized prefectural capitals such as Morioka and Akita as the comparison basis rather than Tokyo, Kyoto or Osaka, which are priced materially higher. No live comparison data was gathered.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.80,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 6.67,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 25.33,
+    "hostel_private_2p": 53.33,
+    "hotel_1star_2p": 66.67,
+    "hotel_3star_2p": 100.00
+  }
+}

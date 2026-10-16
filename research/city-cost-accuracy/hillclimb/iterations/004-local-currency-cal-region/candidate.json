@@ -1,0 +1,16 @@
+{
+  "id": "004-local-currency-cal-region",
+  "parent": "001-v11-haiku-baseline-cal-region",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 004-local-currency: leave-one-city-out per-anchor x region multiplicative correction.",
+  "replayFrom": "004-local-currency",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/max (claude -p, app system prompt, WebSearch only)",
+  "repeats": 2,
+  "split": "dev",
+  "localCurrency": {
+    "anchorsField": "anchors_local",
+    "currencyField": "local_currency",
+    "fxFile": "panel/fx-usd-2026-07-25.raw.json"
+  }
+}

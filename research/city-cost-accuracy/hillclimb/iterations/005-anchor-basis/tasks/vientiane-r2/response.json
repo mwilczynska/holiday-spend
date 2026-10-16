@@ -1,0 +1,37 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic model estimate from general regional knowledge; no web search or live listing check was used for city prices. Restaurant and beer anchors are moderate confidence. Cocktail and wine are derived from the beer anchor (about 3.5x and 4.5x beer) because direct price knowledge is weak. Accommodation varies widely by district and property and is the least certain tier; July is a low season. FX value is from search results citing the RBA exchange-rate page (page not opened directly); two searches reported the same 15 Oct 2026 figure.",
+  "comparable_city_reasoning": "Regional Southeast Asia basis: broadly in line with Phnom Penh and Luang Prabang budget-to-mid-range levels and below Bangkok tourist tiers; beer used as the reference for cocktail and wine.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchor_basis": {
+    "beer": "Beerlao draft, one 330ml glass at a casual restaurant, about 22,000 LAK",
+    "coffee": "cappuccino at a central cafe, about 44,000 LAK",
+    "inexp_meal_1p": "fried rice with a soft drink at a local eatery, about 42,000 LAK",
+    "midrange_meal_2p": "three courses for two at a mid-range Western-style restaurant, no drinks, about 400,000 LAK total",
+    "cocktail": "gin and tonic at a mid-range bar, about 77,000 LAK",
+    "wine_glass": "house red by the glass at a mid-range restaurant, about 100,000 LAK",
+    "hostel_dorm_1p": "bed in a mixed dorm at a central registered hostel, about 132,000 LAK per night",
+    "hostel_private_2p": "private double with ensuite at a central hostel, about 300,000 LAK per night",
+    "hotel_1star_2p": "basic registered guesthouse double with fan or AC and private bathroom, about 265,000 LAK per night",
+    "hotel_3star_2p": "registered three-star hotel double with breakfast, about 1,320,000 LAK per night"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 2.00,
+    "inexp_meal_1p": 1.90,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 3.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 13.60,
+    "hotel_1star_2p": 12.00,
+    "hotel_3star_2p": 60.00
+  }
+}
