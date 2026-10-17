@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's Malacca price snapshot is from October 2026, so July prices were not separately observed. Restaurant, coffee and beer anchors use those city prices. Cocktail and wine prices are estimated from the local beer price; hostel and basic-room anchors are less certain because accommodation sources give broad ranges rather than year-round prices by room type.",
+  "comparable_city_reasoning": "No comparable city used; the estimates rely on direct Malacca/Melaka prices and accommodation ranges.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.96,
+    "coffee": 2.91,
+    "inexp_meal_1p": 3.31,
+    "midrange_meal_2p": 18.36,
+    "cocktail": 6.12,
+    "wine_glass": 4.90,
+    "hostel_dorm_1p": 8.50,
+    "hostel_private_2p": 17.50,
+    "hotel_1star_2p": 16.50,
+    "hotel_3star_2p": 36.73
+  }
+}

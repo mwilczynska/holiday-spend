@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "The Kenting price page reports meal, coffee, and 0.5 L draft-beer prices, but shows a last update of December 2025; Numbeo provides Taiwan-wide context. No Kenting cocktail or wine-by-the-glass price was shown, so those are estimated at about 3× and 2.5× the draft-beer price. Lodging estimates use typical or median rates and a modest allowance for taxes and fees; listings vary by season.",
+  "comparable_city_reasoning": "Used Kenting-specific price estimates where available, with Taiwan-wide Numbeo and hostel data as context; no proxy city was used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.6,
+    "coffee": 2.9,
+    "inexp_meal_1p": 3.8,
+    "midrange_meal_2p": 26,
+    "cocktail": 7.8,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 15,
+    "hostel_private_2p": 28,
+    "hotel_1star_2p": 42,
+    "hotel_3star_2p": 56
+  }
+}

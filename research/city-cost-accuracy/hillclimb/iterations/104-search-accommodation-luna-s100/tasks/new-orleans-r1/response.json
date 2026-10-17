@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo’s October 2026 New Orleans sample supports the restaurant, beer, and coffee anchors. Cocktail and wine prices are estimated from the local beer price because representative averages were not available. Hostel and hotel evidence is less certain: the dorm figure is an aggregate, while private rooms and hotel classes are estimated from broader, unclassified lodging prices, with a modest allowance for taxes and fees.",
+  "comparable_city_reasoning": "No comparable city used; New Orleans-specific price aggregates were available.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.43,
+    "inexp_meal_1p": 26.00,
+    "midrange_meal_2p": 128.00,
+    "cocktail": 15.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 225.00
+  }
+}

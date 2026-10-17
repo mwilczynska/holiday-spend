@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo’s 2 October 2026 snapshot reports La Spezia meal, cappuccino and draft-beer prices, but notes some estimates come from a small pool of 14 contributors; this snapshot postdates the July reference window. Cocktail and restaurant wine-glass prices were not directly available, so I estimated them at about 1.8× and 1× the local draft-beer price. Hostel averages cover four properties, and the hotel source gives seasonal budget and mid-range prices before taxes and fees, making the lodging estimates less certain.",
+  "comparable_city_reasoning": "No comparable city used; direct La Spezia price data was available.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.61,
+    "coffee": 1.76,
+    "inexp_meal_1p": 16.84,
+    "midrange_meal_2p": 78.59,
+    "cocktail": 10.11,
+    "wine_glass": 5.61,
+    "hostel_dorm_1p": 14.60,
+    "hostel_private_2p": 95.44,
+    "hotel_1star_2p": 138,
+    "hotel_3star_2p": 185
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Ninh Binh price indexes and local menus support the food, coffee, beer, and cocktail estimates. Accommodation sources vary by category and season; the wine-glass estimate is less certain and uses its likely price relationship to local beer.",
+  "comparable_city_reasoning": "Used Ninh Binh and Tam Coc prices; no comparable-city proxy was needed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.97,
+    "coffee": 1.72,
+    "inexp_meal_1p": 2.0,
+    "midrange_meal_2p": 23.0,
+    "cocktail": 4.0,
+    "wine_glass": 3.5,
+    "hostel_dorm_1p": 6.0,
+    "hostel_private_2p": 14.0,
+    "hotel_1star_2p": 15.0,
+    "hotel_3star_2p": 27.0
+  }
+}

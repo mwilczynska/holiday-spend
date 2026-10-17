@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Lausanne-specific restaurant and coffee prices were available, but cocktail and restaurant wine prices were not; those are estimated from the local beer price. Accommodation estimates are less certain. The RBA search result showed 11 September 2026 at 0.7172, while the opened table rendered older data.",
+  "comparable_city_reasoning": "No comparable city used; available food and beer anchors were Lausanne-specific.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.5,
+    "coffee": 6.3,
+    "inexp_meal_1p": 31,
+    "midrange_meal_2p": 120,
+    "cocktail": 21,
+    "wine_glass": 13.5,
+    "hostel_dorm_1p": 72,
+    "hostel_private_2p": 174,
+    "hotel_1star_2p": 186,
+    "hotel_3star_2p": 260
+  }
+}

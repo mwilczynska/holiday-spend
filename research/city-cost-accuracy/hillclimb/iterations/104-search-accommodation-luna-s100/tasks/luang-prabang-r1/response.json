@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Luang Prabang-specific cost data anchors meals, coffee, and beer, but its underlying Numbeo prices were last updated in November 2025. Current local menus and accommodation aggregators help bound the remaining estimates; room rates vary by season, and drink prices at tourist-oriented venues may run higher.",
+  "comparable_city_reasoning": "No proxy city used; Luang Prabang-specific cost data, local menus, and accommodation listings informed the estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.30,
+    "coffee": 1.55,
+    "inexp_meal_1p": 1.80,
+    "midrange_meal_2p": 17.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 17.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 30.00
+  }
+}

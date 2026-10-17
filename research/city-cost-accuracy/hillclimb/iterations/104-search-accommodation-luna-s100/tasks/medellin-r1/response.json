@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Medellín-specific Numbeo prices support meals, cappuccino and beer; cocktail and wine are estimated from their local price relationship to beer. Accommodation uses category averages and guide ranges, with a modest allowance for fees. COP-to-USD equivalents use an approximate COP 4,000 per USD. The RBA search result displayed observations only through 2026-09-11, so I could not confirm a later October observation.",
+  "comparable_city_reasoning": "No comparable city used; city-specific Medellín price references were available.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2.5,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 37.5,
+    "cocktail": 6.25,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 24,
+    "hotel_1star_2p": 38,
+    "hotel_3star_2p": 50
+  }
+}
