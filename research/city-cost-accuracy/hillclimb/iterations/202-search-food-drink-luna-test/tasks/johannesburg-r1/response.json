@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors follow Johannesburg mid-2026 cost-of-living aggregates; an exact July snapshot was unavailable. Cocktail and wine estimates are less certain and use local bar prices relative to draft beer. Accommodation anchors are holistic estimates and vary by neighborhood and property.",
+  "comparable_city_reasoning": "Used Johannesburg directly; no proxy city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 2.4,
+    "inexp_meal_1p": 11.5,
+    "midrange_meal_2p": 43.0,
+    "cocktail": 5.5,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 50.0,
+    "hotel_1star_2p": 55.0,
+    "hotel_3star_2p": 95.0
+  }
+}

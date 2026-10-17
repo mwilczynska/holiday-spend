@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food, cappuccino, and draft beer use current aggregated Kota Kinabalu cost-of-living prices. Cocktail data is sparse; wine is estimated relative to local beer and cocktail prices. Accommodation anchors are general estimates for a Borneo tourism hub.",
+  "comparable_city_reasoning": "Comparable to Malaysian regional cities such as Kuching, with local meals remaining inexpensive and tourism demand supporting moderate accommodation and bar prices.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.45,
+    "coffee": 2.64,
+    "inexp_meal_1p": 3.67,
+    "midrange_meal_2p": 19.58,
+    "cocktail": 6.36,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 50.00
+  }
+}

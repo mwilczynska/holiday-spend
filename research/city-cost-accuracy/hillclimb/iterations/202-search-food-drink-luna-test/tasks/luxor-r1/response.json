@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Current city-level food prices vary across aggregates and between local and tourist venues. Cocktail and wine estimates use their likely price relationship to local beer because direct glass-price data are sparse. Accommodation estimates are holistic and especially uncertain in July's hot low season.",
+  "comparable_city_reasoning": "Used Luxor-specific food and drink price aggregates; lodging reflects general knowledge of budget accommodation in an Upper Egyptian tourist city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.0,
+    "coffee": 1.35,
+    "inexp_meal_1p": 4.0,
+    "midrange_meal_2p": 40.0,
+    "cocktail": 3.5,
+    "wine_glass": 3.0,
+    "hostel_dorm_1p": 6.0,
+    "hostel_private_2p": 15.0,
+    "hotel_1star_2p": 18.0,
+    "hotel_3star_2p": 35.0
+  }
+}

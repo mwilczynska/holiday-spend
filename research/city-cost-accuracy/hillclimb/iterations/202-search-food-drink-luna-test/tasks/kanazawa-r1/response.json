@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "City price indexes provide useful checks for meals, coffee, and beer, but are not an exact July historical series. Accommodation is a holistic estimate. Citywide cocktail and wine data were sparse, so those anchors follow their local price relationship to draft beer.",
+  "comparable_city_reasoning": "Used Kanazawa-specific eating-price indexes and a regional Japanese tourism-city basis for accommodation; no direct comparison city was used.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 2.75,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 34,
+    "cocktail": 4,
+    "wine_glass": 4.25,
+    "hostel_dorm_1p": 28,
+    "hostel_private_2p": 50,
+    "hotel_1star_2p": 58,
+    "hotel_3star_2p": 95
+  }
+}

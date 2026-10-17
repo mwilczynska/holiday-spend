@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors are bounded by Killarney and Ireland cost-of-living aggregates. Cocktail and wine prices are less certain and estimated in relation to local beer prices and hotel-bar menus. Accommodation anchors are holistic summer estimates; no booking listings were inspected.",
+  "comparable_city_reasoning": "Food and drink estimates use Killarney city-level aggregates cross-checked against Ireland and nearby Cork. Accommodation reflects Killarney's summer tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.4,
+    "coffee": 4.25,
+    "inexp_meal_1p": 23.0,
+    "midrange_meal_2p": 90.0,
+    "cocktail": 16.0,
+    "wine_glass": 9.5,
+    "hostel_dorm_1p": 55.0,
+    "hostel_private_2p": 140.0,
+    "hotel_1star_2p": 180.0,
+    "hotel_3star_2p": 260.0
+  }
+}

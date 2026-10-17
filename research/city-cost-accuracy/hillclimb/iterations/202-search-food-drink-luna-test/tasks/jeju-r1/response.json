@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Jeju meal and beer aggregates provide a useful base, though the city-specific data are older and coffee prices vary. Cocktail and wine estimates use typical price relationships to draft beer. Accommodation is a holistic estimate with substantial July seasonality.",
+  "comparable_city_reasoning": "Food anchors use Jeju city aggregates where available and South Korea averages as a fallback; accommodation reflects a resort-island market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 5.65,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 9.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 55.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 125.00
+  }
+}

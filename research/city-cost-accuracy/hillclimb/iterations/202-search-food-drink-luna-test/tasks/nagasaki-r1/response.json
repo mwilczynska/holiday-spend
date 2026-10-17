@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Nagasaki-specific aggregate prices support the meal, cappuccino, and draft-beer estimates, though coverage is limited. Cocktail and wine prices are estimated relative to local draft beer. Accommodation estimates are less certain and based on general knowledge; no live booking listings were inspected.",
+  "comparable_city_reasoning": "Food and coffee anchors use Nagasaki-specific typical-price observations. Accommodation reflects general knowledge of regional Japanese cities with tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.26,
+    "coffee": 3.76,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 18.95,
+    "cocktail": 5.75,
+    "wine_glass": 3.40,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 60.00,
+    "hotel_3star_2p": 100.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "May 2026 city-price aggregates provide food, coffee and draft-beer anchors, with wide variation for restaurant meals. Cocktail and wine prices are estimated from their local price relationship to beer. Accommodation estimates are holistic and less certain, especially for July resort-season demand.",
+  "comparable_city_reasoning": "Prices reflect a mid-sized western Bohemian city with spa-town tourism; July lodging estimates include a seasonal visitor premium without using Prague as the baseline.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.05,
+    "coffee": 2.90,
+    "inexp_meal_1p": 9.15,
+    "midrange_meal_2p": 45.75,
+    "cocktail": 5.35,
+    "wine_glass": 3.80,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 62.00,
+    "hotel_1star_2p": 68.00,
+    "hotel_3star_2p": 125.00
+  }
+}

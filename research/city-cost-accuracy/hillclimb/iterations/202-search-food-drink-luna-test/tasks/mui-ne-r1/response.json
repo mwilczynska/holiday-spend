@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors are supported by current Mui Ne and Vietnam price aggregates, though prices vary between local eateries and the tourist strip. Cocktail and wine estimates use the local beer price relationship because comparable glass-price data is sparse. Accommodation anchors are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "Used Mui Ne and nearby Phan Thiet price patterns, cross-checked against Vietnam-wide restaurant prices. Accommodation estimates reflect Mui Ne's coastal guesthouse and resort context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.2,
+    "coffee": 1.7,
+    "inexp_meal_1p": 2.0,
+    "midrange_meal_2p": 21.0,
+    "cocktail": 3.8,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 6.0,
+    "hostel_private_2p": 18.0,
+    "hotel_1star_2p": 16.0,
+    "hotel_3star_2p": 38.0
+  }
+}
