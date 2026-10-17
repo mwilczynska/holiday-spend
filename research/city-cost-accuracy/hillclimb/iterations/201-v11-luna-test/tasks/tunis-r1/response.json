@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates based on Tunisian capital-city prices; restaurant anchors are more certain than accommodation. July demand makes registered room prices variable. Cocktail and wine estimates use their expected local price relationship to beer, since direct knowledge is limited.",
+  "comparable_city_reasoning": "Used Tunis as an affordable North African capital with Mediterranean tourism demand, adjusting for July seasonality.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 1.2,
+    "inexp_meal_1p": 4.5,
+    "midrange_meal_2p": 30,
+    "cocktail": 6,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 17,
+    "hostel_private_2p": 40,
+    "hotel_1star_2p": 33,
+    "hotel_3star_2p": 62
+  }
+}
