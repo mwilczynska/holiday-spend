@@ -1,0 +1,33 @@
+{
+  "iteration": "018-search-grounded-high-cal-region",
+  "against": "012-v11-haiku-effort-high-cal-region",
+  "verdict": "reject",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 54,
+    "meanImprovement": 0.008566578531355935,
+    "lower95": -0.015171395037799153,
+    "upper95": 0.0317185852235072,
+    "wins": 29,
+    "losses": 25
+  },
+  "baseLoss": 0.22492487893338223,
+  "candidateLoss": 0.21635830040202622,
+  "anchorRegressions": [],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "inexp_meal_1p": -0.08139421966881058,
+    "midrange_meal_2p": -0.022819233001645345,
+    "beer": -0.0751708077647037,
+    "coffee": -0.08992728107743948,
+    "hostel_dorm_1p": 0.0039900267334083694,
+    "hostel_private_2p": 0.047097817390174046,
+    "hotel_1star_2p": 0.010885258634307976,
+    "hotel_3star_2p": 0.03281833925681771
+  }
+}

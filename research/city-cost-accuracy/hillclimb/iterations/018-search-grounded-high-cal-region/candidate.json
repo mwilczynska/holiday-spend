@@ -1,0 +1,11 @@
+{
+  "id": "018-search-grounded-high-cal-region",
+  "parent": "012-v11-haiku-effort-high-cal-region",
+  "family": "calibration",
+  "hypothesis": "Calibrated replay of 018-search-grounded-high: leave-one-city-out per-anchor x region multiplicative correction.",
+  "replayFrom": "018-search-grounded-high",
+  "transform": "transform.mjs",
+  "lane": "claude-haiku-5-5/high (claude -p, app system prompt, WebSearch only)",
+  "repeats": 1,
+  "split": "dev"
+}
