@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food prices are reasonably anchored by recent city price data. Cocktail data are thinner; the wine glass estimate is inferred from local beer pricing. Accommodation is a broad estimate because resort rates vary by season.",
+  "comparable_city_reasoning": "Relative to the supplied inland Mexico three-star rates of $48–65 and Mazatlán's $77, Puerto Vallarta's international beach-resort demand suggests higher typical lodging costs: about $62 for a basic room and $98 for a three-star room. Hostel rates are also estimated somewhat above the inland examples.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 4.10,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 43.00,
+    "hotel_1star_2p": 62.00,
+    "hotel_3star_2p": 98.00
+  }
+}

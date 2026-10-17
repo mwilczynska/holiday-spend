@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Orlando price averages, updated October 15, 2026, serve as a nearby proxy for July. Cocktail data are sparse, and the wine price is inferred from local beer; accommodation estimates are holistic and season-sensitive.",
+  "comparable_city_reasoning": "The supplied San Antonio and Denver rates provide the closest anchors: Orlando’s leisure demand may raise prices, while its broad hotel supply suggests typical year-round rates between those cities. Boston and Palm Springs appear more expensive; hostel rates are estimated near Denver’s.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.28,
+    "inexp_meal_1p": 21.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 15.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 95.00,
+    "hotel_3star_2p": 155.00
+  }
+}

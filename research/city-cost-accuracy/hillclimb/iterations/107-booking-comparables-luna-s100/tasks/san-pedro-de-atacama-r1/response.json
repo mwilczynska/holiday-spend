@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent city price indexes broadly agree on meal, coffee and beer levels, while cocktail and wine prices vary by venue. Accommodation is a holistic estimate; reliable year-typical prices are especially uncertain in this remote, seasonal destination.",
+  "comparable_city_reasoning": "San Pedro de Atacama should cost more for lodging than Antofagasta, Iquique and Santiago because of its remote desert-tourism demand. I estimate basic rooms above the supplied $41–55 range and three-star rooms near the upper end of Puerto Natales's $103 anchor.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.7,
+    "coffee": 3.0,
+    "inexp_meal_1p": 9.3,
+    "midrange_meal_2p": 46.0,
+    "cocktail": 6.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 21.0,
+    "hostel_private_2p": 45.0,
+    "hotel_1star_2p": 68.0,
+    "hotel_3star_2p": 110.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Paracas-specific meal, coffee and beer estimates are available, but the city has limited aggregated price data. Cocktail and wine estimates reflect tourist-facing restaurant prices and their premium over domestic beer. Accommodation is a holistic estimate from the supplied comparable-city prices; no live booking prices were checked.",
+  "comparable_city_reasoning": "Paracas is a compact destination town, most comparable for lodging to Huacachina. I estimate a modest premium over Huacachina’s $13 dorm, $35 private room, $33 basic room and $48 three-star room because Paracas has coastal and reserve tourism demand, while keeping prices near Lima and Huacachina rather than treating it like a large city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 2.5,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 38,
+    "cocktail": 6.5,
+    "wine_glass": 7,
+    "hostel_dorm_1p": 15,
+    "hostel_private_2p": 37,
+    "hotel_1star_2p": 34,
+    "hotel_3star_2p": 52
+  }
+}

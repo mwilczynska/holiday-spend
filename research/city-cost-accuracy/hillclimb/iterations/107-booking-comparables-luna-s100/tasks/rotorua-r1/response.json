@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors use Rotorua city price data. Cocktail and wine estimates follow local bar-to-beer price relationships; accommodation is a holistic estimate between the supplied Christchurch and Wellington prices and the higher Queenstown market. City-level accommodation data are limited.",
+  "comparable_city_reasoning": "Rotorua's tourism demand suggests accommodation near Christchurch and Wellington, with hostel and hotel prices well below Queenstown.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.18,
+    "coffee": 3.19,
+    "inexp_meal_1p": 11.24,
+    "midrange_meal_2p": 67.42,
+    "cocktail": 10.10,
+    "wine_glass": 7.30,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 84.00,
+    "hotel_3star_2p": 99.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors follow Rovaniemi's published typical price levels. Cocktail and wine estimates are less certain; they are bounded from local bar prices relative to draft beer. Accommodation is a holistic year-typical estimate, with substantial seasonal uncertainty.",
+  "comparable_city_reasoning": "Relative to the supplied Helsinki prices, Rovaniemi is estimated to carry a seasonal tourism premium. Year-typical room estimates account for quieter periods as well as stronger winter demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.75,
+    "coffee": 4.75,
+    "inexp_meal_1p": 15.2,
+    "midrange_meal_2p": 89.8,
+    "cocktail": 15.7,
+    "wine_glass": 11.2,
+    "hostel_dorm_1p": 37,
+    "hostel_private_2p": 72,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 135
+  }
+}

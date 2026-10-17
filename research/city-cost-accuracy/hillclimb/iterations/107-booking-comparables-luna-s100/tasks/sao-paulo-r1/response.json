@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates follow recent city price-index averages. Accommodation is a year-typical estimate based on the supplied Brazilian city comparisons; cocktail data are limited, and the wine-glass estimate is inferred relative to local beer prices.",
+  "comparable_city_reasoning": "Placed São Paulo’s accommodation around the middle of the supplied cities: below Rio and Foz do Iguaçu for three-star hotels, above Florianópolis and Recife, and generally below Rio’s hostel prices. Food and drink anchors reflect São Paulo’s recent typical restaurant prices.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.70,
+    "coffee": 2.30,
+    "inexp_meal_1p": 8.20,
+    "midrange_meal_2p": 45.50,
+    "cocktail": 7.10,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 76.00
+  }
+}

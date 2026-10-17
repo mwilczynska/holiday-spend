@@ -4219,3 +4219,13 @@ Final `queue.mjs --status` output:
 - Fix (31b8a2e9): removed all worker logs from the index, added a `.gitignore` rule for `worker-cli-*` under
   iterations, and added a "never save or commit worker logs" rule to the Codex prompts. History is not rewritten;
   the alert can be closed on GitHub as revoked/expired.
+
+# 17 October 2026 - 107 interim (90/100)
+
+- Codex collected 90/100 107 answers, then hit its usage limit ("try again at 8:32 PM"). The coordinator verified the
+  90 saved tasks (response.json + run.json pairs, no worker logs) and committed them; 10 tasks remain (sintra, split,
+  tangier, tirana, udaipur, utrecht, valletta, verona, zakopane, zurich).
+- Interim comparison on the 90 cities with answers (not a verdict; the registered judgement waits for 100/100):
+  107-bundle 0.1733 vs 022-bundle 0.1768, improvement 0.0035 (CI -0.0175 to +0.0246), 45/45. Accommodation anchors all
+  improved (dorm -0.024, private -0.031, 1-star -0.011, 3-star -0.004); food/drink within 0.01. Well below the
+  0.015 margin; the remaining 10 cities cannot plausibly change the verdict.

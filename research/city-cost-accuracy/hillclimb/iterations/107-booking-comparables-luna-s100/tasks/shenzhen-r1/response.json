@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors follow Shenzhen city-level typical-price data from around the requested period. Cocktail and restaurant wine prices are less certain; they are estimated at several times the local draft-beer price. Accommodation is a holistic estimate, with limited comparable-city context.",
+  "comparable_city_reasoning": "Shenzhen's major business and technology hub demand suggests room prices somewhat above the supplied Beijing, Xiamen, Harbin and Sanya comparables, while basic guesthouses and hostels remain lower-cost options.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.3,
+    "coffee": 2.8,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 28.0,
+    "cocktail": 8.5,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 15.0,
+    "hostel_private_2p": 40.0,
+    "hotel_1star_2p": 38.0,
+    "hotel_3star_2p": 62.0
+  }
+}

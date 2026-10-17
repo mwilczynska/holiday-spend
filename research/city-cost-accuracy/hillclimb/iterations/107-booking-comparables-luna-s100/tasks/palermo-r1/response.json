@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use current crowd-sourced Palermo price aggregates as a proxy for July 2026. Accommodation is a holistic estimate based on the supplied year-typical comparables; cocktail and wine prices are less certain, with wine estimated relative to draft beer.",
+  "comparable_city_reasoning": "Palermo is estimated near the supplied southern Italian comparables: slightly above their roughly $81–$83 three-star hotel anchors, below Lucca's $120 anchor, and near their basic-room and private-hostel prices. July seasonality adds uncertainty.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 2.1,
+    "inexp_meal_1p": 15.5,
+    "midrange_meal_2p": 57.5,
+    "cocktail": 7.0,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 65,
+    "hotel_1star_2p": 70,
+    "hotel_3star_2p": 95
+  }
+}
