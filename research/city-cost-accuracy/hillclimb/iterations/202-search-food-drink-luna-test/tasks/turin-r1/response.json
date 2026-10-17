@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Turin price aggregates support meals, coffee, and beer. Cocktail evidence is sparse, so it is estimated at about twice the local draft-beer price; wine is estimated near beer using the local glass-price range. Accommodation is a broad July estimate without live listing checks.",
+  "comparable_city_reasoning": "Food and drink use Turin city-price data. Accommodation is a holistic estimate informed by Turin and comparable northern Italian regional cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.61,
+    "coffee": 1.94,
+    "inexp_meal_1p": 19.65,
+    "midrange_meal_2p": 74.67,
+    "cocktail": 11.23,
+    "wine_glass": 6.18,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 84.00,
+    "hotel_1star_2p": 101.00,
+    "hotel_3star_2p": 163.00
+  }
+}

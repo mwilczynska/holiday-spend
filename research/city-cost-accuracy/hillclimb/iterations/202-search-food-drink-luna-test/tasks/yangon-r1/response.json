@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and coffee estimates align with a 2026 Yangon cost-of-living basket. Citywide cocktail and wine-glass averages are sparse, so those estimates use a modest multiple of the local draft-beer price. Accommodation estimates are holistic; Myanmar’s market and room availability are unusually uncertain.",
+  "comparable_city_reasoning": "No single comparable city used. Food and drink anchors use Yangon-specific price levels; accommodation estimates reflect general knowledge of lower-cost Southeast Asian lodging.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 1.68,
+    "inexp_meal_1p": 2.56,
+    "midrange_meal_2p": 16.69,
+    "cocktail": 2.75,
+    "wine_glass": 2.25,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 55.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Current Takayama and Japan-wide cost-of-living aggregates inform the food, coffee, and beer estimates. Cocktail is inferred relative to local beer; wine uses a local menu reference. Lodging is a holistic July estimate with substantial property and seasonal variation.",
+  "comparable_city_reasoning": "Food and drink estimates use Takayama cost-of-living data cross-checked against Japan-wide typical prices. Lodging reflects general knowledge of a small, popular Japanese tourism city in July.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.4,
+    "coffee": 3.2,
+    "inexp_meal_1p": 7.5,
+    "midrange_meal_2p": 38,
+    "cocktail": 6.3,
+    "wine_glass": 6.3,
+    "hostel_dorm_1p": 23,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 70,
+    "hotel_3star_2p": 120
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors are supported by current Toronto price indexes. Cocktail uses a local typical-price estimate; wine is inferred at roughly 1.6 times the draft-beer price. Accommodation anchors are broad July-season estimates from general knowledge, with substantial uncertainty.",
+  "comparable_city_reasoning": "No separate comparable city was used; estimates reflect Toronto's large, high-cost Canadian metropolitan market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.25,
+    "coffee": 4.02,
+    "inexp_meal_1p": 17.2,
+    "midrange_meal_2p": 76.0,
+    "cocktail": 11.0,
+    "wine_glass": 10.0,
+    "hostel_dorm_1p": 50.0,
+    "hostel_private_2p": 120.0,
+    "hotel_1star_2p": 160.0,
+    "hotel_3star_2p": 250.0
+  }
+}

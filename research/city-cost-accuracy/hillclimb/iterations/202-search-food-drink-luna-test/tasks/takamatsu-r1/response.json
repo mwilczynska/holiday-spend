@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Takamatsu price aggregates are a proxy for the July window. They support the meal, coffee, and beer estimates; cocktail and wine prices are inferred from the local beer price. Accommodation estimates are holistic and less certain; no live accommodation listings were checked.",
+  "comparable_city_reasoning": "No comparison city used; food anchors draw on Takamatsu-level price aggregates, while accommodation reflects general knowledge of regional Japanese cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.61,
+    "coffee": 3.06,
+    "inexp_meal_1p": 6.97,
+    "midrange_meal_2p": 34.98,
+    "cocktail": 4.5,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 24.0,
+    "hostel_private_2p": 55.0,
+    "hotel_1star_2p": 60.0,
+    "hotel_3star_2p": 105.0
+  }
+}

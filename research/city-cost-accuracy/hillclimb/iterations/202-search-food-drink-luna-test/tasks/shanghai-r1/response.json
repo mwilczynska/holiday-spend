@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Shanghai price-index observations support the meal, coffee and beer estimates. Cocktail prices vary widely; the wine-glass estimate uses local bar pricing relative to beer. Accommodation anchors are holistic estimates, with no live booking pages consulted.",
+  "comparable_city_reasoning": "Estimated for Shanghai directly, reflecting its large-city mix of inexpensive local dining and more costly bar and hotel options.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.40,
+    "coffee": 3.16,
+    "inexp_meal_1p": 4.23,
+    "midrange_meal_2p": 28.17,
+    "cocktail": 12.39,
+    "wine_glass": 8.45,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 39.00,
+    "hotel_1star_2p": 36.00,
+    "hotel_3star_2p": 80.00
+  }
+}

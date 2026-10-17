@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer estimates use current citywide crowd-sourced prices as a near-window proxy for July 2026. Cocktail and wine prices are estimated from their local price relationship to beer. Accommodation is a broader July estimate and carries more uncertainty; no live listings were checked.",
+  "comparable_city_reasoning": "No single comparator used; treated as a large Greek regional city with student demand and summer tourism, below Greek island-resort lodging prices.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.6,
+    "coffee": 4.25,
+    "inexp_meal_1p": 17,
+    "midrange_meal_2p": 67,
+    "cocktail": 11.2,
+    "wine_glass": 6.7,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 82,
+    "hotel_3star_2p": 120
+  }
+}

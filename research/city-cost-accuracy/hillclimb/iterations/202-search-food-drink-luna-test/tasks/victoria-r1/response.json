@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Victoria city-level food and drink averages near the July 2026 reference window provide useful anchors, though the data are crowd-sourced and ranges are wide. Cocktail and wine prices are estimated from the local draft-beer price relationship; lodging is a holistic estimate, with registered-hostel availability and hotel categories uncertain.",
+  "comparable_city_reasoning": "No separate city comparison used. Food and drink anchors use Victoria city-level price averages; lodging estimates draw on general knowledge of Mahé and Seychelles tourist accommodation, without checking current listings.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.0,
+    "coffee": 4.3,
+    "inexp_meal_1p": 18.0,
+    "midrange_meal_2p": 50.0,
+    "cocktail": 10.0,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 90.0,
+    "hotel_1star_2p": 120.0,
+    "hotel_3star_2p": 210.0
+  }
+}

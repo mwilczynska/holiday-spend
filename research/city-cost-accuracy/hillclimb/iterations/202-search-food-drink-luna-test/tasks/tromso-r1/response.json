@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent citywide typical-price aggregates as a proxy for July. July lodging is a holistic high-season estimate with substantial uncertainty. Cocktail and wine estimates are about 1.5× and 1.25× the local draft-beer price, respectively.",
+  "comparable_city_reasoning": "No peer-city price transfer; lodging reflects Tromso's role as a high-demand Arctic gateway in summer.",
+  "fx": {
+    "as_of_date": "2026-10-06",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.697,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.0,
+    "coffee": 6.3,
+    "inexp_meal_1p": 32.5,
+    "midrange_meal_2p": 100.0,
+    "cocktail": 18.0,
+    "wine_glass": 15.0,
+    "hostel_dorm_1p": 75.0,
+    "hostel_private_2p": 165.0,
+    "hotel_1star_2p": 180.0,
+    "hotel_3star_2p": 285.0
+  }
+}

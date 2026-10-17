@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal and coffee estimates use Strasbourg aggregates updated in October 2026, close to the requested July window; beer is cross-checked against a 64-bar sample. Cocktail uses a local €8–9 range, and wine is estimated slightly below beer from local by-glass prices. July lodging is a holistic seasonal estimate; no booking prices were inspected.",
+  "comparable_city_reasoning": "Food and drink are based on Strasbourg prices. Lodging reflects Strasbourg's summer visitor demand and regional French city context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.25,
+    "coffee": 4.50,
+    "inexp_meal_1p": 16.85,
+    "midrange_meal_2p": 70.20,
+    "cocktail": 9.55,
+    "wine_glass": 5.05,
+    "hostel_dorm_1p": 43.00,
+    "hostel_private_2p": 112.00,
+    "hotel_1star_2p": 101.00,
+    "hotel_3star_2p": 168.00
+  }
+}
