@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and draft-beer anchors use Chicago's June 2026 aggregated prices as the nearest found. Cocktail and wine prices are approximated from their local relationship to draft beer; accommodation is a holistic estimate and is less certain.",
+  "comparable_city_reasoning": "Used Chicago-specific price observations for food, coffee and beer; lodging reflects a large US destination during the July summer season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.51,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 140.00,
+    "hotel_3star_2p": 220.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Bordeaux cost-of-living data support meal, coffee, and beer estimates. Cocktail data are small-sample, wine evidence is limited, and accommodation is a holistic July high-season estimate.",
+  "comparable_city_reasoning": "Local Bordeaux prices anchor food and drink; accommodation is estimated for a tourism-oriented French regional capital in summer.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.0,
+    "coffee": 4.0,
+    "inexp_meal_1p": 20.0,
+    "midrange_meal_2p": 78.0,
+    "cocktail": 12.5,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 40.0,
+    "hostel_private_2p": 90.0,
+    "hotel_1star_2p": 115.0,
+    "hotel_3star_2p": 165.0
+  }
+}

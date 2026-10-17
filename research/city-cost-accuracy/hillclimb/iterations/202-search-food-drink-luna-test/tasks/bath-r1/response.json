@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Bath cost-of-living data last updated in June 2026. Cocktail and wine estimates are based on their typical price relationship to Bath's £6 draft beer. Accommodation is a holistic July high-season estimate; prices vary by date and property. The RBA page result available to me showed data through 2026-09-11.",
+  "comparable_city_reasoning": "Food prices use Bath-specific cost-of-living data. Accommodation estimates reflect Bath's heritage-tourism demand and norms for small UK tourist cities.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.1,
+    "coffee": 5.13,
+    "inexp_meal_1p": 23.63,
+    "midrange_meal_2p": 101.25,
+    "cocktail": 14.85,
+    "wine_glass": 10.8,
+    "hostel_dorm_1p": 54,
+    "hostel_private_2p": 155,
+    "hotel_1star_2p": 162,
+    "hotel_3star_2p": 230
+  }
+}

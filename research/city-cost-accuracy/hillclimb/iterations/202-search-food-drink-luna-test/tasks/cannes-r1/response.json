@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Cannes cost-of-living aggregates support the meal, coffee, and beer estimates. Cocktail and wine estimates are bounded using local menu signals and their price relationship to draft beer. Accommodation is a holistic July estimate; hostel availability and seasonal room rates are especially uncertain.",
+  "comparable_city_reasoning": "Based on the French Riviera's coastal tourism market, with Cannes estimated above the French baseline and peak-summer demand affecting accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.10,
+    "coffee": 4.60,
+    "inexp_meal_1p": 23.00,
+    "midrange_meal_2p": 83.40,
+    "cocktail": 12.10,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 62.00,
+    "hostel_private_2p": 145.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 285.00
+  }
+}

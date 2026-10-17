@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors follow current Austin cost-of-living aggregates, which are slightly later than the July 2026 target. Wine is estimated from its local price relationship to beer. Accommodation is a holistic estimate; Austin's limited hostel supply and event-driven lodging prices add uncertainty.",
+  "comparable_city_reasoning": "No single comparable city used. Food and drink estimates use Austin price aggregates; accommodation reflects general Austin and Sunbelt lodging context.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.58,
+    "inexp_meal_1p": 20.50,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 15.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 185.00
+  }
+}

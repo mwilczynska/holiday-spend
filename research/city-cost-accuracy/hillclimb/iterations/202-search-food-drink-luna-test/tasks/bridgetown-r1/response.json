@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Bridgetown cost indexes support the restaurant anchors. Cocktail and wine estimates use their typical price premium over local draft beer because representative drink data is sparse. Accommodation estimates are holistic and especially uncertain given seasonal rates and limited hostel stock.",
+  "comparable_city_reasoning": "Based on Bridgetown and Barbados urban tourism costs, including the island's high visitor and import costs; no separate comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 4.5,
+    "inexp_meal_1p": 20,
+    "midrange_meal_2p": 94,
+    "cocktail": 10,
+    "wine_glass": 8,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 75,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 190
+  }
+}

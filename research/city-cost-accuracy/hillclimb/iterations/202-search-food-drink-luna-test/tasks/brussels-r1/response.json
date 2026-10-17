@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Brussels city price aggregates support the meal, coffee, and beer anchors. Cocktail data are sparse, and wine is estimated at a typical bar premium to beer. Accommodation anchors are holistic estimates; July and event dates can shift rates substantially.",
+  "comparable_city_reasoning": "No separate city comparator was needed for food and drink. Accommodation reflects Brussels as a high-demand Western European capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.61,
+    "coffee": 4.46,
+    "inexp_meal_1p": 22.46,
+    "midrange_meal_2p": 89.82,
+    "cocktail": 11.23,
+    "wine_glass": 8.42,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 112,
+    "hotel_3star_2p": 183
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent aggregated Bern prices. Cocktail and wine prices are less certain and are estimated from the local draft-beer price relationship. Accommodation estimates are holistic and have substantial seasonal and property-level uncertainty.",
+  "comparable_city_reasoning": "Based on Bern's city-level price context as an expensive Swiss capital, with accommodation estimates allowing for July travel demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.1,
+    "coffee": 6.8,
+    "inexp_meal_1p": 29.0,
+    "midrange_meal_2p": 122.0,
+    "cocktail": 15.0,
+    "wine_glass": 11.0,
+    "hostel_dorm_1p": 75.0,
+    "hostel_private_2p": 190.0,
+    "hotel_1star_2p": 185.0,
+    "hotel_3star_2p": 280.0
+  }
+}

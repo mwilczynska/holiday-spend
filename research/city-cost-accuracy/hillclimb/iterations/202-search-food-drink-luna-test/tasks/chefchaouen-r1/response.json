@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use current Morocco-wide price aggregates, with Chefchaouen traveler meal reports as a local check. Accommodation is a holistic estimate for a small, popular Rif tourist town. Alcohol is less certain because it is mainly available at licensed venues; cocktail and wine estimates use their likely price relationship to restaurant beer.",
+  "comparable_city_reasoning": "Restaurant anchors are based on Morocco-wide typical prices, adjusted modestly for Chefchaouen's tourist medina and checked against traveler meal reports. Accommodation reflects a small destination with strong visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 2.0,
+    "inexp_meal_1p": 5.0,
+    "midrange_meal_2p": 27.0,
+    "cocktail": 8.5,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 13.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 42.0,
+    "hotel_3star_2p": 78.0
+  }
+}

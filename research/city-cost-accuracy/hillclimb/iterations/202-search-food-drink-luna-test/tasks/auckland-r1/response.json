@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Meals, coffee and draft beer use Auckland city-level price estimates; cocktail and wine use local bar-price ranges. Accommodation is a holistic estimate and can vary widely by date and location.",
+  "comparable_city_reasoning": "Standalone estimate for Auckland's relatively high-cost metropolitan market.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.0,
+    "coffee": 3.6,
+    "inexp_meal_1p": 14.6,
+    "midrange_meal_2p": 73.0,
+    "cocktail": 11.7,
+    "wine_glass": 9.3,
+    "hostel_dorm_1p": 30.0,
+    "hostel_private_2p": 70.0,
+    "hotel_1star_2p": 85.0,
+    "hotel_3star_2p": 140.0
+  }
+}

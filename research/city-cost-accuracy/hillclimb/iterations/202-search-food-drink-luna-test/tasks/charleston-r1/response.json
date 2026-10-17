@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Charleston city price data supports the meal, coffee, and draft-beer anchors. The cocktail estimate comes from a sparse local price sample; wine is estimated at about 1.7 times the $7 draft-beer price. Accommodation anchors are holistic July estimates; no booking pages or current listings were checked.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates use Charleston-specific price data.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 6.71,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 150.00,
+    "cocktail": 14.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 260.00
+  }
+}

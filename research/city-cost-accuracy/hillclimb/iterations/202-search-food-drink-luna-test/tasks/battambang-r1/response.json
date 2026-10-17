@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Current Cambodia-wide meal and drink aggregates and a Battambang cappuccino estimate inform the food anchors; city-level representativeness is uncertain. Accommodation is a holistic estimate. Cocktail and wine prices are estimated at about four and five times a local draft beer, respectively.",
+  "comparable_city_reasoning": "Used Cambodia-wide meal and drink prices as a reference, adjusted for Battambang's provincial scale and local-market dining; accommodation reflects general knowledge of provincial Cambodian guesthouse patterns.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.9,
+    "coffee": 1.4,
+    "inexp_meal_1p": 2.5,
+    "midrange_meal_2p": 22,
+    "cocktail": 3.6,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 5,
+    "hostel_private_2p": 18,
+    "hotel_1star_2p": 12,
+    "hotel_3star_2p": 35
+  }
+}
