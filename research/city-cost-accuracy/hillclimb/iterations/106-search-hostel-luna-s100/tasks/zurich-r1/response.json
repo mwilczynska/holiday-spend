@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use mid-2026 aggregated Zurich prices. The cocktail estimate follows a reported local bar range; wine uses a local menu-price median. Hostel anchors estimate typical annual prices from current listings, so seasonal variation and private-room pricing add uncertainty. Hotel anchors are holistic estimates, not live listing prices.",
+  "comparable_city_reasoning": "No proxy city used; restaurant and hostel estimates are Zurich-specific, while hotel prices are holistic estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.00,
+    "coffee": 7.43,
+    "inexp_meal_1p": 35.00,
+    "midrange_meal_2p": 154.00,
+    "cocktail": 23.00,
+    "wine_glass": 17.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 170.00,
+    "hotel_3star_2p": 280.00
+  }
+}

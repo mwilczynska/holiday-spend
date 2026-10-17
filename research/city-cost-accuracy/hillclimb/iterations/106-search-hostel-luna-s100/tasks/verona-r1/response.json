@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use the closest pre-July city index; cocktail data are thin and wine is estimated near draft beer. Hostel aggregates are sparse and disagree, while hotel anchors are holistic estimates; seasonality adds uncertainty.",
+  "comparable_city_reasoning": "No proxy city used: Verona-specific price aggregates inform food and hostel anchors; hotel anchors reflect holistic estimates for a compact, high-demand northern Italian tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.73,
+    "coffee": 2.01,
+    "inexp_meal_1p": 19.07,
+    "midrange_meal_2p": 78.51,
+    "cocktail": 10.09,
+    "wine_glass": 6.17,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 94.21,
+    "hotel_1star_2p": 101.00,
+    "hotel_3star_2p": 163.00
+  }
+}

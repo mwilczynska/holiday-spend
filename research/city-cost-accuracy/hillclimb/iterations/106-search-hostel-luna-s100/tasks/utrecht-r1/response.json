@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's August 2026 Utrecht prices guide meals, coffee and beer. Cocktail and wine estimates use their local price relationship to beer. Hostelworld shows starting rates rather than annual averages, so hostel prices are less certain; hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "No external comparable used; food and beer anchors use Utrecht prices, and hotel anchors use general knowledge of the Netherlands.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 4.70,
+    "inexp_meal_1p": 22.45,
+    "midrange_meal_2p": 84.10,
+    "cocktail": 13.50,
+    "wine_glass": 7.30,
+    "hostel_dorm_1p": 40.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 190.00
+  }
+}
