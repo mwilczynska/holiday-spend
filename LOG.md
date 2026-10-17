@@ -4027,3 +4027,24 @@ Final `queue.mjs --status` output:
 201-v11-luna-test                        pending  142 / 142  (repeat-1 pending 142)
 202-search-food-drink-luna-test          pending   44 / 142  (repeat-1 pending 44)
 ```
+
+# 17 October 2026 UTC - Luna round 3 resumed collection stopped at owner request
+
+- Collected 44 new answers for `202-search-food-drink-luna-test`, finishing phase 1 at 142/142. Collected 75 answers for `201-v11-luna-test` (75/142 answered; 67 pending). Collected 0 for `103-search-food-drink-luna-r2-rep2` (333 pending); phase 3 was not started.
+- Each task used a fresh isolated `gpt-6-luna` subagent at `max` with only its exact hash-checked worker message. Final messages were saved verbatim directly from the runtime completion text, without parsing or reformatting the answer. Execution metadata verified Luna/Max; run records include execution start/completion timestamps and the frozen prompt SHA-256. Unknown search counts are null.
+- The restarted runtime permits six workers plus the coordinator; no more than six workers ran simultaneously. No model or effort substitutions occurred.
+- Worker retries: 0. Worker failures: 0. Skipped tasks: 0. No commit, push or lock failures occurred. A log-append preparation attempt failed before any write with `ReferenceError: btoa is not defined`; the append was then completed with a literal PowerShell string.
+- Yangon phase 1 worker reported using seven total search queries while resolving a stale RBA cache and cocktail/wine prices, exceeding its six-query cap. Its final answer was preserved without editing or rerunning; run.searches records 7.
+- Committed and pushed checkpoints: `78b9d75a` (phase 1, 122/142), `8d74de37` (phase 1 complete), `ecb51a2e` (phase 2, 24/142), `232566d2` (phase 2, 48/142), and `f742ed3b` (phase 2, 72/142). Collection continued after each checkpoint until the owner's stop instruction.
+- Phase 1 ingest output: `{"tasks":142,"failures":0,"scored":false,"note":"sealed test split; not scored"}`. No phase 2 or phase 3 ingest ran. No scoring, assessment, reference-panel inspection, answer interpretation, or production changes were performed.
+- Stop reason: owner explicitly instructed, "Don't start any new subagents. Wait for the current ones to finish, log their results, then commit and push. Then stop." No new subagents were started after that instruction. Izmir and Jeju finished and were saved; all collection workers have completed. No stop error occurred.
+- Next phase 2 queued task: `jodhpur-r1`. The printed but undispatched prompts for Jodhpur, Johannesburg, Kanazawa and Karlovy Vary remain unanswered.
+
+Final `queue.mjs --status` output:
+
+```text
+009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
+011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
+103-search-food-drink-luna-r2-rep2       pending  333 / 333  (repeat-1 pending 333)
+201-v11-luna-test                        pending   67 / 142  (repeat-1 pending 67)
+```
