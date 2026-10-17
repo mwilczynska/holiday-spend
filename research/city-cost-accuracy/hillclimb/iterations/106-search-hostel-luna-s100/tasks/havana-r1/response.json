@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use a Havana cost-of-living index; hostel anchors use monthly citywide averages. Cocktail and wine prices are estimated at roughly two to three times local draft beer. Hotel anchors are broad estimates, and Cuba’s tourist-price variation limits confidence.",
+  "comparable_city_reasoning": "Food and hostel estimates use Havana-specific references. Hotel estimates reflect general knowledge of basic guesthouses and mid-range lodging in Havana.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.6,
+    "coffee": 1.11,
+    "inexp_meal_1p": 3.71,
+    "midrange_meal_2p": 27.5,
+    "cocktail": 4.0,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 29.0,
+    "hotel_1star_2p": 55.0,
+    "hotel_3star_2p": 110.0
+  }
+}

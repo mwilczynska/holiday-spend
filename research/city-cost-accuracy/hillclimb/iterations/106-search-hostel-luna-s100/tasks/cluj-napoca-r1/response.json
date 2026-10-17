@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current city price data supports the meal, coffee, and beer anchors. Cocktail and wine prices are less directly benchmarked and estimated relative to local beer; hostel prices are sparse, and hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "A Romanian regional university and business center, with prices broadly comparable to other larger cities in Central and Eastern Europe.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 4.0,
+    "inexp_meal_1p": 13.6,
+    "midrange_meal_2p": 58.6,
+    "cocktail": 8.0,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 22.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 48.0,
+    "hotel_3star_2p": 82.0
+  }
+}

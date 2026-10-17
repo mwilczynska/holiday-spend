@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Cusco food and beer observations are recent but based on a small price sample. Hostel prices are starting rates, so annual typical rates are approximate; hotel anchors are holistic estimates. Cocktail and wine prices are estimated as multiples of local draft beer.",
+  "comparable_city_reasoning": "No cross-city proxy used; food and drink anchors use Cusco-specific price observations. Accommodation estimates reflect Cusco's tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.0,
+    "coffee": 2.1,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 30.0,
+    "cocktail": 5.75,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 11.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 35.0,
+    "hotel_3star_2p": 80.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Ipoh-specific collaborative price data gives a reasonable basis for everyday food and drink, though contributor counts are limited. Hostel anchors use city-level averages; hotel anchors are holistic estimates. Cocktail data is sparse, and the wine-glass price is inferred at roughly 1.5 times the local draft-beer price.",
+  "comparable_city_reasoning": "Used Ipoh-specific cost-of-living and hostel averages where available; hotel estimates reflect general knowledge of mid-sized northern Peninsular Malaysian lodging markets.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.3,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.2,
+    "midrange_meal_2p": 19.0,
+    "cocktail": 5.7,
+    "wine_glass": 6.4,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 14.0,
+    "hotel_1star_2p": 22.0,
+    "hotel_3star_2p": 43.0
+  }
+}

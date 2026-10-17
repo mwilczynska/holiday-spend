@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and draft beer use Japan-wide price references with a modest Hakone visitor-market uplift; local hostel ranges are broad. Cocktail and wine prices are estimated relative to beer. Hotel anchors are holistic estimates, and Hakone’s ryokan-heavy lodging mix adds uncertainty.",
+  "comparable_city_reasoning": "Used Japan-wide food and drink prices as a baseline, adjusted for Hakone's tourism market, with Hakone-specific hostel ranges. No close comparable city used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.8,
+    "coffee": 3.5,
+    "inexp_meal_1p": 9.5,
+    "midrange_meal_2p": 52,
+    "cocktail": 6.3,
+    "wine_glass": 5.1,
+    "hostel_dorm_1p": 27,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 80,
+    "hotel_3star_2p": 180
+  }
+}

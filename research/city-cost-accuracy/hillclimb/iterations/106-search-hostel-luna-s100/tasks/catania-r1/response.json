@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant prices have useful city-level benchmarks but vary by location. Cocktail and wine estimates follow their local price relationship to beer; hostel room occupancy and displayed prices are less certain. Hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "Used Catania-specific food and drink benchmarks; hotel estimates reflect a moderately touristed city in Sicily and southern Italy.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.2,
+    "coffee": 2.3,
+    "inexp_meal_1p": 16.8,
+    "midrange_meal_2p": 56.0,
+    "cocktail": 8.0,
+    "wine_glass": 7.0,
+    "hostel_dorm_1p": 25.0,
+    "hostel_private_2p": 60.0,
+    "hotel_1star_2p": 65.0,
+    "hotel_3star_2p": 110.0
+  }
+}

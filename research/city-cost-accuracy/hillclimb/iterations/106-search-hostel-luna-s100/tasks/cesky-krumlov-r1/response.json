@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "City-level meal, coffee and beer estimates plus May 2026 local restaurant prices inform the food anchors. Hostel prices lack a reliable citywide average here, and hotel prices are holistic estimates. Cocktail and wine are estimated at roughly three and two times the local draft beer price; the private hostel room amount is for two people.",
+  "comparable_city_reasoning": "Český Krumlov city-level price estimates and local restaurant pricing; accommodation estimates reflect a small, highly seasonal South Bohemian tourist town.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.0,
+    "coffee": 3.2,
+    "inexp_meal_1p": 9.5,
+    "midrange_meal_2p": 45.0,
+    "cocktail": 6.5,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 22.0,
+    "hostel_private_2p": 60.0,
+    "hotel_1star_2p": 70.0,
+    "hotel_3star_2p": 110.0
+  }
+}

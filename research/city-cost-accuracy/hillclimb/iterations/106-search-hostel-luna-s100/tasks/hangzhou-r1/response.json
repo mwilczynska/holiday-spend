@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and beer anchors use Hangzhou city price data near the July 2026 window; hostel prices are city averages. Cocktail and wine prices are less certain and estimated at about 4.4 and 3.5 times local draft beer, respectively. Hotel prices are holistic estimates.",
+  "comparable_city_reasoning": "Food and hostel estimates use Hangzhou-specific data. Hotel estimates reflect Hangzhou's position as a major Yangtze River Delta destination; no hotel listings were checked.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.20,
+    "coffee": 3.36,
+    "inexp_meal_1p": 3.74,
+    "midrange_meal_2p": 29.90,
+    "cocktail": 5.23,
+    "wine_glass": 4.19,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 23.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 65.00
+  }
+}

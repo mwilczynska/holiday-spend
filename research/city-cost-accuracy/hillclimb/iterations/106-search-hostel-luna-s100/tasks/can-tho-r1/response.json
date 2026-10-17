@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Can Tho's cost-of-living data is sparse. Cocktail and wine prices are estimated from their typical relationship to local draft beer; hostel prices are uncertain, and hotel prices are holistic estimates.",
+  "comparable_city_reasoning": "Restaurant anchors use Can Tho price observations; accommodation estimates reflect a secondary city in Vietnam's Mekong Delta.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.04,
+    "coffee": 1.55,
+    "inexp_meal_1p": 1.40,
+    "midrange_meal_2p": 21.00,
+    "cocktail": 3.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 42.00
+  }
+}

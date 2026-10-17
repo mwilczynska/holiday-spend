@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee, and beer anchors are supported by recent Da Nang price-index data; the closest observed mid-range meal price is from June. Hostel averages are broad, wine by the glass is inferred from local beer pricing, and hotel anchors are holistic estimates with seasonal and quality variation.",
+  "comparable_city_reasoning": "Recent Da Nang-specific price data provide the local basis, so no comparable city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.35,
+    "coffee": 1.69,
+    "inexp_meal_1p": 2.32,
+    "midrange_meal_2p": 18.25,
+    "cocktail": 3.17,
+    "wine_glass": 3.5,
+    "hostel_dorm_1p": 9.0,
+    "hostel_private_2p": 24.0,
+    "hotel_1star_2p": 20.0,
+    "hotel_3star_2p": 45.0
+  }
+}

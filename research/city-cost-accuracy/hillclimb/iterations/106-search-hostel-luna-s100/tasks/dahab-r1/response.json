@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Dahab-specific price references support the meal, coffee, beer and cocktail estimates. Hostel prices vary by season; the private-room estimate doubles typical per-person quotes. Wine is estimated at roughly 2.3 times draft beer because local by-the-glass prices are sparse. Hotel anchors are holistic and least certain.",
+  "comparable_city_reasoning": "No comparable city used; food and hostel estimates use Dahab-specific references, while hotel estimates are holistic.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.5,
+    "coffee": 1.5,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 14,
+    "cocktail": 5,
+    "wine_glass": 3.5,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 26,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 55
+  }
+}

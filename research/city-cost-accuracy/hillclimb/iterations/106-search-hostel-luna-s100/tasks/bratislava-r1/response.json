@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Bratislava benchmarks inform meals, beer, coffee, cocktails, and hostels. The wine-glass estimate follows its price relationship to local draft beer. Hotel anchors are holistic estimates without live listing checks; accommodation prices vary by season and property.",
+  "comparable_city_reasoning": "Used Bratislava-specific price benchmarks for food, drinks, and hostels. Hotel estimates reflect general knowledge of Bratislava and similar Central European capitals.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.37,
+    "coffee": 3.58,
+    "inexp_meal_1p": 11.23,
+    "midrange_meal_2p": 67.37,
+    "cocktail": 7.0,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 17.0,
+    "hostel_private_2p": 25.0,
+    "hotel_1star_2p": 70.0,
+    "hotel_3star_2p": 120.0
+  }
+}

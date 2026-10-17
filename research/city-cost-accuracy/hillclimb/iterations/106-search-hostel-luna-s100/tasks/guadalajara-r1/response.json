@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Broad Guadalajara price surveys support the meal, cappuccino and draft-beer anchors (about MX$250, MX$800, MX$69 and MX$50); October 2026 figures are a nearby proxy for July. Cocktail and wine are less directly measured, so they are estimated at roughly 3x and 2x the draft-beer price. Hostel estimates use ordinary-month prices, excluding the unusual June event spike. Hotel anchors are holistic estimates without live listing checks.",
+  "comparable_city_reasoning": "Based on Guadalajara-specific price data; no comparable city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 3.77,
+    "inexp_meal_1p": 13.66,
+    "midrange_meal_2p": 43.72,
+    "cocktail": 8.25,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 78.00
+  }
+}
