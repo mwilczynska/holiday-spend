@@ -4124,3 +4124,23 @@ Final `queue.mjs --status` output:
   Numbeo. Cocktail vs Luna: without search (101) median |log ratio| 0.160 (18/222 within 2%); with food/drink search
   (102) 0.064 (67/222 within 2%). Luna's searches reproduce Expatistan's cocktail prices, so cocktail scoring against
   it would reward source copying. Kept as sensitivity panel `manifest-r3cocktail.json`, not primary.
+
+
+# 17 October 2026 - Luna 104 collection complete
+
+- Collected all 100/100 frozen tasks for `104-search-accommodation-luna-s100` this session, using one fresh
+  `gpt-6-luna` subagent at `max` reasoning per task, with up to six workers running concurrently.
+  Saved worker final messages verbatim with their run records and frozen prompt hashes.
+- No worker retries, empty final messages, failed tasks or skipped frozen tasks. A PowerShell parser error before
+  the Porto file write was corrected by writing the same returned answer as encoded bytes; no worker was rerun
+  and no existing answer was changed. An accidental lookup of nonexistent `beijing-r1` returned
+  `Error: No frozen task beijing-r1 in 104-search-accommodation-luna-s100`; collection continued with the queued
+  `benidorm-r1` task. An auxiliary metadata-check syntax error was corrected. The PowerShell npm wrapper was
+  blocked by execution policy; `npm.cmd run docs:check-memory` passed.
+- Checkpoint commits at 24, 48, 72 and 96 answers were pushed. The required completion ingest returned exactly:
+  `{"tasks":100,"failures":0,"primaryLoss":0.24156203796224635,"pooledRepeatLoss":0.24156203796224623}`
+  No separate scoring command, comparison or interpretation was performed by this collection session.
+- The iteration queue printed nothing. The final `queue.mjs --status` listed only pending work in other
+  iterations; this iteration had zero pending tasks.
+- Stop condition 1: the iteration queue is empty and the authorized finishing commands completed.
+  `Luna 104 complete` was committed and pushed as `eba04976`. This entry records the session stop.
