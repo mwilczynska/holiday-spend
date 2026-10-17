@@ -36,6 +36,17 @@ h1 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 4vw, 
 #chart .axis-title { font-family: var(--body); fill: var(--muted); font-size: 12px; }
 #chart .band-label { font-family: var(--body); font-size: 12px; font-weight: 600; fill: var(--ink); }
 #chart .end-label { font-family: var(--mono); font-size: 12px; fill: var(--ink); font-weight: 500; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-bottom: 10px; font-size: 13px; color: var(--muted); }
+.seg { display: inline-flex; border: 1px solid var(--grid); border-radius: 8px; overflow: hidden; }
+.seg button { font: inherit; font-size: 12.5px; color: var(--muted); background: transparent; border: 0; padding: 5px 12px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--grid); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-size: 12.5px; display: inline-flex; align-items: center; gap: 7px; color: var(--ink); background: var(--surface); border: 1px solid var(--grid); border-radius: 999px; padding: 4px 11px; cursor: pointer; }
+.chip[aria-pressed="false"] { color: var(--faint); text-decoration: line-through; }
+.chip[aria-pressed="false"] .sw { opacity: .3; }
+.seg button:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#chart .halo { paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
 .toggle { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .sw { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
 .pt { cursor: pointer; }
@@ -100,12 +111,13 @@ footer { color: var(--faint); font-size: 12px; }
   <header>
     <div>
       <h1>City Cost Hill Climb</h1>
-      <p class="sub">Each point is one experiment on Holiday Spend's city-cost estimates, scored against reference prices. Lower is better. Each panel's line tracks its best accepted method. Panels share one axis, numbered by step within the panel.</p>
+      <p class="sub">Each point is one experiment on Holiday Spend's city-cost estimates, scored against reference prices. Lower is better. Each panel's line tracks its best accepted method. Switch between side-by-side and overlaid views, and show or hide panels.</p>
     </div>
     <div class="summary" id="summary"></div>
   </header>
 
   <section class="panel" aria-label="Error by experiment">
+    <div class="controls" id="controls"></div>
     <svg id="chart" role="img" aria-label="Error by experiment with best-so-far line"></svg>
     <div class="legend" id="legend"></div>
   </section>
@@ -140,8 +152,11 @@ footer { color: var(--faint); font-size: 12px; }
       <div><dt>Right axis: ≈ typical error</dt><dd>The same error expressed as a percentage, so it reads in everyday
         terms: an error of 0.18 means a typical price is off by about 20%. It is a relabelling of the left axis, not a
         second measure.</dd></div>
-      <div><dt>Bottom axis: step</dt><dd>The order of experiments within each panel. Panels share this axis so they can
-        be compared side by side. The experiment's overall number is in its tooltip and in the register.</dd></div>
+      <div><dt>Bottom axis and layout</dt><dd><b>Side by side</b> gives each experiment its own slot, numbered in
+        the order it ran, with panels in separate bands. <b>Overlaid</b> puts all panels on one axis, numbered by step within
+        each panel, so their progress can be compared directly.</dd></div>
+      <div><dt>Showing and hiding panels</dt><dd>Click a panel's chip above the chart to hide or show it; the error axis
+        rescales to what is shown. The page remembers your layout and choices in this browser.</dd></div>
       <div><dt>Colours</dt><dd>Each colour is a panel: a fixed set of cities and reference prices (see
         <a href="#refs">Reference prices</a>). Errors from different panels are not directly comparable, because harder
         cities or different reference prices change the scale.</dd></div>
@@ -150,7 +165,7 @@ footer { color: var(--faint); font-size: 12px; }
       <div><dt>Shapes</dt><dd>Square: the starting baseline. Filled circle: accepted. Thick ring: passed the rule but not
         adopted, because an earlier accepted method was already better. Thin ring: rejected. Diamond: the app's original
         v1 city prices, for reference.</dd></div>
-      <div><dt>Raw scores (toggle)</dt><dd>Most methods include a correction step. The toggle shows each method's error
+      <div><dt>Raw scores</dt><dd>Most methods include a correction step. The toggle shows each method's error
         before correction as a small dot joined to its corrected score, so you can see how much the correction does.</dd></div>
     </dl>
   </section>
@@ -374,14 +389,20 @@ footer { color: var(--faint); font-size: 12px; }
 <div class="tip" id="tip" hidden></div>
 
 <script>
-const DATA = {"updated":"2026-10-17T16:33:13.645Z","rows":[{"n":1,"panel":"R1","id":"000-legacy-csv-baseline","label":"Old v1 CSV prices","kind":"reference","error":0.390204605452172,"raw":null,"verdict":"reference","against":null,"improvement":null,"ci":null,"what":"The prices the app shipped with (v1 CSV), scored as a reference point."},{"n":2,"panel":"R1","id":"001-v11-haiku-baseline","label":"v1.1 prompt, unchanged","kind":"baseline","error":0.2919976732274475,"raw":null,"verdict":"baseline","against":null,"improvement":null,"ci":null,"what":"The production v1.1 prompt unchanged, answered by Haiku: the starting point."},{"n":3,"panel":"R1","id":"006-calibrate-anchor","label":"Correction factor per item","kind":"calibration","error":0.23035056959107733,"raw":null,"verdict":"accept","against":"001-v11-haiku-baseline","improvement":0.061647103636370194,"ci":[0.040998745680488995,0.0815839987668505],"what":"One correction factor per anchor, learnt from the other cities."},{"n":4,"panel":"R1","id":"001-v11-haiku-baseline-cal-region","label":"Correction per item and region","kind":"calibration","error":0.20742460338884036,"raw":null,"verdict":"accept","against":"006-calibrate-anchor","improvement":0.02292596620223702,"ci":[0.0032353177679440115,0.04114073236256555],"what":"Correction factors per anchor and world region."},{"n":5,"panel":"R1","id":"001-v11-haiku-baseline-cal-s5-region","label":"Region correction, shrunk to zero","kind":"calibration","error":0.2135303642475824,"raw":null,"verdict":"not_adopted","against":"006-calibrate-anchor","improvement":0.016820205343495008,"ci":[0.0042538324965132055,0.030025948341765762],"what":"Region factors pulled towards no correction when a region has few cities."},{"n":6,"panel":"R1","id":"001-v11-haiku-baseline-cal-region-h3","label":"Region correction, shrunk to item","kind":"calibration","error":0.205813571161015,"raw":null,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.001611032227825412,"ci":[-0.008679580109789807,0.012493475733615455],"what":"Region factors pulled towards the anchor-wide factor when a region has few cities."},{"n":7,"panel":"R1","id":"002-spec-definitions-cal-region","label":"Clearer item definitions","kind":"prompt","error":0.19703992678039306,"raw":0.27752164943076096,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.010384676608447234,"ci":[-0.0015648720629154948,0.022710721888490118],"what":"Prompt defines each item precisely (portion, venue type, serving size)."},{"n":8,"panel":"R1","id":"007-comparable-context-cal-region","label":"Prices of 3 comparable cities","kind":"prompt","error":0.22582850068643143,"raw":0.21664822655028376,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":-0.018403897297591055,"ci":[-0.03432359940908851,-0.0028685189373689737],"what":"Prompt includes reference prices for three similar cities."},{"n":9,"panel":"R1","id":"003-current-prices-cal-region","label":"\"Prices are current\" instruction","kind":"prompt","error":0.2035175849740699,"raw":0.2987902417198316,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.003907018414770437,"ci":[-0.0049201336477891515,0.012588732322752294],"what":"Prompt stresses that prices must be current, not historical."},{"n":10,"panel":"R1","id":"004-local-currency-cal-region","label":"Ask in local currency","kind":"prompt","error":0.20661292440791612,"raw":0.2759894952211965,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.0008116789809242871,"ci":[-0.01028897985896785,0.012310660251123925],"what":"Model answers in local currency; the app converts with a fixed exchange rate."},{"n":11,"panel":"R1","id":"005-anchor-basis-cal-region","label":"Local example per item","kind":"prompt","error":0.2162311716352935,"raw":0.2756917583603445,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":-0.008806568246453105,"ci":[-0.018993212094212286,0.001265226709036961],"what":"Model names a typical local example for each item before pricing it."},{"n":12,"panel":"R1","id":"008-accommodation-definitions-cal-region","label":"Accommodation definitions","kind":"prompt","error":0.2063092997738322,"raw":0.2984519198572631,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.0011153036150081635,"ci":[-0.007559896711126929,0.010162416477566619],"what":"Stricter definitions of each accommodation tier."},{"n":13,"panel":"R1","id":"012-v11-haiku-effort-high-cal-region","label":"Effort high instead of max (cost)","kind":"cost","error":0.22492487893338223,"raw":0.28608084307667225,"verdict":"reject","against":"013-v11-haiku-max-repeat1-cal-region","improvement":-0.014169387454452368,"ci":[-0.03188560694784334,0.002668409504972696],"what":"Haiku at high reasoning effort instead of maximum, to cut cost."},{"n":14,"panel":"R1","id":"018-search-grounded-high-cal-region","label":"Web search for prices (effort high)","kind":"prompt","error":0.21635830040202622,"raw":0.23231640554848787,"verdict":"reject","against":"012-v11-haiku-effort-high-cal-region","improvement":0.008566578531355935,"ci":[-0.015171395037799153,0.0317185852235072],"what":"Model may search the web for all prices."},{"n":15,"panel":"R2","id":"014-v11-haiku-high-r2","label":"v1.1 prompt, unchanged (333 cities)","kind":"baseline","error":0.29918424563990287,"raw":null,"verdict":"baseline","against":null,"improvement":null,"ci":null,"what":"Unchanged v1.1 prompt on the larger 333-city panel (Haiku, high effort)."},{"n":16,"panel":"R2","id":"014-v11-haiku-high-r2-cal","label":"Correction factor per item","kind":"calibration","error":0.26642824751111954,"raw":null,"verdict":"accept","against":"014-v11-haiku-high-r2","improvement":0.03275599812878321,"ci":[0.023490025045851452,0.04229020187155084],"what":"One correction factor per anchor."},{"n":17,"panel":"R2","id":"014-v11-haiku-high-r2-cal-region","label":"Correction per item and region","kind":"calibration","error":0.22377849232674263,"raw":null,"verdict":"accept","against":"014-v11-haiku-high-r2-cal","improvement":0.04264975518437704,"ci":[0.032578943479937644,0.05306762614700485],"what":"Correction factors per anchor and region."},{"n":18,"panel":"R2","id":"014-v11-haiku-high-r2-cal-region-h3","label":"Region correction, shrunk to item","kind":"calibration","error":0.22406912992156783,"raw":null,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":-0.0002906375948253903,"ci":[-0.00181919678168596,0.001242390428885826],"what":"Region factors pulled towards the anchor-wide factor."},{"n":19,"panel":"R2","id":"015-spec-definitions-r2-cal-region","label":"Clearer item definitions","kind":"prompt","error":0.22346659186732187,"raw":0.291026536363874,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":0.00031190045942056923,"ci":[-0.008056921539742279,0.00861749539184587],"what":"Precise item definitions, retested on 333 cities."},{"n":20,"panel":"R2","id":"016-accommodation-definitions-r2-cal-region","label":"Accommodation definitions","kind":"prompt","error":0.22193463514822753,"raw":0.3038585710913869,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":0.0018438571785150332,"ci":[-0.006869280826933507,0.010736958173374453],"what":"Accommodation definitions, retested on 333 cities."},{"n":21,"panel":"R2","id":"017-country-calibration-r2","label":"Correction per country, shrunk to region","kind":"calibration","error":0.21702630524598607,"raw":null,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":0.0067521870807568315,"ci":[0.0009935926222335533,0.012140413381563098],"what":"Correction per country, pulled towards its region when it has few cities."},{"n":22,"panel":"R2","id":"019-search-food-drink-r2-cal-region","label":"Web search for food and drink only","kind":"prompt","error":0.21258055829189085,"raw":0.24686178511817033,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":0.01119793403485168,"ci":[0.0011896056909538714,0.020835419423709752],"what":"Up to five web searches for food and drink prices only; hotels stay estimates."},{"n":23,"panel":"R2","id":"101-v11-luna-r2-cal-region","label":"Production model (GPT-6 Luna) + region correction","kind":"model","error":0.20770830576470148,"raw":0.2878430193159483,"verdict":"accept","against":"101-v11-luna-r2-cal","improvement":0.028647640178203145,"ci":[0.01857705193081335,0.03885607398234139],"what":"The production model, GPT-6 Luna at maximum effort, with region correction."},{"n":24,"panel":"R2","id":"020-luna-haiku-ensemble-r2-cal-region","label":"Luna and Haiku averaged","kind":"model","error":0.20205418178158407,"raw":0.2781979243717046,"verdict":"reject","against":"101-v11-luna-r2-cal-region","improvement":0.005654123983117463,"ci":[-0.0005305412102222713,0.01162008060810298],"what":"Average of Luna and Haiku answers, then region correction."},{"n":25,"panel":"R2","id":"021-luna-country-calibration-r2","label":"Luna + correction per country","kind":"calibration","error":0.19876350127372222,"raw":null,"verdict":"reject","against":"101-v11-luna-r2-cal-region","improvement":0.008944804490979362,"ci":[0.0033622808414972487,0.014352266904918502],"what":"Luna with country-in-region correction."},{"n":26,"panel":"R2","id":"022-bundle-luna-search-country","label":"Bundle: Luna + food/drink search + country correction","kind":"bundle","error":0.16493373101099074,"raw":0.20262401014923292,"verdict":"accept","against":"101-v11-luna-r2-cal-region","improvement":0.04277457475371099,"ci":[0.03167685236913544,0.05373259269907776],"what":"Luna + food and drink search + country-in-region correction, registered as one package."},{"n":27,"panel":"R3","id":"014-v11-haiku-high-r2","label":"v1.1 prompt, unchanged (Haiku)","kind":"baseline","error":0.4196674166992927,"raw":null,"verdict":"baseline","against":null,"improvement":null,"ci":null,"what":"Unchanged v1.1 prompt on the larger 333-city panel (Haiku, high effort)."},{"n":28,"panel":"R3","id":"014-v11-haiku-high-r2-cal-region","label":"Haiku + region correction","kind":"calibration","error":0.20935537937919704,"raw":null,"verdict":"accept","against":"014-v11-haiku-high-r2-cal","improvement":0.031410330130480515,"ci":[0.022775255770893715,0.04011442051104885],"what":"Correction factors per anchor and region."},{"n":29,"panel":"R3","id":"101-v11-luna-r2-cal-region","label":"Luna + region correction","kind":"model","error":0.20544404057592308,"raw":0.43512932647251745,"verdict":"accept","against":"101-v11-luna-r2-cal","improvement":0.027016047331631706,"ci":[0.01783867997620945,0.035890146199636756],"what":"The production model, GPT-6 Luna at maximum effort, with region correction."},{"n":30,"panel":"R3","id":"102-search-food-drink-luna-r2-cal-region","label":"Luna + food/drink search","kind":"prompt","error":0.17080874513593042,"raw":0.3490359884548341,"verdict":"accept","against":"101-v11-luna-r2-cal-region","improvement":0.03463529543999256,"ci":[0.025964991303543336,0.04350579721708146],"what":"Luna with food and drink search, region correction."},{"n":31,"panel":"R3","id":"022-bundle-luna-search-country","label":"Bundle 022 (R3 rescore)","kind":"bundle","error":0.16267656332595803,"raw":0.3490359884548341,"verdict":"accept","against":"101-v11-luna-r2-cal-region","improvement":0.04276747724996488,"ci":[0.03319304112112602,0.052610342584724565],"what":"Luna + food and drink search + country-in-region correction, registered as one package."},{"n":32,"panel":"Test","id":"201-v11-luna-test","label":"Previous best: Luna + region correction","kind":"baseline","error":0.22041277978396082,"raw":null,"what":"Previous best (Luna + region correction) on the 142 held-out cities.","verdict":"baseline","against":null,"improvement":null,"ci":null},{"n":33,"panel":"Test","id":"202-search-food-drink-luna-test","label":"Bundle 022 on held-out cities","kind":"bundle","error":0.18950466835908245,"raw":null,"what":"Bundle 022 on the 142 held-out cities, scored once.","verdict":"accept","against":"201-v11-luna-test","improvement":0.030908111424878246,"ci":[0.015917418510731286,0.04605170409729782]}],"panelOrder":["R1","R2","R3","Test"],"panels":{"R1":{"cities":54,"label":"R1 · 54 cities"},"R2":{"cities":333,"label":"R2 · 333 cities"},"R3":{"cities":333,"label":"R3 · booking hotel prices"},"Test":{"cities":142,"label":"Held-out test · 142"}},"headline":{"panel":"R3","label":"Best, 333 cities (R3)"},"note":"Errors on different panels are not comparable. R2 adds 279 harder, smaller cities to the original 54. R3 is R2 with hotel references replaced by actual Booking.com and Trip.com 3-star prices, so the corrections are refitted. The held-out test scores the best method once on 142 cities no experiment used, against R3."};
+const DATA = {"updated":"2026-10-17T16:38:49.690Z","rows":[{"n":1,"panel":"R1","id":"000-legacy-csv-baseline","label":"Old v1 CSV prices","kind":"reference","error":0.390204605452172,"raw":null,"verdict":"reference","against":null,"improvement":null,"ci":null,"what":"The prices the app shipped with (v1 CSV), scored as a reference point."},{"n":2,"panel":"R1","id":"001-v11-haiku-baseline","label":"v1.1 prompt, unchanged","kind":"baseline","error":0.2919976732274475,"raw":null,"verdict":"baseline","against":null,"improvement":null,"ci":null,"what":"The production v1.1 prompt unchanged, answered by Haiku: the starting point."},{"n":3,"panel":"R1","id":"006-calibrate-anchor","label":"Correction factor per item","kind":"calibration","error":0.23035056959107733,"raw":null,"verdict":"accept","against":"001-v11-haiku-baseline","improvement":0.061647103636370194,"ci":[0.040998745680488995,0.0815839987668505],"what":"One correction factor per anchor, learnt from the other cities."},{"n":4,"panel":"R1","id":"001-v11-haiku-baseline-cal-region","label":"Correction per item and region","kind":"calibration","error":0.20742460338884036,"raw":null,"verdict":"accept","against":"006-calibrate-anchor","improvement":0.02292596620223702,"ci":[0.0032353177679440115,0.04114073236256555],"what":"Correction factors per anchor and world region."},{"n":5,"panel":"R1","id":"001-v11-haiku-baseline-cal-s5-region","label":"Region correction, shrunk to zero","kind":"calibration","error":0.2135303642475824,"raw":null,"verdict":"not_adopted","against":"006-calibrate-anchor","improvement":0.016820205343495008,"ci":[0.0042538324965132055,0.030025948341765762],"what":"Region factors pulled towards no correction when a region has few cities."},{"n":6,"panel":"R1","id":"001-v11-haiku-baseline-cal-region-h3","label":"Region correction, shrunk to item","kind":"calibration","error":0.205813571161015,"raw":null,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.001611032227825412,"ci":[-0.008679580109789807,0.012493475733615455],"what":"Region factors pulled towards the anchor-wide factor when a region has few cities."},{"n":7,"panel":"R1","id":"002-spec-definitions-cal-region","label":"Clearer item definitions","kind":"prompt","error":0.19703992678039306,"raw":0.27752164943076096,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.010384676608447234,"ci":[-0.0015648720629154948,0.022710721888490118],"what":"Prompt defines each item precisely (portion, venue type, serving size)."},{"n":8,"panel":"R1","id":"007-comparable-context-cal-region","label":"Prices of 3 comparable cities","kind":"prompt","error":0.22582850068643143,"raw":0.21664822655028376,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":-0.018403897297591055,"ci":[-0.03432359940908851,-0.0028685189373689737],"what":"Prompt includes reference prices for three similar cities."},{"n":9,"panel":"R1","id":"003-current-prices-cal-region","label":"\"Prices are current\" instruction","kind":"prompt","error":0.2035175849740699,"raw":0.2987902417198316,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.003907018414770437,"ci":[-0.0049201336477891515,0.012588732322752294],"what":"Prompt stresses that prices must be current, not historical."},{"n":10,"panel":"R1","id":"004-local-currency-cal-region","label":"Ask in local currency","kind":"prompt","error":0.20661292440791612,"raw":0.2759894952211965,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.0008116789809242871,"ci":[-0.01028897985896785,0.012310660251123925],"what":"Model answers in local currency; the app converts with a fixed exchange rate."},{"n":11,"panel":"R1","id":"005-anchor-basis-cal-region","label":"Local example per item","kind":"prompt","error":0.2162311716352935,"raw":0.2756917583603445,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":-0.008806568246453105,"ci":[-0.018993212094212286,0.001265226709036961],"what":"Model names a typical local example for each item before pricing it."},{"n":12,"panel":"R1","id":"008-accommodation-definitions-cal-region","label":"Accommodation definitions","kind":"prompt","error":0.2063092997738322,"raw":0.2984519198572631,"verdict":"reject","against":"001-v11-haiku-baseline-cal-region","improvement":0.0011153036150081635,"ci":[-0.007559896711126929,0.010162416477566619],"what":"Stricter definitions of each accommodation tier."},{"n":13,"panel":"R1","id":"012-v11-haiku-effort-high-cal-region","label":"Effort high instead of max (cost)","kind":"cost","error":0.22492487893338223,"raw":0.28608084307667225,"verdict":"reject","against":"013-v11-haiku-max-repeat1-cal-region","improvement":-0.014169387454452368,"ci":[-0.03188560694784334,0.002668409504972696],"what":"Haiku at high reasoning effort instead of maximum, to cut cost."},{"n":14,"panel":"R1","id":"018-search-grounded-high-cal-region","label":"Web search for prices (effort high)","kind":"prompt","error":0.21635830040202622,"raw":0.23231640554848787,"verdict":"reject","against":"012-v11-haiku-effort-high-cal-region","improvement":0.008566578531355935,"ci":[-0.015171395037799153,0.0317185852235072],"what":"Model may search the web for all prices."},{"n":15,"panel":"R2","id":"014-v11-haiku-high-r2","label":"v1.1 prompt, unchanged (333 cities)","kind":"baseline","error":0.29918424563990287,"raw":null,"verdict":"baseline","against":null,"improvement":null,"ci":null,"what":"Unchanged v1.1 prompt on the larger 333-city panel (Haiku, high effort)."},{"n":16,"panel":"R2","id":"014-v11-haiku-high-r2-cal","label":"Correction factor per item","kind":"calibration","error":0.26642824751111954,"raw":null,"verdict":"accept","against":"014-v11-haiku-high-r2","improvement":0.03275599812878321,"ci":[0.023490025045851452,0.04229020187155084],"what":"One correction factor per anchor."},{"n":17,"panel":"R2","id":"014-v11-haiku-high-r2-cal-region","label":"Correction per item and region","kind":"calibration","error":0.22377849232674263,"raw":null,"verdict":"accept","against":"014-v11-haiku-high-r2-cal","improvement":0.04264975518437704,"ci":[0.032578943479937644,0.05306762614700485],"what":"Correction factors per anchor and region."},{"n":18,"panel":"R2","id":"014-v11-haiku-high-r2-cal-region-h3","label":"Region correction, shrunk to item","kind":"calibration","error":0.22406912992156783,"raw":null,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":-0.0002906375948253903,"ci":[-0.00181919678168596,0.001242390428885826],"what":"Region factors pulled towards the anchor-wide factor."},{"n":19,"panel":"R2","id":"015-spec-definitions-r2-cal-region","label":"Clearer item definitions","kind":"prompt","error":0.22346659186732187,"raw":0.291026536363874,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":0.00031190045942056923,"ci":[-0.008056921539742279,0.00861749539184587],"what":"Precise item definitions, retested on 333 cities."},{"n":20,"panel":"R2","id":"016-accommodation-definitions-r2-cal-region","label":"Accommodation definitions","kind":"prompt","error":0.22193463514822753,"raw":0.3038585710913869,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":0.0018438571785150332,"ci":[-0.006869280826933507,0.010736958173374453],"what":"Accommodation definitions, retested on 333 cities."},{"n":21,"panel":"R2","id":"017-country-calibration-r2","label":"Correction per country, shrunk to region","kind":"calibration","error":0.21702630524598607,"raw":null,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":0.0067521870807568315,"ci":[0.0009935926222335533,0.012140413381563098],"what":"Correction per country, pulled towards its region when it has few cities."},{"n":22,"panel":"R2","id":"019-search-food-drink-r2-cal-region","label":"Web search for food and drink only","kind":"prompt","error":0.21258055829189085,"raw":0.24686178511817033,"verdict":"reject","against":"014-v11-haiku-high-r2-cal-region","improvement":0.01119793403485168,"ci":[0.0011896056909538714,0.020835419423709752],"what":"Up to five web searches for food and drink prices only; hotels stay estimates."},{"n":23,"panel":"R2","id":"101-v11-luna-r2-cal-region","label":"Production model (GPT-6 Luna) + region correction","kind":"model","error":0.20770830576470148,"raw":0.2878430193159483,"verdict":"accept","against":"101-v11-luna-r2-cal","improvement":0.028647640178203145,"ci":[0.01857705193081335,0.03885607398234139],"what":"The production model, GPT-6 Luna at maximum effort, with region correction."},{"n":24,"panel":"R2","id":"020-luna-haiku-ensemble-r2-cal-region","label":"Luna and Haiku averaged","kind":"model","error":0.20205418178158407,"raw":0.2781979243717046,"verdict":"reject","against":"101-v11-luna-r2-cal-region","improvement":0.005654123983117463,"ci":[-0.0005305412102222713,0.01162008060810298],"what":"Average of Luna and Haiku answers, then region correction."},{"n":25,"panel":"R2","id":"021-luna-country-calibration-r2","label":"Luna + correction per country","kind":"calibration","error":0.19876350127372222,"raw":null,"verdict":"reject","against":"101-v11-luna-r2-cal-region","improvement":0.008944804490979362,"ci":[0.0033622808414972487,0.014352266904918502],"what":"Luna with country-in-region correction."},{"n":26,"panel":"R2","id":"022-bundle-luna-search-country","label":"Bundle: Luna + food/drink search + country correction","kind":"bundle","error":0.16493373101099074,"raw":0.20262401014923292,"verdict":"accept","against":"101-v11-luna-r2-cal-region","improvement":0.04277457475371099,"ci":[0.03167685236913544,0.05373259269907776],"what":"Luna + food and drink search + country-in-region correction, registered as one package."},{"n":27,"panel":"R3","id":"014-v11-haiku-high-r2","label":"v1.1 prompt, unchanged (Haiku)","kind":"baseline","error":0.4196674166992927,"raw":null,"verdict":"baseline","against":null,"improvement":null,"ci":null,"what":"Unchanged v1.1 prompt on the larger 333-city panel (Haiku, high effort)."},{"n":28,"panel":"R3","id":"014-v11-haiku-high-r2-cal-region","label":"Haiku + region correction","kind":"calibration","error":0.20935537937919704,"raw":null,"verdict":"accept","against":"014-v11-haiku-high-r2-cal","improvement":0.031410330130480515,"ci":[0.022775255770893715,0.04011442051104885],"what":"Correction factors per anchor and region."},{"n":29,"panel":"R3","id":"101-v11-luna-r2-cal-region","label":"Luna + region correction","kind":"model","error":0.20544404057592308,"raw":0.43512932647251745,"verdict":"accept","against":"101-v11-luna-r2-cal","improvement":0.027016047331631706,"ci":[0.01783867997620945,0.035890146199636756],"what":"The production model, GPT-6 Luna at maximum effort, with region correction."},{"n":30,"panel":"R3","id":"102-search-food-drink-luna-r2-cal-region","label":"Luna + food/drink search","kind":"prompt","error":0.17080874513593042,"raw":0.3490359884548341,"verdict":"accept","against":"101-v11-luna-r2-cal-region","improvement":0.03463529543999256,"ci":[0.025964991303543336,0.04350579721708146],"what":"Luna with food and drink search, region correction."},{"n":31,"panel":"R3","id":"022-bundle-luna-search-country","label":"Bundle 022 (R3 rescore)","kind":"bundle","error":0.16267656332595803,"raw":0.3490359884548341,"verdict":"accept","against":"101-v11-luna-r2-cal-region","improvement":0.04276747724996488,"ci":[0.03319304112112602,0.052610342584724565],"what":"Luna + food and drink search + country-in-region correction, registered as one package."},{"n":32,"panel":"Test","id":"201-v11-luna-test","label":"Previous best: Luna + region correction","kind":"baseline","error":0.22041277978396082,"raw":null,"what":"Previous best (Luna + region correction) on the 142 held-out cities.","verdict":"baseline","against":null,"improvement":null,"ci":null},{"n":33,"panel":"Test","id":"202-search-food-drink-luna-test","label":"Bundle 022 on held-out cities","kind":"bundle","error":0.18950466835908245,"raw":null,"what":"Bundle 022 on the 142 held-out cities, scored once.","verdict":"accept","against":"201-v11-luna-test","improvement":0.030908111424878246,"ci":[0.015917418510731286,0.04605170409729782]}],"panelOrder":["R1","R2","R3","Test"],"panels":{"R1":{"cities":54,"label":"R1 · 54 cities"},"R2":{"cities":333,"label":"R2 · 333 cities"},"R3":{"cities":333,"label":"R3 · booking hotel prices"},"Test":{"cities":142,"label":"Held-out test · 142"}},"headline":{"panel":"R3","label":"Best, 333 cities (R3)"},"note":"Errors on different panels are not comparable. R2 adds 279 harder, smaller cities to the original 54. R3 is R2 with hotel references replaced by actual Booking.com and Trip.com 3-star prices, so the corrections are refitted. The held-out test scores the best method once on 142 cities no experiment used, against R3."};
 const pct = e => Math.round((Math.exp(e) - 1) * 100);
 const fmt = v => v === null || v === undefined ? '–' : v.toFixed(3);
 const VLABEL = { accept: 'Accepted', not_adopted: 'Passed, not adopted', reject: 'Rejected', promising_extend: 'Promising', invalid_coverage: 'Invalid', pending: 'Running', unassessed: 'Scored', reference: 'Reference', baseline: 'Baseline' };
 
 const PCOL = { R1: 'var(--s1)', R2: 'var(--s2)', R3: 'var(--s3)', Test: 'var(--s4)' };
-let showRaw = false;
-// Position of each experiment within its panel (1, 2, ...): every panel shares one x-axis of hill-climb steps.
+// Viewer preferences: layout, visible panels and raw scores. Remembered per browser when storage is available.
+const store = { get(k, d) { try { const v = localStorage.getItem('hc-' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('hc-' + k, JSON.stringify(v)); } catch {} } };
+let view = store.get('view', 'split');
+let showRaw = store.get('raw', false);
+let hidden = new Set(store.get('hidden', []).filter(p => DATA.panelOrder.includes(p)));
+const visiblePanels = () => DATA.panelOrder.filter(p => !hidden.has(p));
+// Position of each experiment within its panel (1, 2, ...), used by the overlaid view.
 const stepOf = r => DATA.rows.filter(x => x.panel === r.panel && x.n <= r.n).length;
 
 function bestSeries(rows) {
@@ -400,21 +421,47 @@ function bestSeries(rows) {
 }
 
 function render() {
-  const rows = DATA.rows, svg = document.getElementById('chart');
-  const W = Math.max(320, svg.clientWidth || svg.parentNode.clientWidth), narrow = W < 560;
-  const H = narrow ? 340 : 400, m = { l: narrow ? 44 : 56, r: narrow ? 92 : 128, t: 16, b: 44 };
+  const svg = document.getElementById('chart');
+  const panels = visiblePanels(), rows = DATA.rows.filter(r => panels.includes(r.panel));
+  const W = Math.max(320, svg.clientWidth || svg.parentNode.clientWidth), narrow = W < 560, split = view === 'split';
+  const H = narrow ? 340 : 410;
+  const m = split ? { l: narrow ? 44 : 56, r: narrow ? 44 : 56, t: 34, b: 44 } : { l: narrow ? 44 : 56, r: narrow ? 92 : 128, t: 16, b: 44 };
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('height', H);
-  const errs = rows.flatMap(r => showRaw ? [r.error, r.raw] : [r.error]).filter(v => v !== null);
-  const y0 = Math.floor((Math.min(...errs) - 0.008) * 50) / 50, y1 = Math.ceil((Math.max(...errs) + 0.008) * 50) / 50;
-  const steps = Math.max(...rows.map(stepOf));
-  const slot = (W - m.l - m.r) / steps;
-  const off = { R1: -0.15, R2: -0.05, R3: 0.05, Test: 0.15 };
-  const X = r => m.l + slot * (stepOf(r) - 0.5 + (off[r.panel] || 0));
-  const Y = v => m.t + (y1 - v) / (y1 - y0) * (H - m.t - m.b);
+  svg.innerHTML = '';
   const ns = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs, parent = svg) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
-  svg.innerHTML = '';
+  if (!rows.length) { el('text', { x: W / 2, y: H / 2, 'text-anchor': 'middle', class: 'axis-title' }).textContent = 'Select a panel below to show it.'; return; }
 
+  const errs = rows.flatMap(r => showRaw ? [r.error, r.raw] : [r.error]).filter(v => v !== null);
+  const y0 = Math.floor((Math.min(...errs) - 0.008) * 50) / 50, y1 = Math.ceil((Math.max(...errs) + 0.008) * 50) / 50;
+  const Y = v => m.t + (y1 - v) / (y1 - y0) * (H - m.t - m.b);
+
+  // x positions: side by side gives every experiment its own slot with one empty slot between panels;
+  // overlaid lines panels up by step within the panel, with a small offset so coincident points stay visible.
+  let X, slot, ticks = [];
+  if (split) {
+    const gapIx = rows.map(r => panels.indexOf(r.panel));
+    slot = (W - m.l - m.r) / (rows.length + panels.length - 1);
+    const pos = new Map(rows.map((r, i) => [r.n, m.l + slot * (i + 0.5 + gapIx[i])]));
+    X = r => pos.get(r.n);
+    rows.forEach(r => ticks.push([X(r), r.n]));
+  } else {
+    const steps = Math.max(...rows.map(stepOf));
+    slot = (W - m.l - m.r) / steps;
+    const off = { R1: -0.15, R2: -0.05, R3: 0.05, Test: 0.15 };
+    X = r => m.l + slot * (stepOf(r) - 0.5 + (panels.length > 1 ? off[r.panel] || 0 : 0));
+    for (let s = 1; s <= steps; s++) ticks.push([m.l + slot * (s - 0.5), s]);
+  }
+
+  // Panel bands (side by side only)
+  if (split) for (const panel of panels) {
+    const pr = rows.filter(r => r.panel === panel);
+    const xa = X(pr[0]) - slot / 2, xb = X(pr[pr.length - 1]) + slot / 2;
+    el('rect', { x: xa, y: m.t - 24, width: xb - xa, height: H - m.b - m.t + 24, fill: 'var(--band)', rx: 6 });
+    el('rect', { x: xa + 8, y: m.t - 17, width: 10, height: 3, rx: 1.5, fill: PCOL[panel] });
+    const t = el('text', { x: xa + 22, y: m.t - 11, class: 'band-label' });
+    t.textContent = (xb - xa) > DATA.panels[panel].label.length * 7.2 + 30 ? DATA.panels[panel].label : panel;
+  }
   // Grid and axes
   const stepY = (y1 - y0) > 0.2 ? 0.04 : 0.02;
   for (let v = y0; v <= y1 + 1e-9; v += stepY) {
@@ -423,25 +470,30 @@ function render() {
     el('text', { x: m.l - 8, y: y + 4, 'text-anchor': 'end' }).textContent = v.toFixed(2);
     el('text', { x: W - m.r + 6, y: y + 4, 'text-anchor': 'start' }).textContent = '≈' + pct(v) + '%';
   }
-  for (let s = 1; s <= steps; s++) el('text', { x: m.l + slot * (s - 0.5), y: H - m.b + 18, 'text-anchor': 'middle' }).textContent = s;
-  el('text', { x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', class: 'axis-title' }).textContent = 'Experiment step within its panel';
+  const every = slot < 16 ? 2 : 1;
+  ticks.forEach(([x, label], i) => { if (i % every === 0) el('text', { x, y: H - m.b + 18, 'text-anchor': 'middle' }).textContent = label; });
+  el('text', { x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', class: 'axis-title' }).textContent = split ? 'Experiment' : 'Experiment step within its panel';
   const ly = el('text', { x: 12, y: (m.t + H - m.b) / 2, 'text-anchor': 'middle', class: 'axis-title', transform: `rotate(-90 12 ${(m.t + H - m.b) / 2})` });
   ly.textContent = narrow ? 'Error' : 'Error (budget-weighted mean |log error|)';
 
-  // Best-so-far step line per panel, in the panel's colour, extended to the right edge with a direct end label
-  const best = bestSeries(rows), labels = [];
-  for (const panel of DATA.panelOrder) {
+  // Best-so-far step line per panel. Side by side: soft fill beneath, line ends at its band, value label above.
+  // Overlaid: line runs to the right edge with a direct label in the margin.
+  const best = bestSeries(rows), labels = [], splitLabels = [];
+  for (const panel of panels) {
     const pts = best.filter(b => b.panel === panel);
     if (!pts.length) continue;
+    const pr = rows.filter(r => r.panel === panel);
     let d = '', prev = null;
     pts.forEach(p => { const x = X(rows.find(r => r.n === p.n)), y = Y(p.best);
-      if (prev === null) d += `M${x},${y}`; else d += ` L${x},${Y(prev)} L${x},${y}`; prev = p.best; });
+      if (prev === null) d += split ? `M${x - slot * 0.35},${y} L${x},${y}` : `M${x},${y}`; else d += ` L${x},${Y(prev)} L${x},${y}`; prev = p.best; });
     const last = pts[pts.length - 1];
-    d += ` L${W - m.r},${Y(last.best)}`;
-    el('path', { d, fill: 'none', stroke: PCOL[panel], 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
-    labels.push({ panel, y: Y(last.best) + 4, v: last.best });
+    const end = split ? X(pr[pr.length - 1]) + slot * 0.35 : W - m.r;
+    d += ` L${end},${Y(last.best)}`;
+    if (split) el('path', { d: d + ` L${end},${H - m.b} L${X(rows.find(r => r.n === pts[0].n)) - slot * 0.35},${H - m.b} Z`, fill: PCOL[panel], opacity: 0.08, stroke: 'none' });
+    el('path', { d, fill: 'none', stroke: PCOL[panel], 'stroke-width': split ? 2.5 : 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
+    if (split) splitLabels.push({ x: end, y: Y(last.best) - 9, text: `${last.best.toFixed(3)} · ≈${pct(last.best)}%` });
+    else labels.push({ panel, y: Y(last.best) + 4, v: last.best });
   }
-  // End labels sit past the % axis, nudged apart so they never collide
   labels.sort((a, b) => a.y - b.y);
   for (let i = 1; i < labels.length; i++) if (labels[i].y - labels[i - 1].y < 15) labels[i].y = labels[i - 1].y + 15;
   const lx = W - m.r + (narrow ? 36 : 42);
@@ -480,17 +532,31 @@ function render() {
     g.addEventListener('mousemove', show); g.addEventListener('focus', show);
     g.addEventListener('mouseleave', () => tip.hidden = true); g.addEventListener('blur', () => tip.hidden = true);
   });
+  // Side-by-side value labels go on top of the points, with a surface halo so they stay legible.
+  for (const l of splitLabels) el('text', { x: l.x, y: l.y, 'text-anchor': 'end', class: 'end-label halo' }).textContent = l.text;
+}
+
+function controls() {
+  const c = document.getElementById('controls');
+  const seg = ['split', 'overlay'].map(v => `<button type="button" data-view="${v}" aria-pressed="${view === v}">${v === 'split' ? 'Side by side' : 'Overlaid'}</button>`).join('');
+  const chips = DATA.panelOrder.map(p => `<button type="button" class="chip" data-panel="${p}" aria-pressed="${!hidden.has(p)}"><i class="sw" style="background:${PCOL[p]}"></i>${DATA.panels[p].label}</button>`).join('');
+  c.innerHTML = `<div class="seg" role="group" aria-label="Layout">${seg}</div><div class="chips" role="group" aria-label="Panels shown">${chips}</div>` +
+    `<label class="toggle"><input type="checkbox" id="raw"${showRaw ? ' checked' : ''}> Raw scores</label>`;
+  c.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { view = b.dataset.view; store.set('view', view); controls(); render(); }));
+  c.querySelectorAll('[data-panel]').forEach(b => b.addEventListener('click', () => {
+    const p = b.dataset.panel; hidden.has(p) ? hidden.delete(p) : hidden.add(p); store.set('hidden', [...hidden]); controls(); render(); }));
+  document.getElementById('raw').addEventListener('change', e => { showRaw = e.target.checked; store.set('raw', showRaw); render(); });
 }
 
 function legend() {
-  const shapes = `<span><svg width="10" height="10"><circle cx="5" cy="5" r="4.5" fill="var(--muted)"/></svg>Accepted</span>` +
+  document.getElementById('legend').innerHTML =
+    `<span><svg width="10" height="10"><circle cx="5" cy="5" r="4.5" fill="var(--muted)"/></svg>Accepted</span>` +
     `<span><svg width="10" height="10"><circle cx="5" cy="5" r="3.8" fill="var(--surface)" stroke="var(--muted)" stroke-width="2.4"/></svg>Passed, not adopted</span>` +
     `<span><svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.3"/></svg>Rejected</span>` +
     `<span><svg width="10" height="10"><rect x="1" y="1" width="8" height="8" fill="var(--muted)"/></svg>Baseline</span>` +
-    `<span><svg width="12" height="12"><path d="M6 1 L11 6 L6 11 L1 6 Z" fill="var(--muted)"/></svg>Old v1 prices</span>`;
-  document.getElementById('legend').innerHTML = DATA.panelOrder.map(p => `<span><i class="sw" style="background:${PCOL[p]}"></i>${DATA.panels[p].label}</span>`).join('') +
-    shapes + `<label class="toggle"><input type="checkbox" id="raw"> Show raw scores before correction</label>`;
-  document.getElementById('raw').addEventListener('change', e => { showRaw = e.target.checked; render(); });
+    `<span><svg width="12" height="12"><path d="M6 1 L11 6 L6 11 L1 6 Z" fill="var(--muted)"/></svg>Old v1 prices</span>` +
+    `<span><svg width="26" height="10"><line x1="0" y1="5" x2="26" y2="5" stroke="var(--muted)" stroke-width="2.5"/></svg>Best accepted so far</span>` +
+    `<span><svg width="10" height="16"><line x1="5" y1="3" x2="5" y2="14" stroke="var(--muted)" stroke-dasharray="2 2"/><circle cx="5" cy="3" r="2" fill="var(--muted)"/></svg>Raw score (when shown)</span>`;
 }
 
 function fill() {
@@ -521,6 +587,6 @@ function fill() {
   t.innerHTML = html + '</tbody>';
   document.getElementById('foot').textContent = `Updated ${new Date(DATA.updated).toUTCString().replace(':00 GMT', ' UTC')}. Error is the budget-weighted mean absolute log error per city, averaged over dev cities; ≈% is exp(error) − 1.`;
 }
-fill(); legend(); render();
+fill(); controls(); legend(); render();
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 120); });
 </script>

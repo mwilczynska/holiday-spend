@@ -36,6 +36,17 @@ h1 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 4vw, 
 #chart .axis-title { font-family: var(--body); fill: var(--muted); font-size: 12px; }
 #chart .band-label { font-family: var(--body); font-size: 12px; font-weight: 600; fill: var(--ink); }
 #chart .end-label { font-family: var(--mono); font-size: 12px; fill: var(--ink); font-weight: 500; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-bottom: 10px; font-size: 13px; color: var(--muted); }
+.seg { display: inline-flex; border: 1px solid var(--grid); border-radius: 8px; overflow: hidden; }
+.seg button { font: inherit; font-size: 12.5px; color: var(--muted); background: transparent; border: 0; padding: 5px 12px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--grid); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-size: 12.5px; display: inline-flex; align-items: center; gap: 7px; color: var(--ink); background: var(--surface); border: 1px solid var(--grid); border-radius: 999px; padding: 4px 11px; cursor: pointer; }
+.chip[aria-pressed="false"] { color: var(--faint); text-decoration: line-through; }
+.chip[aria-pressed="false"] .sw { opacity: .3; }
+.seg button:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#chart .halo { paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
 .toggle { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .sw { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
 .pt { cursor: pointer; }
@@ -100,12 +111,13 @@ footer { color: var(--faint); font-size: 12px; }
   <header>
     <div>
       <h1>City Cost Hill Climb</h1>
-      <p class="sub">Each point is one experiment on Holiday Spend's city-cost estimates, scored against reference prices. Lower is better. Each panel's line tracks its best accepted method. Panels share one axis, numbered by step within the panel.</p>
+      <p class="sub">Each point is one experiment on Holiday Spend's city-cost estimates, scored against reference prices. Lower is better. Each panel's line tracks its best accepted method. Switch between side-by-side and overlaid views, and show or hide panels.</p>
     </div>
     <div class="summary" id="summary"></div>
   </header>
 
   <section class="panel" aria-label="Error by experiment">
+    <div class="controls" id="controls"></div>
     <svg id="chart" role="img" aria-label="Error by experiment with best-so-far line"></svg>
     <div class="legend" id="legend"></div>
   </section>
@@ -140,8 +152,11 @@ footer { color: var(--faint); font-size: 12px; }
       <div><dt>Right axis: ≈ typical error</dt><dd>The same error expressed as a percentage, so it reads in everyday
         terms: an error of 0.18 means a typical price is off by about 20%. It is a relabelling of the left axis, not a
         second measure.</dd></div>
-      <div><dt>Bottom axis: step</dt><dd>The order of experiments within each panel. Panels share this axis so they can
-        be compared side by side. The experiment's overall number is in its tooltip and in the register.</dd></div>
+      <div><dt>Bottom axis and layout</dt><dd><b>Side by side</b> gives each experiment its own slot, numbered in
+        the order it ran, with panels in separate bands. <b>Overlaid</b> puts all panels on one axis, numbered by step within
+        each panel, so their progress can be compared directly.</dd></div>
+      <div><dt>Showing and hiding panels</dt><dd>Click a panel's chip above the chart to hide or show it; the error axis
+        rescales to what is shown. The page remembers your layout and choices in this browser.</dd></div>
       <div><dt>Colours</dt><dd>Each colour is a panel: a fixed set of cities and reference prices (see
         <a href="#refs">Reference prices</a>). Errors from different panels are not directly comparable, because harder
         cities or different reference prices change the scale.</dd></div>
@@ -150,7 +165,7 @@ footer { color: var(--faint); font-size: 12px; }
       <div><dt>Shapes</dt><dd>Square: the starting baseline. Filled circle: accepted. Thick ring: passed the rule but not
         adopted, because an earlier accepted method was already better. Thin ring: rejected. Diamond: the app's original
         v1 city prices, for reference.</dd></div>
-      <div><dt>Raw scores (toggle)</dt><dd>Most methods include a correction step. The toggle shows each method's error
+      <div><dt>Raw scores</dt><dd>Most methods include a correction step. The toggle shows each method's error
         before correction as a small dot joined to its corrected score, so you can see how much the correction does.</dd></div>
     </dl>
   </section>
@@ -380,8 +395,14 @@ const fmt = v => v === null || v === undefined ? '–' : v.toFixed(3);
 const VLABEL = { accept: 'Accepted', not_adopted: 'Passed, not adopted', reject: 'Rejected', promising_extend: 'Promising', invalid_coverage: 'Invalid', pending: 'Running', unassessed: 'Scored', reference: 'Reference', baseline: 'Baseline' };
 
 const PCOL = { R1: 'var(--s1)', R2: 'var(--s2)', R3: 'var(--s3)', Test: 'var(--s4)' };
-let showRaw = false;
-// Position of each experiment within its panel (1, 2, ...): every panel shares one x-axis of hill-climb steps.
+// Viewer preferences: layout, visible panels and raw scores. Remembered per browser when storage is available.
+const store = { get(k, d) { try { const v = localStorage.getItem('hc-' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('hc-' + k, JSON.stringify(v)); } catch {} } };
+let view = store.get('view', 'split');
+let showRaw = store.get('raw', false);
+let hidden = new Set(store.get('hidden', []).filter(p => DATA.panelOrder.includes(p)));
+const visiblePanels = () => DATA.panelOrder.filter(p => !hidden.has(p));
+// Position of each experiment within its panel (1, 2, ...), used by the overlaid view.
 const stepOf = r => DATA.rows.filter(x => x.panel === r.panel && x.n <= r.n).length;
 
 function bestSeries(rows) {
@@ -400,21 +421,47 @@ function bestSeries(rows) {
 }
 
 function render() {
-  const rows = DATA.rows, svg = document.getElementById('chart');
-  const W = Math.max(320, svg.clientWidth || svg.parentNode.clientWidth), narrow = W < 560;
-  const H = narrow ? 340 : 400, m = { l: narrow ? 44 : 56, r: narrow ? 92 : 128, t: 16, b: 44 };
+  const svg = document.getElementById('chart');
+  const panels = visiblePanels(), rows = DATA.rows.filter(r => panels.includes(r.panel));
+  const W = Math.max(320, svg.clientWidth || svg.parentNode.clientWidth), narrow = W < 560, split = view === 'split';
+  const H = narrow ? 340 : 410;
+  const m = split ? { l: narrow ? 44 : 56, r: narrow ? 44 : 56, t: 34, b: 44 } : { l: narrow ? 44 : 56, r: narrow ? 92 : 128, t: 16, b: 44 };
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('height', H);
-  const errs = rows.flatMap(r => showRaw ? [r.error, r.raw] : [r.error]).filter(v => v !== null);
-  const y0 = Math.floor((Math.min(...errs) - 0.008) * 50) / 50, y1 = Math.ceil((Math.max(...errs) + 0.008) * 50) / 50;
-  const steps = Math.max(...rows.map(stepOf));
-  const slot = (W - m.l - m.r) / steps;
-  const off = { R1: -0.15, R2: -0.05, R3: 0.05, Test: 0.15 };
-  const X = r => m.l + slot * (stepOf(r) - 0.5 + (off[r.panel] || 0));
-  const Y = v => m.t + (y1 - v) / (y1 - y0) * (H - m.t - m.b);
+  svg.innerHTML = '';
   const ns = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs, parent = svg) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
-  svg.innerHTML = '';
+  if (!rows.length) { el('text', { x: W / 2, y: H / 2, 'text-anchor': 'middle', class: 'axis-title' }).textContent = 'Select a panel below to show it.'; return; }
 
+  const errs = rows.flatMap(r => showRaw ? [r.error, r.raw] : [r.error]).filter(v => v !== null);
+  const y0 = Math.floor((Math.min(...errs) - 0.008) * 50) / 50, y1 = Math.ceil((Math.max(...errs) + 0.008) * 50) / 50;
+  const Y = v => m.t + (y1 - v) / (y1 - y0) * (H - m.t - m.b);
+
+  // x positions: side by side gives every experiment its own slot with one empty slot between panels;
+  // overlaid lines panels up by step within the panel, with a small offset so coincident points stay visible.
+  let X, slot, ticks = [];
+  if (split) {
+    const gapIx = rows.map(r => panels.indexOf(r.panel));
+    slot = (W - m.l - m.r) / (rows.length + panels.length - 1);
+    const pos = new Map(rows.map((r, i) => [r.n, m.l + slot * (i + 0.5 + gapIx[i])]));
+    X = r => pos.get(r.n);
+    rows.forEach(r => ticks.push([X(r), r.n]));
+  } else {
+    const steps = Math.max(...rows.map(stepOf));
+    slot = (W - m.l - m.r) / steps;
+    const off = { R1: -0.15, R2: -0.05, R3: 0.05, Test: 0.15 };
+    X = r => m.l + slot * (stepOf(r) - 0.5 + (panels.length > 1 ? off[r.panel] || 0 : 0));
+    for (let s = 1; s <= steps; s++) ticks.push([m.l + slot * (s - 0.5), s]);
+  }
+
+  // Panel bands (side by side only)
+  if (split) for (const panel of panels) {
+    const pr = rows.filter(r => r.panel === panel);
+    const xa = X(pr[0]) - slot / 2, xb = X(pr[pr.length - 1]) + slot / 2;
+    el('rect', { x: xa, y: m.t - 24, width: xb - xa, height: H - m.b - m.t + 24, fill: 'var(--band)', rx: 6 });
+    el('rect', { x: xa + 8, y: m.t - 17, width: 10, height: 3, rx: 1.5, fill: PCOL[panel] });
+    const t = el('text', { x: xa + 22, y: m.t - 11, class: 'band-label' });
+    t.textContent = (xb - xa) > DATA.panels[panel].label.length * 7.2 + 30 ? DATA.panels[panel].label : panel;
+  }
   // Grid and axes
   const stepY = (y1 - y0) > 0.2 ? 0.04 : 0.02;
   for (let v = y0; v <= y1 + 1e-9; v += stepY) {
@@ -423,25 +470,30 @@ function render() {
     el('text', { x: m.l - 8, y: y + 4, 'text-anchor': 'end' }).textContent = v.toFixed(2);
     el('text', { x: W - m.r + 6, y: y + 4, 'text-anchor': 'start' }).textContent = '≈' + pct(v) + '%';
   }
-  for (let s = 1; s <= steps; s++) el('text', { x: m.l + slot * (s - 0.5), y: H - m.b + 18, 'text-anchor': 'middle' }).textContent = s;
-  el('text', { x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', class: 'axis-title' }).textContent = 'Experiment step within its panel';
+  const every = slot < 16 ? 2 : 1;
+  ticks.forEach(([x, label], i) => { if (i % every === 0) el('text', { x, y: H - m.b + 18, 'text-anchor': 'middle' }).textContent = label; });
+  el('text', { x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', class: 'axis-title' }).textContent = split ? 'Experiment' : 'Experiment step within its panel';
   const ly = el('text', { x: 12, y: (m.t + H - m.b) / 2, 'text-anchor': 'middle', class: 'axis-title', transform: `rotate(-90 12 ${(m.t + H - m.b) / 2})` });
   ly.textContent = narrow ? 'Error' : 'Error (budget-weighted mean |log error|)';
 
-  // Best-so-far step line per panel, in the panel's colour, extended to the right edge with a direct end label
-  const best = bestSeries(rows), labels = [];
-  for (const panel of DATA.panelOrder) {
+  // Best-so-far step line per panel. Side by side: soft fill beneath, line ends at its band, value label above.
+  // Overlaid: line runs to the right edge with a direct label in the margin.
+  const best = bestSeries(rows), labels = [], splitLabels = [];
+  for (const panel of panels) {
     const pts = best.filter(b => b.panel === panel);
     if (!pts.length) continue;
+    const pr = rows.filter(r => r.panel === panel);
     let d = '', prev = null;
     pts.forEach(p => { const x = X(rows.find(r => r.n === p.n)), y = Y(p.best);
-      if (prev === null) d += `M${x},${y}`; else d += ` L${x},${Y(prev)} L${x},${y}`; prev = p.best; });
+      if (prev === null) d += split ? `M${x - slot * 0.35},${y} L${x},${y}` : `M${x},${y}`; else d += ` L${x},${Y(prev)} L${x},${y}`; prev = p.best; });
     const last = pts[pts.length - 1];
-    d += ` L${W - m.r},${Y(last.best)}`;
-    el('path', { d, fill: 'none', stroke: PCOL[panel], 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
-    labels.push({ panel, y: Y(last.best) + 4, v: last.best });
+    const end = split ? X(pr[pr.length - 1]) + slot * 0.35 : W - m.r;
+    d += ` L${end},${Y(last.best)}`;
+    if (split) el('path', { d: d + ` L${end},${H - m.b} L${X(rows.find(r => r.n === pts[0].n)) - slot * 0.35},${H - m.b} Z`, fill: PCOL[panel], opacity: 0.08, stroke: 'none' });
+    el('path', { d, fill: 'none', stroke: PCOL[panel], 'stroke-width': split ? 2.5 : 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
+    if (split) splitLabels.push({ x: end, y: Y(last.best) - 9, text: `${last.best.toFixed(3)} · ≈${pct(last.best)}%` });
+    else labels.push({ panel, y: Y(last.best) + 4, v: last.best });
   }
-  // End labels sit past the % axis, nudged apart so they never collide
   labels.sort((a, b) => a.y - b.y);
   for (let i = 1; i < labels.length; i++) if (labels[i].y - labels[i - 1].y < 15) labels[i].y = labels[i - 1].y + 15;
   const lx = W - m.r + (narrow ? 36 : 42);
@@ -480,17 +532,31 @@ function render() {
     g.addEventListener('mousemove', show); g.addEventListener('focus', show);
     g.addEventListener('mouseleave', () => tip.hidden = true); g.addEventListener('blur', () => tip.hidden = true);
   });
+  // Side-by-side value labels go on top of the points, with a surface halo so they stay legible.
+  for (const l of splitLabels) el('text', { x: l.x, y: l.y, 'text-anchor': 'end', class: 'end-label halo' }).textContent = l.text;
+}
+
+function controls() {
+  const c = document.getElementById('controls');
+  const seg = ['split', 'overlay'].map(v => `<button type="button" data-view="${v}" aria-pressed="${view === v}">${v === 'split' ? 'Side by side' : 'Overlaid'}</button>`).join('');
+  const chips = DATA.panelOrder.map(p => `<button type="button" class="chip" data-panel="${p}" aria-pressed="${!hidden.has(p)}"><i class="sw" style="background:${PCOL[p]}"></i>${DATA.panels[p].label}</button>`).join('');
+  c.innerHTML = `<div class="seg" role="group" aria-label="Layout">${seg}</div><div class="chips" role="group" aria-label="Panels shown">${chips}</div>` +
+    `<label class="toggle"><input type="checkbox" id="raw"${showRaw ? ' checked' : ''}> Raw scores</label>`;
+  c.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { view = b.dataset.view; store.set('view', view); controls(); render(); }));
+  c.querySelectorAll('[data-panel]').forEach(b => b.addEventListener('click', () => {
+    const p = b.dataset.panel; hidden.has(p) ? hidden.delete(p) : hidden.add(p); store.set('hidden', [...hidden]); controls(); render(); }));
+  document.getElementById('raw').addEventListener('change', e => { showRaw = e.target.checked; store.set('raw', showRaw); render(); });
 }
 
 function legend() {
-  const shapes = `<span><svg width="10" height="10"><circle cx="5" cy="5" r="4.5" fill="var(--muted)"/></svg>Accepted</span>` +
+  document.getElementById('legend').innerHTML =
+    `<span><svg width="10" height="10"><circle cx="5" cy="5" r="4.5" fill="var(--muted)"/></svg>Accepted</span>` +
     `<span><svg width="10" height="10"><circle cx="5" cy="5" r="3.8" fill="var(--surface)" stroke="var(--muted)" stroke-width="2.4"/></svg>Passed, not adopted</span>` +
     `<span><svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.3"/></svg>Rejected</span>` +
     `<span><svg width="10" height="10"><rect x="1" y="1" width="8" height="8" fill="var(--muted)"/></svg>Baseline</span>` +
-    `<span><svg width="12" height="12"><path d="M6 1 L11 6 L6 11 L1 6 Z" fill="var(--muted)"/></svg>Old v1 prices</span>`;
-  document.getElementById('legend').innerHTML = DATA.panelOrder.map(p => `<span><i class="sw" style="background:${PCOL[p]}"></i>${DATA.panels[p].label}</span>`).join('') +
-    shapes + `<label class="toggle"><input type="checkbox" id="raw"> Show raw scores before correction</label>`;
-  document.getElementById('raw').addEventListener('change', e => { showRaw = e.target.checked; render(); });
+    `<span><svg width="12" height="12"><path d="M6 1 L11 6 L6 11 L1 6 Z" fill="var(--muted)"/></svg>Old v1 prices</span>` +
+    `<span><svg width="26" height="10"><line x1="0" y1="5" x2="26" y2="5" stroke="var(--muted)" stroke-width="2.5"/></svg>Best accepted so far</span>` +
+    `<span><svg width="10" height="16"><line x1="5" y1="3" x2="5" y2="14" stroke="var(--muted)" stroke-dasharray="2 2"/><circle cx="5" cy="3" r="2" fill="var(--muted)"/></svg>Raw score (when shown)</span>`;
 }
 
 function fill() {
@@ -521,6 +587,6 @@ function fill() {
   t.innerHTML = html + '</tbody>';
   document.getElementById('foot').textContent = `Updated ${new Date(DATA.updated).toUTCString().replace(':00 GMT', ' UTC')}. Error is the budget-weighted mean absolute log error per city, averaged over dev cities; ≈% is exp(error) − 1.`;
 }
-fill(); legend(); render();
+fill(); controls(); legend(); render();
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 120); });
 </script>
