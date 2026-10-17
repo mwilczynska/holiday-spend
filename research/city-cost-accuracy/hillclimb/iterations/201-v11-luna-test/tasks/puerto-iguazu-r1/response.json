@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for July 2026; Argentina's price and exchange-rate volatility makes USD prices uncertain. Cocktail and wine anchors are inferred at roughly twice and 1.4 times the draft-beer price.",
+  "comparable_city_reasoning": "Based on Argentina's established provincial tourist hubs, with a lodging and restaurant premium for Iguazú Falls demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 2.5,
+    "inexp_meal_1p": 11,
+    "midrange_meal_2p": 48,
+    "cocktail": 7,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 42,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 105
+  }
+}
