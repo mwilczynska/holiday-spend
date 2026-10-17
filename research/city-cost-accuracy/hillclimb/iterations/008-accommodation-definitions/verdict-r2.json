@@ -1,0 +1,37 @@
+{
+  "iteration": "008-accommodation-definitions",
+  "against": "001-v11-haiku-baseline",
+  "verdict": "reject",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 54,
+    "meanImprovement": -0.0064542466298155455,
+    "lower95": -0.017178178353378523,
+    "upper95": 0.004714678544400553,
+    "wins": 21,
+    "losses": 33
+  },
+  "baseLoss": 0.2919976732274475,
+  "candidateLoss": 0.2984519198572631,
+  "anchorRegressions": [
+    "hostel_dorm_1p",
+    "hostel_private_2p",
+    "hotel_1star_2p"
+  ],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "inexp_meal_1p": -0.004111217514605053,
+    "midrange_meal_2p": 0.0165049315000228,
+    "beer": 0.0023999411173001584,
+    "coffee": 0.01536252349904807,
+    "hostel_dorm_1p": 0.07949934182615409,
+    "hostel_private_2p": 0.06455058974029926,
+    "hotel_1star_2p": 0.07436871369647169,
+    "hotel_3star_2p": -0.010765823987768347
+  }
+}

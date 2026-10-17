@@ -6,10 +6,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { repo, hcRoot, readJsonl, loadPanel, pairedBootstrap } from './lib.mjs';
+import { repo, hcRoot, readJson, readJsonl, loadPanel, pairedBootstrap } from './lib.mjs';
 import { fitFactors, countryInRegionOffset } from './calibration.mjs';
 
-const out = path.join(hcRoot, 'confirmation');
+const version = readJson(path.join(hcRoot, 'panel/panel-summary.json')).version;
+const out = path.join(hcRoot, `confirmation-${version.toLowerCase()}`);
 fs.mkdirSync(out, { recursive: true });
 const cities = new Map(loadPanel().filter(r => r.split === 'test').map(r => [r.cityKey, r]));
 const regionF = fitFactors('iterations/101-v11-luna-r2/predictions.jsonl', { shrink: 0, groupBy: 'region', hierarchical: null });
@@ -31,7 +32,7 @@ for (const [arm, [it, f]] of Object.entries(arms)) {
   scores[arm] = JSON.parse(s).groups.all;
 }
 const boot = pairedBootstrap(scores.incumbent.cityLosses, scores.bundle.cityLosses);
-const result = { registered: 'PLAN.md, 16 October 2026', incumbentLoss: scores.incumbent.primaryLoss, bundleLoss: scores.bundle.primaryLoss,
+const result = { registered: 'PLAN.md, 16 October 2026', panel: version, incumbentLoss: scores.incumbent.primaryLoss, bundleLoss: scores.bundle.primaryLoss,
   bootstrap: { ...boot, cityLosses: undefined },
   perAnchor: Object.fromEntries(Object.keys(scores.bundle.perAnchor).map(a => [a, { incumbent: scores.incumbent.perAnchor[a]?.meanAbsLog, bundle: scores.bundle.perAnchor[a].meanAbsLog }])),
   confirmed: boot.meanImprovement > 0 && boot.lower95 > 0 };

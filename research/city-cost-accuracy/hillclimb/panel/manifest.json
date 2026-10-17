@@ -1,14 +1,13 @@
 {
-  "version": "R2",
-  "note": "R1 plus app-library expansion. Food/drink: Numbeo (July for R0 cities, October for 31 expansion cities), then livingcost.org only where Numbeo is absent, cross-walked to Numbeo's level by the median log ratio measured on the 66 R0 overlap cities. Hostels: Hostelworld. Hotels: BudgetYourTrip/KAYAK categories.",
+  "version": "R3",
+  "note": "Owner decision 16 October 2026: the 3-star tier reflects actual 3-star booking prices. R2 with the BudgetYourTrip/KAYAK hotel anchors replaced by booking-platform references (build-hotel-refs.mjs, definition fixed 16 October before the window data): 3-star = geometric mean of Booking.com and trip.com March 3-star medians (member prices incl. taxes) x year-typical six-window factor; 1-star = Booking.com decent-property p25 x the same factor. Food/drink and hostels unchanged.",
   "sources": [
     "r0-numbeo.jsonl",
     "r1-hostelworld-2026-10-15.jsonl",
-    "r1-budgetyourtrip-2026-10-15.jsonl",
     "r3-numbeo-2026-10-15.jsonl",
     "r3-hostelworld-2026-10-15.jsonl",
-    "r3-budgetyourtrip-2026-10-15.jsonl",
     { "file": "r3-livingcost-2026-10-15.jsonl", "fallbackOnly": true,
-      "crosswalk": { "inexp_meal_1p": 0.0035, "midrange_meal_2p": 0.1058, "beer": -0.012, "coffee": -0.0248 } }
+      "crosswalk": { "inexp_meal_1p": 0.0035, "midrange_meal_2p": 0.1058, "beer": -0.012, "coffee": -0.0248 } },
+    "r3-hotels-2026-10-17.jsonl"
   ]
 }

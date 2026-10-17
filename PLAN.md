@@ -126,6 +126,15 @@ member prices incl. taxes, year-typical), not KAYAK-style mid-range. To-do, not 
 with build-hotel-refs.mjs once the Booking.com window run is complete, make them the primary hotel references,
 rescore all iterations, and refit the production correction factors to that level.
 
+Done 17 October 2026: R3 is the primary panel (`manifest-r3.json`; R2 kept as `manifest-r2.json`,
+`references-r2.jsonl`, and every earlier score/verdict as `*-r2.json`). Hotel references now cover 465 cities for
+3-star (R2: 364) and 470 for 1-star. All iterations were rescored and calibrated replays refitted against R3; every
+adopted decision holds (022 dev 0.1627 vs 0.2054 for Luna + region correction, -0.043, CI lower 0.033). Held-out test
+on R3 (second registered access per arm): 0.1895 vs 0.2204, -0.031 (CI 0.016 to 0.046), 94/48. Refitted Luna 3-star
+correction: x0.61 overall (South Asia x0.46 to East Asia x0.75), i.e. Luna's holistic 3-star is ~64% above actual
+booking prices. Open owner question for production: v1 derives the 4-star tier as hotel_3star x 1.80, so correcting
+the 3-star anchor also lowers 4-star unless 4-star is decoupled.
+
 Round 3 registered (16 October 2026, coordinator; collection delegated to Codex via `CODEX-LUNA-ROUND3-PROMPT.md`,
 run manually by the owner). Frozen before any answer: 202 (102 prompt on the 142 sealed test cities), 201 (v1.1
 prompt on the same test cities) and 103 (second independent 102 answer on the 333 dev cities). Planned scoring,

@@ -202,6 +202,10 @@ decent-property p25 vs KAYAK budget: -0.185 bias, 0.248 median absolute. Basic/3
 platform 3-star medians, scaled to a year-typical level by the Booking.com window average; basic room = Booking.com
 decent-property p25 with the same scaling. Platform spread is recorded per city as reference noise.
 
+R3 adopted (17 October 2026, owner decision of 16 October): the hotel references above are now primary. Raw model
+errors rise sharply under R3 (Luna raw 0.288 to 0.435) because models price 3-star at a KAYAK-like mid-range level;
+after refitting, corrected errors barely move (022: 0.165 to 0.163), so the correction factors absorb the level change.
+
 ## 11. Program revisions
 
 - 14 October 2026: program created; acceptance rule, metric, weights and split frozen as above.

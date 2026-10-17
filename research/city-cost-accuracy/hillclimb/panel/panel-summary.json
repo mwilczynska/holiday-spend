@@ -1,12 +1,10 @@
 {
-  "version": "R2",
+  "version": "R3",
   "sources": [
     "r0-numbeo.jsonl",
     "r1-hostelworld-2026-10-15.jsonl",
-    "r1-budgetyourtrip-2026-10-15.jsonl",
     "r3-numbeo-2026-10-15.jsonl",
     "r3-hostelworld-2026-10-15.jsonl",
-    "r3-budgetyourtrip-2026-10-15.jsonl",
     {
       "file": "r3-livingcost-2026-10-15.jsonl",
       "fallbackOnly": true,
@@ -16,9 +14,10 @@
         "beer": -0.012,
         "coffee": -0.0248
       }
-    }
+    },
+    "r3-hotels-2026-10-17.jsonl"
   ],
-  "rows": 3425,
+  "rows": 3632,
   "cities": 475,
   "citiesPerAnchor": {
     "inexp_meal_1p": 382,
@@ -27,8 +26,8 @@
     "coffee": 382,
     "hostel_dorm_1p": 334,
     "hostel_private_2p": 358,
-    "hotel_1star_2p": 364,
-    "hotel_3star_2p": 364
+    "hotel_3star_2p": 465,
+    "hotel_1star_2p": 470
   },
-  "referencesSha256": "4fdf3092f5f9b1a5ce1cf6094f785bbddc79b284a4ef19994a4306cdeff44de5"
+  "referencesSha256": "1d477c3f7e004b691c34aaead36a0d30a41d59cb1a66e2a0850eda8e6557747c"
 }

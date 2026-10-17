@@ -1,7 +1,7 @@
 {
   "iteration": "004-local-currency",
   "against": "001-v11-haiku-baseline",
-  "verdict": "accept",
+  "verdict": "reject",
   "rule": {
     "minMeanImprovement": 0.015,
     "maxAnchorRegression": 0.05,
@@ -10,14 +10,14 @@
   },
   "bootstrap": {
     "cities": 54,
-    "meanImprovement": 0.01600817800625107,
-    "lower95": 0.00018300264127013772,
-    "upper95": 0.03255999853047942,
-    "wins": 32,
-    "losses": 22
+    "meanImprovement": 0.008245812899976794,
+    "lower95": -0.009273101692029277,
+    "upper95": 0.026077707633540583,
+    "wins": 30,
+    "losses": 24
   },
-  "baseLoss": 0.2919976732274475,
-  "candidateLoss": 0.2759894952211965,
+  "baseLoss": 0.4475084587918204,
+  "candidateLoss": 0.4392626458918436,
   "anchorRegressions": [],
   "failureRateIncrease": 0,
   "perAnchorDelta": {
@@ -27,7 +27,7 @@
     "coffee": -0.003372398816665678,
     "hostel_dorm_1p": 0.00047609358422145975,
     "hostel_private_2p": 0.02922543184705534,
-    "hotel_1star_2p": 0.025111930174308933,
-    "hotel_3star_2p": -0.018864451970607127
+    "hotel_3star_2p": -0.00974974300580489,
+    "hotel_1star_2p": 0.029775959255802675
   }
 }

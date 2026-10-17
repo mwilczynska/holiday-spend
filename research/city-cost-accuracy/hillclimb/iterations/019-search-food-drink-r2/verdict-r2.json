@@ -1,0 +1,33 @@
+{
+  "iteration": "019-search-food-drink-r2",
+  "against": "014-v11-haiku-high-r2",
+  "verdict": "accept",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 333,
+    "meanImprovement": 0.05232246052173231,
+    "lower95": 0.04073231364852101,
+    "upper95": 0.06399249640753027,
+    "wins": 225,
+    "losses": 107
+  },
+  "baseLoss": 0.29918424563990287,
+  "candidateLoss": 0.24686178511817033,
+  "anchorRegressions": [],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "hostel_private_2p": -0.027022291490659267,
+    "inexp_meal_1p": -0.06279653623300369,
+    "midrange_meal_2p": -0.17479084073451995,
+    "beer": -0.05851961146422405,
+    "coffee": -0.07850674757466172,
+    "hostel_dorm_1p": 0.012708556381470726,
+    "hotel_1star_2p": -0.008745650847489406,
+    "hotel_3star_2p": -0.001793981641239173
+  }
+}

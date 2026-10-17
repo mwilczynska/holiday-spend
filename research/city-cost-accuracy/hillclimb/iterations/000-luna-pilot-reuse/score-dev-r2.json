@@ -1,0 +1,76 @@
+{
+  "predictions": "predictions.jsonl",
+  "panel": "references.jsonl",
+  "split": "dev",
+  "grades": [
+    "A",
+    "B",
+    "C"
+  ],
+  "panelSha256": "4fdf3092f5f9b1a5ce1cf6094f785bbddc79b284a4ef19994a4306cdeff44de5",
+  "referenceCities": 333,
+  "groups": {
+    "all": {
+      "cities": 1,
+      "runs": 3,
+      "primaryLoss": 0.31592209009653344,
+      "unweightedLoss": 0.37771785971539223,
+      "pooledRepeatLoss": 0.31007748619594966,
+      "medianCityLoss": 0.31592209009653344,
+      "p90CityLoss": 0.31592209009653344,
+      "perAnchor": {
+        "inexp_meal_1p": {
+          "n": 1,
+          "medianAPE": 0.03932215878667056,
+          "meanAbsLog": 0.03856873026118682,
+          "medianBias": 0.03856873026118682
+        },
+        "midrange_meal_2p": {
+          "n": 1,
+          "medianAPE": 1.3067013217056576,
+          "meanAbsLog": 0.8358185047094456,
+          "medianBias": 0.8358185047094456
+        },
+        "beer": {
+          "n": 1,
+          "medianAPE": 0.5204502808041858,
+          "meanAbsLog": 0.4190065283597335,
+          "medianBias": 0.4190065283597335
+        },
+        "coffee": {
+          "n": 1,
+          "medianAPE": 0.17664462609095755,
+          "meanAbsLog": 0.16266685073420328,
+          "medianBias": 0.16266685073420328
+        },
+        "hostel_dorm_1p": {
+          "n": 1,
+          "medianAPE": 0.663356172258283,
+          "meanAbsLog": 0.5088373518176539,
+          "medianBias": 0.5088373518176539
+        },
+        "hostel_private_2p": {
+          "n": 1,
+          "medianAPE": 0.7935793604514754,
+          "meanAbsLog": 0.5842132659387476,
+          "medianBias": 0.5842132659387476
+        },
+        "hotel_1star_2p": {
+          "n": 1,
+          "medianAPE": 0.3474047770153299,
+          "meanAbsLog": 0.2981803548961085,
+          "medianBias": 0.2981803548961085
+        },
+        "hotel_3star_2p": {
+          "n": 1,
+          "medianAPE": 0.13786717478454324,
+          "meanAbsLog": 0.12915561077653426,
+          "medianBias": 0.12915561077653426
+        }
+      },
+      "cityLosses": {
+        "kyoto": 0.31592209009653344
+      }
+    }
+  }
+}

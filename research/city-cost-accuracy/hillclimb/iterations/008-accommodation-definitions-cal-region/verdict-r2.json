@@ -1,0 +1,33 @@
+{
+  "iteration": "008-accommodation-definitions-cal-region",
+  "against": "001-v11-haiku-baseline-cal-region",
+  "verdict": "reject",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 54,
+    "meanImprovement": 0.0011153036150081635,
+    "lower95": -0.007559896711126929,
+    "upper95": 0.010162416477566619,
+    "wins": 26,
+    "losses": 28
+  },
+  "baseLoss": 0.20742460338884036,
+  "candidateLoss": 0.2063092997738322,
+  "anchorRegressions": [],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "inexp_meal_1p": 0.002636540166964685,
+    "midrange_meal_2p": 0.02189063846976544,
+    "beer": 0.005580718262108736,
+    "coffee": 0.021267284163321187,
+    "hostel_dorm_1p": 0.0011098650686240108,
+    "hostel_private_2p": -0.007758461661591692,
+    "hotel_1star_2p": -0.008761328549514114,
+    "hotel_3star_2p": -0.010642380254546446
+  }
+}

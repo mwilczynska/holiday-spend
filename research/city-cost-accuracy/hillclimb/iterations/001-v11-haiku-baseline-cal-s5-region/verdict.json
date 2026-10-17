@@ -1,7 +1,7 @@
 {
   "iteration": "001-v11-haiku-baseline-cal-s5-region",
   "against": "006-calibrate-anchor",
-  "verdict": "accept",
+  "verdict": "reject",
   "rule": {
     "minMeanImprovement": 0.015,
     "maxAnchorRegression": 0.05,
@@ -10,15 +10,17 @@
   },
   "bootstrap": {
     "cities": 54,
-    "meanImprovement": 0.016820205343495008,
-    "lower95": 0.0042538324965132055,
-    "upper95": 0.030025948341765762,
-    "wins": 35,
-    "losses": 19
+    "meanImprovement": -0.014554444694198778,
+    "lower95": -0.036796936654665185,
+    "upper95": 0.007166855169581355,
+    "wins": 26,
+    "losses": 28
   },
-  "baseLoss": 0.23035056959107733,
-  "candidateLoss": 0.2135303642475824,
-  "anchorRegressions": [],
+  "baseLoss": 0.22388383909625684,
+  "candidateLoss": 0.23843828379045576,
+  "anchorRegressions": [
+    "hotel_3star_2p"
+  ],
   "failureRateIncrease": 0,
   "perAnchorDelta": {
     "inexp_meal_1p": -0.013687945996961853,
@@ -27,7 +29,7 @@
     "coffee": -0.032946301664130595,
     "hostel_dorm_1p": -0.041356214361121024,
     "hostel_private_2p": -0.08889018593671794,
-    "hotel_1star_2p": -0.00083729079560943,
-    "hotel_3star_2p": -0.008006005758621176
+    "hotel_3star_2p": 0.070740610806944,
+    "hotel_1star_2p": -0.028014084712720322
   }
 }

@@ -104,7 +104,7 @@ const VLABEL = { accept: 'Accepted', not_adopted: 'Passed, not adopted', reject:
 function bestSeries(rows) {
   // Best accepted method so far, per panel: starts at the panel's baseline and steps down on each accepted change.
   const out = [];
-  for (const panel of ['R1', 'R2']) {
+  for (const panel of DATA.panelOrder) {
     const pr = rows.filter(r => r.panel === panel);
     let best = null;
     for (const r of pr) {
@@ -123,17 +123,19 @@ function render() {
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('height', H);
   const errs = rows.flatMap(r => [r.error, r.raw]).filter(v => v !== null);
   const y0 = Math.floor((Math.min(...errs) - 0.012) * 50) / 50, y1 = Math.ceil((Math.max(...errs) + 0.012) * 50) / 50;
-  const n = rows.length, gapAfter = rows.filter(r => r.panel === 'R1').length;
-  const slot = (W - m.l - m.r) / (n + 1);
-  const X = i => m.l + slot * (i + 0.5 + (i >= gapAfter ? 1 : 0)); // one empty slot separates the panels
+  const n = rows.length, gaps = DATA.panelOrder.length - 1;
+  const slot = (W - m.l - m.r) / (n + gaps);
+  const gapIx = rows.map((r, i) => DATA.panelOrder.indexOf(r.panel));
+  const X = i => m.l + slot * (i + 0.5 + gapIx[i]); // one empty slot separates the panels
   const Y = v => m.t + (y1 - v) / (y1 - y0) * (H - m.t - m.b);
   const ns = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs, parent = svg) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
   svg.innerHTML = '';
 
   // Panel bands
-  for (const [panel, from, to] of [['R1', 0, gapAfter - 1], ['R2', gapAfter, n - 1]]) {
-    if (to < from) continue;
+  for (const panel of DATA.panelOrder) {
+    const from = rows.findIndex(r => r.panel === panel), to = rows.map(r => r.panel).lastIndexOf(panel);
+    if (from < 0) continue;
     const xa = X(from) - slot / 2, xb = X(to) + slot / 2;
     el('rect', { x: xa, y: m.t - 22, width: xb - xa, height: H - m.b - m.t + 22, fill: 'var(--band)', rx: 6 });
     const t = el('text', { x: xa + 8, y: m.t - 8, class: 'band-label' }); t.textContent = DATA.panels[panel].label;
@@ -153,7 +155,7 @@ function render() {
 
   // Best-so-far step line with a soft fill beneath, per panel
   const best = bestSeries(rows);
-  for (const panel of ['R1', 'R2']) {
+  for (const panel of DATA.panelOrder) {
     const pts = best.filter(b => b.panel === panel);
     if (!pts.length) continue;
     let d = '', prev = null;
@@ -202,17 +204,19 @@ function render() {
 
 function fill() {
   const rows = DATA.rows, best = bestSeries(rows);
-  const bR2 = best.filter(b => b.panel === 'R2').pop(), bR1 = best.filter(b => b.panel === 'R1').pop();
-  const base2 = rows.find(r => r.panel === 'R2' && r.kind === 'baseline');
+  const bR2 = best.filter(b => b.panel === DATA.headline.panel).pop();
+  const base2 = rows.find(r => r.panel === DATA.headline.panel && r.kind === 'baseline');
+  const test = best.filter(b => b.panel === 'Test').pop();
   const done = rows.filter(r => !['reference', 'baseline', 'pending'].includes(r.verdict)).length;
   const acc = rows.filter(r => r.verdict === 'accept').length;
   const stat = (k, v, cls = '') => `<div class="stat ${cls}"><span class="k">${k}</span><span class="v">${v}</span></div>`;
   document.getElementById('summary').innerHTML =
-    (bR2 ? stat('Best, 333 cities', `${bR2.best.toFixed(3)}<small>≈${pct(bR2.best)}%</small>`, 'best') : '') +
+    (bR2 ? stat(DATA.headline.label, `${bR2.best.toFixed(3)}<small>≈${pct(bR2.best)}%</small>`, 'best') : '') +
+    (test ? stat('Held-out test, 142 cities', `${test.best.toFixed(3)}<small>≈${pct(test.best)}%</small>`) : '') +
     (base2 && base2.error !== null ? stat('Unchanged v1.1', `${base2.error.toFixed(3)}<small>≈${pct(base2.error)}%</small>`) : '') +
     stat('Experiments judged', `${done}<small>${acc} accepted</small>`);
   document.getElementById('note').textContent =
-    'Errors on the two panels are not comparable: panel R2 adds 279 harder, smaller cities to the original 54. ' +
+    DATA.note + ' ' +
     'Prompt changes are judged after re-fitting their own correction factors, so a raw gain that only shifts prices up or down earns no credit. ' +
     'Some rejected points sit below the line because their gain was too small to separate from noise.';
   const t = document.getElementById('tbl');

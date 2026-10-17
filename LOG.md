@@ -4082,3 +4082,15 @@ Final `queue.mjs --status` output:
   fitted on dev answers only; two `score.mjs --test` accesses logged in `panel/test-access.jsonl`.
 - Result: incumbent 0.2020, bundle 0.1613, improvement 0.041 (95% CI 0.025 to 0.057), 96/46 city wins. Confirmed.
   Outputs in `research/city-cost-accuracy/hillclimb/confirmation/`.
+
+# 17 October 2026 - R3 hotel references made primary
+
+- Built `panel/r3-hotels-2026-10-17.jsonl` with `build-hotel-refs.mjs` (definition fixed 16 October before window
+  data): 935 rows, 473 cities, 326 cities with their own six-window factor (median 1.041), the rest region medians.
+- R3 manifest = R2 with BudgetYourTrip/KAYAK hotel anchors replaced. Rebuilt the panel, rescored raw iterations and
+  re-ingested calibrated replays (factors refit on R3), re-ran every recorded verdict against the same incumbent.
+  Adopted chain unchanged; flips only in raw or unadopted branches.
+- `sealed-confirm.mjs` now writes per panel version: `confirmation-r2/` (0.1613 vs 0.2020) and `confirmation-r3/`
+  (0.1895 vs 0.2204, -0.031, CI 0.016 to 0.046). Test hotel errors are unchanged by the bundle (3-star 0.229 to 0.225),
+  so its gain is food and drink.
+- Progress page generalised to any number of panels; adds R3 and held-out test sections (artifact version 8).
