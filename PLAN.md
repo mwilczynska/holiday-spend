@@ -126,6 +126,15 @@ member prices incl. taxes, year-typical), not KAYAK-style mid-range. To-do, not 
 with build-hotel-refs.mjs once the Booking.com window run is complete, make them the primary hotel references,
 rescore all iterations, and refit the production correction factors to that level.
 
+Round 3 registered (16 October 2026, coordinator; collection delegated to Codex via `CODEX-LUNA-ROUND3-PROMPT.md`,
+run manually by the owner). Frozen before any answer: 202 (102 prompt on the 142 sealed test cities), 201 (v1.1
+prompt on the same test cities) and 103 (second independent 102 answer on the 333 dev cities). Planned scoring,
+fixed now: sealed confirmation = 202 + bundle 022 transform (country-in-region factors fitted on 102 dev answers only)
+versus 201 + per-region factors fitted on 101 dev answers, one `score.mjs --test` access each, paired bootstrap;
+103 = log-mean of 102 and 103 answers then the same correction, judged against 022 with the unchanged rule. Test
+iterations ingest without scoring (`sealedConfirmation` flag in iterate.mjs). Hotel references (R3) remain a
+coordinator to-do and do not change these registrations; if R3 becomes primary first, both arms are rescored on it.
+
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.

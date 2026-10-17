@@ -1,0 +1,25 @@
+{
+  "split": "dev",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "gpt-6-luna/max (Codex subagent, app system prompt, web search as the prompt allows)",
+  "id": "103-search-food-drink-luna-r2-rep2",
+  "parent": "022-bundle-luna-search-country",
+  "family": "repeat",
+  "hypothesis": "Registered 16 October 2026 by the coordinator before any answer exists. Independent second answer to the identical frozen 102 prompts on the 333 dev cities. Measures run-to-run noise of Luna with food/drink search, and tests whether averaging two calls (log space) before the bundle correction beats bundle 022 under the unchanged acceptance rule. Costs a second call per city in production, so it must clear the full margin.",
+  "repeats": 1,
+  "promptTemplate": "prompt.md",
+  "derivedFrom": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "replacements": [
+    [
+      "The city prices are holistic model estimates: use your learned general knowledge and the\nsupplied city context, and do not claim that you inspected live booking pages or current listings.",
+      "Estimate food and drink anchors with the help of a few web searches for current typical prices in this city.\nAccommodation anchors are holistic model estimates from your general knowledge and the supplied city context; do not\nclaim that you inspected live booking pages or current listings."
+    ],
+    [
+      "Use web search only to obtain the latest published Reserve Bank of Australia USD/AUD exchange-rate observation. Do\nnot use web search to source the city-price anchors. Return the RBA observation and its provenance; the server owns\nthe inversion, currency conversion, tier formulas, and rounding.",
+      "Use at most six web searches in total: one to obtain the latest published Reserve Bank of Australia USD/AUD\nexchange-rate observation, and up to five to check current typical prices in this city for restaurant meals, coffee,\nbeer, cocktails and wine (for example cost-of-living price indexes). Prefer aggregated typical prices over single\nvenues. Do not search for accommodation prices. Return the RBA observation and its provenance; the server owns the\ninversion, currency conversion, tier formulas, and rounding."
+    ]
+  ],
+  "laneOf": "102-search-food-drink-luna-r2"
+}

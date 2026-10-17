@@ -1,0 +1,15 @@
+{
+  "id": "201-v11-luna-test",
+  "hypothesis": "Registered 16 October 2026 by the coordinator before any answer exists. Sealed confirmation, incumbent arm: identical frozen v1.1 prompt answered by gpt-6-luna/max on the 142 sealed test cities. Scored once by the coordinator with region correction fitted on 101 dev answers, paired against 202 + bundle 022 transform.",
+  "parent": null,
+  "family": "baseline",
+  "promptTemplate": "docs/prompts/llm_prompt_new_cities_v1_1.md",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "gpt-6-luna/max (Codex subagent, app system prompt, web search as the prompt allows)",
+  "repeats": 1,
+  "split": "test",
+  "laneOf": "101-v11-luna-r2",
+  "sealedConfirmation": true
+}

@@ -40,7 +40,9 @@ function render(template, city) {
 }
 
 if (command === 'prepare') {
-  if (split === 'test') throw Error('Iterations run on dev only; test evaluation uses score.mjs --test at milestones');
+  // Test-split tasks contain only city and country, never references. They are allowed solely for registered
+  // sealed confirmations ("sealedConfirmation": true); their answers are scored by the coordinator with score.mjs --test.
+  if (split === 'test' && cand.sealedConfirmation !== true) throw Error('Iterations run on dev only; test evaluation uses score.mjs --test at milestones');
   if (cand.replayFrom) { console.log(`Replay iteration: reuses ${cand.replayFrom} responses; nothing to dispatch.`); process.exit(0); }
   const templatePath = path.resolve(cand.promptTemplate.startsWith('docs/') ? repo : dir, cand.promptTemplate);
   const template = fs.readFileSync(templatePath, 'utf8');
@@ -108,6 +110,12 @@ if (command === 'prepare') {
   }
   const predictions = path.join(dir, 'predictions.jsonl');
   fs.writeFileSync(predictions, out.map(r => JSON.stringify(r)).join('\n') + '\n');
+  if (split === 'test') {
+    // Sealed split: never score here. The coordinator scores once with score.mjs --test, which logs the access.
+    fs.writeFileSync(path.join(dir, 'ingest.json'), JSON.stringify({ tasks: out.length, failures }, null, 2) + '\n');
+    console.log(JSON.stringify({ tasks: out.length, failures: failures.length, scored: false, note: 'sealed test split; not scored' }));
+    process.exit(0);
+  }
   const score = execFileSync(process.execPath, [path.join(repo, 'scripts/city-cost-accuracy/hillclimb/score.mjs'), predictions], { encoding: 'utf8' });
   fs.writeFileSync(path.join(dir, 'score-dev.json'), score);
   const g = JSON.parse(score).groups.all;
