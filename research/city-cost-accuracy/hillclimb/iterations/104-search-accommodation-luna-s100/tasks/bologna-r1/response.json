@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's Bologna sample, updated October 2026, reports €20 for an inexpensive meal, €80 for a three-course meal for two, €6 draft beer, and €1.99 cappuccino. Expatistan reports an €8 cocktail, but its page says the price data came from 16 entries by fewer than five people. No restaurant wine-glass price was available, so that anchor is estimated near the local draft-beer price. Hostel averages vary and some exclude taxes and fees; hotel prices are availability-sensitive. The available price data postdates the July 2026 reference window.",
+  "comparable_city_reasoning": "Direct Bologna price observations were available; no comparison city was used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 2.25,
+    "inexp_meal_1p": 22.5,
+    "midrange_meal_2p": 90,
+    "cocktail": 9,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 39,
+    "hostel_private_2p": 46,
+    "hotel_1star_2p": 108,
+    "hotel_3star_2p": 135
+  }
+}

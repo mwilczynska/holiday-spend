@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "City-specific food prices and lodging averages were available, but accommodation varies by season and the hostel averages exclude taxes and fees; anchors allow a modest fee margin. The one-star room is less certain. Current price pages postdate July 2026, so they serve as a proxy. The wine glass is estimated at about 3.7 times the observed restaurant beer price.",
+  "comparable_city_reasoning": "Used Bogotá-specific city-cost and lodging data; no comparable-city proxy was needed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-01-10-40-10",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.5,
+    "coffee": 2.09,
+    "inexp_meal_1p": 7.08,
+    "midrange_meal_2p": 28.97,
+    "cocktail": 9.0,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 15.5,
+    "hostel_private_2p": 21.0,
+    "hotel_1star_2p": 38.0,
+    "hotel_3star_2p": 66.0
+  }
+}

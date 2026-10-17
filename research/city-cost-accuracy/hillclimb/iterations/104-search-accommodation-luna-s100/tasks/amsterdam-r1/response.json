@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Amsterdam-specific price medians. A few local menus showed cocktails at €10–15 and wine by the glass at €5.95–€6.95, so those anchors follow their observed relationship to draft beer. Hostel prices were marked before taxes and fees; hotel price sources did not make tax inclusion clear.",
+  "comparable_city_reasoning": "No comparable city was needed; Amsterdam-specific price data was available.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.35,
+    "coffee": 4.6,
+    "inexp_meal_1p": 23.0,
+    "midrange_meal_2p": 92.0,
+    "cocktail": 15.15,
+    "wine_glass": 7.75,
+    "hostel_dorm_1p": 89.45,
+    "hostel_private_2p": 84.11,
+    "hotel_1star_2p": 149.0,
+    "hotel_3star_2p": 225.0
+  }
+}

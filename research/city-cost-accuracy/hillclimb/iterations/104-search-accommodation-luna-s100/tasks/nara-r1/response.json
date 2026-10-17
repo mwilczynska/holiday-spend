@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Nara-specific price data supports the meal, coffee, and beer estimates, though the mid-range meal figures differ across sources. A Nara bar guide gave ¥1,200–¥2,000 for a cocktail; wine by the glass was not found, so it is estimated at about 1.5 times the local draft beer price. Accommodation prices vary substantially by season and source, so those anchors are less certain.",
+  "comparable_city_reasoning": "No comparable city used; estimates are based on Nara-specific price data and accommodation references.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.17,
+    "coffee": 2.32,
+    "inexp_meal_1p": 6.34,
+    "midrange_meal_2p": 31.67,
+    "cocktail": 10.14,
+    "wine_glass": 4.75,
+    "hostel_dorm_1p": 21,
+    "hostel_private_2p": 63,
+    "hotel_1star_2p": 64,
+    "hotel_3star_2p": 100
+  }
+}

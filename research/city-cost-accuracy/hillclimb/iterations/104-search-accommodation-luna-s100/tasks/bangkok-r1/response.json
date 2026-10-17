@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Bangkok-specific Numbeo food prices nearest the July window were dated June 10, 2026. Cocktail and wine-glass prices are less certain: I estimated them from the local beer price relationship; Nomadlio's October listing of an $11 restaurant cocktail is a supporting check. BudgetYourTrip lists hostel averages of $17 for a dorm bed and $25 for a private room before taxes and fees, so those anchors allow for added fees. KAYAK showed a $37 average for three-star hotels; the very basic room estimate is less certain and uses a Bangkok budget-accommodation price range rather than a direct one-star average.",
+  "comparable_city_reasoning": "No comparable city was needed; the estimates use Bangkok-specific prices and accommodation data.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.0,
+    "coffee": 2.9,
+    "inexp_meal_1p": 3.3,
+    "midrange_meal_2p": 35.8,
+    "cocktail": 10.5,
+    "wine_glass": 7.0,
+    "hostel_dorm_1p": 19.5,
+    "hostel_private_2p": 29.0,
+    "hotel_1star_2p": 31.0,
+    "hotel_3star_2p": 40.0
+  }
+}
