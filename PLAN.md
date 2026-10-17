@@ -161,6 +161,14 @@ coordinator after the 5-hour window reset. Zero-call candidate 023 (hostel/1-sta
 and cocktail/wine reference collection run in parallel. Diagnostic: food residuals do not predict hotel residuals
 (correlation 0.01), so cross-anchor correction is dropped.
 
+Round 4 results (17 October 2026). 104-bundle-s100 rejected against 022-bundle-s100: 0.1966 vs 0.1759 (+0.021, CI
+-0.045 to +0.002), 44/56 city wins; hostel private regressed 0.237 -> 0.356 (anchor guard). Accommodation search cut
+Luna's raw 3-star bias from +0.58 to +0.23 log but left its city ranking unchanged (correlation 0.88 -> 0.87), so
+after correction it adds nothing; searches mixed per-person and per-room hostel private prices (private/dorm ratio
+2.55 -> 1.76). 023 hostel slope correction rejected (net 0.0002). Expatistan cocktails collected (314 cities) but
+reproduced by Luna's searches, so kept as a sensitivity panel. Bundle 022 remains best. Remaining levers are
+accommodation ranking information the model lacks; neither search nor correction supplies it.
+
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.

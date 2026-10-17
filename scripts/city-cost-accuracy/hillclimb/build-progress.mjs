@@ -41,6 +41,10 @@ const E = [
   ['R3', '101-v11-luna-r2-cal-region', '101-v11-luna-r2', 'Luna + region correction', 'model'],
   ['R3', '102-search-food-drink-luna-r2-cal-region', '102-search-food-drink-luna-r2', 'Luna + food/drink search', 'prompt'],
   ['R3', '022-bundle-luna-search-country', '102-search-food-drink-luna-r2', 'Bundle 022 (R3 rescore)', 'bundle'],
+  ['R3', '023-bundle-slope', null, 'Bundle 022 + hostel slope correction', 'calibration'],
+  // 100-city dev sample (Codex weekly budget): candidates judged against bundle 022 on the same cities.
+  ['S100', '022-bundle-s100', null, 'Bundle 022 on the 100-city sample', 'baseline'],
+  ['S100', '104-bundle-s100', '104-search-accommodation-luna-s100', 'Web search for accommodation too', 'prompt'],
 ];
 
 // One-line description of what each experiment changed, shown in the register (keyed by judged iteration).
@@ -73,6 +77,9 @@ const WHAT = {
   '022-bundle-luna-search-country': 'Luna + food and drink search + country-in-region correction, registered as one package.',
   '102-search-food-drink-luna-r2-cal-region': 'Luna with food and drink search, region correction.',
   '201-v11-luna-test': 'Previous best (Luna + region correction) on the 142 held-out cities.',
+  '023-bundle-slope': 'Fitted slope correction for hostels and 1-star on top of bundle 022 (their raw spread is too wide).',
+  '022-bundle-s100': 'Bundle 022 on a fixed 100-city sample, corrections refitted on those cities only.',
+  '104-bundle-s100': 'Up to four extra searches for hotel and hostel prices, plus bundle 022 correction.',
   '202-search-food-drink-luna-test': 'Bundle 022 on the 142 held-out cities, scored once.',
 };
 const it = id => path.join(hcRoot, 'iterations', id);
@@ -98,7 +105,7 @@ if (fs.existsSync(conf)) {
   rows.push({ n: rows.length + 1, panel: 'Test', id: '202-search-food-drink-luna-test', label: 'Bundle 022 on held-out cities', kind: 'bundle', error: c.bundleLoss, raw: null,
     what: WHAT['202-search-food-drink-luna-test'], verdict: c.confirmed ? 'accept' : 'reject', against: '201-v11-luna-test', improvement: c.bootstrap.meanImprovement, ci: [c.bootstrap.lower95, c.bootstrap.upper95] });
 }
-const panelOrder = ['R1', 'R2', 'R3', 'Test'].filter(p => rows.some(r => r.panel === p));
+const panelOrder = ['R1', 'R2', 'R3', 'S100', 'Test'].filter(p => rows.some(r => r.panel === p));
 // An accepted change that does not beat the best method already adopted in its panel is marked "not adopted".
 for (const panel of panelOrder) {
   let best = null;
@@ -109,7 +116,7 @@ for (const panel of panelOrder) {
 }
 const data = { updated: new Date().toISOString(), rows, panelOrder,
   panels: { R1: { cities: 54, label: 'R1 · 54 cities' }, R2: { cities: 333, label: 'R2 · 333 cities' },
-    R3: { cities: 333, label: 'R3 · booking hotel prices' }, Test: { cities: 142, label: 'Held-out test · 142' } },
+    R3: { cities: 333, label: 'R3 · booking hotel prices' }, S100: { cities: 100, label: 'R3 sample · 100 cities' }, Test: { cities: 142, label: 'Held-out test · 142' } },
   headline: panelOrder.includes('R3') ? { panel: 'R3', label: 'Best, 333 cities (R3)' } : { panel: 'R2', label: 'Best, 333 cities' },
   note: 'Errors on different panels are not comparable. R2 adds 279 harder, smaller cities to the original 54. R3 is R2 with hotel references replaced by actual Booking.com and Trip.com 3-star prices, so the corrections are refitted. The held-out test scores the best method once on 142 cities no experiment used, against R3.' };
 const tpl = fs.readFileSync(path.join(hcRoot, 'progress.template.html'), 'utf8');

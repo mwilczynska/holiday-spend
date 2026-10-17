@@ -7,17 +7,17 @@
 /* Layout: one wide instrument panel (summary strip, chart, legend) over a compact experiment register. */
 :root {
   --bg: #f3f6f2; --surface: #fbfcfa; --ink: #16221e; --muted: #5d6c66; --faint: #8e9b96; --grid: #dde4df;
-  --accent: #19705b; --accent-soft: rgba(25,112,91,.10); --ref: #a8692a; --band: rgba(22,34,30,.035); --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #6250d6;
+  --accent: #19705b; --accent-soft: rgba(25,112,91,.10); --ref: #a8692a; --band: rgba(22,34,30,.035); --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #6250d6; --s5: #e87ba4;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #0f1614; --surface: #141d1a; --ink: #e5ece9; --muted: #9aaaa4; --faint: #6c7a75; --grid: #24312d;
-  --accent: #4cc39f; --accent-soft: rgba(76,195,159,.12); --ref: #d6a15c; --band: rgba(229,236,233,.035); --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #9085e9; color-scheme: dark } }
+  --accent: #4cc39f; --accent-soft: rgba(76,195,159,.12); --ref: #d6a15c; --band: rgba(229,236,233,.035); --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #9085e9; --s5: #d55181; color-scheme: dark } }
 :root[data-theme="dark"] {
   --bg: #0f1614; --surface: #141d1a; --ink: #e5ece9; --muted: #9aaaa4; --faint: #6c7a75; --grid: #24312d;
-  --accent: #4cc39f; --accent-soft: rgba(76,195,159,.12); --ref: #d6a15c; --band: rgba(229,236,233,.035); --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #9085e9; color-scheme: dark }
+  --accent: #4cc39f; --accent-soft: rgba(76,195,159,.12); --ref: #d6a15c; --band: rgba(229,236,233,.035); --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #9085e9; --s5: #d55181; color-scheme: dark }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
 .wrap { max-width: 1120px; margin: 0 auto; padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 22px; }
 .wrap > * { min-width: 0; }
@@ -306,7 +306,10 @@ footer { color: var(--faint); font-size: 12px; }
       <article><h3>Web search</h3>
         <p>Letting the model search for all prices helped food and drink but made accommodation worse. Restricting
           search to restaurant, coffee and drink prices (up to five searches, plus one for the exchange rate) kept the
-          food gain without harming hotels.</p></article>
+          food gain without harming hotels.</p>
+        <p class="small">Adding accommodation searches back (104, on a 100-city sample) brought Luna's raw hotel prices much
+          closer to booking-site levels but did not improve how well it ranks cities, which is what correction factors
+          cannot fix. It also mixed per-person and per-room hostel prices. Rejected.</p></article>
       <article><h3>Bundle 022 (current best)</h3>
         <p>Three changes that each helped a little, judged together as one package that was registered before its
           results existed: Luna, web search for food and drink only, and country-level correction factors. It cut the
@@ -394,7 +397,7 @@ const pct = e => Math.round((Math.exp(e) - 1) * 100);
 const fmt = v => v === null || v === undefined ? '–' : v.toFixed(3);
 const VLABEL = { accept: 'Accepted', not_adopted: 'Passed, not adopted', reject: 'Rejected', promising_extend: 'Promising', invalid_coverage: 'Invalid', pending: 'Running', unassessed: 'Scored', reference: 'Reference', baseline: 'Baseline' };
 
-const PCOL = { R1: 'var(--s1)', R2: 'var(--s2)', R3: 'var(--s3)', Test: 'var(--s4)' };
+const PCOL = { R1: 'var(--s1)', R2: 'var(--s2)', R3: 'var(--s3)', S100: 'var(--s5)', Test: 'var(--s4)' };
 // Viewer preferences: layout, visible panels and raw scores. Remembered per browser when storage is available.
 const store = { get(k, d) { try { const v = localStorage.getItem('hc-' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem('hc-' + k, JSON.stringify(v)); } catch {} } };
@@ -448,7 +451,7 @@ function render() {
   } else {
     const steps = Math.max(...rows.map(stepOf));
     slot = (W - m.l - m.r) / steps;
-    const off = { R1: -0.15, R2: -0.05, R3: 0.05, Test: 0.15 };
+    const off = { R1: -0.2, R2: -0.1, R3: 0, S100: 0.1, Test: 0.2 };
     X = r => m.l + slot * (stepOf(r) - 0.5 + (panels.length > 1 ? off[r.panel] || 0 : 0));
     for (let s = 1; s <= steps; s++) ticks.push([m.l + slot * (s - 0.5), s]);
   }
@@ -491,7 +494,12 @@ function render() {
     d += ` L${end},${Y(last.best)}`;
     if (split) el('path', { d: d + ` L${end},${H - m.b} L${X(rows.find(r => r.n === pts[0].n)) - slot * 0.35},${H - m.b} Z`, fill: PCOL[panel], opacity: 0.08, stroke: 'none' });
     el('path', { d, fill: 'none', stroke: PCOL[panel], 'stroke-width': split ? 2.5 : 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
-    if (split) splitLabels.push({ x: end, y: Y(last.best) - 9, text: `${last.best.toFixed(3)} · ≈${pct(last.best)}%` });
+    if (split) {
+      // Above the line unless a point of this panel would sit under the label; then below it.
+      const above = Y(last.best) - 9, clash = pr.some(r => r.error !== null && Math.abs(Y(r.error) - (above - 4)) < 15 && X(r) > end - 95);
+      const wide = end - X(pr[0]) > 110;
+      splitLabels.push({ x: end, y: clash ? Y(last.best) + 17 : above, text: wide ? `${last.best.toFixed(3)} · ≈${pct(last.best)}%` : last.best.toFixed(3) });
+    }
     else labels.push({ panel, y: Y(last.best) + 4, v: last.best });
   }
   labels.sort((a, b) => a.y - b.y);

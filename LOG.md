@@ -4144,3 +4144,14 @@ Final `queue.mjs --status` output:
   iterations; this iteration had zero pending tasks.
 - Stop condition 1: the iteration queue is empty and the authorized finishing commands completed.
   `Luna 104 complete` was committed and pushed as `eba04976`. This entry records the session stop.
+
+# 17 October 2026 - 104 accommodation search judged
+
+- 104-bundle-s100 (100-city sample, country-in-region correction refitted on the sample) against 022-bundle-s100:
+  0.1966 vs 0.1759, improvement -0.021 (CI -0.045 to +0.002), 44/56. Rejected; hostel_private_2p regression.
+- Per anchor (104 corrected vs 022): 3-star 0.229 vs 0.212, 1-star 0.256 vs 0.232, hostel private 0.356 vs 0.237,
+  dorm 0.197 vs 0.229, food and drink within 0.015.
+- Diagnosis on raw answers vs R3: 3-star median log bias 0.58 -> 0.23 and 12/100 within 5% (102: 2/100), but
+  correlation 0.88 -> 0.87; hostel private bias +0.40 -> -0.18 and correlation 0.87 -> 0.80, consistent with
+  per-person Hostelworld private prices being returned as room prices. Search fixes level, which correction already
+  fixes, and adds noise.
