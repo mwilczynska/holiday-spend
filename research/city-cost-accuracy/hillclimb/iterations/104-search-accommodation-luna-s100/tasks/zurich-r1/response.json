@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Numbeo city prices anchor meals, coffee and beer. Cocktail evidence is a small CHF 19 sample; Zurich wine-menu data gives a median near CHF 14. Accommodation anchors are estimated from current listings and 2026 guides as normal-year midpoints, with a local-tax allowance; annual prices and fee inclusion remain uncertain.",
+  "comparable_city_reasoning": "No comparable city used; estimates use Zurich-specific price references.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.67,
+    "coffee": 7.05,
+    "inexp_meal_1p": 35.07,
+    "midrange_meal_2p": 145.12,
+    "cocktail": 23.0,
+    "wine_glass": 16.93,
+    "hostel_dorm_1p": 64.7,
+    "hostel_private_2p": 141.49,
+    "hotel_1star_2p": 139.07,
+    "hotel_3star_2p": 268.46
+  }
+}
