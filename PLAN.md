@@ -151,6 +151,16 @@ showed 0.043, so the gain held on cities no experiment had used. Food and drink 
 drink references are Numbeo, which the searches can read. 103 (two-call averaging) withdrawn by owner decision before
 collection. Remaining: R3 hotel references (owner 3-star decision), then the final report and production proposal.
 
+Round 4 registered (17 October 2026, before any answer). Remaining error on R3 is 74% accommodation (3-star 51%).
+104-search-accommodation-luna-s100: the 102 prompt plus up to four accommodation searches (typical nightly price over a
+normal year, taxes included, middle of typical properties), GPT-6 Luna Max via Codex, on a fixed 100-city dev sample
+(`citySample` seed hillclimb-sample-104; Codex weekly budget ~19% left). Judged as 104-bundle-s100 against
+022-bundle-s100 (0.1759 on the sample): both apply country-in-region correction (k=3) fitted leave-one-city-out on
+their own sample answers; unchanged acceptance rule. Codex prompt: `CODEX-LUNA-104-PROMPT.md`, launched by the
+coordinator after the 5-hour window reset. Zero-call candidate 023 (hostel/1-star slope correction; slopes 0.72-0.75)
+and cocktail/wine reference collection run in parallel. Diagnostic: food residuals do not predict hotel residuals
+(correlation 0.01), so cross-anchor correction is dropped.
+
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.

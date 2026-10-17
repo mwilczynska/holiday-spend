@@ -24,7 +24,13 @@ const split = cand.split ?? 'dev';
 function panelCities() {
   const seen = new Map();
   for (const r of loadPanel()) if (r.split === split && !seen.has(r.cityKey)) seen.set(r.cityKey, r);
-  return [...seen.values()].sort((a, b) => a.cityKey.localeCompare(b.cityKey));
+  const all = [...seen.values()].sort((a, b) => a.cityKey.localeCompare(b.cityKey));
+  // "citySample": { "n", "seed" } restricts an iteration to a fixed hash-ordered subset of its split, so a costly
+  // lane can be judged on fewer cities. Replays with the same sample score only those cities.
+  if (!cand.citySample) return all;
+  const { n, seed } = cand.citySample;
+  const keep = new Set(all.map(c => c.cityKey).sort((a, b) => sha256(`${seed}|${a}`).localeCompare(sha256(`${seed}|${b}`))).slice(0, n));
+  return all.filter(c => keep.has(c.cityKey));
 }
 const taskId = (cityKey, k) => `${cityKey.replace(/ /g, '-')}-r${k}`;
 
@@ -71,6 +77,7 @@ if (command === 'prepare') {
 } else if (command === 'ingest') {
   const sourceDir = cand.replayFrom ? path.join(hcRoot, 'iterations', cand.replayFrom) : dir;
   const freeze = readJson(path.join(sourceDir, 'freeze.json'));
+  if (cand.citySample) { const keep = new Set(panelCities().map(c => c.cityKey)); freeze.tasks = freeze.tasks.filter(t => keep.has(t.cityKey)); }
   const transform = cand.transform ? (await import(pathToFileURL(path.join(dir, cand.transform)))).default : null;
   const cities = new Map(panelCities().map(c => [c.cityKey, c]));
   const out = [], failures = [];

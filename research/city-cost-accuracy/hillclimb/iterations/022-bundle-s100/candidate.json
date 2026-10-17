@@ -1,0 +1,15 @@
+{
+  "id": "022-bundle-s100",
+  "parent": "022-bundle-luna-search-country",
+  "family": "bundle",
+  "split": "dev",
+  "citySample": {
+    "n": 100,
+    "seed": "hillclimb-sample-104"
+  },
+  "replayFrom": "102-search-food-drink-luna-r2",
+  "transform": "transform.mjs",
+  "lane": "gpt-6-luna/max (Codex subagent)",
+  "repeats": 1,
+  "hypothesis": "Registered 17 October 2026 before any 104 answer exists. Incumbent arm for 104: bundle 022 restricted to the 104 sample, with its country-in-region correction (k=3) refitted leave-one-city-out on the 100 sample cities only, so both arms learn corrections from the same cities."
+}

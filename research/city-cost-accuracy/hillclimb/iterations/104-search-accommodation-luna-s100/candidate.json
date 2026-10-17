@@ -1,0 +1,30 @@
+{
+  "split": "dev",
+  "referenceDate": "July 2026",
+  "extraContext": null,
+  "transform": null,
+  "lane": "gpt-6-luna/max (Codex subagent, app system prompt, web search as the prompt allows)",
+  "cliModel": "claude-haiku-5-5",
+  "effort": "max",
+  "id": "104-search-accommodation-luna-s100",
+  "parent": "102-search-food-drink-luna-r2",
+  "family": "grounding",
+  "hypothesis": "Registered 17 October 2026 before any answer exists. On R3 (actual booking prices), hotels and hostels carry 74% of bundle 022's remaining weighted error; Luna's 3-star estimates have slope 1.00 and correlation 0.90 with the references, so the error is per-city scatter that correction factors cannot remove. Add up to four searches for typical accommodation prices (3-star, basic hotel, hostel dorm and private) to the 102 food/drink-search prompt. Judged on a fixed 100-city dev sample (Codex weekly budget) as 104-bundle (country-in-region correction k=3 fitted leave-one-city-out on 104's own sample answers) against 022-s100 (the same correction on 102's answers for the same 100 cities), under the unchanged acceptance rule. Earlier evidence against: 018 (Haiku, search for all prices, KAYAK-level references) worsened accommodation.",
+  "repeats": 1,
+  "citySample": {
+    "n": 100,
+    "seed": "hillclimb-sample-104"
+  },
+  "promptTemplate": "prompt.md",
+  "derivedFrom": "iterations/019-search-food-drink-r2/prompt.md",
+  "replacements": [
+    [
+      "Estimate food and drink anchors with the help of a few web searches for current typical prices in this city.\nAccommodation anchors are holistic model estimates from your general knowledge and the supplied city context; do not\nclaim that you inspected live booking pages or current listings.",
+      "Estimate the food, drink and accommodation anchors with the help of a few web searches for current typical prices\nin this city. Report only what your searches actually showed; do not claim listings or sources you did not see."
+    ],
+    [
+      "Use at most six web searches in total: one to obtain the latest published Reserve Bank of Australia USD/AUD\nexchange-rate observation, and up to five to check current typical prices in this city for restaurant meals, coffee,\nbeer, cocktails and wine (for example cost-of-living price indexes). Prefer aggregated typical prices over single\nvenues. Do not search for accommodation prices. Return the RBA observation and its provenance; the server owns the\ninversion, currency conversion, tier formulas, and rounding.",
+      "Use at most ten web searches in total: one to obtain the latest published Reserve Bank of Australia USD/AUD\nexchange-rate observation, up to five to check current typical prices in this city for restaurant meals, coffee,\nbeer, cocktails and wine (for example cost-of-living price indexes), and up to four to check typical accommodation\nprices on booking sites or travel guides (a 3-star hotel double room for two adults, a very basic hotel or guesthouse\nroom, a hostel dorm bed and a private hostel room). Accommodation anchors are typical nightly prices across a normal\nyear, including taxes and fees: use the middle of the range of typical properties, not the cheapest listing and not\npeak-season or luxury rates. Prefer aggregated typical prices over single venues or single properties. Return the RBA\nobservation and its provenance; the server owns the inversion, currency conversion, tier formulas, and rounding."
+    ]
+  ]
+}
