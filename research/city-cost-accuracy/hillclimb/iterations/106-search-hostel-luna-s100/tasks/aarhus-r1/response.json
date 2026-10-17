@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "June 2026 Aarhus cost-of-living data anchors restaurant prices, beer, and coffee. Cocktail and wine prices are estimated from the local beer price relationship; hostel rates vary by property and season, and hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "No comparable city was needed: restaurant anchors use Aarhus-specific cost data, and lodging estimates are for Aarhus.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.5,
+    "coffee": 7.15,
+    "inexp_meal_1p": 25.0,
+    "midrange_meal_2p": 110.0,
+    "cocktail": 17.0,
+    "wine_glass": 11.5,
+    "hostel_dorm_1p": 35.0,
+    "hostel_private_2p": 88.0,
+    "hotel_1star_2p": 110.0,
+    "hotel_3star_2p": 165.0
+  }
+}

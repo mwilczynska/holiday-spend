@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Arusha price-index data gives a useful food, coffee and beer baseline, but the local sample is limited. Local menu prices suggest cocktails around TSh 10,000–15,000 and wine by the glass around TSh 6,000–12,000. Hostel prices vary by season; hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "No comparable city used; food, coffee, beer and hostel anchors use Arusha-specific price data, while hotel estimates reflect general knowledge of Arusha as a safari gateway.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.1,
+    "coffee": 1.75,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 28,
+    "cocktail": 4.6,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 13,
+    "hostel_private_2p": 14,
+    "hotel_1star_2p": 32,
+    "hotel_3star_2p": 85
+  }
+}

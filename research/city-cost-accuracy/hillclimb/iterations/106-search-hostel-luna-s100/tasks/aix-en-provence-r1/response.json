@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current Aix price data. Cocktail and wine estimates are informed by local menu examples and their price relationship to a €7 draft beer. Hostel data are sparse and seasonal; hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "Local prices are the main basis; lodging estimates reflect Aix-en-Provence's tourist and university demand in Provence.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.85,
+    "coffee": 4.58,
+    "inexp_meal_1p": 20.19,
+    "midrange_meal_2p": 78.51,
+    "cocktail": 13.46,
+    "wine_glass": 7.29,
+    "hostel_dorm_1p": 35.89,
+    "hostel_private_2p": 84.12,
+    "hotel_1star_2p": 140.20,
+    "hotel_3star_2p": 207.50
+  }
+}

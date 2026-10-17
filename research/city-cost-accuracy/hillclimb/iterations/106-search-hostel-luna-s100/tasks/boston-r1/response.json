@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use current Boston price averages. Cocktail and wine prices are less certain and reflect local menu examples. Hostel supply is limited and seasonal; hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "No direct city proxy used. Boston-specific restaurant prices inform food anchors; accommodation reflects Boston's high-cost New England urban and tourism context.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.26,
+    "inexp_meal_1p": 30.00,
+    "midrange_meal_2p": 120.00,
+    "cocktail": 15.00,
+    "wine_glass": 13.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 175.00,
+    "hotel_3star_2p": 295.00
+  }
+}

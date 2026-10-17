@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and beer use nearby-period Alanya cost-of-living averages as a proxy for July; Turkish inflation and resort seasonality add uncertainty. Cocktail and wine are estimated from their local price relationship to draft beer. Hostel coverage is sparse, and hotel anchors are broad model estimates.",
+  "comparable_city_reasoning": "Alanya’s own city price aggregates inform food and drink; accommodation estimates reflect a seasonal Mediterranean resort market.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.4,
+    "coffee": 2.75,
+    "inexp_meal_1p": 7.0,
+    "midrange_meal_2p": 30.0,
+    "cocktail": 7.5,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 19.0,
+    "hostel_private_2p": 38.0,
+    "hotel_1star_2p": 45.0,
+    "hotel_3star_2p": 75.0
+  }
+}

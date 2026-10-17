@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Hiroshima restaurant price panels have sparse contributions; the cocktail estimate uses a low-count local price, wine is inferred at about 1.4 times local draft beer, and hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "Food, drink, and hostel anchors use Hiroshima-specific price data; hotel anchors are holistic estimates for a mid-sized Japanese tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.85,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 31.00,
+    "cocktail": 5.00,
+    "wine_glass": 4.10,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 27.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 115.00
+  }
+}

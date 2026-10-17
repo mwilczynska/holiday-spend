@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use Bangkok-specific prices published near the July 2026 window; hostel anchors use reported city averages. Hotel anchors are holistic estimates, not live listing checks. Cocktail pricing reflects a typical casual-to-midrange bar; the wine-glass estimate is less certain and is inferred using the local beer price as a reference.",
+  "comparable_city_reasoning": "No comparable city used; Bangkok-specific prices anchor the restaurant and hostel estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.99,
+    "coffee": 2.87,
+    "inexp_meal_1p": 3.28,
+    "midrange_meal_2p": 35.82,
+    "cocktail": 8.96,
+    "wine_glass": 7.46,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 60.00
+  }
+}

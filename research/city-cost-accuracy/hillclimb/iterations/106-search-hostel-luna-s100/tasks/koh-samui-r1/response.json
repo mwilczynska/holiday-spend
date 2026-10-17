@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Crowd-reported Koh Samui prices support the meal, coffee and beer anchors, and an aggregated hostel estimate supports the bed and room anchors. Hotel prices are holistic estimates; cocktail and wine-by-glass prices are less certain and use local price relationships to beer.",
+  "comparable_city_reasoning": "City-specific prices inform the food and hostel anchors. For holistic hotel estimates, I used general knowledge of Thai Gulf island resort markets.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.39,
+    "coffee": 2.15,
+    "inexp_meal_1p": 4.48,
+    "midrange_meal_2p": 29.86,
+    "cocktail": 4.18,
+    "wine_glass": 7.17,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 32.00,
+    "hotel_3star_2p": 70.00
+  }
+}

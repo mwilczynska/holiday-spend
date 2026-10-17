@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant index data is close to the July 2026 window. Hostel options are sparse and listed starting prices do not show normal-year averages; cocktail data is limited, and wine is estimated relative to local draft beer. Hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "No proxy city used. Restaurant anchors use Abu Dhabi-specific price data; hotel estimates reflect a Gulf business and leisure capital with event-driven demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.0,
+    "coffee": 5.6,
+    "inexp_meal_1p": 8.2,
+    "midrange_meal_2p": 68.0,
+    "cocktail": 19.0,
+    "wine_glass": 14.0,
+    "hostel_dorm_1p": 23.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 70.0,
+    "hotel_3star_2p": 135.0
+  }
+}

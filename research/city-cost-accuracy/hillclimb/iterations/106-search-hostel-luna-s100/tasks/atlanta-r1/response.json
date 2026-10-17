@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors align with recent Atlanta cost-of-living aggregates. The cocktail estimate is adjusted from a local bar-price benchmark; wine by the glass uses local beer and bottle-price relationships. Atlanta hostel inventory is limited, so those normal-year rates are broad estimates; hotel anchors are holistic.",
+  "comparable_city_reasoning": "No comparable-city proxy; restaurant anchors use Atlanta price aggregates, and lodging estimates reflect a large U.S. Southeast metro.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.0,
+    "coffee": 5.12,
+    "inexp_meal_1p": 27.5,
+    "midrange_meal_2p": 110.0,
+    "cocktail": 15.0,
+    "wine_glass": 12.0,
+    "hostel_dorm_1p": 40.0,
+    "hostel_private_2p": 105.0,
+    "hotel_1star_2p": 95.0,
+    "hotel_3star_2p": 160.0
+  }
+}

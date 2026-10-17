@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Lisbon price averages updated in October 2026. Cocktail prices are less certain, and wine is estimated from its local relationship to beer. Hostel estimates vary by source and season. Hotel anchors are holistic estimates based on general knowledge, without live hotel-price checks.",
+  "comparable_city_reasoning": "Lisbon-specific price averages anchor food and hostel costs; hotel estimates use general knowledge of tourist-city rates in Portugal.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.37,
+    "coffee": 3.04,
+    "inexp_meal_1p": 16.84,
+    "midrange_meal_2p": 61.76,
+    "cocktail": 11.23,
+    "wine_glass": 4.49,
+    "hostel_dorm_1p": 23.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 165.00
+  }
+}
