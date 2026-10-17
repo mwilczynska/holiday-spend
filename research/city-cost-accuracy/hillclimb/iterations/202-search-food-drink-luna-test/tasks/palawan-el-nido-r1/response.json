@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Recent El Nido price guides support meal estimates. Coffee and beer data are less consistent; cocktail and wine prices are estimated from restaurant beer prices and tourist-bar markups. Accommodation is a holistic estimate with seasonal uncertainty.",
+  "comparable_city_reasoning": "Dining is based on El Nido-specific price ranges. Accommodation reflects a seasonal Philippine island destination with a premium for visitor-facing rooms.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.0,
+    "coffee": 2.5,
+    "inexp_meal_1p": 5.5,
+    "midrange_meal_2p": 27.0,
+    "cocktail": 5.0,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 32.0,
+    "hotel_3star_2p": 75.0
+  }
+}

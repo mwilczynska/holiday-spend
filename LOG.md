@@ -4003,3 +4003,27 @@ Final `queue.mjs --status` output:
 - Pre-registered bundle 022 (Luna + food/drink search + country-in-region correction): 0.1649 vs 0.2077, -0.043
   (CI 0.032 to 0.054), 235/98 cities, accepted. New R2 best; typical error about 18%. Search works far better on Luna
   than on Haiku. Caveats: Numbeo source reproduction, up to six searches per city, sealed-test confirmation pending.
+
+# 17 October 2026 UTC - Luna round 3 collection stopped at owner request
+
+- Collected 98 answers this session for `202-search-food-drink-luna-test` (98/142 answered; 44 pending). Collected 0 for `201-v11-luna-test` (142 pending) and 0 for `103-search-food-drink-luna-r2-rep2` (333 pending). Phases 2 and 3 were not started; phase order was preserved.
+- Each answer used a fresh isolated GPT-6 Luna subagent at Max with only the exact hash-checked worker message. Final messages were saved verbatim with run metadata and prompt SHA-256. The runtime permits three simultaneous workers plus the coordinator, so no more than three workers ran concurrently.
+- Worker retries: 0. Worker failures: 0. Skipped tasks: 0. No model or effort substitutions. Unknown search counts are null; Battambang's known count is 6.
+- Battambang worker reported one protocol deviation: its six-query batch accidentally included an accommodation-price query. It said it ignored the lodging results and used general knowledge for those anchors. Its returned answer was preserved without editing or rerunning.
+- An Agadir response-save command encountered a PowerShell parsing error on a typographic apostrophe before writing files. The same final text was then saved using byte-safe base64 encoding; this was a save-command retry, not another model attempt.
+- Timing provenance: early run records use approximate coordinator dispatch/save timestamps; from Boracay onward the save workflow reads execution metadata for start/completion timestamps. Existing run records were not rewritten to repair coarse early timestamps.
+- Execution metadata confirmed `gpt-6-luna` and `max` for the collection workers despite a closed-transcript CLI replay banner showing GPT-6.1 Sol default. The owner's cited Ubud thread `01a1477a-0038-73f1-9424-ddb65cdfeda4` records Luna/Max in its actual turn context. Every subsequent save also checked model/effort execution metadata.
+- Regular checkpoints committed and pushed: `7d6e4c10` (24/142), `34e3cbc8` (48/142), `bbef70c4` (72/142), and `ada84423` (96/142).
+- Ingest output lines: none; no phase is complete and no ingest ran. No scoring, assessment, reference-panel inspection, answer interpretation, or production changes were performed.
+- Stop reason: owner explicitly instructed, "Stop after committing and pushing." No new tasks were started after that instruction. Orange and Palawan (El Nido), already running, finished and their answers were saved before this final commit/push. No stop error occurred.
+- Next Phase 1 queued task: `pattaya-r1`.
+
+Final `queue.mjs --status` output:
+
+```text
+009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
+011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
+103-search-food-drink-luna-r2-rep2       pending  333 / 333  (repeat-1 pending 333)
+201-v11-luna-test                        pending  142 / 142  (repeat-1 pending 142)
+202-search-food-drink-luna-test          pending   44 / 142  (repeat-1 pending 44)
+```
