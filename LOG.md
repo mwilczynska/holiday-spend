@@ -4048,3 +4048,28 @@ Final `queue.mjs --status` output:
 103-search-food-drink-luna-r2-rep2       pending  333 / 333  (repeat-1 pending 333)
 201-v11-luna-test                        pending   67 / 142  (repeat-1 pending 67)
 ```
+
+
+# 17 October 2026 UTC - Luna round 3 phase 2 complete
+
+- Resumed `201-v11-luna-test` at 75/142 saved and collected its remaining 67 answers, finishing at 142/142 with an empty queue. Collected 0 new answers for `202-search-food-drink-luna-test` (already complete) and 0 for `103-search-food-drink-luna-r2-rep2` (333 pending).
+- Each of the 67 tasks used one fresh isolated `gpt-6-luna` subagent at `max`, with only the exact worker message printed by `codex-task-message.mjs`. No prior answers or reference prices were passed to workers. At most six workers were allowed simultaneously.
+- Saved every final response verbatim from runtime completion text without parsing, reformatting, or correcting the answer. Each save verified Luna/Max execution metadata and recorded actual runtime start/completion timestamps, attempts 1, the printed prompt SHA-256, searches null, and empty notes. Existing responses, run records and frozen inputs were preserved.
+- Worker retries: 0. Worker failures: 0. Skipped tasks: 0. No reported protocol deviations, model/effort substitutions, commit failures, lock failures or push failures occurred in this session.
+- Committed and pushed the regular checkpoints at 99/142 (`ca293d6f`) and 123/142 (`3fff3450`), then the completed phase 2 answers and ingest outputs (`50e952db`). Work continued after each intermediate checkpoint.
+- Ran the single authorized phase 2 ingest. No scoring, assessment, reference-panel inspection, result comparison or interpretation, production changes, or work on other iterations occurred.
+- Stop reason: Phase 2 is complete; the owner's latest instruction was "Continue with Phase 2. Do not start Phase 3." Phase 3 remains unstarted. All workers finished and their results were saved. No stop error occurred.
+
+Ingest output:
+
+```json
+{"tasks":142,"failures":0,"scored":false,"note":"sealed test split; not scored"}
+```
+
+Final `queue.mjs --status` output:
+
+```text
+009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
+011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
+103-search-food-drink-luna-r2-rep2       pending  333 / 333  (repeat-1 pending 333)
+```
