@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Crowd-sourced city price data supports the meal, coffee and beer estimates; cocktail and wine prices are inferred from their relationship to local beer. Accommodation is estimated from the supplied peer-city prices, without live listing checks.",
+  "comparable_city_reasoning": "Luang Prabang’s stronger visitor demand suggests prices somewhat above Vientiane and Vang Vieng: estimated three-star rooms at $38 versus their $34 and $25, and basic rooms at $25 versus $22 and $14. Dorm and private-room estimates are also slightly higher than the supplied Laos comparables.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.30,
+    "coffee": 1.55,
+    "inexp_meal_1p": 1.85,
+    "midrange_meal_2p": 17.25,
+    "cocktail": 4.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 38.00
+  }
+}

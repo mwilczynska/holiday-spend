@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino, and draft-beer anchors use current Marseille price averages as a proxy for July. Wine and cocktail prices are less certain and are bounded using local menu examples and the local beer price. Accommodation is a holistic July estimate based on the supplied year-typical comparables.",
+  "comparable_city_reasoning": "Marseille is a major southern French coastal city with strong summer demand. The July accommodation estimates sit above the supplied year-typical Avignon, Toulouse, and Lyon prices, and modestly above Annecy for three-star rooms.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.7,
+    "coffee": 3.5,
+    "inexp_meal_1p": 19.1,
+    "midrange_meal_2p": 73.0,
+    "cocktail": 12.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 42.0,
+    "hostel_private_2p": 80.0,
+    "hotel_1star_2p": 115.0,
+    "hotel_3star_2p": 145.0
+  }
+}

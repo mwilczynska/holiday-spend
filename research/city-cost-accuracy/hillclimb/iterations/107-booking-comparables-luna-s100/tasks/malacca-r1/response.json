@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "The latest Malacca city-price panel is a proxy for the July 2026 window and reports only 16 contributors, so food and drink estimates have some uncertainty. Cocktail pricing follows local bar prices relative to beer; wine by the glass is less certain. Accommodation estimates are inferred from the supplied Malaysian comparables.",
+  "comparable_city_reasoning": "Malacca’s year-typical accommodation is likely near Ipoh and Penang: its heritage tourism supports steady demand, while its urban hotel market is less resort-driven than Langkawi. I estimate basic rooms and hostel options near the lower end of those comparables and three-star rooms near Ipoh and Penang.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.70,
+    "coffee": 2.91,
+    "inexp_meal_1p": 3.31,
+    "midrange_meal_2p": 18.38,
+    "cocktail": 7.35,
+    "wine_glass": 5.88,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 18.00,
+    "hotel_3star_2p": 30.00
+  }
+}

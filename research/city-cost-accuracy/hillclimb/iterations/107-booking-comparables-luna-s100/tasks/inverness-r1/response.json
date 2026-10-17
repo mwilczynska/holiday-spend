@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use 2026 Inverness price aggregates, though their contribution counts are limited. Accommodation is a holistic estimate from the supplied nearby-city prices; cocktail uses a small local price sample, and wine is estimated slightly above beer.",
+  "comparable_city_reasoning": "For accommodation, Inverness is estimated near Glasgow and Belfast: Highland tourism and limited room supply may offset its smaller size. The three-star estimate is close to Glasgow's $156; basic and hostel rooms are set above the supplied Belfast and Glasgow hostel examples.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 4.09,
+    "inexp_meal_1p": 20.25,
+    "midrange_meal_2p": 81.00,
+    "cocktail": 10.80,
+    "wine_glass": 8.10,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 76.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 160.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated Lausanne price data supports the restaurant, coffee and beer anchors. The cocktail estimate follows a CHF 16 local downtown drink entry, about 1.9 times the local draft-beer price; the wine estimate uses a CHF 9 Lausanne restaurant-list median. Accommodation anchors are holistic estimates based on the supplied Geneva, Zurich and Lugano comparables.",
+  "comparable_city_reasoning": "Lausanne's year-typical accommodation costs are estimated near Zurich and Lugano, below Geneva's three-star price. Its university and lakeside tourism support prices above the lower end of the supplied Swiss comparables.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.25,
+    "coffee": 6.10,
+    "inexp_meal_1p": 30.15,
+    "midrange_meal_2p": 116.85,
+    "cocktail": 19.25,
+    "wine_glass": 10.85,
+    "hostel_dorm_1p": 52,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 155,
+    "hotel_3star_2p": 205
+  }
+}

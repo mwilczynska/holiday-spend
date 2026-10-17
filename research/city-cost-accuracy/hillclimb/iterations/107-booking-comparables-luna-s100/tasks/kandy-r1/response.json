@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meals, coffee and beer are anchored to current Kandy cost-of-living aggregates; those figures have limited local contributions. Cocktail pricing is less certain and follows the local beer-to-cocktail price relationship. Wine by the glass is estimated from the local mid-range bottle price and its relationship to beer. Accommodation is a holistic estimate based on the supplied peer-city prices.",
+  "comparable_city_reasoning": "Kandy's inland cultural-tourism demand suggests three-star room prices near Trincomalee and Unawatuna, above Dambulla's lower baseline and below Colombo. Basic rooms and hostels are estimated near Dambulla and Trincomalee.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.94,
+    "coffee": 2.06,
+    "inexp_meal_1p": 2.90,
+    "midrange_meal_2p": 13.90,
+    "cocktail": 5.69,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 21.00,
+    "hotel_3star_2p": 30.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use Ipoh price panels updated in October 2026 as a nearby proxy for the July 2026 window; their contributor base is limited. The cocktail estimate has a local price entry. A typical wine-by-glass price was unavailable, so it is estimated above the RM18 pub-beer anchor, using the RM24 cocktail price and local wine-price context. Accommodation estimates are bounded by the supplied comparable-city prices and general knowledge, without checking live listings.",
+  "comparable_city_reasoning": "Ipoh is likely toward the lower end of the supplied Malaysian city range for accommodation: below Penang and Malacca for three-star rooms, and near the low end of the basic-room and dorm prices. Its private-room estimate is below Penang and close to Kuala Lumpur and Malacca.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.4,
+    "coffee": 2.8,
+    "inexp_meal_1p": 3.3,
+    "midrange_meal_2p": 19.6,
+    "cocktail": 5.9,
+    "wine_glass": 6.6,
+    "hostel_dorm_1p": 8.0,
+    "hostel_private_2p": 18.0,
+    "hotel_1star_2p": 15.0,
+    "hotel_3star_2p": 25.0
+  }
+}

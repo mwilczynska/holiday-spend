@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Marmaris restaurant anchors use citywide aggregated price data, with July values estimated amid price movement across 2026 snapshots. Cocktail and wine prices are less certain and estimated relative to beer. Accommodation is a holistic year-typical estimate.",
+  "comparable_city_reasoning": "Marmaris is estimated slightly below Fethiye, Bodrum and Antalya for three-star hotels, near Fethiye for basic rooms, and between Fethiye and Antalya for hostel rooms, reflecting its strong resort demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.8,
+    "inexp_meal_1p": 11.5,
+    "midrange_meal_2p": 52,
+    "cocktail": 10,
+    "wine_glass": 8,
+    "hostel_dorm_1p": 14,
+    "hostel_private_2p": 26,
+    "hotel_1star_2p": 58,
+    "hotel_3star_2p": 85
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use New Orleans city price-index data from 2026; the cocktail and wine estimates are inferred from the roughly $6 draft beer price and typical local drink markups. Accommodation is a holistic estimate based on the supplied comparables and is less certain, especially around major events.",
+  "comparable_city_reasoning": "Estimated accommodation below Boston and Palm Springs, near San Diego and San Francisco overall: a basic room around San Diego's level, three-star rooms slightly above San Diego and San Francisco, and hostel prices between the supplied San Francisco and San Diego examples.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.0,
+    "coffee": 5.43,
+    "inexp_meal_1p": 26.0,
+    "midrange_meal_2p": 130.0,
+    "cocktail": 12.0,
+    "wine_glass": 10.0,
+    "hostel_dorm_1p": 35.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 150.0,
+    "hotel_3star_2p": 210.0
+  }
+}
