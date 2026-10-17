@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Ghent price indexes provide a useful restaurant, coffee and beer baseline; current figures are used as a proxy for July 2026. Cocktail pricing follows a local city index, while wine is estimated from its relationship to beer. Accommodation is a holistic summer estimate with higher uncertainty and no live listing data.",
+  "comparable_city_reasoning": "Food and drink estimates use Ghent city-level price data. Accommodation reflects Ghent's profile as a mid-sized Flemish university and tourism city, with July seasonality.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.8,
+    "coffee": 4.3,
+    "inexp_meal_1p": 22,
+    "midrange_meal_2p": 110,
+    "cocktail": 10,
+    "wine_glass": 7.3,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 135,
+    "hotel_3star_2p": 195
+  }
+}

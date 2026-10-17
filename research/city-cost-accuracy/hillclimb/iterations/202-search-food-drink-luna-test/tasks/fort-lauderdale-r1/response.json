@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Fort Lauderdale price indexes put an inexpensive meal near $29, a mid-range dinner for two near $120, cappuccino near $5.17, and draft beer around $5–6. Cocktail and wine estimates are less certain; they use the local price relationship to beer and limited local bar-price evidence. Accommodation anchors are holistic estimates for a South Florida leisure destination, without live listing checks.",
+  "comparable_city_reasoning": "Used Fort Lauderdale's recent city price data for food and drinks, with its South Florida coastal leisure market as the basis for holistic accommodation estimates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.5,
+    "coffee": 5.17,
+    "inexp_meal_1p": 29,
+    "midrange_meal_2p": 120,
+    "cocktail": 15,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 125,
+    "hotel_3star_2p": 210
+  }
+}

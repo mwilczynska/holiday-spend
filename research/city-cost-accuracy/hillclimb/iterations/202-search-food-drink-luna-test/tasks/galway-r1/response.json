@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Galway restaurant anchors use aggregated 2026 typical prices. Cocktail and wine estimates are inferred from the local beer price relationship. July accommodation is a holistic seasonal estimate and is less certain.",
+  "comparable_city_reasoning": "Treated as an Irish regional university and visitor centre, with a July tourism premium for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.7,
+    "coffee": 4.9,
+    "inexp_meal_1p": 24,
+    "midrange_meal_2p": 110,
+    "cocktail": 14,
+    "wine_glass": 9.5,
+    "hostel_dorm_1p": 53,
+    "hostel_private_2p": 130,
+    "hotel_1star_2p": 160,
+    "hotel_3star_2p": 245
+  }
+}

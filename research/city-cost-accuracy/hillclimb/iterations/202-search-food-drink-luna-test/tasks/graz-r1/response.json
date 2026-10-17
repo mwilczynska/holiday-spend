@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Graz-specific typical-price data and a July 2026 local hospitality survey support the meal, coffee, and beer anchors. Cocktail uses a current local cost index; wine is estimated at about 0.9 times the local draft-beer price. Accommodation is a holistic July estimate and has the widest uncertainty.",
+  "comparable_city_reasoning": "Food and drink estimates use Graz-specific prices. Accommodation reflects a mid-sized Austrian university and regional-capital market with summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.8,
+    "coffee": 4.4,
+    "inexp_meal_1p": 17.4,
+    "midrange_meal_2p": 66.7,
+    "cocktail": 9.0,
+    "wine_glass": 5.2,
+    "hostel_dorm_1p": 40.0,
+    "hostel_private_2p": 85.0,
+    "hotel_1star_2p": 95.0,
+    "hotel_3star_2p": 150.0
+  }
+}

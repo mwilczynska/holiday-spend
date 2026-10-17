@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors follow Hurghada price-index centers from June 2026. Alcohol prices vary by venue; cocktail and wine are estimated from their relationship to domestic draft beer. Accommodation is a broad July-season estimate.",
+  "comparable_city_reasoning": "No city comparator used; restaurant anchors use Hurghada price-index data, while lodging reflects the Red Sea resort-town context.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.0,
+    "coffee": 2.0,
+    "inexp_meal_1p": 4.1,
+    "midrange_meal_2p": 41.0,
+    "cocktail": 4.5,
+    "wine_glass": 3.2,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 24.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 65.0
+  }
+}

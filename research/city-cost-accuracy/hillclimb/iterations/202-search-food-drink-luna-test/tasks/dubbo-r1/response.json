@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are supported by recent Dubbo price aggregates. Beer data is sparse; cocktail pricing is less certain, and wine is estimated from its local relationship to beer and cocktails. Accommodation is a holistic estimate for a regional NSW city, not based on live listings.",
+  "comparable_city_reasoning": "Local Dubbo food-price data; accommodation estimated from the inland regional NSW city and road-trip market context.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.5,
+    "coffee": 3.7,
+    "inexp_meal_1p": 17.5,
+    "midrange_meal_2p": 84,
+    "cocktail": 9,
+    "wine_glass": 8,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 78,
+    "hotel_1star_2p": 90,
+    "hotel_3star_2p": 140
+  }
+}

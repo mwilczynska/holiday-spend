@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Dresden aggregate prices updated in October 2026, so July seasonality is approximate. Accommodation is a holistic estimate; cocktail data is sparse, and wine is estimated relative to local draft beer.",
+  "comparable_city_reasoning": "Dresden's aggregate city prices inform food and drink anchors; accommodation reflects general knowledge of mid-sized German cultural destinations.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.1,
+    "coffee": 4.4,
+    "inexp_meal_1p": 16.8,
+    "midrange_meal_2p": 84.5,
+    "cocktail": 6.7,
+    "wine_glass": 5.6,
+    "hostel_dorm_1p": 34,
+    "hostel_private_2p": 80,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 155
+  }
+}

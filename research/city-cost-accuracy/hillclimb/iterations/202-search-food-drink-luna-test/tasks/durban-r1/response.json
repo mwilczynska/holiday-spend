@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Recent city price indexes differ on restaurant and drink prices, and accommodation anchors are broad model estimates. Cocktail is estimated from local beer-price relationships; the wine-glass estimate uses a modest premium to beer because direct price coverage is weak.",
+  "comparable_city_reasoning": "No single city comparator; estimates use a broad South African urban-market basis with Durban's coastal tourism demand in mind.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.25,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 33.00,
+    "cocktail": 2.70,
+    "wine_glass": 2.60,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 75.00
+  }
+}

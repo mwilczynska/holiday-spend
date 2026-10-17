@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use June 2026 aggregated Cologne prices. Cocktail and wine estimates are inferred from local beer pricing. Accommodation is a holistic July estimate and is the least certain.",
+  "comparable_city_reasoning": "No comparator used for food; estimates use Cologne-specific aggregated prices. Accommodation reflects Cologne's scale and summer tourism and event demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.61,
+    "coffee": 4.08,
+    "inexp_meal_1p": 16.84,
+    "midrange_meal_2p": 85.33,
+    "cocktail": 10.11,
+    "wine_glass": 8.42,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 155
+  }
+}

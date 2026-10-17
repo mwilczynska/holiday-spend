@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "June 2026 aggregated Goa prices support the meal, coffee, and beer anchors. Goa-wide pricing and July monsoon season add uncertainty; accommodation is a holistic estimate, and cocktail and wine prices are inferred from their relationship to local draft beer.",
+  "comparable_city_reasoning": "No comparable city used; food and beer anchors use Goa-specific aggregate prices, while accommodation reflects Goa's coastal tourism and July monsoon context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.16,
+    "coffee": 1.24,
+    "inexp_meal_1p": 3.15,
+    "midrange_meal_2p": 15.8,
+    "cocktail": 3.7,
+    "wine_glass": 2.9,
+    "hostel_dorm_1p": 7.0,
+    "hostel_private_2p": 23.0,
+    "hotel_1star_2p": 26.0,
+    "hotel_3star_2p": 53.0
+  }
+}

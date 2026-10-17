@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Hamburg aggregate price data from around the July 2026 window; the cocktail estimate comes from a small-sample city index. Wine is inferred at about 1.3 times the draft-beer price, and lodging is a holistic July high-season estimate, with the least certainty.",
+  "comparable_city_reasoning": "Food and drink anchors use Hamburg-specific aggregate prices. Lodging is a holistic estimate for a large German port city with summer travel demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.62,
+    "coffee": 4.65,
+    "inexp_meal_1p": 16.85,
+    "midrange_meal_2p": 73.0,
+    "cocktail": 12.35,
+    "wine_glass": 7.3,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 105.0,
+    "hotel_1star_2p": 125.0,
+    "hotel_3star_2p": 185.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use 2026 Frankfurt cost-of-living aggregates for meals, cappuccino and draft beer. The cocktail estimate follows a downtown-club average; wine is inferred from the local beer price because a robust citywide wine-by-the-glass figure was unavailable. Accommodation is a general-knowledge estimate and varies sharply during trade fairs.",
+  "comparable_city_reasoning": "No direct city comparator was needed for food and drink. Accommodation reflects general knowledge of a major German business city with trade-fair demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.65,
+    "coffee": 4.55,
+    "inexp_meal_1p": 17.75,
+    "midrange_meal_2p": 89.8,
+    "cocktail": 15.75,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 48,
+    "hostel_private_2p": 112,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 160
+  }
+}

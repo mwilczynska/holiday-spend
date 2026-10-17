@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Dali-specific crowd-sourced prices support the meal, coffee, and pub-beer estimates. Cocktail and wine-by-the-glass prices are less certain and are estimated from their local price relationship to beer. Accommodation anchors are broad estimates for a well-visited Yunnan tourist town, not live listing prices.",
+  "comparable_city_reasoning": "Restaurant and drink estimates use Dali-specific price data; accommodation estimates reflect Dali's role as a lakeside and heritage tourism destination in Yunnan. No comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.5,
+    "coffee": 2.7,
+    "inexp_meal_1p": 2.75,
+    "midrange_meal_2p": 21.4,
+    "cocktail": 5.0,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 9.0,
+    "hostel_private_2p": 25.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 60.0
+  }
+}

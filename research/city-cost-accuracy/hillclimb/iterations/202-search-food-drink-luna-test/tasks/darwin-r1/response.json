@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are supported by recent city price aggregates. Alcohol estimates have thinner coverage; wine is estimated above local pub beer based on the typical price relationship. Accommodation is a holistic July dry-season estimate, with greater uncertainty due to seasonal demand and no live booking data.",
+  "comparable_city_reasoning": "Based on Australian regional-capital pricing, allowing for Darwin's remote supply costs and stronger accommodation demand during the July dry season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.25,
+    "coffee": 3.95,
+    "inexp_meal_1p": 22.5,
+    "midrange_meal_2p": 87.5,
+    "cocktail": 11.8,
+    "wine_glass": 9.4,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 100,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 210
+  }
+}
