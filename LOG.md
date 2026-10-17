@@ -4073,3 +4073,12 @@ Final `queue.mjs --status` output:
 011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
 103-search-food-drink-luna-r2-rep2       pending  333 / 333  (repeat-1 pending 333)
 ```
+
+# 17 October 2026 - Sealed test confirmation of bundle 022
+
+- Codex collected 201 (v1.1 prompt) and 202 (food/drink-search prompt) with GPT-6 Luna Max on the 142 sealed test
+  cities: 284 answers, no failures. 103 was withdrawn before collection (expected gain below the margin, doubles cost).
+- Scored once per arm with `sealed-confirm.mjs` exactly as registered in PLAN.md on 16 October: correction factors
+  fitted on dev answers only; two `score.mjs --test` accesses logged in `panel/test-access.jsonl`.
+- Result: incumbent 0.2020, bundle 0.1613, improvement 0.041 (95% CI 0.025 to 0.057), 96/46 city wins. Confirmed.
+  Outputs in `research/city-cost-accuracy/hillclimb/confirmation/`.

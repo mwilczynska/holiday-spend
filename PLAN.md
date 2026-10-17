@@ -135,6 +135,13 @@ versus 201 + per-region factors fitted on 101 dev answers, one `score.mjs --test
 iterations ingest without scoring (`sealedConfirmation` flag in iterate.mjs). Hotel references (R3) remain a
 coordinator to-do and do not change these registrations; if R3 becomes primary first, both arms are rescored on it.
 
+Sealed confirmation result (17 October 2026, as registered): on the 142 test cities bundle 022 scored 0.1613
+against 0.2020 for Luna + region correction, improvement 0.041 (95% CI 0.025 to 0.057), 96 wins / 46 losses. Dev
+showed 0.043, so the gain held on cities no experiment had used. Food and drink anchors carry most of it (coffee
+0.164 to 0.073, midrange meal 0.222 to 0.113); hotel anchors moved little (3-star 0.181 to 0.170). Caveat: food and
+drink references are Numbeo, which the searches can read. 103 (two-call averaging) withdrawn by owner decision before
+collection. Remaining: R3 hotel references (owner 3-star decision), then the final report and production proposal.
+
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.

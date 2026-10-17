@@ -1,0 +1,1 @@
+Withdrawn 17 October 2026 by owner decision before any answer was collected: expected gain from averaging two Luna calls (~0.003-0.008, cf. 020 Luna+Haiku -0.006) is below the 0.015 margin and would double production cost.
