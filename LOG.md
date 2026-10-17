@@ -4155,3 +4155,44 @@ Final `queue.mjs --status` output:
   correlation 0.88 -> 0.87; hostel private bias +0.40 -> -0.18 and correlation 0.87 -> 0.80, consistent with
   per-person Hostelworld private prices being returned as room prices. Search fixes level, which correction already
   fixes, and adds noise.
+
+# 17 October 2026 - Luna 106 collection complete
+
+- Collected all 100/100 frozen tasks for `106-search-hostel-luna-s100` this session. Each task used
+  a fresh `gpt-6-luna` worker at `max` reasoning. No model or effort substitution, worker retries,
+  empty final messages, failed tasks or skipped frozen tasks. Saved final messages verbatim;
+  all run records have `attempts: 1`, the frozen prompt hash, and `searches: null`.
+- Dispatch detail for coordinator review: 14 tasks used built-in Codex subagents; 86 used fresh
+  Codex CLI worker processes. The CLI invocation was
+  `codex --no-daemon --search exec --ignore-user-config --ephemeral --model gpt-6-luna --config model_reasoning_effort="max" --sandbox read-only --json -`.
+  The existing task-message helper's exact UTF-8 worker message was passed directly on stdin,
+  without retyping or added task context. The CLI pool kept six workers active as slots freed;
+  its raw JSONL events and stderr are retained beside the responses. No runtime-equivalence
+  assessment or result interpretation was performed.
+- One CLI launcher attempt failed before creating a model worker with
+  `Error finding codex home: Could not find home directory`. Running the same launcher outside
+  the outer filesystem sandbox succeeded; each CLI worker still used its own read-only sandbox.
+  An auxiliary comparison against an encrypted trace envelope raised an assertion before any
+  writes; that auxiliary comparison was removed, while the helper's frozen-hash check remained.
+  A read-only Windows process query was denied in the outer sandbox and succeeded with authorized
+  access. Git automatic maintenance delayed the 48-answer checkpoint, then finished normally.
+- Checkpoints were committed and pushed at 26 saved answers (several workers finished as the
+  first 24-answer threshold was crossed), 48, 72 and 96: `4b9d0541`, `1fd84258`, `e8f3500b`,
+  `519b6152`. No index-lock or push failures. Completion commit `734f0203` (`Luna 106 complete`)
+  was also pushed.
+- Mechanical verification confirmed 100 unique worker threads, all frozen prompt hashes,
+  all run metadata, and byte-for-byte equality of every response with its worker's final text.
+  `npm.cmd run docs:check-memory` passed. The authorized ingest returned exactly:
+
+  `{"tasks":100,"failures":0,"primaryLoss":0.3016635949445091,"pooledRepeatLoss":0.301663594944509}`
+
+- No separate scoring, assessment, comparison or test-split command was run.
+  The iteration queue printed nothing. Final `queue.mjs --status` output:
+
+```text
+009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
+011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
+```
+
+- Stop condition 1: this iteration's queue is empty and the authorized completion ingest,
+  completion commit and push have finished. This entry records the session stop.
