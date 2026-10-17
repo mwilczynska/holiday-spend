@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use Japan-wide typical prices as a baseline, with Hakone menu context suggesting a tourist-area premium. Accommodation is a holistic estimate; Hakone’s resort demand and limited inventory suggest higher prices than the supplied city comparables. Cocktail and wine estimates are inferred from local beer prices.",
+  "comparable_city_reasoning": "The supplied Japan city anchors provide the urban baseline. Hakone’s onsen-resort demand supports a premium over those typical room prices, while hostel estimates are less certain because the local market is smaller.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.4,
+    "coffee": 4.4,
+    "inexp_meal_1p": 11.0,
+    "midrange_meal_2p": 65.0,
+    "cocktail": 6.6,
+    "wine_glass": 6.2,
+    "hostel_dorm_1p": 30.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 100.0,
+    "hotel_3star_2p": 145.0
+  }
+}

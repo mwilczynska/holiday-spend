@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors are based on recent Bergen cost-of-living averages, with some uncertainty from the July pricing window and NOK-to-USD conversion. A local guide puts a 0.5 L beer near $12.40, a cocktail at about 1.25 times that, and a small glass of house wine near the beer price. Accommodation is a holistic annual estimate from the supplied comparables.",
+  "comparable_city_reasoning": "Using Oslo as the closest supplied comparator, Bergen is estimated slightly above its $143 basic room and $155 three-star room because of leisure demand, while remaining near the Utrecht and Maastricht hotel range. Hostel estimates are modestly above Oslo's $57 dorm bed and $85 private room.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.4,
+    "coffee": 5.5,
+    "inexp_meal_1p": 24.5,
+    "midrange_meal_2p": 138,
+    "cocktail": 15.6,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 62,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 150,
+    "hotel_3star_2p": 170
+  }
+}

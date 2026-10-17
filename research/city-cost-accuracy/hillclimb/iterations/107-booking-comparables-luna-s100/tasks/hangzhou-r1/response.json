@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated Hangzhou price data supports the meal and coffee estimates; drink prices vary by venue, and the cocktail estimate relies on a small collaborative dataset. Accommodation is a holistic estimate based on the supplied comparable cities, not current listings. The wine-glass anchor is inferred from local beer and wine price relationships.",
+  "comparable_city_reasoning": "Hangzhou's tourism demand and affluence suggest accommodation above Chengdu and Xi'an, near but somewhat below Nanjing and Sanya. The supplied comparables support about $38 for a basic room and $55 for a three-star room.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.1,
+    "coffee": 3.2,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 24.5,
+    "cocktail": 7.5,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 28.0,
+    "hotel_1star_2p": 38.0,
+    "hotel_3star_2p": 55.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Doha meal and cappuccino prices are fairly well bounded by current crowd-sourced data. Alcohol prices vary across licensed venues; cocktail and wine estimates follow their local price relationship to draft beer. Accommodation estimates are less certain because of seasonality and Doha’s limited hostel market.",
+  "comparable_city_reasoning": "Accommodation estimates place Doha above Sharm El Sheikh, below Tel Aviv, and generally below Fethiye and Antalya. Business and tourism demand are balanced by Doha’s large hotel supply.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 13.5,
+    "coffee": 5.85,
+    "inexp_meal_1p": 11,
+    "midrange_meal_2p": 76,
+    "cocktail": 18,
+    "wine_glass": 15,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 50,
+    "hotel_1star_2p": 50,
+    "hotel_3star_2p": 78
+  }
+}

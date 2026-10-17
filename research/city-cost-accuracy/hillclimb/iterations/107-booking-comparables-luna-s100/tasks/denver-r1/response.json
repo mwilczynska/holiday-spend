@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "July city-price data supports the meal, beer and coffee estimates. Cocktail prices vary; wine is estimated at roughly twice draft-beer prices. Accommodation is a holistic estimate based on the supplied city comparisons and is less certain.",
+  "comparable_city_reasoning": "For year-typical lodging, Denver is estimated above San Antonio and below Honolulu, with three-star hotel rates near Santa Fe and New Orleans. Basic rooms are estimated below Santa Fe and New Orleans but above San Antonio.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 14.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 170.00
+  }
+}

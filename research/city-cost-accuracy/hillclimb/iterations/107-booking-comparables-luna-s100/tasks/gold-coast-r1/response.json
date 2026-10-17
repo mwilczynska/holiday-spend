@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current Gold Coast price-index readings; the July pricing window and contributor data add uncertainty. The cocktail estimate uses a local menu-price median, while the wine glass is estimated from its local price relationship to beer. Accommodation estimates are holistic, based on the supplied Australian comparables and Gold Coast's tourism demand.",
+  "comparable_city_reasoning": "Gold Coast's resort demand supports three-star prices around Sydney and Perth levels. Basic rooms fall between Wollongong and those cities; hostel prices are close to the supplied Sydney and Perth comparables.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.65,
+    "coffee": 3.78,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 104.33,
+    "cocktail": 12.52,
+    "wine_glass": 9.74,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 78.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 155.00
+  }
+}

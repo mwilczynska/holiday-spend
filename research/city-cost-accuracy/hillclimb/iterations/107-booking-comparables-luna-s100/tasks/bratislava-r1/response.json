@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Bratislava price-index entries support the meal, beer, and coffee anchors. Cocktail and wine are less certain and use local reported price ranges; accommodation is a holistic estimate, with July pricing adding uncertainty.",
+  "comparable_city_reasoning": "Bratislava’s tourism demand supports a meaningful hotel rate, while its lower general costs suggest accommodation below the Como and Milan examples and around or slightly below Avignon. Hostel estimates are less certain.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 3.65,
+    "inexp_meal_1p": 11.50,
+    "midrange_meal_2p": 69.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.20,
+    "hostel_dorm_1p": 27.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 100.00
+  }
+}

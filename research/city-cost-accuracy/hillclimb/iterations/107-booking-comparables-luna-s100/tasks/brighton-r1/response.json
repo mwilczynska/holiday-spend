@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Brighton restaurant, coffee, and draft-beer benchmarks were available from an October 2026 city price index and used as a nearby proxy for the July window. The city cocktail estimate comes from a low-sample index; the wine glass is estimated near the local draft-beer price. Accommodation is a holistic estimate based on the supplied UK comparables.",
+  "comparable_city_reasoning": "Brighton's coastal visitor demand suggests hostel and hotel prices above Inverness and Cardiff, with three-star accommodation between Cardiff and Edinburgh.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.77,
+    "coffee": 5.15,
+    "inexp_meal_1p": 25.33,
+    "midrange_meal_2p": 94.18,
+    "cocktail": 14.57,
+    "wine_glass": 8.61,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 77,
+    "hotel_1star_2p": 128,
+    "hotel_3star_2p": 160
+  }
+}

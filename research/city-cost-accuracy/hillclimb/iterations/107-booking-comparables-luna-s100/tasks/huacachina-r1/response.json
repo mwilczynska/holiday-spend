@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food prices are grounded in recent Peru and Huacachina estimates; cocktail and wine prices follow a current local menu. Accommodation remains a holistic estimate based on the supplied comparables.",
+  "comparable_city_reasoning": "Huacachina is a small, tourist-oriented oasis near Ica. Food and drink estimates use Peru and Huacachina price aggregates, with a modest tourist-area premium. Accommodation is inferred from the supplied Peru comparables, allowing for limited lodging inventory near the oasis.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 4.0,
+    "midrange_meal_2p": 35.0,
+    "cocktail": 8.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 13.0,
+    "hostel_private_2p": 32.0,
+    "hotel_1star_2p": 31.0,
+    "hotel_3star_2p": 42.0
+  }
+}

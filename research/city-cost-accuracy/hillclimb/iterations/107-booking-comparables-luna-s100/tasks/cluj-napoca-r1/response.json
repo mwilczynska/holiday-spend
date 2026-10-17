@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "June city price-index averages anchor meals and draft beer; coffee varies across small datasets. Cocktail is estimated at about twice draft beer, and a restaurant wine glass at about 1.3 times beer, informed by local bottle-price relationships. Accommodation estimates are holistic and can vary with event dates.",
+  "comparable_city_reasoning": "Cluj-Napoca’s university, IT and event demand suggests room prices near Bucharest and above Sibiu. Estimates place three-star rooms just below Bucharest’s supplied average, basic rooms slightly above it, and hostels modestly above Bucharest.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.4,
+    "coffee": 3.6,
+    "inexp_meal_1p": 13.75,
+    "midrange_meal_2p": 66,
+    "cocktail": 7.3,
+    "wine_glass": 4.55,
+    "hostel_dorm_1p": 16,
+    "hostel_private_2p": 32,
+    "hotel_1star_2p": 53,
+    "hotel_3star_2p": 66
+  }
+}

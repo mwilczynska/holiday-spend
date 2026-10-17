@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use 2026 local restaurant price ranges and travel guides. Accommodation is a holistic year-typical estimate with extra uncertainty from July demand and limited supply; cocktail and wine prices are inferred from local beer prices.",
+  "comparable_city_reasoning": "Cesky Krumlov is a small, highly tourist-oriented Czech town. I estimate its three-star room near Prague and Zakopane levels, below Brno, with basic rooms and hostel options slightly above those comparisons because lodging supply is limited.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.1,
+    "coffee": 3.0,
+    "inexp_meal_1p": 10.5,
+    "midrange_meal_2p": 50,
+    "cocktail": 6.75,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 22,
+    "hostel_private_2p": 45,
+    "hotel_1star_2p": 68,
+    "hotel_3star_2p": 95
+  }
+}

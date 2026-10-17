@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use October 2026 Numbeo city averages. Cocktail pricing comes from a smaller-sample current index; wine is estimated at roughly three draft-beer prices. Accommodation remains a holistic estimate based on the supplied Vietnamese comparables.",
+  "comparable_city_reasoning": "Da Nang's broad hotel supply suggests basic rooms and hostel beds below Hoi An and Ninh Binh, but above lower-cost Da Lat. Year-round city and beach demand puts three-star rooms around Hoi An and below Sa Pa and Ninh Binh.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.35,
+    "coffee": 1.7,
+    "inexp_meal_1p": 2.32,
+    "midrange_meal_2p": 19.31,
+    "cocktail": 3.1,
+    "wine_glass": 4.25,
+    "hostel_dorm_1p": 5,
+    "hostel_private_2p": 16,
+    "hotel_1star_2p": 16,
+    "hotel_3star_2p": 24
+  }
+}
