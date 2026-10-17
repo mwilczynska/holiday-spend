@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimate for an expensive Swiss city. July lodging prices are especially uncertain; cocktail and wine estimates use their usual premium over restaurant beer.",
+  "comparable_city_reasoning": "Based on general knowledge of Swiss city costs, using Zurich and Basel as reference points and allowing for Bern's capital-city and summer tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.5,
+    "coffee": 6.2,
+    "inexp_meal_1p": 28,
+    "midrange_meal_2p": 110,
+    "cocktail": 19,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 150,
+    "hotel_1star_2p": 190,
+    "hotel_3star_2p": 285
+  }
+}

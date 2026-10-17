@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates for July 2026. Restaurant anchors are more certain than lodging, especially hostel rooms, which are limited and can vary with Austin events and season. Cocktail and wine estimates are based on their typical price relationship to local draft beer.",
+  "comparable_city_reasoning": "Based on U.S. domestic prices in comparable Texas cities, with an allowance for Austin's stronger visitor demand and urban dining market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.5,
+    "coffee": 5.25,
+    "inexp_meal_1p": 20,
+    "midrange_meal_2p": 90,
+    "cocktail": 15,
+    "wine_glass": 13,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 120,
+    "hotel_1star_2p": 135,
+    "hotel_3star_2p": 200
+  }
+}
