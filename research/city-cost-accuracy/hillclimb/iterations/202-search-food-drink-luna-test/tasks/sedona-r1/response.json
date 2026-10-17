@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current Sedona cost-index figures and local menu examples. Cocktail and wine estimates reflect local menu prices relative to beer. Lodging is a holistic estimate; hostel prices are especially uncertain because budget lodging appears limited, and no accommodation listings were inspected.",
+  "comparable_city_reasoning": "Sedona's tourism-driven northern Arizona market informs the food and drink estimates; accommodation estimates reflect the area's strong visitor demand and limited budget options.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 5,
+    "inexp_meal_1p": 15,
+    "midrange_meal_2p": 50,
+    "cocktail": 14,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 150,
+    "hotel_3star_2p": 280
+  }
+}

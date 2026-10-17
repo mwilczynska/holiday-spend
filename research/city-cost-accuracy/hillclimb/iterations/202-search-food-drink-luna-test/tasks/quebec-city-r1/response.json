@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "City-level aggregates support meal, coffee, and beer estimates. Cocktail data are sparse, and wine is estimated from its local price relationship to beer. Accommodation estimates reflect general knowledge and July demand; no live listings were checked.",
+  "comparable_city_reasoning": "Food and drink anchors use Quebec City aggregates. Accommodation reflects general knowledge of a Canadian heritage destination with strong July visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.3,
+    "coffee": 3.65,
+    "inexp_meal_1p": 17.65,
+    "midrange_meal_2p": 66.0,
+    "cocktail": 8.9,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 36,
+    "hostel_private_2p": 85,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 180
+  }
+}

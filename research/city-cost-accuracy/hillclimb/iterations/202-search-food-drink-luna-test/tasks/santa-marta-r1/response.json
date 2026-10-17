@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "City cost indexes provide recent meal, beer and cappuccino anchors, though mid-range meals and drinks have thinner data. The cocktail estimate uses a sparse downtown-club benchmark, wine is estimated relative to beer, and accommodation is a holistic July estimate without live booking data.",
+  "comparable_city_reasoning": "Based on Santa Marta's Colombian Caribbean-coast setting, local dining and beach tourism; accommodation reflects modest coastal guesthouses and hostels, generally below upscale Cartagena levels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.10,
+    "coffee": 1.75,
+    "inexp_meal_1p": 4.25,
+    "midrange_meal_2p": 39.50,
+    "cocktail": 4.50,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 58.00
+  }
+}

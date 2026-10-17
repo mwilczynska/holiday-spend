@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and beer anchors use Seville cost-of-living averages near the July pricing window. Wine and cocktail estimates use local bar price bands relative to the beer benchmark; accommodation is a holistic, season-sensitive estimate.",
+  "comparable_city_reasoning": "Southern Spain tourism-market context; no single-city proxy.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 2.0,
+    "inexp_meal_1p": 13.5,
+    "midrange_meal_2p": 62.3,
+    "cocktail": 11.2,
+    "wine_glass": 3.9,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 92,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 155
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors follow Salzburg price-index averages; cocktail and wine are estimated relative to local draft beer. July lodging is a holistic summer-tourism estimate and carries the widest uncertainty.",
+  "comparable_city_reasoning": "Food uses Salzburg city-level cost data; accommodation reflects the high-demand Austrian tourist-city market in summer.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.84,
+    "coffee": 5.31,
+    "inexp_meal_1p": 17.97,
+    "midrange_meal_2p": 78.6,
+    "cocktail": 7.86,
+    "wine_glass": 7.3,
+    "hostel_dorm_1p": 58,
+    "hostel_private_2p": 130,
+    "hotel_1star_2p": 155,
+    "hotel_3star_2p": 230
+  }
+}

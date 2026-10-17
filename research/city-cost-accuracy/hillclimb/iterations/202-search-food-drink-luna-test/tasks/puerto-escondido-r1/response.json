@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use March 2026 city cost-of-living observations, and drink prices are consistent with recent local menus; MXN-to-USD equivalents are approximate. Accommodation is a holistic July beach-town estimate with wide seasonal and operator variation.",
+  "comparable_city_reasoning": "No external city proxy; food and drink use Puerto Escondido price data, while accommodation reflects the broader Oaxacan Pacific beach-destination context.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.1,
+    "coffee": 3.35,
+    "inexp_meal_1p": 10.6,
+    "midrange_meal_2p": 56,
+    "cocktail": 9,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 45,
+    "hotel_3star_2p": 135
+  }
+}

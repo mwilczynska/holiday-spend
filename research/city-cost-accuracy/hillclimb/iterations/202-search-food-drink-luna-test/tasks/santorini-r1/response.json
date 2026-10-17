@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors reflect Santorini city price aggregates and 2026 island price guides, but July prices vary widely by village and caldera view. Cocktail and wine estimates are anchored to local bar and restaurant ranges relative to draft beer. Accommodation anchors are holistic July estimates with wide location and view variation; no live listings were inspected.",
+  "comparable_city_reasoning": "Santorini-specific price data is available, so no nearby-city substitute is needed; peak-season tourism and location explain much of the price variation.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.0,
+    "coffee": 4.75,
+    "inexp_meal_1p": 28.0,
+    "midrange_meal_2p": 91.0,
+    "cocktail": 15.0,
+    "wine_glass": 10.0,
+    "hostel_dorm_1p": 60.0,
+    "hostel_private_2p": 115.0,
+    "hotel_1star_2p": 165.0,
+    "hotel_3star_2p": 265.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "City-level cost data supports the meal, coffee and draft-beer anchors. Cocktail and wine-by-the-glass prices are approximate multiples of local draft beer; accommodation is a holistic July low-season estimate, with no live listings inspected. The RBA data exposed in the search result showed rates through 2026-09-11, so its recency may lag the generation date.",
+  "comparable_city_reasoning": "No single comparator; the estimates reflect Pattaya's eastern-Gulf resort profile, with broad budget accommodation supply and steady international tourism.",
+  "fx": {
+    "as_of_date": "2026-09-11",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7172,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 2.0,
+    "inexp_meal_1p": 3.6,
+    "midrange_meal_2p": 36.4,
+    "cocktail": 5.5,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 25.0,
+    "hotel_1star_2p": 20.0,
+    "hotel_3star_2p": 45.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Reported July 2026 city prices support the meal, cappuccino, and beer anchors. Cocktail and wine estimates use observed local menu prices relative to beer. Lodging is a holistic estimate and is especially uncertain because July is Bariloche's winter ski season.",
+  "comparable_city_reasoning": "No direct comparable city used; the lodging estimate reflects Bariloche's Patagonia lake and ski tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.21,
+    "coffee": 3.92,
+    "inexp_meal_1p": 20.0,
+    "midrange_meal_2p": 60.0,
+    "cocktail": 7.5,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 30.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 90.0,
+    "hotel_3star_2p": 150.0
+  }
+}

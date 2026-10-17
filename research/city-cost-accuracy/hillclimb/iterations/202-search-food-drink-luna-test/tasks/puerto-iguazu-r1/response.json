@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use Puerto Iguazú cost ranges and Argentina-wide price data as a July 2026 approximation. Beer and coffee are less certain; cocktail and wine estimates follow their typical price relationship to local beer. Accommodation is a holistic estimate based on the city's tourism demand; no live booking prices were checked.",
+  "comparable_city_reasoning": "Food anchors use Puerto Iguazú city-level cost ranges, checked against Argentina-wide restaurant prices. Accommodation reflects general knowledge of a year-round waterfall tourism destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 2.7,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 36,
+    "cocktail": 6.5,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 35,
+    "hotel_1star_2p": 50,
+    "hotel_3star_2p": 90
+  }
+}
