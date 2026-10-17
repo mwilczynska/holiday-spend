@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates based on general regional price knowledge. Accommodation and drink prices are less certain; cocktail and wine estimates use their expected local price relationship to beer.",
+  "comparable_city_reasoning": "Based on Johannesburg's business-city costs in South Africa, with Cape Town as a broad regional comparator adjusted for lower tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.25,
+    "coffee": 2.1,
+    "inexp_meal_1p": 9,
+    "midrange_meal_2p": 44,
+    "cocktail": 6.25,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 38,
+    "hotel_1star_2p": 42,
+    "hotel_3star_2p": 75
+  }
+}
