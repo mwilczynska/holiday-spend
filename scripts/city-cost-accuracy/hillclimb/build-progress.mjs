@@ -43,6 +43,38 @@ const E = [
   ['R3', '022-bundle-luna-search-country', '102-search-food-drink-luna-r2', 'Bundle 022 (R3 rescore)', 'bundle'],
 ];
 
+// One-line description of what each experiment changed, shown in the register (keyed by judged iteration).
+const WHAT = {
+  '000-legacy-csv-baseline': 'The prices the app shipped with (v1 CSV), scored as a reference point.',
+  '001-v11-haiku-baseline': 'The production v1.1 prompt unchanged, answered by Haiku: the starting point.',
+  '006-calibrate-anchor': 'One correction factor per anchor, learnt from the other cities.',
+  '001-v11-haiku-baseline-cal-region': 'Correction factors per anchor and world region.',
+  '001-v11-haiku-baseline-cal-s5-region': 'Region factors pulled towards no correction when a region has few cities.',
+  '001-v11-haiku-baseline-cal-region-h3': 'Region factors pulled towards the anchor-wide factor when a region has few cities.',
+  '002-spec-definitions-cal-region': 'Prompt defines each item precisely (portion, venue type, serving size).',
+  '007-comparable-context-cal-region': 'Prompt includes reference prices for three similar cities.',
+  '003-current-prices-cal-region': 'Prompt stresses that prices must be current, not historical.',
+  '004-local-currency-cal-region': 'Model answers in local currency; the app converts with a fixed exchange rate.',
+  '005-anchor-basis-cal-region': 'Model names a typical local example for each item before pricing it.',
+  '008-accommodation-definitions-cal-region': 'Stricter definitions of each accommodation tier.',
+  '012-v11-haiku-effort-high-cal-region': 'Haiku at high reasoning effort instead of maximum, to cut cost.',
+  '018-search-grounded-high-cal-region': 'Model may search the web for all prices.',
+  '014-v11-haiku-high-r2': 'Unchanged v1.1 prompt on the larger 333-city panel (Haiku, high effort).',
+  '014-v11-haiku-high-r2-cal': 'One correction factor per anchor.',
+  '014-v11-haiku-high-r2-cal-region': 'Correction factors per anchor and region.',
+  '014-v11-haiku-high-r2-cal-region-h3': 'Region factors pulled towards the anchor-wide factor.',
+  '015-spec-definitions-r2-cal-region': 'Precise item definitions, retested on 333 cities.',
+  '016-accommodation-definitions-r2-cal-region': 'Accommodation definitions, retested on 333 cities.',
+  '017-country-calibration-r2': 'Correction per country, pulled towards its region when it has few cities.',
+  '019-search-food-drink-r2-cal-region': 'Up to five web searches for food and drink prices only; hotels stay estimates.',
+  '101-v11-luna-r2-cal-region': 'The production model, GPT-6 Luna at maximum effort, with region correction.',
+  '020-luna-haiku-ensemble-r2-cal-region': 'Average of Luna and Haiku answers, then region correction.',
+  '021-luna-country-calibration-r2': 'Luna with country-in-region correction.',
+  '022-bundle-luna-search-country': 'Luna + food and drink search + country-in-region correction, registered as one package.',
+  '102-search-food-drink-luna-r2-cal-region': 'Luna with food and drink search, region correction.',
+  '201-v11-luna-test': 'Previous best (Luna + region correction) on the 142 held-out cities.',
+  '202-search-food-drink-luna-test': 'Bundle 022 on the 142 held-out cities, scored once.',
+};
 const it = id => path.join(hcRoot, 'iterations', id);
 // R1/R2 rows show the scores and verdicts as judged then (saved as *-r2.json when R3 became primary).
 const pick = (id, base, panel) => { const old = path.join(it(id), `${base}-r2.json`); return panel !== 'R3' && fs.existsSync(old) ? old : path.join(it(id), `${base}.json`); };
@@ -57,13 +89,14 @@ const rows = E.map(([panel, judged, raw, label, kind], i) => {
     against: v?.against ?? null, improvement: v?.bootstrap?.meanImprovement ?? null,
     ci: v ? [v.bootstrap.lower95, v.bootstrap.upper95] : null };
 });
+for (const r of rows) r.what = WHAT[r.id] ?? null;
 // Held-out test check: one scoring per arm on the 142 sealed cities (confirmation-r3/result.json).
 const conf = path.join(hcRoot, 'confirmation-r3', 'result.json');
 if (fs.existsSync(conf)) {
   const c = readJson(conf);
-  rows.push({ n: rows.length + 1, panel: 'Test', id: '201-v11-luna-test', label: 'Previous best: Luna + region correction', kind: 'baseline', error: c.incumbentLoss, raw: null, verdict: 'baseline', against: null, improvement: null, ci: null });
+  rows.push({ n: rows.length + 1, panel: 'Test', id: '201-v11-luna-test', label: 'Previous best: Luna + region correction', kind: 'baseline', error: c.incumbentLoss, raw: null, what: WHAT['201-v11-luna-test'], verdict: 'baseline', against: null, improvement: null, ci: null });
   rows.push({ n: rows.length + 1, panel: 'Test', id: '202-search-food-drink-luna-test', label: 'Bundle 022 on held-out cities', kind: 'bundle', error: c.bundleLoss, raw: null,
-    verdict: c.confirmed ? 'accept' : 'reject', against: '201-v11-luna-test', improvement: c.bootstrap.meanImprovement, ci: [c.bootstrap.lower95, c.bootstrap.upper95] });
+    what: WHAT['202-search-food-drink-luna-test'], verdict: c.confirmed ? 'accept' : 'reject', against: '201-v11-luna-test', improvement: c.bootstrap.meanImprovement, ci: [c.bootstrap.lower95, c.bootstrap.upper95] });
 }
 const panelOrder = ['R1', 'R2', 'R3', 'Test'].filter(p => rows.some(r => r.panel === p));
 // An accepted change that does not beat the best method already adopted in its panel is marked "not adopted".

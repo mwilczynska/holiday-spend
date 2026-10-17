@@ -37,13 +37,44 @@ h1 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 4vw, 
 #chart .band-label { font-family: var(--body); font-size: 12px; font-weight: 600; fill: var(--ink); }
 #chart .end-label { font-family: var(--mono); font-size: 12px; fill: var(--ink); font-weight: 500; }
 .toggle { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
-.legend .sw { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+.sw { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
 .pt { cursor: pointer; }
 .pt:focus { outline: none; }
 .pt:focus .hit, .pt:hover .hit { stroke: var(--ink); stroke-width: 1; }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 13px; padding: 10px 2px 2px; }
 .legend span { display: inline-flex; align-items: center; gap: 7px; }
 .legend svg { overflow: visible; }
+/* Guide */
+.toc { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.toc a { font-size: 12.5px; color: var(--ink); text-decoration: none; border: 1px solid var(--grid); background: var(--surface); border-radius: 999px; padding: 3px 11px; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+.guide { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; scroll-margin-top: 16px; }
+.guide p, .guide li { max-width: 72ch; margin: 0; }
+.guide h3 { font-family: var(--display); font-weight: 500; font-size: 16px; margin: 8px 0 0; display: flex; align-items: center; gap: 8px; }
+.guide a { color: var(--accent); }
+.small { font-size: 13px; color: var(--muted); }
+.m { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.defs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 10px 24px; margin: 0; }
+.defs div { min-width: 0; }
+.defs dt { font-weight: 600; font-size: 13.5px; }
+.defs dd { margin: 2px 0 0; color: var(--muted); font-size: 13.5px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; }
+.cards article { background: var(--surface); border: 1px solid var(--grid); border-radius: 10px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.cards article h3 { margin: 0; }
+.cards article p { font-size: 13.5px; }
+.formula { font-family: var(--mono); background: var(--surface); border: 1px solid var(--grid); border-radius: 8px; padding: 8px 12px; justify-self: start; }
+.example { background: var(--accent-soft); border-radius: 8px; padding: 10px 14px; max-width: 72ch; font-size: 14px; }
+.rules { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+table.weights { min-width: 0; max-width: 620px; }
+.eqs { display: grid; gap: 12px; }
+.eq { display: grid; grid-template-columns: 28px 1fr; gap: 10px; background: var(--surface); border: 1px solid var(--grid); border-radius: 10px; padding: 12px 14px; min-width: 0; }
+.eq > div { min-width: 0; }
+.eq > div > p { margin-top: 6px; }
+.eq p { font-size: 13.5px; color: var(--muted); }
+.eq-n { font-family: var(--mono); color: var(--muted); font-size: 12px; padding-top: 2px; }
+math { font-size: 1.12em; color: var(--ink); }
+.meq { margin: 6px 0 0; padding: 6px 0; overflow-x: auto; overflow-y: hidden; }
+.meq math { display: inline math; }
 .note { color: var(--muted); font-size: 13px; max-width: 80ch; margin: 0; }
 .tip { position: fixed; pointer-events: none; z-index: 5; background: var(--ink); color: var(--bg); font-size: 12.5px; line-height: 1.45; border-radius: 6px; padding: 8px 10px; max-width: 280px; box-shadow: 0 6px 20px rgba(0,0,0,.18); }
 .tip b { font-weight: 600; }
@@ -81,7 +112,260 @@ footer { color: var(--faint); font-size: 12px; }
 
   <p class="note" id="note"></p>
 
-  <section>
+  <nav class="toc" aria-label="On this page">
+    <a href="#read">Reading the chart</a><a href="#error">How error is measured</a><a href="#formulas">Equations</a>
+    <a href="#refs">Reference prices</a><a href="#methods">Methods tried</a><a href="#rule">How a change is accepted</a>
+    <a href="#test">Held-out test</a><a href="#limits">Limits</a><a href="#glossary">Glossary</a><a href="#register">Experiment register</a>
+  </nav>
+
+  <section class="guide" id="question">
+    <h2>What this measures</h2>
+    <p>Holiday Spend asks a language model to estimate what two people will spend per day in a city it has not seen
+      before. The model returns ten prices in US dollars, called <em>anchors</em>: an inexpensive meal, a mid-range meal
+      for two, a beer, a coffee, a cocktail, a glass of wine, a hostel dorm bed, a private hostel room, a basic (1-star)
+      hotel room and a 3-star hotel room. The app turns these anchors into daily budgets for each accommodation and
+      drinks tier, converts them to Australian dollars and scales them for the number of travellers.</p>
+    <p>This page tracks a <em>hill climb</em>: a series of controlled experiments that each change one thing about how
+      those ten prices are produced, scored against independently collected real prices, and kept only if they make
+      the estimates measurably more accurate.</p>
+  </section>
+
+  <section class="guide" id="read">
+    <h2>Reading the chart</h2>
+    <dl class="defs">
+      <div><dt>Each point</dt><dd>One experiment: a method scored on a set of cities. Hover or tab to a point for its
+        details.</dd></div>
+      <div><dt>Left axis: error</dt><dd>The average error of the method's prices across the cities in its panel. Lower is
+        better. The next section explains exactly how it is calculated.</dd></div>
+      <div><dt>Right axis: ≈ typical error</dt><dd>The same error expressed as a percentage, so it reads in everyday
+        terms: an error of 0.18 means a typical price is off by about 20%. It is a relabelling of the left axis, not a
+        second measure.</dd></div>
+      <div><dt>Bottom axis: step</dt><dd>The order of experiments within each panel. Panels share this axis so they can
+        be compared side by side. The experiment's overall number is in its tooltip and in the register.</dd></div>
+      <div><dt>Colours</dt><dd>Each colour is a panel: a fixed set of cities and reference prices (see
+        <a href="#refs">Reference prices</a>). Errors from different panels are not directly comparable, because harder
+        cities or different reference prices change the scale.</dd></div>
+      <div><dt>Lines</dt><dd>The best accepted method so far in that panel. A line steps down only when a change passes
+        the acceptance rule; its right-hand label is the current best.</dd></div>
+      <div><dt>Shapes</dt><dd>Square: the starting baseline. Filled circle: accepted. Thick ring: passed the rule but not
+        adopted, because an earlier accepted method was already better. Thin ring: rejected. Diamond: the app's original
+        v1 city prices, for reference.</dd></div>
+      <div><dt>Raw scores (toggle)</dt><dd>Most methods include a correction step. The toggle shows each method's error
+        before correction as a small dot joined to its corrected score, so you can see how much the correction does.</dd></div>
+    </dl>
+  </section>
+
+  <section class="guide" id="error">
+    <h2>How error is measured</h2>
+    <p>For each anchor that has a reference price, the error is the size of the logarithm of the ratio between the
+      estimate and the reference:</p>
+    <p class="formula">anchor error = | ln(estimate ÷ reference) |</p>
+    <p>Logarithms treat overestimates and underestimates evenly in proportion: twice the price and half the price both
+      score 0.69. They also make a $2 error on a $4 coffee count as much as a $50 error on a $100 hotel room, since
+      both are 50% off.</p>
+    <div class="example">
+      <b>Worked example.</b> A model estimates a 3-star room at $60 a night; the reference is $50.
+      Error = |ln(60 ÷ 50)| = ln 1.2 = <span class="m">0.182</span>, about 20% on the right-hand axis. Had it estimated
+      $42, the error would be |ln(42 ÷ 50)| = <span class="m">0.174</span>, about 16% too low but shown as ≈19%,
+      because the percentage axis converts back as e<sup>error</sup> − 1.
+    </div>
+    <p>Anchors are then combined into one score per city, weighted by how much each item contributes to a typical
+      mid-range day for two, so the score follows the money a traveller actually spends:</p>
+    <div class="table-wrap"><table class="weights">
+      <thead><tr><th>Anchor</th><th class="num">Weight</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>3-star hotel room</td><td class="num">0.40</td><td>The single largest daily cost</td></tr>
+        <tr><td>Mid-range meal for two</td><td class="num">0.16</td><td>Main food cost at the mid tier</td></tr>
+        <tr><td>Inexpensive meal</td><td class="num">0.12</td><td>Everyday food cost</td></tr>
+        <tr><td>1-star hotel room</td><td class="num">0.08</td><td>Budget accommodation tier</td></tr>
+        <tr><td>Beer</td><td class="num">0.06</td><td>Drinks tiers</td></tr>
+        <tr><td>Private hostel room</td><td class="num">0.05</td><td>Hostel private tier</td></tr>
+        <tr><td>Cocktail</td><td class="num">0.04</td><td>Drinks tiers (no reference yet)</td></tr>
+        <tr><td>Hostel dorm bed</td><td class="num">0.03</td><td>Dorm tier</td></tr>
+        <tr><td>Glass of wine</td><td class="num">0.03</td><td>Drinks tiers (no reference yet)</td></tr>
+        <tr><td>Coffee</td><td class="num">0.03</td><td>Daily small spend</td></tr>
+      </tbody>
+    </table></div>
+    <p>The weights are rescaled over the anchors a city has references for. Cocktail and wine have no reliable
+      reference source yet, so in practice the score covers the other eight. If a model fails to return a price, that
+      anchor scores ln 4 (1.39, a fourfold miss), so a method cannot look better by dropping hard answers.</p>
+    <p>The <b>panel error</b> plotted is the average city score across the panel's development cities. Each city counts
+      once, so large, well-documented cities do not dominate.</p>
+
+    <h3 id="why-log">Why a log error?</h3>
+    <ul class="rules">
+      <li><b>Prices differ by multiples, not amounts.</b> A dorm bed is $8 in Hanoi and $60 in Zurich. Being $5 out is
+        a disaster for the first and excellent for the second. A ratio, and so a log, measures what matters: how many
+        times too high or too low.</li>
+      <li><b>It is fair to both directions.</b> The common percentage error (|estimate − reference| ÷ reference) caps an
+        underestimate at 100% but lets an overestimate grow without limit, so it quietly rewards guessing low. On the log
+        scale, double and half are the same distance from the truth.</li>
+      <li><b>It puts every item on one scale.</b> A coffee and a hotel room, in any currency, can be averaged together
+        because the log error has no units.</li>
+      <li><b>It matches how the corrections work.</b> A correction multiplies a price by a factor. On the log scale,
+        multiplying becomes adding, so the best factor is simply the average log gap between references and estimates.</li>
+      <li><b>Absolute rather than squared.</b> Averaging the absolute value, not the square, stops a handful of very
+        wrong cities from dominating the score, and keeps the number readable as a typical percentage.</li>
+    </ul>
+  </section>
+
+  <section class="guide" id="formulas">
+    <h2>The equations</h2>
+    <p class="small">Notation: <i>c</i> is a city, <i>a</i> an anchor, <i>p</i> a model's price, <i>r</i> the reference
+      price, <i>w</i> the budget weight, <i>N</i> the number of cities in the panel, <i>g</i> a world region.</p>
+    <div class="eqs">
+      <div class="eq"><span class="eq-n">1</span><div><b>Anchor error</b>
+        <div class="meq"><math display="block"><msub><mi>e</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub><mo>=</mo><mo>|</mo><mi>ln</mi><mfrac><msub><mi>p</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub><msub><mi>r</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub></mfrac><mo>|</mo></math></div>
+        <p>A missing or invalid price scores <math><mi>ln</mi><mn>4</mn><mo>≈</mo><mn>1.39</mn></math>.</p></div></div>
+      <div class="eq"><span class="eq-n">2</span><div><b>City error</b>: budget-weighted average over the anchors city <i>c</i> has references for
+        <div class="meq"><math display="block"><msub><mi>E</mi><mi>c</mi></msub><mo>=</mo><mfrac><mrow><munder><mo>∑</mo><mi>a</mi></munder><msub><mi>w</mi><mi>a</mi></msub><msub><mi>e</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub></mrow><mrow><munder><mo>∑</mo><mi>a</mi></munder><msub><mi>w</mi><mi>a</mi></msub></mrow></mfrac></math></div></div></div>
+      <div class="eq"><span class="eq-n">3</span><div><b>Panel error</b>, the value on the chart's left axis
+        <div class="meq"><math display="block"><mi>E</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><munderover><mo>∑</mo><mrow><mi>c</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><msub><mi>E</mi><mi>c</mi></msub></math></div></div></div>
+      <div class="eq"><span class="eq-n">4</span><div><b>Typical error</b>, the chart's right axis
+        <div class="meq"><math display="block"><mtext>≈ %</mtext><mo>=</mo><mn>100</mn><mo>×</mo><mo>(</mo><msup><mi>e</mi><mi>E</mi></msup><mo>−</mo><mn>1</mn><mo>)</mo></math></div>
+        <p>The multiple by which a typical price is off, written as a percentage. 0.10 → 11%, 0.18 → 20%, 0.30 → 35%.</p></div></div>
+      <div class="eq"><span class="eq-n">5</span><div><b>Reference price</b> when several sources cover the same item: the geometric mean
+        <div class="meq"><math display="block"><msub><mi>r</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub><mo>=</mo><mi>exp</mi><mo>(</mo><mfrac><mn>1</mn><mi>S</mi></mfrac><munderover><mo>∑</mo><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><mi>S</mi></munderover><mi>ln</mi><msub><mi>r</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>s</mi></mrow></msub><mo>)</mo></math></div>
+        <p>For the R3 3-star room the sources are Booking.com and Trip.com, scaled by the average of six stay dates.</p></div></div>
+      <div class="eq"><span class="eq-n">6</span><div><b>Region correction factor</b>: the average log gap for anchor <i>a</i> over the other development cities in region <i>g</i>
+        <div class="meq"><math display="block"><msub><mi>d</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub><mo>=</mo><mi>ln</mi><msub><mi>r</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub><mo>−</mo><mi>ln</mi><msub><mi>p</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub><mspace width="2em"/><msub><mi>f</mi><mrow><mi>a</mi><mo>,</mo><mi>g</mi></mrow></msub><mo>=</mo><mtext>mean</mtext><mo>{</mo><msub><mi>d</mi><mrow><mi>c</mi><mo>′</mo><mo>,</mo><mi>a</mi></mrow></msub><mo>:</mo><mi>c</mi><mo>′</mo><mo>∈</mo><mi>g</mi><mo>,</mo><mi>c</mi><mo>′</mo><mo>≠</mo><mi>c</mi><mo>}</mo></math></div>
+        <div class="meq"><math display="block"><msubsup><mi>p</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow><mtext>corrected</mtext></msubsup><mo>=</mo><msub><mi>p</mi><mrow><mi>c</mi><mo>,</mo><mi>a</mi></mrow></msub><mo>×</mo><msup><mi>e</mi><msub><mi>f</mi><mrow><mi>a</mi><mo>,</mo><mi>g</mi></mrow></msub></msup></math></div>
+        <p>For example, on R3 Luna's 3-star factor for Europe is <math><msup><mi>e</mi><mi>f</mi></msup><mo>=</mo><mn>0.58</mn></math>: its European 3-star estimates are multiplied by 0.58.</p></div></div>
+      <div class="eq"><span class="eq-n">7</span><div><b>Country-in-region factor</b> (used by bundle 022): a country's own average, pulled towards its region when it has few cities
+        <div class="meq"><math display="block"><msub><mi>f</mi><mrow><mi>a</mi><mo>,</mo><mtext>country</mtext></mrow></msub><mo>=</mo><mfrac><mi>n</mi><mrow><mi>n</mi><mo>+</mo><mi>k</mi></mrow></mfrac><msub><mover><mi>d</mi><mo>¯</mo></mover><mtext>country</mtext></msub><mo>+</mo><mfrac><mi>k</mi><mrow><mi>n</mi><mo>+</mo><mi>k</mi></mrow></mfrac><msub><mi>f</mi><mrow><mi>a</mi><mo>,</mo><mi>g</mi></mrow></msub><mo>,</mo><mspace width="1em"/><mi>k</mi><mo>=</mo><mn>3</mn></math></div>
+        <p><i>n</i> is the number of other development cities in the country. With one city the country counts a quarter;
+          with nine, three quarters. A country with none uses its region's factor.</p></div></div>
+      <div class="eq"><span class="eq-n">8</span><div><b>Improvement and its 95% range</b>
+        <div class="meq"><math display="block"><mi>Δ</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><munder><mo>∑</mo><mi>c</mi></munder><mo>(</mo><msubsup><mi>E</mi><mi>c</mi><mtext>current</mtext></msubsup><mo>−</mo><msubsup><mi>E</mi><mi>c</mi><mtext>candidate</mtext></msubsup><mo>)</mo></math></div>
+        <p>Draw <i>N</i> cities at random with replacement, recompute <i>Δ</i>, and repeat 10,000 times. The 95% range runs
+          from the 2.5th to the 97.5th percentile of those values. Accept only if <i>Δ</i> ≥ 0.015 and the 2.5th percentile is
+          above zero.</p></div></div>
+    </div>
+  </section>
+
+  <section class="guide" id="refs">
+    <h2>Reference prices and panels</h2>
+    <p>Reference prices are real prices collected from independent sources, never from the models being tested. A
+      <em>panel</em> is one fixed set of cities and references. When the references improve, a new panel is built and the
+      methods are rescored on it, rather than mixing old and new numbers.</p>
+    <div class="cards">
+      <article><h3><i class="sw" style="background:var(--s1)"></i>R1 · 54 cities</h3>
+        <p>The first panel: well-known cities. Food and drink from Numbeo's crowdsourced prices; hostels from
+          Hostelworld; hotels from BudgetYourTrip's KAYAK budget and mid-range ranges.</p></article>
+      <article><h3><i class="sw" style="background:var(--s2)"></i>R2 · 333 cities</h3>
+        <p>R1 plus 279 smaller, harder cities from the app's own library, the kind of places users actually add.
+          Food and drink use livingcost.org, adjusted to Numbeo's level, where Numbeo has no data.</p></article>
+      <article><h3><i class="sw" style="background:var(--s3)"></i>R3 · booking hotel prices</h3>
+        <p>R2 with hotel references replaced by actual prices: the median 3-star price on Booking.com and Trip.com
+          (member prices including taxes), averaged across six stay dates from November to July for a typical-season
+          level. The basic room is the cheaper quarter of decently rated hotels and guest houses. This follows the owner's
+          decision that the 3-star tier should reflect what a 3-star room really costs to book.</p></article>
+      <article><h3><i class="sw" style="background:var(--s4)"></i>Held-out test · 142 cities</h3>
+        <p>Cities set aside before any experiment, by a fixed hash of the city name (30% of cities). No method was
+          tuned on them, and every look at them is logged. See <a href="#test">Held-out test</a>.</p></article>
+    </div>
+  </section>
+
+  <section class="guide" id="methods">
+    <h2>Methods tried</h2>
+    <p>Every method starts from the same production prompt (v1.1): the model returns the ten anchors from its general
+      knowledge, plus a current exchange rate, and the app's code does all the arithmetic. Experiments then varied one
+      thing at a time.</p>
+    <div class="cards">
+      <article><h3>Correction factors</h3>
+        <p>Models are biased in consistent ways: for example, they price 3-star hotels like a mid-range booking site
+          rather than at what rooms really cost. A correction factor multiplies each anchor by the average ratio of
+          reference to estimate, learnt from other cities. Versions tried: one factor per anchor; per anchor and world
+          region; and per country, leaning on the region when a country has few cities.</p>
+        <p class="small">Each city's factor is learnt only from <em>other</em> cities (leave-one-city-out), so a city never
+          helps correct itself. In the app the factors would be fixed numbers learnt once from all panel cities.</p></article>
+      <article><h3>Prompt wording</h3>
+        <p>Clearer item definitions, saying prices should be current, answering in local currency, a local example
+          per item, prices of three comparable cities, and stricter accommodation definitions. Raw gains from wording
+          mostly shifted prices up or down, which the correction factors already fix, so after correction none
+          improved enough to keep.</p></article>
+      <article><h3>Models and effort</h3>
+        <p>Claude Haiku 5.5 was used for cheap screening; GPT-6 Luna at maximum reasoning is the production model.
+          Haiku at high effort matched maximum effort at a fraction of the cost. Luna plus region correction beat Haiku
+          and became the incumbent. Averaging Luna and Haiku helped too little to justify two calls.</p></article>
+      <article><h3>Web search</h3>
+        <p>Letting the model search for all prices helped food and drink but made accommodation worse. Restricting
+          search to restaurant, coffee and drink prices (up to five searches, plus one for the exchange rate) kept the
+          food gain without harming hotels.</p></article>
+      <article><h3>Bundle 022 (current best)</h3>
+        <p>Three changes that each helped a little, judged together as one package that was registered before its
+          results existed: Luna, web search for food and drink only, and country-level correction factors. It cut the
+          error from 0.205 to 0.163 on R3, and held up on the held-out cities.</p></article>
+    </div>
+  </section>
+
+  <section class="guide" id="rule">
+    <h2>How a change is accepted</h2>
+    <p>A candidate method is compared city by city with the current best on the same cities. To separate real
+      improvement from luck, the comparison is resampled 10,000 times (a <em>paired bootstrap</em>), giving a 95% range for
+      the improvement. A change is accepted only if all of these hold:</p>
+    <ul class="rules">
+      <li>the average error falls by at least <b>0.015</b> (about 1.5 percentage points), so small gains that would not
+        pay for extra cost or complexity are not adopted;</li>
+      <li>the whole 95% range is an improvement (its lower end is above zero);</li>
+      <li>no single anchor gets worse by more than 0.05;</li>
+      <li>the share of failed or invalid answers rises by no more than 2 points;</li>
+      <li>at least 90% of cities have a score under both methods.</li>
+    </ul>
+    <p>The rule was fixed before the experiments and has not been changed. Prompt changes are judged <em>after</em> their
+      own correction factors are refitted, so a change that merely moves all prices up or down earns no credit. Some
+      rejected points sit below the line because their gain was real but smaller than 0.015.</p>
+  </section>
+
+  <section class="guide" id="test">
+    <h2>Held-out test</h2>
+    <p>Choosing the best of many experiments on the same cities can flatter the winner. To check, the final method and
+      the previous best were each scored once on the 142 held-out cities, using a scoring plan written down before any
+      answers were collected and correction factors learnt only from development cities.</p>
+    <p>On R3 the bundle scored <span class="m" id="t-b">0.190</span> against <span class="m" id="t-i">0.220</span>, an
+      improvement of <span class="m" id="t-d">0.031</span> (95% range <span class="m" id="t-ci">0.016 to 0.046</span>). The
+      gain held on cities no experiment had seen. Almost all of it is food and drink; hotel accuracy on held-out cities
+      was about the same for both methods.</p>
+  </section>
+
+  <section class="guide" id="limits">
+    <h2>Limits</h2>
+    <ul class="rules">
+      <li><b>Food and drink references come from Numbeo</b>, which the model's searches can also read. Part of the
+        search gain may be the model finding the same source it is scored against, so it may overstate accuracy
+        against what travellers really pay.</li>
+      <li><b>Hotel prices depend on the definition.</b> Booking-site 3-star prices sit about 40% below KAYAK's mid-range
+        category. R3 follows actual 3-star booking prices; the corrections learn whichever level is chosen.</li>
+      <li><b>Reference prices are noisy.</b> Booking.com and Trip.com disagree by about 13% for a typical city, so errors
+        well below that cannot be distinguished from reference noise.</li>
+      <li><b>No reference yet for cocktails or wine</b>, so those anchors are not scored.</li>
+      <li><b>Corrections fix level, not ranking.</b> They remove consistent over- or underestimates by item, region and
+        country. What remains is how well the model ranks cities within a region.</li>
+    </ul>
+  </section>
+
+  <section class="guide" id="glossary">
+    <h2>Glossary</h2>
+    <dl class="defs">
+      <div><dt>Anchor</dt><dd>One of the ten prices the model returns. Every daily budget tier in the app is calculated from them.</dd></div>
+      <div><dt>Reference price</dt><dd>An independently collected real price for an anchor in a city, used as the answer key.</dd></div>
+      <div><dt>Panel</dt><dd>A fixed set of cities with their reference prices. Methods are only compared on the same panel.</dd></div>
+      <div><dt>Development and test cities</dt><dd>Development cities are used to compare methods and learn corrections. Test cities are set aside and scored only to confirm the final choice.</dd></div>
+      <div><dt>Raw</dt><dd>The model's prices exactly as returned, before any correction.</dd></div>
+      <div><dt>Correction factor</dt><dd>A multiplier learnt from other cities that removes a model's consistent over- or underestimate for one anchor in one region or country (also called calibration).</dd></div>
+      <div><dt>Leave-one-city-out</dt><dd>Learning a city's correction only from the other cities, so the score reflects how the correction performs on a city it has not seen.</dd></div>
+      <div><dt>Shrinkage</dt><dd>Pulling a factor learnt from a few cities towards a broader average (country towards region), so a single unusual city cannot set it.</dd></div>
+      <div><dt>Geometric mean</dt><dd>The average of logs, converted back. It is the right average for prices: the geometric mean of $50 and $200 is $100, halfway in ratio terms.</dd></div>
+      <div><dt>Incumbent</dt><dd>The best accepted method so far, which every new candidate must beat.</dd></div>
+      <div><dt>Paired bootstrap</dt><dd>Resampling the cities many times and comparing two methods on the same draws, to see how much their difference could be luck.</dd></div>
+      <div><dt>95% range</dt><dd>The range that holds the improvement in 95% of resamples (a confidence interval). If it excludes zero, the improvement is unlikely to be chance.</dd></div>
+      <div><dt>Bundle</dt><dd>Several small changes judged together as one package, registered before results were seen, so they cannot be cherry-picked afterwards.</dd></div>
+      <div><dt>Lane</dt><dd>The model and settings that answer a set of prompts: Haiku for cheap screening, Luna (the production model) for decisions.</dd></div>
+      <div><dt>Budget weight</dt><dd>How much an anchor counts in the city score, in proportion to its share of a typical mid-range day for two.</dd></div>
+    </dl>
+  </section>
+
+  <section id="register">
     <h2>Experiment register</h2>
     <div class="table-wrap"><table id="tbl"></table></div>
   </section>
@@ -232,7 +516,7 @@ function fill() {
   for (const r of rows) {
     if (r.panel !== lastPanel) { html += `<tr class="sep"><td colspan="6">${DATA.panels[r.panel].label}</td></tr>`; lastPanel = r.panel; }
     const ch = r.improvement !== null ? `${r.improvement >= 0 ? '−' : '+'}${Math.abs(r.improvement).toFixed(3)} (${r.ci[0].toFixed(3)}, ${r.ci[1].toFixed(3)})` : '–';
-    html += `<tr><td class="num">${r.n}</td><td>${r.label}</td><td class="num">${fmt(r.error)}</td><td class="num">${fmt(r.raw)}</td><td class="num">${ch}</td><td><span class="pill ${r.verdict}">${VLABEL[r.verdict] || r.verdict}</span></td></tr>`;
+    html += `<tr><td class="num">${r.n}</td><td>${r.label}${r.what ? `<div class="small">${r.what}</div>` : ''}</td><td class="num">${fmt(r.error)}</td><td class="num">${fmt(r.raw)}</td><td class="num">${ch}</td><td><span class="pill ${r.verdict}">${VLABEL[r.verdict] || r.verdict}</span></td></tr>`;
   }
   t.innerHTML = html + '</tbody>';
   document.getElementById('foot').textContent = `Updated ${new Date(DATA.updated).toUTCString().replace(':00 GMT', ' UTC')}. Error is the budget-weighted mean absolute log error per city, averaged over dev cities; ≈% is exp(error) − 1.`;
