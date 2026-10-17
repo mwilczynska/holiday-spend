@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates are reasonably grounded in current aggregated Porto price inputs. The cocktail estimate has limited coverage, and the wine price is inferred relative to local bar beer. Accommodation estimates are holistic and retain seasonal uncertainty.",
+  "comparable_city_reasoning": "Porto's larger year-round visitor market supports a modest premium over Coimbra and Sintra, while its three-star room estimate remains below Funchal's supplied anchor.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.35,
+    "coffee": 2.6,
+    "inexp_meal_1p": 13.5,
+    "midrange_meal_2p": 56.0,
+    "cocktail": 7.85,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 28.0,
+    "hostel_private_2p": 54.0,
+    "hotel_1star_2p": 82.0,
+    "hotel_3star_2p": 112.0
+  }
+}

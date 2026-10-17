@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "May 2026 Hiroshima cost-of-living data supports the meal, beer, and coffee anchors, though its sample is modest. Cocktail and wine estimates use their relationship to local beer prices; accommodation anchors are holistic estimates based on the supplied comparables.",
+  "comparable_city_reasoning": "Hiroshima is a regional visitor hub, but I place its accommodation near the lower-priced examples: basic rooms around Nara and three-star rooms below Tokyo, Kyoto, and Yokohama. Hostel prices are close to the supplied Nara and Tokyo examples.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.53,
+    "coffee": 2.77,
+    "inexp_meal_1p": 6.01,
+    "midrange_meal_2p": 31.65,
+    "cocktail": 5.06,
+    "wine_glass": 5.06,
+    "hostel_dorm_1p": 21.0,
+    "hostel_private_2p": 40.0,
+    "hotel_1star_2p": 70.0,
+    "hotel_3star_2p": 97.0
+  }
+}

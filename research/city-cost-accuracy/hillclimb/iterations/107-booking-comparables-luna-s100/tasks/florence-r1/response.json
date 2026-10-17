@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent city cost-of-living prices. Accommodation is a holistic year-typical estimate; cocktail and wine prices are less certain and are bounded using local bar-price ranges relative to the beer benchmark.",
+  "comparable_city_reasoning": "Florence's concentrated cultural tourism supports a three-star room modestly above Milan and Sorrento, with hostel prices above the Catania, Sorrento and Milan benchmarks. Basic rooms are estimated below those cities' midrange comparables.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 2.2,
+    "inexp_meal_1p": 22.5,
+    "midrange_meal_2p": 77.5,
+    "cocktail": 10.5,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 150
+  }
+}

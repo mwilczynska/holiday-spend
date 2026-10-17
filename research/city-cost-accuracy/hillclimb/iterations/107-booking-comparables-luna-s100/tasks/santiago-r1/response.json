@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors follow current Santiago price-index levels. Accommodation is a holistic estimate; cocktail and wine prices are less certain and use beer-price relationships, with cocktail price data as a high-end check.",
+  "comparable_city_reasoning": "Santiago's three-star room is estimated slightly above Iquique, Antofagasta, and San Pedro de Atacama, but below Puerto Natales. Its capital-city demand is balanced by year-round hotel supply; a basic room is near the supplied $47–$55 range.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.1,
+    "coffee": 3.3,
+    "inexp_meal_1p": 10.3,
+    "midrange_meal_2p": 51.5,
+    "cocktail": 8.2,
+    "wine_glass": 5.1,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 42.0,
+    "hotel_1star_2p": 50.0,
+    "hotel_3star_2p": 75.0
+  }
+}

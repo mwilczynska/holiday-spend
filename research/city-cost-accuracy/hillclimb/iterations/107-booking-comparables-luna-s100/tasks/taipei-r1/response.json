@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use Taipei price-index estimates close to the July 2026 pricing window. Accommodation estimates are holistic and place Taipei above the supplied Taiwanese comparison cities. Cocktail and wine prices are less certain; they use local beverage-index prices relative to draft beer and vary by venue.",
+  "comparable_city_reasoning": "Taipei is Taiwan's larger capital market, so I estimate accommodation above the supplied prices for Kenting, Taichung, Tainan, and Hualien, with a larger premium for three-star rooms than for basic guesthouses.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 3.5,
+    "inexp_meal_1p": 5.0,
+    "midrange_meal_2p": 46.6,
+    "cocktail": 9.0,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 20.0,
+    "hostel_private_2p": 45.0,
+    "hotel_1star_2p": 58.0,
+    "hotel_3star_2p": 88.0
+  }
+}

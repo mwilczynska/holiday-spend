@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Current aggregated Koh Samui prices indicate about ฿150 for an inexpensive meal, ฿1,000 for a mid-range meal for two, ฿72 for a cappuccino, and ฿80 for a draft beer. The cocktail estimate reflects regular tourist-bar prices; wine by the glass is less certain and estimated at roughly 2.75 times local draft beer. Accommodation estimates are holistic and season-sensitive.",
+  "comparable_city_reasoning": "Koh Samui has holiday-island demand similar to Phuket and Krabi. I estimate dorms and private rooms near those comparables, with basic guesthouses and three-star hotels modestly higher to reflect island destination demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.4,
+    "coffee": 2.15,
+    "inexp_meal_1p": 4.5,
+    "midrange_meal_2p": 30,
+    "cocktail": 7.5,
+    "wine_glass": 6.6,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 27,
+    "hotel_1star_2p": 25,
+    "hotel_3star_2p": 42
+  }
+}

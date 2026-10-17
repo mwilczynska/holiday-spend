@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent 2026 crowdsourced city-price references support the food anchors, though contributor depth and venue prices vary. Cocktail and wine estimates use typical local ranges alongside the roughly €3 draft-beer reference. Accommodation is a holistic year-typical estimate based on the supplied nearby-city comparisons; no live booking prices were checked.",
+  "comparable_city_reasoning": "Lisbon's capital-city and visitor demand suggest higher lodging costs than Porto and Sintra, around or somewhat above Albufeira, and below or near Funchal's three-star level. Estimated anchors: dorm $28, private hostel room $67, basic room $89, three-star room $129.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.36,
+    "coffee": 2.90,
+    "inexp_meal_1p": 16.82,
+    "midrange_meal_2p": 61.69,
+    "cocktail": 11.22,
+    "wine_glass": 3.93,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 67.00,
+    "hotel_1star_2p": 89.00,
+    "hotel_3star_2p": 129.00
+  }
+}

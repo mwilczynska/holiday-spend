@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and coffee anchors draw on Amsterdam cost-of-living data near the July 2026 window. Cocktail and wine estimates use local drink-price benchmarks, with wine set near the city's beer price. Accommodation is a holistic estimate and is less certain because I did not inspect booking listings.",
+  "comparable_city_reasoning": "Amsterdam's heavier international visitor demand suggests higher year-typical accommodation prices than the supplied Dutch comparables. The three-star estimate is about $210 per room versus $148–171 in Rotterdam, Utrecht, Delft, and Maastricht; basic rooms and hostel options are also estimated above those cities.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.0,
+    "coffee": 4.75,
+    "inexp_meal_1p": 24.0,
+    "midrange_meal_2p": 98.0,
+    "cocktail": 16.0,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 90.0,
+    "hotel_1star_2p": 175.0,
+    "hotel_3star_2p": 210.0
+  }
+}

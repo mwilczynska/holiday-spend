@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors follow current Aix aggregate prices; drinks vary by venue. Cocktail and wine estimates are bounded using local menu examples and their relationship to beer. Accommodation uses the supplied comparable cities and model judgment, not live listings; hostel supply and July season add uncertainty.",
+  "comparable_city_reasoning": "Aix has strong Provence tourism demand and an affluent, compact city centre, so accommodation should cost more than Avignon or Marseille and sit below or near Nice. Hostel prices are less certain because supply is limited.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.85,
+    "coffee": 4.58,
+    "inexp_meal_1p": 20.20,
+    "midrange_meal_2p": 78.50,
+    "cocktail": 15.70,
+    "wine_glass": 7.30,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 82.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 123.00
+  }
+}

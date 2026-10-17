@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and draft beer follow current Colombo price-index averages. Cocktail and wine estimates are less certain and use local bar-price ranges, cross-checked against their relationship to beer. Accommodation is a holistic estimate based on the supplied comparable-city context; no live booking prices were used.",
+  "comparable_city_reasoning": "Colombo is a larger commercial and tourism center than Mirissa, Galle, Nuwara Eliya and Dambulla. I estimate dorm and guesthouse prices around or somewhat above their ranges, with three-star rooms near or slightly above the comparables' upper end.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.43,
+    "coffee": 2.77,
+    "inexp_meal_1p": 4.22,
+    "midrange_meal_2p": 27.5,
+    "cocktail": 7.5,
+    "wine_glass": 6.15,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 22,
+    "hotel_1star_2p": 24,
+    "hotel_3star_2p": 38
+  }
+}

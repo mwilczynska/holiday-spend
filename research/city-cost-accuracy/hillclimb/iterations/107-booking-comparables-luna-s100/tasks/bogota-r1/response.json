@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors are supported by recent aggregated price references; accommodation is a bounded estimate from the supplied comparison cities and is more uncertain. A typical wine-glass price was not directly established, so it is estimated relative to domestic beer.",
+  "comparable_city_reasoning": "Bogotá is estimated near Medellín and Cali for accommodation, with three-star rooms slightly above their supplied prices and below Cartagena. Basic rooms and hostel prices are placed within the supplied comparator ranges.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.6,
+    "coffee": 2.1,
+    "inexp_meal_1p": 7.0,
+    "midrange_meal_2p": 34.0,
+    "cocktail": 9.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 33.0,
+    "hotel_1star_2p": 40.0,
+    "hotel_3star_2p": 52.0
+  }
+}
