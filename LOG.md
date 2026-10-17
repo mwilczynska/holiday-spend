@@ -4196,3 +4196,13 @@ Final `queue.mjs --status` output:
 
 - Stop condition 1: this iteration's queue is empty and the authorized completion ingest,
   completion commit and push have finished. This entry records the session stop.
+
+# 17 October 2026 - 106 hostel search judged
+
+- 106-bundle-s100 vs 022-bundle-s100: 0.1787 vs 0.1759, improvement -0.0027 (CI -0.0214 to +0.0167), 44/56 wins.
+  Rejected (hostel_private_2p +0.090, guard). Dorm -0.027, 1-star -0.012, 3-star -0.002, food/drink within 0.007.
+- Raw vs R3: private bias +0.40 -> +0.15, mean |log error| 0.445 -> 0.342; private/dorm ratio 2.41 (references 2.43,
+  102 2.55). The whole-room wording fixed 104's per-person confusion, but after correction 102's private errors (mostly
+  level) end lower than 106's (mostly scatter). Private reference = Hostelworld lowest "privates from" x2, grade C.
+- Collection note: Codex dispatched 14 built-in subagents and 86 fresh `codex exec` Luna Max workers (each in its own
+  read-only sandbox) and verified frozen prompt hashes and byte-equal saved responses; accepted as equivalent.

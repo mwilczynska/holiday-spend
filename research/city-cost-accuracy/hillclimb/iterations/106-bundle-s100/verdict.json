@@ -1,0 +1,35 @@
+{
+  "iteration": "106-bundle-s100",
+  "against": "022-bundle-s100",
+  "verdict": "reject",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 100,
+    "meanImprovement": -0.002722033351241696,
+    "lower95": -0.021401195411884937,
+    "upper95": 0.01668581559249074,
+    "wins": 44,
+    "losses": 56
+  },
+  "baseLoss": 0.17593971477276213,
+  "candidateLoss": 0.17866174812400376,
+  "anchorRegressions": [
+    "hostel_private_2p"
+  ],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "hostel_private_2p": 0.08967452074173604,
+    "inexp_meal_1p": 0.005397264739973012,
+    "midrange_meal_2p": -0.0019585207480602856,
+    "beer": 0.0067463671137514,
+    "coffee": 0.003102585429931873,
+    "hotel_3star_2p": -0.002116029026514421,
+    "hotel_1star_2p": -0.011681583807167162,
+    "hostel_dorm_1p": -0.027318186410398182
+  }
+}

@@ -175,6 +175,13 @@ hostel searches with explicit whole-room wording for private rooms (hotels stay 
 Max for production and research (cheap enough for the owner and users); the effort-high cost test was dropped before
 registration took effect.
 
+Round 5 result (17 October 2026). 106-bundle-s100 rejected against 022-bundle-s100: 0.1787 vs 0.1759 (-0.003, CI
+-0.021 to +0.017), 44/56; hostel private regressed 0.237 -> 0.327 although its raw error improved (0.445 -> 0.342) and
+the private/dorm ratio matched the references (2.41 vs 2.43). Dorm improved again (-0.027, as in 104). The private-room
+reference (Hostelworld lowest "privates from", doubled, grade C) is the weakest reference in the panel and a likely
+cause. Accommodation prompting is exhausted at this reference quality: bundle 022 stands. Next: final report and
+production proposal.
+
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.
