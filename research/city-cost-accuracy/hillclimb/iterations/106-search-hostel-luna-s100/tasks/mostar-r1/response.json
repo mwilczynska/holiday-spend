@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal, cappuccino and draft beer anchors use Mostar crowd-sourced price data updated in October 2026; the city sample is modest. Cocktail and wine prices are estimated from the local beer price relationship. The dorm estimate uses a multi-hostel average; the private room and hotel anchors are less certain, and the hotel estimates are holistic rather than based on live listings.",
+  "comparable_city_reasoning": "Food and drink use direct Mostar price data. Accommodation estimates reflect Mostar's visitor demand and typical guesthouse and hostel prices in Bosnia and Herzegovina and the wider Balkans.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.4,
+    "coffee": 1.74,
+    "inexp_meal_1p": 7.2,
+    "midrange_meal_2p": 33,
+    "cocktail": 6,
+    "wine_glass": 3.6,
+    "hostel_dorm_1p": 19,
+    "hostel_private_2p": 42,
+    "hotel_1star_2p": 32,
+    "hotel_3star_2p": 58
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated city prices anchor food costs, though the local sample is small. Cocktail and wine prices are inferred from the local beer price; hostel averages cover few properties, and hotel anchors are holistic estimates rather than live listings.",
+  "comparable_city_reasoning": "Food estimates use La Spezia's own recent price data; accommodation estimates reflect a Ligurian port city serving as a base for Cinque Terre.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.61,
+    "coffee": 1.76,
+    "inexp_meal_1p": 16.84,
+    "midrange_meal_2p": 81.40,
+    "cocktail": 10.11,
+    "wine_glass": 6.74,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 165.00
+  }
+}

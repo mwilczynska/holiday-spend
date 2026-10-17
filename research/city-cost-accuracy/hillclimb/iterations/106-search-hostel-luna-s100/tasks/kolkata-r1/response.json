@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant prices are relatively well anchored by recent citywide data. Cocktail and wine-glass prices are estimated from local beer pricing; hostel rates are adjusted from listing bands, and hotel prices are holistic estimates.",
+  "comparable_city_reasoning": "No comparable city adjustment; food, drink and hostel estimates use Kolkata-specific price signals, while hotel anchors rely on general regional knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.90,
+    "coffee": 1.69,
+    "inexp_meal_1p": 2.11,
+    "midrange_meal_2p": 13.71,
+    "cocktail": 7.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 7.50,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 52.00
+  }
+}

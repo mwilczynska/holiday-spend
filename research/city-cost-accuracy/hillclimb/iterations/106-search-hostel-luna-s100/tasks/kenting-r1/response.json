@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Kenting food prices have limited city-specific coverage. Cocktail and wine estimates use roughly 3× and 2.25× the local draft beer price; hostel prices are seasonal, and hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "Used Kenting price references and Taiwan-wide averages where needed; hotel estimates reflect broad southern Taiwan coastal-resort norms.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.47,
+    "coffee": 2.93,
+    "inexp_meal_1p": 3.70,
+    "midrange_meal_2p": 27.74,
+    "cocktail": 7.70,
+    "wine_glass": 5.55,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 90.00
+  }
+}

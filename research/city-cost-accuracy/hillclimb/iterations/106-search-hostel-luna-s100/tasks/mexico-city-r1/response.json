@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Citywide meal, coffee, and beer benchmarks support those anchors; cocktail prices vary widely. Wine is estimated at about 2.25 times draft beer. The hostel private-room average’s per-person basis is unclear, so it was doubled for two people; hotel estimates are holistic and less certain.",
+  "comparable_city_reasoning": "No comparable-city proxy was needed for food and drink because Mexico City benchmarks were available. Hotel anchors are standalone holistic estimates for a large, high-demand capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.37,
+    "coffee": 3.85,
+    "inexp_meal_1p": 11.24,
+    "midrange_meal_2p": 50.56,
+    "cocktail": 13.6,
+    "wine_glass": 7.58,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 54,
+    "hotel_1star_2p": 50,
+    "hotel_3star_2p": 90
+  }
+}

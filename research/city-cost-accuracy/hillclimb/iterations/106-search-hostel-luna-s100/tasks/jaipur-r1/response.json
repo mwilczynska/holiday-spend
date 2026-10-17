@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Jaipur price references near July 2026. Hostel averages are indicative; hotel prices are holistic estimates. Cocktail and wine anchors are less certain and use their local price relationship to beer because broad direct price data are limited.",
+  "comparable_city_reasoning": "No separate comparable city used; local Jaipur price references anchor food, drinks, and hostels.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 1.6,
+    "inexp_meal_1p": 3.15,
+    "midrange_meal_2p": 12.15,
+    "cocktail": 5.8,
+    "wine_glass": 2.65,
+    "hostel_dorm_1p": 7,
+    "hostel_private_2p": 14,
+    "hotel_1star_2p": 23,
+    "hotel_3star_2p": 52
+  }
+}

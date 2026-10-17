@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Marseille meal, coffee and beer prices have city-index support; the cocktail estimate uses a local cost-of-living estimate, wine is inferred around the beer price, hostel prices are sample- and season-sensitive, and hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "No comparable city used; food, drink and hostel estimates are based on Marseille-specific prices, while hotel anchors are estimated for Marseille from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 3.65,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 75.40,
+    "cocktail": 12.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 31.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 90.00,
+    "hotel_3star_2p": 150.00
+  }
+}

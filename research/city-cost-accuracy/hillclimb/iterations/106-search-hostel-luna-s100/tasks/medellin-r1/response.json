@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and hostel anchors have citywide typical-price references; hotel anchors are holistic estimates and vary by neighborhood. Cocktail and wine estimates use roughly 2.5× and 2× local draft-beer pricing.",
+  "comparable_city_reasoning": "Used Medellín city-level price references without a comparable-city substitution; tourist districts can cost more than citywide averages.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2.5,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 37.5,
+    "cocktail": 6.25,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 16,
+    "hostel_private_2p": 21,
+    "hotel_1star_2p": 32,
+    "hotel_3star_2p": 66
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "City price-index data supports the meal, cappuccino and beer estimates; hostel averages come from a small sample. Cocktails and wine reflect local bar price ranges. Hotel anchors are holistic estimates, with no live hotel listings checked.",
+  "comparable_city_reasoning": "Based on Kampot city-level prices where available, with accommodation estimates informed by its smaller tourist-town market in southern Cambodia.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.38,
+    "coffee": 1.83,
+    "inexp_meal_1p": 3.0,
+    "midrange_meal_2p": 20.0,
+    "cocktail": 3.5,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 8.0,
+    "hostel_private_2p": 11.0,
+    "hotel_1star_2p": 18.0,
+    "hotel_3star_2p": 38.0
+  }
+}

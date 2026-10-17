@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use October 2026 Kotor price averages. Hostel dorm data cover only two properties; private-room and hotel prices are less certain, and hotel anchors are holistic estimates. Bar prices vary by venue.",
+  "comparable_city_reasoning": "No proxy city used; food and hostel estimates use Kotor-specific prices, while hotel estimates reflect its seasonal Adriatic resort market.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.48,
+    "coffee": 3.17,
+    "inexp_meal_1p": 15.69,
+    "midrange_meal_2p": 58.85,
+    "cocktail": 8.97,
+    "wine_glass": 5.16,
+    "hostel_dorm_1p": 23,
+    "hostel_private_2p": 44,
+    "hotel_1star_2p": 90,
+    "hotel_3star_2p": 155
+  }
+}

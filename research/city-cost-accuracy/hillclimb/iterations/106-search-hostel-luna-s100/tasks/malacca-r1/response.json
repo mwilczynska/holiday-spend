@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "The Malacca city cost index was last updated 2 October 2026, after the requested July window, and reports 16 contributors in the prior 18 months. Cocktail and wine prices are less certain and are estimated relative to local beer; hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "No separate comparable city used. Food and drink estimates use Malacca/Melaka city-level price data; hotel estimates reflect general knowledge of a Malaysian heritage-tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.90,
+    "inexp_meal_1p": 3.30,
+    "midrange_meal_2p": 18.40,
+    "cocktail": 7.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 50.00
+  }
+}

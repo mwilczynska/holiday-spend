@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Mombasa price indexes broadly align on beer, coffee, and a mid-range meal, but inexpensive-meal estimates vary. Hostel data covers few properties and shows starting prices; hotel prices are holistic estimates. Wine is estimated at about twice the local draft-beer price because a restaurant glass price was not available.",
+  "comparable_city_reasoning": "Based on Mombasa's coastal Kenyan restaurant and tourism market; no separate city comparator was applied.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.10,
+    "coffee": 2.25,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 7.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 65.00
+  }
+}

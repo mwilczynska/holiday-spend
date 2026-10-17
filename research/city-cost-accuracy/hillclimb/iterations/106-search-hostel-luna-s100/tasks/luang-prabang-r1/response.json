@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use city-level price data; July 2026 values are approximate given sparse submissions and price volatility. Cocktail and wine estimates use rough multiples of local draft beer, with wine allowing for an import premium. Hostel prices are aggregated estimates; hotel prices are holistic and less certain.",
+  "comparable_city_reasoning": "No direct comparable city used. The lodging estimates reflect Luang Prabang's compact heritage-town visitor market in northern Laos.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 1.6,
+    "inexp_meal_1p": 2.75,
+    "midrange_meal_2p": 17.5,
+    "cocktail": 4.0,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 6.0,
+    "hostel_private_2p": 22.0,
+    "hotel_1star_2p": 22.0,
+    "hotel_3star_2p": 45.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant estimates use current New Orleans cost indexes; cocktail prices are around $13–14 in local indexes, and wine is estimated from local glass-menu examples. Hostel rates vary by season, and the private-room estimate is less certain because booking pages show low starting prices with an unclear per-person basis. Hotel anchors are holistic estimates, not checks of live listings.",
+  "comparable_city_reasoning": "Restaurant and drink anchors use New Orleans price data directly. Hotel anchors reflect a large U.S. leisure-city market; no direct comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.0,
+    "coffee": 5.43,
+    "inexp_meal_1p": 26.0,
+    "midrange_meal_2p": 135.0,
+    "cocktail": 14.0,
+    "wine_glass": 12.0,
+    "hostel_dorm_1p": 26.0,
+    "hostel_private_2p": 48.0,
+    "hotel_1star_2p": 130.0,
+    "hotel_3star_2p": 210.0
+  }
+}

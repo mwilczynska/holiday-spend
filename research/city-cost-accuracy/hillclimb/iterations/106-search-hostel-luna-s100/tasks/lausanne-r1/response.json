@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Lausanne food and drink anchors use 2026 city price data. Hostel prices are less certain because local inventory is sparse; hotel anchors are holistic estimates. Cocktail is about 1.9 times local draft beer, while wine is near beer price.",
+  "comparable_city_reasoning": "Local Lausanne restaurant and drink benchmarks; hostel prices use sparse local listings, and hotel estimates reflect Lausanne's high-cost Lake Geneva setting.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.25,
+    "coffee": 6.12,
+    "inexp_meal_1p": 30.12,
+    "midrange_meal_2p": 116.85,
+    "cocktail": 19.28,
+    "wine_glass": 10.84,
+    "hostel_dorm_1p": 80,
+    "hostel_private_2p": 140,
+    "hotel_1star_2p": 150,
+    "hotel_3star_2p": 220
+  }
+}
