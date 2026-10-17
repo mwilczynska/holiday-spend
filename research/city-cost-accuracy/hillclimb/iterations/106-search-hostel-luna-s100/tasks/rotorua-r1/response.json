@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors have useful local price coverage; hostel prices are less certain, and the private-room estimate is for two people. Hotel anchors are holistic estimates. Cocktail and wine prices use their local relationship to beer.",
+  "comparable_city_reasoning": "Local Rotorua price observations guide food and drink estimates; New Zealand regional accommodation norms inform the holistic hotel estimates.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.18,
+    "coffee": 3.19,
+    "inexp_meal_1p": 13.48,
+    "midrange_meal_2p": 67.41,
+    "cocktail": 7.30,
+    "wine_glass": 7.30,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 80,
+    "hotel_3star_2p": 125
+  }
+}

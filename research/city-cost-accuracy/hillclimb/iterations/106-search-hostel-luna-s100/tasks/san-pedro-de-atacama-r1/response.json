@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "City price data supports meals, cappuccino, and beer. A local menu puts wine and pisco sour at about 1.2× and 1.6× beer, respectively; those ratios inform the wine and cocktail estimates. Hostel prices vary across sources, and hotel anchors are holistic estimates with greater uncertainty.",
+  "comparable_city_reasoning": "Food and hostel anchors use San Pedro de Atacama price data and local menus. Hotel anchors reflect a remote, high-demand Chilean tourism town.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.71,
+    "coffee": 2.95,
+    "inexp_meal_1p": 9.29,
+    "midrange_meal_2p": 46.46,
+    "cocktail": 5.95,
+    "wine_glass": 4.35,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 50,
+    "hotel_1star_2p": 70,
+    "hotel_3star_2p": 140
+  }
+}

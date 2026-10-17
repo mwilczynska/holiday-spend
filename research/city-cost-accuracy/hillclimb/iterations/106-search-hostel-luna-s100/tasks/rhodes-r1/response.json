@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Rhodes price-index data supports the meal, beer and cappuccino anchors. Cocktail data are sparse; wine is estimated slightly above the local beer price. Hostel prices are season-sensitive, and the hotel anchors are holistic estimates. The private hostel anchor is for the whole room for two.",
+  "comparable_city_reasoning": "Based on Rhodes Town and island price data, reflecting Rhodes’s strong tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.5,
+    "coffee": 4.37,
+    "inexp_meal_1p": 18.51,
+    "midrange_meal_2p": 67.3,
+    "cocktail": 11.22,
+    "wine_glass": 6.73,
+    "hostel_dorm_1p": 33.65,
+    "hostel_private_2p": 67.3,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 160
+  }
+}

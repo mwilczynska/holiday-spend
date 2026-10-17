@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food prices use Sintra and Portugal price aggregates. Hostel rates vary seasonally; the private-room estimate doubles a per-person average. Cocktail price is estimated from local beer prices, and wine uses local glass-price guidance. Hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "Portugal-wide price data provides context where Sintra-specific aggregates are limited; hotel estimates reflect Sintra's tourist demand near Lisbon.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.2,
+    "coffee": 2.1,
+    "inexp_meal_1p": 13.5,
+    "midrange_meal_2p": 56.5,
+    "cocktail": 9.0,
+    "wine_glass": 5.6,
+    "hostel_dorm_1p": 26,
+    "hostel_private_2p": 62,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 155
+  }
+}

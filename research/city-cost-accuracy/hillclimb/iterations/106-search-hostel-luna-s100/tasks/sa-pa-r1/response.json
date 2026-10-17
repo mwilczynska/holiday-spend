@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Sa Pa-specific food and hostel references are uneven, so Vietnam-wide price data provides a baseline with a modest tourist-town adjustment. Cocktail is estimated from local bar-price ranges; wine is less certain and estimated at roughly three times a local draft beer. Hotel anchors are holistic estimates.",
+  "comparable_city_reasoning": "Based mainly on Sa Pa's own food and hostel references, with Vietnam-wide prices as a baseline; no separate comparable city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.5,
+    "coffee": 1.9,
+    "inexp_meal_1p": 3.25,
+    "midrange_meal_2p": 23.5,
+    "cocktail": 4.25,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 8,
+    "hostel_private_2p": 28,
+    "hotel_1star_2p": 17,
+    "hotel_3star_2p": 48
+  }
+}

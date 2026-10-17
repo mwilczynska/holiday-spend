@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent local aggregates give a useful food-price baseline, but the local sample is small and hostel listings show starting prices. Hotel estimates are holistic and seasonal; cocktail and wine prices are approximate, based partly on their relationship to local beer prices.",
+  "comparable_city_reasoning": "Food and drink use Rovaniemi-specific price data. Accommodation estimates account for Lapland tourism seasonality and limited local hostel supply, without relying on a single city comparator.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.75,
+    "coffee": 4.91,
+    "inexp_meal_1p": 15.7,
+    "midrange_meal_2p": 89.73,
+    "cocktail": 15.7,
+    "wine_glass": 11.22,
+    "hostel_dorm_1p": 56.1,
+    "hostel_private_2p": 101.0,
+    "hotel_1star_2p": 135.0,
+    "hotel_3star_2p": 210.0
+  }
+}

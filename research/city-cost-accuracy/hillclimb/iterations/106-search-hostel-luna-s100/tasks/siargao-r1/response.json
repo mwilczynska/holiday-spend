@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors align with Siargao price-index figures and local 2026 ranges. Hostel prices vary by source and season; hotel anchors are holistic estimates. Cocktail and wine prices use beer-relative estimates because citywide averages are sparse.",
+  "comparable_city_reasoning": "Based on Siargao’s General Luna tourist corridor, with an island tourism premium over the broader Philippine price base.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 4.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 80.00
+  }
+}
