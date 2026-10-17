@@ -4206,3 +4206,16 @@ Final `queue.mjs --status` output:
   level) end lower than 106's (mostly scatter). Private reference = Hostelworld lowest "privates from" x2, grade C.
 - Collection note: Codex dispatched 14 built-in subagents and 86 fresh `codex exec` Luna Max workers (each in its own
   read-only sandbox) and verified frozen prompt hashes and byte-equal saved responses; accepted as equivalent.
+
+# 17 October 2026 - GitHub secret-scanning alert (106 worker logs)
+
+- GitHub flagged an "Amazon AWS Temporary Access Key ID" in
+  `106-search-hostel-luna-s100/tasks/gyeongju-r1/worker-cli-attempt-1.events.jsonl` (commit 1fd84258). The 106 Codex
+  run had committed 171 `worker-cli-*` event/stderr logs from its `codex exec` workers, outside the protocol (only
+  `response.json` and `run.json` belong in task folders).
+- The match is a third-party presigned download URL (Adobe blob storage, X-Amz-Date 2026-05-12) that a worker's web
+  search fetched; such URLs expire within 7 days. It is not a project, owner or OpenAI credential, so there is
+  nothing to rotate. The repository is public.
+- Fix (31b8a2e9): removed all worker logs from the index, added a `.gitignore` rule for `worker-cli-*` under
+  iterations, and added a "never save or commit worker logs" rule to the Codex prompts. History is not rewritten;
+  the alert can be closed on GitHub as revoked/expired.

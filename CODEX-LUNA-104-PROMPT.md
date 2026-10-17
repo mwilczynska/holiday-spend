@@ -113,3 +113,6 @@ and stop.
 - Read reference panels (`research/city-cost-accuracy/hillclimb/panel/`), score, compare or interpret results, or
   run anything against the sealed test split.
 - Use API keys or paid APIs, or change production code, the canonical CSV or the main database.
+- Save or commit worker transcripts, event streams, stderr or other logs (for example `worker-cli-*` files). Only
+  `response.json` and `run.json` belong in a task folder; worker logs can contain third-party credentials and this
+  repository is public.
