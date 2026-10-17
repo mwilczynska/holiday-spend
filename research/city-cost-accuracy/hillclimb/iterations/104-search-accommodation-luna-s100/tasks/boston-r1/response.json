@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Boston Numbeo prices from June 2026. Local drink menu prices put cocktails near twice the $8 draft beer and wine around 1.5 times that price. Lodging estimates are less certain because rates vary by season and event; taxes and fees are estimated.",
+  "comparable_city_reasoning": "Boston prices used directly; no comparable city needed.",
+  "fx": {
+    "as_of_date": "2026-10-06",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.697,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.0,
+    "coffee": 5.04,
+    "inexp_meal_1p": 30.0,
+    "midrange_meal_2p": 110.0,
+    "cocktail": 15.0,
+    "wine_glass": 12.0,
+    "hostel_dorm_1p": 75.0,
+    "hostel_private_2p": 180.0,
+    "hotel_1star_2p": 240.0,
+    "hotel_3star_2p": 320.0
+  }
+}

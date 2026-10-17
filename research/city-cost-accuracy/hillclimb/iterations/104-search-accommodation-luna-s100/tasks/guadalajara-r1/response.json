@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Guadalajara-specific Numbeo data supports the meal, coffee and beer anchors. Accommodation estimates use observed hostel averages and hotel price bands with a modest allowance for taxes and fees. Cocktail and wine prices are estimated at about 2.5× and 2× the observed beer price, respectively.",
+  "comparable_city_reasoning": "Used Guadalajara-specific price data; no comparable city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.77,
+    "coffee": 3.73,
+    "inexp_meal_1p": 13.85,
+    "midrange_meal_2p": 44.32,
+    "cocktail": 6.9,
+    "wine_glass": 5.55,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 20,
+    "hotel_1star_2p": 56,
+    "hotel_3star_2p": 89
+  }
+}

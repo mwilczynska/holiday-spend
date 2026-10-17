@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Gyeongju restaurant prices come from city-specific Numbeo data last updated in November 2025, based on only four contributors in the prior 18 months. Cocktail and wine coverage is sparse; estimates use about 4.5 and 3 times the local draft-beer price, respectively. Hotel averages and medians vary, hostel inventory is limited, and lodging data often excludes taxes and fees.",
+  "comparable_city_reasoning": "Used Gyeongju-specific price observations; no comparable-city extrapolation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.6,
+    "coffee": 3.0,
+    "inexp_meal_1p": 7.5,
+    "midrange_meal_2p": 48.5,
+    "cocktail": 12.0,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 20.0,
+    "hostel_private_2p": 40.0,
+    "hotel_1star_2p": 65.0,
+    "hotel_3star_2p": 80.0
+  }
+}

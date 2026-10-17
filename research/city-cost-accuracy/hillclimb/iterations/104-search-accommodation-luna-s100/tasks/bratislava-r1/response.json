@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food prices use Bratislava-specific figures last updated 15 October 2026. Cocktail and wine use a local guide's ranges; its cocktail figure differs from another current estimate. Lodging prices are broad 2026 estimates; source tax inclusion is unclear, so they include an estimated city tax at the midpoint of Bratislava's published district rates.",
+  "comparable_city_reasoning": "Used Bratislava-specific price data; no comparable-city proxy.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.36,
+    "coffee": 3.58,
+    "inexp_meal_1p": 11.22,
+    "midrange_meal_2p": 67.3,
+    "cocktail": 11.22,
+    "wine_glass": 5.05,
+    "hostel_dorm_1p": 34.49,
+    "hostel_private_2p": 83.0,
+    "hotel_1star_2p": 110.48,
+    "hotel_3star_2p": 121.69
+  }
+}

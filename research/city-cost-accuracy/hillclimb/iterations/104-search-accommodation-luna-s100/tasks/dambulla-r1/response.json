@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Dambulla price listings and Sri Lanka-level Numbeo data support the meal, beer and coffee estimates. Accommodation sources differ: one reports a $24 median for three-star hotels and Booking.com reports $48 on average. A Dambulla bar menu showed beer at LKR 450 and cocktails at LKR 550–1,650, but no wine-glass price; cocktail and wine anchors are less certain and use their local price relationship to beer.",
+  "comparable_city_reasoning": "Used Dambulla-specific food and accommodation prices where available, with Sri Lanka-level restaurant prices as a cross-check; no substitute city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.2,
+    "coffee": 2.4,
+    "inexp_meal_1p": 3.1,
+    "midrange_meal_2p": 20.5,
+    "cocktail": 4.2,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 9.0,
+    "hostel_private_2p": 11.5,
+    "hotel_1star_2p": 22.0,
+    "hotel_3star_2p": 35.0
+  }
+}

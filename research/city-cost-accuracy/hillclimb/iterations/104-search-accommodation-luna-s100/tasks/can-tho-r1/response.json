@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo provides local restaurant, coffee, and draft-beer prices, but no cocktail or wine-glass price; those drink anchors use a modest relationship to beer. Hotel averages vary between booking sites, and hostel private-room evidence is sparse, so accommodation estimates are less certain.",
+  "comparable_city_reasoning": "No comparator used; estimates rely on Can Tho price-index data and city-specific accommodation information.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.09,
+    "coffee": 1.55,
+    "inexp_meal_1p": 1.35,
+    "midrange_meal_2p": 23.20,
+    "cocktail": 3.82,
+    "wine_glass": 2.73,
+    "hostel_dorm_1p": 5.00,
+    "hostel_private_2p": 12.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 38.00
+  }
+}

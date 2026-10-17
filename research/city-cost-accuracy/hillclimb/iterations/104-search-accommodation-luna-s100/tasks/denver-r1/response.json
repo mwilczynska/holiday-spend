@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Denver-specific food prices are available from Numbeo. Cocktail and wine estimates use their price relationship to draft beer because no usable direct price was found. Lodging quotes cover limited listings and do not clearly state tax inclusion, so those anchors are rounded estimates with an allowance for taxes and fees.",
+  "comparable_city_reasoning": "No comparable city used; Denver-specific price data was available.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.25,
+    "coffee": 5.85,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 15.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 43.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 230.00
+  }
+}
