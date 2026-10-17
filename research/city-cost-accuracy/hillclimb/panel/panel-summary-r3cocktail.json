@@ -1,0 +1,40 @@
+{
+  "version": "R3-cocktail",
+  "sources": [
+    "r0-numbeo.jsonl",
+    "r1-hostelworld-2026-10-15.jsonl",
+    "r3-numbeo-2026-10-15.jsonl",
+    "r3-hostelworld-2026-10-15.jsonl",
+    {
+      "file": "r3-livingcost-2026-10-15.jsonl",
+      "fallbackOnly": true,
+      "crosswalk": {
+        "inexp_meal_1p": 0.0035,
+        "midrange_meal_2p": 0.1058,
+        "beer": -0.012,
+        "coffee": -0.0248
+      }
+    },
+    "r3-hotels-2026-10-17.jsonl",
+    {
+      "file": "r4-expatistan-2026-10-17.jsonl",
+      "anchors": [
+        "cocktail"
+      ]
+    }
+  ],
+  "rows": 3946,
+  "cities": 475,
+  "citiesPerAnchor": {
+    "inexp_meal_1p": 382,
+    "midrange_meal_2p": 382,
+    "beer": 382,
+    "coffee": 382,
+    "hostel_dorm_1p": 334,
+    "hostel_private_2p": 358,
+    "hotel_3star_2p": 465,
+    "hotel_1star_2p": 470,
+    "cocktail": 314
+  },
+  "referencesSha256": "f6de3402eb724bd38071c09a801de0048fb35194dcb24bc2f80796947f0bbf59"
+}

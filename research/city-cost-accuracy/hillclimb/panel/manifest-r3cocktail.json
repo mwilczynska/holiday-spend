@@ -1,0 +1,27 @@
+{
+  "version": "R3-cocktail",
+  "note": "Sensitivity only: R3 plus Expatistan \"cocktail in downtown club\" references (17 October 2026). Not primary: Luna with food/drink search reproduces Expatistan cocktail prices (67 of 222 dev cities within 2%, against 18 without search), so this panel measures source reproduction as much as accuracy.",
+  "sources": [
+    "r0-numbeo.jsonl",
+    "r1-hostelworld-2026-10-15.jsonl",
+    "r3-numbeo-2026-10-15.jsonl",
+    "r3-hostelworld-2026-10-15.jsonl",
+    {
+      "file": "r3-livingcost-2026-10-15.jsonl",
+      "fallbackOnly": true,
+      "crosswalk": {
+        "inexp_meal_1p": 0.0035,
+        "midrange_meal_2p": 0.1058,
+        "beer": -0.012,
+        "coffee": -0.0248
+      }
+    },
+    "r3-hotels-2026-10-17.jsonl",
+    {
+      "file": "r4-expatistan-2026-10-17.jsonl",
+      "anchors": [
+        "cocktail"
+      ]
+    }
+  ]
+}

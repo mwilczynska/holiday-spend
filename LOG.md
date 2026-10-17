@@ -4108,3 +4108,19 @@ Final `queue.mjs --status` output:
 - Cocktail/wine references: Numbeo and livingcost.org publish neither cocktails nor restaurant wine (bottles only).
   Expatistan has a downtown-club cocktail but loops on Cloudflare verification in the in-app browser; waiting on the
   Claude in Chrome extension to try the owner's Chrome.
+
+# 17 October 2026 - Expatistan cocktail references
+
+- Collected Expatistan city pages in the owner's Chrome (Claude in Chrome; the in-app browser looped on Cloudflare).
+  475 cities tried, 360 pages; raw capture `panel/expatistan-2026-10-17.raw.txt`. Expatistan has "1 cocktail drink in
+  downtown club" but no restaurant wine by the glass (bottle only), so wine stays unscored.
+- Expatistan silently serves the nearest spelling match for unknown cities (Santorini -> Katerini, Bath -> Szombathely,
+  Zermatt -> Kerman, San Antonio TX -> San Antonio CA). `ingest-expatistan.mjs` keeps a page only when both country
+  and city match; currencies come from the app's country metadata (panel rows carry capture currencies), with
+  Cambodia (riel) and Bulgaria (leva) overridden; local prices are converted with the frozen FX table and checked
+  against the page's rounded USD within 20%. Result `panel/r4-expatistan-2026-10-17.jsonl`: 314 cocktail cities
+  (222 dev; grades A 59, B 142, C 113) plus diagnostic pub beer and cappuccino rows.
+- Level checks: Expatistan pub beer matches Numbeo beer (median log gap 0.004); expat-area cappuccino is 8% above
+  Numbeo. Cocktail vs Luna: without search (101) median |log ratio| 0.160 (18/222 within 2%); with food/drink search
+  (102) 0.064 (67/222 within 2%). Luna's searches reproduce Expatistan's cocktail prices, so cocktail scoring against
+  it would reward source copying. Kept as sensitivity panel `manifest-r3cocktail.json`, not primary.
