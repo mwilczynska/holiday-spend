@@ -1,0 +1,17 @@
+{
+  "id": "107-booking-comparables-luna-s100",
+  "parent": "102-search-food-drink-luna-r2",
+  "family": "comparable-cities",
+  "hypothesis": "Registered 17 October 2026 before any answer exists. Hotel error after correction is per-city ranking scatter (104: search fixed level, not ranking). Give Luna the R3 booking-platform accommodation references (3-star, basic hotel, hostel dorm and private) of four other dev cities, same country first then same region (leave-one-out, test cities never shown), in the app's EXTRA_CONTEXT slot, and ask it to place the city relative to them. In production the app library would hold these booking prices. Prior evidence against: 007 (Haiku, R1-era references for all anchors) improved raw scores but lost after calibration. Same 100-city sample as 104/106; judged as 107-bundle-s100 (country-in-region correction, k=3, leave-one-city-out on 107 answers) against 022-bundle-s100 with the unchanged rule.",
+  "baseTemplate": "iterations/019-search-food-drink-r2/prompt.md",
+  "contextBuilder": "context.mjs",
+  "referenceDate": "July 2026",
+  "repeats": 1,
+  "split": "dev",
+  "citySample": { "n": 100, "seed": "hillclimb-sample-104" },
+  "lane": "gpt-6-luna/max (Codex subagent, app system prompt, web search as the prompt allows)",
+  "replacements": [
+    ["Use the definitions consistently. If a specific anchor is uncertain,",
+     "When the additional context lists typical booking prices for comparable cities, place this city's accommodation\nanchors relative to them, judging whether it is cheaper or more expensive. Use the definitions consistently. If a\nspecific anchor is uncertain,"]
+  ]
+}

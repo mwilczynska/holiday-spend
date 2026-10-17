@@ -182,6 +182,11 @@ reference (Hostelworld lowest "privates from", doubled, grade C) is the weakest 
 cause. Accommodation prompting is exhausted at this reference quality: bundle 022 stands. Next: final report and
 production proposal.
 
+Round 6 registered (17 October 2026, before any answer): 107-booking-comparables-luna-s100, the 102 prompt with R3
+booking-platform accommodation prices of four other dev cities (same country, then region; leave-one-out) in
+EXTRA_CONTEXT, on the 104 sample; judged as 107-bundle-s100 against 022-bundle-s100 with the unchanged rule. Prior
+evidence against (007).
+
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.
