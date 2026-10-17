@@ -1,0 +1,4 @@
+{ "id": "106-bundle-s100", "parent": "022-bundle-s100", "family": "grounding", "split": "dev",
+  "citySample": { "n": 100, "seed": "hillclimb-sample-104" },
+  "hypothesis": "Registered 17 October 2026 before any 106 answer exists. 106 answers (food, drink and hostel search; hotels holistic) with the bundle 022 correction (country-in-region, k=3) fitted leave-one-city-out on 106 sample answers. Judged against 022-bundle-s100 with the unchanged rule.",
+  "replayFrom": "106-search-hostel-luna-s100", "transform": "transform.mjs", "lane": "gpt-6-luna/max (Codex subagent)", "repeats": 1 }

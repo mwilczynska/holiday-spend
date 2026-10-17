@@ -169,6 +169,12 @@ after correction it adds nothing; searches mixed per-person and per-room hostel 
 reproduced by Luna's searches, so kept as a sensitivity panel. Bundle 022 remains best. Remaining levers are
 accommodation ranking information the model lacks; neither search nor correction supplies it.
 
+Round 5 registered (17 October 2026, before any answer): 106-search-hostel-luna-s100, the 102 prompt plus up to two
+hostel searches with explicit whole-room wording for private rooms (hotels stay holistic), on the 104 sample; judged as
+106-bundle-s100 against 022-bundle-s100 with the unchanged rule. Owner decision (17 October 2026): Luna effort stays
+Max for production and research (cheap enough for the owner and users); the effort-high cost test was dropped before
+registration took effect.
+
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.

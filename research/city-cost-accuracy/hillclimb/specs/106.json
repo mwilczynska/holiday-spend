@@ -1,0 +1,18 @@
+{
+  "id": "106-search-hostel-luna-s100",
+  "parent": "102-search-food-drink-luna-r2",
+  "family": "grounding",
+  "hypothesis": "Registered 17 October 2026 before any answer exists. In 104, accommodation search improved hostel dorms (0.229 -> 0.197 on the sample) but broke private rooms because hostel sites quote privates per person (private/dorm ratio 2.55 -> 1.76), and hotel search added no ranking information. Keep hotels as holistic estimates; allow up to two searches for hostel dorm and private-room prices, stating that private rooms must be the whole-room price for two people. Same 100-city sample as 104; judged as 106-bundle-s100 (country-in-region correction, k=3, fitted leave-one-city-out on 106 sample answers) against 022-bundle-s100 under the unchanged acceptance rule.",
+  "baseTemplate": "iterations/019-search-food-drink-r2/prompt.md",
+  "referenceDate": "July 2026",
+  "repeats": 1,
+  "split": "dev",
+  "citySample": { "n": 100, "seed": "hillclimb-sample-104" },
+  "lane": "gpt-6-luna/max (Codex subagent, app system prompt, web search as the prompt allows)",
+  "replacements": [
+    ["Estimate food and drink anchors with the help of a few web searches for current typical prices in this city.\nAccommodation anchors are holistic model estimates from your general knowledge and the supplied city context; do not\nclaim that you inspected live booking pages or current listings.",
+     "Estimate food, drink and hostel anchors with the help of a few web searches for current typical prices in this city.\nHotel anchors are holistic model estimates from your general knowledge and the supplied city context; do not claim\nthat you inspected live booking pages or current hotel listings."],
+    ["Use at most six web searches in total: one to obtain the latest published Reserve Bank of Australia USD/AUD\nexchange-rate observation, and up to five to check current typical prices in this city for restaurant meals, coffee,\nbeer, cocktails and wine (for example cost-of-living price indexes). Prefer aggregated typical prices over single\nvenues. Do not search for accommodation prices. Return the RBA observation and its provenance; the server owns the\ninversion, currency conversion, tier formulas, and rounding.",
+     "Use at most eight web searches in total: one to obtain the latest published Reserve Bank of Australia USD/AUD\nexchange-rate observation, up to five to check current typical prices in this city for restaurant meals, coffee,\nbeer, cocktails and wine (for example cost-of-living price indexes), and up to two to check typical hostel prices\n(a dorm bed and a private room). Hostel booking sites often quote private rooms per person: `hostel_private_2p` must\nbe the price of the whole private room for two people, so double a per-person price. Use typical nightly prices\nacross a normal year, not the cheapest listing. Prefer aggregated typical prices over single venues or single\nproperties. Do not search for hotel prices. Return the RBA observation and its provenance; the server owns the\ninversion, currency conversion, tier formulas, and rounding."]
+  ]
+}
