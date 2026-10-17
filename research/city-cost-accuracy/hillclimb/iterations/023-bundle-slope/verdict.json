@@ -1,0 +1,33 @@
+{
+  "iteration": "023-bundle-slope",
+  "against": "022-bundle-luna-search-country",
+  "verdict": "reject",
+  "rule": {
+    "minMeanImprovement": 0.015,
+    "maxAnchorRegression": 0.05,
+    "maxFailureRateIncrease": 0.02,
+    "minPairedShare": 0.9
+  },
+  "bootstrap": {
+    "cities": 333,
+    "meanImprovement": 0.0002490019491941548,
+    "lower95": -0.0011966193055498336,
+    "upper95": 0.001677682128178694,
+    "wins": 161,
+    "losses": 171
+  },
+  "baseLoss": 0.16267656332595803,
+  "candidateLoss": 0.1624275613767639,
+  "anchorRegressions": [],
+  "failureRateIncrease": 0,
+  "perAnchorDelta": {
+    "hostel_private_2p": -0.013989785839906732,
+    "inexp_meal_1p": 0,
+    "midrange_meal_2p": 0,
+    "beer": 0,
+    "coffee": 0,
+    "hotel_3star_2p": 0,
+    "hotel_1star_2p": 0.006356117988331078,
+    "hostel_dorm_1p": -0.02135446912231173
+  }
+}

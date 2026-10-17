@@ -4094,3 +4094,17 @@ Final `queue.mjs --status` output:
   (0.1895 vs 0.2204, -0.031, CI 0.016 to 0.046). Test hotel errors are unchanged by the bundle (3-star 0.229 to 0.225),
   so its gain is food and drink.
 - Progress page generalised to any number of panels; adds R3 and held-out test sections (artifact version 8).
+
+# 17 October 2026 - Round 4 zero-call results
+
+- 023-bundle-slope (registered before scoring): pooled-slope, per-region-intercept log-linear correction for hostel
+  dorm, hostel private and 1-star on top of bundle 022. Rejected: 0.1624 vs 0.1627 (improvement 0.0002, CI -0.0012 to
+  0.0017). Hostels improved (dorm -0.021, private -0.014) but 1-star worsened (+0.006). Possible bundle component for
+  hostels only, not adopted alone.
+- 3-star reference noise (R3 dev): only 49 of 328 cities have both Booking.com and Trip.com; median |ln trip/booking|
+  0.135, implying ~0.14 per-platform noise (sd). Expected reference noise as mean absolute log error: 0.078 with two
+  platforms, 0.110 with one. Most cities have one platform, so the measurable 3-star floor is about 0.11 before window
+  factor noise; bundle 022 is at 0.184, leaving real headroom for 104.
+- Cocktail/wine references: Numbeo and livingcost.org publish neither cocktails nor restaurant wine (bottles only).
+  Expatistan has a downtown-club cocktail but loops on Cloudflare verification in the in-app browser; waiting on the
+  Claude in Chrome extension to try the owner's Chrome.
