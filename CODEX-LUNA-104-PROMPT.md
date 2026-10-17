@@ -48,15 +48,17 @@ Repeat until the queue command prints nothing:
    The worker message is everything between `=====BEGIN WORKER MESSAGE=====` and `=====END WORKER MESSAGE=====`.
    Copy it byte for byte. **Never retype, summarise, reformat or "clean up" prompt text.** A hand-retyped prompt
    once corrupted a task (Alicante). Note the `promptSha256=` value for the run record.
-3. Spawn one **fresh** subagent per task with model **GPT-6 Luna** and reasoning effort **Max**, at most 6 running at a
-   time. Give it only the worker message: no other files, prices, earlier answers (including answers for the same
+3. Spawn one **fresh** subagent per task with model **GPT-6 Luna** and reasoning effort **Max**. Run **6 Luna Max
+   subagents simultaneously** (your settings allow 6 concurrent subagents; if a spawn reports a lower limit, use the
+   maximum your current settings allow). Never work through tasks one at a time. Give it only the worker message: no other files, prices, earlier answers (including answers for the same
    city in other iterations), scores or context.
 4. When a worker finishes, write its final message **verbatim** to `<task folder>/response.json`. Write the text
    exactly as returned, even if it is not valid JSON. Do not parse and re-serialise it, do not trim fences, and do
    not fix anything.
 5. Write `<task folder>/run.json`:
    `{"runtime":"Codex subagent","model":"gpt-6-luna","effort":"max","startedAt":"<ISO>","finishedAt":"<ISO>","attempts":1,"searches":<count or null>,"promptSha256":"<from step 2>","notes":""}`
-6. As soon as a slot frees, start the next task, so 6 workers stay busy.
+6. As soon as a slot frees, start the next task, so all 6 workers (or your maximum) stay busy until the queue is
+   empty.
 7. After every 24 saved answers, checkpoint:
    ```bash
    git add research/city-cost-accuracy/hillclimb/iterations/<IT>
