@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Holistic estimates; food anchors are better bounded than room rates, which vary widely by property and July demand. The inexpensive meal reflects a modest restaurant rather than a hawker stall. Cocktail and wine estimates use Singapore bar pricing relative to beer.",
+  "comparable_city_reasoning": "Singapore is a high-cost regional hub, so its restaurant and accommodation anchors sit above typical Southeast Asian city levels; hawker dining remains cheaper than the modest-restaurant anchor.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 18.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 130.00,
+    "hotel_3star_2p": 220.00
+  }
+}
