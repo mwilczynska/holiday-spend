@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant prices use Rovaniemi Numbeo entries updated October 2026, later than the July pricing window. Booking.com gives average nightly prices of $117 for 3-star hotels and $87 for guest houses. Hostel listings show starting rates, so dorm and private-room annual prices are less certain. Cocktail and wine estimates infer a premium over local draft beer, guided by a Rovaniemi cocktail listing and a local beverage price range.",
+  "comparable_city_reasoning": "No comparable city used; estimates are based on Rovaniemi prices, with weaker drink and hostel anchors inferred from local evidence.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.75,
+    "coffee": 5.68,
+    "inexp_meal_1p": 15.16,
+    "midrange_meal_2p": 98.25,
+    "cocktail": 11.79,
+    "wine_glass": 9.54,
+    "hostel_dorm_1p": 35.0,
+    "hostel_private_2p": 60.0,
+    "hotel_1star_2p": 87.0,
+    "hotel_3star_2p": 117.0
+  }
+}

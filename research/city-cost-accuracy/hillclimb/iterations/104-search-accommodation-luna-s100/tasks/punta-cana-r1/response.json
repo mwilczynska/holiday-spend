@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food anchors use Punta Cana city-level price averages translated approximately from Dominican pesos to USD. The price index did not list cocktail or wine by the glass, so those are estimated at about 2.5× and 1.6× the observed draft-beer price. Hostel listings show four properties with starting rates, while Expedia's 3-star monthly prices exclude taxes and fees; annual accommodation anchors are therefore less certain.",
+  "comparable_city_reasoning": "No proxy city used; the food-price observations and accommodation pages were specific to Punta Cana.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.45,
+    "coffee": 1.75,
+    "inexp_meal_1p": 8.10,
+    "midrange_meal_2p": 40.65,
+    "cocktail": 6.25,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 128.00
+  }
+}

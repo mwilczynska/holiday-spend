@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Sintra-specific CityCost prices and Portugal-wide Numbeo prices broadly cross-check meals and drinks, but these sources do not isolate July 2026. Lodging estimates draw on Hostelworld, BudgetYourTrip, KAYAK and a 2026 guide; prices vary by season and some reported rates exclude taxes or fees. No aggregated cocktail or restaurant-wine price surfaced: the cocktail estimate is about 2.6 times Sintra's reported draft-beer price, and wine is estimated at beer parity, informed by one casual Sintra menu showing a €1.50 glass of wine and €1.30 small draft beer.",
+  "comparable_city_reasoning": "No separate city proxy used. Sintra-specific CityCost prices set the food anchors, with Portugal-wide Numbeo prices as a cross-check.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.4,
+    "coffee": 2.13,
+    "inexp_meal_1p": 13.45,
+    "midrange_meal_2p": 56.6,
+    "cocktail": 8.98,
+    "wine_glass": 3.4,
+    "hostel_dorm_1p": 29,
+    "hostel_private_2p": 39,
+    "hotel_1star_2p": 82,
+    "hotel_3star_2p": 123
+  }
+}

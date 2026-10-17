@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "low",
+  "confidence_notes": "Restaurant benchmarks are Orlando-specific 2026 price indexes. The cocktail anchor follows a menu-price median; the wine-glass estimate uses its local price relationship to draft beer. Hostel options are sparse, current private-hostel rates were unavailable, and accommodation prices are not broken out by star class or measured across a full year.",
+  "comparable_city_reasoning": "No comparable city used; Orlando-specific restaurant and accommodation data were available.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.28,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 14.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 140.00
+  }
+}

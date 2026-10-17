@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Siargao-specific price data covered meals, cappuccino and draft beer. Accommodation estimates rely on broad island ranges and current booking results, so room type and season add uncertainty. Cocktail is estimated relative to beer and below one observed ₱380 resort cocktail; wine by the glass is inferred from beer because no typical pour price was found.",
+  "comparable_city_reasoning": "Used Siargao-specific cost-of-living data and accommodation ranges; no comparable city was substituted.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 2.62,
+    "inexp_meal_1p": 3.60,
+    "midrange_meal_2p": 19.21,
+    "cocktail": 5.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 58.00
+  }
+}

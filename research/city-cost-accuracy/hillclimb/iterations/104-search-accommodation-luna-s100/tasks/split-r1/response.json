@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Split cost indexes provide meal, beer, and cappuccino prices. Cocktail and restaurant wine are inferred from the local beer price; lodging medians were listed before taxes and fees, so the fee allowance and year-round estimates are approximate.",
+  "comparable_city_reasoning": "No comparable city used; direct Split prices were available.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.77,
+    "coffee": 2.78,
+    "inexp_meal_1p": 16.82,
+    "midrange_meal_2p": 74.25,
+    "cocktail": 11.92,
+    "wine_glass": 6.67,
+    "hostel_dorm_1p": 32,
+    "hostel_private_2p": 41,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 124
+  }
+}

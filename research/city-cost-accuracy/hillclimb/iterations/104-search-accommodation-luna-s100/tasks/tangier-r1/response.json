@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's Tangier price data was updated 15 October 2026, so it is a proxy for the July window. Its MAD-to-USD conversion feed was dated 27 December 2025, making USD conversions approximate. No cocktail or restaurant wine-glass price was found; those anchors are estimated at about 1.7x and 1.0x the reported draft-beer price. Hostel averages exclude taxes and fees and use a small dorm sample; a modest fee allowance was added. The basic-room estimate uses lower-priced hotel and guesthouse data.",
+  "comparable_city_reasoning": "No comparable city used; anchors rely on Tangier price data and accommodation aggregates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.58,
+    "coffee": 2.32,
+    "inexp_meal_1p": 5.48,
+    "midrange_meal_2p": 38.38,
+    "cocktail": 11.18,
+    "wine_glass": 6.58,
+    "hostel_dorm_1p": 15.40,
+    "hostel_private_2p": 24.20,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 79.00
+  }
+}

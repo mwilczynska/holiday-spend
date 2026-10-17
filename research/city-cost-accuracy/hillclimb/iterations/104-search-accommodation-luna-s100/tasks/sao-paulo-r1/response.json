@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors align with current São Paulo aggregates and similar May–June prices. The cocktail estimate comes from a seven-report downtown-club average; wine is estimated at about twice local draft beer. Lodging medians are reported before taxes and fees, so I added a modest allowance.",
+  "comparable_city_reasoning": "Used São Paulo price data directly; no comparable city proxy.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.98,
+    "coffee": 2.49,
+    "inexp_meal_1p": 8.81,
+    "midrange_meal_2p": 49.37,
+    "cocktail": 8.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 19.00,
+    "hotel_1star_2p": 41.00,
+    "hotel_3star_2p": 61.00
+  }
+}

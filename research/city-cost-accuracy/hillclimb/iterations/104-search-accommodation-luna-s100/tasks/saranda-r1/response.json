@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Sarandë-specific price observations support the restaurant, coffee and beer estimates, though sources differ on inexpensive meals. The cocktail estimate uses the midpoint of a published €4–8 range. I found no typical restaurant wine-by-the-glass price, so that anchor is estimated from local beer and wine-price context. Hostel private-room and basic-hotel prices are less certain; accommodation estimates are smoothed across published seasonal ranges with a small allowance for taxes and fees.",
+  "comparable_city_reasoning": "No comparable city was needed; Sarandë-specific price observations and seasonal accommodation ranges were available.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 2.25,
+    "inexp_meal_1p": 11.0,
+    "midrange_meal_2p": 60.0,
+    "cocktail": 6.75,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 16.0,
+    "hostel_private_2p": 34.0,
+    "hotel_1star_2p": 33.0,
+    "hotel_3star_2p": 55.0
+  }
+}

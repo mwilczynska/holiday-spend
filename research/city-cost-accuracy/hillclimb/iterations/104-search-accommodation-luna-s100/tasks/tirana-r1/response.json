@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Tirana-specific price data support the meal, coffee, and beer estimates. Cocktail and wine prices are less certain and are estimated from local beer prices; accommodation estimates are less certain because published rates vary by season and property type.",
+  "comparable_city_reasoning": "No comparable city used; estimates rely on Tirana-specific price data and Albania lodging ranges.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 2.06,
+    "inexp_meal_1p": 8.97,
+    "midrange_meal_2p": 50.48,
+    "cocktail": 6.17,
+    "wine_glass": 4.49,
+    "hostel_dorm_1p": 15.4,
+    "hostel_private_2p": 20.9,
+    "hotel_1star_2p": 46,
+    "hotel_3star_2p": 59
+  }
+}

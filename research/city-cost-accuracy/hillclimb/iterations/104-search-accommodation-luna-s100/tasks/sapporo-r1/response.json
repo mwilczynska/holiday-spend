@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Sapporo price indexes provided meal, coffee, and beer anchors; a Sapporo cost index listed cocktails. Wine is estimated from the local beer price. Accommodation averages and ranges do not cleanly separate hotel star classes and exclude taxes and fees, so those anchors include approximate adjustments.",
+  "comparable_city_reasoning": "No comparable city used; estimates are based on Sapporo-specific price data.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.28,
+    "coffee": 4.43,
+    "inexp_meal_1p": 6.33,
+    "midrange_meal_2p": 30.09,
+    "cocktail": 4.70,
+    "wine_glass": 4.43,
+    "hostel_dorm_1p": 27,
+    "hostel_private_2p": 44,
+    "hotel_1star_2p": 90,
+    "hotel_3star_2p": 165
+  }
+}
