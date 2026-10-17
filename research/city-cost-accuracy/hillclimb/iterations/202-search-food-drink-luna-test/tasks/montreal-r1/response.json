@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and draft-beer anchors align with 2026 Montreal aggregate prices; cocktail and wine are estimated by their local price relationship to beer, while lodging is a broad July high-season estimate.",
+  "comparable_city_reasoning": "No city proxy; Montreal price aggregates inform food and drinks, and July tourism demand informs lodging.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.35,
+    "coffee": 3.85,
+    "inexp_meal_1p": 18.70,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 12.70,
+    "wine_glass": 8.90,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 220.00
+  }
+}

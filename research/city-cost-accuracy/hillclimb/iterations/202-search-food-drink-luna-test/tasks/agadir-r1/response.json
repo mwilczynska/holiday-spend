@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Agadir city price indexes provide useful meal, cappuccino, and beer benchmarks. Cocktail and wine prices are inferred from beer pricing and typical bar markups; accommodation estimates are holistic July-season estimates with substantial property and location variation.",
+  "comparable_city_reasoning": "Restaurant anchors use aggregated Agadir prices; accommodation estimates reflect general knowledge of Morocco’s Atlantic resort market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 2.20,
+    "inexp_meal_1p": 5.25,
+    "midrange_meal_2p": 25.75,
+    "cocktail": 8.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 13.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 75.00
+  }
+}

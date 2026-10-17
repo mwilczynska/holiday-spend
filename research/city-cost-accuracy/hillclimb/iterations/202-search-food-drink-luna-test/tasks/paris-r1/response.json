@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Mid-2026 Paris aggregate prices anchor meals, cappuccino and draft beer; July lodging is a holistic seasonal estimate, and cocktail and wine prices are inferred relative to beer.",
+  "comparable_city_reasoning": "No separate comparable city used; food and drink estimates use Paris-level aggregate prices, with accommodation estimated from Paris's summer travel demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.9,
+    "coffee": 5.1,
+    "inexp_meal_1p": 17.0,
+    "midrange_meal_2p": 79.0,
+    "cocktail": 17.0,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 65.0,
+    "hostel_private_2p": 145.0,
+    "hotel_1star_2p": 185.0,
+    "hotel_3star_2p": 260.0
+  }
+}

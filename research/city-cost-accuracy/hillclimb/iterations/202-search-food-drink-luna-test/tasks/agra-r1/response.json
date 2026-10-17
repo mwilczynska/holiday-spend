@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Agra price indexes anchor meals, coffee, and beer; July prices are approximate. Cocktail and wine estimates use roughly 3× and 2.5× the local beer price. Accommodation is a holistic estimate and is less certain.",
+  "comparable_city_reasoning": "Agra-specific dining prices, with accommodation modeled for a low-cost, tourist-heavy North Indian city.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.2,
+    "coffee": 2.1,
+    "inexp_meal_1p": 3.35,
+    "midrange_meal_2p": 16.7,
+    "cocktail": 6.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 7,
+    "hostel_private_2p": 20,
+    "hotel_1star_2p": 22,
+    "hotel_3star_2p": 50
+  }
+}

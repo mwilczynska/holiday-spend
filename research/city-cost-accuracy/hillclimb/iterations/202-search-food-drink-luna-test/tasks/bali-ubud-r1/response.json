@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Ubud city price-index averages updated 2 October 2026; its sample is limited. Accommodation prices are holistic estimates without live listing checks. Cocktail and wine anchors use a beer-price relationship because comparable direct data is weak.",
+  "comparable_city_reasoning": "No proxy city used; food anchors use Ubud's own reported averages, while accommodation estimates reflect its established visitor destination and guesthouse mix.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.22,
+    "coffee": 1.99,
+    "inexp_meal_1p": 2.77,
+    "midrange_meal_2p": 19.40,
+    "cocktail": 5.50,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 60.00
+  }
+}

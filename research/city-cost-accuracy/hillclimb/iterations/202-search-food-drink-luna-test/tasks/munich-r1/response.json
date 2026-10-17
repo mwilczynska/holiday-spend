@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "July Munich aggregates inform meals, coffee, and beer. Cocktail uses an aggregated local price comparison; wine by the glass is estimated relative to beer. July accommodation estimates are holistic and seasonal, with substantial uncertainty.",
+  "comparable_city_reasoning": "Dining anchors use Munich-specific prices. Accommodation is a holistic estimate informed by high-demand German and Austrian urban destinations, adjusted for Munich's tourism and business demand.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.65,
+    "coffee": 4.40,
+    "inexp_meal_1p": 19.55,
+    "midrange_meal_2p": 92.00,
+    "cocktail": 15.50,
+    "wine_glass": 8.05,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 175.00,
+    "hotel_3star_2p": 225.00
+  }
+}

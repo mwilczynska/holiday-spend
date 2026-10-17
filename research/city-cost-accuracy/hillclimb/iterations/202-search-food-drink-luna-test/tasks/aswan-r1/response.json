@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "City price indexes put inexpensive meals around USD 4–5 and a mid-range meal for two around USD 8–11, but local entries are sparse and estimates differ. Accommodation is a holistic July estimate; cocktail and wine prices are uncertain and estimated relative to local draft beer.",
+  "comparable_city_reasoning": "No proxy city used for meal prices. Accommodation is estimated for a tourism-focused Upper Egypt city during hot July weather.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.45,
+    "coffee": 1.2,
+    "inexp_meal_1p": 4.7,
+    "midrange_meal_2p": 10.0,
+    "cocktail": 4.0,
+    "wine_glass": 3.5,
+    "hostel_dorm_1p": 9.0,
+    "hostel_private_2p": 24.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 60.0
+  }
+}

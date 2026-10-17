@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use June 2026 city-price aggregates near the July pricing window. Alcohol prices vary substantially by venue; the wine estimate uses local beer-relative bar pricing, with limited direct glass-price evidence. Accommodation is a broad holistic estimate without live listings.",
+  "comparable_city_reasoning": "Singapore-specific price observations; no comparable-city substitution.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.8,
+    "coffee": 4.96,
+    "inexp_meal_1p": 11.7,
+    "midrange_meal_2p": 62.4,
+    "cocktail": 17.95,
+    "wine_glass": 10.92,
+    "hostel_dorm_1p": 28,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 145
+  }
+}

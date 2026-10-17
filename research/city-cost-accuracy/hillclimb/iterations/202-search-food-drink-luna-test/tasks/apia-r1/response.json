@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "Food prices are uncertain: city cost indexes and Samoa-wide meal guides differ substantially on inexpensive meals. Accommodation is a holistic estimate with high uncertainty. Cocktail is estimated from local beer prices; wine by the glass is estimated from beer prices and typical bottle-to-glass pricing.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates draw on Apia and Samoa price information, while accommodation is a holistic estimate for a small Pacific island capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.00,
+    "inexp_meal_1p": 18.00,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 8.50,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 145.00
+  }
+}

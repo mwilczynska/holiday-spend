@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "City price data supports meals, coffee, and beer. Cocktail and wine prices are estimated from their local price relationship to beer; accommodation is a holistic July estimate without live listing checks.",
+  "comparable_city_reasoning": "Based on Chiang Rai typical-price data, with Chiang Mai as a nearby northern Thailand reference; accommodation reflects Chiang Rai's smaller, lower-cost tourist-city profile.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.65,
+    "coffee": 1.34,
+    "inexp_meal_1p": 1.94,
+    "midrange_meal_2p": 14.93,
+    "cocktail": 5.22,
+    "wine_glass": 4.48,
+    "hostel_dorm_1p": 7.5,
+    "hostel_private_2p": 18.5,
+    "hotel_1star_2p": 20,
+    "hotel_3star_2p": 38
+  }
+}

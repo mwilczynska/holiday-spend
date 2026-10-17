@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors are supported by Cairns price-index observations, though samples vary. Accommodation is a holistic estimate without checking current listings; July dry-season demand adds uncertainty. Cocktail and wine prices are estimated from local beer prices.",
+  "comparable_city_reasoning": "Food and drink reflect Cairns observations, checked against regional Australian city price levels. Accommodation reflects Cairns' tourism demand during the July dry season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.95,
+    "coffee": 4.34,
+    "inexp_meal_1p": 17.37,
+    "midrange_meal_2p": 97.26,
+    "cocktail": 13.20,
+    "wine_glass": 9.03,
+    "hostel_dorm_1p": 34.74,
+    "hostel_private_2p": 79.89,
+    "hotel_1star_2p": 104.21,
+    "hotel_3star_2p": 166.73
+  }
+}

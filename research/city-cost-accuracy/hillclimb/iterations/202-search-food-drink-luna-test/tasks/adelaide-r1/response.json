@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Current Adelaide price aggregates are a proxy for the July 2026 window and vary on meal and drink prices. Cocktail and wine estimates follow local bar prices relative to draft beer. Accommodation is a holistic winter estimate; no live booking prices were checked.",
+  "comparable_city_reasoning": "Food anchors use Adelaide city-level price aggregates; accommodation reflects general knowledge of Adelaide as a lower-cost Australian capital than Sydney or Melbourne.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.8,
+    "coffee": 4.2,
+    "inexp_meal_1p": 17.9,
+    "midrange_meal_2p": 84.0,
+    "cocktail": 13.0,
+    "wine_glass": 9.5,
+    "hostel_dorm_1p": 32.0,
+    "hostel_private_2p": 95.0,
+    "hotel_1star_2p": 105.0,
+    "hotel_3star_2p": 155.0
+  }
+}

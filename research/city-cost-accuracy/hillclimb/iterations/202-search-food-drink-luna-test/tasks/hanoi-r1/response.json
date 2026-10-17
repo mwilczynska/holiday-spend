@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and beer use a Hanoi-specific aggregated price snapshot from June 2026, close to the July pricing window. Cocktail and wine prices vary widely; their anchors are approximate bar prices around five times the domestic draft beer anchor. Accommodation estimates are holistic and are the least certain.",
+  "comparable_city_reasoning": "No comparable city used; food and drink anchors are based on Hanoi-specific price data, with accommodation estimated from general knowledge of Hanoi.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 1.85,
+    "inexp_meal_1p": 2.10,
+    "midrange_meal_2p": 19.00,
+    "cocktail": 5.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 22.00,
+    "hotel_3star_2p": 48.00
+  }
+}
