@@ -47,6 +47,10 @@ h1 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 4vw, 
 .chip[aria-pressed="false"] .sw { opacity: .3; }
 .seg button:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 #chart .halo { paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
+.panel-key { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 10px 22px; margin: 12px 0 2px; padding-top: 12px; border-top: 1px solid var(--grid); }
+.panel-key div { min-width: 0; }
+.panel-key dt { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.panel-key dd { margin: 3px 0 0; font-size: 12.5px; color: var(--muted); line-height: 1.45; }
 .toggle { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .sw { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
 .pt { cursor: pointer; }
@@ -120,6 +124,7 @@ footer { color: var(--faint); font-size: 12px; }
     <div class="controls" id="controls"></div>
     <svg id="chart" role="img" aria-label="Error by experiment with best-so-far line"></svg>
     <div class="legend" id="legend"></div>
+    <dl class="panel-key" id="panel-key" aria-label="Panel definitions"></dl>
   </section>
 
   <p class="note" id="note"></p>
@@ -595,6 +600,7 @@ function fill() {
   t.innerHTML = html + '</tbody>';
   document.getElementById('foot').textContent = `Updated ${new Date(DATA.updated).toUTCString().replace(':00 GMT', ' UTC')}. Error is the budget-weighted mean absolute log error per city, averaged over dev cities; ≈% is exp(error) − 1.`;
 }
+document.getElementById('panel-key').innerHTML = DATA.panelOrder.map(p => `<div><dt><i class="sw" style="background:${PCOL[p]}"></i>${DATA.panels[p].label}</dt><dd>${DATA.panels[p].desc || ''}</dd></div>`).join('');
 fill(); controls(); legend(); render();
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 120); });
 </script>

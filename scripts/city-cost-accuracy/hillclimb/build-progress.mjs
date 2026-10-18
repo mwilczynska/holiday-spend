@@ -117,8 +117,12 @@ for (const panel of panelOrder) {
   }
 }
 const data = { updated: new Date().toISOString(), rows, panelOrder,
-  panels: { R1: { cities: 54, label: 'R1 · 54 cities' }, R2: { cities: 333, label: 'R2 · 333 cities' },
-    R3: { cities: 333, label: 'R3 · booking hotel prices' }, S100: { cities: 100, label: 'R3 sample · 100 cities' }, Test: { cities: 142, label: 'Held-out test · 142' } },
+  panels: {
+    R1: { cities: 54, label: 'R1 · 54 cities', desc: 'The first panel: 54 well-known cities. Food and drink from Numbeo, hostels from Hostelworld, hotels from KAYAK budget and mid-range ranges (via BudgetYourTrip). Screening with Claude Haiku.' },
+    R2: { cities: 333, label: 'R2 · 333 cities', desc: 'R1 plus 279 smaller, harder cities from the app library. Same sources, with livingcost.org filling food gaps. Where the production model (GPT-6 Luna) and bundle 022 were chosen.' },
+    R3: { cities: 333, label: 'R3 · booking hotel prices', desc: 'The same 333 cities with hotel references replaced by actual 3-star and basic-hotel prices from Booking.com and Trip.com (year-typical, taxes included). The current primary panel; key methods rescored with corrections refitted.' },
+    S100: { cities: 100, label: 'S100 · R3 sample, 100 cities', desc: 'A fixed 100-city sample of R3, used where a run costs too much for all 333 cities. Each candidate is compared with bundle 022 on the same 100 cities, so its baseline differs from R3’s.' },
+    Test: { cities: 142, label: 'Test · 142 held-out cities', desc: '142 cities set aside before any experiment and never used for tuning. Scored once per method to confirm the final choice, against R3 references.' } },
   headline: panelOrder.includes('R3') ? { panel: 'R3', label: 'Best, 333 cities (R3)' } : { panel: 'R2', label: 'Best, 333 cities' },
   note: 'Errors on different panels are not comparable. R2 adds 279 harder, smaller cities to the original 54. R3 is R2 with hotel references replaced by actual Booking.com and Trip.com 3-star prices, so the corrections are refitted. The held-out test scores the best method once on 142 cities no experiment used, against R3.' };
 const tpl = fs.readFileSync(path.join(hcRoot, 'progress.template.html'), 'utf8');
