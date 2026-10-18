@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Bern cost-of-living aggregates support the meal, coffee and beer anchors; cocktail and wine use recent local price evidence. Accommodation is a broad seasonal estimate and is less certain because no live listings were consulted.",
+  "comparable_city_reasoning": "Bern's accommodation estimates reflect Swiss capital-city pricing, with Basel and Lausanne as broad urban comparables; no current accommodation listings were consulted.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.4,
+    "coffee": 7.1,
+    "inexp_meal_1p": 30,
+    "midrange_meal_2p": 126,
+    "cocktail": 20,
+    "wine_glass": 10.5,
+    "hostel_dorm_1p": 68,
+    "hostel_private_2p": 165,
+    "hotel_1star_2p": 185,
+    "hotel_3star_2p": 265
+  }
+}

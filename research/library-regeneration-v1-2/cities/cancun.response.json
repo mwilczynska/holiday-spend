@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Cancun cost-of-living aggregates support the restaurant, cappuccino and beer estimates. Cocktails use a sparse local downtown-club price; the wine-glass estimate is inferred from the local beer price. Accommodation is a broad model estimate across central Cancun and the resort zone, where rates vary widely. MXN prices are rounded to USD at roughly MXN 18 per USD.",
+  "comparable_city_reasoning": "Accommodation reflects Cancun as a major Mexican Caribbean resort city; food and drink anchors use Cancun-specific cost-of-living data.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.2,
+    "coffee": 3.85,
+    "inexp_meal_1p": 11.1,
+    "midrange_meal_2p": 55.6,
+    "cocktail": 11,
+    "wine_glass": 6.4,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 42,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 105
+  }
+}

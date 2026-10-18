@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Bordeaux restaurant, coffee and beer benchmarks are the strongest anchors; cocktail data are sparse, wine uses a local price relationship to beer, and accommodation remains a seasonal general-knowledge estimate.",
+  "comparable_city_reasoning": "No single city comparator was used; lodging reflects Bordeaux as a major southwestern French regional centre with substantial domestic and wine-tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.9,
+    "coffee": 4,
+    "inexp_meal_1p": 20.2,
+    "midrange_meal_2p": 78.6,
+    "cocktail": 12.4,
+    "wine_glass": 6.7,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 155
+  }
+}

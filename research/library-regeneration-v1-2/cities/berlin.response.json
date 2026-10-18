@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Berlin restaurant, cappuccino and draft-beer averages provide useful anchors; the cocktail index is a limited May sample and wine is approximate. Accommodation is a holistic estimate with substantial seasonal, location and property variation.",
+  "comparable_city_reasoning": "No external city comparator used; Berlin-specific price indexes anchor food and drinks, while accommodation reflects a holistic estimate for a major European capital with strong tourism and event demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.3,
+    "coffee": 4.5,
+    "inexp_meal_1p": 17.4,
+    "midrange_meal_2p": 81.2,
+    "cocktail": 13.9,
+    "wine_glass": 5.8,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 165
+  }
+}

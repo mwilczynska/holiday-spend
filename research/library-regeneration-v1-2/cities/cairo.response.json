@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food and coffee anchors follow current Cairo cost-of-living aggregates. Alcohol data are thinner: the cocktail estimate follows a recent crowd-sourced downtown-club price at roughly 3.5 times domestic draft beer, while the wine glass is estimated at about twice beer because a comparable restaurant glass price was not available. Accommodation is a holistic estimate without live listing checks and varies by district and season.",
+  "comparable_city_reasoning": "No city analogue used; food and drink estimates are based on recent Cairo price aggregates, while accommodation reflects general knowledge of budget lodging in a large North African capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.6,
+    "coffee": 1.8,
+    "inexp_meal_1p": 4.74,
+    "midrange_meal_2p": 28,
+    "cocktail": 5.36,
+    "wine_glass": 3.2,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 28,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 55
+  }
+}

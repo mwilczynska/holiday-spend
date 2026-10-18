@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Bologna price data supports meals, coffee and draft beer; a current city comparison informs cocktails, while the wine glass estimate is inferred slightly below local draft beer. Accommodation is a holistic estimate with meaningful seasonal and event variation.",
+  "comparable_city_reasoning": "Food and drink anchors use Bologna-specific price data. Accommodation is estimated holistically for a major Emilia-Romagna university and cultural destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.74,
+    "coffee": 2.23,
+    "inexp_meal_1p": 22.46,
+    "midrange_meal_2p": 89.83,
+    "cocktail": 8.98,
+    "wine_glass": 6.18,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 190
+  }
+}

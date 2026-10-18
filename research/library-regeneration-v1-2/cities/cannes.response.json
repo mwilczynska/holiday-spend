@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Cannes city price aggregates support the meal, cappuccino and draft-beer anchors. Cocktail and wine prices are less consistently reported, so they are estimated from their local relationship to draft beer. Accommodation is a holistic year-round estimate with substantial seasonal variation and limited hostel inventory.",
+  "comparable_city_reasoning": "Western Côte d'Azur resort pricing, annualized across the year; accommodation is estimated from general knowledge rather than live listings.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.9,
+    "coffee": 4.5,
+    "inexp_meal_1p": 19.1,
+    "midrange_meal_2p": 81.4,
+    "cocktail": 13.5,
+    "wine_glass": 7.9,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 165
+  }
+}

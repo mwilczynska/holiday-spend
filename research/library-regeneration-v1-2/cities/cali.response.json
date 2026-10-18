@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Cali price-index results support restaurant, coffee, and draft-beer anchors, though the index snapshots diverge. Cocktail and wine estimates are less certain, informed by a few local menu prices and the local beer relationship. Accommodation anchors are broad estimates from regional knowledge; no live booking prices were checked.",
+  "comparable_city_reasoning": "Cali is a large Colombian regional business and cultural center with food prices below Bogotá and Cartagena; use other large Colombian interior cities as the broad accommodation and service-cost comparison.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.8,
+    "coffee": 2,
+    "inexp_meal_1p": 5.25,
+    "midrange_meal_2p": 35,
+    "cocktail": 6,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 28,
+    "hotel_3star_2p": 55
+  }
+}

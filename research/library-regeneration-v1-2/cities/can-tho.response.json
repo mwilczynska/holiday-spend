@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Can Tho's published food and drink data are sparse (three contributors in the past 18 months; last updated 25 February 2026). Meals, cappuccino and draft beer use the city price index; cocktail and wine-glass prices are approximate, with wine inferred partly from the local beer and mid-range bottle-wine relationship. Accommodation is a holistic estimate from general regional knowledge, without live listing checks.",
+  "comparable_city_reasoning": "Can Tho is a secondary Mekong Delta city. Its own published food, cappuccino and draft-beer prices anchor those estimates; lodging reflects the lower budget-market level typical of regional Vietnamese cities compared with Ho Chi Minh City.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.05,
+    "coffee": 1.55,
+    "inexp_meal_1p": 1.35,
+    "midrange_meal_2p": 23.2,
+    "cocktail": 3.9,
+    "wine_glass": 3.3,
+    "hostel_dorm_1p": 6,
+    "hostel_private_2p": 18,
+    "hotel_1star_2p": 17,
+    "hotel_3star_2p": 38
+  }
+}

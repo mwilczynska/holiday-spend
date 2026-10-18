@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Bohol's indexed meal, coffee and beer prices are useful, but the province mixes lower-cost towns with tourist-priced Panglao. Cocktail and wine evidence is sparse, so both use the reported combined PHP 250 per-glass price, about 2.6 times the indexed draft beer price. Accommodation is a broad estimate from general knowledge; no current listings were inspected.",
+  "comparable_city_reasoning": "Use Bohol's own province-level food and drink prices, with accommodation estimated for Central Visayas visitor hubs and some Panglao tourism uplift; Bohol is a province rather than a single urban market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.64,
+    "coffee": 2.53,
+    "inexp_meal_1p": 6.61,
+    "midrange_meal_2p": 30.17,
+    "cocktail": 4.31,
+    "wine_glass": 4.31,
+    "hostel_dorm_1p": 9,
+    "hostel_private_2p": 25,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 55
+  }
+}

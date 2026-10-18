@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal, coffee and draft-beer estimates align with Cardiff cost-of-living data; the cocktail estimate is based on a sparse crowd-sourced price, wine is inferred from current local menu prices, and accommodation remains a holistic estimate from general knowledge.",
+  "comparable_city_reasoning": "Cardiff is a UK regional capital with university and visitor demand; its everyday prices are below London and broadly in the range of other mid-sized UK regional cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.3,
+    "coffee": 4.6,
+    "inexp_meal_1p": 20,
+    "midrange_meal_2p": 82.5,
+    "cocktail": 12,
+    "wine_glass": 8.65,
+    "hostel_dorm_1p": 38,
+    "hostel_private_2p": 86,
+    "hotel_1star_2p": 90,
+    "hotel_3star_2p": 145
+  }
+}

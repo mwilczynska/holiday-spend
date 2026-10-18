@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors are supported by a recent city-level cost-of-living aggregate. Cocktail and wine estimates use local price ranges relative to the draft-beer anchor and are less certain. Accommodation is a holistic estimate; room prices vary substantially by season and location.",
+  "comparable_city_reasoning": "Bratislava is treated as a mid-priced Central European capital; food and drink use Bratislava-specific benchmarks, while lodging uses broad estimates for the city’s hostel and hotel market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.63,
+    "inexp_meal_1p": 11.66,
+    "midrange_meal_2p": 69.98,
+    "cocktail": 11.66,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 28,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 60,
+    "hotel_3star_2p": 110
+  }
+}

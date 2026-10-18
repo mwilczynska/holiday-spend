@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meal, cappuccino and draft-beer anchors use recent crowd-sourced Bangalore prices. The cocktail index is sparse and reflects a downtown club, so cocktail and wine-glass estimates are tempered using the local draft-beer price relationship. Accommodation values are holistic estimates from general knowledge; no live listings were checked.",
+  "comparable_city_reasoning": "Bengaluru is a large Indian technology and business metro; lodging estimates use a broad major-Indian-city basis, while food and drink estimates use Bangalore city price indexes.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.32,
+    "coffee": 2.29,
+    "inexp_meal_1p": 3.16,
+    "midrange_meal_2p": 17.92,
+    "cocktail": 7.5,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 9,
+    "hostel_private_2p": 24,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 60
+  }
+}

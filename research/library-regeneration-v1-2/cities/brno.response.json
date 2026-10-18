@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Brno-specific price indexes support meals, coffee and beer. The cocktail estimate comes from a very small current city sample; the wine glass is estimated from its price relationship to local draft beer. Accommodation figures are holistic estimates without current listing checks.",
+  "comparable_city_reasoning": "Food and drink use Brno-specific aggregated prices. No external accommodation comparable was used; lodging is estimated holistically for a mid-sized Central European university city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.7,
+    "coffee": 3.65,
+    "inexp_meal_1p": 9.7,
+    "midrange_meal_2p": 48,
+    "cocktail": 7.5,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 21,
+    "hostel_private_2p": 60,
+    "hotel_1star_2p": 65,
+    "hotel_3star_2p": 105
+  }
+}
