@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors are supported by Aqaba price aggregators, though some rely on sparse or older reports. Cocktail and wine prices are inferred from the local beer price; accommodation is a holistic estimate with no live listings checked.",
+  "comparable_city_reasoning": "Aqaba's small-city Jordanian Red Sea resort market; lodging estimates use a regional tourist-town basis.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.5,
+    "coffee": 4.45,
+    "inexp_meal_1p": 2.8,
+    "midrange_meal_2p": 69,
+    "cocktail": 9.9,
+    "wine_glass": 7.1,
+    "hostel_dorm_1p": 13,
+    "hostel_private_2p": 35,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 70
+  }
+}

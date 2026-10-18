@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Alanya aggregate prices support the restaurant and coffee anchors, though local prices and the TRY-to-USD level are volatile. Cocktail and wine prices lack a reliable current city aggregate, so they are estimated from the local draft-beer price relationship. Accommodation values are holistic annualized estimates with substantial seasonal variation; no booking listings were inspected.",
+  "comparable_city_reasoning": "Food and drink are based on recent Alanya aggregate prices, with the coastal Turkish resort market as context. Accommodation is a holistic estimate for a popular Mediterranean resort town, allowing for a wide seasonal spread.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.1,
+    "coffee": 2.9,
+    "inexp_meal_1p": 7.3,
+    "midrange_meal_2p": 31.5,
+    "cocktail": 8,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 45,
+    "hotel_1star_2p": 40,
+    "hotel_3star_2p": 78
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Alicante restaurant, coffee and beer anchors are supported by current city price aggregates; cocktail is based on a current local comparison estimate, while the wine-glass price is inferred from the local beer relationship. Accommodation is a holistic estimate with substantial seasonal variation and no live listing check.",
+  "comparable_city_reasoning": "Broadly comparable with Valencia and Málaga as Mediterranean Spanish coastal destinations, with Alicante’s smaller city scale tempering the hospitality estimate.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 2.3,
+    "inexp_meal_1p": 17.5,
+    "midrange_meal_2p": 70,
+    "cocktail": 10.5,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 80,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 145
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Annecy-specific crowd price indexes broadly agree on food and coffee but diverge for some October prices; cocktail and wine estimates are based on a small set of local menu and local guide prices. Lodging is a holistic estimate without live booking data and is especially season-sensitive.",
+  "comparable_city_reasoning": "Food and drink use Annecy-specific price indexes. Lodging reflects a small, popular French Alpine lake destination with a Swiss-border price premium.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.7,
+    "coffee": 4.65,
+    "inexp_meal_1p": 20.3,
+    "midrange_meal_2p": 81.2,
+    "cocktail": 12.75,
+    "wine_glass": 7.55,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 110,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 230
+  }
+}

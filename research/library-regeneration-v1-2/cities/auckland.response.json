@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Recent Auckland price-index data supports the restaurant and coffee anchors; a current local bar guide gives cocktail and wine ranges. Accommodation anchors are holistic estimates from general destination knowledge and are less certain, with substantial seasonal and booking variation.",
+  "comparable_city_reasoning": "No single comparable city used. Auckland is treated as a high-cost Oceania gateway city; food and drink estimates use local Auckland benchmarks while accommodation remains a broad city-level model estimate.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 3.42,
+    "inexp_meal_1p": 14.1,
+    "midrange_meal_2p": 67.5,
+    "cocktail": 11.25,
+    "wine_glass": 7.9,
+    "hostel_dorm_1p": 28,
+    "hostel_private_2p": 75,
+    "hotel_1star_2p": 80,
+    "hotel_3star_2p": 110
+  }
+}

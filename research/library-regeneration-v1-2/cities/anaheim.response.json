@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's Anaheim prices provide current typical meal, cappuccino and draft-beer anchors. Accommodation is a holistic estimate with higher uncertainty because Anaheim's theme-park and convention demand can shift rates, and registered hostel supply is limited. Cocktail and wine estimates use the local draft-beer level as a price relationship.",
+  "comparable_city_reasoning": "Restaurant and drink anchors use Anaheim's own Numbeo typical prices; accommodation reflects Southern California urban lodging with a moderate Anaheim resort and convention premium.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 5.67,
+    "inexp_meal_1p": 25,
+    "midrange_meal_2p": 100,
+    "cocktail": 14,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 110,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 210
+  }
+}

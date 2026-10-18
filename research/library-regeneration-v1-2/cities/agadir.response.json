@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Numbeo Agadir prices last updated May 2026 (inexpensive meal 50 MAD, meal for two 231 MAD, cappuccino 20.77 MAD, draft beer 50 MAD) and Expatistan prices updated October 2026 (pub beer 30 MAD, cocktail 92 MAD). MAD-to-USD equivalents are approximate; observed beer prices vary considerably by venue. Wine-glass price is estimated relative to local beer because direct Agadir data was weak. Accommodation anchors are holistic estimates from general knowledge, not live booking-page checks, and are less certain.",
+  "comparable_city_reasoning": "Food and drink reflect Agadir city price indexes, with its coastal tourist venues contributing to wide alcohol-price variation. Accommodation is a holistic estimate for a Moroccan Atlantic resort city, with budget guesthouses and hostels alongside resort demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4,
+    "coffee": 2.1,
+    "inexp_meal_1p": 5,
+    "midrange_meal_2p": 23.1,
+    "cocktail": 9.2,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 28,
+    "hotel_3star_2p": 65
+  }
+}

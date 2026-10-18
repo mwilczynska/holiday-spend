@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Aomori city price statistics support everyday food and coffee estimates, but there is no precise local mid-range meal benchmark; cocktail and wine estimates use one current local menu, and lodging is a holistic regional-city estimate without live listing checks.",
+  "comparable_city_reasoning": "Tohoku regional-city scale; food and drink use Aomori city price statistics and broad Japan restaurant benchmarks, while accommodation is a holistic estimate for a modest regional destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/tables/csv/f11.1-data.csv",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4,
+    "coffee": 3.5,
+    "inexp_meal_1p": 6,
+    "midrange_meal_2p": 35,
+    "cocktail": 6.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 22,
+    "hostel_private_2p": 50,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 90
+  }
+}

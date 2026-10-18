@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Current Adelaide cost-of-living aggregates support the meal, coffee and beer anchors; cocktail and wine prices are less certain and use their typical relationship to beer. Accommodation values are holistic estimates without live listing checks.",
+  "comparable_city_reasoning": "Adelaide is a large Australian regional capital. For accommodation, I use a level broadly like Perth or Brisbane outside major event peaks and below Sydney or Melbourne; food and drink anchors reflect Adelaide-specific price aggregates.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 4.1,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 88,
+    "cocktail": 13.3,
+    "wine_glass": 9,
+    "hostel_dorm_1p": 32,
+    "hostel_private_2p": 78,
+    "hotel_1star_2p": 92,
+    "hotel_3star_2p": 145
+  }
+}

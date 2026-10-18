@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current city-level price indexes support the meal, cappuccino, and beer anchors, though Avignon's inexpensive-meal and mid-range-meal estimates vary across sources. Cocktail and wine estimates use a local Avignon bar-price guide and a restaurant-menu example; lodging is a holistic estimate without live booking data.",
+  "comparable_city_reasoning": "Food and drink estimates use Avignon-specific data; lodging is estimated for a mid-sized Provençal city with substantial visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.49,
+    "coffee": 3.8,
+    "inexp_meal_1p": 22.46,
+    "midrange_meal_2p": 74.12,
+    "cocktail": 10.11,
+    "wine_glass": 6.18,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 145
+  }
+}

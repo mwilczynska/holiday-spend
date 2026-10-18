@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Bantayan-specific restaurant price data are sparse; food and coffee are estimated from current Cebu city cost-index prices with a modest island-tourism adjustment. Cocktail and wine prices are inferred from the local beer level. Accommodation is a holistic estimate for a small Philippine island, with registered hostels and three-star rooms especially uncertain.",
+  "comparable_city_reasoning": "Used Cebu, Philippines as the nearest broad current food-and-drink cost-index reference, adjusted for Bantayan’s smaller island market and visitor demand. Accommodation is a general estimate for basic guesthouses and tourist lodging; no live booking listings were checked.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4,
+    "midrange_meal_2p": 28,
+    "cocktail": 4.75,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 25,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 65
+  }
+}

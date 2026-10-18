@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Belfast restaurant anchors use current city price-index benchmarks; the recent Expatistan sample is very small, and drink prices are less certain. Wine is estimated at about 1.4 times the local draft-beer price. Accommodation anchors are holistic estimates based on regional UK city patterns, with no live booking pages consulted.",
+  "comparable_city_reasoning": "City-specific restaurant benchmarks guide food and drink; accommodation is estimated from the general price level of UK regional capitals and visitor cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.98,
+    "coffee": 4.83,
+    "inexp_meal_1p": 25.28,
+    "midrange_meal_2p": 93.12,
+    "cocktail": 13.3,
+    "wine_glass": 11.31,
+    "hostel_dorm_1p": 34.59,
+    "hostel_private_2p": 93.12,
+    "hotel_1star_2p": 119.73,
+    "hotel_3star_2p": 179.59
+  }
+}

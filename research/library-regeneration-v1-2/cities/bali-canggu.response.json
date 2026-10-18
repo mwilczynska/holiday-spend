@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Recent Bali price-index restaurant, beer and cappuccino figures plus Canggu warung and café ranges support the food anchors. Canggu prices vary sharply between local warungs and tourist-oriented cafés; cocktail and wine estimates use their usual premium over local beer. Accommodation is a broad holistic estimate and is especially sensitive to season and property style.",
+  "comparable_city_reasoning": "Bali-wide restaurant price data provides a baseline, adjusted toward Canggu’s mix of inexpensive warungs and higher-priced nomad cafés and beachside restaurants.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.25,
+    "midrange_meal_2p": 38.5,
+    "cocktail": 7.5,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 35,
+    "hotel_1star_2p": 45,
+    "hotel_3star_2p": 90
+  }
+}

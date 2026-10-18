@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated Austin price data supports the meal, cappuccino, and domestic draft-beer anchors. Cocktail and restaurant wine-glass prices are bounded estimates using draft beer as a local reference. Accommodation is a holistic estimate with added uncertainty from Austin's event-driven seasonality and limited hostel supply.",
+  "comparable_city_reasoning": "Austin is a high-income U.S. technology and university city with strong convention and festival demand; accommodation estimates reflect a relatively expensive U.S. secondary-city market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 5.58,
+    "inexp_meal_1p": 20.5,
+    "midrange_meal_2p": 85,
+    "cocktail": 14,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 190
+  }
+}

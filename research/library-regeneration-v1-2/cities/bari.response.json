@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and draft-beer anchors use current Bari city averages; the cocktail uses a current Bari nightlife estimate. Accommodation is a broad seasonal estimate without live listing checks, and the wine-glass price is estimated relative to local draft beer.",
+  "comparable_city_reasoning": "Food anchors use Bari city-level prices; accommodation is estimated for a southern Italian regional capital with coastal tourism, broadly comparable to Palermo.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.9,
+    "coffee": 2,
+    "inexp_meal_1p": 17,
+    "midrange_meal_2p": 67,
+    "cocktail": 7.9,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 90,
+    "hotel_3star_2p": 130
+  }
+}

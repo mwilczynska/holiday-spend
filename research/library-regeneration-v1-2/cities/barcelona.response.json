@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "October 2026 Barcelona city-level prices anchor restaurant meals, cappuccino and draft beer. Cocktail and restaurant wine prices are estimated from their local relationship to beer; accommodation is a holistic estimate with substantial seasonal and location variation.",
+  "comparable_city_reasoning": "Food and drink are estimated from Barcelona's own city-level prices; accommodation reflects general knowledge of a high-demand Spanish visitor destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.06,
+    "coffee": 3.3,
+    "inexp_meal_1p": 18.56,
+    "midrange_meal_2p": 69.6,
+    "cocktail": 8.12,
+    "wine_glass": 4.64,
+    "hostel_dorm_1p": 41,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 135,
+    "hotel_3star_2p": 205
+  }
+}

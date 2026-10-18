@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent city price indexes support the inexpensive meal, mid-range meal, coffee and draft-beer anchors. Bar prices vary by neighborhood; cocktail has a current city-level signal, while wine by the glass and all accommodation anchors are broader estimates without live listing checks.",
+  "comparable_city_reasoning": "Beijing is a large first-tier mainland Chinese capital; food and drink anchors follow city-level price indexes, while accommodation uses a broad major-city budget-to-midrange pattern.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.2,
+    "coffee": 3.4,
+    "inexp_meal_1p": 4.5,
+    "midrange_meal_2p": 29,
+    "cocktail": 8.7,
+    "wine_glass": 7,
+    "hostel_dorm_1p": 15,
+    "hostel_private_2p": 35,
+    "hotel_1star_2p": 35,
+    "hotel_3star_2p": 65
+  }
+}

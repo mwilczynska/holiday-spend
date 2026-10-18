@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and draft-beer anchors are grounded in Arequipa city cost-of-living data updated October 2026, with a local guide supporting everyday meal ranges. USD equivalents use an approximate soles-to-dollar level; cocktail and wine prices are inferred from local draft-beer pricing because a reliable aggregated restaurant price was unavailable. Accommodation is a holistic estimate without live listing research and is less certain.",
+  "comparable_city_reasoning": "Arequipa is a major southern Peruvian regional and visitor hub. Food and drink use Arequipa-specific current price data; accommodation reflects typical rates for a mid-sized historic tourism city in Peru, broadly comparable to other southern Andean centers.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.1,
+    "coffee": 2.5,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 28,
+    "cocktail": 6,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 24,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 55
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and draft beer estimates use current Amman price-index observations; accommodation is a holistic estimate, and cocktail and wine anchors are less certain, inferred from local bar ranges and the draft-beer price relationship.",
+  "comparable_city_reasoning": "No single proxy city; the estimate reflects Amman's capital and visitor-market profile, with lodging bounded to a Levantine regional-city level.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.46,
+    "coffee": 4.46,
+    "inexp_meal_1p": 7.05,
+    "midrange_meal_2p": 70.52,
+    "cocktail": 12.69,
+    "wine_glass": 10.58,
+    "hostel_dorm_1p": 13,
+    "hostel_private_2p": 32,
+    "hotel_1star_2p": 40,
+    "hotel_3star_2p": 78
+  }
+}
