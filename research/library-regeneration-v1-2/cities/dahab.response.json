@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Current Numbeo city data is useful for meals, coffee and beer but reflects only six contributors; local food and drink prices are converted using the local guide's approximate EGP 50 per USD. Cocktail pricing comes from a local Dahab guide. Wine by the glass is inferred at about 1.5 times draft beer because direct glass prices are unavailable. Accommodation is a holistic estimate and varies substantially by season and property.",
+  "comparable_city_reasoning": "Based on Dahab's own small Red Sea dive and backpacker-town market rather than a larger Egyptian city; hostel and hotel anchors are holistic estimates for a low-cost coastal destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2,
+    "coffee": 1.65,
+    "inexp_meal_1p": 4,
+    "midrange_meal_2p": 14,
+    "cocktail": 5,
+    "wine_glass": 3,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 20,
+    "hotel_1star_2p": 25,
+    "hotel_3star_2p": 55
+  }
+}

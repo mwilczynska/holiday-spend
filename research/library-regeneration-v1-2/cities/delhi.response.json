@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and draft-beer anchors follow Delhi cost-of-living aggregates. Cocktail prices vary substantially by venue; the estimate sits between the listed local cocktail price points, while wine per glass is inferred from its local relationship to beer and the limited bottle-price data. Accommodation anchors are bounded holistic estimates from general knowledge, with no live lodging listings consulted.",
+  "comparable_city_reasoning": "Used Delhi-specific restaurant and café price aggregates; accommodation reflects typical budget-to-midrange Delhi lodging, with no proxy city or live listings used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.7,
+    "coffee": 2.4,
+    "inexp_meal_1p": 3.7,
+    "midrange_meal_2p": 21.1,
+    "cocktail": 7.5,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 32,
+    "hotel_3star_2p": 72
+  }
+}

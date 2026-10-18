@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent city-price indexes provide a reasonable basis for restaurant, cappuccino, and draft-beer anchors. Cocktail data is sparse, and both cocktail and wine prices are estimated from their local relationship to draft beer; accommodation remains a holistic estimate and is less certain.",
+  "comparable_city_reasoning": "Comparable to mid-sized Central and Eastern European university cities; Cluj-Napoca's student and festival demand supports somewhat higher lodging costs than smaller Romanian cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 4,
+    "inexp_meal_1p": 14,
+    "midrange_meal_2p": 60,
+    "cocktail": 5.25,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 16,
+    "hostel_private_2p": 40,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 90
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Current Cusco cost-of-living aggregates inform meals, coffee, beer and wine; restaurant meal figures vary across sources. The cocktail figure is from a small Expatistan sample, wine by the glass is inferred from local beer prices, and all lodging anchors are holistic estimates without live booking data.",
+  "comparable_city_reasoning": "Food and drink use Cusco-specific cost-of-living aggregates; lodging reflects a major Andean tourism hub.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-09-17-14-13-01",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.8,
+    "coffee": 2.15,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 30,
+    "cocktail": 7.5,
+    "wine_glass": 4.25,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 38,
+    "hotel_3star_2p": 70
+  }
+}

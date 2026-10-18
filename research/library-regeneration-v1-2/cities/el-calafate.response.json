@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer estimates use broad recent city-price ranges; the available crowd-sourced city table has no recent entries, so the ranges are not precise. Cocktail and wine prices are less certain and are estimated from a shared local drink-price reference and their relationship to beer. Accommodation anchors are holistic estimates from general knowledge; seasonal demand and limited local supply can move them substantially.",
+  "comparable_city_reasoning": "A remote, seasonal Patagonia gateway town with strong glacier-tourism demand; food and lodging estimates allow for higher visitor prices than larger Argentine cities, while the accommodation figures remain general estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.8,
+    "coffee": 3.8,
+    "inexp_meal_1p": 11,
+    "midrange_meal_2p": 42,
+    "cocktail": 6.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 60,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 140
+  }
+}

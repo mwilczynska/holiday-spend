@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Current Chiang Mai crowd-sourced prices support the meal, cappuccino and beer anchors; the cocktail uses a recent city cost index, while the wine glass is estimated from local beer and bottle-wine levels. Accommodation is a holistic estimate with wider uncertainty because no live lodging prices were checked.",
+  "comparable_city_reasoning": "Used Chiang Mai city price aggregates for food and common drinks; lodging reflects the city’s established low-cost guesthouse and hostel market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.39,
+    "coffee": 1.71,
+    "inexp_meal_1p": 2.24,
+    "midrange_meal_2p": 19.41,
+    "cocktail": 4.33,
+    "wine_glass": 5.37,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 24,
+    "hotel_1star_2p": 24,
+    "hotel_3star_2p": 45
+  }
+}

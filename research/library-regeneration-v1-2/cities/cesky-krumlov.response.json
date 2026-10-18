@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current city-level meal, coffee and beer prices plus a local restaurant menu support the food anchors; cocktails and wine use a single menu as a local check. Accommodation is a holistic estimate and is less certain because of strong seasonality.",
+  "comparable_city_reasoning": "Food anchors use current Český Krumlov price data and a local menu; accommodation is estimated from general knowledge of compact, high-demand Czech heritage destinations.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2,
+    "coffee": 3.8,
+    "inexp_meal_1p": 11.5,
+    "midrange_meal_2p": 51.5,
+    "cocktail": 8.5,
+    "wine_glass": 4.1,
+    "hostel_dorm_1p": 23,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 120
+  }
+}

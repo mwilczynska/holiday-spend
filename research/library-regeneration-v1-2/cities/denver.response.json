@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Denver price aggregates support the restaurant, coffee and beer anchors; cocktail pricing uses recent local menu data, while the wine glass and accommodation anchors are bounded estimates with greater variation by venue, season and event dates.",
+  "comparable_city_reasoning": "Denver is a high-income regional U.S. city with substantial event-driven lodging demand; food and drink anchors use recent Denver-specific price aggregates, and lodging reflects a holistic estimate for an urban visitor market.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2021-08-30-12-51-47",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 6.02,
+    "inexp_meal_1p": 20,
+    "midrange_meal_2p": 84.5,
+    "cocktail": 13,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 52,
+    "hostel_private_2p": 125,
+    "hotel_1star_2p": 135,
+    "hotel_3star_2p": 220
+  }
+}

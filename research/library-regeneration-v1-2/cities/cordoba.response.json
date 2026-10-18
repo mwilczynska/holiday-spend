@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's October 2026 Córdoba dataset (22 contributors in the last 12 months) supports the meal, coffee and beer anchors; accommodation is a holistic estimate, while cocktail and wine-glass prices are inferred from the local beer relationship.",
+  "comparable_city_reasoning": "Córdoba's current aggregated food and drink prices anchor the estimate; lodging reflects a mid-sized Andalusian heritage destination rather than Madrid or Barcelona, with no booking listings consulted.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.81,
+    "coffee": 2.64,
+    "inexp_meal_1p": 13.48,
+    "midrange_meal_2p": 56.14,
+    "cocktail": 7.86,
+    "wine_glass": 3.37,
+    "hostel_dorm_1p": 28.1,
+    "hostel_private_2p": 73,
+    "hotel_1star_2p": 80.9,
+    "hotel_3star_2p": 123.5
+  }
+}

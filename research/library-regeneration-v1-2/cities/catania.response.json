@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Catania restaurant, cappuccino and draft-beer anchors use Numbeo's October 2026 city data; the cocktail figure has a weaker small-sample June 2026 check, wine is estimated relative to local beer, and lodging is a holistic estimate without live listing checks.",
+  "comparable_city_reasoning": "Lodging is estimated from Catania's scale and visitor demand, with a broad Southern Italian city comparison; food and drink use Catania-specific prices.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 2.25,
+    "inexp_meal_1p": 17,
+    "midrange_meal_2p": 56,
+    "cocktail": 8,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 70,
+    "hotel_3star_2p": 110
+  }
+}

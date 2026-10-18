@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent city cost listings put an inexpensive meal near $20 and a mid-range dinner for two around $118–150, but the local samples are sparse. The cocktail estimate follows a recent downtown listing; wine is inferred from local beer and restaurant drink prices. Accommodation is a holistic estimate and varies with Charleston's tourism season and limited hostel inventory.",
+  "comparable_city_reasoning": "Charleston is a high-demand historic and coastal destination; lodging is estimated against visitor-oriented Southern U.S. cities such as Savannah, with an upward adjustment for Charleston's strong tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 6.7,
+    "inexp_meal_1p": 20,
+    "midrange_meal_2p": 150,
+    "cocktail": 14,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 140,
+    "hotel_3star_2p": 230
+  }
+}

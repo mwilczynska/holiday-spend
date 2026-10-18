@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Current city and Morocco price indexes support the food and coffee anchors. Alcohol is available in few tourist-oriented venues, so beer, wine and especially cocktail prices vary; cocktail is estimated above beer using that local bar-price relationship. Accommodation is a holistic estimate for Chefchaouen guesthouses and hotels without checking live listings, and is the least certain part.",
+  "comparable_city_reasoning": "Food and coffee draw on Chefchaouen-specific estimates and Morocco cost-of-living data. Accommodation reflects tourist guesthouse and hotel norms in northern Morocco rather than live booking prices.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 1.75,
+    "inexp_meal_1p": 5,
+    "midrange_meal_2p": 30,
+    "cocktail": 6.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 9,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 28,
+    "hotel_3star_2p": 65
+  }
+}

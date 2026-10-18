@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "October 2026 local cost data supports restaurant meals, cappuccino and beer. Cocktail and wine prices are less certain and use local guide ranges plus a small crowd-sourced sample; accommodation is a holistic estimate with no live listings checked.",
+  "comparable_city_reasoning": "Cuenca's own dollar-denominated prices are the main basis; accommodation reflects a mid-sized Andean heritage destination with steady visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2,
+    "coffee": 2.73,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 30,
+    "cocktail": 7,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 38,
+    "hotel_3star_2p": 70
+  }
+}

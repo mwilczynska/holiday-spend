@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Como price-index data gives useful food, coffee and beer anchors. Cocktail and restaurant wine prices are inferred from the local beer level and Italian aperitivo price ranges; lodging is a holistic estimate and varies substantially by season.",
+  "comparable_city_reasoning": "Food and drink use current Como price observations. Lodging reflects Como's North Italian lakeside tourism market, with a regional mid-sized-city comparison as a guide.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 2.1,
+    "inexp_meal_1p": 23.4,
+    "midrange_meal_2p": 90.7,
+    "cocktail": 11.5,
+    "wine_glass": 8,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 115,
+    "hotel_3star_2p": 205
+  }
+}

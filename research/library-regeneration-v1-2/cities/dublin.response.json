@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and pint anchors follow current aggregated Dublin prices; the cocktail uses a current downtown benchmark. Wine is inferred at roughly 1.15 times a local pint because a dependable restaurant glass price was not available. Accommodation is a broad annual estimate from general knowledge and is especially date-sensitive.",
+  "comparable_city_reasoning": "Dublin's high tourism demand and expensive Western European capital market inform the food and lodging levels; accommodation anchors are broad traveler-market estimates, not live listing checks.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.85,
+    "coffee": 4.92,
+    "inexp_meal_1p": 23.54,
+    "midrange_meal_2p": 100.89,
+    "cocktail": 15.69,
+    "wine_glass": 8.97,
+    "hostel_dorm_1p": 62,
+    "hostel_private_2p": 135,
+    "hotel_1star_2p": 174,
+    "hotel_3star_2p": 258
+  }
+}

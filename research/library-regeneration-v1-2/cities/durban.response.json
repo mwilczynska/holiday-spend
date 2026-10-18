@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food and beer follow Durban citywide averages last updated in May 2026. Cocktail and restaurant wine-glass prices are bounded estimates relative to local draft beer. Accommodation is a holistic estimate without listing checks and is the least certain part.",
+  "comparable_city_reasoning": "Use Durban-specific citywide price averages for meals, cappuccino and beer, with the South African coastal visitor-city market as context for holistic lodging estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 2.5,
+    "inexp_meal_1p": 7,
+    "midrange_meal_2p": 34,
+    "cocktail": 5.5,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 15,
+    "hostel_private_2p": 40,
+    "hotel_1star_2p": 36,
+    "hotel_3star_2p": 70
+  }
+}

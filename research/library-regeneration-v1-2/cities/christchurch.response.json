@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Christchurch citywide typical-price data updated 15 October 2026 supports restaurant meals, cappuccino and draft beer. Cocktail and restaurant wine prices are bounded estimates from their local price relationship to beer because a suitable citywide average was not found. Accommodation anchors are holistic estimates from general knowledge of Christchurch as a regional New Zealand travel hub; no accommodation listings were inspected.",
+  "comparable_city_reasoning": "Accommodation estimates use general knowledge of mid-sized New Zealand regional tourism cities. Food and drink anchors use Christchurch citywide reported prices where available.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.78,
+    "coffee": 3.25,
+    "inexp_meal_1p": 14.14,
+    "midrange_meal_2p": 68.41,
+    "cocktail": 11.3,
+    "wine_glass": 7.9,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 75,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 145
+  }
+}

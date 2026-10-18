@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and draft-beer anchors use Dresden city-price averages updated 15 October 2026. Cocktail and wine estimates are less certain and are based on current Dresden menu examples, kept near the local draft-beer price level; accommodation is holistic and seasonal demand can shift it.",
+  "comparable_city_reasoning": "Food and drink use Dresden city prices; accommodation is a holistic estimate for a mid-sized German cultural destination with meaningful tourist and event-season variation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.12,
+    "coffee": 4.36,
+    "inexp_meal_1p": 16.84,
+    "midrange_meal_2p": 84.44,
+    "cocktail": 10.67,
+    "wine_glass": 8.42,
+    "hostel_dorm_1p": 34,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 140
+  }
+}
