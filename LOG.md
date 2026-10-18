@@ -4229,3 +4229,42 @@ Final `queue.mjs --status` output:
   107-bundle 0.1733 vs 022-bundle 0.1768, improvement 0.0035 (CI -0.0175 to +0.0246), 45/45. Accommodation anchors all
   improved (dorm -0.024, private -0.031, 1-star -0.011, 3-star -0.004); food/drink within 0.01. Well below the
   0.015 margin; the remaining 10 cities cannot plausibly change the verdict.
+
+# 17 October 2026 - Luna 107 collection complete (Codex)
+
+- Resumed `107-booking-comparables-luna-s100` at 90/100 and collected the remaining
+  10 answers: Sintra, Split, Tangier, Tirana, Udaipur, Utrecht, Valletta, Verona,
+  Zakopane and Zurich. Final count: 100/100.
+- Used ten fresh built-in Codex subagents, explicitly selecting `gpt-6-luna` and
+  reasoning `max`, with `fork_turns=none`. Supplied only the worker messages printed
+  by `codex-task-message.mjs` and recorded its `promptSha256` for each task.
+  Dispatched the first six tasks, then the final four remaining tasks.
+- Saved final messages verbatim as `response.json` with matching `run.json` records.
+  All workers returned a final answer on their first attempt: zero worker retries,
+  failures or skipped tasks. Valletta reported five searches; the other nine search
+  counts are recorded as null. No worker transcripts, event streams, stderr or
+  other worker logs were saved or committed.
+- A PowerShell save command for Tirana failed during parsing of a typographic
+  apostrophe, before writing files. The unchanged answer was saved using UTF-8
+  bytes. One combined verification command exceeded the Windows process
+  command-line limit (error 206); the same checks passed in two smaller batches.
+  Verified the ten new saved response byte strings and run records, and confirmed
+  all 100 response/run pairs exist. `npm.cmd run docs:check-memory` passed.
+- The authorized completion ingest returned exactly:
+
+  `{"tasks":100,"failures":0,"primaryLoss":0.17809619804341886,"pooledRepeatLoss":0.17809619804341886}`
+
+- Completion commit `7f53d28a` (`Luna 107 complete`) was pushed. The initial commit
+  attempt could not create the Git worktree index lock because its metadata is
+  outside the writable sandbox; the authorized retry succeeded. No lock was
+  deleted and no push retry was needed.
+- The iteration queue printed nothing. Final `queue.mjs --status` output:
+
+```text
+009-search-grounded                      pending   98 / 108  (repeat-1 pending 49)
+011-v11-haiku-baseline-r2                pending  582 / 666  (repeat-1 pending 275)
+```
+
+- Stop condition 1: this iteration's queue is empty and the authorized completion
+  ingest, completion commit and push have finished. No separate score, assessment,
+  comparison, other ingest or test-split command was run.
