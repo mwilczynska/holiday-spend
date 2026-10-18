@@ -1,0 +1,230 @@
+<title>City Cost Accuracy Report</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column for the findings, with full-width tables in their own scroll boxes. Shares the
+   hill-climb page's identity so the two read as one research record. */
+:root {
+  --bg: #f3f6f2; --surface: #fbfcfa; --ink: #16221e; --muted: #5d6c66; --grid: #dde4df;
+  --accent: #19705b; --accent-soft: rgba(25,112,91,.10); --warn: #9a5b12; --warn-soft: rgba(154,91,18,.10);
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1614; --surface: #141d1a; --ink: #e5ece9; --muted: #9aaaa4; --grid: #24312d;
+  --accent: #4cc39f; --accent-soft: rgba(76,195,159,.12); --warn: #e0a55c; --warn-soft: rgba(224,165,92,.12); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1614; --surface: #141d1a; --ink: #e5ece9; --muted: #9aaaa4; --grid: #24312d;
+  --accent: #4cc39f; --accent-soft: rgba(76,195,159,.12); --warn: #e0a55c; --warn-soft: rgba(224,165,92,.12); color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15.5px; line-height: 1.6; }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 36px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; }
+header { display: grid; gap: 10px; }
+.eyebrow { font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 5vw, 44px); line-height: 1.05; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 500; font-size: 23px; margin: 0; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 500; font-size: 17px; margin: 6px 0 0; }
+section { display: grid; gap: 12px; min-width: 0; }
+p, li { max-width: 68ch; margin: 0; }
+ul, ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.lede { font-size: 17px; color: var(--ink); }
+.muted, .small { color: var(--muted); }
+.small { font-size: 13.5px; }
+.m { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--grid); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; min-width: 0; }
+.stat .k { font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.stat .v { font-family: var(--mono); font-size: 26px; font-variant-numeric: tabular-nums; }
+.stat .v small { font-size: 13px; color: var(--muted); margin-left: 6px; }
+.stat.best .v { color: var(--accent); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--grid); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th { text-align: left; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 9px 12px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.hl td { background: var(--accent-soft); font-weight: 600; }
+.callout { border-radius: 10px; padding: 12px 16px; background: var(--accent-soft); max-width: 68ch; }
+.callout.warn { background: var(--warn-soft); }
+.callout b { font-weight: 600; }
+.decisions { counter-reset: d; list-style: none; padding: 0; gap: 10px; }
+.decisions li { counter-increment: d; background: var(--surface); border: 1px solid var(--grid); border-radius: 10px; padding: 12px 14px 12px 48px; position: relative; max-width: none; }
+.decisions li::before { content: counter(d); position: absolute; left: 14px; top: 11px; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: var(--bg); font: 600 12px/22px var(--body); text-align: center; }
+a { color: var(--accent); }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--grid); padding-top: 14px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Holiday Spend · city-cost research · 17 October 2026</div>
+    <h1>City Cost Accuracy Report</h1>
+    <p class="lede">Across 38 experiments, the best method cut the typical error in Holiday Spend's new-city price
+      estimates to about 18%, and the gain held on 142 cities no experiment had used. This report sets out what to
+      ship, what did not work, what to be careful about, and the decisions that are yours.</p>
+  </header>
+
+  <div class="stats" aria-label="Headline results">
+    <div class="stat"><span class="k">Production today, uncorrected</span><span class="v">0.435<small>≈54%</small></span></div>
+    <div class="stat best"><span class="k">Recommended method</span><span class="v">0.163<small>≈18%</small></span></div>
+    <div class="stat"><span class="k">Held-out confirmation</span><span class="v">0.190<small>vs 0.220</small></span></div>
+    <div class="stat"><span class="k">Extra cost per city</span><span class="v">≤5<small>searches</small></span></div>
+  </div>
+  <p class="small">Errors are the budget-weighted mean absolute log error per city on the R3 panel (333 development
+    cities, actual booking-site hotel prices); ≈% is e<sup>error</sup> − 1. Method details and every experiment are on the
+    <a href="https://claude.ai/artifact/GSdP69DDreugCNUwX2HfcC">hill-climb page</a>.</p>
+
+  <section>
+    <h2>Recommendation</h2>
+    <p>Ship <b>bundle 022</b> for newly generated cities. It keeps the v1.1 contract (the model returns ten USD prices and
+      an exchange-rate observation; the server does all arithmetic) and changes three things:</p>
+    <ol>
+      <li><b>Model:</b> GPT-6 Luna at maximum reasoning, the current production default.</li>
+      <li><b>Prompt:</b> v1.1 plus up to five web searches for restaurant, coffee and drink prices (six searches in total
+        with the exchange rate). Hotels and hostels remain the model's own estimates.</li>
+      <li><b>Correction:</b> a fixed table of multipliers per price item and country, leaning on the region when a country
+        has few reference cities, applied to the USD prices on the server before the tier formulas. The table is
+        learnt once from the reference panel and versioned with the method.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Where the improvement comes from</h2>
+    <p>Each step below was accepted under a rule fixed before the experiments: an average improvement of at least 0.015,
+      a 95% confidence range that excludes zero, and no price item worse by more than 0.05.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Step (R3, 333 cities)</th><th class="num">Error</th><th class="num">≈ Typical</th></tr></thead>
+      <tbody>
+        <tr><td>Luna, v1.1 prompt, no correction (production today)</td><td class="num">0.435</td><td class="num">54%</td></tr>
+        <tr><td>+ one correction factor per price item</td><td class="num">0.233</td><td class="num">26%</td></tr>
+        <tr><td>+ factors per item and world region</td><td class="num">0.205</td><td class="num">23%</td></tr>
+        <tr><td>+ web search for food and drink prices</td><td class="num">0.171</td><td class="num">19%</td></tr>
+        <tr class="hl"><td>+ factors per country within region (bundle 022)</td><td class="num">0.163</td><td class="num">18%</td></tr>
+      </tbody>
+    </table></div>
+    <p>Most of the gain is the correction. Luna prices 3-star hotels like a mid-range booking guide, about 64% above what
+      3-star rooms actually cost on Booking.com and Trip.com, and a single multiplier removes that. Search fixes food and
+      drink: typical errors there fell to 7–10%.</p>
+  </section>
+
+  <section>
+    <h2>Confirmation on held-out cities</h2>
+    <p>A fixed 30% of cities (142) were set aside before any experiment. Bundle 022 and the previous best were each scored
+      once on them, using a plan written before their answers existed and corrections learnt only from development
+      cities.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Held-out cities (142)</th><th class="num">R2 references</th><th class="num">R3 references</th></tr></thead>
+      <tbody>
+        <tr><td>Previous best: Luna + region correction</td><td class="num">0.202</td><td class="num">0.220</td></tr>
+        <tr class="hl"><td>Bundle 022</td><td class="num">0.161</td><td class="num">0.190</td></tr>
+        <tr><td>Improvement (95% range)</td><td class="num">0.041 (0.025–0.057)</td><td class="num">0.031 (0.016–0.046)</td></tr>
+      </tbody>
+    </table></div>
+    <p>The development result (0.043) held on unseen cities, so the gain is not an artefact of choosing among many
+      experiments on the same cities.</p>
+  </section>
+
+  <section>
+    <h2>Accuracy by price item</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Item</th><th class="num">Weight</th><th class="num">Error</th><th class="num">≈ Typical</th><th class="num">Share of remaining error</th></tr></thead>
+      <tbody>
+        <tr><td>3-star hotel room</td><td class="num">0.40</td><td class="num">0.184</td><td class="num">20%</td><td class="num">51%</td></tr>
+        <tr><td>1-star hotel room</td><td class="num">0.08</td><td class="num">0.223</td><td class="num">25%</td><td class="num">12%</td></tr>
+        <tr><td>Mid-range meal for two</td><td class="num">0.16</td><td class="num">0.103</td><td class="num">11%</td><td class="num">11%</td></tr>
+        <tr><td>Inexpensive meal</td><td class="num">0.12</td><td class="num">0.092</td><td class="num">10%</td><td class="num">8%</td></tr>
+        <tr><td>Hostel private room</td><td class="num">0.05</td><td class="num">0.214</td><td class="num">24%</td><td class="num">7%</td></tr>
+        <tr><td>Hostel dorm bed</td><td class="num">0.03</td><td class="num">0.204</td><td class="num">23%</td><td class="num">4%</td></tr>
+        <tr><td>Beer</td><td class="num">0.06</td><td class="num">0.093</td><td class="num">10%</td><td class="num">4%</td></tr>
+        <tr><td>Coffee</td><td class="num">0.03</td><td class="num">0.075</td><td class="num">8%</td><td class="num">2%</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">Cocktail and wine (7% of weight) are not scored: no source publishes restaurant wine by the glass,
+      and the only cocktail source (Expatistan) is reproduced by the model's own searches.</p>
+  </section>
+
+  <section>
+    <h2>What did not work</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Idea</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Prompt wording: item definitions, "prices are current", local currency, local examples, stricter accommodation definitions</td><td>Raw gains only moved prices up or down, which correction already fixes. None improved after correction.</td></tr>
+        <tr><td>Averaging Luna with Haiku</td><td>−0.006: too small for two calls per city.</td></tr>
+        <tr><td>Web search for accommodation (104)</td><td>Rejected (+0.021 worse). Search fixed the hotel price level but not which cities are expensive, and mixed per-person and per-room hostel prices.</td></tr>
+        <tr><td>Hostel-only search with whole-room wording (106)</td><td>Rejected. Fixed the per-person mix-up; private rooms still scored worse against the weak private-room reference.</td></tr>
+        <tr><td>Booking prices of four comparable cities as context (107)</td><td>Rejected (0.003 better, below the 0.015 bar). Every accommodation item improved slightly: a consistent but small effect.</td></tr>
+        <tr><td>Slope correction for hostels and 1-star (023)</td><td>Net zero: hostels improved, 1-star worsened.</td></tr>
+        <tr><td>Lower reasoning effort, repeated calls</td><td>Withdrawn by the owner before collection: Luna at maximum effort is affordable.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Limits to keep in mind</h2>
+    <ul>
+      <li><b>Food and drink accuracy is partly the model finding the reference source.</b> Food and drink references come
+        from Numbeo, and Luna's searches can read Numbeo. For cocktails this was measured directly: with search, a third
+        of Luna's prices were within 2% of Expatistan's, against 8% without. The app still gets sensible crowd-sourced
+        local prices, but the 7–10% food errors overstate accuracy against what travellers actually pay.</li>
+      <li><b>Hotels are the remaining problem, and it is a ranking problem.</b> After correction the overall hotel price
+        level is right; what is left is not knowing which cities are dearer than others. Neither searching, comparable
+        cities nor correction supplied that. A real improvement would need hotel prices looked up per city at
+        generation time.</li>
+      <li><b>The 3-star references have their own noise.</b> Booking.com and Trip.com disagree by about 13% for a typical
+        city, which puts the measurable floor for 3-star error near 0.11.</li>
+      <li><b>The hostel private-room reference is the weakest in the panel</b> (Hostelworld's lowest "from" prices for
+        near-term dates, doubled, grade C).</li>
+      <li>Only newly generated cities are covered. The 121-city CSV and older v1 cities keep their stored values.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What the correction does to app prices</h2>
+    <p>Typical multipliers, learnt from all 475 reference cities (country factors vary around these):</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Item</th><th class="num">Overall</th><th>Range across regions</th><th>Reference it aligns to</th></tr></thead>
+      <tbody>
+        <tr><td>3-star hotel room</td><td class="num">× 0.62</td><td>0.46 (South Asia) – 0.74 (East Asia)</td><td>Median 3-star price on Booking.com and Trip.com, year-typical, taxes included</td></tr>
+        <tr><td>1-star hotel room</td><td class="num">× 0.85</td><td>0.69 (South Asia) – 1.13 (East Asia)</td><td>Cheaper quarter of decently rated hotels and guest houses on Booking.com</td></tr>
+        <tr><td>Hostel private room</td><td class="num">× 0.65</td><td>0.53 (Europe) – 0.86 (South-East Asia)</td><td>Hostelworld lowest "from" price, near-term dates</td></tr>
+        <tr><td>Hostel dorm bed</td><td class="num">× 0.72</td><td>0.57 (Europe) – 0.94 (South-East Asia)</td><td>Hostelworld lowest "from" price, near-term dates</td></tr>
+        <tr><td>Meals, beer, coffee</td><td class="num">× 0.96–1.01</td><td>within ±12%</td><td>Numbeo city medians</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout warn"><b>These are large, visible changes.</b> Correction sets each price item to the level its
+      reference defines. For the 3-star room that matches your decision of 16 October (actual 3-star booking prices).
+      For hostels, the reference is a near-minimum price, so applying its factor would put hostel budgets near the
+      cheapest listing rather than a typical night. The v1 formulas also derive the 4-star tier as 3-star × 1.80, so
+      correcting 3-star lowers 4-star by the same proportion.</div>
+  </section>
+
+  <section>
+    <h2>Keeping prices current</h2>
+    <ul>
+      <li><b>Exchange rates:</b> recompute AUD values from the stored USD prices at the latest RBA rate, with no model call.</li>
+      <li><b>Inflation:</b> a yearly uplift by country from free World Bank or IMF price indexes, since each city's generation date.</li>
+      <li><b>Hotel price level:</b> once a year, recollect booking prices for 100–150 reference cities and refit the correction table.
+        This updates every city's hotel level at once; rerunning cities with the same model does not.</li>
+      <li><b>New model:</b> re-measure on the panel and refit before adopting, as the project already requires.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Decisions for you</h2>
+    <ol class="decisions">
+      <li><b>Adopt bundle 022 for new cities?</b> Recommended. It is confirmed on held-out cities and keeps the v1.1 contract, with v1.1 and v1 as rollbacks.</li>
+      <li><b>Which correction factors to apply.</b> Recommended: food and drink (small, safe), and 3-star (your 16 October decision). Hold 1-star and hostels until their price definitions are settled, or apply all eight for maximum measured accuracy.</li>
+      <li><b>4-star tier.</b> Let it follow the corrected 3-star (× 1.80), or decouple it with its own definition.</li>
+      <li><b>Existing cities.</b> Leave them, or regenerate the 527-city library under the new method (one Luna call per city). Older v1 cities need a regeneration before they can follow exchange-rate updates.</li>
+      <li><b>Maintenance.</b> Build the exchange-rate recompute first (code only), then schedule the yearly reference refresh.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Research branch <span class="m">research/city-cost-accuracy</span>. Program, rule and every verdict:
+    <span class="m">research/city-cost-accuracy/hillclimb/</span> (PROGRAM.md, LOG.md, iterations/). References: Numbeo,
+    livingcost.org, Hostelworld, Booking.com and Trip.com (owner's sessions), Expatistan. Models: GPT-6 Luna (Codex),
+    Claude Haiku 5.5 (screening). No production code, canonical CSV or database was changed.
+  </footer>
+</div>

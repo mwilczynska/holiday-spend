@@ -187,6 +187,13 @@ booking-platform accommodation prices of four other dev cities (same country, th
 EXTRA_CONTEXT, on the 104 sample; judged as 107-bundle-s100 against 022-bundle-s100 with the unchanged rule. Prior
 evidence against (007).
 
+Final report (17 October 2026): `research/city-cost-accuracy/hillclimb/final-report.html`, published at
+https://claude.ai/artifact/JEbTYYGxwwT3ziAbeZW1AS. Recommendation: ship bundle 022 for new cities (Luna Max, v1.1 plus
+food/drink search, fixed country-in-region correction table fitted on all 475 panel cities). 107 rejected (0.173 vs
+0.176). Owner decisions pending: which correction factors to apply (recommended food/drink and 3-star; hold 1-star and
+hostels, whose references are near-minimum prices), the 4-star tier (3-star x 1.80), regenerating existing cities, and
+the maintenance plan (exchange-rate recompute first, yearly reference refresh).
+
 Previous priorities: (1) R2 baseline 011 repeat 1 (333 tasks); (2) 008 completion; (3) effort-high vs max test on R1
 dev (if equivalent after calibration, later runs get several times cheaper); (4) 009 search-grounded, repeat 1 only;
 (5) Booking.com remaining cities (217 of 475) and the six-window 3-star run for dev cities; (6) Luna lane in Codex.
