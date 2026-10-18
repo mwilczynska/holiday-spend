@@ -34,11 +34,16 @@ recompute first. Work happens on `feat/city-cost-v1-2` in its own worktree.
   kept as `fxHistory`. Verified on a database copy: 333 cities refreshable, 194 need regeneration first; rerun is a
   no-op. Dataset provenance shows rate, date and source. Not yet run on the live library.
 - [ ] 2b. Schedule the refresh (daily or weekly) and add a planner "prices as of" note.
-- [ ] 3. Image verification by Codex Luna Max workers (all 529 cities have photos).
+- [ ] 3. Image verification by Codex Luna Max workers (all 529 cities have photos). Running: tasks and prompt on the
+  research branch (`research/city-images-review/2026-10-18`, `CODEX-IMAGES-REVIEW-PROMPT.md`).
 - [ ] 4. Year-typical hostel references, refit, enable hostel factors.
-- [ ] 5. Regenerate the whole library under v1.2 via Codex Luna Max (agent batch script, regenerate mode).
-- [ ] 6. Documentation refresh: methodology document and `/estimates`, CLAUDE.md/AGENTS.md, research summary
-  `docs/research/city-cost-accuracy.md`, README.
+- [ ] 5. Regenerate the whole library under v1.2 via Codex Luna Max. Ready: `add-cities-from-agent-responses.ts
+  regenerate-prompts --all` writes the app's exact prompts from stored names, and `persist` calls
+  `generateAndPersistCityEstimate` (previous estimate kept inactive). Verified end to end on a database copy (Tokyo).
+- [x] 6. Documentation refresh: methodology document and `/estimates` (v1.2 steps, correction, accuracy, keeping
+  prices current, history), CLAUDE.md/AGENTS.md (v1.2 active method; research section replaces "methodology testing
+  is closed"), research summary `docs/research/city-cost-accuracy.md`, README. Baseline passes (79 files / 515 tests).
+  GitHub repository description and topics wait for owner approval.
 
 ## Development indicator — COMPLETE (12 October 2026)
 
