@@ -1,0 +1,16 @@
+Review one destination photo for a travel budgeting app.
+
+Image file (open and look at it): C:\Dev\holiday-spend\data\city-images\ella-mv2kczii-small.jpg
+It is meant to represent: Ella, Sri Lanka
+Wikipedia article it came from: Ella, Sri Lanka
+Wikimedia Commons file: Ella_railway_station.jpg
+
+Decide one verdict:
+- "ok": a photo that recognisably shows this place (its townscape, a landmark, a street, its landscape or coast).
+- "wrong_place": it clearly shows somewhere else, for example a same-named town elsewhere or another city.
+- "unsuitable": not a photo of the place: a map, flag, coat of arms, logo, diagram, document, portrait of a person,
+  an indoor close-up, or too dark, blurry or tiny to recognise anything.
+- "unsure": you cannot tell from the image and the titles.
+
+Use only the image and the titles above. Do not search the web. Your final message must be only this JSON object:
+{"verdict": "ok" | "wrong_place" | "unsuitable" | "unsure", "reason": "<one short sentence about what the photo shows>"}
