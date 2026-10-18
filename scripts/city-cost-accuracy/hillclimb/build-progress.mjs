@@ -46,6 +46,7 @@ const E = [
   ['S100', '022-bundle-s100', null, 'Bundle 022 on the 100-city sample', 'baseline'],
   ['S100', '104-bundle-s100', '104-search-accommodation-luna-s100', 'Web search for accommodation too', 'prompt'],
   ['S100', '106-bundle-s100', '106-search-hostel-luna-s100', 'Web search for hostels only (whole-room wording)', 'prompt'],
+  ['S100', '107-bundle-s100', '107-booking-comparables-luna-s100', 'Booking prices of 4 comparable cities as context', 'prompt'],
 ];
 
 // One-line description of what each experiment changed, shown in the register (keyed by judged iteration).
@@ -82,6 +83,7 @@ const WHAT = {
   '022-bundle-s100': 'Bundle 022 on a fixed 100-city sample, corrections refitted on those cities only.',
   '104-bundle-s100': 'Up to four extra searches for hotel and hostel prices, plus bundle 022 correction.',
   '106-bundle-s100': 'Up to two hostel searches, private rooms priced for the whole room; hotels stay estimates.',
+  '107-bundle-s100': 'Real booking prices of four other cities (same country first) given as context for accommodation.',
   '202-search-food-drink-luna-test': 'Bundle 022 on the 142 held-out cities, scored once.',
 };
 const it = id => path.join(hcRoot, 'iterations', id);

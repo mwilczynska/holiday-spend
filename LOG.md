@@ -4268,3 +4268,12 @@ Final `queue.mjs --status` output:
 - Stop condition 1: this iteration's queue is empty and the authorized completion
   ingest, completion commit and push have finished. No separate score, assessment,
   comparison, other ingest or test-split command was run.
+
+# 17 October 2026 - 107 judged (100/100)
+
+- Codex finished the last 10 tasks after the usage reset. 107-bundle-s100 vs 022-bundle-s100: 0.1730 vs 0.1759,
+  improvement 0.0029 (CI -0.0171 to +0.0224), 51/49 wins. Rejected (below the 0.015 margin), no anchor regression.
+  All accommodation anchors improved (private -0.033, dorm -0.027, 1-star -0.008, 3-star -0.007); mid-range meal
+  +0.013. Booking-price comparables give a small, consistent ranking gain; too small to adopt alone.
+- Removed two leftover 106 `worker-cli.*` files (no credentials) missed by the earlier `worker-cli-*` pattern; the
+  ignore rule now matches `worker-cli*`.
