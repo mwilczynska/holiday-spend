@@ -189,9 +189,21 @@ function materializeFx(observation: CityCostV11FxObservation, now: Date): CityCo
 
 export function materializeCityCostV11(input: unknown, now = new Date()): CityCostV11Materialization {
   const parsed = cityCostV11AnchorResponseSchema.parse(input);
-  const anchors = parsed.anchors_usd;
+  return materializeCityCostV11WithFx(parsed.anchors_usd, materializeFx(parsed.fx, now));
+}
+
+/**
+ * The deterministic part of v1.1: v1 tier formulas and USD to AUD conversion for already-validated anchors and an
+ * already-validated exchange rate. Generation reaches it through `materializeCityCostV11`; exchange-rate refreshes
+ * call it directly with a newer rate and the stored anchors.
+ */
+export function materializeCityCostV11WithFx(
+  anchorsInput: CityCostV11AnchorsUsd,
+  fx: CityCostV11FxProvenance
+): CityCostV11Materialization {
+  const anchors = cityCostV11AnchorSchema.parse(anchorsInput);
   Object.entries(anchors).forEach(([key, value]) => ensureFinitePositive(value, `anchor ${key}`));
-  const fx = materializeFx(parsed.fx, now);
+  ensureFinitePositive(fx.audPerUsd, 'USD to AUD rate');
 
   const anchorsAud = convertAnchorMap(anchors, fx.audPerUsd);
   const tiersUsd = buildTiersUsd(anchors);

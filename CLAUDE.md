@@ -9,7 +9,8 @@ This file describes what the project is and currently does. It is deliberately f
 | --- | --- |
 | What is planned next, milestone status, open decisions | **[PLAN.md](PLAN.md)** |
 | What was built, what was tried, and what the evidence showed | **[LOG.md](LOG.md)** |
-| Active city-cost implementation plan | **[PLAN.md](PLAN.md)** |
+| Active city-cost rollout (v1.2) | **[PLAN.md](PLAN.md)** |
+| City-cost accuracy research behind v1.2, and how to continue it | `docs/research/city-cost-accuracy.md`; branch `research/city-cost-accuracy`, tag `city-cost-research-r3-2026-10-17` |
 | Cold-start handoff and exact next action | `docs/dev/handoffs/city-cost-v1-1.md` |
 | Active city-cost loop | `LOOP-PROMPT-V1-1.md` |
 | Retired v6.1 research history | archived `feat/city-cost-methodology-v6` branch and tag `city-cost-v6.1-research-final-2026-08-18` |
@@ -68,33 +69,45 @@ Archived documents open with a `SUPERSEDED`, `ABANDONED`, or `COMPLETE` banner. 
 
 The canonical seed dataset is `data/reference/city_costs_app_aud.csv`: 121 cities, 58 countries, AUD for two people,
 tagged `base_csv_apr_2026`. `src/db/seed.ts` imports it only into an empty library. The local SQLite library contains
-527 cities, including later additions. Deployment uses a verified full SQLite/photo snapshot to preserve all cities,
-costs, provenance, climate and photos; reseeding is not migration. Existing cities are not bulk-migrated.
+529 cities, including later additions. Deployment uses a verified full SQLite/photo snapshot to preserve all cities,
+costs, provenance, climate and photos; reseeding is not migration. The owner decided on 18 October 2026 to regenerate
+the whole library under v1.2; until a city is regenerated it keeps its v1.1 or v1 values.
 
 ### v1 rollback path
 
 The historical v1 prompt, `docs/prompts/llm_prompt_new_cities_1.md`, asks one model for ten intuitive USD anchors
 and returns all derived tiers. Its formulas include the asserted accommodation, food, drink and activity rules,
-including `accom_4_star = hotel_3star × 1.80`. That formula is known to be imperfect but remains unchanged for
-the first v1.1 simplification so the lived product behavior is not silently altered.
+including `accom_4_star = hotel_3star × 1.80`. That formula is known to be imperfect but remains unchanged in v1.1
+and v1.2, so 4-star follows the corrected 3-star price (owner decision, 18 October 2026).
 
-### v1.1 active implementation target
+### v1.2 active method
 
-The active plan in `PLAN.md` replaces the v6.1 source-heavy approach with a small v1.1 path for newly generated
-cities only:
+v1.2 is the default for new and regenerated cities (`CITY_COST_METHODOLOGY_VERSION` unset or `v1.2`). It keeps the v1.1
+contract and adds two changes measured in the city-cost accuracy research (bundle 022):
 
-- one web-enabled LLM call returns the same ten USD anchors plus the latest dated RBA USD/AUD observation;
-- the LLM returns no derived tiers, AUD values, or conversion arithmetic;
-- deterministic server code validates and, when necessary, inverts the recent RBA observation, then applies the exact
-  v1 formulas and USD→AUD conversion;
-- anchors, provider/model, reasoning effort, prompt/formula versions, confidence and FX provenance are persisted;
-- no grades or intervals are fabricated for holistic model estimates;
-- v1 remains an explicit rollback through `CITY_COST_METHODOLOGY_VERSION=v1`;
+- one web-enabled LLM call (prompt `docs/prompts/llm_prompt_new_cities_v1_2.md`) returns the same ten USD anchors plus
+  the latest dated RBA USD/AUD observation; it may make up to five searches for food and drink prices, and
+  accommodation stays a holistic estimate;
+- the LLM returns no derived tiers, AUD values, corrections or conversion arithmetic;
+- the server multiplies the food, drink, 3-star and 1-star USD anchors by a fixed per-country correction
+  (`src/lib/data/city-cost-corrections-v1-2.json`: country within region, k = 3, fitted on 475 reference cities;
+  typical factors 3-star 0.62, 1-star 0.85, food and drink 0.96 to 1.01). Hostels, cocktail and wine are not corrected
+  until year-typical references exist;
+- the server then validates and inverts the RBA observation and applies the exact v1 formulas and USD→AUD conversion
+  (`materializeCityCostV12` reuses the v1.1 materializer);
+- raw and corrected anchors, the per-anchor correction and table version, provider/model, reasoning effort,
+  prompt/formula versions, confidence and FX provenance are persisted under source `llm_city_generation_v1_2`;
+- no grades or intervals are fabricated for model estimates;
+- v1.1 and v1 remain explicit rollbacks through `CITY_COST_METHODOLOGY_VERSION=v1.1` or `v1`;
 - `CITY_COST_METHODOLOGY_V6=true` must never activate v6.1.
 
-v1.1 does not rewrite the 121-city CSV, access a holdout, collect a methodology panel, fit coefficients, or
-bulk-migrate existing cities. It is the default for new cities. The Tottori, Toowoomba, and Brno owner-key smoke
-passed on 26 August 2026 with OpenAI `gpt-5.6-luna`, reasoning `max`, and dated RBA FX provenance.
+Measured accuracy (budget-weighted mean absolute log error per city): 0.163 on 333 development cities and 0.190 on 142
+held-out cities, against 0.435 for uncorrected v1.1. v1.2 does not rewrite the 121-city CSV.
+
+Exchange rates can be refreshed without a model call for every city that stores USD anchors (v1.1 and v1.2):
+`scripts/refresh-city-cost-fx.ts [--dry-run]` or admin `POST /api/cities/exchange-rate-refresh`. The refresh uses the
+ECB daily USD/AUD cross rate because the RBA statistics tables refuse automated downloads; it keeps hand-edited fields
+and records the previous rate in the estimate's `fxHistory`.
 
 ### v6 and v6.1 research history
 
@@ -179,8 +192,8 @@ reload starts a new session and drops them.
 Provider key fields have associated visible labels in city, transport and planner import forms; the existing-city editor's
 Show API key switch is labelled and its label toggles the control.
 
-Cities can also be added in batches with `scripts/add-cities-from-agent-responses.ts`: it writes the exact v1.1 prompt
-the app sends for each city, using the resolved existing country label (such as UAE), an external agent (for example a Claude Code subagent) answers it, and `persist` runs the
+Cities can also be added in batches with `scripts/add-cities-from-agent-responses.ts`: it writes the exact prompt for
+the configured methodology (v1.2 by default) the app sends for each city, using the resolved existing country label (such as UAE), an external agent (for example a Claude Code subagent) answers it, and `persist` runs the
 real `resolveOrCreatePlannerCity` path with only the provider call answered from file (`setExternalJsonPromptRunner`,
 never set by the app), after checking the app-built prompt is byte-identical. `--provider`, `--model`, `--effort` and `--agent` set the
 recorded provenance, for example "gpt-6-luna (Codex subagent)". It creates cities only, never itinerary legs.
@@ -204,7 +217,7 @@ to stop searching. Every call logs its token usage, so the defaults can be revis
 
 City generation uses these limits for both new and existing cities. Incomplete OpenAI responses are rejected even
 when their text parses as JSON; retries retain required web search and share the original timeout. Successful
-estimates record the effort that produced the answer. v1.1 never drops its required current-FX search.
+estimates record the effort that produced the answer. v1.1 and v1.2 never drop their required current-FX search.
 
 Every transport path, including non-search and strict JSON retries, uses the configured limits; none imposes a
 separate small answer cap. Bulk transport has a Stop control that aborts active requests and prevents queued legs
@@ -214,7 +227,7 @@ Failed legs can be retried together without discarding completed estimates or re
 ## Product behavior
 
 The Methodology page (`/estimates`) follows `docs/product/city-cost-methodology.md`: where city prices come from,
-the v1.1 steps with a worked example, traveller scaling and leg totals, intercity transport, trip climate,
+the v1.2 steps with a worked example, the correction, measured accuracy, traveller scaling and leg totals, intercity transport, trip climate,
 limitations, and a short history of earlier methods at the end. Keep the page and the document in step.
 Manual itinerary moves and date sorting expose failed requests and allow retry without false success messages.
 Order writes are atomic; move buttons are labelled and disabled while an order request is active.
@@ -385,22 +398,20 @@ directory. Private packages and deployment settings are gitignored and excluded 
 `docs/ops/production-launch.md` for the launch, email, proxy and backup contract. Linux container verification is
 defined in `.github/workflows/production-checks.yml`; local Windows checks do not establish Linux or public-host success.
 
-## Methodology testing is closed
+## City-cost and transport accuracy research
 
-City-cost and transport accuracy are accepted as reasonably accurate and not fully methodologically tested. That is a
-deliberate trade. Do not open new calibration, holdout, panel-collection or tolerance-setting work, and do not treat
-the recorded limitations as a backlog.
+City-cost accuracy was measured and improved by an owner-commissioned research program in October 2026, which produced
+v1.2. Its data, harness and decisions live on the `research/city-cost-accuracy` branch; `docs/research/city-cost-accuracy.md`
+summarises the results and explains how to continue. New measurement work belongs on that branch, under its fixed
+acceptance rule, and only when the owner asks for it. Do not mix research tooling or data into `main`.
 
-The record supports this. `docs/prompts/README.md` lists v5 experiments 085 to 094 as rejected, v6 and v6.1 are
-archived as rejected approaches retained only for audit, and the 5 September 2026 transport accuracy check is
-explicitly directional at three routes. Calibration work has a poor return here relative to its cost.
+The held-out cities have been read four times; use them again only to confirm a candidate that has already won on the
+development cities.
 
-The distinction that matters: fixing a **specification** defect is in scope, and fixing a **calibration** gap is not.
-Prompt v1.1 was worth making because the contract genuinely failed to say which fare to return, and stating it moved
-the median relative error from 25.0% to 2.5%. Chasing a tolerance on top of that is the activity to avoid.
-
-Re-measure when the prompt, provider or model changes, not on a schedule, and follow
-`docs/product/transport-estimation.md`.
+Transport accuracy remains directional: the 5 September 2026 check covered three routes. Prompt v1.1 for transport
+was worth making because the contract failed to say which fare to return, and stating it moved the median relative
+error from 25.0% to 2.5%. Re-measure city costs and transport when the prompt, provider or model changes, following
+`docs/research/city-cost-accuracy.md` and `docs/product/transport-estimation.md`.
 
 ## Conventions and verification
 
@@ -489,14 +500,18 @@ authentication, or methodology.
 
 | Path | Purpose |
 | --- | --- |
-| `PLAN.md` | Active v1.1 implementation and rollout checklist |
+| `PLAN.md` | Active v1.2 rollout checklist |
 | `docs/product/city-cost-methodology.md` | Current city-cost methodology, mirrored by the `/estimates` page |
 | `docs/prompts/llm_prompt_new_cities_1.md` | Frozen v1 rollback prompt |
+| `docs/prompts/llm_prompt_new_cities_v1_2.md` | v1.2 prompt: v1.1 plus up to five food and drink searches |
 | `docs/prompts/llm_prompt_new_cities_v1_1.md` | v1.1 prompt for holistic anchors plus a current RBA FX observation; tiers and conversion stay server-side |
+| `src/lib/city-cost-methodology-v1-2.ts` | v1.2 correction lookup and materialization |
+| `src/lib/data/city-cost-corrections-v1-2.json` | v1.2 correction table (built on the research branch) |
+| `src/lib/city-cost-fx-refresh.ts` | Exchange-rate refresh from stored USD anchors (ECB cross rate) |
 | `src/lib/city-cost-methodology-v1-1.ts` | v1.1 schema, fresh-FX validation/inversion and formula-preserving materializer |
-| `src/lib/city-generation.ts` | v1/v1.1 generation dispatch and schema validation |
+| `src/lib/city-generation.ts` | v1/v1.1/v1.2 generation dispatch and schema validation |
 | `src/lib/city-generation-service.ts` | Estimate persistence and city updates |
-| `src/lib/city-generation-persistence.ts` | Explicit v1/v1.1 database persistence adapter |
+| `src/lib/city-generation-persistence.ts` | Explicit v1/v1.1/v1.2 database persistence adapter |
 | `src/lib/city-estimate-provenance.ts` | Generic API provenance parser, including historical v6 records |
 | `src/lib/city-llm-client.ts` | Provider JSON-completion transports |
 | `src/lib/provider-model-discovery.ts` | Provider model discovery |

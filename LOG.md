@@ -3541,3 +3541,20 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 
 - Set devIndicators to false in next.config.mjs to hide the Next.js N indicator during development. Framework errors still surface normally.
 - Verified JavaScript syntax, configuration loading through Next.js for development and production build phases, memory mirror and diff whitespace. No application logic changes; the existing generated tsconfig.json include is excluded from this commit.
+
+
+## 18 October 2026 — City cost v1.2 and exchange-rate refresh
+
+- v1.2 adopted from the city-cost hill-climb research (branch `research/city-cost-accuracy`, tag
+  `city-cost-research-r3-2026-10-17`): bundle 022 scored 0.163 on 333 development cities (R3 references, actual booking
+  hotel prices) against 0.435 for uncorrected v1.1, and held on 142 held-out cities (0.190 vs 0.220 for the previous
+  best). v1.2 = v1.1 prompt plus up to five food/drink searches; the server multiplies food, drink, 3-star and 1-star
+  USD anchors by a fixed country-within-region correction table (k=3, fitted on 475 cities; typical multipliers 3-star
+  0.62, 1-star 0.85, food and drink 0.96-1.01), then applies the unchanged v1 formulas, so 4-star follows 3-star x1.80.
+  Hostels stay uncorrected: their reference (Hostelworld lowest near-term prices) is not year-typical.
+- Exchange-rate refresh added. The RBA statistics tables return Access Denied to automated requests, so refreshes use
+  the ECB euro reference rates' USD/AUD cross rate (1.4370 AUD per USD on 16 October, within 0.1% of RBA).
+- Mistake caught before commit: the first refresh module overwrote the existing `src/lib/exchange-rates.ts` (expense
+  conversion via Frankfurter); it was restored from git and the new code moved to `usd-aud-reference-rate.ts`.
+  Frankfurter now redirects `api.frankfurter.app` to `api.frankfurter.dev`; fetch follows it, so expense conversion
+  still works.

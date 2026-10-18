@@ -1,0 +1,2886 @@
+{
+  "version": "v1.2-corrections-2026-10-18",
+  "method": "country-in-region multiplicative correction (bundle 022), k = 3; country factors already include region shrinkage",
+  "fittedOn": {
+    "cities": 475,
+    "model": "gpt-6-luna/max",
+    "prompt": "llm_prompt_new_cities_v1_2.md",
+    "referencePanel": "R3",
+    "referencePanelSha256": "1d477c3f7e004b691c34aaead36a0d30a41d59cb1a66e2a0850eda8e6557747c",
+    "researchTag": "city-cost-research-r3-2026-10-17"
+  },
+  "correctedAnchors": [
+    "inexp_meal_1p",
+    "midrange_meal_2p",
+    "beer",
+    "coffee",
+    "hotel_3star_2p",
+    "hotel_1star_2p"
+  ],
+  "uncorrectedAnchors": [
+    "cocktail",
+    "wine_glass",
+    "hostel_dorm_1p",
+    "hostel_private_2p"
+  ],
+  "lookup": "country factor if present, else region factor, else global factor; anchors not listed are unchanged",
+  "k": 3,
+  "global": {
+    "inexp_meal_1p": 0.9638,
+    "midrange_meal_2p": 1.0141,
+    "beer": 0.9877,
+    "coffee": 0.9814,
+    "hotel_3star_2p": 0.6204,
+    "hotel_1star_2p": 0.8482
+  },
+  "region": {
+    "inexp_meal_1p": {
+      "Europe": 0.9734,
+      "Middle East": 0.9925,
+      "Latin America": 1.0058,
+      "East Asia": 0.9143,
+      "Africa": 1.0276,
+      "North America": 0.9843,
+      "SEA": 0.9433,
+      "Oceania": 0.8789,
+      "South Asia": 0.9813
+    },
+    "midrange_meal_2p": {
+      "Europe": 1.0171,
+      "Middle East": 1.0083,
+      "Latin America": 0.9987,
+      "East Asia": 0.9909,
+      "Africa": 1.0932,
+      "North America": 0.9875,
+      "SEA": 1.0379,
+      "Oceania": 0.9849,
+      "South Asia": 1.0522
+    },
+    "beer": {
+      "Europe": 0.9928,
+      "Middle East": 0.9379,
+      "Latin America": 1.0332,
+      "East Asia": 0.9546,
+      "Africa": 1.0057,
+      "North America": 1.0165,
+      "SEA": 1.0062,
+      "Oceania": 0.9686,
+      "South Asia": 0.9077
+    },
+    "coffee": {
+      "Europe": 0.9802,
+      "Middle East": 0.8881,
+      "Latin America": 1.0432,
+      "East Asia": 0.9654,
+      "Africa": 1.0461,
+      "North America": 1.0286,
+      "SEA": 0.9571,
+      "Oceania": 0.9724,
+      "South Asia": 0.9357
+    },
+    "hotel_3star_2p": {
+      "Europe": 0.6024,
+      "Middle East": 0.6631,
+      "Latin America": 0.6327,
+      "East Asia": 0.741,
+      "South Asia": 0.4609,
+      "Africa": 0.64,
+      "North America": 0.7227,
+      "SEA": 0.5528,
+      "Oceania": 0.7027
+    },
+    "hotel_1star_2p": {
+      "Europe": 0.7584,
+      "Middle East": 0.8903,
+      "Latin America": 0.8581,
+      "East Asia": 1.1284,
+      "South Asia": 0.6928,
+      "Africa": 0.8456,
+      "North America": 0.9341,
+      "SEA": 0.8377,
+      "Oceania": 1.0441
+    }
+  },
+  "country": {
+    "inexp_meal_1p": {
+      "DK": {
+        "factor": 0.9823,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "FR": {
+        "factor": 0.9832,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "TR": {
+        "factor": 0.9455,
+        "cities": 7,
+        "region": "Middle East"
+      },
+      "PT": {
+        "factor": 0.9448,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "ES": {
+        "factor": 0.9634,
+        "cities": 15,
+        "region": "Europe"
+      },
+      "JO": {
+        "factor": 1.1372,
+        "cities": 2,
+        "region": "Middle East"
+      },
+      "NL": {
+        "factor": 0.982,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CL": {
+        "factor": 1.096,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "JP": {
+        "factor": 0.8502,
+        "cities": 21,
+        "region": "East Asia"
+      },
+      "PE": {
+        "factor": 0.9834,
+        "cities": 4,
+        "region": "Latin America"
+      },
+      "TZ": {
+        "factor": 1.0009,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "GR": {
+        "factor": 0.955,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "US": {
+        "factor": 0.9509,
+        "cities": 14,
+        "region": "North America"
+      },
+      "TH": {
+        "factor": 0.9471,
+        "cities": 9,
+        "region": "SEA"
+      },
+      "CN": {
+        "factor": 0.979,
+        "cities": 20,
+        "region": "East Asia"
+      },
+      "GB": {
+        "factor": 0.9817,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "RS": {
+        "factor": 0.9625,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "NO": {
+        "factor": 0.9922,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "DE": {
+        "factor": 0.9626,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "CO": {
+        "factor": 1.1187,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "IT": {
+        "factor": 0.9755,
+        "cities": 13,
+        "region": "Europe"
+      },
+      "SK": {
+        "factor": 0.9588,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CZ": {
+        "factor": 0.9975,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "BE": {
+        "factor": 1.0123,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "RO": {
+        "factor": 0.9624,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "AR": {
+        "factor": 0.9313,
+        "cities": 3,
+        "region": "Latin America"
+      },
+      "KR": {
+        "factor": 0.867,
+        "cities": 5,
+        "region": "East Asia"
+      },
+      "AU": {
+        "factor": 0.9404,
+        "cities": 14,
+        "region": "Oceania"
+      },
+      "MX": {
+        "factor": 1.0204,
+        "cities": 14,
+        "region": "North America"
+      },
+      "EG": {
+        "factor": 0.9917,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "VN": {
+        "factor": 0.935,
+        "cities": 11,
+        "region": "SEA"
+      },
+      "ZA": {
+        "factor": 1.058,
+        "cities": 3,
+        "region": "Africa"
+      },
+      "PH": {
+        "factor": 0.9466,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "IN": {
+        "factor": 1.0022,
+        "cities": 10,
+        "region": "South Asia"
+      },
+      "NZ": {
+        "factor": 0.9092,
+        "cities": 5,
+        "region": "Oceania"
+      },
+      "LK": {
+        "factor": 1.005,
+        "cities": 5,
+        "region": "South Asia"
+      },
+      "EC": {
+        "factor": 0.9649,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "QA": {
+        "factor": 0.9742,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "AE": {
+        "factor": 0.9773,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "IE": {
+        "factor": 0.9338,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "MA": {
+        "factor": 1.0336,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "BR": {
+        "factor": 1.0017,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "PL": {
+        "factor": 0.9903,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CH": {
+        "factor": 1.0031,
+        "cities": 7,
+        "region": "Europe"
+      },
+      "SE": {
+        "factor": 0.9961,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "CU": {
+        "factor": 0.9423,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "FI": {
+        "factor": 0.9818,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HK": {
+        "factor": 0.9246,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "MY": {
+        "factor": 0.9177,
+        "cities": 7,
+        "region": "SEA"
+      },
+      "ID": {
+        "factor": 0.9324,
+        "cities": 4,
+        "region": "SEA"
+      },
+      "KH": {
+        "factor": 0.9707,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "TW": {
+        "factor": 0.9758,
+        "cities": 4,
+        "region": "East Asia"
+      },
+      "NP": {
+        "factor": 0.8945,
+        "cities": 2,
+        "region": "South Asia"
+      },
+      "ME": {
+        "factor": 0.9661,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HN": {
+        "factor": 0.987,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SI": {
+        "factor": 0.9665,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LA": {
+        "factor": 0.9553,
+        "cities": 3,
+        "region": "SEA"
+      },
+      "KE": {
+        "factor": 0.9632,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "JM": {
+        "factor": 0.9209,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "UY": {
+        "factor": 1.0307,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "BA": {
+        "factor": 0.9756,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "OM": {
+        "factor": 0.9972,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "FJ": {
+        "factor": 0.8214,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BS": {
+        "factor": 1.016,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "CY": {
+        "factor": 0.9804,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "HR": {
+        "factor": 0.9762,
+        "cities": 6,
+        "region": "Europe"
+      },
+      "DO": {
+        "factor": 1.009,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "IS": {
+        "factor": 0.9699,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LV": {
+        "factor": 0.9256,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MK": {
+        "factor": 1.0002,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "BG": {
+        "factor": 1.0012,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "EE": {
+        "factor": 0.9324,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "GE": {
+        "factor": 0.9678,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "IL": {
+        "factor": 0.9962,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "AL": {
+        "factor": 0.9843,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MT": {
+        "factor": 0.9471,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CA": {
+        "factor": 0.9807,
+        "cities": 4,
+        "region": "North America"
+      },
+      "AT": {
+        "factor": 0.9833,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "CW": {
+        "factor": 0.9817,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "WS": {
+        "factor": 0.6593,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BB": {
+        "factor": 0.8092,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "HU": {
+        "factor": 0.9927,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "BO": {
+        "factor": 1.0032,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "ZM": {
+        "factor": 1.1423,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "CR": {
+        "factor": 1.1943,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SG": {
+        "factor": 0.9556,
+        "cities": 1,
+        "region": "SEA"
+      },
+      "TN": {
+        "factor": 1.0184,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "MN": {
+        "factor": 0.9371,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "SC": {
+        "factor": 1.0011,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "LT": {
+        "factor": 0.9446,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MM": {
+        "factor": 0.9552,
+        "cities": 1,
+        "region": "SEA"
+      }
+    },
+    "midrange_meal_2p": {
+      "DK": {
+        "factor": 1.0272,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "FR": {
+        "factor": 0.9983,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "TR": {
+        "factor": 1.0207,
+        "cities": 7,
+        "region": "Middle East"
+      },
+      "PT": {
+        "factor": 1.0204,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "ES": {
+        "factor": 1.0058,
+        "cities": 15,
+        "region": "Europe"
+      },
+      "JO": {
+        "factor": 1.1098,
+        "cities": 2,
+        "region": "Middle East"
+      },
+      "NL": {
+        "factor": 1.0536,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CL": {
+        "factor": 0.9368,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "JP": {
+        "factor": 0.9763,
+        "cities": 21,
+        "region": "East Asia"
+      },
+      "PE": {
+        "factor": 1.0442,
+        "cities": 4,
+        "region": "Latin America"
+      },
+      "TZ": {
+        "factor": 1.0645,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "GR": {
+        "factor": 1.0409,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "US": {
+        "factor": 1.0075,
+        "cities": 14,
+        "region": "North America"
+      },
+      "TH": {
+        "factor": 1.0458,
+        "cities": 9,
+        "region": "SEA"
+      },
+      "CN": {
+        "factor": 1.0367,
+        "cities": 20,
+        "region": "East Asia"
+      },
+      "GB": {
+        "factor": 1.0522,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "RS": {
+        "factor": 1.0328,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "NO": {
+        "factor": 1.0183,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "DE": {
+        "factor": 1.0386,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "CO": {
+        "factor": 1.0943,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "IT": {
+        "factor": 1.0183,
+        "cities": 13,
+        "region": "Europe"
+      },
+      "SK": {
+        "factor": 0.9919,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CZ": {
+        "factor": 1.0455,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "BE": {
+        "factor": 1.0609,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "RO": {
+        "factor": 0.9872,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "AR": {
+        "factor": 0.9633,
+        "cities": 3,
+        "region": "Latin America"
+      },
+      "KR": {
+        "factor": 0.8544,
+        "cities": 5,
+        "region": "East Asia"
+      },
+      "AU": {
+        "factor": 1.0077,
+        "cities": 14,
+        "region": "Oceania"
+      },
+      "MX": {
+        "factor": 0.975,
+        "cities": 14,
+        "region": "North America"
+      },
+      "EG": {
+        "factor": 0.9568,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "VN": {
+        "factor": 1.0693,
+        "cities": 11,
+        "region": "SEA"
+      },
+      "ZA": {
+        "factor": 1.1066,
+        "cities": 3,
+        "region": "Africa"
+      },
+      "PH": {
+        "factor": 1.0645,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "IN": {
+        "factor": 1.0507,
+        "cities": 10,
+        "region": "South Asia"
+      },
+      "NZ": {
+        "factor": 1.0037,
+        "cities": 5,
+        "region": "Oceania"
+      },
+      "LK": {
+        "factor": 1.0834,
+        "cities": 5,
+        "region": "South Asia"
+      },
+      "EC": {
+        "factor": 1.0008,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "QA": {
+        "factor": 1.0241,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "AE": {
+        "factor": 0.989,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "IE": {
+        "factor": 1.0091,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "MA": {
+        "factor": 1.0826,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "BR": {
+        "factor": 0.9549,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "PL": {
+        "factor": 1.0165,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CH": {
+        "factor": 0.9514,
+        "cities": 7,
+        "region": "Europe"
+      },
+      "SE": {
+        "factor": 1.0063,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "CU": {
+        "factor": 1.0722,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "FI": {
+        "factor": 1.0294,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HK": {
+        "factor": 0.9922,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "MY": {
+        "factor": 0.9873,
+        "cities": 7,
+        "region": "SEA"
+      },
+      "ID": {
+        "factor": 1.0033,
+        "cities": 4,
+        "region": "SEA"
+      },
+      "KH": {
+        "factor": 1.0084,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "TW": {
+        "factor": 1.0471,
+        "cities": 4,
+        "region": "East Asia"
+      },
+      "NP": {
+        "factor": 1.0078,
+        "cities": 2,
+        "region": "South Asia"
+      },
+      "ME": {
+        "factor": 0.9636,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HN": {
+        "factor": 0.9691,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SI": {
+        "factor": 0.9986,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LA": {
+        "factor": 1.0779,
+        "cities": 3,
+        "region": "SEA"
+      },
+      "KE": {
+        "factor": 1.0996,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "JM": {
+        "factor": 0.9612,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "UY": {
+        "factor": 1.0395,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "BA": {
+        "factor": 1.0209,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "OM": {
+        "factor": 1.0322,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "FJ": {
+        "factor": 0.9382,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BS": {
+        "factor": 1.0405,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "CY": {
+        "factor": 1.0132,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "HR": {
+        "factor": 1.0129,
+        "cities": 6,
+        "region": "Europe"
+      },
+      "DO": {
+        "factor": 1.0294,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "IS": {
+        "factor": 1.0584,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LV": {
+        "factor": 0.9849,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MK": {
+        "factor": 1.0303,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "BG": {
+        "factor": 1.0294,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "EE": {
+        "factor": 1.0028,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "GE": {
+        "factor": 1.0066,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "IL": {
+        "factor": 1.008,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "AL": {
+        "factor": 1.0172,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MT": {
+        "factor": 1.009,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CA": {
+        "factor": 0.9699,
+        "cities": 4,
+        "region": "North America"
+      },
+      "AT": {
+        "factor": 1.0018,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "CW": {
+        "factor": 0.9666,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "WS": {
+        "factor": 0.9032,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BB": {
+        "factor": 0.8013,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "HU": {
+        "factor": 1.0694,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "BO": {
+        "factor": 0.9776,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "ZM": {
+        "factor": 1.1351,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "CR": {
+        "factor": 1.1549,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SG": {
+        "factor": 1.0266,
+        "cities": 1,
+        "region": "SEA"
+      },
+      "TN": {
+        "factor": 1.0939,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "MN": {
+        "factor": 1.0182,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "SC": {
+        "factor": 1.1154,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "LT": {
+        "factor": 0.998,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MM": {
+        "factor": 1.0576,
+        "cities": 1,
+        "region": "SEA"
+      }
+    },
+    "beer": {
+      "DK": {
+        "factor": 0.9886,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "FR": {
+        "factor": 0.9647,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "TR": {
+        "factor": 0.947,
+        "cities": 7,
+        "region": "Middle East"
+      },
+      "PT": {
+        "factor": 0.9301,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "ES": {
+        "factor": 1.0965,
+        "cities": 15,
+        "region": "Europe"
+      },
+      "JO": {
+        "factor": 0.9808,
+        "cities": 2,
+        "region": "Middle East"
+      },
+      "NL": {
+        "factor": 1.0018,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CL": {
+        "factor": 1.0837,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "JP": {
+        "factor": 0.9342,
+        "cities": 21,
+        "region": "East Asia"
+      },
+      "PE": {
+        "factor": 1.0426,
+        "cities": 4,
+        "region": "Latin America"
+      },
+      "TZ": {
+        "factor": 0.9838,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "GR": {
+        "factor": 0.9701,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "US": {
+        "factor": 1.009,
+        "cities": 14,
+        "region": "North America"
+      },
+      "TH": {
+        "factor": 1,
+        "cities": 9,
+        "region": "SEA"
+      },
+      "CN": {
+        "factor": 0.9712,
+        "cities": 20,
+        "region": "East Asia"
+      },
+      "GB": {
+        "factor": 1.0062,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "RS": {
+        "factor": 1.0015,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "NO": {
+        "factor": 1.0127,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "DE": {
+        "factor": 0.989,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "CO": {
+        "factor": 0.9553,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "IT": {
+        "factor": 0.9868,
+        "cities": 13,
+        "region": "Europe"
+      },
+      "SK": {
+        "factor": 0.9677,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CZ": {
+        "factor": 1.0087,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "BE": {
+        "factor": 1.04,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "RO": {
+        "factor": 0.9528,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "AR": {
+        "factor": 0.9914,
+        "cities": 3,
+        "region": "Latin America"
+      },
+      "KR": {
+        "factor": 0.9281,
+        "cities": 5,
+        "region": "East Asia"
+      },
+      "AU": {
+        "factor": 0.9693,
+        "cities": 14,
+        "region": "Oceania"
+      },
+      "MX": {
+        "factor": 1.0253,
+        "cities": 14,
+        "region": "North America"
+      },
+      "EG": {
+        "factor": 0.9038,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "VN": {
+        "factor": 0.9589,
+        "cities": 11,
+        "region": "SEA"
+      },
+      "ZA": {
+        "factor": 1.0388,
+        "cities": 3,
+        "region": "Africa"
+      },
+      "PH": {
+        "factor": 0.9496,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "IN": {
+        "factor": 0.9125,
+        "cities": 10,
+        "region": "South Asia"
+      },
+      "NZ": {
+        "factor": 0.9813,
+        "cities": 5,
+        "region": "Oceania"
+      },
+      "LK": {
+        "factor": 0.8997,
+        "cities": 5,
+        "region": "South Asia"
+      },
+      "EC": {
+        "factor": 0.9747,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "QA": {
+        "factor": 0.9321,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "AE": {
+        "factor": 0.9483,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "IE": {
+        "factor": 1.0161,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "MA": {
+        "factor": 1.0502,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "BR": {
+        "factor": 1.0544,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "PL": {
+        "factor": 0.9961,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CH": {
+        "factor": 1.0066,
+        "cities": 7,
+        "region": "Europe"
+      },
+      "SE": {
+        "factor": 0.9917,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "CU": {
+        "factor": 1.0194,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "FI": {
+        "factor": 0.9873,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HK": {
+        "factor": 0.9742,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "MY": {
+        "factor": 1.1202,
+        "cities": 7,
+        "region": "SEA"
+      },
+      "ID": {
+        "factor": 1.0272,
+        "cities": 4,
+        "region": "SEA"
+      },
+      "KH": {
+        "factor": 0.9758,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "TW": {
+        "factor": 0.9867,
+        "cities": 4,
+        "region": "East Asia"
+      },
+      "NP": {
+        "factor": 0.9083,
+        "cities": 2,
+        "region": "South Asia"
+      },
+      "ME": {
+        "factor": 0.9657,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HN": {
+        "factor": 0.9873,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SI": {
+        "factor": 0.9767,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LA": {
+        "factor": 1.051,
+        "cities": 3,
+        "region": "SEA"
+      },
+      "KE": {
+        "factor": 0.9932,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "JM": {
+        "factor": 1.0387,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "UY": {
+        "factor": 1.0336,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "BA": {
+        "factor": 0.9869,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "OM": {
+        "factor": 0.9512,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "FJ": {
+        "factor": 0.9562,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BS": {
+        "factor": 1.0248,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "CY": {
+        "factor": 0.9952,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "HR": {
+        "factor": 0.9723,
+        "cities": 6,
+        "region": "Europe"
+      },
+      "DO": {
+        "factor": 1.0298,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "IS": {
+        "factor": 0.9844,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LV": {
+        "factor": 0.992,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MK": {
+        "factor": 0.9794,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "BG": {
+        "factor": 1.0016,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "EE": {
+        "factor": 0.9708,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "GE": {
+        "factor": 0.9912,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "IL": {
+        "factor": 0.9599,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "AL": {
+        "factor": 0.9981,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MT": {
+        "factor": 0.9663,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CA": {
+        "factor": 1.0133,
+        "cities": 4,
+        "region": "North America"
+      },
+      "AT": {
+        "factor": 0.9814,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "CW": {
+        "factor": 1.0119,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "WS": {
+        "factor": 0.9534,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BB": {
+        "factor": 1.0092,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "HU": {
+        "factor": 0.9531,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "BO": {
+        "factor": 1.0208,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "ZM": {
+        "factor": 0.8902,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "CR": {
+        "factor": 1.3487,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SG": {
+        "factor": 1.003,
+        "cities": 1,
+        "region": "SEA"
+      },
+      "TN": {
+        "factor": 0.9927,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "MN": {
+        "factor": 0.9618,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "SC": {
+        "factor": 1.0712,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "LT": {
+        "factor": 0.9779,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MM": {
+        "factor": 1.0042,
+        "cities": 1,
+        "region": "SEA"
+      }
+    },
+    "coffee": {
+      "DK": {
+        "factor": 0.9783,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "FR": {
+        "factor": 0.9667,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "TR": {
+        "factor": 0.8917,
+        "cities": 7,
+        "region": "Middle East"
+      },
+      "PT": {
+        "factor": 0.9783,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "ES": {
+        "factor": 0.985,
+        "cities": 15,
+        "region": "Europe"
+      },
+      "JO": {
+        "factor": 0.9392,
+        "cities": 2,
+        "region": "Middle East"
+      },
+      "NL": {
+        "factor": 0.9897,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CL": {
+        "factor": 1.0929,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "JP": {
+        "factor": 0.9437,
+        "cities": 21,
+        "region": "East Asia"
+      },
+      "PE": {
+        "factor": 1.0622,
+        "cities": 4,
+        "region": "Latin America"
+      },
+      "TZ": {
+        "factor": 1.0086,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "GR": {
+        "factor": 0.9622,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "US": {
+        "factor": 1.017,
+        "cities": 14,
+        "region": "North America"
+      },
+      "TH": {
+        "factor": 0.9586,
+        "cities": 9,
+        "region": "SEA"
+      },
+      "CN": {
+        "factor": 1.0028,
+        "cities": 20,
+        "region": "East Asia"
+      },
+      "GB": {
+        "factor": 0.9725,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "RS": {
+        "factor": 1.003,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "NO": {
+        "factor": 0.9897,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "DE": {
+        "factor": 0.9746,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "CO": {
+        "factor": 1.0258,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "IT": {
+        "factor": 0.9982,
+        "cities": 13,
+        "region": "Europe"
+      },
+      "SK": {
+        "factor": 0.9577,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CZ": {
+        "factor": 0.9986,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "BE": {
+        "factor": 0.9845,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "RO": {
+        "factor": 0.9398,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "AR": {
+        "factor": 1.0813,
+        "cities": 3,
+        "region": "Latin America"
+      },
+      "KR": {
+        "factor": 0.9165,
+        "cities": 5,
+        "region": "East Asia"
+      },
+      "AU": {
+        "factor": 0.9833,
+        "cities": 14,
+        "region": "Oceania"
+      },
+      "MX": {
+        "factor": 1.0499,
+        "cities": 14,
+        "region": "North America"
+      },
+      "EG": {
+        "factor": 0.8691,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "VN": {
+        "factor": 0.9179,
+        "cities": 11,
+        "region": "SEA"
+      },
+      "ZA": {
+        "factor": 1.0385,
+        "cities": 3,
+        "region": "Africa"
+      },
+      "PH": {
+        "factor": 0.9612,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "IN": {
+        "factor": 0.933,
+        "cities": 10,
+        "region": "South Asia"
+      },
+      "NZ": {
+        "factor": 0.9772,
+        "cities": 5,
+        "region": "Oceania"
+      },
+      "LK": {
+        "factor": 0.9735,
+        "cities": 5,
+        "region": "South Asia"
+      },
+      "EC": {
+        "factor": 1.0091,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "QA": {
+        "factor": 0.9028,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "AE": {
+        "factor": 0.9248,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "IE": {
+        "factor": 0.9857,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "MA": {
+        "factor": 1.0224,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "BR": {
+        "factor": 1.0533,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "PL": {
+        "factor": 0.9773,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CH": {
+        "factor": 1.0034,
+        "cities": 7,
+        "region": "Europe"
+      },
+      "SE": {
+        "factor": 0.9797,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "CU": {
+        "factor": 1.0863,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "FI": {
+        "factor": 0.954,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HK": {
+        "factor": 0.9736,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "MY": {
+        "factor": 0.9726,
+        "cities": 7,
+        "region": "SEA"
+      },
+      "ID": {
+        "factor": 0.9597,
+        "cities": 4,
+        "region": "SEA"
+      },
+      "KH": {
+        "factor": 0.9873,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "TW": {
+        "factor": 0.9762,
+        "cities": 4,
+        "region": "East Asia"
+      },
+      "NP": {
+        "factor": 0.8852,
+        "cities": 2,
+        "region": "South Asia"
+      },
+      "ME": {
+        "factor": 0.9568,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HN": {
+        "factor": 1.0119,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SI": {
+        "factor": 0.9581,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LA": {
+        "factor": 0.9591,
+        "cities": 3,
+        "region": "SEA"
+      },
+      "KE": {
+        "factor": 1.0325,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "JM": {
+        "factor": 0.9581,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "UY": {
+        "factor": 1.0332,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "BA": {
+        "factor": 0.9814,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "OM": {
+        "factor": 0.9083,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "FJ": {
+        "factor": 0.9264,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BS": {
+        "factor": 1.0322,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "CY": {
+        "factor": 0.9851,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "HR": {
+        "factor": 0.9833,
+        "cities": 6,
+        "region": "Europe"
+      },
+      "DO": {
+        "factor": 0.9906,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "IS": {
+        "factor": 0.9849,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LV": {
+        "factor": 0.9828,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MK": {
+        "factor": 0.9729,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "BG": {
+        "factor": 1.0135,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "EE": {
+        "factor": 0.9855,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "GE": {
+        "factor": 0.9798,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "IL": {
+        "factor": 0.916,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "AL": {
+        "factor": 0.9896,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MT": {
+        "factor": 0.9844,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CA": {
+        "factor": 1.006,
+        "cities": 4,
+        "region": "North America"
+      },
+      "AT": {
+        "factor": 0.9752,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "CW": {
+        "factor": 1.0166,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "WS": {
+        "factor": 0.9642,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BB": {
+        "factor": 1.0315,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "HU": {
+        "factor": 0.9895,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "BO": {
+        "factor": 1.0039,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "ZM": {
+        "factor": 1.1598,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "CR": {
+        "factor": 1.1327,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SG": {
+        "factor": 0.9709,
+        "cities": 1,
+        "region": "SEA"
+      },
+      "TN": {
+        "factor": 1.0231,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "MN": {
+        "factor": 0.9599,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "SC": {
+        "factor": 1.1178,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "LT": {
+        "factor": 0.9885,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MM": {
+        "factor": 0.9645,
+        "cities": 1,
+        "region": "SEA"
+      }
+    },
+    "hotel_3star_2p": {
+      "DK": {
+        "factor": 0.6311,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "AE": {
+        "factor": 0.6261,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "FR": {
+        "factor": 0.6219,
+        "cities": 12,
+        "region": "Europe"
+      },
+      "TR": {
+        "factor": 0.6318,
+        "cities": 7,
+        "region": "Middle East"
+      },
+      "PT": {
+        "factor": 0.5521,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "ES": {
+        "factor": 0.6276,
+        "cities": 16,
+        "region": "Europe"
+      },
+      "JO": {
+        "factor": 0.6847,
+        "cities": 2,
+        "region": "Middle East"
+      },
+      "NL": {
+        "factor": 0.6864,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CL": {
+        "factor": 0.6242,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "JP": {
+        "factor": 0.7617,
+        "cities": 22,
+        "region": "East Asia"
+      },
+      "PE": {
+        "factor": 0.5273,
+        "cities": 7,
+        "region": "Latin America"
+      },
+      "LK": {
+        "factor": 0.4341,
+        "cities": 12,
+        "region": "South Asia"
+      },
+      "TZ": {
+        "factor": 0.5278,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "GR": {
+        "factor": 0.5413,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "US": {
+        "factor": 0.7114,
+        "cities": 1,
+        "region": "North America"
+      },
+      "TH": {
+        "factor": 0.572,
+        "cities": 11,
+        "region": "SEA"
+      },
+      "ID": {
+        "factor": 0.4283,
+        "cities": 10,
+        "region": "SEA"
+      },
+      "CN": {
+        "factor": 0.794,
+        "cities": 19,
+        "region": "East Asia"
+      },
+      "GB": {
+        "factor": 0.6716,
+        "cities": 13,
+        "region": "Europe"
+      },
+      "RS": {
+        "factor": 0.6585,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "NO": {
+        "factor": 0.6588,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "DE": {
+        "factor": 0.638,
+        "cities": 10,
+        "region": "Europe"
+      },
+      "CO": {
+        "factor": 0.693,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "IT": {
+        "factor": 0.4703,
+        "cities": 23,
+        "region": "Europe"
+      },
+      "SK": {
+        "factor": 0.6508,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CZ": {
+        "factor": 0.6092,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "BE": {
+        "factor": 0.682,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "RO": {
+        "factor": 0.6147,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "AR": {
+        "factor": 0.6581,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "KR": {
+        "factor": 0.6768,
+        "cities": 5,
+        "region": "East Asia"
+      },
+      "AU": {
+        "factor": 0.7435,
+        "cities": 14,
+        "region": "Oceania"
+      },
+      "MX": {
+        "factor": 0.6255,
+        "cities": 15,
+        "region": "North America"
+      },
+      "EG": {
+        "factor": 0.6832,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "VN": {
+        "factor": 0.5751,
+        "cities": 13,
+        "region": "SEA"
+      },
+      "ZA": {
+        "factor": 0.6246,
+        "cities": 3,
+        "region": "Africa"
+      },
+      "PH": {
+        "factor": 0.5586,
+        "cities": 8,
+        "region": "SEA"
+      },
+      "IN": {
+        "factor": 0.4874,
+        "cities": 19,
+        "region": "South Asia"
+      },
+      "NZ": {
+        "factor": 0.6575,
+        "cities": 5,
+        "region": "Oceania"
+      },
+      "EC": {
+        "factor": 0.6017,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "QA": {
+        "factor": 0.6405,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "IE": {
+        "factor": 0.6563,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "MA": {
+        "factor": 0.6945,
+        "cities": 7,
+        "region": "Africa"
+      },
+      "BR": {
+        "factor": 0.674,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "PL": {
+        "factor": 0.6436,
+        "cities": 6,
+        "region": "Europe"
+      },
+      "CH": {
+        "factor": 0.6431,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "SE": {
+        "factor": 0.5873,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "CU": {
+        "factor": 0.5347,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "FI": {
+        "factor": 0.6956,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HK": {
+        "factor": 0.6969,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "TW": {
+        "factor": 0.6329,
+        "cities": 6,
+        "region": "East Asia"
+      },
+      "MY": {
+        "factor": 0.6495,
+        "cities": 7,
+        "region": "SEA"
+      },
+      "KH": {
+        "factor": 0.5859,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "NP": {
+        "factor": 0.44,
+        "cities": 4,
+        "region": "South Asia"
+      },
+      "ME": {
+        "factor": 0.5656,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "SI": {
+        "factor": 0.613,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "LA": {
+        "factor": 0.5438,
+        "cities": 3,
+        "region": "SEA"
+      },
+      "KE": {
+        "factor": 0.6028,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "JM": {
+        "factor": 0.6281,
+        "cities": 3,
+        "region": "Latin America"
+      },
+      "UY": {
+        "factor": 0.6462,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "BA": {
+        "factor": 0.6055,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "OM": {
+        "factor": 0.6293,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "FJ": {
+        "factor": 0.6749,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BS": {
+        "factor": 0.6976,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "PA": {
+        "factor": 0.6073,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "CY": {
+        "factor": 0.6153,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "HR": {
+        "factor": 0.5285,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "DO": {
+        "factor": 0.6547,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "IS": {
+        "factor": 0.5866,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LV": {
+        "factor": 0.5663,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "PR": {
+        "factor": 0.7066,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "AL": {
+        "factor": 0.5845,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "MK": {
+        "factor": 0.608,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "BG": {
+        "factor": 0.6935,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "EE": {
+        "factor": 0.5602,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "GE": {
+        "factor": 0.5788,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "IL": {
+        "factor": 0.6683,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "BO": {
+        "factor": 0.651,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "MT": {
+        "factor": 0.5635,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CA": {
+        "factor": 0.7043,
+        "cities": 4,
+        "region": "North America"
+      },
+      "ZW": {
+        "factor": 0.6128,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "AT": {
+        "factor": 0.6438,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "CW": {
+        "factor": 0.6293,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "GT": {
+        "factor": 0.6645,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "WS": {
+        "factor": 0.6572,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BB": {
+        "factor": 0.6347,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "HU": {
+        "factor": 0.6086,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "ZM": {
+        "factor": 0.6657,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "CR": {
+        "factor": 0.6493,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SG": {
+        "factor": 0.5697,
+        "cities": 1,
+        "region": "SEA"
+      },
+      "TN": {
+        "factor": 0.7256,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "MN": {
+        "factor": 0.7763,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "SC": {
+        "factor": 0.6647,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "LT": {
+        "factor": 0.605,
+        "cities": 1,
+        "region": "Europe"
+      }
+    },
+    "hotel_1star_2p": {
+      "DK": {
+        "factor": 0.7608,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "AE": {
+        "factor": 0.856,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "FR": {
+        "factor": 0.7882,
+        "cities": 12,
+        "region": "Europe"
+      },
+      "TR": {
+        "factor": 0.8114,
+        "cities": 7,
+        "region": "Middle East"
+      },
+      "PT": {
+        "factor": 0.633,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "ES": {
+        "factor": 0.7382,
+        "cities": 16,
+        "region": "Europe"
+      },
+      "JO": {
+        "factor": 0.9365,
+        "cities": 2,
+        "region": "Middle East"
+      },
+      "NL": {
+        "factor": 0.8963,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "CL": {
+        "factor": 0.7839,
+        "cities": 7,
+        "region": "Latin America"
+      },
+      "JP": {
+        "factor": 1.1273,
+        "cities": 22,
+        "region": "East Asia"
+      },
+      "PE": {
+        "factor": 0.763,
+        "cities": 8,
+        "region": "Latin America"
+      },
+      "LK": {
+        "factor": 0.6707,
+        "cities": 12,
+        "region": "South Asia"
+      },
+      "TZ": {
+        "factor": 0.7651,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "GR": {
+        "factor": 0.621,
+        "cities": 9,
+        "region": "Europe"
+      },
+      "US": {
+        "factor": 0.9239,
+        "cities": 1,
+        "region": "North America"
+      },
+      "TH": {
+        "factor": 0.8214,
+        "cities": 10,
+        "region": "SEA"
+      },
+      "ID": {
+        "factor": 0.7215,
+        "cities": 10,
+        "region": "SEA"
+      },
+      "CN": {
+        "factor": 1.3613,
+        "cities": 20,
+        "region": "East Asia"
+      },
+      "GB": {
+        "factor": 0.8165,
+        "cities": 13,
+        "region": "Europe"
+      },
+      "RS": {
+        "factor": 0.8272,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "NO": {
+        "factor": 0.8744,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "DE": {
+        "factor": 0.7926,
+        "cities": 10,
+        "region": "Europe"
+      },
+      "CO": {
+        "factor": 0.9639,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "IT": {
+        "factor": 0.6234,
+        "cities": 23,
+        "region": "Europe"
+      },
+      "SK": {
+        "factor": 0.8522,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CZ": {
+        "factor": 0.8141,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "BE": {
+        "factor": 0.8545,
+        "cities": 3,
+        "region": "Europe"
+      },
+      "RO": {
+        "factor": 0.8123,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "AR": {
+        "factor": 0.7759,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "KR": {
+        "factor": 0.9688,
+        "cities": 5,
+        "region": "East Asia"
+      },
+      "AU": {
+        "factor": 1.0821,
+        "cities": 15,
+        "region": "Oceania"
+      },
+      "MX": {
+        "factor": 0.8712,
+        "cities": 15,
+        "region": "North America"
+      },
+      "EG": {
+        "factor": 0.9537,
+        "cities": 6,
+        "region": "Africa"
+      },
+      "VN": {
+        "factor": 0.8749,
+        "cities": 13,
+        "region": "SEA"
+      },
+      "ZA": {
+        "factor": 0.8344,
+        "cities": 3,
+        "region": "Africa"
+      },
+      "PH": {
+        "factor": 0.7708,
+        "cities": 8,
+        "region": "SEA"
+      },
+      "IN": {
+        "factor": 0.7409,
+        "cities": 18,
+        "region": "South Asia"
+      },
+      "NZ": {
+        "factor": 0.9858,
+        "cities": 5,
+        "region": "Oceania"
+      },
+      "EC": {
+        "factor": 0.7845,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "QA": {
+        "factor": 0.855,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "IE": {
+        "factor": 0.8226,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "MA": {
+        "factor": 0.8737,
+        "cities": 7,
+        "region": "Africa"
+      },
+      "BR": {
+        "factor": 0.8899,
+        "cities": 6,
+        "region": "Latin America"
+      },
+      "PL": {
+        "factor": 0.8067,
+        "cities": 6,
+        "region": "Europe"
+      },
+      "CH": {
+        "factor": 0.8291,
+        "cities": 8,
+        "region": "Europe"
+      },
+      "SE": {
+        "factor": 0.7653,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "CU": {
+        "factor": 0.8386,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "FI": {
+        "factor": 0.8686,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HK": {
+        "factor": 0.9352,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "TW": {
+        "factor": 0.8937,
+        "cities": 6,
+        "region": "East Asia"
+      },
+      "MY": {
+        "factor": 0.805,
+        "cities": 7,
+        "region": "SEA"
+      },
+      "KH": {
+        "factor": 1.082,
+        "cities": 5,
+        "region": "SEA"
+      },
+      "NP": {
+        "factor": 0.6072,
+        "cities": 4,
+        "region": "South Asia"
+      },
+      "ME": {
+        "factor": 0.7072,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "HN": {
+        "factor": 1.1111,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SI": {
+        "factor": 0.7878,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "LA": {
+        "factor": 0.8,
+        "cities": 3,
+        "region": "SEA"
+      },
+      "KE": {
+        "factor": 0.7266,
+        "cities": 2,
+        "region": "Africa"
+      },
+      "JM": {
+        "factor": 0.9459,
+        "cities": 3,
+        "region": "Latin America"
+      },
+      "UY": {
+        "factor": 0.9113,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "BA": {
+        "factor": 0.7664,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "OM": {
+        "factor": 0.8641,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "FJ": {
+        "factor": 0.9998,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BS": {
+        "factor": 0.999,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "PA": {
+        "factor": 0.7783,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "CY": {
+        "factor": 0.7673,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "HR": {
+        "factor": 0.6324,
+        "cities": 5,
+        "region": "Europe"
+      },
+      "DO": {
+        "factor": 0.8315,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "IS": {
+        "factor": 0.7147,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "LV": {
+        "factor": 0.7442,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "PR": {
+        "factor": 0.9282,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "AL": {
+        "factor": 0.8098,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "MK": {
+        "factor": 0.7793,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "BG": {
+        "factor": 0.8838,
+        "cities": 2,
+        "region": "Europe"
+      },
+      "EE": {
+        "factor": 0.7096,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "GE": {
+        "factor": 0.7492,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "IL": {
+        "factor": 0.8853,
+        "cities": 1,
+        "region": "Middle East"
+      },
+      "BO": {
+        "factor": 0.8324,
+        "cities": 2,
+        "region": "Latin America"
+      },
+      "MT": {
+        "factor": 0.8614,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "CA": {
+        "factor": 0.8747,
+        "cities": 4,
+        "region": "North America"
+      },
+      "ZW": {
+        "factor": 0.8604,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "AT": {
+        "factor": 0.8,
+        "cities": 4,
+        "region": "Europe"
+      },
+      "CW": {
+        "factor": 0.899,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "GT": {
+        "factor": 0.7492,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "WS": {
+        "factor": 1.0412,
+        "cities": 1,
+        "region": "Oceania"
+      },
+      "BB": {
+        "factor": 0.9931,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "HU": {
+        "factor": 0.7588,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "ZM": {
+        "factor": 0.8487,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "CR": {
+        "factor": 0.835,
+        "cities": 1,
+        "region": "Latin America"
+      },
+      "SG": {
+        "factor": 0.8731,
+        "cities": 1,
+        "region": "SEA"
+      },
+      "TN": {
+        "factor": 0.9607,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "MN": {
+        "factor": 1.0682,
+        "cities": 1,
+        "region": "East Asia"
+      },
+      "SC": {
+        "factor": 0.9122,
+        "cities": 1,
+        "region": "Africa"
+      },
+      "LT": {
+        "factor": 0.7866,
+        "cities": 1,
+        "region": "Europe"
+      },
+      "MM": {
+        "factor": 1.0432,
+        "cities": 1,
+        "region": "SEA"
+      }
+    }
+  },
+  "cities": {
+    "inexp_meal_1p": 382,
+    "midrange_meal_2p": 382,
+    "beer": 382,
+    "coffee": 382,
+    "hotel_3star_2p": 465,
+    "hotel_1star_2p": 470
+  }
+}

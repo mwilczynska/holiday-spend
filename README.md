@@ -65,8 +65,8 @@ Saved plans can be compared side by side. Here the same trip is costed for two t
 
 ### Keep a library of city costs
 
-The app ships with 121 cities. Any other city can be generated on demand, and every generated city records exactly
-how its numbers were produced.
+The app ships with 121 cities, and the owner's library holds over 500. Any other city can be generated on demand, and
+every generated city records exactly how its numbers were produced.
 
 ![A generated city in the dataset, with its provenance: model, prompt, formula version and exchange rate](docs/images/dataset.jpg)
 
@@ -75,26 +75,33 @@ how its numbers were produced.
 Each city has 19 values in AUD for two people: six accommodation tiers per night, and four tiers each for food,
 drinks and activities per day.
 
-To add a city, the app makes one request to a language model (OpenAI, Anthropic or Gemini):
+To add a city, the app makes one request to a language model (GPT-6 Luna by default; OpenAI, Anthropic or Gemini):
 
-1. The model estimates ten prices in USD from its general knowledge: a beer, a coffee, two restaurant meals, a
-   cocktail, a glass of wine, a hostel bed, a hostel private room, and 1-star and 3-star hotel rooms.
+1. The model estimates ten prices in USD: a beer, a coffee, two restaurant meals, a cocktail, a glass of wine, a hostel
+   bed, a hostel private room, and 1-star and 3-star hotel rooms. It may search the web for current food and drink
+   prices; accommodation prices are its own estimates.
 2. In the same request it looks up the latest Reserve Bank of Australia exchange rate, with its date and source.
-3. The app checks the response, applies fixed formulas to turn the ten prices into the 19 tiers, and converts them
-   to AUD. The model does no arithmetic.
+3. The app corrects the prices the model consistently gets wrong, using a fixed per-country table learnt from real
+   prices in 475 cities. Model 3-star prices, for example, sit about 60% above booking-site prices.
+4. The app applies fixed formulas to turn the ten prices into the 19 tiers and converts them to AUD. The model does
+   no arithmetic.
 
-Everything used is saved with the city: the ten prices, the model and settings, the prompt and formula versions, the
-exchange rate and its date, and the model's own confidence note. The estimates are model judgements, not observed
-prices, and the app labels them that way.
+Measured against independently collected prices, a typical price is about 18% off (21% on 142 cities held back for
+testing), against about 54% before correction. Everything used is saved with the city: the model's prices, the
+corrected prices and the correction, the model and settings, the prompt and formula versions, the exchange rate and
+its date, and the model's own confidence note. AUD values can be refreshed to a newer exchange rate without asking the
+model again.
 
 ![The Methodology page in the app](docs/images/methodology.jpg)
 
-The full method, including its limitations and the more elaborate approaches that were tried and set aside, is in
-[docs/product/city-cost-methodology.md](docs/product/city-cost-methodology.md) and on the app's Methodology page.
+The full method, including its limitations and the approaches that were tried and set aside, is in
+[docs/product/city-cost-methodology.md](docs/product/city-cost-methodology.md) and on the app's Methodology page. The
+research behind the current method is summarised in
+[docs/research/city-cost-accuracy.md](docs/research/city-cost-accuracy.md).
 
 ## Built with
 
-Next.js 14 (App Router) · TypeScript · Tailwind · Radix/shadcn · SQLite with Drizzle ORM and `better-sqlite3` · Zod ·
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind · Radix/shadcn · SQLite with Drizzle ORM and `better-sqlite3` · Zod ·
 Recharts · NextAuth · Vitest and Playwright. Weather comes from Open-Meteo and photos from Wikimedia Commons; neither
 needs a key.
 
@@ -130,7 +137,7 @@ npx tsc --noEmit
 npm run build
 npm test -- --run
 npm run docs:check-memory          # CLAUDE.md and AGENTS.md must stay identical
-npm run methodology:v1.1:check     # formula, exchange-rate and dataset-integrity check
+npm run methodology:v1.1:check     # formulas, exchange rate, v1.2 correction table and dataset integrity
 npm run performance:check          # route, payload and JavaScript-size budgets for a signed-in user
 ```
 
@@ -158,6 +165,7 @@ sign-in page.
 | [docs/product/transport-estimation.md](docs/product/transport-estimation.md) | How intercity transport is estimated |
 | [docs/product/trip-climate.md](docs/product/trip-climate.md) | Where the weather averages come from |
 | [docs/product/city-images.md](docs/product/city-images.md) | How city photos are found and credited |
+| [docs/research/city-cost-accuracy.md](docs/research/city-cost-accuracy.md) | The accuracy research behind the city-cost method, and how to continue it |
 | [CLAUDE.md](CLAUDE.md) / [AGENTS.md](AGENTS.md) | Project memory: what the app is and how it works today |
 | [PLAN.md](PLAN.md) | Current plan and milestone status |
 | [LOG.md](LOG.md) | History: what was built, what was tried, and what the evidence showed |

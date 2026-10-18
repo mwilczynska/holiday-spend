@@ -1,6 +1,6 @@
 # City cost methodology
 
-**Last updated:** 10 October 2026. Replaces `methodology-v4.md`, which describes research that was never integrated.
+**Last updated:** 18 October 2026. Describes v1.2. Replaces the v1.1 version of this document.
 
 This document describes how Holiday Spend estimates what two people spend per day in a city, and how those estimates
 become a trip budget. It describes what the app does now. A short history of earlier methods is at the end.
@@ -17,25 +17,27 @@ Each city has 19 stored values, in AUD, for two travellers:
 | Activities | free, budget, mid-range, high-end | per day |
 
 These are planning estimates. They are not quotes and not observed prices. Transport is not part of a city's
-estimate; it is entered separately (section 6).
+estimate; it is entered separately (section 7).
 
 ## 2. Where city values come from
 
-A city's values come from one of three places, and each city records which:
+A city's values come from one of these, and each city records which:
 
 | Source | Label | Method |
 | --- | --- | --- |
-| The reference dataset, `data/reference/city_costs_app_aud.csv` (121 cities, 58 countries, April 2026) | `base_csv_apr_2026` | v1 (section 7) |
-| Generating a city in the app, or the batch script for adding cities | `llm_city_generation_v1_1` | v1.1 (sections 3 to 5) |
-| Editing a city by hand in the Dataset page | `manual` | Whatever the user enters |
+| Generating a city in the app, or the batch script for adding cities | `llm_city_generation_v1_2` | v1.2 (sections 3 to 6) |
+| Cities generated before 18 October 2026 | `llm_city_generation_v1_1` | v1.1 (section 9) |
+| The reference dataset, `data/reference/city_costs_app_aud.csv` (121 cities, 58 countries, April 2026) | `base_csv_apr_2026` | v1 (section 9) |
+| Editing a city by hand in the Dataset page | (unchanged label) | Whatever the user enters |
 
-New and regenerated cities use v1.1. Reference cities stay on v1 until someone regenerates them; there is no bulk
-migration.
+New and regenerated cities use v1.2. The library is being regenerated under v1.2; until a city is regenerated it keeps
+its v1.1 or v1 values.
 
 ## 3. Step 1: the model estimates ten prices in USD
 
-The app sends one request to the selected language model (OpenAI, Anthropic or Gemini) using the prompt in
-`docs/prompts/llm_prompt_new_cities_v1_1.md`. The model returns ten prices in USD:
+The app sends one request to the selected language model (OpenAI, Anthropic or Gemini; GPT-6 Luna at maximum
+reasoning by default) using the prompt in `docs/prompts/llm_prompt_new_cities_v1_2.md`. The model returns ten prices
+in USD:
 
 | Anchor | Definition |
 | --- | --- |
@@ -50,17 +52,18 @@ The app sends one request to the selected language model (OpenAI, Anthropic or G
 | `hotel_1star_2p` | one very basic hotel or guesthouse room for two, one night |
 | `hotel_3star_2p` | one registered 3-star hotel room for two, one night |
 
-The model estimates these from its general knowledge. It is told not to search the web for prices and not to claim
-sources it did not read. It also returns a region, a confidence label (high, medium or low), a short note on
-estimate quality, and the comparable city or regional basis it used, if any.
+The model may make up to five web searches for current typical restaurant, coffee and drink prices in the city, for
+example cost-of-living price indexes. Accommodation prices are its own estimates from general knowledge: it is told not
+to search for them and not to claim listings it did not see. It also returns a region, a confidence label (high, medium
+or low), a short note on estimate quality, and the comparable city or regional basis it used, if any.
 
-The model does no arithmetic. It does not calculate tiers or convert currency.
+The model does no arithmetic. It does not correct prices, calculate tiers or convert currency.
 
 ## 4. Step 2: the exchange rate
 
-In the same request, the model uses web search for one thing only: the latest published Reserve Bank of Australia
-(RBA) USD/AUD rate. It returns the rate, whether it is quoted as USD per AUD or AUD per USD, the observation date, and
-the `rba.gov.au` page it came from.
+In the same request, one further web search finds the latest published Reserve Bank of Australia (RBA) USD/AUD rate.
+The model returns the rate, whether it is quoted as USD per AUD or AUD per USD, the observation date, and the
+`rba.gov.au` page it came from.
 
 The server rejects the whole response, and saves nothing, if:
 
@@ -70,12 +73,41 @@ The server rejects the whole response, and saves nothing, if:
 - the observation is more than seven days old or more than one day in the future;
 - the rate is outside 0.1 to 10.
 
-If the RBA quotes USD per AUD (the usual form, about 0.65), the server inverts it to get AUD per USD.
+If the RBA quotes USD per AUD (the usual form, about 0.70), the server inverts it to get AUD per USD.
 
-## 5. Step 3: the server calculates the tiers
+## 5. Step 3: the server corrects the model's prices
 
-The server calculates every tier in USD from the ten anchors, then converts each tier to AUD and rounds it to the
-nearest dollar. The coffee unit price is converted and kept to the cent.
+Language models price some items consistently too high or too low. Measured against real prices, GPT-6 Luna's 3-star
+rooms come out about 60% above what 3-star rooms actually cost on booking sites. The server removes these consistent
+errors by multiplying six of the ten USD prices by a fixed correction factor:
+
+| Anchor | Typical factor | Reference it is aligned to |
+| --- | --- | --- |
+| `hotel_3star_2p` | 0.62 | median 3-star price on Booking.com and Trip.com, taxes included, averaged over six stay dates across a year |
+| `hotel_1star_2p` | 0.85 | the cheaper quarter of decently rated hotels and guest houses on Booking.com, same dates |
+| `midrange_meal_2p`, `inexp_meal_1p`, `beer`, `coffee` | 0.96 to 1.01 | Numbeo city medians |
+
+Hostel dorms, private rooms, cocktails and wine are not corrected: the available hostel prices are near-term minimums
+rather than typical nights, and no source publishes restaurant wine by the glass. Their values are the model's own.
+
+Each factor depends on the country. The table (`src/lib/data/city-cost-corrections-v1-2.json`) was fitted on 475
+reference cities in 93 countries. For a country, the factor is the average ratio between reference and model prices in
+that country, pulled towards its world region's average when the country has few reference cities:
+
+```
+offset(country) = n / (n + 3) × mean ln(reference / model) in the country
+                + 3 / (n + 3) × mean ln(reference / model) in the region
+factor          = e^offset
+```
+
+where *n* is the number of reference cities in the country. A country with no reference cities uses its region's
+factor, and a region with none uses the overall factor. So one reference city counts a quarter and nine count three
+quarters. The table records its own version (`v1.2-corrections-2026-10-18`), which every estimate saves.
+
+## 6. Step 4: the server calculates the tiers
+
+The server calculates every tier in USD from the ten corrected anchors, then converts each tier to AUD and rounds it to
+the nearest dollar. The coffee unit price is converted and kept to the cent.
 
 **Accommodation, per night, two people**
 
@@ -121,32 +153,36 @@ high-end         = activity unit × 12
 
 The activity tiers are a proxy based on meal prices. They are not attraction or tour prices.
 
-These formulas are the same as v1. v1.1 changed who does the calculation, not the calculation.
+These formulas are the same as v1 and v1.1. Because 4-star is 3-star × 1.8, the 3-star correction also lowers 4-star by
+the same proportion.
 
 ### Worked example
 
-Suppose the model returns: inexpensive meal 15, mid-range meal for two 60, beer 6, coffee 4, cocktail 12, wine 8,
-dorm bed 30, private room 80, 1-star 90, 3-star 150 (all USD), and an RBA rate of 0.65 USD per AUD.
+Suppose the model returns, for a city in Italy: inexpensive meal 15, mid-range meal for two 60, beer 6, coffee 4,
+cocktail 12, wine 8, dorm bed 30, private room 80, 1-star 90, 3-star 150 (all USD), and an RBA rate of 0.70 USD per
+AUD. Suppose the Italian factors are 3-star 0.60, 1-star 0.80 and 1.00 for food and drink.
 
-AUD per USD = 1 / 0.65 = 1.538462.
+AUD per USD = 1 / 0.70 = 1.428571. Corrected 3-star = 150 × 0.60 = 90; corrected 1-star = 90 × 0.80 = 72.
 
 | Tier | USD | AUD (rounded) |
 | --- | --- | --- |
-| 3-star | 150 | 231 |
-| 4-star | 150 × 1.8 = 270 | 415 |
-| Mid-range food | (9 + 15 + 30) × 2 = 108 | 166 |
-| Light drinks | 4 × 2 + 6 × 2 = 20 | 31 |
-| Budget activities | (15 + 10) / 2 × 2 = 25 | 38 |
+| 3-star | 90 | 129 |
+| 4-star | 90 × 1.8 = 162 | 231 |
+| 2-star | (72 + 90) / 2 = 81 | 116 |
+| Mid-range food | (9 + 15 + 30) × 2 = 108 | 154 |
+| Light drinks | 4 × 2 + 6 × 2 = 20 | 29 |
 
 ### What is saved
 
-For every v1.1 estimate the app saves the ten USD anchors, their AUD equivalents, all 19 AUD values, the provider,
-model and reasoning effort used, the prompt and formula versions, the confidence label and note, and the exchange rate
-with its date, source URL and how it was derived. The Dataset page shows this as the city's generation history.
+For every v1.2 estimate the app saves the model's ten USD anchors, the corrected anchors and their AUD equivalents, the
+correction applied to each anchor (factor and whether it came from the country, region or overall table), the
+correction table version, all 19 AUD values, the provider, model and reasoning effort, the prompt and formula versions,
+the confidence label and note, and the exchange rate with its date, source and derivation. The Dataset page shows this
+as the city's generation history.
 
 The confidence label is the model's own judgement. It is not a probability, a grade or an error range.
 
-## 6. How a city estimate becomes a trip budget
+## 7. How a city estimate becomes a trip budget
 
 The planner picks one tier per category for each leg of the trip, then adjusts for the number of travellers (1 to 5,
 set in Settings). Stored values are for two people, so:
@@ -181,54 +217,94 @@ Saved plans store tier choices, not prices. If a city's values change later, sav
 1-star values (or whichever one exists). If it has no "none" drinks value, it uses the coffee price × 2. Any other
 missing value counts as zero in the budget.
 
-## 7. The reference dataset (v1)
+## 8. Keeping prices current
 
-The 121 reference cities were produced with the v1 prompt, `docs/prompts/llm_prompt_new_cities_1.md`. v1 used the
-same ten anchors and the same formulas, but the model did everything in one step: it estimated the anchors, applied
-the formulas, found an exchange rate and returned AUD values. Nothing checked its arithmetic, and the exchange rate
-was not recorded.
+- **Exchange rates.** Every v1.1 and v1.2 city stores its USD anchors, so its AUD values can be recalculated at a newer
+  rate without asking a model again. `scripts/refresh-city-cost-fx.ts` (or `POST /api/cities/exchange-rate-refresh`
+  for library admins) reads the European Central Bank's daily euro reference rates and uses their USD/AUD cross rate:
+  the RBA's statistics tables refuse automated downloads. On 16 October 2026 the two agreed within 0.1%. A refresh
+  keeps the previous rate in the estimate's history and leaves any value someone edited by hand unchanged. v1 cities
+  store no anchors and need regenerating first.
+- **Price levels.** Food and drink prices come from current searches each time a city is generated. Accommodation
+  prices come from the model's knowledge and the correction table, so the table should be refitted against fresh
+  booking prices about once a year, and whenever the model changes.
 
-v1 can still be selected for new cities by setting `CITY_COST_METHODOLOGY_VERSION=v1`. It is kept as a rollback.
+## 9. Earlier versions still in the library
 
-## 8. Limitations
+**v1.1 (September 2026).** The same prompt contract without food and drink searches (the model used web search only
+for the exchange rate) and without the correction step. Prompt `docs/prompts/llm_prompt_new_cities_v1_1.md`. Select it
+with `CITY_COST_METHODOLOGY_VERSION=v1.1`.
 
-- The anchors come from model knowledge, not from current prices. They can be out of date, and the model does not
-  know the season, neighbourhood or events of a particular trip.
+**v1 (April 2026).** The 121 reference cities were produced with `docs/prompts/llm_prompt_new_cities_1.md`. v1 used
+the same ten anchors and formulas, but the model did everything in one step: it estimated the anchors, applied the
+formulas, found an exchange rate and returned AUD values. Nothing checked its arithmetic, and the exchange rate was not
+recorded. Select it with `CITY_COST_METHODOLOGY_VERSION=v1`.
+
+## 10. How accurate it is
+
+Accuracy was measured in October 2026 against independently collected prices for 333 development cities, and
+confirmed on 142 cities that were set aside before any experiment. The measure is the budget-weighted mean of
+|ln(estimate ÷ reference)| per city: an error of 0.18 means a typical price is about 20% off.
+
+| Method | Development cities | Held-out cities |
+| --- | --- | --- |
+| v1.1, uncorrected | 0.435 (about 54%) | not measured |
+| v1.2 | 0.163 (about 18%) | 0.190 (about 21%) |
+
+By item, v1.2's typical errors are 7 to 11% for coffee, beer and meals, 20% for 3-star rooms and 23 to 25% for 1-star
+rooms and hostels. The full record, including every experiment and why it was or was not adopted, is on the research
+branch (section 12).
+
+## 11. Limitations
+
+- Accommodation remains the weakest part. The correction fixes the overall price level, but the model still does not
+  know which cities are dearer than others; neither searching booking sites nor giving it comparable cities' prices
+  fixed that.
+- Part of the food and drink accuracy comes from the model finding the same crowd-sourced sources the references use,
+  so those figures overstate accuracy against what travellers actually pay.
+- The reference prices themselves are noisy: Booking.com and Trip.com differ by about 13% for a typical city.
+- Hostel, cocktail and wine prices are uncorrected model estimates.
 - The tier multipliers (street meal 0.6, 4-star 1.8, high-end food 1.5, the activity formula) are fixed assumptions
-  applied to every city. They were never fitted to data. The 4-star value in particular contains no information
-  beyond the 3-star price.
+  applied to every city. The 4-star value contains no information beyond the 3-star price.
 - The activity tiers are not based on any activity prices.
 - The confidence label is not calibrated.
-- No accuracy figure is claimed. The estimates are accepted as reasonable for comparing cities and planning a budget,
-  and further calibration work is deliberately out of scope.
-- Reference cities and v1.1 cities were produced by different models at different times, so small differences
-  between them can reflect the method rather than the cities.
 
 When you know a real price, such as a booked hotel, use an override.
 
-## 9. Code and files
+## 12. Code and files
 
 | Path | Role |
 | --- | --- |
-| `docs/prompts/llm_prompt_new_cities_v1_1.md` | v1.1 prompt |
+| `docs/prompts/llm_prompt_new_cities_v1_2.md` | v1.2 prompt |
+| `src/lib/city-cost-methodology-v1-2.ts` | Correction lookup and v1.2 materialization |
+| `src/lib/data/city-cost-corrections-v1-2.json` | Correction table (built on the research branch by `build-production-corrections.mjs`) |
 | `src/lib/city-cost-methodology-v1-1.ts` | Response schema, exchange-rate checks, tier formulas, AUD conversion |
-| `src/lib/city-generation.ts` | Chooses v1 or v1.1 and calls the provider |
+| `src/lib/city-generation.ts` | Chooses v1, v1.1 or v1.2 and calls the provider |
+| `src/lib/city-cost-fx-refresh.ts`, `src/lib/usd-aud-reference-rate.ts` | Exchange-rate refresh |
 | `src/lib/cost-calculator.ts` | Traveller scaling, overrides and daily cost |
-| `scripts/check-city-cost-v1-1.ts` | Checks formulas, rounding and that the reference CSV is unchanged |
-| `scripts/add-cities-from-agent-responses.ts` | Adds cities in batches using the same v1.1 prompt and server path |
+| `scripts/check-city-cost-v1-1.ts` | Checks formulas, rounding, the correction table and that the reference CSV is unchanged |
+| `scripts/add-cities-from-agent-responses.ts` | Adds cities in batches using the configured prompt and server path |
+| `docs/research/city-cost-accuracy.md` | Summary of the research behind v1.2 and how to continue it |
 
-## 10. History of earlier methods
+## 13. History of earlier methods
 
-Only v1 and v1.1 have shipped. The others were researched between July and August 2026 and set aside. The full record
-is in `LOG.md`, `methodology-v4.md`, `docs/prompts/README.md` and the archived branch `feat/city-cost-methodology-v6`.
+Only v1, v1.1 and v1.2 have shipped. The others were researched between July and August 2026 and set aside. The full
+record is in `LOG.md`, `methodology-v4.md`, `docs/prompts/README.md` and the archived branch
+`feat/city-cost-methodology-v6`.
+
+### v1.1 to v1.2 (October 2026): measured improvement
+
+A research program measured v1.1 against a reference panel of 475 cities and tested 38 changes under a rule fixed in
+advance (an average improvement of at least 0.015 with a 95% range above zero, and no item worse by more than 0.05).
+Rewording the prompt, averaging two models, lower reasoning effort and searching for accommodation did not help once
+consistent bias was removed. What helped was correcting each item's consistent bias by country and region, and letting
+the model search for food and drink prices. Together these became v1.2, and the gain held on the held-out cities.
 
 ### v1 (April 2026): replaced by v1.1
 
 **What it did.** The model estimated the ten prices, applied the formulas and converted to AUD, all in one answer.
 
-**Why it was replaced.** Its arithmetic and exchange rate could not be checked, and the rate was not recorded. An early
-audit reported 17.5% average error, but it covered nine prices in three cities and most of the error came from one
-city, so it did not show the prices were unusable. v1 still supplies the reference dataset and remains a rollback.
+**Why it was replaced.** Its arithmetic and exchange rate could not be checked, and the rate was not recorded.
 
 ### v2.1: removed
 
@@ -240,46 +316,23 @@ Added an external hotel-price lookup on top of v1. The code was removed in a cle
 36-city pilot.
 
 **Why it was not used.** Each tier needs several prices at once, so one missing price blanks every tier that uses it.
-Street food alone blocked three food tiers in every pilot city. After weeks of collection it had 23% of the tier
-values (156 of 684) and no complete city. It averaged one usable price per six web searches, and finishing all 121
-cities would have taken about 17,300 lookups, repeated at every refresh.
+After weeks of collection it had 23% of the tier values (156 of 684) and no complete city.
 
 ### v4 (July 2026): never integrated
 
 **What it tried.** Read food and drink prices from a crowd-sourced cost-of-living site and hotel prices from
 booking-site pages, then derive the remaining prices from ratios fitted across 99 cities.
 
-**Why it was not used.**
-
-- Food and drink prices were exact when the site lookup worked, but the site blocked requests after about 40 in a row,
-  and it had no usable page for 55% of low-cost destinations.
-- Hotel prices read from booking pages came out about 50% high against direct quotes in Copenhagen, and the reading
-  method was unstable between runs.
-- Activity prices had no relationship to food prices, so activities could not be derived.
-- The fitted ratios still missed by 18 to 22% (median), against a 15% target.
-
-v4 also measured the 4-star to 3-star price ratio at about 1.3 across 16 cities, against the 1.8 the formulas use.
-v1.1 kept 1.8 so as not to change existing behaviour.
+**Why it was not used.** The site blocked requests after about 40 in a row and had no page for 55% of low-cost
+destinations; hotel readings were unstable; activity prices could not be derived; and the fitted ratios still missed by
+18 to 22%.
 
 ### v5 (August 2026): rejected
 
-**What it tried.** About 90 prompt experiments, each sending a model to find particular prices from particular
-sources, including Expedia, Momondo, Expatistan and BudgetYourTrip.
-
-**Why it was not used.** No source covered every price for every city. Many pages did not say whether a room was for
-one or two people, or which star class it was. A single call asking for every price never returned a complete city.
+About 90 prompt experiments sending a model to find particular prices from particular sources. No source covered every
+price for every city, and a single call never returned a complete city.
 
 ### v6 and v6.1 (August 2026): rejected
 
-**What it tried.** Three web-search calls per city to collect source prices, with statistical fallbacks for gaps and
-graded estimates with ranges, staged as a full replacement of the 121 cities.
-
-**Why it was not used.** Too large and fragile to run or refresh. In the final test, the searches found none of the
-nine prices in three Japanese cities, so the estimates rested on fallback values anyway while costing several model
-calls per city.
-
-### What carried into v1.1
-
-Public prices exist for large cities but often not for small destinations, and collecting enough of them to fill every
-tier cost far more than the accuracy it added. v1.1 therefore keeps v1's model estimates and formulas, takes one model
-call per city, and moves the arithmetic, currency conversion and checks into the app so everything it used is recorded.
+Three web-search calls per city with statistical fallbacks and graded ranges. Too large and fragile to run or refresh,
+and in the final test the searches found none of the nine prices in three Japanese cities.

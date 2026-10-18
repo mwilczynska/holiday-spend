@@ -16,6 +16,12 @@ import {
   type CityCostV11AnchorResponse,
   type CityCostV11Materialization,
 } from '@/lib/city-cost-methodology-v1-1';
+import {
+  CITY_COST_V12_METHODOLOGY_VERSION,
+  CITY_COST_V12_PROMPT_VERSION,
+  materializeCityCostV12,
+  type CityCostV12Materialization,
+} from '@/lib/city-cost-methodology-v1-2';
 
 const generatedCitySchema = z.object({
   city: z.string().min(1),
@@ -71,7 +77,7 @@ export interface CityGenerationRequest {
   runtimeSettings?: LlmRuntimeSettings;
 }
 
-export type CityGenerationMethodologyVersion = 'v1' | 'v1.1';
+export type CityGenerationMethodologyVersion = 'v1' | 'v1.1' | 'v1.2';
 export type CityGenerationPayload = GeneratedCityPayload | CityCostV11AnchorResponse;
 
 export interface CityGenerationResult {
@@ -83,7 +89,8 @@ export interface CityGenerationResult {
   payload: CityGenerationPayload;
   mappedEstimate: Partial<CityEstimateData>;
   inferredAudPerUsd: number | null;
-  v11Materialization?: CityCostV11Materialization;
+  /** v1.1 and v1.2 materialization (v1.2 adds the raw anchors and the correction it applied). */
+  v11Materialization?: CityCostV11Materialization | CityCostV12Materialization;
 }
 
 export class CityGenerationError extends Error {
@@ -136,12 +143,20 @@ function loadPromptTemplate(): string {
   return fs.readFileSync(promptPath, 'utf8');
 }
 
-function loadV11PromptTemplate() {
+function loadAnchorPromptTemplate(promptVersion: string) {
   const promptPath = findRepoFile([
-    path.join('docs', 'prompts', CITY_COST_V11_PROMPT_VERSION),
-    CITY_COST_V11_PROMPT_VERSION,
+    path.join('docs', 'prompts', promptVersion),
+    promptVersion,
   ]);
   return fs.readFileSync(promptPath, 'utf8');
+}
+
+function renderAnchorPrompt(template: string, request: CityGenerationRequest) {
+  return template
+    .replace('{{CITY}}', request.cityName)
+    .replace('{{COUNTRY}}', request.countryName)
+    .replace('{{REFERENCE_DATE}}', request.referenceDate?.trim() || 'current best available estimate')
+    .replace('{{EXTRA_CONTEXT}}', request.extraContext?.trim() || 'none');
 }
 
 export function buildCityGenerationPrompt(request: CityGenerationRequest): { prompt: string; promptVersion: string } {
@@ -171,29 +186,38 @@ Additional output requirements:
 }
 
 export function buildCityGenerationV11Prompt(request: CityGenerationRequest): { prompt: string; promptVersion: string } {
-  const basePrompt = loadV11PromptTemplate();
-  const prompt = basePrompt
-    .replace('{{CITY}}', request.cityName)
-    .replace('{{COUNTRY}}', request.countryName)
-    .replace('{{REFERENCE_DATE}}', request.referenceDate?.trim() || 'current best available estimate')
-    .replace('{{EXTRA_CONTEXT}}', request.extraContext?.trim() || 'none');
-
+  const prompt = renderAnchorPrompt(loadAnchorPromptTemplate(CITY_COST_V11_PROMPT_VERSION), request);
   return { prompt, promptVersion: CITY_COST_V11_PROMPT_VERSION };
+}
+
+export function buildCityGenerationV12Prompt(request: CityGenerationRequest): { prompt: string; promptVersion: string } {
+  const prompt = renderAnchorPrompt(loadAnchorPromptTemplate(CITY_COST_V12_PROMPT_VERSION), request);
+  return { prompt, promptVersion: CITY_COST_V12_PROMPT_VERSION };
+}
+
+/** Builds the exact prompt the configured methodology sends for a city (v1.1 or v1.2 anchor prompts). */
+export function buildCityGenerationAnchorPrompt(
+  request: CityGenerationRequest,
+  methodologyVersion: 'v1.1' | 'v1.2' = 'v1.2'
+): { prompt: string; promptVersion: string } {
+  return methodologyVersion === CITY_COST_V12_METHODOLOGY_VERSION
+    ? buildCityGenerationV12Prompt(request)
+    : buildCityGenerationV11Prompt(request);
 }
 
 export function getCityCostMethodologyVersion(): CityGenerationMethodologyVersion {
   if (process.env.CITY_COST_METHODOLOGY_V6 === 'true') {
     throw new CityGenerationError(
-      'CITY_COST_METHODOLOGY_V6 is retired. Use CITY_COST_METHODOLOGY_VERSION=v1 or v1.1; v6.1 cannot be activated.',
+      'CITY_COST_METHODOLOGY_V6 is retired. Use CITY_COST_METHODOLOGY_VERSION=v1, v1.1 or v1.2; v6.1 cannot be activated.',
       500
     );
   }
 
-  const configured = process.env.CITY_COST_METHODOLOGY_VERSION?.trim() || 'v1.1';
-  if (configured === 'v1' || configured === 'v1.1') return configured;
+  const configured = process.env.CITY_COST_METHODOLOGY_VERSION?.trim() || 'v1.2';
+  if (configured === 'v1' || configured === 'v1.1' || configured === 'v1.2') return configured;
 
   throw new CityGenerationError(
-    `Unsupported CITY_COST_METHODOLOGY_VERSION "${configured}". Use "v1" or "v1.1".`,
+    `Unsupported CITY_COST_METHODOLOGY_VERSION "${configured}". Use "v1", "v1.1" or "v1.2".`,
     500
   );
 }
@@ -276,8 +300,9 @@ function inferAudPerUsd(payload: GeneratedCityPayload) {
 }
 
 export async function generateCityCostEstimate(request: CityGenerationRequest): Promise<CityGenerationResult> {
-  if (getCityCostMethodologyVersion() === CITY_COST_V11_METHODOLOGY_VERSION) {
-    return generateCityCostEstimateV11(request);
+  const methodologyVersion = getCityCostMethodologyVersion();
+  if (methodologyVersion === CITY_COST_V11_METHODOLOGY_VERSION || methodologyVersion === CITY_COST_V12_METHODOLOGY_VERSION) {
+    return generateCityCostEstimateAnchors(request, methodologyVersion);
   }
 
   return generateCityCostEstimateV1(request);
@@ -338,8 +363,11 @@ async function generateCityCostEstimateV1(request: CityGenerationRequest): Promi
   };
 }
 
-async function generateCityCostEstimateV11(request: CityGenerationRequest): Promise<CityGenerationResult> {
-  const { prompt, promptVersion } = buildCityGenerationV11Prompt(request);
+async function generateCityCostEstimateAnchors(
+  request: CityGenerationRequest,
+  methodologyVersion: 'v1.1' | 'v1.2'
+): Promise<CityGenerationResult> {
+  const { prompt, promptVersion } = buildCityGenerationAnchorPrompt(request, methodologyVersion);
   let providerResponse: JsonPromptResult | null = null;
 
   try {
@@ -387,16 +415,18 @@ async function generateCityCostEstimateV11(request: CityGenerationRequest): Prom
     );
   }
 
-  let v11Materialization: CityCostV11Materialization;
+  let v11Materialization: CityCostV11Materialization | CityCostV12Materialization;
   try {
-    v11Materialization = materializeCityCostV11(parsedPayload);
+    v11Materialization = methodologyVersion === CITY_COST_V12_METHODOLOGY_VERSION
+      ? materializeCityCostV12(parsedPayload, { countryName: request.countryName })
+      : materializeCityCostV11(parsedPayload);
   } catch (err) {
     const detail = err instanceof Error ? err.message : 'The returned anchors or FX observation failed validation.';
     throw new CityGenerationError(`${providerResponse.provider} (${providerResponse.model}) returned an invalid city estimate: ${detail} Try again. No estimate was saved.`, 502);
   }
 
   return {
-    methodologyVersion: CITY_COST_V11_METHODOLOGY_VERSION,
+    methodologyVersion,
     provider: providerResponse.provider,
     model: providerResponse.model,
     promptVersion,

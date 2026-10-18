@@ -4,6 +4,7 @@ import type {
   GeneratedCityPayload,
 } from '@/lib/city-generation';
 import type { CityCostV11AnchorResponse } from '@/lib/city-cost-methodology-v1-1';
+import type { CityCostV12Materialization } from '@/lib/city-cost-methodology-v1-2';
 
 export type PersistedMethodologyVersion = CityGenerationResult['methodologyVersion'];
 
@@ -139,10 +140,13 @@ export function buildCityEstimatePersistence(
   const payload = generated.payload as CityCostV11AnchorResponse;
   const materialization = generated.v11Materialization;
   if (!materialization) {
-    throw new Error('v1.1 generation result is missing its deterministic materialization.');
+    throw new Error(`${generated.methodologyVersion} generation result is missing its deterministic materialization.`);
   }
 
-  const source = 'llm_city_generation_v1_1';
+  const isV12 = generated.methodologyVersion === 'v1.2';
+  const correction = isV12 ? (materialization as CityCostV12Materialization).correction : null;
+  const rawAnchorsUsd = isV12 ? (materialization as CityCostV12Materialization).rawAnchorsUsd : null;
+  const source = isV12 ? 'llm_city_generation_v1_2' : 'llm_city_generation_v1_1';
   const sources = buildSourceMap(source, true);
   const metadata: CityEstimatePersistenceMetadata = {
     region: payload.region,
@@ -150,20 +154,22 @@ export function buildCityEstimatePersistence(
     comparableCityReasoning: payload.comparable_city_reasoning,
     inferredAudPerUsd: generated.inferredAudPerUsd,
     reasoningEffort: generated.reasoningEffort ?? null,
-    methodologyVersion: 'v1.1',
+    methodologyVersion: generated.methodologyVersion,
     formulaVersion: materialization.formulaVersion,
-    evidenceBasis: 'holistic_model_estimate',
+    evidenceBasis: isV12 ? 'model_estimate_with_food_drink_search_and_reference_correction' : 'holistic_model_estimate',
     fx: materialization.fx,
     evidenceGrades: null,
     intervals: null,
     referenceDate: context.referenceDate || null,
     extraContext: context.extraContext || null,
   };
+  // For v1.2, `values` are the corrected USD anchors the tiers were built from; `rawValues` are the model's own.
   const anchors = {
     currency: 'USD',
     values: materialization.anchorsUsd,
     convertedCurrency: 'AUD',
     valuesAud: materialization.anchorsAud,
+    ...(isV12 ? { rawValues: rawAnchorsUsd, correction } : {}),
   };
   const inputSnapshot = {
     cityName: context.cityName,
@@ -172,6 +178,7 @@ export function buildCityEstimatePersistence(
     extraContext: context.extraContext || null,
     anchorResponse: payload,
     fx: materialization.fx,
+    ...(isV12 ? { correction } : {}),
   };
 
   return {
@@ -185,7 +192,7 @@ export function buildCityEstimatePersistence(
     inputSnapshot,
     fallbackLog: [],
     apiSummary: {
-      methodologyVersion: 'v1.1',
+      methodologyVersion: generated.methodologyVersion,
       reasoningEffort: generated.reasoningEffort ?? null,
       evidenceBasis: metadata.evidenceBasis,
       formulaVersion: metadata.formulaVersion,

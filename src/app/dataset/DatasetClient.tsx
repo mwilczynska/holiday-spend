@@ -121,6 +121,14 @@ function fmtMoney(value: unknown) {
   return typeof value === 'number' ? value.toFixed(2) : '-';
 }
 
+function describeFxSnapshot(fx: { snapshotId?: unknown; audPerUsd?: unknown; asOfDate?: unknown; sourceName?: unknown }) {
+  const rate = typeof fx.audPerUsd === 'number' ? `1 USD = ${fx.audPerUsd.toFixed(4)} AUD` : null;
+  const date = typeof fx.asOfDate === 'string' ? fx.asOfDate : null;
+  const source = typeof fx.sourceName === 'string' ? fx.sourceName.replace(' euro reference rates', '') : null;
+  const parts = [rate, date, source].filter(Boolean);
+  return parts.length ? parts.join(' · ') : String(fx.snapshotId || '-');
+}
+
 function readAnchorValues(provenance: CityEstimateProvenance | null | undefined) {
   if (!provenance?.anchors || typeof provenance.anchors !== 'object') return {};
   const anchors = provenance.anchors as { values?: unknown; valuesAud?: unknown };
@@ -689,10 +697,10 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                           <div>{selectedProvenance.formulaVersion || 'Legacy v1'}</div>
                         </div>
                         <div>
-                          <div className="text-xs uppercase tracking-wide text-muted-foreground">FX snapshot</div>
+                          <div className="text-xs uppercase tracking-wide text-muted-foreground">Exchange rate</div>
                           <div>
                             {selectedProvenance.fx && typeof selectedProvenance.fx === 'object'
-                              ? String((selectedProvenance.fx as { snapshotId?: unknown }).snapshotId || '-')
+                              ? describeFxSnapshot(selectedProvenance.fx as { snapshotId?: unknown; audPerUsd?: unknown; asOfDate?: unknown; sourceName?: unknown })
                               : selectedCityActiveHistory?.inferredAudPerUsd
                                 ? `1 USD = ${selectedCityActiveHistory.inferredAudPerUsd.toFixed(2)} AUD`
                                 : '-'}
