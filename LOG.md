@@ -4277,3 +4277,37 @@ Final `queue.mjs --status` output:
   +0.013. Booking-price comparables give a small, consistent ranking gain; too small to adopt alone.
 - Removed two leftover 106 `worker-cli.*` files (no credentials) missed by the earlier `worker-cli-*` pattern; the
   ignore rule now matches `worker-cli*`.
+
+# 18 October 2026 - City photo review complete (Codex)
+
+- Saved 529/529 final worker messages verbatim as `verdict.json` under
+  `research/city-images-review/2026-10-18/tasks/`. Each task had a fresh
+  `gpt-6-luna` reviewer at reasoning `max`, with six workers dispatched at a time.
+  The first six used built-in subagents with `fork_turns=none`; the remaining
+  523 used fresh, ephemeral, read-only Codex CLI workers. Task messages came
+  directly from `message.txt`; the continuous dispatcher also opened the named
+  local image as image input. No image file was copied, modified or committed.
+- The saved queue summary is `research/city-images-review/2026-10-18/summary.json`:
+  525 `ok`, 3 `unsuitable`, 1 `unsure`, 0 `wrong_place`, and 0 pending.
+  Flagged by the workers: Mykonos and Santorini (maps), Palermo (church interior),
+  and Oaxaca (unsure). The summary retains the exact reasons and Commons names.
+- Reviewer retries: 0. Missing final responses: 0. Eight CLI process launches
+  failed before any worker started during sandbox dispatcher setup (home-directory
+  discovery or runtime access denied); authorized host-runtime launches succeeded.
+  These startup failures did not produce or replace any verdict. No model or
+  reasoning-effort substitution was used, and no usage limit was reached.
+- A PowerShell text pipe changed one typographic apostrophe while copying the
+  Agadir response. Restored the exact original worker text using a Unicode escape,
+  then verified all six built-in responses against their original strings and
+  verified the committed Agadir bytes. No worker judgement was revised or rerun.
+- Eleven checkpoints at 48-verdict intervals through 528 and the completion commit
+  `35a39a08` (`City photo review complete`) were pushed. No Git lock retry, commit
+  failure or push retry was needed. No worker transcripts, event streams, stderr
+  or other worker logs were written to repository files.
+- Verified all 529 verdict files exist and are nonempty, the queue prints nothing,
+  and the saved summary is byte-identical to the summary command output.
+  Verified each of the twelve review commits changes only the review folder.
+  Concurrent library-regeneration commits and untracked outputs were left
+  untouched. `npm.cmd run docs:check-memory` passed.
+- Stop condition 1: the queue is empty, all workers have finished, and the summary,
+  completion commit and push have completed.
