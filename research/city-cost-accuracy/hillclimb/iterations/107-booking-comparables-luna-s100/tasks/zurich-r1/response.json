@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and draft-beer anchors align with recent Zurich cost-of-living prices. Cocktail and wine anchors use typical local CHF drink prices relative to draft beer. Accommodation is a holistic estimate with seasonal uncertainty; no booking prices were checked.",
+  "comparable_city_reasoning": "Zurich is a high-cost Swiss city with strong business and visitor demand. Accommodation is estimated above Lausanne and Lucerne, around or somewhat above Interlaken, and below Zermatt’s resort-priced basic rooms.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.0,
+    "coffee": 7.0,
+    "inexp_meal_1p": 35.0,
+    "midrange_meal_2p": 150.0,
+    "cocktail": 22.0,
+    "wine_glass": 14.0,
+    "hostel_dorm_1p": 65.0,
+    "hostel_private_2p": 150.0,
+    "hotel_1star_2p": 200.0,
+    "hotel_3star_2p": 250.0
+  }
+}

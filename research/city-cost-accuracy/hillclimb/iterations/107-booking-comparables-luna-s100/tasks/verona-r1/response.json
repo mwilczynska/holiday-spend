@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Aggregated city price observations support the meal, cappuccino, and beer estimates. Cocktail and wine prices are approximate, guided by their typical relationship to local beer prices. Accommodation estimates are holistic from the supplied Italian comparables; July demand adds uncertainty.",
+  "comparable_city_reasoning": "Verona’s strong visitor demand suggests accommodation above smaller southern and coastal comparables such as Palermo, Cagliari, and Rimini, but generally below Milan. The supplied private-room and dorm prices support estimates toward the upper end of the smaller-city range.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.25,
+    "coffee": 2.2,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 84,
+    "cocktail": 10,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 32,
+    "hostel_private_2p": 58,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 112
+  }
+}

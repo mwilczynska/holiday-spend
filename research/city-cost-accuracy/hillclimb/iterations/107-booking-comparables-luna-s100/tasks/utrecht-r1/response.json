@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use a recent Utrecht crowd-sourced price sample. Cocktail data is limited, and the wine price is estimated near the local draft-beer price. Accommodation is a holistic estimate based only on the supplied city comparisons.",
+  "comparable_city_reasoning": "Utrecht's hotel estimates sit near the supplied Delft and Rotterdam prices, with three-star rates below Amsterdam and Maastricht. Hostel estimates are between the supplied Rotterdam and Amsterdam examples.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.75,
+    "coffee": 4.70,
+    "inexp_meal_1p": 22.45,
+    "midrange_meal_2p": 84.15,
+    "cocktail": 14.60,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 58.00,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 160.00
+  }
+}
