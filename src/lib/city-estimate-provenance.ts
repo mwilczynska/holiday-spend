@@ -42,6 +42,7 @@ function asNullableString(value: unknown) {
 function inferMethodologyVersion(source: string | null | undefined, metadata: Record<string, unknown>) {
   if (typeof metadata.methodologyVersion === 'string') return metadata.methodologyVersion;
   if (source === 'llm_city_generation_v1_1') return 'v1.1';
+  if (source === 'llm_city_generation_v1_2') return 'v1.2';
   if (source === 'llm_city_generation_v6_1') return 'v6.1';
   if (source === 'llm_city_generation_v6') return 'v6.0';
   return 'v1';

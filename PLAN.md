@@ -10,7 +10,35 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 12 October 2026
+**Last updated:** 18 October 2026
+
+## City cost v1.2 rollout — IN PROGRESS (18 October 2026)
+
+Owner decisions (18 October 2026), from the city-cost hill-climb research (`research/city-cost-accuracy` branch, tag
+`city-cost-research-r3-2026-10-17`, final report https://claude.ai/artifact/JEbTYYGxwwT3ziAbeZW1AS): adopt bundle 022 as
+v1.2; correct food, drink, 3-star and 1-star; 4-star follows the corrected 3-star (x1.80); hostels stay uncorrected
+until year-typical hostel references exist; regenerate the whole library under v1.2; build the exchange-rate
+recompute first. Work happens on `feat/city-cost-v1-2` in its own worktree.
+
+- [x] 0. Tag the research branch (`city-cost-research-r3-2026-10-17`).
+- [x] 1a. v1.2 prompt `docs/prompts/llm_prompt_new_cities_v1_2.md` (identical to the research's 102 prompt).
+- [x] 1b. Correction table `src/lib/data/city-cost-corrections-v1-2.json` (country within region, k=3, 475 cities),
+  built by the research branch's `build-production-corrections.mjs`.
+- [x] 1c. `src/lib/city-cost-methodology-v1-2.ts`: correct USD anchors, then the unchanged v1.1 materialization;
+  dispatch, persistence (`llm_city_generation_v1_2`, raw and corrected anchors, correction), provenance, planner
+  identity and agent batch prompts; v1.2 default with v1.1 and v1 rollbacks; tests and `methodology:v1.1:check`.
+- [x] 1d. Baseline: TypeScript, production build, 79 files / 515 tests, memory mirror and methodology check pass.
+- [x] 2. Exchange-rate recompute without a model call: `src/lib/city-cost-fx-refresh.ts`, ECB cross rate
+  (`src/lib/usd-aud-reference-rate.ts`; the RBA tables refuse automated downloads), `scripts/refresh-city-cost-fx.ts`
+  (`--dry-run`) and admin `POST /api/cities/exchange-rate-refresh`. Hand-edited fields are kept; previous rates are
+  kept as `fxHistory`. Verified on a database copy: 333 cities refreshable, 194 need regeneration first; rerun is a
+  no-op. Dataset provenance shows rate, date and source. Not yet run on the live library.
+- [ ] 2b. Schedule the refresh (daily or weekly) and add a planner "prices as of" note.
+- [ ] 3. Image verification by Codex Luna Max workers (all 529 cities have photos).
+- [ ] 4. Year-typical hostel references, refit, enable hostel factors.
+- [ ] 5. Regenerate the whole library under v1.2 via Codex Luna Max (agent batch script, regenerate mode).
+- [ ] 6. Documentation refresh: methodology document and `/estimates`, CLAUDE.md/AGENTS.md, research summary
+  `docs/research/city-cost-accuracy.md`, README.
 
 ## Development indicator — COMPLETE (12 October 2026)
 

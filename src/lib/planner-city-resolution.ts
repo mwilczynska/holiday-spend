@@ -215,7 +215,7 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
     };
   }
 
-  let methodologyVersion: 'v1' | 'v1.1';
+  let methodologyVersion: 'v1' | 'v1.1' | 'v1.2';
   try {
     methodologyVersion = getCityCostMethodologyVersion();
   } catch (err) {
@@ -223,7 +223,8 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
     throw new PlannerCityResolutionError(message, 500);
   }
 
-  const metadata = methodologyVersion === 'v1.1'
+  // v1.1 and v1.2 share the canonical-identity contract: the server, not the model, owns city and country.
+  const metadata = methodologyVersion !== 'v1'
     ? buildV11PlannerIdentity(countryRows, requestedCityName, requestedCountryName)
     : await resolvePlannerCityMetadata(input);
   const canonicalCityName = normalizeFreeText(metadata.city) || requestedCityName;

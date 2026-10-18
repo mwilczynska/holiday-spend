@@ -7,7 +7,7 @@
  *   npx tsx scripts/add-cities-from-agent-responses.ts persist --dir <dir> --provider openai --model gpt-6-luna \n *     --effort max --agent "Codex subagent"
  *
  * `prompts` writes <slug>.prompt.md: the exact system and user prompt the app sends for that city
- * (`buildCityGenerationV11Prompt`, the active v1.1 contract). The agent writes its raw answer to
+ * (`buildCityGenerationAnchorPrompt` for the configured methodology, v1.2 by default). The agent writes its raw answer to
  * <slug>.response.json and what it actually looked up to <slug>.provenance.json:
  *   { "web_search_used": true, "urls": ["https://www.rba.gov.au/..."] }
  *
@@ -20,7 +20,7 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { buildCityGenerationV11Prompt } from '../src/lib/city-generation';
+import { buildCityGenerationAnchorPrompt, getCityCostMethodologyVersion } from '../src/lib/city-generation';
 import { setExternalJsonPromptRunner } from '../src/lib/city-llm-client';
 import { resolveOrCreatePlannerCity } from '../src/lib/planner-city-resolution';
 import { resolveLlmRuntimeDefaults } from '../src/lib/llm-request-limits';
@@ -50,7 +50,9 @@ function writePrompts(dir: string, entries: string[]) {
     if (!resolved) throw new Error(`Unknown canonical country: "${requestedCountryName}".`);
     // Generation uses the selected database row's label, which may be an alias such as "UAE".
     const countryName = resolved.existing?.name ?? resolved.canonical.name;
-    const { prompt, promptVersion } = buildCityGenerationV11Prompt({ cityName, countryName } as Parameters<typeof buildCityGenerationV11Prompt>[0]);
+    const methodology = getCityCostMethodologyVersion();
+    if (methodology === 'v1') throw new Error('Agent-answered generation supports the v1.1 and v1.2 anchor contracts only.');
+    const { prompt, promptVersion } = buildCityGenerationAnchorPrompt({ cityName, countryName }, methodology);
     const id = slug(cityName, requestedCountryName);
     fs.writeFileSync(path.join(dir, `${id}.prompt.json`), JSON.stringify({
       cityName, countryName, promptVersion, systemPrompt: SYSTEM_PROMPT, userPromptSha256: sha256(prompt),
