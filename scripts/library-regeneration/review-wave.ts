@@ -27,6 +27,7 @@ const flags: string[] = [];
 
 for (const id of ids.sort()) {
   if (fs.existsSync(path.join(dir, `${id}.result.json`)) && JSON.parse(fs.readFileSync(path.join(dir, `${id}.result.json`), 'utf8')).ok) continue;
+  if (!fs.existsSync(path.join(dir, `${id}.response.json`))) continue; // a worker still writing its pair
   const meta = JSON.parse(fs.readFileSync(path.join(dir, `${id}.prompt.json`), 'utf8'));
   const provenance = JSON.parse(fs.readFileSync(path.join(dir, `${id}.provenance.json`), 'utf8'));
   const text = fs.readFileSync(path.join(dir, `${id}.response.json`), 'utf8');
