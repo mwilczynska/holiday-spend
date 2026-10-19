@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Nara-specific price data is available but based on a small contributor sample; cocktail, wine, and model-estimated accommodation anchors are less certain.",
+  "comparable_city_reasoning": "Restaurant prices use Nara-specific data; accommodation is a holistic estimate informed by regional Japanese guesthouse and hotel levels, with Nara generally less costly than nearby Kyoto.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.15,
+    "coffee": 2.4,
+    "inexp_meal_1p": 6.3,
+    "midrange_meal_2p": 31.5,
+    "cocktail": 9.5,
+    "wine_glass": 3.5,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 65,
+    "hotel_1star_2p": 60,
+    "hotel_3star_2p": 110
+  }
+}

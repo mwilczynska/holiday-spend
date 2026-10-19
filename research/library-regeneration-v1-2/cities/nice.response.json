@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Nice cost-of-living averages support the meal, cappuccino, and beer estimates. The cocktail estimate uses a current downtown-club price; the wine glass estimate is inferred relative to local beer pricing. Accommodation is a holistic estimate and varies substantially by season and booking lead time.",
+  "comparable_city_reasoning": "Food and drink estimates use Nice-specific cost-of-living data; accommodation reflects tourist-heavy French Riviera pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.86,
+    "coffee": 3.74,
+    "inexp_meal_1p": 20.21,
+    "midrange_meal_2p": 89.83,
+    "cocktail": 13.47,
+    "wine_glass": 7.3,
+    "hostel_dorm_1p": 42,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 130,
+    "hotel_3star_2p": 210
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Current Nha Trang aggregate prices support the meal, cappuccino, and draft-beer anchors. Cocktail pricing uses local bar-price ranges; the wine-glass estimate uses its local price relationship to beer. Accommodation anchors are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "No external city proxy was used; food and beer are anchored to Nha Trang cost-of-living data, with accommodation estimated for a Vietnamese coastal resort city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.62,
+    "coffee": 1.67,
+    "inexp_meal_1p": 2.65,
+    "midrange_meal_2p": 23.08,
+    "cocktail": 5.5,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 6,
+    "hostel_private_2p": 19,
+    "hotel_1star_2p": 17,
+    "hotel_3star_2p": 42
+  }
+}

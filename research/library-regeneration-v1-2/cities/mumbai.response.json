@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal, cappuccino and draft-beer estimates come from aggregated Mumbai price tables. Cocktail is based on a small current cost-of-living sample; wine is estimated at about twice the draft-beer price because a comparable glass price was unavailable. Accommodation anchors are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "No single comparator; Mumbai's high-cost major-metropolis profile within South Asia informs the holistic accommodation estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.65,
+    "coffee": 2.71,
+    "inexp_meal_1p": 5.3,
+    "midrange_meal_2p": 21,
+    "cocktail": 9.56,
+    "wine_glass": 5.3,
+    "hostel_dorm_1p": 8,
+    "hostel_private_2p": 25,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 75
+  }
+}

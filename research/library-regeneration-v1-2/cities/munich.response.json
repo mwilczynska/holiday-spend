@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's Munich dataset (last updated 12 June 2026; 1,805 entries) informs restaurant, coffee and beer anchors. Expatistan lists a €13 cocktail (updated 17 October; 147 prices from 17 contributors). Wine is estimated at about 1.5 times the local draft-beer price. Lodging is a holistic seasonal-demand estimate; no live listings were checked.",
+  "comparable_city_reasoning": "Food and drink use Munich-specific cost-of-living data; lodging reflects general knowledge of high-demand German metro and southern German travel costs.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.6,
+    "coffee": 4.5,
+    "inexp_meal_1p": 21,
+    "midrange_meal_2p": 93,
+    "cocktail": 15,
+    "wine_glass": 8.5,
+    "hostel_dorm_1p": 48,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 240
+  }
+}

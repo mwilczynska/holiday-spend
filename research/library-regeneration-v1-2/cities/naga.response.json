@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Naga-specific cost data supports meals, cappuccino and draft beer, but its contributor base is small. Cocktail and wine are estimated at about 2.5–2.7 times draft beer; hostel and hotel prices are broader estimates because local lodging options vary.",
+  "comparable_city_reasoning": "Used Naga-specific cost-of-living observations for food and beer; lodging estimates reflect a mid-sized Philippine regional city with a limited hostel market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.29,
+    "coffee": 2.73,
+    "inexp_meal_1p": 5.16,
+    "midrange_meal_2p": 13.49,
+    "cocktail": 3.25,
+    "wine_glass": 3.5,
+    "hostel_dorm_1p": 9,
+    "hostel_private_2p": 22,
+    "hotel_1star_2p": 24,
+    "hotel_3star_2p": 47
+  }
+}

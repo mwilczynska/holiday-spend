@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "Food and drink estimates draw on Nouméa price-index entries and a thin city comparison. No direct wine-glass price was available, so wine is estimated near local draft beer; accommodation is a broad French Pacific island-city estimate, not based on current listings.",
+  "comparable_city_reasoning": "No direct comparable city used; Nouméa-reported prices anchor food and drink, while accommodation uses a broad French Pacific island-city basis.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.5,
+    "coffee": 4.75,
+    "inexp_meal_1p": 21.5,
+    "midrange_meal_2p": 122.5,
+    "cocktail": 15,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 38,
+    "hostel_private_2p": 80,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 200
+  }
+}

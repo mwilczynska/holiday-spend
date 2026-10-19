@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Negril-specific 2026 cost-of-living benchmarks give a useful basis for meals, coffee, and draft beer. Cocktail and wine prices are estimated from the local beer price relationship. Accommodation estimates are holistic and have wider uncertainty because rates vary by season and beach or town location.",
+  "comparable_city_reasoning": "No comparable city used; food and drink anchors use Negril-specific price aggregates, while accommodation reflects a general estimate for a Jamaican Caribbean beach-resort town.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.25,
+    "coffee": 2,
+    "inexp_meal_1p": 9.5,
+    "midrange_meal_2p": 50,
+    "cocktail": 5.5,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 65,
+    "hotel_1star_2p": 65,
+    "hotel_3star_2p": 150
+  }
+}

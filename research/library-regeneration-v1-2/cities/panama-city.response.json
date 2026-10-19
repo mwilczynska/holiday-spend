@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino, and draft beer anchors use a current Panama City cost-of-living index (last updated 2026-10-15). Cocktail and wine prices are bounded estimates based on their usual local price relationship to draft beer. Accommodation anchors are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "Food and drink use city-level Panama City price data; accommodation reflects a broad estimate for a Central American capital with business and visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.3,
+    "coffee": 4.11,
+    "inexp_meal_1p": 11.5,
+    "midrange_meal_2p": 47.5,
+    "cocktail": 8,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 65,
+    "hotel_3star_2p": 115
+  }
+}

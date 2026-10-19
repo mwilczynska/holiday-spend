@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's Nuremberg price index (May 2026) anchors meals, cappuccino, and domestic draft beer. Cocktail and wine are estimated from their local price relationship to beer; accommodation is a holistic estimate and can rise around trade fairs and the Christmas market.",
+  "comparable_city_reasoning": "No separate comparable city used; food and drink use Nuremberg-specific price observations, while accommodation reflects a bounded estimate for a mid-sized German visitor city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.05,
+    "coffee": 4.28,
+    "inexp_meal_1p": 19.09,
+    "midrange_meal_2p": 78.61,
+    "cocktail": 11.23,
+    "wine_glass": 7.86,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 88,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 155
+  }
+}

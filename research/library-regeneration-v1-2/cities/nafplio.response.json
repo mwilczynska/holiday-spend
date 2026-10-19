@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent city-level cost-of-living data supports meals and cappuccino, but Nafplio data are sparse. Beer, cocktail, and wine estimates use limited local menu evidence; wine is set slightly above draft beer because typical glass pricing is sparse. Accommodation anchors are broad holistic estimates with substantial seasonal variation.",
+  "comparable_city_reasoning": "Food and drink are based on Nafplio-specific cost-of-living observations and local menus. Lodging uses a broad small Peloponnese coastal-tourism estimate because no travel season or dates are specified.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 20.5,
+    "midrange_meal_2p": 51,
+    "cocktail": 10,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 75,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 150
+  }
+}

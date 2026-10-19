@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, beer and cappuccino anchors use Palma's aggregated price index updated 4 June 2026. Cocktail and wine glass are estimated from their usual local price relationship to draft beer. Accommodation anchors are holistic estimates and especially season-sensitive; no accommodation prices were searched.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates use Palma-specific aggregated prices, while accommodation is estimated from general knowledge of Palma's tourist market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.68,
+    "coffee": 3.26,
+    "inexp_meal_1p": 19.31,
+    "midrange_meal_2p": 70.2,
+    "cocktail": 12.5,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 46,
+    "hostel_private_2p": 120,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 220
+  }
+}

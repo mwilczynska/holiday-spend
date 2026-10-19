@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Nagarkot-specific menu data is sparse, so food anchors use Nepal-wide and Kathmandu price indexes adjusted for a tourist hill town. Accommodation is a holistic regional estimate. Cocktail and wine prices are less certain; they are bounded from the local beer price relationship, with wine especially uncertain.",
+  "comparable_city_reasoning": "Use Nepal-wide and nearby Kathmandu price indexes as the baseline, with a modest premium for Nagarkot's tourist-facing hill-station restaurants and remote setting. Accommodation reflects general near-Kathmandu hill-town guesthouse and hotel positioning.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.0,
+    "coffee": 2.0,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 23.0,
+    "cocktail": 6.0,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 8.0,
+    "hostel_private_2p": 20.0,
+    "hotel_1star_2p": 25.0,
+    "hotel_3star_2p": 65.0
+  }
+}

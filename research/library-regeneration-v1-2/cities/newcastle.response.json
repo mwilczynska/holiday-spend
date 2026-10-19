@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Newcastle aggregate prices support the restaurant, cappuccino and draft-beer estimates. A current Newcastle city-cost estimate puts a cocktail near the local draft-beer price; the wine glass is estimated at a similar local price because no aggregated glass price was available. Accommodation anchors are holistic estimates and are the least certain.",
+  "comparable_city_reasoning": "Food and drink use Newcastle-specific aggregate prices; accommodation is a bounded estimate for a mid-sized Australian coastal city with a regional visitor market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.98,
+    "coffee": 3.84,
+    "inexp_meal_1p": 20.77,
+    "midrange_meal_2p": 102.0,
+    "cocktail": 10.5,
+    "wine_glass": 9.0,
+    "hostel_dorm_1p": 30.0,
+    "hostel_private_2p": 75.0,
+    "hotel_1star_2p": 110.0,
+    "hotel_3star_2p": 160.0
+  }
+}

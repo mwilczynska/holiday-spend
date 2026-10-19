@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Nuwara Eliya price-index data supports the meal, cappuccino, and draft-beer anchors. Accommodation is a bounded seasonal estimate without live listing checks. Cocktail and wine prices are less certain: the cocktail estimate follows the city's reported standard cocktail-to-draft-beer price relationship, checked against a high-end local hotel menu; wine by the glass is estimated at about twice the local draft-beer price because representative local glass prices were not available.",
+  "comparable_city_reasoning": "Used Nuwara Eliya-specific food and drink price data. Accommodation is estimated for a small Sri Lankan hill-station destination with seasonal tourist demand; no separate comparison city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 2.4,
+    "inexp_meal_1p": 4.5,
+    "midrange_meal_2p": 24.0,
+    "cocktail": 9.0,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 25.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 70.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Mykonos prices vary sharply by season and venue; recent restaurant aggregates have sparse local samples, lodging anchors are broad model estimates, and wine is estimated in relation to local beer prices.",
+  "comparable_city_reasoning": "Used Greek-island tourist pricing as the base, with an upward adjustment for Mykonos's tourist-heavy bars and strong summer demand; accommodation is estimated from general destination context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 4,
+    "inexp_meal_1p": 15,
+    "midrange_meal_2p": 58,
+    "cocktail": 17,
+    "wine_glass": 8,
+    "hostel_dorm_1p": 85,
+    "hostel_private_2p": 175,
+    "hotel_1star_2p": 200,
+    "hotel_3star_2p": 360
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use an Orange cost index, while cocktail and wine estimates draw on a small sample of local menus. Accommodation is a holistic regional estimate without current listing checks, so its precision is lower.",
+  "comparable_city_reasoning": "No city proxy used; Orange-specific prices inform food and drinks, with regional NSW wine-tourism context informing accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.02,
+    "coffee": 3.54,
+    "inexp_meal_1p": 14.14,
+    "midrange_meal_2p": 76.42,
+    "cocktail": 13.20,
+    "wine_glass": 6.95,
+    "hostel_dorm_1p": 27.79,
+    "hostel_private_2p": 69.47,
+    "hotel_1star_2p": 90.31,
+    "hotel_3star_2p": 138.94
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Muscat's current crowd price index supports the meal, coffee, and beer anchors; cocktail data is thin and wine is estimated from local bar pricing relative to beer. Accommodation is a holistic estimate, with hostel availability especially uncertain.",
+  "comparable_city_reasoning": "Used Muscat-specific price data for food and drinks; accommodation reflects general knowledge of Gulf capital lodging, with no proxy city used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 13,
+    "coffee": 5.07,
+    "inexp_meal_1p": 5.2,
+    "midrange_meal_2p": 39.01,
+    "cocktail": 20.81,
+    "wine_glass": 15.6,
+    "hostel_dorm_1p": 24,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 45,
+    "hotel_3star_2p": 95
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Local city-level prices support the meal, cappuccino, and draft-beer anchors. Cocktail and wine prices are estimated from the local beer price and typical bar markups; lodging is a broad holistic estimate without live listing checks.",
+  "comparable_city_reasoning": "Food anchors use Nagasaki city-level prices. Lodging estimates reflect a mid-sized Kyushu tourism city, with Kumamoto and Kagoshima as regional comparables.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.26,
+    "coffee": 3.28,
+    "inexp_meal_1p": 5.17,
+    "midrange_meal_2p": 18.70,
+    "cocktail": 4.43,
+    "wine_glass": 3.80,
+    "hostel_dorm_1p": 24.07,
+    "hostel_private_2p": 53.84,
+    "hotel_1star_2p": 57.01,
+    "hotel_3star_2p": 95.02
+  }
+}
