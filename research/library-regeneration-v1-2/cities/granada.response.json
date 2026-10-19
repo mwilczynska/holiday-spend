@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee, and beer prices use Granada's October 2026 crowd-sourced averages; the cocktail estimate is based on a small April sample, wine is estimated relative to local beer, and accommodation is less certain.",
+  "comparable_city_reasoning": "Food anchors use Granada city data; accommodation reflects a mid-sized Andalusian university and tourism market.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.36,
+    "coffee": 2.27,
+    "inexp_meal_1p": 15.69,
+    "midrange_meal_2p": 39.24,
+    "cocktail": 8.97,
+    "wine_glass": 2.8,
+    "hostel_dorm_1p": 28,
+    "hostel_private_2p": 65,
+    "hotel_1star_2p": 78,
+    "hotel_3star_2p": 120
+  }
+}

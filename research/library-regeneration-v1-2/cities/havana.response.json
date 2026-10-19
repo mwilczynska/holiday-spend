@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Havana-specific food and drink aggregates are recent but reflect a small contributor pool amid severe price and currency volatility. The cocktail estimate uses the reported local mojito range; wine by the glass is estimated at about twice the draft-beer price because direct restaurant glass data were unavailable. Accommodation anchors are broad holistic estimates with especially high uncertainty; no live lodging prices were checked.",
+  "comparable_city_reasoning": "Food and drink use Havana-specific cost-of-living aggregates. Accommodation is a holistic estimate based on broad Cuban and Caribbean visitor-market expectations; no single comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.2,
+    "coffee": 1.03,
+    "inexp_meal_1p": 3.61,
+    "midrange_meal_2p": 27.5,
+    "cocktail": 4,
+    "wine_glass": 2.5,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 35,
+    "hotel_1star_2p": 60,
+    "hotel_3star_2p": 120
+  }
+}

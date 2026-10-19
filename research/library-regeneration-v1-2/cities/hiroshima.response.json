@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use current Hiroshima city-level price data. The cocktail estimate uses the low end of a local proper-bar range; the wine glass is inferred at about 1.4 times draft beer because comparable by-the-glass data was sparse. Accommodation anchors are holistic estimates without live booking checks.",
+  "comparable_city_reasoning": "Restaurant anchors are Hiroshima-specific. For lodging, I used a regional Japanese tourism-city basis similar to Fukuoka, without a Tokyo or Kyoto peak-market premium.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.69,
+    "coffee": 2.77,
+    "inexp_meal_1p": 6.02,
+    "midrange_meal_2p": 31.67,
+    "cocktail": 7.6,
+    "wine_glass": 3.8,
+    "hostel_dorm_1p": 21,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 63,
+    "hotel_3star_2p": 104
+  }
+}

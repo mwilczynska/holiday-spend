@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Gdansk cost-of-living observations support the meal, cappuccino and draft-beer estimates. Cocktail prices vary by venue and the available city sample is small; the wine-glass estimate uses its local price relationship to draft beer. Accommodation values are holistic estimates with substantial seasonal uncertainty.",
+  "comparable_city_reasoning": "No separate comparable city was used; food and drink estimates use Gdansk-specific observations, while accommodation is estimated for a Baltic tourist city with strong seasonal demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 4.5,
+    "inexp_meal_1p": 13,
+    "midrange_meal_2p": 65,
+    "cocktail": 11.5,
+    "wine_glass": 6.25,
+    "hostel_dorm_1p": 28,
+    "hostel_private_2p": 65,
+    "hotel_1star_2p": 80,
+    "hotel_3star_2p": 145
+  }
+}

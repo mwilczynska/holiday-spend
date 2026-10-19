@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "City-specific price data updated 2026-10-15 supports the meal, cappuccino, and domestic beer anchors. The cocktail estimate uses a reported local-bar price range; wine is estimated relative to domestic beer. Accommodation anchors are holistic estimates without live listing checks and are less certain.",
+  "comparable_city_reasoning": "City-specific Ho Chi Minh City price data was available, so no comparable city was needed.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.05,
+    "coffee": 1.80,
+    "inexp_meal_1p": 2.00,
+    "midrange_meal_2p": 23.00,
+    "cocktail": 4.50,
+    "wine_glass": 3.15,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 23.00,
+    "hotel_3star_2p": 45.00
+  }
+}

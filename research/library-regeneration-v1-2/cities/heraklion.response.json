@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent city-level references support the meal, cappuccino, beer, and cocktail estimates, but reported samples and venues vary. Accommodation is a holistic estimate, and wine is estimated relative to beer, so those anchors are less certain.",
+  "comparable_city_reasoning": "No comparable city was needed; food and drink use Heraklion city-level prices, and accommodation is a holistic estimate for a seasonal Greek island capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.3,
+    "coffee": 4.1,
+    "inexp_meal_1p": 13,
+    "midrange_meal_2p": 51,
+    "cocktail": 10,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 75,
+    "hotel_1star_2p": 80,
+    "hotel_3star_2p": 130
+  }
+}

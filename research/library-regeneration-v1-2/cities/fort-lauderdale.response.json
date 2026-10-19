@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and draft-beer anchors follow city-level aggregated prices; cocktail and wine anchors are approximate from current menu evidence, which spans happy-hour and regular pricing. Accommodation is a holistic model estimate, not grounded in live listings; coastal seasonality and limited hostel supply add uncertainty.",
+  "comparable_city_reasoning": "A South Florida coastal leisure market, broadly comparable with other mid-sized Atlantic beach destinations; lodging and restaurant prices are above inland U.S. cities but generally below central Miami Beach.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5,
+    "coffee": 5.17,
+    "inexp_meal_1p": 29,
+    "midrange_meal_2p": 120,
+    "cocktail": 15,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 195
+  }
+}

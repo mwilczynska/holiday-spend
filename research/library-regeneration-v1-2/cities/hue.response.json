@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Hue-specific aggregated cost data supports the restaurant, cappuccino, and beer anchors; accommodation estimates are broad general-knowledge estimates. Local menus put cocktails at roughly six to seven times the draft-beer reference and wine glasses at roughly nine to twelve times it, with substantial venue variation.",
+  "comparable_city_reasoning": "Food and drink estimates use Hue-specific cost-of-living data. Accommodation estimates reflect general knowledge of lower-cost secondary cities in central Vietnam, with some allowance for Hue's tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 0.76,
+    "coffee": 1.08,
+    "inexp_meal_1p": 1.15,
+    "midrange_meal_2p": 11.20,
+    "cocktail": 4.75,
+    "wine_glass": 7.25,
+    "hostel_dorm_1p": 5.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 45.00
+  }
+}

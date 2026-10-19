@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant meal, cappuccino and draft beer anchors align with current Gothenburg cost-of-living data. Cocktail and wine estimates have thinner local evidence, and accommodation prices are holistic estimates.",
+  "comparable_city_reasoning": "Food and standard drink estimates use Gothenburg cost-of-living data; accommodation is estimated for a major Swedish regional city with substantial visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.6,
+    "coffee": 5.15,
+    "inexp_meal_1p": 15,
+    "midrange_meal_2p": 92,
+    "cocktail": 19,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 100,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 175
+  }
+}

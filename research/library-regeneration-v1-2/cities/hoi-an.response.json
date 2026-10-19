@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are supported by recent city-level price data. Beer and cocktail values vary by venue; the cocktail uses a current local bar range, while wine by the glass is estimated from local mid-range bottle pricing and the beer price relationship. Accommodation anchors are holistic estimates and less certain, with substantial seasonal and property variation.",
+  "comparable_city_reasoning": "Hoi An city-level price data, with Central Vietnam tourism demand as context for drinks and accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.3,
+    "coffee": 1.7,
+    "inexp_meal_1p": 2.3,
+    "midrange_meal_2p": 18,
+    "cocktail": 5.5,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 6,
+    "hostel_private_2p": 18,
+    "hotel_1star_2p": 22,
+    "hotel_3star_2p": 45
+  }
+}

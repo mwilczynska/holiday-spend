@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "October 2026 city price data supports the meals, coffee, and beer; current Geneva tourism guidance gives broad wine and cocktail ranges. Lodging is a bounded holistic estimate, and translating CHF prices to USD is approximate.",
+  "comparable_city_reasoning": "No proxy city was needed for food and drink because current Geneva-specific prices were available; lodging is estimated holistically for a high-cost Swiss tourist city.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.00,
+    "coffee": 6.50,
+    "inexp_meal_1p": 32.00,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 21.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 65.00,
+    "hostel_private_2p": 170.00,
+    "hotel_1star_2p": 210.00,
+    "hotel_3star_2p": 340.00
+  }
+}

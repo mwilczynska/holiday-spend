@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Goa's June 2026 aggregate informs meals, coffee, and draft beer. Cocktail and restaurant wine-glass prices are less certain: cocktail is bounded by a current Goa price guide, while wine is estimated at about 2.3 times draft beer. Lodging is a holistic estimate with substantial seasonal and location variation.",
+  "comparable_city_reasoning": "Food and drink anchors use the Goa regional cost-of-living aggregate. Lodging reflects Goa's tourist market broadly, where prices vary substantially between coastal areas, inland areas, and peak season.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.16,
+    "coffee": 1.24,
+    "inexp_meal_1p": 3.16,
+    "midrange_meal_2p": 15.82,
+    "cocktail": 3.69,
+    "wine_glass": 2.63,
+    "hostel_dorm_1p": 13,
+    "hostel_private_2p": 32,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 70
+  }
+}

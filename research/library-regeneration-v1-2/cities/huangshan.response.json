@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "Huangshan-specific evidence is strongest for Hui restaurant meals and local beer; the overall city sample is thin, especially for accommodation. Coffee is based on traveler price data. Cocktail and wine estimates use rough multiples of local beer because city-specific menus are scarce.",
+  "comparable_city_reasoning": "Model meals and drinks around Tunxi's local Hui dining and Huangshan's visitor economy; lodging reflects a smaller regional tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2,
+    "coffee": 3,
+    "inexp_meal_1p": 5,
+    "midrange_meal_2p": 25,
+    "cocktail": 7,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 9,
+    "hostel_private_2p": 25,
+    "hotel_1star_2p": 20,
+    "hotel_3star_2p": 45
+  }
+}

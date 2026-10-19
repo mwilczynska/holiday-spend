@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Hammamet food, coffee, and beer anchors use June 2026 city price-index data. Cocktail and wine estimates use a small sample of local menus and sit above beer prices. Accommodation is a holistic estimate; registered hostel availability and rates are especially uncertain.",
+  "comparable_city_reasoning": "Use Hammamet's own city price data for food, coffee, and beer; lodging reflects a Tunisian coastal resort town and its tourism premium.",
+  "fx": {
+    "as_of_date": "2026-10-15",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-01-10-40-10",
+    "source_rate": 0.6955,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.24,
+    "coffee": 1.45,
+    "inexp_meal_1p": 6.9,
+    "midrange_meal_2p": 31.03,
+    "cocktail": 8.62,
+    "wine_glass": 5.69,
+    "hostel_dorm_1p": 15,
+    "hostel_private_2p": 42,
+    "hotel_1star_2p": 35,
+    "hotel_3star_2p": 70
+  }
+}
