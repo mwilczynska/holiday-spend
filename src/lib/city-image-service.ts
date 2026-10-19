@@ -46,7 +46,7 @@ export function cityImageFilePath(fileName: string) {
   return resolved;
 }
 
-function identityFor(cityId: string): CityIdentity | null {
+export function identityFor(cityId: string): CityIdentity | null {
   const city = db.select({ id: cities.id, name: cities.name, countryId: cities.countryId }).from(cities).where(eq(cities.id, cityId)).get();
   if (!city) return null;
   const country = findKnownCountryMetadata(city.countryId);
@@ -133,7 +133,7 @@ const CONTAINING_AREA: Record<string, string> = {
  * Coordinates and the name to search Wikipedia for. The search uses the geocoding alias, so a
  * library spelling such as "Banatayan" is searched as "Bantayan".
  */
-async function cityCoordinates(identity: CityIdentity, fetchImpl: Fetch) {
+export async function cityCoordinates(identity: CityIdentity, fetchImpl: Fetch) {
   const area = CONTAINING_AREA[`${identity.countryCode}|${identity.cityName}`];
   const climate = (await getStoredCityClimates([identity.cityId]))[identity.cityId];
   let location: { latitude: number; longitude: number; queryName?: string } | undefined = climate?.location;

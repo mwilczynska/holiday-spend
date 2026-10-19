@@ -232,6 +232,19 @@ async function findArticleByCountry(query: CityImageQuery, candidates: ArticleCa
   return null;
 }
 
+const DRAWING_MIME = new Set(['image/png', 'image/gif']);
+const NOT_A_PHOTO_NAME = /(^|[^a-z])(map|maps|mapa|karte|carte|locator|location|dimos|flag|coat[ _]of[ _]arms|seal|emblem|logo|diagram)([^a-z]|$)/i;
+
+/**
+ * Cities whose lead article image is a real photo of the wrong thing, which no general rule can catch. Each uses the
+ * main image (P18) of the city's own Wikidata item. Found by the photo review of 18 October 2026:
+ * Palermo's article leads with a church interior; "Oaxaca" matched the state, whose image is a mountain range.
+ */
+const CHOSEN_WIKIDATA_ITEMS: Record<string, { item: string; article: string }> = {
+  'palermo|IT': { item: 'Q2656', article: 'Palermo' },
+  'oaxaca|MX': { item: 'Q131429', article: 'Oaxaca de Juárez' },
+};
+
 async function wikidataImage(wikidataId: string | null, fetchImpl: Fetch): Promise<string | null> {
   if (!wikidataId) return null;
   const params = new URLSearchParams({ action: 'wbgetclaims', format: 'json', entity: wikidataId, property: 'P18', origin: '*' });
@@ -250,7 +263,11 @@ async function commonsImage(fileName: string, fetchImpl: Fetch, width = LARGE_WI
   if (!info) return null; // Not on Commons: a local Wikipedia file, which may be non-free.
   const meta = info.extmetadata ?? {};
   const license = stripHtml(meta.LicenseShortName?.value);
-  if (info.mime === 'image/svg+xml' || !license || NON_FREE.test(license)) return null;
+  // SVGs are drawings. PNG and GIF files are often photos and montages too, so they are rejected only when the file
+  // name says it is a map, flag, coat of arms, logo or diagram (the 18 October 2026 photo review found Greek island
+  // articles leading with "Dimos" municipality maps).
+  if (info.mime === 'image/svg+xml' || (DRAWING_MIME.has(info.mime) && NOT_A_PHOTO_NAME.test(fileName))) return null;
+  if (!license || NON_FREE.test(license)) return null;
   return {
     descriptionUrl: String(info.descriptionurl),
     thumbUrl: String(info.thumburl ?? info.url),
@@ -265,6 +282,18 @@ async function commonsImage(fileName: string, fetchImpl: Fetch, width = LARGE_WI
 }
 
 export async function lookupCityImage(query: CityImageQuery, fetchImpl: Fetch = fetch): Promise<CityImageResult> {
+  const chosen = query.countryCode ? CHOSEN_WIKIDATA_ITEMS[`${basePlaceName(query.name)}|${query.countryCode.toUpperCase()}`] : undefined;
+  if (chosen) {
+    const fileName = await wikidataImage(chosen.item, fetchImpl);
+    const info = fileName ? await commonsImage(fileName, fetchImpl) : null;
+    const small = fileName && info ? await commonsImage(fileName, fetchImpl, SMALL_WIDTH) : null;
+    if (fileName && info && small) {
+      return {
+        status: 'ok',
+        image: { source: 'wikidata', articleTitle: chosen.article, locationCheck: 'country', distanceKm: null, commonsFile: fileName, ...info, smallThumbUrl: small.thumbUrl },
+      };
+    }
+  }
   let candidates = await searchArticles(query, fetchImpl);
   // A short name can be drowned by its country ("york United Kingdom" returns only articles about the
   // country). With no title match, search the place name alone; the distance or country check still

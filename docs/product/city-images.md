@@ -34,6 +34,14 @@ The batch uses `HOLIDAY_SPEND_DB_PATH` like the app and writes photos to the `ci
 beside the database (`data/city-images/` by default, gitignored). It runs sequentially at about one
 city per second and can be stopped and rerun.
 
+## Photo review (18 October 2026)
+
+GPT-6 Luna workers looked at every stored photo with its city, article and Commons title: 525 of 529 were right.
+Two Greek islands showed municipality maps and two cities showed the wrong subject. Since then the lookup rejects PNG
+and GIF files whose names mark a map, flag, coat of arms, logo or diagram (SVG was already rejected; PNG photos and
+montages are kept), and a short list of cities (Palermo, Oaxaca) uses the photo of the city's own Wikidata item.
+`scripts/diff-city-image-picks.ts` shows, read-only, which picks a rule change would alter before any refresh.
+
 ## Method
 
 1. **Coordinates.** Use the city's saved climate location. Without one, geocode exactly as climate

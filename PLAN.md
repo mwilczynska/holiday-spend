@@ -34,12 +34,23 @@ recompute first. Work happens on `feat/city-cost-v1-2` in its own worktree.
   kept as `fxHistory`. Verified on a database copy: 333 cities refreshable, 194 need regeneration first; rerun is a
   no-op. Dataset provenance shows rate, date and source. Not yet run on the live library.
 - [ ] 2b. Schedule the refresh (daily or weekly) and add a planner "prices as of" note.
-- [ ] 3. Image verification by Codex Luna Max workers (all 529 cities have photos). Running: tasks and prompt on the
-  research branch (`research/city-images-review/2026-10-18`, `CODEX-IMAGES-REVIEW-PROMPT.md`).
+- [x] 3. Image verification by Codex Luna Max workers: 525 of 529 photos ok. Mykonos and Santorini showed municipality
+  maps (PNG), Palermo a church interior and Oaxaca the state's mountains. Fix on `fix/city-photo-review`: the lookup
+  rejects PNG and GIF files whose names mark a map, flag, coat of arms, logo or diagram (a blanket PNG rule would have
+  removed 19 good photos and left four cities without one), and Palermo and Oaxaca use their own Wikidata item's
+  photo. Only the four flagged cities were refreshed; a read-only comparison of all 529 picks
+  (`scripts/diff-city-image-picks.ts`) also showed six cities whose Wikipedia lead image has changed since collection,
+  left unchanged. Verdicts on the research
+  branch (`research/city-images-review/2026-10-18`).
 - [ ] 4. Year-typical hostel references, refit, enable hostel factors.
-- [ ] 5. Regenerate the whole library under v1.2 via Codex Luna Max. Ready: `add-cities-from-agent-responses.ts
-  regenerate-prompts --all` writes the app's exact prompts from stored names, and `persist` calls
-  `generateAndPersistCityEstimate` (previous estimate kept inactive). Verified end to end on a database copy (Tokyo).
+- [x] 5. Library regenerated under v1.2 (18-19 October 2026): all 529 cities saved through the app's own path from
+  Codex Luna Max answers (prompts, answers and save results on the research branch,
+  `research/library-regeneration-v1-2`). Verified backup first:
+  `C:\Users\chawi\holiday-spend-backups\pre-v1-2-regeneration-2026-10-18`. Each wave was reviewed against current
+  values before saving; Nagasaki was set aside and re-answered (the second answer matched), and Puerto Vallarta and
+  Sacred Valley were rejected by the app for stale RBA observations and re-answered. Median change new/old: 3-star and
+  4-star 0.67, 1-star 0.94, hostels 1.08-1.09, mid-range food 1.02, moderate drinks 0.97. Every city now stores USD
+  anchors, so the exchange-rate refresh covers all 529 (dry run; not applied, rates are two days old).
 - [x] 6. Documentation refresh: methodology document and `/estimates` (v1.2 steps, correction, accuracy, keeping
   prices current, history), CLAUDE.md/AGENTS.md (v1.2 active method; research section replaces "methodology testing
   is closed"), research summary `docs/research/city-cost-accuracy.md`, README. Baseline passes (79 files / 515 tests).
