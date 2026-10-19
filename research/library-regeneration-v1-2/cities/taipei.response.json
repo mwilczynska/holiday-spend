@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Numbeo's October 2026 Taipei aggregates support the restaurant meal, cappuccino, and domestic draft beer estimates. A recent local cost-of-living estimate supports the cocktail anchor; the wine-glass anchor is a bounded estimate based on the local beer and wine price relationship. Accommodation anchors are holistic estimates and are less certain than food prices.",
+  "comparable_city_reasoning": "No comparable-city proxy used; food and drink are based on Taipei-specific cost-of-living estimates, while accommodation uses a general Taipei guesthouse and hotel market estimate.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.93,
+    "coffee": 3.35,
+    "inexp_meal_1p": 4.62,
+    "midrange_meal_2p": 46.22,
+    "cocktail": 12,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 65,
+    "hotel_1star_2p": 60,
+    "hotel_3star_2p": 120
+  }
+}

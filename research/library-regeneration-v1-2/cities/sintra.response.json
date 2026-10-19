@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Portugal price-index averages adjusted upward modestly for Sintra’s tourist core; local menu prices vary widely. Coffee and lodging are less certain, and lodging is a holistic estimate. Cocktail and wine estimates use local menu prices relative to draft beer.",
+  "comparable_city_reasoning": "Portugal-wide restaurant benchmarks, with Lisbon as an upper comparator; Sintra’s high visitor demand lifts central prices while neighborhood eateries remain closer to national averages.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4,
+    "coffee": 2.75,
+    "inexp_meal_1p": 15,
+    "midrange_meal_2p": 55,
+    "cocktail": 10.5,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 80,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 175
+  }
+}

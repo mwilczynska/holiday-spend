@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Siena's restaurant price data was updated 2026-10-02 but is based on a small sample of 20 contributors. Cocktail and wine prices are inferred from local draft-beer pricing; accommodation is estimated holistically and varies by season. No live accommodation listings were inspected.",
+  "comparable_city_reasoning": "Recent Siena cost-of-living data anchors the food estimates; accommodation reflects a small, highly touristed Tuscan city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.44,
+    "coffee": 1.89,
+    "inexp_meal_1p": 15.72,
+    "midrange_meal_2p": 89.82,
+    "cocktail": 9.26,
+    "wine_glass": 6.79,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 112,
+    "hotel_1star_2p": 123,
+    "hotel_3star_2p": 180
+  }
+}

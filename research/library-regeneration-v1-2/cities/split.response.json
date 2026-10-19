@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Split-specific collaborative data supports meal, coffee, and beer estimates. Cocktail data is sparse; wine is estimated from its local price relationship to beer. Accommodation estimates are rough and seasonal, with no live listings consulted.",
+  "comparable_city_reasoning": "Food and drink use Split-specific price benchmarks; accommodation uses a broad Adriatic Croatian coastal-city basis adjusted for Split's strong tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.77,
+    "coffee": 2.78,
+    "inexp_meal_1p": 16.84,
+    "midrange_meal_2p": 74.35,
+    "cocktail": 11.23,
+    "wine_glass": 6.74,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 107.00,
+    "hotel_3star_2p": 163.00
+  }
+}

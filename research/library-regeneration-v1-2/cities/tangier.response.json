@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and draft beer anchors use current Tangier aggregated typical prices converted with an approximate MAD/USD rate. Alcohol prices are less certain: the cocktail estimate uses a current Tangier cost index, while the wine estimate uses a Morocco bar-price range and is set at about 1.5 times the local draft-beer estimate. Accommodation anchors are holistic estimates and vary with season and property standards.",
+  "comparable_city_reasoning": "No separate comparable city was needed for food and drink because current Tangier price-index data was available; accommodation reflects general knowledge of Tangier's tourism market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.25,
+    "coffee": 1.85,
+    "inexp_meal_1p": 5.25,
+    "midrange_meal_2p": 37.0,
+    "cocktail": 7.5,
+    "wine_glass": 6.25,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 60.0
+  }
+}

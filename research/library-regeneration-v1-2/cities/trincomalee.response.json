@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use limited Trincomalee estimates checked against Sri Lanka-wide aggregates. Accommodation is a holistic estimate; cocktail and wine prices are less certain and inferred from the local beer price relationship.",
+  "comparable_city_reasoning": "The east-coast visitor-town profile is the basis; Sri Lanka-wide restaurant and drink aggregates supplement sparse city data.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2.7,
+    "inexp_meal_1p": 3.5,
+    "midrange_meal_2p": 20.0,
+    "cocktail": 5.5,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 9.0,
+    "hostel_private_2p": 25.0,
+    "hotel_1star_2p": 30.0,
+    "hotel_3star_2p": 65.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Current Singapore cost-of-living aggregates inform restaurant, coffee, and beer anchors; mid-range local bar prices inform cocktail and wine estimates. Accommodation anchors are broad general-knowledge estimates without live booking data, and venue and seasonal variation is substantial.",
+  "comparable_city_reasoning": "Local Singapore price aggregates are the primary basis; accommodation estimates reflect Singapore's high-cost, compact Southeast Asian city market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.20,
+    "coffee": 5.20,
+    "inexp_meal_1p": 11.70,
+    "midrange_meal_2p": 74.10,
+    "cocktail": 14.50,
+    "wine_glass": 13.30,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 80.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 230.00
+  }
+}

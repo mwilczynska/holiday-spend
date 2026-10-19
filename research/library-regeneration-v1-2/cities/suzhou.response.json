@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Suzhou's June 2026 city price index provides meal, cappuccino, and domestic draft beer averages. Cocktail and wine estimates use current Suzhou bar price bands relative to the local beer price relationship. Accommodation anchors are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "Food and drink are anchored to Suzhou-specific prices; accommodation reflects Suzhou's position as a prosperous Jiangnan destination with demand comparable to Hangzhou and Nanjing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-05-09-19-39-07",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.1,
+    "coffee": 3.4,
+    "inexp_meal_1p": 3.9,
+    "midrange_meal_2p": 28,
+    "cocktail": 8.4,
+    "wine_glass": 7.7,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 32,
+    "hotel_1star_2p": 28,
+    "hotel_3star_2p": 58
+  }
+}

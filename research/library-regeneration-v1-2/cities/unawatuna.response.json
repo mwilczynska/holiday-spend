@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Unawatuna price-index data supports the meal, cappuccino, and draft-beer anchors. The cocktail estimate uses a local bar price range, while wine is estimated relative to local beer because a reliable restaurant glass price was not found. Accommodation anchors are holistic estimates without live listing checks and vary with season and proximity to the beach.",
+  "comparable_city_reasoning": "No city comparator used; food and drink anchors are based on Unawatuna's local beach-town prices, and accommodation is estimated for a small south-coast tourist town.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.2,
+    "coffee": 2.4,
+    "inexp_meal_1p": 3.1,
+    "midrange_meal_2p": 22,
+    "cocktail": 3.5,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 8,
+    "hostel_private_2p": 25,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 60
+  }
+}

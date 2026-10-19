@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use regional and current Tottori estimates, but direct city-level drink data are sparse. Cocktail and wine are estimated at about 1.4–1.5 times the domestic draft beer price; lodging is a holistic small-city estimate.",
+  "comparable_city_reasoning": "For dining, Tottori-specific meal figures and broader Chugoku-region prices are the closest available basis. Lodging is estimated as a smaller regional Japanese city rather than a major tourism market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.2,
+    "coffee": 2.9,
+    "inexp_meal_1p": 6.3,
+    "midrange_meal_2p": 31.7,
+    "cocktail": 4.8,
+    "wine_glass": 4.4,
+    "hostel_dorm_1p": 19,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 54,
+    "hotel_3star_2p": 89
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use Tel Aviv price benchmarks updated in October 2026; cocktail uses a 2026 local guide range, while wine by the glass is estimated relative to draft beer. Accommodation anchors are holistic estimates with greater seasonal uncertainty.",
+  "comparable_city_reasoning": "No single comparison city was used; food and drink are anchored to Tel Aviv prices, and accommodation reflects its high-cost Mediterranean coastal destination market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 11.0,
+    "coffee": 5.5,
+    "inexp_meal_1p": 26.0,
+    "midrange_meal_2p": 130.0,
+    "cocktail": 19.5,
+    "wine_glass": 14.0,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 100.0,
+    "hotel_1star_2p": 145.0,
+    "hotel_3star_2p": 220.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use Singapore cost-of-living aggregates, with the cocktail indicator updated in October 2026. Wine is estimated at about 1.5 times the local draft-beer price because comparable glass-of-wine data were sparse. Lodging is a holistic estimate from general knowledge; no accommodation prices or live listings were checked.",
+  "comparable_city_reasoning": "No comparable city used; Singapore city-level price aggregates guided food and drink, while lodging was estimated holistically for Singapore.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.80,
+    "coffee": 4.96,
+    "inexp_meal_1p": 11.70,
+    "midrange_meal_2p": 62.40,
+    "cocktail": 17.94,
+    "wine_glass": 11.70,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 220
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Sorrento guidance gives usable restaurant and bar ranges, but sources vary by table service and tourist location; cappuccino is bounded from local coffee context. Accommodation is a broad model estimate with substantial seasonality, not a live listing check.",
+  "comparable_city_reasoning": "Used Sorrento tourist-town restaurant and bar guidance, with nearby Piano di Sorrento aggregate prices as a local cross-check; lodging reflects a high-demand Campania coastal resort and is especially season-dependent.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.1,
+    "coffee": 3.5,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 82,
+    "cocktail": 14,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 135,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 235
+  }
+}

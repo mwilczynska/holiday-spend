@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Strasbourg cost-of-living data gives useful restaurant and coffee anchors, but collaborative drink prices are sparse. Wine is estimated from local beer pricing. Accommodation anchors are holistic estimates without live listing checks and are less certain.",
+  "comparable_city_reasoning": "Restaurant and coffee anchors use current Strasbourg-specific cost-of-living data; accommodation reflects a French regional city with substantial tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 4.5,
+    "inexp_meal_1p": 17,
+    "midrange_meal_2p": 70,
+    "cocktail": 9,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 43,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 165
+  }
+}

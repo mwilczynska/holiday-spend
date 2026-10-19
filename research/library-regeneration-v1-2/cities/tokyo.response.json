@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors draw on Tokyo-specific cost indexes, but the price data are crowdsourced and drink definitions vary. The wine glass is estimated relative to draft beer; accommodation anchors are holistic estimates and less certain.",
+  "comparable_city_reasoning": "No substitute city used; food and drink estimates use Tokyo-specific price data, with accommodation based on general knowledge of Tokyo's travel market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.1,
+    "coffee": 3.65,
+    "inexp_meal_1p": 7.75,
+    "midrange_meal_2p": 44.5,
+    "cocktail": 13.2,
+    "wine_glass": 6.15,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 190
+  }
+}

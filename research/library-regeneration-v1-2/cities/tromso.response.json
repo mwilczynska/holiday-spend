@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food prices are informed by Tromsø-specific cost-of-living data, while cocktail data is based on a small contributor sample. Wine is estimated slightly above local draft beer because a comparable restaurant-glass average is weak. Accommodation is a holistic estimate with substantial seasonal variation and was not checked against live listings.",
+  "comparable_city_reasoning": "No substitute city used; local Tromsø price indexes inform food and drinks, with general Northern Norway tourism context for accommodation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.0,
+    "coffee": 6.3,
+    "inexp_meal_1p": 32.5,
+    "midrange_meal_2p": 100.0,
+    "cocktail": 13.0,
+    "wine_glass": 14.5,
+    "hostel_dorm_1p": 55.0,
+    "hostel_private_2p": 125.0,
+    "hotel_1star_2p": 160.0,
+    "hotel_3star_2p": 255.0
+  }
+}

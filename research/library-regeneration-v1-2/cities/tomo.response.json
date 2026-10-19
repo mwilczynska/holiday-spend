@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "low",
+  "confidence_notes": "Tomo-specific aggregated prices were not available in the allowed checks. Restaurant, coffee, and beer anchors use Nouméa regional price data; cocktail and wine are estimated at about 1.6x and 1.2x the local beer price. Accommodation is a broad holistic estimate with uncertain local availability.",
+  "comparable_city_reasoning": "Used Nouméa's aggregated city prices as the nearest available New Caledonia market proxy for food and drinks; accommodation is estimated broadly for Tomo.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.1,
+    "coffee": 4.5,
+    "inexp_meal_1p": 20.61,
+    "midrange_meal_2p": 111,
+    "cocktail": 16.2,
+    "wine_glass": 12.1,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 175
+  }
+}

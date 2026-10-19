@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use an aggregated Toronto price index last refreshed in May 2026. Cocktail uses a Toronto cost entry updated October 17, 2026; wine is estimated at about 1.5 times local draft beer. Accommodation is a broad model estimate with substantial seasonal and location variation.",
+  "comparable_city_reasoning": "No specific comparable city used; food anchors follow Toronto-specific aggregates, while accommodation reflects Toronto's high-cost major-metropolitan market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.58,
+    "coffee": 4.11,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 88,
+    "cocktail": 11,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 130,
+    "hotel_1star_2p": 150,
+    "hotel_3star_2p": 240
+  }
+}

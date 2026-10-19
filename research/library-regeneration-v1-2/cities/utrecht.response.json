@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Utrecht's May 2026 city index supports the meal, cappuccino and draft-beer estimates, with an October 2026 collaborative listing as a cross-check; that listing notes sparse data. Cocktail uses its listed bar price, wine is estimated from the local beer relationship, and accommodation is a broad model estimate without live listing checks.",
+  "comparable_city_reasoning": "Food anchors use Utrecht-specific prices; accommodation estimates reflect Utrecht's Dutch university and visitor-city market, with substantial seasonal and weekend variation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 4.6,
+    "inexp_meal_1p": 21,
+    "midrange_meal_2p": 81,
+    "cocktail": 15,
+    "wine_glass": 8,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 125,
+    "hotel_1star_2p": 150,
+    "hotel_3star_2p": 220
+  }
+}
