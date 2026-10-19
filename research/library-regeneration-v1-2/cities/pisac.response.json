@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant estimates use a modeled Pisac cost baseline, a current travel guide, and Peru-wide cost-of-living prices where city-level observations are sparse. Cocktails and wine are bounded estimates based on their usual price relationship to domestic beer, rather than direct local price observations. Accommodation figures are holistic estimates for a small Sacred Valley visitor town and were not checked against live listings.",
+  "comparable_city_reasoning": "Use Pisac's modeled city-level meal and cappuccino estimates, cross-checked against current guide prices and Peru-wide typical restaurant and beer prices; for missing drink and lodging anchors, use a small, tourism-oriented Sacred Valley town as the general basis.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.0,
+    "coffee": 2.5,
+    "inexp_meal_1p": 4.0,
+    "midrange_meal_2p": 22.0,
+    "cocktail": 6.5,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 30.0,
+    "hotel_1star_2p": 40.0,
+    "hotel_3star_2p": 75.0
+  }
+}

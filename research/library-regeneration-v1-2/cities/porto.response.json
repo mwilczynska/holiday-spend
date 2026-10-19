@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Porto price data supports the meal, cappuccino, and draft beer estimates. Cocktail and wine anchors are less certain and are estimated in relation to local draft beer prices; accommodation anchors are holistic estimates and were not based on current listings.",
+  "comparable_city_reasoning": "Porto is estimated as a popular, moderately priced Southern European city; food and drink anchors are based on current city-level price data.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.45,
+    "coffee": 2.75,
+    "inexp_meal_1p": 13.8,
+    "midrange_meal_2p": 57.5,
+    "cocktail": 9.2,
+    "wine_glass": 3.45,
+    "hostel_dorm_1p": 32,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 130
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and draft-beer anchors are supported by 2026 city cost-of-living data; prices vary between local areas and the tourist core. Cocktail and wine estimates are less certain and use a typical bar premium over local draft beer; accommodation is a holistic model estimate without current listings.",
+  "comparable_city_reasoning": "Playa del Carmen's own dining-price data anchor food estimates; Riviera Maya beach-tourism demand provides context for accommodation estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3,
+    "coffee": 3.85,
+    "inexp_meal_1p": 10.75,
+    "midrange_meal_2p": 43,
+    "cocktail": 10,
+    "wine_glass": 8.5,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 125
+  }
+}

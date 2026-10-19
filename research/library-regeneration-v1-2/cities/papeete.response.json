@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino, and draft-beer estimates are grounded in current Papeete cost-of-living benchmarks. Cocktail and wine estimates are less certain and use a rough multiple of local draft-beer prices. Accommodation estimates are holistic; registered budget lodging is limited, so those anchors are especially uncertain.",
+  "comparable_city_reasoning": "Food and drink use direct Papeete price benchmarks. Accommodation is estimated for a small, remote South Pacific island capital with high import costs and limited registered budget inventory.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 4.06,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 91.00,
+    "cocktail": 8.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 255.00
+  }
+}

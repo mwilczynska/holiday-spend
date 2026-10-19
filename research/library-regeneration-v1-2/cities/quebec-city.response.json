@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use current Quebec City aggregates (655 entries from 49 contributors); cocktail and wine estimates use a local restaurant menu. Accommodation is a holistic, season-sensitive estimate.",
+  "comparable_city_reasoning": "City-specific cost data informs food and drink; accommodation is modeled against smaller Canadian tourist cities with strong historic-core seasonality.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.29,
+    "coffee": 3.65,
+    "inexp_meal_1p": 17.63,
+    "midrange_meal_2p": 66.02,
+    "cocktail": 10.23,
+    "wine_glass": 8.82,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 120,
+    "hotel_3star_2p": 190
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Rio-specific cost-of-living data supports the meal, coffee, and beer estimates. The cocktail estimate reflects a downtown price; wine is estimated from its local price relationship to beer. Accommodation estimates are holistic and especially sensitive to season and neighborhood.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates are Rio-specific, while accommodation is a broad general-knowledge estimate for a major Brazilian coastal destination with strong visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2.75,
+    "inexp_meal_1p": 8,
+    "midrange_meal_2p": 41,
+    "cocktail": 7.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 75,
+    "hotel_3star_2p": 125
+  }
+}

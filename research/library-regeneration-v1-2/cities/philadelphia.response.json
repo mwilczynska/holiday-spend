@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Meal, cappuccino, and draft beer anchors use current Philadelphia price aggregates. The cocktail estimate is near the midpoint of a local typical-price range; wine uses an estimated relationship to draft beer because available direct wine data was for happy hour. Lodging anchors are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "No comparable city was needed for the food and drink anchors; lodging is estimated from Philadelphia's large Northeast U.S. city context and visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6,
+    "coffee": 5.28,
+    "inexp_meal_1p": 22,
+    "midrange_meal_2p": 80,
+    "cocktail": 15,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 115,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 220
+  }
+}

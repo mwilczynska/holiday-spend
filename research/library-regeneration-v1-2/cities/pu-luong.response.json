@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Local meal pricing is available mostly for pre-arranged homestay or lodge dinners; coffee and beer use Vietnam-wide 2026 benchmarks adjusted modestly for a rural tourist destination, while cocktail and wine prices are rough beer-based estimates. Lodging is a broad model estimate because inventory and formal star ratings are limited.",
+  "comparable_city_reasoning": "No close city proxy; used rural northern Vietnam and its tourist-lodge meal pattern, with Vietnam-wide current price benchmarks for common drinks.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 1.75,
+    "inexp_meal_1p": 5,
+    "midrange_meal_2p": 18,
+    "cocktail": 4.5,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 8,
+    "hostel_private_2p": 22,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 75
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Qingdao restaurant, beer, and cappuccino aggregates anchor the food estimates; cocktail and wine prices use a beer-relative estimate, while accommodation is a broad model estimate.",
+  "comparable_city_reasoning": "Accommodation is estimated for a major coastal second-tier Chinese city, with Dalian as a broad comparison; Qingdao's tourism season can raise room prices.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.02,
+    "coffee": 2.58,
+    "inexp_meal_1p": 2.82,
+    "midrange_meal_2p": 16.9,
+    "cocktail": 5.1,
+    "wine_glass": 5.6,
+    "hostel_dorm_1p": 11,
+    "hostel_private_2p": 28,
+    "hotel_1star_2p": 26,
+    "hotel_3star_2p": 45
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Phu Quoc item-level data is sparse. Meal prices have recent local-guide support, but coffee and drink evidence is thinner; cocktail and wine prices are estimated from their usual premium over local beer. Lodging figures are holistic estimates, not live listing prices.",
+  "comparable_city_reasoning": "Used Vietnam island-resort pricing with Duong Dong local food as the low-cost baseline and a tourism premium for mid-range meals and drinks.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.3,
+    "coffee": 1.7,
+    "inexp_meal_1p": 2.3,
+    "midrange_meal_2p": 24,
+    "cocktail": 5.2,
+    "wine_glass": 5.8,
+    "hostel_dorm_1p": 8,
+    "hostel_private_2p": 20,
+    "hotel_1star_2p": 24,
+    "hotel_3star_2p": 55
+  }
+}

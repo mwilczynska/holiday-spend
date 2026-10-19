@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Pula aggregates support the meal, coffee, and draft-beer estimates. Cocktail pricing comes from a small local sample; the wine-glass estimate follows its relationship to local draft beer. Accommodation anchors are holistic seasonal estimates without live listing checks.",
+  "comparable_city_reasoning": "Food and drink use Pula city-level aggregates. Accommodation is estimated for a mid-sized coastal Istrian destination with pronounced summer seasonality.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.37,
+    "coffee": 2.48,
+    "inexp_meal_1p": 14.60,
+    "midrange_meal_2p": 67.37,
+    "cocktail": 7.86,
+    "wine_glass": 5.61,
+    "hostel_dorm_1p": 39.30,
+    "hostel_private_2p": 95.44,
+    "hotel_1star_2p": 101.05,
+    "hotel_3star_2p": 174.05
+  }
+}

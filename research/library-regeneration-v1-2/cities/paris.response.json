@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and coffee anchors use recent Paris city-level price averages; cocktail is estimated from the local draft-beer price relationship, and wine is cross-checked against a recent local bar survey. Accommodation is a holistic estimate with wide seasonal and neighborhood variation.",
+  "comparable_city_reasoning": "Food and drink use Paris city-level averages; no proxy city was substituted.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.1,
+    "coffee": 5.3,
+    "inexp_meal_1p": 18.5,
+    "midrange_meal_2p": 81,
+    "cocktail": 13.9,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 65,
+    "hostel_private_2p": 160,
+    "hotel_1star_2p": 205,
+    "hotel_3star_2p": 300
+  }
+}

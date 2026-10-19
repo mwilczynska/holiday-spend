@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use current city cost-of-living data; cocktail and wine estimates use local menu prices relative to beer. Accommodation figures are broad, seasonal model estimates and are least certain.",
+  "comparable_city_reasoning": "Restaurant anchors use Puerto Escondido data directly; lodging is estimated for a Mexican Pacific beach town with strong seasonal tourism.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.2,
+    "coffee": 3.49,
+    "inexp_meal_1p": 11.07,
+    "midrange_meal_2p": 58.24,
+    "cocktail": 9.3,
+    "wine_glass": 7.4,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 75,
+    "hotel_3star_2p": 140
+  }
+}

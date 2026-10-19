@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "The Phnom Penh price index was updated 2026-10-16 and includes 570 entries from 38 contributors in the past year; restaurant, coffee, and beer anchors use those typical prices. Accommodation is a holistic estimate, while cocktail and wine prices are extrapolated as several times the local draft-beer price because standardized city observations are thin.",
+  "comparable_city_reasoning": "No separate comparable city; food anchors use the direct Phnom Penh price index, with accommodation estimated holistically for a Southeast Asian capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1,
+    "coffee": 2.88,
+    "inexp_meal_1p": 4.5,
+    "midrange_meal_2p": 39.8,
+    "cocktail": 4.5,
+    "wine_glass": 3.5,
+    "hostel_dorm_1p": 5.5,
+    "hostel_private_2p": 18,
+    "hotel_1star_2p": 22,
+    "hotel_3star_2p": 45
+  }
+}

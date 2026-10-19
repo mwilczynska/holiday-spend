@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Current Perth cost-of-living data supports the restaurant and coffee anchors. Beer, cocktail, and wine prices vary by serving and venue; cocktail and wine estimates use current local bar price ranges. Accommodation anchors are broad model estimates and are less certain.",
+  "comparable_city_reasoning": "Food and drink estimates use Perth-specific prices. Accommodation estimates use broad Australian capital-city pricing, with Perth's tourism and regional-market context.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.34,
+    "coffee": 4.47,
+    "inexp_meal_1p": 20.84,
+    "midrange_meal_2p": 83.36,
+    "cocktail": 13.89,
+    "wine_glass": 8.34,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 115,
+    "hotel_3star_2p": 175
+  }
+}

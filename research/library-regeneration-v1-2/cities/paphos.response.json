@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and draft beer estimates use a current citywide price index. Cocktail and wine prices vary by venue; their estimates use local bar price ranges relative to the indexed beer price. Accommodation is a holistic estimate with substantial seasonal and classification uncertainty; no live booking listings were checked.",
+  "comparable_city_reasoning": "Paphos is a Mediterranean resort city; use its current citywide food and drink prices and typical Cyprus resort accommodation levels, allowing for strong seasonal variation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.65,
+    "inexp_meal_1p": 16.85,
+    "midrange_meal_2p": 56.15,
+    "cocktail": 9,
+    "wine_glass": 5.6,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 135
+  }
+}
