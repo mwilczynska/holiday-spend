@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Current Zanzibar price-index data supports inexpensive meals, mid-range meals, cappuccino, and domestic draft beer. Cocktail pricing is based on current local bar ranges; wine is estimated at about three times a draft beer because a reliable aggregated local wine price was not found. Accommodation estimates are holistic and especially uncertain because prices vary sharply by season and between Stone Town and beach areas.",
+  "comparable_city_reasoning": "Food anchors use Zanzibar-specific cost-of-living prices; lodging estimates reflect general knowledge of budget guesthouses and modest tourist hotels in Zanzibar and comparable East African island destinations.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.92,
+    "coffee": 2.2,
+    "inexp_meal_1p": 4.79,
+    "midrange_meal_2p": 22,
+    "cocktail": 6,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 40,
+    "hotel_1star_2p": 50,
+    "hotel_3star_2p": 100
+  }
+}

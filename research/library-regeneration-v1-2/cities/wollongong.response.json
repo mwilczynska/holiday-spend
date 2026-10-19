@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Local restaurant, beer, and cappuccino estimates use current Wollongong cost-of-living and menu-price references. Cocktail is a bounded estimate informed by local bar price ranges; wine by the glass is estimated relative to local draft beer. Accommodation is a holistic estimate without live lodging-price research and is less certain.",
+  "comparable_city_reasoning": "Wollongong is a mid-sized New South Wales coastal city with university and beach tourism demand. Food prices are benchmarked locally; lodging is modeled on regional Australian coastal-city levels below larger Sydney-market pricing.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.95,
+    "coffee": 3.82,
+    "inexp_meal_1p": 17.02,
+    "midrange_meal_2p": 83.36,
+    "cocktail": 12.50,
+    "wine_glass": 9.03,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 90.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 175.00
+  }
+}

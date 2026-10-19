@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated Zagreb prices support the restaurant, cappuccino and beer anchors; cocktail and wine prices are cross-checked against one current central bar menu. Accommodation estimates are bounded model estimates without live listing checks.",
+  "comparable_city_reasoning": "Food and drink anchors use current Zagreb price observations; accommodation is calibrated to a mid-sized Central European capital with year-round city tourism.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 12.75,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 9.50,
+    "wine_glass": 4.75,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 75.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 130.00
+  }
+}

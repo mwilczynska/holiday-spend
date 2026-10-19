@@ -4311,3 +4311,22 @@ Final `queue.mjs --status` output:
   untouched. `npm.cmd run docs:check-memory` passed.
 - Stop condition 1: the queue is empty, all workers have finished, and the summary,
   completion commit and push have completed.
+
+# 18 October 2026 - Library regeneration v1.2 collection handoff (in progress)
+
+- Collection continues with fresh GPT-6 Luna / max workers, up to six at once. The 199, 247, 295 and 343 answer checkpoints have been committed and pushed.
+- Seven tasks exhausted their one fresh retry without a complete file pair and are left for the coordinator under the launch instructions: `florianopolis`, `fort-kochi`, `frankfurt`, `fujikawaguchiko`, `fukuoka`, `funchal`, `goreme`. The first six encountered local-file/tool write-policy failures; Goreme's second worker reported a prompt-read timeout. Existing partial files are retained.
+- Puerto Iguazu's worker reported that its response was saved but that it could not correct an existing provenance file because the exclusive-create file tool refused an overwrite. Files are retained as written.
+- Windows stdin/stdout defaults were observed as CP1252. Subsequent file-tool servers use explicit Python UTF-8 mode after the 210-answer point; existing output files were untouched.
+- During dispatcher replacement a fresh Jodhpur worker started before the earlier worker exited; when it tried to save, output files already existed and the exclusive-create tool refused to overwrite them.
+- Concurrent review activity created `.result.json` files, changed `scripts/library-regeneration/review-wave.ts`, and removed the Nagasaki response/provenance pair. The queue reissued Nagasaki and a fresh worker answered it. Codex did not create the review outputs, edit that script, or remove those answer files.
+- The first four collection checkpoint commits were verified to contain only response/provenance JSON files. Subsequent commits select only new answer files, the requested summary and LOG.md, and use `git commit --only` to leave unrelated staged work out of collection commits.
+- Checkpoint `53dccbb7` at 343 answers encountered a push race: the remote already pointed at the desired commit. The required pull-with-rebase attempt exited 128; the second push succeeded.
+
+# 18 October 2026 - Library regeneration v1.2 collection (Codex)
+
+- Started at 151/529 answered; answered 371 cities this session, reaching 522/529 (7 pending).
+- Fresh GPT-6 Luna workers at reasoning max, up to six concurrently. Worker brief unchanged; ephemeral CLI workers received a file-only MCP restricted to their own prompt and two new output files. No worker transcripts or event logs were saved.
+- Retries: 29. Three initial built-in workers could not read their prompt without a command. Twelve ephemeral CLI workers then encountered the read-only tool policy; all were allowed to finish. Six additional CLI launches failed before any worker started because the sandbox could not resolve the Codex home directory. A replacement launcher used incompatible --sandbox and --approve-for-me flags; its process launches failed before model startup and it was stopped. The corrected dispatcher uses workspace-write with automatic review and the same restricted file tools. Windows stdin/stdout defaults were observed as CP1252; subsequent MCP servers use explicit Python UTF-8 mode after the 210-answer point, with existing worker files untouched. A Jodhpur worker was launched before its earlier worker exited; the output files already existed when the new worker tried to write them, and the exclusive-create file tool refused to overwrite them. Concurrent review activity generated .result.json files and removed the Nagasaki answer pair; the queue reissued Nagasaki, which was answered again. After auditing the first three checkpoints as response/provenance-only, subsequent commits select only new response/provenance files plus the requested summary and LOG.md and use --only to preserve unrelated staged work. Incomplete worker attempts: 34; unresolved after retries: florianopolis, fort-kochi, frankfurt, fujikawaguchiko, fukuoka, funchal, goreme.
+- Stop reason: All remaining tasks returned no files after one fresh retry.
+- No prompt files or application database were changed. No application keys or paid APIs were used.

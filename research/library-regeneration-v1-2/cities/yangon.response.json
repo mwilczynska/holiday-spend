@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Yangon-specific meal, coffee and beer benchmarks were last updated 17 April 2026. Lodging is a broad holistic estimate; cocktail and wine prices are estimated relative to local draft beer because dependable glass-price data is sparse.",
+  "comparable_city_reasoning": "No comparable city used; food and drink anchors use Yangon-specific public price benchmarks, while lodging is estimated holistically for Yangon.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 1.68,
+    "inexp_meal_1p": 2.56,
+    "midrange_meal_2p": 16.69,
+    "cocktail": 3.40,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 25.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 60.00
+  }
+}

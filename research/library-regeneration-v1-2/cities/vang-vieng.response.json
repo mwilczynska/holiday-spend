@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Current Vang Vieng aggregators broadly align on meal, coffee, and beer costs, while lodging is a general backpacker-town estimate. Cocktail and wine glasses are uncertain and estimated at local bar multiples of draught beer.",
+  "comparable_city_reasoning": "No separate comparable city used; food and drink estimates are Vang Vieng-specific, with accommodation estimated broadly for a Laos backpacker town.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.2,
+    "coffee": 1.5,
+    "inexp_meal_1p": 2.2,
+    "midrange_meal_2p": 16,
+    "cocktail": 2.75,
+    "wine_glass": 3.2,
+    "hostel_dorm_1p": 6,
+    "hostel_private_2p": 18,
+    "hotel_1star_2p": 18,
+    "hotel_3star_2p": 38
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meal and cappuccino anchors use a current Yangshuo cost index; West Street drink prices vary between local beer and tourist bars. Wine is estimated near cocktail pricing, bounded by a local restaurant menu. Accommodation is a holistic estimate and is less certain, especially across seasons.",
+  "comparable_city_reasoning": "Yangshuo is a small inland Chinese town with heavy tourism. Local meals and lodging are closer to lower-cost Guilin than to major Chinese cities, while West Street cafes and bars carry a tourist premium.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 3.06,
+    "inexp_meal_1p": 2.8,
+    "midrange_meal_2p": 21.83,
+    "cocktail": 8,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 25,
+    "hotel_3star_2p": 55
+  }
+}

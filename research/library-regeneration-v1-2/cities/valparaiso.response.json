@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Valparaiso cost-of-living data supports the meal, cappuccino, beer and cocktail estimates, though contributor coverage is limited. The wine-glass anchor is less certain and is bounded using the local beer relationship and reported combined cocktail/wine prices. Accommodation anchors are holistic estimates rather than live quotes.",
+  "comparable_city_reasoning": "No separate comparable city used; food and drink estimates are grounded in Valparaiso-specific cost-of-living data, with the city's coastal tourism considered for the holistic accommodation estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4,
+    "coffee": 2.8,
+    "inexp_meal_1p": 9.15,
+    "midrange_meal_2p": 35.8,
+    "cocktail": 7.75,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 15,
+    "hostel_private_2p": 42,
+    "hotel_1star_2p": 50,
+    "hotel_3star_2p": 85
+  }
+}

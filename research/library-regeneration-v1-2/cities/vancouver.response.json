@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee estimates are grounded in current Vancouver cost-of-living aggregates; beer values vary by source. Cocktail uses a current downtown-club typical price, and wine by the glass uses the midpoint of a local wine-bar range. Accommodation prices are holistic estimates with substantial seasonal and neighborhood variation.",
+  "comparable_city_reasoning": "Vancouver's own current restaurant-price aggregates are the main basis; accommodation reflects a high-cost, tourism-heavy Pacific Northwest city.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.05,
+    "inexp_meal_1p": 21.15,
+    "midrange_meal_2p": 84.55,
+    "cocktail": 11.27,
+    "wine_glass": 9.86,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 130.00,
+    "hotel_1star_2p": 175.00,
+    "hotel_3star_2p": 270.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Willemstad aggregates support meals, coffee and beer; cocktail prices are sparse and wine by the glass is estimated relative to beer. Lodging anchors are holistic estimates, not current listing checks.",
+  "comparable_city_reasoning": "Used Willemstad price indexes for food and drink; accommodation reflects a Caribbean island tourism market with limited hostel inventory and higher visitor lodging costs.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.87,
+    "coffee": 3.88,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 78.00,
+    "cocktail": 11.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 100.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 220.00
+  }
+}

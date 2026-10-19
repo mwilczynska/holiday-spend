@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current Verona aggregate data gives useful meal, coffee and beer anchors. The cocktail estimate is based on a city price index; wine by the glass is inferred near the local draft-beer price. Accommodation is a holistic estimate with substantial seasonal uncertainty.",
+  "comparable_city_reasoning": "Food and drink use Verona-specific aggregate prices; accommodation reflects a mid-sized Northern Italian tourist city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.18,
+    "coffee": 2.17,
+    "inexp_meal_1p": 17.97,
+    "midrange_meal_2p": 89.83,
+    "cocktail": 10.00,
+    "wine_glass": 6.18,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 160.00
+  }
+}

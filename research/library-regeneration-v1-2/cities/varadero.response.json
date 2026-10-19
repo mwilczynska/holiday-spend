@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Recent Varadero cost-of-living sources cluster around USD 4 for an inexpensive meal and USD 20 for a mid-range meal for two, but vary substantially on coffee and beer. Cocktail and wine prices are estimated from local beer prices; accommodation is a holistic estimate with limited confidence because registered hostel supply is uncertain.",
+  "comparable_city_reasoning": "No close-city proxy used: restaurant anchors are based on current Varadero cost-of-living aggregates, while accommodation is a general estimate for a Caribbean resort town adjusted for Cuba's limited and uneven registered accommodation supply.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.5,
+    "coffee": 1.3,
+    "inexp_meal_1p": 4.0,
+    "midrange_meal_2p": 20.0,
+    "cocktail": 4.0,
+    "wine_glass": 3.0,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 50.0,
+    "hotel_1star_2p": 60.0,
+    "hotel_3star_2p": 110.0
+  }
+}

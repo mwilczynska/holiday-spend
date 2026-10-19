@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated Wellington cost data anchors meals, cappuccino and domestic draft beer. Wine is informed by a New Zealand restaurant price range and a current Wellington menu; cocktail is estimated at about 1.4 times the draft-beer price. Accommodation is a holistic estimate without live listing checks and is the least certain part.",
+  "comparable_city_reasoning": "No external comparable city was used; food and drink anchors use Wellington-specific data, while accommodation is estimated from general knowledge of Wellington as a small national capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.5,
+    "coffee": 3.5,
+    "inexp_meal_1p": 14,
+    "midrange_meal_2p": 68,
+    "cocktail": 10.5,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 76,
+    "hotel_1star_2p": 96,
+    "hotel_3star_2p": 147
+  }
+}

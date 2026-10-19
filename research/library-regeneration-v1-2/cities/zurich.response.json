@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use recent Zurich cost-of-living averages; cocktail and wine prices use a current local drinks guide, with the wine estimate near the local price relationship to draft beer. Accommodation and CHF-to-USD conversions are holistic estimates, not live listing prices.",
+  "comparable_city_reasoning": "No comparator used for the observed Zurich food and drink prices; accommodation reflects a holistic estimate for a high-cost Swiss city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10,
+    "coffee": 7.23,
+    "inexp_meal_1p": 35,
+    "midrange_meal_2p": 150,
+    "cocktail": 23.75,
+    "wine_glass": 11.25,
+    "hostel_dorm_1p": 70,
+    "hostel_private_2p": 160,
+    "hotel_1star_2p": 200,
+    "hotel_3star_2p": 300
+  }
+}

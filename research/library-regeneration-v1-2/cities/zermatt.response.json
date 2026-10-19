@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "low",
+  "confidence_notes": "Food anchors use Zermatt cost-of-living data; drink anchors use a small sample of current local menus, with the cocktail estimate near 1.7 times the local draft-beer price and wine anchored to local by-the-glass listings. Accommodation is a holistic estimate for a high-cost Alpine resort and is highly season-dependent.",
+  "comparable_city_reasoning": "No close city comparator used; Zermatt is treated as a high-cost Swiss Alpine resort, with local food and drink prices anchoring those estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.09,
+    "coffee": 6.05,
+    "inexp_meal_1p": 36.28,
+    "midrange_meal_2p": 169.32,
+    "cocktail": 21.17,
+    "wine_glass": 12.09,
+    "hostel_dorm_1p": 85,
+    "hostel_private_2p": 230,
+    "hotel_1star_2p": 300,
+    "hotel_3star_2p": 500
+  }
+}

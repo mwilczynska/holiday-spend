@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Food anchors use recent city price snapshots; drink prices also reflect local menus, but coffee and beer figures vary. Accommodation anchors are holistic estimates with substantial property and seasonal variation.",
+  "comparable_city_reasoning": "No direct comparable city was used; food and drink rely on Victoria Falls city snapshots and tourist-area menus, while accommodation is estimated from general knowledge of Zimbabwe's resort market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5,
+    "coffee": 6,
+    "inexp_meal_1p": 10,
+    "midrange_meal_2p": 45,
+    "cocktail": 8,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 70,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 160
+  }
+}

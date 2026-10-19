@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current Varanasi cost-of-living aggregates, but contributor coverage is limited. The cocktail estimate comes from sparse June 2026 data; the wine-glass estimate is inferred at about 1.5 times the local draft-beer price because no direct glass price was available. Accommodation anchors are broad estimates for budget lodging in a North Indian pilgrimage city, with substantial seasonal variation.",
+  "comparable_city_reasoning": "Food prices use Varanasi-specific aggregates; accommodation estimates reflect budget lodging levels in North Indian pilgrimage and heritage destinations with similar visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.70,
+    "coffee": 1.70,
+    "inexp_meal_1p": 1.95,
+    "midrange_meal_2p": 8.35,
+    "cocktail": 3.60,
+    "wine_glass": 2.50,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 42.00
+  }
+}

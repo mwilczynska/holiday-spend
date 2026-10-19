@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and draft beer anchors are grounded in current Victoria price indexes, which vary most for mid-range dining. Cocktail and wine estimates use approximate local multiples of draft beer; lodging is a holistic estimate, with hostel availability especially uncertain.",
+  "comparable_city_reasoning": "Victoria is a small island capital with a tourism-driven market; food and drink use Victoria-specific city price indexes, while lodging is estimated from general knowledge of Mahé and Seychelles tourism costs.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.7,
+    "coffee": 4.3,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 58,
+    "cocktail": 9.5,
+    "wine_glass": 7,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 160
+  }
+}

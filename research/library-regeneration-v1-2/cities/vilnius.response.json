@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Vilnius restaurant anchors are supported by 2026 city price-index observations. The cocktail estimate comes from a current city price index, while the wine-glass price is inferred from its local relationship to beer. Accommodation is a holistic, season-sensitive estimate without live listing checks.",
+  "comparable_city_reasoning": "Food and drink estimates use Vilnius city-level prices; accommodation is estimated holistically for a Baltic capital with moderate tourism demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.8,
+    "coffee": 4.0,
+    "inexp_meal_1p": 15.0,
+    "midrange_meal_2p": 75.0,
+    "cocktail": 10.5,
+    "wine_glass": 7.0,
+    "hostel_dorm_1p": 27.0,
+    "hostel_private_2p": 67.0,
+    "hotel_1star_2p": 72.0,
+    "hotel_3star_2p": 125.0
+  }
+}

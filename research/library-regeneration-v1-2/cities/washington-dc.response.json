@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Washington city-level prices were updated 15 October 2026. The cocktail estimate is from a smaller sample updated 23 July; wine is estimated from the local draft-beer price. Accommodation anchors are holistic estimates and can vary substantially by date.",
+  "comparable_city_reasoning": "No separate comparable city used; food and drink are based on Washington, D.C. city-level prices, while accommodation reflects the city's high-cost U.S. capital market.",
+  "fx": {
+    "as_of_date": "2026-10-13",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6961,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9,
+    "coffee": 6.08,
+    "inexp_meal_1p": 26.5,
+    "midrange_meal_2p": 108.1,
+    "cocktail": 18,
+    "wine_glass": 14,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 125,
+    "hotel_1star_2p": 165,
+    "hotel_3star_2p": 235
+  }
+}
