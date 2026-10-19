@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Montreal cost-of-living entries support restaurant, coffee, and beer estimates; cocktail data is from a downtown-club benchmark, wine is estimated relative to local beer, and accommodation has substantial seasonal uncertainty.",
+  "comparable_city_reasoning": "Food and drink use direct Montreal price indicators; accommodation is a broad estimate for a major Canadian visitor city with strong summer demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.35,
+    "coffee": 3.85,
+    "inexp_meal_1p": 18.70,
+    "midrange_meal_2p": 72.00,
+    "cocktail": 14.10,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 43.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 135.00,
+    "hotel_3star_2p": 205.00
+  }
+}

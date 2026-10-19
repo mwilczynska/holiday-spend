@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Marbella price observations anchor restaurant, coffee and beer estimates. Cocktail data are sparse; wine and highly seasonal accommodation prices are broader estimates.",
+  "comparable_city_reasoning": "Restaurant anchors use recent Marbella observations; accommodation uses a broad Costa del Sol tourism-market estimate without live listing checks.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.64,
+    "coffee": 3.78,
+    "inexp_meal_1p": 23.2,
+    "midrange_meal_2p": 92.8,
+    "cocktail": 16.24,
+    "wine_glass": 6.96,
+    "hostel_dorm_1p": 46.4,
+    "hostel_private_2p": 110.2,
+    "hotel_1star_2p": 127.6,
+    "hotel_3star_2p": 203
+  }
+}

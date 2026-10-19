@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use recent city cost-of-living data, which is user-contributed and varies by venue. The wine-by-the-glass anchor is estimated from local drink pricing. Accommodation values are broad model estimates based on general knowledge; no live booking listings were checked.",
+  "comparable_city_reasoning": "Food and drink anchors use Melbourne-specific cost-of-living observations. Accommodation is estimated from general knowledge of large Australian cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.73,
+    "coffee": 4.01,
+    "inexp_meal_1p": 17.37,
+    "midrange_meal_2p": 83.36,
+    "cocktail": 15.00,
+    "wine_glass": 9.55,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 150.00
+  }
+}

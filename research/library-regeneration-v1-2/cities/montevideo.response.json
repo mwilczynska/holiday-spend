@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Montevideo cost-of-living data supports the restaurant, cappuccino and draft-beer estimates; a 2026 nightlife guide supports cocktail and wine estimates. Accommodation is a broad model estimate without live listing checks, so those anchors are less certain.",
+  "comparable_city_reasoning": "No direct comparable city was used; food and drink are based on Montevideo price aggregates, while accommodation uses a broad estimate for a high-cost Southern Cone capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.9,
+    "coffee": 4.6,
+    "inexp_meal_1p": 15.1,
+    "midrange_meal_2p": 68.6,
+    "cocktail": 12.5,
+    "wine_glass": 10.0,
+    "hostel_dorm_1p": 20.0,
+    "hostel_private_2p": 55.0,
+    "hotel_1star_2p": 75.0,
+    "hotel_3star_2p": 120.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino, and draft-beer anchors use aggregated Macau prices; the cocktail estimate uses a sparse collaborative price source, wine is estimated from its local relationship to beer, and accommodation anchors are bounded model estimates without live listings.",
+  "comparable_city_reasoning": "Macau-specific food and drink prices are available; accommodation estimates reflect a compact, high-tourism city with resort demand and are broadly informed by nearby Hong Kong and Zhuhai travel-market conditions.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.8,
+    "coffee": 5.05,
+    "inexp_meal_1p": 6.25,
+    "midrange_meal_2p": 56.2,
+    "cocktail": 12.1,
+    "wine_glass": 8.7,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 65,
+    "hotel_1star_2p": 60,
+    "hotel_3star_2p": 125
+  }
+}

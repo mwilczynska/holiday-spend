@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer, and cocktail estimates use Lugano cost-of-living price indexes and an approximate CHF-to-USD conversion. Wine is estimated from its local price relationship to beer. Accommodation estimates are holistic and especially uncertain because they vary by season and availability.",
+  "comparable_city_reasoning": "Food and drink are based on Lugano-specific price indexes; accommodation uses general knowledge of high-cost Swiss and Ticino lakeside visitor cities without live listing research.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.92,
+    "coffee": 4.75,
+    "inexp_meal_1p": 37.20,
+    "midrange_meal_2p": 186.00,
+    "cocktail": 17.36,
+    "wine_glass": 12.40,
+    "hostel_dorm_1p": 70.00,
+    "hostel_private_2p": 165.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 300.00
+  }
+}

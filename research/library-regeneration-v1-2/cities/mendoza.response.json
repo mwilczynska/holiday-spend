@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and draft-beer anchors use Mendoza cost-of-living averages last updated September 2026. Cocktail and wine-by-the-glass prices are estimates based on the local draft-beer price and mid-range retail wine price; accommodation is a bounded general-knowledge estimate without live listing checks.",
+  "comparable_city_reasoning": "Food and drink use Mendoza-specific averages; accommodation uses a mid-sized Argentine regional-city baseline with a modest wine-tourism premium.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 4.42,
+    "inexp_meal_1p": 11.00,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 6.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 78.00
+  }
+}

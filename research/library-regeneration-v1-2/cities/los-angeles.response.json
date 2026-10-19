@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee, and draft-beer anchors use October 2026 Los Angeles cost-of-living observations. The cocktail estimate reflects an ordinary bar price at roughly twice local draft beer; wine is estimated at about 1.5 times draft beer because typical full-price restaurant wine data were limited. Hostel and hotel prices are holistic estimates and vary substantially by neighborhood, date, and events.",
+  "comparable_city_reasoning": "No other city was used; food and coffee use Los Angeles city-specific cost-of-living data, while accommodation is estimated holistically for a large, high-demand U.S. coastal city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 5.95,
+    "inexp_meal_1p": 26.5,
+    "midrange_meal_2p": 120,
+    "cocktail": 16,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 135,
+    "hotel_1star_2p": 160,
+    "hotel_3star_2p": 280
+  }
+}

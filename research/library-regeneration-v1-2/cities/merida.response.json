@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Meal, beer, and coffee anchors use Mérida-specific Numbeo averages updated October 2026 (567 contributions from 50 contributors). Cocktail and wine prices are cross-checked against one current Mérida menu. Lodging anchors are broad model estimates without live listings, and peso-to-USD conversion is approximate.",
+  "comparable_city_reasoning": "No comparable city used; food and drink anchors are Mérida-specific, while lodging estimates are bounded model estimates for a regional Mexican tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.06,
+    "coffee": 3.96,
+    "inexp_meal_1p": 13.83,
+    "midrange_meal_2p": 55.56,
+    "cocktail": 8.33,
+    "wine_glass": 8.33,
+    "hostel_dorm_1p": 17,
+    "hostel_private_2p": 50,
+    "hotel_1star_2p": 58,
+    "hotel_3star_2p": 115
+  }
+}

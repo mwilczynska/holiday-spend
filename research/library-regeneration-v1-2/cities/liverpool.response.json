@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, cappuccino and draft-beer anchors use Liverpool's May 2026 Numbeo typical prices. Cocktail and wine estimates are less certain and use local menu and offer examples; lodging is a holistic estimate without live listing research.",
+  "comparable_city_reasoning": "No specific comparator used; food and drink use Liverpool observations, while lodging uses broad UK regional-city judgment.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.65,
+    "coffee": 5.03,
+    "inexp_meal_1p": 23.95,
+    "midrange_meal_2p": 96.45,
+    "cocktail": 12.65,
+    "wine_glass": 8.65,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 150
+  }
+}

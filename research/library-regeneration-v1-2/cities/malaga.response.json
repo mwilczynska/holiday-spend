@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current Málaga price checks; lodging is a holistic estimate, and wine is inferred from its local price relationship to beer.",
+  "comparable_city_reasoning": "No separate comparable city was needed; local Málaga prices guide food and drink, while lodging reflects a tourism-heavy Andalusian coastal city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 2.7,
+    "inexp_meal_1p": 17.5,
+    "midrange_meal_2p": 58,
+    "cocktail": 14,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 160
+  }
+}

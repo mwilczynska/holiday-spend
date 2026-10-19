@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Manila cost-of-living estimates, but the freshest collaborative sample warns of limited data. The wine-glass estimate follows its local price relationship to beer. Accommodation anchors are holistic estimates from general knowledge, not current listing checks.",
+  "comparable_city_reasoning": "Food and drink anchors are Manila-specific; accommodation estimates use general budget-to-midrange norms for Manila and comparable Southeast Asian capitals.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.5,
+    "inexp_meal_1p": 5.55,
+    "midrange_meal_2p": 27,
+    "cocktail": 6.6,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 29,
+    "hotel_3star_2p": 60
+  }
+}

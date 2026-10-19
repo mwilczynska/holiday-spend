@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors use current Japan-wide cost-of-living averages because no Matsuyama aggregate was found; local Matsuyama drink menus provide a check. Accommodation is a broad model estimate and can vary with season and Dōgo-area demand.",
+  "comparable_city_reasoning": "Treat Matsuyama as a mid-sized regional Japanese city: use Japan-wide meal and coffee prices with a modest regional-city adjustment, and local menu examples for drinks. Lodging is estimated for a regional center with visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.8,
+    "coffee": 3.14,
+    "inexp_meal_1p": 6.5,
+    "midrange_meal_2p": 32,
+    "cocktail": 4.6,
+    "wine_glass": 3.8,
+    "hostel_dorm_1p": 21,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 58,
+    "hotel_3star_2p": 88
+  }
+}

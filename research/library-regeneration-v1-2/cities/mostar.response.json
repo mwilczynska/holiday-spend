@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and beer estimates use a city price aggregate with a modest contributor base; cocktail pricing is less robust, wine is estimated at about 1.3 times draft beer, and accommodation is a holistic estimate rather than live listing research.",
+  "comparable_city_reasoning": "Food and drink are consistent with affordable Bosnian and western Balkan city prices; accommodation estimates use a Mostar and nearby regional city baseline with tourist demand in mind.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.35,
+    "coffee": 1.70,
+    "inexp_meal_1p": 7.05,
+    "midrange_meal_2p": 29.40,
+    "cocktail": 3.55,
+    "wine_glass": 3.05,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 36.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 70.00
+  }
+}

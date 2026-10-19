@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Current Luxor price aggregates support restaurant meals, cappuccino and domestic beer; the cocktail estimate uses a current city cost comparison, and the wine estimate uses a local restaurant menu. Alcohol prices and all accommodation anchors are less certain; accommodation is a bounded estimate without live listing research.",
+  "comparable_city_reasoning": "Food and drink estimates use Luxor-specific price data. Accommodation is a holistic Luxor estimate based on the city's budget-oriented tourism market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2,
+    "coffee": 1.35,
+    "inexp_meal_1p": 3.8,
+    "midrange_meal_2p": 40,
+    "cocktail": 3,
+    "wine_glass": 4,
+    "hostel_dorm_1p": 8,
+    "hostel_private_2p": 18,
+    "hotel_1star_2p": 25,
+    "hotel_3star_2p": 50
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Malacca-specific aggregated prices support restaurant meals, coffee and beer, though the city data is uneven in freshness. Cocktail pricing is based on a local cocktail menu and the local beer price relationship; wine by the glass is less certain and estimated relative to beer. Accommodation anchors are holistic estimates from general knowledge, not live listings.",
+  "comparable_city_reasoning": "Used Malacca's own aggregated cost-of-living estimates for meals, coffee and beer, with local bar pricing to bound alcoholic drinks. Accommodation estimates reflect a Malaysian secondary heritage-tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.67,
+    "coffee": 2.45,
+    "inexp_meal_1p": 3.18,
+    "midrange_meal_2p": 24.48,
+    "cocktail": 11.02,
+    "wine_glass": 7.34,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 60.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Lyon-specific 2026 cost-of-living aggregates support the restaurant, coffee, and beer anchors; venue prices vary. The cocktail estimate uses a current Lyon price report, while the wine glass is estimated from its local relationship to draft beer. Accommodation anchors are holistic estimates from general knowledge and were not checked against live listings.",
+  "comparable_city_reasoning": "No single comparable city used; food and drink estimates are based on Lyon-specific typical-price aggregates, with accommodation estimated for a major French regional city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.1,
+    "coffee": 4.1,
+    "inexp_meal_1p": 18.0,
+    "midrange_meal_2p": 70.0,
+    "cocktail": 13.5,
+    "wine_glass": 7.0,
+    "hostel_dorm_1p": 40.0,
+    "hostel_private_2p": 90.0,
+    "hotel_1star_2p": 95.0,
+    "hotel_3star_2p": 155.0
+  }
+}

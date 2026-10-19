@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use recent Milan price-index estimates. Cocktail uses a current city cost-of-living estimate; wine is estimated relative to local draft-beer prices. Accommodation is a broad model estimate without live lodging research, so it is less certain and varies with season and location.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates are based on Milan data, and lodging is estimated from general knowledge of a major northern Italian business and tourism city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.74,
+    "coffee": 2.14,
+    "inexp_meal_1p": 22.46,
+    "midrange_meal_2p": 89.83,
+    "cocktail": 14.60,
+    "wine_glass": 7.86,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 112.30,
+    "hotel_1star_2p": 145.98,
+    "hotel_3star_2p": 224.60
+  }
+}

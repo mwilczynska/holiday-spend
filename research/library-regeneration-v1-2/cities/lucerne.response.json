@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated Lucerne prices support the restaurant, coffee and beer anchors. Cocktail and wine prices are estimated relative to local draft beer, while accommodation values are broad seasonal estimates without live listing checks.",
+  "comparable_city_reasoning": "Food and drink estimates use Lucerne city-level prices; accommodation is modeled for a high-cost Swiss tourist city with seasonal visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9,
+    "coffee": 7,
+    "inexp_meal_1p": 35,
+    "midrange_meal_2p": 125,
+    "cocktail": 19,
+    "wine_glass": 13,
+    "hostel_dorm_1p": 75,
+    "hostel_private_2p": 175,
+    "hotel_1star_2p": 225,
+    "hotel_3star_2p": 325
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use current Miami cost-of-living survey prices and the cocktail estimate uses a local bar-price average. The wine-glass price is estimated from the local draft-beer price; accommodation estimates are less certain and vary by season and neighborhood.",
+  "comparable_city_reasoning": "No comparable city used; food and drink are based on Miami's own reported prices, while lodging is estimated from general knowledge of a high-demand U.S. coastal destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 5.85,
+    "inexp_meal_1p": 30,
+    "midrange_meal_2p": 120,
+    "cocktail": 15,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 110,
+    "hotel_1star_2p": 140,
+    "hotel_3star_2p": 250
+  }
+}

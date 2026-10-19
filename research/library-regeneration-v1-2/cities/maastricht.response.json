@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors use recent Maastricht price-index data. The cocktail figure comes from a thinly sourced local estimate, wine is inferred at slightly below the local draft-beer price, and accommodation anchors are broad model estimates without live listing checks.",
+  "comparable_city_reasoning": "Food and drink use Maastricht-specific typical prices; accommodation is estimated for Maastricht and similar secondary Dutch tourist cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.42,
+    "coffee": 4.35,
+    "inexp_meal_1p": 20.15,
+    "midrange_meal_2p": 89.83,
+    "cocktail": 7.86,
+    "wine_glass": 7.30,
+    "hostel_dorm_1p": 44.91,
+    "hostel_private_2p": 101.05,
+    "hotel_1star_2p": 129.13,
+    "hotel_3star_2p": 174.04
+  }
+}
