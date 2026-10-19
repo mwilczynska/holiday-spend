@@ -1,25 +1,25 @@
 {
   "region": "Latin America",
-  "confidence": "low",
-  "confidence_notes": "Current aggregated prices are available for nearby Cusco rather than the Sacred Valley itself, with a wide gap between local and visitor-oriented prices. Meal and drink anchors are adjusted for tourist towns; the cocktail estimate follows the local premium over beer, and wine is inferred at about twice the beer price. Accommodation estimates are holistic and especially uncertain.",
-  "comparable_city_reasoning": "Used Cusco as the nearest regional benchmark with current aggregated meal, coffee, beer, and cocktail prices, then adjusted toward visitor-oriented Sacred Valley towns such as Urubamba and Ollantaytambo.",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use the current Cusco aggregate price basket with an uplift for the Sacred Valley's tourist-facing towns. Cocktails and wine are inferred relative to beer where local aggregate prices are sparse. Accommodation is a holistic regional estimate with no live listings checked; village and season variation is substantial.",
+  "comparable_city_reasoning": "Use the Cusco Department's current aggregate food and drink prices as the nearest broad comparison, adjusted for the tourist corridor of Urubamba, Pisac and Ollantaytambo. Accommodation reflects general knowledge of that Andean visitor corridor.",
   "fx": {
-    "as_of_date": "2026-09-14",
+    "as_of_date": "2026-10-19",
     "source_name": "Reserve Bank of Australia",
     "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
-    "source_rate": 0.7149,
+    "source_rate": 0.6975,
     "source_rate_basis": "USD_PER_AUD"
   },
   "anchors_usd": {
-    "beer": 3.5,
-    "coffee": 3.5,
-    "inexp_meal_1p": 8,
-    "midrange_meal_2p": 48,
-    "cocktail": 9,
-    "wine_glass": 7,
-    "hostel_dorm_1p": 14,
-    "hostel_private_2p": 35,
-    "hotel_1star_2p": 45,
-    "hotel_3star_2p": 110
+    "beer": 4,
+    "coffee": 3,
+    "inexp_meal_1p": 6,
+    "midrange_meal_2p": 38,
+    "cocktail": 7.5,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 12,
+    "hostel_private_2p": 32,
+    "hotel_1star_2p": 35,
+    "hotel_3star_2p": 75
   }
 }

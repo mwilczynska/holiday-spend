@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use Göreme and Cappadocia guides; coffee is based on one local menu. Alcohol prices vary by venue, so cocktail and wine are estimated at about 2.1 and 1.4 times the local restaurant-beer anchor. Accommodation is a seasonal model estimate without live inventory and is least certain.",
+  "comparable_city_reasoning": "Food and drink are grounded in Göreme and the wider Cappadocia region; accommodation is modeled for a small, highly touristed Central Anatolian destination.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 4.5,
+    "inexp_meal_1p": 9,
+    "midrange_meal_2p": 44,
+    "cocktail": 15,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 65,
+    "hotel_3star_2p": 120
+  }
+}
