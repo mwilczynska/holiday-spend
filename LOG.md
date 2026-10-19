@@ -3558,3 +3558,19 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   conversion via Frankfurter); it was restored from git and the new code moved to `usd-aud-reference-rate.ts`.
   Frankfurter now redirects `api.frankfurter.app` to `api.frankfurter.dev`; fetch follows it, so expense conversion
   still works.
+
+## 19 October 2026 — Library regenerated under v1.2; photo review
+
+- Regeneration: 529 prompts from stored city names, answered by GPT-6 Luna Max Codex workers (up to six searches:
+  RBA rate plus food and drink; no accommodation search), saved with `add-cities-from-agent-responses.ts persist` in
+  three waves. Codex hit its 5-hour limit twice; the queue resumed each time. Before saving, `review-wave.ts` compared
+  each answer's v1.2 values with the current ones. Large changes were mostly old values being replaced: 23 original
+  hand-entered seed cities (for example moderate drinks at A$7 a day), 122 April CSV cities with low food values, and
+  v1 cities with implausible values (Apia 3-star A$461, mid-range food A$410).
+- Nagasaki's first answer (mid-range meal for two USD 19, beer USD 2.30) looked like a misread; a fresh worker returned
+  almost the same figures from the same crowd-sourced data, so it was kept. Dambulla's 3-star fell from A$100 to A$28
+  (USD 45 x Sri Lanka factor 0.43, fitted on 12 Sri Lankan reference cities): working as designed, but South Asian
+  3-star booking prices include cheap guesthouses; revisit at the next table refresh.
+- Photo review: Codex Luna Max workers looked at each stored 500 px photo with its city, article and Commons title.
+  525 ok; Mykonos and Santorini (PNG municipality maps), Palermo (church interior) and Oaxaca (the state's mountains)
+  flagged.

@@ -60,6 +60,36 @@ describe('city image lookup', () => {
     expect(result.status === 'ok' && result.image).toMatchObject({ articleTitle: 'Rethymno', commonsFile: 'City.jpg' });
   });
 
+  it('rejects a PNG municipality map as the lead image and falls back to the Wikidata photo', async () => {
+    const result = await lookupCityImage({ name: 'Mykonos', countryName: 'Greece', latitude: 37.45, longitude: 25.35 }, fakeFetch({
+      search: { query: { pages: [
+        { index: 1, title: 'Mykonos', coordinates: [{ lat: 37.45, lon: 25.35 }], pageimage: 'Dimos_Mykonou.png', pageprops: { wikibase_item: 'Q190210' } },
+      ] } },
+      wikidata: { Q190210: 'Little_Venice.jpg' },
+      commons: { 'Dimos_Mykonou.png': { ...freeInfo('Dimos_Mykonou.png'), mime: 'image/png' }, 'Little_Venice.jpg': freeInfo('Little_Venice.jpg') },
+    }));
+    expect(result.status === 'ok' && result.image).toMatchObject({ source: 'wikidata', commonsFile: 'Little_Venice.jpg' });
+  });
+
+  it('keeps a PNG photo montage whose name does not describe a map', async () => {
+    const result = await lookupCityImage({ name: 'Brno', countryName: 'Czech Republic', latitude: 49.19, longitude: 16.61 }, fakeFetch({
+      search: { query: { pages: [{ index: 1, title: 'Brno', coordinates: [{ lat: 49.19, lon: 16.61 }], pageimage: 'Brno_Montage_IV.png' }] } },
+      commons: { 'Brno_Montage_IV.png': { ...freeInfo('Brno_Montage_IV.png'), mime: 'image/png' } },
+    }));
+    expect(result.status === 'ok' && result.image).toMatchObject({ commonsFile: 'Brno_Montage_IV.png' });
+  });
+
+  it('uses the chosen Wikidata item for a city whose lead image is the wrong subject', async () => {
+    const result = await lookupCityImage({ name: 'Palermo', countryName: 'Italy', countryCode: 'IT', latitude: 38.12, longitude: 13.36 }, fakeFetch({
+      search: { query: { pages: [
+        { index: 1, title: 'Palermo', coordinates: [{ lat: 38.12, lon: 13.36 }], pageimage: 'Church_interior.jpg' },
+      ] } },
+      wikidata: { Q2656: 'Palermo_view.jpg' },
+      commons: { 'Church_interior.jpg': freeInfo('Church_interior.jpg'), 'Palermo_view.jpg': freeInfo('Palermo_view.jpg') },
+    }));
+    expect(result.status === 'ok' && result.image).toMatchObject({ source: 'wikidata', articleTitle: 'Palermo', commonsFile: 'Palermo_view.jpg' });
+  });
+
   it('normalises place names and measures distance', () => {
     expect(basePlaceName('Bali (Ubud)')).toBe('ubud');
     expect(basePlaceName('Hội An')).toBe('hoi an');
