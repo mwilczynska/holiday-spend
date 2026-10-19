@@ -4330,3 +4330,27 @@ Final `queue.mjs --status` output:
 - Retries: 29. Three initial built-in workers could not read their prompt without a command. Twelve ephemeral CLI workers then encountered the read-only tool policy; all were allowed to finish. Six additional CLI launches failed before any worker started because the sandbox could not resolve the Codex home directory. A replacement launcher used incompatible --sandbox and --approve-for-me flags; its process launches failed before model startup and it was stopped. The corrected dispatcher uses workspace-write with automatic review and the same restricted file tools. Windows stdin/stdout defaults were observed as CP1252; subsequent MCP servers use explicit Python UTF-8 mode after the 210-answer point, with existing worker files untouched. A Jodhpur worker was launched before its earlier worker exited; the output files already existed when the new worker tried to write them, and the exclusive-create file tool refused to overwrite them. Concurrent review activity generated .result.json files and removed the Nagasaki answer pair; the queue reissued Nagasaki, which was answered again. After auditing the first three checkpoints as response/provenance-only, subsequent commits select only new response/provenance files plus the requested summary and LOG.md and use --only to preserve unrelated staged work. Incomplete worker attempts: 34; unresolved after retries: florianopolis, fort-kochi, frankfurt, fujikawaguchiko, fukuoka, funchal, goreme.
 - Stop reason: All remaining tasks returned no files after one fresh retry.
 - No prompt files or application database were changed. No application keys or paid APIs were used.
+
+# 19 October 2026 - Library regeneration v1.2 collection complete (Codex)
+
+- Started at 527/529 answered. Two fresh, isolated `gpt-6-luna` workers at reasoning
+  `max` answered Puerto Vallarta and Sacred Valley concurrently, reaching 529/529.
+  Both response/provenance pairs were saved on the first attempt. Worker retries: 0;
+  worker failures: 0. Both workers reported an RBA observation dated 19 October 2026
+  of USD 0.6975 per AUD. Worker files were not edited.
+- The queue prints nothing. Its exact summary output was saved to
+  `research/library-regeneration-v1-2/summary.json`: 529 answered, 0 pending,
+  no unparseable responses and no missing search declarations.
+- Completion commit `05d03d3a` (`Library regeneration v1.2: all answered`) was pushed.
+  It also includes unchanged answer files already present at launch for the seven
+  cities left incomplete in the previous collection log. Concurrent `.result.json`
+  files and the review-script edit were left untouched and excluded from the commit.
+  Only two cities were answered this session, so no 48-answer checkpoint was due.
+- The initial sandboxed Git staging command could not write the linked worktree's
+  Git metadata. The authorized escalation succeeded. No index-lock wait, commit
+  failure or push retry was needed. `npm.cmd run docs:check-memory` passed.
+- No prompt files or application database were changed. No application keys or paid
+  APIs were used, and no worker transcripts or event logs were saved.
+- Stop condition 1: the queue is empty, both workers have finished, and the summary,
+  completion commit and push have completed. Answers remain for coordinator review
+  and persistence.
