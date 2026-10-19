@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Kota Kinabalu food and coffee estimates are supported by city-specific cost-of-living data. Alcohol prices are less certain because local samples are limited; the wine-glass estimate is inferred from its local price relationship to beer. Accommodation anchors are holistic estimates and were not checked against current listings.",
+  "comparable_city_reasoning": "No comparable-city proxy was needed for food and drink; those anchors use Kota Kinabalu-specific estimates. Accommodation is a holistic estimate based on general Sabah and Southeast Asia travel-market knowledge.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2.57,
+    "inexp_meal_1p": 3.64,
+    "midrange_meal_2p": 19.52,
+    "cocktail": 6.25,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 28,
+    "hotel_1star_2p": 28,
+    "hotel_3star_2p": 65
+  }
+}

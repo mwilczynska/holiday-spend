@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent Jakarta cost-of-living data. Accommodation values are holistic estimates with no booking pages or current listings checked. Cocktail and wine prices are less certain; local mid-range bar guidance puts them at roughly three to four times the price of domestic beer, with venue taxes and service charges varying.",
+  "comparable_city_reasoning": "Food anchors use Jakarta-specific prices; accommodation estimates reflect general budget lodging patterns in Southeast Asian capitals.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2,
+    "inexp_meal_1p": 2.75,
+    "midrange_meal_2p": 17,
+    "cocktail": 9,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 8,
+    "hostel_private_2p": 22,
+    "hotel_1star_2p": 24,
+    "hotel_3star_2p": 48
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Citywide food prices come from 2026 indexes; cocktail and 0.1 L wine prices use one local hotel bar menu. Accommodation is a broad model estimate with limited precision because spa-season demand and hostel supply vary.",
+  "comparable_city_reasoning": "Accommodation is modeled on smaller Czech regional tourist and spa cities, with an allowance for Karlovy Vary's spa tourism; food and drink are anchored to citywide price indexes and a local menu.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.15,
+    "coffee": 3.1,
+    "inexp_meal_1p": 9.5,
+    "midrange_meal_2p": 47.5,
+    "cocktail": 6.5,
+    "wine_glass": 3.35,
+    "hostel_dorm_1p": 22,
+    "hostel_private_2p": 52,
+    "hotel_1star_2p": 58,
+    "hotel_3star_2p": 112
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer and cappuccino anchors use city cost-of-living aggregates last updated June-August 2026; cocktail uses a 2026 Istanbul neighborhood price range. Wine is estimated from its local price relationship to beer, and accommodation is a broad model estimate without current listing checks.",
+  "comparable_city_reasoning": "Used Istanbul city-level price data directly; no comparable city proxy was needed.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.41,
+    "coffee": 4.05,
+    "inexp_meal_1p": 11,
+    "midrange_meal_2p": 53,
+    "cocktail": 16,
+    "wine_glass": 8.5,
+    "hostel_dorm_1p": 22,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 70,
+    "hotel_3star_2p": 125
+  }
+}

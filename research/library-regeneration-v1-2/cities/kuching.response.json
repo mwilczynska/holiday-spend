@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Recent Kuching price indexes support the meal, cappuccino and draft-beer anchors. The cocktail estimate comes from a smaller collaborative index, and the wine glass is inferred at about 1.3 times local draft beer because a direct glass price was unavailable. Accommodation anchors are holistic regional estimates; no live booking listings were inspected.",
+  "comparable_city_reasoning": "No comparable city was used; food and drink anchors draw on Kuching-specific prices, while accommodation reflects general knowledge of Malaysian urban markets.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.65,
+    "coffee": 3.24,
+    "inexp_meal_1p": 3.43,
+    "midrange_meal_2p": 24.50,
+    "cocktail": 5.63,
+    "wine_glass": 6.12,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 23.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 48.00
+  }
+}

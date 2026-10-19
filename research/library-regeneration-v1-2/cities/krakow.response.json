@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Aggregated city benchmarks support meals, cappuccino, and beer; a current local guide informs cocktails. Accommodation is a holistic estimate, and wine is inferred from local beer pricing with a restaurant uplift.",
+  "comparable_city_reasoning": "Kraków-specific mid-2026 cost-of-living benchmarks inform food and beer; accommodation estimates reflect general knowledge of Polish and Central European tourist cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.6,
+    "coffee": 4.2,
+    "inexp_meal_1p": 12,
+    "midrange_meal_2p": 51,
+    "cocktail": 8,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 70,
+    "hotel_3star_2p": 125
+  }
+}

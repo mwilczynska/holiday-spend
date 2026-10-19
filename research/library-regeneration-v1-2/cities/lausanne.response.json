@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Lausanne-specific aggregate prices give a solid basis for restaurant meals, beer, and coffee. Wine uses a Lausanne restaurant menu index and the cocktail estimate is less certain because its current city sample is small. Accommodation figures are holistic estimates and can vary substantially by season and dates.",
+  "comparable_city_reasoning": "Food and drink are based on Lausanne-specific cost and menu indexes; accommodation is estimated from general knowledge of registered lodging in high-cost Swiss urban destinations around Lake Geneva.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.3,
+    "coffee": 6.1,
+    "inexp_meal_1p": 30.0,
+    "midrange_meal_2p": 117.0,
+    "cocktail": 19.0,
+    "wine_glass": 9.7,
+    "hostel_dorm_1p": 65.0,
+    "hostel_private_2p": 150.0,
+    "hotel_1star_2p": 170.0,
+    "hotel_3star_2p": 250.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Iquique food and drink estimates use sparse 2026 cost-of-living data. The wine-glass estimate is inferred from the local beer price relationship; accommodation anchors are broad model estimates without live lodging data.",
+  "comparable_city_reasoning": "Uses Iquique's own reported food and drink prices, with general knowledge of northern Chilean coastal cities informing the accommodation estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 3.75,
+    "inexp_meal_1p": 8.35,
+    "midrange_meal_2p": 44.5,
+    "cocktail": 7.9,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 17,
+    "hostel_private_2p": 42,
+    "hotel_1star_2p": 48,
+    "hotel_3star_2p": 85
+  }
+}

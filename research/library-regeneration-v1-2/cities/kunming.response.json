@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Kunming-specific city price surveys updated in October 2026 support meal, cappuccino, and domestic draft beer estimates. Cocktail data are sparse, wine is estimated at about 2.5 times domestic draft beer, and lodging is a holistic estimate without live listings.",
+  "comparable_city_reasoning": "No single comparable city used; food and drink use Kunming-specific surveys, while lodging reflects a lower-cost inland Chinese provincial-capital baseline.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.5,
+    "coffee": 2.92,
+    "inexp_meal_1p": 2.24,
+    "midrange_meal_2p": 22.42,
+    "cocktail": 5.68,
+    "wine_glass": 3.74,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 28,
+    "hotel_1star_2p": 24,
+    "hotel_3star_2p": 45
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and beer are anchored to a recent city-level price survey. Cocktail and wine prices vary more, so those estimates use local bar ranges and their higher prices relative to draft beer. Accommodation prices are holistic estimates from general knowledge, not live listings.",
+  "comparable_city_reasoning": "No direct comparator used; food and drink use Kuala Lumpur price data, while accommodation reflects a broad estimate for a major Southeast Asian capital.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2021-08-30-12-51-47",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.5,
+    "coffee": 3.1,
+    "inexp_meal_1p": 4.9,
+    "midrange_meal_2p": 29.5,
+    "cocktail": 9.8,
+    "wine_glass": 12.8,
+    "hostel_dorm_1p": 9,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 26,
+    "hotel_3star_2p": 55
+  }
+}

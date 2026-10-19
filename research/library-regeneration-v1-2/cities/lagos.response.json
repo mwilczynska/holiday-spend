@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Recent Lagos-specific price data covers restaurant meals, cappuccino, and draft beer, but has only 25 contributors over 18 months. Cocktail and wine prices are inferred from the local beer price; lodging is a holistic estimate for a seasonal Algarve tourist town. USD food and drink anchors are approximate conversions from euro prices.",
+  "comparable_city_reasoning": "Food and drink estimates use recent Lagos-specific cost data. Lodging reflects the seasonal coastal tourism market in the Algarve.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.06,
+    "coffee": 2.83,
+    "inexp_meal_1p": 12.76,
+    "midrange_meal_2p": 58.00,
+    "cocktail": 10.44,
+    "wine_glass": 5.22,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 160.00
+  }
+}

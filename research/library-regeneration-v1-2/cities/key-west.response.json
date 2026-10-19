@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and draft beer anchors use a June 2026 Key West cost-of-living snapshot; cocktail and wine estimates use current local price evidence. Accommodation is a broad Florida Keys tourism-market estimate with substantial seasonal and property variation, especially for hostel beds; no live lodging prices were checked.",
+  "comparable_city_reasoning": "Used the Florida Keys island-resort market as the regional basis for accommodation estimates, allowing for Key West's strong tourism demand and seasonality.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6,
+    "coffee": 4.6,
+    "inexp_meal_1p": 24,
+    "midrange_meal_2p": 140,
+    "cocktail": 15,
+    "wine_glass": 11,
+    "hostel_dorm_1p": 75,
+    "hostel_private_2p": 200,
+    "hotel_1star_2p": 250,
+    "hotel_3star_2p": 425
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Kaohsiung cost indexes support meal, cappuccino, and draft-beer prices; cocktail and wine prices are estimated from their local relationship to beer, while accommodation is a holistic estimate from general knowledge rather than live listings.",
+  "comparable_city_reasoning": "City-specific Kaohsiung cost indexes anchor the food prices; accommodation uses general knowledge of lodging in large southern Taiwan cities, with Kaohsiung generally below Taipei.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.55,
+    "coffee": 2.85,
+    "inexp_meal_1p": 5.5,
+    "midrange_meal_2p": 31.4,
+    "cocktail": 6.5,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 42,
+    "hotel_1star_2p": 40,
+    "hotel_3star_2p": 70
+  }
+}

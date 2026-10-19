@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors follow recent La Paz cost-of-living aggregators. Accommodation is a holistic estimate without live listing checks; cocktail is based on a recent local bar-price listing, while wine is estimated relative to local draft beer. Crowdsourced price coverage and exchange conditions add uncertainty.",
+  "comparable_city_reasoning": "No direct comparable city used; accommodation estimates reflect La Paz's low-cost Andean capital market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.23,
+    "coffee": 1.72,
+    "inexp_meal_1p": 2.09,
+    "midrange_meal_2p": 9.26,
+    "cocktail": 3.90,
+    "wine_glass": 1.85,
+    "hostel_dorm_1p": 10,
+    "hostel_private_2p": 30,
+    "hotel_1star_2p": 28,
+    "hotel_3star_2p": 55
+  }
+}

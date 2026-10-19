@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and draft-beer anchors follow city-level Numbeo averages. The cocktail estimate adjusts a local expensive-club price toward an ordinary bar; wine per glass is inferred from the local beer relationship. Lodging is a holistic estimate with seasonal uncertainty.",
+  "comparable_city_reasoning": "Food and drink use Las Palmas city-level prices; lodging reflects general Canary Islands and Spanish coastal-city patterns, without live listing data.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.09,
+    "coffee": 2.55,
+    "inexp_meal_1p": 13.47,
+    "midrange_meal_2p": 73,
+    "cocktail": 9.54,
+    "wine_glass": 3.93,
+    "hostel_dorm_1p": 28.07,
+    "hostel_private_2p": 78.6,
+    "hotel_1star_2p": 95.45,
+    "hotel_3star_2p": 145.98
+  }
+}

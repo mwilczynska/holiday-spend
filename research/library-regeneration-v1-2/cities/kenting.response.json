@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Kenting-specific cost estimates provide a useful basis for meals, coffee and draft beer, though they are broad aggregates. The cocktail estimate is approximate; wine is estimated at about three times the local draft-beer price because a typical glass price is not well established. Accommodation estimates are holistic and especially uncertain because Kenting has strong seasonal demand.",
+  "comparable_city_reasoning": "Kenting is a southern Taiwan coastal resort area. Food and drink estimates use local Kenting cost estimates, cross-checked against Taiwan-wide typical prices; accommodation reflects broad resort-town pricing rather than current listings.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.3,
+    "coffee": 2.8,
+    "inexp_meal_1p": 3.7,
+    "midrange_meal_2p": 26,
+    "cocktail": 7,
+    "wine_glass": 7,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 45,
+    "hotel_1star_2p": 50,
+    "hotel_3star_2p": 100
+  }
+}

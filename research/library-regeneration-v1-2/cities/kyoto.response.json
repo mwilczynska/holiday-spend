@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer estimates use Kyoto-wide cost-of-living prices last updated in May 2026. Cocktail and wine prices are estimated relative to local beer using a limited local menu check. Accommodation anchors are non-live estimates and vary substantially by season and area.",
+  "comparable_city_reasoning": "Food and drink anchors use Kyoto citywide prices. Osaka and other major Japanese tourist cities provide a broad sanity check for the holistic accommodation estimates.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.17,
+    "coffee": 3.30,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 31.67,
+    "cocktail": 5.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 68.00,
+    "hotel_1star_2p": 100.00,
+    "hotel_3star_2p": 180.00
+  }
+}

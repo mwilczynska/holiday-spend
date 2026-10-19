@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent Kandy cost-of-living aggregates give useful food and drink benchmarks, but the alcohol data are thinner; the wine-glass estimate is based on its local price relationship to domestic beer. Accommodation prices are holistic estimates without live listing checks.",
+  "comparable_city_reasoning": "No comparable-city substitution: food and drink anchors use recent Kandy price aggregates, while accommodation reflects a general estimate for Kandy's hostel and guesthouse market.",
+  "fx": {
+    "as_of_date": "2026-10-14",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7002,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.83,
+    "coffee": 1.95,
+    "inexp_meal_1p": 2.73,
+    "midrange_meal_2p": 13.08,
+    "cocktail": 5.69,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 8.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 56.00
+  }
+}

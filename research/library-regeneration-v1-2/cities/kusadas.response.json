@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "May 2026 Kuşadası city averages support meals, coffee and beer; cocktail and wine-by-the-glass estimates are less certain, and lodging is a holistic, season-sensitive estimate. TRY-to-USD price translations are approximate.",
+  "comparable_city_reasoning": "Use Kuşadası's own city price data for food; use a western Aegean resort-town baseline for lodging, with substantial shoulder-season versus summer variation.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.2,
+    "coffee": 2.7,
+    "inexp_meal_1p": 8.9,
+    "midrange_meal_2p": 24.7,
+    "cocktail": 11.5,
+    "wine_glass": 7.5,
+    "hostel_dorm_1p": 19,
+    "hostel_private_2p": 45,
+    "hotel_1star_2p": 50,
+    "hotel_3star_2p": 90
+  }
+}

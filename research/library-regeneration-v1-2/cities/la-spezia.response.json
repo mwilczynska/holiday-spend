@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "City-specific aggregate prices support inexpensive and mid-range meals, cappuccino, and draft beer. Cocktail and wine prices are bounded estimates based on their local relationship to draft beer. Accommodation anchors are broad holistic estimates and are more uncertain because no live listings were inspected.",
+  "comparable_city_reasoning": "Food anchors use La Spezia city-specific aggregate prices. Accommodation estimates reflect a small Ligurian city with substantial visitor demand as a base for the Cinque Terre.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.8,
+    "coffee": 1.82,
+    "inexp_meal_1p": 17.4,
+    "midrange_meal_2p": 81.2,
+    "cocktail": 9.28,
+    "wine_glass": 5.22,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 115,
+    "hotel_3star_2p": 175
+  }
+}

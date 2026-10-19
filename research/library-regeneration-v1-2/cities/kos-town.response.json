@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Kos price data is current for meals, cappuccino and draft beer; cocktail uses a local €8–12 range, while wine is estimated at about 1.25 times the beer price. Accommodation is a broad seasonal estimate, especially uncertain for hostel beds.",
+  "comparable_city_reasoning": "Food and drink anchors use Kos city-price data; the lodging estimates reflect the seasonal Greek island market, with no separate comparable city needed.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.49,
+    "coffee": 4.07,
+    "inexp_meal_1p": 14.04,
+    "midrange_meal_2p": 67.37,
+    "cocktail": 11.23,
+    "wine_glass": 5.61,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 75,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 145
+  }
+}
