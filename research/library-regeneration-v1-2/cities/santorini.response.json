@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Santorini-specific cost-index data gives useful restaurant, cappuccino, and draft-beer anchors but has thin crowdsourced coverage. The cocktail estimate uses a local menu; wine is estimated at about 1.4 times the local draft-beer price. Accommodation is a holistic island-market estimate with high seasonal variability.",
+  "comparable_city_reasoning": "Santorini's tourist premium makes Aegean resort islands such as Mykonos a more useful broad comparator than mainland Greece, especially for lodging and drinks; the restaurant anchors use Santorini-specific cost data.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.61,
+    "coffee": 4.56,
+    "inexp_meal_1p": 26.95,
+    "midrange_meal_2p": 87.69,
+    "cocktail": 14.60,
+    "wine_glass": 7.86,
+    "hostel_dorm_1p": 68.00,
+    "hostel_private_2p": 145.00,
+    "hotel_1star_2p": 185.00,
+    "hotel_3star_2p": 320.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Aggregated Rotterdam data supports the restaurant, cappuccino and draft-beer estimates; the cocktail estimate uses a small local sample, wine is inferred relative to beer, and accommodation is a holistic estimate.",
+  "comparable_city_reasoning": "Food and drink use Rotterdam city-price estimates; accommodation is bounded using general knowledge of Dutch urban lodging costs.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.84,
+    "coffee": 4.49,
+    "inexp_meal_1p": 24,
+    "midrange_meal_2p": 94,
+    "cocktail": 16.5,
+    "wine_glass": 8,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 112,
+    "hotel_1star_2p": 135,
+    "hotel_3star_2p": 205
+  }
+}

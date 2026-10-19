@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and draft-beer estimates align with recent São Paulo cost-of-living data. Cocktail pricing uses the local beer-price relationship; a representative restaurant wine-glass average is less directly documented. Accommodation anchors are holistic estimates and are less certain.",
+  "comparable_city_reasoning": "São Paulo is a major Latin American business and tourism hub with comparatively high costs within Brazil; food and drink estimates use São Paulo-specific price indexes, while lodging reflects the broad range typical of a large Brazilian metropolis.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.4,
+    "coffee": 2.5,
+    "inexp_meal_1p": 8.8,
+    "midrange_meal_2p": 48.8,
+    "cocktail": 6.5,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 65,
+    "hotel_3star_2p": 110
+  }
+}

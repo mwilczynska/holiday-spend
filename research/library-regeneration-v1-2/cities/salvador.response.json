@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Salvador's October 2026 aggregated restaurant, coffee and beer prices provide a useful local baseline. Cocktail and restaurant wine anchors are estimated from their local price relationship to beer; accommodation remains a holistic model estimate.",
+  "comparable_city_reasoning": "Food and drink are anchored to Salvador's current city price sample; lodging estimates reflect Salvador and comparable large Brazilian coastal cities.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.45,
+    "inexp_meal_1p": 8.00,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 5.50,
+    "wine_glass": 4.25,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 85.00
+  }
+}

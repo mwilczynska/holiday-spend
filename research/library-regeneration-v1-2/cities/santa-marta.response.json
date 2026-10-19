@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Santa Marta cost data supports the meal, beer, and coffee estimates, but the city sample is small and available figures vary. Cocktail references skew toward specialist bars; the wine glass is inferred from its local price relationship to beer. All accommodation anchors are holistic estimates.",
+  "comparable_city_reasoning": "Food and drink estimates use Santa Marta prices directly. Accommodation is estimated for a lower-cost Colombian Caribbean tourist city, with Santa Marta generally below Cartagena.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 3.00,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 27.00,
+    "cocktail": 10.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 75.00
+  }
+}

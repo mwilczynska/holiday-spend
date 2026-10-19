@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use San Antonio aggregated cost-of-living prices updated 2026-10-15. Hostel and hotel anchors are holistic estimates; cocktail and wine-glass values are estimated from their local price relationship to draft beer.",
+  "comparable_city_reasoning": "No single comparable city used. Food and drink anchors use San Antonio-specific aggregate prices; accommodation uses broad mid-sized Texas and U.S. city norms.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.25,
+    "coffee": 5.25,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 70,
+    "cocktail": 13,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 85,
+    "hotel_1star_2p": 75,
+    "hotel_3star_2p": 145
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates align with recent San Diego price aggregates, though meal, coffee, and beer figures vary by source. Wine by the glass is estimated at roughly 1.6 times the local draft-beer price because comparable aggregates did not provide a by-glass average. Lodging is a lower-confidence holistic estimate from general knowledge.",
+  "comparable_city_reasoning": "No comparison city used; food and drink anchors use San Diego aggregates, while lodging is estimated from general knowledge of a high-cost coastal Southern California market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2024-10-01-04-37-10",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.75,
+    "coffee": 6.25,
+    "inexp_meal_1p": 21,
+    "midrange_meal_2p": 95,
+    "cocktail": 18.5,
+    "wine_glass": 14,
+    "hostel_dorm_1p": 58,
+    "hostel_private_2p": 145,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 240
+  }
+}

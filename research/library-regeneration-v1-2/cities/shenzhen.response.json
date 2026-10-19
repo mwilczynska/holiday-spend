@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant prices use Shenzhen-specific reports updated in October 2026. Cocktail and wine prices are bounded estimates informed by local beer, bar and bottle-wine prices; accommodation is a general-knowledge estimate, with no booking prices checked.",
+  "comparable_city_reasoning": "Food and drink use Shenzhen-specific price benchmarks. Accommodation is estimated for a major first-tier mainland Chinese city with substantial business demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.5,
+    "coffee": 3.32,
+    "inexp_meal_1p": 3.74,
+    "midrange_meal_2p": 29.9,
+    "cocktail": 10,
+    "wine_glass": 6,
+    "hostel_dorm_1p": 14,
+    "hostel_private_2p": 38,
+    "hotel_1star_2p": 35,
+    "hotel_3star_2p": 65
+  }
+}

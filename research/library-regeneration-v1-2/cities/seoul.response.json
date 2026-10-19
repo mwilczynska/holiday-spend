@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, cappuccino and draft-beer anchors use Seoul cost-of-living averages updated in October 2026. Cocktail and wine values are bounded estimates based on their local price relationship to beer. Lodging is a holistic estimate and varies substantially by season and neighborhood.",
+  "comparable_city_reasoning": "No proxy city used; food and drink are based on Seoul-specific prices, while lodging is estimated for Seoul as a major East Asian capital.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 3.95,
+    "inexp_meal_1p": 8.63,
+    "midrange_meal_2p": 64.75,
+    "cocktail": 10.79,
+    "wine_glass": 8.63,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 130.00
+  }
+}

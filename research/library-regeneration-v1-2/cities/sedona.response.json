@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Local restaurant price data is sparse and varies by source; coffee, drinks, and especially hostel and hotel anchors are estimates. Sedona's seasonal visitor demand adds lodging uncertainty.",
+  "comparable_city_reasoning": "Estimated for a small, high-demand Southwest U.S. destination town, with a resort and visitor premium over nearby regional service centers.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 5,
+    "inexp_meal_1p": 16,
+    "midrange_meal_2p": 65,
+    "cocktail": 14,
+    "wine_glass": 11,
+    "hostel_dorm_1p": 70,
+    "hostel_private_2p": 155,
+    "hotel_1star_2p": 180,
+    "hotel_3star_2p": 280
+  }
+}

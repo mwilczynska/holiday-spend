@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Current aggregated Sarajevo prices support the restaurant, coffee and draft-beer anchors. Cocktail and wine estimates use local reported ranges in relation to the draft-beer baseline and are less aggregated. Accommodation values are holistic estimates without live listing checks.",
+  "comparable_city_reasoning": "Food and drink anchors use direct Sarajevo prices. Accommodation is estimated from general knowledge of Sarajevo as a budget-friendly Western Balkan capital with established tourist demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.9,
+    "coffee": 2.3,
+    "inexp_meal_1p": 8.7,
+    "midrange_meal_2p": 40.6,
+    "cocktail": 5.8,
+    "wine_glass": 3.8,
+    "hostel_dorm_1p": 16,
+    "hostel_private_2p": 34,
+    "hotel_1star_2p": 48,
+    "hotel_3star_2p": 90
+  }
+}

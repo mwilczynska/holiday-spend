@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "June 2026 city price data supports meals, cappuccino and draft beer. Cocktail and wine estimates use a multiple of local beer prices and sit below a luxury hotel menu; accommodation is a holistic estimate and less certain.",
+  "comparable_city_reasoning": "No comparable city used; food and drink are based on Siem Reap observations, while accommodation reflects its low-cost Cambodian tourism market.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2018-10-08-11-33-49",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.00,
+    "coffee": 1.67,
+    "inexp_meal_1p": 2.50,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 45.00
+  }
+}

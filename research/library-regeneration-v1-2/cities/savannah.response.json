@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Savannah aggregate cost-of-living prices support the meal, cappuccino, and draft-beer anchors, though the dataset is limited and was last updated in June 2026. Cocktail and wine estimates use their typical local price relationship to draft beer. Accommodation anchors are holistic estimates without live listing data.",
+  "comparable_city_reasoning": "Uses Savannah-specific aggregated food and drink prices; lodging is estimated for a popular midsize US tourist city with seasonal visitor demand.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2025-01-04-07-28-18",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.32,
+    "inexp_meal_1p": 20.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 12.00,
+    "wine_glass": 10.00,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 120.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 210.00
+  }
+}

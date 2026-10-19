@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors use Rovaniemi's October 2026 city averages; cocktail and wine estimates use current local menu checks and are positioned against local draft beer prices. Accommodation is a holistic Finnish Lapland estimate with substantial winter-season uncertainty; euro-to-USD translations are approximate.",
+  "comparable_city_reasoning": "Local Rovaniemi prices are the basis; accommodation reflects general Finnish Lapland tourist-center costs and winter demand rather than a single comparable city.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 5.9,
+    "inexp_meal_1p": 16,
+    "midrange_meal_2p": 102,
+    "cocktail": 14,
+    "wine_glass": 11,
+    "hostel_dorm_1p": 58,
+    "hostel_private_2p": 120,
+    "hotel_1star_2p": 155,
+    "hotel_3star_2p": 245
+  }
+}

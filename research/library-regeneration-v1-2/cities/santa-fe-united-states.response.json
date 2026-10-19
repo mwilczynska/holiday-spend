@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Recent Santa Fe price indexes support the meal, coffee, and beer anchors, but crowdsourced coverage is thin, especially for drinks. Cocktail and wine estimates are informed by recent local menu prices. Accommodation anchors are holistic estimates with substantial seasonal variation; hostel availability is especially uncertain.",
+  "comparable_city_reasoning": "Food and drink use Santa Fe-specific price data. Accommodation estimates use typical New Mexico and Southwest visitor-city lodging levels, adjusted for Santa Fe's strong tourism demand and limited hostel supply.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.00,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 14.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 245.00
+  }
+}

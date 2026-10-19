@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee, and draft-beer anchors use San Sebastian cost-of-living data last updated in May 2026. Cocktail and restaurant-wine prices are less standardized and vary by venue; wine is estimated from local bar price ranges. Accommodation figures are broad model estimates and vary substantially by season.",
+  "comparable_city_reasoning": "Food and drink anchors are based on San Sebastian prices. Accommodation estimates reflect a high-demand northern Spanish coastal destination, with Bilbao as a broad regional comparison and an allowance for San Sebastian's stronger tourism and seasonal pressure.",
+  "fx": {
+    "as_of_date": "2026-10-16",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/?tday=Saturday",
+    "source_rate": 0.6947,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.3,
+    "coffee": 2.2,
+    "inexp_meal_1p": 20.4,
+    "midrange_meal_2p": 55,
+    "cocktail": 11,
+    "wine_glass": 4.4,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 125,
+    "hotel_1star_2p": 145,
+    "hotel_3star_2p": 230
+  }
+}
