@@ -207,6 +207,8 @@ export const LegCard = memo(function LegCard({
   // A collapsed card must never hide an unsaved draft or its Retry/Discard controls.
   const mustStayOpen = hasDraft || editState.saving || editState.error != null || miscellaneousError != null;
   const isOpen = expanded || mustStayOpen;
+  const [hasOpened, setHasOpened] = useState(isOpen);
+  if (isOpen && !hasOpened) setHasOpened(true);
   const bodyId = `leg-${savedLeg.id}-body`;
   const leg = { ...savedLeg, ...editState.patch } as typeof savedLeg;
   const draftCity = cities.find(city => city.id === leg.cityId);
@@ -508,8 +510,10 @@ export const LegCard = memo(function LegCard({
           </div>
         ) : null}
 
-        {/* Hidden rather than unmounted when collapsed, so field drafts and transport rows survive. */}
+        {/* Mounted on first open, then hidden rather than unmounted when collapsed, so field drafts and transport rows
+            survive. Building every collapsed body made the page ~13,000 elements, which slowed every dialog and re-render. */}
         <div id={bodyId} hidden={!isOpen} className="mt-3 rounded-xl border border-slate-100 p-3 sm:p-4">
+        {hasOpened ? <>
         <LegClimate leg={leg} climate={climate} unit={temperatureUnit} onToggle={onToggleTemperature} onRetry={onRetryClimate} />
 
         <div className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
@@ -759,6 +763,7 @@ export const LegCard = memo(function LegCard({
             </a>
           </p>
         ) : null}
+        </> : null}
         </div>
 
         {hasOpenedTransportEstimate ? (
