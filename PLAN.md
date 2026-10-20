@@ -30,7 +30,10 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   manifest hashes match in `~/holiday-spend/incoming/production`. Settings installed as `.env.production.local` (600).
 - [x] Cloudflare A records for `blog` and `spend` → 45.63.24.34, DNS only; both resolve on 1.1.1.1 and 8.8.8.8.
 - [ ] One certificate for apex, www, blog and spend.
-- [ ] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports.
+- [ ] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports. Written for owner
+  review, not yet applied: project-infinite-summer `edge-proxy` (`edge/`, `docs/cutover-runbook.md`, 37/37 route
+  checks in CI), travel-blog `edge-proxy` (frontend behind the edge, 9/9 header checks), and this repository's
+  `deploy/edge-network` (Holiday Spend joins the external `edge` network).
 - [ ] Start Holiday Spend, verify health and data, owner reset and sign-in, then switch apex/www to the landing page.
 - [ ] Daily and off-host backups for both applications.
 
