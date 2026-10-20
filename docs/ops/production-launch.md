@@ -89,7 +89,8 @@ The one-off restore helper runs as container root so it can read a private incom
 - Terminate HTTPS at the existing proxy and forward the public Host and protocol. Overwrite `X-Real-IP` from the connection's trusted address; never forward the client's arbitrary value. Do not expose the upstream directly to the Internet.
 - Do not cache authenticated pages, `/api`, or auth responses. Preserve cookies and query strings. Allow long LLM requests up to the configured deadline (default 600 seconds) and a suitable body limit for CSV imports.
 - Keep one writable app replica with a local persistent filesystem. Do not put SQLite on ephemeral/serverless storage or a shared network filesystem.
-- Package all four city/transport prompt files; Docker copies them explicitly. The app includes its font locally and does not need Google Fonts access during a build.
+- Package the five city/transport prompt files listed in `scripts/lib/runtime-prompts.mjs`; Docker copies them explicitly and a test fails if the Dockerfile and list differ.
+- The app sends its own security headers (CSP with `frame-ancestors 'none'`, `X-Frame-Options`, HSTS, `Referrer-Policy: same-origin`, `nosniff`, `Permissions-Policy`). Do not add a second, conflicting set in nginx; two CSP headers are both enforced. The app includes its font locally and does not need Google Fonts access during a build.
 
 Host nginx example for the existing TLS server block:
 

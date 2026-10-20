@@ -3628,3 +3628,7 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   how the owner recovers from someone else's registration. Signup no longer returns 403 for non-allowlisted addresses.
 - Server LLM keys are refused at production startup rather than removed from the code fallbacks, which local
   development and scripts still use.
+- Deployment blockers: the v1.2 prompt had been added to the code but to none of the four packaging lists, so a
+  container would start and then fail every city generation. The lists now import one module, with a test tying it
+  to the prompt constants and the Dockerfile. Security headers come from the app; script-src keeps 'unsafe-inline'
+  because nonce-based CSP would force every page to render per request.

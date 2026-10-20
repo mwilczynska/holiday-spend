@@ -29,9 +29,11 @@ RUN groupadd --system --gid 1001 nodejs && useradd --system --uid 1001 --gid nod
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/docs/prompts/llm_prompt_new_cities_1.md /app/docs/prompts/llm_prompt_new_cities_v1_1.md /app/docs/prompts/llm_prompt_intercity_transport_1.md /app/docs/prompts/llm_prompt_intercity_transport_v1_1.md ./docs/prompts/
+# Keep in step with scripts/lib/runtime-prompts.mjs (checked by src/lib/runtime-prompts.test.ts).
+COPY --from=builder /app/docs/prompts/llm_prompt_new_cities_1.md /app/docs/prompts/llm_prompt_new_cities_v1_1.md /app/docs/prompts/llm_prompt_new_cities_v1_2.md /app/docs/prompts/llm_prompt_intercity_transport_1.md /app/docs/prompts/llm_prompt_intercity_transport_v1_1.md ./docs/prompts/
 COPY --from=builder /app/scripts/container-entrypoint.mjs ./scripts/container-entrypoint.mjs
 COPY --from=builder /app/scripts/lib/production-config.mjs ./scripts/lib/production-config.mjs
+COPY --from=builder /app/scripts/lib/runtime-prompts.mjs ./scripts/lib/runtime-prompts.mjs
 COPY --from=builder /app/scripts/lib/data-snapshot.mjs ./scripts/lib/data-snapshot.mjs
 COPY --from=builder /app/scripts/backup.mjs ./scripts/backup.mjs
 

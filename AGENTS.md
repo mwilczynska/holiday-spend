@@ -411,7 +411,10 @@ site, and checks the allowlist before passing a signed token. Production startup
 Production runs one Node 24 container, with SQLite and licensed photos in the writable `runtime-data/` bind mount.
 Startup checks configuration, database existence/integrity/nonempty library and all runtime prompts. `/api/health`
 reports readiness without exposing identities or data. Only the trusted private proxy may supply `X-Real-IP`; arbitrary
-forwarded address lists are ignored. Fonts are bundled locally.
+forwarded address lists are ignored. Fonts are bundled locally. Security headers come from `scripts/lib/security-headers.mjs`
+through `next.config.mjs` (CSP with inline scripts allowed because Next renders them without nonces, framing denied,
+HSTS in production). Runtime prompt files are listed once in `scripts/lib/runtime-prompts.mjs`, which the build,
+Dockerfile, start script and container entrypoint follow.
 
 `scripts/data-snapshot.ts` creates verified full or catalogue-only database/photo packages. Full owner provisioning
 changes credentials only in the deployment copy and retains ownership IDs and personal records. The original local

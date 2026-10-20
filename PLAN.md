@@ -27,7 +27,11 @@ Owner-requested review before the public launch; medium and low findings fixed.
 - ID lists on bulk expense, reorder and tag routes are bounded; stale rate-limit rows and week-old expired tokens are
   purged hourly.
 
-Not done (reported separately): the v1.2 prompt is not packaged into the Docker image, and no security headers are sent.
+- Deployment blockers fixed: the v1.2 prompt was missing from the Docker image, file tracing, start script and
+  entrypoint check (city generation would have failed in production); runtime prompts are now one shared list with a
+  drift test. Security headers (CSP, framing denied, HSTS, Referrer-Policy, nosniff, Permissions-Policy) are sent on
+  every response; a production build renders and hydrates its public pages without CSP violations. Signed-in pages
+  were not checked in the browser under the CSP.
 
 ## Mobile UI review — COMPLETE (20 October 2026)
 

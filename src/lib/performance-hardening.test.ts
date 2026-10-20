@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
+import { RUNTIME_PROMPT_FILES } from '../../scripts/lib/runtime-prompts.mjs';
 import {
   DATASET_PAGE_SIZE,
   EXPENSE_PAGE_SIZE,
@@ -93,19 +94,15 @@ describe('v1.1 performance bounds', () => {
     fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
     fs.writeFileSync(path.join(directory, '.next', 'static', 'chunks', 'app.js'), 'client');
     fs.writeFileSync(path.join(directory, 'public', 'icon.svg'), '<svg />');
-    fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_new_cities_1.md'), 'v1 prompt');
-    fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_new_cities_v1_1.md'), 'v1.1 prompt');
     // Staged explicitly rather than left to Next's tracing, which only follows string literals.
-    fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_intercity_transport_1.md'), 'transport v1');
-    fs.writeFileSync(path.join(directory, 'docs', 'prompts', 'llm_prompt_intercity_transport_v1_1.md'), 'transport v1.1');
+    for (const promptFile of RUNTIME_PROMPT_FILES) {
+      fs.writeFileSync(path.join(directory, 'docs', 'prompts', promptFile), promptFile);
+    }
 
     const result = runNodeScript(startScript, directory);
 
     expect(result.status).toBe(0);
-    for (const promptFile of [
-      'llm_prompt_intercity_transport_1.md',
-      'llm_prompt_intercity_transport_v1_1.md',
-    ]) {
+    for (const promptFile of RUNTIME_PROMPT_FILES) {
       expect(fs.existsSync(path.join(directory, '.next', 'standalone', 'docs', 'prompts', promptFile))).toBe(true);
     }
     expect(fs.readFileSync(
@@ -117,7 +114,7 @@ describe('v1.1 performance bounds', () => {
     expect(fs.readFileSync(
       path.join(directory, '.next', 'standalone', 'docs', 'prompts', 'llm_prompt_new_cities_v1_1.md'),
       'utf8',
-    )).toBe('v1.1 prompt');
+    )).toBe('llm_prompt_new_cities_v1_1.md');
     expect(fs.readFileSync(path.join(directory, '.next', 'standalone', '.holiday-spend-build-id'), 'utf8'))
       .toBe('test-build\n');
   });

@@ -5,6 +5,7 @@ import { randomBytes } from 'node:crypto';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { RUNTIME_PROMPT_FILES } from './lib/runtime-prompts.mjs';
 
 const image = process.env.HOLIDAY_SPEND_TEST_IMAGE || 'holiday-spend:ci';
 const seedImage = process.env.HOLIDAY_SPEND_TEST_SEED_IMAGE || 'holiday-spend:ci-seed';
@@ -74,7 +75,7 @@ try {
   const asset = html.match(/(?:src|href)="([^\"]*\/_next\/static\/[^\"]+)"/)?.[1];
   assert.ok(asset, 'Login must reference built static assets.');
   assert.equal((await request(asset)).status, 200);
-  runCode(`const fs=require('node:fs'); for(const file of ['llm_prompt_new_cities_1.md','llm_prompt_new_cities_v1_1.md','llm_prompt_intercity_transport_1.md','llm_prompt_intercity_transport_v1_1.md']) if(!fs.existsSync('docs/prompts/'+file)) throw Error(file);`);
+  runCode(`const fs=require('node:fs'); for(const file of ${JSON.stringify(RUNTIME_PROMPT_FILES)}) if(!fs.existsSync('docs/prompts/'+file)) throw Error(file);`);
   // Real Linux Argon2 and SQLite bindings, plus real NextAuth cookies and revocation.
   runCode(`(async()=>{const db=new(require('better-sqlite3'))('/app/data/travel.db');const hash=await require('argon2').hash('${password}');for(const who of ['owner','guest']){db.prepare('INSERT INTO user (id,email,emailVerified) VALUES (?,?,?)').run(who,who+'@example.com',new Date().toISOString());db.prepare('INSERT INTO user_passwords (user_id,hash) VALUES (?,?)').run(who,hash);}db.close();})().catch(e=>{console.error(e.message);process.exit(1)});`);
   async function signIn(email) {
