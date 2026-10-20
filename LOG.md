@@ -3656,3 +3656,15 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   container would start and then fail every city generation. The lists now import one module, with a test tying it
   to the prompt constants and the Dockerfile. Security headers come from the app; script-src keeps 'unsafe-inline'
   because nonce-based CSP would force every page to render per request.
+
+## 20 October 2026 — Display currency merged
+
+- Owner requested merging PR #19 and cleaning up its source branch/worktree. Squash-merged to main as ecae75c4.
+- Linux Production checks passed on e59510c4: TypeScript, full unit suite, memory mirror, methodology guard,
+  production dependency audit, runner/seed Docker builds and container startup checks.
+- Deleted codex/display-currency locally and remotely after confirming its head still matched the merged PR.
+  Unlinked only the worktree's node_modules and .next/standalone/node_modules junctions before disposal;
+  confirmed the shared main-checkout dependencies remain present. The temporary checkout is disposable after
+  this documentation push. No live database or primary-checkout file was edited.
+- The primary checkout remains on the other agent's security/pre-deploy-hardening branch, including its existing
+  tsconfig.json change. Local main was updated using the currency worktree.
