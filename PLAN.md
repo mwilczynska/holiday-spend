@@ -18,9 +18,12 @@ Owner-requested deployment to the existing VPS (`deploy@45.63.24.34`). Every VPS
 owner watches; the owner enters SSH and sudo credentials there. A read-only survey found the host unchanged since the
 12 October inspection: only the blog runs, owning ports 80/443, and `blog.`/`spend.` have no DNS records.
 
-- [ ] Fresh pre-deployment blog backup (database, uploads, running images, configuration) with an off-host copy.
+- [x] Fresh pre-deployment blog backup (database, uploads, running images, configuration) with an off-host copy.
+  VPS `~/backups/blog-2026-10-20-predeploy` (5.0 GB): database integrity ok (178 posts, 129 comments, 2,071 media),
+  2,317/2,317 upload files in the tar, both running image IDs saved. Copied to `C:\Dev\travel-blog-backups\`; all 12
+  SHA-256 sums match.
 - [x] CI publishes the tested runner image to `ghcr.io/mwilczynska/holiday-spend` (`:main`, `:sha-<commit>`); Compose
-  pulls it, because the VPS is too small to build. Package visibility must be set to public once by the owner.
+  pulls it, because the VPS is too small to build. First run `a6da106` passed and published; anonymous pull works.
 - [ ] Fresh owner-provisioned data snapshot (the 12 October package predates later cities), verified and transferred.
 - [ ] Cloudflare A records for `blog` and `spend` (owner); one certificate for apex, www, blog and spend.
 - [ ] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports.
