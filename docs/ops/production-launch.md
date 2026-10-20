@@ -61,10 +61,11 @@ The authorized test was delivered on 12 October, initially to Gmail spam. The ow
 
 Transfer the entire verified production package through SSH to `incoming/production/` in the app checkout. Transfer `.env.production.local` separately, set mode `600`, and protect the incoming package. Existing blog containers and volumes stay in place.
 
-Build on a machine with enough memory, or publish the Linux image from CI and pull it on the VPS. The current VPS has 2 GB RAM; do not assume a Next.js build fits alongside the existing blog.
+Do not build on the VPS: it has one CPU and 2 GB RAM shared with the blog. Every push to `main` that passes Production checks publishes the tested runner image to `ghcr.io/mwilczynska/holiday-spend` as `:main` and `:sha-<7-char commit>`, labelled with its source revision. The package is public, so the VPS pulls without credentials. Compose uses `:main` unless `HOLIDAY_SPEND_IMAGE` names another tag; pin a `sha-` tag to keep a known release and to roll back.
 
 ```sh
-docker build --target runner -t holiday-spend:release .
+docker compose pull holiday-spend
+docker tag ghcr.io/mwilczynska/holiday-spend:main holiday-spend:release
 mkdir -p restore-staging
 docker run --rm --user 0:0 \
   -v "$PWD/incoming:/incoming:ro" -v "$PWD/restore-staging:/restore" \
@@ -74,7 +75,7 @@ sudo chown -R 1001:1001 restore-staging/runtime-data
 test ! -e runtime-data
 sudo mv restore-staging/runtime-data runtime-data
 chmod 600 .env.production.local
-docker compose up -d --build holiday-spend
+docker compose up -d holiday-spend
 curl --fail http://127.0.0.1:3000/api/health
 ```
 

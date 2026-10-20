@@ -1,5 +1,7 @@
 services:
   holiday-spend:
+    # The VPS pulls the image CI publishes; `--build` still builds from source.
+    image: ${HOLIDAY_SPEND_IMAGE:-ghcr.io/mwilczynska/holiday-spend:main}
     build:
       context: .
       target: runner
@@ -35,6 +37,7 @@ services:
       - HOLIDAY_SPEND_DB_PATH=/app/data/travel.db
 
   backup:
+    image: ${HOLIDAY_SPEND_IMAGE:-ghcr.io/mwilczynska/holiday-spend:main}
     build:
       context: .
       target: runner

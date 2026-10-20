@@ -12,6 +12,21 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
+## Production deployment — IN PROGRESS (20 October 2026)
+
+Owner-requested deployment to the existing VPS (`deploy@45.63.24.34`). Every VPS step runs in a visible terminal the
+owner watches; the owner enters SSH and sudo credentials there. A read-only survey found the host unchanged since the
+12 October inspection: only the blog runs, owning ports 80/443, and `blog.`/`spend.` have no DNS records.
+
+- [ ] Fresh pre-deployment blog backup (database, uploads, running images, configuration) with an off-host copy.
+- [x] CI publishes the tested runner image to `ghcr.io/mwilczynska/holiday-spend` (`:main`, `:sha-<commit>`); Compose
+  pulls it, because the VPS is too small to build. Package visibility must be set to public once by the owner.
+- [ ] Fresh owner-provisioned data snapshot (the 12 October package predates later cities), verified and transferred.
+- [ ] Cloudflare A records for `blog` and `spend` (owner); one certificate for apex, www, blog and spend.
+- [ ] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports.
+- [ ] Start Holiday Spend, verify health and data, owner reset and sign-in, then switch apex/www to the landing page.
+- [ ] Daily and off-host backups for both applications.
+
 ## Pre-deployment security hardening — COMPLETE on branch `security/pre-deploy-hardening` (20 October 2026)
 
 Owner-requested review before the public launch; medium and low findings fixed.

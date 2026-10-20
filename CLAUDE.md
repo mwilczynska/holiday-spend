@@ -429,6 +429,8 @@ database remains intact. `scripts/backup.mjs` creates and verifies consistent ba
 directory. Private packages and deployment settings are gitignored and excluded from Docker build contexts. See
 `docs/ops/production-launch.md` for the launch, email, proxy and backup contract. Linux container verification is
 defined in `.github/workflows/production-checks.yml`; local Windows checks do not establish Linux or public-host success.
+On `main` that workflow publishes the tested runner image to public `ghcr.io/mwilczynska/holiday-spend` (`:main`,
+`:sha-<commit>`), which Compose pulls; the VPS is too small to build it.
 
 ## City-cost and transport accuracy research
 
