@@ -3592,3 +3592,12 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   estimate produced.
 - Applied to the live library after merge (PR #16), with a verified backup first: 529 cities re-corrected, none with
   hand-edited hostel fields. Wulong and Chaozhou, added the same day, were saved under v1.1 and were skipped.
+
+## 20 October 2026 — Wulong and Chaozhou regenerated under v1.2
+
+- Both were added through the app on 19 October while `.env.local` set `CITY_COST_METHODOLOGY_VERSION=v1.1` (a
+  leftover rollback setting); the owner changed it to `v1.2`. Regenerated from Codex Luna Max answers through the
+  app's `persist` path. Chaozhou's first two workers wrote nothing because the brief forbade running commands and
+  they could not read the prompt file without one; the rerun allowed a read-only command to read it.
+- Changes: Chaozhou 3-star A$69 to A$45, mid-range food A$61 to A$49; Wulong 3-star A$69 to A$63, mid-range food A$65
+  to A$39. All 531 cities are now v1.2 with table `v1.2-corrections-2026-10-19`.

@@ -53,7 +53,11 @@ recompute first. Work happens on `feat/city-cost-v1-2` in its own worktree.
   `feat/hostel-corrections`, merged as PR #16. Applied to the live library on 19 October 2026 after a verified
   backup (`C:\Users\chawi\holiday-spend-backups\pre-hostel-recorrect-2026-10-19`, 531 cities, 1060 photos): 529
   cities re-corrected, no hand-edited fields, rerun a no-op. Wulong and Chaozhou were added on 19 October under v1.1
-  and store no raw anchors, so they keep uncorrected values until regenerated under v1.2.
+  and store no raw anchors, so they keep uncorrected values until regenerated under v1.2. Both were regenerated under
+  v1.2 on 20 October 2026 from Codex Luna Max answers (research branch,
+  `research/library-regeneration-v1-2/followup-2026-10-20`); the whole library is now on v1.2 with table
+  `v1.2-corrections-2026-10-19`. Cause: `.env.local` set `CITY_COST_METHODOLOGY_VERSION=v1.1`; the owner changed it
+  to `v1.2`.
 - [x] 5. Library regenerated under v1.2 (18-19 October 2026): all 529 cities saved through the app's own path from
   Codex Luna Max answers (prompts, answers and save results on the research branch,
   `research/library-regeneration-v1-2`). Verified backup first:
