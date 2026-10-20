@@ -24,8 +24,12 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   SHA-256 sums match.
 - [x] CI publishes the tested runner image to `ghcr.io/mwilczynska/holiday-spend` (`:main`, `:sha-<commit>`); Compose
   pulls it, because the VPS is too small to build. First run `a6da106` passed and published; anonymous pull works.
-- [ ] Fresh owner-provisioned data snapshot (the 12 October package predates later cities), verified and transferred.
-- [ ] Cloudflare A records for `blog` and `spend` (owner); one certificate for apex, www, blog and spend.
+- [x] Fresh owner-provisioned data snapshot (the 12 October package predates later cities), verified and transferred.
+  Local `.local/deployment/2026-10-20/production`: 531 cities, 1,062 photos, 70 legs, 1,543 expenses, 80 plans, owner
+  `dev-local-user`. Sent as one tar (per-file scp was slow and broke on a dropped connection); on the VPS all 1,063
+  manifest hashes match in `~/holiday-spend/incoming/production`. Settings installed as `.env.production.local` (600).
+- [x] Cloudflare A records for `blog` and `spend` → 45.63.24.34, DNS only; both resolve on 1.1.1.1 and 8.8.8.8.
+- [ ] One certificate for apex, www, blog and spend.
 - [ ] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports.
 - [ ] Start Holiday Spend, verify health and data, owner reset and sign-in, then switch apex/www to the landing page.
 - [ ] Daily and off-host backups for both applications.
