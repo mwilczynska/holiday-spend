@@ -5,10 +5,17 @@ interface DerivedLegBase {
   sortOrder?: number | null;
 }
 
-function addDays(date: string, days: number): string {
+export function addDays(date: string, days: number): string {
   const next = new Date(`${date}T00:00:00Z`);
   next.setUTCDate(next.getUTCDate() + days);
   return next.toISOString().split('T')[0];
+}
+
+/** endDate is the check-out day, so endDate - startDate in days = nights. */
+export function nightsBetween(startDate: string, endDate: string): number {
+  const start = new Date(`${startDate}T00:00:00Z`);
+  const end = new Date(`${endDate}T00:00:00Z`);
+  return Math.round((end.getTime() - start.getTime()) / 86400000);
 }
 
 function normalizeNights(nights: number | null | undefined): number {

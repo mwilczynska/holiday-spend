@@ -23,6 +23,12 @@ import {
 import { useProviderApiKeys } from '@/lib/use-provider-api-keys';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import { getLlmNetworkErrorMessage, readLlmApiResponse } from '@/lib/llm-error-messages';
+import {
+  DEFAULT_NEW_LEG_NIGHTS,
+  newLegDraftError,
+  nextLegStartDate,
+  updateNewLegDraft,
+} from '@/lib/new-leg-draft';
 
 const STORAGE_PREFIX = 'holiday-spend.city-generation';
 
@@ -38,7 +44,7 @@ const createdCitySchema = z.object({
 }).refine(city => city.reusedExistingCity
   ? !city.createdCountry && !city.createdCity && !city.generatedCity
   : city.createdCity && city.generatedCity);
-const createdLegSchema = z.object({ id: z.number().int().positive(), cityId: z.string().min(1), nights: z.number().int().positive() });
+const createdLegSchema = z.object({ id: z.number().int().positive(), cityId: z.string().min(1), nights: z.number().int().positive(), startDate: z.string().min(1) });
 
 type ProviderOption = CityGenerationProvider;
 
@@ -56,7 +62,33 @@ export interface NewCityCreatedPayload {
     cityName: string;
     countryName: string;
     nights: number;
+    startDate?: string;
+    endDate?: string;
   };
+}
+
+interface CityLegDraft {
+  id: number;
+  cityName: string;
+  countryName: string;
+  nights: string;
+  startDate: string;
+  endDate: string;
+}
+
+type CityLegDateField = 'startDate' | 'endDate' | 'nights';
+
+function applyLegField(draft: CityLegDraft, field: CityLegDateField, value: string): CityLegDraft {
+  const next = updateNewLegDraft({ id: draft.id, cityId: '', startDate: draft.startDate, endDate: draft.endDate, nights: draft.nights }, field, value);
+  return { ...draft, startDate: next.startDate, endDate: next.endDate, nights: next.nights };
+}
+
+function makeCityLegDraft(id: number, startDate: string, nights: string, cityName = ''): CityLegDraft {
+  return applyLegField({ id, cityName, countryName: '', nights, startDate, endDate: '' }, 'nights', nights);
+}
+
+function legDraftError(draft: CityLegDraft) {
+  return newLegDraftError({ id: draft.id, cityId: '', startDate: draft.startDate, endDate: draft.endDate, nights: draft.nights });
 }
 
 interface PlannerNewCityDialogProps {
@@ -64,7 +96,8 @@ interface PlannerNewCityDialogProps {
   onOpenChange: (open: boolean) => void;
   onCreated: (payloads: NewCityCreatedPayload[]) => Promise<void> | void;
   mode?: 'planner' | 'dataset';
-  initialCity?: { cityName: string; nights: string };
+  defaultStartDate?: string;
+  initialCity?: { cityName: string; nights: string; startDate?: string };
 }
 
 function getDefaultModels() {
@@ -76,28 +109,42 @@ export function PlannerNewCityDialog({
   onOpenChange,
   onCreated,
   mode = 'planner',
+  defaultStartDate,
   initialCity,
 }: PlannerNewCityDialogProps) {
   const apiKeyInputId = useId();
   const isDatasetMode = mode === 'dataset';
   const nextDraftId = useRef(1);
-  const [drafts, setDrafts] = useState([{ id: 0, cityName: '', countryName: '', nights: '7' }]);
+  const firstStartDate = defaultStartDate ?? nextLegStartDate(null);
+  const [drafts, setDrafts] = useState<CityLegDraft[]>(() => [makeCityLegDraft(0, firstStartDate, String(DEFAULT_NEW_LEG_NIGHTS))]);
   const nightsInputId = useId();
-  const validNights = (value: string) => Number.isSafeInteger(Number(value)) && Number(value) > 0;
   const draftsValid = drafts.every(draft => draft.cityName.trim() && draft.countryName.trim()
-    && (isDatasetMode || validNights(draft.nights)));
+    && (isDatasetMode || legDraftError(draft) === null));
+  // Re-seed an untouched first entry when the dialog opens or the default start date changes.
+  const [seedKey, setSeedKey] = useState(`${open}|${firstStartDate}`);
+  if (seedKey !== `${open}|${firstStartDate}`) {
+    setSeedKey(`${open}|${firstStartDate}`);
+    if (open && !isDatasetMode) {
+      setDrafts(current => current.length === 1 && !current[0].cityName && !current[0].countryName
+        ? [makeCityLegDraft(current[0].id, firstStartDate, current[0].nights || String(DEFAULT_NEW_LEG_NIGHTS))] : current);
+    }
+  }
   const consumedInitialCity = useRef<typeof initialCity>(undefined);
   useEffect(() => {
     if (!open || !initialCity || consumedInitialCity.current === initialCity) return;
     consumedInitialCity.current = initialCity;
-    const seeded = { id: nextDraftId.current++, cityName: initialCity.cityName, countryName: '', nights: initialCity.nights };
+    const seeded = makeCityLegDraft(nextDraftId.current++, initialCity.startDate ?? firstStartDate, initialCity.nights, initialCity.cityName);
     setDrafts(current => {
       if (current.some(draft => draft.cityName.trim().toLowerCase() === initialCity.cityName.trim().toLowerCase())) return current;
       return current.length === 1 && !current[0].cityName && !current[0].countryName ? [seeded] : [...current, seeded];
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- seed once per initialCity; the default start date is read at that moment
   }, [open, initialCity]);
-  function updateDraft(id: number, changes: Partial<(typeof drafts)[number]>) {
+  function updateDraft(id: number, changes: Partial<CityLegDraft>) {
     setDrafts(current => current.map(draft => draft.id === id ? { ...draft, ...changes } : draft));
+  }
+  function updateDraftDate(id: number, field: CityLegDateField, value: string) {
+    setDrafts(current => current.map(draft => draft.id === id ? applyLegField(draft, field, value) : draft));
   }
   const submitting = useRef(false);
   const [provider, setProvider] = useState<ProviderOption>('openai');
@@ -168,7 +215,7 @@ export function PlannerNewCityDialog({
       : 'none';
 
   function resetForm() {
-    setDrafts([{ id: nextDraftId.current++, cityName: '', countryName: '', nights: '7' }]);
+    setDrafts([makeCityLegDraft(nextDraftId.current++, firstStartDate, String(DEFAULT_NEW_LEG_NIGHTS))]);
     setReferenceDate('');
     setExtraContext('');
     setError(null);
@@ -224,8 +271,9 @@ export function PlannerNewCityDialog({
 
   async function handleSubmit() {
     if (submitting.current) return;
-    if (!isDatasetMode && drafts.some(draft => !validNights(draft.nights))) {
-      setError('Nights must be a positive whole number.');
+    const invalidLeg = isDatasetMode ? null : drafts.map(legDraftError).find(message => message !== null);
+    if (invalidLeg) {
+      setError(invalidLeg);
       return;
     }
 
@@ -247,6 +295,7 @@ export function PlannerNewCityDialog({
           cityName: draft.cityName.trim(),
           countryName: draft.countryName.trim(),
           nights: Number(draft.nights),
+          ...(isDatasetMode ? {} : { startDate: draft.startDate, endDate: draft.endDate }),
         };
 
         const endpoint = isDatasetMode
@@ -255,7 +304,7 @@ export function PlannerNewCityDialog({
         const requestBody = {
           cityName: requested.cityName,
           countryName: requested.countryName,
-          ...(isDatasetMode ? {} : { nights: requested.nights }),
+          ...(isDatasetMode ? {} : { nights: requested.nights, startDate: requested.startDate, endDate: requested.endDate }),
           provider,
           apiKey: activeApiKey || undefined,
           model: modelValidation.effectiveModel || undefined,
@@ -272,7 +321,8 @@ export function PlannerNewCityDialog({
         const confirmedCity = createdCitySchema.safeParse(data?.data?.city);
         const confirmedLeg = isDatasetMode ? null : createdLegSchema.safeParse(data?.data?.leg);
         if (!confirmedCity.success || (!isDatasetMode && (!confirmedLeg?.success
-          || confirmedLeg.data.cityId !== confirmedCity.data.cityId || confirmedLeg.data.nights !== requested.nights))) {
+          || confirmedLeg.data.cityId !== confirmedCity.data.cityId || confirmedLeg.data.nights !== requested.nights
+          || confirmedLeg.data.startDate !== requested.startDate))) {
           throw new Error(`City generation could not be confirmed because the app server returned incomplete or inconsistent data. Your draft is retained. Check ${isDatasetMode ? 'the city library' : 'your plan and city library'} before retrying.`);
         }
 
@@ -329,10 +379,13 @@ export function PlannerNewCityDialog({
           </div>
 
           {drafts.map((draft, index) => {
-            const nightsValid = validNights(draft.nights);
+            const legError = isDatasetMode ? null : legDraftError(draft);
             const cityNameId = `${nightsInputId}-${draft.id}-city`;
             const countryNameId = `${nightsInputId}-${draft.id}-country`;
             const draftNightsId = `${nightsInputId}-${draft.id}`;
+            const startDateId = `${draftNightsId}-start`;
+            const endDateId = `${draftNightsId}-end`;
+            const legErrorId = `${draftNightsId}-error`;
             return (
               <div key={draft.id} className="space-y-3 rounded-md border p-3">
                 {drafts.length > 1 ? <div className="flex items-center justify-between gap-2">
@@ -360,26 +413,56 @@ export function PlannerNewCityDialog({
                 </div>
 
                 {!isDatasetMode ? (
-                  <div>
-                    <Label htmlFor={draftNightsId}>Nights</Label>
-                    <Input
-                      id={draftNightsId}
-                      type="number"
-                      min={1}
-                      step={1}
-                      inputMode="numeric"
-                      value={draft.nights}
-                      onChange={(event) => updateDraft(draft.id, { nights: event.target.value })}
-                      aria-invalid={!nightsValid}
-                      aria-describedby={!nightsValid ? `${draftNightsId}-error` : undefined}
-                    />
-                    {!nightsValid ? <p id={`${draftNightsId}-error`} className="mt-1 text-sm text-destructive">Nights must be a positive whole number.</p> : null}
+                  <div className="space-y-1">
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      <div>
+                        <Label htmlFor={startDateId}>Start date</Label>
+                        <Input
+                          id={startDateId}
+                          type="date"
+                          min="2000-01-01"
+                          max="2100-12-31"
+                          value={draft.startDate}
+                          onChange={(event) => updateDraftDate(draft.id, 'startDate', event.target.value)}
+                          aria-invalid={legError !== null}
+                          aria-describedby={legError ? legErrorId : undefined}
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor={endDateId}>End date</Label>
+                        <Input
+                          id={endDateId}
+                          type="date"
+                          min="2000-01-01"
+                          max="2100-12-31"
+                          value={draft.endDate}
+                          onChange={(event) => updateDraftDate(draft.id, 'endDate', event.target.value)}
+                          aria-invalid={legError !== null}
+                          aria-describedby={legError ? legErrorId : undefined}
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor={draftNightsId}>Nights</Label>
+                        <Input
+                          id={draftNightsId}
+                          type="number"
+                          min={1}
+                          step={1}
+                          inputMode="numeric"
+                          value={draft.nights}
+                          onChange={(event) => updateDraftDate(draft.id, 'nights', event.target.value)}
+                          aria-invalid={legError !== null}
+                          aria-describedby={legError ? legErrorId : undefined}
+                        />
+                      </div>
+                    </div>
+                    {legError ? <p id={legErrorId} className="text-sm text-destructive">{legError}</p> : null}
                   </div>
                 ) : null}
               </div>
             );
           })}
-          <Button type="button" variant="outline" onClick={() => setDrafts(current => [...current, { id: nextDraftId.current++, cityName: '', countryName: '', nights: '7' }])}>Add another city</Button>
+          <Button type="button" variant="outline" onClick={() => setDrafts(current => [...current, makeCityLegDraft(nextDraftId.current++, nextLegStartDate(current[current.length - 1]?.endDate ?? firstStartDate), String(DEFAULT_NEW_LEG_NIGHTS))])}>Add another city</Button>
 
           <details className="rounded-md border bg-muted/20">
             <summary className="cursor-pointer px-3 py-2 text-sm font-medium text-foreground">

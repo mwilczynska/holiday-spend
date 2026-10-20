@@ -15,6 +15,10 @@ import type { CityClimate, TemperatureUnit } from '@/lib/climate';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
 import type { IntercityTransportItem, MiscellaneousExpenseItem } from '@/types';
 import { useQueuedDraftSave } from '@/lib/use-queued-draft-save';
+import { addDays, nightsBetween } from '@/lib/itinerary-leg-dates';
+import { isPlausibleLegDate, MAX_LEG_NIGHTS } from '@/lib/itinerary-validation';
+import { SettledInput } from './SettledInput';
+import { LockableButton } from './planner-lock';
 import {
   getAccommodationCostForTier,
   getActivitiesCostForTier,
@@ -106,7 +110,6 @@ interface LegCardProps {
   onDiscard: () => void;
   onDelete: (id: number) => void;
   onMove: (id: number, direction: -1 | 1) => void;
-  orderSaving?: boolean;
   /** Whether the editing body is shown. Cards with unsaved, saving or failed edits stay open regardless. */
   expanded: boolean;
   onToggleExpanded: (id: number) => void;
@@ -166,18 +169,7 @@ function toTransportPayload(drafts: TransportDraft[]): IntercityTransportItem[] 
   });
 }
 
-function shiftIsoDate(date: string, days: number) {
-  const next = new Date(`${date}T00:00:00Z`);
-  next.setUTCDate(next.getUTCDate() + days);
-  return next.toISOString().split('T')[0];
-}
-
-// endDate is the check-out day, so endDate - startDate (in days) = nights
-function nightsBetween(startDate: string, endDate: string): number {
-  const start = new Date(`${startDate}T00:00:00Z`);
-  const end = new Date(`${endDate}T00:00:00Z`);
-  return Math.round((end.getTime() - start.getTime()) / 86400000);
-}
+const isValidNights = (value: string) => /^\d+$/.test(value) && Number(value) >= 1 && Number(value) <= MAX_LEG_NIGHTS;
 
 export const LegCard = memo(function LegCard({
   leg: savedLeg,
@@ -189,7 +181,6 @@ export const LegCard = memo(function LegCard({
   onDiscard,
   onDelete,
   onMove,
-  orderSaving = false,
   expanded,
   onToggleExpanded,
   isFirst,
@@ -215,6 +206,8 @@ export const LegCard = memo(function LegCard({
   // A collapsed card must never hide an unsaved draft or its Retry/Discard controls.
   const mustStayOpen = hasDraft || editState.saving || editState.error != null || miscellaneousError != null;
   const isOpen = expanded || mustStayOpen;
+  const [hasOpened, setHasOpened] = useState(isOpen);
+  if (isOpen && !hasOpened) setHasOpened(true);
   const bodyId = `leg-${savedLeg.id}-body`;
   const leg = { ...savedLeg, ...editState.patch } as typeof savedLeg;
   const draftCity = cities.find(city => city.id === leg.cityId);
@@ -325,30 +318,21 @@ export const LegCard = memo(function LegCard({
     submitEdit({ [field]: value });
   };
 
-  const handleDateChange = (field: 'startDate' | 'endDate', value: string | null) => {
-    if (!value) {
-      handleFieldChange(field, null);
-      return;
-    }
-
+  const handleDateChange = (field: 'startDate' | 'endDate', value: string) => {
     if (field === 'startDate') {
-      if (leg.endDate && leg.endDate > value) {
-        // Both dates set and valid — derive nights from the chosen span
-        submitEdit({ startDate: value, nights: nightsBetween(value, leg.endDate) });
-      } else {
-        // No end date yet, or new start is on/after existing end — project forward using current nights
-        submitEdit({ startDate: value, endDate: shiftIsoDate(value, leg.nights) });
-      }
+      // A new start date moves the stay and keeps its length, as in a calendar. Stretching to the old end date turned
+      // a leg moved from 2027 to 2026 into a stay of several hundred nights.
+      submitEdit({ startDate: value, endDate: addDays(value, leg.nights) });
       return;
     }
 
-    // field === 'endDate'
-    if (leg.startDate && value > leg.startDate) {
+    // field === 'endDate': changes the length of the stay, within the leg limit.
+    if (leg.startDate && value > leg.startDate && nightsBetween(leg.startDate, value) <= MAX_LEG_NIGHTS) {
       // Both dates set and valid — derive nights from the chosen span
       submitEdit({ endDate: value, nights: nightsBetween(leg.startDate, value) });
     } else {
       // No start date yet, or new end is on/before existing start — project backward using current nights
-      submitEdit({ endDate: value, startDate: shiftIsoDate(value, -leg.nights) });
+      submitEdit({ endDate: value, startDate: addDays(value, -leg.nights) });
     }
   };
 
@@ -357,13 +341,13 @@ export const LegCard = memo(function LegCard({
 
     if (leg.startDate) {
       // endDate = check-out = startDate + nights
-      submitEdit({ nights: nextNights, endDate: shiftIsoDate(leg.startDate, nextNights) });
+      submitEdit({ nights: nextNights, endDate: addDays(leg.startDate, nextNights) });
       return;
     }
 
     if (leg.endDate) {
       // startDate = check-in = endDate - nights
-      submitEdit({ nights: nextNights, startDate: shiftIsoDate(leg.endDate, -nextNights) });
+      submitEdit({ nights: nextNights, startDate: addDays(leg.endDate, -nextNights) });
       return;
     }
 
@@ -452,29 +436,29 @@ export const LegCard = memo(function LegCard({
             </p>
           </div>
           <div className="ml-auto flex items-center gap-0.5">
-            <Button
+            <LockableButton
               variant="ghost"
               size="icon"
               className="h-8 w-8 text-slate-600"
               onClick={() => onMove(leg.id, -1)}
               aria-label={`Move ${leg.cityName} leg up`}
               title="Move up"
-              disabled={isFirst || orderSaving}
+              disabled={isFirst}
             >
               <ArrowUp className="h-4 w-4" />
-            </Button>
-            <Button
+            </LockableButton>
+            <LockableButton
               variant="ghost"
               size="icon"
               className="h-8 w-8 text-slate-600"
               onClick={() => onMove(leg.id, 1)}
               aria-label={`Move ${leg.cityName} leg down`}
               title="Move down"
-              disabled={isLast || orderSaving}
+              disabled={isLast}
             >
               <ArrowDown className="h-4 w-4" />
-            </Button>
-            <Button
+            </LockableButton>
+            <LockableButton
               type="button"
               variant="ghost"
               size="icon"
@@ -482,10 +466,10 @@ export const LegCard = memo(function LegCard({
               aria-label={'Delete ' + leg.cityName + ' leg'}
               title="Delete leg"
               onClick={() => onDelete(leg.id)}
-              disabled={orderSaving || editState.saving || hasDraft}
+              disabled={editState.saving || hasDraft}
             >
               <Trash2 className="h-4 w-4" />
-            </Button>
+            </LockableButton>
             <Button
               type="button"
               variant="ghost"
@@ -525,8 +509,10 @@ export const LegCard = memo(function LegCard({
           </div>
         ) : null}
 
-        {/* Hidden rather than unmounted when collapsed, so field drafts and transport rows survive. */}
+        {/* Mounted on first open, then hidden rather than unmounted when collapsed, so field drafts and transport rows
+            survive. Building every collapsed body made the page ~13,000 elements, which slowed every dialog and re-render. */}
         <div id={bodyId} hidden={!isOpen} className="mt-3 rounded-xl border border-slate-100 p-3 sm:p-4">
+        {hasOpened ? <>
         <LegClimate leg={leg} climate={climate} unit={temperatureUnit} onToggle={onToggleTemperature} onRetry={onRetryClimate} />
 
         <div className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
@@ -543,33 +529,41 @@ export const LegCard = memo(function LegCard({
           </div>
           <div>
             <Label htmlFor={`leg-${leg.id}-start`} className="text-xs">Start</Label>
-            <Input
+            <SettledInput
               id={`leg-${leg.id}-start`}
               type="date"
               className="h-8 text-xs"
+              min="2000-01-01"
+              max="2100-12-31"
               value={leg.startDate || ''}
-              onChange={(e) => handleDateChange('startDate', e.target.value || null)}
+              isValid={isPlausibleLegDate}
+              onCommit={(value) => handleDateChange('startDate', value)}
             />
           </div>
           <div>
             <Label htmlFor={`leg-${leg.id}-end`} className="text-xs">End</Label>
-            <Input
+            <SettledInput
               id={`leg-${leg.id}-end`}
               type="date"
               className="h-8 text-xs"
+              min="2000-01-01"
+              max="2100-12-31"
               value={leg.endDate || ''}
-              onChange={(e) => handleDateChange('endDate', e.target.value || null)}
+              isValid={isPlausibleLegDate}
+              onCommit={(value) => handleDateChange('endDate', value)}
             />
           </div>
           <div>
             <Label htmlFor={`leg-${leg.id}-nights`} className="text-xs">Nights</Label>
-            <Input
+            <SettledInput
               id={`leg-${leg.id}-nights`}
               type="number"
               className="h-8 text-xs"
               min={1}
-              value={leg.nights}
-              onChange={(e) => handleNightsChange(parseInt(e.target.value, 10) || 1)}
+              max={MAX_LEG_NIGHTS}
+              value={String(leg.nights)}
+              isValid={isValidNights}
+              onCommit={(value) => handleNightsChange(Number(value))}
             />
           </div>
         </div>
@@ -618,16 +612,16 @@ export const LegCard = memo(function LegCard({
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Button
+              <LockableButton
                 type="button"
                 variant="outline"
                 size="sm"
                 className="h-8"
                 onClick={() => setTransportEstimateOpen(true)}
-                disabled={orderSaving || hasDraft || miscellaneousError != null || editState.saving || previousLeg == null || !leg.startDate}
+                disabled={hasDraft || miscellaneousError != null || editState.saving || previousLeg == null || !leg.startDate}
               >
                 Estimate transport
-              </Button>
+              </LockableButton>
               <Button type="button" variant="outline" size="sm" className="h-8" onClick={addIntercityTransport}>
                 <Plus className="mr-1 h-3.5 w-3.5" />
                 Add transport
@@ -768,6 +762,7 @@ export const LegCard = memo(function LegCard({
             </a>
           </p>
         ) : null}
+        </> : null}
         </div>
 
         {hasOpenedTransportEstimate ? (

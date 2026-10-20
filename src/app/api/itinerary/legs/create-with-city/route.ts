@@ -1,11 +1,13 @@
 import { requireLibraryAdmin } from '@/lib/library-auth';
-import { asc, eq, sql } from 'drizzle-orm';
+import { asc, eq } from 'drizzle-orm';
 import { db } from '@/db';
 import { itineraryLegs } from '@/db/schema';
 import { requireCurrentUserId } from '@/lib/auth';
 import { getLlmRuntimeSettings } from '@/lib/llm-runtime-settings';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
+import { reserveLegSortOrder } from '@/lib/itinerary-leg-placement';
+import { validateLegDates } from '@/lib/itinerary-validation';
 import { resolveOrCreatePlannerCity, PlannerCityResolutionError } from '@/lib/planner-city-resolution';
 import { CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
 import { z } from 'zod';
@@ -16,6 +18,8 @@ const createSchema = z.object({
   cityName: z.string().min(1),
   countryName: z.string().min(1),
   nights: z.number().int().min(1),
+  startDate: z.string().nullable().optional(),
+  endDate: z.string().nullable().optional(),
   provider: z.enum(['anthropic', 'openai', 'gemini']).optional(),
   apiKey: z.string().optional(),
   model: z.string().optional(),
@@ -30,6 +34,9 @@ export async function POST(request: Request) {
     const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = createSchema.parse(body);
+    // Checked before generation so an invalid date never costs a model call.
+    const dateError = validateLegDates(data);
+    if (dateError) return error(dateError, 400);
 
     const resolvedCity = await resolveOrCreatePlannerCity({
       runtimeSettings: await getLlmRuntimeSettings(userId),
@@ -43,59 +50,40 @@ export async function POST(request: Request) {
       extraContext: data.extraContext,
     });
 
-    const maxOrder = await db
-      .select({ max: sql<number>`COALESCE(MAX(sort_order), 0)` })
-      .from(itineraryLegs)
-      .where(eq(itineraryLegs.userId, userId))
-      .get();
-    const nextSortOrder = (maxOrder?.max ?? 0) + 1;
-    const existingLegs = await db
-      .select()
-      .from(itineraryLegs)
-      .where(eq(itineraryLegs.userId, userId))
-      .orderBy(asc(itineraryLegs.sortOrder), asc(itineraryLegs.id));
-    const derivedNewLeg = deriveLegDates([
-      ...existingLegs,
-      {
-        id: -1,
+    const leg = db.transaction((tx) => {
+      // Without dates the new leg follows the last one, as before; with a start date it goes into date order.
+      let startDate = data.startDate ?? null;
+      let endDate = data.endDate ?? null;
+      if (!startDate && !endDate) {
+        const existingLegs = tx
+          .select()
+          .from(itineraryLegs)
+          .where(eq(itineraryLegs.userId, userId))
+          .orderBy(asc(itineraryLegs.sortOrder), asc(itineraryLegs.id))
+          .all();
+        const derived = deriveLegDates([...existingLegs, { startDate: null, endDate: null, nights: data.nights }]);
+        startDate = derived[existingLegs.length]?.startDate ?? null;
+        endDate = derived[existingLegs.length]?.endDate ?? null;
+      }
+      const sortOrder = reserveLegSortOrder(tx, userId, data.startDate ?? null);
+      return tx.insert(itineraryLegs).values({
+        userId,
         cityId: resolvedCity.cityId,
-        startDate: null,
-        endDate: null,
+        startDate,
+        endDate,
         nights: data.nights,
-        sortOrder: nextSortOrder,
         accomTier: '2star',
         foodTier: 'mid',
         drinksTier: 'moderate',
         activitiesTier: 'mid',
-        accomOverride: null,
-        foodOverride: null,
-        drinksOverride: null,
-        activitiesOverride: null,
-        transportOverride: null,
         intercityTransportCost: 0,
-        intercityTransportNote: null,
-        notes: null,
+        sortOrder,
         status: 'planned',
-      },
-    ])[existingLegs.length];
-
-    const result = await db.insert(itineraryLegs).values({
-      userId,
-      cityId: resolvedCity.cityId,
-      startDate: derivedNewLeg?.startDate ?? null,
-      endDate: derivedNewLeg?.endDate ?? null,
-      nights: data.nights,
-      accomTier: '2star',
-      foodTier: 'mid',
-      drinksTier: 'moderate',
-      activitiesTier: 'mid',
-      intercityTransportCost: 0,
-      sortOrder: nextSortOrder,
-      status: 'planned',
-    }).returning();
+      }).returning().get();
+    });
 
     return success({
-      leg: result[0],
+      leg,
       city: resolvedCity,
     }, 201);
   } catch (err) {

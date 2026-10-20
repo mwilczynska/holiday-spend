@@ -4,9 +4,9 @@ import { requireCurrentUserId } from '@/lib/auth';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { getIntercityTransportTotal, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { validateLegDates } from '@/lib/itinerary-validation';
+import { reserveLegSortOrder } from '@/lib/itinerary-leg-placement';
 import { miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
 import { z } from 'zod';
-import { eq, sql } from 'drizzle-orm';
 
 const intercityTransportSchema = z.object({
   mode: z.string().nullable().optional(),
@@ -47,38 +47,34 @@ export async function POST(request: Request) {
     const dateError = validateLegDates(data);
     if (dateError) return error(dateError, 400);
 
-    // Get next sort order
-    const maxOrder = await db
-      .select({ max: sql<number>`COALESCE(MAX(sort_order), 0)` })
-      .from(itineraryLegs)
-      .where(eq(itineraryLegs.userId, userId))
-      .get();
-
     const legData = { ...data };
     delete legData.intercityTransports;
 
-    const result = await db.insert(itineraryLegs).values({
-      ...legData,
-      userId,
-      intercityTransportCost,
-      intercityTransportNote,
-      sortOrder: (maxOrder?.max ?? 0) + 1,
-    }).returning();
+    // A dated leg goes into date order; an undated one is appended. Placement and insert share one transaction.
+    const leg = db.transaction((tx) => {
+      const sortOrder = reserveLegSortOrder(tx, userId, data.startDate);
+      const inserted = tx.insert(itineraryLegs).values({
+        ...legData,
+        userId,
+        intercityTransportCost,
+        intercityTransportNote,
+        sortOrder,
+      }).returning().get();
+      if (intercityTransports.length > 0) {
+        tx.insert(itineraryLegTransports).values(
+          intercityTransports.map((transport, index) => ({
+            legId: inserted.id,
+            mode: transport.mode,
+            note: transport.note,
+            cost: transport.cost,
+            sortOrder: transport.sortOrder ?? index,
+          }))
+        ).run();
+      }
+      return inserted;
+    });
 
-    const leg = result[0];
-    if (leg && intercityTransports.length > 0) {
-      await db.insert(itineraryLegTransports).values(
-        intercityTransports.map((transport, index) => ({
-          legId: leg.id,
-          mode: transport.mode,
-          note: transport.note,
-          cost: transport.cost,
-          sortOrder: transport.sortOrder ?? index,
-        }))
-      );
-    }
-
-    return success(result[0], 201);
+    return success(leg, 201);
   } catch (err) {
     return handleError(err);
   }

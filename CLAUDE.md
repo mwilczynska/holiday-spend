@@ -245,7 +245,11 @@ choices rather than frozen city prices.
 Dashboard, planner, expense tracker, dataset and settings include initial database data in their server-rendered
 responses. Dashboard, planner, dataset and settings skip duplicate initial browser reads and refresh on client navigation and
 after edits. The planner includes saved climate in its initial read, collects only missing records, and renders every
-leg. Its cards are memoized so unrelated dialog and header updates do not rerender the full itinerary.
+leg card. A card's body (climate, tiers, transport, expenses, overrides) mounts the first time the card opens and then
+stays mounted while collapsed, so drafts survive. Cards are memoized and receive stable props: a leg save re-reads
+only `/api/itinerary`, keeps unchanged leg and city objects, and re-renders the edited card and the one after it.
+The reorder/delete lock is read from context by the buttons it disables. City pickers build their options only while
+open. The trip climate chart renders from deferred values.
 
 `/plan/compare` uses one canonical server-side allocation engine for summary totals, cumulative series and country
 and category groupings. Manual transport remains separate.
@@ -308,8 +312,13 @@ summaries show a fixed-cost line only when the total is nonzero. Paid-status and
 unchanged and expose an error.
 Planner leg additions retain the selected city and nights after rejected saves and show HTTP, network or unreadable
 response errors. Nights must be a positive whole number. Pending additions disable the form and prevent a second submission.
-Add Leg accepts several existing cities with separate nights. Planner and dataset new-city dialogs accept several
-city/country entries with shared generation settings, and planner entries have separate nights. Batches save in entry
+Add Leg accepts several existing cities, each with start date, end date and nights kept consistent; the first starts
+at the itinerary's last check-out day and each further city at the previous one's end. A dated leg is inserted in
+date order (server-side, one transaction); an undated one is appended. Leg dates must be real YYYY-MM-DD dates in
+2000-2100 and a leg at most 366 nights (create, update and create-with-city). Card date and nights inputs save on
+blur, Enter or a 700 ms pause and only when valid, so typing a year does not save intermediate years such as 0202.
+Changing a card's start date moves the leg and keeps its nights; changing the end date changes the nights. Planner and dataset new-city dialogs accept several
+city/country entries with shared generation settings, and planner entries have separate dates and nights. Batches save in entry
 order, stop on the first failure, and remove only confirmed additions from the pending draft; retry does not resubmit
 confirmed saves. Add Leg and dataset city searches offer Add City with the searched name prefilled, including when
 fuzzy matches exist; an empty dataset filter also offers it. The planner carries the nights and retains other selected cities.
@@ -369,7 +378,8 @@ invalidated the earlier Phase 7A numbers.
 `npm run performance:browser` measures authenticated production content readiness and planner dialog response with
 Playwright using the same email/password variables. It records compressed and decoded HTML sizes and browser API
 request timing. Use an isolated database copy and a test account for repeatable comparisons. The HTTP check keeps a
-512 KiB base HTML limit and adds 24 KiB per fully rendered planner card; all cards are present in the response.
+512 KiB base HTML limit and adds 24 KiB per planner card; every card is present in the response, with bodies only
+for open cards.
 
 `npm start` sets `NODE_ENV=production`, which disables the development PIN in `src/lib/auth.ts`. Email/password
 sign-in requires a password row, verified email and an allowed address. Run `npm run auth:set-local-password` in a

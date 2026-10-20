@@ -12,7 +12,10 @@ export function useQueuedDraftSave(save: (patch: DraftPatch) => Promise<void>, o
   const [state, setState] = useState<DraftSaveState>(() => queue.state);
   useEffect(() => {
     const unsubscribe = queue.subscribe(next => {
-      setState(next);
+      // `subscribe` reports the current state at once, as a new object. Keeping the existing one when nothing
+      // changed avoids a second render of every planner leg card on mount.
+      setState(current => current.saving === next.saving && current.error === next.error
+        && JSON.stringify(current.patch) === JSON.stringify(next.patch) ? current : next);
       callbacks.current.onDirtyChange(next.saving || Object.keys(next.patch).length > 0);
     });
     return () => {

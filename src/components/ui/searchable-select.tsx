@@ -66,8 +66,10 @@ export function SearchableSelect({
         <span className="truncate">{selectedOption?.label || placeholder}</span>
         <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
-      {/* `placeholder` already names the field, so it doubles as the dialog's accessible name. */}
-      <CommandDialog open={open} onOpenChange={setOpen} title={placeholder} description={searchPlaceholder}>
+      {/* `placeholder` already names the field, so it doubles as the dialog's accessible name.
+          The option list is built only while open: every planner leg card has one of these over the whole city
+          library, and building ~530 closed options per card on each render dominated the planner's render time. */}
+      {open ? <CommandDialog open onOpenChange={setOpen} title={placeholder} description={searchPlaceholder}>
         <CommandInput placeholder={searchPlaceholder} value={search} onValueChange={setSearch} />
         <CommandList>
           <CommandEmpty>{emptyText}</CommandEmpty>
@@ -128,7 +130,7 @@ export function SearchableSelect({
             </Button>
           </div>
         ) : null}
-      </CommandDialog>
+      </CommandDialog> : null}
     </>
   );
 }

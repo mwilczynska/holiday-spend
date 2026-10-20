@@ -2,7 +2,7 @@ import { db } from '@/db';
 import { expenses, itineraryLegs, itineraryLegTransports } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { getIntercityTransportTotal, normalizeIntercityTransports } from '@/lib/intercity-transport';
-import { validateLegDates } from '@/lib/itinerary-validation';
+import { validateLegDateOrder, validateLegDates } from '@/lib/itinerary-validation';
 import { miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
 import { requireCurrentUserId } from '@/lib/auth';
 import { success, error, handleError } from '@/lib/api-helpers';
@@ -61,10 +61,12 @@ export async function PUT(
     const existing = await db.select().from(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).get();
     if (!existing) return error('Leg not found', 404);
 
-    const dateError = validateLegDates({
-      startDate: body.startDate ?? existing.startDate,
-      endDate: body.endDate ?? existing.endDate,
-    });
+    // New values must be plausible; the order check also uses the stored date that is not being changed.
+    const dateError = validateLegDates({ startDate: body.startDate, endDate: body.endDate, nights: body.nights })
+      ?? validateLegDateOrder({
+        startDate: body.startDate ?? existing.startDate,
+        endDate: body.endDate ?? existing.endDate,
+      });
     if (dateError) return error(dateError, 400);
 
     const nextTransports = Array.isArray(body.intercityTransports)
