@@ -1,0 +1,20 @@
+{
+  "version": "R4",
+  "note": "R3 with hostel references made year-typical: Hostelworld city-page prices (15 October 2026, near-term) scaled by each city's Booking.com six-window seasonal shift (year mean over November), region median where a city has no windows. Assumes hostel seasonality follows hotel seasonality.",
+  "sources": [
+    "r0-numbeo.jsonl",
+    "r3-numbeo-2026-10-15.jsonl",
+    "r4-hostelworld-yeartypical-2026-10-19.jsonl",
+    {
+      "file": "r3-livingcost-2026-10-15.jsonl",
+      "fallbackOnly": true,
+      "crosswalk": {
+        "inexp_meal_1p": 0.0035,
+        "midrange_meal_2p": 0.1058,
+        "beer": -0.012,
+        "coffee": -0.0248
+      }
+    },
+    "r3-hotels-2026-10-17.jsonl"
+  ]
+}

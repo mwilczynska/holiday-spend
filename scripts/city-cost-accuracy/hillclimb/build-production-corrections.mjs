@@ -7,8 +7,9 @@
 //   region    = mean d over the region's cities (global when the region has none)
 //   country   = n/(n+k) * mean d over the country's cities + k/(n+k) * region, k = 3
 // The table stores multipliers exp(offset). Countries are keyed by ISO 3166-1 alpha-2 using the app's canonical
-// country metadata. Owner decisions (16-18 October 2026): correct food, drink, 3-star and 1-star; hostels, cocktail and
-// wine stay uncorrected (no matching reference definition).
+// country metadata. Owner decisions (16-19 October 2026): correct food, drink, 3-star, 1-star and, from 19 October with
+// year-typical hostel references (panel R4, HC_PANEL=references-r4.jsonl), hostels; cocktail and wine stay uncorrected.
+//   HC_PANEL=references-r4.jsonl node build-production-corrections.mjs <out.json> --version <version>
 import fs from 'node:fs';
 import path from 'node:path';
 import { hcRoot, readJson, readJsonl, loadPanel, mean, sha256 } from './lib.mjs';
@@ -18,8 +19,10 @@ const out = args[0];
 if (!out) throw Error('Usage: build-production-corrections.mjs <out.json> [--app-root <path>]');
 const appRoot = args.includes('--app-root') ? args[args.indexOf('--app-root') + 1] : path.resolve(hcRoot, '../../..');
 const K = 3;
-const CORRECTED = ['inexp_meal_1p', 'midrange_meal_2p', 'beer', 'coffee', 'hotel_3star_2p', 'hotel_1star_2p'];
-const UNCORRECTED = ['cocktail', 'wine_glass', 'hostel_dorm_1p', 'hostel_private_2p'];
+const CORRECTED = ['inexp_meal_1p', 'midrange_meal_2p', 'beer', 'coffee', 'hotel_3star_2p', 'hotel_1star_2p', 'hostel_dorm_1p', 'hostel_private_2p'];
+const UNCORRECTED = ['cocktail', 'wine_glass'];
+const version = args.includes('--version') ? args[args.indexOf('--version') + 1] : null;
+if (!version) throw Error('--version is required (for example v1.2-corrections-2026-10-19)');
 
 const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, '');
 const iso = new Map();
@@ -61,12 +64,13 @@ for (const a of CORRECTED) {
 }
 if (unknownCountries.size) throw Error(`No ISO code for: ${[...unknownCountries].join(', ')}`);
 
-const panelFile = path.join(hcRoot, 'panel/references.jsonl');
+const panelFile = path.join(hcRoot, 'panel', process.env.HC_PANEL || 'references.jsonl');
 const result = {
-  version: 'v1.2-corrections-2026-10-18',
+  version,
   method: 'country-in-region multiplicative correction (bundle 022), k = 3; country factors already include region shrinkage',
   fittedOn: { cities: new Set(preds.map(p => p.cityKey)).size, model: 'gpt-6-luna/max', prompt: 'llm_prompt_new_cities_v1_2.md',
-    referencePanel: readJson(path.join(hcRoot, 'panel/panel-summary.json')).version, referencePanelSha256: sha256(fs.readFileSync(panelFile)),
+    referencePanel: readJson(path.join(hcRoot, `panel/${path.basename(panelFile).replace('references', 'panel-summary').replace('.jsonl', '.json')}`)).version,
+    referencePanelSha256: sha256(fs.readFileSync(panelFile)),
     researchTag: 'city-cost-research-r3-2026-10-17' },
   correctedAnchors: CORRECTED,
   uncorrectedAnchors: UNCORRECTED,

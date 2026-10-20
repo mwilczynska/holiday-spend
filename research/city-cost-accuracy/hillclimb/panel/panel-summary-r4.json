@@ -1,0 +1,32 @@
+{
+  "version": "R4",
+  "sources": [
+    "r0-numbeo.jsonl",
+    "r3-numbeo-2026-10-15.jsonl",
+    "r4-hostelworld-yeartypical-2026-10-19.jsonl",
+    {
+      "file": "r3-livingcost-2026-10-15.jsonl",
+      "fallbackOnly": true,
+      "crosswalk": {
+        "inexp_meal_1p": 0.0035,
+        "midrange_meal_2p": 0.1058,
+        "beer": -0.012,
+        "coffee": -0.0248
+      }
+    },
+    "r3-hotels-2026-10-17.jsonl"
+  ],
+  "rows": 3632,
+  "cities": 475,
+  "citiesPerAnchor": {
+    "inexp_meal_1p": 382,
+    "midrange_meal_2p": 382,
+    "beer": 382,
+    "coffee": 382,
+    "hostel_dorm_1p": 334,
+    "hostel_private_2p": 358,
+    "hotel_3star_2p": 465,
+    "hotel_1star_2p": 470
+  },
+  "referencesSha256": "8cd52fe15f5291b4567e8d6686ee56ebd41fe61deeade80e2821eb591029b373"
+}
