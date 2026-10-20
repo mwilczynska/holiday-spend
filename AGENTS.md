@@ -89,10 +89,11 @@ contract and adds two changes measured in the city-cost accuracy research (bundl
   the latest dated RBA USD/AUD observation; it may make up to five searches for food and drink prices, and
   accommodation stays a holistic estimate;
 - the LLM returns no derived tiers, AUD values, corrections or conversion arithmetic;
-- the server multiplies the food, drink, 3-star and 1-star USD anchors by a fixed per-country correction
+- the server multiplies the food, drink, 3-star, 1-star and hostel USD anchors by a fixed per-country correction
   (`src/lib/data/city-cost-corrections-v1-2.json`: country within region, k = 3, fitted on 475 reference cities;
-  typical factors 3-star 0.62, 1-star 0.85, food and drink 0.96 to 1.01). Hostels, cocktail and wine are not corrected
-  until year-typical references exist;
+  typical factors 3-star 0.62, 1-star 0.85, dorm 0.77, private room 0.70, food and drink 0.96 to 1.01). Cocktail and
+  wine are not corrected. `scripts/recorrect-city-costs.ts [--dry-run]` re-applies a new table to stored raw anchors
+  without a model call, keeping hand-edited fields;
 - the server then validates and inverts the RBA observation and applies the exact v1 formulas and USD→AUD conversion
   (`materializeCityCostV12` reuses the v1.1 materializer);
 - raw and corrected anchors, the per-anchor correction and table version, provider/model, reasoning effort,

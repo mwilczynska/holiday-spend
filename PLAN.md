@@ -10,7 +10,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 18 October 2026
+**Last updated:** 19 October 2026
 
 ## City cost v1.2 rollout — IN PROGRESS (18 October 2026)
 
@@ -42,7 +42,15 @@ recompute first. Work happens on `feat/city-cost-v1-2` in its own worktree.
   (`scripts/diff-city-image-picks.ts`) also showed six cities whose Wikipedia lead image has changed since collection,
   left unchanged. Verdicts on the research
   branch (`research/city-images-review/2026-10-18`).
-- [ ] 4. Year-typical hostel references, refit, enable hostel factors.
+- [x] 4. Hostel correction (19 October 2026, owner request). Year-typical hostel references (research panel R4:
+  Hostelworld near-term prices scaled by the same city's Booking.com six-date seasonality, region median as fallback;
+  median scale 1.08) on the research branch. Leave-one-city-out on the development cities: dorm error 0.323 to 0.232,
+  private room 0.401 to 0.235, so hostel factors are enabled. Table `v1.2-corrections-2026-10-19` (panel R4): global
+  dorm 0.77, private room 0.70; the six existing anchors' factors are unchanged. Cocktail and wine stay uncorrected.
+  `scripts/recorrect-city-costs.ts [--dry-run]` re-applies the table to stored raw anchors at the stored exchange rate
+  without a model call, keeping hand-edited fields and the replaced anchors in `correctionHistory`. On a database copy
+  it changed only hostel fields (dorm median x0.77, private room x0.69) in 529 cities; a rerun is a no-op. Branch
+  `feat/hostel-corrections`. Apply to the live library after merge, with a backup first.
 - [x] 5. Library regenerated under v1.2 (18-19 October 2026): all 529 cities saved through the app's own path from
   Codex Luna Max answers (prompts, answers and save results on the research branch,
   `research/library-regeneration-v1-2`). Verified backup first:
