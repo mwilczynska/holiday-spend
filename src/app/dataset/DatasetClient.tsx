@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -117,9 +119,6 @@ function fmtDate(value: string | null | undefined) {
   return value ? value.slice(0, 10) : '-';
 }
 
-function fmtMoney(value: unknown) {
-  return typeof value === 'number' ? value.toFixed(2) : '-';
-}
 
 function describeFxSnapshot(fx: { snapshotId?: unknown; audPerUsd?: unknown; asOfDate?: unknown; sourceName?: unknown }) {
   const rate = typeof fx.audPerUsd === 'number' ? `1 USD = ${fx.audPerUsd.toFixed(4)} AUD` : null;
@@ -151,6 +150,8 @@ export interface DatasetInitialData {
 }
 
 export function DatasetClient({ initialData, canManageLibrary = false }: { initialData: DatasetInitialData; canManageLibrary?: boolean }) {
+  const { format, currency } = useCurrency();
+  const fmtMoney = (value: unknown) => typeof value === 'number' ? format(value, 2) : '-';
   const didApplyQuerySelection = useRef(false);
   const [countries, setCountries] = useState<Country[]>(initialData.countries);
   const [selectedCity, setSelectedCity] = useState<DatasetCity | null>(null);
@@ -527,7 +528,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
         <div className="space-y-2">
           <PageTitle icon={Database}>Dataset</PageTitle>
           <p className="max-w-3xl text-sm text-muted-foreground">
-            Manage the planner-facing city cost dataset. All values are stored in AUD for two people,
+            Manage the planner-facing city cost dataset. Costs are displayed in {currency} for two people,
             then scaled at runtime for traveller count. Methodology now lives on its own page, while
             dataset history stays here with the underlying rows.
           </p>
@@ -708,12 +709,12 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                         </div>
                       </div>
                       <details>
-                        <summary className="cursor-pointer text-sm font-medium">Stored anchor values</summary>
+                        <summary className="cursor-pointer text-sm font-medium">Stored anchor values ({(selectedProvenance?.anchors as { valuesAud?: unknown } | undefined)?.valuesAud ? 'AUD' : 'USD'})</summary>
                         <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
                           {Object.entries(readAnchorValues(selectedProvenance)).map(([key, value]) => (
                             <div key={key} className="rounded border bg-background px-2 py-1">
                               <div className="text-xs text-muted-foreground">{key}</div>
-                              <div className="text-sm">{fmtMoney(value)}</div>
+                              <div className="text-sm">{typeof value === 'number' ? value.toFixed(2) : '-'}</div>
                             </div>
                           ))}
                         </div>
@@ -778,7 +779,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                     methodology-driven values above, then fine-tune any fields manually here if needed.
                   </p>
                   <fieldset disabled={!canManageLibrary}>
-                  <CostEditor
+                  <CostEditor key={selectedCity.id}
                     values={selectedCity as unknown as Record<string, number | null>}
                     onChange={handleCostChange}
                   />

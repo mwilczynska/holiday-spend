@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -33,6 +35,7 @@ interface PreviewData {
 }
 
 export default function ImportPage() {
+  const { format } = useCurrency();
   const fileRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState<PreviewData | null>(null);
@@ -253,7 +256,7 @@ export default function ImportPage() {
                           <td className="p-2 text-right font-medium">
                             {exp.amount.toFixed(2)} {exp.currency}
                             {exp.amountAud != null && exp.currency !== 'AUD' && (
-                              <span className="text-muted-foreground ml-1">(${exp.amountAud.toFixed(2)})</span>
+                              <span className="text-muted-foreground ml-1">({format(exp.amountAud, 2)})</span>
                             )}
                           </td>
                           <td className="p-2 truncate max-w-[200px]">{exp.description || exp.merchant}</td>

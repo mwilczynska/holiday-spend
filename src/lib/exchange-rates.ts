@@ -2,7 +2,7 @@ import { db } from '@/db';
 import { exchangeRates } from '@/db/schema';
 import { eq, and } from 'drizzle-orm';
 
-const FRANKFURTER_BASE = 'https://api.frankfurter.app';
+export const FRANKFURTER_BASE = 'https://api.frankfurter.app';
 
 export async function getExchangeRate(
   fromCurrency: string,

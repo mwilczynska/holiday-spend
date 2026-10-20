@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { MoneyInput } from '@/components/currency/MoneyInput';
+import { useCurrency } from '@/components/currency/CurrencyProvider';
 import { Label } from '@/components/ui/label';
 import type { MiscellaneousExpenseItem } from '@/types';
 import { miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
@@ -23,6 +25,7 @@ export function MiscellaneousExpenses({ legId, expenses, onChange, onValidationE
   onChange: (expenses: MiscellaneousExpenseItem[]) => void;
   onValidationError: (error: string | null) => void;
 }) {
+  const { currency } = useCurrency();
   const nextKey = useRef(0);
   const buildDrafts = (items: MiscellaneousExpenseItem[]) => items.map(item => ({
     key: nextKey.current++, description: item.description ?? '', costInput: String(item.cost),
@@ -55,7 +58,7 @@ export function MiscellaneousExpenses({ legId, expenses, onChange, onValidationE
       <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
         <div>
           <p className="text-xs font-medium">Miscellaneous expenses</p>
-          <p className="text-xs text-muted-foreground">One-off AUD costs for this leg and the whole group.</p>
+          <p className="text-xs text-muted-foreground">One-off {currency} costs for this leg and the whole group.</p>
         </div>
         <Button type="button" variant="outline" size="sm" className="h-8" onClick={() => change([
           ...drafts, { key: nextKey.current++, description: '', costInput: '' },
@@ -77,11 +80,11 @@ export function MiscellaneousExpenses({ legId, expenses, onChange, onValidationE
                 placeholder="e.g. Laundry or luggage storage" />
             </div>
             <div>
-              <Label htmlFor={`${prefix}-cost`} className="text-xs">Cost (AUD)</Label>
-              <Input id={`${prefix}-cost`} type="text" inputMode="decimal" className="h-8 text-xs"
-                value={draft.costInput} aria-invalid={invalidCost}
+              <Label htmlFor={`${prefix}-cost`} className="text-xs">Cost ({currency})</Label>
+              <MoneyInput id={`${prefix}-cost`} className="h-8 text-xs"
+                value={draft.costInput === '' ? null : Number(draft.costInput)} aria-invalid={invalidCost}
                 aria-describedby={invalidCost ? `${prefix}-error` : undefined}
-                onChange={event => change(drafts.map((item, i) => i === index ? { ...item, costInput: event.target.value } : item))}
+                onValueChange={value => change(drafts.map((item, i) => i === index ? { ...item, costInput: value == null ? '' : String(value) } : item))}
                 placeholder="0.00" />
               {invalidCost ? <p id={`${prefix}-error`} className="text-xs text-destructive">Enter zero or a positive amount.</p> : null}
             </div>

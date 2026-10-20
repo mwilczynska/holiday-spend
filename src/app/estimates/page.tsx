@@ -279,11 +279,14 @@ export default function EstimatesPage() {
       </div>
 
       <div className="grid gap-3.5 lg:grid-cols-3">
-        <Tile title="What an estimate is" icon={<BookOpenText />} lead="AUD, for two people">
+        <Tile title="What an estimate is" icon={<BookOpenText />} lead="Base costs for two people">
           <p>
             Accommodation is priced per night. Food, drinks and activities are priced per day. These are planning
             estimates, not quotes or observed prices.
           </p>
+          <p>Choose your display currency beside traveller count or in Settings. Totals, charts and editable costs
+            convert from the stored AUD amounts at the latest available daily Frankfurter rate. The worked example
+            below keeps its stated AUD rate so its arithmetic remains reproducible.</p>
           <p>Transport between cities is not part of a city estimate and is handled separately.</p>
         </Tile>
         <Tile title="Where prices come from" icon={<Database />} className="lg:col-span-2">

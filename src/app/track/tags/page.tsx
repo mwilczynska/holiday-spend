@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -31,6 +33,7 @@ interface TagExpense {
 }
 
 export default function TagsPage() {
+  const { format } = useCurrency();
   const [tags, setTags] = useState<Tag[]>([]);
   const [selectedTag, setSelectedTag] = useState<Tag | null>(null);
   const [tagExpenses, setTagExpenses] = useState<TagExpense[]>([]);
@@ -149,7 +152,7 @@ export default function TagsPage() {
       <PageHeader
         icon={TagsIcon}
         title="Tags"
-        description="Group expenses across categories, such as flights or splurge meals, and see their AUD totals."
+        description="Group expenses across categories, such as flights or splurge meals, and see their totals."
         actions={(
         <Dialog open={addOpen} onOpenChange={open => { if (!saving) { setAddOpen(open); setMutationError(null); } }}>
           <DialogTrigger asChild>
@@ -190,7 +193,7 @@ export default function TagsPage() {
                 )}
                 <span className="font-medium flex-1">{tag.name}</span>
                 <span className="text-xs text-muted-foreground">{tag.expenseCount} expenses</span>
-                <span className="text-sm font-medium">${tag.totalAud.toFixed(0)}</span>
+                <span className="text-sm font-medium">{format(tag.totalAud)}</span>
                 </button>
                 <Button aria-label={`Edit ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-8 w-8 text-slate-600" onClick={() => { setMutationError(null); setEditTag(tag); }}>
                   <Edit className="h-4 w-4" />
@@ -211,11 +214,11 @@ export default function TagsPage() {
                 <CardTitle className="text-sm flex items-center gap-2">
                   {selectedTag.color && <div className="w-3 h-3 rounded-full" style={{ backgroundColor: selectedTag.color }} />}
                   {selectedTag.name}
-                  <Badge variant="secondary">{tagLoading ? 'Loading total…' : tagReadError ? 'Total unavailable' : `$${tagTotal.toFixed(0)} AUD`}</Badge>
+                  <Badge variant="secondary">{tagLoading ? 'Loading total…' : tagReadError ? 'Total unavailable' : format(tagTotal)}</Badge>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="mb-3 text-xs text-muted-foreground">AUD totals use included expenses with an available AUD value.</p>
+                <p className="mb-3 text-xs text-muted-foreground">Totals use included expenses with an available conversion.</p>
                 {tagLoading ? (
                   <InlineLoadingState
                     title={`Loading expenses for ${selectedTag.name}`}
@@ -231,7 +234,7 @@ export default function TagsPage() {
                           <span className="text-muted-foreground">{exp.date}</span>
                           {exp.description && <span className="ml-2">{exp.description}</span>}
                           {exp.isExcluded ? <Badge variant="secondary" className="ml-2">Excluded</Badge> : null}
-                          {exp.currency !== 'AUD' && exp.amountAud == null ? <Badge variant="outline" className="ml-2">No AUD conversion</Badge> : null}
+                          {exp.currency !== 'AUD' && exp.amountAud == null ? <Badge variant="outline" className="ml-2">Conversion unavailable</Badge> : null}
                         </div>
                         <span className="font-medium">{exp.amount.toFixed(2)} {exp.currency}</span>
                       </div>

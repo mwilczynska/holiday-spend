@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useEffect, useMemo, useState } from 'react';
 import {
   BarChart,
@@ -38,9 +40,6 @@ interface WrappedTickProps {
   lineHeight?: number;
 }
 
-function formatAud(value: number) {
-  return `$${value.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
-}
 
 function wrapTickLabel(value: string, maxCharsPerLine: number, maxLines: number) {
   const words = value.split(/\s+/).filter(Boolean);
@@ -172,7 +171,9 @@ function renderChart(
   plans: PlanComparisonResult[],
   rows: CountryChartRow[],
   mode: CountryChartMode,
-  chartMode: 'inline' | 'expanded'
+  chartMode: 'inline' | 'expanded',
+  formatAud: (amount: number) => string,
+  currency: string,
 ) {
   const isExpanded = chartMode === 'expanded';
   const inlineCountryTickWidth = 132;
@@ -199,10 +200,10 @@ function renderChart(
         <XAxis
           type="number"
           tick={{ fontSize: isExpanded ? 13 : 9 }}
-          tickFormatter={(value) => `$${value}`}
+          tickFormatter={(value) => formatAud(Number(value))}
         >
           <Label
-            value={mode === 'daily' ? 'Spend per Day (AUD)' : 'Spend (AUD)'}
+            value={mode === 'daily' ? 'Spend per Day (' + currency + ')' : 'Spend (' + currency + ')'}
             position="insideBottom"
             offset={isExpanded ? -2 : -4}
             style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 9 }}
@@ -260,6 +261,7 @@ function renderChart(
 }
 
 export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[] }) {
+  const { format: formatAud, currency } = useCurrency();
   const [expanded, setExpanded] = useState(false);
   const [mode, setMode] = useState<CountryChartMode>(DEFAULT_COUNTRY_CHART_MODE);
 
@@ -292,7 +294,7 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
         <CardContent className="flex flex-1 flex-col gap-3">
           <CountryLegend plans={plans} compact />
           <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
-            {renderChart(plans, allRows, mode, 'inline')}
+            {renderChart(plans, allRows, mode, 'inline', formatAud, currency)}
           </div>
         </CardContent>
       </Card>
@@ -312,7 +314,7 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
             <div className="flex h-full min-h-0 flex-col gap-2">
               <CountryLegend plans={plans} />
               <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
-                {renderChart(plans, allRows, mode, 'expanded')}
+                {renderChart(plans, allRows, mode, 'expanded', formatAud, currency)}
               </div>
             </div>
           </div>

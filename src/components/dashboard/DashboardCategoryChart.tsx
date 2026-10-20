@@ -1,11 +1,12 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { memo } from 'react';
 import {
   Bar, BarChart, CartesianGrid, Cell, Label, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts';
 import {
-  fmtAud,
   type CategoryMode, type ChartRenderMode, type ResponsiveChartHeight,
 } from '@/components/dashboard/dashboard-chart-parts';
 
@@ -37,6 +38,7 @@ export const DashboardCategoryChart = memo(function DashboardCategoryChart({
   expandedBarSize: number;
   plotShellClassName: string;
 }) {
+  const { format: fmtAud, currency } = useCurrency();
     const isExpanded = mode === 'expanded';
     const chartNode = (
       <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
@@ -47,9 +49,9 @@ export const DashboardCategoryChart = memo(function DashboardCategoryChart({
           margin={isExpanded ? { top: 8, right: 88, left: 22, bottom: 24 } : { top: 12, right: 56, left: 12, bottom: 18 }}
         >
           <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" horizontal={false} />
-          <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 10 }} tickFormatter={(value) => `$${value}`}>
+          <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 10 }} tickFormatter={(value) => fmtAud(Number(value))}>
             <Label
-              value="Spend (AUD)"
+              value={`Spend (${currency})`}
               position="insideBottom"
               offset={isExpanded ? -2 : -6}
               style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}

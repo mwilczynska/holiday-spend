@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useEffect, useId, useMemo, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -60,9 +62,6 @@ interface TransportEstimateDialogProps {
   onApplyTransports: (transports: IntercityTransportItem[]) => Promise<void> | void;
 }
 
-function fmtAud(value: number) {
-  return `$${value.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
-}
 
 function getDefaultModels() {
   return getDefaultCityGenerationModels();
@@ -102,6 +101,7 @@ export function TransportEstimateDialog({
   existingTransports,
   onApplyTransports,
 }: TransportEstimateDialogProps) {
+  const { format: fmtAud } = useCurrency();
   const apiKeyInputId = useId();
   const [provider, setProvider] = useState<ProviderOption>('openai');
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());

@@ -27,6 +27,13 @@ budget modelling across accommodation / food / drinks / activities, manual and i
 planned-vs-actual dashboards, and a city-cost library that can generate new cities with an LLM.
 
 City base costs are stored in AUD for two people and scaled at runtime for traveller count and selected tiers.
+Display currency is an account preference, selectable beside traveller count on dashboard/planner and in Settings.
+Totals, chart labels/tooltips, saved-plan summaries, Dataset prices and cost inputs use the selected currency at the
+latest available daily Frankfurter rate, with an hourly refresh. The existing exchange-rate table caches observations
+under their actual date. Input is converted back to AUD for persistence; switching currency never rewrites amounts.
+Original transaction currencies, stored FX provenance and fixed methodology examples retain their stated units.
+Missing, invalid or older-than-seven-day rates leave conversions unavailable with Retry; failed selections retain
+the requested currency as a draft and keep the saved display. AUD needs no network request.
 
 ## Routes
 

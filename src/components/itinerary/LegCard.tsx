@@ -1,10 +1,13 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { MoneyInput } from '@/components/currency/MoneyInput';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { SearchableSelect, type SearchableSelectOption } from '@/components/ui/searchable-select';
@@ -145,16 +148,13 @@ type TransportDraft = IntercityTransportItem & {
   costInput: string;
 };
 
-function formatCategoryCost(value: number | null | undefined, unit: 'day' | 'night') {
-  if (value == null) return 'Unavailable';
-  return `$${value.toFixed(0)}/${unit}`;
-}
+
 
 function parseTransportCost(value: string) {
   const trimmed = value.trim();
   if (!trimmed) return 0;
   const parsed = Number.parseFloat(trimmed.replace(/,/g, ''));
-  return Number.isFinite(parsed) ? parsed : 0;
+  return Number.isFinite(parsed) ? parsed : NaN;
 }
 
 function toTransportPayload(drafts: TransportDraft[]): IntercityTransportItem[] {
@@ -191,20 +191,24 @@ export const LegCard = memo(function LegCard({
   onToggleTemperature,
   onRetryClimate,
 }: LegCardProps) {
+  const { format, currency } = useCurrency();
+  const formatCategoryCost = (value: number | null | undefined, unit: 'day' | 'night') => value == null ? 'Unavailable' : format(value) + '/' + unit;
   const [miscellaneousError, setMiscellaneousError] = useState<string | null>(null);
   const [miscellaneousReset, setMiscellaneousReset] = useState(0);
+  const [invalidMoneyFields, setInvalidMoneyFields] = useState<Set<string>>(() => new Set());
+  const validationError = miscellaneousError || (invalidMoneyFields.size > 0 ? 'Enter finite, nonnegative costs.' : null);
   const miscellaneousErrorRef = useRef(miscellaneousError);
-  miscellaneousErrorRef.current = miscellaneousError;
+  miscellaneousErrorRef.current = validationError;
   const { state: editState, queue: editQueue } = useQueuedDraftSave(
     patch => onUpdate(savedLeg.id, patch),
     dirty => onDirtyChange(savedLeg.id, dirty || miscellaneousErrorRef.current != null),
   );
   useEffect(() => {
-    onDirtyChange(savedLeg.id, miscellaneousError != null || editState.saving || Object.keys(editState.patch).length > 0);
-  }, [miscellaneousError, editState.saving, editState.patch, onDirtyChange, savedLeg.id]);
+    onDirtyChange(savedLeg.id, validationError != null || editState.saving || Object.keys(editState.patch).length > 0);
+  }, [validationError, editState.saving, editState.patch, onDirtyChange, savedLeg.id]);
   const hasDraft = Object.keys(editState.patch).length > 0;
   // A collapsed card must never hide an unsaved draft or its Retry/Discard controls.
-  const mustStayOpen = hasDraft || editState.saving || editState.error != null || miscellaneousError != null;
+  const mustStayOpen = hasDraft || editState.saving || editState.error != null || validationError != null;
   const isOpen = expanded || mustStayOpen;
   const [hasOpened, setHasOpened] = useState(isOpen);
   if (isOpen && !hasOpened) setHasOpened(true);
@@ -315,6 +319,11 @@ export const LegCard = memo(function LegCard({
   };
 
   const handleFieldChange = (field: string, value: unknown) => {
+    if (field.endsWith('Override')) {
+      const invalid = typeof value === 'number' && (!Number.isFinite(value) || value < 0);
+      setInvalidMoneyFields(current => { const next = new Set(current); if (invalid) next.add(field); else next.delete(field); return next; });
+      if (invalid) return;
+    }
     submitEdit({ [field]: value });
   };
 
@@ -355,6 +364,9 @@ export const LegCard = memo(function LegCard({
   };
 
   const persistIntercityTransports = (drafts: TransportDraft[]) => {
+    const invalid = drafts.some(draft => !Number.isFinite(parseTransportCost(draft.costInput)) || parseTransportCost(draft.costInput) < 0);
+    setInvalidMoneyFields(current => { const next = new Set(current); if (invalid) next.add('intercityTransports'); else next.delete('intercityTransports'); return next; });
+    if (invalid) return;
     handleFieldChange('intercityTransports', toTransportPayload(drafts));
   };
 
@@ -430,10 +442,10 @@ export const LegCard = memo(function LegCard({
                 <span>{formatLegDate(leg.startDate)} – {leg.endDate ? formatLegDate(leg.endDate) : '?'} ·</span>
               ) : null}
               <span>{leg.nights} {leg.nights === 1 ? 'night' : 'nights'} ·</span>
-              <span>${leg.dailyCost.toFixed(0)}/day</span>
+              <span>{format(leg.dailyCost)}/day</span>
               <span aria-hidden="true">·</span>
               <span className="font-bold text-foreground">
-                ${leg.legTotal.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
+                {format(leg.legTotal)} total
               </span>
             </p>
           </div>
@@ -489,18 +501,19 @@ export const LegCard = memo(function LegCard({
           </div>
         </div>
 
-        {editState.saving || hasDraft || miscellaneousError ? (
-          <div className="mt-2 rounded-md border p-2 text-sm" role={editState.error || miscellaneousError ? 'alert' : 'status'}>
-            <p className={editState.error || miscellaneousError ? 'text-destructive' : 'text-muted-foreground'}>
-              {miscellaneousError || editState.error || (editState.saving ? 'Saving leg changes...' : 'Unsaved leg changes.')}
+        {editState.saving || hasDraft || validationError ? (
+          <div className="mt-2 rounded-md border p-2 text-sm" role={editState.error || validationError ? 'alert' : 'status'}>
+            <p className={editState.error || validationError ? 'text-destructive' : 'text-muted-foreground'}>
+              {validationError || editState.error || (editState.saving ? 'Saving leg changes...' : 'Unsaved leg changes.')}
             </p>
             <p className="text-xs text-muted-foreground">This card previews your changes. Trip totals use saved values until the save succeeds.</p>
-            {editState.error || miscellaneousError ? (
+            {editState.error || validationError ? (
               <div className="mt-2 flex flex-wrap gap-2">
-                <Button type="button" size="sm" variant="outline" disabled={editState.saving || miscellaneousError != null} onClick={() => void editQueue.retry().catch(() => undefined)}>Retry leg save</Button>
+                <Button type="button" size="sm" variant="outline" disabled={editState.saving || validationError != null} onClick={() => void editQueue.retry().catch(() => undefined)}>Retry leg save</Button>
                 <Button type="button" size="sm" variant="ghost" disabled={editState.saving} onClick={() => {
                   editQueue.discard();
                   setMiscellaneousError(null);
+                  setInvalidMoneyFields(new Set());
                   setMiscellaneousReset(value => value + 1);
                   editingTransportKeyRef.current = null;
                   setTransportDrafts(buildTransportDrafts(savedLeg.intercityTransports || []));
@@ -620,7 +633,7 @@ export const LegCard = memo(function LegCard({
                 size="sm"
                 className="h-8"
                 onClick={() => setTransportEstimateOpen(true)}
-                disabled={hasDraft || miscellaneousError != null || editState.saving || previousLeg == null || !leg.startDate}
+                disabled={hasDraft || validationError != null || editState.saving || previousLeg == null || !leg.startDate}
               >
                 Estimate transport
               </LockableButton>
@@ -674,13 +687,12 @@ export const LegCard = memo(function LegCard({
                     />
                   </div>
                   <div>
-                    <Label className="text-xs">Cost ($)</Label>
-                    <Input
-                      type="text"
-                      inputMode="decimal"
+                    <Label className="text-xs">Cost ({currency})</Label>
+                    <MoneyInput
+                      key={miscellaneousReset}
                       className="h-8 text-xs"
-                      value={transport.costInput}
-                      onChange={(e) => updateIntercityTransportDraft(index, { costInput: e.target.value })}
+                      value={transport.costInput === '' ? null : Number(transport.costInput)}
+                      onValueChange={value => updateIntercityTransportDraft(index, { costInput: value == null ? '' : String(value) })}
                       onFocus={() => {
                         editingTransportKeyRef.current = transport.draftKey;
                       }}
@@ -723,21 +735,21 @@ export const LegCard = memo(function LegCard({
         {showOverrides && (
           <div className="mt-2 grid grid-cols-2 gap-2 lg:grid-cols-5">
             {[
-              { field: 'accomOverride', label: 'Accom $/night' },
-              { field: 'foodOverride', label: 'Food $/day' },
-              { field: 'drinksOverride', label: 'Drinks $/day' },
-              { field: 'activitiesOverride', label: 'Activities $/day' },
-              { field: 'transportOverride', label: 'Transport $/day' },
+              { field: 'accomOverride', label: 'Accom per night' },
+              { field: 'foodOverride', label: 'Food per day' },
+              { field: 'drinksOverride', label: 'Drinks per day' },
+              { field: 'activitiesOverride', label: 'Activities per day' },
+              { field: 'transportOverride', label: 'Transport per day' },
             ].map(({ field, label }) => (
               <div key={field}>
-                <Label htmlFor={`leg-${leg.id}-${field}`} className="text-xs">{label}</Label>
-                <Input
+                <Label htmlFor={`leg-${leg.id}-${field}`} className="text-xs">{label} ({currency})</Label>
+                <MoneyInput
+                  key={miscellaneousReset}
                   id={`leg-${leg.id}-${field}`}
-                  type="number"
                   className="h-8 text-xs"
                   placeholder="Auto"
-                  value={((leg as Record<string, unknown>)[field] as number | null) ?? ''}
-                  onChange={(e) => handleFieldChange(field, e.target.value ? parseFloat(e.target.value) : null)}
+                  value={((leg as Record<string, unknown>)[field] as number | null) ?? null}
+                  onValueChange={value => handleFieldChange(field, value)}
                 />
               </div>
             ))}
