@@ -1,5 +1,8 @@
 'use client';
 
+import { CurrencySelector } from '@/components/currency/CurrencySelector';
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
 import { dashboardReadSchema } from '@/lib/dashboard-read-contract';
@@ -25,7 +28,6 @@ import dynamic from 'next/dynamic';
 import {
   DashboardChartPlaceholder,
   buildStaggeredCountryBands,
-  fmtAud,
   getBurnRateLegendItems,
   ExpandedChartLegend,
   type BurnRatePoint,
@@ -98,7 +100,6 @@ type ExpandedChart = 'country' | 'category' | 'burn' | null;
 // Bento categorical order: blue, teal, amber, red, violet, then quieter tones.
 const CHART_COLORS = ['#2563EB', '#12A594', '#F5A524', '#E5484D', '#8E4EC6', '#0EA5E9', '#B8C2D6', '#D97706', '#64748B', '#13254A'];
 
-const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.abs(n).toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 
 function formatDashboardDate(value: string) {
   const date = new Date(`${value}T00:00:00Z`);
@@ -128,7 +129,7 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
     summary: 'Actual logged trip spend so far.',
     items: [
       { label: 'Included', description: 'Non-excluded expenses linked to a trip leg or dated inside the trip window.' },
-      { label: 'AUD Handling', description: 'A non-AUD expense without an AUD conversion contributes zero until converted.' },
+      { label: 'Currency conversion', description: 'Expenses without an available conversion are excluded from totals until converted.' },
     ],
   },
   plannedSpendToDate: {
@@ -168,7 +169,7 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
     summary: 'Average planned daily spend based on the cities visited through the dashboard cutoff date.',
     items: [
       { label: 'Formula', description: 'planned spend through cutoff / elapsed days through cutoff' },
-      { label: 'Why it differs from Planned $/day', description: 'Planned $/day is the full-trip average. This metric reflects the cost mix of cities you have actually been through.' },
+      { label: 'Why it differs from Planned per day', description: 'Planned per day is the full-trip average. This metric reflects the cost mix of cities you have actually been through.' },
     ],
   },
   actualPerDay: {
@@ -201,6 +202,8 @@ export interface DashboardInitialData {
  * navigating back to the dashboard could otherwise show a slightly stale figure.
  */
 export function DashboardClient({ initialData }: { initialData: DashboardInitialData }) {
+  const { format: fmtAud } = useCurrency();
+  const fmtAudSigned = (n: number) => (n > 0 ? '+' : n < 0 ? '-' : '') + fmtAud(Math.abs(n));
   const [summary, setSummary] = useState<Summary | null>(initialData.summary);
   const [comparison, setComparison] = useState<CountryComparison[]>(initialData.comparison);
   const [cityComparison, setCityComparison] = useState<CityComparisonRow[]>(initialData.cityComparison);
@@ -453,6 +456,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
               {summary.groupSize} {summary.groupSize === 1 ? 'traveller' : 'travellers'}
             </Link>
           ) : null}
+          <CurrencySelector />
           {tripDateRange ? (
             <span className="inline-flex h-11 items-center gap-2 rounded-xl border bg-card px-3.5 text-sm font-semibold">
               <CalendarDays className="h-4 w-4" aria-hidden="true" />

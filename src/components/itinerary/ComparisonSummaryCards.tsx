@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { Card, CardContent } from '@/components/ui/card';
 import { PLAN_COLORS } from '@/lib/comparison-colors';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
@@ -9,9 +11,6 @@ interface ComparisonSummaryCardsProps {
   plans: PlanComparisonResult[];
 }
 
-function formatAud(value: number) {
-  return `$${value.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
-}
 
 function getCardWidthClass(planCount: number) {
   if (planCount <= 2) {
@@ -24,6 +23,7 @@ function getCardWidthClass(planCount: number) {
 }
 
 export function ComparisonSummaryCards({ plans }: ComparisonSummaryCardsProps) {
+  const { format: formatAud } = useCurrency();
   const cardWidthClass = getCardWidthClass(plans.length);
 
   return (
@@ -50,7 +50,7 @@ export function ComparisonSummaryCards({ plans }: ComparisonSummaryCardsProps) {
                   <span className="font-medium">{plan.summary.totalNights}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Avg $/day</span>
+                  <span className="text-muted-foreground">Average per day</span>
                   <span className="font-medium">{formatAud(plan.summary.avgDailySpend)}</span>
                 </div>
                 <div className="flex justify-between">

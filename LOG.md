@@ -3614,3 +3614,27 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - Cause of the emptied `node_modules/.bin` on 19 October: `next build` in a worktree creates
   `.next\standalone\node_modules` as a junction to the main checkout's `node_modules`; deleting the worktree
   followed it. Junctions are now unlinked before any worktree deletion (see CLAUDE.md, Local layout).
+
+## 20 October 2026 — Account display currency
+
+- Added 30-currency selection beside travellers on dashboard/planner and in Settings, persisted per account.
+  The phone planner row keeps the full traveller label, with an icon Add Leg button.
+- Reused Frankfurter and the existing exchange-rate table. A latest AUD-base snapshot is shared for an hour and
+  observations are stored under their actual date. Invalid, future or older-than-seven-day rates stay unavailable.
+  AUD needs no download; failed changes retain the saved display and offer Retry/Discard.
+- Totals, chart ticks/labels/tooltips, plan comparisons, saved-plan summaries, expense equivalents, tag totals,
+  Dataset prices and cost inputs use the preference. Editable amounts convert back to canonical AUD; switching
+  alone writes no costs. Invalid input stays a draft and cannot clear overrides or save zero transport.
+  Original transaction currencies, stored FX provenance and fixed methodology examples keep their stated units.
+- Verification: 86 unit files / 562 tests, the two currency browser flows and three existing planner regression
+  tests pass; TypeScript, focused ESLint, memory mirror, methodology guard and production webpack build pass.
+  Live Frankfurter rates dated 20 October (EUR 0.62282 per AUD) and real preference saves/full Settings and planner
+  reloads were checked in an isolated database. The worktree standalone build warns about 27 dependency files
+  outside the tracing root because node_modules is a junction; no deployment boot was tested.
+- Test setup: webpack handles the shared dependency junction; NODE_OPTIONS=--no-experimental-strip-types lets
+  the existing Tailwind TypeScript config load under Node 24. First cold dev compilation exceeded auth setup's
+  timeout; warmed reruns passed. Supplied Agra only in the seeded test database for existing planner fixtures.
+- Work is isolated on codex/display-currency at C:\Dev\holiday-spend-worktrees\display-currency. The other agent's
+  checkout and the live database were not edited. Automatic approval review rejected publishing source/history to
+  the configured GitHub remote as an unverified destination. The owner then explicitly approved pushing to
+  mwilczynska/holiday-spend and opening a draft PR on 20 October 2026.

@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -77,9 +79,6 @@ function getDefaultModels() {
   return getDefaultCityGenerationModels();
 }
 
-function fmtAud(value: number) {
-  return `$${value.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
-}
 
 function buildEstimatableTransportLegs(
   legs: BulkTransportEstimateDialogProps['legs']
@@ -107,6 +106,7 @@ export function BulkTransportEstimateDialog({
   legs,
   onApplied,
 }: BulkTransportEstimateDialogProps) {
+  const { format: fmtAud } = useCurrency();
   const apiKeyInputId = useId();
   const [provider, setProvider] = useState<ProviderOption>('openai');
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());

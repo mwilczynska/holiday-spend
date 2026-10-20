@@ -1,5 +1,8 @@
 'use client';
 
+import { CurrencySelector } from '@/components/currency/CurrencySelector';
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
 import { useState, useEffect, useCallback, useId, useLayoutEffect, useMemo, useRef } from 'react';
 import { reuseUnchangedById } from '@/lib/reuse-unchanged';
@@ -258,6 +261,7 @@ export interface PlanInitialData {
 }
 
 export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
+  const { format } = useCurrency();
   const importApiKeyInputId = useId();
   const [legs, setLegs] = useState<Leg[]>(initialData.legs);
   // Legs start collapsed except the one in progress. A leg that appears after load (added here or
@@ -1574,6 +1578,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     </SelectContent>
                   </Select>
                 </div>
+                <CurrencySelector disabled={hasUnsavedLegEdits || pageLoading} />
                 <SavePlanDialog
                   open={savePlanDialogOpen}
                   onOpenChange={setSavePlanDialogOpen}
@@ -1668,9 +1673,9 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   setAddDialogOpen(open);
                 }}>
                   <DialogTrigger asChild>
-                    <Button className="shrink-0">
-                      <Plus className="mr-2 h-4 w-4" />
-                      Add Leg
+                    <Button className="h-10 w-10 shrink-0 px-0 sm:w-auto sm:px-4">
+                      <Plus className="h-4 w-4 sm:mr-2" />
+                      <span className="sr-only sm:not-sr-only">Add Leg</span>
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="max-h-[85vh] overflow-y-auto">
@@ -1796,7 +1801,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
               <p role="status" className="mt-3 text-sm text-amber-700">Unsaved leg edits. Trip totals reflect saved data. Retry or discard failed changes before saving, exporting or replacing the plan.</p>
             ) : null}
             <div className="mt-2 text-xs text-muted-foreground sm:mt-3">
-              {pageError ? 'Last loaded plan' : 'Current plan'}: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
+              {pageError ? 'Last loaded plan' : 'Current plan'}: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, {format(currentPlanSummary.totalBudget)} total.
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { memo } from 'react';
 import {
   CartesianGrid, Label, Legend, Line, LineChart, ReferenceArea, ReferenceLine,
@@ -39,6 +41,7 @@ export const DashboardBurnChart = memo(function DashboardBurnChart({
   budgetCeiling: number;
   plotShellClassName: string;
 }) {
+  const { format: fmtAud, currency } = useCurrency();
     const isExpanded = mode === 'expanded';
     const burnMetrics = getBurnChartMetrics(mode);
     const hasPlannedTail = data.some((point) => point.spentPlannedTail != null);
@@ -61,11 +64,11 @@ export const DashboardBurnChart = memo(function DashboardBurnChart({
           <YAxis
             width={burnMetrics.yAxisWidth}
             tick={{ fontSize: isExpanded ? 13 : 11 }}
-            tickFormatter={(v) => `$${v}`}
+            tickFormatter={(v) => fmtAud(Number(v))}
             domain={[0, Math.max(0, Math.ceil(yAxisMax))]}
           >
             <Label
-              value="Cumulative Spend (AUD)"
+              value={`Cumulative Spend (${currency})`}
               angle={-90}
               position="insideLeft"
               style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11, textAnchor: 'middle' }}

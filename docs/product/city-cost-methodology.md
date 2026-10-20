@@ -1,5 +1,10 @@
 # City cost methodology
 
+Display currency is selectable beside traveller count and in Settings, per account. Totals, charts and cost inputs
+convert from stored AUD amounts using the latest available daily Frankfurter rate (refreshed hourly). Changing it
+never rewrites city estimates, expense conversions, saved plans or budgets. Original transaction currencies and
+recorded FX provenance retain their stated units; worked examples below keep their fixed AUD assumptions.
+
 **Last updated:** 18 October 2026. Describes v1.2. Replaces the v1.1 version of this document.
 
 This document describes how Holiday Spend estimates what two people spend per day in a city, and how those estimates

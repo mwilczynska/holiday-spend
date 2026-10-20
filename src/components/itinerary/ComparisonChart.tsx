@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useState } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, Legend,
@@ -16,9 +18,6 @@ interface ComparisonChartProps {
   plans: PlanComparisonResult[];
 }
 
-function formatAud(value: number) {
-  return `$${value.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
-}
 
 function formatShortDate(dateStr: string) {
   const parts = dateStr.split('-');
@@ -90,6 +89,8 @@ function renderChart(
   sortedDates: string[],
   yAxisMax: number,
   mode: 'inline' | 'expanded',
+  formatAud: (amount: number) => string,
+  currency: string,
 ) {
   const isExpanded = mode === 'expanded';
   const ticks = getEvenlySpacedTicks(sortedDates, mode);
@@ -124,7 +125,7 @@ function renderChart(
           width={isExpanded ? 92 : 76}
         >
           <Label
-            value="Cumulative Spend (AUD)"
+            value={`Cumulative Spend (${currency})`}
             angle={-90}
             position="insideLeft"
             style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11, textAnchor: 'middle' }}
@@ -169,6 +170,7 @@ function renderChart(
 }
 
 export function ComparisonChart({ plans }: ComparisonChartProps) {
+  const { format: formatAud, currency } = useCurrency();
   const [expanded, setExpanded] = useState(false);
 
   if (plans.length === 0) return null;
@@ -191,7 +193,7 @@ export function ComparisonChart({ plans }: ComparisonChartProps) {
           </p>
         </CardHeader>
         <CardContent>
-          {renderChart(plans, data, sortedDates, yAxisMax, 'inline')}
+          {renderChart(plans, data, sortedDates, yAxisMax, 'inline', formatAud, currency)}
         </CardContent>
       </Card>
 
@@ -205,7 +207,7 @@ export function ComparisonChart({ plans }: ComparisonChartProps) {
           </DialogHeader>
           <div className="min-h-0 overflow-hidden px-5 pt-1 pb-3">
             <div className="flex h-full min-h-0 flex-col gap-2">
-              {renderChart(plans, data, sortedDates, yAxisMax, 'expanded')}
+              {renderChart(plans, data, sortedDates, yAxisMax, 'expanded', formatAud, currency)}
             </div>
           </div>
         </DialogContent>

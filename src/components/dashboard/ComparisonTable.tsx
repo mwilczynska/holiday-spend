@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useMemo, useState } from 'react';
 import { Search } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -7,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import type { CityImageView } from '@/lib/city-image-view';
-import { fmtAud } from './dashboard-chart-parts';
+
 
 type Status = 'planned' | 'active' | 'completed' | null;
 
@@ -57,7 +59,7 @@ const STATUS_PILL: Record<'planned' | 'active' | 'completed', string> = {
   completed: 'bg-success-soft text-success',
 };
 
-const fmtSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}${fmtAud(Math.abs(n))}`;
+
 
 function formatStart(value: string | null) {
   if (!value) return null;
@@ -72,6 +74,8 @@ function formatStart(value: string | null) {
  * with a sticky header. Per-day figures exclude intercity transport.
  */
 export function ComparisonTable({ countries, cities }: { countries: CountryComparisonRow[]; cities: CityComparisonRow[] }) {
+  const { format: fmtAud } = useCurrency();
+  const fmtSigned = (n: number) => (n > 0 ? '+' : n < 0 ? '-' : '') + fmtAud(Math.abs(n));
   const [view, setView] = useState<View>('countries');
   const [query, setQuery] = useState('');
 
@@ -141,9 +145,9 @@ export function ComparisonTable({ countries, cities }: { countries: CountryCompa
               <th className="pl-5 pr-2 text-left">{view === 'countries' ? 'Country' : 'City'}</th>
               <th className="px-2 text-right"># days</th>
               <th className="px-2 text-right">Planned</th>
-              <th className="px-2 text-right">Planned $/day</th>
+              <th className="px-2 text-right">Planned per day</th>
               <th className="px-2 text-right">Actual</th>
-              <th className="px-2 text-right">Actual $/day</th>
+              <th className="px-2 text-right">Actual per day</th>
               <th className="px-2 text-right">Difference</th>
               <th className="pl-2 pr-5 text-right">Status</th>
             </tr>
@@ -201,7 +205,7 @@ export function ComparisonTable({ countries, cities }: { countries: CountryCompa
         </table>
       </div>
       <p className="px-5 py-3 text-xs text-muted-foreground">
-        {rows.length} {rows.length === 1 ? noun.replace(/ies$/, 'y') : noun} · totals include everything; $/day excludes intercity transport.
+        {rows.length} {rows.length === 1 ? noun.replace(/ies$/, 'y') : noun} · totals include everything; per-day figures exclude intercity transport.
       </p>
     </section>
   );

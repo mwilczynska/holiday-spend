@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useEffect, useId, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -63,6 +65,7 @@ export function CityGenerationPanel({
   countryName,
   onGenerated,
 }: CityGenerationPanelProps) {
+  const { format, currency } = useCurrency();
   const apiKeyInputId = useId();
   const showApiKeyId = useId();
   const [provider, setProvider] = useState<ProviderOption>('openai');
@@ -438,12 +441,12 @@ export function CityGenerationPanel({
           </details>
 
           <details className="rounded-md border">
-            <summary className="cursor-pointer px-3 py-2 text-sm font-medium">AUD Tier Outputs</summary>
+            <summary className="cursor-pointer px-3 py-2 text-sm font-medium">{currency} Tier Outputs</summary>
             <div className="grid gap-2 border-t px-3 py-3 sm:grid-cols-2 lg:grid-cols-4">
               {Object.entries(result.tiersAud ?? result.payload.tiers_aud ?? {}).map(([key, value]) => (
                 <div key={key} className="space-y-1">
                   <div className="text-xs text-muted-foreground">{key}</div>
-                  <div className="text-sm font-medium">{fmtMoney(value)}</div>
+                  <div className="text-sm font-medium">{format(value, 2)}</div>
                 </div>
               ))}
             </div>

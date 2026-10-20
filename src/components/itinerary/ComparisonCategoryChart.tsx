@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useMemo, useState } from 'react';
 import {
   BarChart,
@@ -32,9 +34,6 @@ interface WrappedTickProps {
   };
 }
 
-function formatAud(value: number) {
-  return `$${value.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
-}
 
 function getCategoryLabel(category: PlanComparisonCategoryTotal['category']) {
   switch (category) {
@@ -177,7 +176,9 @@ function CategoryPlanLegend({ plans, compact = false }: { plans: PlanComparisonR
 function renderGroupedChart(
   plans: PlanComparisonResult[],
   rows: Array<CategoryComparisonRow & { total: number }>,
-  chartMode: 'inline' | 'expanded'
+  chartMode: 'inline' | 'expanded',
+  formatAud: (amount: number) => string,
+  currency: string,
 ) {
   const isExpanded = chartMode === 'expanded';
   const inlineCategoryTickWidth = 132;
@@ -200,10 +201,10 @@ function renderGroupedChart(
         <XAxis
           type="number"
           tick={{ fontSize: isExpanded ? 13 : 10 }}
-          tickFormatter={(value) => `$${value}`}
+          tickFormatter={(value) => formatAud(Number(value))}
         >
           <Label
-            value="Spend (AUD)"
+            value={`Spend (${currency})`}
             position="insideBottom"
             offset={isExpanded ? -2 : -6}
             style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}
@@ -261,6 +262,7 @@ function renderGroupedChart(
 }
 
 export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult[] }) {
+  const { format: formatAud, currency } = useCurrency();
   const [expanded, setExpanded] = useState(false);
 
   const rows = useMemo(() => buildCategoryComparisonRows(plans), [plans]);
@@ -285,7 +287,7 @@ export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult
         <CardContent className="flex flex-1 flex-col gap-3">
           <CategoryPlanLegend plans={plans} compact />
           <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
-            {renderGroupedChart(plans, rows, 'inline')}
+            {renderGroupedChart(plans, rows, 'inline', formatAud, currency)}
           </div>
         </CardContent>
       </Card>
@@ -302,7 +304,7 @@ export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult
             <div className="flex h-full min-h-0 flex-col gap-2">
               <CategoryPlanLegend plans={plans} />
               <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
-                {renderGroupedChart(plans, rows, 'expanded')}
+                {renderGroupedChart(plans, rows, 'expanded', formatAud, currency)}
               </div>
             </div>
           </div>

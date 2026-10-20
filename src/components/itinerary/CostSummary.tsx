@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
@@ -18,9 +20,9 @@ interface CostSummaryProps {
   groupSize?: number;
 }
 
-const fmt = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 
 export function TripSummaryCard({ legs, fixedCostsTotal, groupSize = 2 }: CostSummaryProps) {
+  const { format: fmt, currency } = useCurrency();
   const totalLegsCost = legs.reduce((sum, l) => sum + l.legTotal, 0);
   const grandTotal = totalLegsCost + fixedCostsTotal;
   const totalNights = legs.reduce((sum, l) => sum + l.nights, 0);
@@ -52,7 +54,7 @@ export function TripSummaryCard({ legs, fixedCostsTotal, groupSize = 2 }: CostSu
       <div className="flex items-baseline justify-between border-t pt-2.5">
         <span className="text-base font-extrabold">Total</span>
         <span className="text-xl font-extrabold">
-          {fmt(grandTotal)} <span className="text-xs font-semibold text-muted-foreground">AUD</span>
+          {fmt(grandTotal)} <span className="text-xs font-semibold text-muted-foreground">{currency}</span>
         </span>
       </div>
       <p className="text-xs text-muted-foreground">
@@ -63,6 +65,7 @@ export function TripSummaryCard({ legs, fixedCostsTotal, groupSize = 2 }: CostSu
 }
 
 export function CountrySummaryCard({ legs }: Pick<CostSummaryProps, 'legs'>) {
+  const { format: fmt } = useCurrency();
   const byCountry = legs.reduce<Record<string, { total: number; nights: number }>>((acc, leg) => {
     const key = leg.countryName;
     if (!acc[key]) acc[key] = { total: 0, nights: 0 };

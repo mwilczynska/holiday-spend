@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useEffect, useRef, useState } from 'react';
 import { BedDouble, Bus, ShoppingBag, Ticket, Utensils, Wine } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -43,8 +45,9 @@ export function QuickAddForm({
   /** Reports the active leg and currency so a host can show them in its own header. */
   onActiveLegLoaded?: (summary: string | null) => void;
 }) {
+  const { currency: displayCurrency } = useCurrency();
   const [amount, setAmount] = useState('');
-  const [currency, setCurrency] = useState('AUD');
+  const [currency, setCurrency] = useState<string>(displayCurrency);
   const [category, setCategory] = useState('food');
   const [description, setDescription] = useState('');
   const [loggedBy, setLoggedBy] = useState<'you' | 'partner'>('you');
@@ -130,7 +133,7 @@ export function QuickAddForm({
       if (!res.ok) throw new Error(result?.error || `Could not save expense (HTTP ${res.status}). Try again.`);
       if (!result?.data) throw new Error('The server returned an unreadable save response. Check Expenses before retrying.');
       if (result.data.amountAud == null && currency !== 'AUD') {
-        setConversionWarning('Expense saved without an AUD conversion because the exchange rate is unavailable. It will not count toward AUD totals until converted.');
+        setConversionWarning('Expense saved without a conversion because the exchange rate is unavailable. It will not count toward totals until converted.');
       }
       setSaved(true);
       setAmount('');
