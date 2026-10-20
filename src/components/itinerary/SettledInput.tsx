@@ -20,7 +20,10 @@ interface SettledInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
  * thousands of years. An invalid draft is kept while focused (marked invalid) and reverts to the saved value on blur.
  */
 export function SettledInput({ value, onCommit, isValid, delayMs = 700, onBlur, onKeyDown, ...props }: SettledInputProps) {
-  const [draft, setDraft] = useState(value);
+  const [draft, setDraftState] = useState(value);
+  // Read by blur and Enter, which can follow an input event before React has re-rendered with the new draft.
+  const draftRef = useRef(value);
+  const setDraft = (next: string) => { draftRef.current = next; setDraftState(next); };
   const editing = useRef(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const latest = useRef({ value, onCommit, isValid });
@@ -53,13 +56,13 @@ export function SettledInput({ value, onCommit, isValid, delayMs = 700, onBlur, 
         timer.current = isValid(next) ? setTimeout(() => commit(next), delayMs) : null;
       }}
       onKeyDown={(event) => {
-        if (event.key === 'Enter') commit(draft);
+        if (event.key === 'Enter') commit(draftRef.current);
         onKeyDown?.(event);
       }}
       onBlur={(event) => {
         editing.current = false;
-        commit(draft);
-        if (!isValid(draft)) setDraft(latest.current.value);
+        commit(draftRef.current);
+        if (!isValid(draftRef.current)) setDraft(latest.current.value);
         onBlur?.(event);
       }}
     />
