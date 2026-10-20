@@ -130,6 +130,8 @@ test('rejected transport row edits retain their draft for retry', async ({ page 
     await expect(card.getByRole('alert')).toBeHidden();
     await page.reload();
     await page.waitForLoadState('networkidle');
+    // Card bodies mount on first open, so a reloaded (collapsed) card is expanded before reading its fields.
+    await expandLegCard(card);
     await expect(card.getByPlaceholder('Flight', { exact: true })).toHaveValue('QA train');
     await expect(card.getByPlaceholder('Cost', { exact: true })).toHaveValue('123.4');
   } finally {

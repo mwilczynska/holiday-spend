@@ -12,7 +12,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 19 October 2026
 
-## Planner dates and performance — IN PROGRESS (20 October 2026)
+## Planner dates and performance — READY FOR REVIEW (20 October 2026)
 
 Owner request: editing leg dates lags badly with 60+ legs spanning over a year, and a new leg is appended at the end
 (dated in 2027), so moving it to 2026 recalculates and redraws a year of values and climate. Branch
@@ -36,15 +36,23 @@ Done (commits `53eb616e`, `fa1abfba`, `d702d855`; 83 files / 550 tests pass):
   callbacks via refs.
 - [x] 4. Trip climate renders from deferred values; city picker options built only while open; one render per card on
   mount.
-- [ ] 5. Measurement (headless dev mode, 72-leg copy; blocking time). Start -> now (commit `a100f033`, card bodies
-  mount on first open): elements 13,291 -> ~4,200; open Add Leg 8-12.6 s -> 0.6-1.4 s; C/F 2.9-5.5 s -> 0.6-0.8 s;
-  date edit with one card open ~7 s -> 2.2-2.8 s; typing a year 9.0 s (4 saves) -> 3.1 s (1 save); status change
-  6.2-13.2 s -> 2.0-3.2 s; page load wall 5.9-7.5 s -> 3.1-3.4 s; expand all 2.5-2.9 s -> 3.6 s (now mounts bodies).
-  Next: CPU-profile a date edit and a status change (remaining 2-3 s: likely the trip climate chart, summary/country
-  cards, and the post-save itinerary refresh); measure main for the before column by checking out `origin/main` in
-  this worktree (the dev servers need `NODE_OPTIONS=--no-experimental-strip-types`, already in launch.json, or
-  Tailwind fails to load `tailwind.config.ts` under Node 24); then a production-build check.
-- [ ] 6. Docs (CLAUDE.md product behaviour), PR.
+- [x] 5. Measurement. Production builds of main and this branch on identical 72-leg copies, headless Chromium,
+  3 runs each (wall time / main-thread blocking): page load 1.4-2.3 s / up to 0.78 s -> ~1.0 s / 0.03 s; date edit
+  1.5-1.7 s / ~1.5 s -> 0.35-0.47 s / 0.15-0.36 s; typing a year 4.1-4.3 s / 3.7-4.0 s with 4 saves -> ~0.85 s
+  (including 0.5 s of typing) / 0.13-0.34 s with 1 save; status change 1.6-2.1 s / 1.4-2.0 s -> 0.4-0.8 s /
+  0.2-0.5 s; C/F 0.6 s / 0.4 s -> 0.25 s / 0.1 s; open Add Leg ~0.32 s -> ~0.28 s; collapse all ~1.0 s both;
+  expand all 0.77 s / 0.55 s -> 1.2 s / 1.0 s (it now mounts the bodies; rendering it as a transition was tried and
+  was slower overall, so it was reverted). Elements on the page 13,291 -> ~4,400. An edit now re-renders 2 cards
+  (was all 72, twice). Commits `a100f033` (lazy bodies), `835896a2` (lock via context).
+  Other pages (production): /dataset renders ~27,000 elements and 4.9 MB of HTML and blocks 0.5-0.6 s on every load
+  (all 531 cities in the table); search there is acceptable (worst keystroke ~0.18 s). /plan HTML is 1.1 MB, mostly
+  the embedded city library. Dashboard blocks ~0.17 s; compare, track, estimates and settings do not block.
+- [x] 6. Docs: CLAUDE.md/AGENTS.md product behaviour. Playwright planner specs (8 files, 21 tests) pass against the
+  branch dev server; `planner-edit-failures` now expands a reloaded card before reading its transport fields. Under
+  the slow webpack dev server two specs needed a longer timeout (`--timeout=120000`); they pass.
+- [ ] 7. Owner review and merge. Follow-ups worth considering: paginate or virtualize the dataset table; stop
+  embedding all city cost fields in the planner HTML; per-card unit via context so C/F re-renders only climate.
+  Note: `src/lib/snapshot-import-atomicity.test.ts` failed once under load (4 skipped) and passed on rerun.
 
 Test setup (all gitignored or excluded locally): `.local-test/` holds the database and photo copies, a generated test
 PIN, and `measure-planner.cjs`, `profile-planner.cjs`, `load-requests.cjs`. Dev server config `planner-perf-dev` in
