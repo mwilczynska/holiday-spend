@@ -3590,3 +3590,5 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - `scripts/recorrect-city-costs.ts` re-applies the table from each estimate's stored raw anchors and exchange rate,
   with no model call. Like the exchange-rate refresh it changes a planner field only if it still equals what the
   estimate produced.
+- Applied to the live library after merge (PR #16), with a verified backup first: 529 cities re-corrected, none with
+  hand-edited hostel fields. Wulong and Chaozhou, added the same day, were saved under v1.1 and were skipped.

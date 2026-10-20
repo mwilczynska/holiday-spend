@@ -50,7 +50,10 @@ recompute first. Work happens on `feat/city-cost-v1-2` in its own worktree.
   `scripts/recorrect-city-costs.ts [--dry-run]` re-applies the table to stored raw anchors at the stored exchange rate
   without a model call, keeping hand-edited fields and the replaced anchors in `correctionHistory`. On a database copy
   it changed only hostel fields (dorm median x0.77, private room x0.69) in 529 cities; a rerun is a no-op. Branch
-  `feat/hostel-corrections`. Apply to the live library after merge, with a backup first.
+  `feat/hostel-corrections`, merged as PR #16. Applied to the live library on 19 October 2026 after a verified
+  backup (`C:\Users\chawi\holiday-spend-backups\pre-hostel-recorrect-2026-10-19`, 531 cities, 1060 photos): 529
+  cities re-corrected, no hand-edited fields, rerun a no-op. Wulong and Chaozhou were added on 19 October under v1.1
+  and store no raw anchors, so they keep uncorrected values until regenerated under v1.2.
 - [x] 5. Library regenerated under v1.2 (18-19 October 2026): all 529 cities saved through the app's own path from
   Codex Luna Max answers (prompts, answers and save results on the research branch,
   `research/library-regeneration-v1-2`). Verified backup first:
