@@ -10,7 +10,15 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
-**Last updated:** 19 October 2026
+**Last updated:** 20 October 2026
+
+## Dev sign-in from a phone on the LAN — COMPLETE (20 October 2026)
+
+Owner report: on mobile, after entering the dev PIN, Enter dev mode and Sign in could not be pressed. Next 16 returned
+403 for dev resources requested from the LAN origin (`192.168.1.179`), so the login page rendered but never hydrated
+and its buttons kept their server-rendered `disabled` state. `next.config.mjs` now lists private-network ranges in
+`allowedDevOrigins` (dev server only). Verified at 375px on the LAN address: the page hydrates and Enter dev mode
+enables once a PIN is typed.
 
 ## Planner dates and performance — COMPLETE (20 October 2026)
 

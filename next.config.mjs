@@ -14,6 +14,15 @@ const nextConfig = {
   output: 'standalone',
   poweredByHeader: false,
   devIndicators: false,
+  // Next 16 rejects requests for dev resources (/_next/*, /__nextjs*, the HMR websocket) whose
+  // Origin is not localhost. A phone on the LAN opening http://192.168.x.x:3000 then received the
+  // server-rendered page but never hydrated, so Sign in and Enter dev mode stayed disabled.
+  // Private-network addresses only; this setting has no effect on `next start`.
+  allowedDevOrigins: [
+    '10.*.*.*',
+    '192.168.*.*',
+    ...Array.from({ length: 16 }, (_, i) => `172.${16 + i}.*.*`),
+  ],
   serverExternalPackages: ['better-sqlite3', 'argon2'],
   outputFileTracingIncludes: {
       '/*': [
