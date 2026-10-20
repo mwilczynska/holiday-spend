@@ -12,6 +12,15 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
+## Dashboard chart country labels on mobile — COMPLETE (20 October 2026)
+
+Owner report: on a phone, the country names above the cumulative spend chart overlapped.
+`buildStaggeredCountryBands` assigned label rows assuming a 760px plot. The header strip now measures rendered label
+and strip widths and assigns rows with `placeCountryLabels` (centred on the band, clamped inside the strip, first row
+that clears the previous label). The estimated rows remain the pre-measurement fallback. Verified at 375px with 21
+countries: no overlaps and no labels outside the strip, in 9 rows. Unit tests cover wide, narrow and edge cases.
+Open option: hide the strip on narrow screens if 9 rows proves too tall.
+
 ## Dev sign-in from a phone on the LAN — COMPLETE (20 October 2026)
 
 Owner report: on mobile, after entering the dev PIN, Enter dev mode and Sign in could not be pressed. Next 16 returned

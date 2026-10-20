@@ -66,6 +66,7 @@ export const COUNTRY_BAND_COLORS = ['#dbeafe', '#dcfce7', '#fef3c7', '#fce7f3', 
 
 export const BURN_COUNTRY_LABEL_TOP_OFFSET = 4;
 export const BURN_COUNTRY_LABEL_ROW_GAP = 4;
+export const BURN_COUNTRY_LABEL_COLUMN_GAP = 4;
 
 export const fmtAud = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 
@@ -339,6 +340,28 @@ export function buildStaggeredCountryBands(bands: CountryBand[], totalPointCount
   });
 }
 
+/**
+ * Places each country label centred on its band, clamped inside the strip, on the first row
+ * where it clears the previous label on that row by BURN_COUNTRY_LABEL_COLUMN_GAP. Bands are in
+ * date order, so each row only needs to remember where its last label ends.
+ */
+export function placeCountryLabels(
+  labels: Array<Pick<StaggeredCountryBand, 'segmentStartRatio' | 'segmentEndRatio'> & { width: number }>,
+  stripWidth: number,
+): Array<{ left: number; level: number }> {
+  const levelEnds: number[] = [];
+  return labels.map(({ segmentStartRatio, segmentEndRatio, width }) => {
+    const centre = ((segmentStartRatio + segmentEndRatio) / 2) * stripWidth;
+    const left = Math.round(Math.min(Math.max(centre - width / 2, 0), Math.max(stripWidth - width, 0)));
+    let level = 0;
+    while (levelEnds[level] != null && left < levelEnds[level] + BURN_COUNTRY_LABEL_COLUMN_GAP) {
+      level += 1;
+    }
+    levelEnds[level] = left + width;
+    return { left, level };
+  });
+}
+
 export function getCountryBandKey(band: Pick<CountryBand, 'countryName' | 'startDate' | 'endDate'>) {
   return `${band.countryName}-${band.startDate}-${band.endDate}`;
 }
@@ -356,28 +379,41 @@ export function BurnCountryHeaderStrip({
   const [layout, setLayout] = useState(() => ({
     rowOffsets: [] as number[],
     stripHeight: 24,
+    // Measured pixel position and row per label. Empty until the first measurement, when the
+    // percentage layout and the estimated `labelLevel` from buildStaggeredCountryBands apply.
+    placements: {} as Record<string, { left: number; level: number }>,
   }));
 
   useLayoutEffect(() => {
     if (bands.length === 0) return;
 
     const measure = () => {
-      const maxLabelLevel = bands.reduce((maxLevel, band) => Math.max(maxLevel, band.labelLevel), 0);
-      const rowHeights = Array.from({ length: maxLabelLevel + 1 }, () => 14);
+      const stripWidth = stripInnerRef.current?.clientWidth ?? 0;
+      if (stripWidth <= 0) return;
 
-      for (const band of bands) {
-        const labelNode = labelRefs.current[getCountryBandKey(band)];
-        if (!labelNode) continue;
-        const labelHeight = labelNode.getBoundingClientRect().height;
-        rowHeights[band.labelLevel] = Math.max(rowHeights[band.labelLevel] ?? 14, Math.ceil(labelHeight));
-      }
+      // buildStaggeredCountryBands assumes a 760px plot, which on a phone puts labels that
+      // overlap on the same row. Rows are chosen here from the rendered widths instead.
+      const measured = bands.flatMap((band) => {
+        const key = getCountryBandKey(band);
+        const labelNode = labelRefs.current[key];
+        return labelNode ? [{ key, band, node: labelNode, width: labelNode.offsetWidth }] : [];
+      });
+      const placed = placeCountryLabels(measured.map(({ band, width }) => ({ ...band, width })), stripWidth);
+      const placements: Record<string, { left: number; level: number }> = {};
+      const rowHeights: number[] = [];
+
+      measured.forEach(({ key, node }, index) => {
+        const { left, level } = placed[index];
+        rowHeights[level] = Math.max(rowHeights[level] ?? 14, Math.ceil(node.offsetHeight));
+        placements[key] = { left, level };
+      });
 
       const rowOffsets: number[] = [];
       let cursor = BURN_COUNTRY_LABEL_TOP_OFFSET;
 
       for (let index = 0; index < rowHeights.length; index += 1) {
         rowOffsets[index] = cursor;
-        cursor += rowHeights[index] + BURN_COUNTRY_LABEL_ROW_GAP;
+        cursor += (rowHeights[index] ?? 14) + BURN_COUNTRY_LABEL_ROW_GAP;
       }
 
       const stripHeight = cursor;
@@ -387,14 +423,21 @@ export function BurnCountryHeaderStrip({
         const sameOffsets =
           currentLayout.rowOffsets.length === rowOffsets.length &&
           currentLayout.rowOffsets.every((offset, index) => offset === rowOffsets[index]);
+        const currentKeys = Object.keys(currentLayout.placements);
+        const samePlacements =
+          currentKeys.length === Object.keys(placements).length &&
+          currentKeys.every((key) =>
+            placements[key]?.left === currentLayout.placements[key].left &&
+            placements[key]?.level === currentLayout.placements[key].level);
 
-        if (sameHeight && sameOffsets) {
+        if (sameHeight && sameOffsets && samePlacements) {
           return currentLayout;
         }
 
         return {
           rowOffsets,
           stripHeight,
+          placements,
         };
       });
     };
@@ -427,40 +470,35 @@ export function BurnCountryHeaderStrip({
     >
       <div ref={stripInnerRef} className="relative" style={{ height: layout.stripHeight }}>
         {bands.map((band) => {
-          const left = `${band.segmentStartRatio * 100}%`;
-          const width = `${Math.max((band.segmentEndRatio - band.segmentStartRatio) * 100, 2)}%`;
-          // A label centred on a narrow band at either end would spill past the chart, so edge
-          // labels grow inward instead.
+          const key = getCountryBandKey(band);
+          const placement = layout.placements[key];
+          // Before measurement: a label centred on a narrow band at either end would spill past
+          // the chart, so edge labels grow inward instead.
           const edge = band.segmentEndRatio >= 0.94 ? 'end' : band.segmentStartRatio <= 0.06 ? 'start' : null;
+          const position: React.CSSProperties = placement
+            ? { left: placement.left }
+            : edge === 'end'
+              ? { right: `${(1 - band.segmentEndRatio) * 100}%` }
+              : edge === 'start'
+                ? { left: `${band.segmentStartRatio * 100}%` }
+                : { left: `${((band.segmentStartRatio + band.segmentEndRatio) / 2) * 100}%`, transform: 'translateX(-50%)' };
+          const level = placement?.level ?? band.labelLevel;
 
           return (
             <div
-              key={getCountryBandKey(band)}
-              className="absolute"
+              key={key}
+              ref={(node) => {
+                labelRefs.current[key] = node;
+              }}
+              className="absolute whitespace-nowrap px-1 font-bold text-slate-600"
               style={{
-                left,
-                width,
-                top: layout.rowOffsets[band.labelLevel] ?? BURN_COUNTRY_LABEL_TOP_OFFSET,
+                ...position,
+                top: layout.rowOffsets[level] ?? BURN_COUNTRY_LABEL_TOP_OFFSET,
+                fontSize: metrics.countryLabelFontSize,
+                lineHeight: metrics.countryLabelLineHeight,
               }}
             >
-              <div
-                ref={(node) => {
-                  labelRefs.current[getCountryBandKey(band)] = node;
-                }}
-                className={
-                  edge === 'end'
-                    ? 'absolute right-0 whitespace-nowrap px-1 text-right font-bold text-slate-600'
-                    : edge === 'start'
-                      ? 'absolute left-0 whitespace-nowrap px-1 text-left font-bold text-slate-600'
-                      : 'px-1 text-center font-bold text-slate-600'
-                }
-                style={{
-                  fontSize: metrics.countryLabelFontSize,
-                  lineHeight: metrics.countryLabelLineHeight,
-                }}
-              >
-                {band.countryName}
-              </div>
+              {band.countryName}
             </div>
           );
         })}
