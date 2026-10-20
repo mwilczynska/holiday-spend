@@ -12,7 +12,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 19 October 2026
 
-## Planner dates and performance — READY FOR REVIEW (20 October 2026)
+## Planner dates and performance — COMPLETE (20 October 2026)
 
 Owner request: editing leg dates lags badly with 60+ legs spanning over a year, and a new leg is appended at the end
 (dated in 2027), so moving it to 2026 recalculates and redraws a year of values and climate. Branch
@@ -50,11 +50,11 @@ Done (commits `53eb616e`, `fa1abfba`, `d702d855`; 83 files / 550 tests pass):
 - [x] 6. Docs: CLAUDE.md/AGENTS.md product behaviour. Playwright planner specs (8 files, 21 tests) pass against the
   branch dev server; `planner-edit-failures` now expands a reloaded card before reading its transport fields. Under
   the slow webpack dev server two specs needed a longer timeout (`--timeout=120000`); they pass.
-- [ ] 7. Owner review and merge. Follow-ups worth considering: paginate or virtualize the dataset table; stop
+- [x] 7. Merged to main as PR #17 (`9384c1c5`); worktree and branch removed. Follow-ups worth considering: paginate or virtualize the dataset table; stop
   embedding all city cost fields in the planner HTML; per-card unit via context so C/F re-renders only climate.
   Note: `src/lib/snapshot-import-atomicity.test.ts` failed once under load (4 skipped) and passed on rerun.
 
-Test setup (all gitignored or excluded locally): `.local-test/` holds the database and photo copies, a generated test
+Test setup (removed with the worktree after merge): `.local-test/` held the database and photo copies, a generated test
 PIN, and `measure-planner.cjs`, `profile-planner.cjs`, `load-requests.cjs`. Dev server config `planner-perf-dev` in
 the main checkout's `.claude/launch.json` (port 3003, webpack, `AUTH_DEV_PIN` from the test PIN). Restore
 `.local-test/travel.pristine.db` over `travel.db` (server stopped, delete `-wal`/`-shm`) before each measurement run.
