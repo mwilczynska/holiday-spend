@@ -25,10 +25,11 @@ Owner report: on the plan tab the pinned header left little room for the plan. R
   until hydration.
 - Compare Plans no longer shows "No comparison data available" before its first load.
 - Bottom navigation: one icon size so labels align, "Compare" instead of "Compare Plans", and a labelled Sign out.
+- Leg card headers on phones: photo and buttons share the first row; the city name, status and dates take the full
+  card width below (previously the name wrapped one word per line).
 
-Verified with Playwright at 375px (`mobile-layout.spec.ts`, new header and order test) and the desktop planner
-regression specs. Not fixed: leg card headers squeeze the city name and dates into a narrow column on phones; the
-Expenses header and explanation fill most of the first screen; Expenses filters are 32px tall; Compare Plans header
+Verified with Playwright at 375px (`mobile-layout.spec.ts`, new header, order and leg card test) and the desktop
+planner regression specs. Not fixed: the Expenses header and explanation fill most of the first screen; Expenses filters are 32px tall; Compare Plans header
 is about 160px. `planner-read-failures.spec.ts` fails its 5-second alert expectation on main as well (pre-existing).
 
 ## Dashboard chart country labels on mobile — COMPLETE (20 October 2026)

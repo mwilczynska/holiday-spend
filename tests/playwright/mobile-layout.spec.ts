@@ -56,5 +56,14 @@ test('the pinned planner header stays compact on a phone and keeps its actions i
   expect(legs).toBeLessThan(await top('Trip summary'));
   expect(legs).toBeLessThan(await top('By country'));
 
+  // Leg card headers: the city name gets the card's width, below the photo and buttons.
+  const firstCard = page.getByTestId('planner-leg-card').first();
+  const cardBox = await firstCard.boundingBox();
+  const nameBox = await firstCard.getByRole('heading', { level: 3 }).boundingBox();
+  const buttonBox = await firstCard.getByRole('button', { name: /^(Expand|Collapse) / }).boundingBox();
+  expect(nameBox!.height).toBeLessThan(40);
+  expect(nameBox!.y).toBeGreaterThan(buttonBox!.y + buttonBox!.height - 1);
+  expect(nameBox!.x - cardBox!.x).toBeLessThan(24);
+
   await page.screenshot({ path: 'test-results/playwright/mobile-planner-header.png' });
 });

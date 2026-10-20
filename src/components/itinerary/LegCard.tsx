@@ -415,7 +415,9 @@ export const LegCard = memo(function LegCard({
           <span className={cn('shrink-0 overflow-hidden rounded-[10px]', isOpen ? 'h-[76px] w-[104px]' : 'h-16 w-[88px]')}>
             <CityPhoto name={leg.cityName} image={photo} size="small" credit="tooltip" />
           </span>
-          <div className="min-w-0 flex-1">
+          {/* On a phone the photo and buttons share the first row and the name and dates take the full
+              width below; squeezed between them, a city name wrapped one word per line. */}
+          <div className="min-w-0 flex-1 max-sm:order-last max-sm:basis-full">
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <h3 className={cn('font-extrabold', isOpen ? 'text-lg' : 'text-base')}>{leg.cityName}</h3>
               <span className="text-sm text-muted-foreground">{leg.countryName}</span>
