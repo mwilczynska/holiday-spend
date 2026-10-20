@@ -3,6 +3,7 @@
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
 import { useState, useEffect, useCallback, useId, useLayoutEffect, useMemo, useRef } from 'react';
 import { reuseUnchangedById } from '@/lib/reuse-unchanged';
+import { PlannerLockContext } from '@/components/itinerary/planner-lock';
 import {
   createNewLegDraft,
   DEFAULT_NEW_LEG_NIGHTS,
@@ -1806,6 +1807,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                 No legs yet. Add your first destination to start planning.
               </p>
             )}
+            <PlannerLockContext.Provider value={hasUnsavedLegEdits || orderSaving || pageLoading || !!pageError}>
             <ol className="list-none">
               {legs.map((leg, i) => (
                 <li key={leg.id} className="flex gap-3 sm:gap-3.5">
@@ -1838,7 +1840,6 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                       onDiscard={handleDiscardLegEdits}
                       onDelete={handleDeleteLeg}
                       onMove={handleReorder}
-                      orderSaving={hasUnsavedLegEdits || orderSaving || pageLoading || !!pageError}
                       expanded={expandedLegIds.has(leg.id)}
                       onToggleExpanded={toggleLegExpanded}
                       isFirst={i === 0}
@@ -1849,6 +1850,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                 </li>
               ))}
             </ol>
+            </PlannerLockContext.Provider>
           </section>
         </div>
     </div>

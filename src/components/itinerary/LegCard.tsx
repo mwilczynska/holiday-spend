@@ -18,6 +18,7 @@ import { useQueuedDraftSave } from '@/lib/use-queued-draft-save';
 import { addDays, nightsBetween } from '@/lib/itinerary-leg-dates';
 import { isPlausibleLegDate, MAX_LEG_NIGHTS } from '@/lib/itinerary-validation';
 import { SettledInput } from './SettledInput';
+import { LockableButton } from './planner-lock';
 import {
   getAccommodationCostForTier,
   getActivitiesCostForTier,
@@ -109,7 +110,6 @@ interface LegCardProps {
   onDiscard: () => void;
   onDelete: (id: number) => void;
   onMove: (id: number, direction: -1 | 1) => void;
-  orderSaving?: boolean;
   /** Whether the editing body is shown. Cards with unsaved, saving or failed edits stay open regardless. */
   expanded: boolean;
   onToggleExpanded: (id: number) => void;
@@ -181,7 +181,6 @@ export const LegCard = memo(function LegCard({
   onDiscard,
   onDelete,
   onMove,
-  orderSaving = false,
   expanded,
   onToggleExpanded,
   isFirst,
@@ -437,29 +436,29 @@ export const LegCard = memo(function LegCard({
             </p>
           </div>
           <div className="ml-auto flex items-center gap-0.5">
-            <Button
+            <LockableButton
               variant="ghost"
               size="icon"
               className="h-8 w-8 text-slate-600"
               onClick={() => onMove(leg.id, -1)}
               aria-label={`Move ${leg.cityName} leg up`}
               title="Move up"
-              disabled={isFirst || orderSaving}
+              disabled={isFirst}
             >
               <ArrowUp className="h-4 w-4" />
-            </Button>
-            <Button
+            </LockableButton>
+            <LockableButton
               variant="ghost"
               size="icon"
               className="h-8 w-8 text-slate-600"
               onClick={() => onMove(leg.id, 1)}
               aria-label={`Move ${leg.cityName} leg down`}
               title="Move down"
-              disabled={isLast || orderSaving}
+              disabled={isLast}
             >
               <ArrowDown className="h-4 w-4" />
-            </Button>
-            <Button
+            </LockableButton>
+            <LockableButton
               type="button"
               variant="ghost"
               size="icon"
@@ -467,10 +466,10 @@ export const LegCard = memo(function LegCard({
               aria-label={'Delete ' + leg.cityName + ' leg'}
               title="Delete leg"
               onClick={() => onDelete(leg.id)}
-              disabled={orderSaving || editState.saving || hasDraft}
+              disabled={editState.saving || hasDraft}
             >
               <Trash2 className="h-4 w-4" />
-            </Button>
+            </LockableButton>
             <Button
               type="button"
               variant="ghost"
@@ -613,16 +612,16 @@ export const LegCard = memo(function LegCard({
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Button
+              <LockableButton
                 type="button"
                 variant="outline"
                 size="sm"
                 className="h-8"
                 onClick={() => setTransportEstimateOpen(true)}
-                disabled={orderSaving || hasDraft || miscellaneousError != null || editState.saving || previousLeg == null || !leg.startDate}
+                disabled={hasDraft || miscellaneousError != null || editState.saving || previousLeg == null || !leg.startDate}
               >
                 Estimate transport
-              </Button>
+              </LockableButton>
               <Button type="button" variant="outline" size="sm" className="h-8" onClick={addIntercityTransport}>
                 <Plus className="mr-1 h-3.5 w-3.5" />
                 Add transport
