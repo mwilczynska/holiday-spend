@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { expenses, expenseTags, tags } from '@/db/schema';
 import { and, eq, inArray, ne } from 'drizzle-orm';
@@ -13,7 +14,7 @@ const bulkSchema = z.object({
   category: z.string().optional(),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
@@ -77,3 +78,5 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/expenses/bulk', 'POST');

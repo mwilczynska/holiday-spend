@@ -1332,11 +1332,11 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-1">
                 <Label className="text-xs">Missing City Handling</Label>
-                <Select
+                <Select data-analytics="plan-client.set-missing-city-strategy"
                   value={missingCityStrategy}
                   onValueChange={(value) => setMissingCityStrategy(value as 'placeholder' | 'generate')}
                 >
-                  <SelectTrigger className="h-9 text-sm">
+                  <SelectTrigger data-analytics="plan-client.select-trigger" className="h-9 text-sm">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -1365,8 +1365,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                 <div className="grid gap-3 md:grid-cols-2">
                   <div className="space-y-1">
                     <Label className="text-xs">Provider</Label>
-                    <Select value={importProvider} onValueChange={(value) => updateImportProvider(value as ProviderOption)}>
-                      <SelectTrigger className="h-9 text-sm">
+                    <Select data-analytics="plan-client.select" value={importProvider} onValueChange={(value) => updateImportProvider(value as ProviderOption)}>
+                      <SelectTrigger data-analytics="plan-client.select-trigger.2" className="h-9 text-sm">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -1410,7 +1410,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                       Save API key in this browser
                     </label>
                     <div className="flex flex-wrap gap-2">
-                      <Button
+                      <Button data-analytics="plan-client.clear-current-import-api-key"
                         type="button"
                         variant="ghost"
                         size="sm"
@@ -1419,7 +1419,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                       >
                         Clear This Key
                       </Button>
-                      <Button
+                      <Button data-analytics="plan-client.clear-all-import-api-keys"
                         type="button"
                         variant="ghost"
                         size="sm"
@@ -1457,7 +1457,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     ) : null}
                     <div className="flex flex-wrap gap-2">
                       {selectedImportProvider.knownModels.map((model) => (
-                        <Button
+                        <Button data-analytics="plan-client.button"
                           key={model}
                           type="button"
                           variant={importModelValidation.effectiveModel === model ? 'secondary' : 'outline'}
@@ -1467,7 +1467,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                           {model === selectedImportProvider.defaultModel ? `${model} (default)` : model}
                         </Button>
                       ))}
-                      <Button type="button" variant="ghost" size="sm" onClick={() => void importModelDiscovery.refresh()} disabled={importModelDiscovery.loading || importModelDiscovery.refreshing || importingSnapshot}>
+                      <Button data-analytics="plan-client.import-model-discovery" type="button" variant="ghost" size="sm" onClick={() => void importModelDiscovery.refresh()} disabled={importModelDiscovery.loading || importModelDiscovery.refreshing || importingSnapshot}>
                         <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={importModelDiscovery.refreshing} />
                       </Button>
                     </div>
@@ -1519,10 +1519,10 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             ) : null}
 
             <div className="flex flex-wrap justify-end gap-2">
-              <Button type="button" variant="outline" onClick={resetPendingImportState} disabled={importingSnapshot}>
+              <Button data-analytics="plan-client.reset-pending-import-state" type="button" variant="outline" onClick={resetPendingImportState} disabled={importingSnapshot}>
                 Cancel
               </Button>
-              <Button type="button" onClick={handleConfirmMissingCityImport} disabled={importingSnapshot}>
+              <Button data-analytics="plan-client.handle-confirm-missing-city-import" type="button" onClick={handleConfirmMissingCityImport} disabled={importingSnapshot}>
                 <LoadingButtonLabel
                   isLoading={importingSnapshot}
                   loading={
@@ -1563,8 +1563,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
               </div>
               <div className="flex items-center gap-2 sm:flex-wrap sm:justify-end">
                 <div className="min-w-0 flex-1 sm:min-w-[170px] sm:flex-none">
-                  <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
-                    <SelectTrigger aria-label="Travellers" className="h-10 gap-2 font-semibold" disabled={hasUnsavedLegEdits || pageLoading}>
+                  <Select data-analytics="plan-client.handle-group-size-change" value={String(groupSize)} onValueChange={handleGroupSizeChange}>
+                    <SelectTrigger data-analytics="plan-client.travellers" aria-label="Travellers" className="h-10 gap-2 font-semibold" disabled={hasUnsavedLegEdits || pageLoading}>
                       <Users className="h-4 w-4 shrink-0" aria-hidden="true" />
                       {/* Explicit text: Radix renders an empty value until the options mount in the browser. */}
                       <SelectValue>{groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}</SelectValue>
@@ -1585,7 +1585,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   onSave={handleSaveSnapshot}
                   isSaving={savingPlan}
                 />
-                <Button
+                <Button data-analytics="plan-client.handle-sort-by-date"
                   type="button"
                   variant="outline"
                   className="hidden sm:inline-flex"
@@ -1596,40 +1596,40 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   <ArrowUpDown className="mr-2 h-4 w-4" />
                   Sort by Date
                 </Button>
-                <Button type="button" variant="outline" className="hidden sm:inline-flex" disabled={savePlanDisabled} onClick={() => setSavePlanDialogOpen(true)}>
+                <Button data-analytics="plan-client.set-save-plan-dialog-open" type="button" variant="outline" className="hidden sm:inline-flex" disabled={savePlanDisabled} onClick={() => setSavePlanDialogOpen(true)}>
                   <Save className="mr-2 h-4 w-4" />
                   Save Plan
                 </Button>
-                <Button type="button" variant="outline" className="hidden sm:inline-flex" disabled={hasUnsavedLegEdits} onClick={handleExportCurrentPlan}>
+                <Button data-analytics="plan-client.handle-export-current-plan" type="button" variant="outline" className="hidden sm:inline-flex" disabled={hasUnsavedLegEdits} onClick={handleExportCurrentPlan}>
                   <Download className="mr-2 h-4 w-4" />
                   Export
                 </Button>
-                <Button type="button" variant="outline" className="hidden sm:inline-flex" disabled={hasUnsavedLegEdits} onClick={() => importInputRef.current?.click()}>
+                <Button data-analytics="plan-client.import-input-ref" type="button" variant="outline" className="hidden sm:inline-flex" disabled={hasUnsavedLegEdits} onClick={() => importInputRef.current?.click()}>
                   <Upload className="mr-2 h-4 w-4" />
                   Import
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger
                     render={
-                      <Button type="button" variant="outline" size="icon" className="h-10 w-10 shrink-0 sm:hidden" aria-label="More plan actions">
+                      <Button data-analytics="plan-client.more-plan-actions" type="button" variant="outline" size="icon" className="h-10 w-10 shrink-0 sm:hidden" aria-label="More plan actions">
                         <MoreHorizontal className="h-4 w-4" />
                       </Button>
                     }
                   />
                   <DropdownMenuContent align="end" className="w-64">
-                    <DropdownMenuItem className="py-2" disabled={sortByDateDisabled} onClick={handleSortByDate}>
+                    <DropdownMenuItem data-analytics="plan-client.handle-sort-by-date.2" className="py-2" disabled={sortByDateDisabled} onClick={handleSortByDate}>
                       <ArrowUpDown /> {isAlreadySortedByDate ? 'Already in date order' : 'Sort by Date'}
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="py-2" disabled={savePlanDisabled} onClick={() => setSavePlanDialogOpen(true)}>
+                    <DropdownMenuItem data-analytics="plan-client.set-save-plan-dialog-open.2" className="py-2" disabled={savePlanDisabled} onClick={() => setSavePlanDialogOpen(true)}>
                       <Save /> Save Plan
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="py-2" disabled={hasUnsavedLegEdits} onClick={handleExportCurrentPlan}>
+                    <DropdownMenuItem data-analytics="plan-client.handle-export-current-plan.2" className="py-2" disabled={hasUnsavedLegEdits} onClick={handleExportCurrentPlan}>
                       <Download /> Export
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="py-2" disabled={hasUnsavedLegEdits} onClick={() => importInputRef.current?.click()}>
+                    <DropdownMenuItem data-analytics="plan-client.import-input-ref.2" className="py-2" disabled={hasUnsavedLegEdits} onClick={() => importInputRef.current?.click()}>
                       <Upload /> Import
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="py-2" disabled={bulkTransportDisabled} onClick={openBulkTransport}>
+                    <DropdownMenuItem data-analytics="plan-client.open-bulk-transport" className="py-2" disabled={bulkTransportDisabled} onClick={openBulkTransport}>
                       <Route /> {bulkTransportLabel}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -1648,7 +1648,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   }}
                 />
                 ) : null}
-                <Button
+                <Button data-analytics="plan-client.open-bulk-transport.2"
                   type="button"
                   variant="outline"
                   className="hidden sm:inline-flex"
@@ -1672,8 +1672,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   if (open && newLegDrafts.every(draft => !draft.cityId)) resetNewLegDrafts();
                   setAddDialogOpen(open);
                 }}>
-                  <DialogTrigger asChild>
-                    <Button className="h-10 w-10 shrink-0 px-0 sm:w-auto sm:px-4">
+                  <DialogTrigger data-analytics="plan-client.dialog-trigger" asChild>
+                    <Button data-analytics="plan-client.button.2" className="h-10 w-10 shrink-0 px-0 sm:w-auto sm:px-4">
                       <Plus className="h-4 w-4 sm:mr-2" />
                       <span className="sr-only sm:not-sr-only">Add Leg</span>
                     </Button>
@@ -1690,7 +1690,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                         <div key={draft.id} className="space-y-3 rounded-md border p-3">
                           {newLegDrafts.length > 1 ? <div className="flex items-center justify-between gap-2">
                             <span className="text-sm font-medium">City {index + 1}</span>
-                            <Button type="button" variant="ghost" size="sm" aria-label={`Remove city ${index + 1}`} onClick={() => setNewLegDrafts(current => current.filter(item => item.id !== draft.id))}>Remove</Button>
+                            <Button data-analytics="plan-client.set-new-leg-drafts" type="button" variant="ghost" size="sm" aria-label={`Remove city ${index + 1}`} onClick={() => setNewLegDrafts(current => current.filter(item => item.id !== draft.id))}>Remove</Button>
                           </div> : null}
                           <div>
                             <Label>City</Label>
@@ -1751,7 +1751,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                           ) : null}
                         </div>
                       ))}
-                      <Button type="button" variant="outline" onClick={() => setNewLegDrafts(current => [
+                      <Button data-analytics="plan-client.set-new-leg-drafts.2" type="button" variant="outline" onClick={() => setNewLegDrafts(current => [
                         ...current,
                         createNewLegDraft(nextLegDraftId.current++, nextLegStartDate(current.at(-1)?.endDate ?? legsRef.current.at(-1)?.endDate)),
                       ])}>Add another city</Button>
@@ -1759,10 +1759,10 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     {addLegError ? <p role="alert" className="text-sm text-destructive">{addLegError}</p> : null}
                     {addLegStatus ? <p role="status" className="text-sm text-muted-foreground">{addLegStatus}</p> : null}
                     <DialogFooter className="gap-2 sm:justify-end">
-                      <Button type="button" variant="ghost" onClick={handleCancelAddLeg} disabled={addingLeg}>
+                      <Button data-analytics="plan-client.handle-cancel-add-leg" type="button" variant="ghost" onClick={handleCancelAddLeg} disabled={addingLeg}>
                         Cancel
                       </Button>
-                      <Button
+                      <Button data-analytics="plan-client.open-new-city"
                         type="button"
                         variant="outline"
                         disabled={addingLeg}
@@ -1771,7 +1771,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                         <Plus className="mr-2 h-4 w-4" />
                         Add City
                       </Button>
-                      <Button
+                      <Button data-analytics="plan-client.handle-add-leg"
                         type="button"
                         onClick={handleAddLeg}
                         disabled={addingLeg || !newLegValid}
@@ -1792,7 +1792,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             {pageError ? (
               <div role="alert" className="mt-3 flex flex-wrap items-center gap-2 text-sm text-destructive">
                 <span>{pageError} Showing the last loaded planner data; it may be out of date.</span>
-                <Button type="button" size="sm" variant="outline" disabled={pageLoading} onClick={() => void fetchData()}>
+                <Button data-analytics="plan-client.button.3" type="button" size="sm" variant="outline" disabled={pageLoading} onClick={() => void fetchData()}>
                   <LoadingButtonLabel idle="Retry planner" loading="Retrying..." isLoading={pageLoading} />
                 </Button>
               </div>
@@ -1827,7 +1827,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
           {savedPlansError ? (
             <div role="alert" className="mb-3 flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive max-sm:order-2">
               <span>{savedPlansError} Showing the last loaded saved plans; the list may be out of date.</span>
-              <Button type="button" size="sm" variant="outline" disabled={savedPlansLoading} onClick={() => void fetchSavedPlans()}>Retry saved plans</Button>
+              <Button data-analytics="plan-client.button.4" type="button" size="sm" variant="outline" disabled={savedPlansLoading} onClick={() => void fetchSavedPlans()}>Retry saved plans</Button>
             </div>
           ) : null}
           {savedPlans.length > 0 && (
@@ -1850,7 +1850,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-[15px] font-bold">Legs</h2>
               {legs.length > 0 ? (
-                <Button
+                <Button data-analytics="plan-client.set-expanded-leg-ids"
                   type="button"
                   variant="ghost"
                   size="sm"

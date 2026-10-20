@@ -484,7 +484,7 @@ export const LegCard = memo(function LegCard({
             >
               <Trash2 className="h-4 w-4" />
             </LockableButton>
-            <Button
+            <Button data-analytics="leg-card.on-toggle-expanded"
               type="button"
               variant="ghost"
               size="icon"
@@ -509,8 +509,8 @@ export const LegCard = memo(function LegCard({
             <p className="text-xs text-muted-foreground">This card previews your changes. Trip totals use saved values until the save succeeds.</p>
             {editState.error || validationError ? (
               <div className="mt-2 flex flex-wrap gap-2">
-                <Button type="button" size="sm" variant="outline" disabled={editState.saving || validationError != null} onClick={() => void editQueue.retry().catch(() => undefined)}>Retry leg save</Button>
-                <Button type="button" size="sm" variant="ghost" disabled={editState.saving} onClick={() => {
+                <Button data-analytics="leg-card.button" type="button" size="sm" variant="outline" disabled={editState.saving || validationError != null} onClick={() => void editQueue.retry().catch(() => undefined)}>Retry leg save</Button>
+                <Button data-analytics="leg-card.set-miscellaneous-error" type="button" size="sm" variant="ghost" disabled={editState.saving} onClick={() => {
                   editQueue.discard();
                   setMiscellaneousError(null);
                   setInvalidMoneyFields(new Set());
@@ -637,7 +637,7 @@ export const LegCard = memo(function LegCard({
               >
                 Estimate transport
               </LockableButton>
-              <Button type="button" variant="outline" size="sm" className="h-8" onClick={addIntercityTransport}>
+              <Button data-analytics="leg-card.add-intercity-transport" type="button" variant="outline" size="sm" className="h-8" onClick={addIntercityTransport}>
                 <Plus className="mr-1 h-3.5 w-3.5" />
                 Add transport
               </Button>
@@ -701,7 +701,7 @@ export const LegCard = memo(function LegCard({
                     />
                   </div>
                   <div className="flex items-end">
-                    <Button
+                    <Button data-analytics="leg-card.remove-intercity-transport"
                       type="button"
                       variant="ghost"
                       size="icon"
@@ -723,7 +723,7 @@ export const LegCard = memo(function LegCard({
           onChange={expenses => handleFieldChange('miscellaneousExpenses', expenses)}
           onValidationError={setMiscellaneousError} />
 
-        <Button
+        <Button data-analytics="leg-card.set-show-overrides"
           variant="ghost"
           size="sm"
           className="mt-2 text-xs text-muted-foreground"
@@ -758,7 +758,7 @@ export const LegCard = memo(function LegCard({
 
         <div className="mt-3 flex gap-2">
           {['planned', 'active', 'completed'].map((s) => (
-            <Button
+            <Button data-analytics="leg-card.handle-field-change"
               key={s}
               variant={leg.status === s ? 'default' : 'outline'}
               size="sm"

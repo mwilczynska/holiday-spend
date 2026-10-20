@@ -239,7 +239,7 @@ export default function ComparePlansPage() {
             </div>
             <div className="flex flex-wrap items-center justify-end gap-2">
               {showSelector && allPlans.length > 0 && (
-                <Button
+                <Button data-analytics="page.handle-compare-selected"
                   onClick={handleCompareSelected}
                   disabled={selectedIds.size < 2 || loading || plansLoading || Boolean(plansError)}
                 >
@@ -247,7 +247,7 @@ export default function ComparePlansPage() {
                 </Button>
               )}
               {(hasResults || error) && !selectorMode && (
-                <Button variant="outline" disabled={loading} onClick={handleChangePlans}>
+                <Button data-analytics="page.handle-change-plans" variant="outline" disabled={loading} onClick={handleChangePlans}>
                   <ArrowLeftRight className="mr-2 h-4 w-4" />
                   Change Plans
                 </Button>
@@ -267,7 +267,7 @@ export default function ComparePlansPage() {
           <div role="alert" className="mb-4 rounded-lg border border-destructive/50 bg-destructive/10 p-4 space-y-2">
             <p className="text-sm text-destructive">{error}</p>
             <p className="text-sm text-muted-foreground">{hasResults && !selectorMode ? 'Showing the previous comparison; it may be out of date.' : 'Comparison unavailable. Your selected plans are retained.'}</p>
-            <Button size="sm" variant="outline" disabled={loading} onClick={() => void fetchComparison(comparisonRequest.current)}>Retry comparison</Button>
+            <Button data-analytics="page.on-request" size="sm" variant="outline" disabled={loading} onClick={() => void fetchComparison(comparisonRequest.current)}>Retry comparison</Button>
           </div>
         ) : null}
         {/* Selector mode */}
@@ -276,7 +276,7 @@ export default function ComparePlansPage() {
             {plansError ? <div role="alert" className="mb-4 space-y-2 text-sm text-destructive">
               <p>{plansError}</p>
               <p>{hasLoadedPlans ? 'Showing the last loaded saved plans; they may be out of date.' : 'Saved plans unavailable.'}</p>
-              <Button size="sm" variant="outline" disabled={plansLoading} onClick={() => void fetchPlans()}>Retry saved plans</Button>
+              <Button data-analytics="page.button" size="sm" variant="outline" disabled={plansLoading} onClick={() => void fetchPlans()}>Retry saved plans</Button>
             </div> : null}
             {plansLoading ? <p role="status" className="mb-3 text-sm text-muted-foreground">Loading saved plans...</p> : null}
             {!hasLoadedPlans ? (!plansLoading && !plansError ? <p>Saved plans unavailable.</p> : null) : allPlans.length === 0 ? (
@@ -285,7 +285,7 @@ export default function ComparePlansPage() {
                   No saved plans yet. Build your itinerary on the Plan page and save
                   at least two snapshots to compare them side by side.
                 </p>
-                <Button variant="outline" size="sm" onClick={() => router.push('/plan')}>
+                <Button data-analytics="page.button.2" variant="outline" size="sm" onClick={() => router.push('/plan')}>
                   Go to Planner
                 </Button>
               </div>

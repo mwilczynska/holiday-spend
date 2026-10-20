@@ -2,7 +2,7 @@ import { getToken } from 'next-auth/jwt';
 import { NextRequest, NextResponse } from 'next/server';
 import { isCrossOriginWrite, isTokenAllowed } from '@/lib/request-origin';
 
-const PUBLIC_PATH = /^\/(api\/auth|api\/health|login|signup|forgot-password|reset-password|verify-email|check-email)(\/|$)/;
+const PUBLIC_PATH = /^\/(api\/auth|api\/health|api\/analytics\/events|api\/settings\/analytics|privacy|login|signup|forgot-password|reset-password|verify-email|check-email)(\/|$)/;
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;

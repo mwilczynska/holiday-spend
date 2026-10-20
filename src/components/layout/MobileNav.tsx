@@ -38,7 +38,7 @@ export function MobileNav() {
           return (
             // `next/link` rather than router.push, so Next prefetches each route as
             // it enters the viewport. router.push disabled prefetching entirely.
-            <Link
+            <Link data-analytics="mobile-nav.set-pending-href"
               key={item.href}
               href={item.href}
               onClick={() => {

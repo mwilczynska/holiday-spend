@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { asc, eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
@@ -56,7 +57,7 @@ function buildRouteFacts(params: {
   return facts;
 }
 
-export async function POST(
+async function handlePOST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -177,3 +178,5 @@ export async function POST(
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/itinerary/legs/[id]/estimate-transport', 'POST');

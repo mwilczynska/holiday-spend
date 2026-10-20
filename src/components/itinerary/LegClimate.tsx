@@ -7,7 +7,7 @@ import { climateSegments, MONTH_NAMES, temperature, type CityClimate, type Clima
 const ClimateChart = dynamic(() => import('./ClimateChart').then(module => module.ClimateChart), { ssr: false });
 
 export function TemperatureToggle({ unit, onToggle }: { unit: TemperatureUnit; onToggle: () => void }) {
-  return <Button type="button" variant="outline" size="sm" onClick={onToggle} aria-label={`Switch to ${unit === 'C' ? 'Fahrenheit' : 'Celsius'}`}>°{unit} → °{unit === 'C' ? 'F' : 'C'}</Button>;
+  return <Button data-analytics="leg-climate.on-toggle" type="button" variant="outline" size="sm" onClick={onToggle} aria-label={`Switch to ${unit === 'C' ? 'Fahrenheit' : 'Celsius'}`}>°{unit} → °{unit === 'C' ? 'F' : 'C'}</Button>;
 }
 export function LegClimate({ leg, climate, unit, onToggle, onRetry }: {
   leg: ClimateLeg; climate: CityClimate | null | undefined; unit: TemperatureUnit; onToggle: () => void; onRetry: () => void;
@@ -19,11 +19,11 @@ export function LegClimate({ leg, climate, unit, onToggle, onRetry }: {
       <span className="text-xs font-medium text-muted-foreground">Historical averages · 2021–2025</span>
       <div className="flex gap-2">
         <TemperatureToggle unit={unit} onToggle={onToggle} />
-        <Button type="button" variant="ghost" size="sm" disabled={!climate} onClick={() => setOpen(true)}>View year</Button>
+        <Button data-analytics="leg-climate.set-open" type="button" variant="ghost" size="sm" disabled={!climate} onClick={() => setOpen(true)}>View year</Button>
       </div>
     </div>
     {climate === undefined ? <p className="text-xs text-muted-foreground" role="status">Loading historical climate…</p> : climate === null ?
-      <div className="flex items-center gap-2 text-xs text-muted-foreground"><span>Historical climate unavailable.</span><Button variant="ghost" size="sm" onClick={onRetry}>Retry climate</Button></div> :
+      <div className="flex items-center gap-2 text-xs text-muted-foreground"><span>Historical climate unavailable.</span><Button data-analytics="leg-climate.on-retry" variant="ghost" size="sm" onClick={onRetry}>Retry climate</Button></div> :
       segments.length ? <div className="mt-1 flex flex-wrap gap-x-5 gap-y-1 text-sm">
         {segments.map(segment => { const month = climate.months[segment.month - 1]; return <span key={segment.start}>
           <span className="text-muted-foreground">{segment.label}</span>{' · '}<span className="font-medium">{temperature(month.temperatureC, unit).toFixed(1)}°{unit}</span>{' mean · '}{month.rainfallMm.toFixed(0)} mm/month rain

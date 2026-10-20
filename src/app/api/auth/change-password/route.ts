@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { eq, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
@@ -19,7 +20,7 @@ const changePasswordSchema = z.object({
   newPassword: z.string().min(1),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const user = await requireCurrentUser();
 
@@ -76,3 +77,5 @@ export async function POST(request: Request) {
     return handleAuthError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/auth/change-password', 'POST');

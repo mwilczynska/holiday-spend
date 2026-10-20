@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { userPreferences } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { analyticsContext } from '@/lib/analytics/context';
 
 import { normalizeMaxOutputTokens, normalizeRequestTimeoutMs, resolveLlmRuntimeDefaults, type LlmRuntimeSettings } from '@/lib/llm-request-limits';
 export * from '@/lib/llm-request-limits';
@@ -17,6 +18,8 @@ export async function getLlmRuntimeSettings(userId: string): Promise<LlmRuntimeS
     .where(eq(userPreferences.userId, userId))
     .get();
 
+  const context = analyticsContext.getStore();
+  if (context) context.llmTimeoutMs = row?.requestTimeoutMs != null ? normalizeRequestTimeoutMs(row.requestTimeoutMs) : defaults.requestTimeoutMs;
   return {
     maxOutputTokens: row?.maxOutputTokens != null
       ? normalizeMaxOutputTokens(row.maxOutputTokens)

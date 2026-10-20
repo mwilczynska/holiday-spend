@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { cities, countries, savedPlans } from '@/db/schema';
 import { requireCurrentUserId } from '@/lib/auth';
@@ -9,7 +10,7 @@ import { comparisonPlanIdsSchema } from '@/lib/comparison-read-contract';
 
 export const dynamic = 'force-dynamic';
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
@@ -82,3 +83,5 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/saved-plans/compare', 'POST');

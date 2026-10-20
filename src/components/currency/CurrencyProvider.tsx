@@ -1,4 +1,5 @@
 'use client';
+import { beginAnalyticsOperation, trackEvent } from '@/lib/analytics/browser';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
@@ -56,6 +57,8 @@ export function CurrencyProvider({ initial, children, enabled = true }: {
 
   const change = useCallback(async (currency: DisplayCurrency) => {
     if (!enabled || inFlight.current) return;
+    beginAnalyticsOperation();
+    trackEvent('currency_change_requested', { from: state.currency, to: currency });
     inFlight.current = true;
     ++revision.current;
     draftRef.current = currency;
@@ -75,6 +78,7 @@ export function CurrencyProvider({ initial, children, enabled = true }: {
       setState(next);
       draftRef.current = null;
       setDraft(null);
+      trackEvent('currency_change_confirmed', { currency });
     } catch (err) {
       setSaveError(err instanceof Error ? err.message : 'Could not save currency.');
     } finally {

@@ -1,4 +1,7 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
+import { withPlanRevision } from '@/lib/analytics/history';
+import { userPreferences as analyticsPreferences } from '@/db/schema';
 import { cities, countries, expenses, fixedCosts, itineraryLegs, itineraryLegTransports } from '@/db/schema';
 import { NextResponse } from 'next/server';
 import { error, handleError, success } from '@/lib/api-helpers';
@@ -16,7 +19,7 @@ import { asc, eq, inArray } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+async function handleGET() {
   try {
     const userId = await requireCurrentUserId();
     const legs = await db.select().from(itineraryLegs).where(eq(itineraryLegs.userId, userId)).orderBy(asc(itineraryLegs.sortOrder));
@@ -62,7 +65,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
@@ -127,7 +130,8 @@ export async function POST(request: Request) {
      */
     const importedLegIdBySnapshotKey = new Map<number, number>();
 
-    await db.transaction((tx) => {
+    withPlanRevision(userId, 'snapshot_imported', (tx) => {
+      tx.insert(analyticsPreferences).values({ userId, plannerGroupSize: snapshot.groupSize }).onConflictDoUpdate({ target: analyticsPreferences.userId, set: { plannerGroupSize: snapshot.groupSize } }).run();
       tx.update(expenses).set({ legId: null }).where(eq(expenses.userId, userId)).run();
       tx.delete(itineraryLegs).where(eq(itineraryLegs.userId, userId)).run();
       tx.delete(fixedCosts).where(eq(fixedCosts.userId, userId)).run();
@@ -202,7 +206,6 @@ export async function POST(request: Request) {
       }
     });
 
-    await setPlannerGroupSize(userId, snapshot.groupSize);
 
 
     return success({
@@ -221,3 +224,6 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/itinerary/snapshot', 'GET');
+export const POST = instrumentRoute(handlePOST, '/api/itinerary/snapshot', 'POST');

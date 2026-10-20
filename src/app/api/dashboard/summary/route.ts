@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireCurrentUserId } from '@/lib/auth';
 import { success, handleError } from '@/lib/api-helpers';
 import { loadDashboardInputs, buildDashboardSummary } from '@/lib/dashboard-data';
@@ -8,7 +9,7 @@ export const dynamic = 'force-dynamic';
  * Kept as its own endpoint, but the shared read and the calculation both live in
  * `src/lib/dashboard-data.ts` now. The dashboard itself uses the combined `/api/dashboard`.
  */
-export async function GET() {
+async function handleGET() {
   try {
     const userId = await requireCurrentUserId();
     return success(buildDashboardSummary(await loadDashboardInputs(userId)));
@@ -16,3 +17,5 @@ export async function GET() {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/dashboard/summary', 'GET');

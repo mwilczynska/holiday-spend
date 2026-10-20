@@ -1,4 +1,5 @@
 'use client';
+import { AnalyticsSettings } from '@/components/analytics/AnalyticsSettings';
 
 import { CurrencySelector } from '@/components/currency/CurrencySelector';
 import { useCurrency } from '@/components/currency/CurrencyProvider';
@@ -313,13 +314,13 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
         <PageTitle icon={SettingsIcon}>Settings</PageTitle>
         <p className="mt-1 text-sm text-muted-foreground">Travellers, display currency, provider request limits and fixed trip costs.</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          <Button variant="outline" asChild><Link href="/settings/account">Account</Link></Button>
-          <Button variant="outline" asChild><Link href="/dataset">Dataset</Link></Button>
-          <Button variant="outline" asChild><Link href="/estimates">Methodology</Link></Button>
-          <Button variant="outline" asChild>
+          <Button data-analytics="settings-client.button" variant="outline" asChild><Link data-analytics="settings-client.settings-account" href="/settings/account">Account</Link></Button>
+          <Button data-analytics="settings-client.button.2" variant="outline" asChild><Link data-analytics="settings-client.dataset" href="/dataset">Dataset</Link></Button>
+          <Button data-analytics="settings-client.button.3" variant="outline" asChild><Link data-analytics="settings-client.estimates" href="/estimates">Methodology</Link></Button>
+          <Button data-analytics="settings-client.button.4" variant="outline" asChild>
             <a href="/api/export?format=json" download><Download className="mr-2 h-4 w-4" />Export JSON</a>
           </Button>
-          <Button variant="outline" asChild>
+          <Button data-analytics="settings-client.button.5" variant="outline" asChild>
             <a href="/api/export?format=csv" download><Download className="mr-2 h-4 w-4" />Export CSV</a>
           </Button>
         </div>
@@ -331,7 +332,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
             <p>{readError}</p>
             <p>{hasLoadedData ? 'Showing the last loaded settings and fixed costs; they may be out of date.' : 'Settings unavailable. Traveller count, provider limits and fixed-cost totals could not be loaded.'}</p>
           </div>
-          <Button type="button" size="sm" variant="outline" disabled={loading} onClick={() => void fetchData()}>
+          <Button data-analytics="settings-client.button.6" type="button" size="sm" variant="outline" disabled={loading} onClick={() => void fetchData()}>
             <LoadingButtonLabel idle="Retry settings" loading="Retrying..." isLoading={loading} />
           </Button>
         </div>
@@ -344,8 +345,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
         <CardContent className="space-y-3">
           <div className="max-w-xs">
             <Label htmlFor="settings-travellers">Travellers</Label>
-            <Select value={groupSizeDraft != null ? String(groupSizeDraft) : groupSize == null ? '' : String(groupSize)} onValueChange={handleGroupSizeChange} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)}>
-              <SelectTrigger id="settings-travellers">
+            <Select data-analytics="settings-client.handle-group-size-change" value={groupSizeDraft != null ? String(groupSizeDraft) : groupSize == null ? '' : String(groupSize)} onValueChange={handleGroupSizeChange} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)}>
+              <SelectTrigger data-analytics="settings-client.select-trigger" id="settings-travellers">
                 {/* Explicit text: Radix renders an empty value until the options mount in the browser. */}
                 <SelectValue placeholder="Unavailable">{settingsTravellerLabel}</SelectValue>
               </SelectTrigger>
@@ -366,8 +367,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               <p className="text-sm text-muted-foreground">Unsaved selection: {groupSizeDraft} {groupSizeDraft === 1 ? 'traveller' : 'travellers'}. Last confirmed saved count: {groupSize ?? 'unavailable'}.</p>
               {groupSizeSaving ? <p role="status" className="text-sm text-muted-foreground">Saving traveller count...</p> : null}
               <div className="flex flex-wrap gap-2">
-                {groupSizeError ? <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveGroupSize(groupSizeDraft)}>Retry traveller count</Button> : null}
-                <Button type="button" variant="outline" size="sm" disabled={groupSizeSaving} onClick={() => { groupSizeDraftValue.current = null; setGroupSizeDraft(null); setGroupSizeError(null); setGroupSizeStatus(null); }}>Discard selection</Button>
+                {groupSizeError ? <Button data-analytics="settings-client.save-group-size" type="button" variant="outline" size="sm" disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveGroupSize(groupSizeDraft)}>Retry traveller count</Button> : null}
+                <Button data-analytics="settings-client.set-group-size-draft" type="button" variant="outline" size="sm" disabled={groupSizeSaving} onClick={() => { groupSizeDraftValue.current = null; setGroupSizeDraft(null); setGroupSizeError(null); setGroupSizeStatus(null); }}>Discard selection</Button>
               </div>
             </div>
           ) : null}
@@ -423,7 +424,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button
+            <Button data-analytics="settings-client.save-llm-settings"
               size="sm"
               disabled={llmSaving || groupSizeSaving || costSaving || !llm || loading || Boolean(readError)}
               onClick={() => saveLlmSettings({
@@ -433,7 +434,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
             >
               Save limits
             </Button>
-            <Button
+            <Button data-analytics="settings-client.save-llm-settings.2"
               size="sm"
               variant="outline"
               disabled={llmSaving || groupSizeSaving || costSaving || !llm || loading || Boolean(readError)}
@@ -441,7 +442,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
             >
               Reset to defaults
             </Button>
-            {llmRetry ? <Button type="button" size="sm" variant="outline" disabled={llmSaving || groupSizeSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveLlmSettings(llmRetry)}>Retry provider limits</Button> : null}
+            {llmRetry ? <Button data-analytics="settings-client.save-llm-settings.3" type="button" size="sm" variant="outline" disabled={llmSaving || groupSizeSaving || costSaving || loading || Boolean(readError)} onClick={() => void saveLlmSettings(llmRetry)}>Retry provider limits</Button> : null}
           </div>
           {llmDraftDirty.current && llm ? <p className="text-sm text-muted-foreground">Unsaved provider limits. Last confirmed saved values: {llm.maxOutputTokens.toLocaleString('en-AU')} tokens / {llm.requestTimeoutMs / 1000} seconds.</p> : null}
           {llmSaving ? <p role="status" className="text-sm text-muted-foreground">Saving provider limits...</p> : null}
@@ -449,6 +450,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           {llmError ? <p role="alert" className="text-sm text-destructive">{llmError}</p> : null}
         </CardContent>
       </Card>
+
+      <AnalyticsSettings />
 
       {/* Fixed costs are retired: one-off costs belong on a plan leg (Miscellaneous costs). The
           section only appears when older fixed costs exist, so they can still be reviewed, marked
@@ -473,7 +476,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
             <div className="space-y-2">
               {costs.map((cost) => (
                 <div key={cost.id} className="flex items-center gap-3 p-2 rounded border">
-                  <Switch
+                  <Switch data-analytics="settings-client.handle-toggle-paid"
                     aria-label={`Mark ${cost.description} as ${cost.isPaid ? 'unpaid' : 'paid'}`}
                     disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)}
                     checked={!!cost.isPaid}
@@ -491,7 +494,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                     {cost.date && <p className="text-xs text-muted-foreground">{cost.date}</p>}
                   </div>
                   <span className="font-medium">{format(cost.amountAud)}</span>
-                  <Button aria-label={`Delete ${cost.description}`} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
+                  <Button data-analytics="settings-client.handle-delete" aria-label={`Delete ${cost.description}`} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>

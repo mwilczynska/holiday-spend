@@ -1,13 +1,14 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { error, handleError, success } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 import { isDisplayCurrency } from '@/lib/display-currency';
 import { CurrencyRateUnavailableError, getDisplayCurrencyState, saveDisplayCurrency } from '@/lib/display-currency-service';
 export const dynamic = 'force-dynamic';
-export async function GET() {
+async function handleGET() {
   try { return success(await getDisplayCurrencyState(await requireCurrentUserId())); }
   catch (err) { return handleError(err); }
 }
-export async function PUT(request: Request) {
+async function handlePUT(request: Request) {
   try {
     const userId = await requireCurrentUserId(), body = await request.json();
     if (!body || !isDisplayCurrency(body.currency)) return error('Select a supported display currency.', 400);
@@ -17,3 +18,6 @@ export async function PUT(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/settings/currency', 'GET');
+export const PUT = instrumentRoute(handlePUT, '/api/settings/currency', 'PUT');

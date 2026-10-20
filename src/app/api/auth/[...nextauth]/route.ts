@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { instrumentRoute } from '@/lib/analytics/route';
 
 const handler = NextAuth(authOptions);
 
@@ -13,4 +14,5 @@ async function withNoIndex(request: Request, context: RouteContext) {
   return response;
 }
 
-export { withNoIndex as GET, withNoIndex as POST };
+export const GET = instrumentRoute(withNoIndex, '/api/auth/[...nextauth]', 'GET');
+export const POST = instrumentRoute(withNoIndex, '/api/auth/[...nextauth]', 'POST');

@@ -4,8 +4,14 @@ import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
 import { Check, ChevronDown, ChevronUp } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { trackSelection } from '@/lib/analytics/browser'
 
-const Select = SelectPrimitive.Root
+function Select({ onValueChange, 'data-analytics': analyticsId, ...props }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & { 'data-analytics'?: string }) {
+  return <SelectPrimitive.Root {...props} onValueChange={value => {
+    if (analyticsId) trackSelection(analyticsId, value)
+    onValueChange?.(value)
+  }} />
+}
 const SelectGroup = SelectPrimitive.Group
 const SelectValue = SelectPrimitive.Value
 

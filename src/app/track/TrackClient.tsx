@@ -411,8 +411,8 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
         actions={(
           <>
             <Dialog open={quickAddOpen} onOpenChange={setQuickAddOpen}>
-              <DialogTrigger asChild>
-                <Button><Plus className="mr-2 h-4 w-4" />Quick add</Button>
+              <DialogTrigger data-analytics="track-client.dialog-trigger" asChild>
+                <Button data-analytics="track-client.button"><Plus className="mr-2 h-4 w-4" />Quick add</Button>
               </DialogTrigger>
               <DialogContent className="max-w-md">
                 <DialogHeader>
@@ -424,15 +424,15 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                 ) : null}
               </DialogContent>
             </Dialog>
-            <Button variant="outline" asChild><Link href="/track/import"><Upload className="mr-2 h-4 w-4" />Import</Link></Button>
-            {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button variant="outline" asChild>
+            <Button data-analytics="track-client.button.2" variant="outline" asChild><Link data-analytics="track-client.track-import" href="/track/import"><Upload className="mr-2 h-4 w-4" />Import</Link></Button>
+            {hasLoadedExpenses && !loading && !loadError && expenseTotalCount > 0 ? <Button data-analytics="track-client.button.3" variant="outline" asChild>
               <a href={exportHref} download>
                 <Download className="mr-2 h-4 w-4" />Export
               </a>
-            </Button> : <Button variant="outline" disabled><Download className="mr-2 h-4 w-4" />Export</Button>}
-            <Button variant="outline" asChild><Link href="/track/tags"><Tags className="mr-2 h-4 w-4" />Tags</Link></Button>
+            </Button> : <Button data-analytics="track-client.button.4" variant="outline" disabled><Download className="mr-2 h-4 w-4" />Export</Button>}
+            <Button data-analytics="track-client.button.5" variant="outline" asChild><Link data-analytics="track-client.track-tags" href="/track/tags"><Tags className="mr-2 h-4 w-4" />Tags</Link></Button>
             {expenseTotalCount > 0 && (
-              <Button variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" disabled={!hydrated || saving || loading || !!loadError} onClick={handleDeleteAll}>
+              <Button data-analytics="track-client.handle-delete-all" variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" disabled={!hydrated || saving || loading || !!loadError} onClick={handleDeleteAll}>
                 <XCircle className="mr-2 h-4 w-4" />Delete All
               </Button>
             )}
@@ -451,8 +451,8 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
 
       <div className="flex flex-wrap items-center gap-2 rounded-2xl border bg-card p-3">
         <Filter className="ml-1 h-4 w-4 text-muted-foreground" aria-hidden="true" />
-        <Select value={filterCat} onValueChange={setFilterCat}>
-          <SelectTrigger aria-label="Filter category" className="h-8 w-[140px] text-xs"><SelectValue placeholder="Category">{filterCat === 'all' ? 'All categories' : EXPENSE_CATEGORIES.find((category) => category.value === filterCat)?.label}</SelectValue></SelectTrigger>
+        <Select data-analytics="track-client.set-filter-cat" value={filterCat} onValueChange={setFilterCat}>
+          <SelectTrigger data-analytics="track-client.filter-category" aria-label="Filter category" className="h-8 w-[140px] text-xs"><SelectValue placeholder="Category">{filterCat === 'all' ? 'All categories' : EXPENSE_CATEGORIES.find((category) => category.value === filterCat)?.label}</SelectValue></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All categories</SelectItem>
             {EXPENSE_CATEGORIES.map((category) => (
@@ -462,8 +462,8 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
             ))}
           </SelectContent>
         </Select>
-        <Select value={filterSource} onValueChange={setFilterSource}>
-          <SelectTrigger aria-label="Filter source" className="h-8 w-[120px] text-xs"><SelectValue>{filterSource === 'manual' ? 'Manual' : filterSource === 'wise_csv' ? 'Wise CSV' : 'All sources'}</SelectValue></SelectTrigger>
+        <Select data-analytics="track-client.set-filter-source" value={filterSource} onValueChange={setFilterSource}>
+          <SelectTrigger data-analytics="track-client.filter-source" aria-label="Filter source" className="h-8 w-[120px] text-xs"><SelectValue>{filterSource === 'manual' ? 'Manual' : filterSource === 'wise_csv' ? 'Wise CSV' : 'All sources'}</SelectValue></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All sources</SelectItem>
             <SelectItem value="manual">Manual</SelectItem>
@@ -475,14 +475,14 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
       </div>
 
       {!editExpense && mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
-      {loadError && <div className="space-y-2"><p role="alert" className="text-sm text-destructive">{loadError}{hasLoadedExpenses ? ' Showing the last loaded results.' : ''}</p><Button size="sm" variant="outline" onClick={() => void fetchData()}>Retry loading expenses</Button></div>}
+      {loadError && <div className="space-y-2"><p role="alert" className="text-sm text-destructive">{loadError}{hasLoadedExpenses ? ' Showing the last loaded results.' : ''}</p><Button data-analytics="track-client.button.6" size="sm" variant="outline" onClick={() => void fetchData()}>Retry loading expenses</Button></div>}
 
       {selectedIds.size > 0 && (
         <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-blue-200 bg-info-soft px-3 py-2">
           <span className="text-sm font-semibold text-blue-800">{selectedIds.size} selected</span>
-          <Button size="sm" variant="outline" disabled={!hydrated || saving || loading || !!loadError} onClick={() => handleBulkAction('exclude')}>Exclude</Button>
-          <Button size="sm" variant="outline" disabled={!hydrated || saving || loading || !!loadError} onClick={() => handleBulkAction('include')}>Include</Button>
-          <Button size="sm" variant="outline" disabled={saving} onClick={() => setSelectedIds(new Set())}>Clear</Button>
+          <Button data-analytics="track-client.handle-bulk-action" size="sm" variant="outline" disabled={!hydrated || saving || loading || !!loadError} onClick={() => handleBulkAction('exclude')}>Exclude</Button>
+          <Button data-analytics="track-client.handle-bulk-action.2" size="sm" variant="outline" disabled={!hydrated || saving || loading || !!loadError} onClick={() => handleBulkAction('include')}>Include</Button>
+          <Button data-analytics="track-client.set-selected-ids" size="sm" variant="outline" disabled={saving} onClick={() => setSelectedIds(new Set())}>Clear</Button>
         </div>
       )}
 
@@ -539,16 +539,16 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                 </div>
               </div>
               <div className="flex justify-end gap-1">
-                <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
+                <Button data-analytics="track-client.handle-toggle-exclude" aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
                   {expense.isExcluded ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                 </Button>
-                <Button aria-label={`Edit expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
+                <Button data-analytics="track-client.open-edit" aria-label={`Edit expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
                   <Edit className="h-4 w-4" />
                 </Button>
-                <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
+                <Button data-analytics="track-client.set-tag-expense-id" aria-label={`Manage tags for expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
                   <Tags className="h-4 w-4" />
                 </Button>
-                <Button aria-label={`Delete expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
+                <Button data-analytics="track-client.handle-delete" aria-label={`Delete expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
                   <Trash2 className="h-4 w-4" />
                 </Button>
               </div>
@@ -628,23 +628,23 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex justify-end gap-1">
-                        <Button aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
+                        <Button data-analytics="track-client.handle-toggle-exclude.2" aria-label={`${expense.isExcluded ? 'Include' : 'Exclude'} expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleToggleExclude(expense.id)}>
                           {expense.isExcluded ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                         </Button>
-                        <Button aria-label={`Edit expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
+                        <Button data-analytics="track-client.open-edit.2" aria-label={`Edit expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(expense)}>
                           <Edit className="h-4 w-4" />
                         </Button>
-                        <Button aria-label={`Manage tags for expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
+                        <Button data-analytics="track-client.set-tag-expense-id.2" aria-label={`Manage tags for expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8" onClick={() => setTagExpenseId(expense.id)}>
                           <Tags className="h-4 w-4" />
                         </Button>
-                        <Button aria-label={`Delete expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
+                        <Button data-analytics="track-client.handle-delete.2" aria-label={`Delete expense ${expense.id}`} disabled={!hydrated || saving || loading || !!loadError} variant="ghost" size="icon" className="h-8 w-8 text-destructive" onClick={() => handleDelete(expense.id)}>
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex justify-end">
-                        <Button aria-label={`${isExpanded ? 'Hide' : 'Show'} details for expense ${expense.id}`} aria-expanded={isExpanded} variant="ghost" size="icon" className="h-8 w-8" onClick={() => toggleExpanded(expense.id)}>
+                        <Button data-analytics="track-client.toggle-expanded" aria-label={`${isExpanded ? 'Hide' : 'Show'} details for expense ${expense.id}`} aria-expanded={isExpanded} variant="ghost" size="icon" className="h-8 w-8" onClick={() => toggleExpanded(expense.id)}>
                           {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                         </Button>
                       </div>
@@ -707,7 +707,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
           </span>
           {hasMoreExpenses ? (
             // Fallback for keyboard users and environments without IntersectionObserver.
-            <Button type="button" size="sm" variant="ghost" disabled={loadingMore} onClick={() => void loadMore()}>
+            <Button data-analytics="track-client.load-more" type="button" size="sm" variant="ghost" disabled={loadingMore} onClick={() => void loadMore()}>
               {loadingMore ? 'Loading…' : 'Load more'}
             </Button>
           ) : null}
@@ -765,11 +765,11 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                 </div>
                 <div>
                   <Label htmlFor="expense-edit-category" className="text-xs">Category</Label>
-                  <Select
+                  <Select data-analytics="track-client.set-edit-form"
                     value={editForm.category}
                     onValueChange={(value) => setEditForm((prev) => prev ? { ...prev, category: value } : prev)}
                   >
-                    <SelectTrigger id="expense-edit-category" className="h-8 text-xs"><SelectValue /></SelectTrigger>
+                    <SelectTrigger data-analytics="track-client.select-trigger" id="expense-edit-category" className="h-8 text-xs"><SelectValue /></SelectTrigger>
                     <SelectContent>
                       {EXPENSE_CATEGORIES.map((category) => (
                         <SelectItem key={category.value} value={category.value}>
@@ -782,11 +782,11 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
               </div>
               <div>
                 <Label htmlFor="expense-edit-assignment" className="text-xs">City / Country Assignment</Label>
-                <Select
+                <Select data-analytics="track-client.set-edit-form.2"
                   value={editForm.legId}
                   onValueChange={(value) => setEditForm((prev) => prev ? { ...prev, legId: value } : prev)}
                 >
-                  <SelectTrigger id="expense-edit-assignment" className="h-8 text-xs">
+                  <SelectTrigger data-analytics="track-client.select-trigger.2" id="expense-edit-assignment" className="h-8 text-xs">
                     <SelectValue placeholder="Select itinerary leg" />
                   </SelectTrigger>
                   <SelectContent>
@@ -839,7 +839,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                   onChange={(e) => setEditForm((prev) => prev ? { ...prev, subcategory: e.target.value } : prev)}
                 />
               </div>
-              <Button disabled={saving} onClick={handleEditSave} className="w-full">{saving ? 'Saving…' : 'Save Changes'}</Button>
+              <Button data-analytics="track-client.handle-edit-save" disabled={saving} onClick={handleEditSave} className="w-full">{saving ? 'Saving…' : 'Save Changes'}</Button>
             </fieldset>
           )}
         </DialogContent>

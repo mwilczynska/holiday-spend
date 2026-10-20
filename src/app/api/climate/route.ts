@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { z } from 'zod';
 import { eq } from 'drizzle-orm';
 import { db } from '@/db';
@@ -13,7 +14,7 @@ export const dynamic = 'force-dynamic';
 const idsSchema = z.array(z.string().min(1).max(200)).max(300);
 
 /** One database read for the complete itinerary; browsing never refreshes saved weather. */
-export async function GET(request: Request) {
+async function handleGET(request: Request) {
   try {
     await requireCurrentUserId();
     const query = new URL(request.url).searchParams;
@@ -29,7 +30,7 @@ export async function GET(request: Request) {
  * which is all the planner asks for; replacing a successful record is reserved for library
  * administrators. Collection is rate limited per account because each call reaches Open-Meteo.
  */
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const user = await requireCurrentUser();
     const cityId = z.string().min(1).max(200).parse(new URL(request.url).searchParams.get('cityId'));
@@ -47,3 +48,6 @@ export async function POST(request: Request) {
     return success(await ensureCityClimate(city.id, city.name, country.iso2, { refresh }));
   } catch (err) { return handleError(err); }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/climate', 'GET');
+export const POST = instrumentRoute(handlePOST, '/api/climate', 'POST');

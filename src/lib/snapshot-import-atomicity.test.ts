@@ -236,3 +236,9 @@ describe.sequential('snapshot import atomicity', () => {
     expect(groupSize()).toBe(2);
   });
 });
+
+// These focused route fixtures omit prices/history tables. Full history atomicity is covered in analytics/history.test.ts.
+vi.mock('@/lib/analytics/history', async () => {
+  const { db } = await import('@/db');
+  return { withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof db.transaction>[0]) => db.transaction(mutate) };
+});

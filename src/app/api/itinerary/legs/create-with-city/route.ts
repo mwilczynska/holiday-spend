@@ -1,4 +1,6 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireLibraryAdmin } from '@/lib/library-auth';
+import { withPlanRevision } from '@/lib/analytics/history';
 import { asc, eq } from 'drizzle-orm';
 import { db } from '@/db';
 import { itineraryLegs } from '@/db/schema';
@@ -28,7 +30,7 @@ const createSchema = z.object({
   extraContext: z.string().optional(),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     await requireLibraryAdmin();
     const userId = await requireCurrentUserId();
@@ -50,7 +52,7 @@ export async function POST(request: Request) {
       extraContext: data.extraContext,
     });
 
-    const leg = db.transaction((tx) => {
+    const leg = withPlanRevision(userId, 'leg_created_with_city', (tx) => {
       // Without dates the new leg follows the last one, as before; with a start date it goes into date order.
       let startDate = data.startDate ?? null;
       let endDate = data.endDate ?? null;
@@ -93,3 +95,5 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/itinerary/legs/create-with-city', 'POST');

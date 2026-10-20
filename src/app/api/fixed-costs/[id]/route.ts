@@ -1,4 +1,6 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
+import { withPlanRevision } from '@/lib/analytics/history';
 import { fixedCosts } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { success, error, handleError } from '@/lib/api-helpers';
@@ -23,7 +25,7 @@ const updateFixedCostSchema = z
   .partial()
   .strict();
 
-export async function PUT(
+async function handlePUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -35,7 +37,7 @@ export async function PUT(
     const existing = await db.select().from(fixedCosts).where(and(eq(fixedCosts.id, id), eq(fixedCosts.userId, userId))).get();
     if (!existing) return error('Fixed cost not found', 404);
 
-    await db.update(fixedCosts).set(body).where(and(eq(fixedCosts.id, id), eq(fixedCosts.userId, userId)));
+    withPlanRevision(userId, 'fixed_cost_updated', tx => tx.update(fixedCosts).set(body).where(and(eq(fixedCosts.id, id), eq(fixedCosts.userId, userId))).run());
     const updated = await db.select().from(fixedCosts).where(and(eq(fixedCosts.id, id), eq(fixedCosts.userId, userId))).get();
     return success(updated);
   } catch (err) {
@@ -43,7 +45,7 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
+async function handleDELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -53,9 +55,12 @@ export async function DELETE(
     const existing = await db.select().from(fixedCosts).where(and(eq(fixedCosts.id, id), eq(fixedCosts.userId, userId))).get();
     if (!existing) return error('Fixed cost not found', 404);
 
-    await db.delete(fixedCosts).where(and(eq(fixedCosts.id, id), eq(fixedCosts.userId, userId)));
+    withPlanRevision(userId, 'fixed_cost_deleted', tx => tx.delete(fixedCosts).where(and(eq(fixedCosts.id, id), eq(fixedCosts.userId, userId))).run());
     return success({ deleted: true });
   } catch (err) {
     return handleError(err);
   }
 }
+
+export const PUT = instrumentRoute(handlePUT, '/api/fixed-costs/[id]', 'PUT');
+export const DELETE = instrumentRoute(handleDELETE, '/api/fixed-costs/[id]', 'DELETE');

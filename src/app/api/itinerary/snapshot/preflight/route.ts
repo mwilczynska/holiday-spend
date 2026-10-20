@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { error, handleError, success } from '@/lib/api-helpers';
@@ -6,7 +7,7 @@ import { collectMissingSnapshotCities, parseSnapshotImportRequest } from '@/lib/
 
 export const dynamic = 'force-dynamic';
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     await requireCurrentUserId();
     const body = await request.json();
@@ -31,3 +32,5 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/itinerary/snapshot/preflight', 'POST');

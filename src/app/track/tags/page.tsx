@@ -155,8 +155,8 @@ export default function TagsPage() {
         description="Group expenses across categories, such as flights or splurge meals, and see their totals."
         actions={(
         <Dialog open={addOpen} onOpenChange={open => { if (!saving) { setAddOpen(open); setMutationError(null); } }}>
-          <DialogTrigger asChild>
-            <Button disabled={saving}><Plus className="mr-2 h-4 w-4" />New Tag</Button>
+          <DialogTrigger data-analytics="page.dialog-trigger" asChild>
+            <Button data-analytics="page.button" disabled={saving}><Plus className="mr-2 h-4 w-4" />New Tag</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader><DialogTitle>Create Tag</DialogTitle>
@@ -167,7 +167,7 @@ export default function TagsPage() {
               {mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
               <div><Label htmlFor="tag-create-name">Name</Label><Input id="tag-create-name" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="e.g. flights, splurge-meals" /></div>
               <div><Label htmlFor="tag-create-color">Color</Label><Input id="tag-create-color" type="color" value={newColor} onChange={(e) => setNewColor(e.target.value)} className="h-10 w-20" /></div>
-              <Button onClick={handleAdd} className="w-full" disabled={saving || !newName.trim()}>{saving ? 'Creating…' : 'Create Tag'}</Button>
+              <Button data-analytics="page.handle-add" onClick={handleAdd} className="w-full" disabled={saving || !newName.trim()}>{saving ? 'Creating…' : 'Create Tag'}</Button>
             </fieldset>
           </DialogContent>
         </Dialog>
@@ -175,7 +175,7 @@ export default function TagsPage() {
       />
 
       {!addOpen && !editTag && mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
-      {loadError && <div><p role="alert" className="text-sm text-destructive">{loadError}</p><Button size="sm" variant="outline" onClick={() => void fetchTags()}>Retry loading tags</Button></div>}
+      {loadError && <div><p role="alert" className="text-sm text-destructive">{loadError}</p><Button data-analytics="page.button.2" size="sm" variant="outline" onClick={() => void fetchTags()}>Retry loading tags</Button></div>}
 
       <div className="grid lg:grid-cols-[300px_1fr] gap-6">
         {/* Tag list */}
@@ -187,7 +187,7 @@ export default function TagsPage() {
               className={`transition-colors ${selectedTag?.id === tag.id ? 'border-blue-300 bg-info-soft' : 'hover:bg-secondary'}`}
             >
               <CardContent className="p-3 flex items-center gap-2">
-                <button type="button" className="flex min-w-0 flex-1 items-center gap-2 text-left" aria-label={`View ${tag.name} expenses`} onClick={() => void selectTag(tag)}>
+                <button data-analytics="page.button.3" type="button" className="flex min-w-0 flex-1 items-center gap-2 text-left" aria-label={`View ${tag.name} expenses`} onClick={() => void selectTag(tag)}>
                 {tag.color && (
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: tag.color }} />
                 )}
@@ -195,10 +195,10 @@ export default function TagsPage() {
                 <span className="text-xs text-muted-foreground">{tag.expenseCount} expenses</span>
                 <span className="text-sm font-medium">{format(tag.totalAud)}</span>
                 </button>
-                <Button aria-label={`Edit ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-8 w-8 text-slate-600" onClick={() => { setMutationError(null); setEditTag(tag); }}>
+                <Button data-analytics="page.set-mutation-error" aria-label={`Edit ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-8 w-8 text-slate-600" onClick={() => { setMutationError(null); setEditTag(tag); }}>
                   <Edit className="h-4 w-4" />
                 </Button>
-                <Button aria-label={`Delete ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-8 w-8 text-slate-600 hover:text-destructive" onClick={() => void handleDelete(tag.id)}>
+                <Button data-analytics="page.handle-delete" aria-label={`Delete ${tag.name} tag`} disabled={saving} variant="ghost" size="icon" className="h-8 w-8 text-slate-600 hover:text-destructive" onClick={() => void handleDelete(tag.id)}>
                   <Trash2 className="h-4 w-4" />
                 </Button>
               </CardContent>
@@ -224,7 +224,7 @@ export default function TagsPage() {
                     title={`Loading expenses for ${selectedTag.name}`}
                     detail="Gathering the tagged transactions and their total spend."
                   />
-                ) : tagReadError ? <div><p role="alert" className="text-sm text-destructive">{tagReadError}</p><Button size="sm" variant="outline" onClick={() => void selectTag(selectedTag)}>Retry tagged expenses</Button></div> : tagExpenses.length === 0 ? (
+                ) : tagReadError ? <div><p role="alert" className="text-sm text-destructive">{tagReadError}</p><Button data-analytics="page.button.4" size="sm" variant="outline" onClick={() => void selectTag(selectedTag)}>Retry tagged expenses</Button></div> : tagExpenses.length === 0 ? (
                   <p className="text-muted-foreground text-sm">No expenses with this tag.</p>
                 ) : (
                   <div className="space-y-1">
@@ -261,7 +261,7 @@ export default function TagsPage() {
               {mutationError && <p role="alert" className="text-sm text-destructive">{mutationError}</p>}
               <div><Label htmlFor="tag-edit-name">Name</Label><Input id="tag-edit-name" value={editTag.name} onChange={(e) => setEditTag({ ...editTag, name: e.target.value })} /></div>
               <div><Label htmlFor="tag-edit-color">Color</Label><Input id="tag-edit-color" type="color" value={editTag.color || '#3b82f6'} onChange={(e) => setEditTag({ ...editTag, color: e.target.value })} className="h-10 w-20" /></div>
-              <Button disabled={saving || !editTag.name.trim()} onClick={handleEditSave} className="w-full">{saving ? 'Saving…' : 'Save'}</Button>
+              <Button data-analytics="page.handle-edit-save" disabled={saving || !editTag.name.trim()} onClick={handleEditSave} className="w-full">{saving ? 'Saving…' : 'Save'}</Button>
             </fieldset>
           )}
         </DialogContent>

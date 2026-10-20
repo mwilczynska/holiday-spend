@@ -156,7 +156,7 @@ export function LoginScreen({
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="login-password">Password</Label>
-                  <Link
+                  <Link data-analytics="login-screen.forgot-password"
                     href="/forgot-password"
                     className="text-xs text-muted-foreground underline-offset-4 hover:underline"
                   >
@@ -182,7 +182,7 @@ export function LoginScreen({
                     Verify your email before signing in. We sent a link to{' '}
                     <span className="font-medium">{unverifiedEmail}</span>.
                   </p>
-                  <Button
+                  <Button data-analytics="login-screen.handle-resend"
                     type="button"
                     variant="outline"
                     size="sm"
@@ -198,13 +198,13 @@ export function LoginScreen({
                 </div>
               ) : null}
 
-              <Button type="submit" className="w-full" disabled={emailLoading || !email || !password}>
+              <Button data-analytics="login-screen.button" type="submit" className="w-full" disabled={emailLoading || !email || !password}>
                 <LoadingButtonLabel idle="Sign in" loading="Signing in..." isLoading={emailLoading} />
               </Button>
 
               <p className="text-center text-sm text-muted-foreground">
                 New here?{' '}
-                <Link href="/signup" className="font-medium text-foreground underline-offset-4 hover:underline">
+                <Link data-analytics="login-screen.signup" href="/signup" className="font-medium text-foreground underline-offset-4 hover:underline">
                   Create an account
                 </Link>
               </p>
@@ -223,7 +223,7 @@ export function LoginScreen({
           ) : null}
 
           {hasGoogle ? (
-            <Button
+            <Button data-analytics="login-screen.button.2"
               variant={hasEmailPassword ? 'outline' : 'default'}
               className="w-full"
               onClick={() => signIn('google', { callbackUrl: '/' })}
@@ -254,7 +254,7 @@ export function LoginScreen({
                   className="text-center text-2xl tracking-widest"
                 />
                 {pinError ? <p className="text-sm text-destructive text-center">{pinError}</p> : null}
-                <Button type="submit" className="w-full" disabled={pinLoading || !pin}>
+                <Button data-analytics="login-screen.button.3" type="submit" className="w-full" disabled={pinLoading || !pin}>
                   <LoadingButtonLabel idle="Enter dev mode" loading="Checking..." isLoading={pinLoading} />
                 </Button>
               </form>

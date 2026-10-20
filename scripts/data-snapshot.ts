@@ -17,6 +17,7 @@ if (args.includes('--verify')) {
     source: option('--source') ?? process.env.HOLIDAY_SPEND_DB_PATH ?? path.resolve('data/travel.db'),
     destination,
     mode: option('--mode') ?? 'full',
+    analyticsSource: process.env.HOLIDAY_SPEND_ANALYTICS_DB_PATH,
     ownerEmail,
     ownerId: option('--owner-id') ?? 'dev-local-user',
     ownerPasswordHash: ownerEmail ? await hashPassword(randomBytes(64).toString('base64url')) : undefined,

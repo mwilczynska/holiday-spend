@@ -1,10 +1,11 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { expenses, itineraryLegs, cities, countries, fixedCosts, tags, expenseTags } from '@/db/schema';
 import { and, asc, eq, gte, inArray, lte, ne } from 'drizzle-orm';
 import { requireCurrentUserId } from '@/lib/auth';
 import { handleError } from '@/lib/api-helpers';
 
-export async function GET(request: Request) {
+async function handleGET(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const { searchParams } = new URL(request.url);
@@ -110,3 +111,5 @@ export async function GET(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/export', 'GET');

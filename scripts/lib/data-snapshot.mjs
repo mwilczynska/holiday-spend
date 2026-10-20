@@ -35,8 +35,8 @@ function imagePath(directory, name) {
   return resolved;
 }
 
-/** @param {{source: string, destination: string, mode?: string, ownerEmail?: string, ownerId?: string, ownerPasswordHash?: string}} options */
-export async function createDataSnapshot({ source, destination, mode = 'full', ownerEmail, ownerId = 'dev-local-user', ownerPasswordHash }) {
+/** @param {{source: string, destination: string, mode?: string, analyticsSource?: string, ownerEmail?: string, ownerId?: string, ownerPasswordHash?: string}} options */
+export async function createDataSnapshot({ source, destination, mode = 'full', analyticsSource, ownerEmail, ownerId = 'dev-local-user', ownerPasswordHash }) {
   source = path.resolve(source);
   destination = path.resolve(destination);
   if (!['full', 'catalogue'].includes(mode)) throw new Error('Mode must be full or catalogue.');
@@ -104,6 +104,16 @@ export async function createDataSnapshot({ source, destination, mode = 'full', o
     checkDatabase(copy);
     copy.close(); copy = undefined;
     files['travel.db'] = { bytes: statSync(target).size, sha256: hashFile(target) };
+    const analyticsFile = analyticsSource || path.join(path.dirname(source), 'analytics.db');
+    if (mode === 'full' && existsSync(analyticsFile)) {
+      const analytics = new Database(analyticsFile, { readonly: true, fileMustExist: true });
+      try {
+        if (analytics.pragma('integrity_check', { simple: true }) !== 'ok') throw new Error('Analytics database integrity check failed.');
+        await analytics.backup(path.join(destination, 'analytics.db'));
+        const copied = path.join(destination, 'analytics.db');
+        files['analytics.db'] = { bytes: statSync(copied).size, sha256: hashFile(copied) };
+      } finally { analytics.close(); }
+    }
     const manifest = { version: 1, mode, createdAt: new Date().toISOString(), ownerProvisioned: Boolean(ownerEmail), tables: after, files };
     writeFileSync(path.join(destination, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n', { mode: 0o600 });
     return manifest;
@@ -121,6 +131,12 @@ export function verifyDataSnapshot(directory) {
     const file = path.resolve(directory, name);
     if (!file.startsWith(directory + path.sep)) throw new Error('Unsafe manifest path.');
     if (statSync(file).size !== expected.bytes || hashFile(file) !== expected.sha256) throw new Error(`Snapshot checksum mismatch: ${name}`);
+  }
+  if (manifest.files['analytics.db']) {
+    if (manifest.mode !== 'full') throw new Error('Catalogue snapshot includes analytics data.');
+    const analytics = new Database(path.join(directory, 'analytics.db'), { readonly: true, fileMustExist: true });
+    try { if (analytics.pragma('integrity_check', { simple: true }) !== 'ok') throw new Error('Analytics database integrity check failed.'); }
+    finally { analytics.close(); }
   }
   const db = new Database(path.join(directory, 'travel.db'), { readonly: true, fileMustExist: true });
   try {

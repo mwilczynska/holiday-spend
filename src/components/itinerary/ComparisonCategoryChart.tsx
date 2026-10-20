@@ -275,7 +275,7 @@ export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult
         <CardHeader className="min-h-[112px] pb-2">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle className="text-sm">Planned Spend by Category</CardTitle>
-            <Button type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
+            <Button data-analytics="comparison-category-chart.set-expanded" type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
               <Maximize2 className="mr-2 h-4 w-4" />
               Expand
             </Button>

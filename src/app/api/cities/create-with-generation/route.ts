@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireLibraryAdmin } from '@/lib/library-auth';
 import { z } from 'zod';
 import { requireCurrentUserId } from '@/lib/auth';
@@ -22,7 +23,7 @@ const createSchema = z.object({
   extraContext: z.string().optional(),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     await requireLibraryAdmin();
     const userId = await requireCurrentUserId();
@@ -37,3 +38,5 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/cities/create-with-generation', 'POST');

@@ -33,7 +33,7 @@ export function TripSummaryCard({ legs, fixedCostsTotal, groupSize = 2 }: CostSu
     <section className="flex flex-col gap-2.5 rounded-2xl border bg-card p-5">
       <div className="flex items-center justify-between gap-2">
         <h2 className="text-[15px] font-bold">Trip summary</h2>
-        <Link href="/" className="inline-flex items-center gap-1 text-[13px] font-semibold text-blue-700 hover:text-blue-900">
+        <Link data-analytics="cost-summary." href="/" className="inline-flex items-center gap-1 text-[13px] font-semibold text-blue-700 hover:text-blue-900">
           View dashboard <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
         </Link>
       </div>

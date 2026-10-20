@@ -68,8 +68,8 @@ export function ForgotPasswordScreen() {
                 The link expires in 30 minutes. Use your new password on the sign-in page once the reset
                 is complete.
               </p>
-              <Button asChild className="w-full">
-                <Link href="/login">Back to sign in</Link>
+              <Button data-analytics="forgot-password-screen.button" asChild className="w-full">
+                <Link data-analytics="forgot-password-screen.login" href="/login">Back to sign in</Link>
               </Button>
             </>
           ) : (
@@ -89,14 +89,14 @@ export function ForgotPasswordScreen() {
 
               {error ? <p className="text-sm text-destructive">{error}</p> : null}
 
-              <Button type="submit" className="w-full" disabled={loading || !email}>
+              <Button data-analytics="forgot-password-screen.button.2" type="submit" className="w-full" disabled={loading || !email}>
                 <LoadingButtonLabel idle="Send reset link" loading="Sending..." isLoading={loading} />
               </Button>
             </form>
           )}
 
           <p className="text-center text-sm text-muted-foreground">
-            <Link href="/login" className="font-medium text-foreground underline-offset-4 hover:underline">
+            <Link data-analytics="forgot-password-screen.login.2" href="/login" className="font-medium text-foreground underline-offset-4 hover:underline">
               Back to sign in
             </Link>
           </p>

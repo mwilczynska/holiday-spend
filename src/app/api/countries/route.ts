@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireCurrentUserId } from '@/lib/auth';
 import { requireLibraryAdmin } from '@/lib/library-auth';
 import { loadCountries } from '@/lib/city-library-data';
@@ -15,7 +16,7 @@ import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: Request) {
+async function handleGET(request: Request) {
   try {
     await requireCurrentUserId();
     const includeCities = new URL(request.url).searchParams.get('includeCities') !== 'false';
@@ -43,7 +44,7 @@ const createSchema = z
   })
   .strict();
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     await requireLibraryAdmin();
     const body = await request.json();
@@ -104,3 +105,6 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/countries', 'GET');
+export const POST = instrumentRoute(handlePOST, '/api/countries', 'POST');

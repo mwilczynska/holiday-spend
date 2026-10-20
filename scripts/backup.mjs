@@ -20,6 +20,7 @@ try {
       source: option('--source') ?? process.env.HOLIDAY_SPEND_DB_PATH ?? path.resolve('data/travel.db'),
       destination,
       mode: 'full',
+      analyticsSource: process.env.HOLIDAY_SPEND_ANALYTICS_DB_PATH,
     });
     verifyDataSnapshot(destination);
   }

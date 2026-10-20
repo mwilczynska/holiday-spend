@@ -12,5 +12,5 @@ export const PlannerLockContext = createContext(false);
 
 export function LockableButton({ disabled, ...props }: ComponentProps<typeof Button>) {
   const locked = useContext(PlannerLockContext);
-  return <Button {...props} disabled={locked || disabled} />;
+  return <Button data-analytics="planner-lock.button" {...props} disabled={locked || disabled} />;
 }

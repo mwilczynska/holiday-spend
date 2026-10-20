@@ -140,7 +140,7 @@ export function CurrentDestinationCard({ position, image }: { position: TripPosi
           Not on a planned leg at the dashboard cutoff date.
           {position.next ? ` Next is ${position.next.cityName} from ${formatShortDate(position.next.startDate)}.` : ''}
         </p>
-        <Link href="/plan" className="text-sm font-semibold text-blue-700 hover:text-blue-900">Open the planner →</Link>
+        <Link data-analytics="dashboard-bento.plan" href="/plan" className="text-sm font-semibold text-blue-700 hover:text-blue-900">Open the planner →</Link>
       </section>
     );
   }
@@ -204,7 +204,7 @@ export function UpNextCard({ leg, isFirst, image }: { leg: DerivedLeg | null; is
     <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:px-[18px]">
       <div className="flex items-center justify-between gap-2">
         <h2 className="text-[15px] font-bold">{isFirst ? 'First stop' : 'Up next'}</h2>
-        <Link href="/plan" className="inline-flex items-center gap-1 text-[13px] font-semibold text-blue-700 hover:text-blue-900">
+        <Link data-analytics="dashboard-bento.plan.2" href="/plan" className="inline-flex items-center gap-1 text-[13px] font-semibold text-blue-700 hover:text-blue-900">
           <Plane className="h-3.5 w-3.5" aria-hidden="true" />
           View in planner
         </Link>

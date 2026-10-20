@@ -1,4 +1,6 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
+import { withPlanRevision } from '@/lib/analytics/history';
 import { itineraryLegs } from '@/db/schema';
 import { and, eq, inArray } from 'drizzle-orm';
 import { requireCurrentUserId } from '@/lib/auth';
@@ -9,7 +11,7 @@ const reorderSchema = z.object({
   legIds: z.array(z.number().int()).max(2000),
 });
 
-export async function PUT(request: Request) {
+async function handlePUT(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
@@ -20,7 +22,7 @@ export async function PUT(request: Request) {
       .where(and(eq(itineraryLegs.userId, userId), inArray(itineraryLegs.id, legIds)));
     const ownedLegIds = new Set(ownedLegs.map((leg) => leg.id));
 
-    db.transaction(tx => {
+    withPlanRevision(userId, 'legs_reordered', tx => {
       for (let i = 0; i < legIds.length; i++) {
         if (!ownedLegIds.has(legIds[i])) continue;
         tx.update(itineraryLegs)
@@ -34,3 +36,5 @@ export async function PUT(request: Request) {
     return handleError(err);
   }
 }
+
+export const PUT = instrumentRoute(handlePUT, '/api/itinerary/reorder', 'PUT');

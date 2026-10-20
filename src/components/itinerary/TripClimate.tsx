@@ -34,7 +34,7 @@ export function TripClimate({ legs: currentLegs, climate: currentClimate, unit, 
     {(undated > 0 || loading > 0 || missing > 0) && <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground" role="status">
       {undated > 0 && <span>{undated} undated or invalid-date {undated === 1 ? 'leg omitted' : 'legs omitted'}.</span>}
       {loading > 0 && <span>Loading climate for {loading} {loading === 1 ? 'city' : 'cities'}…</span>}
-      {missing > 0 && <><span>Climate unavailable for {missing} {missing === 1 ? 'city' : 'cities'}; gaps are left empty.</span><Button size="sm" variant="ghost" onClick={onRetry}>Retry climate</Button></>}
+      {missing > 0 && <><span>Climate unavailable for {missing} {missing === 1 ? 'city' : 'cities'}; gaps are left empty.</span><Button data-analytics="trip-climate.on-retry" size="sm" variant="ghost" onClick={onRetry}>Retry climate</Button></>}
     </div>}
   </section>;
 }

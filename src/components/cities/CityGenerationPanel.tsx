@@ -216,8 +216,8 @@ export function CityGenerationPanel({
       <div className="grid gap-3 md:grid-cols-2">
         <div className="space-y-1">
           <Label className="text-xs">Provider</Label>
-          <Select value={provider} onValueChange={(value) => updateProvider(value as ProviderOption)}>
-            <SelectTrigger className="h-9 text-sm">
+          <Select data-analytics="city-generation-panel.select" value={provider} onValueChange={(value) => updateProvider(value as ProviderOption)}>
+            <SelectTrigger data-analytics="city-generation-panel.select-trigger" className="h-9 text-sm">
               <SelectValue placeholder="Select provider" />
             </SelectTrigger>
             <SelectContent>
@@ -245,7 +245,7 @@ export function CityGenerationPanel({
             />
           </div>
           <div className="flex items-center gap-2">
-            <Switch id={showApiKeyId} checked={showApiKey} onCheckedChange={setShowApiKey} />
+            <Switch data-analytics="city-generation-panel.set-show-api-key" id={showApiKeyId} checked={showApiKey} onCheckedChange={setShowApiKey} />
             <Label htmlFor={showApiKeyId} className="text-xs text-muted-foreground">Show API key</Label>
           </div>
           <label className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -257,10 +257,10 @@ export function CityGenerationPanel({
             Save API key in this browser
           </label>
           <div className="flex flex-wrap gap-2">
-            <Button type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
+            <Button data-analytics="city-generation-panel.clear-current-provider-api-key" type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
               Clear This Key
             </Button>
-            <Button type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
+            <Button data-analytics="city-generation-panel.clear-all-saved-api-keys" type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
               Clear All Saved Keys
             </Button>
           </div>
@@ -296,12 +296,12 @@ export function CityGenerationPanel({
             </div>
             <div className="space-y-1">
               <Label className="text-xs">Thinking / reasoning effort</Label>
-              <Select
+              <Select data-analytics="city-generation-panel.on-reasoning-effort"
                 value={effectiveReasoningEffort}
                 onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
                 disabled={supportedReasoningEfforts.length <= 1}
               >
-                <SelectTrigger className="h-9 text-sm">
+                <SelectTrigger data-analytics="city-generation-panel.select-trigger.2" className="h-9 text-sm">
                   <SelectValue placeholder="Select effort" />
                 </SelectTrigger>
                 <SelectContent>
@@ -321,7 +321,7 @@ export function CityGenerationPanel({
           </div>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
             {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
-              <Button
+              <Button data-analytics="city-generation-panel.button"
                 key={model}
                 type="button"
                 variant={modelValidation.effectiveModel === model ? 'secondary' : 'outline'}
@@ -332,7 +332,7 @@ export function CityGenerationPanel({
                 {model === selectedProvider.defaultModel ? `${model} (default)` : model}
               </Button>
             ))}
-            <Button type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing}>
+            <Button data-analytics="city-generation-panel.refresh-models-and-reset-default" type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing}>
               <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
             </Button>
           </div>
@@ -367,7 +367,7 @@ export function CityGenerationPanel({
       </div>
 
       <div className="flex items-center gap-3">
-        <Button onClick={handleGenerate} disabled={loading}>
+        <Button data-analytics="city-generation-panel.handle-generate" onClick={handleGenerate} disabled={loading}>
           <LoadingButtonLabel
             idle="Generate City Costs"
             loading="Generating..."

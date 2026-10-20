@@ -65,7 +65,7 @@ export function CheckEmailScreen({ email }: CheckEmailScreenProps) {
           </p>
 
           {email ? (
-            <Button
+            <Button data-analytics="check-email-screen.handle-resend"
               type="button"
               variant="outline"
               className="w-full"
@@ -84,7 +84,7 @@ export function CheckEmailScreen({ email }: CheckEmailScreenProps) {
           {error ? <p className="text-sm text-destructive text-center">{error}</p> : null}
 
           <p className="text-center text-sm">
-            <Link href="/login" className="text-muted-foreground underline-offset-4 hover:underline">
+            <Link data-analytics="check-email-screen.login" href="/login" className="text-muted-foreground underline-offset-4 hover:underline">
               Back to sign in
             </Link>
           </p>

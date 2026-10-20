@@ -60,7 +60,7 @@ export function MiscellaneousExpenses({ legId, expenses, onChange, onValidationE
           <p className="text-xs font-medium">Miscellaneous expenses</p>
           <p className="text-xs text-muted-foreground">One-off {currency} costs for this leg and the whole group.</p>
         </div>
-        <Button type="button" variant="outline" size="sm" className="h-8" onClick={() => change([
+        <Button data-analytics="miscellaneous-expenses.button" type="button" variant="outline" size="sm" className="h-8" onClick={() => change([
           ...drafts, { key: nextKey.current++, description: '', costInput: '' },
         ])}>
           <Plus className="mr-1 h-3.5 w-3.5" />Add miscellaneous expense
@@ -89,7 +89,7 @@ export function MiscellaneousExpenses({ legId, expenses, onChange, onValidationE
               {invalidCost ? <p id={`${prefix}-error`} className="text-xs text-destructive">Enter zero or a positive amount.</p> : null}
             </div>
             <div className="flex items-end">
-              <Button type="button" variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive"
+              <Button data-analytics="miscellaneous-expenses.button.2" type="button" variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive"
                 aria-label={`Remove miscellaneous expense ${index + 1}`}
                 onClick={() => change(drafts.filter((_, i) => i !== index))}>
                 <Trash2 className="h-4 w-4" />

@@ -35,8 +35,8 @@ export function TierSelector({ label, value, options, onChange, costPerDay, help
           />
         )}
       </div>
-      <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className="h-8 text-xs">
+      <Select data-analytics="tier-selector.on-change" value={value} onValueChange={onChange}>
+        <SelectTrigger data-analytics="tier-selector.select-trigger" className="h-8 text-xs">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

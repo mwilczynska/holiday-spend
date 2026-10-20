@@ -156,7 +156,7 @@ export function AccountSettings({
             {!nameUnchanged ? <p className="break-words text-sm text-muted-foreground">Unsaved display name. Last confirmed saved name: {savedName || 'None'}.</p> : null}
             {nameStatus ? <p role="status" className="text-sm text-muted-foreground">{nameStatus}</p> : null}
             {nameError ? <p role="alert" className="text-sm text-destructive">{nameError}</p> : null}
-            <Button type="submit" disabled={nameLoading || nameUnchanged}>
+            <Button data-analytics="account-settings.button" type="submit" disabled={nameLoading || nameUnchanged}>
               <LoadingButtonLabel idle="Save" loading="Saving..." isLoading={nameLoading} />
             </Button>
           </form>
@@ -214,7 +214,7 @@ export function AccountSettings({
               {passwordError ? (
                 <p className="text-sm text-destructive">{passwordError}</p>
               ) : null}
-              <Button
+              <Button data-analytics="account-settings.button.2"
                 type="submit"
                 disabled={
                   passwordLoading || !currentPassword || !newPassword || !confirmPassword
@@ -257,12 +257,12 @@ export function AccountSettings({
             <p className="text-sm font-medium">Add another sign-in method</p>
             <div className="flex flex-wrap gap-2">
               {!hasGoogle ? (
-                <Button variant="outline" disabled>
+                <Button data-analytics="account-settings.button.3" variant="outline" disabled>
                   Add Google (coming soon)
                 </Button>
               ) : null}
               {!hasPassword ? (
-                <Button variant="outline" disabled>
+                <Button data-analytics="account-settings.button.4" variant="outline" disabled>
                   Add email and password (coming soon)
                 </Button>
               ) : null}

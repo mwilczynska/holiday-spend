@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { tags, expenseTags, expenses } from '@/db/schema';
 import { and, eq, ne } from 'drizzle-orm';
@@ -7,7 +8,7 @@ import { isTagNameConflict } from '@/lib/tag-validation';
 import { requireCurrentUserId } from '@/lib/auth';
 import { z } from 'zod';
 
-export async function GET() {
+async function handleGET() {
   try {
     const userId = await requireCurrentUserId();
     const allTags = await db.select().from(tags).where(eq(tags.userId, userId));
@@ -49,7 +50,7 @@ const createSchema = z.object({
   color: z.string().optional(),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
@@ -61,3 +62,6 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/tags', 'GET');
+export const POST = instrumentRoute(handlePOST, '/api/tags', 'POST');

@@ -147,7 +147,7 @@ function CountryChartModePicker({
           ['total', 'Totals'],
           ['daily', 'Per Day'],
         ] as const).map(([value, label]) => (
-          <button
+          <button data-analytics="comparison-country-chart.on-change"
             key={value}
             type="button"
             onClick={() => onChange(value)}
@@ -281,7 +281,7 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
             <CardTitle className="text-sm">Planned Spend by Country</CardTitle>
             <div className="flex flex-wrap items-center gap-2">
               <CountryChartModePicker mode={mode} onChange={setMode} size="inline" />
-              <Button type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
+              <Button data-analytics="comparison-country-chart.set-expanded" type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
                 <Maximize2 className="mr-2 h-4 w-4" />
                 Expand
               </Button>

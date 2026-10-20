@@ -1,6 +1,8 @@
 import { db } from '@/db';
 import { exchangeRates, userPreferences } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { withPlanRevision } from '@/lib/analytics/history';
+import { recordEvent } from '@/lib/analytics/service';
 import { FRANKFURTER_BASE } from './exchange-rates';
 import { DEFAULT_CURRENCY_STATE, isDisplayCurrency, validDisplayRate, type DisplayCurrency, type DisplayCurrencyState } from './display-currency';
 interface LatestRates { date: string; rates: Record<string, number> }
@@ -59,8 +61,12 @@ export class CurrencyRateUnavailableError extends Error {}
 export async function saveDisplayCurrency(userId: string, currency: DisplayCurrency): Promise<DisplayCurrencyState> {
   const state = await currencyStateFor(currency);
   if (state.rate == null) throw new CurrencyRateUnavailableError(state.error ?? 'Current exchange rate unavailable.');
-  db.insert(userPreferences).values({ userId, displayCurrency: currency }).onConflictDoUpdate({
+  const previous = db.select().from(userPreferences).where(eq(userPreferences.userId, userId)).get()?.displayCurrency ?? 'AUD';
+  withPlanRevision(userId, 'currency_changed', tx => {
+  tx.insert(userPreferences).values({ userId, displayCurrency: currency }).onConflictDoUpdate({
     target: userPreferences.userId, set: { displayCurrency: currency, updatedAt: new Date().toISOString() },
   }).run();
+  recordEvent('currency_change_succeeded', { from: previous, to: currency, rateDate: state.asOf });
+  });
   return state;
 }

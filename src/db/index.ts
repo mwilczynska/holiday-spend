@@ -3,6 +3,7 @@ import { drizzle } from 'drizzle-orm/better-sqlite3';
 import * as schema from './schema';
 import path from 'path';
 import fs from 'fs';
+import { initializeAnalyticsPrimary } from '../lib/analytics/storage';
 import { derivePrivateRoomRate } from '../lib/accommodation';
 import { findLegForExpenseDate } from '../lib/expense-leg-assignment';
 import { getIntercityTransportTotal } from '../lib/intercity-transport';
@@ -595,6 +596,7 @@ for (const statement of [
   }
 }
 
+initializeAnalyticsPrimary(sqlite);
 export const db = drizzle(sqlite, { schema });
 export { schema, sqlite };
 /** Directory holding the database; downloaded city photos live in its `city-images` folder. */

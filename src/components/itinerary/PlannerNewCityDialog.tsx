@@ -390,7 +390,7 @@ export function PlannerNewCityDialog({
               <div key={draft.id} className="space-y-3 rounded-md border p-3">
                 {drafts.length > 1 ? <div className="flex items-center justify-between gap-2">
                   <span className="text-sm font-medium">City {index + 1}</span>
-                  <Button type="button" variant="ghost" size="sm" onClick={() => setDrafts(current => current.filter(item => item.id !== draft.id))} aria-label={`Remove city ${index + 1}`}>Remove</Button>
+                  <Button data-analytics="planner-new-city-dialog.set-drafts" type="button" variant="ghost" size="sm" onClick={() => setDrafts(current => current.filter(item => item.id !== draft.id))} aria-label={`Remove city ${index + 1}`}>Remove</Button>
                 </div> : null}
                 <div>
                   <Label htmlFor={cityNameId}>City Name</Label>
@@ -462,7 +462,7 @@ export function PlannerNewCityDialog({
               </div>
             );
           })}
-          <Button type="button" variant="outline" onClick={() => setDrafts(current => [...current, makeCityLegDraft(nextDraftId.current++, nextLegStartDate(current[current.length - 1]?.endDate ?? firstStartDate), String(DEFAULT_NEW_LEG_NIGHTS))])}>Add another city</Button>
+          <Button data-analytics="planner-new-city-dialog.set-drafts.2" type="button" variant="outline" onClick={() => setDrafts(current => [...current, makeCityLegDraft(nextDraftId.current++, nextLegStartDate(current[current.length - 1]?.endDate ?? firstStartDate), String(DEFAULT_NEW_LEG_NIGHTS))])}>Add another city</Button>
 
           <details className="rounded-md border bg-muted/20">
             <summary className="cursor-pointer px-3 py-2 text-sm font-medium text-foreground">
@@ -476,8 +476,8 @@ export function PlannerNewCityDialog({
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="space-y-1">
                   <Label className="text-xs">Provider</Label>
-                  <Select value={provider} onValueChange={(value) => updateProvider(value as ProviderOption)} disabled={loading}>
-                    <SelectTrigger className="h-9 text-sm">
+                  <Select data-analytics="planner-new-city-dialog.select" value={provider} onValueChange={(value) => updateProvider(value as ProviderOption)} disabled={loading}>
+                    <SelectTrigger data-analytics="planner-new-city-dialog.select-trigger" className="h-9 text-sm">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -522,10 +522,10 @@ export function PlannerNewCityDialog({
                     Save API key in this browser
                   </label>
                   <div className="flex flex-wrap gap-2">
-                    <Button type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
+                    <Button data-analytics="planner-new-city-dialog.clear-current-provider-api-key" type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
                       Clear This Key
                     </Button>
-                    <Button type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
+                    <Button data-analytics="planner-new-city-dialog.clear-all-saved-api-keys" type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
                       Clear All Saved Keys
                     </Button>
                   </div>
@@ -561,12 +561,12 @@ export function PlannerNewCityDialog({
                     </div>
                     <div className="space-y-1">
                       <Label className="text-xs">Thinking / reasoning effort</Label>
-                      <Select
+                      <Select data-analytics="planner-new-city-dialog.on-reasoning-effort"
                         value={effectiveReasoningEffort}
                         onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
                         disabled={loading || supportedReasoningEfforts.length <= 1}
                       >
-                        <SelectTrigger className="h-9 text-sm">
+                        <SelectTrigger data-analytics="planner-new-city-dialog.select-trigger.2" className="h-9 text-sm">
                           <SelectValue placeholder="Select effort" />
                         </SelectTrigger>
                         <SelectContent>
@@ -586,7 +586,7 @@ export function PlannerNewCityDialog({
                   </div>
                   <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                     {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
-                      <Button
+                      <Button data-analytics="planner-new-city-dialog.button"
                         key={model}
                         type="button"
                         variant={modelValidation.effectiveModel === model ? 'secondary' : 'outline'}
@@ -597,7 +597,7 @@ export function PlannerNewCityDialog({
                         {model === selectedProvider.defaultModel ? `${model} (default)` : model}
                       </Button>
                     ))}
-                    <Button type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || loading}>
+                    <Button data-analytics="planner-new-city-dialog.refresh-models-and-reset-default" type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || loading}>
                       <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
                     </Button>
                   </div>
@@ -651,10 +651,10 @@ export function PlannerNewCityDialog({
           {progress ? <p role="status" className="text-sm text-muted-foreground">{progress}</p> : null}
 
           <div className="flex gap-2">
-            <Button type="button" variant="outline" className="flex-1" onClick={() => handleOpenChange(false)} disabled={loading}>
+            <Button data-analytics="planner-new-city-dialog.handle-open-change" type="button" variant="outline" className="flex-1" onClick={() => handleOpenChange(false)} disabled={loading}>
               Cancel
             </Button>
-            <Button
+            <Button data-analytics="planner-new-city-dialog.handle-submit"
               type="button"
               className="flex-1"
               onClick={handleSubmit}

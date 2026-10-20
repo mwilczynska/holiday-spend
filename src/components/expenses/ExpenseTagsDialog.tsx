@@ -73,13 +73,13 @@ export function ExpenseTagsDialog({ expenseId, onClose }: { expenseId: number; o
         {tags.length ? tags.map(tag => <label key={tag.id} className="flex items-center gap-3 break-words">
           <input type="checkbox" checked={selected.includes(tag.id)} disabled={saving} onChange={event => setSelected(current => event.target.checked ? [...current, tag.id] : current.filter(id => id !== tag.id))} />
           {tag.name}
-        </label>) : <p>No tags yet. <Link className="underline" href="/track/tags">Create a tag</Link> to use it here.</p>}
+        </label>) : <p>No tags yet. <Link data-analytics="expense-tags-dialog.track-tags" className="underline" href="/track/tags">Create a tag</Link> to use it here.</p>}
       </div>}
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-      {!loaded && !loading && <Button variant="outline" onClick={() => void load()}>Retry loading tags</Button>}
+      {!loaded && !loading && <Button data-analytics="expense-tags-dialog.button" variant="outline" onClick={() => void load()}>Retry loading tags</Button>}
       <div className="flex justify-end gap-2">
-        <Button variant="outline" disabled={saving} onClick={onClose}>Cancel</Button>
-        <Button disabled={loading || !loaded || saving} onClick={() => void save()}>{saving ? 'Saving...' : 'Save tags'}</Button>
+        <Button data-analytics="expense-tags-dialog.on-close" variant="outline" disabled={saving} onClick={onClose}>Cancel</Button>
+        <Button data-analytics="expense-tags-dialog.button.2" disabled={loading || !loaded || saving} onClick={() => void save()}>{saving ? 'Saving...' : 'Save tags'}</Button>
       </div>
     </DialogContent>
   </Dialog>;

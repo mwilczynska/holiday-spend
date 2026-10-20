@@ -14,6 +14,9 @@ import { isEmailAllowed, isEmailPasswordEnabled } from '@/lib/auth-policy';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { getRequestIp } from '@/lib/request-ip';
 import { ensureUserRow, initializeUserPreferences } from '@/lib/user-data';
+import { setAnalyticsActor } from '@/lib/analytics/context';
+import { isLibraryAdmin } from '@/lib/auth-policy';
+import { recordEvent } from '@/lib/analytics/service';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const devPin = !isProduction
@@ -221,6 +224,8 @@ export const authOptions: NextAuthOptions = {
           image: user.image,
         });
         await initializeUserPreferences(userId);
+        setAnalyticsActor(userId, isLibraryAdmin(user.email));
+        recordEvent('workflow_step', { workflow: 'auth', step: 'login_succeeded', outcome: 'success' });
         token.sub = userId;
         token.tokenVersion = (await getUserTokenVersion(userId)) ?? 0;
         return token;
@@ -272,6 +277,8 @@ export async function requireCurrentUser() {
   }
 
   if (!isEmailAllowed(session.user.email)) throw new AuthRequiredError();
+
+  setAnalyticsActor(session.user.id, isLibraryAdmin(session.user.email));
 
   return session.user;
 }

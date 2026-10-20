@@ -297,7 +297,7 @@ export default function EstimatesPage() {
           </ul>
           <p>
             The{' '}
-            <Link href="/dataset" className="font-semibold text-brand-blue underline-offset-2 hover:underline">Dataset</Link>{' '}
+            <Link data-analytics="page.dataset" href="/dataset" className="font-semibold text-brand-blue underline-offset-2 hover:underline">Dataset</Link>{' '}
             page shows each city’s source and generation history.
           </p>
         </Tile>

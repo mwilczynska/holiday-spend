@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
@@ -20,7 +21,7 @@ const signupSchema = z.object({
   name: z.string().trim().max(200).optional(),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     if (!isEmailPasswordEnabled()) return authError('Email/password registration is disabled.', 403);
     const body = await request.json();
@@ -94,3 +95,5 @@ export async function POST(request: Request) {
     return handleAuthError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/auth/signup', 'POST');

@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { error, handleError, success } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 import { getPlannerGroupSize, setPlannerGroupSize } from '@/lib/planner-settings';
@@ -9,7 +10,7 @@ const updateSchema = z.object({
   groupSize: z.number().int().min(1).max(5),
 });
 
-export async function GET() {
+async function handleGET() {
   try {
     const userId = await requireCurrentUserId();
     const groupSize = await getPlannerGroupSize(userId);
@@ -19,7 +20,7 @@ export async function GET() {
   }
 }
 
-export async function PUT(request: Request) {
+async function handlePUT(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
@@ -33,3 +34,6 @@ export async function PUT(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/planner/settings', 'GET');
+export const PUT = instrumentRoute(handlePUT, '/api/planner/settings', 'PUT');

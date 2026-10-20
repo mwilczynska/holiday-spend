@@ -1,3 +1,4 @@
+import { withCityPriceRevisions } from '@/lib/analytics/history';
 import { eq } from 'drizzle-orm';
 import { db } from '@/db';
 import { cities, cityEstimates } from '@/db/schema';
@@ -113,7 +114,7 @@ export function refreshCityCostExchangeRates(fx: CityCostV11FxProvenance, option
     if (dryRun) continue;
 
     const fxHistory = Array.isArray(metadata.fxHistory) ? metadata.fxHistory : [];
-    db.transaction((tx) => {
+    withCityPriceRevisions([city.id], (tx) => {
       tx.update(cityEstimates).set({
         dataJson: JSON.stringify(plan.estimateData),
         anchorsJson: JSON.stringify({ ...anchors, valuesAud: plan.anchorsAud }),

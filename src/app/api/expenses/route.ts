@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { expenses, expenseTags, itineraryLegs, cities, countries } from '@/db/schema';
 import { eq, and, gte, lte, desc, ne } from 'drizzle-orm';
@@ -14,7 +15,7 @@ const trackViewSchema = z.object({
   pageSize: z.coerce.number().int().min(1).max(EXPENSE_PAGE_SIZE).default(EXPENSE_PAGE_SIZE),
 });
 
-export async function GET(request: Request) {
+async function handleGET(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const url = new URL(request.url);
@@ -115,7 +116,7 @@ const createSchema = z.object({
   isExcluded: z.number().default(0),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
@@ -145,3 +146,6 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/expenses', 'GET');
+export const POST = instrumentRoute(handlePOST, '/api/expenses', 'POST');

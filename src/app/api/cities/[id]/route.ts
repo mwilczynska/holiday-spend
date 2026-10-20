@@ -1,3 +1,5 @@
+import { withCityPriceRevisions } from '@/lib/analytics/history';
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireLibraryAdmin } from '@/lib/library-auth';
 import { db } from '@/db';
 import { getCityImageRow, removeCityImageFiles } from '@/lib/city-image-service';
@@ -52,7 +54,7 @@ const updateCitySchema = z
   .partial()
   .strict();
 
-export async function PUT(
+async function handlePUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -69,7 +71,7 @@ export async function PUT(
       return error('No editable city cost fields were provided.', 400);
     }
 
-    await db.update(cities).set(data).where(eq(cities.id, id));
+    withCityPriceRevisions([id], tx => tx.update(cities).set(data).where(eq(cities.id, id)).run());
     const updated = await db.select().from(cities).where(eq(cities.id, id)).get();
 
     return success(updated);
@@ -78,7 +80,7 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
+async function handleDELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -110,3 +112,6 @@ export async function DELETE(
     return handleError(err);
   }
 }
+
+export const PUT = instrumentRoute(handlePUT, '/api/cities/[id]', 'PUT');
+export const DELETE = instrumentRoute(handleDELETE, '/api/cities/[id]', 'DELETE');

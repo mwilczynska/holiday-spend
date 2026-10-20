@@ -17,6 +17,11 @@ export function isLibraryAdmin(email: string | null | undefined): boolean {
   return Boolean(email && isEmailAllowed(email) && admins.includes(normalizeEmail(email)));
 }
 
+export function isAnalyticsAdmin(email: string | null | undefined): boolean {
+  const admins = configuredEmails(process.env.AUTH_ANALYTICS_ADMIN_EMAILS);
+  return admins.length ? Boolean(email && isEmailAllowed(email) && admins.includes(normalizeEmail(email))) : isLibraryAdmin(email);
+}
+
 export function isEmailPasswordEnabled(): boolean {
   if (process.env.ENABLE_EMAIL_PASSWORD === 'false') return false;
   return process.env.ENABLE_EMAIL_PASSWORD === 'true'

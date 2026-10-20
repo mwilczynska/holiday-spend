@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { expenseTags, expenses, tags } from '@/db/schema';
 import { and, eq, inArray, ne } from 'drizzle-orm';
@@ -9,7 +10,7 @@ import { z } from 'zod';
 const selectionSchema = z.object({ tagIds: z.array(z.number().int().positive()).max(500) });
 const expenseIdSchema = z.coerce.number().int().positive();
 
-export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
+async function handleGET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const userId = await requireCurrentUserId();
     const expenseId = expenseIdSchema.parse((await params).id);
@@ -26,7 +27,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
   }
 }
 
-export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
+async function handlePUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const userId = await requireCurrentUserId();
     const expenseId = expenseIdSchema.parse((await params).id);
@@ -49,7 +50,7 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
   }
 }
 
-export async function POST(
+async function handlePOST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -82,3 +83,7 @@ export async function POST(
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/expenses/[id]/tags', 'GET');
+export const PUT = instrumentRoute(handlePUT, '/api/expenses/[id]/tags', 'PUT');
+export const POST = instrumentRoute(handlePOST, '/api/expenses/[id]/tags', 'POST');

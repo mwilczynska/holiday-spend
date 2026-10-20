@@ -79,8 +79,8 @@ export function ResetPasswordScreen() {
         </CardHeader>
         <CardContent className="space-y-4">
           {missingToken ? (
-            <Button asChild className="w-full">
-              <Link href="/forgot-password">Request a new reset link</Link>
+            <Button data-analytics="reset-password-screen.button" asChild className="w-full">
+              <Link data-analytics="reset-password-screen.forgot-password" href="/forgot-password">Request a new reset link</Link>
             </Button>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -116,7 +116,7 @@ export function ResetPasswordScreen() {
 
               {error ? <p className="text-sm text-destructive">{error}</p> : null}
 
-              <Button
+              <Button data-analytics="reset-password-screen.button.2"
                 type="submit"
                 className="w-full"
                 disabled={loading || !newPassword || !confirmPassword}
@@ -127,7 +127,7 @@ export function ResetPasswordScreen() {
           )}
 
           <p className="text-center text-sm text-muted-foreground">
-            <Link href="/login" className="font-medium text-foreground underline-offset-4 hover:underline">
+            <Link data-analytics="reset-password-screen.login" href="/login" className="font-medium text-foreground underline-offset-4 hover:underline">
               Back to sign in
             </Link>
           </p>

@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { expenseTags, expenses, tags } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
@@ -5,7 +6,7 @@ import { success, handleError } from '@/lib/api-helpers';
 import { error } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 
-export async function DELETE(
+async function handleDELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string; tagId: string }> }
 ) {
@@ -37,3 +38,5 @@ export async function DELETE(
     return handleError(err);
   }
 }
+
+export const DELETE = instrumentRoute(handleDELETE, '/api/expenses/[id]/tags/[tagId]', 'DELETE');

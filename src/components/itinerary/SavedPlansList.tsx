@@ -54,7 +54,7 @@ export function SavedPlansList({ plans, onLoad, onDelete, onExport, isLoading }:
 
   return (
     <div className="rounded-lg border bg-card">
-      <button
+      <button data-analytics="saved-plans-list.set-expanded"
         type="button"
         className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium hover:bg-muted/50 transition-colors"
         onClick={() => setExpanded(!expanded)}
@@ -70,7 +70,7 @@ export function SavedPlansList({ plans, onLoad, onDelete, onExport, isLoading }:
               <span className="text-xs text-muted-foreground">
                 {compareIds.size} plans selected for comparison
               </span>
-              <Button size="sm" onClick={handleCompare}>
+              <Button data-analytics="saved-plans-list.handle-compare" size="sm" onClick={handleCompare}>
                 Compare Selected
               </Button>
             </div>
@@ -102,13 +102,13 @@ export function SavedPlansList({ plans, onLoad, onDelete, onExport, isLoading }:
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-1.5 shrink-0">
-                      <Button type="button" size="sm" onClick={() => onLoad(plan.id)}>
+                      <Button data-analytics="saved-plans-list.on-load" type="button" size="sm" onClick={() => onLoad(plan.id)}>
                         Load
                       </Button>
-                      <Button type="button" size="sm" variant="outline" onClick={() => onExport(plan.id)}>
+                      <Button data-analytics="saved-plans-list.on-export" type="button" size="sm" variant="outline" onClick={() => onExport(plan.id)}>
                         <Download className="h-3.5 w-3.5" />
                       </Button>
-                      <Button type="button" size="sm" variant="destructive" onClick={() => onDelete(plan.id)}>
+                      <Button data-analytics="saved-plans-list.on-delete" type="button" size="sm" variant="destructive" onClick={() => onDelete(plan.id)}>
                         <Trash2 className="h-3.5 w-3.5" />
                       </Button>
                     </div>

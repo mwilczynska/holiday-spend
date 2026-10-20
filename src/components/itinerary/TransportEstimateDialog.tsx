@@ -347,8 +347,8 @@ export function TransportEstimateDialog({
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="space-y-1">
                   <Label className="text-xs">Provider</Label>
-                  <Select value={provider} onValueChange={(value) => updateProvider(value as ProviderOption)}>
-                    <SelectTrigger className="h-9 text-sm">
+                  <Select data-analytics="transport-estimate-dialog.select" value={provider} onValueChange={(value) => updateProvider(value as ProviderOption)}>
+                    <SelectTrigger data-analytics="transport-estimate-dialog.select-trigger" className="h-9 text-sm">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -393,10 +393,10 @@ export function TransportEstimateDialog({
                     Save API key in this browser
                   </label>
                   <div className="flex flex-wrap gap-2">
-                    <Button type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
+                    <Button data-analytics="transport-estimate-dialog.clear-current-provider-api-key" type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
                       Clear This Key
                     </Button>
-                    <Button type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
+                    <Button data-analytics="transport-estimate-dialog.clear-all-saved-api-keys" type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
                       Clear All Saved Keys
                     </Button>
                   </div>
@@ -433,12 +433,12 @@ export function TransportEstimateDialog({
 
                     <div className="space-y-1">
                       <Label className="text-xs">Thinking / reasoning effort</Label>
-                      <Select
+                      <Select data-analytics="transport-estimate-dialog.on-reasoning-effort"
                         value={effectiveReasoningEffort}
                         onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
                         disabled={supportedReasoningEfforts.length <= 1}
                       >
-                        <SelectTrigger className="h-9 text-sm">
+                        <SelectTrigger data-analytics="transport-estimate-dialog.select-trigger.2" className="h-9 text-sm">
                           <SelectValue placeholder="Select effort" />
                         </SelectTrigger>
                         <SelectContent>
@@ -459,7 +459,7 @@ export function TransportEstimateDialog({
 
                   <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                     {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
-                      <Button
+                      <Button data-analytics="transport-estimate-dialog.button"
                         key={model}
                         type="button"
                         variant={modelValidation.effectiveModel === model ? 'secondary' : 'outline'}
@@ -470,7 +470,7 @@ export function TransportEstimateDialog({
                         {model === selectedProvider.defaultModel ? `${model} (default)` : model}
                       </Button>
                     ))}
-                    <Button type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || loading || applyingMode != null}>
+                    <Button data-analytics="transport-estimate-dialog.refresh-models-and-reset-default" type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || loading || applyingMode != null}>
                       <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
                     </Button>
                   </div>
@@ -605,7 +605,7 @@ export function TransportEstimateDialog({
                             <p className="mt-1 text-xs text-muted-foreground">{option.sourceBasis}</p>
                           </div>
                           <div className="flex flex-wrap gap-2">
-                            <Button
+                            <Button data-analytics="transport-estimate-dialog.handle-apply"
                               type="button"
                               size="sm"
                               onClick={() => handleApply(option, false)}
@@ -618,7 +618,7 @@ export function TransportEstimateDialog({
                               />
                             </Button>
                             {existingTransports.length > 0 ? (
-                              <Button
+                              <Button data-analytics="transport-estimate-dialog.handle-apply.2"
                                 type="button"
                                 size="sm"
                                 variant="outline"
@@ -655,7 +655,7 @@ export function TransportEstimateDialog({
           ) : null}
 
           <div className="flex gap-2">
-            <Button
+            <Button data-analytics="transport-estimate-dialog.handle-open-change"
               type="button"
               variant="outline"
               className="flex-1"
@@ -664,7 +664,7 @@ export function TransportEstimateDialog({
             >
               Close
             </Button>
-            <Button
+            <Button data-analytics="transport-estimate-dialog.handle-estimate"
               type="button"
               className="flex-1"
               onClick={handleEstimate}

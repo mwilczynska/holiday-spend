@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { tags, expenseTags, expenses } from '@/db/schema';
 import { and, eq, ne } from 'drizzle-orm';
@@ -5,7 +6,7 @@ import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 
-export async function GET(
+async function handleGET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -35,3 +36,5 @@ export async function GET(
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/tags/[id]/expenses', 'GET');

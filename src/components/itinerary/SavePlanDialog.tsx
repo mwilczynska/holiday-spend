@@ -52,10 +52,10 @@ export function SavePlanDialog({ open, onOpenChange, onSave, isSaving }: SavePla
             />
           </div>
           <div className="flex justify-end gap-2">
-            <Button variant="outline" onClick={() => onOpenChange(false)} disabled={isSaving}>
+            <Button data-analytics="save-plan-dialog.on-open-change" variant="outline" onClick={() => onOpenChange(false)} disabled={isSaving}>
               Cancel
             </Button>
-            <Button onClick={handleSave} disabled={!name.trim() || isSaving}>
+            <Button data-analytics="save-plan-dialog.handle-save" onClick={handleSave} disabled={!name.trim() || isSaving}>
               <Save className="mr-2 h-4 w-4" />
               {isSaving ? 'Saving...' : 'Save'}
             </Button>

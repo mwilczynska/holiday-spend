@@ -9,8 +9,8 @@ export function CurrencySelector({ settings = false, disabled = false }: { setti
   const id = useId(), { currency, rate, asOf, error, saving, draft, change, refresh, discard } = useCurrency();
   return <div className={settings ? 'space-y-2' : 'max-w-full'}>
     {settings ? <Label htmlFor={id}>Display currency</Label> : null}
-    <Select value={draft ?? currency} disabled={disabled || saving} onValueChange={value => void change(value as DisplayCurrency)}>
-      <SelectTrigger id={id} aria-label="Display currency" className={settings ? 'w-full sm:w-80' : 'h-10 w-[76px] px-2 font-semibold sm:w-[92px] sm:px-3'}>
+    <Select data-analytics="currency-selector.select" value={draft ?? currency} disabled={disabled || saving} onValueChange={value => void change(value as DisplayCurrency)}>
+      <SelectTrigger data-analytics="currency-selector.display-currency" id={id} aria-label="Display currency" className={settings ? 'w-full sm:w-80' : 'h-10 w-[76px] px-2 font-semibold sm:w-[92px] sm:px-3'}>
         <SelectValue>{settings ? (draft ?? currency) + ' — ' + DISPLAY_CURRENCIES[draft ?? currency] : draft ?? currency}</SelectValue>
       </SelectTrigger>
       <SelectContent>{Object.entries(DISPLAY_CURRENCIES).map(([code, name]) => <SelectItem key={code} value={code}>{code} — {name}</SelectItem>)}</SelectContent>
@@ -19,8 +19,8 @@ export function CurrencySelector({ settings = false, disabled = false }: { setti
     {saving ? <p role="status" className="text-xs text-muted-foreground">Saving currency…</p> : null}
     {error ? <div role="alert" className="max-w-sm space-y-1 text-xs text-destructive">
       <p>{error} {draft ? 'Saved currency: ' + currency + '.' : ''}</p>
-      <Button size="sm" variant="outline" disabled={saving} onClick={() => void (draft ? change(draft) : refresh())}>Retry currency</Button>
-      {draft ? <Button size="sm" variant="ghost" disabled={saving} onClick={discard}>Discard currency change</Button> : null}
+      <Button data-analytics="currency-selector.button" size="sm" variant="outline" disabled={saving} onClick={() => void (draft ? change(draft) : refresh())}>Retry currency</Button>
+      {draft ? <Button data-analytics="currency-selector.discard" size="sm" variant="ghost" disabled={saving} onClick={discard}>Discard currency change</Button> : null}
     </div> : null}
   </div>;
 }

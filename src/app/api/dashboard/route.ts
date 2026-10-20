@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireCurrentUserId } from '@/lib/auth';
 import { success, handleError } from '@/lib/api-helpers';
 import {
@@ -17,7 +18,7 @@ export const dynamic = 'force-dynamic';
  * rows were loaded three times to render one page. The three endpoints still exist and behave
  * exactly as before; this is what the page actually calls.
  */
-export async function GET() {
+async function handleGET() {
   try {
     const userId = await requireCurrentUserId();
     const inputs = await loadDashboardInputs(userId);
@@ -31,3 +32,5 @@ export async function GET() {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/dashboard', 'GET');

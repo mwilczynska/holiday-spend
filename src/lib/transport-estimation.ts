@@ -1,3 +1,4 @@
+import { analyticsLlmFetch } from '@/lib/analytics/llm';
 import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
@@ -441,7 +442,7 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
 
   const model = normalizeModel(params.model) ?? (process.env.OPENAI_MODEL || CITY_GENERATION_DEFAULT_MODELS.openai);
   const maxOutputTokens = params.maxTokens ?? resolveLlmRuntimeDefaults().maxOutputTokens;
-  const response = await fetch('https://api.openai.com/v1/responses', {
+  const response = await analyticsLlmFetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     signal: createLlmRequestSignal(params.requestTimeoutMs ?? resolveLlmRuntimeDefaults().requestTimeoutMs, params.signal),
     headers: {
@@ -628,7 +629,7 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
     if (thinkingBudget > 0) {
       requestBody.thinking = { type: 'enabled', budget_tokens: thinkingBudget };
     }
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await analyticsLlmFetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       signal: createLlmRequestSignal(params.requestTimeoutMs ?? resolveLlmRuntimeDefaults().requestTimeoutMs, params.signal),
       headers: {
@@ -760,7 +761,7 @@ async function runGeminiTransportPromptWithSearch(params: {
   } | null = null;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
-    const response = await fetch(
+    const response = await analyticsLlmFetch(
       `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
       {
         method: 'POST',

@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
@@ -17,7 +18,7 @@ const resendSchema = z.object({
   email: z.string().optional().default(''),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const body = await request.json();
     const data = resendSchema.parse(body);
@@ -72,3 +73,5 @@ export async function POST(request: Request) {
     return handleAuthError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/auth/resend-verification', 'POST');

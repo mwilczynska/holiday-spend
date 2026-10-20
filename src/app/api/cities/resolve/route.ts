@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireLibraryAdmin } from '@/lib/library-auth';
 import { success, handleError } from '@/lib/api-helpers';
 import { resolveMissingCities } from '@/lib/resolve-missing-cities';
@@ -15,7 +16,7 @@ const createSchema = z.object({
   generationConfig: snapshotGenerationConfigSchema.optional(),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     await requireLibraryAdmin();
     const body = await request.json();
@@ -36,3 +37,5 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/cities/resolve', 'POST');

@@ -178,7 +178,7 @@ export function QuickAddForm({
       {/* Quick category buttons */}
       <div className="grid grid-cols-3 gap-2">
         {QUICK_CATEGORIES.map((cat) => (
-          <Button
+          <Button data-analytics="quick-add-form.set-category"
             key={cat.value}
             variant={category === cat.value ? 'default' : 'outline'}
             className="flex h-16 flex-col gap-1 rounded-xl"
@@ -193,7 +193,7 @@ export function QuickAddForm({
       {/* More categories */}
       <div className="flex flex-wrap gap-1">
         {EXPENSE_CATEGORIES.filter(c => !QUICK_CATEGORIES.find(q => q.value === c.value)).map((cat) => (
-          <Button
+          <Button data-analytics="quick-add-form.set-category.2"
             key={cat.value}
             variant={category === cat.value ? 'default' : 'outline'}
             size="sm"
@@ -215,10 +215,10 @@ export function QuickAddForm({
       <div className="flex items-center justify-between">
         <Label className="text-sm">Logged By</Label>
         <div className="flex gap-1">
-          <Button variant={loggedBy === 'you' ? 'default' : 'outline'} size="sm" onClick={() => setLoggedBy('you')}>
+          <Button data-analytics="quick-add-form.set-logged-by" variant={loggedBy === 'you' ? 'default' : 'outline'} size="sm" onClick={() => setLoggedBy('you')}>
             You
           </Button>
-          <Button variant={loggedBy === 'partner' ? 'default' : 'outline'} size="sm" onClick={() => setLoggedBy('partner')}>
+          <Button data-analytics="quick-add-form.set-logged-by.2" variant={loggedBy === 'partner' ? 'default' : 'outline'} size="sm" onClick={() => setLoggedBy('partner')}>
             Partner
           </Button>
         </div>
@@ -227,7 +227,7 @@ export function QuickAddForm({
       {saveError && <p role="alert" className="text-sm text-destructive">{saveError}</p>}
       {conversionWarning && <p role="status" className="text-sm text-muted-foreground">{conversionWarning}</p>}
       {/* Submit */}
-      <Button
+      <Button data-analytics="quick-add-form.handle-submit"
         className="h-12 w-full text-lg"
         onClick={handleSubmit}
         disabled={saving || saved || !amount || !Number.isFinite(Number(amount)) || Number(amount) <= 0}

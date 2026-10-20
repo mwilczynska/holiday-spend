@@ -1,3 +1,5 @@
+import { instrumentRoute } from '@/lib/analytics/route';
+import { recordEvent } from '@/lib/analytics/service';
 import { db } from '@/db';
 import { expenses, itineraryLegs } from '@/db/schema';
 import { and, asc, eq, inArray } from 'drizzle-orm';
@@ -19,7 +21,7 @@ const categoryOverridesSchema = z.array(z.object({
 const DUPLICATE_LOOKUP_CHUNK = 400;
 const INSERT_CHUNK = 50;
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const formData = await request.formData();
@@ -82,6 +84,7 @@ export async function POST(request: Request) {
     const duplicates = parsed.filter((expense) => !expense.skip && existingTxnIds.has(expense.wiseTxnId));
 
     if (!confirmImport) {
+      recordEvent('workflow_step', { workflow: 'wise_import', step: 'preview', outcome: 'success', count: parsed.length });
       return success({
         preview: true,
         toImport: toImport.map((expense) => ({
@@ -134,6 +137,7 @@ export async function POST(request: Request) {
       imported = rowsToInsert.length;
     }
 
+    recordEvent('mutation_committed', { action: 'expenses_imported' });
     return success({
       imported,
       skipped: skipped.length,
@@ -149,3 +153,5 @@ export async function POST(request: Request) {
 function isUploadedFile(value: FormDataEntryValue): value is File {
   return typeof value !== 'string' && typeof value.text === 'function';
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/expenses/import/csv', 'POST');

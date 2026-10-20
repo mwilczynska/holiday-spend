@@ -43,3 +43,9 @@ it('rolls back the full order when a later update fails', async () => {
   expect((await write()).status).toBe(500);
   expect(orders()).toEqual([{ id: 1, sort_order: 1 }, { id: 2, sort_order: 2 }, { id: 3, sort_order: 7 }]);
 });
+
+// These focused route fixtures omit prices/history tables. Full history atomicity is covered in analytics/history.test.ts.
+vi.mock('@/lib/analytics/history', async () => {
+  const { db } = await import('@/db');
+  return { withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof db.transaction>[0]) => db.transaction(mutate) };
+});

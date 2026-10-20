@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { and, eq, isNull, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
@@ -15,7 +16,7 @@ const resetPasswordSchema = z.object({
   newPassword: z.string().min(1),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const clientIp = getRequestIp(request) ?? 'unknown';
     const ipLimit = await checkRateLimit(`reset-password:ip:${clientIp}`, {
@@ -59,3 +60,5 @@ export async function POST(request: Request) {
     return handleAuthError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/auth/reset-password', 'POST');

@@ -1,8 +1,9 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireCurrentUserId } from '@/lib/auth';
 import { getExchangeRate } from '@/lib/exchange-rates';
 import { success, handleError } from '@/lib/api-helpers';
 
-export async function GET(
+async function handleGET(
   _request: Request,
   { params }: { params: Promise<{ currency: string; date: string }> }
 ) {
@@ -14,3 +15,5 @@ export async function GET(
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/rates/[currency]/[date]', 'GET');

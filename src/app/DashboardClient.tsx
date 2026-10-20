@@ -404,8 +404,8 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
         className="gap-0"
       >
         <TabsList className="h-9">
-          <TabsTrigger value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
-          <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
+          <TabsTrigger data-analytics="dashboard-client.total" value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
+          <TabsTrigger data-analytics="dashboard-client.daily" value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
         </TabsList>
       </Tabs>
     </div>
@@ -417,8 +417,8 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
         className="gap-0"
       >
         <TabsList className="h-9">
-          <TabsTrigger value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
-          <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
+          <TabsTrigger data-analytics="dashboard-client.actual" value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
+          <TabsTrigger data-analytics="dashboard-client.planned" value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
         </TabsList>
       </Tabs>
     </div>
@@ -448,7 +448,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
         </div>
         <div className="flex flex-wrap gap-2.5">
           {summary ? (
-            <Link
+            <Link data-analytics="dashboard-client.settings"
               href="/settings"
               className="inline-flex h-11 items-center gap-2 rounded-xl border bg-card px-3.5 text-sm font-semibold hover:bg-accent"
             >
@@ -472,7 +472,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
             <p>{readError}</p>
             <p>{summary ? 'Showing the last loaded dashboard figures; they may be out of date.' : 'Dashboard unavailable. Totals and charts could not be loaded.'}</p>
           </div>
-          <Button type="button" size="sm" variant="outline" disabled={loading} onClick={() => void loadDashboard()}>
+          <Button data-analytics="dashboard-client.load-dashboard" type="button" size="sm" variant="outline" disabled={loading} onClick={() => void loadDashboard()}>
             <LoadingButtonLabel idle="Retry dashboard" loading="Retrying..." isLoading={loading} />
           </Button>
         </div>
@@ -579,11 +579,11 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
                     aria-label={`Country chart view, ${countryViewLabel.toLowerCase()}`}
                   >
                     <TabsList className="h-9">
-                      <TabsTrigger value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
-                      <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
+                      <TabsTrigger data-analytics="dashboard-client.total.2" value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
+                      <TabsTrigger data-analytics="dashboard-client.daily.2" value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
                     </TabsList>
                   </Tabs>
-                  <Button type="button" variant="outline" size="sm" onClick={() => setExpandedChart('country')}>
+                  <Button data-analytics="dashboard-client.set-expanded-chart" type="button" variant="outline" size="sm" onClick={() => setExpandedChart('country')}>
                     <Maximize2 className="mr-2 h-4 w-4" />
                     Expand
                   </Button>
@@ -615,11 +615,11 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
                     aria-label={`Category chart view, ${categoryViewLabel.toLowerCase()}`}
                   >
                     <TabsList className="h-9">
-                      <TabsTrigger value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
-                      <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
+                      <TabsTrigger data-analytics="dashboard-client.actual.2" value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
+                      <TabsTrigger data-analytics="dashboard-client.planned.2" value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
                     </TabsList>
                   </Tabs>
-                  <Button type="button" variant="outline" size="sm" onClick={() => setExpandedChart('category')}>
+                  <Button data-analytics="dashboard-client.set-expanded-chart.2" type="button" variant="outline" size="sm" onClick={() => setExpandedChart('category')}>
                     <Maximize2 className="mr-2 h-4 w-4" />
                     Expand
                   </Button>
@@ -644,7 +644,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
           <CardHeader className="pb-2">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <CardTitle className="text-sm">{burnChartTitle}</CardTitle>
-              <Button type="button" variant="outline" size="sm" onClick={() => setExpandedChart('burn')}>
+              <Button data-analytics="dashboard-client.set-expanded-chart.3" type="button" variant="outline" size="sm" onClick={() => setExpandedChart('burn')}>
                 <Maximize2 className="mr-2 h-4 w-4" />
                 Expand
               </Button>
@@ -726,7 +726,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardInitial
           { href: '/track', label: 'Expenses', icon: Receipt },
           { href: '/track/import', label: 'Import CSV', icon: TrendingUp },
         ].map(({ href, label, icon: Icon }) => (
-          <Link
+          <Link data-analytics="dashboard-client.link"
             key={href}
             href={href}
             className="flex items-center gap-3 rounded-2xl border bg-card px-4 py-3 text-sm font-semibold transition-colors hover:bg-accent"

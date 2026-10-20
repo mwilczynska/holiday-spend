@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { z } from 'zod';
 import { requireCurrentUserId } from '@/lib/auth';
 import { error, handleError, success } from '@/lib/api-helpers';
@@ -11,7 +12,7 @@ const querySchema = z.object({
   refresh: z.enum(['0', '1']).optional(),
 });
 
-export async function GET(request: Request) {
+async function handleGET(request: Request) {
   try {
     await requireCurrentUserId();
 
@@ -39,3 +40,5 @@ export async function GET(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/llm/models', 'GET');

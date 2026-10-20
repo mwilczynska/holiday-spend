@@ -71,8 +71,8 @@ export function VerifyEmailScreen() {
         </CardHeader>
         <CardContent className="space-y-4">
           {verified ? (
-            <Button asChild className="w-full">
-              <Link href="/login">Continue to sign in</Link>
+            <Button data-analytics="verify-email-screen.button" asChild className="w-full">
+              <Link data-analytics="verify-email-screen.login" href="/login">Continue to sign in</Link>
             </Button>
           ) : token ? (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -90,11 +90,11 @@ export function VerifyEmailScreen() {
                 />
               </div>
               {message ? <p className="text-sm text-destructive">{message}</p> : null}
-              <Button type="submit" className="w-full" disabled={loading || !password}>
+              <Button data-analytics="verify-email-screen.button.2" type="submit" className="w-full" disabled={loading || !password}>
                 <LoadingButtonLabel idle="Verify email" loading="Verifying..." isLoading={loading} />
               </Button>
               <p className="text-center text-sm text-muted-foreground">
-                <Link href="/forgot-password" className="font-medium text-foreground underline-offset-4 hover:underline">
+                <Link data-analytics="verify-email-screen.forgot-password" href="/forgot-password" className="font-medium text-foreground underline-offset-4 hover:underline">
                   Reset your password
                 </Link>{' '}
                 if you did not choose one.
@@ -103,8 +103,8 @@ export function VerifyEmailScreen() {
           ) : (
             <>
               <p className="text-sm text-destructive text-center">This link is missing its verification token.</p>
-              <Button asChild variant="outline" className="w-full">
-                <Link href="/login">Back to sign in</Link>
+              <Button data-analytics="verify-email-screen.button.3" asChild variant="outline" className="w-full">
+                <Link data-analytics="verify-email-screen.login.2" href="/login">Back to sign in</Link>
               </Button>
             </>
           )}

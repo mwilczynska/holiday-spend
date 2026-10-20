@@ -61,3 +61,9 @@ describe('current display rates and account preference', () => {
     expect((await getDisplayCurrencyState('owner')).currency).toBe('AUD');
   });
 });
+
+// These focused route fixtures omit prices/history tables. Full history atomicity is covered in analytics/history.test.ts.
+vi.mock('@/lib/analytics/history', async () => {
+  const { db } = await import('@/db');
+  return { withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof db.transaction>[0]) => db.transaction(mutate) };
+});

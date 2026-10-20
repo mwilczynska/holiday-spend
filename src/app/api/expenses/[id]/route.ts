@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { expenses, itineraryLegs } from '@/db/schema';
 import { and, eq, ne } from 'drizzle-orm';
@@ -25,7 +26,7 @@ const updateSchema = z
   })
   .partial();
 
-export async function PUT(
+async function handlePUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -88,7 +89,7 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
+async function handleDELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -106,3 +107,6 @@ export async function DELETE(
     return handleError(err);
   }
 }
+
+export const PUT = instrumentRoute(handlePUT, '/api/expenses/[id]', 'PUT');
+export const DELETE = instrumentRoute(handleDELETE, '/api/expenses/[id]', 'DELETE');

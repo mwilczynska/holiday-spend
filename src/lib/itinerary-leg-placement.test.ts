@@ -283,3 +283,9 @@ describe.sequential('itinerary leg placement routes', () => {
     expect(row).toEqual({ nights: 6, start_date: '2026-03-01', end_date: '2026-03-05' });
   });
 });
+
+// These focused route fixtures omit prices/history tables. Full history atomicity is covered in analytics/history.test.ts.
+vi.mock('@/lib/analytics/history', async () => {
+  const { db } = await import('@/db');
+  return { withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof db.transaction>[0]) => db.transaction(mutate) };
+});

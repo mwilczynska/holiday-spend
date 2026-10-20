@@ -1,10 +1,11 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { expenses } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 
-export async function PATCH(
+async function handlePATCH(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -22,3 +23,5 @@ export async function PATCH(
     return handleError(err);
   }
 }
+
+export const PATCH = instrumentRoute(handlePATCH, '/api/expenses/[id]/exclude', 'PATCH');

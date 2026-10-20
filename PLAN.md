@@ -1,5 +1,27 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
+## Product analytics — IN PROGRESS (20 October 2026)
+
+Owner-approved implementation on `codex/product-analytics`, worktree
+`C:\Dev\holiday-spend-worktrees\analytics`. Self-hosted first-party analytics, collection enabled with a
+Settings opt-out, indefinite retention, private reconstructable plan history and metadata-only LLM records.
+Plan history and necessary diagnostics continue after behavioral opt-out. Public registration is a separate task.
+
+- [x] Typed event catalogue, separate SQLite store, delivery/outbox, identity and preference controls.
+- [x] Transactional plan revisions and provider-attempt instrumentation.
+- [x] Browser and server product coverage, including failures, retries and currency changes.
+- [ ] Admin reporting, journeys, history, LLM and collection health.
+- [ ] Backup/restore, deletion tooling, tests, deployment and event/metric documentation.
+
+Visual thesis: the admin workspace uses the app's existing typography and primary colour, with a compact
+filter bar, readable charts and unboxed tables. Content: overview, journeys, funnels, plans, LLM and health.
+Interaction: tab selection and expanding details; no decorative entry animation.
+
+First implementation milestone: 52 instrumented route modules, 255 annotated controls including select changes,
+six admin views, atomic planner/history writes, LLM attempt metadata and full-only analytics backup/restore.
+Initial Windows production build passes (the documented dependency-junction tracing warning remains).
+Focused checks pass 33/33; full regression, security/metrics tests, browser verification and operator docs continue.
+
 **Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
 **Current phase:** App-side production preparation complete for `spend.projectinfinitesummer.com`. All 527 cities and personal data are preserved; private authentication, shared-library permissions and full migration/restore are verified. Windows baseline and Linux Docker/auth/backup/restart checks pass. Project Infinite Summer owns host deployment and public account-flow checks; use `docs/dev/handoffs/production-launch.md`.

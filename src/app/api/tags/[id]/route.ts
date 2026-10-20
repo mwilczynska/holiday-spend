@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
 import { tags } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
@@ -18,7 +19,7 @@ const updateTagSchema = z
   .partial()
   .strict();
 
-export async function PUT(
+async function handlePUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -39,7 +40,7 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
+async function handleDELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -53,3 +54,6 @@ export async function DELETE(
     return handleError(err);
   }
 }
+
+export const PUT = instrumentRoute(handlePUT, '/api/tags/[id]', 'PUT');
+export const DELETE = instrumentRoute(handleDELETE, '/api/tags/[id]', 'DELETE');

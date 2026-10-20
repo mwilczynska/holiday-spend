@@ -120,8 +120,8 @@ export function ComparisonTable({ countries, cities }: { countries: CountryCompa
         <div className="flex flex-wrap items-center gap-2">
           <Tabs value={view} onValueChange={(value) => { setView(value as View); setQuery(''); }} className="gap-0">
             <TabsList className="h-9" aria-label="Compare by">
-              <TabsTrigger value="countries" className="px-3 text-xs data-[active]:bg-primary data-[active]:text-primary-foreground">Countries</TabsTrigger>
-              <TabsTrigger value="cities" className="px-3 text-xs data-[active]:bg-primary data-[active]:text-primary-foreground">Cities</TabsTrigger>
+              <TabsTrigger data-analytics="comparison-table.countries" value="countries" className="px-3 text-xs data-[active]:bg-primary data-[active]:text-primary-foreground">Countries</TabsTrigger>
+              <TabsTrigger data-analytics="comparison-table.cities" value="cities" className="px-3 text-xs data-[active]:bg-primary data-[active]:text-primary-foreground">Cities</TabsTrigger>
             </TabsList>
           </Tabs>
           <label className="relative block">

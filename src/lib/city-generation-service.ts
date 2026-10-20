@@ -1,3 +1,4 @@
+import { withCityPriceRevisions } from '@/lib/analytics/history';
 import { db } from '@/db';
 import { cities, cityEstimates, countries } from '@/db/schema';
 import { eq } from 'drizzle-orm';
@@ -54,13 +55,14 @@ export async function generateAndPersistCityEstimate({
     extraContext,
   });
 
-  await db
+  const estimatedAt = new Date().toISOString();
+  withCityPriceRevisions([city.id], tx => {
+  tx
     .update(cityEstimates)
     .set({ isActive: 0 })
-    .where(eq(cityEstimates.cityId, city.id));
+    .where(eq(cityEstimates.cityId, city.id)).run();
 
-  const estimatedAt = new Date().toISOString();
-  const estimate = await db.insert(cityEstimates).values({
+  const rows = tx.insert(cityEstimates).values({
     cityId: city.id,
     estimatedAt,
     source: persisted.estimateSource,
@@ -76,15 +78,17 @@ export async function generateAndPersistCityEstimate({
     inputSnapshotJson: JSON.stringify(persisted.inputSnapshot),
     fallbackLogJson: JSON.stringify(persisted.fallbackLog),
     isActive: 1,
-  }).returning();
+  }).returning().all();
 
-  await db.update(cities).set({
+  tx.update(cities).set({
     ...persisted.data,
     estimationSource: persisted.estimateSource,
     estimatedAt,
-    estimationId: estimate[0]?.id,
+    estimationId: rows[0]?.id,
     notes: persisted.reasoning,
-  }).where(eq(cities.id, city.id));
+  }).where(eq(cities.id, city.id)).run();
+  return rows;
+  });
 
   let climateStatus: CityClimateStatus = 'unavailable';
   try {

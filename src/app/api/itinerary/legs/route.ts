@@ -1,4 +1,6 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
+import { withPlanRevision } from '@/lib/analytics/history';
 import { itineraryLegs, itineraryLegTransports } from '@/db/schema';
 import { requireCurrentUserId } from '@/lib/auth';
 import { success, error, handleError } from '@/lib/api-helpers';
@@ -32,7 +34,7 @@ const createSchema = z.object({
   status: z.string().default('planned'),
 });
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
@@ -51,7 +53,7 @@ export async function POST(request: Request) {
     delete legData.intercityTransports;
 
     // A dated leg goes into date order; an undated one is appended. Placement and insert share one transaction.
-    const leg = db.transaction((tx) => {
+    const leg = withPlanRevision(userId, 'leg_created', (tx) => {
       const sortOrder = reserveLegSortOrder(tx, userId, data.startDate);
       const inserted = tx.insert(itineraryLegs).values({
         ...legData,
@@ -79,3 +81,5 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/itinerary/legs', 'POST');

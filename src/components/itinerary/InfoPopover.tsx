@@ -94,7 +94,7 @@ export function InfoPopover({ title, summary, items = [] }: InfoPopoverProps) {
       onMouseEnter={() => setIsTriggerHovered(true)}
       onMouseLeave={() => setIsTriggerHovered(false)}
     >
-      <Button
+      <Button data-analytics="info-popover.set-is-pinned-open"
         ref={triggerRef}
         type="button"
         variant="ghost"

@@ -106,14 +106,14 @@ export function SignupScreen() {
 
             {error ? <p className="text-sm text-destructive">{error}</p> : null}
 
-            <Button type="submit" className="w-full" disabled={loading || !email || !password}>
+            <Button data-analytics="signup-screen.button" type="submit" className="w-full" disabled={loading || !email || !password}>
               <LoadingButtonLabel idle="Create account" loading="Creating..." isLoading={loading} />
             </Button>
           </form>
 
           <p className="text-center text-sm text-muted-foreground">
             Already have an account?{' '}
-            <Link href="/login" className="font-medium text-foreground underline-offset-4 hover:underline">
+            <Link data-analytics="signup-screen.login" href="/login" className="font-medium text-foreground underline-offset-4 hover:underline">
               Sign in
             </Link>
           </p>

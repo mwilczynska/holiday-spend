@@ -3,6 +3,7 @@ import path from 'path';
 import { z, ZodError } from 'zod';
 import type { CityEstimateData } from '@/types';
 import { runJsonPromptWithProvider, type JsonPromptResult } from '@/lib/city-llm-client';
+import { recordEvent } from '@/lib/analytics/service';
 import { resolveLlmRuntimeDefaults, type LlmRuntimeSettings } from '@/lib/llm-request-limits';
 import {
   type CityGenerationProvider,
@@ -310,6 +311,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
 
 async function generateCityCostEstimateV1(request: CityGenerationRequest): Promise<CityGenerationResult> {
   const { prompt, promptVersion } = buildCityGenerationPrompt(request);
+  recordEvent('workflow_step', { workflow: 'city', step: 'generation_requested' });
   let providerResponse: JsonPromptResult | null = null;
   try {
     providerResponse = await runJsonPromptWithProvider({
@@ -368,6 +370,7 @@ async function generateCityCostEstimateAnchors(
   methodologyVersion: 'v1.1' | 'v1.2'
 ): Promise<CityGenerationResult> {
   const { prompt, promptVersion } = buildCityGenerationAnchorPrompt(request, methodologyVersion);
+  recordEvent('workflow_step', { workflow: 'city', step: 'generation_requested' });
   let providerResponse: JsonPromptResult | null = null;
 
   try {

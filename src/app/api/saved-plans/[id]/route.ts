@@ -1,4 +1,6 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
+import { withPlanRevision } from '@/lib/analytics/history';
 import { savedPlans } from '@/db/schema';
 import { requireCurrentUserId } from '@/lib/auth';
 import { error, handleError, success } from '@/lib/api-helpers';
@@ -15,7 +17,7 @@ async function findOwnedPlan(planId: string, userId: string) {
   return rows[0] ?? null;
 }
 
-export async function GET(
+async function handleGET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -45,7 +47,7 @@ export async function GET(
   }
 }
 
-export async function PATCH(
+async function handlePATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -62,11 +64,11 @@ export async function PATCH(
       return error('Plan name is required.', 400);
     }
 
-    const updated = await db
+    const updated = withPlanRevision(userId, 'plan_renamed', tx => tx
       .update(savedPlans)
       .set({ name: name.trim(), updatedAt: new Date().toISOString().replace('T', ' ').slice(0, 19) })
-      .where(eq(savedPlans.id, (await params).id))
-      .returning({ id: savedPlans.id, name: savedPlans.name, updatedAt: savedPlans.updatedAt });
+      .where(eq(savedPlans.id, plan.id))
+      .returning({ id: savedPlans.id, name: savedPlans.name, updatedAt: savedPlans.updatedAt }).all(), plan.id);
 
     return success(updated[0]);
   } catch (err) {
@@ -74,7 +76,7 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(
+async function handleDELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -85,10 +87,14 @@ export async function DELETE(
       return error('Saved plan not found.', 404);
     }
 
-    await db.delete(savedPlans).where(eq(savedPlans.id, (await params).id));
+    withPlanRevision(userId, 'plan_deleted', tx => tx.delete(savedPlans).where(eq(savedPlans.id, plan.id)).run(), plan.id);
 
     return success({ deleted: true });
   } catch (err) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/saved-plans/[id]', 'GET');
+export const PATCH = instrumentRoute(handlePATCH, '/api/saved-plans/[id]', 'PATCH');
+export const DELETE = instrumentRoute(handleDELETE, '/api/saved-plans/[id]', 'DELETE');

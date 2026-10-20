@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireCurrentUserId } from '@/lib/auth';
 import { requireLibraryAdmin } from '@/lib/library-auth';
 import { loadPlannerCities } from '@/lib/city-library-data';
@@ -46,7 +47,7 @@ const createSchema = z.object({
   notes: z.string().optional(),
 });
 
-export async function GET(request: Request) {
+async function handleGET(request: Request) {
   try {
     await requireCurrentUserId();
     const view = new URL(request.url).searchParams.get('view');
@@ -63,7 +64,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     await requireLibraryAdmin();
     const body = await request.json();
@@ -162,3 +163,6 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/cities', 'GET');
+export const POST = instrumentRoute(handlePOST, '/api/cities', 'POST');

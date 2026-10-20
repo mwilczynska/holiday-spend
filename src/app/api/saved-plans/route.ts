@@ -1,5 +1,7 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { loadSavedPlanSummaries } from '@/lib/saved-plan-data';
 import { db } from '@/db';
+import { materializeHistoricalPlan, recordNewSavedPlan } from '@/lib/analytics/history';
 import { savedPlans } from '@/db/schema';
 import { requireCurrentUserId } from '@/lib/auth';
 import { error, handleError, success } from '@/lib/api-helpers';
@@ -7,7 +9,7 @@ import { planSnapshotSchema } from '@/lib/plan-snapshot';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+async function handleGET() {
   try {
     const userId = await requireCurrentUserId();
     const rows = await loadSavedPlanSummaries(userId);
@@ -18,12 +20,12 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
 
-    const { name, snapshot, summary } = body;
+    const { name, snapshot } = body;
     if (!name || typeof name !== 'string' || !name.trim()) {
       return error('Plan name is required.', 400);
     }
@@ -31,12 +33,14 @@ export async function POST(request: Request) {
     const parsed = planSnapshotSchema.parse(snapshot);
     const snapshotJson = JSON.stringify(parsed);
 
-    const legCount = summary?.legCount ?? parsed.legs.length;
-    const totalNights = summary?.totalNights ?? parsed.legs.reduce((sum: number, leg: { nights: number }) => sum + leg.nights, 0);
-    const totalBudget = summary?.totalBudget ?? 0;
-    const fixedCostCount = summary?.fixedCostCount ?? parsed.fixedCosts.length;
+    const calculated = materializeHistoricalPlan(userId, parsed).summary;
+    const legCount = calculated.legCount;
+    const totalNights = calculated.totalNights;
+    const totalBudget = calculated.totalBudgetAud;
+    const fixedCostCount = parsed.fixedCosts.length;
 
-    const inserted = await db
+    const inserted = db.transaction(tx => {
+    const rows = tx
       .insert(savedPlans)
       .values({
         userId,
@@ -48,10 +52,16 @@ export async function POST(request: Request) {
         totalBudget,
         fixedCostCount,
       })
-      .returning({ id: savedPlans.id, name: savedPlans.name, createdAt: savedPlans.createdAt });
+      .returning({ id: savedPlans.id, name: savedPlans.name, createdAt: savedPlans.createdAt }).all();
+    recordNewSavedPlan(userId, rows[0].id, parsed);
+    return rows;
+    });
 
     return success(inserted[0], 201);
   } catch (err) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/saved-plans', 'GET');
+export const POST = instrumentRoute(handlePOST, '/api/saved-plans', 'POST');

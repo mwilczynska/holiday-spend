@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { userPreferences } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { withPlanRevision } from '@/lib/analytics/history';
 
 export const DEFAULT_GROUP_SIZE = 2;
 
@@ -19,7 +20,7 @@ export async function getPlannerGroupSize(userId: string): Promise<number> {
 
 export async function setPlannerGroupSize(userId: string, groupSize: number): Promise<number> {
   const normalized = normalizeGroupSize(groupSize);
-  await db.insert(userPreferences).values({
+  withPlanRevision(userId, 'travellers_changed', tx => tx.insert(userPreferences).values({
     userId,
     plannerGroupSize: normalized,
   }).onConflictDoUpdate({
@@ -28,6 +29,6 @@ export async function setPlannerGroupSize(userId: string, groupSize: number): Pr
       plannerGroupSize: normalized,
       updatedAt: new Date().toISOString(),
     },
-  });
+  }).run());
   return normalized;
 }

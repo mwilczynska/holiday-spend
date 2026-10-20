@@ -1,3 +1,7 @@
+import { instrumentRoute } from '@/lib/analytics/route';
+import { setAnalyticsActor } from '@/lib/analytics/context';
+import { recordEvent } from '@/lib/analytics/service';
+import { isLibraryAdmin } from '@/lib/auth-policy';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
@@ -23,7 +27,7 @@ const verifySchema = z.object({
  * account whose password the other person knew. The link proves control of the mailbox and the
  * password proves the person in the mailbox chose it. A wrong password leaves the link usable.
  */
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     const clientIp = getRequestIp(request) ?? 'unknown';
     const ipLimit = await checkRateLimit(`verify-email:ip:${clientIp}`, {
@@ -62,8 +66,12 @@ export async function POST(request: Request) {
       return authError('This verification link is invalid or has expired.', 400);
     }
 
+    setAnalyticsActor(pending.userId, isLibraryAdmin(updated.email));
+    recordEvent('workflow_step', { workflow: 'auth', step: 'verification_completed', outcome: 'success' });
     return authSuccess({ ok: true, email: updated?.email ?? null });
   } catch (err) {
     return handleAuthError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/auth/verify-email', 'POST');

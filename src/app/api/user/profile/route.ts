@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
@@ -11,7 +12,7 @@ const profileSchema = z.object({
   name: z.string().trim().max(200).nullable().optional(),
 });
 
-export async function PATCH(request: Request) {
+async function handlePATCH(request: Request) {
   try {
     const user = await requireCurrentUser();
     const body = await request.json();
@@ -26,3 +27,5 @@ export async function PATCH(request: Request) {
     return handleError(err);
   }
 }
+
+export const PATCH = instrumentRoute(handlePATCH, '/api/user/profile', 'PATCH');

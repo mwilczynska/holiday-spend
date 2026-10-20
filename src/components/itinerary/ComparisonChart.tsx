@@ -183,7 +183,7 @@ export function ComparisonChart({ plans }: ComparisonChartProps) {
         <CardHeader className="pb-2">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle className="text-sm">Cumulative Planned Spend</CardTitle>
-            <Button type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
+            <Button data-analytics="comparison-chart.set-expanded" type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
               <Maximize2 className="mr-2 h-4 w-4" />
               Expand
             </Button>

@@ -534,7 +534,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button
+          <Button data-analytics="dataset-client.open-new-city"
             type="button"
             disabled={!canManageLibrary || loading || Boolean(readError)}
             onClick={() => openNewCity()}
@@ -564,7 +564,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
             <p>{readError}</p>
             <p>{hasLoadedData ? 'Showing the last loaded dataset and history; they may be out of date.' : 'Dataset unavailable. City and history counts could not be loaded.'}</p>
           </div>
-          <Button type="button" variant="outline" size="sm" disabled={loading} onClick={() => void fetchData()}>
+          <Button data-analytics="dataset-client.button" type="button" variant="outline" size="sm" disabled={loading} onClick={() => void fetchData()}>
             <LoadingButtonLabel idle="Retry dataset" loading="Retrying..." isLoading={loading} />
           </Button>
         </div>
@@ -639,7 +639,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                   {provenanceError ? (
                     <div role="alert" className="flex flex-wrap items-center gap-2 text-sm text-destructive">
                       <span>{provenanceError} {selectedProvenance ? 'Showing the last loaded provenance.' : 'Provenance unavailable.'}</span>
-                      <Button type="button" variant="outline" size="sm" disabled={provenanceLoading} onClick={() => setProvenanceReload(value => value + 1)}>
+                      <Button data-analytics="dataset-client.set-provenance-reload" type="button" variant="outline" size="sm" disabled={provenanceLoading} onClick={() => setProvenanceReload(value => value + 1)}>
                         <LoadingButtonLabel idle="Retry provenance" loading="Retrying..." isLoading={provenanceLoading} />
                       </Button>
                     </div>
@@ -785,7 +785,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                   />
                   </fieldset>
                   <div className="flex flex-wrap items-center gap-3">
-                    <Button type="button" onClick={handleSaveCity} disabled={!canManageLibrary || isSaving || loading || Boolean(readError)}>
+                    <Button data-analytics="dataset-client.handle-save-city" type="button" onClick={handleSaveCity} disabled={!canManageLibrary || isSaving || loading || Boolean(readError)}>
                       {isSaving ? 'Saving...' : 'Save City'}
                     </Button>
                     {isDirty ? <span className="text-sm text-muted-foreground">Unsaved changes</span> : null}
@@ -893,7 +893,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                     </td>
                     <td className="min-w-[12rem] px-3 py-2">
                       <div className="flex gap-2">
-                        <Button
+                        <Button data-analytics="dataset-client.button.2"
                           type="button"
                           variant="outline"
                           size="sm"
@@ -904,7 +904,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                         >
                           Edit
                         </Button>
-                        <Button
+                        <Button data-analytics="dataset-client.handle-delete-city"
                           type="button"
                           variant="destructive"
                           size="sm"
@@ -923,7 +923,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                       {hasLoadedData ? 'No city rows match the current search.' : 'City rows unavailable.'}
                       {hasLoadedData && query.trim() && canManageLibrary && !loading && !readError ? (
                         <div className="mt-3">
-                          <Button type="button" variant="outline" onClick={() => openNewCity(query.trim())}>Add city “{query.trim()}”</Button>
+                          <Button data-analytics="dataset-client.open-new-city.2" type="button" variant="outline" onClick={() => openNewCity(query.trim())}>Add city “{query.trim()}”</Button>
                         </div>
                       ) : null}
                     </td>

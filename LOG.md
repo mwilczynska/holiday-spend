@@ -3668,3 +3668,13 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   this documentation push. No live database or primary-checkout file was edited.
 - The primary checkout remains on the other agent's security/pre-deploy-hardening branch, including its existing
   tsconfig.json change. Local main was updated using the currency worktree.
+# 20 October 2026 — Product analytics implementation milestone
+
+Started owner-approved self-hosted analytics on `codex/product-analytics`, in the requested external worktree.
+Added a versioned event contract, durable outbox and separate analytics SQLite store, default-on collection with
+account/public-page controls, browser control annotations and request correlation. Plan revisions and their
+price inputs commit with planner mutations; LLM requests record projected metadata without prompt/response content.
+The initial six-view admin dashboard and full-only analytics backup/restore are implemented. Focused checks pass
+33/33 and the initial Windows production build passes with the known worktree dependency-junction tracing warning.
+The full suite, browser checks, extra security/metrics coverage and operational documentation remain in progress.
+

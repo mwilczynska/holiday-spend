@@ -1,4 +1,5 @@
 'use client';
+import { trackEvent } from '@/lib/analytics/browser';
 
 import { useCurrency } from '@/components/currency/CurrencyProvider';
 
@@ -70,6 +71,7 @@ export default function ImportPage() {
       const data = await readImportApiResponse<PreviewData & { preview: boolean }>(res);
       if (!data.data?.preview) throw new Error(data.error || 'Import preview was not returned by the server.');
       setPreview(data.data);
+      trackEvent('workflow_step', { workflow: 'wise_import', step: 'preview', outcome: 'success' });
       setEditableImports([...data.data.toImport]);
     } catch (error) {
       setErrorMessage(getImportErrorMessage(error));
@@ -137,7 +139,7 @@ export default function ImportPage() {
         title="Import Wise CSV"
         description="Upload one or more Wise statement exports, review categories, then import."
         actions={(
-          <Button variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" onClick={handleClearImported} disabled={clearing}>
+          <Button data-analytics="page.handle-clear-imported" variant="ghost" className="text-destructive hover:bg-red-50 hover:text-destructive" onClick={handleClearImported} disabled={clearing}>
             <Trash2 className="h-4 w-4 mr-1" />
             <LoadingButtonLabel idle="Clear All Imported" loading="Clearing..." isLoading={clearing} />
           </Button>
@@ -164,7 +166,7 @@ export default function ImportPage() {
                 setErrorMessage(null);
               }}
             />
-            <Button onClick={handleUpload} disabled={uploading || importing}>
+            <Button data-analytics="page.handle-upload" onClick={handleUpload} disabled={uploading || importing}>
               <Upload className="h-4 w-4 mr-2" />
               <LoadingButtonLabel
                 idle={selectedFileCount > 1 ? 'Parse CSVs' : 'Parse CSV'}
@@ -261,8 +263,8 @@ export default function ImportPage() {
                           </td>
                           <td className="p-2 truncate max-w-[200px]">{exp.description || exp.merchant}</td>
                           <td className="p-2">
-                            <Select value={exp.category} onValueChange={(v) => handleCategoryChange(i, v)}>
-                              <SelectTrigger className="h-6 text-xs w-[120px]"><SelectValue /></SelectTrigger>
+                            <Select data-analytics="page.handle-category-change" value={exp.category} onValueChange={(v) => handleCategoryChange(i, v)}>
+                              <SelectTrigger data-analytics="page.select-trigger" className="h-6 text-xs w-[120px]"><SelectValue /></SelectTrigger>
                               <SelectContent>
                                 {EXPENSE_CATEGORIES.map(c => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}
                               </SelectContent>
@@ -294,7 +296,7 @@ export default function ImportPage() {
             </Card>
           )}
 
-          <Button onClick={handleConfirmImport} disabled={importing || editableImports.length === 0} className="w-full">
+          <Button data-analytics="page.handle-confirm-import" onClick={handleConfirmImport} disabled={importing || editableImports.length === 0} className="w-full">
             <LoadingButtonLabel
               idle={`Import ${editableImports.length} Transactions`}
               loading="Importing..."

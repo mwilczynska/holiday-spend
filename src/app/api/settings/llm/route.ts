@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { error, handleError, success } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 import {
@@ -22,7 +23,7 @@ const updateSchema = z
   .partial()
   .strict();
 
-export async function GET() {
+async function handleGET() {
   try {
     const userId = await requireCurrentUserId();
     return success({
@@ -38,7 +39,7 @@ export async function GET() {
   }
 }
 
-export async function PUT(request: Request) {
+async function handlePUT(request: Request) {
   try {
     const userId = await requireCurrentUserId();
     const data = updateSchema.parse(await request.json());
@@ -55,3 +56,6 @@ export async function PUT(request: Request) {
     return handleError(err);
   }
 }
+
+export const GET = instrumentRoute(handleGET, '/api/settings/llm', 'GET');
+export const PUT = instrumentRoute(handlePUT, '/api/settings/llm', 'PUT');

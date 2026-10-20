@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireLibraryAdmin } from '@/lib/library-auth';
 import { db } from '@/db';
 import { cities } from '@/db/schema';
@@ -22,7 +23,7 @@ const requestSchema = z.object({
   reasoningEffort: z.enum(CITY_GENERATION_REASONING_EFFORTS).optional(),
 });
 
-export async function POST(
+async function handlePOST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -71,3 +72,5 @@ export async function POST(
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/cities/[id]/generate', 'POST');

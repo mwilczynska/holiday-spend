@@ -59,6 +59,27 @@ export const userPreferences = sqliteTable('user_preferences', {
   updatedAt: text('updated_at').default(sql`(datetime('now'))`),
 });
 
+export const analyticsPreferences = sqliteTable('analytics_preferences', {
+  userId: text('user_id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
+  enabled: integer('enabled').notNull().default(1),
+  changedAt: text('changed_at').notNull(),
+});
+export const analyticsOutbox = sqliteTable('analytics_outbox', {
+  id: text('id').primaryKey(), createdAt: text('created_at').notNull(), userId: text('user_id'),
+  purpose: text('purpose').notNull(), payloadJson: text('payload_json').notNull(),
+});
+export const planRevisions = sqliteTable('plan_revisions', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  subjectId: text('subject_id').notNull(), operationId: text('operation_id').notNull(),
+  action: text('action').notNull(), createdAt: text('created_at').notNull(),
+  snapshotJson: text('snapshot_json').notNull(), summaryJson: text('summary_json').notNull(),
+  deleted: integer('deleted').notNull().default(0),
+});
+export const analyticsErasure = sqliteTable('analytics_erasure', {
+  userId: text('user_id').primaryKey(), beforeAt: text('before_at').notNull(),
+});
+
 export const userPasswords = sqliteTable('user_passwords', {
   userId: text('user_id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
   hash: text('hash').notNull(),

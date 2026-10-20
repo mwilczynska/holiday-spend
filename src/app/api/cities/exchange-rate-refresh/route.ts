@@ -1,3 +1,4 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { requireLibraryAdmin } from '@/lib/library-auth';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { fetchLatestUsdAudFx } from '@/lib/usd-aud-reference-rate';
@@ -6,7 +7,7 @@ import { refreshCityCostExchangeRates } from '@/lib/city-cost-fx-refresh';
 // POST /api/cities/exchange-rate-refresh  { "dryRun": true }
 // Library admins recompute generated cities' AUD costs at the latest ECB USD to AUD rate. No model call; hand-edited
 // fields are kept.
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   try {
     await requireLibraryAdmin();
     const body = await request.json().catch(() => ({}));
@@ -23,3 +24,5 @@ export async function POST(request: Request) {
     return handleError(err);
   }
 }
+
+export const POST = instrumentRoute(handlePOST, '/api/cities/exchange-rate-refresh', 'POST');

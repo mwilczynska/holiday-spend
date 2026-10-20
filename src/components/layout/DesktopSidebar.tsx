@@ -50,7 +50,7 @@ export function DesktopSidebar() {
             // `next/link` rather than router.push, so Next prefetches each route
             // as it enters the viewport. router.push disabled prefetching entirely,
             // making every navigation a cold request.
-            <Link
+            <Link data-analytics="desktop-sidebar.set-pending-href"
               key={item.href}
               href={item.href}
               onClick={() => {

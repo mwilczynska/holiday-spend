@@ -1,4 +1,6 @@
+import { instrumentRoute } from '@/lib/analytics/route';
 import { db } from '@/db';
+import { withPlanRevision } from '@/lib/analytics/history';
 import { expenses, itineraryLegs, itineraryLegTransports } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { getIntercityTransportTotal, normalizeIntercityTransports } from '@/lib/intercity-transport';
@@ -49,7 +51,7 @@ const intercityTransportSchema = z.object({
   sortOrder: z.number().int().optional(),
 });
 
-export async function PUT(
+async function handlePUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -81,13 +83,14 @@ export async function PUT(
       updateBody.intercityTransportNote = nextTransports.find((transport) => transport.note)?.note ?? null;
     }
 
-    await db.update(itineraryLegs).set(updateBody).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId)));
+    withPlanRevision(userId, 'leg_updated', tx => {
+    tx.update(itineraryLegs).set(updateBody).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).run();
 
     if (nextTransports) {
-      await db.delete(itineraryLegTransports).where(eq(itineraryLegTransports.legId, id));
+      tx.delete(itineraryLegTransports).where(eq(itineraryLegTransports.legId, id)).run();
 
       if (nextTransports.length > 0) {
-        await db.insert(itineraryLegTransports).values(
+        tx.insert(itineraryLegTransports).values(
           nextTransports.map((transport, index) => ({
             legId: id,
             mode: transport.mode,
@@ -95,10 +98,11 @@ export async function PUT(
             cost: transport.cost,
             sortOrder: transport.sortOrder ?? index,
           }))
-        );
+        ).run();
       }
     }
 
+    });
     const updated = await db.select().from(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).get();
 
     return success(updated);
@@ -107,7 +111,7 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
+async function handleDELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -118,7 +122,7 @@ export async function DELETE(
     const existing = await db.select().from(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).get();
     if (!existing) return error('Leg not found', 404);
 
-    await db.transaction((tx) => {
+    withPlanRevision(userId, 'leg_deleted', (tx) => {
       // Keep recorded expenses, but remove their assignment to the leg before
       // deleting it. The expense foreign key intentionally does not cascade.
       tx
@@ -137,3 +141,6 @@ export async function DELETE(
     return handleError(err);
   }
 }
+
+export const PUT = instrumentRoute(handlePUT, '/api/itinerary/legs/[id]', 'PUT');
+export const DELETE = instrumentRoute(handleDELETE, '/api/itinerary/legs/[id]', 'DELETE');

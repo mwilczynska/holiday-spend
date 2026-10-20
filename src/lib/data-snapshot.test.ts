@@ -51,6 +51,22 @@ describe('verified database and photo snapshots', { timeout: 20000 }, () => {
     expect(manifest.tables.expenses.count).toBe(0);
     expect(manifest.files['city-images/small.jpg']).toBeDefined();
   });
+  it('backs up and restores analytics for full packages while keeping catalogues private', async () => {
+    const filename = path.join(path.dirname(source), 'analytics.db');
+    const analytics = new Database(filename);
+    analytics.exec("CREATE TABLE events(id TEXT PRIMARY KEY); INSERT INTO events VALUES ('event-one')");
+    analytics.close();
+    const full = path.join(directory, 'with-analytics');
+    await createDataSnapshot({ source, destination: full });
+    expect(verifyDataSnapshot(full).files['analytics.db']).toBeDefined();
+    const restored = path.join(directory, 'restore-analytics');
+    restoreDataSnapshot(full, restored);
+    const copy = new Database(path.join(restored, 'analytics.db'), { readonly: true });
+    expect(copy.prepare('SELECT id FROM events').get()).toEqual({ id: 'event-one' }); copy.close();
+    const catalogue = path.join(directory, 'catalogue-without-analytics');
+    await createDataSnapshot({ source, destination: catalogue, mode: 'catalogue' });
+    expect(verifyDataSnapshot(catalogue).files['analytics.db']).toBeUndefined();
+  });
   it('rejects corrupted photos and manifests that omit a referenced image', async () => {
     const destination = path.join(directory, 'snapshot');
     await createDataSnapshot({ source, destination });

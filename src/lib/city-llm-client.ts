@@ -5,6 +5,7 @@ import {
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
+import { analyticsLlmFetch } from '@/lib/analytics/llm';
 import { createLlmRequestSignal, waitForLlmRetry } from '@/lib/llm-request-signal';
 import { resolveLlmRuntimeDefaults } from '@/lib/llm-request-limits';
 import { describeLlmRequestFailure, formatProviderHttpError, summarizeProviderError } from '@/lib/llm-error-messages';
@@ -30,7 +31,7 @@ function normalizeModel(model?: string) {
 async function fetchProvider(url: string, init: RequestInit, provider: string, deadline: number, timeoutMs: number, apiKey: string) {
   init.signal?.throwIfAborted();
   try {
-    return await fetch(url, { ...init, signal: createLlmRequestSignal(deadline - Date.now(), init.signal ?? undefined) });
+    return await analyticsLlmFetch(url, { ...init, signal: createLlmRequestSignal(deadline - Date.now(), init.signal ?? undefined) });
   } catch (err) {
     init.signal?.throwIfAborted();
     throw new Error(describeLlmRequestFailure(err, provider, timeoutMs, apiKey));
