@@ -35,6 +35,7 @@ COPY --from=builder /app/scripts/container-entrypoint.mjs ./scripts/container-en
 COPY --from=builder /app/scripts/lib/production-config.mjs ./scripts/lib/production-config.mjs
 COPY --from=builder /app/scripts/lib/runtime-prompts.mjs ./scripts/lib/runtime-prompts.mjs
 COPY --from=builder /app/scripts/lib/data-snapshot.mjs ./scripts/lib/data-snapshot.mjs
+COPY --from=builder /app/scripts/lib/analytics-query-worker.mjs ./scripts/lib/analytics-query-worker.mjs
 COPY --from=builder /app/scripts/backup.mjs ./scripts/backup.mjs
 
 # Never retain build-time database or environment files in the runtime image.

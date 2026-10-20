@@ -3,12 +3,11 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 
-// Partial: `handleError` does an `instanceof AuthRequiredError` check, so the real class has to
-// survive the mock.
-vi.mock('@/lib/auth', async (importOriginal) => ({
-  ...(await importOriginal<typeof import('@/lib/auth')>()),
-  requireCurrentUserId: vi.fn(async () => 'csv-user'),
-}));
+// Keep this route fixture independent of the real authentication/database module graph.
+vi.mock('@/lib/auth', () => {
+  class AuthRequiredError extends Error { status = 401; }
+  return { AuthRequiredError, requireCurrentUserId: vi.fn(async () => 'csv-user') };
+});
 
 // No network in tests. Every fixture row is already AUD, so the resolver would not call out
 // anyway; this makes that guarantee explicit rather than incidental.

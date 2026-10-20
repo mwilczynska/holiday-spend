@@ -1,5 +1,6 @@
 import { eq } from 'drizzle-orm';
 import { db } from '@/db';
+import { withCityPriceRevisions } from '@/lib/analytics/history';
 import { cities, cityEstimates, countries } from '@/db/schema';
 import type { CityCostV11AnchorsUsd, CityCostV11FxProvenance } from '@/lib/city-cost-methodology-v1-1';
 import {
@@ -71,7 +72,7 @@ export function recorrectCityCosts(options: { dryRun?: boolean; now?: Date } = {
     if (dryRun) continue;
 
     const history = Array.isArray(metadata.correctionHistory) ? metadata.correctionHistory : [];
-    db.transaction((tx) => {
+    withCityPriceRevisions([city.id], (tx) => {
       tx.update(cityEstimates).set({
         dataJson: JSON.stringify(plan.estimateData),
         anchorsJson: JSON.stringify({ ...anchors, values: corrected, valuesAud: plan.anchorsAud, correction }),

@@ -1,0 +1,1333 @@
+{
+  "routes": [
+    "src/app/api/auth/[...nextauth]/route.ts",
+    "src/app/api/auth/change-password/route.ts",
+    "src/app/api/auth/forgot-password/route.ts",
+    "src/app/api/auth/login/route.ts",
+    "src/app/api/auth/resend-verification/route.ts",
+    "src/app/api/auth/reset-password/route.ts",
+    "src/app/api/auth/signup/route.ts",
+    "src/app/api/auth/verify-email/route.ts",
+    "src/app/api/cities/[id]/generate/route.ts",
+    "src/app/api/cities/[id]/route.ts",
+    "src/app/api/cities/create-with-generation/route.ts",
+    "src/app/api/cities/exchange-rate-refresh/route.ts",
+    "src/app/api/cities/resolve/route.ts",
+    "src/app/api/cities/route.ts",
+    "src/app/api/climate/route.ts",
+    "src/app/api/countries/route.ts",
+    "src/app/api/dashboard/burn-rate/route.ts",
+    "src/app/api/dashboard/planned-vs-actual/route.ts",
+    "src/app/api/dashboard/route.ts",
+    "src/app/api/dashboard/summary/route.ts",
+    "src/app/api/estimates/route.ts",
+    "src/app/api/expenses/[id]/exclude/route.ts",
+    "src/app/api/expenses/[id]/route.ts",
+    "src/app/api/expenses/[id]/tags/[tagId]/route.ts",
+    "src/app/api/expenses/[id]/tags/route.ts",
+    "src/app/api/expenses/bulk/route.ts",
+    "src/app/api/expenses/import/clear/route.ts",
+    "src/app/api/expenses/import/csv/route.ts",
+    "src/app/api/expenses/route.ts",
+    "src/app/api/export/route.ts",
+    "src/app/api/fixed-costs/[id]/route.ts",
+    "src/app/api/fixed-costs/route.ts",
+    "src/app/api/itinerary/legs/[id]/estimate-transport/route.ts",
+    "src/app/api/itinerary/legs/[id]/route.ts",
+    "src/app/api/itinerary/legs/create-with-city/route.ts",
+    "src/app/api/itinerary/legs/route.ts",
+    "src/app/api/itinerary/reorder/route.ts",
+    "src/app/api/itinerary/route.ts",
+    "src/app/api/itinerary/snapshot/preflight/route.ts",
+    "src/app/api/itinerary/snapshot/route.ts",
+    "src/app/api/llm/models/route.ts",
+    "src/app/api/planner/settings/route.ts",
+    "src/app/api/rates/[currency]/[date]/route.ts",
+    "src/app/api/saved-plans/[id]/route.ts",
+    "src/app/api/saved-plans/compare/route.ts",
+    "src/app/api/saved-plans/route.ts",
+    "src/app/api/settings/currency/route.ts",
+    "src/app/api/settings/llm/route.ts",
+    "src/app/api/tags/[id]/expenses/route.ts",
+    "src/app/api/tags/[id]/route.ts",
+    "src/app/api/tags/route.ts",
+    "src/app/api/user/profile/route.ts"
+  ],
+  "controls": [
+    {
+      "id": "dashboard-client.actual",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dashboard-client.actual.2",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dashboard-client.daily",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dashboard-client.daily.2",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dashboard-client.link",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "dashboard-client.load-dashboard",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dashboard-client.planned",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dashboard-client.planned.2",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dashboard-client.set-expanded-chart",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dashboard-client.set-expanded-chart.2",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dashboard-client.set-expanded-chart.3",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dashboard-client.settings",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "dashboard-client.total",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dashboard-client.total.2",
+      "file": "src/app/DashboardClient.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dataset-client.button",
+      "file": "src/app/dataset/DatasetClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dataset-client.button.2",
+      "file": "src/app/dataset/DatasetClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dataset-client.handle-delete-city",
+      "file": "src/app/dataset/DatasetClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dataset-client.handle-save-city",
+      "file": "src/app/dataset/DatasetClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dataset-client.open-new-city",
+      "file": "src/app/dataset/DatasetClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dataset-client.open-new-city.2",
+      "file": "src/app/dataset/DatasetClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "dataset-client.set-provenance-reload",
+      "file": "src/app/dataset/DatasetClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.dataset",
+      "file": "src/app/estimates/page.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "layout.admin-analytics",
+      "file": "src/app/layout.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "page.button",
+      "file": "src/app/plan/compare/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.button.2",
+      "file": "src/app/plan/compare/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.handle-change-plans",
+      "file": "src/app/plan/compare/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.handle-compare-selected",
+      "file": "src/app/plan/compare/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.on-request",
+      "file": "src/app/plan/compare/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.button",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.button.2",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.button.3",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.button.4",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.clear-all-import-api-keys",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.clear-current-import-api-key",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.dialog-trigger",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "DialogTrigger"
+    },
+    {
+      "id": "plan-client.handle-add-leg",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.handle-cancel-add-leg",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.handle-confirm-missing-city-import",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.handle-export-current-plan",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.handle-export-current-plan.2",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "DropdownMenuItem"
+    },
+    {
+      "id": "plan-client.handle-group-size-change",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "plan-client.handle-sort-by-date",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.handle-sort-by-date.2",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "DropdownMenuItem"
+    },
+    {
+      "id": "plan-client.import-input-ref",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.import-input-ref.2",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "DropdownMenuItem"
+    },
+    {
+      "id": "plan-client.import-model-discovery",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.more-plan-actions",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.open-bulk-transport",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "DropdownMenuItem"
+    },
+    {
+      "id": "plan-client.open-bulk-transport.2",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.open-new-city",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.reset-pending-import-state",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.select",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "plan-client.select-trigger",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "plan-client.select-trigger.2",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "plan-client.set-expanded-leg-ids",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.set-missing-city-strategy",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "plan-client.set-new-leg-drafts",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.set-new-leg-drafts.2",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.set-save-plan-dialog-open",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "plan-client.set-save-plan-dialog-open.2",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "DropdownMenuItem"
+    },
+    {
+      "id": "plan-client.travellers",
+      "file": "src/app/plan/PlanClient.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "page.settings",
+      "file": "src/app/privacy/page.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "settings-client.button",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.button.2",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.button.3",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.button.4",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.button.5",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.button.6",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.dataset",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "settings-client.estimates",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "settings-client.handle-delete",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.handle-group-size-change",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "settings-client.handle-toggle-paid",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Switch"
+    },
+    {
+      "id": "settings-client.save-group-size",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.save-llm-settings",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.save-llm-settings.2",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.save-llm-settings.3",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.select-trigger",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "settings-client.set-group-size-draft",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "settings-client.settings-account",
+      "file": "src/app/settings/SettingsClient.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "page.handle-category-change",
+      "file": "src/app/track/import/page.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "page.handle-clear-imported",
+      "file": "src/app/track/import/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.handle-confirm-import",
+      "file": "src/app/track/import/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.handle-upload",
+      "file": "src/app/track/import/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.select-trigger",
+      "file": "src/app/track/import/page.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "page.button",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.button.2",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.button.3",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "button"
+    },
+    {
+      "id": "page.button.4",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.dialog-trigger",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "DialogTrigger"
+    },
+    {
+      "id": "page.handle-add",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.handle-delete",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.handle-edit-save",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "page.set-mutation-error",
+      "file": "src/app/track/tags/page.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.button",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.button.2",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.button.3",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.button.4",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.button.5",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.button.6",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.dialog-trigger",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "DialogTrigger"
+    },
+    {
+      "id": "track-client.filter-category",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "track-client.filter-source",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "track-client.handle-bulk-action",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.handle-bulk-action.2",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.handle-delete",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.handle-delete-all",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.handle-delete.2",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.handle-edit-save",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.handle-toggle-exclude",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.handle-toggle-exclude.2",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.load-more",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.open-edit",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.open-edit.2",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.select-trigger",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "track-client.select-trigger.2",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "track-client.set-edit-form",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "track-client.set-edit-form.2",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "track-client.set-filter-cat",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "track-client.set-filter-source",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "track-client.set-selected-ids",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.set-tag-expense-id",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.set-tag-expense-id.2",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.toggle-expanded",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "track-client.track-import",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "track-client.track-tags",
+      "file": "src/app/track/TrackClient.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "account-settings.button",
+      "file": "src/components/auth/AccountSettings.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "account-settings.button.2",
+      "file": "src/components/auth/AccountSettings.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "account-settings.button.3",
+      "file": "src/components/auth/AccountSettings.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "account-settings.button.4",
+      "file": "src/components/auth/AccountSettings.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "check-email-screen.handle-resend",
+      "file": "src/components/auth/CheckEmailScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "check-email-screen.login",
+      "file": "src/components/auth/CheckEmailScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "forgot-password-screen.button",
+      "file": "src/components/auth/ForgotPasswordScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "forgot-password-screen.button.2",
+      "file": "src/components/auth/ForgotPasswordScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "forgot-password-screen.login",
+      "file": "src/components/auth/ForgotPasswordScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "forgot-password-screen.login.2",
+      "file": "src/components/auth/ForgotPasswordScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "login-screen.button",
+      "file": "src/components/auth/LoginScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "login-screen.button.2",
+      "file": "src/components/auth/LoginScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "login-screen.button.3",
+      "file": "src/components/auth/LoginScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "login-screen.forgot-password",
+      "file": "src/components/auth/LoginScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "login-screen.handle-resend",
+      "file": "src/components/auth/LoginScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "login-screen.signup",
+      "file": "src/components/auth/LoginScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "reset-password-screen.button",
+      "file": "src/components/auth/ResetPasswordScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "reset-password-screen.button.2",
+      "file": "src/components/auth/ResetPasswordScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "reset-password-screen.forgot-password",
+      "file": "src/components/auth/ResetPasswordScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "reset-password-screen.login",
+      "file": "src/components/auth/ResetPasswordScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "sign-out-button.button",
+      "file": "src/components/auth/SignOutButton.tsx",
+      "tag": "button"
+    },
+    {
+      "id": "sign-out-button.button.2",
+      "file": "src/components/auth/SignOutButton.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "signup-screen.button",
+      "file": "src/components/auth/SignupScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "signup-screen.login",
+      "file": "src/components/auth/SignupScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "verify-email-screen.button",
+      "file": "src/components/auth/VerifyEmailScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "verify-email-screen.button.2",
+      "file": "src/components/auth/VerifyEmailScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "verify-email-screen.button.3",
+      "file": "src/components/auth/VerifyEmailScreen.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "verify-email-screen.forgot-password",
+      "file": "src/components/auth/VerifyEmailScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "verify-email-screen.login",
+      "file": "src/components/auth/VerifyEmailScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "verify-email-screen.login.2",
+      "file": "src/components/auth/VerifyEmailScreen.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "city-generation-panel.button",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "city-generation-panel.clear-all-saved-api-keys",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "city-generation-panel.clear-current-provider-api-key",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "city-generation-panel.handle-generate",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "city-generation-panel.on-reasoning-effort",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "city-generation-panel.refresh-models-and-reset-default",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "city-generation-panel.select",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "city-generation-panel.select-trigger",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "city-generation-panel.select-trigger.2",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "city-generation-panel.set-show-api-key",
+      "file": "src/components/cities/CityGenerationPanel.tsx",
+      "tag": "Switch"
+    },
+    {
+      "id": "currency-notice.button",
+      "file": "src/components/currency/CurrencyNotice.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "currency-selector.button",
+      "file": "src/components/currency/CurrencySelector.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "currency-selector.discard",
+      "file": "src/components/currency/CurrencySelector.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "currency-selector.display-currency",
+      "file": "src/components/currency/CurrencySelector.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "currency-selector.select",
+      "file": "src/components/currency/CurrencySelector.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "comparison-table.cities",
+      "file": "src/components/dashboard/ComparisonTable.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "comparison-table.countries",
+      "file": "src/components/dashboard/ComparisonTable.tsx",
+      "tag": "TabsTrigger"
+    },
+    {
+      "id": "dashboard-bento.plan",
+      "file": "src/components/dashboard/DashboardBento.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "dashboard-bento.plan.2",
+      "file": "src/components/dashboard/DashboardBento.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "expense-tags-dialog.button",
+      "file": "src/components/expenses/ExpenseTagsDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "expense-tags-dialog.button.2",
+      "file": "src/components/expenses/ExpenseTagsDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "expense-tags-dialog.on-close",
+      "file": "src/components/expenses/ExpenseTagsDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "expense-tags-dialog.track-tags",
+      "file": "src/components/expenses/ExpenseTagsDialog.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "quick-add-form.handle-submit",
+      "file": "src/components/expenses/QuickAddForm.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "quick-add-form.set-category",
+      "file": "src/components/expenses/QuickAddForm.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "quick-add-form.set-category.2",
+      "file": "src/components/expenses/QuickAddForm.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "quick-add-form.set-logged-by",
+      "file": "src/components/expenses/QuickAddForm.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "quick-add-form.set-logged-by.2",
+      "file": "src/components/expenses/QuickAddForm.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.button",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.button.2",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.button.3",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.button.4",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.clear-all-saved-api-keys",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.clear-current-provider-api-key",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.handle-apply-all",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.handle-estimate-all",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.handle-estimate-all.2",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.handle-open-change",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.handle-stop",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.on-reasoning-effort",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.refresh-models-and-reset-default",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.select",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.select-trigger",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "bulk-transport-estimate-dialog.select-trigger.2",
+      "file": "src/components/itinerary/BulkTransportEstimateDialog.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "comparison-category-chart.set-expanded",
+      "file": "src/components/itinerary/ComparisonCategoryChart.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "comparison-chart.set-expanded",
+      "file": "src/components/itinerary/ComparisonChart.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "comparison-country-chart.on-change",
+      "file": "src/components/itinerary/ComparisonCountryChart.tsx",
+      "tag": "button"
+    },
+    {
+      "id": "comparison-country-chart.set-expanded",
+      "file": "src/components/itinerary/ComparisonCountryChart.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "cost-summary.",
+      "file": "src/components/itinerary/CostSummary.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "info-popover.set-is-pinned-open",
+      "file": "src/components/itinerary/InfoPopover.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-card.add-intercity-transport",
+      "file": "src/components/itinerary/LegCard.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-card.button",
+      "file": "src/components/itinerary/LegCard.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-card.handle-field-change",
+      "file": "src/components/itinerary/LegCard.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-card.on-toggle-expanded",
+      "file": "src/components/itinerary/LegCard.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-card.remove-intercity-transport",
+      "file": "src/components/itinerary/LegCard.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-card.set-miscellaneous-error",
+      "file": "src/components/itinerary/LegCard.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-card.set-show-overrides",
+      "file": "src/components/itinerary/LegCard.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-climate.on-retry",
+      "file": "src/components/itinerary/LegClimate.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-climate.on-toggle",
+      "file": "src/components/itinerary/LegClimate.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "leg-climate.set-open",
+      "file": "src/components/itinerary/LegClimate.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "miscellaneous-expenses.button",
+      "file": "src/components/itinerary/MiscellaneousExpenses.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "miscellaneous-expenses.button.2",
+      "file": "src/components/itinerary/MiscellaneousExpenses.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-lock.button",
+      "file": "src/components/itinerary/planner-lock.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-new-city-dialog.button",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-new-city-dialog.clear-all-saved-api-keys",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-new-city-dialog.clear-current-provider-api-key",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-new-city-dialog.handle-open-change",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-new-city-dialog.handle-submit",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-new-city-dialog.on-reasoning-effort",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "planner-new-city-dialog.refresh-models-and-reset-default",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-new-city-dialog.select",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "planner-new-city-dialog.select-trigger",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "planner-new-city-dialog.select-trigger.2",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "planner-new-city-dialog.set-drafts",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "planner-new-city-dialog.set-drafts.2",
+      "file": "src/components/itinerary/PlannerNewCityDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "saved-plans-list.handle-compare",
+      "file": "src/components/itinerary/SavedPlansList.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "saved-plans-list.on-delete",
+      "file": "src/components/itinerary/SavedPlansList.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "saved-plans-list.on-export",
+      "file": "src/components/itinerary/SavedPlansList.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "saved-plans-list.on-load",
+      "file": "src/components/itinerary/SavedPlansList.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "saved-plans-list.set-expanded",
+      "file": "src/components/itinerary/SavedPlansList.tsx",
+      "tag": "button"
+    },
+    {
+      "id": "save-plan-dialog.handle-save",
+      "file": "src/components/itinerary/SavePlanDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "save-plan-dialog.on-open-change",
+      "file": "src/components/itinerary/SavePlanDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "tier-selector.on-change",
+      "file": "src/components/itinerary/TierSelector.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "tier-selector.select-trigger",
+      "file": "src/components/itinerary/TierSelector.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "transport-estimate-dialog.button",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "transport-estimate-dialog.clear-all-saved-api-keys",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "transport-estimate-dialog.clear-current-provider-api-key",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "transport-estimate-dialog.handle-apply",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "transport-estimate-dialog.handle-apply.2",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "transport-estimate-dialog.handle-estimate",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "transport-estimate-dialog.handle-open-change",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "transport-estimate-dialog.on-reasoning-effort",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "transport-estimate-dialog.refresh-models-and-reset-default",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "transport-estimate-dialog.select",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "Select"
+    },
+    {
+      "id": "transport-estimate-dialog.select-trigger",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "transport-estimate-dialog.select-trigger.2",
+      "file": "src/components/itinerary/TransportEstimateDialog.tsx",
+      "tag": "SelectTrigger"
+    },
+    {
+      "id": "trip-climate.on-retry",
+      "file": "src/components/itinerary/TripClimate.tsx",
+      "tag": "Button"
+    },
+    {
+      "id": "desktop-sidebar.set-pending-href",
+      "file": "src/components/layout/DesktopSidebar.tsx",
+      "tag": "Link"
+    },
+    {
+      "id": "mobile-nav.set-pending-href",
+      "file": "src/components/layout/MobileNav.tsx",
+      "tag": "Link"
+    }
+  ]
+}

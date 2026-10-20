@@ -280,3 +280,9 @@ describe.sequential('city climate collection integration', () => {
     expect(providerMock).toHaveBeenCalledTimes(2);
   });
 });
+
+// The focused fixtures omit itinerary/history tables; history uses its own complete-schema tests.
+vi.mock('@/lib/analytics/history', () => ({
+ withCityPriceRevisions: (_ids: string[], mutate: Parameters<DbModule['db']['transaction']>[0]) => dbModule.db.transaction(mutate),
+ withPlanRevision: (_user: string, _action: string, mutate: Parameters<DbModule['db']['transaction']>[0]) => dbModule.db.transaction(mutate),
+}));

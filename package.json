@@ -13,6 +13,8 @@
     "country-metadata:generate": "node scripts/generate-country-metadata.mjs",
     "docs:sync-memory": "node scripts/sync-memory-docs.mjs",
     "docs:check-memory": "node scripts/sync-memory-docs.mjs --check",
+    "analytics:check": "node scripts/check-analytics-coverage.mjs",
+    "analytics:benchmark": "tsx scripts/benchmark-analytics.ts",
     "models:refresh": "tsx scripts/refresh-curated-models.ts",
     "models:check": "tsx scripts/refresh-curated-models.ts --check",
     "methodology:v1.1:check": "tsx scripts/check-city-cost-v1-1.ts",

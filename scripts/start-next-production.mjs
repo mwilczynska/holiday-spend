@@ -32,6 +32,9 @@ if (
 }
 
 loadEnvConfig(projectRoot);
+const analyticsWorkerPath = resolve(standaloneRoot, 'scripts', 'lib', 'analytics-query-worker.mjs');
+mkdirSync(dirname(analyticsWorkerPath), { recursive: true });
+cpSync(resolve(projectRoot, 'scripts', 'lib', 'analytics-query-worker.mjs'), analyticsWorkerPath, { force: true });
 
 const staticDestinationPath = resolve(standaloneRoot, '.next', 'static');
 const promptDestinationPath = resolve(standaloneRoot, 'docs', 'prompts');

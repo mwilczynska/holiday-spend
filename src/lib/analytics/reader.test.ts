@@ -1,0 +1,23 @@
+import { afterAll, expect, it, vi } from 'vitest';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+const fixture = vi.hoisted(() => ({ name: '' }));
+vi.mock('./storage', () => ({ getAnalyticsStore: () => fixture }));
+import { readAnalyticsQuery, closeAnalyticsReader } from './reader';
+const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'holiday-analytics-reader-'));
+fixture.name = path.join(directory, 'fixture.db');
+afterAll(async () => { await closeAnalyticsReader(); fs.rmSync(directory, { recursive: true, force: true }); });
+it('executes bounded server queries off-thread and refuses writes', async () => {
+  const { default: Database } = await import('better-sqlite3');
+  const database = new Database(fixture.name);
+  database.exec('CREATE TABLE fixture(value INTEGER); INSERT INTO fixture VALUES (42)');
+  database.close();
+  expect(await readAnalyticsQuery('SELECT value FROM fixture', undefined, 'get')).toEqual({ value: 42 });
+  await expect(readAnalyticsQuery('DELETE FROM fixture')).rejects.toThrow('Analytics report query failed');
+  let heartbeat = false;
+  const pending = readAnalyticsQuery('WITH RECURSIVE n(x) AS (SELECT 1 UNION ALL SELECT x+1 FROM n WHERE x<200000) SELECT sum(x) AS total FROM n', undefined, 'get');
+  await new Promise<void>(resolve => setTimeout(() => { heartbeat = true; resolve(); }, 0));
+  expect(heartbeat).toBe(true);
+  expect(await pending).toEqual({ total: 20000100000 });
+});

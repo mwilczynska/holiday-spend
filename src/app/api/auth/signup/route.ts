@@ -2,7 +2,7 @@ import { instrumentRoute } from '@/lib/analytics/route';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
-import { userPasswords, users } from '@/db/schema';
+import { analyticsPreferences, userPasswords, users } from '@/db/schema';
 import { authError, authSuccess, handleAuthError, RateLimitError } from '@/lib/auth-responses';
 import { buildAuthLink } from '@/lib/auth-links';
 import { issueToken, invalidateUserTokens } from '@/lib/auth-tokens';
@@ -11,7 +11,9 @@ import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { sendVerificationEmail } from '@/lib/mailer';
 import { hashPassword, validatePasswordStrength } from '@/lib/password';
 import { getRequestIp } from '@/lib/request-ip';
-import { isEmailAllowed, isEmailPasswordEnabled } from '@/lib/auth-policy';
+import { isAnalyticsAdmin, isEmailAllowed, isEmailPasswordEnabled, isLibraryAdmin } from '@/lib/auth-policy';
+import { analyticsContext, setAnalyticsActor } from '@/lib/analytics/context';
+import { recordEvent } from '@/lib/analytics/service';
 
 export const dynamic = 'force-dynamic';
 
@@ -84,6 +86,9 @@ async function handlePOST(request: Request) {
         emailVerified: null,
       }).run();
       tx.insert(userPasswords).values({ userId, hash }).run();
+      if (analyticsContext.getStore()?.browserOptOut) tx.insert(analyticsPreferences).values({ userId, enabled: 0, changedAt: new Date().toISOString() }).run();
+      setAnalyticsActor(userId, isLibraryAdmin(email) || isAnalyticsAdmin(email));
+      recordEvent('workflow_step', { workflow: 'auth', step: 'signup_created', outcome: 'success' });
     });
 
     const issued = await issueToken(userId, 'verify_email');

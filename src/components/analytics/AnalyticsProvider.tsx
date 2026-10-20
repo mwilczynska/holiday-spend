@@ -15,7 +15,10 @@ export function AnalyticsProvider({ identity, initialEnabled }: { identity: stri
     const uninstall = installAnalyticsFetch();
     let channel: BroadcastChannel | undefined;
     const synchronize = () => { void fetch('/api/settings/analytics', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(body => {
-      if (typeof body?.data?.enabled === 'boolean') setBrowserAnalyticsEnabled(body.data.enabled);
+      if (typeof body?.data?.enabled === 'boolean') {
+        if (typeof body.data.identity === 'string') setBrowserAnalyticsActor(body.data.identity);
+        setBrowserAnalyticsEnabled(body.data.enabled);
+      }
     }).catch(() => { setBrowserAnalyticsEnabled(false); }); };
     const preference = (event: Event) => {
       const value = (event as CustomEvent<boolean>).detail;

@@ -90,6 +90,8 @@ describe('v1.1 performance bounds', () => {
     fs.mkdirSync(path.join(directory, '.next', 'static', 'chunks'), { recursive: true });
     fs.mkdirSync(path.join(directory, 'public'), { recursive: true });
     fs.mkdirSync(path.join(directory, 'docs', 'prompts'), { recursive: true });
+    fs.mkdirSync(path.join(directory, 'scripts', 'lib'), { recursive: true });
+    fs.copyFileSync(path.join(projectRoot, 'scripts', 'lib', 'analytics-query-worker.mjs'), path.join(directory, 'scripts', 'lib', 'analytics-query-worker.mjs'));
     fs.writeFileSync(path.join(directory, '.next', 'BUILD_ID'), 'test-build');
     fs.writeFileSync(path.join(directory, '.next', 'standalone', 'server.js'), '');
     fs.writeFileSync(path.join(directory, '.next', 'static', 'chunks', 'app.js'), 'client');
@@ -102,6 +104,7 @@ describe('v1.1 performance bounds', () => {
     const result = runNodeScript(startScript, directory);
 
     expect(result.status).toBe(0);
+    expect(fs.existsSync(path.join(directory, '.next', 'standalone', 'scripts', 'lib', 'analytics-query-worker.mjs'))).toBe(true);
     for (const promptFile of RUNTIME_PROMPT_FILES) {
       expect(fs.existsSync(path.join(directory, '.next', 'standalone', 'docs', 'prompts', promptFile))).toBe(true);
     }

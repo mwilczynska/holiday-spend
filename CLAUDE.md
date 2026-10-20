@@ -47,6 +47,36 @@ the requested currency as a draft and keep the saved display. AUD needs no netwo
 | `/estimates` | Methodology documentation |
 | `/settings`, `/settings/account` | Traveller and account settings |
 
+## Product analytics and private plan history
+
+Product analytics is first-party and self-hosted. `/admin/analytics` provides overview, journeys, funnels/retention,
+private plan revisions, LLM attempts and health. `AUTH_ANALYTICS_ADMIN_EMAILS` defines an optional separate admin role;
+otherwise the library administrators have access. Page, API, private revision and export access are checked server-side.
+
+Behavioral collection is enabled by default, with a disable control in Settings and below signed-out account forms.
+The account preference is enforced on ingestion and outbox delivery; disabling clears pending browser behavior.
+Private plan history and necessary operational diagnostics continue. There is no scheduled expiry. `/privacy`
+describes collection and access. Product records exclude raw IP identity, credentials, free-text inputs, uploads,
+provider prompts/responses and screen recordings. LLM metadata records individual provider attempts, usage when
+reported, retries, timing, search evidence and outcomes; unavailable usage/cost remains unavailable.
+
+`travel.db` owns preferences, transactional plan revisions and a durable analytics outbox. The separate
+`analytics.db` beside it owns events, daily counts and provider-attempt metadata; it can be relocated with
+`HOLIDAY_SPEND_ANALYTICS_DB_PATH` to other persistent private storage. `HOLIDAY_SPEND_RELEASE` labels the deployment.
+The Node worker delivers queued events every five seconds with event-ID deduplication. Plan revisions freeze the
+plan, underlying city prices, preferences and canonical AUD totals in the same transaction as the mutation.
+Saved-plan rename/delete and shared city-price updates preserve prior state. Migration baselines are labelled;
+historical restoration is not implemented. Ordinary users cannot inspect other users' revisions.
+
+Reports and export reads run in a bounded read-only thread (16 pending queries, 15-second timeout), keeping large
+analytics reads off the product request thread. Event exports persist progress and fix their upper event sequence;
+downloads require the requesting administrator's current access. Erasure invalidates existing export jobs.
+
+Full snapshots include analytics when present; catalogue snapshots exclude analytics and all private history.
+Erasure tooling removes account analytics/history and keeps a replay-prevention marker; restore of an older backup
+requires reapplying subsequent deletion requests. See `docs/analytics/README.md` for events, metrics, controls,
+deployment, operational failure modes and verification.
+
 ## Aims and constraints
 
 The city-cost system answers: *what will two people spend per day in this city?* Accuracy should be reasonable

@@ -4,7 +4,7 @@ import { getServerSession, type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { db } from '@/db';
-import { accounts, sessions, userPasswords, users, verificationTokens } from '@/db/schema';
+import { accounts, analyticsPreferences, sessions, userPasswords, users, verificationTokens } from '@/db/schema';
 import {
   NATIVE_AUTH_ERROR_CODES,
   verifyEmailPasswordCredentials,
@@ -14,8 +14,8 @@ import { isEmailAllowed, isEmailPasswordEnabled } from '@/lib/auth-policy';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { getRequestIp } from '@/lib/request-ip';
 import { ensureUserRow, initializeUserPreferences } from '@/lib/user-data';
-import { setAnalyticsActor } from '@/lib/analytics/context';
-import { isLibraryAdmin } from '@/lib/auth-policy';
+import { analyticsContext, setAnalyticsActor } from '@/lib/analytics/context';
+import { isAnalyticsAdmin, isLibraryAdmin } from '@/lib/auth-policy';
 import { recordEvent } from '@/lib/analytics/service';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -224,7 +224,8 @@ export const authOptions: NextAuthOptions = {
           image: user.image,
         });
         await initializeUserPreferences(userId);
-        setAnalyticsActor(userId, isLibraryAdmin(user.email));
+        if (analyticsContext.getStore()?.browserOptOut) db.insert(analyticsPreferences).values({ userId, enabled: 0, changedAt: new Date().toISOString() }).onConflictDoNothing().run();
+        setAnalyticsActor(userId, isLibraryAdmin(user.email) || isAnalyticsAdmin(user.email));
         recordEvent('workflow_step', { workflow: 'auth', step: 'login_succeeded', outcome: 'success' });
         token.sub = userId;
         token.tokenVersion = (await getUserTokenVersion(userId)) ?? 0;
@@ -278,7 +279,7 @@ export async function requireCurrentUser() {
 
   if (!isEmailAllowed(session.user.email)) throw new AuthRequiredError();
 
-  setAnalyticsActor(session.user.id, isLibraryAdmin(session.user.email));
+  setAnalyticsActor(session.user.id, isLibraryAdmin(session.user.email) || isAnalyticsAdmin(session.user.email));
 
   return session.user;
 }

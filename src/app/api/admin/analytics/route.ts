@@ -9,13 +9,20 @@ import { getAnalyticsStore } from '@/lib/analytics/storage';
 import { setAnalyticsActor } from '@/lib/analytics/context';
 import { instrumentRoute } from '@/lib/analytics/route';
 import { handleError } from '@/lib/api-helpers';
+import { analyticsExportResponse, requestAnalyticsExport } from '@/lib/analytics/exports';
 
 export const dynamic = 'force-dynamic';
 async function handleGET(request: Request) {
   try {
     const user = await requireAnalyticsAdmin();
     setAnalyticsActor(user.id, true);
-    const q = parseReportQuery(new URL(request.url).searchParams);
+    const params = new URL(request.url).searchParams;
+    if (params.has('exportJob')) {
+      const id = z.string().uuid().parse(params.get('exportJob'));
+      recordEvent('admin_accessed', { action: 'export', subject: id });
+      return analyticsExportResponse(id, accountAnalyticsId(user.id), params.get('download') === 'true');
+    }
+    const q = parseReportQuery(params);
     flushAnalytics();
     if (q.view === 'plans') {
       if (q.revision) {
@@ -26,14 +33,14 @@ async function handleGET(request: Request) {
         const data = { ...revision, user_id: accountAnalyticsId(revision.user_id), snapshot: JSON.parse(revision.snapshot_json), previous: previous ? JSON.parse(previous.snapshot_json) : null, summary: JSON.parse(revision.summary_json), snapshot_json: undefined, summary_json: undefined };
         return NextResponse.json({ data }, { headers: { 'Cache-Control': 'no-store', ...(q.export === 'true' ? { 'Content-Disposition': `attachment; filename="plan-revision-${q.revision}.json"` } : {}) } });
       }
-      const rows = sqlite.prepare('SELECT id,user_id,subject_id,action,created_at,summary_json,deleted FROM plan_revisions WHERE created_at>=? AND created_at<? AND id>? ORDER BY id LIMIT 100')
-        .all(q.from, q.to + 'T23:59:59.999Z', q.cursor) as Array<{ id: number; user_id: string; summary_json: string }>;
-      const filtered = rows.filter(row => !q.account || accountAnalyticsId(row.user_id) === q.account);
+      const target = q.account ? (sqlite.prepare('SELECT id FROM user').all() as Array<{ id: string }>).find(row => accountAnalyticsId(row.id) === q.account)?.id ?? 'unavailable-account' : null;
+      const rows = sqlite.prepare('SELECT id,user_id,subject_id,action,created_at,summary_json,deleted FROM plan_revisions WHERE created_at>=? AND created_at<? AND id>? AND (? IS NULL OR user_id=?) AND (? IS NULL OR operation_id=?) ORDER BY id LIMIT 100')
+        .all(q.from + 'T00:00:00.000Z', new Date(Date.parse(q.to) + 86400000).toISOString(), q.cursor, target, target, q.operation ?? null, q.operation ?? null) as Array<{ id: number; user_id: string; summary_json: string }>;
       recordEvent('admin_accessed', { action: 'report' });
-      return NextResponse.json({ data: { rows: filtered.map(row => ({ ...row, user_id: accountAnalyticsId(row.user_id), summary: JSON.parse(row.summary_json), summary_json: undefined })), nextCursor: rows.length === 100 ? rows[99].id : null, note: 'Private history is retained independently of behavioral analytics. Environment and device filters do not apply.' } }, { headers: { 'Cache-Control': 'no-store' } });
+      return NextResponse.json({ data: { rows: rows.map(row => ({ ...row, user_id: accountAnalyticsId(row.user_id), summary: JSON.parse(row.summary_json), summary_json: undefined })), nextCursor: rows.length === 100 ? rows[99].id : null, note: 'Private history is retained independently of behavioral analytics. Environment, device, release and administrator filters do not apply.' } }, { headers: { 'Cache-Control': 'no-store' } });
     }
     recordEvent('admin_accessed', { action: 'report' });
-    return NextResponse.json({ data: buildAnalyticsReport(q) }, { headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json({ data: await buildAnalyticsReport(q) }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (err) { return handleError(err); }
 }
 async function handleDELETE(request: Request) {
@@ -54,6 +61,9 @@ async function handleDELETE(request: Request) {
       store.prepare('DELETE FROM events WHERE account_id=?').run(accountId);
       store.prepare('DELETE FROM llm_attempts WHERE account_id=?').run(accountId);
       store.prepare('DELETE FROM session_accounts WHERE account_id=?').run(accountId);
+      store.exec('DELETE FROM export_chunks; DELETE FROM export_jobs;');
+      store.prepare('INSERT OR REPLACE INTO collector_state VALUES (?,?)').run('erasure:' + accountId, before);
+      store.prepare("INSERT OR REPLACE INTO collector_state VALUES ('exports_erased_through',?)").run(before);
       store.exec(`DELETE FROM daily_counts; INSERT INTO daily_counts SELECT substr(received_at,1,10),name,environment,administrator,count(*) FROM events GROUP BY substr(received_at,1,10),name,environment,administrator`);
     })();
     recordEvent('admin_accessed', { action: 'erase', subject: createHash('sha256').update(accountId).digest('hex') });
@@ -62,3 +72,15 @@ async function handleDELETE(request: Request) {
 }
 export const GET = instrumentRoute(handleGET, '/api/admin/analytics', 'GET');
 export const DELETE = instrumentRoute(handleDELETE, '/api/admin/analytics', 'DELETE');
+async function handlePOST(request: Request) {
+  try {
+    const user = await requireAnalyticsAdmin(); setAnalyticsActor(user.id, true);
+    const { filters } = z.object({ filters: z.record(z.string(), z.string()) }).strict().parse(await request.json());
+    const query = parseReportQuery(new URLSearchParams(filters));
+    flushAnalytics();
+    const job = requestAnalyticsExport(query, accountAnalyticsId(user.id));
+    recordEvent('admin_accessed', { action: 'export', subject: job.id });
+    return NextResponse.json({ data: job }, { status: 202 });
+  } catch (err) { return handleError(err); }
+}
+export const POST = instrumentRoute(handlePOST, '/api/admin/analytics', 'POST');

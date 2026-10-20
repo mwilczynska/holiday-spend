@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { getAuthSession } from '@/lib/auth';
 import { isEmailAllowed } from '@/lib/auth-policy';
 import { sqlite } from '@/db';
-import { analyticsEnabled } from '@/lib/analytics/service';
+import { accountAnalyticsId, analyticsEnabled } from '@/lib/analytics/service';
 import { handleError } from '@/lib/api-helpers';
 
 export const dynamic = 'force-dynamic';
@@ -11,7 +11,7 @@ export async function GET(request: Request) {
   try {
     const user = (await getAuthSession())?.user;
     const enabled = user?.id && isEmailAllowed(user.email) ? analyticsEnabled(user.id) : !request.headers.get('cookie')?.split(';').some(c => c.trim() === 'hs_analytics_disabled=1');
-    return NextResponse.json({ data: { enabled } }, { headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json({ data: { enabled, identity: user?.id && isEmailAllowed(user.email) ? accountAnalyticsId(user.id) : 'anonymous' } }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (err) { return handleError(err); }
 }
 export async function PUT(request: Request) {

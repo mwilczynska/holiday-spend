@@ -3678,3 +3678,28 @@ The initial six-view admin dashboard and full-only analytics backup/restore are 
 33/33 and the initial Windows production build passes with the known worktree dependency-junction tracing warning.
 The full suite, browser checks, extra security/metrics coverage and operational documentation remain in progress.
 
+# 20 October 2026 — Analytics verification and reporting isolation
+
+Completed the event/control inventory (52 API modules, 255 controls), report metric definitions, ordered funnels,
+retention denominators including non-returners, private revision inspection/export and durable event export jobs.
+Added enforced ingestion/administrator boundaries, account opt-out synchronization, durable erasure/replay markers
+and export invalidation that also covers in-flight reads. LLM records retain only allowlisted metadata and explicit
+unknowns. Historical revisions freeze canonical prices/totals, saved-plan names and city recorrections.
+
+Initial million-event reports blocked for 2.7–10.7 seconds. Overlapping indexes amplified writes, so reduced them,
+cached insertion statements, bounded SQLite cache use, and moved report/export reads to a read-only thread with
+16 pending-query and 15-second bounds. A 10,000-event final smoke takes 3–530 ms per view and adds 11.76 ms mutation
+p95 for a 66-leg plan; final million-event verification continues. Local source gzip is only a lower-bound proxy
+for shipped bundle size, not a bundle measurement or deployment-host performance claim.
+
+Windows production build and TypeScript pass. Focused analytics ESLint, coverage, memory mirror and methodology
+guard pass. The full suite passes 601/601 with a 30-second setup allowance on Windows. Earlier runs had 10-second
+cold setup timeouts; changed async history fixtures to lazy references and isolated CSV auth fixtures. Production
+staging fixtures now include and assert the new worker. No assertions were disabled.
+
+Production Playwright verifies login, plan revision inspection, opt-out across reload, continued private revisions,
+all mobile report APIs, bounded page width and forged/cross-origin ingestion rejection. The first mobile assertion
+incorrectly matched Next's empty route announcer outside main; scoping it to app content fixes the test. Screenshots
+were inspected at desktop and 375px. Fixtures use a seeded worktree database and synthetic account; the main database
+and checkout remain untouched. Linux/container verification and host-scale checks remain before deployment.
+

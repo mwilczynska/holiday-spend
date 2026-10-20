@@ -5,6 +5,7 @@ import { sqlite } from '@/db';
 import { analyticsContext } from './context';
 import { BEHAVIOR_EVENTS, parseProperties, type AnalyticsEvent, type EventName, type EventProperties } from './catalogue';
 import { getAnalyticsStore, insertAnalyticsEvent } from './storage';
+import { processAnalyticsExports } from './exports';
 
 export function accountAnalyticsId(userId: string) {
   return createHash('sha256').update('holiday-spend:analytics:' + userId).digest('hex');
@@ -45,11 +46,20 @@ export function flushAnalytics() {
     const erasures = sqlite.prepare('SELECT user_id,before_at FROM analytics_erasure').all() as Array<{ user_id: string; before_at: string }>;
     let erased = false;
     database.transaction(() => {
+      const latestErasure = erasures.reduce((latest, item) => item.before_at > latest ? item.before_at : latest, '');
+      const exportErasure = (database.prepare("SELECT value FROM collector_state WHERE key='exports_erased_through'").get() as { value: string } | undefined)?.value ?? '';
+      if (latestErasure > exportErasure) {
+        database.exec('DELETE FROM export_chunks; DELETE FROM export_jobs;');
+        database.prepare("INSERT OR REPLACE INTO collector_state VALUES ('exports_erased_through',?)").run(latestErasure);
+      }
       for (const erasure of erasures) {
         const account = accountAnalyticsId(erasure.user_id);
+        const applied = (database.prepare('SELECT value FROM collector_state WHERE key=?').get('erasure:' + account) as { value: string } | undefined)?.value;
+        if (applied && applied >= erasure.before_at) continue;
         erased = Boolean(database.prepare('DELETE FROM events WHERE account_id=? AND received_at<=?').run(account, erasure.before_at).changes) || erased;
         database.prepare('DELETE FROM llm_attempts WHERE account_id=? AND started_at<=?').run(account, erasure.before_at);
         database.prepare('DELETE FROM session_accounts WHERE account_id=?').run(account);
+        database.prepare('INSERT OR REPLACE INTO collector_state VALUES (?,?)').run('erasure:' + account, erasure.before_at);
       }
       if (erased) database.exec(`DELETE FROM daily_counts; INSERT INTO daily_counts SELECT substr(received_at,1,10),name,environment,administrator,count(*) FROM events GROUP BY substr(received_at,1,10),name,environment,administrator`);
     })();
@@ -65,8 +75,15 @@ export function flushAnalytics() {
           const binding = database.prepare('SELECT account_id FROM session_accounts WHERE session_id=?').get(event.sessionId) as { account_id: string } | undefined;
           if (!binding) {
             database.prepare('INSERT INTO session_accounts VALUES (?,?)').run(event.sessionId, event.accountId);
+            const groups = database.prepare('SELECT substr(received_at,1,10) AS day,name,environment,administrator,count(*) AS count FROM events WHERE session_id=? AND account_id IS NULL GROUP BY day,name,environment,administrator')
+              .all(event.sessionId) as Array<{ day: string; name: string; environment: string; administrator: number; count: number }>;
             database.prepare(`UPDATE events SET account_id=?,administrator=?,payload_json=json_set(payload_json,'$.accountId',?,'$.administrator',json(?)) WHERE session_id=? AND account_id IS NULL`)
               .run(event.accountId, Number(event.administrator), event.accountId, JSON.stringify(event.administrator), event.sessionId);
+            for (const group of groups) if (group.administrator !== Number(event.administrator)) {
+              database.prepare('UPDATE daily_counts SET event_count=event_count-? WHERE day=? AND name=? AND environment=? AND administrator=?').run(group.count, group.day, group.name, group.environment, group.administrator);
+              database.prepare('INSERT INTO daily_counts VALUES (?,?,?,?,?) ON CONFLICT(day,name,environment,administrator) DO UPDATE SET event_count=event_count+excluded.event_count').run(group.day, group.name, group.environment, Number(event.administrator), group.count);
+            }
+            database.prepare('DELETE FROM daily_counts WHERE event_count<=0').run();
           }
         }
         if (insertAnalyticsEvent(database, event)) {
@@ -81,6 +98,7 @@ export function flushAnalytics() {
       const remove = sqlite.prepare('DELETE FROM analytics_outbox WHERE id=?');
       for (const row of rows) remove.run(row.id);
     })();
+    void processAnalyticsExports().catch(() => { lastError = 'export_failed'; });
     lastError = null;
   } catch { lastError = 'Analytics delivery failed'; console.warn(JSON.stringify({ component: 'analytics', code: 'delivery_failed' })); }
 }

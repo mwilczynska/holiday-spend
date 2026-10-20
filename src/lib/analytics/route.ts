@@ -15,6 +15,8 @@ export function instrumentRoute<A extends unknown[]>(handler: (...args: A) => Pr
     const started = performance.now();
     ensureAnalyticsWorker();
     return analyticsContext.run({ requestId, operationId, route,
+      browserOptOut: request.headers.get('cookie')?.split(';').some(value => value.trim() === 'hs_analytics_disabled=1') ?? false,
+      step: (workflow, step) => recordEvent('workflow_step', { workflow, step }),
       sessionId: headerId(request, 'x-analytics-session'), pageViewId: headerId(request, 'x-analytics-page'),
       device: request.headers.get('sec-ch-ua-mobile') === '?1' ? 'mobile' : 'unknown',
     }, async () => {
@@ -30,7 +32,7 @@ export function instrumentRoute<A extends unknown[]>(handler: (...args: A) => Pr
       } finally {
         recordEvent('request_completed', { method, status, durationMs: Math.round((performance.now() - started) * 100) / 100,
           resource: route.replace(/^\/api\//, '').replace(/\[([^\]]+)\]/g, '$1').replaceAll('/', '.'),
-          outcome: request.signal.aborted ? 'cancelled' : status < 400 ? 'success' : 'failure',
+          outcome: status < 400 ? 'success' : request.signal.aborted ? 'cancelled' : 'failure',
         });
       }
     });

@@ -45,7 +45,6 @@ it('rolls back the full order when a later update fails', async () => {
 });
 
 // These focused route fixtures omit prices/history tables. Full history atomicity is covered in analytics/history.test.ts.
-vi.mock('@/lib/analytics/history', async () => {
-  const { db } = await import('@/db');
-  return { withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof db.transaction>[0]) => db.transaction(mutate) };
-});
+vi.mock('@/lib/analytics/history', () => ({
+  withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof database.db.transaction>[0]) => database.db.transaction(mutate),
+}));

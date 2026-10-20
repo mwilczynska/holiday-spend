@@ -14,9 +14,10 @@ vi.mock('@/db', async () => {
   return { db: drizzle(sqlite, { schema }) };
 });
 const observation = { base: 'AUD', date: '2026-10-19', rates: { EUR: 0.6, USD: 0.7, JPY: 100 } };
+let fixtureDatabase: typeof import('@/db');
 beforeEach(async () => {
   vi.resetModules(); vi.useFakeTimers(); vi.setSystemTime(new Date('2026-10-20T12:00:00Z'));
-  const { db } = await import('@/db'); db.delete(userPreferences).run(); db.delete(exchangeRates).run();
+  fixtureDatabase = await import('@/db'); const { db } = fixtureDatabase; db.delete(userPreferences).run(); db.delete(exchangeRates).run();
   vi.stubGlobal('fetch', vi.fn().mockImplementation(async () => new Response(JSON.stringify(observation))));
 });
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
@@ -63,7 +64,6 @@ describe('current display rates and account preference', () => {
 });
 
 // These focused route fixtures omit prices/history tables. Full history atomicity is covered in analytics/history.test.ts.
-vi.mock('@/lib/analytics/history', async () => {
-  const { db } = await import('@/db');
-  return { withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof db.transaction>[0]) => db.transaction(mutate) };
-});
+vi.mock('@/lib/analytics/history', () => ({
+  withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof fixtureDatabase.db.transaction>[0]) => fixtureDatabase.db.transaction(mutate),
+}));

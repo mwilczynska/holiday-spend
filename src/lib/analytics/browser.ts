@@ -1,6 +1,6 @@
 'use client';
 import { normalizedPage } from './routes';
-import type { BrowserEvent, EventName, EventProperties } from './catalogue';
+import type { BrowserEvent, EventProperties } from './catalogue';
 
 let enabled = false;
 let queue: BrowserEvent[] = [];
@@ -17,6 +17,7 @@ function saveSession() {
   try { sessionStorage.setItem('hs.analytics.session', JSON.stringify({ sessionId, lastActivity, actor })); } catch { /* Storage is optional. */ }
 }
 export function setBrowserAnalyticsActor(identity: string) {
+  if (actor !== identity && actor !== 'anonymous') { queue = []; pageViewId = ''; operationId = ''; }
   try {
     const saved = JSON.parse(sessionStorage.getItem('hs.analytics.session') || 'null');
     if (saved && /^[a-f0-9-]{36}$/.test(saved.sessionId) && Date.now() - saved.lastActivity < 1800_000
@@ -41,7 +42,7 @@ export function trackSelection(control: string, value: string) {
   beginAnalyticsOperation();
   trackEvent('selection_changed', { control, ...(safeSelections.has(value) ? { value: value as EventProperties<'selection_changed'>['value'] } : {}) });
 }
-export function trackEvent<N extends EventName>(name: N, properties: EventProperties<N>) {
+export function trackEvent<N extends BrowserEvent['name']>(name: N, properties: EventProperties<N>) {
   if (!enabled || !currentRoute) return;
   try {
     const now = Date.now();

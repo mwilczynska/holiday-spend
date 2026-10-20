@@ -6,6 +6,7 @@ import {
   type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
 import { analyticsLlmFetch } from '@/lib/analytics/llm';
+import { analyticsContext } from '@/lib/analytics/context';
 import { createLlmRequestSignal, waitForLlmRetry } from '@/lib/llm-request-signal';
 import { resolveLlmRuntimeDefaults } from '@/lib/llm-request-limits';
 import { describeLlmRequestFailure, formatProviderHttpError, summarizeProviderError } from '@/lib/llm-error-messages';
@@ -336,6 +337,8 @@ export function setExternalJsonPromptRunner(runner: typeof externalRunner) {
 }
 
 export async function runJsonPromptWithProvider(params: JsonPromptParams) {
+  const context = analyticsContext.getStore();
+  if (context) { context.llmRequestedEffort = params.reasoningEffort; context.llmTimeoutMs = params.requestTimeoutMs ?? context.llmTimeoutMs; }
   if (externalRunner) return externalRunner(params);
   const providerOrder: CityGenerationProvider[] = params.provider
     ? [params.provider]

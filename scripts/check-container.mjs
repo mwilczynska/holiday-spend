@@ -92,7 +92,13 @@ try {
   const cities = await (await request('/api/cities')).json();
   assert.equal(cities.data?.length, 121);
   assert.equal((await request('/plan')).status, 200);
+  for (const view of ['overview', 'journeys', 'funnels', 'llm', 'health', 'plans']) {
+    const report = await request('/api/admin/analytics?view=' + view + '&includeAdmins=true');
+    assert.equal(report.status, 200, 'Authenticated analytics report: ' + view);
+    assert.ok((await report.json()).data, 'Analytics report data: ' + view);
+  }
   await signIn('guest@example.com');
+  assert.equal((await request('/api/admin/analytics')).status, 403);
   assert.equal((await request('/api/cities')).status, 200);
   assert.equal((await request('/api/countries', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })).status, 403);
   runCode("const db=new(require('better-sqlite3'))('/app/data/travel.db');db.prepare('UPDATE user SET token_version=token_version+1 WHERE id=?').run('guest');db.close();");
@@ -102,6 +108,8 @@ try {
     'scripts/backup.mjs', '--destination', '/backups/snapshot');
   docker('run', '--rm', '-v', backupVolume + ':/backups', '--entrypoint', 'node', image,
     'scripts/backup.mjs', '--restore-from', '/backups/snapshot', '--destination', '/backups/restored');
+  docker('run', '--rm', '-v', backupVolume + ':/backups:ro', '--entrypoint', 'node', image, '-e',
+    "const db=new(require('better-sqlite3'))('/backups/restored/analytics.db',{readonly:true,fileMustExist:true});if(db.pragma('integrity_check',{simple:true})!=='ok')throw Error('Restored analytics integrity');db.prepare('SELECT count(*) FROM events').get();db.close();");
   docker('restart', name);
   // Docker may allocate a different host port when an ephemeral binding restarts.
   base = 'http://127.0.0.1:' + docker('port', name, '3000/tcp').split(':').at(-1);
@@ -109,7 +117,7 @@ try {
   assert.equal((await request('/api/cities')).status, 401);
   await signIn('owner@example.com');
   assert.equal((await (await request('/api/cities')).json()).data?.length, 121);
-  console.log('Linux container, native modules, prompts/assets, auth, permissions, revocation, backup/restore and restart checks passed.');
+  console.log('Linux container, native modules, prompts/assets, auth, analytics worker/reports/permissions, revocation, backup/restore and restart checks passed.');
 } catch (error) {
   try { console.error(docker('logs', name)); } catch {}
   throw error;

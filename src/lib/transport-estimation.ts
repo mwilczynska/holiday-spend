@@ -1,4 +1,5 @@
 import { analyticsLlmFetch } from '@/lib/analytics/llm';
+import { analyticsContext } from '@/lib/analytics/context';
 import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
@@ -968,6 +969,8 @@ async function runTransportPromptForProvider(params: {
 export async function estimateIntercityTransport(request: TransportEstimationRequest): Promise<TransportEstimationResult> {
   request.signal?.throwIfAborted();
   const { prompt, promptVersion } = buildTransportEstimationPrompt(request);
+  const context = analyticsContext.getStore();
+  if (context) { context.llmRequestedEffort = request.reasoningEffort; context.llmTimeoutMs = request.requestTimeoutMs ?? context.llmTimeoutMs; context.promptVersion = promptVersion; context.methodologyVersion = 'transport'; }
   const providerOrder: CityGenerationProvider[] = request.provider
     ? [request.provider]
     : ['anthropic', 'openai', 'gemini'];

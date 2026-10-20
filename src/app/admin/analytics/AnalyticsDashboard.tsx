@@ -8,6 +8,7 @@ interface Report {
   generatedAt?: string; totals?: Record<string, number | null>; daily?: Array<{ day: string; events: number; accounts: number }>;
   features?: Row[]; controls?: Row[]; rows?: Row[]; nextCursor?: number | null; note?: string;
   health?: Row; interruptedAttempts?: Row; p50?: number | null; p95?: number | null;
+  requestHealth?: Row[]; vitals?: Row[]; errorGroups?: Row[];
   funnels?: Array<{ name: string; steps: Array<{ name: string; users: number; conversion: number | null }> }>;
   retention?: Array<{ day: number; eligible: number; returned: number }>;
 }
@@ -33,6 +34,7 @@ export function AnalyticsDashboard({ initialEnvironment }: { initialEnvironment:
   const [environment, setEnvironment] = useState(initialEnvironment);
   const [admins, setAdmins] = useState(false);
   const [account, setAccount] = useState('');
+  const [operation, setOperation] = useState('');
   const [release, setRelease] = useState('');
   const [feature, setFeature] = useState('');
   const [device, setDevice] = useState('');
@@ -41,12 +43,16 @@ export function AnalyticsDashboard({ initialEnvironment }: { initialEnvironment:
   const [error, setError] = useState<string | null>(null);
   const [revision, setRevision] = useState<Row | null>(null);
   const [revisionError, setRevisionError] = useState<string | null>(null);
+  const [exportJob, setExportJob] = useState<{ id: string; state: string } | null>(null);
+  const [exportError, setExportError] = useState<string | null>(null);
+  const [erasureStatus, setErasureStatus] = useState<string | null>(null);
   const generation = useRef(0);
   const query = useCallback((cursor = 0) => {
     const params = new URLSearchParams({ view, from, to, environment, includeAdmins: String(admins), cursor: String(cursor) });
     if (account) params.set('account', account); if (release) params.set('release', release); if (feature) params.set('feature', feature); if (device) params.set('device', device);
+    if (operation) params.set('operation', operation);
     return params;
-  }, [view, from, to, environment, admins, account, release, feature, device]);
+  }, [view, from, to, environment, admins, account, release, feature, device, operation]);
   const load = useCallback(async (cursor = 0) => {
     const append = cursor > 0;
     const version = ++generation.current;
@@ -68,12 +74,41 @@ export function AnalyticsDashboard({ initialEnvironment }: { initialEnvironment:
   async function inspect(id: unknown) {
     setRevisionError(null);
     try {
-      const params = query(); params.set('revision', String(id));
+      const params = query(); params.set('view', 'plans'); params.set('revision', String(id));
       const response = await fetch('/api/admin/analytics?' + params, { cache: 'no-store' }); const body = await response.json();
       if (!response.ok || !body?.data?.snapshot) throw new Error(body.error || 'Revision unavailable.');
       setRevision(body.data);
     } catch (err) { setRevisionError(err instanceof Error ? err.message : 'Revision unavailable.'); }
   }
+  async function startExport() {
+    setExportError(null);
+    try {
+      const response = await fetch('/api/admin/analytics', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ filters: Object.fromEntries(query()) }) });
+      const body = await response.json();
+      if (!response.ok || !body?.data?.id) throw new Error(body.error || 'Export could not be queued.');
+      setExportJob(body.data);
+    } catch (err) { setExportError(err instanceof Error ? err.message : 'Export could not be queued.'); }
+  }
+  async function eraseAccount() {
+    if (!/^[a-f0-9]{64}$/.test(account) || !window.confirm('Erase analytics, LLM records and private plan revisions for this account? Current app data stays saved. Existing analytics exports will also be removed.')) return;
+    setErasureStatus('Erasing…');
+    try {
+      const response = await fetch('/api/admin/analytics', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ accountId: account }) });
+      const body = await response.json();
+      if (!response.ok || body?.data?.erased !== true) throw new Error(body.error || 'Erasure could not be confirmed.');
+      setErasureStatus('Recorded analytics and history erased. Future collection follows the account preference.');
+      setExportJob(null); setRevision(null); void load();
+    } catch (err) { setErasureStatus(err instanceof Error ? err.message : 'Erasure could not be confirmed. Retry.'); }
+  }
+  useEffect(() => {
+    if (!exportJob || !['queued', 'running'].includes(exportJob.state)) return;
+    let cancelled = false;
+    const timer = setInterval(() => { void fetch('/api/admin/analytics?exportJob=' + exportJob.id).then(async response => {
+      const body = await response.json(); if (!response.ok || !body?.data?.state) throw new Error(body.error || 'Export status unavailable.');
+      if (!cancelled) setExportJob(body.data);
+    }).catch(() => { if (!cancelled) setExportError('Export status unavailable. Refresh to retry.'); }); }, 5000);
+    return () => { cancelled = true; clearInterval(timer); };
+  }, [exportJob]);
   const filterClass = 'h-9 rounded-md border bg-background px-2 text-sm';
   return <div className="min-w-0 space-y-6">
     <header className="flex flex-wrap items-start justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-tight">Product analytics</h1><p className="mt-2 text-sm text-muted-foreground">First-party usage, private plan history and provider diagnostics.</p></div><Button data-analytics="analytics.refresh" variant="outline" disabled={loading} onClick={() => void load()}>Refresh</Button></header>
@@ -84,10 +119,14 @@ export function AnalyticsDashboard({ initialEnvironment }: { initialEnvironment:
       <label className="grid gap-1 text-xs">Feature<select className={filterClass} value={feature} onChange={e => setFeature(e.target.value)}><option value="">All features</option>{['planner', 'expenses', 'currency', 'cities', 'transport', 'auth', 'settings'].map(v => <option key={v}>{v}</option>)}</select></label>
       <label className="grid gap-1 text-xs">Device<select className={filterClass} value={device} onChange={e => setDevice(e.target.value)}><option value="">All devices</option><option>mobile</option><option>desktop</option><option>unknown</option></select></label>
       <label className="grid gap-1 text-xs">Account ID<input className={filterClass + ' w-36'} placeholder="Pseudonymous ID" value={account} onChange={e => setAccount(e.target.value)} /></label>
+      <label className="grid gap-1 text-xs">Operation ID<input className={filterClass + ' w-36'} placeholder="All operations" value={operation} onChange={e => setOperation(e.target.value)} /></label>
       <label className="grid gap-1 text-xs">Release<input className={filterClass + ' w-28'} value={release} onChange={e => setRelease(e.target.value)} /></label>
       <label className="flex h-9 items-center gap-2 text-sm"><input type="checkbox" checked={admins} onChange={e => setAdmins(e.target.checked)} />Include administrators</label>
     </div>
     <nav aria-label="Analytics views" className="flex gap-1 overflow-x-auto border-b">{tabs.map(tab => <button data-analytics={'analytics.' + tab} key={tab} aria-current={view === tab ? 'page' : undefined} onClick={() => setView(tab)} className={'whitespace-nowrap border-b-2 px-4 py-3 text-sm capitalize ' + (view === tab ? 'border-primary font-semibold' : 'border-transparent text-muted-foreground hover:text-foreground')}>{tab}</button>)}</nav>
+    {view === 'journeys' && <Button variant="outline" disabled={exportJob?.state === 'queued' || exportJob?.state === 'running'} onClick={() => void startExport()}>Export matched events</Button>}
+    {exportJob && <p className="text-sm" role="status">Export {exportJob.state}. {exportJob.state === 'complete' && <a className="text-primary underline" href={'/api/admin/analytics?exportJob=' + exportJob.id + '&download=true'}>Download JSON Lines</a>}</p>}
+    {exportError && <p role="alert" className="text-destructive">{exportError}</p>}
     {loading && <p role="status" className="text-sm text-muted-foreground">Loading analytics…</p>}
     {error && <div role="alert" className="text-sm text-destructive">{error} {data ? 'Previously loaded results are stale.' : 'Results unavailable.'} <Button variant="link" onClick={() => void load()}>Retry</Button></div>}
     {data && <>
@@ -98,23 +137,30 @@ export function AnalyticsDashboard({ initialEnvironment }: { initialEnvironment:
         <h2 className="text-lg font-semibold">Feature usage</h2><Table rows={data.features || []} columns={[{ key: 'route', label: 'Route' }, { key: 'events', label: 'Events' }, { key: 'accounts', label: 'Accounts' }]} />
         <h2 className="text-lg font-semibold">Controls used</h2><Table rows={data.controls || []} columns={[{ key: 'control', label: 'Control' }, { key: 'activations', label: 'Activations' }]} />
       </>}
-      {view === 'journeys' && <Table rows={data.rows || []} columns={[{ key: 'occurredAt', label: 'Occurred', render: time }, { key: 'receivedAt', label: 'Received', render: time }, { key: 'name', label: 'Event' }, { key: 'accountId', label: 'Account', render: v => v ? <button className="text-primary underline" onClick={() => setAccount(String(v))}>{String(v).slice(0, 12)}</button> : 'Anonymous' }, { key: 'route', label: 'Route' }, { key: 'operationId', label: 'Operation' }, { key: 'properties', label: 'Details' }]} />}
+      {view === 'journeys' && <Table rows={data.rows || []} columns={[{ key: 'occurredAt', label: 'Occurred', render: time }, { key: 'receivedAt', label: 'Received', render: time }, { key: 'name', label: 'Event' }, { key: 'accountId', label: 'Account', render: v => v ? <button className="text-primary underline" onClick={() => setAccount(String(v))}>{String(v).slice(0, 12)}</button> : 'Anonymous' }, { key: 'route', label: 'Route' }, { key: 'operationId', label: 'Operation', render: v => v ? <button className="text-primary underline" onClick={() => setOperation(String(v))}>{String(v).slice(0, 12)}</button> : 'Unavailable' }, { key: 'properties', label: 'Details', render: v => <>{text(v)}{v && typeof v === 'object' && typeof (v as Row).revisionId === 'number' ? <Button variant="link" onClick={() => void inspect((v as Row).revisionId)}>Inspect revision</Button> : null}</> }]} />}
       {view === 'funnels' && <>
         {data.funnels?.map(funnel => <section key={funnel.name} className="space-y-3"><h2 className="text-lg font-semibold">{funnel.name}</h2><Table rows={funnel.steps} columns={[{ key: 'name', label: 'Step' }, { key: 'users', label: 'Observed users' }, { key: 'conversion', label: 'From first step', render: v => typeof v === 'number' ? (v * 100).toFixed(1) + '%' : 'Unavailable' }]} /></section>)}
         <h2 className="text-lg font-semibold">Return after activation</h2><Table rows={data.retention || []} columns={[{ key: 'day', label: 'Day' }, { key: 'eligible', label: 'Mature accounts' }, { key: 'returned', label: 'Returned' }]} />
       </>}
       {view === 'plans' && <>
         <Table rows={data.rows || []} columns={[{ key: 'created_at', label: 'Saved', render: time }, { key: 'action', label: 'Action' }, { key: 'subject_id', label: 'Plan' }, { key: 'summary', label: 'Summary (AUD)' }, { key: 'id', label: 'Details', render: id => <Button variant="link" onClick={() => void inspect(id)}>View revision {text(id)}</Button> }]} />
-        {revisionError && <p role="alert" className="text-destructive">{revisionError}</p>}
-        {revision && <section className="space-y-4 border-t pt-6"><div className="flex flex-wrap items-center justify-between gap-3"><h2 className="text-lg font-semibold">Revision {text(revision.id)}</h2><a className="text-sm text-primary underline" href={'/api/admin/analytics?' + new URLSearchParams({ view: 'plans', from, to, revision: String(revision.id), export: 'true' })}>Export private revision</a></div><p className="text-sm text-muted-foreground">Differences include private itinerary content. Baselines show the state captured when history began.</p><Table rows={diff(revision.previous, revision.snapshot).slice(0, 1000)} columns={[{ key: 'field', label: 'Field' }, { key: 'before', label: 'Before' }, { key: 'after', label: 'After' }]} /></section>}
       </>}
       {view === 'llm' && <>
         <div className="flex flex-wrap gap-8 text-sm"><p>Operations: <strong>{data.totals?.operations ?? 0}</strong></p><p>Attempts: <strong>{data.totals?.attempts ?? 0}</strong></p><p>p50 / p95: <strong>{text(data.p50)} / {text(data.p95)} ms</strong></p><p>Cost unavailable · user-supplied provider keys</p></div>
         <Table rows={data.rows || []} columns={[{ key: 'started_at', label: 'Started', render: time }, { key: 'feature', label: 'Feature' }, { key: 'provider', label: 'Provider' }, { key: 'model', label: 'Model' }, { key: 'effort', label: 'Effort' }, { key: 'status', label: 'Status' }, { key: 'duration_ms', label: 'Duration (ms)' }, { key: 'input_tokens', label: 'Input tokens' }, { key: 'output_tokens', label: 'Output tokens' }, { key: 'reasoning_tokens', label: 'Reasoning tokens' }, { key: 'attempt_number', label: 'Attempt' }, { key: 'operation_id', label: 'Operation' }]} />
         <p className="text-sm text-muted-foreground">Unknown token usage stays unavailable. Provider receipt does not imply validation or persistence succeeded; correlate the operation with its server outcome.</p>
       </>}
-      {view === 'health' && <Table rows={Object.entries({ ...data.health, interruptedAttempts: data.interruptedAttempts?.count }).map(([key, value]) => ({ key, value }))} columns={[{ key: 'key', label: 'Measure' }, { key: 'value', label: 'Value', render: text }]} />}
+      {view === 'health' && <>
+        <Table rows={Object.entries({ ...data.health, interruptedAttempts: data.interruptedAttempts?.count }).map(([key, value]) => ({ key, value }))} columns={[{ key: 'key', label: 'Measure' }, { key: 'value', label: 'Value', render: text }]} />
+        <h2 className="text-lg font-semibold">Request reliability</h2><Table rows={data.requestHealth || []} columns={[{ key: 'route', label: 'Route' }, { key: 'requests', label: 'Requests' }, { key: 'failures', label: 'Failures' }, { key: 'averageMs', label: 'Average (ms)' }]} />
+        <h2 className="text-lg font-semibold">Web Vitals</h2><Table rows={data.vitals || []} columns={[{ key: 'metric', label: 'Metric' }, { key: 'samples', label: 'Samples' }, { key: 'average', label: 'Average' }, { key: 'worst', label: 'Worst' }]} />
+        <p className="text-sm text-muted-foreground">LCP, INP and TTFB are milliseconds. CLS is a unitless layout-shift score.</p>
+        <h2 className="text-lg font-semibold">Error groups</h2><Table rows={data.errorGroups || []} columns={[{ key: 'name', label: 'Source' }, { key: 'fingerprint', label: 'Fingerprint' }, { key: 'occurrences', label: 'Occurrences' }]} />
+        <section className="space-y-3 border-t pt-6"><h2 className="text-lg font-semibold">Erase recorded account data</h2><p className="text-sm text-muted-foreground">Select a full account ID in the filters. This removes analytics and private plan history while keeping current app data. Existing analytics exports are invalidated.</p><Button variant="destructive" disabled={!/^[a-f0-9]{64}$/.test(account) || erasureStatus === 'Erasing…'} onClick={() => void eraseAccount()}>Erase account analytics and history</Button>{erasureStatus && <p role="status" className="text-sm">{erasureStatus}</p>}</section>
+      </>}
       {data.nextCursor && <Button disabled={loading} variant="outline" onClick={() => void load(data.nextCursor ?? 0)}>Load more</Button>}
+      {revisionError && <p role="alert" className="text-destructive">{revisionError}</p>}
+      {revision && <section className="space-y-4 border-t pt-6"><div className="flex flex-wrap items-center justify-between gap-3"><h2 className="text-lg font-semibold">Revision {text(revision.id)}</h2><a className="text-sm text-primary underline" href={'/api/admin/analytics?' + new URLSearchParams({ view: 'plans', from, to, revision: String(revision.id), export: 'true' })}>Export private revision</a></div><p className="text-sm text-muted-foreground">Differences include private itinerary content. Baselines show the state captured when history began.</p><Table rows={diff(revision.previous, revision.snapshot).slice(0, 1000)} columns={[{ key: 'field', label: 'Field' }, { key: 'before', label: 'Before' }, { key: 'after', label: 'After' }]} /></section>}
       <p className="border-t pt-4 text-xs text-muted-foreground">{data.generatedAt ? `Updated ${time(data.generatedAt)}. ` : ''}Times use your browser timezone; daily buckets use UTC. Behavioral coverage excludes opt-outs and unavailable browser events. Records have no scheduled expiry.</p>
     </>}
   </div>;

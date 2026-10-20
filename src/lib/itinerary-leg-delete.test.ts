@@ -142,7 +142,6 @@ describe.sequential('itinerary leg deletion', () => {
 });
 
 // These focused route fixtures omit prices/history tables. Full history atomicity is covered in analytics/history.test.ts.
-vi.mock('@/lib/analytics/history', async () => {
-  const { db } = await import('@/db');
-  return { withPlanRevision: (_user: string, _action: string, mutate: Parameters<typeof db.transaction>[0]) => db.transaction(mutate) };
-});
+vi.mock('@/lib/analytics/history', () => ({
+  withPlanRevision: (_user: string, _action: string, mutate: Parameters<DbModule['db']['transaction']>[0]) => dbModule.db.transaction(mutate),
+}));

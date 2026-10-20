@@ -10,6 +10,9 @@ import { analyticsContext } from './context';
 import { accountAnalyticsId, enqueueEvent, makeEvent } from './service';
 
 type Transaction = Parameters<Parameters<typeof db.transaction>[0]>[0];
+function savedSnapshot(plan: { snapshotJson: string; name: string }) {
+  return planSnapshotSchema.parse({ ...JSON.parse(plan.snapshotJson), name: plan.name });
+}
 export function currentPlanSnapshot(userId: string): PlanSnapshot {
   const preferences = db.select().from(userPreferences).where(eq(userPreferences.userId, userId)).get();
   const legs = db.select().from(itineraryLegs).where(eq(itineraryLegs.userId, userId)).orderBy(asc(itineraryLegs.sortOrder), asc(itineraryLegs.id)).all();
@@ -53,25 +56,27 @@ export function withPlanRevision<T>(userId: string, action: string, mutate: (tx:
   return db.transaction(tx => {
     if (!sqlite.prepare('SELECT 1 FROM plan_revisions WHERE user_id=? AND subject_id=? LIMIT 1').get(userId, subject)) {
       const existing = subject === 'active' ? currentPlanSnapshot(userId) : db.select().from(savedPlans).where(eq(savedPlans.id, subject)).get();
-      if (existing) appendRevision(userId, subject, 'migration_baseline', 'snapshotJson' in existing ? planSnapshotSchema.parse(JSON.parse(existing.snapshotJson)) : existing);
+      if (existing) appendRevision(userId, subject, 'migration_baseline', 'snapshotJson' in existing ? savedSnapshot(existing) : existing);
     }
     const previous = subject === 'active' ? null : db.select().from(savedPlans).where(eq(savedPlans.id, subject)).get();
     const result = mutate(tx);
     if (result instanceof Promise) throw new Error('Plan transactions must be synchronous.');
     const saved = subject === 'active' ? null : db.select().from(savedPlans).where(eq(savedPlans.id, subject)).get();
-    const snapshot = subject === 'active' ? currentPlanSnapshot(userId) : planSnapshotSchema.parse(JSON.parse((saved ?? previous)!.snapshotJson));
+    const snapshot = subject === 'active' ? currentPlanSnapshot(userId) : savedSnapshot((saved ?? previous)!);
     appendRevision(userId, subject, action, snapshot, subject !== 'active' && !saved);
     return result;
   });
 }
 export function recordNewSavedPlan(userId: string, subject: string, snapshot: PlanSnapshot) {
-  return appendRevision(userId, subject, 'plan_saved', snapshot);
+  const plan = db.select().from(savedPlans).where(eq(savedPlans.id, subject)).get();
+  if (!plan) throw new Error('Saved plan missing during history capture.');
+  return appendRevision(userId, subject, 'plan_saved', { ...snapshot, name: plan.name });
 }
 export function ensurePlanBaselines(userId: string) {
   db.transaction(() => {
     if (!sqlite.prepare("SELECT 1 FROM plan_revisions WHERE user_id=? AND subject_id='active'").get(userId)) appendRevision(userId, 'active', 'migration_baseline', currentPlanSnapshot(userId));
     for (const plan of db.select().from(savedPlans).where(eq(savedPlans.userId, userId)).all()) {
-      if (!sqlite.prepare('SELECT 1 FROM plan_revisions WHERE user_id=? AND subject_id=?').get(userId, plan.id)) appendRevision(userId, plan.id, 'migration_baseline', planSnapshotSchema.parse(JSON.parse(plan.snapshotJson)));
+      if (!sqlite.prepare('SELECT 1 FROM plan_revisions WHERE user_id=? AND subject_id=?').get(userId, plan.id)) appendRevision(userId, plan.id, 'migration_baseline', savedSnapshot(plan));
     }
   });
 }
@@ -83,7 +88,7 @@ export function withCityPriceRevisions<T>(cityIds: string[], mutate: (tx: Transa
     const owners = db.select({ userId: itineraryLegs.userId }).from(itineraryLegs).where(inArray(itineraryLegs.cityId, cityIds)).all();
     for (const owner of owners) if (owner.userId) affected.set(owner.userId + ':active', { userId: owner.userId, subject: 'active', snapshot: currentPlanSnapshot(owner.userId) });
     for (const plan of db.select().from(savedPlans).all()) {
-      const snapshot = planSnapshotSchema.parse(JSON.parse(plan.snapshotJson));
+      const snapshot = savedSnapshot(plan);
       if (snapshot.legs.some(leg => cityIds.includes(leg.cityId))) affected.set(plan.userId + ':' + plan.id, { userId: plan.userId, subject: plan.id, snapshot });
     }
     for (const row of affected.values()) if (!sqlite.prepare('SELECT 1 FROM plan_revisions WHERE user_id=? AND subject_id=? LIMIT 1').get(row.userId, row.subject)) appendRevision(row.userId, row.subject, 'migration_baseline', row.snapshot);

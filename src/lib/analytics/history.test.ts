@@ -1,12 +1,12 @@
 import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest';
 vi.mock('@/db', async () => (await import('./test-fixture')).analyticsTestDatabase());
 import { db, sqlite } from '@/db';
-import { cities, countries, itineraryLegs, users } from '@/db/schema';
+import { cities, countries, itineraryLegs, savedPlans, users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-import { ensurePlanBaselines, withPlanRevision } from './history';
+import { currentPlanSnapshot, ensurePlanBaselines, withCityPriceRevisions, withPlanRevision } from './history';
 
 beforeEach(() => {
-  sqlite.exec('DELETE FROM analytics_outbox; DELETE FROM plan_revisions; DELETE FROM itinerary_legs; DELETE FROM cities; DELETE FROM countries; DELETE FROM user;');
+  sqlite.exec('DELETE FROM analytics_outbox; DELETE FROM plan_revisions; DELETE FROM saved_plans; DELETE FROM itinerary_legs; DELETE FROM cities; DELETE FROM countries; DELETE FROM user;');
   db.insert(users).values({ id: 'owner' }).run();
   db.insert(countries).values({ id: 'pt', name: 'Portugal', currencyCode: 'EUR' }).run();
   db.insert(cities).values({ id: 'porto', countryId: 'pt', name: 'Porto', accom2star: 100, foodMid: 40, drinksModerate: 20, activitiesMid: 10 }).run();
@@ -40,5 +40,19 @@ describe('private plan history', () => {
   it('creates migration baselines only once', () => {
     ensurePlanBaselines('owner'); ensurePlanBaselines('owner');
     expect(sqlite.prepare('SELECT count(*) AS n FROM plan_revisions').get()).toEqual({ n: 1 });
+  });
+  it('records saved-plan renames and retains the final state after deletion', () => {
+    db.insert(savedPlans).values({ id: 'saved', userId: 'owner', name: 'Original', snapshotJson: JSON.stringify(currentPlanSnapshot('owner')) }).run();
+    withPlanRevision('owner', 'plan_renamed', tx => tx.update(savedPlans).set({ name: 'Updated' }).where(eq(savedPlans.id, 'saved')).run(), 'saved');
+    withPlanRevision('owner', 'plan_deleted', tx => tx.delete(savedPlans).where(eq(savedPlans.id, 'saved')).run(), 'saved');
+    const rows = sqlite.prepare("SELECT action,snapshot_json,deleted FROM plan_revisions WHERE subject_id='saved' ORDER BY id").all() as Array<{ action: string; snapshot_json: string; deleted: number }>;
+    expect(rows.map(row => JSON.parse(row.snapshot_json).snapshot.name)).toEqual(['Original', 'Updated', 'Updated']);
+    expect(rows[2].deleted).toBe(1);
+  });
+  it('records shared city-price changes without rewriting earlier budgets', () => {
+    withCityPriceRevisions(['porto'], tx => tx.update(cities).set({ accom2star: 200 }).where(eq(cities.id, 'porto')).run());
+    const rows = sqlite.prepare('SELECT action,summary_json FROM plan_revisions ORDER BY id').all() as Array<{ action: string; summary_json: string }>;
+    expect(rows.map(row => row.action)).toEqual(['migration_baseline', 'city_prices_changed']);
+    expect(rows.map(row => JSON.parse(row.summary_json).totalBudgetAud)).toEqual([510, 810]);
   });
 });

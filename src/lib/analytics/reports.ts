@@ -1,113 +1,81 @@
-import { z } from 'zod';
-import { getAnalyticsStore } from './storage';
+import { readAnalyticsQuery, type AnalyticsReader } from './reader';
 import { collectorHealth } from './service';
-export const reportQuerySchema = z.object({
-  view: z.enum(['overview', 'journeys', 'funnels', 'plans', 'llm', 'health']).default('overview'),
-  from: z.string().date(), to: z.string().date(),
-  environment: z.enum(['production', 'development', 'test']).default('production'),
-  includeAdmins: z.enum(['true', 'false']).default('false'),
-  account: z.string().regex(/^[a-f0-9]{64}$/).optional(),
-  release: z.string().max(100).optional(),
-  device: z.enum(['mobile', 'desktop', 'unknown']).optional(),
-  feature: z.enum(['planner', 'expenses', 'currency', 'cities', 'transport', 'auth', 'settings']).optional(),
-  cursor: z.coerce.number().int().nonnegative().default(0),
-  revision: z.coerce.number().int().positive().optional(),
-  export: z.enum(['true', 'false']).optional(),
-}).strict().superRefine((v, ctx) => {
-  const days = (Date.parse(v.to) - Date.parse(v.from)) / 86400000;
-  if (days < 0 || days > 366) ctx.addIssue({ code: 'custom', message: 'Choose an ordered date range of at most 366 days.' });
-});
-export type ReportQuery = z.infer<typeof reportQuerySchema>;
-export function parseReportQuery(params: URLSearchParams) {
-  return reportQuerySchema.parse({ from: new Date(Date.now() - 29 * 86400000).toISOString().slice(0, 10), to: new Date().toISOString().slice(0, 10), ...Object.fromEntries(params) });
-}
-function predicate(q: ReportQuery, llm = false) {
-  const clauses = [`${llm ? 'started_at' : 'received_at'} >= @from`, `${llm ? 'started_at' : 'received_at'} < @until`, 'environment=@environment'];
-  const args: Record<string, string | number> = { from: q.from + 'T00:00:00.000Z', until: new Date(Date.parse(q.to) + 86400000).toISOString(), environment: q.environment };
-  if (q.includeAdmins === 'false') clauses.push('administrator=0');
-  if (q.account) { clauses.push('account_id=@account'); args.account = q.account; }
-  if (q.release) { clauses.push('release=@release'); args.release = q.release; }
-  if (q.device && !llm) { clauses.push('device=@device'); args.device = q.device; }
-  if (q.feature) {
-    if (llm) { clauses.push('feature=@feature'); args.feature = q.feature === 'transport' ? 'transport' : 'city'; }
-    else {
-      const routes: Record<string, string[]> = { planner: ['/plan', '/api/itinerary%', '/api/saved-plans%'], expenses: ['/track%', '/api/expenses%', '/api/tags%'], currency: ['/api/settings/currency'], cities: ['/dataset', '/api/cities%'], transport: ['/api/itinerary/legs/[id]/estimate-transport'], auth: ['/login', '/signup', '/api/auth%'], settings: ['/settings%', '/api/settings%', '/api/planner/settings'] };
-      clauses.push('(' + routes[q.feature].map((route, i) => { args['route' + i] = route; return 'route LIKE @route' + i; }).join(' OR ') + ')');
-    }
-  }
-  return { where: clauses.join(' AND '), args };
-}
-export function buildAnalyticsReport(q: ReportQuery) {
-  const database = getAnalyticsStore();
+import { predicate, type ReportQuery } from './query';
+export { parseReportQuery, reportQuerySchema, predicate } from './query';
+export type { ReportQuery } from './query';
+export async function buildAnalyticsReport(q: ReportQuery, reader: AnalyticsReader = readAnalyticsQuery) {
+  const read = reader;
   const { where, args } = predicate(q);
   const generatedAt = new Date().toISOString();
-  if (q.view === 'health') return { generatedAt, health: collectorHealth(), interruptedAttempts: database.prepare("SELECT count(*) AS count FROM llm_attempts WHERE status='started' AND started_at < ?").get(new Date(Date.now() - 1200_000).toISOString()) };
+  if (q.view === 'health') return { generatedAt, health: collectorHealth(),
+    interruptedAttempts: (await read("SELECT count(*) AS count FROM llm_attempts WHERE status='interrupted' OR (status='started' AND started_at < ?)", new Date(Date.now() - 1800000).toISOString(), 'get')),
+    requestHealth: (await read(`SELECT route,count(*) AS requests,sum(CASE WHEN status>=400 THEN 1 ELSE 0 END) AS failures,round(avg(duration_ms),2) AS averageMs FROM events WHERE ${where} AND name='request_completed' GROUP BY route ORDER BY failures DESC LIMIT 50`, args, 'all')),
+    vitals: (await read(`SELECT metric_name AS metric,count(*) AS samples,round(avg(metric_value),2) AS average,round(max(metric_value),2) AS worst FROM events WHERE ${where} AND name='web_vital' GROUP BY metric`, args, 'all')),
+    errorGroups: (await read(`SELECT name,json_extract(payload_json,'$.properties.fingerprint') AS fingerprint,count(*) AS occurrences FROM events WHERE ${where} AND name IN ('server_error','browser_error') GROUP BY name,fingerprint ORDER BY occurrences DESC LIMIT 30`, args, 'all')),
+  };
   if (q.view === 'journeys') {
-    const rows = database.prepare(`SELECT sequence,payload_json FROM events WHERE ${where} AND sequence > @cursor ORDER BY sequence LIMIT 100`).all({ ...args, cursor: q.cursor }) as Array<{ sequence: number; payload_json: string }>;
+    const index = q.operation ? 'events_operation' : q.account ? 'events_account_time' : 'events_timeline_all';
+    const rows = (await read(`SELECT sequence,payload_json FROM events INDEXED BY ${index} WHERE ${where} AND sequence > @cursor ORDER BY sequence LIMIT 100`, { ...args, cursor: q.cursor }, 'all')) as Array<{ sequence: number; payload_json: string }>;
     return { generatedAt, rows: rows.map(r => ({ sequence: r.sequence, ...JSON.parse(r.payload_json) })), nextCursor: rows.length === 100 ? rows[99].sequence : null };
   }
   if (q.view === 'llm') {
     const llm = predicate(q, true);
-    const rows = database.prepare(`SELECT * FROM llm_attempts WHERE ${llm.where} ORDER BY started_at DESC LIMIT 100`).all(llm.args);
-    const totals = database.prepare(`SELECT count(*) AS attempts,count(DISTINCT operation_id) AS operations,
+    const rows = (await read(`SELECT rowid AS sequence,* FROM llm_attempts WHERE ${llm.where} AND (@cursor=0 OR rowid<@cursor) ORDER BY rowid DESC LIMIT 100`, { ...llm.args, cursor: q.cursor }, 'all')) as Array<Record<string, unknown> & { sequence: number }>;
+    const totals = (await read(`SELECT count(*) AS attempts,count(DISTINCT operation_id) AS operations,
       sum(input_tokens) AS inputTokens,sum(output_tokens) AS outputTokens,sum(reasoning_tokens) AS reasoningTokens,
       sum(CASE WHEN input_tokens IS NULL OR output_tokens IS NULL THEN 1 ELSE 0 END) AS unknownUsage,
-      sum(CASE WHEN status NOT IN ('received','started') THEN 1 ELSE 0 END) AS failures FROM llm_attempts WHERE ${llm.where}`).get(llm.args);
-    const durations = database.prepare(`SELECT duration_ms FROM llm_attempts WHERE ${llm.where} AND duration_ms IS NOT NULL ORDER BY duration_ms`).all(llm.args) as Array<{ duration_ms: number }>;
-    return { generatedAt, rows, totals, p50: percentile(durations.map(d => d.duration_ms), .5), p95: percentile(durations.map(d => d.duration_ms), .95), cost: null,
+      sum(CASE WHEN status NOT IN ('received','started') THEN 1 ELSE 0 END) AS failures FROM llm_attempts WHERE ${llm.where}`, llm.args, 'get'));
+    const durationCount = (await read(`SELECT count(*) AS n FROM llm_attempts WHERE ${llm.where} AND duration_ms IS NOT NULL`, llm.args, 'get')) as { n: number };
+    const quantile = async (value: number) => durationCount.n ? ((await read(`SELECT duration_ms FROM llm_attempts WHERE ${llm.where} AND duration_ms IS NOT NULL ORDER BY duration_ms LIMIT 1 OFFSET @offset`, { ...llm.args, offset: Math.max(0, Math.ceil(durationCount.n * value) - 1) }, 'get')) as { duration_ms: number }).duration_ms : null;
+    return { generatedAt, rows, nextCursor: rows.length === 100 ? rows[99].sequence : null, totals, p50: await quantile(.5), p95: await quantile(.95), cost: null,
       filterNote: q.device ? 'Provider attempts do not carry device categories; the device filter applies to product events only.' : null };
   }
   if (q.view === 'funnels') {
     // Each stage must occur after its predecessor, within seven days of the first stage.
     const definitions = [
-      { name: 'Account activation', steps: ['page_viewed:/signup', 'workflow_step:login_succeeded', 'mutation_committed:leg_created', 'mutation_committed:plan_saved'] },
+      { name: 'Account activation', steps: ['page_viewed:/signup', 'workflow_step:signup_created', 'workflow_step:verification_completed', 'workflow_step:login_succeeded', 'mutation_committed:leg_created', 'mutation_committed:plan_saved'] },
       { name: 'Planning', steps: ['page_viewed:/plan', 'mutation_committed:leg_created', 'mutation_committed:plan_saved'] },
       { name: 'Wise import', steps: ['workflow_step:preview', 'mutation_committed:expenses_imported'] },
       { name: 'City generation', steps: ['workflow_step:generation_requested', 'request_completed:cities.create-with-generation'] },
     ];
-    const events = database.prepare(`SELECT coalesce(account_id,session_id) AS identity,name,received_at,route,payload_json FROM events WHERE ${where} ORDER BY received_at,sequence`).all(args) as Array<{ identity: string | null; name: string; received_at: string; route: string; payload_json: string }>;
-    const funnels = definitions.map(def => {
-      const progress = new Map<string, { stage: number; start: number }>();
-      const counts = def.steps.map(() => 0);
-      for (const event of events) {
-        if (!event.identity) continue;
-        const data = JSON.parse(event.payload_json).properties;
-        const value = event.name === 'page_viewed' ? event.route : data.action ?? data.step ?? data.control ?? data.resource;
-        const key = event.name + ':' + value;
-        const current = progress.get(event.identity) ?? { stage: 0, start: Date.parse(event.received_at) };
-        if (current.stage >= def.steps.length || Date.parse(event.received_at) - current.start > 7 * 86400000) continue;
-        const expected = def.steps[current.stage];
-        if ((expected === key || expected === 'mutation_committed:leg_created' && key === 'mutation_committed:leg_created_with_city') && data.outcome !== 'failure' && (data.status == null || data.status < 400)) {
-          counts[current.stage]++; current.stage++; progress.set(event.identity, current);
-        }
-      }
+    const funnels = await Promise.all(definitions.map(async def => {
+      const funnelIndex = q.operation ? 'events_operation' : q.account ? 'events_account_time' : 'events_funnel';
+      const bindings = { ...args };
+      const stages = def.steps.map((step, index) => {
+        const [name, value] = step.split(':'); bindings['name' + index] = name; bindings['value' + index] = value;
+        const field = name === 'page_viewed' ? 'route' : 'stage_value';
+        const match = `name=@name${index} AND (${field}=@value${index}${value === 'leg_created' ? ` OR ${field}='leg_created_with_city'` : ''})${name === 'request_completed' ? ' AND status<400' : ''}`;
+        if (!index) return `s0 AS (SELECT coalesce(account_id,session_id) AS identity,min(sequence) AS seq,received_at AS started_at FROM events INDEXED BY ${funnelIndex} WHERE ${where} AND ${match} AND coalesce(account_id,session_id) IS NOT NULL GROUP BY identity)`;
+        return `s${index} AS (SELECT s${index - 1}.identity,s${index - 1}.started_at,min(e.sequence) AS seq FROM events e INDEXED BY ${funnelIndex} JOIN s${index - 1} ON coalesce(e.account_id,e.session_id)=s${index - 1}.identity WHERE ${where} AND ${match} AND e.sequence>s${index - 1}.seq AND julianday(e.received_at)-julianday(s${index - 1}.started_at)<=7 GROUP BY s${index - 1}.identity)`;
+      });
+      const counts = ((await read('WITH ' + stages.join(',') + ' ' + def.steps.map((_, i) => `SELECT count(*) AS n FROM s${i}`).join(' UNION ALL '), bindings, 'all')) as Array<{ n: number }>).map(row => row.n);
       return { name: def.name, steps: def.steps.map((step, i) => ({ name: step.split(':')[1], users: counts[i], conversion: counts[0] ? counts[i] / counts[0] : null })) };
-    });
-    const activation = `name='mutation_committed' AND json_extract(payload_json,'$.properties.action') IN ('leg_created','leg_created_with_city','expenses.post')`;
-    const scope = where.replace('received_at >= @from AND received_at < @until AND ', '').replace(/(?<!@)\b(environment|administrator|account_id|release|device|route)\b/g, 'e.$1');
-    const cohorts = database.prepare(`WITH activated AS (
+    }));
+    const activation = `name='mutation_committed' AND stage_value IN ('leg_created','leg_created_with_city','expenses.post')`;
+    const scope = where.replace('received_at >= @from AND received_at < @until AND ', '').replace(/(?<!@)\b(environment|administrator|account_id|operation_id|release|device|route)\b/g, 'e.$1');
+    const cohorts = (await read(`WITH activated AS (
       SELECT e.account_id,min(e.received_at) AS activated_at FROM events e WHERE e.account_id IS NOT NULL AND ${activation} AND ${scope} GROUP BY e.account_id
     ) SELECT a.account_id,a.activated_at,
       max(CASE WHEN date(e.received_at)=date(a.activated_at,'+1 day') THEN 1 ELSE 0 END) AS d1,
       max(CASE WHEN date(e.received_at)=date(a.activated_at,'+7 day') THEN 1 ELSE 0 END) AS d7,
       max(CASE WHEN date(e.received_at)=date(a.activated_at,'+30 day') THEN 1 ELSE 0 END) AS d30
-      FROM activated a JOIN events e ON e.account_id=a.account_id
-      WHERE e.purpose='behavior' AND ${scope} AND a.activated_at>=@from AND a.activated_at<@until GROUP BY a.account_id`).all(args) as Array<{ activated_at: string; d1: number; d7: number; d30: number }>;
+      FROM activated a LEFT JOIN events e ON e.account_id=a.account_id
+      AND e.purpose='behavior' AND ${scope} AND e.received_at>=date(a.activated_at,'+1 day') AND e.received_at<date(a.activated_at,'+31 day')
+      WHERE a.activated_at>=@from AND a.activated_at<@until GROUP BY a.account_id`, args, 'all')) as Array<{ activated_at: string; d1: number; d7: number; d30: number }>;
     const retention = [1, 7, 30].map(day => {
       const eligible = cohorts.filter(c => Date.parse(c.activated_at.slice(0, 10)) + (day + 1) * 86400000 <= Date.now());
       return { day, eligible: eligible.length, returned: eligible.filter(c => c[('d' + day) as 'd1' | 'd7' | 'd30']).length };
     });
     return { generatedAt, funnels, retention, note: 'Observed journeys only. Opt-outs and blocked requests reduce coverage. Day boundaries are UTC.' };
   }
-  const totals = database.prepare(`SELECT count(*) AS events,
+  const totals = (await read(`SELECT count(*) AS events,
     count(DISTINCT CASE WHEN purpose='behavior' THEN account_id END) AS activeAccounts,
     count(DISTINCT CASE WHEN purpose='behavior' THEN session_id END) AS sessions,
-    sum(CASE WHEN name='request_completed' AND json_extract(payload_json,'$.properties.status')>=400 THEN 1 ELSE 0 END) AS failedRequests,
+    sum(CASE WHEN name='request_completed' AND status>=400 THEN 1 ELSE 0 END) AS failedRequests,
     sum(CASE WHEN name='request_completed' THEN 1 ELSE 0 END) AS requests
-    FROM events WHERE ${where}`).get(args);
-  const daily = database.prepare(`SELECT substr(received_at,1,10) AS day,count(*) AS events,count(DISTINCT CASE WHEN purpose='behavior' THEN account_id END) AS accounts FROM events WHERE ${where} GROUP BY day ORDER BY day`).all(args);
-  const features = database.prepare(`SELECT route,count(*) AS events,count(DISTINCT account_id) AS accounts FROM events WHERE ${where} AND purpose='behavior' GROUP BY route ORDER BY events DESC LIMIT 30`).all(args);
-  const controls = database.prepare(`SELECT json_extract(payload_json,'$.properties.control') AS control,count(*) AS activations FROM events WHERE ${where} AND name='control_activated' GROUP BY control ORDER BY activations DESC LIMIT 50`).all(args);
+    FROM events WHERE ${where}`, args, 'get'));
+  const daily = (await read(`SELECT substr(received_at,1,10) AS day,count(*) AS events,count(DISTINCT CASE WHEN purpose='behavior' THEN account_id END) AS accounts FROM events WHERE ${where} GROUP BY day ORDER BY day`, args, 'all'));
+  const features = (await read(`SELECT route,count(*) AS events,count(DISTINCT account_id) AS accounts FROM events WHERE ${where} AND purpose='behavior' GROUP BY route ORDER BY events DESC LIMIT 30`, args, 'all'));
+  const controls = (await read(`SELECT control_id AS control,count(*) AS activations FROM events WHERE ${where} AND name='control_activated' GROUP BY control_id ORDER BY activations DESC LIMIT 50`, args, 'all'));
   return { generatedAt, totals, daily, features, controls, health: collectorHealth() };
 }
-function percentile(sorted: number[], quantile: number) { return sorted.length ? sorted[Math.max(0, Math.ceil(sorted.length * quantile) - 1)] : null; }

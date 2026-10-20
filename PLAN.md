@@ -10,17 +10,22 @@ Plan history and necessary diagnostics continue after behavioral opt-out. Public
 - [x] Typed event catalogue, separate SQLite store, delivery/outbox, identity and preference controls.
 - [x] Transactional plan revisions and provider-attempt instrumentation.
 - [x] Browser and server product coverage, including failures, retries and currency changes.
-- [ ] Admin reporting, journeys, history, LLM and collection health.
-- [ ] Backup/restore, deletion tooling, tests, deployment and event/metric documentation.
+- [x] Admin reporting, journeys, history, LLM and collection health.
+- [x] Backup/restore, deletion tooling, tests, deployment and event/metric documentation.
+- [ ] Linux production CI and deployment-host scale/performance verification before launch.
 
 Visual thesis: the admin workspace uses the app's existing typography and primary colour, with a compact
 filter bar, readable charts and unboxed tables. Content: overview, journeys, funnels, plans, LLM and health.
 Interaction: tab selection and expanding details; no decorative entry animation.
 
-First implementation milestone: 52 instrumented route modules, 255 annotated controls including select changes,
-six admin views, atomic planner/history writes, LLM attempt metadata and full-only analytics backup/restore.
-Initial Windows production build passes (the documented dependency-junction tracing warning remains).
-Focused checks pass 33/33; full regression, security/metrics tests, browser verification and operator docs continue.
+Implementation: 52 instrumented route modules, 255 annotated controls including select changes, six admin views,
+atomic planner/history writes, LLM attempt metadata, background exports and full-only analytics backup/restore.
+Large report/export reads use a bounded read-only worker; erasure invalidates exports, including in-flight reads.
+Windows production build, TypeScript, focused ESLint, coverage, memory and methodology checks pass. All 601 unit
+tests pass with a 30-second cold setup allowance on Windows; earlier 10-second setup timeouts and async fixture
+cycles are recorded in LOG.md. Production browser flows pass for history/opt-out and mobile reports/security.
+The 10,000-event smoke reports take 3–530 ms, with 11.76 ms added mutation p95 on this workstation; final stress
+verification and Linux checks continue. No performance claim is made for the deployment host.
 
 **Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 

@@ -143,3 +143,9 @@ describe.sequential('write route input validation', () => {
     expect((dbModule.sqlite.prepare('SELECT name FROM tags WHERE id = 1').get() as { name: string }).name).toBe('Renamed');
   });
 });
+
+// The focused fixtures omit itinerary/history tables; history uses its own complete-schema tests.
+vi.mock('@/lib/analytics/history', () => ({
+ withCityPriceRevisions: (_ids: string[], mutate: Parameters<DbModule['db']['transaction']>[0]) => dbModule.db.transaction(mutate),
+ withPlanRevision: (_user: string, _action: string, mutate: Parameters<DbModule['db']['transaction']>[0]) => dbModule.db.transaction(mutate),
+}));

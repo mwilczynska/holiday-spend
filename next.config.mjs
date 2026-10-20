@@ -33,6 +33,7 @@ const nextConfig = {
   outputFileTracingIncludes: {
       '/*': [
         './node_modules/argon2/prebuilds/**/*',
+        './scripts/lib/analytics-query-worker.mjs',
         ...RUNTIME_PROMPT_FILES.map((file) => `./docs/prompts/${file}`),
       ],
   },

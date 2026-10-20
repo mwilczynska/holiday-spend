@@ -15,6 +15,7 @@ const definitions = {
   currency_change_requested: z.object({ from: z.string().regex(/^[A-Z]{3}$/), to: z.string().regex(/^[A-Z]{3}$/) }).strict(),
   currency_change_confirmed: z.object({ currency: z.string().regex(/^[A-Z]{3}$/) }).strict(),
   browser_error: z.object({ kind: z.enum(['error', 'unhandled_rejection']), fingerprint: z.string().regex(/^[0-9a-f]{8}$/) }).strict(),
+  server_error: z.object({ fingerprint: z.string().regex(/^[0-9a-f]{64}$/), phase: z.enum(['render', 'request']) }).strict(),
   web_vital: z.object({ metric: z.enum(['LCP', 'CLS', 'INP', 'TTFB']), value: z.number().finite().nonnegative().max(3_600_000) }).strict(),
   request_completed: z.object({ method: z.enum(['GET', 'POST', 'PUT', 'PATCH', 'DELETE']), status: z.number().int().min(100).max(599), durationMs: z.number().nonnegative(), resource: control, outcome }).strict(),
   mutation_committed: z.object({ action: control, entityId: z.string().max(100).optional(), revisionId: z.number().int().optional(), legCount: count.optional(), totalNights: count.optional(), totalBudgetAud: z.number().finite().optional() }).strict(),
