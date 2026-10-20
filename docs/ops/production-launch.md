@@ -42,7 +42,7 @@ On the deployment host, copy `.env.production.example` to `.env.production.local
 | `RESEND_API_KEY` | Sending-only key restricted to the verified sending domain |
 | `MAIL_FROM` | `Holiday Spend <no-reply@auth.projectinfinitesummer.com>` |
 
-Remove `AUTH_DEV_PIN` and `APP_SECRET`. Google is optional and not required for the chosen email/password launch. Application LLM keys remain in the user's browser; do not copy them into deployment settings.
+Remove `AUTH_DEV_PIN` and `APP_SECRET`. Do not set `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY`; startup refuses them because any allowlisted account could spend them. Google is optional and not required for the chosen email/password launch. Application LLM keys remain in the user's browser; do not copy them into deployment settings.
 
 The container refuses to start with missing or inconsistent configuration, a missing/empty database, a failed SQLite check, or missing runtime prompts. `/api/health` reports readiness without disclosing data. Development `npm start` remains available for local use; the strict production preflight is the Docker entrypoint.
 
@@ -89,7 +89,8 @@ The one-off restore helper runs as container root so it can read a private incom
 - Terminate HTTPS at the existing proxy and forward the public Host and protocol. Overwrite `X-Real-IP` from the connection's trusted address; never forward the client's arbitrary value. Do not expose the upstream directly to the Internet.
 - Do not cache authenticated pages, `/api`, or auth responses. Preserve cookies and query strings. Allow long LLM requests up to the configured deadline (default 600 seconds) and a suitable body limit for CSV imports.
 - Keep one writable app replica with a local persistent filesystem. Do not put SQLite on ephemeral/serverless storage or a shared network filesystem.
-- Package all four city/transport prompt files; Docker copies them explicitly. The app includes its font locally and does not need Google Fonts access during a build.
+- Package the five city/transport prompt files listed in `scripts/lib/runtime-prompts.mjs`; Docker copies them explicitly and a test fails if the Dockerfile and list differ.
+- The app sends its own security headers (CSP with `frame-ancestors 'none'`, `X-Frame-Options`, HSTS, `Referrer-Policy: same-origin`, `nosniff`, `Permissions-Policy`). Do not add a second, conflicting set in nginx; two CSP headers are both enforced. The app includes its font locally and does not need Google Fonts access during a build.
 
 Host nginx example for the existing TLS server block:
 
@@ -110,8 +111,8 @@ If Cloudflare proxying is enabled for the **website** later, configure nginx's r
 
 The prepared owner's copied password is deliberately unknown. Once HTTPS and email delivery work:
 
-1. Open `/forgot-password`, enter the owner's allowed email, and use the received link to choose a password (at least ten characters, not all digits).
-2. Open `/login`, use **Resend verification email** for the same address and follow that link. If the resend control appears only after a sign-in attempt, attempt the new password first.
+1. Open `/forgot-password`, enter the owner's allowed email, and use the received link to choose a password (at least ten characters, not all digits). Completing the reset also verifies the address.
+2. Verification links from signup or **Resend verification email** ask for the account's password before verifying.
 3. Sign in with the new password. Confirm the existing trip, expenses and saved plans are present. Do not create a second account or change ownership IDs.
 4. Test sign-out, reset, change-password and a second browser's session revocation. Confirm a blocked email cannot register. Additional accounts require adding their email to the allowlist and recreating the container.
 

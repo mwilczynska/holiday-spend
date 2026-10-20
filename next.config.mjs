@@ -1,3 +1,6 @@
+import { RUNTIME_PROMPT_FILES } from './scripts/lib/runtime-prompts.mjs';
+import { buildSecurityHeaders } from './scripts/lib/security-headers.mjs';
+
 // `next dev` and `next build` share one build directory by default, so each wipes the other's
 // output and forces a full cold recompile on every switch. That collision surfaced as
 // `ChunkLoadError: Loading chunk app/layout failed (timeout)` — a failed chunk load takes down the
@@ -23,14 +26,14 @@ const nextConfig = {
     '192.168.*.*',
     ...Array.from({ length: 16 }, (_, i) => `172.${16 + i}.*.*`),
   ],
+  async headers() {
+    return [{ source: '/:path*', headers: buildSecurityHeaders({ development: isDevServer }) }];
+  },
   serverExternalPackages: ['better-sqlite3', 'argon2'],
   outputFileTracingIncludes: {
       '/*': [
         './node_modules/argon2/prebuilds/**/*',
-        './docs/prompts/llm_prompt_new_cities_1.md',
-        './docs/prompts/llm_prompt_new_cities_v1_1.md',
-        './docs/prompts/llm_prompt_intercity_transport_1.md',
-        './docs/prompts/llm_prompt_intercity_transport_v1_1.md',
+        ...RUNTIME_PROMPT_FILES.map((file) => `./docs/prompts/${file}`),
       ],
   },
 };

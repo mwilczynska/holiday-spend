@@ -56,7 +56,7 @@ export async function POST(
   try {
     const userId = await requireCurrentUserId();
     const body = await request.json();
-    const { tagIds } = z.object({ tagIds: z.array(z.number()) }).parse(body);
+    const { tagIds } = z.object({ tagIds: z.array(z.number().int()).max(500) }).parse(body);
     const expenseId = parseInt((await params).id);
 
     const expense = await db

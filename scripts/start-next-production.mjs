@@ -2,6 +2,7 @@ import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } fr
 import { dirname, resolve } from 'node:path';
 import { spawn } from 'node:child_process';
 import nextEnv from '@next/env';
+import { RUNTIME_PROMPT_FILES } from './lib/runtime-prompts.mjs';
 
 const { loadEnvConfig } = nextEnv;
 
@@ -16,12 +17,7 @@ const promptSourcePath = resolve(projectRoot, 'docs', 'prompts');
  * the path appears as a string literal, so a prompt selected through a lookup table can be missing
  * from the bundle while working perfectly in development.
  */
-const requiredPromptFiles = [
-  'llm_prompt_new_cities_1.md',
-  'llm_prompt_new_cities_v1_1.md',
-  'llm_prompt_intercity_transport_1.md',
-  'llm_prompt_intercity_transport_v1_1.md',
-];
+const requiredPromptFiles = RUNTIME_PROMPT_FILES;
 
 if (
   !existsSync(buildIdPath)

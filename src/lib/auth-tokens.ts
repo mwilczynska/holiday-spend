@@ -61,6 +61,17 @@ export async function consumeToken(
   return consumeTokenSync(rawToken, purpose);
 }
 
+/** Reads the owner of an unused, unexpired token without consuming it. */
+export function findActiveTokenUser(rawToken: string, purpose: TokenPurpose): { userId: string } | null {
+  if (!rawToken) return null;
+  const nowStamp = toSqliteTimestamp(new Date());
+  const row = sqlite.prepare(`
+    SELECT user_id AS userId FROM auth_tokens
+    WHERE token_hash = ? AND purpose = ? AND consumed_at IS NULL AND expires_at > ?
+  `).get(hashRawToken(rawToken), purpose, nowStamp) as { userId: string } | undefined;
+  return row ?? null;
+}
+
 /** Synchronous so consumption and the protected write share one SQLite transaction. */
 export function consumeTokenSync(rawToken: string, purpose: TokenPurpose): { userId: string } | null {
   if (!rawToken) return null;

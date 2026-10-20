@@ -15,6 +15,7 @@ describe('production startup configuration', () => {
     { NEXTAUTH_URL: 'https://wrong.example.com' }, { APP_URL: 'http://spend.example.com' },
     { RESEND_API_KEY: '' }, { MAIL_FROM: '' }, { HOLIDAY_SPEND_DB_PATH: '' },
     { HOLIDAY_SPEND_TRUST_PROXY: 'false' }, { AUTH_DEV_PIN: '12345' },
+    { OPENAI_API_KEY: 'server-key-fixture' }, { ANTHROPIC_API_KEY: 'server-key-fixture' }, { GEMINI_API_KEY: 'server-key-fixture' },
   ])('fails closed for incomplete or unsafe configuration: %j', invalid => {
     expect(() => validateProductionConfig({ ...valid, ...invalid })).toThrow();
   });

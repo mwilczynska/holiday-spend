@@ -1,12 +1,14 @@
 import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { error, handleError, success } from '@/lib/api-helpers';
+import { requireCurrentUserId } from '@/lib/auth';
 import { collectMissingSnapshotCities, parseSnapshotImportRequest } from '@/lib/snapshot-import';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   try {
+    await requireCurrentUserId();
     const body = await request.json();
     const { snapshot } = parseSnapshotImportRequest(body);
 

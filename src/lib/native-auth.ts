@@ -2,7 +2,23 @@ import { and, eq } from 'drizzle-orm';
 import { db } from '@/db';
 import { accounts, userPasswords, users } from '@/db/schema';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
-import { verifyPassword } from '@/lib/password';
+import { hashPassword, verifyPassword } from '@/lib/password';
+
+let dummyHashPromise: Promise<string> | null = null;
+
+/**
+ * Runs one Argon2 verification against a throwaway hash, so a sign-in for an address with no
+ * account or no password takes as long as one with a wrong password and does not reveal which
+ * allowlisted addresses have registered.
+ */
+async function spendEquivalentVerification(password: string) {
+  dummyHashPromise ??= hashPassword(crypto.randomUUID());
+  try {
+    await verifyPassword(await dummyHashPromise, password);
+  } catch {
+    dummyHashPromise = null;
+  }
+}
 
 export type NativeAuthResult =
   | {
@@ -43,6 +59,7 @@ export async function verifyEmailPasswordCredentials(
     .get();
 
   if (!user) {
+    await spendEquivalentVerification(rawPassword);
     return { kind: 'invalid' };
   }
 
@@ -53,6 +70,7 @@ export async function verifyEmailPasswordCredentials(
     .get();
 
   if (!stored) {
+    await spendEquivalentVerification(rawPassword);
     const googleAccount = await db
       .select({ userId: accounts.userId })
       .from(accounts)

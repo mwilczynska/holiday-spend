@@ -6,7 +6,7 @@ import { success, handleError } from '@/lib/api-helpers';
 import { z } from 'zod';
 
 const reorderSchema = z.object({
-  legIds: z.array(z.number()),
+  legIds: z.array(z.number().int()).max(2000),
 });
 
 export async function PUT(request: Request) {

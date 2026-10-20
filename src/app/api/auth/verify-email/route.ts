@@ -1,9 +1,10 @@
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
-import { users } from '@/db/schema';
+import { userPasswords, users } from '@/db/schema';
 import { authError, authSuccess, handleAuthError, RateLimitError } from '@/lib/auth-responses';
-import { consumeTokenSync } from '@/lib/auth-tokens';
+import { consumeTokenSync, findActiveTokenUser } from '@/lib/auth-tokens';
+import { verifyPassword } from '@/lib/password';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { getRequestIp } from '@/lib/request-ip';
 
@@ -11,8 +12,17 @@ export const dynamic = 'force-dynamic';
 
 const verifySchema = z.object({
   token: z.string().min(1),
+  password: z.string().min(1),
 });
 
+/**
+ * Verification requires the account's password as well as the emailed link.
+ *
+ * Without it, anyone who knew an allowlisted address could register it first with their own
+ * password; the real owner's later signup only re-sent the link, and clicking it verified an
+ * account whose password the other person knew. The link proves control of the mailbox and the
+ * password proves the person in the mailbox chose it. A wrong password leaves the link usable.
+ */
 export async function POST(request: Request) {
   try {
     const clientIp = getRequestIp(request) ?? 'unknown';
@@ -28,9 +38,23 @@ export async function POST(request: Request) {
     const body = await request.json();
     const data = verifySchema.parse(body);
 
+    const pending = findActiveTokenUser(data.token, 'verify_email');
+    const stored = pending
+      ? db.select({ hash: userPasswords.hash }).from(userPasswords).where(eq(userPasswords.userId, pending.userId)).get()
+      : undefined;
+    if (!pending || !stored) {
+      return authError('This verification link is invalid or has expired.', 400);
+    }
+    if (!(await verifyPassword(stored.hash, data.password))) {
+      return authError(
+        'That password does not match this account. If you did not choose it, reset your password from the sign-in page instead.',
+        400
+      );
+    }
+
     const updated = db.transaction(tx => {
       const consumed = consumeTokenSync(data.token, 'verify_email');
-      if (!consumed) return null;
+      if (!consumed || consumed.userId !== pending.userId) return null;
       tx.update(users).set({ emailVerified: new Date() }).where(eq(users.id, consumed.userId)).run();
       return tx.select({ email: users.email }).from(users).where(eq(users.id, consumed.userId)).get();
     });

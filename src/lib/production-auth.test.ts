@@ -89,7 +89,7 @@ describe.sequential('production email/password authentication', { timeout: 20000
   it('requires the private allowlist and never enables the production PIN', async () => {
     expect(auth.getConfiguredAuthProviders().devPin).toBe(false);
     const result = await signup.POST(post({ email: 'stranger@example.com', password: 'A-good-password-123' }));
-    expect(result.status).toBe(403);
+    expect(result.status).toBe(200);
     expect(database.sqlite.prepare('SELECT count(*) AS n FROM user').get()).toEqual({ n: 0 });
     expect(state.verification).not.toHaveBeenCalled();
     await forgot.POST(post({ email: 'stranger@example.com' }));
@@ -106,8 +106,9 @@ describe.sequential('production email/password authentication', { timeout: 20000
     expect((await native.verifyEmailPasswordCredentials('owner@example.com', 'First-password-123')).kind).toBe('unverified');
     expect(state.verification.mock.calls[0][1]).toMatch(/^https:\/\/spend.example.com\/verify-email\?token=/);
     const token = sentToken(state.verification);
-    expect((await verify.POST(post({ token }))).status).toBe(200);
-    expect((await verify.POST(post({ token }))).status).toBe(400);
+    expect((await verify.POST(post({ token, password: 'wrong-password' }))).status).toBe(400);
+    expect((await verify.POST(post({ token, password: 'First-password-123' }))).status).toBe(200);
+    expect((await verify.POST(post({ token, password: 'First-password-123' }))).status).toBe(400);
     expect((await native.verifyEmailPasswordCredentials(' OWNER@example.com ', 'First-password-123')).kind).toBe('ok');
   });
 
@@ -117,20 +118,32 @@ describe.sequential('production email/password authentication', { timeout: 20000
     expect((await signup.POST(post({ email: 'owner@example.com', password: 'First-password-123' }))).status).toBe(500);
     const oldToken = sentToken(state.verification);
     expect((await signup.POST(post({ email: 'owner@example.com', password: 'Different-password-123' }))).status).toBe(200);
-    expect((await verify.POST(post({ token: oldToken }))).status).toBe(400);
-    expect((await verify.POST(post({ token: sentToken(state.verification) }))).status).toBe(200);
+    expect((await verify.POST(post({ token: oldToken, password: 'First-password-123' }))).status).toBe(400);
+    expect((await verify.POST(post({ token: sentToken(state.verification), password: 'First-password-123' }))).status).toBe(200);
     expect((await native.verifyEmailPasswordCredentials('owner@example.com', 'First-password-123')).kind).toBe('ok');
     expect((await native.verifyEmailPasswordCredentials('owner@example.com', 'Different-password-123')).kind).toBe('invalid');
     logger.mockRestore();
   });
 
+  it('does not let an earlier registration keep a password the mailbox owner did not choose', async () => {
+    expect((await signup.POST(post({ email: 'owner@example.com', password: 'Attacker-password-123' }))).status).toBe(200);
+    expect((await signup.POST(post({ email: 'owner@example.com', password: 'Owner-password-123' }))).status).toBe(200);
+    const link = sentToken(state.verification);
+    expect((await verify.POST(post({ token: link, password: 'Owner-password-123' }))).status).toBe(400);
+    expect((await native.verifyEmailPasswordCredentials('owner@example.com', 'Attacker-password-123')).kind).toBe('unverified');
+    expect((await forgot.POST(post({ email: 'owner@example.com' }))).status).toBe(200);
+    expect((await reset.POST(post({ token: sentToken(state.reset), newPassword: 'Owner-password-123' }))).status).toBe(200);
+    expect((await native.verifyEmailPasswordCredentials('owner@example.com', 'Owner-password-123')).kind).toBe('ok');
+    expect((await native.verifyEmailPasswordCredentials('owner@example.com', 'Attacker-password-123')).kind).toBe('invalid');
+  });
+
   it('resends verification, expires prior links and rate limits repeated requests', async () => {
     const user = await register();
     const expired = await tokens.issueToken(user.id, 'verify_email', { ttlMinutes: -1 });
-    expect((await verify.POST(post({ token: expired.rawToken }))).status).toBe(400);
+    expect((await verify.POST(post({ token: expired.rawToken, password: 'First-password-123' }))).status).toBe(400);
     const first = sentToken(state.verification);
     expect((await resend.POST(post({ email: 'owner@example.com' }))).status).toBe(200);
-    expect((await verify.POST(post({ token: first }))).status).toBe(400);
+    expect((await verify.POST(post({ token: first, password: 'First-password-123' }))).status).toBe(400);
     expect((await resend.POST(post({ email: 'owner@example.com' }))).status).toBe(200);
     expect((await resend.POST(post({ email: 'owner@example.com' }))).status).toBe(200);
     const limited = await resend.POST(post({ email: 'owner@example.com' }));
@@ -140,7 +153,7 @@ describe.sequential('production email/password authentication', { timeout: 20000
 
   it('resets a password once and revokes existing sessions and other account tokens', async () => {
     const user = await register();
-    await verify.POST(post({ token: sentToken(state.verification) }));
+    await verify.POST(post({ token: sentToken(state.verification), password: 'First-password-123' }));
     const oldSession: JWT = { sub: user.id, email: 'owner@example.com', tokenVersion: 0 };
     expect((await jwt(oldSession)).sub).toBe(user.id);
     expect((await forgot.POST(post({ email: 'owner@example.com' }))).status).toBe(200);
@@ -167,7 +180,7 @@ describe.sequential('production email/password authentication', { timeout: 20000
 
   it('changes passwords only with the current password and revokes sessions', async () => {
     const user = await register();
-    await verify.POST(post({ token: sentToken(state.verification) }));
+    await verify.POST(post({ token: sentToken(state.verification), password: 'First-password-123' }));
     state.session = { user: { id: user.id, email: 'owner@example.com' } };
     expect((await change.POST(post({ currentPassword: 'wrong', newPassword: 'Second-password-123' }))).status).toBe(400);
     expect((await change.POST(post({ currentPassword: 'First-password-123', newPassword: 'Second-password-123' }))).status).toBe(200);

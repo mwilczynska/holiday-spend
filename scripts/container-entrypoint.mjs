@@ -3,6 +3,7 @@ import path from 'node:path';
 import { spawn } from 'node:child_process';
 import Database from 'better-sqlite3';
 import { validateProductionConfig } from './lib/production-config.mjs';
+import { RUNTIME_PROMPT_FILES } from './lib/runtime-prompts.mjs';
 
 try {
   validateProductionConfig(process.env);
@@ -15,7 +16,7 @@ try {
     if (db.pragma('quick_check', { simple: true }) !== 'ok') throw new Error('Database quick check failed.');
     if (!db.prepare('SELECT count(*) AS count FROM cities').get().count) throw new Error('City library is empty.');
   } finally { db.close(); }
-  for (const file of ['llm_prompt_new_cities_1.md', 'llm_prompt_new_cities_v1_1.md', 'llm_prompt_intercity_transport_1.md', 'llm_prompt_intercity_transport_v1_1.md']) {
+  for (const file of RUNTIME_PROMPT_FILES) {
     if (!existsSync(path.resolve('docs/prompts', file))) throw new Error(`Runtime prompt missing: ${file}`);
   }
 } catch (error) {

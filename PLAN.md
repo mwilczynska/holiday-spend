@@ -12,6 +12,27 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
+## Pre-deployment security hardening — COMPLETE on branch `security/pre-deploy-hardening` (20 October 2026)
+
+Owner-requested review before the public launch; medium and low findings fixed.
+
+- Cross-origin writes: the proxy refuses `/api/*` writes whose Origin or Sec-Fetch-Site shows another origin,
+  including sibling subdomains such as `projectinfinitesummer.com`, which SameSite=Lax cookies treat as same-site.
+- Email verification requires the account's password, so an earlier registration of an allowlisted address cannot
+  keep a password the mailbox owner did not choose. A completed password reset also verifies the address. Signup
+  answers the same for allowlisted and other addresses; sign-in spends one Argon2 verification for unknown accounts.
+- Production startup refuses `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` and `GEMINI_API_KEY` (guests could spend them).
+- The proxy also checks the allowlist; snapshot preflight now requires a full session check.
+- Climate: non-admins may fill or retry a missing record (200 per hour), not replace a saved one.
+- ID lists on bulk expense, reorder and tag routes are bounded; stale rate-limit rows and week-old expired tokens are
+  purged hourly.
+
+- Deployment blockers fixed: the v1.2 prompt was missing from the Docker image, file tracing, start script and
+  entrypoint check (city generation would have failed in production); runtime prompts are now one shared list with a
+  drift test. Security headers (CSP, framing denied, HSTS, Referrer-Policy, nosniff, Permissions-Policy) are sent on
+  every response; a production build renders and hydrates its public pages without CSP violations. Signed-in pages
+  were not checked in the browser under the CSP.
+
 ## Display currency — MERGED to main via PR #19 (20 October 2026)
 
 Owner request: currency selection beside travellers and in Settings, at current rates.

@@ -3639,6 +3639,24 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   the configured GitHub remote as an unverified destination. The owner then explicitly approved pushing to
   mwilczynska/holiday-spend and opening a draft PR on 20 October 2026.
 
+## 20 October 2026 — Pre-deployment security hardening
+
+- Review before public launch on `projectinfinitesummer.com`. Kept: Argon2id, hashed single-use tokens, token-version
+  revocation, the allowlist, strict production startup checks and per-user scoping on every data route.
+- CSRF: cookies are SameSite=Lax, and the landing page on the apex domain is the same site as `spend.`, so a page
+  there could have posted with a visitor's session. The proxy now runs on every path and refuses cross-origin
+  `/api/*` writes by Origin or Sec-Fetch-Site. Requests with neither header (scripts, tests) are allowed because they
+  cannot carry a visitor's cookie.
+- Pre-registration: signing up an allowlisted address first kept that password, because the owner's later signup
+  only re-sent the link. Verification now needs the account password; reset verifies the address instead, which is
+  how the owner recovers from someone else's registration. Signup no longer returns 403 for non-allowlisted addresses.
+- Server LLM keys are refused at production startup rather than removed from the code fallbacks, which local
+  development and scripts still use.
+- Deployment blockers: the v1.2 prompt had been added to the code but to none of the four packaging lists, so a
+  container would start and then fail every city generation. The lists now import one module, with a test tying it
+  to the prompt constants and the Dockerfile. Security headers come from the app; script-src keeps 'unsafe-inline'
+  because nonce-based CSP would force every page to render per request.
+
 ## 20 October 2026 — Display currency merged
 
 - Owner requested merging PR #19 and cleaning up its source branch/worktree. Squash-merged to main as ecae75c4.
