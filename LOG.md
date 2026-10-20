@@ -3636,4 +3636,5 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   timeout; warmed reruns passed. Supplied Agra only in the seeded test database for existing planner fixtures.
 - Work is isolated on codex/display-currency at C:\Dev\holiday-spend-worktrees\display-currency. The other agent's
   checkout and the live database were not edited. Automatic approval review rejected publishing source/history to
-  the configured GitHub remote as an unverified destination; push and pull request await explicit approval.
+  the configured GitHub remote as an unverified destination. The owner then explicitly approved pushing to
+  mwilczynska/holiday-spend and opening a draft PR on 20 October 2026.

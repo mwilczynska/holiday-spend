@@ -12,7 +12,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
-## Display currency — COMPLETE locally on branch `codex/display-currency` (20 October 2026)
+## Display currency — COMPLETE on branch `codex/display-currency` (20 October 2026)
 
 Owner request: currency selection beside travellers and in Settings, at current rates.
 Isolated branch `codex/display-currency`, worktree `C:\Dev\holiday-spend-worktrees\display-currency`.
@@ -25,7 +25,7 @@ Verification: 562 unit tests; two currency browser flows and three existing plan
 focused ESLint, production build, memory mirror and methodology guard pass. Live EUR preference saves survive full
 Settings/planner reloads at the 20 October 2026 observation. Browser tests use a seeded worktree database.
 The worktree build warns about standalone tracing across its dependency junction; deployment boot is not verified.
-Publishing is pending explicit approval for the configured GitHub destination after automatic review rejected push.
+The owner approved push to mwilczynska/holiday-spend and a draft PR after automatic review rejected the destination.
 
 ## Mobile UI review — COMPLETE (20 October 2026)
 
