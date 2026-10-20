@@ -29,11 +29,17 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   `dev-local-user`. Sent as one tar (per-file scp was slow and broke on a dropped connection); on the VPS all 1,063
   manifest hashes match in `~/holiday-spend/incoming/production`. Settings installed as `.env.production.local` (600).
 - [x] Cloudflare A records for `blog` and `spend` → 45.63.24.34, DNS only; both resolve on 1.1.1.1 and 8.8.8.8.
-- [ ] One certificate for apex, www, blog and spend.
-- [ ] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports. Written for owner
-  review, not yet applied: project-infinite-summer `edge-proxy` (`edge/`, `docs/cutover-runbook.md`, 37/37 route
-  checks in CI), travel-blog `edge-proxy` (frontend behind the edge, 9/9 header checks), and this repository's
-  `deploy/edge-network` (Holiday Spend joins the external `edge` network).
+
+- [x] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports. Reviewed and
+  merged: project-infinite-summer#1, travel-blog#2, holiday-spend#20. Cutover 22:51 UTC 20 October: rehearsal on
+  spare ports passed, handoff took 5 s with the blog backend untouched, apex/www/photo/API 200 behind the edge.
+- [x] One certificate for apex, www, blog and spend (expires 18 January 2027), renewal now webroot through the edge
+  proxy; old stop/start-frontend hooks retired, `deploy/reload-edge.sh` added; `certbot renew --dry-run` succeeds.
+  Public check: all four names verify, `/api/health` ok, HTTP redirects to HTTPS, app security headers present.
+- [x] Runbook phase 0 on the VPS: edge files and both private repos delivered as git bundles (no GitHub credentials
+  on the host), `edge` network and `/var/www/acme` created, image `0c633aa` pulled, snapshot restored (531 cities,
+  1,062 photos, 70 legs, 1,543 expenses, 80 plans, 2 users, integrity ok). Holiday Spend runs healthy on
+  127.0.0.1:3000 and the edge network only, using 83 MiB; 1.2 GiB of host memory remains available.
 - [ ] Start Holiday Spend, verify health and data, owner reset and sign-in, then switch apex/www to the landing page.
 - [ ] Daily and off-host backups for both applications.
 
