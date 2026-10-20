@@ -11,7 +11,8 @@ import { getActiveNavHref, isAuthRoute } from './nav-match';
 const navItems = [
   { href: '/', label: 'Home', icon: LayoutDashboard },
   { href: '/plan', label: 'Plan', icon: Map, excludePrefix: '/plan/compare' },
-  { href: '/plan/compare', label: 'Compare Plans', icon: BarChart3 },
+  // Short labels: seven targets share 375px on a phone.
+  { href: '/plan/compare', label: 'Compare', icon: BarChart3 },
   { href: '/track/add', label: 'Add', icon: Plus, highlight: true },
   { href: '/track', label: 'Track', icon: Receipt },
   { href: '/settings', label: 'Settings', icon: Settings },
@@ -52,10 +53,11 @@ export function MobileNav() {
                 isNavigating && 'opacity-80'
               )}
             >
+              {/* One icon size so every label sits on the same baseline. */}
               {isNavigating ? (
-                <Loader2 className={cn('h-5 w-5 animate-spin', item.highlight && 'h-6 w-6')} />
+                <Loader2 className="h-5 w-5 animate-spin" />
               ) : (
-                <item.icon className={cn('h-5 w-5', item.highlight && 'h-6 w-6')} />
+                <item.icon className={cn('h-5 w-5', item.highlight && 'stroke-[2.5]')} />
               )}
               <span>{item.label}</span>
             </Link>

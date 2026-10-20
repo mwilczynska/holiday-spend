@@ -28,3 +28,33 @@ test('narrow pages contain wide tables and comparison cards within their scroll 
     await expect(page.getByRole('button', { name: 'Sign out', exact: true })).toBeInViewport();
   }
 });
+
+test('the pinned planner header stays compact on a phone and keeps its actions in a menu', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/plan');
+  await expect(page.getByRole('heading', { name: 'Itinerary Planner', exact: true })).toBeVisible();
+
+  const header = page.locator('div.fixed.top-0').filter({ has: page.getByRole('heading', { name: 'Itinerary Planner' }) });
+  const headerBox = await header.boundingBox();
+  expect(headerBox?.height ?? Infinity).toBeLessThan(160);
+  await expect(page.getByRole('combobox', { name: 'Travellers' })).toHaveText(/\d travellers?/);
+  await expect(page.getByRole('button', { name: 'Add Leg' })).toBeInViewport();
+  await expect(page.getByRole('button', { name: 'Save Plan' })).toBeHidden();
+
+  await page.getByRole('button', { name: 'More plan actions' }).click();
+  for (const name of ['Save Plan', 'Export', 'Import']) {
+    await expect(page.getByRole('menuitem', { name })).toBeVisible();
+  }
+  await expect(page.getByRole('menuitem', { name: /Estimate Intercity Transport/ })).toBeVisible();
+  await page.keyboard.press('Escape');
+
+  // Legs come straight after the banner on a phone; the summaries follow them.
+  const top = async (name: string) => (await page.getByRole('heading', { name, exact: true }).first().boundingBox())?.y ?? NaN;
+  const banner = (await page.getByRole('region', { name: 'Trip at a glance' }).boundingBox())?.y ?? NaN;
+  const legs = await top('Legs');
+  expect(banner).toBeLessThan(legs);
+  expect(legs).toBeLessThan(await top('Trip summary'));
+  expect(legs).toBeLessThan(await top('By country'));
+
+  await page.screenshot({ path: 'test-results/playwright/mobile-planner-header.png' });
+});

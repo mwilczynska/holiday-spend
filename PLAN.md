@@ -12,6 +12,25 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
+## Mobile UI review — COMPLETE (20 October 2026)
+
+Owner report: on the plan tab the pinned header left little room for the plan. Reviewed every route at 375×812.
+
+- Planner header: below 640px it is one row (travellers, More menu, Add Leg) plus the plan summary; Sort, Save,
+  Export, Import and Estimate Intercity Transport move into the More menu, and the descriptions are hidden.
+  Height 373px → 125px. The content offset is measured rather than assuming the 56px desktop padding.
+- Planner order on phones: banner, then legs, then summary, by-country, saved plans and climate (CSS order; the
+  layout from 640px up is unchanged). Legs previously started about 1,850px down.
+- Planner, Expenses filter and Settings traveller selects render their text on the server instead of a blank box
+  until hydration.
+- Compare Plans no longer shows "No comparison data available" before its first load.
+- Bottom navigation: one icon size so labels align, "Compare" instead of "Compare Plans", and a labelled Sign out.
+
+Verified with Playwright at 375px (`mobile-layout.spec.ts`, new header and order test) and the desktop planner
+regression specs. Not fixed: leg card headers squeeze the city name and dates into a narrow column on phones; the
+Expenses header and explanation fill most of the first screen; Expenses filters are 32px tall; Compare Plans header
+is about 160px. `planner-read-failures.spec.ts` fails its 5-second alert expectation on main as well (pre-existing).
+
 ## Dashboard chart country labels on mobile — COMPLETE (20 October 2026)
 
 Owner report: on a phone, the country names above the cumulative spend chart overlapped.

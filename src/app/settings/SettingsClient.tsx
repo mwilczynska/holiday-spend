@@ -298,6 +298,11 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
     );
   }
 
+  const settingsTravellerCount = groupSizeDraft ?? groupSize;
+  const settingsTravellerLabel = settingsTravellerCount == null
+    ? undefined
+    : `${settingsTravellerCount} ${settingsTravellerCount === 1 ? 'traveller' : 'travellers'}`;
+
   return (
     <div className="space-y-6">
       <div>
@@ -337,7 +342,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
             <Label htmlFor="settings-travellers">Travellers</Label>
             <Select value={groupSizeDraft != null ? String(groupSizeDraft) : groupSize == null ? '' : String(groupSize)} onValueChange={handleGroupSizeChange} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)}>
               <SelectTrigger id="settings-travellers">
-                <SelectValue placeholder="Unavailable" />
+                {/* Explicit text: Radix renders an empty value until the options mount in the browser. */}
+                <SelectValue placeholder="Unavailable">{settingsTravellerLabel}</SelectValue>
               </SelectTrigger>
               <SelectContent>
                 {[1, 2, 3, 4, 5].map((count) => (

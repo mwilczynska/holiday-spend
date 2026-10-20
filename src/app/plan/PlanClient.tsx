@@ -32,7 +32,8 @@ import type { CityImageView } from '@/lib/city-image-view';
 import type { NewCityCreatedPayload } from '@/components/itinerary/PlannerNewCityDialog';
 import { cn } from '@/lib/utils';
 
-import { ArrowUpDown, ChevronsDownUp, ChevronsUpDown, Download, Map as MapIcon, Plus, Save, Upload, Users } from 'lucide-react';
+import { ArrowUpDown, ChevronsDownUp, ChevronsUpDown, Download, Map as MapIcon, MoreHorizontal, Plus, Route, Save, Upload, Users } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import type { IntercityTransportItem, MiscellaneousExpenseItem } from '@/types';
 import { getMiscellaneousExpenseTotal, miscellaneousExpensesSchema } from '@/lib/miscellaneous-expenses';
 import { getDailyCost, getLegTotal } from '@/lib/cost-calculator';
@@ -376,7 +377,13 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     clearAllSavedApiKeys: clearStoredAllImportApiKeys,
     hasAnySavedApiKey: hasAnySavedImportApiKey,
   } = useProviderApiKeys();
-  const plannerContentTopPadding = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight - 56, 128) : 144;
+  // The fixed header overlays the page, so the content is pushed down by the header's height less
+  // the distance the content already starts from the top (page padding), plus a 16px gap. That
+  // distance was hard-coded as 56px, the desktop value; on a phone it is 40px, so a 128px floor
+  // stood in and left a gap once the mobile header became compact.
+  const plannerContentRef = useRef<HTMLDivElement>(null);
+  const [plannerContentOffset, setPlannerContentOffset] = useState(56);
+  const plannerContentTopPadding = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight - plannerContentOffset + 16, 0) : 144;
 
   useEffect(() => {
     const header = plannerHeaderRef.current;
@@ -384,6 +391,8 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
 
     const updateHeight = () => {
       setPlannerHeaderHeight(header.getBoundingClientRect().height);
+      const content = plannerContentRef.current;
+      if (content) setPlannerContentOffset(Math.round(content.getBoundingClientRect().top + window.scrollY));
     };
 
     updateHeight();
@@ -1145,6 +1154,23 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     );
   }
 
+  // Shared by the header buttons and the phone-width More menu.
+  const sortByDateDisabled = hasUnsavedLegEdits || orderSaving || pageLoading || !!pageError || legs.length < 2 || isAlreadySortedByDate;
+  const savePlanDisabled = hasUnsavedLegEdits || pageLoading || !!pageError;
+  const bulkTransportDisabled = hasUnsavedLegEdits || pageLoading || !!pageError || estimatableTransportLegCount === 0;
+  const bulkTransportLabel = `Estimate Intercity Transport${
+    estimatableTransportLegCount > 0
+      ? missingTransportLegCount > 0
+        ? ` (${missingTransportLegCount} missing)`
+        : ` (${estimatableTransportLegCount} eligible)`
+      : ''
+  }`;
+  const openBulkTransport = () => {
+    setBulkTransportEstimateOpen(true);
+    setSnapshotStatus(null);
+    setSnapshotError(null);
+  };
+
   return (
     <div className="space-y-6">
       <input
@@ -1512,28 +1538,32 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
         </DialogContent>
       </Dialog>
 
-      <div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
+      <div ref={plannerContentRef} className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
         <div className="fixed inset-x-0 top-0 z-30 border-b bg-background/95 backdrop-blur lg:left-60">
-          <div ref={plannerHeaderRef} className="mx-auto max-w-7xl px-4 py-4 lg:px-8">
-            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          {/* The header stays pinned, so on a phone it keeps to two rows: the descriptions are hidden
+              and the less frequent actions move into a More menu. Before this it covered 373px of
+              an 812px screen. */}
+          <div ref={plannerHeaderRef} className="mx-auto max-w-7xl px-4 py-3 sm:py-4 lg:px-8">
+            <div className="flex flex-col items-stretch justify-between gap-2 sm:flex-row sm:items-center sm:gap-4">
               <div className="max-w-xl">
                 <div className="flex items-center gap-2.5">
-                  <MapIcon className="h-6 w-6 text-brand-teal" aria-hidden="true" />
-                  <h1 className="text-2xl font-extrabold tracking-tight">Itinerary Planner</h1>
+                  <MapIcon className="h-5 w-5 text-brand-teal sm:h-6 sm:w-6" aria-hidden="true" />
+                  <h1 className="text-xl font-extrabold tracking-tight sm:text-2xl">Itinerary Planner</h1>
                 </div>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <p className="mt-1 hidden text-sm text-muted-foreground sm:block">
                   Build your trip leg by leg. City costs are stored for 2 people and scaled here for your selected traveller count.
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="hidden text-xs text-muted-foreground sm:block">
                   Traveller count is shared with Settings and the dashboard.
                 </p>
               </div>
-              <div className="flex flex-wrap items-center justify-end gap-2">
-                <div className="min-w-[170px]">
+              <div className="flex items-center gap-2 sm:flex-wrap sm:justify-end">
+                <div className="min-w-0 flex-1 sm:min-w-[170px] sm:flex-none">
                   <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
                     <SelectTrigger aria-label="Travellers" className="h-10 gap-2 font-semibold" disabled={hasUnsavedLegEdits || pageLoading}>
                       <Users className="h-4 w-4 shrink-0" aria-hidden="true" />
-                      <SelectValue />
+                      {/* Explicit text: Radix renders an empty value until the options mount in the browser. */}
+                      <SelectValue>{groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}</SelectValue>
                     </SelectTrigger>
                     <SelectContent>
                       {[1, 2, 3, 4, 5].map((count) => (
@@ -1553,25 +1583,52 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                 <Button
                   type="button"
                   variant="outline"
+                  className="hidden sm:inline-flex"
                   onClick={handleSortByDate}
-                  disabled={hasUnsavedLegEdits || orderSaving || pageLoading || !!pageError || legs.length < 2 || isAlreadySortedByDate}
+                  disabled={sortByDateDisabled}
                   title={isAlreadySortedByDate ? 'Legs are already in date order' : 'Sort legs by start date'}
                 >
                   <ArrowUpDown className="mr-2 h-4 w-4" />
                   Sort by Date
                 </Button>
-                <Button type="button" variant="outline" disabled={hasUnsavedLegEdits || pageLoading || !!pageError} onClick={() => setSavePlanDialogOpen(true)}>
+                <Button type="button" variant="outline" className="hidden sm:inline-flex" disabled={savePlanDisabled} onClick={() => setSavePlanDialogOpen(true)}>
                   <Save className="mr-2 h-4 w-4" />
                   Save Plan
                 </Button>
-                <Button type="button" variant="outline" disabled={hasUnsavedLegEdits} onClick={handleExportCurrentPlan}>
+                <Button type="button" variant="outline" className="hidden sm:inline-flex" disabled={hasUnsavedLegEdits} onClick={handleExportCurrentPlan}>
                   <Download className="mr-2 h-4 w-4" />
                   Export
                 </Button>
-                <Button type="button" variant="outline" disabled={hasUnsavedLegEdits} onClick={() => importInputRef.current?.click()}>
+                <Button type="button" variant="outline" className="hidden sm:inline-flex" disabled={hasUnsavedLegEdits} onClick={() => importInputRef.current?.click()}>
                   <Upload className="mr-2 h-4 w-4" />
                   Import
                 </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger
+                    render={
+                      <Button type="button" variant="outline" size="icon" className="h-10 w-10 shrink-0 sm:hidden" aria-label="More plan actions">
+                        <MoreHorizontal className="h-4 w-4" />
+                      </Button>
+                    }
+                  />
+                  <DropdownMenuContent align="end" className="w-64">
+                    <DropdownMenuItem className="py-2" disabled={sortByDateDisabled} onClick={handleSortByDate}>
+                      <ArrowUpDown /> {isAlreadySortedByDate ? 'Already in date order' : 'Sort by Date'}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="py-2" disabled={savePlanDisabled} onClick={() => setSavePlanDialogOpen(true)}>
+                      <Save /> Save Plan
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="py-2" disabled={hasUnsavedLegEdits} onClick={handleExportCurrentPlan}>
+                      <Download /> Export
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="py-2" disabled={hasUnsavedLegEdits} onClick={() => importInputRef.current?.click()}>
+                      <Upload /> Import
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="py-2" disabled={bulkTransportDisabled} onClick={openBulkTransport}>
+                      <Route /> {bulkTransportLabel}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
                 {hasOpenedBulkTransport ? (
                 <BulkTransportEstimateDialog
                   open={bulkTransportEstimateOpen}
@@ -1589,19 +1646,11 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={() => {
-                    setBulkTransportEstimateOpen(true);
-                    setSnapshotStatus(null);
-                    setSnapshotError(null);
-                  }}
-                  disabled={hasUnsavedLegEdits || pageLoading || !!pageError || estimatableTransportLegCount === 0}
+                  className="hidden sm:inline-flex"
+                  onClick={openBulkTransport}
+                  disabled={bulkTransportDisabled}
                 >
-                  Estimate Intercity Transport
-                  {estimatableTransportLegCount > 0
-                    ? missingTransportLegCount > 0
-                      ? ` (${missingTransportLegCount} missing)`
-                      : ` (${estimatableTransportLegCount} eligible)`
-                    : ''}
+                  {bulkTransportLabel}
                 </Button>
                 {hasOpenedPlannerNewCity ? (
                   <PlannerNewCityDialog
@@ -1619,7 +1668,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                   setAddDialogOpen(open);
                 }}>
                   <DialogTrigger asChild>
-                    <Button>
+                    <Button className="shrink-0">
                       <Plus className="mr-2 h-4 w-4" />
                       Add Leg
                     </Button>
@@ -1746,33 +1795,38 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             {hasUnsavedLegEdits ? (
               <p role="status" className="mt-3 text-sm text-amber-700">Unsaved leg edits. Trip totals reflect saved data. Retry or discard failed changes before saving, exporting or replacing the plan.</p>
             ) : null}
-            <div className="mt-3 text-xs text-muted-foreground">
+            <div className="mt-2 text-xs text-muted-foreground sm:mt-3">
               {pageError ? 'Last loaded plan' : 'Current plan'}: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
             </div>
           </div>
         </div>
       </div>
 
+        {/* On a phone the legs come straight after the banner: the summaries and climate move below them with
+            CSS order (the top grid becomes display: contents so its banner and cards can be ordered on their own).
+            From 640px up the layout and order are unchanged. */}
         <div
-          className="space-y-4 pb-6"
+          className="flex flex-col gap-4 pb-6 sm:block sm:space-y-4"
           style={{ paddingTop: plannerContentTopPadding }}
         >
-          <div className="grid gap-3.5 lg:grid-cols-[minmax(0,1.5fr)_minmax(300px,1fr)] 2xl:grid-cols-[minmax(0,1.6fr)_minmax(300px,1fr)_minmax(260px,0.8fr)]">
+          <div className="grid gap-3.5 max-sm:contents lg:grid-cols-[minmax(0,1.5fr)_minmax(300px,1fr)] 2xl:grid-cols-[minmax(0,1.6fr)_minmax(300px,1fr)_minmax(260px,0.8fr)]">
             <TripBanner legs={legs} />
-            <TripSummaryCard legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
-            <div className="lg:col-span-2 2xl:col-span-1">
+            <div className="max-sm:order-2 sm:contents">
+              <TripSummaryCard legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
+            </div>
+            <div className="max-sm:order-2 lg:col-span-2 2xl:col-span-1">
               <CountrySummaryCard legs={legs} />
             </div>
           </div>
 
           {savedPlansError ? (
-            <div role="alert" className="mb-3 flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive">
+            <div role="alert" className="mb-3 flex flex-wrap items-center gap-2 rounded-md border p-3 text-sm text-destructive max-sm:order-2">
               <span>{savedPlansError} Showing the last loaded saved plans; the list may be out of date.</span>
               <Button type="button" size="sm" variant="outline" disabled={savedPlansLoading} onClick={() => void fetchSavedPlans()}>Retry saved plans</Button>
             </div>
           ) : null}
           {savedPlans.length > 0 && (
-            <div className="mb-4">
+            <div className="mb-4 max-sm:order-2">
               <SavedPlansList
                 plans={savedPlans}
                 onLoad={handleLoadSavedPlan}
@@ -1783,9 +1837,11 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             </div>
           )}
 
-          <TripClimate legs={legs} climate={climate} unit={temperatureUnit} onToggle={toggleTemperature} onRetry={retryClimate} />
+          <div className="max-sm:order-2">
+            <TripClimate legs={legs} climate={climate} unit={temperatureUnit} onToggle={toggleTemperature} onRetry={retryClimate} />
+          </div>
 
-          <section aria-label="Itinerary legs">
+          <section aria-label="Itinerary legs" className="max-sm:order-1">
             <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-[15px] font-bold">Legs</h2>
               {legs.length > 0 ? (

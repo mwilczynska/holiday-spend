@@ -449,7 +449,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
       <div className="flex flex-wrap items-center gap-2 rounded-2xl border bg-card p-3">
         <Filter className="ml-1 h-4 w-4 text-muted-foreground" aria-hidden="true" />
         <Select value={filterCat} onValueChange={setFilterCat}>
-          <SelectTrigger aria-label="Filter category" className="h-8 w-[140px] text-xs"><SelectValue placeholder="Category" /></SelectTrigger>
+          <SelectTrigger aria-label="Filter category" className="h-8 w-[140px] text-xs"><SelectValue placeholder="Category">{filterCat === 'all' ? 'All categories' : EXPENSE_CATEGORIES.find((category) => category.value === filterCat)?.label}</SelectValue></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All categories</SelectItem>
             {EXPENSE_CATEGORIES.map((category) => (
@@ -460,7 +460,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
           </SelectContent>
         </Select>
         <Select value={filterSource} onValueChange={setFilterSource}>
-          <SelectTrigger aria-label="Filter source" className="h-8 w-[120px] text-xs"><SelectValue /></SelectTrigger>
+          <SelectTrigger aria-label="Filter source" className="h-8 w-[120px] text-xs"><SelectValue>{filterSource === 'manual' ? 'Manual' : filterSource === 'wise_csv' ? 'Wise CSV' : 'All sources'}</SelectValue></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All sources</SelectItem>
             <SelectItem value="manual">Manual</SelectItem>

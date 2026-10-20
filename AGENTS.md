@@ -352,6 +352,9 @@ succeeded and then redirected to a port with nothing listening. Trusting the Hos
 only and is never set for `npm start`. Auth form inputs adopt text typed before the page's JavaScript loaded (and
 browser autofill), so Sign in and Enter dev mode enable without retyping on a slow first compile. Set `NEXT_DIST_DIR`
 to give a second dev server its own build directory; two dev servers sharing `.next-dev` overwrite each other's chunks.
+Such a directory contains junctions into `node_modules` (`dev/node_modules/argon2-*`, `better-sqlite3-*`): remove the
+links with `rmdir` before deleting it. A fresh `next dev` also appends a Next.js agent-rules block to `AGENTS.md`;
+revert it, because `AGENTS.md` must mirror this file.
 A phone can use the dev server at the machine's LAN address (for example `http://192.168.1.179:3000`):
 `next.config.mjs` lists private-network ranges in `allowedDevOrigins`. Without them Next 16 returns 403 for dev
 resources requested from a non-localhost origin, and the page renders but never hydrates, so its buttons stay disabled.

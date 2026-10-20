@@ -367,8 +367,9 @@ export default function ComparePlansPage() {
           </div>
         )}
 
-        {/* Empty results */}
-        {!hasResults && !showSelector && !error && !loading && (
+        {/* Empty results: only after a comparison has returned, not on the first render before
+            the mount effect decides whether to load one or show the selector. */}
+        {comparisonData !== null && !hasResults && !showSelector && !error && !loading && (
           <p className="text-sm text-muted-foreground">
             No comparison data available. The selected plans may not have valid date ranges.
           </p>
