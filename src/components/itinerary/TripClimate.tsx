@@ -1,15 +1,19 @@
 'use client';
 import dynamic from 'next/dynamic';
-import { useEffect, useMemo } from 'react';
+import { useDeferredValue, useEffect, useMemo } from 'react';
 import { CloudSun } from 'lucide-react';
 import { tripClimateSeries, climateSegments, type ClimateLeg, type CityClimate, type TemperatureUnit } from '@/lib/climate';
 import { TemperatureToggle } from './LegClimate';
 import { Button } from '@/components/ui/button';
 const TripClimateChart = dynamic(() => import('./TripClimateChart').then(module => module.TripClimateChart), { ssr: false,
   loading: () => <div className="flex h-72 items-center justify-center text-sm text-muted-foreground" role="status">Loading climate chart…</div> });
-export function TripClimate({ legs, climate, unit, onToggle, onRetry }: {
+export function TripClimate({ legs: currentLegs, climate: currentClimate, unit, onToggle, onRetry }: {
   legs: ClimateLeg[]; climate: Record<string, CityClimate | null | undefined>; unit: TemperatureUnit; onToggle: () => void; onRetry: () => void;
 }) {
+  // The series has one point per day of the trip; rebuilding it and redrawing the chart can wait until edits to the
+  // itinerary have rendered, rather than holding up every keystroke.
+  const legs = useDeferredValue(currentLegs);
+  const climate = useDeferredValue(currentClimate);
   // Start loading chart code while the database request is in flight, and retain a
   // stable series while unrelated planner controls render.
   useEffect(() => { if (legs.length) void import('./TripClimateChart'); }, [legs.length]);

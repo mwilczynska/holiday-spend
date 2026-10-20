@@ -1,7 +1,17 @@
 'use client';
 
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
-import { useState, useEffect, useCallback, useId, useMemo, useRef } from 'react';
+import { useState, useEffect, useCallback, useId, useLayoutEffect, useMemo, useRef } from 'react';
+import { reuseUnchangedById } from '@/lib/reuse-unchanged';
+import {
+  createNewLegDraft,
+  DEFAULT_NEW_LEG_NIGHTS,
+  newLegDraftError,
+  nextLegStartDate,
+  updateNewLegDraft,
+  type NewLegDraft,
+} from '@/lib/new-leg-draft';
+import { MAX_LEG_NIGHTS } from '@/lib/itinerary-validation';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -287,19 +297,24 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   const [plannerNewCityOpen, setPlannerNewCityOpen] = useState(false);
   const [hasOpenedPlannerNewCity, setHasOpenedPlannerNewCity] = useState(false);
   const nextLegDraftId = useRef(1);
-  const [newLegDrafts, setNewLegDrafts] = useState([{ id: 0, cityId: '', nights: '7' }]);
-  const [initialNewCity, setInitialNewCity] = useState<{ cityName: string; nights: string }>();
+  const [newLegDrafts, setNewLegDrafts] = useState<NewLegDraft[]>(
+    () => [createNewLegDraft(0, nextLegStartDate(initialData.legs.at(-1)?.endDate))]
+  );
+  const [initialNewCity, setInitialNewCity] = useState<{ cityName: string; nights: string; startDate?: string }>();
   const [addingLeg, setAddingLeg] = useState(false);
   const [addLegError, setAddLegError] = useState<string | null>(null);
   const [addLegStatus, setAddLegStatus] = useState<string | null>(null);
   const addLegSubmitting = useRef(false);
-  const newLegValid = newLegDrafts.every(draft => draft.cityId && Number.isSafeInteger(Number(draft.nights)) && Number(draft.nights) > 0);
-  const updateNewLegDraft = (id: number, changes: Partial<(typeof newLegDrafts)[number]>) => {
-    setNewLegDrafts(current => current.map(draft => draft.id === id ? { ...draft, ...changes } : draft));
+  const newLegValid = newLegDrafts.every(draft => draft.cityId && newLegDraftError(draft) == null);
+  const setNewLegDraftField = (id: number, field: 'cityId' | 'startDate' | 'endDate' | 'nights', value: string) => {
+    setNewLegDrafts(current => current.map(draft => draft.id === id ? updateNewLegDraft(draft, field, value) : draft));
   };
-  const resetNewLegDrafts = () => setNewLegDrafts([{ id: nextLegDraftId.current++, cityId: '', nights: '7' }]);
-  const openNewCity = (cityName = '', nights = '7') => {
-    setInitialNewCity(cityName ? { cityName, nights } : undefined);
+  // A fresh form starts where the itinerary currently ends.
+  const resetNewLegDrafts = () => setNewLegDrafts([
+    createNewLegDraft(nextLegDraftId.current++, nextLegStartDate(legsRef.current.at(-1)?.endDate)),
+  ]);
+  const openNewCity = (cityName = '', nights = String(DEFAULT_NEW_LEG_NIGHTS), startDate?: string) => {
+    setInitialNewCity(cityName ? { cityName, nights, startDate } : undefined);
     setAddDialogOpen(false);
     setPlannerNewCityOpen(true);
     setSnapshotStatus(null);
@@ -325,6 +340,16 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     });
   }, []);
   const [groupSize, setGroupSize] = useState(initialData.groupSize);
+  // Current values for callbacks passed to every leg card. Depending on the state itself gave those callbacks a new
+  // identity on every save, which rerendered all cards.
+  const legsRef = useRef(legs);
+  const citiesRef = useRef(cities);
+  const groupSizeRef = useRef(groupSize);
+  useLayoutEffect(() => {
+    legsRef.current = legs;
+    citiesRef.current = cities;
+    groupSizeRef.current = groupSize;
+  }, [legs, cities, groupSize]);
   const [pendingImportSnapshot, setPendingImportSnapshot] = useState<PlanSnapshot | null>(null);
   const [pendingImportSourceLabel, setPendingImportSourceLabel] = useState<string | null>(null);
   const [missingCityDrafts, setMissingCityDrafts] = useState<MissingCityResolutionDraft[]>([]);
@@ -405,11 +430,33 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
             countryName: countryMap.get(city.countryId) || 'Unknown',
           }))
           .sort((a, b) => `${a.countryName}-${a.name}`.localeCompare(`${b.countryName}-${b.name}`));
-      setLegs(legs);
+      setLegs((current) => reuseUnchangedById(current, legs));
       setCountries(sortedCountries);
-      setCities(sortedCities);
+      setCities((current) => reuseUnchangedById(current, sortedCities));
       setFixedCosts(fixedCosts);
       setGroupSize(settings.groupSize);
+      setPageError(null);
+      return true;
+    } catch (err) {
+      if (sequence === plannerReadSequence.current) {
+        setPageError(err instanceof Error ? err.message : 'Could not refresh the planner. Check your connection and retry.');
+      }
+      return false;
+    } finally {
+      if (sequence === plannerReadSequence.current) setPageLoading(false);
+    }
+  }, []);
+
+  // After a leg save only the itinerary can have changed, so re-read just that rather than all cities, countries,
+  // fixed costs and settings. It shares the full refresh's sequence, so neither can overwrite a newer result, and it
+  // clears the loading flag a superseded full refresh would otherwise leave set.
+  const refreshLegs = useCallback(async () => {
+    const sequence = ++plannerReadSequence.current;
+    try {
+      const response = await fetch('/api/itinerary', { cache: 'no-store' });
+      const nextLegs = await readPlannerList<Leg>(response, 'itinerary');
+      if (sequence !== plannerReadSequence.current) return false;
+      setLegs((current) => reuseUnchangedById(current, nextLegs));
       setPageError(null);
       return true;
     } catch (err) {
@@ -480,11 +527,11 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
         const response = await fetch('/api/itinerary/legs', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ cityId: draft.cityId, nights: Number(draft.nights) }),
+          body: JSON.stringify({ cityId: draft.cityId, nights: Number(draft.nights), startDate: draft.startDate, endDate: draft.endDate }),
         });
         const result = await response.json().catch(() => null);
         if (!response.ok) throw new Error(result?.error || `Failed to add leg (HTTP ${response.status}).`);
-        if (!Number.isSafeInteger(result?.data?.id) || result.data.id <= 0 || result.data.cityId !== draft.cityId || result.data.nights !== Number(draft.nights)) throw new Error('The server returned an unreadable save result. Your leg could not be confirmed. Reload to check whether it saved before retrying.');
+        if (!Number.isSafeInteger(result?.data?.id) || result.data.id <= 0 || result.data.cityId !== draft.cityId || result.data.nights !== Number(draft.nights) || result.data.startDate !== draft.startDate) throw new Error('The server returned an unreadable save result. Your leg could not be confirmed. Reload to check whether it saved before retrying.');
         completed++;
         setNewLegDrafts(current => current.filter(item => item.id !== draft.id));
       }
@@ -549,14 +596,14 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     const applyConfirmedUpdate = (leg: Leg) => {
       if (leg.id !== id) return leg;
       const next = { ...leg, ...data, ...result.data } as Leg;
-      const city = cities.find(item => item.id === next.cityId);
+      const city = citiesRef.current.find(item => item.id === next.cityId);
       if (city) {
         next.cityName = city.name;
         next.countryName = city.countryName;
         next.countryId = city.countryId;
         next.dailyCost = getDailyCost(city, next.accomTier as import('@/types').AccomTier,
           next.foodTier as import('@/types').FoodTier, next.drinksTier as import('@/types').DrinksTier,
-          next.activitiesTier as import('@/types').ActivitiesTier, next, groupSize);
+          next.activitiesTier as import('@/types').ActivitiesTier, next, groupSizeRef.current);
         next.legTotal = getLegTotal(next.dailyCost, next.nights, next.intercityTransportCost)
           + getMiscellaneousExpenseTotal(next.miscellaneousExpenses);
       }
@@ -565,7 +612,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     setLegs(current => current.map(applyConfirmedUpdate));
 
     if (Object.prototype.hasOwnProperty.call(data, 'status')) {
-      const sortedLegIds = [...legs]
+      const sortedLegIds = [...legsRef.current]
         .map(applyConfirmedUpdate)
         .sort(compareLegDates)
         .map((leg) => leg.id);
@@ -584,10 +631,10 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
       }
     }
 
-    await fetchData();
-  }, [legs, cities, groupSize, fetchData]);
+    await refreshLegs();
+  }, [refreshLegs]);
 
-  const handleDiscardLegEdits = useCallback(() => { void fetchData(); }, [fetchData]);
+  const handleDiscardLegEdits = useCallback(() => { void refreshLegs(); }, [refreshLegs]);
 
   const handleDeleteLeg = useCallback(async (id: number) => {
     try {
@@ -633,15 +680,15 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   }, [fetchData]);
 
   const handleReorder = useCallback(async (legId: number, direction: -1 | 1) => {
-    const fromIndex = legs.findIndex(leg => leg.id === legId);
+    const fromIndex = legsRef.current.findIndex(leg => leg.id === legId);
     if (fromIndex < 0) return;
-    const newLegs = [...legs];
+    const newLegs = [...legsRef.current];
     const toIndex = fromIndex + direction;
     if (toIndex < 0 || toIndex >= newLegs.length) return;
     [newLegs[fromIndex], newLegs[toIndex]] = [newLegs[toIndex], newLegs[fromIndex]];
 
     await saveLegOrder(newLegs.map(l => l.id));
-  }, [legs, saveLegOrder]);
+  }, [saveLegOrder]);
 
   const handleSortByDate = async () => {
     const sortedIds = [...legs].sort(compareLegDates).map((l) => l.id);
@@ -1560,11 +1607,15 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     open={plannerNewCityOpen}
                     onOpenChange={setPlannerNewCityOpen}
                     onCreated={handlePlannerNewCityCreated}
+                    defaultStartDate={nextLegStartDate(legs.at(-1)?.endDate)}
                     initialCity={initialNewCity}
                   />
                 ) : null}
                 <Dialog open={addDialogOpen} onOpenChange={(open) => {
-                  if (!addLegSubmitting.current) setAddDialogOpen(open);
+                  if (addLegSubmitting.current) return;
+                  // An untouched form restarts at the trip's current end; a partly filled one keeps its input.
+                  if (open && newLegDrafts.every(draft => !draft.cityId)) resetNewLegDrafts();
+                  setAddDialogOpen(open);
                 }}>
                   <DialogTrigger asChild>
                     <Button>
@@ -1576,7 +1627,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     <DialogHeader>
                       <DialogTitle>Add Itinerary Leg</DialogTitle>
                       <DialogDescription className="sr-only">
-                        Add a city to the trip and set how many nights you will stay.
+                        Add a city to the trip with its dates and number of nights.
                       </DialogDescription>
                     </DialogHeader>
                     <fieldset className="space-y-4" disabled={addingLeg}>
@@ -1590,34 +1641,65 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                             <Label>City</Label>
                             <SearchableSelect
                               value={draft.cityId}
-                              onValueChange={cityId => updateNewLegDraft(draft.id, { cityId })}
+                              onValueChange={cityId => setNewLegDraftField(draft.id, 'cityId', cityId)}
                               placeholder="Select a city"
                               searchPlaceholder="Search cities..."
                               options={cityOptions}
-                              onCreateOption={search => openNewCity(search, draft.nights)}
+                              onCreateOption={search => openNewCity(search, draft.nights, draft.startDate)}
                             />
                             <p className="mt-2 text-xs text-muted-foreground">
                               Can&apos;t find the city? Add it to the library and create the leg in one flow.
                             </p>
                           </div>
-                          <div>
-                            <Label htmlFor={`add-leg-nights-${draft.id}`}>Nights</Label>
-                            <Input
-                              id={`add-leg-nights-${draft.id}`}
-                              type="number"
-                              min={1}
-                              step={1}
-                              inputMode="numeric"
-                              value={draft.nights}
-                              onChange={(e) => updateNewLegDraft(draft.id, { nights: e.target.value })}
-                            />
-                            {draft.nights !== '' && (!Number.isSafeInteger(Number(draft.nights)) || Number(draft.nights) < 1) ? (
-                              <p className="mt-1 text-sm text-destructive">Enter a whole number of nights, at least 1.</p>
-                            ) : null}
+                          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                            <div>
+                              <Label htmlFor={`add-leg-start-${draft.id}`}>Start date</Label>
+                              <Input
+                                id={`add-leg-start-${draft.id}`}
+                                type="date"
+                                min="2000-01-01"
+                                max="2100-12-31"
+                                value={draft.startDate}
+                                onChange={(e) => setNewLegDraftField(draft.id, 'startDate', e.target.value)}
+                                aria-describedby={newLegDraftError(draft) ? `add-leg-dates-error-${draft.id}` : undefined}
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor={`add-leg-end-${draft.id}`}>End date</Label>
+                              <Input
+                                id={`add-leg-end-${draft.id}`}
+                                type="date"
+                                min="2000-01-01"
+                                max="2100-12-31"
+                                value={draft.endDate}
+                                onChange={(e) => setNewLegDraftField(draft.id, 'endDate', e.target.value)}
+                                aria-describedby={newLegDraftError(draft) ? `add-leg-dates-error-${draft.id}` : undefined}
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor={`add-leg-nights-${draft.id}`}>Nights</Label>
+                              <Input
+                                id={`add-leg-nights-${draft.id}`}
+                                type="number"
+                                min={1}
+                                max={MAX_LEG_NIGHTS}
+                                step={1}
+                                inputMode="numeric"
+                                value={draft.nights}
+                                onChange={(e) => setNewLegDraftField(draft.id, 'nights', e.target.value)}
+                                aria-describedby={newLegDraftError(draft) ? `add-leg-dates-error-${draft.id}` : undefined}
+                              />
+                            </div>
                           </div>
+                          {newLegDraftError(draft) ? (
+                            <p id={`add-leg-dates-error-${draft.id}`} className="text-sm text-destructive">{newLegDraftError(draft)}</p>
+                          ) : null}
                         </div>
                       ))}
-                      <Button type="button" variant="outline" onClick={() => setNewLegDrafts(current => [...current, { id: nextLegDraftId.current++, cityId: '', nights: '7' }])}>Add another city</Button>
+                      <Button type="button" variant="outline" onClick={() => setNewLegDrafts(current => [
+                        ...current,
+                        createNewLegDraft(nextLegDraftId.current++, nextLegStartDate(current.at(-1)?.endDate ?? legsRef.current.at(-1)?.endDate)),
+                      ])}>Add another city</Button>
                     </fieldset>
                     {addLegError ? <p role="alert" className="text-sm text-destructive">{addLegError}</p> : null}
                     {addLegStatus ? <p role="status" className="text-sm text-muted-foreground">{addLegStatus}</p> : null}
