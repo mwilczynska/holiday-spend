@@ -71,15 +71,17 @@ describe('city-cost methodology v1.2', () => {
     expect(prompt).not.toContain('Do\nnot use web search to source the city-price anchors');
   });
 
-  it('corrects food, drink, 3-star and 1-star; leaves hostels, cocktail and wine unchanged', () => {
+  it('corrects food, drink, hotels and hostels; leaves cocktail and wine unchanged', () => {
     const correction = resolveCityCostV12Correction('Japan', 'East Asia');
     expect(correction.version).toBe(CITY_COST_V12_CORRECTION_VERSION);
     expect(correction.countryCode).toBe('JP');
-    for (const anchor of ['inexp_meal_1p', 'midrange_meal_2p', 'beer', 'coffee', 'hotel_3star_2p', 'hotel_1star_2p'] as const) {
+    for (const anchor of [
+      'inexp_meal_1p', 'midrange_meal_2p', 'beer', 'coffee', 'hotel_3star_2p', 'hotel_1star_2p', 'hostel_dorm_1p', 'hostel_private_2p',
+    ] as const) {
       expect(correction.anchors[anchor].basis).toBe('country');
       expect(correction.anchors[anchor].factor).toBe(corrections.country[anchor].JP.factor);
     }
-    for (const anchor of ['hostel_dorm_1p', 'hostel_private_2p', 'cocktail', 'wine_glass'] as const) {
+    for (const anchor of ['cocktail', 'wine_glass'] as const) {
       expect(correction.anchors[anchor]).toEqual({ factor: 1, basis: 'none' });
     }
   });
@@ -102,7 +104,8 @@ describe('city-cost methodology v1.2', () => {
     expect(materialized.methodologyVersion).toBe(CITY_COST_V12_METHODOLOGY_VERSION);
     expect(materialized.rawAnchorsUsd).toEqual(anchors);
     expect(materialized.anchorsUsd.hotel_3star_2p).toBe(Math.round(100 * factor('hotel_3star_2p') * 100) / 100);
-    expect(materialized.anchorsUsd.hostel_dorm_1p).toBe(12);
+    expect(materialized.anchorsUsd.hostel_dorm_1p).toBe(Math.round(12 * factor('hostel_dorm_1p') * 100) / 100);
+    expect(materialized.anchorsUsd.cocktail).toBe(8);
     expect(materialized.tiersUsd.accom_4_star).toBeCloseTo(materialized.anchorsUsd.hotel_3star_2p * 1.8, 6);
 
     const reference = materializeCityCostV11({ ...response, anchors_usd: materialized.anchorsUsd }, now);

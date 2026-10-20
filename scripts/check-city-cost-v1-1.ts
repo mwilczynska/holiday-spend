@@ -54,7 +54,9 @@ if (first.tiersAud.accom_4_star !== Math.round(100 * 1.8 * first.fx.audPerUsd)) 
 
 // v1.2: the correction table covers exactly the owner-approved anchors, every factor is plausible, and corrected
 // anchors flow through the unchanged v1.1 materialization (so 4-star follows the corrected 3-star).
-const CORRECTED = ['inexp_meal_1p', 'midrange_meal_2p', 'beer', 'coffee', 'hotel_3star_2p', 'hotel_1star_2p'];
+const CORRECTED = [
+  'inexp_meal_1p', 'midrange_meal_2p', 'beer', 'coffee', 'hotel_3star_2p', 'hotel_1star_2p', 'hostel_dorm_1p', 'hostel_private_2p',
+];
 if (JSON.stringify([...corrections.correctedAnchors].sort()) !== JSON.stringify([...CORRECTED].sort())) {
   throw new Error(`v1.2 corrected anchors changed: ${corrections.correctedAnchors.join(', ')}`);
 }
@@ -68,7 +70,7 @@ if (factors.some((f) => !Number.isFinite(f) || f < 0.2 || f > 3)) throw new Erro
 const v12 = materializeCityCostV12(fixture, { countryName: 'Italy' }, checkDate);
 const v12Reference = materializeCityCostV11({ ...fixture, anchors_usd: v12.anchorsUsd }, checkDate);
 if (JSON.stringify(v12.tiersAud) !== JSON.stringify(v12Reference.tiersAud)) throw new Error('v1.2 must reuse the v1.1 materialization.');
-if (v12.anchorsUsd.hostel_dorm_1p !== fixture.anchors_usd.hostel_dorm_1p) throw new Error('v1.2 must not correct hostels.');
+if (v12.anchorsUsd.cocktail !== fixture.anchors_usd.cocktail) throw new Error('v1.2 must not correct cocktails.');
 
 assertV11OutputPathSafe('data/reference/v1-1-staged/preview.json');
 console.log(JSON.stringify({

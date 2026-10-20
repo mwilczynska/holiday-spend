@@ -3574,3 +3574,19 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - Photo review: Codex Luna Max workers looked at each stored 500 px photo with its city, article and Commons title.
   525 ok; Mykonos and Santorini (PNG municipality maps), Palermo (church interior) and Oaxaca (the state's mountains)
   flagged.
+
+## 19 October 2026 — Hostel correction enabled
+
+- Why hostels were held: their references were the lowest Hostelworld prices for dates a few days out, not a typical
+  night across the year, so a factor fitted to them would have pulled estimates towards off-peak minimums.
+- Year-typical references (panel R4, research branch): Hostelworld's dated search needs private API credentials, so
+  each city's near-term hostel price is scaled by that city's Booking.com seasonality, exp(mean ln of six stay-date
+  medians - ln of the November medians), with the region median where a city has fewer than five usable dates.
+  Median scale 1.08. Assumption, recorded on every row: hostel prices move across the year like hotel prices.
+- Result (leave-one-city-out, development cities, Luna 102 answers): dorm 0.323 uncorrected to 0.232 corrected,
+  private room 0.401 to 0.235. Against the old near-term references the factors would have been 0.73 and 0.65; the
+  year-typical references give 0.81 and 0.70 by that measure, and the fitted table's global factors are 0.77 and 0.70.
+- Table `v1.2-corrections-2026-10-19` adds hostel factors only; the other six anchors' factors are byte-identical.
+- `scripts/recorrect-city-costs.ts` re-applies the table from each estimate's stored raw anchors and exchange rate,
+  with no model call. Like the exchange-rate refresh it changes a planner field only if it still equals what the
+  estimate produced.

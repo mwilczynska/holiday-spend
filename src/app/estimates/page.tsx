@@ -99,7 +99,9 @@ const corrections = [
   ['3-star room', '× 0.62', 'Median 3-star price on Booking.com and Trip.com, taxes included, over six dates across a year'],
   ['1-star room', '× 0.85', 'Cheaper quarter of decently rated hotels and guest houses on Booking.com'],
   ['Meals, beer, coffee', '× 0.96 to 1.01', 'Numbeo city medians'],
-  ['Hostels, cocktail, wine', 'not corrected', 'No reference that matches a typical night or a glass of wine'],
+  ['Hostel dorm', '× 0.77', 'Cheapest Hostelworld bed, scaled to a year-typical level by the city\'s Booking.com prices'],
+  ['Hostel private room', '× 0.70', 'Cheapest Hostelworld private room, scaled the same way'],
+  ['Cocktail, wine', 'not corrected', 'No reliable reference for a cocktail or a glass of wine'],
 ];
 
 const accuracy = [
@@ -320,7 +322,7 @@ export default function EstimatesPage() {
         </Step>
         <Step number={3} title="The app corrects consistent errors">
           <p>
-            Models price some items consistently high or low. The app multiplies six of the ten prices by a fixed factor
+            Models price some items consistently high or low. The app multiplies eight of the ten prices by a fixed factor
             for the city’s country, learnt from real prices in 475 reference cities.
           </p>
           <Note>A country with few reference cities leans on its region’s factor; a country with none uses the region’s.</Note>
@@ -349,8 +351,8 @@ export default function EstimatesPage() {
           <Table head={['Method', '333 development cities', '142 held-out cities']} rows={accuracy} mono={[1, 2]} />
           <p>
             Measured in October 2026 against independently collected prices. The held-out cities were set aside before
-            any experiment. Typical errors are 7 to 11% for meals, beer and coffee, about 20% for 3-star rooms and 23 to
-            25% for 1-star rooms and hostels.
+            any experiment. Typical errors are 7 to 11% for meals, beer and coffee, about 20% for 3-star rooms, 23 to 25%
+            for 1-star rooms and about 26% for hostels.
           </p>
         </Tile>
       </div>
@@ -450,7 +452,7 @@ export default function EstimatesPage() {
           <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-700 lg:columns-2 lg:gap-10 [&>li]:break-inside-avoid">
             <li>Accommodation is the weakest part: the correction fixes the price level, but the model still does not know which cities are dearer than others.</li>
             <li>Food and drink accuracy is partly the model finding the same crowd-sourced sources the references use, so it overstates accuracy against what travellers pay.</li>
-            <li>Hostel, cocktail and wine prices are uncorrected model estimates.</li>
+            <li>Cocktail and wine prices are uncorrected model estimates. Hostel references are near-term prices scaled by hotel seasonality.</li>
             <li>Tier multipliers are fixed assumptions, never fitted to data. The 4-star value adds nothing beyond 3-star.</li>
             <li>Activity tiers are not based on activity prices.</li>
             <li>Confidence labels are the model’s own judgement, not a measured error. Transport was checked on three routes only.</li>
@@ -478,7 +480,7 @@ export default function EstimatesPage() {
                 <span className="ml-auto rounded-full bg-card px-2 py-0.5 text-xs font-semibold text-brand-teal ring-1 ring-brand-teal/30">Current</span>
               </div>
               <h3 className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">What it does</h3>
-              <p className="mt-1">v1.1 plus up to five food and drink searches, and a fixed per-country correction of six prices before the formulas.</p>
+              <p className="mt-1">v1.1 plus up to five food and drink searches, and a fixed per-country correction of six prices before the formulas; hostels added on 19 October 2026.</p>
               <h3 className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Why</h3>
               <p className="mt-1">
                 Prompt rewording, model averaging and searching for hotels did not help once consistent bias was removed.

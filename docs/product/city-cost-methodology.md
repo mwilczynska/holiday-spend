@@ -79,16 +79,22 @@ If the RBA quotes USD per AUD (the usual form, about 0.70), the server inverts i
 
 Language models price some items consistently too high or too low. Measured against real prices, GPT-6 Luna's 3-star
 rooms come out about 60% above what 3-star rooms actually cost on booking sites. The server removes these consistent
-errors by multiplying six of the ten USD prices by a fixed correction factor:
+errors by multiplying eight of the ten USD prices by a fixed correction factor:
 
 | Anchor | Typical factor | Reference it is aligned to |
 | --- | --- | --- |
 | `hotel_3star_2p` | 0.62 | median 3-star price on Booking.com and Trip.com, taxes included, averaged over six stay dates across a year |
 | `hotel_1star_2p` | 0.85 | the cheaper quarter of decently rated hotels and guest houses on Booking.com, same dates |
+| `hostel_dorm_1p` | 0.77 | cheapest dorm bed on Hostelworld, scaled to a year-typical level by the same city's Booking.com prices over the six stay dates |
+| `hostel_private_2p` | 0.70 | cheapest private room on Hostelworld, scaled the same way |
 | `midrange_meal_2p`, `inexp_meal_1p`, `beer`, `coffee` | 0.96 to 1.01 | Numbeo city medians |
 
-Hostel dorms, private rooms, cocktails and wine are not corrected: the available hostel prices are near-term minimums
-rather than typical nights, and no source publishes restaurant wine by the glass. Their values are the model's own.
+Cocktails and wine are not corrected: no source publishes restaurant wine by the glass, and cocktail references
+are too sparse. Their values are the model's own. The hostel references assume hostel prices move across the year
+like hotel prices in the same city, because Hostelworld's dated search is not publicly available.
+
+When the table changes, `scripts/recorrect-city-costs.ts` re-applies it to every v1.2 city from the stored raw
+model prices at the stored exchange rate, without a model call. Hand-edited fields are kept.
 
 Each factor depends on the country. The table (`src/lib/data/city-cost-corrections-v1-2.json`) was fitted on 475
 reference cities in 93 countries. For a country, the factor is the average ratio between reference and model prices in
@@ -251,8 +257,8 @@ confirmed on 142 cities that were set aside before any experiment. The measure i
 | v1.1, uncorrected | 0.435 (about 54%) | not measured |
 | v1.2 | 0.163 (about 18%) | 0.190 (about 21%) |
 
-By item, v1.2's typical errors are 7 to 11% for coffee, beer and meals, 20% for 3-star rooms and 23 to 25% for 1-star
-rooms and hostels. The full record, including every experiment and why it was or was not adopted, is on the research
+By item, v1.2's typical errors are 7 to 11% for coffee, beer and meals, 20% for 3-star rooms, 23 to 25% for 1-star
+rooms and about 26% for hostels (38 to 49% before the hostel correction). The full record, including every experiment and why it was or was not adopted, is on the research
 branch (section 12).
 
 ## 11. Limitations
@@ -263,7 +269,8 @@ branch (section 12).
 - Part of the food and drink accuracy comes from the model finding the same crowd-sourced sources the references use,
   so those figures overstate accuracy against what travellers actually pay.
 - The reference prices themselves are noisy: Booking.com and Trip.com differ by about 13% for a typical city.
-- Hostel, cocktail and wine prices are uncorrected model estimates.
+- Cocktail and wine prices are uncorrected model estimates. Hostel references are near-term Hostelworld prices
+  scaled by hotel seasonality, not observed year-round hostel prices.
 - The tier multipliers (street meal 0.6, 4-star 1.8, high-end food 1.5, the activity formula) are fixed assumptions
   applied to every city. The 4-star value contains no information beyond the 3-star price.
 - The activity tiers are not based on any activity prices.
