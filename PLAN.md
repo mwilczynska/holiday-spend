@@ -29,7 +29,6 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   `dev-local-user`. Sent as one tar (per-file scp was slow and broke on a dropped connection); on the VPS all 1,063
   manifest hashes match in `~/holiday-spend/incoming/production`. Settings installed as `.env.production.local` (600).
 - [x] Cloudflare A records for `blog` and `spend` → 45.63.24.34, DNS only; both resolve on 1.1.1.1 and 8.8.8.8.
-
 - [x] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports. Reviewed and
   merged: project-infinite-summer#1, travel-blog#2, holiday-spend#20. Cutover 22:51 UTC 20 October: rehearsal on
   spare ports passed, handoff took 5 s with the blog backend untouched, apex/www/photo/API 200 behind the edge.
@@ -40,7 +39,10 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   on the host), `edge` network and `/var/www/acme` created, image `0c633aa` pulled, snapshot restored (531 cities,
   1,062 photos, 70 legs, 1,543 expenses, 80 plans, 2 users, integrity ok). Holiday Spend runs healthy on
   127.0.0.1:3000 and the edge network only, using 83 MiB; 1.2 GiB of host memory remains available.
-- [ ] Start Holiday Spend, verify health and data, owner reset and sign-in, then switch apex/www to the landing page.
+- [x] Apex and www switched to the landing page (`WWW_MODE=landing` in `edge/.env` on the VPS). Both serve it with
+  working links, styles and images; old blog paths redirect 301 to `blog.`, old `/uploads` photos still load. The
+  proxy recreate interrupted all three sites for about 13 s while connections drained.
+- [ ] Owner password reset and first sign-in on `spend.`; blog sign-in on `blog.`.
 - [ ] Daily and off-host backups for both applications.
 
 ## Pre-deployment security hardening — COMPLETE on branch `security/pre-deploy-hardening` (20 October 2026)
