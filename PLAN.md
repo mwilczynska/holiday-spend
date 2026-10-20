@@ -12,34 +12,46 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 19 October 2026
 
-## Planner dates and performance — PLANNED (20 October 2026)
+## Planner dates and performance — IN PROGRESS (20 October 2026)
 
 Owner request: editing leg dates lags badly with 60+ legs spanning over a year, and a new leg is appended at the end
 (dated in 2027), so moving it to 2026 recalculates and redraws a year of values and climate. Branch
-`feat/planner-dates-performance`, worktree `C:\Dev\holiday-spend-worktrees\planner-performance` (from main `fee606f1`;
-rebase onto current main first). No code written yet.
+`feat/planner-dates-performance`, worktree `C:\Dev\holiday-spend-worktrees\planner-performance`.
 
-Findings (read from the code, not yet measured in a browser):
-- `LegCard.tsx` `handleDateChange` saves on every `onChange` of `<input type="date">`. Typing a year digit by digit
-  produces valid dates in years 0002, 0020 and 0202, each saved, with `nights` derived from the span (hundreds of
-  thousands of nights) and a trip-climate series with one point per day. Likely the main cause of the lag.
-- The leg PUT and POST routes accept any string as a date and any positive `nights`.
-- `PlanClient.tsx` `handleUpdateLeg` ends with `fetchData()`, which re-reads the itinerary, all cities (531), countries,
-  fixed costs and settings, and replaces `legs` and `cities` with new objects, so every memoized `LegCard` rerenders.
-- `handleUpdateLeg` depends on `legs`, so its identity changes on every save and defeats `LegCard` memoization;
-  `orderSaving` includes `pageLoading`, which toggles on every refetch.
-- `TripClimate` recomputes `tripClimateSeries` and redraws Recharts synchronously on every `legs` change.
+Causes found:
+- Leg date inputs saved on every keystroke; typing a year saved dates in years 0002, 0020 and 0202.
+- A new start date kept the old end date and stretched the leg (a 2027 leg moved to 2026 became ~400 nights).
+- After any leg save the planner re-read all cities, countries, fixed costs and settings and replaced every leg and
+  city object, and `handleUpdateLeg`/`handleReorder` changed identity on every save, so all cards re-rendered.
+- Every card's city picker (`SearchableSelect`) built all 531 city options on every render even while closed (~38,000
+  elements per full render with 72 legs); the largest cost in a CPU profile.
+- `QueuedDraftSave.subscribe` reported its state as a new object, so all 72 cards rendered twice after load.
 
-Plan:
-- [ ] 1. Add Leg takes start date, end date and nights (linked; start defaults to the previous leg's end). New legs are
-  placed in date order. Same for the planner new-city dialog.
-- [ ] 2. Date inputs keep a local draft and save on blur, Enter or a short pause, only for years 2000-2100. Server
-  validates ISO dates in that range and caps nights.
-- [ ] 3. After a leg save, re-read only `/api/itinerary`; keep identities of unchanged legs (structural sharing); make
-  `handleUpdateLeg`, `handleReorder` and related callbacks stable via refs; stop passing `pageLoading` into every card.
-- [ ] 4. Defer the trip climate series (`useDeferredValue`) so typing never waits for the chart.
-- [ ] 5. Measure before and after with `npm run performance:browser` (production build, 71-leg plan), plus a
-  React profile of a date edit. Baseline checks, docs (CLAUDE.md product behaviour), PR.
+Done (commits `53eb616e`, `fa1abfba`, `d702d855`; 83 files / 550 tests pass):
+- [x] 1. Add Leg and the planner new-city dialog take start date, end date and nights (linked; start defaults to the
+  trip's last check-out day). Dated legs are inserted in date order server-side, in one transaction.
+- [x] 2. Date and nights inputs save on blur, Enter or a 700 ms pause, only when valid (`SettledInput`); dates must be
+  real 2000-2100 dates and legs at most 366 nights (POST, PUT, create-with-city). A new start date moves the leg.
+- [x] 3. Leg saves re-read only `/api/itinerary`; unchanged leg/city objects are kept (`reuseUnchangedById`); stable
+  callbacks via refs.
+- [x] 4. Trip climate renders from deferred values; city picker options built only while open; one render per card on
+  mount.
+- [ ] 5. Measurement. Browser check on a database copy (dev server, port 3003): Add Leg dates and placement work;
+  typing a year sends one save after the pause instead of four. Headless dev-mode profile (branch, before the picker
+  fix): open Add Leg blocked 8-12 s, status change 6-13 s, date edit ~7 s, C/F 3-5 s, expand/collapse all ~2.7 s.
+  After the picker fix, C/F busy time fell from ~5.1 s to ~3.6 s. Remaining: re-measure branch and main (main's dev
+  server fails on `tailwind.config.ts` under webpack in the `perf-baseline` worktree; measure main by checking out
+  `origin/main` in this worktree instead), then look at the remaining cost (style/layout of ~13,000 DOM nodes; all
+  cards re-render on C/F because the unit is a card prop).
+- [ ] 6. Docs (CLAUDE.md product behaviour), PR.
+
+Test setup (all gitignored or excluded locally): `.local-test/` holds the database and photo copies, a generated test
+PIN, and `measure-planner.cjs`, `profile-planner.cjs`, `load-requests.cjs`. Dev server config `planner-perf-dev` in
+the main checkout's `.claude/launch.json` (port 3003, webpack, `AUTH_DEV_PIN` from the test PIN). Restore
+`.local-test/travel.pristine.db` over `travel.db` (server stopped, delete `-wal`/`-shm`) before each measurement run.
+The `perf-baseline` worktree (detached `origin/main`) can be removed: unlink `node_modules` and
+`.next\standalone
+ode_modules` junctions first.
 
 ## City cost v1.2 rollout — IN PROGRESS (18 October 2026)
 
