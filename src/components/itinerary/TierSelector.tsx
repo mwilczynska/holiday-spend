@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { InfoPopover } from './InfoPopover';
@@ -16,6 +18,7 @@ interface TierSelectorProps {
 }
 
 export function TierSelector({ label, value, options, onChange, costPerDay, helperText, itemDetailMap }: TierSelectorProps) {
+  const { format } = useCurrency();
   return (
     <div className="space-y-1">
       <div className="flex items-center gap-1">
@@ -55,7 +58,7 @@ export function TierSelector({ label, value, options, onChange, costPerDay, help
         </SelectContent>
       </Select>
       {costPerDay !== null && costPerDay !== undefined && (
-        <p className="text-xs text-muted-foreground">${costPerDay.toFixed(0)}/day</p>
+        <p className="text-xs text-muted-foreground">{format(costPerDay)}/day</p>
       )}
     </div>
   );

@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -41,6 +43,7 @@ const ComparisonCategoryChart = dynamic(
 const COMPARE_IDS_STORAGE_KEY = 'holiday-spend.compare-ids';
 
 export default function ComparePlansPage() {
+  const { format } = useCurrency();
   const searchParams = useSearchParams();
   const router = useRouter();
   const idsParam = searchParams.get('ids');
@@ -311,8 +314,7 @@ export default function ComparePlansPage() {
                         <div className="min-w-0 flex-1">
                           <div className="truncate text-sm font-semibold">{plan.name}</div>
                           <div className="text-xs text-muted-foreground">
-                            {plan.legCount} legs, {plan.totalNights} nights, $
-                            {plan.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
+                            {plan.legCount} legs, {plan.totalNights} nights, {format(plan.totalBudget)} total
                           </div>
                         </div>
                       </label>

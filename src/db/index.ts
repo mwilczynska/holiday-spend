@@ -239,6 +239,10 @@ const preferenceColumns = sqlite
   .prepare('PRAGMA table_info(user_preferences)')
   .all() as Array<{ name: string }>;
 
+if (!preferenceColumns.some((column) => column.name === 'display_currency')) {
+  sqlite.exec("ALTER TABLE user_preferences ADD COLUMN display_currency TEXT NOT NULL DEFAULT 'AUD'");
+}
+
 if (!preferenceColumns.some((column) => column.name === 'llm_max_output_tokens')) {
   sqlite.exec('ALTER TABLE user_preferences ADD COLUMN llm_max_output_tokens INTEGER');
 }

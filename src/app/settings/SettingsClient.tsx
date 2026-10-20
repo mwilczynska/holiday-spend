@@ -1,5 +1,8 @@
 'use client';
 
+import { CurrencySelector } from '@/components/currency/CurrencySelector';
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useInitialPageRefresh } from '@/lib/use-initial-page-refresh';
 import { useState, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
@@ -62,6 +65,7 @@ export interface SettingsInitialData {
 }
 
 export function SettingsClient({ initialData }: { initialData: SettingsInitialData }) {
+  const { format } = useCurrency();
   const [costs, setCosts] = useState<FixedCost[]>(initialData.costs);
   // Country options are still read and validated with the rest of Settings; nothing renders them now.
   const [, setCountries] = useState<Country[]>(initialData.countries);
@@ -307,7 +311,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
     <div className="space-y-6">
       <div>
         <PageTitle icon={SettingsIcon}>Settings</PageTitle>
-        <p className="mt-1 text-sm text-muted-foreground">Travellers, provider request limits and fixed trip costs.</p>
+        <p className="mt-1 text-sm text-muted-foreground">Travellers, display currency, provider request limits and fixed trip costs.</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Button variant="outline" asChild><Link href="/settings/account">Account</Link></Button>
           <Button variant="outline" asChild><Link href="/dataset">Dataset</Link></Button>
@@ -367,6 +371,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
               </div>
             </div>
           ) : null}
+          <CurrencySelector settings disabled={groupSizeSaving || llmSaving || costSaving} />
           {groupSizeStatus ? <p role="status" className="text-sm text-muted-foreground">{groupSizeStatus}</p> : null}
           {groupSizeError ? <p role="alert" className="text-sm text-destructive">{groupSizeError}</p> : null}
         </CardContent>
@@ -457,9 +462,9 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
         <CardContent>
           {costError && <p role="alert" className="mb-3 text-sm text-destructive">{costError}</p>}
           {hasLoadedData ? <div className="flex gap-4 mb-4 text-sm">
-            <span>Total: <strong>${total.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</strong></span>
-            <span className="font-semibold text-success">Paid: ${totalPaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
-            <span className="font-semibold text-[#9A4B00]">Unpaid: ${totalUnpaid.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
+            <span>Total: <strong>{format(total)}</strong></span>
+            <span className="font-semibold text-success">Paid: {format(totalPaid)}</span>
+            <span className="font-semibold text-[#9A4B00]">Unpaid: {format(totalUnpaid)}</span>
           </div> : <p className="mb-4 text-sm text-muted-foreground">Fixed-cost totals unavailable.</p>}
 
           {costs.length === 0 ? (
@@ -485,7 +490,7 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
                     </div>
                     {cost.date && <p className="text-xs text-muted-foreground">{cost.date}</p>}
                   </div>
-                  <span className="font-medium">${cost.amountAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
+                  <span className="font-medium">{format(cost.amountAud)}</span>
                   <Button aria-label={`Delete ${cost.description}`} disabled={groupSizeSaving || llmSaving || costSaving || loading || Boolean(readError)} variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleDelete(cost.id)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>

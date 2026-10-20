@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -26,6 +28,7 @@ interface SavedPlansListProps {
 }
 
 export function SavedPlansList({ plans, onLoad, onDelete, onExport, isLoading }: SavedPlansListProps) {
+  const { format: formatAud } = useCurrency();
   const router = useRouter();
   const [expanded, setExpanded] = useState(false);
   const [compareIds, setCompareIds] = useState<Set<string>>(new Set());
@@ -94,8 +97,7 @@ export function SavedPlansList({ plans, onLoad, onDelete, onExport, isLoading }:
                           {plan.createdAt ? plan.createdAt.slice(0, 16).replace('T', ' ') : ''}
                         </div>
                         <div className="mt-1 text-xs text-muted-foreground">
-                          {plan.legCount} legs, {plan.totalNights} nights, $
-                          {plan.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
+                          {plan.legCount} legs, {plan.totalNights} nights, {formatAud(plan.totalBudget)} total
                         </div>
                       </div>
                     </div>

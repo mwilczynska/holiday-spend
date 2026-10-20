@@ -33,6 +33,21 @@ Owner-requested review before the public launch; medium and low findings fixed.
   every response; a production build renders and hydrates its public pages without CSP violations. Signed-in pages
   were not checked in the browser under the CSP.
 
+## Display currency — COMPLETE on branch `codex/display-currency` (20 October 2026)
+
+Owner request: currency selection beside travellers and in Settings, at current rates.
+Isolated branch `codex/display-currency`, worktree `C:\Dev\holiday-spend-worktrees\display-currency`.
+
+- [x] Reuse Frankfurter and the dated exchange-rate cache; preserve stored AUD values.
+- [x] Account preference shared by controls, totals, charts and cost editors.
+- [x] Verify conversion, persistence, failures, mobile layout and project baseline.
+
+Verification: 562 unit tests; two currency browser flows and three existing planner regressions; TypeScript,
+focused ESLint, production build, memory mirror and methodology guard pass. Live EUR preference saves survive full
+Settings/planner reloads at the 20 October 2026 observation. Browser tests use a seeded worktree database.
+The worktree build warns about standalone tracing across its dependency junction; deployment boot is not verified.
+The owner approved push to mwilczynska/holiday-spend and a draft PR after automatic review rejected the destination.
+
 ## Mobile UI review — COMPLETE (20 October 2026)
 
 Owner report: on the plan tab the pinned header left little room for the plan. Reviewed every route at 375×812.

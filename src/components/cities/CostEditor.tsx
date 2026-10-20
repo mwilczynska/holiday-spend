@@ -1,6 +1,7 @@
 'use client';
 
-import { Input } from '@/components/ui/input';
+import { MoneyInput } from '@/components/currency/MoneyInput';
+import { useCurrency } from '@/components/currency/CurrencyProvider';
 import { Label } from '@/components/ui/label';
 import { useId } from 'react';
 
@@ -51,6 +52,7 @@ interface CostEditorProps {
 
 export function CostEditor({ values, onChange, sources }: CostEditorProps) {
   const id = useId();
+  const { currency } = useCurrency();
   const groups = COST_FIELDS.reduce<Record<string, CostField[]>>((acc, field) => {
     if (!acc[field.group]) acc[field.group] = [];
     acc[field.group].push(field);
@@ -67,7 +69,7 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
     <div className="space-y-6">
       {Object.entries(groups).map(([group, fields]) => (
         <div key={group}>
-          <h3 className="text-sm font-medium mb-2">{group}</h3>
+          <h3 className="text-sm font-medium mb-2">{group} · {currency}</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
             {fields.map((field) => (
               <div key={field.key}>
@@ -79,17 +81,14 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
                     </span>
                   )}
                 </div>
-                <Input
+                <MoneyInput
                   id={`${id}-${field.key}`}
-                  type="number"
                   min={0}
                   step="any"
                   className="h-8 text-xs"
-                  placeholder="$"
-                  value={values[field.key] ?? ''}
-                  onChange={(e) =>
-                    onChange(field.key, e.target.value ? parseFloat(e.target.value) : null)
-                  }
+                  placeholder={currency}
+                  value={values[field.key] ?? null}
+                  onValueChange={value => onChange(field.key, value)}
                 />
               </div>
             ))}

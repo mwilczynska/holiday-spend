@@ -1,11 +1,13 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { memo } from 'react';
 import {
   Bar, BarChart, CartesianGrid, Label, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts';
 import {
-  ExpandedChartLegend, WrappedCategoryTick, fmtAud,
+  ExpandedChartLegend, WrappedCategoryTick,
   type ChartRenderMode, type ResponsiveChartHeight, type WrappedCategoryTickProps,
 } from '@/components/dashboard/dashboard-chart-parts';
 
@@ -35,6 +37,7 @@ export const DashboardCountryChart = memo(function DashboardCountryChart({
   expandedBarSize: number;
   plotShellClassName: string;
 }) {
+  const { format: fmtAud, currency } = useCurrency();
     const isExpanded = mode === 'expanded';
     const inlineCountryTickWidth = 126;
     const chartNode = (
@@ -47,9 +50,9 @@ export const DashboardCountryChart = memo(function DashboardCountryChart({
           margin={isExpanded ? { top: 8, right: 24, left: 18, bottom: 24 } : { top: 12, right: 10, left: 6, bottom: 18 }}
         >
           <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" horizontal={false} />
-          <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 10 }} tickFormatter={(value) => `$${value}`}>
+          <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 10 }} tickFormatter={(value) => fmtAud(Number(value))}>
             <Label
-              value={showCountryDailySpend ? 'Spend per Day (AUD)' : 'Spend (AUD)'}
+              value={showCountryDailySpend ? 'Spend per Day (' + currency + ')' : 'Spend (' + currency + ')'}
               position="insideBottom"
               offset={isExpanded ? -2 : -6}
               style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}

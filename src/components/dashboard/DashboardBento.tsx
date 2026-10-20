@@ -1,3 +1,6 @@
+'use client';
+
+import { useCurrency } from '@/components/currency/CurrencyProvider';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { CircleDollarSign, Moon, Plane } from 'lucide-react';
@@ -5,7 +8,7 @@ import { InfoPopover } from '@/components/itinerary/InfoPopover';
 import { cn } from '@/lib/utils';
 import { CityPhoto } from './CityPhoto';
 import type { CityImageView } from '@/lib/city-image-view';
-import { fmtAud } from './dashboard-chart-parts';
+
 import type { DerivedLeg, TripPosition } from './trip-position';
 
 export interface StatHelp {
@@ -127,6 +130,7 @@ function daysLabel(n: number) {
 }
 
 export function CurrentDestinationCard({ position, image }: { position: TripPosition; image?: CityImageView | null }) {
+  const { format: fmtAud } = useCurrency();
   const leg = position.current;
   if (!leg) {
     return (
@@ -184,6 +188,7 @@ export function CurrentDestinationCard({ position, image }: { position: TripPosi
 }
 
 export function UpNextCard({ leg, isFirst, image }: { leg: DerivedLeg | null; isFirst: boolean; image?: CityImageView | null }) {
+  const { format: fmtAud } = useCurrency();
   if (!leg) {
     return (
       <section className="flex flex-col justify-center gap-2 rounded-2xl border bg-card p-5">
@@ -240,6 +245,7 @@ export function UpNextCard({ leg, isFirst, image }: { leg: DerivedLeg | null; is
 }
 
 export function TripProgressCard({ spent, budget }: { spent: number; budget: number }) {
+  const { format: fmtAud } = useCurrency();
   const ratio = budget > 0 ? spent / budget : null;
   const circumference = 2 * Math.PI * 48;
   const shown = ratio == null ? 0 : Math.min(Math.max(ratio, 0), 1);

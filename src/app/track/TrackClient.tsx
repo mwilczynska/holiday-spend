@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useState, useEffect, useCallback, useMemo, useRef, Fragment } from 'react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
@@ -111,6 +113,7 @@ let hasMountedInThisDocument = false;
  * the right split: the initial view is what every visit pays for, the rest are deliberate actions.
  */
 export function TrackClient({ initialData, initialError = null }: { initialData: TrackInitialData; initialError?: string | null }) {
+  const { format, currency } = useCurrency();
   const [expenses, setExpenses] = useState<Expense[]>(initialData.expenses);
   const [legs, setLegs] = useState<LegOption[]>(initialData.legs);
   const [filterCat, setFilterCat] = useState('all');
@@ -439,7 +442,7 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
 
       <div className="grid grid-cols-2 gap-3.5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,2fr)]">
         <StatTile label="Expenses" value={hasLoadedExpenses ? `${expenseTotalCount} expenses` : 'Expense count unavailable'} />
-        <StatTile label="Total in AUD" value={hasLoadedExpenses ? `$${expenseTotalAud.toLocaleString('en-AU', { maximumFractionDigits: 0 })} AUD` : 'AUD total unavailable'} />
+        <StatTile label={`Total in ${currency}`} value={hasLoadedExpenses ? format(expenseTotalAud) : 'Total unavailable'} />
         <section className="col-span-2 rounded-2xl border bg-card px-4 py-3.5 text-xs leading-5 text-muted-foreground lg:col-span-1">
           City and country come from the assigned itinerary leg. Use edit to move flights, tickets, or pre-paid costs into the destination where you want them counted.
           Dashboard timelines will keep the original transaction date visible here, but report assigned spend inside the leg&apos;s date window.
@@ -510,10 +513,10 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                     {expense.amount.toFixed(2)} {expense.currency}
                     <span className="ml-2 text-xs font-normal text-muted-foreground">
                       {expense.amountAud != null
-                        ? `$${expense.amountAud.toFixed(2)} AUD`
+                        ? format(expense.amountAud, 2)
                         : expense.currency === 'AUD'
-                          ? `$${expense.amount.toFixed(2)} AUD`
-                          : 'No AUD conversion'}
+                          ? format(expense.amount, 2)
+                          : 'Conversion unavailable'}
                     </span>
                   </div>
                   <div className="text-sm">
@@ -617,10 +620,10 @@ export function TrackClient({ initialData, initialError = null }: { initialData:
                       </div>
                       <div className="text-xs text-muted-foreground">
                         {expense.amountAud != null
-                          ? `$${expense.amountAud.toFixed(2)} AUD`
+                          ? format(expense.amountAud, 2)
                           : expense.currency === 'AUD'
-                            ? `$${expense.amount.toFixed(2)} AUD`
-                            : 'No AUD conversion'}
+                            ? format(expense.amount, 2)
+                            : 'Conversion unavailable'}
                       </div>
                     </td>
                     <td className="px-3 py-3">

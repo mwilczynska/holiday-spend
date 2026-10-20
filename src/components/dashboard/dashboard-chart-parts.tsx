@@ -1,5 +1,7 @@
 'use client';
 
+import { useCurrency } from '@/components/currency/CurrencyProvider';
+
 import { useLayoutEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -68,7 +70,6 @@ export const BURN_COUNTRY_LABEL_TOP_OFFSET = 4;
 export const BURN_COUNTRY_LABEL_ROW_GAP = 4;
 export const BURN_COUNTRY_LABEL_COLUMN_GAP = 4;
 
-export const fmtAud = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 
 export function getBurnChartMetrics(mode: ChartRenderMode) {
   return mode === 'expanded'
@@ -175,6 +176,7 @@ export function BurnRateTooltip({
   payload?: Array<{ payload?: BurnRatePoint }>;
   label?: string;
 }) {
+  const { format: fmtAud } = useCurrency();
   if (!active || !payload || payload.length === 0) return null;
 
   const point = payload[0]?.payload;
