@@ -27,7 +27,8 @@ export async function POST(request: Request) {
     const data = signupSchema.parse(body);
     const clientIp = getRequestIp(request) ?? 'unknown';
     const normalizedEmail = normalizeEmail(data.email);
-    if (!isEmailAllowed(normalizedEmail)) return authError('Registration is not available for this email address.', 403);
+    // Same response as an accepted signup, so the form does not reveal which addresses are allowlisted.
+    if (!isEmailAllowed(normalizedEmail)) return authSuccess({ ok: true });
 
     const [ipLimit, emailLimit] = await Promise.all([
       checkRateLimit(`signup:ip:${clientIp}`, {

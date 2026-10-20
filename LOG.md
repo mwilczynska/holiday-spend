@@ -3614,3 +3614,17 @@ documentation whitespace, memory synchronization and the methodology guard. No r
 - Cause of the emptied `node_modules/.bin` on 19 October: `next build` in a worktree creates
   `.next\standalone\node_modules` as a junction to the main checkout's `node_modules`; deleting the worktree
   followed it. Junctions are now unlinked before any worktree deletion (see CLAUDE.md, Local layout).
+
+## 20 October 2026 — Pre-deployment security hardening
+
+- Review before public launch on `projectinfinitesummer.com`. Kept: Argon2id, hashed single-use tokens, token-version
+  revocation, the allowlist, strict production startup checks and per-user scoping on every data route.
+- CSRF: cookies are SameSite=Lax, and the landing page on the apex domain is the same site as `spend.`, so a page
+  there could have posted with a visitor's session. The proxy now runs on every path and refuses cross-origin
+  `/api/*` writes by Origin or Sec-Fetch-Site. Requests with neither header (scripts, tests) are allowed because they
+  cannot carry a visitor's cookie.
+- Pre-registration: signing up an allowlisted address first kept that password, because the owner's later signup
+  only re-sent the link. Verification now needs the account password; reset verifies the address instead, which is
+  how the owner recovers from someone else's registration. Signup no longer returns 403 for non-allowlisted addresses.
+- Server LLM keys are refused at production startup rather than removed from the code fallbacks, which local
+  development and scripts still use.

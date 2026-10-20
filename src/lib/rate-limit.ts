@@ -60,9 +60,31 @@ const checkRateLimitTx = sqlite.transaction(
   }
 );
 
+/**
+ * Buckets are keyed by email and IP and were never removed, and expired auth tokens were kept
+ * forever. Every window is at most an hour, so a bucket untouched for a day is dead; expired
+ * tokens are kept for a week in case a sign-in problem needs investigating.
+ */
+const deleteStaleRateLimits = sqlite.prepare(`DELETE FROM auth_rate_limits WHERE updated_at < datetime('now', '-1 day')`);
+const deleteExpiredTokens = sqlite.prepare(`DELETE FROM auth_tokens WHERE expires_at < datetime('now', '-7 days')`);
+const HOUSEKEEPING_INTERVAL_MS = 60 * 60 * 1000;
+let lastHousekeepingAt = 0;
+
+function runHousekeeping(now: number) {
+  if (now - lastHousekeepingAt < HOUSEKEEPING_INTERVAL_MS) return;
+  lastHousekeepingAt = now;
+  try {
+    deleteStaleRateLimits.run();
+    deleteExpiredTokens.run();
+  } catch (err) {
+    console.error('[auth] housekeeping failed', err);
+  }
+}
+
 export async function checkRateLimit(
   bucket: string,
   opts: { max: number; windowSeconds: number }
 ): Promise<RateLimitAllowed | RateLimitBlocked> {
+  runHousekeeping(Date.now());
   return checkRateLimitTx(bucket, opts.max, opts.windowSeconds);
 }

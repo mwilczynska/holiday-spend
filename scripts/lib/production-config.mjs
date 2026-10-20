@@ -22,5 +22,9 @@ export function validateProductionConfig(env) {
   if (!env.HOLIDAY_SPEND_DB_PATH) errors.push('HOLIDAY_SPEND_DB_PATH must point to the persistent database.');
   if (env.HOLIDAY_SPEND_TRUST_PROXY !== 'true') errors.push('HOLIDAY_SPEND_TRUST_PROXY=true requires a private upstream and a proxy that overwrites X-Real-IP.');
   if (env.AUTH_DEV_PIN || env.APP_SECRET) errors.push('Remove development PIN and APP_SECRET from production configuration.');
+  // City and transport calls fall back to these when a request carries no key, and transport
+  // estimation is open to every allowlisted account, so a server key would be spent by guests.
+  const serverLlmKeys = ['OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'GEMINI_API_KEY'].filter(key => env[key]?.trim());
+  if (serverLlmKeys.length) errors.push(`Remove ${serverLlmKeys.join(', ')}: production users supply their own provider keys in the browser.`);
   if (errors.length) throw new Error(errors.join('\n'));
 }

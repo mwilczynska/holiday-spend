@@ -42,7 +42,7 @@ On the deployment host, copy `.env.production.example` to `.env.production.local
 | `RESEND_API_KEY` | Sending-only key restricted to the verified sending domain |
 | `MAIL_FROM` | `Holiday Spend <no-reply@auth.projectinfinitesummer.com>` |
 
-Remove `AUTH_DEV_PIN` and `APP_SECRET`. Google is optional and not required for the chosen email/password launch. Application LLM keys remain in the user's browser; do not copy them into deployment settings.
+Remove `AUTH_DEV_PIN` and `APP_SECRET`. Do not set `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY`; startup refuses them because any allowlisted account could spend them. Google is optional and not required for the chosen email/password launch. Application LLM keys remain in the user's browser; do not copy them into deployment settings.
 
 The container refuses to start with missing or inconsistent configuration, a missing/empty database, a failed SQLite check, or missing runtime prompts. `/api/health` reports readiness without disclosing data. Development `npm start` remains available for local use; the strict production preflight is the Docker entrypoint.
 
@@ -110,8 +110,8 @@ If Cloudflare proxying is enabled for the **website** later, configure nginx's r
 
 The prepared owner's copied password is deliberately unknown. Once HTTPS and email delivery work:
 
-1. Open `/forgot-password`, enter the owner's allowed email, and use the received link to choose a password (at least ten characters, not all digits).
-2. Open `/login`, use **Resend verification email** for the same address and follow that link. If the resend control appears only after a sign-in attempt, attempt the new password first.
+1. Open `/forgot-password`, enter the owner's allowed email, and use the received link to choose a password (at least ten characters, not all digits). Completing the reset also verifies the address.
+2. Verification links from signup or **Resend verification email** ask for the account's password before verifying.
 3. Sign in with the new password. Confirm the existing trip, expenses and saved plans are present. Do not create a second account or change ownership IDs.
 4. Test sign-out, reset, change-password and a second browser's session revocation. Confirm a blocked email cannot register. Additional accounts require adding their email to the allowlist and recreating the container.
 

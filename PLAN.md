@@ -12,6 +12,23 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
+## Pre-deployment security hardening — COMPLETE on branch `security/pre-deploy-hardening` (20 October 2026)
+
+Owner-requested review before the public launch; medium and low findings fixed.
+
+- Cross-origin writes: the proxy refuses `/api/*` writes whose Origin or Sec-Fetch-Site shows another origin,
+  including sibling subdomains such as `projectinfinitesummer.com`, which SameSite=Lax cookies treat as same-site.
+- Email verification requires the account's password, so an earlier registration of an allowlisted address cannot
+  keep a password the mailbox owner did not choose. A completed password reset also verifies the address. Signup
+  answers the same for allowlisted and other addresses; sign-in spends one Argon2 verification for unknown accounts.
+- Production startup refuses `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` and `GEMINI_API_KEY` (guests could spend them).
+- The proxy also checks the allowlist; snapshot preflight now requires a full session check.
+- Climate: non-admins may fill or retry a missing record (200 per hour), not replace a saved one.
+- ID lists on bulk expense, reorder and tag routes are bounded; stale rate-limit rows and week-old expired tokens are
+  purged hourly.
+
+Not done (reported separately): the v1.2 prompt is not packaged into the Docker image, and no security headers are sent.
+
 ## Mobile UI review — COMPLETE (20 October 2026)
 
 Owner report: on the plan tab the pinned header left little room for the plan. Reviewed every route at 375×812.

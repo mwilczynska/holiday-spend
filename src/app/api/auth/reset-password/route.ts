@@ -1,4 +1,4 @@
-import { eq, sql } from 'drizzle-orm';
+import { and, eq, isNull, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
 import { authTokens, userPasswords, users } from '@/db/schema';
@@ -44,6 +44,10 @@ export async function POST(request: Request) {
       if (!updated.changes) throw new Error('Password record is missing.');
       tx.update(authTokens).set({ consumedAt: sql`(datetime('now'))` }).where(eq(authTokens.userId, consumed.userId)).run();
       tx.update(users).set({ tokenVersion: sql`${users.tokenVersion} + 1` }).where(eq(users.id, consumed.userId)).run();
+      // A reset link proves control of the mailbox exactly as a verification link does, and the
+      // password is now one the mailbox owner chose, so the account no longer needs verifying.
+      tx.update(users).set({ emailVerified: new Date() })
+        .where(and(eq(users.id, consumed.userId), isNull(users.emailVerified))).run();
       return true;
     });
     if (!saved) {

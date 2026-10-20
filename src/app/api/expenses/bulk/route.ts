@@ -6,7 +6,8 @@ import { requireCurrentUserId } from '@/lib/auth';
 import { z } from 'zod';
 
 const bulkSchema = z.object({
-  ids: z.array(z.number()).min(1),
+  // SQLite caps bound parameters per statement (32,766); stay well below it.
+  ids: z.array(z.number().int()).min(1).max(10000),
   action: z.enum(['addTag', 'changeCategory', 'exclude', 'include', 'delete']),
   tagId: z.number().optional(),
   category: z.string().optional(),

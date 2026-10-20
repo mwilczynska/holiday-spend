@@ -112,4 +112,19 @@ describe.sequential('rate limit helper', () => {
       expect(blocked.retryAfterSeconds).toBe(1);
     }
   });
+
+  it('removes buckets untouched for a day, at most once an hour', async () => {
+    const insert = dbModule.sqlite.prepare(
+      `INSERT INTO auth_rate_limits (bucket, count, window_start, updated_at) VALUES (?, 1, datetime('now', '-2 days'), datetime('now', '-2 days'))`
+    );
+    const count = () => (dbModule.sqlite.prepare('SELECT count(*) AS n FROM auth_rate_limits WHERE bucket = ?').get('stale') as { n: number }).n;
+    vi.setSystemTime(new Date('2026-04-18T00:00:00.000Z'));
+    insert.run('stale');
+    await rateLimitModule.checkRateLimit('signup:ip:fresh', { max: 5, windowSeconds: 60 });
+    expect(count()).toBe(0);
+    insert.run('stale');
+    vi.setSystemTime(new Date('2026-04-18T00:30:00.000Z'));
+    await rateLimitModule.checkRateLimit('signup:ip:fresh', { max: 5, windowSeconds: 60 });
+    expect(count()).toBe(1);
+  });
 });

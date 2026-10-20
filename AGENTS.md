@@ -402,6 +402,11 @@ their own trips, expenses and plans. Signing in initializes preferences and neve
 session checks enforce current database token versions; reset/change-password revoke prior sessions. Verification and
 reset tokens are opaque, hashed, expiring and single-use; consumption and the protected write are atomic. A failed
 verification-email delivery can be retried without replacing an existing account's password.
+Verification requires the account password as well as the link, so registering an allowlisted address first does
+not keep a password the mailbox owner did not choose; a completed reset also verifies the address. Signup answers the
+same for every address, and sign-in for an unknown account spends one Argon2 verification. The proxy refuses `/api/*`
+writes from another origin (Origin or Sec-Fetch-Site), because SameSite=Lax treats sibling subdomains as the same
+site, and checks the allowlist before passing a signed token. Production startup refuses server LLM keys.
 
 Production runs one Node 24 container, with SQLite and licensed photos in the writable `runtime-data/` bind mount.
 Startup checks configuration, database existence/integrity/nonempty library and all runtime prompts. `/api/health`
