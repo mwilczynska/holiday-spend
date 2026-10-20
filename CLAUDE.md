@@ -431,6 +431,10 @@ directory. Private packages and deployment settings are gitignored and excluded 
 defined in `.github/workflows/production-checks.yml`; local Windows checks do not establish Linux or public-host success.
 On `main` that workflow publishes the tested runner image to public `ghcr.io/mwilczynska/holiday-spend` (`:main`,
 `:sha-<commit>`), which Compose pulls; the VPS is too small to build it.
+Live since 20 October 2026 at `https://spend.projectinfinitesummer.com` on the VPS (`~/holiday-spend`), behind the
+shared edge nginx in project-infinite-summer `edge/` over the external `edge` Docker network. Nightly backups to
+OneDrive come from project-infinite-summer `ops/backup/`. The VPS has no GitHub credentials for the private repos;
+they arrive as git bundles (`docs/cutover-runbook.md` there).
 
 ## City-cost and transport accuracy research
 

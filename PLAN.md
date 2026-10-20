@@ -42,8 +42,18 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
 - [x] Apex and www switched to the landing page (`WWW_MODE=landing` in `edge/.env` on the VPS). Both serve it with
   working links, styles and images; old blog paths redirect 301 to `blog.`, old `/uploads` photos still load. The
   proxy recreate interrupted all three sites for about 13 s while connections drained.
+- [x] Daily and off-host backups for both applications (project-infinite-summer `ops/backup/`). Root cron at
+  16:30 UTC: Holiday Spend snapshot, stable blog database copy and uploads mirror; 7 days on the VPS; rclone crypt
+  copy to OneDrive (My files > Backups > project-infinite-summer, personal drive, 456 GB free), 30 days kept.
+  rclone 1.75.2 installed after SHA-256 check; encrypted write/read round trip passed; crypt passwords are in the
+  owner's password manager and the plain-text key file was deleted. First run by hand, 23:20–23:56 UTC: Holiday
+  Spend snapshot (531 cities, 1,062 photos), blog database (integrity ok, 178 posts) and 2,317 upload files; OneDrive
+  holds 5.07 GiB in 3,382 files and the snapshot was verified against the upload. Two script bugs found and fixed:
+  the blog check container could not read the root-only folder (run it as root, `80d5e5d`), and remote pruning
+  failed on the not-yet-created `blog/uploads-changed` (`e8ef7c8`, not yet on the VPS: until then each run uploads
+  correctly but reports FAILED at `offhost-retention`). VPS disk is 80% used (11 GB free).
 - [ ] Owner password reset and first sign-in on `spend.`; blog sign-in on `blog.`.
-- [ ] Daily and off-host backups for both applications.
+- [ ] Restore test from OneDrive into a new directory (owner deferred it, 20 October).
 
 ## Pre-deployment security hardening — COMPLETE on branch `security/pre-deploy-hardening` (20 October 2026)
 
