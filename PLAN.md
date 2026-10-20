@@ -36,13 +36,14 @@ Done (commits `53eb616e`, `fa1abfba`, `d702d855`; 83 files / 550 tests pass):
   callbacks via refs.
 - [x] 4. Trip climate renders from deferred values; city picker options built only while open; one render per card on
   mount.
-- [ ] 5. Measurement. Browser check on a database copy (dev server, port 3003): Add Leg dates and placement work;
-  typing a year sends one save after the pause instead of four. Headless dev-mode profile (branch, before the picker
-  fix): open Add Leg blocked 8-12 s, status change 6-13 s, date edit ~7 s, C/F 3-5 s, expand/collapse all ~2.7 s.
-  After the picker fix, C/F busy time fell from ~5.1 s to ~3.6 s. Remaining: re-measure branch and main (main's dev
-  server fails on `tailwind.config.ts` under webpack in the `perf-baseline` worktree; measure main by checking out
-  `origin/main` in this worktree instead), then look at the remaining cost (style/layout of ~13,000 DOM nodes; all
-  cards re-render on C/F because the unit is a card prop).
+- [ ] 5. Measurement (headless dev mode, 72-leg copy; blocking time). Start -> now (commit `a100f033`, card bodies
+  mount on first open): elements 13,291 -> ~4,200; open Add Leg 8-12.6 s -> 0.6-1.4 s; C/F 2.9-5.5 s -> 0.6-0.8 s;
+  date edit with one card open ~7 s -> 2.2-2.8 s; typing a year 9.0 s (4 saves) -> 3.1 s (1 save); status change
+  6.2-13.2 s -> 2.0-3.2 s; page load wall 5.9-7.5 s -> 3.1-3.4 s; expand all 2.5-2.9 s -> 3.6 s (now mounts bodies).
+  Next: CPU-profile a date edit and a status change (remaining 2-3 s: likely the trip climate chart, summary/country
+  cards, and the post-save itinerary refresh); measure main for the before column by checking out `origin/main` in
+  this worktree (the dev servers need `NODE_OPTIONS=--no-experimental-strip-types`, already in launch.json, or
+  Tailwind fails to load `tailwind.config.ts` under Node 24); then a production-build check.
 - [ ] 6. Docs (CLAUDE.md product behaviour), PR.
 
 Test setup (all gitignored or excluded locally): `.local-test/` holds the database and photo copies, a generated test
