@@ -12,6 +12,35 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 19 October 2026
 
+## Planner dates and performance — PLANNED (20 October 2026)
+
+Owner request: editing leg dates lags badly with 60+ legs spanning over a year, and a new leg is appended at the end
+(dated in 2027), so moving it to 2026 recalculates and redraws a year of values and climate. Branch
+`feat/planner-dates-performance`, worktree `C:\Dev\holiday-spend-worktrees\planner-performance` (from main `fee606f1`;
+rebase onto current main first). No code written yet.
+
+Findings (read from the code, not yet measured in a browser):
+- `LegCard.tsx` `handleDateChange` saves on every `onChange` of `<input type="date">`. Typing a year digit by digit
+  produces valid dates in years 0002, 0020 and 0202, each saved, with `nights` derived from the span (hundreds of
+  thousands of nights) and a trip-climate series with one point per day. Likely the main cause of the lag.
+- The leg PUT and POST routes accept any string as a date and any positive `nights`.
+- `PlanClient.tsx` `handleUpdateLeg` ends with `fetchData()`, which re-reads the itinerary, all cities (531), countries,
+  fixed costs and settings, and replaces `legs` and `cities` with new objects, so every memoized `LegCard` rerenders.
+- `handleUpdateLeg` depends on `legs`, so its identity changes on every save and defeats `LegCard` memoization;
+  `orderSaving` includes `pageLoading`, which toggles on every refetch.
+- `TripClimate` recomputes `tripClimateSeries` and redraws Recharts synchronously on every `legs` change.
+
+Plan:
+- [ ] 1. Add Leg takes start date, end date and nights (linked; start defaults to the previous leg's end). New legs are
+  placed in date order. Same for the planner new-city dialog.
+- [ ] 2. Date inputs keep a local draft and save on blur, Enter or a short pause, only for years 2000-2100. Server
+  validates ISO dates in that range and caps nights.
+- [ ] 3. After a leg save, re-read only `/api/itinerary`; keep identities of unchanged legs (structural sharing); make
+  `handleUpdateLeg`, `handleReorder` and related callbacks stable via refs; stop passing `pageLoading` into every card.
+- [ ] 4. Defer the trip climate series (`useDeferredValue`) so typing never waits for the chart.
+- [ ] 5. Measure before and after with `npm run performance:browser` (production build, 71-leg plan), plus a
+  React profile of a date edit. Baseline checks, docs (CLAUDE.md product behaviour), PR.
+
 ## City cost v1.2 rollout — IN PROGRESS (18 October 2026)
 
 Owner decisions (18 October 2026), from the city-cost hill-climb research (`research/city-cost-accuracy` branch, tag
