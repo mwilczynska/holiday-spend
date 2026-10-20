@@ -51,7 +51,7 @@ recompute first. Work happens on `feat/city-cost-v1-2` in its own worktree.
   without a model call, keeping hand-edited fields and the replaced anchors in `correctionHistory`. On a database copy
   it changed only hostel fields (dorm median x0.77, private room x0.69) in 529 cities; a rerun is a no-op. Branch
   `feat/hostel-corrections`, merged as PR #16. Applied to the live library on 19 October 2026 after a verified
-  backup (`C:\Users\chawi\holiday-spend-backups\pre-hostel-recorrect-2026-10-19`, 531 cities, 1060 photos): 529
+  backup (`C:\Dev\holiday-spend-backups\pre-hostel-recorrect-2026-10-19`, 531 cities, 1060 photos): 529
   cities re-corrected, no hand-edited fields, rerun a no-op. Wulong and Chaozhou were added on 19 October under v1.1
   and store no raw anchors, so they keep uncorrected values until regenerated under v1.2. Both were regenerated under
   v1.2 on 20 October 2026 from Codex Luna Max answers (research branch,
@@ -61,7 +61,7 @@ recompute first. Work happens on `feat/city-cost-v1-2` in its own worktree.
 - [x] 5. Library regenerated under v1.2 (18-19 October 2026): all 529 cities saved through the app's own path from
   Codex Luna Max answers (prompts, answers and save results on the research branch,
   `research/library-regeneration-v1-2`). Verified backup first:
-  `C:\Users\chawi\holiday-spend-backups\pre-v1-2-regeneration-2026-10-18`. Each wave was reviewed against current
+  `C:\Dev\holiday-spend-backups\pre-v1-2-regeneration-2026-10-18`. Each wave was reviewed against current
   values before saving; Nagasaki was set aside and re-answered (the second answer matched), and Puerto Vallarta and
   Sacred Valley were rejected by the app for stale RBA observations and re-answered. Median change new/old: 3-star and
   4-star 0.67, 1-star 0.94, hostels 1.08-1.09, mid-range food 1.02, moderate drinks 0.97. Every city now stores USD

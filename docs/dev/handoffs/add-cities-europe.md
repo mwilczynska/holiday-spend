@@ -43,7 +43,7 @@ itinerary has 66 legs before you start and must still have 66 when you finish.
 
 `data/travel.db` is the owner's real data and is gitignored. Before writing anything, take a consistent copy with
 the better-sqlite3 backup API (not a file copy, because of the WAL file) into
-`C:\Dev\holiday-spend-db-backups\<date>\travel-before-europe.db`, and check `PRAGMA integrity_check` on the copy.
+`C:\Dev\holiday-spend-backups\<label>\travel-before-europe.db` (or a `scripts/backup.mjs` snapshot), and check `PRAGMA integrity_check` on the copy.
 
 ### 2. Write the prompts
 

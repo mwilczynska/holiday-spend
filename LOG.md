@@ -3601,3 +3601,16 @@ documentation whitespace, memory synchronization and the methodology guard. No r
   they could not read the prompt file without one; the rerun allowed a read-only command to read it.
 - Changes: Chaozhou 3-star A$69 to A$45, mid-range food A$61 to A$49; Wulong 3-star A$69 to A$63, mid-range food A$65
   to A$39. All 531 cities are now v1.2 with table `v1.2-corrections-2026-10-19`.
+
+## 20 October 2026 — Local worktree and backup clean-up
+
+- Layout now: main checkout `C:\Dev\holiday-spend`, worktrees in `C:\Dev\holiday-spend-worktrees\`, snapshots in
+  `C:\Dev\holiday-spend-backups\` (pre-v1.2 regeneration, pre-hostel re-correction, and the last 11 October batch
+  database). Both snapshots re-verified after the move.
+- Removed (owner approved): finished worktrees city-cost-v1-2, city-photo-review and hostel-corrections; the 21 older
+  per-batch databases from 10-11 October; the September `travel.real-backup.db`/`travel.canonical-backup.db`; the
+  April `flatten-root` folder; the v5 quarantine folder; merged branches feat/city-cost-v1-2, fix/city-photo-review,
+  feat/hostel-corrections and redesign/bento (local and remote).
+- Cause of the emptied `node_modules/.bin` on 19 October: `next build` in a worktree creates
+  `.next\standalone\node_modules` as a junction to the main checkout's `node_modules`; deleting the worktree
+  followed it. Junctions are now unlinked before any worktree deletion (see CLAUDE.md, Local layout).

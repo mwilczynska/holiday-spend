@@ -478,6 +478,20 @@ For either surface, first confirm the local server responds at its expected `loc
 storage, cookies, saved passwords, or provider API keys, and do not substitute a shell-opened page or HTTP-only
 check for a requested interactive browser test.
 
+## Local layout: worktrees and backups
+
+| Path | Contents |
+| --- | --- |
+| `C:\Dev\holiday-spend` | Main checkout (`main`) and the live `data/travel.db` |
+| `C:\Dev\holiday-spend-worktrees\<name>` | Git worktrees, for example `city-cost-accuracy` (research branch) |
+| `C:\Dev\holiday-spend-backups\<label>` | Database/photo snapshots from `scripts/backup.mjs`, verified with `--verify` |
+
+Never create worktrees or backups inside the main checkout: `tsconfig.json`, Vitest and the Next.js watcher would scan
+them. A worktree's `node_modules` is a junction to the main checkout's `node_modules`, and `next build` in a worktree
+adds a second one at `.next\standalone\node_modules`. Unlink every junction (delete the link only) before deleting a
+worktree; a recursive delete that follows one empties the main checkout's packages. Remove finished worktrees after
+their branch merges.
+
 ## Repository location and the retired OneDrive guard
 
 The working repository is `C:\Dev\holiday-spend`, which is **not** inside OneDrive (`C:\Users\chawi\OneDrive`).
