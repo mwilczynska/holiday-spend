@@ -156,6 +156,8 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
 - [x] Account emails for admins, 21 October (owner request after a new user's activity was hard to find under a
   pseudonymous ID): admin report responses include an ID-to-email directory; tables show emails and the Account filter
   lists them. Events stay pseudonymous in `analytics.db`; the privacy page says admins see the account email.
+  Deployed 21 October as `e41d90e4` (release `sha-e41d90e`): backup first, previous image kept as
+  `holiday-spend:previous`, healthy in 4 s, data intact, directory query present only in the admin analytics route.
 - [x] VPS OS update, 21 October 02:57–03:01 UTC: safety copies first (Holiday Spend snapshot, blog database), then
   35 packages upgraded and 2 added (Docker, git, kernel 5.15.0-198 among them), existing config kept, nothing removed;
   rebooted in about 23 s. Afterwards: no reboot pending, all four containers healthy, cron/fail2ban/ufw/
