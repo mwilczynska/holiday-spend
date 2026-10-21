@@ -60,6 +60,11 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
 - [x] Backup alerts, 21 October: a failure emails the owner (Resend, reusing Holiday Spend's key and admin address at
   send time), and `check-fresh.sh` at 20:30 UTC emails if nothing has succeeded in 26 hours; test email accepted.
   VPS work now goes through one long-lived job-runner tab (project-infinite-summer `scripts/vps-runner.ps1`).
+- [x] VPS OS update, 21 October 02:57–03:01 UTC: safety copies first (Holiday Spend snapshot, blog database), then
+  35 packages upgraded and 2 added (Docker, git, kernel 5.15.0-198 among them), existing config kept, nothing removed;
+  rebooted in about 23 s. Afterwards: no reboot pending, all four containers healthy, cron/fail2ban/ufw/
+  unattended-upgrades/docker active, and all public addresses 200 with valid certificates. The owner's SSH key is in
+  the Windows ssh-agent, so VPS connections no longer prompt for the passphrase (sudo still does).
 - [x] Owner password reset and first sign-in on `spend.`, and all three sites checked by the owner: everything works
   as intended (reported 21 October 2026).
 - [ ] Restore test from OneDrive into a new directory (owner deferred it, 20 October).
