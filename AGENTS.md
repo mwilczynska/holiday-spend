@@ -69,7 +69,12 @@ Saved-plan rename/delete and shared city-price updates preserve prior state. Mig
 historical restoration is not implemented. Ordinary users cannot inspect other users' revisions.
 
 Reports and export reads run in a bounded read-only thread (16 pending queries, 15-second timeout), keeping large
-analytics reads off the product request thread. Event exports persist progress and fix their upper event sequence;
+analytics reads off the product request thread. Exact daily summaries and session membership are maintained by
+SQLite triggers alongside raw-event inserts, updates and deletions. Overview and retention use these summaries;
+operation-specific reports retain raw-event queries. A generated identity column and covering index support ordered
+funnels. Cache schema upgrades rebuild only summaries; raw events remain intact. Database startup locks before
+reading schema state so concurrent build/server workers cannot apply the same migration twice.
+Event exports persist progress and fix their upper event sequence;
 downloads require the requesting administrator's current access. Erasure invalidates existing export jobs.
 
 Full snapshots include analytics when present; catalogue snapshots exclude analytics and all private history.

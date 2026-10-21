@@ -39,34 +39,52 @@ export async function buildAnalyticsReport(q: ReportQuery, reader: AnalyticsRead
       { name: 'City generation', steps: ['workflow_step:generation_requested', 'request_completed:cities.create-with-generation'] },
     ];
     const funnels = await Promise.all(definitions.map(async def => {
-      const funnelIndex = q.operation ? 'events_operation' : q.account ? 'events_account_time' : 'events_funnel';
+      const funnelIndex = q.operation ? 'events_operation' : q.account ? 'events_account_time' : 'events_funnel_v2';
       const bindings = { ...args };
       const stages = def.steps.map((step, index) => {
         const [name, value] = step.split(':'); bindings['name' + index] = name; bindings['value' + index] = value;
         const field = name === 'page_viewed' ? 'route' : 'stage_value';
-        const match = `name=@name${index} AND (${field}=@value${index}${value === 'leg_created' ? ` OR ${field}='leg_created_with_city'` : ''})${name === 'request_completed' ? ' AND status<400' : ''}`;
-        if (!index) return `s0 AS (SELECT coalesce(account_id,session_id) AS identity,min(sequence) AS seq,received_at AS started_at FROM events INDEXED BY ${funnelIndex} WHERE ${where} AND ${match} AND coalesce(account_id,session_id) IS NOT NULL GROUP BY identity)`;
-        return `s${index} AS (SELECT s${index - 1}.identity,s${index - 1}.started_at,min(e.sequence) AS seq FROM events e INDEXED BY ${funnelIndex} JOIN s${index - 1} ON coalesce(e.account_id,e.session_id)=s${index - 1}.identity WHERE ${where} AND ${match} AND e.sequence>s${index - 1}.seq AND julianday(e.received_at)-julianday(s${index - 1}.started_at)<=7 GROUP BY s${index - 1}.identity)`;
+        const match = `name=@name${index} AND (${field}=@value${index}${value === 'leg_created' ? ` OR ${field}='leg_created_with_city'` : ''})${name === 'page_viewed' ? ' AND stage_value IS NULL' : ''}${name === 'request_completed' ? ' AND status<400' : ''}`;
+        if (!index) return `s0 AS (SELECT event_identity AS identity,min(sequence) AS seq,received_at AS started_at FROM events INDEXED BY ${funnelIndex} WHERE ${where} AND ${match} AND event_identity IS NOT NULL GROUP BY event_identity)`;
+        return `s${index} AS (SELECT s${index - 1}.identity,s${index - 1}.started_at,min(e.sequence) AS seq FROM events e INDEXED BY ${funnelIndex} JOIN s${index - 1} ON e.event_identity=s${index - 1}.identity WHERE ${where} AND ${match} AND e.sequence>s${index - 1}.seq AND julianday(e.received_at)-julianday(s${index - 1}.started_at)<=7 GROUP BY s${index - 1}.identity)`;
       });
       const counts = ((await read('WITH ' + stages.join(',') + ' ' + def.steps.map((_, i) => `SELECT count(*) AS n FROM s${i}`).join(' UNION ALL '), bindings, 'all')) as Array<{ n: number }>).map(row => row.n);
       return { name: def.name, steps: def.steps.map((step, i) => ({ name: step.split(':')[1], users: counts[i], conversion: counts[0] ? counts[i] / counts[0] : null })) };
     }));
     const activation = `name='mutation_committed' AND stage_value IN ('leg_created','leg_created_with_city','expenses.post')`;
     const scope = where.replace('received_at >= @from AND received_at < @until AND ', '').replace(/(?<!@)\b(environment|administrator|account_id|operation_id|release|device|route)\b/g, 'e.$1');
+    const activitySource = q.operation ? 'events e INDEXED BY events_account_time' : 'event_rollups e INDEXED BY event_rollups_account_day';
+    const activityDate = q.operation ? 'date(e.received_at)' : 'e.day';
+    const activityTime = q.operation ? 'e.received_at' : 'e.day';
+    const activationSource = q.operation ? 'events e INDEXED BY events_operation' : 'event_rollups e';
+    const activationTime = q.operation ? 'e.received_at' : 'e.day';
+    const cohortWindow = q.operation ? 'a.activated_at>=@from AND a.activated_at<@until' : 'a.activated_at>=substr(@from,1,10) AND a.activated_at<substr(@until,1,10)';
     const cohorts = (await read(`WITH activated AS (
-      SELECT e.account_id,min(e.received_at) AS activated_at FROM events e WHERE e.account_id IS NOT NULL AND ${activation} AND ${scope} GROUP BY e.account_id
+      SELECT e.account_id,min(${activationTime}) AS activated_at FROM ${activationSource} WHERE e.account_id IS NOT NULL ${q.operation ? '' : "AND e.account_id!=''"} AND ${activation} AND ${scope} GROUP BY e.account_id
     ) SELECT a.account_id,a.activated_at,
-      max(CASE WHEN date(e.received_at)=date(a.activated_at,'+1 day') THEN 1 ELSE 0 END) AS d1,
-      max(CASE WHEN date(e.received_at)=date(a.activated_at,'+7 day') THEN 1 ELSE 0 END) AS d7,
-      max(CASE WHEN date(e.received_at)=date(a.activated_at,'+30 day') THEN 1 ELSE 0 END) AS d30
-      FROM activated a LEFT JOIN events e ON e.account_id=a.account_id
-      AND e.purpose='behavior' AND ${scope} AND e.received_at>=date(a.activated_at,'+1 day') AND e.received_at<date(a.activated_at,'+31 day')
-      WHERE a.activated_at>=@from AND a.activated_at<@until GROUP BY a.account_id`, args, 'all')) as Array<{ activated_at: string; d1: number; d7: number; d30: number }>;
+      max(CASE WHEN ${activityDate}=date(a.activated_at,'+1 day') THEN 1 ELSE 0 END) AS d1,
+      max(CASE WHEN ${activityDate}=date(a.activated_at,'+7 day') THEN 1 ELSE 0 END) AS d7,
+      max(CASE WHEN ${activityDate}=date(a.activated_at,'+30 day') THEN 1 ELSE 0 END) AS d30
+      FROM activated a LEFT JOIN ${activitySource} ON e.account_id=a.account_id
+      AND e.purpose='behavior' ${q.operation ? '' : "AND e.account_id!=''"} AND ${scope} AND ${activityTime}>=date(a.activated_at,'+1 day') AND ${activityTime}<date(a.activated_at,'+31 day')
+      WHERE ${cohortWindow} GROUP BY a.account_id`, args, 'all')) as Array<{ activated_at: string; d1: number; d7: number; d30: number }>;
     const retention = [1, 7, 30].map(day => {
       const eligible = cohorts.filter(c => Date.parse(c.activated_at.slice(0, 10)) + (day + 1) * 86400000 <= Date.now());
       return { day, eligible: eligible.length, returned: eligible.filter(c => c[('d' + day) as 'd1' | 'd7' | 'd30']).length };
     });
     return { generatedAt, funnels, retention, note: 'Observed journeys only. Opt-outs and blocked requests reduce coverage. Day boundaries are UTC.' };
+  }
+  if (!q.operation) {
+    const rollupWhere = where.replace('received_at >= @from AND received_at < @until', 'day >= substr(@from,1,10) AND day < substr(@until,1,10)');
+    const totals = await read(`SELECT coalesce(sum(event_count),0) AS events,
+      count(DISTINCT CASE WHEN purpose='behavior' THEN nullif(account_id,'') END) AS activeAccounts,
+      (SELECT count(DISTINCT session_id) FROM event_sessions WHERE ${rollupWhere}) AS sessions,
+      sum(CASE WHEN name='request_completed' AND failed=1 THEN event_count ELSE 0 END) AS failedRequests,
+      sum(CASE WHEN name='request_completed' THEN event_count ELSE 0 END) AS requests FROM event_rollups WHERE ${rollupWhere}`, args, 'get');
+    const daily = await read(`SELECT day,sum(event_count) AS events,count(DISTINCT CASE WHEN purpose='behavior' THEN nullif(account_id,'') END) AS accounts FROM event_rollups WHERE ${rollupWhere} GROUP BY day ORDER BY day`, args);
+    const features = await read(`SELECT route,sum(event_count) AS events,count(DISTINCT nullif(account_id,'')) AS accounts FROM event_rollups WHERE ${rollupWhere} AND purpose='behavior' GROUP BY route ORDER BY events DESC LIMIT 30`, args);
+    const controls = await read(`SELECT nullif(control_id,'') AS control,sum(event_count) AS activations FROM event_rollups WHERE ${rollupWhere} AND name='control_activated' GROUP BY control_id ORDER BY activations DESC LIMIT 50`, args);
+    return { generatedAt, totals, daily, features, controls, health: collectorHealth() };
   }
   const totals = (await read(`SELECT count(*) AS events,
     count(DISTINCT CASE WHEN purpose='behavior' THEN account_id END) AS activeAccounts,

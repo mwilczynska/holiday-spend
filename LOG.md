@@ -3718,3 +3718,42 @@ Final review adds pseudonymous account links to Plans and LLM tables and operati
 so an administrator can distinguish owners and follow a request. Latest implementation documentation is
 docs/analytics/README.md; the current deployment and its personal database are outside this worktree.
 
+
+# 20 October 2026 — Analytics aggregate performance and merge readiness
+
+Merged committed main through c66fef39 into codex/product-analytics locally (1fb8efbe). The owner's
+local-only instruction remains in effect: no push, PR, merge into main or live deployment change.
+
+Added exact daily event summaries and separate session membership, maintained by SQLite triggers on
+insert/update/delete. Deduplicated delivery, anonymous-account association, erasure and transaction rollback
+remain exact. Retention reads these summaries; operation filters retain raw queries. A generated identity
+column and covering funnel index avoid repeated event-table reads. Summary upgrades backfill retained raw
+events without changing them. Filter, backfill, deduplication and operation-retention regressions pass.
+
+Final Windows mixed one-million-event fixture: Overview 1,352 ms, Journeys 4 ms, Funnels including retention
+1,615 ms, LLM 4 ms, Health 293 ms. History adds 12.80 ms p95 for 66 legs, below 20 ms. A 250-event insert
+transaction with production indexes/triggers takes 683.64 ms. Fast fixture preparation took 124,539 ms; it
+bulk-loads then rebuilds exact production indexes/summaries, so that figure is explicitly not ingestion
+throughput. Query profiles are in the ignored local artifact. These figures do not establish VPS performance.
+
+Used an isolated source copy and verified official Node 24.12.0 runtime under existing WSL Ubuntu for Linux
+checks. Production dependency audit reports zero vulnerabilities. The first real container build exposed an
+existing check-then-ALTER race (duplicate display_currency) across 31 Next.js build workers. Primary and
+analytics startup now acquire an immediate write transaction before reading/migrating schema; a six-process
+legacy-upgrade regression verifies exactly one backfill and no lost event/session summary.
+
+Added analytics:upgrade-check. It restores a verified full snapshot into a new private directory, runs real
+startup twice, compares all original business table hashes, exercises a synthetic event only in the copied
+analytics store, and verifies independent full backup/restore of both databases including WITHOUT ROWID
+summary tables. The deployed package dated 2026-10-20T21:42:05.056Z passes on Linux: 531 cities, two users,
+70 legs, 80 saved plans and 82 nonduplicated history baselines. The original package remains unchanged.
+
+Container verification uses a temporary private Docker daemon with its own socket/data root, no bridge or
+iptables changes, and disposable seeded test volumes. Optional smoke-test host networking binds only to
+Linux loopback; normal CI retains its published loopback port. Final container/baseline results follow below.
+
+Final native Linux baseline: 99 files / 607 tests, TypeScript, memory mirror, methodology guard and analytics
+coverage pass. Windows focused ESLint/types pass. The protected Linux upgrade rehearsal also passes after
+the startup-lock fix. A parallel source sync briefly truncated a file while Docker captured its context; the
+retry uses a separate frozen source copy. Newly committed main 88399203 changes only deployment notes and
+the development route-types include and will be integrated locally after this feature checkpoint.

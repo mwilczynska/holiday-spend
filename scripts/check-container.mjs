@@ -6,6 +6,7 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { RUNTIME_PROMPT_FILES } from './lib/runtime-prompts.mjs';
+import { createServer } from 'node:net';
 
 const image = process.env.HOLIDAY_SPEND_TEST_IMAGE || 'holiday-spend:ci';
 const seedImage = process.env.HOLIDAY_SPEND_TEST_SEED_IMAGE || 'holiday-spend:ci-seed';
@@ -15,6 +16,14 @@ const environment = path.join(directory, 'runtime.env');
 const volume = name + '-data';
 const backupVolume = name + '-backups';
 const password = 'Disposable-container-test-123';
+const hostNetworking = process.env.HOLIDAY_SPEND_TEST_NETWORK === 'host';
+let hostPort;
+if (hostNetworking) {
+  const probe = createServer();
+  await new Promise(resolve => probe.listen(0, '127.0.0.1', resolve));
+  hostPort = probe.address().port;
+  await new Promise(resolve => probe.close(resolve));
+}
 writeFileSync(environment, [
   'NEXTAUTH_SECRET=' + randomBytes(48).toString('hex'),
   'APP_URL=https://spend.example.com', 'NEXTAUTH_URL=https://spend.example.com',
@@ -63,8 +72,9 @@ try {
   docker('run', '--rm', '--user', '0', '-v', volume + ':/app/data', '--entrypoint', 'chown', image, '-R', '1001:1001', '/app/data');
   docker('run', '--rm', '--user', '0', '-v', backupVolume + ':/backups', '--entrypoint', 'chown', image, '-R', '1001:1001', '/backups');
   assert.throws(() => docker('run', '--rm', '--env-file', environment, image), /Command failed/, 'An image without a restored database must refuse startup.');
-  docker('run', '-d', '--name', name, '--env-file', environment, '-v', volume + ':/app/data', '-p', '127.0.0.1::3000', image);
-  const port = docker('port', name, '3000/tcp').split(':').at(-1);
+  const networking = hostNetworking ? ['--network', 'host', '-e', 'HOSTNAME=127.0.0.1', '-e', 'PORT=' + hostPort] : ['-p', '127.0.0.1::3000'];
+  docker('run', '-d', '--name', name, '--env-file', environment, '-v', volume + ':/app/data', ...networking, image);
+  const port = hostNetworking ? hostPort : docker('port', name, '3000/tcp').split(':').at(-1);
   base = 'http://127.0.0.1:' + port;
   await ready();
   assert.equal((await request('/api/cities')).status, 401);
@@ -112,7 +122,7 @@ try {
     "const db=new(require('better-sqlite3'))('/backups/restored/analytics.db',{readonly:true,fileMustExist:true});if(db.pragma('integrity_check',{simple:true})!=='ok')throw Error('Restored analytics integrity');db.prepare('SELECT count(*) FROM events').get();db.close();");
   docker('restart', name);
   // Docker may allocate a different host port when an ephemeral binding restarts.
-  base = 'http://127.0.0.1:' + docker('port', name, '3000/tcp').split(':').at(-1);
+  base = 'http://127.0.0.1:' + (hostNetworking ? hostPort : docker('port', name, '3000/tcp').split(':').at(-1));
   await ready();
   assert.equal((await request('/api/cities')).status, 401);
   await signIn('owner@example.com');

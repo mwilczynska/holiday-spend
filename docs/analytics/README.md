@@ -109,7 +109,10 @@ users cannot open other users' history. Full revision inspection and export prod
   date filters still apply. LLM attempts do not have device categories. These limitations are labelled in responses.
 
 Date ranges are bounded to 366 days; raw timelines/history/attempts use 100-row cursor pages. Aggregates are retained
-alongside raw events. Opt-outs, blockers and missing browser observations affect denominators; analytics must not be
+alongside raw events. Exact daily counts and separate session membership are updated transactionally by SQLite
+triggers on insertion, account association and erasure; summary upgrades rebuild from retained events. Overview
+and retention use these summaries; operation filters use raw events. Funnels use an indexed generated identity.
+Opt-outs, blockers and missing browser observations affect denominators; analytics must not be
 used as a billing ledger or a security audit of all possible actions.
 
 Reporting SQL and export reads run in a read-only worker thread so large reports do not block product requests.
@@ -159,7 +162,24 @@ overhead, and writes `.local/analytics-performance.json`. Workstation results do
 `--write` after deliberately changing controls. Health probes and analytics/admin internals are intentionally excluded.
 Run the project baseline and Linux production checks before deployment, including an independent restored backup.
 
-The 20 October 2026 Windows million-event run adds 10.08 ms history mutation p95 for a 66-leg plan. Journeys, LLM
-and Health take 2, 3 and 232 ms; Overview and Funnels take 6,913 and 5,989 ms and miss the two-second benchmark target.
-The reporting worker keeps those reads off the product request thread. Aggregate optimization and deployment-host
-measurements remain before analytics deployment. The owner is keeping this work local while deploying the existing app.
+The 20 October 2026 optimized Windows million-event run takes 1,352 ms for Overview, 4 ms for Journeys,
+1,615 ms for Funnels (including retention), 4 ms for LLM and 293 ms for Health. History adds 12.80 ms p95 for
+a 66-leg plan. A 250-event insertion transaction with the production indexes/triggers takes 683.64 ms.
+These are synthetic workstation measurements, not deployment-host guarantees.
+
+Reproduce the report fixture with `npm run analytics:benchmark -- 1000000 --mixed --fast-fixture --profile`.
+The fast mode bulk-loads events, then recreates the exact production indexes and summaries before timing reads.
+Its 124,539 ms preparation time is not an ingestion benchmark. Omit `--fast-fixture` to measure production inserts;
+`--keep-fixture` retains the disposable database for investigation. Query plans are recorded in the JSON artifact.
+The browser source gzip figure remains a lower-bound proxy, not shipped bundle size.
+
+`npm run analytics:upgrade-check -- --source <verified-full-snapshot> --destination <new-private-directory>`
+restores a copy, runs real startup twice, verifies all pre-existing business table hashes, inserts a synthetic event
+into only the copied analytics store, and checks full backup/restore of both databases including summaries.
+It refuses an existing destination and never migrates the source. Treat the rehearsal directory as private data.
+The deployed full package dated 20 October 2026 (21:42:05 UTC) passes this check on Linux: 531 cities, two users,
+70 legs, 80 saved plans and 82 labelled history baselines. The source package remains unchanged.
+
+The branch integrates committed main through c66fef39 and remains local at the owner's request. Linux/container
+verification evidence is recorded in PLAN.md and LOG.md. Measure the deployment host after rollout; no live
+production data or deployment has been changed by these checks.

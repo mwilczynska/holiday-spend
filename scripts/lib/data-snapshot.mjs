@@ -11,10 +11,13 @@ const hashFile = file => createHash('sha256').update(readFileSync(file)).digest(
 export function databaseSummary(db) {
   /** @type {Record<string, {count: number, sha256: string}>} */
   const result = {};
-  for (const { name } of db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name").all()) {
+  for (const { name, sql } of db.prepare("SELECT name,sql FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name").all()) {
     const hash = createHash('sha256');
     let count = 0;
-    for (const row of db.prepare(`SELECT * FROM ${quote(name)} ORDER BY rowid`).iterate()) {
+    const order = /\bWITHOUT\s+ROWID\b/i.test(sql)
+      ? db.pragma(`table_info(${quote(name)})`).filter(column => column.pk).sort((a, b) => a.pk - b.pk).map(column => quote(column.name)).join(',')
+      : 'rowid';
+    for (const row of db.prepare(`SELECT * FROM ${quote(name)} ORDER BY ${order}`).iterate()) {
       hash.update(JSON.stringify(row) + '\n');
       count++;
     }
