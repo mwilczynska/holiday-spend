@@ -60,10 +60,10 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
-## Analytics review fixes and dashboard redesign — IN REVIEW (21 October 2026)
+## Analytics review fixes and dashboard redesign — MERGED via PR #21 (21 October 2026)
 
-Owner-requested review of the merged analytics feature, then fixes and a dashboard redesign on branch
-`fix/analytics-review` for owner review. Not deployed; production still runs the pre-analytics image.
+Owner-requested review of the merged analytics feature, then fixes and a dashboard redesign, reviewed by the owner and
+squash-merged as `164d645a`. Not deployed: production still runs the pre-analytics image until the owner asks.
 
 - [x] Device category: Safari and Firefox send no `Sec-CH-UA-Mobile`, so iPhones were recorded as desktop and server
   events said "unknown". One helper (`src/lib/analytics/device.ts`) now uses the hint, else the user agent.
