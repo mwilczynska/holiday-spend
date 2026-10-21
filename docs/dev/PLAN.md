@@ -18,7 +18,8 @@ The owner asked for the public repository to carry only files useful to a reader
 - [x] Baseline: types, build, methodology check pass; 535 tests pass, and `snapshot-import-atomicity.test.ts` timed
   out in `beforeAll` under full-suite load and passes alone (4/4). Relative links: only the seven pre-existing v6
   branch links in the archived v6.1 plan remain broken.
-- [ ] Commit, push `main` and the tag.
+- [x] Commit, push `main` (fa31910a) and the tag.
+- [ ] Production checks pass on fa31910a in Linux CI.
 
 ## Open registration (21 October 2026)
 
