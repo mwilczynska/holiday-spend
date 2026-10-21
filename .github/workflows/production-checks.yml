@@ -16,10 +16,17 @@ on:
 permissions:
   contents: read
 
+env:
+  IMAGE: ghcr.io/mwilczynska/holiday-spend
+
 jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # packages: write is used only by the publish steps, which run on main alone.
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: actions/setup-node@v7.1.0
@@ -32,6 +39,20 @@ jobs:
       - run: npm run docs:check-memory
       - run: npm run methodology:v1.1:check
       - run: npm audit --omit=dev
-      - run: docker build --target runner -t holiday-spend:ci .
+      - run: >-
+          docker build --target runner -t holiday-spend:ci
+          --label org.opencontainers.image.source=https://github.com/${{ github.repository }}
+          --label org.opencontainers.image.revision=${{ github.sha }} .
       - run: docker build --target seed -t holiday-spend:ci-seed .
       - run: node scripts/check-container.mjs
+      # Publish the image that passed the checks above; the VPS is too small to build it.
+      - name: Publish image
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "$GHCR_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker tag holiday-spend:ci "$IMAGE:sha-${GITHUB_SHA::7}"
+          docker tag holiday-spend:ci "$IMAGE:main"
+          docker push "$IMAGE:sha-${GITHUB_SHA::7}"
+          docker push "$IMAGE:main"

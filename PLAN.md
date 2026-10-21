@@ -2,6 +2,13 @@
 
 ## Product analytics — IMPLEMENTED LOCALLY, verification follow-ups (20 October 2026)
 
+Merge-readiness follow-up requested by the owner:
+- [x] Integrate committed main through c66fef39 into the analytics branch (clean merge).
+- [ ] Optimize Overview and Funnels; repeat the million-event check with query profiles.
+- [ ] Verify Linux/native runtime and production container packaging where locally available.
+- [ ] Rehearse analytics migration, backup and restore against a protected copy of production data.
+All work stays local; the live deployment and main checkout remain untouched.
+
 Owner-approved implementation on `codex/product-analytics`, worktree
 `C:\Dev\holiday-spend-worktrees\analytics`. Self-hosted first-party analytics, collection enabled with a
 Settings opt-out, indefinite retention, private reconstructable plan history and metadata-only LLM records.
@@ -42,6 +49,50 @@ page seven times. See Phase 8 for the corrected evidence.
 **Branch:** `main` — PR #13 merged the former `fix/comprehensive-feature-qa` branch, which started from main `1413f3f`, including PR #12 and PR #11.
 
 **Last updated:** 20 October 2026
+
+## Production deployment — LIVE (20 October 2026)
+
+Owner-requested deployment to the existing VPS (`deploy@45.63.24.34`). Every VPS step runs in a visible terminal the
+owner watches; the owner enters SSH and sudo credentials there. A read-only survey found the host unchanged since the
+12 October inspection: only the blog runs, owning ports 80/443, and `blog.`/`spend.` have no DNS records.
+
+- [x] Fresh pre-deployment blog backup (database, uploads, running images, configuration) with an off-host copy.
+  VPS `~/backups/blog-2026-10-20-predeploy` (5.0 GB): database integrity ok (178 posts, 129 comments, 2,071 media),
+  2,317/2,317 upload files in the tar, both running image IDs saved. Copied to `C:\Dev\travel-blog-backups\`; all 12
+  SHA-256 sums match.
+- [x] CI publishes the tested runner image to `ghcr.io/mwilczynska/holiday-spend` (`:main`, `:sha-<commit>`); Compose
+  pulls it, because the VPS is too small to build. First run `a6da106` passed and published; anonymous pull works.
+- [x] Fresh owner-provisioned data snapshot (the 12 October package predates later cities), verified and transferred.
+  Local `.local/deployment/2026-10-20/production`: 531 cities, 1,062 photos, 70 legs, 1,543 expenses, 80 plans, owner
+  `dev-local-user`. Sent as one tar (per-file scp was slow and broke on a dropped connection); on the VPS all 1,063
+  manifest hashes match in `~/holiday-spend/incoming/production`. Settings installed as `.env.production.local` (600).
+- [x] Cloudflare A records for `blog` and `spend` → 45.63.24.34, DNS only; both resolve on 1.1.1.1 and 8.8.8.8.
+- [x] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports. Reviewed and
+  merged: project-infinite-summer#1, travel-blog#2, holiday-spend#20. Cutover 22:51 UTC 20 October: rehearsal on
+  spare ports passed, handoff took 5 s with the blog backend untouched, apex/www/photo/API 200 behind the edge.
+- [x] One certificate for apex, www, blog and spend (expires 18 January 2027), renewal now webroot through the edge
+  proxy; old stop/start-frontend hooks retired, `deploy/reload-edge.sh` added; `certbot renew --dry-run` succeeds.
+  Public check: all four names verify, `/api/health` ok, HTTP redirects to HTTPS, app security headers present.
+- [x] Runbook phase 0 on the VPS: edge files and both private repos delivered as git bundles (no GitHub credentials
+  on the host), `edge` network and `/var/www/acme` created, image `0c633aa` pulled, snapshot restored (531 cities,
+  1,062 photos, 70 legs, 1,543 expenses, 80 plans, 2 users, integrity ok). Holiday Spend runs healthy on
+  127.0.0.1:3000 and the edge network only, using 83 MiB; 1.2 GiB of host memory remains available.
+- [x] Apex and www switched to the landing page (`WWW_MODE=landing` in `edge/.env` on the VPS). Both serve it with
+  working links, styles and images; old blog paths redirect 301 to `blog.`, old `/uploads` photos still load. The
+  proxy recreate interrupted all three sites for about 13 s while connections drained.
+- [x] Daily and off-host backups for both applications (project-infinite-summer `ops/backup/`). Root cron at
+  16:30 UTC: Holiday Spend snapshot, stable blog database copy and uploads mirror; 7 days on the VPS; rclone crypt
+  copy to OneDrive (My files > Backups > project-infinite-summer, personal drive, 456 GB free), 30 days kept.
+  rclone 1.75.2 installed after SHA-256 check; encrypted write/read round trip passed; crypt passwords are in the
+  owner's password manager and the plain-text key file was deleted. First run by hand, 23:20–23:56 UTC: Holiday
+  Spend snapshot (531 cities, 1,062 photos), blog database (integrity ok, 178 posts) and 2,317 upload files; OneDrive
+  holds 5.07 GiB in 3,382 files and the snapshot was verified against the upload. Two script bugs found and fixed:
+  the blog check container could not read the root-only folder (run it as root, `80d5e5d`), and remote pruning
+  failed on the not-yet-created `blog/uploads-changed` (`e8ef7c8`, not yet on the VPS: until then each run uploads
+  correctly but reports FAILED at `offhost-retention`). VPS disk is 80% used (11 GB free).
+- [x] Owner password reset and first sign-in on `spend.`, and all three sites checked by the owner: everything works
+  as intended (reported 21 October 2026).
+- [ ] Restore test from OneDrive into a new directory (owner deferred it, 20 October).
 
 ## Pre-deployment security hardening — COMPLETE on branch `security/pre-deploy-hardening` (20 October 2026)
 

@@ -1,11 +1,18 @@
 services:
   holiday-spend:
+    # The VPS pulls the image CI publishes; `--build` still builds from source.
+    image: ${HOLIDAY_SPEND_IMAGE:-ghcr.io/mwilczynska/holiday-spend:main}
     build:
       context: .
       target: runner
     restart: unless-stopped
+    # Host loopback only, for health checks from the VPS shell. Public traffic arrives from
+    # the shared edge proxy (project-infinite-summer/edge) over the external `edge` network.
     ports:
       - "127.0.0.1:3000:3000"
+    networks:
+      - default
+      - edge
     volumes:
       - ./runtime-data:/app/data
     env_file:
@@ -35,6 +42,7 @@ services:
       - HOLIDAY_SPEND_DB_PATH=/app/data/travel.db
 
   backup:
+    image: ${HOLIDAY_SPEND_IMAGE:-ghcr.io/mwilczynska/holiday-spend:main}
     build:
       context: .
       target: runner
@@ -45,3 +53,7 @@ services:
       - ./backups:/backups
     environment:
       - HOLIDAY_SPEND_DB_PATH=/app/data/travel.db
+
+networks:
+  edge:
+    external: true

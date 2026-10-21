@@ -61,10 +61,11 @@ The authorized test was delivered on 12 October, initially to Gmail spam. The ow
 
 Transfer the entire verified production package through SSH to `incoming/production/` in the app checkout. Transfer `.env.production.local` separately, set mode `600`, and protect the incoming package. Existing blog containers and volumes stay in place.
 
-Build on a machine with enough memory, or publish the Linux image from CI and pull it on the VPS. The current VPS has 2 GB RAM; do not assume a Next.js build fits alongside the existing blog.
+Do not build on the VPS: it has one CPU and 2 GB RAM shared with the blog. Every push to `main` that passes Production checks publishes the tested runner image to `ghcr.io/mwilczynska/holiday-spend` as `:main` and `:sha-<7-char commit>`, labelled with its source revision. The package is public, so the VPS pulls without credentials. Compose uses `:main` unless `HOLIDAY_SPEND_IMAGE` names another tag; pin a `sha-` tag to keep a known release and to roll back.
 
 ```sh
-docker build --target runner -t holiday-spend:release .
+docker compose pull holiday-spend
+docker tag ghcr.io/mwilczynska/holiday-spend:main holiday-spend:release
 mkdir -p restore-staging
 docker run --rm --user 0:0 \
   -v "$PWD/incoming:/incoming:ro" -v "$PWD/restore-staging:/restore" \
@@ -74,7 +75,7 @@ sudo chown -R 1001:1001 restore-staging/runtime-data
 test ! -e runtime-data
 sudo mv restore-staging/runtime-data runtime-data
 chmod 600 .env.production.local
-docker compose up -d --build holiday-spend
+docker compose up -d holiday-spend
 curl --fail http://127.0.0.1:3000/api/health
 ```
 
@@ -92,18 +93,15 @@ The one-off restore helper runs as container root so it can read a private incom
 - Package the five city/transport prompt files listed in `scripts/lib/runtime-prompts.mjs`; Docker copies them explicitly and a test fails if the Dockerfile and list differ.
 - The app sends its own security headers (CSP with `frame-ancestors 'none'`, `X-Frame-Options`, HSTS, `Referrer-Policy: same-origin`, `nosniff`, `Permissions-Policy`). Do not add a second, conflicting set in nginx; two CSP headers are both enforced. The app includes its font locally and does not need Google Fonts access during a build.
 
-Host nginx example for the existing TLS server block:
+The live proxy is the shared edge nginx in project-infinite-summer `edge/`, specifically
+`edge/nginx/conf.d/20-spend.conf`. It reaches this app as `holiday-spend:3000` over the external
+`edge` Docker network. The app keeps `127.0.0.1:3000` on the host for health checks from the VPS
+shell only. The edge proxy applies this contract:
+- it sets `X-Real-IP` from the connection and clears `X-Forwarded-For`
+- 660 s read timeout, 20 MB body limit
+- no caching, and no added security headers
 
-```nginx
-location / {
-    proxy_pass http://127.0.0.1:3000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_read_timeout 660s;
-    client_max_body_size 20m;
-}
-```
+`edge/test/run.sh` checks these in CI.
 
 If Cloudflare proxying is enabled for the **website** later, configure nginx's real-IP handling with Cloudflare's trusted ranges before using the restored client IP. The **email CNAME records** remain DNS only.
 
@@ -120,9 +118,16 @@ The library is shared. Allowed guests can read it and use their own trip/expense
 
 ## Backups, recovery and updates
 
-Create `backups/` owned by UID/GID 1001 and build the backup helper once with `docker compose --profile tools build backup`. Run `sh scripts/backup.sh` from the checkout. It uses SQLite's online backup API and includes all referenced photos; errors stop the command and no old backups are deleted.
+Nightly backups run on the VPS through project-infinite-summer `ops/backup/nightly.sh`, from root
+cron at 16:30 UTC:
+1. It runs this app's `backup` Compose service into `backups/<time>`, which must be owned by
+   UID/GID 1001. The service uses SQLite's online backup API and includes every referenced photo.
+2. It keeps 7 days on the VPS.
+3. It uploads an encrypted copy to OneDrive (My files › Backups › project-infinite-summer), keeps
+   30 days there, and checks each new snapshot against the upload.
 
-Schedule that command daily with the deployment host's scheduler, and before every update. Copy each verified package to a separate machine/storage account over SSH. Off-host destination, credentials and schedule must be configured in Project Infinite Summer before launch; a backup on the same VPS is insufficient for machine loss. Keep at least one verified pre-update backup and test restore periodically into a new directory. Back up deployment secrets separately in the password manager.
+Run `sh scripts/backup.sh` by hand before every update. `ops/backup/README.md` covers status,
+logs and getting data back. Back up deployment secrets separately in the password manager.
 
 For an update: take/verify the backup, retain the previous image tag, build/pull the new image, recreate the app with the same bind mount, and check readiness and authenticated data. Do not reseed. For recovery: stop the app, restore a verified package to a new directory, point the bind mount at it, and start the matching image. Never overwrite a database while the app is running, and never remove existing blog volumes.
 
@@ -130,12 +135,16 @@ For an update: take/verify the backup, retain the previous image tag, build/pull
 
 Linux Docker/native modules and container startup are verified at code checkpoint `e3e9045`: [passing workflow](https://github.com/mwilczynska/holiday-spend/actions/runs/38285498810). `.github/workflows/production-checks.yml` builds the runner and a disposable CSV seed fixture, then `scripts/check-container.mjs` verifies native modules, prompts/static assets, real NextAuth sign-in, guest permissions, revocation, backup through a read-only source mount, restore and restart. Windows baseline and the private 527-city restore/data-hash audit also pass.
 
-The deployment host still needs these checks:
+Deployment host checks, 20 October 2026:
 
-- Public HTTPS, redirects, host/proxy headers, readiness and private upstream are verified.
-- Snapshot restore contains all 527 cities and expected personal records, with working photo attribution and both image sizes.
-- Live verification and password-reset links open the public app and reach the owner's inbox.
-- Daily and off-host backups are configured; an independent restore succeeds.
-- Existing blog remains reachable before and after the separate cutover.
+- Done: public HTTPS for all four names with one certificate, HTTP→HTTPS redirects,
+  host/proxy headers, `/api/health` readiness, and an upstream reachable only on loopback and the
+  `edge` network.
+- Done: the restored snapshot holds 531 cities, 1,062 photos, 70 legs, 1,543 expenses and 80
+  plans, and its integrity check passes.
+- Done: daily and off-host backups are configured.
+- Still to do: the owner's password-reset email and first sign-in; an independent restore test.
+- The blog stayed reachable through the cutover, apart from about 5 s during the port handoff.
+  It now lives at `blog.projectinfinitesummer.com`; the apex and `www` show the landing page.
 
 Local tests do not establish these public-host checks. Docker is not installed in the Windows development environment; record Linux CI/host evidence explicitly.
