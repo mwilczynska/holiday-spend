@@ -3776,3 +3776,11 @@ Removed this task’s closed synthetic Windows fixtures and private Windows prod
 after preserving aggregate verification results. Linux rehearsal fixtures clean themselves; temporary Linux
 source/runtime/Docker test data is removed after checking exact owned paths and absence of active mounts.
 The requested analytics worktree and its local preview remain available.
+
+# 21 October 2026 — Owner-authorized analytics merge and cleanup
+
+The owner explicitly authorizes merging to main, pushing main and deleting the GitHub feature branch.
+Fetched origin: main remains 88399203; the analytics feature is 64a41568 and no PR is open for it. Both
+checkouts are clean. Stopped only the analytics preview’s port-3047 process tree. Preserved its complete
+121-city test database, analytics store and prior verification results in the main checkout’s ignored
+.local/analytics-merge-2026-10-21T03-59-34-057Z directory before removal.

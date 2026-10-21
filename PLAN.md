@@ -1,13 +1,13 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-## Product analytics — IMPLEMENTED AND VERIFIED LOCALLY (20 October 2026)
+## Product analytics — MERGE AND CLEANUP IN PROGRESS (21 October 2026)
 
 Merge-readiness follow-up requested by the owner:
 - [x] Integrate committed main through 88399203 into the analytics branch (clean merges).
 - [x] Optimize Overview and Funnels; million-event queries meet the two-second target, with profiles.
 - [x] Verify Linux/native runtime, runner/seed image builds and production container smoke checks.
 - [x] Rehearse analytics migration, backup and restore against a protected copy of the deployed full package.
-All work stays local; the live deployment and main checkout remain untouched.
+Owner now requests merging to main, pushing main and deleting the GitHub feature branch. Preserve preview data/evidence, stop the worktree server, detach dependency junctions, remove only the analytics worktree and branch, and verify GitHub CI.
 
 Owner-approved implementation on `codex/product-analytics`, worktree
 `C:\Dev\holiday-spend-worktrees\analytics`. Self-hosted first-party analytics, collection enabled with a
