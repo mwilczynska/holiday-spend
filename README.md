@@ -59,16 +59,32 @@ total budget, banded by country, so overspending shows as a widening gap.
 
 ![Cumulative spend against plan and budget, and the planned versus actual table by country](docs/images/cumulative-spend.jpg)
 
+Amounts are stored in AUD and can be shown in another currency, chosen per account, at the latest daily rate from
+Frankfurter. Switching currency never changes stored amounts; expenses keep their original currency too.
+
 Saved plans can be compared side by side. Here the same trip is costed for two travellers and for three.
 
 ![Two saved plans compared, with their cumulative planned spend](docs/images/compare-plans.jpg)
 
 ### Keep a library of city costs
 
-The app ships with 121 cities, and the owner's library holds over 500. Any other city can be generated on demand, and
-every generated city records exactly how its numbers were produced.
+The app ships with 121 cities, and the hosted library holds over 500. An administrator can generate any other city
+on demand, and every generated city records exactly how its numbers were produced.
 
 ![A generated city in the dataset, with its provenance: model, prompt, formula version and exchange rate](docs/images/dataset.jpg)
+
+### Accounts and privacy
+
+Anyone can register with an email address and a password; the address is verified before first sign-in, and Google
+sign-in is optional. Each account's trips, expenses and saved plans are visible only to that account. The city
+library is shared: every account can read it, and only administrators can add, generate or change cities.
+
+Language-model calls, such as transport estimates, use the account's own provider key, entered in the browser.
+Production refuses to start with a server-side key, so one account never spends another's.
+
+Product analytics are first-party and self-hosted, with no third-party trackers. They are on by default and can be
+turned off in Settings; the app's `/privacy` page says what is collected and who can see it. Analytics never record
+passwords, free text, uploads, provider prompts or responses, or raw IP addresses.
 
 ## How city costs are estimated
 
@@ -105,10 +121,13 @@ Next.js 16 (App Router) · React 19 · TypeScript · Tailwind · Radix/shadcn ·
 Recharts · NextAuth · Vitest and Playwright. Weather comes from Open-Meteo and photos from Wikimedia Commons; neither
 needs a key.
 
-It is a single Next.js app with a SQLite file on disk, which keeps it simple to run and back up for one household.
-Language-model API keys are entered in the browser and never reach the repository, the database or the logs.
+It is a single Next.js app with SQLite files on disk, which keeps it simple to run and back up. Language-model API
+keys stay in the browser and are sent only with the request that uses them; they are never stored in the database
+or written to logs.
 
 ## Running it locally
+
+Requires Node.js 24.
 
 ```bash
 npm ci
@@ -127,8 +146,12 @@ Use `npm run serve` to use the app. Development mode serves unminified bundles, 
 dashboard against 263 kB in a production build. The two use separate build directories (`.next-dev` and `.next`) so
 they do not overwrite each other.
 
-In development, sign in with `AUTH_DEV_PIN`. A production build disables the PIN and needs an email and password;
+In development, sign in with `AUTH_DEV_PIN`. While `AUTH_ADMIN_EMAILS` is unset, development treats every account as a
+library administrator. A production build disables the PIN and needs an email and password;
 `npm run auth:set-local-password` sets one for the local user.
+
+To deploy, see [docs/ops/production-launch.md](docs/ops/production-launch.md): the app runs as one Docker container
+with its databases and photos on a persistent mount. CI publishes the image to `ghcr.io/mwilczynska/holiday-spend`.
 
 ### Checks
 
@@ -168,7 +191,8 @@ sign-in page.
 | [AGENTS.md](AGENTS.md) | Project memory: what the app is and how it works today (`CLAUDE.md` imports it) |
 | [docs/dev/PLAN.md](docs/dev/PLAN.md) | Current plan and milestone status |
 | [docs/dev/LOG.md](docs/dev/LOG.md) | History: what was built, what was tried, and what the evidence showed |
-| [docs/ops/deployment.md](docs/ops/deployment.md) | Deployment |
+| [docs/analytics/README.md](docs/analytics/README.md) | Product analytics: events, controls and access |
+| [docs/ops/production-launch.md](docs/ops/production-launch.md) | Deployment, email, proxy and backups |
 | [docs/README.md](docs/README.md) | Guide to everything else under `docs/` |
 
 `docs/dev/LOG.md` records the approaches that were rejected as well as the ones that shipped. The city-cost method went
@@ -177,5 +201,6 @@ now.
 
 ## Scope
 
-This is a personal project for one household's travel, not a product with sign-ups. It is public because the
-engineering may be of interest. The screenshots show a fictional demo trip, not real spending.
+This is a personal project built for one household's travel. Its hosted instance accepts registrations, but it is not
+a commercial product and comes with no support. The code is public because the engineering may be of interest. The
+screenshots show a fictional demo trip, not real spending.

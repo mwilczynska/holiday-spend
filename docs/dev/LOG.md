@@ -3829,3 +3829,9 @@ tests. The bulk removal briefly caught the four transport accuracy files, which 
 and `CLAUDE.md` is the one-line import `@AGENTS.md`, so the mirror script and its CI step are gone. Agent and tool
 working folders are gitignored. The prompt register, which still listed about sixty v5 experiment prompts not present
 on `main`, was rewritten around the five runtime prompts.
+
+README accuracy (21 October 2026). The README still described a personal app "not a product with sign-ups" after
+registration opened, said any city could be generated on demand although city creation and generation require a
+library administrator, and linked the superseded `docs/ops/deployment.md`. It now covers accounts, privacy and
+analytics, display currency, Node 24 and the Docker deployment. `.env.example` named v1 as the default methodology
+and listed Numbeo and Wise variables that nothing reads; both are corrected.

@@ -20,6 +20,11 @@ The owner asked for the public repository to carry only files useful to a reader
   branch links in the archived v6.1 plan remain broken.
 - [x] Commit, push `main` (fa31910a) and the tag.
 - [ ] Production checks pass on fa31910a in Linux CI.
+- [x] README accuracy: open registration, accounts and privacy, admin-only city generation, display currency, Node 24,
+  deployment pointer to `docs/ops/production-launch.md` (the linked `deployment.md` was superseded). `.env.example`:
+  v1.2 default, development-only fallback keys, unused Numbeo and Wise variables removed.
+- [ ] Privacy review of tracked files: owner decision pending on the findings (personal record counts and local paths in
+  the production handoff, VPS and backup detail in this plan, machine-specific sections of `AGENTS.md`).
 
 ## Open registration (21 October 2026)
 
