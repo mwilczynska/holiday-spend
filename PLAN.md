@@ -12,7 +12,7 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
-## Production deployment — IN PROGRESS (20 October 2026)
+## Production deployment — LIVE (20 October 2026)
 
 Owner-requested deployment to the existing VPS (`deploy@45.63.24.34`). Every VPS step runs in a visible terminal the
 owner watches; the owner enters SSH and sudo credentials there. A read-only survey found the host unchanged since the
@@ -52,7 +52,8 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   the blog check container could not read the root-only folder (run it as root, `80d5e5d`), and remote pruning
   failed on the not-yet-created `blog/uploads-changed` (`e8ef7c8`, not yet on the VPS: until then each run uploads
   correctly but reports FAILED at `offhost-retention`). VPS disk is 80% used (11 GB free).
-- [ ] Owner password reset and first sign-in on `spend.`; blog sign-in on `blog.`.
+- [x] Owner password reset and first sign-in on `spend.`, and all three sites checked by the owner: everything works
+  as intended (reported 21 October 2026).
 - [ ] Restore test from OneDrive into a new directory (owner deferred it, 20 October).
 
 ## Pre-deployment security hardening — COMPLETE on branch `security/pre-deploy-hardening` (20 October 2026)
