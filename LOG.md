@@ -3760,3 +3760,19 @@ the development route-types include and will be integrated locally after this fe
 
 Integrated committed main through 88399203 with a clean local merge. The only additions since c66fef39 are
 deployment notes and the development route-types include; application/runtime source is unchanged.
+
+Linux mixed million-event fixture also passes: Overview 519 ms, Journeys 2 ms, Funnels/retention 540 ms,
+LLM 3 ms, Health 102 ms; added history p95 8.35 ms and 250-event insertion 149.74 ms. Fast fixture
+preparation 44,298 ms is not ingestion throughput. Disposable fixture cleanup completes automatically.
+
+Final frozen-source container run passes both runner/seed builds, including the 31-worker production
+build phase. Real Linux Argon2/SQLite, prompts/assets, NextAuth sign-in, all six analytics reports through
+the read worker, guest denial, token revocation, full analytics backup/restore and restart pass. After the
+main merge, Windows and Linux strict types pass; the runtime source matches e276f112 exactly (main added
+only docs/development type configuration). GitHub CI awaits owner-authorized publication. Deployment-host
+timing remains a rollout check. No live service, source snapshot, main checkout or GitHub branch was changed.
+
+Removed this task’s closed synthetic Windows fixtures and private Windows production-data rehearsal copies
+after preserving aggregate verification results. Linux rehearsal fixtures clean themselves; temporary Linux
+source/runtime/Docker test data is removed after checking exact owned paths and absence of active mounts.
+The requested analytics worktree and its local preview remain available.

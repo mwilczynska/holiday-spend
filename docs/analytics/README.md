@@ -167,6 +167,10 @@ The 20 October 2026 optimized Windows million-event run takes 1,352 ms for Overv
 a 66-leg plan. A 250-event insertion transaction with the production indexes/triggers takes 683.64 ms.
 These are synthetic workstation measurements, not deployment-host guarantees.
 
+The same mixed one-million-event fixture on Linux takes 519 ms for Overview, 2 ms for Journeys, 540 ms for
+Funnels/retention, 3 ms for LLM and 102 ms for Health. History adds 8.35 ms p95; the 250-event insert takes
+149.74 ms. Fast fixture preparation takes 44,298 ms. This is local WSL, not the deployment VPS.
+
 Reproduce the report fixture with `npm run analytics:benchmark -- 1000000 --mixed --fast-fixture --profile`.
 The fast mode bulk-loads events, then recreates the exact production indexes and summaries before timing reads.
 Its 124,539 ms preparation time is not an ingestion benchmark. Omit `--fast-fixture` to measure production inserts;
@@ -179,6 +183,11 @@ into only the copied analytics store, and checks full backup/restore of both dat
 It refuses an existing destination and never migrates the source. Treat the rehearsal directory as private data.
 The deployed full package dated 20 October 2026 (21:42:05 UTC) passes this check on Linux: 531 cities, two users,
 70 legs, 80 saved plans and 82 labelled history baselines. The source package remains unchanged.
+
+Final Linux verification passes 99 files / 607 unit tests, TypeScript, the memory/methodology/coverage guards
+and a zero-vulnerability production dependency audit. Both runner and seed images build; the production
+container verifies native modules, prompts/assets, sign-in, all analytics views, guest denial, session revocation,
+full backup/restore and restart. The build-worker migration race is fixed and covered by six concurrent workers.
 
 The branch integrates committed main through 88399203 and remains local at the owner's request. Linux/container
 verification evidence is recorded in PLAN.md and LOG.md. Measure the deployment host after rollout; no live

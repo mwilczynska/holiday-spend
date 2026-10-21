@@ -1,11 +1,11 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-## Product analytics — IMPLEMENTED LOCALLY, verification follow-ups (20 October 2026)
+## Product analytics — IMPLEMENTED AND VERIFIED LOCALLY (20 October 2026)
 
 Merge-readiness follow-up requested by the owner:
 - [x] Integrate committed main through 88399203 into the analytics branch (clean merges).
 - [x] Optimize Overview and Funnels; million-event queries meet the two-second target, with profiles.
-- [ ] Verify Linux/native runtime and production container packaging where locally available.
+- [x] Verify Linux/native runtime, runner/seed image builds and production container smoke checks.
 - [x] Rehearse analytics migration, backup and restore against a protected copy of the deployed full package.
 All work stays local; the live deployment and main checkout remain untouched.
 
@@ -19,7 +19,8 @@ Plan history and necessary diagnostics continue after behavioral opt-out. Public
 - [x] Browser and server product coverage, including failures, retries and currency changes.
 - [x] Admin reporting, journeys, history, LLM and collection health.
 - [x] Backup/restore, deletion tooling, tests, deployment and event/metric documentation.
-- [ ] Linux production CI and deployment-host scale/performance verification before analytics deployment.
+- [x] Run the production Linux checks locally, including native modules and container authentication/analytics/restore/restart.
+- [ ] Run GitHub CI on owner-authorized publication; measure the deployment host during rollout.
 
 Visual thesis: the admin workspace uses the app's existing typography and primary colour, with a compact
 filter bar, readable charts and unboxed tables. Content: overview, journeys, funnels, plans, LLM and health.
@@ -32,17 +33,18 @@ The optimized million-event mixed fixture takes Overview 1,352 ms, Journeys 4 ms
 LLM 4 ms and Health 293 ms. History adds 12.80 ms p95 for 66 legs; a 250-event insertion transaction takes
 683.64 ms. Fast fixture preparation rebuilds production indexes/summaries before timing reads and does not
 measure ingestion throughput. Workstation results do not establish performance on the deployment host.
-Linux native TypeScript, complete unit tests, production dependency audit (zero vulnerabilities), coverage,
+The same Linux million-event fixture takes 519 ms Overview and 540 ms Funnels/retention; history adds
+8.35 ms p95. Linux native TypeScript, 99 files / 607 unit tests, production dependency audit (zero vulnerabilities), coverage,
 memory and methodology checks pass. Focused Windows ESLint and types pass. Final container verification is
 running after fixing the startup migration race exposed by 31 concurrent build workers.
 The protected Linux rehearsal preserves all existing business table hashes (531 cities, two users, 70 legs,
 80 saved plans), creates 82 labelled history baselines once, and restores both databases including report
 summaries. Source: the deployed full package dated 2026-10-20T21:42:05.056Z; the package remains unchanged.
 Earlier production browser flows pass for private history/opt-out and mobile reports/security.
-Deployment-host timing remains a rollout check. Linux native verification passes 99 files / 607 tests; container packaging is the remaining local check.
+Local merge preparation is complete. Deployment-host timing remains a rollout check.
 Main through 88399203 is integrated locally, including deployment notes and the development route-types include.
 Owner instructed keeping remaining changes local while deploying the existing app; do not push or open a PR until
-the owner requests publication. Prior local milestones: c9a751d8 and 60fcdcb4; the optimization and rehearsal checkpoint follows.
+the owner requests publication. Local optimization/rehearsal checkpoint: e276f112; latest-main integration: 517f8f3d. Final verification evidence follows.
 
 **Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
