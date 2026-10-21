@@ -4,22 +4,15 @@ export function configuredEmails(value: string | undefined): string[] {
   return [...new Set((value ?? '').split(',').map(normalizeEmail).filter(Boolean))];
 }
 
-export function isEmailAllowed(email: string | null | undefined): boolean {
-  if (!email) return false;
-  const allowed = configuredEmails(process.env.AUTH_ALLOWED_EMAILS);
-  if (!allowed.length) return process.env.NODE_ENV !== 'production';
-  return allowed.includes(normalizeEmail(email));
-}
-
 export function isLibraryAdmin(email: string | null | undefined): boolean {
   const admins = configuredEmails(process.env.AUTH_ADMIN_EMAILS);
   if (!admins.length) return process.env.NODE_ENV !== 'production';
-  return Boolean(email && isEmailAllowed(email) && admins.includes(normalizeEmail(email)));
+  return Boolean(email && admins.includes(normalizeEmail(email)));
 }
 
 export function isAnalyticsAdmin(email: string | null | undefined): boolean {
   const admins = configuredEmails(process.env.AUTH_ANALYTICS_ADMIN_EMAILS);
-  return admins.length ? Boolean(email && isEmailAllowed(email) && admins.includes(normalizeEmail(email))) : isLibraryAdmin(email);
+  return admins.length ? Boolean(email && admins.includes(normalizeEmail(email))) : isLibraryAdmin(email);
 }
 
 export function isEmailPasswordEnabled(): boolean {

@@ -1,5 +1,17 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
+## Open registration (21 October 2026)
+
+A new user's signup and resend showed "check your email" but sent nothing: their address was not in
+`AUTH_ALLOWED_EMAILS`, and the routes answer unlisted addresses with a silent success. The owner chose to remove the
+allowlist so any address can register; `AUTH_ADMIN_EMAILS` still limits shared-library writes.
+
+- [x] Remove the allowlist from signup, resend, forgot-password, sign-in, session refresh, proxy and analytics.
+- [x] Startup requires only `AUTH_ADMIN_EMAILS`; update tests, env examples and launch docs.
+- [x] Run the baseline (types, 615 tests, build, memory and methodology checks); publish main.
+- [ ] Pass production CI.
+- [ ] Deploy the new image on the VPS; the new user signs up again.
+
 ## Product analytics — MERGED, PUBLISHED AND CLEANED UP (21 October 2026)
 
 Merge-readiness follow-up requested by the owner:

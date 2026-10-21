@@ -3800,3 +3800,12 @@ The analytics worktree/local branch are removed, main dependencies remain intact
 is retained. Preview data and verification evidence are preserved in the ignored archive recorded above.
 This changes source/image publication; no VPS deployment command was run. Deployment-host timing remains
 part of the next owner-authorized rollout.
+
+Open registration (21 October 2026). A new user signed up and clicked resend on the live app and received no
+email. Both routes returned the normal "check your email" response because the address was not in
+`AUTH_ALLOWED_EMAILS`; they skip unlisted addresses silently so the form does not reveal the allowlist. Resend
+was not involved: a delivery failure returns a 500. The owner decided that any address may register, so the
+allowlist was removed from signup, resend, forgot-password, credential and Google sign-in, the JWT refresh,
+`requireCurrentUser`, the proxy token check and the analytics identity routes. `AUTH_ADMIN_EMAILS` remains the
+only address list and is still required at production startup. Existing per-IP and per-address rate limits
+bound verification email volume.

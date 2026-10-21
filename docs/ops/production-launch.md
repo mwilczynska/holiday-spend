@@ -36,13 +36,12 @@ On the deployment host, copy `.env.production.example` to `.env.production.local
 | `HOLIDAY_SPEND_DB_PATH` | `/app/data/travel.db` inside the container |
 | `HOLIDAY_SPEND_REQUIRE_DATABASE` | `true` |
 | `HOLIDAY_SPEND_TRUST_PROXY` | `true`, with the private upstream and proxy contract below |
-| `AUTH_ALLOWED_EMAILS` | Comma-separated private registration/sign-in allowlist |
-| `AUTH_ADMIN_EMAILS` | Allowed addresses that may change the shared city library |
+| `AUTH_ADMIN_EMAILS` | Addresses that may change the shared city library; any address may register |
 | `ENABLE_EMAIL_PASSWORD` | `true` |
 | `RESEND_API_KEY` | Sending-only key restricted to the verified sending domain |
 | `MAIL_FROM` | `Holiday Spend <no-reply@auth.projectinfinitesummer.com>` |
 
-Remove `AUTH_DEV_PIN` and `APP_SECRET`. Do not set `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY`; startup refuses them because any allowlisted account could spend them. Google is optional and not required for the chosen email/password launch. Application LLM keys remain in the user's browser; do not copy them into deployment settings.
+Remove `AUTH_DEV_PIN` and `APP_SECRET`. Do not set `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY`; startup refuses them because any registered account could spend them. Google is optional and not required for the chosen email/password launch. Application LLM keys remain in the user's browser; do not copy them into deployment settings.
 
 The container refuses to start with missing or inconsistent configuration, a missing/empty database, a failed SQLite check, or missing runtime prompts. `/api/health` reports readiness without disclosing data. Development `npm start` remains available for local use; the strict production preflight is the Docker entrypoint.
 
@@ -112,7 +111,7 @@ The prepared owner's copied password is deliberately unknown. Once HTTPS and ema
 1. Open `/forgot-password`, enter the owner's allowed email, and use the received link to choose a password (at least ten characters, not all digits). Completing the reset also verifies the address.
 2. Verification links from signup or **Resend verification email** ask for the account's password before verifying.
 3. Sign in with the new password. Confirm the existing trip, expenses and saved plans are present. Do not create a second account or change ownership IDs.
-4. Test sign-out, reset, change-password and a second browser's session revocation. Confirm a blocked email cannot register. Additional accounts require adding their email to the allowlist and recreating the container.
+4. Test sign-out, reset, change-password and a second browser's session revocation. Registration is open to any address; only `AUTH_ADMIN_EMAILS` may change the shared city library.
 
 The library is shared. Allowed guests can read it and use their own trip/expense records; only administrator emails can edit or generate shared city/country records. Signing in never claims unowned legacy data.
 

@@ -10,7 +10,7 @@ import { checkRateLimit } from '@/lib/rate-limit';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { sendPasswordResetEmail } from '@/lib/mailer';
 import { getRequestIp } from '@/lib/request-ip';
-import { isEmailAllowed, isEmailPasswordEnabled } from '@/lib/auth-policy';
+import { isEmailPasswordEnabled } from '@/lib/auth-policy';
 
 export const dynamic = 'force-dynamic';
 
@@ -24,7 +24,7 @@ async function handlePOST(request: Request) {
     const data = forgotPasswordSchema.parse(body);
     const clientIp = getRequestIp(request) ?? 'unknown';
     const normalizedEmail = normalizeEmail(data.email);
-    if (!isEmailPasswordEnabled() || !isEmailAllowed(normalizedEmail)) return authSuccess({ ok: true });
+    if (!isEmailPasswordEnabled()) return authSuccess({ ok: true });
 
     const [ipLimit, emailLimit] = await Promise.all([
       checkRateLimit(`forgot-password:ip:${clientIp}`, {

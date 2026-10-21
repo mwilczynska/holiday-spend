@@ -12,7 +12,7 @@ import { LoadingButtonLabel } from '@/components/ui/loading-state';
 
 /**
  * Verification asks for the password chosen at signup. The link alone used to verify the account,
- * which let someone who registered an allowlisted address first keep a password the mailbox owner
+ * which let someone who registered another person's address first keep a password the mailbox owner
  * never chose.
  */
 export function VerifyEmailScreen() {

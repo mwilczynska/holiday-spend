@@ -11,7 +11,7 @@ import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { sendVerificationEmail } from '@/lib/mailer';
 import { hashPassword, validatePasswordStrength } from '@/lib/password';
 import { getRequestIp } from '@/lib/request-ip';
-import { isAnalyticsAdmin, isEmailAllowed, isEmailPasswordEnabled, isLibraryAdmin } from '@/lib/auth-policy';
+import { isAnalyticsAdmin, isEmailPasswordEnabled, isLibraryAdmin } from '@/lib/auth-policy';
 import { analyticsContext, setAnalyticsActor } from '@/lib/analytics/context';
 import { recordEvent } from '@/lib/analytics/service';
 
@@ -30,8 +30,6 @@ async function handlePOST(request: Request) {
     const data = signupSchema.parse(body);
     const clientIp = getRequestIp(request) ?? 'unknown';
     const normalizedEmail = normalizeEmail(data.email);
-    // Same response as an accepted signup, so the form does not reveal which addresses are allowlisted.
-    if (!isEmailAllowed(normalizedEmail)) return authSuccess({ ok: true });
 
     const [ipLimit, emailLimit] = await Promise.all([
       checkRateLimit(`signup:ip:${clientIp}`, {

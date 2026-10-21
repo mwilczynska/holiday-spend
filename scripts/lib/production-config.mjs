@@ -11,10 +11,8 @@ export function validateProductionConfig(env) {
     } catch { errors.push(`${key} must be a public HTTPS origin without a path.`); }
   }
   const emails = value => (value ?? '').split(',').map(item => item.trim().toLowerCase()).filter(Boolean);
-  const allowed = emails(env.AUTH_ALLOWED_EMAILS);
   const admins = emails(env.AUTH_ADMIN_EMAILS);
-  if (!allowed.length || allowed.some(email => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) errors.push('AUTH_ALLOWED_EMAILS must list the private accounts allowed to sign in.');
-  if (!admins.length || admins.some(email => !allowed.includes(email))) errors.push('AUTH_ADMIN_EMAILS must contain an administrator included in AUTH_ALLOWED_EMAILS.');
+  if (!admins.length || admins.some(email => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) errors.push('AUTH_ADMIN_EMAILS must list at least one administrator email address.');
   const native = env.ENABLE_EMAIL_PASSWORD !== 'false';
   if (native && (!env.RESEND_API_KEY?.trim() || !env.MAIL_FROM?.trim())) errors.push('Email/password auth requires RESEND_API_KEY and a verified MAIL_FROM sender.');
   if (Boolean(env.GOOGLE_CLIENT_ID) !== Boolean(env.GOOGLE_CLIENT_SECRET)) errors.push('Google sign-in needs both GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.');
@@ -23,7 +21,7 @@ export function validateProductionConfig(env) {
   if (env.HOLIDAY_SPEND_TRUST_PROXY !== 'true') errors.push('HOLIDAY_SPEND_TRUST_PROXY=true requires a private upstream and a proxy that overwrites X-Real-IP.');
   if (env.AUTH_DEV_PIN || env.APP_SECRET) errors.push('Remove development PIN and APP_SECRET from production configuration.');
   // City and transport calls fall back to these when a request carries no key, and transport
-  // estimation is open to every allowlisted account, so a server key would be spent by guests.
+  // estimation is open to every account, so a server key would be spent by anyone who signs up.
   const serverLlmKeys = ['OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'GEMINI_API_KEY'].filter(key => env[key]?.trim());
   if (serverLlmKeys.length) errors.push(`Remove ${serverLlmKeys.join(', ')}: production users supply their own provider keys in the browser.`);
   if (errors.length) throw new Error(errors.join('\n'));

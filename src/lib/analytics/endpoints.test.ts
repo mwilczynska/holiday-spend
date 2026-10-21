@@ -18,7 +18,7 @@ function request(path: string, data: unknown, method = 'POST') {
 beforeEach(() => {
   state.user = { id: 'guest', email: 'guest@example.test' };
   sqlite.exec("DELETE FROM analytics_outbox; DELETE FROM analytics_preferences; INSERT OR IGNORE INTO user(id) VALUES ('guest');");
-  vi.stubEnv('AUTH_ADMIN_EMAILS', 'owner@example.test'); vi.stubEnv('AUTH_ALLOWED_EMAILS', 'owner@example.test,guest@example.test'); vi.stubEnv('AUTH_ANALYTICS_ADMIN_EMAILS', '');
+  vi.stubEnv('AUTH_ADMIN_EMAILS', 'owner@example.test'); vi.stubEnv('AUTH_ANALYTICS_ADMIN_EMAILS', '');
 });
 afterEach(() => vi.unstubAllEnvs());
 afterAll(() => sqlite.close());

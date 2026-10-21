@@ -34,12 +34,10 @@ describe('cross-origin write detection', () => {
     expect(isCrossOriginWrite(request('POST', { host: '127.0.0.1:3000' }))).toBe(false);
   });
 
-  it('accepts tokens only for allowlisted emails', () => {
+  it('accepts any token that identifies a user', () => {
     vi.stubEnv('NODE_ENV', 'production');
-    vi.stubEnv('AUTH_ALLOWED_EMAILS', 'owner@example.com');
-    expect(isTokenAllowed({ sub: 'u1', email: 'Owner@example.com' })).toBe(true);
-    expect(isTokenAllowed({ sub: 'u2', email: 'removed@example.com' })).toBe(false);
-    expect(isTokenAllowed({ email: 'owner@example.com' })).toBe(false);
+    expect(isTokenAllowed({ sub: 'u1' })).toBe(true);
+    expect(isTokenAllowed({})).toBe(false);
     expect(isTokenAllowed(null)).toBe(false);
   });
 });

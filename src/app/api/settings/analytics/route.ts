@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getAuthSession } from '@/lib/auth';
-import { isEmailAllowed } from '@/lib/auth-policy';
 import { sqlite } from '@/db';
 import { accountAnalyticsId, analyticsEnabled } from '@/lib/analytics/service';
 import { handleError } from '@/lib/api-helpers';
@@ -10,15 +9,15 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: Request) {
   try {
     const user = (await getAuthSession())?.user;
-    const enabled = user?.id && isEmailAllowed(user.email) ? analyticsEnabled(user.id) : !request.headers.get('cookie')?.split(';').some(c => c.trim() === 'hs_analytics_disabled=1');
-    return NextResponse.json({ data: { enabled, identity: user?.id && isEmailAllowed(user.email) ? accountAnalyticsId(user.id) : 'anonymous' } }, { headers: { 'Cache-Control': 'no-store' } });
+    const enabled = user?.id ? analyticsEnabled(user.id) : !request.headers.get('cookie')?.split(';').some(c => c.trim() === 'hs_analytics_disabled=1');
+    return NextResponse.json({ data: { enabled, identity: user?.id ? accountAnalyticsId(user.id) : 'anonymous' } }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (err) { return handleError(err); }
 }
 export async function PUT(request: Request) {
   try {
     const { enabled } = z.object({ enabled: z.boolean() }).strict().parse(await request.json());
     const user = (await getAuthSession())?.user;
-    if (user?.id && isEmailAllowed(user.email)) {
+    if (user?.id) {
       sqlite.transaction(() => {
         sqlite.prepare('INSERT INTO analytics_preferences(user_id,enabled,changed_at) VALUES (?,?,?) ON CONFLICT(user_id) DO UPDATE SET enabled=excluded.enabled,changed_at=excluded.changed_at')
           .run(user.id, Number(enabled), new Date().toISOString());

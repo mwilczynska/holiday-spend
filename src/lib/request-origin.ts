@@ -1,5 +1,3 @@
-import { isEmailAllowed } from './auth-policy';
-
 const SAFE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS']);
 
 function originOf(value: string | undefined): string | null {
@@ -45,7 +43,7 @@ export function isCrossOriginWrite(request: Request): boolean {
   }
 }
 
-/** The proxy can read the signed token but not the database, so it checks only the allowlist. */
-export function isTokenAllowed(token: { sub?: string | null; email?: string | null } | null): boolean {
-  return Boolean(token?.sub && isEmailAllowed(token.email));
+/** The proxy can read the signed token but not the database, so it checks only that a user is signed in. */
+export function isTokenAllowed(token: { sub?: string | null } | null): boolean {
+  return Boolean(token?.sub);
 }

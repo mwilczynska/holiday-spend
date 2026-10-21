@@ -6,8 +6,8 @@ try {
   const args = process.argv.slice(2);
   const index = args.indexOf('--to');
   const to = index >= 0 ? args[index + 1] : undefined;
-  if (!to || !(process.env.AUTH_ALLOWED_EMAILS ?? '').split(',').map(value => value.trim().toLowerCase()).includes(to.toLowerCase())) {
-    throw new Error('Supply --to with an address from AUTH_ALLOWED_EMAILS.');
+  if (!to || !(process.env.AUTH_ADMIN_EMAILS ?? '').split(',').map(value => value.trim().toLowerCase()).includes(to.toLowerCase())) {
+    throw new Error('Supply --to with an address from AUTH_ADMIN_EMAILS.');
   }
   const message = {
     from: process.env.MAIL_FROM,

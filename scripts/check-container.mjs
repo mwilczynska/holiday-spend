@@ -28,8 +28,7 @@ writeFileSync(environment, [
   'NEXTAUTH_SECRET=' + randomBytes(48).toString('hex'),
   'APP_URL=https://spend.example.com', 'NEXTAUTH_URL=https://spend.example.com',
   'HOLIDAY_SPEND_DB_PATH=/app/data/travel.db', 'HOLIDAY_SPEND_REQUIRE_DATABASE=true',
-  'HOLIDAY_SPEND_TRUST_PROXY=true', 'AUTH_ALLOWED_EMAILS=owner@example.com,guest@example.com',
-  'AUTH_ADMIN_EMAILS=owner@example.com', 'ENABLE_EMAIL_PASSWORD=true',
+  'HOLIDAY_SPEND_TRUST_PROXY=true', 'AUTH_ADMIN_EMAILS=owner@example.com', 'ENABLE_EMAIL_PASSWORD=true',
   // No email-send route is called; this synthetic key is never transmitted.
   'RESEND_API_KEY=re_disposable_smoke_test', 'MAIL_FROM=Holiday Spend <account@auth.example.com>',
 ].join('\n'), { mode: 0o600 });

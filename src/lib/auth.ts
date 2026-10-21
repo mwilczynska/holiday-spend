@@ -10,7 +10,7 @@ import {
   verifyEmailPasswordCredentials,
 } from '@/lib/native-auth';
 import { normalizeEmail } from '@/lib/email';
-import { isEmailAllowed, isEmailPasswordEnabled } from '@/lib/auth-policy';
+import { isEmailPasswordEnabled } from '@/lib/auth-policy';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { getRequestIp } from '@/lib/request-ip';
 import { ensureUserRow, initializeUserPreferences } from '@/lib/user-data';
@@ -123,8 +123,6 @@ if (emailPasswordEnabled || devPin) {
           return null;
         }
 
-        if (!isEmailAllowed(credentials?.email)) return null;
-
         const normalizedEmail =
           typeof credentials?.email === 'string' ? credentials.email.trim().toLowerCase() : '';
         const clientIp = getRequestIp(req) ?? 'unknown';
@@ -189,8 +187,8 @@ export const authOptions: NextAuthOptions = {
       }
 
       if (account.provider === 'google') {
-        if (!isEmailAllowed(user.email)
-          || (profile as { email_verified?: boolean } | undefined)?.email_verified !== true) {
+        if (!user.email
+          ||(profile as { email_verified?: boolean } | undefined)?.email_verified !== true) {
           return false;
         }
         const existingUser = await getUserByNormalizedEmail(user.email);
@@ -236,8 +234,6 @@ export const authOptions: NextAuthOptions = {
         return token;
       }
 
-      if (!isEmailAllowed(token.email)) return {};
-
       const currentTokenVersion = await getUserTokenVersion(String(token.sub));
       if (currentTokenVersion == null) {
         return {};
@@ -276,8 +272,6 @@ export async function requireCurrentUser() {
   if (!session?.user?.id) {
     throw new AuthRequiredError();
   }
-
-  if (!isEmailAllowed(session.user.email)) throw new AuthRequiredError();
 
   setAnalyticsActor(session.user.id, isLibraryAdmin(session.user.email) || isAnalyticsAdmin(session.user.email));
 

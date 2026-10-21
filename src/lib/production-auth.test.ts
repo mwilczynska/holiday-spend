@@ -56,7 +56,6 @@ describe.sequential('production email/password authentication', { timeout: 20000
     vi.stubEnv('HOLIDAY_SPEND_REQUIRE_DATABASE', 'false');
     vi.stubEnv('NODE_ENV', 'production');
     vi.stubEnv('ENABLE_EMAIL_PASSWORD', 'true');
-    vi.stubEnv('AUTH_ALLOWED_EMAILS', 'owner@example.com,guest@example.com');
     vi.stubEnv('AUTH_ADMIN_EMAILS', 'owner@example.com');
     vi.stubEnv('AUTH_DEV_PIN', 'test-pin-must-not-work');
     vi.stubEnv('APP_URL', 'https://spend.example.com');
@@ -86,18 +85,14 @@ describe.sequential('production email/password authentication', { timeout: 20000
     fs.rmSync(temp, { recursive: true, force: true });
   });
 
-  it('requires the private allowlist and never enables the production PIN', async () => {
+  it('lets any address register and never enables the production PIN', async () => {
     expect(auth.getConfiguredAuthProviders().devPin).toBe(false);
     const result = await signup.POST(post({ email: 'stranger@example.com', password: 'A-good-password-123' }));
     expect(result.status).toBe(200);
-    expect(database.sqlite.prepare('SELECT count(*) AS n FROM user').get()).toEqual({ n: 0 });
-    expect(state.verification).not.toHaveBeenCalled();
-    await forgot.POST(post({ email: 'stranger@example.com' }));
-    expect(state.reset).not.toHaveBeenCalled();
-    const policy = await import('@/lib/auth-policy');
-    vi.stubEnv('AUTH_ALLOWED_EMAILS', '');
-    expect(policy.isEmailAllowed('owner@example.com')).toBe(false);
-    vi.stubEnv('AUTH_ALLOWED_EMAILS', 'owner@example.com,guest@example.com');
+    expect(database.sqlite.prepare('SELECT count(*) AS n FROM user').get()).toEqual({ n: 1 });
+    expect(state.verification.mock.calls[0][0]).toBe('stranger@example.com');
+    expect((await resend.POST(post({ email: 'stranger@example.com' }))).status).toBe(200);
+    expect(state.verification).toHaveBeenCalledTimes(2);
   });
 
   it('signs up, blocks unverified/wrong passwords and verifies a single-use link', async () => {
@@ -194,7 +189,7 @@ describe.sequential('production email/password authentication', { timeout: 20000
     await expect(library.requireLibraryAdmin()).rejects.toMatchObject({ status: 403 });
     state.session = { user: { id: 'owner', email: 'owner@example.com' } };
     expect(await library.requireLibraryAdmin()).toBe('owner');
-    state.session = { user: { id: 'removed', email: 'removed@example.com' } };
+    state.session = null;
     await expect(auth.requireCurrentUserId()).rejects.toMatchObject({ status: 401 });
   });
 });

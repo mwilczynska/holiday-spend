@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAuthSession } from '@/lib/auth';
-import { isAnalyticsAdmin, isEmailAllowed, isLibraryAdmin } from '@/lib/auth-policy';
+import { isAnalyticsAdmin, isLibraryAdmin } from '@/lib/auth-policy';
 import { browserBatchSchema } from '@/lib/analytics/catalogue';
 import { accountAnalyticsId, analyticsEnabled, enqueueEvent, ensureAnalyticsWorker, makeEvent } from '@/lib/analytics/service';
 import { checkRateLimit } from '@/lib/rate-limit';
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
   const batch = browserBatchSchema.safeParse(value);
   if (!batch.success) return NextResponse.json({ error: 'Invalid analytics batch.' }, { status: 400 });
   const user = (await getAuthSession())?.user;
-  const userId = user?.id && isEmailAllowed(user.email) ? user.id : undefined;
+  const userId = user?.id || undefined;
   const disabled = request.headers.get('cookie')?.split(';').some(c => c.trim() === 'hs_analytics_disabled=1');
   if ((!userId && disabled) || (userId && !analyticsEnabled(userId))) return new Response(null, { status: 204 });
   try {
