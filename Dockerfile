@@ -48,5 +48,8 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV HOLIDAY_SPEND_DB_PATH="/app/data/travel.db"
 ENV HOLIDAY_SPEND_REQUIRE_DATABASE="true"
+# Analytics release label. CI passes sha-<commit>; a local build stays "unversioned".
+ARG HOLIDAY_SPEND_RELEASE=unversioned
+ENV HOLIDAY_SPEND_RELEASE=$HOLIDAY_SPEND_RELEASE
 
 CMD ["node", "scripts/container-entrypoint.mjs"]

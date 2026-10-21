@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BarChart3, BookOpenText, Database, LayoutDashboard, Loader2, Map, Receipt, Settings, UserCircle } from 'lucide-react';
+import { BarChart3, BookOpenText, Database, LayoutDashboard, LineChart, Loader2, Map, Receipt, Settings, UserCircle } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 import { BrandMark } from './BrandMark';
-import { getActiveNavHref, isAuthRoute } from './nav-match';
+import { getActiveNavHref, isAuthRoute, navAnalyticsId } from './nav-match';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -21,10 +21,14 @@ const navItems = [
   { href: '/settings/account', label: 'Account', icon: UserCircle },
 ];
 
-export function DesktopSidebar() {
+// Shown only to analytics administrators; the server checks access on every read regardless.
+const analyticsItem = { href: '/admin/analytics', label: 'Analytics', icon: LineChart };
+
+export function DesktopSidebar({ showAnalytics = false }: { showAnalytics?: boolean }) {
   const pathname = usePathname();
   const [pendingHref, setPendingHref] = useState<string | null>(null);
-  const activeHref = getActiveNavHref(pathname, navItems.map((item) => item.href));
+  const items = showAnalytics ? [...navItems, analyticsItem] : navItems;
+  const activeHref = getActiveNavHref(pathname, items.map((item) => item.href));
 
   useEffect(() => {
     setPendingHref(null);
@@ -42,7 +46,7 @@ export function DesktopSidebar() {
         </div>
       </div>
       <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 py-2">
-        {navItems.map((item) => {
+        {items.map((item) => {
           // Only the most specific match is active, so /track/tags highlights Tags but not Expenses.
           const isActive = item.href === activeHref;
           const isNavigating = pendingHref === item.href;
@@ -50,7 +54,7 @@ export function DesktopSidebar() {
             // `next/link` rather than router.push, so Next prefetches each route
             // as it enters the viewport. router.push disabled prefetching entirely,
             // making every navigation a cold request.
-            <Link data-analytics="desktop-sidebar.set-pending-href"
+            <Link data-analytics={navAnalyticsId('desktop-sidebar', item.href)}
               key={item.href}
               href={item.href}
               onClick={() => {

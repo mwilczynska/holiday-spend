@@ -60,6 +60,29 @@ page seven times. See Phase 8 for the corrected evidence.
 
 **Last updated:** 20 October 2026
 
+## Analytics review fixes and dashboard redesign — IN REVIEW (21 October 2026)
+
+Owner-requested review of the merged analytics feature, then fixes and a dashboard redesign on branch
+`fix/analytics-review` for owner review. Not deployed; production still runs the pre-analytics image.
+
+- [x] Device category: Safari and Firefox send no `Sec-CH-UA-Mobile`, so iPhones were recorded as desktop and server
+  events said "unknown". One helper (`src/lib/analytics/device.ts`) now uses the hint, else the user agent.
+- [x] Release label: built into the image as `sha-<commit>` by Production checks instead of defaulting to `local`.
+- [x] Duplicate React key on every page (analytics and currency providers shared the user ID as their key).
+- [x] Navigation: Analytics in the desktop sidebar for analytics admins; every nav link now has its own control ID
+  (they all shared `desktop-sidebar.set-pending-href`, so "Controls used" could not tell them apart).
+- [x] Dashboard redesigned on the app's PageHeader, Card, StatTile, Tabs, Input and table styles: administrators
+  included by default, filters and tab kept in the URL, secondary filters behind "More filters", one date format,
+  default range covering the current UTC day, readable event/action/step/health labels, no raw JSON, "You" for the
+  viewer's account, plan names in Plan history, newest-first Journeys and Plan history, zero-filled daily chart,
+  funnels as progress bars with an empty state, retention as tiles, Health as status tiles, Web Vitals at p75 with
+  good/needs-work/poor ratings.
+- [x] Playwright analytics opt-out test waited for neither the save nor the loaded switch state; made deterministic.
+- [x] Baseline: tsc, build, 101 unit-test files (615 tests) plus 2 new files, memory/methodology/coverage checks, and
+  the analytics Playwright tests (3 passed) against a copy of the local database.
+- [ ] Follow-up: many auto-generated control IDs are not meaningful (`page.button.2`, `select-trigger.2`); rename them
+  before production data accumulates so reports stay continuous.
+
 ## Production deployment — LIVE (20 October 2026)
 
 Owner-requested deployment to the existing VPS (`deploy@45.63.24.34`). Every VPS step runs in a visible terminal the

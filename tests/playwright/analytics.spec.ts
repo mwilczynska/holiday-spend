@@ -11,20 +11,27 @@ test('records confirmed plan changes, exposes admin history and respects account
   await page.goto('/settings');
   const preference = page.getByRole('switch', { name: 'Share product usage analytics' });
   await expect(preference).toBeChecked();
-  await page.getByRole('link', { name: 'Product analytics', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Product analytics', exact: true })).toBeVisible();
-  await page.getByLabel('Include administrators').check();
+  await page.getByRole('link', { name: 'Analytics', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Analytics', exact: true })).toBeVisible();
+  // Administrators are included by default and the choice is kept in the URL.
+  await expect(page.getByLabel('Include administrators')).toBeChecked();
+  expect(new URL(page.url()).searchParams.get('includeAdmins')).toBe('true');
   await expect(page.getByText('Controls used', { exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'plans', exact: true }).click();
-  await expect(page.getByText('leg_created', { exact: true }).first()).toBeVisible();
-  await page.getByRole('button', { name: /View revision/ }).last().click();
+  await page.getByRole('tab', { name: 'Plan history', exact: true }).click();
+  await expect(page.getByText('Leg created', { exact: true }).first()).toBeVisible();
+  await page.getByRole('button', { name: /View revision/ }).first().click();
   await expect(page.getByRole('link', { name: 'Export private revision' })).toBeVisible();
   await page.screenshot({ path: '.local/analytics-plans-desktop.png', fullPage: true });
 
   await page.goto('/settings');
+  // Wait for the save itself: reloading first can cancel it, and the switch also reads as
+  // unchecked while the preference is still loading, so neither check alone proves it saved.
+  await expect(preference).toBeChecked();
+  const saved = page.waitForResponse(r => r.url().endsWith('/api/settings/analytics') && r.request().method() === 'PUT');
   await preference.uncheck();
-  await expect(preference).not.toBeChecked();
+  expect((await saved).ok()).toBe(true);
   await page.reload();
+  await expect(preference).toBeEnabled();
   await expect(preference).not.toBeChecked();
   const preferenceResponse = await request.get('/api/settings/analytics');
   expect((await preferenceResponse.json()).data.enabled).toBe(false);
@@ -36,7 +43,9 @@ test('records confirmed plan changes, exposes admin history and respects account
   expect((await request.put('/api/itinerary/legs/' + leg.id, { data: { nights: 4 } })).ok()).toBe(true);
   const history = await request.get('/api/admin/analytics?view=plans&environment=development&includeAdmins=true');
   expect((await history.json()).data.rows.some((row: { action: string }) => row.action === 'leg_updated')).toBe(true);
+  const restored = page.waitForResponse(r => r.url().endsWith('/api/settings/analytics') && r.request().method() === 'PUT');
   await preference.check();
+  expect((await restored).ok()).toBe(true);
   await expect(preference).toBeChecked();
   await request.delete('/api/itinerary/legs/' + leg.id);
 });
@@ -44,10 +53,9 @@ test('records confirmed plan changes, exposes admin history and respects account
 test('admin reports render on mobile and reject invalid analytics payloads', async ({ page, request }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/admin/analytics');
-  await page.getByLabel('Include administrators').check();
-  for (const name of ['journeys', 'funnels', 'llm', 'health']) {
+  for (const [name, label] of [['journeys', 'Journeys'], ['funnels', 'Funnels'], ['llm', 'LLM'], ['health', 'Health']]) {
     const response = page.waitForResponse(value => value.url().includes('/api/admin/analytics?') && new URL(value.url()).searchParams.get('view') === name);
-    await page.getByRole('button', { name, exact: true }).click();
+    await page.getByRole('tab', { name: label, exact: true }).click();
     expect((await response).status()).toBe(200);
     await expect(page.getByText('Loading analytics…')).toHaveCount(0);
     // Next's route announcer also uses role=alert outside the app's main content.

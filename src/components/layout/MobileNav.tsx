@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { BarChart3, LayoutDashboard, Loader2, Map, Plus, Receipt, Settings } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
-import { getActiveNavHref, isAuthRoute } from './nav-match';
+import { getActiveNavHref, isAuthRoute, navAnalyticsId } from './nav-match';
 
 const navItems = [
   { href: '/', label: 'Home', icon: LayoutDashboard },
@@ -38,7 +38,7 @@ export function MobileNav() {
           return (
             // `next/link` rather than router.push, so Next prefetches each route as
             // it enters the viewport. router.push disabled prefetching entirely.
-            <Link data-analytics="mobile-nav.set-pending-href"
+            <Link data-analytics={navAnalyticsId('mobile-nav', item.href)}
               key={item.href}
               href={item.href}
               onClick={() => {

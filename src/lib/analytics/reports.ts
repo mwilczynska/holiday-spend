@@ -10,12 +10,15 @@ export async function buildAnalyticsReport(q: ReportQuery, reader: AnalyticsRead
   if (q.view === 'health') return { generatedAt, health: collectorHealth(),
     interruptedAttempts: (await read("SELECT count(*) AS count FROM llm_attempts WHERE status='interrupted' OR (status='started' AND started_at < ?)", new Date(Date.now() - 1800000).toISOString(), 'get')),
     requestHealth: (await read(`SELECT route,count(*) AS requests,sum(CASE WHEN status>=400 THEN 1 ELSE 0 END) AS failures,round(avg(duration_ms),2) AS averageMs FROM events WHERE ${where} AND name='request_completed' GROUP BY route ORDER BY failures DESC LIMIT 50`, args, 'all')),
-    vitals: (await read(`SELECT metric_name AS metric,count(*) AS samples,round(avg(metric_value),2) AS average,round(max(metric_value),2) AS worst FROM events WHERE ${where} AND name='web_vital' GROUP BY metric`, args, 'all')),
+    vitals: await Promise.all(((await read(`SELECT metric_name AS metric,count(*) AS samples,round(max(metric_value),2) AS worst FROM events WHERE ${where} AND name='web_vital' GROUP BY metric`, args, 'all')) as Array<{ metric: string; samples: number; worst: number }>)
+      // Web Vitals are conventionally summarised at the 75th percentile of page loads.
+      .map(async row => ({ ...row, p75: ((await read(`SELECT round(metric_value,2) AS value FROM events WHERE ${where} AND name='web_vital' AND metric_name=@metric ORDER BY metric_value LIMIT 1 OFFSET @offset`,
+        { ...args, metric: row.metric, offset: Math.max(0, Math.ceil(row.samples * 0.75) - 1) }, 'get')) as { value: number } | undefined)?.value ?? null }))),
     errorGroups: (await read(`SELECT name,json_extract(payload_json,'$.properties.fingerprint') AS fingerprint,count(*) AS occurrences FROM events WHERE ${where} AND name IN ('server_error','browser_error') GROUP BY name,fingerprint ORDER BY occurrences DESC LIMIT 30`, args, 'all')),
   };
   if (q.view === 'journeys') {
     const index = q.operation ? 'events_operation' : q.account ? 'events_account_time' : 'events_timeline_all';
-    const rows = (await read(`SELECT sequence,payload_json FROM events INDEXED BY ${index} WHERE ${where} AND sequence > @cursor ORDER BY sequence LIMIT 100`, { ...args, cursor: q.cursor }, 'all')) as Array<{ sequence: number; payload_json: string }>;
+    const rows = (await read(`SELECT sequence,payload_json FROM events INDEXED BY ${index} WHERE ${where} AND (@cursor=0 OR sequence < @cursor) ORDER BY sequence DESC LIMIT 100`, { ...args, cursor: q.cursor }, 'all')) as Array<{ sequence: number; payload_json: string }>;
     return { generatedAt, rows: rows.map(r => ({ sequence: r.sequence, ...JSON.parse(r.payload_json) })), nextCursor: rows.length === 100 ? rows[99].sequence : null };
   }
   if (q.view === 'llm') {

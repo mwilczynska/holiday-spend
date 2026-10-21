@@ -41,6 +41,7 @@ jobs:
       - run: npm audit --omit=dev
       - run: >-
           docker build --target runner -t holiday-spend:ci
+          --build-arg HOLIDAY_SPEND_RELEASE=sha-${GITHUB_SHA::7}
           --label org.opencontainers.image.source=https://github.com/${{ github.repository }}
           --label org.opencontainers.image.revision=${{ github.sha }} .
       - run: docker build --target seed -t holiday-spend:ci-seed .

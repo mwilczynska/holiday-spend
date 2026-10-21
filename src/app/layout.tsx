@@ -41,19 +41,21 @@ export default async function RootLayout({
     try { currency = await getDisplayCurrencyState(session.user.id); }
     catch { currency = { ...DEFAULT_CURRENCY_STATE, rate: null, error: 'Currency settings unavailable. Retry in Settings.' }; }
   }
+  const analyticsAdmin = Boolean(session?.user?.id && isAnalyticsAdmin(session.user.email));
   return (
     <html lang="en" className={cn("font-sans", jakartaSans.variable)}>
       <body className="antialiased min-h-screen bg-background">
-        <AnalyticsProvider key={session?.user?.id ?? 'anonymous'} identity={session?.user?.id ? accountAnalyticsId(session.user.id) : 'anonymous'} initialEnabled={tracking} />
-        <CurrencyProvider key={session?.user?.id ?? 'signed-out'} initial={currency} enabled={Boolean(session?.user?.id)}>
+        <AnalyticsProvider key={'analytics:' + (session?.user?.id ?? 'anonymous')} identity={session?.user?.id ? accountAnalyticsId(session.user.id) : 'anonymous'} initialEnabled={tracking} />
+        <CurrencyProvider key={'currency:' + (session?.user?.id ?? 'signed-out')} initial={currency} enabled={Boolean(session?.user?.id)}>
           <div className="flex">
-            <DesktopSidebar />
+            <DesktopSidebar showAnalytics={analyticsAdmin} />
             <main className="min-w-0 flex-1 min-h-screen pb-20 lg:pb-0">
               <div className="container mx-auto p-4 lg:p-8 max-w-7xl">
                 <CurrencyNotice />
                 {children}
                 {!session?.user?.id ? <AnalyticsSettings compact /> : null}
-                {session?.user?.id && isAnalyticsAdmin(session.user.email) ? <div className="mt-8 text-xs"><Link data-analytics="layout.admin-analytics" href="/admin/analytics" className="text-muted-foreground underline">Product analytics</Link></div> : null}
+                {/* Phones have no room in the bottom bar; the desktop sidebar carries this link. */}
+                {analyticsAdmin ? <div className="mt-8 text-xs lg:hidden"><Link data-analytics="layout.admin-analytics" href="/admin/analytics" className="text-muted-foreground underline">Product analytics</Link></div> : null}
               </div>
             </main>
           </div>
