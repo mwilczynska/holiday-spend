@@ -1,6 +1,6 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-## Product analytics — IN PROGRESS (20 October 2026)
+## Product analytics — IMPLEMENTED LOCALLY, verification follow-ups (20 October 2026)
 
 Owner-approved implementation on `codex/product-analytics`, worktree
 `C:\Dev\holiday-spend-worktrees\analytics`. Self-hosted first-party analytics, collection enabled with a
@@ -12,7 +12,7 @@ Plan history and necessary diagnostics continue after behavioral opt-out. Public
 - [x] Browser and server product coverage, including failures, retries and currency changes.
 - [x] Admin reporting, journeys, history, LLM and collection health.
 - [x] Backup/restore, deletion tooling, tests, deployment and event/metric documentation.
-- [ ] Linux production CI and deployment-host scale/performance verification before launch.
+- [ ] Linux production CI and deployment-host scale/performance verification before analytics deployment.
 
 Visual thesis: the admin workspace uses the app's existing typography and primary colour, with a compact
 filter bar, readable charts and unboxed tables. Content: overview, journeys, funnels, plans, LLM and health.
@@ -24,8 +24,12 @@ Large report/export reads use a bounded read-only worker; erasure invalidates ex
 Windows production build, TypeScript, focused ESLint, coverage, memory and methodology checks pass. All 601 unit
 tests pass with a 30-second cold setup allowance on Windows; earlier 10-second setup timeouts and async fixture
 cycles are recorded in LOG.md. Production browser flows pass for history/opt-out and mobile reports/security.
-The 10,000-event smoke reports take 3–530 ms, with 11.76 ms added mutation p95 on this workstation; final stress
-verification and Linux checks continue. No performance claim is made for the deployment host.
+The final million-event fixture adds 10.08 ms mutation p95 for a 66-leg plan. Journeys, LLM and Health reports take
+2, 3 and 232 ms; Overview and Funnels take 6,913 and 5,989 ms, missing the two-second benchmark target. These reads
+remain isolated from product requests. Synthetic fixture ingestion takes 805 seconds on this Windows workstation.
+No performance claim is made for the deployment host. Linux checks and aggregate-query optimization remain follow-ups.
+Owner instructed keeping remaining changes local while deploying the existing app; do not push or open a PR until
+the owner requests publication. Local milestone: c9a751d8, with final account-context/measurement handoff following it.
 
 **Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 

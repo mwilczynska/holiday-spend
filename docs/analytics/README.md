@@ -158,3 +158,8 @@ overhead, and writes `.local/analytics-performance.json`. Workstation results do
 `node scripts/check-analytics-coverage.mjs` verifies API/control coverage and the generated source inventory; use
 `--write` after deliberately changing controls. Health probes and analytics/admin internals are intentionally excluded.
 Run the project baseline and Linux production checks before deployment, including an independent restored backup.
+
+The 20 October 2026 Windows million-event run adds 10.08 ms history mutation p95 for a 66-leg plan. Journeys, LLM
+and Health take 2, 3 and 232 ms; Overview and Funnels take 6,913 and 5,989 ms and miss the two-second benchmark target.
+The reporting worker keeps those reads off the product request thread. Aggregate optimization and deployment-host
+measurements remain before analytics deployment. The owner is keeping this work local while deploying the existing app.

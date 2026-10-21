@@ -3703,3 +3703,18 @@ incorrectly matched Next's empty route announcer outside main; scoping it to app
 were inspected at desktop and 375px. Fixtures use a seeded worktree database and synthetic account; the main database
 and checkout remain untouched. Linux/container verification and host-scale checks remain before deployment.
 
+# 20 October 2026 — Analytics local handoff and final stress result
+
+The owner requested keeping the remaining analytics work local while deploying the current app. The verified
+milestone is local commit c9a751d8; no further push or draft PR was created. The initial milestone a3ff389e had
+already been pushed earlier. Docker is unavailable on this Windows host, so Linux checks remain unrun.
+
+Final one-million-event fixture: ingestion 804,954 ms; Overview 6,913 ms, Journeys 2 ms, Funnels 5,989 ms, LLM 3 ms,
+Health 232 ms. The 66-leg history mutation adds 10.08 ms p95. The benchmark fails its two-second aggregate-read
+target; the bounded worker prevents these reads from blocking product requests. Further aggregate optimization
+and deployment-host measurements remain explicit follow-ups. Temporary benchmark databases were closed and removed.
+
+Final review adds pseudonymous account links to Plans and LLM tables and operation filtering from LLM attempts,
+so an administrator can distinguish owners and follow a request. Latest implementation documentation is
+docs/analytics/README.md; the current deployment and its personal database are outside this worktree.
+
