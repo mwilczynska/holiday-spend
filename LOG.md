@@ -3809,3 +3809,7 @@ allowlist was removed from signup, resend, forgot-password, credential and Googl
 `requireCurrentUser`, the proxy token check and the analytics identity routes. `AUTH_ADMIN_EMAILS` remains the
 only address list and is still required at production startup. Existing per-IP and per-address rate limits
 bound verification email volume.
+Production checks run 39649844448 passed and published the image. The VPS pulled `:main` and recreated the
+container on 21 October 2026; the running image revision is a22acd9b and it reports healthy. The first deploy
+attempt changed nothing: Windows PowerShell 5.1 strips double quotes from native arguments, so the remote bash
+script failed to parse. Sending the remote script base64-encoded avoided it.

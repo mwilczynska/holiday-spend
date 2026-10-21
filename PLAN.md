@@ -9,8 +9,9 @@ allowlist so any address can register; `AUTH_ADMIN_EMAILS` still limits shared-l
 - [x] Remove the allowlist from signup, resend, forgot-password, sign-in, session refresh, proxy and analytics.
 - [x] Startup requires only `AUTH_ADMIN_EMAILS`; update tests, env examples and launch docs.
 - [x] Run the baseline (types, 615 tests, build, memory and methodology checks); publish main.
-- [ ] Pass production CI.
-- [ ] Deploy the new image on the VPS; the new user signs up again.
+- [x] Pass production CI (run 39649844448).
+- [x] Deploy the new image on the VPS (running a22acd9b, healthy).
+- [ ] The new user signs up again with the same address.
 
 ## Product analytics — MERGED, PUBLISHED AND CLEANED UP (21 October 2026)
 
