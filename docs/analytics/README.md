@@ -189,6 +189,7 @@ and a zero-vulnerability production dependency audit. Both runner and seed image
 container verifies native modules, prompts/assets, sign-in, all analytics views, guest denial, session revocation,
 full backup/restore and restart. The build-worker migration race is fixed and covered by six concurrent workers.
 
-The branch integrates committed main through 88399203 and remains local at the owner's request. Linux/container
+Analytics is merged to main after integrating committed main through 88399203. The owner authorizes publication
+and feature-branch cleanup. Linux/container
 verification evidence is recorded in PLAN.md and LOG.md. Measure the deployment host after rollout; no live
 production data or deployment has been changed by these checks.

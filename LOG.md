@@ -3784,3 +3784,9 @@ Fetched origin: main remains 88399203; the analytics feature is 64a41568 and no 
 checkouts are clean. Stopped only the analytics preview’s port-3047 process tree. Preserved its complete
 121-city test database, analytics store and prior verification results in the main checkout’s ignored
 .local/analytics-merge-2026-10-21T03-59-34-057Z directory before removal.
+
+Local main fast-forwarded to df867bba. Both verified node_modules junctions were detached without following
+their main-checkout targets, then only the clean fully merged analytics worktree and local branch were
+removed. The research worktree remains. Main strict types and memory mirror pass. A fresh Git checkout
+exposed CRLF-only differences in the coverage inventory; normalize CRLF when comparing the generated
+inventory so Windows checkouts validate the same source inventory as Linux. Publication and CI follow.

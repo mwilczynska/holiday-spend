@@ -1,13 +1,13 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-## Product analytics — MERGE AND CLEANUP IN PROGRESS (21 October 2026)
+## Product analytics — MERGED TO MAIN; publication in progress (21 October 2026)
 
 Merge-readiness follow-up requested by the owner:
 - [x] Integrate committed main through 88399203 into the analytics branch (clean merges).
 - [x] Optimize Overview and Funnels; million-event queries meet the two-second target, with profiles.
 - [x] Verify Linux/native runtime, runner/seed image builds and production container smoke checks.
 - [x] Rehearse analytics migration, backup and restore against a protected copy of the deployed full package.
-Owner now requests merging to main, pushing main and deleting the GitHub feature branch. Preserve preview data/evidence, stop the worktree server, detach dependency junctions, remove only the analytics worktree and branch, and verify GitHub CI.
+Main fast-forwarded to the verified analytics history. The port-3047 preview is stopped; both dependency junctions, the analytics worktree and its local branch are removed. Preview databases and verification results are preserved under .local/analytics-merge-2026-10-21T03-59-34-057Z. Owner authorizes pushing main and deleting the GitHub feature branch; publication/CI are next.
 
 Owner-approved implementation on `codex/product-analytics`, worktree
 `C:\Dev\holiday-spend-worktrees\analytics`. Self-hosted first-party analytics, collection enabled with a

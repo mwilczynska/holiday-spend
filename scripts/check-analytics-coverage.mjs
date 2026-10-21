@@ -31,5 +31,5 @@ const inventory = JSON.stringify({ routes: routes.sort(), controls: controls.sor
 const destination = path.join(root, 'docs/analytics/control-inventory.json');
 if (process.argv.includes('--write')) fs.writeFileSync(destination, inventory);
 if (missing.length) { console.error('Missing explicit analytics instrumentation:\n' + missing.join('\n')); process.exitCode = 1; }
-else if (!fs.existsSync(destination) || fs.readFileSync(destination, 'utf8') !== inventory) { console.error('Control inventory is stale. Run node scripts/check-analytics-coverage.mjs --write.'); process.exitCode = 1; }
+else if (!fs.existsSync(destination) || fs.readFileSync(destination, 'utf8').replace(/\r\n/g, '\n') !== inventory) { console.error('Control inventory is stale. Run node scripts/check-analytics-coverage.mjs --write.'); process.exitCode = 1; }
 else console.log(`Analytics coverage: ${routes.length} route modules, ${controls.length} source controls.`);
