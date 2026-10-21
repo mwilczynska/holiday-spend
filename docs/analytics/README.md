@@ -32,6 +32,8 @@ Event IDs deduplicate delivery, while request/operation IDs correlate activity; 
 
 All events have an ID, schema version, occurrence/receipt UTC timestamps, purpose, source, environment, release,
 normalized route, account/session/page/operation/request IDs when available, device category and explicit properties.
+Device category (`src/lib/analytics/device.ts`) uses `Sec-CH-UA-Mobile` when a Chromium browser sends it and otherwise
+the user agent, because Safari and Firefox never send the hint; iPadOS reports a desktop user agent and counts as desktop.
 Unknown event fields and property fields are rejected. Browser events cannot claim server event names or account IDs.
 Dynamic paths and URL queries never become page-view properties.
 
@@ -90,6 +92,9 @@ analytics. Existing city estimate provenance remains the place for generated cos
 
 ## Reporting definitions
 
+The dashboard keeps every filter and the open tab in the URL, so a reload or shared link reopens the same report.
+Tables label the viewing administrator's own account "You"; other accounts show a short pseudonymous ID.
+
 `/admin/analytics` requires a valid account and analytics-admin permission on every page/API/export read. Set
 `AUTH_ANALYTICS_ADMIN_EMAILS` for a separate role, otherwise the existing `AUTH_ADMIN_EMAILS` role applies. Ordinary
 users cannot open other users' history. Full revision inspection and export produce audit events.
@@ -103,12 +108,14 @@ users cannot open other users' history. Full revision inspection and export prod
 - Failures: unsuccessful HTTP outcomes are shown separately from cancellations and successful writes. LLM provider
   receipt alone does not imply a valid or saved estimate. Latency percentiles use completed measured durations.
 - Daily buckets use UTC; timestamps render in the viewer's browser timezone. Browser occurrence time is observational;
-  receipt time and revision sequence order server activity. Default reports exclude administrators and other
-  environments. Empty results and failed reads are distinct; prior results are labelled stale on refresh failure.
+  receipt time and revision sequence order server activity. The API excludes administrators by default; the
+  dashboard includes them by default, because on this owner-run deployment they are most of the use. Other
+  environments are excluded. Empty results and failed reads are distinct; prior results are labelled stale on refresh failure.
 - Private revisions are operational history: environment/device/release filters do not apply to them. The account and
   date filters still apply. LLM attempts do not have device categories. These limitations are labelled in responses.
 
-Date ranges are bounded to 366 days; raw timelines/history/attempts use 100-row cursor pages. Aggregates are retained
+Date ranges are bounded to 366 days; raw timelines/history/attempts use 100-row cursor pages, newest first.
+Web Vitals are summarised at the 75th percentile and rated against Google's good/poor thresholds. Aggregates are retained
 alongside raw events. Exact daily counts and separate session membership are updated transactionally by SQLite
 triggers on insertion, account association and erasure; summary upgrades rebuild from retained events. Overview
 and retention use these summaries; operation filters use raw events. Funnels use an indexed generated identity.
@@ -127,7 +134,8 @@ expiry; account erasure invalidates existing export jobs/chunks so they cannot r
 
 ## Deployment and operations
 
-1. Set `HOLIDAY_SPEND_RELEASE` to the deployed commit/image tag and `HOLIDAY_SPEND_ANALYTICS_ENV=production`.
+1. `HOLIDAY_SPEND_RELEASE` is built into the image as `sha-<commit>` by Production checks; do not set it in the env
+   file, which would override it. Set `HOLIDAY_SPEND_ANALYTICS_ENV=production`.
 2. Restore the full existing database/photo package, then deploy normally. Do not seed as a migration. Startup adds
    analytics tables and labelled history baselines without replacing personal data or the city library.
 3. Keep `analytics.db` on the same protected persistent volume as `travel.db`. No external analytics domain, CSP

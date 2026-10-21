@@ -1,5 +1,6 @@
 import { analyticsContext } from './context';
 import { ensureAnalyticsWorker, recordEvent } from './service';
+import { deviceCategory } from './device';
 
 const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 function headerId(request: Request, name: string) {
@@ -18,7 +19,7 @@ export function instrumentRoute<A extends unknown[]>(handler: (...args: A) => Pr
       browserOptOut: request.headers.get('cookie')?.split(';').some(value => value.trim() === 'hs_analytics_disabled=1') ?? false,
       step: (workflow, step) => recordEvent('workflow_step', { workflow, step }),
       sessionId: headerId(request, 'x-analytics-session'), pageViewId: headerId(request, 'x-analytics-page'),
-      device: request.headers.get('sec-ch-ua-mobile') === '?1' ? 'mobile' : 'unknown',
+      device: deviceCategory(request.headers),
     }, async () => {
       let status = 500;
       try {

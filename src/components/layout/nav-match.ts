@@ -20,3 +20,8 @@ export function getActiveNavHref(pathname: string, hrefs: string[]): string | nu
   }
   return best;
 }
+
+/** Stable analytics control ID for a navigation link, so each destination is counted separately. */
+export function navAnalyticsId(surface: 'desktop-sidebar' | 'mobile-nav', href: string): string {
+  return surface + '.' + (href === '/' ? 'home' : href.slice(1).replaceAll('/', '-'));
+}

@@ -34,8 +34,11 @@ async function handleGET(request: Request) {
         return NextResponse.json({ data }, { headers: { 'Cache-Control': 'no-store', ...(q.export === 'true' ? { 'Content-Disposition': `attachment; filename="plan-revision-${q.revision}.json"` } : {}) } });
       }
       const target = q.account ? (sqlite.prepare('SELECT id FROM user').all() as Array<{ id: string }>).find(row => accountAnalyticsId(row.id) === q.account)?.id ?? 'unavailable-account' : null;
-      const rows = sqlite.prepare('SELECT id,user_id,subject_id,action,created_at,summary_json,deleted FROM plan_revisions WHERE created_at>=? AND created_at<? AND id>? AND (? IS NULL OR user_id=?) AND (? IS NULL OR operation_id=?) ORDER BY id LIMIT 100')
-        .all(q.from + 'T00:00:00.000Z', new Date(Date.parse(q.to) + 86400000).toISOString(), q.cursor, target, target, q.operation ?? null, q.operation ?? null) as Array<{ id: number; user_id: string; summary_json: string }>;
+      // The plan's name: the live saved plan's current name, else the name frozen in the revision (deleted plans).
+      const rows = sqlite.prepare(`SELECT id,user_id,subject_id,action,created_at,summary_json,deleted,
+        CASE WHEN subject_id='active' THEN 'Current plan' ELSE coalesce((SELECT name FROM saved_plans WHERE saved_plans.id=plan_revisions.subject_id), json_extract(snapshot_json,'$.snapshot.name')) END AS plan_name
+        FROM plan_revisions WHERE created_at>=? AND created_at<? AND (?=0 OR id<?) AND (? IS NULL OR user_id=?) AND (? IS NULL OR operation_id=?) ORDER BY id DESC LIMIT 100`)
+        .all(q.from + 'T00:00:00.000Z', new Date(Date.parse(q.to) + 86400000).toISOString(), q.cursor, q.cursor, target, target, q.operation ?? null, q.operation ?? null) as Array<{ id: number; user_id: string; summary_json: string }>;
       recordEvent('admin_accessed', { action: 'report' });
       return NextResponse.json({ data: { rows: rows.map(row => ({ ...row, user_id: accountAnalyticsId(row.user_id), summary: JSON.parse(row.summary_json), summary_json: undefined })), nextCursor: rows.length === 100 ? rows[99].id : null, note: 'Private history is retained independently of behavioral analytics. Environment, device, release and administrator filters do not apply.' } }, { headers: { 'Cache-Control': 'no-store' } });
     }

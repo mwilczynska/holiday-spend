@@ -7,6 +7,7 @@ import { checkRateLimit } from '@/lib/rate-limit';
 import { getRequestIp } from '@/lib/request-ip';
 import { createHash } from 'node:crypto';
 import { isCrossOriginWrite } from '@/lib/request-origin';
+import { deviceCategory } from '@/lib/analytics/device';
 
 export async function POST(request: Request) {
   const origin = request.headers.get('origin');
@@ -42,7 +43,7 @@ export async function POST(request: Request) {
       enqueueEvent(makeEvent(item.name, item.properties as never, { ...item,
         source: 'browser', accountId: userId ? accountAnalyticsId(userId) : null,
         administrator: Boolean(userId && (isLibraryAdmin(user?.email) || isAnalyticsAdmin(user?.email))),
-        device: request.headers.get('sec-ch-ua-mobile') === '?1' ? 'mobile' : 'desktop',
+        device: deviceCategory(request.headers),
       }), userId);
     }
     ensureAnalyticsWorker();
