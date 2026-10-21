@@ -3757,3 +3757,6 @@ coverage pass. Windows focused ESLint/types pass. The protected Linux upgrade re
 the startup-lock fix. A parallel source sync briefly truncated a file while Docker captured its context; the
 retry uses a separate frozen source copy. Newly committed main 88399203 changes only deployment notes and
 the development route-types include and will be integrated locally after this feature checkpoint.
+
+Integrated committed main through 88399203 with a clean local merge. The only additions since c66fef39 are
+deployment notes and the development route-types include; application/runtime source is unchanged.

@@ -180,6 +180,6 @@ It refuses an existing destination and never migrates the source. Treat the rehe
 The deployed full package dated 20 October 2026 (21:42:05 UTC) passes this check on Linux: 531 cities, two users,
 70 legs, 80 saved plans and 82 labelled history baselines. The source package remains unchanged.
 
-The branch integrates committed main through c66fef39 and remains local at the owner's request. Linux/container
+The branch integrates committed main through 88399203 and remains local at the owner's request. Linux/container
 verification evidence is recorded in PLAN.md and LOG.md. Measure the deployment host after rollout; no live
 production data or deployment has been changed by these checks.

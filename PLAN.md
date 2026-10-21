@@ -3,7 +3,7 @@
 ## Product analytics — IMPLEMENTED LOCALLY, verification follow-ups (20 October 2026)
 
 Merge-readiness follow-up requested by the owner:
-- [x] Integrate committed main through c66fef39 into the analytics branch (clean merge).
+- [x] Integrate committed main through 88399203 into the analytics branch (clean merges).
 - [x] Optimize Overview and Funnels; million-event queries meet the two-second target, with profiles.
 - [ ] Verify Linux/native runtime and production container packaging where locally available.
 - [x] Rehearse analytics migration, backup and restore against a protected copy of the deployed full package.
@@ -40,7 +40,7 @@ The protected Linux rehearsal preserves all existing business table hashes (531 
 summaries. Source: the deployed full package dated 2026-10-20T21:42:05.056Z; the package remains unchanged.
 Earlier production browser flows pass for private history/opt-out and mobile reports/security.
 Deployment-host timing remains a rollout check. Linux native verification passes 99 files / 607 tests; container packaging is the remaining local check.
-Main advanced to 88399203 with deployment notes and a development route-types include; integrate it after this feature checkpoint.
+Main through 88399203 is integrated locally, including deployment notes and the development route-types include.
 Owner instructed keeping remaining changes local while deploying the existing app; do not push or open a PR until
 the owner requests publication. Prior local milestones: c9a751d8 and 60fcdcb4; the optimization and rehearsal checkpoint follows.
 
@@ -95,7 +95,20 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   holds 5.07 GiB in 3,382 files and the snapshot was verified against the upload. Two script bugs found and fixed:
   the blog check container could not read the root-only folder (run it as root, `80d5e5d`), and remote pruning
   failed on the not-yet-created `blog/uploads-changed` (`e8ef7c8`, not yet on the VPS: until then each run uploads
-  correctly but reports FAILED at `offhost-retention`). VPS disk is 80% used (11 GB free).
+  correctly but reports FAILED at `offhost-retention`). Fix delivered 21 October 02:25 UTC; the 16:30 UTC run is
+  the first to use it.
+- [x] VPS cleanup, 21 October: the two old blog backups (8.23 GiB) were copied to OneDrive `archive/`, checked with
+  `rclone cryptcheck` (0 differences), then deleted from the VPS. The restored snapshot and bundles in
+  `~/holiday-spend/incoming/` were deleted after confirming the app is healthy on `runtime-data/`. Disk went from 80%
+  to 63% used (19 GB free). Blog docs PR travel-blog#3 merged.
+- [x] Backup alerts, 21 October: a failure emails the owner (Resend, reusing Holiday Spend's key and admin address at
+  send time), and `check-fresh.sh` at 20:30 UTC emails if nothing has succeeded in 26 hours; test email accepted.
+  VPS work now goes through one long-lived job-runner tab (project-infinite-summer `scripts/vps-runner.ps1`).
+- [x] VPS OS update, 21 October 02:57–03:01 UTC: safety copies first (Holiday Spend snapshot, blog database), then
+  35 packages upgraded and 2 added (Docker, git, kernel 5.15.0-198 among them), existing config kept, nothing removed;
+  rebooted in about 23 s. Afterwards: no reboot pending, all four containers healthy, cron/fail2ban/ufw/
+  unattended-upgrades/docker active, and all public addresses 200 with valid certificates. The owner's SSH key is in
+  the Windows ssh-agent, so VPS connections no longer prompt for the passphrase (sudo still does).
 - [x] Owner password reset and first sign-in on `spend.`, and all three sites checked by the owner: everything works
   as intended (reported 21 October 2026).
 - [ ] Restore test from OneDrive into a new directory (owner deferred it, 20 October).
