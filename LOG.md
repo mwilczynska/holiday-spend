@@ -3790,3 +3790,13 @@ their main-checkout targets, then only the clean fully merged analytics worktree
 removed. The research worktree remains. Main strict types and memory mirror pass. A fresh Git checkout
 exposed CRLF-only differences in the coverage inventory; normalize CRLF when comparing the generated
 inventory so Windows checkouts validate the same source inventory as Linux. Publication and CI follow.
+
+Main 54c22fac is published. GitHub Production checks run 39541785109 completed successfully:
+https://github.com/mwilczynska/holiday-spend/actions/runs/39541785109
+It passes types, the full unit suite, memory/methodology guards, production dependency audit, both Docker
+image builds, real native/auth/analytics/permissions/backup/restore/restart checks and GHCR image publication
+(sha-54c22fa and main). The fully merged GitHub feature branch is deleted and origin tracking is pruned.
+The analytics worktree/local branch are removed, main dependencies remain intact, and the research worktree
+is retained. Preview data and verification evidence are preserved in the ignored archive recorded above.
+This changes source/image publication; no VPS deployment command was run. Deployment-host timing remains
+part of the next owner-authorized rollout.

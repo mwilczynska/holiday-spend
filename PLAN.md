@@ -1,13 +1,13 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
-## Product analytics — MERGED TO MAIN; publication in progress (21 October 2026)
+## Product analytics — MERGED, PUBLISHED AND CLEANED UP (21 October 2026)
 
 Merge-readiness follow-up requested by the owner:
 - [x] Integrate committed main through 88399203 into the analytics branch (clean merges).
 - [x] Optimize Overview and Funnels; million-event queries meet the two-second target, with profiles.
 - [x] Verify Linux/native runtime, runner/seed image builds and production container smoke checks.
 - [x] Rehearse analytics migration, backup and restore against a protected copy of the deployed full package.
-Main fast-forwarded to the verified analytics history. The port-3047 preview is stopped; both dependency junctions, the analytics worktree and its local branch are removed. Preview databases and verification results are preserved under .local/analytics-merge-2026-10-21T03-59-34-057Z. Owner authorizes pushing main and deleting the GitHub feature branch; publication/CI are next.
+Main fast-forwarded to the verified analytics history. The port-3047 preview is stopped; both dependency junctions, the analytics worktree and its local branch are removed. Preview databases and verification results are preserved under .local/analytics-merge-2026-10-21T03-59-34-057Z. Main 54c22fac is pushed to GitHub. Production checks run 39541785109 passed, including image publication. The GitHub feature branch is deleted and its remote-tracking ref is pruned.
 
 Owner-approved implementation on `codex/product-analytics`, worktree
 `C:\Dev\holiday-spend-worktrees\analytics`. Self-hosted first-party analytics, collection enabled with a
@@ -20,7 +20,9 @@ Plan history and necessary diagnostics continue after behavioral opt-out. Public
 - [x] Admin reporting, journeys, history, LLM and collection health.
 - [x] Backup/restore, deletion tooling, tests, deployment and event/metric documentation.
 - [x] Run the production Linux checks locally, including native modules and container authentication/analytics/restore/restart.
-- [ ] Run GitHub CI on owner-authorized publication; measure the deployment host during rollout.
+- [x] Publish main and pass GitHub production CI, including native tests, container smoke and image publication.
+- [x] Remove the analytics worktree and its local/GitHub branches; preserve private test data and evidence.
+- [ ] Measure the deployment host during an owner-authorized analytics rollout.
 
 Visual thesis: the admin workspace uses the app's existing typography and primary colour, with a compact
 filter bar, readable charts and unboxed tables. Content: overview, journeys, funnels, plans, LLM and health.
