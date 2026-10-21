@@ -105,7 +105,7 @@ At minimum, review:
 - `src/lib/saved-plan-migration.ts`
 - `src/components/cities/CostEditor.tsx`
 - deployment-related repo files and directories:
-  - `docs/ops/deployment.md`
+  - `docs/ops/archive/deployment.md`
   - `Dockerfile`
   - `docker-compose.yml`
   - `nginx/`
@@ -266,7 +266,7 @@ This phase cleans the repo-level operational surface so contributors are not lef
 
 Review:
 
-- `docs/ops/deployment.md`
+- `docs/ops/archive/deployment.md`
 - `Dockerfile`
 - `docker-compose.yml`
 - `nginx/`
@@ -406,7 +406,7 @@ The following are explicitly out of scope for this cleanup branch unless they be
 - `README.md`
 - `CLAUDE.md`
 - `AGENTS.md`
-- `docs/ops/deployment.md`
+- `docs/ops/archive/deployment.md`
 - `Dockerfile`
 - `docker-compose.yml`
 - `nginx/*`

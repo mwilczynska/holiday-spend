@@ -391,7 +391,7 @@ code, not while judging speed.
 
 `npm run dev` runs `scripts/start-next-dev.mjs`, which starts `next dev` (arguments pass through) with
 `AUTH_TRUST_HOST=true`, so NextAuth redirects to the port actually serving the page instead of the one named by
-`NEXTAUTH_URL` in `.env.local` (main 3000, the bento worktree 3001). Before this, signing in on any other port
+`NEXTAUTH_URL` in `.env.local`, for example a worktree's dev server on 3001. Before this, signing in on any other port
 succeeded and then redirected to a port with nothing listening. Trusting the Host header is for local development
 only and is never set for `npm start`. Auth form inputs adopt text typed before the page's JavaScript loaded (and
 browser autofill), so Sign in and Enter dev mode enable without retyping on a slow first compile. Set `NEXT_DIST_DIR`
@@ -399,7 +399,7 @@ to give a second dev server its own build directory; two dev servers sharing `.n
 Such a directory contains junctions into `node_modules` (`dev/node_modules/argon2-*`, `better-sqlite3-*`): remove the
 links with `rmdir` before deleting it. A fresh `next dev` also appends a Next.js agent-rules block to `AGENTS.md`;
 revert it, because `AGENTS.md` is this project's memory and `CLAUDE.md` imports it.
-A phone can use the dev server at the machine's LAN address (for example `http://192.168.1.179:3000`):
+A phone can use the dev server at the machine's LAN address (for example `http://192.168.x.x:3000`):
 `next.config.mjs` lists private-network ranges in `allowedDevOrigins`. Without them Next 16 returns 403 for dev
 resources requested from a non-localhost origin, and the page renders but never hydrates, so its buttons stay disabled.
 
@@ -432,7 +432,7 @@ request timing. Use an isolated database copy and a test account for repeatable 
 for open cards.
 
 `npm start` sets `NODE_ENV=production`, which disables the development PIN in `src/lib/auth.ts`. Email/password
-sign-in requires a password row, verified email and an allowed address. Run `npm run auth:set-local-password` in a
+sign-in requires a password row and a verified email. Run `npm run auth:set-local-password` in a
 real terminal for local credentials; it prompts for the password rather than accepting it as an argument, so the value
 never reaches shell history or logs, and it applies the same strength rules as signup — at least ten characters, and
 not all digits. Private container settings stay outside Next.js's automatic environment-file search path during local
@@ -466,11 +466,9 @@ directory. Private packages and deployment settings are gitignored and excluded 
 `docs/ops/production-launch.md` for the launch, email, proxy and backup contract. Linux container verification is
 defined in `.github/workflows/production-checks.yml`; local Windows checks do not establish Linux or public-host success.
 On `main` that workflow publishes the tested runner image to public `ghcr.io/mwilczynska/holiday-spend` (`:main`,
-`:sha-<commit>`), which Compose pulls; the VPS is too small to build it.
-Live since 20 October 2026 at `https://spend.projectinfinitesummer.com` on the VPS (`~/holiday-spend`), behind the
-shared edge nginx in project-infinite-summer `edge/` over the external `edge` Docker network. Nightly backups to
-OneDrive come from project-infinite-summer `ops/backup/`. The VPS has no GitHub credentials for the private repos;
-they arrive as git bundles (`docs/cutover-runbook.md` there).
+`:sha-<commit>`), which Compose pulls; the host is too small to build it.
+Live since 20 October 2026 at `https://spend.projectinfinitesummer.com`, behind a shared edge proxy over the external
+`edge` Docker network. A separate private infrastructure repository owns the host, proxy and scheduled backups.
 
 ## City-cost and transport accuracy research
 
@@ -509,79 +507,21 @@ npm run methodology:v1.1:check
 
 The v6-specific checks and experiments remain runnable only from the archived v6 branch for historical replay.
 
-## Browser access by Codex surface
+## Worktrees and local caches
 
-This repository is worked on from both the ChatGPT/Codex desktop app and Codex CLI. Browser control is
-surface-specific; do not treat the two paths as interchangeable.
+Personal, machine-specific notes (local paths, the deployment host, editor and browser tooling) live in each
+developer's user-level agent memory, not in this repository.
 
-### ChatGPT/Codex desktop app
+Never create git worktrees or database backups inside the checkout: `tsconfig.json`, Vitest and the Next.js watcher
+would scan them. Create them beside it. A worktree's `node_modules` is usually a junction to the main checkout's
+`node_modules`, and `next build` in a worktree adds a second one at `.next\standalone\node_modules`. Unlink every
+junction (delete the link only) before deleting a worktree; a recursive delete that follows one empties the main
+checkout's packages. Remove finished worktrees after their branch merges.
 
-- Prefer the bundled in-app Browser (`iab`) for local web-app testing. Open its panel from the app toolbar or with
-  `Ctrl+Shift+B`, then use the Browser plugin through the Node REPL. It has its own profile and is not the user's
-  normal Chrome session.
-- Use the Chrome plugin only when the task needs the user's existing Chrome tabs, profile, login state, or
-  extensions. That path depends on the Codex/ChatGPT Chrome extension and its native-host bridge.
-- A page loading and remaining visible in the in-app Browser proves that the browser surface and webapp are
-  working; it does not prove that Codex automation can attach to the tab. In-app and Chrome automation both pass
-  through the same Browser RPC bootstrap in the desktop app.
-- An error saying `Trusted RPC dependency must resolve within a configured trusted code path` occurs before tab
-  discovery. It is a Codex launch-time automation configuration failure, not an application, website,
-  authentication, CDP-setting, Chrome-extension, or native-host failure. Do not keep retrying either browser,
-  alter Chrome, or claim that a manually visible page was not tested.
-- If a full app restart reproduces the same error in both in-app Browser and Chrome, stop local repair attempts and
-  treat it as a desktop-app/plugin-build defect. Manual edits to generated `config.toml` trust paths are overwritten
-  at startup and recycling the Node REPL or background app-server can close the task or crash the desktop app.
-  Update Codex when a newer build is available; otherwise report the exact error and app/plugin versions to OpenAI
-  Support. Manual browser inspection and HTTP checks may be recorded separately, but must not be presented as
-  automated control.
-
-### Codex CLI
-
-- The CLI has no in-app Browser panel. For an interactive browser test, use the Chrome plugin with the
-  Codex/ChatGPT Chrome extension and follow the active `control-chrome` skill exactly.
-- Launch the CLI with `NODE_REPL_TRUSTED_CODE_PATHS` containing the exact active Browser/Chrome plugin `scripts`
-  path and the active bundled CUA Node `node_modules` path. Use the versions currently installed under
-  `~/.codex/plugins/cache/` and the Codex runtime; do not copy a stale version number from project documentation.
-- If the same trusted-RPC error occurs, the current CLI process did not receive the effective launch override.
-  Exit it and start a fresh CLI process with the corrected paths. Do not repair the Chrome extension, registry, or
-  native host unless the plugin's own native-host diagnostic explicitly reports a failure.
-
-For either surface, first confirm the local server responds at its expected `localhost` URL. Never inspect browser
-storage, cookies, saved passwords, or provider API keys, and do not substitute a shell-opened page or HTTP-only
-check for a requested interactive browser test.
-
-## Local layout: worktrees and backups
-
-| Path | Contents |
-| --- | --- |
-| `C:\Dev\holiday-spend` | Main checkout (`main`) and the live `data/travel.db` |
-| `C:\Dev\holiday-spend-worktrees\<name>` | Git worktrees, for example `city-cost-accuracy` (research branch) |
-| `C:\Dev\holiday-spend-backups\<label>` | Database/photo snapshots from `scripts/backup.mjs`, verified with `--verify` |
-
-Never create worktrees or backups inside the main checkout: `tsconfig.json`, Vitest and the Next.js watcher would scan
-them. A worktree's `node_modules` is a junction to the main checkout's `node_modules`, and `next build` in a worktree
-adds a second one at `.next\standalone\node_modules`. Unlink every junction (delete the link only) before deleting a
-worktree; a recursive delete that follows one empties the main checkout's packages. Remove finished worktrees after
-their branch merges.
-
-## Repository location and the retired OneDrive guard
-
-The working repository is `C:\Dev\holiday-spend`, which is **not** inside OneDrive (`C:\Users\chawi\OneDrive`).
-Verified on 3 September 2026: `.next`, `.next-dev`, `data/` and `data/travel.db` are ordinary entries with no reparse
-points. Earlier guidance in this file described the repository as living inside OneDrive and is superseded.
-
-An orphaned pre-move copy still exists at `C:\Users\chawi\OneDrive\projects\holiday-spend`. It has no `.git`
-directory and its `scripts` directory is a dehydrated cloud reparse point. Do not open or run it; it is not the
-working tree and would reproduce the historical Files-On-Demand failures.
-
-`npm run dev` still runs `scripts/prepare-next-dev.mjs`, which removes a reparse-point `.next-dev` cache and pins the
-gitignored SQLite files if they are ever dehydrated. On the current path it finds nothing to do. It is retained
-because it is cheap and harmless, and because it would matter again if the repository moved back under a synced root.
-
-The historical failure it guards against was real: a dehydrated `.next` caused Next cleanup failures and an
-apparently hung first compilation, with a dev process consuming roughly 1.2 GB without completing a request. If
-anything resembling that recurs, confirm whether the path is under a synced root before diagnosing the browser,
-authentication, or methodology.
+`npm run dev` runs `scripts/prepare-next-dev.mjs`, which removes a cloud-sync reparse-point `.next-dev` cache and pins
+the gitignored SQLite files if a sync client has dehydrated them. On an unsynced path it does nothing. A dehydrated
+`.next` once caused Next cleanup failures and an apparently hung first compilation; if that recurs, check whether the
+checkout is under a synced folder before diagnosing anything else.
 
 ## Key files
 

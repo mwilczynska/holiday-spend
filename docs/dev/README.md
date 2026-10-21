@@ -6,7 +6,7 @@ Developer-facing planning and history. None of this is product or operations doc
 | --- | --- |
 | `PLAN.md` | Current plan, milestone status and open decisions |
 | `LOG.md` | Append-mostly history: what was built, what was tried and what the evidence showed |
-| `handoffs/` | Current workstream handoffs: `city-cost-v1-1.md`, `add-cities-europe.md`, `production-launch.md` |
+| `handoffs/` | Current workstream handoffs: `city-cost-v1-1.md`, `add-cities-europe.md` |
 | `feature-qa-2026-10-02.md` | Feature QA pass of 2 October 2026 |
 | `archive/` | Superseded plans, handoffs and loop prompts, each with a status banner |
 

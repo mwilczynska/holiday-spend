@@ -19,12 +19,16 @@ The owner asked for the public repository to carry only files useful to a reader
   out in `beforeAll` under full-suite load and passes alone (4/4). Relative links: only the seven pre-existing v6
   branch links in the archived v6.1 plan remain broken.
 - [x] Commit, push `main` (fa31910a) and the tag.
-- [ ] Production checks pass on fa31910a in Linux CI.
+- [x] Production checks pass on fa31910a in Linux CI (run 39658643575).
 - [x] README accuracy: open registration, accounts and privacy, admin-only city generation, display currency, Node 24,
   deployment pointer to `docs/ops/production-launch.md` (the linked `deployment.md` was superseded). `.env.example`:
   v1.2 default, development-only fallback keys, unused Numbeo and Wise variables removed.
-- [ ] Privacy review of tracked files: owner decision pending on the findings (personal record counts and local paths in
-  the production handoff, VPS and backup detail in this plan, machine-specific sections of `AGENTS.md`).
+- [x] Privacy review of tracked files (owner-approved cleanup): `docs/ops/production-launch.md` rewritten as a general
+  contract; the production handoff archived and reduced to a summary; host address, accounts, backup destination and
+  schedule, personal record counts, mail-provider account details, Windows username and LAN address removed from
+  this plan, `LOG.md` and a test fixture; `docs/ops/deployment.md` archived without private-project references.
+  Machine-specific `AGENTS.md` sections moved to user-level memory (`~/.codex/AGENTS.md`, imported by
+  `~/.claude/CLAUDE.md`). No secrets were found. Git history still contains the earlier text.
 
 ## Open registration (21 October 2026)
 
@@ -89,7 +93,7 @@ the owner requests publication. Local optimization/rehearsal checkpoint: e276f11
 
 **Status:** All 200 ranked destinations processed: 199 added and Malé deferred unsaved. Library 527, with dated costs, climate and photos; original data preserved. Comprehensive feature QA is merged to main through PR #13 (`bffc6e0`), with owner-approved authentication exclusions. Twenty-nine fixes are published through `488bbd3`, with final QA evidence and Settings test correction at `13bcec0`. Local imports and live OpenAI new/existing generation and transport checks are verified. The full sweep passes 103/107; all ten checks in its affected files pass unchanged on rerun. Settings' separate baseline correction passes five checks. The merged feature branches are removed. Prior product phases complete.
 
-**Current phase:** App-side production preparation complete for `spend.projectinfinitesummer.com`. All 527 cities and personal data are preserved; private authentication, shared-library permissions and full migration/restore are verified. Windows baseline and Linux Docker/auth/backup/restart checks pass. Project Infinite Summer owns host deployment and public account-flow checks; use `docs/dev/handoffs/production-launch.md`.
+**Current phase:** App-side production preparation complete for `spend.projectinfinitesummer.com`. All 527 cities and personal data are preserved; private authentication, shared-library permissions and full migration/restore are verified. Windows baseline and Linux Docker/auth/backup/restart checks pass. The separate infrastructure repository owns host deployment; see `docs/ops/production-launch.md`.
 
 **Phase 7A is superseded.** Its recorded route numbers are invalid: `scripts/check-webapp-performance.mjs:34` fetches
 with `redirect: 'follow'` and no session cookie, so every route 307s to `/login` and the script measured the login
@@ -124,74 +128,37 @@ squash-merged as `164d645a`. Deployed 21 October 2026 17:20 UTC (see the product
 
 ## Production deployment — LIVE (20 October 2026)
 
-Owner-requested deployment to the existing VPS (`deploy@45.63.24.34`). Every VPS step runs in a visible terminal the
-owner watches; the owner enters SSH and sudo credentials there. A read-only survey found the host unchanged since the
-12 October inspection: only the blog runs, owning ports 80/443, and `blog.`/`spend.` have no DNS records.
+Owner-requested deployment to the existing host shared with the blog. Host-specific details (address, accounts,
+backup destination and schedule) are kept in the private infrastructure repository and are not recorded here.
 
-- [x] Fresh pre-deployment blog backup (database, uploads, running images, configuration) with an off-host copy.
-  VPS `~/backups/blog-2026-10-20-predeploy` (5.0 GB): database integrity ok (178 posts, 129 comments, 2,071 media),
-  2,317/2,317 upload files in the tar, both running image IDs saved. Copied to `C:\Dev\travel-blog-backups\`; all 12
-  SHA-256 sums match.
+- [x] Pre-deployment blog backup with an off-host copy, checksums verified.
 - [x] CI publishes the tested runner image to `ghcr.io/mwilczynska/holiday-spend` (`:main`, `:sha-<commit>`); Compose
-  pulls it, because the VPS is too small to build. First run `a6da106` passed and published; anonymous pull works.
-- [x] Fresh owner-provisioned data snapshot (the 12 October package predates later cities), verified and transferred.
-  Local `.local/deployment/2026-10-20/production`: 531 cities, 1,062 photos, 70 legs, 1,543 expenses, 80 plans, owner
-  `dev-local-user`. Sent as one tar (per-file scp was slow and broke on a dropped connection); on the VPS all 1,063
-  manifest hashes match in `~/holiday-spend/incoming/production`. Settings installed as `.env.production.local` (600).
-- [x] Cloudflare A records for `blog` and `spend` → 45.63.24.34, DNS only; both resolve on 1.1.1.1 and 8.8.8.8.
-- [x] Shared nginx in Project Infinite Summer on 80/443; blog frontend moved off the public ports. Reviewed and
-  merged: project-infinite-summer#1, travel-blog#2, holiday-spend#20. Cutover 22:51 UTC 20 October: rehearsal on
-  spare ports passed, handoff took 5 s with the blog backend untouched, apex/www/photo/API 200 behind the edge.
-- [x] One certificate for apex, www, blog and spend (expires 18 January 2027), renewal now webroot through the edge
-  proxy; old stop/start-frontend hooks retired, `deploy/reload-edge.sh` added; `certbot renew --dry-run` succeeds.
-  Public check: all four names verify, `/api/health` ok, HTTP redirects to HTTPS, app security headers present.
-- [x] Runbook phase 0 on the VPS: edge files and both private repos delivered as git bundles (no GitHub credentials
-  on the host), `edge` network and `/var/www/acme` created, image `0c633aa` pulled, snapshot restored (531 cities,
-  1,062 photos, 70 legs, 1,543 expenses, 80 plans, 2 users, integrity ok). Holiday Spend runs healthy on
-  127.0.0.1:3000 and the edge network only, using 83 MiB; 1.2 GiB of host memory remains available.
-- [x] Apex and www switched to the landing page (`WWW_MODE=landing` in `edge/.env` on the VPS). Both serve it with
-  working links, styles and images; old blog paths redirect 301 to `blog.`, old `/uploads` photos still load. The
-  proxy recreate interrupted all three sites for about 13 s while connections drained.
-- [x] Daily and off-host backups for both applications (project-infinite-summer `ops/backup/`). Root cron at
-  16:30 UTC: Holiday Spend snapshot, stable blog database copy and uploads mirror; 7 days on the VPS; rclone crypt
-  copy to OneDrive (My files > Backups > project-infinite-summer, personal drive, 456 GB free), 30 days kept.
-  rclone 1.75.2 installed after SHA-256 check; encrypted write/read round trip passed; crypt passwords are in the
-  owner's password manager and the plain-text key file was deleted. First run by hand, 23:20–23:56 UTC: Holiday
-  Spend snapshot (531 cities, 1,062 photos), blog database (integrity ok, 178 posts) and 2,317 upload files; OneDrive
-  holds 5.07 GiB in 3,382 files and the snapshot was verified against the upload. Two script bugs found and fixed:
-  the blog check container could not read the root-only folder (run it as root, `80d5e5d`), and remote pruning
-  failed on the not-yet-created `blog/uploads-changed` (`e8ef7c8`, not yet on the VPS: until then each run uploads
-  correctly but reports FAILED at `offhost-retention`). Fix delivered 21 October 02:25 UTC; the 16:30 UTC run is
-  the first to use it.
-- [x] VPS cleanup, 21 October: the two old blog backups (8.23 GiB) were copied to OneDrive `archive/`, checked with
-  `rclone cryptcheck` (0 differences), then deleted from the VPS. The restored snapshot and bundles in
-  `~/holiday-spend/incoming/` were deleted after confirming the app is healthy on `runtime-data/`. Disk went from 80%
-  to 63% used (19 GB free). Blog docs PR travel-blog#3 merged.
-- [x] Backup alerts, 21 October: a failure emails the owner (Resend, reusing Holiday Spend's key and admin address at
-  send time), and `check-fresh.sh` at 20:30 UTC emails if nothing has succeeded in 26 hours; test email accepted.
-  VPS work now goes through one long-lived job-runner tab (project-infinite-summer `scripts/vps-runner.ps1`).
-- [x] Backup size fix, 21 October: each night uploaded the full 265 MB Holiday Spend snapshot. Databases and manifest
-  are now copied per night (about 15 MB) and the city photos mirrored once in `holiday-spend-photos/`, with changed or
-  deleted photos kept 30 days (project-infinite-summer `0b52fd3`). Mirror seeded and cryptcheck-verified (1,062
-  photos, 252 MiB). The 16:30 UTC run on 21 October was the first fully successful scheduled backup.
-- [x] Analytics deployed, 21 October 17:20 UTC: backup `2026-10-21T17-20-16Z` first, previous image kept as
-  `holiday-spend:pre-analytics` for rollback, then image `164d645a` (release `sha-164d645`). Healthy in 5 s;
-  business data unchanged (531 cities, 70 legs, 1,543 expenses, 81 saved plans, 2 users); `analytics.db` created
-  and 83 plan-history baselines recorded; no startup errors; signed-out `/admin/analytics` redirects to sign-in;
-  cross-origin event posts refused. Memory 137 MiB. Owner to open Analytics and confirm.
-- [x] Account emails for admins, 21 October (owner request after a new user's activity was hard to find under a
-  pseudonymous ID): admin report responses include an ID-to-email directory; tables show emails and the Account filter
-  lists them. Events stay pseudonymous in `analytics.db`; the privacy page says admins see the account email.
-  Deployed 21 October as `e41d90e4` (release `sha-e41d90e`): backup first, previous image kept as
-  `holiday-spend:previous`, healthy in 4 s, data intact, directory query present only in the admin analytics route.
-- [x] VPS OS update, 21 October 02:57–03:01 UTC: safety copies first (Holiday Spend snapshot, blog database), then
-  35 packages upgraded and 2 added (Docker, git, kernel 5.15.0-198 among them), existing config kept, nothing removed;
-  rebooted in about 23 s. Afterwards: no reboot pending, all four containers healthy, cron/fail2ban/ufw/
-  unattended-upgrades/docker active, and all public addresses 200 with valid certificates. The owner's SSH key is in
-  the Windows ssh-agent, so VPS connections no longer prompt for the passphrase (sudo still does).
+  pulls it, because the host is too small to build. First run `a6da106` passed and published; anonymous pull works.
+- [x] Fresh owner-provisioned data snapshot, verified, transferred privately and restored; every manifest hash matched
+  and integrity was `ok`. Settings installed as `.env.production.local` (600).
+- [x] DNS for `blog.` and `spend.`; shared edge nginx on 80/443 with the blog frontend moved behind it (holiday-spend
+  PR #20 and matching changes in the infrastructure and blog repositories). Cutover 22:51 UTC 20 October after a
+  rehearsal on spare ports; the blog was unavailable for about 5 s.
+- [x] One certificate for apex, www, blog and spend, renewed through the edge proxy; `certbot renew --dry-run`
+  succeeds. Public check: all four names verify, `/api/health` ok, HTTP redirects to HTTPS, app security headers
+  present.
+- [x] Holiday Spend runs healthy on loopback and the private `edge` network only. Apex and www serve the landing page;
+  old blog paths redirect to `blog.`.
+- [x] Daily encrypted off-host backups for both applications, with retention, verification against the upload,
+  failure and staleness email alerts, and city photos mirrored once rather than uploaded nightly. The scheduled run on
+  21 October was the first fully successful one.
+- [x] Analytics deployed 21 October 17:20 UTC as `164d645a` (release `sha-164d645`): backup first, previous image
+  kept for rollback, healthy in 5 s, business data unchanged, `analytics.db` created with plan-history baselines,
+  signed-out `/admin/analytics` redirects to sign-in, cross-origin event posts refused.
+- [x] Account emails for admins (owner request after a new user's activity was hard to find under a pseudonymous ID):
+  admin report responses include an ID-to-email directory; tables show emails and the Account filter lists them.
+  Events stay pseudonymous in `analytics.db`; the privacy page says admins see the account email. Deployed
+  21 October as `e41d90e4` (release `sha-e41d90e`): backup first, previous image kept, healthy in 4 s, data intact.
+- [x] Host OS update on 21 October with safety copies first; all containers healthy and all public addresses 200 with
+  valid certificates afterwards.
 - [x] Owner password reset and first sign-in on `spend.`, and all three sites checked by the owner: everything works
   as intended (reported 21 October 2026).
-- [ ] Restore test from OneDrive into a new directory (owner deferred it, 20 October).
+- [ ] Restore test from the off-host backup into a new directory (owner deferred it, 20 October).
 
 ## Pre-deployment security hardening — COMPLETE on branch `security/pre-deploy-hardening` (20 October 2026)
 
@@ -266,7 +233,7 @@ Open option: hide the strip on narrow screens if 9 rows proves too tall.
 ## Dev sign-in from a phone on the LAN — COMPLETE (20 October 2026)
 
 Owner report: on mobile, after entering the dev PIN, Enter dev mode and Sign in could not be pressed. Next 16 returned
-403 for dev resources requested from the LAN origin (`192.168.1.179`), so the login page rendered but never hydrated
+403 for dev resources requested from the LAN origin (`192.168.x.x`), so the login page rendered but never hydrated
 and its buttons kept their server-rendered `disabled` state. `next.config.mjs` now lists private-network ranges in
 `allowedDevOrigins` (dev server only). Verified at 375px on the LAN address: the page hydrates and Enter dev mode
 enables once a PIN is typed.
@@ -415,7 +382,7 @@ Owner authorized completing the deployment/authentication readiness work. Projec
 - [x] Add consistent database/photo snapshot, full-library export, restore verification and backup tooling. All 527 cities and 1,054 photos verify; every original table hash still matches the pre-work backup.
 - [x] Enforce private registration/sign-in, owner/admin library writes and current server-side session checks. Signing in initializes preferences without claiming unowned records.
 - [x] Prepare a private production copy with the owner's real identity and unchanged ownership/data; revoke copied local credentials/sessions. Independent restore matches the production package. Catalogue-only package contains no personal records.
-- [x] Verify native-auth registration, verification, delivery failure recovery, token expiry/reuse, reset/change-password, revocation and guest/admin permissions. All 77 files / 507 tests pass. Owner entered a domain-restricted Resend key privately; sending domain verified and authorized test delivered (initially Gmail spam, marked Not spam). Approved DMARC TXT is publicly visible. Live HTTPS account-email links remain a deployment check.
+- [x] Verify native-auth registration, verification, delivery failure recovery, token expiry/reuse, reset/change-password, revocation and guest/admin permissions. All 77 files / 507 tests pass. Owner entered a domain-restricted Resend key privately; sending domain verified and authorized test delivered. Approved DMARC TXT is publicly visible. Live HTTPS account-email links remain a deployment check.
 - [x] Update production documentation and integration contract for Project Infinite Summer, including exact private package/settings paths in `docs/dev/handoffs/production-launch.md`. Keep private settings outside Next.js's local automatic environment loading. Add Linux Docker/native-auth/backup smoke workflow; its result must be checked after publication.
 - [x] Run the required baseline, commit/push verified milestones, and complete the app handoff. Final code `e3e9045` passes Linux CI including both images, native auth and production backup/restart checks. Host-only launch checks remain explicit below and in the handoff.
 
@@ -440,7 +407,7 @@ Its regressions and Chrome verification pass.
 
 ## New cities via subagents: ranked destinations, batch 1 — COMPLETE (11 October 2026)
 
-- [x] Owner authorized the first ten cities from the ranked list: Orlando, Las Vegas, Cancún, Antalya, Miami, Macau, Pattaya, Honolulu, Punta Cana and Abu Dhabi. All are absent from the 328-city library. Current protected counts: 66 legs, 68 transports, 73 saved plans and 1,543 expenses.
+- [x] Owner authorized the first ten cities from the ranked list: Orlando, Las Vegas, Cancún, Antalya, Miami, Macau, Pattaya, Honolulu, Punta Cana and Abu Dhabi. All are absent from the 328-city library. Current protected counts: the protected personal tables.
 - [x] Reuse the prior exact v1.1 prompt/file-response/app-persistence method, one fresh GPT-6 Luna/max subagent per city. Search only for RBA FX; do not access provider keys or calibrate city prices. Macau uses canonical Macau/MOP/MO metadata. Existing United States/United States of America alias rows are retained; no same-name country duplicates were found.
 - [x] Consistent SQLite backup at `C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-10.db`, integrity `ok`; saved current protected row hashes and a local baseline copy for comparison. Exact prompts are in gitignored `.local/popular-10-2026-10-11`.
 - [x] Geocoder preflight: nine cities resolve directly; Macau returns the spelling Macao. Public Macao/MO query confirms the city capital and a separate territory record. Added a country/feature-constrained alias and regression covering the city, territory and foreign-country cases; preserve stored Macau identity.
@@ -452,7 +419,7 @@ Its regressions and Chrome verification pass.
 ## New cities via subagents: ranked destinations, batch 2 — COMPLETE (11 October 2026)
 
 - [x] Owner authorized moving to the next ten after committing batch 1. First milestone committed/pushed at `3e40c9f`.
-- [x] All ten remain absent. Consistent backup `C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-11-20.db` has integrity `ok`; protected counts remain 66/68/73/1,543. Prompts and baseline are in gitignored `.local/popular-11-20-2026-10-11`. All ten resolve directly to their intended countries/cities; no geocoding change needed.
+- [x] All ten remain absent. Consistent backup `C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-11-20.db` has integrity `ok`; protected counts are unchanged. Prompts and baseline are in gitignored `.local/popular-11-20-2026-10-11`. All ten resolve directly to their intended countries/cities; no geocoding change needed.
 - [x] Added Chicago, Toronto, San Diego, Washington, D.C., Boston, Hurghada, Sharm El Sheikh, Palma, Playa del Carmen and Doha. Ten fresh GPT-6 Luna/max responses pass schema, FX and provenance review and save through the byte-identical app prompt path. Library 338 -> 348; every city has twelve climate months and both verified licensed photo files. Palma de Mallorca and Playa del Carmen municipality photo-title differences were visually reviewed.
 - [x] Boston's USD320 room anchor, Toronto's USD205 and Palma's USD225 exceed older New York/Vancouver/Barcelona estimates after conversion. Egyptian resort rooms also exceed older Cairo. Seasonal/location uncertainty and Doha's limited hostels/licensed alcohol are disclosed; noted without calibration or adjustment.
 - [x] Integrity `ok`; no duplicate country names. All original country/city/estimate/climate/photo records and protected row hashes match the second backup. All ten have matching city/history dates, exact response anchors, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance and 11 October cost/climate/photo timestamps; FX observation remains 9 October. No new itinerary legs.
@@ -461,14 +428,14 @@ Its regressions and Chrome verification pass.
 ## Ranked destinations — PROCESSED, ONE DEFERRED (11 October 2026)
 
 - [x] Owner authorized continuing the whole ranked list, in batches of ten, committing and pushing each verified batch. The original queue is retained in gitignored `.local/ranked-destinations-200.json`.
-- [x] Ranks 21–30: Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and Nassau. Library 348 -> 358. Backup `travel-before-popular-21-30.db`, integrity `ok`; exact files in `.local/popular-21-30-2026-10-11`. All ten have matching city/history dates, 11 October cost/climate/photo timestamps, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, twelve climate months and both licensed photo files. Original library records and protected hashes (66/68/73/1,543) unchanged. Gold Coast, Nassau, Rhodes city and San Juan photo titles visually checked.
+- [x] Ranks 21–30: Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and Nassau. Library 348 -> 358. Backup `travel-before-popular-21-30.db`, integrity `ok`; exact files in `.local/popular-21-30-2026-10-11`. All ten have matching city/history dates, 11 October cost/climate/photo timestamps, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, twelve climate months and both licensed photo files. Original library records and protected hashes unchanged. Gold Coast, Nassau, Rhodes city and San Juan photo titles visually checked.
 - [x] Rhodes city/island ambiguity resolved with a country/region/feature constraint selecting the city; regression rejects the island and foreign matches. TypeScript, production build and all 74 files / 467 tests pass. Sapporo/Rhodes/Heraklion rooms exceed older Japanese/Athens entries; seasonal uncertainty is disclosed and noted without calibration. Memory mirror and v1.1 guard pass for publication.
 - [x] Processed ranks 31–200 in batches of ten with consistent backups, exact prompts, response review, app persistence and date/photo/climate audits. Every completed batch was committed and pushed before starting the next. Across the full list, 199 cities were added; rank 37, Malé, remains deferred unsaved.
 
 ### Full ranked-list closure — COMPLETE WITH ONE DEFERRED (11 October 2026)
 
 - All 200 queue entries accounted for across twenty batches. The original library grew from 328 to 527 cities; this continuation added 179 after the first twenty. No destination was regenerated or linked to an itinerary leg.
-- Final audit compares every original country, city, estimate, climate and photo row with the consistent first-batch backup; all match. Protected tables also match their original hashes: 66 itinerary legs, 68 transports, 73 saved plans and 1,543 expenses. Database integrity is `ok`, country names have no duplicates, and the canonical CSV hash is unchanged.
+- Final audit compares every original country, city, estimate, climate and photo row with the consistent first-batch backup; all match. Protected tables also match their original hashes: the protected personal tables. Database integrity is `ok`, country names have no duplicates, and the canonical CSV hash is unchanged.
 - All 199 additions retain their exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance. City/history timestamps match, costs/climate/photos are dated 11 October, and the actual RBA FX observation remains separately dated 9 October. Each has twelve climate months, a verified free licence/source and both photo files. Full audit retained in gitignored `.local/popular-191-200-2026-10-11/final-audit.json`.
 - Negril's Commons file has a verified CC BY-SA 3.0 licence, but Commons omits a machine-readable artist. That field remains missing rather than inventing an author; the original Commons source link is retained. Existing Apia and Bali records have the same metadata limitation and are unchanged.
 - Malé's rejected response and provenance remain archived unchanged. Its resort-price substitution was not imported, and no calibration or methodology expansion was undertaken.
@@ -477,119 +444,119 @@ Its regressions and Chrome verification pass.
 ### Ranks 31–40 — COMPLETE (11 October 2026)
 
 - Added Perth, Luxor, Antigua Guatemala, Taormina, Alicante, Benidorm, Bodrum, Göreme, Anaheim. Library 358 -> 367; consistent backup `travel-before-popular-31-40.db`, integrity `ok`; exact files in `.local/popular-31-40-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Malé deferred unsaved: its response substitutes licensed island-resort alcohol prices for unavailable city drinks; archived unchanged. Taormina and Bodrum retain low confidence for seasonal lodging; newer Turkish/Perth/Luxor room estimates exceed older Istanbul/Sydney/Cairo entries, recorded without calibration. Differently titled photos visually reviewed.
 - No implementation change after the passing 467-test/build/TypeScript baseline; memory mirror, v1.1 guard and database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 41–50 — COMPLETE (11 October 2026)
 
 - Added Paphos, Corfu Town, Naha, Panama City, Albufeira, Ibiza Town, Marbella, Alanya, Fethiye, Marmaris. Library 367 -> 377; consistent backup `travel-before-popular-41-50.db`, integrity `ok`; exact files in `.local/popular-41-50-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Corfu and Ibiza city photo-title differences visually checked. Ibiza Town and Panama City retain low confidence; seasonal resort/hostel uncertainty is disclosed. New Naha/Corfu/Albufeira room estimates exceed older Japanese/Athens/Lisbon entries, recorded without calibration. Public queue preflight identified fourteen spelling, city/island and region constraints; implemented with country checks, preserving requested identities and existing rows.
 - TypeScript, production build, all 74 files / 481 tests, memory mirror and v1.1 guard pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 51–60 — COMPLETE (11 October 2026)
 
 - Added Quebec City, Catania, Palermo, Positano, Sorrento, Turin, Verona, Wadi Musa, Johannesburg, San Antonio. Library 377 -> 387; consistent backup `travel-before-popular-51-60.db`, integrity `ok`; exact files in `.local/popular-51-60-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Photo-title differences visually reviewed. Positano and Wadi Musa retain low confidence for seasonal/scarce lodging and venue-dependent alcohol. New Quebec City and Wadi Musa room estimates exceed older Montreal/Amman entries; Positano exceeds Amalfi. Differences are disclosed and recorded without calibration.
 - No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 61–70 — COMPLETE (11 October 2026)
 
 - Added San José, Malacca, Muscat, Faro, Charleston, Fort Lauderdale, Key West, Nashville, Philadelphia, Tampa. Library 387 -> 397; consistent backup `travel-before-popular-61-70.db`, integrity `ok`; exact files in `.local/popular-61-70-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Differently titled photos visually reviewed. Key West lodging reflects constrained island supply and seasonality; Muscat retains licensed-venue/hostel uncertainty. Faro lodging exceeds older Lisbon despite the regional comparison; recorded without calibration. Malé remains deferred, with the alcohol availability distinction corroborated by current UK government Maldives travel advice (https://www.gov.uk/foreign-travel-advice/maldives/safety-and-security); no city-price research.
 - No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 71–80 — COMPLETE (11 October 2026)
 
 - Added Adelaide, Hobart, Nanjing, Sanya, Nadi, Kota Kinabalu, Christchurch, Rotorua, Wellington, Zermatt. Library 397 -> 407; consistent backup `travel-before-popular-71-80.db`, integrity `ok`; exact files in `.local/popular-71-80-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Zermatt is low confidence with a seasonal alpine-resort premium (three-star room USD450, about AUD645 versus Geneva AUD394). Kota Kinabalu (AUD93) and Sanya (AUD115) exceed older country entries; Nanjing (AUD129) exceeds older Shanghai despite its relative-city wording. These differences are retained without calibration. All photo article titles match the city names.
 - No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 81–90 — COMPLETE (11 October 2026)
 
 - Added Oranjestad, Pisa, Fujikawaguchiko, Hakone, Nagasaki, Nagoya, Takayama, Yokohama, Coron, Puerto Princesa. Library 407 -> 417; consistent backup `travel-before-popular-81-90.db`, integrity `ok`; exact files in `.local/popular-81-90-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Oranjestad is low confidence because of seasonal resort demand and limited hostel inventory. Hakone and Fujikawaguchiko disclose resort lodging uncertainty. Yokohama (three-star AUD193 versus older Tokyo AUD155), Pisa (AUD201 versus older Florence AUD178) and Puerto Princesa (AUD75 versus older Manila AUD54/Cebu AUD47) exceed their stated relative-city comparisons; retained without calibration. Visually checked Takayama, Gifu (snowy city view) and Coron, Palawan (town and bay); both match the destinations.
 - No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 91–100 — COMPLETE (11 October 2026)
 
 - Added Chamonix, Labuan Bajo, Como, Rimini, Kuching, Las Palmas de Gran Canaria, Santa Cruz de Tenerife, Ayutthaya, Hua Hin, Kuşadası. Library 417 -> 427; consistent backup `travel-before-popular-91-100.db`, integrity `ok`; exact files in `.local/popular-91-100-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - All ten are medium confidence. Labuan Bajo (three-star AUD122) exceeds older Bali/Lombok entries with a disclosed Komodo gateway premium; Chamonix (AUD358) exceeds Nice AUD258 with alpine seasonality. Las Palmas (AUD179) exceeds older Barcelona AUD155 despite its relative-city wording; Ayutthaya (AUD69) and Hua Hin (AUD97) exceed older Bangkok/Pattaya entries. Differences retained without calibration. Visually checked Las Palmas beach, Phra Nakhon Si Ayutthaya city ruins and Hua Hin district coastline; all match their destinations.
 - No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 101–110 — COMPLETE (11 October 2026)
 
 - Added Hvar, Pula, Aqaba, Agadir, Casablanca, Chefchaouen, Essaouira, Tangier, Durban, İzmir. Library 427 -> 437; consistent backup `travel-before-popular-101-110.db`, integrity `ok`; exact files in `.local/popular-101-110-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - All ten are medium confidence. Casablanca and Chefchaouen disclose limited licensed alcohol venues; Aqaba discloses venue-dependent alcohol uncertainty. Hvar three-star AUD315 exceeds older Dubrovnik AUD171 with summer island demand disclosed; Izmir AUD150 exceeds older Istanbul AUD70 despite its relative-city wording, and Moroccan additions AUD93-109 exceed older Marrakech AUD62. Differences retained without calibration. Visually checked Hvar (town), showing the correct town and harbour.
 - No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 111–120 — COMPLETE (11 October 2026)
 
 - Added Bridgetown, Varadero, Willemstad, Aswan, Cannes, Montego Bay, Negril, Ocho Rios, Hammamet, Tunis. Library 437 -> 447; consistent backup `travel-before-popular-111-120.db`, integrity `ok`; exact files in `.local/popular-111-120-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Archived the first Hammamet response unchanged because it explicitly substituted guesthouse equivalents for hostel anchors; a fresh exact-contract response passed. Archived the first Bridgetown response with stale 8 October FX; a fresh response fetched the verified 9 October observation. Aswan, Ocho Rios, Bridgetown and Varadero are low confidence because of licensed alcohol venues, limited hostel supply or volatile resort pricing. Varadero three-star AUD236 exceeds older Havana AUD85; Cannes AUD301 exceeds Nice AUD258. Differences retained without calibration. Visually checked Hammamet, Tunisia montage against the correct destination.
 - No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 121–130 — COMPLETE (11 October 2026)
 
 - Added Byron Bay, Trinidad, Guadalajara, Guanajuato, Mazatlán, Mérida, Puebla, San Miguel de Allende, San Miguel de Cozumel, Arusha. Library 447 -> 457; consistent backup `travel-before-popular-121-130.db`, integrity `ok`; exact files in `.local/popular-121-130-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Fixed Puebla geocoding before saving: exact-name matching chose a Baja California settlement; the constrained Puebla City/Puebla/PPLA alias now selects 19.04778,-98.20723. Added regression coverage and synced project memory. Trinidad is low confidence because of Cuban currency/supply uncertainty. Byron Bay three-star AUD337 has a disclosed tourism premium; Puebla AUD112 and Guadalajara AUD150 exceed older Mexico City AUD78 despite their comparison text. Differences retained without calibration. Visually checked Trinidad, Guanajuato, Merida and Puebla city photos; San Miguel de Allende uses a rural landscape from its municipality article, correctly identified as the surrounding municipality rather than a city-centre scene.
 - TypeScript, production build, all 482 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. The sandbox test attempt could not start because temporary-file renames were denied; the unchanged suite passed outside that sandbox. Completion recorded for commit/push before the next batch.
 
 ### Ranks 131–140 — COMPLETE (11 October 2026)
 
 - Added El Calafate, Puerto Iguazú, San Carlos de Bariloche, Ushuaia, Florianópolis, Foz do Iguaçu, Salvador, São Paulo, Mombasa, Victoria Falls. Library 457 -> 467; consistent backup `travel-before-popular-131-140.db`, integrity `ok`; exact files in `.local/popular-131-140-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Victoria Falls, Ushuaia and Puerto Iguazu are low confidence because of seasonal visitor markets or Argentine currency uncertainty. Patagonia three-star estimates AUD193-315 exceed older Buenos Aires AUD78 with remoteness and visitor demand disclosed; Brazilian additions AUD112-165 exceed older Rio AUD78. Mombasa AUD143 exceeds older Nairobi AUD70. Differences retained without calibration. Visually checked Bariloche cathedral, Salvador Bahia coastline and Victoria Falls Zimbabwe town street; all match their destinations.
 - No implementation changes after the Puebla checkpoint passing TypeScript, production build and all 482 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 141–150 — COMPLETE (11 October 2026)
 
 - Added Recife, Puerto Natales, Huangshan, San Andrés, Santa Marta, Cuenca, Arequipa, Victoria, Montevideo, Punta del Este. Library 467 -> 477; consistent backup `travel-before-popular-141-150.db`, integrity `ok`; exact files in `.local/popular-141-150-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Fixed Huangshan geocoding before saving: exact-name matching selected a Yunnan settlement; the Huangshan City/Anhui/PPLA3 alias now selects 29.71139,118.3125. Added regression coverage and synced memory. Punta del Este and Victoria Seychelles are low confidence because of seasonal resort demand or scarce dorm supply/import costs. Puerto Natales three-star AUD229 reflects remote Patagonia demand; Santa Marta AUD107 exceeds older Cartagena AUD78 despite its relative-city wording, and San Andres AUD193 has a disclosed island premium. Differences retained without calibration. Visually checked Huangshan City historic street, San Andres town waterfront, Cuenca Ecuador montage and Victoria Seychelles clock tower; all match their destinations.
 - TypeScript, production build, all 483 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 151–160 — COMPLETE (11 October 2026)
 
 - Added Aix-en-Provence, Annecy, Avignon, Toulouse, Düsseldorf, Frankfurt, Leipzig, Nuremberg, Grand Baie, Lausanne. Library 477 -> 487; consistent backup `travel-before-popular-151-160.db`, integrity `ok`; exact files in `.local/popular-151-160-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Fixed Frankfurt geocoding before saving: exact-name matching selected a Bavarian settlement; Frankfurt am Main/Hesse/PPLA3 now selects 50.11552,8.68417. Added regression coverage and synced memory. Grand Baie is low confidence because of scarce conventional hostel supply and imported drinks. Nuremberg AUD251 and Leipzig AUD189 exceed older Munich AUD171 despite their relative-city wording; Annecy AUD322 has a disclosed seasonal lake tourism premium. Differences retained without calibration. All photo article titles match the city names.
 - TypeScript, production build, all 484 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 161–170 — COMPLETE (11 October 2026)
 
 - Added Bari, Cagliari, Lecce, Lucca, Bilbao, Cádiz, Córdoba, Toledo, Bern, Lugano. Library 487 -> 497; consistent backup `travel-before-popular-161-170.db`, integrity `ok`; exact files in `.local/popular-161-170-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - All ten are medium confidence, with seasonal lodging uncertainty disclosed. Bern and Lugano three-star AUD387/AUD365 sit near existing Swiss cities AUD337-394; Bilbao AUD236 reflects Basque visitor demand. Lucca AUD258 exceeds Pisa AUD201/Siena AUD222, and Cagliari AUD222 exceeds older Rome AUD171 despite its relative-city wording. Differences retained without calibration. Visually checked Cordoba Spain aerial view and Toledo Spain river-city panorama; both match the destinations.
 - No implementation changes after the Frankfurt checkpoint passing TypeScript, production build and all 484 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 171–180 — COMPLETE (11 October 2026)
 
 - Added Port Douglas, Rovinj, Kos Town, Nafplio, Rethymno, La Spezia, Ohrid, Coimbra, Cluj-Napoca, Sibiu. Library 497 -> 507; consistent backup `travel-before-popular-171-180.db`, integrity `ok`; exact files in `.local/popular-171-180-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Port Douglas is low confidence because of seasonal resort demand and limited room inventory. Coimbra three-star AUD165 exceeds older Lisbon AUD140/Porto AUD124 despite its comparison text; Nafplio AUD189 exceeds older Athens AUD109, and Port Douglas AUD358 exceeds Cairns AUD171 with a resort premium disclosed. Differences retained without calibration. Visual inspection caught a Rethymno municipality map: settlement articles now rank ahead of same-named municipalities, with regression coverage. Refreshed all four stored municipality selections through the real collector in an isolated copy and compared all 507 stored picks; Paracas was unchanged and Playa del Carmen, San Miguel de Allende and Rethymno changed, all visually reviewed. Only the new Rethymno live row was refreshed, preserving every older image row. Its licensed city/fortress photo and Kos Town harbour photo both pass visual review.
 - TypeScript, production build, all 485 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 181–190 — COMPLETE (11 October 2026)
 
 - Added Graz, Brno, Karlovy Vary, Cork, Killarney, Luxembourg City, Delft, Maastricht, Poznań, Zakopane. Library 507 -> 517; consistent backup `travel-before-popular-181-190.db`, integrity `ok`; exact files in `.local/popular-181-190-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - All ten are medium confidence with lodging seasonality and event uncertainty disclosed. Graz three-star AUD222 exceeds older Vienna AUD155, Brno AUD172 exceeds older Prague AUD109 and Poznan AUD132 exceeds older Krakow AUD85 despite relative-city wording; differences retained without calibration. Cork/Killarney AUD312/322 sit near Galway AUD330. Visually checked Cork city university quadrangle and Luxembourg City Greinskapell chapel. The latter comes through the Luxembourg article and Wikidata image, but the Commons file explicitly identifies Luxembourg City and the location check is 0.3km from the saved city point.
 - No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for commit/push before the next batch.
 
 ### Ranks 191–200 — COMPLETE (11 October 2026)
 
 - Added Dahab, Ipoh, Atlanta, Austin, Denver, Palm Springs, Santa Fe, Savannah, Sedona, Livingstone. Library 517 -> 527; consistent backup `travel-before-popular-191-200.db`, integrity `ok`; exact files in `.local/popular-191-200-2026-10-11`.
-- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes (66/68/73/1,543) unchanged.
+- All additions have exact response anchors and active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance, matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and both licensed photo files. All original library rows and protected hashes unchanged.
 - Sedona and Santa Fe retain low confidence for seasonal lodging and limited registered-hostel supply. Savannah and Santa Fe rooms are about AUD330, above older New York City AUD310; Sedona is about AUD430. Ipoh is about AUD79 versus older Kuala Lumpur AUD54/Penang AUD47 despite its lower-relative-city wording; Dahab is about AUD93 versus older Cairo AUD54. Differences are recorded without calibration. All six differently titled photos were visually reviewed and match their destinations.
 - No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass. Completion recorded for final commit/push; no further batch remains.
 
@@ -627,13 +594,13 @@ Its regressions and Chrome verification pass.
 - [x] Third wave: Ghent, Zurich, Lucerne, Interlaken, Geneva, Salzburg, Innsbruck, Hallstatt, Cesky Krumlov, Wroclaw, Thessaloniki and Chania. Library 302; all 38 additions pass provenance, date, climate and photo checks. Original city/estimate/climate/photo rows also match the backup. Český Krumlov and Wrocław photos inspected. Hallstatt has low confidence for scarce/seasonal lodging. New Austrian, Czech and Greek room estimates exceed older Vienna/Prague/Athens entries; noted without adjustment or calibration.
 - [x] Fourth wave: Santorini, Mykonos, Zagreb, Zadar, Ljubljana, Bled, Kotor, Budva, Sarajevo, Mostar, Tirana and Saranda. Library 314; all 50 additions have valid provenance, today's estimate/climate/photo timestamps, twelve climate months and verified photos. Protected rows and original library records remain unchanged. Sarandë photo inspected and correct. Seasonal resort uncertainty is disclosed; newer Croatian room estimates exceed older Split/Dubrovnik entries, recorded without calibration. Final 14-city wave is generating.
 - [x] Final wave: Dublin, Galway, Aarhus, Oslo, Bergen, Tromso, Gothenburg, Rovaniemi, Tallinn, Riga, Vilnius, Valletta, Bratislava and Plovdiv. Library 328; all 64 requested cities match distinct successful saves. Tromsø photo inspected. Rovaniemi retains low confidence for Christmas/winter lodging uncertainty; newer Plovdiv, Rovaniemi and Gothenburg room estimates exceed older Sofia, Helsinki and Stockholm entries, recorded without calibration.
-- [x] Complete database audit: integrity `ok`, no duplicate country names, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance for all 64, twelve climate months and both photo files, no new itinerary legs. Estimate/history dates match; all estimate, climate and photo dates are 10 October 2026. The 9 October RBA observation remains separate. All 264 original city rows, 121 estimates, 119 climate rows and 264 photo rows match the backup; all 66 legs, 68 transports, 72 saved plans and 1,543 expenses retain their original row hashes.
+- [x] Complete database audit: integrity `ok`, no duplicate country names, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance for all 64, twelve climate months and both photo files, no new itinerary legs. Estimate/history dates match; all estimate, climate and photo dates are 10 October 2026. The 9 October RBA observation remains separate. All 264 original city rows, 121 estimates, 119 climate rows and 264 photo rows match the backup; all the protected personal tables retain their original row hashes.
 - [x] All 64 responses tabulated and validated before saving; photo-title differences inspected. Full baseline passes at implementation checkpoint `a132d8b` (465 tests); final memory mirror and v1.1 guard pass. Later European checkpoints change documentation and local application data only. Completion recorded for commit/push to main; unrelated concurrent edits excluded.
 
 ## European city batch preparation — COMPLETE (10 October 2026)
 
 - [x] Read the current project memory, recent implementation evidence, Europe handoff, exact v1.1 prompt and batch persistence path.
-- [x] Read-only database preflight: 264 cities, 70 countries, 66 itinerary legs, 72 saved plans and 1,543 expenses. All 264 photo rows have status `ok`; no duplicate country names.
+- [x] Read-only database preflight: 264 cities, 70 countries, the personal tables. All 264 photo rows have status `ok`; no duplicate country names.
 - [x] All 64 proposed cities across 28 countries are absent from the library. The example `C:\Dev\city-batches\europe` folder has no prompts or answers, and the specified pre-Europe backup does not yet exist.
 - [x] All 28 countries resolve in canonical metadata. Memory mirror and deterministic v1.1 guard pass; the live CSV hash is unchanged. Full build/test verification remains part of batch completion, not this documentation-only preparation.
 - [x] Preparation complete. No subagents, generation, provider calls or application-data writes in this preparation task. Next: backup with SQLite's backup API and check its integrity, generate exact prompts, then review and persist Nice/Venice before continuing in waves. Require saved climate and verified photos, retain 66 itinerary legs, and record discrepancies without calibration.
@@ -1896,7 +1863,7 @@ Measured authenticated as `dev-local-user`, the owner of all 1,300 expenses, 62 
 - Duplicate requests in the dev log are React StrictMode's dev-only double-invoke, not a defect.
   `src/app/page.tsx:630` is a single `useEffect` with `[]` deps. This must not be "fixed".
 - The repository is at `C:\Dev\holiday-spend` and is **not** inside OneDrive. The OneDrive section of `CLAUDE.md` is
-  obsolete. An orphaned pre-move copy remains at `C:\Users\chawi\OneDrive\projects\holiday-spend`.
+  obsolete. An orphaned pre-move copy remains at `%USERPROFILE%\OneDrive\projects\holiday-spend`.
 
 ### Step 0 — Get the webapp running and keep it running — COMPLETE
 
@@ -2317,8 +2284,8 @@ v1.1 check with the live CSV hash unchanged.
 - [x] Add the requested line verbatim to `CLAUDE.md` and mirror it into `AGENTS.md`.
 - [x] Replaced the obsolete OneDrive section of `CLAUDE.md`, mirrored into `AGENTS.md`. The file stated "The
   repository lives inside OneDrive", which is false: the working tree is `C:\Dev\holiday-spend` and OneDrive is
-  `C:\Users\chawi\OneDrive`. Verified that `.next`, `.next-dev`, `data/` and `data/travel.db` carry no reparse points.
-- [x] Recorded the orphaned pre-move copy at `C:\Users\chawi\OneDrive\projects\holiday-spend`, which has no `.git`
+  `%USERPROFILE%\OneDrive`. Verified that `.next`, `.next-dev`, `data/` and `data/travel.db` carry no reparse points.
+- [x] Recorded the orphaned pre-move copy at `%USERPROFILE%\OneDrive\projects\holiday-spend`, which has no `.git`
   directory and a dehydrated `scripts` reparse point, as a trap not to open.
 - [x] Retained `scripts/prepare-next-dev.mjs` rather than deleting it, with the reason stated: it finds nothing to do
   on the current path, but is cheap, harmless, and would matter again if the repository moved back under a synced

@@ -16,7 +16,7 @@ describe('cross-origin write detection', () => {
       host: '127.0.0.1:3000',
       'sec-fetch-site': 'same-origin',
     }))).toBe(false);
-    expect(isCrossOriginWrite(request('PUT', { origin: 'http://192.168.1.179:3000', host: '192.168.1.179:3000' }))).toBe(false);
+    expect(isCrossOriginWrite(request('PUT', { origin: 'http://192.168.0.10:3000', host: '192.168.0.10:3000' }))).toBe(false);
   });
 
   it('refuses writes from sibling subdomains and other sites', () => {

@@ -1,10 +1,10 @@
-> **SUPERSEDED — 12 October 2026.** Use [Production launch](production-launch.md). The older instructions below describe the prior Node/Next.js stack and CSV-only seed; they must not be used to deploy the full current library.
+> **SUPERSEDED — 12 October 2026.** Use [Production launch](../production-launch.md). The older instructions below describe the prior Node/Next.js stack and CSV-only seed; they must not be used to deploy the full current library.
 
 # Deployment (historical)
 
 This document covers the recommended VPS deployment path for Holiday Spend.
 
-It is written to fit the same server pattern already documented in your `travel-blog` project:
+It was written to fit an existing server pattern used by another project on the same host:
 
 - Ubuntu VPS
 - non-root `deploy` user
@@ -26,9 +26,9 @@ Use this app as:
 
 This keeps the app simple and avoids shipping self-signed certificates inside the repo.
 
-## How This Differs From `travel-blog`
+## How This Differs From a Split Frontend/Backend App
 
-`travel-blog` is a split frontend/backend app, so its deployment uses multiple application services.
+A split frontend/backend app needs multiple application services.
 
 Holiday Spend should be simpler:
 
@@ -53,7 +53,7 @@ So the recommendation is:
 
 ## Assumed VPS Baseline
 
-This document assumes the VPS itself is already in the state described in the `travel-blog` deployment guide, or close to it:
+This document assumes the VPS itself is already in the state described by that baseline, or close to it:
 
 - `deploy` user exists and has `sudo`
 - root SSH login is disabled
@@ -63,7 +63,7 @@ This document assumes the VPS itself is already in the state described in the `t
 - Docker and Docker Compose are installed
 - you already have a working pattern for host-level reverse proxying and TLS
 
-If that baseline is not already present, use the `travel-blog` guide for the server-level setup first, then come back here for the app-specific deployment shape.
+If that baseline is not already present, set up the server baseline first, then come back here for the app-specific deployment shape.
 
 ## Environment
 
@@ -198,7 +198,7 @@ For native-auth rate limiting and auditability, only trust `X-Forwarded-For` fro
 
 When you are eventually ready to deploy, the intended shape is:
 
-1. keep your existing VPS hardening model from `travel-blog`
+1. keep the existing VPS hardening model
 2. run Holiday Spend with Docker Compose from its repo directory
 3. keep Holiday Spend bound to `127.0.0.1:3000`
 4. point your existing reverse proxy to that local port
