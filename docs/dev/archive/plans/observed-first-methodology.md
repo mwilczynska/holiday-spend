@@ -1,10 +1,10 @@
 # Phase 6: Observed-First City Cost Methodology And Validation
 
 <!-- status-banner -->
-> **ABANDONED — not current.** The full v3 observed-first programme design. Abandoned at 156/684 tier cells and zero complete cities. See `/LOG.md` Part 1 for why.
+> **ABANDONED — not current.** The full v3 observed-first programme design. Abandoned at 156/684 tier cells and zero complete cities. See `/docs/dev/LOG.md` Part 1 for why.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 ## Status
 

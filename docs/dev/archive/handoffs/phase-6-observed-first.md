@@ -4,7 +4,7 @@
 > **ABANDONED — not current.** Handoff for the v3 programme, which was abandoned. Its "next steps" are not to be actioned.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 ## Current Position
 

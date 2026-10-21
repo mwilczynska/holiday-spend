@@ -1,22 +1,21 @@
 # Holiday Spend
 
-Canonical project memory. `AGENTS.md` must stay a byte-for-byte mirror — after editing this file run
-`npm run docs:sync-memory`, and verify with `npm run docs:check-memory`.
+Canonical project memory, read by Codex directly and by Claude Code through the `@AGENTS.md` import in `CLAUDE.md`.
+Edit only this file.
 
 This file describes what the project is and currently does. It is deliberately free of change history.
 
 | For | Read |
 | --- | --- |
-| What is planned next, milestone status, open decisions | **[PLAN.md](PLAN.md)** |
-| What was built, what was tried, and what the evidence showed | **[LOG.md](LOG.md)** |
-| Active city-cost rollout (v1.2) | **[PLAN.md](PLAN.md)** |
+| What is planned next, milestone status, open decisions | **[PLAN.md](docs/dev/PLAN.md)** |
+| What was built, what was tried, and what the evidence showed | **[LOG.md](docs/dev/LOG.md)** |
+| Active city-cost rollout (v1.2) | **[PLAN.md](docs/dev/PLAN.md)** |
 | City-cost accuracy research behind v1.2, and how to continue it | `docs/research/city-cost-accuracy.md`; branch `research/city-cost-accuracy`, tag `city-cost-research-r3-2026-10-17` |
 | Cold-start handoff and exact next action | `docs/dev/handoffs/city-cost-v1-1.md` |
-| Active city-cost loop | `LOOP-PROMPT-V1-1.md` |
-| Retired v6.1 research history | archived `feat/city-cost-methodology-v6` branch and tag `city-cost-v6.1-research-final-2026-08-18` |
+| Retired v5 and v6.1 research history | archived `feat/city-cost-methodology-v6` branch and tag `city-cost-v6.1-research-final-2026-08-18` |
+| Retired v1 audit, v3 and v4 research tooling and data | tag `city-cost-v3-v4-research-final-2026-10-21`; written record in `docs/product/archive/methodology-v4.md` |
 | Current city-cost methodology | `docs/product/city-cost-methodology.md` |
 | Transport and climate methods | `docs/product/transport-estimation.md`, `docs/product/trip-climate.md` |
-| Prior methodology evidence (superseded) | `docs/product/methodology-v4.md`, `data/reference/v5/` |
 
 ---
 
@@ -96,16 +95,19 @@ Zod · Recharts · NextAuth · Vitest + Playwright.
 
 | Path | Contents |
 | --- | --- |
-| `PLAN.md` | Active v1.1 city-cost plan and checklist |
-| `LOG.md` | Append-mostly project and methodology history |
-| `docs/prompts/` | Versioned LLM prompt contracts; status is recorded in its README |
-| `data/reference/` | Canonical datasets and retained methodology evidence |
-| `scripts/` | Build, validation, and reproducibility tooling |
+| `docs/dev/PLAN.md` | Active plan and checklist |
+| `docs/dev/LOG.md` | Append-mostly project and methodology history |
+| `docs/prompts/` | Runtime LLM prompt contracts; status is recorded in its README |
+| `data/reference/` | Seed city-cost CSV and transport accuracy evidence; its README lists readers |
+| `scripts/` | App, operations, analytics and city-library tooling; its README lists each script |
 | `src/lib/` | Production methodology, provider, persistence and planning code |
 | `data/travel.db` | Local SQLite database; gitignored |
 
-Archived documents open with a `SUPERSEDED`, `ABANDONED`, or `COMPLETE` banner. Do not move or rename files under
-`data/reference/` without updating their readers.
+The repository root holds app code, config, `README.md`, `AGENTS.md` and `CLAUDE.md`; other documentation goes under
+`docs/`. Research tooling and data do not belong on `main`: retired programmes are kept on tags and branches.
+Agent and tool working folders (`.agents/`, `.codex/`, `telemetry/`, `.local/`) are gitignored, and worker logs are
+never committed. Archived documents open with a `SUPERSEDED`, `ABANDONED`, or `COMPLETE` banner. Do not move or
+rename files under `data/reference/` without updating their readers.
 
 ## City-cost system
 
@@ -396,7 +398,7 @@ browser autofill), so Sign in and Enter dev mode enable without retyping on a sl
 to give a second dev server its own build directory; two dev servers sharing `.next-dev` overwrite each other's chunks.
 Such a directory contains junctions into `node_modules` (`dev/node_modules/argon2-*`, `better-sqlite3-*`): remove the
 links with `rmdir` before deleting it. A fresh `next dev` also appends a Next.js agent-rules block to `AGENTS.md`;
-revert it, because `AGENTS.md` must mirror this file.
+revert it, because `AGENTS.md` is this project's memory and `CLAUDE.md` imports it.
 A phone can use the dev server at the machine's LAN address (for example `http://192.168.1.179:3000`):
 `next.config.mjs` lists private-network ranges in `allowedDevOrigins`. Without them Next 16 returns 403 for dev
 resources requested from a non-localhost origin, and the page renders but never hydrates, so its buttons stay disabled.
@@ -490,7 +492,7 @@ error from 25.0% to 2.5%. Re-measure city costs and transport when the prompt, p
 Please remove all mannered prose.
 
 - Commit and push after each sizeable chunk and milestone.
-- Update `PLAN.md` at task start/end and before every commit or push.
+- Update `docs/dev/PLAN.md` at task start/end and before every commit or push.
 - Record superseded decisions as dated history; do not erase reasoning.
 - Fail closed. Unsupported values remain missing rather than becoming plausible substitutes.
 - A modelled value must not be presented as an observed source price.
@@ -502,7 +504,6 @@ The active baseline is:
 npx tsc --noEmit
 npm run build
 npm test -- --run
-npm run docs:check-memory
 npm run methodology:v1.1:check
 ```
 
@@ -586,7 +587,8 @@ authentication, or methodology.
 
 | Path | Purpose |
 | --- | --- |
-| `PLAN.md` | Active v1.2 rollout checklist |
+| `AGENTS.md` | Project memory; `CLAUDE.md` is a one-line import of it |
+| `docs/dev/PLAN.md` | Active v1.2 rollout checklist |
 | `docs/product/city-cost-methodology.md` | Current city-cost methodology, mirrored by the `/estimates` page |
 | `docs/prompts/llm_prompt_new_cities_1.md` | Frozen v1 rollback prompt |
 | `docs/prompts/llm_prompt_new_cities_v1_2.md` | v1.2 prompt: v1.1 plus up to five food and drink searches |

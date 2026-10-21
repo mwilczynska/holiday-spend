@@ -16,7 +16,7 @@ itinerary has 66 legs before you start and must still have 66 when you finish.
 ## What already happened (10 October 2026)
 
 - 53 cities were added this way with Claude Haiku 5.5 subagents: China, Taiwan, India, Sri Lanka, Nepal and the UK.
-  The library has 264 cities. See the two "New cities via subagents" sections in `PLAN.md`.
+  The library has 264 cities. See the two "New cities via subagents" sections in `docs/dev/PLAN.md`.
 - The owner then asked for Europe and stopped the run before any European subagent started. Nothing European was
   added. That is where you start.
 
@@ -140,11 +140,10 @@ Yangshuo County and Kenting National Park were correct).
 
 ### 9. Record, test, commit
 
-- `PLAN.md`: add a dated "New cities via subagents: Europe" section in the same style as the earlier ones (what was
+- `docs/dev/PLAN.md`: add a dated "New cities via subagents: Europe" section in the same style as the earlier ones (what was
   added, fixes, anything noted but not calibrated).
-- `CLAUDE.md`: update only lines that change (new climate aliases or overrides, new lookup rules), then
-  `npm run docs:sync-memory` and `npm run docs:check-memory`.
-- Baseline: `npx tsc --noEmit`, `npm test -- --run`, `npm run build`, `npm run docs:check-memory`,
+- `AGENTS.md`: update only lines that change (new climate aliases or overrides, new lookup rules).
+- Baseline: `npx tsc --noEmit`, `npm test -- --run`, `npm run build`,
   `npm run methodology:v1.1:check`. If a unit test file times out under load, rerun it alone before treating it as a
   failure.
 - Commit and push to `main`, without attribution lines. The database and photos are local data and are not committed.
@@ -152,12 +151,12 @@ Yangshuo County and Kenting National Park were correct).
 ## Rules that matter here
 
 - Methodology testing is closed (`CLAUDE.md`). If new estimates disagree with older library entries (earlier batches
-  priced Taiwanese and UK hotels above the older Taipei and London entries), record it in `PLAN.md`; do not adjust,
+  priced Taiwanese and UK hotels above the older Taipei and London entries), record it in `docs/dev/PLAN.md`; do not adjust,
   recalibrate or regenerate older cities.
-- Fail closed. A city with no verifiable photo or climate stays without one, and the reason goes in `PLAN.md`.
+- Fail closed. A city with no verifiable photo or climate stays without one, and the reason goes in `docs/dev/PLAN.md`.
 - Never use, read or store provider API keys. The subagents replace the API call; nothing calls a provider API.
 - Duplicate countries: before adding, check `select name, count(*) from countries group by lower(name) having
   count(*) > 1`. A stray duplicate "United Kingdom" row once would have split the UK in two. Report any you find
   before changing data.
 - If the owner tells you to stop, stop launching subagents at once, save only what has already been answered and
-  reviewed, and record the stop in `PLAN.md`.
+  reviewed, and record the stop in `docs/dev/PLAN.md`.

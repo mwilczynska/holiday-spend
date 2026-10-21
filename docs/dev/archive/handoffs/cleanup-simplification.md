@@ -4,7 +4,7 @@
 > **COMPLETE — not current.** Branch handoff for work that has shipped.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 This handoff covers the current state of the `feat/cleanup-simplification` branch after the first two implementation checkpoints. The branch is pushed and verified, but Phase 4 merge-readiness work is still open.
 
@@ -67,7 +67,7 @@ From `docs/dev/archive/plans/cleanup-simplification.md`:
 - deleted `nginx/nginx.conf`
 - `Dockerfile` no longer copies `seed-data` into the runtime image
 - moved historical dev docs out of the repo root into `docs/dev/`
-- moved old root `PLAN.md` to `docs/dev/PLAN-initial-spec.md`
+- moved old root `docs/dev/PLAN.md` to `docs/dev/PLAN-initial-spec.md`
 - added `docs/dev/README.md` to explain what belongs in that folder
 
 ### Documentation already updated

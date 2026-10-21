@@ -1,0 +1,3831 @@
+# Holiday Spend — Project Log
+
+Historical record. What was built, what was tried, what it produced, and where the evidence lives.
+
+This file is append-mostly. It is **not** the place for current plans — see [PLAN.md](PLAN.md).
+For what the project *is*, see [AGENTS.md](../../AGENTS.md).
+
+- [Part 1 — City cost methodology](#part-1--city-cost-methodology-history) — the four versions, their results, why each was replaced
+- [Part 2 — Datasets and artifacts](#part-2--datasets-and-artifacts)
+- [Part 3 — Scripts](#part-3--scripts)
+- [Part 4 — Shipped feature history](#part-4--shipped-feature-history)
+
+---
+
+# Part 1 — City cost methodology history
+
+The app needs, for each city, **19 cost values**: six accommodation tiers (hostel dorm through 4-star),
+four food, five drinks, four activities. All for two travellers, per night for accommodation and per day
+otherwise, in AUD.
+
+Four methodology versions have been attempted. **v1 is what still ships.** v3 was abandoned. v4 is
+researched but not integrated.
+
+| Version | Approach | Status | Verdict |
+| --- | --- | --- | --- |
+| v1 | LLM recalls 10 anchors, asserted multipliers derive 19 tiers | **In production** | Structurally defective but not disproven |
+| v2.1 | v1 plus hybrid/Xotelo accommodation lookup | Removed | Code deleted; only the doc baseline remains |
+| v3 | Observed-first: direct source-attributed observation of every measure | **Abandoned** 25–27 Jul 2026 | Stalled at 22.8% coverage, zero complete cities |
+| v4 | Measure price *level* cheaply, model tier *structure* | **Research complete, unintegrated** | 18–22% median APE; accommodation level unresolved |
+
+---
+
+## v1 — Anchors and asserted multipliers (shipping)
+
+**What it does.** `docs/prompts/llm_prompt_new_cities_1.md` asks a model for ten anchor prices, then
+fixed multipliers derive all 19 tiers. Still the live path behind `/dataset` city generation and the
+121-row canonical CSV.
+
+**Four defects, three structural:**
+
+| Defect | Evidence |
+| --- | --- |
+| Anchors come from model memory, not a live source | `src/lib/city-llm-client.ts` posts a chat completion with **no `tools` array**, while the prompt instructs the model to "research Numbeo" pages it cannot fetch |
+| Multipliers asserted globally | `street_food = inexpensive_meal × 0.60` everywhere, regardless of region |
+| An additive constant that does not scale | `activities_blended = (inexpensive_meal + 10.0) / 2` — negligible in Zurich, dominant in Hanoi |
+| The model also did arithmetic and FX | Three error sources compounded |
+
+**The audit that condemned it, and its limits.** `data/reference/accuracy_audit.csv` reported
+**17.5% MAPE and −16.3% bias** and triggered the full rebuild. Re-examined, it is **nine observations
+across three cities**, six benchmarked against Numbeo. Its headline bias is largely one city: Lisbon's
+stored cappuccino was €1.50 against a reference €2.57 (−49%). Prague and Hanoi sat within 0–15%.
+
+> **The conclusion drawn was too strong for the evidence.** The architecture was not disproven; the
+> *inputs* were stale and the multipliers were never calibrated. v4 acts on that re-reading.
+
+**A measurable fingerprint of the defect.** Counting *distinct values* of each ladder ratio across all
+121 production rows separates observation from assertion:
+
+| Ratio | Median | IQR | Distinct values across 121 cities |
+| --- | --- | --- | --- |
+| `dorm / 3★` | 0.400 | 0.400–0.455 | 47 |
+| `private / 3★` | 0.550 | 0.509–0.582 | 37 |
+| `1★ / 3★` | 0.509 | 0.489–0.542 | 30 |
+| `2★ / 3★` | 0.754 | 0.744–0.771 | 35 |
+| **`4★ / 3★`** | **1.800** | **1.800–1.800** | **1** |
+| **`food_high_end / food_mid_range`** | **1.500** | **1.500–1.500** | **1** |
+
+Two ratios are constant to the last decimal in every one of 121 cities. `accom_4_star` contains **no
+city-specific information at all** beyond its 3-star value. Consequence: the incumbent 4-star column
+cannot serve as validation data for any 4-star model — it would only confirm that 1.8 reproduces 1.8.
+
+---
+
+## v2.1 — Hybrid / Xotelo accommodation (removed)
+
+Added an external accommodation lookup on top of v1. The code was deleted in the cleanup pass
+(legacy `/api/cities/estimate`, the hybrid/Xotelo library, anchor-input components). Only the doc
+baseline survives, in `docs/product/archive/methodology-v2-v3.md`, which still describes "Version 2.1 baseline +
+Version 3 redesign" and still backs the `/estimates` page.
+
+---
+
+## v3 — Observed-first (abandoned 25–27 July 2026)
+
+**The design.** Direct, source-attributed observation of 17 measures across a deterministic 36-city
+pilot, with pre-registered acceptance gates, frozen FX, seasonal accommodation panels drawn from
+official registers, and a fail-closed publication rule. Eight gated phases (6A–6H) ending in a
+validated 121-city recollection.
+
+**Where it reached, and stopped:**
+
+| Metric | Result |
+| --- | --- |
+| Tier cells materialized | **156 of 684 (22.8%)** |
+| Complete cities | **zero** |
+| Eligible accommodation measures | **zero** |
+| Accepted observations retained | 176 across 32 cities |
+| Estimated cost to finish the 121-city set | **~17,300 lookups**, recurring every refresh |
+
+**Why it failed — the central design lesson:**
+
+> **Tiers are conjunctions of measures.** `food_mid_range` requires street-food *and* inexpensive-meal
+> *and* mid-range-meal prices. A city missing one input yields no cell for any tier naming it.
+
+Under conjunctive baskets, breadth is the wrong collection shape. Four measures stood at zero
+observations; `street_food_meal_1p` alone blocked three tiers across all 36 cities — **108 cells from
+one absent item**. 28 of 36 cities sat at exactly five of seventeen measures. 132 of 171 observations
+(77%) came from a single channel, so cross-channel disagreement was uncomputable rather than merely
+unmeasured.
+
+### What v3 produced that remains useful
+
+Despite the abandonment, v3 generated the evidence base v4 now runs on:
+
+- **176 retained observations** (`data/reference/observations/`) — reused directly as v4 modelling data
+- **Copenhagen accommodation ground truth** — DKK 1,417.43, median of five accepted direct-property
+  4-star quotes at a fixed 90-day lead. Still the **only** accommodation ground truth in existence, and
+  the anchor for every accommodation bias claim in v4
+- **Frozen FX snapshot** at `data/reference/fx/city_cost_fx_aud_2026-07-22.json`, 23 currencies with
+  source attribution per rate
+- **Five frozen property frames** (Barcelona, Copenhagen, Da Nang, Lisbon, Prague) — the provenance
+  model that v4 quote records still follow
+- **Tourism/population enrichment** for the 36-city pilot: 18 measured tourism-intensity records
+  (14 strict, 4 relaxed), 18 structured rejections, 29 matched UN WUP populations
+
+### The amendments, and what each concluded
+
+Six amendments were issued during the 25 July re-scope before the whole programme was dropped. They are
+recorded because several conclusions carried into v4:
+
+| Amendment | Conclusion |
+| --- | --- |
+| A / B | Three independent venues per venue-priced measure, two per activity product — raised honest completion cost from ~198 to ~530 observations |
+| C | Accommodation seasonality moved into a model: 3 index cities under the full contract, others one anchor season, cutting per-city quotes 90 → 18 |
+| D | Destinations with no retrievable public evidence are **structurally unobservable** — they leave the collection denominator entirely, and are the case a fallback model exists to serve |
+| E1 | Within-venue selection rule: median of the venue's standard section, excluding premium/reserve/low-ABV/zero-proof. Without it, selection moved a measure ~2.5× |
+| E2 / E3 | Delivery-platform menus authorised as a source type, then found **structurally unretrievable** — seven platforms tested, none exposes prices in server-rendered HTML |
+| F | Street food settled by calibrated ratio rather than collection, superseding E2/E3 |
+
+**Cost of the venue channel, measured:** roughly **one accepted observation per six web calls**. Completing
+the non-accommodation set at the Amendment B threshold implied ~4,000 calls — the same order-of-magnitude
+wall that forced the accommodation re-scope.
+
+**A regional bias was found and not resolved (Amendment E4).** Official priced venue menus were readily
+found in Vancouver and Hanoi but not Lisbon. That bias correlates with region — one of the model's own
+stratification variables.
+
+### The accommodation source reversal (27 July 2026)
+
+v3 excluded Booking.com and Hostelworld as extraction sources on a reading of their terms, routing
+accommodation through official registers plus direct property pages instead.
+
+**That exclusion was reversed by owner decision.** Booking.com and Trip.com became the primary
+accommodation channels. The driving evidence: the register-first path produced **five accepted quotes in
+one city across five frozen frames**, while a single public Booking.com class page returned ten named
+properties whose median sat 13.4% from Copenhagen's ground truth.
+
+Binding constraints retained: signed out, no member/login rates, no bypassing blocks or CAPTCHAs,
+browsing pace with checkpointing, blocks recorded as missing observations. Hostelworld's exclusion was
+**not** reversed and would need the same explicit decision.
+
+Superseded text was marked rather than deleted, across `docs/dev/plans/city-cost-source-access.md`,
+`observed-first-methodology.md`, `docs/product/archive/methodology-v2-v3.md`, and `phase-6-rescope-2026-07-25.md`.
+
+---
+
+## v4 — Measure level, model structure (current design)
+
+**Status: research complete, app integration not started.**
+
+Authoritative document: **`docs/product/methodology-v4.md`** (1,703 lines). §9.1 is the source of truth
+for the extraction prompt; `docs/prompts/llm_prompt_city_anchors_v4.md` is *generated* from it and must
+never be edited directly.
+
+### The core insight
+
+v3 treated three different properties as if all required direct observation per city per refresh:
+
+| Property | Stability | Correct treatment |
+| --- | --- | --- |
+| **Level** — the absolute price in a city | Drifts slowly | Measure it, cheaply |
+| **Structure** — ratios between tiers | Very stable | Model it, calibrated from data |
+| **Drift** — change over time | Continuous | Re-measure levels; leave structure alone |
+
+> **Measure what is cheap to measure. Model only the gaps. Never assert a constant.**
+
+The second architectural move: **the LLM is a structured extractor, never an estimator.** It searches,
+reads, and reports numbers with sources and an explicit basis. All arithmetic, FX and tier derivation
+happen server-side as a pure function.
+
+### The sample
+
+Expanded in two deliberate stages to a **closed frame of 99 cities** — every city in the 121-city
+production dataset was attempted, so no further collection from this source is possible.
+
+| Stage | Outcome |
+| --- | --- |
+| Base | 58 cities pooled from v3 observations + expanded fetches |
+| Stage 1 | 27 further cities, band-stratified from the production frame → 85 pooled |
+| Stage 2 | All 27 remaining cities attempted → **14 retained, 6 rejected on the contributor floor, 7 with no source page** |
+
+**Final: 99 cities.** `mcmeal` at 68 (bands 17/23/28), the other three relationships at 97 (23/35/39).
+
+**Contributor floor, stated:** at least 10 contributors and an update within 12 months. Krabi at 9 falls
+just below and is rejected — the alternative was undocumented case-by-case discretion.
+
+**Attrition is a cliff, not a slope.** Retained cities have a median of 63 contributors; rejected ones
+have between 2 and 9. Almost nothing sits in between. Public price coverage is close to **binary by
+destination type**. The low band stays thinnest and **cannot be fixed** — only 4 of 13 unpooled low-band
+cities were retained, and that is exactly the band where `mcmeal`'s coefficient does its work.
+
+### Model results
+
+Four candidate forms: R0 (one global ratio), R1 (cost-banded), R2 (power law), R3 (banded elasticity).
+Median APE as **leave-one-out / holdout**:
+
+| Relation | n | R0 | R1 | R2 | R3 | Selected |
+| --- | --- | --- | --- | --- | --- | --- |
+| `midrange ~ inexpensive` | 97 | 21.3 / 26.3 | 20.3 / 27.3 | 21.3 / 20.3 | 21.1 / 24.8 | **R0** |
+| `mcmeal ~ inexpensive` | 68 | 43.2 / 34.9 | **22.0 / 21.9** | 34.8 / 25.5 | 23.1 / 23.0 | **R1** |
+| `cappuccino ~ beer` | 97 | 25.4 / 25.9 | **18.2 / 20.9** | 25.7 / 23.4 | 20.2 / 23.2 | **R1** |
+| `attraction ~ inexpensive` | 29 | 47.2 / 54.7 | 50.8 / 51.0 | 55.4 / 47.3 | 57.6 / 53.7 | **none** |
+
+**Shipped model forms:**
+
+```
+midrange ~ inexpensive     R0    T = 5.7388 · A
+mcmeal   ~ inexpensive     R1    k_low 1.7260   k_mid 1.0898   k_high 0.6452
+cappuccino ~ beer          R1    k_low 1.1304   k_mid 1.0614   k_high 0.6629
+attraction ~ inexpensive   —     no model; collect directly or publish missing
+```
+
+**Selection rule, reached through two forced corrections:**
+
+> A richer model must beat R0 by at least **10% relative on *both*** leave-one-out and the fixed holdout
+> to qualify. Among qualifiers, take the fewest parameters within 10% of the best leave-one-out score.
+
+*Correction 1* — the rule originally required both schemes to name the identical winner. Once R3 existed
+that misfired: for `cappuccino`, LOO preferred R1 and holdout preferred R3, returning "no agreement, keep
+R0" even though both ranked R0 last by seven points. R1 and R3 are two expressions of one decision — band
+or don't band. *Correction 2* — a bare inequality escalated `midrange` to a 2-parameter model on a
+**0.02-point** LOO difference. The 10% margin removes escalation-on-noise and changes nothing else.
+
+**R3 was fitted and won nothing** — qualified twice across two sample sizes, selected zero times. All its
+band elasticities sit at ≈1, so it reproduces R1 with three redundant parameters. Rejected on evidence.
+
+### Three findings worth preserving
+
+**1. One relationship genuinely needs bands.** `mcmeal ~ inexpensive` runs **1.73 (low) → 1.09 (mid) →
+0.65 (high)**, a 2.7× monotonic decline: in high-cost cities a fast-food combo is cheaper than a cheap
+restaurant meal, in low-cost cities nearly twice as dear, because international fast-food pricing is far
+less locally elastic. R0 here is not merely noisier but **biased by +0.185 log (~20% high)**. A single
+global constant would be wrong by ~2× in one direction, systematically.
+
+The conclusion survived being doubted — at n=29 the reading was "R1 overfits"; that was withdrawn at
+n=54 and confirmed at n=68 where the two validation schemes coincide (22.0 vs 21.9).
+
+**2. A negative result: activities cannot be derived from food prices.** The `attraction ~ inexpensive`
+ratio spans **0.025 to 6.0 — a 242× range** — with every model at 47–58% median APE and p90 reaching
+227%. Adding bands made it *worse*. Two independent signals: the R1 band coefficients are
+1.055 / 1.027 / 1.082 (three numbers that are effectively one), and R0's bias is **+0.007** while its
+median error is 47%. Unbiased and wildly imprecise is the signature of predicting from an unrelated
+variable. **This is the absence of a relationship, not a weak one.** Activities are collected directly or
+published missing.
+
+**3. Thin sources add variance without bias.** Ten of the 99 pooled cities carry a low contributor count
+or estimated-data warning. Re-running the entire fit without them leaves every selection stable and moves
+coefficients by 0.2–6.1% — but improves accuracy on every relationship (`midrange` 21.3 → 15.9). That is
+a *product* decision, not a modelling one: a low-confidence city should carry a wider published interval,
+not a different model.
+
+### Measured contract performance
+
+Eleven end-to-end runs across five cities, executed by a small fast model (Haiku 4.5) with no knowledge
+of the methodology beyond the prompt:
+
+| `directLookup` outcome | Runs | Median error, food & drink | Exact matches |
+| --- | --- | --- | --- |
+| **`accepted`** | 6 | **0.0%** | **29 / 29** |
+| `no_page` (source rate-limited) | 4 | 10.4–19.2% | 2 / 18 |
+
+**Every food and drink measure was reproduced exactly whenever the direct lookup succeeded, and none was
+when it failed.** So `directLookup.outcome` is a **trust flag**, not telemetry. This was measured partly
+by accident — the anchor source began returning 429 then 503 mid-testing, converting four runs into an
+unplanned measurement of the search-only fallback.
+
+**Naming URL templates was the single highest-value change.** Prague went from 0, 1, 2, 2, 2 accommodation
+classes across five runs to 5, 5, 4 across three. The variance was never model noise; it was a missing
+address. A k-sample analysis showed usability rising 0% → 30% → 100% across k=1…5 — all of which became
+unnecessary at k=1 once six URLs were named.
+
+### The accommodation problem — unresolved, and self-contradictory in the docs
+
+Two same-day commits reached **opposite conclusions** about which figure to read from a Booking.com
+class page. This is the most important open inconsistency in the methodology:
+
+| Document | Commit | Position |
+| --- | --- | --- |
+| `docs/product/methodology-v4.md` §9.4.4 | `7db267f` | **"Headline averages are adopted, on stability."** Property medians rejected as unstable (21% swing between runs) |
+| `docs/dev/plans/accommodation-collection-v4.md` | `5c57719` (later) | **"Never read the headline average."** Erratic in both directions; Bangkok's 4-star headline prints *below* its 3-star |
+
+The later document supersedes on ordering, but **this has not been explicitly reconciled** and both remain
+in the repo as active guidance. See PLAN.md.
+
+**What each measured:**
+
+*methodology-v4.md §9.4.4* — against Copenhagen's DKK 1,417.43 ground truth: headline average +54.4%
+(identical across every run), property median −30.2% / −15.5% (21% swing). Adopted headline on stability,
+recording the +54% inflation as a **known bias rather than a correction**, because one city cannot support
+a correction factor.
+
+*accommodation-collection-v4.md* — Copenhagen's full-inventory read of 108 four-star properties in page
+order showed the first-page estimator is biased for *levels*: sliding a 10-property window gives medians
+from **275 to 1085, a 3.945× spread and 160.2% worst-case error**, because the commercial sort *orders*
+price along the page. The headline is erratic rather than merely inflated: 0.451× the list median in
+Hanoi, 1.834× in Vancouver.
+
+**What both agree on — the class ladder transfers.** Fitted across 16 cities:
+
+| Relation | n | Median ratio | IQR | R0 LOO / holdout |
+| --- | --- | --- | --- | --- |
+| `4star / 3star` | 16 | **1.297** | 1.257–1.555 | 12.6% / 16.9% |
+| `2star / 3star` | 16 | **0.734** | 0.679–0.903 | 15.8% / 14.1% |
+| `hostel / 3star` | 13 | **0.592** | 0.517–0.647 | 16.6% / 36.6% |
+
+Cost bands make both hotel relations worse on LOO *and* holdout, so the one-parameter form stands.
+Copenhagen's independent full-inventory date-controlled read gives 1.527, inside the observed range —
+**a ladder fitted on the biased estimator transfers to an unbiased one**, because the estimator's bias is
+largely common to both classes and cancels in their ratio.
+
+**The incumbent 1.800 is refuted.** Applied to these anchors it overpredicts **14 of 16 cities, median
+absolute error 38.8%**, reaching +80.1% in San Francisco. The observed IQR does not contain 1.800.
+
+**Hostels yield one blended measure, not two.** The hostels page never states dorm bed versus private
+room, and the mix differs by city. But a property carries the same price on the hostels page and on
+whichever star-class page also lists it — verified across five cities and eight properties — so both
+sides of the ratio share one unnamed unit. The ladder is internally coherent:
+`2star/3star × hostel/2star = 0.5926` against a directly fitted `hostel/3star` of `0.5919`.
+
+**`accom_shared_hostel_dorm` and `accom_hostel_private_room` must not both be derived from this channel.**
+Separating them needs occupancy-controlled search (browser) or a unit-labelling channel such as
+Hostelworld. The incumbent hostel values are **unverified rather than refuted** — both are pass-throughs
+of recalled anchors, not asserted multipliers, and the observed blended 0.592 sits between them, which is
+what a dorm/private blend should do.
+
+**An untested candidate, deliberately not adopted.** The class page carries both the headline and the
+property list, so their geometric mean costs nothing extra. Against Copenhagen it landed **+3.9% and
++14.2%** where the individual bases were +54% and −15/−30%. Recorded but **not adopted** — one city is
+exactly the evidence base that produced an earlier wrong reversal.
+
+**Why more ground truth is hard.** An attempt to collect direct quotes for Prague, Hanoi and Lisbon
+returned **zero usable quotes from 11 Lisbon attempts**: 4 domains did not resolve, 2 returned 403, plus
+empty JS responses, SSL failures, connection refused, 404, and one site showing no price without its
+booking engine. **A plain page fetch cannot obtain a dated quote from a hotel's own site.** This needs
+browser automation or manual collection — not a prompt or budget problem.
+
+### Contract-design traps found the hard way
+
+Each cost real time to discover and generalises beyond this project:
+
+- **A model's stated reason for a failure is a hypothesis, not evidence.** Runs reported Booking.com as
+  "blocking automated access" while other runs read it fine, and reported `no_page` on a source returning
+  HTTP 429. Both were believed for a revision or two. Verification was usually one command.
+- **Most "model unreliability" was contract defects.** A single-currency rule made the model discard
+  usable prices; a dated-search preference asked for something the tool class cannot do; a ratio envelope
+  derived from the dataset being *replaced* rejected correct observations for four cities. In each case
+  the model obeyed correctly and the instruction was wrong.
+- **Do not ask a model to grade its own work.** `overallConfidence` and `ladderStep` were wrong in every
+  run, always flatteringly, even when spelled out as arithmetic. Both removed, now derived server-side.
+- **A contract that fights the shape of its sources will lose.** A single-basis rule across accommodation
+  achieved **3/11 compliance, and all three were accidents**. Hostel pages publish property lists; hotel
+  pages publish averages. The rule now matches that rather than overriding it.
+- **Check the underlying record, not your own summary.** A basis ranking was built on a "5.8% from ground
+  truth" figure that turned out to be a travel blog's "from" price.
+
+### Known limitations carried forward
+
+1. Accuracy is **18–22% median, not the 15% targeted**, and rose as the sample expanded (n=58 figures
+   were optimistic, not better). Recommendation: publish a **≤25%** gate and state achieved figures.
+2. The sample frame is **closed**; the low band is its thinnest part and cannot be improved.
+3. **The fitted relationships are proxies.** All four were fitted on measures the sample carries, not on
+   the four measures actually shipped as modelled. They settle model *form*, not coefficient values.
+   ~160 paired observations across 20 cities are still required.
+4. Accommodation carries a **~50% upward bias on hotel classes** established in **one city**.
+5. Activity tiers have no derivation path.
+6. Band assignment for new cities agrees with the production band only **63%** of the time, though never
+   by more than one band across 70 tested cities.
+7. Rate limiting: ~40 rapid fetches trigger 429 escalating to 503, cleared only by changing IP. Batch
+   builds need 10–15 cities/day with checkpointing. **On a rate-limited response, defer the city — never
+   fall through to search.** That difference is exact values versus 10–19% error.
+
+---
+
+# Part 2 — Datasets and artifacts
+
+All paths relative to repo root. **Historical inventory:** on 21 October 2026 everything here except `city_costs_app_aud.csv` and the transport accuracy files was removed from `main`; it is on tag `city-cost-v3-v4-research-final-2026-10-21`.
+
+## Canonical production data
+
+| Path | What it is | Size |
+| --- | --- | --- |
+| `data/reference/city_costs_app_aud.csv` | **The live dataset.** 121 cities, 58 countries, AUD for 2 people. Seeded by `src/db/seed.ts`. Tagged `base_csv_apr_2026` | 121 rows |
+| `data/travel.db` | SQLite runtime DB (gitignored) | — |
+| `src/lib/data/country-metadata.generated.json` | Canonical country metadata, generated | — |
+| `src/lib/data/curated-models.generated.json` | LLM model snapshot, tier-3 discovery fallback | — |
+
+## v4 evidence (`data/reference/dry-run/`)
+
+The active methodology's evidence base.
+
+| Path | What it is |
+| --- | --- |
+| `phase-0a-numbeo-anchors.json` | Anchors for 5 dry-run cities with per-city quality metadata |
+| `phase-0b-accommodation-search.json` | Accommodation reconnaissance, 5 cities, all tiers |
+| `phase-0c-ratio-model-fit.json` | **Fitted models and validation results** — the output of `fit-city-cost-ratios.mjs` |
+| `phase-0d-numbeo-expanded-sample.json` | Anchors for 22 further cities across 9 regions |
+| `phase-0e-stage1-numbeo-sample.json` | Stage 1: 27 cities, plus 4 rejections and 5 no-source outcomes |
+| `phase-0e-stage1-selection.json` | The deterministic band-stratified draw rule, 32 cities |
+| `phase-0f-stage2-numbeo-sample.json` | Stage 2 census: 14 retained, 6 rejected, 7 no-source — **closes the frame** |
+| `phase-0g-stage1-analysis.json` | First-page estimator depth/ratio/headline analysis |
+| `phase-0h-accommodation-class-ratios.json` | **The fitted star ladder** — 1.297, 0.734, 0.592, with the incumbent 1.800 comparison |
+
+### Accommodation raw captures (`data/reference/dry-run/stage1/`)
+
+| Path | What it is |
+| --- | --- |
+| `copenhagen-booking-4star.json` | **108 four-star prices in page order** — the only full-inventory read in existence, and the basis for every first-page bias figure |
+| `copenhagen-booking-3star.json` | 25 prices plus a repeat read, showing inter-read volatility |
+| `stage-b-class-pages.json` | Class-page captures across 12 cities, the ladder-fitting input |
+| `wave2-firstpage.json` | Second wave of first-page captures |
+| `bangkok-firstpage.json` | Retained for the **class-inversion anomaly** — 4-star headline below 3-star |
+| `lisbon-firstpage.json` | First-page capture |
+
+## v3 evidence (retained — v4 runs on it)
+
+| Path | What it is |
+| --- | --- |
+| `data/reference/observations/` | **176 accepted observations** across 32 cities, JSONL plus per-batch reports. Reused as v4 modelling data |
+| `data/reference/observations/accommodation-copenhagen-shoulder-2026-07-24.jsonl` | **The only accommodation ground truth.** 5 direct 4-star quotes, median DKK 1,417.43, 90-day lead |
+| `data/reference/city_cost_collection_batches.json` | Extraction-batch manifest — the join key for observations |
+| `data/reference/fx/city_cost_fx_aud_2026-07-22.json` | **Frozen FX snapshot**, 23 currencies, source-attributed per rate |
+| `data/reference/city_cost_collection_pilot.json` | The deterministic 36-city pilot selection |
+| `data/reference/city_cost_pilot_enrichment.json` | Population + tourism-intensity predictors, schema v4 with strict/relaxed grading |
+| `data/reference/city_cost_pilot_enrichment_inputs.json` | Hand-curated enrichment inputs |
+| `data/reference/materialized/city_costs_v3_alpha.json` | v3 materialized output — 166/665 cells, fail-closed |
+| `data/reference/materialized/city_cost_pilot_profile.json` | Coverage/missingness profile: 151/684 cells, zero complete cities |
+| `data/reference/accuracy_audit.csv` | **The 9-observation audit** that triggered the rebuild |
+
+## v3 accommodation panels (superseded, retained as provenance model)
+
+The register-first path that produced five quotes in one city. Superseded by the Booking.com channel but
+retained — it is the provenance model v4 quote records still follow.
+
+| Path | What it is |
+| --- | --- |
+| `data/reference/accommodation_property_panels_2026_2027.json` | Five frozen frames (Barcelona, Copenhagen, Da Nang, Lisbon, Prague). **1.9 MB — the largest artifact** |
+| `data/reference/accommodation_reference_windows_2026_2027.json` | 27 pre-registered 90-day low/shoulder/high windows across 9 cities |
+| `data/reference/accommodation_quote_attempts/` | Append-only ledger: quotes, no-availability, and technical failures kept separate |
+| `data/reference/accommodation_website_verifications/` | Barcelona 4-star website outcomes per rank |
+| `data/reference/hanoi_accommodation_classification_reconciliation_2026.json` | 330 records pending status reconciliation — **never unblocked** |
+
+## Not project data
+
+| Path | What it is |
+| --- | --- |
+| `.local/data-0ace327c-…-batch-0000.zip` | **A Claude conversation export** (`conversations.json`, `users.json`), 562 KB. Was sitting untracked in `docs/product/`; moved to the gitignored `.local/` on 31 Jul 2026. Not project material — delete when convenient |
+
+---
+
+# Part 3 — Scripts
+
+**Historical inventory:** the v1 audit, v3 and v4 scripts below were removed from `main` on 21 October 2026 and are
+on tag `city-cost-v3-v4-research-final-2026-10-21`. `scripts/README.md` lists current tooling.
+
+## v4 methodology (`npm run methodology:v4:*`)
+
+| Command | Script | Purpose |
+| --- | --- | --- |
+| `:fit-ratios` | `fit-city-cost-ratios.mjs` | **Ratio model fitting and validation.** Fully deterministic — holdout is a fixed alphabetical rule. Verified 31 Jul 2026: re-running reproduces `phase-0c-ratio-model-fit.json` **byte-identically**, and with it every figure in methodology-v4.md §6–§7 |
+| `:fit-accommodation-ladder` | `fit-accommodation-class-ratios.mjs` | Fits the star ladder and the incumbent-1.800 comparison |
+| `:analyze-accommodation` | `analyze-accommodation-stage1.mjs` | First-page estimator depth, ratio and headline analysis |
+| `:score-prompt` | `score-anchor-prompt-test.mjs` | Scores prompt output against ground truth. Needs `TEST_DIR` |
+| `:combine-samples` | `combine-anchor-samples.mjs` | k-sample combination and coverage analysis. Needs `TEST_DIR` |
+| `:score-accommodation-bias` | `score-accommodation-bias.mjs` | Headline-vs-direct-quote bias; **refuses to correct on under 3 cities** |
+
+> The two accommodation scripts embed a `generatedAt` timestamp, so their artifacts differ by that one
+> line on re-run while every computed value reproduces exactly. Verified 31 Jul 2026.
+
+## v3 methodology (`npm run methodology:*`)
+
+Retained for reproducibility of the v3 artifacts. See `package.json` for the full alias list —
+`:audit`, `:pilot`, `:pilot:enrich`, `:pilot:profile`, `:research`, `:batches:validate`,
+`:observations:validate`, `:materialize:v3`, and the `:accommodation-*` panel builders and validators.
+
+## App tooling
+
+| Command | Purpose |
+| --- | --- |
+| `npm run docs:sync-memory` / `:check-memory` | Mirror and verify `AGENTS.md` against `CLAUDE.md` |
+| `npm run country-metadata:generate` | Regenerate canonical country metadata |
+| `npm run models:refresh` / `:check` | Refresh the curated LLM model snapshot |
+| `npm run db:seed` / `db:push` | Seed from CSV / push schema |
+
+---
+
+# Part 4 — Shipped feature history
+
+## Phase 1 — Core foundations
+Next.js scaffold, auth, layout shell, schema, DB setup. Itinerary builder with tiered budgeting and live
+totals. Fixed-cost management. Base dashboard navigation and summaries.
+
+## Phase 2 — Expense tracking
+Expense CRUD, quick-add, tagging. Wise CSV import with preview/confirm, supporting both
+transaction-history and balance-statement export formats. Second-pass AUD conversion for merged non-AUD
+rows. Verified against three real export files.
+
+## Phase 3 — Dashboard and comparison
+Summary cards, planned-vs-actual country comparison, category charts, cumulative spend/burn views.
+
+## Phase 4 — Deploy / export / provider plumbing
+Docker and nginx artifacts, export endpoints, LLM provider plumbing.
+
+## Phase 5 — City cost system migration
+Replaced the old seed dataset with the 121-row CSV. Added `country-metadata.ts` and CSV-backed seed
+mapping. **Removed transport estimation from the city methodology** — it is now a separate intercity
+feature with its own prompt, provider adapters and planner UI. Split `/estimates` (methodology) from
+`/dataset` (the editable library). Added server-side city generation with user-supplied provider keys.
+
+## Phase 6 — Observed-first methodology
+See [Part 1 — v3](#v3--observed-first-abandoned-2527-july-2026). Abandoned 25–27 July 2026.
+
+## Auth and accounts
+Native email/password accounts **alongside** Google OAuth, using dedicated `user_passwords`,
+`auth_tokens` and `auth_rate_limits` tables with `argon2id` hashing. Public flows for signup,
+check-email, verify-email, forgot-password, reset-password, resend-verification. Resend-backed delivery
+with a dev fallback logging links to console. **Google and email/password accounts are not auto-linked
+on matching email** — the login page shows provider-specific guidance instead. Account management at
+`/settings/account`. `ensureUserRow` no longer upserts on every sign-in, which had been clobbering
+user-edited display names.
+
+## Saved plans and comparison
+Moved saved plans from browser `localStorage` into a user-owned `saved_plans` table. CRUD at
+`/api/saved-plans`, comparison at `POST /api/saved-plans/compare`. `/plan/compare` is a first-class page
+with its own sidebar entry.
+
+**One canonical allocation engine** backs summary totals, cumulative series, and country/category
+groupings, so all four reconcile by construction. This fixed a real bug: `nights`-based totals versus
+inclusive date enumeration caused chart overcounting when explicit date spans exceeded `nights`.
+
+Compare-page analytics: responsive summary rail for 2–5 plans, planned-by-country chart with `Totals` and
+`Per Day` modes (defaulting to `Per Day`, ranked by max daily spend), planned-by-category grouped
+horizontal bars that stay aligned between inline and expanded states, and a centralized palette in
+`src/lib/comparison-colors.ts` fixed to blue → purple → teal → yellow → green.
+
+## Planner refinements
+Repeatable per-leg intercity transport replacing the single always-open field. LLM-backed transport
+estimation per leg plus a bulk `Estimate Missing Transport` flow. Traveller count persisted in
+`user_preferences.planner_group_size`; city base costs stay stored for 2 and are scaled at runtime.
+Legacy `splitPct` removed entirely. Info popovers render through a portal with measured viewport
+clamping so tall cards are not cut off at the page bottom. New-city typing lag fixed by moving dialog
+state out of the page root.
+
+## Dashboard refinements
+Simplified from 14 summary cards to 11 — removed `Required Daily Pace`, `Planned Legs`, `Fixed Costs`,
+`Planned Avg So Far`; added `Planned $/day`. Actual-spend handling tightened so missing AUD conversions
+do not pollute totals. Spend views constrained to the trip window. Burn-chart country labels moved into a
+measured header strip above the plot so wrapped names cannot collide with spend lines; the old 30%
+y-axis buffer removed.
+
+## LLM provider plumbing
+Three providers (OpenAI, Anthropic, Gemini). Shared config in `src/lib/city-generation-config.ts`.
+**Three-tier model discovery**: live provider API → no-key aggregator (OpenRouter, then models.dev) →
+generated curated snapshot. Aggregator fetches read the body as text, inspect content-type, and parse
+inside a try/catch, so gateway HTML surfaces as a friendly warning rather than a raw parse error.
+Provider-specific fixes: OpenAI switches `max_tokens`/`max_completion_tokens` by model family; Gemini
+sets `thinkingBudget: 0` to reduce truncated JSON. API keys live only in browser `localStorage`, with
+explicit clear controls.
+
+## Cleanup passes
+Removed `/settings/cities`, the saved-plan localStorage shim, the legacy `/api/cities/estimate` route,
+the hybrid/Xotelo library, inactive anchor-input components, `seed-data/cities.json`, stale `xotelo`
+references, and the repo-managed nginx artifact. Reorganized docs into `docs/dev/plans`,
+`docs/dev/handoffs`, `docs/ops`, `docs/product`, `docs/prompts`, and `data/reference`.
+
+---
+
+## Where documents live
+
+Superseded material sits under `archive/` folders and carries a `> **SUPERSEDED**` / `**ABANDONED**` /
+`**COMPLETE**` banner naming what replaced it. **If a document has no banner, it is current.**
+
+### Current
+
+| Path | Covers |
+| --- | --- |
+| `docs/product/methodology-v4.md` | **The active methodology.** §9.1 is the prompt's source of truth |
+| `docs/dev/plans/accommodation-collection-v4.md` | v4 accommodation channel and class ladder — **conflicts with methodology-v4 §9.4.4, see PLAN.md D1** |
+| `docs/dev/plans/city-cost-source-access.md` | Source-access rules, including the Booking.com reversal. Only the source rules are current; its v3 collection programme is not |
+| `docs/dev/handoffs/city-cost-v4.md` | The most recent handoff |
+| `data/reference/README.md` | **Full dataset inventory** — what is live, what is historical, and what reads each file |
+| `scripts/README.md` | **Full script inventory**, split live versus v3 |
+| `docs/prompts/README.md` | Prompt status. Banners must never be added inside prompt files — several are read verbatim and sent to a model |
+
+### Archived
+
+| Path | Covers |
+| --- | --- |
+| `docs/dev/archive/README.md` | Index of everything archived and why |
+| `docs/dev/archive/plans/observed-first-methodology.md` | The full v3 programme design |
+| `docs/dev/archive/plans/phase-6-rescope-2026-07-25.md` | Amendments A–F |
+| `docs/dev/archive/PLAN-v4-early-draft.md` | Early v4 draft, superseded by `docs/product/methodology-v4.md`; its figures come from a 58-city sample since closed at 99 |
+| `docs/product/archive/methodology-v2-v3.md` | v2.1/v3 public methodology — its text still matches the un-rewritten `/estimates` page |
+| `docs/product/archive/estimates-page-v3-draft.md` | An `/estimates` draft that was never wired up |
+| `docs/dev/archive/plans/`, `docs/dev/archive/handoffs/` | Completed app workstreams and their handoffs |
+| `docs/dev/archive/PLAN-initial-spec.md` | The original project spec |
+
+---
+
+## v6.1 retirement and v1.1 restart — 18 August 2026
+
+The v6.1 research line was rejected for product cutover after its staged 121-city output and provider-heavy
+collection process proved too large and operationally fragile for the original simple-refresh objective. The live
+`data/reference/city_costs_app_aud.csv` and existing-city behavior remain v1; no holdout, staged CSV, bulk migration or
+Phase 11 action is authorized. The complete v6.1 history is preserved on `feat/city-cost-methodology-v6` at
+`city-cost-v6.1-research-final-2026-08-18`.
+
+The replacement v1.1 workstream starts from `main`. It keeps all 19 planner tiers and the exact v1 formulas initially,
+but asks the model for only the ten existing USD anchors in one schema-constrained call. Server-side code performs all
+arithmetic and USD→AUD conversion from the checked-in FX snapshot, persists provenance, and supports an explicit v1
+rollback. v1.1 applies to newly generated cities only; no benchmark, new collection panel, coefficient fitting or
+existing-city migration is part of this restart. Progress is tracked in the root `PLAN.md`.
+
+The clean branch foundation is pushed. The v1.1 anchor-only prompt, strict positive-anchor schema, deterministic
+materializer, checked-in FX provenance and live-CSV write guard are implemented with golden tests. The generation
+selector defaults to v1 until the persistence/API/UI integration and functional smoke pass; the retired v6 flag now
+fails explicitly rather than activating v6.1.
+
+The v1.1 integration phase is implemented and verified locally. v1 and v1.1 now use an explicit persistence adapter;
+v1.1 rows use `llm_city_generation_v1_1` and retain the ten USD anchors, converted anchor values, formula/FX metadata,
+request snapshot, model and reasoning effort. `/api/estimates` exposes a generic provenance object, `/dataset` shows
+the methodology and anchor/FX details, and planner v1.1 creation uses the requested city plus canonical country data
+without a separate metadata LLM call. The default remains v1 pending Phase 5 smoke and activation review.
+
+The deterministic Phase 5 checkpoint is now complete on `feat/city-cost-methodology-v1-1`: formula and rounding
+parity, one-call generation, no-partial-persistence behavior, explicit v1 rollback, historical v6 provenance parsing,
+and the unchanged live CSV are covered by tests or `scripts/check-city-cost-v1-1.ts`. TypeScript, build, the full
+Vitest suite (36 files / 160 tests), memory checks, and the v1.1 deterministic check pass. The three-city keyed
+functional smoke (Tottori, Toowoomba, Brno) remains an owner-run operational check; v1 remains the default until it
+passes. No existing city is automatically regenerated.
+
+The current v1.1 handoff and loop are now `docs/dev/handoffs/city-cost-v1-1.md` and `LOOP-PROMPT-V1-1.md`; the old v4
+handoff and source-access collection plan are explicitly superseded. The owner-key smoke remains pending. On 18 August
+2026 Chrome was found with the Codex extension installed and enabled but without the required native-host registry
+entry, so browser control could not reach the local app. No provider key was accessed and no smoke result was claimed.
+
+The v1.1 contract audit also made the 19 persisted planner fields explicit: the 18 daily/accommodation derivations plus
+the direct `drink_coffee` field, retained at cent precision. The materializer, deterministic check, and `/api/estimates`
+now expose that field alongside the supporting direct drink anchors. This changes no v1 formula or live dataset value.
+
+The documentation cleanup checkpoint also superseded the remaining v4/v5 collection-language ambiguity: retained
+source-access and accommodation documents now open as historical evidence, and `data/reference/README.md` explicitly
+separates historical inventory labels from the active v1.1 product plan. The Chrome bridge was retried after the owner
+reinstalled the plugin, but the extension still has no Windows native-messaging registry entry, so the keyed smoke is
+not yet run. No provider key was accessed, and the new-city default remains v1 pending that operational check.
+
+The final local boundary audit found that v1.1's direct drink inputs were visible in the city/API data but absent from
+the persisted source map. The v1.1 adapter now records the same source for local beer, imported beer, wine, cocktail,
+and coffee while preserving the historical v1 map. Targeted generation/persistence tests, typecheck, and the
+deterministic check pass; the keyed smoke remains the only unrun release step.
+
+## OneDrive dev-server recovery guard — 18 August 2026
+
+The resumed Chrome smoke exposed a local-environment failure rather than a product failure: `.next` had become a
+OneDrive `ReparsePoint`, and a fresh Next dev process consumed roughly 1.2 GB of memory and hundreds of CPU seconds
+without completing a request. The exact dev-server process was stopped and the generated `.next` directory was removed.
+`scripts/prepare-next-dev.mjs` is now run by npm's `predev` lifecycle; it detects and removes only a reparse-point
+`.next` cache before Next starts. The canonical instructions document the targeted recovery and a `.git`-excluding
+OneDrive pinning command. No source, database, live CSV, browser storage, or provider key was changed.
+
+## Browser-control diagnosis correction — 18 August 2026
+
+The earlier native-host-missing observations above are retained as historical troubleshooting notes but are not the
+current diagnosis. Chrome later connected successfully with plugin build `26.814.41407`, proving that extension or
+registry repair is not the next action. A subsequent Codex in-app Browser retry failed earlier in its own trusted RPC
+bootstrap, before browser or tab discovery; this is separate from the application and from the superseded Chrome
+native-host diagnosis. The isolated v1.1 dev server on port 3001 still returned HTTP 200 for `/dataset`. No provider
+key was accessed, no city generation was attempted, and the three-city smoke and v1.1 default activation remain open.
+
+## Independent pre-activation verification during smoke deferral — 18 August 2026
+
+The owner temporarily deferred the Tottori, Toowoomba, and Brno keyed smoke because secure remote-desktop access is
+unavailable. This is a scheduling deferral, not a waiver: v1 remains the new-city default, no activation change was
+made, and the smoke plus final post-activation baseline remain required.
+
+Every independent release check was rerun from the canonical OneDrive repository path. `npx tsc --noEmit`, the
+production build, 36 Vitest files / 160 tests, the documentation-memory check, and
+`npm run methodology:v1.1:check` passed. The build emitted the existing handled `/api/export` dynamic-route
+diagnostic and exited successfully. The deterministic check again reported 19 planner fields and live CSV SHA-256
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`; the CSV still has 121 rows and Git blob
+`63b13a8774c66999c5f99aade671ca357f65b949`.
+
+The archived branch remains at `93d73d3845f3ccea17acafd069c14db2479f40a4` locally and on origin. The annotated tag
+object `cfe5694dd02147ce4cceadce690ed429a318d1fd` remains local and remote and peels to
+`335e61be7341bc791e1e7e5aa4be1645412e92d0`. The archived branch tip is not an ancestor of the product branch. The
+only suspect v6 path in the product tree is the explicitly archived plan; executable references are limited to the
+historical provenance parser and the retirement guard/tests. No provider key, city record, or live dataset changed.
+## Owner-authorized v1.1 activation without smoke — 18 August 2026
+
+The owner explicitly authorized the v1.1 new-city default while deferring the Tottori, Toowoomba, and Brno keyed
+operational smoke because secure remote-desktop access is unavailable. This is a documented exception, not a smoke
+result or accuracy claim. No provider key was accessed, no smoke city was generated, and no existing city was migrated.
+
+The selector fallback is now v1.1. Explicit `CITY_COST_METHODOLOGY_VERSION=v1` remains operational and is covered by a
+new regression; `CITY_COST_METHODOLOGY_V6=true` remains fail-closed. The v1.1 anchor-only contract, deterministic
+formulas, 19 planner fields, checked-in FX, persistence/API/UI provenance, and live-CSV write guard are unchanged.
+
+The complete post-activation baseline passed: TypeScript, production build, 36 Vitest files / 161 tests,
+documentation-memory check, and `npm run methodology:v1.1:check`. The build emitted the existing handled
+`/api/export` dynamic-route diagnostic and exited successfully. The deterministic check reported the unchanged
+19-field boundary and live CSV SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+## Phase 7A performance-hardening checkpoint — 21 August 2026
+
+The first authenticated browser pass exposed a runtime/payload failure rather than a methodology failure: `/dataset`
+stayed on its loading state during a 10-second navigation window, and the port-owning dev process reached approximately
+1.65 GB while the core routes were exercised. This was the release-blocking observation that started Phase 7A; it was
+not treated as evidence against the v1.1 cost method.
+
+The checkpoint bounded the planner and dataset/history initial DOM work. `/plan` now renders at most 12 leg cards before
+an explicit reveal, while totals still use the complete plan. `/dataset` renders at most 25 city rows and 20 history rows
+per page while retaining client-side search, editing, history, and provenance behavior. Planner and dataset-facing API
+views omit fields not needed by their consumers. Regression coverage now exercises the country/city/estimate view shapes,
+the page bounds, startup failure messaging, route readiness, and shell response budgets.
+
+The first standalone production attempt opened port 3000 but returned HTTP 500 for every route. Its logs showed that a
+direct standalone child did not load `.env.local`, causing the NextAuth secret warning, and that standalone tracing had
+omitted the Windows `argon2` native prebuild. The startup wrapper now loads Next environment configuration; the build
+explicitly traces argon2 prebuilds; and password code lazy-loads argon2 so unauthenticated cold routes do not pay the
+native-module load cost. The focused auth/API/performance tests passed, and the final production build passed with the
+existing handled `/api/export` dynamic-route diagnostic.
+
+The final controlled production run used `npm start` with PID `43316` owning port 3000. Cold route readiness was `/`
+2.714s, `/plan` 27.5ms, `/plan/compare` 52.3ms, `/track` 32.7ms, `/dataset` 56.7ms, `/estimates` 54.2ms, and
+`/settings` 44.5ms. Warm readiness ranged from 55.8ms to 325.1ms; every route returned HTTP 200. The route-shell
+performance check passed with 27–106ms responses and 26,826–26,852 bytes per shell. RSS was 59.6 MiB initially and
+87.6 MiB after the route/performance pass, below the 512 MiB local budget. PID `43316` was stopped immediately after
+testing; no app server remains running.
+
+The complete post-hardening baseline then passed: TypeScript, the production build, 37 Vitest files / 171 tests, the
+documentation memory check, and `npm run methodology:v1.1:check`.
+
+The clean production baseline observed earlier was approximately 74 MB. The app-off system control closed port 3000 and
+left no app-owned Node server; total CPU stayed around 6–8%, disk was near idle, and roughly 16.7 GB RAM remained
+available. Separately, this exceptionally long resumed Codex/Windows Terminal session showed intermittent rendering
+bursts while the app was off; restarting Chrome helped substantially but did not remove all lag. That is recorded as an
+interactive-session observation, not attributed to Next.js or the browser application.
+
+The current Chrome session reached the local app's login screen without an authenticated session. A temporary Playwright
+development auth setup also failed to establish its local session, so the authenticated API timing and Chrome console/UI
+render-bound pass remain open. No browser storage, provider key, owner-key city generation, live CSV, holdout, or v6/v6.1
+path was accessed.
+
+## Documentation and state verification checkpoint - 25 August 2026
+
+A read-only state review found `main` and `origin/main` synchronized at `40f3c65`. The v1.1 baseline was rerun from
+the current working tree: TypeScript, the production build, 37 Vitest files / 171 tests, the documentation memory
+check, and `npm run methodology:v1.1:check` all passed. The build emitted the existing handled `/api/export`
+dynamic-route diagnostic and exited successfully. The deterministic check confirmed 19 planner fields, 121 live CSV
+rows across 58 countries, and live CSV SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+`npm run performance:check` passed when run against a temporary `npm start`; all seven route shells returned HTTP 200.
+The temporary server was stopped afterward and port 3000 is closed. No authenticated Chrome route/console pass or
+owner-key generation smoke was run, so those remain open.
+
+The tracked product branch remains free of the retired v5/v6 experiment corpus. The three exact duplicate files under
+`data/reference/v5/experiments/045-trip-activity-definitions/` were verified against the archived tag and moved to a
+named quarantine outside the repository; no v5 files remain untracked in the working tree. No source, dataset, database,
+browser-storage, or provider-key data was changed by this verification or cleanup.
+
+## Authenticated performance continuation - 25 August 2026
+
+The fresh CLI inherited the required Chrome trusted-code paths, but the Windows sandbox helper still failed because the
+repository tree was owned by `Administrators`. After explicit owner approval, the repository root and descendants were
+changed to the current Windows user. Normal sandboxed commands and Chrome control then started successfully. No file
+content changed as part of that permission repair, and browser storage, cookie values, passwords, and provider keys were
+not inspected.
+
+The authenticated Chrome pass exposed a concrete standalone defect: route HTML returned HTTP 200 while required Next.js
+client chunks returned HTTP 404, leaving `/plan` on its loading shell. The local production launcher now stages
+`.next/static` and `public` beside the standalone server and records the staged build ID so unchanged assets are not
+copied again. The route-shell performance checker now fetches every referenced static asset and fails on a missing or
+non-200 asset. Focused regressions cover staging and the missing-asset failure.
+
+The same pass found repeated expense-to-leg resolution across all three dashboard endpoints. A request-scoped resolver
+now derives the itinerary once, indexes explicit leg IDs, and caches date matches. Fully warm authenticated dashboard API
+durations fell to `1.12–1.65s`; the earlier warm range was approximately `6–21s`. Fresh-server dashboard requests still
+took `6.42–7.12s`, so cold initialization remains explicit follow-up work rather than being reported as solved.
+
+`/track` previously mounted all 973 expense rows. It now pages at 50 expenses while full filtered data continues to drive
+the displayed count, AUD total, delete-all target set, and bulk-selection behavior. The final authenticated bounds were
+12 of 67 planner legs, 25 city rows, 20 history rows, and 50 of 973 expenses. Dataset APIs completed in `1.47s` and
+`2.21s`; settings requests in `88–131ms`; the saved-plan list in `74ms`. Fresh-server track APIs still took about `10.4s`
+and remain part of the cold-readiness follow-up.
+
+The final route-shell/static check passed all seven routes at `97–3697ms`, `26,826–26,852` bytes, and 12 referenced
+static assets. Steady server RSS was `103.8 MiB`, below the `512 MiB` budget, and the exact test server was stopped.
+Chrome rendered all seven routes without an application request failure. Intermittent Chrome-extension message-channel
+errors appeared during some navigations without a corresponding app exception and are recorded separately as extension
+noise.
+
+The complete checkpoint baseline passed: `npx tsc --noEmit`, `npm run build`, 38 Vitest files / 175 tests,
+`npm run docs:check-memory`, and `npm run methodology:v1.1:check`. The build emitted the existing handled `/api/export`
+dynamic-route diagnostic and exited successfully. The deterministic methodology check again reported 19 planner fields
+and live CSV SHA-256 `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+## Phase 7A cold-readiness completion - 25 August 2026
+
+A repeat after the repository ownership and OneDrive pinning repair showed that the prior 6–10 second authenticated
+cold timings were not the stable final runtime. Fresh standalone restarts followed by authenticated Chrome navigation
+put complete dashboard data readiness at 1.96 seconds and track data readiness at 4.03 seconds. Both are within the
+documented 5-second local budget; the earlier measurements remain retained as pre-repair evidence.
+
+The remaining concrete payload issue was `/track`: it transferred a 456,140-byte full joined array of 973 expenses to
+render 50 rows, plus a 45,078-byte full planner itinerary. The expense endpoint now exposes an explicit track view that
+returns one 50-row joined page together with the exact full-filter count, included AUD total, and complete expense-ID set
+for delete-all. A lightweight itinerary track view returns only assignment labels and derived dates. The process-cold
+responses transferred 29,391 bytes and 7,350 bytes respectively, reductions of 93.6% and 83.7% without weakening auth
+or changing complete-data totals.
+
+Chrome verified page 2 as rows 51–100 of 973, filter changes resetting to page 1, and the empty Manual filter reporting
+exactly 0 expenses and AUD 0. Focused tests cover full-set totals/IDs across page slicing. The complete baseline passed:
+TypeScript, production build, 39 Vitest files / 177 tests, memory mirror check, and deterministic v1.1 verification. The
+build retained the known handled `/api/export` dynamic-route diagnostic. The production server was stopped afterward;
+no browser storage, cookies, passwords, or provider keys were inspected.
+## Luna/max and generation-time FX owner-key smoke — 26 August 2026
+
+The OpenAI default was updated to `gpt-5.6-luna` with `max` reasoning, and model refresh now resets both the discovered
+model list and the configured model/reasoning defaults. The OpenAI transport moved to the Responses API because Luna
+accepts `reasoning.effort: "max"` there; a regression covers the nested request shape and one-call boundary.
+
+The first production attempt also exposed that the standalone bundle omitted the v1.1 prompt. The production launcher
+and output trace now stage both active city-generation prompts, including when the build ID is unchanged, with a
+regression for the missing-file case.
+
+The owner rejected the stale 22 July runtime FX snapshot. v1.1 now uses the same city-generation call to perform one
+web search and return the latest dated RBA USD/AUD observation alongside the ten holistic USD anchors. The server
+accepts only a recent official `rba.gov.au` observation, derives AUD-per-USD (including quote inversion), applies every
+tier formula deterministically, and fails before persistence for missing, stale, invalid, or non-RBA FX. The checked-in
+snapshot remains historical reproducibility evidence, not a runtime fallback. OpenAI rejected Web Search combined with
+legacy JSON mode, so web-enabled calls rely on the prompt plus strict server Zod validation; non-search JSON calls keep
+JSON mode.
+
+The Chrome owner-key smoke passed for Tottori, Toowoomba, and Brno. All three active rows are
+`llm_city_generation_v1_1`, OpenAI `gpt-5.6-luna`, reasoning `max`, formula `v1-formulas-preserved-v1.1`, and use RBA FX
+dated 25 August 2026 at approximately 1 USD = 1.40 AUD. Tottori's prior v6.1 estimate remained as history; Toowoomba and
+Brno were added through the new-city flow. Failed preflight/provider attempts wrote no row. The provider key remained
+browser-only and was not inspected, logged, copied, or persisted by Codex.
+
+The authenticated `/api/estimates` cross-check reported 10 anchors and all 19 planner fields for each city, with exact
+agreement on provider/model, reasoning, prompt, formula, methodology, source, FX rate/date/source, and history count.
+The final baseline passed TypeScript, the production build, 40 Vitest files / 180 tests, the memory mirror, and the
+deterministic v1.1 check. The live CSV hash remained
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+## Planner and model-picker usability — 26 August 2026
+
+The Add Itinerary Leg flow now uses a dark high-contrast treatment for keyboard-highlighted and selected cities. Its
+footer groups explicit Cancel, Add City, and Add Leg actions, and successful existing-city or generated-city leg
+creation expands the planner to show every leg immediately. Model suggestions in both the planner and dataset city
+generation surfaces now use a two-column grid, reducing dialog height while retaining readable wrapped model names.
+
+Focused Playwright coverage verified the dialog actions and exact selected-city background. Provider-specific mocked
+model discovery verified Anthropic and Google Gemini model selection, two models sharing each row, and Refresh Models
+resetting the chosen model to each provider's returned default. No provider key was read and no provider request was
+made by these tests. The Playwright harness was also corrected to isolate its numeric development PIN from
+`APP_SECRET`, keep NextAuth and the browser on one hostname, explicitly pass the authentication environment to its
+dev server, and wait for the credentials response before navigating.
+
+The checkpoint baseline passed: TypeScript, production build, 41 Vitest files / 184 tests, documentation memory
+check, and deterministic v1.1 verification. The build retained the known handled `/api/export` dynamic-route
+diagnostic. The focused browser runs passed the city-picker regression and the Anthropic/Google refresh regression.
+
+## Model-grid density and dashboard chart key — 26 August 2026
+
+Provider model suggestions now use four columns on desktop (with a two-column narrow-screen fallback) in both the
+dataset and planner city-generation surfaces. The Refresh Models action spans the full grid row. The dashboard's
+cumulative-spend legend and tooltip now define every data series: solid green actual spend, solid grey actual spend
+recorded against a leg still marked planned, dashed green planned estimate, and dashed purple total trip budget. The
+grey dashed background strokes remain Cartesian grid guides rather than a spend series.
+
+Focused Playwright coverage passed the four-column Anthropic/Google Gemini model-refresh flow and a deterministic
+dashboard render that checks the legend labels and dashed swatches. TypeScript, the production build, and the full
+Vitest suite (41 files / 185 tests) also passed; the build retained the known handled `/api/export` dynamic-route
+diagnostic. No provider key was read or used.
+
+## Intercity transport model picker alignment - 26 August 2026
+
+Single-leg and bulk intercity transport estimation now use the discovered provider model list (up to 16 suggestions)
+instead of only the static known-model list. Both pickers show four models per desktop row with a two-column narrow
+fallback, wrap long model IDs, and make Refresh Models reset the selected model to the provider default. Validation
+now uses the discovered effective model set, so live provider-account models can be selected without a false warning.
+
+The transport browser regression passed for both single-leg and bulk dialogs with Anthropic and Google Gemini fixtures,
+including four-column geometry and default reset after refresh. TypeScript, the production build, and the full Vitest
+suite (41 files / 186 tests) passed; the build retained the known handled /api/export dynamic-route diagnostic.
+
+## Multi-file transaction import and transport effort controls - 26 August 2026
+
+The Wise transaction importer now accepts one or more selected CSV files. The browser posts each file as a repeated
+multipart `file` field, and the server parses each export independently before flattening the rows into the existing
+normalization, AUD conversion, preview, and database-deduplication path. Independent parsing avoids treating later
+CSV headers as transaction rows while retaining the existing single-file behavior.
+
+The import screen now reports the selected file count and handles malformed or HTML API responses as an in-page error,
+so a failed confirmation cannot surface the raw `JSON.parse` runtime exception. Focused parser, response, UI, and
+Playwright coverage verifies two-file preview/confirmation submission and safe handling of invalid responses.
+
+Single-leg and bulk intercity transport dialogs now expose the same provider/model-specific thinking-effort selector as
+new-city generation. The selected effort is persisted per transport dialog, reset with Refresh Models, validated by the
+transport route, and passed through OpenAI reasoning, Anthropic thinking, and Gemini thinking-budget request fields.
+The model chooser occupies the full dialog width in both transport dialogs and in both new-city surfaces, so four
+suggestions use the available row instead of half the panel.
+
+## Concurrent bulk transport estimates - 26 August 2026
+
+Bulk intercity transport estimation now fans out selected destination legs through a provider-aware concurrency limit
+(OpenAI 4; Anthropic and Gemini 2) instead of awaiting each request with a fixed delay. Results are still ordered by
+the selected itinerary legs while each successful or failed response remains attached to its own city. The existing
+single-leg estimate and bulk apply paths are unchanged.
+
+Focused Vitest coverage passed for the scheduler limits, completion-order updates, and bulk-dialog integration.
+
+## Opt-in browser API-key saving - 26 August 2026
+
+All OpenAI, Anthropic, and Gemini API-key inputs now share an opt-in browser-storage hook. Keys remain in memory for
+the current session by default; checking “Save API key in this browser” persists them per provider and unchecking it
+removes the persisted values. Legacy non-empty key storage is surfaced as an already-enabled preference so an existing
+user choice is not silently lost, while an explicit opt-out never restores a stored key. No key is written to the
+repository, server database, or logs.
+
+Focused storage, UI-source, transport, and city-generation tests passed, together with TypeScript validation.
+
+## Country-block comparison and effort layout - 26 August 2026
+
+The dashboard Country Comparison response now follows the itinerary's uninterrupted country blocks. Consecutive legs
+in one country share a row, while a later return receives a new row at its chronological position. Planned category
+totals and resolved actual expenses stay attached to the same block; unmatched actual expenses remain in appended
+country/unassigned rows. A stable block index makes repeated country labels safe in the table.
+
+The city-generation and single/bulk transport dialogs now place model and provider-specific reasoning effort controls
+side by side at desktop widths, stack them on narrow screens, and keep the four-column suggestion grid full width.
+Focused block, UI-layout, provider request, and TypeScript checks passed.
+
+## Transport accuracy smoke harness - 26 August 2026
+
+Added `buildTransportAccuracyReport`, a repeatable directional comparison helper for fixed transport observations and
+same-assumption reference quotes. It retains route/provider/model/search/fallback/citation provenance, computes per-
+route absolute and relative error, median and range summaries, and flags missing modes or routes outside the chosen
+tolerance. Deterministic tests cover domestic/international-style error cases and fallback provenance.
+The mocked pipeline smoke exercises four route classes (short/long and domestic/international) through the OpenAI
+adapter and carries every returned option, assumption, search query, and citation into the report.
+
+The live smoke remains intentionally open until same-day operator or aggregator quotes are captured; the repository
+does not invent observed fares or present the deterministic fixtures as accuracy evidence.
+
+## Transport estimation documentation - 26 August 2026
+
+Added `docs/product/transport-estimation.md` as the durable explanation of the intercity estimator: route context,
+frozen prompt, OpenAI/Anthropic/Gemini grounding and strict fallback paths, schema validation and normalization,
+review/apply behavior, and the one-time destination-leg allocation rule. The focused verification run passed 7 tests.
+The four-route inputs remain synthetic contract fixtures; same-day independent quote capture is still required before
+making an accuracy or tolerance claim.
+
+## Live transport smoke and OpenAI web-search fix - 26 August 2026
+
+The first authenticated Ho Chi Minh City → Can Tho planner smoke exposed an OpenAI Responses API incompatibility:
+`text.format.type=json_object` cannot be combined with the web-search tool. The request correctly fell back, but did
+not use web grounding. The browse request now relies on the prompt plus the existing parser/Zod validation and leaves
+JSON mode to the strict fallback path; a regression assertion protects that request shape.
+
+The rerun with OpenAI `gpt-5.6-luna` at Maximum effort used web search and returned two review-only options for two
+travellers: standard coach A$24 and self-drive A$30. The UI showed Vexere and VietnamPlus citations, and neither option
+was applied. A directional redBus comparison (Phuong Trang 185,000 VND per adult; 370,000 VND for two; A$19.76 at
+18,722.73 VND/AUD) puts the coach option at A$4.24 absolute / 21.4% relative error, within a provisional 25%
+tolerance. This is one route only, with a historical itinerary date, so the four-route same-day calibration remains
+open.
+
+Focused provider and accuracy tests passed 7/7; the full Vitest suite then passed 49 files / 214 tests. `npx tsc
+--noEmit --incremental false` passed and `npm run build` completed successfully; the build emitted only the existing
+handled dynamic-server diagnostic for `/api/export`.
+
+## Webapp performance attribution and build-directory separation - 3 September 2026
+
+The owner reported the app as extremely slow. The recorded Phase 7A evidence turned out to be invalid:
+`scripts/check-webapp-performance.mjs:34` fetches every route with `redirect: 'follow'` and no session cookie, and
+`src/middleware.ts` wraps all of them in `withAuth`, so each route 307s to `/login?callbackUrl=...` and the script
+measured the login page seven times. The 26-byte spread across seven supposedly distinct page sizes is the length
+delta of the `callbackUrl` value. Those numbers are retained as dated history and superseded, not deleted.
+
+An authenticated baseline as `dev-local-user`, who owns all 1,300 expenses, 62 legs and 62 saved plans, measured
+14.04 MB of JavaScript for `/` in development against 263 kB of production first-load JavaScript, a 53x difference,
+with `/plan`, `/dataset` and `/track` at 57x, 62x and 63x. Route documents are ~28-30 KB empty shells; `/estimates`,
+the only server-rendered page, ships 174 KB of real content. Warm API latency is 13-82 ms, so server compute is not a
+bottleneck at current data volumes. `/api/countries` returns 166,194 bytes where `?includeCities=false` returns 5,508,
+and `/settings` requests the larger form to populate one dropdown.
+
+The reported ~7-second dashboard stall was reproduced deterministically by polling readiness over TCP so that no HTTP
+request could warm a module: the first `/api/dashboard/summary` took 7,225 ms and the second 72 ms. Temporary
+instrumentation attributed it precisely. `new Database()` costs 5.5 ms and the entire module-scope migration block in
+`src/db/index.ts` costs 4.8 ms. Independent probing confirmed SQLite is not involved: opening the database 3.9 ms,
+pragmas 1.6 ms, first query 0.1 ms, counting 1,300 expenses 0.1 ms. Webpack compilation accounted for 880 ms, leaving
+roughly 6.3 seconds of Node instantiating the route's 925-module graph.
+
+The planned remedy of gating that migration block behind `PRAGMA user_version` was therefore abandoned: it would
+recover about five milliseconds. The dev-versus-production A/B on an identical cold request to `/login`, which is
+`force-dynamic` and exercises the same auth and database graph without a session, gave 7.404 s in development against
+2.659 s in production. The stall is inherent to development mode and is resolved by running a production build, not by
+changing application code.
+
+Two intermediate figures were measurement artifacts and are recorded so they are not reused: a 1,734 ms "module load"
+was `tsx` compiling TypeScript rather than runtime cost, and an 830 ms "cold" dashboard reading came from a readiness
+probe against `/login`, which imports auth and the database and so warmed the very thing being measured. Both are the
+same error class as the original Phase 7A defect.
+
+Development and production now build into separate directories. They previously shared `.next`, so each wiped the
+other and forced a full cold recompile; a production build run against a live dev server surfaced in the browser as
+`ChunkLoadError: Loading chunk app/layout failed (timeout)`, which presents as a broken app rather than a slow one
+because a failed chunk load takes down the whole React tree. Development now uses `.next-dev` and production keeps
+`.next`, with `scripts/prepare-next-dev.mjs`, `.gitignore` and the Next-managed `tsconfig.json` include paths
+following. Verified that a cold dev start leaves `.next` untouched, that a production build run against a live dev
+server preserves both trees, and that an authenticated walk of all seven core routes returns HTTP 200.
+
+`NEXTAUTH_URL` was missing from `.env.local`, which explains the repeated `[next-auth][warn][NEXTAUTH_URL]`. A
+`wal_checkpoint(TRUNCATE)` reclaimed `data/travel.db-wal` from 4.1 MB to 0 bytes; this is hygiene, not a speedup.
+The repository is at `C:\Dev\holiday-spend` and is not inside OneDrive, so that section of the memory documents is
+obsolete; an orphaned pre-move copy remains at `C:\Users\chawi\OneDrive\projects\holiday-spend`.
+
+Duplicate requests visible in the development log are React StrictMode's intentional dev-only double-invoke.
+`src/app/page.tsx:630` is a single `useEffect` with `[]` dependencies wrapping one `Promise.all`; this is not a defect
+and must not be "fixed".
+
+Baseline: TypeScript, production build, 49 Vitest files / 214 tests, memory mirror and the deterministic v1.1 check
+all pass, with the live CSV hash unchanged.
+
+## Production run mode enabled and verified - 3 September 2026
+
+The app can now be run from a production build with the existing data. Under explicit owner authorization, a short
+local development credential was set directly for `dev-local-user` and the address was marked verified. This
+deliberately bypassed `validatePasswordStrength`, which requires at least ten characters and rejects all-digit values,
+and used a throwaway script deleted immediately afterwards. The credential exists only in the gitignored, untracked
+`data/travel.db`; no value was written to any tracked file. The committed `npm run auth:set-local-password` keeps the
+strict policy and interactive prompt for normal use.
+
+Signed in against `npm start`, all seven core routes returned HTTP 200: `/` 1.603 s at 27,311 bytes (first request,
+including warm-up), `/plan` 0.569 s, `/plan/compare` 0.274 s, `/track` 0.265 s, `/dataset` 0.265 s, `/estimates`
+0.271 s at 167,096 bytes, and `/settings` 0.239 s. Authenticated API latency was 0.218-0.263 s across the three
+dashboard endpoints, `/api/itinerary` and the paginated `/api/expenses`. Against development this replaces a
+7.4-second cold start and 14.04 MB of JavaScript for `/` with a 1.6-second first request and 263 kB.
+
+Two diagnostic notes worth keeping. Earlier production sign-in attempts returned `CredentialsSignin` and created no
+rate-limit row; a clean rebuild resolved it, so the cause was a stale standalone bundle rather than the credential,
+which verified correctly against the stored hash throughout. Separately, `emailPasswordEnabled` was wrongly suspected
+first. The login page renders `hasEmailPassword` from that same flag and was already rendering email and password
+fields in production, which disproved the hypothesis before instrumentation confirmed the flag was true. Checking what
+the page already showed would have been faster than reasoning about which branch returned null.
+
+All instrumentation was reverted and the reported numbers come from a clean, uninstrumented build. Baseline:
+TypeScript, production build, 49 Vitest files / 214 tests, and the memory mirror all pass.
+
+## Dataset and settings payload reductions - 3 September 2026
+
+`/settings` and `/track/add` were requesting the full nested country payload to read scalar fields: `/settings` needs
+only country id and name for a dropdown, and `/track/add` only a currency code. Both now pass `?includeCities=false`,
+which `/plan` already used, cutting each from **166,194 to 5,508 bytes**.
+
+`/api/estimates?view=dataset` was assembling 203 full city rows, attaching the entire history array to each, sorting
+them, and then discarding all of it to return two fields per row. The lightweight shape is now built directly, and the
+summary derives from the query rows so both views agree.
+
+The larger finding was that heavy provenance blobs accounted for **91%** of that response: 201,528 bytes across 203
+`rows` plus 194,137 bytes across 59 `history` rows, against only 38,211 bytes of actual history fields. The dataset
+page renders those blobs for one selected city at a time - the table never touches them, and history rows use just
+`methodologyVersion` and `reasoningEffort`. Anchors, input snapshots, sources, FX, evidence grades, intervals,
+collection telemetry and missingness are therefore omitted from list responses and served by a new `?cityId=` mode,
+which the page fetches when a city is selected (about 25 KB). `toListProvenance` names the retained scalar fields
+explicitly rather than deleting the heavy ones, so a future blob field cannot silently start shipping in the list.
+
+`/api/countries` now groups cities with a `Map` instead of filtering all cities once per country. Navigation in
+`DesktopSidebar` and `MobileNav` moved from `router.push` to `next/link`, restoring the viewport prefetching that
+`router.push` disabled for every nav item; the pending-state spinner is preserved.
+
+Measured on a production build, authenticated: `/api/estimates?view=dataset` fell from 434,234 to **132,011 bytes**,
+and the `/dataset` initial JSON total from 600,428 to **298,205 bytes**, a 50.3% reduction.
+
+The plan's sub-100 KB target for `/dataset` was not met and is not reachable this way. The remaining 166,194 bytes are
+`/api/countries`, which supplies the dataset table itself; the page filters and sorts every row client-side, so further
+reduction needs server-side search rather than a payload change. This is recorded rather than quietly dropped.
+
+One process note. An intermediate build was reported as passing because the command piped `npm run build` through a
+`grep` filter that matched "Compiled successfully" while hiding a subsequent ESLint failure, and the next `npm start`
+then correctly refused to run with no complete build. The lint rule rejected the destructure-to-discard idiom, which
+was replaced with an explicit field list - a better result anyway. Filtering build output can hide the failure it is
+meant to summarise; this is the same error class as the Phase 7A harness measuring redirects.
+
+Verification: 49 Vitest files / 217 tests pass, including three new route tests for the slim list shape, the
+`?cityId=` full-provenance mode, and an unknown city. TypeScript, the production build, the memory mirror and the
+deterministic v1.1 check all pass, and all seven core routes returned HTTP 200 authenticated.
+
+## Planner and dashboard render hot paths - 3 September 2026
+
+`canonicalCountryOptions` in `src/app/plan/page.tsx` was rebuilt on every render of the planner, including every
+keystroke in any input on the page. `getSelectedCountryPreview` re-scanned every saved country for each of the 245
+`KNOWN_COUNTRIES`, and `findKnownCountryMetadata` runs `slugifyId` - an NFKD normalise plus four regex replaces - on
+every call. Measured at **5.037 ms per render**. Each saved country is now resolved once into a `Set` of canonical
+ids and the result is memoized on `countries`, measured at **0.045 ms**, a **112x** improvement. Outputs were verified
+byte-identical between the old and new implementations before the change was kept. The earlier "~28,400 operations"
+figure in the plan was an estimate and is superseded by this measurement.
+
+One shared `cityOptions` array is now built with `useMemo` and passed to every `LegCard` and the Add Leg dialog. Each
+of up to twelve cards previously built its own ~200-object array inline during render, which also handed
+`SearchableSelect` a new `options` identity every time and so permanently defeated the `useMemo` at
+`src/components/ui/searchable-select.tsx:44`, re-sorting ~200 options with `localeCompare` per card per render. The
+legs array passed to `BulkTransportEstimateDialog` is memoized for the same reason.
+
+`TransportEstimateDialog` (675 lines) was mounted unconditionally inside every leg card - roughly a dozen instances -
+for dialogs the user had not opened, each with its own hooks and a `localStorage` read. It,
+`BulkTransportEstimateDialog` (785), `PlannerNewCityDialog` (516) and `CityGenerationPanel` (455) now load through
+`next/dynamic` and mount on first open, latched so in-dialog state survives close and reopen. `CityGenerationPanel`
+already rendered only for a selected city, so it needed the bundle split rather than a mount gate. First-load
+JavaScript fell from 154 kB to **127 kB** on `/dataset` and from 177 kB to **169 kB** on `/plan`.
+
+The dashboard derivation chain in `src/app/page.tsx` is memoized. `categoryChartData`, `barData`, `chartBurnData`,
+`staggeredCountryBands` and the cumulative maxima recomputed on every render, so toggling `showCountryDailySpend`,
+`categoryMode` or `expandedChart` re-mapped and re-sorted the whole category list, country list and burn series. These
+had to move above the loading early-return, because hooks cannot be called after a conditional return.
+`staggeredCountryBands` mattered most: a new array each render re-ran `BurnCountryHeaderStrip`'s `useLayoutEffect`,
+which calls `getBoundingClientRect` per band and forces a synchronous layout during commit.
+
+One earlier claim is corrected rather than left standing. Extracting the three inline chart render functions was
+justified on the grounds that calling them as functions makes Recharts rebuild and re-measure its subtree. That is
+overstated: React reconciles by element type, so the charts are not remounted. The real benefit is skipping the chart
+subtree when unrelated state changes, which is worthwhile now that the data arrays are stable, but it is lower
+priority than first recorded. That item and the `next/dynamic` split of the Recharts bundle on `/` remain open.
+
+Verification: TypeScript, `next lint` with no warnings or errors, 49 Vitest files / 217 tests, a production build, the
+memory mirror, and an authenticated production walk returning HTTP 200 for all eleven routes. The walk confirms server
+shells and API responses, not post-hydration chart rendering; the dashboard is client-rendered and its shell returns
+the loading state by design. A browser pass over `/` and `/plan` remains outstanding, as the Chrome extension was not
+connected during this work.
+
+## Browser verification of the render and payload work - 3 September 2026
+
+The verification gap recorded against Phase 8 Step 4 is closed. Checked in Chrome against an authenticated production
+build.
+
+`/` renders after hydration with no console messages. Both bar charts and the cumulative line chart draw: 60
+`.recharts-rectangle` nodes with non-zero widths across three `.recharts-bar` layers, plus three `.recharts-line`
+series. An earlier screenshot appeared to show empty charts and was briefly treated as a possible regression; that was
+an artifact of downscaling a 1709 px viewport into a 1400 px JPEG, which renders the 4 px-tall bars as almost nothing.
+The owner pointed out the bars were visible, and inspecting the DOM confirmed it. The lesson is to check the DOM rather
+than trust a compressed screenshot when the question is whether small elements rendered.
+
+`/plan` renders 62 legs with the 12-leg initial bound intact and no console errors.
+`BulkTransportEstimateDialog` loads from its `next/dynamic` chunk on first click and reports 61 estimatable legs with
+3 selected by default, confirming both the mount-on-first-open latch and the memoized legs prop. The Add Leg dialog
+opens and its city picker lists all 203 options in correct alphabetical order, confirming the shared `cityOptions`
+array and that `SearchableSelect` still sorts.
+
+`/dataset` renders with the provenance card populated, including the anchor grid and FX snapshot, which come only from
+the on-demand fetch. The network trace shows exactly the intended two calls: `/api/estimates?view=dataset` for the
+slim list, then `/api/estimates?cityId=medellin` on selection. This confirms the Step 3 design end to end in a browser
+rather than only at the API level.
+
+One pre-existing accessibility warning surfaced and is not caused by this work:
+`Missing 'Description' or 'aria-describedby={undefined}' for {DialogContent}`, a Radix warning about the dialog
+component itself. It is recorded for separate follow-up.
+
+## Measurement harness corrected and a real baseline recorded - 3 September 2026
+
+`scripts/check-webapp-performance.mjs` now authenticates and refuses to report numbers for a redirected route. The
+defect it replaces: the script fetched every route with `redirect: 'follow'` and no session cookie, `src/middleware.ts`
+wraps all of them in `withAuth`, so each route 307'd to `/login` and the script measured the login page seven times.
+That is why a 5-second route budget and a 512 KiB shell budget never fired while the app was slow to use.
+
+`assertNotRedirectedToLogin` fails whenever a response was redirected or lands on `/login`, and it runs whether or not
+credentials are configured, because it is the assertion that makes every other number trustworthy. Sign-in goes through
+the NextAuth credentials endpoint using `WEBAPP_AUTH_PIN` for a dev server or `WEBAPP_AUTH_EMAIL` and
+`WEBAPP_AUTH_PASSWORD` for a production build, with a small cookie jar because Node's `fetch` does not persist cookies.
+The harness also records decompressed JavaScript bytes per route and authenticated API latency and payload bytes,
+samples each target three times by default and reports medians rather than a single reading, and accepts
+`WEBAPP_REQUIRE_BUILD=false` so the same script can measure `npm run dev`.
+
+Verified both ways against the running app. With credentials the check passes. With credentials removed - the exact
+configuration that produced the invalid Phase 7A numbers - all seven routes report
+`redirected to /login ... would describe the login page, not the route` and the run exits 1.
+
+Corrected baseline, authenticated against a production build. Route shells respond in 4-12 ms.
+
+| Route | Shell | JavaScript, decompressed | Files |
+| --- | --- | --- | --- |
+| `/` | 27,289 B | 1,068,839 B | 15 |
+| `/plan/compare` | 28,397 B | 1,015,023 B | 14 |
+| `/plan` | 27,943 B | 763,642 B | 17 |
+| `/settings` | 27,594 B | 658,654 B | 16 |
+| `/track` | 27,921 B | 653,380 B | 14 |
+| `/dataset` | 27,734 B | 615,956 B | 15 |
+| `/estimates` | 167,151 B | 518,309 B | 10 |
+
+Authenticated API medians: `/api/countries?includeCities=false` 3 ms / 5,508 B; `/api/itinerary` 7 ms / 42,901 B;
+`/api/expenses?view=track` 10 ms / 29,947 B; `/api/dashboard/summary` 13 ms / 757 B; `/api/dashboard/burn-rate`
+15 ms / 79,776 B; `/api/estimates?view=dataset` 9 ms / 132,011 B.
+
+Assets are gzipped but chunked with no `content-length`, so the recorded figure is the decompressed size, roughly four
+times the transferred bytes and the amount the engine parses. An initial run used a 1 MiB budget and failed `/` at
+1,068,839 B; the budget was raised to 1.25 MiB and the metric relabelled, because reporting decompressed bytes as
+though they were transfer bytes would have been the same category of error the harness was being fixed to prevent.
+
+New finding from the first honest run: `/plan/compare` is the second-heaviest route at 1,015,023 B and had not
+appeared in any earlier analysis. It carries the comparison charts and should be included when the Recharts
+dynamic-import item in Step 4 is addressed.
+
+The Phase 7A numbers are retained in this log and in `PLAN.md` as dated history, marked superseded rather than
+deleted.
+
+Verification: TypeScript, `next lint` clean, 49 Vitest files / 220 tests including three new harness regression tests,
+and the memory mirror.
+
+## Test suite audit - 3 September 2026
+
+The audit ran and removed no tests. The conclusion contradicts the plan that set it up, so the reasoning is recorded
+here rather than the outcome alone.
+
+Module reachability was computed transitively from the real entry points (`src/app`, `src/components`,
+`src/middleware.ts`) instead of judging by file name. Sixteen of seventy `src/lib` modules are unreachable from the
+running app, carrying roughly 2,400 lines of tests, and they matched the retired v3/v4/v5 research the plan targeted
+for deletion.
+
+They are not dead code. Each is a reader of retained methodology evidence. `data/reference/` still holds
+`accommodation_property_panels_2026_2027.json` at 1.9 MB, `accommodation_reference_windows_2026_2027.json`,
+`city_cost_collection_batches.json`, `city_cost_pilot_enrichment.json`,
+`hanoi_accommodation_classification_reconciliation_2026.json`, and 42 files under `observations/`. Every unreachable
+module parses or validates part of that corpus and its `npm run methodology:*` entry point still works;
+`methodology:batches:validate` and `methodology:accommodation-windows:validate` were run and pass.
+`CLAUDE.md` states that files under `data/reference/` must not be moved or renamed without updating their readers.
+
+"Unreachable from the app" was therefore the wrong test for "useless". These modules are unreachable by design: they
+are offline validators for evidence the project deliberately retains for audit and reproducibility. Deleting them
+would have read as decisive cleanup while orphaning 2.2 MB of retained evidence and breaking the audit path that
+several conventions exist to protect. Two further exclusions: `city-cost-v1-1-guard` is the live-CSV guard behind
+`npm run methodology:v1.1:check`, and `transport-estimation-accuracy` is the harness for the still-deferred transport
+accuracy task.
+
+The suite also contains no tautological assertions and no tests that merely restate the implementation, so the
+quality concern the audit was meant to address does not exist here.
+
+The real dead weight was outside the tests. Four dependencies are declared but imported nowhere in the repository and
+were removed: `swr`, `date-fns`, `shadcn` (a scaffolding CLI listed as a runtime dependency) and `tw-animate-css`
+(absent from every stylesheet). Each was checked with `git grep` across the tree and against the lockfile, which
+showed them as direct dependencies with no dependents. `src/app/fonts/GeistMonoVF.woff` (67,864 bytes) was removed as
+well; only `GeistVF.woff` is loaded by `src/app/layout.tsx`.
+
+`tests/playwright/performance-bounds.spec.ts` was renamed to `render-bounds.spec.ts`, with its describe block changed
+to `initial render bounds`. Its three tests assert row counts and never a duration, so calling them "performance"
+implied a timing guarantee they never made. That mattered little while no real timing check existed; it matters now
+that `npm run performance:check` measures timings properly. The tests themselves are sound and were kept.
+
+Counts are unchanged at 49 Vitest files / 220 tests. Verified with TypeScript, `next lint`, a clean production build
+from an emptied `.next`, the memory mirror, and the deterministic v1.1 check with the live CSV hash unchanged at
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+## Comparison charts split out of the plan-compare bundle - 3 September 2026
+
+The corrected performance harness identified `/plan/compare` as the second-heaviest route at 1,015,023 bytes of
+decompressed JavaScript, which no earlier analysis had noticed. The cause is three Recharts components that render
+only once a comparison has been loaded but shipped in the route's first-load bundle regardless.
+
+`ComparisonChart`, `ComparisonCountryChart` and `ComparisonCategoryChart` now load through `next/dynamic` behind
+fixed-height placeholders that reserve 400 px, 360 px and 360 px respectively, matching their `ResponsiveContainer`
+heights so the layout does not shift while the chunk loads. The route's decompressed JavaScript fell to
+**538,967 bytes**, a 47% reduction, and its first-load figure from 236 kB to 104 kB.
+
+One interaction is worth recording because it looks like a regression and is not. Recharts previously sat in a chunk
+shared between `/` and `/plan/compare`. With compare no longer importing it, `/` carries it alone: that route's own
+chunk grew from 26.4 kB to 147 kB while its first-load total moved only from 263 kB to 266 kB. Total bytes across the
+app fell; they simply stopped being shared.
+
+The equivalent split on `/` is deferred. Recharts is imported directly into `src/app/page.tsx` rather than through
+extracted components, so splitting it means first extracting roughly 200 lines of chart JSX that closes over a dozen
+values - the same refactor as the outstanding `React.memo` item, and the riskiest remaining change on a page whose
+rendering was only just verified in a browser. The argument for doing it is that the dashboard charts cannot render
+until three API calls return, so the bundle could load in parallel with those fetches; the argument against is that
+they are core above-the-fold content, so the split trades bundle size for a visible loading placeholder. Recorded
+rather than decided silently.
+
+Verification: TypeScript, `next lint` clean, 49 Vitest files / 220 tests, production build, memory mirror, and an
+authenticated `npm run performance:check` run against the production build.
+
+## Production was reading a throwaway copy of the database - 3 September 2026
+
+Found while preparing demo data for README screenshots: the production server did not read
+`data/travel.db`. It read `.next/standalone/data/travel.db`, a full copy that `next build` traced into the bundle.
+
+The mechanism is two innocuous pieces meeting. `.next/standalone/server.js` line 6 calls
+`process.chdir(__dirname)`, which is standard Next behaviour for the standalone output. `src/db/index.ts` resolved the
+database as `path.join(process.cwd(), 'data', 'travel.db')`. Under `npm run dev` those agree; under `npm start` the
+working directory is the bundle, so the path resolved inside `.next/standalone`.
+
+The consequences were real. Every write made through `npm start` went to a copy that the next `npm run build`
+overwrote, so production changes were silently discarded. Comparing the copy against a backup of the real database
+found one such loss: saved plan `61a46a0a-1c24-4104-8ed8-355f69a57908`, "Plan 2026-09-04", created at 16:26 that day
+with a 37,994-byte snapshot, existed only in the bundled copy. It was extracted and merged back into the real
+database, which now holds 63 saved plans against the 62 it had before. Expenses, legs and estimates had not diverged.
+
+This also explains an earlier incident recorded as "a stale standalone bundle". Production sign-in returned
+`CredentialsSignin` immediately after a password was written to the real database, then worked after a rebuild. The
+cause was not stale code: the bundled database copy predated the password row, and the rebuild refreshed the copy.
+
+Separately, the copy meant `next build` duplicated 3.4 MB of private financial data into build output. The repository
+is public, and while `.next` is gitignored, build output should not carry a database at all.
+
+The fix has two parts. `src/db/index.ts` now prefers `HOLIDAY_SPEND_DB_PATH`, which
+`scripts/start-next-production.mjs` sets to the project-root path it already knows, falling back to the previous
+cwd-based path so development, tests and scripts are unchanged. The launcher also deletes
+`.next/standalone/data` before starting, since nothing should read it.
+
+`experimental.outputFileTracingExcludes` was tried first and did not prevent the copy under either `'/*'` or `'**/*'`
+keys. The second, broader pattern also stripped files the standalone server needs, producing `MODULE_NOT_FOUND` on
+startup. That configuration was removed rather than left in place looking effective, and the deterministic removal in
+the launcher replaced it.
+
+Verified after the fix: the launcher reports removing the bundled copy, and production reports 63 saved plans
+including the recovered one, matching the database on disk exactly. TypeScript, `next lint`, 49 Vitest files / 220
+tests, the memory mirror and the deterministic v1.1 check all pass with the live CSV hash unchanged.
+
+## Public-facing README with demo screenshots - 3 September 2026
+
+`README.md` was rewritten for a reader arriving at the repository cold. It now opens with the problem the app
+solves in plain terms, follows with what it does and screenshots of each main surface, explains the city-cost
+methodology, and only then covers developer setup. Previously setup sat in the middle, above the product content,
+and there were no images.
+
+The repository is public, so screenshots could not use real data: the dashboard alone shows a full trip budget,
+actual spending to date, and 1,300 expense records, and git history is permanent. A fictional six-leg Southeast
+Asia and Japan trip was seeded instead, with 83 generated expenses totalling A$4,101 against an A$8,779 plan. The
+real database was backed up twice and verified before seeding, then restored and confirmed byte-identical across
+all 21 tables afterwards.
+
+Two details were corrected during capture. The demo seed initially used `3-star` and `private_room` as tier keys
+where the app expects `3star` and `privateRoom`, which left the accommodation dropdown blank in the first planner
+screenshot. And screenshots taken immediately after navigation caught the charts mid-animation and appeared to show
+empty plots; captures now wait for the bars to settle, and the DOM is checked rather than the image trusted.
+
+The README also states that it is a personal project rather than a product seeking users, and that the screenshots
+use fictional data. Every link and image path in it was verified to resolve, and the environment variables it names
+were checked against `.env.example` — an initial draft told readers to set `APP_SECRET`, which that file does not
+define; it names `NEXTAUTH_SECRET` and `AUTH_DEV_PIN`.
+
+## Expense CSV export - 3 September 2026
+
+The expenses screen had an Import button and no Export. A CSV endpoint already existed at
+`/api/export?format=csv`, but it was reachable only from Settings and always returned every expense regardless of
+what the user was looking at.
+
+`/api/export` now accepts the same filters as `/api/expenses` - `cat`, `source`, `from`, `to`, `leg` and `tag` - and
+`/track` has an Export button that passes whatever filters are currently applied, so the download matches the list on
+screen. Settings passes no filters, so its full-trip export behaves exactly as before.
+
+The CSV also now resolves `city` and `country` from each expense's itinerary leg. It previously emitted a bare
+`leg_id`, which made the file unreadable in a spreadsheet without joining a second export.
+
+URL building went into `buildExpenseExportHref` in `src/lib/expense-track-page.ts` rather than inline in the
+component, matching that module's existing pure-helper pattern and making it testable. Four tests cover no filters,
+all filters together, `'all'` treated as unset rather than a category literally named "all", and one-sided date
+ranges.
+
+Verified against the production build with the real 1,300-expense dataset: an unfiltered export parsed to exactly
+1,300 rows with zero parse errors and a resolved city on every row; `cat=food` returned 88 rows all in that category;
+a ten-day range returned 61. Checking with a CSV parser rather than counting newlines mattered here, because quoted
+descriptions contain line breaks and `wc -l` under-counted by one.
+
+The README also gained the dashboard's cumulative spend chart, captured from the same fictional demo trip. The real
+database was restored afterwards and verified byte-identical across all 21 tables.
+
+Verification: TypeScript, `next lint` clean, 49 Vitest files / 224 tests, production build, memory mirror, and the
+deterministic v1.1 check with the live CSV hash unchanged.
+
+## Indexes, a rejected cache, and corrected location documentation - 3 September 2026
+
+The database declared no indexes beyond two on `auth_tokens`. Twelve were added in the runtime bootstrap:
+`expenses(user_id, date)`, `expenses(leg_id)`, `itinerary_legs(user_id, sort_order)`, `itinerary_legs(city_id)`,
+`itinerary_leg_transports(leg_id)`, `saved_plans(user_id)`, `cities(country_id)`,
+`city_estimates(city_id, estimated_at)`, `city_price_inputs(city_id)`, `expense_tags(tag_id)`,
+`fixed_costs(user_id)` and `tags(user_id)`. Each statement is wrapped so a missing table in a partially built test
+database is never fatal.
+
+Usage was verified with `EXPLAIN QUERY PLAN` rather than assumed. All seven representative queries now report
+`SEARCH ... USING INDEX` where they previously reported a full table scan: expenses by user and date, expenses by
+leg, legs by user and sort order, transports by leg, saved plans by user, cities by country, and estimates by city.
+
+The motivation is correctness and headroom, not measured latency. Foreign keys are enforced but SQLite does not index
+child FK columns automatically, so every delete on `user`, `cities` or `itinerary_legs` previously scanned each
+referencing table in full. Warm API responses were already 3-15 ms at current volumes and remain so; this should not
+be reported as a speedup.
+
+The plan's proposed `tokenVersion` cache was rejected on measurement. The lookup takes **4.4 microseconds** - 0.013 ms
+across a three-call dashboard load, or 0.145% of a single warm API response - because it is a primary-key lookup. A
+TTL cache would trade delayed session revocation, a real security property, for a saving that does not register
+against a 3 ms response. Recorded as rejected rather than left open as a future task.
+
+Separately, `CLAUDE.md` stated "The repository lives inside OneDrive". That is false and had been for some time: the
+working tree is `C:\Dev\holiday-spend` while OneDrive is `C:\Users\chawi\OneDrive`, and `.next`, `.next-dev`, `data/`
+and `data/travel.db` carry no reparse points. The section was replaced with the verified current state and mirrored
+into `AGENTS.md`.
+
+An orphaned pre-move copy still exists at `C:\Users\chawi\OneDrive\projects\holiday-spend`, with no `.git` directory
+and a dehydrated `scripts` reparse point. It is now documented as a trap not to open, since running it would reproduce
+the historical Files-On-Demand failures.
+
+`scripts/prepare-next-dev.mjs` was retained rather than deleted, with the reason stated in the memory documents: it
+finds nothing to do on the current path, but is cheap, harmless, and would matter again if the repository moved back
+under a synced root. The historical failure it guards against - a dehydrated `.next` causing a dev process to consume
+roughly 1.2 GB without completing a request - is preserved as dated context rather than erased.
+
+Verification: TypeScript, `next lint` clean, 49 Vitest files / 224 tests, production build, memory mirror, and the
+deterministic v1.1 check with the live CSV hash unchanged. Fourteen indexes present; data intact at 1,300 expenses,
+62 legs and 63 saved plans.
+
+## Phase 7 workflow pass and two expense-update defects - 3 September 2026
+
+The remaining Phase 7 checks are mutating, so they were run against a seeded fictional trip rather than the real
+dataset. The real database was backed up twice and verified before seeding, restored afterwards, and confirmed
+byte-identical across all 21 tables.
+
+All seven routes render with zero console errors, navigated client-side through the `next/link` sidebar.
+`/plan/compare` shows a graceful empty state when no snapshots exist. Adding a leg through the Add Leg dialog moved
+the plan from 6 legs / 33 nights / $8,779 to 7 / 37 / $10,303 with dates auto-derived, and it survived a reload with
+its tiers and $1,525 total intact; deleting it returned the totals exactly. Changing traveller count from 2 to 3
+rescaled the trip from $10,303 to $15,474 - a factor of 1.502 rather than a flat 1.5, because accommodation does not
+scale linearly - while the `cities` table was verified byte-identical before and after, confirming the "stored for
+two people, scaled at runtime" invariant. Two snapshots compared correctly, with all three dynamically imported
+charts rendering 19 bars and two line curves. On `/track`, exclude and re-include round-tripped exactly and delete
+removed one row.
+
+Two real defects surfaced in `PUT /api/expenses/[id]`, both now fixed.
+
+The first is the more serious. The handler wrote the new `amount` but never recomputed `amountAud`. Every total in
+the app sums `amountAud`, never `amount`, so an edited amount appeared in the expenses list and was silently absent
+from the dashboard, country and category totals. It was reproduced directly: expense 2307 held `amount = 250`
+alongside `amount_aud = 9.26`. The handler now recomputes the conversion whenever amount, currency or date changes,
+and fails closed by storing `null` when a rate cannot be resolved, which the dashboard already excludes rather than
+treating as zero.
+
+The second is that the same handler used `set({ ...body })`, writing the entire request body to the row. A caller
+could set any column, including reassigning the expense to another `userId`, flipping `isDeleted`, or changing `id`
+and `source`. It is now validated against an explicit Zod schema of the nine fields the edit form exposes. A request
+carrying `userId: "attacker"`, `isDeleted: 1` and `id: 99999` was verified to change only the amount.
+
+Worth recording how the first defect was nearly missed. The edit appeared not to save at all - the totals did not
+move and the dialog stayed open - and the obvious conclusion was a broken save or a failed synthetic input. The
+network log showed `PUT /api/expenses/2307` returning 200, which ruled out both. Only then did checking the row
+itself reveal that `amount` had changed while `amount_aud` had not. A test that had asserted "the save request
+succeeds" would have passed throughout.
+
+A third finding is recorded but not fixed: `DialogContent` is missing a `DialogTitle` and `aria-describedby`, which
+Radix warns about at runtime and which affects screen-reader users on the planner dialogs. It is left for separate
+follow-up rather than bundled into unrelated work.
+
+Verification: TypeScript, `next lint` clean, 50 Vitest files / 228 tests including four new regression tests, the
+memory mirror, and the deterministic v1.1 check with the live CSV hash unchanged.
+
+## Phase 7 completed: tagging, reassignment, CSV import, failure states - 3 September 2026
+
+The remaining Phase 7 checks were run against seeded demo data; the real database was backed up, restored afterwards
+and verified byte-identical across all 21 tables.
+
+Tagging works end to end: create, attach, filter and detach. A tag belonging to another user is refused - posting
+`{ tagIds: [99] }` returned `added: 0` and wrote no `expense_tags` row, because the route resolves tag ownership
+before inserting.
+
+Leg reassignment attributes correctly. Moving a $103.81 expense from Bangkok to Kyoto moved Thailand's actual from
+2014 to 1910 and gave Japan 104, exactly the expense amount, confirming that country totals follow the assigned leg
+rather than the transaction date. A non-existent leg returns 404 and changes nothing.
+
+Wise CSV import behaves correctly on the 408-row sample. Preview parsed 326 importable rows and 77 skipped, and wrote
+nothing - the expense count stayed at 83. Confirming imported 326, giving 409. Re-importing the same file imported 0
+and reported 326 duplicates, the count stayed at 409, and the database holds zero duplicate `wise_txn_id` values.
+
+Failure and validation states leave no partial records. Across an invalid expense, a malformed JSON body, a reference
+to a non-existent leg, and city generation with no provider key, the expense, city, leg and estimate counts were
+identical before and after at 409, 203, 6 and 59.
+
+One further defect surfaced and was fixed. `await request.json()` throws a `SyntaxError` on a malformed body, and 32
+route handlers call it. `handleError` matched only `ZodError` and `AuthRequiredError`, so a bad request body fell
+through to `Internal server error` with HTTP 500 - blaming the server for a client mistake and telling the caller
+nothing useful. It is fixed once in `src/lib/api-helpers.ts`, covering all 32 routes: a `SyntaxError` whose message
+names JSON now returns `400 Request body is not valid JSON.` The match is deliberately narrow so an unrelated
+`SyntaxError` still returns 500 and a genuine server fault is not silently reclassified as a client error. Five tests
+were added, and the behaviour was verified end to end against the production build.
+
+Two request-shape errors during this pass were mine, not the app's, and are recorded so they are not mistaken for
+findings: the tag attach endpoint takes `{ tagIds: [...] }` rather than `{ tagId }`, and the expenses list returns
+its rows under `items`. Both initially looked like failures until the route and response were read.
+
+Phase 7 is now complete. Suite is 51 files / 233 tests.
+
+## Dialog accessibility fixed - 3 September 2026
+
+The Radix warning recorded during the Phase 7 pass turned out to cover two distinct problems, both now fixed.
+
+The command palette behind every `SearchableSelect` - the city pickers on `/plan` and `/dataset` - rendered a
+`DialogContent` with no accessible name at all. Screen readers announced an unnamed dialog, and Radix logged
+"`DialogContent` requires a `DialogTitle`" on every open. `CommandDialog` now accepts `title` and `description`
+props rendered with `sr-only`, and `SearchableSelect` passes its own placeholder through, so the city picker
+announces "Select a city" and describes itself as "Search cities...". The palette looks unchanged.
+
+The second problem was wider and easy to dismiss as noise. No dialog in the app defined a `DialogDescription`, but
+Radix still sets `aria-describedby` to an id it expects a description to own. All thirteen dialogs therefore pointed
+assistive technology at an element that did not exist. A dangling reference is worse than no reference, so this was
+worth fixing rather than silencing with `aria-describedby={undefined}`. Every `DialogContent` now has a matching
+description: the expanded dashboard and comparison charts, the Add Itinerary Leg and Resolve Missing Cities dialogs,
+Add Fixed Cost, Edit Expense, Create and Edit Tag, Save Plan Snapshot, Add New City With LLM, and both transport
+estimate dialogs.
+
+Verified in Chrome against a production build. The bulk transport dialog, the Add Itinerary Leg dialog and the city
+picker all resolve both `aria-labelledby` and `aria-describedby` to real text, and the console is silent where it
+previously logged a warning on every open.
+
+One lint failure during the work is worth noting only because it shows the check earning its place: a description
+containing "this expense's" tripped `react/no-unescaped-entities`. It was rephrased rather than escaped.
+
+Verification: TypeScript, `next lint` clean, 51 Vitest files / 233 tests, production build, and the browser pass
+above. No data was written; the database is unchanged at 1,300 expenses, 62 legs and 63 saved plans.
+
+## Closing three prematurely-marked Phase 7 and Phase 9 gaps - 3 September 2026
+
+Reviewing the plan's unchecked items showed 23 open boxes sitting under phases already marked COMPLETE. Most were
+stale bookkeeping - work done during this session but never ticked - but three were real gaps, and the phases had been
+marked complete without them. That is the same failure the Phase 7A numbers demonstrated: a progress document that
+claims more than was verified.
+
+Intercity transport add, edit and remove is now verified. Adding a row to the Chiang Mai leg created a transport row
+and correctly left the total unchanged at $8,779, because a new row starts at zero cost. Setting mode "Train", note
+"Overnight sleeper" and cost 120 moved the total to $8,899, exactly $120, and all three fields survived a reload.
+Removing the row returned the total to $8,779 and left the original Bangkok-to-Chiang-Mai row and all six legs
+intact. Chiang Mai's stored base costs were byte-identical throughout, confirming transport is held on the leg and
+stays outside city-cost methodology.
+
+`/dataset` is verified for row provenance and edit targeting. The table renders source badges separating
+`base_csv_apr_2026`, `llm_city_generation` and `manual` rows, and the editor labels read as plain English rather than
+column names. Saving an edit for `chiang-mai` changed exactly 1 of 203 cities, the correct one, and left `food_mid`
+untouched, so a partial update does not clobber sibling fields.
+
+The `/plan/compare` screenshot the README was missing has been captured and added, showing the same demo trip costed
+for two travellers against three so the two cumulative lines visibly diverge. All six README images resolve.
+
+The plan's checkboxes were then reconciled against reality: 19 items that were genuinely done are now ticked, leaving
+four unchecked, all of them deliberately deferred with their reasoning recorded - the dashboard chart extraction and
+Recharts split, server-rendering initial data (gated on the harness showing a gap it currently does not show), and
+the transport-accuracy same-day quote capture.
+
+Two automation notes, recorded because they cost time and are not app defects. Synthetic `input` events with a reset
+`_valueTracker` do not reach this app's controlled inputs; real keystrokes through the browser tool do, which is how
+the transport cost edit was confirmed. And number inputs do not support `setSelectionRange`, so clearing them needs
+End plus Backspace rather than select-all.
+
+Verification: TypeScript, `next lint` clean, 51 Vitest files / 233 tests, production build, memory mirror. The real
+database was restored and verified byte-identical across all 21 tables at 1,300 expenses, 62 legs and 63 saved plans,
+with `chiang-mai` back to its original 38.75.
+
+## Write-route input validation audit - 3 September 2026
+
+The two defects fixed in `PUT /api/expenses/[id]` were a pattern rather than one-offs, so every route that parses a
+request body and writes was scanned. Four more had the same shape; one flagged route turned out to be fine.
+
+`PUT /api/cities/[id]` was the serious one. It ran `db.update(cities).set(body)` with the raw request body, no
+validation, and - because cities are shared reference data rather than per-user rows - no user scoping. Any
+authenticated request could write any column on the dataset the entire app derives from. Two fields matter most:
+`estimationSource` and `estimationId`, which would let a value falsely claim a provenance it does not have, and `id`,
+which would orphan every reference to the row. The project's protections against exactly that outcome - the live-CSV
+guard, the deterministic methodology check, and the rule that a modelled value must not be presented as an observed
+source price - all sit on the generation path. This endpoint walked past all of them. It is now restricted to the 23
+cost fields the dataset editor actually sends, which was confirmed safe because city generation writes directly
+through `src/lib/city-generation-service.ts` rather than this route.
+
+`PUT /api/itinerary/legs/[id]` spread the raw body, so a request could set `userId` and move a leg to another
+account, or overwrite `intercityTransportCost` and `intercityTransportNote`, which the server derives from the
+transport rows rather than accepting from the client. `PUT /api/fixed-costs/[id]` and `PUT /api/tags/[id]` also wrote
+the raw body; their `WHERE` clauses scope the row to the caller so another user's row is unreachable, but a body
+containing `userId` would still move the caller's own row to someone else.
+
+`POST /api/itinerary/snapshot` was a false positive. It validates through `parseSnapshotImportRequest`, which applies
+zod schemas in `src/lib/snapshot-import.ts`; the scan missed it because the schema lives in a lib module rather than
+the route file. No change was made, and it is recorded here so the route is not re-flagged later.
+
+Every schema uses `.strict()` rather than zod's default strip, so an unexpected field is refused with a message
+naming it instead of being silently discarded. That makes adding a new editable field a deliberate act, matching the
+project's fail-closed convention, and it means a client sending a stale field learns about it rather than having the
+value quietly dropped.
+
+Verified against a production build. Each route refuses a hostile body by name - for cities,
+`Unrecognized keys: "estimationSource", "estimationId", "id", "name"` - while legitimate edits still succeed and
+leave sibling fields untouched. Six regression tests cover provenance forgery, identity rewriting, empty updates,
+cross-user reassignment, and the legitimate paths.
+
+One note on the test fixture: the first run failed only on the success-path assertions, because the route selects
+every column while the fixture table declared a handful. The four rejection assertions passed from the start. The
+fixture now mirrors the real table.
+
+Verification: TypeScript, `next lint` clean, 52 Vitest files / 239 tests, production build, memory mirror. The
+verification made real writes, so the database was restored from backup and confirmed byte-identical across all 21
+tables, with `lisbon` back to 139.5.
+
+## Wise CSV import rate waterfall - 3 September 2026
+
+Importing a Wise CSV resolved exchange rates one at a time. Each cache miss awaited its own HTTPS request to
+Frankfurter inside a sequential `for` loop, so a cold import cost one round trip per distinct currency and date in
+the file, serialised. The rates are knowable before any conversion happens, so they are now collected up front and
+fetched concurrently.
+
+Measured on the 408-row sample with `exchange_rates` emptied before each run so all three were identical: the
+sequential baseline took **81.08 seconds** for 150 rate requests; the fix takes **6.96 seconds** for the same 150
+requests, an 11.6x improvement.
+
+An intermediate version is worth recording because it was slower and wasteful. Prefetching both the source and target
+currency for every row issued 208 requests - 39% more than the sequential version had needed - for rates most rows
+never used, and took 13.53 seconds. The resolver converts from the source currency when a row has one and only falls
+back to the target currency if that fails, so narrowing the prefetch to mirror that first choice brought the count
+back to exactly 150 and roughly halved the time again. Fetching more data in parallel is not automatically better
+than fetching the right data.
+
+Concurrency is bounded at eight using `runWithConcurrency`, the helper already written for bulk transport estimation,
+rather than adding a second one. Frankfurter is a small free service, so the limit is deliberate rather than
+incidental.
+
+Behaviour is unchanged, verified rather than assumed: all 326 importable rows produce identical AUD amounts against
+output captured from the original implementation, with the same 408 total, 326 to import, 77 skipped and 0
+duplicates. Failure still fails closed - an unresolvable rate leaves `amountAud` null rather than substituting a
+plausible value, which the dashboard already excludes rather than treating as zero.
+
+Four regression tests cover fetching each currency and date once across many rows, issuing the requests concurrently
+rather than serially, skipping lookups for rows already in AUD, and leaving a row unresolved when the lookup fails.
+
+`getExchangeRate` still writes each rate to `exchange_rates`, so a second import over overlapping dates stays cheap.
+The improvement is to the first cold import, which is the one a user actually waits on.
+
+Two things were deliberately not changed and are recorded so they are not rediscovered as new: the import route still
+runs one `SELECT` per parsed row for the duplicate check, and inserts rows one at a time without a surrounding
+transaction. Both are cheap relative to the network waterfall that dominated, and neither registered once the rate
+fetches ran in parallel.
+
+Verification: TypeScript, `next lint` clean, 54 Vitest files / 243 tests, production build, memory mirror. The
+measurements required real imports, so the database was restored from backup and confirmed byte-identical across all
+21 tables.
+
+## Dashboard chart extraction and Recharts split - 4 September 2026
+
+`/` was the heaviest route in the app. Recharts was imported directly into `src/app/page.tsx`, so the whole charting
+library loaded before anything on the dashboard could paint, including the four summary stat cards that need no charts
+at all. The three charts were inline render functions in a 1,352-line file, which also meant all three re-rendered
+whenever unrelated dashboard state changed.
+
+This was deferred twice, with the analysis recorded, on the grounds that it was a three-file, roughly 600-line
+reorganisation and the riskiest remaining change. The size estimate was about right. The obstacle was not.
+
+The earlier analysis counted how many helpers were used both inside and outside the chart bodies and concluded that
+most of them would need a shared module. That is the constraint for memoizing the charts, but it is not the constraint
+for splitting the bundle. What a bundle split requires is narrower: nothing statically imported by `page.tsx` may
+import Recharts. Every Recharts reference already sat inside the three renderer bodies, and no top-level helper touched
+the library. So the shared helpers moved verbatim rather than being rewritten, and TypeScript passed on the first
+attempt.
+
+The result is `src/components/dashboard/dashboard-chart-parts.tsx`, which holds the shared types, constants, tick,
+tooltip, legend and country-header-strip components and is deliberately Recharts-free - a Recharts import there would
+silently undo the split, so the file says so - plus three `React.memo` components loaded with `next/dynamic` behind
+fixed-height placeholders that reserve the same space, matching what `/plan/compare` already did.
+
+| Measure | Before | After | Change |
+| --- | --- | --- | --- |
+| `/` first-load JS | 266 kB | **144 kB** | −46% |
+| `/` route size | 147 kB | **24.8 kB** | −83% |
+| `/` decompressed JS | 1,068,839 B | **636,953 B** | −431,886 B, −40% |
+| `src/app/page.tsx` | 1,352 lines | 707 lines | −645 |
+
+`/plan` is now the heaviest route at 764,620 bytes.
+
+Verification was in an authenticated production browser session, and the method matters because a downscaled
+screenshot previously hid bars that were four pixels tall and led to a wrong claim that charts were missing. Plotted
+elements were counted in the DOM instead: 32 country bars, 7 category bars with their percentage labels, 3 burn lines
+with 21 country reference areas and the budget ceiling reference line, the staggered three-row country header strip,
+and live tooltips reading correct values on both the country chart and the burn chart. All six render paths were
+exercised - inline and expanded for each of the three charts - because expanded passes a different set of props.
+
+Two measurement mistakes are worth recording, both the same mistake. Reading `.recharts-wrapper svg` and then
+`svg.recharts-surface` each returned a 14x14 legend icon rather than the plot, because the country chart is the only
+one with a top-aligned legend and its icon precedes the plot in the DOM. That produced a false regression report of a
+chart with zero bars. Selecting the first match from a container that holds several is not a safe default; the correct
+count was 32.
+
+One test moved with the code. `src/lib/planner-city-picker-ui.test.ts` reads the cumulative-spend legend definitions
+out of a file by path and asserts each line's label and colour. The guarantee is unchanged - every plotted series has a
+legend entry with a matching colour - so the test was repointed at the new file rather than deleted.
+
+No console errors. The only console output was a Chrome-extension message-channel artefact that also appears on
+`/plan`, `/dataset` and `/plan/compare` and predates the change by two hours.
+
+Verification: TypeScript, `next lint` clean, 53 files / 243 tests, production build, memory mirror,
+`methodology:v1.1:check` with the live CSV hash unchanged, and the authenticated performance harness.
+
+## Atomic snapshot import - 4 September 2026
+
+Importing a plan snapshot replaces the itinerary. The route detached every expense from its leg, deleted all itinerary
+legs, deleted all fixed costs, and then rebuilt everything from the snapshot. Each of those ran as a separate
+statement, and on better-sqlite3 every statement commits immediately - in WAL mode there is no implicit outer
+transaction to fall back on. So the deletes were durable the instant they ran, before a single replacement row
+existed, and any failure during the rebuild left the user with no itinerary, no fixed costs, and every expense
+orphaned from the leg it belonged to. That last one is the linkage the planned-versus-actual dashboard depends on.
+
+The whole replacement now runs inside one `db.transaction((tx) => ...)`, the idiom already used for leg deletion in
+`src/app/api/itinerary/legs/[id]/route.ts`. The callback is synchronous because the better-sqlite3 driver requires it,
+so `.run()` and `.all()` replace `await` throughout.
+
+Two boundary decisions are deliberate. The traveller-count write moved below the transaction, so a rejected import
+cannot leave the group size changed - previously it was applied first and survived a failed import. `resolveMissingCities`
+stays outside and before the transaction: the countries and cities it creates are additive dataset rows rather than
+user itinerary state, and keeping them when an import fails avoids paying for the same LLM generation twice.
+
+The tests were checked against the pre-fix route rather than only against the new one, because a test that cannot fail
+is worth nothing. Reverting the route and rerunning produced exactly the data loss the change prevents:
+
+| Assertion | Against the old route | Fixed |
+| --- | --- | --- |
+| Itinerary survives a failed import | `expected [ 905 ] to deeply equal [ 901, 902 ]` | passes |
+| Expenses stay attached to their legs | `expected null to be 901` | passes |
+| Traveller count unchanged on rejection | `expected 3 to be 2` | passes |
+| Successful import still replaces everything | passes | passes |
+
+The first row is the whole problem in one line: two saved legs were gone and a single half-inserted leg stood in their
+place. The fourth row matters as much as the rest - the happy path passed before and after, so this is a rollback
+guarantee, not a change to what a successful import does.
+
+The failure is injected through `getIntercityTransportTotal`, which is called once per leg inside the transaction.
+That makes it the natural seam: failing on the first call lands after the deletes and before any insert, and failing
+on the second lands after one leg has already been written.
+
+One incidental note on the test setup. Mocking `@/lib/auth` wholesale broke every error path, because `handleError`
+does an `instanceof AuthRequiredError` check and the mock had removed the class. The mock is partial now. It is worth
+remembering that mocking a module also removes the types it exports, not just the functions being replaced.
+
+### An unrelated trap found while verifying
+
+Two production builds hung for over ten minutes each and wrote no output at all - not an error, an empty log.
+`scripts/start-next-production.mjs` spawns `.next/standalone/server.js` and forwards the child's exit to the parent,
+but nothing goes the other way, so stopping the `npm start` wrapper left the standalone server running and holding
+`.next/standalone`. `next build` then blocked cleaning that directory. Killing the orphan made the build complete
+normally on the next attempt.
+
+This is recorded in `CLAUDE.md` next to the `ChunkLoadError` note because it presents the same way: a build or dev
+problem that is really a leftover process. The launcher is unchanged for now; forwarding SIGINT and SIGTERM to the
+child would fix it at the source.
+
+Verification: TypeScript, 54 files / 247 tests, production build, `methodology:v1.1:check` with the live CSV hash
+unchanged, and the memory mirror.
+
+## Atomic Wise CSV import - 4 September 2026
+
+Phase 12 left two things in the import route recorded as known but not dominant: one `SELECT` per parsed row for the
+duplicate check, and inserts issued one at a time with no surrounding transaction. Both are now fixed, but the reason
+is not the one that was expected.
+
+The duplicate check became a chunked `inArray` lookup - `wise_txn_id` carries a UNIQUE index, so the whole upload can
+be checked in a handful of statements. The inserts run inside one transaction. Measured on a temporary database with
+1,300 existing expenses and 326 rows to import:
+
+| Path | Duplicate lookup | Insert | Total |
+| --- | --- | --- | --- |
+| Per-row | 15-30 ms | 52 ms | **68-83 ms** |
+| Batched plus one transaction | 1 ms | 12 ms | **13-15 ms** |
+
+About five times faster, and it does not matter. That is 68 ms against a real import of roughly seven seconds - under
+one percent. The performance case for this change is weak and is recorded as weak.
+
+The reason 326 individual inserts cost only 52 ms is that the database runs `synchronous = NORMAL` under WAL, so
+commits do not fsync one at a time; they are flushed at checkpoints. The assumption that unbatched inserts would be
+expensive was wrong, and measuring before changing is what caught it. Worth remembering the next time a per-row write
+loop looks obviously slow.
+
+The justification is atomicity. Rows were inserted one at a time, each committing on its own, so a failure partway
+through returned an error to the caller while leaving an unreported number of rows written. The user is told the
+import failed and has no way to see how much of it landed.
+
+Two premises about how that failure is reached turned out to be wrong, and both were caught by writing the tests
+rather than by reasoning about the code:
+
+- Repeats within a single upload do not trip the UNIQUE index. `prepareWiseExpenses` groups by transaction id and sums
+  the amounts, because Wise splits some transactions across several lines. A file listing a transaction twice produces
+  one merged row. The first draft of the code comment and two of the tests asserted the opposite. There is now a test
+  pinning the collapsing behaviour instead, which is worth having on its own.
+- A malformed date does not trip `NOT NULL` either. `normalizeDate` returns an empty string for anything it cannot
+  parse, and SQLite accepts an empty string in a `NOT NULL` column.
+
+What is actually reachable is the check-then-act race. The duplicate check is a read followed by a write, so an
+overlapping import can commit between the two, and the UNIQUE index then rejects a row somewhere in the middle of this
+one. Disk and I/O failures do the same. The test simulates the race deterministically by injecting a conflicting row
+during the leg lookup, which runs after the check and before the insert.
+
+Against the pre-fix route that test reports `expected [ 'e-1', 'e-2', 'e-3', 'kept-1' ] to deeply equal
+[ 'e-3', 'kept-1' ]`: two rows committed, then an error returned. The other five tests pass against both the old and
+new routes, and that is the point of them - it is what establishes that the batched lookup returns exactly what the
+per-row lookup returned, including across chunk boundaries, which is tested with a 950-row upload carrying duplicates
+on both sides of each boundary.
+
+Verification: TypeScript, 55 files / 253 tests, production build, `methodology:v1.1:check` with the live CSV hash
+unchanged, and the memory mirror.
+
+## Build guard for a surviving production server - 4 September 2026
+
+The previous entry recorded two builds lost to a stalled `next build` that produced no output at all, caused by an
+orphaned `.next/standalone/server.js`. The intended fix was to forward SIGINT and SIGTERM from the launcher to its
+child. That was implemented, and then measured, and it does not fix the case that caused the problem.
+
+The A/B was run against the exact failing scenario - `npm start` as a background task, stopped the same way it was
+stopped when the stalls happened. Old launcher: all three processes survive and port 3000 is still listening. New
+launcher: identical. The reason is that stopping the task kills the shell, not the process tree, so the launcher is
+never signalled and no handler it installs can run. A fix that depends on receiving a signal cannot help when nothing
+is delivered.
+
+The signal handling was kept, because it is correct for the cases it does cover - notably `process.on('exit')`, which
+now stops the child whenever the launcher exits for any ordinary reason - but it is not the fix, and recording it as
+one would have been wrong.
+
+The fix is a `prebuild` guard, `scripts/prepare-next-build.mjs`. The standalone server `chdir()`s into its own
+directory, and Windows locks a directory that is any process's working directory, which is why the build blocks
+cleaning `.next`. The guard renames `.next/standalone` to a suffixed name and straight back. That is deliberately the
+same operation the build is about to attempt, so the probe cannot disagree with the build about whether the directory
+is free, and it is a no-op when nothing holds it.
+
+Verified in both directions. With a server running the probe reports `EBUSY` and `npm run build` exits 1 in under a
+second with an explanation and the commands to find the stray process. With no server running the probe succeeds
+silently, leaves the directory intact, and the build completes normally. It also exits 0 on any other error code
+rather than blocking a build for a condition it does not understand.
+
+A ten-minute silent hang became a one-second error message. The guard does not prevent the orphan; it makes the orphan
+say so.
+
+Verification: 55 files / 253 tests, production build, memory mirror.
+
+## One dashboard read - 4 September 2026
+
+The three dashboard endpoints each read the same rows: the user's legs and leg transports, every city, every country,
+and every one of the user's expenses. Rendering the dashboard ran all three, so the same 1,300 expense rows were
+loaded three times to draw one page.
+
+The shared read and the three calculations now live in `src/lib/dashboard-data.ts`, and a new `GET /api/dashboard`
+loads once and returns all three payloads. The page makes one request instead of three. The original endpoints remain
+and are unchanged in shape - they are public surface, and keeping them meant the change could be verified by
+comparison rather than by reading.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Dashboard data load | 34.5 ms (three in parallel, median of 9) | **18.4 ms** (one request) |
+| Reads of the expense table per page load | 3 | **1** |
+
+The verification is the part worth recording. Extracting 560 lines of calculation by hand is exactly the kind of
+change that looks right and quietly is not, so the three payloads were captured from the running production build
+before the change and compared afterwards. All three individual endpoints came back byte-identical, and each section
+of the combined response was byte-identical to the endpoint it replaces - six comparisons, all equal. The dashboard
+was then reopened in an authenticated browser session and gave the same 32 country bars, 7 category bars, 3 burn lines
+with 21 country reference areas, the same staggered country strip, and the same stat values.
+
+The builders are deliberately self-contained: each redoes its own in-memory derivations from the shared rows rather
+than sharing those too. They are map constructions over a few thousand objects, and keeping them separate is what
+allowed the three bodies to move across verbatim, which is what made the byte-identical comparison meaningful.
+
+A source-text test moved with the code again - `planner-city-picker-ui.test.ts` asserts the country-block calculation
+by reading a file path. That is now the second time this session that this suite needed repointing after a refactor.
+It is a reasonable way to pin behaviour that has no other seam, but it does couple the tests to file layout, and that
+cost is worth noting rather than paying silently each time.
+
+Verification: TypeScript, 55 files / 253 tests, production build, authenticated performance harness.
+
+## Server-rendered dashboard - 4 September 2026
+
+This was deferred twice on the grounds that the performance harness showed no gap. The harness was measuring the wrong
+thing. It times the route shell and the API separately - 10 ms and 18 ms - and never sees the serial wait between
+them.
+
+Measured in the browser against a production build, before any change: the HTML arrived in about 7 ms carrying no
+data, DOMContentLoaded at 388 ms, load at 551 ms, and the dashboard request did not start until 569 ms, finishing at
+603 ms. The request itself took 34 ms. It could not have started earlier - it lives in a `useEffect`, so it waits for
+the bundle to download, parse and mount. Nothing was slow. Everything was queued behind everything else.
+
+Two isolated measurements that each look healthy can hide a serial dependency between them. That is the second time
+this project has been misled by a harness number: the original Phase 7A figures described the login page, and this one
+described components of a page load that never overlapped.
+
+`src/app/page.tsx` is now a server component that loads through `loadDashboardInputs` - which the endpoint
+consolidation had already extracted - and passes the result to `src/app/DashboardClient.tsx`.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Data available to render | 603 ms | **60 ms** |
+| Dashboard fetches on a full page load | 1, blocking | **0** |
+| Dashboard fetches when returning by client-side navigation | 1 | 1 |
+| HTML | 27 kB decoded, no data | 21.5 kB gzipped / 172 kB decoded, complete |
+
+The refresh deserves explaining, because the obvious version of this change is wrong in one direction or the other.
+Keeping an unconditional mount-time fetch means sending the same 89 kB twice on every page load. Removing it means
+trusting the props, and Next's client router can serve a cached payload for a dynamic route, so navigating back to the
+dashboard could show a stale figure after logging an expense.
+
+The fix is a module-scope flag. On a full document load the module is freshly evaluated, so the flag is false and the
+server-rendered data is known to be current - no fetch. On a later client-side navigation the module is already
+loaded, so the flag is true and the refresh runs. No clocks, no cross-machine timestamp comparison, and it is correct
+in both directions. Verified as such in the browser: zero dashboard requests on a full load, exactly one after
+navigating away and back, with identical rendering either way.
+
+`/` is now marked dynamic rather than static in the build output. That is correct - the response is per-user and must
+not be cached across sessions - and route JavaScript is unchanged at 144 kB.
+
+Left undone: the same treatment for `/track`, `/dataset` and `/settings`.
+
+Verification: TypeScript, `next lint` clean with no warnings, 55 files / 253 tests, production build, authenticated
+performance harness, and a browser pass over both navigation paths.
+
+## Same-day transport reference fares - 5 September 2026
+
+The transport accuracy check had one step left open: capture same-day operator or aggregator quotes under matching
+assumptions, then compare. That step splits in two, and only one half can be done here. The reference side needs a
+browser; the model side needs a provider API key, which is entered in the app UI, stays in browser storage, and is
+never handled by an assistant. So the references were captured and the comparison is left as an owner action, with
+the steps written down.
+
+Three upcoming routes from the live itinerary now have independently captured fares in
+`data/reference/transport_accuracy_references_2026-09-05.json`: Bangkok to Phuket on 2026-12-26 (bus, A$88 for two),
+Koh Lanta to Bangkok on 2026-12-20 (bus, A$90), and Colombo to Chennai on 2027-01-17 (flight, A$402).
+
+Three things found while capturing them matter more than the numbers.
+
+The aggregator quotes **per adult**. The app stores costs for two people. That factor of two is applied in the
+reference file rather than left for the comparison to infer, because a silent doubling would not look like a mistake -
+it would look like a badly calibrated model, and it would have been attributed to the estimator.
+
+Cheapest-listed and representative are different numbers. The Bangkok bus is A$44 per adult at the bottom of the list
+and A$48 for the standard option a traveller would actually pick. Both are recorded, and the question of which one the
+estimate is supposed to predict is left open rather than resolved by picking whichever makes the error smaller.
+
+The South American and long-haul legs are not covered by that aggregator. They were left out rather than filled in
+from another source, because mixing sources without matching their fare bases is what would make the error figures
+meaningless. Four of the sixteen upcoming movements are recorded as not captured, with the reason.
+
+A further limitation, stated in the file itself: fares three or more months out move, so this is a snapshot rather
+than a stable benchmark, and a comparison run on a later date has to recapture.
+
+Three routes is enough to be directional and is not enough to calibrate a tolerance. That remains true after this
+work; what changed is that the independent side of the comparison now exists and is reproducible.
+
+## Transport accuracy run and an OpenAI output-budget bug - 5 September 2026
+
+The three reference routes captured earlier were run through the live planner with OpenAI
+`gpt-5.6-luna` at Maximum reasoning effort, two travellers, review only - no option was applied to the
+itinerary. Results are in `data/reference/transport_accuracy_run_2026-09-05.json`.
+
+| Route | Mode | Reference (cheapest) | Estimate | Relative error |
+| --- | --- | --- | --- | --- |
+| Bangkok to Phuket | bus | A$88 | A$120 | 36.4% |
+| Koh Lanta to Bangkok | bus | A$90 | A$160 | 77.8%, fell back |
+| Colombo to Chennai | flight | A$402 | A$450 | 11.9% |
+
+Median relative error is 36.4% against the cheapest listed fare and 25.0% against the representative
+fare. The median moves eleven points purely on the choice of reference basis, which is the strongest
+argument for having recorded both: a tolerance quoted without naming its basis would mean nothing.
+
+Every estimate is high. No route came in under the listed fare, so this is a consistent upward bias
+rather than scatter - a more tractable thing to correct.
+
+### Why one route fell back
+
+One route reported `OpenAI Responses API returned no text output for the transport estimate` and
+silently used the non-search fallback, which produced the least accurate answer of the three.
+
+Reasoning tokens are billed against `max_output_tokens` in the Responses API. At maximum effort the
+code raised that budget to 12,000 and sent `reasoning: { effort: 'max' }` alongside a web-search tool.
+On a messy multi-modal route - island transfer plus mainland bus, with search results to reason over -
+the model spent the entire budget thinking and never emitted a `message` item. The response comes back
+`status: "incomplete"` with `incomplete_details.reason: "max_output_tokens"`, carrying only reasoning
+items. The extraction filters for `type === 'message'`, finds nothing, and reports "no text output".
+
+That message describes the symptom and hides the cause, and the cause matters: the user pays for a
+maximum-effort reasoning run, gets nothing back, and is silently served the weaker estimate. It also
+explains why it was intermittent - only the hardest of the three routes exhausted the budget.
+
+Two changes. The failure now reads the response `status`, `incomplete_details.reason` and
+`usage.output_tokens_details.reasoning_tokens`, and says when the budget was spent on reasoning and how
+many tokens went to it. And the maximum-effort budget rose from 12,000 to 32,000, because it has to
+cover the reasoning and the answer together.
+
+The three regression tests were checked against the pre-fix code and fail there with exactly the right
+complaints, including `expected 12000 to be greater than or equal to 32000`. An existing test that
+pinned `max_output_tokens: 12000` was updated rather than deleted, with the reason recorded inline.
+
+Raising the cap increases the worst-case cost of a maximum-effort call. That is the intended trade: the
+previous behaviour paid for the reasoning anyway and then threw the result away.
+
+Verification: TypeScript, `next lint` clean, 56 files / 256 tests, production build,
+`methodology:v1.1:check` with the live CSV hash unchanged, memory mirror.
+
+## Token budget evidence and the effort ladder - 5 September 2026
+
+Two follow-ups to the output-budget bug: measure whether 32,000 is actually enough, and stop treating
+budget exhaustion as a reason to abandon web search.
+
+### The measurement
+
+The 32,000 figure was a guess - there was nothing to pick it from, because the old code read
+`reasoning_tokens` only when it was about to throw. Usage is now logged on every OpenAI transport
+call, and the three reference routes were re-run.
+
+| Route | Reasoning tokens | Total output tokens | Against the old 12,000 cap |
+| --- | --- | --- | --- |
+| Koh Lanta to Bangkok | 10,787 | **12,259** | over - this is the failure |
+| Koh Lanta to Bangkok, repeat | 8,965 | 10,153 | under |
+| Bangkok to Phuket | 10,208 | 11,463 | under, by 537 |
+| Colombo to Chennai | 8,349 | 8,830 | under |
+
+32,000 is enough for these legs: the worst run used 12,259, or 38% of the budget, leaving about 2.6x
+margin. Recorded in `data/reference/transport_token_usage_2026-09-05.json`.
+
+The more useful result is the second row. It is the same route as the first, run twice, and it came in
+2,106 tokens lower. The old 12,000 cap sat inside the observed range of 8,830 to 12,259, so the same
+request exceeded it on one run and not on another. That is the intermittency, measured rather than
+hypothesised: a cap set within the natural variance of the thing it caps fails some of the time and
+looks mysterious every time. It failed by 259 tokens.
+
+The repeat run was an accident - a dialog had not closed before the next click, so the same route was
+estimated twice. It produced the most informative datapoint of the four.
+
+### The ladder
+
+Budget exhaustion previously fell straight through to the non-search fallback, which discards the web
+grounding. That is the wrong recovery: running out of room to answer is a reason to think less, not a
+reason to stop searching. On the one route where it fired, the ungrounded answer was the least accurate
+of the three. Maximum effort is the default, so this was the default path.
+
+`ReasoningBudgetExhaustedError` is now a distinct type, so the recovery is chosen by what actually
+happened rather than by matching an error string. On truncation the same grounded call is retried one
+rung down the existing effort ladder - `max`, `xhigh`, `high` - for at most two retries, and only then
+is the grounding given up, with the reason recording that lower effort was tried.
+
+The ladder did not fire in these four runs, because nothing truncated at 32,000. That is the expected
+outcome and the reason it is covered by unit tests instead: four tests, checked against the pre-fix
+code, covering the retry sequence, that a successful retry records no fallback reason, that the
+grounding is surrendered only after the rungs are exhausted, and that the budget request is large
+enough to leave room for an answer.
+
+One correction to the previous entry. `max_output_tokens` is a cap, not an allocation - tokens are
+billed as generated, so raising it costs nothing until a run genuinely needs more. The earlier framing
+of a straightforward cost increase was wrong. The old behaviour was the expensive one: it paid for
+about 12,000 reasoning tokens and discarded every one of them.
+
+Verification: TypeScript, `next lint` clean, 56 files / 257 tests, production build,
+`methodology:v1.1:check` with the live CSV hash unchanged, memory mirror, and four live runs against
+the running production build.
+
+## Configurable provider request limits - 5 September 2026
+
+The token cap raised the right question: a hardcoded number that a future model outgrows breaks quietly. Two limits
+are now configurable under Settings, and one of them did not exist at all before.
+
+`user_preferences` gains `llm_max_output_tokens` and `llm_request_timeout_ms`, both nullable. Null means "follow the
+default", so raising a default later reaches everyone who has not deliberately chosen their own value - which is the
+whole point, given the reason for the change was future-proofing. Precedence is the user setting, then
+`LLM_MAX_OUTPUT_TOKENS` / `LLM_REQUEST_TIMEOUT_MS`, then the defaults in `src/lib/llm-runtime-settings.ts`.
+
+Defaults are 64,000 output tokens and a 300-second timeout, against a measured working range of about 12,300 tokens
+and two minutes. Roughly five times headroom, deliberately.
+
+The framing matters more than the numbers. Neither limit is a budget. Providers bill reasoning tokens against
+`max_output_tokens` as they are generated, so a high cap costs nothing until a request genuinely needs it, while a cap
+that binds part-way through is paid for in full and the answer thrown away. A cap that is reached during normal
+operation is therefore worse than no cap at all, and these exist only to stop a request that has gone wrong.
+
+The timeout is new. Nothing bounded a provider call before - no abort signal, no route duration limit - so the token
+cap had been doing that job by accident, and doing it in the most wasteful way available. `AbortSignal.timeout` is the
+honest stop: it bounds the thing actually worth bounding, and it fails with a reason rather than an empty response.
+
+Per-effort scaling of the cap was considered and dropped. One generous ceiling applied whenever reasoning is enabled
+is simpler, and since the cap is not a budget there is little value in tuning it per effort level.
+
+Verified end to end against the running production build rather than by inspection: the Settings card loads showing
+the defaults, saving 96,000 persists to the database, a live transport estimate then logs `budget=96000`, and Reset to
+defaults clears both columns back to null and returns the field to 64,000. Six tests cover precedence, an unparseable
+environment value, clamping, and that the defaults clear the observed working range.
+
+One repeat of an earlier lesson. Two attempts to type into the settings field by screen coordinate silently missed,
+because the viewport had rescaled between screenshots; both looked like a broken save until the field value was read
+back. Element references worked first time. Coordinates are not a reliable way to drive this UI.
+
+Verification: TypeScript, `next lint` clean, 57 files / 263 tests, production build,
+`methodology:v1.1:check` with the live CSV hash unchanged, memory mirror.
+
+## Transport prompt v1.1: stating the estimand - 5 September 2026
+
+The accuracy run left a consistent upward bias and no way to judge it, because the prompt never said
+which fare it should return. Cheapest available, typical, or a padded budgeting figure are three
+different questions, and the median relative error moved from 36.4% to 25.0% purely on which
+reference it was compared against. That is not an error measurement; it is a disagreement about the
+question.
+
+`llm_prompt_intercity_transport_v1_1.md` states the estimand: the typical fare a traveller would
+actually book, explicitly not the cheapest on the market and explicitly not premium or flexible, with
+connecting transfers included only where the route cannot be travelled without one. Prompts are
+versioned rather than edited here, so v1 stays frozen and reachable through
+`TRANSPORT_PROMPT_VERSION=v1`, matching how the city-cost prompts keep their rollback. The two files
+are byte-identical from `Output rules:` onward, which a test asserts - so any change in output is
+attributable to the estimand rather than to incidental rewording.
+
+Re-running the same three routes against the representative fare that v1.1 now targets:
+
+| Route | Reference | v1 | v1.1 | v1 error | v1.1 error |
+| --- | --- | --- | --- | --- | --- |
+| Koh Lanta to Bangkok | A$118 | A$160 | A$115 | 35.6% | **2.5%** |
+| Bangkok to Phuket | A$96 | A$120 | A$80 | 25.0% | **16.7%** |
+| Colombo to Chennai | A$400 | A$450 | A$400 | 12.5% | **0.0%** |
+
+Median 25.0% to 2.5%, and the direction changed: v1 overshot on all three routes, v1.1 undershoots
+slightly on two and is exact on the third. The systematic bias is gone rather than merely smaller.
+
+Three things stop this being as good as it reads. The first route's v1 run had fallen back to the
+non-search path, so its improvement conflates the estimand change with regained grounding; only the
+other two are clean comparisons. Bangkok to Phuket is still 16.7% low, and it is the route where the
+aggregator showed the widest spread between cheapest and representative, so it is the most sensitive
+to the wording. And three routes with one run each is directional, not a calibration.
+
+One packaging detail worth recording. The launcher stages prompt files into the standalone bundle
+from an explicit list, and Next's own file tracing only follows paths that appear as string literals.
+v1.1 is selected through a lookup table, so tracing would not have found it and the file would have
+been missing in production while working perfectly in development. Both transport prompts are now on
+the explicit list, and the launcher test asserts they reach the bundle. The existing test caught this
+immediately by failing when the required-files list grew, which is the behaviour that list is for.
+
+Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build, three live runs
+against the running production build with nothing applied to the itinerary.
+
+## Server-rendered /track - 5 September 2026
+
+The same treatment as the dashboard, on the page used to actually log expenses. Measured before, on a
+production build: the HTML arrived at 11 ms carrying no rows, and the two API requests did not start
+until 188 ms, finishing at 231 ms. They were not slow. They were queued behind the bundle
+downloading, parsing and mounting.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Data available to render | 231 ms | **93 ms** |
+| API requests on a full page load | 2, blocking | **0** |
+| HTML on the wire | 28 kB decoded, no rows | 21 kB gzipped, complete |
+
+`src/lib/track-data.ts` now holds the queries, shared by `/api/expenses?view=track`,
+`/api/itinerary?view=track` and the server component. Only the unfiltered first page is seeded. Every
+filter and page change still goes through the API, which is the right split: the initial view is what
+every visit pays for, the rest are deliberate interactions.
+
+The fetch gate is the same module-scope flag used on the dashboard, with one addition. It skips the
+first fetch only when the client is still showing what the server rendered - page zero, no category,
+source or date filters. Without that condition a filtered client-side navigation would seed itself
+with unfiltered rows and then decline to correct them.
+
+Verified by comparison rather than by reading, since the extraction moved query logic between files.
+Six endpoint responses were captured from the running production build before the change and after -
+first page, third page, category-and-source filtered, date-ranged, the track legs, and the separate
+unfiltered list path - and all six are byte-identical.
+
+Behaviour was then checked in the browser: zero API requests on a full load with 1,300 expenses and a
+$51,900 total matching the dashboard, and clicking through to the next page issued the requests and
+changed the rows, confirming the gate skips the redundant first fetch without blocking interaction.
+
+The decoded HTML is large at about 500 kB, because the rows appear both as markup and in the RSC
+payload, but it compresses to 21 kB on the wire and replaces roughly 36 kB of JSON that used to be
+fetched separately.
+
+Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build, six identical
+endpoint payloads, and a browser pass over load and pagination.
+
+## A serve script, and where server-rendering stops - 5 September 2026
+
+`npm run serve` builds and then starts. The documented sequence was `npm run build && npm start`,
+which is a parser error in Windows PowerShell 5.1 - the shell this project is developed in - so the
+one command the docs told you to run did not run. npm executes its own scripts through a shell that
+accepts `&&`, so a script is the portable fix. Verified by running it from PowerShell: build through
+to a serving app in about twenty seconds. `README.md`, `CLAUDE.md` and the transport doc now say
+`npm run serve`.
+
+### Why /dataset and /settings were not server-rendered
+
+Both were measured on a warm production build rather than assumed, and both were left alone.
+
+| Page | HTML arrives | Data available | Gap |
+| --- | --- | --- | --- |
+| `/` before its fix | ~7 ms | 603 ms | 543 ms |
+| `/track` before its fix | 11 ms | 231 ms | 220 ms |
+| `/dataset` | 11 ms | 154 ms | 143 ms |
+| `/settings` | 11 ms | 123 ms | 112 ms |
+
+`/settings` is the least-visited page in the app, its four requests carry 5.7 kB between them, and
+seeding it means splitting a 411-line component that is mostly interactive state. 112 ms does not pay
+for that.
+
+`/dataset` is a worse trade than it looks. Its two requests carry about 300 kB of JSON, and server
+rendering puts that in the document twice - once as markup, once in the RSC payload - so the parse
+cost lands on the client to save a 143 ms round trip. It also needs two more route extractions. The
+payoff is half of `/track`'s and the cost is higher.
+
+The pattern is worth applying where the waterfall is long and the payload is small. Both of these are
+the opposite, and the returns have flattened: 543 ms, then 220 ms, then 143 ms and 112 ms for
+progressively more work. Recorded as a decision rather than left as an open checkbox, so it is not
+picked up later as unfinished.
+
+Verification: TypeScript, `next lint` clean, 58 files / 267 tests, production build,
+`methodology:v1.1:check` with the live CSV hash unchanged, memory mirror, and `npm run serve` run
+from PowerShell.
+
+## Methodology testing closed by owner decision - 5 September 2026
+
+No tolerance will be set for transport accuracy, and the route set will not be widened. The methodology is accepted as
+reasonably accurate and not fully methodologically tested, and that trade is deliberate.
+
+The limitations are recorded as accepted rather than pending: three routes, one run each, one provider and model; two
+of four route classes uncovered and both `domestic_long` samples Thai buses; one of the three v1 comparisons
+confounded by a fallback; Bangkok to Phuket still 16.7% low; no repeat runs, so no known noise floor.
+
+The reasoning. The `tolerance` argument to `buildTransportAccuracyReport` feeds only its `outliers` list and reaches
+no user-facing surface, so setting it would change nothing anyone sees. Its value would be as a regression gate for
+future prompt or model work, which is not planned. Earning one honestly would need same-day reference fares across two
+or three aggregators with their fare bases normalised, plus repeat runs for a noise floor - and the per-adult versus
+per-booking difference already caught once would otherwise have read as a factor-of-two model error.
+
+The decisive argument is the project's own history. `docs/prompts/README.md` records v5 experiments 085 to 094 as
+rejected outcomes, and v6 and v6.1 are archived as rejected approaches retained only for audit. A great deal of
+careful work there ended in "no mapping". Proposing another measurement round, as this session did before the owner
+declined it, was not reading that pattern.
+
+The distinction worth keeping is between a specification defect and a calibration gap. Prompt v1.1 was worth making
+because the contract genuinely never said which fare to return; stating it moved the median relative error from 25.0%
+to 2.5%. Chasing a tolerance on top of that is the activity with the poor track record.
+
+Documentation was changed so this does not resurface as unfinished work. `PLAN.md` has no open checkboxes left - both
+remaining items are closed as recorded decisions rather than deleted. `docs/product/transport-estimation.md` replaces
+its "Completing the accuracy check" instructions with an accuracy status and a shorter "If the prompt, provider or
+model changes" procedure, framed around comparison with the previous run rather than clearing an absolute bar.
+`CLAUDE.md` carries the decision, so it loads into every future session.
+
+An open checkbox reading "widen the route set and rerun before choosing a tolerance" is an instruction to a future
+reader. Leaving it there while having decided the opposite is how a closed question reopens itself.
+
+---
+
+## 19 September 2026 — `Claude-Session` trailers removed from history
+
+Nineteen commits between 3 and 4 September 2026 carried a `Claude-Session: https://claude.ai/code/session_...`
+trailer. Nothing in the repository added it: there is no `prepare-commit-msg` hook and no `commit.template`. It came
+from Claude Code's `attribution.sessionUrl` setting, which defaults to true and appends the link on commits made from
+web or Remote Control sessions. The existing `includeCoAuthoredBy: false` did not suppress it, because that key is
+deprecated and only ever governed the `Co-Authored-By` line.
+
+That web-or-remote condition explains why the trailer is absent from the sixteen commits of 4 September between
+`cdad08d` and `e6d3feb`: those were made from a local CLI session, while the blocks either side were one web session
+and its resumption, which is also why all nineteen share a single session id.
+
+The trailers were stripped with `git filter-branch --msg-filter`, rewriting the 35 commits from the first affected
+commit to the tip. Trees are unchanged - the root tree hash is identical before and after, at
+`d8d51e13c934aef2763de55ebbf3d526371ad077` - and author and committer dates, authors and message bodies are otherwise
+byte-identical. The commit count stays at 333. `main` was then force-pushed with a lease.
+
+Every SHA from 3 September onward therefore changed. Five references in `PLAN.md` were updated to match:
+
+| Old | New |
+| --- | --- |
+| `06f0120` | `7e3509f` |
+| `2c13f48` | `b966748` |
+| `deb299c` | `3b3b541` |
+| `6227449` | `f7ea031` |
+| `3c791ca` | `63cd370` |
+
+Hashes recorded in this file and in `PLAN.md` from before 3 September are unaffected. A local backup of the
+pre-rewrite history is held at branch and tag `backup-pre-session-trailer-strip`; it was never pushed and can be
+deleted once the rewrite is trusted.
+
+`attribution` is now set explicitly in the user-level Claude Code settings, with `commit` and `pr` empty and
+`sessionUrl` false. All three are set rather than `sessionUrl` alone because each `attribution` field falls back to
+the standard attribution when unset, so introducing the block partially would have reinstated the co-author line.
+
+## 1 October 2026 — Trip climate foundation
+
+Started `feat/trip-climate` for monthly weather on itinerary cards, an annual view, shared Celsius/Fahrenheit conversion
+and a dual-axis whole-trip graph. The owner chose the five latest complete years (2021–2025) and requested retained
+average daily high/low data while displaying mean only. Daily values are aggregated server-side; monthly precipitation
+is the average of five monthly totals, including snow water equivalent. Missing days and invalid units fail closed.
+
+NASA POWER was initially tested, then superseded by Open-Meteo ERA5-Seamless after its coarse grid returned a
+January mean of 18.95°C for Bogotá; the elevation-aware archive returned 13.77°C. This was a source-selection smoke,
+not calibration work. Live archive checks returned complete five-year records for Tokyo, Brno and Bogotá. The first
+UI regression passed. Calculation/date/provider verification passed 32 focused tests at this checkpoint.
+
+Follow-up scope is active: save records in SQLite, collect with city generation/refresh, remove the twelve-card limit,
+avoid piecemeal graph rendering, and fix missing destination lookups. The first complete baseline passed 294 tests
+with a 30-second setup-hook limit; the default 10-second limit timed out in existing database suites under concurrent
+checks. Production build and lint passed before this follow-up integration. Final verification remains pending.
+
+## 1 October 2026 — Persist weather and collect it with city data
+
+Added versioned `city_climate` SQLite records with twelve monthly mean/high/low/rainfall values and location/source
+provenance. Batch reads do not call providers. Existing cities collect once on demand; matching failed attempts are
+stored to avoid repeated calls on page loads. Explicit city generation/refresh collects weather, and manual city
+creation collects it initially. A failed weather refresh retains labelled prior valid data without discarding a
+valid cost estimate. Responses expose ready/stale/unavailable status.
+
+The service coalesces simultaneous collections and caps concurrency at three. It validates country identity and
+rechecks the city inside a transaction before writing after network work, so rename/delete races cannot persist a
+wrong-city result. Focused persistence and integration checks pass; TypeScript passes. An initial local-trip collection
+saved 51 of 59 unique destinations before the final location fixes; the remaining records are being retried.
+UI delivery and final baseline remain active on draft PR #9.
+
+### 1 October 2026 - Trip climate UI and destination coverage checkpoint
+
+Monthly mean/rainfall rows, annual table/chart and shared Celsius/Fahrenheit switching now appear on every planner
+card. Removed the twelve-card limit and all load-more controls. The trip chart preloads its code alongside one
+bulk SQLite read and holds a fixed-height placeholder during initial collection, then draws complete settled data
+without line animation. Explicit retries handle saved failures; ordinary visits do not recollect saved weather.
+
+Strict aliases and sourced reserve/island coordinates resolve Pu Luong, Santa Fe (Bantayan) and Koh Lanta. Retrying
+only missing records saved all twelve months for all 59 distinct destinations in the actual 64-leg itinerary.
+Authenticated Chrome inspection confirms 64 cards and a complete chart. The owner noticed Salento's August rainfall
+of 1,552 mm; investigation of coordinates, raw provider values and precipitation handling remains open.
+
+Verification: next lint clean; TypeScript passed; 62 Vitest files / 326 tests passed with the baseline command.
+The obsolete source-text assertion for expanding capped cards was removed; the browser regression now checks all
+cards directly. Playwright setup plus the climate regression passed, including a repeat visit with one bulk weather
+read and no collection. A prior cold dev compile caused a UI wait timeout during concurrent checks; the warm rerun
+passed. Production rebuild and Salento investigation remain final gates.
+
+### 1 October 2026 - Salento rainfall source correction
+
+The owner flagged Salento's August point (1,552.4 mm). Verified GeoNames coordinates are correct, and a direct
+ERA5 request reproduces the stored values: about 14,243 mm/year with a July/August peak. Monthly arithmetic
+sums daily precipitation over five years and divides by five correctly. No unit-conversion or app aggregation
+defect was found; the exact upstream cause is unconfirmed.
+
+Official Quindio station 26120160 (1975-2014) has about 2,549.5 mm/year and July/August minima; Cortolima's
+independent 1979-1998 report agrees on the seasonal pattern. Those older periods were used for a location sanity
+check and were not substituted for recent data. Links and details are in docs/product/trip-climate.md.
+
+A bounded comparison with Open-Meteo ECMWF IFS returned the complete 1,826-day 2021-2025 period, all four
+required variables, 3,126.56 mm/year and August 225.78 mm. Its July minimum and spring/autumn wet periods are
+more consistent with the station evidence. Salento CO now selects IFS explicitly for the entire weather record,
+with model/grid/URL provenance and its own persistence version. Other destinations retain ERA5-Seamless and their
+saved records. No clipping, scaling or automatic fallback was added. The live Salento record was replaced from
+the validated retained public IFS response, avoiding another provider request. IFS model upgrades limit long-term
+consistency, so this remains a pinned five-year gridded estimate, not a station normal or climate trend.
+
+Focused provider/persistence tests and TypeScript pass. Final rendered source verification and baseline rerun are
+pending at this checkpoint. A new persistence assertion initially matched a one-item array against twelve months;
+it now checks the first month independently. The browser test allows route hydration time during development
+compilation while retaining exact request counts and the controlled initial-collection gate.
+
+### 1 October 2026 - Trip climate final verification
+
+Final baseline passed: npx tsc --noEmit, npm run build, npm test -- --run (62 files / 330 tests),
+npm run docs:check-memory and npm run methodology:v1.1:check. Next lint is clean. The two Playwright checks
+(auth setup and climate regression) pass, covering the initial collection gate, full cards, date boundaries,
+annual data, shared conversion, explicit retry, source-model attribution, mobile sizing, and warm reload with
+one bulk weather read and no collection. The final suite uses the baseline hook timeout; the earlier extended
+hook run was only needed during concurrent development/build checks.
+
+Authenticated Chrome inspection verifies 64 actual itinerary cards, Salento August 226 mm, annual IFS source
+attribution, and conversion to Fahrenheit propagated from the annual view to the trip chart. Restored Celsius
+after inspection. An input dispatch acknowledgement timed out although the subsequent DOM/screenshot confirmed
+the conversion succeeded; no repeated click was needed. The complete graph has no unavailable-city warning.
+Read-only database verification finds 59 destinations and 708 valid months with mean/high/low/rainfall: 58
+ERA5-Seamless records and one ECMWF IFS record. The v1 CSV hash is unchanged. Production /plan first-load JS
+is 172 kB; browser checks used the development server and are not production speed measurements.
+
+Implementation is complete in PR #9. The working SQLite weather is local, gitignored data; source adapters and
+schema are in the PR. Existing saved records survive restarts/builds, while missing legacy cities collect on
+first use. No provider owner keys or cost-methodology calibration were used.
+
+## 1 October 2026 — Initial page performance
+
+Planner, dataset and settings now receive their initial data from shared server-side database readers. The same readers
+serve their existing HTTP endpoints; ten authenticated API payloads are byte-identical to the original build. Initial
+loads do not refetch that data. Client navigation refreshes cached route props, including first-time client visits.
+The planner includes saved climate immediately, retains missing-city collection and explicit retry, and renders all
+64 cards. Memoized cards and stable update/delete/reorder callbacks skip unrelated dialog and header updates.
+
+Production Chromium measurements use a disposable copy of the local dataset and a test-account password in that copy.
+Five visits per route: planner content fell from 549–686 ms across baseline runs to 212 ms, dataset from 132 to 70 ms,
+settings from 141 to 55 ms. Initial browser data requests fell from 7/2/4 to zero with saved weather. The first Add Leg
+dialog remains about 1.4 seconds from navigation, down from 1.78 seconds before card memoization and weather deduplication.
+The planner sends all cards: about 1.73 MB decoded HTML and 76–77 KB compressed. The HTTP guard now adds 24 KiB per
+planner card to its 512 KiB base limit; other route limits are unchanged. Server working set after checks was 147–166 MiB.
+
+Added `npm run performance:browser` for content, dialog, transferred/decoded HTML and API timing, with a 5-second
+readiness budget and optional JSON report. Production Playwright auth uses test-account email/password; development
+keeps the PIN. Browser fixture tests enter through client navigation because their API mocks cannot replace server
+database reads. Removed obsolete twelve-card constants and updated old assertions for sidebar links and the summary
+below the climate graph. The summary comparison now reads both positions in one browser frame, avoiding a hydration
+layout change between separate measurements.
+
+Final baseline: TypeScript, lint, production build, 63 Vitest files / 334 tests, memory mirror and v1.1/live-CSV guard
+pass. All 31 Chromium regressions plus auth setup pass across focused production runs. Coverage includes pre-JavaScript
+data, no duplicate reads, navigation freshness, full climate cards and retry, C/F conversion, dialogs and provider/model
+pickers, sticky summary, saved plans, two/five-plan comparison and UI smoke. An early concurrent test run timed out in
+the existing ten-second snapshot setup hook; the baseline rerun passed without increasing that limit. Two older browser
+assertions described superseded navigation/layout behavior and now check the current UI. Workflow writes and test
+credentials stayed in the database copy. No provider owner keys, live cost CSV changes or methodology work were involved.
+
+Implementation checkpoint `ded9af3` is pushed to `origin/feat/app-performance`, based on `feat/trip-climate`.
+The final checkpoint closes the performance follow-up and retains the local production measurement limits above.
+
+## 1 October 2026 — Requested weather and performance merges
+
+Merged trip climate PR #9 into `main` first, preserving verified head `92f1606` through merge commit `a1d08aa`.
+Created performance PR #10 from `feat/app-performance` and merged it next, preserving implementation `ded9af3`
+and plan checkpoint `8288d38` through merge commit `1dcaba5`. GitHub reports both PRs merged into `main`.
+Neither PR had merge conflicts or configured GitHub status checks. The resulting tree is identical to the verified
+performance branch before this completion documentation, so the recorded production baseline and browser results apply.
+The memory mirror and whitespace check also pass for the merge documentation.
+
+Another agent started `fix/city-generation-model-discovery` in the shared working tree while these merges were in
+progress. Moved the merge work to `.local/merge-request`, removed only this task's temporary plan edits from the
+original checkout, and synchronized local `main` in the isolated checkout. The new PR branch was not merged or changed.
+
+## 1 October 2026 — City generation limits and current model discovery
+
+The owner reported failed Querétaro, Mexico generation and model refresh and requested GPT-6 Luna max as OpenAI's
+default. City generation still imposed 2,500 tokens (raised to only 12,000 at max) and never read the user request
+limits. OpenAI incomplete responses were treated as ordinary text, so exhausted reasoning surfaced as a JSON-schema
+failure. New-city, planner add-city and existing-city refresh now pass the configured limits and timeout; truncated
+OpenAI output is rejected and retried through max → xhigh → high without dropping required web search. The
+successful effort is persisted, and usage logs contain only model/status/token metadata.
+
+Keyed model-list failures previously skipped the no-key aggregators and returned the April snapshot. They now try
+current aggregators, label account availability as unverified and are not cached. Discovery calls time out after
+15 seconds. The snapshot is refreshed from upstream; the previous stored OpenAI default migrates to gpt-6-luna.
+Official model documentation: https://developers.openai.com/api/docs/models/gpt-6-luna. Other custom selections remain.
+
+TypeScript, lint, production build, 63 Vitest files / 344 tests, memory mirror and v1.1 guard pass. Isolated production
+auth setup plus three browser regressions pass, and the authenticated no-key refresh returns 60 current OpenRouter
+models. The browser tests use a disposable SQLite copy and generated test credentials; no owner-key values are
+accessed. Live Chrome verifies an explicit refresh returning 78 OpenAI account models without warnings. Querétaro,
+Mexico generates successfully once, with one history row, `openai/gpt-6-luna`, thinking `max`, v1.1 and dated RBA FX
+snapshot `llm-rba-fx-2026-10-01` (UI rate 1 USD = 1.44 AUD). The original failure was not captured before the fixes;
+the former cap and incomplete-response defects are reproduced by deterministic transport tests. No live CSV edits,
+formula changes, calibration work or bulk migrations are performed. Temporary production QA processes are stopped.
+
+Chrome control initially failed during request-header policy initialization and then reported unavailable browser
+bindings. A user-requested Astra xhigh subagent recovered control after reconnecting and verified page interaction,
+model refresh and generation through the UI. No integration files/settings were changed. The sidebar's separate
+missing-`nodePath` error was not verified repaired; successful Chrome automation is the observed recovery.
+
+Updated the owner-invoked Chrome Recovery skill with these observations and retained its original files in an
+ignored local backup. The installed skill passes Skill Creator validation and matches the validated staged files.
+The skill documents current CUA discovery, bounded reconnect checks, unknown action outcomes, sandbox registry
+false failures and the separate sidebar error; it does not claim a permanent integration repair.
+
+Published implementation `1581388` and verification checkpoint `b00f643` on
+`origin/fix/city-generation-model-discovery`. Opened PR #11 against `main`:
+https://github.com/mwilczynska/holiday-spend/pull/11. The final documentation checkpoint closes this task;
+the PR remains open for review.
+
+## 1 October 2026 — Generation and model-refresh failure messages
+
+The continuing owner goal includes Chrome checks of failed generation and refresh, beyond the earlier success
+checks. Added shared credential-safe provider errors with HTTP status and guidance for authentication, permissions,
+model access, quota and temporary provider failures. Browser network failures and unreadable server responses now
+have distinct messages. City schema failures identify invalid or missing fields without echoing returned values;
+invalid RBA FX now preserves its validation reason as a 502 generation failure rather than a generic server error.
+Anthropic and Gemini now use the configured request deadline too, including time spent waiting for retries.
+
+Live Chrome, with the saved key kept masked and never read, verifies a nonexistent-model error for an existing city
+and the new-city Papantla, Mexico form. Both display the real OpenAI 404/model-access detail and retry guidance;
+the form retains its fields and re-enables submission. A tab-scoped block on the model-refresh endpoint produces
+the connection message. Removing that block and refreshing restores 78 live account models, GPT-6 Luna and Maximum.
+The block is removed and networking restored. Read-only database checks confirm 207 cities / 64 history rows before
+and after the failed Papantla request, no Papantla row and one active Querétaro history row.
+
+TypeScript, clean lint, production build, 64 Vitest files / 360 tests, memory mirror and the unchanged-live-CSV v1.1
+guard pass. Production auth setup plus four browser regressions pass against a disposable database copy, including
+failure details, network failure, form retention and retry, default migration and multi-provider refresh. The no-key
+authenticated production endpoint returns 60 current suggestions. Temporary production QA processes exit cleanly.
+
+Committed and pushed the failure-message chunk as `515c445` on the existing PR #11 branch. Updated the PR description
+to include the final behavior and 360-test / five-browser-check evidence. Chrome is left on the successful Querétaro
+result after cancelling the failure form; the saved key is untouched and GPT-6 Luna max is restored.
+
+## 1 October 2026 — Owner-requested PR #11 merge to main
+
+At the owner's request, merged PR #11 into `main` with merge commit `5a12f83`, preserving its verified implementation
+commits and published head `28886be`. GitHub reports the PR merged. The merged tree is byte-identical to that PR head;
+the recorded 360 tests, five production browser checks and required baseline therefore apply without implementation
+changes. No GitHub status checks were configured. Fast-forwarded local main to the merge and published this completion
+record after checking the memory mirror and whitespace.
+
+## 1 October 2026 — Shared keys, city selection and transport request controls
+
+The owner requested shared saved provider keys across city and transport dialogs/windows, clearer city selection,
+and Chrome verification. They then reported every leg in a ten-leg transport batch failing at a 900-token cap,
+with no way to stop the queue, and asked for a substantially larger request size.
+
+Replaced feature-specific key hook state with one session store and one atomic opt-in browser record. Previously
+saved city and transport keys migrate once; explicit opt-outs are respected. Native storage events update other
+open windows, and same-window subscriptions update every dialog. Clearing and opting out remove saved values;
+unsaved session use remains available. Provider/model preferences retain their existing feature namespaces.
+
+The city-picker defect was a CSS selector matching `data-disabled="false"`. It applied pointer-events:none and
+50% opacity to enabled options. Disabled styling now matches only true, and enabled choices have a pointer cursor,
+full contrast, immediate click selection and the existing Enter behavior. Chrome verifies Querétaro by click,
+Lima by Enter, and a dark active row with white text at full opacity.
+
+Removed transport's 900-token browsing cap and 650-token fallback cap. Every grounded, non-search and strict JSON
+retry uses the configured output/time limits, with a 64,000-token output default regardless of effort. Truncated
+OpenAI output is rejected even if it parses as JSON. Stop aborts active browser/provider requests and prevents
+queued legs from starting; cancelled legs are distinct from failures. Completed estimates remain available,
+failed-only retries preserve them, and the action footer stays visible while scrolling. Abort signals also
+interrupt provider retry waits and prevent an aborted request from starting a fallback.
+
+Chrome's real ten-leg cancellation test returns ten cancelled / zero failed and restores the controls. A subsequent
+run at GPT-6 Luna Maximum yields nine successful estimates and one five-minute timeout on Querétaro to San Agustinillo.
+Both stored request-limit overrides are null, with no environment override, so the five-minute default is the cause.
+Increased the default to ten minutes; that route then succeeds on retry. The development reload cleared this test
+preview, so the retry selected only that route. No transport estimates were applied to the owner's itinerary.
+Parent data refreshes now preserve an open dialog's results. This is an execution check, with no accuracy calibration.
+
+Saved-key sharing, clearing and opt-out also pass in two already-open Chrome pages on a disposable production
+origin at 127.0.0.1:3002. Fixture keys and account credentials stay in the ignored QA environment; the owner key
+remains masked and is never accessed by Codex. Temporary test keys are cleared and test tabs/server are closed.
+Proof files are under `.local/city-generation-qa/`: `city-picker-highlight.jpg`, `shared-key-chrome.jpg`,
+`transport-stopped.jpg`, and `transport-retry-success.jpg`.
+
+TypeScript, clean lint, production build, 65 Vitest files / 377 tests, memory mirror and v1.1 guard pass. Production
+auth setup plus four interaction regressions pass against a disposable database copy. A first browser run exposed
+a duplicate Close locator and timed out during picker interaction; the locator is corrected and the final run passes.
+The initial full-suite run overlapped a build and hit a database setup timeout; both later full-suite runs pass.
+The live city CSV hash remains `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+Committed the verified implementation as `caf6933` on `fix/shared-keys-city-picker`. Publication follows this checkpoint.
+
+Published implementation `caf6933` and verification checkpoint `e552ae9` to `origin/fix/shared-keys-city-picker`.
+Opened [PR #12](https://github.com/mwilczynska/holiday-spend/pull/12) against main with the final scope and validation.
+This final documentation checkpoint closes the task; the PR remains open for review.
+
+## 1 October 2026 — Owner-requested PR #12 merge
+
+The owner requested pushing the completed fixes to main. The working tree is clean and the published PR head is
+`2ea3dbd`, based on main `51c50fd`. Preserve the verified commits with a merge commit, compare the merged tree
+with the published PR head, then synchronize local main and publish the completion record.
+
+Published merge-start checkpoint `d863e48`. GitHub reports a clean, mergeable PR and merges that exact head as
+`e34ee64`, preserving the verified implementation commits. The merged tree is identical to the published PR head;
+local main is fast-forwarded to it. The recorded full baseline, 377 tests, five production browser checks and Chrome
+interaction evidence still apply because this merge changes no implementation. This documentation checkpoint
+records completion on main; memory consistency and whitespace checks pass.
+
+## 2 October 2026 — Comprehensive Chrome feature QA, expense creation fix
+
+Owner requests comprehensive interactive Chrome testing and a commit after each fix. Start from clean main
+`1413f3f` on `fix/comprehensive-feature-qa`. Tests use a SQLite backup at `.local/feature-qa/travel.db` with a fixture
+account; the owner database and credentials are not changed. Track actual coverage and unresolved findings in
+`docs/dev/feature-qa-2026-10-02.md`.
+
+Chrome verifies fixture login, nine dashboard information buttons, both chart view switches and all three
+expansions with Close/Escape. A transient request-header policy failure recovers on one retry; no Chrome integration
+files/settings change. Quick Add categories and payer buttons work, but saving 25 USD leaves `amount_aud` null and
+Expenses shows `No AUD conversion`. Fixed-cost negative-value rejection also closes/clears its form without an error;
+zero provider output tokens silently reset to default. Those two fixes remain separate next steps.
+
+Expense creation now resolves AUD when none is supplied, preserves missing conversion if rates fail, and warns the
+user. Quick Add displays rejected/network errors, retains input for retry, clears successful input immediately and
+prevents duplicate success submissions. Chrome verifies empty-currency rejection with retained input, then 25 USD
+retry saved as $36.03 AUD (36.0275 stored). Evidence lives under `.local/feature-qa/`.
+
+TypeScript, production build, memory mirror and v1.1 guard pass; live CSV unchanged. Ten focused route tests pass.
+The initial full suite hits an existing 10-second snapshot-import setup timeout (379 passed / four skipped); the
+rerun passes all 66 files / 383 tests. All 37 existing production Playwright checks and three new expense regressions
+plus auth setup pass. Production rebuild requires stopping the identified QA process tree after Ctrl+C leaves it
+holding `.next/standalone`; the existing guard reports this immediately.
+
+## 2 October 2026 — Fixed-cost failure recovery
+
+The first QA fix is committed/pushed as `1eab5ed`. The separately reproduced fixed-cost form defect is corrected:
+failed additions retain their draft and expose HTTP/network errors; paid/delete failures show errors without
+changing displayed rows. Positive finite amounts and trimmed descriptions are required. Request locking prevents
+duplicate writes while saving. Form and row controls have accessible labels.
+
+Chrome verifies -5 AUD is blocked, a controlled database rejection keeps description/25 AUD visible, and retry
+after removal of the isolated test trigger succeeds. Paid status persists after reload, then fixture deletion succeeds.
+The trigger and test row are removed. Existing expense edit also verifies changing the USD fixture to 45 AUD
+recalculates conversion and updates the total.
+
+TypeScript, production build, all 383 Vitest tests, memory mirror and v1.1 guard pass. Three new fixed-cost
+Playwright regressions plus auth setup pass, covering failed add/network retry, paid/delete rejection and real CRUD
+persistence. Screenshots and detailed coverage are recorded in `docs/dev/feature-qa-2026-10-02.md`.
+Remaining next steps include zero request-limit validation and the wider workflow inventory.
+
+## 2 October 2026 — Request-limit zero validation
+
+Fixed-cost fix committed/pushed as `78967e3`. The separately reproduced zero-limit defect came from converting
+`Number(value) || null`: 0 reset the override and reported success. Only blank fields now become null; zero reaches
+the existing server validator. Inputs expose current bounds, status and error messages have accessible roles.
+
+Chrome verifies zero tokens retain their draft and show the minimum-value error. Valid 32,000 tokens / 90 seconds
+persist after reload, and Reset restores defaults. TypeScript, production build, 383 Vitest tests, memory mirror
+and v1.1 guard pass. Two new production browser regressions plus auth setup pass, including rejected zero/negative/
+bounds/fractional-token writes retaining saved overrides and valid persistence/reset/blank behavior.
+
+Interactive Wise uploads are blocked by Chrome extension `Allow access to file URLs`; Parse with no file correctly
+shows an error and the chooser opens. The permission error returns after an approximately twenty-minute wait.
+User input is requested and other testing continues. No permission or integration setting is changed by Codex.
+Source review identifies import preview category persistence as the next reproduction target.
+
+## 2 October 2026 — Wise preview category persistence
+
+Request-limit fix committed/pushed as `5f3e1f4`. A new production Playwright reproduction confirms that changing
+Food to Shopping in the Wise preview still saved Food. The confirmation request omitted editable categories.
+Confirmation now sends transaction/category overrides; the API validates supported categories, membership in the
+parsed files, duplicate overrides and extra fields. Only category changes are applied; amounts remain parsed from
+the source files. Selecting replacement files invalidates the preview; file selection/parsing is disabled during import.
+
+The previously failing browser regression passes: Shopping persists, reparse reports the existing transaction as
+duplicate. A second regression confirms replacement files clear the old preview. TypeScript, production build,
+66 Vitest files / 387 tests, memory mirror and v1.1 guard pass. The two production browser regressions plus auth
+setup pass. Interactive Chrome file attachment remains blocked on the extension permission, recorded separately.
+
+Chrome planner testing adds a disposable two-night Agra leg, verifies empty picker search and tests all six
+accommodation, four food and four drink choices. Further controls and workflows remain active in the coverage ledger.
+## 2 October 2026 — Feature QA: visible zero planner overrides
+
+Chrome reproduces a saved zero drinks override displayed as Auto despite correct totals (155 AUD/day, two nights
+plus 65 one-off = 375). The field used a truthy fallback. Nullish fallback preserves zero, and labels now target
+their inputs. A production regression fails before the fix and passes after it for all five fields, reload, clearing
+to automatic pricing, and separate one-off transport. Chrome verifies zero after reload. TypeScript, build, all
+387 unit tests, memory mirror and v1.1 guard pass. The full 47-check production browser suite also passed before
+this additional regression. Testing remains on the isolated database; coverage continues.
+
+## 2 October 2026 — Feature QA: expense mutation and read failures
+
+Chrome controlled expense update failure closed the form and discarded the draft without showing an error.
+Edit/exclude/delete/bulk handlers now check HTTP and response shape, catch network failures and retain failed
+drafts/selections. A ref guards concurrent submissions. Reads retain explicitly labelled prior results with Retry,
+and stale in-flight responses cannot overwrite newer ones. Controls have labels; expanded details span eight columns.
+Chrome verifies retained fields and successful retry after removing the copy-only trigger, including category,
+merchant, subcategory and unassignment. Three production browser regressions plus auth setup pass for HTTP/network
+and validation failures, mutation retry/persistence and read-failure retry. TypeScript, build and all 387 unit tests pass.
+
+Automatic approval rejected live transport estimation because route cities, dates and notes could leave the app.
+The user has an async choice about disposable live provider checks; independent local feature testing continues.
+No owner provider keys are read. The isolated launcher explicitly clears provider and Resend environment keys.
+
+## 2 October 2026 — Feature QA: tag write/read errors
+
+Chrome duplicate tag creation closed and cleared the rejected draft without feedback. Tag mutations now check
+HTTP/JSON/network responses, retain failed drafts/selections and report duplicate names with 409 guidance. Trimmed
+names reject whitespace. Fields/actions are labelled, tag selection is keyboard accessible, and renaming refreshes
+the selected title. Read failures expose errors/Retry rather than false empty states and ignore obsolete tag reads.
+Chrome verifies retained duplicate draft and selected renamed title. Three production browser regressions plus auth
+setup pass for duplicates, rename/color persistence, network and delete failure/retry, and list/expense read recovery.
+TypeScript/build pass; an overlapping unit/browser run exceeds two existing setup hooks, then isolated rerun passes
+all 66 files / 387 tests. This is setup timing, not a product assertion failure.
+
+The expense CSV download is correct: only the two filtered manual QA rows. Chrome's download control waits about
+34 minutes despite requested short waits. That browser-control delay is recorded separately from app performance.
+
+## 2 October 2026 — Feature QA: deleted/excluded tag spend
+
+A copy-only tagged expense fixture is marked deleted after Chrome native-confirm handling fails to submit it;
+SQLite verifies the failed browser attempt changed nothing. Chrome still displays the deleted row and 45 AUD total.
+A new production regression also fails on excluded spend (49.25 total instead of 19.25). Tag counts/lists now omit
+deleted records and totals reuse the tracker AUD helper, excluding excluded spend. Rows label exclusions and missing
+conversions; loading/failed totals remain unavailable rather than zero. Chrome verifies 0 expenses / $0 and no rows.
+The new regression and all three prior tag regressions plus auth setup pass through exclude/include/delete, matching
+sidebar/detail totals and empty states. TypeScript, build and 387 unit tests pass. Memory/guard checks pass.
+
+Chrome confirmation control stalls on Emulation.setFocusEmulationEnabled; a fresh same-browser tab works. This is
+recorded as a control-surface limitation, with actual delete persistence covered by production Playwright.
+
+## 2 October 2026 — Feature QA: narrow-screen overflow
+
+Chrome reproduces a 1,152 px Compare page and overflowing planner/mobile navigation at a narrow viewport.
+A new production regression fails at 390 px with page width 1,152. The root main flex item now allows shrinking;
+planner header/transport controls and leg summaries wrap; mobile navigation uses smaller narrow-screen spacing.
+The regression passes across Compare, Planner, Dataset, Expenses and Settings, including Home/Sign out visibility.
+Chrome verifies corrected comparison/planner widths and visible mobile navigation. TypeScript, build, 387 unit tests,
+memory and v1.1 guard pass. Screenshots are retained in the ignored QA folder. Viewport override is reset afterwards.
+
+## 2 October 2026 — Feature QA: negative city costs
+
+Chrome saves -5 hostel cost on the isolated Agra row and reports City saved. The fixture is restored to 6.
+City create/edit API schemas now reject negative/nonfinite values. The editor retains invalid costs and reports
+the field name before JSON serialization; invalid coffee/basket drafts are retained instead of becoming missing.
+Fields have associated labels and allow decimal steps. Chrome verifies retained -5/error and valid retry. A
+production regression fails before the fix, then passes API rejection, unchanged stored values, zero/blank reload,
+decimal coffee and linked drinks-none persistence. TypeScript, build and 388 unit tests pass; memory/guard pass.
+
+## 2 October 2026 — Feature QA: failed initial expense read
+
+Temporarily renaming only the isolated copy's expense table reproduces a failed server read. Chrome presents
+0 expenses / $0 / No expenses yet with no error or Retry, including after hydration. The fixture is restored.
+The server now passes its read failure to the client; initial failure triggers a retry, unavailable counts/totals
+are labelled, exports are disabled, and last-loaded wording applies only to a prior successful read. Chrome
+verifies unavailable state and Retry recovery to 1,301 rows after restoration. The production regression fails
+before the fix and passes after; three expense mutation regressions plus auth setup pass. Its schema fixture
+requires the isolated QA path/account and restores in finally. TypeScript/build and 388 unit tests pass; memory/guard pass.
+
+Additional Chrome coverage: saved-plan list scroll reaches its last row; current/saved JSON downloads exist;
+two/five-plan comparisons and all expansions pass; traveller counts 1–5, persistence and planner scaling pass;
+profile save/clear/reload and logout/invalid-login pass; missing reset and invalid verification tokens show guidance.
+Controlled local generation errors retain retry forms. Bulk transport preserves one success while retrying only
+one failure, applies fixture rows with reload persistence, and Stop starts five calls then labels nine cancellations
+while retaining one completed option. No additional queued requests start. Request interception is cleared.
+
+## 2 October 2026 — Feature QA: reachable expense tag assignment
+
+Chrome confirms no tag assignment/removal action in expense rows or edits. Added a labelled picker on desktop
+and mobile with owned options, retained failed saves, read retry and atomic selection replacement. Chrome checks
+assignment persistence after reload and removal. Production regression checks failure retention/retry, read retry,
+totals and invalid tag rejection. Four unit checks cover ownership, deleted expenses, invalid IDs, deduplication,
+clearing and rollback after an insert rejection; all 67 files / 392 tests pass. Settings JSON/CSV downloads pass
+artifact comparisons in production Playwright. Chrome export clicks produce no observable artifact and remain
+separate from that evidence. No owner data or credentials were changed.
+
+## 2 October 2026 — Feature QA: stale methodology screen
+
+Chrome finds the retired v2.1/v3 research methodology presented as current on `/estimates`. Replaced it with the
+implemented v1.1 anchor contract, RBA conversion, preserved formulas, traveller scaling, provenance and limitations.
+The archived v2/v3 document keeps its full text and records the page replacement date. No methodology calibration,
+panels or holdouts were opened. All 60 production browser checks after F12 passed in 3.1 minutes.
+Chrome verifies the seven current sections, Enter toggling, bottom scroll and mobile containment. TypeScript,
+build, 392 unit tests, memory and v1.1 guard pass. The body-targeted Control+End control call times out; wheel
+scrolling works and reaches the final section.
+
+## 2 October 2026 — Feature QA: rejected itinerary ordering
+
+Chrome verifies move-up persistence, then rejects Sort by Date with a controlled local 503. The saved order stays
+unchanged while the UI reports success. Restored order and cleared interception. Manual moves and date sorting now
+check HTTP/JSON/network results, retain order on rejection, report errors and permit retry. Order writes are atomic,
+and labelled move controls are disabled during a pending request. The production regression fails before the fix
+because no rejected-move error appears; an earlier fixture-shape mistake was corrected before that reproduction.
+The regression passes after the fix through HTTP/network failures, retained order, retry and reload persistence.
+Chrome sees the error without false success and restores the original order after retry. Two unit checks verify
+scoping and rollback; all 68 files / 394 tests pass. TypeScript, build, memory and v1.1 guard pass.
+
+## 2 October 2026 — Feature QA checkpoint after fourteen fixes
+
+First full F14 browser run passes 60/61; its new ordering test sends no mocked request on its first click, with
+only the finally cleanup request in the trace. Added the same network-idle page-readiness wait used by initial-data
+checks. Complete rerun passes all 61 in 3.1 minutes. Production code is unchanged after `6a001de`.
+Chrome also verifies all dashboard tooltips, trip-climate tooltip/shared units, annual mobile dialog bottom,
+methodology sections/links/bottom, inclusive expense date bounds/keyboard clear, and far-edge scrolling for the
+dataset, history, country table and five-plan cards. Reversed expense dates return zero results without a message.
+The ledger retains remaining planner edit/add and page read/empty-state failure work. File attachment, live provider,
+native confirmation, Settings Chrome download and credential/email/OAuth limitations are explicit.
+
+## 2 October 2026 — Feature QA: rejected leg additions
+
+Chrome returns a controlled 503 for Add Leg and sees the dialog close, the city/nights reset and no error. The new
+production regression fails on the prior build. Failed saves now keep the selected city and nights with an error;
+pending additions lock the form, and nights use strict positive-integer validation. Unreadable save results advise
+checking whether the leg was saved before retrying. Chrome verifies the retained Amsterdam / nine-night draft,
+error, fractional-night rejection and pending disabled controls. Two production tests plus auth setup pass for
+HTTP/network/unreadable errors, retry/reload, validation and submission locking. TypeScript, build, 394 unit tests,
+memory and v1.1 guard pass. All writes remain in the isolated QA copy.
+
+## 2 October 2026 — Feature QA: failed planner reads
+
+Chrome rejects the itinerary GET during client navigation and sees a false zero-leg / zero-budget empty state.
+The production reproduction fails on the prior build. Refreshes now validate all required HTTP/JSON/list/settings
+responses before replacing loaded data, retain the previous view with a stale warning and Retry, and ignore obsolete
+reads. Saved-plan reads expose failures and Retry; valid empty results stay distinct. Snapshot saves and ordering
+are disabled while loading or stale. Chrome verifies retained 65 legs / $112,690 and successful Retry. Nine relevant
+production tests including auth setup pass for failures, retry, empty data, initial SSR, leg addition and ordering.
+TypeScript, build, all 68 unit files / 394 tests, memory mirror and v1.1 guard pass. No owner DB or key changes.
+
+## 2 October 2026 — Feature QA: rejected inline leg edits
+
+Chrome changes disposable leg 1094 from fourteen to fifteen nights, rejects PUT with a controlled 503 and sees the
+draft disappear without an error. The production reproduction fails on the prior build. Cards now retain failed
+drafts with Retry/Discard; per-leg writes are serialized and coalesced so newer input survives older responses.
+Card previews are labelled and aggregate totals use confirmed data. Plan save/export/replacement/order/estimates
+wait for edits to settle. Transport edits share the queue; a status saved before an automatic-order failure is labelled.
+Three production tests plus auth setup pass for failure/retry/discard, unrelated refresh preservation, automatic
+ordering failure, rapid 2 → 20 → 200 input with two writes and transport draft persistence. Chrome verifies retained
+fifteen nights, unchanged trip totals, Retry/reload and restoration to fourteen. The focused number field's HTML
+attribute remained fourteen while its displayed/property value was fifteen; screenshot and reload confirm the result.
+All 69 unit files / 398 tests, TypeScript, build, memory and v1.1 guard pass. The complete production browser sweep
+passes all 68 checks in 3.7 minutes, including imports, comparisons, climate, transport and complete Settings exports.
+
+## 2 October 2026 — Feature QA checkpoint after seventeen fixes
+
+Three separate planner fixes are pushed: Add Leg draft retention `f16d78a`, failed-read preservation `d0dec59`, and
+serialized inline edits `bc2d491`. Chrome proofs and the full 68-check production browser sweep are recorded in the
+coverage report. All 398 unit tests and the required baseline pass. The next local pass covers dashboard, dataset
+and settings read/empty-state behavior. Interactive attachments and live-provider checks still await the pending
+choices; owner data and provider keys remain untouched.
+
+## 2 October 2026 — Feature QA: dashboard read failures
+
+Chrome reproduces a rejected refresh leaving unlabelled stale totals and an initial database read failure leaving
+an empty shell. Failures now retain prior totals/charts with a stale label and Retry or show initial unavailable
+totals/charts. Responses are validated before replacing the complete view; valid empty results remain distinct.
+The first client navigation refreshes, while full successful loads skip duplicate reads. Four new production
+regressions fail against the previous build and pass after the fix, plus auth setup, covering failure/recovery,
+malformed/partial/network/HTTP data, valid empty data and freshness. Chrome verifies both failure states and Retry.
+The copy-only table suspension is restored. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass.
+
+## 3 October 2026 — Feature QA: dataset read failures
+
+Chrome reproduces rejected library reads reporting zero cities without an error and silent selected-city provenance
+failure. Library/history reads now validate complete HTTP/JSON/schema/cost data together and retain prior results
+with a stale warning and Retry. Initial failures label counts/rows unavailable; provenance has its own Retry. City
+drafts survive retry, and a successful city save stays saved when refresh fails. Chrome verifies retained 210 cities,
+71 countries and 67 history records, initial unavailable counts, provenance error and Retry recovery. The production
+reproduction fails before the fix. Ten relevant browser checks pass, including five new regressions, city editor,
+SSR/navigation and auth setup. TypeScript, build, all 398 unit tests, memory mirror and v1.1 guard pass. Copy-only table
+suspension is restored; owner data and keys are untouched.
+
+## 3 October 2026 — Feature QA: Settings read failures
+
+Chrome reproduces a rejected fixed-cost read reporting zero totals and an empty list despite a $25 QA row. Settings
+now validates all required responses before replacing data, keeps the last loaded view with a stale warning and
+Retry, and labels initial values/totals unavailable. Retry preserves unsaved provider-limit drafts; dependent actions
+wait for valid reads. Chrome verifies retained costs, unsaved 33,333 tokens / 420 seconds, initial unavailable values
+and recovery to 64,000 / 600 seconds / two travellers. Copy-only table suspension is restored and the fixture removed.
+The production reproduction fails before the fix. Ten relevant browser checks pass, including four new regressions,
+fixed-cost/provider-limit workflows and auth setup. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass.
+The complete production browser sweep passes all 81 checks in 4.1 minutes after the three read fixes, including
+imports, comparisons, climate, transport, export artifacts and all thirteen new failure-state regressions.
+
+## 3 October 2026 — Feature QA checkpoint after twenty fixes
+
+Three separate read fixes are pushed: dashboard `b40b150`, dataset/provenance `e37bda0` and Settings `527db84`.
+Chrome verifies retained data, unavailable initial values and Retry recovery; the full production browser sweep
+passes all 81 checks. All 398 unit tests and the required baseline pass. The next local pass checks Settings saves
+and concurrent submissions, then Compare Plans failure states. Interactive attachments and live provider checks
+still await the pending choices. The QA table suspensions are restored and the temporary fixed cost is removed.
+
+## 3 October 2026 — Feature QA F21: traveller saves retain labelled drafts
+
+Chrome reproduces a rejected five-person selection appearing saved after both the PUT and following GET fail;
+the prior selector also stays enabled during a held write. Confirmed count and draft are now separate. Validated
+acknowledgements and successful rereads confirm writes; failures keep Retry/Discard, and pending writes lock the
+selector and dependent cost actions. Chrome verifies the pending lock, labelled draft, both Retry controls,
+five-person reload persistence and restoration to two. Four new production regressions plus ten related checks
+pass. TypeScript, build, all 398 unit tests, memory mirror and v1.1 guard pass. A usage-limit interruption delayed
+Chrome Retry verification; the resumed request-header policy failure cleared on one retry. Page reading and an
+interaction were verified before returning to the app. No integration settings changed. Provider-limit saves and
+Compare Plans failure states are next; interactive attachments and live providers retain their recorded gaps.
+
+## 3 October 2026 — Feature QA F22: provider-limit acknowledgements and pending writes
+
+Chrome verifies that a malformed HTTP 200 acknowledgement clears provider-limit inputs and reports success, while
+delayed writes leave Save/Reset/inputs enabled. The fix validates acknowledgements against requested values and
+configured ranges, retains failed drafts/resets with Retry and locks competing Settings writes. New edits clear
+stale status and replace the retry operation. Chrome verifies pending locking, malformed-response retention,
+Retry/reload and restored defaults. Three new production regressions plus fourteen related checks pass. TypeScript,
+build, all 398 unit tests, memory and v1.1 guard pass. The first unit run exceeds the existing snapshot-import setup
+deadline; its complete rerun passes all 69 files. Compare Plans now has separate Chrome reproductions of a false
+empty list after GET 503 and a hidden POST calculation failure while selecting plans. That fix is next.
+
+## 3 October 2026 — Feature QA F23: comparison failures and complete results
+
+Chrome reproduces a false empty comparison list after GET 503 and a hidden POST error while selecting plans.
+List failures now retain data/selections with Retry or label initial counts unavailable. Calculation errors remain
+visible in selector mode; complete validated responses replace results, prior results stay labelled stale on failed
+history navigation, and obsolete reads are ignored. Unchanged IDs can be compared again. The API rejects malformed,
+duplicate and partially missing/unowned ID sets. Chrome verifies initial recovery, retained selections, pending
+locking, visible error and Retry. Five new production regressions and eight existing comparison/mobile/auth checks
+pass on the final build. A first mobile timeout at the third route, Dataset, passes alone and in the final full run;
+no test deadline is changed. TypeScript, build, all 398 unit tests, memory and v1.1 guard pass. The remaining form
+audit reproduces a profile-name malformed acknowledgement clearing input and reporting success; the fixture is
+unchanged, its reproduction is prepared and that separate fix follows.
+
+## 3 October 2026 — Feature QA F24: profile-name acknowledgements retain drafts
+
+Chrome reproduces a malformed HTTP 200 profile acknowledgement clearing the name draft and reporting success;
+pending saves leave the input editable. Saves now require confirmation of the requested trimmed name or clearing.
+Failures retain drafts with an error/saved-name label, pending input/submissions lock and newer edits clear old
+status. Long saved names wrap. Chrome verifies locking, malformed-response retention, retry/reload and restoration
+to Local Dev. The old-build regression fails; both new production checks and auth setup pass for failure variants,
+trimmed/blank/200-character names, persistence, pending behavior and 390 px containment. TypeScript, build, all
+398 unit tests, memory and v1.1 guard pass. No password field is entered or changed. A fractional-timeout edge check
+and the complete production sweep remain before the coverage checkpoint.
+
+## 3 October 2026 — Feature QA F25: exact timeout seconds
+
+Chrome reproduces 90.5 seconds saving as 90,500 ms but displaying 91. The old-build regression confirms the mismatch.
+Settings now displays exact millisecond precision after acknowledgement, server load and client refresh, with
+0.001-second input steps. Decimal conversion removes only floating-point remainders that convert back exactly;
+16.001 and 16.002 seconds remain valid whole-millisecond inputs. Actual fractional milliseconds stay rejected,
+and nonfinite values cannot serialize to null/default resets. Chrome verifies 90.5 and 16.001 after reload and
+restores defaults. The production regression and auth setup pass for six valid values, full/client reads,
+sub-millisecond rejection and reset. TypeScript, production build, all 69 unit files / 398 tests, memory mirror and
+v1.1 guard pass. The first complete production sweep passes 94 of 96. Trace inspection identifies Dataset's
+automatic retry racing fixture recovery and a planner click before client readiness; the separate test corrections
+pass all seven affected file/auth checks. The complete production rerun passes all 96 checks in 4.1 minutes.
+
+## 3 October 2026 — Feature QA: verification checkpoint and remaining access
+
+Twenty-five separate product fixes are pushed through `a1f8370`. The two trace-confirmed test races are corrected
+in a separate checkpoint without changing application code or deadlines. The full production Chromium sweep passes
+all 96 checks in 4.1 minutes. TypeScript, production build, all 69 Vitest files / 398 tests, memory and v1.1 guard pass.
+Chrome reload confirms the QA copy is back to two travellers, 64,000 tokens, 600 seconds and no fixed costs. The
+coverage report separates interactive Chrome evidence from regression coverage and retains the earlier failures.
+The authorized local audit is complete. Interactive file attachments still await the Chrome extension's file-URL
+permission; live providers await explicit approval and a disposable credential entered by the user. Automatic
+approval previously rejected the provider action because route cities, dates and notes could leave the app.
+Credential changes require user entry, and native Chrome confirmation/download control plus external email/OAuth
+coverage remain limitations. No owner credentials are accessed, no owner database is modified and no methodology
+calibration is opened. Do not describe the restricted workflows as tested or repeat unchanged checks at this point.
+
+## 3 October 2026 — Owner approval and feature QA F26
+
+The owner approves continuing with fictional live-provider data and a disposable test credential. A separate
+`provider-qa@example.test` account is prepared in the isolated copy, with Sydney and Melbourne, three nights each,
+invented 1–7 December 2026 dates, two travellers and no notes. Canberra / Australia / three nights is ready in Chrome,
+OpenAI, key saving unchecked. The owner is asked to enter the disposable key directly; a nonsecret readiness check
+confirms no key is available. No live request is submitted. Synthetic Wise files and the original fictional JSON
+plan are prepared for the attachment checks once Chrome file access changes.
+
+Chrome preparation uncovers another defect: the new-city flow truncates 3.5 nights to three and saves that leg.
+The reproduction uses existing Sydney without an LLM call; its extra leg is removed and the two-leg fixture restored.
+Both client guards now require the original numeric input to be a positive safe integer. Invalid drafts remain
+visible with an associated message and disabled submission. The old-build browser regression fails; final Chrome
+verification shows the retained 3.5 draft and error. All thirteen affected production checks pass in 48.9 seconds,
+covering six invalid values with no request and an exact two-night existing-city reuse/save/reload. TypeScript,
+production build, all 69 Vitest files / 398 tests, memory mirror and v1.1 guard pass. F26 is published separately.
+
+## 3 October 2026 — Transport-picker test readiness
+
+During F27 verification, 21 of 22 affected production checks pass. The transport-picker trace shows its first
+Estimate transport click completing while the planner's client climate chart is still loading; no dialog opens.
+The test now waits for the client-rendered climate image before clicking, matching the planner readiness guard
+used by the order regressions. The complete affected rerun passes all 22 checks in 1.6 minutes. No application
+change or deadline increase is included in this separate test correction. The failing trace and screenshot are
+retained under the ignored QA directory. F27's application change is verified and will be published separately.
+The owner-entered key is available in Chrome: keyed discovery and fictional Canberra generation succeed. The
+three-night leg and climate load, and the fictional plan has three legs / nine nights / $5,344. Live transport
+checks continue without reading, copying or saving the credential.
+
+## 3 October 2026 — Feature QA F27: confirmed new-city saves
+
+Chrome reproduces a malformed HTTP 201 `{data:{}}` closing the new-city form and reporting an added Sydney leg
+without a saved row. Pending inputs remain editable. Three new production regressions fail against F26. Both
+planner and dataset forms now validate city identity and consistent creation flags before clearing input; planner
+responses must also confirm a positive saved leg ID, the city and exact requested nights. Failures retain drafts
+with an error and advice to check saved data before retrying. Pending controls lock and a ref guards duplicate
+submission. Chrome verifies disabled inputs, retained Sydney / Australia / two nights, the error, no false success
+and narrow-dialog containment. TypeScript, production build, all 69 Vitest files / 398 tests, memory and v1.1 guard
+pass. All 22 affected production checks pass in 1.6 minutes after the separate `3188b1c` transport-test readiness
+correction. The complete 101-check sweep is running. Live Canberra persistence confirms v1.1 / `gpt-6-luna` /
+`max`, preserved formulas and dated 2 October RBA conversion provenance. Only fictional QA data is submitted.
+
+## 3 October 2026 — Provider session and full production checkpoint
+
+F27 is pushed as `611e0e2`. All 101 production browser checks pass in 6.6 minutes. The owner reports repeated key
+clearing while entering it into Chrome. A dedicated fresh-profile regression with a dummy value verifies retention
+through an actual existing-city save, transport-dialog changes and client navigation to Dataset, then expected
+clearing on full reload. Provider discovery is intercepted and the existing-city path makes no LLM call; its
+test leg is deleted. The new case and auth pass in 15.2 seconds; TypeScript and memory check pass. No cause or new
+product defect is established for the owner's live-session report. The extra audit tab is closed and the current
+page retained; the owner is told another entry is needed only if the active key becomes unavailable.
+Live single transport returns four labelled estimates after OpenAI's TPM 429 prevents final live search. The
+$240 train option applies to the fictional Melbourne leg, raising the total to $5,584. Two-leg live bulk estimation
+at High effort is running. Chrome file permission is requested for the already-prepared synthetic attachments.
+
+## 3 October 2026 — Manual miscellaneous planner expenses
+
+Every planner card now has Add miscellaneous expense, with repeatable description/AUD amount rows and removal.
+Amounts are one-off totals for the leg and whole group. Planner totals, dashboard summary/country/category and
+cumulative budgets, saved plans, export/import and comparisons include them. Dashboard groups them under Other;
+comparison charts have a Miscellaneous category. Old snapshots default to an empty list. The database upgrade
+adds a JSON column with an empty-list default and locks the check/alter transaction against concurrent build workers.
+Negative/nonfinite costs are rejected. Invalid text and failed writes retain drafts; Retry/Discard and the existing
+per-leg save queue protect them. Successful responses must confirm the requested miscellaneous rows.
+
+TypeScript, production builds, 70 Vitest files / 402 tests, memory mirror and v1.1 guard pass. The first affected
+production browser run passes 15 of 16 checks; trace inspection shows the existing zero-override case spends its
+30-second deadline filling consecutive fields, without a product assertion failure. Its unchanged rerun and both
+new miscellaneous regressions plus authentication pass on the final isolated build: 4 checks in 57.8 seconds.
+The new checks cover add/edit/reload, zero, invalid drafts, HTTP rejection, malformed acknowledgement, Retry/Discard,
+removal, 390 px containment and displayed comparison categories. Unit coverage also verifies the existing-database
+upgrade, user scoping, traveller scaling, snapshot round-trip, saved-plan persistence and budget/series agreement.
+The shared production server was restarted by another local session, so final build/test work used the ignored
+`.local/miscellaneous-build` copy and separate QA database at port 3104. All test writes target QA copies; the
+timed-out test's temporary leg is removed. No provider call or credential inspection is performed.
+
+## 3 October 2026 — Feature QA F28: labelled provider credentials
+
+Chrome and the old-build regression confirm unassociated provider-key labels and an unnamed existing-city
+Show API key switch. Five forms now associate visible labels with unique input IDs; the switch label also toggles
+it. Chrome verifies the editor field, reveal/hide and missing-city import label. Dummy-key regressions cover
+new-city saving, single/bulk transport, dataset dialogs, client navigation, full reload and missing-city import.
+Discovery is intercepted and no dummy value is sent to a provider. No real credential is read or revealed.
+
+TypeScript, isolated production build, all 70 unit files / 402 tests, memory and v1.1 guard pass. The first unit
+run has the previously observed snapshot setup timeout; the unchanged full rerun passes. Initial browser auth
+setup fails because the copy's launcher lacks ENABLE_EMAIL_PASSWORD; setting it explicitly restores the form.
+The affected run passes 20 of 21 checks. The sole failure is climate readiness before any key entry on 65 cards;
+the chart appears in its failure snapshot. The unchanged credential-file rerun passes both cases and auth in
+39.8 seconds, with no test timeout or application change. Verification uses `.local/feature-qa/f28-build` at 3102
+to avoid the other task's shared build output; its separate miscellaneous feature is committed as `a3f0f71`.
+
+Owner-enabled Chrome file-URL access makes real chooser uploads work. JSON import restores the fictional
+Sydney/Melbourne plan (two legs / six nights / $3,412); invalid legs are rejected without changes, and missing-city
+resolution cancels safely. Two Wise files import $25 Shopping and $40 Activities with category edits preserved;
+re-parsing detects two duplicates, and changing files clears the preview. Live High-effort bulk transport earlier
+applies $270 and $440 flights with exactly one row each ($6,054 before JSON restoration). Existing-city live refresh
+is pending one final key entry after imports. F29 remains open: unrelated headers yield an enabled blank zero-value
+candidate. It is not imported; thirteen new validation cases reproduce this and invalid field handling.
+
+## 3 October 2026 — Feature QA F29: validate Wise uploads before preview and writes
+
+Chrome offers unrelated CSV headers as one blank zero-value expense with Import enabled. No confirmation is
+submitted. Thirteen negative parser cases fail on unsupported headers, empty/malformed structure and invalid
+fields; the old-build browser preview returns 200 rather than 400. Supported header aliases, complete finite
+amounts, IDs, real calendar dates and currency-code shape now validate before conversion or writes. Any invalid
+file rejects the whole batch with HTTP 400 and file/row guidance. Compact/history/balance formats, refunds, real
+zeros, missing optional exchange amounts and valid header-only exports remain supported.
+
+All 33 focused tests, TypeScript, isolated production build, all 70 unit files / 419 tests, memory and v1.1 guard
+pass. Chrome verifies unrelated and empty-file errors, February 30 rejection, disabled import for valid empty
+output and corrected-file retry with duplicate detection. Two new production regressions verify recovery and
+direct/mixed rejection with unchanged expense IDs. The final 107-check sweep passes 103 in 9.4 minutes, including
+both new cases. Saved-plan empty/climate states appear in failure snapshots; the zero-override test starts reload
+less than one second before its overall deadline. Settings captures a blank traveller label before hydration.
+All ten checks in the four affected files pass unchanged on rerun (57.2 seconds). No application or deadline
+change is included for the rerun. The verified disposable zero-override leg 1165 and its transport are removed
+only from the QA copy after confirming no expense references. The Settings baseline race is a separate pending
+test correction. Failed traces/screenshots remain ignored. F28 is pushed as `892f802`; the Canberra editor is
+prepared for one final owner-key entry after publication, with gpt-6-luna / High, key saving off and reveal off.
+
+## 3 October 2026 — Settings test readiness and completed feature audit
+
+F29 is pushed as `488bbd3`. The full browser run exposes a Settings test capturing an empty traveller label
+before hydration and later expecting that blank value after correctly retained settings. The separate test
+correction waits for a populated, enabled traveller control before recording the baseline. All five Settings/auth
+checks pass in 14.0 seconds; TypeScript passes. No application behavior or test deadline changes. The complete
+107-check run remains recorded as 103 passes, with all ten checks in its four affected files passing unchanged
+on rerun; it is not relabelled as a clean full sweep.
+
+After builds/import work finish, the owner enters an OpenAI key directly in Chrome's prepared Canberra editor.
+The nonsecret clear control becomes enabled and reveal stays off. One approved existing-city generation succeeds
+with `gpt-6-luna` / High, saving active estimate 69 while keeping estimate 68 as inactive history. The UI and read-only
+QA evidence confirm ten USD and ten AUD anchors, 19 tier outputs, v1.1, preserved formulas and the RBA observation
+dated 2 October 2026, inverted to 1.442377 AUD per USD. The fictional original two-leg plan and $65 imported
+expenses remain unchanged. This is contract/persistence verification, with no new methodology calibration.
+The key remains available; no credential is read, copied, revealed or cleared. The prepared save checkbox is off,
+then on after owner entry; its cause is unproven and Codex leaves the selection alone. A readiness read's automatic
+review times out; its permitted retry succeeds. No live generation is duplicated. Screenshot evidence is ignored
+under `.local/feature-qa/live-canberra-refresh-confirmed.png`.
+
+The owner explicitly chooses completion with password changes, account creation, external email delivery and
+OAuth untested. Chrome native confirm acceptance and Settings artifact limitations remain distinguished from
+passing production regression evidence. All 29 reproduced product defects are fixed in separate pushed commits.
+The final application baseline is TypeScript, isolated production build, 70 unit files / 419 tests, memory mirror
+and v1.1 guard. The report records actual interactive and automated coverage, failure evidence and exclusions.
+The current QA server/result page remain available, and no further provider-key entry is needed.
+
+## 3 October 2026 — Owner requests feature QA publication and PR cleanup
+
+The owner requests commit, push, merge to main and PR cleanup after accepting the recorded authentication
+exclusions. The working tree is clean at `13bcec0`. Fresh origin/main remains an ancestor with 37 branch commits;
+GitHub has no existing PR for `fix/comprehensive-feature-qa`. Publication will create a PR and use a merge commit
+to preserve the individual fix commits, then remove the merged remote/local feature branch. Application source
+and verification evidence remain unchanged; the publication checkpoint updates documentation only.
+
+## 3 October 2026 — Feature QA merged to main; PR cleanup complete
+
+Publication checkpoint `9a4c53a` is committed and pushed. PR #13 is created and attached to the task, targets
+main, matches that exact head, and reports CLEAN/MERGEABLE with no configured status checks. The owner's
+authorized merge uses a merge commit, retaining the separate fix commits. GitHub confirms MERGED with commit
+`bffc6e05d01498560c527a409431d1faf1c31921`. The remote feature branch is deleted; local main is fast-forwarded
+and the fully merged `fix/comprehensive-feature-qa` branch is deleted. The merged application/test tree is
+unchanged from the verified branch, so the recorded final baseline remains applicable. The closure checkpoint
+updates plan/report/history only. No QA database, provider credential or unrelated branch is removed.
+
+## 3 October 2026 — Older merged branches removed; research archive preserved
+
+The owner explicitly requests deleting the four older merged branches while retaining the v6 research branch
+and its archive tag. Refreshed main contains all four tips and no worktree uses them. Atomic, tip-conditional
+remote deletion and normal merged local deletion succeed for `feat/trip-climate` (`92f1606`),
+`feat/app-performance` (`8288d38`), `fix/city-generation-model-discovery` (`28886be`) and
+`fix/shared-keys-city-picker` (`d863e48`). Their commits remain in main and their merged PR history.
+Only main and `feat/city-cost-methodology-v6` remain locally and remotely. The research branch remains
+`93d73d3845f3ccea17acafd069c14db2479f40a4`; the archive tag
+`city-cost-v6.1-research-final-2026-08-18` remains object `cfe5694dd02147ce4cceadce690ed429a318d1fd`
+locally and remotely. There is still only the primary worktree. No generated artifact, database or credential
+is deleted. This documentation-only checkpoint records cleanup; application verification is unchanged.
+
+## 10 October 2026 — European cities: first checkpoint
+
+The owner authorizes the European handoff after preparation. A consistent better-sqlite3 backup at
+`C:\Dev\holiday-spend-db-backups\2026-10-10\travel-before-europe.db` passes integrity checking. Nice and Venice,
+then twelve French/Italian/Spanish cities, are generated by separate GPT-6 Luna/max Codex subagents and saved
+through the app's real v1.1 path. All fourteen have climate, verified photos and matching city/history dates.
+The library reaches 278; row hashes for 66 itinerary legs, 68 transports, 72 saved plans and 1,543 expenses remain unchanged.
+
+Public geocoder evidence identifies Saranda/Sarandë, Tromso/Tromsø, San Sebastian/Donostia and Mykonos island/town
+cases before those cities are saved. Constrained aliases fix them; four new regression cases cover matching and
+rejection of wrong regions/features. The owner also requests a date audit: all 53 earlier subagent additions already
+have city and estimate timestamps. RBA's 9 October observation is distinct from the 10 October generation date.
+No backfill is needed. New Italian room estimates, especially Amalfi, exceed older entries; no calibration is opened.
+
+Windows sandbox invocations have separate temporary directories, so batches use stable gitignored `.local/europe`.
+Network restrictions initially prevent Nice/Venice climate/photo reads; explicit refresh with network access recovers
+both. Test-cache renames and build-directory creation fail in the sandbox; verification outside it passes: TypeScript,
+production build, 74 unit files / 465 tests, memory mirror and v1.1 guard. The next wave is generating.
+
+## 10 October 2026 — European cities: 26 saved
+
+Twelve more cities in Spain, Portugal, Germany, the Netherlands and Belgium bring the library to 290. All 26
+European additions have valid active v1.1/max provenance, city/history dates, twelve climate months and existing
+photo files. The itinerary, leg transports, saved plans and expenses still match their original row hashes.
+The differing photo article titles Lagos, Portugal, Málaga and San Sebastián are inspected and match the intended places.
+San Sebastian's first response uses stale FX; its second has nonconforming provenance. Both pairs are discarded and
+a fresh third response passes before persistence. No response is edited. Code is unchanged since the passing baseline;
+checkpoint `a132d8b` is pushed, and the next wave is generating.
+
+## 10 October 2026 — European cities: 38 saved
+
+The third wave adds Ghent, four Swiss cities, three Austrian destinations, Cesky Krumlov, Wroclaw, Thessaloniki
+and Chania, bringing the library to 302. All 38 European additions have active v1.1/max provenance, saved dates,
+twelve climate months and verified photos. Existing cities, estimates, climate and photos match the pre-Europe
+backup; itinerary, transport, plan and expense hashes remain unchanged. Accented photo titles Český Krumlov and
+Wrocław are inspected and correct. Hallstatt retains low confidence for limited seasonal accommodation; newer
+Austrian, Czech and Greek room estimates exceed older entries, with no adjustment or calibration. Source is
+unchanged since the passing baseline. The Greek-island/Balkan wave is generating.
+
+## 10 October 2026 — European cities: 50 saved
+
+The fourth wave adds the twelve Greek-island and Balkan destinations listed in PLAN.md, bringing the library to
+314. All 50 additions pass v1.1/max provenance and date checks: city/history timestamps agree, and estimate,
+climate and photo dates are all 10 October 2026, separate from the 9 October RBA observation. Every city has twelve
+climate months and verified photo files. Sarandë's photo is inspected and matches Saranda. Original library rows
+and protected itinerary/transport/plan/expense hashes remain unchanged. Resort seasonality is disclosed; newer
+Croatian room estimates exceed older Split/Dubrovnik entries and are not calibrated. Source is unchanged since
+the passing baseline. The remaining fourteen cities are generating.
+
+## 10 October 2026 — European cities complete: 64 saved
+
+The final fourteen cities bring the library to 328. Every handoff prompt matches a distinct successful city save,
+with active v1.1 provenance identifying OpenAI, GPT-6 Luna (Codex subagent) and max reasoning. Each city has twelve
+climate months, verified photo metadata and both local image files. Tromsø's differently titled photo is inspected
+and correct. Rovaniemi retains low confidence for seasonal lodging; differences from older Sofia, Helsinki and
+Stockholm room estimates are recorded in PLAN.md without calibration.
+
+Final database integrity is `ok`, with no duplicate country names. All 64 city/history estimate dates agree and
+all cost, climate and photo collection dates are 10 October 2026. The RBA observation remains 9 October; earlier
+53-city batches already have dates and require no backfill. Every original city, estimate, climate and photo row
+matches the pre-Europe backup, and all 66 itinerary legs, 68 transports, 72 saved plans and 1,543 expenses retain
+their original row hashes. No itinerary legs were created for the additions.
+
+TypeScript, the production build and 465 tests passed for the geocoding implementation checkpoint `a132d8b`.
+Final memory-mirror and v1.1 guard checks pass; the live CSV hash is unchanged. Later European checkpoints only
+record documentation and local data. Concurrent methodology/documentation edits are left outside these commits.
+The completed backup and gitignored batch responses/provenance/results remain available for audit.
+
+
+## README screenshots for the bento UI - 10 October 2026
+
+The README screenshots were retaken at 1920x1080 after the bento redesign, and two were added: the trip climate chart
+and the Methodology page. As in September they show a fictional trip, not real data. This time the real database was
+never modified. A demo copy was made with `VACUUM INTO` (a read-only operation on the source), every personal table in
+the copy was emptied, the city library was cut to the 121 shipped cities plus the demo trip's cities, and a 19-leg
+Mediterranean trip with 267 generated expenses was seeded. The copy ran on a separate dev server with its own build
+directory, pointed at it through `HOLIDAY_SPEND_DB_PATH`. A byte scan of the copy found no personal identifiers.
+
+Two capture details: the pointer has to be parked off the charts, or Recharts tooltips appear in the image, and the
+planner's sticky header covers anything scrolled to the top of the page, so scroll targets need a 175 px offset. The
+demo dev server also added its build directory to `tsconfig.json`; that edit was reverted.
+
+The README's city-cost section had described a single web-enabled call returning the price anchors. In v1.1 the model
+estimates the prices from its own knowledge and searches only for the exchange rate. The section now says so and links
+to `docs/product/city-cost-methodology.md`.
+
+## Ranked destination additions, first ten — 11 October 2026
+
+Added Orlando, Las Vegas, Cancún, Antalya, Miami, Macau, Pattaya, Honolulu, Punta Cana and Abu Dhabi with fresh
+GPT-6 Luna/max subagents answering the exact app prompts. The library grows from 328 to 338. Macau uses canonical
+Macau/MOP/MO metadata. A consistent pre-batch backup is retained at
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-10.db`; raw prompts, responses and results are in
+gitignored `.local/popular-10-2026-10-11`.
+
+Macau's geocoder uses Macao and returns both a city and a territory. A country/feature-constrained alias selects
+the city, with a regression rejecting the territory and a foreign-country result. Abu Dhabi's first save failed
+closed because the app used its existing UAE label while prompt preparation used United Arab Emirates. Prompt
+preparation now resolves the same stored country label; the rejected attempt is archived unchanged and a fresh
+subagent response saves successfully. Existing country aliases remain intact.
+
+Every addition has twelve climate months, a verified licensed photo and both image files. Orlando's differently
+titled photo was inspected. All cost, climate and photo timestamps are 11 October; city and active estimate-history
+dates agree. RBA FX provenance is separately dated 9 October. All response anchors match persisted values.
+Original countries, cities, estimates, climate and image rows match the backup. The 66 itinerary legs, 68 transports,
+73 saved plans and 1,543 expenses retain their row hashes. Database integrity is `ok`; no duplicate country names.
+Higher new Honolulu/Miami and Antalya room estimates versus older library entries are recorded without calibration.
+
+TypeScript, production build, memory mirror and v1.1 guard pass. The full unit run passes 72 files / 449 tests;
+two setup hooks time out under load and their isolated reruns pass all 17 tests, covering 74 files / 466 tests overall.
+The owner requests this batch be committed before continuing with ranks 11–20.
+
+## Ranked destination additions, ranks 11–20 — 11 October 2026
+
+After committing and pushing the first batch at `3e40c9f`, added Chicago, Toronto, San Diego, Washington, D.C.,
+Boston, Hurghada, Sharm El Sheikh, Palma, Playa del Carmen and Doha. The library grows from 338 to 348. A fresh
+consistent backup at `C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-11-20.db` has integrity `ok`.
+Exact prompts, fresh GPT-6 Luna/max responses, provenance and save/audit results remain in gitignored
+`.local/popular-11-20-2026-10-11`. All ten geocode directly to the intended locations without further code changes.
+
+All ten responses pass schema and latest RBA checks before app persistence, including the exact prompt guard.
+Each addition has twelve climate months, verified licensed photo metadata and both local image files. Palma de
+Mallorca's cathedral and Playa del Carmen municipality's garden scene were visually reviewed for title differences.
+All cost, climate and photo collection dates are 11 October; city and active estimate-history timestamps agree.
+The FX observation remains separately dated 9 October. Persisted anchors match the unmodified responses.
+
+Every original country, city, estimate, climate and photo row matches the second backup. Protected hashes remain
+unchanged for 66 itinerary legs, 68 transports, 73 saved plans and 1,543 expenses. Integrity is `ok`, with no duplicate
+country names or new itinerary legs. Higher Boston, Toronto, Palma and Egyptian resort lodging versus older library
+entries is recorded without calibration; response notes disclose seasonality/location uncertainty and Doha's
+limited hostel supply/licensed alcohol market.
+
+There are no implementation changes after the passing first-batch baseline; final memory, v1.1 and diff checks pass.
+The authorized twenty cities are complete. Work stops before rank 21.
+
+## Ranked destination additions, ranks 21–30 — 11 October 2026
+
+The owner authorized continuing all remaining entries in batches of ten, committing and pushing each batch.
+Added Rhodes, Puerto Vallarta, Cabo San Lucas, San Juan, Gold Coast, Sapporo, New Orleans, Funchal, Heraklion and
+Nassau, growing the library from 348 to 358. Consistent backup `travel-before-popular-21-30.db` is under
+`C:\Dev\holiday-spend-db-backups\2026-10-11`; exact responses/provenance/results are in gitignored
+`.local/popular-21-30-2026-10-11`.
+
+Rhodes returned both city and island points; a country/region/feature constraint selects the city and a regression
+rejects the island and foreign matches. All ten fresh GPT-6 Luna/max responses pass the exact app prompt and RBA
+validation. All cost, climate and photo dates are 11 October, with matching city/history timestamps, twelve climate
+months and both licensed photo files. Differently titled Gold Coast, Nassau, Rhodes city and San Juan photos were
+visually checked. Sapporo and Greek regional room estimates exceed older Japanese/Athens entries; recorded without
+calibration, with seasonal uncertainty retained.
+
+Integrity is `ok`; all original country/city/estimate/climate/photo rows and protected hashes match the backup
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). TypeScript, production build, 74 test files / 467 tests,
+memory mirror and v1.1 guard pass. No provider keys or itinerary writes.
+
+
+## Ranked destination additions, ranks 31–40 — 11 October 2026
+
+Added Perth, Luxor, Antigua Guatemala, Taormina, Alicante, Benidorm, Bodrum, Göreme, Anaheim, library 358 -> 367. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-31-40.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-31-40-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Malé deferred unsaved: its response substitutes licensed island-resort alcohol prices for unavailable city drinks; archived unchanged. Taormina and Bodrum retain low confidence for seasonal lodging; newer Turkish/Perth/Luxor room estimates exceed older Istanbul/Sydney/Cairo entries, recorded without calibration. Differently titled photos visually reviewed.
+
+No implementation change after the passing 467-test/build/TypeScript baseline; memory mirror, v1.1 guard and database audit pass.
+
+
+## Ranked destination additions, ranks 41–50 — 11 October 2026
+
+Added Paphos, Corfu Town, Naha, Panama City, Albufeira, Ibiza Town, Marbella, Alanya, Fethiye, Marmaris, library 367 -> 377. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-41-50.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-41-50-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Corfu and Ibiza city photo-title differences visually checked. Ibiza Town and Panama City retain low confidence; seasonal resort/hostel uncertainty is disclosed. New Naha/Corfu/Albufeira room estimates exceed older Japanese/Athens/Lisbon entries, recorded without calibration. Public queue preflight identified fourteen spelling, city/island and region constraints; implemented with country checks, preserving requested identities and existing rows.
+
+TypeScript, production build, all 74 files / 481 tests, memory mirror and v1.1 guard pass.
+
+
+## Ranked destination additions, ranks 51–60 — 11 October 2026
+
+Added Quebec City, Catania, Palermo, Positano, Sorrento, Turin, Verona, Wadi Musa, Johannesburg, San Antonio, library 377 -> 387. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-51-60.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-51-60-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Photo-title differences visually reviewed. Positano and Wadi Musa retain low confidence for seasonal/scarce lodging and venue-dependent alcohol. New Quebec City and Wadi Musa room estimates exceed older Montreal/Amman entries; Positano exceeds Amalfi. Differences are disclosed and recorded without calibration.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 61–70 — 11 October 2026
+
+Added San José, Malacca, Muscat, Faro, Charleston, Fort Lauderdale, Key West, Nashville, Philadelphia, Tampa, library 387 -> 397. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-61-70.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-61-70-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Differently titled photos visually reviewed. Key West lodging reflects constrained island supply and seasonality; Muscat retains licensed-venue/hostel uncertainty. Faro lodging exceeds older Lisbon despite the regional comparison; recorded without calibration. Malé remains deferred, with the alcohol availability distinction corroborated by current UK government Maldives travel advice (https://www.gov.uk/foreign-travel-advice/maldives/safety-and-security); no city-price research.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 71–80 — 11 October 2026
+
+Added Adelaide, Hobart, Nanjing, Sanya, Nadi, Kota Kinabalu, Christchurch, Rotorua, Wellington, Zermatt, library 397 -> 407. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-71-80.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-71-80-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Zermatt is low confidence with a seasonal alpine-resort premium (three-star room USD450, about AUD645 versus Geneva AUD394). Kota Kinabalu (AUD93) and Sanya (AUD115) exceed older country entries; Nanjing (AUD129) exceeds older Shanghai despite its relative-city wording. These differences are retained without calibration. All photo article titles match the city names.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 81–90 — 11 October 2026
+
+Added Oranjestad, Pisa, Fujikawaguchiko, Hakone, Nagasaki, Nagoya, Takayama, Yokohama, Coron, Puerto Princesa, library 407 -> 417. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-81-90.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-81-90-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Oranjestad is low confidence because of seasonal resort demand and limited hostel inventory. Hakone and Fujikawaguchiko disclose resort lodging uncertainty. Yokohama (three-star AUD193 versus older Tokyo AUD155), Pisa (AUD201 versus older Florence AUD178) and Puerto Princesa (AUD75 versus older Manila AUD54/Cebu AUD47) exceed their stated relative-city comparisons; retained without calibration. Visually checked Takayama, Gifu (snowy city view) and Coron, Palawan (town and bay); both match the destinations.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 91–100 — 11 October 2026
+
+Added Chamonix, Labuan Bajo, Como, Rimini, Kuching, Las Palmas de Gran Canaria, Santa Cruz de Tenerife, Ayutthaya, Hua Hin, Kuşadası, library 417 -> 427. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-91-100.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-91-100-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+All ten are medium confidence. Labuan Bajo (three-star AUD122) exceeds older Bali/Lombok entries with a disclosed Komodo gateway premium; Chamonix (AUD358) exceeds Nice AUD258 with alpine seasonality. Las Palmas (AUD179) exceeds older Barcelona AUD155 despite its relative-city wording; Ayutthaya (AUD69) and Hua Hin (AUD97) exceed older Bangkok/Pattaya entries. Differences retained without calibration. Visually checked Las Palmas beach, Phra Nakhon Si Ayutthaya city ruins and Hua Hin district coastline; all match their destinations.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 101–110 — 11 October 2026
+
+Added Hvar, Pula, Aqaba, Agadir, Casablanca, Chefchaouen, Essaouira, Tangier, Durban, İzmir, library 427 -> 437. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-101-110.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-101-110-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+All ten are medium confidence. Casablanca and Chefchaouen disclose limited licensed alcohol venues; Aqaba discloses venue-dependent alcohol uncertainty. Hvar three-star AUD315 exceeds older Dubrovnik AUD171 with summer island demand disclosed; Izmir AUD150 exceeds older Istanbul AUD70 despite its relative-city wording, and Moroccan additions AUD93-109 exceed older Marrakech AUD62. Differences retained without calibration. Visually checked Hvar (town), showing the correct town and harbour.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 111–120 — 11 October 2026
+
+Added Bridgetown, Varadero, Willemstad, Aswan, Cannes, Montego Bay, Negril, Ocho Rios, Hammamet, Tunis, library 437 -> 447. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-111-120.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-111-120-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Archived the first Hammamet response unchanged because it explicitly substituted guesthouse equivalents for hostel anchors; a fresh exact-contract response passed. Archived the first Bridgetown response with stale 8 October FX; a fresh response fetched the verified 9 October observation. Aswan, Ocho Rios, Bridgetown and Varadero are low confidence because of licensed alcohol venues, limited hostel supply or volatile resort pricing. Varadero three-star AUD236 exceeds older Havana AUD85; Cannes AUD301 exceeds Nice AUD258. Differences retained without calibration. Visually checked Hammamet, Tunisia montage against the correct destination.
+
+No implementation changes after the passing TypeScript/build/481-test baseline; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 121–130 — 11 October 2026
+
+Added Byron Bay, Trinidad, Guadalajara, Guanajuato, Mazatlán, Mérida, Puebla, San Miguel de Allende, San Miguel de Cozumel, Arusha, library 447 -> 457. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-121-130.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-121-130-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Fixed Puebla geocoding before saving: exact-name matching chose a Baja California settlement; the constrained Puebla City/Puebla/PPLA alias now selects 19.04778,-98.20723. Added regression coverage and synced project memory. Trinidad is low confidence because of Cuban currency/supply uncertainty. Byron Bay three-star AUD337 has a disclosed tourism premium; Puebla AUD112 and Guadalajara AUD150 exceed older Mexico City AUD78 despite their comparison text. Differences retained without calibration. Visually checked Trinidad, Guanajuato, Merida and Puebla city photos; San Miguel de Allende uses a rural landscape from its municipality article, correctly identified as the surrounding municipality rather than a city-centre scene.
+
+TypeScript, production build, all 482 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass. The sandbox test attempt could not start because temporary-file renames were denied; the unchanged suite passed outside that sandbox.
+
+
+## Ranked destination additions, ranks 131–140 — 11 October 2026
+
+Added El Calafate, Puerto Iguazú, San Carlos de Bariloche, Ushuaia, Florianópolis, Foz do Iguaçu, Salvador, São Paulo, Mombasa, Victoria Falls, library 457 -> 467. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-131-140.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-131-140-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Victoria Falls, Ushuaia and Puerto Iguazu are low confidence because of seasonal visitor markets or Argentine currency uncertainty. Patagonia three-star estimates AUD193-315 exceed older Buenos Aires AUD78 with remoteness and visitor demand disclosed; Brazilian additions AUD112-165 exceed older Rio AUD78. Mombasa AUD143 exceeds older Nairobi AUD70. Differences retained without calibration. Visually checked Bariloche cathedral, Salvador Bahia coastline and Victoria Falls Zimbabwe town street; all match their destinations.
+
+No implementation changes after the Puebla checkpoint passing TypeScript, production build and all 482 tests; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 141–150 — 11 October 2026
+
+Added Recife, Puerto Natales, Huangshan, San Andrés, Santa Marta, Cuenca, Arequipa, Victoria, Montevideo, Punta del Este, library 467 -> 477. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-141-150.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-141-150-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Fixed Huangshan geocoding before saving: exact-name matching selected a Yunnan settlement; the Huangshan City/Anhui/PPLA3 alias now selects 29.71139,118.3125. Added regression coverage and synced memory. Punta del Este and Victoria Seychelles are low confidence because of seasonal resort demand or scarce dorm supply/import costs. Puerto Natales three-star AUD229 reflects remote Patagonia demand; Santa Marta AUD107 exceeds older Cartagena AUD78 despite its relative-city wording, and San Andres AUD193 has a disclosed island premium. Differences retained without calibration. Visually checked Huangshan City historic street, San Andres town waterfront, Cuenca Ecuador montage and Victoria Seychelles clock tower; all match their destinations.
+
+TypeScript, production build, all 483 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 151–160 — 11 October 2026
+
+Added Aix-en-Provence, Annecy, Avignon, Toulouse, Düsseldorf, Frankfurt, Leipzig, Nuremberg, Grand Baie, Lausanne, library 477 -> 487. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-151-160.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-151-160-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Fixed Frankfurt geocoding before saving: exact-name matching selected a Bavarian settlement; Frankfurt am Main/Hesse/PPLA3 now selects 50.11552,8.68417. Added regression coverage and synced memory. Grand Baie is low confidence because of scarce conventional hostel supply and imported drinks. Nuremberg AUD251 and Leipzig AUD189 exceed older Munich AUD171 despite their relative-city wording; Annecy AUD322 has a disclosed seasonal lake tourism premium. Differences retained without calibration. All photo article titles match the city names.
+
+TypeScript, production build, all 484 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 161–170 — 11 October 2026
+
+Added Bari, Cagliari, Lecce, Lucca, Bilbao, Cádiz, Córdoba, Toledo, Bern, Lugano, library 487 -> 497. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-161-170.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-161-170-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+All ten are medium confidence, with seasonal lodging uncertainty disclosed. Bern and Lugano three-star AUD387/AUD365 sit near existing Swiss cities AUD337-394; Bilbao AUD236 reflects Basque visitor demand. Lucca AUD258 exceeds Pisa AUD201/Siena AUD222, and Cagliari AUD222 exceeds older Rome AUD171 despite its relative-city wording. Differences retained without calibration. Visually checked Cordoba Spain aerial view and Toledo Spain river-city panorama; both match the destinations.
+
+No implementation changes after the Frankfurt checkpoint passing TypeScript, production build and all 484 tests; memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 171–180 — 11 October 2026
+
+Added Port Douglas, Rovinj, Kos Town, Nafplio, Rethymno, La Spezia, Ohrid, Coimbra, Cluj-Napoca, Sibiu, library 497 -> 507. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-171-180.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-171-180-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Port Douglas is low confidence because of seasonal resort demand and limited room inventory. Coimbra three-star AUD165 exceeds older Lisbon AUD140/Porto AUD124 despite its comparison text; Nafplio AUD189 exceeds older Athens AUD109, and Port Douglas AUD358 exceeds Cairns AUD171 with a resort premium disclosed. Differences retained without calibration. Visual inspection caught a Rethymno municipality map: settlement articles now rank ahead of same-named municipalities, with regression coverage. Refreshed all four stored municipality selections through the real collector in an isolated copy and compared all 507 stored picks; Paracas was unchanged and Playa del Carmen, San Miguel de Allende and Rethymno changed, all visually reviewed. Only the new Rethymno live row was refreshed, preserving every older image row. Its licensed city/fortress photo and Kos Town harbour photo both pass visual review.
+
+TypeScript, production build, all 485 tests across 74 files, memory mirror, v1.1 guard and complete database audit pass.
+
+
+## Ranked destination additions, ranks 181–190 — 11 October 2026
+
+Added Graz, Brno, Karlovy Vary, Cork, Killarney, Luxembourg City, Delft, Maastricht, Poznań, Zakopane, library 507 -> 517. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-181-190.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-181-190-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+All ten are medium confidence with lodging seasonality and event uncertainty disclosed. Graz three-star AUD222 exceeds older Vienna AUD155, Brno AUD172 exceeds older Prague AUD109 and Poznan AUD132 exceeds older Krakow AUD85 despite relative-city wording; differences retained without calibration. Cork/Killarney AUD312/322 sit near Galway AUD330. Visually checked Cork city university quadrangle and Luxembourg City Greinskapell chapel. The latter comes through the Luxembourg article and Wikidata image, but the Commons file explicitly identifies Luxembourg City and the location check is 0.3km from the saved city point.
+
+No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass.
+
+## Ranked destination additions, ranks 191–200 — 11 October 2026
+
+Added Dahab, Ipoh, Atlanta, Austin, Denver, Palm Springs, Santa Fe, Savannah, Sedona, Livingstone, library 517 -> 527. Consistent backup is
+`C:\Dev\holiday-spend-db-backups\2026-10-11\travel-before-popular-191-200.db`; exact fresh GPT-6 Luna/max responses, provenance and results are in
+gitignored `.local/popular-191-200-2026-10-11`. All pass schema, latest RBA and exact app prompt validation.
+
+All additions have matching city/history dates, 11 October cost/climate/photo timestamps, twelve climate months and
+both licensed photo files. Original country/city/estimate/climate/photo rows and all protected hashes remain unchanged
+(66 legs, 68 transports, 73 saved plans, 1,543 expenses). Integrity is `ok`; no duplicate country names or itinerary writes.
+Sedona and Santa Fe retain low confidence for seasonal lodging and limited registered-hostel supply. Savannah and Santa Fe rooms are about AUD330, above older New York City AUD310; Sedona is about AUD430. Ipoh is about AUD79 versus older Kuala Lumpur AUD54/Penang AUD47 despite its lower-relative-city wording; Dahab is about AUD93 versus older Cairo AUD54. Differences are recorded without calibration. All six differently titled photos were visually reviewed and match their destinations.
+
+No implementation changes after the photo-selection checkpoint passing TypeScript, production build and all 485 tests; memory mirror, v1.1 guard and complete database audit pass.
+
+## Ranked destination list closure — 11 October 2026
+
+All 200 ranked entries are accounted for in twenty batches: 199 added and rank 37, Malé, deferred unsaved.
+The library grew from 328 to 527 cities. This continuation added 179 cities after the previously completed first
+twenty; each completed ten-entry batch was committed and pushed before the next began. The final ten are recorded
+for publication after ranks 181–190 at `bed6d62`.
+
+The final audit compares every original country/city/estimate/climate/photo row with the consistent first-batch
+backup and verifies exact original protected-table hashes: 66 legs, 68 transports, 73 saved plans and 1,543 expenses.
+All match. Integrity is `ok`, country names have no duplicates, and the canonical city CSV SHA256 remains
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+The complete queue/save/date/source audit is retained locally at
+`.local/popular-191-200-2026-10-11/final-audit.json`.
+
+All 199 additions have exact saved anchors, active v1.1/OpenAI/GPT-6 Luna (Codex subagent)/max provenance,
+matching city/history dates and 11 October cost/climate/photo timestamps. The RBA observation is separately dated
+9 October, at 0.6979 USD per AUD. Every saved city has twelve climate months and both licensed photo files.
+Malé remains unsaved because its response substituted resort alcohol prices for unavailable city prices;
+the rejected files remain archived unchanged. No estimate was calibrated or substituted.
+
+The broader source audit found that Negril's Commons file supplies a CC BY-SA 3.0 licence but no machine-readable
+artist. Its source page was checked directly:
+https://commons.wikimedia.org/wiki/File:Negril_Jamaica_2007-09.jpg . The artist field remains missing and the
+Commons credit link is retained; the same pre-existing metadata limitation in Apia and Bali is unchanged.
+No photo or old library record was rewritten during this audit.
+
+Implementation remains at the passing `d94a04f` checkpoint: TypeScript, production build, all 74 files / 485 tests,
+memory mirror and v1.1 guard. No implementation changes in the last two batches. Final publication also checks
+documentation whitespace, memory synchronization and the methodology guard. No ranked collection remains queued.
+# 12 October 2026 — Production preparation and private native auth
+
+- Owner authorized app/database/auth launch preparation for `spend.projectinfinitesummer.com`; Project Infinite Summer remains responsible for DNS, TLS, proxy and cutover. No deployment or blog-volume changes were made here.
+- Upgraded Next.js to 16.4.0, React to 19.3.0 and the container runtime to Node 24. Migrated asynchronous route/search params and the proxy entrypoint; kept the existing font locally bundled. Production dependency audit reports zero known vulnerabilities; this does not describe development-tool advisories.
+- Added strict container configuration/database/prompt checks, public readiness, private loopback upstream, UID/GID 1001 persistent `runtime-data/`, explicit runtime prompts, protected shared-library writes and fail-closed email/admin allowlists. Removed automatic legacy-data claiming on sign-in. Reset/change-password atomically consume/revoke tokens and invalidate sessions; verification-delivery retries preserve an existing password. Native email normalization now precedes shape validation.
+- Added consistent SQLite/photo snapshot, catalogue-only export, hash/integrity/foreign-key verification, refuse-overwrite restore and pure-Node container backup tooling. Verified all 527 cities, 105 countries and 1,054 photo files. Original table hashes remain unchanged; independent restore matches the owner-provisioned production copy. Existing 66 legs, 68 transports, 1,543 expenses and 73 saved plans retain ownership. Private data/settings stay ignored and outside image build contexts.
+- Production-copy owner provisioning preserves the existing user ID, sets the supplied real email privately, removes copied test credentials/OAuth sessions/tokens, and requires owner reset plus email verification after HTTPS is live. No owner email or credential is committed. Moved prepared settings into the ignored deployment folder after a build demonstrated that a root `.env.production.local` injected the container database path into local builds; the subsequent build passes.
+- Resend sending domain `auth.projectinfinitesummer.com` verified using the account's current DKIM TXT and two DNS-only CNAME records. Owner created a domain-restricted sending key privately. The authorized test was accepted, marked Delivered and received in Gmail spam; owner marked it Not spam. Resend Insights flagged missing DMARC. With separate owner approval, added `_dmarc.auth` TXT `v=DMARC1; p=none;` and verified public DNS. No report mailbox, receiving mailbox, tracking or guaranteed inbox placement is claimed.
+- Validation: production build, TypeScript, all 77 test files / 507 tests, memory mirror and v1.1 guard pass. Integration tests exercise real isolated SQLite/Argon2; mail transport is mocked for account flows, while the separately authorized delivery test uses real Resend. Windows sandbox denied temporary-file renames, so tests ran successfully outside it. Early loaded runs timed out; new integration cases have explicit time allowances for real hashing/file operations, and the final full suite passes.
+- Added `Production checks` Linux CI with Docker/native modules, runtime assets/prompts, real cookie sign-in, guest denial, revocation, backup/restore and restart on disposable seed data. Docker is unavailable locally; workflow/host evidence remains separate. Detailed handoff: `docs/dev/handoffs/production-launch.md`; operational contract: `docs/ops/production-launch.md`. Pending: publish/check CI, host transfer/restore, HTTPS/proxy, live owner account flows and scheduled off-host backups.
+- Published implementation `9a36b83`. First Linux run failed before installation because local npm 11.6.2 omitted `@emnapi/runtime@1.11.3`, required by optional Sharp/WASM. Regenerated lock metadata with CI's npm 11.19.0 without reinstalling local modules or changing locked application versions. Clean-install dry run passes and production audit remains zero; Linux rerun follows publication of the repair.
+- Lockfile repair `c4aee6a` passes Linux installation, TypeScript, all 507 tests and memory mirror. The next failure was the existing CSV raw-byte guard: Git stores LF (`c87b9bc8…`) while the frozen Windows working-file hash records CRLF (`0e273cef…`). Added a path-specific CRLF checkout attribute, preserving both committed CSV content and the unchanged integrity guard. No city costs or methodology changed.
+- CSV checkout repair `41d8e10` passes the full Linux baseline and both Docker builds. Smoke assertions pass through native modules, static assets/prompts, real sign-in, guest denial, revocation and backup/restore. Post-restart readiness alone timed out despite a successful second app start; the harness now rereads Docker's ephemeral host port after restart and reports the final probe error. Host restore instructions also account for SSH-owned private input and assign restored output to UID/GID 1001 before app startup.
+- Strengthened the final container smoke to use the actual backup contract (read-only source and separate writable backup volume), then reauthenticate and recount disposable cities after restart. Updated workflow actions to official Node-24 releases verified from their action metadata: checkout 7.0.1 and setup-node 7.1.0.
+- Final implementation `e3e9045` passes [Linux Production checks](https://github.com/mwilczynska/holiday-spend/actions/runs/38285498810): clean install, TypeScript, all 77 files / 507 tests, memory mirror, v1.1 guard, zero production advisories, both Docker images, native modules/prompts/static assets, actual NextAuth cookie sign-in, guest denial, session revocation, read-only-source backup into separate storage, verified restore and restart with owner reauthentication/data count. Final local audit again confirms every original table hash unchanged and independent restore equal to the prepared production package. App-side handoff is complete and published; actual host deployment, live HTTPS owner emails/access and scheduled off-host backups remain Project Infinite Summer work.
+
+# 12 October 2026 — Multiple city additions and search shortcuts
+
+- Owner requested several city additions and an add action while searching, and clarified that both existing and missing cities should be supported. Add Leg now accepts repeatable city selections with separate nights. Planner and dataset generation accept repeatable city/country entries with shared provider/model settings; planner entries keep their own nights.
+- Requests run sequentially in entry order. The first failed or unconfirmed save stops the batch. Only confirmed entries leave the draft, so retry does not repeat completed additions. Existing-city acknowledgements must confirm a positive leg ID, the requested city and exact nights. Drafts and remove/add controls lock during submission.
+- Planner and dataset city pickers offer Add City with the search text prefilled, even when fuzzy search supplies loose matches. The empty dataset table also offers it. Planner searches carry nights into generation and preserve other selected cities. Dataset success messages remain visible without an editor selection. Keyboard activation of the search action is preserved through cmdk.
+- Six new browser regressions pass on an isolated copy of the 66-leg library. They cover ordered batches, partial failures/retry, mismatched acknowledgements, missing-city generation, search prefill, dataset-only saves and keyboard activation. No provider call or key was used for the new generation tests; responses are mocked. Older form checks encountered climate-chart/network-idle setup delays and development-page timeouts; a separate six-leg database copy is used to isolate those checks. The personal database remains unchanged.
+- Corrected existing form-test setup to retry a trigger click lost before development-page hydration and wait on the form it exercises, removing unrelated climate-chart/network-idle prerequisites. The new-city reload check now expands the saved card before inspecting Nights, matching the planner's existing collapsed-card behavior. The real Add Leg readback allows 15 seconds for the development refresh; its save assertions are unchanged.
+- The shared card-expansion test helper also retries clicks lost before hydration. The corrected full browser run passed all six new checks and six of the seven older checks; the remaining failure reached the saved leg and failed only on that expansion helper. Its isolated rerun follows the helper correction.
+- Final result: the remaining real Add Leg rejection/retry/save/reload check and authentication pass on isolated rerun. All 13 affected form checks are verified. Final production build, standalone TypeScript, memory mirror and whitespace checks pass. No methodology or provider-transport change, and no personal database mutation.
+- TypeScript and the final production build pass. The full 507-test unit suite passed initially; the final run passed 504 checks and hit load timeouts in the two-test ordering setup and one password-hashing check. Both unchanged files then passed all five checks with their original deadlines. Targeted ESLint still reports seven pre-existing effect-state violations in these files; no new lint violation was introduced. Sandbox path/temporary-file restrictions required running builds/tests outside the sandbox.
+
+# 12 October 2026 — Hide development indicator
+
+- Set devIndicators to false in next.config.mjs to hide the Next.js N indicator during development. Framework errors still surface normally.
+- Verified JavaScript syntax, configuration loading through Next.js for development and production build phases, memory mirror and diff whitespace. No application logic changes; the existing generated tsconfig.json include is excluded from this commit.
+
+
+## 18 October 2026 — City cost v1.2 and exchange-rate refresh
+
+- v1.2 adopted from the city-cost hill-climb research (branch `research/city-cost-accuracy`, tag
+  `city-cost-research-r3-2026-10-17`): bundle 022 scored 0.163 on 333 development cities (R3 references, actual booking
+  hotel prices) against 0.435 for uncorrected v1.1, and held on 142 held-out cities (0.190 vs 0.220 for the previous
+  best). v1.2 = v1.1 prompt plus up to five food/drink searches; the server multiplies food, drink, 3-star and 1-star
+  USD anchors by a fixed country-within-region correction table (k=3, fitted on 475 cities; typical multipliers 3-star
+  0.62, 1-star 0.85, food and drink 0.96-1.01), then applies the unchanged v1 formulas, so 4-star follows 3-star x1.80.
+  Hostels stay uncorrected: their reference (Hostelworld lowest near-term prices) is not year-typical.
+- Exchange-rate refresh added. The RBA statistics tables return Access Denied to automated requests, so refreshes use
+  the ECB euro reference rates' USD/AUD cross rate (1.4370 AUD per USD on 16 October, within 0.1% of RBA).
+- Mistake caught before commit: the first refresh module overwrote the existing `src/lib/exchange-rates.ts` (expense
+  conversion via Frankfurter); it was restored from git and the new code moved to `usd-aud-reference-rate.ts`.
+  Frankfurter now redirects `api.frankfurter.app` to `api.frankfurter.dev`; fetch follows it, so expense conversion
+  still works.
+
+## 19 October 2026 — Library regenerated under v1.2; photo review
+
+- Regeneration: 529 prompts from stored city names, answered by GPT-6 Luna Max Codex workers (up to six searches:
+  RBA rate plus food and drink; no accommodation search), saved with `add-cities-from-agent-responses.ts persist` in
+  three waves. Codex hit its 5-hour limit twice; the queue resumed each time. Before saving, `review-wave.ts` compared
+  each answer's v1.2 values with the current ones. Large changes were mostly old values being replaced: 23 original
+  hand-entered seed cities (for example moderate drinks at A$7 a day), 122 April CSV cities with low food values, and
+  v1 cities with implausible values (Apia 3-star A$461, mid-range food A$410).
+- Nagasaki's first answer (mid-range meal for two USD 19, beer USD 2.30) looked like a misread; a fresh worker returned
+  almost the same figures from the same crowd-sourced data, so it was kept. Dambulla's 3-star fell from A$100 to A$28
+  (USD 45 x Sri Lanka factor 0.43, fitted on 12 Sri Lankan reference cities): working as designed, but South Asian
+  3-star booking prices include cheap guesthouses; revisit at the next table refresh.
+- Photo review: Codex Luna Max workers looked at each stored 500 px photo with its city, article and Commons title.
+  525 ok; Mykonos and Santorini (PNG municipality maps), Palermo (church interior) and Oaxaca (the state's mountains)
+  flagged.
+
+## 19 October 2026 — Hostel correction enabled
+
+- Why hostels were held: their references were the lowest Hostelworld prices for dates a few days out, not a typical
+  night across the year, so a factor fitted to them would have pulled estimates towards off-peak minimums.
+- Year-typical references (panel R4, research branch): Hostelworld's dated search needs private API credentials, so
+  each city's near-term hostel price is scaled by that city's Booking.com seasonality, exp(mean ln of six stay-date
+  medians - ln of the November medians), with the region median where a city has fewer than five usable dates.
+  Median scale 1.08. Assumption, recorded on every row: hostel prices move across the year like hotel prices.
+- Result (leave-one-city-out, development cities, Luna 102 answers): dorm 0.323 uncorrected to 0.232 corrected,
+  private room 0.401 to 0.235. Against the old near-term references the factors would have been 0.73 and 0.65; the
+  year-typical references give 0.81 and 0.70 by that measure, and the fitted table's global factors are 0.77 and 0.70.
+- Table `v1.2-corrections-2026-10-19` adds hostel factors only; the other six anchors' factors are byte-identical.
+- `scripts/recorrect-city-costs.ts` re-applies the table from each estimate's stored raw anchors and exchange rate,
+  with no model call. Like the exchange-rate refresh it changes a planner field only if it still equals what the
+  estimate produced.
+- Applied to the live library after merge (PR #16), with a verified backup first: 529 cities re-corrected, none with
+  hand-edited hostel fields. Wulong and Chaozhou, added the same day, were saved under v1.1 and were skipped.
+
+## 20 October 2026 — Wulong and Chaozhou regenerated under v1.2
+
+- Both were added through the app on 19 October while `.env.local` set `CITY_COST_METHODOLOGY_VERSION=v1.1` (a
+  leftover rollback setting); the owner changed it to `v1.2`. Regenerated from Codex Luna Max answers through the
+  app's `persist` path. Chaozhou's first two workers wrote nothing because the brief forbade running commands and
+  they could not read the prompt file without one; the rerun allowed a read-only command to read it.
+- Changes: Chaozhou 3-star A$69 to A$45, mid-range food A$61 to A$49; Wulong 3-star A$69 to A$63, mid-range food A$65
+  to A$39. All 531 cities are now v1.2 with table `v1.2-corrections-2026-10-19`.
+
+## 20 October 2026 — Local worktree and backup clean-up
+
+- Layout now: main checkout `C:\Dev\holiday-spend`, worktrees in `C:\Dev\holiday-spend-worktrees\`, snapshots in
+  `C:\Dev\holiday-spend-backups\` (pre-v1.2 regeneration, pre-hostel re-correction, and the last 11 October batch
+  database). Both snapshots re-verified after the move.
+- Removed (owner approved): finished worktrees city-cost-v1-2, city-photo-review and hostel-corrections; the 21 older
+  per-batch databases from 10-11 October; the September `travel.real-backup.db`/`travel.canonical-backup.db`; the
+  April `flatten-root` folder; the v5 quarantine folder; merged branches feat/city-cost-v1-2, fix/city-photo-review,
+  feat/hostel-corrections and redesign/bento (local and remote).
+- Cause of the emptied `node_modules/.bin` on 19 October: `next build` in a worktree creates
+  `.next\standalone\node_modules` as a junction to the main checkout's `node_modules`; deleting the worktree
+  followed it. Junctions are now unlinked before any worktree deletion (see CLAUDE.md, Local layout).
+
+## 20 October 2026 — Account display currency
+
+- Added 30-currency selection beside travellers on dashboard/planner and in Settings, persisted per account.
+  The phone planner row keeps the full traveller label, with an icon Add Leg button.
+- Reused Frankfurter and the existing exchange-rate table. A latest AUD-base snapshot is shared for an hour and
+  observations are stored under their actual date. Invalid, future or older-than-seven-day rates stay unavailable.
+  AUD needs no download; failed changes retain the saved display and offer Retry/Discard.
+- Totals, chart ticks/labels/tooltips, plan comparisons, saved-plan summaries, expense equivalents, tag totals,
+  Dataset prices and cost inputs use the preference. Editable amounts convert back to canonical AUD; switching
+  alone writes no costs. Invalid input stays a draft and cannot clear overrides or save zero transport.
+  Original transaction currencies, stored FX provenance and fixed methodology examples keep their stated units.
+- Verification: 86 unit files / 562 tests, the two currency browser flows and three existing planner regression
+  tests pass; TypeScript, focused ESLint, memory mirror, methodology guard and production webpack build pass.
+  Live Frankfurter rates dated 20 October (EUR 0.62282 per AUD) and real preference saves/full Settings and planner
+  reloads were checked in an isolated database. The worktree standalone build warns about 27 dependency files
+  outside the tracing root because node_modules is a junction; no deployment boot was tested.
+- Test setup: webpack handles the shared dependency junction; NODE_OPTIONS=--no-experimental-strip-types lets
+  the existing Tailwind TypeScript config load under Node 24. First cold dev compilation exceeded auth setup's
+  timeout; warmed reruns passed. Supplied Agra only in the seeded test database for existing planner fixtures.
+- Work is isolated on codex/display-currency at C:\Dev\holiday-spend-worktrees\display-currency. The other agent's
+  checkout and the live database were not edited. Automatic approval review rejected publishing source/history to
+  the configured GitHub remote as an unverified destination. The owner then explicitly approved pushing to
+  mwilczynska/holiday-spend and opening a draft PR on 20 October 2026.
+
+## 20 October 2026 — Pre-deployment security hardening
+
+- Review before public launch on `projectinfinitesummer.com`. Kept: Argon2id, hashed single-use tokens, token-version
+  revocation, the allowlist, strict production startup checks and per-user scoping on every data route.
+- CSRF: cookies are SameSite=Lax, and the landing page on the apex domain is the same site as `spend.`, so a page
+  there could have posted with a visitor's session. The proxy now runs on every path and refuses cross-origin
+  `/api/*` writes by Origin or Sec-Fetch-Site. Requests with neither header (scripts, tests) are allowed because they
+  cannot carry a visitor's cookie.
+- Pre-registration: signing up an allowlisted address first kept that password, because the owner's later signup
+  only re-sent the link. Verification now needs the account password; reset verifies the address instead, which is
+  how the owner recovers from someone else's registration. Signup no longer returns 403 for non-allowlisted addresses.
+- Server LLM keys are refused at production startup rather than removed from the code fallbacks, which local
+  development and scripts still use.
+- Deployment blockers: the v1.2 prompt had been added to the code but to none of the four packaging lists, so a
+  container would start and then fail every city generation. The lists now import one module, with a test tying it
+  to the prompt constants and the Dockerfile. Security headers come from the app; script-src keeps 'unsafe-inline'
+  because nonce-based CSP would force every page to render per request.
+
+## 20 October 2026 — Display currency merged
+
+- Owner requested merging PR #19 and cleaning up its source branch/worktree. Squash-merged to main as ecae75c4.
+- Linux Production checks passed on e59510c4: TypeScript, full unit suite, memory mirror, methodology guard,
+  production dependency audit, runner/seed Docker builds and container startup checks.
+- Deleted codex/display-currency locally and remotely after confirming its head still matched the merged PR.
+  Unlinked only the worktree's node_modules and .next/standalone/node_modules junctions before disposal;
+  confirmed the shared main-checkout dependencies remain present. The temporary checkout is disposable after
+  this documentation push. No live database or primary-checkout file was edited.
+- The primary checkout remains on the other agent's security/pre-deploy-hardening branch, including its existing
+  tsconfig.json change. Local main was updated using the currency worktree.
+# 20 October 2026 — Product analytics implementation milestone
+
+Started owner-approved self-hosted analytics on `codex/product-analytics`, in the requested external worktree.
+Added a versioned event contract, durable outbox and separate analytics SQLite store, default-on collection with
+account/public-page controls, browser control annotations and request correlation. Plan revisions and their
+price inputs commit with planner mutations; LLM requests record projected metadata without prompt/response content.
+The initial six-view admin dashboard and full-only analytics backup/restore are implemented. Focused checks pass
+33/33 and the initial Windows production build passes with the known worktree dependency-junction tracing warning.
+The full suite, browser checks, extra security/metrics coverage and operational documentation remain in progress.
+
+# 20 October 2026 — Analytics verification and reporting isolation
+
+Completed the event/control inventory (52 API modules, 255 controls), report metric definitions, ordered funnels,
+retention denominators including non-returners, private revision inspection/export and durable event export jobs.
+Added enforced ingestion/administrator boundaries, account opt-out synchronization, durable erasure/replay markers
+and export invalidation that also covers in-flight reads. LLM records retain only allowlisted metadata and explicit
+unknowns. Historical revisions freeze canonical prices/totals, saved-plan names and city recorrections.
+
+Initial million-event reports blocked for 2.7–10.7 seconds. Overlapping indexes amplified writes, so reduced them,
+cached insertion statements, bounded SQLite cache use, and moved report/export reads to a read-only thread with
+16 pending-query and 15-second bounds. A 10,000-event final smoke takes 3–530 ms per view and adds 11.76 ms mutation
+p95 for a 66-leg plan; final million-event verification continues. Local source gzip is only a lower-bound proxy
+for shipped bundle size, not a bundle measurement or deployment-host performance claim.
+
+Windows production build and TypeScript pass. Focused analytics ESLint, coverage, memory mirror and methodology
+guard pass. The full suite passes 601/601 with a 30-second setup allowance on Windows. Earlier runs had 10-second
+cold setup timeouts; changed async history fixtures to lazy references and isolated CSV auth fixtures. Production
+staging fixtures now include and assert the new worker. No assertions were disabled.
+
+Production Playwright verifies login, plan revision inspection, opt-out across reload, continued private revisions,
+all mobile report APIs, bounded page width and forged/cross-origin ingestion rejection. The first mobile assertion
+incorrectly matched Next's empty route announcer outside main; scoping it to app content fixes the test. Screenshots
+were inspected at desktop and 375px. Fixtures use a seeded worktree database and synthetic account; the main database
+and checkout remain untouched. Linux/container verification and host-scale checks remain before deployment.
+
+# 20 October 2026 — Analytics local handoff and final stress result
+
+The owner requested keeping the remaining analytics work local while deploying the current app. The verified
+milestone is local commit c9a751d8; no further push or draft PR was created. The initial milestone a3ff389e had
+already been pushed earlier. Docker is unavailable on this Windows host, so Linux checks remain unrun.
+
+Final one-million-event fixture: ingestion 804,954 ms; Overview 6,913 ms, Journeys 2 ms, Funnels 5,989 ms, LLM 3 ms,
+Health 232 ms. The 66-leg history mutation adds 10.08 ms p95. The benchmark fails its two-second aggregate-read
+target; the bounded worker prevents these reads from blocking product requests. Further aggregate optimization
+and deployment-host measurements remain explicit follow-ups. Temporary benchmark databases were closed and removed.
+
+Final review adds pseudonymous account links to Plans and LLM tables and operation filtering from LLM attempts,
+so an administrator can distinguish owners and follow a request. Latest implementation documentation is
+docs/analytics/README.md; the current deployment and its personal database are outside this worktree.
+
+
+# 20 October 2026 — Analytics aggregate performance and merge readiness
+
+Merged committed main through c66fef39 into codex/product-analytics locally (1fb8efbe). The owner's
+local-only instruction remains in effect: no push, PR, merge into main or live deployment change.
+
+Added exact daily event summaries and separate session membership, maintained by SQLite triggers on
+insert/update/delete. Deduplicated delivery, anonymous-account association, erasure and transaction rollback
+remain exact. Retention reads these summaries; operation filters retain raw queries. A generated identity
+column and covering funnel index avoid repeated event-table reads. Summary upgrades backfill retained raw
+events without changing them. Filter, backfill, deduplication and operation-retention regressions pass.
+
+Final Windows mixed one-million-event fixture: Overview 1,352 ms, Journeys 4 ms, Funnels including retention
+1,615 ms, LLM 4 ms, Health 293 ms. History adds 12.80 ms p95 for 66 legs, below 20 ms. A 250-event insert
+transaction with production indexes/triggers takes 683.64 ms. Fast fixture preparation took 124,539 ms; it
+bulk-loads then rebuilds exact production indexes/summaries, so that figure is explicitly not ingestion
+throughput. Query profiles are in the ignored local artifact. These figures do not establish VPS performance.
+
+Used an isolated source copy and verified official Node 24.12.0 runtime under existing WSL Ubuntu for Linux
+checks. Production dependency audit reports zero vulnerabilities. The first real container build exposed an
+existing check-then-ALTER race (duplicate display_currency) across 31 Next.js build workers. Primary and
+analytics startup now acquire an immediate write transaction before reading/migrating schema; a six-process
+legacy-upgrade regression verifies exactly one backfill and no lost event/session summary.
+
+Added analytics:upgrade-check. It restores a verified full snapshot into a new private directory, runs real
+startup twice, compares all original business table hashes, exercises a synthetic event only in the copied
+analytics store, and verifies independent full backup/restore of both databases including WITHOUT ROWID
+summary tables. The deployed package dated 2026-10-20T21:42:05.056Z passes on Linux: 531 cities, two users,
+70 legs, 80 saved plans and 82 nonduplicated history baselines. The original package remains unchanged.
+
+Container verification uses a temporary private Docker daemon with its own socket/data root, no bridge or
+iptables changes, and disposable seeded test volumes. Optional smoke-test host networking binds only to
+Linux loopback; normal CI retains its published loopback port. Final container/baseline results follow below.
+
+Final native Linux baseline: 99 files / 607 tests, TypeScript, memory mirror, methodology guard and analytics
+coverage pass. Windows focused ESLint/types pass. The protected Linux upgrade rehearsal also passes after
+the startup-lock fix. A parallel source sync briefly truncated a file while Docker captured its context; the
+retry uses a separate frozen source copy. Newly committed main 88399203 changes only deployment notes and
+the development route-types include and will be integrated locally after this feature checkpoint.
+
+Integrated committed main through 88399203 with a clean local merge. The only additions since c66fef39 are
+deployment notes and the development route-types include; application/runtime source is unchanged.
+
+Linux mixed million-event fixture also passes: Overview 519 ms, Journeys 2 ms, Funnels/retention 540 ms,
+LLM 3 ms, Health 102 ms; added history p95 8.35 ms and 250-event insertion 149.74 ms. Fast fixture
+preparation 44,298 ms is not ingestion throughput. Disposable fixture cleanup completes automatically.
+
+Final frozen-source container run passes both runner/seed builds, including the 31-worker production
+build phase. Real Linux Argon2/SQLite, prompts/assets, NextAuth sign-in, all six analytics reports through
+the read worker, guest denial, token revocation, full analytics backup/restore and restart pass. After the
+main merge, Windows and Linux strict types pass; the runtime source matches e276f112 exactly (main added
+only docs/development type configuration). GitHub CI awaits owner-authorized publication. Deployment-host
+timing remains a rollout check. No live service, source snapshot, main checkout or GitHub branch was changed.
+
+Removed this task’s closed synthetic Windows fixtures and private Windows production-data rehearsal copies
+after preserving aggregate verification results. Linux rehearsal fixtures clean themselves; temporary Linux
+source/runtime/Docker test data is removed after checking exact owned paths and absence of active mounts.
+The requested analytics worktree and its local preview remain available.
+
+# 21 October 2026 — Owner-authorized analytics merge and cleanup
+
+The owner explicitly authorizes merging to main, pushing main and deleting the GitHub feature branch.
+Fetched origin: main remains 88399203; the analytics feature is 64a41568 and no PR is open for it. Both
+checkouts are clean. Stopped only the analytics preview’s port-3047 process tree. Preserved its complete
+121-city test database, analytics store and prior verification results in the main checkout’s ignored
+.local/analytics-merge-2026-10-21T03-59-34-057Z directory before removal.
+
+Local main fast-forwarded to df867bba. Both verified node_modules junctions were detached without following
+their main-checkout targets, then only the clean fully merged analytics worktree and local branch were
+removed. The research worktree remains. Main strict types and memory mirror pass. A fresh Git checkout
+exposed CRLF-only differences in the coverage inventory; normalize CRLF when comparing the generated
+inventory so Windows checkouts validate the same source inventory as Linux. Publication and CI follow.
+
+Main 54c22fac is published. GitHub Production checks run 39541785109 completed successfully:
+https://github.com/mwilczynska/holiday-spend/actions/runs/39541785109
+It passes types, the full unit suite, memory/methodology guards, production dependency audit, both Docker
+image builds, real native/auth/analytics/permissions/backup/restore/restart checks and GHCR image publication
+(sha-54c22fa and main). The fully merged GitHub feature branch is deleted and origin tracking is pruned.
+The analytics worktree/local branch are removed, main dependencies remain intact, and the research worktree
+is retained. Preview data and verification evidence are preserved in the ignored archive recorded above.
+This changes source/image publication; no VPS deployment command was run. Deployment-host timing remains
+part of the next owner-authorized rollout.
+
+Open registration (21 October 2026). A new user signed up and clicked resend on the live app and received no
+email. Both routes returned the normal "check your email" response because the address was not in
+`AUTH_ALLOWED_EMAILS`; they skip unlisted addresses silently so the form does not reveal the allowlist. Resend
+was not involved: a delivery failure returns a 500. The owner decided that any address may register, so the
+allowlist was removed from signup, resend, forgot-password, credential and Google sign-in, the JWT refresh,
+`requireCurrentUser`, the proxy token check and the analytics identity routes. `AUTH_ADMIN_EMAILS` remains the
+only address list and is still required at production startup. Existing per-IP and per-address rate limits
+bound verification email volume.
+Production checks run 39649844448 passed and published the image. The VPS pulled `:main` and recreated the
+container on 21 October 2026; the running image revision is a22acd9b and it reports healthy. The first deploy
+attempt changed nothing: Windows PowerShell 5.1 strips double quotes from native arguments, so the remote bash
+script failed to parse. Sending the remote script base64-encoded avoided it.
+
+Repository tidy-up (21 October 2026). The public repository root carried four large development documents and
+`main` still held the tooling and data of research programmes abandoned in July and August. `PLAN.md` and `LOG.md`
+moved to `docs/dev/`; the v1.1 loop prompt and the remaining v4 methodology, handoff and plans moved to `archive/`
+folders. Tag `city-cost-v3-v4-research-final-2026-10-21` marks the last commit that carries the v1 audit, v3
+observed-first and v4 ratio-model scripts, their 14 `src/lib` modules and tests, the v3 observation and v4 anchor
+prompts and their `data/reference/` evidence; all of it was then removed from `main`, along with 35 npm scripts. An
+import-graph check confirmed that none of the removed modules was reachable from the app, live scripts or remaining
+tests. The bulk removal briefly caught the four transport accuracy files, which are live evidence for
+`docs/product/transport-estimation.md`; they were restored before commit. `AGENTS.md` is now the single project memory
+and `CLAUDE.md` is the one-line import `@AGENTS.md`, so the mirror script and its CI step are gone. Agent and tool
+working folders are gitignored. The prompt register, which still listed about sixty v5 experiment prompts not present
+on `main`, was rewritten around the five runtime prompts.

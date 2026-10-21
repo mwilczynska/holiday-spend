@@ -301,8 +301,8 @@ When you know a real price, such as a booked hotel, use an override.
 ## 13. History of earlier methods
 
 Only v1, v1.1 and v1.2 have shipped. The others were researched between July and August 2026 and set aside. The full
-record is in `LOG.md`, `methodology-v4.md`, `docs/prompts/README.md` and the archived branch
-`feat/city-cost-methodology-v6`.
+record is in `docs/dev/LOG.md` and `docs/product/archive/methodology-v4.md`. The v3 and v4 data and tooling are on tag
+`city-cost-v3-v4-research-final-2026-10-21`, and v5 and v6 are on the archived branch `feat/city-cost-methodology-v6`.
 
 ### v1.1 to v1.2 (October 2026): measured improvement
 

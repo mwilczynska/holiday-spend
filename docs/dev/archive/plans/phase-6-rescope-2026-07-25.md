@@ -1,10 +1,10 @@
 # Phase 6 Re-Scope, 25 July 2026
 
 <!-- status-banner -->
-> **ABANDONED — not current.** Amendments A-F to the v3 programme. The programme was dropped entirely two days later. Several conclusions carried into v4 — see `/LOG.md` Part 1.
+> **ABANDONED — not current.** Amendments A-F to the v3 programme. The programme was dropped entirely two days later. Several conclusions carried into v4 — see `/docs/dev/LOG.md` Part 1.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 This document amends the Phase 6A frozen specification. Phase 6A was deliberately frozen before evidence collection so that results could not drift the rules. These amendments are therefore recorded as dated, rationale-bearing changes rather than silent edits, and every one of them weakens or re-shapes an acceptance rule in a way that must be disclosed on `/estimates` and in the eventual data card.
 

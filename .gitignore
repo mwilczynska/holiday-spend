@@ -1,6 +1,12 @@
 .claude/
 .worktrees/
 .local/
+/.local-test/
+
+# agent and tool working folders (never commit worker logs or telemetry)
+/.agents/
+/.codex/
+/telemetry/
 
 # local sample imports and exports
 /sample-data/*.csv
@@ -30,6 +36,7 @@ transaction-history_*.csv
 # misc
 .DS_Store
 *.pem
+/nginx/certs/
 
 # debug
 npm-debug.log*

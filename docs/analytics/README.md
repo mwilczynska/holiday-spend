@@ -201,5 +201,5 @@ full backup/restore and restart. The build-worker migration race is fixed and co
 
 Analytics is merged to main after integrating committed main through 88399203. The owner authorizes publication
 and feature-branch cleanup. Linux/container
-verification evidence is recorded in PLAN.md and LOG.md. Measure the deployment host after rollout; no live
+verification evidence is recorded in docs/dev/PLAN.md and docs/dev/LOG.md. Measure the deployment host after rollout; no live
 production data or deployment has been changed by these checks.

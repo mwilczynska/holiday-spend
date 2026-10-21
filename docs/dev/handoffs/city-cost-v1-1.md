@@ -1,7 +1,7 @@
 # City Cost v1.1 — current handoff
 
 **As at 26 August 2026.** This is the current cold-start note for the v1.1 simplification workstream. The
-authoritative checklist is [`PLAN.md`](../../../PLAN.md); this note names the exact next action and the constraints
+authoritative checklist is [`docs/dev/PLAN.md`](../PLAN.md); this note names the exact next action and the constraints
 that must remain visible during implementation.
 
 ## Current state
@@ -98,7 +98,7 @@ as validation of city-price accuracy or tune formulas/edit the live CSV from the
 - Do not bulk-migrate existing cities or replace/regenerate `data/reference/city_costs_app_aud.csv`.
 - Do not reintroduce v6/v6.1 collectors, priors, staged migration artifacts, or search contracts.
 - Provider keys remain browser-only. Generated values are model estimates and must not be described as observed prices.
-- Update `PLAN.md` at task start/end and before every commit/push. Commit and push each sizeable checkpoint.
+- Update `docs/dev/PLAN.md` at task start/end and before every commit/push. Commit and push each sizeable checkpoint.
 
 ## Verification
 
@@ -109,7 +109,6 @@ failures only mean the check had no target and do not indicate an application re
 npx tsc --noEmit
 npm run build
 npm test -- --run
-npm run docs:check-memory
 npm run methodology:v1.1:check
 npm run performance:check
 ```

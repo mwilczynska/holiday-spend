@@ -1,10 +1,10 @@
 # Holiday Spend Tracker — City Cost Database Methodology
 
 <!-- status-banner -->
-> **SUPERSEDED — not current.** The v2.1/v3 public methodology. Replaced by `docs/product/methodology-v4.md`. The former `/estimates` page matched this text; that page was replaced with active v1.1 guidance on 2 October 2026.
+> **SUPERSEDED — not current.** The v2.1/v3 public methodology. Replaced by `docs/product/archive/methodology-v4.md`. The former `/estimates` page matched this text; that page was replaced with active v1.1 guidance on 2 October 2026.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 **Version 2.1 baseline + Version 3 redesign | Reference dataset: April 2026 | Review: July 2026**
 

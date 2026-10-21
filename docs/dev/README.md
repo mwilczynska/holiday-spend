@@ -1,31 +1,22 @@
 # Development Notes
 
-This folder holds developer-facing planning and historical context that is useful for implementation work but is not part of the app's public product or operations documentation.
+Developer-facing planning and history. None of this is product or operations documentation.
 
-**Almost everything in this folder is historical.** For current work, read `/PLAN.md`, then
-`docs/dev/handoffs/city-cost-v1-1.md` and `/LOOP-PROMPT-V1-1.md`. For what was tried and what it produced, read
-`/LOG.md`. The v4 documents are retained methodology evidence, not the active product implementation.
-
-Structure:
-
-- `plans/` - historical implementation plans plus the active checklist at `/PLAN.md`
-- `handoffs/` - current `city-cost-v1-1.md`; older handoffs are superseded historical notes
-- `PLAN-initial-spec.md` - the original historical project spec retained for context
-- `PLAN-new-methodology.md` - an early v4 draft, **superseded by** `docs/product/methodology-v4.md`
-
-Repo-root docs should stay minimal:
-
-- `README.md` as the main project entry point
-- `CLAUDE.md` / `AGENTS.md` as project memory
-- `PLAN.md` for current work, `LOG.md` for history
-- app/config files only
-
-Current product, ops, and prompt assets live in `docs/product/`, `docs/ops/`, and `docs/prompts/`.
+| Path | Contents |
+| --- | --- |
+| `PLAN.md` | Current plan, milestone status and open decisions |
+| `LOG.md` | Append-mostly history: what was built, what was tried and what the evidence showed |
+| `handoffs/` | Current workstream handoffs: `city-cost-v1-1.md`, `add-cities-europe.md`, `production-launch.md` |
+| `feature-qa-2026-10-02.md` | Feature QA pass of 2 October 2026 |
+| `archive/` | Superseded plans, handoffs and loop prompts, each with a status banner |
 
 ## Refreshing model suggestions
 
-Model pickers use a three-tier discovery pipeline (live provider API -> no-key aggregator fetch -> generated curated snapshot). Tier 3 reads `src/lib/data/curated-models.generated.json`, which is a committed artifact refreshed from OpenRouter and models.dev.
+Model pickers use a three-tier discovery pipeline (live provider API, then no-key aggregators, then a generated
+curated snapshot). Tier 3 reads `src/lib/data/curated-models.generated.json`, a committed artifact refreshed from
+OpenRouter and models.dev.
 
-- `npm run models:refresh` regenerates the snapshot and writes it to disk. Run this when provider model names drift and commit the resulting JSON.
-- `npm run models:check` exercises the same pipeline in a dry-run without writing, so CI or pre-commit flows can detect stale snapshots.
-- The refresh script reuses the same runtime filters that gate live aggregator responses, so the committed snapshot cannot contain ids that would be filtered out at runtime.
+- `npm run models:refresh` regenerates the snapshot. Run it when provider model names drift and commit the JSON.
+- `npm run models:check` runs the same pipeline without writing, so stale snapshots can be detected.
+- The refresh reuses the runtime filters applied to live aggregator responses, so the snapshot cannot contain ids
+  that would be filtered out at runtime.

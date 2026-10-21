@@ -136,7 +136,6 @@ In development, sign in with `AUTH_DEV_PIN`. A production build disables the PIN
 npx tsc --noEmit
 npm run build
 npm test -- --run
-npm run docs:check-memory          # CLAUDE.md and AGENTS.md must stay identical
 npm run methodology:v1.1:check     # formulas, exchange rate, v1.2 correction table and dataset integrity
 npm run performance:check          # route, payload and JavaScript-size budgets for a signed-in user
 ```
@@ -153,9 +152,9 @@ sign-in page.
 | `src/components` | Planner, dashboard, expenses, city library and shared UI |
 | `src/lib` | Cost calculation, imports, language-model clients, climate, photos and methodology code |
 | `src/db` | Schema, database setup and seed script |
-| `data/reference/` | The city cost dataset and retained methodology evidence |
+| `data/reference/` | The seed city-cost dataset and transport accuracy evidence |
 | `docs/prompts/` | Versioned language-model prompts |
-| `scripts/` | Build, validation and data tooling |
+| `scripts/` | App, operations, analytics and city-library tooling |
 
 ## Documentation
 
@@ -166,13 +165,13 @@ sign-in page.
 | [docs/product/trip-climate.md](docs/product/trip-climate.md) | Where the weather averages come from |
 | [docs/product/city-images.md](docs/product/city-images.md) | How city photos are found and credited |
 | [docs/research/city-cost-accuracy.md](docs/research/city-cost-accuracy.md) | The accuracy research behind the city-cost method, and how to continue it |
-| [CLAUDE.md](CLAUDE.md) / [AGENTS.md](AGENTS.md) | Project memory: what the app is and how it works today |
-| [PLAN.md](PLAN.md) | Current plan and milestone status |
-| [LOG.md](LOG.md) | History: what was built, what was tried, and what the evidence showed |
+| [AGENTS.md](AGENTS.md) | Project memory: what the app is and how it works today (`CLAUDE.md` imports it) |
+| [docs/dev/PLAN.md](docs/dev/PLAN.md) | Current plan and milestone status |
+| [docs/dev/LOG.md](docs/dev/LOG.md) | History: what was built, what was tried, and what the evidence showed |
 | [docs/ops/deployment.md](docs/ops/deployment.md) | Deployment |
 | [docs/README.md](docs/README.md) | Guide to everything else under `docs/` |
 
-`LOG.md` records the approaches that were rejected as well as the ones that shipped. The city-cost method went
+`docs/dev/LOG.md` records the approaches that were rejected as well as the ones that shipped. The city-cost method went
 through several far more elaborate designs, built on collecting prices from the web, before the simpler one in use
 now.
 

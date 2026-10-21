@@ -3,7 +3,7 @@
 > **COMPLETE — not current.** Native email/password accounts shipped.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 ﻿# Native Email/Password Accounts - Implementation Plan
 

@@ -4,7 +4,7 @@
 > **COMPLETE — not current.** Branch handoff for work that has shipped.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 Historical note: this handoff describes the earlier split that introduced `/dataset`. The temporary `/settings/cities` compatibility route mentioned below was later removed during the cleanup/simplification pass.
 

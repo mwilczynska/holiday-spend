@@ -1,9 +1,9 @@
-> **SUPERSEDED — not current.** This is the former project plan retained as historical record. It was replaced by the v1.1 simplification plan in the root `PLAN.md` on 18 August 2026. The v6.1 branch and its research evidence remain preserved in Git history; do not resume its Phase 11 cutover.
+> **SUPERSEDED — not current.** This is the former project plan retained as historical record. It was replaced by the v1.1 simplification plan in `docs/dev/PLAN.md` on 18 August 2026. The v6.1 branch and its research evidence remain preserved in Git history; do not resume its Phase 11 cutover.
 
 # Holiday Spend — Plan
 
 The working document for the current workstream. Confirmed historical results and rejected methodologies
-live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
+live in [LOG.md](../../LOG.md). Project memory is in [CLAUDE.md](../../../../CLAUDE.md).
 
 **Active workstream:** city cost methodology **v6.1 — coherent 121-city migration**
 **Last reviewed:** 14 August 2026
@@ -160,7 +160,7 @@ Order is **not negotiable**. M1 ships before any accuracy work — that is the c
 - [x] `scripts/fit-city-cost-ladder-v6.mjs` — reproducible fit, supports `--check`
 - [x] `LOOP-PROMPT-V6.md` — terminating loop; v5's archived with a banner
 - [x] `docs/dev/handoffs/city-cost-v6.md` — restartable handoff
-- [x] v5 plan doc bannered superseded; v5 closure appended to `LOG.md`
+- [x] v5 plan doc bannered superseded; v5 closure appended to `docs/dev/LOG.md`
 - [x] `AGENTS.md`/`CLAUDE.md` mirror repaired — `npm run docs:check-memory` was failing
 
 ### M1 — integrate — **complete (9 August 2026)**

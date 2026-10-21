@@ -8,7 +8,7 @@ several abandoned findings carried forward into current work.
 
 | Current state | Current plan | History and results |
 | --- | --- | --- |
-| `/CLAUDE.md` | `/PLAN.md` | `/LOG.md` |
+| `/CLAUDE.md` | `/docs/dev/PLAN.md` | `/docs/dev/LOG.md` |
 
 ## Contents
 
@@ -27,14 +27,14 @@ frozen FX snapshot all feed v4. See `data/reference/README.md`. Only the *progra
 
 | File | Replaced by |
 | --- | --- |
-| `PLAN-v4-early-draft.md` | `docs/product/methodology-v4.md` — figures here come from a 58-city sample, since closed at 99 |
-| `../product/archive/methodology-v2-v3.md` | `docs/product/city-cost-methodology.md` (v1.1, current). The v4 research in `docs/product/methodology-v4.md` came in between and is also superseded |
+| `PLAN-v4-early-draft.md` | `docs/product/archive/methodology-v4.md` — figures here come from a 58-city sample, since closed at 99 |
+| `../product/archive/methodology-v2-v3.md` | `docs/product/city-cost-methodology.md` (v1.1, current). The v4 research in `docs/product/archive/methodology-v4.md` came in between and is also superseded |
 | `../product/archive/estimates-page-v3-draft.md` | Never wired up; live page content is hardcoded in `src/app/estimates/page.tsx` |
 
 ### Complete — shipped app workstreams
 
 `plans/` and `handoffs/` entries for saved plans and comparison, compare-page analytics, planned
 allocations, the country dataset, native accounts, live model discovery, and the cleanup pass. All
-shipped; summarised in `/LOG.md` Part 4.
+shipped; summarised in `/docs/dev/LOG.md` Part 4.
 
 `PLAN-initial-spec.md` is the original project spec, kept for historical context.

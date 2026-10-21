@@ -4,7 +4,7 @@
 > **COMPLETE — not current.** The canonical planned-allocation engine shipped.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 > **Branch**: `feat/compare-planned-allocations` off `main`
 > **PR target**: `main`

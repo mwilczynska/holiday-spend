@@ -4,7 +4,7 @@
 > **COMPLETE — not current.** Saved plans and multi-plan comparison shipped.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 > **Branch**: `feat/saved-plans-comparison` off `main`
 > **PR target**: `main`

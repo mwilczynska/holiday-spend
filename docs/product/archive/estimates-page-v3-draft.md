@@ -4,7 +4,7 @@
 > **SUPERSEDED — not current.** A draft of the `/estimates` page written for v3. Never wired up; the live page content is hardcoded in `src/app/estimates/page.tsx`.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 **How the cost estimates are built, and what we know about how accurate they are.**
 

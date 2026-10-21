@@ -1,10 +1,10 @@
 # City Cost Methodology v4 — Search-Anchored, Deterministically Derived
 
 <!-- status-banner -->
-> **SUPERSEDED — not current.** An early draft of methodology v4. Replaced by `docs/product/methodology-v4.md`, which is fitted on the closed 99-city sample rather than this draft's 58-city one. Figures here are stale.
+> **SUPERSEDED — not current.** An early draft of methodology v4. Replaced by `docs/product/archive/methodology-v4.md`, which is fitted on the closed 99-city sample rather than this draft's 58-city one. Figures here are stale.
 >
 > Retained for provenance. This document does not describe how the project works today.
-> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+> Current state: `/CLAUDE.md` · current plan: `/docs/dev/PLAN.md` · history and results: `/docs/dev/LOG.md`
 
 **Status:** draft 3. Incorporates Phase 0 dry-run results. No paid data APIs.
 
