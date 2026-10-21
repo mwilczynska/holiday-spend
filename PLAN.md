@@ -57,6 +57,9 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   `rclone cryptcheck` (0 differences), then deleted from the VPS. The restored snapshot and bundles in
   `~/holiday-spend/incoming/` were deleted after confirming the app is healthy on `runtime-data/`. Disk went from 80%
   to 63% used (19 GB free). Blog docs PR travel-blog#3 merged.
+- [x] Backup alerts, 21 October: a failure emails the owner (Resend, reusing Holiday Spend's key and admin address at
+  send time), and `check-fresh.sh` at 20:30 UTC emails if nothing has succeeded in 26 hours; test email accepted.
+  VPS work now goes through one long-lived job-runner tab (project-infinite-summer `scripts/vps-runner.ps1`).
 - [x] Owner password reset and first sign-in on `spend.`, and all three sites checked by the owner: everything works
   as intended (reported 21 October 2026).
 - [ ] Restore test from OneDrive into a new directory (owner deferred it, 20 October).
