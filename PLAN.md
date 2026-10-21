@@ -131,6 +131,10 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
 - [x] Backup alerts, 21 October: a failure emails the owner (Resend, reusing Holiday Spend's key and admin address at
   send time), and `check-fresh.sh` at 20:30 UTC emails if nothing has succeeded in 26 hours; test email accepted.
   VPS work now goes through one long-lived job-runner tab (project-infinite-summer `scripts/vps-runner.ps1`).
+- [x] Backup size fix, 21 October: each night uploaded the full 265 MB Holiday Spend snapshot. Databases and manifest
+  are now copied per night (about 15 MB) and the city photos mirrored once in `holiday-spend-photos/`, with changed or
+  deleted photos kept 30 days (project-infinite-summer `0b52fd3`). Mirror seeded and cryptcheck-verified (1,062
+  photos, 252 MiB). The 16:30 UTC run on 21 October was the first fully successful scheduled backup.
 - [x] VPS OS update, 21 October 02:57–03:01 UTC: safety copies first (Holiday Spend snapshot, blog database), then
   35 packages upgraded and 2 added (Docker, git, kernel 5.15.0-198 among them), existing config kept, nothing removed;
   rebooted in about 23 s. Afterwards: no reboot pending, all four containers healthy, cron/fail2ban/ufw/
