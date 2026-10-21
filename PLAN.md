@@ -63,7 +63,7 @@ page seven times. See Phase 8 for the corrected evidence.
 ## Analytics review fixes and dashboard redesign — MERGED via PR #21 (21 October 2026)
 
 Owner-requested review of the merged analytics feature, then fixes and a dashboard redesign, reviewed by the owner and
-squash-merged as `164d645a`. Not deployed: production still runs the pre-analytics image until the owner asks.
+squash-merged as `164d645a`. Deployed 21 October 2026 17:20 UTC (see the production deployment section).
 
 - [x] Device category: Safari and Firefox send no `Sec-CH-UA-Mobile`, so iPhones were recorded as desktop and server
   events said "unknown". One helper (`src/lib/analytics/device.ts`) now uses the hint, else the user agent.
@@ -135,6 +135,11 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   are now copied per night (about 15 MB) and the city photos mirrored once in `holiday-spend-photos/`, with changed or
   deleted photos kept 30 days (project-infinite-summer `0b52fd3`). Mirror seeded and cryptcheck-verified (1,062
   photos, 252 MiB). The 16:30 UTC run on 21 October was the first fully successful scheduled backup.
+- [x] Analytics deployed, 21 October 17:20 UTC: backup `2026-10-21T17-20-16Z` first, previous image kept as
+  `holiday-spend:pre-analytics` for rollback, then image `164d645a` (release `sha-164d645`). Healthy in 5 s;
+  business data unchanged (531 cities, 70 legs, 1,543 expenses, 81 saved plans, 2 users); `analytics.db` created
+  and 83 plan-history baselines recorded; no startup errors; signed-out `/admin/analytics` redirects to sign-in;
+  cross-origin event posts refused. Memory 137 MiB. Owner to open Analytics and confirm.
 - [x] VPS OS update, 21 October 02:57–03:01 UTC: safety copies first (Holiday Spend snapshot, blog database), then
   35 packages upgraded and 2 added (Docker, git, kernel 5.15.0-198 among them), existing config kept, nothing removed;
   rebooted in about 23 s. Afterwards: no reboot pending, all four containers healthy, cron/fail2ban/ufw/
