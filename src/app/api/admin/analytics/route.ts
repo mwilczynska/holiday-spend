@@ -10,6 +10,7 @@ import { setAnalyticsActor } from '@/lib/analytics/context';
 import { instrumentRoute } from '@/lib/analytics/route';
 import { handleError } from '@/lib/api-helpers';
 import { analyticsExportResponse, requestAnalyticsExport } from '@/lib/analytics/exports';
+import { accountDirectory } from '@/lib/analytics/accounts';
 
 export const dynamic = 'force-dynamic';
 async function handleGET(request: Request) {
@@ -40,10 +41,11 @@ async function handleGET(request: Request) {
         FROM plan_revisions WHERE created_at>=? AND created_at<? AND (?=0 OR id<?) AND (? IS NULL OR user_id=?) AND (? IS NULL OR operation_id=?) ORDER BY id DESC LIMIT 100`)
         .all(q.from + 'T00:00:00.000Z', new Date(Date.parse(q.to) + 86400000).toISOString(), q.cursor, q.cursor, target, target, q.operation ?? null, q.operation ?? null) as Array<{ id: number; user_id: string; summary_json: string }>;
       recordEvent('admin_accessed', { action: 'report' });
-      return NextResponse.json({ data: { rows: rows.map(row => ({ ...row, user_id: accountAnalyticsId(row.user_id), summary: JSON.parse(row.summary_json), summary_json: undefined })), nextCursor: rows.length === 100 ? rows[99].id : null, note: 'Private history is retained independently of behavioral analytics. Environment, device, release and administrator filters do not apply.' } }, { headers: { 'Cache-Control': 'no-store' } });
+      return NextResponse.json({ data: { accounts: accountDirectory(), rows: rows.map(row => ({ ...row, user_id: accountAnalyticsId(row.user_id), summary: JSON.parse(row.summary_json), summary_json: undefined })), nextCursor: rows.length === 100 ? rows[99].id : null, note: 'Private history is retained independently of behavioral analytics. Environment, device, release and administrator filters do not apply.' } }, { headers: { 'Cache-Control': 'no-store' } });
     }
     recordEvent('admin_accessed', { action: 'report' });
-    return NextResponse.json({ data: await buildAnalyticsReport(q) }, { headers: { 'Cache-Control': 'no-store' } });
+    // Admins see which account activity belongs to; the events themselves stay pseudonymous.
+    return NextResponse.json({ data: { ...await buildAnalyticsReport(q), accounts: accountDirectory() } }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (err) { return handleError(err); }
 }
 async function handleDELETE(request: Request) {

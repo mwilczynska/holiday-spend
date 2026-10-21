@@ -93,7 +93,9 @@ analytics. Existing city estimate provenance remains the place for generated cos
 ## Reporting definitions
 
 The dashboard keeps every filter and the open tab in the URL, so a reload or shared link reopens the same report.
-Tables label the viewing administrator's own account "You"; other accounts show a short pseudonymous ID.
+Events are stored under the pseudonymous account ID. Each admin report response also carries an ID-to-email
+directory (`src/lib/analytics/accounts.ts`), so tables show account emails, label the viewer's own account "You",
+and the Account filter is a list of emails. Deleted or erased accounts no longer resolve and show a short ID.
 
 `/admin/analytics` requires a valid account and analytics-admin permission on every page/API/export read. Set
 `AUTH_ANALYTICS_ADMIN_EMAILS` for a separate role, otherwise the existing `AUTH_ADMIN_EMAILS` role applies. Ordinary

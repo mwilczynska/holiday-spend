@@ -5,7 +5,7 @@ export default function PrivacyPage() {
     <p>Holiday Spend stores product usage analytics on its own server. Collection is enabled by default and can be disabled in Settings or on the sign-in page.</p>
     <h2 className="text-xl font-semibold">What we collect</h2>
     <p>We record page visits, identified controls, confirmed changes, timestamps, approximate device category and pseudonymous account or session identifiers. Operational records include request status, performance, error categories and LLM provider, model, timing, token usage and retry information.</p>
-    <p>API keys, passwords, authentication tokens, raw LLM prompts and responses, uploaded files, search text and expense descriptions are excluded from analytics. We do not record your screen or use IP addresses to identify you in the analytics dashboard.</p>
+    <p>API keys, passwords, authentication tokens, raw LLM prompts and responses, uploaded files, search text and expense descriptions are excluded from analytics. We do not record your screen or use IP addresses to identify you in the analytics dashboard. Analytics records are stored under a pseudonymous account identifier; administrators viewing the dashboard see the email address of the account the activity belongs to.</p>
     <h2 className="text-xl font-semibold">Private plan history</h2>
     <p>The app retains revisions of saved and active plans, including itinerary details, notes, costs and the prices used to calculate historical budgets. This history and necessary operational diagnostics continue when behavioral tracking is disabled.</p>
     <h2 className="text-xl font-semibold">Access and retention</h2>

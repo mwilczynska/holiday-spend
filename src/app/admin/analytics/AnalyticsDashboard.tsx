@@ -20,6 +20,8 @@ interface Report {
   features?: Row[]; controls?: Row[]; rows?: Row[]; nextCursor?: number | null; note?: string;
   health?: Row; interruptedAttempts?: Row; p50?: number | null; p95?: number | null;
   requestHealth?: Row[]; vitals?: Row[]; errorGroups?: Row[];
+  /** Pseudonymous account ID → email, served to analytics administrators with every report. */
+  accounts?: Record<string, string>;
   funnels?: Array<{ name: string; steps: Array<{ name: string; users: number; conversion: number | null }> }>;
   retention?: Array<{ day: number; eligible: number; returned: number }>;
 }
@@ -96,6 +98,8 @@ export function AnalyticsDashboard({ initialEnvironment, selfAccountId }: { init
   const [exportJob, setExportJob] = useState<{ id: string; state: string } | null>(null);
   const [exportError, setExportError] = useState<string | null>(null);
   const [erasureStatus, setErasureStatus] = useState<string | null>(null);
+  // Kept across reloads so names don't flicker back to IDs while a report loads.
+  const [directory, setDirectory] = useState<Record<string, string>>({});
   const generation = useRef(0);
   const set = (patch: Partial<Filters>) => setFilters(current => ({ ...current, ...patch }));
   const { view, from, to, environment, admins, account, operation, release, feature, device } = filters;
@@ -121,6 +125,7 @@ export function AnalyticsDashboard({ initialEnvironment, selfAccountId }: { init
       const body = await response.json();
       if (!response.ok || !body.data || typeof body.data !== 'object') throw new Error(body.error || 'Analytics could not be loaded.');
       if (version !== generation.current) return;
+      if (body.data.accounts && typeof body.data.accounts === 'object') setDirectory(body.data.accounts);
       setData(current => append ? { ...body.data, rows: [...current?.rows ?? [], ...body.data.rows ?? []] } : body.data);
     } catch (err) { if (version === generation.current) setError(err instanceof Error ? err.message : 'Analytics could not be loaded.'); }
     finally { if (version === generation.current) setLoading(false); }
@@ -171,8 +176,9 @@ export function AnalyticsDashboard({ initialEnvironment, selfAccountId }: { init
   }, [exportJob]);
 
   /** An account as "You" or a short pseudonymous ID; clicking filters the report to it. */
+  const accountName = (value: string) => value === selfAccountId ? 'You' : directory[value] ?? shortId(value);
   const accountButton = (value: unknown) => value
-    ? <button data-analytics="analytics.filter-account" type="button" title={String(value)} className="font-medium text-brand-teal underline-offset-2 hover:underline" onClick={() => set({ account: String(value) })}>{value === selfAccountId ? 'You' : shortId(value)}</button>
+    ? <button data-analytics="analytics.filter-account" type="button" title={(directory[String(value)] ? directory[String(value)] + ' · ' : '') + String(value)} className="font-medium text-brand-teal underline-offset-2 hover:underline" onClick={() => set({ account: String(value) })}>{accountName(String(value))}</button>
     : <span className="text-muted-foreground">Signed out</span>;
   const operationButton = (value: unknown) => value
     ? <button data-analytics="analytics.filter-operation" type="button" title={String(value)} className="font-mono text-xs text-brand-teal underline-offset-2 hover:underline" onClick={() => set({ operation: String(value) })}>{shortId(value)}</button>
@@ -198,7 +204,11 @@ export function AnalyticsDashboard({ initialEnvironment, selfAccountId }: { init
           <Field label="Environment"><select className={selectClass} value={environment} onChange={e => set({ environment: e.target.value })}>{['production', 'development', 'test'].map(v => <option key={v} value={v}>{humanize(v)}</option>)}</select></Field>
           <Field label="Feature"><select className={selectClass} value={feature} onChange={e => set({ feature: e.target.value })}><option value="">All features</option>{FEATURES.map(v => <option key={v} value={v}>{humanize(v)}</option>)}</select></Field>
           <Field label="Device"><select className={selectClass} value={device} onChange={e => set({ device: e.target.value })}><option value="">All devices</option>{['mobile', 'desktop', 'unknown'].map(v => <option key={v} value={v}>{humanize(v)}</option>)}</select></Field>
-          <Field label="Account ID"><Input placeholder="All accounts" value={account} onChange={e => set({ account: e.target.value.trim() })} /></Field>
+          <Field label="Account"><select className={selectClass} value={account} onChange={e => set({ account: e.target.value })}>
+            <option value="">All accounts</option>
+            {account && !directory[account] ? <option value={account}>{shortId(account)} (no longer an account)</option> : null}
+            {Object.entries(directory).sort(([, a], [, b]) => a.localeCompare(b)).map(([id, email]) => <option key={id} value={id}>{id === selfAccountId ? email + ' (you)' : email}</option>)}
+          </select></Field>
           <Field label="Operation ID"><Input placeholder="All operations" value={operation} onChange={e => set({ operation: e.target.value.trim() })} /></Field>
           <Field label="Release"><Input placeholder="All releases" value={release} onChange={e => set({ release: e.target.value.trim() })} /></Field>
         </div> : null}
@@ -407,7 +417,7 @@ function HealthView({ data, account, erasureStatus, onErase }: { data: Report; a
     </Section>
     <Card className="border-red-200">
       <CardHeader className="pb-3"><CardTitle>Erase an account&apos;s analytics</CardTitle>
-        <CardDescription>Removes that account&apos;s analytics, LLM records and plan history. Their trips, expenses and plans stay. Choose the account by clicking it in any table, or paste its full ID under More filters. Existing exports are also removed.</CardDescription></CardHeader>
+        <CardDescription>Removes that account&apos;s analytics, LLM records and plan history. Their trips, expenses and plans stay. Choose the account by clicking it in any table, or pick it under More filters. Existing exports are also removed.</CardDescription></CardHeader>
       <CardContent className="flex flex-wrap items-center gap-3">
         <Button data-analytics="analytics.erase" variant="destructive" disabled={!/^[a-f0-9]{64}$/.test(account) || erasureStatus === 'Erasing…'} onClick={onErase}>Erase account analytics and history</Button>
         {!/^[a-f0-9]{64}$/.test(account) ? <span className="text-sm text-muted-foreground">No account selected.</span> : null}

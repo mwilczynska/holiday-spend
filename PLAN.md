@@ -153,6 +153,9 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   business data unchanged (531 cities, 70 legs, 1,543 expenses, 81 saved plans, 2 users); `analytics.db` created
   and 83 plan-history baselines recorded; no startup errors; signed-out `/admin/analytics` redirects to sign-in;
   cross-origin event posts refused. Memory 137 MiB. Owner to open Analytics and confirm.
+- [x] Account emails for admins, 21 October (owner request after a new user's activity was hard to find under a
+  pseudonymous ID): admin report responses include an ID-to-email directory; tables show emails and the Account filter
+  lists them. Events stay pseudonymous in `analytics.db`; the privacy page says admins see the account email.
 - [x] VPS OS update, 21 October 02:57–03:01 UTC: safety copies first (Holiday Spend snapshot, blog database), then
   35 packages upgraded and 2 added (Docker, git, kernel 5.15.0-198 among them), existing config kept, nothing removed;
   rebooted in about 23 s. Afterwards: no reboot pending, all four containers healthy, cron/fail2ban/ufw/
