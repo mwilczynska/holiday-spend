@@ -51,7 +51,12 @@ owner watches; the owner enters SSH and sudo credentials there. A read-only surv
   holds 5.07 GiB in 3,382 files and the snapshot was verified against the upload. Two script bugs found and fixed:
   the blog check container could not read the root-only folder (run it as root, `80d5e5d`), and remote pruning
   failed on the not-yet-created `blog/uploads-changed` (`e8ef7c8`, not yet on the VPS: until then each run uploads
-  correctly but reports FAILED at `offhost-retention`). VPS disk is 80% used (11 GB free).
+  correctly but reports FAILED at `offhost-retention`). Fix delivered 21 October 02:25 UTC; the 16:30 UTC run is
+  the first to use it.
+- [x] VPS cleanup, 21 October: the two old blog backups (8.23 GiB) were copied to OneDrive `archive/`, checked with
+  `rclone cryptcheck` (0 differences), then deleted from the VPS. The restored snapshot and bundles in
+  `~/holiday-spend/incoming/` were deleted after confirming the app is healthy on `runtime-data/`. Disk went from 80%
+  to 63% used (19 GB free). Blog docs PR travel-blog#3 merged.
 - [x] Owner password reset and first sign-in on `spend.`, and all three sites checked by the owner: everything works
   as intended (reported 21 October 2026).
 - [ ] Restore test from OneDrive into a new directory (owner deferred it, 20 October).
