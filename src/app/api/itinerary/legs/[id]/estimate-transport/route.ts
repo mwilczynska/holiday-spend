@@ -8,7 +8,7 @@ import { requireCurrentUserId } from '@/lib/auth';
 import { getLlmRuntimeSettings } from '@/lib/llm-runtime-settings';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
-import { CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
+import { CITY_GENERATION_PROVIDERS, CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
 import {
   TransportEstimationError,
   estimateIntercityTransport,
@@ -19,7 +19,7 @@ export const dynamic = 'force-dynamic';
 
 const requestSchema = z.object({
   originLegId: z.number().int().optional(),
-  provider: z.enum(['anthropic', 'openai', 'gemini']).optional(),
+  provider: z.enum(CITY_GENERATION_PROVIDERS).optional(),
   apiKey: z.string().optional(),
   model: z.string().optional(),
   reasoningEffort: z.enum(CITY_GENERATION_REASONING_EFFORTS).optional(),

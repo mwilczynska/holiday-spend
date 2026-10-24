@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
+import { getNoProviderConfiguredMessage } from '@/lib/llm-provider-registry';
 import { generateAndPersistCityEstimate } from '@/lib/city-generation-service';
 import { getCityCostMethodologyVersion } from '@/lib/city-generation';
 import {
@@ -171,7 +172,7 @@ Rules:
 
   if (!providerResponse) {
     throw new PlannerCityResolutionError(
-      'No supported LLM provider is configured. Add an API key in the UI or configure ANTHROPIC_API_KEY, OPENAI_API_KEY, or GEMINI_API_KEY on the server.',
+      getNoProviderConfiguredMessage(),
       400
     );
   }

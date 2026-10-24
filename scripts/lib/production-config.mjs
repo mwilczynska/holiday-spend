@@ -1,3 +1,10 @@
+// Every provider's server key variable; production-config.test.ts checks this against the provider registry.
+export const SERVER_LLM_KEY_NAMES = [
+  'ANTHROPIC_API_KEY', 'OPENAI_API_KEY', 'GEMINI_API_KEY', 'XAI_API_KEY', 'OPENROUTER_API_KEY', 'GROQ_API_KEY',
+  'PERPLEXITY_API_KEY', 'MISTRAL_API_KEY', 'ZAI_API_KEY', 'DEEPSEEK_API_KEY', 'TOGETHER_API_KEY', 'FIREWORKS_API_KEY',
+  'CEREBRAS_API_KEY',
+];
+
 export function validateProductionConfig(env) {
   const errors = [];
   if (!env.NEXTAUTH_SECRET || env.NEXTAUTH_SECRET.length < 32 || /change-me|replace-with/i.test(env.NEXTAUTH_SECRET)) errors.push('NEXTAUTH_SECRET must be a fresh random secret of at least 32 characters.');
@@ -22,7 +29,7 @@ export function validateProductionConfig(env) {
   if (env.AUTH_DEV_PIN || env.APP_SECRET) errors.push('Remove development PIN and APP_SECRET from production configuration.');
   // City and transport calls fall back to these when a request carries no key, and transport
   // estimation is open to every account, so a server key would be spent by anyone who signs up.
-  const serverLlmKeys = ['OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'GEMINI_API_KEY'].filter(key => env[key]?.trim());
+  const serverLlmKeys = SERVER_LLM_KEY_NAMES.filter(key => env[key]?.trim());
   if (serverLlmKeys.length) errors.push(`Remove ${serverLlmKeys.join(', ')}: production users supply their own provider keys in the browser.`);
   if (errors.length) throw new Error(errors.join('\n'));
 }

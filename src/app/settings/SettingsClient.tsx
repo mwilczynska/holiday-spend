@@ -1,5 +1,6 @@
 'use client';
 import { AnalyticsSettings } from '@/components/analytics/AnalyticsSettings';
+import { ProviderApiKeySettings } from '@/components/llm/ProviderApiKeySettings';
 
 import { CurrencySelector } from '@/components/currency/CurrencySelector';
 import { useCurrency } from '@/components/currency/CurrencyProvider';
@@ -450,6 +451,8 @@ export function SettingsClient({ initialData }: { initialData: SettingsInitialDa
           {llmError ? <p role="alert" className="text-sm text-destructive">{llmError}</p> : null}
         </CardContent>
       </Card>
+
+      <ProviderApiKeySettings />
 
       <AnalyticsSettings />
 

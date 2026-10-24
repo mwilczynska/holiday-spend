@@ -1,15 +1,14 @@
 import {
   CITY_GENERATION_PROVIDER_OPTIONS,
+  CITY_GENERATION_PROVIDERS,
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
 
 export type ProviderApiKeys = Record<CityGenerationProvider, string>;
 
-export const EMPTY_PROVIDER_API_KEYS: ProviderApiKeys = {
-  openai: '',
-  anthropic: '',
-  gemini: '',
-};
+export const EMPTY_PROVIDER_API_KEYS = Object.fromEntries(
+  CITY_GENERATION_PROVIDERS.map((provider) => [provider, ''])
+) as ProviderApiKeys;
 
 export interface StorageLike {
   getItem(key: string): string | null;

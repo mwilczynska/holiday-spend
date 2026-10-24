@@ -3,12 +3,12 @@ import { z } from 'zod';
 import { requireCurrentUserId } from '@/lib/auth';
 import { error, handleError, success } from '@/lib/api-helpers';
 import { discoverProviderModels } from '@/lib/provider-model-discovery';
-import { type CityGenerationProvider } from '@/lib/city-generation-config';
+import { CITY_GENERATION_PROVIDERS, type CityGenerationProvider } from '@/lib/city-generation-config';
 
 export const dynamic = 'force-dynamic';
 
 const querySchema = z.object({
-  provider: z.enum(['openai', 'anthropic', 'gemini']),
+  provider: z.enum(CITY_GENERATION_PROVIDERS),
   refresh: z.enum(['0', '1']).optional(),
 });
 

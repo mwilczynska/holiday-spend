@@ -27,24 +27,22 @@ describe('planner city picker UI', () => {
     expect(footer).toContain('Add Leg');
   });
 
-  it('shows model suggestions in four columns on both generation surfaces', () => {
-    const datasetPanel = fs.readFileSync(
-      path.join(projectRoot, 'src', 'components', 'cities', 'CityGenerationPanel.tsx'),
-      'utf8'
-    );
-    const plannerDialog = fs.readFileSync(
-      path.join(projectRoot, 'src', 'components', 'itinerary', 'PlannerNewCityDialog.tsx'),
-      'utf8'
-    );
+  it('chooses the model from a labelled dropdown on every LLM surface', () => {
+    const filenames = [
+      'src/components/cities/CityGenerationPanel.tsx',
+      'src/components/itinerary/PlannerNewCityDialog.tsx',
+      'src/components/itinerary/TransportEstimateDialog.tsx',
+      'src/components/itinerary/BulkTransportEstimateDialog.tsx',
+      'src/app/plan/PlanClient.tsx',
+    ];
 
-    for (const source of [datasetPanel, plannerDialog]) {
-      const modelButtonsStart = source.indexOf('modelDiscovery.result.effectiveModels.slice(0, 16)');
-      const modelGrid = source.slice(Math.max(0, modelButtonsStart - 100), modelButtonsStart + 1200);
-
-      expect(modelButtonsStart).toBeGreaterThan(-1);
-      expect(modelGrid).toContain('grid grid-cols-2 gap-2 sm:grid-cols-4');
-      expect(modelGrid).toContain('className="col-span-2 sm:col-span-4"');
-      expect(source).toMatch(/<div className="space-y-1 md:col-span-2">\s*<Label className="text-xs">Model/);
+    for (const filename of filenames) {
+      const source = fs.readFileSync(path.join(projectRoot, filename), 'utf8');
+      expect(source).toContain('<ModelSelect');
+      expect(source).toMatch(/<Label htmlFor=\{?["\w-]*(?:modelSelectId|plan-import-model)["}]? className="text-xs">Model<\/Label>/);
+      // The free-text model box and the grid of model buttons are gone.
+      expect(source).not.toContain('<datalist');
+      expect(source).not.toContain('effectiveModels.slice(0, 16)');
     }
   });
 
@@ -71,9 +69,7 @@ describe('planner city picker UI', () => {
 
       expect(source).toContain('validateCityGenerationModel(provider, activeModel, modelDiscovery.result.effectiveModels)');
       expect(source).toContain('async function refreshModelsAndResetDefault()');
-      expect(source).toContain('modelDiscovery.result.effectiveModels.slice(0, 16)');
-      expect(source).toContain('grid grid-cols-2 gap-2 sm:grid-cols-4');
-      expect(source).toContain('className="col-span-2 sm:col-span-4"');
+      expect(source).toContain('models={modelDiscovery.result.effectiveModels}');
       expect(source).toContain('onClick={() => void refreshModelsAndResetDefault()}');
       expect(source).toContain('Thinking / reasoning effort');
       expect(source).toContain('reasoningEffort: effectiveReasoningEffort');
@@ -96,7 +92,7 @@ describe('planner city picker UI', () => {
       expect(source).toContain('className="space-y-3 md:col-span-2"');
       expect(source).toContain('className="grid gap-3 md:grid-cols-3"');
       expect(source).toContain('<Label className="text-xs">Thinking / reasoning effort</Label>');
-      expect(source).toContain('grid grid-cols-2 gap-2 sm:grid-cols-4');
+      expect(source).toContain('resolveCityGenerationReasoningEffort(provider, activeModel, reasoningEffort)');
     }
   });
 

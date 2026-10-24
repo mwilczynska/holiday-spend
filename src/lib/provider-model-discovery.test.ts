@@ -3,6 +3,7 @@ import {
   CITY_GENERATION_CURATED_SNAPSHOT,
   CITY_GENERATION_PROVIDERS,
 } from '@/lib/city-generation-config';
+import { LLM_PROVIDER_SPECS } from '@/lib/llm-provider-registry';
 import {
   discoverProviderModels,
   mergeProviderModelSuggestions,
@@ -332,12 +333,20 @@ describe('provider-model-discovery', () => {
     expect(CITY_GENERATION_CURATED_SNAPSHOT.schemaVersion).toBe(1);
 
     for (const provider of CITY_GENERATION_PROVIDERS) {
-      const modelIds = CITY_GENERATION_CURATED_SNAPSHOT.providers[provider];
+      const modelIds = CITY_GENERATION_CURATED_SNAPSHOT.providers[provider] ?? [];
       expect(modelIds.length).toBeGreaterThan(0);
 
-      // Every id in the shipped snapshot must pass the aggregator normalizer's filter.
-      const payload = { data: modelIds.map((id) => ({ id: `${provider === 'gemini' ? 'google' : provider}/${id}` })) };
-      expect(normalizeOpenRouterModelIds(provider, payload)).toEqual(modelIds);
+      // Every id in the shipped snapshot must pass the filter of the aggregator it came from.
+      const spec = LLM_PROVIDER_SPECS[provider];
+      if (CITY_GENERATION_CURATED_SNAPSHOT.sources[provider] === 'openrouter') {
+        // OpenRouter spells Anthropic versions with dots; the snapshot stores the API's dashes.
+        const toAggregatorId = (id: string) => (provider === 'anthropic' ? id.replace(/-(\d)-(\d)$/, '-$1.$2') : id);
+        const payload = { data: modelIds.map((id) => ({ id: `${spec.openRouterPrefix}${toAggregatorId(id)}` })) };
+        expect(normalizeOpenRouterModelIds(provider, payload)).toEqual(modelIds);
+      } else {
+        const payload = { [spec.modelsDevKey!]: { models: Object.fromEntries(modelIds.map((id) => [id, { id }])) } };
+        expect(normalizeModelsDevModelIds(provider, payload)).toEqual(modelIds);
+      }
     }
   });
 

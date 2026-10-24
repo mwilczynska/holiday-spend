@@ -10,7 +10,7 @@ const outcome = z.enum(['success', 'failure', 'cancelled']);
 const definitions = {
   page_viewed: z.object({}).strict(),
   control_activated: z.object({ control, surface: z.enum(['mobile', 'desktop']) }).strict(),
-  selection_changed: z.object({ control, value: z.enum(['AUD', 'USD', 'EUR', 'GBP', 'CAD', 'NZD', 'JPY', 'CHF', 'CNY', 'THB', '1', '2', '3', '4', '5', 'hostel', 'privateRoom', '1star', '2star', '3star', '4star', 'street', 'budget', 'mid', 'high', 'none', 'light', 'moderate', 'heavy', 'free', 'planned', 'active', 'completed', 'openai', 'anthropic', 'gemini', 'low', 'medium', 'xhigh', 'max']).optional() }).strict(),
+  selection_changed: z.object({ control, value: z.enum(['AUD', 'USD', 'EUR', 'GBP', 'CAD', 'NZD', 'JPY', 'CHF', 'CNY', 'THB', '1', '2', '3', '4', '5', 'hostel', 'privateRoom', '1star', '2star', '3star', '4star', 'street', 'budget', 'mid', 'high', 'none', 'light', 'moderate', 'heavy', 'free', 'planned', 'active', 'completed', 'openai', 'anthropic', 'gemini', 'xai', 'openrouter', 'groq', 'perplexity', 'mistral', 'zai', 'deepseek', 'together', 'fireworks', 'cerebras', 'low', 'medium', 'xhigh', 'max']).optional() }).strict(),
   workflow_step: z.object({ workflow: z.enum(['plan', 'city', 'transport', 'expense', 'wise_import', 'comparison', 'auth', 'settings']), step: control, outcome: outcome.optional(), count: count.optional() }).strict(),
   currency_change_requested: z.object({ from: z.string().regex(/^[A-Z]{3}$/), to: z.string().regex(/^[A-Z]{3}$/) }).strict(),
   currency_change_confirmed: z.object({ currency: z.string().regex(/^[A-Z]{3}$/) }).strict(),

@@ -72,7 +72,7 @@ describe('transport reasoning effort', () => {
     }]);
   });
 
-  it('maps Anthropic effort to the same thinking budget used by city generation', async () => {
+  it('sends adaptive thinking and output_config effort to Claude 4.6 and later', async () => {
     let requestBody: Record<string, unknown> | null = null;
     global.fetch = (async (_input: RequestInfo | URL, init?: RequestInit) => {
       requestBody = JSON.parse(String(init?.body)) as Record<string, unknown>;
@@ -89,11 +89,40 @@ describe('transport reasoning effort', () => {
       reasoningEffort: 'high',
     });
 
+    // budget_tokens is deprecated on 4.6 and rejected with HTTP 400 on Opus 4.7 and later.
     expect(requestBody).toMatchObject({
       model: 'claude-sonnet-4-6',
-      thinking: { type: 'enabled', budget_tokens: 8192 },
+      thinking: { type: 'adaptive' },
+      output_config: { effort: 'high' },
       max_tokens: 64000,
+      tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: 2 }],
     });
+    expect((requestBody as unknown as Record<string, { budget_tokens?: number }>).thinking.budget_tokens).toBeUndefined();
+  });
+
+  it('keeps the thinking budget for Claude models before 4.6', async () => {
+    let requestBody: Record<string, unknown> | null = null;
+    global.fetch = (async (_input: RequestInfo | URL, init?: RequestInit) => {
+      requestBody = JSON.parse(String(init?.body)) as Record<string, unknown>;
+      return new Response(JSON.stringify({
+        model: 'claude-haiku-4-5',
+        content: [{ type: 'text', text: JSON.stringify(transportPayload) }],
+      }), { status: 200, headers: { 'content-type': 'application/json' } });
+    }) as typeof fetch;
+
+    await estimateIntercityTransport({
+      ...requestBase,
+      provider: 'anthropic',
+      model: 'claude-haiku-4-5',
+      reasoningEffort: 'high',
+    });
+
+    expect(requestBody).toMatchObject({
+      model: 'claude-haiku-4-5',
+      thinking: { type: 'enabled', budget_tokens: 8192 },
+      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 2 }],
+    });
+    expect((requestBody as unknown as Record<string, unknown>).output_config).toBeUndefined();
   });
 
   it('maps Gemini effort to the provider thinking budget', async () => {

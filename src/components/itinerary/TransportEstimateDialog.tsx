@@ -9,11 +9,13 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-state';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { ModelSelect } from '@/components/llm/ModelSelect';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import {
   CITY_GENERATION_PROVIDER_OPTIONS,
   CITY_GENERATION_DEFAULT_REASONING_EFFORT,
+  resolveCityGenerationReasoningEffort,
   CITY_GENERATION_REASONING_EFFORT_LABELS,
   getSupportedCityGenerationReasoningEfforts,
   getDefaultCityGenerationModels,
@@ -103,6 +105,7 @@ export function TransportEstimateDialog({
 }: TransportEstimateDialogProps) {
   const { format: fmtAud } = useCurrency();
   const apiKeyInputId = useId();
+  const modelSelectId = useId();
   const [provider, setProvider] = useState<ProviderOption>('openai');
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultModels());
   const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>(
@@ -166,7 +169,6 @@ export function TransportEstimateDialog({
   );
   const activeApiKey = apiKeys[provider] || '';
   const activeModel = models[provider] || selectedProvider.defaultModel;
-  const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
   const modelDiscovery = useProviderModelDiscovery({
     provider,
     apiKey: activeApiKey,
@@ -174,11 +176,7 @@ export function TransportEstimateDialog({
   });
   const modelValidation = validateCityGenerationModel(provider, activeModel, modelDiscovery.result.effectiveModels);
   const supportedReasoningEfforts = getSupportedCityGenerationReasoningEfforts(provider, activeModel);
-  const effectiveReasoningEffort = supportedReasoningEfforts.includes(reasoningEffort)
-    ? reasoningEffort
-    : supportedReasoningEfforts.includes(CITY_GENERATION_DEFAULT_REASONING_EFFORT)
-      ? CITY_GENERATION_DEFAULT_REASONING_EFFORT
-      : 'none';
+  const effectiveReasoningEffort = resolveCityGenerationReasoningEffort(provider, activeModel, reasoningEffort);
   const canEstimate = previousLeg != null && Boolean(currentLeg.startDate) && allowedModes.length > 0;
 
   function handleOpenChange(nextOpen: boolean) {
@@ -408,21 +406,16 @@ export function TransportEstimateDialog({
                 <div className="space-y-3 md:col-span-2">
                   <div className="grid gap-3 md:grid-cols-3">
                     <div className="space-y-1 md:col-span-2">
-                      <Label className="text-xs">Model</Label>
-                      <Input
-                        className="h-9 text-sm"
-                        list={modelListId}
-                        placeholder={selectedProvider.defaultModel}
+                      <Label htmlFor={modelSelectId} className="text-xs">Model</Label>
+                      <ModelSelect
+                        id={modelSelectId}
+                        analyticsId="transport-estimate-dialog.model"
+                        models={modelDiscovery.result.effectiveModels}
                         value={activeModel}
-                        onChange={(event) => updateModel(event.target.value)}
-                        autoComplete="off"
-                        spellCheck={false}
+                        defaultModel={selectedProvider.defaultModel}
+                        onChange={updateModel}
+                        disabled={loading || applyingMode != null}
                       />
-                      <datalist id={modelListId}>
-                        {modelDiscovery.result.effectiveModels.map((model) => (
-                          <option key={model} value={model} />
-                        ))}
-                      </datalist>
                       <p className="text-xs text-muted-foreground">{modelDiscovery.statusMessage}</p>
                       {modelDiscovery.exampleSummary ? (
                         <p className="text-xs text-muted-foreground">
@@ -457,23 +450,9 @@ export function TransportEstimateDialog({
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                    {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
-                      <Button data-analytics="transport-estimate-dialog.button"
-                        key={model}
-                        type="button"
-                        variant={modelValidation.effectiveModel === model ? 'secondary' : 'outline'}
-                        size="sm"
-                        className="h-auto min-h-9 whitespace-normal break-words px-2 py-1.5 text-xs"
-                        onClick={() => updateModel(model)}
-                      >
-                        {model === selectedProvider.defaultModel ? `${model} (default)` : model}
-                      </Button>
-                    ))}
-                    <Button data-analytics="transport-estimate-dialog.refresh-models-and-reset-default" type="button" variant="ghost" size="sm" className="col-span-2 sm:col-span-4" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || loading || applyingMode != null}>
-                      <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
-                    </Button>
-                  </div>
+                  <Button data-analytics="transport-estimate-dialog.refresh-models-and-reset-default" type="button" variant="ghost" size="sm" onClick={() => void refreshModelsAndResetDefault()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || loading || applyingMode != null}>
+                    <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
+                  </Button>
                   {modelDiscovery.result.warning ? (
                     <p className="text-xs text-amber-600">{modelDiscovery.result.warning}</p>
                   ) : null}

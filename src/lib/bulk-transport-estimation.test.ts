@@ -27,7 +27,8 @@ describe('bulk transport estimation concurrency', () => {
     expect(started).toEqual([]);
   });
   it('uses provider-aware limits while preserving the selected-leg order', async () => {
-    expect(BULK_TRANSPORT_CONCURRENCY).toEqual({ anthropic: 2, openai: 4, gemini: 2 });
+    expect(BULK_TRANSPORT_CONCURRENCY).toMatchObject({ anthropic: 2, openai: 4, gemini: 2, xai: 2, openrouter: 2 });
+    expect(Object.keys(BULK_TRANSPORT_CONCURRENCY)).toHaveLength(13);
 
     let active = 0;
     let maximumActive = 0;

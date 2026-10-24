@@ -64,12 +64,21 @@ test.describe('planner regressions', () => {
     await page.getByRole('dialog', { name: 'Add Itinerary Leg' }).getByRole('button', { name: 'Generate New City', exact: true }).click();
     const dialog = page.getByRole('dialog', { name: 'Add New City With LLM' });
     await dialog.getByText('Advanced generation settings', { exact: true }).click();
-    await expect(dialog.locator('input[list]')).toHaveValue('gpt-6-luna');
+    const modelSelect = dialog.getByRole('combobox', { name: 'Model', exact: true });
+    await expect(modelSelect).toHaveText('gpt-6-luna (default)');
     await expect(dialog.getByRole('combobox').last()).toHaveText('Maximum');
     await dialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
-    await expect(dialog.getByRole('button', { name: 'gpt-6.1-sol', exact: true })).toBeVisible();
     await expect(dialog.getByText(/2 models available to this provider account/)).toBeVisible();
     expect(refreshCount).toBe(1);
+    // GPT-6.1 Sol always reasons: its effort choices are Low to Maximum, never a lone disabled "None".
+    await modelSelect.click();
+    await page.getByRole('option', { name: 'gpt-6.1-sol', exact: true }).click();
+    const effortSelect = dialog.getByRole('combobox').last();
+    await expect(effortSelect).toHaveText('Maximum');
+    await expect(effortSelect).toBeEnabled();
+    await effortSelect.click();
+    await expect(page.getByRole('option')).toHaveText(['Low', 'Medium', 'High', 'Extra high', 'Maximum']);
+    await page.keyboard.press('Escape');
   });
 
   // The bento layout replaced the pinned summary sidebar with a summary row above the leg timeline.
@@ -159,12 +168,12 @@ test.describe('planner regressions', () => {
     await expect(addLegDialog).toBeHidden();
   });
 
-  test('Anthropic and Google model refresh reset defaults in the four-column model grid', async ({ page }) => {
+  test('Anthropic and Google model refresh reset defaults in the model dropdown', async ({ page }) => {
     const refreshRequests: string[] = [];
     const providerModels = {
       openai: ['gpt-6-luna', 'gpt-5.4-mini', 'gpt-5.4', 'gpt-5.3-codex'],
-      anthropic: ['claude-sonnet-4-6', 'claude-haiku-4-5', 'claude-opus-4-6', 'claude-3-7-sonnet-latest'],
-      gemini: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash', 'gemini-1.5-pro'],
+      anthropic: ['claude-haiku-5-5', 'claude-sonnet-5-5', 'claude-opus-5-5', 'claude-haiku-4-5'],
+      gemini: ['gemini-3.5-flash-lite', 'gemini-3.8-flash', 'gemini-4-argon', 'gemini-2.5-pro'],
     } as const;
 
     await page.route('**/api/llm/models?**', async (route) => {
@@ -203,46 +212,36 @@ test.describe('planner regressions', () => {
     const cityDialog = page.getByRole('dialog', { name: 'Add New City With LLM' });
     await cityDialog.getByText('Advanced generation settings', { exact: true }).click();
     const providerSelect = cityDialog.getByRole('combobox').first();
-    const modelInput = cityDialog.locator('input[list]').first();
+    const modelSelect = cityDialog.getByRole('combobox', { name: 'Model', exact: true });
 
     for (const scenario of [
-      { label: 'Anthropic', provider: 'anthropic', defaultModel: 'claude-sonnet-4-6', alternate: 'claude-haiku-4-5' },
-      { label: 'Google Gemini', provider: 'gemini', defaultModel: 'gemini-2.5-flash', alternate: 'gemini-2.5-pro' },
+      { label: 'Anthropic', provider: 'anthropic', defaultModel: 'claude-haiku-5-5', alternate: 'claude-sonnet-5-5' },
+      { label: 'Google Gemini', provider: 'gemini', defaultModel: 'gemini-3.5-flash-lite', alternate: 'gemini-3.8-flash' },
     ] as const) {
       await providerSelect.click();
       await page.getByRole('option', { name: scenario.label, exact: true }).click();
-      await expect(modelInput).toHaveValue(scenario.defaultModel);
-      await modelInput.fill(scenario.alternate);
-
-      const modelButtons = providerModels[scenario.provider].map((model, index) =>
-        cityDialog.getByRole('button', {
-          name: index === 0 ? `${model} (default)` : model,
-          exact: true,
-        })
+      await expect(modelSelect).toHaveText(`${scenario.defaultModel} (default)`);
+      await modelSelect.click();
+      await expect(page.getByRole('option')).toHaveText(
+        providerModels[scenario.provider].map((model, index) => (index === 0 ? `${model} (default)` : model))
       );
-      for (const button of modelButtons) await expect(button).toBeVisible();
-      const boxes = await Promise.all(modelButtons.map((button) => button.boundingBox()));
-      boxes.forEach((box) => expect(box).not.toBeNull());
-      boxes.slice(1).forEach((box) => expect(Math.abs(box!.y - boxes[0]!.y)).toBeLessThan(2));
-      boxes.slice(1).forEach((box, index) => expect(box!.x).toBeGreaterThan(boxes[index]!.x));
-      const cityDialogBox = await cityDialog.boundingBox();
-      expect(cityDialogBox).not.toBeNull();
-      expect(boxes[3]!.x + boxes[3]!.width).toBeGreaterThan(cityDialogBox!.x + cityDialogBox!.width * 0.7);
+      await page.getByRole('option', { name: scenario.alternate, exact: true }).click();
+      await expect(modelSelect).toHaveText(scenario.alternate);
       await expect(cityDialog.getByText('Thinking / reasoning effort', { exact: true })).toBeVisible();
 
       await cityDialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
-      await expect(modelInput).toHaveValue(scenario.defaultModel);
+      await expect(modelSelect).toHaveText(`${scenario.defaultModel} (default)`);
     }
 
     expect(refreshRequests).toEqual(['anthropic', 'gemini']);
   });
 
-  test('single and bulk intercity transport pickers use discovered four-column models', async ({ page }) => {
+  test('single and bulk intercity transport pickers choose discovered models from a dropdown', async ({ page }) => {
     const refreshRequests: string[] = [];
     const providerModels = {
       openai: ['gpt-6-luna', 'gpt-5.4-mini', 'gpt-5.4', 'gpt-5.3-codex'],
-      anthropic: ['claude-sonnet-4-6', 'claude-haiku-4-5', 'claude-opus-4-6', 'claude-3-7-sonnet-latest'],
-      gemini: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash', 'gemini-1.5-pro'],
+      anthropic: ['claude-haiku-5-5', 'claude-sonnet-5-5', 'claude-opus-5-5', 'claude-haiku-4-5'],
+      gemini: ['gemini-3.5-flash-lite', 'gemini-3.8-flash', 'gemini-4-argon', 'gemini-2.5-pro'],
     } as const;
 
     await page.route('**/api/llm/models?**', async (route) => {
@@ -272,19 +271,14 @@ test.describe('planner regressions', () => {
       });
     });
 
-    const assertFourColumnGrid = async (dialog: Locator, models: readonly string[]) => {
-      const buttons = models.map((model, index) => dialog.getByRole('button', {
-        name: index === 0 ? `${model} (default)` : model,
-        exact: true,
-      }));
-      for (const button of buttons) await expect(button).toBeVisible();
-      const boxes = await Promise.all(buttons.map((button) => button.boundingBox()));
-      boxes.forEach((box) => expect(box).not.toBeNull());
-      boxes.slice(1).forEach((box) => expect(Math.abs(box!.y - boxes[0]!.y)).toBeLessThan(2));
-      boxes.slice(1).forEach((box, index) => expect(box!.x).toBeGreaterThan(boxes[index]!.x));
-      const dialogBox = await dialog.boundingBox();
-      expect(dialogBox).not.toBeNull();
-      expect(boxes[3]!.x + boxes[3]!.width).toBeGreaterThan(dialogBox!.x + dialogBox!.width * 0.7);
+    const chooseModel = async (dialog: Locator, models: readonly string[], choice: string) => {
+      const modelSelect = dialog.getByRole('combobox', { name: 'Model', exact: true });
+      await expect(modelSelect).toHaveText(`${models[0]} (default)`);
+      await modelSelect.click();
+      await expect(page.getByRole('option')).toHaveText(models.map((model, index) => (index === 0 ? `${model} (default)` : model)));
+      await page.getByRole('option', { name: choice, exact: true }).click();
+      await expect(modelSelect).toHaveText(choice);
+      return modelSelect;
     };
 
     await page.goto('/plan');
@@ -309,14 +303,11 @@ test.describe('planner regressions', () => {
     await singleDialog.getByText('Advanced estimation settings', { exact: true }).click();
     await expect(singleDialog.getByText('Thinking / reasoning effort', { exact: true })).toBeVisible();
     const singleProviderSelect = singleDialog.getByRole('combobox').first();
-    const singleModelInput = singleDialog.locator('input[list]').first();
     await singleProviderSelect.click();
     await page.getByRole('option', { name: 'Anthropic', exact: true }).click();
-    await expect(singleModelInput).toHaveValue(providerModels.anthropic[0]);
-    await assertFourColumnGrid(singleDialog, providerModels.anthropic);
-    await singleModelInput.fill(providerModels.anthropic[1]);
+    const singleModelSelect = await chooseModel(singleDialog, providerModels.anthropic, providerModels.anthropic[1]);
     await singleDialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
-    await expect(singleModelInput).toHaveValue(providerModels.anthropic[0]);
+    await expect(singleModelSelect).toHaveText(`${providerModels.anthropic[0]} (default)`);
     await page.keyboard.press('Escape');
     await expect(singleDialog).toBeHidden();
 
@@ -328,14 +319,11 @@ test.describe('planner regressions', () => {
     await bulkDialog.getByText('Advanced estimation settings', { exact: true }).click();
     await expect(bulkDialog.getByText('Thinking / reasoning effort', { exact: true })).toBeVisible();
     const bulkProviderSelect = bulkDialog.getByRole('combobox').first();
-    const bulkModelInput = bulkDialog.locator('input[list]').first();
     await bulkProviderSelect.click();
     await page.getByRole('option', { name: 'Google Gemini', exact: true }).click();
-    await expect(bulkModelInput).toHaveValue(providerModels.gemini[0]);
-    await assertFourColumnGrid(bulkDialog, providerModels.gemini);
-    await bulkModelInput.fill(providerModels.gemini[1]);
+    const bulkModelSelect = await chooseModel(bulkDialog, providerModels.gemini, providerModels.gemini[1]);
     await bulkDialog.getByRole('button', { name: 'Refresh models', exact: true }).click();
-    await expect(bulkModelInput).toHaveValue(providerModels.gemini[0]);
+    await expect(bulkModelSelect).toHaveText(`${providerModels.gemini[0]} (default)`);
 
     expect(refreshRequests).toEqual(['anthropic', 'gemini']);
   });

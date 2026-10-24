@@ -20,6 +20,7 @@ import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { ModelSelect } from '@/components/llm/ModelSelect';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -42,7 +43,7 @@ import { getMiscellaneousExpenseTotal, miscellaneousExpensesSchema } from '@/lib
 import { getDailyCost, getLegTotal } from '@/lib/cost-calculator';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
 import {
-  CITY_GENERATION_PROVIDER_OPTIONS,
+  CITY_GENERATION_SEARCH_PROVIDER_OPTIONS,
   getDefaultCityGenerationModels,
   migrateStoredCityGenerationModels,
   validateCityGenerationModel,
@@ -512,7 +513,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
     const storedProvider = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.provider`) as ProviderOption | null;
     const storedModels = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.models`);
 
-    if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
+    if (storedProvider && CITY_GENERATION_SEARCH_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setImportProvider(storedProvider);
     }
 
@@ -1082,16 +1083,15 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
   };
 
   const selectedImportProvider =
-    CITY_GENERATION_PROVIDER_OPTIONS.find((option) => option.value === importProvider) ?? CITY_GENERATION_PROVIDER_OPTIONS[0];
+    CITY_GENERATION_SEARCH_PROVIDER_OPTIONS.find((option) => option.value === importProvider) ?? CITY_GENERATION_SEARCH_PROVIDER_OPTIONS[0];
   const activeImportApiKey = importApiKeys[importProvider] || '';
   const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
-  const importModelValidation = validateCityGenerationModel(importProvider, activeImportModel);
-  const importModelListId = `${CITY_GENERATION_STORAGE_PREFIX}.${importProvider}.models`;
   const importModelDiscovery = useProviderModelDiscovery({
     provider: importProvider,
     apiKey: activeImportApiKey,
     enabled: importResolutionOpen && missingCityStrategy === 'generate',
   });
+  const importModelValidation = validateCityGenerationModel(importProvider, activeImportModel, importModelDiscovery.result.effectiveModels);
   // Built once and shared by every leg card and the Add Leg dialog. Previously each card
   // built its own ~200-object array inline during render, which also gave SearchableSelect
   // a new `options` identity every time and so permanently defeated its internal useMemo,
@@ -1370,7 +1370,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        {CITY_GENERATION_PROVIDER_OPTIONS.map((option) => (
+                        {CITY_GENERATION_SEARCH_PROVIDER_OPTIONS.map((option) => (
                           <SelectItem key={option.value} value={option.value}>
                             {option.label}
                           </SelectItem>
@@ -1434,43 +1434,25 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                     </p>
                   </div>
                   <div className="space-y-1">
-                    <Label className="text-xs">Model</Label>
-                    <Input
-                      className="h-9 text-sm"
-                      list={importModelListId}
-                      placeholder={selectedImportProvider.defaultModel}
+                    <Label htmlFor="plan-import-model" className="text-xs">Model</Label>
+                    <ModelSelect
+                      id="plan-import-model"
+                      analyticsId="plan-client.import-model"
+                      models={importModelDiscovery.result.effectiveModels}
                       value={activeImportModel}
-                      onChange={(event) => updateImportModel(event.target.value)}
-                      autoComplete="off"
-                      spellCheck={false}
+                      defaultModel={selectedImportProvider.defaultModel}
+                      onChange={updateImportModel}
+                      disabled={importingSnapshot}
                     />
-                    <datalist id={importModelListId}>
-                      {importModelDiscovery.result.effectiveModels.map((model) => (
-                        <option key={model} value={model} />
-                      ))}
-                    </datalist>
                     <p className="text-xs text-muted-foreground">{importModelDiscovery.statusMessage}</p>
                     {importModelDiscovery.exampleSummary ? (
                       <p className="text-xs text-muted-foreground">
                         Example models: {importModelDiscovery.exampleSummary}
                       </p>
                     ) : null}
-                    <div className="flex flex-wrap gap-2">
-                      {selectedImportProvider.knownModels.map((model) => (
-                        <Button data-analytics="plan-client.button"
-                          key={model}
-                          type="button"
-                          variant={importModelValidation.effectiveModel === model ? 'secondary' : 'outline'}
-                          size="sm"
-                          onClick={() => updateImportModel(model)}
-                        >
-                          {model === selectedImportProvider.defaultModel ? `${model} (default)` : model}
-                        </Button>
-                      ))}
-                      <Button data-analytics="plan-client.import-model-discovery" type="button" variant="ghost" size="sm" onClick={() => void importModelDiscovery.refresh()} disabled={importModelDiscovery.loading || importModelDiscovery.refreshing || importingSnapshot}>
-                        <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={importModelDiscovery.refreshing} />
-                      </Button>
-                    </div>
+                    <Button data-analytics="plan-client.import-model-discovery" type="button" variant="ghost" size="sm" onClick={() => void importModelDiscovery.refresh()} disabled={importModelDiscovery.loading || importModelDiscovery.refreshing || importingSnapshot}>
+                      <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={importModelDiscovery.refreshing} />
+                    </Button>
                     {importModelDiscovery.result.warning ? (
                       <p className="text-xs text-amber-600">{importModelDiscovery.result.warning}</p>
                     ) : null}

@@ -3,6 +3,7 @@ import path from 'path';
 import { z, ZodError } from 'zod';
 import type { CityEstimateData } from '@/types';
 import { runJsonPromptWithProvider, type JsonPromptResult } from '@/lib/city-llm-client';
+import { getMissingProviderKeyMessage, getNoProviderConfiguredMessage } from '@/lib/llm-provider-registry';
 import { analyticsContext } from '@/lib/analytics/context';
 import { resolveLlmRuntimeDefaults, type LlmRuntimeSettings } from '@/lib/llm-request-limits';
 import {
@@ -224,13 +225,7 @@ export function getCityCostMethodologyVersion(): CityGenerationMethodologyVersio
 }
 
 function getMissingKeyMessage(provider: CityGenerationProvider) {
-  if (provider === 'anthropic') {
-    return 'No Anthropic API key provided. Add one in the UI or configure ANTHROPIC_API_KEY on the server.';
-  }
-  if (provider === 'openai') {
-    return 'No OpenAI API key provided. Add one in the UI or configure OPENAI_API_KEY on the server.';
-  }
-  return 'No Gemini API key provided. Add one in the UI or configure GEMINI_API_KEY on the server.';
+  return getMissingProviderKeyMessage(provider);
 }
 
 function mapTiersToEstimateData(payload: GeneratedCityPayload): Partial<CityEstimateData> {
@@ -337,7 +332,7 @@ async function generateCityCostEstimateV1(request: CityGenerationRequest): Promi
     }
 
     throw new CityGenerationError(
-      'No supported LLM provider is configured. Add an API key in the UI or configure ANTHROPIC_API_KEY, OPENAI_API_KEY, or GEMINI_API_KEY on the server.',
+      getNoProviderConfiguredMessage(),
       400
     );
   }
@@ -400,7 +395,7 @@ async function generateCityCostEstimateAnchors(
     }
 
     throw new CityGenerationError(
-      'No supported LLM provider is configured. Add an API key in the UI or configure ANTHROPIC_API_KEY, OPENAI_API_KEY, or GEMINI_API_KEY on the server.',
+      getNoProviderConfiguredMessage(),
       400
     );
   }

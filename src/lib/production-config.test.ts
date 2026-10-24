@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { validateProductionConfig } from '../../scripts/lib/production-config.mjs';
+import { SERVER_LLM_KEY_NAMES, validateProductionConfig } from '../../scripts/lib/production-config.mjs';
+import { getLlmProviderServerApiKeyNames } from '@/lib/llm-provider-registry';
 
 const valid = {
   NEXTAUTH_SECRET: 'test-only-secret-with-more-than-32-characters',
@@ -18,5 +19,11 @@ describe('production startup configuration', () => {
     { OPENAI_API_KEY: 'server-key-fixture' }, { ANTHROPIC_API_KEY: 'server-key-fixture' }, { GEMINI_API_KEY: 'server-key-fixture' },
   ])('fails closed for incomplete or unsafe configuration: %j', invalid => {
     expect(() => validateProductionConfig({ ...valid, ...invalid })).toThrow();
+  });
+  it('refuses every provider registry server key', () => {
+    expect([...SERVER_LLM_KEY_NAMES].sort()).toEqual(getLlmProviderServerApiKeyNames().sort());
+    for (const key of getLlmProviderServerApiKeyNames()) {
+      expect(() => validateProductionConfig({ ...valid, [key]: 'server-key-fixture' })).toThrow(key);
+    }
   });
 });

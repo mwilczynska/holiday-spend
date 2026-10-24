@@ -3,13 +3,15 @@ import { analyticsContext } from '@/lib/analytics/context';
 import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
-import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
+import { buildAnthropicThinkingFields, buildGeminiThinkingConfig, runJsonPromptWithProvider } from '@/lib/city-llm-client';
+import { getMissingProviderKeyMessage, getNoProviderConfiguredMessage } from '@/lib/llm-provider-registry';
 import { createLlmRequestSignal, waitForLlmRetry } from '@/lib/llm-request-signal';
 import { resolveLlmRuntimeDefaults } from '@/lib/llm-request-limits';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
   CITY_GENERATION_REASONING_EFFORTS,
-  getCityGenerationThinkingBudget,
+  getAnthropicWebSearchToolType,
+  resolveProviderRequestEffort,
   type CityGenerationProvider,
   type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
@@ -284,13 +286,7 @@ function getRetryDelayMsFromHeaders(headers: Headers) {
 }
 
 function getMissingKeyMessage(provider: CityGenerationProvider) {
-  if (provider === 'anthropic') {
-    return 'No Anthropic API key provided. Add one in the planner dialog or configure ANTHROPIC_API_KEY on the server.';
-  }
-  if (provider === 'openai') {
-    return 'No OpenAI API key provided. Add one in the planner dialog or configure OPENAI_API_KEY on the server.';
-  }
-  return 'No Gemini API key provided. Add one in the planner dialog or configure GEMINI_API_KEY on the server.';
+  return getMissingProviderKeyMessage(provider, 'in the planner dialog');
 }
 
 function toTitleMode(mode: TransportEstimateMode) {
@@ -443,6 +439,7 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
 
   const model = normalizeModel(params.model) ?? (process.env.OPENAI_MODEL || CITY_GENERATION_DEFAULT_MODELS.openai);
   const maxOutputTokens = params.maxTokens ?? resolveLlmRuntimeDefaults().maxOutputTokens;
+  const effort = resolveProviderRequestEffort('openai', model, params.reasoningEffort);
   const response = await analyticsLlmFetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     signal: createLlmRequestSignal(params.requestTimeoutMs ?? resolveLlmRuntimeDefaults().requestTimeoutMs, params.signal),
@@ -456,9 +453,7 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
       input: params.userPrompt,
       max_output_tokens: maxOutputTokens,
       store: false,
-      ...(params.reasoningEffort && params.reasoningEffort !== 'none'
-        ? { reasoning: { effort: params.reasoningEffort } }
-        : {}),
+      ...(effort ? { reasoning: { effort } } : {}),
       // OpenAI rejects JSON mode when web search is enabled. The prompt still
       // requests one JSON object, and the response is parsed and schema-checked
       // below; strict JSON mode remains available for the fallback call.
@@ -608,28 +603,23 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
     };
   } | null = null;
 
+  const effort = resolveProviderRequestEffort('anthropic', model, params.reasoningEffort);
   for (let attempt = 0; attempt < 2; attempt += 1) {
     const outputLimit = params.maxTokens ?? resolveLlmRuntimeDefaults().maxOutputTokens;
-    const requestedThinkingBudget = params.reasoningEffort && params.reasoningEffort !== 'none'
-      ? getCityGenerationThinkingBudget(params.reasoningEffort)
-      : 0;
-    const thinkingBudget = outputLimit >= 2524 ? Math.min(requestedThinkingBudget, outputLimit - 1500) : 0;
     const requestBody: Record<string, unknown> = {
       model,
       max_tokens: outputLimit,
       system: params.systemPrompt,
       tools: [
         {
-          type: 'web_search_20250305',
+          type: getAnthropicWebSearchToolType(model),
           name: 'web_search',
           max_uses: 2,
         },
       ],
       messages: [{ role: 'user', content: params.userPrompt }],
+      ...buildAnthropicThinkingFields(model, effort, outputLimit),
     };
-    if (thinkingBudget > 0) {
-      requestBody.thinking = { type: 'enabled', budget_tokens: thinkingBudget };
-    }
     const response = await analyticsLlmFetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       signal: createLlmRequestSignal(params.requestTimeoutMs ?? resolveLlmRuntimeDefaults().requestTimeoutMs, params.signal),
@@ -742,11 +732,12 @@ async function runGeminiTransportPromptWithSearch(params: {
   if (!apiKey) return null;
 
   const model = normalizeModel(params.model) ?? (process.env.GEMINI_MODEL || CITY_GENERATION_DEFAULT_MODELS.gemini);
+  const thinkingConfig = buildGeminiThinkingConfig(model, resolveProviderRequestEffort('gemini', model, params.reasoningEffort));
   let data: {
     candidates?: Array<{
       finishReason?: string;
       content?: {
-        parts?: Array<{ text?: string }>;
+        parts?: Array<{ text?: string; thought?: boolean }>;
       };
       groundingMetadata?: {
         webSearchQueries?: unknown;
@@ -784,9 +775,7 @@ async function runGeminiTransportPromptWithSearch(params: {
           generationConfig: {
             responseMimeType: 'application/json',
             maxOutputTokens: params.maxTokens ?? resolveLlmRuntimeDefaults().maxOutputTokens,
-            thinkingConfig: {
-              thinkingBudget: getCityGenerationThinkingBudget(params.reasoningEffort),
-            },
+            ...(thinkingConfig ? { thinkingConfig } : {}),
           },
         }),
       }
@@ -819,7 +808,7 @@ async function runGeminiTransportPromptWithSearch(params: {
   }
 
   const text =
-    candidate?.content?.parts?.map((item) => item.text || '').join('\n').trim() || '';
+    candidate?.content?.parts?.filter((item) => !item.thought).map((item) => item.text || '').join('\n').trim() || '';
 
   if (!text) {
     throw new Error('Gemini returned no text output for the transport estimate.');
@@ -851,6 +840,40 @@ async function runGeminiTransportPromptWithSearch(params: {
     fallbackReason: null,
     searchQueries,
     citations,
+  };
+}
+
+/**
+ * Providers added after the original three run their grounded call through the shared JSON client,
+ * which uses each provider's own web search. A provider without one throws, and the caller then
+ * makes the labelled ungrounded fallback request. Search queries and citations are not extracted.
+ */
+async function runSharedClientTransportPromptWithWebSearch(
+  provider: CityGenerationProvider,
+  params: {
+    systemPrompt: string;
+    userPrompt: string;
+    apiKey?: string;
+    model?: string;
+    maxTokens?: number;
+    reasoningEffort?: CityGenerationReasoningEffort;
+    requestTimeoutMs?: number;
+    signal?: AbortSignal;
+  },
+): Promise<ProviderTransportResponse | null> {
+  const result = await runJsonPromptWithProvider({ ...params, provider, requireWebSearch: true });
+  if (!result) return null;
+  if (!result.webSearchUsed) {
+    throw new Error(`${provider} returned no evidence of a web search for the transport estimate.`);
+  }
+  return {
+    provider,
+    model: result.model,
+    text: result.text,
+    usedWebSearch: true,
+    fallbackReason: null,
+    searchQueries: [],
+    citations: [],
   };
 }
 
@@ -901,7 +924,7 @@ async function runTransportPromptForProvider(params: {
   requestTimeoutMs?: number;
   signal?: AbortSignal;
 }): Promise<ProviderTransportResponse | null> {
-  const browseRunnerByProvider: Record<
+  const browseRunnerByProvider: Partial<Record<
     CityGenerationProvider,
     (runnerParams: {
       systemPrompt: string;
@@ -913,11 +936,14 @@ async function runTransportPromptForProvider(params: {
       requestTimeoutMs?: number;
       signal?: AbortSignal;
     }) => Promise<ProviderTransportResponse | null>
-  > = {
+  >> = {
     openai: runOpenAiTransportPromptWithWebSearch,
     anthropic: runAnthropicTransportPromptWithWebSearch,
     gemini: runGeminiTransportPromptWithSearch,
   };
+  const browse = browseRunnerByProvider[params.provider]
+    ?? ((runnerParams: Parameters<typeof runSharedClientTransportPromptWithWebSearch>[1]) =>
+      runSharedClientTransportPromptWithWebSearch(params.provider, runnerParams));
 
   /**
    * Descend the effort ladder before abandoning web search.
@@ -932,7 +958,7 @@ async function runTransportPromptForProvider(params: {
 
   for (let attempt = 0; attempt <= MAX_REASONING_BUDGET_RETRIES; attempt += 1) {
     try {
-      return await browseRunnerByProvider[params.provider]({ ...params, reasoningEffort: effort });
+      return await browse({ ...params, reasoningEffort: effort });
     } catch (browseError) {
       params.signal?.throwIfAborted();
       if (browseError instanceof Error && ['AbortError', 'TimeoutError'].includes(browseError.name)) throw browseError;
@@ -1009,7 +1035,7 @@ export async function estimateIntercityTransport(request: TransportEstimationReq
     }
 
     throw new TransportEstimationError(
-      'No supported LLM provider is configured. Add an API key in the planner dialog or configure ANTHROPIC_API_KEY, OPENAI_API_KEY, or GEMINI_API_KEY on the server.',
+      getNoProviderConfiguredMessage('in the planner dialog'),
       400
     );
   }

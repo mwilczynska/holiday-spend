@@ -21,7 +21,7 @@ Run `.ts` files with `npx tsx scripts/<file>` and `.mjs` files with `node script
 | — | `collect-city-images.ts` | Collect or refresh Wikimedia Commons photos for every city |
 | — | `check-city-image-lookup.ts`, `city-image-probe.mjs`, `diff-city-image-picks.ts` | Read-only checks of the photo lookup |
 | `country-metadata:generate` | `generate-country-metadata.mjs` | Regenerate canonical country metadata |
-| `models:refresh`, `models:check` | `refresh-curated-models.ts` | Refresh or check the curated LLM model snapshot |
+| `models:refresh`, `models:check` | `refresh-curated-models.ts` | Refresh or check the curated model suggestions, cheap/fast default per provider, and reasoning-effort table |
 
 ## Analytics
 

@@ -1,14 +1,13 @@
-import type { CityGenerationProvider } from '@/lib/city-generation-config';
+import { CITY_GENERATION_PROVIDERS, type CityGenerationProvider } from '@/lib/city-generation-config';
+import { LLM_PROVIDER_SPECS } from '@/lib/llm-provider-registry';
 
 /**
  * Keep the bulk estimate fan-out below the provider's likely request-rate ceiling while
  * still allowing independent city legs to make progress at the same time.
  */
-export const BULK_TRANSPORT_CONCURRENCY: Record<CityGenerationProvider, number> = {
-  anthropic: 2,
-  openai: 4,
-  gemini: 2,
-};
+export const BULK_TRANSPORT_CONCURRENCY = Object.fromEntries(
+  CITY_GENERATION_PROVIDERS.map((provider) => [provider, LLM_PROVIDER_SPECS[provider].bulkConcurrency])
+) as Record<CityGenerationProvider, number>;
 
 export async function runWithConcurrency<T, TResult>(
   items: readonly T[],

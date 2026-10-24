@@ -1,21 +1,31 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T22:38:32.262Z",
+  "generatedAt": "2026-10-24T04:26:22.044Z",
   "sources": {
     "anthropic": "openrouter",
     "openai": "openrouter",
-    "gemini": "openrouter"
+    "gemini": "openrouter",
+    "xai": "models.dev",
+    "openrouter": "openrouter",
+    "groq": "models.dev",
+    "perplexity": "models.dev",
+    "mistral": "models.dev",
+    "zai": "models.dev",
+    "deepseek": "models.dev",
+    "together": "models.dev",
+    "fireworks": "models.dev",
+    "cerebras": "models.dev"
   },
   "providers": {
     "anthropic": [
+      "claude-haiku-5-5",
       "claude-sonnet-5-5",
       "claude-opus-5-5",
       "claude-fable-5-1",
       "claude-opus-5",
       "claude-sonnet-5",
       "claude-fable-5",
-      "claude-opus-4-8",
-      "claude-opus-4-7"
+      "claude-opus-4-8"
     ],
     "openai": [
       "gpt-6.1-sol-pro",
@@ -28,14 +38,115 @@
       "gpt-6-astra-pro"
     ],
     "gemini": [
+      "gemini-4-argon",
       "gemini-3.8-flash",
       "gemini-3.7-flash",
       "gemini-3.6-flash",
       "gemini-3.5-flash-lite",
       "gemini-3.5-flash",
       "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-pro-preview-customtools"
+      "gemini-3.1-flash-lite-preview"
+    ],
+    "xai": [
+      "grok-build-0.1",
+      "grok-4.6",
+      "grok-4.5",
+      "grok-4.20-multi-agent-0309",
+      "grok-4.20-0309-non-reasoning",
+      "grok-4.20-0309-reasoning",
+      "grok-4.3",
+      "grok-4.7"
+    ],
+    "openrouter": [
+      "moonshotai/kimi-k3.1-pro",
+      "recursive/flint-v1.0:free",
+      "minimax/minimax-m3.1-flash",
+      "deepseek/deepseek-v4.1-flash-1017",
+      "elorian/glimpse",
+      "xingchen-agi/xing4.0-29b-a4b:free",
+      "reflection/beam-1.0-501b-a23b",
+      "inception/mercury-3"
+    ],
+    "groq": [
+      "llama-3.3-70b-versatile",
+      "allam-2-7b",
+      "llama-3.1-8b-instant",
+      "qwen/qwen3.8-27b",
+      "qwen/qwen3.6-27b",
+      "openai/gpt-oss-20b",
+      "openai/gpt-oss-120b"
+    ],
+    "perplexity": [
+      "sonar-reasoning-pro",
+      "sonar-pro",
+      "sonar",
+      "sonar-deep-research"
+    ],
+    "mistral": [
+      "zai-glm-5-3",
+      "mistral-small-2603",
+      "labs-devstral-small-2512",
+      "codestral-2508",
+      "mistral-large-latest",
+      "pixtral-12b",
+      "glm-5-2",
+      "devstral-2512"
+    ],
+    "zai": [
+      "glm-4.7-flash",
+      "glm-5-turbo",
+      "glm-4.6v-flash",
+      "glm-4.7",
+      "glm-4.5-flash",
+      "glm-4.5",
+      "glm-5.3",
+      "glm-5.3-flashx"
+    ],
+    "deepseek": [
+      "deepseek-v4-flash-vision-exp",
+      "deepseek-v4-flash",
+      "deepseek-flash",
+      "deepseek-v4-pro"
+    ],
+    "together": [
+      "LiquidAI/LFM2-24B-A2B",
+      "deepseek-ai/DeepSeek-V3",
+      "deepseek-ai/DeepSeek-V3-1",
+      "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "deepseek-ai/DeepSeek-R1",
+      "deepseek-ai/DeepSeek-V4.1-Flash",
+      "deepseek-ai/DeepSeek-V4-Pro-0813",
+      "meta-models/Muse-Spark-Open-816B-A42B"
+    ],
+    "fireworks": [
+      "accounts/fireworks/routers/kimi-latest",
+      "accounts/fireworks/routers/kimi-k3-fast",
+      "accounts/fireworks/routers/glm-latest",
+      "accounts/fireworks/routers/deepseek-flash-latest",
+      "accounts/fireworks/routers/deepseek-v4p1-flash-spot",
+      "accounts/fireworks/routers/glm-flash-latest",
+      "accounts/fireworks/routers/qwen-max-latest",
+      "accounts/fireworks/routers/deepseek-v4p1-flash-1017-spot"
+    ],
+    "cerebras": [
+      "qwen-3.8-27b",
+      "gpt-oss-120b"
     ]
-  }
+  },
+  "defaults": {
+    "anthropic": "claude-haiku-5-5",
+    "openai": "gpt-6-luna",
+    "gemini": "gemini-3.5-flash-lite",
+    "xai": "grok-4.3",
+    "openrouter": "openai/gpt-6-luna",
+    "groq": "openai/gpt-oss-20b",
+    "perplexity": "sonar",
+    "mistral": "mistral-small-2603",
+    "zai": "glm-5.3-flash",
+    "deepseek": "deepseek-flash",
+    "together": "deepseek-ai/DeepSeek-V4.1-Flash",
+    "fireworks": "accounts/fireworks/models/deepseek-v4p1-flash",
+    "cerebras": "gpt-oss-120b"
+  },
+  "retiredDefaults": {}
 }

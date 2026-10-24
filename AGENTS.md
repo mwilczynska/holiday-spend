@@ -209,15 +209,28 @@ adapters. City-cost generation and methodology pages treat transport as manual-o
 
 ## LLM generation and model discovery
 
-The app supports OpenAI, Anthropic and Google Gemini. Defaults are centralized in
-`src/lib/city-generation-config.ts`, but model names are editable so a stale default does not block generation.
+The app supports thirteen providers, described as data in `src/lib/llm-provider-registry.ts`: OpenAI, Anthropic,
+Google Gemini, xAI Grok, OpenRouter, Groq, Perplexity Sonar, Mistral, Z.ai GLM, DeepSeek, Together AI, Fireworks AI
+and Cerebras. `docs/product/llm-providers.md` lists each one's transport, web search and effort parameter, and what
+has been verified. City generation requires a live FX lookup, so its pickers list only the nine providers with
+server-side web search (Groq only on gpt-oss models); transport pickers list all thirteen, and a provider without
+search gives the labelled ungrounded fallback. Each provider's default is its cheap, fast, recent model, chosen by
+`npm run models:refresh` from models.dev release dates and prices under the family rules in
+`src/lib/model-default-selection.ts` (newest Luna, Haiku, Flash-Lite, Sonar, Mistral Small, GLM Flash, DeepSeek
+Flash; cheapest Grok and gpt-oss), stored in the curated snapshot with the registry values as fallback. A replaced
+default is recorded as retired, so browsers that saved it move to the new default; other saved choices are kept.
 
-Model discovery runs through live provider APIs when a browser/server key is available, then no-key aggregators,
-then the generated curated snapshot at `src/lib/data/curated-models.generated.json`.
+Models are chosen from a dropdown (`src/components/llm/ModelSelect.tsx`) on every LLM surface; there is no free-text
+model entry. A saved model missing from the current list stays selectable and labelled. Model discovery runs through
+live provider APIs when a browser/server key is available, then no-key aggregators (OpenRouter or models.dev, per
+provider), then the generated curated snapshot at `src/lib/data/curated-models.generated.json`.
 
-Provider/model-specific reasoning effort is selectable, persisted through generation, and passed to supported
-provider transports. `max` is available when the selected provider/model advertises it. Application provider keys
-are never accessed, copied, logged or stored by Codex.
+Reasoning effort options come from `src/lib/data/model-reasoning-efforts.generated.json` (OpenRouter's published
+`supported_efforts`, written by `npm run models:refresh`), then family rules for unlisted models, filtered to what
+the provider's request format can express. A saved effort the model rejects falls back to `max`, else the model's
+highest. The server sends an effort only when the model accepts it. Claude 4.6 and later get adaptive thinking with
+`output_config.effort` (earlier Claude models keep `budget_tokens`); Gemini 3 and later get `thinkingLevel`.
+Application provider keys are never accessed, copied, logged or stored by Codex.
 
 OpenAI defaults to `gpt-6-luna` with `max` reasoning. Stored selections of the previous `gpt-5.6-luna` default migrate
 to it; other custom model choices are retained. A failed or empty keyed model-list response tries the no-key
@@ -228,8 +241,8 @@ Generation and model-refresh errors include HTTP/provider details and retry guid
 Invalid city output identifies missing or invalid fields; failed RBA validation gives its reason and saves no estimate.
 Network failures and unreadable server responses have separate messages; generation forms remain available for retry.
 
-Provider keys use one opt-in browser store shared by city generation, CSV-import generation and both transport
-dialogs. Saved changes and clearing synchronize across open windows in the same browser profile and origin.
+Provider keys use one opt-in browser store shared by city generation, CSV-import generation, both transport
+dialogs and **Settings → Provider API Keys**, which lists every provider's key with show, clear and save controls. Saved changes and clearing synchronize across open windows in the same browser profile and origin.
 Existing saved feature keys migrate once. Unchecking saving removes persisted keys while retaining them for the
 current window's session; unsaved keys are shared between its dialogs. Provider/model preferences remain separate.
 Unsaved keys survive successful city saves, dialog changes and client navigation in that window. A full page
@@ -542,7 +555,8 @@ checkout is under a synced folder before diagnosing anything else.
 | `src/lib/city-generation-service.ts` | Estimate persistence and city updates |
 | `src/lib/city-generation-persistence.ts` | Explicit v1/v1.1/v1.2 database persistence adapter |
 | `src/lib/city-estimate-provenance.ts` | Generic API provenance parser, including historical v6 records |
-| `src/lib/city-llm-client.ts` | Provider JSON-completion transports |
+| `src/lib/llm-provider-registry.ts` | Provider endpoints, web search, effort parameters and server key names |
+| `src/lib/city-llm-client.ts` | Provider JSON-completion transports for every registry transport |
 | `src/lib/provider-model-discovery.ts` | Provider model discovery |
 | `src/lib/city-cost-v1-1-guard.ts` | Refuses any v1.1 output write targeting the live v1 CSV |
 | `scripts/check-city-cost-v1-1.ts` | Deterministic formula, FX, output-safety and live-CSV integrity check |

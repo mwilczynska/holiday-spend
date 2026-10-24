@@ -37,7 +37,7 @@ export function beginAnalyticsOperation() {
   operationId = crypto.randomUUID(); lastOperation = Date.now();
   return operationId;
 }
-const safeSelections = new Set(['AUD', 'USD', 'EUR', 'GBP', 'CAD', 'NZD', 'JPY', 'CHF', 'CNY', 'THB', '1', '2', '3', '4', '5', 'hostel', 'privateRoom', '1star', '2star', '3star', '4star', 'street', 'budget', 'mid', 'high', 'none', 'light', 'moderate', 'heavy', 'free', 'planned', 'active', 'completed', 'openai', 'anthropic', 'gemini', 'low', 'medium', 'xhigh', 'max']);
+const safeSelections = new Set(['AUD', 'USD', 'EUR', 'GBP', 'CAD', 'NZD', 'JPY', 'CHF', 'CNY', 'THB', '1', '2', '3', '4', '5', 'hostel', 'privateRoom', '1star', '2star', '3star', '4star', 'street', 'budget', 'mid', 'high', 'none', 'light', 'moderate', 'heavy', 'free', 'planned', 'active', 'completed', 'openai', 'anthropic', 'gemini', 'xai', 'openrouter', 'groq', 'perplexity', 'mistral', 'zai', 'deepseek', 'together', 'fireworks', 'cerebras', 'low', 'medium', 'xhigh', 'max']);
 export function trackSelection(control: string, value: string) {
   beginAnalyticsOperation();
   trackEvent('selection_changed', { control, ...(safeSelections.has(value) ? { value: value as EventProperties<'selection_changed'>['value'] } : {}) });

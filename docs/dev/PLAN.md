@@ -1,5 +1,31 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
+## Model dropdown, reasoning-effort fix and more providers (23 October 2026)
+
+The owner asked for model and effort dropdowns instead of typed model names, reported that GPT-6.1 Sol offered no
+effort choice, and asked for a broad set of additional providers plus a Settings section for provider keys.
+
+- [x] Model dropdown (`ModelSelect`) replaces the model text box, datalist and button grid on the planner and dataset
+  generation forms, both transport dialogs and plan-import generation.
+- [x] Effort fix: the family regexes did not match current IDs (GPT-6.1 Sol and Astra, Claude 5.x, Gemini 3.x), so
+  they fell back to "None". Efforts now come from a generated OpenRouter `supported_efforts` table, then family rules.
+  The dialogs fall back to `max` or the model's highest effort, never to an unsupported "None".
+- [x] Transport bugs found while checking every model: Claude Opus 4.7+, Sonnet 5+ and Fable reject `budget_tokens`
+  with HTTP 400, so Claude 4.6+ now gets adaptive thinking with `output_config.effort` and the dynamic web search
+  tool; Gemini 3+ gets `thinkingLevel`; efforts a model rejects are no longer sent.
+- [x] Ten providers added from their documentation (`docs/product/llm-providers.md`): xAI, OpenRouter, Groq,
+  Perplexity, Mistral, Z.ai, DeepSeek, Together, Fireworks, Cerebras. City generation lists only the nine with web
+  search. Production refuses all thirteen server keys. Endpoints were probed without keys; no real-key call was made.
+- [x] Settings → Provider API Keys: every provider's key, using the existing opt-in browser store.
+- [x] Defaults are each provider's cheap, fast, recent model (Anthropic moves from Sonnet 4.6 to Haiku 5.5, Gemini
+  from 2.5 Flash to 3.5 Flash-Lite), chosen by `npm run models:refresh` under family rules so a new release replaces
+  them; replaced defaults are retired and saved selections of them migrate.
+- [x] Unit tests for each transport's request shape and search detection; Playwright selectors updated. Of the 25
+  affected Playwright tests, the model-picker specs pass; five (multiple-city-additions ×2, planner collapse/expand,
+  provider-interactions, provider-session-key) fail identically with these changes stashed, so they predate this work.
+  Two failed provider-session-key runs left Sydney legs 1039 and 1041 behind; deleted with the owner's approval.
+- [ ] Owner: exercise at least one new provider with a real key; search detection for new providers is unverified.
+
 ## Clearer new-city button labels (23 October 2026)
 
 In the Add Leg dialog the footer's Add City button (which opens LLM generation) read like the form's Add another city

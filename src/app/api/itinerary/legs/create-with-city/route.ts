@@ -11,7 +11,7 @@ import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { reserveLegSortOrder } from '@/lib/itinerary-leg-placement';
 import { validateLegDates } from '@/lib/itinerary-validation';
 import { resolveOrCreatePlannerCity, PlannerCityResolutionError } from '@/lib/planner-city-resolution';
-import { CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
+import { CITY_GENERATION_PROVIDERS, CITY_GENERATION_REASONING_EFFORTS } from '@/lib/city-generation-config';
 import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
@@ -22,7 +22,7 @@ const createSchema = z.object({
   nights: z.number().int().min(1),
   startDate: z.string().nullable().optional(),
   endDate: z.string().nullable().optional(),
-  provider: z.enum(['anthropic', 'openai', 'gemini']).optional(),
+  provider: z.enum(CITY_GENERATION_PROVIDERS).optional(),
   apiKey: z.string().optional(),
   model: z.string().optional(),
   reasoningEffort: z.enum(CITY_GENERATION_REASONING_EFFORTS).optional(),

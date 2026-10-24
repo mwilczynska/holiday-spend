@@ -5,6 +5,7 @@ import {
   CITY_GENERATION_KNOWN_MODELS,
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
+import { LLM_PROVIDER_SPECS } from '@/lib/llm-provider-registry';
 
 export type ProviderModelDiscoverySource = 'live' | 'aggregated' | 'fallback';
 export type ProviderModelCredentialSource = 'browser' | 'server' | 'none';
@@ -39,9 +40,7 @@ function normalizeApiKey(apiKey?: string) {
 }
 
 function getProviderServerApiKey(provider: CityGenerationProvider) {
-  if (provider === 'openai') return normalizeApiKey(process.env.OPENAI_API_KEY);
-  if (provider === 'anthropic') return normalizeApiKey(process.env.ANTHROPIC_API_KEY);
-  return normalizeApiKey(process.env.GEMINI_API_KEY);
+  return normalizeApiKey(process.env[LLM_PROVIDER_SPECS[provider].envKey]);
 }
 
 function resolveProviderCredential(params: {
@@ -296,23 +295,45 @@ async function fetchGeminiModelIds(apiKey: string) {
   return dedupeModelIds(modelIds);
 }
 
+/** OpenAI-compatible model lists: `{ data: [{ id }] }`, or a bare array (Together). */
+export function normalizeCompatibleModelIds(provider: CityGenerationProvider, payload: unknown) {
+  const rows = Array.isArray(payload)
+    ? (payload as Array<{ id?: string }>)
+    : Array.isArray((payload as { data?: unknown[] })?.data)
+      ? ((payload as { data: Array<{ id?: string }> }).data)
+      : [];
+
+  return dedupeModelIds(
+    rows
+      .map((row) => (typeof row?.id === 'string' ? row.id.trim() : ''))
+      .filter((modelId) => modelId.length > 0 && applyProviderIdFilter(provider, modelId))
+  );
+}
+
+async function fetchCompatibleModelIds(provider: CityGenerationProvider, apiKey: string) {
+  const spec = LLM_PROVIDER_SPECS[provider];
+  if (!spec.modelsUrl) throw new Error(`${spec.label} has no model-list endpoint.`);
+  const response = await fetch(spec.modelsUrl, {
+    signal: AbortSignal.timeout(MODEL_DISCOVERY_REQUEST_TIMEOUT_MS),
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+    },
+    cache: 'no-store',
+  });
+
+  if (!response.ok) {
+    throw new Error(formatProviderHttpError(spec.label, response.status, await response.text(), apiKey));
+  }
+
+  return normalizeCompatibleModelIds(provider, await response.json());
+}
+
 async function fetchProviderLiveModelIds(provider: CityGenerationProvider, apiKey: string) {
   if (provider === 'openai') return fetchOpenAiModelIds(apiKey);
   if (provider === 'anthropic') return fetchAnthropicModelIds(apiKey);
-  return fetchGeminiModelIds(apiKey);
+  if (provider === 'gemini') return fetchGeminiModelIds(apiKey);
+  return fetchCompatibleModelIds(provider, apiKey);
 }
-
-const OPENROUTER_PROVIDER_PREFIX: Record<CityGenerationProvider, string> = {
-  openai: 'openai/',
-  anthropic: 'anthropic/',
-  gemini: 'google/',
-};
-
-const MODELS_DEV_PROVIDER_KEY: Record<CityGenerationProvider, string> = {
-  openai: 'openai',
-  anthropic: 'anthropic',
-  gemini: 'google',
-};
 
 const NON_GENERATION_FRAGMENTS = [
   'embedding',
@@ -324,6 +345,16 @@ const NON_GENERATION_FRAGMENTS = [
   'image',
   'moderation',
   'search-preview',
+  'whisper',
+  'guard',
+  'ocr',
+  'voxtral',
+  'imagine',
+  'rerank',
+  'lyria',
+  'banana',
+  'orpheus',
+  'playai',
 ];
 
 function hasNonGenerationFragment(modelId: string) {
@@ -334,13 +365,17 @@ function hasNonGenerationFragment(modelId: string) {
 function applyProviderIdFilter(provider: CityGenerationProvider, modelId: string) {
   if (provider === 'openai') return isLikelyOpenAiGenerationModel(modelId);
   const normalized = modelId.toLowerCase();
-  if (provider === 'anthropic') {
-    return normalized.startsWith('claude-') && !hasNonGenerationFragment(normalized);
-  }
-  return normalized.startsWith('gemini-') && !hasNonGenerationFragment(normalized);
+  if (hasNonGenerationFragment(normalized)) return false;
+  if (provider === 'anthropic') return normalized.startsWith('claude-');
+  if (provider === 'gemini') return normalized.startsWith('gemini-');
+  if (provider === 'xai') return normalized.startsWith('grok-');
+  if (provider === 'perplexity') return normalized.startsWith('sonar');
+  // OpenRouter batch-only variants cannot serve an interactive request.
+  if (provider === 'openrouter') return !normalized.endsWith(':batch');
+  return true;
 }
 
-function translateAggregatorModelId(provider: CityGenerationProvider, modelId: string) {
+export function translateAggregatorModelId(provider: CityGenerationProvider, modelId: string) {
   // OpenRouter uses dot separators for Anthropic ids (`claude-opus-4.7`) while the
   // Anthropic API itself uses dashes (`claude-opus-4-7`). OpenAI and Gemini agree
   // between aggregators and their own APIs, so only Anthropic needs translation.
@@ -353,22 +388,25 @@ export function normalizeOpenRouterModelIds(provider: CityGenerationProvider, pa
     ? ((payload as { data: Array<{ id?: string }> }).data)
     : [];
 
-  const prefix = OPENROUTER_PROVIDER_PREFIX[provider];
+  const prefix = LLM_PROVIDER_SPECS[provider].openRouterPrefix;
+  if (prefix === null) return [];
 
   return dedupeModelIds(
     rows
       .map((row) => row.id?.trim() || '')
       .filter((rawId) => rawId.toLowerCase().startsWith(prefix))
       .map((rawId) => rawId.slice(prefix.length))
-      // OpenRouter sometimes appends `:free`, `:beta`, or other suffixes — strip them.
-      .map((modelId) => modelId.split(':')[0]!.trim())
+      // OpenRouter appends `:free`, `:beta` or other suffixes. Strip them for other providers;
+      // on OpenRouter itself the suffix is part of a callable model ID.
+      .map((modelId) => (provider === 'openrouter' ? modelId : modelId.split(':')[0]!.trim()))
       .map((modelId) => translateAggregatorModelId(provider, modelId))
       .filter((modelId) => modelId.length > 0 && applyProviderIdFilter(provider, modelId))
   );
 }
 
 export function normalizeModelsDevModelIds(provider: CityGenerationProvider, payload: unknown) {
-  const providerKey = MODELS_DEV_PROVIDER_KEY[provider];
+  const providerKey = LLM_PROVIDER_SPECS[provider].modelsDevKey;
+  if (!providerKey) return [];
   const providerBlock = (payload as Record<string, unknown>)?.[providerKey];
   if (!providerBlock || typeof providerBlock !== 'object') return [];
 
@@ -457,24 +495,19 @@ export async function fetchAggregatedProviderModelIds(
 ): Promise<AggregatedProviderModelResult> {
   const errors: string[] = [];
 
-  try {
-    const modelIds = await fetchOpenRouterProviderModelIds(provider);
-    if (modelIds.length > 0) {
-      return { aggregatorSource: 'openrouter', modelIds };
+  for (const aggregator of LLM_PROVIDER_SPECS[provider].aggregatorOrder) {
+    const label = aggregator === 'openrouter' ? 'OpenRouter' : 'models.dev';
+    try {
+      const modelIds = aggregator === 'openrouter'
+        ? await fetchOpenRouterProviderModelIds(provider)
+        : await fetchModelsDevProviderModelIds(provider);
+      if (modelIds.length > 0) {
+        return { aggregatorSource: aggregator, modelIds };
+      }
+      errors.push(`${label} returned no usable models for this provider.`);
+    } catch (err) {
+      errors.push(describeLlmRequestFailure(err, label, MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false));
     }
-    errors.push('OpenRouter returned no usable models for this provider.');
-  } catch (err) {
-    errors.push(describeLlmRequestFailure(err, 'OpenRouter', MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false));
-  }
-
-  try {
-    const modelIds = await fetchModelsDevProviderModelIds(provider);
-    if (modelIds.length > 0) {
-      return { aggregatorSource: 'models.dev', modelIds };
-    }
-    errors.push('models.dev returned no usable models for this provider.');
-  } catch (err) {
-    errors.push(describeLlmRequestFailure(err, 'models.dev', MODEL_DISCOVERY_REQUEST_TIMEOUT_MS, undefined, false));
   }
 
   throw new Error(errors.join(' '));
@@ -547,9 +580,12 @@ export async function discoverProviderModels(params: {
     };
   }
 
-  if (!credential.apiKey) {
+  if (!credential.apiKey || !LLM_PROVIDER_SPECS[params.provider].modelsUrl) {
     try {
-      const value = await buildAggregatedDiscoveryResult({ provider: params.provider });
+      const value = {
+        ...await buildAggregatedDiscoveryResult({ provider: params.provider }),
+        credentialSource: credential.credentialSource,
+      };
       modelDiscoveryCache.set(cacheKey, {
         expiresAt: Date.now() + MODEL_DISCOVERY_CACHE_TTL_MS,
         value,
