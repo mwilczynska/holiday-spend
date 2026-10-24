@@ -126,7 +126,7 @@ export function SearchableSelect({
               onCreateOption(search.trim());
             }}>
               <Plus className="mr-2 h-4 w-4 shrink-0" />
-              <span className="truncate">Add city “{search.trim()}”</span>
+              <span className="truncate">Generate New City “{search.trim()}”</span>
             </Button>
           </div>
         ) : null}

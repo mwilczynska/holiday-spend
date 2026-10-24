@@ -12,7 +12,7 @@ test('an unsaved fixture key survives city saving and dialog/navigation changes 
       name: /Historical mean temperature/,
     })).toBeVisible();
     await page.getByRole('button', { name: 'Add Leg', exact: true }).click();
-    await page.getByRole('button', { name: 'Add City', exact: true }).click();
+    await page.getByRole('button', { name: 'Generate New City', exact: true }).click();
     const city = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });
     await city.getByPlaceholder('e.g. Kunming', { exact: true }).fill('Sydney');
     await city.getByPlaceholder('e.g. China', { exact: true }).fill('Australia');
@@ -61,14 +61,14 @@ test('an unsaved fixture key survives city saving and dialog/navigation changes 
     await expect(page.getByLabel('OpenAI API Key', { exact: true })).toHaveAttribute('type', 'text');
     await showKey.click();
     await expect(page.getByLabel('OpenAI API Key', { exact: true })).toHaveAttribute('type', 'password');
-    await page.getByRole('button', { name: 'Add City', exact: true }).click();
+    await page.getByRole('button', { name: 'Generate New City', exact: true }).click();
     const datasetCity = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });
     await datasetCity.getByText('Advanced generation settings', { exact: true }).click();
     await expect(datasetCity.getByLabel('OpenAI API Key', { exact: true })).toHaveValue(fixtureKey);
     await expect(datasetCity.getByLabel('Save API key in this browser', { exact: true })).not.toBeChecked();
     await datasetCity.getByRole('button', { name: 'Close', exact: true }).click();
     await page.reload();
-    await page.getByRole('button', { name: 'Add City', exact: true }).click();
+    await page.getByRole('button', { name: 'Generate New City', exact: true }).click();
     await datasetCity.getByText('Advanced generation settings', { exact: true }).click();
     await expect(datasetCity.getByLabel('OpenAI API Key', { exact: true })).toHaveValue('');
     await expect(datasetCity.getByLabel('Save API key in this browser', { exact: true })).not.toBeChecked();

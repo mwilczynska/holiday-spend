@@ -15,7 +15,7 @@ describe('planner city picker UI', () => {
     expect(source).toContain(": 'aria-selected:bg-slate-800'");
   });
 
-  it('keeps cancel, add-city, and add-leg actions together in the leg dialog footer', () => {
+  it('keeps cancel, generate-city, and add-leg actions together in the leg dialog footer', () => {
     const source = fs.readFileSync(path.join(projectRoot, 'src', 'app', 'plan', 'PlanClient.tsx'), 'utf8');
     const footerStart = source.indexOf('<DialogFooter className="gap-2 sm:justify-end">');
     const footerEnd = source.indexOf('</DialogFooter>', footerStart);
@@ -23,7 +23,7 @@ describe('planner city picker UI', () => {
 
     expect(footerStart).toBeGreaterThan(-1);
     expect(footer).toContain('Cancel');
-    expect(footer).toContain('Add City');
+    expect(footer).toContain('Generate New City');
     expect(footer).toContain('Add Leg');
   });
 

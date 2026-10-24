@@ -1754,7 +1754,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                       <Button data-analytics="plan-client.set-new-leg-drafts.2" type="button" variant="outline" onClick={() => setNewLegDrafts(current => [
                         ...current,
                         createNewLegDraft(nextLegDraftId.current++, nextLegStartDate(current.at(-1)?.endDate ?? legsRef.current.at(-1)?.endDate)),
-                      ])}>Add another city</Button>
+                      ])}>Add another leg</Button>
                     </fieldset>
                     {addLegError ? <p role="alert" className="text-sm text-destructive">{addLegError}</p> : null}
                     {addLegStatus ? <p role="status" className="text-sm text-muted-foreground">{addLegStatus}</p> : null}
@@ -1769,7 +1769,7 @@ export function PlanClient({ initialData }: { initialData: PlanInitialData }) {
                         onClick={() => openNewCity()}
                       >
                         <Plus className="mr-2 h-4 w-4" />
-                        Add City
+                        Generate New City
                       </Button>
                       <Button data-analytics="plan-client.handle-add-leg"
                         type="button"

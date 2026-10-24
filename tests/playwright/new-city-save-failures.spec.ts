@@ -8,7 +8,7 @@ async function openForm(page: Page, dataset = false) {
   if (!dataset) {
     await openAddLegDialog(page);
   }
-  await page.getByRole('button', { name: 'Add City', exact: true }).click();
+  await page.getByRole('button', { name: 'Generate New City', exact: true }).click();
   const form = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });
   await form.getByPlaceholder('e.g. Kunming', { exact: true }).fill('Sydney');
   await form.getByPlaceholder('e.g. China', { exact: true }).fill('Australia');

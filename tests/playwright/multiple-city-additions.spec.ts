@@ -29,10 +29,10 @@ test('existing-city batches save in order and retry only the remaining legs', as
   const form = await openLegForm(page);
   await chooseCity(page, form, 'Agra');
   await form.getByRole('spinbutton').fill('3');
-  await form.getByRole('button', { name: 'Add another city', exact: true }).click();
+  await form.getByRole('button', { name: 'Add another leg', exact: true }).click();
   await chooseCity(page, form, 'Sydney');
   await form.getByRole('spinbutton').last().fill('5');
-  await form.getByRole('button', { name: 'Add another city', exact: true }).click();
+  await form.getByRole('button', { name: 'Add another leg', exact: true }).click();
   await expect(form.getByRole('button', { name: 'Add 3 Legs', exact: true })).toBeDisabled();
   await form.getByRole('button', { name: 'Remove city 3', exact: true }).click();
   const requests: Array<{ cityId: string; nights: number }> = [];
@@ -58,7 +58,7 @@ test('existing-city batches save in order and retry only the remaining legs', as
 test('a mismatched leg acknowledgement stops the batch and retains every unconfirmed row', async ({ page }) => {
   const form = await openLegForm(page);
   await chooseCity(page, form, 'Agra');
-  await form.getByRole('button', { name: 'Add another city', exact: true }).click();
+  await form.getByRole('button', { name: 'Add another leg', exact: true }).click();
   await chooseCity(page, form, 'Sydney');
   let requests = 0;
   await page.route('**/api/itinerary/legs', route => {
@@ -74,12 +74,12 @@ test('a mismatched leg acknowledgement stops the batch and retains every unconfi
 test('an unmatched planner search prefills the city and nights and preserves other selected cities', async ({ page }) => {
   const form = await openLegForm(page);
   await chooseCity(page, form, 'Agra');
-  await form.getByRole('button', { name: 'Add another city', exact: true }).click();
+  await form.getByRole('button', { name: 'Add another leg', exact: true }).click();
   await form.getByRole('spinbutton').last().fill('4');
   await form.getByRole('button', { name: 'Select a city', exact: true }).click();
   const picker = page.getByRole('dialog', { name: 'Select a city', exact: true });
   await picker.getByRole('combobox').fill('Missingville');
-  await picker.getByRole('button', { name: 'Add city “Missingville”', exact: true }).click();
+  await picker.getByRole('button', { name: 'Generate New City “Missingville”', exact: true }).click();
   const generation = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });
   await expect(generation.getByLabel('City Name', { exact: true })).toHaveValue('Missingville');
   await expect(generation.getByLabel('Nights', { exact: true })).toHaveValue('4');
@@ -92,7 +92,7 @@ test('an unmatched planner search prefills the city and nights and preserves oth
 
 test('missing-city generation preserves partial successes and retries without regenerating them', async ({ page }) => {
   const legForm = await openLegForm(page);
-  await legForm.getByRole('button', { name: 'Add City', exact: true }).click();
+  await legForm.getByRole('button', { name: 'Generate New City', exact: true }).click();
   const form = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });
   await form.getByLabel('City Name', { exact: true }).fill('Firstville');
   await form.getByLabel('Country Name', { exact: true }).fill('Australia');
@@ -132,7 +132,7 @@ test('missing-city generation preserves partial successes and retries without re
 test('dataset empty search opens batch generation without creating itinerary legs', async ({ page }) => {
   await page.goto('/dataset');
   await page.getByLabel('Search dataset', { exact: true }).fill('Missingville');
-  await page.getByRole('button', { name: 'Add city “Missingville”', exact: true }).click();
+  await page.getByRole('button', { name: 'Generate New City “Missingville”', exact: true }).click();
   const form = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });
   await expect(form.getByLabel('City Name', { exact: true })).toHaveValue('Missingville');
   await expect(form.getByRole('spinbutton')).toHaveCount(0);
@@ -161,7 +161,7 @@ test('dataset city picker offers a keyboard-accessible add action for an unmatch
   await page.getByRole('button', { name: 'Search for a city', exact: true }).click();
   const picker = page.getByRole('dialog', { name: 'Search for a city', exact: true });
   await picker.getByRole('combobox').fill('Missingville');
-  const add = picker.getByRole('button', { name: 'Add city “Missingville”', exact: true });
+  const add = picker.getByRole('button', { name: 'Generate New City “Missingville”', exact: true });
   await add.focus();
   await page.keyboard.press('Enter');
   const form = page.getByRole('dialog', { name: 'Add New City With LLM', exact: true });

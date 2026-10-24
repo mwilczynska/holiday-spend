@@ -4,7 +4,7 @@ const FIXTURE_KEY = 'not-a-provider-key-shared-ui-fixture';
 
 async function newCity(page: Page) {
   await page.getByRole('button', { name: 'Add Leg', exact: true }).first().click();
-  await page.getByRole('dialog', { name: 'Add Itinerary Leg' }).getByRole('button', { name: 'Add City', exact: true }).click();
+  await page.getByRole('dialog', { name: 'Add Itinerary Leg' }).getByRole('button', { name: 'Generate New City', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: 'Add New City With LLM' });
   await dialog.getByText('Advanced generation settings', { exact: true }).click();
   return dialog;

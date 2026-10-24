@@ -22,7 +22,7 @@ test.describe('planner regressions', () => {
       }
     });
     await page.goto('/dataset');
-    await page.getByRole('button', { name: 'Add City', exact: true }).click();
+    await page.getByRole('button', { name: 'Generate New City', exact: true }).click();
     const dialog = page.getByRole('dialog', { name: 'Add New City With LLM' });
     await dialog.getByPlaceholder('e.g. Kunming').fill('Failure fixture city');
     await dialog.getByPlaceholder('e.g. China').fill('Mexico');
@@ -61,7 +61,7 @@ test.describe('planner regressions', () => {
     });
     await page.goto('/plan');
     await page.getByRole('button', { name: 'Add Leg', exact: true }).first().click();
-    await page.getByRole('dialog', { name: 'Add Itinerary Leg' }).getByRole('button', { name: 'Add City', exact: true }).click();
+    await page.getByRole('dialog', { name: 'Add Itinerary Leg' }).getByRole('button', { name: 'Generate New City', exact: true }).click();
     const dialog = page.getByRole('dialog', { name: 'Add New City With LLM' });
     await dialog.getByText('Advanced generation settings', { exact: true }).click();
     await expect(dialog.locator('input[list]')).toHaveValue('gpt-6-luna');
@@ -108,7 +108,7 @@ test.describe('planner regressions', () => {
     await page.goto('/plan');
 
     await page.getByRole('button', { name: 'Add Leg' }).click();
-    await page.getByRole('button', { name: 'Add City' }).click();
+    await page.getByRole('button', { name: 'Generate New City' }).click();
 
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
@@ -130,7 +130,7 @@ test.describe('planner regressions', () => {
 
     const addLegDialog = page.getByRole('dialog', { name: 'Add Itinerary Leg' });
     await expect(addLegDialog.getByRole('button', { name: 'Cancel', exact: true })).toBeVisible();
-    await expect(addLegDialog.getByRole('button', { name: 'Add City', exact: true })).toBeVisible();
+    await expect(addLegDialog.getByRole('button', { name: 'Generate New City', exact: true })).toBeVisible();
     await expect(addLegDialog.getByRole('button', { name: 'Add Leg', exact: true })).toBeDisabled();
 
     await addLegDialog.getByRole('button', { name: 'Select a city' }).click();
@@ -197,7 +197,7 @@ test.describe('planner regressions', () => {
     await page.goto('/plan');
     await page.getByRole('button', { name: 'Add Leg', exact: true }).first().click();
     await page.getByRole('dialog', { name: 'Add Itinerary Leg' })
-      .getByRole('button', { name: 'Add City', exact: true })
+      .getByRole('button', { name: 'Generate New City', exact: true })
       .click();
 
     const cityDialog = page.getByRole('dialog', { name: 'Add New City With LLM' });

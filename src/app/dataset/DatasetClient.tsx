@@ -540,7 +540,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
             onClick={() => openNewCity()}
           >
             <Plus className="mr-2 h-4 w-4" />
-            Add City
+            Generate New City
           </Button>
           {hasOpenedAddDialog ? (
             <PlannerNewCityDialog
@@ -923,7 +923,7 @@ export function DatasetClient({ initialData, canManageLibrary = false }: { initi
                       {hasLoadedData ? 'No city rows match the current search.' : 'City rows unavailable.'}
                       {hasLoadedData && query.trim() && canManageLibrary && !loading && !readError ? (
                         <div className="mt-3">
-                          <Button data-analytics="dataset-client.open-new-city.2" type="button" variant="outline" onClick={() => openNewCity(query.trim())}>Add city “{query.trim()}”</Button>
+                          <Button data-analytics="dataset-client.open-new-city.2" type="button" variant="outline" onClick={() => openNewCity(query.trim())}>Generate New City “{query.trim()}”</Button>
                         </div>
                       ) : null}
                     </td>

@@ -1,5 +1,15 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
+## Clearer new-city button labels (23 October 2026)
+
+In the Add Leg dialog the footer's Add City button (which opens LLM generation) read like the form's Add another city
+button (which adds an existing-city row). The owner chose "Generate New City".
+
+- [x] Generate New City replaces Add City in the Add Leg footer, on Dataset, in the city search's create option and the
+  empty dataset filter; the Add Leg row button becomes Add another leg. The generation dialog's own Add another city
+  is unchanged.
+- [x] Update the unit footer check and Playwright selectors.
+
 ## Repository tidy-up (21 October 2026)
 
 The owner asked for the public repository to carry only files useful to a reader, with retired research kept off

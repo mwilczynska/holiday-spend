@@ -364,8 +364,9 @@ blur, Enter or a 700 ms pause and only when valid, so typing a year does not sav
 Changing a card's start date moves the leg and keeps its nights; changing the end date changes the nights. Planner and dataset new-city dialogs accept several
 city/country entries with shared generation settings, and planner entries have separate dates and nights. Batches save in entry
 order, stop on the first failure, and remove only confirmed additions from the pending draft; retry does not resubmit
-confirmed saves. Add Leg and dataset city searches offer Add City with the searched name prefilled, including when
-fuzzy matches exist; an empty dataset filter also offers it. The planner carries the nights and retains other selected cities.
+confirmed saves. The button that opens LLM generation is labelled Generate New City in the Add Leg footer, on Dataset
+and in both city searches, which prefill the searched name, including when fuzzy matches exist; an empty dataset filter
+also offers it. Add another leg adds an existing-city row to the Add Leg dialog. The planner carries the nights and retains other selected cities.
 New-city forms validate city identity and creation flags before clearing input or reporting success. Planner
 acknowledgements must also confirm a saved leg for the requested city and exact nights. Incomplete responses retain
 the draft with an error and advice to check saved data before retrying. Pending generation locks all draft controls.
