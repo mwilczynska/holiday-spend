@@ -3843,3 +3843,35 @@ general contract, the completed production handoff was archived as a summary, th
 archived, and these history files were redacted in place. Machine-specific sections of `AGENTS.md` (local layout,
 OneDrive history, the host and backup layout, Codex browser troubleshooting) moved to the owner's user-level agent
 memory. The earlier text remains in git history; no secret was ever committed, so history was not rewritten.
+
+Hong Kong climate investigation (27 October 2026). The live planner shows unavailable historical climate for Hong
+Kong, and its authenticated `/api/climate?cityId=hong-kong` GET returns null. The local database's saved collection
+failure says "City coordinates are ambiguous." Current Open-Meteo geocoding returns an exact-name PPLC city
+(22.27832, 114.17469; population 7,396,076) and ISL island (22.26686, 114.17885; population 1,195,529).
+Both pass `resolveClimateLocation`'s default populated-place/island filter; their 6.19 population ratio is below
+its required tenfold margin. Replaying those results through the current resolver reproduces the error before
+any archive request. No Hong Kong-specific feature constraint exists, although Macau already selects PPLC.
+
+A read-only archive request for the PPLC city returns all 1,826 daily values for 2021–2025, with no missing values.
+The production `parseArchiveClimate` function validates twelve months; November is 21.9533 C mean and 48.56 mm/month
+precipitation. The appropriate fix is a `HK|Hong Kong` query constrained to PPLC, covered by a city-versus-island
+regression, then an explicit retry after deployment. Ordinary reads preserve a matching failed record as null,
+so reloads do not repair it. Investigation only: no application source, itinerary, cost or live climate data was
+changed. Private diagnostic evidence is in the ignored `.local/climate-investigation-2026-10-27/` directory.
+
+Hong Kong climate fix (27 October 2026). The owner approved implementing and testing the correction. The location
+query now requires Hong Kong's PPLC city feature, using the existing per-destination constraint mechanism. The
+global ambiguity threshold and country/name checks are unchanged. Three provider regressions first reproduce the
+failure, then pass after the change: city selection with the real city/island/territory populations, rejection of
+island-only/territory-only/foreign-city responses, and collection with the city coordinates. A fourth regression
+uses an in-memory database to prove an explicit retry replaces a saved ambiguity failure, clears its error and
+reuses the recovered record on later reads. Climate tests pass 95/95. A real read-only `fetchCityClimate` call
+also succeeds with all twelve ERA5 months; November is 21.9533 C mean and 48.56 mm/month precipitation. No saved
+climate or itinerary data was changed. Documentation and project memory describe the new location constraint.
+
+Validation: TypeScript, production build, all 568 tests across 90 files, focused ESLint and the methodology check
+pass. The initial sandboxed full suite could not fetch its local HTTP fixture and timed out during snapshot setup;
+the affected fifteen tests and then the complete suite pass outside the sandbox. The sandboxed build compiled and
+generated pages but could not package traced dependencies; the normal-permission build passes completely.
+The fix is prepared on `codex/hong-kong-climate` for review. After deployment, Retry climate must be used once to
+replace the live saved failure. No database migration or cost regeneration is required.

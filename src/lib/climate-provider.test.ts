@@ -96,6 +96,15 @@ function bogotaSearchResponse() {
   return { results: [{ ...place('Bogotá', 'CO'), latitude: 4.7, longitude: -74.1 }] };
 }
 
+function hongKongSearchResponse() {
+  // Open-Meteo's city and island share an exact name and have a population ratio below ten.
+  return { results: [
+    place('Hong Kong', 'HK', 7_396_076, { latitude: 22.27832, longitude: 114.17469 }),
+    place('Hong Kong', 'HK', 1_195_529, { feature_code: 'ISL', latitude: 22.26686, longitude: 114.17885 }),
+    place('Hong Kong', 'HK', 7_498_900, { feature_code: 'PCLS', latitude: 22.25, longitude: 114.16667 }),
+  ] };
+}
+
 afterEach(() => {
   vi.useRealTimers();
   vi.unstubAllGlobals();
@@ -178,6 +187,22 @@ describe('Open-Meteo Archive climate aggregation', () => {
 });
 
 describe('climate geocoding', () => {
+  it('resolves Hong Kong to the city rather than its same-named island or territory', () => {
+    const location = resolveClimateLocation(hongKongSearchResponse(), 'Hong Kong', 'HK');
+
+    expect(location).toMatchObject({
+      name: 'Hong Kong', countryCode: 'HK', queryName: 'Hong Kong', latitude: 22.27832, longitude: 114.17469,
+    });
+    expect(Object.fromEntries(new URL(location.sourceUrl).searchParams)).toMatchObject({ name: 'Hong Kong', countryCode: 'HK' });
+  });
+
+  it('keeps Hong Kong unavailable when only an island, territory or foreign city is returned', () => {
+    const [city, island, territory] = hongKongSearchResponse().results;
+    for (const results of [[island], [territory], [{ ...city, country_code: 'CN' }]]) {
+      expect(() => resolveClimateLocation({ results }, 'Hong Kong', 'HK')).toThrow(/No matching city/);
+    }
+  });
+
   it('resolves Macau to the Macao city rather than the territory or a foreign match', () => {
     const location = resolveClimateLocation({ results: [
       place('Macao', 'CN', 1_000_000),
@@ -438,6 +463,31 @@ describe('fetchCityClimate provider requests', () => {
       longitude: '-74.1',
       start_date: '2021-01-01',
       end_date: '2025-12-31',
+    });
+  });
+
+  it('collects Hong Kong climate using city coordinates when the geocoder also returns its island', async () => {
+    const archive = dailyPayload();
+    archive.latitude = 22.3;
+    archive.longitude = 114.2;
+    archive.timezone = 'Asia/Hong_Kong';
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse(hongKongSearchResponse()))
+      .mockResolvedValueOnce(jsonResponse(archive));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const climate = await fetchCityClimate('hong-kong', 'Hong Kong', 'HK');
+
+    expect(climate).toMatchObject({
+      cityId: 'hong-kong', period: '2021–2025', sourceModel: 'era5_seamless',
+      location: { countryCode: 'HK', latitude: 22.27832, longitude: 114.17469 },
+    });
+    expect(climate.months).toHaveLength(12);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const archiveUrl = new URL(fetchMock.mock.calls[1][0] as string);
+    expect(Object.fromEntries(archiveUrl.searchParams)).toMatchObject({
+      latitude: '22.27832', longitude: '114.17469', models: 'era5_seamless',
+      start_date: '2021-01-01', end_date: '2025-12-31',
     });
   });
 

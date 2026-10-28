@@ -58,6 +58,8 @@ const locationQueries: Record<string, LocationQuery> = {
   'NO|Tromso': { queryName: 'Tromsø', admin1: 'Troms' },
   // The geocoder spells Macau as "Macao"; choose the city, not the territory record.
   'MO|Macau': { queryName: 'Macao', featureCode: 'PPLC' },
+  // The city and island share an exact name, with no tenfold population difference.
+  'HK|Hong Kong': { queryName: 'Hong Kong', featureCode: 'PPLC' },
   // "San Sebastian" alone selects a village in Asturias, not the Basque city.
   'ES|San Sebastian': { queryName: 'Donostia / San Sebastian', admin1: 'Basque Country' },
   // The island and its town share a name; use the island, as for Santorini.

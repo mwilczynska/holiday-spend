@@ -1,5 +1,15 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
+## Hong Kong climate investigation and fix (27 October 2026)
+
+- [x] Owner-approved fix: select Hong Kong's PPLC city result. Three provider regressions fail before the change and pass afterward; a fourth verifies explicit retry replaces a saved ambiguity failure and subsequent reads reuse the recovered climate.
+- [x] Read-only real-provider collection through `fetchCityClimate`: correct city coordinates, twelve valid months, November 21.9533 C and 48.56 mm/month. No live or local saved climate was changed.
+- [x] Repository baseline: TypeScript, production build, all 568 tests in 90 files and methodology check pass; focused ESLint passes. Sandbox-only local HTTP/packaging failures are resolved by rerunning outside the sandbox. Prepared on `codex/hong-kong-climate` for review; live deployment remains separate.
+- [ ] After merge/deployment, use Retry climate to recover the live saved failure.
+- [x] Inspect the live planner: Hong Kong has no saved climate; its authenticated climate GET returns null.
+- [x] Reproduce the resolver failure from current Open-Meteo results: Hong Kong city (PPLC) and island (ISL) both pass the exact-name filter, but their population ratio is 6.19 rather than the required 10. The local saved failure also says "City coordinates are ambiguous."
+- [x] Initial investigation: validate the city-coordinate archive with the production parser; all 1,826 days and twelve months pass. Record the remedy: constrain `HK|Hong Kong` to the PPLC city result, add a regression test and explicitly retry the saved failure after deployment. Application source and production data were unchanged at this investigation stage.
+
 ## Model dropdown, reasoning-effort fix and more providers (23 October 2026)
 
 The owner asked for model and effort dropdowns instead of typed model names, reported that GPT-6.1 Sol offered no

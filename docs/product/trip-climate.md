@@ -48,7 +48,7 @@ Some cities need help. These are listed in `src/lib/climate-provider.ts`:
 
 - **Search hints** where the travel name differs from the geocoder's name, or where several places share it. For
   example, Tromso is searched as Tromsø, San Sebastian as Donostia / San Sebastian in the Basque Country, and Suzhou is
-  limited to Jiangsu.
+  limited to Jiangsu. Hong Kong selects the city (`PPLC`) rather than its same-named island or territory.
 - **Fixed points** where the geocoder's only match is the wrong place, or there is none. For example, the only
   "Querétaro" it knows is a village in Chiapas, and the only populated "Cotopaxi" is 150 km from the national park.
   Each fixed point records its source (the geocoder or OpenStreetMap). A saved record that disagrees with a fixed point
