@@ -156,6 +156,37 @@ describe('city climate persistence', () => {
     expect(fetchClimateMock).toHaveBeenCalledTimes(1);
   });
 
+  it('replaces Hong Kong\'s saved ambiguity failure on an explicit retry and reuses the recovered climate', async () => {
+    sqlite.prepare('INSERT INTO countries (id, name, currency_code, region) VALUES (?, ?, ?, ?)')
+      .run('hong-kong', 'Hong Kong', 'HKD', 'east_asia');
+    sqlite.prepare('INSERT INTO cities (id, country_id, name) VALUES (?, ?, ?)')
+      .run('hong-kong', 'hong-kong', 'Hong Kong');
+    sqlite.prepare(`
+      INSERT INTO city_climate (city_id, city_name, country_code, data_json, collected_at, last_attempt_at, last_error, version)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `).run('hong-kong', 'Hong Kong', 'HK', null, null, '2026-10-19T01:54:29.491Z', 'City coordinates are ambiguous.', CITY_CLIMATE_DATA_VERSION);
+
+    expect(await getStoredCityClimates(['hong-kong'])).toEqual({ 'hong-kong': null });
+    await expect(ensureCityClimate('hong-kong', 'Hong Kong', 'HK')).resolves.toBeNull();
+    expect(fetchClimateMock).not.toHaveBeenCalled();
+
+    const climate = makeClimate('hong-kong', 22, 'era5_seamless');
+    climate.location = {
+      name: 'Hong Kong', countryCode: 'HK', latitude: 22.27832, longitude: 114.17469,
+      queryName: 'Hong Kong', sourceUrl: 'https://geocoding-api.open-meteo.com/v1/search?name=Hong+Kong&countryCode=HK',
+    };
+    climate.grid = { latitude: 22.3, longitude: 114.2, elevation: 60, timezone: 'Asia/Hong_Kong' };
+    fetchClimateMock.mockResolvedValueOnce(climate);
+
+    const recovered = await ensureCityClimate('hong-kong', 'Hong Kong', 'HK', { refresh: true });
+
+    expect(recovered).toMatchObject({ ...climate, collectedAt: expect.any(String) });
+    expect(storedRow('hong-kong')).toMatchObject({ last_error: null, collected_at: recovered?.collectedAt });
+    expect((await getStoredCityClimates(['hong-kong']))['hong-kong']).toEqual(recovered);
+    await expect(ensureCityClimate('hong-kong', 'Hong Kong', 'HK')).resolves.toEqual(recovered);
+    expect(fetchClimateMock).toHaveBeenCalledTimes(1);
+  });
+
   it('preserves the last successful climate and records a failed explicit refresh', async () => {
     addCity('bogota');
     fetchClimateMock.mockResolvedValueOnce(makeClimate('bogota', 20));
