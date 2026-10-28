@@ -3875,3 +3875,16 @@ the affected fifteen tests and then the complete suite pass outside the sandbox.
 generated pages but could not package traced dependencies; the normal-permission build passes completely.
 The fix is prepared on `codex/hong-kong-climate` for review. After deployment, Retry climate must be used once to
 replace the live saved failure. No database migration or cost regeneration is required.
+
+Hong Kong production rollout (27 October 2026). At the owner's request PR #22 was squash-merged as `a87e07ee` after
+its verify check passed. Production checks run 40628404313 passed and published `sha-a87e07e`. The existing visible
+VPS queue runner performed the update using a verified Git bundle and the exact revision-labelled image. A full
+backup was created and verified with the old running image; its databases and photos were preserved. The previous
+image was tagged for rollback. The app's existing persistent bind mount was retained, local and public health
+checks passed, and pre/post business-table counts matched. Private backup identifiers and runner logs remain in the
+infrastructure queue; no host credentials or private record counts are recorded here.
+
+The live in-app browser's Retry climate control collected Hong Kong successfully. After a full planner reload,
+its card still shows November 22.0 C mean temperature and 49 mm/month rainfall; the trip chart no longer reports
+unavailable climate. The authenticated itinerary and budget remain intact. Local main is updated to the merged
+release; these deployment notes do not require a new application image.
