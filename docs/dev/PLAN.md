@@ -1,5 +1,11 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
+## Branch cleanup (27 October 2026)
+
+- [x] Refresh local/origin refs and inspect every branch and worktree; Hong Kong's patch is already present on main.
+- [x] Remove the deployed `codex/hong-kong-climate` branch locally and on origin; the remote deletion is guarded against a changed head. Main and both intentional research branches remain.
+- [x] Retain `research/city-cost-accuracy` and its active worktree, and the intentionally archived `feat/city-cost-methodology-v6` research branch.
+
 ## Hong Kong climate investigation and fix (27 October 2026)
 
 - [x] Owner-approved fix: select Hong Kong's PPLC city result. Three provider regressions fail before the change and pass afterward; a fourth verifies explicit retry replaces a saved ambiguity failure and subsequent reads reuse the recovered climate.

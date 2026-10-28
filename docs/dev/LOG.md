@@ -3888,3 +3888,9 @@ The live in-app browser's Retry climate control collected Hong Kong successfully
 its card still shows November 22.0 C mean temperature and 49 mm/month rainfall; the trip chart no longer reports
 unavailable climate. The authenticated itinerary and budget remain intact. Local main is updated to the merged
 release; these deployment notes do not require a new application image.
+
+Branch cleanup (27 October 2026). At the owner's request, local and origin refs and all worktrees were inspected.
+`git cherry` confirmed the deployed Hong Kong branch's patch is present on main despite the squash merge. Its local
+and origin branches were removed, with a lease protecting the remote deletion against a changed head. Main, the
+active `research/city-cost-accuracy` worktree/branch and the explicitly retained `feat/city-cost-methodology-v6`
+research archive remain. No other obsolete branches were found, and no worktrees or research tags were removed.
