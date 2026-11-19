@@ -1,0 +1,36 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Food anchors (beer, coffee, meals) rest on crowdsourced and hotel-menu price points, some undated or older, converted at roughly 51 EGP per USD. Cocktail and wine are weak: the cocktail anchor uses one Expatistan point estimate and the wine anchor uses sparse local-glass menu prices, with beer used as the relative anchor. Accommodation anchors are holistic model estimates with no searches run and no live listings checked. The RBA 0.6720 observation for 2026-11-18 was taken from search-result summaries that cite the RBA exchange rates page and a third-party site; the RBA page itself was not opened directly, and an earlier search returned conflicting figures.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are Cairo-specific, drawn from aggregator cost-of-living pages and hotel and restaurant menus, and converted to USD. Accommodation anchors are model estimates reflecting Egyptian urban mid-tier and budget lodging pricing for July 2026.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.25,
+    "coffee": 1.80,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 28.00,
+    "cocktail": 6.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 75.00
+  }
+}
+
+Sources:
+- [Reserve Bank of Australia exchange rates](https://www.rba.gov.au/statistics/frequency/exchange-rates.html)
+- [Wise: Cost of Living in Cairo](https://wise.com/us/cost-of-living/egypt/cairo)
+- [MyLifeElsewhere: Cairo cost of living comparison](https://www.mylifeelsewhere.com/cost-of-living/katy-c11871/cairo-c7106)
+- [Expatistan: Cairo cocktail price](https://expatistan.com/price/cocktail/cairo/USD)
+- [Expatistan: Cairo beer price](https://expatistan.com/price/beer/cairo)
+- [Expat Arrivals: Cost of living in Egypt](https://www.expatarrivals.com/egypt/cost-of-living-in-egypt)
+- [Cairo360: Cairo bar and restaurant reviews](https://www.cairo360.com/article/restaurants/dos-canas-garden-city-taperia-brings-subtle-sophistication-to-cairo-restaurant-scene/)
+- [The Nile Ritz-Carlton, Cairo menu](https://www.morecravings.com/en/menus/2366)
+- [Marriott Mena House, Cairo menu](https://www.morecravings.com/en/menus/4821)

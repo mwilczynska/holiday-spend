@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on secondary sources: crowdsourced Matsuyama cost-of-living figures (Livingcost, Nomad Watch, Oysterlist, CityCost), chain and venue menu examples, and Tokyo-heavy izakaya and bar guides. Restaurant and beer anchors are reasonably grounded; cocktail and wine anchors are less certain and were set from Japanese bar price ranges and the local beer relationship, since no Matsuyama-specific bar data was found. The beer anchor may not yet reflect the October 2026 beer tax change. Accommodation anchors are holistic model estimates from general knowledge of Japanese regional hotels and hostels; no booking pages or current listings were inspected. The yen-to-dollar conversion assumes roughly 150 JPY per USD, which was not checked by search, so all USD figures carry that exchange-rate uncertainty. FX: the 2026-11-18 RBA observation of 0.6720 was reported via a secondary aggregator that cited the RBA exchange rates table; the RBA page itself was not opened directly. Prices are for July 2026 but drawn from sources of mixed dates.",
+  "comparable_city_reasoning": "Matsuyama is a mid-sized regional Japanese city, priced below Tokyo and Osaka. Food and drink were benchmarked to Japanese regional and budget-to-mid-range price ranges, with the cheapest Matsuyama-specific secondary figures used as a floor. Cocktail and wine were set relative to beer, since direct local bar data was weak. Accommodation reflects typical regional Japanese business hotels, guesthouses and hostels.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.30,
+    "coffee": 3.30,
+    "inexp_meal_1p": 6.70,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 6.70,
+    "wine_glass": 5.30,
+    "hostel_dorm_1p": 23.00,
+    "hostel_private_2p": 47.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 115.00
+  }
+}

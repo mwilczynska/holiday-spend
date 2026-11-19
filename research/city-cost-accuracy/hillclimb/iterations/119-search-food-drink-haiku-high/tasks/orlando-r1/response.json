@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated but secondary sources (Numbeo-style averages relayed by other sites, plus happy-hour and hotel-bar menus), so restaurant and drink anchors are medium confidence. Meal and cocktail anchors are bounded midpoints because sources disagree widely. Wine glass has no direct Orlando average; its value is set above happy-hour wine and below hotel-bar prosecco, using beer as a local price reference. Accommodation anchors are low-confidence holistic model estimates for July peak season near the theme parks, not based on live listings or accommodation searches. The FX observation is the latest RBA figure I could retrieve (20 March 2026), which is stale relative to the 2026-11-19 generation date; a non-RBA figure for October 2026 was seen but excluded as unverified.",
+  "comparable_city_reasoning": "No comparable city was used. Basis is a US mid-sized tourist city with theme-park-driven demand. Food and drink anchors use aggregated Orlando price data, with happy-hour and hotel-bar prices used only as bounds. Accommodation anchors are holistic model estimates for summer tourist demand.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.20,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 80.00,
+    "cocktail": 14.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 210.00
+  }
+}
