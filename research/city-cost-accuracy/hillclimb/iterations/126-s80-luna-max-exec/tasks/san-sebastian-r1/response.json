@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors reflect aggregated 2026 city price indicators around the requested window. Cocktail and wine prices are less certain and estimated relative to local draft-beer prices. July accommodation is a holistic peak-season estimate and is the least certain.",
+  "comparable_city_reasoning": "No proxy city used; city-specific food indicators inform those anchors, while lodging estimates reflect San Sebastián’s high-demand coastal summer season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.5,
+    "coffee": 2.4,
+    "inexp_meal_1p": 20.5,
+    "midrange_meal_2p": 61,
+    "cocktail": 10,
+    "wine_glass": 5.25,
+    "hostel_dorm_1p": 78,
+    "hostel_private_2p": 175,
+    "hotel_1star_2p": 225,
+    "hotel_3star_2p": 330
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "c8a2b979f9cd69284d218d193e51b61e0206c0db04facb5ca25870accd59effd",
+  "requestSha256": "388d902b6892268240c0ca7adff248608fcd84317632c52d51b980337f962c2a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 90518,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 74012,
+          "cachedInputTokens": 16384,
+          "outputTokens": 3708,
+          "reasoningOutputTokens": 3150
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD daily 19 November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur India cost of living restaurant prices cappuccino beer inexpensive meal mid-range meal wine cocktail Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur India average price cocktail drink restaurant Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur India average glass of wine at restaurant price cost of living 2026"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:57:28.595777Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:57:23.286Z",
+      "finishedAt": "2026-11-19T14:58:53.804Z"
+    }
+  ]
+}

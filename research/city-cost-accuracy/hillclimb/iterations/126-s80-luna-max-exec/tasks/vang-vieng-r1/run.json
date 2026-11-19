@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "5acd9d078f8f5424f29062988c5aea194cf883ccf50f5106e046d1dcd9f33c01",
+  "requestSha256": "830d4069a592aa703e7c286a270deae5ce67dd013c19708c5e35798a8204fc1c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 144356,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 108942,
+          "cachedInputTokens": 66688,
+          "outputTokens": 3789,
+          "reasoningOutputTokens": 3181
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html daily exchange rates USD latest 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Vang Vieng Laos typical prices restaurant meal cappuccino beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Vang Vieng Laos cost of living prices cocktail wine glass beer restaurant 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Vang Vieng Laos cocktail glass of wine restaurant prices cost of living Numbeo"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:23:31.082961Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:23:25.770Z",
+      "finishedAt": "2026-11-19T15:25:50.126Z"
+    }
+  ]
+}

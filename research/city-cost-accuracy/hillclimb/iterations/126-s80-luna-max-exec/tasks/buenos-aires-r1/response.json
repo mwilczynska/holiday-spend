@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use 2026 Buenos Aires price averages close to the July window; local prices vary widely. Cocktail and wine estimates use their relationship to local beer prices, and the July accommodation estimates are model-based and least certain.",
+  "comparable_city_reasoning": "No comparable-city proxy; food and drink use Buenos Aires city averages, while accommodation reflects a broad capital-city visitor-market estimate.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.0,
+    "coffee": 4.0,
+    "inexp_meal_1p": 19.0,
+    "midrange_meal_2p": 65.0,
+    "cocktail": 7.0,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 14.0,
+    "hostel_private_2p": 40.0,
+    "hotel_1star_2p": 55.0,
+    "hotel_3star_2p": 95.0
+  }
+}

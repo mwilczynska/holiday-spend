@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3292484ab3f700c29c5c99014ee6e0b75fb3c33374e5b16fdde31cbb8b4c0c78",
+  "requestSha256": "ca717fb5cc904521a5bae6a0149b294c1471bb2ab89f2e2f29397bc8b82f3699",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 92506,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 72241,
+          "cachedInputTokens": 43008,
+          "outputTokens": 3764,
+          "reasoningOutputTokens": 3201
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates November 2026 USD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia cost of living restaurant prices inexpensive meal mid range meal cappuccino"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia cost of living beer restaurant price cappuccino Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia cocktail wine glass restaurant typical price cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia restaurant prices glass of wine beer cocktail Numbeo"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:00:43.803312Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:00:38.500Z",
+      "finishedAt": "2026-11-19T15:02:11.006Z"
+    }
+  ]
+}

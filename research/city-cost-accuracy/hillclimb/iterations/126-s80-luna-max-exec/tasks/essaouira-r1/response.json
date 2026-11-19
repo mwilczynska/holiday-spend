@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates align with two city cost-of-living aggregates, though the local sample is small. July lodging is a holistic seasonal estimate; cocktail and wine are less certain and bounded relative to local beer and licensed-venue norms.",
+  "comparable_city_reasoning": "Food uses Essaouira city-level aggregates; lodging reflects a small Moroccan Atlantic-coast tourist city with a historic medina and stronger summer demand, with Marrakech and Agadir as loose regional context.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.4,
+    "coffee": 1.45,
+    "inexp_meal_1p": 5.15,
+    "midrange_meal_2p": 19.5,
+    "cocktail": 10.25,
+    "wine_glass": 5.4,
+    "hostel_dorm_1p": 16,
+    "hostel_private_2p": 45,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 105
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "a899b70263add018260bbf3ea45b4ac25eac1d1cf789dda1df7a844ce2d37e56",
+  "requestSha256": "bebffe4353661d7ecb155cf9498a6e1b5c1f51324436eb84be7d6572b636797f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 147958,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 301521,
+          "cachedInputTokens": 226816,
+          "outputTokens": 3425,
+          "reasoningOutputTokens": 2515
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates 20 November 2026 Australian dollar US dollar latest daily"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Buenos Aires 2026 prices inexpensive restaurant meal cappuccino draught beer two people"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Expatistan Buenos Aires 2026 cost cappuccino beer cocktail restaurant wine glass prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires restaurant bar average wine glass cocktail prices 2026 USD"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Buenos Aires\" \"July 2026\" \"cappuccino\" \"beer\" meal restaurant prices cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires July 2026 cocktail bar average price glass of wine cocktail prices restaurant"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T16:00:18.997447Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T16:00:13.662Z",
+      "finishedAt": "2026-11-19T16:02:41.620Z"
+    }
+  ]
+}

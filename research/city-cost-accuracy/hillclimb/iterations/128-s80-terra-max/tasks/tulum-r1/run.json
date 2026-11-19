@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "04528f095ad11896a2179a422dd2002682d1065c9096026e6a4cb5b5306b864f",
+  "requestSha256": "2b603d46261b4300b4746fb163cf5473baffdf68cad48c20eb609ea41a1098a6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 129578,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 178283,
+          "cachedInputTokens": 140800,
+          "outputTokens": 3110,
+          "reasoningOutputTokens": 2233
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au latest exchange rates RBA United States dollar AUD daily 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum Mexico cost of living prices 2026 Numbeo restaurant inexpensive cappuccino domestic draft beer meal for two"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum 2026 prices coffee beer cocktail wine restaurant average cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum Mexico 2026 cocktail wine glass prices restaurant bar tourism menu"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum restaurant \"glass of wine\" wine price Mexico 2026 pesos bar wine by glass typical"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum July 2026 restaurant meal cappuccino domestic beer cocktail prices typical pesos"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:42:03.356310Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:03.470004Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:08.822443Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:27.227905Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:48.764447Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:43:03.009247Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:43:15.932368Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:43:31.589714Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:41:58.075Z",
+      "finishedAt": "2026-11-19T17:44:07.653Z"
+    }
+  ]
+}

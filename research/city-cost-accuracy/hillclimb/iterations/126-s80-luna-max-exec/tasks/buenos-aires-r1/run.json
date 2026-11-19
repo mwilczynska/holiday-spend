@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "a899b70263add018260bbf3ea45b4ac25eac1d1cf789dda1df7a844ce2d37e56",
+  "requestSha256": "bebffe4353661d7ecb155cf9498a6e1b5c1f51324436eb84be7d6572b636797f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 120140,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 168208,
+          "cachedInputTokens": 118144,
+          "outputTokens": 4338,
+          "reasoningOutputTokens": 3651
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html US dollar Australian dollar exchange rates latest November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires cost of living prices cappuccino domestic beer inexpensive restaurant meal midrange meal 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires cost of living cocktail glass wine restaurant prices 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires typical restaurant prices coffee beer cost of living index 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires typical cocktail price wine glass restaurant cost of living November 2026 aggregated"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires hostel dorm private room hotel prices 2026 estimate registered hostel no search accommodation"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Buenos Aires restaurant glass of wine cocktail prices 2026 typical price aggregated cost of living"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:49:56.265284Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:56.388514Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:50:01.667603Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:50:08.946242Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:50:21.990594Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:50:32.924203Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:50:51.998293Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:01.052432Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:49:50.953Z",
+      "finishedAt": "2026-11-19T14:51:51.094Z"
+    }
+  ]
+}

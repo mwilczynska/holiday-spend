@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "26cf1aa1667afd5695fe44ce3be48bef29a903503a48203a42839d40ec284491",
+  "requestSha256": "c5043cc52a9c11d0eff7bfb4f6b82c9bcdf338746f986354f1f2432228a81381",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 135169,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 160813,
+          "cachedInputTokens": 126080,
+          "outputTokens": 5306,
+          "reasoningOutputTokens": 4633
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris Turkey cost of living restaurant cappuccino beer meal Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris Turkey typical restaurant prices coffee beer cocktails wine cost of living"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris cocktail wine glass average price 2026 Turkey cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris July 2026 typical restaurant meal coffee beer prices July 2026 Numbeo"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:05:16.151330Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:05:10.819Z",
+      "finishedAt": "2026-11-19T15:07:25.988Z"
+    }
+  ]
+}

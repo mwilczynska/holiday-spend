@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "b98fdeb8be4954461d5973d1ed1ce2f7e0070eb788e28513b9208d768887d624",
+  "requestSha256": "3f89c5aca8c99e6f8360e408a3e57fffda0a740a1d27ec58acfa63a0542bc24f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 135055,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 119811,
+          "cachedInputTokens": 85376,
+          "outputTokens": 5333,
+          "reasoningOutputTokens": 4729
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno cost of living prices restaurant inexpensive meal cappuccino beer Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno cost of living prices cocktail wine restaurant typical prices 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brno \"Glass of Wine\" restaurant cost CZK Numbeo"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:49:23.767117Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:23.892479Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:29.176905Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:37.511019Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:53.423971Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:50:08.805186Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:50:51.362730Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:49:18.454Z",
+      "finishedAt": "2026-11-19T14:51:33.509Z"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "57542a0721c093892f134b67e8cd95e993b8618debf3c6e26c161e0ffc682a23",
+  "requestSha256": "8cf3014e69a98fdb88a5a87fa51f79f1d1f07e43c92f353077f2e21054753694",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 82706,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 75507,
+          "cachedInputTokens": 55424,
+          "outputTokens": 3747,
+          "reasoningOutputTokens": 3199
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest USD AUD exchange rates November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar India typical restaurant meal cappuccino beer prices cost of living INR"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar India cappuccino domestic beer restaurant price INR current"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar India cocktail wine glass restaurant price cost"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:53:04.661Z",
+      "finishedAt": "2026-11-19T05:54:27.367Z"
+    }
+  ]
+}

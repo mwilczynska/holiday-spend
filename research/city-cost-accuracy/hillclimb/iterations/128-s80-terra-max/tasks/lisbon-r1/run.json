@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "4b974d61d3e339456489b0ec46e789052ee1f4b123752d7fdda51c10fc192787",
+  "requestSha256": "020c82bdb720a04fd4a195d5d8930260d9c8ddad40b64460fc038f71b993d532",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 152595,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 125241,
+          "cachedInputTokens": 93568,
+          "outputTokens": 3119,
+          "reasoningOutputTokens": 2342
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest Australian dollar United States dollar daily November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon cost of living 2026 restaurant inexpensive meal two people cappuccino domestic draught beer prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon average cocktail glass of wine price bar 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lisbon 2026 numbeo restaurant beer cappuccino two person restaurant prices"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:28:18.665972Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:28:18.773704Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:28:24.140831Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:28:32.193218Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:28:57.359478Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:29:25.440672Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:29:38.826937Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:28:13.405Z",
+      "finishedAt": "2026-11-19T17:30:46.000Z"
+    }
+  ]
+}

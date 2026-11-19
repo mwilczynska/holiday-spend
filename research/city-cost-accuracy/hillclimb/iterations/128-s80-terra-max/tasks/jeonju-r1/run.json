@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "a4b11fc13416bb6f0ddba29492d917bfc75a9109046e235508b084b93b8248ce",
+  "requestSha256": "0a2f8739cc420e682f89149722f7c91840d28b4f27a6df059459c3930dba247b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 149661,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 168598,
+          "cachedInputTokens": 135680,
+          "outputTokens": 3915,
+          "reasoningOutputTokens": 3157
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics daily exchange rates latest Australian dollar USD exchange rates 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jeonju South Korea cost of living restaurant inexpensive meal cappuccino domestic draught beer three course two people prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jeonju South Korea restaurant cocktail wine glass beer prices average"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jeonju restaurant wine glass price KRW glass wine bar 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "전주 와인 한 잔  잔와인 가격 2026 레스토랑"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T16:04:53.419557Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T16:04:48.097Z",
+      "finishedAt": "2026-11-19T16:07:17.758Z"
+    }
+  ]
+}

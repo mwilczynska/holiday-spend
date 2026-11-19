@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Rolling city prices support the meal, coffee and beer estimates. Aggregated menus support the cocktail estimate. Wine by the glass is estimated relative to draft beer with a limited menu check. July lodging is modeled and varies by neighborhood and day of the week. [City prices](https://www.numbeo.com/cost-of-living/in/Gdansk) [Restaurant menu averages](https://www.numbeo.com/restaurant-prices/in/Gdansk) [Wine menu](https://mimosa.restaurant/andrzejki-gdansk)",
+  "comparable_city_reasoning": "The lodging estimates draw on summer travel patterns across the Tricity, with Gdynia as a nearby urban comparison and Sopot as a reference for peak coastal demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.10,
+    "coffee": 4.35,
+    "inexp_meal_1p": 12.50,
+    "midrange_meal_2p": 68.00,
+    "cocktail": 9.40,
+    "wine_glass": 6.25,
+    "hostel_dorm_1p": 30.00,
+    "hostel_private_2p": 72.00,
+    "hotel_1star_2p": 83.00,
+    "hotel_3star_2p": 121.00
+  }
+}

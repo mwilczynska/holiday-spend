@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "573621513b30fbce7ff113eaa5761989cc95205499f0a10d656ea510e3de8f8a",
+  "requestSha256": "c149a2af00cf4ce55ff0a23465fcaf968a2b6851fc0108714f21162aa87ca677",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 112415,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 121069,
+          "cachedInputTokens": 77440,
+          "outputTokens": 3920,
+          "reasoningOutputTokens": 3237
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD November 2026 RBA"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta restaurant prices cappuccino inexpensive meal mid-range meal beer Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta cost of living restaurant prices cocktail glass of wine beer cappuccino aggregated prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta restaurant average price glass of wine cocktail cost of living 2026 average"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Atlanta wine by the glass typical average price restaurant 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:47:33.427073Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:33.642873Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:39.481862Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:46.866599Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:59.359011Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:48:20.599032Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:48:29.919117Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:47:26.032Z",
+      "finishedAt": "2026-11-19T14:49:18.447Z"
+    }
+  ]
+}

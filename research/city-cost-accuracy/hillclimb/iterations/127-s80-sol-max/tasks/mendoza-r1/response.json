@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "City price data from other months in 2026 inform the July estimates for meals, coffee, and draft beer. Cocktail and house wine data are sparse, so those estimates use local prices relative to draft beer. Lodging is modeled for a typical July night. [Numbeo](https://www.numbeo.com/cost-of-living/in/Mendoza-Argentina) [Mendoza drinks guide](https://www.nomadicmatt.com/travel-guides/argentina-travel-tips/mendoza/)",
+  "comparable_city_reasoning": "Córdoba and Salta provide a general basis for lodging in regional Argentine cities, with an allowance for Mendoza's wine tourism and July school holiday demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 4.00,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 48.00,
+    "cocktail": 5.75,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 72.00
+  }
+}

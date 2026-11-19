@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "0fac42ac694c9ab97234d9e1d8ff4c0b210af3fbac742c981ac44e2882d6ac6f",
+  "requestSha256": "36b18f11d1b9482b6f707ee0c84034465765cb5b1b2399d59c102b2509746944",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 112032,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 160937,
+          "cachedInputTokens": 131712,
+          "outputTokens": 3724,
+          "reasoningOutputTokens": 3081
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD Australian dollar daily 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pai Thailand typical prices inexpensive restaurant meal coffee beer cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pai Thailand cost of living restaurant prices cappuccino beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pai Thailand restaurant menu prices coffee beer typical 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pai Thailand cocktail wine price typical bar restaurant 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:11:09.451042Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:11:04.127Z",
+      "finishedAt": "2026-11-19T15:12:56.159Z"
+    }
+  ]
+}

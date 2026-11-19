@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "26cf1aa1667afd5695fe44ce3be48bef29a903503a48203a42839d40ec284491",
+  "requestSha256": "c5043cc52a9c11d0eff7bfb4f6b82c9bcdf338746f986354f1f2432228a81381",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 151974,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 284359,
+          "cachedInputTokens": 242432,
+          "outputTokens": 4325,
+          "reasoningOutputTokens": 3150
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au exchange rates daily latest US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris cost of living restaurant meal cappuccino domestic beer 2026 Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris Turkey 2026 prices cocktails glass wine beer restaurant"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris 2026 average cost three course meal 2 cappuccino beer restaurant"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris July 2026 food drinks cost cappuccino beer three course meal prices US dollars"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris 2026 average glass wine restaurant price 2026 beer summer cocktail"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "ble models: request timed out\n2026-11-19T17:30:41.729746Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:30:47.018576Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:30:54.494520Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:31:13.288995Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:31:26.629221Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:31:37.197713Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:32:03.340759Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:32:15.670235Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:32:31.626078Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Windows\\\\\\\\\\\\\\\\System32\\\\\\\\\\\\\\\\WindowsPowerShell\\\\\\\\\\\\\\\\v1.0\\\\\\\\\\\\\\\\powershell.exe\\\\\\\" -Command \\\\\\\"Get-Content -LiteralPath 'C:\\\\\\\\\\\\\\\\Dev\\\\\\\\\\\\\\\\holiday-spend\\\\\\\\\\\\\\\\AGENTS.md'\\\\\\\"` rejected: blocked by policy\\\")\" }\n2026-11-19T17:32:31.626226Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Windows\\\\\\\\\\\\\\\\System32\\\\\\\\\\\\\\\\WindowsPowerShell\\\\\\\\\\\\\\\\v1.0\\\\\\\\\\\\\\\\powershell.exe\\\\\\\" -Command \\\\\\\"rg -n --glob '\\\\\\\"'!package-lock.json'\\\\\\\"' --glob '\\\\\\\"'!*.lock'\\\\\\\"' --glob '\\\\\\\"'!*.db*'\\\\\\\"' --glob '\\\\\\\"'!*.csv'\\\\\\\"' --glob '\\\\\\\"'!*.json'\\\\\\\"' --glob '\\\\\\\"'!*.md'\\\\\\\"' 'Turkey|Türkiye|Middle East|East Asia' 'C:\\\\\\\\\\\\\\\\Dev\\\\\\\\\\\\\\\\holiday-spend\\\\\\\\\\\\\\\\src'\\\\\\\"` rejected: blocked by policy\\\")\" }\n2026-11-19T17:32:37.839308Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:30:36.344Z",
+      "finishedAt": "2026-11-19T17:33:08.318Z"
+    }
+  ]
+}

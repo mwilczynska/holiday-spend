@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food and drink price indexes diverge and some city data are sparse. Cocktail is estimated at about 2.4 times draft beer and wine at about 1.4 times beer, informed by local bar and house-wine price relationships. Accommodation is a broad model estimate with added uncertainty from July winter tourism.",
+  "comparable_city_reasoning": "Ushuaia's remote Patagonian tourism market is the main basis; El Calafate and Punta Arenas provide regional context for visitor demand and service costs.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.0,
+    "coffee": 4.0,
+    "inexp_meal_1p": 15.0,
+    "midrange_meal_2p": 45.0,
+    "cocktail": 9.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 35.0,
+    "hostel_private_2p": 85.0,
+    "hotel_1star_2p": 100.0,
+    "hotel_3star_2p": 175.0
+  }
+}

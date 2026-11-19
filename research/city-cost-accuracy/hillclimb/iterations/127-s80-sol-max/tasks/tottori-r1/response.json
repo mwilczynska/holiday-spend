@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Local price indexes provide a baseline for July meals, coffee and draft beer. A small sample of local menus informed cocktail and house wine estimates relative to draft beer. Lodging is modeled for a typical July night, with hostel beds and private rooms the least certain. [CityCost](https://citycost.org/tottori/) [Livingcost](https://livingcost.org/cost/japan/tottori) [Shobee drinks menu](https://syo-be.com/menu-drink/) [Morinosuke menu](https://www.morinosuke.com/)",
+  "comparable_city_reasoning": "Yonago and other small cities in the San’in region provide a lodging baseline. Tottori’s station-area business hotels and summer demand around the sand dunes informed the July estimates.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.9,
+    "coffee": 3.25,
+    "inexp_meal_1p": 8.25,
+    "midrange_meal_2p": 36,
+    "cocktail": 4.1,
+    "wine_glass": 3.8,
+    "hostel_dorm_1p": 24,
+    "hostel_private_2p": 49,
+    "hotel_1star_2p": 54,
+    "hotel_3star_2p": 83
+  }
+}

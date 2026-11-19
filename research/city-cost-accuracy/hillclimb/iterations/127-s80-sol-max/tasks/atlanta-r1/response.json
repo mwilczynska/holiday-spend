@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Local price benchmarks guide dining estimates before tax and tip. [Numbeo](https://www.numbeo.com/cost-of-living/in/Atlanta), [Square](https://squareup.com/us/en/menu-pricing/bar-prices-in-atlanta?country_redirection=true). The wine estimate uses the local price premium over beer. [Local beverage prices](https://atlantabg.org/wp-content/uploads/2026/05/abg_rental_packet-1.pdf). Lodging is modeled for typical July nights, with hostel prices the least certain because of limited supply.",
+  "comparable_city_reasoning": "Charlotte and Dallas provide a regional lodging benchmark as Southern U.S. business and air travel hubs with substantial budget and midrange hotel markets.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 5.12,
+    "inexp_meal_1p": 27.50,
+    "midrange_meal_2p": 110,
+    "cocktail": 12,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 105,
+    "hotel_1star_2p": 90,
+    "hotel_3star_2p": 160
+  }
+}

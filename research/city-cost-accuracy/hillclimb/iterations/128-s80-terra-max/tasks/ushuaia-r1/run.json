@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "973d7dcb988e336c9e30db953d7bd1a17e416c222cde4f875d2d74e048f67b93",
+  "requestSha256": "aa069cf85e0fb1f69bfa1e54bbf2a2b8d76bd2b94d3da09dce6de7c1798d772a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 93523,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 226362,
+          "cachedInputTokens": 182144,
+          "outputTokens": 3015,
+          "reasoningOutputTokens": 2040
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au exchange rates latest daily USD per AUD November 2026 Reserve Bank Australia"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia cost of living restaurant prices cappuccino draft beer three course meal 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia Argentina typical restaurant beer coffee meal prices USD 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia Argentina bar cocktail wine glass typical price 2026"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia 2026 precio copa vino cóctel cerveza restaurante promedio"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia July 2026 food coffee beer restaurant meal costs typical prices"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T12:28:57.895015Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:28:52.535Z",
+      "finishedAt": "2026-11-19T12:30:26.058Z"
+    }
+  ]
+}

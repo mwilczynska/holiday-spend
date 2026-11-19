@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Available [Munnar food estimates](https://solosquare.app/cost-of-living/munnar) and [Kerala restaurant averages](https://www.numbeo.com/cost-of-living/admin1Unit?country=India&unit=Kerala) are rough proxies for July 2026. Draft beer availability and seasonal accommodation prices are uncertain. Cocktail and wine estimates use beer-price relationships, informed by [Kochi bar prices](https://www.ecokochi.com/blog/bars-and-pubs-in-kochi-where-to-go-for-a-drink/). Accommodation is a holistic estimate.",
+  "comparable_city_reasoning": "Kerala restaurant prices and Kochi bar prices provide regional context, adjusted for Munnar's smaller size and tourist demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.0,
+    "coffee": 1.6,
+    "inexp_meal_1p": 2.1,
+    "midrange_meal_2p": 11.0,
+    "cocktail": 5.5,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 7.0,
+    "hostel_private_2p": 18.0,
+    "hotel_1star_2p": 16.0,
+    "hotel_3star_2p": 38.0
+  }
+}

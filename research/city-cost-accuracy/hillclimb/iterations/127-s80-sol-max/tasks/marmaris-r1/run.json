@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "26cf1aa1667afd5695fe44ce3be48bef29a903503a48203a42839d40ec284491",
+  "requestSha256": "c5043cc52a9c11d0eff7bfb4f6b82c9bcdf338746f986354f1f2432228a81381",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 155092,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.2-sol": {
+          "inputTokens": 241845,
+          "cachedInputTokens": 195584,
+          "outputTokens": 4765,
+          "reasoningOutputTokens": 3619
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia Exchange Rates latest US dollar USD November 2026 RBA exchange-rates"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris Turkey typical restaurant prices 2026 Numbeo cost of living Marmaris inexpensive meal three course cappuccino domestic draft beer"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris typical bar restaurant prices 2026 cocktail glass of wine beer average TRY July Marmaris tourist prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Marmaris July 2026 restaurant glass of wine cocktail lager beer cappuccino prices Marmaris Post Office Travel Money family holiday barometer 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:42:10.656895Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T15:43:41.745751Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Windows\\\\\\\\\\\\\\\\System32\\\\\\\\\\\\\\\\WindowsPowerShell\\\\\\\\\\\\\\\\v1.0\\\\\\\\\\\\\\\\powershell.exe\\\\\\\" -Command \\\\\\\"rg --files -g '*countr*' -g '*region*' -g 'AGENTS.md' -g '\\\\\\\"'!data/**'\\\\\\\"' -g '\\\\\\\"'!node_modules/**'\\\\\\\"'\\\\\\\"` rejected: blocked by policy\\\")\" }\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:42:05.331Z",
+      "finishedAt": "2026-11-19T15:44:40.423Z"
+    }
+  ]
+}

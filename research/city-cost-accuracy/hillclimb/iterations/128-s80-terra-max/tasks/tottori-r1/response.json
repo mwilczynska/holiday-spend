@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Local price data are limited and not specific to July; the [Tottori cost index](https://citycost.org/tottori/) informs the meal and drink estimates. Cocktail and wine estimates use their approximate relationship to beer, checked against [one local menu](https://tabelog.com/tottori/A3101/A310101/31005400/dtlmenu/drink/). Accommodation prices are holistic estimates; July rates and hostel availability are uncertain.",
+  "comparable_city_reasoning": "Based on Tottori price data and the broader cost level of smaller cities in Japan's Chugoku region.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.45,
+    "coffee": 3.15,
+    "inexp_meal_1p": 7.5,
+    "midrange_meal_2p": 32,
+    "cocktail": 4.25,
+    "wine_glass": 3.75,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 60,
+    "hotel_3star_2p": 90
+  }
+}

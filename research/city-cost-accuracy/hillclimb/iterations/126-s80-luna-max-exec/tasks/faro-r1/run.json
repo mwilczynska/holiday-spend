@@ -1,0 +1,53 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "df74aa44fc29b30de85eecd7fce2af03be99b6e5853682dbf92f8f74ee475fda",
+  "requestSha256": "6f81026ffc9ed2addb5c31dda50e5c12d4eb07a2be84dc545ed1df1b4971713e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 102388,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 99167,
+          "cachedInputTokens": 38400,
+          "outputTokens": 3473,
+          "reasoningOutputTokens": 2924
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Faro Portugal cost of living prices restaurant inexpensive meal cappuccino domestic beer mid-range meal 2026 Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Faro Portugal cocktail price glass of wine average restaurant 2026 cost of living"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:53:57.918141Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:53:58.051344Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:54:03.369114Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:54:10.644661Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:54:23.033815Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:54:32.469530Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:54:41.261943Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:53:52.594Z",
+      "finishedAt": "2026-11-19T14:55:34.982Z"
+    }
+  ]
+}

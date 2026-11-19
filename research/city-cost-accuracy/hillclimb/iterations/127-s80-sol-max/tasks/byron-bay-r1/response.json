@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Local indexes support the meal, coffee and draft beer estimates, with limited July-specific data. [Livingcost](https://livingcost.org/cost/australia/byron-bay) [Wise](https://wise.com/au/cost-of-living/australia/byron-bay) Cocktail and wine estimates use their menu prices relative to local draft beer. [Loft drinks menus](https://loftbyronbay.com.au/menu/) Lodging is modeled, with the greatest uncertainty for basic guesthouses and school-holiday nights.",
+  "comparable_city_reasoning": "Noosa Heads and the southern Gold Coast provide a regional benchmark for July lodging, accounting for winter demand, school holidays and Byron Bay's limited supply of basic rooms.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.75,
+    "coffee": 3.60,
+    "inexp_meal_1p": 17,
+    "midrange_meal_2p": 80,
+    "cocktail": 15.50,
+    "wine_glass": 9.25,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 99,
+    "hotel_1star_2p": 115,
+    "hotel_3star_2p": 160
+  }
+}

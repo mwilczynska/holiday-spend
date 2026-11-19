@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Food-price evidence is sparse and partly conflicting; accommodation is a holistic July low-season estimate. Cocktail uses local bar price ranges; wine is estimated at about twice domestic beer because island-wide wine data are limited.",
+  "comparable_city_reasoning": "Used Koh Lanta price indicators, cross-checked sparse meal and coffee data against nearby Krabi; accommodation reflects general low-season Andaman island expectations.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2.5,
+    "inexp_meal_1p": 3.0,
+    "midrange_meal_2p": 26.5,
+    "cocktail": 6.5,
+    "wine_glass": 5.3,
+    "hostel_dorm_1p": 9.0,
+    "hostel_private_2p": 24.0,
+    "hotel_1star_2p": 21.0,
+    "hotel_3star_2p": 48.0
+  }
+}

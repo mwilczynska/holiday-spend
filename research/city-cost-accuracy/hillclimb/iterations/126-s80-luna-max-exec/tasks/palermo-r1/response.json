@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Palermo aggregated prices are used as a proxy for July 2026. Cocktail and wine are estimated from the local draft-beer price; lodging is holistic and season-sensitive, with private-hostel and one-star estimates less certain.",
+  "comparable_city_reasoning": "Food and drink use Palermo-specific aggregated prices; lodging is estimated against southern Italian cities such as Catania and Bari, with a July peak-season assumption.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.75,
+    "coffee": 2.35,
+    "inexp_meal_1p": 15.5,
+    "midrange_meal_2p": 57.5,
+    "cocktail": 10.5,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 160
+  }
+}

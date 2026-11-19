@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "24bfad4a2f2a96445ff88129566c798072dd68d211c2f626c5a7bb69ee7e9678",
+  "requestSha256": "908924f3d5fee2a2ba2f1f1b58730f2745da93d43bceb3c8ee4708ce323d5edc",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 143690,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 181868,
+          "cachedInputTokens": 141312,
+          "outputTokens": 4220,
+          "reasoningOutputTokens": 3363
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au exchange rates latest USD per AUD November 2026 daily exchange rates"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cost of living restaurant meal cappuccino draft beer prices 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur restaurant cocktail glass of wine average prices INR"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur July 2026 average restaurant prices meal cappuccino draft beer rupees 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur wine glass cocktail price restaurant bar menu ₹ 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur restaurant cocktail beer wine glass prices cost living 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:42:27.736158Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:27.860634Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:33.191622Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:45.250524Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:43:08.978042Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:43:25.923389Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:43:50.685179Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:44:23.382796Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:42:22.475Z",
+      "finishedAt": "2026-11-19T17:44:46.165Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and coffee use a June 2026 Seattle cost-of-living aggregate; cocktail and wine estimates use Seattle menu-price ranges from October. Lodging is a holistic peak-July estimate and is the least certain.",
+  "comparable_city_reasoning": "No comparable city used; food and drink estimates are Seattle-specific, and lodging reflects Seattle's summer visitor market.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 6.22,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 100.00,
+    "cocktail": 15.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 180.00,
+    "hotel_3star_2p": 300.00
+  }
+}

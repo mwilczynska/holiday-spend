@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "48ad04321c8f93803b3b8bae96933f5f27dbc41c5ec0428ae204d2e0449b0c35",
+  "requestSha256": "6b6f621e811fe954d8e9aca8b6686a3dcc7272d6f50d9bee82c5d83862fb653e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 150193,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 165411,
+          "cachedInputTokens": 135424,
+          "outputTokens": 3282,
+          "reasoningOutputTokens": 2496
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au latest daily exchange rates US dollar per Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian Spain cost of living prices inexpensive meal cappuccino beer restaurant Numbeo 2026 USD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Donostia San Sebastian cost of living meal restaurant cappuccino domestic beer 2026 cost index prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian Spain typical cocktail wine glass bar price euro 2026"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:37:41.038844Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:41.116907Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:46.458429Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:58.271218Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:17.622026Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:35.927635Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:47.480419Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:39:29.856879Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:37:35.771Z",
+      "finishedAt": "2026-11-19T17:40:05.964Z"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "48ad04321c8f93803b3b8bae96933f5f27dbc41c5ec0428ae204d2e0449b0c35",
+  "requestSha256": "6b6f621e811fe954d8e9aca8b6686a3dcc7272d6f50d9bee82c5d83862fb653e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 131751,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 118387,
+          "cachedInputTokens": 90880,
+          "outputTokens": 5203,
+          "reasoningOutputTokens": 4593
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian cost of living cappuccino inexpensive meal mid-range restaurant beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian Spain cost of living wine restaurant prices cocktail beer coffee July 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian cost of living prices restaurant meal cappuccino beer 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian July 2026 cost of living Numbeo restaurant meal cappuccino draft beer"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Sebastian Spain average price glass wine cocktail cost typical bar 2026 aggregated"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:14:13.567110Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:14:08.251Z",
+      "finishedAt": "2026-11-19T15:16:20.002Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "June crowdsourced prices support the meal, cappuccino and draft beer anchors. [Numbeo](https://www.numbeo.com/cost-of-living/in/Tampa) Cocktail and wine estimates reflect the local price premium over draft beer, checked against a small cocktail sample and a restaurant menu. [Expatistan](https://www.expatistan.com/price/cocktail/tampa) [Bavaro's](https://bavarospizza.com/locations/tampa/) July lodging is modeled, with the greatest uncertainty in both hostel anchors given limited local supply. Prices are before tax and tips.",
+  "comparable_city_reasoning": "July lodging estimates draw on the urban Tampa Bay market, including nearby St. Petersburg, and account for slower summer demand and steady business and airport travel.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 5.65,
+    "inexp_meal_1p": 20,
+    "midrange_meal_2p": 75,
+    "cocktail": 12,
+    "wine_glass": 11,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 95,
+    "hotel_3star_2p": 155
+  }
+}

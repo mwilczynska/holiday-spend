@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "A current Siargao cost index and 2026 island guides support the meal, coffee, and beer estimates. Cocktail and wine prices are less certain, based on sparse local menus and their price relationship to beer. Accommodation anchors are broad model estimates.",
+  "comparable_city_reasoning": "Siargao, particularly General Luna, is the main basis. Its tourist-area prices reflect an island premium over many mainland Philippine destinations; no separate city analogue was needed.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.45,
+    "coffee": 2.9,
+    "inexp_meal_1p": 3.75,
+    "midrange_meal_2p": 22.0,
+    "cocktail": 5.9,
+    "wine_glass": 5.9,
+    "hostel_dorm_1p": 12.0,
+    "hostel_private_2p": 35.0,
+    "hotel_1star_2p": 38.0,
+    "hotel_3star_2p": 85.0
+  }
+}

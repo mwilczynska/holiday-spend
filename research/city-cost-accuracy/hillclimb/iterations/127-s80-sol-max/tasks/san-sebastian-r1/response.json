@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "City price indexes support the meal, cappuccino and draft beer estimates. Cocktail and house wine estimates use local prices relative to draft beer. July lodging is modeled and varies with location and weekend demand. [Numbeo](https://es.numbeo.com/coste-de-vida/ciudad/San-Sebastian) [Expatistan](https://expatistan.com/cost-of-living/san-sebastian) [Local drinks menu](https://lioberabera.com/cartas/carta_berabera.pdf)",
+  "comparable_city_reasoning": "Northern Spain’s Atlantic coast provides the regional lodging baseline, with a premium for peak July beach demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.45,
+    "inexp_meal_1p": 21.50,
+    "midrange_meal_2p": 61.00,
+    "cocktail": 10.50,
+    "wine_glass": 4.25,
+    "hostel_dorm_1p": 55.00,
+    "hostel_private_2p": 140.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 235.00
+  }
+}

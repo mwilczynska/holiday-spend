@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors reflect recent aggregated Bratislava prices: about €10 for an inexpensive meal, €60 for a mid-range meal for two, €3 for draft beer, and roughly €3.05–€3.22 for cappuccino. Wine and cocktail estimates are inferred from local prices relative to beer. July lodging estimates are broad and season-sensitive.",
+  "comparable_city_reasoning": "Food and drink use Bratislava city-level price aggregates; no substitute city was needed. Lodging is modeled from Bratislava's mid-sized Central European capital profile.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.4,
+    "coffee": 3.65,
+    "inexp_meal_1p": 11.4,
+    "midrange_meal_2p": 68.5,
+    "cocktail": 11.25,
+    "wine_glass": 5.2,
+    "hostel_dorm_1p": 29,
+    "hostel_private_2p": 82,
+    "hotel_1star_2p": 88,
+    "hotel_3star_2p": 145
+  }
+}

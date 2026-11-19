@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "8d7d93070e9ceae433d832464fe087b80e5eb8035ec54c7b05c3ca9c3b10f721",
+  "requestSha256": "464c685229915aeb6dcde0a20c5b525fcd479a6d3fb2d6c4f930ab4472355a49",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 131090,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 118073,
+          "cachedInputTokens": 89216,
+          "outputTokens": 5092,
+          "reasoningOutputTokens": 4400
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London cost of living restaurant prices inexpensive meal cappuccino domestic draft beer 2026 Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London cocktail glass of wine restaurant price cost of living 2026 Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au \"18 Nov 2026\" USD AUD exchange rates RBA"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "London average cocktail glass of wine restaurant price 2026 cost of living"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:03:05.066884Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:02:59.720Z",
+      "finishedAt": "2026-11-19T15:05:10.810Z"
+    }
+  ]
+}

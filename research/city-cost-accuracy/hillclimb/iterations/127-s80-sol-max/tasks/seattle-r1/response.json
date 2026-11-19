@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Prices exclude taxes and tips. July lodging is modeled, with private hostel rooms and very basic hotels the least certain. Recent citywide data inform July meal, cappuccino and draft beer estimates. Cocktail and wine estimates draw on a small sample of regular menu prices. [Numbeo Seattle](https://www.numbeo.com/cost-of-living/in/Seattle), [Nomadic drinks menu](https://www.nomadicseattle.com/menus), [Stumbletown bar menu](https://stumbletownseattle.com/wp-content/uploads/2026/02/ST-bar-menu-2.3.26.pdf).",
+  "comparable_city_reasoning": "Lodging reflects a high-cost Pacific Northwest market with limited budget lodging and strong July leisure and cruise demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8,
+    "coffee": 6.5,
+    "inexp_meal_1p": 25,
+    "midrange_meal_2p": 100,
+    "cocktail": 15,
+    "wine_glass": 14,
+    "hostel_dorm_1p": 60,
+    "hostel_private_2p": 145,
+    "hotel_1star_2p": 140,
+    "hotel_3star_2p": 245
+  }
+}

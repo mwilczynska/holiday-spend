@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "13f320cc0567a496729c8d16eadbc69bb6f661d4995cbc46558da74b67dcb0cb",
+  "requestSha256": "09086a85f97cecc8c620f65081745d9ce9e15f184922136f54051f9b069f83e0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 78769,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 120412,
+          "cachedInputTokens": 93696,
+          "outputTokens": 2930,
+          "reasoningOutputTokens": 2236
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates 2026 November US dollar USD AUD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tainan cost of living numbeo restaurant meal cappuccino domestic beer mid-range three course 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tainan Taiwan travel prices cost restaurant meal coffee beer price TWD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tainan Taiwan cocktail bar average cocktail price glass wine TWD 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tainan restaurant \"glass of wine\" price NT TWD typical bar"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T12:27:39.051900Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:27:33.755Z",
+      "finishedAt": "2026-11-19T12:28:52.524Z"
+    }
+  ]
+}

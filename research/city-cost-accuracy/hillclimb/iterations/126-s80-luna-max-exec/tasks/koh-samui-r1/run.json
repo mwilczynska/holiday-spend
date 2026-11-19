@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3e50623c64b5a2af5c7ad1a2c296c3960e94881667e658ff7886e7a4ee068306",
+  "requestSha256": "1fe1a3baa8630c123e7c57fe527540d932771dcb17184d6e97561f047f00347a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 104421,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 101238,
+          "cachedInputTokens": 65408,
+          "outputTokens": 4148,
+          "reasoningOutputTokens": 3535
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Samui current cost of living prices restaurant meal cappuccino beer Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Samui food drink typical prices inexpensive restaurant mid-range meal coffee beer cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Samui cocktail wine glass restaurant price typical cost of living"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:00:33.455753Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:00:28.154Z",
+      "finishedAt": "2026-11-19T15:02:12.575Z"
+    }
+  ]
+}

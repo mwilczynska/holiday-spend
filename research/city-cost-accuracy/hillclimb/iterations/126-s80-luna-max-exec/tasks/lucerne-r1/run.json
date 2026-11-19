@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "1f69fbada83e061d32b8379bca1ff6f76918ac548aeda2aaf7f13c0a5177675a",
+  "requestSha256": "e9c467b8339bde94feeb0909bae3513fcd6f93e3af04f3c949258d08c41b8232",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 131738,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 117254,
+          "cachedInputTokens": 78080,
+          "outputTokens": 5576,
+          "reasoningOutputTokens": 4888
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html daily exchange rates 18 November 2026 US dollar Australian dollar"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne Switzerland cost of living restaurant prices inexpensive meal cappuccino Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne Switzerland typical beer price restaurant cost of living beer 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne Switzerland restaurant cocktail wine glass typical prices cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lucerne Switzerland restaurant menu prices coffee cappuccino beer wine cocktail average 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:04:12.831155Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:04:07.485Z",
+      "finishedAt": "2026-11-19T15:06:19.224Z"
+    }
+  ]
+}

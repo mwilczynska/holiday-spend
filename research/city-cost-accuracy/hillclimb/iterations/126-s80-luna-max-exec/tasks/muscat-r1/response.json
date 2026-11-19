@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Muscat aggregated prices nearest the July 2026 window anchor meals, coffee and draft beer. Cocktail and wine prices are estimated relative to beer; lodging estimates are holistic, with limited hostel-price evidence.",
+  "comparable_city_reasoning": "No proxy city used; food and drink estimates use Muscat prices, while accommodation is modeled from general knowledge of Muscat and the Gulf region.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.35,
+    "coffee": 4.65,
+    "inexp_meal_1p": 5.20,
+    "midrange_meal_2p": 26.01,
+    "cocktail": 14.30,
+    "wine_glass": 10.40,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 55.00,
+    "hotel_3star_2p": 100.00
+  }
+}

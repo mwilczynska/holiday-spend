@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "d5bce11998c8e3b71b1420bd57722e23c5ab30d0a0f2a42bff33e72207f3153c",
+  "requestSha256": "cc61bc53573ee7dcdc940b86d5524621ec476267092ba202fe1c58fe5b4c3ba8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 86409,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 75376,
+          "cachedInputTokens": 41344,
+          "outputTokens": 3261,
+          "reasoningOutputTokens": 2688
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD November 2026 RBA"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba cost of living restaurant prices inexpensive meal cappuccino domestic beer mid range meal Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba average prices cocktail wine glass beer restaurant cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba restaurant prices cocktail wine coffee beer cost of living index"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba food prices restaurant meal current typical prices survey 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:56:53.699286Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:56:48.378Z",
+      "finishedAt": "2026-11-19T14:58:14.787Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food prices use sparse Naha cost-of-living aggregates. Cocktail and wine are estimated at about 2x and 1.5x the local draft-beer price. July lodging estimates are holistic and vary substantially with dates and property.",
+  "comparable_city_reasoning": "Uses Naha cost-of-living estimates, cross-checked against Okinawa-wide averages; no substitute city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 3.06,
+    "inexp_meal_1p": 5.07,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.00,
+    "wine_glass": 3.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 75.00,
+    "hotel_3star_2p": 140.00
+  }
+}

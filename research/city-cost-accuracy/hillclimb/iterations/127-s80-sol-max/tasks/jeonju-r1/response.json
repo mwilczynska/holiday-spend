@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "A small 2026 dining sample serves as a proxy for July, with more uncertainty for the three-course meal. Cocktail and wine estimates use local premiums over draft beer, checked against venue prices. Lodging is modeled, with dorm beds the least certain. [Dining index](https://www.numbeo.com/cost-of-living/in/Jeonju), [cocktail prices](https://www.diningcode.com/profile.php?rid=uareBKUH4Irz), [wine prices](https://www.diningcode.com/profile.php?rid=4306RqUrgRm5)",
+  "comparable_city_reasoning": "Gyeongju is a lodging comparator because both cities draw domestic weekend visitors to historic districts and have a mix of guesthouses and mid-range hotels.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.90,
+    "coffee": 3.70,
+    "inexp_meal_1p": 7.50,
+    "midrange_meal_2p": 27.00,
+    "cocktail": 9.75,
+    "wine_glass": 7.75,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 68.00
+  }
+}

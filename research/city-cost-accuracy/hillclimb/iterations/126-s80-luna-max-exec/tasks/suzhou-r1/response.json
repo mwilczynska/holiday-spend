@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee, and beer estimates follow June 2026 Suzhou price data, close to the July window. Cocktail and wine estimates use roughly four and three times the restaurant beer price because direct typical-price data is limited. Accommodation figures are broad model estimates, not live listing checks.",
+  "comparable_city_reasoning": "Food and drink use Suzhou-specific price data; accommodation is estimated from urban Jiangsu and Yangtze River Delta lodging norms, generally below Shanghai.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.25,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.20,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 32.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 62.00
+  }
+}

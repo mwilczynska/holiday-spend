@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "f38095013c08f8f229b60bc339db0a57cfe0541c6a4c3a608165080e57739917",
+  "requestSha256": "48c7846375f7b1a60167ae24fbb1329501a497559bb285f49b4cf87891c11070",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 125042,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 125358,
+          "cachedInputTokens": 96128,
+          "outputTokens": 3954,
+          "reasoningOutputTokens": 3063
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest Australian dollar US dollar daily exchange rates 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano Switzerland cost of living restaurant meal cappuccino domestic beer price USD numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano Switzerland typical cocktail price bar drink wine glass CHF price 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano price glass wine cocktail beer restaurant cost Swiss francs"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T12:22:43.715595Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:22:38.436Z",
+      "finishedAt": "2026-11-19T12:24:43.478Z"
+    }
+  ]
+}

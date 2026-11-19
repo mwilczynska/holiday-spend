@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "b9aae5303682b28d75f68a7ef4c9afd3f2ecfd464c51c86651e818cd03b75669",
+  "requestSha256": "a868a90407ac399319170155bddd3664ddb50366973b50a34c96bf1b3bbed48f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 121466,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 162075,
+          "cachedInputTokens": 100608,
+          "outputTokens": 4153,
+          "reasoningOutputTokens": 3406
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca cost of living restaurant inexpensive meal mid-range meal cappuccino beer current prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca typical cocktail wine glass prices cost of living index"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca restaurant beer cocktail wine price average Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca cappuccino price inexpensive restaurant meal cost of living current"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca mid-range restaurant meal for two cost average price 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:51:56.437298Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:56.562324Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:01.953396Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:10.295067Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:23.777258Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:35.790746Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:49.559046Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:57.720893Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:51:51.111Z",
+      "finishedAt": "2026-11-19T14:53:52.577Z"
+    }
+  ]
+}

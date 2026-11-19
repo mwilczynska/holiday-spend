@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "d5bce11998c8e3b71b1420bd57722e23c5ab30d0a0f2a42bff33e72207f3153c",
+  "requestSha256": "cc61bc53573ee7dcdc940b86d5524621ec476267092ba202fe1c58fe5b4c3ba8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 110425,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 124411,
+          "cachedInputTokens": 89472,
+          "outputTokens": 3130,
+          "reasoningOutputTokens": 2318
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates daily latest Australian dollar US dollar exchange rate"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba cost of living restaurant inexpensive meal three course two domestic beer cappuccino prices 2026 numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba average restaurant bar prices cocktail mojito glass of wine draft beer 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba cost of living prices beer coffee restaurant meals currency exchange tourist prices 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba 2026 cocktail mojito price glass wine restaurant bar travel budget"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Havana Cuba cocktail glass wine cost price restaurant typical travelers 2026 beer"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T16:02:50.610165Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T16:02:45.245Z",
+      "finishedAt": "2026-11-19T16:04:35.670Z"
+    }
+  ]
+}

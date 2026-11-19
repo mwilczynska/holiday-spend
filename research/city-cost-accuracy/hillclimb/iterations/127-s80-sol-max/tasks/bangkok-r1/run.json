@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "0aa65b48a2edbdc378e81d71ac03b02a4b8076686bc115b5f1b0e66ee4293de5",
+  "requestSha256": "9e03739d26d11172d7779271da43dc84937d5e975e9bff6cc7a33d61d66f1ba9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 126713,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.2-sol": {
+          "inputTokens": 180576,
+          "cachedInputTokens": 126976,
+          "outputTokens": 3570,
+          "reasoningOutputTokens": 2531
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au Reserve Bank of Australia latest daily exchange rates 19 Nov 2026 United States dollar November 2026 USD per Australian dollar exchange-rates"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok Thailand cost of living July 2026 Numbeo Bangkok restaurant inexpensive meal mid-range three-course cappuccino domestic draft beer USD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok typical bar restaurant cocktail price July 2026 Bangkok cocktail average cost Expatistan THB typical"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok restaurant typical price glass of wine 2026 cost of living Bangkok wine by the glass average THB restaurants"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok restaurants 2026 typical house wine by the glass 250 300 baht Wine Connection Bangkok menus glass wine domestic beer Bangkok"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok July 2026 \"cappuccino\" \"meal\" \"beer\" July 2026 Bangkok cost of living restaurant Numbeo Bangkok Thailand"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:28:31.568069Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:28:26.085Z",
+      "finishedAt": "2026-11-19T15:30:32.799Z"
+    }
+  ]
+}

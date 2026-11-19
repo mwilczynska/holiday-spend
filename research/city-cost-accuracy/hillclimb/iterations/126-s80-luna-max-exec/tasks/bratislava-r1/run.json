@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "a07b3e790f76f633398adf7937530d86e35d90c7f374dad1691881da8e8ec4ac",
+  "requestSha256": "3d0a4133d354a8fa4389183b69139098ff37cadfab52a54cf8f1b82a120661ed",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 120044,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 118635,
+          "cachedInputTokens": 89344,
+          "outputTokens": 4560,
+          "reasoningOutputTokens": 3848
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bratislava restaurant prices inexpensive meal cappuccino domestic beer three course meal Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bratislava beer cappuccino cocktail wine prices cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bratislava restaurant prices wine glass cocktail average cost of living"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:49:06.236254Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:06.345499Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:11.641834Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:19.022484Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:33.965910Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:49.408232Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:49:57.948056Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:49:00.918Z",
+      "finishedAt": "2026-11-19T14:51:00.962Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Mendoza cost-of-living data and a July 2026 local traveler guide provide useful price brackets, but peso inflation and differing coverage limit precision. Cocktail and wine prices are estimated from their local relationship to beer; accommodation is holistic and least certain.",
+  "comparable_city_reasoning": "No city proxy used. Food and drink estimates use Mendoza price context; accommodation reflects a secondary Argentine wine-tourism destination.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 2.2,
+    "inexp_meal_1p": 9.0,
+    "midrange_meal_2p": 45.0,
+    "cocktail": 4.2,
+    "wine_glass": 3.4,
+    "hostel_dorm_1p": 13.0,
+    "hostel_private_2p": 32.0,
+    "hotel_1star_2p": 45.0,
+    "hotel_3star_2p": 80.0
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "43f51266c3df7fba6fdd898d97fb7d93ced2ce4f139b02eb5bdcc5a447d1fadd",
+  "requestSha256": "699077d1509bcbb9a295062a9ab2882d3cefc443ebce7cc70081e8df2aac971b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 91165,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 77605,
+          "cachedInputTokens": 54656,
+          "outputTokens": 3413,
+          "reasoningOutputTokens": 2874
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne cost of living restaurant meal cappuccino domestic beer current prices Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne cost of living cocktail wine restaurant price typical 2026 aggregated"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Melbourne restaurant prices inexpensive meal mid range dinner cost of living 2026 Australia"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:06:24.570412Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:06:19.230Z",
+      "finishedAt": "2026-11-19T15:07:50.395Z"
+    }
+  ]
+}

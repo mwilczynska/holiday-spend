@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "0341f6285c32e99b90057f961bec01a1fb284402d5484533b1dbf554e0662966",
+  "requestSha256": "cb2f612ddaeb2f82c9044b541b7f24061b16df1fb28232ce6aadec8eafbab60c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 143516,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 218377,
+          "cachedInputTokens": 176256,
+          "outputTokens": 3405,
+          "reasoningOutputTokens": 2478
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics daily exchange rates latest Australian dollar US dollar exchange rate November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman cost of living restaurant inexpensive meal three course domestic beer cappuccino Numbeo 2026 OMR"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman typical cocktail glass of wine restaurant bar price OMR domestic beer 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Muscat Oman bar average cocktail glass of wine beer prices typical rials alcohol drinks 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Muscat\" \"June 2026\" restaurant cappuccino \"10.00\" \"4.75\" prices"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:33:02.252059Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:02.345473Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:07.531448Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:31.768076Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:52.716009Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:04.026222Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:15.552463Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:27.757575Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:59.191103Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:32:56.966Z",
+      "finishedAt": "2026-11-19T17:35:20.482Z"
+    }
+  ]
+}

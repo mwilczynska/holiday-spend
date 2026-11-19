@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "City price surveys support the July meal, cappuccino and draft beer estimates. Cocktail and wine estimates use local menu prices relative to draft beer, with limited citywide data. Lodging is modeled for typical July nights outside major events. [Numbeo](https://www.numbeo.com/cost-of-living/in/Cluj-napoca), [Thalia menu](https://www.restaurantthalia.ro/meniu)",
+  "comparable_city_reasoning": "Timișoara provides a baseline for a Romanian university and business city, while Brașov informs the estimate for summer lodging demand in Transylvania.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.40,
+    "coffee": 3.75,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 64.00,
+    "cocktail": 7.50,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 50.00,
+    "hotel_1star_2p": 56.00,
+    "hotel_3star_2p": 82.00
+  }
+}

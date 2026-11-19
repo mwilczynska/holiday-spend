@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "low",
+  "confidence_notes": "2026 Jeonju cost-of-living aggregates are sparse, with only four local contributors reported in 18 months. Cocktail and wine prices are inferred from local draft beer prices; accommodation anchors are holistic estimates.",
+  "comparable_city_reasoning": "Food estimates use Jeonju's own aggregated price data; lodging is modeled on mid-sized South Korean regional destinations with domestic tourism demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.85,
+    "coffee": 3.70,
+    "inexp_meal_1p": 7.51,
+    "midrange_meal_2p": 22.52,
+    "cocktail": 9.01,
+    "wine_glass": 7.51,
+    "hostel_dorm_1p": 19.00,
+    "hostel_private_2p": 52.00,
+    "hotel_1star_2p": 47.00,
+    "hotel_3star_2p": 85.00
+  }
+}

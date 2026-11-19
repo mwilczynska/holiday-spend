@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Local price indices support the meal, cappuccino and draft beer estimates. Cocktail and wine data are sparse, so both use locally observed premiums over draft beer. July lodging is modeled, with hostel prices the least certain. [Numbeo](https://www.numbeo.com/cost-of-living/in/Suzhou), [Expatistan](https://www.expatistan.com/cost-of-living/suzhou?currency=USD), [China’s Wine List of the Year](https://www.winelistoftheyear.cn/wp-content/uploads/2025/10/Publication-CWLOTY-2025.pdf)",
+  "comparable_city_reasoning": "Nanjing and Hangzhou serve as regional lodging benchmarks, with a modest July school-holiday premium near Suzhou’s historic gardens and canals.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.25,
+    "coffee": 3.50,
+    "inexp_meal_1p": 4.15,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 10.00,
+    "wine_glass": 9.00,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 27.00,
+    "hotel_1star_2p": 23.00,
+    "hotel_3star_2p": 42.00
+  }
+}

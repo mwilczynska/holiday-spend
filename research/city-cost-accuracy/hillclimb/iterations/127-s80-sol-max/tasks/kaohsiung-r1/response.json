@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Local price data support the meal, cappuccino and draft beer anchors. Cocktail and wine estimates reflect their local price premium over beer, checked against bar prices and limited menu examples. Lodging is modelled for typical July nights, with the most uncertainty around private hostel rooms and basic hotels. [Numbeo](https://www.numbeo.com/cost-of-living/in/Kaohsiung) [Kaohsiung bar prices](https://bar.hkpro.tw/news-info.asp?id=236) [Wine by the glass](https://g2m.tw/lees-garden-winebar/)",
+  "comparable_city_reasoning": "Nearby Tainan provides a benchmark for southern Taiwan dining and budget lodging. Kaohsiung’s larger business-hotel market informs the three-star estimate.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.60,
+    "coffee": 2.95,
+    "inexp_meal_1p": 4.50,
+    "midrange_meal_2p": 32.00,
+    "cocktail": 9.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 17.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 62.00
+  }
+}

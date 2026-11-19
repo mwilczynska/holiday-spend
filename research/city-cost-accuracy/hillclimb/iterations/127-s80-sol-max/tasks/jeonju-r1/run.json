@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "a4b11fc13416bb6f0ddba29492d917bfc75a9109046e235508b084b93b8248ce",
+  "requestSha256": "0a2f8739cc420e682f89149722f7c91840d28b4f27a6df059459c3930dba247b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 109351,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.2-sol": {
+          "inputTokens": 127085,
+          "cachedInputTokens": 91392,
+          "outputTokens": 3345,
+          "reasoningOutputTokens": 2461
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates RBA November 19 2026 US dollar latest daily AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jeonju South Korea cost of living Numbeo restaurants inexpensive meal mid-range 3 course cappuccino domestic draught beer 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jeonju South Korea average price dinner for two restaurant coffee cappuccino domestic draft beer cost of living Jeonju 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jeonju South Korea typical cocktail price wine by the glass bar restaurant menu Jeonju 2026 KRW"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "전주 칵테일 바 메뉴 가격 클래식 칵테일 모히또 12000 15000 객리단길 한옥마을 2026 전주"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "전주 와인바 글라스 와인 하우스와인 잔 메뉴 가격 9000 12000 객리단길 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:35:57.063629Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:35:51.747Z",
+      "finishedAt": "2026-11-19T15:37:41.098Z"
+    }
+  ]
+}

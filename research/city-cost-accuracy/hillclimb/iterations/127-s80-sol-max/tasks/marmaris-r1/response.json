@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Local restaurant data have a small sample. Cocktail and wine estimates use local price premiums over beer. July accommodation is modeled, with hostel prices the least certain. [Numbeo](https://www.numbeo.com/cost-of-living/in/Marmaris-Turkey), [Gezimaris](https://gezimaris.com/en/marmaris-2026-guncel-mekan-ve-icecek-ucretleri/), [Marmaris Info](https://www.marmarisinfo.com/average-food-and-drink-prices-in-marmaris)",
+  "comparable_city_reasoning": "Fethiye is the lodging comparison because it has a similar July tourism peak. The Europe classification follows the Aegean travel market.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.50,
+    "coffee": 3.75,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 56,
+    "cocktail": 8.50,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 58,
+    "hotel_1star_2p": 65,
+    "hotel_3star_2p": 105
+  }
+}

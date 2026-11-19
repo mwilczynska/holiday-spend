@@ -1,0 +1,53 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "04528f095ad11896a2179a422dd2002682d1065c9096026e6a4cb5b5306b864f",
+  "requestSha256": "2b603d46261b4300b4746fb163cf5473baffdf68cad48c20eb609ea41a1098a6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 102572,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 75026,
+          "cachedInputTokens": 39808,
+          "outputTokens": 4081,
+          "reasoningOutputTokens": 3561
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tulum Mexico cost of living restaurant meal cappuccino domestic beer cocktail wine Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:21:45.199617Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:21:39.886Z",
+      "finishedAt": "2026-11-19T15:23:22.458Z"
+    }
+  ]
+}

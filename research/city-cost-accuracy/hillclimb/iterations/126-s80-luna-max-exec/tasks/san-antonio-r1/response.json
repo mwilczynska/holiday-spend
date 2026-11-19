@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use 2026 citywide price-index readings; the mid-range meal price varied across snapshots. Cocktail and wine prices are inferred from the local draft-beer price. Accommodation is a broad July estimate, with hostel prices especially uncertain.",
+  "comparable_city_reasoning": "Food and drink estimates use San Antonio price data; lodging reflects a midsize Texas visitor market.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.25,
+    "coffee": 5.25,
+    "inexp_meal_1p": 18.0,
+    "midrange_meal_2p": 70.0,
+    "cocktail": 12.5,
+    "wine_glass": 9.0,
+    "hostel_dorm_1p": 42.0,
+    "hostel_private_2p": 95.0,
+    "hotel_1star_2p": 85.0,
+    "hotel_3star_2p": 150.0
+  }
+}

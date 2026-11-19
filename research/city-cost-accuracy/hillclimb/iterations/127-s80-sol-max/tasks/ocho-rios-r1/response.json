@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Sparse local price data are a proxy for July meals, cappuccino and draft beer. [Numbeo](https://www.numbeo.com/cost-of-living/in/Ocho-Rios-Jamaica). Local menus informed the cocktail estimate. [Swinging Bar](https://www.hibiscusjamaica.com/wp-content/uploads/2025/01/COCKTAIL-MENU-FOR-BAR-2025-Drft.pdf), [Starliner](https://starlinerjamaica.com/). Wine by the glass was estimated from its likely premium over local draft beer. July lodging is modeled, with the greatest uncertainty around hostel prices.",
+  "comparable_city_reasoning": "Negril and Montego Bay provide a basis for lodging estimates because they share Jamaica's coastal tourism demand and have a similar mix of independent guesthouses and mid-range hotels.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 3.15,
+    "inexp_meal_1p": 9.50,
+    "midrange_meal_2p": 63,
+    "cocktail": 9.50,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 30,
+    "hostel_private_2p": 65,
+    "hotel_1star_2p": 75,
+    "hotel_3star_2p": 140
+  }
+}

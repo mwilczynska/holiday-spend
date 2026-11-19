@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "d8ba0b0f99959ed6479a17d1634bd813c793dd29591ffa46ec7def5e8d9e4836",
+  "requestSha256": "eb4e72856516f3de89a36b95de0aaa47425d84a15dc24ea86d9bbe9a89049db9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 120665,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 159873,
+          "cachedInputTokens": 125312,
+          "outputTokens": 4057,
+          "reasoningOutputTokens": 3372
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico cost of living prices restaurant meal cappuccino beer Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico cost of living restaurant prices cocktail wine 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Merida Yucatan Mexico average restaurant food prices inexpensive meal mid range 2026 cost of living"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico Numbeo July 2026 prices inexpensive restaurant cappuccino beer historical data"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico average restaurant cocktail glass of wine price 2026 typical"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:07:31.331148Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:07:25.997Z",
+      "finishedAt": "2026-11-19T15:09:26.662Z"
+    }
+  ]
+}

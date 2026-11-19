@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Mid-2026 Jaipur price indexes support the meal, coffee, and beer estimates. Cocktail and wine data are sparse, so those anchors use local price relationships to beer. Accommodation prices are broad July estimates based on general knowledge, not live listings.",
+  "comparable_city_reasoning": "Food and drink estimates use Jaipur-specific price indexes. Accommodation estimates reflect Jaipur’s heritage-tourism market and comparable north Indian destinations such as Agra and Udaipur.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.55,
+    "coffee": 1.6,
+    "inexp_meal_1p": 3.2,
+    "midrange_meal_2p": 12.3,
+    "cocktail": 7.0,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 7.0,
+    "hostel_private_2p": 20.0,
+    "hotel_1star_2p": 25.0,
+    "hotel_3star_2p": 55.0
+  }
+}

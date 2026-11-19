@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "e310a989e59ea42fbfae0721b99b29e1370564047410ee799d7a622d61182865",
+  "requestSha256": "70a134d862665e05da7f7d3c2da65aeaeee4439375b077a965465519ddad6f19",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 136261,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 205667,
+          "cachedInputTokens": 158464,
+          "outputTokens": 2552,
+          "reasoningOutputTokens": 1784
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates daily USD Australian dollar latest exchange rate"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tottori Japan cost of living restaurant meal cappuccino domestic beer prices Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tottori Japan cost of living meal for two mid range restaurant cappuccino domestic beer"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tottori Japan bar cocktail glass wine average drink prices yen"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:numbeo.com/cost-of-living/in/Tottori Restaurant Prices Meal Inexpensive Restaurant Cappuccino Domestic Beer 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Tottori\" \"meal\" \"cappuccino\" \"beer\" cost living prices 2026"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:41:13.800751Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:41:13.894306Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:41:19.184586Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:41:41.237285Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:03.931336Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:17.602334Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:42:31.433765Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:43:03.009298Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:41:08.517Z",
+      "finishedAt": "2026-11-19T17:43:24.778Z"
+    }
+  ]
+}

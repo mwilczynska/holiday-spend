@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meals, cappuccino and draft beer draw on Lucerne cost-of-living data. Cocktail and wine estimates use local drink prices relative to draft beer. July lodging is modeled for peak summer demand, with the most uncertainty for private hostel rooms and basic hotels. [Numbeo](https://www.numbeo.com/cost-of-living/in/Lucerne), [Wise](https://wise.com/us/cost-of-living/switzerland/lucerne), [Lucerne drink prices](https://opentravelguide.com/switzerland/lucerne/luzern/nightlife/).",
+  "comparable_city_reasoning": "Interlaken is a rough lodging analogue for July sightseeing demand, with Lucerne's broader urban hotel market informing the room estimates.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.50,
+    "coffee": 6.75,
+    "inexp_meal_1p": 42,
+    "midrange_meal_2p": 130,
+    "cocktail": 20.50,
+    "wine_glass": 11.50,
+    "hostel_dorm_1p": 69,
+    "hostel_private_2p": 155,
+    "hotel_1star_2p": 180,
+    "hotel_3star_2p": 265
+  }
+}

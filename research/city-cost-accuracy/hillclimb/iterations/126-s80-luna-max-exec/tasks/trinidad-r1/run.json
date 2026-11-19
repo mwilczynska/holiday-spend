@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3992389c83ecf0f63658b254f2ff16716066cb9149d721e75e91dd7eabcdd825",
+  "requestSha256": "845bf606721af89e196beda59192cd48f5fd529a66d8670e3766efc8358ce134",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 93211,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 75129,
+          "cachedInputTokens": 44032,
+          "outputTokens": 3095,
+          "reasoningOutputTokens": 2510
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates US dollar Australian dollar daily November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba cost of living restaurant meal cappuccino beer prices Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba restaurant prices inexpensive meal coffee cappuccino cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Trinidad Cuba beer cocktail wine restaurant prices cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cuba restaurant beer cocktail wine cappuccino typical prices Trinidad Cuba 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:21:34.325604Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:21:29.008Z",
+      "finishedAt": "2026-11-19T15:23:02.219Z"
+    }
+  ]
+}

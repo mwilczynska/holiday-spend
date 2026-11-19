@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Citywide price data near July 2026 support both meal estimates, cappuccino, and draft beer. Cocktail and wine estimates use the premiums over domestic beer observed on a small sample of Jaipur bar menus. Lodging is modeled for July monsoon demand. [Jaipur restaurant prices](https://www.averagecostof.living/in/india/jaipur/restaurants/), [Clayborn bar menu](https://claybornjaipur.com/wp-content/uploads/2024/12/BAR-MENU-FINAL.pdf), [Kings Taproom menu](https://cdn1.simplotel.com/generic_uploads/production/46nWV8oN/jaipur_menu.pdf)",
+  "comparable_city_reasoning": "Udaipur and Jodhpur are regional lodging comparables because their heritage tourism supports a similar mix of backpacker hostels, basic guesthouses, and mid-range hotels.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 1.55,
+    "inexp_meal_1p": 3.10,
+    "midrange_meal_2p": 12.25,
+    "cocktail": 5.25,
+    "wine_glass": 6.25,
+    "hostel_dorm_1p": 6.00,
+    "hostel_private_2p": 19.00,
+    "hotel_1star_2p": 17.00,
+    "hotel_3star_2p": 34.00
+  }
+}

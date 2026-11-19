@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Lugano cost-of-living averages updated 18 November 2026 as a close proxy for July. Cocktail uses local price guidance; wine is estimated relative to draft beer. Accommodation is a holistic July summer estimate and has the greatest uncertainty.",
+  "comparable_city_reasoning": "Food and drink use Lugano city prices; accommodation is modeled from Swiss lakeside tourist-market and hotel norms.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.5,
+    "coffee": 4.8,
+    "inexp_meal_1p": 35.6,
+    "midrange_meal_2p": 172.0,
+    "cocktail": 19.0,
+    "wine_glass": 11.9,
+    "hostel_dorm_1p": 72.0,
+    "hostel_private_2p": 170.0,
+    "hotel_1star_2p": 205.0,
+    "hotel_3star_2p": 295.0
+  }
+}

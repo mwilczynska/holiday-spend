@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "26dc1011d9e21e65beeb9faf6891813421d3627fc0d176b4854096c79e67a740",
+  "requestSha256": "7b59747ab84fe0f874842bad1226cc57ae54b1c2a17ef914b9db5d0378c9c4fb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 142350,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 122010,
+          "cachedInputTokens": 71936,
+          "outputTokens": 6166,
+          "reasoningOutputTokens": 5522
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html US dollar Australian dollar daily exchange rate November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina cost of living restaurant prices inexpensive meal cappuccino beer Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina restaurant menu typical prices wine glass cocktail beer 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina cost of living prices restaurant meal coffee beer price index"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina average cocktail price wine glass restaurant cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:06:24.852960Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:06:19.514Z",
+      "finishedAt": "2026-11-19T15:08:41.864Z"
+    }
+  ]
+}

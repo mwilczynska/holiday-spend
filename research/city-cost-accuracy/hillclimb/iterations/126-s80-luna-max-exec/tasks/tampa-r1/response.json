@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer anchors use a Tampa price snapshot close to the July 2026 window. Cocktail and wine estimates are less certain and use local drink benchmarks relative to draft beer. Accommodation is a holistic estimate; Tampa's limited hostel supply adds uncertainty.",
+  "comparable_city_reasoning": "Food and drink anchors use Tampa-specific data; accommodation is estimated for a mid-sized US Gulf Coast metro.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?v=2017-06-14-11-49-03",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7,
+    "coffee": 5.65,
+    "inexp_meal_1p": 20,
+    "midrange_meal_2p": 75,
+    "cocktail": 12,
+    "wine_glass": 11,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 105,
+    "hotel_3star_2p": 180
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3c120fd2bd593149e1d91004b9580d48a645292637b57b57431e922a2f194014",
+  "requestSha256": "752dcf0cdbd72ca044c1dcee7244cf7fefb03cf5e0e047994d1fe1be35a8bb48",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 114580,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 125710,
+          "cachedInputTokens": 95872,
+          "outputTokens": 2330,
+          "reasoningOutputTokens": 1593
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html exchange rates latest daily USD Australian dollar"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio Texas cost of living restaurant meal domestic beer cappuccino mid range meal Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "San Antonio Texas average price cocktail glass wine bar restaurant drinks 2026"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:37:00.940119Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:01.047975Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:06.386975Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:30.940401Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:51.579789Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:02.607986Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:12.253703Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:36:55.649Z",
+      "finishedAt": "2026-11-19T17:38:50.230Z"
+    }
+  ]
+}

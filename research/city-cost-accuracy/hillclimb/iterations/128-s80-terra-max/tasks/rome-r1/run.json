@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "c1b2fbbddd5be845eba3d81ee7dce43054cd77918bd0957d9d595c66690fdd67",
+  "requestSha256": "d494b494c6dc1d3f5379da6e6b2fc68a22a545d7819a46625a2ec4621bc19b81",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 135260,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 179533,
+          "cachedInputTokens": 139264,
+          "outputTokens": 3724,
+          "reasoningOutputTokens": 2846
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au latest daily exchange rates USD Australian dollar Reserve Bank Australia exchange rates November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Rome cost of living prices restaurants cappuccino domestic beer inexpensive meal mid range 2026 numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Rome average restaurant glass wine prices typical cost 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Rome average cocktail bar price 2026 typical cost"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Rome July 2026 cost of living \"meal\" \"beer\" \"cappuccino\" restaurant prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Rome June July 2026 average restaurant two people three course meal inexpensive Numbeo price euro"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:35:25.767151Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:35:25.873406Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:35:31.080384Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:35:43.601379Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:36:02.527547Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:36:14.906926Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:36:25.221106Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:36:55.172420Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:35:20.492Z",
+      "finishedAt": "2026-11-19T17:37:35.752Z"
+    }
+  ]
+}

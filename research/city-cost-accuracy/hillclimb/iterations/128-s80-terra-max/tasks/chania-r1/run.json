@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "ccb8f68ca37f5fc05577b548fc29f0ef5dc8a260118914230186ee7b483b79f0",
+  "requestSha256": "ef61a647d6f6c82fcc7bc056ba34b925ef098a384bc05b5a23c0aa8fa73ff038",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 93894,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 124421,
+          "cachedInputTokens": 93056,
+          "outputTokens": 2805,
+          "reasoningOutputTokens": 2028
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics exchange rates latest daily US dollar Australian dollar 19 November 2026 RBA"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania Greece cost of living prices restaurant meal cappuccino domestic beer numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania Greece typical cocktail glass wine bar prices restaurants"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania Crete 2026 average bar cocktail glass wine beer prices travel budget"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania Crete drinks cocktail wine glass restaurant 2026 cost € average"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T12:18:56.452634Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:18:56.750535Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:19:03.342055Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:18:48.615Z",
+      "finishedAt": "2026-11-19T12:20:22.509Z"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "ba6e58edf3dfe440fac4f515e2406f35009a752cce7a8f06edf724695c771ef6",
+  "requestSha256": "69384a5e9d9a798b05ccc7796fbf1bda1b0c6b6e39f270098025ad1893df7e50",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 187407,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 254328,
+          "cachedInputTokens": 213376,
+          "outputTokens": 4046,
+          "reasoningOutputTokens": 3009
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates 2026 November 20 USD euro latest Australian dollar"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa cost of living restaurant cappuccino domestic draft beer mid range meal for two Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa Italy typical cocktail wine glass price bar aperitivo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa cost of living 2026 beer cappuccino restaurant meal two prices"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Pisa\" \"July 2026\" \"beer\" \"cappuccino\" restaurant cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pisa Italy average price cocktail bar aperitivo wine glass drinks euros 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:35:23.088034Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:35:23.182403Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:35:28.411165Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:35:40.182135Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:36:26.507700Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:36:49.660850Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:01.811485Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:11.920987Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:37:50.852834Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:03.629203Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:35:17.801Z",
+      "finishedAt": "2026-11-19T17:38:25.208Z"
+    }
+  ]
+}

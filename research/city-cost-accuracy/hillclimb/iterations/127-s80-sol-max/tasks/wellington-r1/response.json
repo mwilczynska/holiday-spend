@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "A midyear Wellington price index supports the meal, cappuccino and draft beer estimates. [Restaurant price index](https://www.averagecostof.living/in/new-zealand/wellington/#restaurants) Cocktail and wine estimates reflect how local menus price them relative to beer. [Capitol drinks menu](https://capitolrestaurant.co.nz/winelist/) [Grazie menu](https://grazie.co.nz/menu/wellington/) Lodging is modeled for a typical July night outside major events, with the most uncertainty around very basic hotel rooms.",
+  "comparable_city_reasoning": "Auckland and Christchurch provide broad benchmarks for urban lodging. The estimates account for Wellington's quieter winter leisure season and weekday business demand as the capital.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.5,
+    "coffee": 3.6,
+    "inexp_meal_1p": 15,
+    "midrange_meal_2p": 72,
+    "cocktail": 11,
+    "wine_glass": 8.75,
+    "hostel_dorm_1p": 25,
+    "hostel_private_2p": 62,
+    "hotel_1star_2p": 73,
+    "hotel_3star_2p": 96
+  }
+}

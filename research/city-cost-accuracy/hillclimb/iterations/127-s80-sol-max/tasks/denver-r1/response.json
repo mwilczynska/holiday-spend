@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "June Numbeo data inform meals, cappuccino and draft beer. Fall menu aggregates are a proxy for July cocktail and wine prices. Food and drink estimates exclude tax and tip. July lodging uses modeled base nightly rates, with private hostel rooms especially uncertain because supply is limited. [Numbeo](https://www.numbeo.com/cost-of-living/in/Denver), [Denver restaurant menus](https://tabtender.app/places/us/co/denver/restaurants), [Denver wine prices](https://tabtender.app/places/us/co/denver/prices/wine)",
+  "comparable_city_reasoning": "Salt Lake City provides a Mountain West reference for lodging, with an allowance for Denver's larger convention market and July visitor demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.25,
+    "coffee": 5.85,
+    "inexp_meal_1p": 20,
+    "midrange_meal_2p": 95,
+    "cocktail": 13,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 55,
+    "hostel_private_2p": 125,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 175
+  }
+}

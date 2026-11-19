@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3592f4bad5ca4b93d200a59050c60f075f7b3011ddbf7b24b3ae17afdf8dcde6",
+  "requestSha256": "806ac37168ca631545b535a083cd93949251b9843a230a85fc16de0d89c43a5d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 110131,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 121393,
+          "cachedInputTokens": 90368,
+          "outputTokens": 3143,
+          "reasoningOutputTokens": 2367
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest US dollar Australian dollar daily 2026 November"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken Switzerland cost of living restaurant inexpensive meal three course cappuccino domestic beer USD numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken typical restaurant prices cappuccino beer meal USD cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken Switzerland cocktail glass wine bar typical prices CHF 2026"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T16:04:14.100102Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T16:04:08.755Z",
+      "finishedAt": "2026-11-19T16:05:58.887Z"
+    }
+  ]
+}

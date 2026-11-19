@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors are informed by recent aggregated Florianópolis price references. The cocktail estimate uses the local cocktail-to-draft-beer relationship; the wine-glass estimate is inferred from local bottle-wine and beer levels. Accommodation is a holistic estimate with greater uncertainty because July demand varies.",
+  "comparable_city_reasoning": "Food estimates use Florianópolis prices directly; accommodation is modeled from coastal southern Brazilian tourist markets and Florianópolis's July winter season.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.95,
+    "coffee": 2.45,
+    "inexp_meal_1p": 9.2,
+    "midrange_meal_2p": 46,
+    "cocktail": 5.5,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 18,
+    "hostel_private_2p": 45,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 100
+  }
+}

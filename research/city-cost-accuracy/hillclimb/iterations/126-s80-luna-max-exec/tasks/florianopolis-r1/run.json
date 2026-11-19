@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "fb3ecade3a925b4b05c040af9956ee959417ff5a36e67a645551347626dede15",
+  "requestSha256": "349c4a7bb5f6c85ad8ccc9f33e4f5993097e99e1d0ac2c43865da1faa7dd7f30",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 97581,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 73147,
+          "cachedInputTokens": 36480,
+          "outputTokens": 3984,
+          "reasoningOutputTokens": 3389
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html US dollar Australian dollar daily exchange rate latest November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianopolis Brazil cost of living restaurant meal cappuccino draft beer cocktail wine Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianopolis Brazil restaurant prices inexpensive meal mid range meal beer wine cocktail cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianopolis Brazil typical cocktail price wine glass restaurant local price cost index"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html \"19 November 2026\" USD AUD exchange rates"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianopolis restaurant glass of wine typical price R$ Numbeo cost of living"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:55:16.144531Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:55:10.792Z",
+      "finishedAt": "2026-11-19T14:56:48.373Z"
+    }
+  ]
+}

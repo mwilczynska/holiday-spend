@@ -1,0 +1,53 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "1b0a682dc1200db2301df3cb84a60050ec4a0f8621ef3c3d8dd6c3e48914fa88",
+  "requestSha256": "343f96d7aeda5b70a7b7e2d1e749c4f8ff4ce18cb13f7e04d935d88b0a27523e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 98701,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 78205,
+          "cachedInputTokens": 43264,
+          "outputTokens": 4472,
+          "reasoningOutputTokens": 3927
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD RBA November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Tallinn cost of living cappuccino beer inexpensive restaurant meal three course mid range cocktail wine 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:55:46.411Z",
+      "finishedAt": "2026-11-19T05:57:25.112Z"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3592f4bad5ca4b93d200a59050c60f075f7b3011ddbf7b24b3ae17afdf8dcde6",
+  "requestSha256": "806ac37168ca631545b535a083cd93949251b9843a230a85fc16de0d89c43a5d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 142074,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 115657,
+          "cachedInputTokens": 85888,
+          "outputTokens": 5552,
+          "reasoningOutputTokens": 4926
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html daily exchange rates US dollar latest November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken Switzerland cost of living prices restaurant meal cappuccino beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken prices cocktail glass of wine restaurant typical cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken restaurant typical prices beer coffee meal Switzerland price index"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/tables daily exchange rates 19 November 2026 USD Australian dollar RBA"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Interlaken Numbeo cocktail wine glass prices inexpensive restaurant 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:57:15.091213Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:57:09.759Z",
+      "finishedAt": "2026-11-19T14:59:31.833Z"
+    }
+  ]
+}

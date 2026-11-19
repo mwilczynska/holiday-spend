@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and draft-beer anchors use aggregated Querétaro prices close to the July 2026 window. Cocktail and wine-by-the-glass estimates are less certain and use their local price relationship to draft beer. Accommodation anchors are holistic estimates.",
+  "comparable_city_reasoning": "Food and drink estimates are city-specific; accommodation estimates reflect Querétaro as a mid-sized inland Mexican regional center with a colonial-tourism market.",
+  "fx": {
+    "as_of_date": "2026-11-17",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6742,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.78,
+    "coffee": 3.80,
+    "inexp_meal_1p": 10.00,
+    "midrange_meal_2p": 55.56,
+    "cocktail": 8.33,
+    "wine_glass": 6.94,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 38.00,
+    "hotel_1star_2p": 42.00,
+    "hotel_3star_2p": 85.00
+  }
+}

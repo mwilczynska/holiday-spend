@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and draft-beer estimates are supported by several Wollongong price aggregations. Cocktail and wine estimates use their likely local price relationship to draft beer. Accommodation estimates are broader model estimates for July 2026, not based on live listings.",
+  "comparable_city_reasoning": "Food prices use Wollongong-specific references. Accommodation is estimated for a coastal NSW university city with some Sydney-market influence and more moderate visitor demand than Sydney.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 3.34,
+    "inexp_meal_1p": 16.36,
+    "midrange_meal_2p": 80.12,
+    "cocktail": 13.35,
+    "wine_glass": 9.35,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 110.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 165.00
+  }
+}

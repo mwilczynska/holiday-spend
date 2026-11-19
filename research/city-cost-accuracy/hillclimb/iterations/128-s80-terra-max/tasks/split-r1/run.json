@@ -1,0 +1,95 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "205b34c45a5bc2304237f6f9864239dab21b0f0695f9b2d7426664613b39dcd2",
+  "requestSha256": "5f4918a66acc2ea11e9d8550c56dbd1d920a6f4298e33d1b31ec950dad438c2f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 117972,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 345918,
+          "cachedInputTokens": 302720,
+          "outputTokens": 4299,
+          "reasoningOutputTokens": 3096
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest 19 November 2026 USD Australian dollar daily exchange rates"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia cost of living restaurant meal cappuccino domestic beer prices July 2026 numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia cost of living 2026 restaurant meal cappuccino draught beer price typical"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia cocktail glass wine bar restaurant average price 2026 July"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia 2026 how much glass of wine cocktail costs bar price average wine cocktail typical"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia summer 2026 price of cocktails wine glass beer travel costs average"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?latest=20261119"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/tables/csv/f11-data.csv"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T05:56:56.895009Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Windows\\\\\\\\\\\\\\\\System32\\\\\\\\\\\\\\\\WindowsPowerShell\\\\\\\\\\\\\\\\v1.0\\\\\\\\\\\\\\\\powershell.exe\\\\\\\" -Command 'try { $response = Invoke-WebRequest -Uri '\\\\\\\"'https://www.rba.gov.au/statistics/frequency/exchange-rates.html' -TimeoutSec 10 -UseBasicParsing; \\\\\\\"'$content = $response.Content; $i = $content.IndexOf('\\\\\\\"'United States dollar'); if (\\\\\\\"'$i -ge 0) { $content.Substring([Math]::Max(0,$i-1200), [Math]::Min(2500, $content.Length-[Math]::Max(0,$i-1200))) } else { '\\\\\\\"'Exchange-rate table not found in response.' } } catch { 'Direct RBA request failed: ' + \\\\\\\"'$_.Exception.Message }'` rejected: blocked by policy\\\")\" }\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:55:23.067Z",
+      "finishedAt": "2026-11-19T05:57:21.039Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors use Orlando aggregate prices updated in June 2026. Cocktail and wine estimates follow local happy-hour price ratios to beer; accommodation estimates are holistic and less certain.",
+  "comparable_city_reasoning": "Food and drink estimates are Orlando-specific; accommodation estimates reflect broad patterns for U.S. leisure destinations.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 5.20,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 89.00,
+    "cocktail": 9.60,
+    "wine_glass": 7.20,
+    "hostel_dorm_1p": 45.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 190.00
+  }
+}

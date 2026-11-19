@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "24bfad4a2f2a96445ff88129566c798072dd68d211c2f626c5a7bb69ee7e9678",
+  "requestSha256": "908924f3d5fee2a2ba2f1f1b58730f2745da93d43bceb3c8ee4708ce323d5edc",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 168519,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 156361,
+          "cachedInputTokens": 112128,
+          "outputTokens": 5199,
+          "reasoningOutputTokens": 4574
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates November 2026 USD AUD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur Numbeo cost of living restaurant prices cappuccino domestic beer inexpensive meal mid-range meal 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur India typical restaurant prices coffee beer wine cocktail cost of living July 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur cost of living beer cappuccino inexpensive restaurant meal price aggregator"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Udaipur average price cocktail wine glass restaurant beer Numbeo 2026 INR"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:23:07.560327Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:23:02.232Z",
+      "finishedAt": "2026-11-19T15:25:50.751Z"
+    }
+  ]
+}

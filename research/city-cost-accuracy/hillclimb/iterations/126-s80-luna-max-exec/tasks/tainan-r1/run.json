@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "13f320cc0567a496729c8d16eadbc69bb6f661d4995cbc46558da74b67dcb0cb",
+  "requestSha256": "09086a85f97cecc8c620f65081745d9ce9e15f184922136f54051f9b069f83e0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 114832,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 77545,
+          "cachedInputTokens": 54528,
+          "outputTokens": 4581,
+          "reasoningOutputTokens": 4049
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tainan Taiwan cost of living restaurant prices inexpensive meal mid-range meal Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tainan Taiwan cappuccino coffee beer prices Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tainan Taiwan cocktail wine restaurant prices cost of living"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:18:44.439031Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:18:39.129Z",
+      "finishedAt": "2026-11-19T15:20:33.961Z"
+    }
+  ]
+}

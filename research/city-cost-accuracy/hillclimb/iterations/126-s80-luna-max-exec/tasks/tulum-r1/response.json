@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use current aggregated Tulum prices as a proxy for July; date-specific coverage is limited. Cocktail and wine estimates follow their local bar-price relationship to beer. Accommodation estimates are broad and sensitive to season, location, and property quality.",
+  "comparable_city_reasoning": "Food and drink use Tulum citywide price data; accommodation estimates reflect the Riviera Maya, adjusted for Tulum's tourism market and July seasonality.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.2,
+    "coffee": 4.1,
+    "inexp_meal_1p": 8.8,
+    "midrange_meal_2p": 57.5,
+    "cocktail": 10.0,
+    "wine_glass": 8.0,
+    "hostel_dorm_1p": 20,
+    "hostel_private_2p": 55,
+    "hotel_1star_2p": 68,
+    "hotel_3star_2p": 125
+  }
+}

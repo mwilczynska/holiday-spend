@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "1b0a682dc1200db2301df3cb84a60050ec4a0f8621ef3c3d8dd6c3e48914fa88",
+  "requestSha256": "343f96d7aeda5b70a7b7e2d1e749c4f8ff4ce18cb13f7e04d935d88b0a27523e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 166314,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.2-sol": {
+          "inputTokens": 291254,
+          "cachedInputTokens": 234624,
+          "outputTokens": 5634,
+          "reasoningOutputTokens": 4646
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html Reserve Bank Australia Exchange Rates latest United States dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn Estonia cost of living 2026 Numbeo typical Tallinn inexpensive restaurant meal three-course two people cappuccino domestic draught beer"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn Estonia typical cocktail price glass of wine restaurant Tallinn 2026 travel cost price glass wine cocktail city"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn Estonia July 2026 typical restaurant prices coffee draught beer cappuccino inexpensive meal price Tallinn cost of living Expatistan Numbeo"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn July 2026 average cocktail house wine by the glass price Tallinn restaurant bar menu aperol spritz city prices"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?date=2026-11-19"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:57:59.456Z",
+      "finishedAt": "2026-11-19T06:00:45.770Z"
+    }
+  ]
+}

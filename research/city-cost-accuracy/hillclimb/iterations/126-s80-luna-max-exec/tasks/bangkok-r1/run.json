@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "0aa65b48a2edbdc378e81d71ac03b02a4b8076686bc115b5f1b0e66ee4293de5",
+  "requestSha256": "9e03739d26d11172d7779271da43dc84937d5e975e9bff6cc7a33d61d66f1ba9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 144886,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 121153,
+          "cachedInputTokens": 77312,
+          "outputTokens": 5691,
+          "reasoningOutputTokens": 5032
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok cost of living restaurant meal cappuccino beer prices Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok cost of living cocktail wine beer prices average 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok typical restaurant prices inexpensive meal mid-range meal coffee beer cost of living index"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok average cocktail price glass of wine restaurant cost of living 2026 baht"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:47:33.487245Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:33.672050Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:39.474527Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:47.361393Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:48:04.778226Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:48:13.160339Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:48:38.043241Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:47:26.050Z",
+      "finishedAt": "2026-11-19T14:49:50.936Z"
+    }
+  ]
+}

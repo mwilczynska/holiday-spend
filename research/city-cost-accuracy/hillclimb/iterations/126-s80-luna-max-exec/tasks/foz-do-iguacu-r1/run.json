@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "ed544e165cd2b22578e44022062d3faa0d5c2d38a38d0d037b3dcf1d14a901c5",
+  "requestSha256": "efcfbeb85edb167c4792e2c231a231ae492a619c7c892ce9d28a0120c77bd240",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 115687,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 113660,
+          "cachedInputTokens": 73472,
+          "outputTokens": 4670,
+          "reasoningOutputTokens": 3992
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD AUD daily 2026 November"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu cost of living restaurant meal inexpensive mid-range cappuccino Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguacu Brazil typical restaurant prices domestic beer coffee cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguaçu beer price restaurant wine glass cocktail cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguacu cost of living price index restaurants prices beer cappuccino"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Foz do Iguacu Brazil average prices local beer cappuccino meal wine cocktail aggregated"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:55:19.377227Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:55:14.066Z",
+      "finishedAt": "2026-11-19T14:57:09.753Z"
+    }
+  ]
+}

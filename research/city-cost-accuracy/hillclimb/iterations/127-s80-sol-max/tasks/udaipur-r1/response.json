@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Recent city price indexes serve as a proxy for July 2026 and vary widely for the three-course meal. Cocktail and wine estimates reflect their premiums over beer on a small sample of local menus. Lodging is modeled for July. [Numbeo](https://de.numbeo.com/lebenshaltungskosten/stadt/Udaipur), [Wise](https://wise.com/in/cost-of-living/india/udaipur), [Shamiana menu](https://www.shamianaudaipur.com/bar-menu/), [Qalaa menu](https://qalaaudaipur.com/wp-content/uploads/2026/03/menu-pdf-juno.pdf)",
+  "comparable_city_reasoning": "Jaipur and Jodhpur provide a lodging baseline because they share Rajasthan's mix of heritage tourism, hostels, and budget guesthouses. The estimates allow for Udaipur's lakefront premium and July monsoon seasonality.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.15,
+    "coffee": 1.65,
+    "inexp_meal_1p": 2.40,
+    "midrange_meal_2p": 15.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.25,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 19.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 34.00
+  }
+}

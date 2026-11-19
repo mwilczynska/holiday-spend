@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "434c767dc1845764342afed57e03ca15e3f67ab04d3db1ce88825e2cd823343a",
+  "requestSha256": "f7a675587858a5984d9777615c81f8a6b1d0bd6869c999641f08af83491b32f8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 143103,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 125434,
+          "cachedInputTokens": 96256,
+          "outputTokens": 3065,
+          "reasoningOutputTokens": 2163
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest exchange rates Australian dollar USD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh India cost of living prices restaurant cappuccino domestic beer 2026 Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh Ladakh restaurant prices cappuccino beer meal average cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh Ladakh average restaurant drinks price cocktail glass wine price bar beer"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh Ladakh Numbeo cost living cappuccino domestic beer restaurant meal"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Leh Ladakh travel budget prices 2026 restaurant beer coffee cafe cocktail cost"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:28:18.543300Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:28:18.651198Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:28:24.034289Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:28:41.179633Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:29:26.540444Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:29:43.753206Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:29:55.620406Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:28:13.229Z",
+      "finishedAt": "2026-11-19T17:30:36.332Z"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "347f2cc098022656a4289798ed1a5a33336163a285492f826fec240843e01536",
+  "requestSha256": "32ff3bd51c52d586585277c39210653e2c294272be26c35312541dcdd914d01f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 110528,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 173544,
+          "cachedInputTokens": 130688,
+          "outputTokens": 2898,
+          "reasoningOutputTokens": 2049
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver cost of living restaurant prices domestic draft beer cappuccino inexpensive meal meal two 2026 Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver average cocktail price bar restaurant 2026 glass wine prices typical"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver restaurant beer wine cocktail prices typical drink 2026 cost of living"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T16:02:23.558167Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T16:02:18.208Z",
+      "finishedAt": "2026-11-19T16:04:08.736Z"
+    }
+  ]
+}

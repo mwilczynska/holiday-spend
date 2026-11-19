@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "c8a2b979f9cd69284d218d193e51b61e0206c0db04facb5ca25870accd59effd",
+  "requestSha256": "388d902b6892268240c0ca7adff248608fcd84317632c52d51b980337f962c2a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 139395,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 125793,
+          "cachedInputTokens": 82048,
+          "outputTokens": 3815,
+          "reasoningOutputTokens": 2962
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest daily Australian dollar US dollar exchange rate"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur cost of living restaurant meal cappuccino domestic draught beer prices 2026 numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur 2026 bar cocktail wine by glass average prices drink restaurant beer India"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur cost of living meal restaurant beer cappuccino average price 2026 expatistan"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur India average price glass of wine restaurant wine by the glass 2026 cost"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jaipur average restaurant bar cocktail glass wine price domestic beer 2026 Jaipur cost of living"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T16:04:41.038988Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T16:04:35.677Z",
+      "finishedAt": "2026-11-19T16:06:55.072Z"
+    }
+  ]
+}

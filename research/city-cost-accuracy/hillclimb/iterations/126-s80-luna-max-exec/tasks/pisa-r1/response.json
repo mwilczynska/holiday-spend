@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer estimates are based on current aggregated Pisa price benchmarks. Wine and cocktail estimates use the local draft-beer price as a reference; accommodation is a holistic July peak-season estimate, not based on live listings.",
+  "comparable_city_reasoning": "Food and drink use Pisa-specific benchmarks. Accommodation is modeled for a small Tuscan tourist city, with Lucca and Siena as broad regional comparables and lower demand than Florence.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.0,
+    "coffee": 2.1,
+    "inexp_meal_1p": 21.0,
+    "midrange_meal_2p": 82.0,
+    "cocktail": 10.5,
+    "wine_glass": 7.0,
+    "hostel_dorm_1p": 42.0,
+    "hostel_private_2p": 120.0,
+    "hotel_1star_2p": 145.0,
+    "hotel_3star_2p": 205.0
+  }
+}

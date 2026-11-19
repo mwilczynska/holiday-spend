@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "5ae47949f0124e0d3083f74b529b1fb229b522569c32b7d7d163c438218c257c",
+  "requestSha256": "5590d5a6ac04b03eb5a833a40cddede354b2b9497534fa5849c94205eb22172d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 131470,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 78890,
+          "cachedInputTokens": 51328,
+          "outputTokens": 5026,
+          "reasoningOutputTokens": 4450
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff cost of living restaurant prices inexpensive meal mid-range meal cappuccino beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff cost of living prices cocktail wine glass beer coffee restaurant meal aggregated"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff average restaurant prices meal beer cappuccino cost of living survey"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cardiff UK cocktail price wine glass restaurant average cost of living"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:51:06.280627Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:06.403358Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:11.684062Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:24.115445Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:46.785285Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:12.739620Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:51:00.968Z",
+      "finishedAt": "2026-11-19T14:53:12.438Z"
+    }
+  ]
+}

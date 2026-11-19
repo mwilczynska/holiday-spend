@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "fb3ecade3a925b4b05c040af9956ee959417ff5a36e67a645551347626dede15",
+  "requestSha256": "349c4a7bb5f6c85ad8ccc9f33e4f5993097e99e1d0ac2c43865da1faa7dd7f30",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 114088,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.2-sol": {
+          "inputTokens": 120434,
+          "cachedInputTokens": 79488,
+          "outputTokens": 3084,
+          "reasoningOutputTokens": 2269
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html Reserve Bank Australia exchange rates United States dollar 19 November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianópolis cost of living 2026 Numbeo restaurant inexpensive meal three course domestic draft beer cappuccino Brazilian real USD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianopolis 2026 cost of living cocktail wine glass price beer Florianópolis 2026 Expatistan cocktail wine taça preço drink média"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianópolis preço médio taça de vinho bar restaurantes Florianópolis 2026 taça vinho cardápio preço drink chope"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T12:21:56.938152Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:21:51.640Z",
+      "finishedAt": "2026-11-19T12:23:45.728Z"
+    }
+  ]
+}

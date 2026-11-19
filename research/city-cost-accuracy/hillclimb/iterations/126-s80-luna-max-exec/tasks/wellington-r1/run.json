@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "a631220d0570f113ff81ffa11db1b50b916ee6cb9e813d0cede1f22af32f4943",
+  "requestSha256": "d205e0d0576bd7ea8b08631086525539f946b5cdfd8f30c0e3e165e1c5ac2aef",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 125169,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 144976,
+          "cachedInputTokens": 116224,
+          "outputTokens": 4568,
+          "reasoningOutputTokens": 3913
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html USD Australian dollar daily exchange rate latest 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington New Zealand Numbeo restaurant prices cappuccino beer wine 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington cost of living restaurant prices cocktail wine beer cappuccino July 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington NZ typical restaurant meal prices coffee beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington NZ average cocktail price wine glass restaurant typical price NZD 2026 aggregated"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:25:55.454393Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:25:50.132Z",
+      "finishedAt": "2026-11-19T15:27:55.301Z"
+    }
+  ]
+}

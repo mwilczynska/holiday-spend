@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "9dfa70c12f65d4fda4f745c753ce79cb37423b460a28d8f62c08a183081700b2",
+  "requestSha256": "746ae8abc0eb46036a93cc5c5b5df459de26f1328b45aadf2c66c74f5d611b08",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 104890,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 122613,
+          "cachedInputTokens": 93952,
+          "outputTokens": 3707,
+          "reasoningOutputTokens": 2880
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest RBA exchange rate US dollar per Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kaohsiung cost of living 2026 restaurant prices meal two people cappuccino domestic beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kaohsiung cost of living restaurant meal beer cappuccino prices 2026 Taiwan"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kaohsiung Taiwan cocktail bar menu price wine glass typical TWD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kaohsiung wine glass bar restaurant price NT$ wine by glass 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kaohsiung Taiwan how much cocktail price per drink NT$ typical bar"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T16:06:04.248440Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T16:05:58.896Z",
+      "finishedAt": "2026-11-19T16:07:43.786Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use recent Melbourne price aggregates; the cocktail estimate uses a citywide list median, and wine uses the midpoint of a local price range, close to the beer price. Accommodation is a holistic winter-season estimate and is less certain.",
+  "comparable_city_reasoning": "Based on Melbourne-specific prices; no comparable-city substitution.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.41,
+    "coffee": 4.01,
+    "inexp_meal_1p": 18.14,
+    "midrange_meal_2p": 80.64,
+    "cocktail": 15.46,
+    "wine_glass": 10.08,
+    "hostel_dorm_1p": 35,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 110,
+    "hotel_3star_2p": 160
+  }
+}

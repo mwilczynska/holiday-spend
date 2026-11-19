@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "a631220d0570f113ff81ffa11db1b50b916ee6cb9e813d0cede1f22af32f4943",
+  "requestSha256": "d205e0d0576bd7ea8b08631086525539f946b5cdfd8f30c0e3e165e1c5ac2aef",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 169549,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 240425,
+          "cachedInputTokens": 195584,
+          "outputTokens": 3766,
+          "reasoningOutputTokens": 2907
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates US dollar NZ dollar"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington New Zealand cost of living restaurant inexpensive meal 3 course meal cappuccino domestic beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington New Zealand cost of living 2026 typical restaurant cocktail glass wine beer Expatistan"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington cocktail average price drink cost pub cocktail NZD 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Wellington restaurant wine glass typical price NZD 2026 glass wine bar cost"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:44:12.942455Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:44:13.068107Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:44:18.425576Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:44:40.737457Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:45:04.747115Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:45:15.084117Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:45:24.768571Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:45:36.157560Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:46:31.181200Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:44:07.675Z",
+      "finishedAt": "2026-11-19T17:46:57.225Z"
+    }
+  ]
+}

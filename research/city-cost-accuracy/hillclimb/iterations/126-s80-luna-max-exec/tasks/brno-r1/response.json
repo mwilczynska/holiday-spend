@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use reported Brno typical prices. City-wide cocktail data is limited, so cocktails are estimated relative to local draft beer; wine is estimated at about 1.4 times the beer price. Accommodation anchors are holistic July estimates without live listing checks.",
+  "comparable_city_reasoning": "No external comparable city used; food anchors are based on Brno prices, and accommodation estimates reflect a mid-sized Central European regional city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 3.58,
+    "inexp_meal_1p": 9.09,
+    "midrange_meal_2p": 45.45,
+    "cocktail": 7.23,
+    "wine_glass": 3.64,
+    "hostel_dorm_1p": 22,
+    "hostel_private_2p": 60,
+    "hotel_1star_2p": 75,
+    "hotel_3star_2p": 120
+  }
+}

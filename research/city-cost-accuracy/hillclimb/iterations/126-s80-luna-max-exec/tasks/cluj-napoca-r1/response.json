@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use current Cluj-Napoca price aggregates, which postdate the July 2026 pricing window and serve as a nearby proxy. Cocktail uses menu aggregates; wine by the glass is estimated from its local price relationship to draft beer. Accommodation is a broad seasonal model estimate.",
+  "comparable_city_reasoning": "Food and drink use Cluj-Napoca-specific aggregates. Accommodation is benchmarked broadly against mid-sized Central and Eastern European university and tourism cities.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.45,
+    "coffee": 3.85,
+    "inexp_meal_1p": 12.3,
+    "midrange_meal_2p": 55.8,
+    "cocktail": 7.85,
+    "wine_glass": 5.0,
+    "hostel_dorm_1p": 19.0,
+    "hostel_private_2p": 43.0,
+    "hotel_1star_2p": 55.0,
+    "hotel_3star_2p": 95.0
+  }
+}

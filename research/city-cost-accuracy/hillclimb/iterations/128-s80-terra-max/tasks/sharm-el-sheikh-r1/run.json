@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "d4685d8b0da2a8d34c6ad00f73b4f5239e5c103f6dd69e4992c50b0f6fec5cf7",
+  "requestSha256": "7b5af159bce1965db5c48e3bb3c2111a752e3296ac9a47c918c985372d1c68d7",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 143132,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 180716,
+          "cachedInputTokens": 142336,
+          "outputTokens": 4025,
+          "reasoningOutputTokens": 3017
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates November 2026 Australian dollar United States dollar daily"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm El Sheikh cost of living prices meal inexpensive restaurant cappuccino domestic beer mid range 2026 numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm el Sheikh 2026 restaurant meal cappuccino draft beer cost of living typical prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm El Sheikh bar wine glass cocktail price beer restaurant 2026 typical"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm El Sheikh cocktail wine glass typical price beer 2026 bar drink cost travel budget"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm el Sheikh cost glass wine cocktail beer prices holiday bar 2026"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:38:30.479188Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:30.571725Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:35.864330Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:38:51.549991Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:39:12.310220Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:39:25.184238Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:39:37.986022Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:39:54.153128Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Windows\\\\\\\\\\\\\\\\System32\\\\\\\\\\\\\\\\WindowsPowerShell\\\\\\\\\\\\\\\\v1.0\\\\\\\\\\\\\\\\powershell.exe\\\\\\\" -Command \\\\\\\"Get-Content -LiteralPath 'C:\\\\\\\\\\\\\\\\Dev\\\\\\\\\\\\\\\\holiday-spend\\\\\\\\\\\\\\\\AGENTS.md'\\\\\\\"` rejected: blocked by policy\\\")\" }\n2026-11-19T17:40:09.113316Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:38:25.217Z",
+      "finishedAt": "2026-11-19T17:40:48.349Z"
+    }
+  ]
+}

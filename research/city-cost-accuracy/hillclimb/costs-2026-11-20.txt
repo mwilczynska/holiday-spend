@@ -1,0 +1,19 @@
+lane | model/effort | cities | test $/city | test total $ | app $/city est (p90) | app 333 cities $
+130-s80-haiku-low | claude-haiku-5-5/low | 80 | 0.060 | 4.81 | 0.054 (0.065) | 18.02
+131-s80-haiku-medium | claude-haiku-5-5/medium | 80 | 0.067 | 5.36 | 0.060 (0.078) | 20.13
+132-s80-haiku-high | claude-haiku-5-5/high | 80 | 0.084 | 6.71 | 0.068 (0.082) | 22.69
+133-s80-haiku-xhigh | claude-haiku-5-5/xhigh | 80 | 0.117 | 9.39 | 0.087 (0.103) | 28.82
+142-s80-haiku-max | claude-haiku-5-5/max | 80 | 0.249 | 19.91 | 0.182 (0.222) | 60.60
+134-s80-sonnet-low | claude-sonnet-5-5/low | 80 | 0.057 | 4.58 | 0.095 (0.097) | 31.50
+135-s80-sonnet-medium | claude-sonnet-5-5/medium | 80 | 0.058 | 4.61 | 0.108 (0.137) | 35.85
+136-s80-sonnet-high | claude-sonnet-5-5/high | 80 | 0.075 | 6.00 | 0.143 (0.160) | 47.60
+137-s80-sonnet-xhigh | claude-sonnet-5-5/xhigh | 80 | 0.142 | 11.36 | 0.256 (0.306) | 85.32
+138-s80-sonnet-max | claude-sonnet-5-5/max | 80 | 0.397 | 31.79 | 0.495 (0.559) | 164.97
+139-s80-opus-low | claude-opus-5-5/low | 80 | 0.095 | 7.57 | 0.169 (0.172) | 56.41
+140-s80-opus-medium | claude-opus-5-5/medium | 80 | 0.122 | 9.80 | 0.257 (0.314) | 85.46
+141-s80-opus-high | claude-opus-5-5/high | 80 | 0.142 | 11.38 | 0.303 (0.381) | 100.85
+121-sweep-sol-max | gpt-6.2-sol/max | 20 | 0.226 | 4.51 | 0.206 (0.239) | 68.64
+122-sweep-terra-max | gpt-6.1-terra/max | 20 | 0.122 | 2.45 | 0.112 (0.131) | 37.41
+126-s80-luna-max-exec | gpt-6-luna/max | 80 | 0.056 | 4.48 | 0.055 (0.066) | 18.41
+127-s80-sol-max | gpt-6.2-sol/max | 80 | 0.203 | 16.22 | 0.188 (0.225) | 62.46
+128-s80-terra-max | gpt-6.1-terra/max | 80 | 0.115 | 9.23 | 0.108 (0.125) | 35.87

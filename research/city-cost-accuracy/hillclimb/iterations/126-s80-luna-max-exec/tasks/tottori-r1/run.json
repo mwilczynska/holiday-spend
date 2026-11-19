@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "e310a989e59ea42fbfae0721b99b29e1370564047410ee799d7a622d61182865",
+  "requestSha256": "70a134d862665e05da7f7d3c2da65aeaeee4439375b077a965465519ddad6f19",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 171786,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 167053,
+          "cachedInputTokens": 120192,
+          "outputTokens": 6370,
+          "reasoningOutputTokens": 5718
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html exchange rates daily USD 19 November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tottori Japan cost of living prices beer cappuccino inexpensive restaurant Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tottori Japan average restaurant meal prices coffee beer cocktail wine price index"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Japan cappuccino beer inexpensive restaurant meal three course meal"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "鳥取市 2026 小売物価統計調査 ビール 外食 コーヒー 価格 restaurant coffee beer Tottori"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "鳥取市 2026年7月 ビール 外食 価格 喫茶店 コーヒー 2026 7月 小売物価統計調査"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:20:39.278536Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:20:33.977Z",
+      "finishedAt": "2026-11-19T15:23:25.763Z"
+    }
+  ]
+}

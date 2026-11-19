@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "London price data support the meal, coffee and beer anchors. The cocktail estimate uses local draught beer prices and a small downtown-club sample. Restaurant menus inform the wine estimate, though pour sizes vary. Lodging is modeled for typical July nights and varies by neighborhood and date. [Numbeo](https://www.numbeo.com/cost-of-living/in/London) · [Expatistan](https://www.expatistan.com/price/cocktail/london/GBP) · [Wine Labs](https://winelabs.ai/insights/wine-by-the-glass-prices-london-new-york-paris)",
+  "comparable_city_reasoning": "Paris provides a broad comparison for summer lodging demand in a high-cost Western European capital.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.25,
+    "coffee": 5.50,
+    "inexp_meal_1p": 27,
+    "midrange_meal_2p": 107,
+    "cocktail": 18.50,
+    "wine_glass": 11.50,
+    "hostel_dorm_1p": 45,
+    "hostel_private_2p": 135,
+    "hotel_1star_2p": 150,
+    "hotel_3star_2p": 210
+  }
+}

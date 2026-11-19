@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "08fb48cad34267c998c16d84e2aa29c89fdf3749679a7a7ab3da8052e7b12d25",
+  "requestSha256": "9170a0433bf87d07283c77bedaf9736d84104b9e1d188af8938be3889ef95f39",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 158111,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.2-sol": {
+          "inputTokens": 297910,
+          "cachedInputTokens": 253824,
+          "outputTokens": 4522,
+          "reasoningOutputTokens": 3305
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html Reserve Bank of Australia Exchange Rates 19 Nov 2026 US dollar latest 18 Nov 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Ocho Rios Jamaica cost of living 2026 restaurants inexpensive meal three course two cappuccino domestic draft beer USD Ocho Rios"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica typical restaurant cocktail glass wine USD prices 2026 cost of living food drinks local tourist restaurants price aggregate"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica restaurant drinks menu glass wine cocktail Red Stripe prices 2026 Evitas Miss T's Cafe Fusion Mongoose"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Ocho Rios\" Jamaica \"wine by the glass\" menu price wine JMD Ocho Rios restaurants Evita's Miss T Spring Garden Almond Tree Red Stripe"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "drinks menu Jamaica Ocho Rios \"$\" \"glass\" \"red stripe\" \"wine\" restaurant cocktails mojito prices Ocho Rios bar"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:45:32.022711Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T15:46:39.906056Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Windows\\\\\\\\\\\\\\\\System32\\\\\\\\\\\\\\\\WindowsPowerShell\\\\\\\\\\\\\\\\v1.0\\\\\\\\\\\\\\\\powershell.exe\\\\\\\" -Command \\\\\\\"rg -n --max-count 15 -g 'AGENTS.md' -g '*countries*' -g '*region*' -g '*country*' -g '\\\\\\\"'!data/**'\\\\\\\"' -g '\\\\\\\"'!**/node_modules/**'\\\\\\\"' 'Jamaica|Caribbean|Latin America|North America' .\\\\\\\"` rejected: blocked by policy\\\")\" }\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:45:26.690Z",
+      "finishedAt": "2026-11-19T15:48:04.801Z"
+    }
+  ]
+}

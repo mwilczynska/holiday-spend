@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "973d7dcb988e336c9e30db953d7bd1a17e416c222cde4f875d2d74e048f67b93",
+  "requestSha256": "aa069cf85e0fb1f69bfa1e54bbf2a2b8d76bd2b94d3da09dce6de7c1798d772a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 174648,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 116120,
+          "cachedInputTokens": 63232,
+          "outputTokens": 5932,
+          "reasoningOutputTokens": 5301
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html US dollar Australian dollar latest exchange rates November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia Argentina cost of living restaurant meal cappuccino domestic beer cocktail wine Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia Argentina typical restaurant prices meal coffee beer 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/tables \"US dollar\" \"18-Nov-2026\" exchange rate"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html November 2026 exchange rates US dollar 19 November"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ushuaia Argentina restaurant wine glass cocktail price 2026 Numbeo"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:23:27.790295Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:23:22.467Z",
+      "finishedAt": "2026-11-19T15:26:17.115Z"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "26dc1011d9e21e65beeb9faf6891813421d3627fc0d176b4854096c79e67a740",
+  "requestSha256": "7b59747ab84fe0f874842bad1226cc57ae54b1c2a17ef914b9db5d0378c9c4fb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 118134,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 176391,
+          "cachedInputTokens": 140544,
+          "outputTokens": 2466,
+          "reasoningOutputTokens": 1619
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest Australian dollar US dollar daily RBA November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina cost of living restaurant meal cappuccino domestic beer 2026 numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina cost of living restaurant mid range meal 2 people coffee draft beer 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina wine glass cocktail restaurant bar average prices 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza cost living July 2026 price cappuccino beer 3 course dinner 2026 USD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mendoza Argentina July 2026 prices glass of wine cocktails restaurant glass menu price"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://puraltura.com.ar/"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:30:51.289234Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:30:51.382611Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:30:56.592422Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:31:08.585625Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:31:26.909832Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:31:46.488839Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:32:03.403888Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:32:18.451403Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:30:46.014Z",
+      "finishedAt": "2026-11-19T17:32:44.148Z"
+    }
+  ]
+}

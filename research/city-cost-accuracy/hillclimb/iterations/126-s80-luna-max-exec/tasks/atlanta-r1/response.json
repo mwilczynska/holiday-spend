@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Atlanta city-wide prices near the requested window. Cocktail and wine are less certain and estimated at roughly 1.7 times the local draft-beer price; lodging is a holistic estimate with wide variation from hostel availability and event dates.",
+  "comparable_city_reasoning": "No city comparator used; food and drink estimates are Atlanta-specific, while accommodation uses a broad large U.S. metro baseline.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.0,
+    "coffee": 5.12,
+    "inexp_meal_1p": 27.5,
+    "midrange_meal_2p": 110.0,
+    "cocktail": 11.5,
+    "wine_glass": 12.0,
+    "hostel_dorm_1p": 45.0,
+    "hostel_private_2p": 110.0,
+    "hotel_1star_2p": 120.0,
+    "hotel_3star_2p": 185.0
+  }
+}

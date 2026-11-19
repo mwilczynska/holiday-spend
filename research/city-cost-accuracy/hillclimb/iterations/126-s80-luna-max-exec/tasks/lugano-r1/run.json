@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "f38095013c08f8f229b60bc339db0a57cfe0541c6a4c3a608165080e57739917",
+  "requestSha256": "48c7846375f7b1a60167ae24fbb1329501a497559bb285f49b4cf87891c11070",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 120612,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 115528,
+          "cachedInputTokens": 77312,
+          "outputTokens": 4624,
+          "reasoningOutputTokens": 4011
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates USD Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano Switzerland cost of living restaurant prices cappuccino beer inexpensive meal mid-range restaurant Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Lugano Switzerland cost of living cocktail glass wine prices restaurant typical"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:04:24.237648Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:04:18.892Z",
+      "finishedAt": "2026-11-19T15:06:19.504Z"
+    }
+  ]
+}

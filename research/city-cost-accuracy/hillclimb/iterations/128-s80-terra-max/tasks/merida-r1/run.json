@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "d8ba0b0f99959ed6479a17d1634bd813c793dd29591ffa46ec7def5e8d9e4836",
+  "requestSha256": "eb4e72856516f3de89a36b95de0aaa47425d84a15dc24ea86d9bbe9a89049db9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 109884,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 174966,
+          "cachedInputTokens": 137856,
+          "outputTokens": 3127,
+          "reasoningOutputTokens": 2161
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics daily exchange rates latest 2026 USD US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Merida Mexico cost of living prices cappuccino domestic draught beer inexpensive restaurant three course meal USD numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Merida Mexico cost of living cocktail bar glass of wine price restaurant 2026 expatistan"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Merida Mexico food drink prices average coffee cappuccino draft beer cocktail wine restaurants cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico \"2026\" restaurant prices glass of wine cappuccino cocktail pesos beer travel"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Merida\" \"July 2026\" \"beer\" \"cappuccino\" \"meal\" cost of living USD"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:24:02.786Z",
+      "finishedAt": "2026-11-19T12:25:52.671Z"
+    }
+  ]
+}

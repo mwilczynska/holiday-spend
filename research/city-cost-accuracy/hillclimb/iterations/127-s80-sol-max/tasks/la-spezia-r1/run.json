@@ -1,0 +1,95 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3292484ab3f700c29c5c99014ee6e0b75fb3c33374e5b16fdde31cbb8b4c0c78",
+  "requestSha256": "ca717fb5cc904521a5bae6a0149b294c1471bb2ab89f2e2f29397bc8b82f3699",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 104334,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.2-sol": {
+          "inputTokens": 197531,
+          "cachedInputTokens": 142080,
+          "outputTokens": 2976,
+          "reasoningOutputTokens": 1673
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia Italy Numbeo cost of living restaurants 2026 cappuccino domestic draft beer inexpensive meal meal for 2 La Spezia EUR USD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia Italy 2026 cost of living meals cappuccino domestic beer typical restaurant prices La Spezia EUR USD Livingcost Expatistan"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia Italy typical aperol spritz cocktail glass of wine prices La Spezia average 2026 aperitivo restaurant 2026 euro"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates November 2026 19 Nov 2026 US dollar latest RBA USD AUD daily exchange rates"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia calice vino 5 6 7 euro listino spritz negroni drink menu ristorante enoteca La Spezia 2026 calici"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "La Spezia Italy average price cocktail aperitivo glass of wine La Spezia 2026 travel guide restaurant local € spritz house wine by the glass"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:37:46.427972Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:37:41.105Z",
+      "finishedAt": "2026-11-19T15:39:25.439Z"
+    }
+  ]
+}

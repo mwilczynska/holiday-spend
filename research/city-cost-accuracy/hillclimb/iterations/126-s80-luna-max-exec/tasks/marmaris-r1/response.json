@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use Marmaris cost-of-living aggregates, but the city data are sparse and July resort pricing varies. Cocktail is estimated at roughly twice the local draft-beer price; wine by the glass uses its local price relationship to beer. Accommodation is a holistic July high-season estimate, not based on live listings.",
+  "comparable_city_reasoning": "Food and drink are based on Marmaris city price data; accommodation reflects a southwestern Turkish Aegean resort in July.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.0,
+    "coffee": 3.4,
+    "inexp_meal_1p": 8.5,
+    "midrange_meal_2p": 40.0,
+    "cocktail": 9.0,
+    "wine_glass": 6.0,
+    "hostel_dorm_1p": 18.0,
+    "hostel_private_2p": 42.0,
+    "hotel_1star_2p": 55.0,
+    "hotel_3star_2p": 100.0
+  }
+}

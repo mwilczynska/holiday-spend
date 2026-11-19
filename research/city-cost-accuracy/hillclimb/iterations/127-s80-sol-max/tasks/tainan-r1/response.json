@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Local price aggregates support the meal, cappuccino and draft beer estimates. A local bar guide supports the cocktail estimate. Wine by the glass has thinner coverage, so its estimate uses the local premium over draft beer, checked against menu prices. Lodging is modeled for a typical July night. [Numbeo](https://www.numbeo.com/cost-of-living/in/Tainan) [Tainan bar guide](https://lovenight-tw.com/tainan/en/blog/tainan-first-bar-guide) [Key Men drinks menu](https://keymem-bar.com/menu/)",
+  "comparable_city_reasoning": "Kaohsiung and Chiayi provide a southern Taiwan benchmark for budget lodging. Tainan's historic center and domestic weekend tourism inform the July room estimates.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.15,
+    "coffee": 3.25,
+    "inexp_meal_1p": 4.15,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 11.00,
+    "wine_glass": 9.25,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 41.00,
+    "hotel_1star_2p": 45.00,
+    "hotel_3star_2p": 66.00
+  }
+}

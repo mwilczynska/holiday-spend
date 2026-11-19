@@ -29,7 +29,7 @@ const LANES = [
   ['134-s80-sonnet-low', 'sonnet', 'Sonnet', 'Sonnet'], ['135-s80-sonnet-medium', 'sonnet', 'Sonnet', 'Sonnet'], ['136-s80-sonnet-high', 'sonnet', 'Sonnet', 'Sonnet'],
   ['137-s80-sonnet-xhigh', 'sonnet', 'Sonnet', 'Sonnet'], ['138-s80-sonnet-max', 'sonnet', 'Sonnet', 'Sonnet'],
   ['139-s80-opus-low', 'opus', 'Opus', 'Opus'], ['140-s80-opus-medium', 'opus', 'Opus', 'Opus'], ['141-s80-opus-high', 'opus', 'Opus', 'Opus'],
-  ['123-sweep-luna-max-exec', 'gpt', 'GPT-6 Luna rerun', 'Luna rerun'], ['125-s40-terra-max', 'gpt', 'GPT-6.1 Terra', 'Terra'], ['124-s40-sol-max', 'gpt', 'GPT-6.2 Sol', 'Sol'],
+  ['126-s80-luna-max-exec', 'gpt', 'GPT-6 Luna rerun', 'Luna rerun'], ['128-s80-terra-max', 'gpt', 'GPT-6.1 Terra', 'Terra'], ['127-s80-sol-max', 'gpt', 'GPT-6.2 Sol', 'Sol'],
 ];
 const luna = ctx.answers('102-search-food-drink-luna-r2');
 const r3 = x => Math.round(x * 1000) / 1000, r2 = x => Math.round(x * 100) / 100;
@@ -51,7 +51,7 @@ const rows = LANES.map(([lane, family, model, shortModel]) => {
     minutes: r2(c.minP50), minutesLow: r2(c.minP10), minutesHigh: r2(c.minP90),
     correction: isReference ? 'Reference' : entry ? 'Own calibration' : 'Unmeasured default' };
 });
-const lunaRow = rows.find(r => r.id === '123-sweep-luna-max-exec');
+const lunaRow = rows.find(r => r.id === '126-s80-luna-max-exec');
 const result = { generatedAt: new Date().toISOString().slice(0, 10), countryTable: table.version, modelAdjustments: adj.version,
   referencePanel: 'R4 (dev split, grades A-C)', reference: { model: 'gpt-6-luna', cost: lunaRow.cost, minutes: lunaRow.minutes }, rows };
 fs.writeFileSync(out, JSON.stringify(result, null, 2) + '\n');

@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "18414e03e13f7a2a262810e9deffddefa0211a907f260bcaa69b30d5cecc2e83",
+  "requestSha256": "986696d6b893baca862524f14bf91169747ea5a0391b2e792d78ae2f29b99272",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 103387,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 75915,
+          "cachedInputTokens": 39808,
+          "outputTokens": 4370,
+          "reasoningOutputTokens": 3821
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html daily exchange rates 19 November 2026 USD AUD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta typical restaurant prices inexpensive meal cappuccino beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta restaurant meal coffee beer average prices cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta cocktail typical price cost of living drinks"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html US dollar daily exchange rates November 2026 RBA"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Koh Lanta wine glass restaurant typical price baht 2026"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:59:37.267109Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:59:31.839Z",
+      "finishedAt": "2026-11-19T15:01:15.226Z"
+    }
+  ]
+}

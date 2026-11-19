@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Recent aggregated Penang prices anchor meals, coffee, and beer. Cocktail and wine estimates use roughly 2.5× and 2× the local beer price; lodging figures are broad model estimates.",
+  "comparable_city_reasoning": "Food and drink estimates use Penang data directly; lodging reflects the city’s role as a Malaysian secondary tourism destination, without a direct city proxy.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.1,
+    "coffee": 2.9,
+    "inexp_meal_1p": 3.6,
+    "midrange_meal_2p": 19.4,
+    "cocktail": 10.3,
+    "wine_glass": 8.3,
+    "hostel_dorm_1p": 9,
+    "hostel_private_2p": 27,
+    "hotel_1star_2p": 30,
+    "hotel_3star_2p": 55
+  }
+}

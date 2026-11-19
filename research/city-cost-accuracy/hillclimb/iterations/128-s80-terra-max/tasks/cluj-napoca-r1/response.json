@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, coffee and beer estimates use [aggregated local prices](https://www.averagecostof.living/in/romania/cluj-napoca/restaurants/). The cocktail estimate is informed by a [local nightlife guide](https://stealmyguide.com/cluj-napoca/nightlife-guide/); wine is estimated relative to beer and checked against one [local menu](https://how-hotel.ro/wp-content/uploads/2026/02/Meniu-bauturi-Kohe-Panineria-Caffe-Euphoria-Cafenea-Cluj.pdf). Accommodation is a holistic estimate, with substantial uncertainty around July event dates.",
+  "comparable_city_reasoning": "Food and drink estimates use Cluj-Napoca data. Accommodation estimates reflect its role as a Romanian university and business city and the wider regional market.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.4,
+    "coffee": 3.7,
+    "inexp_meal_1p": 13.5,
+    "midrange_meal_2p": 63.5,
+    "cocktail": 8.0,
+    "wine_glass": 5.75,
+    "hostel_dorm_1p": 25.0,
+    "hostel_private_2p": 60.0,
+    "hotel_1star_2p": 65.0,
+    "hotel_3star_2p": 100.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Food, coffee, and beer estimates use Havana aggregate price observations from 2026 and approximate the July pricing window. Prices vary widely between local and tourist-facing businesses; cocktail and wine estimates use rough multiples of draft beer, and accommodation estimates are holistic.",
+  "comparable_city_reasoning": "No external comparable city used. Food and drink estimates use Havana's own aggregate price data; lodging is estimated for Havana's visitor market.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.25,
+    "coffee": 1.10,
+    "inexp_meal_1p": 4.40,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 4.00,
+    "wine_glass": 3.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

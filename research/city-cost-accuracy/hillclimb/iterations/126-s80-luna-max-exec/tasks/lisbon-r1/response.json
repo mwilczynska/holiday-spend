@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates use current aggregated Lisbon prices as a proxy for the July 2026 window; cocktail and wine prices vary more by venue and are estimated relative to local beer prices. July accommodation anchors are holistic seasonal estimates without live listing data and are the least certain.",
+  "comparable_city_reasoning": "Food and drink estimates use aggregated Lisbon prices. Accommodation is estimated from Lisbon’s July tourist demand and broad Iberian and Western European capital-city patterns.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.93,
+    "coffee": 2.48,
+    "inexp_meal_1p": 14.49,
+    "midrange_meal_2p": 49.34,
+    "cocktail": 8.77,
+    "wine_glass": 3.84,
+    "hostel_dorm_1p": 48.00,
+    "hostel_private_2p": 118.00,
+    "hotel_1star_2p": 137.00,
+    "hotel_3star_2p": 225.00
+  }
+}

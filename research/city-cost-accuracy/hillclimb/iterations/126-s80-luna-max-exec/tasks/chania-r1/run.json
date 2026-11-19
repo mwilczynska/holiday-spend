@@ -1,0 +1,59 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "ccb8f68ca37f5fc05577b548fc29f0ef5dc8a260118914230186ee7b483b79f0",
+  "requestSha256": "ef61a647d6f6c82fcc7bc056ba34b925ef098a384bc05b5a23c0aa8fa73ff038",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 97844,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 76703,
+          "cachedInputTokens": 28160,
+          "outputTokens": 3572,
+          "reasoningOutputTokens": 3037
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics exchange rates latest USD AUD daily exchange rate November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania Greece cost of living prices restaurant meal cappuccino beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania Greece restaurant prices cappuccino beer cocktail wine cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania cocktail wine glass price average cost 2026 cost of living Greece Chania"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:51:38.833040Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:38.941197Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:44.266088Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:51:53.637220Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:08.082132Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:52:18.212450Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:51:33.516Z",
+      "finishedAt": "2026-11-19T14:53:11.360Z"
+    }
+  ]
+}

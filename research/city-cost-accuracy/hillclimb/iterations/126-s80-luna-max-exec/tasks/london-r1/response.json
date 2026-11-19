@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, beer, and coffee anchors use London cost-of-living aggregates near the July 2026 window. Cocktail and wine prices are less standardized and are estimated relative to local draft beer. July accommodation prices are holistic seasonal estimates and are less certain.",
+  "comparable_city_reasoning": "No proxy city used; food and drink anchors are based on London prices, while accommodation is modeled for London.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 9.20,
+    "coffee": 5.44,
+    "inexp_meal_1p": 26.28,
+    "midrange_meal_2p": 105.12,
+    "cocktail": 18.40,
+    "wine_glass": 10.51,
+    "hostel_dorm_1p": 58.00,
+    "hostel_private_2p": 145.00,
+    "hotel_1star_2p": 175.00,
+    "hotel_3star_2p": 275.00
+  }
+}

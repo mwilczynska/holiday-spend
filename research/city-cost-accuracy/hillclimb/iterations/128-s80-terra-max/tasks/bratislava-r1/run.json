@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "a07b3e790f76f633398adf7937530d86e35d90c7f374dad1691881da8e8ec4ac",
+  "requestSha256": "3d0a4133d354a8fa4389183b69139098ff37cadfab52a54cf8f1b82a120661ed",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 126535,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 143430,
+          "cachedInputTokens": 106240,
+          "outputTokens": 4006,
+          "reasoningOutputTokens": 3306
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au daily exchange rates Australian dollar US dollar euro 19 November 2026 latest"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bratislava cost of living 2026 Numbeo cappuccino domestic beer inexpensive restaurant meal three course"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bratislava Slovakia 2026 typical cocktail price wine by the glass restaurant bar price euros"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bratislava cost of living prices 2026 restaurant beer cappuccino three course meal Slovakia"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:58:12.575724Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:58:07.120Z",
+      "finishedAt": "2026-11-19T16:00:13.655Z"
+    }
+  ]
+}

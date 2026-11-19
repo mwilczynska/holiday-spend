@@ -1,0 +1,65 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3ae397fe0de7010437480e546dabfdfa719eba749ab46121c6408ae590fc8c1e",
+  "requestSha256": "0672ff612063cde9e2b3cb4d4ac550fb25b57a9ed1eb4d44c70ed5bf9d9a3d55",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 94092,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 124847,
+          "cachedInputTokens": 95488,
+          "outputTokens": 2411,
+          "reasoningOutputTokens": 1682
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au exchange rates latest daily USD Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tampa Florida cost of living restaurant meal cappuccino domestic beer three course meal numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tampa cost of living prices cocktail wine glass restaurant bar prices 2026 typical"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:40:53.640737Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:40:53.749276Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:40:59.027393Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:41:07.356807Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:41:27.134208Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:41:39.787685Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:41:49.833284Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:40:48.358Z",
+      "finishedAt": "2026-11-19T17:42:22.450Z"
+    }
+  ]
+}

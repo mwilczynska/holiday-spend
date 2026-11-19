@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Naha crowdsourced data are sparse, and some observations postdate July 2026. Food estimates draw on [Numbeo](https://www.numbeo.com/cost-of-living/in/Naha-Japan) and [Livingcost](https://livingcost.org/cost/japan/naha). Cocktail and wine estimates use their relationship to beer and a [local drink menu](https://www.arrange-okinawa.jp/drink/). Accommodation is a holistic estimate with substantial seasonal uncertainty.",
+  "comparable_city_reasoning": "Accommodation estimates use regional Japanese cities such as Kagoshima as a general basis, adjusted for Okinawa's island tourism and July demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.8,
+    "coffee": 3.0,
+    "inexp_meal_1p": 5.5,
+    "midrange_meal_2p": 30.0,
+    "cocktail": 4.5,
+    "wine_glass": 4.0,
+    "hostel_dorm_1p": 22.0,
+    "hostel_private_2p": 50.0,
+    "hotel_1star_2p": 55.0,
+    "hotel_3star_2p": 90.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and beer estimates use a June 2026 [Numbeo snapshot](https://www.numbeo.com/cost-of-living/in/San-Antonio). [Square's local bar prices](https://squareup.com/us/en/menu-pricing/bar-prices-in-san-antonio) inform the cocktail estimate; wine is estimated relative to beer and [local happy-hour prices](https://hhatlas.com/happy-hour-index/san-antonio/). Accommodation is modeled, with limited hostel supply and date variation adding uncertainty. Estimates exclude tax and tips.",
+  "comparable_city_reasoning": "Accommodation estimates use the broader mid-priced Texas and southern US visitor market, adjusted for San Antonio's tourism demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.25,
+    "coffee": 5.19,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 65,
+    "cocktail": 10,
+    "wine_glass": 10,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 95,
+    "hotel_1star_2p": 85,
+    "hotel_3star_2p": 140
+  }
+}

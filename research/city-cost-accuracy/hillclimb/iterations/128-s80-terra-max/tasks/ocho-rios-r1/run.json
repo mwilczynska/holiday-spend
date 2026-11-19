@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "08fb48cad34267c998c16d84e2aa29c89fdf3749679a7a7ab3da8052e7b12d25",
+  "requestSha256": "9170a0433bf87d07283c77bedaf9736d84104b9e1d188af8938be3889ef95f39",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 141388,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 180505,
+          "cachedInputTokens": 142208,
+          "outputTokens": 2915,
+          "reasoningOutputTokens": 2058
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics exchange rates daily Australian dollar US dollar latest observation"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica restaurant prices cost of living cappuccino domestic beer inexpensive meal mid range meal"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica average cocktail wine glass restaurant prices drinks beer"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica cost living prices numbeo restaurant beer cappuccino meal 2026"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ocho Rios Jamaica average cocktail prices wine by glass bar restaurant cost US dollars rum punch typical 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jamaica cost of travel bar restaurant cocktail wine glass beer price cocktail Jamaica 2026"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:34:39.530300Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:39.639111Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:44.906753Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:56.513351Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:35:26.573500Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:35:49.196087Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:36:04.644471Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:36:21.914817Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:34:34.246Z",
+      "finishedAt": "2026-11-19T17:36:55.634Z"
+    }
+  ]
+}

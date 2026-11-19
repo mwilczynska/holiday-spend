@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Newcastle-specific cost-of-living aggregates anchor meals, coffee and beer. Cocktail and wine estimates are less certain; local bar menu prices guide the cocktail, and the wine estimate uses local glass prices relative to draft beer. Accommodation is a broad July seasonal estimate; no live accommodation prices were checked.",
+  "comparable_city_reasoning": "Food and drink use Newcastle-specific price aggregates. Accommodation uses a mid-sized coastal NSW regional-city baseline with a winter-season adjustment.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.74,
+    "coffee": 3.66,
+    "inexp_meal_1p": 20.16,
+    "midrange_meal_2p": 100.8,
+    "cocktail": 13.44,
+    "wine_glass": 7.39,
+    "hostel_dorm_1p": 30.24,
+    "hostel_private_2p": 73.92,
+    "hotel_1star_2p": 90.72,
+    "hotel_3star_2p": 127.68
+  }
+}

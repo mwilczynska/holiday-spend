@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use Rome cost-of-living observations and restaurant menu medians; accommodation is a less certain holistic estimate for July demand. Cocktail and wine estimates use Rome menu prices.",
+  "comparable_city_reasoning": "No comparable city was needed; food and drink estimates use Rome-specific aggregated price references.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.10,
+    "coffee": 2.10,
+    "inexp_meal_1p": 17.50,
+    "midrange_meal_2p": 66.00,
+    "cocktail": 11.40,
+    "wine_glass": 8.70,
+    "hostel_dorm_1p": 46.00,
+    "hostel_private_2p": 116.00,
+    "hotel_1star_2p": 150.00,
+    "hotel_3star_2p": 220.00
+  }
+}

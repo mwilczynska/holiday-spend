@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "347f2cc098022656a4289798ed1a5a33336163a285492f826fec240843e01536",
+  "requestSha256": "32ff3bd51c52d586585277c39210653e2c294272be26c35312541dcdd914d01f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 119410,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 226552,
+          "cachedInputTokens": 182784,
+          "outputTokens": 4289,
+          "reasoningOutputTokens": 3556
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html USD AUD exchange rates latest 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver restaurant prices cappuccino domestic draft beer inexpensive meal mid-range restaurant cocktail wine Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver cost of living restaurant prices beer coffee wine cocktail average prices 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html November 2026 \"United States dollar\" \"Latest Exchange Rates\""
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver average price cocktail wine glass restaurant cost of living Denver 2026 typical"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denver CO Numbeo July 2026 cost of living meal for two cappuccino domestic draft beer update"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:53:16.688815Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:53:16.810909Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:53:22.060620Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:53:29.168824Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:53:40.546507Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:53:50.446839Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:54:12.364847Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:54:21.734348Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:53:11.376Z",
+      "finishedAt": "2026-11-19T14:55:10.786Z"
+    }
+  ]
+}

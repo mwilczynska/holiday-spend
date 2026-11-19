@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "c72e33ef6fae1d6b7d9559fb7674be04948174d539c78028ef7848988cb231bd",
+  "requestSha256": "533ff10a68356a945e540bfded7f5336c0a2d41d07bea7b7e78a3abf1aeefc01",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 94913,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 77913,
+          "cachedInputTokens": 43136,
+          "outputTokens": 3214,
+          "reasoningOutputTokens": 2678
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates USD AUD November 2026 RBA"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile cost of living restaurant inexpensive meal mid-range meal cappuccino Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile cost of living beer domestic beer cappuccino restaurant prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile cocktail wine glass restaurant prices cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile food prices restaurant meal coffee beer typical prices"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T14:47:33.487488Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:33.672202Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:39.481825Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:47:46.462305Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:48:02.605509Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T14:48:14.854677Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T14:47:25.988Z",
+      "finishedAt": "2026-11-19T14:49:00.903Z"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "d4685d8b0da2a8d34c6ad00f73b4f5239e5c103f6dd69e4992c50b0f6fec5cf7",
+  "requestSha256": "7b5af159bce1965db5c48e3bb3c2111a752e3296ac9a47c918c985372d1c68d7",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 136589,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 167566,
+          "cachedInputTokens": 130048,
+          "outputTokens": 4803,
+          "reasoningOutputTokens": 4181
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates US dollar Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm El Sheikh cost of living restaurant prices inexpensive meal midrange dinner cappuccino domestic beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm El Sheikh average restaurant prices beer coffee cocktail glass wine Egypt cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm El Sheikh typical food drink prices local restaurants cappuccino beer cocktail wine cost of living"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sharm El Sheikh typical cocktail price glass wine restaurant price 2026 cost of living"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T15:15:27.209077Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T15:15:21.872Z",
+      "finishedAt": "2026-11-19T15:17:38.461Z"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "2f9227b7baa241428e1072e22a08b4f865b36ddd55d565520962337bdb275c16",
+  "requestSha256": "59b78c5c9e6f095c1f1900720326fc7114cf0a9498ff3289793010e7c93eb80d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 129461,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 240127,
+          "cachedInputTokens": 168192,
+          "outputTokens": 3326,
+          "reasoningOutputTokens": 2449
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates daily latest US dollar Australian dollar 2026 November"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha cost of living numbeo USD restaurant inexpensive meal three course beer cappuccino price"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa average cocktail glass of wine bar prices beer typical restaurant"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa cost of living restaurant beer cappuccino meal for 2 USD cost"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naha Okinawa typical bar cocktail wine by the glass prices yen"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "那覇 居酒屋 カクテル グラスワイン 平均 価格 生ビール 値段"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T17:33:13.600898Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:13.693981Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:18.887675Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:29.587212Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:46.453437Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:33:57.596933Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:06.366657Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:23.633483Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T17:34:53.277324Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T17:33:08.330Z",
+      "finishedAt": "2026-11-19T17:35:17.792Z"
+    }
+  ]
+}

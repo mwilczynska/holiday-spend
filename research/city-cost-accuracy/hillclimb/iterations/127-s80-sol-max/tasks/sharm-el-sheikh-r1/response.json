@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "A small July price index informs meals, coffee and draft beer. Cocktail and wine estimates use their price premiums over beer on local menus. Lodging is modeled, with the greatest uncertainty around scarce hostel beds and rooms. [July price index](https://almurakib.com/living-cost/city/sharm-el-sheikh/) and [Camel Bar drinks menu](https://www.cameldive.com/food-and-drinks-camel-bar-rooftop/camel-bar-drinks-menu/).",
+  "comparable_city_reasoning": "Hurghada provides a benchmark for budget hotels in a Red Sea resort market. Nearby Dahab informs the hostel estimates because of its established backpacker accommodation.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.25,
+    "coffee": 1.9,
+    "inexp_meal_1p": 7.75,
+    "midrange_meal_2p": 23,
+    "cocktail": 7,
+    "wine_glass": 5,
+    "hostel_dorm_1p": 13,
+    "hostel_private_2p": 29,
+    "hotel_1star_2p": 32,
+    "hotel_3star_2p": 52
+  }
+}

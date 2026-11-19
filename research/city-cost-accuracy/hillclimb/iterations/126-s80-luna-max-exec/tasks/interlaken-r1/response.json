@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Interlaken aggregate food and drink prices are a nearby proxy for July 2026 and have a small contributor pool. Cocktail and wine estimates use local bar price ranges relative to draft beer. July lodging prices are holistic estimates with substantial seasonal uncertainty; no live booking prices were checked.",
+  "comparable_city_reasoning": "Food and drink use Interlaken's own aggregated prices. Lodging estimates reflect Swiss alpine resort demand and July peak season.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.00,
+    "coffee": 5.33,
+    "inexp_meal_1p": 29.63,
+    "midrange_meal_2p": 94.83,
+    "cocktail": 22.52,
+    "wine_glass": 13.63,
+    "hostel_dorm_1p": 77.05,
+    "hostel_private_2p": 189.65,
+    "hotel_1star_2p": 237.07,
+    "hotel_3star_2p": 355.60
+  }
+}
