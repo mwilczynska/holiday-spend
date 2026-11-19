@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded from aggregated cost-of-living sources of mixed age and a Taormina tourist-premium adjustment, so they are rough. Restaurant and drink prices are medium confidence; coffee and beer are slightly firmer. Accommodation anchors are holistic model estimates from general knowledge of Sicilian coastal resort pricing for July, not from live listings. Cocktail and wine are bounded using local beer and wine price relationships because direct Taormina data was thin. The FX observation is the latest RBA figure I could verify (20 March 2026), which is about eight months old as of the generation date, so it may not reflect the current rate.",
+  "comparable_city_reasoning": "Sicilian coastal tourist towns (Catania, Syracuse, Cefalù) with a premium for Taormina's high-season tourist demand, cross-checked against aggregated Sicily cost-of-living guides.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.50,
+    "coffee": 2.80,
+    "inexp_meal_1p": 13.50,
+    "midrange_meal_2p": 75.00,
+    "cocktail": 12.00,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 95.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 190.00
+  }
+}

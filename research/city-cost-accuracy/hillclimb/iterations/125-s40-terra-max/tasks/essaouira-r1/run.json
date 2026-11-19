@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "04ec1d1e1a1af8a3a0c6d2fa6ae94475c193d8e7550c3daf270a150fb4e457d0",
+  "requestSha256": "8fb0d5c2561897ddbbf88ec9ed40294826b5858cca2d81cd5090d66bde34f6ed",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 90167,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 125532,
+          "cachedInputTokens": 93952,
+          "outputTokens": 3018,
+          "reasoningOutputTokens": 2191
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest USD Australian dollar daily exchange rate November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira cost of living prices restaurant inexpensive meal cappuccino domestic beer mid range meal two US dollars"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira Morocco cost of living restaurant prices cappuccino beer wine meal 2026 USD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira Morocco restaurant bar drinks prices cocktail \"wine\" \"beer\" 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira menu cocktail verre de vin biere prix maroc bar"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira average restaurant bar beer glass of wine cocktail prices MAD 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:20:22.517Z",
+      "finishedAt": "2026-11-19T12:21:52.684Z"
+    }
+  ]
+}

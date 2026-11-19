@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "37551627f4666a59a8d59bf2b8ce885fb41a0ac7871450a96f9344598f3544fa",
+  "requestSha256": "52f4b8b096ee95cbc1242c70dd483c923ac50969f99414e3466c1e9bf17bde58",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39028,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 64381,
+          "outputTokens": 6692,
+          "cacheReadInputTokens": 15729,
+          "cacheCreationInputTokens": 11536,
+          "webSearchRequests": 5,
+          "costUSD": 0.06224859,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2025,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06224859,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest F11 USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hua Hin Thailand restaurant meal beer cocktail wine prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Thailand cost of living cappuccino beer price Thai restaurant typical 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates F11 daily historical AUD USD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:24:33.920Z",
+      "finishedAt": "2026-11-19T12:25:12.948Z"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "03eb1cf4c19c11475e9597ec2c92ba12da068831549b2cc762786d26daa0a6a8",
+  "requestSha256": "13d5dafdc1e3a55fbca7d0d8f0925b8ef730bef0a143d56cbae5a1a419182d41",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 42002,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 76110,
+          "outputTokens": 7334,
+          "cacheReadInputTokens": 13624,
+          "cacheCreationInputTokens": 12089,
+          "webSearchRequests": 5,
+          "costUSD": 0.06383204,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2454,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06383204,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Frankfurt restaurant meal price cappuccino beer cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Frankfurt am Main Preise Bier Glas Wein Cocktail Restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates daily Australian dollar USD 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Frankfurt Weinpreis Glas Cocktail Preis Euro Bar Durchschnitt",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:24:24.128Z",
+      "finishedAt": "2026-11-19T12:25:06.130Z"
+    }
+  ]
+}

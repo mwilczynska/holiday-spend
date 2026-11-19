@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Punta Cana price data informed the July meal, cappuccino and draft beer estimates. Cocktail and wine estimates use their prices relative to beer on a small sample of local menus. Lodging is modeled, with hostel prices especially uncertain because supply is limited. [Numbeo](https://www.numbeo.com/cost-of-living/in/Punta-Cana), [Wise](https://wise.com/us/cost-of-living/dominican-republic/punta-cana), [Soles menu](https://nowinpuntacana.com/wp-content/uploads/2026/02/Soles_Menu_English.pdf), [La Ceretta menu](https://nowinpuntacana.com/wp-content/uploads/2025/10/Laceretta-Cocktail-Menu-English-Final.pdf)",
+  "comparable_city_reasoning": "Bayahíbe and Las Terrenas inform the estimates for independent lodging, with a modest premium for visitor demand around Bávaro.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.25,
+    "inexp_meal_1p": 8,
+    "midrange_meal_2p": 48,
+    "cocktail": 7.50,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 22,
+    "hostel_private_2p": 48,
+    "hotel_1star_2p": 55,
+    "hotel_3star_2p": 90
+  }
+}

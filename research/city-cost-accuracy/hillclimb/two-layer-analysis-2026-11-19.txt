@@ -1,0 +1,34 @@
+Scored against Luna with its own country layer on the same cities. Calibration: first 40 cities by hash order (seed sweep-2026-11-19).
+lane | cities scored | raw | A today (Luna layer) | B pooled default | C calibrated (out of sample) | D model-level shift | Luna | B vs A [95%] | C vs Luna [95%]
+130-s80-haiku-low | 40 | 0.353 | 0.230 | 0.259 | 0.232 | 0.226 | 0.146 | +0.029 [-0.007, +0.064] | +0.086 [+0.056, +0.116]
+131-s80-haiku-medium | 40 | 0.372 | 0.205 | 0.263 | 0.209 | 0.205 | 0.146 | +0.058 [+0.025, +0.088] | +0.064 [+0.036, +0.094]
+132-s80-haiku-high | 40 | 0.368 | 0.198 | 0.251 | 0.200 | 0.197 | 0.146 | +0.053 [+0.022, +0.082] | +0.054 [+0.024, +0.086]
+133-s80-haiku-xhigh | 40 | 0.351 | 0.181 | 0.242 | 0.182 | 0.182 | 0.146 | +0.060 [+0.030, +0.087] | +0.036 [+0.013, +0.060]
+142-s80-haiku-max | 40 | 0.328 | 0.183 | 0.210 | 0.179 | 0.180 | 0.146 | +0.028 [-0.007, +0.060] | +0.033 [+0.006, +0.062]
+134-s80-sonnet-low | 40 | 0.278 | 0.226 | 0.188 | 0.197 | 0.189 | 0.146 | -0.038 [-0.063, -0.012] | +0.051 [+0.024, +0.079]
+135-s80-sonnet-medium | 40 | 0.278 | 0.224 | 0.192 | 0.205 | 0.195 | 0.146 | -0.032 [-0.058, -0.006] | +0.059 [+0.034, +0.087]
+136-s80-sonnet-high | 40 | 0.275 | 0.215 | 0.178 | 0.191 | 0.180 | 0.146 | -0.037 [-0.063, -0.010] | +0.045 [+0.016, +0.074]
+137-s80-sonnet-xhigh | 40 | 0.270 | 0.208 | 0.176 | 0.189 | 0.181 | 0.146 | -0.032 [-0.059, -0.006] | +0.044 [+0.022, +0.065]
+138-s80-sonnet-max | 40 | 0.244 | 0.211 | 0.162 | 0.171 | 0.168 | 0.146 | -0.048 [-0.073, -0.022] | +0.025 [+0.005, +0.045]
+139-s80-opus-low | 40 | 0.285 | 0.198 | 0.180 | 0.191 | 0.181 | 0.146 | -0.018 [-0.049, +0.013] | +0.045 [+0.020, +0.073]
+140-s80-opus-medium | 40 | 0.271 | 0.199 | 0.176 | 0.187 | 0.179 | 0.146 | -0.022 [-0.054, +0.009] | +0.041 [+0.021, +0.061]
+141-s80-opus-high | 40 | 0.260 | 0.207 | 0.169 | 0.179 | 0.173 | 0.146 | -0.039 [-0.068, -0.008] | +0.033 [+0.012, +0.055]
+124-s40-sol-max | 40 (LOO) | 0.201 | 0.230 | 0.166 | 0.173 | 0.173 | 0.176 | -0.063 [-0.081, -0.044] | -0.004 [-0.023, +0.016]
+125-s40-terra-max | 40 (LOO) | 0.227 | 0.206 | 0.172 | 0.177 | 0.177 | 0.176 | -0.034 [-0.059, -0.007] | +0.000 [-0.021, +0.022]
+mean over lanes: raw 0.291, today 0.208, pooled 0.199, calibrated 0.191, model-level 0.186, Luna 0.150
+pooled beats today in 10 of 15 lanes
+
+E. Unmeasured-model default lambda x pooled (leave-one-model-out): mean loss over lanes | worst lane change vs today
+lambda 0: mean 0.2080, per-model-mean 0.2107, worst lane 0.000
+lambda 0.25: mean 0.1973, per-model-mean 0.1971, worst lane +0.005
+lambda 0.5: mean 0.1924, per-model-mean 0.1886, worst lane +0.017
+lambda 0.75: mean 0.1927, per-model-mean 0.1853, worst lane +0.035
+lambda 1: mean 0.1990, per-model-mean 0.1875, worst lane +0.060
+
+F. Calibrated shift = w x own 40-city shift + (1 - w) x pooled, w = n / (n + k): mean loss over out-of-sample lanes
+k 0: mean 0.1932 | haiku-low 0.232, haiku-medium 0.209, haiku-high 0.200, haiku-xhigh 0.182, haiku-max 0.179, sonnet-low 0.197, sonnet-medium 0.205, sonnet-high 0.191, sonnet-xhigh 0.189, sonnet-max 0.171, opus-low 0.191, opus-medium 0.187, opus-high 0.179
+k 10: mean 0.1922 | haiku-low 0.234, haiku-medium 0.213, haiku-high 0.205, haiku-xhigh 0.185, haiku-max 0.181, sonnet-low 0.192, sonnet-medium 0.200, sonnet-high 0.186, sonnet-xhigh 0.185, sonnet-max 0.168, opus-low 0.188, opus-medium 0.184, opus-high 0.176
+k 20: mean 0.1923 | haiku-low 0.236, haiku-medium 0.218, haiku-high 0.209, haiku-xhigh 0.192, haiku-max 0.184, sonnet-low 0.190, sonnet-medium 0.198, sonnet-high 0.183, sonnet-xhigh 0.182, sonnet-max 0.166, opus-low 0.187, opus-medium 0.182, opus-high 0.174
+k 40: mean 0.1936 | haiku-low 0.240, haiku-medium 0.227, haiku-high 0.217, haiku-xhigh 0.202, haiku-max 0.188, sonnet-low 0.187, sonnet-medium 0.195, sonnet-high 0.180, sonnet-xhigh 0.179, sonnet-max 0.164, opus-low 0.185, opus-medium 0.180, opus-high 0.172
+k 80: mean 0.1958 | haiku-low 0.246, haiku-medium 0.236, haiku-high 0.227, haiku-xhigh 0.214, haiku-max 0.194, sonnet-low 0.186, sonnet-medium 0.193, sonnet-high 0.178, sonnet-xhigh 0.177, sonnet-max 0.163, opus-low 0.183, opus-medium 0.179, opus-high 0.170
+k Infinity: mean 0.2036 | haiku-low 0.259, haiku-medium 0.263, haiku-high 0.251, haiku-xhigh 0.242, haiku-max 0.210, sonnet-low 0.188, sonnet-medium 0.192, sonnet-high 0.178, sonnet-xhigh 0.176, sonnet-max 0.162, opus-low 0.180, opus-medium 0.176, opus-high 0.169

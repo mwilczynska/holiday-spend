@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b6e7a6f38728d83768bad97ddf05ffe94f66519369a07992aa37535f3fae535f",
+  "requestSha256": "a8be1b15125e2082763ddae4fc2965d3127c1b0f3b3f02b67be761c0f3fcf44f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 42889,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 58317,
+          "outputTokens": 7324,
+          "cacheReadInputTokens": 14276,
+          "cacheCreationInputTokens": 10457,
+          "webSearchRequests": 4,
+          "costUSD": 0.05172786,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3025,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05172786,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD per AUD latest F11.1 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Jeju restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "South Korea cappuccino beer cocktail wine restaurant price 2026 typical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates F11.1 USD November 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:24:57.579Z",
+      "finishedAt": "2026-11-19T12:25:40.468Z"
+    }
+  ]
+}

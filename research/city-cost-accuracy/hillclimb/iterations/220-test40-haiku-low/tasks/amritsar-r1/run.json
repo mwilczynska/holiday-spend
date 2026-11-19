@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ce493baea7ec4609863f27806a711d6045a1280f6925e819c20d7099b396faf7",
+  "requestSha256": "5a5aff015ab53a83828b7a32aa7ca80adee4c8d90a9396d75768d0c22cde52e3",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 51154,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 71547,
+          "outputTokens": 8244,
+          "cacheReadInputTokens": 13263,
+          "cacheCreationInputTokens": 12908,
+          "webSearchRequests": 5,
+          "costUSD": 0.06399093,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2863,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06399093,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest F11 USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amritsar cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "India restaurant beer price bar cocktail wine glass price typical 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD/USD latest daily 4pm rate November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "cappuccino price India cafe 2026 average cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:22:56.320Z",
+      "finishedAt": "2026-11-19T12:23:47.475Z"
+    }
+  ]
+}

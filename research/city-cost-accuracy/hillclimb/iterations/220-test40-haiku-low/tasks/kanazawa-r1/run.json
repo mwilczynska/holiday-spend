@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0eba212cffaa6044278d0b9b12bc7ef0573f3a5cd7fa648d4a13c4397561ecb9",
+  "requestSha256": "181ae72f0305d434de982414f4237e18fdabdee37ff97f93e1b7cb349df42a5f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 61109,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 59550,
+          "outputTokens": 6740,
+          "cacheReadInputTokens": 13974,
+          "cacheCreationInputTokens": 10623,
+          "webSearchRequests": 4,
+          "costUSD": 0.051589340000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2597,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.051589340000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD AUD F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kanazawa restaurant prices cappuccino beer cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan typical price lunch set meal cocktail wine glass izakaya 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD November 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:06.136Z",
+      "finishedAt": "2026-11-19T12:26:07.245Z"
+    }
+  ]
+}

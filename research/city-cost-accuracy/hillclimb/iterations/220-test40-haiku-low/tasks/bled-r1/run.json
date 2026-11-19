@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "6457be685c2d4f6b099b1580e13f8149f4a0fa834f95859d18e29494e08991af",
+  "requestSha256": "342cbd2bb12993139940f126180322a9e0d5d73c367145d6c20cb008149a45f9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 51952,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57657,
+          "outputTokens": 6961,
+          "cacheReadInputTokens": 14103,
+          "cacheCreationInputTokens": 10203,
+          "webSearchRequests": 4,
+          "costUSD": 0.05142783000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2436,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05142783000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD AUD F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bled Slovenia restaurant meal prices cappuccino beer cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Slovenia cost of living 2026 restaurant prices beer coffee wine Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates latest AUD USD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:23:32.160Z",
+      "finishedAt": "2026-11-19T12:24:24.112Z"
+    }
+  ]
+}

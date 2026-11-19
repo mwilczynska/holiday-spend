@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors rest on mixed, crowdsourced 2026 guides that disagree by about 2x in places, so they are bounded estimates. Cocktail and wine are inferred from local beer prices because direct data was weak. Accommodation anchors are holistic model estimates from general knowledge and the city's tourist-season context; no booking pages or current listings were inspected. The FX observation (0.6720 for 2026-11-18) was found in a secondary RBA-derived table and the official rba.gov.au page was not opened directly, so verify it against the F11.1 table before use. The requested pricing window is July 2026, while the FX observation is from November 2026.",
+  "comparable_city_reasoning": "Small-to-mid Hunan tourist city priced between inland tier-two Chinese cities and scenic-area premiums near Wulingyuan. Food and drink anchors use aggregated 2026 cost-of-living guide ranges for Zhangjiajie, with Chinese tier-two city restaurant and café norms as cross-checks. Cocktail and wine anchors use the local beer relationship, with cocktail at roughly 5-6x beer and wine glass at roughly 4-5x beer. Accommodation is a model estimate.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.50,
+    "coffee": 3.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 8.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 22.00,
+    "hotel_1star_2p": 20.00,
+    "hotel_3star_2p": 55.00
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "98188005c880c06c8d8c0240af312dd93f1b987db9326ffcf0fb13898eff8b52",
+  "requestSha256": "c802db64a93e9f64b8121d7e7584253c9bcc4326b7ea16fa922f4aa715e2222f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 42482,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 56488,
+          "outputTokens": 6206,
+          "cacheReadInputTokens": 14278,
+          "cacheCreationInputTokens": 10658,
+          "webSearchRequests": 4,
+          "costUSD": 0.051026180000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2239,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.051026180000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Livingstone Zambia cost of living restaurant meal prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Livingstone Zambia beer cappuccino price bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD 4pm November 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:10.975Z",
+      "finishedAt": "2026-11-19T12:25:53.457Z"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0400b7924ba4d4dfa6a23ad8aaafbc5fe3fda249190bd03d01614bcfb7155236",
+  "requestSha256": "8cb40bc6ba1dc4d4ca3c6c5d23fdab70f62cf7c86f2e55c3b6c022e6a992ffd1",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 45710,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57222,
+          "outputTokens": 6117,
+          "cacheReadInputTokens": 13156,
+          "cacheCreationInputTokens": 8811,
+          "webSearchRequests": 4,
+          "costUSD": 0.05067445999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2177,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05067445999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Poznań prices 2026 restaurant meal beer cappuccino cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Poland cost of living restaurant prices cappuccino beer 2026 Numbeo Poznan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates daily F11.1 A$1=USD",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:55.428Z",
+      "finishedAt": "2026-11-19T12:26:41.139Z"
+    }
+  ]
+}

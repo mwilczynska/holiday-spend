@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "784e499c44222b5fc6e03cd8660d2ea6e16f1d99bdd11fb547a939aa8f44cb12",
+  "requestSha256": "e4718acffba311ad1ee39b8ce5a9c65c9bfcda1e547eb9b69eca2e3865e3eb68",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 49363,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 120307,
+          "outputTokens": 9097,
+          "cacheReadInputTokens": 31412,
+          "cacheCreationInputTokens": 16118,
+          "webSearchRequests": 9,
+          "costUSD": 0.11011692,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3030,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.11011692,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tromsø restaurant prices beer coffee cappuccino cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Norway cost of living restaurant meal price cocktail wine glass beer 2026 Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates daily AUD USD November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Norway cocktail price wine glass restaurant NOK cost of living Tromsø bar prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD 4pm latest observation",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:27:06.496Z",
+      "finishedAt": "2026-11-19T12:27:55.859Z"
+    }
+  ]
+}

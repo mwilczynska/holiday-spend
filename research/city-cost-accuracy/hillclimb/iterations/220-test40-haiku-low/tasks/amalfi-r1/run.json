@@ -1,0 +1,84 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "19ca2a6dae0b74f549f76fd61c73e6a0294cef5af3c880466009490ce84c4edd",
+  "requestSha256": "085118b64ac6beb0d2b6fc931e28355337692f750e27aad39331ababbb701365",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 60912,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 87528,
+          "outputTokens": 9653,
+          "cacheReadInputTokens": 15776,
+          "cacheCreationInputTokens": 13559,
+          "webSearchRequests": 6,
+          "costUSD": 0.07644886000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3941,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07644886000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amalfi Coast restaurant prices pizza meal cappuccino beer 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amalfi Italy cost of living cocktail wine glass price restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy coffee cappuccino price euro average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD/USD latest daily F11 November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy beer price bar restaurant 0.33 pint euro 2026 average wine glass price",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:22:56.270Z",
+      "finishedAt": "2026-11-19T12:23:57.183Z"
+    }
+  ]
+}

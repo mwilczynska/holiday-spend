@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "abd37658081e08dd129a29e3e219e2aad12ce0ba1cdbe61bd3d5e15353259193",
+  "requestSha256": "04381dd716c10bfd54111461c74dfbc4d25f7340d1872faa72ddcf4fe52bd443",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39391,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57971,
+          "outputTokens": 6846,
+          "cacheReadInputTokens": 13828,
+          "cacheCreationInputTokens": 10143,
+          "webSearchRequests": 4,
+          "costUSD": 0.05138698,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2327,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05138698,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Innsbruck restaurant meal beer cappuccino cocktail wine prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Austria cost of living restaurant prices beer coffee 2026 Numbeo Innsbruck",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11 daily exchange rates AUD USD November 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:24:42.934Z",
+      "finishedAt": "2026-11-19T12:25:22.325Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "City price data support meals, coffee and beer. Local menu prices relative to draft beer inform the cocktail and wine estimates. July lodging is modeled and is least certain for private hostel rooms and basic hotels. [City price data](https://wise.com/us/cost-of-living/italy/palermo) and [local drinks menu](https://www.anticafocacceria.it/wp-content/uploads/2026/01/Via-Maqueda-Palermo.pdf).",
+  "comparable_city_reasoning": "Catania provides a regional lodging comparison as another large Sicilian city with summer visitor demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.85,
+    "coffee": 2.15,
+    "inexp_meal_1p": 17.54,
+    "midrange_meal_2p": 58.47,
+    "cocktail": 9.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 34,
+    "hostel_private_2p": 88,
+    "hotel_1star_2p": 92,
+    "hotel_3star_2p": 135
+  }
+}

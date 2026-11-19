@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors rest on recent aggregated cost-of-living figures (Numbeo data via Expatica, dated June 2026, plus Housinganywhere and Cities Insider coffee and beer prices). Beer, cocktail and wine anchors are weaker: no aggregated Frankfurt bar price data was found, so cocktail (about 15 EUR) and wine (about 6.50 EUR per 0.2 L glass) are estimates from scattered single-venue menus and the local beer price relationship. Hostel and hotel anchors are holistic model estimates from general knowledge and Frankfurt's trade-fair-driven hotel demand, not checked against live listings; the 3-star anchor is the least certain. The FX observation could not be confirmed as the latest RBA figure. The most recent RBA value found is the 2026-03-20 observation, which is about eight months old, so the USD conversion basis may be stale. USD values assume roughly 1.15 USD per EUR. Prices are for a July 2026 window.",
+  "comparable_city_reasoning": "Priced as a large German city with international business and trade-fair demand, comparable to other major German metropolitan centres. Restaurant prices follow Frankfurt-specific aggregates. Accommodation is a holistic model estimate that reflects Frankfurt's higher hotel rates relative to other German cities.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.00,
+    "coffee": 4.70,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 98.00,
+    "cocktail": 15.50,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 125.00,
+    "hotel_1star_2p": 120.00,
+    "hotel_3star_2p": 215.00
+  }
+}

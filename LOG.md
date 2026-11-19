@@ -4387,3 +4387,13 @@ new answers on the subscription). With own corrections Sonnet max matches Luna (
 model's own per-anchor fit for Sonnet and Opus at 80 cities, reversing the 20-city transfer result. `dispatch.mjs`
 now stops on a usage limit (exit 3); `sample-size.mjs` reports paired bootstrap intervals. Results in
 `sweep-2026-11-19.md`.
+
+## 19 November 2026 — Two-layer correction, Sol/Terra to 40 cities, held-out confirmation
+
+Owner asked for the full plan: model layer on Luna's country table, a pooled default for unmeasured models, a
+calibration command and a held-out check. Leave-one-model-out: half the pooled adjustment 0.192 against 0.208 for
+Luna's table alone; blended 40-city calibration 0.192. Lanes 124/125 (Sol, Terra to 40 cities) and held-out lanes 220
+to 222 (Haiku, Sonnet, Opus low, 40 cities each) collected. Held-out model factors improve on the country table for
+all three (Haiku -0.005, Sonnet -0.026, Opus -0.007), intervals include zero individually. Scripts:
+`correction-lib.mjs`, `two-layer-analysis.mjs`, `build-model-adjustments.mjs`, `score-adjustments.mjs`,
+`calibrate-model.mjs`, `export-model-comparison.mjs`. Details in `sweep-2026-11-19.md`.

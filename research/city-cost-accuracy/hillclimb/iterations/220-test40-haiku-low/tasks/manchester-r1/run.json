@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "e8131d34ccda32c94e9448f39b9aae74e0fdb9c64f33826206f1a476736e7126",
+  "requestSha256": "8c2940b7afd8f767abe5e20443d9dfaf23b57bed0a97cbe9443ccbf1ad108a1a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 42467,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 56684,
+          "outputTokens": 6990,
+          "cacheReadInputTokens": 14185,
+          "cacheCreationInputTokens": 10128,
+          "webSearchRequests": 4,
+          "costUSD": 0.05133085,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2898,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05133085,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Manchester cost of living restaurant meal pint beer cappuccino prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "UK average price pint lager cocktail glass of wine restaurant 2026 survey",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates daily United States dollar November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:12.955Z",
+      "finishedAt": "2026-11-19T12:25:55.422Z"
+    }
+  ]
+}

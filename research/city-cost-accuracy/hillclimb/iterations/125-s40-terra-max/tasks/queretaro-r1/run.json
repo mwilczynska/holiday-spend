@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "376a670fccf925b590cc876b0c68768a90e40b9e435741d0f90b214b28c425ba",
+  "requestSha256": "a06ca02f88ab985227635afe3a5e7e60e2c00d2aaca8a338211da19a98e7077f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 101069,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 163886,
+          "cachedInputTokens": 129792,
+          "outputTokens": 2803,
+          "reasoningOutputTokens": 2020
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates US dollar Australian dollar 19 November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro Mexico cost of living 2026 restaurant prices cappuccino domestic beer meal mid range Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Queretaro Mexico cost of living 2026 cappuccino beer restaurant prices 2 people"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro Mexico average cocktail glass of wine bar restaurant prices peso 2026"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro 2026 precio promedio coctel copa de vino bares restaurantes cerveza costo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Querétaro cost living July 2026 2026 restaurant coffee beer cocktail prices"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T12:25:57.995668Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:52.680Z",
+      "finishedAt": "2026-11-19T12:27:33.749Z"
+    }
+  ]
+}

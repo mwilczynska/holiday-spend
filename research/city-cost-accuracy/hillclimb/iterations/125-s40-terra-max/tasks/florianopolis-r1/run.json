@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "fb3ecade3a925b4b05c040af9956ee959417ff5a36e67a645551347626dede15",
+  "requestSha256": "349c4a7bb5f6c85ad8ccc9f33e4f5993097e99e1d0ac2c43865da1faa7dd7f30",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 82817,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 121920,
+          "cachedInputTokens": 91520,
+          "outputTokens": 2797,
+          "reasoningOutputTokens": 1993
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics daily exchange rates latest US dollar AUD 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianopolis Brazil cost of living restaurant meal cappuccino domestic beer US dollars Numbeo 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianopolis cost of living cocktail wine glass restaurant beer typical prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Florianópolis\" \"cocktail\" \"beer\" cost living drink bar price"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Florianópolis\" custo taça vinho caipirinha chope preço bar"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:20:49.471Z",
+      "finishedAt": "2026-11-19T12:22:12.289Z"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+```json
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Restaurant and coffee anchors are rough aggregates from cost-of-living sites (2023 to 2026 vintages, community-based), so they are only approximate. Beer, cocktail and wine anchors are weakly sourced; cocktail is derived from the beer anchor and wine from scattered SCR menu figures, not venue-verified. Hostel and hotel anchors are holistic model estimates, not checked against listings. FX could not be verified: no official rba.gov.au observation was retrieved, so as_of_date and source_rate are null and must not be used until the RBA F11 value is confirmed.",
+  "comparable_city_reasoning": "Victoria is the capital of Mahé, Seychelles. Food and drink basis is Mahé and Victoria-area cost-of-living aggregates, with Victoria restaurant prices treated as somewhat above the Mahé average. Accommodation uses a general Mahé and small-island-capital model estimate with no live price check.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.00,
+    "coffee": 5.50,
+    "inexp_meal_1p": 12.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 11.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 110.00,
+    "hotel_3star_2p": 200.00
+  }
+}
+```

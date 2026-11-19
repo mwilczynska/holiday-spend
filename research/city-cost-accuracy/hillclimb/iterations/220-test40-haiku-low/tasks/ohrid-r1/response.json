@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and coffee anchors are based on aggregated 2026 price sources (Numbeo, Gotripzi, Combien-coute, Hikersbay, MyLifeElsewhere) converted at an approximate MKD-to-USD rate of about 55 MKD per USD, which I did not verify with a live rate. Cocktail and wine are not directly sourced; cocktail uses a beer-relative estimate of about 2.3x the beer anchor, and wine is a judgment-based estimate. All accommodation anchors are holistic model estimates from general knowledge and the city context, with no listings inspected and no accommodation searches run. Accommodation is the least certain group and should be treated as a rough band, with the 3-star figure most sensitive to the July peak season on the lake. The RBA FX lookup did not return a verified official observation, so the fx fields are null rather than estimated.",
+  "comparable_city_reasoning": "Priced against Balkan tourist-city benchmarks (Skopje, Bitola) for restaurant and coffee levels, and cross-checked with mid-sized European lakeside tourist towns for accommodation levels.",
+  "fx": {
+    "as_of_date": null,
+    "source_name": "Reserve Bank of Australia",
+    "source_url": null,
+    "source_rate": null,
+    "source_rate_basis": null
+  },
+  "anchors_usd": {
+    "beer": 3.50,
+    "coffee": 2.50,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 8.00,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 40.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 80.00
+  }
+}

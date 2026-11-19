@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Food estimates use current price indexes as proxies, not July-specific observations. Accommodation values are holistic estimates, with uncertain registered hostel and three-star supply. Alcohol is limited in Hampi village; drink estimates assume licensed venues in the wider Hampi–Hospet area. Cocktail and wine prices are inferred from their expected relationship to beer. Food references: [Hampi price index](https://hikersbay.com/prices/india/hampi?lang=en) and [Hospet price index](https://citycost.org/hospet/).",
+  "comparable_city_reasoning": "Hampi's tourist economy and nearby Hospet provide the regional basis; Hospet is a proxy for mid-range dining and licensed bars. July's monsoon season informs the accommodation estimates.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.8,
+    "coffee": 1.3,
+    "inexp_meal_1p": 1.9,
+    "midrange_meal_2p": 14.0,
+    "cocktail": 4.2,
+    "wine_glass": 3.8,
+    "hostel_dorm_1p": 7.0,
+    "hostel_private_2p": 16.0,
+    "hotel_1star_2p": 13.0,
+    "hotel_3star_2p": 35.0
+  }
+}

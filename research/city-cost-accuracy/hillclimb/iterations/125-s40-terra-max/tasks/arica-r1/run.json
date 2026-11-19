@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "c72e33ef6fae1d6b7d9559fb7674be04948174d539c78028ef7848988cb231bd",
+  "requestSha256": "533ff10a68356a945e540bfded7f5336c0a2d41d07bea7b7e78a3abf1aeefc01",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 120921,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 236675,
+          "cachedInputTokens": 180608,
+          "outputTokens": 3184,
+          "reasoningOutputTokens": 2261
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au latest exchange rates Australian dollar US dollar 19 November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile Numbeo cost of living restaurant inexpensive meal cappuccino domestic beer meal for two"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile livingcost restaurant prices coffee beer 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile cost of living cocktail wine glass restaurant price beer"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile \"pisco sour\" \"cerveza\" \"copa de vino\" carta precios restaurant"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arica Chile precio promedio cóctel copa vino restaurante cerveza 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T12:18:56.454625Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:18:56.720717Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:19:03.342071Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:19:11.146573Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:19:26.206227Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:19:38.001752Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:19:49.432846Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:20:08.334151Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n2026-11-19T12:20:29.954830Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:18:48.541Z",
+      "finishedAt": "2026-11-19T12:20:49.462Z"
+    }
+  ]
+}

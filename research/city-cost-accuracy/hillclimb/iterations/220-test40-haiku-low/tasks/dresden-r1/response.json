@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from aggregated cost-of-living estimates and a few Dresden menu prices gathered in 2026. Restaurant meal and beer anchors are the most reliable. Cocktail and wine are weaker: the wine glass price is inferred from the local beer price, not a found by-the-glass price. Accommodation anchors are holistic model estimates from general knowledge and city context, not checked against live listings. The FX observation of 2026-11-19 is provisional, and EUR amounts were converted at an assumed rate of about 1.15 USD per EUR.",
+  "comparable_city_reasoning": "Basis is Dresden's own cost-of-living estimates and menu prices, cross-checked against other mid-sized German cities with similar tourist demand. Accommodation uses the same regional basis for a mid-sized German city in peak summer.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.20,
+    "coffee": 4.50,
+    "inexp_meal_1p": 15.50,
+    "midrange_meal_2p": 88.00,
+    "cocktail": 8.75,
+    "wine_glass": 6.30,
+    "hostel_dorm_1p": 34.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 92.00,
+    "hotel_3star_2p": 150.00
+  }
+}

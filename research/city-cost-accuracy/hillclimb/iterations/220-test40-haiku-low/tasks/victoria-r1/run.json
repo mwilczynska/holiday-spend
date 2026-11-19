@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "62304cc12dd66efceb4bb5d2688763a10e548ff7d375253b463527c1b8ca0e41",
+  "requestSha256": "12f5c6ba1fa37f908f83b8d8507d0603acb8f2b59030e088c4fd5bca9d8f20c1",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 41747,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 59508,
+          "outputTokens": 7223,
+          "cacheReadInputTokens": 13529,
+          "cacheCreationInputTokens": 10209,
+          "webSearchRequests": 4,
+          "costUSD": 0.05173939,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3091,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05173939,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar latest F11 USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seychelles Mahe restaurant meal prices beer cappuccino cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Seychelles cocktail wine glass price restaurant bar Victoria Mahe",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD November 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:27:12.108Z",
+      "finishedAt": "2026-11-19T12:27:53.855Z"
+    }
+  ]
+}

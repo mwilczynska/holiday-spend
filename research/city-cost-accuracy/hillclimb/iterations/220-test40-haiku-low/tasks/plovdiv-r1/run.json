@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "6634ff9ebbf86e37714e42dbdeb74d99b6502e0db17d0f1117914a0eefdd79c6",
+  "requestSha256": "dc0a28242df207aee2f354d5da9a402d4522a3a178be74411bf0298a33c62f74",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 48971,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 78328,
+          "outputTokens": 6333,
+          "cacheReadInputTokens": 15237,
+          "cacheCreationInputTokens": 10874,
+          "webSearchRequests": 5,
+          "costUSD": 0.06332647,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2666,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06332647,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11.1",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Plovdiv Bulgaria restaurant meal beer cappuccino prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bulgaria cost of living restaurant prices beer cocktail wine 2026 Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "AUD USD exchange rate 4pm November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:53.463Z",
+      "finishedAt": "2026-11-19T12:26:42.434Z"
+    }
+  ]
+}

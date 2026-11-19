@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on web-search snippets from 2026 guides, menus and city-level price listings, which are mixed in quality and skew toward upscale hotel menus; the beer, cocktail and wine figures are less certain. Accommodation anchors are holistic model estimates from general knowledge and the city context, not from inspected booking pages or current listings. Euro figures were converted at an assumed EUR/USD of about 1.16, which was not searched. FX: the 2026-11-18 rate of 0.6720 was reported by a secondary aggregator (ozfinancehub.com.au) as the RBA figure for that date. I did not read it directly on rba.gov.au, so verify it against the official F11 table before relying on it.",
+  "comparable_city_reasoning": "Based on Italian Campania coastal resort towns with similar summer tourism demand (for example Positano and Sorrento), with lower sit-down and bar prices assumed for Amalfi town and higher prices assumed for waterfront and hotel venues.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.54,
+    "coffee": 3.48,
+    "inexp_meal_1p": 20.88,
+    "midrange_meal_2p": 127.60,
+    "cocktail": 18.56,
+    "wine_glass": 9.86,
+    "hostel_dorm_1p": 46.40,
+    "hostel_private_2p": 133.40,
+    "hotel_1star_2p": 145.00,
+    "hotel_3star_2p": 266.80
+  }
+}

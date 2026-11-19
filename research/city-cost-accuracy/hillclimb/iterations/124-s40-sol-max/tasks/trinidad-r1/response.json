@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "City price sources disagree and July 2026 coverage is sparse. Cocktails and wine were estimated at premiums to local draft beer, with a local menu cross-check for cocktails and a larger assumed premium for wine. Lodging is modeled, with dorm beds especially uncertain. [Numbeo](https://www.numbeo.com/cost-of-living/in/Trinidad-Cuba), [Geomaxxing](https://geomaxxing.org/cost-of-living/cuba/trinidad/), [Muñoz Tapas menu](https://www.tripadvisor.co.uk/Restaurant_Review-g285731-d17752084-Reviews-Munoz_Tapas-Trinidad_Sancti_Spiritus_Province_Cuba.html).",
+  "comparable_city_reasoning": "Cienfuegos and Viñales provide a regional baseline for family-run restaurants and guesthouses, with an allowance for visitor demand in Trinidad’s historic center.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 2.00,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 3.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 30.00,
+    "hotel_3star_2p": 65.00
+  }
+}

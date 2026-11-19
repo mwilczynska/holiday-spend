@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "7e10e6414b7fdb625b7e862156abdbba781ce110c75142d7e5c7992c421aea86",
+  "requestSha256": "83ef39bc6416151be609ba4e13144ea0caeb15cb1ff20942f4b806ee6733e1b2",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39366,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 55703,
+          "outputTokens": 6083,
+          "cacheReadInputTokens": 12140,
+          "cacheCreationInputTokens": 9600,
+          "webSearchRequests": 4,
+          "costUSD": 0.0506532,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2048,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0506532,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD F11.1",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Santa Marta Colombia cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates daily F11.1 AUD USD",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Santa Marta cocktail wine glass bar prices Colombia",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:26:41.145Z",
+      "finishedAt": "2026-11-19T12:27:20.511Z"
+    }
+  ]
+}

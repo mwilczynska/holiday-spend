@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8c5498274c6f93d9ef1bb6310ba7c33ba7e6da49f2d45be7af2156b45d33000d",
+  "requestSha256": "476a2ea6fee7e545f45caa878d931ec4b89ecda8458a569ac73872427f37a5be",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 33175,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 44270,
+          "outputTokens": 5583,
+          "cacheReadInputTokens": 4573,
+          "cacheCreationInputTokens": 8192,
+          "webSearchRequests": 3,
+          "costUSD": 0.03890263000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2150,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.03890263000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia latest exchange rates USD per AUD F11.1 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ohrid restaurant prices beer cappuccino meal cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "North Macedonia cost of living restaurant meal coffee beer prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:40.475Z",
+      "finishedAt": "2026-11-19T12:26:13.650Z"
+    }
+  ]
+}

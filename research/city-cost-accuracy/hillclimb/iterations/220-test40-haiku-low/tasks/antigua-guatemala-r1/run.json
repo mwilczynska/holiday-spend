@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3af3bcf6cdc109342859b40c2f48fc917bf7cae37a19d9b77a6ddb93cf40fca5",
+  "requestSha256": "a93cceabb06eb134de2406bbbe840b35d9694f5342d33924f29a78c486345df5",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 43558,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 65502,
+          "outputTokens": 5124,
+          "cacheReadInputTokens": 4572,
+          "cacheCreationInputTokens": 9533,
+          "webSearchRequests": 4,
+          "costUSD": 0.05106452000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2097,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05106452000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Antigua Guatemala cost of living restaurant meal beer cappuccino cocktail prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Guatemala cost of living restaurant prices 2026 Numbeo",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:22:56.372Z",
+      "finishedAt": "2026-11-19T12:23:39.930Z"
+    }
+  ]
+}

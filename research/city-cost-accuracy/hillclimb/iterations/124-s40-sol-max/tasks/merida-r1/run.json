@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "d8ba0b0f99959ed6479a17d1634bd813c793dd29591ffa46ec7def5e8d9e4836",
+  "requestSha256": "eb4e72856516f3de89a36b95de0aaa47425d84a15dc24ea86d9bbe9a89049db9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 123592,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.2-sol": {
+          "inputTokens": 190161,
+          "cachedInputTokens": 151168,
+          "outputTokens": 3205,
+          "reasoningOutputTokens": 2043
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico cost of living 2026 Numbeo cappuccino domestic draft beer inexpensive restaurant three course meal Merida July 2026 USD"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico 2026 typical cocktail wine by the glass prices pesos bars restaurant average Merida Yucatan 2026 cocktails copa de vino precio"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html Reserve Bank of Australia exchange rates November 2026 US dollar latest"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Yucatan Mexico Expatistan 1 cocktail drink in downtown club prices beer glass of wine Mérida 2026 Expatistan cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Mexico July 2026 cost of living eating out inexpensive restaurant meal cappuccino draught beer Mérida June July 2026 average price"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Mérida Yucatán restaurant typical price house wine per glass Mérida 2026 \"copa de vino\" \"pesos\" menú precios restaurante Mérida MX"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T12:25:49.961023Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:44.638Z",
+      "finishedAt": "2026-11-19T12:27:48.230Z"
+    }
+  ]
+}

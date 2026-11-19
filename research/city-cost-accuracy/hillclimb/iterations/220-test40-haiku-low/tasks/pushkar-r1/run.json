@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ff89900d0da5a8ded1e87ce4974678f7e7277633ad0f1e1d9d9860ec1f8ddd30",
+  "requestSha256": "feabefe6070225eb0b6737cf802aad4f9c4cced10624a889e86ebe24c56ee30a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 53702,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 97053,
+          "outputTokens": 6798,
+          "cacheReadInputTokens": 15365,
+          "cacheCreationInputTokens": 11273,
+          "webSearchRequests": 6,
+          "costUSD": 0.07551255,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2531,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07551255,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pushkar India restaurant meal prices cappuccino beer cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "India cost of living restaurant prices cappuccino beer typical price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD November 2026 F11 daily",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:26:07.254Z",
+      "finishedAt": "2026-11-19T12:27:00.956Z"
+    }
+  ]
+}

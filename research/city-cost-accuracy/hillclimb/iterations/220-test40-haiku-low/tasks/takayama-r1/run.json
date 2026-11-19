@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "876956c9227d0cefaceebe194d528ff4e8be85be1728240c4483e744cd313d0f",
+  "requestSha256": "281eae75611d58b9aa20908c1b3722b7825185495f13e4bfe2b6a7eb89061ff8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 61282,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 100505,
+          "outputTokens": 8851,
+          "cacheReadInputTokens": 25055,
+          "cacheCreationInputTokens": 13902,
+          "webSearchRequests": 7,
+          "costUSD": 0.08750695,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3564,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08750695,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan cost of living restaurant meal cappuccino beer price Takayama 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 daily exchange rates November 2026 AUD USD",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan cafe cappuccino price yen 2026 average bar cocktail beer wine price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates 18 November 2026 United States dollar",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:26:43.318Z",
+      "finishedAt": "2026-11-19T12:27:44.600Z"
+    }
+  ]
+}

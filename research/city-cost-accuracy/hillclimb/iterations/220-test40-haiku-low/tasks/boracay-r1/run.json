@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "31bfa6f687517944806e31d59ceac3ce8b1443103200ca75a767aeaeb9ad66b6",
+  "requestSha256": "054cc6ebe2a899bbae7c7716bd0be324b5b446311d89ed03cb631cb13575e83f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 36233,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 44231,
+          "outputTokens": 6165,
+          "cacheReadInputTokens": 4567,
+          "cacheCreationInputTokens": 7998,
+          "webSearchRequests": 3,
+          "costUSD": 0.039150870000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2561,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.039150870000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 historical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boracay restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Philippines beer price restaurant cappuccino price cocktail Boracay",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:23:39.801Z",
+      "finishedAt": "2026-11-19T12:24:16.035Z"
+    }
+  ]
+}

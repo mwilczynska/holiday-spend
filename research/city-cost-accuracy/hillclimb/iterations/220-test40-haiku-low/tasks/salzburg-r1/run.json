@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "9890b7f37ff698da586d97e87530530b48851075493cc5bf79f176796a54124e",
+  "requestSha256": "d5b92c228161d48d0f0a00a6721c337a532bcff63dbe1f5242ba7009de3b862b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 52833,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 55763,
+          "outputTokens": 6819,
+          "cacheReadInputTokens": 13652,
+          "cacheCreationInputTokens": 10276,
+          "webSearchRequests": 4,
+          "costUSD": 0.05117752,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2565,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05117752,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Salzburg restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Salzburg cappuccino beer 0.5 price cocktail wine glass prices Austria",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD November 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:26:13.657Z",
+      "finishedAt": "2026-11-19T12:27:06.490Z"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "20ddc0545c8aed1d7474f93833ce40afd586a2e583b5e30ca5f426abdb96854e",
+  "requestSha256": "db547212f34bde5d1dee15812e91f7bb7529a98920f11652d2e1133d3fc1047b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 42544,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57684,
+          "outputTokens": 6416,
+          "cacheReadInputTokens": 13812,
+          "cacheCreationInputTokens": 9706,
+          "webSearchRequests": 4,
+          "costUSD": 0.051055720000000006,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2066,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.051055720000000006,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "El Nido Palawan restaurant meal beer cocktail prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Philippines cost of living cappuccino beer restaurant meal price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates F11.1 AUD USD 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:48.557Z",
+      "finishedAt": "2026-11-19T12:26:31.101Z"
+    }
+  ]
+}

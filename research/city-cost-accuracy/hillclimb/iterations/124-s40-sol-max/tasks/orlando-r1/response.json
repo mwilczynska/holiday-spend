@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Orlando price indexes informed the July meal, coffee and beer estimates. [Numbeo](https://www.numbeo.com/cost-of-living/in/Orlando) [Restaurant price index](https://www.averagecostof.living/in/united-states/orlando/restaurants/) The cocktail uses a local menu median. Wine was estimated relative to draft beer and checked against by-the-glass prices. [Cocktail menus](https://searchthemenu.com/florida/orlando/cocktails/) [Wine menus](https://searchthemenu.com/florida/orlando/wine/) Lodging is modeled, with both hostel rates especially uncertain because supply is limited. Prices exclude taxes, tips and lodging fees.",
+  "comparable_city_reasoning": "Lodging estimates reflect July family travel demand and the supply of off-site budget and mid-range hotels in the Orlando–Kissimmee area.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6,
+    "coffee": 5,
+    "inexp_meal_1p": 21,
+    "midrange_meal_2p": 85,
+    "cocktail": 14,
+    "wine_glass": 12,
+    "hostel_dorm_1p": 40,
+    "hostel_private_2p": 85,
+    "hotel_1star_2p": 75,
+    "hotel_3star_2p": 140
+  }
+}

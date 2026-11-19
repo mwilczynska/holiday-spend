@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Local price indexes and guides inform the dining estimates. Cocktails and wine are benchmarked against local draft beer, with sparse July evidence for wine by the glass. Lodging is modeled for July's rainy season. [Pai price index](https://citycost.org/pai/), [Pai food and bar price guide](https://nolohub.com/pai/pai-budget)",
+  "comparable_city_reasoning": "Chiang Mai provides a northern Thai tourism benchmark. The lodging estimates account for Pai's smaller backpacker market and quieter July demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.35,
+    "coffee": 1.95,
+    "inexp_meal_1p": 2.65,
+    "midrange_meal_2p": 22,
+    "cocktail": 4.5,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 8.5,
+    "hostel_private_2p": 22,
+    "hotel_1star_2p": 19,
+    "hotel_3star_2p": 36
+  }
+}

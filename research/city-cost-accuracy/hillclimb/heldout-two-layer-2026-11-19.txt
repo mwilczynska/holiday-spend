@@ -1,0 +1,5 @@
+HELD-OUT cities, adjustments v1.2-model-adjustments-2026-11-19 on country layer v1.2-corrections-2026-10-19
+lane | model entry | cities | country table only | + default | + model factor | model vs table only [95%]
+220-test40-haiku-low | claude-haiku-5-5 | 40 | 0.243 | 0.245 | 0.238 | -0.005 [-0.019, +0.009]
+221-test40-sonnet-low | claude-sonnet-5-5 | 40 | 0.242 | 0.221 | 0.216 | -0.026 [-0.063, +0.012]
+222-test40-opus-low | claude-opus-5-5 | 40 | 0.213 | 0.203 | 0.205 | -0.007 [-0.039, +0.025]

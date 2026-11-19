@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c630ebba1440871c67b7b0b33f5a33d61c960e3bc8b7e1da9608bf98c6f37f6e",
+  "requestSha256": "104b3eb508adea1149f7ad1a45c2f25dc2c57730aa0580d834ce131443fd3617",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 38818,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 55696,
+          "outputTokens": 6206,
+          "cacheReadInputTokens": 13464,
+          "cacheCreationInputTokens": 9306,
+          "webSearchRequests": 4,
+          "costUSD": 0.05066844,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2213,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05066844,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest F11 USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dresden restaurant meal prices cost of living 2026 cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Germany Dresden prices beer cocktail wine glass restaurant typical 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11 exchange rates USD AUD daily November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:24:18.752Z",
+      "finishedAt": "2026-11-19T12:24:57.570Z"
+    }
+  ]
+}

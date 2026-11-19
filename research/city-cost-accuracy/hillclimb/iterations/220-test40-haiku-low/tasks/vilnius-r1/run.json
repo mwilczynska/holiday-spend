@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "998048ac7ea6a39e421b26d1d5da92a546ea94a9173dacb41ff32950ab8be551",
+  "requestSha256": "19e6aa84f7489163af697d243c8596e789fe2003fbe9c7816c9a0f665c71628f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 35074,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 76083,
+          "outputTokens": 7217,
+          "cacheReadInputTokens": 15577,
+          "cacheCreationInputTokens": 11449,
+          "webSearchRequests": 6,
+          "costUSD": 0.07366237,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2670,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07366237,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Vilnius cost of living restaurant meal beer cappuccino prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Vilnius cost of living index Numbeo restaurant prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Vilnius cocktail wine glass price restaurant average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD November 2026 Reserve Bank daily",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:27:20.529Z",
+      "finishedAt": "2026-11-19T12:27:55.603Z"
+    }
+  ]
+}

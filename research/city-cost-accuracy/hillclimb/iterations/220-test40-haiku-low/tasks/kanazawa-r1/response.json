@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from three aggregated cost-of-living and guide sources, which disagree and are partly undated; the cocktail and wine figures are weaker and were set relative to the beer price. Accommodation anchors are holistic model estimates from general knowledge and the city context, not checked against live listings. FX: the only AUD/USD figure found (0.6976, 3 Nov 2026) came from third-party reports citing RBA data, not from the RBA page itself, so it is unverified against rba.gov.au; the search did not reach the RBA exchange-rate page directly.",
+  "comparable_city_reasoning": "No comparable city was used. Anchors are based on Kanazawa-specific aggregated price sources, cross-checked against general Japanese izakaya and regional guide prices, and accommodation is a model estimate for a mid-sized Japanese tourist city.",
+  "fx": {
+    "as_of_date": "2026-11-03",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6976,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.90,
+    "coffee": 3.50,
+    "inexp_meal_1p": 7.00,
+    "midrange_meal_2p": 38.00,
+    "cocktail": 5.50,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 26.00,
+    "hostel_private_2p": 58.00,
+    "hotel_1star_2p": 65.00,
+    "hotel_3star_2p": 130.00
+  }
+}

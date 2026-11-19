@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "eca8b11d26bc3232a87bc4b48bb661083ae32436892b28b83b08e9bace22f2d7",
+  "requestSha256": "5955bdde45e19b84b9d9f5644d5f12a81ca7cf2ac35a9983f5a5cbbafe987a12",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 38909,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57234,
+          "outputTokens": 7105,
+          "cacheReadInputTokens": 14046,
+          "cacheCreationInputTokens": 10230,
+          "webSearchRequests": 4,
+          "costUSD": 0.051462360000000006,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2050,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.051462360000000006,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Zhangjiajie cost of living restaurant meal coffee beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "China cost of living beer cappuccino cocktail wine restaurant prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD/USD November 2026 F11.1 daily",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:27:23.993Z",
+      "finishedAt": "2026-11-19T12:28:02.902Z"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "03eb1cf4c19c11475e9597ec2c92ba12da068831549b2cc762786d26daa0a6a8",
+  "requestSha256": "13d5dafdc1e3a55fbca7d0d8f0925b8ef730bef0a143d56cbae5a1a419182d41",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 29869,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1189,
+          "cacheReadInputTokens": 4545,
+          "cacheCreationInputTokens": 6351,
+          "webSearchRequests": 0,
+          "costUSD": 0.075513,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 276,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 30741,
+          "outputTokens": 2639,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.0243936,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 802,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0999066,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rate AUD USD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Frankfurt cost of living prices cappuccino beer meal inexpensive restaurant 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:31:59.252Z",
+      "finishedAt": "2026-11-19T12:32:29.121Z"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "99a0eea6dd2054fd85ac63b187637c90c944b5d488698b72254c3ea74c1aff31",
+  "requestSha256": "de01e93cd9ceaafec596880110eeead9eda37ef4516fe92afac1e446b856ed11",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 45645,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 60700,
+          "outputTokens": 6381,
+          "cacheReadInputTokens": 13824,
+          "cacheCreationInputTokens": 10177,
+          "webSearchRequests": 4,
+          "costUSD": 0.05143414,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2162,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05143414,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest F11 USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Puerto Princesa Philippines restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Philippines cost of living cappuccino beer cocktail wine glass restaurant prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rate AUD USD November 2026 rba.gov.au daily exchange rates",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:57.666Z",
+      "finishedAt": "2026-11-19T12:26:43.311Z"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1a3402d93eae5002b338db4f5a549db1814aea93d584c3c336032763d16bcaa9",
+  "requestSha256": "73375968f096d848cb6b4131b154d3c1ad2f8eb5e6c8c1ee06da35ff85e24502",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 46426,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 78635,
+          "outputTokens": 8134,
+          "cacheReadInputTokens": 16423,
+          "cacheCreationInputTokens": 12222,
+          "webSearchRequests": 6,
+          "costUSD": 0.07453913,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3050,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07453913,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bridgetown Barbados restaurant meal prices cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Barbados beer cocktail wine glass price restaurant bar typical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Barbados cappuccino coffee price cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au statistics tables exchange rates daily USD per AUD 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:23:47.483Z",
+      "finishedAt": "2026-11-19T12:24:33.909Z"
+    }
+  ]
+}

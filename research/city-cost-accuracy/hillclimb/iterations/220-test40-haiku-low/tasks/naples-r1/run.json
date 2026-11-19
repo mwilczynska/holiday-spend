@@ -1,0 +1,70 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ef7f856af985b57a0b3ff613aa6635b6e3a5d2cdf9605df2366b8c64b92bfd74",
+  "requestSha256": "f5710abb0d3b85f0b86179e200413b803a668dc74e48ce02270e25ce12ce9a83",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 26202,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 64126,
+          "outputTokens": 6480,
+          "cacheReadInputTokens": 4569,
+          "cacheCreationInputTokens": 11109,
+          "webSearchRequests": 5,
+          "costUSD": 0.061920090000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1869,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.061920090000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naples Italy restaurant meal prices typical cost pizza dinner 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Naples cost of coffee cappuccino beer price Italy 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy bar cocktail price glass of wine restaurant price 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:25:22.341Z",
+      "finishedAt": "2026-11-19T12:25:48.543Z"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "637ee4c99c967eb41406e8c378465024c47bad7a7de4da94fa235b53d45d8780",
+  "requestSha256": "4e933c2e297905d5b1b5bedbee3fb8a123b2378fffe87e3d3511829a07cfbba9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39416,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57414,
+          "outputTokens": 6206,
+          "cacheReadInputTokens": 13559,
+          "cacheCreationInputTokens": 9497,
+          "webSearchRequests": 4,
+          "costUSD": 0.05087939,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2349,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05087939,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hurghada prices 2026 restaurant meal beer cappuccino cocktail cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hurghada cost of living restaurant prices beer wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "F11 exchange rates daily AUD USD",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:24:38.577Z",
+      "finishedAt": "2026-11-19T12:25:17.993Z"
+    }
+  ]
+}

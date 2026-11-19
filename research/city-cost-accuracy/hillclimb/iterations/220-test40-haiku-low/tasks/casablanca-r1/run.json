@@ -1,0 +1,80 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "06d455eaa7679fa43ca774c6b362daa3668fb82a5d8db0a64ccd921ddcad87f9",
+  "requestSha256": "3d31e12bb08e393f84b19cda368ee84968346ad9859d1216f801f80ca9ea7c76",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 45735,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 74490,
+          "outputTokens": 8773,
+          "cacheReadInputTokens": 13940,
+          "cacheCreationInputTokens": 12180,
+          "webSearchRequests": 5,
+          "costUSD": 0.06441090000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3380,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06441090000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Casablanca cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Casablanca cappuccino price beer cocktail wine restaurant price guide",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates current F11 USD AUD",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Morocco restaurant alcohol prices beer wine glass Casablanca dirhams 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:23:57.192Z",
+      "finishedAt": "2026-11-19T12:24:42.927Z"
+    }
+  ]
+}

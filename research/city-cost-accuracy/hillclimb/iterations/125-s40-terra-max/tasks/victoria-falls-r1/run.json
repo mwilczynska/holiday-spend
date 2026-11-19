@@ -1,0 +1,83 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "18ed144acfb9ef859b83ba9d721f7706888c9b645f6bb993c1c6ecf721fb97f0",
+  "requestSha256": "edfded1696202bc32194b1b1f7a1b9a2434207d29af56cbe91c85a066c0386a6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 109704,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 222912,
+          "cachedInputTokens": 179968,
+          "outputTokens": 4234,
+          "reasoningOutputTokens": 3178
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au latest exchange rates 2026 USD AUD daily exchange rate Reserve Bank Australia"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Victoria Falls\" Zimbabwe cost of living restaurant cappuccino domestic beer meal prices 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Victoria Falls\" Zimbabwe restaurant prices cocktail glass wine beer cappuccino"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:numbeo.com/cost-of-living/in/Victoria-Falls-Zimbabwe inexpensive meal cappuccino domestic beer three course 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "\"Victoria Falls\" Zimbabwe bar drinks menu 2026 beer cocktail wine glass prices"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?date=2026-11-19"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:57:21.046Z",
+      "finishedAt": "2026-11-19T05:59:10.750Z"
+    }
+  ]
+}

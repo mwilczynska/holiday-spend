@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "low",
+  "confidence_notes": "Food and drink anchors rest on a few travel-guide and aggregator snippets, several of them dated (a 2021 hotel menu and a 2017 price index), and on an assumed kwacha-to-USD rate of roughly 28 ZMW per USD; restaurant anchors are medium-to-low confidence and drinks are lower. Accommodation anchors are holistic model estimates from general knowledge of Livingstone's tourism market, not from inspected booking pages or current listings. The FX value (0.6976 for 2026-11-03) was relayed by a third-party site that cited the RBA 4pm reference; I did not verify it on an rba.gov.au page, and the RBA's exchange-rate table should be checked before use. The as_of_date is also about two weeks before the 2026-11-19 generation date.",
+  "comparable_city_reasoning": "No close like-for-like city was used. Pricing is anchored to Livingstone's own bar and restaurant snippets, which show beer around ZMW 30-80, cappuccino around ZMW 60 at a hotel bar, and inexpensive local nshima meals around USD 3-5. Lodging is benchmarked to general knowledge of Southern Africa's Victoria Falls tourism towns, with hostel dorms at the low end and three-star hotels priced near the upper-middle of the local market.",
+  "fx": {
+    "as_of_date": "2026-11-03",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6976,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.60,
+    "coffee": 2.50,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 55.00,
+    "cocktail": 4.00,
+    "wine_glass": 4.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 100.00
+  }
+}

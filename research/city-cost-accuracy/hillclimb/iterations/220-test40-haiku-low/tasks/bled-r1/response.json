@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on crowd-sourced and third-party estimates that disagree (Numbeo, traveltables, a French price site, Tripbase), with Bled-specific and Ljubljana/Nova Gorica data mixed together. Beer, cocktail and wine are less certain, and wine and cocktail use local price relationships and bar-versus-shop gaps where direct data was weak. Accommodation anchors are holistic model estimates from general knowledge and Bled's seasonal tourism context; no accommodation search or live listing was inspected. Euro-to-USD conversion used an approximate EUR/USD of about 1.10, derived from the FX observation and a secondary AUD/EUR quote. The FX figure was reported by a secondary source as the RBA 4:00 pm rate and was not verified on rba.gov.au, so treat it as provisional.",
+  "comparable_city_reasoning": "Food and drink anchors are based on Bled-specific aggregated estimates, cross-checked against Ljubljana and Nova Gorica data and national Slovenian cost-of-living figures. Accommodation anchors are holistic estimates for a mid-sized Alpine lake resort in the Slovenian Alps with high summer demand, benchmarked against comparable European lakeside resort towns.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 2.50,
+    "inexp_meal_1p": 13.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 11.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 82.00,
+    "hotel_1star_2p": 85.00,
+    "hotel_3star_2p": 160.00
+  }
+}

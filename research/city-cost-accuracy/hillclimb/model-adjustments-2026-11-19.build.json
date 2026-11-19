@@ -1,0 +1,86 @@
+{
+ "out": "C:/Dev/holiday-spend/src/lib/data/city-cost-model-adjustments-v1-2.json",
+ "version": "v1.2-model-adjustments-2026-11-19",
+ "default": {
+  "inexp_meal_1p": 1.0051,
+  "midrange_meal_2p": 0.9854,
+  "beer": 0.9771,
+  "coffee": 1.0052,
+  "hotel_3star_2p": 1.1024,
+  "hotel_1star_2p": 1.1296,
+  "hostel_dorm_1p": 1.0284,
+  "hostel_private_2p": 1.0148
+ },
+ "models": [
+  {
+   "id": "claude-haiku-5-5",
+   "cities": 80,
+   "factors": {
+    "inexp_meal_1p": 1.0678,
+    "midrange_meal_2p": 0.9564,
+    "beer": 0.9362,
+    "coffee": 0.9695,
+    "hotel_3star_2p": 1.0622,
+    "hotel_1star_2p": 1.2194,
+    "hostel_dorm_1p": 1.0604,
+    "hostel_private_2p": 1.0516
+   }
+  },
+  {
+   "id": "claude-sonnet-5-5",
+   "cities": 80,
+   "factors": {
+    "inexp_meal_1p": 1.0189,
+    "midrange_meal_2p": 0.9956,
+    "beer": 0.9429,
+    "coffee": 1.0153,
+    "hotel_3star_2p": 1.2414,
+    "hotel_1star_2p": 1.3782,
+    "hostel_dorm_1p": 1.1481,
+    "hostel_private_2p": 1.0987
+   }
+  },
+  {
+   "id": "claude-opus-5-5",
+   "cities": 80,
+   "factors": {
+    "inexp_meal_1p": 0.9758,
+    "midrange_meal_2p": 0.9573,
+    "beer": 0.9482,
+    "coffee": 1.006,
+    "hotel_3star_2p": 1.213,
+    "hotel_1star_2p": 1.2791,
+    "hostel_dorm_1p": 1.0805,
+    "hostel_private_2p": 1.0276
+   }
+  },
+  {
+   "id": "gpt-6.2-sol",
+   "cities": 40,
+   "factors": {
+    "inexp_meal_1p": 0.9981,
+    "midrange_meal_2p": 0.9664,
+    "beer": 0.9624,
+    "coffee": 1.0253,
+    "hotel_3star_2p": 1.2984,
+    "hotel_1star_2p": 1.2741,
+    "hostel_dorm_1p": 1.0381,
+    "hostel_private_2p": 1.0178
+   }
+  },
+  {
+   "id": "gpt-6.1-terra",
+   "cities": 40,
+   "factors": {
+    "inexp_meal_1p": 0.9995,
+    "midrange_meal_2p": 0.9794,
+    "beer": 0.9763,
+    "coffee": 1.028,
+    "hotel_3star_2p": 1.244,
+    "hotel_1star_2p": 1.2446,
+    "hostel_dorm_1p": 0.9918,
+    "hostel_private_2p": 0.9768
+   }
+  }
+ ]
+}

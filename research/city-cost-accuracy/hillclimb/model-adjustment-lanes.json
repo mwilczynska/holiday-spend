@@ -1,0 +1,14 @@
+{
+  "note": "Lanes behind each model's v1.2 adjustment (build-model-adjustments.mjs). Efforts of one model are pooled: the two-layer analysis (19 November 2026) found a model-level shift as good as an effort-specific one. calibrate-model.mjs appends lanes here.",
+  "reference": { "id": "gpt-6-luna", "label": "GPT-6 Luna", "match": "^gpt-6-luna(?:-|$)" },
+  "models": [
+    { "id": "claude-haiku-5-5", "label": "Claude Haiku 5.5", "match": "^claude-haiku-5-5(?:-|$)",
+      "lanes": ["130-s80-haiku-low", "131-s80-haiku-medium", "132-s80-haiku-high", "133-s80-haiku-xhigh", "142-s80-haiku-max"] },
+    { "id": "claude-sonnet-5-5", "label": "Claude Sonnet 5.5", "match": "^claude-sonnet-5-5(?:-|$)",
+      "lanes": ["134-s80-sonnet-low", "135-s80-sonnet-medium", "136-s80-sonnet-high", "137-s80-sonnet-xhigh", "138-s80-sonnet-max"] },
+    { "id": "claude-opus-5-5", "label": "Claude Opus 5.5", "match": "^claude-opus-5-5(?:-|$)",
+      "lanes": ["139-s80-opus-low", "140-s80-opus-medium", "141-s80-opus-high"] },
+    { "id": "gpt-6.2-sol", "label": "GPT-6.2 Sol", "match": "^gpt-6\\.2-sol(?:-|$)", "lanes": ["124-s40-sol-max"] },
+    { "id": "gpt-6.1-terra", "label": "GPT-6.1 Terra", "match": "^gpt-6\\.1-terra(?:-|$)", "lanes": ["125-s40-terra-max"] }
+  ]
+}

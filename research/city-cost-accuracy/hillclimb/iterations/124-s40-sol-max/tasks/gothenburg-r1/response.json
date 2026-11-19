@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "June 2026 city data support the meal, cappuccino and draft beer estimates. Cocktail and wine estimates reflect how much more they cost than draft beer on local menus. July lodging is modeled, with wider uncertainty for basic hotel rooms and event weeks. [Numbeo](https://www.numbeo.com/cost-of-living/in/Gothenburg), [NGON drinks menu](https://ngongbg.se/drinks/), [Bistro1 menu](https://bistroett.se/)",
+  "comparable_city_reasoning": "Stockholm provides a Swedish cost benchmark. The lodging estimates assume lower baseline room rates in Gothenburg and account for July visitor demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 5.10,
+    "inexp_meal_1p": 15.00,
+    "midrange_meal_2p": 91.00,
+    "cocktail": 15.50,
+    "wine_glass": 10.75,
+    "hostel_dorm_1p": 36.00,
+    "hostel_private_2p": 78.00,
+    "hotel_1star_2p": 104.00,
+    "hotel_3star_2p": 148.00
+  }
+}

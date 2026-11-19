@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "June crowdsourced prices support the meal, cappuccino and draft beer estimates. Later Melbourne menu data and local prices relative to beer inform the cocktail and house wine estimates. Lodging is modeled, with basic hotel rooms the least certain. [June price snapshot](https://www.expatica.com/au/cost-of-living/melbourne/) [Cocktail price index](https://www.winetrender.com/cocktails/price-index) [Melbourne drink menus](https://drinkmap.net/melbourne/drink-prices)",
+  "comparable_city_reasoning": "Sydney served as a higher-cost benchmark for lodging. The estimates reflect ordinary July nights in central Melbourne and its inner suburbs.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.75,
+    "coffee": 3.85,
+    "inexp_meal_1p": 18,
+    "midrange_meal_2p": 81,
+    "cocktail": 15,
+    "wine_glass": 9.25,
+    "hostel_dorm_1p": 29,
+    "hostel_private_2p": 74,
+    "hotel_1star_2p": 78,
+    "hotel_3star_2p": 105
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Local price indexes support the meal, cappuccino and draft beer estimates. [Wise](https://wise.com/us/cost-of-living/brazil/foz-do-iguacu) Cocktail and house wine estimates use local beer prices as a baseline, with a small sample of menus as a check. [Terramar menu](https://restaurantguru.com/Terramar-Restaurante-Foz-do-Iguacu/menu), [Terrazzo menu](https://www.terrazzofoz.com.br/cardapio/) July lodging prices are model estimates.",
+  "comparable_city_reasoning": "Mid-sized cities in western Paraná provide the lodging baseline, with an allowance for July school-holiday demand at the falls and the supply of budget rooms downtown.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.65,
+    "coffee": 1.95,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 39.00,
+    "cocktail": 5.10,
+    "wine_glass": 4.80,
+    "hostel_dorm_1p": 15.00,
+    "hostel_private_2p": 37.00,
+    "hotel_1star_2p": 39.00,
+    "hotel_3star_2p": 65.00
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "runtime": "claude -p",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "88139c7fbef42b12e3a075060410dac053a188a21d47a2c3354ec5420282b4ba",
+  "requestSha256": "17a8993dc2983d4bdbe0d7e01f7ea2a06cd45d8de36229b9b825a32612107035",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 40995,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 42896,
+          "outputTokens": 4050,
+          "cacheReadInputTokens": 11556,
+          "cacheCreationInputTokens": 7512,
+          "webSearchRequests": 3,
+          "costUSD": 0.037932560000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1265,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.037932560000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD rate rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bariloche restaurant prices cappuccino beer cocktail 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11 exchange rates historical daily AUD USD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T12:26:31.107Z",
+      "finishedAt": "2026-11-19T12:27:12.102Z"
+    }
+  ]
+}
