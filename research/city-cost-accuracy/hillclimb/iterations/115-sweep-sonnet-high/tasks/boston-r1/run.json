@@ -1,0 +1,79 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "60c9c02a06750be6d64aa99eb146802aa1f3d28bc2322f3da618680584995ca4",
+  "requestSha256": "a2394188538e09682aef3f96b17b225b15e2f3a74faca6dc71b4f6b2a443f58e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 30168,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1090,
+          "cacheReadInputTokens": 3605,
+          "cacheCreationInputTokens": 8452,
+          "webSearchRequests": 0,
+          "costUSD": 0.045437,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 44963,
+          "outputTokens": 3568,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.0362803,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1107,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08171729999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston cost of living restaurant prices meal cappuccino beer wine cocktail",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston, Massachusetts prices Numbeo meal inexpensive restaurant domestic beer cappuccino",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:58:49.056Z",
+      "finishedAt": "2026-11-19T02:59:19.224Z"
+    }
+  ]
+}

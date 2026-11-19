@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Coffee, beer and both meal anchors are corroborated by two aggregated sources: Numbeo city prices (mainly Sep to Nov 2026 snapshots) and Wise cost-of-living figures. Their USD values are the sources' own conversions, not checked against a July 2026 peso rate, so they are not July-specific. No direct aggregated cocktail or restaurant wine-glass price was found; cocktail is set at roughly twice the draft-beer anchor and wine glass slightly above it, cross-checked against 2026 nightlife guide ranges and a Numbeo retail bottle price. Hostel and hotel anchors are holistic model estimates from general knowledge, not checked against live listings. Argentine prices move quickly, so uncertainty is wider than the restaurant anchors suggest. FX is the latest RBA figure found (18 Nov 2026); no 19 Nov figure was located, and the anchors do not use it.",
+  "comparable_city_reasoning": "No comparable city used. Food and drink anchors are Buenos Aires-specific; cocktail and wine glass follow the local draft-beer relationship; accommodation is a holistic estimate for central Buenos Aires tourist neighborhoods from general knowledge, not from searches or listings.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.95,
+    "coffee": 3.90,
+    "inexp_meal_1p": 19.00,
+    "midrange_meal_2p": 65.00,
+    "cocktail": 8.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

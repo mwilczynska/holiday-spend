@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "188f31bee783ad9e28265e058c086a4fe52294bdb02df7d095ee1e5e7cabb2bc",
+  "requestSha256": "f284009be5fd5b54b0ea2cd26422f89ef0634aaa02da11c13b411886bad5cdc9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 561297,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 116850,
+          "outputTokens": 244055,
+          "cacheReadInputTokens": 15100,
+          "cacheCreationInputTokens": 28038,
+          "webSearchRequests": 7,
+          "costUSD": 0.20947110000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 236861,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.20947110000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates A$1 US dollar daily F11.1 latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cape Town restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cape Town beer cappuccino cocktail wine glass prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Cape Town cost of living meal inexpensive restaurant cappuccino draught beer bottle of wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cape Town restaurant glass of wine price rand house wine by the glass average",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:26:57.355Z",
+      "finishedAt": "2026-11-19T02:36:18.652Z"
+    }
+  ]
+}

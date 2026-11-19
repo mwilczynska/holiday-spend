@@ -1,5 +1,10 @@
 // Runs pending prediction tasks through the headless Claude Code CLI, one fresh process per task.
-//   node dispatch.mjs <iteration> [--concurrency 8] [--model claude-haiku-5-5] [--effort max]
+//   node dispatch.mjs <iteration> [--concurrency 8] [--model claude-haiku-5-5] [--effort max] [--message luna] [--bare] [--clean-context]
+// --message luna sends, as the request, the exact message Luna (Codex) workers received (lib.mjs workerMessage:
+// system.txt and prompt.txt wrapped with the same instruction lines) after checking prompt.txt against its frozen hash;
+// system.txt stays the system prompt. --bare runs the CLI without user/project CLAUDE.md, hooks, skills or plugins
+// (API-key auth only). --clean-context loads no setting sources (no user or project CLAUDE.md or settings) and keeps
+// the signed-in account.
 // Each worker gets exactly the task's system.txt (as its system prompt) and prompt.txt (as the request), with
 // WebSearch as its only tool, in an empty working directory, no MCP servers and no session persistence.
 // Saves response.json (the final text, verbatim) and run.json (model, usage, tool calls, timing, exit status).
@@ -8,7 +13,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
-import { hcRoot, readJson } from './lib.mjs';
+import { hcRoot, readJson, sha256, workerMessage } from './lib.mjs';
 
 const [iteration, ...rest] = process.argv.slice(2);
 const opt = (name, fallback) => { const i = rest.indexOf(`--${name}`); return i >= 0 ? rest[i + 1] : fallback; };
@@ -18,6 +23,10 @@ const model = opt('model', cand.cliModel ?? 'claude-haiku-5-5');
 const effort = opt('effort', cand.effort ?? 'max');
 const tools = cand.workerTools ?? 'WebSearch';
 const concurrency = Number(opt('concurrency', 8));
+const messageMode = opt('message', 'prompt');
+if (!['prompt', 'luna'].includes(messageMode)) throw Error('--message must be prompt or luna');
+const bare = rest.includes('--bare');
+const cleanContext = rest.includes('--clean-context');
 const freeze = readJson(path.join(dir, 'freeze.json'));
 const workDir = fs.mkdtempSync(path.join(os.tmpdir(), 'hc-worker-'));
 // Work is chunked for usage windows: repeat 1 of every city runs before any repeat 2 (so a partial run is a
@@ -26,11 +35,18 @@ const maxRepeat = Number(opt('max-repeat', Infinity));
 const maxTasks = Number(opt('max-tasks', Infinity));
 const pending = freeze.tasks.filter(t => t.repeat <= maxRepeat && !fs.existsSync(path.join(dir, 'tasks', t.id, 'response.json')))
   .sort((a, b) => a.repeat - b.repeat || a.cityKey.localeCompare(b.cityKey)).slice(0, maxTasks);
-console.log(`${iteration}: ${pending.length} pending, model ${model}, effort ${effort}, concurrency ${concurrency}`);
+console.log(`${iteration}: ${pending.length} pending, model ${model}, effort ${effort}, concurrency ${concurrency}, message ${messageMode}${bare ? ', bare' : ''}${cleanContext ? ', clean context' : ''}`);
 
-function runOnce(task) {
+function requestText(task) {
   const tdir = path.join(dir, 'tasks', task.id);
-  const args = ['-p', '--model', model, '--effort', effort, '--system-prompt-file', path.join(tdir, 'system.txt'),
+  const prompt = fs.readFileSync(path.join(tdir, 'prompt.txt'), 'utf8');
+  if (sha256(prompt) !== task.promptSha256) throw Error(`prompt.txt for ${task.id} does not match its frozen hash`);
+  return messageMode === 'luna' ? workerMessage(fs.readFileSync(path.join(tdir, 'system.txt'), 'utf8'), prompt) : prompt;
+}
+
+function runOnce(task, request) {
+  const tdir = path.join(dir, 'tasks', task.id);
+  const args = [...(bare ? ['--bare'] : []), ...(cleanContext ? ['--setting-sources', process.platform === 'win32' ? '""' : ''] : []), '-p', '--model', model, '--effort', effort, '--system-prompt-file', path.join(tdir, 'system.txt'),
     '--tools', tools, '--allowedTools', tools, '--strict-mcp-config', '--no-session-persistence', '--output-format', 'json'];
   return new Promise(resolve => {
     const started = Date.now();
@@ -51,21 +67,24 @@ function runOnce(task) {
         modelUsage: result?.modelUsage ?? null, costUsdList: result?.total_cost_usd ?? null, toolCalls,
         stderr: err.slice(-2000), stdoutUnparsed: events ? null : out.slice(-2000) });
     });
-    fs.createReadStream(path.join(tdir, 'prompt.txt')).pipe(child.stdin);
+    child.stdin.end(request);
   });
 }
 
 async function runTask(task) {
   const attempts = [];
+  const request = requestText(task);
   for (let i = 0; i < 2; i++) {
-    const r = await runOnce(task);
-    attempts.push({ ...r, text: undefined, hasText: !!r.text });
+    const startedAt = new Date().toISOString();
+    const r = await runOnce(task, request);
+    attempts.push({ ...r, text: undefined, hasText: !!r.text, startedAt, finishedAt: new Date().toISOString() });
     if (r.text && !r.isError) {
       fs.writeFileSync(path.join(dir, 'tasks', task.id, 'response.json'), r.text);
       break;
     }
   }
-  fs.writeFileSync(path.join(dir, 'tasks', task.id, 'run.json'), JSON.stringify({ model, effort, tools, attempts }, null, 2) + '\n');
+  fs.writeFileSync(path.join(dir, 'tasks', task.id, 'run.json'), JSON.stringify({ model, effort, tools, message: messageMode, bare, cleanContext,
+    promptSha256: task.promptSha256, requestSha256: sha256(request), attempts }, null, 2) + '\n');
   return fs.existsSync(path.join(dir, 'tasks', task.id, 'response.json')); // success means an answer was saved
 }
 

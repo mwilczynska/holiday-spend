@@ -1,0 +1,76 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3f5ae22485edff8cb73531a69405e1a6262ae77e35776c240d8c98206823a561",
+  "requestSha256": "a8cec6b6126e15fa27c7e056d74f7bf3fc9e25fa9b276a4761de08a6e89e7088",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 41358,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 1424,
+          "cacheReadInputTokens": 11897,
+          "cacheCreationInputTokens": 8517,
+          "webSearchRequests": 0,
+          "costUSD": 0.09901940000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 343,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 45097,
+          "outputTokens": 3701,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.0363602,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1334,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1353796,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rate AUD/USD November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay price cocktail glass of wine schooner beer pub 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:59:18.237Z",
+      "finishedAt": "2026-11-19T02:59:59.595Z"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "955daed9a99a82cad9efa9a9531ef7d2f5d0bd3c032ce11977c9455140a73cc8",
+  "requestSha256": "76ac251275f9c38af4c65a85eb9be0f7ddfd255531f7e871cc15aa941cf38dbc",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 422262,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 44633,
+          "outputTokens": 175664,
+          "cacheReadInputTokens": 4571,
+          "cacheCreationInputTokens": 18804,
+          "webSearchRequests": 3,
+          "costUSD": 0.12610181,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 171306,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.12610181,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11.1 daily exchange rates A$1 = US$ latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Albufeira Portugal cost of living restaurant prices cappuccino domestic beer inexpensive meal",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Algarve Portugal typical prices 2026 cocktail beer glass of wine restaurant bar",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.682Z",
+      "finishedAt": "2026-11-19T01:52:09.944Z"
+    }
+  ]
+}

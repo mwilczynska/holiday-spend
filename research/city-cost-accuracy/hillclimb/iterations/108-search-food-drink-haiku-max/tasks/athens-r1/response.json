@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer and cocktail anchors rest on 2026 aggregated Athens cost-of-living and travel-guide sources, not an official price survey. Most were EUR-quoted and translated at an approximate, unsourced EUR/USD assumption. Beer is a ~0.5 L domestic draught. Cocktail and wine rest on guide ranges rather than venue checks and were cross-checked against beer (cocktail about 2.3x beer, wine glass about 1.4x beer); wine is the weakest food anchor. Accommodation anchors are holistic, knowledge-based July estimates; no accommodation searches or live listings were checked. Outlier figures from one March 2026 aggregator (about $8 inexpensive meal, about $24 mid-range meal for two) conflicted with other sources and were excluded. FX is NOT the latest observation for 2026-11-19: the single RBA search returned only a search-index snapshot of the RBA exchange-rate page with rates through 2026-03-20, not confirmed by a live page read, and no retry was made. A later third-party figure could not be checked against rba.gov.au and was not used.",
+  "comparable_city_reasoning": "No comparable-city substitution was used for food and drink, which relies on Athens-specific aggregated sources. Accommodation anchors are holistic estimates of July peak-season Athens pricing from general knowledge, informed loosely by other large southern European capitals with similar summer demand.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 4.23,
+    "inexp_meal_1p": 17.28,
+    "midrange_meal_2p": 67.28,
+    "cocktail": 13.34,
+    "wine_glass": 8.12,
+    "hostel_dorm_1p": 34.80,
+    "hostel_private_2p": 81.20,
+    "hotel_1star_2p": 92.80,
+    "hotel_3star_2p": 179.80
+  }
+}

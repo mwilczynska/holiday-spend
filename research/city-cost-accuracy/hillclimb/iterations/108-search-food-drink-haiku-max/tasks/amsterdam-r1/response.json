@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Food and drink anchors rest on search snippets from Numbeo, Expatistan and 2026 travel-guide price ranges (pages were not opened in full), dated late 2026 and used as proxies for July 2026. EUR was converted at about 1.12 USD per EUR, the rate Expatistan displays, not a July 2026 rate. Beer is a 0.25 L draught, treated as the standard serving (a Dutch vaasje); most sources cite about 0.5 L, so this serving adjustment is inferred. Restaurant meal and coffee anchors are aggregated and moderately reliable. Cocktail and wine glass are weaker because direct figures vary widely, so they are set from the local relationship to draught beer (roughly 2.5 to 3 times for cocktail, about 1.5 times for wine glass) and checked against guide ranges. The four accommodation anchors are holistic model estimates for July peak season with no accommodation searches or live listings, so treat them as low confidence. FX is the 18 Nov 2026 RBA reading from search results; the 19 Nov reading was not found and the RBA page was not opened directly.",
+  "comparable_city_reasoning": "No comparable city was used for any number. Food and drink anchors are Amsterdam-specific aggregated and guide figures; accommodation anchors reflect general knowledge of Amsterdam's July peak-season market.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.88,
+    "coffee": 4.48,
+    "inexp_meal_1p": 20.16,
+    "midrange_meal_2p": 84.00,
+    "cocktail": 15.12,
+    "wine_glass": 8.40,
+    "hostel_dorm_1p": 56.00,
+    "hostel_private_2p": 156.80,
+    "hotel_1star_2p": 179.20,
+    "hotel_3star_2p": 296.80
+  }
+}

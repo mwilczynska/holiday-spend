@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and both meal anchors use Numbeo's crowd-sourced Brighton restaurant figures (November 2026 page, not July). Beer is set slightly above Numbeo's 0.5 L draught figure to approximate a UK pint and cross-checked against a Finder Brighton pint average. Cocktail and wine are weaker: no citywide 2026 survey was found, so cocktail reflects single-venue Brighton bar listings, and both drinks are cross-checked against the beer price using typical local ratios. Accommodation is a holistic model estimate for July seaside demand, not checked against live listings. GBP prices were converted at about 1.32 USD per GBP, the cross implied by the same RBA table. The FX reading (latest found, 18 November 2026) came from a search-result summary, not a verified page read; check the RBA page for any later observation.",
+  "comparable_city_reasoning": "No comparable-city substitution for food and drink: Brighton-specific figures were used directly and cross-checked against Brighton and South East pint-price reports. Accommodation reflects general south-coast English seaside demand levels in July rather than a named comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.91,
+    "coffee": 5.12,
+    "inexp_meal_1p": 23.91,
+    "midrange_meal_2p": 92.38,
+    "cocktail": 15.84,
+    "wine_glass": 9.90,
+    "hostel_dorm_1p": 46.19,
+    "hostel_private_2p": 118.77,
+    "hotel_1star_2p": 131.97,
+    "hotel_3star_2p": 230.95
+  }
+}

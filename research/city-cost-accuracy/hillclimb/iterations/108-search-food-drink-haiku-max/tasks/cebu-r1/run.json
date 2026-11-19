@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "dbdca32fcc5dff2faea1daab6d208086ecb21e7c580530794939a3472917ff74",
+  "requestSha256": "b10b6f708521d4bd18c59c8b3e2962ab987772d3de09086be3aa69aa681c98a1",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 541476,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 105782,
+          "outputTokens": 275263,
+          "cacheReadInputTokens": 24680,
+          "cacheCreationInputTokens": 36917,
+          "webSearchRequests": 7,
+          "costUSD": 0.2258399,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 267140,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.2258399,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates USD per AUD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cebu cost of living restaurant meal prices beer cappuccino 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cebu City cappuccino coffee price cafe typical 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cebu bar prices beer cocktail glass of wine typical 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Cebu City cost of living meal inexpensive restaurant meal for 2 people mid-range three-course domestic beer cappuccino",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cebu City restaurant glass of house wine by the glass price peso",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:28:54.567Z",
+      "finishedAt": "2026-11-19T02:37:56.043Z"
+    }
+  ]
+}

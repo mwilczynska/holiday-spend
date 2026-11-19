@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c28b2d42a8b44ef99b93edc999c57f69f5f5530e7b69012d16efc3574c2c9c1e",
+  "requestSha256": "4c24faca2ebd5c4d3939e2ad7be3f52022b5572c2f8179f577bef4c03e4295eb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 125234,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 226813,
+          "outputTokens": 43722,
+          "cacheReadInputTokens": 24223,
+          "cacheCreationInputTokens": 20399,
+          "webSearchRequests": 10,
+          "costUSD": 0.22855753000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 35648,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.22855753000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kenting Hengchun restaurant prices meal beer cocktail",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan cappuccino price NT$ cafe average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Taiwan bar cocktail price NT$ wine by the glass restaurant price",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:16:33.906Z",
+      "finishedAt": "2026-11-19T03:18:39.140Z"
+    }
+  ]
+}

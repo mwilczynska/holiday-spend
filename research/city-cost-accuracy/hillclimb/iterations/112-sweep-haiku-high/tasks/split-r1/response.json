@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer, cocktail and wine anchors come from travel-guide and cost-of-living aggregator ranges, which conflict and are partly dated (one guide is from 2023). Numbeo's Split sample is thin, and the search results did not include Numbeo's own Split page. Values are set at July peak-season levels, with a summer premium applied. Accommodation anchors are holistic model estimates from general knowledge and were not searched or checked against live listings; they are the least certain (low confidence). The FX observation (18 Nov 2026) came from a third-party aggregator that cites RBA data, and I could not confirm it on rba.gov.au. My first RBA search returned a stale March 2026 figure, and a second search was needed, so the RBA search was used twice. EUR to USD of about 1.10 is inferred from that aggregator's EUR per AUD figure against the same AUD rate, not from a separately verified EUR/USD quote. Wine and cocktail anchors are based on direct guide ranges, not on the beer-relationship fallback.",
+  "comparable_city_reasoning": "Food and drink are based on Split's own guide and aggregator price ranges. Accommodation is a holistic estimate reasoned from Split's peak-summer demand relative to other Croatian Adriatic coastal tourist cities and comparable southern European coastal cities, with no searches or live listings used.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.40,
+    "coffee": 3.30,
+    "inexp_meal_1p": 13.20,
+    "midrange_meal_2p": 71.50,
+    "cocktail": 13.20,
+    "wine_glass": 7.15,
+    "hostel_dorm_1p": 38.50,
+    "hostel_private_2p": 104.50,
+    "hotel_1star_2p": 115.50,
+    "hotel_3star_2p": 192.50
+  }
+}

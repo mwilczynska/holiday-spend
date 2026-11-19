@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, beer, cocktail and wine anchors are central estimates for July peak-season prices, drawn from 2025-2026 travel and cost guides and one crowd-sourced index. Those sources conflict (for example beer EUR 3-6, cocktail EUR 8-15), and no menu prices were verified. Accommodation anchors are holistic model estimates from general knowledge of Split summer seasonality; no booking pages or live listings were inspected. EUR is converted to USD at an assumed 1.16 USD per EUR from general knowledge, not a retrieved rate, so every USD anchor moves with that assumption. The FX observation (18 Nov 2026) comes from search-result text of the RBA exchange rates page, not a direct page read.",
+  "comparable_city_reasoning": "Restaurant and drink anchors use Split-specific 2026 guide ranges, with July peak-season pricing applied. Expatistan cost-of-living comparisons place Split roughly level with Prague and below Lisbon, used as a general price-level cross-check. Accommodation anchors reflect general knowledge of peak-July pricing in Adriatic coastal resort cities of similar size.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.80,
+    "coffee": 3.83,
+    "inexp_meal_1p": 13.92,
+    "midrange_meal_2p": 69.60,
+    "cocktail": 13.92,
+    "wine_glass": 6.96,
+    "hostel_dorm_1p": 44.08,
+    "hostel_private_2p": 98.60,
+    "hotel_1star_2p": 104.40,
+    "hotel_3star_2p": 220.40
+  }
+}

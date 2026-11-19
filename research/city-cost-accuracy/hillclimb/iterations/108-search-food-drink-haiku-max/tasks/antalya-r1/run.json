@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "e06b27ded0e08403a02e42db13c8650e44490ada2f2784c4f036a07f11006300",
+  "requestSha256": "04c2a92b286c3563b7e9f563949cfe14647c9cdf03f78105dd65e73f0f2900e3",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 754590,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 102710,
+          "outputTokens": 312856,
+          "cacheReadInputTokens": 19242,
+          "cacheCreationInputTokens": 40512,
+          "webSearchRequests": 8,
+          "costUSD": 0.25499382000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 304588,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.25499382000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily rate rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Antalya cost of living prices meal inexpensive restaurant cappuccino domestic beer Numbeo",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Antalya restaurant bar prices cocktail glass of wine beer 2026 typical cost",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hikersbay prices in Antalya 2026 restaurant meal cappuccino mid-range dinner for two",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Antalya glass of wine price restaurant 2026 lira per glass",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Antalya cocktail price bar 2026 lira Kaleiçi beachfront",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.831Z",
+      "finishedAt": "2026-11-19T01:57:42.422Z"
+    }
+  ]
+}

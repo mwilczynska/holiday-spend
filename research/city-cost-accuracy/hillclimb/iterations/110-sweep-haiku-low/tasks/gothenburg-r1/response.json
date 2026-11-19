@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence. They come from aggregator and travel-guide estimates (not official price lists), and the restaurant and beer figures are the strongest. Cocktail and wine are lower confidence: they rest on overlapping guide ranges and, for wine, a single anecdote. Accommodation anchors are holistic model estimates from general knowledge of Gothenburg's market, with no accommodation searches or live listings checked; they are low to medium confidence and may not reflect July 2026 peak-season rates. The FX value is a third-party reproduction of an RBA observation dated 2026-10-27 (AllRatesToday, 0.7021). I did not verify it on rba.gov.au, and it is not the latest observation available on the generation date (2026-11-19). Treat it as provisional until checked against the RBA F11.1 table.",
+  "comparable_city_reasoning": "Priced as a mid-sized Swedish city with tourism demand, positioned below Stockholm and in line with other Nordic mid-sized cities for restaurants and bars. Food anchors use SEK price ranges converted at roughly 9.5 SEK per USD. Accommodation is a holistic estimate for a mid-sized Scandinavian port city in peak summer.",
+  "fx": {
+    "as_of_date": "2026-10-27",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7021,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.50,
+    "coffee": 5.20,
+    "inexp_meal_1p": 14.00,
+    "midrange_meal_2p": 85.00,
+    "cocktail": 15.50,
+    "wine_glass": 12.50,
+    "hostel_dorm_1p": 38.00,
+    "hostel_private_2p": 105.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 210.00
+  }
+}

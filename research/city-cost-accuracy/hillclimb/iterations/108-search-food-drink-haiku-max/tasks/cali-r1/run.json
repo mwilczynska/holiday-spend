@@ -1,0 +1,65 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0770418b638fdb71ad1535d4e3e2306e4012d5c5ad445915e6272fc71d6eee08",
+  "requestSha256": "0b39b45e5076e0a7db465ef1c2fd2cb0b950c7514fcbecae65a93778c3e281b1",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 370558,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 205185,
+          "outputTokens": 140608,
+          "cacheReadInputTokens": 4566,
+          "cacheCreationInputTokens": 19751,
+          "webSearchRequests": 11,
+          "costUSD": 0.38618596000000005,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 135615,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.38618596000000005,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Cali Colombia cost of living prices meal inexpensive restaurant cappuccino beer cocktail wine",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cali Colombia typical restaurant prices menu del dia cerveza cappuccino cocktail wine glass USD 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:23:09.737Z",
+      "finishedAt": "2026-11-19T02:29:20.295Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors use aggregated 2025-2026 Bali, Ubud and Canggu price ranges plus a few 2026 menus; beer and cappuccino are best supported. Wine and cocktail values are set against the beer anchor (about 2.8x and 2.7x) and cross-checked against mixed Canggu, Ubud and Bali-wide ranges. Accommodation anchors are model estimates for July peak season, not checked against live listings. Rupiah prices were converted at an assumed 16,500-17,000 IDR per USD, and menu prices may exclude the 21% service and tax common at ++ venues. The FX observation is the only RBA value the single RBA search returned (20 March 2026); it could not be confirmed as the latest value for 19 November 2026 and may be stale. A third-party site showed about 0.70 for late October 2026, which was not used because it is not an RBA source.",
+  "comparable_city_reasoning": "Regional basis: Southeast Asian resort-town pricing, using Bali-wide aggregates with Ubud and Canggu venue data, and Denpasar benchmarks where Canggu data was thin. Accommodation tiers are model judgement for comparable Bali tourist towns; no single named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.75,
+    "inexp_meal_1p": 4.00,
+    "midrange_meal_2p": 36.00,
+    "cocktail": 8.00,
+    "wine_glass": 8.50,
+    "hostel_dorm_1p": 14.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 85.00
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "09b19c7828e8a0e769b9ec6717dcaca7e69cf09086338dc02d52cabc74b8562c",
+  "requestSha256": "86462c3f6ea0a4e6e5445998438d59c463c749d2671e682d50b795a59f401e3b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 447640,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 133315,
+          "outputTokens": 284182,
+          "cacheReadInputTokens": 4561,
+          "cacheCreationInputTokens": 30224,
+          "webSearchRequests": 10,
+          "costUSD": 0.26151291,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 275551,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.26151291,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD daily F11.1 latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Doha food prices cappuccino domestic beer inexpensive restaurant meal",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Doha Qatar restaurant meal prices QAR inexpensive and mid-range three-course dinner for two 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Doha Qatar cappuccino coffee price QAR cafe 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Doha Qatar beer price QAR pint bar hotel licensed venue 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Doha Qatar cocktail price QAR wine by the glass restaurant bar 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:49:52.133Z",
+      "finishedAt": "2026-11-19T02:57:19.773Z"
+    }
+  ]
+}

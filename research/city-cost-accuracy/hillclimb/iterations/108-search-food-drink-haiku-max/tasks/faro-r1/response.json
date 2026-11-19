@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal and coffee anchors rest on Faro-specific aggregated 2026 cost-of-living figures that agree closely for meals and less so for beer and coffee. A small July uplift is applied, and beer is set to a standard single restaurant glass below the 0.5 L average those sources report. Cocktail is set from the local beer relationship (about 3 times draught beer) and cross-checked against Faro bar guides. Wine by the glass rests on Albufeira and national Portuguese ranges. Accommodation anchors are holistic model estimates for July peak season from general knowledge and city context, not from inspected booking pages or listings, and are the least certain. EUR-quoted prices were converted to USD at an approximate planning rate that is not separately sourced. The RBA observation came from a search summary that cites the RBA exchange-rates page; the page itself was not opened.",
+  "comparable_city_reasoning": "Meals, coffee and beer use Faro-specific aggregated data, so no separate comparable city is needed for them. Cocktail is set from the beer relationship and cross-checked against Faro bar guides. Wine by the glass is cross-checked against Albufeira and national Portuguese ranges. Accommodation is benchmarked holistically against mid-sized Algarve and southern Portuguese coastal cities at July peak season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.31,
+    "coffee": 2.28,
+    "inexp_meal_1p": 14.25,
+    "midrange_meal_2p": 45.60,
+    "cocktail": 10.26,
+    "wine_glass": 5.13,
+    "hostel_dorm_1p": 36.48,
+    "hostel_private_2p": 82.08,
+    "hotel_1star_2p": 91.20,
+    "hotel_3star_2p": 145.92
+  }
+}

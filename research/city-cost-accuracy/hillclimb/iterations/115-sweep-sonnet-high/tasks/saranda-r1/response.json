@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "I searched three times: one for the RBA rate and two for Saranda prices. Restaurant meal, beer and coffee anchors rest on aggregated price sources: Numbeo-style listings of about 265 ALL for a draft beer, 183 ALL for a cappuccino and 800 ALL for an inexpensive meal, plus a 2026 cost-of-living site. These sources disagree. A mid-range dinner for two ranged from about $15 to about $50, so I picked a value in between. Wine is based on a Saranda nightlife guide quoting 300-600 ALL per glass. I found no Saranda cocktail price. I set it from the beer price and from a Himara guide quoting 600-900 ALL for cocktails, which is a nearby coastal town. All accommodation anchors are holistic model estimates from general knowledge. I did not search for accommodation prices or inspect any listings. Saranda is a seasonal beach resort and July prices run above the annual averages, so accommodation is the least certain group. I skipped the third to fifth price searches, so the figures are thinner than the permitted search budget would allow.",
+  "comparable_city_reasoning": "Southern Albanian Riviera resort town, priced between Albanian city averages and Greek Ionian island tourist prices in peak summer. Comparable to Ksamil, Himara and Vlore, with July peak-season uplift on accommodation and some venue prices.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.3,
+    "coffee": 2.3,
+    "inexp_meal_1p": 9.5,
+    "midrange_meal_2p": 40.0,
+    "cocktail": 7.5,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 17.0,
+    "hostel_private_2p": 45.0,
+    "hotel_1star_2p": 42.0,
+    "hotel_3star_2p": 85.0
+  }
+}

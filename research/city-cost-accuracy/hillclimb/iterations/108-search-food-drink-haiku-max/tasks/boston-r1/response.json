@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Coffee, beer, cocktail and meal anchors converge across Boston cost-of-living sites and a Toast POS beer median, read from search-result summaries rather than opened pages. Some inexpensive-meal sources include a drink, so a food-only meal may be slightly lower. The wine glass is the weakest drink anchor because no aggregated Boston by-the-glass average was found. It is set at about 1.7x the beer anchor (local beer basis) and checked against scattered $10-18 wine-bar pours. Accommodation anchors are holistic model estimates for a July peak window, with no lodging search or listing checked, and are the least certain values. The FX date and rate come from search-result summaries that cite the RBA exchange-rates page. I did not open that page, and this may not be the newest print by the generation date.",
+  "comparable_city_reasoning": "No comparable city used. Restaurant and drink anchors are Boston-specific. Accommodation anchors are general-knowledge judgments reflecting Boston's high July lodging demand, with no comparable-city lookup performed.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.25,
+    "coffee": 5.50,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 18.00,
+    "wine_glass": 14.00,
+    "hostel_dorm_1p": 75.00,
+    "hostel_private_2p": 190.00,
+    "hotel_1star_2p": 210.00,
+    "hotel_3star_2p": 350.00
+  }
+}

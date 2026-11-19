@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c48fd0d9cdd3fad9776d04ea910d1e2ed079e4130b33ffdf3dbfc75f9158170b",
+  "requestSha256": "825e331fffda3d4dc90d8d73fca1c3e58568e92ec556e0e883dbbcfb4457bd20",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 823099,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 94714,
+          "outputTokens": 298303,
+          "cacheReadInputTokens": 63353,
+          "cacheCreationInputTokens": 54571,
+          "webSearchRequests": 7,
+          "costUSD": 0.24017063,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 289126,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.24017063,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Colombo Sri Lanka cost of living restaurant meal prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Colombo cappuccino beer cocktail wine glass price restaurant bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Colombo restaurant prices beer cappuccino meal",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Expatistan Colombo prices beer wine cocktail restaurant cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Colombo average price cocktail glass of wine local bar pub 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:38:00.477Z",
+      "finishedAt": "2026-11-19T02:51:43.576Z"
+    }
+  ]
+}

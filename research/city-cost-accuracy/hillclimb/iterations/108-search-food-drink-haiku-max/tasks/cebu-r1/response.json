@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Beer, coffee and inexpensive meal are medium confidence: based on search-result summaries of Cebu cost-of-living pages (Numbeo city and Cebu-area figures plus several guides), which are broadly consistent but partly crowd-sourced, and some are undated or older. Mid-range dinner for two is medium-low because sources diverge widely. Cocktail and wine_glass are low confidence: no solid Cebu per-drink price was found. Cocktail blends generic calculator figures and one upscale listing with the local beer relationship; wine_glass is set from the beer relationship and bottle benchmarks. Accommodation anchors are holistic model estimates from general knowledge; no accommodation searches or live listings were checked. Not adjusted for July seasonality. FX is the latest RBA observation surfaced by search (18 Nov 2026); the 19 Nov reading may not yet be published.",
+  "comparable_city_reasoning": "No comparable-city substitution for food and drink: Cebu-specific aggregator figures are used directly, with Numbeo city and Cebu-area figures as the main anchors. Cocktail and wine_glass are cross-checked against the local beer price relationship, since bar and restaurant drinks typically cost a few times a domestic beer. Accommodation is a holistic model judgment for Cebu City with no comparable-city lookup.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 2.65,
+    "inexp_meal_1p": 4.25,
+    "midrange_meal_2p": 25.00,
+    "cocktail": 5.25,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 27.00,
+    "hotel_3star_2p": 72.00
+  }
+}

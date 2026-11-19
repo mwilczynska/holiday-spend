@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "f46986def187fe27c12f88c82720889f15817cd44bd8ea8eee1d093f807bf5a0",
+  "requestSha256": "47facda119fcbac381e2b3513c17bf1040e56660a4916f9ca9f6a72885c333c6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 379137,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 64761,
+          "outputTokens": 206568,
+          "cacheReadInputTokens": 4567,
+          "cacheCreationInputTokens": 12284,
+          "webSearchRequests": 5,
+          "costUSD": 0.16226257,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 200958,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.16226257,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Barcelona cost of living restaurant meal prices 2026 typical menu",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Barcelona price of beer cocktail wine cappuccino in bars 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Barcelona prices restaurants cappuccino beer wine 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:02:19.957Z",
+      "finishedAt": "2026-11-19T02:08:39.094Z"
+    }
+  ]
+}

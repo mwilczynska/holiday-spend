@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3af4880ac3594ad2042751b8600aea1259f5505db27400ddedfb91dd2afe72ef",
+  "requestSha256": "4f68d0bc3751f3f82f74c8db0bf0da5117af2418080e9fc7b9199eb98f034f67",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 576166,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 137339,
+          "outputTokens": 252514,
+          "cacheReadInputTokens": 20123,
+          "cacheCreationInputTokens": 38702,
+          "webSearchRequests": 9,
+          "costUSD": 0.23793252999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 245026,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.23793252999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11.1 daily exchange rates A$1 US$ latest",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Belfast restaurant meal cappuccino beer prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Belfast cost of living 2026 pint lager cocktail glass of wine restaurant prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Belfast average price cappuccino coffee 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Belfast cost of living displayCurrency USD cocktail drink nightlife club bottle of wine beer cappuccino",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Belfast glass of wine price restaurant pub average 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:04:04.086Z",
+      "finishedAt": "2026-11-19T02:13:40.252Z"
+    }
+  ]
+}

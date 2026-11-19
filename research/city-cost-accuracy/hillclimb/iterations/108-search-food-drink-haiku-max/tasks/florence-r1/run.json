@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a3fca45b12336b3ffce20ca1504fb809cc9378fc4fbf209d0fb94c275f0d54f4",
+  "requestSha256": "c7a8f754b2b8835bf0091fc185cfbc79afc409b266a6a37d4a5078535f1f7945",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 576383,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 276890,
+          "outputTokens": 175925,
+          "cacheReadInputTokens": 26154,
+          "cacheCreationInputTokens": 43707,
+          "webSearchRequests": 12,
+          "costUSD": 0.39725283999999994,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 170299,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.39725283999999994,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florence Italy cost of living 2026 restaurant meal prices cappuccino draft beer cocktail glass of wine typical prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florence Italy restaurant house wine by the glass price euro trattoria 2026 average",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:58:05.563Z",
+      "finishedAt": "2026-11-19T03:07:41.946Z"
+    }
+  ]
+}

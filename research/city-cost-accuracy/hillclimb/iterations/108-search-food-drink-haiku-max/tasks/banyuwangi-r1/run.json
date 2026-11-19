@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a34ed078a29c09367fe2ac8006da19b52d903af314a7d40bf3e99c83ff90aca7",
+  "requestSha256": "3090cbf4333d05f44b568ce4ea940cde30dddb420e7cdf0b717a92fcb595ab0b",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 390445,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 95382,
+          "outputTokens": 213029,
+          "cacheReadInputTokens": 4569,
+          "cacheCreationInputTokens": 20053,
+          "webSearchRequests": 6,
+          "costUSD": 0.18010899000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 206786,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.18010899000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates A$1 US dollar latest daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Banyuwangi restaurant meal prices typical cost travel guide 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Indonesia cappuccino beer restaurant prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bali Indonesia cocktail price wine by the glass restaurant average 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:00:17.496Z",
+      "finishedAt": "2026-11-19T02:06:47.942Z"
+    }
+  ]
+}

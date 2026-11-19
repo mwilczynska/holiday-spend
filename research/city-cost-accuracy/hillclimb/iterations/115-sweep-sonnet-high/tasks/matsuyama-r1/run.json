@@ -1,0 +1,79 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "73bd8bd71ae93da2aca0212140e12ae4363fa31fc9ea8932ba37bbd184c3db73",
+  "requestSha256": "e14363aebf34332cbe5f139ae3ad0ad92958a26ab09c62cc6d48b9d3ace4e8ff",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39066,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1307,
+          "cacheReadInputTokens": 6662,
+          "cacheCreationInputTokens": 5367,
+          "webSearchRequests": 0,
+          "costUSD": 0.0358784,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 274,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 47888,
+          "outputTokens": 4142,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.0368598,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1843,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0727382,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama Japan cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama Ehime price of cocktail glass of wine draft beer izakaya",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:00:31.531Z",
+      "finishedAt": "2026-11-19T03:01:10.597Z"
+    }
+  ]
+}

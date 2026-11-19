@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors come from a few aggregated, crowd-sourced cost-of-living sources found by web search (Expat Arrivals, MyLifeElsewhere, Traveltables, Expatistan). These differ by source and date, and I rounded toward the middle of their ranges. Cappuccino was roughly $1.5-2.1, local beer roughly $1.4-2.4, and an inexpensive meal about $4-5. A mid-range meal for two was about $28-30. The beer anchor is set slightly above the aggregate figures because the definition is a restaurant serving, and alcohol in licensed venues costs more than retail. Cocktail is based on an Expatistan club estimate of about $5.65, which Expatistan itself calls a guess, plus a few hotel-bar and restaurant menu data points. Wine by the glass is based on one undated guide showing glasses from about EGP150, and I adjusted it to roughly 1.8x the beer price. Both are low-confidence. Accommodation anchors are holistic model estimates from general knowledge. I did not search for accommodation or inspect any listings. They are the least certain anchors, and hotel prices in Cairo vary widely by area and season. The EGP exchange rate has also been volatile.",
+  "comparable_city_reasoning": "Priced from Cairo-specific aggregated cost-of-living data. Accommodation is benchmarked loosely against other low-cost North African and Middle Eastern tourist capitals, with a tourism premium for Giza and downtown.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 1.8,
+    "inexp_meal_1p": 4.5,
+    "midrange_meal_2p": 28.0,
+    "cocktail": 5.5,
+    "wine_glass": 4.5,
+    "hostel_dorm_1p": 10.0,
+    "hostel_private_2p": 28.0,
+    "hotel_1star_2p": 22.0,
+    "hotel_3star_2p": 50.0
+  }
+}

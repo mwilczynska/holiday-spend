@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "e8154d53f7b9bca86d754f93636f4f995c56af5b968501fc823f7b8036979d75",
+  "requestSha256": "ccd709507cc0e07faf7b85ec6c525763338cf0a8897583f639b598455144c4ec",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 624656,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 82855,
+          "outputTokens": 248665,
+          "cacheReadInputTokens": 16200,
+          "cacheCreationInputTokens": 44263,
+          "webSearchRequests": 6,
+          "costUSD": 0.20163260000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 241412,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.20163260000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Alanya Turkey restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Alanya Turkey cappuccino beer cocktail wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Alanya bar cocktail price lira 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Alanya restaurant glass of wine price lira 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.656Z",
+      "finishedAt": "2026-11-19T01:55:32.312Z"
+    }
+  ]
+}

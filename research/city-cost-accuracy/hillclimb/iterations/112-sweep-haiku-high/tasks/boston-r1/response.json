@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are based on web searches of aggregated Boston price data (Toast median beer, city guides, Numbeo-derived listings, Restaurant Week fixed-price menus), but the sources are mixed in quality and several are user-submitted or small-sample. Restaurant and coffee anchors are reasonably consistent across sources; cocktail and wine anchors are less certain. Accommodation anchors are holistic model estimates from general knowledge of Boston's summer hotel and hostel market. No live booking pages or current listings were inspected. Meal anchors are likely before tax (about 6.25% in Massachusetts) and tip (typically 18-20%), so check whether your tool expects pre- or post-tip amounts. The FX observation was taken from RBA exchange-rate overview and RSS content reported in search results, not from a direct page fetch. No 19 November observation was available at generation time.",
+  "comparable_city_reasoning": "Boston is used as its own benchmark within the North America region. Drink and coffee anchors are based on aggregated Boston figures from several guides and aggregators, cross-checked against a national Toast beer median. The inexpensive and mid-range meal anchors draw on a Boston budget guide, a crowd-sourced lunch average, and Summer 2026 Dine Out Boston fixed-price menu tiers. Accommodation is a model estimate for Boston in peak summer, not a comparison against another city's listings.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 5.50,
+    "inexp_meal_1p": 22.00,
+    "midrange_meal_2p": 110.00,
+    "cocktail": 16.00,
+    "wine_glass": 15.00,
+    "hostel_dorm_1p": 60.00,
+    "hostel_private_2p": 150.00,
+    "hotel_1star_2p": 190.00,
+    "hotel_3star_2p": 310.00
+  }
+}

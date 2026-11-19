@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "10402a494b256539895e3eb2e643cf00c2abda4d9ad0f71e87d9081ca6f319b5",
+  "requestSha256": "a8a9031fde1a394e5b80a82daaed3a9d74c6393f61c2e2aed54241b052796186",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 40953,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57463,
+          "outputTokens": 7875,
+          "cacheReadInputTokens": 15589,
+          "cacheCreationInputTokens": 7420,
+          "webSearchRequests": 4,
+          "costUSD": 0.05132369,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3711,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05132369,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Egypt cost of living cappuccino beer price Cairo restaurant typical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates F11 USD AUD",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:59:25.592Z",
+      "finishedAt": "2026-11-19T03:00:06.545Z"
+    }
+  ]
+}

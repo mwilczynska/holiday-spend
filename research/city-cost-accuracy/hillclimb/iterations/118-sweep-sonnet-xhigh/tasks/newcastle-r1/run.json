@@ -1,0 +1,106 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "23a810986fa1008e4e49743ba8e82e55c17fda1cfe44a43acf3f6a1e8ce937b6",
+  "requestSha256": "10b521db2fdb3016d32f2a21450f28347bf78135981a924000deb618f1a032c3",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 51160,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 3789,
+          "cacheReadInputTokens": 20400,
+          "cacheCreationInputTokens": 16784,
+          "webSearchRequests": 0,
+          "costUSD": 0.10911799999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2076,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 144388,
+          "outputTokens": 7873,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 10,
+          "costUSD": 0.11837529999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3262,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.2274933,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Newcastle New South Wales Australia cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Newcastle Australia Numbeo cost of living cappuccino domestic beer restaurant glass of wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Newcastle NSW average price cocktail pub schooner beer glass of wine 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Newcastle Australia prices \"Cappuccino\" \"Domestic Beer\" \"Bottle of Wine\" restaurant",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com",
+              "expatistan.com",
+              "mylifeelsewhere.com",
+              "expatica.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Newcastle NSW restaurant menu glass of wine house wine price cocktail $ 2026 Darby Street Hunter Street",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:16:04.349Z",
+      "finishedAt": "2026-11-19T03:16:55.509Z"
+    }
+  ]
+}

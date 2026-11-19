@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Meal, coffee and draught beer figures are Cambridge-specific Numbeo aggregates as reported in search results. They are crowd-sourced, and the draught measure is 0.5 L, slightly under a UK pint, so beer may understate a full pint a little. No Cambridge-specific cocktail or wine data was found: cocktail is set at about twice the beer anchor and wine glass at about 1.35 times it, informed by UK-wide 2025-26 cocktail, pint and wine price data. Accommodation is a holistic model estimate for July peak season, with no live listings or accommodation searches, and is the least certain group. GBP prices were converted at an assumed rate of about 1.33 USD per GBP (not searched). The RBA rate came from RBA exchange-rate page results and was not checked against the live F11.1 table.",
+  "comparable_city_reasoning": "Cambridge meal, coffee and beer figures come from Numbeo's Cambridge data as reported in search results, with Oxford and Birmingham comparison pages from the same site as context. Cocktail and wine rest on UK-wide survey and guide benchmarks plus the local beer relationship. Hostel and hotel anchors are holistic estimates reasoned from general knowledge of comparable English historic university and tourist cities in peak July demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.85,
+    "coffee": 4.66,
+    "inexp_meal_1p": 21.95,
+    "midrange_meal_2p": 89.78,
+    "cocktail": 15.30,
+    "wine_glass": 10.64,
+    "hostel_dorm_1p": 53.20,
+    "hostel_private_2p": 126.35,
+    "hotel_1star_2p": 152.95,
+    "hotel_3star_2p": 246.05
+  }
+}

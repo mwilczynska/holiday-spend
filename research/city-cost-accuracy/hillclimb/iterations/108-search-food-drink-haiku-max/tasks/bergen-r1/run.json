@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b30defee6d129ebaeca71ea742fdfb9e758a1be8d7722ef124b53b1410f80cd0",
+  "requestSha256": "4be8a222a1b67ecac40584971bfabb18f94e2db2bc330ae3aab661144575b721",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 551988,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 204615,
+          "outputTokens": 319176,
+          "cacheReadInputTokens": 26743,
+          "cacheCreationInputTokens": 39442,
+          "webSearchRequests": 12,
+          "costUSD": 0.30820533,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 309995,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.30820533,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bergen Norway cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bergen Norway beer price pub restaurant 0.5 litre cappuccino price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bergen Norway cocktail price glass of wine restaurant bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Norway cost of living restaurant prices cappuccino beer wine index Bergen Oslo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bergen restaurant house wine by the glass price NOK 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:04:47.426Z",
+      "finishedAt": "2026-11-19T02:13:59.414Z"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1b0a682dc1200db2301df3cb84a60050ec4a0f8621ef3c3d8dd6c3e48914fa88",
+  "requestSha256": "343f96d7aeda5b70a7b7e2d1e749c4f8ff4ce18cb13f7e04d935d88b0a27523e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 43925,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2511,
+          "cacheReadInputTokens": 16584,
+          "cacheCreationInputTokens": 11992,
+          "webSearchRequests": 0,
+          "costUSD": 0.0764068,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1038,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 109122,
+          "outputTokens": 7257,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 7,
+          "costUSD": 0.0845407,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2808,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1609475,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn cost of living restaurant prices meal inexpensive restaurant cappuccino domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn price of cocktail and glass of wine in restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn Estonia prices 2026 three-course meal for two mid-range restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Tallinn cost of living meal inexpensive restaurant domestic beer restaurant cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn restaurant prices after VAT increase 2026 beer pint wine glass price",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:16:55.521Z",
+      "finishedAt": "2026-11-19T03:17:39.446Z"
+    }
+  ]
+}

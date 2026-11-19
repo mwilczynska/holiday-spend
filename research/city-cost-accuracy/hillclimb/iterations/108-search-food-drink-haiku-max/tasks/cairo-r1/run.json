@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "10402a494b256539895e3eb2e643cf00c2abda4d9ad0f71e87d9081ca6f319b5",
+  "requestSha256": "a8a9031fde1a394e5b80a82daaed3a9d74c6393f61c2e2aed54241b052796186",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 612047,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 85678,
+          "outputTokens": 301773,
+          "cacheReadInputTokens": 19022,
+          "cacheCreationInputTokens": 30729,
+          "webSearchRequests": 6,
+          "costUSD": 0.22579032000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 293137,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.22579032000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily rate",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Cairo restaurant prices meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo restaurant bar prices beer cocktail wine 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo cappuccino price coffee shop cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo glass of wine price restaurant average cost beer comparison",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cairo mid-range restaurant meal for two three courses price 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:22:18.769Z",
+      "finishedAt": "2026-11-19T02:32:30.817Z"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "89207e35934a2dbd09b3071fd1b74af880b4d086e87a10d2c8f34a6a7d588f04",
+  "requestSha256": "8ade9a60f2959e71e6bac50255aeb93f1999d66a1fcf2bb446b7c5c8aec9010c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 482757,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 119175,
+          "outputTokens": 194870,
+          "cacheReadInputTokens": 21818,
+          "cacheCreationInputTokens": 36326,
+          "webSearchRequests": 7,
+          "costUSD": 0.18683588,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 188868,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.18683588,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Chongqing restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chongqing bar prices cocktail beer wine glass yuan 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Expatistan dinner price Chongqing restaurant meal cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chongqing glass of wine restaurant price yuan",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:36:18.660Z",
+      "finishedAt": "2026-11-19T02:44:21.417Z"
+    }
+  ]
+}

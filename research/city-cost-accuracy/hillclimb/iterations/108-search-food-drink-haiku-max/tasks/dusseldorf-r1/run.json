@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "2763d4918901c871e4c63333b3e574bc91568dde31ae8e5c157e8d96937d1166",
+  "requestSha256": "5d1ae683b008241f4f8ffd2929e7d7084cfd2798895baaa9f7fd40741062a4f0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 559302,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 301223,
+          "outputTokens": 198583,
+          "cacheReadInputTokens": 17711,
+          "cacheCreationInputTokens": 40362,
+          "webSearchRequests": 13,
+          "costUSD": 0.44566611000000006,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 191408,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.44566611000000006,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates A$1 US$ latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Düsseldorf cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Düsseldorf prices 2026 beer cocktail wine glass restaurant euro",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Düsseldorf Durchschnittspreise Gastronomie Glas Wein Cocktail Pils Cappuccino 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:51:43.583Z",
+      "finishedAt": "2026-11-19T03:01:02.885Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Low overall: no Dambulla-specific price data was found. Food and drink anchors use aggregated Colombo and Kolonnawa figures (Numbeo and cost-of-living guides, some dated 2023-2024 and many undated) with a smaller-town adjustment, and sources conflict widely. Recent beer excise increases may not be reflected in older sources. Cocktail and wine_glass are set from the local beer relationship (about 2.4x and 2.6x beer) because venue evidence is sparse and upscale. Accommodation anchors are holistic model estimates; no accommodation search was run. FX is stale: the newest RBA observation found by search is 2026-03-20 (0.7088 USD per AUD), and no later RBA figure could be confirmed.",
+  "comparable_city_reasoning": "Food and drink based on Colombo and Kolonnawa (Sri Lanka) aggregated price data, adjusted down for Dambulla, a smaller town in Matale District with tourist-facing restaurants. Accommodation is a holistic estimate for Cultural Triangle lodging (Dambulla, Sigiriya and Habarana area) from general knowledge only.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 22.00,
+    "cocktail": 6.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 9.00,
+    "hostel_private_2p": 18.00,
+    "hotel_1star_2p": 15.00,
+    "hotel_3star_2p": 65.00
+  }
+}

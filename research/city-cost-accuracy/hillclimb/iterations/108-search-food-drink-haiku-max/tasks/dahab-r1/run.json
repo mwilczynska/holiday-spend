@@ -1,0 +1,75 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b75b129ec152cf758f3a3946c7a50343663ca28960e8381298abdcd6dcc374b3",
+  "requestSha256": "73eddeb66d7d450b5b798105c44469a7601c5c47be24e9ad53a845245bcc7ad5",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 563980,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 64899,
+          "outputTokens": 206819,
+          "cacheReadInputTokens": 22326,
+          "cacheCreationInputTokens": 33246,
+          "webSearchRequests": 5,
+          "costUSD": 0.16677186,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 200218,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.16677186,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily rate F11",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dahab Egypt restaurant meal prices beer cappuccino cocktail wine cost 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Egypt restaurant prices beer cappuccino",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dahab restaurant bar wine by the glass price EGP 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:44:51.633Z",
+      "finishedAt": "2026-11-19T02:54:15.613Z"
+    }
+  ]
+}

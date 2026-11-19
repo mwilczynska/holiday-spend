@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "063d75421bcae5338842396812e25b65c0326f2357ebfa64aeddf2fb7cdd748f",
+  "requestSha256": "e0549669ee147a13f29fd4854181fab16b5596b92d1674fcc5ef72d4304a49db",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 49804,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 87540,
+          "outputTokens": 9118,
+          "cacheReadInputTokens": 15725,
+          "cacheCreationInputTokens": 11485,
+          "webSearchRequests": 6,
+          "costUSD": 0.07576725,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3302,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07576725,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain cost of living restaurant meal coffee beer prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain cappuccino beer cerveza price bar terrace typical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates USD AUD daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain cappuccino price euros average 2026 café con leche cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain cocktail price copa de vino price euros bar",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:00:01.758Z",
+      "finishedAt": "2026-11-19T03:00:51.562Z"
+    }
+  ]
+}

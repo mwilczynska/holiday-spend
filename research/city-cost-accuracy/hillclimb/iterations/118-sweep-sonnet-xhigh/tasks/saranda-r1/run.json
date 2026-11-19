@@ -1,0 +1,93 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "994260df3165c4beb793d918e7fd2c05cd6dba5093a88edc2709f0f95d541f22",
+  "requestSha256": "f7532089ed0e48182c89bd0287932f231cd26acd7724e82bb9df8700b2338bc0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 29852,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 2278,
+          "cacheReadInputTokens": 6661,
+          "cacheCreationInputTokens": 8787,
+          "webSearchRequests": 0,
+          "costUSD": 0.0592682,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1023,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 78858,
+          "outputTokens": 6114,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 5,
+          "costUSD": 0.060942800000000005,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2197,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.120211,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda Albania cost of living restaurant meal prices beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda Albania prices cappuccino coffee price euro lek",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda Albania cocktail price glass of wine price restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Albania prices domestic draft beer restaurant meal for 2 three-course",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:16:34.007Z",
+      "finishedAt": "2026-11-19T03:17:03.859Z"
+    }
+  ]
+}

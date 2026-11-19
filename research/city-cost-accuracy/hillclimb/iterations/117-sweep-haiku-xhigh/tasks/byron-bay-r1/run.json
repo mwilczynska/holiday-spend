@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3f5ae22485edff8cb73531a69405e1a6262ae77e35776c240d8c98206823a561",
+  "requestSha256": "a8cec6b6126e15fa27c7e056d74f7bf3fc9e25fa9b276a4761de08a6e89e7088",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 76024,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 68477,
+          "outputTokens": 36113,
+          "cacheReadInputTokens": 6678,
+          "cacheCreationInputTokens": 10251,
+          "webSearchRequests": 5,
+          "costUSD": 0.07702118,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 30213,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07702118,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA Australian dollar exchange rate USD latest F11 historical",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay cost of living restaurant meal prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay coffee cappuccino price beer pub price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay cocktail price bar wine by the glass price",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:14:53.148Z",
+      "finishedAt": "2026-11-19T03:16:09.172Z"
+    }
+  ]
+}

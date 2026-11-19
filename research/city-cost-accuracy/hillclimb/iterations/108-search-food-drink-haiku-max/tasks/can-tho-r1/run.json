@@ -1,0 +1,80 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "77659efc7aeecc1cfab2c83d52bd2b9b10edc73c20a4410ad8a38fa9b476efc7",
+  "requestSha256": "06374156015d4cd08388929fd45aee66634be51b5578c8ca50e060c8e8145e1a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 505968,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 79171,
+          "outputTokens": 188198,
+          "cacheReadInputTokens": 21736,
+          "cacheCreationInputTokens": 29468,
+          "webSearchRequests": 5,
+          "costUSD": 0.15812705999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 182380,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15812705999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Can Tho Vietnam cost of living restaurant meal beer coffee prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Can Tho Vietnam cocktail wine glass bar restaurant prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Can Tho prices cocktail glass of wine draft beer bar average",
+            "mode": "extended",
+            "allowed_domains": [
+              "hikersbay.com",
+              "livingcost.org",
+              "citycost.org",
+              "numbeo.com",
+              "expatden.com",
+              "wise.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:26:15.485Z",
+      "finishedAt": "2026-11-19T02:34:41.453Z"
+    }
+  ]
+}

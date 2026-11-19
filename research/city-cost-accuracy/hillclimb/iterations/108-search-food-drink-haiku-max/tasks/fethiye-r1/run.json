@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "dae1c77a34eece987afb1df293bb3508e551c03db0ea37c7bff327e106f17a2e",
+  "requestSha256": "c70e3c691dbf436d3a9297e601e28e9666ed14d3766bcf2411c1355ddc226f44",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 827929,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 504885,
+          "outputTokens": 297890,
+          "cacheReadInputTokens": 29612,
+          "cacheCreationInputTokens": 50084,
+          "webSearchRequests": 20,
+          "costUSD": 0.7852556199999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 288407,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.7852556199999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates A$1 = US$ latest daily F11 rates",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Fethiye restaurant prices beer cappuccino meal 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Turkey cost of living 2026 restaurant meal price beer cappuccino cocktail wine lira",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Exchange rates AUD USD daily F11.1 November 2026 A$1 = US$",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Turkish Riviera Fethiye Bodrum bar cocktail price wine glass restaurant lira 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:56:55.942Z",
+      "finishedAt": "2026-11-19T03:10:43.871Z"
+    }
+  ]
+}

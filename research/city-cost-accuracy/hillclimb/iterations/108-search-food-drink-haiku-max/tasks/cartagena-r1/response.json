@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Food and drink anchors triangulate several Cartagena cost-of-living summaries and venue listings of mixed date and quality. Aggregated figures conflict for the mid-range two-person meal, so that anchor is a bounded central estimate. Cocktail rests on several listings. Wine_glass rests on thin direct data (one listing and one menu) and was cross-checked against the local wine-to-beer relationship (about 3.5 times the beer anchor). Accommodation anchors are holistic model estimates from general knowledge and city context, not searched or checked against live listings; July mid-year holiday demand and taxes may push them up. Local sources disagree on the COP/USD rate, so USD food and drink values carry FX uncertainty. The fx value is the 18 Nov 2026 RBA observation found in search; a 19 Nov fixing may already be published.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors follow Cartagena-specific aggregated summaries and tourist-district venue listings. Accommodation reflects general knowledge of Colombian Caribbean-coast tourist lodging rather than a named comparable city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.25,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 56.00,
+    "cocktail": 10.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 20.00,
+    "hostel_private_2p": 48.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "205b34c45a5bc2304237f6f9864239dab21b0f0695f9b2d7426664613b39dcd2",
+  "requestSha256": "5f4918a66acc2ea11e9d8550c56dbd1d920a6f4298e33d1b31ec950dad438c2f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 96155,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 106006,
+          "outputTokens": 30930,
+          "cacheReadInputTokens": 17517,
+          "cacheCreationInputTokens": 11840,
+          "webSearchRequests": 7,
+          "costUSD": 0.09860877,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 25092,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09860877,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia coffee cappuccino beer price bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates A$1 = US dollar daily rate",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia cocktail price wine glass price bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:19:15.355Z",
+      "finishedAt": "2026-11-19T03:20:51.510Z"
+    }
+  ]
+}

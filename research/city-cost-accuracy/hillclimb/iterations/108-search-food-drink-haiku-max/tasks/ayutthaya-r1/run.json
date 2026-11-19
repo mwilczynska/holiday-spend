@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "cd741a329954add68094f04e2d4ffa0d53fd5e9b9b98b7847820577c7d40930a",
+  "requestSha256": "01cda90e6134fb73dad3dc8ddf1b80fefa4dd003db837b320f4a7bef8940d797",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 383584,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 118151,
+          "outputTokens": 201474,
+          "cacheReadInputTokens": 4566,
+          "cacheCreationInputTokens": 19478,
+          "webSearchRequests": 6,
+          "costUSD": 0.17649336,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 195744,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.17649336,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest A$1 US dollar daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Thailand restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Ayutthaya restaurant prices beer cocktail cappuccino cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Thailand bar cocktail price wine by the glass restaurant price baht 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:55:56.366Z",
+      "finishedAt": "2026-11-19T02:02:19.950Z"
+    }
+  ]
+}

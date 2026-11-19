@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3f136d7635c0a28fb43fc71a0a5bda36e19c292004f14f903def596f7da6e631",
+  "requestSha256": "84d503a91a82d526a0418d62b08f5e129533406609dc11ef7ba15a7014116643",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 106660,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 129199,
+          "outputTokens": 40211,
+          "cacheReadInputTokens": 6680,
+          "cacheCreationInputTokens": 16522,
+          "webSearchRequests": 10,
+          "costUSD": 0.1363966,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 32793,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1363966,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 observation November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bilbao restaurant meal prices menu del dia cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bilbao cost of living cappuccino beer price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain bar prices beer caña cocktail glass of wine average price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bilbao prices eating out guide inexpensive restaurant mid-range three course",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:14:53.086Z",
+      "finishedAt": "2026-11-19T03:16:39.747Z"
+    }
+  ]
+}

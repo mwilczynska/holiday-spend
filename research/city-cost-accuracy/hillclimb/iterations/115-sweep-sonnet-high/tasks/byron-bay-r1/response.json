@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "I ran three web searches: one for the RBA rate and two for Byron Bay prices. The price sources were crowdsourced cost-of-living aggregators (nomad.watch, citycost.org, jobicy, expatexchange) and they disagree. Restaurant meal and coffee anchors are the best supported. These were roughly A$18-25 for an inexpensive meal, A$73-112 for a mid-range dinner for two, and A$4.5-5.5 for a cappuccino, with Byron Bay at a tourist-town premium. Beer is about A$8-12 for a pint, so I used a pub-pint figure. I found no regular menu prices for cocktails or wine. A search turned up only happy-hour listings, such as about A$14-16 cocktails and A$8 house wine. Cocktail and wine anchors are therefore based on the local relationship to beer and on typical Australian tourist-town pricing. They are estimates, not sourced menu prices. Accommodation anchors are holistic model estimates from general knowledge of Byron Bay's high, seasonal tourist pricing. I did not search accommodation prices or inspect any live listings. They are the least certain anchors, and prices swing widely with season and events.",
+  "comparable_city_reasoning": "Priced as a premium Australian coastal tourist town, above Brisbane and similar to or somewhat below Sydney for food and drink, and well above typical regional NSW for accommodation.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.5,
+    "coffee": 3.7,
+    "inexp_meal_1p": 16.5,
+    "midrange_meal_2p": 72.0,
+    "cocktail": 14.0,
+    "wine_glass": 9.0,
+    "hostel_dorm_1p": 33.0,
+    "hostel_private_2p": 98.0,
+    "hotel_1star_2p": 112.0,
+    "hotel_3star_2p": 210.0
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "36374a739c59329eb1e731a8491c4daa55d6a282ef3941486493259538999ef7",
+  "requestSha256": "1ac9d5e8beb08fb8d51fe74e7efe5cb5ac0375d7a61dee3f662a59244ae8f6c8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 536067,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 54425,
+          "outputTokens": 186938,
+          "cacheReadInputTokens": 15946,
+          "cacheCreationInputTokens": 35050,
+          "webSearchRequests": 4,
+          "costUSD": 0.14608096000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 181459,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14608096000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily A$1 US dollar latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Berlin cost of living restaurant meal cappuccino beer prices Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Berlin 2026 typical prices cappuccino draft beer cocktail glass of wine restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Berlin average price glass of wine restaurant cocktail bar 2026 drinks cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:06:00.052Z",
+      "finishedAt": "2026-11-19T02:14:56.119Z"
+    }
+  ]
+}

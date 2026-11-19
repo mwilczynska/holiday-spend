@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded central estimates from search-result summaries of 2026 Belgrade cost-of-living and menu listings (Numbeo, Postopice.rs, Expatistan, Townleap and similar). The pages were not opened, and the sources disagree noticeably on inexpensive meals and cappuccino. Beer assumes a 0.5 L draft. Dinar prices were converted to USD at an approximate rate that was not separately sourced. wine_glass has the weakest direct evidence, so it is set modestly above the beer anchor (the local price relationship) and cross-checked against one hotel-bar report of a glass starting near 500 dinars. Accommodation anchors are holistic model estimates for a July 2026 peak-season stay from general knowledge. No accommodation searches or listing checks were made, so they are the least certain. The FX rate came from search-result content for the RBA 18 Nov 2026 observation, not an opened page.",
+  "comparable_city_reasoning": "No single comparable city was used. Food and drink anchors are Belgrade-specific. Accommodation reflects a general regional view of Belgrade as a mid-priced Southeast/Central European capital in summer.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.75,
+    "coffee": 3.00,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 52.00,
+    "cocktail": 7.50,
+    "wine_glass": 4.50,
+    "hostel_dorm_1p": 24.00,
+    "hostel_private_2p": 58.00,
+    "hotel_1star_2p": 64.00,
+    "hotel_3star_2p": 125.00
+  }
+}

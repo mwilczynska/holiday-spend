@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d51e5b5261be61e4b5ed32fe0a94d49979adaaeb3c50bec30cbc1c7683d1a8ff",
+  "requestSha256": "1e85c82edbf62ddff1535e118d958c5ee104723ce1f7882da3ae14b5bb493c3d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 877366,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 340951,
+          "outputTokens": 284816,
+          "cacheReadInputTokens": 53951,
+          "cacheCreationInputTokens": 57280,
+          "webSearchRequests": 14,
+          "costUSD": 0.50574461,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 276962,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.50574461,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily A$1 US dollar latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bali Canggu cost of living restaurant meal beer cappuccino cocktail wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates daily F11.1 A$1 US$ latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Denpasar Bali cost of living prices inexpensive restaurant meal cappuccino domestic beer cocktail wine",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com",
+              "expatistan.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bank Indonesia USD IDR reference exchange rate November 2026 rupiah per dollar",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:57:42.428Z",
+      "finishedAt": "2026-11-19T02:12:19.795Z"
+    }
+  ]
+}

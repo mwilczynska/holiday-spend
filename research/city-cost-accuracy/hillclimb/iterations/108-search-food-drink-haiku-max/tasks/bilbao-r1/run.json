@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3f136d7635c0a28fb43fc71a0a5bda36e19c292004f14f903def596f7da6e631",
+  "requestSha256": "84d503a91a82d526a0418d62b08f5e129533406609dc11ef7ba15a7014116643",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 578664,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 86918,
+          "outputTokens": 268831,
+          "cacheReadInputTokens": 16922,
+          "cacheCreationInputTokens": 33455,
+          "webSearchRequests": 6,
+          "costUSD": 0.20996752,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 261129,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.20996752,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bilbao cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bilbao menu del dia price restaurant typical cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain bar prices cocktail glass of wine beer caña cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Bilbao cost of living cappuccino cocktail drink domestic beer glass of wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bilbao bars cocktail price wine by the glass price pintxos 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:06:47.948Z",
+      "finishedAt": "2026-11-19T02:16:26.612Z"
+    }
+  ]
+}

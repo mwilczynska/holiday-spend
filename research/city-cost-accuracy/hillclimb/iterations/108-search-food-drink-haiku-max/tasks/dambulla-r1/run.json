@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "02dcfeff798f9ec539b984785b625d76f94dbc8a9a1ea843dc25135a9cb8a541",
+  "requestSha256": "67d1b9281cdbffb9db1d531c2648b5010e138eabad048690000c90e5f8077ad4",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 657538,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 237596,
+          "outputTokens": 264182,
+          "cacheReadInputTokens": 26549,
+          "cacheCreationInputTokens": 48895,
+          "webSearchRequests": 11,
+          "costUSD": 0.45208828999999995,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 256095,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.45208828999999995,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11 AUD USD latest daily rate",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Sri Lanka restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sri Lanka typical restaurant meal price rice and curry 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sri Lanka bar cocktail price wine glass restaurant Lion Lager 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sri Lanka beer liquor price increase 2026 excise Lion Lager",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:45:03.123Z",
+      "finishedAt": "2026-11-19T02:56:00.661Z"
+    }
+  ]
+}

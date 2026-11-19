@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b2fda7c588ae72073cd8a8cc8d2a5ac886f65acb04ff5a3be821e5012d0312df",
+  "requestSha256": "507cea625134a1dfa583b1fa0e52b48a3c46415d803f627b9b19f07f987218e2",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 529173,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 235688,
+          "outputTokens": 229691,
+          "cacheReadInputTokens": 27849,
+          "cacheCreationInputTokens": 39269,
+          "webSearchRequests": 10,
+          "costUSD": 0.35620539,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 222698,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.35620539,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Abu Dhabi cost of living restaurant meal cappuccino domestic beer prices Numbeo",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Abu Dhabi cost of living restaurant prices beer cocktail wine glass Expatistan",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Abu Dhabi hotel bar cocktail price wine glass beer price 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates A$1 = US$ daily F11.1 latest November 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.590Z",
+      "finishedAt": "2026-11-19T01:53:56.764Z"
+    }
+  ]
+}

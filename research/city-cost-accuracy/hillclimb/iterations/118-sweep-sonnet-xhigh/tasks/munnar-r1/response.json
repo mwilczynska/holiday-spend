@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "I ran six web searches. One returned the RBA rate. Five covered prices, and none gave direct current Munnar figures for beer, cappuccino, cocktails or wine. Meal anchors rest on loosely supported budget-travel guides: about $2–6 for lunch, $5–11 for dinner, about $1 for coffee, and ₹500–900 per person at a mid-range-to-premium Munnar restaurant. They also draw on Kochi crowd-sourced indexes (about $1.55–1.78 for a basic meal) and an undated review showing a ₹100 thali. Beer is extrapolated from Kerala retail 650 ml prices of roughly ₹120–170 plus a bar and hotel markup, with a tourist-town premium. The only beer and cappuccino figures I found were for Valparai, a different town. Cocktail and wine are estimated from the beer price: cocktails at about 1.8x beer and a glass of wine at about 1.7x. Licensed hotel and resort bars are the main source of these drinks in Munnar, and their prices are not verified. Accommodation anchors are holistic estimates from general knowledge. I did not search for or inspect any listings, and July is monsoon low season. Rates are converted at roughly ₹95 per USD, a rate implied by the sources I found rather than one I checked directly.",
+  "comparable_city_reasoning": "Priced from Kerala and South Indian hill-station and tourist-town levels. Kochi and Kerala retail beer prices set the baseline. Valparai gave a rough low-end comparison. Hotel-bar and resort markups reflect Munnar's tourism-driven pricing.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.2,
+    "coffee": 1.6,
+    "inexp_meal_1p": 2.3,
+    "midrange_meal_2p": 18.0,
+    "cocktail": 5.8,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 7.5,
+    "hostel_private_2p": 22.0,
+    "hotel_1star_2p": 16.0,
+    "hotel_3star_2p": 48.0
+  }
+}

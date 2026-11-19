@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on crowd-sourced Numbeo data (November 2026 Abu Dhabi update, cross-checked with Expatistan) and travel-guide price ranges from search results, not verified menus. Beer, coffee, inexpensive meal and mid-range meal are the firmest. Cocktail and wine-glass values are midpoints of guide ranges, checked against the beer anchor, because no aggregated per-drink figure was found. Mid-range two-person pricing sits above Numbeo's median because Expatistan's dinner-for-two benchmark (which includes wine and dessert) implies a higher food-only cost. Service charge and VAT treatment is unclear. Accommodation anchors are holistic model estimates from general knowledge with a July low-season adjustment. No accommodation searches or live listing checks were made, and hostel values are least certain. The FX observation (2026-11-18) is the latest RBA figure found. It comes from search-result summaries of the RBA exchange-rates page rather than the F11.1 table, and no later 2026-11-19 figure was found.",
+  "comparable_city_reasoning": "No comparison city was used. Food and drink anchors are Abu Dhabi-specific. Accommodation anchors use a general UAE capital hotel-tier basis from model knowledge. The dirham is pegged to the US dollar.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 10.89,
+    "coffee": 6.12,
+    "inexp_meal_1p": 9.39,
+    "midrange_meal_2p": 78.97,
+    "cocktail": 19.06,
+    "wine_glass": 17.70,
+    "hostel_dorm_1p": 29.95,
+    "hostel_private_2p": 65.35,
+    "hotel_1star_2p": 68.07,
+    "hotel_3star_2p": 108.92
+  }
+}

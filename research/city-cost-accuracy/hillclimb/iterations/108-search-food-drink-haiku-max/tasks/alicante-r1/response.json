@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Meal, beer, coffee and cocktail anchors rest on Alicante cost-of-living guides and Spanish drink-price reports, mostly dated 2026. EUR-quoted figures were placed on a USD basis at about 1.16 USD per EUR, implied by those sources and not checked for July 2026. Wine uses Spain-wide restaurant ranges kept in line with the beer anchor, since no Alicante wine figure was found. The cocktail is one Alicante club-price point raised to bar level and checked against beer. Accommodation anchors are holistic model estimates for July high season, not checked against live booking pages or listings, and are the least certain (roughly +/-25%). FX comes from rba.gov.au search summaries rather than a direct table read. A second RBA-restricted search was run because the first returned only older snapshots.",
+  "comparable_city_reasoning": "Alicante-specific cost guides for meals and drinks, with Benidorm, Valencia and Madrid drink reports as nearby checks. Accommodation is benchmarked against mid-sized Spanish coastal cities in July high season.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.00,
+    "coffee": 2.60,
+    "inexp_meal_1p": 17.00,
+    "midrange_meal_2p": 64.00,
+    "cocktail": 11.00,
+    "wine_glass": 4.35,
+    "hostel_dorm_1p": 33.00,
+    "hostel_private_2p": 70.00,
+    "hotel_1star_2p": 76.00,
+    "hotel_3star_2p": 145.00
+  }
+}

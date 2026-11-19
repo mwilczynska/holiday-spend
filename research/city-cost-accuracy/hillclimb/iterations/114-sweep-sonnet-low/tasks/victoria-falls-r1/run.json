@@ -1,0 +1,72 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "18ed144acfb9ef859b83ba9d721f7706888c9b645f6bb993c1c6ecf721fb97f0",
+  "requestSha256": "edfded1696202bc32194b1b1f7a1b9a2434207d29af56cbe91c85a066c0386a6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 21072,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 780,
+          "cacheReadInputTokens": 4549,
+          "cacheCreationInputTokens": 5436,
+          "webSearchRequests": 0,
+          "costUSD": 0.0304618,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 29978,
+          "outputTokens": 2247,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.0241213,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 880,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0545831,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Victoria Falls Zimbabwe restaurant meal beer cappuccino cocktail wine price",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:02:37.256Z",
+      "finishedAt": "2026-11-19T03:02:58.328Z"
+    }
+  ]
+}

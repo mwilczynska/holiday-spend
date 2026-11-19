@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "063d75421bcae5338842396812e25b65c0326f2357ebfa64aeddf2fb7cdd748f",
+  "requestSha256": "e0549669ee147a13f29fd4854181fab16b5596b92d1674fcc5ef72d4304a49db",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 125135,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 141460,
+          "outputTokens": 38962,
+          "cacheReadInputTokens": 19936,
+          "cacheCreationInputTokens": 20674,
+          "webSearchRequests": 9,
+          "costUSD": 0.12796116000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 32656,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.12796116000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain restaurant menu del día price cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain beer caña price coffee cappuccino price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain cocktail price wine glass price bar average 2026 Andalusia",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "precio copa de vino restaurante España 2026 media euros",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:14:53.215Z",
+      "finishedAt": "2026-11-19T03:16:58.350Z"
+    }
+  ]
+}

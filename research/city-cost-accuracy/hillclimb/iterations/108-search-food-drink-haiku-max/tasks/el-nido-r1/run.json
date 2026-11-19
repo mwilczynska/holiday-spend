@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "fdec778265e8de21a5bbd4bf6fe379e968a8ddb73e7ee5bc0ad6b58f7fc1cd54",
+  "requestSha256": "a8035b4e427f6368c8e974179d3b9646017fc5c0ff4d00589f5fe91ab80417a8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 423435,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 130834,
+          "outputTokens": 237500,
+          "cacheReadInputTokens": 4564,
+          "cacheCreationInputTokens": 25203,
+          "webSearchRequests": 9,
+          "costUSD": 0.22691964,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 230962,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.22691964,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily A$1 US dollar latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "El Nido Palawan cost of living restaurant meal beer cappuccino cocktail wine prices pesos 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "El Nido restaurant prices per person budget and mid-range meal pesos 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "El Nido bar prices beer cocktail glass of wine happy hour pesos 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:54:21.170Z",
+      "finishedAt": "2026-11-19T03:01:24.605Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors draw on several mostly 2026-dated aggregated sources (Numbeo, combien-coute, Whereandwhen, Welt-preise) and are the most reliable. Wine and cocktail anchors rest on a few Aix venue menus, sanity-checked against the beer level, so they are less certain. Hostel and hotel anchors are holistic peak-July estimates and were not checked against any listings. Beer is a 0.5 L draught. Euro prices were converted at an assumed EUR/USD of about 1.16, which was not taken from the searches and moves all USD anchors proportionally. The FX value is as reported in search results for the RBA exchange-rates page and was not re-verified on the live table.",
+  "comparable_city_reasoning": "Restaurant and drink anchors are Aix-specific, drawn from venue menus and city-level aggregates. Accommodation is a holistic estimate for mid-sized Provence cities with a July tourist premium in Aix.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.83,
+    "coffee": 4.06,
+    "inexp_meal_1p": 19.72,
+    "midrange_meal_2p": 74.24,
+    "cocktail": 14.50,
+    "wine_glass": 8.12,
+    "hostel_dorm_1p": 46.40,
+    "hostel_private_2p": 110.20,
+    "hotel_1star_2p": 116.00,
+    "hotel_3star_2p": 232.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "low",
+  "confidence_notes": "Overall low confidence. Restaurant and drink levels come from WebSearch summaries of Banyuwangi meal guides and national Indonesian cost-of-living averages. These sources are undated in places and disagree, and no pages were opened in full. Cocktail and wine have no Banyuwangi-specific data; they are scaled from Bali reports relative to beer (cocktail about 2.5x beer, wine about 2.75x beer). Accommodation is a holistic model estimate with a judgmental July high-season uplift; no accommodation searches or listing checks were made. IDR figures assume roughly 17,000 IDR per USD, not separately verified. Sit-down venues may add 10 to 21 percent service and tax, only partly reflected. The FX value is from a WebSearch summary of the RBA exchange-rates page, not a direct page read.",
+  "comparable_city_reasoning": "Benchmarked to national Indonesian averages and Java cities with similar restaurant pricing (Semarang, Medan, and a Surabaya-level restaurant index), with Bali treated as a higher-priced tourist benchmark that Banyuwangi undercuts. Lodging is judged against budget-to-mid-tier East Javan and Yogyakarta-scale tourist towns from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 1.60,
+    "inexp_meal_1p": 1.80,
+    "midrange_meal_2p": 15.00,
+    "cocktail": 5.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 6.50,
+    "hostel_private_2p": 13.00,
+    "hotel_1star_2p": 14.00,
+    "hotel_3star_2p": 42.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Beer, coffee and meal anchors draw on several Bergen-focused aggregator sites (Expat Arrivals, MyLifeElsewhere, Gotripzi, Combien Coute) dated 2025 to 2026, not specific to July; beer assumes about a 0.5 L draught. Cocktail rests on a few small-sample or undated figures, cross-checked against beer. No Bergen by-the-glass wine price was found, so wine uses an Oslo house-wine range (roughly NOK 100-170) and about 1.2 times the beer price. NOK converted at an approximate 9.5 NOK per USD, not a retrieved rate. Accommodation is a holistic model estimate for July peak season; no accommodation search was run and no listings were checked. RBA rate taken from search-result summaries, not opened directly; 2026-11-19 not confirmed.",
+  "comparable_city_reasoning": "No comparable city was needed for food and drink, which use Bergen-specific data points; Oslo was used only as a secondary Norwegian check for wine. Accommodation is a holistic estimate reflecting Bergen's high summer demand and Norway's high price level, not a comparable-city dataset.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 12.32,
+    "coffee": 5.47,
+    "inexp_meal_1p": 23.16,
+    "midrange_meal_2p": 130.00,
+    "cocktail": 16.84,
+    "wine_glass": 14.74,
+    "hostel_dorm_1p": 47.37,
+    "hostel_private_2p": 121.05,
+    "hotel_1star_2p": 136.84,
+    "hotel_3star_2p": 252.63
+  }
+}

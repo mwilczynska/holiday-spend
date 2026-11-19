@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d6646f4e97531be8ce0ab5512d48852a1c5cd214dc12d817933dec207373c252",
+  "requestSha256": "7bd692afa6a8a743802d24882fb9a8eee0d970961fc81578eb111aac3aaf9ef0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 747161,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 123463,
+          "outputTokens": 276212,
+          "cacheReadInputTokens": 49021,
+          "cacheCreationInputTokens": 48347,
+          "webSearchRequests": 8,
+          "costUSD": 0.24061191,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 268910,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.24061191,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates US dollar per Australian dollar latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dublin cost of living restaurant meal cappuccino beer wine prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dublin average price pint of beer pub 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 daily exchange rates A$1 US dollar latest 2026 table",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dublin average price cocktail and glass of wine in restaurant or bar 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Dublin cost of living meal inexpensive restaurant mid-range three-course meal for two 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:51:31.292Z",
+      "finishedAt": "2026-11-19T03:03:58.453Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, beer and coffee anchors rest on Chongqing-specific aggregated sources (Numbeo, Expatistan, CitiesInsider and a street-food guide), but several are undated, small-sample, or dated 2021-2025 rather than July 2026. The cocktail anchor is based on downtown-bar price points. No usable Chongqing by-the-glass wine price was found, so wine_glass uses the local beer relationship (about four times the draft beer anchor) and is less certain. All four accommodation anchors are holistic model estimates from general knowledge, not from live listings or booking pages. Local-currency figures were converted to USD at an approximate rate that was not searched.",
+  "comparable_city_reasoning": "Food and drink anchors use Chongqing-specific listings and price points rather than a borrowed comparable city. Accommodation anchors are holistic model estimates from general knowledge, with reference to large inland Chinese cities such as Chengdu.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.70,
+    "coffee": 3.00,
+    "inexp_meal_1p": 3.80,
+    "midrange_meal_2p": 28.20,
+    "cocktail": 8.45,
+    "wine_glass": 6.75,
+    "hostel_dorm_1p": 11.25,
+    "hostel_private_2p": 26.75,
+    "hotel_1star_2p": 21.10,
+    "hotel_3star_2p": 56.30
+  }
+}

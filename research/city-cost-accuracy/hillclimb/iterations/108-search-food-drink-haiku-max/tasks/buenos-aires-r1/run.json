@@ -1,0 +1,68 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a899b70263add018260bbf3ea45b4ac25eac1d1cf789dda1df7a844ce2d37e56",
+  "requestSha256": "bebffe4353661d7ecb155cf9498a6e1b5c1f51324436eb84be7d6572b636797f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 519367,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 225847,
+          "outputTokens": 148891,
+          "cacheReadInputTokens": 21244,
+          "cacheCreationInputTokens": 36098,
+          "webSearchRequests": 13,
+          "costUSD": 0.37459544000000006,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 143662,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.37459544000000006,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD daily F11.1 latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Buenos Aires 2026 restaurant meal cappuccino draft beer cocktail bottle of wine prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Restaurant Prices in Buenos Aires Argentina cocktail drink nightlife club domestic draught beer",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:18:17.982Z",
+      "finishedAt": "2026-11-19T02:26:57.349Z"
+    }
+  ]
+}

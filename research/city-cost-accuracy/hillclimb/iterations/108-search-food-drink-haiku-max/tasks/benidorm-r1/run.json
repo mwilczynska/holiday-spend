@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "432de9dfe057624044d48fc4b0b1b4e464c71b0be5ea023c73dffd292a493617",
+  "requestSha256": "da7c79324712b23fc1e8f221ec3d13d93f3a2cb3a2dc6840e5ab652de787bc6f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 418315,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 178158,
+          "outputTokens": 339952,
+          "cacheReadInputTokens": 4567,
+          "cacheCreationInputTokens": 26418,
+          "webSearchRequests": 12,
+          "costUSD": 0.31312106999999995,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 330548,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.31312106999999995,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA daily exchange rates Australian dollar US dollar latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Benidorm cost of living prices restaurant meal beer cappuccino wine cocktail",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Benidorm restaurant prices three course meal menu del dia 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain cappuccino price cafe average 2026 euros",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain draft beer caña price bar restaurant average 2026 euros",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain cocktail price bar average euros glass of wine restaurant price 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:04:12.879Z",
+      "finishedAt": "2026-11-19T02:11:11.195Z"
+    }
+  ]
+}

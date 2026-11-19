@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "Overall low confidence. Restaurant and drink anchors rest on sparse, crowd-sourced figures: one Varanasi local-pint figure (about $1.69), a Varanasi basic meal with drink (about $1.69 to $2.40), and Varanasi restaurant cost-for-two listings (about INR 1,500 to 1,800, probably including drinks). Cappuccino uses 2026 city averages from other Indian cities and chain prices that have since risen 5 to 10 percent. Cocktail and wine are set from the local beer relationship (about 3x and 3.5x beer), since direct Varanasi data was weak, and were cross-checked against Indian hotel menus and Expatistan estimates for other cities. Ghat-area tourist venues may cost more than these averages. Accommodation anchors are holistic model estimates from general knowledge and the Varanasi context. No accommodation search was run, and no live booking pages or current listings were inspected. FX: the RBA value comes from a search-result summary of a cached RBA exchange-rates page dated 2026-03-20. I did not open the page directly and could not verify a later RBA observation, so this rate is about eight months older than the generation date and should be refreshed before use. A third-party sample showing a later rate was not used because it is not an RBA publication.",
+  "comparable_city_reasoning": "Varanasi is treated as a tier-2 Indian pilgrimage and tourist city priced below metro levels. Restaurant and beer anchors use Varanasi listings where available. Coffee uses 2026 city averages from other Indian cities (about INR 163 to 231) and chain prices. Cocktail and wine use Expatistan downtown-club estimates for Mumbai, Pune, Nagpur and Indore, plus Indian hotel wine and cocktail menus. Lodging anchors are model estimates for Varanasi budget and mid-market stock. INR figures were converted to USD using approximate general-knowledge exchange rates, since no live INR/USD rate was retrieved.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.25,
+    "inexp_meal_1p": 2.75,
+    "midrange_meal_2p": 16.00,
+    "cocktail": 6.50,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 15.00,
+    "hotel_1star_2p": 11.00,
+    "hotel_3star_2p": 55.00
+  }
+}

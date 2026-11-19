@@ -4,7 +4,7 @@
 // Prints the message between BEGIN/END markers, then the prompt SHA-256 for the run record.
 import fs from 'node:fs';
 import path from 'node:path';
-import { hcRoot, readJson, sha256 } from './lib.mjs';
+import { hcRoot, readJson, sha256, workerMessage } from './lib.mjs';
 
 const [iteration, taskId] = process.argv.slice(2);
 if (!iteration || !taskId) throw Error('Usage: codex-task-message.mjs <iteration> <task-id>');
@@ -16,7 +16,7 @@ if (fs.existsSync(path.join(tdir, 'response.json'))) throw Error(`${taskId} alre
 const prompt = fs.readFileSync(path.join(tdir, 'prompt.txt'), 'utf8');
 const system = fs.readFileSync(path.join(tdir, 'system.txt'), 'utf8');
 if (sha256(prompt) !== task.promptSha256) throw Error(`prompt.txt for ${taskId} does not match its frozen hash; stop and report`);
-const message = `System instruction:\n${system.trim()}\n\nUser request:\n${prompt.trim()}\n\nFollow the request exactly. Use web search only where the request permits it. Your final message must be only the JSON object the request asks for.`;
+const message = workerMessage(system, prompt);
 console.log('=====BEGIN WORKER MESSAGE=====');
 console.log(message);
 console.log('=====END WORKER MESSAGE=====');

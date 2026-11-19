@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "low",
+  "confidence_notes": "These are holistic estimates. My searches turned up no Numbeo-style crowd-sourced price index for Hampi or nearby Hospet. I found only dated or anecdotal travel-guide figures: beer at about INR 180-220, budget meals around USD 1.5, mid-range meals for two at a cafe around INR 500-1000, and a higher-end hotel cafe averaging about INR 1000 for two. I adjusted these up for inflation and converted them at roughly 88-90 INR per USD. Beer is often not on the menu in Hampi and is mostly served at guesthouses across the river, so the beer anchor reflects bottled beer, because draft beer is rarely available. Cocktails and wine are hard to find outside hotel bars such as Hyatt Place and resort properties. I estimated them from local beer prices and typical Karnataka hotel-bar prices, so they are especially uncertain. Accommodation anchors are model estimates from general knowledge, not from booking searches. July is monsoon low season, when some backpacker guesthouses on the Virupapur Gaddi side close and rates tend to be lower. Hampi has few registered hostels, so the dorm and private hostel anchors are approximate. The FX value is the latest RBA observation available on the generation date, not a July 2026 rate.",
+  "comparable_city_reasoning": "I scaled against small backpacker heritage towns in South India such as Gokarna and Mysore. Prices start from Karnataka's low baseline (Hospet is ranked among the cheapest places to live in Karnataka) and are marked up for the tourist cafes and guesthouses that foreign visitors use.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.6,
+    "coffee": 1.6,
+    "inexp_meal_1p": 3.0,
+    "midrange_meal_2p": 14.0,
+    "cocktail": 6.5,
+    "wine_glass": 5.5,
+    "hostel_dorm_1p": 6.5,
+    "hostel_private_2p": 15.0,
+    "hotel_1star_2p": 13.0,
+    "hotel_3star_2p": 42.0
+  }
+}

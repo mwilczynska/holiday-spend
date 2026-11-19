@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8b43d666ecf41525a90c8ee2c9537fee483508a39f50d37c595fca97b5395d79",
+  "requestSha256": "caf08938a76e948c4c11a3956365ace61c7a20eaf3dd9493320d7276d7bcb1cc",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 566532,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 122801,
+          "outputTokens": 274867,
+          "cacheReadInputTokens": 16701,
+          "cacheCreationInputTokens": 32689,
+          "webSearchRequests": 8,
+          "costUSD": 0.23641840999999997,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 265859,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.23641840999999997,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Busan South Korea cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Busan beer cocktail wine glass bar prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Busan cappuccino coffee price cafe 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Busan cost of living domestic beer cappuccino meal inexpensive restaurant prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Busan Korea wine by the glass price restaurant won 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:18:42.942Z",
+      "finishedAt": "2026-11-19T02:28:09.474Z"
+    }
+  ]
+}

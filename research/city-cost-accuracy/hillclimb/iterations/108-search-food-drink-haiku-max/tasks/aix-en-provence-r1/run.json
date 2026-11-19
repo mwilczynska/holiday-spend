@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "7363568f797c9260b54a1ca79a25958bb78b0d5329c60f49b0eb8b9ac3c37431",
+  "requestSha256": "97e011d8398cfa5e2330c4e26f16b4f253ffa6a61233f79340bc786648626586",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 536859,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 198615,
+          "outputTokens": 231676,
+          "cacheReadInputTokens": 26471,
+          "cacheCreationInputTokens": 36235,
+          "webSearchRequests": 10,
+          "costUSD": 0.24321120999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 224707,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.24321120999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 = US$ latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Aix-en-Provence cost of living restaurant meal cappuccino beer cocktail wine prices 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Aix-en-Provence prix café cappuccino bière pression cocktail verre de vin restaurant 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Aix-en-Provence : Prix d'un verre de vin en 2026 moyenne restaurant",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Aix-en-Provence : Prix d'un cocktail en 2026 moyenne bar",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.627Z",
+      "finishedAt": "2026-11-19T01:54:04.486Z"
+    }
+  ]
+}

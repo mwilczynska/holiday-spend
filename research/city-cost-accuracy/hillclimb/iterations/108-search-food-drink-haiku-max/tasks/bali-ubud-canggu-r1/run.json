@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b1fc3f86d50a267323c4587081a3560678b7c5c1dc0485e76dd13baa9cb15ecc",
+  "requestSha256": "f1ca8b942a7f1af6af4f0b0f06b340fc61579091f224e9fe5382628f70f7e70f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 829898,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 122056,
+          "outputTokens": 342005,
+          "cacheReadInputTokens": 63596,
+          "cacheCreationInputTokens": 43761,
+          "webSearchRequests": 8,
+          "costUSD": 0.27259626,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 332645,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.27259626,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bali Ubud Canggu restaurant meal prices per person 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bali cappuccino price beer Bintang restaurant price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bali cocktail price wine glass price bar restaurant Canggu",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Bali cost of living restaurant prices glass of wine cocktail beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bali restaurant glass of wine price IDR by the glass 2026 Canggu Ubud",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:58:51.860Z",
+      "finishedAt": "2026-11-19T02:12:41.758Z"
+    }
+  ]
+}

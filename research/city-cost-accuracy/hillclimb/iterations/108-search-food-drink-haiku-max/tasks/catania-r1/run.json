@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "aa6c22def41ca2f034c7f49c282564b36ed87001e7563c3b7546a0c05bceb769",
+  "requestSha256": "9c2febe114d72ae6ae5888982def73de9f550a77aff95e2624f20fc703e92f56",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 584739,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 143240,
+          "outputTokens": 278394,
+          "cacheReadInputTokens": 26824,
+          "cacheCreationInputTokens": 41838,
+          "webSearchRequests": 9,
+          "costUSD": 0.25215684,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 270765,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.25215684,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US dollar latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Catania Italy cost of living restaurant meal cappuccino beer cocktail wine prices",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Catania restaurant prices typical meal for two three courses trattoria euros",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sicily bar prices cappuccino draught beer cocktail glass of wine euros 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Catania Aperol Spritz cocktail price bar euro 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Catania calice di vino prezzo ristorante euro 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:28:22.739Z",
+      "finishedAt": "2026-11-19T02:38:07.478Z"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "f0c43d7f2b49d87c2838c6ceee2d94ea351cafcb793f45a68d3b795afc4fff1d",
+  "requestSha256": "295f10730a54e97b08dd977a6520827ac1c8be5ec5cb1c909e39b3fdcd841ea9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 379399,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 44141,
+          "outputTokens": 151959,
+          "cacheReadInputTokens": 4564,
+          "cacheCreationInputTokens": 20522,
+          "webSearchRequests": 3,
+          "costUSD": 0.11454364,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 147958,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.11454364,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Annecy France cost of living 2026 restaurant meal cappuccino beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Annecy bar cocktail price glass of wine restaurant 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.800Z",
+      "finishedAt": "2026-11-19T01:51:27.200Z"
+    }
+  ]
+}

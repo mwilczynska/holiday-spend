@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "f649156320765c713922aba9d35b1c1ac4f541e4812835d2d120c6e721fea9c6",
+  "requestSha256": "ac78285c698a4beeec9e5a8fb974dfc5291f1ac05c2177c0756ea3dfd4cfb745",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 372646,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 164288,
+          "outputTokens": 259334,
+          "cacheReadInputTokens": 4572,
+          "cacheCreationInputTokens": 32264,
+          "webSearchRequests": 10,
+          "costUSD": 0.25259432,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 251380,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.25259432,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation F11",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Edinburgh prices meal inexpensive restaurant cappuccino domestic beer bottle of wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Edinburgh typical price inexpensive meal and three-course mid-range restaurant dinner for two 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Edinburgh average pint price draught lager pub 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Edinburgh average cocktail price bars 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Edinburgh average price glass of house wine in restaurants 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:52:13.675Z",
+      "finishedAt": "2026-11-19T02:58:26.321Z"
+    }
+  ]
+}

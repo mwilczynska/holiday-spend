@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and drink anchors are bounded medium-confidence estimates triangulated from search summaries of 2026 Barcelona cost guides, Numbeo and Expatistan. Sources conflict, and some Numbeo pages may predate 2026. Cocktail and wine anchors come from reported bar and restaurant ranges, not a beer ratio. Accommodation anchors are holistic model estimates from general knowledge of Barcelona's July market. No accommodation search or live listing was checked, so they are lower confidence (roughly +/-25%). Euro-quoted prices were converted to USD at an assumed EUR/USD of about 1.15, not a sourced rate, adding roughly +/-5-10%. FX is the 18 Nov 2026 RBA observation as reported in search results; no 19 Nov value was found.",
+  "comparable_city_reasoning": "No comparable-city substitution. Food and drink ranges are Barcelona-specific from search summaries; accommodation is a Barcelona-specific model estimate for July.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.03,
+    "coffee": 3.57,
+    "inexp_meal_1p": 18.40,
+    "midrange_meal_2p": 74.75,
+    "cocktail": 13.80,
+    "wine_glass": 5.18,
+    "hostel_dorm_1p": 51.75,
+    "hostel_private_2p": 115.00,
+    "hotel_1star_2p": 126.50,
+    "hotel_3star_2p": 218.50
+  }
+}

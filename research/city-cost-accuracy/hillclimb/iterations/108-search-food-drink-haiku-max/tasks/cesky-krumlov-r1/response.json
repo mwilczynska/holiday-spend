@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Meal, beer and coffee anchors are firmest: town-level listings (Numbeo, May 2025; Wise and Hikersbay 2026 guides) cross-checked against Prague and national Czech data. Cocktail and wine are weaker, with no reliable town-specific drink price found; they use Prague ranges and the local beer relationship (cocktail about 2.4x draft beer; wine assumed to be a roughly 0.2 l pour), and a generic nightlife calculator's higher figures were discounted. Accommodation anchors are holistic model estimates with no accommodation searches or listing checks, so they are least certain. CZK prices converted at about 21 CZK per USD, inferred from source conversions, not a live rate. Sources span 2025 to 2026, not strictly July 2026. FX is the 18 November 2026 RBA observation as surfaced in search results; the F11.1 table was not opened directly.",
+  "comparable_city_reasoning": "Town-level listings for this South Bohemian tourist town where available; Prague and national Czech data for beer, coffee, cocktail and wine; accommodation judged against other small historic Czech tourist towns in peak season, without live listing checks.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.81,
+    "coffee": 4.00,
+    "inexp_meal_1p": 10.95,
+    "midrange_meal_2p": 64.29,
+    "cocktail": 9.05,
+    "wine_glass": 5.71,
+    "hostel_dorm_1p": 32.00,
+    "hostel_private_2p": 72.00,
+    "hotel_1star_2p": 80.00,
+    "hotel_3star_2p": 165.00
+  }
+}

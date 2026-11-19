@@ -1,0 +1,93 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "205b34c45a5bc2304237f6f9864239dab21b0f0695f9b2d7426664613b39dcd2",
+  "requestSha256": "5f4918a66acc2ea11e9d8550c56dbd1d920a6f4298e33d1b31ec950dad438c2f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 38723,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 2222,
+          "cacheReadInputTokens": 15054,
+          "cacheCreationInputTokens": 8789,
+          "webSearchRequests": 0,
+          "costUSD": 0.0603988,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 971,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 77598,
+          "outputTokens": 6127,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 5,
+          "costUSD": 0.0608233,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2350,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1212221,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest observation rba.gov.au",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia cost of living restaurant prices meal inexpensive restaurant cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Split Croatia prices cocktail glass of wine restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Split Croatia prices meal inexpensive restaurant domestic beer draught cappuccino three-course meal for two",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Expatistan Split Croatia cost of living cappuccino beer restaurant meal prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:16:47.913Z",
+      "finishedAt": "2026-11-19T03:17:26.637Z"
+    }
+  ]
+}

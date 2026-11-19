@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b82c2f271307f0d959b939b2fcf070ed3dc1db6562cd4323fcb4c3aad5065214",
+  "requestSha256": "2da0119704e017933dfc24c293395ee9c576b9e3d2a8240d8d6d1b9d2fc7e8cb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 597503,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 249494,
+          "outputTokens": 265312,
+          "cacheReadInputTokens": 28854,
+          "cacheCreationInputTokens": 49375,
+          "webSearchRequests": 15,
+          "costUSD": 0.31776893999999994,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 256437,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.31776893999999994,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily F11.1 AUD USD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Chennai cost of living restaurant prices meal inexpensive mid-range cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chennai cappuccino price cafe typical cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chennai bar beer price pint Tamil Nadu 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chennai bar menu prices cocktail wine by the glass draught beer 2026 average INR",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chennai mid-range restaurant meal for two three course cost average INR 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:32:30.832Z",
+      "finishedAt": "2026-11-19T02:42:28.335Z"
+    }
+  ]
+}

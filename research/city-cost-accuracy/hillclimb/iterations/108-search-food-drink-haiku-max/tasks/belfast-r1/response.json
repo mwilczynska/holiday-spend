@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors use Belfast aggregator and guide figures (Numbeo, Wise, Pint Tracker, Belfast Guide, Expatistan) dated 2024-2026 rather than July 2026 specifically; beer and cappuccino figures agree closely, meal figures vary more. The cocktail rests on guide price ranges and sits about 2x the pint price. No aggregated Belfast glass-of-wine price was found, so the wine glass is set at about 1.25x the pint price with a single-venue cross-check. GBP figures were converted at an approximate rate implied by Numbeo USD-converted figures in search results, not a direct FX lookup. Accommodation anchors are general-knowledge estimates for July demand; no accommodation search or live listing check was made. The FX rate and 2026-11-18 date come from a third-party site reporting RBA data; an RBA overview search snippet showed the same rate without a date and the official F11.1 table was not confirmed, so FX provenance is only partly verified.",
+  "comparable_city_reasoning": "Food and drink use Belfast-specific aggregated figures, so no comparable-city substitution was needed. Accommodation is a general-knowledge estimate, loosely judged against mid-sized UK regional cities with similar summer tourist demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.98,
+    "coffee": 4.79,
+    "inexp_meal_1p": 22.61,
+    "midrange_meal_2p": 93.10,
+    "cocktail": 15.96,
+    "wine_glass": 9.98,
+    "hostel_dorm_1p": 34.58,
+    "hostel_private_2p": 99.75,
+    "hotel_1star_2p": 106.40,
+    "hotel_3star_2p": 186.20
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Meal and coffee anchors triangulate several Chengdu price snippets, mostly undated or from small samples. Beer relies on pub and club samples rather than restaurant menus. Cocktail relies on a few venue samples. Wine by the glass has no Chengdu-specific data and is set relative to the beer anchor (roughly three to four times it), so it is the weakest drink anchor. Hostel and hotel anchors are general-knowledge estimates for July 2026; no accommodation search or live listing check was done. CNY prices were converted at an approximate 6.9 CNY per USD, not a checked rate. FX is not the latest observation: the single RBA search returned a table which, as reported in the search results, covers 18 to 20 March 2026 (last entry 0.7088 USD per AUD on 20 March). No later RBA observation was confirmed, and a non-RBA aggregator value was not used.",
+  "comparable_city_reasoning": "No single comparable city anchors the set. Meal and coffee figures come from Chengdu-specific search snippets. Beer and cocktail samples are from Chengdu venues. Wine is set relative to beer. Non-Chengdu price points seen in search results (for example Shanghai, Tianjin and Guangzhou) were treated as directional only. Accommodation reflects general knowledge of similar second-tier Chinese provincial capitals with comparable tourist demand.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.20,
+    "coffee": 4.00,
+    "inexp_meal_1p": 5.00,
+    "midrange_meal_2p": 35.00,
+    "cocktail": 10.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 24.00,
+    "hotel_3star_2p": 58.00
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "364c4a7ae9c9b44e80b81f38a6b6328c04344ebbe7df0df71b98938a8bcd4218",
+  "requestSha256": "3e61d08dc55eac5a425e3781704ed7a610b0af0617dff07c73d96beff05238e0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 21029,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 807,
+          "cacheReadInputTokens": 4545,
+          "cacheCreationInputTokens": 5414,
+          "webSearchRequests": 0,
+          "costUSD": 0.030642999999999997,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 30020,
+          "outputTokens": 1782,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.023893,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 562,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.054535999999999994,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Varanasi cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:02:33.445Z",
+      "finishedAt": "2026-11-19T03:02:54.474Z"
+    }
+  ]
+}

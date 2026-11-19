@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "73bd8bd71ae93da2aca0212140e12ae4363fa31fc9ea8932ba37bbd184c3db73",
+  "requestSha256": "e14363aebf34332cbe5f139ae3ad0ad92958a26ab09c62cc6d48b9d3ace4e8ff",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 51864,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 114993,
+          "outputTokens": 16079,
+          "cacheReadInputTokens": 22570,
+          "cacheCreationInputTokens": 14657,
+          "webSearchRequests": 8,
+          "costUSD": 0.10269589999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 8450,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.10269589999999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11.1 USD per AUD latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama Japan cost of living restaurant meal coffee beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan cafe cappuccino price yen average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan draft beer price yen izakaya average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan cocktail bar price yen wine glass restaurant typical 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates USD per AUD November 2026 latest observation",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:02:52.104Z",
+      "finishedAt": "2026-11-19T03:03:43.969Z"
+    }
+  ]
+}

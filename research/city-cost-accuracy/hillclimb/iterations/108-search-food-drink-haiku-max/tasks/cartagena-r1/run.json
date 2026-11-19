@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "cf784cfe8d736b456364d0f0047774f513805ddfa78da014dcd7916012ab9fac",
+  "requestSha256": "70fe5e162a3e9665ac13221b9d6c71147be3867007bfc9fde3334040f25b4734",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 736570,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 131295,
+          "outputTokens": 260700,
+          "cacheReadInputTokens": 58052,
+          "cacheCreationInputTokens": 47952,
+          "webSearchRequests": 9,
+          "costUSD": 0.24365042,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 252035,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.24365042,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cartagena Colombia cost of living restaurant meal prices beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cartagena Colombia bar cocktail price wine glass restaurant price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Cartagena Colombia cost of living restaurant prices meal for 2 people mid-range three-course",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cartagena Colombia average price cocktail glass of wine bar Getsemani Old City 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cartagena Colombia restaurant dinner for two price three courses 2026 Getsemani Old City average",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:28:09.479Z",
+      "finishedAt": "2026-11-19T02:40:26.049Z"
+    }
+  ]
+}

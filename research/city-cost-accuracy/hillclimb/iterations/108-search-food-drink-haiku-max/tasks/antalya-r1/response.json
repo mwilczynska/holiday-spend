@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors use 2026 Turkish price figures surfaced by search (Numbeo, Hikersbay, Gotripzi, livingcost.org, Vahada, NightCalc, Expatistan), with lira converted at about 48-49 per US dollar as implied by those sources. Beer, coffee and meal anchors agree across sources. Cocktail and wine are weaker (national bar medians, a modeled index, a club listing) and were cross-checked against draft-beer price ratios. Accommodation anchors are holistic model estimates assuming July peak season, not checked against live listings or booking pages (low confidence). Most price data are dated Oct-Nov 2026, after the July 2026 reference window. FX: the latest RBA observation I could retrieve is dated 2026-03-20; a later observation could not be found, so fx may be stale.",
+  "comparable_city_reasoning": "Mediterranean resort city in Turkey (a transcontinental country), placed in Europe as the closest list region. Turkish price levels run generally below southern-European resorts, so anchors follow Turkish local and tourist-area price data; accommodation anchors are holistic comparisons with Mediterranean resort towns at Turkish price levels.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.20,
+    "coffee": 3.90,
+    "inexp_meal_1p": 9.90,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 10.00,
+    "wine_glass": 7.75,
+    "hostel_dorm_1p": 16.00,
+    "hostel_private_2p": 42.00,
+    "hotel_1star_2p": 48.00,
+    "hotel_3star_2p": 100.00
+  }
+}

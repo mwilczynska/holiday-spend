@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium confidence. They are drawn from 2026 aggregated guides and travel-cost sites, which disagree by 20-50% and are tourist-area weighted, so the figures lean toward resort-area pricing. Cocktail and wine anchors are weaker and were set partly from the local beer price relationship. Accommodation anchors are holistic model estimates from general knowledge and the supplied city context, not from inspected booking pages or current listings, so they are low confidence. The FX rate is the RBA 4.00 pm rate for 18 Nov 2026 as reported on the RBA homepage and RSS feed in search results. I could not open the RBA F11 table directly to confirm it, so treat it as needing verification.",
+  "comparable_city_reasoning": "Latin American Caribbean resort-tourism basis, anchored on Punta Cana's own 2026 restaurant and bar price reports, with Santo Domingo used as a lower bound for local venues. Accommodation is estimated from resort-zone hotel and guesthouse norms.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 9.00,
+    "midrange_meal_2p": 60.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 25.00,
+    "hostel_private_2p": 60.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 130.00
+  }
+}

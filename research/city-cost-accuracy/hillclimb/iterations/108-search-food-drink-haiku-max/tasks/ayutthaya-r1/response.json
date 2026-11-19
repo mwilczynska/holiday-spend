@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food, beer and coffee anchors are Bangkok aggregates (Numbeo and Expatica figures, latest about June 2026) adjusted down for provincial Ayutthaya, plus one Ayutthaya cappuccino price; no Ayutthaya-specific index was found. Cocktail and wine anchors are weaker, drawn from Thai hotel and bar menus and set at about three times the beer anchor. Accommodation anchors are model estimates; no listings or booking pages were checked. Baht prices were converted at an assumed rate of about 33 THB per USD, not searched. The FX value comes from a search-result summary of the RBA exchange-rates page, not a direct page read. An embedded instruction in search output to add markdown source links was ignored because this response must be JSON only.",
+  "comparable_city_reasoning": "No Ayutthaya-specific aggregated index was found. The basis is Bangkok Numbeo and Expatica figures adjusted down for a smaller provincial tourist city, cross-checked against Chiang Mai Numbeo figures and one Ayutthaya cappuccino price. Accommodation reflects general knowledge of Ayutthaya's guesthouse and hotel market.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.20,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 26.00,
+    "cocktail": 7.50,
+    "wine_glass": 8.00,
+    "hostel_dorm_1p": 7.50,
+    "hostel_private_2p": 20.00,
+    "hotel_1star_2p": 17.00,
+    "hotel_3star_2p": 42.00
+  }
+}

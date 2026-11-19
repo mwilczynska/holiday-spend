@@ -1,0 +1,72 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "95004eea1b209f92ec60a902756e53bef86b5ee542da42b2a554f73113d86b9d",
+  "requestSha256": "f8e7b2397270bd6da46aa907902542ead2e306fa4c3c8c7ad8a3cdb1b3efdb7e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 26098,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 990,
+          "cacheReadInputTokens": 4548,
+          "cacheCreationInputTokens": 6401,
+          "webSearchRequests": 0,
+          "costUSD": 0.0364216,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 160,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 38434,
+          "outputTokens": 3342,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.0355144,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1405,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.071936,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gothenburg cost of living restaurant meal cappuccino beer wine prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:59:35.241Z",
+      "finishedAt": "2026-11-19T03:00:01.339Z"
+    }
+  ]
+}

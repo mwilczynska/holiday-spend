@@ -1,0 +1,25 @@
+{
+  "region": "Africa",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant and beer anchors are triangulated from several 2026 travel guides and Numbeo listings, which are rough, partly crowd-sourced and not July-specific. Coffee rests on a 2023 expat-area estimate. No Fez-specific cocktail or wine price was found, so cocktail and wine use the local beer price relationship plus general Morocco bar ranges. Accommodation anchors are holistic model estimates, not checked against live listings. Local prices were converted at an approximate, unverified dirham rate. FX came from search results for the RBA exchange-rate page; the full daily table was not opened.",
+  "comparable_city_reasoning": "Basis is Morocco's medina-tourism price levels; one travel guide places Fez roughly 20-30% below Marrakech on meals, rooms and sights. Beer, coffee and meals draw on Fez-specific listings where found; cocktail and wine use general Morocco bar ranges. Accommodation is a holistic estimate with no accommodation search run.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.75,
+    "coffee": 2.60,
+    "inexp_meal_1p": 6.00,
+    "midrange_meal_2p": 37.00,
+    "cocktail": 10.00,
+    "wine_glass": 6.80,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 90.00
+  }
+}

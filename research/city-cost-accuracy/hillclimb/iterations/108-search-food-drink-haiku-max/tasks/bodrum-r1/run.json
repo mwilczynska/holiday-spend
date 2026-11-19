@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "e3ee279fe75c77e58350594778ecb0ee3de847010699aaacc18506442ff0d8be",
+  "requestSha256": "e5ef0e81b6d8e1e0a2ba8097a0c6972c736d2d814e008776787a51d0c735cd09",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 819663,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 369220,
+          "outputTokens": 291921,
+          "cacheReadInputTokens": 24131,
+          "cacheCreationInputTokens": 57684,
+          "webSearchRequests": 17,
+          "costUSD": 0.74091101,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 283937,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.74091101,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates historical daily USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bodrum restaurant prices 2026 meal beer cappuccino cocktail wine cost",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Turkey cost of living 2026 restaurant meal price beer cappuccino cocktail wine glass",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bodrum bar prices 2026 cocktail wine by the glass beer lira Gumbet Turgutreis",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:08:39.100Z",
+      "finishedAt": "2026-11-19T02:22:18.763Z"
+    }
+  ]
+}

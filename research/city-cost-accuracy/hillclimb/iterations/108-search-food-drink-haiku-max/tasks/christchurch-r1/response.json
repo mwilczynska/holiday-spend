@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, coffee and beer anchors use Christchurch figures from aggregator sites (Cities Insider, which says it draws on Numbeo data, plus Hikersbay and CityCost). Numbeo item pages could not be read directly, and the beer anchor is a half-litre draught benchmark. The two-person mid-range figure (three courses, no drinks) reflects a consensus of about NZ$119-130; one NZ$180-230 outlier was set aside. Cocktail and wine glass rest on guide-level ranges and were cross-checked against the beer anchor, with wine glass the least firm. Accommodation anchors are holistic model estimates for July (NZ winter) from general knowledge; no accommodation search was run and no listings or booking pages were inspected. NZD prices were converted at an approximate 0.58-0.60 USD per NZD from general knowledge, not a fetched rate, so every USD anchor carries that FX uncertainty.",
+  "comparable_city_reasoning": "No comparable-city substitute was used for food and drink, which are Christchurch-specific and cross-checked against national New Zealand guides. Accommodation is a holistic model estimate informed by general knowledge of New Zealand city hotel and hostel pricing and winter seasonality; no named comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.08,
+    "coffee": 3.45,
+    "inexp_meal_1p": 14.75,
+    "midrange_meal_2p": 73.75,
+    "cocktail": 12.39,
+    "wine_glass": 8.26,
+    "hostel_dorm_1p": 24.78,
+    "hostel_private_2p": 70.80,
+    "hotel_1star_2p": 82.60,
+    "hotel_3star_2p": 123.90
+  }
+}

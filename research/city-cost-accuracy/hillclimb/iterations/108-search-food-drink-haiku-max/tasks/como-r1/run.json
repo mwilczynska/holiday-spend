@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "35eaf1cda1fa39cb236afc2ed8b3affbf9f55ff96f1b66b8cefba0757b9a5b1a",
+  "requestSha256": "2316228493142820bf49482a9abdd65b56603527f3fcead03ca736d791fabb62",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 415614,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 107136,
+          "outputTokens": 218219,
+          "cacheReadInputTokens": 4564,
+          "cacheCreationInputTokens": 23147,
+          "webSearchRequests": 7,
+          "costUSD": 0.19449814,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 211534,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.19449814,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US dollar latest observation",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Como Italy cost of living restaurant meal prices inexpensive mid-range three-course",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Italy cost of living domestic draught beer cappuccino restaurant prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy average price cappuccino espresso bar cafe 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy average price cocktail glass of wine restaurant bar 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:38:07.494Z",
+      "finishedAt": "2026-11-19T02:45:03.108Z"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "994260df3165c4beb793d918e7fd2c05cd6dba5093a88edc2709f0f95d541f22",
+  "requestSha256": "f7532089ed0e48182c89bd0287932f231cd26acd7724e82bb9df8700b2338bc0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 20221,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 804,
+          "cacheReadInputTokens": 4543,
+          "cacheCreationInputTokens": 5802,
+          "webSearchRequests": 0,
+          "costUSD": 0.0321646,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 29184,
+          "outputTokens": 2280,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.0240584,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 653,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.056223,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda Albania prices restaurant meal beer cappuccino cocktail wine cost of living",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:01:51.232Z",
+      "finishedAt": "2026-11-19T03:02:11.453Z"
+    }
+  ]
+}

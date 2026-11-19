@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant meal, beer and cappuccino anchors rest on Foz do Iguaçu cost-of-living index figures (Numbeo, Expatistan, Citycost) dated late 2026 and applied to a July 2026 window. These are user-submitted or modelled and approximate, so they are the most reliable anchors. Cocktail and wine have no Foz-specific figure: they follow the local draft-beer relationship (about 2.5x and 2.8x the beer anchor), checked against Rio bar price ranges. Accommodation is a holistic model estimate from general knowledge and Foz's Iguazu Falls tourism context, including July school-holiday demand. No accommodation prices were searched and no live listings were inspected, so it is low confidence. Local-currency figures were converted at an assumed rate of about R$5.6 per US$ (sources imply roughly R$5.3 to R$5.8), not a live quote.",
+  "comparable_city_reasoning": "No single comparable city was used. Food, beer and coffee anchors reflect Foz do Iguaçu index figures cross-checked against Brazil-wide averages. Cocktail and wine use the local beer relationship, with Rio de Janeiro bar price ranges as a weak reference adjusted for Foz's lower general price level. Accommodation is a holistic estimate for a mid-sized border tourism hub in Paraná state.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.75,
+    "coffee": 1.88,
+    "inexp_meal_1p": 5.80,
+    "midrange_meal_2p": 35.70,
+    "cocktail": 4.46,
+    "wine_glass": 5.00,
+    "hostel_dorm_1p": 14.30,
+    "hostel_private_2p": 32.10,
+    "hotel_1star_2p": 35.70,
+    "hotel_3star_2p": 71.40
+  }
+}

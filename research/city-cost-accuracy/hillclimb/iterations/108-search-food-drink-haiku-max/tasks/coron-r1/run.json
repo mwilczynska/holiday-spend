@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d4ea8fbaf3a305a89c44b7370363720efb1a968555cff5215b59581758aa8926",
+  "requestSha256": "78bc81bdd407b826e5d537021a12d0d8107196a3d48a4627270c8dcdc199db07",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 359528,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 99149,
+          "outputTokens": 203641,
+          "cacheReadInputTokens": 4564,
+          "cacheCreationInputTokens": 17909,
+          "webSearchRequests": 8,
+          "costUSD": 0.19536283999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 197773,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.19536283999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11.1 daily exchange rates USD per AUD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Coron Palawan Philippines restaurant meal prices typical cost budget mid-range 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Coron Palawan cappuccino coffee price cafe 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Coron Palawan beer price San Miguel restaurant bar 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Coron Palawan cocktail price wine glass price bar 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:40:26.055Z",
+      "finishedAt": "2026-11-19T02:46:25.583Z"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c7daed0dbfbb4f6e3c9cbaf322dc03e17b1fb09817feb4f7eaa3f6da19da424a",
+  "requestSha256": "dea4cd03680e660191867f1b8e6aac5cd85054c2b537a0331b70860535bd64da",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 615715,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 165704,
+          "outputTokens": 290947,
+          "cacheReadInputTokens": 23082,
+          "cacheCreationInputTokens": 43924,
+          "webSearchRequests": 10,
+          "costUSD": 0.27105951999999994,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 281510,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.27105951999999994,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arugam Bay restaurant meal prices typical cost tourists 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arugam Bay bar prices beer cocktail wine cost",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sri Lanka cost of living 2026 restaurant meal beer cappuccino prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arugam Bay cafe cappuccino coffee price LKR",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sri Lanka restaurant wine by the glass price rupees",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:53:57.151Z",
+      "finishedAt": "2026-11-19T02:04:12.867Z"
+    }
+  ]
+}

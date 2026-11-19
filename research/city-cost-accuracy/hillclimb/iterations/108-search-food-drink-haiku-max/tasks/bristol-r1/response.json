@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food, coffee and beer anchors (beer treated as a pint) rest on several aggregated Bristol-level sources (Numbeo, Wise, Expatistan, PubWatch UK, Finder) that broadly agree, so they are the firmest. Cocktail rests on a few crowd-sourced and guide listings and is cross-checked against the beer anchor. Wine glass has no direct Bristol by-the-glass average; it is set from UK 175ml menu and pub-average evidence and cross-checked against the beer anchor. Accommodation anchors are holistic model estimates from general knowledge and city context, not searched or checked against live listings. GBP prices were converted at an assumed rate of about 1.33 USD per GBP (not searched), so those anchors carry several percent of FX uncertainty. The FX observation is the latest found in search-returned summaries of the RBA exchange-rates page; a later observation may exist.",
+  "comparable_city_reasoning": "Food and drink anchors use Bristol-level aggregated listings, with UK-wide pub and wine averages as cross-checks. Accommodation is a holistic comparison with mid-sized English cities that have similar summer tourism demand, based on general knowledge rather than searched prices.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.65,
+    "coffee": 5.25,
+    "inexp_meal_1p": 21.28,
+    "midrange_meal_2p": 106.40,
+    "cocktail": 14.63,
+    "wine_glass": 9.31,
+    "hostel_dorm_1p": 42.56,
+    "hostel_private_2p": 106.40,
+    "hotel_1star_2p": 126.35,
+    "hotel_3star_2p": 199.50
+  }
+}

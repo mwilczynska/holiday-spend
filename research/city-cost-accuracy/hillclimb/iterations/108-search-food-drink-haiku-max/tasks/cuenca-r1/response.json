@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Coffee, inexpensive-meal and mid-range-meal anchors rest on several 2026-dated aggregated cost-of-living sources (Numbeo, Wise, livingcost, citycost, world-prices) that broadly agree; some index entries are self-reported and may be dated. Beer sits slightly above the index draught figures of about 2.00 to reflect restaurant pricing. The mid-range figure is for two people without drinks; a suggested service charge of about 10% may be added at some venues. Cocktail and wine-glass anchors are less certain, drawing on travel-guide ranges and a few venue reviews rather than aggregated indices; they were sanity-checked against the beer anchor (cocktail about 2.8 times beer, wine glass about 2.2 times). Accommodation anchors are holistic model estimates from general knowledge; no booking pages, live listings or accommodation searches were used. Ecuador uses the US dollar, so local prices are quoted in USD directly.",
+  "comparable_city_reasoning": "No comparable city was needed for food and drink, which uses Cuenca-specific aggregated indices and travel guides. Accommodation tiers are model estimates for Cuenca's central tourist market, benchmarked loosely to mid-sized Ecuadorian highland tourist cities from general knowledge.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.50,
+    "coffee": 2.60,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 30.00,
+    "cocktail": 7.00,
+    "wine_glass": 5.50,
+    "hostel_dorm_1p": 11.00,
+    "hostel_private_2p": 26.00,
+    "hotel_1star_2p": 28.00,
+    "hotel_3star_2p": 70.00
+  }
+}

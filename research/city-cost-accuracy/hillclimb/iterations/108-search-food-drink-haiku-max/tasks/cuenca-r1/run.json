@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "422681d2676655b7f1e4f4e25efc1fbb29366b8043bed08c0b2da16403681738",
+  "requestSha256": "e514606868400ac3ce15037ea20238f4e7a85ae6acb2c0c895e854e55b1fd367",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 506929,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 65518,
+          "outputTokens": 200023,
+          "cacheReadInputTokens": 23261,
+          "cacheCreationInputTokens": 34631,
+          "webSearchRequests": 5,
+          "costUSD": 0.16372211,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 193582,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.16372211,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cuenca Ecuador cost of living restaurant meal cappuccino domestic beer prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cuenca Ecuador bar cocktail glass of wine restaurant prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cuenca Ecuador average price cocktail and bottle of wine restaurant cost of living index",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:41:31.737Z",
+      "finishedAt": "2026-11-19T02:49:58.666Z"
+    }
+  ]
+}

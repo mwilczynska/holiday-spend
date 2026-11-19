@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "994260df3165c4beb793d918e7fd2c05cd6dba5093a88edc2709f0f95d541f22",
+  "requestSha256": "f7532089ed0e48182c89bd0287932f231cd26acd7724e82bb9df8700b2338bc0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 101567,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 106581,
+          "outputTokens": 35059,
+          "cacheReadInputTokens": 17779,
+          "cacheCreationInputTokens": 13507,
+          "webSearchRequests": 7,
+          "costUSD": 0.10106679,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 27843,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.10106679,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Saranda Albania restaurant meal prices cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Albania cappuccino beer price Numbeo Tirana cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates AUD USD November 2026 F11 daily",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Albania cocktail price wine glass price restaurant bar Tirana Saranda",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:18:41.638Z",
+      "finishedAt": "2026-11-19T03:20:23.205Z"
+    }
+  ]
+}

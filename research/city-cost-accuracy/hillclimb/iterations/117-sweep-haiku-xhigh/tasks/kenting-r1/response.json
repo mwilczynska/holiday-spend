@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Coffee, beer and inexpensive-meal anchors rest on aggregator and local listing figures for Taiwan, Taipei and Hengchun/Kenting, not verified Kenting menus. NT$ listings were converted to USD at roughly NT$31-32 per USD. The mid-range meal is inferred from Taipei comparisons and Kenting seafood and resort menu minimums. Cocktail and wine are the weakest restaurant anchors: no Kenting-specific figures were found, so they are bounded by Taipei bar and hotel ranges with a resort adjustment, and checked against the beer anchor (cocktail about three times beer, wine glass about two and a half times beer). Accommodation anchors are holistic model estimates for July 2026 peak season, not based on live listings or booking pages. FX provenance: the 0.6976 figure came from a third-party site (bestexchangerates.com) that attributes it to the RBA 4pm Sydney rate for 3 November 2026. The rba.gov.au page was not opened, and no later observation was confirmed, so as_of_date may not be the latest published RBA rate as of 2026-11-19.",
+  "comparable_city_reasoning": "Kenting is a resort area in southern Taiwan with no direct city dataset. Restaurant and drink anchors use Taiwan-wide and Taipei aggregator price ranges for coffee, beer, cocktails and wine, adjusted with Kenting and Hengchun local listings for meals and beer. Accommodation anchors use model general knowledge of Kenting's July resort-season pricing, without searching for accommodation prices.",
+  "fx": {
+    "as_of_date": "2026-11-03",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6976,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 5.50,
+    "midrange_meal_2p": 45.00,
+    "cocktail": 12.00,
+    "wine_glass": 9.50,
+    "hostel_dorm_1p": 22.00,
+    "hostel_private_2p": 65.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 140.00
+  }
+}

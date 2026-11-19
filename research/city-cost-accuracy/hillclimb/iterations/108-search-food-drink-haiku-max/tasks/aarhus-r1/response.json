@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors draw on Aarhus-specific sources: a Numbeo Aarhus listing (header dated Oct 2026, used here for a July 2026 window) and a 2026-titled Hikersbay Aarhus price page, cross-checked against venue menus and undated guides. Beer, coffee and meal anchors are the firmest. Cocktail and wine rest on mixed venue listings rather than a beer-ratio fallback, and happy-hour prices were excluded. Accommodation anchors are holistic model estimates with no accommodation searches or live listing checks, so July peak-season rates may differ. DKK was converted to USD at an approximate rate that was not separately verified.",
+  "comparable_city_reasoning": "Food and drink use Aarhus-specific listings, so no comparable-city proxy was needed for them. Accommodation anchors are general model estimates for Denmark's second-largest city in peak summer, with no comparable-city data searched.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.50,
+    "coffee": 7.10,
+    "inexp_meal_1p": 24.40,
+    "midrange_meal_2p": 118.00,
+    "cocktail": 14.50,
+    "wine_glass": 11.70,
+    "hostel_dorm_1p": 50.00,
+    "hostel_private_2p": 135.00,
+    "hotel_1star_2p": 156.00,
+    "hotel_3star_2p": 275.00
+  }
+}

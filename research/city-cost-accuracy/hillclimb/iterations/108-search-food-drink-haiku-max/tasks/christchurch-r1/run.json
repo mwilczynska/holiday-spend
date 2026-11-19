@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "baef3369cd4fd6fff5eb8bc8ea453d9f6efe35b7a07520295fb265a5eb785218",
+  "requestSha256": "683a9efa1323cac9cdc92b58ae5fe5bf693ceb4327c021538cf28e69c1d973e6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 722629,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 232326,
+          "outputTokens": 258874,
+          "cacheReadInputTokens": 69454,
+          "cacheCreationInputTokens": 48590,
+          "webSearchRequests": 14,
+          "costUSD": 0.3030821399999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 249878,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.3030821399999999,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates daily F11.1 US dollar A$1 latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Christchurch New Zealand restaurant meal cappuccino beer cocktail wine prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Christchurch New Zealand cost of living typical prices restaurant meal coffee beer cocktail glass of wine 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Christchurch New Zealand cocktail price bar typical NZ$ average cost of a cocktail 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Christchurch New Zealand glass of wine restaurant typical price NZ$ average by the glass 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Christchurch New Zealand three-course mid-range restaurant meal for two price NZ$ typical dinner for two 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:36:45.910Z",
+      "finishedAt": "2026-11-19T02:48:48.539Z"
+    }
+  ]
+}

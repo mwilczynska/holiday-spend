@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1b0a682dc1200db2301df3cb84a60050ec4a0f8621ef3c3d8dd6c3e48914fa88",
+  "requestSha256": "343f96d7aeda5b70a7b7e2d1e749c4f8ff4ce18cb13f7e04d935d88b0a27523e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 114639,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 91297,
+          "outputTokens": 34976,
+          "cacheReadInputTokens": 17275,
+          "cacheCreationInputTokens": 12386,
+          "webSearchRequests": 6,
+          "costUSD": 0.08926765,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 28188,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08926765,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest observation rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn cost of living restaurant meal beer cappuccino prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn restaurant prices cocktail wine glass average price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD/USD November 2026 daily rate",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Tallinn beer restaurant price cocktail wine 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:20:23.219Z",
+      "finishedAt": "2026-11-19T03:22:17.858Z"
+    }
+  ]
+}

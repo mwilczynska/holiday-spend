@@ -1,0 +1,79 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1b0a682dc1200db2301df3cb84a60050ec4a0f8621ef3c3d8dd6c3e48914fa88",
+  "requestSha256": "343f96d7aeda5b70a7b7e2d1e749c4f8ff4ce18cb13f7e04d935d88b0a27523e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 24441,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1290,
+          "cacheReadInputTokens": 6664,
+          "cacheCreationInputTokens": 6761,
+          "webSearchRequests": 0,
+          "costUSD": 0.041284799999999997,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 195,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 54815,
+          "outputTokens": 3449,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 4,
+          "costUSD": 0.047206000000000005,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 968,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08849080000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn cost of living prices restaurant meal cappuccino beer cocktail wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Tallinn prices domestic beer restaurant cappuccino",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:02:36.815Z",
+      "finishedAt": "2026-11-19T03:03:01.256Z"
+    }
+  ]
+}

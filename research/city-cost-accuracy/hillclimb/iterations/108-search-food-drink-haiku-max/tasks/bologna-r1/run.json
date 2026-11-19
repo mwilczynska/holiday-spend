@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "969014353fa055dfceed866c0d9265150a9880f3d7da78838c09540a40c0f367",
+  "requestSha256": "8b468edb1f681ef9c1cacb54c7134b22692e55e308098a4b4be1da51fb900d23",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 403513,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 93078,
+          "outputTokens": 242578,
+          "cacheReadInputTokens": 4565,
+          "cacheCreationInputTokens": 14202,
+          "webSearchRequests": 6,
+          "costUSD": 0.19348285,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 235820,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.19348285,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates F11.1 AUD USD latest daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bologna Italy restaurant meal prices typical cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bologna cappuccino espresso price euro bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bologna beer cocktail wine glass price bar euro",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bologna cost of living index restaurant prices Numbeo",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:11:34.462Z",
+      "finishedAt": "2026-11-19T02:18:17.975Z"
+    }
+  ]
+}

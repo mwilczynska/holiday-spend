@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Restaurant, coffee and beer anchors triangulate search-result summaries of several aggregated or crowd-sourced sources dated roughly 2023 to 2026. Cocktail and wine anchors lack a citywide aggregate, so they use venue and guide price ranges cross-checked against the beer anchor and are less certain. Accommodation anchors are holistic model estimates from general knowledge and city context; no accommodation search was run and no listings or booking pages were checked. FX is stale: the only RBA-page figure reported in search results is dated 2026-03-20, not the 2026-11-19 generation date. A third-party site's 2026-10-27 figure was not used because it is not an RBA source.",
+  "comparable_city_reasoning": "No comparable city used. Food and drink anchors are city-specific, from search-result summaries of aggregated and crowd-sourced price sources; cocktail and wine also draw on venue menus and guide ranges. Dinar prices were converted at the dinar's fixed USD peg. Accommodation anchors reflect general Middle East capital-city hotel norms.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.76,
+    "coffee": 4.51,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 54.00,
+    "cocktail": 12.69,
+    "wine_glass": 10.58,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 40.00,
+    "hotel_3star_2p": 85.00
+  }
+}

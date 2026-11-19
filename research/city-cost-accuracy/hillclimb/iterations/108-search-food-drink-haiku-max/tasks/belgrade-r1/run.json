@@ -1,0 +1,65 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "e8335b6609cf1ecccc88397b57a3425b143ab17da50a30c11520352e8dc3ae2f",
+  "requestSha256": "76d613c853796f9e88d0992c185cb32738a08c44cdf6f0e7ef84267a45705a2f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 444687,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 52498,
+          "outputTokens": 178428,
+          "cacheReadInputTokens": 4566,
+          "cacheCreationInputTokens": 15114,
+          "webSearchRequests": 4,
+          "costUSD": 0.13753226,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 174338,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.13753226,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Belgrade cost of living 2026 restaurant meal cappuccino beer prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Belgrade bar prices 2026 cocktail wine glass dinar",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:04:09.769Z",
+      "finishedAt": "2026-11-19T02:11:34.456Z"
+    }
+  ]
+}

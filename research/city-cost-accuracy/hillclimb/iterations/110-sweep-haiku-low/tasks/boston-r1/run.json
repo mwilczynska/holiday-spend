@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "60c9c02a06750be6d64aa99eb146802aa1f3d28bc2322f3da618680584995ca4",
+  "requestSha256": "a2394188538e09682aef3f96b17b225b15e2f3a74faca6dc71b4f6b2a443f58e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 39962,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 56041,
+          "outputTokens": 6433,
+          "cacheReadInputTokens": 13958,
+          "cacheCreationInputTokens": 7978,
+          "webSearchRequests": 4,
+          "costUSD": 0.05055578000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2171,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05055578000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston restaurant meal prices cost of living 2026 cappuccino beer cocktail wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au statistics tables F11.1 exchange rates daily USD per AUD 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Boston average price glass of wine restaurant beer draft price cost of living index",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:58:48.952Z",
+      "finishedAt": "2026-11-19T02:59:28.915Z"
+    }
+  ]
+}

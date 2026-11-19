@@ -1,0 +1,65 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "321cc228ada177ddcf26756d2b25e417d8d19822ef2b37cd9ebb07d9f7d7a93c",
+  "requestSha256": "d41d40d2aac2f25124edf37c5439d550fb784f229eb324acdaa4b84ad5caeb6f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 436656,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 83158,
+          "outputTokens": 184432,
+          "cacheReadInputTokens": 4567,
+          "cacheCreationInputTokens": 15157,
+          "webSearchRequests": 5,
+          "costUSD": 0.15360887,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 179099,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15360887,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD daily observation latest F11",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Aarhus Denmark restaurant meal beer cappuccino cocktail wine prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Aarhus Denmark typical prices restaurant meal beer coffee cocktail glass of wine DKK 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:37:39.390Z",
+      "finishedAt": "2026-11-19T01:44:56.046Z"
+    }
+  ]
+}

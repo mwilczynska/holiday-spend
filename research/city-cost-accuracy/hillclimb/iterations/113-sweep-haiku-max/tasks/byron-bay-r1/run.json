@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3f5ae22485edff8cb73531a69405e1a6262ae77e35776c240d8c98206823a561",
+  "requestSha256": "a8cec6b6126e15fa27c7e056d74f7bf3fc9e25fa9b276a4761de08a6e89e7088",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 506783,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 146688,
+          "outputTokens": 260992,
+          "cacheReadInputTokens": 31529,
+          "cacheCreationInputTokens": 41163,
+          "webSearchRequests": 10,
+          "costUSD": 0.25371269,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 253512,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.25371269,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates A$1 = US$ daily latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay cost of living restaurant meal prices inexpensive meal mid-range three-course meal for two",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price cappuccino regular cafe Australia 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price domestic draft beer schooner pub restaurant Australia 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price cocktail and glass of wine at restaurant or bar Australia 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Byron Bay prices domestic beer 0.5 liter draft cappuccino bottle of wine mid-range",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:19:55.950Z",
+      "finishedAt": "2026-11-19T02:28:22.733Z"
+    }
+  ]
+}

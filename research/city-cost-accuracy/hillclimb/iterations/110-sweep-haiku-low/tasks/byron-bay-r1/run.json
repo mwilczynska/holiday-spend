@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "3f5ae22485edff8cb73531a69405e1a6262ae77e35776c240d8c98206823a561",
+  "requestSha256": "a8cec6b6126e15fa27c7e056d74f7bf3fc9e25fa9b276a4761de08a6e89e7088",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 34451,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 57369,
+          "outputTokens": 5324,
+          "cacheReadInputTokens": 15671,
+          "cacheCreationInputTokens": 7311,
+          "webSearchRequests": 4,
+          "costUSD": 0.05001781,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1918,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05001781,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11 rate",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay restaurant meal coffee beer cocktail wine prices typical 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Australia cost of eating out coffee flat white beer average price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates daily USD per AUD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:59:28.920Z",
+      "finishedAt": "2026-11-19T03:00:03.371Z"
+    }
+  ]
+}

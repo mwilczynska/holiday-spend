@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "54ad77d4e9b95a2401cf7acd3340876481693da2f38a788b54803ecf86a4e4fe",
+  "requestSha256": "6204655a81aa067bee5172395c2ed7138969ee41b873b771cfea00737e7832c9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 29532,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 42331,
+          "outputTokens": 5918,
+          "cacheReadInputTokens": 4568,
+          "cacheCreationInputTokens": 7745,
+          "webSearchRequests": 3,
+          "costUSD": 0.03878678,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2254,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.03878678,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang cost of living restaurant meal coffee beer price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang cappuccino beer cocktail wine prices bar restaurant",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:02:49.377Z",
+      "finishedAt": "2026-11-19T03:03:18.909Z"
+    }
+  ]
+}

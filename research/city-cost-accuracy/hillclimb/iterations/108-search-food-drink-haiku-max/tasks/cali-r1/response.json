@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Overall low confidence. Beer, coffee, inexpensive meal and cocktail rest on Cali listings from search results (Numbeo Cali pages and undated guide sites) that conflict with each other. Some are more than a year old, so they are not July 2026 snapshots. Local prices were converted at about 3,300 COP per USD, a rate reported by exchange-rate sites in search results, not an official source. midrange_meal_2p has no direct Cali figure and is a bounded estimate from local menu price levels. wine_glass has no 2026 Cali source and is set from the local beer relationship (about 2.5x beer), consistent with one older restaurant listing. All four accommodation anchors are holistic model estimates; no listings or live rates were checked. The FX value is 0.6720 for 18 Nov 2026 as reported in search results from the RBA exchange-rates page; no 19 Nov figure was found.",
+  "comparable_city_reasoning": "No external comparable city was used. Food and drink anchors use Cali-specific listings. Accommodation anchors are a holistic model estimate for a mid-sized Colombian city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 2.25,
+    "inexp_meal_1p": 5.20,
+    "midrange_meal_2p": 40.00,
+    "cocktail": 6.50,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 85.00
+  }
+}

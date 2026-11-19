@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "6d82c10cff1d83ebb24b72395388f098c839ea9bd9c8f5dc87662927b14a2db1",
+  "requestSha256": "e1bcd8fd19a38cc50406b76224cb67ef28f652284923340f158f956f7b5e3197",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 402091,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 150051,
+          "outputTokens": 295910,
+          "cacheReadInputTokens": 4566,
+          "cacheCreationInputTokens": 27800,
+          "webSearchRequests": 10,
+          "costUSD": 0.26856576,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 287591,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.26856576,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD A$1 = US$ latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Da Lat Vietnam cost of living restaurant prices meal numbeo 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Da Lat restaurant prices budget local meal mid-range dinner for two VND guide 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Da Lat cafe cappuccino coffee price VND 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Da Lat draft beer price VND restaurant bar 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Da Lat cocktail price wine by the glass VND bar restaurant 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:43:10.027Z",
+      "finishedAt": "2026-11-19T02:49:52.118Z"
+    }
+  ]
+}

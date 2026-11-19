@@ -1,0 +1,85 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c6dfb80e029fb6236a0432995cd3b62263275f918fd82b48a85538ebd2018b23",
+  "requestSha256": "96ae0704362e601af955e8044fa71927597699f14cc7ea2f7b3d6ab8829bfa3f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 586906,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 174805,
+          "outputTokens": 230531,
+          "cacheReadInputTokens": 23947,
+          "cacheCreationInputTokens": 38286,
+          "webSearchRequests": 11,
+          "costUSD": 0.25064267,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 223301,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.25064267,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US dollars latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Amsterdam cost of living restaurant meal beer cappuccino cocktail prices",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amsterdam cost of living typical prices restaurant meal cappuccino draft beer cocktail wine",
+            "mode": "extended",
+            "allowed_domains": [
+              "expatistan.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amsterdam typical price cocktail glass of house wine restaurant bar euro 2026 cost of living",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amsterdam draught beer price 0.25 litre pils café restaurant euro average 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.766Z",
+      "finishedAt": "2026-11-19T01:54:54.672Z"
+    }
+  ]
+}

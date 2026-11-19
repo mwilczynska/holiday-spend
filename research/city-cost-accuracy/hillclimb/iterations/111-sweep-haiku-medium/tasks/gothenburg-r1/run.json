@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "95004eea1b209f92ec60a902756e53bef86b5ee542da42b2a554f73113d86b9d",
+  "requestSha256": "f8e7b2397270bd6da46aa907902542ead2e306fa4c3c8c7ad8a3cdb1b3efdb7e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 56118,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 54438,
+          "outputTokens": 7633,
+          "cacheReadInputTokens": 15815,
+          "cacheCreationInputTokens": 7346,
+          "webSearchRequests": 4,
+          "costUSD": 0.05088765,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3432,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05088765,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gothenburg restaurant prices cappuccino beer cocktail wine 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sweden cost of living restaurant meal price index Numbeo Gothenburg",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates daily USD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:00:08.046Z",
+      "finishedAt": "2026-11-19T03:01:04.165Z"
+    }
+  ]
+}

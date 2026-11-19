@@ -1,0 +1,25 @@
+{
+  "region": "SEA",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are bounded estimates from aggregated Denpasar cost-of-living data (Numbeo and Expatistan search summaries; one Expatistan page flagged as unreliable) with a Canggu tourist premium from venue and blog price ranges, converted at about 18,000 IDR per USD (July 2026 level). Cocktail and wine were cross-checked against beer price ratios because direct Canggu data is thin. Accommodation anchors are holistic model estimates with no searched source and are the least certain. FX is 18 Nov 2026, the latest RBA daily reading found via search; the F11.1 table was not opened directly, and a 19 Nov reading may already be posted. A first RBA search returned no official figure.",
+  "comparable_city_reasoning": "Food and drink are based on Denpasar, Bali cost-of-living data with an uplift toward Canggu's premium cafe and bar pricing. Accommodation is benchmarked to general knowledge of Bali tourist-hub tiers (Canggu, Seminyak, Ubud), not to any listing.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.90,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 34.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.25,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 28.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 80.00
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors draw on several Florence cost-of-living and guide sources that broadly agree but differ in method, date and serving size; euro figures were converted at approximate mid-2026 rates. Meal and coffee anchors are the best supported; beer is less certain. Wine_glass comes from trattoria house-wine guide ranges (about EUR 3-7) and sits just below the beer anchor, following the local beer relationship, because no current restaurant-table price was confirmed. Cocktail reflects spritz-survey and classic-cocktail ranges, roughly twice the beer anchor. Accommodation anchors are holistic general-knowledge estimates for peak-July Florence; no live listings or booking pages were inspected, and rates vary widely by date and booking lead time. FX: 0.6976 is the RBA 4pm rate for 2026-11-03 as reported by a bestexchangerates.com article; the rba.gov.au exchange-rates page surfaced in search did not confirm it, and a later observation may exist, so treat it as provisional.",
+  "comparable_city_reasoning": "No comparable-city proxy was used for food and drink; anchors rest on Florence-specific aggregated sources. Accommodation is a holistic general-knowledge estimate for Florence's peak-summer hotel market, not a lookup for another city.",
+  "fx": {
+    "as_of_date": "2026-11-03",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6976,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.65,
+    "coffee": 2.35,
+    "inexp_meal_1p": 23.00,
+    "midrange_meal_2p": 95.00,
+    "cocktail": 13.00,
+    "wine_glass": 6.40,
+    "hostel_dorm_1p": 52.00,
+    "hostel_private_2p": 151.00,
+    "hotel_1star_2p": 155.00,
+    "hotel_3star_2p": 280.00
+  }
+}

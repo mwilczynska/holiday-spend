@@ -1,0 +1,82 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "581add4a16493d9617a8467156b86f54693d3bb6d276f006f1a85ac871ab1ee6",
+  "requestSha256": "1e3da4793cfe4b34e91a8f77af2678090a45e88b6b58df303ae33e0f6c13f940",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 524733,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 169711,
+          "outputTokens": 239374,
+          "cacheReadInputTokens": 29635,
+          "cacheCreationInputTokens": 47037,
+          "webSearchRequests": 10,
+          "costUSD": 0.24636185,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 232201,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.24636185,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily F11 AUD USD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bogota Colombia restaurant meal prices inexpensive mid-range three-course cost of living 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bogota Colombia cappuccino coffee and draft beer restaurant prices 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bogota Colombia cocktail and glass of wine price bars restaurants 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates daily A$1 US$ 18 November 2026 19 November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:11:11.201Z",
+      "finishedAt": "2026-11-19T02:19:55.934Z"
+    }
+  ]
+}

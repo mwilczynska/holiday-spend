@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "5e4687cde5e19b399fa9b57c1445b8c5c149ce665d9e2a86e44e53c00a2faca7",
+  "requestSha256": "b56f012b3eb9b851bbaf3f97ee83f5ab607f08427691276ced2d92bd93160b83",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 420729,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 83700,
+          "outputTokens": 170026,
+          "cacheReadInputTokens": 4569,
+          "cacheCreationInputTokens": 17422,
+          "webSearchRequests": 5,
+          "costUSD": 0.14691308999999997,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 165512,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14691308999999997,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cabo San Lucas cost of living restaurant meal beer cappuccino cocktail wine prices Numbeo",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cabo San Lucas typical restaurant prices beer cocktail glass of wine coffee 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:20:26.725Z",
+      "finishedAt": "2026-11-19T02:27:27.454Z"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "fb3ecade3a925b4b05c040af9956ee959417ff5a36e67a645551347626dede15",
+  "requestSha256": "349c4a7bb5f6c85ad8ccc9f33e4f5993097e99e1d0ac2c43865da1faa7dd7f30",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 530573,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 292184,
+          "outputTokens": 249362,
+          "cacheReadInputTokens": 24578,
+          "cacheCreationInputTokens": 40803,
+          "webSearchRequests": 15,
+          "costUSD": 0.59522658,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 240813,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.59522658,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia F11.1 daily exchange rates USD per AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianópolis cost of living restaurant meal prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianópolis preço cerveja chopp bar cappuccino drinks preços 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianópolis prices beer cocktail wine glass coffee restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Florianópolis cardápio taça de vinho preço drinks caipirinha bar restaurante 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:58:26.336Z",
+      "finishedAt": "2026-11-19T03:07:16.909Z"
+    }
+  ]
+}

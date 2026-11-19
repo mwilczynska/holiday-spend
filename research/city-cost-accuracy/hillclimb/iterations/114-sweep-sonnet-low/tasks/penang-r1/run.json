@@ -1,0 +1,72 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "54ad77d4e9b95a2401cf7acd3340876481693da2f38a788b54803ecf86a4e4fe",
+  "requestSha256": "6204655a81aa067bee5172395c2ed7138969ee41b873b771cfea00737e7832c9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 26061,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 945,
+          "cacheReadInputTokens": 4544,
+          "cacheCreationInputTokens": 5715,
+          "webSearchRequests": 0,
+          "costUSD": 0.0332268,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 157,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 31721,
+          "outputTokens": 2848,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.0245961,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1260,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0578229,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang cost of living restaurant meal cappuccino beer cocktail wine prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:01:25.279Z",
+      "finishedAt": "2026-11-19T03:01:51.340Z"
+    }
+  ]
+}

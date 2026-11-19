@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1b0a682dc1200db2301df3cb84a60050ec4a0f8621ef3c3d8dd6c3e48914fa88",
+  "requestSha256": "343f96d7aeda5b70a7b7e2d1e749c4f8ff4ce18cb13f7e04d935d88b0a27523e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 53424,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 83161,
+          "outputTokens": 11657,
+          "cacheReadInputTokens": 30080,
+          "cacheCreationInputTokens": 12499,
+          "webSearchRequests": 6,
+          "costUSD": 0.07694520000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 4840,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07694520000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn restaurant meal prices cappuccino beer cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn cost of living restaurant prices beer wine cocktail coffee",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates daily USD per AUD 2026 November",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Tallinn price index restaurant meal wine glass cocktail beer 0.5 numbeo expatistan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rate AUD USD 4pm November 2026 rba.gov.au statistics",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:04:16.743Z",
+      "finishedAt": "2026-11-19T03:05:10.167Z"
+    }
+  ]
+}

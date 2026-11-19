@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ee80d1b87be76f9282df9f605ef893a931a1fc6bdb990fd619ac77193b24de79",
+  "requestSha256": "368888177fd35219dd7ecb6d0627ea8c83d0de66a8d89ae5451749e57a5e7815",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 380324,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 100991,
+          "outputTokens": 224559,
+          "cacheReadInputTokens": 4565,
+          "cacheCreationInputTokens": 22914,
+          "webSearchRequests": 6,
+          "costUSD": 0.18700704999999998,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 217120,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.18700704999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Delhi restaurant prices meal inexpensive restaurant beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Delhi cost of living 2026 restaurant beer cocktail wine glass prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Delhi cappuccino price cafe average 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Expatistan cost of living Delhi restaurants meal price",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:48:00.840Z",
+      "finishedAt": "2026-11-19T02:54:21.164Z"
+    }
+  ]
+}

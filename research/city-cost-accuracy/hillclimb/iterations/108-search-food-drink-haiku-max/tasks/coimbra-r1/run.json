@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "48d1e0a35cf8bf39cdf37f12353d08c9bc2e830f5fa1f7f4b19ad31b1a9b0c2e",
+  "requestSha256": "d25f1c9d568ca42072eb73e4b45188337ab37bcc58582dab2ef43d0c70604ca4",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 415578,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 138017,
+          "outputTokens": 243326,
+          "cacheReadInputTokens": 4569,
+          "cacheCreationInputTokens": 17096,
+          "webSearchRequests": 7,
+          "costUSD": 0.20892959,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 236098,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.20892959,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily rate",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Coimbra Portugal restaurant prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Coimbra Portugal typical restaurant meal price euros menu 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Portugal cost of living cappuccino beer glass of wine price euros restaurant",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Portugal cocktail price bar euros average 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:37:56.049Z",
+      "finishedAt": "2026-11-19T02:44:51.627Z"
+    }
+  ]
+}

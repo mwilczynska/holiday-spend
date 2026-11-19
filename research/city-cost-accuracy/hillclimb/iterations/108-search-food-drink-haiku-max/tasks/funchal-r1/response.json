@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Inexpensive and mid-range meal, coffee and beer anchors rest on Numbeo's Funchal page (crowd-sourced, Oct 2026 snapshot, not July-adjusted) and Madeira-wide price guides (some dates unclear), converted from EUR at an assumed 1.14 USD per EUR (unverified). Beer assumes about a 0.5 L draught. Cocktail and wine glass are weaker: no reliable aggregated Funchal figure was found, so they are set from the beer anchor (cocktail about 3x beer, wine about 1.2x beer) and checked against venue ranges. Accommodation anchors are holistic model estimates for July peak season, not checked against live listings or booking pages, so treat them as low-to-medium confidence. FX observation is from a search-indexed copy of the RBA daily rates; confirm on rba.gov.au.",
+  "comparable_city_reasoning": "Funchal-specific aggregated prices used first, with Madeira-wide price guides as reference points for coffee, beer, wine and cocktails. Numbeo's Bucharest and Ljubljana comparison pages were used only as sanity checks on eating-out levels. No comparable-city dataset was used for accommodation; those anchors reflect general knowledge of Funchal summer rates.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.31,
+    "coffee": 2.28,
+    "inexp_meal_1p": 14.82,
+    "midrange_meal_2p": 62.70,
+    "cocktail": 9.69,
+    "wine_glass": 3.99,
+    "hostel_dorm_1p": 38.76,
+    "hostel_private_2p": 72.96,
+    "hotel_1star_2p": 79.80,
+    "hotel_3star_2p": 148.20
+  }
+}

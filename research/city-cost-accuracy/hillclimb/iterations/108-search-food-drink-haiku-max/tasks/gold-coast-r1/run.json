@@ -1,0 +1,55 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "19e1e0515ae08814d9ce5e9bf943954f87e246847461ff607303ca6d5749b8cb",
+  "requestSha256": "3381883b7fc67e25daf63798d4925e668a15d4515ac70af83ee470c02cb3b250",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 387975,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 170607,
+          "outputTokens": 128698,
+          "cacheReadInputTokens": 4568,
+          "cacheCreationInputTokens": 15739,
+          "webSearchRequests": 7,
+          "costUSD": 0.32174077999999995,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 125212,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.32174077999999995,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gold Coast Australia cost of living restaurant meal cappuccino beer cocktail wine prices 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:07:16.917Z",
+      "finishedAt": "2026-11-19T03:13:44.893Z"
+    }
+  ]
+}

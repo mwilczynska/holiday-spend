@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "54ad77d4e9b95a2401cf7acd3340876481693da2f38a788b54803ecf86a4e4fe",
+  "requestSha256": "6204655a81aa067bee5172395c2ed7138969ee41b873b771cfea00737e7832c9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 117218,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 163386,
+          "outputTokens": 42270,
+          "cacheReadInputTokens": 19188,
+          "cacheCreationInputTokens": 16866,
+          "webSearchRequests": 10,
+          "costUSD": 0.14103868,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 34452,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14103868,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang beer price cocktail price bar Georgetown 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang coffee cappuccino price Malaysia ringgit 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11 exchange rates AUD USD daily observation November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang restaurant wine glass price ringgit bar beer price Malaysia 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:18:28.460Z",
+      "finishedAt": "2026-11-19T03:20:25.678Z"
+    }
+  ]
+}

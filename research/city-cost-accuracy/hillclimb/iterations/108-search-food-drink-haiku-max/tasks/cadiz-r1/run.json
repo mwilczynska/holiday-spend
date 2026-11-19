@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "f3c2d45cc2cdf64825d1a34024315b188086bfbceb56d54d18c5b03677d936bb",
+  "requestSha256": "e1f6158cc0c2da010b9b0a598693a6711cd4c36ea70e872ba56bc930437a344c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 634097,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 228793,
+          "outputTokens": 317710,
+          "cacheReadInputTokens": 26646,
+          "cacheCreationInputTokens": 33830,
+          "webSearchRequests": 12,
+          "costUSD": 0.30876676000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 309283,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.30876676000000003,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cádiz restaurant prices menu del día euros typical meal 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain cappuccino coffee price euros 2026 cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain beer caña price euros bar 2026 typical",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain cocktail price euros glass of wine price bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 daily exchange rates Australian dollar US dollar November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:20:27.400Z",
+      "finishedAt": "2026-11-19T02:31:01.497Z"
+    }
+  ]
+}

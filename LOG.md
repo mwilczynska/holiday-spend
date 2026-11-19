@@ -4354,3 +4354,16 @@ Final `queue.mjs --status` output:
 - Stop condition 1: the queue is empty, both workers have finished, and the summary,
   completion commit and push have completed. Answers remain for coordinator review
   and persistence.
+
+## 19 November 2026 — Haiku 5.5 Max lane and Claude model/effort sweep
+
+Owner request: measure Claude Haiku 5.5 Max against Luna Max with identical prompts, then screen other Claude models
+and efforts on the subscription (no paid API). Lane 108 (Haiku Max on Luna's 102 prompts, exact Luna worker message,
+`claude -p`, WebSearch only, clean context, ten workers) was stopped by the owner at 96 of 333 cities: on the first 67
+it was about 0.011 worse than Luna raw and 0.012 worse after a rough correction, and every answer used more output
+than one API request allows. Lanes 110 to 118 screened nine settings on 20 hash-chosen dev cities; see
+`research/city-cost-accuracy/hillclimb/sweep-2026-11-19.md`. With its own correction Sonnet xhigh equals Luna (0.176);
+Luna's production table helps other models but loses most of that gap. 109 (Haiku arm of bundle 022) was registered
+and not run. Script changes: shared `workerMessage` builder, `dispatch.mjs --message luna --clean-context`,
+`make-lane.mjs --sample/--seed`, `sweep-report.mjs`, and `save-agent-answer.mjs`/`sweep-agents.mjs` for in-session
+agent lanes (used only for the discarded first attempt).

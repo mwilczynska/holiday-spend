@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "7216de8339e062a38f2482b454a862a93bd2f488ade8597a3e3f1086d622ba5c",
+  "requestSha256": "0440fe473fa8858609fe9424c5ceed290cf08cdd6b3e73e20ae7baeca04eb8b5",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 417263,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 98494,
+          "outputTokens": 242866,
+          "cacheReadInputTokens": 4568,
+          "cacheCreationInputTokens": 22509,
+          "webSearchRequests": 8,
+          "costUSD": 0.21582988000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 234744,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.21582988000000003,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Dubai cost of living restaurant prices cappuccino domestic beer meal inexpensive restaurant mid-range three-course",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dubai average price cocktail bar drink 2026 how much does a cocktail cost",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dubai average price glass of wine restaurant and draught beer pint bar 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dubai cost of eating out 2026 cheap meal mid-range restaurant price per person cappuccino",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:49:58.673Z",
+      "finishedAt": "2026-11-19T02:56:55.936Z"
+    }
+  ]
+}

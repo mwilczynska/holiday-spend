@@ -1,0 +1,75 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "04ec1d1e1a1af8a3a0c6d2fa6ae94475c193d8e7550c3daf270a150fb4e457d0",
+  "requestSha256": "8fb0d5c2561897ddbbf88ec9ed40294826b5858cca2d81cd5090d66bde34f6ed",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 566433,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 92933,
+          "outputTokens": 194963,
+          "cacheReadInputTokens": 26666,
+          "cacheCreationInputTokens": 38812,
+          "webSearchRequests": 6,
+          "costUSD": 0.17480386,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 189033,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.17480386,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates USD per AUD latest",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Morocco restaurant meal beer cappuccino cocktail wine prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Essaouira restaurant prices typical meal cost beer wine cocktail guide 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cost of Living in Essaouira Numbeo meal inexpensive restaurant cappuccino domestic beer wine prices",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:55:34.393Z",
+      "finishedAt": "2026-11-19T03:05:00.826Z"
+    }
+  ]
+}

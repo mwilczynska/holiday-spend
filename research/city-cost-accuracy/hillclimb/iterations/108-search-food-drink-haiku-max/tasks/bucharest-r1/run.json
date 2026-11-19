@@ -1,0 +1,75 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ede4b2decb1da5a54b664848b39e678eb8dac3f3da00f5d36cdf8d2b46665662",
+  "requestSha256": "fe7943a5e3354130ec65d67d1252de08fa35ab8baa656d38a765a2fecf8614da",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 321534,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 74780,
+          "outputTokens": 176764,
+          "cacheReadInputTokens": 4567,
+          "cacheCreationInputTokens": 16692,
+          "webSearchRequests": 6,
+          "costUSD": 0.15924407000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 170249,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15924407000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Bucharest cost of living restaurant prices cappuccino beer meal",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bucharest 2026 restaurant prices cocktail bar wine glass beer cappuccino average",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bucharest mid-range restaurant three-course meal price for two inexpensive restaurant meal 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:16:26.631Z",
+      "finishedAt": "2026-11-19T02:21:48.165Z"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "364c4a7ae9c9b44e80b81f38a6b6328c04344ebbe7df0df71b98938a8bcd4218",
+  "requestSha256": "3e61d08dc55eac5a425e3781704ed7a610b0af0617dff07c73d96beff05238e0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 25003,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1254,
+          "cacheReadInputTokens": 6658,
+          "cacheCreationInputTokens": 5197,
+          "webSearchRequests": 0,
+          "costUSD": 0.0346676,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 168,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 45810,
+          "outputTokens": 3560,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.036361000000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1569,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.0710286,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Varanasi cost of living restaurant meal cappuccino beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Varanasi prices numbeo meal inexpensive restaurant domestic beer cappuccino",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:03:01.262Z",
+      "finishedAt": "2026-11-19T03:03:26.265Z"
+    }
+  ]
+}

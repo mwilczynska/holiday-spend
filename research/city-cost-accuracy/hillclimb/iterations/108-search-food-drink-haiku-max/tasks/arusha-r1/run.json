@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "11843f06ac73f7faa6056dd14779378a9abb62e01862d0d967f3e9349374665f",
+  "requestSha256": "99462585d27cb177e1cb9e77b9d97c6fff2dc610fe52ecf4c894d03de2688f3e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 605271,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 119813,
+          "outputTokens": 268455,
+          "cacheReadInputTokens": 22590,
+          "cacheCreationInputTokens": 34083,
+          "webSearchRequests": 8,
+          "costUSD": 0.23325130000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 259093,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.23325130000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates Australian dollar US dollar latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arusha Tanzania cost of living prices restaurant meal beer cappuccino cocktail wine 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arusha Tanzania cost of living restaurant prices",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com",
+              "expatistan.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arusha Tanzania bar restaurant cocktail price wine by the glass beer typical cost",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arusha Tanzania cost of living cocktail wine beer restaurant price USD",
+            "mode": "standard",
+            "allowed_domains": [
+              "livingcost.org",
+              "budgetyourtrip.com",
+              "citycost.org",
+              "tripnumbers.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:54:04.492Z",
+      "finishedAt": "2026-11-19T02:04:09.763Z"
+    }
+  ]
+}

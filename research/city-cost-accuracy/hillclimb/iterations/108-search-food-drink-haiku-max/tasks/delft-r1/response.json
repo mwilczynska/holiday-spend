@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Coffee, meal and beer anchors rest on city-level Numbeo listings, mostly dated Nov 2026 rather than July 2026, cross-checked against Netherlands national figures and a Rotterdam comparison. Those sources differ by up to about a quarter. Beer is priced for a 0.5 L draught, the basis of the listings; smaller Dutch cafe pours would cost less. Cocktail and wine are weaker because no city or national aggregate was found: cocktail is bounded by Amsterdam-centred ranges (about 8 to 20 EUR) and set near twice the beer price, and wine is set near the beer price within national and Amsterdam ranges. EUR figures were converted at about 1.12 USD per EUR, the rate implied by USD-quoted figures in the other cost-of-living sources, and that rate was not separately checked for July 2026. Accommodation anchors are holistic model estimates for July peak season, not based on live listings or inspected booking pages.",
+  "comparable_city_reasoning": "City-level Numbeo listings for inexpensive and mid-range meals, cappuccino and draught beer, cross-checked against Netherlands national averages and a Rotterdam comparison. Cocktail and wine use Amsterdam-centred ranges adjusted down for a smaller, less central city, plus a beer-relative check. Accommodation is a holistic estimate benchmarked to smaller Dutch cities near The Hague and Rotterdam, with a July peak-season uplift.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.44,
+    "coffee": 4.14,
+    "inexp_meal_1p": 20.72,
+    "midrange_meal_2p": 95.20,
+    "cocktail": 14.00,
+    "wine_glass": 6.72,
+    "hostel_dorm_1p": 42.00,
+    "hostel_private_2p": 108.00,
+    "hotel_1star_2p": 125.00,
+    "hotel_3star_2p": 190.00
+  }
+}

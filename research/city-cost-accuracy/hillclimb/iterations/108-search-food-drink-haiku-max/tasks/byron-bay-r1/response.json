@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Meal and coffee anchors are the strongest, based on several aggregated Byron Bay and Australian cost-of-living sources adjusted to July 2026; the meal anchor excludes drinks. Beer is a judgment from Numbeo's Oct 2025 Byron Bay 0.5 L draft price scaled to a 425 ml schooner and checked against 2026 guides, not a measured average. Cocktail is set at about 2x the beer anchor and cross-checked against an awards-list average and general guides. Wine glass uses the beer relationship (about 1.25x) because no reliable 2026 glass-of-wine average was found. Accommodation is a holistic model estimate with no accommodation search or live listing check. FX is the RBA 18 Nov 2026 observation as reported in a search summary of the RBA exchange-rates page.",
+  "comparable_city_reasoning": "No separate comparable city was needed for meals and coffee because Byron Bay has direct aggregated cost-of-living data. Beer, cocktail and wine rely on Australian national and NSW pub and bar benchmarks with a Byron tourist adjustment. Accommodation is a holistic estimate for a coastal Northern Rivers resort town in July, not a city-comparable calculation.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.39,
+    "coffee": 3.76,
+    "inexp_meal_1p": 16.80,
+    "midrange_meal_2p": 77.28,
+    "cocktail": 14.78,
+    "wine_glass": 9.24,
+    "hostel_dorm_1p": 36.96,
+    "hostel_private_2p": 94.08,
+    "hotel_1star_2p": 107.52,
+    "hotel_3star_2p": 174.72
+  }
+}

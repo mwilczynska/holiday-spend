@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are triangulated from aggregated Düsseldorf sources (mostly user-reported, dated 2023 to 2026), using a July 2026 cappuccino benchmark and a 2025 beer-garden draft price. Beer assumes a 0.5 l restaurant draft; local Altbier is often served in smaller glasses, so a smaller serving would cost less. No Düsseldorf wine-glass or cocktail price was found, so wine is set at about 1.1 times the beer anchor (Berlin house-wine proxy as a check) and cocktail at about 2.2 times beer (a Düsseldorf club price as a check). The midrange two-person meal is the least certain food anchor because sources vary widely. Accommodation anchors are holistic model estimates; no accommodation search or live listing was checked. EUR prices were converted at an assumed 1.15 USD per EUR, which is not a sourced rate. The FX value comes from a search summary citing the RBA exchange-rates page for 18 Nov 2026; I did not open that page directly.",
+  "comparable_city_reasoning": "Düsseldorf-specific food sources where available; Berlin served as a proxy for the wine-glass and cocktail checks. Accommodation is a holistic estimate informed by Düsseldorf's trade-fair-driven hotel demand and general knowledge of large German cities, not a searched comparable.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 6.44,
+    "coffee": 4.60,
+    "inexp_meal_1p": 15.53,
+    "midrange_meal_2p": 82.80,
+    "cocktail": 14.38,
+    "wine_glass": 7.13,
+    "hostel_dorm_1p": 43.70,
+    "hostel_private_2p": 109.25,
+    "hotel_1star_2p": 120.75,
+    "hotel_3star_2p": 189.75
+  }
+}

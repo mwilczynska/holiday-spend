@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "95004eea1b209f92ec60a902756e53bef86b5ee542da42b2a554f73113d86b9d",
+  "requestSha256": "f8e7b2397270bd6da46aa907902542ead2e306fa4c3c8c7ad8a3cdb1b3efdb7e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 57925,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 78568,
+          "outputTokens": 12527,
+          "cacheReadInputTokens": 17563,
+          "cacheCreationInputTokens": 9322,
+          "webSearchRequests": 5,
+          "costUSD": 0.06616033,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 7784,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.06616033,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates historical USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gothenburg cost of living restaurant meal beer cappuccino prices 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sweden restaurant prices beer cocktail wine glass average price kronor",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates USD AUD latest daily observation November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:01:36.447Z",
+      "finishedAt": "2026-11-19T03:02:34.372Z"
+    }
+  ]
+}

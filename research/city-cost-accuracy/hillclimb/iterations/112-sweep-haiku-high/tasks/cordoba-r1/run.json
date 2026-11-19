@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "063d75421bcae5338842396812e25b65c0326f2357ebfa64aeddf2fb7cdd748f",
+  "requestSha256": "e0549669ee147a13f29fd4854181fab16b5596b92d1674fcc5ef72d4304a49db",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 84289,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 103828,
+          "outputTokens": 17368,
+          "cacheReadInputTokens": 18572,
+          "cacheCreationInputTokens": 13040,
+          "webSearchRequests": 7,
+          "costUSD": 0.09186052,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 11099,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.09186052,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily USD per AUD latest F11",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba Spain beer cappuccino cocktail wine glass prices bar",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Córdoba Spain",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates F11.1 AUD USD November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Córdoba España precio café capuchino cerveza caña bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:00:42.845Z",
+      "finishedAt": "2026-11-19T03:02:07.134Z"
+    }
+  ]
+}

@@ -7,6 +7,9 @@ import { fileURLToPath } from 'node:url';
 export const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 export const hcRoot = path.join(repo, 'research/city-cost-accuracy/hillclimb');
 export const sha256 = value => createHash('sha256').update(value).digest('hex');
+// The exact message given to each Luna (Codex) worker. Shared by codex-task-message.mjs and dispatch.mjs --message luna,
+// so another model lane can receive byte-identical input.
+export const workerMessage = (system, prompt) => `System instruction:\n${system.trim()}\n\nUser request:\n${prompt.trim()}\n\nFollow the request exactly. Use web search only where the request permits it. Your final message must be only the JSON object the request asks for.`;
 export const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 export const readJsonl = file => fs.existsSync(file)
   ? fs.readFileSync(file, 'utf8').split('\n').filter(Boolean).map(line => JSON.parse(line)) : [];

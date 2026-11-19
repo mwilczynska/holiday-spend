@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a85e7d4bf37ba0010bc86836c12abafaa295bc72dc312d1ee56eb9608fe4534c",
+  "requestSha256": "a4b23e7afb67911225a2f01e232b5e622514073fef492c760b8d2b4c1e1d4bbd",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 379849,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 72075,
+          "outputTokens": 194249,
+          "cacheReadInputTokens": 4565,
+          "cacheCreationInputTokens": 16669,
+          "webSearchRequests": 6,
+          "costUSD": 0.16771145,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 187884,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.16771145,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily USD per AUD F11.1 latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Fez Morocco restaurant meal prices cost of living 2026 dirham typical",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Morocco Fes bar restaurant prices beer wine cocktail dirhams 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Fez Morocco cappuccino coffee price dirham cafe",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:57:19.780Z",
+      "finishedAt": "2026-11-19T03:03:39.629Z"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8aed78f538b90607851a95711cc370b9fd9d11202d33db68a28cf06be3e6fe43",
+  "requestSha256": "7973b2fe20a32f56f5d5b992c94da69e0f3ca023ac3528abfe0f748abf2585e2",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 813714,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 202083,
+          "outputTokens": 298944,
+          "cacheReadInputTokens": 68650,
+          "cacheCreationInputTokens": 48321,
+          "webSearchRequests": 13,
+          "costUSD": 0.310031,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 290333,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.310031,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA daily exchange rates A$1 US dollar pound sterling latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brighton UK cost of living restaurant meal cappuccino pint beer cocktail wine prices",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price of a pint of lager South East England 2026 CAMRA survey",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price of a cocktail UK bar restaurant 2026 survey",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price of a 175ml glass of wine UK restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Brighton UK average price cocktail drink bar nightlife 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:12:41.764Z",
+      "finishedAt": "2026-11-19T02:26:15.478Z"
+    }
+  ]
+}

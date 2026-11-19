@@ -1,0 +1,100 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "57542a0721c093892f134b67e8cd95e993b8618debf3c6e26c161e0ffc682a23",
+  "requestSha256": "8cf3014e69a98fdb88a5a87fa51f79f1d1f07e43c92f353077f2e21054753694",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 51904,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 8,
+          "outputTokens": 2832,
+          "cacheReadInputTokens": 27837,
+          "cacheCreationInputTokens": 11410,
+          "webSearchRequests": 0,
+          "costUSD": 0.0795434,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1318,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 88083,
+          "outputTokens": 7496,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 6,
+          "costUSD": 0.07255629999999999,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2453,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1520997,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar cost of living restaurant meal price beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar Kerala beer price restaurant bar cocktail wine glass price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kochi cost of living restaurant prices domestic beer cappuccino inexpensive meal mid-range meal for two",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar restaurant menu prices 2026 cappuccino thali meal for two cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kerala bar restaurant beer price per bottle 650ml Bevco 2026 hotel bar price cocktail wine glass",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:15:42.096Z",
+      "finishedAt": "2026-11-19T03:16:34.001Z"
+    }
+  ]
+}

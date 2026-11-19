@@ -1,0 +1,76 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b4ebeec8978d0ec1737aaf0207f3ac42f95324a1b1824dd39008d4b6f877ddc2",
+  "requestSha256": "ee3a72c3434030a64835dd6259302c959598f7207feb843ff3b4c4203b76668c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 38100,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 1217,
+          "cacheReadInputTokens": 11570,
+          "cacheCreationInputTokens": 7829,
+          "webSearchRequests": 0,
+          "costUSD": 0.08931,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 132,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 44893,
+          "outputTokens": 4340,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.0366593,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1698,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1259693,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Uyuni Bolivia cost of living prices meal restaurant beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bolivia 2026 prices mid-range restaurant meal for two cocktail glass of wine Uyuni",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:03:57.594Z",
+      "finishedAt": "2026-11-19T03:04:35.694Z"
+    }
+  ]
+}

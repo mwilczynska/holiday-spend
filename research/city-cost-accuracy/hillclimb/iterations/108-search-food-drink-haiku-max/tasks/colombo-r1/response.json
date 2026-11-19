@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors rest on mostly 2025-2026 aggregated cost-of-living figures (Numbeo, Expatistan, HikersBay, Livingcost, MyLifeElsewhere, Gotripzi); some inputs are older or undated. Beer assumes about a half-litre domestic serving. Cocktail and wine are weaker: no aggregated Colombo bar or wine-by-the-glass average was found, so they lean on upscale hotel and club menus discounted toward typical venues and cross-checked against the beer anchor. All four accommodation anchors are holistic model estimates from general knowledge; no accommodation search, live listing or booking page was checked. The FX reading (18 Nov 2026, latest found) comes from search-result summaries citing the RBA overview page; that page was not opened directly.",
+  "comparable_city_reasoning": "Regional basis is South Asia. Food and drink anchors are Colombo-specific and not transferred from another city. Accommodation tiers reflect general knowledge of South Asian tourist-capital guesthouse and hotel pricing, with no named comparison city.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/exchange-rates-overview.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.40,
+    "coffee": 2.60,
+    "inexp_meal_1p": 4.40,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 6.00,
+    "wine_glass": 6.50,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 30.00,
+    "hotel_1star_2p": 35.00,
+    "hotel_3star_2p": 90.00
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "9796ddf8d5960762beecd05a6741c7b57066b55d6d1701491ce44d4a406929e7",
+  "requestSha256": "b4ae7e33e009b968b15850029c1fccb169634f26e18cac2b3dfbc0d235e633f1",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 505367,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 159318,
+          "outputTokens": 178437,
+          "cacheReadInputTokens": 27536,
+          "cacheCreationInputTokens": 34834,
+          "webSearchRequests": 9,
+          "costUSD": 0.20239246,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 172703,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.20239246,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 = US$ latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Funchal Madeira cost of living restaurant meal prices Numbeo",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Funchal Madeira price cappuccino domestic beer cocktail glass of wine restaurant 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates daily A$1 = US$ latest observation November 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:03:39.635Z",
+      "finishedAt": "2026-11-19T03:12:05.002Z"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "57542a0721c093892f134b67e8cd95e993b8618debf3c6e26c161e0ffc682a23",
+  "requestSha256": "8cf3014e69a98fdb88a5a87fa51f79f1d1f07e43c92f353077f2e21054753694",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 30205,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 59808,
+          "outputTokens": 7648,
+          "cacheReadInputTokens": 6675,
+          "cacheCreationInputTokens": 8162,
+          "webSearchRequests": 4,
+          "costUSD": 0.05150395000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3676,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05150395000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates F11 latest USD per AUD",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Munnar Kerala cost of living restaurant meal prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kerala India beer price restaurant bar Kingfisher cost rupees",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "India cafe cappuccino price rupees typical",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:01:58.886Z",
+      "finishedAt": "2026-11-19T03:02:29.091Z"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "96552a07e7b12339d7bfe828430fb20d32c4dca877f56977c015925acb734279",
+  "requestSha256": "cf72886a922fcaf0368055c2d08490088001d75dc84511cff585a6e6484b4e07",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 520169,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 102433,
+          "outputTokens": 221165,
+          "cacheReadInputTokens": 25232,
+          "cacheCreationInputTokens": 46878,
+          "webSearchRequests": 8,
+          "costUSD": 0.21045372,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 214195,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.21045372,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US$ latest F11.1",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Czech Republic meal inexpensive restaurant domestic beer cappuccino mid-range three-course meal for 2",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cesky Krumlov prices beer 0.5 litre cappuccino restaurant meal cost 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Czech Republic restaurant prices cocktail glass of wine average cost 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cesky Krumlov glass of wine price cocktail price bar restaurant 2026 cost of drinks",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:29:20.302Z",
+      "finishedAt": "2026-11-19T02:38:00.471Z"
+    }
+  ]
+}

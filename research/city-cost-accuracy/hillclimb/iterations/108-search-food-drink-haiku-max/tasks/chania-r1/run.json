@@ -1,0 +1,65 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "ccb8f68ca37f5fc05577b548fc29f0ef5dc8a260118914230186ee7b483b79f0",
+  "requestSha256": "ef61a647d6f6c82fcc7bc056ba34b925ef098a384bc05b5a23c0aa8fa73ff038",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 360570,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 88755,
+          "outputTokens": 151357,
+          "cacheReadInputTokens": 4561,
+          "cacheCreationInputTokens": 14654,
+          "webSearchRequests": 6,
+          "costUSD": 0.14753041000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 145589,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14753041000000003,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates A$1 US dollar latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chania Greece cost of living prices restaurant meal beer cappuccino 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Crete Greece 2026 prices cappuccino beer cocktail glass of wine cafe bar average",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:31:01.513Z",
+      "finishedAt": "2026-11-19T02:37:02.083Z"
+    }
+  ]
+}

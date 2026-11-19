@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d9e05052b46a762e9ef98e940c6c68b3680d134d3eb8f2e268f7e2ea4c8397ae",
+  "requestSha256": "674c5f6b1561e4566f534f05fcefd4c01551b6bc382ca76f59fca1624038e396",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 30140,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 55749,
+          "outputTokens": 5516,
+          "cacheReadInputTokens": 13473,
+          "cacheCreationInputTokens": 9218,
+          "webSearchRequests": 4,
+          "costUSD": 0.05031123,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1599,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.05031123,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando restaurant meal prices cost of living 2026 average cappuccino beer cocktail",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando average price cocktail glass of wine restaurant 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates A$1=USD latest November 2026",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:02:19.230Z",
+      "finishedAt": "2026-11-19T03:02:49.370Z"
+    }
+  ]
+}

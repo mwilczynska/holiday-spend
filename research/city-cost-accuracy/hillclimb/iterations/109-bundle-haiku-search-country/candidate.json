@@ -1,0 +1,3 @@
+{ "id": "109-bundle-haiku-search-country", "parent": "022-bundle-luna-search-country", "family": "bundle",
+  "hypothesis": "Registered 19 November 2026 before any 108 answer was scored. Model comparison requested by the owner: the production v1.2 pipeline (bundle 022: food/drink-search prompt plus country-in-region correction, k = 3, leave-one-city-out) with Claude Haiku 5.5 Max answering Luna's exact frozen 102 worker messages instead of GPT-6 Luna Max. Judged against 022 with the unchanged acceptance rule.",
+  "replayFrom": "108-search-food-drink-haiku-max", "transform": "transform.mjs", "lane": "claude-haiku-5-5/max (claude -p, Luna worker message, app system prompt, WebSearch only, clean context)", "repeats": 1, "split": "dev" }

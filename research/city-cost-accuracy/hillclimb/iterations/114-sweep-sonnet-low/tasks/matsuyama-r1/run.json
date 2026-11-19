@@ -1,0 +1,72 @@
+{
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "73bd8bd71ae93da2aca0212140e12ae4363fa31fc9ea8932ba37bbd184c3db73",
+  "requestSha256": "e14363aebf34332cbe5f139ae3ad0ad92958a26ab09c62cc6d48b9d3ace4e8ff",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 38931,
+      "isError": false,
+      "modelUsage": {
+        "claude-sonnet-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 715,
+          "cacheReadInputTokens": 4548,
+          "cacheCreationInputTokens": 5700,
+          "webSearchRequests": 0,
+          "costUSD": 0.030867600000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-sonnet-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 30032,
+          "outputTokens": 2527,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 2,
+          "costUSD": 0.024266700000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 991,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.055134300000000004,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates USD AUD latest",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama Japan cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:00:20.595Z",
+      "finishedAt": "2026-11-19T03:00:59.526Z"
+    }
+  ]
+}

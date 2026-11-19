@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "640d11899fe8ba01baaa520d85872d35740bfc0e7c9f893fe474d8944a5fff33",
+  "requestSha256": "af7f9550bf849617dabeda7148aba90c565948478e056ea3367e756e80057301",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 540509,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 121543,
+          "outputTokens": 290947,
+          "cacheReadInputTokens": 27646,
+          "cacheCreationInputTokens": 41966,
+          "webSearchRequests": 8,
+          "costUSD": 0.24629746,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 282226,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.24629746,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates USD per AUD F11 latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Beijing cost of living meal inexpensive restaurant cappuccino domestic beer cocktail",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Beijing cost of living 2026 restaurant meal prices yuan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Beijing bar cocktail price yuan draft beer price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Beijing cappuccino coffee price yuan cafe Starbucks Luckin",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Beijing glass of wine restaurant price yuan bottle of wine mid-range cost of living",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:03:41.138Z",
+      "finishedAt": "2026-11-19T02:12:41.647Z"
+    }
+  ]
+}

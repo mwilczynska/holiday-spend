@@ -1,0 +1,25 @@
+{
+  "region": "Oceania",
+  "confidence": "medium",
+  "confidence_notes": "Beer, coffee and restaurant meals rest on web searches of crowd-sourced cost-of-living indexes (Numbeo data as reported by Expatica for June 2026, a Numbeo December 2025 snapshot, Expat Exchange and MyLifeElsewhere). These sources conflict: the inexpensive meal ran from about AUD 20 to AUD 31, cappuccino from AUD 4.5 to AUD 5.5, and Numbeo's 0.5L draught beer at about AUD 13 looks inflated by thin data. I set beer at roughly AUD 10-11 for a schooner or pint at a restaurant or pub, informed by a general 2026 NSW guide of AUD 8-14 per schooner and older Newcastle pub reports. I found no Newcastle-specific average for cocktails or wine by the glass. Cocktail is based on a local happy-hour price (about AUD 12-14) and a typical full price of about AUD 20-22. Wine is based on a typical Australian wine-to-beer price relationship, with Numbeo's mid-range bottle (about AUD 15) as a floor. Accommodation figures are holistic model estimates from general knowledge of Newcastle NSW, not live listings. Registered hostel supply is thin, so those figures are the least certain. The FX rate was taken from a single web search result that reported the RBA 18 November 2026 observation. I did not open the RBA page directly, and the same search surfaced older, inconsistent figures, so the server should verify this rate before relying on it.",
+  "comparable_city_reasoning": "Newcastle NSW is Australia's second-largest city in New South Wales and a regional coastal tourism hub. Sources put it below Sydney (roughly 10% lower on restaurant prices) but near the national average for beer and eating out. Accommodation is benchmarked against mid-sized Australian coastal cities such as Wollongong and the Gold Coast's lower tiers, scaled down from Sydney.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.0,
+    "coffee": 3.6,
+    "inexp_meal_1p": 19.0,
+    "midrange_meal_2p": 100.0,
+    "cocktail": 14.0,
+    "wine_glass": 8.5,
+    "hostel_dorm_1p": 31.0,
+    "hostel_private_2p": 70.0,
+    "hotel_1star_2p": 82.0,
+    "hotel_3star_2p": 130.0
+  }
+}

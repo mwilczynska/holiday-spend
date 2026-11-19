@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "a5fb3c37fe4e3dc154ac09b0945b25bcfdb82ac79f8c5402f014be21262aa9e0",
+  "requestSha256": "d4842856a69ffb2c76f7389926781d1ee0f837aad6e579855d120069a9c42687",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 395007,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 123468,
+          "outputTokens": 229817,
+          "cacheReadInputTokens": 4566,
+          "cacheCreationInputTokens": 22989,
+          "webSearchRequests": 8,
+          "costUSD": 0.21189876000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 222997,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.21189876000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates F11.1 USD per AUD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cambridge United Kingdom cost of living prices restaurant meal cappuccino draught beer numbeo",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price pint lager UK pub 2026 survey CAMRA Cambridge",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price cocktail UK bar 2026 survey",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "average price glass of wine UK pub restaurant 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:25:16.446Z",
+      "finishedAt": "2026-11-19T02:31:51.453Z"
+    }
+  ]
+}

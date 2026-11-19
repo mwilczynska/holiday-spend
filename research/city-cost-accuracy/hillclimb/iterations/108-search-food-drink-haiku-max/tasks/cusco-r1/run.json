@@ -1,0 +1,82 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b9846f1b0f66818fd719978e08189ff0312ef3b6c30ad70c09ca2455aff13e41",
+  "requestSha256": "69de8100b2396ab5ee7b8bbb59e1e5388db7aa71d25aba57838d8e9295827657",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 585327,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 100811,
+          "outputTokens": 227622,
+          "cacheReadInputTokens": 17562,
+          "cacheCreationInputTokens": 31122,
+          "webSearchRequests": 7,
+          "costUSD": 0.20029212,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 220620,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.20029212,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest daily observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cusco Peru cost of living restaurant prices meal beer cappuccino",
+            "mode": "standard",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cusco Peru restaurant meal prices beer cocktail wine coffee 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cusco pisco sour cocktail price bar restaurant soles average",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cusco glass of wine price restaurant soles average cost",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:42:28.341Z",
+      "finishedAt": "2026-11-19T02:52:13.669Z"
+    }
+  ]
+}

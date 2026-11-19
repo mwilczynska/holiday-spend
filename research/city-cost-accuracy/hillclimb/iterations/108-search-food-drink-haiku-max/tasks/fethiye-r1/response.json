@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food, beer and coffee anchors rest on aggregated 2026 Fethiye cost-of-living listings from search (MyLifeElsewhere and a July 2026 cost guide), which vary by snapshot. Cocktail and wine are set from the local beer ratio (cocktail about 3x beer, wine about 2x beer) and checked against Bodrum and Istanbul menu samples because Fethiye bar data was thin. Hostel and hotel anchors are holistic model estimates for July peak season, not based on live booking pages or current listings. FX is the 18 Nov 2026 RBA reading that appeared in search results; it was not checked against the full F11.1 table, and the 19 Nov reading may not be published yet.",
+  "comparable_city_reasoning": "Benchmarked to Turkish Riviera and Aegean resort pricing. Food and beer anchors follow Fethiye aggregated listings. Cocktail and wine follow the beer ratio, with Bodrum and Istanbul samples as checks. Accommodation is a general estimate for Mediterranean Turkish resort towns in July.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.60,
+    "coffee": 3.25,
+    "inexp_meal_1p": 8.50,
+    "midrange_meal_2p": 62.00,
+    "cocktail": 11.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 18.00,
+    "hostel_private_2p": 45.00,
+    "hotel_1star_2p": 50.00,
+    "hotel_3star_2p": 110.00
+  }
+}

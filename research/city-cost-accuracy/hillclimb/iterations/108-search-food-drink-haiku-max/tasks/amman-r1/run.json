@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "9afd9dc9aa561d4c7285858954faedc2e43e561d2967552efdcee80d00e42c00",
+  "requestSha256": "979b159ccf957f2264007f9488f2673e7e5db85a581bf150eb9bd0a7571f4fd9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 637154,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 163274,
+          "outputTokens": 215213,
+          "cacheReadInputTokens": 18337,
+          "cacheCreationInputTokens": 46428,
+          "webSearchRequests": 9,
+          "costUSD": 0.22340287,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 207855,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.22340287,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest daily observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amman cost of living restaurant meal prices Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amman Jordan price of cappuccino beer cocktail wine restaurant typical prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Amman Jordan average price cocktail glass of wine bar restaurant JOD cost of living",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.742Z",
+      "finishedAt": "2026-11-19T01:55:44.897Z"
+    }
+  ]
+}

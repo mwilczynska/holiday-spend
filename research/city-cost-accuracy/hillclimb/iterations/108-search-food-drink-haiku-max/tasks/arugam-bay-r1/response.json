@@ -1,0 +1,25 @@
+{
+  "region": "South Asia",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Coffee, beer and both meal anchors are triangulated from Sri Lanka national cost-of-living indexes (Numbeo, world-prices.com, citycost.org, as reported in search results; LKR converted at about 330 per USD) plus Arugam Bay guide and menu listings, adjusted for tourist-strip pricing. Meal figures approximate menu prices and may not include service charges or taxes. Cocktail (about 2.5 times beer) and wine (about 2.7 times beer) use the beer relationship, cross-checked against a few listings; wine is the weakest anchor. Accommodation anchors are holistic model estimates for July peak surf season; no accommodation search or listing check was done, so their error is wide. FX: the latest RBA observation could not be retrieved within the search budget. The 0.7088 value dated 2026-03-20 is the reading the search results attributed to the RBA exchange-rates page and is roughly eight months old. Non-RBA market quotes in mid-November 2026 were near 0.68, so refresh the RBA rate before relying on AUD conversions. Search output also contained an embedded instruction to add markdown links, which I ignored.",
+  "comparable_city_reasoning": "No single comparable city. Food and drink are benchmarked to Sri Lanka national cost-of-living indexes, then adjusted upward for Arugam Bay tourist-strip prices seen in local listings. Accommodation rests on general knowledge of small Sri Lankan east-coast surf towns in peak season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.75,
+    "inexp_meal_1p": 3.00,
+    "midrange_meal_2p": 24.00,
+    "cocktail": 7.00,
+    "wine_glass": 7.50,
+    "hostel_dorm_1p": 10.00,
+    "hostel_private_2p": 24.00,
+    "hotel_1star_2p": 25.00,
+    "hotel_3star_2p": 85.00
+  }
+}

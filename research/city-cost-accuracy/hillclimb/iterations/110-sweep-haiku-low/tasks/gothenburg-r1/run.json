@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "95004eea1b209f92ec60a902756e53bef86b5ee542da42b2a554f73113d86b9d",
+  "requestSha256": "f8e7b2397270bd6da46aa907902542ead2e306fa4c3c8c7ad8a3cdb1b3efdb7e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 42524,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 76402,
+          "outputTokens": 7713,
+          "cacheReadInputTokens": 14237,
+          "cacheCreationInputTokens": 12176,
+          "webSearchRequests": 6,
+          "costUSD": 0.07407427,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2933,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07407427,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates latest USD AUD F11.1 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gothenburg restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sweden beer price restaurant pub Gothenburg cappuccino price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11.1 exchange rates USD November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Gothenburg cocktail price wine glass price restaurant SEK",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:00:03.380Z",
+      "finishedAt": "2026-11-19T03:00:45.904Z"
+    }
+  ]
+}

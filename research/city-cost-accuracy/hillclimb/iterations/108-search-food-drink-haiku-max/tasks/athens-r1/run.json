@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "40f9715133f30c3b40b49fa488e5223b287bb021315c97ce8b7fd5659b6e2eac",
+  "requestSha256": "a96ac26b82f97135b3199b146fd1b3d15dc1d5c0801c32fe925dfae4a9b3fdec",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 665367,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 165577,
+          "outputTokens": 239190,
+          "cacheReadInputTokens": 23159,
+          "cacheCreationInputTokens": 46411,
+          "webSearchRequests": 8,
+          "costUSD": 0.35398809000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 232809,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.35398809000000003,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US dollar latest observation",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Athens Greece cost of living restaurant meal cappuccino beer wine prices Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Athens average prices 2026 restaurant meal bar cocktail beer cappuccino",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Athens glass of house wine price restaurant bar euro cocktail price average 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:54:54.679Z",
+      "finishedAt": "2026-11-19T02:06:00.046Z"
+    }
+  ]
+}

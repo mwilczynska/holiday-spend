@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors triangulate Numbeo's crowd-sourced Cabo San Lucas figures (October 2026 refresh, converted at about 18.65 MXN per USD) with Wise and travel-guide ranges. Beer and cocktail are wider-range guide estimates, and wine_glass rests on one guide figure cross-checked against about 3x the beer anchor. Accommodation anchors are holistic model estimates from general knowledge and resort context, not checked against live listings or booking pages. FX is the weakest input: the only RBA value retrieved is 0.7088 for 2026-03-20, taken from search-result text for the RBA Exchange Rates page rather than a direct page read. It is about eight months older than the 2026-11-19 generation date, and the latest observation could not be confirmed.",
+  "comparable_city_reasoning": "No comparable city was used for food and drink; those anchors come from Cabo San Lucas-specific aggregated data. Accommodation anchors are loosely benchmarked against general knowledge of other Mexican Pacific and Caribbean resort towns, adjusted for the July low season.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.00,
+    "coffee": 3.50,
+    "inexp_meal_1p": 10.50,
+    "midrange_meal_2p": 50.00,
+    "cocktail": 11.00,
+    "wine_glass": 12.00,
+    "hostel_dorm_1p": 28.00,
+    "hostel_private_2p": 58.00,
+    "hotel_1star_2p": 70.00,
+    "hotel_3star_2p": 160.00
+  }
+}

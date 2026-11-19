@@ -1,0 +1,76 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d9e05052b46a762e9ef98e940c6c68b3680d134d3eb8f2e268f7e2ea4c8397ae",
+  "requestSha256": "674c5f6b1561e4566f534f05fcefd4c01551b6bc382ca76f59fca1624038e396",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 28991,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 1466,
+          "cacheReadInputTokens": 4544,
+          "cacheCreationInputTokens": 7884,
+          "webSearchRequests": 0,
+          "costUSD": 0.0933168,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 375,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 42921,
+          "outputTokens": 3630,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 3,
+          "costUSD": 0.036107099999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1016,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.12942389999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD AUD November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando cost of living prices restaurant meal cappuccino domestic beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Orlando average price cocktail glass of wine bar 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:02:11.736Z",
+      "finishedAt": "2026-11-19T03:02:40.727Z"
+    }
+  ]
+}

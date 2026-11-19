@@ -1,0 +1,25 @@
+{
+  "region": "East Asia",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Beer, coffee and meal anchors use several aggregated Japan-wide and Tokyo price sources, modestly trimmed for a regional city and cross-checked against a few Aomori meal guides. No Aomori-specific beer, coffee, cocktail or wine price was found, and most sources are 2026 pages rather than July 2026 quotes. Cocktail is set at about twice the beer anchor and wine glass at about 1.5 times beer, using a Japanese bar-guide cocktail-to-beer ratio and national glass ranges, because local evidence was weak. Yen is converted at roughly 158 JPY per USD, an approximate late-2026 figure from search results rather than a July 2026 rate. Accommodation anchors are holistic model estimates from general knowledge, not searched listings, and the 3-star anchor is least certain. The FX value is the latest RBA rate found in search results (18 Nov 2026); a 19 Nov reading was not confirmed.",
+  "comparable_city_reasoning": "No Aomori-specific aggregated price index was found, so food and drink anchors use Japan-wide and Tokyo benchmarks adjusted for a mid-sized Tohoku regional city and cross-checked against Aomori meal guides. Accommodation rests on general knowledge of regional Japanese hotels and hostels, not on searched data.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.67,
+    "coffee": 3.16,
+    "inexp_meal_1p": 7.59,
+    "midrange_meal_2p": 37.97,
+    "cocktail": 7.28,
+    "wine_glass": 5.38,
+    "hostel_dorm_1p": 22.15,
+    "hostel_private_2p": 50.63,
+    "hotel_1star_2p": 60.13,
+    "hotel_3star_2p": 110.76
+  }
+}

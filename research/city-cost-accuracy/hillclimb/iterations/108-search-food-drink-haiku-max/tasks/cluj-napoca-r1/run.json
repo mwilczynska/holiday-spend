@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b9aae5303682b28d75f68a7ef4c9afd3f2ecfd464c51c86651e818cd03b75669",
+  "requestSha256": "a868a90407ac399319170155bddd3664ddb50366973b50a34c96bf1b3bbed48f",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 367922,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 80806,
+          "outputTokens": 153518,
+          "cacheReadInputTokens": 4568,
+          "cacheCreationInputTokens": 16272,
+          "webSearchRequests": 6,
+          "costUSD": 0.14813968,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 148745,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14813968,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest observation",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca cost of living restaurant prices cappuccino draft beer 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cluj-Napoca bar cocktail price wine glass restaurant prices 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:37:02.090Z",
+      "finishedAt": "2026-11-19T02:43:10.012Z"
+    }
+  ]
+}

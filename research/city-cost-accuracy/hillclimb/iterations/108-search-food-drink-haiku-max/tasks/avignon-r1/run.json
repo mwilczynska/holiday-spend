@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "7c7b5cdefd3a976dd2f59a34e21cd73587415beb458f7ad7b92540eb74c4d6e9",
+  "requestSha256": "37ab96a7ce19a7ecb7b046038a63262420f9d4c4ca004341956aa3b02e472c2a",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 476224,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 142003,
+          "outputTokens": 248152,
+          "cacheReadInputTokens": 19008,
+          "cacheCreationInputTokens": 42003,
+          "webSearchRequests": 9,
+          "costUSD": 0.23686698,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 239300,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.23686698,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA daily exchange rates AUD USD latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Avignon cost of living restaurant meal beer cappuccino prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Avignon France average price restaurant meal cocktail wine glass 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Avignon prices expatistan cost of living restaurants",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Avignon prix verre de vin cocktail bière pression bar moyenne 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Avignon prices cocktail drink bar wine glass restaurant",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:55:44.907Z",
+      "finishedAt": "2026-11-19T02:03:41.131Z"
+    }
+  ]
+}

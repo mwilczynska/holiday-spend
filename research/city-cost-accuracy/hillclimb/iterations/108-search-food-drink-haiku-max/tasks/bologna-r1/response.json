@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink anchors are medium: search results from guides and Numbeo-derived listings broadly agree, though many are undated and skew to tourist-centre venues. Wine glass has weak direct data (only pricier Piazza Santo Stefano venues surfaced), so it uses a beer-relationship basis set slightly above the restaurant beer anchor. Accommodation is a low-confidence holistic model estimate; no accommodation searches or listings were checked. EUR figures assume about 1.15 USD per EUR, which is unsourced. FX is stale: the RBA observation as of 19 Nov 2026 was not retrieved, so the 20 Mar 2026 rate is the most recent one visible in the RBA page results. An unverified third-party figure near 0.6976 (3 Nov 2026) was not used.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors are Bologna-specific, from search results. Accommodation is a holistic model estimate for Bologna in July high season, based on general knowledge of mid-sized Italian city pricing rather than a named comparable.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.46,
+    "coffee": 2.30,
+    "inexp_meal_1p": 23.00,
+    "midrange_meal_2p": 89.70,
+    "cocktail": 10.93,
+    "wine_glass": 6.33,
+    "hostel_dorm_1p": 41.40,
+    "hostel_private_2p": 109.25,
+    "hotel_1star_2p": 115.00,
+    "hotel_3star_2p": 184.00
+  }
+}

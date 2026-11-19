@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d30b1eb88755f195d341edaba10c847a420fbc4df20049a55c824226fcffcc43",
+  "requestSha256": "d084fe2ac80e4508bdb915619c5a9cce5ca989b0d7684d198f6ff969e934b592",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 449627,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 151202,
+          "outputTokens": 371060,
+          "cacheReadInputTokens": 4563,
+          "cacheCreationInputTokens": 27495,
+          "webSearchRequests": 11,
+          "costUSD": 0.31619483,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 360916,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.31619483,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily A$1 US$ latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Aomori Japan cost of living restaurant meal prices yen",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan cafe cappuccino price yen average cost of living 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan draft beer price yen izakaya restaurant average cost of living 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan cocktail price yen bar average cost of living 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Japan glass of wine price yen restaurant average cost of living 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:51:27.206Z",
+      "finishedAt": "2026-11-19T01:58:56.833Z"
+    }
+  ]
+}

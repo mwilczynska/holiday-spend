@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "b4ebeec8978d0ec1737aaf0207f3ac42f95324a1b1824dd39008d4b6f877ddc2",
+  "requestSha256": "ee3a72c3434030a64835dd6259302c959598f7207feb843ff3b4c4203b76668c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 142845,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 155388,
+          "outputTokens": 44832,
+          "cacheReadInputTokens": 22714,
+          "cacheCreationInputTokens": 19194,
+          "webSearchRequests": 10,
+          "costUSD": 0.14202074,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 38163,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.14202074,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Uyuni Bolivia restaurant meal prices cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bolivia beer price bar restaurant boliviano cost of living",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bolivia cappuccino cocktail wine glass price boliviano",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au exchange rates A$1=USD latest observation 2026 F11.1 daily AUD/USD 4.00 pm",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:20:25.683Z",
+      "finishedAt": "2026-11-19T03:22:48.528Z"
+    }
+  ]
+}

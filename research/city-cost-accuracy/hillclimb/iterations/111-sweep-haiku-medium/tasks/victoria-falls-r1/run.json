@@ -1,0 +1,89 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "18ed144acfb9ef859b83ba9d721f7706888c9b645f6bb993c1c6ecf721fb97f0",
+  "requestSha256": "edfded1696202bc32194b1b1f7a1b9a2434207d29af56cbe91c85a066c0386a6",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 45843,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 84448,
+          "outputTokens": 8840,
+          "cacheReadInputTokens": 27899,
+          "cacheCreationInputTokens": 10752,
+          "webSearchRequests": 6,
+          "costUSD": 0.07529419000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 3794,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.07529419000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 daily",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Victoria Falls Zimbabwe cost of living restaurant meal beer prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Victoria Falls prices cappuccino cocktail wine glass Numbeo",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 exchange rates daily USD",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Zimbabwe Victoria Falls average beer price bar cocktail price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates daily 18 November 2026 USD AUD reference rate",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:05:10.173Z",
+      "finishedAt": "2026-11-19T03:05:56.016Z"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "0aa65b48a2edbdc378e81d71ac03b02a4b8076686bc115b5f1b0e66ee4293de5",
+  "requestSha256": "9e03739d26d11172d7779271da43dc84937d5e975e9bff6cc7a33d61d66f1ba9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 350577,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 68119,
+          "outputTokens": 188699,
+          "cacheReadInputTokens": 4566,
+          "cacheCreationInputTokens": 18417,
+          "webSearchRequests": 5,
+          "costUSD": 0.15489046,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 182670,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15489046,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates AUD USD latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok cost of living restaurant meal prices inexpensive mid-range three-course meal for two 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok average price beer cocktail glass of wine restaurant bar 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bangkok cappuccino coffee price cafe average 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:58:56.843Z",
+      "finishedAt": "2026-11-19T02:04:47.420Z"
+    }
+  ]
+}

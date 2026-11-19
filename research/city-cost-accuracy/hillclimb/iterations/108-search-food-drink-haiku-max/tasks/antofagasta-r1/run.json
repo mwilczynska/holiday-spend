@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "97c7fe33088cbe6e8712156636a97de62a90612767cf8fc6a1e24d5c81400899",
+  "requestSha256": "3fb3692e98679b377c7a3292fe99d7282e4d97a616c85c2dc49873e647655ed7",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 648489,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 219226,
+          "outputTokens": 226871,
+          "cacheReadInputTokens": 20288,
+          "cacheCreationInputTokens": 35504,
+          "webSearchRequests": 12,
+          "costUSD": 0.38763057999999995,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 219517,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.38763057999999995,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11.1 daily",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Antofagasta Chile restaurant meal beer cappuccino prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Antofagasta Chile cost of living 2026 restaurant prices cocktail wine beer coffee",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "precio cerveza schop restaurante Antofagasta 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "precio pisco sour copa de vino restaurante bar Antofagasta 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.862Z",
+      "finishedAt": "2026-11-19T01:55:56.351Z"
+    }
+  ]
+}

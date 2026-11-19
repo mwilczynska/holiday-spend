@@ -1,0 +1,78 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "df9cd10b4b982835cf1a5ec684d1ff2e3dc85c5b8913be3b4c920535b050e748",
+  "requestSha256": "e08b23914b63a842819b5de63e3d24ceaccc961e9d12c90721a166997b6979c7",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 410272,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 69950,
+          "outputTokens": 176123,
+          "cacheReadInputTokens": 4570,
+          "cacheCreationInputTokens": 21598,
+          "webSearchRequests": 4,
+          "costUSD": 0.1394218,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 170972,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.1394218,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA daily exchange rates Australian dollar US dollar latest observation",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo cost of living Chiang Mai restaurant meal cappuccino domestic beer prices",
+            "mode": "extended",
+            "allowed_domains": [
+              "numbeo.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chiang Mai cost of living restaurant beer cocktail wine cappuccino prices",
+            "mode": "extended",
+            "allowed_domains": [
+              "expatistan.com"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chiang Mai restaurant prices 2026 beer cocktail glass of wine cappuccino baht typical",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:34:41.459Z",
+      "finishedAt": "2026-11-19T02:41:31.731Z"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d640f39fb2c09bb50df8faf4a3de0cc4c2982b704fac3e913b23321e3743d103",
+  "requestSha256": "71685dac339cc4a18dce5815fb6403a61cd0f41eb86ab7921463f95b66addaac",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 401898,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 188086,
+          "outputTokens": 220665,
+          "cacheReadInputTokens": 4564,
+          "cacheCreationInputTokens": 22389,
+          "webSearchRequests": 12,
+          "costUSD": 0.38240814,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 213269,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.38240814,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11.1",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Numbeo Arequipa Peru cost of living prices meal inexpensive restaurant beer cappuccino wine",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arequipa Peru restaurant meal prices menu del dia typical cost soles 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arequipa Peru coffee cappuccino price and draft beer price in bars and restaurants soles",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Arequipa Peru cocktail pisco sour price and glass of wine price in restaurants soles",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:52:09.950Z",
+      "finishedAt": "2026-11-19T01:58:51.848Z"
+    }
+  ]
+}

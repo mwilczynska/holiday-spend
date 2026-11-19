@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Food and drink anchors come from web search snippets with Cagliari-specific aggregator figures (Numbeo, MyLifeElsewhere, HikersBay) plus Sardinian and Italy-wide guides. The sources conflict, some are undated, and most figures are late-2026 page snapshots rather than July 2026 observations. Cocktail and wine rest on looser guide ranges. Accommodation anchors are holistic model estimates for July peak season from general knowledge only; no booking pages or listings were checked and no accommodation searches were run. EUR-to-USD conversion uses an approximate 1.08 rate from a secondary early-2026 snippet rather than a current rate, so USD values carry roughly 5 percent FX uncertainty.",
+  "comparable_city_reasoning": "Food and drink: Cagliari-specific aggregator and venue figures, cross-checked against Italy-wide price guides. Accommodation: holistic benchmark of typical July rates in Sardinian and mid-sized southern Italian coastal cities, from general knowledge only.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.67,
+    "coffee": 2.00,
+    "inexp_meal_1p": 21.06,
+    "midrange_meal_2p": 84.24,
+    "cocktail": 10.80,
+    "wine_glass": 5.94,
+    "hostel_dorm_1p": 32.40,
+    "hostel_private_2p": 81.00,
+    "hotel_1star_2p": 91.80,
+    "hotel_3star_2p": 151.20
+  }
+}

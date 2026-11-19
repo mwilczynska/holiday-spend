@@ -1,0 +1,86 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "73bd8bd71ae93da2aca0212140e12ae4363fa31fc9ea8932ba37bbd184c3db73",
+  "requestSha256": "e14363aebf34332cbe5f139ae3ad0ad92958a26ab09c62cc6d48b9d3ace4e8ff",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 47023,
+      "isError": false,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 1658,
+          "cacheReadInputTokens": 11661,
+          "cacheCreationInputTokens": 9343,
+          "webSearchRequests": 0,
+          "costUSD": 0.1102602,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 510,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        },
+        "claude-haiku-5-5": {
+          "inputTokens": 56513,
+          "outputTokens": 4753,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 4,
+          "costUSD": 0.04802780000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1560,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15828799999999998,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rate AUD USD November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama Japan cost of living prices restaurant meal cappuccino beer",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA 4pm exchange rate USD 18 November 2026",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Matsuyama izakaya bar prices cocktail glass of wine draft beer yen",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:01:10.016Z",
+      "finishedAt": "2026-11-19T03:01:57.039Z"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "54eb16ef6dcf1d18b7d8e0c2ad910600393475723f64a08c11b09ea56c97bcbb",
+  "requestSha256": "ab9ac071444eea0e8af31d2094d9a8a53742de097b0c5ad78b8084d65cbd428e",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 529432,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 109191,
+          "outputTokens": 220777,
+          "cacheReadInputTokens": 22392,
+          "cacheCreationInputTokens": 40667,
+          "webSearchRequests": 7,
+          "costUSD": 0.19966492000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 214477,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.19966492000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates daily AUD USD latest F11.1",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Alicante Spain cost of living restaurant meal prices 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain cappuccino coffee price beer caña price bar 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Spain cocktail price glass of wine restaurant price 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "AUD USD exchange rate latest observation November 2026 Reserve Bank of Australia",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T01:45:07.713Z",
+      "finishedAt": "2026-11-19T01:53:57.145Z"
+    }
+  ]
+}

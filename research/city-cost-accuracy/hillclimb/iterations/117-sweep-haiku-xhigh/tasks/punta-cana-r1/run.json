@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "xhigh",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "59ef652433b3687353408093b21bd986b19245bbfda370b9b0403fdf762b218c",
+  "requestSha256": "0ab4434d6fa8560b1cfc99e5bf99d9f2efce9aa74e90e5c2d9c0dd903a949e9c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 127842,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 182732,
+          "outputTokens": 45113,
+          "cacheReadInputTokens": 20541,
+          "cacheCreationInputTokens": 21197,
+          "webSearchRequests": 11,
+          "costUSD": 0.15527451,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 37814,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.15527451,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates USD per AUD latest F11 rba.gov.au",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana restaurant meal prices cost of living 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Dominican Republic beer price restaurant Presidente cost",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana cappuccino cocktail wine glass prices",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA F11.1 exchange rates AUD USD daily November 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana average price cocktail glass of wine restaurant Dominican Republic 2026 USD",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:18:39.145Z",
+      "finishedAt": "2026-11-19T03:20:46.987Z"
+    }
+  ]
+}

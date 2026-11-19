@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee and beer anchors come from Numbeo Coimbra city figures and Coimbra guides with mixed dates and methods; beer assumes a 0.5 L draught. Cocktail and wine are set from the local beer price relationship because Coimbra-specific drink data was thin, and Lisbon and Braga sources only informed the range. Accommodation anchors are holistic model estimates for July, not from live listings or searches. EUR prices use an assumed, unverified planning rate of about 1.15 USD per EUR. The FX figure is the latest RBA observation I could locate (2026-03-20, from search-result content for the RBA exchange-rates page; page not opened). It is months older than the 2026-11-19 generation date, so treat it as stale.",
+  "comparable_city_reasoning": "Coimbra-specific food and beer figures; drink basis set from the local beer price relationship and informed by Lisbon and Braga drink sources; accommodation estimated holistically against mid-sized Portuguese university cities at July rates.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.59,
+    "coffee": 2.19,
+    "inexp_meal_1p": 13.80,
+    "midrange_meal_2p": 50.60,
+    "cocktail": 9.20,
+    "wine_glass": 3.45,
+    "hostel_dorm_1p": 32.20,
+    "hostel_private_2p": 69.00,
+    "hotel_1star_2p": 80.50,
+    "hotel_3star_2p": 132.25
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "fd20cc8f1618d69836d711229f1687b0a51799014390b816b9f5bb7174db1570",
+  "requestSha256": "880338ec954ae4638450a2da73db8129cc4f40f07ea6d2556eef42b78475d00d",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 488272,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 103246,
+          "outputTokens": 246378,
+          "cacheReadInputTokens": 27645,
+          "cacheCreationInputTokens": 40663,
+          "webSearchRequests": 7,
+          "costUSD": 0.21192265000000002,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 238819,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.21192265000000002,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US$ latest",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chengdu cost of living restaurant meal prices yuan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chengdu cappuccino coffee price yuan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chengdu beer price bar restaurant yuan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chengdu cocktail price wine glass bar yuan",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Chengdu glass of wine restaurant price yuan",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:31:51.469Z",
+      "finishedAt": "2026-11-19T02:39:59.741Z"
+    }
+  ]
+}

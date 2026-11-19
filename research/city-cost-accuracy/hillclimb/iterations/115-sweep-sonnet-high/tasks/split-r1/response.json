@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "The FX figure is the RBA USD rate for 2026-11-18 (0.6720 USD per AUD), taken from search results about the RBA exchange-rate pages. I did not open the RBA page itself. Food and drink anchors come from three searches of travel-cost guides and aggregators, which gave Split ranges in euros. Those sources are crowd-sourced or blog-based and mixed in date. Roughly: cappuccino €2.50–4, 0.5L draft beer €4–6, house wine glass €4–8, cocktail €10–15 (one guide gave €5–10), cheap meal €10–15, mid-range mains €18–30. I converted these at about 1.15–1.17 USD per EUR, which is my own assumption. I did not search for a EUR/USD rate. Mid-range meals and cocktails are the least certain food and drink anchors because sources vary widely. I made the two-person three-course figure up from per-person ranges, and July peak pricing runs 20–30% higher. The cocktail and wine figures reflect the local relationship to beer plus the guide ranges. Accommodation anchors are holistic model estimates for July 2026 peak season, based on general knowledge of Split's tourism demand. I did not search for accommodation prices or inspect any listings. They are the least certain anchors and vary widely by location and booking date.",
+  "comparable_city_reasoning": "Split is a high-demand Adriatic summer destination. Its prices are roughly comparable to Dubrovnik, which is somewhat pricier, and to Zadar and Kotor, which are somewhat cheaper. Croatia has used the euro since 2023, which has pushed prices toward Southern Europe levels. Search results also showed Split to be somewhat more expensive than Zagreb.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 5.2,
+    "coffee": 3.5,
+    "inexp_meal_1p": 14.0,
+    "midrange_meal_2p": 85.0,
+    "cocktail": 12.5,
+    "wine_glass": 5.8,
+    "hostel_dorm_1p": 38.0,
+    "hostel_private_2p": 110.0,
+    "hotel_1star_2p": 100.0,
+    "hotel_3star_2p": 185.0
+  }
+}

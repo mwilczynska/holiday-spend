@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "d7b428897a4ad818e8d8b77f98d88cecf6d2ef2d0533e03988cd5087acc69166",
+  "requestSha256": "95381aaac45a286b8a0e47736b0ff323e295fe25b9b4709433009796eb68f172",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 426381,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 86735,
+          "outputTokens": 303204,
+          "cacheReadInputTokens": 4566,
+          "cacheCreationInputTokens": 24298,
+          "webSearchRequests": 7,
+          "costUSD": 0.23518076,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 293649,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.23518076,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 US dollar latest observation",
+            "mode": "extended",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cagliari cost of living restaurant meal cappuccino beer prices",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Cagliari bar prices coffee cocktail glass of wine beer 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Sardinia restaurant meal prices 2026 typical cost per person pizzeria trattoria",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Italy cost of living 2026 cappuccino draft beer glass of wine cocktail prices restaurant",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:21:48.181Z",
+      "finishedAt": "2026-11-19T02:28:54.562Z"
+    }
+  ]
+}

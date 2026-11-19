@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Overall medium. Beer, coffee and inexpensive or mid-range meal anchors are triangulated from 2026-dated Bilbao guides and price sites (Expatica/Numbeo-based figures, MyLifeElsewhere, menu del dia guides), so they are the firmest. Cocktail and wine rely on Spain-wide bar ranges with Bilbao set near the upper end; cocktail is set at about 3x the beer anchor and wine at about 1.17x as a beer-relative check. Hostel and hotel anchors are holistic model estimates with no accommodation search or live listing check, so they are the least certain. EUR converted at about 1.17 USD per EUR, a rate implied by conversions in the price sources and not separately verified. FX is stale: no RBA observation near 19 Nov 2026 was retrieved. The 0.7088 value came from a search summary of an RBA figure; the RBA exchange-rates page listed in the results was not opened. The server should treat this observation as stale.",
+  "comparable_city_reasoning": "No single comparable city was used. Drink and restaurant anchors rest on Bilbao-specific sources, with Spain-wide bar ranges where Bilbao data were thin. One source puts Bilbao dining out about 15% above Spain's average, so cocktail and wine lean toward the upper part of the Spain-wide ranges. Accommodation is a holistic estimate for a mid-sized northern Spanish city in July high season, not drawn from comparable-city data.",
+  "fx": {
+    "as_of_date": "2026-03-20",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.7088,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.51,
+    "coffee": 2.57,
+    "inexp_meal_1p": 17.55,
+    "midrange_meal_2p": 70.20,
+    "cocktail": 10.53,
+    "wine_glass": 4.10,
+    "hostel_dorm_1p": 35.10,
+    "hostel_private_2p": 81.90,
+    "hotel_1star_2p": 76.05,
+    "hotel_3star_2p": 175.50
+  }
+}

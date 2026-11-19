@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Beer, meal and coffee anchors rest on recent aggregated sources (Numbeo figures via Expatica, MyLifeElsewhere, Expatistan) and Bilbao menu del dia listings; coffee has few data points. Cocktail is the weakest drink: the only Bilbao figure is one low-sample club price, so cocktail is set at roughly 2.9 times the beer anchor, using the local beer relationship as the basis. Wine glass is likewise set roughly level with beer, cross-checked against Spain-wide and Bilbao pintxos-bar prices. Hostel and hotel anchors are holistic model estimates from general knowledge and city context, not checked against live listings or booking pages: low confidence. EUR-quoted sources were converted to USD at an approximate rate. FX: the 2026-10-27 value comes from third-party allratestoday.com, which says it mirrors RBA data; rba.gov.au was not reached and newer RBA observations should exist.",
+  "comparable_city_reasoning": "No single comparable city was used. Basis is the Basque/Spanish price level: food anchors use Bilbao-specific cost-of-living and menu data, drink anchors use Spain-wide bar guides adjusted to Bilbao, and accommodation is a holistic model estimate for a northern Spanish city in July tourist season.",
+  "fx": {
+    "as_of_date": "2026-10-27",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://allratestoday.com/central-bank-rates-api/rba/",
+    "source_rate": 0.7021,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.80,
+    "coffee": 2.55,
+    "inexp_meal_1p": 19.90,
+    "midrange_meal_2p": 76.00,
+    "cocktail": 11.10,
+    "wine_glass": 3.85,
+    "hostel_dorm_1p": 37.40,
+    "hostel_private_2p": 82.00,
+    "hotel_1star_2p": 88.00,
+    "hotel_3star_2p": 155.00
+  }
+}

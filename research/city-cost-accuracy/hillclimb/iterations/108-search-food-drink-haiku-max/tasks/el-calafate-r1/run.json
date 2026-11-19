@@ -1,0 +1,79 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "8f410b17b565689ee01c690180f760d65e4b66aeb364d77c7194ed4c57704d8c",
+  "requestSha256": "70700f0b12ea613bad91a615f6eddb80ed4d043cc82629aeb58c103e1a623357",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 642664,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 239350,
+          "outputTokens": 281723,
+          "cacheReadInputTokens": 28137,
+          "cacheCreationInputTokens": 40308,
+          "webSearchRequests": 14,
+          "costUSD": 0.31313947,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 274384,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.31313947,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia daily exchange rates A$1 = USD latest F11.1",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "El Calafate Argentina cost of living restaurant meal beer cappuccino prices 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "precios restaurantes El Calafate cerveza cappuccino cóctel copa de vino 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "El Calafate bar cocktail price wine by the glass typical cost",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "cotización dólar oficial Banco Nación venta cierre julio 2026",
+            "mode": "standard"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:54:15.619Z",
+      "finishedAt": "2026-11-19T03:04:58.284Z"
+    }
+  ]
+}

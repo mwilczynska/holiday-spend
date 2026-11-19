@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant anchors have the best support from several sources, though their dates are mixed relative to the July 2026 window. Cappuccino and draft beer conflict between crowd-sourced city-level figures and higher national averages, so they are bounded estimates. Cocktail follows reported bar price ranges. wine_glass has no direct per-glass source and follows the local beer relationship. Peso-quoted figures were converted at an approximate, unverified rate. Accommodation anchors are holistic model estimates from general knowledge; no accommodation searches or listings were checked. The FX observation came from RBA search results, not the F11.1 table itself, and no 19 November figure was found.",
+  "comparable_city_reasoning": "No comparable city was used. Food and drink anchors rest on city-level restaurant and drink price ranges reported in the searches; wine_glass is set from the local beer relationship because no per-glass price was found; accommodation anchors are holistic model estimates from general knowledge of the city's hostel and hotel tiers.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.00,
+    "coffee": 2.40,
+    "inexp_meal_1p": 6.50,
+    "midrange_meal_2p": 37.00,
+    "cocktail": 7.00,
+    "wine_glass": 6.00,
+    "hostel_dorm_1p": 12.00,
+    "hostel_private_2p": 35.00,
+    "hotel_1star_2p": 38.00,
+    "hotel_3star_2p": 90.00
+  }
+}

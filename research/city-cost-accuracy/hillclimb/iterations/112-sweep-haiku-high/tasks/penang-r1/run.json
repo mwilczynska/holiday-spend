@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "54ad77d4e9b95a2401cf7acd3340876481693da2f38a788b54803ecf86a4e4fe",
+  "requestSha256": "6204655a81aa067bee5172395c2ed7138969ee41b873b771cfea00737e7832c9",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 65538,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 94386,
+          "outputTokens": 18299,
+          "cacheReadInputTokens": 19466,
+          "cacheCreationInputTokens": 11284,
+          "webSearchRequests": 6,
+          "costUSD": 0.08103956000000001,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 12320,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.08103956000000001,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily F11 November 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang food prices 2026 average cost meal restaurant",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Penang cost of living 2026 coffee beer cocktail price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Malaysia Penang Numbeo restaurant prices cappuccino beer wine",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "rba.gov.au F11 historical exchange rates USD per AUD November 2026  4pm rate",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:05:05.266Z",
+      "finishedAt": "2026-11-19T03:06:10.804Z"
+    }
+  ]
+}

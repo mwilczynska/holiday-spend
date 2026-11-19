@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "c00643d71288f698ec9c14b333e665063cb7b414af21973b3585f3af687c253b",
+  "requestSha256": "812072a0fde269bf8d00cd1ceefcc04f193d80ea9ef523a2708d6d9d6fca9fb8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 54491,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 43441,
+          "outputTokens": 4961,
+          "cacheReadInputTokens": 11843,
+          "cacheCreationInputTokens": 7904,
+          "webSearchRequests": 3,
+          "costUSD": 0.03852383,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1883,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.03852383,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "RBA exchange rates AUD USD latest observation 2026",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi India cost of living restaurant meal coffee beer price",
+            "mode": "standard"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rate AUD USD November 2026",
+            "mode": "extended"
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T03:00:45.911Z",
+      "finishedAt": "2026-11-19T03:01:40.402Z"
+    }
+  ]
+}

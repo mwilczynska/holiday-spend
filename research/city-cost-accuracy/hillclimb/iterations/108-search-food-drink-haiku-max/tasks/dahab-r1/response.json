@@ -1,0 +1,25 @@
+{
+  "region": "Middle East",
+  "confidence": "medium",
+  "confidence_notes": "Medium overall. Food and drink anchors are triangulated from several mostly 2026 aggregator and crowd-sourced Dahab and regional price pages, which conflict in places. The cocktail anchor rests on Dahab bar price ranges. No Dahab restaurant wine-by-the-glass price was found, so wine_glass is set at about 1.8 times the beer anchor and checked only against hotel glass prices in Cairo and Alexandria. The four accommodation anchors are holistic model estimates from general knowledge and city context, not checked against live listings or current rates. No accommodation search was run, and the values assume a quieter July period. They are the least certain anchors. The FX figure is the 18 November 2026 RBA observation as reported in search results for the RBA exchange-rates page. No 19 November figure was found.",
+  "comparable_city_reasoning": "Anchored to Red Sea resort pricing: Dahab-specific aggregator data for meals, coffee and beer, Hurghada listings as a cross-check, and Cairo and Alexandria hotel glass prices as upper benchmarks for wine. Region is Middle East because Dahab sits on the Sinai Peninsula, which lies in Asia, and Egypt is commonly grouped with the Middle East for cost comparisons.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.90,
+    "coffee": 1.75,
+    "inexp_meal_1p": 3.50,
+    "midrange_meal_2p": 18.00,
+    "cocktail": 4.00,
+    "wine_glass": 3.40,
+    "hostel_dorm_1p": 7.00,
+    "hostel_private_2p": 14.00,
+    "hotel_1star_2p": 16.00,
+    "hotel_3star_2p": 45.00
+  }
+}

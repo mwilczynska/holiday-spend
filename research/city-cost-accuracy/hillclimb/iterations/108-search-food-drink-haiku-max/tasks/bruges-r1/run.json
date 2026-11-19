@@ -1,0 +1,78 @@
+{
+  "model": "claude-haiku-5-5",
+  "effort": "max",
+  "tools": "WebSearch",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": true,
+  "promptSha256": "1de520ee6603cf0942c99134ee44a92259301bc2042999a128aa23cd8e6242ad",
+  "requestSha256": "9b7ed3f237e50b14c81347c7c48d4d6275da1680d6bd4118bdd5242ea95fec52",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 620305,
+      "isError": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 163271,
+          "outputTokens": 207627,
+          "cacheReadInputTokens": 23380,
+          "cacheCreationInputTokens": 36334,
+          "webSearchRequests": 8,
+          "costUSD": 0.2076412,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 201300,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "costUsdList": 0.2076412,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Reserve Bank of Australia exchange rates AUD USD latest daily observation F11",
+            "mode": "standard",
+            "allowed_domains": [
+              "rba.gov.au"
+            ]
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bruges Belgium cost of living restaurant meal prices beer cappuccino Numbeo",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bruges Belgium bar prices cocktail glass of wine draft beer 2026",
+            "mode": "extended"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Bruges 2026 prices cocktail glass of wine draught beer restaurant bar average",
+            "mode": "extended",
+            "allowed_domains": [
+              "world-prices.com",
+              "hikersbay.com",
+              "numbeo.com",
+              "expatistan.com"
+            ]
+          }
+        }
+      ],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T02:14:56.134Z",
+      "finishedAt": "2026-11-19T02:25:16.439Z"
+    }
+  ]
+}
