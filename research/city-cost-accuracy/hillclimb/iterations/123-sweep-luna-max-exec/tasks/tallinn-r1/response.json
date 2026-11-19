@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "A June 2026 city price-index snapshot, close to the July window, put draft beer near €6, cappuccino near €3.89, an inexpensive meal near €15, and a three-course meal for two near €80. Cocktail and wine-glass prices are inferred at roughly twice and about once the beer price, respectively. Accommodation is a holistic July high-season estimate and is less certain.",
+  "comparable_city_reasoning": "Food and drink use Tallinn-specific price data; lodging is estimated using Baltic capital city-break context, including Riga and Vilnius, with an allowance for Tallinn's July visitor demand.",
+  "fx": {
+    "as_of_date": "2026-11-19",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6677,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 7.00,
+    "coffee": 4.55,
+    "inexp_meal_1p": 17.50,
+    "midrange_meal_2p": 93.50,
+    "cocktail": 14.00,
+    "wine_glass": 7.00,
+    "hostel_dorm_1p": 35.00,
+    "hostel_private_2p": 85.00,
+    "hotel_1star_2p": 105.00,
+    "hotel_3star_2p": 160.00
+  }
+}

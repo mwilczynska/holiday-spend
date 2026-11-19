@@ -4367,3 +4367,12 @@ Luna's production table helps other models but loses most of that gap. 109 (Haik
 and not run. Script changes: shared `workerMessage` builder, `dispatch.mjs --message luna --clean-context`,
 `make-lane.mjs --sample/--seed`, `sweep-report.mjs`, and `save-agent-answer.mjs`/`sweep-agents.mjs` for in-session
 agent lanes (used only for the discarded first attempt).
+
+## 19 November 2026 — GPT-6.2 Sol and GPT-6.1 Terra screen; sample-size analysis
+
+Owner request: screen GPT-6.2 Sol and GPT-6.1 Terra on the sweep's 20 cities, and find a test smaller than 333 cities
+per setting. New `dispatch.mjs --runner codex` runs `codex exec` on the ChatGPT subscription with the exact Luna
+worker message and live search. Lanes 121 (Sol max), 122 (Terra max) and 123 (Luna max control through the same
+runner) all answered 20/20. Sol is the most accurate model before correction (raw 0.215 against Luna 0.327); with own
+per-anchor fits Sol 0.169, Terra 0.174 and Luna 0.178 are within noise. New `sample-size.mjs`: paired per-city noise,
+correction learning curve and a transfer test; findings in `sweep-2026-11-19.md`.

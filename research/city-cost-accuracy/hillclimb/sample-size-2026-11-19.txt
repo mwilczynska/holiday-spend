@@ -1,0 +1,40 @@
+1. Paired noise against Luna, own per-anchor correction fitted leave-one-city-out on the lane's cities
+lane | cities | own-fit loss (Luna) | mean diff | sd of diff | cities for 80% power at diff 0.015 / 0.03 / 0.05
+110-sweep-haiku-low | 20 | 0.214 (0.176) | 0.038 | 0.110 | 423 / 106 / 39
+111-sweep-haiku-medium | 20 | 0.209 (0.176) | 0.032 | 0.145 | 737 / 185 / 67
+112-sweep-haiku-high | 20 | 0.212 (0.176) | 0.035 | 0.090 | 282 / 71 / 26
+117-sweep-haiku-xhigh | 20 | 0.253 (0.176) | 0.076 | 0.125 | 542 / 136 / 49
+114-sweep-sonnet-low | 20 | 0.186 (0.176) | 0.010 | 0.114 | 454 / 114 / 41
+115-sweep-sonnet-high | 20 | 0.187 (0.176) | 0.010 | 0.113 | 449 / 113 / 41
+118-sweep-sonnet-xhigh | 20 | 0.176 (0.176) | -0.000 | 0.103 | 369 / 93 / 34
+116-sweep-opus-medium | 20 | 0.179 (0.176) | 0.003 | 0.116 | 470 / 118 / 43
+121-sweep-sol-max | 20 | 0.169 (0.176) | -0.007 | 0.063 | 139 / 35 / 13
+122-sweep-terra-max | 20 | 0.174 (0.176) | -0.002 | 0.070 | 170 / 43 / 16
+123-sweep-luna-max-exec | 20 | 0.178 (0.176) | 0.001 | 0.068 | 163 / 41 / 15
+median sd of paired difference 0.110
+
+2. Correction learning curve on 102-search-food-drink-luna-r2 (333 dev cities, 300 random draws per size)
+no correction 0.349; leave-one-out on all cities: per-anchor 0.191, country-in-region 0.163
+fit cities | held-out loss per-anchor (p10-p90) | country-in-region (p10-p90)
+10 | 0.202 (0.193-0.212) | 0.213 (0.193-0.236)
+20 | 0.196 (0.192-0.202) | 0.202 (0.187-0.222)
+40 | 0.193 (0.189-0.197) | 0.189 (0.178-0.201)
+60 | 0.193 (0.188-0.197) | 0.181 (0.174-0.191)
+80 | 0.192 (0.187-0.197) | 0.176 (0.170-0.183)
+120 | 0.191 (0.185-0.198) | 0.171 (0.164-0.178)
+160 | 0.191 (0.183-0.200) | 0.168 (0.160-0.175)
+240 | 0.191 (0.176-0.205) | 0.165 (0.153-0.177)
+
+3. Luna country table plus the lane's own per-anchor shift (leave-one-city-out), against Luna with its own table
+lane | cities | transfer loss | own per-anchor loss | Luna with Luna table | diff vs Luna (sd)
+110-sweep-haiku-low | 20 | 0.236 | 0.214 | 0.187 | 0.050 (0.133)
+111-sweep-haiku-medium | 20 | 0.222 | 0.209 | 0.187 | 0.035 (0.140)
+112-sweep-haiku-high | 20 | 0.221 | 0.212 | 0.187 | 0.034 (0.117)
+117-sweep-haiku-xhigh | 20 | 0.267 | 0.253 | 0.187 | 0.081 (0.129)
+114-sweep-sonnet-low | 20 | 0.176 | 0.186 | 0.187 | -0.011 (0.128)
+115-sweep-sonnet-high | 20 | 0.199 | 0.187 | 0.187 | 0.013 (0.121)
+118-sweep-sonnet-xhigh | 20 | 0.203 | 0.176 | 0.187 | 0.016 (0.108)
+116-sweep-opus-medium | 20 | 0.191 | 0.179 | 0.187 | 0.004 (0.108)
+121-sweep-sol-max | 20 | 0.175 | 0.169 | 0.187 | -0.011 (0.060)
+122-sweep-terra-max | 20 | 0.190 | 0.174 | 0.187 | 0.004 (0.072)
+123-sweep-luna-max-exec | 20 | 0.180 | 0.178 | 0.187 | -0.007 (0.093)

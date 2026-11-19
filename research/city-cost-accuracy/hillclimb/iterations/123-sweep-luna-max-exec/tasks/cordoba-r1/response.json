@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food estimates are supported by aggregated Córdoba price benchmarks, though some available observations postdate July 2026. Accommodation prices are holistic seasonal estimates and less certain; wine is estimated relative to local beer, and cocktails are priced several times above beer.",
+  "comparable_city_reasoning": "Restaurant estimates use Córdoba benchmarks directly; accommodation estimates reflect Córdoba's Andalusian interior-city tourism context.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.75,
+    "coffee": 2.59,
+    "inexp_meal_1p": 13.2,
+    "midrange_meal_2p": 55,
+    "cocktail": 10.45,
+    "wine_glass": 3.85,
+    "hostel_dorm_1p": 33,
+    "hostel_private_2p": 77,
+    "hotel_1star_2p": 99,
+    "hotel_3star_2p": 154
+  }
+}

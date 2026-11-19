@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use late-2026 reported Split prices as a proxy for July; cocktail and wine estimates use local price relationships to beer because aggregated prices are limited. Peak-season accommodation estimates are holistic and least certain.",
+  "comparable_city_reasoning": "No proxy city used: food and drink use Split-specific prices; accommodation reflects Split’s peak-season Adriatic tourism profile.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 4.67,
+    "coffee": 2.77,
+    "inexp_meal_1p": 16.5,
+    "midrange_meal_2p": 72.8,
+    "cocktail": 11.55,
+    "wine_glass": 6.05,
+    "hostel_dorm_1p": 52,
+    "hostel_private_2p": 125,
+    "hotel_1star_2p": 150,
+    "hotel_3star_2p": 240
+  }
+}

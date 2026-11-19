@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "c00643d71288f698ec9c14b333e665063cb7b414af21973b3585f3af687c253b",
+  "requestSha256": "812072a0fde269bf8d00cd1ceefcc04f193d80ea9ef523a2708d6d9d6fca9fb8",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 88283,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 72503,
+          "cachedInputTokens": 43008,
+          "outputTokens": 4009,
+          "reasoningOutputTokens": 3472
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest exchange rates USD per Australian dollar November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi India cost of living restaurant prices beer cappuccino inexpensive meal Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi restaurants average food prices thali meal price coffee cappuccino"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi India beer price restaurant local beer cost"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Hampi India cocktail wine glass price bar restaurant"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:51:36.370Z",
+      "finishedAt": "2026-11-19T05:53:04.653Z"
+    }
+  ]
+}

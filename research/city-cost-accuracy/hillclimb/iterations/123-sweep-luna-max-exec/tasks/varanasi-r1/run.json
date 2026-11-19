@@ -1,0 +1,59 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "364c4a7ae9c9b44e80b81f38a6b6328c04344ebbe7df0df71b98938a8bcd4218",
+  "requestSha256": "3e61d08dc55eac5a425e3781704ed7a610b0af0617dff07c73d96beff05238e0",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 92845,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 74748,
+          "cachedInputTokens": 41216,
+          "outputTokens": 4103,
+          "reasoningOutputTokens": 3550
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Varanasi India typical restaurant meal cappuccino beer prices cost of living July 2026 Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Varanasi India cost of living restaurant prices meal coffee beer cocktail wine aggregated"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:56:30.182Z",
+      "finishedAt": "2026-11-19T05:58:03.027Z"
+    }
+  ]
+}

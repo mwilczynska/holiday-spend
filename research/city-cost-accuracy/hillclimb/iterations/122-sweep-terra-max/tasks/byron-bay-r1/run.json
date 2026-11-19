@@ -1,0 +1,89 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6.1-terra",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "3f5ae22485edff8cb73531a69405e1a6262ae77e35776c240d8c98206823a561",
+  "requestSha256": "a8cec6b6126e15fa27c7e056d74f7bf3fc9e25fa9b276a4761de08a6e89e7088",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 109730,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6.1-terra": {
+          "inputTokens": 242854,
+          "cachedInputTokens": 193280,
+          "outputTokens": 4143,
+          "reasoningOutputTokens": 3006
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics frequency exchange rates latest exchange rates Australian dollar US dollar"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay cost of living average prices inexpensive restaurant meal three course meal coffee draft beer Numbeo"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay average prices beer cappuccino restaurant meal cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay typical cocktail wine glass price drinks bar restaurant"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:numbeo.com/cost-of-living/in/Byron-Bay \"Domestic Beer\" \"Cappuccino\""
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Byron Bay average typical restaurant cocktail wine glass price 2026 bar"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html?latest=202611190550"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "2026-11-19T05:51:01.589835Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: \"Rejected(\\\"`\\\\\\\"C:\\\\\\\\\\\\\\\\Windows\\\\\\\\\\\\\\\\System32\\\\\\\\\\\\\\\\WindowsPowerShell\\\\\\\\\\\\\\\\v1.0\\\\\\\\\\\\\\\\powershell.exe\\\\\\\" -Command \\\\\\\"try { (Invoke-WebRequest -Uri 'https://www.rba.gov.au/rss/rss-cb-exchange-rates.xml' -UseBasicParsing -TimeoutSec 10).Content.Substring(0, 4000) } catch { Write-Output \\\\\\\"'$_.Exception.Message }'` rejected: blocked by policy\\\")\" }\n",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:49:54.611Z",
+      "finishedAt": "2026-11-19T05:51:44.341Z"
+    }
+  ]
+}

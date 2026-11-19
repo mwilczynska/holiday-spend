@@ -1,0 +1,71 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "c28b2d42a8b44ef99b93edc999c57f69f5f5530e7b69012d16efc3574c2c9c1e",
+  "requestSha256": "4c24faca2ebd5c4d3939e2ad7be3f52022b5572c2f8179f577bef4c03e4295eb",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 82900,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 116967,
+          "cachedInputTokens": 74624,
+          "outputTokens": 3394,
+          "reasoningOutputTokens": 2792
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au/statistics/frequency/exchange-rates.html latest daily exchange rates USD AUD November 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kenting Taiwan cost of living restaurant meal cappuccino domestic beer prices"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Kenting Taiwan cocktail wine glass prices typical cost of living"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Pingtung Kenting restaurant prices coffee beer cost Taiwan travel budget"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:51:43.488Z",
+      "finishedAt": "2026-11-19T05:53:06.389Z"
+    }
+  ]
+}

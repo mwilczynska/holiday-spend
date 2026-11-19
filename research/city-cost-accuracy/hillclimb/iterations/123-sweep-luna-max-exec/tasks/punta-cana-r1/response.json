@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "medium",
+  "confidence_notes": "Restaurant, coffee, and beer estimates use Punta Cana cost-of-living averages near July 2026. Cocktail and wine prices are estimated at about 2.5 times local draft beer; accommodation estimates are less certain because resort-focused lodging and limited hostel coverage make basic-room prices harder to generalize.",
+  "comparable_city_reasoning": "Based on Punta Cana's own local price data; no comparable city was used.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 2.5,
+    "coffee": 2.0,
+    "inexp_meal_1p": 8.25,
+    "midrange_meal_2p": 42.0,
+    "cocktail": 6.5,
+    "wine_glass": 6.5,
+    "hostel_dorm_1p": 20.0,
+    "hostel_private_2p": 48.0,
+    "hotel_1star_2p": 65.0,
+    "hotel_3star_2p": 120.0
+  }
+}

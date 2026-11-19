@@ -1,0 +1,25 @@
+{
+  "region": "Europe",
+  "confidence": "medium",
+  "confidence_notes": "Food anchors use aggregated Bilbao prices published near the July 2026 window; later prices may differ. Cocktail is estimated below a reported €10 downtown-club price, and wine follows local glass prices of about €2–3.50. Lodging is a seasonal model estimate.",
+  "comparable_city_reasoning": "Food pricing uses Bilbao-specific aggregated data; lodging reflects a northern Spanish regional capital with cultural-tourism demand.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 3.48,
+    "coffee": 2.54,
+    "inexp_meal_1p": 22.24,
+    "midrange_meal_2p": 69.60,
+    "cocktail": 9.30,
+    "wine_glass": 3.20,
+    "hostel_dorm_1p": 38,
+    "hostel_private_2p": 90,
+    "hotel_1star_2p": 100,
+    "hotel_3star_2p": 160
+  }
+}

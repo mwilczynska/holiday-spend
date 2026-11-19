@@ -1,0 +1,25 @@
+{
+  "region": "Latin America",
+  "confidence": "low",
+  "confidence_notes": "Uyuni price data is sparse. Local 2026 price ranges and a Bolivia-wide cost index guide the meal, coffee, and beer estimates. Cocktail and wine prices are inferred from the local beer price relationship; accommodation anchors are holistic estimates.",
+  "comparable_city_reasoning": "Bolivia-wide urban prices provide a cross-check for locally reported Uyuni traveler prices. Accommodation estimates use a small Bolivian tourist-hub basis; current listings were not inspected.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.6720,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 1.8,
+    "coffee": 1.5,
+    "inexp_meal_1p": 2.0,
+    "midrange_meal_2p": 15.0,
+    "cocktail": 4.0,
+    "wine_glass": 3.0,
+    "hostel_dorm_1p": 7.0,
+    "hostel_private_2p": 20.0,
+    "hotel_1star_2p": 25.0,
+    "hotel_3star_2p": 55.0
+  }
+}

@@ -99,39 +99,6 @@
     "listCostPerCity": 0.09231488399999999
   },
   {
-    "lane": "117-sweep-haiku-xhigh",
-    "model": "claude-haiku-5-5",
-    "effort": "xhigh",
-    "answered": "20/20",
-    "paired": 20,
-    "rawLoss": 0.3490319599476292,
-    "rawLuna": 0.3272390851543271,
-    "rawDiffVsLuna": 0.02179287479330211,
-    "rawCI": [
-      -0.03890587157306627,
-      0.08255517311274779
-    ],
-    "prodTableLoss": 0.2596741996964767,
-    "prodTableLuna": 0.1949095090725495,
-    "prodTableDiffVsLuna": 0.06476469062392719,
-    "prodTableCI": [
-      0.02075800787268456,
-      0.11561198059794518
-    ],
-    "minP50": 1.7688166666666667,
-    "minMax": 2.38075,
-    "outP50": 39207,
-    "outP90": 45148.2,
-    "outMax": 46958,
-    "over64k": 0,
-    "over128k": 0,
-    "over600s": 0,
-    "searchP50": 5,
-    "searchMax": 6,
-    "over6Searches": 0,
-    "listCostPerCity": 0.11865406
-  },
-  {
     "lane": "113-sweep-haiku-max",
     "model": "claude-haiku-5-5",
     "effort": "max",
@@ -231,6 +198,72 @@
     "listCostPerCity": 0.03755269
   },
   {
+    "lane": "116-sweep-opus-medium",
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "answered": "20/20",
+    "paired": 20,
+    "rawLoss": 0.2639821817230913,
+    "rawLuna": 0.3272390851543271,
+    "rawDiffVsLuna": -0.06325690343123583,
+    "rawCI": [
+      -0.11680926118178508,
+      -0.0050298666647417495
+    ],
+    "prodTableLoss": 0.2314182717091696,
+    "prodTableLuna": 0.1949095090725495,
+    "prodTableDiffVsLuna": 0.03650876263662002,
+    "prodTableCI": [
+      -0.011434555926489384,
+      0.08346413395070967
+    ],
+    "minP50": 0.6220916666666667,
+    "minMax": 0.7904833333333333,
+    "outP50": 1489,
+    "outP90": 1696.4,
+    "outMax": 1894,
+    "over64k": 0,
+    "over128k": 0,
+    "over600s": 0,
+    "searchP50": 3,
+    "searchMax": 4,
+    "over6Searches": 0,
+    "listCostPerCity": 0.09716758
+  },
+  {
+    "lane": "117-sweep-haiku-xhigh",
+    "model": "claude-haiku-5-5",
+    "effort": "xhigh",
+    "answered": "20/20",
+    "paired": 20,
+    "rawLoss": 0.3490319599476292,
+    "rawLuna": 0.3272390851543271,
+    "rawDiffVsLuna": 0.02179287479330211,
+    "rawCI": [
+      -0.03890587157306627,
+      0.08255517311274779
+    ],
+    "prodTableLoss": 0.2596741996964767,
+    "prodTableLuna": 0.1949095090725495,
+    "prodTableDiffVsLuna": 0.06476469062392719,
+    "prodTableCI": [
+      0.02075800787268456,
+      0.11561198059794518
+    ],
+    "minP50": 1.7688166666666667,
+    "minMax": 2.38075,
+    "outP50": 39207,
+    "outP90": 45148.2,
+    "outMax": 46958,
+    "over64k": 0,
+    "over128k": 0,
+    "over600s": 0,
+    "searchP50": 5,
+    "searchMax": 6,
+    "over6Searches": 0,
+    "listCostPerCity": 0.11865406
+  },
+  {
     "lane": "118-sweep-sonnet-xhigh",
     "model": "claude-sonnet-5-5",
     "effort": "xhigh",
@@ -264,36 +297,102 @@
     "listCostPerCity": 0.06994154
   },
   {
-    "lane": "116-sweep-opus-medium",
-    "model": "claude-opus-5-5",
-    "effort": "medium",
+    "lane": "121-sweep-sol-max",
+    "model": "gpt-6.2-sol",
+    "effort": "max",
     "answered": "20/20",
     "paired": 20,
-    "rawLoss": 0.2639821817230913,
+    "rawLoss": 0.21454530956842421,
     "rawLuna": 0.3272390851543271,
-    "rawDiffVsLuna": -0.06325690343123583,
+    "rawDiffVsLuna": -0.11269377558590288,
     "rawCI": [
-      -0.11680926118178508,
-      -0.0050298666647417495
+      -0.14690521153242772,
+      -0.0759106177140146
     ],
-    "prodTableLoss": 0.2314182717091696,
+    "prodTableLoss": 0.22506235461621724,
     "prodTableLuna": 0.1949095090725495,
-    "prodTableDiffVsLuna": 0.03650876263662002,
+    "prodTableDiffVsLuna": 0.03015284554366764,
     "prodTableCI": [
-      -0.011434555926489384,
-      0.08346413395070967
+      -0.01926663596860806,
+      0.07643363256190722
     ],
-    "minP50": 0.6220916666666667,
-    "minMax": 0.7904833333333333,
-    "outP50": 1489,
-    "outP90": 1696.4,
-    "outMax": 1894,
+    "minP50": 2.3621083333333335,
+    "minMax": 3.16885,
+    "outP50": 4738.5,
+    "outP90": 5584.5,
+    "outMax": 6850,
     "over64k": 0,
     "over128k": 0,
     "over600s": 0,
-    "searchP50": 3,
-    "searchMax": 4,
+    "searchP50": 5,
+    "searchMax": 6,
     "over6Searches": 0,
-    "listCostPerCity": 0.09716758
+    "listCostPerCity": null
+  },
+  {
+    "lane": "122-sweep-terra-max",
+    "model": "gpt-6.1-terra",
+    "effort": "max",
+    "answered": "20/20",
+    "paired": 20,
+    "rawLoss": 0.2466412716378555,
+    "rawLuna": 0.3272390851543271,
+    "rawDiffVsLuna": -0.08059781351647154,
+    "rawCI": [
+      -0.11226432459374605,
+      -0.04810499751493442
+    ],
+    "prodTableLoss": 0.2084489298602133,
+    "prodTableLuna": 0.1949095090725495,
+    "prodTableDiffVsLuna": 0.01353942078766377,
+    "prodTableCI": [
+      -0.027603317619480813,
+      0.055004093173487395
+    ],
+    "minP50": 1.7484666666666668,
+    "minMax": 2.21265,
+    "outP50": 3967.5,
+    "outP90": 4852.8,
+    "outMax": 5430,
+    "over64k": 0,
+    "over128k": 0,
+    "over600s": 0,
+    "searchP50": 6,
+    "searchMax": 6,
+    "over6Searches": 0,
+    "listCostPerCity": null
+  },
+  {
+    "lane": "123-sweep-luna-max-exec",
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "answered": "20/20",
+    "paired": 20,
+    "rawLoss": 0.3151473019815009,
+    "rawLuna": 0.3272390851543271,
+    "rawDiffVsLuna": -0.012091783172826108,
+    "rawCI": [
+      -0.05641387574462901,
+      0.032652552000569206
+    ],
+    "prodTableLoss": 0.1731912791960541,
+    "prodTableLuna": 0.1949095090725495,
+    "prodTableDiffVsLuna": -0.021718229876495444,
+    "prodTableCI": [
+      -0.05834772747232757,
+      0.008995584260217366
+    ],
+    "minP50": 1.5556,
+    "minMax": 1.9495,
+    "outP50": 4100.5,
+    "outP90": 4734.400000000001,
+    "outMax": 5249,
+    "over64k": 0,
+    "over128k": 0,
+    "over600s": 0,
+    "searchP50": 5,
+    "searchMax": 6,
+    "over6Searches": 0,
+    "listCostPerCity": null
   }
 ]

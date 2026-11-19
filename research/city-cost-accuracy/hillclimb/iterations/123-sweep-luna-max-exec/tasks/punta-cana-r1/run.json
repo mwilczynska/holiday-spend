@@ -1,0 +1,77 @@
+{
+  "runtime": "codex exec",
+  "model": "gpt-6-luna",
+  "effort": "max",
+  "tools": "web_search (live)",
+  "message": "luna",
+  "bare": false,
+  "cleanContext": false,
+  "promptSha256": "59ef652433b3687353408093b21bd986b19245bbfda370b9b0403fdf762b218c",
+  "requestSha256": "0ab4434d6fa8560b1cfc99e5bf99d9f2efce9aa74e90e5c2d9c0dd903a949e9c",
+  "attempts": [
+    {
+      "code": 0,
+      "ms": 116970,
+      "isError": false,
+      "modelUsage": {
+        "gpt-6-luna": {
+          "inputTokens": 162809,
+          "cachedInputTokens": 91776,
+          "outputTokens": 5089,
+          "reasoningOutputTokens": 4405
+        }
+      },
+      "costUsdList": null,
+      "toolCalls": [
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "site:rba.gov.au statistics exchange rates latest daily USD Australian dollar November 2026 RBA"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana restaurant prices inexpensive meal mid-range meal cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana cappuccino price typical cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana domestic beer restaurant price cost of living 2026"
+          }
+        },
+        {
+          "name": "WebSearchOther",
+          "input": {
+            "url": null
+          }
+        },
+        {
+          "name": "WebSearch",
+          "input": {
+            "query": "Punta Cana cocktail wine glass typical restaurant cost of living price 2026 aggregated"
+          }
+        },
+        {
+          "name": "OpenPage",
+          "input": {
+            "url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html"
+          }
+        }
+      ],
+      "otherItems": [],
+      "stderr": "",
+      "stdoutUnparsed": null,
+      "hasText": true,
+      "startedAt": "2026-11-19T05:54:33.205Z",
+      "finishedAt": "2026-11-19T05:56:30.175Z"
+    }
+  ]
+}

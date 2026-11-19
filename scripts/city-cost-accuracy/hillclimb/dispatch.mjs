@@ -1,5 +1,11 @@
 // Runs pending prediction tasks through the headless Claude Code CLI, one fresh process per task.
 //   node dispatch.mjs <iteration> [--concurrency 8] [--model claude-haiku-5-5] [--effort max] [--message luna] [--bare] [--clean-context]
+//   node dispatch.mjs <iteration> --runner codex [--model gpt-6.2-sol] [--effort max] [--concurrency 6]
+// --runner codex runs each task through `codex exec` on the signed-in ChatGPT account instead: the Luna worker message
+// (system.txt and prompt.txt wrapped exactly as Luna's Codex subagents received them) on stdin, live web search, a
+// read-only sandbox in an empty directory, no user config, rules or project docs, and no session persistence. Usage
+// comes from turn.completed; every completed web_search item is recorded (each query of a search action counts as one
+// WebSearch, page opens are recorded separately).
 // --message luna sends, as the request, the exact message Luna (Codex) workers received (lib.mjs workerMessage:
 // system.txt and prompt.txt wrapped with the same instruction lines) after checking prompt.txt against its frozen hash;
 // system.txt stays the system prompt. --bare runs the CLI without user/project CLAUDE.md, hooks, skills or plugins
@@ -23,7 +29,9 @@ const model = opt('model', cand.cliModel ?? 'claude-haiku-5-5');
 const effort = opt('effort', cand.effort ?? 'max');
 const tools = cand.workerTools ?? 'WebSearch';
 const concurrency = Number(opt('concurrency', 8));
-const messageMode = opt('message', 'prompt');
+const runner = opt('runner', cand.runner ?? 'claude');
+if (!['claude', 'codex'].includes(runner)) throw Error('--runner must be claude or codex');
+const messageMode = runner === 'codex' ? 'luna' : opt('message', 'prompt');
 if (!['prompt', 'luna'].includes(messageMode)) throw Error('--message must be prompt or luna');
 const bare = rest.includes('--bare');
 const cleanContext = rest.includes('--clean-context');
@@ -35,7 +43,7 @@ const maxRepeat = Number(opt('max-repeat', Infinity));
 const maxTasks = Number(opt('max-tasks', Infinity));
 const pending = freeze.tasks.filter(t => t.repeat <= maxRepeat && !fs.existsSync(path.join(dir, 'tasks', t.id, 'response.json')))
   .sort((a, b) => a.repeat - b.repeat || a.cityKey.localeCompare(b.cityKey)).slice(0, maxTasks);
-console.log(`${iteration}: ${pending.length} pending, model ${model}, effort ${effort}, concurrency ${concurrency}, message ${messageMode}${bare ? ', bare' : ''}${cleanContext ? ', clean context' : ''}`);
+console.log(`${iteration}: ${pending.length} pending, runner ${runner}, model ${model}, effort ${effort}, concurrency ${concurrency}, message ${messageMode}${bare ? ', bare' : ''}${cleanContext ? ', clean context' : ''}`);
 
 function requestText(task) {
   const tdir = path.join(dir, 'tasks', task.id);
@@ -44,7 +52,38 @@ function requestText(task) {
   return messageMode === 'luna' ? workerMessage(fs.readFileSync(path.join(tdir, 'system.txt'), 'utf8'), prompt) : prompt;
 }
 
+function runCodexOnce(task, request) {
+  const args = ['exec', '--ephemeral', '--skip-git-repo-check', '--ignore-user-config', '--ignore-rules', '-s', 'read-only',
+    '-m', model, '-c', `model_reasoning_effort="${effort}"`, '-c', 'web_search="live"', '-c', 'project_doc_max_bytes=0', '--json', '-'];
+  return new Promise(resolve => {
+    const started = Date.now();
+    const child = spawn('codex', args, { cwd: workDir, shell: process.platform === 'win32', windowsHide: true });
+    let out = '', err = '';
+    child.stdout.on('data', d => { out += d; });
+    child.stderr.on('data', d => { err += d; });
+    const timer = setTimeout(() => child.kill(), 15 * 60 * 1000);
+    child.on('close', code => {
+      clearTimeout(timer);
+      const events = out.split(/\r?\n/).filter(Boolean).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+      const items = events.filter(e => e.type === 'item.completed').map(e => e.item);
+      const messages = items.filter(i => i.type === 'agent_message');
+      const usage = events.filter(e => e.type === 'turn.completed').at(-1)?.usage ?? null;
+      const toolCalls = items.filter(i => i.type === 'web_search').flatMap(i => i.action?.type === 'search'
+        ? (i.action.queries?.length ? i.action.queries : [i.query]).map(query => ({ name: 'WebSearch', input: { query } }))
+        : [{ name: i.action?.type === 'open_page' ? 'OpenPage' : 'WebSearchOther', input: { url: i.action?.url ?? null } }]);
+      const otherItems = items.filter(i => !['agent_message', 'web_search', 'reasoning'].includes(i.type)).map(i => i.type);
+      const failed = events.some(e => e.type === 'turn.failed' || e.type === 'error');
+      resolve({ code, ms: Date.now() - started, text: messages.at(-1)?.text ?? null, isError: failed || code !== 0,
+        modelUsage: usage ? { [model]: { inputTokens: usage.input_tokens, cachedInputTokens: usage.cached_input_tokens,
+          outputTokens: usage.output_tokens, reasoningOutputTokens: usage.reasoning_output_tokens } } : null,
+        costUsdList: null, toolCalls, otherItems, stderr: err.slice(-2000), stdoutUnparsed: events.length ? null : out.slice(-2000) });
+    });
+    child.stdin.end(request);
+  });
+}
+
 function runOnce(task, request) {
+  if (runner === 'codex') return runCodexOnce(task, request);
   const tdir = path.join(dir, 'tasks', task.id);
   const args = [...(bare ? ['--bare'] : []), ...(cleanContext ? ['--setting-sources', process.platform === 'win32' ? '""' : ''] : []), '-p', '--model', model, '--effort', effort, '--system-prompt-file', path.join(tdir, 'system.txt'),
     '--tools', tools, '--allowedTools', tools, '--strict-mcp-config', '--no-session-persistence', '--output-format', 'json'];
@@ -83,7 +122,7 @@ async function runTask(task) {
       break;
     }
   }
-  fs.writeFileSync(path.join(dir, 'tasks', task.id, 'run.json'), JSON.stringify({ model, effort, tools, message: messageMode, bare, cleanContext,
+  fs.writeFileSync(path.join(dir, 'tasks', task.id, 'run.json'), JSON.stringify({ runtime: runner === 'codex' ? 'codex exec' : 'claude -p', model, effort, tools: runner === 'codex' ? 'web_search (live)' : tools, message: messageMode, bare, cleanContext,
     promptSha256: task.promptSha256, requestSha256: sha256(request), attempts }, null, 2) + '\n');
   return fs.existsSync(path.join(dir, 'tasks', task.id, 'response.json')); // success means an answer was saved
 }

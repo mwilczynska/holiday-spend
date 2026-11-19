@@ -1,0 +1,25 @@
+{
+  "region": "North America",
+  "confidence": "medium",
+  "confidence_notes": "Food and drink estimates use current Boston typical-price data; cocktail and wine estimates follow local reported price ranges. July lodging estimates are model-based and less certain.",
+  "comparable_city_reasoning": "Food and drink anchors are Boston-specific. Lodging estimates reflect Boston’s high-cost Northeast US university and tourism market during July.",
+  "fx": {
+    "as_of_date": "2026-11-18",
+    "source_name": "Reserve Bank of Australia",
+    "source_url": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+    "source_rate": 0.672,
+    "source_rate_basis": "USD_PER_AUD"
+  },
+  "anchors_usd": {
+    "beer": 8.0,
+    "coffee": 5.31,
+    "inexp_meal_1p": 30.0,
+    "midrange_meal_2p": 120.0,
+    "cocktail": 16.0,
+    "wine_glass": 16.0,
+    "hostel_dorm_1p": 65.0,
+    "hostel_private_2p": 165.0,
+    "hotel_1star_2p": 190.0,
+    "hotel_3star_2p": 310.0
+  }
+}
