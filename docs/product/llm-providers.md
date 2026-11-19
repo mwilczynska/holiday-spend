@@ -10,7 +10,7 @@ Provider API Keys, or any generation dialog).
 | Provider | Transport | Web search | Effort sent as |
 | --- | --- | --- | --- |
 | OpenAI | Responses API | `web_search` tool | `reasoning.effort` |
-| Anthropic | Messages API | `web_search_20260209` (Opus/Sonnet 4.6+), else `web_search_20250305` | adaptive thinking + `output_config.effort` (4.6+), else `thinking.budget_tokens` |
+| Anthropic | Messages API, streamed | `web_search_20260209` (Fable, Mythos, Opus/Sonnet 4.6+), else `web_search_20250305` | adaptive thinking + `output_config.effort` (4.6+), else `thinking.budget_tokens` |
 | Google Gemini | generateContent | Google Search grounding | `thinkingLevel` (Gemini 3+), else `thinkingBudget` |
 | xAI Grok | Responses API (`api.x.ai`) | `web_search` tool | `reasoning.effort` |
 | OpenRouter | Chat Completions | `web` plugin (any model) | `reasoning.effort` |
@@ -52,6 +52,32 @@ selections of it migrate. OpenRouter mirrors the OpenAI default. On 23 October 2
 | Cerebras | `gpt-oss-120b` | cheapest gpt-oss |
 
 The v1.2 accuracy figures were measured with `gpt-6-luna`; other defaults are unmeasured for city costs.
+
+## Completing an answer with any model and effort
+
+City generation works with every listed model and every effort it accepts. `src/lib/city-llm-client.ts` handles the
+ways a request can end without a usable answer the same way for every transport:
+
+- **Searches.** The caller passes the number of searches its prompt allows (`maxWebSearches`: six for v1.2, one for
+  v1.1). Anthropic sends it as the web search tool's `max_uses`; the other providers have no per-request cap.
+- **Truncation.** A model that runs out of output room (`incomplete`/`max_output_tokens`, `max_tokens`, `MAX_TOKENS`,
+  `length`) is retried with the next lower effort it accepts, never below `high`
+  (`nextLowerReasoningEffort` in `src/lib/llm-model-limits.ts`). The estimate records the effort that finished. At the
+  lowest rung the request fails with the limit it hit; a partial answer is never parsed.
+- **Output ceilings.** The configured output limit is lowered to a model's documented ceiling when one is known
+  (Claude 4.6+ and Fable/Mythos 128,000; earlier Claude 32,000 or 64,000; Gemini 2.5+ 65,536), so the request is not
+  rejected. Gemini now receives the configured limit; it previously fell back to 3,000 tokens.
+- **Anthropic specifics.** The request is streamed (`src/lib/anthropic-message-stream.ts`). A paused search turn
+  (`pause_turn`) is resumed by sending the paused content back, up to four times. A refusal is reported as such.
+- **Long requests.** Node's fetch abandons a response whose headers take more than 300 seconds. Streaming avoids this
+  for Anthropic. The other transports are not streamed, so a request that runs past five minutes fails there whatever
+  the configured timeout; GPT-6 Luna at max normally finishes well within that.
+
+Measured on 20 cities through the Claude CLI on 19 November 2026 (Luna's exact v1.2 prompts), output tokens per city
+(median): Haiku 5.5 low 6k, medium 8k, high 16k, xhigh 39k, max 269k; Sonnet 5.5 low 0.8k, high 1.3k, xhigh 2.5k;
+Opus 5.5 medium 1.5k. Every setting except Haiku at max fits the 64,000-token default; Haiku at max exceeds even the
+128,000-token ceiling of one request, so in the app it finishes one or two rungs lower. Accuracy by model is in
+`docs/product/city-cost-methodology.md` (Correction and the answering model).
 
 ## Reasoning effort
 

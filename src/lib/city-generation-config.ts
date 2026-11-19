@@ -45,8 +45,9 @@ export function getAnthropicThinkingMode(model: string): 'adaptive' | 'budget' {
   return version >= 4.6 ? 'adaptive' : 'budget';
 }
 
-/** The dynamic-filtering web search tool needs Opus or Sonnet 4.6 or later; other models keep the basic tool. */
+/** The dynamic-filtering web search tool needs Fable, Mythos, or Opus or Sonnet 4.6 or later; other models keep the basic tool. */
 export function getAnthropicWebSearchToolType(model: string) {
+  if (/^claude-(?:fable|mythos)-/.test(model.trim().toLowerCase())) return 'web_search_20260209';
   const match = /^claude-(opus|sonnet)-(\d+)(?:-(\d{1,2})(?!\d))?/.exec(model.trim().toLowerCase());
   if (!match) return 'web_search_20250305';
   const version = Number(match[2]) + Number(match[3] ?? 0) / 10;

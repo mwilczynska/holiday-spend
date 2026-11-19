@@ -22,6 +22,7 @@ import {
   CITY_COST_V12_METHODOLOGY_VERSION,
   CITY_COST_V12_PROMPT_VERSION,
   materializeCityCostV12,
+  CITY_COST_V12_MAX_WEB_SEARCHES,
   type CityCostV12Materialization,
 } from '@/lib/city-cost-methodology-v1-2';
 
@@ -383,6 +384,8 @@ async function generateCityCostEstimateAnchors(
       maxTokens: (request.runtimeSettings ?? resolveLlmRuntimeDefaults()).maxOutputTokens,
       requestTimeoutMs: (request.runtimeSettings ?? resolveLlmRuntimeDefaults()).requestTimeoutMs,
       requireWebSearch: true,
+      // The searches each prompt permits: v1.2 allows the RBA lookup plus five food and drink searches.
+      maxWebSearches: methodologyVersion === CITY_COST_V12_METHODOLOGY_VERSION ? CITY_COST_V12_MAX_WEB_SEARCHES : 1,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'LLM request failed.';
@@ -420,7 +423,7 @@ async function generateCityCostEstimateAnchors(
   let v11Materialization: CityCostV11Materialization | CityCostV12Materialization;
   try {
     v11Materialization = methodologyVersion === CITY_COST_V12_METHODOLOGY_VERSION
-      ? materializeCityCostV12(parsedPayload, { countryName: request.countryName })
+      ? materializeCityCostV12(parsedPayload, { countryName: request.countryName, model: providerResponse.model })
       : materializeCityCostV11(parsedPayload);
   } catch (err) {
     const detail = err instanceof Error ? err.message : 'The returned anchors or FX observation failed validation.';

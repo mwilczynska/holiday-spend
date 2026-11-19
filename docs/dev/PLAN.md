@@ -1,5 +1,29 @@
 # City Cost v1.1 — Restore the Simple, Effective Method
 
+## Model-agnostic city generation (19 November 2026)
+
+The owner asked that users can generate city costs with any model and reasoning effort, Haiku included, and asked
+for cheap tests of other Claude models and efforts on the subscription (not the paid API).
+
+- [x] Haiku 5.5 Max on Luna's exact v1.2 prompts (research lane 108): stopped at 96 of 333 cities by the owner. Early
+  read: about 0.012 worse than Luna after correction; every answer used more output (median about 230k tokens) than
+  one API request allows.
+- [x] Subscription sweep, 20 hash-chosen dev cities (lanes 110 to 118): Haiku low to max, Sonnet low/high/xhigh,
+  Opus medium. Every setting answers every city; only Haiku max exceeds the app's limits. With its own correction
+  Sonnet xhigh equals Luna (0.176); Luna's table applied to other models helps but loses most of that.
+- [x] Provider contract for every transport: effort ladder on truncation, output limit clamped to model ceilings,
+  Gemini given the configured limit (was 3,000), search allowance passed by the caller (v1.2: six).
+- [x] Anthropic: streamed requests, `max_uses` from the prompt, `pause_turn` resumption, `stop_reason` checks for
+  truncation and refusal, dynamic search tool for Fable/Mythos.
+- [x] Correction table chosen by answering model, with `fittedFor`/`fittedForModel` provenance; re-correction uses
+  the estimate's stored model.
+- [x] Tests: stream reader, model limits and ladder, Anthropic/Gemini/chat-completions contracts, correction selection,
+  search allowance at the generation boundary.
+- [ ] Owner decision: collect the 333 dev cities for the Claude settings worth offering (for example Sonnet xhigh,
+  Haiku high) on the subscription and fit model-specific correction tables.
+- [ ] Not done: streaming for the non-Anthropic transports (a request past 300 seconds fails there). Adding the
+  `undici` package to lift the fetch header timeout was blocked by the session's permission policy.
+
 ## Branch cleanup (27 October 2026)
 
 - [x] Refresh local/origin refs and inspect every branch and worktree; Hong Kong's patch is already present on main.

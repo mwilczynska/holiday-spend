@@ -7,6 +7,7 @@ import {
   CITY_COST_V12_CORRECTION_VERSION,
   applyCityCostV12Correction,
   resolveCityCostV12Correction,
+  selectCityCostV12CorrectionTable,
 } from '@/lib/city-cost-methodology-v1-2';
 import { planCityFxRefresh } from '@/lib/city-cost-fx-refresh';
 
@@ -58,12 +59,13 @@ export function recorrectCityCosts(options: { dryRun?: boolean; now?: Date } = {
       continue;
     }
     const previousVersion = anchors.correction?.version ?? null;
-    if (previousVersion === CITY_COST_V12_CORRECTION_VERSION) {
+    const tableVersion = selectCityCostV12CorrectionTable(estimate.llmModel).table.version;
+    if (previousVersion === tableVersion) {
       summary.unchanged += 1;
       continue;
     }
 
-    const correction = resolveCityCostV12Correction(countryName, String(metadata.region ?? ''));
+    const correction = resolveCityCostV12Correction(countryName, String(metadata.region ?? ''), estimate.llmModel);
     const corrected = applyCityCostV12Correction(anchors.rawValues, correction);
     const plan = planCityFxRefresh({ anchorsUsd: corrected, fx, estimateData, cityValues: city as unknown as Money });
     summary.recorrected += 1;
