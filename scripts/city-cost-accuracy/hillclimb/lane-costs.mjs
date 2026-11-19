@@ -20,11 +20,12 @@ const usd = (m, k, tokens) => (prices[m]?.[k] ?? NaN) * tokens / 1e6;
 const rows = [];
 for (const lane of lanes) {
   const dir = path.join(hcRoot, 'iterations', lane), cand = readJson(path.join(dir, 'candidate.json'));
-  const model = cand.cliModel, test = [], app = [];
+  const model = cand.cliModel, test = [], app = [], minutes = [];
   for (const t of readJson(path.join(dir, 'freeze.json')).tasks) {
     const rf = path.join(dir, 'tasks', t.id, 'run.json');
     if (!fs.existsSync(path.join(dir, 'tasks', t.id, 'response.json')) || !fs.existsSync(rf)) continue;
     const run = readJson(rf), a = run.attempts?.at(-1) ?? {}, mu = a.modelUsage ?? {};
+    if (Number.isFinite(a.ms)) minutes.push(a.ms / 60000);
     const searches = (a.toolCalls ?? []).filter(c => c.name === 'WebSearch').length;
     if (run.runtime === 'codex exec') {
       const u = mu[model] ?? {}, uncached = (u.inputTokens ?? 0) - (u.cachedInputTokens ?? 0);
@@ -41,7 +42,8 @@ for (const lane of lanes) {
     }
   }
   rows.push({ lane, model, effort: cand.effort, cities: test.length, testPerCity: mean(test), testTotal: test.reduce((s, x) => s + x, 0),
-    appPerCity: mean(app), appP90: quantile(app, 0.9), app333: mean(app) * 333 });
+    appPerCity: mean(app), appP10: quantile(app, 0.1), appP50: quantile(app, 0.5), appP90: quantile(app, 0.9), app333: mean(app) * 333,
+    minP10: quantile(minutes, 0.1), minP50: quantile(minutes, 0.5), minP90: quantile(minutes, 0.9) });
 }
 console.log(JSON.stringify(rows, null, 2));
 const f = (x, d = 3) => (Number.isFinite(x) ? x.toFixed(d) : '-');

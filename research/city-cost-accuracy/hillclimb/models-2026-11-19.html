@@ -1,0 +1,188 @@
+<title>City Cost Model Sweep</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one Holiday Spend card holding a segmented picker and a models-down, measure-across dot plot; table below. */
+:root {
+  --bg: #eef2f7; --card: #ffffff; --fg: #0f1b33; --muted: #5a6477; --border: #e2e7ee; --grid: #edf0f5;
+  --primary: #132549; --primary-fg: #ffffff; --seg: #f5f7fb; --ref: #5a6477; --hover: #f3f6fb;
+  --haiku: #2463eb; --sonnet: #d6850a; --opus: #12a594; --gpt: #8e4ec6;
+  --font: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 0.875rem;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0a0a0a; --card: #0a0a0a; --fg: #fafafa; --muted: #a3a3a3; --border: #262626; --grid: #1c1c1c;
+  --primary: #fafafa; --primary-fg: #171717; --seg: #171717; --ref: #a3a3a3; --hover: #171717;
+  --haiku: #3c71dd; --sonnet: #cf7317; --opus: #29a37a; --gpt: #b35fdd; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0a0a0a; --card: #0a0a0a; --fg: #fafafa; --muted: #a3a3a3; --border: #262626; --grid: #1c1c1c;
+  --primary: #fafafa; --primary-fg: #171717; --seg: #171717; --ref: #a3a3a3; --hover: #171717;
+  --haiku: #3c71dd; --sonnet: #cf7317; --opus: #29a37a; --gpt: #b35fdd; color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 14px; line-height: 1.5; }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 28px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 16px; }
+header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+header p { margin: 4px 0 0; color: var(--muted); max-width: 70ch; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: grid; gap: 14px; min-width: 0; }
+.bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.seg { display: inline-flex; background: var(--seg); border: 1px solid var(--border); border-radius: 10px; padding: 3px; gap: 2px; }
+.seg button { font: inherit; font-size: 13px; font-weight: 600; color: var(--muted); background: transparent; border: 0; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--primary); color: var(--primary-fg); }
+.seg button:focus-visible { outline: 2px solid var(--haiku); outline-offset: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.note { color: var(--muted); font-size: 13px; margin: 0; max-width: 80ch; }
+.chart { position: relative; min-width: 0; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--font); }
+.tip { position: absolute; pointer-events: none; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 12.5px; box-shadow: 0 6px 20px rgb(15 27 51 / 0.12); min-width: 220px; z-index: 2; }
+.tip b { display: block; font-size: 13px; margin-bottom: 4px; }
+.tip dl { display: grid; grid-template-columns: auto auto; gap: 2px 12px; margin: 0; }
+.tip dt { color: var(--muted); } .tip dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+details summary { cursor: pointer; font-weight: 600; font-size: 13px; }
+.tablewrap { overflow-x: auto; margin-top: 10px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--muted); font-weight: 600; }
+.foot { color: var(--muted); font-size: 12.5px; margin: 0; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>City cost model sweep</h1>
+    <p>Each model and effort answered Luna's exact v1.2 prompt for the same dev cities. Claude models: 80 cities through <code>claude -p</code>. OpenAI models: 20 of those cities through <code>codex exec</code>. 19 November 2026.</p>
+  </header>
+
+  <section class="card" aria-labelledby="chart-title">
+    <div class="bar">
+      <div class="seg" role="group" aria-label="Measure">
+        <button type="button" id="m-accuracy" data-metric="accuracy" aria-pressed="true">Accuracy</button>
+        <button type="button" id="m-cost" data-metric="cost" aria-pressed="false">Cost per city</button>
+        <button type="button" id="m-time" data-metric="time" aria-pressed="false">Time per city</button>
+      </div>
+      <div class="legend" aria-label="Model families">
+        <span><i style="background:var(--haiku)"></i>Claude Haiku 5.5</span>
+        <span><i style="background:var(--sonnet)"></i>Claude Sonnet 5.5</span>
+        <span><i style="background:var(--opus)"></i>Claude Opus 5.5</span>
+        <span><i style="background:var(--gpt)"></i>OpenAI GPT-6.x</span>
+      </div>
+    </div>
+    <div>
+      <h2 id="chart-title" style="font-size:16px;margin:0;font-weight:600"></h2>
+      <p class="note" id="chart-note"></p>
+    </div>
+    <div class="chart" id="chart"><div class="tip" id="tip" hidden></div></div>
+  </section>
+
+  <section class="card">
+    <details>
+      <summary>All values</summary>
+      <div class="tablewrap"><table id="table"></table></div>
+    </details>
+    <p class="foot">Loss is the budget-weighted mean |ln(estimate / reference)| per city. Accuracy uses each model's own per-item correction, fitted leave-one-city-out, so no model is helped or hurt by Luna's table. Cost is an estimate of one app request at API list prices including search fees ($10 per 1,000 searches), within about a factor of two. Time is the test runner's wall time per city; the app's single request may differ. GPT-6 Luna is the reference; its row is a rerun through the same runner as Sol and Terra.</p>
+  </section>
+</div>
+
+<script>
+const DATA = [{"lane":"130-s80-haiku-low","family":"haiku","model":"Haiku","effort":"low","cities":80,"loss":0.22,"lunaLoss":0.176,"diff":0.044,"diffLo":0.021,"diffHi":0.067,"cost":0.054,"costP10":0.038,"costP90":0.065,"min":0.63,"minP10":0.49,"minP90":0.83},{"lane":"131-s80-haiku-medium","family":"haiku","model":"Haiku","effort":"medium","cities":80,"loss":0.209,"lunaLoss":0.176,"diff":0.033,"diffLo":0.007,"diffHi":0.059,"cost":0.06,"costP10":0.041,"costP90":0.078,"min":0.75,"minP10":0.59,"minP90":1.03},{"lane":"132-s80-haiku-high","family":"haiku","model":"Haiku","effort":"high","cities":80,"loss":0.213,"lunaLoss":0.176,"diff":0.038,"diffLo":0.015,"diffHi":0.06,"cost":0.068,"costP10":0.054,"costP90":0.082,"min":1.02,"minP10":0.76,"minP90":1.31},{"lane":"133-s80-haiku-xhigh","family":"haiku","model":"Haiku","effort":"xhigh","cities":80,"loss":0.204,"lunaLoss":0.176,"diff":0.029,"diffLo":0.007,"diffHi":0.051,"cost":0.087,"costP10":0.068,"costP90":0.103,"min":2.14,"minP10":1.6,"minP90":2.76},{"lane":"142-s80-haiku-max","family":"haiku","model":"Haiku","effort":"max","cities":80,"loss":0.192,"lunaLoss":0.176,"diff":0.016,"diffLo":-0.006,"diffHi":0.038,"cost":0.182,"costP10":0.133,"costP90":0.222,"min":8.55,"minP10":5.87,"minP90":11.2},{"lane":"134-s80-sonnet-low","family":"sonnet","model":"Sonnet","effort":"low","cities":80,"loss":0.208,"lunaLoss":0.176,"diff":0.032,"diffLo":0.011,"diffHi":0.052,"cost":0.095,"costP10":0.091,"costP90":0.097,"min":0.36,"minP10":0.34,"minP90":0.42},{"lane":"135-s80-sonnet-medium","family":"sonnet","model":"Sonnet","effort":"medium","cities":80,"loss":0.218,"lunaLoss":0.176,"diff":0.042,"diffLo":0.024,"diffHi":0.059,"cost":0.108,"costP10":0.092,"costP90":0.137,"min":0.39,"minP10":0.36,"minP90":0.44},{"lane":"136-s80-sonnet-high","family":"sonnet","model":"Sonnet","effort":"high","cities":80,"loss":0.204,"lunaLoss":0.176,"diff":0.028,"diffLo":0.007,"diffHi":0.048,"cost":0.143,"costP10":0.132,"costP90":0.16,"min":0.45,"minP10":0.4,"minP90":0.57},{"lane":"137-s80-sonnet-xhigh","family":"sonnet","model":"Sonnet","effort":"xhigh","cities":80,"loss":0.199,"lunaLoss":0.176,"diff":0.023,"diffLo":0.004,"diffHi":0.042,"cost":0.256,"costP10":0.224,"costP90":0.306,"min":0.81,"minP10":0.64,"minP90":0.98},{"lane":"138-s80-sonnet-max","family":"sonnet","model":"Sonnet","effort":"max","cities":80,"loss":0.178,"lunaLoss":0.176,"diff":0.002,"diffLo":-0.016,"diffHi":0.019,"cost":0.495,"costP10":0.435,"costP90":0.559,"min":3.28,"minP10":2.55,"minP90":4.21},{"lane":"139-s80-opus-low","family":"opus","model":"Opus","effort":"low","cities":80,"loss":0.189,"lunaLoss":0.176,"diff":0.013,"diffLo":-0.006,"diffHi":0.033,"cost":0.169,"costP10":0.161,"costP90":0.172,"min":0.44,"minP10":0.39,"minP90":0.51},{"lane":"140-s80-opus-medium","family":"opus","model":"Opus","effort":"medium","cities":80,"loss":0.187,"lunaLoss":0.176,"diff":0.011,"diffLo":-0.007,"diffHi":0.029,"cost":0.257,"costP10":0.233,"costP90":0.314,"min":0.58,"minP10":0.49,"minP90":0.76},{"lane":"141-s80-opus-high","family":"opus","model":"Opus","effort":"high","cities":80,"loss":0.189,"lunaLoss":0.176,"diff":0.013,"diffLo":-0.006,"diffHi":0.033,"cost":0.303,"costP10":0.239,"costP90":0.381,"min":0.72,"minP10":0.55,"minP90":0.85},{"lane":"121-sweep-sol-max","family":"gpt","model":"GPT-6.2 Sol","effort":"max","cities":20,"loss":0.169,"lunaLoss":0.176,"diff":-0.007,"diffLo":-0.033,"diffHi":0.019,"cost":0.206,"costP10":0.163,"costP90":0.239,"min":2.36,"minP10":1.64,"minP90":2.77},{"lane":"122-sweep-terra-max","family":"gpt","model":"GPT-6.1 Terra","effort":"max","cities":20,"loss":0.174,"lunaLoss":0.176,"diff":-0.002,"diffLo":-0.031,"diffHi":0.026,"cost":0.112,"costP10":0.086,"costP90":0.131,"min":1.75,"minP10":1.31,"minP90":2.01},{"lane":"123-sweep-luna-max-exec","family":"gpt","model":"GPT-6 Luna (rerun)","effort":"max","cities":20,"loss":0.178,"lunaLoss":0.176,"diff":0.001,"diffLo":-0.029,"diffHi":0.029,"cost":0.051,"costP10":0.043,"costP90":0.058,"min":1.56,"minP10":1.33,"minP90":1.82}];
+
+const luna = DATA.find(d => d.lane.includes('luna'));
+const signed = v => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toFixed(3);
+const usd = v => '$' + v.toFixed(v < 0.1 ? 3 : 2);
+const mins = v => v < 1 ? `${Math.round(v * 60)} s` : `${v.toFixed(1)} min`;
+const METRICS = {
+  accuracy: { title: 'Accuracy against GPT-6 Luna max', scale: 'linear', domain: [-0.06, 0.08], ticks: [-0.04, -0.02, 0, 0.02, 0.04, 0.06, 0.08],
+    v: d => d.diff, lo: d => d.diffLo, hi: d => d.diffHi, fmt: signed, tick: v => v === 0 ? '0' : signed(v).replace(/0(?=\.)/, '0'), ref: 0, refLabel: 'Luna',
+    left: '← more accurate than Luna', right: 'less accurate than Luna →',
+    note: 'Loss difference from Luna on the same cities, each model with its own correction. Bars are 95% paired bootstrap intervals; a bar crossing the dashed line means the gap is within noise.' },
+  cost: { title: 'Estimated cost per city in the app', scale: 'log', domain: [0.03, 0.8], ticks: [0.05, 0.1, 0.2, 0.5],
+    v: d => d.cost, lo: d => d.costP10, hi: d => d.costP90, fmt: usd, tick: v => '$' + v.toFixed(2), ref: luna.cost, refLabel: 'Luna',
+    left: '← cheaper', right: 'more expensive →',
+    note: 'Mean estimated cost of one app request per city at API list prices, including search fees (log scale). Bars span the 10th to 90th percentile of cities.' },
+  time: { title: 'Time per city', scale: 'log', domain: [0.25, 16], ticks: [0.5, 1, 2, 4, 8, 16], tickFmt: true,
+    v: d => d.min, lo: d => d.minP10, hi: d => d.minP90, fmt: mins, tick: v => v < 1 ? `${v * 60} s` : `${v} min`, ref: luna.min, refLabel: 'Luna',
+    left: '← faster', right: 'slower →',
+    note: 'Median wall time per city in the test runner (log scale). Bars span the 10th to 90th percentile of cities. Haiku max often ran past ten minutes.' },
+};
+const FAMILY_ORDER = ['haiku', 'sonnet', 'opus', 'gpt'];
+const EFFORT_ORDER = ['low', 'medium', 'high', 'xhigh', 'max'];
+const rows = [...DATA].sort((a, b) => FAMILY_ORDER.indexOf(a.family) - FAMILY_ORDER.indexOf(b.family) || EFFORT_ORDER.indexOf(a.effort) - EFFORT_ORDER.indexOf(b.effort) || a.model.localeCompare(b.model));
+const SHORT = { 'GPT-6.2 Sol': 'Sol', 'GPT-6.1 Terra': 'Terra', 'GPT-6 Luna (rerun)': 'Luna rerun' };
+const label = (d, short) => `${short && SHORT[d.model] ? SHORT[d.model] : d.model} ${d.effort}`;
+
+let metric = 'accuracy';
+try { const saved = localStorage.getItem('sweep-metric'); if (saved && METRICS[saved]) metric = saved; } catch {}
+
+const chart = document.getElementById('chart'), tip = document.getElementById('tip');
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, text) => { const n = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v); if (text != null) n.textContent = text; return n; };
+
+function draw() {
+  const m = METRICS[metric];
+  document.getElementById('chart-title').textContent = m.title;
+  document.getElementById('chart-note').textContent = m.note;
+  for (const b of document.querySelectorAll('.seg button')) b.setAttribute('aria-pressed', String(b.dataset.metric === metric));
+  chart.querySelector('svg')?.remove();
+  const W = Math.max(320, chart.clientWidth), narrow = W < 560;
+  const left = narrow ? 112 : 170, right = narrow ? 58 : 80, top = 26, rowH = narrow ? 26 : 28, gap = 12;
+  let y = top; const placed = rows.map((d, i) => { if (i && d.family !== rows[i - 1].family) y += gap; const p = { d, y }; y += rowH; return p; });
+  const bottom = y + 4, H = bottom + 44;
+  const [a, b] = m.domain, t = m.scale === 'log' ? Math.log : x => x;
+  const x = v => left + (t(Math.min(Math.max(v, a), b)) - t(a)) / (t(b) - t(a)) * (W - left - right);
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img', 'aria-label': `${m.title}. ${m.note}` });
+  for (const tk of (narrow ? m.ticks.filter((_, i) => i % 2 === (m.ticks.length % 2 ? 0 : 1)) : m.ticks)) {
+    svg.append(el('line', { x1: x(tk), x2: x(tk), y1: top - 6, y2: bottom, stroke: 'var(--grid)', 'stroke-width': 1 }));
+    svg.append(el('text', { x: x(tk), y: bottom + 16, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--muted)', style: 'font-variant-numeric: tabular-nums' }, m.tick(tk)));
+  }
+  svg.append(el('line', { x1: x(m.ref), x2: x(m.ref), y1: top - 6, y2: bottom, stroke: 'var(--ref)', 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }));
+  svg.append(el('text', { x: x(m.ref), y: top - 12, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--muted)' }, m.refLabel));
+  svg.append(el('text', { x: left, y: bottom + 34, 'font-size': 11, fill: 'var(--muted)' }, m.left));
+  svg.append(el('text', { x: W - right, y: bottom + 34, 'text-anchor': 'end', 'font-size': 11, fill: 'var(--muted)' }, m.right));
+  for (const { d, y: ry } of placed) {
+    const cy = ry + rowH / 2, color = `var(--${d.family})`;
+    const g = el('g', { tabindex: 0, 'aria-label': `${label(d)}: ${m.fmt(m.v(d))}` });
+    const hit = el('rect', { x: 0, y: ry + 1, width: W, height: rowH - 2, rx: 6, fill: 'transparent' });
+    g.append(hit);
+    g.append(el('text', { x: left - 12, y: cy + 4, 'text-anchor': 'end', 'font-size': narrow ? 12 : 13, 'font-weight': 500, fill: 'var(--fg)' }, label(d, narrow) + (d.cities < 80 ? ` (${d.cities})` : '')));
+    g.append(el('line', { x1: x(m.lo(d)), x2: x(m.hi(d)), y1: cy, y2: cy, stroke: color, 'stroke-width': 2, 'stroke-linecap': 'round' }));
+    for (const e of [m.lo(d), m.hi(d)]) g.append(el('line', { x1: x(e), x2: x(e), y1: cy - 5, y2: cy + 5, stroke: color, 'stroke-width': 2, 'stroke-linecap': 'round' }));
+    g.append(el('circle', { cx: x(m.v(d)), cy, r: 5.5, fill: color, stroke: 'var(--card)', 'stroke-width': 2 }));
+    g.append(el('text', { x: W - right + 10, y: cy + 4, 'font-size': 12, fill: 'var(--muted)', style: 'font-variant-numeric: tabular-nums' }, m.fmt(m.v(d))));
+    const show = () => { hit.setAttribute('fill', 'var(--hover)'); showTip(d, x(m.v(d)), cy); };
+    const hide = () => { hit.setAttribute('fill', 'transparent'); tip.hidden = true; };
+    g.addEventListener('mouseenter', show); g.addEventListener('mouseleave', hide);
+    g.addEventListener('focus', show); g.addEventListener('blur', hide);
+    svg.append(g);
+  }
+  chart.prepend(svg);
+}
+
+function showTip(d, px, py) {
+  tip.innerHTML = `<b>${label(d)}</b><dl>
+    <dt>Cities</dt><dd>${d.cities}</dd>
+    <dt>Loss, own correction</dt><dd>${d.loss.toFixed(3)} (Luna ${d.lunaLoss.toFixed(3)})</dd>
+    <dt>vs Luna, 95% interval</dt><dd>${signed(d.diff)} [${signed(d.diffLo)}, ${signed(d.diffHi)}]</dd>
+    <dt>Cost per city</dt><dd>${usd(d.cost)} (${usd(d.costP10)}–${usd(d.costP90)})</dd>
+    <dt>Time per city</dt><dd>${mins(d.min)} (p10–p90 ${mins(d.minP10)}–${mins(d.minP90)})</dd></dl>`;
+  tip.hidden = false;
+  const cw = chart.clientWidth, tw = tip.offsetWidth;
+  tip.style.left = Math.max(0, Math.min(cw - tw, px + 14)) + 'px';
+  tip.style.top = (py + 14) + 'px';
+}
+
+function table() {
+  const head = '<tr><th>Model / effort</th><th>Cities</th><th>Loss</th><th>vs Luna</th><th>95% interval</th><th>Cost/city</th><th>Cost p10–p90</th><th>Time/city</th><th>Time p10–p90</th></tr>';
+  document.getElementById('table').innerHTML = head + rows.map(d => `<tr><td>${label(d)}</td><td>${d.cities}</td><td>${d.loss.toFixed(3)}</td><td>${signed(d.diff)}</td><td>${signed(d.diffLo)} to ${signed(d.diffHi)}</td><td>${usd(d.cost)}</td><td>${usd(d.costP10)}–${usd(d.costP90)}</td><td>${mins(d.min)}</td><td>${mins(d.minP10)}–${mins(d.minP90)}</td></tr>`).join('');
+}
+
+for (const b of document.querySelectorAll('.seg button')) b.addEventListener('click', () => {
+  metric = b.dataset.metric; tip.hidden = true;
+  try { localStorage.setItem('sweep-metric', metric); } catch {}
+  draw();
+});
+new ResizeObserver(() => draw()).observe(chart);
+table(); draw();
+</script>
