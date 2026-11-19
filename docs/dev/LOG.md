@@ -3981,3 +3981,9 @@ Accuracy against Luna under the app's correction, 80 cities each (negative is be
 [-0.013, +0.017] (20-city reading was -0.012), Terra -0.001 [-0.015, +0.013], Sol -0.006 [-0.020, +0.008]. All three are
 indistinguishable from Luna. Estimated app cost per city: Luna 0.055, Terra 0.108, Sol 0.188 USD; median minutes per
 city 1.87, 1.92, 2.23. Stored library estimates are all Luna, so the new adjustments version changes no stored city.
+
+Rollout (20 November 2026): PR #25 squash-merged as `c690c354`; Production checks run 44583128242 published
+`sha-c690c35`. The visible VPS queue runner deployed it from a verified Git bundle with the revision-checked image,
+after a full backup taken and verified with the old running image; the previous image is tagged for rollback. Local and
+public health passed, pre/post business-table counts matched, and all 531 stored v1.2 estimates resolve to GPT-6 Luna,
+so no stored city changed.

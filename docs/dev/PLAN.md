@@ -37,7 +37,9 @@ factors, regenerate the Methodology comparison, open a PR and deploy.
 - [x] codex exec lanes 126 (Luna max rerun), 127 (Sol max) and 128 (Terra max), 80 cities each, over three ChatGPT
   usage windows with scheduled restarts.
 - [x] Rebuilt model adjustments `v1.2-model-adjustments-2026-11-20` and the comparison data; page and docs say 80 cities.
-- [ ] PR, merge after CI, deploy through the visible VPS queue runner.
+- [x] PR 25 squash-merged as `c690c354`; Production checks run 44583128242 published `sha-c690c35`. Deployed through the
+  visible VPS queue runner after a verified backup, keeping the previous image for rollback. Health passes, pre/post
+  business-table counts match, and all 531 stored v1.2 estimates still resolve to GPT-6 Luna.
 
 ## Two-layer correction and model comparison (19 November 2026)
 
