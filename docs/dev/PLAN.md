@@ -26,7 +26,8 @@ for cheap tests of other Claude models and efforts on the subscription (not the 
   minimatch, postcss-selector-parser). Remaining: four moderate advisories in the dev-only drizzle-kit/esbuild chain,
   already at the latest drizzle-kit (0.31.11); npm's only offer is a breaking downgrade.
 - [x] Superseded: the 333-city collections for Haiku high and Sonnet xhigh (lanes 119, 120) are no longer needed; the
-  two-layer correction below needs 40 to 80 cities per model. PR 23 opened for this branch.
+  two-layer correction below needs 40 to 80 cities per model. PR 23 merged on 19 November 2026 (squash `dc4df0ec`),
+  after restoring the optional `@emnapi/runtime` lock entry that npm on Windows had pruned again.
 
 ## Two-layer correction and model comparison (19 November 2026)
 
@@ -45,7 +46,8 @@ two-layer plan and show the model comparison on the Methodology page.
 - [x] Held-out confirmation, read once: the model layer improves Haiku, Sonnet and Opus (low) on 40 held-out cities each;
   direction consistent, intervals include zero individually.
 - [x] Methodology page: "Choosing a model" chart (accuracy, cost, time) and the two-layer description.
-- [ ] Open the PR for `feat/two-layer-city-cost-correction` after PR 23 merges.
+- [x] PR for `feat/two-layer-city-cost-correction` opened after PR 23 merged.
+- [ ] After deploying: `scripts/recorrect-city-costs.ts --dry-run` on the server should report every v1.2 city unchanged.
 
 ## Branch cleanup (27 October 2026)
 
