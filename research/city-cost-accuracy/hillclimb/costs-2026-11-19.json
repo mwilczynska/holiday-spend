@@ -1,0 +1,178 @@
+[
+  {
+    "lane": "130-s80-haiku-low",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "cities": 80,
+    "testPerCity": 0.060151525125000015,
+    "testTotal": 4.812122010000001,
+    "appPerCity": 0.05412621500000001,
+    "appP90": 0.06465879000000001,
+    "app333": 18.024029595000005
+  },
+  {
+    "lane": "131-s80-haiku-medium",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "cities": 80,
+    "testPerCity": 0.06694301774999999,
+    "testTotal": 5.355441419999999,
+    "appPerCity": 0.060442296250000006,
+    "appP90": 0.07814309,
+    "app333": 20.12728465125
+  },
+  {
+    "lane": "132-s80-haiku-high",
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "cities": 80,
+    "testPerCity": 0.08383378762499999,
+    "testTotal": 6.706703009999999,
+    "appPerCity": 0.068139175,
+    "appP90": 0.08234767999999999,
+    "app333": 22.690345275
+  },
+  {
+    "lane": "133-s80-haiku-xhigh",
+    "model": "claude-haiku-5-5",
+    "effort": "xhigh",
+    "cities": 80,
+    "testPerCity": 0.117392596,
+    "testTotal": 9.39140768,
+    "appPerCity": 0.08653465750000001,
+    "appP90": 0.10343807000000001,
+    "app333": 28.816040947500007
+  },
+  {
+    "lane": "142-s80-haiku-max",
+    "model": "claude-haiku-5-5",
+    "effort": "max",
+    "cities": 80,
+    "testPerCity": 0.24884300249999997,
+    "testTotal": 19.907440199999996,
+    "appPerCity": 0.18199544124999995,
+    "appP90": 0.22180569000000003,
+    "app333": 60.60448193624998
+  },
+  {
+    "lane": "134-s80-sonnet-low",
+    "model": "claude-sonnet-5-5",
+    "effort": "low",
+    "cities": 80,
+    "testPerCity": 0.05722698500000001,
+    "testTotal": 4.578158800000001,
+    "appPerCity": 0.09458394999999999,
+    "appP90": 0.09709220000000002,
+    "app333": 31.496455349999994
+  },
+  {
+    "lane": "135-s80-sonnet-medium",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "cities": 80,
+    "testPerCity": 0.05757878500000002,
+    "testTotal": 4.606302800000002,
+    "appPerCity": 0.10764337500000003,
+    "appP90": 0.137064,
+    "app333": 35.84524387500001
+  },
+  {
+    "lane": "136-s80-sonnet-high",
+    "model": "claude-sonnet-5-5",
+    "effort": "high",
+    "cities": 80,
+    "testPerCity": 0.07499417750000001,
+    "testTotal": 5.9995342,
+    "appPerCity": 0.14293382500000001,
+    "appP90": 0.1604982000000001,
+    "app333": 47.596963725
+  },
+  {
+    "lane": "137-s80-sonnet-xhigh",
+    "model": "claude-sonnet-5-5",
+    "effort": "xhigh",
+    "cities": 80,
+    "testPerCity": 0.14201013624999997,
+    "testTotal": 11.360810899999997,
+    "appPerCity": 0.2562303,
+    "appP90": 0.305988,
+    "app333": 85.32468990000001
+  },
+  {
+    "lane": "138-s80-sonnet-max",
+    "model": "claude-sonnet-5-5",
+    "effort": "max",
+    "cities": 80,
+    "testPerCity": 0.39737096249999987,
+    "testTotal": 31.78967699999999,
+    "appPerCity": 0.4954161499999999,
+    "appP90": 0.5588034000000001,
+    "app333": 164.97357794999996
+  },
+  {
+    "lane": "139-s80-opus-low",
+    "model": "claude-opus-5-5",
+    "effort": "low",
+    "cities": 80,
+    "testPerCity": 0.09467731999999998,
+    "testTotal": 7.574185599999999,
+    "appPerCity": 0.16939064999999992,
+    "appP90": 0.172366,
+    "app333": 56.40708644999997
+  },
+  {
+    "lane": "140-s80-opus-medium",
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "cities": 80,
+    "testPerCity": 0.12246317249999997,
+    "testTotal": 9.797053799999997,
+    "appPerCity": 0.2566327999999999,
+    "appP90": 0.3143016,
+    "app333": 85.45872239999996
+  },
+  {
+    "lane": "141-s80-opus-high",
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cities": 80,
+    "testPerCity": 0.14222287875,
+    "testTotal": 11.377830300000001,
+    "appPerCity": 0.3028481999999999,
+    "appP90": 0.3806944,
+    "app333": 100.84845059999996
+  },
+  {
+    "lane": "121-sweep-sol-max",
+    "model": "gpt-6.2-sol",
+    "effort": "max",
+    "cities": 20,
+    "testPerCity": 0.22556603999999997,
+    "testTotal": 4.511320799999999,
+    "appPerCity": 0.2061286,
+    "appP90": 0.23911280000000001,
+    "app333": 68.64082379999999
+  },
+  {
+    "lane": "122-sweep-terra-max",
+    "model": "gpt-6.1-terra",
+    "effort": "max",
+    "cities": 20,
+    "testPerCity": 0.12241602,
+    "testTotal": 2.4483204,
+    "appPerCity": 0.11234209999999997,
+    "appP90": 0.1305525,
+    "app333": 37.40991929999999
+  },
+  {
+    "lane": "123-sweep-luna-max-exec",
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "cities": 20,
+    "testPerCity": 0.051952732999999994,
+    "testTotal": 1.03905466,
+    "appPerCity": 0.051322524999999994,
+    "appP90": 0.05779857000000001,
+    "app333": 17.090400825
+  }
+]

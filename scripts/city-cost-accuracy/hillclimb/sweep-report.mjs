@@ -60,7 +60,7 @@ for (const lane of lanes) {
   const keys = [...out.keys()].filter(k => out.get(k).status === 'valid' && ref.has(k) && luna.get(k)?.status === 'valid');
   const usage = runs.filter(r => r.status === 'valid').map(r => {
     const a = r.run.attempts?.at(-1) ?? {}; const u = Object.values(a.modelUsage ?? {})[0] ?? {};
-    return { min: (a.ms ?? NaN) / 60000, out: u.outputTokens ?? NaN, search: (a.toolCalls ?? []).filter(c => c.name === 'WebSearch').length, cost: u.costUSD ?? NaN };
+    return { min: (a.ms ?? NaN) / 60000, out: u.outputTokens ?? NaN, search: (a.toolCalls ?? []).filter(c => c.name === 'WebSearch').length, cost: a.costUsdList ?? Object.values(a.modelUsage ?? {}).reduce((s, x) => s + (x.costUSD ?? 0), 0) };
   });
   const col = f => usage.map(f).filter(Number.isFinite);
   const res = { lane, model: cand.cliModel, effort: cand.effort, answered: `${valid}/${total}`, paired: keys.length };
