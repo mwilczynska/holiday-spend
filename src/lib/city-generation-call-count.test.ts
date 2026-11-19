@@ -132,7 +132,9 @@ describe('v1.1 generation call boundary', () => {
     runJsonPromptWithProvider.mockResolvedValueOnce({ provider: 'anthropic', model: 'claude-haiku-5-5', text: validResponse, webSearchUsed: true });
     const result = await generateCityCostEstimate({ cityName: 'Toyama', countryName: 'Japan', provider: 'anthropic' });
     expect(runJsonPromptWithProvider).toHaveBeenLastCalledWith(expect.objectContaining({ maxWebSearches: 6 }));
-    const correction = (result.v11Materialization as { correction?: { fittedForModel: boolean | null } }).correction;
-    expect(correction?.fittedForModel).toBe(false);
+    const correction = (result.v11Materialization as { correction?: { fittedForModel: boolean | null; modelAdjustment: { basis: string; model: string | null } } }).correction;
+    // The answering model selects its own correction factors (Haiku 5.5 is calibrated).
+    expect(correction?.fittedForModel).toBe(true);
+    expect(correction?.modelAdjustment).toMatchObject({ basis: "measured", model: "claude-haiku-5-5" });
   });
 });

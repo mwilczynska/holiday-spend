@@ -1,9 +1,12 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import corrections from '@/lib/data/city-cost-corrections-v1-2.json';
+import adjustments from '@/lib/data/city-cost-model-adjustments-v1-2.json';
 import { materializeCityCostV11 } from '@/lib/city-cost-methodology-v1-1';
 import {
   CITY_COST_V12_CORRECTION_VERSION,
   CITY_COST_V12_METHODOLOGY_VERSION,
+  cityCostModelKey,
+  cityCostV12CorrectionVersionFor,
   materializeCityCostV12,
   resolveCityCostV12Correction,
 } from '@/lib/city-cost-methodology-v1-2';
@@ -72,7 +75,7 @@ describe('city-cost methodology v1.2', () => {
   });
 
   it('corrects food, drink, hotels and hostels; leaves cocktail and wine unchanged', () => {
-    const correction = resolveCityCostV12Correction('Japan', 'East Asia');
+    const correction = resolveCityCostV12Correction('Japan', 'East Asia', 'gpt-6-luna');
     expect(correction.version).toBe(CITY_COST_V12_CORRECTION_VERSION);
     expect(correction.countryCode).toBe('JP');
     for (const anchor of [
@@ -87,14 +90,14 @@ describe('city-cost methodology v1.2', () => {
   });
 
   it('falls back to the region factor for a country without reference cities, then the global factor', () => {
-    const luxembourg = resolveCityCostV12Correction('Luxembourg', 'Europe');
+    const luxembourg = resolveCityCostV12Correction('Luxembourg', 'Europe', 'gpt-6-luna');
     expect(luxembourg.countryCode).toBe('LU');
     expect(luxembourg.anchors.hotel_3star_2p.basis).toBe('region');
     expect(luxembourg.anchors.hotel_3star_2p.factor).toBe(corrections.region.hotel_3star_2p.Europe);
 
-    const unknownRegion = resolveCityCostV12Correction('Nowhereland', 'Atlantis');
+    const unknownRegion = resolveCityCostV12Correction('Nowhereland', 'Atlantis', 'gpt-6-luna');
     expect(unknownRegion.countryCode).toBeNull();
-    expect(unknownRegion.anchors.hotel_3star_2p).toEqual({ factor: corrections.global.hotel_3star_2p, basis: 'global' });
+    expect(unknownRegion.anchors.hotel_3star_2p).toMatchObject({ factor: corrections.global.hotel_3star_2p, basis: 'global' });
   });
 
   it('materializes corrected anchors with the unchanged v1 formulas, so 4-star follows the corrected 3-star', () => {
@@ -136,24 +139,55 @@ describe('city-cost methodology v1.2', () => {
   });
 });
 
-describe('v1.2 correction table by answering model', () => {
-  it('records that the default table was fitted for Luna and whether it matches the estimate model', () => {
-    const luna = resolveCityCostV12Correction('Japan', 'East Asia', 'gpt-6-luna');
-    expect(luna).toMatchObject({ fittedFor: corrections.fittedOn.model, fittedForModel: true, version: CITY_COST_V12_CORRECTION_VERSION });
-    expect(resolveCityCostV12Correction('Japan', 'East Asia', 'openai/gpt-6-luna').fittedForModel).toBe(true);
-    expect(resolveCityCostV12Correction('Japan', 'East Asia').fittedForModel).toBeNull();
+describe('v1.2 two-layer correction: country layer times model layer', () => {
+  const corrected = corrections.correctedAnchors as Array<keyof typeof corrections.country>;
+
+  it('leaves the reference model on the country layer alone, under every way its name is stored', () => {
+    for (const name of ['gpt-6-luna', 'openai/gpt-6-luna', 'gpt-6-luna (Codex subagent)', 'GPT-6-Luna']) {
+      const luna = resolveCityCostV12Correction('Japan', 'East Asia', name);
+      expect(luna).toMatchObject({ version: CITY_COST_V12_CORRECTION_VERSION, fittedFor: corrections.fittedOn.model, fittedForModel: true });
+      expect(luna.modelAdjustment).toMatchObject({ basis: 'reference', model: 'gpt-6-luna' });
+      for (const anchor of corrected) expect(luna.anchors[anchor].factor).toBe(corrections.country[anchor].JP.factor);
+    }
   });
 
-  it('still corrects another model with the default table, labelled as fitted for a different model', () => {
-    const haiku = resolveCityCostV12Correction('Japan', 'East Asia', 'claude-haiku-5-5');
-    const luna = resolveCityCostV12Correction('Japan', 'East Asia', 'gpt-6-luna');
-    expect(haiku.fittedForModel).toBe(false);
-    expect(haiku.fittedFor).toBe(corrections.fittedOn.model);
-    expect(haiku.anchors).toEqual(luna.anchors);
+  it('multiplies the country factor by a measured model\'s own factor', () => {
+    const entry = adjustments.models.find((m) => m.id === 'claude-sonnet-5-5')!;
+    const sonnet = resolveCityCostV12Correction('Japan', 'East Asia', 'claude-sonnet-5-5 (Claude Code subagent)');
+    expect(sonnet.version).toBe(`${CITY_COST_V12_CORRECTION_VERSION}+${adjustments.version}`);
+    expect(sonnet.fittedForModel).toBe(true);
+    expect(sonnet.modelAdjustment).toMatchObject({ basis: 'measured', model: 'claude-sonnet-5-5' });
+    for (const anchor of corrected) {
+      const factors = entry.factors as Record<string, number>;
+      expect(sonnet.anchors[anchor]).toMatchObject({ countryFactor: corrections.country[anchor].JP.factor, modelFactor: factors[anchor] });
+      expect(sonnet.anchors[anchor].factor).toBeCloseTo(corrections.country[anchor].JP.factor * factors[anchor], 4);
+    }
+    expect(sonnet.anchors.cocktail).toEqual({ factor: 1, basis: 'none' });
+  });
+
+  it('gives a model without its own calibration the unmeasured default, labelled as such', () => {
+    for (const name of ['claude-sonnet-6', 'mistral-small-2603', null]) {
+      const other = resolveCityCostV12Correction('Japan', 'East Asia', name);
+      expect(other.modelAdjustment).toMatchObject({ basis: 'default', model: null, factors: adjustments.unmeasuredDefault.factors });
+      expect(other.fittedForModel).toBe(name ? false : null);
+      expect(other.version).toBe(cityCostV12CorrectionVersionFor(name));
+    }
+  });
+
+  it('builds the default from every measured model and fits each adjustment on the current country table', () => {
+    expect(adjustments.countryLayer).toBe(CITY_COST_V12_CORRECTION_VERSION);
+    expect(adjustments.unmeasuredDefault.models.sort()).toEqual(adjustments.models.map((m) => m.id).sort());
+    for (const entry of [adjustments.reference, ...adjustments.models, adjustments.unmeasuredDefault]) {
+      expect(Object.keys(entry.factors).sort()).toEqual([...corrected].sort());
+      for (const value of Object.values(entry.factors)) expect(value).toBeGreaterThan(0.5);
+    }
+    expect(cityCostModelKey('openrouter/anthropic/claude-haiku-5-5 (Claude Code subagent)')).toBe('claude-haiku-5-5');
   });
 
   it('carries the answering model into the materialized correction', () => {
-    expect(materializeCityCostV12(response, { countryName: 'Italy', model: 'claude-sonnet-5-5' }, now).correction.fittedForModel).toBe(false);
+    const sonnet = materializeCityCostV12(response, { countryName: 'Italy', model: 'claude-sonnet-5-5' }, now);
+    expect(sonnet.correction.modelAdjustment.basis).toBe('measured');
+    expect(sonnet.anchorsUsd.hotel_3star_2p).toBe(Math.round(100 * sonnet.correction.anchors.hotel_3star_2p.factor * 100) / 100);
     expect(materializeCityCostV12(response, { countryName: 'Italy', model: 'gpt-6-luna' }, now).correction.fittedForModel).toBe(true);
   });
 });

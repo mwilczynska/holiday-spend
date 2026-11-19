@@ -1,4 +1,5 @@
 import lunaCorrections from '@/lib/data/city-cost-corrections-v1-2.json';
+import modelAdjustments from '@/lib/data/city-cost-model-adjustments-v1-2.json';
 import { findKnownCountryMetadata } from '@/lib/country-metadata';
 import {
   cityCostV11AnchorResponseSchema,
@@ -28,47 +29,95 @@ type CorrectionTable = {
   country: Record<string, Record<string, CountryFactor>>;
 };
 
-const LUNA_TABLE = lunaCorrections as unknown as CorrectionTable;
+const COUNTRY_TABLE = lunaCorrections as unknown as CorrectionTable;
+
+type ModelAdjustmentEntry = { id: string; label: string; match: string; factors: Record<string, number>; cities?: number };
+type ModelAdjustments = {
+  version: string;
+  countryLayer: string;
+  correctedAnchors: string[];
+  reference: ModelAdjustmentEntry;
+  unmeasuredDefault: { lambda: number; models: string[]; factors: Record<string, number> };
+  models: ModelAdjustmentEntry[];
+};
+const ADJUSTMENTS = modelAdjustments as unknown as ModelAdjustments;
+if (ADJUSTMENTS.countryLayer !== COUNTRY_TABLE.version) {
+  throw new Error(`City-cost model adjustments ${ADJUSTMENTS.version} were fitted on country table ${ADJUSTMENTS.countryLayer}, not ${COUNTRY_TABLE.version}.`);
+}
+const REFERENCE_MATCH = new RegExp(ADJUSTMENTS.reference.match);
+const MEASURED = ADJUSTMENTS.models.map((entry) => ({ entry, match: new RegExp(entry.match) }));
+
+/** The version of the country table, which is also the full correction version for the reference model (GPT-6 Luna). */
+export const CITY_COST_V12_CORRECTION_VERSION: string = COUNTRY_TABLE.version;
+export const CITY_COST_V12_MODEL_ADJUSTMENTS_VERSION: string = ADJUSTMENTS.version;
 
 /**
- * Correction tables by the model whose answers they were fitted on. A table encodes one model's systematic biases (for
- * example how far its 3-star prices sit above booking prices), so it is only exact for that model. A model without its
- * own table uses the default table, and the estimate records the table's model and whether it matched, so the
- * difference is visible in provenance. Add a table here once a model's answers on the reference cities have been fitted
- * on the research branch (build-production-corrections.mjs).
+ * Model IDs as stored: OpenRouter-style prefixes ("openai/gpt-6-luna") and runtime notes ("gpt-6-luna (Codex subagent)")
+ * are dropped, so every way of naming one model selects the same adjustment.
  */
-const CORRECTION_TABLES: Array<{ table: CorrectionTable; models: RegExp }> = [
-  { table: LUNA_TABLE, models: /^gpt-6-luna(?:-|$)/ },
-];
-const DEFAULT_CORRECTION_TABLE = LUNA_TABLE;
-
-/** The version of the default table; tables for other models carry their own version. */
-export const CITY_COST_V12_CORRECTION_VERSION: string = DEFAULT_CORRECTION_TABLE.version;
-
-/** OpenRouter-style IDs ("openai/gpt-6-luna") match on the model part. */
-function modelKey(model: string) {
-  return model.trim().toLowerCase().split('/').pop() ?? '';
+export function cityCostModelKey(model: string) {
+  return model.trim().toLowerCase().replace(/\s*\(.*\)\s*$/, '').split('/').pop()?.trim() ?? '';
 }
 
-/** The table fitted for this model, or the default table; `fittedForModel` is null when the model is not known. */
-export function selectCityCostV12CorrectionTable(model?: string | null) {
-  const own = model ? CORRECTION_TABLES.find((entry) => entry.models.test(modelKey(model)))?.table : undefined;
-  return { table: own ?? DEFAULT_CORRECTION_TABLE, fittedForModel: model ? Boolean(own) : null };
+export type CityCostV12ModelAdjustmentBasis = 'reference' | 'measured' | 'default';
+
+export interface CityCostV12ModelAdjustment {
+  version: string;
+  /**
+   * reference: the model the country table was fitted on (factor 1); measured: the model's own calibration;
+   * default: a model without its own calibration, which gets half the average adjustment of the measured models.
+   */
+  basis: CityCostV12ModelAdjustmentBasis;
+  /** The adjustment entry used; null for the unmeasured default. */
+  model: string | null;
+  label: string | null;
+  factors: Record<string, number>;
+}
+
+/**
+ * Two-layer v1.2 correction (19 November 2026): a country layer fitted on GPT-6 Luna's answers for 475 reference
+ * cities, times a model layer of one factor per corrected anchor. The model layer captures how a model's prices differ
+ * from Luna's (for example Claude and newer GPT models price 3-star rooms closer to booking prices, so Luna's 3-star
+ * factor overshoots them). Measured models were calibrated on 40 to 80 reference cities; any other model gets the
+ * unmeasured default, which the research measured as better than Luna's layer alone for a model it had not seen.
+ */
+export function resolveCityCostV12ModelAdjustment(model?: string | null): CityCostV12ModelAdjustment {
+  const key = model ? cityCostModelKey(model) : '';
+  if (key && REFERENCE_MATCH.test(key)) {
+    const { id, label, factors } = ADJUSTMENTS.reference;
+    return { version: ADJUSTMENTS.version, basis: 'reference', model: id, label, factors };
+  }
+  const measured = key ? MEASURED.find(({ match }) => match.test(key))?.entry : undefined;
+  if (measured) return { version: ADJUSTMENTS.version, basis: 'measured', model: measured.id, label: measured.label, factors: measured.factors };
+  return { version: ADJUSTMENTS.version, basis: 'default', model: null, label: null, factors: ADJUSTMENTS.unmeasuredDefault.factors };
+}
+
+/**
+ * The correction version an estimate from this model should carry: the country table alone for the reference model,
+ * otherwise the country table plus the model adjustments. Recorrection compares stored versions against this.
+ */
+export function cityCostV12CorrectionVersionFor(model?: string | null) {
+  const adjustment = resolveCityCostV12ModelAdjustment(model);
+  return adjustment.basis === 'reference' ? COUNTRY_TABLE.version : `${COUNTRY_TABLE.version}+${adjustment.version}`;
 }
 
 export type CityCostV12CorrectionBasis = 'country' | 'region' | 'global' | 'none';
 
 export interface CityCostV12AnchorCorrection {
+  /** The factor applied: country layer times model layer. */
   factor: number;
   basis: CityCostV12CorrectionBasis;
+  countryFactor?: number;
+  modelFactor?: number;
 }
 
 export interface CityCostV12Correction {
   version: string;
-  /** The model whose answers the table was fitted on, as recorded in the table. */
+  /** The model the country layer was fitted on, as recorded in the table. */
   fittedFor: string;
-  /** Whether the table was fitted for the model that produced this estimate; null when that model is not known. */
+  /** Whether the answering model has its own calibration (reference or measured); null when the model is not known. */
   fittedForModel: boolean | null;
+  modelAdjustment: CityCostV12ModelAdjustment;
   countryCode: string | null;
   region: string;
   anchors: Record<AnchorKey, CityCostV12AnchorCorrection>;
@@ -86,28 +135,50 @@ function roundFactorProduct(value: number) {
 }
 
 /**
- * Looks up the correction factor for every anchor: the country factor when the country has reference cities (already
- * shrunk towards its region), otherwise the region factor, otherwise the global factor. Anchors without a correction
- * keep factor 1. An unknown country falls back to the region, so a city outside the reference panel is still corrected.
+ * Looks up the correction factor for every anchor. The country layer uses the country factor when the country has
+ * reference cities (already shrunk towards its region), otherwise the region factor, otherwise the global factor; an
+ * unknown country falls back to the region, so a city outside the reference panel is still corrected. The model layer
+ * multiplies that by the answering model's factor. Anchors without a correction keep factor 1.
  */
 export function resolveCityCostV12Correction(countryName: string, region: string, model?: string | null): CityCostV12Correction {
-  const { table: TABLE, fittedForModel } = selectCityCostV12CorrectionTable(model);
+  const modelAdjustment = resolveCityCostV12ModelAdjustment(model);
   const countryCode = findKnownCountryMetadata(countryName)?.iso2 ?? null;
   const anchors = {} as Record<AnchorKey, CityCostV12AnchorCorrection>;
   const keys = Object.keys(cityCostV11AnchorResponseSchema.shape.anchors_usd.shape) as AnchorKey[];
 
   for (const anchor of keys) {
-    if (!TABLE.correctedAnchors.includes(anchor)) {
+    if (!COUNTRY_TABLE.correctedAnchors.includes(anchor)) {
       anchors[anchor] = { factor: 1, basis: 'none' };
       continue;
     }
-    const country = countryCode ? TABLE.country[anchor]?.[countryCode] : undefined;
-    if (country) anchors[anchor] = { factor: country.factor, basis: 'country' };
-    else if (TABLE.region[anchor]?.[region] !== undefined) anchors[anchor] = { factor: TABLE.region[anchor][region], basis: 'region' };
-    else anchors[anchor] = { factor: TABLE.global[anchor], basis: 'global' };
+    const country = countryCode ? COUNTRY_TABLE.country[anchor]?.[countryCode] : undefined;
+    let basis: CityCostV12CorrectionBasis;
+    let countryFactor: number;
+    if (country) {
+      basis = 'country';
+      countryFactor = country.factor;
+    } else if (COUNTRY_TABLE.region[anchor]?.[region] !== undefined) {
+      basis = 'region';
+      countryFactor = COUNTRY_TABLE.region[anchor][region];
+    } else {
+      basis = 'global';
+      countryFactor = COUNTRY_TABLE.global[anchor];
+    }
+    const modelFactor = modelAdjustment.factors[anchor] ?? 1;
+    // The reference model keeps the country factor exactly, so its stored estimates are unchanged.
+    const factor = modelFactor === 1 ? countryFactor : Math.round(countryFactor * modelFactor * 1e4) / 1e4;
+    anchors[anchor] = { factor, basis, countryFactor, modelFactor };
   }
 
-  return { version: TABLE.version, fittedFor: TABLE.fittedOn.model, fittedForModel, countryCode, region, anchors };
+  return {
+    version: cityCostV12CorrectionVersionFor(model),
+    fittedFor: COUNTRY_TABLE.fittedOn.model,
+    fittedForModel: model ? modelAdjustment.basis !== 'default' : null,
+    modelAdjustment,
+    countryCode,
+    region,
+    anchors,
+  };
 }
 
 export function applyCityCostV12Correction(

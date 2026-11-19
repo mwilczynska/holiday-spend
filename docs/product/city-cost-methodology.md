@@ -117,27 +117,54 @@ quarters. The table records its own version (`v1.2-corrections-2026-10-18`), whi
 
 ### Correction and the answering model
 
-The table was fitted on GPT-6 Luna's answers, so it removes Luna's biases. Other models have different biases. The
-server selects a table by the model that answered (`selectCityCostV12CorrectionTable`); today only Luna has one, so
-every other model is corrected with Luna's table. Each estimate saves `correction.fittedFor` (the table's model) and
-`correction.fittedForModel` (whether that is the model that answered), so these estimates are identifiable and can be
-re-corrected without a model call once their model has its own table.
+The correction has two layers (since 19 November 2026):
 
-A 20-city check on 19 November 2026 (research branch, lanes 110 to 118; Claude models answering Luna's exact prompts)
-measured the effect. Budget-weighted mean |ln(estimate / reference)| on the same cities:
+1. **Country layer.** The table above, fitted on GPT-6 Luna's answers for 475 reference cities
+   (`city-cost-corrections-v1-2.json`).
+2. **Model layer.** One factor per corrected price for the model that answered
+   (`city-cost-model-adjustments-v1-2.json`). The applied factor is country factor × model factor.
 
-| Model and effort | Raw | Luna's table | Own table (leave-one-city-out) |
-| --- | --- | --- | --- |
-| GPT-6 Luna, max | 0.327 | 0.195 | 0.176 |
-| Claude Haiku 5.5, low / medium / high | 0.32 to 0.36 | 0.22 to 0.23 | 0.21 |
-| Claude Haiku 5.5, xhigh | 0.349 | 0.260 | 0.253 |
-| Claude Sonnet 5.5, low / high / xhigh | 0.26 to 0.27 | 0.25 to 0.26 | 0.18 to 0.19 |
-| Claude Opus 5.5, medium | 0.264 | 0.231 | 0.179 |
+The model layer exists because models differ in a few consistent ways, mostly in accommodation: Claude models and
+newer GPT models price 3-star and 1-star rooms closer to booking prices than Luna does, so Luna's large 3-star cut
+overshoots them. Country patterns, by contrast, are largely shared between models, so the country layer is fitted once
+and only the eight model factors change per model.
 
-Luna's table helps every model compared with no correction, but much less than a table of the model's own: Sonnet and
-Opus answers are closer to real prices than Luna's before correction, and Luna's large 3-star cut overshoots them. These
-are 20 cities, so differences below about 0.05 are not established. A model's own table needs its answers on the 333
-development cities.
+| Model | Model layer | Fitted on |
+| --- | --- | --- |
+| GPT-6 Luna | 1 for every price (the reference) | the country table itself |
+| Claude Haiku 5.5, Sonnet 5.5, Opus 5.5 | own factors | 80 reference cities, all efforts pooled |
+| GPT-6.2 Sol, GPT-6.1 Terra | own factors | 40 reference cities |
+| Any other model | a cautious default: half the average adjustment of the measured models | – |
+
+How the factors are set, from the research branch's two-layer analysis (`two-layer-analysis.mjs`, R4 references):
+
+- A model's own factors are its mean log error after the country layer, blended towards the other measured models with
+  weight n / (n + 20), where n is its number of reference cities. On cities held out of the fit this beat both the
+  model's own 40-city factors alone and no model layer.
+- Efforts of one model share one set of factors: a model-level adjustment did as well as one per effort.
+- For a model never measured, the full average adjustment helped Sonnet, Opus, Sol and Terra but hurt Haiku, which
+  already resembles Luna. Half of it was best: mean error 0.192 against 0.208 with Luna's layer alone, scored with each
+  model left out of the average, and no model worse by more than 0.017.
+- On 40 held-out cities each (19 November 2026, read once and logged), the model layer improved on the country layer
+  alone for Haiku (−0.005), Sonnet (−0.026) and Opus (−0.007), all at low effort. The direction matches the development
+  cities; individually the intervals include zero.
+
+Each estimate saves `correction.modelAdjustment` (`basis` reference, measured or default; the entry used; its factors)
+and, per price, `countryFactor` and `modelFactor`. `correction.version` is the country table's version for Luna and
+`<country table>+<model adjustments>` for every other model, so `scripts/recorrect-city-costs.ts` updates only the
+estimates whose correction changed. Stored model names such as "gpt-6-luna (Codex subagent)" or
+"openai/gpt-6-luna" select the same entry as "gpt-6-luna".
+
+**Adding a model.** On the research branch, `calibrate-model.mjs --model <id> --effort <effort> --runner claude|codex`
+answers the fixed 40-city calibration set on a subscription, adds the lane to `model-adjustment-lanes.json`, rebuilds
+`city-cost-model-adjustments-v1-2.json` in the app and prints the error before and after. Then run the app baseline and
+`scripts/recorrect-city-costs.ts --dry-run`. Until a model is calibrated it gets the default.
+
+How each model compares with Luna under this correction, with cost and time per city, is on the Methodology page
+("Choosing a model"; data in `model-comparison-v1-2.json`, exported by `export-model-comparison.mjs`). In summary,
+on the same reference cities: Sol and Terra are level with Luna; Sonnet at max effort is about 0.014 behind and other
+Sonnet efforts 0.024 to 0.033; Opus is about 0.021 behind at every effort; Haiku is 0.034 (max) to 0.070 (low) behind.
+Luna is also the cheapest at about US$0.05 per city.
 
 ## 6. Step 4: the server calculates the tiers
 
