@@ -1,0 +1,170 @@
+{
+  "version": "v1.2-model-adjustments-2026-11-19",
+  "countryLayer": "v1.2-corrections-2026-10-19",
+  "method": "Two-layer v1.2 correction: country factor (v1.2-corrections-2026-10-19) x model factor. Measured model: exp(w x own shift + (1 - w) x pooled shift of the other measured models), w = n / (n + 20). Unmeasured model: exp(0.5 x pooled shift of all measured models). Reference model: 1.",
+  "fittedOn": {
+    "referencePanel": "R4",
+    "referencePanelSha256": "8cd52fe15f5291b4567e8d6686ee56ebd41fe61deeade80e2821eb591029b373",
+    "split": "dev",
+    "grades": "A-C",
+    "prompt": "llm_prompt_new_cities_v1_2.md",
+    "fittedAt": "2026-11-19"
+  },
+  "correctedAnchors": [
+    "inexp_meal_1p",
+    "midrange_meal_2p",
+    "beer",
+    "coffee",
+    "hotel_3star_2p",
+    "hotel_1star_2p",
+    "hostel_dorm_1p",
+    "hostel_private_2p"
+  ],
+  "reference": {
+    "id": "gpt-6-luna",
+    "label": "GPT-6 Luna",
+    "match": "^gpt-6-luna(?:-|$)",
+    "factors": {
+      "inexp_meal_1p": 1,
+      "midrange_meal_2p": 1,
+      "beer": 1,
+      "coffee": 1,
+      "hotel_3star_2p": 1,
+      "hotel_1star_2p": 1,
+      "hostel_dorm_1p": 1,
+      "hostel_private_2p": 1
+    }
+  },
+  "unmeasuredDefault": {
+    "lambda": 0.5,
+    "models": [
+      "claude-haiku-5-5",
+      "claude-sonnet-5-5",
+      "claude-opus-5-5",
+      "gpt-6.2-sol",
+      "gpt-6.1-terra"
+    ],
+    "factors": {
+      "inexp_meal_1p": 1.0051,
+      "midrange_meal_2p": 0.9854,
+      "beer": 0.9771,
+      "coffee": 1.0052,
+      "hotel_3star_2p": 1.1024,
+      "hotel_1star_2p": 1.1296,
+      "hostel_dorm_1p": 1.0284,
+      "hostel_private_2p": 1.0148
+    }
+  },
+  "models": [
+    {
+      "id": "claude-haiku-5-5",
+      "label": "Claude Haiku 5.5",
+      "match": "^claude-haiku-5-5(?:-|$)",
+      "cities": 80,
+      "lanes": [
+        "130-s80-haiku-low",
+        "131-s80-haiku-medium",
+        "132-s80-haiku-high",
+        "133-s80-haiku-xhigh",
+        "142-s80-haiku-max"
+      ],
+      "weight": 0.8,
+      "factors": {
+        "inexp_meal_1p": 1.0678,
+        "midrange_meal_2p": 0.9564,
+        "beer": 0.9362,
+        "coffee": 0.9695,
+        "hotel_3star_2p": 1.0622,
+        "hotel_1star_2p": 1.2194,
+        "hostel_dorm_1p": 1.0604,
+        "hostel_private_2p": 1.0516
+      }
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "label": "Claude Sonnet 5.5",
+      "match": "^claude-sonnet-5-5(?:-|$)",
+      "cities": 80,
+      "lanes": [
+        "134-s80-sonnet-low",
+        "135-s80-sonnet-medium",
+        "136-s80-sonnet-high",
+        "137-s80-sonnet-xhigh",
+        "138-s80-sonnet-max"
+      ],
+      "weight": 0.8,
+      "factors": {
+        "inexp_meal_1p": 1.0189,
+        "midrange_meal_2p": 0.9956,
+        "beer": 0.9429,
+        "coffee": 1.0153,
+        "hotel_3star_2p": 1.2414,
+        "hotel_1star_2p": 1.3782,
+        "hostel_dorm_1p": 1.1481,
+        "hostel_private_2p": 1.0987
+      }
+    },
+    {
+      "id": "claude-opus-5-5",
+      "label": "Claude Opus 5.5",
+      "match": "^claude-opus-5-5(?:-|$)",
+      "cities": 80,
+      "lanes": [
+        "139-s80-opus-low",
+        "140-s80-opus-medium",
+        "141-s80-opus-high"
+      ],
+      "weight": 0.8,
+      "factors": {
+        "inexp_meal_1p": 0.9758,
+        "midrange_meal_2p": 0.9573,
+        "beer": 0.9482,
+        "coffee": 1.006,
+        "hotel_3star_2p": 1.213,
+        "hotel_1star_2p": 1.2791,
+        "hostel_dorm_1p": 1.0805,
+        "hostel_private_2p": 1.0276
+      }
+    },
+    {
+      "id": "gpt-6.2-sol",
+      "label": "GPT-6.2 Sol",
+      "match": "^gpt-6\\.2-sol(?:-|$)",
+      "cities": 40,
+      "lanes": [
+        "124-s40-sol-max"
+      ],
+      "weight": 0.6667,
+      "factors": {
+        "inexp_meal_1p": 0.9981,
+        "midrange_meal_2p": 0.9664,
+        "beer": 0.9624,
+        "coffee": 1.0253,
+        "hotel_3star_2p": 1.2984,
+        "hotel_1star_2p": 1.2741,
+        "hostel_dorm_1p": 1.0381,
+        "hostel_private_2p": 1.0178
+      }
+    },
+    {
+      "id": "gpt-6.1-terra",
+      "label": "GPT-6.1 Terra",
+      "match": "^gpt-6\\.1-terra(?:-|$)",
+      "cities": 40,
+      "lanes": [
+        "125-s40-terra-max"
+      ],
+      "weight": 0.6667,
+      "factors": {
+        "inexp_meal_1p": 0.9995,
+        "midrange_meal_2p": 0.9794,
+        "beer": 0.9763,
+        "coffee": 1.028,
+        "hotel_3star_2p": 1.244,
+        "hotel_1star_2p": 1.2446,
+        "hostel_dorm_1p": 0.9918,
+        "hostel_private_2p": 0.9768
+      }
+    }
+  ]
+}

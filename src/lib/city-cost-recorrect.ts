@@ -7,7 +7,7 @@ import {
   CITY_COST_V12_CORRECTION_VERSION,
   applyCityCostV12Correction,
   resolveCityCostV12Correction,
-  selectCityCostV12CorrectionTable,
+  cityCostV12CorrectionVersionFor,
 } from '@/lib/city-cost-methodology-v1-2';
 import { planCityFxRefresh } from '@/lib/city-cost-fx-refresh';
 
@@ -59,7 +59,7 @@ export function recorrectCityCosts(options: { dryRun?: boolean; now?: Date } = {
       continue;
     }
     const previousVersion = anchors.correction?.version ?? null;
-    const tableVersion = selectCityCostV12CorrectionTable(estimate.llmModel).table.version;
+    const tableVersion = cityCostV12CorrectionVersionFor(estimate.llmModel);
     if (previousVersion === tableVersion) {
       summary.unchanged += 1;
       continue;

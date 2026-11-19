@@ -3932,3 +3932,27 @@ Security updates: Next.js 16.4.6, undici 7.30.2, eslint-config-next 16.4.6 and n
 from 16 advisories to 4, all in the dev-only drizzle-kit/esbuild chain with no non-breaking fix. The first build on
 16.4.2 had stopped after compiling with a Next.js security notice; the build on 16.4.6 passes directly. The owner
 paused the 333-city Haiku high and Sonnet xhigh collections (lanes 119 and 120) before any new city was answered.
+
+## 19 November 2026 — Two-layer city-cost correction and model comparison
+
+Owner: per-model, per-effort correction tables are not feasible as new models arrive. Research (branch
+`research/city-cost-accuracy`, R4 references): Luna's country table plus one factor per corrected price for each model.
+Leave-one-model-out on 15 lanes, scoring a model whose own answers were never used: Luna's table alone 0.208; the
+other models' full average adjustment 0.199 but up to 0.05 worse for Haiku, which already resembles Luna; half of it
+0.192, worst lane +0.017. A model's own 40-city factors scored on its other 40 cities were noisier than blending them
+towards the other models with weight n / (n + 20) (0.192). One factor set per model did as well as one per effort.
+Final factors: Haiku, Sonnet, Opus from 80 cities each; Sol and Terra extended to 40 cities (40 new codex exec answers).
+The main change for non-Luna models is 3-star and 1-star rooms 20 to 38% higher than Luna's country factors give.
+
+Held-out confirmation, run once and logged in `panel/test-access.jsonl`: 40 held-out cities answered by Haiku, Sonnet
+and Opus at low effort (120 new `claude -p` answers). Model factor against the country table alone: Haiku -0.005
+[-0.019, +0.009], Sonnet -0.026 [-0.063, +0.012], Opus -0.007 [-0.039, +0.025]. Direction matches development; the
+per-model intervals include zero. Per-city held-out losses were not saved, so no pooled interval was computed without
+a second read.
+
+App (`feat/two-layer-city-cost-correction`, stacked on PR 23): `city-cost-model-adjustments-v1-2.json`;
+`resolveCityCostV12ModelAdjustment`, `cityCostV12CorrectionVersionFor` and `cityCostModelKey` replace the
+single-table selection. The old matcher did not recognise the library's stored "gpt-6-luna (Codex subagent)" as Luna;
+the new key drops the runtime note, and a recorrect dry run on a copy of the library leaves all 531 v1.2 estimates
+unchanged. Methodology page: "Choosing a model" tile with accuracy (app correction, 95% interval), estimated cost and
+time per city for each model and effort.

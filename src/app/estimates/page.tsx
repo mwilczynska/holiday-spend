@@ -17,7 +17,9 @@ import {
   Gauge,
   RefreshCw,
   SlidersHorizontal,
+  Cpu,
 } from 'lucide-react';
+import { ModelComparisonChart } from '@/components/estimates/ModelComparisonChart';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { cn } from '@/lib/utils';
 
@@ -325,13 +327,15 @@ export default function EstimatesPage() {
         </Step>
         <Step number={3} title="The app corrects consistent errors">
           <p>
-            Models price some items consistently high or low. The app multiplies eight of the ten prices by a fixed factor
-            for the city’s country, learnt from real prices in 475 reference cities.
+            Models price some items consistently high or low. The app multiplies eight of the ten prices by two factors:
+            one for the city’s country, learnt from real prices in 475 reference cities, and one for the model that
+            answered.
           </p>
           <Note>A country with few reference cities leans on its region’s factor; a country with none uses the region’s.</Note>
           <Note>
-            The factors were learnt from GPT-6 Luna’s prices. Other models use the same table until they have their own,
-            and their estimates record that the table was fitted for a different model.
+            The country factors were learnt from GPT-6 Luna’s prices, so Luna’s model factor is 1. Models measured on 40
+            to 80 reference cities have their own factors; any other model gets a cautious default. Each estimate records
+            which one it used.
           </Note>
         </Step>
         <Step number={4} title="The app calculates the tiers">
@@ -363,6 +367,25 @@ export default function EstimatesPage() {
           </p>
         </Tile>
       </div>
+
+      <Tile
+        title="Choosing a model"
+        icon={<Cpu />}
+        lead="Accuracy, cost and time for each model and effort, measured on the same reference cities in November 2026"
+      >
+        <ModelComparisonChart />
+        <p>
+          Every model was given the same request. GPT-6 Luna, the default, is as accurate as any model tested and the
+          cheapest. Claude Sonnet at max effort comes closest among Claude models but costs about ten times as much;
+          Claude Opus is about as accurate at any effort, and Claude Haiku is the least accurate. Higher effort mostly
+          adds cost and time rather than accuracy.
+        </p>
+        <Note>
+          Claude models were measured on 80 reference cities and OpenAI models on 40 (the Luna rerun on 20), with each
+          model’s correction fitted on those same cities, so their accuracy is slightly optimistic. Costs are estimates
+          at published API prices, not what the test runs were charged.
+        </Note>
+      </Tile>
 
       <div className="grid gap-3.5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <Tile title="The ten model prices" icon={<ListOrdered />} lead="In USD, before conversion">

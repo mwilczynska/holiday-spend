@@ -51,7 +51,9 @@ selections of it migrate. OpenRouter mirrors the OpenAI default. On 23 October 2
 | Fireworks | `accounts/fireworks/models/deepseek-v4p1-flash` | newest DeepSeek Flash |
 | Cerebras | `gpt-oss-120b` | cheapest gpt-oss |
 
-The v1.2 accuracy figures were measured with `gpt-6-luna`; other defaults are unmeasured for city costs.
+The v1.2 accuracy figures were measured with `gpt-6-luna`. Claude Haiku, Sonnet and Opus 5.5, GPT-6.2 Sol and
+GPT-6.1 Terra were measured on 40 to 80 reference cities in November 2026 and have their own correction factors;
+other defaults are unmeasured for city costs and get the default correction (Methodology page, "Choosing a model").
 
 ## Completing an answer with any model and effort
 

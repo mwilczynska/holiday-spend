@@ -35,6 +35,11 @@
     --success: 152 69% 25%;
     --success-soft: 146 43% 93%;
     --info-soft: 221 89% 96%;
+    /* Model comparison chart (Methodology): app chart hues, amber and teal stepped for contrast on white. */
+    --model-haiku: 221 83% 53%;
+    --model-sonnet: 36 91% 44%;
+    --model-opus: 173 80% 36%;
+    --model-gpt: 272 51% 54%;
   }
 
   .dark {
@@ -62,6 +67,10 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --model-haiku: 220 70% 55%;
+    --model-sonnet: 30 80% 45%;
+    --model-opus: 160 60% 40%;
+    --model-gpt: 280 65% 62%;
   }
 }
 

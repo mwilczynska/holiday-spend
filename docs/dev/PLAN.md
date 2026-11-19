@@ -25,8 +25,29 @@ for cheap tests of other Claude models and efforts on the subscription (not the 
   advisory in 7.16), eslint-config-next 16.4.6, and non-breaking audit fixes (vitest 4.1.12, typescript-eslint,
   minimatch, postcss-selector-parser). Remaining: four moderate advisories in the dev-only drizzle-kit/esbuild chain,
   already at the latest drizzle-kit (0.31.11); npm's only offer is a breaking downgrade.
-- [ ] Paused by the owner: 333-city collections for Haiku high (lane 119) and Sonnet xhigh (lane 120) to fit
-  model-specific correction tables. Each holds the 20 sweep answers; `dispatch.mjs` resumes from there.
+- [x] Superseded: the 333-city collections for Haiku high and Sonnet xhigh (lanes 119, 120) are no longer needed; the
+  two-layer correction below needs 40 to 80 cities per model. PR 23 merged on 19 November 2026 (squash `dc4df0ec`),
+  after restoring the optional `@emnapi/runtime` lock entry that npm on Windows had pruned again.
+
+## Two-layer correction and model comparison (19 November 2026)
+
+Owner direction: a full correction table per model and effort is not feasible as models arrive; implement the
+two-layer plan and show the model comparison on the Methodology page.
+
+- [x] 80-city lanes for every Haiku and Sonnet effort and Opus low/medium/high (lanes 130 to 142), 40-city lanes for
+  Sol and Terra (124, 125); costs per city at list prices.
+- [x] Leave-one-model-out analysis: model layer on Luna's country table; half the pooled adjustment for unmeasured
+  models (0.192 against 0.208); calibrated factors shrunk towards the other models with n / (n + 20); one entry per
+  model, efforts pooled.
+- [x] App: `city-cost-model-adjustments-v1-2.json`, model-aware correction version, `cityCostModelKey` for stored
+  runtime suffixes (all 531 library v1.2 estimates resolve to Luna and stay unchanged in a recorrect dry run).
+- [x] Research: `build-model-adjustments.mjs`, `score-adjustments.mjs`, `calibrate-model.mjs`,
+  `export-model-comparison.mjs`.
+- [x] Held-out confirmation, read once: the model layer improves Haiku, Sonnet and Opus (low) on 40 held-out cities each;
+  direction consistent, intervals include zero individually.
+- [x] Methodology page: "Choosing a model" chart (accuracy, cost, time) and the two-layer description.
+- [x] PR for `feat/two-layer-city-cost-correction` opened after PR 23 merged.
+- [ ] After deploying: `scripts/recorrect-city-costs.ts --dry-run` on the server should report every v1.2 city unchanged.
 
 ## Branch cleanup (27 October 2026)
 

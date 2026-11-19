@@ -140,10 +140,13 @@ contract and adds two changes measured in the city-cost accuracy research (bundl
   without a model call, keeping hand-edited fields;
 - the server then validates and inverts the RBA observation and applies the exact v1 formulas and USD→AUD conversion
   (`materializeCityCostV12` reuses the v1.1 materializer);
-- the correction table is chosen by the answering model (`selectCityCostV12CorrectionTable`); only GPT-6 Luna has
-  its own, so other models use Luna's table and their estimates record `correction.fittedFor` and
-  `correction.fittedForModel: false`. A 20-city check (19 November 2026) found Luna's table helps every Claude model
-  over no correction but much less than a model-specific fit; see `docs/product/city-cost-methodology.md`;
+- the correction has two layers (19 November 2026): the country table above times a per-model factor for each
+  corrected price (`src/lib/data/city-cost-model-adjustments-v1-2.json`). Luna is the reference (factor 1); Claude
+  Haiku, Sonnet and Opus 5.5 (80 cities) and GPT-6.2 Sol and GPT-6.1 Terra (40 cities) have their own factors; any
+  other model gets half the measured models' average adjustment. Estimates record `correction.modelAdjustment`; the
+  correction version is `<country table>+<model adjustments>` except for Luna, so recorrection touches only changed
+  estimates. Stored names such as "gpt-6-luna (Codex subagent)" resolve to the same entry (`cityCostModelKey`). New
+  models are calibrated with `calibrate-model.mjs` on the research branch; see `docs/product/city-cost-methodology.md`;
 - raw and corrected anchors, the per-anchor correction and table version, provider/model, reasoning effort,
   prompt/formula versions, confidence and FX provenance are persisted under source `llm_city_generation_v1_2`;
 - no grades or intervals are fabricated for model estimates;
