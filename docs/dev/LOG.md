@@ -3894,3 +3894,41 @@ Branch cleanup (27 October 2026). At the owner's request, local and origin refs 
 and origin branches were removed, with a lease protecting the remote deletion against a changed head. Main, the
 active `research/city-cost-accuracy` worktree/branch and the explicitly retained `feat/city-cost-methodology-v6`
 research archive remain. No other obsolete branches were found, and no worktrees or research tags were removed.
+
+Model-agnostic city generation (19 November 2026). The owner asked for Claude Haiku 5.5 Max to be measured against
+the current Luna Max results with identical prompts, then for city generation to work with any model and effort.
+
+Haiku 5.5 Max (research lane 108) answered Luna's frozen v1.2 worker messages byte for byte (shared `workerMessage`
+builder) through `claude -p` on the owner's subscription: app system prompt, WebSearch as the only tool, no user or
+project instruction files, ten workers. An earlier attempt with in-session general-purpose agents was stopped: they
+fetched whole pages, ran for over ten minutes per city and saw the project instructions. The owner stopped lane 108
+at 96 of 333 cities. On the first 67, Haiku Max was about 0.011 worse than Luna raw and 0.012 worse after a rough
+per-anchor correction (Luna better in 42 cities). Every Haiku Max answer used more output (median about 230k tokens,
+8 to 9 minutes) than one API request allows, so Max cannot run unchanged in a single provider call.
+
+A 20-city subscription sweep (lanes 110 to 118, seed `sweep-2026-11-19`) then covered Haiku low to max, Sonnet
+low/high/xhigh and Opus medium. All settings answered all cities with at most six searches. Budget-weighted loss with
+each model's own leave-one-city-out correction: Luna 0.176, Sonnet xhigh 0.176, Opus medium 0.179, Sonnet low/high
+0.186/0.187, Haiku low/medium/high 0.21, Haiku xhigh 0.253. Raw, Sonnet and Opus beat Luna by about 0.06; with Luna's
+production table they are worse than Luna by about 0.04 to 0.06, because the table's 3-star cut overshoots them. The
+CLI's `webSearchRequests` usage counter does not match the model's search calls (0 for Sonnet, above the call count
+for Haiku); search counts use the WebSearch tool calls.
+
+App changes on `feat/model-agnostic-city-generation`: every transport retries truncation one effort rung lower (floor
+`high`); output limits are clamped to model ceilings; Gemini receives the configured limit instead of 3,000; the
+caller passes the prompt's search allowance (v1.2 six), which Anthropic previously capped at one. Anthropic requests
+are streamed, resume `pause_turn` and report `max_tokens` and `refusal` stops instead of failing on unparseable text.
+The correction table is selected by answering model; only Luna has one, and other models' estimates record
+`fittedForModel: false`. Installing `undici` to lift Node's 300-second fetch header timeout for the non-streamed
+transports was refused by the session's permission policy and is not done. No live provider call was made: the app
+path needs an API key and the owner asked for subscription-only tests, so the transports are covered by contract
+tests on recorded response shapes.
+
+Follow-up the same day, owner approved package installs. Provider requests now use their own undici agent
+(`src/lib/llm-fetch-dispatcher.ts`) with header and body timeouts off, so non-streamed transports are no longer cut
+off at 300 seconds; a test against a local server whose headers arrive after 2.5 seconds shows Node's fetch honours
+the agent (a 1-second header limit fails, the provider agent waits). undici is bundled into the server output.
+Security updates: Next.js 16.4.6, undici 7.30.2, eslint-config-next 16.4.6 and non-breaking audit fixes; audit falls
+from 16 advisories to 4, all in the dev-only drizzle-kit/esbuild chain with no non-breaking fix. The first build on
+16.4.2 had stopped after compiling with a Next.js security notice; the build on 16.4.6 passes directly. The owner
+paused the 333-city Haiku high and Sonnet xhigh collections (lanes 119 and 120) before any new city was answered.

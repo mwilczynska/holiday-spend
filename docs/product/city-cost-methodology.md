@@ -115,6 +115,30 @@ where *n* is the number of reference cities in the country. A country with no re
 factor, and a region with none uses the overall factor. So one reference city counts a quarter and nine count three
 quarters. The table records its own version (`v1.2-corrections-2026-10-18`), which every estimate saves.
 
+### Correction and the answering model
+
+The table was fitted on GPT-6 Luna's answers, so it removes Luna's biases. Other models have different biases. The
+server selects a table by the model that answered (`selectCityCostV12CorrectionTable`); today only Luna has one, so
+every other model is corrected with Luna's table. Each estimate saves `correction.fittedFor` (the table's model) and
+`correction.fittedForModel` (whether that is the model that answered), so these estimates are identifiable and can be
+re-corrected without a model call once their model has its own table.
+
+A 20-city check on 19 November 2026 (research branch, lanes 110 to 118; Claude models answering Luna's exact prompts)
+measured the effect. Budget-weighted mean |ln(estimate / reference)| on the same cities:
+
+| Model and effort | Raw | Luna's table | Own table (leave-one-city-out) |
+| --- | --- | --- | --- |
+| GPT-6 Luna, max | 0.327 | 0.195 | 0.176 |
+| Claude Haiku 5.5, low / medium / high | 0.32 to 0.36 | 0.22 to 0.23 | 0.21 |
+| Claude Haiku 5.5, xhigh | 0.349 | 0.260 | 0.253 |
+| Claude Sonnet 5.5, low / high / xhigh | 0.26 to 0.27 | 0.25 to 0.26 | 0.18 to 0.19 |
+| Claude Opus 5.5, medium | 0.264 | 0.231 | 0.179 |
+
+Luna's table helps every model compared with no correction, but much less than a table of the model's own: Sonnet and
+Opus answers are closer to real prices than Luna's before correction, and Luna's large 3-star cut overshoots them. These
+are 20 cities, so differences below about 0.05 are not established. A model's own table needs its answers on the 333
+development cities.
+
 ## 6. Step 4: the server calculates the tiers
 
 The server calculates every tier in USD from the ten corrected anchors, then converts each tier to AUD and rounds it to

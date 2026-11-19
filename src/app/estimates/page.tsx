@@ -329,6 +329,10 @@ export default function EstimatesPage() {
             for the city’s country, learnt from real prices in 475 reference cities.
           </p>
           <Note>A country with few reference cities leans on its region’s factor; a country with none uses the region’s.</Note>
+          <Note>
+            The factors were learnt from GPT-6 Luna’s prices. Other models use the same table until they have their own,
+            and their estimates record that the table was fitted for a different model.
+          </Note>
         </Step>
         <Step number={4} title="The app calculates the tiers">
           <p>

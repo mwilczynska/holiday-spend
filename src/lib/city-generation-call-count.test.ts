@@ -124,4 +124,15 @@ describe('v1.1 generation call boundary', () => {
     expect(result.reasoningEffort).toBe('xhigh');
     expect(result.v11Materialization?.fx.sourceName).toBe('Reserve Bank of Australia');
   });
+
+  it('allows one search under v1.1 and the RBA lookup plus five price searches under v1.2', async () => {
+    await generateCityCostEstimate({ cityName: 'Toyama', countryName: 'Japan', provider: 'anthropic' });
+    expect(runJsonPromptWithProvider).toHaveBeenLastCalledWith(expect.objectContaining({ maxWebSearches: 1 }));
+    process.env.CITY_COST_METHODOLOGY_VERSION = 'v1.2';
+    runJsonPromptWithProvider.mockResolvedValueOnce({ provider: 'anthropic', model: 'claude-haiku-5-5', text: validResponse, webSearchUsed: true });
+    const result = await generateCityCostEstimate({ cityName: 'Toyama', countryName: 'Japan', provider: 'anthropic' });
+    expect(runJsonPromptWithProvider).toHaveBeenLastCalledWith(expect.objectContaining({ maxWebSearches: 6 }));
+    const correction = (result.v11Materialization as { correction?: { fittedForModel: boolean | null } }).correction;
+    expect(correction?.fittedForModel).toBe(false);
+  });
 });

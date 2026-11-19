@@ -135,3 +135,25 @@ describe('city-cost methodology v1.2', () => {
     expect(readCityEstimateProvenance({ source: 'llm_city_generation_v1_2', sourcesJson: '{}' })?.methodologyVersion).toBe('v1.2');
   });
 });
+
+describe('v1.2 correction table by answering model', () => {
+  it('records that the default table was fitted for Luna and whether it matches the estimate model', () => {
+    const luna = resolveCityCostV12Correction('Japan', 'East Asia', 'gpt-6-luna');
+    expect(luna).toMatchObject({ fittedFor: corrections.fittedOn.model, fittedForModel: true, version: CITY_COST_V12_CORRECTION_VERSION });
+    expect(resolveCityCostV12Correction('Japan', 'East Asia', 'openai/gpt-6-luna').fittedForModel).toBe(true);
+    expect(resolveCityCostV12Correction('Japan', 'East Asia').fittedForModel).toBeNull();
+  });
+
+  it('still corrects another model with the default table, labelled as fitted for a different model', () => {
+    const haiku = resolveCityCostV12Correction('Japan', 'East Asia', 'claude-haiku-5-5');
+    const luna = resolveCityCostV12Correction('Japan', 'East Asia', 'gpt-6-luna');
+    expect(haiku.fittedForModel).toBe(false);
+    expect(haiku.fittedFor).toBe(corrections.fittedOn.model);
+    expect(haiku.anchors).toEqual(luna.anchors);
+  });
+
+  it('carries the answering model into the materialized correction', () => {
+    expect(materializeCityCostV12(response, { countryName: 'Italy', model: 'claude-sonnet-5-5' }, now).correction.fittedForModel).toBe(false);
+    expect(materializeCityCostV12(response, { countryName: 'Italy', model: 'gpt-6-luna' }, now).correction.fittedForModel).toBe(true);
+  });
+});

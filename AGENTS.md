@@ -140,6 +140,10 @@ contract and adds two changes measured in the city-cost accuracy research (bundl
   without a model call, keeping hand-edited fields;
 - the server then validates and inverts the RBA observation and applies the exact v1 formulas and USD→AUD conversion
   (`materializeCityCostV12` reuses the v1.1 materializer);
+- the correction table is chosen by the answering model (`selectCityCostV12CorrectionTable`); only GPT-6 Luna has
+  its own, so other models use Luna's table and their estimates record `correction.fittedFor` and
+  `correction.fittedForModel: false`. A 20-city check (19 November 2026) found Luna's table helps every Claude model
+  over no correction but much less than a model-specific fit; see `docs/product/city-cost-methodology.md`;
 - raw and corrected anchors, the per-anchor correction and table version, provider/model, reasoning effort,
   prompt/formula versions, confidence and FX provenance are persisted under source `llm_city_generation_v1_2`;
 - no grades or intervals are fabricated for model estimates;
@@ -269,13 +273,19 @@ high cap costs nothing until a request needs it, while a cap that binds part-way
 answer discarded. Both defaults therefore sit far above the observed working range, and the caps exist to stop a
 request that has gone wrong.
 
-When an OpenAI call is truncated mid-reasoning, the grounded call is retried one rung down the effort ladder
-(`max`, `xhigh`, `high`) before web search is abandoned: running out of room to answer is a reason to think less, not
-to stop searching. Every call logs its token usage, so the defaults can be revisited from evidence.
+When any provider's call is truncated mid-reasoning, the grounded call is retried with the next lower effort that
+model accepts, never below `high` (`nextLowerReasoningEffort` in `src/lib/llm-model-limits.ts`), before failing:
+running out of room to answer is a reason to think less, not to stop searching. The configured output limit is
+lowered to a model's documented ceiling (Claude 4.6+ 128,000; Gemini 2.5+ 65,536). Every call logs its token usage.
 
-City generation uses these limits for both new and existing cities. Incomplete OpenAI responses are rejected even
-when their text parses as JSON; retries retain required web search and share the original timeout. Successful
-estimates record the effort that produced the answer. v1.1 and v1.2 never drop their required current-FX search.
+City generation uses these limits for both new and existing cities, with any listed model and effort. Truncated
+responses are rejected even when their text parses as JSON; retries retain required web search and share the
+original timeout. Successful estimates record the effort that produced the answer. v1.1 and v1.2 never drop their
+required current-FX search. The caller passes the searches its prompt allows (`maxWebSearches`: v1.2 six, v1.1 one);
+Anthropic sends it as `max_uses`. Anthropic requests are streamed, resume `pause_turn` and report refusals. Provider
+requests use their own undici agent without Node's 300-second header and body timeouts
+(`src/lib/llm-fetch-dispatcher.ts`), so the configured request timeout is the only limit. See
+`docs/product/llm-providers.md`.
 
 Every transport path, including non-search and strict JSON retries, uses the configured limits; none imposes a
 separate small answer cap. Bulk transport has a Stop control that aborts active requests and prevents queued legs

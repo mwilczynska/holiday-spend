@@ -12,6 +12,14 @@ import {
 import { analyticsLlmFetch } from '@/lib/analytics/llm';
 import { analyticsContext } from '@/lib/analytics/context';
 import { createLlmRequestSignal, waitForLlmRetry } from '@/lib/llm-request-signal';
+import {
+  AnthropicStreamError,
+  readAnthropicMessageStream,
+  type AnthropicContentBlock,
+  type AnthropicMessage,
+} from '@/lib/anthropic-message-stream';
+import { clampOutputTokens, nextLowerReasoningEffort } from '@/lib/llm-model-limits';
+import { getLlmFetchDispatcher } from '@/lib/llm-fetch-dispatcher';
 import { resolveLlmRuntimeDefaults } from '@/lib/llm-request-limits';
 import { describeLlmRequestFailure, formatProviderHttpError, summarizeProviderError } from '@/lib/llm-error-messages';
 import {
@@ -41,7 +49,13 @@ function normalizeModel(model?: string) {
 async function fetchProvider(url: string, init: RequestInit, provider: string, deadline: number, timeoutMs: number, apiKey: string) {
   init.signal?.throwIfAborted();
   try {
-    return await analyticsLlmFetch(url, { ...init, signal: createLlmRequestSignal(deadline - Date.now(), init.signal ?? undefined) });
+    // The provider dispatcher lifts Node's 300-second header timeout; the deadline signal is the request's only limit.
+    const providerInit = {
+      ...init,
+      signal: createLlmRequestSignal(deadline - Date.now(), init.signal ?? undefined),
+      dispatcher: getLlmFetchDispatcher(),
+    } as RequestInit;
+    return await analyticsLlmFetch(url, providerInit);
   } catch (err) {
     init.signal?.throwIfAborted();
     throw new Error(describeLlmRequestFailure(err, provider, timeoutMs, apiKey));
@@ -81,6 +95,8 @@ type ProviderRunnerParams = {
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
+  /** The most web searches the prompt allows, where the provider takes a per-request cap. Defaults to one. */
+  maxWebSearches?: number;
   requestTimeoutMs?: number;
   signal?: AbortSignal;
 };
@@ -93,7 +109,7 @@ function resolveRunnerBasics(spec: LlmProviderSpec, params: ProviderRunnerParams
   return {
     apiKey,
     model,
-    maxOutputTokens: params.maxTokens ?? defaults.maxOutputTokens,
+    maxOutputTokens: clampOutputTokens(spec.id, model, params.maxTokens ?? defaults.maxOutputTokens),
     timeoutMs,
     deadline: Date.now() + timeoutMs,
   };
@@ -157,7 +173,7 @@ async function runResponsesJsonPrompt(spec: LlmProviderSpec, params: ProviderRun
     console.info(`[city-generation] ${spec.id} model=${model} effort=${effort ?? 'default'} status=${data.status ?? 'unknown'} output_tokens=${data.usage?.output_tokens ?? 'unknown'} reasoning_tokens=${data.usage?.output_tokens_details?.reasoning_tokens ?? 'unknown'}`);
     if (data.status === 'incomplete') {
       if (data.incomplete_details?.reason === 'max_output_tokens') {
-        const lowerEffort = effort === 'max' ? 'xhigh' : effort === 'xhigh' ? 'high' : undefined;
+        const lowerEffort = nextLowerReasoningEffort(spec.id, model, effort);
         if (lowerEffort && Date.now() < deadline) {
           effort = lowerEffort;
           continue;
@@ -207,6 +223,58 @@ export function buildGeminiThinkingConfig(model: string, effort: CityGenerationR
   return { thinkingBudget: getCityGenerationThinkingBudget(effort) };
 }
 
+/** How many times a search turn that the server paused (`pause_turn`) is resumed before the request is abandoned. */
+const ANTHROPIC_MAX_PAUSE_CONTINUATIONS = 4;
+
+/** One streamed Messages request, with a single bounded retry on HTTP 429. */
+async function postAnthropicMessage(
+  requestBody: Record<string, unknown>,
+  apiKey: string,
+  deadline: number,
+  timeoutMs: number,
+  signal: AbortSignal | undefined,
+): Promise<AnthropicMessage> {
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const response = await fetchProvider('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      signal,
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({ ...requestBody, stream: true }),
+    }, 'Anthropic', deadline, timeoutMs, apiKey);
+
+    if (response.ok) {
+      const isStream = response.headers.get('content-type')?.includes('text/event-stream') && response.body;
+      try {
+        return isStream ? await readAnthropicMessageStream(response.body!) : await response.json() as AnthropicMessage;
+      } catch (err) {
+        signal?.throwIfAborted();
+        if (err instanceof AnthropicStreamError) {
+          throw new Error(`Anthropic stopped while answering (${summarizeProviderError(err.message, apiKey)}). Try again. No estimate was saved.`);
+        }
+        throw new Error(describeLlmRequestFailure(err, 'Anthropic', timeoutMs, apiKey));
+      }
+    }
+
+    const errText = await response.text();
+    if (response.status === 429 && attempt < 1) {
+      const retryDelayMs = getRetryDelayMsFromHeaders(response.headers) ?? 5000;
+      await waitForLlmRetry(Math.min(Math.max(retryDelayMs, 3000), 15000, Math.max(0, deadline - Date.now())), signal);
+      continue;
+    }
+    throw new Error(formatProviderHttpError('Anthropic', response.status, errText, apiKey));
+  }
+  throw new Error('Anthropic API returned no response body.');
+}
+
+/**
+ * Anthropic Messages. The request is streamed (see anthropic-message-stream.ts), allows the number of web searches the
+ * prompt permits, resumes a paused search turn, and checks why the model stopped: a truncated answer is retried one
+ * effort rung lower like every other transport, and a refusal or truncation is reported rather than parsed as JSON.
+ */
 async function runAnthropicJsonPrompt(params: ProviderRunnerParams): Promise<JsonPromptResult | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
@@ -215,55 +283,52 @@ async function runAnthropicJsonPrompt(params: ProviderRunnerParams): Promise<Jso
     normalizeModel(params.model) ?? (process.env.ANTHROPIC_MODEL || CITY_GENERATION_DEFAULT_MODELS.anthropic);
   const timeoutMs = params.requestTimeoutMs ?? resolveLlmRuntimeDefaults().requestTimeoutMs;
   const deadline = Date.now() + timeoutMs;
-  const effort = resolveProviderRequestEffort('anthropic', model, params.reasoningEffort);
-  let data: { content?: Array<{ type?: string; text?: string }> } | null = null;
+  const outputLimit = clampOutputTokens('anthropic', model, params.maxTokens ?? resolveLlmRuntimeDefaults().maxOutputTokens);
+  let effort = resolveProviderRequestEffort('anthropic', model, params.reasoningEffort);
 
-  for (let attempt = 0; attempt < 2; attempt += 1) {
-    const outputLimit = params.maxTokens ?? resolveLlmRuntimeDefaults().maxOutputTokens;
+  for (;;) {
     const requestBody: Record<string, unknown> = {
       model,
       max_tokens: outputLimit,
       system: params.systemPrompt,
-      messages: [{ role: 'user', content: params.userPrompt }],
       ...buildAnthropicThinkingFields(model, effort, outputLimit),
     };
     if (params.requireWebSearch) {
-      requestBody.tools = [{ type: getAnthropicWebSearchToolType(model), name: 'web_search', max_uses: 1 }];
+      requestBody.tools = [{ type: getAnthropicWebSearchToolType(model), name: 'web_search', max_uses: params.maxWebSearches ?? 1 }];
     }
 
-    const response = await fetchProvider('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      signal: params.signal,
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify(requestBody),
-    }, 'Anthropic', deadline, timeoutMs, apiKey);
-
-    if (response.ok) {
-      data = await response.json();
-      break;
+    const messages: Array<{ role: 'user' | 'assistant'; content: unknown }> = [{ role: 'user', content: params.userPrompt }];
+    const collected: AnthropicContentBlock[] = [];
+    let message: AnthropicMessage | null = null;
+    for (let continuation = 0; ; continuation += 1) {
+      message = await postAnthropicMessage({ ...requestBody, messages }, apiKey, deadline, timeoutMs, params.signal);
+      collected.push(...message.content);
+      console.info(`[city-generation] anthropic model=${model} effort=${effort ?? 'default'} stop_reason=${message.stop_reason ?? 'unknown'} output_tokens=${message.usage?.output_tokens ?? 'unknown'} continuation=${continuation}`);
+      if (message.stop_reason !== 'pause_turn') break;
+      if (continuation >= ANTHROPIC_MAX_PAUSE_CONTINUATIONS || Date.now() >= deadline) {
+        throw new Error(`Anthropic paused its search ${continuation + 1} times without finishing the answer. Try again. No estimate was saved.`);
+      }
+      // Resume by sending the paused turn back unchanged; the server continues where it stopped.
+      messages.push({ role: 'assistant', content: message.content });
     }
 
-    const errText = await response.text();
-    if (response.status === 429 && attempt < 1) {
-      const retryDelayMs = getRetryDelayMsFromHeaders(response.headers) ?? 5000;
-      await waitForLlmRetry(Math.min(Math.max(retryDelayMs, 3000), 15000, Math.max(0, deadline - Date.now())), params.signal);
-      continue;
+    if (message.stop_reason === 'max_tokens') {
+      const lower = nextLowerReasoningEffort('anthropic', model, effort);
+      if (lower && Date.now() < deadline) {
+        effort = lower;
+        continue;
+      }
+      throw new Error(`Anthropic reached the ${outputLimit}-token output limit before completing its answer. Lower reasoning effort or raise the output limit in Settings → Provider Request Limits. No estimate was saved.`);
+    }
+    if (message.stop_reason === 'refusal') {
+      throw new Error(`Anthropic (${model}) declined to answer this request. Try again or choose another model. No estimate was saved.`);
     }
 
-    throw new Error(formatProviderHttpError('Anthropic', response.status, errText, apiKey));
+    const text = collected.filter((item) => item.type === 'text').map((item) => item.text || '').join('\n');
+    if (!text.trim()) throw new Error('Anthropic returned no answer. No estimate was saved.');
+    const webSearchUsed = collected.some((item) => item.type === 'server_tool_use' || item.type === 'web_search_tool_result');
+    return { provider: 'anthropic', model, text, webSearchUsed, reasoningEffort: effort };
   }
-
-  if (!data) {
-    throw new Error('Anthropic API returned no response body.');
-  }
-
-  const text = data.content?.filter((item) => item.type === 'text').map((item) => item.text || '').join('\n') || '';
-  const webSearchUsed = Boolean(data.content?.some((item) => item.type === 'server_tool_use' || item.type === 'web_search_tool_result'));
-  return { provider: 'anthropic', model, text, webSearchUsed, reasoningEffort: effort };
 }
 
 async function runGeminiJsonPrompt(params: ProviderRunnerParams): Promise<JsonPromptResult | null> {
@@ -273,76 +338,85 @@ async function runGeminiJsonPrompt(params: ProviderRunnerParams): Promise<JsonPr
   const model = normalizeModel(params.model) ?? (process.env.GEMINI_MODEL || CITY_GENERATION_DEFAULT_MODELS.gemini);
   const timeoutMs = params.requestTimeoutMs ?? resolveLlmRuntimeDefaults().requestTimeoutMs;
   const deadline = Date.now() + timeoutMs;
-  const effort = resolveProviderRequestEffort('gemini', model, params.reasoningEffort);
-  const thinkingConfig = buildGeminiThinkingConfig(model, effort);
-  let data: {
-    candidates?: Array<{
-      finishReason?: string;
-      content?: { parts?: Array<{ text?: string; thought?: boolean }> };
-      groundingMetadata?: { webSearchQueries?: string[]; groundingChunks?: unknown[] };
-    }>;
-  } | null = null;
+  // The configured limit (not a small fixed one): thinking tokens count against it, so a low cap truncates answers.
+  const maxOutputTokens = clampOutputTokens('gemini', model, params.maxTokens ?? resolveLlmRuntimeDefaults().maxOutputTokens);
+  let effort = resolveProviderRequestEffort('gemini', model, params.reasoningEffort);
 
-  for (let attempt = 0; attempt < 2; attempt += 1) {
-    const response = await fetchProvider(
-      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
-      {
-        method: 'POST',
-        signal: params.signal,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          systemInstruction: {
-            parts: [{ text: params.systemPrompt }],
+  for (;;) {
+    const thinkingConfig = buildGeminiThinkingConfig(model, effort);
+    let data: {
+      candidates?: Array<{
+        finishReason?: string;
+        content?: { parts?: Array<{ text?: string; thought?: boolean }> };
+        groundingMetadata?: { webSearchQueries?: string[]; groundingChunks?: unknown[] };
+      }>;
+    } | null = null;
+
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const response = await fetchProvider(
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
+        {
+          method: 'POST',
+          signal: params.signal,
+          headers: {
+            'Content-Type': 'application/json',
           },
-          contents: [
-            {
-              role: 'user',
-              parts: [{ text: params.userPrompt }],
+          body: JSON.stringify({
+            systemInstruction: {
+              parts: [{ text: params.systemPrompt }],
             },
-          ],
-          generationConfig: {
-            responseMimeType: 'application/json',
-            maxOutputTokens: params.maxTokens ?? 3000,
-            ...(thinkingConfig ? { thinkingConfig } : {}),
-          },
-          ...(params.requireWebSearch ? { tools: [{ googleSearch: {} }] } : {}),
-        }),
-      }, 'Gemini', deadline, timeoutMs, apiKey
-    );
+            contents: [
+              {
+                role: 'user',
+                parts: [{ text: params.userPrompt }],
+              },
+            ],
+            generationConfig: {
+              responseMimeType: 'application/json',
+              maxOutputTokens,
+              ...(thinkingConfig ? { thinkingConfig } : {}),
+            },
+            ...(params.requireWebSearch ? { tools: [{ googleSearch: {} }] } : {}),
+          }),
+        }, 'Gemini', deadline, timeoutMs, apiKey
+      );
 
-    if (response.ok) {
-      data = await response.json();
-      break;
+      if (response.ok) {
+        data = await response.json();
+        break;
+      }
+
+      const errText = await response.text();
+      if ((response.status === 429 || response.status === 503) && attempt < 1) {
+        await waitForLlmRetry(Math.min(4000 * (attempt + 1), Math.max(0, deadline - Date.now())), params.signal);
+        continue;
+      }
+
+      throw new Error(formatProviderHttpError('Gemini', response.status, errText, apiKey));
     }
 
-    const errText = await response.text();
-    if ((response.status === 429 || response.status === 503) && attempt < 1) {
-      await waitForLlmRetry(Math.min(4000 * (attempt + 1), Math.max(0, deadline - Date.now())), params.signal);
-      continue;
+    if (!data) {
+      throw new Error('Gemini API returned no response body.');
     }
 
-    throw new Error(formatProviderHttpError('Gemini', response.status, errText, apiKey));
+    if (data.candidates?.[0]?.finishReason === 'MAX_TOKENS') {
+      const lower = nextLowerReasoningEffort('gemini', model, effort);
+      if (lower && Date.now() < deadline) {
+        effort = lower;
+        continue;
+      }
+      throw new Error(
+        `Gemini reached the ${maxOutputTokens}-token output limit before finishing its answer. Lower reasoning effort or raise the output limit in Settings → Provider Request Limits. No estimate was saved.`
+      );
+    }
+
+    const text =
+      data.candidates?.[0]?.content?.parts?.filter((item) => !item.thought).map((item) => item.text || '').join('\n') || '';
+
+    const grounding = data.candidates?.[0]?.groundingMetadata;
+    const webSearchUsed = Boolean(grounding?.webSearchQueries?.length || grounding?.groundingChunks?.length);
+    return { provider: 'gemini', model, text, webSearchUsed, reasoningEffort: effort };
   }
-
-  if (!data) {
-    throw new Error('Gemini API returned no response body.');
-  }
-
-  const finishReason = data.candidates?.[0]?.finishReason;
-  if (finishReason === 'MAX_TOKENS') {
-    throw new Error(
-      'Gemini stopped before finishing the JSON response. Try the same request again or use a model with a larger output budget.'
-    );
-  }
-
-  const text =
-    data.candidates?.[0]?.content?.parts?.filter((item) => !item.thought).map((item) => item.text || '').join('\n') || '';
-
-  const grounding = data.candidates?.[0]?.groundingMetadata;
-  const webSearchUsed = Boolean(grounding?.webSearchQueries?.length || grounding?.groundingChunks?.length);
-  return { provider: 'gemini', model, text, webSearchUsed, reasoningEffort: effort };
 }
 
 function readChatMessageText(content: unknown) {
@@ -373,77 +447,84 @@ async function runChatCompletionsJsonPrompt(spec: LlmProviderSpec, params: Provi
     }
   }
 
-  const effort = resolveProviderRequestEffort(spec.id, model, params.reasoningEffort);
-  const requestBody: Record<string, unknown> = {
-    model,
-    messages: [
-      { role: 'system', content: params.systemPrompt },
-      { role: 'user', content: params.userPrompt },
-    ],
-    [spec.maxTokensField ?? 'max_tokens']: maxOutputTokens,
-  };
+  let effort = resolveProviderRequestEffort(spec.id, model, params.reasoningEffort);
+  for (;;) {
+    const requestBody: Record<string, unknown> = {
+      model,
+      messages: [
+        { role: 'system', content: params.systemPrompt },
+        { role: 'user', content: params.userPrompt },
+      ],
+      [spec.maxTokensField ?? 'max_tokens']: maxOutputTokens,
+    };
 
-  if (effort) {
-    if (spec.effortParam === 'openrouter-reasoning') requestBody.reasoning = { effort };
-    if (spec.effortParam === 'reasoning_effort') requestBody.reasoning_effort = effort;
-    if (spec.effortParam === 'deepseek-thinking') {
-      requestBody.thinking = { type: effort === 'none' ? 'disabled' : 'enabled' };
-      if (effort !== 'none') requestBody.reasoning_effort = effort;
+    if (effort) {
+      if (spec.effortParam === 'openrouter-reasoning') requestBody.reasoning = { effort };
+      if (spec.effortParam === 'reasoning_effort') requestBody.reasoning_effort = effort;
+      if (spec.effortParam === 'deepseek-thinking') {
+        requestBody.thinking = { type: effort === 'none' ? 'disabled' : 'enabled' };
+        if (effort !== 'none') requestBody.reasoning_effort = effort;
+      }
     }
-  }
 
-  if (params.requireWebSearch) {
-    if (spec.webSearch === 'openrouter-plugin') requestBody.plugins = [{ id: 'web' }];
-    if (spec.webSearch === 'groq-browser-search') {
-      requestBody.tools = [{ type: 'browser_search' }];
-      requestBody.tool_choice = 'required';
+    if (params.requireWebSearch) {
+      if (spec.webSearch === 'openrouter-plugin') requestBody.plugins = [{ id: 'web' }];
+      if (spec.webSearch === 'groq-browser-search') {
+        requestBody.tools = [{ type: 'browser_search' }];
+        requestBody.tool_choice = 'required';
+      }
+      if (spec.webSearch === 'zai-tool') {
+        requestBody.tools = [{ type: 'web_search', web_search: { enable: true, search_result: true } }];
+      }
     }
-    if (spec.webSearch === 'zai-tool') {
-      requestBody.tools = [{ type: 'web_search', web_search: { enable: true, search_result: true } }];
+
+    const response = await fetchProvider(`${spec.baseUrl}/chat/completions`, {
+      method: 'POST',
+      signal: params.signal,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(requestBody),
+    }, spec.label, deadline, timeoutMs, apiKey);
+
+    if (!response.ok) {
+      throw new Error(formatProviderHttpError(spec.label, response.status, await response.text(), apiKey));
     }
-  }
 
-  const response = await fetchProvider(`${spec.baseUrl}/chat/completions`, {
-    method: 'POST',
-    signal: params.signal,
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify(requestBody),
-  }, spec.label, deadline, timeoutMs, apiKey);
+    const data = await response.json() as {
+      choices?: Array<{
+        finish_reason?: string;
+        message?: { content?: unknown; annotations?: Array<{ type?: string }>; executed_tools?: unknown[] };
+      }>;
+      web_search?: unknown[];
+      citations?: unknown[];
+      error?: unknown;
+    };
+    if (data.error) {
+      throw new Error(`${spec.label} failed to complete the request: ${summarizeProviderError(JSON.stringify({ error: data.error }), apiKey)} No estimate was saved.`);
+    }
+    const choice = data.choices?.[0];
+    if (choice?.finish_reason === 'length') {
+      const lower = nextLowerReasoningEffort(spec.id, model, effort);
+      if (lower && Date.now() < deadline) {
+        effort = lower;
+        continue;
+      }
+      throw new Error(`${spec.label} reached the ${maxOutputTokens}-token output limit before completing its answer. Lower reasoning effort or raise the output limit in Settings → Provider Request Limits. No estimate was saved.`);
+    }
+    const text = stripThinkBlocks(readChatMessageText(choice?.message?.content));
+    if (!text) throw new Error(`${spec.label} returned no answer. No estimate was saved.`);
 
-  if (!response.ok) {
-    throw new Error(formatProviderHttpError(spec.label, response.status, await response.text(), apiKey));
+    const annotations = choice?.message?.annotations ?? [];
+    const webSearchUsed = Boolean(params.requireWebSearch) && (
+      annotations.some((annotation) => annotation?.type === 'url_citation')
+      || (Array.isArray(choice?.message?.executed_tools) && choice.message.executed_tools.length > 0)
+      || (Array.isArray(data.web_search) && data.web_search.length > 0)
+      || (Array.isArray(data.citations) && data.citations.length > 0)
+    );
+    return { provider: spec.id, model, text, webSearchUsed, reasoningEffort: effort };
   }
-
-  const data = await response.json() as {
-    choices?: Array<{
-      finish_reason?: string;
-      message?: { content?: unknown; annotations?: Array<{ type?: string }>; executed_tools?: unknown[] };
-    }>;
-    web_search?: unknown[];
-    citations?: unknown[];
-    error?: unknown;
-  };
-  if (data.error) {
-    throw new Error(`${spec.label} failed to complete the request: ${summarizeProviderError(JSON.stringify({ error: data.error }), apiKey)} No estimate was saved.`);
-  }
-  const choice = data.choices?.[0];
-  if (choice?.finish_reason === 'length') {
-    throw new Error(`${spec.label} reached the ${maxOutputTokens}-token output limit before completing its answer. Lower reasoning effort or raise the output limit in Settings → Provider Request Limits. No estimate was saved.`);
-  }
-  const text = stripThinkBlocks(readChatMessageText(choice?.message?.content));
-  if (!text) throw new Error(`${spec.label} returned no answer. No estimate was saved.`);
-
-  const annotations = choice?.message?.annotations ?? [];
-  const webSearchUsed = Boolean(params.requireWebSearch) && (
-    annotations.some((annotation) => annotation?.type === 'url_citation')
-    || (Array.isArray(choice?.message?.executed_tools) && choice.message.executed_tools.length > 0)
-    || (Array.isArray(data.web_search) && data.web_search.length > 0)
-    || (Array.isArray(data.citations) && data.citations.length > 0)
-  );
-  return { provider: spec.id, model, text, webSearchUsed, reasoningEffort: effort };
 }
 
 /** Perplexity Sonar: every request searches; the response lists its sources. */
@@ -550,6 +631,8 @@ export type JsonPromptParams = {
   maxTokens?: number;
   reasoningEffort?: CityGenerationReasoningEffort;
   requireWebSearch?: boolean;
+  /** The most web searches the prompt allows (v1.2: six; v1.1 and transport: one), for providers that take a cap. */
+  maxWebSearches?: number;
   requestTimeoutMs?: number;
   signal?: AbortSignal;
 };
@@ -584,6 +667,7 @@ export async function runJsonPromptWithProvider(params: JsonPromptParams) {
       reasoningEffort: params.reasoningEffort,
       maxTokens: params.maxTokens,
       requireWebSearch: params.requireWebSearch,
+      maxWebSearches: params.maxWebSearches,
       requestTimeoutMs: params.requestTimeoutMs,
       signal: params.signal,
     });
